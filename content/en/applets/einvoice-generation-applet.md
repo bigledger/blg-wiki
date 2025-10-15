@@ -10,9 +10,7 @@ tags:
 weight: 400
 ---
 
-## **Introduction**
-
-### Purpose and Scope
+## Purpose and Scope
 
 The effective management of e-invoices is a strategic imperative for maintaining compliance with the Lembaga Hasil Dalam Negeri (LHDN) and ensuring operational efficiency. This guide explains how to use the **My E-Invoice Admin Applet**, the central tool for this process.
 
@@ -26,7 +24,7 @@ This guide outlines the complete, end-to-end e-invoice lifecycle within the appl
 
 ---
 
-### Handled Transaction Documents
+## Handled Transaction Documents
 
 The applet is designed to handle a variety of transaction documents:
 
@@ -41,7 +39,7 @@ The applet is designed to handle a variety of transaction documents:
 
 ---
 
-### Key Process Stages Overview
+## Key Process Stages Overview
 
 The e-invoice lifecycle is structured across several distinct stages:
 
