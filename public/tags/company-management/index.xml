@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Company-Management</title><link>https://wiki.bigledger.com/tags/company-management/</link><description>Recent content in Company-Management on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/company-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Company Organization Applet</title><link>https://wiki.bigledger.com/applets/company-organization-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/company-organization-applet/</guid><description>
-&lt;p>noneWhen logging into the Organization Applet, the first page displayed to the user is the Company Listing page in the first icon on the left sidebar.
+&lt;p&gt;noneWhen logging into the Organization Applet, the first page displayed to the user is the Company Listing page in the first icon on the left sidebar.
 In this section, we will cover two key topics:
 How to Create a Company: A step-by-step guide on setting up company details and adding the address.
-How to Edit a Company: An overview of each tab and its features to enhance company configuration&lt;/p>
-&lt;h1>Create Company﻿&lt;/h1>&lt;p>One company can have multiple sub-branches, and there&amp;rsquo;s no limit to this configuration
-To start creating a company, users can click on the &amp;lsquo;+&amp;rsquo; button located at the top left corner.&lt;/p>
-&lt;h2>Company Tab﻿&lt;span class="hx:absolute hx:-mt-20" id="company-tab">&lt;/span>
-&lt;a href="#company-tab" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Create a Company﻿&lt;span class="hx:absolute hx:-mt-20" id="create-a-company">&lt;/span>
-&lt;a href="#create-a-company" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Click the &amp;lsquo;+&amp;rsquo; button at the top left corner.
+How to Edit a Company: An overview of each tab and its features to enhance company configuration&lt;/p&gt;
+&lt;h1&gt;Create Company﻿&lt;/h1&gt;&lt;p&gt;One company can have multiple sub-branches, and there&amp;rsquo;s no limit to this configuration
+To start creating a company, users can click on the &amp;lsquo;+&amp;rsquo; button located at the top left corner.&lt;/p&gt;
+&lt;h2&gt;Company Tab﻿&lt;span class="hx:absolute hx:-mt-20" id="company-tab"&gt;&lt;/span&gt;
+&lt;a href="#company-tab" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Create a Company﻿&lt;span class="hx:absolute hx:-mt-20" id="create-a-company"&gt;&lt;/span&gt;
+&lt;a href="#create-a-company" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Click the &amp;lsquo;+&amp;rsquo; button at the top left corner.
 Fill in all required fields with the necessary information. Fields marked with a * are mandatory and cannot be modified later.
 Once completed, click &amp;lsquo;Save&amp;rsquo; in the top right corner.
 Please refer to the screenshots below for guidance.
@@ -27,11 +27,11 @@ Default Purchase and Sales Return Options: For both Purchase Returns and Sales R
 Last Purchase Price: Select this option to use the price of the last purchase for returns.
 Moving Average Cost: Choose this option if you prefer the pricing to be based on the moving average cost.
 Invoice Price: The most commonly used option, applies the price from the relevant purchase or sales invoice for returns.
-Company Logo: Users can upload a company logo immediately or choose to upload it later.&lt;/p>
-&lt;h2>Address Tab﻿&lt;span class="hx:absolute hx:-mt-20" id="address-tab">&lt;/span>
-&lt;a href="#address-tab" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>When creating a company, users are required to fill in the address details. This information is essential for accurate record-keeping and correspondence purposes.&lt;/p>
-&lt;h3>Fill in the Company Address﻿&lt;span class="hx:absolute hx:-mt-20" id="fill-in-the-company-address">&lt;/span>
-&lt;a href="#fill-in-the-company-address" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Navigate to the Address Tab.
+Company Logo: Users can upload a company logo immediately or choose to upload it later.&lt;/p&gt;
+&lt;h2&gt;Address Tab﻿&lt;span class="hx:absolute hx:-mt-20" id="address-tab"&gt;&lt;/span&gt;
+&lt;a href="#address-tab" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;When creating a company, users are required to fill in the address details. This information is essential for accurate record-keeping and correspondence purposes.&lt;/p&gt;
+&lt;h3&gt;Fill in the Company Address﻿&lt;span class="hx:absolute hx:-mt-20" id="fill-in-the-company-address"&gt;&lt;/span&gt;
+&lt;a href="#fill-in-the-company-address" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Navigate to the Address Tab.
 Fill in all required fields, including postal details and country information. Fields marked with a * are mandatory.
 Once completed, click &amp;lsquo;Save&amp;rsquo; in the top right corner to store the address information.
 Please refer to the screenshot below for guidance.
@@ -46,8 +46,8 @@ Postal Code: ZIP or postal code
 City: The city where the company is located
 Country: Different countries can be selected from the drop-down list
 Currency: Select the applicable currency from the drop-down list
-State: Select the relevant state or region from the drop-down list&lt;/p>
-&lt;h1>Edit Company﻿&lt;/h1>&lt;p>From the Company Listing page, click on your created company to view all the available tabs:
+State: Select the relevant state or region from the drop-down list&lt;/p&gt;
+&lt;h1&gt;Edit Company﻿&lt;/h1&gt;&lt;p&gt;From the Company Listing page, click on your created company to view all the available tabs:
 Details: This section displays the main company details created in section 1.1, where users can add or edit any information if needed.
 E-invoice: Configure the company for E-invoicing to LHDN
 Peppol Config: If using Peppol, this tab is for configuring the intermediary.
@@ -56,15 +56,15 @@ Address: Displays the address created in section 1.2. Users can edit or add addi
 Branch: Lists all the branches created under the selected company.
 Location: Shows all locations under each branch for the company.
 Labels: Used for tagging the company, such as grouping by department.
-Employee: Displays the list of employees under the company. This is linked to the Employee Applet.&lt;/p>
-&lt;h2>Knock Off Config:﻿&lt;span class="hx:absolute hx:-mt-20" id="knock-off-config">&lt;/span>
-&lt;a href="#knock-off-config" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>What is KO (Knock Off)?&lt;span class="hx:absolute hx:-mt-20" id="what-is-ko-knock-off">&lt;/span>
-&lt;a href="#what-is-ko-knock-off" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>A Knock Off (KO) configuration is used when a company needs to manage document issuance tracking for transactions involving:
+Employee: Displays the list of employees under the company. This is linked to the Employee Applet.&lt;/p&gt;
+&lt;h2&gt;Knock Off Config:﻿&lt;span class="hx:absolute hx:-mt-20" id="knock-off-config"&gt;&lt;/span&gt;
+&lt;a href="#knock-off-config" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;What is KO (Knock Off)?&lt;span class="hx:absolute hx:-mt-20" id="what-is-ko-knock-off"&gt;&lt;/span&gt;
+&lt;a href="#what-is-ko-knock-off" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;A Knock Off (KO) configuration is used when a company needs to manage document issuance tracking for transactions involving:
 ✅ Customer invoices (e.g., tracking whether an invoice has been fully paid).
 ✅ Supplier invoices (e.g., ensuring payments are properly recorded against supplier bills).
-Essentially, KO helps automate reconciliation between issued invoices and received payments, preventing discrepancies in financial records.&lt;/p>
-&lt;h3>When Should You Configure a KO?&lt;span class="hx:absolute hx:-mt-20" id="when-should-you-configure-a-ko">&lt;/span>
-&lt;a href="#when-should-you-configure-a-ko" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Configuring a KO is optional but may be necessary if:
+Essentially, KO helps automate reconciliation between issued invoices and received payments, preventing discrepancies in financial records.&lt;/p&gt;
+&lt;h3&gt;When Should You Configure a KO?&lt;span class="hx:absolute hx:-mt-20" id="when-should-you-configure-a-ko"&gt;&lt;/span&gt;
+&lt;a href="#when-should-you-configure-a-ko" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Configuring a KO is optional but may be necessary if:
 The company wants to track payments against invoices in an automated manner.
 The business requires document issuance verification before transactions are marked as completed.
 There is a need to link invoice issuance to supplier/customer transactions for internal processing.
@@ -74,6 +74,6 @@ The user needs to select the server type. Server Type 1 refers to the source doc
 This is an example of a basic knock-off (KO) setup flow for the customer. For instance, when the user creates an invoice, there will be two knock-off options: Sales Order and Sales Quotation.
 This means that in the Sales Invoice applet, under the KO (knock-off) tab, the user will see two options: Sales Order and Sales Quotation.
 Users can enable or disable knock-off settings from the main tab page.
-The KO (knock-off) options depend on the customer configuration and the user&amp;rsquo;s needs. The user can add more options if needed by configuring them in the Organisation applet when creating or editing the company details.&lt;/p>
-&lt;h2>Advance Filter Search﻿&lt;span class="hx:absolute hx:-mt-20" id="advance-filter-search">&lt;/span>
-&lt;a href="#advance-filter-search" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The advanced filter allows you to search by company, company name, registration number, or status. Each sub-module includes this advanced filtering option.&lt;/p></description></item></channel></rss>
+The KO (knock-off) options depend on the customer configuration and the user&amp;rsquo;s needs. The user can add more options if needed by configuring them in the Organisation applet when creating or editing the company details.&lt;/p&gt;
+&lt;h2&gt;Advance Filter Search﻿&lt;span class="hx:absolute hx:-mt-20" id="advance-filter-search"&gt;&lt;/span&gt;
+&lt;a href="#advance-filter-search" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The advanced filter allows you to search by company, company name, registration number, or status. Each sub-module includes this advanced filtering option.&lt;/p&gt;</description></item></channel></rss>

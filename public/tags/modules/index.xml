@@ -1,380 +1,380 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Modules</title><link>https://wiki.bigledger.com/tags/modules/</link><description>Recent content in Modules on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/modules/index.xml" rel="self" type="application/rss+xml"/><item><title>Complete Applet Catalog</title><link>https://wiki.bigledger.com/applets/applet-catalog/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/applet-catalog/</guid><description>
-&lt;p>This comprehensive catalog lists all applets available in the BigLedger ecosystem, organized by module and functionality. Each applet is described with its primary purpose, key features, and integration points.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Understanding Applets&lt;/strong>: Applets are reusable functional components that can belong to multiple modules. This many-to-many relationship eliminates duplication and ensures consistent behavior across the entire BigLedger system.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h2>Core Module Applets (13 Applets)&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets-13-applets">&lt;/span>
-&lt;a href="#core-module-applets-13-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Foundation applets required by all other modules&lt;/strong>&lt;/p>
-&lt;h3>1. &lt;a href="https://wiki.bigledger.com/applets/tenant-admin-applet/" >Tenant Admin Applet&lt;/a>&lt;span class="hx:absolute hx:-mt-20" id="1-tenant-admin-applet">&lt;/span>
-&lt;a href="#1-tenant-admin-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>System-wide administration and configuration&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>User management and security configuration&lt;/li>
-&lt;li>Audit settings and compliance management&lt;/li>
-&lt;li>Multi-tenant environment setup&lt;/li>
-&lt;li>System monitoring and health checks&lt;/li>
-&lt;/ul>
-&lt;h3>2. &lt;a href="https://wiki.bigledger.com/applets/chart-of-account-applet/" >Chart of Accounts Applet&lt;/a>&lt;span class="hx:absolute hx:-mt-20" id="2-chart-of-accounts-applet">&lt;/span>
-&lt;a href="#2-chart-of-accounts-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Complete chart of accounts structure management&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Account hierarchies and financial statement mapping&lt;/li>
-&lt;li>Multi-currency support and exchange rates&lt;/li>
-&lt;li>Account classifications and controls&lt;/li>
-&lt;li>Integration foundation for all financial operations&lt;/li>
-&lt;/ul>
-&lt;h3>3. &lt;a href="https://wiki.bigledger.com/applets/organization-applet/" >Organization Applet&lt;/a>&lt;span class="hx:absolute hx:-mt-20" id="3-organization-applet">&lt;/span>
-&lt;a href="#3-organization-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Organizational structure and company management&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Company, branch, and location setup&lt;/li>
-&lt;li>Department and cost center management&lt;/li>
-&lt;li>Organizational hierarchy and reporting structure&lt;/li>
-&lt;li>Multi-location operational support&lt;/li>
-&lt;/ul>
-&lt;h3>4. &lt;a href="https://wiki.bigledger.com/applets/doc-item-maintenance-applet/" >Document Item Maintenance Applet&lt;/a>&lt;span class="hx:absolute hx:-mt-20" id="4-document-item-maintenance-applet">&lt;/span>
-&lt;a href="#4-document-item-maintenance-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Service and non-inventory item management&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Professional services and consulting items&lt;/li>
-&lt;li>Digital products and subscriptions&lt;/li>
-&lt;li>Service pricing and billing configurations&lt;/li>
-&lt;li>Document templates and standardization&lt;/li>
-&lt;/ul>
-&lt;h3>5. &lt;a href="https://wiki.bigledger.com/applets/inv-item-maintenance-applet/" >Inventory Item Maintenance Applet&lt;/a>&lt;span class="hx:absolute hx:-mt-20" id="5-inventory-item-maintenance-applet">&lt;/span>
-&lt;a href="#5-inventory-item-maintenance-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Product and inventory master data&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Complete product information management&lt;/li>
-&lt;li>Multi-location inventory control&lt;/li>
-&lt;li>Pricing and costing methodologies&lt;/li>
-&lt;li>Product categories and classification&lt;/li>
-&lt;/ul>
-&lt;h3>6. &lt;a href="https://wiki.bigledger.com/applets/customer-maintenance-applet/" >Customer Maintenance Applet&lt;/a>&lt;span class="hx:absolute hx:-mt-20" id="6-customer-maintenance-applet">&lt;/span>
-&lt;a href="#6-customer-maintenance-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Customer master data and relationship management&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Complete customer profiles and contact management&lt;/li>
-&lt;li>Credit limits and payment terms&lt;/li>
-&lt;li>Customer segmentation and classification&lt;/li>
-&lt;li>Multi-address and multi-contact support&lt;/li>
-&lt;/ul>
-&lt;h3>7. &lt;a href="https://wiki.bigledger.com/applets/supplier-maintenance-applet/" >Supplier Maintenance Applet&lt;/a>&lt;span class="hx:absolute hx:-mt-20" id="7-supplier-maintenance-applet">&lt;/span>
-&lt;a href="#7-supplier-maintenance-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Vendor and supplier master data management&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Comprehensive supplier profiles&lt;/li>
-&lt;li>Procurement terms and payment conditions&lt;/li>
-&lt;li>Supplier performance tracking&lt;/li>
-&lt;li>Vendor categorization and relationship management&lt;/li>
-&lt;/ul>
-&lt;h3>8. &lt;a href="https://wiki.bigledger.com/applets/employee-maintenance-applet/" >Employee Maintenance Applet&lt;/a>&lt;span class="hx:absolute hx:-mt-20" id="8-employee-maintenance-applet">&lt;/span>
-&lt;a href="#8-employee-maintenance-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Employee master records and HR foundation&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Complete employee profiles and information&lt;/li>
-&lt;li>Organizational structure and reporting relationships&lt;/li>
-&lt;li>System access and role management&lt;/li>
-&lt;li>HR integration and payroll foundation&lt;/li>
-&lt;/ul>
-&lt;h3>9. &lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" >Tax Configuration Applet&lt;/a>&lt;span class="hx:absolute hx:-mt-20" id="9-tax-configuration-applet">&lt;/span>
-&lt;a href="#9-tax-configuration-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Complete tax setup and compliance management&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Tax codes, rates, and regulatory compliance&lt;/li>
-&lt;li>Multi-jurisdiction tax support (GST, SST, VAT)&lt;/li>
-&lt;li>Automated tax calculations&lt;/li>
-&lt;li>Tax reporting and e-filing integration&lt;/li>
-&lt;/ul>
-&lt;h3>10. &lt;a href="https://wiki.bigledger.com/applets/cashbook-applet/" >Cashbook Applet&lt;/a>&lt;span class="hx:absolute hx:-mt-20" id="10-cashbook-applet">&lt;/span>
-&lt;a href="#10-cashbook-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Cash and bank account management&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Multiple cash and bank account setup&lt;/li>
-&lt;li>Payment method configuration&lt;/li>
-&lt;li>Cash flow tracking and management&lt;/li>
-&lt;li>Bank reconciliation and integration&lt;/li>
-&lt;/ul>
-&lt;h3>11. &lt;a href="https://wiki.bigledger.com/applets/workflow-design-applet/" >Workflow Design Applet&lt;/a>&lt;span class="hx:absolute hx:-mt-20" id="11-workflow-design-applet">&lt;/span>
-&lt;a href="#11-workflow-design-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Business process automation and workflow management&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Visual workflow designer and configuration&lt;/li>
-&lt;li>Multi-level approval processes&lt;/li>
-&lt;li>Process automation and orchestration&lt;/li>
-&lt;li>Workflow performance monitoring&lt;/li>
-&lt;/ul>
-&lt;h3>12. &lt;a href="https://wiki.bigledger.com/applets/webhook-applet/" >Webhook Applet&lt;/a>&lt;span class="hx:absolute hx:-mt-20" id="12-webhook-applet">&lt;/span>
-&lt;a href="#12-webhook-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Real-time event notifications and system integration&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>External system integration and notifications&lt;/li>
-&lt;li>Event-driven workflow automation&lt;/li>
-&lt;li>API integration and data synchronization&lt;/li>
-&lt;li>Real-time business event broadcasting&lt;/li>
-&lt;/ul>
-&lt;h3>13. &lt;a href="https://wiki.bigledger.com/applets/t2t-admin-applet/" >T2T Admin Applet&lt;/a>&lt;span class="hx:absolute hx:-mt-20" id="13-t2t-admin-applet">&lt;/span>
-&lt;a href="#13-t2t-admin-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Tenant-to-Tenant administration for enterprise operations&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Multi-tenant enterprise administration&lt;/li>
-&lt;li>Cross-tenant data sharing and relationships&lt;/li>
-&lt;li>Enterprise consolidation and reporting&lt;/li>
-&lt;li>Complex organizational structure management&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2>Point of Sales Module Applets (6 Applets)&lt;span class="hx:absolute hx:-mt-20" id="point-of-sales-module-applets-6-applets">&lt;/span>
-&lt;a href="#point-of-sales-module-applets-6-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Specialized applets for retail and POS operations&lt;/strong>&lt;/p>
-&lt;h3>TODO: Document POS-Specific Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-pos-specific-applets">&lt;/span>
-&lt;a href="#todo-document-pos-specific-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>POS Terminal Applet&lt;/strong> - Point-of-sale terminal management and configuration&lt;/li>
-&lt;li>&lt;strong>Cashier Operations Applet&lt;/strong> - Cashier functions and daily operations&lt;/li>
-&lt;li>&lt;strong>POS Inventory Applet&lt;/strong> - Real-time inventory management for retail&lt;/li>
-&lt;li>&lt;strong>Customer Display Applet&lt;/strong> - Customer-facing display management&lt;/li>
-&lt;li>&lt;strong>Receipt Management Applet&lt;/strong> - Receipt printing and digital receipt handling&lt;/li>
-&lt;li>&lt;strong>POS Reporting Applet&lt;/strong> - Point-of-sale analytics and reporting&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2>CP-Commerce Module Applets (20 Applets)&lt;span class="hx:absolute hx:-mt-20" id="cp-commerce-module-applets-20-applets">&lt;/span>
-&lt;a href="#cp-commerce-module-applets-20-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Comprehensive e-commerce solution including all Core Module applets plus 7 commerce-specific applets&lt;/strong>&lt;/p>
-&lt;h3>Core Module Integration&lt;span class="hx:absolute hx:-mt-20" id="core-module-integration">&lt;/span>
-&lt;a href="#core-module-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>All 13 Core Module applets (listed above) are included in CP-Commerce Module.&lt;/p>
-&lt;h3>Commerce-Specific Applets&lt;span class="hx:absolute hx:-mt-20" id="commerce-specific-applets">&lt;/span>
-&lt;a href="#commerce-specific-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h3>TODO: Document Commerce-Specific Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-commerce-specific-applets">&lt;/span>
-&lt;a href="#todo-document-commerce-specific-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>E-Commerce Catalog Applet&lt;/strong> - Online product catalog management&lt;/li>
-&lt;li>&lt;strong>Shopping Cart Applet&lt;/strong> - Shopping cart functionality and management&lt;/li>
-&lt;li>&lt;strong>Online Payment Applet&lt;/strong> - Payment gateway integration and processing&lt;/li>
-&lt;li>&lt;strong>Order Fulfillment Applet&lt;/strong> - Online order processing and fulfillment&lt;/li>
-&lt;li>&lt;strong>Customer Portal Applet&lt;/strong> - Customer self-service portal&lt;/li>
-&lt;li>&lt;strong>Marketplace Integration Applet&lt;/strong> - Third-party marketplace connections&lt;/li>
-&lt;li>&lt;strong>Digital Marketing Applet&lt;/strong> - SEO, analytics, and marketing automation&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2>E-Invoice Module Applets (8 Applets)&lt;span class="hx:absolute hx:-mt-20" id="e-invoice-module-applets-8-applets">&lt;/span>
-&lt;a href="#e-invoice-module-applets-8-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Electronic invoicing and compliance specialization&lt;/strong>&lt;/p>
-&lt;h3>TODO: Document E-Invoice Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-e-invoice-applets">&lt;/span>
-&lt;a href="#todo-document-e-invoice-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>E-Invoice Generation Applet&lt;/strong> - Electronic invoice creation and formatting&lt;/li>
-&lt;li>&lt;strong>MyInvois Integration Applet&lt;/strong> - Malaysian e-invoicing compliance&lt;/li>
-&lt;li>&lt;strong>PEPPOL Network Applet&lt;/strong> - Pan-European Public Procurement integration&lt;/li>
-&lt;li>&lt;strong>Digital Signature Applet&lt;/strong> - Invoice digital signing and verification&lt;/li>
-&lt;li>&lt;strong>E-Invoice Validation Applet&lt;/strong> - Invoice validation and compliance checking&lt;/li>
-&lt;li>&lt;strong>Tax Authority Integration Applet&lt;/strong> - Direct tax authority submissions&lt;/li>
-&lt;li>&lt;strong>E-Invoice Archive Applet&lt;/strong> - Long-term electronic document storage&lt;/li>
-&lt;li>&lt;strong>Compliance Reporting Applet&lt;/strong> - Regulatory compliance reporting&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2>Accounting Module Applets (25 Applets)&lt;span class="hx:absolute hx:-mt-20" id="accounting-module-applets-25-applets">&lt;/span>
-&lt;a href="#accounting-module-applets-25-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Comprehensive transaction processing and financial management&lt;/strong>&lt;/p>
-&lt;h3>TODO: Document Accounting Module Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-accounting-module-applets">&lt;/span>
-&lt;a href="#todo-document-accounting-module-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>General Ledger Applet&lt;/strong> - Core accounting and transaction processing&lt;/li>
-&lt;li>&lt;strong>Accounts Receivable Applet&lt;/strong> - Customer billing and collections&lt;/li>
-&lt;li>&lt;strong>Accounts Payable Applet&lt;/strong> - Vendor payments and processing&lt;/li>
-&lt;li>&lt;strong>Fixed Assets Applet&lt;/strong> - Asset management and depreciation&lt;/li>
-&lt;li>&lt;strong>Budget Management Applet&lt;/strong> - Budgeting and variance analysis&lt;/li>
-&lt;li>&lt;strong>Cost Accounting Applet&lt;/strong> - Cost allocation and analysis&lt;/li>
-&lt;li>&lt;strong>Multi-Currency Applet&lt;/strong> - Foreign exchange and currency management&lt;/li>
-&lt;li>&lt;strong>Financial Reporting Applet&lt;/strong> - Financial statements and reports&lt;/li>
-&lt;li>&lt;strong>Bank Reconciliation Applet&lt;/strong> - Automated bank statement reconciliation&lt;/li>
-&lt;li>&lt;strong>Journal Entry Applet&lt;/strong> - Manual and automated journal entries&lt;/li>
-&lt;li>&lt;strong>Intercompany Applet&lt;/strong> - Inter-company transaction processing&lt;/li>
-&lt;li>&lt;strong>Revenue Recognition Applet&lt;/strong> - Advanced revenue recognition&lt;/li>
-&lt;li>&lt;strong>Expense Management Applet&lt;/strong> - Employee expense processing&lt;/li>
-&lt;li>&lt;strong>Cash Flow Management Applet&lt;/strong> - Cash flow forecasting and management&lt;/li>
-&lt;li>&lt;strong>Audit Trail Applet&lt;/strong> - Financial audit and compliance tracking&lt;/li>
-&lt;li>&lt;strong>Tax Accounting Applet&lt;/strong> - Tax-specific accounting treatments&lt;/li>
-&lt;li>&lt;strong>Consolidation Applet&lt;/strong> - Multi-entity financial consolidation&lt;/li>
-&lt;li>&lt;strong>Period Close Applet&lt;/strong> - Month-end and year-end procedures&lt;/li>
-&lt;li>&lt;strong>Allocation Applet&lt;/strong> - Cost and revenue allocation&lt;/li>
-&lt;li>&lt;strong>Treasury Management Applet&lt;/strong> - Corporate treasury operations&lt;/li>
-&lt;li>&lt;strong>Credit Management Applet&lt;/strong> - Customer credit control&lt;/li>
-&lt;li>&lt;strong>Collection Management Applet&lt;/strong> - Debt collection processes&lt;/li>
-&lt;li>&lt;strong>Payment Processing Applet&lt;/strong> - Advanced payment handling&lt;/li>
-&lt;li>&lt;strong>Financial Analytics Applet&lt;/strong> - Advanced financial analysis&lt;/li>
-&lt;li>&lt;strong>Compliance Management Applet&lt;/strong> - Financial compliance monitoring&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2>Digital CRM Module Applets (3 Applets)&lt;span class="hx:absolute hx:-mt-20" id="digital-crm-module-applets-3-applets">&lt;/span>
-&lt;a href="#digital-crm-module-applets-3-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>AI-powered customer relationship management&lt;/strong>&lt;/p>
-&lt;h3>TODO: Document Digital CRM Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-digital-crm-applets">&lt;/span>
-&lt;a href="#todo-document-digital-crm-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>AI Customer Analytics Applet&lt;/strong> - Predictive customer analytics and insights&lt;/li>
-&lt;li>&lt;strong>Automated Marketing Applet&lt;/strong> - AI-driven marketing automation&lt;/li>
-&lt;li>&lt;strong>Customer Intelligence Applet&lt;/strong> - Advanced customer behavior analysis&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2>IT &amp;amp; CE Module Applets (6 Applets)&lt;span class="hx:absolute hx:-mt-20" id="it--ce-module-applets-6-applets">&lt;/span>
-&lt;a href="#it--ce-module-applets-6-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Technology and customer engagement specialization&lt;/strong>&lt;/p>
-&lt;h3>TODO: Document IT &amp;amp; CE Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-it--ce-applets">&lt;/span>
-&lt;a href="#todo-document-it--ce-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Service Desk Applet&lt;/strong> - IT service management and ticketing&lt;/li>
-&lt;li>&lt;strong>Asset Management Applet&lt;/strong> - IT asset lifecycle management&lt;/li>
-&lt;li>&lt;strong>Customer Engagement Applet&lt;/strong> - Multi-channel customer engagement&lt;/li>
-&lt;li>&lt;strong>Knowledge Management Applet&lt;/strong> - IT knowledge base and documentation&lt;/li>
-&lt;li>&lt;strong>Incident Management Applet&lt;/strong> - IT incident response and resolution&lt;/li>
-&lt;li>&lt;strong>Performance Monitoring Applet&lt;/strong> - System performance and monitoring&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2>Service Industry Module Applets (7 Applets)&lt;span class="hx:absolute hx:-mt-20" id="service-industry-module-applets-7-applets">&lt;/span>
-&lt;a href="#service-industry-module-applets-7-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Service-based business operations specialization&lt;/strong>&lt;/p>
-&lt;h3>TODO: Document Service Industry Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-service-industry-applets">&lt;/span>
-&lt;a href="#todo-document-service-industry-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Project Management Applet&lt;/strong> - Project planning and execution&lt;/li>
-&lt;li>&lt;strong>Time Tracking Applet&lt;/strong> - Employee time and attendance tracking&lt;/li>
-&lt;li>&lt;strong>Resource Scheduling Applet&lt;/strong> - Resource allocation and scheduling&lt;/li>
-&lt;li>&lt;strong>Service Contracts Applet&lt;/strong> - Service agreement management&lt;/li>
-&lt;li>&lt;strong>Professional Services Applet&lt;/strong> - Consulting and professional services&lt;/li>
-&lt;li>&lt;strong>Quality Assurance Applet&lt;/strong> - Service quality management&lt;/li>
-&lt;li>&lt;strong>Client Portal Applet&lt;/strong> - Client self-service and communication&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2>Drop Shipping Module Applets (2 Applets)&lt;span class="hx:absolute hx:-mt-20" id="drop-shipping-module-applets-2-applets">&lt;/span>
-&lt;a href="#drop-shipping-module-applets-2-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Drop shipping business model specialization&lt;/strong>&lt;/p>
-&lt;h3>TODO: Document Drop Shipping Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-drop-shipping-applets">&lt;/span>
-&lt;a href="#todo-document-drop-shipping-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Supplier Network Applet&lt;/strong> - Drop shipping supplier management&lt;/li>
-&lt;li>&lt;strong>Order Fulfillment Automation Applet&lt;/strong> - Automated order routing and fulfillment&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2>ERP Module Applets (41 Total Applets)&lt;span class="hx:absolute hx:-mt-20" id="erp-module-applets-41-total-applets">&lt;/span>
-&lt;a href="#erp-module-applets-41-total-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Complete enterprise resource planning solution&lt;/strong>&lt;/p>
-&lt;h3>Included Applets&lt;span class="hx:absolute hx:-mt-20" id="included-applets">&lt;/span>
-&lt;a href="#included-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>All Accounting Module applets&lt;/strong> (25 applets)&lt;/li>
-&lt;li>&lt;strong>All Point of Sales Module applets&lt;/strong> (6 applets)&lt;/li>
-&lt;li>&lt;strong>10 additional enterprise-specific applets&lt;/strong> (listed below)&lt;/li>
-&lt;/ul>
-&lt;h3>TODO: Document ERP-Specific Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-erp-specific-applets">&lt;/span>
-&lt;a href="#todo-document-erp-specific-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Enterprise Dashboard Applet&lt;/strong> - Executive and management dashboards&lt;/li>
-&lt;li>&lt;strong>Business Intelligence Applet&lt;/strong> - Advanced analytics and reporting&lt;/li>
-&lt;li>&lt;strong>Master Data Management Applet&lt;/strong> - Enterprise master data governance&lt;/li>
-&lt;li>&lt;strong>Integration Hub Applet&lt;/strong> - Enterprise application integration&lt;/li>
-&lt;li>&lt;strong>Document Management Applet&lt;/strong> - Enterprise document management&lt;/li>
-&lt;li>&lt;strong>Workflow Orchestration Applet&lt;/strong> - Complex enterprise workflows&lt;/li>
-&lt;li>&lt;strong>Performance Management Applet&lt;/strong> - KPI and scorecard management&lt;/li>
-&lt;li>&lt;strong>Risk Management Applet&lt;/strong> - Enterprise risk assessment and mitigation&lt;/li>
-&lt;li>&lt;strong>Compliance Dashboard Applet&lt;/strong> - Regulatory compliance monitoring&lt;/li>
-&lt;li>&lt;strong>Enterprise Security Applet&lt;/strong> - Advanced security and access control&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;h2>Existing Specialized Applets&lt;span class="hx:absolute hx:-mt-20" id="existing-specialized-applets">&lt;/span>
-&lt;a href="#existing-specialized-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Inventory and Warehouse Management&lt;span class="hx:absolute hx:-mt-20" id="inventory-and-warehouse-management">&lt;/span>
-&lt;a href="#inventory-and-warehouse-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/stock-balance-applet/" >Stock Balance Applet&lt;/a>&lt;/strong> - Real-time inventory levels and tracking&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/stock-take-applet/" >Stock Take Applet&lt;/a>&lt;/strong> - Physical inventory counting and reconciliation&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/internal-stock-adjustment-applet/" >Internal Stock Adjustment Applet&lt;/a>&lt;/strong> - Inventory adjustments and corrections&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/internal-delivery-order-applet/" >Internal Delivery Order Applet&lt;/a>&lt;/strong> - Internal transfers and deliveries&lt;/li>
-&lt;/ul>
-&lt;h3>Team and Organization Management&lt;span class="hx:absolute hx:-mt-20" id="team-and-organization-management">&lt;/span>
-&lt;a href="#team-and-organization-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/team-maintenance-applet/" >Team Maintenance Applet&lt;/a>&lt;/strong> - Team structure and management&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/group-maintenance-applet/" >Group Maintenance Applet&lt;/a>&lt;/strong> - Group configuration and management&lt;/li>
-&lt;/ul>
-&lt;h3>Pricing and Sales Management&lt;span class="hx:absolute hx:-mt-20" id="pricing-and-sales-management">&lt;/span>
-&lt;a href="#pricing-and-sales-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/pricebook-applet/" >Pricebook Applet&lt;/a>&lt;/strong> - Advanced pricing management and strategies&lt;/li>
-&lt;/ul>
-&lt;h3>Process and Quality Management&lt;span class="hx:absolute hx:-mt-20" id="process-and-quality-management">&lt;/span>
-&lt;a href="#process-and-quality-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/process-monitoring-applet/" >Process Monitoring Applet&lt;/a>&lt;/strong> - Business process tracking and analysis&lt;/li>
-&lt;/ul>
-&lt;h3>Membership and Loyalty Programs&lt;span class="hx:absolute hx:-mt-20" id="membership-and-loyalty-programs">&lt;/span>
-&lt;a href="#membership-and-loyalty-programs" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/membership-admin-console-applet/" >Membership Admin Console Applet&lt;/a>&lt;/strong> - Customer loyalty program management&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/membership-points-currency/" >Membership Points Currency&lt;/a>&lt;/strong> - Points-based reward system&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/membership-program/" >Membership Program&lt;/a>&lt;/strong> - Membership program configuration&lt;/li>
-&lt;/ul>
-&lt;h3>Communication and Customer Service&lt;span class="hx:absolute hx:-mt-20" id="communication-and-customer-service">&lt;/span>
-&lt;a href="#communication-and-customer-service" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/unified-contact-center-ucc-applet/" >Unified Contact Center (UCC) Applet&lt;/a>&lt;/strong> - Comprehensive customer service platform&lt;/li>
-&lt;/ul>
-&lt;h3>E-Commerce Integration&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-integration">&lt;/span>
-&lt;a href="#e-commerce-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/90-ecomsync-related-applets/" >EcomSync Related Applets&lt;/a>&lt;/strong> - E-commerce synchronization tools&lt;/li>
-&lt;/ul>
-&lt;h3>Distribution and Vendor Management&lt;span class="hx:absolute hx:-mt-20" id="distribution-and-vendor-management">&lt;/span>
-&lt;a href="#distribution-and-vendor-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/ingram-micro-ms-esd-applet/" >Ingram Micro MS ESD Applet&lt;/a>&lt;/strong> - Microsoft licensing distribution&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/vstecs-ms-esd-order-applet/" >VSTecs MS ESD Order Applet&lt;/a>&lt;/strong> - VSTecs distribution integration&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2>Applet Categories by Function&lt;span class="hx:absolute hx:-mt-20" id="applet-categories-by-function">&lt;/span>
-&lt;a href="#applet-categories-by-function" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Master Data Management&lt;span class="hx:absolute hx:-mt-20" id="master-data-management">&lt;/span>
-&lt;a href="#master-data-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Chart of Accounts, Organization, Customer/Supplier/Employee Maintenance&lt;/li>
-&lt;li>Inventory and Document Item Maintenance&lt;/li>
-&lt;li>Tax Configuration&lt;/li>
-&lt;/ul>
-&lt;h3>Transaction Processing&lt;span class="hx:absolute hx:-mt-20" id="transaction-processing">&lt;/span>
-&lt;a href="#transaction-processing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Sales Orders, Purchase Orders, Invoicing&lt;/li>
-&lt;li>Payments, Receipts, Journal Entries&lt;/li>
-&lt;li>Stock Movements, Adjustments&lt;/li>
-&lt;/ul>
-&lt;h3>Financial Management&lt;span class="hx:absolute hx:-mt-20" id="financial-management">&lt;/span>
-&lt;a href="#financial-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>General Ledger, Accounts Receivable/Payable&lt;/li>
-&lt;li>Budget Management, Financial Reporting&lt;/li>
-&lt;li>Cash Flow, Treasury Management&lt;/li>
-&lt;/ul>
-&lt;h3>Inventory Operations&lt;span class="hx:absolute hx:-mt-20" id="inventory-operations">&lt;/span>
-&lt;a href="#inventory-operations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Stock Balance, Stock Take, Stock Adjustments&lt;/li>
-&lt;li>Internal Transfers, Inventory Tracking&lt;/li>
-&lt;/ul>
-&lt;h3>Customer Relationship Management&lt;span class="hx:absolute hx:-mt-20" id="customer-relationship-management">&lt;/span>
-&lt;a href="#customer-relationship-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Customer Maintenance, Sales Management&lt;/li>
-&lt;li>Membership Programs, Customer Portal&lt;/li>
-&lt;li>Communication and Support Tools&lt;/li>
-&lt;/ul>
-&lt;h3>System Administration&lt;span class="hx:absolute hx:-mt-20" id="system-administration">&lt;/span>
-&lt;a href="#system-administration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Tenant Administration, User Management&lt;/li>
-&lt;li>Workflow Design, Process Monitoring&lt;/li>
-&lt;li>Integration and Security Management&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2>Implementation Roadmap&lt;span class="hx:absolute hx:-mt-20" id="implementation-roadmap">&lt;/span>
-&lt;a href="#implementation-roadmap" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Phase 1: Foundation (Core Module)&lt;span class="hx:absolute hx:-mt-20" id="phase-1-foundation-core-module">&lt;/span>
-&lt;a href="#phase-1-foundation-core-module" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Implement all 13 Core Module applets as the foundation for all operations.&lt;/p>
-&lt;h3>Phase 2: Primary Operations&lt;span class="hx:absolute hx:-mt-20" id="phase-2-primary-operations">&lt;/span>
-&lt;a href="#phase-2-primary-operations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Add specialized module applets based on business requirements:&lt;/p>
-&lt;ul>
-&lt;li>Financial operations → Accounting Module applets&lt;/li>
-&lt;li>Sales operations → Sales and CRM applets&lt;/li>
-&lt;li>Inventory operations → Warehouse management applets&lt;/li>
-&lt;/ul>
-&lt;h3>Phase 3: Advanced Features&lt;span class="hx:absolute hx:-mt-20" id="phase-3-advanced-features">&lt;/span>
-&lt;a href="#phase-3-advanced-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Implement advanced and specialized applets:&lt;/p>
-&lt;ul>
-&lt;li>E-commerce integration → Commerce applets&lt;/li>
-&lt;li>Multi-entity operations → ERP applets&lt;/li>
-&lt;li>Compliance requirements → E-Invoice applets&lt;/li>
-&lt;/ul>
-&lt;h3>Phase 4: Optimization&lt;span class="hx:absolute hx:-mt-20" id="phase-4-optimization">&lt;/span>
-&lt;a href="#phase-4-optimization" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Add analytics, automation, and optimization applets:&lt;/p>
-&lt;ul>
-&lt;li>Business intelligence → Digital CRM applets&lt;/li>
-&lt;li>Process automation → Workflow applets&lt;/li>
-&lt;li>Performance monitoring → Analytics applets&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2>Related Resources&lt;span class="hx:absolute hx:-mt-20" id="related-resources">&lt;/span>
-&lt;a href="#related-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Implementation Guides&lt;span class="hx:absolute hx:-mt-20" id="implementation-guides">&lt;/span>
-&lt;a href="#implementation-guides" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/" >Module Implementation Guide&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/core/" >Getting Started with Core Module&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/applets/applet-store/" >Applet Installation Guide&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h3>Integration Documentation&lt;span class="hx:absolute hx:-mt-20" id="integration-documentation">&lt;/span>
-&lt;a href="#integration-documentation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;a href="https://wiki.bigledger.com/developers/api-reference/" >API Reference&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/applets/webhook-applet/" >Webhook Integration&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/guides/advanced/integration-best-practices/" >System Integration Best Practices&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h3>Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources">&lt;/span>
-&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;a href="https://wiki.bigledger.com/applets/applet-directory/" >Applet Directory&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/applets/applet-store/" >Applet Store&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/" >User Guides&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Implementation Strategy&lt;/strong>: Start with the Core Module applets, then gradually add specialized applets based on your business requirements. The modular architecture allows for flexible implementation and growth.&lt;/div>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+&lt;p&gt;This comprehensive catalog lists all applets available in the BigLedger ecosystem, organized by module and functionality. Each applet is described with its primary purpose, key features, and integration points.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Understanding Applets&lt;/strong&gt;: Applets are reusable functional components that can belong to multiple modules. This many-to-many relationship eliminates duplication and ensures consistent behavior across the entire BigLedger system.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Core Module Applets (13 Applets)&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets-13-applets"&gt;&lt;/span&gt;
+&lt;a href="#core-module-applets-13-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Foundation applets required by all other modules&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;1. &lt;a href="https://wiki.bigledger.com/applets/tenant-admin-applet/" &gt;Tenant Admin Applet&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="1-tenant-admin-applet"&gt;&lt;/span&gt;
+&lt;a href="#1-tenant-admin-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;System-wide administration and configuration&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;User management and security configuration&lt;/li&gt;
+&lt;li&gt;Audit settings and compliance management&lt;/li&gt;
+&lt;li&gt;Multi-tenant environment setup&lt;/li&gt;
+&lt;li&gt;System monitoring and health checks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2. &lt;a href="https://wiki.bigledger.com/applets/chart-of-account-applet/" &gt;Chart of Accounts Applet&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="2-chart-of-accounts-applet"&gt;&lt;/span&gt;
+&lt;a href="#2-chart-of-accounts-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Complete chart of accounts structure management&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Account hierarchies and financial statement mapping&lt;/li&gt;
+&lt;li&gt;Multi-currency support and exchange rates&lt;/li&gt;
+&lt;li&gt;Account classifications and controls&lt;/li&gt;
+&lt;li&gt;Integration foundation for all financial operations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;3. &lt;a href="https://wiki.bigledger.com/applets/organization-applet/" &gt;Organization Applet&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="3-organization-applet"&gt;&lt;/span&gt;
+&lt;a href="#3-organization-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Organizational structure and company management&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Company, branch, and location setup&lt;/li&gt;
+&lt;li&gt;Department and cost center management&lt;/li&gt;
+&lt;li&gt;Organizational hierarchy and reporting structure&lt;/li&gt;
+&lt;li&gt;Multi-location operational support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;4. &lt;a href="https://wiki.bigledger.com/applets/doc-item-maintenance-applet/" &gt;Document Item Maintenance Applet&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="4-document-item-maintenance-applet"&gt;&lt;/span&gt;
+&lt;a href="#4-document-item-maintenance-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Service and non-inventory item management&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Professional services and consulting items&lt;/li&gt;
+&lt;li&gt;Digital products and subscriptions&lt;/li&gt;
+&lt;li&gt;Service pricing and billing configurations&lt;/li&gt;
+&lt;li&gt;Document templates and standardization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;5. &lt;a href="https://wiki.bigledger.com/applets/inv-item-maintenance-applet/" &gt;Inventory Item Maintenance Applet&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="5-inventory-item-maintenance-applet"&gt;&lt;/span&gt;
+&lt;a href="#5-inventory-item-maintenance-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Product and inventory master data&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Complete product information management&lt;/li&gt;
+&lt;li&gt;Multi-location inventory control&lt;/li&gt;
+&lt;li&gt;Pricing and costing methodologies&lt;/li&gt;
+&lt;li&gt;Product categories and classification&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;6. &lt;a href="https://wiki.bigledger.com/applets/customer-maintenance-applet/" &gt;Customer Maintenance Applet&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="6-customer-maintenance-applet"&gt;&lt;/span&gt;
+&lt;a href="#6-customer-maintenance-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Customer master data and relationship management&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Complete customer profiles and contact management&lt;/li&gt;
+&lt;li&gt;Credit limits and payment terms&lt;/li&gt;
+&lt;li&gt;Customer segmentation and classification&lt;/li&gt;
+&lt;li&gt;Multi-address and multi-contact support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;7. &lt;a href="https://wiki.bigledger.com/applets/supplier-maintenance-applet/" &gt;Supplier Maintenance Applet&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="7-supplier-maintenance-applet"&gt;&lt;/span&gt;
+&lt;a href="#7-supplier-maintenance-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Vendor and supplier master data management&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Comprehensive supplier profiles&lt;/li&gt;
+&lt;li&gt;Procurement terms and payment conditions&lt;/li&gt;
+&lt;li&gt;Supplier performance tracking&lt;/li&gt;
+&lt;li&gt;Vendor categorization and relationship management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;8. &lt;a href="https://wiki.bigledger.com/applets/employee-maintenance-applet/" &gt;Employee Maintenance Applet&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="8-employee-maintenance-applet"&gt;&lt;/span&gt;
+&lt;a href="#8-employee-maintenance-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Employee master records and HR foundation&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Complete employee profiles and information&lt;/li&gt;
+&lt;li&gt;Organizational structure and reporting relationships&lt;/li&gt;
+&lt;li&gt;System access and role management&lt;/li&gt;
+&lt;li&gt;HR integration and payroll foundation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;9. &lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" &gt;Tax Configuration Applet&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="9-tax-configuration-applet"&gt;&lt;/span&gt;
+&lt;a href="#9-tax-configuration-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Complete tax setup and compliance management&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tax codes, rates, and regulatory compliance&lt;/li&gt;
+&lt;li&gt;Multi-jurisdiction tax support (GST, SST, VAT)&lt;/li&gt;
+&lt;li&gt;Automated tax calculations&lt;/li&gt;
+&lt;li&gt;Tax reporting and e-filing integration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;10. &lt;a href="https://wiki.bigledger.com/applets/cashbook-applet/" &gt;Cashbook Applet&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="10-cashbook-applet"&gt;&lt;/span&gt;
+&lt;a href="#10-cashbook-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Cash and bank account management&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Multiple cash and bank account setup&lt;/li&gt;
+&lt;li&gt;Payment method configuration&lt;/li&gt;
+&lt;li&gt;Cash flow tracking and management&lt;/li&gt;
+&lt;li&gt;Bank reconciliation and integration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;11. &lt;a href="https://wiki.bigledger.com/applets/workflow-design-applet/" &gt;Workflow Design Applet&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="11-workflow-design-applet"&gt;&lt;/span&gt;
+&lt;a href="#11-workflow-design-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Business process automation and workflow management&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Visual workflow designer and configuration&lt;/li&gt;
+&lt;li&gt;Multi-level approval processes&lt;/li&gt;
+&lt;li&gt;Process automation and orchestration&lt;/li&gt;
+&lt;li&gt;Workflow performance monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;12. &lt;a href="https://wiki.bigledger.com/applets/webhook-applet/" &gt;Webhook Applet&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="12-webhook-applet"&gt;&lt;/span&gt;
+&lt;a href="#12-webhook-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Real-time event notifications and system integration&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;External system integration and notifications&lt;/li&gt;
+&lt;li&gt;Event-driven workflow automation&lt;/li&gt;
+&lt;li&gt;API integration and data synchronization&lt;/li&gt;
+&lt;li&gt;Real-time business event broadcasting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;13. &lt;a href="https://wiki.bigledger.com/applets/t2t-admin-applet/" &gt;T2T Admin Applet&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="13-t2t-admin-applet"&gt;&lt;/span&gt;
+&lt;a href="#13-t2t-admin-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Tenant-to-Tenant administration for enterprise operations&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Multi-tenant enterprise administration&lt;/li&gt;
+&lt;li&gt;Cross-tenant data sharing and relationships&lt;/li&gt;
+&lt;li&gt;Enterprise consolidation and reporting&lt;/li&gt;
+&lt;li&gt;Complex organizational structure management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Point of Sales Module Applets (6 Applets)&lt;span class="hx:absolute hx:-mt-20" id="point-of-sales-module-applets-6-applets"&gt;&lt;/span&gt;
+&lt;a href="#point-of-sales-module-applets-6-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Specialized applets for retail and POS operations&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO: Document POS-Specific Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-pos-specific-applets"&gt;&lt;/span&gt;
+&lt;a href="#todo-document-pos-specific-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;POS Terminal Applet&lt;/strong&gt; - Point-of-sale terminal management and configuration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cashier Operations Applet&lt;/strong&gt; - Cashier functions and daily operations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;POS Inventory Applet&lt;/strong&gt; - Real-time inventory management for retail&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Display Applet&lt;/strong&gt; - Customer-facing display management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Receipt Management Applet&lt;/strong&gt; - Receipt printing and digital receipt handling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;POS Reporting Applet&lt;/strong&gt; - Point-of-sale analytics and reporting&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;CP-Commerce Module Applets (20 Applets)&lt;span class="hx:absolute hx:-mt-20" id="cp-commerce-module-applets-20-applets"&gt;&lt;/span&gt;
+&lt;a href="#cp-commerce-module-applets-20-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Comprehensive e-commerce solution including all Core Module applets plus 7 commerce-specific applets&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;Core Module Integration&lt;span class="hx:absolute hx:-mt-20" id="core-module-integration"&gt;&lt;/span&gt;
+&lt;a href="#core-module-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;All 13 Core Module applets (listed above) are included in CP-Commerce Module.&lt;/p&gt;
+&lt;h3&gt;Commerce-Specific Applets&lt;span class="hx:absolute hx:-mt-20" id="commerce-specific-applets"&gt;&lt;/span&gt;
+&lt;a href="#commerce-specific-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h3&gt;TODO: Document Commerce-Specific Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-commerce-specific-applets"&gt;&lt;/span&gt;
+&lt;a href="#todo-document-commerce-specific-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;E-Commerce Catalog Applet&lt;/strong&gt; - Online product catalog management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Shopping Cart Applet&lt;/strong&gt; - Shopping cart functionality and management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Online Payment Applet&lt;/strong&gt; - Payment gateway integration and processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Order Fulfillment Applet&lt;/strong&gt; - Online order processing and fulfillment&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Portal Applet&lt;/strong&gt; - Customer self-service portal&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Marketplace Integration Applet&lt;/strong&gt; - Third-party marketplace connections&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Digital Marketing Applet&lt;/strong&gt; - SEO, analytics, and marketing automation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;E-Invoice Module Applets (8 Applets)&lt;span class="hx:absolute hx:-mt-20" id="e-invoice-module-applets-8-applets"&gt;&lt;/span&gt;
+&lt;a href="#e-invoice-module-applets-8-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Electronic invoicing and compliance specialization&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO: Document E-Invoice Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-e-invoice-applets"&gt;&lt;/span&gt;
+&lt;a href="#todo-document-e-invoice-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;My E-Invoice Admin Applet&lt;/strong&gt; - Electronic invoice creation and formatting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MyInvois Integration Applet&lt;/strong&gt; - Malaysian e-invoicing compliance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PEPPOL Network Applet&lt;/strong&gt; - Pan-European Public Procurement integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Digital Signature Applet&lt;/strong&gt; - Invoice digital signing and verification&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;E-Invoice Validation Applet&lt;/strong&gt; - Invoice validation and compliance checking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Authority Integration Applet&lt;/strong&gt; - Direct tax authority submissions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;E-Invoice Archive Applet&lt;/strong&gt; - Long-term electronic document storage&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance Reporting Applet&lt;/strong&gt; - Regulatory compliance reporting&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;Accounting Module Applets (25 Applets)&lt;span class="hx:absolute hx:-mt-20" id="accounting-module-applets-25-applets"&gt;&lt;/span&gt;
+&lt;a href="#accounting-module-applets-25-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Comprehensive transaction processing and financial management&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO: Document Accounting Module Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-accounting-module-applets"&gt;&lt;/span&gt;
+&lt;a href="#todo-document-accounting-module-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;General Ledger Applet&lt;/strong&gt; - Core accounting and transaction processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Accounts Receivable Applet&lt;/strong&gt; - Customer billing and collections&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Accounts Payable Applet&lt;/strong&gt; - Vendor payments and processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fixed Assets Applet&lt;/strong&gt; - Asset management and depreciation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Budget Management Applet&lt;/strong&gt; - Budgeting and variance analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cost Accounting Applet&lt;/strong&gt; - Cost allocation and analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Currency Applet&lt;/strong&gt; - Foreign exchange and currency management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Financial Reporting Applet&lt;/strong&gt; - Financial statements and reports&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bank Reconciliation Applet&lt;/strong&gt; - Automated bank statement reconciliation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Journal Entry Applet&lt;/strong&gt; - Manual and automated journal entries&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Intercompany Applet&lt;/strong&gt; - Inter-company transaction processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Revenue Recognition Applet&lt;/strong&gt; - Advanced revenue recognition&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Expense Management Applet&lt;/strong&gt; - Employee expense processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cash Flow Management Applet&lt;/strong&gt; - Cash flow forecasting and management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Audit Trail Applet&lt;/strong&gt; - Financial audit and compliance tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Accounting Applet&lt;/strong&gt; - Tax-specific accounting treatments&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Consolidation Applet&lt;/strong&gt; - Multi-entity financial consolidation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Period Close Applet&lt;/strong&gt; - Month-end and year-end procedures&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Allocation Applet&lt;/strong&gt; - Cost and revenue allocation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Treasury Management Applet&lt;/strong&gt; - Corporate treasury operations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Credit Management Applet&lt;/strong&gt; - Customer credit control&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Collection Management Applet&lt;/strong&gt; - Debt collection processes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Payment Processing Applet&lt;/strong&gt; - Advanced payment handling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Financial Analytics Applet&lt;/strong&gt; - Advanced financial analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance Management Applet&lt;/strong&gt; - Financial compliance monitoring&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;Digital CRM Module Applets (3 Applets)&lt;span class="hx:absolute hx:-mt-20" id="digital-crm-module-applets-3-applets"&gt;&lt;/span&gt;
+&lt;a href="#digital-crm-module-applets-3-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;AI-powered customer relationship management&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO: Document Digital CRM Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-digital-crm-applets"&gt;&lt;/span&gt;
+&lt;a href="#todo-document-digital-crm-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;AI Customer Analytics Applet&lt;/strong&gt; - Predictive customer analytics and insights&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Automated Marketing Applet&lt;/strong&gt; - AI-driven marketing automation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Intelligence Applet&lt;/strong&gt; - Advanced customer behavior analysis&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;IT &amp;amp; CE Module Applets (6 Applets)&lt;span class="hx:absolute hx:-mt-20" id="it--ce-module-applets-6-applets"&gt;&lt;/span&gt;
+&lt;a href="#it--ce-module-applets-6-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Technology and customer engagement specialization&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO: Document IT &amp;amp; CE Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-it--ce-applets"&gt;&lt;/span&gt;
+&lt;a href="#todo-document-it--ce-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Service Desk Applet&lt;/strong&gt; - IT service management and ticketing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Asset Management Applet&lt;/strong&gt; - IT asset lifecycle management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Engagement Applet&lt;/strong&gt; - Multi-channel customer engagement&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Knowledge Management Applet&lt;/strong&gt; - IT knowledge base and documentation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Incident Management Applet&lt;/strong&gt; - IT incident response and resolution&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Monitoring Applet&lt;/strong&gt; - System performance and monitoring&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;Service Industry Module Applets (7 Applets)&lt;span class="hx:absolute hx:-mt-20" id="service-industry-module-applets-7-applets"&gt;&lt;/span&gt;
+&lt;a href="#service-industry-module-applets-7-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Service-based business operations specialization&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO: Document Service Industry Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-service-industry-applets"&gt;&lt;/span&gt;
+&lt;a href="#todo-document-service-industry-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Project Management Applet&lt;/strong&gt; - Project planning and execution&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Time Tracking Applet&lt;/strong&gt; - Employee time and attendance tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resource Scheduling Applet&lt;/strong&gt; - Resource allocation and scheduling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Service Contracts Applet&lt;/strong&gt; - Service agreement management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Professional Services Applet&lt;/strong&gt; - Consulting and professional services&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quality Assurance Applet&lt;/strong&gt; - Service quality management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Client Portal Applet&lt;/strong&gt; - Client self-service and communication&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;Drop Shipping Module Applets (2 Applets)&lt;span class="hx:absolute hx:-mt-20" id="drop-shipping-module-applets-2-applets"&gt;&lt;/span&gt;
+&lt;a href="#drop-shipping-module-applets-2-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Drop shipping business model specialization&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO: Document Drop Shipping Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-drop-shipping-applets"&gt;&lt;/span&gt;
+&lt;a href="#todo-document-drop-shipping-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Supplier Network Applet&lt;/strong&gt; - Drop shipping supplier management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Order Fulfillment Automation Applet&lt;/strong&gt; - Automated order routing and fulfillment&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;ERP Module Applets (41 Total Applets)&lt;span class="hx:absolute hx:-mt-20" id="erp-module-applets-41-total-applets"&gt;&lt;/span&gt;
+&lt;a href="#erp-module-applets-41-total-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Complete enterprise resource planning solution&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;Included Applets&lt;span class="hx:absolute hx:-mt-20" id="included-applets"&gt;&lt;/span&gt;
+&lt;a href="#included-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;All Accounting Module applets&lt;/strong&gt; (25 applets)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;All Point of Sales Module applets&lt;/strong&gt; (6 applets)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;10 additional enterprise-specific applets&lt;/strong&gt; (listed below)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;TODO: Document ERP-Specific Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-erp-specific-applets"&gt;&lt;/span&gt;
+&lt;a href="#todo-document-erp-specific-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Enterprise Dashboard Applet&lt;/strong&gt; - Executive and management dashboards&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Business Intelligence Applet&lt;/strong&gt; - Advanced analytics and reporting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Master Data Management Applet&lt;/strong&gt; - Enterprise master data governance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Hub Applet&lt;/strong&gt; - Enterprise application integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Document Management Applet&lt;/strong&gt; - Enterprise document management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Workflow Orchestration Applet&lt;/strong&gt; - Complex enterprise workflows&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Management Applet&lt;/strong&gt; - KPI and scorecard management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Risk Management Applet&lt;/strong&gt; - Enterprise risk assessment and mitigation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance Dashboard Applet&lt;/strong&gt; - Regulatory compliance monitoring&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Enterprise Security Applet&lt;/strong&gt; - Advanced security and access control&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;Existing Specialized Applets&lt;span class="hx:absolute hx:-mt-20" id="existing-specialized-applets"&gt;&lt;/span&gt;
+&lt;a href="#existing-specialized-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Inventory and Warehouse Management&lt;span class="hx:absolute hx:-mt-20" id="inventory-and-warehouse-management"&gt;&lt;/span&gt;
+&lt;a href="#inventory-and-warehouse-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/stock-balance-applet/" &gt;Stock Balance Applet&lt;/a&gt;&lt;/strong&gt; - Real-time inventory levels and tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/stock-take-applet/" &gt;Stock Take Applet&lt;/a&gt;&lt;/strong&gt; - Physical inventory counting and reconciliation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/internal-stock-adjustment-applet/" &gt;Internal Stock Adjustment Applet&lt;/a&gt;&lt;/strong&gt; - Inventory adjustments and corrections&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/internal-delivery-order-applet/" &gt;Internal Delivery Order Applet&lt;/a&gt;&lt;/strong&gt; - Internal transfers and deliveries&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Team and Organization Management&lt;span class="hx:absolute hx:-mt-20" id="team-and-organization-management"&gt;&lt;/span&gt;
+&lt;a href="#team-and-organization-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/team-maintenance-applet/" &gt;Team Maintenance Applet&lt;/a&gt;&lt;/strong&gt; - Team structure and management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/group-maintenance-applet/" &gt;Group Maintenance Applet&lt;/a&gt;&lt;/strong&gt; - Group configuration and management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Pricing and Sales Management&lt;span class="hx:absolute hx:-mt-20" id="pricing-and-sales-management"&gt;&lt;/span&gt;
+&lt;a href="#pricing-and-sales-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/pricebook-applet/" &gt;Pricebook Applet&lt;/a&gt;&lt;/strong&gt; - Advanced pricing management and strategies&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Process and Quality Management&lt;span class="hx:absolute hx:-mt-20" id="process-and-quality-management"&gt;&lt;/span&gt;
+&lt;a href="#process-and-quality-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/process-monitoring-applet/" &gt;Process Monitoring Applet&lt;/a&gt;&lt;/strong&gt; - Business process tracking and analysis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Membership and Loyalty Programs&lt;span class="hx:absolute hx:-mt-20" id="membership-and-loyalty-programs"&gt;&lt;/span&gt;
+&lt;a href="#membership-and-loyalty-programs" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/membership-admin-console-applet/" &gt;Membership Admin Console Applet&lt;/a&gt;&lt;/strong&gt; - Customer loyalty program management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/membership-points-currency/" &gt;Membership Points Currency&lt;/a&gt;&lt;/strong&gt; - Points-based reward system&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/membership-program/" &gt;Membership Program&lt;/a&gt;&lt;/strong&gt; - Membership program configuration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Communication and Customer Service&lt;span class="hx:absolute hx:-mt-20" id="communication-and-customer-service"&gt;&lt;/span&gt;
+&lt;a href="#communication-and-customer-service" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/unified-contact-center-ucc-applet/" &gt;Unified Contact Center (UCC) Applet&lt;/a&gt;&lt;/strong&gt; - Comprehensive customer service platform&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;E-Commerce Integration&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-integration"&gt;&lt;/span&gt;
+&lt;a href="#e-commerce-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/90-ecomsync-related-applets/" &gt;EcomSync Related Applets&lt;/a&gt;&lt;/strong&gt; - E-commerce synchronization tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Distribution and Vendor Management&lt;span class="hx:absolute hx:-mt-20" id="distribution-and-vendor-management"&gt;&lt;/span&gt;
+&lt;a href="#distribution-and-vendor-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/ingram-micro-ms-esd-applet/" &gt;Ingram Micro MS ESD Applet&lt;/a&gt;&lt;/strong&gt; - Microsoft licensing distribution&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/vstecs-ms-esd-order-applet/" &gt;VSTecs MS ESD Order Applet&lt;/a&gt;&lt;/strong&gt; - VSTecs distribution integration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Applet Categories by Function&lt;span class="hx:absolute hx:-mt-20" id="applet-categories-by-function"&gt;&lt;/span&gt;
+&lt;a href="#applet-categories-by-function" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Master Data Management&lt;span class="hx:absolute hx:-mt-20" id="master-data-management"&gt;&lt;/span&gt;
+&lt;a href="#master-data-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Chart of Accounts, Organization, Customer/Supplier/Employee Maintenance&lt;/li&gt;
+&lt;li&gt;Inventory and Document Item Maintenance&lt;/li&gt;
+&lt;li&gt;Tax Configuration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Transaction Processing&lt;span class="hx:absolute hx:-mt-20" id="transaction-processing"&gt;&lt;/span&gt;
+&lt;a href="#transaction-processing" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Sales Orders, Purchase Orders, Invoicing&lt;/li&gt;
+&lt;li&gt;Payments, Receipts, Journal Entries&lt;/li&gt;
+&lt;li&gt;Stock Movements, Adjustments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Financial Management&lt;span class="hx:absolute hx:-mt-20" id="financial-management"&gt;&lt;/span&gt;
+&lt;a href="#financial-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;General Ledger, Accounts Receivable/Payable&lt;/li&gt;
+&lt;li&gt;Budget Management, Financial Reporting&lt;/li&gt;
+&lt;li&gt;Cash Flow, Treasury Management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Inventory Operations&lt;span class="hx:absolute hx:-mt-20" id="inventory-operations"&gt;&lt;/span&gt;
+&lt;a href="#inventory-operations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Stock Balance, Stock Take, Stock Adjustments&lt;/li&gt;
+&lt;li&gt;Internal Transfers, Inventory Tracking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Customer Relationship Management&lt;span class="hx:absolute hx:-mt-20" id="customer-relationship-management"&gt;&lt;/span&gt;
+&lt;a href="#customer-relationship-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Customer Maintenance, Sales Management&lt;/li&gt;
+&lt;li&gt;Membership Programs, Customer Portal&lt;/li&gt;
+&lt;li&gt;Communication and Support Tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;System Administration&lt;span class="hx:absolute hx:-mt-20" id="system-administration"&gt;&lt;/span&gt;
+&lt;a href="#system-administration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Tenant Administration, User Management&lt;/li&gt;
+&lt;li&gt;Workflow Design, Process Monitoring&lt;/li&gt;
+&lt;li&gt;Integration and Security Management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Implementation Roadmap&lt;span class="hx:absolute hx:-mt-20" id="implementation-roadmap"&gt;&lt;/span&gt;
+&lt;a href="#implementation-roadmap" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Phase 1: Foundation (Core Module)&lt;span class="hx:absolute hx:-mt-20" id="phase-1-foundation-core-module"&gt;&lt;/span&gt;
+&lt;a href="#phase-1-foundation-core-module" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Implement all 13 Core Module applets as the foundation for all operations.&lt;/p&gt;
+&lt;h3&gt;Phase 2: Primary Operations&lt;span class="hx:absolute hx:-mt-20" id="phase-2-primary-operations"&gt;&lt;/span&gt;
+&lt;a href="#phase-2-primary-operations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Add specialized module applets based on business requirements:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Financial operations → Accounting Module applets&lt;/li&gt;
+&lt;li&gt;Sales operations → Sales and CRM applets&lt;/li&gt;
+&lt;li&gt;Inventory operations → Warehouse management applets&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Phase 3: Advanced Features&lt;span class="hx:absolute hx:-mt-20" id="phase-3-advanced-features"&gt;&lt;/span&gt;
+&lt;a href="#phase-3-advanced-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Implement advanced and specialized applets:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;E-commerce integration → Commerce applets&lt;/li&gt;
+&lt;li&gt;Multi-entity operations → ERP applets&lt;/li&gt;
+&lt;li&gt;Compliance requirements → E-Invoice applets&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Phase 4: Optimization&lt;span class="hx:absolute hx:-mt-20" id="phase-4-optimization"&gt;&lt;/span&gt;
+&lt;a href="#phase-4-optimization" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Add analytics, automation, and optimization applets:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Business intelligence → Digital CRM applets&lt;/li&gt;
+&lt;li&gt;Process automation → Workflow applets&lt;/li&gt;
+&lt;li&gt;Performance monitoring → Analytics applets&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Related Resources&lt;span class="hx:absolute hx:-mt-20" id="related-resources"&gt;&lt;/span&gt;
+&lt;a href="#related-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Implementation Guides&lt;span class="hx:absolute hx:-mt-20" id="implementation-guides"&gt;&lt;/span&gt;
+&lt;a href="#implementation-guides" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/" &gt;Module Implementation Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/core/" &gt;Getting Started with Core Module&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/applets/applet-store/" &gt;Applet Installation Guide&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Integration Documentation&lt;span class="hx:absolute hx:-mt-20" id="integration-documentation"&gt;&lt;/span&gt;
+&lt;a href="#integration-documentation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/developers/api-reference/" &gt;API Reference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/applets/webhook-applet/" &gt;Webhook Integration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/guides/advanced/integration-best-practices/" &gt;System Integration Best Practices&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources"&gt;&lt;/span&gt;
+&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/applets/applet-directory/" &gt;Applet Directory&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/applets/applet-store/" &gt;Applet Store&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/" &gt;User Guides&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Implementation Strategy&lt;/strong&gt;: Start with the Core Module applets, then gradually add specialized applets based on your business requirements. The modular architecture allows for flexible implementation and growth.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

@@ -1,47 +1,47 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Digital-Transformation</title><link>https://wiki.bigledger.com/tags/digital-transformation/</link><description>Recent content in Digital-Transformation on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/digital-transformation/index.xml" rel="self" type="application/rss+xml"/><item><title>E-Invoice Generation Applet</title><link>https://wiki.bigledger.com/applets/einvoice-generation-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/einvoice-generation-applet/</guid><description>
-&lt;h2>Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview">&lt;/span>
-&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>TODO&lt;/strong>: This applet documentation needs detailed expansion. This is a placeholder with basic structure and key information.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;p>The E-Invoice Generation Applet is a core component of BigLedger&amp;rsquo;s E-Invoice Module, providing comprehensive electronic invoice creation, formatting, and compliance capabilities for regulatory requirements across multiple jurisdictions.&lt;/p>
-&lt;h3>Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions">&lt;/span>
-&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Electronic Invoice Creation&lt;/strong> - Digital invoice generation and formatting&lt;/li>
-&lt;li>&lt;strong>Compliance Validation&lt;/strong> - Regulatory requirement validation&lt;/li>
-&lt;li>&lt;strong>Digital Signature&lt;/strong> - Invoice authentication and integrity&lt;/li>
-&lt;li>&lt;strong>Format Support&lt;/strong> - Multiple e-invoice formats (XML, JSON, PDF/A)&lt;/li>
-&lt;li>&lt;strong>Regulatory Integration&lt;/strong> - Tax authority system integration&lt;/li>
-&lt;/ul>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>TODO: Expand Key Features Section&lt;span class="hx:absolute hx:-mt-20" id="todo-expand-key-features-section">&lt;/span>
-&lt;a href="#todo-expand-key-features-section" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Multiple e-invoice format support&lt;/li>
-&lt;li>Real-time validation against regulatory rules&lt;/li>
-&lt;li>Digital signature and timestamp integration&lt;/li>
-&lt;li>Automated tax authority submission&lt;/li>
-&lt;li>Archive and retrieval capabilities&lt;/li>
-&lt;/ul>
-&lt;h2>Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points">&lt;/span>
-&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies">&lt;/span>
-&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" >Tax Configuration Applet&lt;/a>&lt;/strong> - Tax compliance settings&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/customer-maintenance-applet/" >Customer Maintenance Applet&lt;/a>&lt;/strong> - Customer compliance data&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/chart-of-account-applet/" >Chart of Account Applet&lt;/a>&lt;/strong> - Account mapping&lt;/li>
-&lt;/ul>
-&lt;h2>Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets">&lt;/span>
-&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>TODO: Document Related Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-related-applets">&lt;/span>
-&lt;a href="#todo-document-related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>MyInvois Integration Applet&lt;/li>
-&lt;li>PEPPOL Network Applet&lt;/li>
-&lt;li>Digital Signature Applet&lt;/li>
-&lt;li>Compliance Reporting Applet&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Documentation Status&lt;/strong>: This applet requires comprehensive documentation including detailed compliance requirements, format specifications, implementation guides, and jurisdiction-specific examples.&lt;/div>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Digital-Transformation</title><link>https://wiki.bigledger.com/tags/digital-transformation/</link><description>Recent content in Digital-Transformation on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/digital-transformation/index.xml" rel="self" type="application/rss+xml"/><item><title>My E-invoice Admin Applet</title><link>https://wiki.bigledger.com/applets/einvoice-generation-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/einvoice-generation-applet/</guid><description>
+&lt;h2&gt;Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview"&gt;&lt;/span&gt;
+&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;TODO&lt;/strong&gt;: This applet documentation needs detailed expansion. This is a placeholder with basic structure and key information.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The E-Invoice Generation Applet is a core component of BigLedger&amp;rsquo;s E-Invoice Module, providing comprehensive electronic invoice creation, formatting, and compliance capabilities for regulatory requirements across multiple jurisdictions.&lt;/p&gt;
+&lt;h3&gt;Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions"&gt;&lt;/span&gt;
+&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Electronic Invoice Creation&lt;/strong&gt; - Digital invoice generation and formatting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance Validation&lt;/strong&gt; - Regulatory requirement validation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Digital Signature&lt;/strong&gt; - Invoice authentication and integrity&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Format Support&lt;/strong&gt; - Multiple e-invoice formats (XML, JSON, PDF/A)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regulatory Integration&lt;/strong&gt; - Tax authority system integration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;TODO: Expand Key Features Section&lt;span class="hx:absolute hx:-mt-20" id="todo-expand-key-features-section"&gt;&lt;/span&gt;
+&lt;a href="#todo-expand-key-features-section" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Multiple e-invoice format support&lt;/li&gt;
+&lt;li&gt;Real-time validation against regulatory rules&lt;/li&gt;
+&lt;li&gt;Digital signature and timestamp integration&lt;/li&gt;
+&lt;li&gt;Automated tax authority submission&lt;/li&gt;
+&lt;li&gt;Archive and retrieval capabilities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points"&gt;&lt;/span&gt;
+&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies"&gt;&lt;/span&gt;
+&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" &gt;Tax Configuration Applet&lt;/a&gt;&lt;/strong&gt; - Tax compliance settings&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/customer-maintenance-applet/" &gt;Customer Maintenance Applet&lt;/a&gt;&lt;/strong&gt; - Customer compliance data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/chart-of-account-applet/" &gt;Chart of Account Applet&lt;/a&gt;&lt;/strong&gt; - Account mapping&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets"&gt;&lt;/span&gt;
+&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;TODO: Document Related Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-related-applets"&gt;&lt;/span&gt;
+&lt;a href="#todo-document-related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;MyInvois Integration Applet&lt;/li&gt;
+&lt;li&gt;PEPPOL Network Applet&lt;/li&gt;
+&lt;li&gt;Digital Signature Applet&lt;/li&gt;
+&lt;li&gt;Compliance Reporting Applet&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Documentation Status&lt;/strong&gt;: This applet requires comprehensive documentation including detailed compliance requirements, format specifications, implementation guides, and jurisdiction-specific examples.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

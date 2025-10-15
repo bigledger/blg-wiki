@@ -1,224 +1,224 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Configuration</title><link>https://wiki.bigledger.com/tags/configuration/</link><description>Recent content in Configuration on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/configuration/index.xml" rel="self" type="application/rss+xml"/><item><title>Administration</title><link>https://wiki.bigledger.com/user-guide/administration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/user-guide/administration/</guid><description>
-&lt;p>Comprehensive system administration and configuration tools for BigLedger administrators. This section covers user management, system settings, security, and organizational structure.&lt;/p>
-&lt;h2>User &amp;amp; Team Management&lt;span class="hx:absolute hx:-mt-20" id="user--team-management">&lt;/span>
-&lt;a href="#user--team-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Manage your organization&amp;rsquo;s users and team structure:&lt;/p>
-&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;">
+&lt;p&gt;Comprehensive system administration and configuration tools for BigLedger administrators. This section covers user management, system settings, security, and organizational structure.&lt;/p&gt;
+&lt;h2&gt;User &amp;amp; Team Management&lt;span class="hx:absolute hx:-mt-20" id="user--team-management"&gt;&lt;/span&gt;
+&lt;a href="#user--team-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Manage your organization&amp;rsquo;s users and team structure:&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
 &lt;a
 class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/user-guide/administration/member-listing"
->&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">User Management&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Adding, editing, and managing user accounts and permissions&lt;/div>&lt;/a>
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;User Management&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Adding, editing, and managing user accounts and permissions&lt;/div&gt;&lt;/a&gt;
 &lt;a
 class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/user-guide/administration/team"
->&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Team Configuration&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Setting up departments, roles, and organizational structure&lt;/div>&lt;/a>
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Team Configuration&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Setting up departments, roles, and organizational structure&lt;/div&gt;&lt;/a&gt;
 &lt;a
 class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/user-guide/administration/member-class"
->&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Member Classifications&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">User roles, permissions, and access control systems&lt;/div>&lt;/a>
-&lt;/div>
-&lt;h2>Organization &amp;amp; Structure&lt;span class="hx:absolute hx:-mt-20" id="organization--structure">&lt;/span>
-&lt;a href="#organization--structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Configure your business organization and data structure:&lt;/p>
-&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;">
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Member Classifications&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;User roles, permissions, and access control systems&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;h2&gt;Organization &amp;amp; Structure&lt;span class="hx:absolute hx:-mt-20" id="organization--structure"&gt;&lt;/span&gt;
+&lt;a href="#organization--structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Configure your business organization and data structure:&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
 &lt;a
 class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/user-guide/administration/group-listing"
->&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Group Management&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Managing groups, categories, and organizational structures&lt;/div>&lt;/a>
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Group Management&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Managing groups, categories, and organizational structures&lt;/div&gt;&lt;/a&gt;
 &lt;a
 class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/user-guide/administration/member-label"
->&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Label Configuration&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Advanced labeling and tagging systems for better organization&lt;/div>&lt;/a>
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Label Configuration&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Advanced labeling and tagging systems for better organization&lt;/div&gt;&lt;/a&gt;
 &lt;a
 class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/user-guide/administration/member-label-list"
->&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Label Management&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Creating and managing labels for categorization and reporting&lt;/div>&lt;/a>
-&lt;/div>
-&lt;h2>Key Administrative Responsibilities&lt;span class="hx:absolute hx:-mt-20" id="key-administrative-responsibilities">&lt;/span>
-&lt;a href="#key-administrative-responsibilities" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>User Management&lt;span class="hx:absolute hx:-mt-20" id="user-management">&lt;/span>
-&lt;a href="#user-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>✅ Create and maintain user accounts&lt;/li>
-&lt;li>✅ Assign appropriate roles and permissions&lt;/li>
-&lt;li>✅ Monitor user activity and security&lt;/li>
-&lt;li>✅ Handle password resets and access issues&lt;/li>
-&lt;li>✅ Manage team structure and reporting relationships&lt;/li>
-&lt;/ul>
-&lt;h3>System Configuration&lt;span class="hx:absolute hx:-mt-20" id="system-configuration">&lt;/span>
-&lt;a href="#system-configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>✅ Configure business rules and workflows&lt;/li>
-&lt;li>✅ Set up organizational hierarchy&lt;/li>
-&lt;li>✅ Manage system integrations&lt;/li>
-&lt;li>✅ Configure security settings and policies&lt;/li>
-&lt;li>✅ Maintain data backup and recovery procedures&lt;/li>
-&lt;/ul>
-&lt;h3>Data Governance&lt;span class="hx:absolute hx:-mt-20" id="data-governance">&lt;/span>
-&lt;a href="#data-governance" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>✅ Establish data quality standards&lt;/li>
-&lt;li>✅ Configure validation rules&lt;/li>
-&lt;li>✅ Manage master data consistency&lt;/li>
-&lt;li>✅ Implement audit controls&lt;/li>
-&lt;li>✅ Ensure compliance requirements&lt;/li>
-&lt;/ul>
-&lt;h2>Administrative Tasks Checklist&lt;span class="hx:absolute hx:-mt-20" id="administrative-tasks-checklist">&lt;/span>
-&lt;a href="#administrative-tasks-checklist" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Daily Administration&lt;span class="hx:absolute hx:-mt-20" id="daily-administration">&lt;/span>
-&lt;a href="#daily-administration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> Monitor system performance and user activity&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Review security alerts and notifications&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Handle user access requests and issues&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Process pending approvals and workflows&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Check system backups and integrations&lt;/li>
-&lt;/ul>
-&lt;h3>Weekly Administration&lt;span class="hx:absolute hx:-mt-20" id="weekly-administration">&lt;/span>
-&lt;a href="#weekly-administration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> Review user permissions and access levels&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Analyze system usage reports&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Update system configurations as needed&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Conduct security reviews&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Plan upcoming maintenance windows&lt;/li>
-&lt;/ul>
-&lt;h3>Monthly Administration&lt;span class="hx:absolute hx:-mt-20" id="monthly-administration">&lt;/span>
-&lt;a href="#monthly-administration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> Comprehensive security audit&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> User access certification review&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> System performance analysis&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Data quality assessment&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Business rule effectiveness review&lt;/li>
-&lt;/ul>
-&lt;h2>Security Best Practices&lt;span class="hx:absolute hx:-mt-20" id="security-best-practices">&lt;/span>
-&lt;a href="#security-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Access Control&lt;span class="hx:absolute hx:-mt-20" id="access-control">&lt;/span>
-&lt;a href="#access-control" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Principle of Least Privilege&lt;/strong>: Grant minimum necessary access&lt;/li>
-&lt;li>&lt;strong>Role-Based Security&lt;/strong>: Use roles rather than individual permissions&lt;/li>
-&lt;li>&lt;strong>Regular Reviews&lt;/strong>: Audit user access quarterly&lt;/li>
-&lt;li>&lt;strong>Segregation of Duties&lt;/strong>: Prevent conflicts of interest&lt;/li>
-&lt;li>&lt;strong>Strong Authentication&lt;/strong>: Enforce complex passwords and 2FA&lt;/li>
-&lt;/ul>
-&lt;h3>Data Protection&lt;span class="hx:absolute hx:-mt-20" id="data-protection">&lt;/span>
-&lt;a href="#data-protection" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Encryption&lt;/strong>: Ensure data encryption at rest and in transit&lt;/li>
-&lt;li>&lt;strong>Backup Strategy&lt;/strong>: Maintain regular, tested backups&lt;/li>
-&lt;li>&lt;strong>Change Management&lt;/strong>: Document all system changes&lt;/li>
-&lt;li>&lt;strong>Compliance&lt;/strong>: Meet regulatory requirements (PDPA, etc.)&lt;/li>
-&lt;li>&lt;strong>Incident Response&lt;/strong>: Have procedures for security incidents&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Security Alert&lt;/strong>: Administrators have powerful privileges. Always follow the principle of least privilege and maintain detailed audit logs of administrative actions.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h2>System Integration Management&lt;span class="hx:absolute hx:-mt-20" id="system-integration-management">&lt;/span>
-&lt;a href="#system-integration-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>TODO: Add comprehensive system integration guides&lt;/strong>&lt;/p>
-&lt;h3>Common Integration Areas&lt;span class="hx:absolute hx:-mt-20" id="common-integration-areas">&lt;/span>
-&lt;a href="#common-integration-areas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Banking Systems&lt;/strong> - Bank statement imports and reconciliation&lt;/li>
-&lt;li>&lt;strong>E-Commerce Platforms&lt;/strong> - Online store synchronization&lt;/li>
-&lt;li>&lt;strong>Payment Gateways&lt;/strong> - Payment processing integration&lt;/li>
-&lt;li>&lt;strong>Third-Party APIs&lt;/strong> - External service connections&lt;/li>
-&lt;li>&lt;strong>Reporting Tools&lt;/strong> - Business intelligence integration&lt;/li>
-&lt;/ul>
-&lt;h3>Integration Best Practices&lt;span class="hx:absolute hx:-mt-20" id="integration-best-practices">&lt;/span>
-&lt;a href="#integration-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Testing&lt;/strong>: Always test integrations in staging environment&lt;/li>
-&lt;li>&lt;strong>Monitoring&lt;/strong>: Set up alerts for integration failures&lt;/li>
-&lt;li>&lt;strong>Documentation&lt;/strong>: Maintain integration documentation&lt;/li>
-&lt;li>&lt;strong>Security&lt;/strong>: Secure API credentials and access tokens&lt;/li>
-&lt;li>&lt;strong>Performance&lt;/strong>: Monitor integration performance impact&lt;/li>
-&lt;/ul>
-&lt;h2>Troubleshooting Common Issues&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting-common-issues">&lt;/span>
-&lt;a href="#troubleshooting-common-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>User Access Problems&lt;span class="hx:absolute hx:-mt-20" id="user-access-problems">&lt;/span>
-&lt;a href="#user-access-problems" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Cannot Login&lt;/strong>: Check user status, password, and permissions&lt;/li>
-&lt;li>&lt;strong>Missing Features&lt;/strong>: Verify role assignments and applet access&lt;/li>
-&lt;li>&lt;strong>Performance Issues&lt;/strong>: Review user&amp;rsquo;s browser and network connection&lt;/li>
-&lt;li>&lt;strong>Data Not Visible&lt;/strong>: Check record-level security and filters&lt;/li>
-&lt;/ul>
-&lt;h3>System Performance Issues&lt;span class="hx:absolute hx:-mt-20" id="system-performance-issues">&lt;/span>
-&lt;a href="#system-performance-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Slow Response&lt;/strong>: Monitor server resources and database performance&lt;/li>
-&lt;li>&lt;strong>Integration Failures&lt;/strong>: Check API credentials and network connectivity&lt;/li>
-&lt;li>&lt;strong>Backup Failures&lt;/strong>: Verify backup storage and schedule configuration&lt;/li>
-&lt;li>&lt;strong>Report Errors&lt;/strong>: Review report parameters and data access rights&lt;/li>
-&lt;/ul>
-&lt;h2>Compliance &amp;amp; Governance&lt;span class="hx:absolute hx:-mt-20" id="compliance--governance">&lt;/span>
-&lt;a href="#compliance--governance" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Regulatory Compliance&lt;span class="hx:absolute hx:-mt-20" id="regulatory-compliance">&lt;/span>
-&lt;a href="#regulatory-compliance" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>TODO: Add detailed compliance management procedures&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Data Privacy (PDPA)&lt;/strong>: Personal data protection procedures&lt;/li>
-&lt;li>&lt;strong>Financial Compliance&lt;/strong>: Tax and accounting regulation adherence&lt;/li>
-&lt;li>&lt;strong>Industry Standards&lt;/strong>: Sector-specific compliance requirements&lt;/li>
-&lt;li>&lt;strong>Audit Requirements&lt;/strong>: Documentation and evidence maintenance&lt;/li>
-&lt;/ul>
-&lt;h3>Internal Governance&lt;span class="hx:absolute hx:-mt-20" id="internal-governance">&lt;/span>
-&lt;a href="#internal-governance" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Change Control&lt;/strong>: Formal process for system changes&lt;/li>
-&lt;li>&lt;strong>Documentation Standards&lt;/strong>: Maintain current system documentation&lt;/li>
-&lt;li>&lt;strong>Training Programs&lt;/strong>: Keep users trained on system changes&lt;/li>
-&lt;li>&lt;strong>Performance Metrics&lt;/strong>: Monitor system and user effectiveness&lt;/li>
-&lt;/ul>
-&lt;h2>Advanced Configuration&lt;span class="hx:absolute hx:-mt-20" id="advanced-configuration">&lt;/span>
-&lt;a href="#advanced-configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>TODO: Add advanced system configuration guides&lt;/strong>&lt;/p>
-&lt;h3>Workflow Management&lt;span class="hx:absolute hx:-mt-20" id="workflow-management">&lt;/span>
-&lt;a href="#workflow-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Approval Chains&lt;/strong>: Multi-level approval processes&lt;/li>
-&lt;li>&lt;strong>Business Rules&lt;/strong>: Automated business logic enforcement&lt;/li>
-&lt;li>&lt;strong>Notifications&lt;/strong>: Email and SMS alert configurations&lt;/li>
-&lt;li>&lt;strong>Escalation Procedures&lt;/strong>: Handling overdue tasks and exceptions&lt;/li>
-&lt;/ul>
-&lt;h3>Customization Options&lt;span class="hx:absolute hx:-mt-20" id="customization-options">&lt;/span>
-&lt;a href="#customization-options" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Custom Fields&lt;/strong>: Adding business-specific data fields&lt;/li>
-&lt;li>&lt;strong>Report Building&lt;/strong>: Creating custom reports and dashboards&lt;/li>
-&lt;li>&lt;strong>User Interface&lt;/strong>: Customizing screens and layouts&lt;/li>
-&lt;li>&lt;strong>Integration Development&lt;/strong>: Building custom integrations&lt;/li>
-&lt;/ul>
-&lt;h2>Performance Monitoring&lt;span class="hx:absolute hx:-mt-20" id="performance-monitoring">&lt;/span>
-&lt;a href="#performance-monitoring" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Track key administrative metrics:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Metric&lt;/th>
-&lt;th>Target&lt;/th>
-&lt;th>Monitoring Method&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>System Uptime&lt;/strong>&lt;/td>
-&lt;td>&amp;gt; 99.5%&lt;/td>
-&lt;td>Automated monitoring&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>User Login Issues&lt;/strong>&lt;/td>
-&lt;td>&amp;lt; 2% of attempts&lt;/td>
-&lt;td>Access logs analysis&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Data Backup Success&lt;/strong>&lt;/td>
-&lt;td>100%&lt;/td>
-&lt;td>Backup verification&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Security Incidents&lt;/strong>&lt;/td>
-&lt;td>0 per month&lt;/td>
-&lt;td>Security logs review&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>User Satisfaction&lt;/strong>&lt;/td>
-&lt;td>&amp;gt; 90%&lt;/td>
-&lt;td>Regular user surveys&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2>Next Steps for Administrators&lt;span class="hx:absolute hx:-mt-20" id="next-steps-for-administrators">&lt;/span>
-&lt;a href="#next-steps-for-administrators" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ol>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/user-guide/reports-analytics/" >Reports &amp;amp; Analytics&lt;/a>&lt;/strong> - Learn to create administrative reports&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/user-guide/troubleshooting/" >Troubleshooting&lt;/a>&lt;/strong> - Master problem resolution techniques&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/user-guide/best-practices/" >Best Practices&lt;/a>&lt;/strong> - Implement optimization strategies&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/developers/" >Developer Resources&lt;/a>&lt;/strong> - Advanced customization options&lt;/li>
-&lt;/ol>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Administrative Excellence&lt;/strong>: Successful administrators maintain a balance between security, usability, and business needs while ensuring system reliability and compliance.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h2>Getting Administrative Help&lt;span class="hx:absolute hx:-mt-20" id="getting-administrative-help">&lt;/span>
-&lt;a href="#getting-administrative-help" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>&lt;strong>📧 Technical Support&lt;/strong>: &lt;a href="mailto:vincent@bigledger.com" >vincent@bigledger.com&lt;/a> for system administration issues&lt;/li>
-&lt;li>&lt;strong>📚 Admin Documentation&lt;/strong>: Detailed administrative procedures and guides&lt;/li>
-&lt;li>&lt;strong>👥 Admin Community&lt;/strong>: Connect with other BigLedger administrators&lt;/li>
-&lt;li>&lt;strong>🎓 Admin Training&lt;/strong>: Specialized training for system administrators&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Label Management&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Creating and managing labels for categorization and reporting&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;h2&gt;Key Administrative Responsibilities&lt;span class="hx:absolute hx:-mt-20" id="key-administrative-responsibilities"&gt;&lt;/span&gt;
+&lt;a href="#key-administrative-responsibilities" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;User Management&lt;span class="hx:absolute hx:-mt-20" id="user-management"&gt;&lt;/span&gt;
+&lt;a href="#user-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;✅ Create and maintain user accounts&lt;/li&gt;
+&lt;li&gt;✅ Assign appropriate roles and permissions&lt;/li&gt;
+&lt;li&gt;✅ Monitor user activity and security&lt;/li&gt;
+&lt;li&gt;✅ Handle password resets and access issues&lt;/li&gt;
+&lt;li&gt;✅ Manage team structure and reporting relationships&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;System Configuration&lt;span class="hx:absolute hx:-mt-20" id="system-configuration"&gt;&lt;/span&gt;
+&lt;a href="#system-configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;✅ Configure business rules and workflows&lt;/li&gt;
+&lt;li&gt;✅ Set up organizational hierarchy&lt;/li&gt;
+&lt;li&gt;✅ Manage system integrations&lt;/li&gt;
+&lt;li&gt;✅ Configure security settings and policies&lt;/li&gt;
+&lt;li&gt;✅ Maintain data backup and recovery procedures&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Data Governance&lt;span class="hx:absolute hx:-mt-20" id="data-governance"&gt;&lt;/span&gt;
+&lt;a href="#data-governance" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;✅ Establish data quality standards&lt;/li&gt;
+&lt;li&gt;✅ Configure validation rules&lt;/li&gt;
+&lt;li&gt;✅ Manage master data consistency&lt;/li&gt;
+&lt;li&gt;✅ Implement audit controls&lt;/li&gt;
+&lt;li&gt;✅ Ensure compliance requirements&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Administrative Tasks Checklist&lt;span class="hx:absolute hx:-mt-20" id="administrative-tasks-checklist"&gt;&lt;/span&gt;
+&lt;a href="#administrative-tasks-checklist" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Daily Administration&lt;span class="hx:absolute hx:-mt-20" id="daily-administration"&gt;&lt;/span&gt;
+&lt;a href="#daily-administration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Monitor system performance and user activity&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Review security alerts and notifications&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Handle user access requests and issues&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Process pending approvals and workflows&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Check system backups and integrations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Weekly Administration&lt;span class="hx:absolute hx:-mt-20" id="weekly-administration"&gt;&lt;/span&gt;
+&lt;a href="#weekly-administration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Review user permissions and access levels&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Analyze system usage reports&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Update system configurations as needed&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Conduct security reviews&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Plan upcoming maintenance windows&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Monthly Administration&lt;span class="hx:absolute hx:-mt-20" id="monthly-administration"&gt;&lt;/span&gt;
+&lt;a href="#monthly-administration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Comprehensive security audit&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; User access certification review&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; System performance analysis&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Data quality assessment&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Business rule effectiveness review&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Security Best Practices&lt;span class="hx:absolute hx:-mt-20" id="security-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#security-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Access Control&lt;span class="hx:absolute hx:-mt-20" id="access-control"&gt;&lt;/span&gt;
+&lt;a href="#access-control" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Principle of Least Privilege&lt;/strong&gt;: Grant minimum necessary access&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Role-Based Security&lt;/strong&gt;: Use roles rather than individual permissions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regular Reviews&lt;/strong&gt;: Audit user access quarterly&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Segregation of Duties&lt;/strong&gt;: Prevent conflicts of interest&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Strong Authentication&lt;/strong&gt;: Enforce complex passwords and 2FA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Data Protection&lt;span class="hx:absolute hx:-mt-20" id="data-protection"&gt;&lt;/span&gt;
+&lt;a href="#data-protection" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Encryption&lt;/strong&gt;: Ensure data encryption at rest and in transit&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backup Strategy&lt;/strong&gt;: Maintain regular, tested backups&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Change Management&lt;/strong&gt;: Document all system changes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance&lt;/strong&gt;: Meet regulatory requirements (PDPA, etc.)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Incident Response&lt;/strong&gt;: Have procedures for security incidents&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Security Alert&lt;/strong&gt;: Administrators have powerful privileges. Always follow the principle of least privilege and maintain detailed audit logs of administrative actions.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;System Integration Management&lt;span class="hx:absolute hx:-mt-20" id="system-integration-management"&gt;&lt;/span&gt;
+&lt;a href="#system-integration-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;TODO: Add comprehensive system integration guides&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;Common Integration Areas&lt;span class="hx:absolute hx:-mt-20" id="common-integration-areas"&gt;&lt;/span&gt;
+&lt;a href="#common-integration-areas" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Banking Systems&lt;/strong&gt; - Bank statement imports and reconciliation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;E-Commerce Platforms&lt;/strong&gt; - Online store synchronization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Payment Gateways&lt;/strong&gt; - Payment processing integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Third-Party APIs&lt;/strong&gt; - External service connections&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reporting Tools&lt;/strong&gt; - Business intelligence integration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Integration Best Practices&lt;span class="hx:absolute hx:-mt-20" id="integration-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#integration-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Testing&lt;/strong&gt;: Always test integrations in staging environment&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitoring&lt;/strong&gt;: Set up alerts for integration failures&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt;: Maintain integration documentation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security&lt;/strong&gt;: Secure API credentials and access tokens&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: Monitor integration performance impact&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Troubleshooting Common Issues&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting-common-issues"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting-common-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;User Access Problems&lt;span class="hx:absolute hx:-mt-20" id="user-access-problems"&gt;&lt;/span&gt;
+&lt;a href="#user-access-problems" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Cannot Login&lt;/strong&gt;: Check user status, password, and permissions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Missing Features&lt;/strong&gt;: Verify role assignments and applet access&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Issues&lt;/strong&gt;: Review user&amp;rsquo;s browser and network connection&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Not Visible&lt;/strong&gt;: Check record-level security and filters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;System Performance Issues&lt;span class="hx:absolute hx:-mt-20" id="system-performance-issues"&gt;&lt;/span&gt;
+&lt;a href="#system-performance-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Slow Response&lt;/strong&gt;: Monitor server resources and database performance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Failures&lt;/strong&gt;: Check API credentials and network connectivity&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backup Failures&lt;/strong&gt;: Verify backup storage and schedule configuration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Report Errors&lt;/strong&gt;: Review report parameters and data access rights&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Compliance &amp;amp; Governance&lt;span class="hx:absolute hx:-mt-20" id="compliance--governance"&gt;&lt;/span&gt;
+&lt;a href="#compliance--governance" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Regulatory Compliance&lt;span class="hx:absolute hx:-mt-20" id="regulatory-compliance"&gt;&lt;/span&gt;
+&lt;a href="#regulatory-compliance" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;TODO: Add detailed compliance management procedures&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Data Privacy (PDPA)&lt;/strong&gt;: Personal data protection procedures&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Financial Compliance&lt;/strong&gt;: Tax and accounting regulation adherence&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Industry Standards&lt;/strong&gt;: Sector-specific compliance requirements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Audit Requirements&lt;/strong&gt;: Documentation and evidence maintenance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Internal Governance&lt;span class="hx:absolute hx:-mt-20" id="internal-governance"&gt;&lt;/span&gt;
+&lt;a href="#internal-governance" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Change Control&lt;/strong&gt;: Formal process for system changes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation Standards&lt;/strong&gt;: Maintain current system documentation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Training Programs&lt;/strong&gt;: Keep users trained on system changes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Metrics&lt;/strong&gt;: Monitor system and user effectiveness&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Advanced Configuration&lt;span class="hx:absolute hx:-mt-20" id="advanced-configuration"&gt;&lt;/span&gt;
+&lt;a href="#advanced-configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;TODO: Add advanced system configuration guides&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;Workflow Management&lt;span class="hx:absolute hx:-mt-20" id="workflow-management"&gt;&lt;/span&gt;
+&lt;a href="#workflow-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Approval Chains&lt;/strong&gt;: Multi-level approval processes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Business Rules&lt;/strong&gt;: Automated business logic enforcement&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Notifications&lt;/strong&gt;: Email and SMS alert configurations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Escalation Procedures&lt;/strong&gt;: Handling overdue tasks and exceptions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Customization Options&lt;span class="hx:absolute hx:-mt-20" id="customization-options"&gt;&lt;/span&gt;
+&lt;a href="#customization-options" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Custom Fields&lt;/strong&gt;: Adding business-specific data fields&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Report Building&lt;/strong&gt;: Creating custom reports and dashboards&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;User Interface&lt;/strong&gt;: Customizing screens and layouts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Development&lt;/strong&gt;: Building custom integrations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Performance Monitoring&lt;span class="hx:absolute hx:-mt-20" id="performance-monitoring"&gt;&lt;/span&gt;
+&lt;a href="#performance-monitoring" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Track key administrative metrics:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Metric&lt;/th&gt;
+&lt;th&gt;Target&lt;/th&gt;
+&lt;th&gt;Monitoring Method&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;System Uptime&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&amp;gt; 99.5%&lt;/td&gt;
+&lt;td&gt;Automated monitoring&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;User Login Issues&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&amp;lt; 2% of attempts&lt;/td&gt;
+&lt;td&gt;Access logs analysis&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Data Backup Success&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;100%&lt;/td&gt;
+&lt;td&gt;Backup verification&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Security Incidents&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;0 per month&lt;/td&gt;
+&lt;td&gt;Security logs review&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;User Satisfaction&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&amp;gt; 90%&lt;/td&gt;
+&lt;td&gt;Regular user surveys&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Next Steps for Administrators&lt;span class="hx:absolute hx:-mt-20" id="next-steps-for-administrators"&gt;&lt;/span&gt;
+&lt;a href="#next-steps-for-administrators" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/user-guide/reports-analytics/" &gt;Reports &amp;amp; Analytics&lt;/a&gt;&lt;/strong&gt; - Learn to create administrative reports&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/user-guide/troubleshooting/" &gt;Troubleshooting&lt;/a&gt;&lt;/strong&gt; - Master problem resolution techniques&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/user-guide/best-practices/" &gt;Best Practices&lt;/a&gt;&lt;/strong&gt; - Implement optimization strategies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/developers/" &gt;Developer Resources&lt;/a&gt;&lt;/strong&gt; - Advanced customization options&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Administrative Excellence&lt;/strong&gt;: Successful administrators maintain a balance between security, usability, and business needs while ensuring system reliability and compliance.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Getting Administrative Help&lt;span class="hx:absolute hx:-mt-20" id="getting-administrative-help"&gt;&lt;/span&gt;
+&lt;a href="#getting-administrative-help" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;📧 Technical Support&lt;/strong&gt;: &lt;a href="mailto:vincent@bigledger.com" &gt;vincent@bigledger.com&lt;/a&gt; for system administration issues&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;📚 Admin Documentation&lt;/strong&gt;: Detailed administrative procedures and guides&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;👥 Admin Community&lt;/strong&gt;: Connect with other BigLedger administrators&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;🎓 Admin Training&lt;/strong&gt;: Specialized training for system administrators&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

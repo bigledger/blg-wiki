@@ -1,0 +1,810 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger 文档 – Dashboards</title><link>https://wiki.bigledger.com/zh/tags/dashboards/</link><description>Recent content in Dashboards on BigLedger 文档</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://wiki.bigledger.com/zh/tags/dashboards/index.xml" rel="self" type="application/rss+xml"/><item><title>报表和分析</title><link>https://wiki.bigledger.com/zh/user-guide/reports-analytics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/user-guide/reports-analytics/</guid><description>
+&lt;p&gt;利用BigLedger强大的报告和分析功能发挥业务数据的力量。将原始数据转化为推动更好业务决策的可操作洞察。&lt;/p&gt;
+&lt;h2&gt;概述&lt;span class="hx:absolute hx:-mt-20" id="概述"&gt;&lt;/span&gt;
+&lt;a href="#%e6%a6%82%e8%bf%b0" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;BigLedger的报表和分析套件提供：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;实时仪表板&lt;/strong&gt; - 实时业务指标和KPI&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;标准报告&lt;/strong&gt; - 针对常见业务需求的预构建报告&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自定义报告生成器&lt;/strong&gt; - 创建符合您要求的定制报告&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据导出工具&lt;/strong&gt; - 导出数据进行外部分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自动化报告&lt;/strong&gt; - 计划报告交付和警报&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;BigLedger的报表和分析将原始业务数据转化为可操作的洞察。无论您需要实时运营仪表板还是复杂的财务报告，我们的综合套件都提供数据驱动决策所需的一切。&lt;/p&gt;
+&lt;h2&gt;主要报告领域&lt;span class="hx:absolute hx:-mt-20" id="主要报告领域"&gt;&lt;/span&gt;
+&lt;a href="#%e4%b8%bb%e8%a6%81%e6%8a%a5%e5%91%8a%e9%a2%86%e5%9f%9f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;财务报告&lt;span class="hx:absolute hx:-mt-20" id="财务报告"&gt;&lt;/span&gt;
+&lt;a href="#%e8%b4%a2%e5%8a%a1%e6%8a%a5%e5%91%8a" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;损益表&lt;/strong&gt; - 收入和费用分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;资产负债表报告&lt;/strong&gt; - 资产、负债和权益&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;现金流量分析&lt;/strong&gt; - 现金流动和预测&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应收账款账龄&lt;/strong&gt; - 客户付款分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应付账款账龄&lt;/strong&gt; - 供应商付款跟踪&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;税务报告&lt;/strong&gt; - SST、所得税和合规报告&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;销售和营销报告&lt;span class="hx:absolute hx:-mt-20" id="销售和营销报告"&gt;&lt;/span&gt;
+&lt;a href="#%e9%94%80%e5%94%ae%e5%92%8c%e8%90%a5%e9%94%80%e6%8a%a5%e5%91%8a" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;销售业绩&lt;/strong&gt; - 收入趋势和分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户分析&lt;/strong&gt; - 客户行为和细分&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;产品表现&lt;/strong&gt; - 最畅销和最差销售商品&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;销售团队报告&lt;/strong&gt; - 个人和团队表现&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;佣金计算&lt;/strong&gt; - 销售佣金跟踪&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;管道分析&lt;/strong&gt; - 销售机会跟踪&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;库存和运营报告&lt;span class="hx:absolute hx:-mt-20" id="库存和运营报告"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ba%93%e5%ad%98%e5%92%8c%e8%bf%90%e8%90%a5%e6%8a%a5%e5%91%8a" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;库存水平报告&lt;/strong&gt; - 当前库存状况&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;库存变动&lt;/strong&gt; - 出入库分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;再订购报告&lt;/strong&gt; - 需要补货的项目&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;仓库绩效&lt;/strong&gt; - 效率和准确性指标&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;供应商绩效&lt;/strong&gt; - 供应商交付和质量指标&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;生产报告&lt;/strong&gt; - 制造效率和成本&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;人力资源报告&lt;span class="hx:absolute hx:-mt-20" id="人力资源报告"&gt;&lt;/span&gt;
+&lt;a href="#%e4%ba%ba%e5%8a%9b%e8%b5%84%e6%ba%90%e6%8a%a5%e5%91%8a" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;工资单报告&lt;/strong&gt; - 薪资和福利分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;考勤报告&lt;/strong&gt; - 时间和考勤跟踪&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;绩效报告&lt;/strong&gt; - 员工绩效指标&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;休假报告&lt;/strong&gt; - 休假余额和使用情况&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;培训报告&lt;/strong&gt; - 员工发展跟踪&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;仪表板配置&lt;span class="hx:absolute hx:-mt-20" id="仪表板配置"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bb%aa%e8%a1%a8%e6%9d%bf%e9%85%8d%e7%bd%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;设置您的仪表板&lt;span class="hx:absolute hx:-mt-20" id="设置您的仪表板"&gt;&lt;/span&gt;
+&lt;a href="#%e8%ae%be%e7%bd%ae%e6%82%a8%e7%9a%84%e4%bb%aa%e8%a1%a8%e6%9d%bf" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在BigLedger中自定义仪表板既简单又灵活：&lt;/p&gt;
+&lt;h4&gt;创建新仪表板&lt;span class="hx:absolute hx:-mt-20" id="创建新仪表板"&gt;&lt;/span&gt;
+&lt;a href="#%e5%88%9b%e5%bb%ba%e6%96%b0%e4%bb%aa%e8%a1%a8%e6%9d%bf" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;导航到仪表板&lt;/strong&gt; - 从主导航菜单访问&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;点击&amp;quot;创建仪表板&amp;quot;&lt;/strong&gt; - 从空白仪表板或模板开始&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;选择仪表板类型&lt;/strong&gt; - 执行、运营或自定义&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;选择布局&lt;/strong&gt; - 网格、灵活或固定布局选项&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;命名和配置&lt;/strong&gt; - 设置标题、描述和访问权限&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;向仪表板添加小部件&lt;span class="hx:absolute hx:-mt-20" id="向仪表板添加小部件"&gt;&lt;/span&gt;
+&lt;a href="#%e5%90%91%e4%bb%aa%e8%a1%a8%e6%9d%bf%e6%b7%bb%e5%8a%a0%e5%b0%8f%e9%83%a8%e4%bb%b6" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;可用小部件类型：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;KPI卡片&lt;/strong&gt; - 显示带趋势指标的关键指标&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;图表和图形&lt;/strong&gt; - 条形图、折线图、饼图和高级可视化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据表&lt;/strong&gt; - 带排序和过滤的表格数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;仪表&lt;/strong&gt; - 进度指示器和性能计量器&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;热力图&lt;/strong&gt; - 地理或分类数据可视化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自定义报告&lt;/strong&gt; - 将现有报告嵌入为小部件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;小部件配置步骤：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;点击&amp;quot;添加小部件&amp;quot;&lt;/strong&gt; 在仪表板编辑模式中&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;选择小部件类型&lt;/strong&gt; 从可用选项中&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;选择数据源&lt;/strong&gt; 从连接的系统中&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配置参数&lt;/strong&gt; - 日期范围、过滤器、分组&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应用样式&lt;/strong&gt; - 颜色、字体和视觉格式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设置刷新率&lt;/strong&gt; - 实时、每小时、每日或手动&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;仪表板布局管理&lt;span class="hx:absolute hx:-mt-20" id="仪表板布局管理"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bb%aa%e8%a1%a8%e6%9d%bf%e5%b8%83%e5%b1%80%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;响应式设计功能：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;拖放界面&lt;/strong&gt; - 轻松重新排列小部件&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可调整大小的小部件&lt;/strong&gt; - 调整大小以适应内容重要性&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;移动优化&lt;/strong&gt; - 自动布局适应&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;网格对齐&lt;/strong&gt; - 精确对齐和间距&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多屏支持&lt;/strong&gt; - 为不同显示尺寸优化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;布局最佳实践：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将最重要的KPI放在左上角&lt;/li&gt;
+&lt;li&gt;将相关指标分组在一起&lt;/li&gt;
+&lt;li&gt;在小部件间使用一致的配色方案&lt;/li&gt;
+&lt;li&gt;确保适当的留白以提高可读性&lt;/li&gt;
+&lt;li&gt;在不同屏幕尺寸上测试布局&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;标准仪表板&lt;span class="hx:absolute hx:-mt-20" id="标准仪表板"&gt;&lt;/span&gt;
+&lt;a href="#%e6%a0%87%e5%87%86%e4%bb%aa%e8%a1%a8%e6%9d%bf" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;执行仪表板&lt;/strong&gt; - 高级业务概览&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;销售仪表板&lt;/strong&gt; - 销售指标和趋势&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;财务仪表板&lt;/strong&gt; - 关键财务指标&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;运营仪表板&lt;/strong&gt; - 运营效率指标&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;人力资源仪表板&lt;/strong&gt; - 人力资源指标&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;自定义仪表板&lt;span class="hx:absolute hx:-mt-20" id="自定义仪表板"&gt;&lt;/span&gt;
+&lt;a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e4%bb%aa%e8%a1%a8%e6%9d%bf" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;小部件选择&lt;/strong&gt; - 选择相关数据可视化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;布局设计&lt;/strong&gt; - 排列小部件以获得最佳查看效果&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据过滤&lt;/strong&gt; - 设置动态过滤器和参数&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;访问控制&lt;/strong&gt; - 配置谁可以查看每个仪表板&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;移动优化&lt;/strong&gt; - 确保仪表板在移动设备上工作&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;报告生成器&lt;span class="hx:absolute hx:-mt-20" id="报告生成器"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e5%99%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;掌握报告生成器&lt;span class="hx:absolute hx:-mt-20" id="掌握报告生成器"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8e%8c%e6%8f%a1%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e5%99%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;BigLedger的报告生成器使用户能够创建复杂的报告而无需技术专业知识：&lt;/p&gt;
+&lt;h4&gt;报告生成器入门&lt;span class="hx:absolute hx:-mt-20" id="报告生成器入门"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8a%a5%e5%91%8a%e7%94%9f%e6%88%90%e5%99%a8%e5%85%a5%e9%97%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;步骤1：报告规划&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;定义目标&lt;/strong&gt; - 需要回答哪些业务问题？&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;识别数据源&lt;/strong&gt; - 哪些模块包含所需信息？&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;选择报告类型&lt;/strong&gt; - 表格、图表或仪表板样式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;计划分发&lt;/strong&gt; - 谁需要访问以及频率如何？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;步骤2：数据源选择&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;可用数据源：
+✓ 财务交易（GL、AP、AR）
+✓ 销售订单和发票
+✓ 库存变动
+✓ 客户和供应商记录
+✓ 员工和工资数据
+✓ 生产和制造
+✓ 电子商务集成数据&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;构建您的第一个报告&lt;span class="hx:absolute hx:-mt-20" id="构建您的第一个报告"&gt;&lt;/span&gt;
+&lt;a href="#%e6%9e%84%e5%bb%ba%e6%82%a8%e7%9a%84%e7%ac%ac%e4%b8%80%e4%b8%aa%e6%8a%a5%e5%91%8a" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;创建销售业绩报告：&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;打开报告生成器&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;导航到报告 &amp;gt; 报告生成器&lt;/li&gt;
+&lt;li&gt;点击&amp;quot;新建报告&amp;quot;或使用现有模板&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;选择主数据源&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;选择&amp;quot;销售交易&amp;quot;作为主数据源&lt;/li&gt;
+&lt;li&gt;包含相关表：客户、产品、销售人员&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;添加报告字段&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;维度（分组依据）：
+- 销售期间（月/季度）
+- 销售代表
+- 产品类别
+- 客户细分
+度量（计算）：
+- 总销售额
+- 毛利润
+- 交易数量
+- 平均订单价值&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;应用过滤器和参数&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;日期范围：过去12个月&lt;/li&gt;
+&lt;li&gt;销售区域：所有或特定地区&lt;/li&gt;
+&lt;li&gt;产品状态：仅活跃产品&lt;/li&gt;
+&lt;li&gt;客户类型：B2B、B2C或两者&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;配置计算&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;毛利润&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; &lt;span style="color:#960050;background-color:#1e0010"&gt;销售额&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#960050;background-color:#1e0010"&gt;销售成本&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;毛利率&lt;/span&gt;&lt;span style="color:#f92672"&gt;%&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; (&lt;span style="color:#960050;background-color:#1e0010"&gt;毛利润&lt;/span&gt; &lt;span style="color:#f92672"&gt;/&lt;/span&gt; &lt;span style="color:#960050;background-color:#1e0010"&gt;销售额&lt;/span&gt;) &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#960050;background-color:#1e0010"&gt;增长率&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; ((&lt;span style="color:#960050;background-color:#1e0010"&gt;当期&lt;/span&gt; &lt;span style="color:#f92672"&gt;-&lt;/span&gt; &lt;span style="color:#960050;background-color:#1e0010"&gt;上期&lt;/span&gt;) &lt;span style="color:#f92672"&gt;/&lt;/span&gt; &lt;span style="color:#960050;background-color:#1e0010"&gt;上期&lt;/span&gt;) &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;格式化和样式报告&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;应用专业格式模板&lt;/li&gt;
+&lt;li&gt;添加公司品牌和标志&lt;/li&gt;
+&lt;li&gt;配置数字格式和货币&lt;/li&gt;
+&lt;li&gt;设置警报的条件格式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;高级报告功能&lt;span class="hx:absolute hx:-mt-20" id="高级报告功能"&gt;&lt;/span&gt;
+&lt;a href="#%e9%ab%98%e7%ba%a7%e6%8a%a5%e5%91%8a%e5%8a%9f%e8%83%bd" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;钻取功能&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;多级导航&lt;/strong&gt; - 点击探索详细数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;面包屑导航&lt;/strong&gt; - 跟踪钻取路径&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;弹出详情&lt;/strong&gt; - 悬停获取其他信息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;链接报告&lt;/strong&gt; - 跳转到相关报告&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;交互元素&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;动态过滤器&lt;/strong&gt; - 用户可以调整参数&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;日期范围选择器&lt;/strong&gt; - 灵活的时间期间选择&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;参数控制&lt;/strong&gt; - 下拉菜单和输入字段&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;导出选项&lt;/strong&gt; - 按需PDF、Excel、CSV&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;计算字段和公式&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;常见业务计算：
+• ROI = (收益 - 成本) / 成本 * 100
+• 库存周转率 = 销售成本 / 平均库存
+• 客户生命周期价值 = 平均购买 × 购买频率 × 客户生命周期
+• 转化率 = (转化 / 总访客) * 100&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;按功能分类的报告模板&lt;span class="hx:absolute hx:-mt-20" id="按功能分类的报告模板"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8c%89%e5%8a%9f%e8%83%bd%e5%88%86%e7%b1%bb%e7%9a%84%e6%8a%a5%e5%91%8a%e6%a8%a1%e6%9d%bf" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;销售和营销模板&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;销售业绩仪表板&lt;/li&gt;
+&lt;li&gt;客户获取报告&lt;/li&gt;
+&lt;li&gt;产品性能分析&lt;/li&gt;
+&lt;li&gt;销售漏斗指标&lt;/li&gt;
+&lt;li&gt;佣金计算报告&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;财务模板&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;损益表&lt;/li&gt;
+&lt;li&gt;资产负债表报告&lt;/li&gt;
+&lt;li&gt;现金流量分析&lt;/li&gt;
+&lt;li&gt;预算与实际差异&lt;/li&gt;
+&lt;li&gt;账龄报告&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;运营模板&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;库存状态报告&lt;/li&gt;
+&lt;li&gt;生产效率分析&lt;/li&gt;
+&lt;li&gt;质量控制指标&lt;/li&gt;
+&lt;li&gt;供应商绩效计分卡&lt;/li&gt;
+&lt;li&gt;仓库生产力报告&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;人力资源模板&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;员工绩效仪表板&lt;/li&gt;
+&lt;li&gt;工资单摘要报告&lt;/li&gt;
+&lt;li&gt;考勤和休假分析&lt;/li&gt;
+&lt;li&gt;培训完成报告&lt;/li&gt;
+&lt;li&gt;招聘指标&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;共享和分发&lt;span class="hx:absolute hx:-mt-20" id="共享和分发"&gt;&lt;/span&gt;
+&lt;a href="#%e5%85%b1%e4%ba%ab%e5%92%8c%e5%88%86%e5%8f%91" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;报告访问控制&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;基于角色的权限&lt;/strong&gt; - 控制谁看到什么数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;动态安全&lt;/strong&gt; - 根据用户角色过滤数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;临时访问&lt;/strong&gt; - 授予有时限的报告访问&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;外部共享&lt;/strong&gt; - 与合作伙伴安全共享&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;自动分发&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;邮件计划&lt;/strong&gt; - 每日、每周、每月交付&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;仪表板发布&lt;/strong&gt; - 实时网络访问&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;移动通知&lt;/strong&gt; - 警报传递到移动设备&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API集成&lt;/strong&gt; - 程序化访问报告数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;导出和集成选项&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;支持的格式：
+• PDF - 专业格式文档
+• Excel - 数据操作和分析
+• CSV - 外部处理的原始数据
+• PowerPoint - 演示就绪图表
+• JSON/XML - 系统集成&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;报告类型&lt;span class="hx:absolute hx:-mt-20" id="报告类型"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8a%a5%e5%91%8a%e7%b1%bb%e5%9e%8b" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;表格报告&lt;/strong&gt; - 传统行/列数据报告&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;图表报告&lt;/strong&gt; - 可视化数据表示&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;仪表板报告&lt;/strong&gt; - 多小部件概览报告&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;计划报告&lt;/strong&gt; - 自动报告生成&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;即席报告&lt;/strong&gt; - 按需查询报告&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;报告元素&lt;span class="hx:absolute hx:-mt-20" id="报告元素"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8a%a5%e5%91%8a%e5%85%83%e7%b4%a0" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数据源&lt;/strong&gt; - 连接到相关数据表&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;过滤器和参数&lt;/strong&gt; - 控制报告范围和焦点&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;计算&lt;/strong&gt; - 添加计算字段和公式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;格式&lt;/strong&gt; - 应用专业样式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;导出选项&lt;/strong&gt; - PDF、Excel、CSV输出格式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;分析功能&lt;span class="hx:absolute hx:-mt-20" id="分析功能"&gt;&lt;/span&gt;
+&lt;a href="#%e5%88%86%e6%9e%90%e5%8a%9f%e8%83%bd" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;商业智能功能&lt;span class="hx:absolute hx:-mt-20" id="商业智能功能"&gt;&lt;/span&gt;
+&lt;a href="#%e5%95%86%e4%b8%9a%e6%99%ba%e8%83%bd%e5%8a%9f%e8%83%bd" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;趋势分析&lt;/strong&gt; - 识别业务数据中的模式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;比较分析&lt;/strong&gt; - 比较期间、地区、产品&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;钻取功能&lt;/strong&gt; - 从摘要导航到详细信息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;预测分析&lt;/strong&gt; - 预测未来趋势&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;异常报告&lt;/strong&gt; - 突出显示不寻常的数据点&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;数据可视化&lt;span class="hx:absolute hx:-mt-20" id="数据可视化"&gt;&lt;/span&gt;
+&lt;a href="#%e6%95%b0%e6%8d%ae%e5%8f%af%e8%a7%86%e5%8c%96" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;图表和图形&lt;/strong&gt; - 各种可视化类型&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;交互元素&lt;/strong&gt; - 可点击的图表和过滤器&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;地理映射&lt;/strong&gt; - 基于位置的数据可视化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;时间序列分析&lt;/strong&gt; - 随时间的趋势分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多维视图&lt;/strong&gt; - 从多个角度分析数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;分析提示&lt;/strong&gt;：从标准报告开始了解您的数据，然后随着识别需要答案的特定业务问题构建自定义报告。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;关键绩效指标（KPI）&lt;span class="hx:absolute hx:-mt-20" id="关键绩效指标kpi"&gt;&lt;/span&gt;
+&lt;a href="#%e5%85%b3%e9%94%ae%e7%bb%a9%e6%95%88%e6%8c%87%e6%a0%87kpi" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;财务KPI&lt;span class="hx:absolute hx:-mt-20" id="财务kpi"&gt;&lt;/span&gt;
+&lt;a href="#%e8%b4%a2%e5%8a%a1kpi" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;毛利率&lt;/strong&gt; - 盈利能力衡量&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;现金流量比率&lt;/strong&gt; - 流动性指标&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应收账款周转率&lt;/strong&gt; - 收款效率&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;投资回报率（ROI）&lt;/strong&gt; - 投资有效性&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;运营费用比率&lt;/strong&gt; - 成本控制衡量&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;运营KPI&lt;span class="hx:absolute hx:-mt-20" id="运营kpi"&gt;&lt;/span&gt;
+&lt;a href="#%e8%bf%90%e8%90%a5kpi" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;库存周转率&lt;/strong&gt; - 库存效率&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;订单履行率&lt;/strong&gt; - 客户服务水平&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;准时交付率&lt;/strong&gt; - 交付性能&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;质量指标&lt;/strong&gt; - 错误率和客户满意度&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;员工生产力&lt;/strong&gt; - 每员工产出&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;客户KPI&lt;span class="hx:absolute hx:-mt-20" id="客户kpi"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%a2%e6%88%b7kpi" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;客户获取成本&lt;/strong&gt; - 营销效率&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户生命周期价值&lt;/strong&gt; - 长期客户价值&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户满意度评分&lt;/strong&gt; - 服务质量衡量&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户保留率&lt;/strong&gt; - 忠诚度指标&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;平均订单价值&lt;/strong&gt; - 销售有效性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;自动化报告&lt;span class="hx:absolute hx:-mt-20" id="自动化报告"&gt;&lt;/span&gt;
+&lt;a href="#%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;设置自动化报告&lt;span class="hx:absolute hx:-mt-20" id="设置自动化报告"&gt;&lt;/span&gt;
+&lt;a href="#%e8%ae%be%e7%bd%ae%e8%87%aa%e5%8a%a8%e5%8c%96%e6%8a%a5%e5%91%8a" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;通过智能自动化简化您的报告流程：&lt;/p&gt;
+&lt;h4&gt;计划报告&lt;span class="hx:absolute hx:-mt-20" id="计划报告"&gt;&lt;/span&gt;
+&lt;a href="#%e8%ae%a1%e5%88%92%e6%8a%a5%e5%91%8a" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;创建报告计划&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;打开现有报告&lt;/strong&gt; - 选择要自动化的报告&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;点击&amp;quot;计划&amp;quot;&lt;/strong&gt; - 访问计划选项&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设置频率&lt;/strong&gt; - 选择交付时间&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配置收件人&lt;/strong&gt; - 添加邮箱地址和组&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;测试交付&lt;/strong&gt; - 通过测试运行验证设置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;频率选项：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;实时&lt;/strong&gt; - 每15分钟更新&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;每小时&lt;/strong&gt; - 整点交付&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;每日&lt;/strong&gt; - 上午、下午或晚上&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;每周&lt;/strong&gt; - 特定日期和时间&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;每月&lt;/strong&gt; - 月初、中或末&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;每季度&lt;/strong&gt; - 季末带趋势&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自定义&lt;/strong&gt; - 特定日期和间隔&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;高级计划功能：&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;假日日历&lt;/strong&gt; - 跳过非工作日&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;时区管理&lt;/strong&gt; - 多地点交付&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;条件交付&lt;/strong&gt; - 仅在数据更改时发送&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;批处理&lt;/strong&gt; - 组合多个报告&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;故障转移选项&lt;/strong&gt; - 备份交付方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;交付配置&lt;span class="hx:absolute hx:-mt-20" id="交付配置"&gt;&lt;/span&gt;
+&lt;a href="#%e4%ba%a4%e4%bb%98%e9%85%8d%e7%bd%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;邮件交付设置&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;邮件选项：
+✓ PDF附件（格式化报告）
+✓ Excel附件（原始数据）
+✓ 嵌入图表（在邮件正文中）
+✓ 在线报告链接（安全访问）
+✓ 仅摘要（关键指标）&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;分发列表&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;部门组&lt;/strong&gt; - 财务、销售、运营&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;管理层级&lt;/strong&gt; - 高管、经理、员工&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;项目团队&lt;/strong&gt; - 跨职能组&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;外部合作伙伴&lt;/strong&gt; - 供应商、客户、审计师&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自定义列表&lt;/strong&gt; - 临时收件人组&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;交付个性化&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;动态内容&lt;/strong&gt; - 用户特定数据过滤&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语言偏好&lt;/strong&gt; - 多语言支持&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;格式偏好&lt;/strong&gt; - 用户首选文件格式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;摘要级别&lt;/strong&gt; - 详细与高级视图&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;警报和异常报告&lt;span class="hx:absolute hx:-mt-20" id="警报和异常报告"&gt;&lt;/span&gt;
+&lt;a href="#%e8%ad%a6%e6%8a%a5%e5%92%8c%e5%bc%82%e5%b8%b8%e6%8a%a5%e5%91%8a" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;设置智能警报&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;定义阈值&lt;/strong&gt; - 设置触发条件&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;选择警报类型&lt;/strong&gt; - 邮件、短信或仪表板通知&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配置收件人&lt;/strong&gt; - 应通知的人员&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设置紧急级别&lt;/strong&gt; - 高、中、低优先级&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;测试警报&lt;/strong&gt; - 验证通知交付&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;常见警报场景：&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;财务警报：
+• 现金余额低于最低阈值
+• 应收账款账龄超过条款
+• 毛利率降至目标以下
+• 预算差异超过容差
+运营警报：
+• 库存低于再订购点
+• 销售目标达成风险
+• 质量指标低于标准
+• 系统性能下降
+人力资源警报：
+• 员工加班超过限制
+• 休假余额耗尽
+• 绩效指标偏差
+• 培训合规截止日期&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;异常报告配置&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;方差分析&lt;/strong&gt; - 实际与预算/预测&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;趋势中断&lt;/strong&gt; - 异常模式检测&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;阈值突破&lt;/strong&gt; - 超出KPI限制&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据质量问题&lt;/strong&gt; - 缺失或无效数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;合规违规&lt;/strong&gt; - 监管要求违规&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;移动通知&lt;span class="hx:absolute hx:-mt-20" id="移动通知"&gt;&lt;/span&gt;
+&lt;a href="#%e7%a7%bb%e5%8a%a8%e9%80%9a%e7%9f%a5" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;推送通知设置&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;下载BigLedger移动应用&lt;/strong&gt; - iOS和Android支持&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;启用通知&lt;/strong&gt; - 授权警报权限&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配置偏好&lt;/strong&gt; - 选择警报类型和时间&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设置静音时间&lt;/strong&gt; - 定义无通知期间&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;优先级过滤&lt;/strong&gt; - 仅移动端关键警报&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;移动仪表板访问&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;响应式设计&lt;/strong&gt; - 为移动查看优化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;离线功能&lt;/strong&gt; - 缓存报告以供离线访问&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;触摸交互&lt;/strong&gt; - 点击钻取和过滤&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语音命令&lt;/strong&gt; - 询问特定指标&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;快速操作&lt;/strong&gt; - 批准、拒绝或升级&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;与外部系统集成&lt;span class="hx:absolute hx:-mt-20" id="与外部系统集成"&gt;&lt;/span&gt;
+&lt;a href="#%e4%b8%8e%e5%a4%96%e9%83%a8%e7%b3%bb%e7%bb%9f%e9%9b%86%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;基于API的报告交付&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;reportId&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;sales-dashboard&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;schedule&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;daily&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;format&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;json&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;endpoint&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;https://external-system.com/api/reports&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;authentication&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;bearer-token&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;filters&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;dateRange&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;last-30-days&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;department&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;sales&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;第三方集成选项&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;商业智能工具&lt;/strong&gt; - Tableau、Power BI、QlikView&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据仓库&lt;/strong&gt; - Snowflake、Redshift、BigQuery&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;协作平台&lt;/strong&gt; - Teams、Slack、SharePoint&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;云存储&lt;/strong&gt; - Google Drive、OneDrive、Dropbox&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CRM系统&lt;/strong&gt; - Salesforce、HubSpot、Dynamics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Webhook配置&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;实时通知&lt;/strong&gt; - 即时数据推送&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;事件触发器&lt;/strong&gt; - 报告完成、数据更新&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;重试逻辑&lt;/strong&gt; - 处理交付失败&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全&lt;/strong&gt; - 加密和认证交付&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;监控&lt;/strong&gt; - 跟踪交付成功率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;报告计划&lt;span class="hx:absolute hx:-mt-20" id="报告计划"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8a%a5%e5%91%8a%e8%ae%a1%e5%88%92" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;日报&lt;/strong&gt; - 运营状态更新&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;周报&lt;/strong&gt; - 绩效摘要&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;月报&lt;/strong&gt; - 综合业务审查&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;季报&lt;/strong&gt; - 战略分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;年报&lt;/strong&gt; - 年终综合分析&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;交付选项&lt;span class="hx:absolute hx:-mt-20" id="交付选项"&gt;&lt;/span&gt;
+&lt;a href="#%e4%ba%a4%e4%bb%98%e9%80%89%e9%a1%b9" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;邮件分发&lt;/strong&gt; - 自动邮件交付&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;仪表板发布&lt;/strong&gt; - 实时仪表板更新&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文件导出&lt;/strong&gt; - 保存报告到共享位置&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API集成&lt;/strong&gt; - 发送数据到外部系统&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;移动通知&lt;/strong&gt; - 警报传递到移动设备&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;数据导出和集成&lt;span class="hx:absolute hx:-mt-20" id="数据导出和集成"&gt;&lt;/span&gt;
+&lt;a href="#%e6%95%b0%e6%8d%ae%e5%af%bc%e5%87%ba%e5%92%8c%e9%9b%86%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;导出格式&lt;span class="hx:absolute hx:-mt-20" id="导出格式"&gt;&lt;/span&gt;
+&lt;a href="#%e5%af%bc%e5%87%ba%e6%a0%bc%e5%bc%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;PDF报告&lt;/strong&gt; - 专业格式文档&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Excel电子表格&lt;/strong&gt; - 数据操作和分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSV文件&lt;/strong&gt; - 外部处理的原始数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;XML/JSON&lt;/strong&gt; - 系统集成的结构化数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API访问&lt;/strong&gt; - 实时数据访问&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;集成选项&lt;span class="hx:absolute hx:-mt-20" id="集成选项"&gt;&lt;/span&gt;
+&lt;a href="#%e9%9b%86%e6%88%90%e9%80%89%e9%a1%b9" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;BI工具&lt;/strong&gt; - 连接到Tableau、Power BI等&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据仓库&lt;/strong&gt; - 为企业数据仓库提供数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;云存储&lt;/strong&gt; - 将报告备份到云服务&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;第三方分析&lt;/strong&gt; - 发送数据到专门的分析工具&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自定义应用&lt;/strong&gt; - 与自定义系统API集成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;最佳实践&lt;span class="hx:absolute hx:-mt-20" id="最佳实践"&gt;&lt;/span&gt;
+&lt;a href="#%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;报告设计&lt;span class="hx:absolute hx:-mt-20" id="报告设计"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8a%a5%e5%91%8a%e8%ae%be%e8%ae%a1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;明确目标&lt;/strong&gt; - 定义报告应该完成什么&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;受众焦点&lt;/strong&gt; - 为预期用户设计&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;视觉清晰度&lt;/strong&gt; - 使用适当的图表和格式&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据准确性&lt;/strong&gt; - 验证数据源和计算&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;性能优化&lt;/strong&gt; - 确保报告高效运行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;数据治理&lt;span class="hx:absolute hx:-mt-20" id="数据治理"&gt;&lt;/span&gt;
+&lt;a href="#%e6%95%b0%e6%8d%ae%e6%b2%bb%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数据质量&lt;/strong&gt; - 维护清洁、准确的数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;访问控制&lt;/strong&gt; - 适当限制敏感数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;版本控制&lt;/strong&gt; - 管理报告版本和更改&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文档&lt;/strong&gt; - 记录报告逻辑和数据源&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;定期审查&lt;/strong&gt; - 定期审查和更新报告&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;数据安全&lt;/strong&gt;：始终确保敏感业务数据得到适当保护，访问仅限于授权人员。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;高级分析和商业智能&lt;span class="hx:absolute hx:-mt-20" id="高级分析和商业智能"&gt;&lt;/span&gt;
+&lt;a href="#%e9%ab%98%e7%ba%a7%e5%88%86%e6%9e%90%e5%92%8c%e5%95%86%e4%b8%9a%e6%99%ba%e8%83%bd" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;预测分析&lt;span class="hx:absolute hx:-mt-20" id="预测分析"&gt;&lt;/span&gt;
+&lt;a href="#%e9%a2%84%e6%b5%8b%e5%88%86%e6%9e%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;预测功能&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;销售预测&lt;/strong&gt; - 根据历史趋势预测未来收入&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;需求规划&lt;/strong&gt; - 预测库存需求&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;现金流量预测&lt;/strong&gt; - 预测营运资金需求&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户行为&lt;/strong&gt; - 预测客户生命周期价值和流失风险&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;市场趋势&lt;/strong&gt; - 识别新兴机会和威胁&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;机器学习集成&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;AI驱动的洞察：
+✓ 异常检测 - 识别异常模式
+✓ 趋势分析 - 识别新兴趋势
+✓ 模式识别 - 发现隐藏关联
+✓ 风险评估 - 预测潜在问题
+✓ 优化建议 - 推荐改进&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;高级可视化技术&lt;span class="hx:absolute hx:-mt-20" id="高级可视化技术"&gt;&lt;/span&gt;
+&lt;a href="#%e9%ab%98%e7%ba%a7%e5%8f%af%e8%a7%86%e5%8c%96%e6%8a%80%e6%9c%af" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;交互式图表和图形&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;钻取图表&lt;/strong&gt; - 点击探索详细数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;热力图&lt;/strong&gt; - 地理和分类可视化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;散点图&lt;/strong&gt; - 相关性和趋势分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;气泡图&lt;/strong&gt; - 多维数据显示&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;甘特图&lt;/strong&gt; - 项目和时间线可视化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;桑基图&lt;/strong&gt; - 流程和过程可视化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;地理映射&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;销售区域地图&lt;/strong&gt; - 区域绩效可视化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户分布&lt;/strong&gt; - 地理客户分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配送路线优化&lt;/strong&gt; - 物流可视化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;市场渗透&lt;/strong&gt; - 区域覆盖分析&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;统计分析工具&lt;span class="hx:absolute hx:-mt-20" id="统计分析工具"&gt;&lt;/span&gt;
+&lt;a href="#%e7%bb%9f%e8%ae%a1%e5%88%86%e6%9e%90%e5%b7%a5%e5%85%b7" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;内置统计功能&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;可用功能：
+• 相关性分析
+• 回归建模
+• 方差分析
+• 趋势分析
+• 季节性检测
+• 移动平均
+• 标准差
+• 百分位数计算&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;性能基准测试&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;行业比较&lt;/strong&gt; - 与行业标准比较&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;历史基准&lt;/strong&gt; - 跟踪随时间的改进&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;同行分析&lt;/strong&gt; - 与类似公司比较&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;最佳实践识别&lt;/strong&gt; - 找到表现最佳的细分&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;数据治理和安全&lt;span class="hx:absolute hx:-mt-20" id="数据治理和安全"&gt;&lt;/span&gt;
+&lt;a href="#%e6%95%b0%e6%8d%ae%e6%b2%bb%e7%90%86%e5%92%8c%e5%ae%89%e5%85%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;数据质量管理&lt;span class="hx:absolute hx:-mt-20" id="数据质量管理"&gt;&lt;/span&gt;
+&lt;a href="#%e6%95%b0%e6%8d%ae%e8%b4%a8%e9%87%8f%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;数据验证规则&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;完整性检查&lt;/strong&gt; - 确保所有必需字段都已填写&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;准确性验证&lt;/strong&gt; - 根据业务规则验证数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;一致性监控&lt;/strong&gt; - 检查矛盾信息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;及时性跟踪&lt;/strong&gt; - 监控数据新鲜度和更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;数据血缘和审计跟踪&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;源跟踪&lt;/strong&gt; - 了解数据来源&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;转换历史&lt;/strong&gt; - 跟踪数据修改&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;访问日志&lt;/strong&gt; - 监控谁访问什么数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;更改文档&lt;/strong&gt; - 记录所有数据更改&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;安全和合规&lt;span class="hx:absolute hx:-mt-20" id="安全和合规"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%89%e5%85%a8%e5%92%8c%e5%90%88%e8%a7%84" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;访问控制框架&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;安全层：
+1. 用户认证 - 多因素认证
+2. 基于角色的访问 - 细粒度权限控制
+3. 数据加密 - 静态和传输中
+4. 审计日志 - 完整活动跟踪
+5. IP限制 - 地理访问控制&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;合规功能&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GDPR合规&lt;/strong&gt; - 数据隐私和保护&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SOX合规&lt;/strong&gt; - 财务报告控制&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;行业标准&lt;/strong&gt; - 特定行业要求&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据保留&lt;/strong&gt; - 自动归档和删除&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;被遗忘权&lt;/strong&gt; - 客户数据删除&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;故障排除和性能优化&lt;span class="hx:absolute hx:-mt-20" id="故障排除和性能优化"&gt;&lt;/span&gt;
+&lt;a href="#%e6%95%85%e9%9a%9c%e6%8e%92%e9%99%a4%e5%92%8c%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;常见问题和解决方案&lt;span class="hx:absolute hx:-mt-20" id="常见问题和解决方案"&gt;&lt;/span&gt;
+&lt;a href="#%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e5%92%8c%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;性能问题&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;报告加载缓慢&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;原因&lt;/em&gt;：没有适当过滤的大数据集&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;解决方案&lt;/em&gt;：实施日期范围过滤器和数据采样&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;预防&lt;/em&gt;：设置索引字段和查询优化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;仪表板超时错误&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;原因&lt;/em&gt;：实时数据的复杂计算&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;解决方案&lt;/em&gt;：使用缓存数据或降低刷新频率&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;预防&lt;/em&gt;：优化仪表板小部件配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;导出期间内存问题&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;原因&lt;/em&gt;：一次导出太多数据&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;解决方案&lt;/em&gt;：使用分页或分割大导出&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;预防&lt;/em&gt;：设置导出大小限制和警告&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;数据准确性问题&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;报告中数据缺失&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;原因&lt;/em&gt;：数据源断开或权限问题&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;解决方案&lt;/em&gt;：验证连接并刷新数据源&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;预防&lt;/em&gt;：设置自动数据质量监控&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;计算错误&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;原因&lt;/em&gt;：公式错误或数据关系不正确&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;解决方案&lt;/em&gt;：审查计算逻辑并用已知数据测试&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;预防&lt;/em&gt;：使用验证的计算模板&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;信息过时&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;原因&lt;/em&gt;：数据刷新失败或缓存问题&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;解决方案&lt;/em&gt;：强制刷新或清除缓存&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;预防&lt;/em&gt;：监控数据新鲜度并设置警报&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;性能优化策略&lt;span class="hx:absolute hx:-mt-20" id="性能优化策略"&gt;&lt;/span&gt;
+&lt;a href="#%e6%80%a7%e8%83%bd%e4%bc%98%e5%8c%96%e7%ad%96%e7%95%a5" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;报告优化&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;最佳实践：
+✓ 使用适当的日期范围
+✓ 实施智能过滤
+✓ 优化SQL查询
+✓ 使用索引数据库字段
+✓ 缓存频繁访问的数据
+✓ 实施数据压缩&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
+&lt;button
+class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
+title="Copy code"
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;仪表板性能&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;小部件优化&lt;/strong&gt; - 限制每个仪表板的小部件数量&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;刷新策略&lt;/strong&gt; - 错开小部件刷新时间&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据聚合&lt;/strong&gt; - 预计算摘要数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缓存策略&lt;/strong&gt; - 平衡新鲜度与性能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;系统资源管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;峰值使用规划&lt;/strong&gt; - 识别高流量期间&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;负载均衡&lt;/strong&gt; - 在服务器间分配处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;资源监控&lt;/strong&gt; - 跟踪CPU、内存和存储&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;容量规划&lt;/strong&gt; - 预测增长需求&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;下一步&lt;span class="hx:absolute hx:-mt-20" id="下一步"&gt;&lt;/span&gt;
+&lt;a href="#%e4%b8%8b%e4%b8%80%e6%ad%a5" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;掌握报表和分析后：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/best-practices/" &gt;最佳实践&lt;/a&gt;&lt;/strong&gt; - 实施数据驱动决策&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/troubleshooting/" &gt;故障排除&lt;/a&gt;&lt;/strong&gt; - 解决报告问题&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/developers/" &gt;开发者资源&lt;/a&gt;&lt;/strong&gt; - 高级自定义和API集成&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;分析掌握&lt;/strong&gt;：当您能够快速创建推动业务决策和改进计划的有意义报告时，您就掌握了报表和分析。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

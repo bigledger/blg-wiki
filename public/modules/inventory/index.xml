@@ -1,142 +1,142 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Inventory Module</title><link>https://wiki.bigledger.com/modules/inventory/</link><description>Recent content in Inventory Module on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/modules/inventory/index.xml" rel="self" type="application/rss+xml"/><item><title>Category Groups Management</title><link>https://wiki.bigledger.com/modules/inventory/category-groups/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/inventory/category-groups/</guid><description>
-&lt;p>Category Groups provide a hierarchical structure for organizing your inventory categories in BigLedger. This system helps maintain consistency across your product catalog and simplifies inventory management.&lt;/p>
-&lt;h2>Overview&lt;span class="hx:absolute hx:-mt-20" id="overview">&lt;/span>
-&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Under category groups, users can create and edit categories and specify relationships between category groups and individual categories. When creating items in the Item menu, you specify their category assignment.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Note&lt;/strong>: Category groups and item categories can be managed from both Document Item Maintenance and Inventory Item Maintenance applets. Every category is linked to a Category Group for better organization.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h2>Creating Category Groups&lt;span class="hx:absolute hx:-mt-20" id="creating-category-groups">&lt;/span>
-&lt;a href="#creating-category-groups" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Step 1: Access Category Groups&lt;span class="hx:absolute hx:-mt-20" id="step-1-access-category-groups">&lt;/span>
-&lt;a href="#step-1-access-category-groups" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Navigate to &lt;strong>Inventory&lt;/strong> &amp;gt; &lt;strong>Category Groups&lt;/strong>&lt;/li>
-&lt;li>Click the &lt;strong>&amp;quot;+&amp;quot;&lt;/strong> button to create a new category group&lt;/li>
-&lt;li>A third container will open for category group creation&lt;/li>
-&lt;/ol>
-&lt;h3>Step 2: Fill in Category Group Details&lt;span class="hx:absolute hx:-mt-20" id="step-2-fill-in-category-group-details">&lt;/span>
-&lt;a href="#step-2-fill-in-category-group-details" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Complete these required fields in the main tab:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Field&lt;/th>
-&lt;th>Description&lt;/th>
-&lt;th>Example&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Category Group Code&lt;/strong>&lt;/td>
-&lt;td>Unique identifier for the group&lt;/td>
-&lt;td>&lt;code>ELEC&lt;/code>, &lt;code>FURN&lt;/code>, &lt;code>FOOD&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Category Group Name&lt;/strong>&lt;/td>
-&lt;td>Descriptive name for the group&lt;/td>
-&lt;td>&lt;code>Electronics&lt;/code>, &lt;code>Furniture&lt;/code>, &lt;code>Food &amp;amp; Beverage&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Type&lt;/strong>&lt;/td>
-&lt;td>Classification type&lt;/td>
-&lt;td>&lt;code>Product&lt;/code>, &lt;code>Service&lt;/code>, &lt;code>Raw Material&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Param Code&lt;/strong>&lt;/td>
-&lt;td>Parameter code for system integration&lt;/td>
-&lt;td>Optional&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Param Name&lt;/strong>&lt;/td>
-&lt;td>Parameter description&lt;/td>
-&lt;td>Optional&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Status&lt;/strong>&lt;/td>
-&lt;td>Active/Inactive status&lt;/td>
-&lt;td>&lt;code>Active&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3>Step 3: Save Category Group&lt;span class="hx:absolute hx:-mt-20" id="step-3-save-category-group">&lt;/span>
-&lt;a href="#step-3-save-category-group" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Click &lt;strong>Save&lt;/strong> to create the category group. The system will validate for duplicate codes and required fields.&lt;/p>
-&lt;h2>Editing Category Groups&lt;span class="hx:absolute hx:-mt-20" id="editing-category-groups">&lt;/span>
-&lt;a href="#editing-category-groups" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Accessing Edit Mode&lt;span class="hx:absolute hx:-mt-20" id="accessing-edit-mode">&lt;/span>
-&lt;a href="#accessing-edit-mode" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Click on any category group in the listing&lt;/li>
-&lt;li>A second container opens with category group details&lt;/li>
-&lt;li>Two tabs are available for editing&lt;/li>
-&lt;/ol>
-&lt;h3>Main Tab&lt;span class="hx:absolute hx:-mt-20" id="main-tab">&lt;/span>
-&lt;a href="#main-tab" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>The Main tab displays all information entered during category creation:&lt;/p>
-&lt;ul>
-&lt;li>Edit category group properties&lt;/li>
-&lt;li>Update status (Active/Inactive)&lt;/li>
-&lt;li>Delete category group (if no categories are linked)&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Caution&lt;/strong>: Deleting a category group will affect all linked categories. Ensure no active items are using these categories before deletion.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h3>Categories Tab&lt;span class="hx:absolute hx:-mt-20" id="categories-tab">&lt;/span>
-&lt;a href="#categories-tab" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>The Categories tab shows all linked categories within the group:&lt;/p>
-&lt;ul>
-&lt;li>View all categories in the group&lt;/li>
-&lt;li>Add new categories&lt;/li>
-&lt;li>Edit existing categories&lt;/li>
-&lt;li>Remove category associations&lt;/li>
-&lt;/ul>
-&lt;h2>Managing Categories&lt;span class="hx:absolute hx:-mt-20" id="managing-categories">&lt;/span>
-&lt;a href="#managing-categories" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Creating Categories&lt;span class="hx:absolute hx:-mt-20" id="creating-categories">&lt;/span>
-&lt;a href="#creating-categories" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>To add categories to a group:&lt;/p>
-&lt;ol>
-&lt;li>Open the category group&lt;/li>
-&lt;li>Navigate to the &lt;strong>Categories&lt;/strong> tab&lt;/li>
-&lt;li>Click the &lt;strong>&amp;quot;+&amp;quot;&lt;/strong> button&lt;/li>
-&lt;li>Fill in category details:
-&lt;ul>
-&lt;li>Category Code&lt;/li>
-&lt;li>Category Name&lt;/li>
-&lt;li>Description&lt;/li>
-&lt;li>Sort Order&lt;/li>
-&lt;li>Status&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;h3>Editing/Deleting Categories&lt;span class="hx:absolute hx:-mt-20" id="editingdeleting-categories">&lt;/span>
-&lt;a href="#editingdeleting-categories" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Access category details by clicking on any category in the list:&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>Main Tab&lt;/strong>: Edit category properties&lt;/p>
-&lt;ul>
-&lt;li>Update category information&lt;/li>
-&lt;li>Change status&lt;/li>
-&lt;li>Delete category&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Manage Image Tab&lt;/strong>: Handle category images&lt;/p>
-&lt;ul>
-&lt;li>Upload category images&lt;/li>
-&lt;li>Replace existing images&lt;/li>
-&lt;li>Support for multiple image formats (JPG, PNG, GIF)&lt;/li>
-&lt;li>Recommended image size: 500x500 pixels&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;h2>Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices">&lt;/span>
-&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Naming Conventions&lt;span class="hx:absolute hx:-mt-20" id="naming-conventions">&lt;/span>
-&lt;a href="#naming-conventions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Use consistent coding patterns (e.g., &lt;code>ELEC-001&lt;/code>, &lt;code>ELEC-002&lt;/code>)&lt;/li>
-&lt;li>Keep names descriptive but concise&lt;/li>
-&lt;li>Avoid special characters in codes&lt;/li>
-&lt;/ul>
-&lt;h3>Category Hierarchy&lt;span class="hx:absolute hx:-mt-20" id="category-hierarchy">&lt;/span>
-&lt;a href="#category-hierarchy" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Example structure:&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>Electronics (ELEC)
+&lt;p&gt;Category Groups provide a hierarchical structure for organizing your inventory categories in BigLedger. This system helps maintain consistency across your product catalog and simplifies inventory management.&lt;/p&gt;
+&lt;h2&gt;Overview&lt;span class="hx:absolute hx:-mt-20" id="overview"&gt;&lt;/span&gt;
+&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Under category groups, users can create and edit categories and specify relationships between category groups and individual categories. When creating items in the Item menu, you specify their category assignment.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Note&lt;/strong&gt;: Category groups and item categories can be managed from both Document Item Maintenance and Inventory Item Maintenance applets. Every category is linked to a Category Group for better organization.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Creating Category Groups&lt;span class="hx:absolute hx:-mt-20" id="creating-category-groups"&gt;&lt;/span&gt;
+&lt;a href="#creating-category-groups" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Step 1: Access Category Groups&lt;span class="hx:absolute hx:-mt-20" id="step-1-access-category-groups"&gt;&lt;/span&gt;
+&lt;a href="#step-1-access-category-groups" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Navigate to &lt;strong&gt;Inventory&lt;/strong&gt; &amp;gt; &lt;strong&gt;Category Groups&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;&amp;quot;+&amp;quot;&lt;/strong&gt; button to create a new category group&lt;/li&gt;
+&lt;li&gt;A third container will open for category group creation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Step 2: Fill in Category Group Details&lt;span class="hx:absolute hx:-mt-20" id="step-2-fill-in-category-group-details"&gt;&lt;/span&gt;
+&lt;a href="#step-2-fill-in-category-group-details" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Complete these required fields in the main tab:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Field&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Category Group Code&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Unique identifier for the group&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ELEC&lt;/code&gt;, &lt;code&gt;FURN&lt;/code&gt;, &lt;code&gt;FOOD&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Category Group Name&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Descriptive name for the group&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Electronics&lt;/code&gt;, &lt;code&gt;Furniture&lt;/code&gt;, &lt;code&gt;Food &amp;amp; Beverage&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Type&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Classification type&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Product&lt;/code&gt;, &lt;code&gt;Service&lt;/code&gt;, &lt;code&gt;Raw Material&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Param Code&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Parameter code for system integration&lt;/td&gt;
+&lt;td&gt;Optional&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Param Name&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Parameter description&lt;/td&gt;
+&lt;td&gt;Optional&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Status&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Active/Inactive status&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Active&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;Step 3: Save Category Group&lt;span class="hx:absolute hx:-mt-20" id="step-3-save-category-group"&gt;&lt;/span&gt;
+&lt;a href="#step-3-save-category-group" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Click &lt;strong&gt;Save&lt;/strong&gt; to create the category group. The system will validate for duplicate codes and required fields.&lt;/p&gt;
+&lt;h2&gt;Editing Category Groups&lt;span class="hx:absolute hx:-mt-20" id="editing-category-groups"&gt;&lt;/span&gt;
+&lt;a href="#editing-category-groups" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Accessing Edit Mode&lt;span class="hx:absolute hx:-mt-20" id="accessing-edit-mode"&gt;&lt;/span&gt;
+&lt;a href="#accessing-edit-mode" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Click on any category group in the listing&lt;/li&gt;
+&lt;li&gt;A second container opens with category group details&lt;/li&gt;
+&lt;li&gt;Two tabs are available for editing&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Main Tab&lt;span class="hx:absolute hx:-mt-20" id="main-tab"&gt;&lt;/span&gt;
+&lt;a href="#main-tab" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The Main tab displays all information entered during category creation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Edit category group properties&lt;/li&gt;
+&lt;li&gt;Update status (Active/Inactive)&lt;/li&gt;
+&lt;li&gt;Delete category group (if no categories are linked)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Caution&lt;/strong&gt;: Deleting a category group will affect all linked categories. Ensure no active items are using these categories before deletion.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Categories Tab&lt;span class="hx:absolute hx:-mt-20" id="categories-tab"&gt;&lt;/span&gt;
+&lt;a href="#categories-tab" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The Categories tab shows all linked categories within the group:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;View all categories in the group&lt;/li&gt;
+&lt;li&gt;Add new categories&lt;/li&gt;
+&lt;li&gt;Edit existing categories&lt;/li&gt;
+&lt;li&gt;Remove category associations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Managing Categories&lt;span class="hx:absolute hx:-mt-20" id="managing-categories"&gt;&lt;/span&gt;
+&lt;a href="#managing-categories" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Creating Categories&lt;span class="hx:absolute hx:-mt-20" id="creating-categories"&gt;&lt;/span&gt;
+&lt;a href="#creating-categories" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;To add categories to a group:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the category group&lt;/li&gt;
+&lt;li&gt;Navigate to the &lt;strong&gt;Categories&lt;/strong&gt; tab&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;&amp;quot;+&amp;quot;&lt;/strong&gt; button&lt;/li&gt;
+&lt;li&gt;Fill in category details:
+&lt;ul&gt;
+&lt;li&gt;Category Code&lt;/li&gt;
+&lt;li&gt;Category Name&lt;/li&gt;
+&lt;li&gt;Description&lt;/li&gt;
+&lt;li&gt;Sort Order&lt;/li&gt;
+&lt;li&gt;Status&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Editing/Deleting Categories&lt;span class="hx:absolute hx:-mt-20" id="editingdeleting-categories"&gt;&lt;/span&gt;
+&lt;a href="#editingdeleting-categories" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Access category details by clicking on any category in the list:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Main Tab&lt;/strong&gt;: Edit category properties&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Update category information&lt;/li&gt;
+&lt;li&gt;Change status&lt;/li&gt;
+&lt;li&gt;Delete category&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Manage Image Tab&lt;/strong&gt;: Handle category images&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Upload category images&lt;/li&gt;
+&lt;li&gt;Replace existing images&lt;/li&gt;
+&lt;li&gt;Support for multiple image formats (JPG, PNG, GIF)&lt;/li&gt;
+&lt;li&gt;Recommended image size: 500x500 pixels&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices"&gt;&lt;/span&gt;
+&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Naming Conventions&lt;span class="hx:absolute hx:-mt-20" id="naming-conventions"&gt;&lt;/span&gt;
+&lt;a href="#naming-conventions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Use consistent coding patterns (e.g., &lt;code&gt;ELEC-001&lt;/code&gt;, &lt;code&gt;ELEC-002&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Keep names descriptive but concise&lt;/li&gt;
+&lt;li&gt;Avoid special characters in codes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Category Hierarchy&lt;span class="hx:absolute hx:-mt-20" id="category-hierarchy"&gt;&lt;/span&gt;
+&lt;a href="#category-hierarchy" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Example structure:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Electronics (ELEC)
 ├── Computers (ELEC-COMP)
 │ ├── Laptops (ELEC-COMP-LAP)
 │ ├── Desktops (ELEC-COMP-DSK)
@@ -146,74 +146,74 @@
 │ └── Accessories (ELEC-MOB-ACC)
 └── Audio/Video (ELEC-AV)
 ├── Televisions (ELEC-AV-TV)
-└── Sound Systems (ELEC-AV-SND)&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+└── Sound Systems (ELEC-AV-SND)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Maintenance Tips&lt;span class="hx:absolute hx:-mt-20" id="maintenance-tips">&lt;/span>
-&lt;a href="#maintenance-tips" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Regular Review&lt;/strong>: Periodically review category structures&lt;/li>
-&lt;li>&lt;strong>Consolidation&lt;/strong>: Merge similar categories to avoid duplication&lt;/li>
-&lt;li>&lt;strong>Documentation&lt;/strong>: Maintain a category guide for staff reference&lt;/li>
-&lt;li>&lt;strong>Training&lt;/strong>: Ensure staff understand category assignment rules&lt;/li>
-&lt;/ol>
-&lt;h2>Integration with Other Modules&lt;span class="hx:absolute hx:-mt-20" id="integration-with-other-modules">&lt;/span>
-&lt;a href="#integration-with-other-modules" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Category Groups integrate with:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Inventory Management&lt;/strong>: Product classification&lt;/li>
-&lt;li>&lt;strong>Purchasing&lt;/strong>: Vendor category preferences&lt;/li>
-&lt;li>&lt;strong>Sales&lt;/strong>: Category-based promotions&lt;/li>
-&lt;li>&lt;strong>Reporting&lt;/strong>: Category performance analysis&lt;/li>
-&lt;li>&lt;strong>E-Commerce&lt;/strong>: Online store navigation&lt;/li>
-&lt;/ul>
-&lt;h2>Common Use Cases&lt;span class="hx:absolute hx:-mt-20" id="common-use-cases">&lt;/span>
-&lt;a href="#common-use-cases" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Retail Operations&lt;span class="hx:absolute hx:-mt-20" id="retail-operations">&lt;/span>
-&lt;a href="#retail-operations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Department-based categorization&lt;/li>
-&lt;li>Seasonal product grouping&lt;/li>
-&lt;li>Brand-based organization&lt;/li>
-&lt;/ul>
-&lt;h3>Manufacturing&lt;span class="hx:absolute hx:-mt-20" id="manufacturing">&lt;/span>
-&lt;a href="#manufacturing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Raw material classification&lt;/li>
-&lt;li>Finished goods categorization&lt;/li>
-&lt;li>Component grouping&lt;/li>
-&lt;/ul>
-&lt;h3>Services&lt;span class="hx:absolute hx:-mt-20" id="services">&lt;/span>
-&lt;a href="#services" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Service type categorization&lt;/li>
-&lt;li>Skill-based grouping&lt;/li>
-&lt;li>Time-based service classification&lt;/li>
-&lt;/ul>
-&lt;h2>Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting">&lt;/span>
-&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Cannot Delete Category Group&lt;span class="hx:absolute hx:-mt-20" id="cannot-delete-category-group">&lt;/span>
-&lt;a href="#cannot-delete-category-group" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Check for linked categories&lt;/li>
-&lt;li>Verify no active items use the categories&lt;/li>
-&lt;li>Review any pending transactions&lt;/li>
-&lt;/ul>
-&lt;h3>Category Not Appearing in Item Creation&lt;span class="hx:absolute hx:-mt-20" id="category-not-appearing-in-item-creation">&lt;/span>
-&lt;a href="#category-not-appearing-in-item-creation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Confirm category status is Active&lt;/li>
-&lt;li>Check category group status&lt;/li>
-&lt;li>Verify user permissions&lt;/li>
-&lt;/ul>
-&lt;h3>Image Upload Issues&lt;span class="hx:absolute hx:-mt-20" id="image-upload-issues">&lt;/span>
-&lt;a href="#image-upload-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Check file format (JPG, PNG, GIF)&lt;/li>
-&lt;li>Verify file size (&amp;lt; 5MB recommended)&lt;/li>
-&lt;li>Clear browser cache&lt;/li>
-&lt;/ul>
-&lt;h2>Related Documentation&lt;span class="hx:absolute hx:-mt-20" id="related-documentation">&lt;/span>
-&lt;a href="#related-documentation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/item-maintenance/" >Item Maintenance&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/document-item-types/" >Document Item Types&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/inventory/" >Inventory Management&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/price-book/" >Price Book Configuration&lt;/a>&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Maintenance Tips&lt;span class="hx:absolute hx:-mt-20" id="maintenance-tips"&gt;&lt;/span&gt;
+&lt;a href="#maintenance-tips" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Regular Review&lt;/strong&gt;: Periodically review category structures&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Consolidation&lt;/strong&gt;: Merge similar categories to avoid duplication&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt;: Maintain a category guide for staff reference&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Training&lt;/strong&gt;: Ensure staff understand category assignment rules&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Integration with Other Modules&lt;span class="hx:absolute hx:-mt-20" id="integration-with-other-modules"&gt;&lt;/span&gt;
+&lt;a href="#integration-with-other-modules" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Category Groups integrate with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Inventory Management&lt;/strong&gt;: Product classification&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Purchasing&lt;/strong&gt;: Vendor category preferences&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sales&lt;/strong&gt;: Category-based promotions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reporting&lt;/strong&gt;: Category performance analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;E-Commerce&lt;/strong&gt;: Online store navigation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Common Use Cases&lt;span class="hx:absolute hx:-mt-20" id="common-use-cases"&gt;&lt;/span&gt;
+&lt;a href="#common-use-cases" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Retail Operations&lt;span class="hx:absolute hx:-mt-20" id="retail-operations"&gt;&lt;/span&gt;
+&lt;a href="#retail-operations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Department-based categorization&lt;/li&gt;
+&lt;li&gt;Seasonal product grouping&lt;/li&gt;
+&lt;li&gt;Brand-based organization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Manufacturing&lt;span class="hx:absolute hx:-mt-20" id="manufacturing"&gt;&lt;/span&gt;
+&lt;a href="#manufacturing" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Raw material classification&lt;/li&gt;
+&lt;li&gt;Finished goods categorization&lt;/li&gt;
+&lt;li&gt;Component grouping&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Services&lt;span class="hx:absolute hx:-mt-20" id="services"&gt;&lt;/span&gt;
+&lt;a href="#services" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Service type categorization&lt;/li&gt;
+&lt;li&gt;Skill-based grouping&lt;/li&gt;
+&lt;li&gt;Time-based service classification&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Cannot Delete Category Group&lt;span class="hx:absolute hx:-mt-20" id="cannot-delete-category-group"&gt;&lt;/span&gt;
+&lt;a href="#cannot-delete-category-group" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Check for linked categories&lt;/li&gt;
+&lt;li&gt;Verify no active items use the categories&lt;/li&gt;
+&lt;li&gt;Review any pending transactions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Category Not Appearing in Item Creation&lt;span class="hx:absolute hx:-mt-20" id="category-not-appearing-in-item-creation"&gt;&lt;/span&gt;
+&lt;a href="#category-not-appearing-in-item-creation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Confirm category status is Active&lt;/li&gt;
+&lt;li&gt;Check category group status&lt;/li&gt;
+&lt;li&gt;Verify user permissions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Image Upload Issues&lt;span class="hx:absolute hx:-mt-20" id="image-upload-issues"&gt;&lt;/span&gt;
+&lt;a href="#image-upload-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Check file format (JPG, PNG, GIF)&lt;/li&gt;
+&lt;li&gt;Verify file size (&amp;lt; 5MB recommended)&lt;/li&gt;
+&lt;li&gt;Clear browser cache&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Related Documentation&lt;span class="hx:absolute hx:-mt-20" id="related-documentation"&gt;&lt;/span&gt;
+&lt;a href="#related-documentation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/item-maintenance/" &gt;Item Maintenance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/document-item-types/" &gt;Document Item Types&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/inventory/" &gt;Inventory Management&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/price-book/" &gt;Price Book Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

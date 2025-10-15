@@ -1,17 +1,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Modules</title><link>https://wiki.bigledger.com/modules/</link><description>Recent content in Modules on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/modules/index.xml" rel="self" type="application/rss+xml"/><item><title>2.0 Website Configuration﻿</title><link>https://wiki.bigledger.com/modules/ecommerce/20-website-configuration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/20-website-configuration/</guid><description>
-&lt;h1>2.0 Website Configuration﻿&lt;/h1>&lt;p>&lt;strong>Page ID&lt;/strong>: 3187343370
-&lt;strong>Last Updated&lt;/strong>: 2024-11-17T11:07:01.283Z&lt;/p>
-&lt;h2>2.1 Setting Up Your Website﻿&lt;span class="hx:absolute hx:-mt-20" id="21-setting-up-your-website">&lt;/span>
-&lt;a href="#21-setting-up-your-website" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>CP-Commerce offers a user-friendly interface for configuring your website. Refer to the Website Configuration section for detailed instructions on setting up and customizing your website.&lt;/p>
-&lt;h2>2.2 Customizing Website Content﻿&lt;span class="hx:absolute hx:-mt-20" id="22-customizing-website-content">&lt;/span>
-&lt;a href="#22-customizing-website-content" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Learn how to tailor your website&amp;rsquo;s content, including product listings, images, descriptions, and pricing, to create an appealing online shopping experience for your customers.&lt;/p></description></item><item><title>B2B</title><link>https://wiki.bigledger.com/modules/ecommerce/b2b/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/b2b/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3153822181
-&lt;strong>Last Updated&lt;/strong>: 2021-06-05T09:01:05.690Z&lt;/p></description></item><item><title>CP-Commerce</title><link>https://wiki.bigledger.com/modules/ecommerce/cp-commerce/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/cp-commerce/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3153887626
-&lt;strong>Last Updated&lt;/strong>: 2024-11-17T11:04:53.671Z
-The CP-Commerce Module is a powerful solution designed to help businesses offer products and services online. It serves as an integrated platform that combines eCommerce capabilities with central data management and seamless integration with various other business systems. By eliminating duplicated data entry and providing operational data lake functionality, CP-Commerce empowers businesses to establish a robust online presence and grow their operations.&lt;/p></description></item><item><title>Create Single Tab</title><link>https://wiki.bigledger.com/modules/ecommerce/create-single-tab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/create-single-tab/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196191946
-&lt;strong>Last Updated&lt;/strong>: 2021-06-18T06:09:58.079Z
+&lt;h1&gt;2.0 Website Configuration﻿&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3187343370
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2024-11-17T11:07:01.283Z&lt;/p&gt;
+&lt;h2&gt;2.1 Setting Up Your Website﻿&lt;span class="hx:absolute hx:-mt-20" id="21-setting-up-your-website"&gt;&lt;/span&gt;
+&lt;a href="#21-setting-up-your-website" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;CP-Commerce offers a user-friendly interface for configuring your website. Refer to the Website Configuration section for detailed instructions on setting up and customizing your website.&lt;/p&gt;
+&lt;h2&gt;2.2 Customizing Website Content﻿&lt;span class="hx:absolute hx:-mt-20" id="22-customizing-website-content"&gt;&lt;/span&gt;
+&lt;a href="#22-customizing-website-content" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Learn how to tailor your website&amp;rsquo;s content, including product listings, images, descriptions, and pricing, to create an appealing online shopping experience for your customers.&lt;/p&gt;</description></item><item><title>B2B</title><link>https://wiki.bigledger.com/modules/ecommerce/b2b/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/b2b/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3153822181
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-05T09:01:05.690Z&lt;/p&gt;</description></item><item><title>CP-Commerce</title><link>https://wiki.bigledger.com/modules/ecommerce/cp-commerce/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/cp-commerce/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3153887626
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2024-11-17T11:04:53.671Z
+The CP-Commerce Module is a powerful solution designed to help businesses offer products and services online. It serves as an integrated platform that combines eCommerce capabilities with central data management and seamless integration with various other business systems. By eliminating duplicated data entry and providing operational data lake functionality, CP-Commerce empowers businesses to establish a robust online presence and grow their operations.&lt;/p&gt;</description></item><item><title>Create Single Tab</title><link>https://wiki.bigledger.com/modules/ecommerce/create-single-tab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/create-single-tab/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196191946
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-18T06:09:58.079Z
 Create - used for syncing the chosen item into a marketplace store. Create consist of 2 types :
 Create Single - used when user wants to sync 1 (one) item into the marketplace
 Create single item consist of 2 tabs :
@@ -20,9 +20,9 @@ Once the Store is chosen user will have to choose category:
 2. Item Tab - is used to select the current item that you are editing and want to sync to marketplace:
 Once the store and the category has been chosen user has to press &amp;ldquo;start listing&amp;rdquo; button which will bring to the summary page :
 User must click on the item and fill up all the attribute details:
-Once user complete filling up attribute details they may click on &amp;ldquo;Submit&amp;rdquo; button in order to sync to the marketplace.&lt;/p></description></item><item><title>EcomSync Applet</title><link>https://wiki.bigledger.com/modules/ecommerce/ecomsync-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/ecomsync-applet/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3259346357
-&lt;strong>Last Updated&lt;/strong>: 2021-07-23T05:51:22.732Z
+Once user complete filling up attribute details they may click on &amp;ldquo;Submit&amp;rdquo; button in order to sync to the marketplace.&lt;/p&gt;</description></item><item><title>EcomSync Applet</title><link>https://wiki.bigledger.com/modules/ecommerce/ecomsync-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/ecomsync-applet/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3259346357
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-07-23T05:51:22.732Z
 Table of Content
 Introduction to Ecomsync
 Ecomsync Features
@@ -36,9 +36,9 @@ Main Dashboard
 Sales Dashboard
 Order Dashboard
 Settings
-Integration with Shopify&lt;/p></description></item><item><title>Ecomsync Features</title><link>https://wiki.bigledger.com/modules/ecommerce/ecomsync-features/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/ecomsync-features/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3299247174
-&lt;strong>Last Updated&lt;/strong>: 2021-07-19T02:40:30.908Z
+Integration with Shopify&lt;/p&gt;</description></item><item><title>Ecomsync Features</title><link>https://wiki.bigledger.com/modules/ecommerce/ecomsync-features/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/ecomsync-features/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3299247174
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-07-19T02:40:30.908Z
 Readiness Status: 5 - Best possibleGreen 4 - optimalYellow 3 - averageBlue 2 - sub optimalPurple 1 - worst possibleRed
 PHASE 1
 1Module
@@ -51,83 +51,83 @@ Organisation Applet
 3Product Management
 GL Code selection
 Doc Item Maintenance
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 4Tracking of inventory
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 5Add dimension details
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 6Add product image
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 7Select image category
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 8Marketplace management
 Add marketplace
 Organisation Applet
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 9Select item category as bundled or single
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 10Choose item to be posted in marketplace
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 11EMP Sync as Sales Order (ERP system)
 EMP Sync
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 12Lazada Attributes Sync
 Select Lazada item category
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 13Fill in lazada attributes fields according to category chose
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 14Add more image in attribute page
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 15Stock Availability / Inventory Management
 Auto stock configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 16Manual stock configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 17Set stock buffer amount
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 18Sales Order Management
 Active Sales Order configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 19Inactive SO configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 20Selective active SO configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 21Sync of Lazada orders from Seller account
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 22Status filter
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 23Multi select orders for Invoice print
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 24Print shipping label
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 25Print picking list
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 26Export Order to Excel
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 27Create manifest
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 28View Order details (Item, shipping, customer details)
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 29Dashboard / Reports
 Filter dashboard by 30 days
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 30Filter dashboard by 7 days
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 31Enter custom date report
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 32View total sales report
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 33View Daily sales by store report
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 34View total orders
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 35View canceled orders
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 36CP Commerce integration
 Consolidate orders from CP Commerce in Ecomsycn
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 37Manage stock balance in Ecomsync
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 38PHASE 2
 39Shopee Integration
 Sales Order, stock balance are synced to EMP
@@ -155,160 +155,160 @@ Attributes and category management from Magento to Ecomsync
 Stock / order fulfilment
 Order management (Create Consignment Note, invoice etc)
 44Audit Trail
-45Stock fulfillment&lt;/p></description></item><item><title>Integration with Shopify</title><link>https://wiki.bigledger.com/modules/ecommerce/integration-with-shopify/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/integration-with-shopify/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3292758065
-&lt;strong>Last Updated&lt;/strong>: 2021-07-15T07:56:28.266Z
-steps,..&lt;/p></description></item><item><title>Introduction to EcomSync</title><link>https://wiki.bigledger.com/modules/ecommerce/introduction-to-ecomsync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/introduction-to-ecomsync/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196485958
-&lt;strong>Last Updated&lt;/strong>: 2021-06-18T01:46:53.953Z&lt;/p>
-&lt;h2>Introduction&lt;span class="hx:absolute hx:-mt-20" id="introduction">&lt;/span>
-&lt;a href="#introduction" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>EcomSync Applet is an applet whereby users can organize and manage their items/products, orders and view their marketplace performances. The aim of EcomSync Applet is to equip users with the understanding of managing their marketplace aspects.&lt;/p>
-&lt;p>&lt;img src="https://wiki.bigledger.com/diagrams/ecomsync-integration-flow.svg" alt="EcomSync Integration Flow" loading="lazy" />
-&lt;em>Figure 1: EcomSync Integration Architecture - connecting BigLedger with major Malaysian marketplaces&lt;/em>&lt;/p>
-&lt;p>You are able to experience many benefits from the applet such as from a management perspective, EcomSync provides better and feasible control of your seller shops. You are able to simultaneously sync items into multiple seller accounts. Other than that, EcomSync acts as a pacemaker which you can manage order and its status and can link with your Enterprise Management Portal (EMP) that makes your product management process easier.&lt;/p>
-&lt;h2>Prerequisites&lt;span class="hx:absolute hx:-mt-20" id="prerequisites">&lt;/span>
-&lt;a href="#prerequisites" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>In order to proceed and start on EcomSync Applet, kindly make sure that you have created organization and branch details in Organization Applet.&lt;/p>
-&lt;h3>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Multi-marketplace Management&lt;/strong>: Connect to Shopee, Lazada, and custom stores&lt;/li>
-&lt;li>&lt;strong>Real-time Synchronization&lt;/strong>: Inventory, prices, and orders sync automatically&lt;/li>
-&lt;li>&lt;strong>Malaysian E-commerce Support&lt;/strong>: Built for local payment methods and shipping&lt;/li>
-&lt;li>&lt;strong>Centralized Control&lt;/strong>: Manage all your online sales from one dashboard&lt;/li>
-&lt;/ul></description></item><item><title>Listing</title><link>https://wiki.bigledger.com/modules/ecommerce/listing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/listing/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196846319
-&lt;strong>Last Updated&lt;/strong>: 2021-06-18T02:06:35.534Z
+45Stock fulfillment&lt;/p&gt;</description></item><item><title>Integration with Shopify</title><link>https://wiki.bigledger.com/modules/ecommerce/integration-with-shopify/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/integration-with-shopify/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3292758065
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-07-15T07:56:28.266Z
+steps,..&lt;/p&gt;</description></item><item><title>Introduction to EcomSync</title><link>https://wiki.bigledger.com/modules/ecommerce/introduction-to-ecomsync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/introduction-to-ecomsync/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196485958
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-18T01:46:53.953Z&lt;/p&gt;
+&lt;h2&gt;Introduction&lt;span class="hx:absolute hx:-mt-20" id="introduction"&gt;&lt;/span&gt;
+&lt;a href="#introduction" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;EcomSync Applet is an applet whereby users can organize and manage their items/products, orders and view their marketplace performances. The aim of EcomSync Applet is to equip users with the understanding of managing their marketplace aspects.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://wiki.bigledger.com/diagrams/ecomsync-integration-flow.svg" alt="EcomSync Integration Flow" loading="lazy" /&gt;
+&lt;em&gt;Figure 1: EcomSync Integration Architecture - connecting BigLedger with major Malaysian marketplaces&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;You are able to experience many benefits from the applet such as from a management perspective, EcomSync provides better and feasible control of your seller shops. You are able to simultaneously sync items into multiple seller accounts. Other than that, EcomSync acts as a pacemaker which you can manage order and its status and can link with your Enterprise Management Portal (EMP) that makes your product management process easier.&lt;/p&gt;
+&lt;h2&gt;Prerequisites&lt;span class="hx:absolute hx:-mt-20" id="prerequisites"&gt;&lt;/span&gt;
+&lt;a href="#prerequisites" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;In order to proceed and start on EcomSync Applet, kindly make sure that you have created organization and branch details in Organization Applet.&lt;/p&gt;
+&lt;h3&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multi-marketplace Management&lt;/strong&gt;: Connect to Shopee, Lazada, and custom stores&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Synchronization&lt;/strong&gt;: Inventory, prices, and orders sync automatically&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Malaysian E-commerce Support&lt;/strong&gt;: Built for local payment methods and shipping&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Centralized Control&lt;/strong&gt;: Manage all your online sales from one dashboard&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Listing</title><link>https://wiki.bigledger.com/modules/ecommerce/listing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/listing/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196846319
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-18T02:06:35.534Z
 Listing shows all your Items that are synced from EMP and Marketplace. Inside the listing the item can be 2 levels, where by the first level is the one that is synced from EMP or the one that user created themselves, and the 2nd level shows the items that were synced to marketplace:
-User may customize the AG-Grid listing, where by they can move around and filter the headers of the listing.&lt;/p></description></item><item><title>Marketplace Tab</title><link>https://wiki.bigledger.com/modules/ecommerce/marketplace-tab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/marketplace-tab/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196191832
-&lt;strong>Last Updated&lt;/strong>: 2021-07-23T05:24:07.943Z
+User may customize the AG-Grid listing, where by they can move around and filter the headers of the listing.&lt;/p&gt;</description></item><item><title>Marketplace Tab</title><link>https://wiki.bigledger.com/modules/ecommerce/marketplace-tab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/marketplace-tab/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196191832
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-07-23T05:24:07.943Z
 Marketplace Tab is used for the Users to Create, Edit, Update and Delete the Items to be sync into the marketplace. This section will let you select the Item Type to be displayed in the Marketplace.
-Click Save. - For this Module each time edit the Item detail throughout the tabs &amp;ldquo;MUST CLICK SAVE&amp;rdquo;.&lt;/p></description></item><item><title>Update and Delete Item</title><link>https://wiki.bigledger.com/modules/ecommerce/update-and-delete-item/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/update-and-delete-item/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196191957
-&lt;strong>Last Updated&lt;/strong>: 2021-06-18T06:15:40.294Z
-Update/Delete Item - when user want to update or delete the item that was sync to the marketplace they will have to go to &amp;ldquo;Marketplace Tab&amp;rdquo; select the store from the current listing and update/delete the item:&lt;/p></description></item><item><title>CP-Commerce Menu &amp; Pages Configuration</title><link>https://wiki.bigledger.com/modules/ecommerce/cp-commerce-menu-pages/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/cp-commerce-menu-pages/</guid><description>
-&lt;p>CP-Commerce provides flexible tools for managing your e-commerce website&amp;rsquo;s navigation menus and static content pages. This guide covers the Menu Module and Pages Module configuration.&lt;/p>
-&lt;h2>Menu Module&lt;span class="hx:absolute hx:-mt-20" id="menu-module">&lt;/span>
-&lt;a href="#menu-module" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The Menu Module controls the navigation structure of your CP-Commerce website, allowing you to create hierarchical menus with various link types.&lt;/p>
-&lt;h3>Understanding Menu Structure&lt;span class="hx:absolute hx:-mt-20" id="understanding-menu-structure">&lt;/span>
-&lt;a href="#understanding-menu-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Menu items in CP-Commerce support:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Multi-level hierarchy&lt;/strong> - Create parent and child menu items&lt;/li>
-&lt;li>&lt;strong>Multiple link types&lt;/strong> - Link to pages, products, categories, or external URLs&lt;/li>
-&lt;li>&lt;strong>Flexible positioning&lt;/strong> - Control menu order and nesting&lt;/li>
-&lt;li>&lt;strong>Conditional display&lt;/strong> - Active/inactive status control&lt;/li>
-&lt;/ul>
-&lt;h3>Menu Listing View&lt;span class="hx:absolute hx:-mt-20" id="menu-listing-view">&lt;/span>
-&lt;a href="#menu-listing-view" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>The menu listing displays:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Column&lt;/th>
-&lt;th>Description&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Title&lt;/strong>&lt;/td>
-&lt;td>Name of the menu item displayed to users&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Menu Level&lt;/strong>&lt;/td>
-&lt;td>Hierarchy level (1 = top level, 2 = sub-menu, etc.)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Linked&lt;/strong>&lt;/td>
-&lt;td>Type of link and destination&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Status&lt;/strong>&lt;/td>
-&lt;td>Active or Inactive&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Actions&lt;/strong>&lt;/td>
-&lt;td>Edit, Delete, Reorder&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3>Creating Menu Items&lt;span class="hx:absolute hx:-mt-20" id="creating-menu-items">&lt;/span>
-&lt;a href="#creating-menu-items" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>Step 1: Basic Information&lt;span class="hx:absolute hx:-mt-20" id="step-1-basic-information">&lt;/span>
-&lt;a href="#step-1-basic-information" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ol>
-&lt;li>Navigate to &lt;strong>CP-Commerce&lt;/strong> &amp;gt; &lt;strong>Menu Module&lt;/strong>&lt;/li>
-&lt;li>Click &lt;strong>&amp;ldquo;Create New Menu Item&amp;rdquo;&lt;/strong>&lt;/li>
-&lt;li>Fill in the required fields:&lt;/li>
-&lt;/ol>
-&lt;p>&lt;strong>Title&lt;/strong>: The display name for the menu item&lt;/p>
-&lt;ul>
-&lt;li>Keep it concise and descriptive&lt;/li>
-&lt;li>Use action words for better UX (e.g., &amp;ldquo;Shop Now&amp;rdquo;, &amp;ldquo;View Categories&amp;rdquo;)&lt;/li>
-&lt;/ul>
-&lt;h4>Step 2: Configure Link Type&lt;span class="hx:absolute hx:-mt-20" id="step-2-configure-link-type">&lt;/span>
-&lt;a href="#step-2-configure-link-type" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Link Type&lt;/strong> determines the menu item&amp;rsquo;s behavior:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Type&lt;/th>
-&lt;th>Description&lt;/th>
-&lt;th>Use Case&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Page&lt;/strong>&lt;/td>
-&lt;td>Links to static page created in Pages Module&lt;/td>
-&lt;td>About Us, Terms, Privacy&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Product&lt;/strong>&lt;/td>
-&lt;td>Direct link to specific product&lt;/td>
-&lt;td>Featured items, Bestsellers&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Product Category&lt;/strong>&lt;/td>
-&lt;td>Links to category listing&lt;/td>
-&lt;td>Shop by Department&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Content Category&lt;/strong>&lt;/td>
-&lt;td>Links to content collections&lt;/td>
-&lt;td>Blog, News, Resources&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>External Link&lt;/strong>&lt;/td>
-&lt;td>Links to external URL or custom page&lt;/td>
-&lt;td>Social media, Partner sites&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h4>Step 3: Link Configuration&lt;span class="hx:absolute hx:-mt-20" id="step-3-link-configuration">&lt;/span>
-&lt;a href="#step-3-link-configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Based on the selected Link Type:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>For Page&lt;/strong>: Select from dropdown of created pages&lt;/li>
-&lt;li>&lt;strong>For Product&lt;/strong>: Search and select specific product&lt;/li>
-&lt;li>&lt;strong>For Product Category&lt;/strong>: Choose from category tree&lt;/li>
-&lt;li>&lt;strong>For Content Category&lt;/strong>: Select content category&lt;/li>
-&lt;li>&lt;strong>For External Link&lt;/strong>: Enter full URL (https://&amp;hellip;)&lt;/li>
-&lt;/ul>
-&lt;h4>Step 4: Display Settings&lt;span class="hx:absolute hx:-mt-20" id="step-4-display-settings">&lt;/span>
-&lt;a href="#step-4-display-settings" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Status&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Active - Menu item is visible&lt;/li>
-&lt;li>Inactive - Hidden from website&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Redirect Type&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Same Window - Opens in current tab (default)&lt;/li>
-&lt;li>New Window - Opens in new tab (for external links)&lt;/li>
-&lt;/ul>
-&lt;h4>Step 5: Menu Hierarchy&lt;span class="hx:absolute hx:-mt-20" id="step-5-menu-hierarchy">&lt;/span>
-&lt;a href="#step-5-menu-hierarchy" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Nest Menu Item&lt;/strong>: Check to make this a sub-menu item&lt;/p>
-&lt;p>If nesting is enabled:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Parent Menu&lt;/strong>: Select the parent menu item&lt;/li>
-&lt;li>The item will appear as a dropdown under the parent&lt;/li>
-&lt;/ul>
-&lt;h3>Menu Hierarchy Example&lt;span class="hx:absolute hx:-mt-20" id="menu-hierarchy-example">&lt;/span>
-&lt;a href="#menu-hierarchy-example" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>Home (Level 1)
+Click Save. - For this Module each time edit the Item detail throughout the tabs &amp;ldquo;MUST CLICK SAVE&amp;rdquo;.&lt;/p&gt;</description></item><item><title>Update and Delete Item</title><link>https://wiki.bigledger.com/modules/ecommerce/update-and-delete-item/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/update-and-delete-item/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196191957
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-18T06:15:40.294Z
+Update/Delete Item - when user want to update or delete the item that was sync to the marketplace they will have to go to &amp;ldquo;Marketplace Tab&amp;rdquo; select the store from the current listing and update/delete the item:&lt;/p&gt;</description></item><item><title>CP-Commerce Menu &amp; Pages Configuration</title><link>https://wiki.bigledger.com/modules/ecommerce/cp-commerce-menu-pages/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/cp-commerce-menu-pages/</guid><description>
+&lt;p&gt;CP-Commerce provides flexible tools for managing your e-commerce website&amp;rsquo;s navigation menus and static content pages. This guide covers the Menu Module and Pages Module configuration.&lt;/p&gt;
+&lt;h2&gt;Menu Module&lt;span class="hx:absolute hx:-mt-20" id="menu-module"&gt;&lt;/span&gt;
+&lt;a href="#menu-module" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The Menu Module controls the navigation structure of your CP-Commerce website, allowing you to create hierarchical menus with various link types.&lt;/p&gt;
+&lt;h3&gt;Understanding Menu Structure&lt;span class="hx:absolute hx:-mt-20" id="understanding-menu-structure"&gt;&lt;/span&gt;
+&lt;a href="#understanding-menu-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Menu items in CP-Commerce support:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multi-level hierarchy&lt;/strong&gt; - Create parent and child menu items&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multiple link types&lt;/strong&gt; - Link to pages, products, categories, or external URLs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flexible positioning&lt;/strong&gt; - Control menu order and nesting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conditional display&lt;/strong&gt; - Active/inactive status control&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Menu Listing View&lt;span class="hx:absolute hx:-mt-20" id="menu-listing-view"&gt;&lt;/span&gt;
+&lt;a href="#menu-listing-view" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The menu listing displays:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Column&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Title&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Name of the menu item displayed to users&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Menu Level&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Hierarchy level (1 = top level, 2 = sub-menu, etc.)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Linked&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Type of link and destination&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Status&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Active or Inactive&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Actions&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Edit, Delete, Reorder&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;Creating Menu Items&lt;span class="hx:absolute hx:-mt-20" id="creating-menu-items"&gt;&lt;/span&gt;
+&lt;a href="#creating-menu-items" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Step 1: Basic Information&lt;span class="hx:absolute hx:-mt-20" id="step-1-basic-information"&gt;&lt;/span&gt;
+&lt;a href="#step-1-basic-information" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;Navigate to &lt;strong&gt;CP-Commerce&lt;/strong&gt; &amp;gt; &lt;strong&gt;Menu Module&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Click &lt;strong&gt;&amp;ldquo;Create New Menu Item&amp;rdquo;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Fill in the required fields:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Title&lt;/strong&gt;: The display name for the menu item&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Keep it concise and descriptive&lt;/li&gt;
+&lt;li&gt;Use action words for better UX (e.g., &amp;ldquo;Shop Now&amp;rdquo;, &amp;ldquo;View Categories&amp;rdquo;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Step 2: Configure Link Type&lt;span class="hx:absolute hx:-mt-20" id="step-2-configure-link-type"&gt;&lt;/span&gt;
+&lt;a href="#step-2-configure-link-type" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Link Type&lt;/strong&gt; determines the menu item&amp;rsquo;s behavior:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Use Case&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Page&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Links to static page created in Pages Module&lt;/td&gt;
+&lt;td&gt;About Us, Terms, Privacy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Product&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Direct link to specific product&lt;/td&gt;
+&lt;td&gt;Featured items, Bestsellers&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Product Category&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Links to category listing&lt;/td&gt;
+&lt;td&gt;Shop by Department&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Content Category&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Links to content collections&lt;/td&gt;
+&lt;td&gt;Blog, News, Resources&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;External Link&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Links to external URL or custom page&lt;/td&gt;
+&lt;td&gt;Social media, Partner sites&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4&gt;Step 3: Link Configuration&lt;span class="hx:absolute hx:-mt-20" id="step-3-link-configuration"&gt;&lt;/span&gt;
+&lt;a href="#step-3-link-configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Based on the selected Link Type:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;For Page&lt;/strong&gt;: Select from dropdown of created pages&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;For Product&lt;/strong&gt;: Search and select specific product&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;For Product Category&lt;/strong&gt;: Choose from category tree&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;For Content Category&lt;/strong&gt;: Select content category&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;For External Link&lt;/strong&gt;: Enter full URL (https://&amp;hellip;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Step 4: Display Settings&lt;span class="hx:absolute hx:-mt-20" id="step-4-display-settings"&gt;&lt;/span&gt;
+&lt;a href="#step-4-display-settings" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Status&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Active - Menu item is visible&lt;/li&gt;
+&lt;li&gt;Inactive - Hidden from website&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Redirect Type&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Same Window - Opens in current tab (default)&lt;/li&gt;
+&lt;li&gt;New Window - Opens in new tab (for external links)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Step 5: Menu Hierarchy&lt;span class="hx:absolute hx:-mt-20" id="step-5-menu-hierarchy"&gt;&lt;/span&gt;
+&lt;a href="#step-5-menu-hierarchy" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Nest Menu Item&lt;/strong&gt;: Check to make this a sub-menu item&lt;/p&gt;
+&lt;p&gt;If nesting is enabled:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Parent Menu&lt;/strong&gt;: Select the parent menu item&lt;/li&gt;
+&lt;li&gt;The item will appear as a dropdown under the parent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Menu Hierarchy Example&lt;span class="hx:absolute hx:-mt-20" id="menu-hierarchy-example"&gt;&lt;/span&gt;
+&lt;a href="#menu-hierarchy-example" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Home (Level 1)
 Shop (Level 1)
 ├── Electronics (Level 2)
 │ ├── Computers (Level 3)
@@ -319,352 +319,352 @@ Shop (Level 1)
 │ └── Women&amp;#39;s Clothing (Level 3)
 └── Clearance (Level 2)
 About Us (Level 1)
-Contact (Level 1)&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+Contact (Level 1)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h2>Pages Module&lt;span class="hx:absolute hx:-mt-20" id="pages-module">&lt;/span>
-&lt;a href="#pages-module" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The Pages Module allows creation of static content pages for your CP-Commerce website, perfect for information pages, policies, and custom content.&lt;/p>
-&lt;h3>Creating Static Pages&lt;span class="hx:absolute hx:-mt-20" id="creating-static-pages">&lt;/span>
-&lt;a href="#creating-static-pages" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>Step 1: Page Setup&lt;span class="hx:absolute hx:-mt-20" id="step-1-page-setup">&lt;/span>
-&lt;a href="#step-1-page-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ol>
-&lt;li>Navigate to &lt;strong>CP-Commerce&lt;/strong> &amp;gt; &lt;strong>Pages Module&lt;/strong>&lt;/li>
-&lt;li>Click &lt;strong>&amp;ldquo;Create New Page&amp;rdquo;&lt;/strong>&lt;/li>
-&lt;/ol>
-&lt;h4>Step 2: Page Configuration&lt;span class="hx:absolute hx:-mt-20" id="step-2-page-configuration">&lt;/span>
-&lt;a href="#step-2-page-configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Title&lt;/strong>: The page title&lt;/p>
-&lt;ul>
-&lt;li>Displayed in browser tab&lt;/li>
-&lt;li>Used in page headers&lt;/li>
-&lt;li>Important for SEO&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>URL Key&lt;/strong>: The page&amp;rsquo;s web address&lt;/p>
-&lt;ul>
-&lt;li>Must be unique&lt;/li>
-&lt;li>Use lowercase letters and hyphens&lt;/li>
-&lt;li>Example: &lt;code>about-us&lt;/code>, &lt;code>return-policy&lt;/code>, &lt;code>shipping-info&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Status&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Active - Page is accessible&lt;/li>
-&lt;li>Inactive - Page is hidden (useful for drafts)&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Content Category&lt;/strong>: (Optional)&lt;/p>
-&lt;ul>
-&lt;li>Group related pages&lt;/li>
-&lt;li>Helps with organization&lt;/li>
-&lt;li>Can be used for automated menus&lt;/li>
-&lt;/ul>
-&lt;h4>Step 3: Page Content&lt;span class="hx:absolute hx:-mt-20" id="step-3-page-content">&lt;/span>
-&lt;a href="#step-3-page-content" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Content Editor&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Supports HTML and plain text&lt;/li>
-&lt;li>Rich text formatting available&lt;/li>
-&lt;li>Can include:
-&lt;ul>
-&lt;li>Text and headings&lt;/li>
-&lt;li>Images and media&lt;/li>
-&lt;li>Tables and lists&lt;/li>
-&lt;li>Custom HTML/CSS&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h3>Common Static Pages&lt;span class="hx:absolute hx:-mt-20" id="common-static-pages">&lt;/span>
-&lt;a href="#common-static-pages" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>Essential Pages&lt;span class="hx:absolute hx:-mt-20" id="essential-pages">&lt;/span>
-&lt;a href="#essential-pages" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>About Us&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Company history&lt;/li>
-&lt;li>Mission and values&lt;/li>
-&lt;li>Team information&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Terms &amp;amp; Conditions&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Service terms&lt;/li>
-&lt;li>User agreements&lt;/li>
-&lt;li>Legal disclaimers&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Privacy Policy&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Data collection practices&lt;/li>
-&lt;li>User rights&lt;/li>
-&lt;li>Cookie policy&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Shipping Information&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Delivery zones&lt;/li>
-&lt;li>Shipping rates&lt;/li>
-&lt;li>Estimated times&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Return Policy&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Return conditions&lt;/li>
-&lt;li>Process steps&lt;/li>
-&lt;li>Refund timeline&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;h4>Marketing Pages&lt;span class="hx:absolute hx:-mt-20" id="marketing-pages">&lt;/span>
-&lt;a href="#marketing-pages" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>Landing Pages&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Campaign-specific content&lt;/li>
-&lt;li>Product launches&lt;/li>
-&lt;li>Seasonal promotions&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>FAQ Pages&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Common questions&lt;/li>
-&lt;li>Product guides&lt;/li>
-&lt;li>Support information&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;h3>Content Best Practices&lt;span class="hx:absolute hx:-mt-20" id="content-best-practices">&lt;/span>
-&lt;a href="#content-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>SEO Optimization&lt;span class="hx:absolute hx:-mt-20" id="seo-optimization">&lt;/span>
-&lt;a href="#seo-optimization" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>Use descriptive titles with keywords&lt;/li>
-&lt;li>Create unique URL keys&lt;/li>
-&lt;li>Include meta descriptions&lt;/li>
-&lt;li>Use proper heading hierarchy (H1, H2, H3)&lt;/li>
-&lt;/ul>
-&lt;h4>Content Structure&lt;span class="hx:absolute hx:-mt-20" id="content-structure">&lt;/span>
-&lt;a href="#content-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;Page Title&amp;lt;/&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;Introduction paragraph...&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">h2&lt;/span>&amp;gt;Section Heading&amp;lt;/&lt;span style="color:#f92672">h2&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;Section content...&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">h3&lt;/span>&amp;gt;Subsection&amp;lt;/&lt;span style="color:#f92672">h3&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">ul&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">li&lt;/span>&amp;gt;Point 1&amp;lt;/&lt;span style="color:#f92672">li&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">li&lt;/span>&amp;gt;Point 2&amp;lt;/&lt;span style="color:#f92672">li&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">ul&lt;/span>&amp;gt;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Pages Module&lt;span class="hx:absolute hx:-mt-20" id="pages-module"&gt;&lt;/span&gt;
+&lt;a href="#pages-module" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The Pages Module allows creation of static content pages for your CP-Commerce website, perfect for information pages, policies, and custom content.&lt;/p&gt;
+&lt;h3&gt;Creating Static Pages&lt;span class="hx:absolute hx:-mt-20" id="creating-static-pages"&gt;&lt;/span&gt;
+&lt;a href="#creating-static-pages" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Step 1: Page Setup&lt;span class="hx:absolute hx:-mt-20" id="step-1-page-setup"&gt;&lt;/span&gt;
+&lt;a href="#step-1-page-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;Navigate to &lt;strong&gt;CP-Commerce&lt;/strong&gt; &amp;gt; &lt;strong&gt;Pages Module&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Click &lt;strong&gt;&amp;ldquo;Create New Page&amp;rdquo;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Step 2: Page Configuration&lt;span class="hx:absolute hx:-mt-20" id="step-2-page-configuration"&gt;&lt;/span&gt;
+&lt;a href="#step-2-page-configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Title&lt;/strong&gt;: The page title&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Displayed in browser tab&lt;/li&gt;
+&lt;li&gt;Used in page headers&lt;/li&gt;
+&lt;li&gt;Important for SEO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;URL Key&lt;/strong&gt;: The page&amp;rsquo;s web address&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Must be unique&lt;/li&gt;
+&lt;li&gt;Use lowercase letters and hyphens&lt;/li&gt;
+&lt;li&gt;Example: &lt;code&gt;about-us&lt;/code&gt;, &lt;code&gt;return-policy&lt;/code&gt;, &lt;code&gt;shipping-info&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Status&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Active - Page is accessible&lt;/li&gt;
+&lt;li&gt;Inactive - Page is hidden (useful for drafts)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Content Category&lt;/strong&gt;: (Optional)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Group related pages&lt;/li&gt;
+&lt;li&gt;Helps with organization&lt;/li&gt;
+&lt;li&gt;Can be used for automated menus&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Step 3: Page Content&lt;span class="hx:absolute hx:-mt-20" id="step-3-page-content"&gt;&lt;/span&gt;
+&lt;a href="#step-3-page-content" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Content Editor&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Supports HTML and plain text&lt;/li&gt;
+&lt;li&gt;Rich text formatting available&lt;/li&gt;
+&lt;li&gt;Can include:
+&lt;ul&gt;
+&lt;li&gt;Text and headings&lt;/li&gt;
+&lt;li&gt;Images and media&lt;/li&gt;
+&lt;li&gt;Tables and lists&lt;/li&gt;
+&lt;li&gt;Custom HTML/CSS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Common Static Pages&lt;span class="hx:absolute hx:-mt-20" id="common-static-pages"&gt;&lt;/span&gt;
+&lt;a href="#common-static-pages" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Essential Pages&lt;span class="hx:absolute hx:-mt-20" id="essential-pages"&gt;&lt;/span&gt;
+&lt;a href="#essential-pages" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;About Us&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Company history&lt;/li&gt;
+&lt;li&gt;Mission and values&lt;/li&gt;
+&lt;li&gt;Team information&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Terms &amp;amp; Conditions&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Service terms&lt;/li&gt;
+&lt;li&gt;User agreements&lt;/li&gt;
+&lt;li&gt;Legal disclaimers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Privacy Policy&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Data collection practices&lt;/li&gt;
+&lt;li&gt;User rights&lt;/li&gt;
+&lt;li&gt;Cookie policy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Shipping Information&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Delivery zones&lt;/li&gt;
+&lt;li&gt;Shipping rates&lt;/li&gt;
+&lt;li&gt;Estimated times&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Return Policy&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Return conditions&lt;/li&gt;
+&lt;li&gt;Process steps&lt;/li&gt;
+&lt;li&gt;Refund timeline&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Marketing Pages&lt;span class="hx:absolute hx:-mt-20" id="marketing-pages"&gt;&lt;/span&gt;
+&lt;a href="#marketing-pages" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Landing Pages&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Campaign-specific content&lt;/li&gt;
+&lt;li&gt;Product launches&lt;/li&gt;
+&lt;li&gt;Seasonal promotions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;FAQ Pages&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Common questions&lt;/li&gt;
+&lt;li&gt;Product guides&lt;/li&gt;
+&lt;li&gt;Support information&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Content Best Practices&lt;span class="hx:absolute hx:-mt-20" id="content-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#content-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;SEO Optimization&lt;span class="hx:absolute hx:-mt-20" id="seo-optimization"&gt;&lt;/span&gt;
+&lt;a href="#seo-optimization" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Use descriptive titles with keywords&lt;/li&gt;
+&lt;li&gt;Create unique URL keys&lt;/li&gt;
+&lt;li&gt;Include meta descriptions&lt;/li&gt;
+&lt;li&gt;Use proper heading hierarchy (H1, H2, H3)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Content Structure&lt;span class="hx:absolute hx:-mt-20" id="content-structure"&gt;&lt;/span&gt;
+&lt;a href="#content-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;h1&lt;/span&gt;&amp;gt;Page Title&amp;lt;/&lt;span style="color:#f92672"&gt;h1&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;Introduction paragraph...&amp;lt;/&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;h2&lt;/span&gt;&amp;gt;Section Heading&amp;lt;/&lt;span style="color:#f92672"&gt;h2&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;Section content...&amp;lt;/&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;h3&lt;/span&gt;&amp;gt;Subsection&amp;lt;/&lt;span style="color:#f92672"&gt;h3&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;ul&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#f92672"&gt;li&lt;/span&gt;&amp;gt;Point 1&amp;lt;/&lt;span style="color:#f92672"&gt;li&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#f92672"&gt;li&lt;/span&gt;&amp;gt;Point 2&amp;lt;/&lt;span style="color:#f92672"&gt;li&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;/&lt;span style="color:#f92672"&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h4>Mobile Responsiveness&lt;span class="hx:absolute hx:-mt-20" id="mobile-responsiveness">&lt;/span>
-&lt;a href="#mobile-responsiveness" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>Test content on mobile devices&lt;/li>
-&lt;li>Use responsive images&lt;/li>
-&lt;li>Avoid complex tables&lt;/li>
-&lt;li>Keep paragraphs short&lt;/li>
-&lt;/ul>
-&lt;h2>Integration Tips&lt;span class="hx:absolute hx:-mt-20" id="integration-tips">&lt;/span>
-&lt;a href="#integration-tips" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Linking Menus to Pages&lt;span class="hx:absolute hx:-mt-20" id="linking-menus-to-pages">&lt;/span>
-&lt;a href="#linking-menus-to-pages" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Create the page first in Pages Module&lt;/li>
-&lt;li>Set page status to Active&lt;/li>
-&lt;li>Create menu item with Link Type = Page&lt;/li>
-&lt;li>Select the created page from dropdown&lt;/li>
-&lt;/ol>
-&lt;h3>Dynamic Content Integration&lt;span class="hx:absolute hx:-mt-20" id="dynamic-content-integration">&lt;/span>
-&lt;a href="#dynamic-content-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>While Pages Module creates static content, you can enhance with:&lt;/p>
-&lt;ul>
-&lt;li>Product widgets&lt;/li>
-&lt;li>Category listings&lt;/li>
-&lt;li>Newsletter signup forms&lt;/li>
-&lt;li>Contact forms&lt;/li>
-&lt;/ul>
-&lt;h3>Multi-language Support&lt;span class="hx:absolute hx:-mt-20" id="multi-language-support">&lt;/span>
-&lt;a href="#multi-language-support" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>For multi-language sites:&lt;/p>
-&lt;ol>
-&lt;li>Create separate pages for each language&lt;/li>
-&lt;li>Use language-specific URL keys&lt;/li>
-&lt;li>Organize with content categories by language&lt;/li>
-&lt;/ol>
-&lt;h2>Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting">&lt;/span>
-&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Menu Not Appearing&lt;span class="hx:absolute hx:-mt-20" id="menu-not-appearing">&lt;/span>
-&lt;a href="#menu-not-appearing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Check menu status is Active&lt;/li>
-&lt;li>Verify parent menu (if nested) is Active&lt;/li>
-&lt;li>Clear website cache&lt;/li>
-&lt;li>Check user permissions&lt;/li>
-&lt;/ul>
-&lt;h3>Page Not Found (404)&lt;span class="hx:absolute hx:-mt-20" id="page-not-found-404">&lt;/span>
-&lt;a href="#page-not-found-404" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Verify URL key is correct&lt;/li>
-&lt;li>Ensure page status is Active&lt;/li>
-&lt;li>Check for duplicate URL keys&lt;/li>
-&lt;li>Clear browser cache&lt;/li>
-&lt;/ul>
-&lt;h3>Content Not Updating&lt;span class="hx:absolute hx:-mt-20" id="content-not-updating">&lt;/span>
-&lt;a href="#content-not-updating" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Clear CP-Commerce cache&lt;/li>
-&lt;li>Check if changes were saved&lt;/li>
-&lt;li>Verify you&amp;rsquo;re editing the correct page&lt;/li>
-&lt;li>Try hard refresh (Ctrl+F5)&lt;/li>
-&lt;/ul>
-&lt;h2>Related Documentation&lt;span class="hx:absolute hx:-mt-20" id="related-documentation">&lt;/span>
-&lt;a href="#related-documentation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/ecommerce/cp-commerce/" >CP-Commerce Overview&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/ecommerce/website-configuration/" >Website Configuration&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/ecommerce/" >E-Commerce Integration&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/" >Content Management Best Practices&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Category Groups Management</title><link>https://wiki.bigledger.com/modules/inventory/category-groups/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/inventory/category-groups/</guid><description>
-&lt;p>Category Groups provide a hierarchical structure for organizing your inventory categories in BigLedger. This system helps maintain consistency across your product catalog and simplifies inventory management.&lt;/p>
-&lt;h2>Overview&lt;span class="hx:absolute hx:-mt-20" id="overview">&lt;/span>
-&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Under category groups, users can create and edit categories and specify relationships between category groups and individual categories. When creating items in the Item menu, you specify their category assignment.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Note&lt;/strong>: Category groups and item categories can be managed from both Document Item Maintenance and Inventory Item Maintenance applets. Every category is linked to a Category Group for better organization.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h2>Creating Category Groups&lt;span class="hx:absolute hx:-mt-20" id="creating-category-groups">&lt;/span>
-&lt;a href="#creating-category-groups" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Step 1: Access Category Groups&lt;span class="hx:absolute hx:-mt-20" id="step-1-access-category-groups">&lt;/span>
-&lt;a href="#step-1-access-category-groups" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Navigate to &lt;strong>Inventory&lt;/strong> &amp;gt; &lt;strong>Category Groups&lt;/strong>&lt;/li>
-&lt;li>Click the &lt;strong>&amp;quot;+&amp;quot;&lt;/strong> button to create a new category group&lt;/li>
-&lt;li>A third container will open for category group creation&lt;/li>
-&lt;/ol>
-&lt;h3>Step 2: Fill in Category Group Details&lt;span class="hx:absolute hx:-mt-20" id="step-2-fill-in-category-group-details">&lt;/span>
-&lt;a href="#step-2-fill-in-category-group-details" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Complete these required fields in the main tab:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Field&lt;/th>
-&lt;th>Description&lt;/th>
-&lt;th>Example&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Category Group Code&lt;/strong>&lt;/td>
-&lt;td>Unique identifier for the group&lt;/td>
-&lt;td>&lt;code>ELEC&lt;/code>, &lt;code>FURN&lt;/code>, &lt;code>FOOD&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Category Group Name&lt;/strong>&lt;/td>
-&lt;td>Descriptive name for the group&lt;/td>
-&lt;td>&lt;code>Electronics&lt;/code>, &lt;code>Furniture&lt;/code>, &lt;code>Food &amp;amp; Beverage&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Type&lt;/strong>&lt;/td>
-&lt;td>Classification type&lt;/td>
-&lt;td>&lt;code>Product&lt;/code>, &lt;code>Service&lt;/code>, &lt;code>Raw Material&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Param Code&lt;/strong>&lt;/td>
-&lt;td>Parameter code for system integration&lt;/td>
-&lt;td>Optional&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Param Name&lt;/strong>&lt;/td>
-&lt;td>Parameter description&lt;/td>
-&lt;td>Optional&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Status&lt;/strong>&lt;/td>
-&lt;td>Active/Inactive status&lt;/td>
-&lt;td>&lt;code>Active&lt;/code>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3>Step 3: Save Category Group&lt;span class="hx:absolute hx:-mt-20" id="step-3-save-category-group">&lt;/span>
-&lt;a href="#step-3-save-category-group" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Click &lt;strong>Save&lt;/strong> to create the category group. The system will validate for duplicate codes and required fields.&lt;/p>
-&lt;h2>Editing Category Groups&lt;span class="hx:absolute hx:-mt-20" id="editing-category-groups">&lt;/span>
-&lt;a href="#editing-category-groups" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Accessing Edit Mode&lt;span class="hx:absolute hx:-mt-20" id="accessing-edit-mode">&lt;/span>
-&lt;a href="#accessing-edit-mode" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Click on any category group in the listing&lt;/li>
-&lt;li>A second container opens with category group details&lt;/li>
-&lt;li>Two tabs are available for editing&lt;/li>
-&lt;/ol>
-&lt;h3>Main Tab&lt;span class="hx:absolute hx:-mt-20" id="main-tab">&lt;/span>
-&lt;a href="#main-tab" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>The Main tab displays all information entered during category creation:&lt;/p>
-&lt;ul>
-&lt;li>Edit category group properties&lt;/li>
-&lt;li>Update status (Active/Inactive)&lt;/li>
-&lt;li>Delete category group (if no categories are linked)&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Caution&lt;/strong>: Deleting a category group will affect all linked categories. Ensure no active items are using these categories before deletion.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h3>Categories Tab&lt;span class="hx:absolute hx:-mt-20" id="categories-tab">&lt;/span>
-&lt;a href="#categories-tab" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>The Categories tab shows all linked categories within the group:&lt;/p>
-&lt;ul>
-&lt;li>View all categories in the group&lt;/li>
-&lt;li>Add new categories&lt;/li>
-&lt;li>Edit existing categories&lt;/li>
-&lt;li>Remove category associations&lt;/li>
-&lt;/ul>
-&lt;h2>Managing Categories&lt;span class="hx:absolute hx:-mt-20" id="managing-categories">&lt;/span>
-&lt;a href="#managing-categories" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Creating Categories&lt;span class="hx:absolute hx:-mt-20" id="creating-categories">&lt;/span>
-&lt;a href="#creating-categories" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>To add categories to a group:&lt;/p>
-&lt;ol>
-&lt;li>Open the category group&lt;/li>
-&lt;li>Navigate to the &lt;strong>Categories&lt;/strong> tab&lt;/li>
-&lt;li>Click the &lt;strong>&amp;quot;+&amp;quot;&lt;/strong> button&lt;/li>
-&lt;li>Fill in category details:
-&lt;ul>
-&lt;li>Category Code&lt;/li>
-&lt;li>Category Name&lt;/li>
-&lt;li>Description&lt;/li>
-&lt;li>Sort Order&lt;/li>
-&lt;li>Status&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;h3>Editing/Deleting Categories&lt;span class="hx:absolute hx:-mt-20" id="editingdeleting-categories">&lt;/span>
-&lt;a href="#editingdeleting-categories" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Access category details by clicking on any category in the list:&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>Main Tab&lt;/strong>: Edit category properties&lt;/p>
-&lt;ul>
-&lt;li>Update category information&lt;/li>
-&lt;li>Change status&lt;/li>
-&lt;li>Delete category&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Manage Image Tab&lt;/strong>: Handle category images&lt;/p>
-&lt;ul>
-&lt;li>Upload category images&lt;/li>
-&lt;li>Replace existing images&lt;/li>
-&lt;li>Support for multiple image formats (JPG, PNG, GIF)&lt;/li>
-&lt;li>Recommended image size: 500x500 pixels&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;h2>Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices">&lt;/span>
-&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Naming Conventions&lt;span class="hx:absolute hx:-mt-20" id="naming-conventions">&lt;/span>
-&lt;a href="#naming-conventions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Use consistent coding patterns (e.g., &lt;code>ELEC-001&lt;/code>, &lt;code>ELEC-002&lt;/code>)&lt;/li>
-&lt;li>Keep names descriptive but concise&lt;/li>
-&lt;li>Avoid special characters in codes&lt;/li>
-&lt;/ul>
-&lt;h3>Category Hierarchy&lt;span class="hx:absolute hx:-mt-20" id="category-hierarchy">&lt;/span>
-&lt;a href="#category-hierarchy" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Example structure:&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>Electronics (ELEC)
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;Mobile Responsiveness&lt;span class="hx:absolute hx:-mt-20" id="mobile-responsiveness"&gt;&lt;/span&gt;
+&lt;a href="#mobile-responsiveness" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Test content on mobile devices&lt;/li&gt;
+&lt;li&gt;Use responsive images&lt;/li&gt;
+&lt;li&gt;Avoid complex tables&lt;/li&gt;
+&lt;li&gt;Keep paragraphs short&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration Tips&lt;span class="hx:absolute hx:-mt-20" id="integration-tips"&gt;&lt;/span&gt;
+&lt;a href="#integration-tips" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Linking Menus to Pages&lt;span class="hx:absolute hx:-mt-20" id="linking-menus-to-pages"&gt;&lt;/span&gt;
+&lt;a href="#linking-menus-to-pages" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Create the page first in Pages Module&lt;/li&gt;
+&lt;li&gt;Set page status to Active&lt;/li&gt;
+&lt;li&gt;Create menu item with Link Type = Page&lt;/li&gt;
+&lt;li&gt;Select the created page from dropdown&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Dynamic Content Integration&lt;span class="hx:absolute hx:-mt-20" id="dynamic-content-integration"&gt;&lt;/span&gt;
+&lt;a href="#dynamic-content-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;While Pages Module creates static content, you can enhance with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Product widgets&lt;/li&gt;
+&lt;li&gt;Category listings&lt;/li&gt;
+&lt;li&gt;Newsletter signup forms&lt;/li&gt;
+&lt;li&gt;Contact forms&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Multi-language Support&lt;span class="hx:absolute hx:-mt-20" id="multi-language-support"&gt;&lt;/span&gt;
+&lt;a href="#multi-language-support" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;For multi-language sites:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create separate pages for each language&lt;/li&gt;
+&lt;li&gt;Use language-specific URL keys&lt;/li&gt;
+&lt;li&gt;Organize with content categories by language&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Menu Not Appearing&lt;span class="hx:absolute hx:-mt-20" id="menu-not-appearing"&gt;&lt;/span&gt;
+&lt;a href="#menu-not-appearing" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Check menu status is Active&lt;/li&gt;
+&lt;li&gt;Verify parent menu (if nested) is Active&lt;/li&gt;
+&lt;li&gt;Clear website cache&lt;/li&gt;
+&lt;li&gt;Check user permissions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Page Not Found (404)&lt;span class="hx:absolute hx:-mt-20" id="page-not-found-404"&gt;&lt;/span&gt;
+&lt;a href="#page-not-found-404" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Verify URL key is correct&lt;/li&gt;
+&lt;li&gt;Ensure page status is Active&lt;/li&gt;
+&lt;li&gt;Check for duplicate URL keys&lt;/li&gt;
+&lt;li&gt;Clear browser cache&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Content Not Updating&lt;span class="hx:absolute hx:-mt-20" id="content-not-updating"&gt;&lt;/span&gt;
+&lt;a href="#content-not-updating" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Clear CP-Commerce cache&lt;/li&gt;
+&lt;li&gt;Check if changes were saved&lt;/li&gt;
+&lt;li&gt;Verify you&amp;rsquo;re editing the correct page&lt;/li&gt;
+&lt;li&gt;Try hard refresh (Ctrl+F5)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Related Documentation&lt;span class="hx:absolute hx:-mt-20" id="related-documentation"&gt;&lt;/span&gt;
+&lt;a href="#related-documentation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/ecommerce/cp-commerce/" &gt;CP-Commerce Overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/ecommerce/website-configuration/" &gt;Website Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/ecommerce/" &gt;E-Commerce Integration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/" &gt;Content Management Best Practices&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Category Groups Management</title><link>https://wiki.bigledger.com/modules/inventory/category-groups/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/inventory/category-groups/</guid><description>
+&lt;p&gt;Category Groups provide a hierarchical structure for organizing your inventory categories in BigLedger. This system helps maintain consistency across your product catalog and simplifies inventory management.&lt;/p&gt;
+&lt;h2&gt;Overview&lt;span class="hx:absolute hx:-mt-20" id="overview"&gt;&lt;/span&gt;
+&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Under category groups, users can create and edit categories and specify relationships between category groups and individual categories. When creating items in the Item menu, you specify their category assignment.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Note&lt;/strong&gt;: Category groups and item categories can be managed from both Document Item Maintenance and Inventory Item Maintenance applets. Every category is linked to a Category Group for better organization.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Creating Category Groups&lt;span class="hx:absolute hx:-mt-20" id="creating-category-groups"&gt;&lt;/span&gt;
+&lt;a href="#creating-category-groups" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Step 1: Access Category Groups&lt;span class="hx:absolute hx:-mt-20" id="step-1-access-category-groups"&gt;&lt;/span&gt;
+&lt;a href="#step-1-access-category-groups" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Navigate to &lt;strong&gt;Inventory&lt;/strong&gt; &amp;gt; &lt;strong&gt;Category Groups&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;&amp;quot;+&amp;quot;&lt;/strong&gt; button to create a new category group&lt;/li&gt;
+&lt;li&gt;A third container will open for category group creation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Step 2: Fill in Category Group Details&lt;span class="hx:absolute hx:-mt-20" id="step-2-fill-in-category-group-details"&gt;&lt;/span&gt;
+&lt;a href="#step-2-fill-in-category-group-details" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Complete these required fields in the main tab:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Field&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Example&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Category Group Code&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Unique identifier for the group&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;ELEC&lt;/code&gt;, &lt;code&gt;FURN&lt;/code&gt;, &lt;code&gt;FOOD&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Category Group Name&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Descriptive name for the group&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Electronics&lt;/code&gt;, &lt;code&gt;Furniture&lt;/code&gt;, &lt;code&gt;Food &amp;amp; Beverage&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Type&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Classification type&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Product&lt;/code&gt;, &lt;code&gt;Service&lt;/code&gt;, &lt;code&gt;Raw Material&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Param Code&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Parameter code for system integration&lt;/td&gt;
+&lt;td&gt;Optional&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Param Name&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Parameter description&lt;/td&gt;
+&lt;td&gt;Optional&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Status&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Active/Inactive status&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;Active&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;Step 3: Save Category Group&lt;span class="hx:absolute hx:-mt-20" id="step-3-save-category-group"&gt;&lt;/span&gt;
+&lt;a href="#step-3-save-category-group" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Click &lt;strong&gt;Save&lt;/strong&gt; to create the category group. The system will validate for duplicate codes and required fields.&lt;/p&gt;
+&lt;h2&gt;Editing Category Groups&lt;span class="hx:absolute hx:-mt-20" id="editing-category-groups"&gt;&lt;/span&gt;
+&lt;a href="#editing-category-groups" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Accessing Edit Mode&lt;span class="hx:absolute hx:-mt-20" id="accessing-edit-mode"&gt;&lt;/span&gt;
+&lt;a href="#accessing-edit-mode" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Click on any category group in the listing&lt;/li&gt;
+&lt;li&gt;A second container opens with category group details&lt;/li&gt;
+&lt;li&gt;Two tabs are available for editing&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Main Tab&lt;span class="hx:absolute hx:-mt-20" id="main-tab"&gt;&lt;/span&gt;
+&lt;a href="#main-tab" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The Main tab displays all information entered during category creation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Edit category group properties&lt;/li&gt;
+&lt;li&gt;Update status (Active/Inactive)&lt;/li&gt;
+&lt;li&gt;Delete category group (if no categories are linked)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Caution&lt;/strong&gt;: Deleting a category group will affect all linked categories. Ensure no active items are using these categories before deletion.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Categories Tab&lt;span class="hx:absolute hx:-mt-20" id="categories-tab"&gt;&lt;/span&gt;
+&lt;a href="#categories-tab" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The Categories tab shows all linked categories within the group:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;View all categories in the group&lt;/li&gt;
+&lt;li&gt;Add new categories&lt;/li&gt;
+&lt;li&gt;Edit existing categories&lt;/li&gt;
+&lt;li&gt;Remove category associations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Managing Categories&lt;span class="hx:absolute hx:-mt-20" id="managing-categories"&gt;&lt;/span&gt;
+&lt;a href="#managing-categories" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Creating Categories&lt;span class="hx:absolute hx:-mt-20" id="creating-categories"&gt;&lt;/span&gt;
+&lt;a href="#creating-categories" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;To add categories to a group:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the category group&lt;/li&gt;
+&lt;li&gt;Navigate to the &lt;strong&gt;Categories&lt;/strong&gt; tab&lt;/li&gt;
+&lt;li&gt;Click the &lt;strong&gt;&amp;quot;+&amp;quot;&lt;/strong&gt; button&lt;/li&gt;
+&lt;li&gt;Fill in category details:
+&lt;ul&gt;
+&lt;li&gt;Category Code&lt;/li&gt;
+&lt;li&gt;Category Name&lt;/li&gt;
+&lt;li&gt;Description&lt;/li&gt;
+&lt;li&gt;Sort Order&lt;/li&gt;
+&lt;li&gt;Status&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Editing/Deleting Categories&lt;span class="hx:absolute hx:-mt-20" id="editingdeleting-categories"&gt;&lt;/span&gt;
+&lt;a href="#editingdeleting-categories" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Access category details by clicking on any category in the list:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Main Tab&lt;/strong&gt;: Edit category properties&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Update category information&lt;/li&gt;
+&lt;li&gt;Change status&lt;/li&gt;
+&lt;li&gt;Delete category&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Manage Image Tab&lt;/strong&gt;: Handle category images&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Upload category images&lt;/li&gt;
+&lt;li&gt;Replace existing images&lt;/li&gt;
+&lt;li&gt;Support for multiple image formats (JPG, PNG, GIF)&lt;/li&gt;
+&lt;li&gt;Recommended image size: 500x500 pixels&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices"&gt;&lt;/span&gt;
+&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Naming Conventions&lt;span class="hx:absolute hx:-mt-20" id="naming-conventions"&gt;&lt;/span&gt;
+&lt;a href="#naming-conventions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Use consistent coding patterns (e.g., &lt;code&gt;ELEC-001&lt;/code&gt;, &lt;code&gt;ELEC-002&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;Keep names descriptive but concise&lt;/li&gt;
+&lt;li&gt;Avoid special characters in codes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Category Hierarchy&lt;span class="hx:absolute hx:-mt-20" id="category-hierarchy"&gt;&lt;/span&gt;
+&lt;a href="#category-hierarchy" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Example structure:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Electronics (ELEC)
 ├── Computers (ELEC-COMP)
 │ ├── Laptops (ELEC-COMP-LAP)
 │ ├── Desktops (ELEC-COMP-DSK)
@@ -674,646 +674,646 @@ title="Copy code"
 │ └── Accessories (ELEC-MOB-ACC)
 └── Audio/Video (ELEC-AV)
 ├── Televisions (ELEC-AV-TV)
-└── Sound Systems (ELEC-AV-SND)&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+└── Sound Systems (ELEC-AV-SND)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Maintenance Tips&lt;span class="hx:absolute hx:-mt-20" id="maintenance-tips">&lt;/span>
-&lt;a href="#maintenance-tips" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Regular Review&lt;/strong>: Periodically review category structures&lt;/li>
-&lt;li>&lt;strong>Consolidation&lt;/strong>: Merge similar categories to avoid duplication&lt;/li>
-&lt;li>&lt;strong>Documentation&lt;/strong>: Maintain a category guide for staff reference&lt;/li>
-&lt;li>&lt;strong>Training&lt;/strong>: Ensure staff understand category assignment rules&lt;/li>
-&lt;/ol>
-&lt;h2>Integration with Other Modules&lt;span class="hx:absolute hx:-mt-20" id="integration-with-other-modules">&lt;/span>
-&lt;a href="#integration-with-other-modules" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Category Groups integrate with:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Inventory Management&lt;/strong>: Product classification&lt;/li>
-&lt;li>&lt;strong>Purchasing&lt;/strong>: Vendor category preferences&lt;/li>
-&lt;li>&lt;strong>Sales&lt;/strong>: Category-based promotions&lt;/li>
-&lt;li>&lt;strong>Reporting&lt;/strong>: Category performance analysis&lt;/li>
-&lt;li>&lt;strong>E-Commerce&lt;/strong>: Online store navigation&lt;/li>
-&lt;/ul>
-&lt;h2>Common Use Cases&lt;span class="hx:absolute hx:-mt-20" id="common-use-cases">&lt;/span>
-&lt;a href="#common-use-cases" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Retail Operations&lt;span class="hx:absolute hx:-mt-20" id="retail-operations">&lt;/span>
-&lt;a href="#retail-operations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Department-based categorization&lt;/li>
-&lt;li>Seasonal product grouping&lt;/li>
-&lt;li>Brand-based organization&lt;/li>
-&lt;/ul>
-&lt;h3>Manufacturing&lt;span class="hx:absolute hx:-mt-20" id="manufacturing">&lt;/span>
-&lt;a href="#manufacturing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Raw material classification&lt;/li>
-&lt;li>Finished goods categorization&lt;/li>
-&lt;li>Component grouping&lt;/li>
-&lt;/ul>
-&lt;h3>Services&lt;span class="hx:absolute hx:-mt-20" id="services">&lt;/span>
-&lt;a href="#services" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Service type categorization&lt;/li>
-&lt;li>Skill-based grouping&lt;/li>
-&lt;li>Time-based service classification&lt;/li>
-&lt;/ul>
-&lt;h2>Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting">&lt;/span>
-&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Cannot Delete Category Group&lt;span class="hx:absolute hx:-mt-20" id="cannot-delete-category-group">&lt;/span>
-&lt;a href="#cannot-delete-category-group" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Check for linked categories&lt;/li>
-&lt;li>Verify no active items use the categories&lt;/li>
-&lt;li>Review any pending transactions&lt;/li>
-&lt;/ul>
-&lt;h3>Category Not Appearing in Item Creation&lt;span class="hx:absolute hx:-mt-20" id="category-not-appearing-in-item-creation">&lt;/span>
-&lt;a href="#category-not-appearing-in-item-creation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Confirm category status is Active&lt;/li>
-&lt;li>Check category group status&lt;/li>
-&lt;li>Verify user permissions&lt;/li>
-&lt;/ul>
-&lt;h3>Image Upload Issues&lt;span class="hx:absolute hx:-mt-20" id="image-upload-issues">&lt;/span>
-&lt;a href="#image-upload-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Check file format (JPG, PNG, GIF)&lt;/li>
-&lt;li>Verify file size (&amp;lt; 5MB recommended)&lt;/li>
-&lt;li>Clear browser cache&lt;/li>
-&lt;/ul>
-&lt;h2>Related Documentation&lt;span class="hx:absolute hx:-mt-20" id="related-documentation">&lt;/span>
-&lt;a href="#related-documentation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/item-maintenance/" >Item Maintenance&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/document-item-types/" >Document Item Types&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/inventory/" >Inventory Management&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/price-book/" >Price Book Configuration&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Customer Relationship Management (CRM)</title><link>https://wiki.bigledger.com/modules/crm/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/crm/</guid><description>
-&lt;h2>Overview&lt;span class="hx:absolute hx:-mt-20" id="overview">&lt;/span>
-&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The BigLedger CRM module provides a comprehensive solution for managing customer relationships, sales pipelines, and marketing campaigns. Built to help businesses understand, engage, and retain customers more effectively, it integrates seamlessly with all other BigLedger modules.&lt;/p>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>👥 Contact Management&lt;span class="hx:absolute hx:-mt-20" id="-contact-management">&lt;/span>
-&lt;a href="#-contact-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>Customer Database&lt;span class="hx:absolute hx:-mt-20" id="customer-database">&lt;/span>
-&lt;a href="#customer-database" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>360-Degree View&lt;/strong>: Complete customer profile with all interactions&lt;/li>
-&lt;li>&lt;strong>Contact Information&lt;/strong>: Multiple addresses, phones, emails&lt;/li>
-&lt;li>&lt;strong>Company Hierarchy&lt;/strong>: Parent/child company relationships&lt;/li>
-&lt;li>&lt;strong>Contact Roles&lt;/strong>: Decision makers, influencers, users&lt;/li>
-&lt;li>&lt;strong>Custom Fields&lt;/strong>: Industry-specific data capture&lt;/li>
-&lt;li>&lt;strong>Tags &amp;amp; Segmentation&lt;/strong>: Flexible categorization&lt;/li>
-&lt;li>&lt;strong>Activity Timeline&lt;/strong>: Complete interaction history&lt;/li>
-&lt;li>&lt;strong>Document Storage&lt;/strong>: Contracts, proposals, correspondence&lt;/li>
-&lt;/ul>
-&lt;h4>Lead Management&lt;span class="hx:absolute hx:-mt-20" id="lead-management">&lt;/span>
-&lt;a href="#lead-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Lead Capture&lt;/strong>: Web forms, email, API integration&lt;/li>
-&lt;li>&lt;strong>Lead Scoring&lt;/strong>: Automatic qualification based on criteria&lt;/li>
-&lt;li>&lt;strong>Lead Assignment&lt;/strong>: Round-robin or rule-based distribution&lt;/li>
-&lt;li>&lt;strong>Lead Nurturing&lt;/strong>: Automated follow-up sequences&lt;/li>
-&lt;li>&lt;strong>Duplicate Detection&lt;/strong>: Prevent duplicate entries&lt;/li>
-&lt;li>&lt;strong>Lead Source Tracking&lt;/strong>: ROI analysis by channel&lt;/li>
-&lt;/ul>
-&lt;h3>💼 Sales Pipeline Management&lt;span class="hx:absolute hx:-mt-20" id="-sales-pipeline-management">&lt;/span>
-&lt;a href="#-sales-pipeline-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>Opportunity Tracking&lt;span class="hx:absolute hx:-mt-20" id="opportunity-tracking">&lt;/span>
-&lt;a href="#opportunity-tracking" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Visual Pipeline&lt;/strong>: Kanban-style deal management&lt;/li>
-&lt;li>&lt;strong>Custom Stages&lt;/strong>: Configure to match your sales process&lt;/li>
-&lt;li>&lt;strong>Probability Weighting&lt;/strong>: Forecast accuracy&lt;/li>
-&lt;li>&lt;strong>Deal Value Tracking&lt;/strong>: Products, services, recurring revenue&lt;/li>
-&lt;li>&lt;strong>Competitor Tracking&lt;/strong>: Win/loss analysis&lt;/li>
-&lt;li>&lt;strong>Activity Requirements&lt;/strong>: Stage-based task automation&lt;/li>
-&lt;/ul>
-&lt;h4>Sales Process Automation&lt;span class="hx:absolute hx:-mt-20" id="sales-process-automation">&lt;/span>
-&lt;a href="#sales-process-automation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Workflow Automation&lt;/strong>: Trigger actions based on events&lt;/li>
-&lt;li>&lt;strong>Email Templates&lt;/strong>: Personalized mass communication&lt;/li>
-&lt;li>&lt;strong>Quote Generation&lt;/strong>: Professional proposals&lt;/li>
-&lt;li>&lt;strong>Contract Management&lt;/strong>: E-signatures and tracking&lt;/li>
-&lt;li>&lt;strong>Commission Calculation&lt;/strong>: Automatic sales compensation&lt;/li>
-&lt;/ul>
-&lt;h3>📊 Sales Analytics&lt;span class="hx:absolute hx:-mt-20" id="-sales-analytics">&lt;/span>
-&lt;a href="#-sales-analytics" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>Performance Metrics&lt;span class="hx:absolute hx:-mt-20" id="performance-metrics">&lt;/span>
-&lt;a href="#performance-metrics" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Sales Dashboard&lt;/strong>: Real-time KPIs&lt;/li>
-&lt;li>&lt;strong>Pipeline Analytics&lt;/strong>: Conversion rates by stage&lt;/li>
-&lt;li>&lt;strong>Forecast Reports&lt;/strong>: Revenue predictions&lt;/li>
-&lt;li>&lt;strong>Team Performance&lt;/strong>: Individual and team metrics&lt;/li>
-&lt;li>&lt;strong>Activity Reports&lt;/strong>: Calls, meetings, emails&lt;/li>
-&lt;li>&lt;strong>Win/Loss Analysis&lt;/strong>: Reason tracking&lt;/li>
-&lt;/ul>
-&lt;h4>Advanced Analytics&lt;span class="hx:absolute hx:-mt-20" id="advanced-analytics">&lt;/span>
-&lt;a href="#advanced-analytics" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Sales Velocity&lt;/strong>: Time to close analysis&lt;/li>
-&lt;li>&lt;strong>Customer Lifetime Value&lt;/strong>: CLV calculations&lt;/li>
-&lt;li>&lt;strong>Churn Prediction&lt;/strong>: AI-powered risk scoring&lt;/li>
-&lt;li>&lt;strong>Next Best Action&lt;/strong>: AI recommendations&lt;/li>
-&lt;li>&lt;strong>Territory Analysis&lt;/strong>: Geographic performance&lt;/li>
-&lt;/ul>
-&lt;h3>📧 Marketing Integration&lt;span class="hx:absolute hx:-mt-20" id="-marketing-integration">&lt;/span>
-&lt;a href="#-marketing-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>Campaign Management&lt;span class="hx:absolute hx:-mt-20" id="campaign-management">&lt;/span>
-&lt;a href="#campaign-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Multi-channel Campaigns&lt;/strong>: Email, SMS, social&lt;/li>
-&lt;li>&lt;strong>Campaign ROI&lt;/strong>: Track costs and returns&lt;/li>
-&lt;li>&lt;strong>A/B Testing&lt;/strong>: Optimize messaging&lt;/li>
-&lt;li>&lt;strong>Landing Pages&lt;/strong>: Integrated form builder&lt;/li>
-&lt;li>&lt;strong>Marketing Automation&lt;/strong>: Nurture sequences&lt;/li>
-&lt;/ul>
-&lt;h4>Email Marketing&lt;span class="hx:absolute hx:-mt-20" id="email-marketing">&lt;/span>
-&lt;a href="#email-marketing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Email Builder&lt;/strong>: Drag-and-drop designer&lt;/li>
-&lt;li>&lt;strong>Personalization&lt;/strong>: Dynamic content&lt;/li>
-&lt;li>&lt;strong>Segmentation&lt;/strong>: Target specific audiences&lt;/li>
-&lt;li>&lt;strong>Analytics&lt;/strong>: Open rates, clicks, conversions&lt;/li>
-&lt;li>&lt;strong>Compliance&lt;/strong>: GDPR, CAN-SPAM support&lt;/li>
-&lt;/ul>
-&lt;h3>🎯 Customer Service&lt;span class="hx:absolute hx:-mt-20" id="-customer-service">&lt;/span>
-&lt;a href="#-customer-service" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>Case Management&lt;span class="hx:absolute hx:-mt-20" id="case-management">&lt;/span>
-&lt;a href="#case-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Ticket System&lt;/strong>: Track customer issues&lt;/li>
-&lt;li>&lt;strong>SLA Management&lt;/strong>: Service level tracking&lt;/li>
-&lt;li>&lt;strong>Knowledge Base&lt;/strong>: Self-service portal&lt;/li>
-&lt;li>&lt;strong>Escalation Rules&lt;/strong>: Automatic routing&lt;/li>
-&lt;li>&lt;strong>Customer Portal&lt;/strong>: Self-service access&lt;/li>
-&lt;/ul>
-&lt;h4>Communication Channels&lt;span class="hx:absolute hx:-mt-20" id="communication-channels">&lt;/span>
-&lt;a href="#communication-channels" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Email Integration&lt;/strong>: Two-way sync&lt;/li>
-&lt;li>&lt;strong>Phone Integration&lt;/strong>: Click-to-call, call logging&lt;/li>
-&lt;li>&lt;strong>Chat Integration&lt;/strong>: Live chat support&lt;/li>
-&lt;li>&lt;strong>Social Media&lt;/strong>: Monitor and respond&lt;/li>
-&lt;li>&lt;strong>SMS&lt;/strong>: Two-way messaging&lt;/li>
-&lt;/ul>
-&lt;h2>Configuration&lt;span class="hx:absolute hx:-mt-20" id="configuration">&lt;/span>
-&lt;a href="#configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Initial Setup&lt;span class="hx:absolute hx:-mt-20" id="initial-setup">&lt;/span>
-&lt;a href="#initial-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>Step 1: Sales Process Configuration&lt;span class="hx:absolute hx:-mt-20" id="step-1-sales-process-configuration">&lt;/span>
-&lt;a href="#step-1-sales-process-configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Sales Pipeline&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Stages&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Prospecting&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">probability&lt;/span>: &lt;span style="color:#ae81ff">10&lt;/span>&lt;span style="color:#ae81ff">%&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">activities&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;Initial Contact&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Qualification Call&amp;#34;&lt;/span>]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Qualification&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">probability&lt;/span>: &lt;span style="color:#ae81ff">25&lt;/span>&lt;span style="color:#ae81ff">%&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">activities&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;Needs Analysis&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Budget Confirmation&amp;#34;&lt;/span>]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Proposal&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">probability&lt;/span>: &lt;span style="color:#ae81ff">50&lt;/span>&lt;span style="color:#ae81ff">%&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">activities&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;Send Proposal&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Follow-up&amp;#34;&lt;/span>]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Negotiation&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">probability&lt;/span>: &lt;span style="color:#ae81ff">75&lt;/span>&lt;span style="color:#ae81ff">%&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">activities&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;Contract Review&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Final Terms&amp;#34;&lt;/span>]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#ae81ff">Closed Won&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">probability&lt;/span>: &lt;span style="color:#ae81ff">100&lt;/span>&lt;span style="color:#ae81ff">%&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">activities&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;Contract Signed&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;Kickoff&amp;#34;&lt;/span>]&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Maintenance Tips&lt;span class="hx:absolute hx:-mt-20" id="maintenance-tips"&gt;&lt;/span&gt;
+&lt;a href="#maintenance-tips" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Regular Review&lt;/strong&gt;: Periodically review category structures&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Consolidation&lt;/strong&gt;: Merge similar categories to avoid duplication&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt;: Maintain a category guide for staff reference&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Training&lt;/strong&gt;: Ensure staff understand category assignment rules&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Integration with Other Modules&lt;span class="hx:absolute hx:-mt-20" id="integration-with-other-modules"&gt;&lt;/span&gt;
+&lt;a href="#integration-with-other-modules" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Category Groups integrate with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Inventory Management&lt;/strong&gt;: Product classification&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Purchasing&lt;/strong&gt;: Vendor category preferences&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sales&lt;/strong&gt;: Category-based promotions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reporting&lt;/strong&gt;: Category performance analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;E-Commerce&lt;/strong&gt;: Online store navigation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Common Use Cases&lt;span class="hx:absolute hx:-mt-20" id="common-use-cases"&gt;&lt;/span&gt;
+&lt;a href="#common-use-cases" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Retail Operations&lt;span class="hx:absolute hx:-mt-20" id="retail-operations"&gt;&lt;/span&gt;
+&lt;a href="#retail-operations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Department-based categorization&lt;/li&gt;
+&lt;li&gt;Seasonal product grouping&lt;/li&gt;
+&lt;li&gt;Brand-based organization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Manufacturing&lt;span class="hx:absolute hx:-mt-20" id="manufacturing"&gt;&lt;/span&gt;
+&lt;a href="#manufacturing" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Raw material classification&lt;/li&gt;
+&lt;li&gt;Finished goods categorization&lt;/li&gt;
+&lt;li&gt;Component grouping&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Services&lt;span class="hx:absolute hx:-mt-20" id="services"&gt;&lt;/span&gt;
+&lt;a href="#services" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Service type categorization&lt;/li&gt;
+&lt;li&gt;Skill-based grouping&lt;/li&gt;
+&lt;li&gt;Time-based service classification&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Cannot Delete Category Group&lt;span class="hx:absolute hx:-mt-20" id="cannot-delete-category-group"&gt;&lt;/span&gt;
+&lt;a href="#cannot-delete-category-group" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Check for linked categories&lt;/li&gt;
+&lt;li&gt;Verify no active items use the categories&lt;/li&gt;
+&lt;li&gt;Review any pending transactions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Category Not Appearing in Item Creation&lt;span class="hx:absolute hx:-mt-20" id="category-not-appearing-in-item-creation"&gt;&lt;/span&gt;
+&lt;a href="#category-not-appearing-in-item-creation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Confirm category status is Active&lt;/li&gt;
+&lt;li&gt;Check category group status&lt;/li&gt;
+&lt;li&gt;Verify user permissions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Image Upload Issues&lt;span class="hx:absolute hx:-mt-20" id="image-upload-issues"&gt;&lt;/span&gt;
+&lt;a href="#image-upload-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Check file format (JPG, PNG, GIF)&lt;/li&gt;
+&lt;li&gt;Verify file size (&amp;lt; 5MB recommended)&lt;/li&gt;
+&lt;li&gt;Clear browser cache&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Related Documentation&lt;span class="hx:absolute hx:-mt-20" id="related-documentation"&gt;&lt;/span&gt;
+&lt;a href="#related-documentation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/item-maintenance/" &gt;Item Maintenance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/document-item-types/" &gt;Document Item Types&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/inventory/" &gt;Inventory Management&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/price-book/" &gt;Price Book Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Customer Relationship Management (CRM)</title><link>https://wiki.bigledger.com/modules/crm/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/crm/</guid><description>
+&lt;h2&gt;Overview&lt;span class="hx:absolute hx:-mt-20" id="overview"&gt;&lt;/span&gt;
+&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The BigLedger CRM module provides a comprehensive solution for managing customer relationships, sales pipelines, and marketing campaigns. Built to help businesses understand, engage, and retain customers more effectively, it integrates seamlessly with all other BigLedger modules.&lt;/p&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;👥 Contact Management&lt;span class="hx:absolute hx:-mt-20" id="-contact-management"&gt;&lt;/span&gt;
+&lt;a href="#-contact-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Customer Database&lt;span class="hx:absolute hx:-mt-20" id="customer-database"&gt;&lt;/span&gt;
+&lt;a href="#customer-database" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;360-Degree View&lt;/strong&gt;: Complete customer profile with all interactions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Contact Information&lt;/strong&gt;: Multiple addresses, phones, emails&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Company Hierarchy&lt;/strong&gt;: Parent/child company relationships&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Contact Roles&lt;/strong&gt;: Decision makers, influencers, users&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Fields&lt;/strong&gt;: Industry-specific data capture&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tags &amp;amp; Segmentation&lt;/strong&gt;: Flexible categorization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Activity Timeline&lt;/strong&gt;: Complete interaction history&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Document Storage&lt;/strong&gt;: Contracts, proposals, correspondence&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Lead Management&lt;span class="hx:absolute hx:-mt-20" id="lead-management"&gt;&lt;/span&gt;
+&lt;a href="#lead-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Lead Capture&lt;/strong&gt;: Web forms, email, API integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lead Scoring&lt;/strong&gt;: Automatic qualification based on criteria&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lead Assignment&lt;/strong&gt;: Round-robin or rule-based distribution&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lead Nurturing&lt;/strong&gt;: Automated follow-up sequences&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Duplicate Detection&lt;/strong&gt;: Prevent duplicate entries&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lead Source Tracking&lt;/strong&gt;: ROI analysis by channel&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;💼 Sales Pipeline Management&lt;span class="hx:absolute hx:-mt-20" id="-sales-pipeline-management"&gt;&lt;/span&gt;
+&lt;a href="#-sales-pipeline-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Opportunity Tracking&lt;span class="hx:absolute hx:-mt-20" id="opportunity-tracking"&gt;&lt;/span&gt;
+&lt;a href="#opportunity-tracking" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Visual Pipeline&lt;/strong&gt;: Kanban-style deal management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Stages&lt;/strong&gt;: Configure to match your sales process&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Probability Weighting&lt;/strong&gt;: Forecast accuracy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deal Value Tracking&lt;/strong&gt;: Products, services, recurring revenue&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Competitor Tracking&lt;/strong&gt;: Win/loss analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Activity Requirements&lt;/strong&gt;: Stage-based task automation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Sales Process Automation&lt;span class="hx:absolute hx:-mt-20" id="sales-process-automation"&gt;&lt;/span&gt;
+&lt;a href="#sales-process-automation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Workflow Automation&lt;/strong&gt;: Trigger actions based on events&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Email Templates&lt;/strong&gt;: Personalized mass communication&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quote Generation&lt;/strong&gt;: Professional proposals&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Contract Management&lt;/strong&gt;: E-signatures and tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Commission Calculation&lt;/strong&gt;: Automatic sales compensation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;📊 Sales Analytics&lt;span class="hx:absolute hx:-mt-20" id="-sales-analytics"&gt;&lt;/span&gt;
+&lt;a href="#-sales-analytics" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Performance Metrics&lt;span class="hx:absolute hx:-mt-20" id="performance-metrics"&gt;&lt;/span&gt;
+&lt;a href="#performance-metrics" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Sales Dashboard&lt;/strong&gt;: Real-time KPIs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pipeline Analytics&lt;/strong&gt;: Conversion rates by stage&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Forecast Reports&lt;/strong&gt;: Revenue predictions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Team Performance&lt;/strong&gt;: Individual and team metrics&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Activity Reports&lt;/strong&gt;: Calls, meetings, emails&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Win/Loss Analysis&lt;/strong&gt;: Reason tracking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Advanced Analytics&lt;span class="hx:absolute hx:-mt-20" id="advanced-analytics"&gt;&lt;/span&gt;
+&lt;a href="#advanced-analytics" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Sales Velocity&lt;/strong&gt;: Time to close analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Lifetime Value&lt;/strong&gt;: CLV calculations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Churn Prediction&lt;/strong&gt;: AI-powered risk scoring&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Next Best Action&lt;/strong&gt;: AI recommendations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Territory Analysis&lt;/strong&gt;: Geographic performance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;📧 Marketing Integration&lt;span class="hx:absolute hx:-mt-20" id="-marketing-integration"&gt;&lt;/span&gt;
+&lt;a href="#-marketing-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Campaign Management&lt;span class="hx:absolute hx:-mt-20" id="campaign-management"&gt;&lt;/span&gt;
+&lt;a href="#campaign-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multi-channel Campaigns&lt;/strong&gt;: Email, SMS, social&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Campaign ROI&lt;/strong&gt;: Track costs and returns&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A/B Testing&lt;/strong&gt;: Optimize messaging&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Landing Pages&lt;/strong&gt;: Integrated form builder&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Marketing Automation&lt;/strong&gt;: Nurture sequences&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Email Marketing&lt;span class="hx:absolute hx:-mt-20" id="email-marketing"&gt;&lt;/span&gt;
+&lt;a href="#email-marketing" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Email Builder&lt;/strong&gt;: Drag-and-drop designer&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Personalization&lt;/strong&gt;: Dynamic content&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Segmentation&lt;/strong&gt;: Target specific audiences&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Analytics&lt;/strong&gt;: Open rates, clicks, conversions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance&lt;/strong&gt;: GDPR, CAN-SPAM support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;🎯 Customer Service&lt;span class="hx:absolute hx:-mt-20" id="-customer-service"&gt;&lt;/span&gt;
+&lt;a href="#-customer-service" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Case Management&lt;span class="hx:absolute hx:-mt-20" id="case-management"&gt;&lt;/span&gt;
+&lt;a href="#case-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ticket System&lt;/strong&gt;: Track customer issues&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SLA Management&lt;/strong&gt;: Service level tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Knowledge Base&lt;/strong&gt;: Self-service portal&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Escalation Rules&lt;/strong&gt;: Automatic routing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Portal&lt;/strong&gt;: Self-service access&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Communication Channels&lt;span class="hx:absolute hx:-mt-20" id="communication-channels"&gt;&lt;/span&gt;
+&lt;a href="#communication-channels" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Email Integration&lt;/strong&gt;: Two-way sync&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Phone Integration&lt;/strong&gt;: Click-to-call, call logging&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chat Integration&lt;/strong&gt;: Live chat support&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Social Media&lt;/strong&gt;: Monitor and respond&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SMS&lt;/strong&gt;: Two-way messaging&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Configuration&lt;span class="hx:absolute hx:-mt-20" id="configuration"&gt;&lt;/span&gt;
+&lt;a href="#configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Initial Setup&lt;span class="hx:absolute hx:-mt-20" id="initial-setup"&gt;&lt;/span&gt;
+&lt;a href="#initial-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Step 1: Sales Process Configuration&lt;span class="hx:absolute hx:-mt-20" id="step-1-sales-process-configuration"&gt;&lt;/span&gt;
+&lt;a href="#step-1-sales-process-configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Sales Pipeline&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Stages&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Prospecting&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;probability&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;10&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;activities&lt;/span&gt;: [&lt;span style="color:#e6db74"&gt;&amp;#34;Initial Contact&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;Qualification Call&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Qualification&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;probability&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;25&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;activities&lt;/span&gt;: [&lt;span style="color:#e6db74"&gt;&amp;#34;Needs Analysis&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;Budget Confirmation&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Proposal&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;probability&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;50&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;activities&lt;/span&gt;: [&lt;span style="color:#e6db74"&gt;&amp;#34;Send Proposal&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;Follow-up&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Negotiation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;probability&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;75&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;activities&lt;/span&gt;: [&lt;span style="color:#e6db74"&gt;&amp;#34;Contract Review&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;Final Terms&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Closed Won&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;probability&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;activities&lt;/span&gt;: [&lt;span style="color:#e6db74"&gt;&amp;#34;Contract Signed&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;Kickoff&amp;#34;&lt;/span&gt;]&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h4>Step 2: Lead Scoring Rules&lt;span class="hx:absolute hx:-mt-20" id="step-2-lead-scoring-rules">&lt;/span>
-&lt;a href="#step-2-lead-scoring-rules" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-javascript" data-lang="javascript">&lt;span style="display:flex;">&lt;span>{
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;scoring_rules&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> [
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">&amp;#34;criteria&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;company_size &amp;gt; 100&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;points&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">20&lt;/span>},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">&amp;#34;criteria&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;industry = &amp;#39;Technology&amp;#39;&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;points&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">15&lt;/span>},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">&amp;#34;criteria&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;visited_pricing_page&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;points&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">10&lt;/span>},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">&amp;#34;criteria&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;downloaded_whitepaper&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;points&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {&lt;span style="color:#e6db74">&amp;#34;criteria&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#e6db74">&amp;#34;email_opened &amp;gt; 3&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;points&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ],
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;qualification_threshold&amp;#34;&lt;/span>&lt;span style="color:#f92672">:&lt;/span> &lt;span style="color:#ae81ff">50&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;Step 2: Lead Scoring Rules&lt;span class="hx:absolute hx:-mt-20" id="step-2-lead-scoring-rules"&gt;&lt;/span&gt;
+&lt;a href="#step-2-lead-scoring-rules" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;scoring_rules&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;criteria&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;company_size &amp;gt; 100&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;points&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;20&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;criteria&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;industry = &amp;#39;Technology&amp;#39;&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;points&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;15&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;criteria&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;visited_pricing_page&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;points&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;10&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;criteria&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;downloaded_whitepaper&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;points&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;5&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;criteria&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;email_opened &amp;gt; 3&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;points&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;5&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;qualification_threshold&amp;#34;&lt;/span&gt;&lt;span style="color:#f92672"&gt;:&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;50&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Team Structure&lt;span class="hx:absolute hx:-mt-20" id="team-structure">&lt;/span>
-&lt;a href="#team-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>Sales Roles and Permissions&lt;span class="hx:absolute hx:-mt-20" id="sales-roles-and-permissions">&lt;/span>
-&lt;a href="#sales-roles-and-permissions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Role&lt;/th>
-&lt;th>Permissions&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>Sales Manager&lt;/td>
-&lt;td>Full access, team reports, territory management&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Account Executive&lt;/td>
-&lt;td>Own deals, contacts, activities&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Sales Development Rep&lt;/td>
-&lt;td>Leads, initial qualification&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>Sales Operations&lt;/td>
-&lt;td>Reports, configuration, workflows&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2>Integration&lt;span class="hx:absolute hx:-mt-20" id="integration">&lt;/span>
-&lt;a href="#integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>BigLedger Module Integration&lt;span class="hx:absolute hx:-mt-20" id="bigledger-module-integration">&lt;/span>
-&lt;a href="#bigledger-module-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Financial Accounting&lt;/strong>: Invoice generation, payment tracking&lt;/li>
-&lt;li>&lt;strong>POS&lt;/strong>: Customer purchase history, loyalty status&lt;/li>
-&lt;li>&lt;strong>Inventory&lt;/strong>: Product availability, pricing&lt;/li>
-&lt;li>&lt;strong>Projects&lt;/strong>: Project delivery tracking&lt;/li>
-&lt;li>&lt;strong>Support&lt;/strong>: Case history, SLA management&lt;/li>
-&lt;/ul>
-&lt;h3>Third-Party Integrations&lt;span class="hx:absolute hx:-mt-20" id="third-party-integrations">&lt;/span>
-&lt;a href="#third-party-integrations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Email&lt;/strong>: Gmail, Outlook, Exchange&lt;/li>
-&lt;li>&lt;strong>Calendar&lt;/strong>: Google Calendar, Outlook Calendar&lt;/li>
-&lt;li>&lt;strong>Phone Systems&lt;/strong>: VoIP integration&lt;/li>
-&lt;li>&lt;strong>Marketing Tools&lt;/strong>: Mailchimp, HubSpot&lt;/li>
-&lt;li>&lt;strong>Social Media&lt;/strong>: LinkedIn, Twitter, Facebook&lt;/li>
-&lt;/ul>
-&lt;h2>Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices">&lt;/span>
-&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Data Quality&lt;span class="hx:absolute hx:-mt-20" id="data-quality">&lt;/span>
-&lt;a href="#data-quality" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>Regular Data Cleansing&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Deduplicate records&lt;/li>
-&lt;li>Update outdated information&lt;/li>
-&lt;li>Verify email addresses&lt;/li>
-&lt;li>Standardize data formats&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Data Entry Standards&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Required fields enforcement&lt;/li>
-&lt;li>Validation rules&lt;/li>
-&lt;li>Naming conventions&lt;/li>
-&lt;li>Address standardization&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;h3>Sales Process Optimization&lt;span class="hx:absolute hx:-mt-20" id="sales-process-optimization">&lt;/span>
-&lt;a href="#sales-process-optimization" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>Pipeline Management&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Regular pipeline reviews&lt;/li>
-&lt;li>Stage velocity tracking&lt;/li>
-&lt;li>Bottleneck identification&lt;/li>
-&lt;li>Win rate improvement&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Activity Management&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Daily activity goals&lt;/li>
-&lt;li>Call/email templates&lt;/li>
-&lt;li>Follow-up automation&lt;/li>
-&lt;li>Task prioritization&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;h2>Reporting&lt;span class="hx:absolute hx:-mt-20" id="reporting">&lt;/span>
-&lt;a href="#reporting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Standard Reports&lt;span class="hx:absolute hx:-mt-20" id="standard-reports">&lt;/span>
-&lt;a href="#standard-reports" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Sales Pipeline Report&lt;/li>
-&lt;li>Forecast Report&lt;/li>
-&lt;li>Activity Report&lt;/li>
-&lt;li>Lead Source Analysis&lt;/li>
-&lt;li>Customer Acquisition Cost&lt;/li>
-&lt;li>Sales Cycle Length&lt;/li>
-&lt;li>Territory Performance&lt;/li>
-&lt;li>Product Performance&lt;/li>
-&lt;/ul>
-&lt;h3>Custom Dashboards&lt;span class="hx:absolute hx:-mt-20" id="custom-dashboards">&lt;/span>
-&lt;a href="#custom-dashboards" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Create personalized dashboards with:&lt;/p>
-&lt;ul>
-&lt;li>Real-time widgets&lt;/li>
-&lt;li>Custom KPIs&lt;/li>
-&lt;li>Drill-down capabilities&lt;/li>
-&lt;li>Export functionality&lt;/li>
-&lt;li>Scheduled delivery&lt;/li>
-&lt;/ul>
-&lt;h2>Mobile CRM&lt;span class="hx:absolute hx:-mt-20" id="mobile-crm">&lt;/span>
-&lt;a href="#mobile-crm" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Features&lt;span class="hx:absolute hx:-mt-20" id="features">&lt;/span>
-&lt;a href="#features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Full CRM access on mobile&lt;/li>
-&lt;li>Offline capability&lt;/li>
-&lt;li>GPS check-in&lt;/li>
-&lt;li>Voice notes&lt;/li>
-&lt;li>Business card scanning&lt;/li>
-&lt;li>Mobile signatures&lt;/li>
-&lt;/ul>
-&lt;h3>Supported Platforms&lt;span class="hx:absolute hx:-mt-20" id="supported-platforms">&lt;/span>
-&lt;a href="#supported-platforms" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>iOS (iPhone and iPad)&lt;/li>
-&lt;li>Android&lt;/li>
-&lt;li>Progressive Web App&lt;/li>
-&lt;/ul>
-&lt;h2>Support &amp;amp; Training&lt;span class="hx:absolute hx:-mt-20" id="support--training">&lt;/span>
-&lt;a href="#support--training" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>📚 &lt;a href="https://wiki.bigledger.com/modules/crm/" >CRM Best Practices Guide&lt;/a>&lt;/li>
-&lt;li>🎥 &lt;a href="https://wiki.bigledger.com/modules/crm/" >Video Tutorials&lt;/a>&lt;/li>
-&lt;li>📊 &lt;a href="https://wiki.bigledger.com/modules/crm/" >Report Templates&lt;/a>&lt;/li>
-&lt;li>💬 &lt;a href="https://forum.bigledger.com/crm" target="_blank" rel="noopener">Community Forum&lt;/a>&lt;/li>
-&lt;li>📧 &lt;a href="mailto:crm-support@bigledger.com" >Support&lt;/a>&lt;/li>
-&lt;/ul></description></item><item><title>Procurement</title><link>https://wiki.bigledger.com/modules/procurement/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/procurement/</guid><description>
-&lt;h2>Overview&lt;span class="hx:absolute hx:-mt-20" id="overview">&lt;/span>
-&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The BigLedger Procurement module streamlines your entire purchase-to-pay process, from requisition to payment. It helps organizations reduce costs, improve supplier relationships, and ensure compliance with purchasing policies.&lt;/p>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Purchase Requisitions&lt;span class="hx:absolute hx:-mt-20" id="purchase-requisitions">&lt;/span>
-&lt;a href="#purchase-requisitions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Multi-level approval workflows&lt;/li>
-&lt;li>Budget validation&lt;/li>
-&lt;li>Catalog-based ordering&lt;/li>
-&lt;li>Requisition templates&lt;/li>
-&lt;li>Mobile approvals&lt;/li>
-&lt;/ul>
-&lt;h3>Purchase Orders&lt;span class="hx:absolute hx:-mt-20" id="purchase-orders">&lt;/span>
-&lt;a href="#purchase-orders" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Automated PO generation&lt;/li>
-&lt;li>Multi-vendor RFQs&lt;/li>
-&lt;li>Blanket orders&lt;/li>
-&lt;li>Contract management&lt;/li>
-&lt;li>Change order tracking&lt;/li>
-&lt;/ul>
-&lt;h3>Vendor Management&lt;span class="hx:absolute hx:-mt-20" id="vendor-management">&lt;/span>
-&lt;a href="#vendor-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Vendor onboarding&lt;/li>
-&lt;li>Performance scorecards&lt;/li>
-&lt;li>Compliance tracking&lt;/li>
-&lt;li>Risk assessment&lt;/li>
-&lt;li>Vendor portals&lt;/li>
-&lt;/ul>
-&lt;h3>Receiving &amp;amp; Inspection&lt;span class="hx:absolute hx:-mt-20" id="receiving--inspection">&lt;/span>
-&lt;a href="#receiving--inspection" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Three-way matching&lt;/li>
-&lt;li>Quality control&lt;/li>
-&lt;li>Return management&lt;/li>
-&lt;li>Receipt discrepancies&lt;/li>
-&lt;li>ASN processing&lt;/li>
-&lt;/ul>
-&lt;h3>Invoice Processing&lt;span class="hx:absolute hx:-mt-20" id="invoice-processing">&lt;/span>
-&lt;a href="#invoice-processing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>OCR invoice capture&lt;/li>
-&lt;li>Automatic matching&lt;/li>
-&lt;li>Exception handling&lt;/li>
-&lt;li>Early payment discounts&lt;/li>
-&lt;li>Approval workflows&lt;/li>
-&lt;/ul>
-&lt;h2>Benefits&lt;span class="hx:absolute hx:-mt-20" id="benefits">&lt;/span>
-&lt;a href="#benefits" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>&lt;strong>Cost Reduction&lt;/strong>: Negotiate better prices through consolidated purchasing&lt;/li>
-&lt;li>&lt;strong>Process Efficiency&lt;/strong>: Automate manual tasks and approvals&lt;/li>
-&lt;li>&lt;strong>Compliance&lt;/strong>: Ensure adherence to purchasing policies&lt;/li>
-&lt;li>&lt;strong>Visibility&lt;/strong>: Real-time spending analytics&lt;/li>
-&lt;li>&lt;strong>Supplier Relations&lt;/strong>: Improve vendor collaboration&lt;/li>
-&lt;/ul>
-&lt;h2>Integration&lt;span class="hx:absolute hx:-mt-20" id="integration">&lt;/span>
-&lt;a href="#integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>Financial Accounting for invoice processing&lt;/li>
-&lt;li>Inventory for stock replenishment&lt;/li>
-&lt;li>Projects for project-based purchasing&lt;/li>
-&lt;li>Quality Management for inspection workflows&lt;/li>
-&lt;/ul>
-&lt;h2>Getting Started&lt;span class="hx:absolute hx:-mt-20" id="getting-started">&lt;/span>
-&lt;a href="#getting-started" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ol>
-&lt;li>Set up your vendor database&lt;/li>
-&lt;li>Configure approval hierarchies&lt;/li>
-&lt;li>Define purchasing policies&lt;/li>
-&lt;li>Create product catalogs&lt;/li>
-&lt;li>Train procurement team&lt;/li>
-&lt;/ol>
-&lt;p>For detailed documentation, visit our &lt;a href="https://wiki.bigledger.com/modules/procurement/" >Procurement Guide&lt;/a> or contact support.&lt;/p></description></item><item><title>Human Resources</title><link>https://wiki.bigledger.com/modules/hr/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/hr/</guid><description>
-&lt;h2>Overview&lt;span class="hx:absolute hx:-mt-20" id="overview">&lt;/span>
-&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The BigLedger HR module provides a complete human capital management solution, from recruitment to retirement. Streamline HR processes, ensure compliance, and empower employees with self-service capabilities.&lt;/p>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core HR&lt;span class="hx:absolute hx:-mt-20" id="core-hr">&lt;/span>
-&lt;a href="#core-hr" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Employee database&lt;/li>
-&lt;li>Organization structure&lt;/li>
-&lt;li>Position management&lt;/li>
-&lt;li>Document management&lt;/li>
-&lt;li>Policy management&lt;/li>
-&lt;/ul>
-&lt;h3>Recruitment&lt;span class="hx:absolute hx:-mt-20" id="recruitment">&lt;/span>
-&lt;a href="#recruitment" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Job posting management&lt;/li>
-&lt;li>Applicant tracking&lt;/li>
-&lt;li>Interview scheduling&lt;/li>
-&lt;li>Onboarding workflows&lt;/li>
-&lt;li>Background checks&lt;/li>
-&lt;/ul>
-&lt;h3>Time &amp;amp; Attendance&lt;span class="hx:absolute hx:-mt-20" id="time--attendance">&lt;/span>
-&lt;a href="#time--attendance" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Time tracking&lt;/li>
-&lt;li>Shift scheduling&lt;/li>
-&lt;li>Overtime management&lt;/li>
-&lt;li>Leave management&lt;/li>
-&lt;li>Holiday calendars&lt;/li>
-&lt;/ul>
-&lt;h3>Payroll&lt;span class="hx:absolute hx:-mt-20" id="payroll">&lt;/span>
-&lt;a href="#payroll" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Salary processing&lt;/li>
-&lt;li>Tax calculations&lt;/li>
-&lt;li>Deductions management&lt;/li>
-&lt;li>Direct deposits&lt;/li>
-&lt;li>Pay slip generation&lt;/li>
-&lt;li>Year-end processing&lt;/li>
-&lt;/ul>
-&lt;h3>Performance Management&lt;span class="hx:absolute hx:-mt-20" id="performance-management">&lt;/span>
-&lt;a href="#performance-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Goal setting&lt;/li>
-&lt;li>Performance reviews&lt;/li>
-&lt;li>360-degree feedback&lt;/li>
-&lt;li>Competency assessment&lt;/li>
-&lt;li>Career development&lt;/li>
-&lt;/ul>
-&lt;h3>Learning &amp;amp; Development&lt;span class="hx:absolute hx:-mt-20" id="learning--development">&lt;/span>
-&lt;a href="#learning--development" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Training management&lt;/li>
-&lt;li>Course catalog&lt;/li>
-&lt;li>Certification tracking&lt;/li>
-&lt;li>Skills gap analysis&lt;/li>
-&lt;li>E-learning integration&lt;/li>
-&lt;/ul>
-&lt;h3>Employee Self-Service&lt;span class="hx:absolute hx:-mt-20" id="employee-self-service">&lt;/span>
-&lt;a href="#employee-self-service" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Personal information updates&lt;/li>
-&lt;li>Leave requests&lt;/li>
-&lt;li>Timesheet submission&lt;/li>
-&lt;li>Pay slip access&lt;/li>
-&lt;li>Benefits enrollment&lt;/li>
-&lt;/ul>
-&lt;h3>Benefits Administration&lt;span class="hx:absolute hx:-mt-20" id="benefits-administration">&lt;/span>
-&lt;a href="#benefits-administration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Benefits enrollment&lt;/li>
-&lt;li>Life events processing&lt;/li>
-&lt;li>COBRA administration&lt;/li>
-&lt;li>Benefits statements&lt;/li>
-&lt;li>Open enrollment&lt;/li>
-&lt;/ul>
-&lt;h2>Compliance Features&lt;span class="hx:absolute hx:-mt-20" id="compliance-features">&lt;/span>
-&lt;a href="#compliance-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>Labor law compliance&lt;/li>
-&lt;li>Tax compliance&lt;/li>
-&lt;li>Equal employment opportunity&lt;/li>
-&lt;li>Health and safety&lt;/li>
-&lt;li>Data privacy (GDPR)&lt;/li>
-&lt;/ul>
-&lt;h2>Analytics &amp;amp; Reporting&lt;span class="hx:absolute hx:-mt-20" id="analytics--reporting">&lt;/span>
-&lt;a href="#analytics--reporting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>HR dashboards&lt;/li>
-&lt;li>Headcount reports&lt;/li>
-&lt;li>Turnover analysis&lt;/li>
-&lt;li>Compensation analysis&lt;/li>
-&lt;li>Diversity metrics&lt;/li>
-&lt;li>Custom reports&lt;/li>
-&lt;/ul>
-&lt;h2>Integration&lt;span class="hx:absolute hx:-mt-20" id="integration">&lt;/span>
-&lt;a href="#integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>Financial Accounting for payroll posting&lt;/li>
-&lt;li>Project Management for resource allocation&lt;/li>
-&lt;li>CRM for employee-customer interactions&lt;/li>
-&lt;li>Time tracking systems&lt;/li>
-&lt;li>Benefits providers&lt;/li>
-&lt;/ul>
-&lt;h2>Mobile HR&lt;span class="hx:absolute hx:-mt-20" id="mobile-hr">&lt;/span>
-&lt;a href="#mobile-hr" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>Employee self-service app&lt;/li>
-&lt;li>Manager approvals&lt;/li>
-&lt;li>Time clock&lt;/li>
-&lt;li>Directory access&lt;/li>
-&lt;li>Leave requests&lt;/li>
-&lt;/ul>
-&lt;h2>Getting Started&lt;span class="hx:absolute hx:-mt-20" id="getting-started">&lt;/span>
-&lt;a href="#getting-started" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ol>
-&lt;li>Set up organization structure&lt;/li>
-&lt;li>Import employee data&lt;/li>
-&lt;li>Configure payroll rules&lt;/li>
-&lt;li>Define leave policies&lt;/li>
-&lt;li>Train HR team and employees&lt;/li>
-&lt;/ol>
-&lt;p>For detailed documentation, visit our &lt;a href="https://wiki.bigledger.com/modules/hr/" >HR Guide&lt;/a> or contact support.&lt;/p></description></item><item><title>Project Management</title><link>https://wiki.bigledger.com/modules/projects/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/projects/</guid><description>
-&lt;h2>Overview&lt;span class="hx:absolute hx:-mt-20" id="overview">&lt;/span>
-&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The BigLedger Project Management module helps organizations plan, execute, and deliver projects on time and within budget. From simple tasks to complex multi-phase projects, manage everything in one integrated platform.&lt;/p>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Project Planning&lt;span class="hx:absolute hx:-mt-20" id="project-planning">&lt;/span>
-&lt;a href="#project-planning" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Work Breakdown Structure (WBS)&lt;/li>
-&lt;li>Gantt charts&lt;/li>
-&lt;li>Critical path analysis&lt;/li>
-&lt;li>Milestone tracking&lt;/li>
-&lt;li>Dependencies management&lt;/li>
-&lt;/ul>
-&lt;h3>Resource Management&lt;span class="hx:absolute hx:-mt-20" id="resource-management">&lt;/span>
-&lt;a href="#resource-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Resource allocation&lt;/li>
-&lt;li>Capacity planning&lt;/li>
-&lt;li>Skills matching&lt;/li>
-&lt;li>Resource leveling&lt;/li>
-&lt;li>Utilization tracking&lt;/li>
-&lt;/ul>
-&lt;h3>Time &amp;amp; Expense Tracking&lt;span class="hx:absolute hx:-mt-20" id="time--expense-tracking">&lt;/span>
-&lt;a href="#time--expense-tracking" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Timesheet management&lt;/li>
-&lt;li>Expense reports&lt;/li>
-&lt;li>Billable hours&lt;/li>
-&lt;li>Cost tracking&lt;/li>
-&lt;li>Budget monitoring&lt;/li>
-&lt;/ul>
-&lt;h3>Task Management&lt;span class="hx:absolute hx:-mt-20" id="task-management">&lt;/span>
-&lt;a href="#task-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Task assignment&lt;/li>
-&lt;li>Priority setting&lt;/li>
-&lt;li>Status tracking&lt;/li>
-&lt;li>Subtasks&lt;/li>
-&lt;li>Recurring tasks&lt;/li>
-&lt;/ul>
-&lt;h3>Collaboration&lt;span class="hx:absolute hx:-mt-20" id="collaboration">&lt;/span>
-&lt;a href="#collaboration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Team workspaces&lt;/li>
-&lt;li>Document sharing&lt;/li>
-&lt;li>Discussion boards&lt;/li>
-&lt;li>Activity feeds&lt;/li>
-&lt;li>Notifications&lt;/li>
-&lt;/ul>
-&lt;h3>Project Financials&lt;span class="hx:absolute hx:-mt-20" id="project-financials">&lt;/span>
-&lt;a href="#project-financials" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Budget management&lt;/li>
-&lt;li>Cost tracking&lt;/li>
-&lt;li>Revenue recognition&lt;/li>
-&lt;li>Profitability analysis&lt;/li>
-&lt;li>Invoice generation&lt;/li>
-&lt;/ul>
-&lt;h3>Risk Management&lt;span class="hx:absolute hx:-mt-20" id="risk-management">&lt;/span>
-&lt;a href="#risk-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Risk identification&lt;/li>
-&lt;li>Impact assessment&lt;/li>
-&lt;li>Mitigation planning&lt;/li>
-&lt;li>Issue tracking&lt;/li>
-&lt;li>Change requests&lt;/li>
-&lt;/ul>
-&lt;h2>Project Types Supported&lt;span class="hx:absolute hx:-mt-20" id="project-types-supported">&lt;/span>
-&lt;a href="#project-types-supported" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>&lt;strong>Fixed Price&lt;/strong>: Projects with defined scope and budget&lt;/li>
-&lt;li>&lt;strong>Time &amp;amp; Materials&lt;/strong>: Hourly billing projects&lt;/li>
-&lt;li>&lt;strong>Retainer&lt;/strong>: Ongoing service agreements&lt;/li>
-&lt;li>&lt;strong>Internal&lt;/strong>: Non-billable internal projects&lt;/li>
-&lt;li>&lt;strong>Agile&lt;/strong>: Sprint-based development projects&lt;/li>
-&lt;/ul>
-&lt;h2>Methodologies&lt;span class="hx:absolute hx:-mt-20" id="methodologies">&lt;/span>
-&lt;a href="#methodologies" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>Waterfall&lt;/li>
-&lt;li>Agile/Scrum&lt;/li>
-&lt;li>Kanban&lt;/li>
-&lt;li>Hybrid approaches&lt;/li>
-&lt;li>Custom methodologies&lt;/li>
-&lt;/ul>
-&lt;h2>Analytics &amp;amp; Reporting&lt;span class="hx:absolute hx:-mt-20" id="analytics--reporting">&lt;/span>
-&lt;a href="#analytics--reporting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>Project dashboards&lt;/li>
-&lt;li>Progress reports&lt;/li>
-&lt;li>Resource reports&lt;/li>
-&lt;li>Financial reports&lt;/li>
-&lt;li>Portfolio analytics&lt;/li>
-&lt;li>Custom reports&lt;/li>
-&lt;/ul>
-&lt;h2>Integration&lt;span class="hx:absolute hx:-mt-20" id="integration">&lt;/span>
-&lt;a href="#integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>Financial Accounting for billing and costing&lt;/li>
-&lt;li>HR for resource management&lt;/li>
-&lt;li>CRM for customer projects&lt;/li>
-&lt;li>Document Management&lt;/li>
-&lt;li>Communication tools&lt;/li>
-&lt;/ul>
-&lt;h2>Mobile Project Management&lt;span class="hx:absolute hx:-mt-20" id="mobile-project-management">&lt;/span>
-&lt;a href="#mobile-project-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>Project updates&lt;/li>
-&lt;li>Time entry&lt;/li>
-&lt;li>Task management&lt;/li>
-&lt;li>Approvals&lt;/li>
-&lt;li>Document access&lt;/li>
-&lt;/ul>
-&lt;h2>Benefits&lt;span class="hx:absolute hx:-mt-20" id="benefits">&lt;/span>
-&lt;a href="#benefits" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>&lt;strong>Visibility&lt;/strong>: Real-time project status&lt;/li>
-&lt;li>&lt;strong>Efficiency&lt;/strong>: Optimize resource utilization&lt;/li>
-&lt;li>&lt;strong>Control&lt;/strong>: Stay on budget and schedule&lt;/li>
-&lt;li>&lt;strong>Collaboration&lt;/strong>: Improve team communication&lt;/li>
-&lt;li>&lt;strong>Profitability&lt;/strong>: Maximize project margins&lt;/li>
-&lt;/ul>
-&lt;h2>Getting Started&lt;span class="hx:absolute hx:-mt-20" id="getting-started">&lt;/span>
-&lt;a href="#getting-started" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ol>
-&lt;li>Define project templates&lt;/li>
-&lt;li>Set up resource pools&lt;/li>
-&lt;li>Configure billing rates&lt;/li>
-&lt;li>Create project workflows&lt;/li>
-&lt;li>Train project teams&lt;/li>
-&lt;/ol>
-&lt;p>For detailed documentation, visit our &lt;a href="https://wiki.bigledger.com/modules/projects/" >Project Management Guide&lt;/a> or contact support.&lt;/p></description></item></channel></rss>
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Team Structure&lt;span class="hx:absolute hx:-mt-20" id="team-structure"&gt;&lt;/span&gt;
+&lt;a href="#team-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Sales Roles and Permissions&lt;span class="hx:absolute hx:-mt-20" id="sales-roles-and-permissions"&gt;&lt;/span&gt;
+&lt;a href="#sales-roles-and-permissions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Role&lt;/th&gt;
+&lt;th&gt;Permissions&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Sales Manager&lt;/td&gt;
+&lt;td&gt;Full access, team reports, territory management&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Account Executive&lt;/td&gt;
+&lt;td&gt;Own deals, contacts, activities&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Sales Development Rep&lt;/td&gt;
+&lt;td&gt;Leads, initial qualification&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Sales Operations&lt;/td&gt;
+&lt;td&gt;Reports, configuration, workflows&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Integration&lt;span class="hx:absolute hx:-mt-20" id="integration"&gt;&lt;/span&gt;
+&lt;a href="#integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;BigLedger Module Integration&lt;span class="hx:absolute hx:-mt-20" id="bigledger-module-integration"&gt;&lt;/span&gt;
+&lt;a href="#bigledger-module-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Financial Accounting&lt;/strong&gt;: Invoice generation, payment tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;POS&lt;/strong&gt;: Customer purchase history, loyalty status&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inventory&lt;/strong&gt;: Product availability, pricing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Projects&lt;/strong&gt;: Project delivery tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Support&lt;/strong&gt;: Case history, SLA management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Third-Party Integrations&lt;span class="hx:absolute hx:-mt-20" id="third-party-integrations"&gt;&lt;/span&gt;
+&lt;a href="#third-party-integrations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Email&lt;/strong&gt;: Gmail, Outlook, Exchange&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Calendar&lt;/strong&gt;: Google Calendar, Outlook Calendar&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Phone Systems&lt;/strong&gt;: VoIP integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Marketing Tools&lt;/strong&gt;: Mailchimp, HubSpot&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Social Media&lt;/strong&gt;: LinkedIn, Twitter, Facebook&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices"&gt;&lt;/span&gt;
+&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Data Quality&lt;span class="hx:absolute hx:-mt-20" id="data-quality"&gt;&lt;/span&gt;
+&lt;a href="#data-quality" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Regular Data Cleansing&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Deduplicate records&lt;/li&gt;
+&lt;li&gt;Update outdated information&lt;/li&gt;
+&lt;li&gt;Verify email addresses&lt;/li&gt;
+&lt;li&gt;Standardize data formats&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Data Entry Standards&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Required fields enforcement&lt;/li&gt;
+&lt;li&gt;Validation rules&lt;/li&gt;
+&lt;li&gt;Naming conventions&lt;/li&gt;
+&lt;li&gt;Address standardization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Sales Process Optimization&lt;span class="hx:absolute hx:-mt-20" id="sales-process-optimization"&gt;&lt;/span&gt;
+&lt;a href="#sales-process-optimization" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Pipeline Management&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Regular pipeline reviews&lt;/li&gt;
+&lt;li&gt;Stage velocity tracking&lt;/li&gt;
+&lt;li&gt;Bottleneck identification&lt;/li&gt;
+&lt;li&gt;Win rate improvement&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Activity Management&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Daily activity goals&lt;/li&gt;
+&lt;li&gt;Call/email templates&lt;/li&gt;
+&lt;li&gt;Follow-up automation&lt;/li&gt;
+&lt;li&gt;Task prioritization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Reporting&lt;span class="hx:absolute hx:-mt-20" id="reporting"&gt;&lt;/span&gt;
+&lt;a href="#reporting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Standard Reports&lt;span class="hx:absolute hx:-mt-20" id="standard-reports"&gt;&lt;/span&gt;
+&lt;a href="#standard-reports" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Sales Pipeline Report&lt;/li&gt;
+&lt;li&gt;Forecast Report&lt;/li&gt;
+&lt;li&gt;Activity Report&lt;/li&gt;
+&lt;li&gt;Lead Source Analysis&lt;/li&gt;
+&lt;li&gt;Customer Acquisition Cost&lt;/li&gt;
+&lt;li&gt;Sales Cycle Length&lt;/li&gt;
+&lt;li&gt;Territory Performance&lt;/li&gt;
+&lt;li&gt;Product Performance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Custom Dashboards&lt;span class="hx:absolute hx:-mt-20" id="custom-dashboards"&gt;&lt;/span&gt;
+&lt;a href="#custom-dashboards" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Create personalized dashboards with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Real-time widgets&lt;/li&gt;
+&lt;li&gt;Custom KPIs&lt;/li&gt;
+&lt;li&gt;Drill-down capabilities&lt;/li&gt;
+&lt;li&gt;Export functionality&lt;/li&gt;
+&lt;li&gt;Scheduled delivery&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Mobile CRM&lt;span class="hx:absolute hx:-mt-20" id="mobile-crm"&gt;&lt;/span&gt;
+&lt;a href="#mobile-crm" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Features&lt;span class="hx:absolute hx:-mt-20" id="features"&gt;&lt;/span&gt;
+&lt;a href="#features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Full CRM access on mobile&lt;/li&gt;
+&lt;li&gt;Offline capability&lt;/li&gt;
+&lt;li&gt;GPS check-in&lt;/li&gt;
+&lt;li&gt;Voice notes&lt;/li&gt;
+&lt;li&gt;Business card scanning&lt;/li&gt;
+&lt;li&gt;Mobile signatures&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Supported Platforms&lt;span class="hx:absolute hx:-mt-20" id="supported-platforms"&gt;&lt;/span&gt;
+&lt;a href="#supported-platforms" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;iOS (iPhone and iPad)&lt;/li&gt;
+&lt;li&gt;Android&lt;/li&gt;
+&lt;li&gt;Progressive Web App&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Support &amp;amp; Training&lt;span class="hx:absolute hx:-mt-20" id="support--training"&gt;&lt;/span&gt;
+&lt;a href="#support--training" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;📚 &lt;a href="https://wiki.bigledger.com/modules/crm/" &gt;CRM Best Practices Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;🎥 &lt;a href="https://wiki.bigledger.com/modules/crm/" &gt;Video Tutorials&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;📊 &lt;a href="https://wiki.bigledger.com/modules/crm/" &gt;Report Templates&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;💬 &lt;a href="https://forum.bigledger.com/crm" target="_blank" rel="noopener"&gt;Community Forum&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;📧 &lt;a href="mailto:crm-support@bigledger.com" &gt;Support&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Procurement</title><link>https://wiki.bigledger.com/modules/procurement/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/procurement/</guid><description>
+&lt;h2&gt;Overview&lt;span class="hx:absolute hx:-mt-20" id="overview"&gt;&lt;/span&gt;
+&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The BigLedger Procurement module streamlines your entire purchase-to-pay process, from requisition to payment. It helps organizations reduce costs, improve supplier relationships, and ensure compliance with purchasing policies.&lt;/p&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Purchase Requisitions&lt;span class="hx:absolute hx:-mt-20" id="purchase-requisitions"&gt;&lt;/span&gt;
+&lt;a href="#purchase-requisitions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Multi-level approval workflows&lt;/li&gt;
+&lt;li&gt;Budget validation&lt;/li&gt;
+&lt;li&gt;Catalog-based ordering&lt;/li&gt;
+&lt;li&gt;Requisition templates&lt;/li&gt;
+&lt;li&gt;Mobile approvals&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Purchase Orders&lt;span class="hx:absolute hx:-mt-20" id="purchase-orders"&gt;&lt;/span&gt;
+&lt;a href="#purchase-orders" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Automated PO generation&lt;/li&gt;
+&lt;li&gt;Multi-vendor RFQs&lt;/li&gt;
+&lt;li&gt;Blanket orders&lt;/li&gt;
+&lt;li&gt;Contract management&lt;/li&gt;
+&lt;li&gt;Change order tracking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Vendor Management&lt;span class="hx:absolute hx:-mt-20" id="vendor-management"&gt;&lt;/span&gt;
+&lt;a href="#vendor-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Vendor onboarding&lt;/li&gt;
+&lt;li&gt;Performance scorecards&lt;/li&gt;
+&lt;li&gt;Compliance tracking&lt;/li&gt;
+&lt;li&gt;Risk assessment&lt;/li&gt;
+&lt;li&gt;Vendor portals&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Receiving &amp;amp; Inspection&lt;span class="hx:absolute hx:-mt-20" id="receiving--inspection"&gt;&lt;/span&gt;
+&lt;a href="#receiving--inspection" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Three-way matching&lt;/li&gt;
+&lt;li&gt;Quality control&lt;/li&gt;
+&lt;li&gt;Return management&lt;/li&gt;
+&lt;li&gt;Receipt discrepancies&lt;/li&gt;
+&lt;li&gt;ASN processing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Invoice Processing&lt;span class="hx:absolute hx:-mt-20" id="invoice-processing"&gt;&lt;/span&gt;
+&lt;a href="#invoice-processing" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;OCR invoice capture&lt;/li&gt;
+&lt;li&gt;Automatic matching&lt;/li&gt;
+&lt;li&gt;Exception handling&lt;/li&gt;
+&lt;li&gt;Early payment discounts&lt;/li&gt;
+&lt;li&gt;Approval workflows&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Benefits&lt;span class="hx:absolute hx:-mt-20" id="benefits"&gt;&lt;/span&gt;
+&lt;a href="#benefits" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Cost Reduction&lt;/strong&gt;: Negotiate better prices through consolidated purchasing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Process Efficiency&lt;/strong&gt;: Automate manual tasks and approvals&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance&lt;/strong&gt;: Ensure adherence to purchasing policies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Visibility&lt;/strong&gt;: Real-time spending analytics&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Supplier Relations&lt;/strong&gt;: Improve vendor collaboration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration&lt;span class="hx:absolute hx:-mt-20" id="integration"&gt;&lt;/span&gt;
+&lt;a href="#integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Financial Accounting for invoice processing&lt;/li&gt;
+&lt;li&gt;Inventory for stock replenishment&lt;/li&gt;
+&lt;li&gt;Projects for project-based purchasing&lt;/li&gt;
+&lt;li&gt;Quality Management for inspection workflows&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Getting Started&lt;span class="hx:absolute hx:-mt-20" id="getting-started"&gt;&lt;/span&gt;
+&lt;a href="#getting-started" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Set up your vendor database&lt;/li&gt;
+&lt;li&gt;Configure approval hierarchies&lt;/li&gt;
+&lt;li&gt;Define purchasing policies&lt;/li&gt;
+&lt;li&gt;Create product catalogs&lt;/li&gt;
+&lt;li&gt;Train procurement team&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For detailed documentation, visit our &lt;a href="https://wiki.bigledger.com/modules/procurement/" &gt;Procurement Guide&lt;/a&gt; or contact support.&lt;/p&gt;</description></item><item><title>Human Resources</title><link>https://wiki.bigledger.com/modules/hr/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/hr/</guid><description>
+&lt;h2&gt;Overview&lt;span class="hx:absolute hx:-mt-20" id="overview"&gt;&lt;/span&gt;
+&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The BigLedger HR module provides a complete human capital management solution, from recruitment to retirement. Streamline HR processes, ensure compliance, and empower employees with self-service capabilities.&lt;/p&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core HR&lt;span class="hx:absolute hx:-mt-20" id="core-hr"&gt;&lt;/span&gt;
+&lt;a href="#core-hr" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Employee database&lt;/li&gt;
+&lt;li&gt;Organization structure&lt;/li&gt;
+&lt;li&gt;Position management&lt;/li&gt;
+&lt;li&gt;Document management&lt;/li&gt;
+&lt;li&gt;Policy management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Recruitment&lt;span class="hx:absolute hx:-mt-20" id="recruitment"&gt;&lt;/span&gt;
+&lt;a href="#recruitment" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Job posting management&lt;/li&gt;
+&lt;li&gt;Applicant tracking&lt;/li&gt;
+&lt;li&gt;Interview scheduling&lt;/li&gt;
+&lt;li&gt;Onboarding workflows&lt;/li&gt;
+&lt;li&gt;Background checks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Time &amp;amp; Attendance&lt;span class="hx:absolute hx:-mt-20" id="time--attendance"&gt;&lt;/span&gt;
+&lt;a href="#time--attendance" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Time tracking&lt;/li&gt;
+&lt;li&gt;Shift scheduling&lt;/li&gt;
+&lt;li&gt;Overtime management&lt;/li&gt;
+&lt;li&gt;Leave management&lt;/li&gt;
+&lt;li&gt;Holiday calendars&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Payroll&lt;span class="hx:absolute hx:-mt-20" id="payroll"&gt;&lt;/span&gt;
+&lt;a href="#payroll" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Salary processing&lt;/li&gt;
+&lt;li&gt;Tax calculations&lt;/li&gt;
+&lt;li&gt;Deductions management&lt;/li&gt;
+&lt;li&gt;Direct deposits&lt;/li&gt;
+&lt;li&gt;Pay slip generation&lt;/li&gt;
+&lt;li&gt;Year-end processing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Performance Management&lt;span class="hx:absolute hx:-mt-20" id="performance-management"&gt;&lt;/span&gt;
+&lt;a href="#performance-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Goal setting&lt;/li&gt;
+&lt;li&gt;Performance reviews&lt;/li&gt;
+&lt;li&gt;360-degree feedback&lt;/li&gt;
+&lt;li&gt;Competency assessment&lt;/li&gt;
+&lt;li&gt;Career development&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Learning &amp;amp; Development&lt;span class="hx:absolute hx:-mt-20" id="learning--development"&gt;&lt;/span&gt;
+&lt;a href="#learning--development" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Training management&lt;/li&gt;
+&lt;li&gt;Course catalog&lt;/li&gt;
+&lt;li&gt;Certification tracking&lt;/li&gt;
+&lt;li&gt;Skills gap analysis&lt;/li&gt;
+&lt;li&gt;E-learning integration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Employee Self-Service&lt;span class="hx:absolute hx:-mt-20" id="employee-self-service"&gt;&lt;/span&gt;
+&lt;a href="#employee-self-service" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Personal information updates&lt;/li&gt;
+&lt;li&gt;Leave requests&lt;/li&gt;
+&lt;li&gt;Timesheet submission&lt;/li&gt;
+&lt;li&gt;Pay slip access&lt;/li&gt;
+&lt;li&gt;Benefits enrollment&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Benefits Administration&lt;span class="hx:absolute hx:-mt-20" id="benefits-administration"&gt;&lt;/span&gt;
+&lt;a href="#benefits-administration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Benefits enrollment&lt;/li&gt;
+&lt;li&gt;Life events processing&lt;/li&gt;
+&lt;li&gt;COBRA administration&lt;/li&gt;
+&lt;li&gt;Benefits statements&lt;/li&gt;
+&lt;li&gt;Open enrollment&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Compliance Features&lt;span class="hx:absolute hx:-mt-20" id="compliance-features"&gt;&lt;/span&gt;
+&lt;a href="#compliance-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Labor law compliance&lt;/li&gt;
+&lt;li&gt;Tax compliance&lt;/li&gt;
+&lt;li&gt;Equal employment opportunity&lt;/li&gt;
+&lt;li&gt;Health and safety&lt;/li&gt;
+&lt;li&gt;Data privacy (GDPR)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Analytics &amp;amp; Reporting&lt;span class="hx:absolute hx:-mt-20" id="analytics--reporting"&gt;&lt;/span&gt;
+&lt;a href="#analytics--reporting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;HR dashboards&lt;/li&gt;
+&lt;li&gt;Headcount reports&lt;/li&gt;
+&lt;li&gt;Turnover analysis&lt;/li&gt;
+&lt;li&gt;Compensation analysis&lt;/li&gt;
+&lt;li&gt;Diversity metrics&lt;/li&gt;
+&lt;li&gt;Custom reports&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration&lt;span class="hx:absolute hx:-mt-20" id="integration"&gt;&lt;/span&gt;
+&lt;a href="#integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Financial Accounting for payroll posting&lt;/li&gt;
+&lt;li&gt;Project Management for resource allocation&lt;/li&gt;
+&lt;li&gt;CRM for employee-customer interactions&lt;/li&gt;
+&lt;li&gt;Time tracking systems&lt;/li&gt;
+&lt;li&gt;Benefits providers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Mobile HR&lt;span class="hx:absolute hx:-mt-20" id="mobile-hr"&gt;&lt;/span&gt;
+&lt;a href="#mobile-hr" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Employee self-service app&lt;/li&gt;
+&lt;li&gt;Manager approvals&lt;/li&gt;
+&lt;li&gt;Time clock&lt;/li&gt;
+&lt;li&gt;Directory access&lt;/li&gt;
+&lt;li&gt;Leave requests&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Getting Started&lt;span class="hx:absolute hx:-mt-20" id="getting-started"&gt;&lt;/span&gt;
+&lt;a href="#getting-started" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Set up organization structure&lt;/li&gt;
+&lt;li&gt;Import employee data&lt;/li&gt;
+&lt;li&gt;Configure payroll rules&lt;/li&gt;
+&lt;li&gt;Define leave policies&lt;/li&gt;
+&lt;li&gt;Train HR team and employees&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For detailed documentation, visit our &lt;a href="https://wiki.bigledger.com/modules/hr/" &gt;HR Guide&lt;/a&gt; or contact support.&lt;/p&gt;</description></item><item><title>Project Management</title><link>https://wiki.bigledger.com/modules/projects/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/projects/</guid><description>
+&lt;h2&gt;Overview&lt;span class="hx:absolute hx:-mt-20" id="overview"&gt;&lt;/span&gt;
+&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The BigLedger Project Management module helps organizations plan, execute, and deliver projects on time and within budget. From simple tasks to complex multi-phase projects, manage everything in one integrated platform.&lt;/p&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Project Planning&lt;span class="hx:absolute hx:-mt-20" id="project-planning"&gt;&lt;/span&gt;
+&lt;a href="#project-planning" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Work Breakdown Structure (WBS)&lt;/li&gt;
+&lt;li&gt;Gantt charts&lt;/li&gt;
+&lt;li&gt;Critical path analysis&lt;/li&gt;
+&lt;li&gt;Milestone tracking&lt;/li&gt;
+&lt;li&gt;Dependencies management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Resource Management&lt;span class="hx:absolute hx:-mt-20" id="resource-management"&gt;&lt;/span&gt;
+&lt;a href="#resource-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Resource allocation&lt;/li&gt;
+&lt;li&gt;Capacity planning&lt;/li&gt;
+&lt;li&gt;Skills matching&lt;/li&gt;
+&lt;li&gt;Resource leveling&lt;/li&gt;
+&lt;li&gt;Utilization tracking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Time &amp;amp; Expense Tracking&lt;span class="hx:absolute hx:-mt-20" id="time--expense-tracking"&gt;&lt;/span&gt;
+&lt;a href="#time--expense-tracking" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Timesheet management&lt;/li&gt;
+&lt;li&gt;Expense reports&lt;/li&gt;
+&lt;li&gt;Billable hours&lt;/li&gt;
+&lt;li&gt;Cost tracking&lt;/li&gt;
+&lt;li&gt;Budget monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Task Management&lt;span class="hx:absolute hx:-mt-20" id="task-management"&gt;&lt;/span&gt;
+&lt;a href="#task-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Task assignment&lt;/li&gt;
+&lt;li&gt;Priority setting&lt;/li&gt;
+&lt;li&gt;Status tracking&lt;/li&gt;
+&lt;li&gt;Subtasks&lt;/li&gt;
+&lt;li&gt;Recurring tasks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Collaboration&lt;span class="hx:absolute hx:-mt-20" id="collaboration"&gt;&lt;/span&gt;
+&lt;a href="#collaboration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Team workspaces&lt;/li&gt;
+&lt;li&gt;Document sharing&lt;/li&gt;
+&lt;li&gt;Discussion boards&lt;/li&gt;
+&lt;li&gt;Activity feeds&lt;/li&gt;
+&lt;li&gt;Notifications&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Project Financials&lt;span class="hx:absolute hx:-mt-20" id="project-financials"&gt;&lt;/span&gt;
+&lt;a href="#project-financials" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Budget management&lt;/li&gt;
+&lt;li&gt;Cost tracking&lt;/li&gt;
+&lt;li&gt;Revenue recognition&lt;/li&gt;
+&lt;li&gt;Profitability analysis&lt;/li&gt;
+&lt;li&gt;Invoice generation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Risk Management&lt;span class="hx:absolute hx:-mt-20" id="risk-management"&gt;&lt;/span&gt;
+&lt;a href="#risk-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Risk identification&lt;/li&gt;
+&lt;li&gt;Impact assessment&lt;/li&gt;
+&lt;li&gt;Mitigation planning&lt;/li&gt;
+&lt;li&gt;Issue tracking&lt;/li&gt;
+&lt;li&gt;Change requests&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Project Types Supported&lt;span class="hx:absolute hx:-mt-20" id="project-types-supported"&gt;&lt;/span&gt;
+&lt;a href="#project-types-supported" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Fixed Price&lt;/strong&gt;: Projects with defined scope and budget&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Time &amp;amp; Materials&lt;/strong&gt;: Hourly billing projects&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Retainer&lt;/strong&gt;: Ongoing service agreements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Internal&lt;/strong&gt;: Non-billable internal projects&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Agile&lt;/strong&gt;: Sprint-based development projects&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Methodologies&lt;span class="hx:absolute hx:-mt-20" id="methodologies"&gt;&lt;/span&gt;
+&lt;a href="#methodologies" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Waterfall&lt;/li&gt;
+&lt;li&gt;Agile/Scrum&lt;/li&gt;
+&lt;li&gt;Kanban&lt;/li&gt;
+&lt;li&gt;Hybrid approaches&lt;/li&gt;
+&lt;li&gt;Custom methodologies&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Analytics &amp;amp; Reporting&lt;span class="hx:absolute hx:-mt-20" id="analytics--reporting"&gt;&lt;/span&gt;
+&lt;a href="#analytics--reporting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Project dashboards&lt;/li&gt;
+&lt;li&gt;Progress reports&lt;/li&gt;
+&lt;li&gt;Resource reports&lt;/li&gt;
+&lt;li&gt;Financial reports&lt;/li&gt;
+&lt;li&gt;Portfolio analytics&lt;/li&gt;
+&lt;li&gt;Custom reports&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration&lt;span class="hx:absolute hx:-mt-20" id="integration"&gt;&lt;/span&gt;
+&lt;a href="#integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Financial Accounting for billing and costing&lt;/li&gt;
+&lt;li&gt;HR for resource management&lt;/li&gt;
+&lt;li&gt;CRM for customer projects&lt;/li&gt;
+&lt;li&gt;Document Management&lt;/li&gt;
+&lt;li&gt;Communication tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Mobile Project Management&lt;span class="hx:absolute hx:-mt-20" id="mobile-project-management"&gt;&lt;/span&gt;
+&lt;a href="#mobile-project-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Project updates&lt;/li&gt;
+&lt;li&gt;Time entry&lt;/li&gt;
+&lt;li&gt;Task management&lt;/li&gt;
+&lt;li&gt;Approvals&lt;/li&gt;
+&lt;li&gt;Document access&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Benefits&lt;span class="hx:absolute hx:-mt-20" id="benefits"&gt;&lt;/span&gt;
+&lt;a href="#benefits" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Visibility&lt;/strong&gt;: Real-time project status&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Efficiency&lt;/strong&gt;: Optimize resource utilization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Control&lt;/strong&gt;: Stay on budget and schedule&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Collaboration&lt;/strong&gt;: Improve team communication&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Profitability&lt;/strong&gt;: Maximize project margins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Getting Started&lt;span class="hx:absolute hx:-mt-20" id="getting-started"&gt;&lt;/span&gt;
+&lt;a href="#getting-started" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Define project templates&lt;/li&gt;
+&lt;li&gt;Set up resource pools&lt;/li&gt;
+&lt;li&gt;Configure billing rates&lt;/li&gt;
+&lt;li&gt;Create project workflows&lt;/li&gt;
+&lt;li&gt;Train project teams&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;For detailed documentation, visit our &lt;a href="https://wiki.bigledger.com/modules/projects/" &gt;Project Management Guide&lt;/a&gt; or contact support.&lt;/p&gt;</description></item></channel></rss>

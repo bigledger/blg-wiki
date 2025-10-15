@@ -1,119 +1,119 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Team-Management</title><link>https://wiki.bigledger.com/tags/team-management/</link><description>Recent content in Team-Management on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/team-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Team Maintenance Applet</title><link>https://wiki.bigledger.com/applets/team-maintenance-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/team-maintenance-applet/</guid><description>
-&lt;p>1&lt;/p></description></item><item><title>Group Listings &amp; Organizational Management</title><link>https://wiki.bigledger.com/user-guide/administration/group-listing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/user-guide/administration/group-listing/</guid><description>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;p>&lt;strong>🚧 Content Under Development&lt;/strong>: This page contains basic functionality notes and requires comprehensive documentation. Key areas needing development:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Group Strategy &amp;amp; Planning&lt;/strong>: Best practices for organizational structure design&lt;/li>
-&lt;li>&lt;strong>Permission Management&lt;/strong>: Detailed access control and security implementation&lt;/li>
-&lt;li>&lt;strong>Integration Workflows&lt;/strong>: How groups work across BigLedger modules&lt;/li>
-&lt;li>&lt;strong>Advanced Features&lt;/strong>: Hierarchical groups, dynamic membership, and automation&lt;/li>
-&lt;li>&lt;strong>Use Case Examples&lt;/strong>: Real-world scenarios for different business types&lt;/li>
-&lt;/ul>&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h2>Overview&lt;span class="hx:absolute hx:-mt-20" id="overview">&lt;/span>
-&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Group listings in BigLedger provide a structured approach to organizing teams, managing access permissions, and creating logical groupings for better collaboration and data management across your organization.&lt;/p>
-&lt;hr>
-&lt;h2>TODO: Comprehensive Documentation Needed&lt;span class="hx:absolute hx:-mt-20" id="todo-comprehensive-documentation-needed">&lt;/span>
-&lt;a href="#todo-comprehensive-documentation-needed" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Priority 1: Group Strategy &amp;amp; Architecture&lt;span class="hx:absolute hx:-mt-20" id="priority-1-group-strategy--architecture">&lt;/span>
-&lt;a href="#priority-1-group-strategy--architecture" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> &lt;strong>Organizational Design&lt;/strong>: Best practices for structuring groups in BigLedger&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> &lt;strong>Group Types&lt;/strong>: Different types of groups and their optimal usage scenarios&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> &lt;strong>Hierarchy Management&lt;/strong>: Parent-child relationships and nested group structures&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> &lt;strong>Scalability Planning&lt;/strong>: Managing groups in large organizations&lt;/li>
-&lt;/ul>
-&lt;h3>Priority 2: Membership &amp;amp; Permissions&lt;span class="hx:absolute hx:-mt-20" id="priority-2-membership--permissions">&lt;/span>
-&lt;a href="#priority-2-membership--permissions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> &lt;strong>User Management&lt;/strong>: Adding, removing, and managing group members&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> &lt;strong>Role Assignment&lt;/strong>: Different member roles and their capabilities&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> &lt;strong>Permission Matrices&lt;/strong>: Detailed breakdown of available permissions&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> &lt;strong>Security Best Practices&lt;/strong>: Implementing proper access controls&lt;/li>
-&lt;/ul>
-&lt;h3>Priority 3: Integration &amp;amp; Automation&lt;span class="hx:absolute hx:-mt-20" id="priority-3-integration--automation">&lt;/span>
-&lt;a href="#priority-3-integration--automation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> &lt;strong>Module Integration&lt;/strong>: How groups work with accounting, sales, inventory modules&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> &lt;strong>Automated Workflows&lt;/strong>: Dynamic group membership based on criteria&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> &lt;strong>Reporting &amp;amp; Analytics&lt;/strong>: Group performance and usage analytics&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> &lt;strong>Bulk Operations&lt;/strong>: Managing large-scale group changes efficiently&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2>Current Basic Functionality&lt;span class="hx:absolute hx:-mt-20" id="current-basic-functionality">&lt;/span>
-&lt;a href="#current-basic-functionality" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Creating Groups&lt;span class="hx:absolute hx:-mt-20" id="creating-groups">&lt;/span>
-&lt;a href="#creating-groups" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Required Information&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Group Name&lt;/strong>: Descriptive identifier for the group&lt;/li>
-&lt;li>&lt;strong>Group Code&lt;/strong>: Unique system identifier&lt;/li>
-&lt;li>&lt;strong>Group Email&lt;/strong>: Contact email for group communications&lt;/li>
-&lt;li>&lt;strong>Group Visibility&lt;/strong>: Controls who can see the group&lt;/li>
-&lt;li>&lt;strong>Group Joining&lt;/strong>: Determines how users can join the group&lt;/li>
-&lt;/ul>
-&lt;h3>Group Management Tabs&lt;span class="hx:absolute hx:-mt-20" id="group-management-tabs">&lt;/span>
-&lt;a href="#group-management-tabs" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Edit General Info&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Modify group name, visibility, and joining settings&lt;/li>
-&lt;li>Control group active/inactive status&lt;/li>
-&lt;li>Update group configuration parameters&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Edit Members&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Add users by searching email addresses&lt;/li>
-&lt;li>Assign member ranks and roles&lt;/li>
-&lt;li>Manage member status (active/inactive)&lt;/li>
-&lt;li>Remove members from the group&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Edit Permissions&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Select permissions from available options&lt;/li>
-&lt;li>Apply group-level access controls&lt;/li>
-&lt;li>Manage permission inheritance&lt;/li>
-&lt;li>Remove or modify existing permissions&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2>Basic Implementation Guide&lt;span class="hx:absolute hx:-mt-20" id="basic-implementation-guide">&lt;/span>
-&lt;a href="#basic-implementation-guide" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>While comprehensive documentation is being developed:&lt;/p>
-&lt;h3>Step 1: Plan Your Group Structure&lt;span class="hx:absolute hx:-mt-20" id="step-1-plan-your-group-structure">&lt;/span>
-&lt;a href="#step-1-plan-your-group-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Define the purpose and scope of each group&lt;/li>
-&lt;li>Consider how groups will interact with existing organizational structure&lt;/li>
-&lt;li>Plan permission levels and access requirements&lt;/li>
-&lt;/ul>
-&lt;h3>Step 2: Create Core Groups&lt;span class="hx:absolute hx:-mt-20" id="step-2-create-core-groups">&lt;/span>
-&lt;a href="#step-2-create-core-groups" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Start with essential groups (departments, roles, projects)&lt;/li>
-&lt;li>Use consistent naming conventions&lt;/li>
-&lt;li>Configure appropriate visibility and joining settings&lt;/li>
-&lt;/ul>
-&lt;h3>Step 3: Manage Membership&lt;span class="hx:absolute hx:-mt-20" id="step-3-manage-membership">&lt;/span>
-&lt;a href="#step-3-manage-membership" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Add key users to appropriate groups&lt;/li>
-&lt;li>Assign appropriate ranks and permissions&lt;/li>
-&lt;li>Test access levels and functionality&lt;/li>
-&lt;/ul>
-&lt;h3>Step 4: Monitor and Optimize&lt;span class="hx:absolute hx:-mt-20" id="step-4-monitor-and-optimize">&lt;/span>
-&lt;a href="#step-4-monitor-and-optimize" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Regular review of group membership and permissions&lt;/li>
-&lt;li>Adjust structure as organizational needs change&lt;/li>
-&lt;li>Maintain security and access control standards&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2>Related Resources&lt;span class="hx:absolute hx:-mt-20" id="related-resources">&lt;/span>
-&lt;a href="#related-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>While this page is under development, explore these related topics:&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/member-class/" >Member Classifications&lt;/a> - User roles and access control&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/member-listing/" >User Management&lt;/a> - Individual user account management&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/team/" >Team Configuration&lt;/a> - Department and team setup&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/member-label-list/" >Label Management&lt;/a> - Organizational labeling systems&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2>Development Timeline&lt;span class="hx:absolute hx:-mt-20" id="development-timeline">&lt;/span>
-&lt;a href="#development-timeline" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;strong>Phase 1&lt;/strong> (Priority): Core group management and permission documentation&lt;br>
-&lt;strong>Phase 2&lt;/strong> (Follow-up): Advanced features and integration guides&lt;br>
-&lt;strong>Phase 3&lt;/strong> (Enhancement): Automation, analytics, and optimization strategies&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Current Status&lt;/strong>: Basic group creation and management functionality is available. For complex organizational requirements or advanced permission setup, contact technical support at &lt;a href="mailto:vincent@bigledger.com" >vincent@bigledger.com&lt;/a> for guidance.&lt;/div>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+&lt;p&gt;1&lt;/p&gt;</description></item><item><title>Group Listings &amp; Organizational Management</title><link>https://wiki.bigledger.com/user-guide/administration/group-listing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/user-guide/administration/group-listing/</guid><description>
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;p&gt;&lt;strong&gt;🚧 Content Under Development&lt;/strong&gt;: This page contains basic functionality notes and requires comprehensive documentation. Key areas needing development:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Group Strategy &amp;amp; Planning&lt;/strong&gt;: Best practices for organizational structure design&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Permission Management&lt;/strong&gt;: Detailed access control and security implementation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Workflows&lt;/strong&gt;: How groups work across BigLedger modules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Advanced Features&lt;/strong&gt;: Hierarchical groups, dynamic membership, and automation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Use Case Examples&lt;/strong&gt;: Real-world scenarios for different business types&lt;/li&gt;
+&lt;/ul&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Overview&lt;span class="hx:absolute hx:-mt-20" id="overview"&gt;&lt;/span&gt;
+&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Group listings in BigLedger provide a structured approach to organizing teams, managing access permissions, and creating logical groupings for better collaboration and data management across your organization.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;TODO: Comprehensive Documentation Needed&lt;span class="hx:absolute hx:-mt-20" id="todo-comprehensive-documentation-needed"&gt;&lt;/span&gt;
+&lt;a href="#todo-comprehensive-documentation-needed" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Priority 1: Group Strategy &amp;amp; Architecture&lt;span class="hx:absolute hx:-mt-20" id="priority-1-group-strategy--architecture"&gt;&lt;/span&gt;
+&lt;a href="#priority-1-group-strategy--architecture" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; &lt;strong&gt;Organizational Design&lt;/strong&gt;: Best practices for structuring groups in BigLedger&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; &lt;strong&gt;Group Types&lt;/strong&gt;: Different types of groups and their optimal usage scenarios&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; &lt;strong&gt;Hierarchy Management&lt;/strong&gt;: Parent-child relationships and nested group structures&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; &lt;strong&gt;Scalability Planning&lt;/strong&gt;: Managing groups in large organizations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Priority 2: Membership &amp;amp; Permissions&lt;span class="hx:absolute hx:-mt-20" id="priority-2-membership--permissions"&gt;&lt;/span&gt;
+&lt;a href="#priority-2-membership--permissions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; &lt;strong&gt;User Management&lt;/strong&gt;: Adding, removing, and managing group members&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; &lt;strong&gt;Role Assignment&lt;/strong&gt;: Different member roles and their capabilities&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; &lt;strong&gt;Permission Matrices&lt;/strong&gt;: Detailed breakdown of available permissions&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; &lt;strong&gt;Security Best Practices&lt;/strong&gt;: Implementing proper access controls&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Priority 3: Integration &amp;amp; Automation&lt;span class="hx:absolute hx:-mt-20" id="priority-3-integration--automation"&gt;&lt;/span&gt;
+&lt;a href="#priority-3-integration--automation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; &lt;strong&gt;Module Integration&lt;/strong&gt;: How groups work with accounting, sales, inventory modules&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; &lt;strong&gt;Automated Workflows&lt;/strong&gt;: Dynamic group membership based on criteria&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; &lt;strong&gt;Reporting &amp;amp; Analytics&lt;/strong&gt;: Group performance and usage analytics&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; &lt;strong&gt;Bulk Operations&lt;/strong&gt;: Managing large-scale group changes efficiently&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Current Basic Functionality&lt;span class="hx:absolute hx:-mt-20" id="current-basic-functionality"&gt;&lt;/span&gt;
+&lt;a href="#current-basic-functionality" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Creating Groups&lt;span class="hx:absolute hx:-mt-20" id="creating-groups"&gt;&lt;/span&gt;
+&lt;a href="#creating-groups" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Required Information&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Group Name&lt;/strong&gt;: Descriptive identifier for the group&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Group Code&lt;/strong&gt;: Unique system identifier&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Group Email&lt;/strong&gt;: Contact email for group communications&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Group Visibility&lt;/strong&gt;: Controls who can see the group&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Group Joining&lt;/strong&gt;: Determines how users can join the group&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Group Management Tabs&lt;span class="hx:absolute hx:-mt-20" id="group-management-tabs"&gt;&lt;/span&gt;
+&lt;a href="#group-management-tabs" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Edit General Info&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Modify group name, visibility, and joining settings&lt;/li&gt;
+&lt;li&gt;Control group active/inactive status&lt;/li&gt;
+&lt;li&gt;Update group configuration parameters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Edit Members&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Add users by searching email addresses&lt;/li&gt;
+&lt;li&gt;Assign member ranks and roles&lt;/li&gt;
+&lt;li&gt;Manage member status (active/inactive)&lt;/li&gt;
+&lt;li&gt;Remove members from the group&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Edit Permissions&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Select permissions from available options&lt;/li&gt;
+&lt;li&gt;Apply group-level access controls&lt;/li&gt;
+&lt;li&gt;Manage permission inheritance&lt;/li&gt;
+&lt;li&gt;Remove or modify existing permissions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Basic Implementation Guide&lt;span class="hx:absolute hx:-mt-20" id="basic-implementation-guide"&gt;&lt;/span&gt;
+&lt;a href="#basic-implementation-guide" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;While comprehensive documentation is being developed:&lt;/p&gt;
+&lt;h3&gt;Step 1: Plan Your Group Structure&lt;span class="hx:absolute hx:-mt-20" id="step-1-plan-your-group-structure"&gt;&lt;/span&gt;
+&lt;a href="#step-1-plan-your-group-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Define the purpose and scope of each group&lt;/li&gt;
+&lt;li&gt;Consider how groups will interact with existing organizational structure&lt;/li&gt;
+&lt;li&gt;Plan permission levels and access requirements&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Step 2: Create Core Groups&lt;span class="hx:absolute hx:-mt-20" id="step-2-create-core-groups"&gt;&lt;/span&gt;
+&lt;a href="#step-2-create-core-groups" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Start with essential groups (departments, roles, projects)&lt;/li&gt;
+&lt;li&gt;Use consistent naming conventions&lt;/li&gt;
+&lt;li&gt;Configure appropriate visibility and joining settings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Step 3: Manage Membership&lt;span class="hx:absolute hx:-mt-20" id="step-3-manage-membership"&gt;&lt;/span&gt;
+&lt;a href="#step-3-manage-membership" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Add key users to appropriate groups&lt;/li&gt;
+&lt;li&gt;Assign appropriate ranks and permissions&lt;/li&gt;
+&lt;li&gt;Test access levels and functionality&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Step 4: Monitor and Optimize&lt;span class="hx:absolute hx:-mt-20" id="step-4-monitor-and-optimize"&gt;&lt;/span&gt;
+&lt;a href="#step-4-monitor-and-optimize" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Regular review of group membership and permissions&lt;/li&gt;
+&lt;li&gt;Adjust structure as organizational needs change&lt;/li&gt;
+&lt;li&gt;Maintain security and access control standards&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Related Resources&lt;span class="hx:absolute hx:-mt-20" id="related-resources"&gt;&lt;/span&gt;
+&lt;a href="#related-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;While this page is under development, explore these related topics:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/member-class/" &gt;Member Classifications&lt;/a&gt; - User roles and access control&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/member-listing/" &gt;User Management&lt;/a&gt; - Individual user account management&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/team/" &gt;Team Configuration&lt;/a&gt; - Department and team setup&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/member-label-list/" &gt;Label Management&lt;/a&gt; - Organizational labeling systems&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Development Timeline&lt;span class="hx:absolute hx:-mt-20" id="development-timeline"&gt;&lt;/span&gt;
+&lt;a href="#development-timeline" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;Phase 1&lt;/strong&gt; (Priority): Core group management and permission documentation&lt;br&gt;
+&lt;strong&gt;Phase 2&lt;/strong&gt; (Follow-up): Advanced features and integration guides&lt;br&gt;
+&lt;strong&gt;Phase 3&lt;/strong&gt; (Enhancement): Automation, analytics, and optimization strategies&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Current Status&lt;/strong&gt;: Basic group creation and management functionality is available. For complex organizational requirements or advanced permission setup, contact technical support at &lt;a href="mailto:vincent@bigledger.com" &gt;vincent@bigledger.com&lt;/a&gt; for guidance.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

@@ -1,5 +1,5 @@
 ---
-title: "E-Invoice Generation Applet"
+title: "My E-invoice Admin Applet"
 description: "Electronic invoice creation and formatting for BigLedger compliance operations"
 tags:
 - einvoice-module

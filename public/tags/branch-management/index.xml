@@ -1,79 +1,79 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Branch-Management</title><link>https://wiki.bigledger.com/tags/branch-management/</link><description>Recent content in Branch-Management on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/branch-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Organization Applet</title><link>https://wiki.bigledger.com/applets/organization-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/organization-applet/</guid><description>
-&lt;h2>Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview">&lt;/span>
-&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The Organization Applet is a foundational Core Module component that defines and manages your complete organizational structure in BigLedger. This applet provides comprehensive tools for setting up companies, branches, departments, locations, and the hierarchical relationships that form the backbone of your business operations.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Core Module Applet&lt;/strong>: This is one of the 13 essential Core Module applets, required by all other BigLedger modules for organizational context and structure.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h3>Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions">&lt;/span>
-&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Company Setup and Configuration&lt;/strong> - Define company details and business information&lt;/li>
-&lt;li>&lt;strong>Branch and Location Management&lt;/strong> - Multi-location organizational structure&lt;/li>
-&lt;li>&lt;strong>Department and Division Structure&lt;/strong> - Internal organizational hierarchy&lt;/li>
-&lt;li>&lt;strong>Cost Center Management&lt;/strong> - Financial reporting and cost allocation&lt;/li>
-&lt;li>&lt;strong>Organizational Hierarchy&lt;/strong> - Parent-child relationships and reporting structure&lt;/li>
-&lt;/ul>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Company Management&lt;span class="hx:absolute hx:-mt-20" id="company-management">&lt;/span>
-&lt;a href="#company-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Complete company profile and business information&lt;/li>
-&lt;li>Business registration and legal entity details&lt;/li>
-&lt;li>Tax registration numbers and compliance information&lt;/li>
-&lt;li>Corporate identity and branding settings&lt;/li>
-&lt;li>Multi-currency and international operation support&lt;/li>
-&lt;li>Legal and regulatory compliance tracking&lt;/li>
-&lt;/ul>
-&lt;h3>Branch and Location Structure&lt;span class="hx:absolute hx:-mt-20" id="branch-and-location-structure">&lt;/span>
-&lt;a href="#branch-and-location-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Multiple branch setup and configuration&lt;/li>
-&lt;li>Geographic location and address management&lt;/li>
-&lt;li>Branch-specific operational settings&lt;/li>
-&lt;li>Inter-branch relationship and hierarchy&lt;/li>
-&lt;li>Location-based inventory and operations&lt;/li>
-&lt;li>Branch performance and reporting capabilities&lt;/li>
-&lt;/ul>
-&lt;h3>Department and Division Management&lt;span class="hx:absolute hx:-mt-20" id="department-and-division-management">&lt;/span>
-&lt;a href="#department-and-division-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Departmental structure and hierarchy&lt;/li>
-&lt;li>Cost center and profit center configuration&lt;/li>
-&lt;li>Budget allocation and financial responsibility&lt;/li>
-&lt;li>Resource allocation and management&lt;/li>
-&lt;li>Reporting relationships and organizational charts&lt;/li>
-&lt;li>Cross-departmental collaboration settings&lt;/li>
-&lt;/ul>
-&lt;h3>Organizational Hierarchy and Reporting&lt;span class="hx:absolute hx:-mt-20" id="organizational-hierarchy-and-reporting">&lt;/span>
-&lt;a href="#organizational-hierarchy-and-reporting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Parent-subsidiary company relationships&lt;/li>
-&lt;li>Branch and department reporting structures&lt;/li>
-&lt;li>Matrix organization support&lt;/li>
-&lt;li>Multi-level approval hierarchies&lt;/li>
-&lt;li>Consolidated reporting and analysis&lt;/li>
-&lt;li>Organizational change management&lt;/li>
-&lt;/ul>
-&lt;h3>Configuration and Customization&lt;span class="hx:absolute hx:-mt-20" id="configuration-and-customization">&lt;/span>
-&lt;a href="#configuration-and-customization" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Industry-specific organizational templates&lt;/li>
-&lt;li>Custom organizational fields and attributes&lt;/li>
-&lt;li>Workflow and approval process configuration&lt;/li>
-&lt;li>Integration with other Core Module applets&lt;/li>
-&lt;li>Security and access control settings&lt;/li>
-&lt;li>Performance monitoring and optimization&lt;/li>
-&lt;/ul>
-&lt;h2>Organization Setup Workflow&lt;span class="hx:absolute hx:-mt-20" id="organization-setup-workflow">&lt;/span>
-&lt;a href="#organization-setup-workflow" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>&lt;img src="https://wiki.bigledger.com/diagrams/organization-setup-workflow.svg" alt="Organization Setup Workflow" loading="lazy" />
-&lt;em>Figure 1: Complete organization setup process for Malaysian businesses&lt;/em>&lt;/p>
-&lt;p>Whether you&amp;rsquo;re managing a single company or multiple branches, the Organization Applet simplifies the process, providing a user-friendly interface to ensure that all operational details are configured accurately and efficiently.&lt;/p></description></item><item><title>Branch Organization Applet</title><link>https://wiki.bigledger.com/applets/branch-organization-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/branch-organization-applet/</guid><description>
-&lt;p>noneThis section covers the second main tab in the sidebar, Branches, where users can create and edit details for their branches.
+&lt;h2&gt;Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview"&gt;&lt;/span&gt;
+&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The Organization Applet is a foundational Core Module component that defines and manages your complete organizational structure in BigLedger. This applet provides comprehensive tools for setting up companies, branches, departments, locations, and the hierarchical relationships that form the backbone of your business operations.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Core Module Applet&lt;/strong&gt;: This is one of the 13 essential Core Module applets, required by all other BigLedger modules for organizational context and structure.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions"&gt;&lt;/span&gt;
+&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Company Setup and Configuration&lt;/strong&gt; - Define company details and business information&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Branch and Location Management&lt;/strong&gt; - Multi-location organizational structure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Department and Division Structure&lt;/strong&gt; - Internal organizational hierarchy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cost Center Management&lt;/strong&gt; - Financial reporting and cost allocation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Organizational Hierarchy&lt;/strong&gt; - Parent-child relationships and reporting structure&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Company Management&lt;span class="hx:absolute hx:-mt-20" id="company-management"&gt;&lt;/span&gt;
+&lt;a href="#company-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Complete company profile and business information&lt;/li&gt;
+&lt;li&gt;Business registration and legal entity details&lt;/li&gt;
+&lt;li&gt;Tax registration numbers and compliance information&lt;/li&gt;
+&lt;li&gt;Corporate identity and branding settings&lt;/li&gt;
+&lt;li&gt;Multi-currency and international operation support&lt;/li&gt;
+&lt;li&gt;Legal and regulatory compliance tracking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Branch and Location Structure&lt;span class="hx:absolute hx:-mt-20" id="branch-and-location-structure"&gt;&lt;/span&gt;
+&lt;a href="#branch-and-location-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Multiple branch setup and configuration&lt;/li&gt;
+&lt;li&gt;Geographic location and address management&lt;/li&gt;
+&lt;li&gt;Branch-specific operational settings&lt;/li&gt;
+&lt;li&gt;Inter-branch relationship and hierarchy&lt;/li&gt;
+&lt;li&gt;Location-based inventory and operations&lt;/li&gt;
+&lt;li&gt;Branch performance and reporting capabilities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Department and Division Management&lt;span class="hx:absolute hx:-mt-20" id="department-and-division-management"&gt;&lt;/span&gt;
+&lt;a href="#department-and-division-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Departmental structure and hierarchy&lt;/li&gt;
+&lt;li&gt;Cost center and profit center configuration&lt;/li&gt;
+&lt;li&gt;Budget allocation and financial responsibility&lt;/li&gt;
+&lt;li&gt;Resource allocation and management&lt;/li&gt;
+&lt;li&gt;Reporting relationships and organizational charts&lt;/li&gt;
+&lt;li&gt;Cross-departmental collaboration settings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Organizational Hierarchy and Reporting&lt;span class="hx:absolute hx:-mt-20" id="organizational-hierarchy-and-reporting"&gt;&lt;/span&gt;
+&lt;a href="#organizational-hierarchy-and-reporting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Parent-subsidiary company relationships&lt;/li&gt;
+&lt;li&gt;Branch and department reporting structures&lt;/li&gt;
+&lt;li&gt;Matrix organization support&lt;/li&gt;
+&lt;li&gt;Multi-level approval hierarchies&lt;/li&gt;
+&lt;li&gt;Consolidated reporting and analysis&lt;/li&gt;
+&lt;li&gt;Organizational change management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Configuration and Customization&lt;span class="hx:absolute hx:-mt-20" id="configuration-and-customization"&gt;&lt;/span&gt;
+&lt;a href="#configuration-and-customization" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Industry-specific organizational templates&lt;/li&gt;
+&lt;li&gt;Custom organizational fields and attributes&lt;/li&gt;
+&lt;li&gt;Workflow and approval process configuration&lt;/li&gt;
+&lt;li&gt;Integration with other Core Module applets&lt;/li&gt;
+&lt;li&gt;Security and access control settings&lt;/li&gt;
+&lt;li&gt;Performance monitoring and optimization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Organization Setup Workflow&lt;span class="hx:absolute hx:-mt-20" id="organization-setup-workflow"&gt;&lt;/span&gt;
+&lt;a href="#organization-setup-workflow" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="https://wiki.bigledger.com/diagrams/organization-setup-workflow.svg" alt="Organization Setup Workflow" loading="lazy" /&gt;
+&lt;em&gt;Figure 1: Complete organization setup process for Malaysian businesses&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Whether you&amp;rsquo;re managing a single company or multiple branches, the Organization Applet simplifies the process, providing a user-friendly interface to ensure that all operational details are configured accurately and efficiently.&lt;/p&gt;</description></item><item><title>Branch Organization Applet</title><link>https://wiki.bigledger.com/applets/branch-organization-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/branch-organization-applet/</guid><description>
+&lt;p&gt;noneThis section covers the second main tab in the sidebar, Branches, where users can create and edit details for their branches.
 A company can have multiple branches
 Users can either choose to create their branch from the second icon on the left sidebar or move to the Company Listing Edit Tab to create a branch.
 How to create a Branch from the Sidebar
 Create a Branch From the Company Listing Tab﻿﻿
-The second topic in this section provides an overview of each tab in the Edit Branch menu, highlighting its features to improve branch configuration.&lt;/p>
-&lt;h1>Create Branch﻿&lt;/h1>&lt;p>Users can create multiple branches, all linked to one company&lt;/p>
-&lt;h2>Create Branch From Sidebar﻿&lt;span class="hx:absolute hx:-mt-20" id="create-branch-from-sidebar">&lt;/span>
-&lt;a href="#create-branch-from-sidebar" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The second icon on the left menu bar is the Branch Tab, which allows users to create a new branch for a company manually. Users can press the &amp;lsquo;+&amp;rsquo; button to create a new branch.
+The second topic in this section provides an overview of each tab in the Edit Branch menu, highlighting its features to improve branch configuration.&lt;/p&gt;
+&lt;h1&gt;Create Branch﻿&lt;/h1&gt;&lt;p&gt;Users can create multiple branches, all linked to one company&lt;/p&gt;
+&lt;h2&gt;Create Branch From Sidebar﻿&lt;span class="hx:absolute hx:-mt-20" id="create-branch-from-sidebar"&gt;&lt;/span&gt;
+&lt;a href="#create-branch-from-sidebar" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The second icon on the left menu bar is the Branch Tab, which allows users to create a new branch for a company manually. Users can press the &amp;lsquo;+&amp;rsquo; button to create a new branch.
 Fill in all required fields in the Details Tab as outlined below.
 Once completed, click &amp;lsquo;Save&amp;rsquo; to save the branch details.
 Users can choose between &amp;lsquo;Create Default Location&amp;rsquo; or &amp;lsquo;Choose From Existing Location&amp;rsquo; when setting up the branch.
@@ -89,13 +89,13 @@ Location Code
 Default Location
 After filling in all necessary details, click &amp;lsquo;Save&amp;rsquo; to store the branch information.
 Fill in the details in the Address Tab as previously instructed.
-After confirming all the information, click the &amp;lsquo;Save&amp;rsquo; button to store the branch details.&lt;/p>
-&lt;h2>Create Branch From Company Listing Tab﻿﻿&lt;span class="hx:absolute hx:-mt-20" id="create-branch-from-company-listing-tab">&lt;/span>
-&lt;a href="#create-branch-from-company-listing-tab" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>If the users choose to create a branch for the selected company in the Company Listing Page, they are directly linking the branch to that company. Click the &amp;lsquo;+&amp;rsquo; sign to start creating the branch.
+After confirming all the information, click the &amp;lsquo;Save&amp;rsquo; button to store the branch details.&lt;/p&gt;
+&lt;h2&gt;Create Branch From Company Listing Tab﻿﻿&lt;span class="hx:absolute hx:-mt-20" id="create-branch-from-company-listing-tab"&gt;&lt;/span&gt;
+&lt;a href="#create-branch-from-company-listing-tab" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;If the users choose to create a branch for the selected company in the Company Listing Page, they are directly linking the branch to that company. Click the &amp;lsquo;+&amp;rsquo; sign to start creating the branch.
 Navigate to the Branch Tab in the company edit and click the &amp;lsquo;+&amp;rsquo; button to create a new branch.
 Select the company you wish to create a branch for from the drop-down list. The Company Name and Company Registration No. will be auto-filled based on your selection.
-Fill in the mandatory fields that need to be filled in the Details Tab and Address&lt;/p>
-&lt;h1>Edit branch﻿&lt;/h1>&lt;p>From the Branch Listing page, click on your created Branch to view all the available tabs:
+Fill in the mandatory fields that need to be filled in the Details Tab and Address&lt;/p&gt;
+&lt;h1&gt;Edit branch﻿&lt;/h1&gt;&lt;p&gt;From the Branch Listing page, click on your created Branch to view all the available tabs:
 Details: This section displays the main branch details created in section 2.1, where users can add or edit any information if needed.
 Default Pricing: is the configuration of default pricing. It can be set by branch or company. For example, if you have different pricing schemes for East and West Malaysia, you can apply the East branch pricing to branches in that area.
 Address: View and Edit branch addresses.
@@ -108,4 +108,4 @@ Settlement is used for your cashbook or POS, including payment options like Grab
 Labels: are used for tagging the branch
 Extension: is used CP Commerce
 Customer and Supplier: link the branch to a specific customer/supplier. When configured here, transactions will be automatically recorded. This feature is part of the intercompany configuration details
-Intercompany: Set whether the system automatically finalizes intercompany transactions or leaves them as drafts for manual approval. You can also configure if creating a sales invoice should auto-create the purchase invoice. This is where auto-configuration settings are managed.&lt;/p></description></item></channel></rss>
+Intercompany: Set whether the system automatically finalizes intercompany transactions or leaves them as drafts for manual approval. You can also configure if creating a sales invoice should auto-create the purchase invoice. This is where auto-configuration settings are managed.&lt;/p&gt;</description></item></channel></rss>

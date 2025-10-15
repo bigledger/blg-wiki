@@ -1,17 +1,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Ecommerce</title><link>https://wiki.bigledger.com/tags/ecommerce/</link><description>Recent content in Ecommerce on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/ecommerce/index.xml" rel="self" type="application/rss+xml"/><item><title>2.0 Website Configuration﻿</title><link>https://wiki.bigledger.com/modules/ecommerce/20-website-configuration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/20-website-configuration/</guid><description>
-&lt;h1>2.0 Website Configuration﻿&lt;/h1>&lt;p>&lt;strong>Page ID&lt;/strong>: 3187343370
-&lt;strong>Last Updated&lt;/strong>: 2024-11-17T11:07:01.283Z&lt;/p>
-&lt;h2>2.1 Setting Up Your Website﻿&lt;span class="hx:absolute hx:-mt-20" id="21-setting-up-your-website">&lt;/span>
-&lt;a href="#21-setting-up-your-website" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>CP-Commerce offers a user-friendly interface for configuring your website. Refer to the Website Configuration section for detailed instructions on setting up and customizing your website.&lt;/p>
-&lt;h2>2.2 Customizing Website Content﻿&lt;span class="hx:absolute hx:-mt-20" id="22-customizing-website-content">&lt;/span>
-&lt;a href="#22-customizing-website-content" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Learn how to tailor your website&amp;rsquo;s content, including product listings, images, descriptions, and pricing, to create an appealing online shopping experience for your customers.&lt;/p></description></item><item><title>B2B</title><link>https://wiki.bigledger.com/modules/ecommerce/b2b/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/b2b/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3153822181
-&lt;strong>Last Updated&lt;/strong>: 2021-06-05T09:01:05.690Z&lt;/p></description></item><item><title>CP-Commerce</title><link>https://wiki.bigledger.com/modules/ecommerce/cp-commerce/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/cp-commerce/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3153887626
-&lt;strong>Last Updated&lt;/strong>: 2024-11-17T11:04:53.671Z
-The CP-Commerce Module is a powerful solution designed to help businesses offer products and services online. It serves as an integrated platform that combines eCommerce capabilities with central data management and seamless integration with various other business systems. By eliminating duplicated data entry and providing operational data lake functionality, CP-Commerce empowers businesses to establish a robust online presence and grow their operations.&lt;/p></description></item><item><title>Create Single Tab</title><link>https://wiki.bigledger.com/modules/ecommerce/create-single-tab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/create-single-tab/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196191946
-&lt;strong>Last Updated&lt;/strong>: 2021-06-18T06:09:58.079Z
+&lt;h1&gt;2.0 Website Configuration﻿&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3187343370
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2024-11-17T11:07:01.283Z&lt;/p&gt;
+&lt;h2&gt;2.1 Setting Up Your Website﻿&lt;span class="hx:absolute hx:-mt-20" id="21-setting-up-your-website"&gt;&lt;/span&gt;
+&lt;a href="#21-setting-up-your-website" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;CP-Commerce offers a user-friendly interface for configuring your website. Refer to the Website Configuration section for detailed instructions on setting up and customizing your website.&lt;/p&gt;
+&lt;h2&gt;2.2 Customizing Website Content﻿&lt;span class="hx:absolute hx:-mt-20" id="22-customizing-website-content"&gt;&lt;/span&gt;
+&lt;a href="#22-customizing-website-content" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Learn how to tailor your website&amp;rsquo;s content, including product listings, images, descriptions, and pricing, to create an appealing online shopping experience for your customers.&lt;/p&gt;</description></item><item><title>B2B</title><link>https://wiki.bigledger.com/modules/ecommerce/b2b/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/b2b/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3153822181
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-05T09:01:05.690Z&lt;/p&gt;</description></item><item><title>CP-Commerce</title><link>https://wiki.bigledger.com/modules/ecommerce/cp-commerce/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/cp-commerce/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3153887626
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2024-11-17T11:04:53.671Z
+The CP-Commerce Module is a powerful solution designed to help businesses offer products and services online. It serves as an integrated platform that combines eCommerce capabilities with central data management and seamless integration with various other business systems. By eliminating duplicated data entry and providing operational data lake functionality, CP-Commerce empowers businesses to establish a robust online presence and grow their operations.&lt;/p&gt;</description></item><item><title>Create Single Tab</title><link>https://wiki.bigledger.com/modules/ecommerce/create-single-tab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/create-single-tab/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196191946
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-18T06:09:58.079Z
 Create - used for syncing the chosen item into a marketplace store. Create consist of 2 types :
 Create Single - used when user wants to sync 1 (one) item into the marketplace
 Create single item consist of 2 tabs :
@@ -20,9 +20,9 @@ Once the Store is chosen user will have to choose category:
 2. Item Tab - is used to select the current item that you are editing and want to sync to marketplace:
 Once the store and the category has been chosen user has to press &amp;ldquo;start listing&amp;rdquo; button which will bring to the summary page :
 User must click on the item and fill up all the attribute details:
-Once user complete filling up attribute details they may click on &amp;ldquo;Submit&amp;rdquo; button in order to sync to the marketplace.&lt;/p></description></item><item><title>EcomSync Applet</title><link>https://wiki.bigledger.com/modules/ecommerce/ecomsync-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/ecomsync-applet/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3259346357
-&lt;strong>Last Updated&lt;/strong>: 2021-07-23T05:51:22.732Z
+Once user complete filling up attribute details they may click on &amp;ldquo;Submit&amp;rdquo; button in order to sync to the marketplace.&lt;/p&gt;</description></item><item><title>EcomSync Applet</title><link>https://wiki.bigledger.com/modules/ecommerce/ecomsync-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/ecomsync-applet/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3259346357
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-07-23T05:51:22.732Z
 Table of Content
 Introduction to Ecomsync
 Ecomsync Features
@@ -36,9 +36,9 @@ Main Dashboard
 Sales Dashboard
 Order Dashboard
 Settings
-Integration with Shopify&lt;/p></description></item><item><title>Ecomsync Features</title><link>https://wiki.bigledger.com/modules/ecommerce/ecomsync-features/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/ecomsync-features/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3299247174
-&lt;strong>Last Updated&lt;/strong>: 2021-07-19T02:40:30.908Z
+Integration with Shopify&lt;/p&gt;</description></item><item><title>Ecomsync Features</title><link>https://wiki.bigledger.com/modules/ecommerce/ecomsync-features/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/ecomsync-features/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3299247174
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-07-19T02:40:30.908Z
 Readiness Status: 5 - Best possibleGreen 4 - optimalYellow 3 - averageBlue 2 - sub optimalPurple 1 - worst possibleRed
 PHASE 1
 1Module
@@ -51,83 +51,83 @@ Organisation Applet
 3Product Management
 GL Code selection
 Doc Item Maintenance
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 4Tracking of inventory
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 5Add dimension details
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 6Add product image
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 7Select image category
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 8Marketplace management
 Add marketplace
 Organisation Applet
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 9Select item category as bundled or single
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 10Choose item to be posted in marketplace
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 11EMP Sync as Sales Order (ERP system)
 EMP Sync
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 12Lazada Attributes Sync
 Select Lazada item category
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 13Fill in lazada attributes fields according to category chose
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 14Add more image in attribute page
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 15Stock Availability / Inventory Management
 Auto stock configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 16Manual stock configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 17Set stock buffer amount
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 18Sales Order Management
 Active Sales Order configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 19Inactive SO configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 20Selective active SO configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 21Sync of Lazada orders from Seller account
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 22Status filter
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 23Multi select orders for Invoice print
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 24Print shipping label
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 25Print picking list
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 26Export Order to Excel
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 27Create manifest
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 28View Order details (Item, shipping, customer details)
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 29Dashboard / Reports
 Filter dashboard by 30 days
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 30Filter dashboard by 7 days
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 31Enter custom date report
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 32View total sales report
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 33View Daily sales by store report
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 34View total orders
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 35View canceled orders
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 36CP Commerce integration
 Consolidate orders from CP Commerce in Ecomsycn
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 37Manage stock balance in Ecomsync
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 38PHASE 2
 39Shopee Integration
 Sales Order, stock balance are synced to EMP
@@ -155,38 +155,38 @@ Attributes and category management from Magento to Ecomsync
 Stock / order fulfilment
 Order management (Create Consignment Note, invoice etc)
 44Audit Trail
-45Stock fulfillment&lt;/p></description></item><item><title>Integration with Shopify</title><link>https://wiki.bigledger.com/modules/ecommerce/integration-with-shopify/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/integration-with-shopify/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3292758065
-&lt;strong>Last Updated&lt;/strong>: 2021-07-15T07:56:28.266Z
-steps,..&lt;/p></description></item><item><title>Introduction to EcomSync</title><link>https://wiki.bigledger.com/modules/ecommerce/introduction-to-ecomsync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/introduction-to-ecomsync/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196485958
-&lt;strong>Last Updated&lt;/strong>: 2021-06-18T01:46:53.953Z&lt;/p>
-&lt;h2>Introduction&lt;span class="hx:absolute hx:-mt-20" id="introduction">&lt;/span>
-&lt;a href="#introduction" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>EcomSync Applet is an applet whereby users can organize and manage their items/products, orders and view their marketplace performances. The aim of EcomSync Applet is to equip users with the understanding of managing their marketplace aspects.&lt;/p>
-&lt;p>&lt;img src="https://wiki.bigledger.com/diagrams/ecomsync-integration-flow.svg" alt="EcomSync Integration Flow" loading="lazy" />
-&lt;em>Figure 1: EcomSync Integration Architecture - connecting BigLedger with major Malaysian marketplaces&lt;/em>&lt;/p>
-&lt;p>You are able to experience many benefits from the applet such as from a management perspective, EcomSync provides better and feasible control of your seller shops. You are able to simultaneously sync items into multiple seller accounts. Other than that, EcomSync acts as a pacemaker which you can manage order and its status and can link with your Enterprise Management Portal (EMP) that makes your product management process easier.&lt;/p>
-&lt;h2>Prerequisites&lt;span class="hx:absolute hx:-mt-20" id="prerequisites">&lt;/span>
-&lt;a href="#prerequisites" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>In order to proceed and start on EcomSync Applet, kindly make sure that you have created organization and branch details in Organization Applet.&lt;/p>
-&lt;h3>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Multi-marketplace Management&lt;/strong>: Connect to Shopee, Lazada, and custom stores&lt;/li>
-&lt;li>&lt;strong>Real-time Synchronization&lt;/strong>: Inventory, prices, and orders sync automatically&lt;/li>
-&lt;li>&lt;strong>Malaysian E-commerce Support&lt;/strong>: Built for local payment methods and shipping&lt;/li>
-&lt;li>&lt;strong>Centralized Control&lt;/strong>: Manage all your online sales from one dashboard&lt;/li>
-&lt;/ul></description></item><item><title>Listing</title><link>https://wiki.bigledger.com/modules/ecommerce/listing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/listing/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196846319
-&lt;strong>Last Updated&lt;/strong>: 2021-06-18T02:06:35.534Z
+45Stock fulfillment&lt;/p&gt;</description></item><item><title>Integration with Shopify</title><link>https://wiki.bigledger.com/modules/ecommerce/integration-with-shopify/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/integration-with-shopify/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3292758065
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-07-15T07:56:28.266Z
+steps,..&lt;/p&gt;</description></item><item><title>Introduction to EcomSync</title><link>https://wiki.bigledger.com/modules/ecommerce/introduction-to-ecomsync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/introduction-to-ecomsync/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196485958
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-18T01:46:53.953Z&lt;/p&gt;
+&lt;h2&gt;Introduction&lt;span class="hx:absolute hx:-mt-20" id="introduction"&gt;&lt;/span&gt;
+&lt;a href="#introduction" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;EcomSync Applet is an applet whereby users can organize and manage their items/products, orders and view their marketplace performances. The aim of EcomSync Applet is to equip users with the understanding of managing their marketplace aspects.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://wiki.bigledger.com/diagrams/ecomsync-integration-flow.svg" alt="EcomSync Integration Flow" loading="lazy" /&gt;
+&lt;em&gt;Figure 1: EcomSync Integration Architecture - connecting BigLedger with major Malaysian marketplaces&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;You are able to experience many benefits from the applet such as from a management perspective, EcomSync provides better and feasible control of your seller shops. You are able to simultaneously sync items into multiple seller accounts. Other than that, EcomSync acts as a pacemaker which you can manage order and its status and can link with your Enterprise Management Portal (EMP) that makes your product management process easier.&lt;/p&gt;
+&lt;h2&gt;Prerequisites&lt;span class="hx:absolute hx:-mt-20" id="prerequisites"&gt;&lt;/span&gt;
+&lt;a href="#prerequisites" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;In order to proceed and start on EcomSync Applet, kindly make sure that you have created organization and branch details in Organization Applet.&lt;/p&gt;
+&lt;h3&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multi-marketplace Management&lt;/strong&gt;: Connect to Shopee, Lazada, and custom stores&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Synchronization&lt;/strong&gt;: Inventory, prices, and orders sync automatically&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Malaysian E-commerce Support&lt;/strong&gt;: Built for local payment methods and shipping&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Centralized Control&lt;/strong&gt;: Manage all your online sales from one dashboard&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Listing</title><link>https://wiki.bigledger.com/modules/ecommerce/listing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/listing/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196846319
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-18T02:06:35.534Z
 Listing shows all your Items that are synced from EMP and Marketplace. Inside the listing the item can be 2 levels, where by the first level is the one that is synced from EMP or the one that user created themselves, and the 2nd level shows the items that were synced to marketplace:
-User may customize the AG-Grid listing, where by they can move around and filter the headers of the listing.&lt;/p></description></item><item><title>Marketplace Tab</title><link>https://wiki.bigledger.com/modules/ecommerce/marketplace-tab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/marketplace-tab/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196191832
-&lt;strong>Last Updated&lt;/strong>: 2021-07-23T05:24:07.943Z
+User may customize the AG-Grid listing, where by they can move around and filter the headers of the listing.&lt;/p&gt;</description></item><item><title>Marketplace Tab</title><link>https://wiki.bigledger.com/modules/ecommerce/marketplace-tab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/marketplace-tab/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196191832
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-07-23T05:24:07.943Z
 Marketplace Tab is used for the Users to Create, Edit, Update and Delete the Items to be sync into the marketplace. This section will let you select the Item Type to be displayed in the Marketplace.
-Click Save. - For this Module each time edit the Item detail throughout the tabs &amp;ldquo;MUST CLICK SAVE&amp;rdquo;.&lt;/p></description></item><item><title>Update and Delete Item</title><link>https://wiki.bigledger.com/modules/ecommerce/update-and-delete-item/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/update-and-delete-item/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196191957
-&lt;strong>Last Updated&lt;/strong>: 2021-06-18T06:15:40.294Z
-Update/Delete Item - when user want to update or delete the item that was sync to the marketplace they will have to go to &amp;ldquo;Marketplace Tab&amp;rdquo; select the store from the current listing and update/delete the item:&lt;/p></description></item><item><title>EcomSync Related Applets</title><link>https://wiki.bigledger.com/applets/90-ecomsync-related-applets/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/90-ecomsync-related-applets/</guid><description>
-&lt;p>Ecomsync Organization Applet
+Click Save. - For this Module each time edit the Item detail throughout the tabs &amp;ldquo;MUST CLICK SAVE&amp;rdquo;.&lt;/p&gt;</description></item><item><title>Update and Delete Item</title><link>https://wiki.bigledger.com/modules/ecommerce/update-and-delete-item/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/update-and-delete-item/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196191957
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-18T06:15:40.294Z
+Update/Delete Item - when user want to update or delete the item that was sync to the marketplace they will have to go to &amp;ldquo;Marketplace Tab&amp;rdquo; select the store from the current listing and update/delete the item:&lt;/p&gt;</description></item><item><title>EcomSync Related Applets</title><link>https://wiki.bigledger.com/applets/90-ecomsync-related-applets/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/90-ecomsync-related-applets/</guid><description>
+&lt;p&gt;Ecomsync Organization Applet
 Ecomsync - Organisation Applet - Create Company
 Ecomsync - Organisation Applet : Create Virtual Branch (Marketplace)
 Ecomsync - Organisation Applet - Marketplace : Stock and Sale Order Configuration by Branch
@@ -196,50 +196,50 @@ Ecomsync - Doc Item Maintenance Applet : Create Grouped Item
 Ecomsync - Doc Item Maintenance Applet : Configure single/bundle item to marketplace
 Ecomsync - Doc Item Maintenance Applet : Configure grouped item to marketplace
 Ecomsync - Doc Item Maintenance Applet : Configure stock balance and sale order
-Ecomsync - Internal Sale Order Applet : Update marketplace order status&lt;/p></description></item><item><title>E-Commerce Catalog Applet</title><link>https://wiki.bigledger.com/applets/ecommerce-catalog-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/ecommerce-catalog-applet/</guid><description>
-&lt;h2>Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview">&lt;/span>
-&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>TODO&lt;/strong>: This applet documentation needs detailed expansion. This is a placeholder with basic structure and key information.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;p>The E-Commerce Catalog Applet is a specialized component of BigLedger&amp;rsquo;s CP-Commerce Module, providing comprehensive online product catalog management, SEO optimization, and digital commerce capabilities for e-commerce operations.&lt;/p>
-&lt;h3>Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions">&lt;/span>
-&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Product Catalog Management&lt;/strong> - Online product display and organization&lt;/li>
-&lt;li>&lt;strong>SEO Optimization&lt;/strong> - Search engine optimization for products&lt;/li>
-&lt;li>&lt;strong>Category Management&lt;/strong> - Product categorization and navigation&lt;/li>
-&lt;li>&lt;strong>Content Management&lt;/strong> - Rich product content and multimedia&lt;/li>
-&lt;li>&lt;strong>Pricing Management&lt;/strong> - Online pricing strategies and promotions&lt;/li>
-&lt;/ul>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>TODO: Expand Key Features Section&lt;span class="hx:absolute hx:-mt-20" id="todo-expand-key-features-section">&lt;/span>
-&lt;a href="#todo-expand-key-features-section" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Rich product content management&lt;/li>
-&lt;li>Multi-language catalog support&lt;/li>
-&lt;li>SEO-friendly URLs and metadata&lt;/li>
-&lt;li>Product recommendation engine&lt;/li>
-&lt;li>Advanced search and filtering&lt;/li>
-&lt;/ul>
-&lt;h2>Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points">&lt;/span>
-&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies">&lt;/span>
-&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/inv-item-maintenance-applet/" >Inventory Item Maintenance Applet&lt;/a>&lt;/strong> - Product master data&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" >Tax Configuration Applet&lt;/a>&lt;/strong> - Product tax settings&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" >Organization Applet&lt;/a>&lt;/strong> - Multi-store support&lt;/li>
-&lt;/ul>
-&lt;h2>Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets">&lt;/span>
-&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>TODO: Document Related Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-related-applets">&lt;/span>
-&lt;a href="#todo-document-related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Shopping Cart Applet&lt;/li>
-&lt;li>Online Payment Applet&lt;/li>
-&lt;li>Customer Portal Applet&lt;/li>
-&lt;li>Digital Marketing Applet&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Documentation Status&lt;/strong>: This applet requires comprehensive documentation including detailed features, SEO configuration, content management guides, and e-commerce implementation examples.&lt;/div>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+Ecomsync - Internal Sale Order Applet : Update marketplace order status&lt;/p&gt;</description></item><item><title>E-Commerce Catalog Applet</title><link>https://wiki.bigledger.com/applets/ecommerce-catalog-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/ecommerce-catalog-applet/</guid><description>
+&lt;h2&gt;Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview"&gt;&lt;/span&gt;
+&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;TODO&lt;/strong&gt;: This applet documentation needs detailed expansion. This is a placeholder with basic structure and key information.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The E-Commerce Catalog Applet is a specialized component of BigLedger&amp;rsquo;s CP-Commerce Module, providing comprehensive online product catalog management, SEO optimization, and digital commerce capabilities for e-commerce operations.&lt;/p&gt;
+&lt;h3&gt;Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions"&gt;&lt;/span&gt;
+&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Product Catalog Management&lt;/strong&gt; - Online product display and organization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SEO Optimization&lt;/strong&gt; - Search engine optimization for products&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Category Management&lt;/strong&gt; - Product categorization and navigation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Content Management&lt;/strong&gt; - Rich product content and multimedia&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pricing Management&lt;/strong&gt; - Online pricing strategies and promotions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;TODO: Expand Key Features Section&lt;span class="hx:absolute hx:-mt-20" id="todo-expand-key-features-section"&gt;&lt;/span&gt;
+&lt;a href="#todo-expand-key-features-section" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Rich product content management&lt;/li&gt;
+&lt;li&gt;Multi-language catalog support&lt;/li&gt;
+&lt;li&gt;SEO-friendly URLs and metadata&lt;/li&gt;
+&lt;li&gt;Product recommendation engine&lt;/li&gt;
+&lt;li&gt;Advanced search and filtering&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points"&gt;&lt;/span&gt;
+&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies"&gt;&lt;/span&gt;
+&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/inv-item-maintenance-applet/" &gt;Inventory Item Maintenance Applet&lt;/a&gt;&lt;/strong&gt; - Product master data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" &gt;Tax Configuration Applet&lt;/a&gt;&lt;/strong&gt; - Product tax settings&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" &gt;Organization Applet&lt;/a&gt;&lt;/strong&gt; - Multi-store support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets"&gt;&lt;/span&gt;
+&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;TODO: Document Related Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-related-applets"&gt;&lt;/span&gt;
+&lt;a href="#todo-document-related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Shopping Cart Applet&lt;/li&gt;
+&lt;li&gt;Online Payment Applet&lt;/li&gt;
+&lt;li&gt;Customer Portal Applet&lt;/li&gt;
+&lt;li&gt;Digital Marketing Applet&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Documentation Status&lt;/strong&gt;: This applet requires comprehensive documentation including detailed features, SEO configuration, content management guides, and e-commerce implementation examples.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

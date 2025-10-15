@@ -1,366 +1,366 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Stock-Control</title><link>https://wiki.bigledger.com/tags/stock-control/</link><description>Recent content in Stock-Control on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/stock-control/index.xml" rel="self" type="application/rss+xml"/><item><title>Inventory Item Maintenance Applet</title><link>https://wiki.bigledger.com/applets/inv-item-maintenance-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/inv-item-maintenance-applet/</guid><description>
-&lt;h2>Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview">&lt;/span>
-&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The Inventory Item Maintenance Applet is the central hub for managing all physical product and inventory master data in BigLedger. This Core Module applet provides comprehensive product information management, stock control parameters, and integration foundation for all inventory-related operations across multiple modules.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Core Module Applet&lt;/strong>: This is one of the 13 essential Core Module applets, critical for any business handling physical products or maintaining inventory.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h3>Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions">&lt;/span>
-&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Product Master Data&lt;/strong> - Complete product information management&lt;/li>
-&lt;li>&lt;strong>Stock Control Parameters&lt;/strong> - Inventory management settings&lt;/li>
-&lt;li>&lt;strong>Multi-Location Support&lt;/strong> - Warehouse and location-based inventory&lt;/li>
-&lt;li>&lt;strong>Pricing Management&lt;/strong> - Cost and selling price configuration&lt;/li>
-&lt;li>&lt;strong>Category Management&lt;/strong> - Product classification and organization&lt;/li>
-&lt;/ul>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Product Information Management&lt;span class="hx:absolute hx:-mt-20" id="product-information-management">&lt;/span>
-&lt;a href="#product-information-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Detailed product specifications and descriptions&lt;/li>
-&lt;li>Product images and multimedia attachments&lt;/li>
-&lt;li>Multiple product codes (SKU, UPC, manufacturer code)&lt;/li>
-&lt;li>Product attributes and variants (size, color, model)&lt;/li>
-&lt;li>Technical specifications and documentation&lt;/li>
-&lt;li>Supplier information and lead times&lt;/li>
-&lt;/ul>
-&lt;h3>Inventory Control&lt;span class="hx:absolute hx:-mt-20" id="inventory-control">&lt;/span>
-&lt;a href="#inventory-control" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Stock levels and reorder points&lt;/li>
-&lt;li>Minimum and maximum stock levels&lt;/li>
-&lt;li>Safety stock calculations&lt;/li>
-&lt;li>ABC analysis classification&lt;/li>
-&lt;li>Lot/batch tracking capabilities&lt;/li>
-&lt;li>Serial number management&lt;/li>
-&lt;li>Expiry date tracking&lt;/li>
-&lt;/ul>
-&lt;h3>Multi-Location Inventory&lt;span class="hx:absolute hx:-mt-20" id="multi-location-inventory">&lt;/span>
-&lt;a href="#multi-location-inventory" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Warehouse and location assignment&lt;/li>
-&lt;li>Inter-location stock transfers&lt;/li>
-&lt;li>Location-specific pricing&lt;/li>
-&lt;li>Branch-wise stock allocation&lt;/li>
-&lt;li>Zone and bin location tracking&lt;/li>
-&lt;li>Cross-docking capabilities&lt;/li>
-&lt;/ul>
-&lt;h3>Pricing and Costing&lt;span class="hx:absolute hx:-mt-20" id="pricing-and-costing">&lt;/span>
-&lt;a href="#pricing-and-costing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Multiple cost methods (FIFO, LIFO, Average)&lt;/li>
-&lt;li>Standard cost vs. actual cost&lt;/li>
-&lt;li>Multiple selling prices per product&lt;/li>
-&lt;li>Customer-specific pricing&lt;/li>
-&lt;li>Volume-based pricing tiers&lt;/li>
-&lt;li>Promotional pricing support&lt;/li>
-&lt;/ul>
-&lt;h3>Product Categories and Classification&lt;span class="hx:absolute hx:-mt-20" id="product-categories-and-classification">&lt;/span>
-&lt;a href="#product-categories-and-classification" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Hierarchical category structure&lt;/li>
-&lt;li>Product families and groups&lt;/li>
-&lt;li>Vendor catalogs integration&lt;/li>
-&lt;li>Industry-specific classifications&lt;/li>
-&lt;li>Custom product attributes&lt;/li>
-&lt;li>Automated categorization rules&lt;/li>
-&lt;/ul>
-&lt;h2>Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications">&lt;/span>
-&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements">&lt;/span>
-&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Minimum Access Level&lt;/strong>: Inventory Administrator&lt;/li>
-&lt;li>&lt;strong>Database Dependencies&lt;/strong>: Inventory master tables&lt;/li>
-&lt;li>&lt;strong>Integration Points&lt;/strong>: All inventory-related modules&lt;/li>
-&lt;li>&lt;strong>API Availability&lt;/strong>: Full CRUD operations with bulk processing&lt;/li>
-&lt;li>&lt;strong>Image Support&lt;/strong>: Multiple image formats up to 10MB each&lt;/li>
-&lt;/ul>
-&lt;h3>Product Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="product-configuration-options">&lt;/span>
-&lt;a href="#product-configuration-options" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Product Code Length&lt;/strong>: 3-50 characters&lt;/li>
-&lt;li>&lt;strong>Description Length&lt;/strong>: Up to 5,000 characters&lt;/li>
-&lt;li>&lt;strong>Custom Attributes&lt;/strong>: Up to 50 custom fields&lt;/li>
-&lt;li>&lt;strong>Variant Support&lt;/strong>: Up to 100 variants per product&lt;/li>
-&lt;li>&lt;strong>Image Attachments&lt;/strong>: Up to 20 images per product&lt;/li>
-&lt;/ul>
-&lt;h3>Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters">&lt;/span>
-&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Product Capacity&lt;/strong>: Up to 1,000,000 products&lt;/li>
-&lt;li>&lt;strong>Search Performance&lt;/strong>: &amp;lt;1 second for any search&lt;/li>
-&lt;li>&lt;strong>Bulk Operations&lt;/strong>: Process 10,000+ products per batch&lt;/li>
-&lt;li>&lt;strong>Concurrent Users&lt;/strong>: 1,000+ simultaneous users&lt;/li>
-&lt;li>&lt;strong>Stock Updates&lt;/strong>: Real-time inventory balance updates&lt;/li>
-&lt;/ul>
-&lt;h2>Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points">&lt;/span>
-&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies">&lt;/span>
-&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Tax Configuration Applet&lt;/strong> - Product tax mapping&lt;/li>
-&lt;li>&lt;strong>Chart of Account Applet&lt;/strong> - Inventory asset accounts&lt;/li>
-&lt;li>&lt;strong>Organization Applet&lt;/strong> - Multi-location inventory&lt;/li>
-&lt;li>&lt;strong>Supplier Maintenance Applet&lt;/strong> - Vendor product information&lt;/li>
-&lt;/ul>
-&lt;h3>Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration">&lt;/span>
-&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Module&lt;/th>
-&lt;th>Integration Purpose&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Sales &amp;amp; CRM&lt;/strong>&lt;/td>
-&lt;td>Product catalogs and pricing&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Purchasing&lt;/strong>&lt;/td>
-&lt;td>Procurement and vendor management&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Inventory &amp;amp; Warehouse&lt;/strong>&lt;/td>
-&lt;td>Stock movements and operations&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Manufacturing&lt;/strong>&lt;/td>
-&lt;td>Raw materials and finished goods&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>POS&lt;/strong>&lt;/td>
-&lt;td>Retail product information&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>E-Commerce&lt;/strong>&lt;/td>
-&lt;td>Online product catalogs&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Quality Control&lt;/strong>&lt;/td>
-&lt;td>Product specifications and standards&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3>External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations">&lt;/span>
-&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Supplier Catalogs&lt;/strong> - Product information synchronization&lt;/li>
-&lt;li>&lt;strong>E-Commerce Platforms&lt;/strong> - Product listings and updates&lt;/li>
-&lt;li>&lt;strong>Barcode Systems&lt;/strong> - Automated product identification&lt;/li>
-&lt;li>&lt;strong>POS Systems&lt;/strong> - Real-time product information&lt;/li>
-&lt;li>&lt;strong>EDI Systems&lt;/strong> - Electronic data interchange&lt;/li>
-&lt;li>&lt;strong>PLM Systems&lt;/strong> - Product lifecycle management&lt;/li>
-&lt;/ul>
-&lt;h2>Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements">&lt;/span>
-&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements">&lt;/span>
-&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Product Categories&lt;/strong> - Define classification structure&lt;/li>
-&lt;li>&lt;strong>Units of Measure&lt;/strong> - Set up measurement units&lt;/li>
-&lt;li>&lt;strong>Inventory Accounts&lt;/strong> - Configure asset accounts&lt;/li>
-&lt;li>&lt;strong>Locations/Warehouses&lt;/strong> - Define storage locations&lt;/li>
-&lt;li>&lt;strong>Cost Methods&lt;/strong> - Select inventory costing approach&lt;/li>
-&lt;/ol>
-&lt;h3>Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations">&lt;/span>
-&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Product Classifications&lt;/strong>: Category hierarchies and groupings&lt;/li>
-&lt;li>&lt;strong>Inventory Parameters&lt;/strong>: Reorder points, safety stock levels&lt;/li>
-&lt;li>&lt;strong>Pricing Structures&lt;/strong>: Cost and selling price methodologies&lt;/li>
-&lt;li>&lt;strong>Quality Standards&lt;/strong>: Product specifications and requirements&lt;/li>
-&lt;li>&lt;strong>Vendor Information&lt;/strong>: Primary and alternate suppliers&lt;/li>
-&lt;/ul>
-&lt;h3>Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations">&lt;/span>
-&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Multi-Variant Products&lt;/strong> - Size, color, style combinations&lt;/li>
-&lt;li>&lt;strong>Lot/Serial Tracking&lt;/strong> - Traceability requirements&lt;/li>
-&lt;li>&lt;strong>Quality Control&lt;/strong> - Inspection and testing protocols&lt;/li>
-&lt;li>&lt;strong>Kit/Bundle Products&lt;/strong> - Assembled product configurations&lt;/li>
-&lt;li>&lt;strong>Substitute Products&lt;/strong> - Alternative product options&lt;/li>
-&lt;/ul>
-&lt;h2>Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases">&lt;/span>
-&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Retail Chain Management&lt;span class="hx:absolute hx:-mt-20" id="retail-chain-management">&lt;/span>
-&lt;a href="#retail-chain-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Multi-store retail operation&lt;/p>
-&lt;ul>
-&lt;li>Centralized product catalog across all stores&lt;/li>
-&lt;li>Location-specific pricing and promotions&lt;/li>
-&lt;li>Automated reordering based on sales velocity&lt;/li>
-&lt;li>Seasonal inventory planning&lt;/li>
-&lt;li>Store-to-store stock transfers&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Consistent product information with local flexibility&lt;/p>
-&lt;h3>Manufacturing Company&lt;span class="hx:absolute hx:-mt-20" id="manufacturing-company">&lt;/span>
-&lt;a href="#manufacturing-company" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Production facility with raw materials&lt;/p>
-&lt;ul>
-&lt;li>Raw material specifications and quality standards&lt;/li>
-&lt;li>Work-in-progress tracking&lt;/li>
-&lt;li>Finished goods management&lt;/li>
-&lt;li>Bill of materials integration&lt;/li>
-&lt;li>Supplier performance tracking&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Complete manufacturing inventory control&lt;/p>
-&lt;h3>Wholesale Distribution&lt;span class="hx:absolute hx:-mt-20" id="wholesale-distribution">&lt;/span>
-&lt;a href="#wholesale-distribution" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: B2B distributor with multiple vendors&lt;/p>
-&lt;ul>
-&lt;li>Large-scale product catalog management&lt;/li>
-&lt;li>Volume-based pricing tiers&lt;/li>
-&lt;li>Drop-shipping product management&lt;/li>
-&lt;li>Vendor-specific product information&lt;/li>
-&lt;li>Bulk order processing capabilities&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Efficient large-scale inventory operations&lt;/p>
-&lt;h3>E-Commerce Business&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-business">&lt;/span>
-&lt;a href="#e-commerce-business" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Online retailer with digital marketing&lt;/p>
-&lt;ul>
-&lt;li>Rich product content with images and descriptions&lt;/li>
-&lt;li>SEO-optimized product information&lt;/li>
-&lt;li>Inventory synchronization across channels&lt;/li>
-&lt;li>Dynamic pricing based on stock levels&lt;/li>
-&lt;li>Product recommendation engine integration&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Enhanced online customer experience&lt;/p>
-&lt;h2>Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets">&lt;/span>
-&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets">&lt;/span>
-&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/doc-item-maintenance-applet/" >Document Item Maintenance Applet&lt;/a>&lt;/strong> - Service and non-inventory items&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/supplier-maintenance-applet/" >Supplier Maintenance Applet&lt;/a>&lt;/strong> - Vendor product relationships&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" >Tax Configuration Applet&lt;/a>&lt;/strong> - Product tax settings&lt;/li>
-&lt;/ul>
-&lt;h3>Inventory Management Applets&lt;span class="hx:absolute hx:-mt-20" id="inventory-management-applets">&lt;/span>
-&lt;a href="#inventory-management-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/stock-balance-applet/" >Stock Balance Applet&lt;/a>&lt;/strong> - Real-time inventory levels&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/stock-take-applet/" >Stock Take Applet&lt;/a>&lt;/strong> - Physical inventory counting&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/internal-stock-adjustment-applet/" >Internal Stock Adjustment Applet&lt;/a>&lt;/strong> - Inventory adjustments&lt;/li>
-&lt;/ul>
-&lt;h3>Pricing and Sales Applets&lt;span class="hx:absolute hx:-mt-20" id="pricing-and-sales-applets">&lt;/span>
-&lt;a href="#pricing-and-sales-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/pricebook-applet/" >Pricebook Applet&lt;/a>&lt;/strong> - Advanced pricing management&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/sales-order-applet/" >Sales Order Applet&lt;/a>&lt;/strong> - Product order processing&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/purchase-order-applet/" >Purchase Order Applet&lt;/a>&lt;/strong> - Product procurement&lt;/li>
-&lt;/ul>
-&lt;h2>Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide">&lt;/span>
-&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start">&lt;/span>
-&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Access Inventory Item Maintenance&lt;/strong> - Navigate to the applet&lt;/li>
-&lt;li>&lt;strong>Define Product Categories&lt;/strong> - Set up classification structure&lt;/li>
-&lt;li>&lt;strong>Configure Units of Measure&lt;/strong> - Set up measurement units&lt;/li>
-&lt;li>&lt;strong>Create Sample Products&lt;/strong> - Add test products&lt;/li>
-&lt;li>&lt;strong>Test Integration&lt;/strong> - Verify integration with other modules&lt;/li>
-&lt;/ol>
-&lt;h3>Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup">&lt;/span>
-&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Multi-Variant Configuration&lt;/strong> - Set up product variants&lt;/li>
-&lt;li>&lt;strong>Quality Control Setup&lt;/strong> - Configure inspection protocols&lt;/li>
-&lt;li>&lt;strong>Pricing Strategy&lt;/strong> - Implement advanced pricing rules&lt;/li>
-&lt;li>&lt;strong>Integration Configuration&lt;/strong> - Connect external systems&lt;/li>
-&lt;li>&lt;strong>Performance Optimization&lt;/strong> - Optimize for high-volume operations&lt;/li>
-&lt;/ol>
-&lt;h2>Product Master Data Structure&lt;span class="hx:absolute hx:-mt-20" id="product-master-data-structure">&lt;/span>
-&lt;a href="#product-master-data-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Basic Product Information&lt;span class="hx:absolute hx:-mt-20" id="basic-product-information">&lt;/span>
-&lt;a href="#basic-product-information" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Product Code&lt;/span>: &lt;span style="color:#ae81ff">ELEC-LAP-001&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Description&lt;/span>: &lt;span style="color:#ae81ff">Dell Inspiron 15 Laptop&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Category&lt;/span>: &lt;span style="color:#ae81ff">Electronics &amp;gt; Computers &amp;gt; Laptops&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Brand&lt;/span>: &lt;span style="color:#ae81ff">Dell&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Model&lt;/span>: &lt;span style="color:#ae81ff">Inspiron 15&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">UPC&lt;/span>: &lt;span style="color:#ae81ff">123456789012&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Manufacturer Code&lt;/span>: &lt;span style="color:#ae81ff">INS15-001&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Status&lt;/span>: &lt;span style="color:#ae81ff">Active&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&lt;h2&gt;Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview"&gt;&lt;/span&gt;
+&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The Inventory Item Maintenance Applet is the central hub for managing all physical product and inventory master data in BigLedger. This Core Module applet provides comprehensive product information management, stock control parameters, and integration foundation for all inventory-related operations across multiple modules.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Core Module Applet&lt;/strong&gt;: This is one of the 13 essential Core Module applets, critical for any business handling physical products or maintaining inventory.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions"&gt;&lt;/span&gt;
+&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Product Master Data&lt;/strong&gt; - Complete product information management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stock Control Parameters&lt;/strong&gt; - Inventory management settings&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Location Support&lt;/strong&gt; - Warehouse and location-based inventory&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pricing Management&lt;/strong&gt; - Cost and selling price configuration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Category Management&lt;/strong&gt; - Product classification and organization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Product Information Management&lt;span class="hx:absolute hx:-mt-20" id="product-information-management"&gt;&lt;/span&gt;
+&lt;a href="#product-information-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Detailed product specifications and descriptions&lt;/li&gt;
+&lt;li&gt;Product images and multimedia attachments&lt;/li&gt;
+&lt;li&gt;Multiple product codes (SKU, UPC, manufacturer code)&lt;/li&gt;
+&lt;li&gt;Product attributes and variants (size, color, model)&lt;/li&gt;
+&lt;li&gt;Technical specifications and documentation&lt;/li&gt;
+&lt;li&gt;Supplier information and lead times&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Inventory Control&lt;span class="hx:absolute hx:-mt-20" id="inventory-control"&gt;&lt;/span&gt;
+&lt;a href="#inventory-control" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Stock levels and reorder points&lt;/li&gt;
+&lt;li&gt;Minimum and maximum stock levels&lt;/li&gt;
+&lt;li&gt;Safety stock calculations&lt;/li&gt;
+&lt;li&gt;ABC analysis classification&lt;/li&gt;
+&lt;li&gt;Lot/batch tracking capabilities&lt;/li&gt;
+&lt;li&gt;Serial number management&lt;/li&gt;
+&lt;li&gt;Expiry date tracking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Multi-Location Inventory&lt;span class="hx:absolute hx:-mt-20" id="multi-location-inventory"&gt;&lt;/span&gt;
+&lt;a href="#multi-location-inventory" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Warehouse and location assignment&lt;/li&gt;
+&lt;li&gt;Inter-location stock transfers&lt;/li&gt;
+&lt;li&gt;Location-specific pricing&lt;/li&gt;
+&lt;li&gt;Branch-wise stock allocation&lt;/li&gt;
+&lt;li&gt;Zone and bin location tracking&lt;/li&gt;
+&lt;li&gt;Cross-docking capabilities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Pricing and Costing&lt;span class="hx:absolute hx:-mt-20" id="pricing-and-costing"&gt;&lt;/span&gt;
+&lt;a href="#pricing-and-costing" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Multiple cost methods (FIFO, LIFO, Average)&lt;/li&gt;
+&lt;li&gt;Standard cost vs. actual cost&lt;/li&gt;
+&lt;li&gt;Multiple selling prices per product&lt;/li&gt;
+&lt;li&gt;Customer-specific pricing&lt;/li&gt;
+&lt;li&gt;Volume-based pricing tiers&lt;/li&gt;
+&lt;li&gt;Promotional pricing support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Product Categories and Classification&lt;span class="hx:absolute hx:-mt-20" id="product-categories-and-classification"&gt;&lt;/span&gt;
+&lt;a href="#product-categories-and-classification" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Hierarchical category structure&lt;/li&gt;
+&lt;li&gt;Product families and groups&lt;/li&gt;
+&lt;li&gt;Vendor catalogs integration&lt;/li&gt;
+&lt;li&gt;Industry-specific classifications&lt;/li&gt;
+&lt;li&gt;Custom product attributes&lt;/li&gt;
+&lt;li&gt;Automated categorization rules&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications"&gt;&lt;/span&gt;
+&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements"&gt;&lt;/span&gt;
+&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Minimum Access Level&lt;/strong&gt;: Inventory Administrator&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Dependencies&lt;/strong&gt;: Inventory master tables&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Points&lt;/strong&gt;: All inventory-related modules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Availability&lt;/strong&gt;: Full CRUD operations with bulk processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Image Support&lt;/strong&gt;: Multiple image formats up to 10MB each&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Product Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="product-configuration-options"&gt;&lt;/span&gt;
+&lt;a href="#product-configuration-options" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Product Code Length&lt;/strong&gt;: 3-50 characters&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Description Length&lt;/strong&gt;: Up to 5,000 characters&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Attributes&lt;/strong&gt;: Up to 50 custom fields&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Variant Support&lt;/strong&gt;: Up to 100 variants per product&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Image Attachments&lt;/strong&gt;: Up to 20 images per product&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters"&gt;&lt;/span&gt;
+&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Product Capacity&lt;/strong&gt;: Up to 1,000,000 products&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Search Performance&lt;/strong&gt;: &amp;lt;1 second for any search&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bulk Operations&lt;/strong&gt;: Process 10,000+ products per batch&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Concurrent Users&lt;/strong&gt;: 1,000+ simultaneous users&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stock Updates&lt;/strong&gt;: Real-time inventory balance updates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points"&gt;&lt;/span&gt;
+&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies"&gt;&lt;/span&gt;
+&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tax Configuration Applet&lt;/strong&gt; - Product tax mapping&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chart of Account Applet&lt;/strong&gt; - Inventory asset accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Organization Applet&lt;/strong&gt; - Multi-location inventory&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Supplier Maintenance Applet&lt;/strong&gt; - Vendor product information&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration"&gt;&lt;/span&gt;
+&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Module&lt;/th&gt;
+&lt;th&gt;Integration Purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Sales &amp;amp; CRM&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Product catalogs and pricing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Purchasing&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Procurement and vendor management&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Inventory &amp;amp; Warehouse&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Stock movements and operations&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Manufacturing&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Raw materials and finished goods&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;POS&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Retail product information&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;E-Commerce&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Online product catalogs&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Quality Control&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Product specifications and standards&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations"&gt;&lt;/span&gt;
+&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Supplier Catalogs&lt;/strong&gt; - Product information synchronization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;E-Commerce Platforms&lt;/strong&gt; - Product listings and updates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Barcode Systems&lt;/strong&gt; - Automated product identification&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;POS Systems&lt;/strong&gt; - Real-time product information&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;EDI Systems&lt;/strong&gt; - Electronic data interchange&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PLM Systems&lt;/strong&gt; - Product lifecycle management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements"&gt;&lt;/span&gt;
+&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements"&gt;&lt;/span&gt;
+&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Product Categories&lt;/strong&gt; - Define classification structure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Units of Measure&lt;/strong&gt; - Set up measurement units&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inventory Accounts&lt;/strong&gt; - Configure asset accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Locations/Warehouses&lt;/strong&gt; - Define storage locations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cost Methods&lt;/strong&gt; - Select inventory costing approach&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations"&gt;&lt;/span&gt;
+&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Product Classifications&lt;/strong&gt;: Category hierarchies and groupings&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inventory Parameters&lt;/strong&gt;: Reorder points, safety stock levels&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pricing Structures&lt;/strong&gt;: Cost and selling price methodologies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quality Standards&lt;/strong&gt;: Product specifications and requirements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Vendor Information&lt;/strong&gt;: Primary and alternate suppliers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations"&gt;&lt;/span&gt;
+&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Variant Products&lt;/strong&gt; - Size, color, style combinations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Lot/Serial Tracking&lt;/strong&gt; - Traceability requirements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quality Control&lt;/strong&gt; - Inspection and testing protocols&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Kit/Bundle Products&lt;/strong&gt; - Assembled product configurations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Substitute Products&lt;/strong&gt; - Alternative product options&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases"&gt;&lt;/span&gt;
+&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Retail Chain Management&lt;span class="hx:absolute hx:-mt-20" id="retail-chain-management"&gt;&lt;/span&gt;
+&lt;a href="#retail-chain-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Multi-store retail operation&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Centralized product catalog across all stores&lt;/li&gt;
+&lt;li&gt;Location-specific pricing and promotions&lt;/li&gt;
+&lt;li&gt;Automated reordering based on sales velocity&lt;/li&gt;
+&lt;li&gt;Seasonal inventory planning&lt;/li&gt;
+&lt;li&gt;Store-to-store stock transfers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Consistent product information with local flexibility&lt;/p&gt;
+&lt;h3&gt;Manufacturing Company&lt;span class="hx:absolute hx:-mt-20" id="manufacturing-company"&gt;&lt;/span&gt;
+&lt;a href="#manufacturing-company" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Production facility with raw materials&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Raw material specifications and quality standards&lt;/li&gt;
+&lt;li&gt;Work-in-progress tracking&lt;/li&gt;
+&lt;li&gt;Finished goods management&lt;/li&gt;
+&lt;li&gt;Bill of materials integration&lt;/li&gt;
+&lt;li&gt;Supplier performance tracking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Complete manufacturing inventory control&lt;/p&gt;
+&lt;h3&gt;Wholesale Distribution&lt;span class="hx:absolute hx:-mt-20" id="wholesale-distribution"&gt;&lt;/span&gt;
+&lt;a href="#wholesale-distribution" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: B2B distributor with multiple vendors&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Large-scale product catalog management&lt;/li&gt;
+&lt;li&gt;Volume-based pricing tiers&lt;/li&gt;
+&lt;li&gt;Drop-shipping product management&lt;/li&gt;
+&lt;li&gt;Vendor-specific product information&lt;/li&gt;
+&lt;li&gt;Bulk order processing capabilities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Efficient large-scale inventory operations&lt;/p&gt;
+&lt;h3&gt;E-Commerce Business&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-business"&gt;&lt;/span&gt;
+&lt;a href="#e-commerce-business" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Online retailer with digital marketing&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Rich product content with images and descriptions&lt;/li&gt;
+&lt;li&gt;SEO-optimized product information&lt;/li&gt;
+&lt;li&gt;Inventory synchronization across channels&lt;/li&gt;
+&lt;li&gt;Dynamic pricing based on stock levels&lt;/li&gt;
+&lt;li&gt;Product recommendation engine integration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Enhanced online customer experience&lt;/p&gt;
+&lt;h2&gt;Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets"&gt;&lt;/span&gt;
+&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets"&gt;&lt;/span&gt;
+&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/doc-item-maintenance-applet/" &gt;Document Item Maintenance Applet&lt;/a&gt;&lt;/strong&gt; - Service and non-inventory items&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/supplier-maintenance-applet/" &gt;Supplier Maintenance Applet&lt;/a&gt;&lt;/strong&gt; - Vendor product relationships&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" &gt;Tax Configuration Applet&lt;/a&gt;&lt;/strong&gt; - Product tax settings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Inventory Management Applets&lt;span class="hx:absolute hx:-mt-20" id="inventory-management-applets"&gt;&lt;/span&gt;
+&lt;a href="#inventory-management-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/stock-balance-applet/" &gt;Stock Balance Applet&lt;/a&gt;&lt;/strong&gt; - Real-time inventory levels&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/stock-take-applet/" &gt;Stock Take Applet&lt;/a&gt;&lt;/strong&gt; - Physical inventory counting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/internal-stock-adjustment-applet/" &gt;Internal Stock Adjustment Applet&lt;/a&gt;&lt;/strong&gt; - Inventory adjustments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Pricing and Sales Applets&lt;span class="hx:absolute hx:-mt-20" id="pricing-and-sales-applets"&gt;&lt;/span&gt;
+&lt;a href="#pricing-and-sales-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/pricebook-applet/" &gt;Pricebook Applet&lt;/a&gt;&lt;/strong&gt; - Advanced pricing management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/sales-order-applet/" &gt;Sales Order Applet&lt;/a&gt;&lt;/strong&gt; - Product order processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/purchase-order-applet/" &gt;Purchase Order Applet&lt;/a&gt;&lt;/strong&gt; - Product procurement&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide"&gt;&lt;/span&gt;
+&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start"&gt;&lt;/span&gt;
+&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Access Inventory Item Maintenance&lt;/strong&gt; - Navigate to the applet&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Define Product Categories&lt;/strong&gt; - Set up classification structure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configure Units of Measure&lt;/strong&gt; - Set up measurement units&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Create Sample Products&lt;/strong&gt; - Add test products&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test Integration&lt;/strong&gt; - Verify integration with other modules&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup"&gt;&lt;/span&gt;
+&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Variant Configuration&lt;/strong&gt; - Set up product variants&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quality Control Setup&lt;/strong&gt; - Configure inspection protocols&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pricing Strategy&lt;/strong&gt; - Implement advanced pricing rules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Configuration&lt;/strong&gt; - Connect external systems&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Optimization&lt;/strong&gt; - Optimize for high-volume operations&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Product Master Data Structure&lt;span class="hx:absolute hx:-mt-20" id="product-master-data-structure"&gt;&lt;/span&gt;
+&lt;a href="#product-master-data-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Basic Product Information&lt;span class="hx:absolute hx:-mt-20" id="basic-product-information"&gt;&lt;/span&gt;
+&lt;a href="#basic-product-information" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Product Code&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;ELEC-LAP-001&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Description&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Dell Inspiron 15 Laptop&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Category&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Electronics &amp;gt; Computers &amp;gt; Laptops&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Brand&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Dell&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Model&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Inspiron 15&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;UPC&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;123456789012&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Manufacturer Code&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;INS15-001&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Status&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Active&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Inventory Parameters&lt;span class="hx:absolute hx:-mt-20" id="inventory-parameters">&lt;/span>
-&lt;a href="#inventory-parameters" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Unit of Measure&lt;/span>: &lt;span style="color:#ae81ff">Each&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Cost Method&lt;/span>: &lt;span style="color:#ae81ff">Average Cost&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Standard Cost&lt;/span>: &lt;span style="color:#ae81ff">$750.00&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Current Average Cost&lt;/span>: &lt;span style="color:#ae81ff">$745.50&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Selling Price&lt;/span>: &lt;span style="color:#ae81ff">$999.00&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Reorder Point&lt;/span>: &lt;span style="color:#ae81ff">10&lt;/span> &lt;span style="color:#ae81ff">units&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Safety Stock&lt;/span>: &lt;span style="color:#ae81ff">5&lt;/span> &lt;span style="color:#ae81ff">units&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Lead Time&lt;/span>: &lt;span style="color:#ae81ff">7&lt;/span> &lt;span style="color:#ae81ff">days&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">ABC Classification&lt;/span>: &lt;span style="color:#ae81ff">A&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Inventory Parameters&lt;span class="hx:absolute hx:-mt-20" id="inventory-parameters"&gt;&lt;/span&gt;
+&lt;a href="#inventory-parameters" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Unit of Measure&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Each&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Cost Method&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Average Cost&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Standard Cost&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;$750.00&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Current Average Cost&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;$745.50&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Selling Price&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;$999.00&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Reorder Point&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;10&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;units&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Safety Stock&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;5&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;units&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Lead Time&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;7&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;days&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;ABC Classification&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;A&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Physical Attributes&lt;span class="hx:absolute hx:-mt-20" id="physical-attributes">&lt;/span>
-&lt;a href="#physical-attributes" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Weight&lt;/span>: &lt;span style="color:#ae81ff">2.5&lt;/span> &lt;span style="color:#ae81ff">kg&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Dimensions&lt;/span>: &lt;span style="color:#ae81ff">35.8&lt;/span> &lt;span style="color:#ae81ff">x 24.7 x 1.99 cm&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Color&lt;/span>: &lt;span style="color:#ae81ff">Silver&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Storage&lt;/span>: &lt;span style="color:#ae81ff">512GB SSD&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Memory&lt;/span>: &lt;span style="color:#ae81ff">16GB RAM&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Processor&lt;/span>: &lt;span style="color:#ae81ff">Intel Core i7&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Warranty&lt;/span>: &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#ae81ff">Year&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Physical Attributes&lt;span class="hx:absolute hx:-mt-20" id="physical-attributes"&gt;&lt;/span&gt;
+&lt;a href="#physical-attributes" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Weight&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;2.5&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;kg&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Dimensions&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;35.8&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;x 24.7 x 1.99 cm&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Color&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Silver&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Storage&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;512GB SSD&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Memory&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;16GB RAM&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Processor&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Intel Core i7&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Warranty&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;Year&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h2>Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices">&lt;/span>
-&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Product Data Management Best Practices&lt;span class="hx:absolute hx:-mt-20" id="product-data-management-best-practices">&lt;/span>
-&lt;a href="#product-data-management-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Standardization&lt;/strong> - Consistent naming conventions and codes&lt;/li>
-&lt;li>&lt;strong>Data Quality&lt;/strong> - Accurate and complete product information&lt;/li>
-&lt;li>&lt;strong>Regular Updates&lt;/strong> - Keep product data current and relevant&lt;/li>
-&lt;li>&lt;strong>Image Quality&lt;/strong> - High-quality product images&lt;/li>
-&lt;li>&lt;strong>SEO Optimization&lt;/strong> - Search-friendly descriptions&lt;/li>
-&lt;/ul>
-&lt;h3>Inventory Control Best Practices&lt;span class="hx:absolute hx:-mt-20" id="inventory-control-best-practices">&lt;/span>
-&lt;a href="#inventory-control-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>ABC Analysis&lt;/strong> - Focus on high-value items&lt;/li>
-&lt;li>&lt;strong>Regular Reviews&lt;/strong> - Periodic reorder point adjustments&lt;/li>
-&lt;li>&lt;strong>Demand Planning&lt;/strong> - Historical data analysis for forecasting&lt;/li>
-&lt;li>&lt;strong>Supplier Management&lt;/strong> - Maintain reliable supplier relationships&lt;/li>
-&lt;li>&lt;strong>Quality Standards&lt;/strong> - Consistent quality control measures&lt;/li>
-&lt;/ul>
-&lt;h3>Multi-Location Best Practices&lt;span class="hx:absolute hx:-mt-20" id="multi-location-best-practices">&lt;/span>
-&lt;a href="#multi-location-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Centralized Catalog&lt;/strong> - Single source of product truth&lt;/li>
-&lt;li>&lt;strong>Local Customization&lt;/strong> - Location-specific pricing and availability&lt;/li>
-&lt;li>&lt;strong>Transfer Optimization&lt;/strong> - Efficient inter-location movements&lt;/li>
-&lt;li>&lt;strong>Stock Balancing&lt;/strong> - Optimal inventory distribution&lt;/li>
-&lt;li>&lt;strong>Performance Monitoring&lt;/strong> - Location-wise inventory metrics&lt;/li>
-&lt;/ul>
-&lt;h2>Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting">&lt;/span>
-&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues">&lt;/span>
-&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Cannot create new products&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Check user permissions for product creation&lt;/li>
-&lt;li>Verify required fields are completed&lt;/li>
-&lt;li>Ensure product categories are defined&lt;/li>
-&lt;li>Check duplicate product code restrictions&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Stock level inconsistencies&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Review stock adjustment entries&lt;/li>
-&lt;li>Check integration with other modules&lt;/li>
-&lt;li>Verify cost method calculations&lt;/li>
-&lt;li>Review transaction history&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Performance issues with large catalogs&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Optimize database indexing&lt;/li>
-&lt;li>Review search configurations&lt;/li>
-&lt;li>Consider archiving inactive products&lt;/li>
-&lt;li>Implement category-based filters&lt;/li>
-&lt;/ul>
-&lt;h3>Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources">&lt;/span>
-&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Product setup and configuration guide&lt;/li>
-&lt;li>Inventory control best practices&lt;/li>
-&lt;li>Integration troubleshooting documentation&lt;/li>
-&lt;li>Performance optimization guide&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Important&lt;/strong>: Product master data changes can affect pricing, inventory levels, and financial reporting. Always test changes in a development environment first.&lt;/div>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices"&gt;&lt;/span&gt;
+&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Product Data Management Best Practices&lt;span class="hx:absolute hx:-mt-20" id="product-data-management-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#product-data-management-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Standardization&lt;/strong&gt; - Consistent naming conventions and codes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Quality&lt;/strong&gt; - Accurate and complete product information&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regular Updates&lt;/strong&gt; - Keep product data current and relevant&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Image Quality&lt;/strong&gt; - High-quality product images&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SEO Optimization&lt;/strong&gt; - Search-friendly descriptions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Inventory Control Best Practices&lt;span class="hx:absolute hx:-mt-20" id="inventory-control-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#inventory-control-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ABC Analysis&lt;/strong&gt; - Focus on high-value items&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regular Reviews&lt;/strong&gt; - Periodic reorder point adjustments&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Demand Planning&lt;/strong&gt; - Historical data analysis for forecasting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Supplier Management&lt;/strong&gt; - Maintain reliable supplier relationships&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quality Standards&lt;/strong&gt; - Consistent quality control measures&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Multi-Location Best Practices&lt;span class="hx:absolute hx:-mt-20" id="multi-location-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#multi-location-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Centralized Catalog&lt;/strong&gt; - Single source of product truth&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Local Customization&lt;/strong&gt; - Location-specific pricing and availability&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transfer Optimization&lt;/strong&gt; - Efficient inter-location movements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Stock Balancing&lt;/strong&gt; - Optimal inventory distribution&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Monitoring&lt;/strong&gt; - Location-wise inventory metrics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues"&gt;&lt;/span&gt;
+&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Cannot create new products&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check user permissions for product creation&lt;/li&gt;
+&lt;li&gt;Verify required fields are completed&lt;/li&gt;
+&lt;li&gt;Ensure product categories are defined&lt;/li&gt;
+&lt;li&gt;Check duplicate product code restrictions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Stock level inconsistencies&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Review stock adjustment entries&lt;/li&gt;
+&lt;li&gt;Check integration with other modules&lt;/li&gt;
+&lt;li&gt;Verify cost method calculations&lt;/li&gt;
+&lt;li&gt;Review transaction history&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Performance issues with large catalogs&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Optimize database indexing&lt;/li&gt;
+&lt;li&gt;Review search configurations&lt;/li&gt;
+&lt;li&gt;Consider archiving inactive products&lt;/li&gt;
+&lt;li&gt;Implement category-based filters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources"&gt;&lt;/span&gt;
+&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Product setup and configuration guide&lt;/li&gt;
+&lt;li&gt;Inventory control best practices&lt;/li&gt;
+&lt;li&gt;Integration troubleshooting documentation&lt;/li&gt;
+&lt;li&gt;Performance optimization guide&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Important&lt;/strong&gt;: Product master data changes can affect pricing, inventory levels, and financial reporting. Always test changes in a development environment first.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

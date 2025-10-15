@@ -152,7 +152,7 @@ All 13 Core Module applets (listed above) are included in CP-Commerce Module.
 **Electronic invoicing and compliance specialization**
 
 ### TODO: Document E-Invoice Applets
-1. **E-Invoice Generation Applet** - Electronic invoice creation and formatting
+1. **My E-Invoice Admin Applet** - Electronic invoice creation and formatting
 2. **MyInvois Integration Applet** - Malaysian e-invoicing compliance
 3. **PEPPOL Network Applet** - Pan-European Public Procurement integration
 4. **Digital Signature Applet** - Invoice digital signing and verification

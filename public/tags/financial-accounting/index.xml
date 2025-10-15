@@ -1,663 +1,663 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Financial-Accounting</title><link>https://wiki.bigledger.com/tags/financial-accounting/</link><description>Recent content in Financial-Accounting on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/financial-accounting/index.xml" rel="self" type="application/rss+xml"/><item><title>Cashbook Applet</title><link>https://wiki.bigledger.com/applets/cashbook-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/cashbook-applet/</guid><description>
-&lt;h2>Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview">&lt;/span>
-&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The Cashbook Applet is a fundamental Core Module component that manages all cash and bank account operations in BigLedger. This applet provides comprehensive cash management, bank account configuration, payment method setup, and cash flow tracking that supports all financial transactions across every BigLedger module.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Core Module Applet&lt;/strong>: This is one of the 13 essential Core Module applets, critical for any business handling cash transactions, bank payments, or financial operations.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h3>Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions">&lt;/span>
-&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Cash Account Management&lt;/strong> - Physical cash handling and control&lt;/li>
-&lt;li>&lt;strong>Bank Account Configuration&lt;/strong> - Multiple bank account setup and management&lt;/li>
-&lt;li>&lt;strong>Payment Method Setup&lt;/strong> - Various payment method configurations&lt;/li>
-&lt;li>&lt;strong>Cash Flow Tracking&lt;/strong> - Real-time cash position monitoring&lt;/li>
-&lt;li>&lt;strong>Bank Reconciliation&lt;/strong> - Automated bank statement reconciliation&lt;/li>
-&lt;/ul>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Cash Account Management&lt;span class="hx:absolute hx:-mt-20" id="cash-account-management">&lt;/span>
-&lt;a href="#cash-account-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Multiple cash accounts (registers, petty cash, etc.)&lt;/li>
-&lt;li>Cash denomination tracking and counting&lt;/li>
-&lt;li>Daily cash opening and closing procedures&lt;/li>
-&lt;li>Cash variance reporting and investigation&lt;/li>
-&lt;li>Multi-currency cash handling&lt;/li>
-&lt;li>Cash security and control measures&lt;/li>
-&lt;/ul>
-&lt;h3>Bank Account Configuration&lt;span class="hx:absolute hx:-mt-20" id="bank-account-configuration">&lt;/span>
-&lt;a href="#bank-account-configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Multiple bank account setup and management&lt;/li>
-&lt;li>Bank account details and connectivity&lt;/li>
-&lt;li>Online banking integration&lt;/li>
-&lt;li>Bank statement import and processing&lt;/li>
-&lt;li>Multi-currency bank account support&lt;/li>
-&lt;li>Bank fee and charge management&lt;/li>
-&lt;/ul>
-&lt;h3>Payment Method Setup&lt;span class="hx:absolute hx:-mt-20" id="payment-method-setup">&lt;/span>
-&lt;a href="#payment-method-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Comprehensive payment method configuration&lt;/li>
-&lt;li>Credit card processing integration&lt;/li>
-&lt;li>Digital payment method support (e-wallets, etc.)&lt;/li>
-&lt;li>Check processing and clearing&lt;/li>
-&lt;li>Wire transfer and bank draft handling&lt;/li>
-&lt;li>Payment gateway integrations&lt;/li>
-&lt;/ul>
-&lt;h3>Transaction Processing&lt;span class="hx:absolute hx:-mt-20" id="transaction-processing">&lt;/span>
-&lt;a href="#transaction-processing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Real-time cash and bank transaction recording&lt;/li>
-&lt;li>Automated posting to general ledger&lt;/li>
-&lt;li>Multi-approval workflows for large transactions&lt;/li>
-&lt;li>Transaction categorization and coding&lt;/li>
-&lt;li>Reversal and adjustment capabilities&lt;/li>
-&lt;li>Batch processing for high-volume transactions&lt;/li>
-&lt;/ul>
-&lt;h3>Reporting and Analysis&lt;span class="hx:absolute hx:-mt-20" id="reporting-and-analysis">&lt;/span>
-&lt;a href="#reporting-and-analysis" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Daily cash position reports&lt;/li>
-&lt;li>Bank account balance monitoring&lt;/li>
-&lt;li>Cash flow forecasting and analysis&lt;/li>
-&lt;li>Payment method performance analysis&lt;/li>
-&lt;li>Bank reconciliation reports&lt;/li>
-&lt;li>Cash variance and exception reports&lt;/li>
-&lt;/ul>
-&lt;h2>Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications">&lt;/span>
-&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements">&lt;/span>
-&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Minimum Access Level&lt;/strong>: Cash Management Administrator&lt;/li>
-&lt;li>&lt;strong>Database Dependencies&lt;/strong>: Financial and cash management tables&lt;/li>
-&lt;li>&lt;strong>Integration Points&lt;/strong>: All financial and transaction modules&lt;/li>
-&lt;li>&lt;strong>API Availability&lt;/strong>: Real-time transaction processing APIs&lt;/li>
-&lt;li>&lt;strong>Security Features&lt;/strong>: Multi-level approval and audit trails&lt;/li>
-&lt;/ul>
-&lt;h3>Cash and Bank Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="cash-and-bank-configuration-options">&lt;/span>
-&lt;a href="#cash-and-bank-configuration-options" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Account Types&lt;/strong>: Cash, Current Account, Savings, Time Deposits&lt;/li>
-&lt;li>&lt;strong>Currency Support&lt;/strong>: 150+ global currencies&lt;/li>
-&lt;li>&lt;strong>Transaction Limits&lt;/strong>: Configurable per account and user&lt;/li>
-&lt;li>&lt;strong>Approval Workflows&lt;/strong>: Multi-level approval processes&lt;/li>
-&lt;li>&lt;strong>Integration APIs&lt;/strong>: Banking and payment gateway connections&lt;/li>
-&lt;/ul>
-&lt;h3>Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters">&lt;/span>
-&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Transaction Volume&lt;/strong>: Process thousands of transactions per hour&lt;/li>
-&lt;li>&lt;strong>Real-time Updates&lt;/strong>: Instant balance updates across modules&lt;/li>
-&lt;li>&lt;strong>Concurrent Users&lt;/strong>: 200+ simultaneous cash operations&lt;/li>
-&lt;li>&lt;strong>Report Generation&lt;/strong>: Real-time cash position reports&lt;/li>
-&lt;li>&lt;strong>Bank Integration&lt;/strong>: Real-time bank balance synchronization&lt;/li>
-&lt;/ul>
-&lt;h2>Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points">&lt;/span>
-&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies">&lt;/span>
-&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Chart of Account Applet&lt;/strong> - Cash and bank account mapping&lt;/li>
-&lt;li>&lt;strong>Tax Configuration Applet&lt;/strong> - Payment-related tax handling&lt;/li>
-&lt;li>&lt;strong>Organization Applet&lt;/strong> - Multi-location cash management&lt;/li>
-&lt;li>&lt;strong>Employee Maintenance Applet&lt;/strong> - Cash handler authorization&lt;/li>
-&lt;/ul>
-&lt;h3>Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration">&lt;/span>
-&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Module&lt;/th>
-&lt;th>Integration Purpose&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Sales &amp;amp; CRM&lt;/strong>&lt;/td>
-&lt;td>Customer payment processing&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Purchasing&lt;/strong>&lt;/td>
-&lt;td>Supplier payment processing&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Financial Accounting&lt;/strong>&lt;/td>
-&lt;td>General ledger integration&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>POS&lt;/strong>&lt;/td>
-&lt;td>Point-of-sale cash handling&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>E-Commerce&lt;/strong>&lt;/td>
-&lt;td>Online payment processing&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Payroll&lt;/strong>&lt;/td>
-&lt;td>Employee payment processing&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Expense Management&lt;/strong>&lt;/td>
-&lt;td>Expense reimbursements&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3>External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations">&lt;/span>
-&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Banking Systems&lt;/strong> - Online banking and account connectivity&lt;/li>
-&lt;li>&lt;strong>Payment Gateways&lt;/strong> - Credit card and digital payment processing&lt;/li>
-&lt;li>&lt;strong>Cash Management Services&lt;/strong> - Armored car and cash services&lt;/li>
-&lt;li>&lt;strong>Accounting Software&lt;/strong> - Financial data synchronization&lt;/li>
-&lt;li>&lt;strong>Treasury Systems&lt;/strong> - Corporate treasury management&lt;/li>
-&lt;li>&lt;strong>Mobile Banking&lt;/strong> - Mobile payment and banking apps&lt;/li>
-&lt;/ul>
-&lt;h2>Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements">&lt;/span>
-&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements">&lt;/span>
-&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Company Banking Details&lt;/strong> - Business bank account information&lt;/li>
-&lt;li>&lt;strong>Cash Account Setup&lt;/strong> - Physical cash locations and registers&lt;/li>
-&lt;li>&lt;strong>Payment Methods&lt;/strong> - Configure accepted payment methods&lt;/li>
-&lt;li>&lt;strong>Chart of Accounts Integration&lt;/strong> - Map to appropriate GL accounts&lt;/li>
-&lt;li>&lt;strong>Security Settings&lt;/strong> - Cash handling authorization levels&lt;/li>
-&lt;/ol>
-&lt;h3>Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations">&lt;/span>
-&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Bank Accounts&lt;/strong>: Primary operating accounts, savings, loan accounts&lt;/li>
-&lt;li>&lt;strong>Cash Registers&lt;/strong>: Point-of-sale cash handling locations&lt;/li>
-&lt;li>&lt;strong>Payment Methods&lt;/strong>: Cash, Credit Card, Bank Transfer, Check&lt;/li>
-&lt;li>&lt;strong>Currency Settings&lt;/strong>: Base currency and foreign exchange handling&lt;/li>
-&lt;li>&lt;strong>Approval Limits&lt;/strong>: Transaction approval thresholds&lt;/li>
-&lt;/ul>
-&lt;h3>Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations">&lt;/span>
-&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Multi-Bank Management&lt;/strong> - Multiple banking relationships&lt;/li>
-&lt;li>&lt;strong>Treasury Operations&lt;/strong> - Investment and funding management&lt;/li>
-&lt;li>&lt;strong>International Payments&lt;/strong> - Cross-border payment handling&lt;/li>
-&lt;li>&lt;strong>Automated Clearing&lt;/strong> - Electronic payment processing&lt;/li>
-&lt;li>&lt;strong>Risk Management&lt;/strong> - Cash security and fraud prevention&lt;/li>
-&lt;/ul>
-&lt;h2>Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases">&lt;/span>
-&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Retail Store Operations&lt;span class="hx:absolute hx:-mt-20" id="retail-store-operations">&lt;/span>
-&lt;a href="#retail-store-operations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Multi-location retail chain&lt;/p>
-&lt;ul>
-&lt;li>Point-of-sale cash register management&lt;/li>
-&lt;li>Daily cash balancing and deposits&lt;/li>
-&lt;li>Credit card transaction processing&lt;/li>
-&lt;li>Store-to-bank cash transfer tracking&lt;/li>
-&lt;li>Multi-location cash consolidation&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Comprehensive retail cash management&lt;/p>
-&lt;h3>Service Business&lt;span class="hx:absolute hx:-mt-20" id="service-business">&lt;/span>
-&lt;a href="#service-business" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Professional services firm&lt;/p>
-&lt;ul>
-&lt;li>Client payment processing&lt;/li>
-&lt;li>Expense reimbursement handling&lt;/li>
-&lt;li>Operating expense payments&lt;/li>
-&lt;li>Bank reconciliation automation&lt;/li>
-&lt;li>Cash flow forecasting&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Streamlined service business cash operations&lt;/p>
-&lt;h3>Manufacturing Company&lt;span class="hx:absolute hx:-mt-20" id="manufacturing-company">&lt;/span>
-&lt;a href="#manufacturing-company" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Production facility with suppliers&lt;/p>
-&lt;ul>
-&lt;li>Supplier payment processing&lt;/li>
-&lt;li>Employee advance management&lt;/li>
-&lt;li>Petty cash for operational expenses&lt;/li>
-&lt;li>Large capital expenditure approvals&lt;/li>
-&lt;li>Multi-currency supplier payments&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Efficient manufacturing cash management&lt;/p>
-&lt;h3>E-Commerce Business&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-business">&lt;/span>
-&lt;a href="#e-commerce-business" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Online retailer with multiple payment methods&lt;/p>
-&lt;ul>
-&lt;li>Online payment gateway integration&lt;/li>
-&lt;li>Refund and return processing&lt;/li>
-&lt;li>Multi-currency customer payments&lt;/li>
-&lt;li>Automated bank reconciliation&lt;/li>
-&lt;li>Real-time payment confirmation&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Seamless e-commerce payment processing&lt;/p>
-&lt;h2>Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets">&lt;/span>
-&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets">&lt;/span>
-&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/chart-of-account-applet/" >Chart of Account Applet&lt;/a>&lt;/strong> - Account structure integration&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" >Tax Configuration Applet&lt;/a>&lt;/strong> - Payment tax handling&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" >Organization Applet&lt;/a>&lt;/strong> - Multi-location cash management&lt;/li>
-&lt;/ul>
-&lt;h3>Financial Applets&lt;span class="hx:absolute hx:-mt-20" id="financial-applets">&lt;/span>
-&lt;a href="#financial-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/accounts-receivable-applet/" >Accounts Receivable Applet&lt;/a>&lt;/strong> - Customer payment processing&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/accounts-payable-applet/" >Accounts Payable Applet&lt;/a>&lt;/strong> - Supplier payment processing&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/bank-reconciliation-applet/" >Bank Reconciliation Applet&lt;/a>&lt;/strong> - Automated reconciliation&lt;/li>
-&lt;/ul>
-&lt;h3>Transaction Processing Applets&lt;span class="hx:absolute hx:-mt-20" id="transaction-processing-applets">&lt;/span>
-&lt;a href="#transaction-processing-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/payment-processing-applet/" >Payment Processing Applet&lt;/a>&lt;/strong> - Advanced payment handling&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/cash-flow-management-applet/" >Cash Flow Management Applet&lt;/a>&lt;/strong> - Cash flow analysis&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/treasury-management-applet/" >Treasury Management Applet&lt;/a>&lt;/strong> - Corporate treasury&lt;/li>
-&lt;/ul>
-&lt;h2>Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide">&lt;/span>
-&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start">&lt;/span>
-&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Access Cashbook Configuration&lt;/strong> - Navigate to the applet&lt;/li>
-&lt;li>&lt;strong>Bank Account Setup&lt;/strong> - Configure primary bank accounts&lt;/li>
-&lt;li>&lt;strong>Cash Register Setup&lt;/strong> - Set up physical cash locations&lt;/li>
-&lt;li>&lt;strong>Payment Method Configuration&lt;/strong> - Configure accepted payment types&lt;/li>
-&lt;li>&lt;strong>Test Transaction Processing&lt;/strong> - Process sample transactions&lt;/li>
-&lt;/ol>
-&lt;h3>Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup">&lt;/span>
-&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Multi-Bank Integration&lt;/strong> - Connect multiple banking relationships&lt;/li>
-&lt;li>&lt;strong>Payment Gateway Integration&lt;/strong> - Set up credit card processing&lt;/li>
-&lt;li>&lt;strong>Automated Reconciliation&lt;/strong> - Configure bank statement import&lt;/li>
-&lt;li>&lt;strong>Approval Workflow Setup&lt;/strong> - Configure transaction approvals&lt;/li>
-&lt;li>&lt;strong>Reporting Configuration&lt;/strong> - Set up cash management reports&lt;/li>
-&lt;/ol>
-&lt;h2>Cash and Bank Account Structure&lt;span class="hx:absolute hx:-mt-20" id="cash-and-bank-account-structure">&lt;/span>
-&lt;a href="#cash-and-bank-account-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Bank Account Configuration&lt;span class="hx:absolute hx:-mt-20" id="bank-account-configuration-1">&lt;/span>
-&lt;a href="#bank-account-configuration-1" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Account Name&lt;/span>: &lt;span style="color:#ae81ff">Primary Operating Account&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Bank&lt;/span>: &lt;span style="color:#ae81ff">Maybank Berhad&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Account Number&lt;/span>: &lt;span style="color:#ae81ff">514234567890&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Account Type&lt;/span>: &lt;span style="color:#ae81ff">Current Account&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Currency&lt;/span>: &lt;span style="color:#ae81ff">MYR&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Online Banking&lt;/span>: &lt;span style="color:#ae81ff">Enabled&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Statement Import&lt;/span>: &lt;span style="color:#ae81ff">Automated Daily&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">GL Account&lt;/span>: &lt;span style="color:#ae81ff">1001&lt;/span> - &lt;span style="color:#ae81ff">Cash at Bank&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Authorization Required&lt;/span>: &lt;span style="color:#ae81ff">&amp;gt;RM 10,000&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&lt;h2&gt;Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview"&gt;&lt;/span&gt;
+&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The Cashbook Applet is a fundamental Core Module component that manages all cash and bank account operations in BigLedger. This applet provides comprehensive cash management, bank account configuration, payment method setup, and cash flow tracking that supports all financial transactions across every BigLedger module.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Core Module Applet&lt;/strong&gt;: This is one of the 13 essential Core Module applets, critical for any business handling cash transactions, bank payments, or financial operations.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions"&gt;&lt;/span&gt;
+&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Cash Account Management&lt;/strong&gt; - Physical cash handling and control&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bank Account Configuration&lt;/strong&gt; - Multiple bank account setup and management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Payment Method Setup&lt;/strong&gt; - Various payment method configurations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cash Flow Tracking&lt;/strong&gt; - Real-time cash position monitoring&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bank Reconciliation&lt;/strong&gt; - Automated bank statement reconciliation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Cash Account Management&lt;span class="hx:absolute hx:-mt-20" id="cash-account-management"&gt;&lt;/span&gt;
+&lt;a href="#cash-account-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Multiple cash accounts (registers, petty cash, etc.)&lt;/li&gt;
+&lt;li&gt;Cash denomination tracking and counting&lt;/li&gt;
+&lt;li&gt;Daily cash opening and closing procedures&lt;/li&gt;
+&lt;li&gt;Cash variance reporting and investigation&lt;/li&gt;
+&lt;li&gt;Multi-currency cash handling&lt;/li&gt;
+&lt;li&gt;Cash security and control measures&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Bank Account Configuration&lt;span class="hx:absolute hx:-mt-20" id="bank-account-configuration"&gt;&lt;/span&gt;
+&lt;a href="#bank-account-configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Multiple bank account setup and management&lt;/li&gt;
+&lt;li&gt;Bank account details and connectivity&lt;/li&gt;
+&lt;li&gt;Online banking integration&lt;/li&gt;
+&lt;li&gt;Bank statement import and processing&lt;/li&gt;
+&lt;li&gt;Multi-currency bank account support&lt;/li&gt;
+&lt;li&gt;Bank fee and charge management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Payment Method Setup&lt;span class="hx:absolute hx:-mt-20" id="payment-method-setup"&gt;&lt;/span&gt;
+&lt;a href="#payment-method-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Comprehensive payment method configuration&lt;/li&gt;
+&lt;li&gt;Credit card processing integration&lt;/li&gt;
+&lt;li&gt;Digital payment method support (e-wallets, etc.)&lt;/li&gt;
+&lt;li&gt;Check processing and clearing&lt;/li&gt;
+&lt;li&gt;Wire transfer and bank draft handling&lt;/li&gt;
+&lt;li&gt;Payment gateway integrations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Transaction Processing&lt;span class="hx:absolute hx:-mt-20" id="transaction-processing"&gt;&lt;/span&gt;
+&lt;a href="#transaction-processing" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Real-time cash and bank transaction recording&lt;/li&gt;
+&lt;li&gt;Automated posting to general ledger&lt;/li&gt;
+&lt;li&gt;Multi-approval workflows for large transactions&lt;/li&gt;
+&lt;li&gt;Transaction categorization and coding&lt;/li&gt;
+&lt;li&gt;Reversal and adjustment capabilities&lt;/li&gt;
+&lt;li&gt;Batch processing for high-volume transactions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Reporting and Analysis&lt;span class="hx:absolute hx:-mt-20" id="reporting-and-analysis"&gt;&lt;/span&gt;
+&lt;a href="#reporting-and-analysis" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Daily cash position reports&lt;/li&gt;
+&lt;li&gt;Bank account balance monitoring&lt;/li&gt;
+&lt;li&gt;Cash flow forecasting and analysis&lt;/li&gt;
+&lt;li&gt;Payment method performance analysis&lt;/li&gt;
+&lt;li&gt;Bank reconciliation reports&lt;/li&gt;
+&lt;li&gt;Cash variance and exception reports&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications"&gt;&lt;/span&gt;
+&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements"&gt;&lt;/span&gt;
+&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Minimum Access Level&lt;/strong&gt;: Cash Management Administrator&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Dependencies&lt;/strong&gt;: Financial and cash management tables&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Points&lt;/strong&gt;: All financial and transaction modules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Availability&lt;/strong&gt;: Real-time transaction processing APIs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security Features&lt;/strong&gt;: Multi-level approval and audit trails&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Cash and Bank Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="cash-and-bank-configuration-options"&gt;&lt;/span&gt;
+&lt;a href="#cash-and-bank-configuration-options" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Account Types&lt;/strong&gt;: Cash, Current Account, Savings, Time Deposits&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Currency Support&lt;/strong&gt;: 150+ global currencies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transaction Limits&lt;/strong&gt;: Configurable per account and user&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Approval Workflows&lt;/strong&gt;: Multi-level approval processes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration APIs&lt;/strong&gt;: Banking and payment gateway connections&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters"&gt;&lt;/span&gt;
+&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Transaction Volume&lt;/strong&gt;: Process thousands of transactions per hour&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Updates&lt;/strong&gt;: Instant balance updates across modules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Concurrent Users&lt;/strong&gt;: 200+ simultaneous cash operations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Report Generation&lt;/strong&gt;: Real-time cash position reports&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bank Integration&lt;/strong&gt;: Real-time bank balance synchronization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points"&gt;&lt;/span&gt;
+&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies"&gt;&lt;/span&gt;
+&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Chart of Account Applet&lt;/strong&gt; - Cash and bank account mapping&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Configuration Applet&lt;/strong&gt; - Payment-related tax handling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Organization Applet&lt;/strong&gt; - Multi-location cash management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Employee Maintenance Applet&lt;/strong&gt; - Cash handler authorization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration"&gt;&lt;/span&gt;
+&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Module&lt;/th&gt;
+&lt;th&gt;Integration Purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Sales &amp;amp; CRM&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Customer payment processing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Purchasing&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Supplier payment processing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Financial Accounting&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;General ledger integration&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;POS&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Point-of-sale cash handling&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;E-Commerce&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Online payment processing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Payroll&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Employee payment processing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Expense Management&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Expense reimbursements&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations"&gt;&lt;/span&gt;
+&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Banking Systems&lt;/strong&gt; - Online banking and account connectivity&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Payment Gateways&lt;/strong&gt; - Credit card and digital payment processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cash Management Services&lt;/strong&gt; - Armored car and cash services&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Accounting Software&lt;/strong&gt; - Financial data synchronization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Treasury Systems&lt;/strong&gt; - Corporate treasury management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mobile Banking&lt;/strong&gt; - Mobile payment and banking apps&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements"&gt;&lt;/span&gt;
+&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements"&gt;&lt;/span&gt;
+&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Company Banking Details&lt;/strong&gt; - Business bank account information&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cash Account Setup&lt;/strong&gt; - Physical cash locations and registers&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Payment Methods&lt;/strong&gt; - Configure accepted payment methods&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chart of Accounts Integration&lt;/strong&gt; - Map to appropriate GL accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security Settings&lt;/strong&gt; - Cash handling authorization levels&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations"&gt;&lt;/span&gt;
+&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Bank Accounts&lt;/strong&gt;: Primary operating accounts, savings, loan accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cash Registers&lt;/strong&gt;: Point-of-sale cash handling locations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Payment Methods&lt;/strong&gt;: Cash, Credit Card, Bank Transfer, Check&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Currency Settings&lt;/strong&gt;: Base currency and foreign exchange handling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Approval Limits&lt;/strong&gt;: Transaction approval thresholds&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations"&gt;&lt;/span&gt;
+&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Bank Management&lt;/strong&gt; - Multiple banking relationships&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Treasury Operations&lt;/strong&gt; - Investment and funding management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;International Payments&lt;/strong&gt; - Cross-border payment handling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Automated Clearing&lt;/strong&gt; - Electronic payment processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Risk Management&lt;/strong&gt; - Cash security and fraud prevention&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases"&gt;&lt;/span&gt;
+&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Retail Store Operations&lt;span class="hx:absolute hx:-mt-20" id="retail-store-operations"&gt;&lt;/span&gt;
+&lt;a href="#retail-store-operations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Multi-location retail chain&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Point-of-sale cash register management&lt;/li&gt;
+&lt;li&gt;Daily cash balancing and deposits&lt;/li&gt;
+&lt;li&gt;Credit card transaction processing&lt;/li&gt;
+&lt;li&gt;Store-to-bank cash transfer tracking&lt;/li&gt;
+&lt;li&gt;Multi-location cash consolidation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Comprehensive retail cash management&lt;/p&gt;
+&lt;h3&gt;Service Business&lt;span class="hx:absolute hx:-mt-20" id="service-business"&gt;&lt;/span&gt;
+&lt;a href="#service-business" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Professional services firm&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Client payment processing&lt;/li&gt;
+&lt;li&gt;Expense reimbursement handling&lt;/li&gt;
+&lt;li&gt;Operating expense payments&lt;/li&gt;
+&lt;li&gt;Bank reconciliation automation&lt;/li&gt;
+&lt;li&gt;Cash flow forecasting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Streamlined service business cash operations&lt;/p&gt;
+&lt;h3&gt;Manufacturing Company&lt;span class="hx:absolute hx:-mt-20" id="manufacturing-company"&gt;&lt;/span&gt;
+&lt;a href="#manufacturing-company" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Production facility with suppliers&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Supplier payment processing&lt;/li&gt;
+&lt;li&gt;Employee advance management&lt;/li&gt;
+&lt;li&gt;Petty cash for operational expenses&lt;/li&gt;
+&lt;li&gt;Large capital expenditure approvals&lt;/li&gt;
+&lt;li&gt;Multi-currency supplier payments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Efficient manufacturing cash management&lt;/p&gt;
+&lt;h3&gt;E-Commerce Business&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-business"&gt;&lt;/span&gt;
+&lt;a href="#e-commerce-business" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Online retailer with multiple payment methods&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Online payment gateway integration&lt;/li&gt;
+&lt;li&gt;Refund and return processing&lt;/li&gt;
+&lt;li&gt;Multi-currency customer payments&lt;/li&gt;
+&lt;li&gt;Automated bank reconciliation&lt;/li&gt;
+&lt;li&gt;Real-time payment confirmation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Seamless e-commerce payment processing&lt;/p&gt;
+&lt;h2&gt;Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets"&gt;&lt;/span&gt;
+&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets"&gt;&lt;/span&gt;
+&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/chart-of-account-applet/" &gt;Chart of Account Applet&lt;/a&gt;&lt;/strong&gt; - Account structure integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" &gt;Tax Configuration Applet&lt;/a&gt;&lt;/strong&gt; - Payment tax handling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" &gt;Organization Applet&lt;/a&gt;&lt;/strong&gt; - Multi-location cash management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Financial Applets&lt;span class="hx:absolute hx:-mt-20" id="financial-applets"&gt;&lt;/span&gt;
+&lt;a href="#financial-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/accounts-receivable-applet/" &gt;Accounts Receivable Applet&lt;/a&gt;&lt;/strong&gt; - Customer payment processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/accounts-payable-applet/" &gt;Accounts Payable Applet&lt;/a&gt;&lt;/strong&gt; - Supplier payment processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/bank-reconciliation-applet/" &gt;Bank Reconciliation Applet&lt;/a&gt;&lt;/strong&gt; - Automated reconciliation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Transaction Processing Applets&lt;span class="hx:absolute hx:-mt-20" id="transaction-processing-applets"&gt;&lt;/span&gt;
+&lt;a href="#transaction-processing-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/payment-processing-applet/" &gt;Payment Processing Applet&lt;/a&gt;&lt;/strong&gt; - Advanced payment handling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/cash-flow-management-applet/" &gt;Cash Flow Management Applet&lt;/a&gt;&lt;/strong&gt; - Cash flow analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/treasury-management-applet/" &gt;Treasury Management Applet&lt;/a&gt;&lt;/strong&gt; - Corporate treasury&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide"&gt;&lt;/span&gt;
+&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start"&gt;&lt;/span&gt;
+&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Access Cashbook Configuration&lt;/strong&gt; - Navigate to the applet&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bank Account Setup&lt;/strong&gt; - Configure primary bank accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cash Register Setup&lt;/strong&gt; - Set up physical cash locations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Payment Method Configuration&lt;/strong&gt; - Configure accepted payment types&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test Transaction Processing&lt;/strong&gt; - Process sample transactions&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup"&gt;&lt;/span&gt;
+&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Bank Integration&lt;/strong&gt; - Connect multiple banking relationships&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Payment Gateway Integration&lt;/strong&gt; - Set up credit card processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Automated Reconciliation&lt;/strong&gt; - Configure bank statement import&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Approval Workflow Setup&lt;/strong&gt; - Configure transaction approvals&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reporting Configuration&lt;/strong&gt; - Set up cash management reports&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Cash and Bank Account Structure&lt;span class="hx:absolute hx:-mt-20" id="cash-and-bank-account-structure"&gt;&lt;/span&gt;
+&lt;a href="#cash-and-bank-account-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Bank Account Configuration&lt;span class="hx:absolute hx:-mt-20" id="bank-account-configuration-1"&gt;&lt;/span&gt;
+&lt;a href="#bank-account-configuration-1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Account Name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Primary Operating Account&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Bank&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Maybank Berhad&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Account Number&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;514234567890&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Account Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Current Account&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Currency&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;MYR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Online Banking&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Enabled&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Statement Import&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Automated Daily&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;GL Account&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;1001&lt;/span&gt; - &lt;span style="color:#ae81ff"&gt;Cash at Bank&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Authorization Required&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;&amp;gt;RM 10,000&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Cash Register Setup&lt;span class="hx:absolute hx:-mt-20" id="cash-register-setup">&lt;/span>
-&lt;a href="#cash-register-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Register Name&lt;/span>: &lt;span style="color:#ae81ff">Main Counter Register&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Location&lt;/span>: &lt;span style="color:#ae81ff">Store Front - Counter 1&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Currency&lt;/span>: &lt;span style="color:#ae81ff">MYR&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Opening Float&lt;/span>: &lt;span style="color:#ae81ff">RM 500.00&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Maximum Amount&lt;/span>: &lt;span style="color:#ae81ff">RM 5,000.00&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">GL Account&lt;/span>: &lt;span style="color:#ae81ff">1000&lt;/span> - &lt;span style="color:#ae81ff">Cash on Hand&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Responsible Person&lt;/span>: &lt;span style="color:#ae81ff">Cashier-001&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Counting Required&lt;/span>: &lt;span style="color:#ae81ff">Daily Close&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Cash Register Setup&lt;span class="hx:absolute hx:-mt-20" id="cash-register-setup"&gt;&lt;/span&gt;
+&lt;a href="#cash-register-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Register Name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Main Counter Register&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Location&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Store Front - Counter 1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Currency&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;MYR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Opening Float&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;RM 500.00&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Maximum Amount&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;RM 5,000.00&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;GL Account&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;1000&lt;/span&gt; - &lt;span style="color:#ae81ff"&gt;Cash on Hand&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Responsible Person&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Cashier-001&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Counting Required&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Daily Close&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Payment Method Configuration&lt;span class="hx:absolute hx:-mt-20" id="payment-method-configuration">&lt;/span>
-&lt;a href="#payment-method-configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Payment Method&lt;/span>: &lt;span style="color:#ae81ff">Credit Card&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Type&lt;/span>: &lt;span style="color:#ae81ff">Electronic Payment&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Processor&lt;/span>: &lt;span style="color:#ae81ff">iPay88&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Processing Fee&lt;/span>: &lt;span style="color:#ae81ff">2.5&lt;/span>&lt;span style="color:#ae81ff">%&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Settlement Period&lt;/span>: &lt;span style="color:#ae81ff">T+2 days&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">GL Account&lt;/span>: &lt;span style="color:#ae81ff">1002&lt;/span> - &lt;span style="color:#ae81ff">Credit Card Receivable&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Refund Policy&lt;/span>: &lt;span style="color:#ae81ff">Same Method&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Daily Limit&lt;/span>: &lt;span style="color:#ae81ff">RM 50,000&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Payment Method Configuration&lt;span class="hx:absolute hx:-mt-20" id="payment-method-configuration"&gt;&lt;/span&gt;
+&lt;a href="#payment-method-configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Payment Method&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Credit Card&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Electronic Payment&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Processor&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;iPay88&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Processing Fee&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;2.5&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Settlement Period&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;T+2 days&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;GL Account&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;1002&lt;/span&gt; - &lt;span style="color:#ae81ff"&gt;Credit Card Receivable&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Refund Policy&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Same Method&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Daily Limit&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;RM 50,000&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h2>Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices">&lt;/span>
-&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Cash Management Best Practices&lt;span class="hx:absolute hx:-mt-20" id="cash-management-best-practices">&lt;/span>
-&lt;a href="#cash-management-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Segregation of Duties&lt;/strong> - Separate cash handling and recording&lt;/li>
-&lt;li>&lt;strong>Regular Reconciliation&lt;/strong> - Daily cash and bank reconciliations&lt;/li>
-&lt;li>&lt;strong>Approval Controls&lt;/strong> - Multi-level approval for large transactions&lt;/li>
-&lt;li>&lt;strong>Audit Trails&lt;/strong> - Complete transaction documentation&lt;/li>
-&lt;li>&lt;strong>Security Measures&lt;/strong> - Physical and system security controls&lt;/li>
-&lt;/ul>
-&lt;h3>Bank Account Management Best Practices&lt;span class="hx:absolute hx:-mt-20" id="bank-account-management-best-practices">&lt;/span>
-&lt;a href="#bank-account-management-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Account Monitoring&lt;/strong> - Regular bank account balance monitoring&lt;/li>
-&lt;li>&lt;strong>Statement Review&lt;/strong> - Daily bank statement review and import&lt;/li>
-&lt;li>&lt;strong>Relationship Management&lt;/strong> - Maintain good banking relationships&lt;/li>
-&lt;li>&lt;strong>Backup Banking&lt;/strong> - Multiple banking relationships for redundancy&lt;/li>
-&lt;li>&lt;strong>Cost Management&lt;/strong> - Monitor and minimize banking fees&lt;/li>
-&lt;/ul>
-&lt;h3>Payment Processing Best Practices&lt;span class="hx:absolute hx:-mt-20" id="payment-processing-best-practices">&lt;/span>
-&lt;a href="#payment-processing-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Method Optimization&lt;/strong> - Optimize payment method mix for cost&lt;/li>
-&lt;li>&lt;strong>Risk Management&lt;/strong> - Monitor and control payment risks&lt;/li>
-&lt;li>&lt;strong>Customer Convenience&lt;/strong> - Offer multiple payment options&lt;/li>
-&lt;li>&lt;strong>Processing Efficiency&lt;/strong> - Automate payment processing where possible&lt;/li>
-&lt;li>&lt;strong>Compliance Adherence&lt;/strong> - Follow payment industry regulations&lt;/li>
-&lt;/ul>
-&lt;h2>Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting">&lt;/span>
-&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues">&lt;/span>
-&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Bank reconciliation discrepancies&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Check bank statement import accuracy&lt;/li>
-&lt;li>Verify transaction posting completeness&lt;/li>
-&lt;li>Review timing differences and cutoffs&lt;/li>
-&lt;li>Confirm bank fee and charge recording&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Cash register variances&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Verify cash counting procedures&lt;/li>
-&lt;li>Check transaction recording accuracy&lt;/li>
-&lt;li>Review cash handling processes&lt;/li>
-&lt;li>Investigate unusual cash movements&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Payment processing errors&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Check payment gateway connectivity&lt;/li>
-&lt;li>Verify merchant account configurations&lt;/li>
-&lt;li>Review payment method settings&lt;/li>
-&lt;li>Confirm network and system connectivity&lt;/li>
-&lt;/ul>
-&lt;h3>Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources">&lt;/span>
-&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Cash management setup and procedures guide&lt;/li>
-&lt;li>Bank integration configuration documentation&lt;/li>
-&lt;li>Payment gateway troubleshooting guide&lt;/li>
-&lt;li>Cash reconciliation best practices guide&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Security Critical&lt;/strong>: Cash and bank operations require strict security controls. Implement proper segregation of duties, approval workflows, and audit trails to prevent fraud and ensure accuracy.&lt;/div>
-&lt;/div>
-&lt;/div></description></item><item><title>General Ledger Applet</title><link>https://wiki.bigledger.com/applets/general-ledger-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/general-ledger-applet/</guid><description>
-&lt;h2>Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview">&lt;/span>
-&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>TODO&lt;/strong>: This applet documentation needs detailed expansion. This is a placeholder with basic structure and key information.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;p>The General Ledger Applet is the core accounting engine of BigLedger&amp;rsquo;s Accounting Module, providing comprehensive transaction processing, account management, and financial reporting capabilities that form the foundation of all financial operations.&lt;/p>
-&lt;h3>Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions">&lt;/span>
-&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Transaction Processing&lt;/strong> - Complete journal entry and posting management&lt;/li>
-&lt;li>&lt;strong>Account Balance Management&lt;/strong> - Real-time account balance tracking&lt;/li>
-&lt;li>&lt;strong>Financial Reporting&lt;/strong> - Standard and custom financial reports&lt;/li>
-&lt;li>&lt;strong>Period Management&lt;/strong> - Accounting period control and closing procedures&lt;/li>
-&lt;li>&lt;strong>Audit Trail&lt;/strong> - Complete transaction audit and history&lt;/li>
-&lt;/ul>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>TODO: Expand Key Features Section&lt;span class="hx:absolute hx:-mt-20" id="todo-expand-key-features-section">&lt;/span>
-&lt;a href="#todo-expand-key-features-section" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Transaction posting and reversals&lt;/li>
-&lt;li>Multi-currency transaction handling&lt;/li>
-&lt;li>Automated recurring entries&lt;/li>
-&lt;li>Budget vs. actual reporting&lt;/li>
-&lt;li>Financial statement generation&lt;/li>
-&lt;/ul>
-&lt;h2>Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications">&lt;/span>
-&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>TODO: Complete Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="todo-complete-technical-specifications">&lt;/span>
-&lt;a href="#todo-complete-technical-specifications" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Integration Points&lt;/strong>: All financial modules&lt;/li>
-&lt;li>&lt;strong>Performance&lt;/strong>: High-volume transaction processing&lt;/li>
-&lt;li>&lt;strong>Security&lt;/strong>: Full audit trail and controls&lt;/li>
-&lt;/ul>
-&lt;h2>Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points">&lt;/span>
-&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies">&lt;/span>
-&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/chart-of-account-applet/" >Chart of Account Applet&lt;/a>&lt;/strong> - Account structure foundation&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" >Tax Configuration Applet&lt;/a>&lt;/strong> - Tax calculations&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" >Organization Applet&lt;/a>&lt;/strong> - Multi-entity support&lt;/li>
-&lt;/ul>
-&lt;h2>Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets">&lt;/span>
-&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>TODO: Document Related Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-related-applets">&lt;/span>
-&lt;a href="#todo-document-related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Accounts Receivable Applet&lt;/li>
-&lt;li>Accounts Payable Applet&lt;/li>
-&lt;li>Financial Reporting Applet&lt;/li>
-&lt;li>Budget Management Applet&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Documentation Status&lt;/strong>: This applet requires comprehensive documentation including detailed features, configuration guides, use cases, and implementation examples.&lt;/div>
-&lt;/div>
-&lt;/div></description></item><item><title>Chart of Accounts Applet</title><link>https://wiki.bigledger.com/applets/chart-of-account-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/chart-of-account-applet/</guid><description>
-&lt;h2>Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview">&lt;/span>
-&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The Chart of Accounts Applet is the financial foundation of BigLedger, providing comprehensive management of your organization&amp;rsquo;s complete chart of accounts structure. This Core Module applet defines account categories, hierarchies, and financial statement mapping that supports all financial transactions across every BigLedger module.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Core Module Applet&lt;/strong>: This is one of the 13 essential Core Module applets required by all other BigLedger modules, particularly critical for any financial operations.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h3>Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions">&lt;/span>
-&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Account Structure Management&lt;/strong> - Create and maintain account hierarchies&lt;/li>
-&lt;li>&lt;strong>Financial Statement Mapping&lt;/strong> - Map accounts to financial reports&lt;/li>
-&lt;li>&lt;strong>Multi-Currency Support&lt;/strong> - Handle multiple currencies and exchange rates&lt;/li>
-&lt;li>&lt;strong>Account Classification&lt;/strong> - Categorize accounts by type and purpose&lt;/li>
-&lt;li>&lt;strong>Integration Foundation&lt;/strong> - Provide account data to all financial modules&lt;/li>
-&lt;/ul>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Account Structure&lt;span class="hx:absolute hx:-mt-20" id="account-structure">&lt;/span>
-&lt;a href="#account-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Hierarchical account organization (up to 10 levels)&lt;/li>
-&lt;li>Flexible account numbering systems&lt;/li>
-&lt;li>Account categories and sub-categories&lt;/li>
-&lt;li>Parent-child account relationships&lt;/li>
-&lt;li>Account status management (Active/Inactive)&lt;/li>
-&lt;/ul>
-&lt;h3>Account Types&lt;span class="hx:absolute hx:-mt-20" id="account-types">&lt;/span>
-&lt;a href="#account-types" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Assets&lt;/strong> - Current and non-current assets&lt;/li>
-&lt;li>&lt;strong>Liabilities&lt;/strong> - Short-term and long-term liabilities&lt;/li>
-&lt;li>&lt;strong>Equity&lt;/strong> - Owner&amp;rsquo;s equity and retained earnings&lt;/li>
-&lt;li>&lt;strong>Income&lt;/strong> - Revenue and other income accounts&lt;/li>
-&lt;li>&lt;strong>Expenses&lt;/strong> - Operating and non-operating expenses&lt;/li>
-&lt;/ul>
-&lt;h3>Financial Statement Integration&lt;span class="hx:absolute hx:-mt-20" id="financial-statement-integration">&lt;/span>
-&lt;a href="#financial-statement-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Balance Sheet mapping&lt;/li>
-&lt;li>Profit &amp;amp; Loss statement mapping&lt;/li>
-&lt;li>Cash Flow statement mapping&lt;/li>
-&lt;li>Custom financial report mapping&lt;/li>
-&lt;li>Multi-period comparative reporting&lt;/li>
-&lt;/ul>
-&lt;h3>Multi-Currency Capabilities&lt;span class="hx:absolute hx:-mt-20" id="multi-currency-capabilities">&lt;/span>
-&lt;a href="#multi-currency-capabilities" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Base currency configuration&lt;/li>
-&lt;li>Foreign currency account setup&lt;/li>
-&lt;li>Real-time exchange rate integration&lt;/li>
-&lt;li>Currency translation rules&lt;/li>
-&lt;li>Multi-currency reporting&lt;/li>
-&lt;/ul>
-&lt;h3>Account Controls&lt;span class="hx:absolute hx:-mt-20" id="account-controls">&lt;/span>
-&lt;a href="#account-controls" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Account-level permissions&lt;/li>
-&lt;li>Transaction posting controls&lt;/li>
-&lt;li>Budget assignment capabilities&lt;/li>
-&lt;li>Cost center allocation&lt;/li>
-&lt;li>Department-wise account access&lt;/li>
-&lt;/ul>
-&lt;h2>Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications">&lt;/span>
-&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements">&lt;/span>
-&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Minimum Access Level&lt;/strong>: Financial Administrator&lt;/li>
-&lt;li>&lt;strong>Database Dependencies&lt;/strong>: Core financial tables&lt;/li>
-&lt;li>&lt;strong>Integration Points&lt;/strong>: All financial modules&lt;/li>
-&lt;li>&lt;strong>API Availability&lt;/strong>: Full CRUD operations&lt;/li>
-&lt;li>&lt;strong>Real-time Updates&lt;/strong>: Immediate account balance updates&lt;/li>
-&lt;/ul>
-&lt;h3>Account Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="account-configuration-options">&lt;/span>
-&lt;a href="#account-configuration-options" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Account Code Length&lt;/strong>: 3-20 characters&lt;/li>
-&lt;li>&lt;strong>Hierarchy Levels&lt;/strong>: Up to 10 levels deep&lt;/li>
-&lt;li>&lt;strong>Account Types&lt;/strong>: 50+ predefined types&lt;/li>
-&lt;li>&lt;strong>Currency Support&lt;/strong>: 150+ global currencies&lt;/li>
-&lt;li>&lt;strong>Custom Fields&lt;/strong>: Up to 20 custom fields per account&lt;/li>
-&lt;/ul>
-&lt;h3>Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters">&lt;/span>
-&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Account Capacity&lt;/strong>: Up to 100,000 accounts&lt;/li>
-&lt;li>&lt;strong>Transaction Volume&lt;/strong>: Millions of transactions per account&lt;/li>
-&lt;li>&lt;strong>Report Generation&lt;/strong>: &amp;lt;5 seconds for standard reports&lt;/li>
-&lt;li>&lt;strong>Real-time Updates&lt;/strong>: &amp;lt;1 second for balance updates&lt;/li>
-&lt;li>&lt;strong>Concurrent Users&lt;/strong>: 500+ simultaneous users&lt;/li>
-&lt;/ul>
-&lt;h2>Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points">&lt;/span>
-&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies">&lt;/span>
-&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Organization Applet&lt;/strong> - Company and branch structure&lt;/li>
-&lt;li>&lt;strong>Tax Configuration Applet&lt;/strong> - Tax account mapping&lt;/li>
-&lt;li>&lt;strong>Cashbook Applet&lt;/strong> - Cash and bank account integration&lt;/li>
-&lt;/ul>
-&lt;h3>Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration">&lt;/span>
-&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Module&lt;/th>
-&lt;th>Integration Purpose&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Financial Accounting&lt;/strong>&lt;/td>
-&lt;td>Primary account data source&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Sales &amp;amp; CRM&lt;/strong>&lt;/td>
-&lt;td>Revenue and receivable accounts&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Purchasing&lt;/strong>&lt;/td>
-&lt;td>Expense and payable accounts&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Inventory&lt;/strong>&lt;/td>
-&lt;td>Asset and cost accounts&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Payroll&lt;/strong>&lt;/td>
-&lt;td>Salary and benefit accounts&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>POS&lt;/strong>&lt;/td>
-&lt;td>Sales and cash accounts&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>E-Commerce&lt;/strong>&lt;/td>
-&lt;td>Online revenue accounts&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Manufacturing&lt;/strong>&lt;/td>
-&lt;td>Work-in-progress and cost accounts&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3>External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations">&lt;/span>
-&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Banking Systems&lt;/strong> - Bank account reconciliation&lt;/li>
-&lt;li>&lt;strong>Tax Authorities&lt;/strong> - Statutory reporting accounts&lt;/li>
-&lt;li>&lt;strong>Auditing Software&lt;/strong> - Financial statement export&lt;/li>
-&lt;li>&lt;strong>Business Intelligence&lt;/strong> - Financial analytics&lt;/li>
-&lt;li>&lt;strong>Third-party Accounting&lt;/strong> - Account synchronization&lt;/li>
-&lt;/ul>
-&lt;h2>Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements">&lt;/span>
-&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements">&lt;/span>
-&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Base Currency&lt;/strong> - Define primary currency&lt;/li>
-&lt;li>&lt;strong>Account Categories&lt;/strong> - Set up major account types&lt;/li>
-&lt;li>&lt;strong>Numbering System&lt;/strong> - Define account coding structure&lt;/li>
-&lt;li>&lt;strong>Financial Periods&lt;/strong> - Configure accounting periods&lt;/li>
-&lt;li>&lt;strong>Opening Balances&lt;/strong> - Enter starting account balances&lt;/li>
-&lt;/ol>
-&lt;h3>Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations">&lt;/span>
-&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Asset Accounts&lt;/strong>: Cash, Bank, Inventory, Fixed Assets&lt;/li>
-&lt;li>&lt;strong>Liability Accounts&lt;/strong>: Accounts Payable, Loans, Accruals&lt;/li>
-&lt;li>&lt;strong>Equity Accounts&lt;/strong>: Capital, Retained Earnings&lt;/li>
-&lt;li>&lt;strong>Revenue Accounts&lt;/strong>: Sales, Service Income, Other Income&lt;/li>
-&lt;li>&lt;strong>Expense Accounts&lt;/strong>: Cost of Sales, Operating Expenses&lt;/li>
-&lt;/ul>
-&lt;h3>Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations">&lt;/span>
-&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Consolidated Accounts&lt;/strong> - Multi-entity consolidation&lt;/li>
-&lt;li>&lt;strong>Segment Reporting&lt;/strong> - Division/department accounts&lt;/li>
-&lt;li>&lt;strong>Project Accounting&lt;/strong> - Project-specific accounts&lt;/li>
-&lt;li>&lt;strong>Multi-Currency&lt;/strong> - Foreign currency accounts&lt;/li>
-&lt;li>&lt;strong>Budgeting Integration&lt;/strong> - Budget account mapping&lt;/li>
-&lt;/ul>
-&lt;h2>Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases">&lt;/span>
-&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Small Business Setup&lt;span class="hx:absolute hx:-mt-20" id="small-business-setup">&lt;/span>
-&lt;a href="#small-business-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Local retail shop&lt;/p>
-&lt;ul>
-&lt;li>Simple 4-digit account structure (1000-9999)&lt;/li>
-&lt;li>Basic account categories (Assets, Liabilities, Income, Expenses)&lt;/li>
-&lt;li>Single currency operation&lt;/li>
-&lt;li>Standard financial reports&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Simple, easy-to-understand financial structure&lt;/p>
-&lt;h3>Multi-Branch Enterprise&lt;span class="hx:absolute hx:-mt-20" id="multi-branch-enterprise">&lt;/span>
-&lt;a href="#multi-branch-enterprise" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Chain of retail stores&lt;/p>
-&lt;ul>
-&lt;li>Complex hierarchical structure with branch codes&lt;/li>
-&lt;li>Department-wise account allocation&lt;/li>
-&lt;li>Inter-branch transaction accounts&lt;/li>
-&lt;li>Consolidated and branch-wise reporting&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Comprehensive multi-location financial management&lt;/p>
-&lt;h3>Manufacturing Company&lt;span class="hx:absolute hx:-mt-20" id="manufacturing-company">&lt;/span>
-&lt;a href="#manufacturing-company" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Production and assembly operations&lt;/p>
-&lt;ul>
-&lt;li>Work-in-progress accounts&lt;/li>
-&lt;li>Raw material and finished goods accounts&lt;/li>
-&lt;li>Manufacturing overhead allocation&lt;/li>
-&lt;li>Cost center-based reporting&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Detailed manufacturing cost tracking&lt;/p>
-&lt;h3>International Business&lt;span class="hx:absolute hx:-mt-20" id="international-business">&lt;/span>
-&lt;a href="#international-business" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Multi-country operations&lt;/p>
-&lt;ul>
-&lt;li>Multi-currency account setup&lt;/li>
-&lt;li>Foreign exchange accounts&lt;/li>
-&lt;li>Country-specific chart of accounts&lt;/li>
-&lt;li>Consolidated multi-currency reporting&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Global financial management with local compliance&lt;/p>
-&lt;h2>Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets">&lt;/span>
-&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets">&lt;/span>
-&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" >Tax Configuration Applet&lt;/a>&lt;/strong> - Tax account mapping&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/cashbook-applet/" >Cashbook Applet&lt;/a>&lt;/strong> - Cash and bank accounts&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" >Organization Applet&lt;/a>&lt;/strong> - Company structure&lt;/li>
-&lt;/ul>
-&lt;h3>Financial Applets&lt;span class="hx:absolute hx:-mt-20" id="financial-applets">&lt;/span>
-&lt;a href="#financial-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/general-ledger-applet/" >General Ledger Applet&lt;/a>&lt;/strong> - Transaction posting&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/financial-reports-applet/" >Financial Reports Applet&lt;/a>&lt;/strong> - Report generation&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/budget-management-applet/" >Budget Management Applet&lt;/a>&lt;/strong> - Budget allocation&lt;/li>
-&lt;/ul>
-&lt;h3>Master Data Applets&lt;span class="hx:absolute hx:-mt-20" id="master-data-applets">&lt;/span>
-&lt;a href="#master-data-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/customer-maintenance-applet/" >Customer Maintenance Applet&lt;/a>&lt;/strong> - Customer accounts&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/supplier-maintenance-applet/" >Supplier Maintenance Applet&lt;/a>&lt;/strong> - Vendor accounts&lt;/li>
-&lt;/ul>
-&lt;h2>Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide">&lt;/span>
-&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start">&lt;/span>
-&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Access Chart of Accounts&lt;/strong> - Navigate to the applet&lt;/li>
-&lt;li>&lt;strong>Define Account Structure&lt;/strong> - Set up account numbering&lt;/li>
-&lt;li>&lt;strong>Create Main Categories&lt;/strong> - Add major account types&lt;/li>
-&lt;li>&lt;strong>Set up Sub-Accounts&lt;/strong> - Create detailed account hierarchy&lt;/li>
-&lt;li>&lt;strong>Configure Opening Balances&lt;/strong> - Enter starting balances&lt;/li>
-&lt;/ol>
-&lt;h3>Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup">&lt;/span>
-&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Multi-Currency Configuration&lt;/strong> - Set up foreign currencies&lt;/li>
-&lt;li>&lt;strong>Financial Statement Mapping&lt;/strong> - Map accounts to reports&lt;/li>
-&lt;li>&lt;strong>Budget Integration&lt;/strong> - Link accounts to budget system&lt;/li>
-&lt;li>&lt;strong>Cost Center Setup&lt;/strong> - Configure departmental accounts&lt;/li>
-&lt;li>&lt;strong>Approval Workflows&lt;/strong> - Set up account change approvals&lt;/li>
-&lt;/ol>
-&lt;h2>Standard Chart of Accounts Templates&lt;span class="hx:absolute hx:-mt-20" id="standard-chart-of-accounts-templates">&lt;/span>
-&lt;a href="#standard-chart-of-accounts-templates" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Retail Business Template&lt;span class="hx:absolute hx:-mt-20" id="retail-business-template">&lt;/span>
-&lt;a href="#retail-business-template" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>1000-1999: ASSETS
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices"&gt;&lt;/span&gt;
+&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Cash Management Best Practices&lt;span class="hx:absolute hx:-mt-20" id="cash-management-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#cash-management-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Segregation of Duties&lt;/strong&gt; - Separate cash handling and recording&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regular Reconciliation&lt;/strong&gt; - Daily cash and bank reconciliations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Approval Controls&lt;/strong&gt; - Multi-level approval for large transactions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Audit Trails&lt;/strong&gt; - Complete transaction documentation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security Measures&lt;/strong&gt; - Physical and system security controls&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Bank Account Management Best Practices&lt;span class="hx:absolute hx:-mt-20" id="bank-account-management-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#bank-account-management-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Account Monitoring&lt;/strong&gt; - Regular bank account balance monitoring&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Statement Review&lt;/strong&gt; - Daily bank statement review and import&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Relationship Management&lt;/strong&gt; - Maintain good banking relationships&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backup Banking&lt;/strong&gt; - Multiple banking relationships for redundancy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cost Management&lt;/strong&gt; - Monitor and minimize banking fees&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Payment Processing Best Practices&lt;span class="hx:absolute hx:-mt-20" id="payment-processing-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#payment-processing-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Method Optimization&lt;/strong&gt; - Optimize payment method mix for cost&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Risk Management&lt;/strong&gt; - Monitor and control payment risks&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Convenience&lt;/strong&gt; - Offer multiple payment options&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Processing Efficiency&lt;/strong&gt; - Automate payment processing where possible&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance Adherence&lt;/strong&gt; - Follow payment industry regulations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues"&gt;&lt;/span&gt;
+&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Bank reconciliation discrepancies&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check bank statement import accuracy&lt;/li&gt;
+&lt;li&gt;Verify transaction posting completeness&lt;/li&gt;
+&lt;li&gt;Review timing differences and cutoffs&lt;/li&gt;
+&lt;li&gt;Confirm bank fee and charge recording&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Cash register variances&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Verify cash counting procedures&lt;/li&gt;
+&lt;li&gt;Check transaction recording accuracy&lt;/li&gt;
+&lt;li&gt;Review cash handling processes&lt;/li&gt;
+&lt;li&gt;Investigate unusual cash movements&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Payment processing errors&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check payment gateway connectivity&lt;/li&gt;
+&lt;li&gt;Verify merchant account configurations&lt;/li&gt;
+&lt;li&gt;Review payment method settings&lt;/li&gt;
+&lt;li&gt;Confirm network and system connectivity&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources"&gt;&lt;/span&gt;
+&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Cash management setup and procedures guide&lt;/li&gt;
+&lt;li&gt;Bank integration configuration documentation&lt;/li&gt;
+&lt;li&gt;Payment gateway troubleshooting guide&lt;/li&gt;
+&lt;li&gt;Cash reconciliation best practices guide&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Security Critical&lt;/strong&gt;: Cash and bank operations require strict security controls. Implement proper segregation of duties, approval workflows, and audit trails to prevent fraud and ensure accuracy.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>General Ledger Applet</title><link>https://wiki.bigledger.com/applets/general-ledger-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/general-ledger-applet/</guid><description>
+&lt;h2&gt;Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview"&gt;&lt;/span&gt;
+&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;TODO&lt;/strong&gt;: This applet documentation needs detailed expansion. This is a placeholder with basic structure and key information.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;The General Ledger Applet is the core accounting engine of BigLedger&amp;rsquo;s Accounting Module, providing comprehensive transaction processing, account management, and financial reporting capabilities that form the foundation of all financial operations.&lt;/p&gt;
+&lt;h3&gt;Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions"&gt;&lt;/span&gt;
+&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Transaction Processing&lt;/strong&gt; - Complete journal entry and posting management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Account Balance Management&lt;/strong&gt; - Real-time account balance tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Financial Reporting&lt;/strong&gt; - Standard and custom financial reports&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Period Management&lt;/strong&gt; - Accounting period control and closing procedures&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Audit Trail&lt;/strong&gt; - Complete transaction audit and history&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;TODO: Expand Key Features Section&lt;span class="hx:absolute hx:-mt-20" id="todo-expand-key-features-section"&gt;&lt;/span&gt;
+&lt;a href="#todo-expand-key-features-section" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Transaction posting and reversals&lt;/li&gt;
+&lt;li&gt;Multi-currency transaction handling&lt;/li&gt;
+&lt;li&gt;Automated recurring entries&lt;/li&gt;
+&lt;li&gt;Budget vs. actual reporting&lt;/li&gt;
+&lt;li&gt;Financial statement generation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications"&gt;&lt;/span&gt;
+&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;TODO: Complete Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="todo-complete-technical-specifications"&gt;&lt;/span&gt;
+&lt;a href="#todo-complete-technical-specifications" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Integration Points&lt;/strong&gt;: All financial modules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance&lt;/strong&gt;: High-volume transaction processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security&lt;/strong&gt;: Full audit trail and controls&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points"&gt;&lt;/span&gt;
+&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies"&gt;&lt;/span&gt;
+&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/chart-of-account-applet/" &gt;Chart of Account Applet&lt;/a&gt;&lt;/strong&gt; - Account structure foundation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" &gt;Tax Configuration Applet&lt;/a&gt;&lt;/strong&gt; - Tax calculations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" &gt;Organization Applet&lt;/a&gt;&lt;/strong&gt; - Multi-entity support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets"&gt;&lt;/span&gt;
+&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;TODO: Document Related Applets&lt;span class="hx:absolute hx:-mt-20" id="todo-document-related-applets"&gt;&lt;/span&gt;
+&lt;a href="#todo-document-related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Accounts Receivable Applet&lt;/li&gt;
+&lt;li&gt;Accounts Payable Applet&lt;/li&gt;
+&lt;li&gt;Financial Reporting Applet&lt;/li&gt;
+&lt;li&gt;Budget Management Applet&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Documentation Status&lt;/strong&gt;: This applet requires comprehensive documentation including detailed features, configuration guides, use cases, and implementation examples.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>Chart of Accounts Applet</title><link>https://wiki.bigledger.com/applets/chart-of-account-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/chart-of-account-applet/</guid><description>
+&lt;h2&gt;Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview"&gt;&lt;/span&gt;
+&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The Chart of Accounts Applet is the financial foundation of BigLedger, providing comprehensive management of your organization&amp;rsquo;s complete chart of accounts structure. This Core Module applet defines account categories, hierarchies, and financial statement mapping that supports all financial transactions across every BigLedger module.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Core Module Applet&lt;/strong&gt;: This is one of the 13 essential Core Module applets required by all other BigLedger modules, particularly critical for any financial operations.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions"&gt;&lt;/span&gt;
+&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Account Structure Management&lt;/strong&gt; - Create and maintain account hierarchies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Financial Statement Mapping&lt;/strong&gt; - Map accounts to financial reports&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Currency Support&lt;/strong&gt; - Handle multiple currencies and exchange rates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Account Classification&lt;/strong&gt; - Categorize accounts by type and purpose&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Foundation&lt;/strong&gt; - Provide account data to all financial modules&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Account Structure&lt;span class="hx:absolute hx:-mt-20" id="account-structure"&gt;&lt;/span&gt;
+&lt;a href="#account-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Hierarchical account organization (up to 10 levels)&lt;/li&gt;
+&lt;li&gt;Flexible account numbering systems&lt;/li&gt;
+&lt;li&gt;Account categories and sub-categories&lt;/li&gt;
+&lt;li&gt;Parent-child account relationships&lt;/li&gt;
+&lt;li&gt;Account status management (Active/Inactive)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Account Types&lt;span class="hx:absolute hx:-mt-20" id="account-types"&gt;&lt;/span&gt;
+&lt;a href="#account-types" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Assets&lt;/strong&gt; - Current and non-current assets&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Liabilities&lt;/strong&gt; - Short-term and long-term liabilities&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Equity&lt;/strong&gt; - Owner&amp;rsquo;s equity and retained earnings&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Income&lt;/strong&gt; - Revenue and other income accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Expenses&lt;/strong&gt; - Operating and non-operating expenses&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Financial Statement Integration&lt;span class="hx:absolute hx:-mt-20" id="financial-statement-integration"&gt;&lt;/span&gt;
+&lt;a href="#financial-statement-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Balance Sheet mapping&lt;/li&gt;
+&lt;li&gt;Profit &amp;amp; Loss statement mapping&lt;/li&gt;
+&lt;li&gt;Cash Flow statement mapping&lt;/li&gt;
+&lt;li&gt;Custom financial report mapping&lt;/li&gt;
+&lt;li&gt;Multi-period comparative reporting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Multi-Currency Capabilities&lt;span class="hx:absolute hx:-mt-20" id="multi-currency-capabilities"&gt;&lt;/span&gt;
+&lt;a href="#multi-currency-capabilities" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Base currency configuration&lt;/li&gt;
+&lt;li&gt;Foreign currency account setup&lt;/li&gt;
+&lt;li&gt;Real-time exchange rate integration&lt;/li&gt;
+&lt;li&gt;Currency translation rules&lt;/li&gt;
+&lt;li&gt;Multi-currency reporting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Account Controls&lt;span class="hx:absolute hx:-mt-20" id="account-controls"&gt;&lt;/span&gt;
+&lt;a href="#account-controls" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Account-level permissions&lt;/li&gt;
+&lt;li&gt;Transaction posting controls&lt;/li&gt;
+&lt;li&gt;Budget assignment capabilities&lt;/li&gt;
+&lt;li&gt;Cost center allocation&lt;/li&gt;
+&lt;li&gt;Department-wise account access&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications"&gt;&lt;/span&gt;
+&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements"&gt;&lt;/span&gt;
+&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Minimum Access Level&lt;/strong&gt;: Financial Administrator&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Dependencies&lt;/strong&gt;: Core financial tables&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Points&lt;/strong&gt;: All financial modules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Availability&lt;/strong&gt;: Full CRUD operations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Updates&lt;/strong&gt;: Immediate account balance updates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Account Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="account-configuration-options"&gt;&lt;/span&gt;
+&lt;a href="#account-configuration-options" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Account Code Length&lt;/strong&gt;: 3-20 characters&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hierarchy Levels&lt;/strong&gt;: Up to 10 levels deep&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Account Types&lt;/strong&gt;: 50+ predefined types&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Currency Support&lt;/strong&gt;: 150+ global currencies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Fields&lt;/strong&gt;: Up to 20 custom fields per account&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters"&gt;&lt;/span&gt;
+&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Account Capacity&lt;/strong&gt;: Up to 100,000 accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transaction Volume&lt;/strong&gt;: Millions of transactions per account&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Report Generation&lt;/strong&gt;: &amp;lt;5 seconds for standard reports&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Updates&lt;/strong&gt;: &amp;lt;1 second for balance updates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Concurrent Users&lt;/strong&gt;: 500+ simultaneous users&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points"&gt;&lt;/span&gt;
+&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies"&gt;&lt;/span&gt;
+&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Organization Applet&lt;/strong&gt; - Company and branch structure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Configuration Applet&lt;/strong&gt; - Tax account mapping&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cashbook Applet&lt;/strong&gt; - Cash and bank account integration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration"&gt;&lt;/span&gt;
+&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Module&lt;/th&gt;
+&lt;th&gt;Integration Purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Financial Accounting&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Primary account data source&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Sales &amp;amp; CRM&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Revenue and receivable accounts&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Purchasing&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Expense and payable accounts&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Inventory&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Asset and cost accounts&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Payroll&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Salary and benefit accounts&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;POS&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Sales and cash accounts&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;E-Commerce&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Online revenue accounts&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Manufacturing&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Work-in-progress and cost accounts&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations"&gt;&lt;/span&gt;
+&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Banking Systems&lt;/strong&gt; - Bank account reconciliation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Authorities&lt;/strong&gt; - Statutory reporting accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Auditing Software&lt;/strong&gt; - Financial statement export&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Business Intelligence&lt;/strong&gt; - Financial analytics&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Third-party Accounting&lt;/strong&gt; - Account synchronization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements"&gt;&lt;/span&gt;
+&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements"&gt;&lt;/span&gt;
+&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Base Currency&lt;/strong&gt; - Define primary currency&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Account Categories&lt;/strong&gt; - Set up major account types&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Numbering System&lt;/strong&gt; - Define account coding structure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Financial Periods&lt;/strong&gt; - Configure accounting periods&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Opening Balances&lt;/strong&gt; - Enter starting account balances&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations"&gt;&lt;/span&gt;
+&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Asset Accounts&lt;/strong&gt;: Cash, Bank, Inventory, Fixed Assets&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Liability Accounts&lt;/strong&gt;: Accounts Payable, Loans, Accruals&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Equity Accounts&lt;/strong&gt;: Capital, Retained Earnings&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Revenue Accounts&lt;/strong&gt;: Sales, Service Income, Other Income&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Expense Accounts&lt;/strong&gt;: Cost of Sales, Operating Expenses&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations"&gt;&lt;/span&gt;
+&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Consolidated Accounts&lt;/strong&gt; - Multi-entity consolidation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Segment Reporting&lt;/strong&gt; - Division/department accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Accounting&lt;/strong&gt; - Project-specific accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Currency&lt;/strong&gt; - Foreign currency accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Budgeting Integration&lt;/strong&gt; - Budget account mapping&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases"&gt;&lt;/span&gt;
+&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Small Business Setup&lt;span class="hx:absolute hx:-mt-20" id="small-business-setup"&gt;&lt;/span&gt;
+&lt;a href="#small-business-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Local retail shop&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Simple 4-digit account structure (1000-9999)&lt;/li&gt;
+&lt;li&gt;Basic account categories (Assets, Liabilities, Income, Expenses)&lt;/li&gt;
+&lt;li&gt;Single currency operation&lt;/li&gt;
+&lt;li&gt;Standard financial reports&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Simple, easy-to-understand financial structure&lt;/p&gt;
+&lt;h3&gt;Multi-Branch Enterprise&lt;span class="hx:absolute hx:-mt-20" id="multi-branch-enterprise"&gt;&lt;/span&gt;
+&lt;a href="#multi-branch-enterprise" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Chain of retail stores&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Complex hierarchical structure with branch codes&lt;/li&gt;
+&lt;li&gt;Department-wise account allocation&lt;/li&gt;
+&lt;li&gt;Inter-branch transaction accounts&lt;/li&gt;
+&lt;li&gt;Consolidated and branch-wise reporting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Comprehensive multi-location financial management&lt;/p&gt;
+&lt;h3&gt;Manufacturing Company&lt;span class="hx:absolute hx:-mt-20" id="manufacturing-company"&gt;&lt;/span&gt;
+&lt;a href="#manufacturing-company" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Production and assembly operations&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Work-in-progress accounts&lt;/li&gt;
+&lt;li&gt;Raw material and finished goods accounts&lt;/li&gt;
+&lt;li&gt;Manufacturing overhead allocation&lt;/li&gt;
+&lt;li&gt;Cost center-based reporting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Detailed manufacturing cost tracking&lt;/p&gt;
+&lt;h3&gt;International Business&lt;span class="hx:absolute hx:-mt-20" id="international-business"&gt;&lt;/span&gt;
+&lt;a href="#international-business" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Multi-country operations&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Multi-currency account setup&lt;/li&gt;
+&lt;li&gt;Foreign exchange accounts&lt;/li&gt;
+&lt;li&gt;Country-specific chart of accounts&lt;/li&gt;
+&lt;li&gt;Consolidated multi-currency reporting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Global financial management with local compliance&lt;/p&gt;
+&lt;h2&gt;Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets"&gt;&lt;/span&gt;
+&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets"&gt;&lt;/span&gt;
+&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/tax-configuration-applet/" &gt;Tax Configuration Applet&lt;/a&gt;&lt;/strong&gt; - Tax account mapping&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/cashbook-applet/" &gt;Cashbook Applet&lt;/a&gt;&lt;/strong&gt; - Cash and bank accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" &gt;Organization Applet&lt;/a&gt;&lt;/strong&gt; - Company structure&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Financial Applets&lt;span class="hx:absolute hx:-mt-20" id="financial-applets"&gt;&lt;/span&gt;
+&lt;a href="#financial-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/general-ledger-applet/" &gt;General Ledger Applet&lt;/a&gt;&lt;/strong&gt; - Transaction posting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/financial-reports-applet/" &gt;Financial Reports Applet&lt;/a&gt;&lt;/strong&gt; - Report generation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/budget-management-applet/" &gt;Budget Management Applet&lt;/a&gt;&lt;/strong&gt; - Budget allocation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Master Data Applets&lt;span class="hx:absolute hx:-mt-20" id="master-data-applets"&gt;&lt;/span&gt;
+&lt;a href="#master-data-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/customer-maintenance-applet/" &gt;Customer Maintenance Applet&lt;/a&gt;&lt;/strong&gt; - Customer accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/supplier-maintenance-applet/" &gt;Supplier Maintenance Applet&lt;/a&gt;&lt;/strong&gt; - Vendor accounts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide"&gt;&lt;/span&gt;
+&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start"&gt;&lt;/span&gt;
+&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Access Chart of Accounts&lt;/strong&gt; - Navigate to the applet&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Define Account Structure&lt;/strong&gt; - Set up account numbering&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Create Main Categories&lt;/strong&gt; - Add major account types&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Set up Sub-Accounts&lt;/strong&gt; - Create detailed account hierarchy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configure Opening Balances&lt;/strong&gt; - Enter starting balances&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup"&gt;&lt;/span&gt;
+&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Currency Configuration&lt;/strong&gt; - Set up foreign currencies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Financial Statement Mapping&lt;/strong&gt; - Map accounts to reports&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Budget Integration&lt;/strong&gt; - Link accounts to budget system&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cost Center Setup&lt;/strong&gt; - Configure departmental accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Approval Workflows&lt;/strong&gt; - Set up account change approvals&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Standard Chart of Accounts Templates&lt;span class="hx:absolute hx:-mt-20" id="standard-chart-of-accounts-templates"&gt;&lt;/span&gt;
+&lt;a href="#standard-chart-of-accounts-templates" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Retail Business Template&lt;span class="hx:absolute hx:-mt-20" id="retail-business-template"&gt;&lt;/span&gt;
+&lt;a href="#retail-business-template" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;1000-1999: ASSETS
 1000-1099: Current Assets
 1001: Cash on Hand
 1002: Cash at Bank
@@ -681,66 +681,66 @@ title="Copy code"
 5000-5999: EXPENSES
 5001: Cost of Sales
 5002: Salaries &amp;amp; Wages
-5003: Rent Expense&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+5003: Rent Expense&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h2>Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices">&lt;/span>
-&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Account Structure Best Practices&lt;span class="hx:absolute hx:-mt-20" id="account-structure-best-practices">&lt;/span>
-&lt;a href="#account-structure-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Consistent Numbering&lt;/strong> - Use logical, consistent account codes&lt;/li>
-&lt;li>&lt;strong>Future Growth&lt;/strong> - Leave gaps for future accounts&lt;/li>
-&lt;li>&lt;strong>Clear Naming&lt;/strong> - Use descriptive account names&lt;/li>
-&lt;li>&lt;strong>Regular Review&lt;/strong> - Periodic chart of accounts cleanup&lt;/li>
-&lt;li>&lt;strong>Documentation&lt;/strong> - Maintain account usage guidelines&lt;/li>
-&lt;/ul>
-&lt;h3>Security Best Practices&lt;span class="hx:absolute hx:-mt-20" id="security-best-practices">&lt;/span>
-&lt;a href="#security-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Access Control&lt;/strong> - Limit chart of accounts modification rights&lt;/li>
-&lt;li>&lt;strong>Change Approval&lt;/strong> - Implement approval workflows for changes&lt;/li>
-&lt;li>&lt;strong>Audit Trail&lt;/strong> - Monitor all account changes&lt;/li>
-&lt;li>&lt;strong>Backup&lt;/strong> - Regular backup of chart of accounts structure&lt;/li>
-&lt;li>&lt;strong>Testing&lt;/strong> - Test changes in development environment&lt;/li>
-&lt;/ul>
-&lt;h2>Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting">&lt;/span>
-&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues">&lt;/span>
-&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Cannot create transactions&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Verify account is active&lt;/li>
-&lt;li>Check account posting permissions&lt;/li>
-&lt;li>Ensure account type allows transactions&lt;/li>
-&lt;li>Verify account balance controls&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Incorrect financial reports&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Review account mapping to financial statements&lt;/li>
-&lt;li>Check account classifications&lt;/li>
-&lt;li>Verify account hierarchies&lt;/li>
-&lt;li>Confirm period-end procedures&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Multi-currency issues&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Check exchange rate configuration&lt;/li>
-&lt;li>Verify currency account setup&lt;/li>
-&lt;li>Review currency translation rules&lt;/li>
-&lt;li>Confirm base currency settings&lt;/li>
-&lt;/ul>
-&lt;h3>Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources">&lt;/span>
-&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Chart of accounts setup guide&lt;/li>
-&lt;li>Financial reporting configuration&lt;/li>
-&lt;li>Multi-currency setup documentation&lt;/li>
-&lt;li>Integration troubleshooting guide&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Important&lt;/strong>: Changes to the Chart of Accounts can significantly impact financial reporting and system integrations. Always test changes thoroughly before implementing in production.&lt;/div>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices"&gt;&lt;/span&gt;
+&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Account Structure Best Practices&lt;span class="hx:absolute hx:-mt-20" id="account-structure-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#account-structure-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Consistent Numbering&lt;/strong&gt; - Use logical, consistent account codes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Future Growth&lt;/strong&gt; - Leave gaps for future accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clear Naming&lt;/strong&gt; - Use descriptive account names&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regular Review&lt;/strong&gt; - Periodic chart of accounts cleanup&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt; - Maintain account usage guidelines&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Security Best Practices&lt;span class="hx:absolute hx:-mt-20" id="security-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#security-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Access Control&lt;/strong&gt; - Limit chart of accounts modification rights&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Change Approval&lt;/strong&gt; - Implement approval workflows for changes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Audit Trail&lt;/strong&gt; - Monitor all account changes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backup&lt;/strong&gt; - Regular backup of chart of accounts structure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Testing&lt;/strong&gt; - Test changes in development environment&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues"&gt;&lt;/span&gt;
+&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Cannot create transactions&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Verify account is active&lt;/li&gt;
+&lt;li&gt;Check account posting permissions&lt;/li&gt;
+&lt;li&gt;Ensure account type allows transactions&lt;/li&gt;
+&lt;li&gt;Verify account balance controls&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Incorrect financial reports&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Review account mapping to financial statements&lt;/li&gt;
+&lt;li&gt;Check account classifications&lt;/li&gt;
+&lt;li&gt;Verify account hierarchies&lt;/li&gt;
+&lt;li&gt;Confirm period-end procedures&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Multi-currency issues&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check exchange rate configuration&lt;/li&gt;
+&lt;li&gt;Verify currency account setup&lt;/li&gt;
+&lt;li&gt;Review currency translation rules&lt;/li&gt;
+&lt;li&gt;Confirm base currency settings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources"&gt;&lt;/span&gt;
+&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Chart of accounts setup guide&lt;/li&gt;
+&lt;li&gt;Financial reporting configuration&lt;/li&gt;
+&lt;li&gt;Multi-currency setup documentation&lt;/li&gt;
+&lt;li&gt;Integration troubleshooting guide&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Important&lt;/strong&gt;: Changes to the Chart of Accounts can significantly impact financial reporting and system integrations. Always test changes thoroughly before implementing in production.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

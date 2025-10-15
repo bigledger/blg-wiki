@@ -1,5 +1,5 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Marketplace</title><link>https://wiki.bigledger.com/tags/marketplace/</link><description>Recent content in Marketplace on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/marketplace/index.xml" rel="self" type="application/rss+xml"/><item><title>EcomSync Related Applets</title><link>https://wiki.bigledger.com/applets/90-ecomsync-related-applets/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/90-ecomsync-related-applets/</guid><description>
-&lt;p>Ecomsync Organization Applet
+&lt;p&gt;Ecomsync Organization Applet
 Ecomsync - Organisation Applet - Create Company
 Ecomsync - Organisation Applet : Create Virtual Branch (Marketplace)
 Ecomsync - Organisation Applet - Marketplace : Stock and Sale Order Configuration by Branch
@@ -9,4 +9,4 @@ Ecomsync - Doc Item Maintenance Applet : Create Grouped Item
 Ecomsync - Doc Item Maintenance Applet : Configure single/bundle item to marketplace
 Ecomsync - Doc Item Maintenance Applet : Configure grouped item to marketplace
 Ecomsync - Doc Item Maintenance Applet : Configure stock balance and sale order
-Ecomsync - Internal Sale Order Applet : Update marketplace order status&lt;/p></description></item></channel></rss>
+Ecomsync - Internal Sale Order Applet : Update marketplace order status&lt;/p&gt;</description></item></channel></rss>

@@ -6,6 +6,12 @@ theme: hextra
 enableGitInfo: true
 enableRobotsTXT: true
 
+outputFormats:
+  llms:
+    baseName: "index"
+    isPlainText: true
+    mediaType: "text/plain"
+
 markup:
   goldmark:
     renderer:

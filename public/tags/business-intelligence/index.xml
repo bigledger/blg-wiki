@@ -1,165 +1,165 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Business-Intelligence</title><link>https://wiki.bigledger.com/tags/business-intelligence/</link><description>Recent content in Business-Intelligence on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/business-intelligence/index.xml" rel="self" type="application/rss+xml"/><item><title>Reports &amp; Analytics</title><link>https://wiki.bigledger.com/user-guide/reports-analytics/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/user-guide/reports-analytics/</guid><description>
-&lt;p>Harness the power of your business data with BigLedger&amp;rsquo;s comprehensive reporting and analytics capabilities. Transform raw data into actionable insights that drive better business decisions.&lt;/p>
-&lt;h2>Overview&lt;span class="hx:absolute hx:-mt-20" id="overview">&lt;/span>
-&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>BigLedger&amp;rsquo;s Reports &amp;amp; Analytics suite provides:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Real-time Dashboards&lt;/strong> - Live business metrics and KPIs&lt;/li>
-&lt;li>&lt;strong>Standard Reports&lt;/strong> - Pre-built reports for common business needs&lt;/li>
-&lt;li>&lt;strong>Custom Report Builder&lt;/strong> - Create reports tailored to your requirements&lt;/li>
-&lt;li>&lt;strong>Data Export Tools&lt;/strong> - Export data for external analysis&lt;/li>
-&lt;li>&lt;strong>Automated Reporting&lt;/strong> - Scheduled report delivery and alerts&lt;/li>
-&lt;/ul>
-&lt;p>BigLedger&amp;rsquo;s Reports &amp;amp; Analytics transforms raw business data into actionable insights. Whether you need real-time operational dashboards or complex financial reports, our comprehensive suite provides everything needed for data-driven decision making.&lt;/p>
-&lt;h2>Key Reporting Areas&lt;span class="hx:absolute hx:-mt-20" id="key-reporting-areas">&lt;/span>
-&lt;a href="#key-reporting-areas" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Financial Reports&lt;span class="hx:absolute hx:-mt-20" id="financial-reports">&lt;/span>
-&lt;a href="#financial-reports" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Profit &amp;amp; Loss Statements&lt;/strong> - Revenue and expense analysis&lt;/li>
-&lt;li>&lt;strong>Balance Sheet Reports&lt;/strong> - Assets, liabilities, and equity&lt;/li>
-&lt;li>&lt;strong>Cash Flow Analysis&lt;/strong> - Cash movement and forecasting&lt;/li>
-&lt;li>&lt;strong>Accounts Receivable Aging&lt;/strong> - Customer payment analysis&lt;/li>
-&lt;li>&lt;strong>Accounts Payable Aging&lt;/strong> - Vendor payment tracking&lt;/li>
-&lt;li>&lt;strong>Tax Reports&lt;/strong> - SST, income tax, and compliance reporting&lt;/li>
-&lt;/ul>
-&lt;h3>Sales &amp;amp; Marketing Reports&lt;span class="hx:absolute hx:-mt-20" id="sales--marketing-reports">&lt;/span>
-&lt;a href="#sales--marketing-reports" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Sales Performance&lt;/strong> - Revenue trends and analysis&lt;/li>
-&lt;li>&lt;strong>Customer Analysis&lt;/strong> - Customer behavior and segmentation&lt;/li>
-&lt;li>&lt;strong>Product Performance&lt;/strong> - Best and worst-selling items&lt;/li>
-&lt;li>&lt;strong>Sales Team Reports&lt;/strong> - Individual and team performance&lt;/li>
-&lt;li>&lt;strong>Commission Calculations&lt;/strong> - Sales commission tracking&lt;/li>
-&lt;li>&lt;strong>Pipeline Analysis&lt;/strong> - Sales opportunity tracking&lt;/li>
-&lt;/ul>
-&lt;h3>Inventory &amp;amp; Operations Reports&lt;span class="hx:absolute hx:-mt-20" id="inventory--operations-reports">&lt;/span>
-&lt;a href="#inventory--operations-reports" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Stock Level Reports&lt;/strong> - Current inventory positions&lt;/li>
-&lt;li>&lt;strong>Inventory Movement&lt;/strong> - Stock in/out analysis&lt;/li>
-&lt;li>&lt;strong>Reorder Reports&lt;/strong> - Items requiring restocking&lt;/li>
-&lt;li>&lt;strong>Warehouse Performance&lt;/strong> - Efficiency and accuracy metrics&lt;/li>
-&lt;li>&lt;strong>Supplier Performance&lt;/strong> - Vendor delivery and quality metrics&lt;/li>
-&lt;li>&lt;strong>Production Reports&lt;/strong> - Manufacturing efficiency and costs&lt;/li>
-&lt;/ul>
-&lt;h3>Human Resources Reports&lt;span class="hx:absolute hx:-mt-20" id="human-resources-reports">&lt;/span>
-&lt;a href="#human-resources-reports" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Payroll Reports&lt;/strong> - Salary and benefit analysis&lt;/li>
-&lt;li>&lt;strong>Attendance Reports&lt;/strong> - Time and attendance tracking&lt;/li>
-&lt;li>&lt;strong>Performance Reports&lt;/strong> - Employee performance metrics&lt;/li>
-&lt;li>&lt;strong>Leave Reports&lt;/strong> - Leave balances and usage&lt;/li>
-&lt;li>&lt;strong>Training Reports&lt;/strong> - Employee development tracking&lt;/li>
-&lt;/ul>
-&lt;h2>Dashboard Configuration&lt;span class="hx:absolute hx:-mt-20" id="dashboard-configuration">&lt;/span>
-&lt;a href="#dashboard-configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Setting Up Your Dashboard&lt;span class="hx:absolute hx:-mt-20" id="setting-up-your-dashboard">&lt;/span>
-&lt;a href="#setting-up-your-dashboard" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Customizing dashboards in BigLedger is straightforward and flexible:&lt;/p>
-&lt;h4>Creating a New Dashboard&lt;span class="hx:absolute hx:-mt-20" id="creating-a-new-dashboard">&lt;/span>
-&lt;a href="#creating-a-new-dashboard" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ol>
-&lt;li>&lt;strong>Navigate to Dashboards&lt;/strong> - Access from main navigation menu&lt;/li>
-&lt;li>&lt;strong>Click &amp;ldquo;Create Dashboard&amp;rdquo;&lt;/strong> - Start with blank dashboard or template&lt;/li>
-&lt;li>&lt;strong>Choose Dashboard Type&lt;/strong> - Executive, Operational, or Custom&lt;/li>
-&lt;li>&lt;strong>Select Layout&lt;/strong> - Grid, flexible, or fixed layout options&lt;/li>
-&lt;li>&lt;strong>Name and Configure&lt;/strong> - Set title, description, and access permissions&lt;/li>
-&lt;/ol>
-&lt;h4>Adding Widgets to Dashboard&lt;span class="hx:absolute hx:-mt-20" id="adding-widgets-to-dashboard">&lt;/span>
-&lt;a href="#adding-widgets-to-dashboard" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Available Widget Types:&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>KPI Cards&lt;/strong> - Display key metrics with trend indicators&lt;/li>
-&lt;li>&lt;strong>Charts &amp;amp; Graphs&lt;/strong> - Bar, line, pie, and advanced visualizations&lt;/li>
-&lt;li>&lt;strong>Data Tables&lt;/strong> - Tabular data with sorting and filtering&lt;/li>
-&lt;li>&lt;strong>Gauges&lt;/strong> - Progress indicators and performance meters&lt;/li>
-&lt;li>&lt;strong>Heat Maps&lt;/strong> - Geographic or categorical data visualization&lt;/li>
-&lt;li>&lt;strong>Custom Reports&lt;/strong> - Embed existing reports as widgets&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Widget Configuration Steps:&lt;/strong>&lt;/p>
-&lt;ol>
-&lt;li>&lt;strong>Click &amp;ldquo;Add Widget&amp;rdquo;&lt;/strong> in dashboard edit mode&lt;/li>
-&lt;li>&lt;strong>Select Widget Type&lt;/strong> from available options&lt;/li>
-&lt;li>&lt;strong>Choose Data Source&lt;/strong> from connected systems&lt;/li>
-&lt;li>&lt;strong>Configure Parameters&lt;/strong> - Date ranges, filters, grouping&lt;/li>
-&lt;li>&lt;strong>Apply Styling&lt;/strong> - Colors, fonts, and visual formatting&lt;/li>
-&lt;li>&lt;strong>Set Refresh Rate&lt;/strong> - Real-time, hourly, daily, or manual&lt;/li>
-&lt;/ol>
-&lt;h4>Dashboard Layout Management&lt;span class="hx:absolute hx:-mt-20" id="dashboard-layout-management">&lt;/span>
-&lt;a href="#dashboard-layout-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Responsive Design Features:&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Drag-and-Drop Interface&lt;/strong> - Easily rearrange widgets&lt;/li>
-&lt;li>&lt;strong>Resizable Widgets&lt;/strong> - Adjust size to fit content importance&lt;/li>
-&lt;li>&lt;strong>Mobile Optimization&lt;/strong> - Automatic layout adaptation&lt;/li>
-&lt;li>&lt;strong>Grid Snapping&lt;/strong> - Precise alignment and spacing&lt;/li>
-&lt;li>&lt;strong>Multi-Screen Support&lt;/strong> - Optimize for different display sizes&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Layout Best Practices:&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Place most important KPIs in top-left corner&lt;/li>
-&lt;li>Group related metrics together&lt;/li>
-&lt;li>Use consistent color schemes across widgets&lt;/li>
-&lt;li>Ensure adequate white space for readability&lt;/li>
-&lt;li>Test layout on different screen sizes&lt;/li>
-&lt;/ul>
-&lt;h3>Standard Dashboards&lt;span class="hx:absolute hx:-mt-20" id="standard-dashboards">&lt;/span>
-&lt;a href="#standard-dashboards" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Executive Dashboard&lt;/strong> - High-level business overview&lt;/li>
-&lt;li>&lt;strong>Sales Dashboard&lt;/strong> - Sales metrics and trends&lt;/li>
-&lt;li>&lt;strong>Financial Dashboard&lt;/strong> - Key financial indicators&lt;/li>
-&lt;li>&lt;strong>Operations Dashboard&lt;/strong> - Operational efficiency metrics&lt;/li>
-&lt;li>&lt;strong>HR Dashboard&lt;/strong> - Human resources metrics&lt;/li>
-&lt;/ul>
-&lt;h3>Custom Dashboards&lt;span class="hx:absolute hx:-mt-20" id="custom-dashboards">&lt;/span>
-&lt;a href="#custom-dashboards" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Widget Selection&lt;/strong> - Choose relevant data visualizations&lt;/li>
-&lt;li>&lt;strong>Layout Design&lt;/strong> - Arrange widgets for optimal viewing&lt;/li>
-&lt;li>&lt;strong>Data Filtering&lt;/strong> - Set up dynamic filters and parameters&lt;/li>
-&lt;li>&lt;strong>Access Control&lt;/strong> - Configure who can view each dashboard&lt;/li>
-&lt;li>&lt;strong>Mobile Optimization&lt;/strong> - Ensure dashboards work on mobile devices&lt;/li>
-&lt;/ul>
-&lt;h2>Report Builder&lt;span class="hx:absolute hx:-mt-20" id="report-builder">&lt;/span>
-&lt;a href="#report-builder" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Mastering the Report Builder&lt;span class="hx:absolute hx:-mt-20" id="mastering-the-report-builder">&lt;/span>
-&lt;a href="#mastering-the-report-builder" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>BigLedger&amp;rsquo;s Report Builder empowers users to create sophisticated reports without technical expertise:&lt;/p>
-&lt;h4>Getting Started with Report Builder&lt;span class="hx:absolute hx:-mt-20" id="getting-started-with-report-builder">&lt;/span>
-&lt;a href="#getting-started-with-report-builder" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Step 1: Report Planning&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Define Objectives&lt;/strong> - What business questions need answers?&lt;/li>
-&lt;li>&lt;strong>Identify Data Sources&lt;/strong> - Which modules contain required information?&lt;/li>
-&lt;li>&lt;strong>Choose Report Type&lt;/strong> - Tabular, chart-based, or dashboard style&lt;/li>
-&lt;li>&lt;strong>Plan Distribution&lt;/strong> - Who needs access and how often?&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Step 2: Data Source Selection&lt;/strong>&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>Available Data Sources:
+&lt;p&gt;Harness the power of your business data with BigLedger&amp;rsquo;s comprehensive reporting and analytics capabilities. Transform raw data into actionable insights that drive better business decisions.&lt;/p&gt;
+&lt;h2&gt;Overview&lt;span class="hx:absolute hx:-mt-20" id="overview"&gt;&lt;/span&gt;
+&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;BigLedger&amp;rsquo;s Reports &amp;amp; Analytics suite provides:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Dashboards&lt;/strong&gt; - Live business metrics and KPIs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Standard Reports&lt;/strong&gt; - Pre-built reports for common business needs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Report Builder&lt;/strong&gt; - Create reports tailored to your requirements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Export Tools&lt;/strong&gt; - Export data for external analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Automated Reporting&lt;/strong&gt; - Scheduled report delivery and alerts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;BigLedger&amp;rsquo;s Reports &amp;amp; Analytics transforms raw business data into actionable insights. Whether you need real-time operational dashboards or complex financial reports, our comprehensive suite provides everything needed for data-driven decision making.&lt;/p&gt;
+&lt;h2&gt;Key Reporting Areas&lt;span class="hx:absolute hx:-mt-20" id="key-reporting-areas"&gt;&lt;/span&gt;
+&lt;a href="#key-reporting-areas" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Financial Reports&lt;span class="hx:absolute hx:-mt-20" id="financial-reports"&gt;&lt;/span&gt;
+&lt;a href="#financial-reports" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Profit &amp;amp; Loss Statements&lt;/strong&gt; - Revenue and expense analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Balance Sheet Reports&lt;/strong&gt; - Assets, liabilities, and equity&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cash Flow Analysis&lt;/strong&gt; - Cash movement and forecasting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Accounts Receivable Aging&lt;/strong&gt; - Customer payment analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Accounts Payable Aging&lt;/strong&gt; - Vendor payment tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Reports&lt;/strong&gt; - SST, income tax, and compliance reporting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Sales &amp;amp; Marketing Reports&lt;span class="hx:absolute hx:-mt-20" id="sales--marketing-reports"&gt;&lt;/span&gt;
+&lt;a href="#sales--marketing-reports" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Sales Performance&lt;/strong&gt; - Revenue trends and analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Analysis&lt;/strong&gt; - Customer behavior and segmentation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Product Performance&lt;/strong&gt; - Best and worst-selling items&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sales Team Reports&lt;/strong&gt; - Individual and team performance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Commission Calculations&lt;/strong&gt; - Sales commission tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pipeline Analysis&lt;/strong&gt; - Sales opportunity tracking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Inventory &amp;amp; Operations Reports&lt;span class="hx:absolute hx:-mt-20" id="inventory--operations-reports"&gt;&lt;/span&gt;
+&lt;a href="#inventory--operations-reports" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Stock Level Reports&lt;/strong&gt; - Current inventory positions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inventory Movement&lt;/strong&gt; - Stock in/out analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reorder Reports&lt;/strong&gt; - Items requiring restocking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Warehouse Performance&lt;/strong&gt; - Efficiency and accuracy metrics&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Supplier Performance&lt;/strong&gt; - Vendor delivery and quality metrics&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Production Reports&lt;/strong&gt; - Manufacturing efficiency and costs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Human Resources Reports&lt;span class="hx:absolute hx:-mt-20" id="human-resources-reports"&gt;&lt;/span&gt;
+&lt;a href="#human-resources-reports" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Payroll Reports&lt;/strong&gt; - Salary and benefit analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Attendance Reports&lt;/strong&gt; - Time and attendance tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Reports&lt;/strong&gt; - Employee performance metrics&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Leave Reports&lt;/strong&gt; - Leave balances and usage&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Training Reports&lt;/strong&gt; - Employee development tracking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Dashboard Configuration&lt;span class="hx:absolute hx:-mt-20" id="dashboard-configuration"&gt;&lt;/span&gt;
+&lt;a href="#dashboard-configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Setting Up Your Dashboard&lt;span class="hx:absolute hx:-mt-20" id="setting-up-your-dashboard"&gt;&lt;/span&gt;
+&lt;a href="#setting-up-your-dashboard" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Customizing dashboards in BigLedger is straightforward and flexible:&lt;/p&gt;
+&lt;h4&gt;Creating a New Dashboard&lt;span class="hx:absolute hx:-mt-20" id="creating-a-new-dashboard"&gt;&lt;/span&gt;
+&lt;a href="#creating-a-new-dashboard" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Navigate to Dashboards&lt;/strong&gt; - Access from main navigation menu&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Click &amp;ldquo;Create Dashboard&amp;rdquo;&lt;/strong&gt; - Start with blank dashboard or template&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Choose Dashboard Type&lt;/strong&gt; - Executive, Operational, or Custom&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Select Layout&lt;/strong&gt; - Grid, flexible, or fixed layout options&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Name and Configure&lt;/strong&gt; - Set title, description, and access permissions&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Adding Widgets to Dashboard&lt;span class="hx:absolute hx:-mt-20" id="adding-widgets-to-dashboard"&gt;&lt;/span&gt;
+&lt;a href="#adding-widgets-to-dashboard" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Available Widget Types:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;KPI Cards&lt;/strong&gt; - Display key metrics with trend indicators&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Charts &amp;amp; Graphs&lt;/strong&gt; - Bar, line, pie, and advanced visualizations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Tables&lt;/strong&gt; - Tabular data with sorting and filtering&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gauges&lt;/strong&gt; - Progress indicators and performance meters&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Heat Maps&lt;/strong&gt; - Geographic or categorical data visualization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Reports&lt;/strong&gt; - Embed existing reports as widgets&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Widget Configuration Steps:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Click &amp;ldquo;Add Widget&amp;rdquo;&lt;/strong&gt; in dashboard edit mode&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Select Widget Type&lt;/strong&gt; from available options&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Choose Data Source&lt;/strong&gt; from connected systems&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configure Parameters&lt;/strong&gt; - Date ranges, filters, grouping&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Apply Styling&lt;/strong&gt; - Colors, fonts, and visual formatting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Set Refresh Rate&lt;/strong&gt; - Real-time, hourly, daily, or manual&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Dashboard Layout Management&lt;span class="hx:absolute hx:-mt-20" id="dashboard-layout-management"&gt;&lt;/span&gt;
+&lt;a href="#dashboard-layout-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Responsive Design Features:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Drag-and-Drop Interface&lt;/strong&gt; - Easily rearrange widgets&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resizable Widgets&lt;/strong&gt; - Adjust size to fit content importance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mobile Optimization&lt;/strong&gt; - Automatic layout adaptation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Grid Snapping&lt;/strong&gt; - Precise alignment and spacing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Screen Support&lt;/strong&gt; - Optimize for different display sizes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Layout Best Practices:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Place most important KPIs in top-left corner&lt;/li&gt;
+&lt;li&gt;Group related metrics together&lt;/li&gt;
+&lt;li&gt;Use consistent color schemes across widgets&lt;/li&gt;
+&lt;li&gt;Ensure adequate white space for readability&lt;/li&gt;
+&lt;li&gt;Test layout on different screen sizes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Standard Dashboards&lt;span class="hx:absolute hx:-mt-20" id="standard-dashboards"&gt;&lt;/span&gt;
+&lt;a href="#standard-dashboards" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Executive Dashboard&lt;/strong&gt; - High-level business overview&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sales Dashboard&lt;/strong&gt; - Sales metrics and trends&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Financial Dashboard&lt;/strong&gt; - Key financial indicators&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Operations Dashboard&lt;/strong&gt; - Operational efficiency metrics&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HR Dashboard&lt;/strong&gt; - Human resources metrics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Custom Dashboards&lt;span class="hx:absolute hx:-mt-20" id="custom-dashboards"&gt;&lt;/span&gt;
+&lt;a href="#custom-dashboards" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Widget Selection&lt;/strong&gt; - Choose relevant data visualizations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Layout Design&lt;/strong&gt; - Arrange widgets for optimal viewing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Filtering&lt;/strong&gt; - Set up dynamic filters and parameters&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Access Control&lt;/strong&gt; - Configure who can view each dashboard&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mobile Optimization&lt;/strong&gt; - Ensure dashboards work on mobile devices&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Report Builder&lt;span class="hx:absolute hx:-mt-20" id="report-builder"&gt;&lt;/span&gt;
+&lt;a href="#report-builder" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Mastering the Report Builder&lt;span class="hx:absolute hx:-mt-20" id="mastering-the-report-builder"&gt;&lt;/span&gt;
+&lt;a href="#mastering-the-report-builder" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;BigLedger&amp;rsquo;s Report Builder empowers users to create sophisticated reports without technical expertise:&lt;/p&gt;
+&lt;h4&gt;Getting Started with Report Builder&lt;span class="hx:absolute hx:-mt-20" id="getting-started-with-report-builder"&gt;&lt;/span&gt;
+&lt;a href="#getting-started-with-report-builder" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Step 1: Report Planning&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Define Objectives&lt;/strong&gt; - What business questions need answers?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Identify Data Sources&lt;/strong&gt; - Which modules contain required information?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Choose Report Type&lt;/strong&gt; - Tabular, chart-based, or dashboard style&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plan Distribution&lt;/strong&gt; - Who needs access and how often?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Step 2: Data Source Selection&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Available Data Sources:
 ✓ Financial Transactions (GL, AP, AR)
 ✓ Sales Orders and Invoices
 ✓ Inventory Movements
 ✓ Customer and Vendor Records
 ✓ Employee and Payroll Data
 ✓ Production and Manufacturing
-✓ E-commerce Integration Data&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+✓ E-commerce Integration Data&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h4>Building Your First Report&lt;span class="hx:absolute hx:-mt-20" id="building-your-first-report">&lt;/span>
-&lt;a href="#building-your-first-report" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Creating a Sales Performance Report:&lt;/strong>&lt;/p>
-&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>Open Report Builder&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Navigate to Reports &amp;gt; Report Builder&lt;/li>
-&lt;li>Click &amp;ldquo;New Report&amp;rdquo; or use existing template&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Select Primary Data Source&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Choose &amp;ldquo;Sales Transactions&amp;rdquo; as main data source&lt;/li>
-&lt;li>Include related tables: Customers, Products, Sales Staff&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Add Report Fields&lt;/strong>&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>Dimensions (Group By):
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;Building Your First Report&lt;span class="hx:absolute hx:-mt-20" id="building-your-first-report"&gt;&lt;/span&gt;
+&lt;a href="#building-your-first-report" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Creating a Sales Performance Report:&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Open Report Builder&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Navigate to Reports &amp;gt; Report Builder&lt;/li&gt;
+&lt;li&gt;Click &amp;ldquo;New Report&amp;rdquo; or use existing template&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Select Primary Data Source&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Choose &amp;ldquo;Sales Transactions&amp;rdquo; as main data source&lt;/li&gt;
+&lt;li&gt;Include related tables: Customers, Products, Sales Staff&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Add Report Fields&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Dimensions (Group By):
 - Sales Period (Month/Quarter)
 - Sales Representative
 - Product Category
@@ -168,287 +168,287 @@ Measures (Calculate):
 - Total Sales Amount
 - Gross Profit
 - Number of Transactions
-- Average Order Value&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+- Average Order Value&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Apply Filters and Parameters&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Date Range: Last 12 months&lt;/li>
-&lt;li>Sales Territory: All or specific regions&lt;/li>
-&lt;li>Product Status: Active products only&lt;/li>
-&lt;li>Customer Type: B2B, B2C, or both&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Configure Calculations&lt;/strong>&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sql" data-lang="sql">&lt;span style="display:flex;">&lt;span>Gross Profit &lt;span style="color:#f92672">=&lt;/span> Sales Amount &lt;span style="color:#f92672">-&lt;/span> Cost &lt;span style="color:#66d9ef">of&lt;/span> Goods Sold
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Gross Margin &lt;span style="color:#f92672">%&lt;/span> &lt;span style="color:#f92672">=&lt;/span> (Gross Profit &lt;span style="color:#f92672">/&lt;/span> Sales Amount) &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">100&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Growth Rate &lt;span style="color:#f92672">=&lt;/span> ((&lt;span style="color:#66d9ef">Current&lt;/span> Period &lt;span style="color:#f92672">-&lt;/span> Previous Period) &lt;span style="color:#f92672">/&lt;/span> Previous Period) &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">100&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Apply Filters and Parameters&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Date Range: Last 12 months&lt;/li&gt;
+&lt;li&gt;Sales Territory: All or specific regions&lt;/li&gt;
+&lt;li&gt;Product Status: Active products only&lt;/li&gt;
+&lt;li&gt;Customer Type: B2B, B2C, or both&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Configure Calculations&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-sql" data-lang="sql"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Gross Profit &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Sales Amount &lt;span style="color:#f92672"&gt;-&lt;/span&gt; Cost &lt;span style="color:#66d9ef"&gt;of&lt;/span&gt; Goods Sold
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Gross Margin &lt;span style="color:#f92672"&gt;%&lt;/span&gt; &lt;span style="color:#f92672"&gt;=&lt;/span&gt; (Gross Profit &lt;span style="color:#f92672"&gt;/&lt;/span&gt; Sales Amount) &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Growth Rate &lt;span style="color:#f92672"&gt;=&lt;/span&gt; ((&lt;span style="color:#66d9ef"&gt;Current&lt;/span&gt; Period &lt;span style="color:#f92672"&gt;-&lt;/span&gt; Previous Period) &lt;span style="color:#f92672"&gt;/&lt;/span&gt; Previous Period) &lt;span style="color:#f92672"&gt;*&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Format and Style Report&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Apply professional formatting templates&lt;/li>
-&lt;li>Add company branding and logos&lt;/li>
-&lt;li>Configure number formats and currency&lt;/li>
-&lt;li>Set up conditional formatting for alerts&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;h4>Advanced Report Features&lt;span class="hx:absolute hx:-mt-20" id="advanced-report-features">&lt;/span>
-&lt;a href="#advanced-report-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Drill-Down Capabilities&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Multi-Level Navigation&lt;/strong> - Click to explore detailed data&lt;/li>
-&lt;li>&lt;strong>Breadcrumb Navigation&lt;/strong> - Track drill-down path&lt;/li>
-&lt;li>&lt;strong>Pop-up Details&lt;/strong> - Hover for additional information&lt;/li>
-&lt;li>&lt;strong>Linked Reports&lt;/strong> - Jump to related reports&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Interactive Elements&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Dynamic Filters&lt;/strong> - Users can adjust parameters&lt;/li>
-&lt;li>&lt;strong>Date Range Selectors&lt;/strong> - Flexible time period selection&lt;/li>
-&lt;li>&lt;strong>Parameter Controls&lt;/strong> - Dropdown menus and input fields&lt;/li>
-&lt;li>&lt;strong>Export Options&lt;/strong> - PDF, Excel, CSV on-demand&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Calculated Fields and Formulas&lt;/strong>&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>Common Business Calculations:
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Format and Style Report&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Apply professional formatting templates&lt;/li&gt;
+&lt;li&gt;Add company branding and logos&lt;/li&gt;
+&lt;li&gt;Configure number formats and currency&lt;/li&gt;
+&lt;li&gt;Set up conditional formatting for alerts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Advanced Report Features&lt;span class="hx:absolute hx:-mt-20" id="advanced-report-features"&gt;&lt;/span&gt;
+&lt;a href="#advanced-report-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Drill-Down Capabilities&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Level Navigation&lt;/strong&gt; - Click to explore detailed data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Breadcrumb Navigation&lt;/strong&gt; - Track drill-down path&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Pop-up Details&lt;/strong&gt; - Hover for additional information&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Linked Reports&lt;/strong&gt; - Jump to related reports&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Interactive Elements&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Dynamic Filters&lt;/strong&gt; - Users can adjust parameters&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Date Range Selectors&lt;/strong&gt; - Flexible time period selection&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Parameter Controls&lt;/strong&gt; - Dropdown menus and input fields&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Export Options&lt;/strong&gt; - PDF, Excel, CSV on-demand&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Calculated Fields and Formulas&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Common Business Calculations:
 • ROI = (Gain - Cost) / Cost * 100
 • Inventory Turnover = COGS / Average Inventory
 • Customer Lifetime Value = Average Purchase × Purchase Frequency × Customer Lifespan
-• Conversion Rate = (Conversions / Total Visitors) * 100&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+• Conversion Rate = (Conversions / Total Visitors) * 100&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h4>Report Templates by Function&lt;span class="hx:absolute hx:-mt-20" id="report-templates-by-function">&lt;/span>
-&lt;a href="#report-templates-by-function" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Sales &amp;amp; Marketing Templates&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Sales Performance Dashboard&lt;/li>
-&lt;li>Customer Acquisition Report&lt;/li>
-&lt;li>Product Performance Analysis&lt;/li>
-&lt;li>Sales Funnel Metrics&lt;/li>
-&lt;li>Commission Calculation Report&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Financial Templates&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Profit &amp;amp; Loss Statement&lt;/li>
-&lt;li>Balance Sheet Report&lt;/li>
-&lt;li>Cash Flow Analysis&lt;/li>
-&lt;li>Budget vs Actual Variance&lt;/li>
-&lt;li>Accounts Aging Report&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Operations Templates&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Inventory Status Report&lt;/li>
-&lt;li>Production Efficiency Analysis&lt;/li>
-&lt;li>Quality Control Metrics&lt;/li>
-&lt;li>Supplier Performance Scorecard&lt;/li>
-&lt;li>Warehouse Productivity Report&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>HR Templates&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Employee Performance Dashboard&lt;/li>
-&lt;li>Payroll Summary Report&lt;/li>
-&lt;li>Attendance and Leave Analysis&lt;/li>
-&lt;li>Training Completion Report&lt;/li>
-&lt;li>Recruitment Metrics&lt;/li>
-&lt;/ul>
-&lt;h4>Sharing and Distribution&lt;span class="hx:absolute hx:-mt-20" id="sharing-and-distribution">&lt;/span>
-&lt;a href="#sharing-and-distribution" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Report Access Control&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Role-Based Permissions&lt;/strong> - Control who sees what data&lt;/li>
-&lt;li>&lt;strong>Dynamic Security&lt;/strong> - Filter data based on user roles&lt;/li>
-&lt;li>&lt;strong>Temporary Access&lt;/strong> - Grant time-limited report access&lt;/li>
-&lt;li>&lt;strong>External Sharing&lt;/strong> - Secure sharing with partners&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Automated Distribution&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Email Scheduling&lt;/strong> - Daily, weekly, monthly delivery&lt;/li>
-&lt;li>&lt;strong>Dashboard Publishing&lt;/strong> - Real-time web access&lt;/li>
-&lt;li>&lt;strong>Mobile Notifications&lt;/strong> - Alert delivery to mobile devices&lt;/li>
-&lt;li>&lt;strong>API Integration&lt;/strong> - Programmatic access to report data&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Export and Integration Options&lt;/strong>&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>Supported Formats:
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;Report Templates by Function&lt;span class="hx:absolute hx:-mt-20" id="report-templates-by-function"&gt;&lt;/span&gt;
+&lt;a href="#report-templates-by-function" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Sales &amp;amp; Marketing Templates&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sales Performance Dashboard&lt;/li&gt;
+&lt;li&gt;Customer Acquisition Report&lt;/li&gt;
+&lt;li&gt;Product Performance Analysis&lt;/li&gt;
+&lt;li&gt;Sales Funnel Metrics&lt;/li&gt;
+&lt;li&gt;Commission Calculation Report&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Financial Templates&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Profit &amp;amp; Loss Statement&lt;/li&gt;
+&lt;li&gt;Balance Sheet Report&lt;/li&gt;
+&lt;li&gt;Cash Flow Analysis&lt;/li&gt;
+&lt;li&gt;Budget vs Actual Variance&lt;/li&gt;
+&lt;li&gt;Accounts Aging Report&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Operations Templates&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Inventory Status Report&lt;/li&gt;
+&lt;li&gt;Production Efficiency Analysis&lt;/li&gt;
+&lt;li&gt;Quality Control Metrics&lt;/li&gt;
+&lt;li&gt;Supplier Performance Scorecard&lt;/li&gt;
+&lt;li&gt;Warehouse Productivity Report&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;HR Templates&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Employee Performance Dashboard&lt;/li&gt;
+&lt;li&gt;Payroll Summary Report&lt;/li&gt;
+&lt;li&gt;Attendance and Leave Analysis&lt;/li&gt;
+&lt;li&gt;Training Completion Report&lt;/li&gt;
+&lt;li&gt;Recruitment Metrics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Sharing and Distribution&lt;span class="hx:absolute hx:-mt-20" id="sharing-and-distribution"&gt;&lt;/span&gt;
+&lt;a href="#sharing-and-distribution" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Report Access Control&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Role-Based Permissions&lt;/strong&gt; - Control who sees what data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dynamic Security&lt;/strong&gt; - Filter data based on user roles&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Temporary Access&lt;/strong&gt; - Grant time-limited report access&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;External Sharing&lt;/strong&gt; - Secure sharing with partners&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Automated Distribution&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Email Scheduling&lt;/strong&gt; - Daily, weekly, monthly delivery&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dashboard Publishing&lt;/strong&gt; - Real-time web access&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mobile Notifications&lt;/strong&gt; - Alert delivery to mobile devices&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Integration&lt;/strong&gt; - Programmatic access to report data&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Export and Integration Options&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Supported Formats:
 • PDF - Professional formatted documents
 • Excel - Data manipulation and analysis
 • CSV - Raw data for external processing
 • PowerPoint - Presentation-ready charts
-• JSON/XML - System integration&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+• JSON/XML - System integration&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Report Types&lt;span class="hx:absolute hx:-mt-20" id="report-types">&lt;/span>
-&lt;a href="#report-types" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Tabular Reports&lt;/strong> - Traditional row/column data reports&lt;/li>
-&lt;li>&lt;strong>Chart Reports&lt;/strong> - Visual data representation&lt;/li>
-&lt;li>&lt;strong>Dashboard Reports&lt;/strong> - Multi-widget overview reports&lt;/li>
-&lt;li>&lt;strong>Scheduled Reports&lt;/strong> - Automated report generation&lt;/li>
-&lt;li>&lt;strong>Ad-hoc Reports&lt;/strong> - On-demand query reports&lt;/li>
-&lt;/ul>
-&lt;h3>Report Elements&lt;span class="hx:absolute hx:-mt-20" id="report-elements">&lt;/span>
-&lt;a href="#report-elements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Data Sources&lt;/strong> - Connect to relevant data tables&lt;/li>
-&lt;li>&lt;strong>Filters &amp;amp; Parameters&lt;/strong> - Control report scope and focus&lt;/li>
-&lt;li>&lt;strong>Calculations&lt;/strong> - Add computed fields and formulas&lt;/li>
-&lt;li>&lt;strong>Formatting&lt;/strong> - Apply professional styling&lt;/li>
-&lt;li>&lt;strong>Export Options&lt;/strong> - PDF, Excel, CSV output formats&lt;/li>
-&lt;/ul>
-&lt;h2>Analytics Capabilities&lt;span class="hx:absolute hx:-mt-20" id="analytics-capabilities">&lt;/span>
-&lt;a href="#analytics-capabilities" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Business Intelligence Features&lt;span class="hx:absolute hx:-mt-20" id="business-intelligence-features">&lt;/span>
-&lt;a href="#business-intelligence-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Trend Analysis&lt;/strong> - Identify patterns in business data&lt;/li>
-&lt;li>&lt;strong>Comparative Analysis&lt;/strong> - Compare periods, regions, products&lt;/li>
-&lt;li>&lt;strong>Drill-down Capability&lt;/strong> - Navigate from summary to detail&lt;/li>
-&lt;li>&lt;strong>Predictive Analytics&lt;/strong> - Forecast future trends&lt;/li>
-&lt;li>&lt;strong>Exception Reporting&lt;/strong> - Highlight unusual data points&lt;/li>
-&lt;/ul>
-&lt;h3>Data Visualization&lt;span class="hx:absolute hx:-mt-20" id="data-visualization">&lt;/span>
-&lt;a href="#data-visualization" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Charts &amp;amp; Graphs&lt;/strong> - Various visualization types&lt;/li>
-&lt;li>&lt;strong>Interactive Elements&lt;/strong> - Clickable charts and filters&lt;/li>
-&lt;li>&lt;strong>Geographic Mapping&lt;/strong> - Location-based data visualization&lt;/li>
-&lt;li>&lt;strong>Time Series Analysis&lt;/strong> - Trend analysis over time&lt;/li>
-&lt;li>&lt;strong>Multi-dimensional Views&lt;/strong> - Analyze data from multiple angles&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Analytics Tip&lt;/strong>: Start with standard reports to understand your data, then build custom reports as you identify specific business questions that need answers.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h2>Key Performance Indicators (KPIs)&lt;span class="hx:absolute hx:-mt-20" id="key-performance-indicators-kpis">&lt;/span>
-&lt;a href="#key-performance-indicators-kpis" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Financial KPIs&lt;span class="hx:absolute hx:-mt-20" id="financial-kpis">&lt;/span>
-&lt;a href="#financial-kpis" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Gross Profit Margin&lt;/strong> - Profitability measure&lt;/li>
-&lt;li>&lt;strong>Cash Flow Ratio&lt;/strong> - Liquidity indicator&lt;/li>
-&lt;li>&lt;strong>Accounts Receivable Turnover&lt;/strong> - Collection efficiency&lt;/li>
-&lt;li>&lt;strong>Return on Investment (ROI)&lt;/strong> - Investment effectiveness&lt;/li>
-&lt;li>&lt;strong>Operating Expense Ratio&lt;/strong> - Cost control measure&lt;/li>
-&lt;/ul>
-&lt;h3>Operational KPIs&lt;span class="hx:absolute hx:-mt-20" id="operational-kpis">&lt;/span>
-&lt;a href="#operational-kpis" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Inventory Turnover&lt;/strong> - Inventory efficiency&lt;/li>
-&lt;li>&lt;strong>Order Fulfillment Rate&lt;/strong> - Customer service level&lt;/li>
-&lt;li>&lt;strong>On-Time Delivery Rate&lt;/strong> - Delivery performance&lt;/li>
-&lt;li>&lt;strong>Quality Metrics&lt;/strong> - Error rates and customer satisfaction&lt;/li>
-&lt;li>&lt;strong>Employee Productivity&lt;/strong> - Output per employee&lt;/li>
-&lt;/ul>
-&lt;h3>Customer KPIs&lt;span class="hx:absolute hx:-mt-20" id="customer-kpis">&lt;/span>
-&lt;a href="#customer-kpis" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Customer Acquisition Cost&lt;/strong> - Marketing efficiency&lt;/li>
-&lt;li>&lt;strong>Customer Lifetime Value&lt;/strong> - Long-term customer value&lt;/li>
-&lt;li>&lt;strong>Customer Satisfaction Score&lt;/strong> - Service quality measure&lt;/li>
-&lt;li>&lt;strong>Customer Retention Rate&lt;/strong> - Loyalty indicator&lt;/li>
-&lt;li>&lt;strong>Average Order Value&lt;/strong> - Sales effectiveness&lt;/li>
-&lt;/ul>
-&lt;h2>Automated Reporting&lt;span class="hx:absolute hx:-mt-20" id="automated-reporting">&lt;/span>
-&lt;a href="#automated-reporting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Setting Up Automated Reporting&lt;span class="hx:absolute hx:-mt-20" id="setting-up-automated-reporting">&lt;/span>
-&lt;a href="#setting-up-automated-reporting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Streamline your reporting process with intelligent automation:&lt;/p>
-&lt;h4>Scheduling Reports&lt;span class="hx:absolute hx:-mt-20" id="scheduling-reports">&lt;/span>
-&lt;a href="#scheduling-reports" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Creating Report Schedules&lt;/strong>&lt;/p>
-&lt;ol>
-&lt;li>&lt;strong>Open Existing Report&lt;/strong> - Select report to automate&lt;/li>
-&lt;li>&lt;strong>Click &amp;ldquo;Schedule&amp;rdquo;&lt;/strong> - Access scheduling options&lt;/li>
-&lt;li>&lt;strong>Set Frequency&lt;/strong> - Choose delivery timing&lt;/li>
-&lt;li>&lt;strong>Configure Recipients&lt;/strong> - Add email addresses and groups&lt;/li>
-&lt;li>&lt;strong>Test Delivery&lt;/strong> - Verify settings with test run&lt;/li>
-&lt;/ol>
-&lt;p>&lt;strong>Frequency Options:&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Real-time&lt;/strong> - Updates every 15 minutes&lt;/li>
-&lt;li>&lt;strong>Hourly&lt;/strong> - Top of hour delivery&lt;/li>
-&lt;li>&lt;strong>Daily&lt;/strong> - Morning, afternoon, or evening&lt;/li>
-&lt;li>&lt;strong>Weekly&lt;/strong> - Specific day and time&lt;/li>
-&lt;li>&lt;strong>Monthly&lt;/strong> - First, middle, or last day of month&lt;/li>
-&lt;li>&lt;strong>Quarterly&lt;/strong> - End of quarter with trends&lt;/li>
-&lt;li>&lt;strong>Custom&lt;/strong> - Specific dates and intervals&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Advanced Scheduling Features:&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Holiday Calendars&lt;/strong> - Skip non-business days&lt;/li>
-&lt;li>&lt;strong>Time Zone Management&lt;/strong> - Multi-location delivery&lt;/li>
-&lt;li>&lt;strong>Conditional Delivery&lt;/strong> - Only send if data changes&lt;/li>
-&lt;li>&lt;strong>Batch Processing&lt;/strong> - Group multiple reports&lt;/li>
-&lt;li>&lt;strong>Failover Options&lt;/strong> - Backup delivery methods&lt;/li>
-&lt;/ul>
-&lt;h4>Delivery Configuration&lt;span class="hx:absolute hx:-mt-20" id="delivery-configuration">&lt;/span>
-&lt;a href="#delivery-configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Email Delivery Settings&lt;/strong>&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>Email Options:
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Report Types&lt;span class="hx:absolute hx:-mt-20" id="report-types"&gt;&lt;/span&gt;
+&lt;a href="#report-types" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tabular Reports&lt;/strong&gt; - Traditional row/column data reports&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chart Reports&lt;/strong&gt; - Visual data representation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dashboard Reports&lt;/strong&gt; - Multi-widget overview reports&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Scheduled Reports&lt;/strong&gt; - Automated report generation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ad-hoc Reports&lt;/strong&gt; - On-demand query reports&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Report Elements&lt;span class="hx:absolute hx:-mt-20" id="report-elements"&gt;&lt;/span&gt;
+&lt;a href="#report-elements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Data Sources&lt;/strong&gt; - Connect to relevant data tables&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Filters &amp;amp; Parameters&lt;/strong&gt; - Control report scope and focus&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Calculations&lt;/strong&gt; - Add computed fields and formulas&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Formatting&lt;/strong&gt; - Apply professional styling&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Export Options&lt;/strong&gt; - PDF, Excel, CSV output formats&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Analytics Capabilities&lt;span class="hx:absolute hx:-mt-20" id="analytics-capabilities"&gt;&lt;/span&gt;
+&lt;a href="#analytics-capabilities" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Business Intelligence Features&lt;span class="hx:absolute hx:-mt-20" id="business-intelligence-features"&gt;&lt;/span&gt;
+&lt;a href="#business-intelligence-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Trend Analysis&lt;/strong&gt; - Identify patterns in business data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Comparative Analysis&lt;/strong&gt; - Compare periods, regions, products&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Drill-down Capability&lt;/strong&gt; - Navigate from summary to detail&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Predictive Analytics&lt;/strong&gt; - Forecast future trends&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Exception Reporting&lt;/strong&gt; - Highlight unusual data points&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Data Visualization&lt;span class="hx:absolute hx:-mt-20" id="data-visualization"&gt;&lt;/span&gt;
+&lt;a href="#data-visualization" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Charts &amp;amp; Graphs&lt;/strong&gt; - Various visualization types&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Interactive Elements&lt;/strong&gt; - Clickable charts and filters&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Geographic Mapping&lt;/strong&gt; - Location-based data visualization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Time Series Analysis&lt;/strong&gt; - Trend analysis over time&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-dimensional Views&lt;/strong&gt; - Analyze data from multiple angles&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Analytics Tip&lt;/strong&gt;: Start with standard reports to understand your data, then build custom reports as you identify specific business questions that need answers.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Key Performance Indicators (KPIs)&lt;span class="hx:absolute hx:-mt-20" id="key-performance-indicators-kpis"&gt;&lt;/span&gt;
+&lt;a href="#key-performance-indicators-kpis" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Financial KPIs&lt;span class="hx:absolute hx:-mt-20" id="financial-kpis"&gt;&lt;/span&gt;
+&lt;a href="#financial-kpis" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Gross Profit Margin&lt;/strong&gt; - Profitability measure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cash Flow Ratio&lt;/strong&gt; - Liquidity indicator&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Accounts Receivable Turnover&lt;/strong&gt; - Collection efficiency&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Return on Investment (ROI)&lt;/strong&gt; - Investment effectiveness&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Operating Expense Ratio&lt;/strong&gt; - Cost control measure&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Operational KPIs&lt;span class="hx:absolute hx:-mt-20" id="operational-kpis"&gt;&lt;/span&gt;
+&lt;a href="#operational-kpis" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Inventory Turnover&lt;/strong&gt; - Inventory efficiency&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Order Fulfillment Rate&lt;/strong&gt; - Customer service level&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;On-Time Delivery Rate&lt;/strong&gt; - Delivery performance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quality Metrics&lt;/strong&gt; - Error rates and customer satisfaction&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Employee Productivity&lt;/strong&gt; - Output per employee&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Customer KPIs&lt;span class="hx:absolute hx:-mt-20" id="customer-kpis"&gt;&lt;/span&gt;
+&lt;a href="#customer-kpis" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Customer Acquisition Cost&lt;/strong&gt; - Marketing efficiency&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Lifetime Value&lt;/strong&gt; - Long-term customer value&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Satisfaction Score&lt;/strong&gt; - Service quality measure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Retention Rate&lt;/strong&gt; - Loyalty indicator&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Average Order Value&lt;/strong&gt; - Sales effectiveness&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Automated Reporting&lt;span class="hx:absolute hx:-mt-20" id="automated-reporting"&gt;&lt;/span&gt;
+&lt;a href="#automated-reporting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Setting Up Automated Reporting&lt;span class="hx:absolute hx:-mt-20" id="setting-up-automated-reporting"&gt;&lt;/span&gt;
+&lt;a href="#setting-up-automated-reporting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Streamline your reporting process with intelligent automation:&lt;/p&gt;
+&lt;h4&gt;Scheduling Reports&lt;span class="hx:absolute hx:-mt-20" id="scheduling-reports"&gt;&lt;/span&gt;
+&lt;a href="#scheduling-reports" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Creating Report Schedules&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Open Existing Report&lt;/strong&gt; - Select report to automate&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Click &amp;ldquo;Schedule&amp;rdquo;&lt;/strong&gt; - Access scheduling options&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Set Frequency&lt;/strong&gt; - Choose delivery timing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configure Recipients&lt;/strong&gt; - Add email addresses and groups&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test Delivery&lt;/strong&gt; - Verify settings with test run&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Frequency Options:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Real-time&lt;/strong&gt; - Updates every 15 minutes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hourly&lt;/strong&gt; - Top of hour delivery&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Daily&lt;/strong&gt; - Morning, afternoon, or evening&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Weekly&lt;/strong&gt; - Specific day and time&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monthly&lt;/strong&gt; - First, middle, or last day of month&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quarterly&lt;/strong&gt; - End of quarter with trends&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom&lt;/strong&gt; - Specific dates and intervals&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Advanced Scheduling Features:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Holiday Calendars&lt;/strong&gt; - Skip non-business days&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Time Zone Management&lt;/strong&gt; - Multi-location delivery&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conditional Delivery&lt;/strong&gt; - Only send if data changes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Batch Processing&lt;/strong&gt; - Group multiple reports&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Failover Options&lt;/strong&gt; - Backup delivery methods&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Delivery Configuration&lt;span class="hx:absolute hx:-mt-20" id="delivery-configuration"&gt;&lt;/span&gt;
+&lt;a href="#delivery-configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Email Delivery Settings&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Email Options:
 ✓ PDF Attachment (formatted report)
 ✓ Excel Attachment (raw data)
 ✓ Embedded Charts (in email body)
 ✓ Link to Online Report (secure access)
-✓ Summary Only (key metrics)&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+✓ Summary Only (key metrics)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;p>&lt;strong>Distribution Lists&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Department Groups&lt;/strong> - Finance, Sales, Operations&lt;/li>
-&lt;li>&lt;strong>Management Levels&lt;/strong> - Executives, Managers, Staff&lt;/li>
-&lt;li>&lt;strong>Project Teams&lt;/strong> - Cross-functional groups&lt;/li>
-&lt;li>&lt;strong>External Partners&lt;/strong> - Suppliers, customers, auditors&lt;/li>
-&lt;li>&lt;strong>Custom Lists&lt;/strong> - Ad-hoc recipient groups&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Delivery Personalization&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Dynamic Content&lt;/strong> - User-specific data filtering&lt;/li>
-&lt;li>&lt;strong>Language Preferences&lt;/strong> - Multi-language support&lt;/li>
-&lt;li>&lt;strong>Format Preferences&lt;/strong> - User-preferred file formats&lt;/li>
-&lt;li>&lt;strong>Summary Level&lt;/strong> - Detail vs high-level views&lt;/li>
-&lt;/ul>
-&lt;h4>Alert and Exception Reporting&lt;span class="hx:absolute hx:-mt-20" id="alert-and-exception-reporting">&lt;/span>
-&lt;a href="#alert-and-exception-reporting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Setting Up Smart Alerts&lt;/strong>&lt;/p>
-&lt;ol>
-&lt;li>&lt;strong>Define Thresholds&lt;/strong> - Set trigger conditions&lt;/li>
-&lt;li>&lt;strong>Choose Alert Type&lt;/strong> - Email, SMS, or dashboard notification&lt;/li>
-&lt;li>&lt;strong>Configure Recipients&lt;/strong> - Who should be notified&lt;/li>
-&lt;li>&lt;strong>Set Urgency Level&lt;/strong> - High, medium, low priority&lt;/li>
-&lt;li>&lt;strong>Test Alerts&lt;/strong> - Verify notification delivery&lt;/li>
-&lt;/ol>
-&lt;p>&lt;strong>Common Alert Scenarios:&lt;/strong>&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>Financial Alerts:
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Distribution Lists&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Department Groups&lt;/strong&gt; - Finance, Sales, Operations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Management Levels&lt;/strong&gt; - Executives, Managers, Staff&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Project Teams&lt;/strong&gt; - Cross-functional groups&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;External Partners&lt;/strong&gt; - Suppliers, customers, auditors&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Lists&lt;/strong&gt; - Ad-hoc recipient groups&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Delivery Personalization&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Dynamic Content&lt;/strong&gt; - User-specific data filtering&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Language Preferences&lt;/strong&gt; - Multi-language support&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Format Preferences&lt;/strong&gt; - User-preferred file formats&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Summary Level&lt;/strong&gt; - Detail vs high-level views&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Alert and Exception Reporting&lt;span class="hx:absolute hx:-mt-20" id="alert-and-exception-reporting"&gt;&lt;/span&gt;
+&lt;a href="#alert-and-exception-reporting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Setting Up Smart Alerts&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Define Thresholds&lt;/strong&gt; - Set trigger conditions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Choose Alert Type&lt;/strong&gt; - Email, SMS, or dashboard notification&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configure Recipients&lt;/strong&gt; - Who should be notified&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Set Urgency Level&lt;/strong&gt; - High, medium, low priority&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test Alerts&lt;/strong&gt; - Verify notification delivery&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Common Alert Scenarios:&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Financial Alerts:
 • Cash balance below minimum threshold
 • Accounts receivable aging beyond terms
 • Gross margin drops below target
@@ -462,184 +462,184 @@ HR Alerts:
 • Employee overtime exceeding limits
 • Leave balance depletion
 • Performance metric deviations
-• Training compliance deadlines&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+• Training compliance deadlines&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;p>&lt;strong>Exception Report Configuration&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Variance Analysis&lt;/strong> - Actual vs budget/forecast&lt;/li>
-&lt;li>&lt;strong>Trend Disruption&lt;/strong> - Unusual pattern detection&lt;/li>
-&lt;li>&lt;strong>Threshold Breaches&lt;/strong> - KPI limits exceeded&lt;/li>
-&lt;li>&lt;strong>Data Quality Issues&lt;/strong> - Missing or invalid data&lt;/li>
-&lt;li>&lt;strong>Compliance Violations&lt;/strong> - Regulatory requirement breaches&lt;/li>
-&lt;/ul>
-&lt;h4>Mobile Notifications&lt;span class="hx:absolute hx:-mt-20" id="mobile-notifications">&lt;/span>
-&lt;a href="#mobile-notifications" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Push Notification Setup&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Download BigLedger Mobile App&lt;/strong> - iOS and Android support&lt;/li>
-&lt;li>&lt;strong>Enable Notifications&lt;/strong> - Grant permission for alerts&lt;/li>
-&lt;li>&lt;strong>Configure Preferences&lt;/strong> - Choose alert types and timing&lt;/li>
-&lt;li>&lt;strong>Set Quiet Hours&lt;/strong> - Define no-notification periods&lt;/li>
-&lt;li>&lt;strong>Priority Filtering&lt;/strong> - Only critical alerts for mobile&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Mobile Dashboard Access&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Responsive Design&lt;/strong> - Optimized for mobile viewing&lt;/li>
-&lt;li>&lt;strong>Offline Capability&lt;/strong> - Cache reports for offline access&lt;/li>
-&lt;li>&lt;strong>Touch Interactions&lt;/strong> - Tap to drill down and filter&lt;/li>
-&lt;li>&lt;strong>Voice Commands&lt;/strong> - Ask for specific metrics&lt;/li>
-&lt;li>&lt;strong>Quick Actions&lt;/strong> - Approve, reject, or escalate&lt;/li>
-&lt;/ul>
-&lt;h4>Integration with External Systems&lt;span class="hx:absolute hx:-mt-20" id="integration-with-external-systems">&lt;/span>
-&lt;a href="#integration-with-external-systems" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>API-Based Report Delivery&lt;/strong>&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-json" data-lang="json">&lt;span style="display:flex;">&lt;span>{
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;reportId&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;sales-dashboard&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;schedule&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;daily&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;format&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;json&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;endpoint&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;https://external-system.com/api/reports&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;authentication&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;bearer-token&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;filters&amp;#34;&lt;/span>: {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;dateRange&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;last-30-days&amp;#34;&lt;/span>,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">&amp;#34;department&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;sales&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Exception Report Configuration&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Variance Analysis&lt;/strong&gt; - Actual vs budget/forecast&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Trend Disruption&lt;/strong&gt; - Unusual pattern detection&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Threshold Breaches&lt;/strong&gt; - KPI limits exceeded&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Quality Issues&lt;/strong&gt; - Missing or invalid data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance Violations&lt;/strong&gt; - Regulatory requirement breaches&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Mobile Notifications&lt;span class="hx:absolute hx:-mt-20" id="mobile-notifications"&gt;&lt;/span&gt;
+&lt;a href="#mobile-notifications" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Push Notification Setup&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Download BigLedger Mobile App&lt;/strong&gt; - iOS and Android support&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Enable Notifications&lt;/strong&gt; - Grant permission for alerts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configure Preferences&lt;/strong&gt; - Choose alert types and timing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Set Quiet Hours&lt;/strong&gt; - Define no-notification periods&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Priority Filtering&lt;/strong&gt; - Only critical alerts for mobile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Mobile Dashboard Access&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Responsive Design&lt;/strong&gt; - Optimized for mobile viewing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Offline Capability&lt;/strong&gt; - Cache reports for offline access&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Touch Interactions&lt;/strong&gt; - Tap to drill down and filter&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Voice Commands&lt;/strong&gt; - Ask for specific metrics&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quick Actions&lt;/strong&gt; - Approve, reject, or escalate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Integration with External Systems&lt;span class="hx:absolute hx:-mt-20" id="integration-with-external-systems"&gt;&lt;/span&gt;
+&lt;a href="#integration-with-external-systems" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;API-Based Report Delivery&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-json" data-lang="json"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;reportId&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;sales-dashboard&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;schedule&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;daily&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;format&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;json&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;endpoint&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;https://external-system.com/api/reports&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;authentication&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;bearer-token&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;filters&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;dateRange&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;last-30-days&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;&amp;#34;department&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;sales&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;p>&lt;strong>Third-Party Integration Options&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Business Intelligence Tools&lt;/strong> - Tableau, Power BI, QlikView&lt;/li>
-&lt;li>&lt;strong>Data Warehouses&lt;/strong> - Snowflake, Redshift, BigQuery&lt;/li>
-&lt;li>&lt;strong>Collaboration Platforms&lt;/strong> - Teams, Slack, SharePoint&lt;/li>
-&lt;li>&lt;strong>Cloud Storage&lt;/strong> - Google Drive, OneDrive, Dropbox&lt;/li>
-&lt;li>&lt;strong>CRM Systems&lt;/strong> - Salesforce, HubSpot, Dynamics&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Webhook Configuration&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Real-time Notifications&lt;/strong> - Immediate data push&lt;/li>
-&lt;li>&lt;strong>Event Triggers&lt;/strong> - Report completion, data updates&lt;/li>
-&lt;li>&lt;strong>Retry Logic&lt;/strong> - Handle delivery failures&lt;/li>
-&lt;li>&lt;strong>Security&lt;/strong> - Encrypted and authenticated delivery&lt;/li>
-&lt;li>&lt;strong>Monitoring&lt;/strong> - Track delivery success rates&lt;/li>
-&lt;/ul>
-&lt;h3>Report Scheduling&lt;span class="hx:absolute hx:-mt-20" id="report-scheduling">&lt;/span>
-&lt;a href="#report-scheduling" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Daily Reports&lt;/strong> - Operational status updates&lt;/li>
-&lt;li>&lt;strong>Weekly Reports&lt;/strong> - Performance summaries&lt;/li>
-&lt;li>&lt;strong>Monthly Reports&lt;/strong> - Comprehensive business reviews&lt;/li>
-&lt;li>&lt;strong>Quarterly Reports&lt;/strong> - Strategic analysis&lt;/li>
-&lt;li>&lt;strong>Annual Reports&lt;/strong> - Year-end comprehensive analysis&lt;/li>
-&lt;/ul>
-&lt;h3>Delivery Options&lt;span class="hx:absolute hx:-mt-20" id="delivery-options">&lt;/span>
-&lt;a href="#delivery-options" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Email Distribution&lt;/strong> - Automated email delivery&lt;/li>
-&lt;li>&lt;strong>Dashboard Publishing&lt;/strong> - Real-time dashboard updates&lt;/li>
-&lt;li>&lt;strong>File Export&lt;/strong> - Save reports to shared locations&lt;/li>
-&lt;li>&lt;strong>API Integration&lt;/strong> - Send data to external systems&lt;/li>
-&lt;li>&lt;strong>Mobile Notifications&lt;/strong> - Alert delivery to mobile devices&lt;/li>
-&lt;/ul>
-&lt;h2>Data Export &amp;amp; Integration&lt;span class="hx:absolute hx:-mt-20" id="data-export--integration">&lt;/span>
-&lt;a href="#data-export--integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Export Formats&lt;span class="hx:absolute hx:-mt-20" id="export-formats">&lt;/span>
-&lt;a href="#export-formats" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>PDF Reports&lt;/strong> - Professional formatted documents&lt;/li>
-&lt;li>&lt;strong>Excel Spreadsheets&lt;/strong> - Data manipulation and analysis&lt;/li>
-&lt;li>&lt;strong>CSV Files&lt;/strong> - Raw data for external processing&lt;/li>
-&lt;li>&lt;strong>XML/JSON&lt;/strong> - Structured data for system integration&lt;/li>
-&lt;li>&lt;strong>API Access&lt;/strong> - Real-time data access&lt;/li>
-&lt;/ul>
-&lt;h3>Integration Options&lt;span class="hx:absolute hx:-mt-20" id="integration-options">&lt;/span>
-&lt;a href="#integration-options" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>BI Tools&lt;/strong> - Connect to Tableau, Power BI, etc.&lt;/li>
-&lt;li>&lt;strong>Data Warehouses&lt;/strong> - Feed enterprise data warehouses&lt;/li>
-&lt;li>&lt;strong>Cloud Storage&lt;/strong> - Backup reports to cloud services&lt;/li>
-&lt;li>&lt;strong>Third-party Analytics&lt;/strong> - Send data to specialized analytics tools&lt;/li>
-&lt;li>&lt;strong>Custom Applications&lt;/strong> - API integration with custom systems&lt;/li>
-&lt;/ul>
-&lt;h2>Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices">&lt;/span>
-&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Report Design&lt;span class="hx:absolute hx:-mt-20" id="report-design">&lt;/span>
-&lt;a href="#report-design" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Clear Objectives&lt;/strong> - Define what the report should accomplish&lt;/li>
-&lt;li>&lt;strong>Audience Focus&lt;/strong> - Design for the intended users&lt;/li>
-&lt;li>&lt;strong>Visual Clarity&lt;/strong> - Use appropriate charts and formatting&lt;/li>
-&lt;li>&lt;strong>Data Accuracy&lt;/strong> - Validate data sources and calculations&lt;/li>
-&lt;li>&lt;strong>Performance Optimization&lt;/strong> - Ensure reports run efficiently&lt;/li>
-&lt;/ul>
-&lt;h3>Data Governance&lt;span class="hx:absolute hx:-mt-20" id="data-governance">&lt;/span>
-&lt;a href="#data-governance" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Data Quality&lt;/strong> - Maintain clean, accurate data&lt;/li>
-&lt;li>&lt;strong>Access Control&lt;/strong> - Restrict sensitive data appropriately&lt;/li>
-&lt;li>&lt;strong>Version Control&lt;/strong> - Manage report versions and changes&lt;/li>
-&lt;li>&lt;strong>Documentation&lt;/strong> - Document report logic and data sources&lt;/li>
-&lt;li>&lt;strong>Regular Review&lt;/strong> - Periodically review and update reports&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Data Security&lt;/strong>: Always ensure sensitive business data is properly secured and access is limited to authorized personnel only.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h2>Advanced Analytics and Business Intelligence&lt;span class="hx:absolute hx:-mt-20" id="advanced-analytics-and-business-intelligence">&lt;/span>
-&lt;a href="#advanced-analytics-and-business-intelligence" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Predictive Analytics&lt;span class="hx:absolute hx:-mt-20" id="predictive-analytics">&lt;/span>
-&lt;a href="#predictive-analytics" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Forecasting Capabilities&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Sales Forecasting&lt;/strong> - Predict future revenue based on historical trends&lt;/li>
-&lt;li>&lt;strong>Demand Planning&lt;/strong> - Anticipate inventory requirements&lt;/li>
-&lt;li>&lt;strong>Cash Flow Projection&lt;/strong> - Forecast working capital needs&lt;/li>
-&lt;li>&lt;strong>Customer Behavior&lt;/strong> - Predict customer lifetime value and churn risk&lt;/li>
-&lt;li>&lt;strong>Market Trends&lt;/strong> - Identify emerging opportunities and threats&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Machine Learning Integration&lt;/strong>&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>AI-Powered Insights:
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Third-Party Integration Options&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Business Intelligence Tools&lt;/strong&gt; - Tableau, Power BI, QlikView&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Warehouses&lt;/strong&gt; - Snowflake, Redshift, BigQuery&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Collaboration Platforms&lt;/strong&gt; - Teams, Slack, SharePoint&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cloud Storage&lt;/strong&gt; - Google Drive, OneDrive, Dropbox&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CRM Systems&lt;/strong&gt; - Salesforce, HubSpot, Dynamics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Webhook Configuration&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Notifications&lt;/strong&gt; - Immediate data push&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Event Triggers&lt;/strong&gt; - Report completion, data updates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Retry Logic&lt;/strong&gt; - Handle delivery failures&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security&lt;/strong&gt; - Encrypted and authenticated delivery&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitoring&lt;/strong&gt; - Track delivery success rates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Report Scheduling&lt;span class="hx:absolute hx:-mt-20" id="report-scheduling"&gt;&lt;/span&gt;
+&lt;a href="#report-scheduling" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Daily Reports&lt;/strong&gt; - Operational status updates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Weekly Reports&lt;/strong&gt; - Performance summaries&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monthly Reports&lt;/strong&gt; - Comprehensive business reviews&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quarterly Reports&lt;/strong&gt; - Strategic analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Annual Reports&lt;/strong&gt; - Year-end comprehensive analysis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Delivery Options&lt;span class="hx:absolute hx:-mt-20" id="delivery-options"&gt;&lt;/span&gt;
+&lt;a href="#delivery-options" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Email Distribution&lt;/strong&gt; - Automated email delivery&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dashboard Publishing&lt;/strong&gt; - Real-time dashboard updates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;File Export&lt;/strong&gt; - Save reports to shared locations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Integration&lt;/strong&gt; - Send data to external systems&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mobile Notifications&lt;/strong&gt; - Alert delivery to mobile devices&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Data Export &amp;amp; Integration&lt;span class="hx:absolute hx:-mt-20" id="data-export--integration"&gt;&lt;/span&gt;
+&lt;a href="#data-export--integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Export Formats&lt;span class="hx:absolute hx:-mt-20" id="export-formats"&gt;&lt;/span&gt;
+&lt;a href="#export-formats" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;PDF Reports&lt;/strong&gt; - Professional formatted documents&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Excel Spreadsheets&lt;/strong&gt; - Data manipulation and analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CSV Files&lt;/strong&gt; - Raw data for external processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;XML/JSON&lt;/strong&gt; - Structured data for system integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Access&lt;/strong&gt; - Real-time data access&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Integration Options&lt;span class="hx:absolute hx:-mt-20" id="integration-options"&gt;&lt;/span&gt;
+&lt;a href="#integration-options" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;BI Tools&lt;/strong&gt; - Connect to Tableau, Power BI, etc.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Warehouses&lt;/strong&gt; - Feed enterprise data warehouses&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cloud Storage&lt;/strong&gt; - Backup reports to cloud services&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Third-party Analytics&lt;/strong&gt; - Send data to specialized analytics tools&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Applications&lt;/strong&gt; - API integration with custom systems&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices"&gt;&lt;/span&gt;
+&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Report Design&lt;span class="hx:absolute hx:-mt-20" id="report-design"&gt;&lt;/span&gt;
+&lt;a href="#report-design" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Clear Objectives&lt;/strong&gt; - Define what the report should accomplish&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Audience Focus&lt;/strong&gt; - Design for the intended users&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Visual Clarity&lt;/strong&gt; - Use appropriate charts and formatting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Accuracy&lt;/strong&gt; - Validate data sources and calculations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Optimization&lt;/strong&gt; - Ensure reports run efficiently&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Data Governance&lt;span class="hx:absolute hx:-mt-20" id="data-governance"&gt;&lt;/span&gt;
+&lt;a href="#data-governance" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Data Quality&lt;/strong&gt; - Maintain clean, accurate data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Access Control&lt;/strong&gt; - Restrict sensitive data appropriately&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Version Control&lt;/strong&gt; - Manage report versions and changes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt; - Document report logic and data sources&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regular Review&lt;/strong&gt; - Periodically review and update reports&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Data Security&lt;/strong&gt;: Always ensure sensitive business data is properly secured and access is limited to authorized personnel only.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Advanced Analytics and Business Intelligence&lt;span class="hx:absolute hx:-mt-20" id="advanced-analytics-and-business-intelligence"&gt;&lt;/span&gt;
+&lt;a href="#advanced-analytics-and-business-intelligence" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Predictive Analytics&lt;span class="hx:absolute hx:-mt-20" id="predictive-analytics"&gt;&lt;/span&gt;
+&lt;a href="#predictive-analytics" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Forecasting Capabilities&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Sales Forecasting&lt;/strong&gt; - Predict future revenue based on historical trends&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Demand Planning&lt;/strong&gt; - Anticipate inventory requirements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cash Flow Projection&lt;/strong&gt; - Forecast working capital needs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Behavior&lt;/strong&gt; - Predict customer lifetime value and churn risk&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Market Trends&lt;/strong&gt; - Identify emerging opportunities and threats&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Machine Learning Integration&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;AI-Powered Insights:
 ✓ Anomaly Detection - Identify unusual patterns
 ✓ Trend Analysis - Recognize emerging trends
 ✓ Pattern Recognition - Find hidden correlations
 ✓ Risk Assessment - Predict potential issues
-✓ Optimization Suggestions - Recommend improvements&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+✓ Optimization Suggestions - Recommend improvements&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Advanced Visualization Techniques&lt;span class="hx:absolute hx:-mt-20" id="advanced-visualization-techniques">&lt;/span>
-&lt;a href="#advanced-visualization-techniques" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Interactive Charts and Graphs&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Drill-Down Charts&lt;/strong> - Click to explore detailed data&lt;/li>
-&lt;li>&lt;strong>Heat Maps&lt;/strong> - Geographic and categorical visualization&lt;/li>
-&lt;li>&lt;strong>Scatter Plots&lt;/strong> - Correlation and trend analysis&lt;/li>
-&lt;li>&lt;strong>Bubble Charts&lt;/strong> - Multi-dimensional data display&lt;/li>
-&lt;li>&lt;strong>Gantt Charts&lt;/strong> - Project and timeline visualization&lt;/li>
-&lt;li>&lt;strong>Sankey Diagrams&lt;/strong> - Flow and process visualization&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Geographic Mapping&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Sales Territory Maps&lt;/strong> - Regional performance visualization&lt;/li>
-&lt;li>&lt;strong>Customer Distribution&lt;/strong> - Geographic customer analysis&lt;/li>
-&lt;li>&lt;strong>Delivery Route Optimization&lt;/strong> - Logistics visualization&lt;/li>
-&lt;li>&lt;strong>Market Penetration&lt;/strong> - Territory coverage analysis&lt;/li>
-&lt;/ul>
-&lt;h3>Statistical Analysis Tools&lt;span class="hx:absolute hx:-mt-20" id="statistical-analysis-tools">&lt;/span>
-&lt;a href="#statistical-analysis-tools" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Built-in Statistical Functions&lt;/strong>&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>Available Functions:
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Advanced Visualization Techniques&lt;span class="hx:absolute hx:-mt-20" id="advanced-visualization-techniques"&gt;&lt;/span&gt;
+&lt;a href="#advanced-visualization-techniques" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Interactive Charts and Graphs&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Drill-Down Charts&lt;/strong&gt; - Click to explore detailed data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Heat Maps&lt;/strong&gt; - Geographic and categorical visualization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Scatter Plots&lt;/strong&gt; - Correlation and trend analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bubble Charts&lt;/strong&gt; - Multi-dimensional data display&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Gantt Charts&lt;/strong&gt; - Project and timeline visualization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Sankey Diagrams&lt;/strong&gt; - Flow and process visualization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Geographic Mapping&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Sales Territory Maps&lt;/strong&gt; - Regional performance visualization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Distribution&lt;/strong&gt; - Geographic customer analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delivery Route Optimization&lt;/strong&gt; - Logistics visualization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Market Penetration&lt;/strong&gt; - Territory coverage analysis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Statistical Analysis Tools&lt;span class="hx:absolute hx:-mt-20" id="statistical-analysis-tools"&gt;&lt;/span&gt;
+&lt;a href="#statistical-analysis-tools" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Built-in Statistical Functions&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Available Functions:
 • Correlation Analysis
 • Regression Modeling
 • Variance Analysis
@@ -647,164 +647,164 @@ title="Copy code"
 • Seasonality Detection
 • Moving Averages
 • Standard Deviation
-• Percentile Calculations&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+• Percentile Calculations&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;p>&lt;strong>Performance Benchmarking&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Industry Comparisons&lt;/strong> - Compare against industry standards&lt;/li>
-&lt;li>&lt;strong>Historical Benchmarks&lt;/strong> - Track improvement over time&lt;/li>
-&lt;li>&lt;strong>Peer Analysis&lt;/strong> - Compare with similar companies&lt;/li>
-&lt;li>&lt;strong>Best Practice Identification&lt;/strong> - Find top-performing segments&lt;/li>
-&lt;/ul>
-&lt;h2>Data Governance and Security&lt;span class="hx:absolute hx:-mt-20" id="data-governance-and-security">&lt;/span>
-&lt;a href="#data-governance-and-security" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Data Quality Management&lt;span class="hx:absolute hx:-mt-20" id="data-quality-management">&lt;/span>
-&lt;a href="#data-quality-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Data Validation Rules&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Completeness Checks&lt;/strong> - Ensure all required fields are populated&lt;/li>
-&lt;li>&lt;strong>Accuracy Validation&lt;/strong> - Verify data against business rules&lt;/li>
-&lt;li>&lt;strong>Consistency Monitoring&lt;/strong> - Check for contradictory information&lt;/li>
-&lt;li>&lt;strong>Timeliness Tracking&lt;/strong> - Monitor data freshness and updates&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Data Lineage and Audit Trails&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Source Tracking&lt;/strong> - Know where data originates&lt;/li>
-&lt;li>&lt;strong>Transformation History&lt;/strong> - Track data modifications&lt;/li>
-&lt;li>&lt;strong>Access Logging&lt;/strong> - Monitor who accesses what data&lt;/li>
-&lt;li>&lt;strong>Change Documentation&lt;/strong> - Record all data changes&lt;/li>
-&lt;/ul>
-&lt;h3>Security and Compliance&lt;span class="hx:absolute hx:-mt-20" id="security-and-compliance">&lt;/span>
-&lt;a href="#security-and-compliance" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Access Control Framework&lt;/strong>&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>Security Layers:
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Performance Benchmarking&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Industry Comparisons&lt;/strong&gt; - Compare against industry standards&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Historical Benchmarks&lt;/strong&gt; - Track improvement over time&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Peer Analysis&lt;/strong&gt; - Compare with similar companies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Best Practice Identification&lt;/strong&gt; - Find top-performing segments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Data Governance and Security&lt;span class="hx:absolute hx:-mt-20" id="data-governance-and-security"&gt;&lt;/span&gt;
+&lt;a href="#data-governance-and-security" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Data Quality Management&lt;span class="hx:absolute hx:-mt-20" id="data-quality-management"&gt;&lt;/span&gt;
+&lt;a href="#data-quality-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Data Validation Rules&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Completeness Checks&lt;/strong&gt; - Ensure all required fields are populated&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Accuracy Validation&lt;/strong&gt; - Verify data against business rules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Consistency Monitoring&lt;/strong&gt; - Check for contradictory information&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Timeliness Tracking&lt;/strong&gt; - Monitor data freshness and updates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Data Lineage and Audit Trails&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Source Tracking&lt;/strong&gt; - Know where data originates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transformation History&lt;/strong&gt; - Track data modifications&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Access Logging&lt;/strong&gt; - Monitor who accesses what data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Change Documentation&lt;/strong&gt; - Record all data changes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Security and Compliance&lt;span class="hx:absolute hx:-mt-20" id="security-and-compliance"&gt;&lt;/span&gt;
+&lt;a href="#security-and-compliance" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Access Control Framework&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Security Layers:
 1. User Authentication - Multi-factor authentication
 2. Role-Based Access - Granular permission control
 3. Data Encryption - At rest and in transit
 4. Audit Logging - Complete activity tracking
-5. IP Restrictions - Geographic access control&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+5. IP Restrictions - Geographic access control&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;p>&lt;strong>Compliance Features&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>GDPR Compliance&lt;/strong> - Data privacy and protection&lt;/li>
-&lt;li>&lt;strong>SOX Compliance&lt;/strong> - Financial reporting controls&lt;/li>
-&lt;li>&lt;strong>Industry Standards&lt;/strong> - Sector-specific requirements&lt;/li>
-&lt;li>&lt;strong>Data Retention&lt;/strong> - Automated archiving and deletion&lt;/li>
-&lt;li>&lt;strong>Right to be Forgotten&lt;/strong> - Customer data deletion&lt;/li>
-&lt;/ul>
-&lt;h2>Troubleshooting and Performance Optimization&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting-and-performance-optimization">&lt;/span>
-&lt;a href="#troubleshooting-and-performance-optimization" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Common Issues and Solutions&lt;span class="hx:absolute hx:-mt-20" id="common-issues-and-solutions">&lt;/span>
-&lt;a href="#common-issues-and-solutions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Performance Problems&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>&lt;strong>Slow Report Loading&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;em>Cause&lt;/em>: Large data sets without proper filtering&lt;/li>
-&lt;li>&lt;em>Solution&lt;/em>: Implement date range filters and data sampling&lt;/li>
-&lt;li>&lt;em>Prevention&lt;/em>: Set up indexed fields and query optimization&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Dashboard Timeout Errors&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;em>Cause&lt;/em>: Complex calculations on real-time data&lt;/li>
-&lt;li>&lt;em>Solution&lt;/em>: Use cached data or reduce refresh frequency&lt;/li>
-&lt;li>&lt;em>Prevention&lt;/em>: Optimize dashboard widget configurations&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Memory Issues During Export&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;em>Cause&lt;/em>: Exporting too much data at once&lt;/li>
-&lt;li>&lt;em>Solution&lt;/em>: Use pagination or split large exports&lt;/li>
-&lt;li>&lt;em>Prevention&lt;/em>: Set export size limits and warnings&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Data Accuracy Issues&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>&lt;strong>Missing Data in Reports&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;em>Cause&lt;/em>: Data source disconnection or permission issues&lt;/li>
-&lt;li>&lt;em>Solution&lt;/em>: Verify connections and refresh data sources&lt;/li>
-&lt;li>&lt;em>Prevention&lt;/em>: Set up automated data quality monitoring&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Incorrect Calculations&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;em>Cause&lt;/em>: Formula errors or incorrect data relationships&lt;/li>
-&lt;li>&lt;em>Solution&lt;/em>: Review calculation logic and test with known data&lt;/li>
-&lt;li>&lt;em>Prevention&lt;/em>: Use validated calculation templates&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Outdated Information&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;em>Cause&lt;/em>: Data refresh failures or cache issues&lt;/li>
-&lt;li>&lt;em>Solution&lt;/em>: Force refresh or clear cache&lt;/li>
-&lt;li>&lt;em>Prevention&lt;/em>: Monitor data freshness and set up alerts&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h3>Performance Optimization Strategies&lt;span class="hx:absolute hx:-mt-20" id="performance-optimization-strategies">&lt;/span>
-&lt;a href="#performance-optimization-strategies" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Report Optimization&lt;/strong>&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>Best Practices:
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Compliance Features&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;GDPR Compliance&lt;/strong&gt; - Data privacy and protection&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SOX Compliance&lt;/strong&gt; - Financial reporting controls&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Industry Standards&lt;/strong&gt; - Sector-specific requirements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Retention&lt;/strong&gt; - Automated archiving and deletion&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Right to be Forgotten&lt;/strong&gt; - Customer data deletion&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Troubleshooting and Performance Optimization&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting-and-performance-optimization"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting-and-performance-optimization" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Common Issues and Solutions&lt;span class="hx:absolute hx:-mt-20" id="common-issues-and-solutions"&gt;&lt;/span&gt;
+&lt;a href="#common-issues-and-solutions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Performance Problems&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Slow Report Loading&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Cause&lt;/em&gt;: Large data sets without proper filtering&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Solution&lt;/em&gt;: Implement date range filters and data sampling&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Prevention&lt;/em&gt;: Set up indexed fields and query optimization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Dashboard Timeout Errors&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Cause&lt;/em&gt;: Complex calculations on real-time data&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Solution&lt;/em&gt;: Use cached data or reduce refresh frequency&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Prevention&lt;/em&gt;: Optimize dashboard widget configurations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Memory Issues During Export&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Cause&lt;/em&gt;: Exporting too much data at once&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Solution&lt;/em&gt;: Use pagination or split large exports&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Prevention&lt;/em&gt;: Set export size limits and warnings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Data Accuracy Issues&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Missing Data in Reports&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Cause&lt;/em&gt;: Data source disconnection or permission issues&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Solution&lt;/em&gt;: Verify connections and refresh data sources&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Prevention&lt;/em&gt;: Set up automated data quality monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Incorrect Calculations&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Cause&lt;/em&gt;: Formula errors or incorrect data relationships&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Solution&lt;/em&gt;: Review calculation logic and test with known data&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Prevention&lt;/em&gt;: Use validated calculation templates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Outdated Information&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Cause&lt;/em&gt;: Data refresh failures or cache issues&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Solution&lt;/em&gt;: Force refresh or clear cache&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Prevention&lt;/em&gt;: Monitor data freshness and set up alerts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Performance Optimization Strategies&lt;span class="hx:absolute hx:-mt-20" id="performance-optimization-strategies"&gt;&lt;/span&gt;
+&lt;a href="#performance-optimization-strategies" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Report Optimization&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Best Practices:
 ✓ Use appropriate date ranges
 ✓ Implement smart filtering
 ✓ Optimize SQL queries
 ✓ Use indexed database fields
 ✓ Cache frequently accessed data
-✓ Implement data compression&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+✓ Implement data compression&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;p>&lt;strong>Dashboard Performance&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Widget Optimization&lt;/strong> - Limit widgets per dashboard&lt;/li>
-&lt;li>&lt;strong>Refresh Strategies&lt;/strong> - Stagger widget refresh times&lt;/li>
-&lt;li>&lt;strong>Data Aggregation&lt;/strong> - Pre-calculate summary data&lt;/li>
-&lt;li>&lt;strong>Caching Policies&lt;/strong> - Balance freshness with performance&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>System Resource Management&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Peak Usage Planning&lt;/strong> - Identify high-traffic periods&lt;/li>
-&lt;li>&lt;strong>Load Balancing&lt;/strong> - Distribute processing across servers&lt;/li>
-&lt;li>&lt;strong>Resource Monitoring&lt;/strong> - Track CPU, memory, and storage&lt;/li>
-&lt;li>&lt;strong>Capacity Planning&lt;/strong> - Anticipate growth requirements&lt;/li>
-&lt;/ul>
-&lt;h2>Next Steps&lt;span class="hx:absolute hx:-mt-20" id="next-steps">&lt;/span>
-&lt;a href="#next-steps" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>After mastering Reports &amp;amp; Analytics:&lt;/p>
-&lt;ol>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/user-guide/best-practices/" >Best Practices&lt;/a>&lt;/strong> - Implement data-driven decision making&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/user-guide/troubleshooting/" >Troubleshooting&lt;/a>&lt;/strong> - Resolve reporting issues&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/developers/" >Developer Resources&lt;/a>&lt;/strong> - Advanced customization and API integration&lt;/li>
-&lt;/ol>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Analytics Mastery&lt;/strong>: You&amp;rsquo;ve mastered Reports &amp;amp; Analytics when you can quickly create meaningful reports that drive business decisions and improvement initiatives.&lt;/div>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Dashboard Performance&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Widget Optimization&lt;/strong&gt; - Limit widgets per dashboard&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Refresh Strategies&lt;/strong&gt; - Stagger widget refresh times&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Aggregation&lt;/strong&gt; - Pre-calculate summary data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Caching Policies&lt;/strong&gt; - Balance freshness with performance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;System Resource Management&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Peak Usage Planning&lt;/strong&gt; - Identify high-traffic periods&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Load Balancing&lt;/strong&gt; - Distribute processing across servers&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resource Monitoring&lt;/strong&gt; - Track CPU, memory, and storage&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Capacity Planning&lt;/strong&gt; - Anticipate growth requirements&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Next Steps&lt;span class="hx:absolute hx:-mt-20" id="next-steps"&gt;&lt;/span&gt;
+&lt;a href="#next-steps" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;After mastering Reports &amp;amp; Analytics:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/user-guide/best-practices/" &gt;Best Practices&lt;/a&gt;&lt;/strong&gt; - Implement data-driven decision making&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/user-guide/troubleshooting/" &gt;Troubleshooting&lt;/a&gt;&lt;/strong&gt; - Resolve reporting issues&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/developers/" &gt;Developer Resources&lt;/a&gt;&lt;/strong&gt; - Advanced customization and API integration&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Analytics Mastery&lt;/strong&gt;: You&amp;rsquo;ve mastered Reports &amp;amp; Analytics when you can quickly create meaningful reports that drive business decisions and improvement initiatives.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

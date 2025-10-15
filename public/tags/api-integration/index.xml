@@ -1,392 +1,392 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Api-Integration</title><link>https://wiki.bigledger.com/tags/api-integration/</link><description>Recent content in Api-Integration on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/api-integration/index.xml" rel="self" type="application/rss+xml"/><item><title>Webhook Applet</title><link>https://wiki.bigledger.com/applets/webhook-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/webhook-applet/</guid><description>
-&lt;h2>Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview">&lt;/span>
-&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The Webhook Applet is a critical Core Module integration component that enables real-time event notifications and seamless communication between BigLedger and external systems. This applet provides comprehensive webhook management, event-driven notifications, and API integration capabilities that support automated workflows and system synchronization.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Core Module Applet&lt;/strong>: This is one of the 13 essential Core Module applets, enabling real-time integration and communication with external systems and services.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h3>Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions">&lt;/span>
-&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Webhook Configuration and Management&lt;/strong> - Setup and manage webhook endpoints&lt;/li>
-&lt;li>&lt;strong>Real-time Event Notifications&lt;/strong> - Instant event broadcasting to external systems&lt;/li>
-&lt;li>&lt;strong>API Integration Support&lt;/strong> - Facilitate third-party system integrations&lt;/li>
-&lt;li>&lt;strong>Event Filtering and Routing&lt;/strong> - Selective event delivery and routing&lt;/li>
-&lt;li>&lt;strong>Security and Authentication&lt;/strong> - Secure webhook communications&lt;/li>
-&lt;/ul>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Webhook Endpoint Management&lt;span class="hx:absolute hx:-mt-20" id="webhook-endpoint-management">&lt;/span>
-&lt;a href="#webhook-endpoint-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Multiple webhook endpoint configuration&lt;/li>
-&lt;li>HTTP/HTTPS protocol support&lt;/li>
-&lt;li>Custom headers and authentication setup&lt;/li>
-&lt;li>SSL certificate validation&lt;/li>
-&lt;li>Endpoint health monitoring and status tracking&lt;/li>
-&lt;li>Automatic retry and failure handling&lt;/li>
-&lt;/ul>
-&lt;h3>Event Broadcasting System&lt;span class="hx:absolute hx:-mt-20" id="event-broadcasting-system">&lt;/span>
-&lt;a href="#event-broadcasting-system" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Real-time event capture across all modules&lt;/li>
-&lt;li>Configurable event types and filters&lt;/li>
-&lt;li>JSON payload customization and formatting&lt;/li>
-&lt;li>Batch and individual event delivery&lt;/li>
-&lt;li>Event queuing and reliable delivery&lt;/li>
-&lt;li>Historical event logging and tracking&lt;/li>
-&lt;/ul>
-&lt;h3>Security and Authentication&lt;span class="hx:absolute hx:-mt-20" id="security-and-authentication">&lt;/span>
-&lt;a href="#security-and-authentication" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Multiple authentication methods (API Key, OAuth, JWT)&lt;/li>
-&lt;li>Request signing and verification&lt;/li>
-&lt;li>IP whitelisting and access control&lt;/li>
-&lt;li>SSL/TLS encryption enforcement&lt;/li>
-&lt;li>Rate limiting and throttling&lt;/li>
-&lt;li>Security audit logging&lt;/li>
-&lt;/ul>
-&lt;h3>Integration Management&lt;span class="hx:absolute hx:-mt-20" id="integration-management">&lt;/span>
-&lt;a href="#integration-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Third-party system integration templates&lt;/li>
-&lt;li>Popular service integrations (Zapier, IFTTT, etc.)&lt;/li>
-&lt;li>Custom integration development support&lt;/li>
-&lt;li>Integration testing and validation tools&lt;/li>
-&lt;li>Performance monitoring and analytics&lt;/li>
-&lt;li>Error handling and debugging tools&lt;/li>
-&lt;/ul>
-&lt;h3>Event Filtering and Routing&lt;span class="hx:absolute hx:-mt-20" id="event-filtering-and-routing">&lt;/span>
-&lt;a href="#event-filtering-and-routing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Advanced event filtering criteria&lt;/li>
-&lt;li>Conditional routing based on data values&lt;/li>
-&lt;li>Multi-destination event broadcasting&lt;/li>
-&lt;li>Custom transformation and mapping&lt;/li>
-&lt;li>Business rule-based event processing&lt;/li>
-&lt;li>Real-time event preview and testing&lt;/li>
-&lt;/ul>
-&lt;h2>Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications">&lt;/span>
-&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements">&lt;/span>
-&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Minimum Access Level&lt;/strong>: Integration Administrator&lt;/li>
-&lt;li>&lt;strong>Database Dependencies&lt;/strong>: Event and webhook tables&lt;/li>
-&lt;li>&lt;strong>Integration Points&lt;/strong>: All BigLedger modules&lt;/li>
-&lt;li>&lt;strong>API Standards&lt;/strong>: RESTful API, JSON format&lt;/li>
-&lt;li>&lt;strong>Security Protocols&lt;/strong>: HTTPS, OAuth 2.0, JWT&lt;/li>
-&lt;/ul>
-&lt;h3>Webhook Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="webhook-configuration-options">&lt;/span>
-&lt;a href="#webhook-configuration-options" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Endpoint URLs&lt;/strong>: Unlimited webhook endpoints&lt;/li>
-&lt;li>&lt;strong>Event Types&lt;/strong>: 200+ supported event types&lt;/li>
-&lt;li>&lt;strong>Payload Size&lt;/strong>: Up to 10MB per webhook&lt;/li>
-&lt;li>&lt;strong>Retry Attempts&lt;/strong>: Configurable retry policies&lt;/li>
-&lt;li>&lt;strong>Authentication Methods&lt;/strong>: Multiple security options&lt;/li>
-&lt;/ul>
-&lt;h3>Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters">&lt;/span>
-&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Event Throughput&lt;/strong>: 10,000+ events per second&lt;/li>
-&lt;li>&lt;strong>Response Time&lt;/strong>: &amp;lt;100ms for event capture&lt;/li>
-&lt;li>&lt;strong>Delivery Success&lt;/strong>: 99.9% delivery guarantee&lt;/li>
-&lt;li>&lt;strong>Concurrent Webhooks&lt;/strong>: 1,000+ simultaneous deliveries&lt;/li>
-&lt;li>&lt;strong>History Retention&lt;/strong>: 90 days of event history&lt;/li>
-&lt;/ul>
-&lt;h2>Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points">&lt;/span>
-&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies">&lt;/span>
-&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Tenant Admin Applet&lt;/strong> - User authentication and permissions&lt;/li>
-&lt;li>&lt;strong>Organization Applet&lt;/strong> - Multi-tenant event routing&lt;/li>
-&lt;li>&lt;strong>Employee Maintenance Applet&lt;/strong> - User-based event filtering&lt;/li>
-&lt;li>&lt;strong>Workflow Design Applet&lt;/strong> - Workflow-triggered events&lt;/li>
-&lt;/ul>
-&lt;h3>Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration">&lt;/span>
-&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Module&lt;/th>
-&lt;th>Integration Purpose&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Sales &amp;amp; CRM&lt;/strong>&lt;/td>
-&lt;td>Customer and sales event notifications&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Purchasing&lt;/strong>&lt;/td>
-&lt;td>Purchase order and supplier event alerts&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Financial Accounting&lt;/strong>&lt;/td>
-&lt;td>Financial transaction event broadcasting&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Inventory Management&lt;/strong>&lt;/td>
-&lt;td>Stock level and movement notifications&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>E-Commerce&lt;/strong>&lt;/td>
-&lt;td>Online transaction and customer events&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Manufacturing&lt;/strong>&lt;/td>
-&lt;td>Production and quality control events&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>HR &amp;amp; Payroll&lt;/strong>&lt;/td>
-&lt;td>Employee and payroll event notifications&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3>External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations">&lt;/span>
-&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>CRM Systems&lt;/strong> - Salesforce, HubSpot, Pipedrive integration&lt;/li>
-&lt;li>&lt;strong>Marketing Platforms&lt;/strong> - Mailchimp, Constant Contact notifications&lt;/li>
-&lt;li>&lt;strong>Communication Tools&lt;/strong> - Slack, Microsoft Teams alerts&lt;/li>
-&lt;li>&lt;strong>Business Intelligence&lt;/strong> - Power BI, Tableau data feeds&lt;/li>
-&lt;li>&lt;strong>Accounting Software&lt;/strong> - QuickBooks, Xero synchronization&lt;/li>
-&lt;li>&lt;strong>E-Commerce Platforms&lt;/strong> - Shopify, WooCommerce integration&lt;/li>
-&lt;/ul>
-&lt;h2>Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements">&lt;/span>
-&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements">&lt;/span>
-&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Webhook Endpoints&lt;/strong> - Configure external system URLs&lt;/li>
-&lt;li>&lt;strong>Authentication Setup&lt;/strong> - Set up security credentials&lt;/li>
-&lt;li>&lt;strong>Event Selection&lt;/strong> - Choose relevant event types&lt;/li>
-&lt;li>&lt;strong>Filtering Rules&lt;/strong> - Define event filtering criteria&lt;/li>
-&lt;li>&lt;strong>Testing Configuration&lt;/strong> - Verify webhook functionality&lt;/li>
-&lt;/ol>
-&lt;h3>Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations">&lt;/span>
-&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Event Types&lt;/strong>: Order Created, Payment Received, Stock Updated&lt;/li>
-&lt;li>&lt;strong>Authentication&lt;/strong>: API Keys, OAuth tokens, JWT credentials&lt;/li>
-&lt;li>&lt;strong>Retry Policies&lt;/strong>: Exponential backoff, maximum attempts&lt;/li>
-&lt;li>&lt;strong>Filtering Rules&lt;/strong>: Customer-specific, amount thresholds&lt;/li>
-&lt;li>&lt;strong>Security Settings&lt;/strong>: SSL verification, IP whitelisting&lt;/li>
-&lt;/ul>
-&lt;h3>Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations">&lt;/span>
-&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Custom Transformations&lt;/strong> - Data mapping and formatting&lt;/li>
-&lt;li>&lt;strong>Conditional Routing&lt;/strong> - Business rule-based event routing&lt;/li>
-&lt;li>&lt;strong>Batch Processing&lt;/strong> - Grouped event delivery&lt;/li>
-&lt;li>&lt;strong>Error Handling&lt;/strong> - Custom error response processing&lt;/li>
-&lt;li>&lt;strong>Analytics Integration&lt;/strong> - Event performance monitoring&lt;/li>
-&lt;/ul>
-&lt;h2>Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases">&lt;/span>
-&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>E-Commerce Integration&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-integration">&lt;/span>
-&lt;a href="#e-commerce-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Online store with inventory synchronization&lt;/p>
-&lt;ul>
-&lt;li>New order webhook to inventory system&lt;/li>
-&lt;li>Stock level updates to e-commerce platform&lt;/li>
-&lt;li>Customer registration notifications to CRM&lt;/li>
-&lt;li>Payment confirmation to accounting system&lt;/li>
-&lt;li>Shipping updates to customer service&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Real-time e-commerce ecosystem synchronization&lt;/p>
-&lt;h3>CRM System Integration&lt;span class="hx:absolute hx:-mt-20" id="crm-system-integration">&lt;/span>
-&lt;a href="#crm-system-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Sales team using external CRM system&lt;/p>
-&lt;ul>
-&lt;li>New customer creation notifications&lt;/li>
-&lt;li>Sales order updates and status changes&lt;/li>
-&lt;li>Payment receipt confirmations&lt;/li>
-&lt;li>Service request alerts&lt;/li>
-&lt;li>Lead qualification event broadcasting&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Unified customer relationship management&lt;/p>
-&lt;h3>Financial System Integration&lt;span class="hx:absolute hx:-mt-20" id="financial-system-integration">&lt;/span>
-&lt;a href="#financial-system-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Multi-system financial operations&lt;/p>
-&lt;ul>
-&lt;li>Invoice creation notifications to accounting system&lt;/li>
-&lt;li>Payment processing updates to banking platform&lt;/li>
-&lt;li>Expense approval alerts to finance team&lt;/li>
-&lt;li>Budget variance notifications&lt;/li>
-&lt;li>Audit trail event logging&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Integrated financial ecosystem management&lt;/p>
-&lt;h3>Manufacturing Integration&lt;span class="hx:absolute hx:-mt-20" id="manufacturing-integration">&lt;/span>
-&lt;a href="#manufacturing-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Production facility with MES integration&lt;/p>
-&lt;ul>
-&lt;li>Work order creation notifications&lt;/li>
-&lt;li>Quality control result broadcasting&lt;/li>
-&lt;li>Inventory consumption updates&lt;/li>
-&lt;li>Production completion alerts&lt;/li>
-&lt;li>Equipment maintenance notifications&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Connected manufacturing operations&lt;/p>
-&lt;h2>Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets">&lt;/span>
-&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets">&lt;/span>
-&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/workflow-design-applet/" >Workflow Design Applet&lt;/a>&lt;/strong> - Workflow-triggered webhooks&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/tenant-admin-applet/" >Tenant Admin Applet&lt;/a>&lt;/strong> - Security and access management&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/process-monitoring-applet/" >Process Monitoring Applet&lt;/a>&lt;/strong> - Integration monitoring&lt;/li>
-&lt;/ul>
-&lt;h3>Integration Applets&lt;span class="hx:absolute hx:-mt-20" id="integration-applets">&lt;/span>
-&lt;a href="#integration-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/api-management-applet/" >API Management Applet&lt;/a>&lt;/strong> - API endpoint management&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/data-sync-applet/" >Data Synchronization Applet&lt;/a>&lt;/strong> - Data synchronization&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/external-system-applet/" >External System Applet&lt;/a>&lt;/strong> - Third-party system management&lt;/li>
-&lt;/ul>
-&lt;h3>Communication Applets&lt;span class="hx:absolute hx:-mt-20" id="communication-applets">&lt;/span>
-&lt;a href="#communication-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/notification-applet/" >Notification Applet&lt;/a>&lt;/strong> - Internal notifications&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/email-integration-applet/" >Email Integration Applet&lt;/a>&lt;/strong> - Email system integration&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/sms-gateway-applet/" >SMS Gateway Applet&lt;/a>&lt;/strong> - SMS notifications&lt;/li>
-&lt;/ul>
-&lt;h2>Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide">&lt;/span>
-&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start">&lt;/span>
-&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Access Webhook Configuration&lt;/strong> - Navigate to the applet&lt;/li>
-&lt;li>&lt;strong>Add Webhook Endpoint&lt;/strong> - Configure external system URL&lt;/li>
-&lt;li>&lt;strong>Select Event Types&lt;/strong> - Choose relevant business events&lt;/li>
-&lt;li>&lt;strong>Configure Authentication&lt;/strong> - Set up security credentials&lt;/li>
-&lt;li>&lt;strong>Test Webhook Delivery&lt;/strong> - Verify functionality with test events&lt;/li>
-&lt;/ol>
-&lt;h3>Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup">&lt;/span>
-&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Custom Payload Configuration&lt;/strong> - Design custom event payloads&lt;/li>
-&lt;li>&lt;strong>Advanced Filtering Setup&lt;/strong> - Configure complex filtering rules&lt;/li>
-&lt;li>&lt;strong>Multi-Destination Routing&lt;/strong> - Set up event broadcasting&lt;/li>
-&lt;li>&lt;strong>Error Handling Configuration&lt;/strong> - Configure retry and error policies&lt;/li>
-&lt;li>&lt;strong>Performance Monitoring Setup&lt;/strong> - Configure analytics and monitoring&lt;/li>
-&lt;/ol>
-&lt;h2>Webhook Configuration Examples&lt;span class="hx:absolute hx:-mt-20" id="webhook-configuration-examples">&lt;/span>
-&lt;a href="#webhook-configuration-examples" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>E-Commerce Order Webhook&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-order-webhook">&lt;/span>
-&lt;a href="#e-commerce-order-webhook" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Webhook Name&lt;/span>: &lt;span style="color:#ae81ff">E-Commerce Order Integration&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Endpoint URL&lt;/span>: &lt;span style="color:#ae81ff">https://api.ecommerce.com/webhooks/bigledger&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Method&lt;/span>: &lt;span style="color:#ae81ff">POST&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Authentication&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Type&lt;/span>: &lt;span style="color:#ae81ff">API Key&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Header&lt;/span>: &lt;span style="color:#ae81ff">X-API-Key&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Value&lt;/span>: [&lt;span style="color:#ae81ff">ENCRYPTED_API_KEY]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Event Triggers&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">sales_order.created&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">sales_order.updated&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">sales_order.cancelled&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">payment.received&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Payload Format&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">order_id&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ order.id }}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">customer_id&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ order.customer_id }}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">total_amount&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ order.total }}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">status&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ order.status }}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">items&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ order.items }}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">timestamp&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ event.timestamp }}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Filters&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">order.total &amp;gt; 100&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">order.status != &amp;#34;draft&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Retry Policy&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Max Attempts&lt;/span>: &lt;span style="color:#ae81ff">3&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Backoff&lt;/span>: &lt;span style="color:#ae81ff">Exponential&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Timeout&lt;/span>: &lt;span style="color:#ae81ff">30&lt;/span> &lt;span style="color:#ae81ff">seconds&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&lt;h2&gt;Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview"&gt;&lt;/span&gt;
+&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The Webhook Applet is a critical Core Module integration component that enables real-time event notifications and seamless communication between BigLedger and external systems. This applet provides comprehensive webhook management, event-driven notifications, and API integration capabilities that support automated workflows and system synchronization.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Core Module Applet&lt;/strong&gt;: This is one of the 13 essential Core Module applets, enabling real-time integration and communication with external systems and services.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions"&gt;&lt;/span&gt;
+&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Webhook Configuration and Management&lt;/strong&gt; - Setup and manage webhook endpoints&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Event Notifications&lt;/strong&gt; - Instant event broadcasting to external systems&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Integration Support&lt;/strong&gt; - Facilitate third-party system integrations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Event Filtering and Routing&lt;/strong&gt; - Selective event delivery and routing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security and Authentication&lt;/strong&gt; - Secure webhook communications&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Webhook Endpoint Management&lt;span class="hx:absolute hx:-mt-20" id="webhook-endpoint-management"&gt;&lt;/span&gt;
+&lt;a href="#webhook-endpoint-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Multiple webhook endpoint configuration&lt;/li&gt;
+&lt;li&gt;HTTP/HTTPS protocol support&lt;/li&gt;
+&lt;li&gt;Custom headers and authentication setup&lt;/li&gt;
+&lt;li&gt;SSL certificate validation&lt;/li&gt;
+&lt;li&gt;Endpoint health monitoring and status tracking&lt;/li&gt;
+&lt;li&gt;Automatic retry and failure handling&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Event Broadcasting System&lt;span class="hx:absolute hx:-mt-20" id="event-broadcasting-system"&gt;&lt;/span&gt;
+&lt;a href="#event-broadcasting-system" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Real-time event capture across all modules&lt;/li&gt;
+&lt;li&gt;Configurable event types and filters&lt;/li&gt;
+&lt;li&gt;JSON payload customization and formatting&lt;/li&gt;
+&lt;li&gt;Batch and individual event delivery&lt;/li&gt;
+&lt;li&gt;Event queuing and reliable delivery&lt;/li&gt;
+&lt;li&gt;Historical event logging and tracking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Security and Authentication&lt;span class="hx:absolute hx:-mt-20" id="security-and-authentication"&gt;&lt;/span&gt;
+&lt;a href="#security-and-authentication" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Multiple authentication methods (API Key, OAuth, JWT)&lt;/li&gt;
+&lt;li&gt;Request signing and verification&lt;/li&gt;
+&lt;li&gt;IP whitelisting and access control&lt;/li&gt;
+&lt;li&gt;SSL/TLS encryption enforcement&lt;/li&gt;
+&lt;li&gt;Rate limiting and throttling&lt;/li&gt;
+&lt;li&gt;Security audit logging&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Integration Management&lt;span class="hx:absolute hx:-mt-20" id="integration-management"&gt;&lt;/span&gt;
+&lt;a href="#integration-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Third-party system integration templates&lt;/li&gt;
+&lt;li&gt;Popular service integrations (Zapier, IFTTT, etc.)&lt;/li&gt;
+&lt;li&gt;Custom integration development support&lt;/li&gt;
+&lt;li&gt;Integration testing and validation tools&lt;/li&gt;
+&lt;li&gt;Performance monitoring and analytics&lt;/li&gt;
+&lt;li&gt;Error handling and debugging tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Event Filtering and Routing&lt;span class="hx:absolute hx:-mt-20" id="event-filtering-and-routing"&gt;&lt;/span&gt;
+&lt;a href="#event-filtering-and-routing" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Advanced event filtering criteria&lt;/li&gt;
+&lt;li&gt;Conditional routing based on data values&lt;/li&gt;
+&lt;li&gt;Multi-destination event broadcasting&lt;/li&gt;
+&lt;li&gt;Custom transformation and mapping&lt;/li&gt;
+&lt;li&gt;Business rule-based event processing&lt;/li&gt;
+&lt;li&gt;Real-time event preview and testing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications"&gt;&lt;/span&gt;
+&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements"&gt;&lt;/span&gt;
+&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Minimum Access Level&lt;/strong&gt;: Integration Administrator&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Dependencies&lt;/strong&gt;: Event and webhook tables&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Points&lt;/strong&gt;: All BigLedger modules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Standards&lt;/strong&gt;: RESTful API, JSON format&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security Protocols&lt;/strong&gt;: HTTPS, OAuth 2.0, JWT&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Webhook Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="webhook-configuration-options"&gt;&lt;/span&gt;
+&lt;a href="#webhook-configuration-options" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Endpoint URLs&lt;/strong&gt;: Unlimited webhook endpoints&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Event Types&lt;/strong&gt;: 200+ supported event types&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Payload Size&lt;/strong&gt;: Up to 10MB per webhook&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Retry Attempts&lt;/strong&gt;: Configurable retry policies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Authentication Methods&lt;/strong&gt;: Multiple security options&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters"&gt;&lt;/span&gt;
+&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Event Throughput&lt;/strong&gt;: 10,000+ events per second&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Response Time&lt;/strong&gt;: &amp;lt;100ms for event capture&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delivery Success&lt;/strong&gt;: 99.9% delivery guarantee&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Concurrent Webhooks&lt;/strong&gt;: 1,000+ simultaneous deliveries&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;History Retention&lt;/strong&gt;: 90 days of event history&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points"&gt;&lt;/span&gt;
+&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies"&gt;&lt;/span&gt;
+&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tenant Admin Applet&lt;/strong&gt; - User authentication and permissions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Organization Applet&lt;/strong&gt; - Multi-tenant event routing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Employee Maintenance Applet&lt;/strong&gt; - User-based event filtering&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Workflow Design Applet&lt;/strong&gt; - Workflow-triggered events&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration"&gt;&lt;/span&gt;
+&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Module&lt;/th&gt;
+&lt;th&gt;Integration Purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Sales &amp;amp; CRM&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Customer and sales event notifications&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Purchasing&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Purchase order and supplier event alerts&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Financial Accounting&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Financial transaction event broadcasting&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Inventory Management&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Stock level and movement notifications&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;E-Commerce&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Online transaction and customer events&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Manufacturing&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Production and quality control events&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;HR &amp;amp; Payroll&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Employee and payroll event notifications&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations"&gt;&lt;/span&gt;
+&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CRM Systems&lt;/strong&gt; - Salesforce, HubSpot, Pipedrive integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Marketing Platforms&lt;/strong&gt; - Mailchimp, Constant Contact notifications&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Communication Tools&lt;/strong&gt; - Slack, Microsoft Teams alerts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Business Intelligence&lt;/strong&gt; - Power BI, Tableau data feeds&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Accounting Software&lt;/strong&gt; - QuickBooks, Xero synchronization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;E-Commerce Platforms&lt;/strong&gt; - Shopify, WooCommerce integration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements"&gt;&lt;/span&gt;
+&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements"&gt;&lt;/span&gt;
+&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Webhook Endpoints&lt;/strong&gt; - Configure external system URLs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Authentication Setup&lt;/strong&gt; - Set up security credentials&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Event Selection&lt;/strong&gt; - Choose relevant event types&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Filtering Rules&lt;/strong&gt; - Define event filtering criteria&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Testing Configuration&lt;/strong&gt; - Verify webhook functionality&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations"&gt;&lt;/span&gt;
+&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Event Types&lt;/strong&gt;: Order Created, Payment Received, Stock Updated&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Authentication&lt;/strong&gt;: API Keys, OAuth tokens, JWT credentials&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Retry Policies&lt;/strong&gt;: Exponential backoff, maximum attempts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Filtering Rules&lt;/strong&gt;: Customer-specific, amount thresholds&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security Settings&lt;/strong&gt;: SSL verification, IP whitelisting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations"&gt;&lt;/span&gt;
+&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Custom Transformations&lt;/strong&gt; - Data mapping and formatting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conditional Routing&lt;/strong&gt; - Business rule-based event routing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Batch Processing&lt;/strong&gt; - Grouped event delivery&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Error Handling&lt;/strong&gt; - Custom error response processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Analytics Integration&lt;/strong&gt; - Event performance monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases"&gt;&lt;/span&gt;
+&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;E-Commerce Integration&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-integration"&gt;&lt;/span&gt;
+&lt;a href="#e-commerce-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Online store with inventory synchronization&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;New order webhook to inventory system&lt;/li&gt;
+&lt;li&gt;Stock level updates to e-commerce platform&lt;/li&gt;
+&lt;li&gt;Customer registration notifications to CRM&lt;/li&gt;
+&lt;li&gt;Payment confirmation to accounting system&lt;/li&gt;
+&lt;li&gt;Shipping updates to customer service&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Real-time e-commerce ecosystem synchronization&lt;/p&gt;
+&lt;h3&gt;CRM System Integration&lt;span class="hx:absolute hx:-mt-20" id="crm-system-integration"&gt;&lt;/span&gt;
+&lt;a href="#crm-system-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Sales team using external CRM system&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;New customer creation notifications&lt;/li&gt;
+&lt;li&gt;Sales order updates and status changes&lt;/li&gt;
+&lt;li&gt;Payment receipt confirmations&lt;/li&gt;
+&lt;li&gt;Service request alerts&lt;/li&gt;
+&lt;li&gt;Lead qualification event broadcasting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Unified customer relationship management&lt;/p&gt;
+&lt;h3&gt;Financial System Integration&lt;span class="hx:absolute hx:-mt-20" id="financial-system-integration"&gt;&lt;/span&gt;
+&lt;a href="#financial-system-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Multi-system financial operations&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Invoice creation notifications to accounting system&lt;/li&gt;
+&lt;li&gt;Payment processing updates to banking platform&lt;/li&gt;
+&lt;li&gt;Expense approval alerts to finance team&lt;/li&gt;
+&lt;li&gt;Budget variance notifications&lt;/li&gt;
+&lt;li&gt;Audit trail event logging&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Integrated financial ecosystem management&lt;/p&gt;
+&lt;h3&gt;Manufacturing Integration&lt;span class="hx:absolute hx:-mt-20" id="manufacturing-integration"&gt;&lt;/span&gt;
+&lt;a href="#manufacturing-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Production facility with MES integration&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Work order creation notifications&lt;/li&gt;
+&lt;li&gt;Quality control result broadcasting&lt;/li&gt;
+&lt;li&gt;Inventory consumption updates&lt;/li&gt;
+&lt;li&gt;Production completion alerts&lt;/li&gt;
+&lt;li&gt;Equipment maintenance notifications&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Connected manufacturing operations&lt;/p&gt;
+&lt;h2&gt;Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets"&gt;&lt;/span&gt;
+&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets"&gt;&lt;/span&gt;
+&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/workflow-design-applet/" &gt;Workflow Design Applet&lt;/a&gt;&lt;/strong&gt; - Workflow-triggered webhooks&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/tenant-admin-applet/" &gt;Tenant Admin Applet&lt;/a&gt;&lt;/strong&gt; - Security and access management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/process-monitoring-applet/" &gt;Process Monitoring Applet&lt;/a&gt;&lt;/strong&gt; - Integration monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Integration Applets&lt;span class="hx:absolute hx:-mt-20" id="integration-applets"&gt;&lt;/span&gt;
+&lt;a href="#integration-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/api-management-applet/" &gt;API Management Applet&lt;/a&gt;&lt;/strong&gt; - API endpoint management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/data-sync-applet/" &gt;Data Synchronization Applet&lt;/a&gt;&lt;/strong&gt; - Data synchronization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/external-system-applet/" &gt;External System Applet&lt;/a&gt;&lt;/strong&gt; - Third-party system management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Communication Applets&lt;span class="hx:absolute hx:-mt-20" id="communication-applets"&gt;&lt;/span&gt;
+&lt;a href="#communication-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/notification-applet/" &gt;Notification Applet&lt;/a&gt;&lt;/strong&gt; - Internal notifications&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/email-integration-applet/" &gt;Email Integration Applet&lt;/a&gt;&lt;/strong&gt; - Email system integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/sms-gateway-applet/" &gt;SMS Gateway Applet&lt;/a&gt;&lt;/strong&gt; - SMS notifications&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide"&gt;&lt;/span&gt;
+&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start"&gt;&lt;/span&gt;
+&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Access Webhook Configuration&lt;/strong&gt; - Navigate to the applet&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Add Webhook Endpoint&lt;/strong&gt; - Configure external system URL&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Select Event Types&lt;/strong&gt; - Choose relevant business events&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configure Authentication&lt;/strong&gt; - Set up security credentials&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test Webhook Delivery&lt;/strong&gt; - Verify functionality with test events&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup"&gt;&lt;/span&gt;
+&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Custom Payload Configuration&lt;/strong&gt; - Design custom event payloads&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Advanced Filtering Setup&lt;/strong&gt; - Configure complex filtering rules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Destination Routing&lt;/strong&gt; - Set up event broadcasting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Error Handling Configuration&lt;/strong&gt; - Configure retry and error policies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Monitoring Setup&lt;/strong&gt; - Configure analytics and monitoring&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Webhook Configuration Examples&lt;span class="hx:absolute hx:-mt-20" id="webhook-configuration-examples"&gt;&lt;/span&gt;
+&lt;a href="#webhook-configuration-examples" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;E-Commerce Order Webhook&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-order-webhook"&gt;&lt;/span&gt;
+&lt;a href="#e-commerce-order-webhook" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Webhook Name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;E-Commerce Order Integration&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Endpoint URL&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;https://api.ecommerce.com/webhooks/bigledger&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Method&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;POST&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Authentication&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;API Key&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Header&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;X-API-Key&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Value&lt;/span&gt;: [&lt;span style="color:#ae81ff"&gt;ENCRYPTED_API_KEY]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Event Triggers&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;sales_order.created&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;sales_order.updated&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;sales_order.cancelled&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;payment.received&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Payload Format&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;order_id&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{ order.id }}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;customer_id&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{ order.customer_id }}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;total_amount&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{ order.total }}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;status&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{ order.status }}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;items&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{ order.items }}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;timestamp&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{ event.timestamp }}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Filters&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;order.total &amp;gt; 100&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;order.status != &amp;#34;draft&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Retry Policy&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Max Attempts&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Backoff&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Exponential&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Timeout&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;30&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;seconds&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>CRM Customer Sync Webhook&lt;span class="hx:absolute hx:-mt-20" id="crm-customer-sync-webhook">&lt;/span>
-&lt;a href="#crm-customer-sync-webhook" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Webhook Name&lt;/span>: &lt;span style="color:#ae81ff">CRM Customer Synchronization&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Endpoint URL&lt;/span>: &lt;span style="color:#ae81ff">https://api.crm.com/webhooks/customers&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Method&lt;/span>: &lt;span style="color:#ae81ff">POST&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Authentication&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Type&lt;/span>: &lt;span style="color:#ae81ff">OAuth 2.0&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Token&lt;/span>: [&lt;span style="color:#ae81ff">OAUTH_TOKEN]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Event Triggers&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">customer.created&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">customer.updated&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">customer.deleted&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Payload Format&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">customer_id&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ customer.id }}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">name&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ customer.name }}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">email&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ customer.email }}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">phone&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ customer.phone }}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">address&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ customer.address }}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">created_date&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ customer.created_date }}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Security Settings&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">SSL Verification&lt;/span>: &lt;span style="color:#ae81ff">Required&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">IP Whitelist&lt;/span>: [&lt;span style="color:#ae81ff">CRM_SERVER_IPS]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Rate Limit&lt;/span>: &lt;span style="color:#ae81ff">100&lt;/span> &lt;span style="color:#ae81ff">requests/minute&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;CRM Customer Sync Webhook&lt;span class="hx:absolute hx:-mt-20" id="crm-customer-sync-webhook"&gt;&lt;/span&gt;
+&lt;a href="#crm-customer-sync-webhook" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Webhook Name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;CRM Customer Synchronization&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Endpoint URL&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;https://api.crm.com/webhooks/customers&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Method&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;POST&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Authentication&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;OAuth 2.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Token&lt;/span&gt;: [&lt;span style="color:#ae81ff"&gt;OAUTH_TOKEN]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Event Triggers&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;customer.created&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;customer.updated&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;customer.deleted&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Payload Format&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;customer_id&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{ customer.id }}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;name&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{ customer.name }}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;email&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{ customer.email }}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;phone&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{ customer.phone }}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;address&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{ customer.address }}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;created_date&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;{{ customer.created_date }}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Security Settings&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;SSL Verification&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Required&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;IP Whitelist&lt;/span&gt;: [&lt;span style="color:#ae81ff"&gt;CRM_SERVER_IPS]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Rate Limit&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;100&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;requests/minute&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h2>Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices">&lt;/span>
-&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Webhook Design Best Practices&lt;span class="hx:absolute hx:-mt-20" id="webhook-design-best-practices">&lt;/span>
-&lt;a href="#webhook-design-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Idempotent Operations&lt;/strong> - Design for repeated webhook deliveries&lt;/li>
-&lt;li>&lt;strong>Minimal Payloads&lt;/strong> - Include only necessary data&lt;/li>
-&lt;li>&lt;strong>Clear Event Names&lt;/strong> - Use descriptive event naming conventions&lt;/li>
-&lt;li>&lt;strong>Versioning Strategy&lt;/strong> - Plan for webhook payload evolution&lt;/li>
-&lt;li>&lt;strong>Documentation&lt;/strong> - Comprehensive webhook documentation&lt;/li>
-&lt;/ul>
-&lt;h3>Security Best Practices&lt;span class="hx:absolute hx:-mt-20" id="security-best-practices">&lt;/span>
-&lt;a href="#security-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Authentication Required&lt;/strong> - Never use unsecured webhooks&lt;/li>
-&lt;li>&lt;strong>SSL/TLS Encryption&lt;/strong> - Always use HTTPS endpoints&lt;/li>
-&lt;li>&lt;strong>Request Verification&lt;/strong> - Verify webhook source authenticity&lt;/li>
-&lt;li>&lt;strong>IP Whitelisting&lt;/strong> - Restrict access to known sources&lt;/li>
-&lt;li>&lt;strong>Rate Limiting&lt;/strong> - Prevent webhook abuse and flooding&lt;/li>
-&lt;/ul>
-&lt;h3>Performance Best Practices&lt;span class="hx:absolute hx:-mt-20" id="performance-best-practices">&lt;/span>
-&lt;a href="#performance-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Async Processing&lt;/strong> - Handle webhooks asynchronously&lt;/li>
-&lt;li>&lt;strong>Batch Processing&lt;/strong> - Group related events when possible&lt;/li>
-&lt;li>&lt;strong>Retry Logic&lt;/strong> - Implement intelligent retry mechanisms&lt;/li>
-&lt;li>&lt;strong>Monitoring&lt;/strong> - Continuous webhook performance monitoring&lt;/li>
-&lt;li>&lt;strong>Error Handling&lt;/strong> - Graceful error handling and logging&lt;/li>
-&lt;/ul>
-&lt;h2>Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting">&lt;/span>
-&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues">&lt;/span>
-&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Webhook delivery failures&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Check endpoint URL accessibility&lt;/li>
-&lt;li>Verify authentication credentials&lt;/li>
-&lt;li>Review SSL certificate validity&lt;/li>
-&lt;li>Check payload format requirements&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Missing webhook events&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Verify event type configuration&lt;/li>
-&lt;li>Check filtering rules and conditions&lt;/li>
-&lt;li>Review webhook activation status&lt;/li>
-&lt;li>Confirm module integration settings&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Performance issues&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Monitor webhook delivery times&lt;/li>
-&lt;li>Check external system response times&lt;/li>
-&lt;li>Review retry policy configuration&lt;/li>
-&lt;li>Analyze event queue backlog&lt;/li>
-&lt;/ul>
-&lt;h3>Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources">&lt;/span>
-&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Webhook configuration and setup guide&lt;/li>
-&lt;li>Integration best practices documentation&lt;/li>
-&lt;li>Security implementation guide&lt;/li>
-&lt;li>Performance optimization recommendations&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Security Notice&lt;/strong>: Webhooks transmit sensitive business data to external systems. Always implement proper authentication, encryption, and access controls to protect your data.&lt;/div>
-&lt;/div>
-&lt;/div></description></item><item><title>VSTECS MS ESD Order Applet</title><link>https://wiki.bigledger.com/applets/vstecs-ms-esd-order-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/vstecs-ms-esd-order-applet/</guid><description>
-&lt;p>Attached User guide for MS ESD Order and Work Breakdown for implementation.
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices"&gt;&lt;/span&gt;
+&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Webhook Design Best Practices&lt;span class="hx:absolute hx:-mt-20" id="webhook-design-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#webhook-design-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Idempotent Operations&lt;/strong&gt; - Design for repeated webhook deliveries&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Minimal Payloads&lt;/strong&gt; - Include only necessary data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clear Event Names&lt;/strong&gt; - Use descriptive event naming conventions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Versioning Strategy&lt;/strong&gt; - Plan for webhook payload evolution&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt; - Comprehensive webhook documentation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Security Best Practices&lt;span class="hx:absolute hx:-mt-20" id="security-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#security-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Authentication Required&lt;/strong&gt; - Never use unsecured webhooks&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SSL/TLS Encryption&lt;/strong&gt; - Always use HTTPS endpoints&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Request Verification&lt;/strong&gt; - Verify webhook source authenticity&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;IP Whitelisting&lt;/strong&gt; - Restrict access to known sources&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rate Limiting&lt;/strong&gt; - Prevent webhook abuse and flooding&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Performance Best Practices&lt;span class="hx:absolute hx:-mt-20" id="performance-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#performance-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Async Processing&lt;/strong&gt; - Handle webhooks asynchronously&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Batch Processing&lt;/strong&gt; - Group related events when possible&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Retry Logic&lt;/strong&gt; - Implement intelligent retry mechanisms&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitoring&lt;/strong&gt; - Continuous webhook performance monitoring&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Error Handling&lt;/strong&gt; - Graceful error handling and logging&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues"&gt;&lt;/span&gt;
+&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Webhook delivery failures&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check endpoint URL accessibility&lt;/li&gt;
+&lt;li&gt;Verify authentication credentials&lt;/li&gt;
+&lt;li&gt;Review SSL certificate validity&lt;/li&gt;
+&lt;li&gt;Check payload format requirements&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Missing webhook events&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Verify event type configuration&lt;/li&gt;
+&lt;li&gt;Check filtering rules and conditions&lt;/li&gt;
+&lt;li&gt;Review webhook activation status&lt;/li&gt;
+&lt;li&gt;Confirm module integration settings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Performance issues&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Monitor webhook delivery times&lt;/li&gt;
+&lt;li&gt;Check external system response times&lt;/li&gt;
+&lt;li&gt;Review retry policy configuration&lt;/li&gt;
+&lt;li&gt;Analyze event queue backlog&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources"&gt;&lt;/span&gt;
+&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Webhook configuration and setup guide&lt;/li&gt;
+&lt;li&gt;Integration best practices documentation&lt;/li&gt;
+&lt;li&gt;Security implementation guide&lt;/li&gt;
+&lt;li&gt;Performance optimization recommendations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Security Notice&lt;/strong&gt;: Webhooks transmit sensitive business data to external systems. Always implement proper authentication, encryption, and access controls to protect your data.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>VSTECS MS ESD Order Applet</title><link>https://wiki.bigledger.com/applets/vstecs-ms-esd-order-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/vstecs-ms-esd-order-applet/</guid><description>
+&lt;p&gt;Attached User guide for MS ESD Order and Work Breakdown for implementation.
 This Applet required integration from BLG to EMP &amp;amp; BLG to Distributor&amp;rsquo;s system to function correctly.
 API to check MS ESD Product SKU updated price.
 API to create an order to retrieve MS ESD product from distributors.
 **Note
 There is 2 workflow for this integration currently:
 Shortcut method : EMP integration to BLG (without T2T Admin Applet)
-Standard method : T2T admin applet to enable guest and host tenant connectivity , Doc-item-maintenance applet to do the item code mapping.&lt;/p></description></item></channel></rss>
+Standard method : T2T admin applet to enable guest and host tenant connectivity , Doc-item-maintenance applet to do the item code mapping.&lt;/p&gt;</description></item></channel></rss>

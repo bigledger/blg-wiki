@@ -1,0 +1,347 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger 文档 – Administration</title><link>https://wiki.bigledger.com/zh/tags/administration/</link><description>Recent content in Administration on BigLedger 文档</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://wiki.bigledger.com/zh/tags/administration/index.xml" rel="self" type="application/rss+xml"/><item><title>管理</title><link>https://wiki.bigledger.com/zh/user-guide/administration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/user-guide/administration/</guid><description>
+&lt;p&gt;BigLedger管理员的综合系统管理和配置工具。本节涵盖用户管理、系统设置、安全性和组织结构。&lt;/p&gt;
+&lt;h2&gt;用户和团队管理&lt;span class="hx:absolute hx:-mt-20" id="用户和团队管理"&gt;&lt;/span&gt;
+&lt;a href="#%e7%94%a8%e6%88%b7%e5%92%8c%e5%9b%a2%e9%98%9f%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;管理您组织的用户和团队结构：&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/administration/member-listing"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;用户管理&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;添加、编辑和管理用户账户和权限&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/administration/team"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;团队配置&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;设置部门、角色和组织结构&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/administration/member-class"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;成员分类&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;用户角色、权限和访问控制系统&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;h2&gt;组织和结构&lt;span class="hx:absolute hx:-mt-20" id="组织和结构"&gt;&lt;/span&gt;
+&lt;a href="#%e7%bb%84%e7%bb%87%e5%92%8c%e7%bb%93%e6%9e%84" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;配置您的业务组织和数据结构：&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/administration/group-listing"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;组管理&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;管理组、类别和组织结构&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/administration/member-label"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;标签配置&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;用于更好组织的高级标签和标记系统&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/administration/member-label-list"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;标签管理&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;创建和管理用于分类和报告的标签&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;h2&gt;关键管理职责&lt;span class="hx:absolute hx:-mt-20" id="关键管理职责"&gt;&lt;/span&gt;
+&lt;a href="#%e5%85%b3%e9%94%ae%e7%ae%a1%e7%90%86%e8%81%8c%e8%b4%a3" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;用户管理&lt;span class="hx:absolute hx:-mt-20" id="用户管理"&gt;&lt;/span&gt;
+&lt;a href="#%e7%94%a8%e6%88%b7%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;✅ 创建和维护用户账户&lt;/li&gt;
+&lt;li&gt;✅ 分配适当的角色和权限&lt;/li&gt;
+&lt;li&gt;✅ 监控用户活动和安全性&lt;/li&gt;
+&lt;li&gt;✅ 处理密码重置和访问问题&lt;/li&gt;
+&lt;li&gt;✅ 管理团队结构和报告关系&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;系统配置&lt;span class="hx:absolute hx:-mt-20" id="系统配置"&gt;&lt;/span&gt;
+&lt;a href="#%e7%b3%bb%e7%bb%9f%e9%85%8d%e7%bd%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;✅ 配置业务规则和工作流程&lt;/li&gt;
+&lt;li&gt;✅ 设置组织层次结构&lt;/li&gt;
+&lt;li&gt;✅ 管理系统集成&lt;/li&gt;
+&lt;li&gt;✅ 配置安全设置和策略&lt;/li&gt;
+&lt;li&gt;✅ 维护数据备份和恢复程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;数据治理&lt;span class="hx:absolute hx:-mt-20" id="数据治理"&gt;&lt;/span&gt;
+&lt;a href="#%e6%95%b0%e6%8d%ae%e6%b2%bb%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;✅ 建立数据质量标准&lt;/li&gt;
+&lt;li&gt;✅ 配置验证规则&lt;/li&gt;
+&lt;li&gt;✅ 管理主数据一致性&lt;/li&gt;
+&lt;li&gt;✅ 实施审计控制&lt;/li&gt;
+&lt;li&gt;✅ 确保合规要求&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;管理任务清单&lt;span class="hx:absolute hx:-mt-20" id="管理任务清单"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ae%a1%e7%90%86%e4%bb%bb%e5%8a%a1%e6%b8%85%e5%8d%95" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;日常管理&lt;span class="hx:absolute hx:-mt-20" id="日常管理"&gt;&lt;/span&gt;
+&lt;a href="#%e6%97%a5%e5%b8%b8%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 监控系统性能和用户活动&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 审查安全警报和通知&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 处理用户访问请求和问题&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 处理待审批和工作流程&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 检查系统备份和集成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;周度管理&lt;span class="hx:absolute hx:-mt-20" id="周度管理"&gt;&lt;/span&gt;
+&lt;a href="#%e5%91%a8%e5%ba%a6%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 审查用户权限和访问级别&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 分析系统使用报告&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 根据需要更新系统配置&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 进行安全审查&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 计划即将到来的维护窗口&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;月度管理&lt;span class="hx:absolute hx:-mt-20" id="月度管理"&gt;&lt;/span&gt;
+&lt;a href="#%e6%9c%88%e5%ba%a6%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 综合安全审计&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 用户访问认证审查&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 系统性能分析&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 数据质量评估&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; 业务规则有效性审查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;安全最佳实践&lt;span class="hx:absolute hx:-mt-20" id="安全最佳实践"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%89%e5%85%a8%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;访问控制&lt;span class="hx:absolute hx:-mt-20" id="访问控制"&gt;&lt;/span&gt;
+&lt;a href="#%e8%ae%bf%e9%97%ae%e6%8e%a7%e5%88%b6" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;最小权限原则&lt;/strong&gt;：授予最少必要的访问权限&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;基于角色的安全&lt;/strong&gt;：使用角色而不是单独权限&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;定期审查&lt;/strong&gt;：每季度审计用户访问&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;职责分离&lt;/strong&gt;：防止利益冲突&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;强身份验证&lt;/strong&gt;：强制复杂密码和2FA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;数据保护&lt;span class="hx:absolute hx:-mt-20" id="数据保护"&gt;&lt;/span&gt;
+&lt;a href="#%e6%95%b0%e6%8d%ae%e4%bf%9d%e6%8a%a4" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;加密&lt;/strong&gt;：确保静态和传输中的数据加密&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;备份策略&lt;/strong&gt;：维护定期、经过测试的备份&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;变更管理&lt;/strong&gt;：记录所有系统变更&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;合规性&lt;/strong&gt;：满足监管要求（PDPA等）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;事件响应&lt;/strong&gt;：制定安全事件程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;安全警报&lt;/strong&gt;：管理员拥有强大权限。始终遵循最小权限原则并维护管理操作的详细审计日志。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;系统集成管理&lt;span class="hx:absolute hx:-mt-20" id="系统集成管理"&gt;&lt;/span&gt;
+&lt;a href="#%e7%b3%bb%e7%bb%9f%e9%9b%86%e6%88%90%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;待办：添加综合系统集成指南&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;常见集成区域&lt;span class="hx:absolute hx:-mt-20" id="常见集成区域"&gt;&lt;/span&gt;
+&lt;a href="#%e5%b8%b8%e8%a7%81%e9%9b%86%e6%88%90%e5%8c%ba%e5%9f%9f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;银行系统&lt;/strong&gt; - 银行对账单导入和对账&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;电子商务平台&lt;/strong&gt; - 在线商店同步&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;支付网关&lt;/strong&gt; - 支付处理集成&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;第三方API&lt;/strong&gt; - 外部服务连接&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;报告工具&lt;/strong&gt; - 商业智能集成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;集成最佳实践&lt;span class="hx:absolute hx:-mt-20" id="集成最佳实践"&gt;&lt;/span&gt;
+&lt;a href="#%e9%9b%86%e6%88%90%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;测试&lt;/strong&gt;：始终在预发布环境中测试集成&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;监控&lt;/strong&gt;：为集成失败设置警报&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文档&lt;/strong&gt;：维护集成文档&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;安全&lt;/strong&gt;：保护API凭据和访问令牌&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;性能&lt;/strong&gt;：监控集成性能影响&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;常见问题故障排除&lt;span class="hx:absolute hx:-mt-20" id="常见问题故障排除"&gt;&lt;/span&gt;
+&lt;a href="#%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98%e6%95%85%e9%9a%9c%e6%8e%92%e9%99%a4" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;用户访问问题&lt;span class="hx:absolute hx:-mt-20" id="用户访问问题"&gt;&lt;/span&gt;
+&lt;a href="#%e7%94%a8%e6%88%b7%e8%ae%bf%e9%97%ae%e9%97%ae%e9%a2%98" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;无法登录&lt;/strong&gt;：检查用户状态、密码和权限&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;缺少功能&lt;/strong&gt;：验证角色分配和applet访问&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;性能问题&lt;/strong&gt;：审查用户的浏览器和网络连接&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数据不可见&lt;/strong&gt;：检查记录级安全和过滤器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;系统性能问题&lt;span class="hx:absolute hx:-mt-20" id="系统性能问题"&gt;&lt;/span&gt;
+&lt;a href="#%e7%b3%bb%e7%bb%9f%e6%80%a7%e8%83%bd%e9%97%ae%e9%a2%98" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;响应慢&lt;/strong&gt;：监控服务器资源和数据库性能&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;集成失败&lt;/strong&gt;：检查API凭据和网络连接&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;备份失败&lt;/strong&gt;：验证备份存储和计划配置&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;报告错误&lt;/strong&gt;：审查报告参数和数据访问权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;合规和治理&lt;span class="hx:absolute hx:-mt-20" id="合规和治理"&gt;&lt;/span&gt;
+&lt;a href="#%e5%90%88%e8%a7%84%e5%92%8c%e6%b2%bb%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;监管合规&lt;span class="hx:absolute hx:-mt-20" id="监管合规"&gt;&lt;/span&gt;
+&lt;a href="#%e7%9b%91%e7%ae%a1%e5%90%88%e8%a7%84" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;待办：添加详细合规管理程序&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;数据隐私（PDPA）&lt;/strong&gt;：个人数据保护程序&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;财务合规&lt;/strong&gt;：税务和会计法规遵循&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;行业标准&lt;/strong&gt;：特定行业合规要求&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;审计要求&lt;/strong&gt;：文档和证据维护&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;内部治理&lt;span class="hx:absolute hx:-mt-20" id="内部治理"&gt;&lt;/span&gt;
+&lt;a href="#%e5%86%85%e9%83%a8%e6%b2%bb%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;变更控制&lt;/strong&gt;：系统变更的正式流程&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文档标准&lt;/strong&gt;：维护当前系统文档&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;培训计划&lt;/strong&gt;：保持用户对系统变更的培训&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;性能指标&lt;/strong&gt;：监控系统和用户有效性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;高级配置&lt;span class="hx:absolute hx:-mt-20" id="高级配置"&gt;&lt;/span&gt;
+&lt;a href="#%e9%ab%98%e7%ba%a7%e9%85%8d%e7%bd%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;待办：添加高级系统配置指南&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;工作流程管理&lt;span class="hx:absolute hx:-mt-20" id="工作流程管理"&gt;&lt;/span&gt;
+&lt;a href="#%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8b%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;审批链&lt;/strong&gt;：多级审批流程&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;业务规则&lt;/strong&gt;：自动化业务逻辑执行&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;通知&lt;/strong&gt;：邮件和短信警报配置&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;升级程序&lt;/strong&gt;：处理过期任务和异常&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;自定义选项&lt;span class="hx:absolute hx:-mt-20" id="自定义选项"&gt;&lt;/span&gt;
+&lt;a href="#%e8%87%aa%e5%ae%9a%e4%b9%89%e9%80%89%e9%a1%b9" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;自定义字段&lt;/strong&gt;：添加业务特定数据字段&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;报告构建&lt;/strong&gt;：创建自定义报告和仪表板&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;用户界面&lt;/strong&gt;：自定义屏幕和布局&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;集成开发&lt;/strong&gt;：构建自定义集成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;性能监控&lt;span class="hx:absolute hx:-mt-20" id="性能监控"&gt;&lt;/span&gt;
+&lt;a href="#%e6%80%a7%e8%83%bd%e7%9b%91%e6%8e%a7" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;跟踪关键管理指标：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;指标&lt;/th&gt;
+&lt;th&gt;目标&lt;/th&gt;
+&lt;th&gt;监控方法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;系统正常运行时间&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&amp;gt; 99.5%&lt;/td&gt;
+&lt;td&gt;自动监控&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;用户登录问题&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&amp;lt; 2%的尝试&lt;/td&gt;
+&lt;td&gt;访问日志分析&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;数据备份成功&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;100%&lt;/td&gt;
+&lt;td&gt;备份验证&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;安全事件&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;每月0起&lt;/td&gt;
+&lt;td&gt;安全日志审查&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;用户满意度&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;&amp;gt; 90%&lt;/td&gt;
+&lt;td&gt;定期用户调查&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;管理员下一步&lt;span class="hx:absolute hx:-mt-20" id="管理员下一步"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ae%a1%e7%90%86%e5%91%98%e4%b8%8b%e4%b8%80%e6%ad%a5" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/reports-analytics/" &gt;报表和分析&lt;/a&gt;&lt;/strong&gt; - 学习创建管理报告&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/troubleshooting/" &gt;故障排除&lt;/a&gt;&lt;/strong&gt; - 掌握问题解决技术&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/best-practices/" &gt;最佳实践&lt;/a&gt;&lt;/strong&gt; - 实施优化策略&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/developers/" &gt;开发者资源&lt;/a&gt;&lt;/strong&gt; - 高级自定义选项&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;管理卓越&lt;/strong&gt;：成功的管理员在安全性、可用性和业务需求之间保持平衡，同时确保系统可靠性和合规性。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;获得管理帮助&lt;span class="hx:absolute hx:-mt-20" id="获得管理帮助"&gt;&lt;/span&gt;
+&lt;a href="#%e8%8e%b7%e5%be%97%e7%ae%a1%e7%90%86%e5%b8%ae%e5%8a%a9" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;📧 技术支持&lt;/strong&gt;：vincent@bigledger.com 系统管理问题&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;📚 管理文档&lt;/strong&gt;：详细的管理程序和指南&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;👥 管理社区&lt;/strong&gt;：与其他BigLedger管理员联系&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;🎓 管理培训&lt;/strong&gt;：系统管理员专业培训&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>分支机构组织小程序</title><link>https://wiki.bigledger.com/zh/applets/branch-organization-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/branch-organization-applet/</guid><description>
+&lt;p&gt;本部分涵盖侧边栏中的第二个主要选项卡&amp;quot;分支机构&amp;quot;，用户可以在其中创建和编辑分支机构的详细信息。
+一个公司可以有多个分支机构。
+用户可以选择从左侧边栏的第二个图标创建分支机构，或者转到公司列表编辑选项卡来创建分支机构。
+如何从侧边栏创建分支机构
+从公司列表选项卡创建分支机构
+本部分的第二个主题概述了编辑分支机构菜单中每个选项卡的功能，突出其改进分支机构配置的特性。&lt;/p&gt;
+&lt;h1&gt;创建分支机构&lt;/h1&gt;&lt;p&gt;用户可以创建多个分支机构，所有分支机构都链接到一个公司&lt;/p&gt;
+&lt;h2&gt;从侧边栏创建分支机构&lt;span class="hx:absolute hx:-mt-20" id="从侧边栏创建分支机构"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bb%8e%e4%be%a7%e8%be%b9%e6%a0%8f%e5%88%9b%e5%bb%ba%e5%88%86%e6%94%af%e6%9c%ba%e6%9e%84" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;左侧菜单栏的第二个图标是分支机构选项卡，允许用户手动为公司创建新的分支机构。用户可以按&amp;quot;+&amp;ldquo;按钮创建新的分支机构。
+按照以下说明填写详细信息选项卡中的所有必填字段。
+完成后，点击&amp;quot;保存&amp;quot;来保存分支机构详细信息。
+在设置分支机构时，用户可以选择&amp;quot;创建默认位置&amp;quot;或&amp;quot;从现有位置选择&amp;rdquo;。
+如果您在设置位置之前创建分支机构并选择&amp;quot;创建默认位置&amp;quot;，系统将自动创建一个默认位置。&lt;/p&gt;
+&lt;p&gt;详细信息选项卡中需要填写的字段包括：
+分支机构代码、分支机构名称
+公司名称：将分支机构链接到您的公司。这将显示为选定的公司名称
+公司注册号：显示为用户填写的内容
+分支机构开业日期
+货币：可以从下拉列表中选择不同的货币&lt;/p&gt;
+&lt;p&gt;如果用户在创建分支机构之前创建了位置，然后用户选择&amp;quot;从现有位置选择&amp;quot;，详细信息选项卡中需要的其他字段包括：
+位置代码
+默认位置&lt;/p&gt;
+&lt;p&gt;填写所有必要的详细信息后，点击&amp;quot;保存&amp;quot;来存储分支机构信息。
+按照之前的说明填写地址选项卡中的详细信息。
+确认所有信息后，点击&amp;quot;保存&amp;quot;按钮来存储分支机构详细信息。&lt;/p&gt;
+&lt;h2&gt;从公司列表选项卡创建分支机构&lt;span class="hx:absolute hx:-mt-20" id="从公司列表选项卡创建分支机构"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bb%8e%e5%85%ac%e5%8f%b8%e5%88%97%e8%a1%a8%e9%80%89%e9%a1%b9%e5%8d%a1%e5%88%9b%e5%bb%ba%e5%88%86%e6%94%af%e6%9c%ba%e6%9e%84" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;如果用户选择在公司列表页面为选定公司创建分支机构，他们将直接将分支机构链接到该公司。点击&amp;quot;+&amp;ldquo;号开始创建分支机构。
+在公司编辑中导航到分支机构选项卡，点击&amp;rdquo;+&amp;ldquo;按钮创建新的分支机构。
+从下拉列表中选择您要为其创建分支机构的公司。公司名称和公司注册号将根据您的选择自动填写。
+填写详细信息选项卡和地址中需要填写的必填字段。&lt;/p&gt;
+&lt;h1&gt;编辑分支机构&lt;/h1&gt;&lt;p&gt;从分支机构列表页面，点击您创建的分支机构以查看所有可用选项卡：&lt;/p&gt;
+&lt;p&gt;详细信息：本部分显示在2.1节中创建的主要分支机构详细信息，用户可以根据需要添加或编辑任何信息。&lt;/p&gt;
+&lt;p&gt;默认定价：是默认定价的配置。它可以按分支机构或公司设置。例如，如果您在东马来西亚和西马来西亚有不同的定价方案，您可以将东部分支机构定价应用于该地区的分支机构。&lt;/p&gt;
+&lt;p&gt;地址：查看和编辑分支机构地址。&lt;/p&gt;
+&lt;p&gt;拣选包装：用于资源订单。如果您使用交付选项，请填写；否则，您可以留空。&lt;/p&gt;
+&lt;p&gt;市场：用于EcomSync产品，它链接到您的市场，如Shopee和Lazada。这是您配置设置的地方。&lt;/p&gt;
+&lt;p&gt;位置：这里显示系统在设置分支机构时刚刚创建的默认位置。或者，您可以从现有位置中选择。&lt;/p&gt;
+&lt;p&gt;结算：这里您指定每个分支机构可以看到什么样的结算。每个分支机构可以有不同的结算。
+例如：现金、信用卡或马来亚银行。
+结算用于您的现金簿或POS，包括GrabPay或ShopeePay等支付选项。这是您配置它的地方。&lt;/p&gt;
+&lt;p&gt;标签：用于标记分支机构&lt;/p&gt;
+&lt;p&gt;扩展：用于CP商务&lt;/p&gt;
+&lt;p&gt;客户和供应商：将分支机构链接到特定的客户/供应商。在此配置时，交易将自动记录。此功能是公司间配置详细信息的一部分。&lt;/p&gt;
+&lt;p&gt;公司间：设置系统是否自动完成公司间交易或将其保留为草稿以供手动批准。您还可以配置是否创建销售发票应自动创建采购发票。这是管理自动配置设置的地方。&lt;/p&gt;</description></item><item><title>公司组织小程序</title><link>https://wiki.bigledger.com/zh/applets/company-organization-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/company-organization-applet/</guid><description>
+&lt;p&gt;登录组织小程序时，用户看到的第一个页面是左侧边栏第一个图标中的公司列表页面。
+在本节中，我们将涵盖两个关键主题：
+如何创建公司：设置公司详细信息和添加地址的分步指南。
+如何编辑公司：每个选项卡及其功能的概述，以增强公司配置。&lt;/p&gt;
+&lt;h1&gt;创建公司&lt;/h1&gt;&lt;p&gt;一个公司可以有多个子分支机构，此配置没有限制。
+要开始创建公司，用户可以点击位于左上角的&amp;quot;+&amp;ldquo;按钮。&lt;/p&gt;
+&lt;h2&gt;公司选项卡&lt;span class="hx:absolute hx:-mt-20" id="公司选项卡"&gt;&lt;/span&gt;
+&lt;a href="#%e5%85%ac%e5%8f%b8%e9%80%89%e9%a1%b9%e5%8d%a1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;创建公司&lt;span class="hx:absolute hx:-mt-20" id="创建公司-1"&gt;&lt;/span&gt;
+&lt;a href="#%e5%88%9b%e5%bb%ba%e5%85%ac%e5%8f%b8-1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;点击左上角的&amp;rdquo;+&amp;ldquo;按钮。
+用必要的信息填写所有必填字段。标有*的字段是必填的，之后无法修改。
+完成后，点击右上角的&amp;quot;保存&amp;rdquo;。
+请参考下面的屏幕截图以获取指导。
+步骤1：点击&amp;quot;+&amp;ldquo;按钮创建公司。
+步骤2和3：填写所有必填字段并点击&amp;quot;保存&amp;rdquo;。&lt;/p&gt;
+&lt;p&gt;在公司创建表单中，您需要填写以下字段：
+公司代码、名称、注册号：输入这些详细信息
+公司成立日期：公司成立时间
+税务ID、SST ID #：如果适用
+传真号码：如果适用
+电话号码：必填
+货币：从下拉列表中选择。
+会计科目表：在设置公司之前创建会计科目表。按照这里的步骤操作。一旦设置了会计科目表，从下拉菜单中选择合适的一个。
+五分舍入：如果需要 - 选择系统为交易自动填写的项目代码。
+团体折扣：您可以对整个交易应用折扣，或者系统可以自动选择项目代码。
+默认采购和销售退货选项：对于采购退货和销售退货，您可以选择类似的定价选项：
+最后采购价格：选择此选项以使用最后采购的价格进行退货。
+移动平均成本：如果您希望定价基于移动平均成本，请选择此选项。
+发票价格：最常用的选项，对退货应用相关采购或销售发票的价格。
+公司标志：用户可以立即上传公司标志或选择稍后上传。&lt;/p&gt;
+&lt;h2&gt;地址选项卡&lt;span class="hx:absolute hx:-mt-20" id="地址选项卡"&gt;&lt;/span&gt;
+&lt;a href="#%e5%9c%b0%e5%9d%80%e9%80%89%e9%a1%b9%e5%8d%a1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;创建公司时，用户需要填写地址详细信息。此信息对于准确的记录保持和通信目的至关重要。&lt;/p&gt;
+&lt;h3&gt;填写公司地址&lt;span class="hx:absolute hx:-mt-20" id="填写公司地址"&gt;&lt;/span&gt;
+&lt;a href="#%e5%a1%ab%e5%86%99%e5%85%ac%e5%8f%b8%e5%9c%b0%e5%9d%80" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;导航到地址选项卡。
+填写所有必填字段，包括邮政详细信息和国家信息。标有*的字段是必填的。
+完成后，点击右上角的&amp;quot;保存&amp;quot;来存储地址信息。
+请参考下面的屏幕截图以获取指导。
+步骤1、2：填写所需的地址详细信息并点击&amp;quot;保存&amp;quot;。&lt;/p&gt;
+&lt;p&gt;地址选项卡中必填的字段如下：
+地址第1行：主要地址详细信息
+地址第2行：附加地址详细信息
+地址第3行：可选附加行
+地址第4行：可选附加行
+地址第5行：可选附加行
+邮政编码：邮政编码
+城市：公司所在的城市
+国家：可以从下拉列表中选择不同的国家
+货币：从下拉列表中选择适用的货币
+省/州：从下拉列表中选择相关的省或地区&lt;/p&gt;
+&lt;h1&gt;编辑公司&lt;/h1&gt;&lt;p&gt;从公司列表页面，点击您创建的公司以查看所有可用选项卡：&lt;/p&gt;
+&lt;p&gt;详细信息：本部分显示在1.1节中创建的主要公司详细信息，用户可以根据需要添加或编辑任何信息。&lt;/p&gt;
+&lt;p&gt;电子发票：为公司配置向LHDN的电子开票&lt;/p&gt;
+&lt;p&gt;Peppol配置：如果使用Peppol，此选项卡用于配置中介机构。&lt;/p&gt;
+&lt;p&gt;税务：如果公司有SSD，此选项卡用于税务配置。&lt;/p&gt;
+&lt;p&gt;地址：显示在1.2节中创建的地址。用户可以根据需要编辑或添加其他信息。&lt;/p&gt;
+&lt;p&gt;分支机构：列出在选定公司下创建的所有分支机构。&lt;/p&gt;
+&lt;p&gt;位置：显示公司每个分支机构下的所有位置。&lt;/p&gt;
+&lt;p&gt;标签：用于标记公司，如按部门分组。&lt;/p&gt;
+&lt;p&gt;员工：显示公司下的员工列表。这与员工小程序相关联。&lt;/p&gt;
+&lt;h2&gt;冲销配置：&lt;span class="hx:absolute hx:-mt-20" id="冲销配置"&gt;&lt;/span&gt;
+&lt;a href="#%e5%86%b2%e9%94%80%e9%85%8d%e7%bd%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;什么是KO（冲销）？&lt;span class="hx:absolute hx:-mt-20" id="什么是ko冲销"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bb%80%e4%b9%88%e6%98%afko%e5%86%b2%e9%94%80" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;冲销（KO）配置用于公司需要管理涉及以下交易的文档发放跟踪：
+✅ 客户发票（例如，跟踪发票是否已完全支付）。
+✅ 供应商发票（例如，确保对供应商账单的付款得到正确记录）。
+本质上，KO有助于自动对帐已发放的发票和已收到的付款，防止财务记录中的差异。&lt;/p&gt;
+&lt;h3&gt;您应该何时配置KO？&lt;span class="hx:absolute hx:-mt-20" id="您应该何时配置ko"&gt;&lt;/span&gt;
+&lt;a href="#%e6%82%a8%e5%ba%94%e8%af%a5%e4%bd%95%e6%97%b6%e9%85%8d%e7%bd%aeko" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;配置KO是可选的，但在以下情况下可能是必要的：
+公司希望以自动化方式跟踪对发票的付款。
+业务要求在交易标记为完成之前进行文档发放验证。
+需要将发票发放链接到供应商/客户交易以进行内部处理。
+为公司配置工作流的关键设置。点击&amp;quot;+&amp;ldquo;按钮开始设置。
+服务器文档类型选项：设置公司工作流程的基础，例如配置采购订单流程，将其转换为采购GRN或发票，或设置销售流程（从销售订单到销售发票）。配置基于文档类型。
+用户需要选择服务器类型。服务器类型1指的是源文档，而服务器类型2指的是目标文档。&lt;/p&gt;
+&lt;p&gt;这是客户基本冲销（KO）设置流程的示例。例如，当用户创建发票时，将有两个冲销选项：销售订单和销售报价。
+这意味着在销售发票小程序中，在KO（冲销）选项卡下，用户将看到两个选项：销售订单和销售报价。
+用户可以从主选项卡页面启用或禁用冲销设置。
+KO（冲销）选项取决于客户配置和用户需求。如果需要，用户可以在组织小程序中创建或编辑公司详细信息时配置更多选项。&lt;/p&gt;
+&lt;h2&gt;高级筛选搜索&lt;span class="hx:absolute hx:-mt-20" id="高级筛选搜索"&gt;&lt;/span&gt;
+&lt;a href="#%e9%ab%98%e7%ba%a7%e7%ad%9b%e9%80%89%e6%90%9c%e7%b4%a2" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;高级筛选器允许您按公司、公司名称、注册号或状态进行搜索。每个子模块都包含此高级筛选选项。&lt;/p&gt;</description></item><item><title>会员管理控制台小程序</title><link>https://wiki.bigledger.com/zh/applets/membership-admin-console-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/membership-admin-console-applet/</guid><description>
+&lt;p&gt;1&lt;/p&gt;</description></item></channel></rss>

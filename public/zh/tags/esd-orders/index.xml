@@ -1,0 +1,9 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger 文档 – Esd-Orders</title><link>https://wiki.bigledger.com/zh/tags/esd-orders/</link><description>Recent content in Esd-Orders on BigLedger 文档</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://wiki.bigledger.com/zh/tags/esd-orders/index.xml" rel="self" type="application/rss+xml"/><item><title>VSTECS MS ESD 订单小程序</title><link>https://wiki.bigledger.com/zh/applets/vstecs-ms-esd-order-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/vstecs-ms-esd-order-applet/</guid><description>
+&lt;p&gt;附加 MS ESD 订单用户指南和实施工作分解。
+此小程序需要从 BLG 到 EMP 和 BLG 到分销商系统的集成才能正常运行。
+检查 MS ESD 产品 SKU 更新价格的 API。
+向分销商创建订单以检索 MS ESD 产品的 API。&lt;/p&gt;
+&lt;p&gt;**注意
+此集成目前有 2 个工作流：
+快捷方法：EMP 集成到 BLG（不使用 T2T 管理小程序）
+标准方法：T2T 管理小程序启用来宾和主机租户连接，文档项目维护小程序执行项目代码映射。&lt;/p&gt;</description></item></channel></rss>

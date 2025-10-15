@@ -1,386 +1,386 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Enterprise-Administration</title><link>https://wiki.bigledger.com/tags/enterprise-administration/</link><description>Recent content in Enterprise-Administration on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/enterprise-administration/index.xml" rel="self" type="application/rss+xml"/><item><title>T2T Admin Applet</title><link>https://wiki.bigledger.com/applets/t2t-admin-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/t2t-admin-applet/</guid><description>
-&lt;h2>Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview">&lt;/span>
-&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The T2T (Tenant-to-Tenant) Admin Applet is an advanced Core Module component designed for enterprise-level multi-tenant administration in BigLedger. This applet provides comprehensive tools for managing inter-tenant relationships, cross-tenant data sharing, and enterprise-wide administration across multiple organizational entities.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Core Module Applet&lt;/strong>: This is one of the 13 essential Core Module applets, specifically designed for enterprise environments with complex multi-tenant requirements and inter-organizational operations.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h3>Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions">&lt;/span>
-&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Multi-Tenant Administration&lt;/strong> - Centralized management of multiple tenants&lt;/li>
-&lt;li>&lt;strong>Inter-Tenant Relationships&lt;/strong> - Configure relationships between organizations&lt;/li>
-&lt;li>&lt;strong>Cross-Tenant Data Sharing&lt;/strong> - Controlled data sharing and synchronization&lt;/li>
-&lt;li>&lt;strong>Enterprise Consolidation&lt;/strong> - Multi-entity reporting and consolidation&lt;/li>
-&lt;li>&lt;strong>Tenant Lifecycle Management&lt;/strong> - Tenant provisioning, configuration, and decommissioning&lt;/li>
-&lt;/ul>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Multi-Tenant Management&lt;span class="hx:absolute hx:-mt-20" id="multi-tenant-management">&lt;/span>
-&lt;a href="#multi-tenant-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Centralized tenant administration console&lt;/li>
-&lt;li>Tenant hierarchy and relationship mapping&lt;/li>
-&lt;li>Cross-tenant user access management&lt;/li>
-&lt;li>Tenant-specific configuration and customization&lt;/li>
-&lt;li>Resource allocation and quota management&lt;/li>
-&lt;li>Tenant performance monitoring and analytics&lt;/li>
-&lt;/ul>
-&lt;h3>Inter-Tenant Operations&lt;span class="hx:absolute hx:-mt-20" id="inter-tenant-operations">&lt;/span>
-&lt;a href="#inter-tenant-operations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Cross-tenant transaction processing&lt;/li>
-&lt;li>Inter-company billing and settlements&lt;/li>
-&lt;li>Shared master data synchronization&lt;/li>
-&lt;li>Consolidated reporting across tenants&lt;/li>
-&lt;li>Cross-tenant workflow automation&lt;/li>
-&lt;li>Enterprise-wide audit and compliance&lt;/li>
-&lt;/ul>
-&lt;h3>Data Sharing and Security&lt;span class="hx:absolute hx:-mt-20" id="data-sharing-and-security">&lt;/span>
-&lt;a href="#data-sharing-and-security" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Granular data sharing permissions&lt;/li>
-&lt;li>Tenant data isolation and security&lt;/li>
-&lt;li>Cross-tenant data validation and integrity&lt;/li>
-&lt;li>Audit trails for inter-tenant operations&lt;/li>
-&lt;li>Compliance and regulatory reporting&lt;/li>
-&lt;li>Data residency and sovereignty controls&lt;/li>
-&lt;/ul>
-&lt;h3>Enterprise Consolidation&lt;span class="hx:absolute hx:-mt-20" id="enterprise-consolidation">&lt;/span>
-&lt;a href="#enterprise-consolidation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Multi-entity financial consolidation&lt;/li>
-&lt;li>Cross-tenant performance analytics&lt;/li>
-&lt;li>Enterprise-wide reporting dashboards&lt;/li>
-&lt;li>Consolidated compliance management&lt;/li>
-&lt;li>Group-level policy enforcement&lt;/li>
-&lt;li>Enterprise resource optimization&lt;/li>
-&lt;/ul>
-&lt;h3>Tenant Lifecycle Management&lt;span class="hx:absolute hx:-mt-20" id="tenant-lifecycle-management">&lt;/span>
-&lt;a href="#tenant-lifecycle-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Automated tenant provisioning&lt;/li>
-&lt;li>Tenant configuration templates&lt;/li>
-&lt;li>Tenant migration and data transfer&lt;/li>
-&lt;li>Tenant archival and decommissioning&lt;/li>
-&lt;li>Backup and disaster recovery coordination&lt;/li>
-&lt;li>Tenant health monitoring and maintenance&lt;/li>
-&lt;/ul>
-&lt;h2>Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications">&lt;/span>
-&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements">&lt;/span>
-&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Minimum Access Level&lt;/strong>: Enterprise Administrator&lt;/li>
-&lt;li>&lt;strong>Database Dependencies&lt;/strong>: Multi-tenant architecture tables&lt;/li>
-&lt;li>&lt;strong>Integration Points&lt;/strong>: All BigLedger modules across tenants&lt;/li>
-&lt;li>&lt;strong>API Availability&lt;/strong>: Enterprise-level administration APIs&lt;/li>
-&lt;li>&lt;strong>Security Standards&lt;/strong>: SOC 2, ISO 27001 compliance ready&lt;/li>
-&lt;/ul>
-&lt;h3>Multi-Tenant Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="multi-tenant-configuration-options">&lt;/span>
-&lt;a href="#multi-tenant-configuration-options" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Tenant Capacity&lt;/strong>: Up to 1,000 tenants per instance&lt;/li>
-&lt;li>&lt;strong>Cross-Tenant Users&lt;/strong>: Unlimited cross-tenant access assignments&lt;/li>
-&lt;li>&lt;strong>Data Sharing Rules&lt;/strong>: Granular permission management&lt;/li>
-&lt;li>&lt;strong>Consolidation Entities&lt;/strong>: Up to 100 consolidation hierarchies&lt;/li>
-&lt;li>&lt;strong>Custom Tenant Fields&lt;/strong>: 50+ custom fields per tenant&lt;/li>
-&lt;/ul>
-&lt;h3>Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters">&lt;/span>
-&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Tenant Management&lt;/strong>: Real-time tenant operations&lt;/li>
-&lt;li>&lt;strong>Data Synchronization&lt;/strong>: Near real-time cross-tenant sync&lt;/li>
-&lt;li>&lt;strong>Consolidation Processing&lt;/strong>: Large-scale data consolidation&lt;/li>
-&lt;li>&lt;strong>Concurrent Operations&lt;/strong>: 100+ simultaneous cross-tenant operations&lt;/li>
-&lt;li>&lt;strong>Report Generation&lt;/strong>: Enterprise-wide reports in minutes&lt;/li>
-&lt;/ul>
-&lt;h2>Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points">&lt;/span>
-&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies">&lt;/span>
-&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Tenant Admin Applet&lt;/strong> - Base tenant administration&lt;/li>
-&lt;li>&lt;strong>Organization Applet&lt;/strong> - Multi-organization structure&lt;/li>
-&lt;li>&lt;strong>Employee Maintenance Applet&lt;/strong> - Cross-tenant user management&lt;/li>
-&lt;li>&lt;strong>Chart of Account Applet&lt;/strong> - Consolidated chart of accounts&lt;/li>
-&lt;/ul>
-&lt;h3>Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration">&lt;/span>
-&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Module&lt;/th>
-&lt;th>Integration Purpose&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Financial Accounting&lt;/strong>&lt;/td>
-&lt;td>Multi-entity consolidation and reporting&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Sales &amp;amp; CRM&lt;/strong>&lt;/td>
-&lt;td>Cross-tenant customer and sales management&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Purchasing&lt;/strong>&lt;/td>
-&lt;td>Group purchasing and vendor management&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>HR &amp;amp; Payroll&lt;/strong>&lt;/td>
-&lt;td>Multi-entity employee management&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Manufacturing&lt;/strong>&lt;/td>
-&lt;td>Supply chain across multiple entities&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>E-Commerce&lt;/strong>&lt;/td>
-&lt;td>Multi-brand and multi-entity operations&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Project Management&lt;/strong>&lt;/td>
-&lt;td>Cross-entity project collaboration&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3>External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations">&lt;/span>
-&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Enterprise Systems&lt;/strong> - ERP, CRM, and HCM integration&lt;/li>
-&lt;li>&lt;strong>Identity Providers&lt;/strong> - LDAP, Active Directory, SAML SSO&lt;/li>
-&lt;li>&lt;strong>Data Warehouses&lt;/strong> - Enterprise data lake integration&lt;/li>
-&lt;li>&lt;strong>Business Intelligence&lt;/strong> - Enterprise analytics platforms&lt;/li>
-&lt;li>&lt;strong>Compliance Systems&lt;/strong> - Regulatory reporting platforms&lt;/li>
-&lt;li>&lt;strong>Cloud Services&lt;/strong> - Multi-cloud deployment support&lt;/li>
-&lt;/ul>
-&lt;h2>Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements">&lt;/span>
-&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements">&lt;/span>
-&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Enterprise Architecture&lt;/strong> - Define tenant relationships and hierarchies&lt;/li>
-&lt;li>&lt;strong>Security Policies&lt;/strong> - Configure cross-tenant security rules&lt;/li>
-&lt;li>&lt;strong>Data Sharing Rules&lt;/strong> - Define inter-tenant data sharing permissions&lt;/li>
-&lt;li>&lt;strong>Consolidation Structure&lt;/strong> - Set up enterprise consolidation hierarchy&lt;/li>
-&lt;li>&lt;strong>User Access Matrix&lt;/strong> - Configure cross-tenant user permissions&lt;/li>
-&lt;/ol>
-&lt;h3>Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations">&lt;/span>
-&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Tenant Types&lt;/strong>: Parent, Subsidiary, Division, Branch, Joint Venture&lt;/li>
-&lt;li>&lt;strong>Relationship Types&lt;/strong>: Ownership, Partnership, Service, Shared Services&lt;/li>
-&lt;li>&lt;strong>Data Classification&lt;/strong>: Public, Internal, Confidential, Restricted&lt;/li>
-&lt;li>&lt;strong>Access Levels&lt;/strong>: View, Edit, Full Control, Administrative&lt;/li>
-&lt;li>&lt;strong>Consolidation Rules&lt;/strong>: Currency, elimination, allocation rules&lt;/li>
-&lt;/ul>
-&lt;h3>Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations">&lt;/span>
-&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Complex Ownership Structures&lt;/strong> - Multi-level ownership hierarchies&lt;/li>
-&lt;li>&lt;strong>Regulatory Compliance&lt;/strong> - Industry-specific compliance requirements&lt;/li>
-&lt;li>&lt;strong>Geographic Restrictions&lt;/strong> - Data residency and sovereignty rules&lt;/li>
-&lt;li>&lt;strong>Custom Workflows&lt;/strong> - Inter-tenant approval and collaboration workflows&lt;/li>
-&lt;li>&lt;strong>Performance Optimization&lt;/strong> - Enterprise-scale performance tuning&lt;/li>
-&lt;/ul>
-&lt;h2>Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases">&lt;/span>
-&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Multi-National Corporation&lt;span class="hx:absolute hx:-mt-20" id="multi-national-corporation">&lt;/span>
-&lt;a href="#multi-national-corporation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Global corporation with subsidiaries in multiple countries&lt;/p>
-&lt;ul>
-&lt;li>Centralized administration of all country operations&lt;/li>
-&lt;li>Cross-border financial consolidation&lt;/li>
-&lt;li>Standardized processes across all entities&lt;/li>
-&lt;li>Compliance with multiple regulatory jurisdictions&lt;/li>
-&lt;li>Shared services center operations&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Unified global operations with local compliance&lt;/p>
-&lt;h3>Holding Company Structure&lt;span class="hx:absolute hx:-mt-20" id="holding-company-structure">&lt;/span>
-&lt;a href="#holding-company-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Investment holding company with diverse portfolio&lt;/p>
-&lt;ul>
-&lt;li>Portfolio company performance monitoring&lt;/li>
-&lt;li>Consolidated financial reporting&lt;/li>
-&lt;li>Shared administrative services&lt;/li>
-&lt;li>Investment performance analytics&lt;/li>
-&lt;li>Due diligence and compliance monitoring&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Comprehensive portfolio management and oversight&lt;/p>
-&lt;h3>Franchise Operations&lt;span class="hx:absolute hx:-mt-20" id="franchise-operations">&lt;/span>
-&lt;a href="#franchise-operations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Franchisor managing multiple franchise locations&lt;/p>
-&lt;ul>
-&lt;li>Centralized brand and operational standards&lt;/li>
-&lt;li>Franchisee performance monitoring&lt;/li>
-&lt;li>Shared supplier relationships and purchasing&lt;/li>
-&lt;li>Brand compliance and quality assurance&lt;/li>
-&lt;li>Consolidated marketing and promotion management&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Consistent franchise operations and brand management&lt;/p>
-&lt;h3>Professional Services Network&lt;span class="hx:absolute hx:-mt-20" id="professional-services-network">&lt;/span>
-&lt;a href="#professional-services-network" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Multi-partner professional services firm&lt;/p>
-&lt;ul>
-&lt;li>Partner firm collaboration and resource sharing&lt;/li>
-&lt;li>Shared client and project management&lt;/li>
-&lt;li>Consolidated billing and revenue sharing&lt;/li>
-&lt;li>Knowledge management and best practice sharing&lt;/li>
-&lt;li>Joint marketing and business development&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Enhanced collaboration and resource optimization&lt;/p>
-&lt;h2>Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets">&lt;/span>
-&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets">&lt;/span>
-&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/tenant-admin-applet/" >Tenant Admin Applet&lt;/a>&lt;/strong> - Base tenant administration&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" >Organization Applet&lt;/a>&lt;/strong> - Organizational structure&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/employee-maintenance-applet/" >Employee Maintenance Applet&lt;/a>&lt;/strong> - Cross-tenant users&lt;/li>
-&lt;/ul>
-&lt;h3>Enterprise Management Applets&lt;span class="hx:absolute hx:-mt-20" id="enterprise-management-applets">&lt;/span>
-&lt;a href="#enterprise-management-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/consolidation-applet/" >Consolidation Applet&lt;/a>&lt;/strong> - Financial consolidation&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/enterprise-reporting-applet/" >Enterprise Reporting Applet&lt;/a>&lt;/strong> - Cross-tenant reporting&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/compliance-management-applet/" >Compliance Management Applet&lt;/a>&lt;/strong> - Enterprise compliance&lt;/li>
-&lt;/ul>
-&lt;h3>Integration Applets&lt;span class="hx:absolute hx:-mt-20" id="integration-applets">&lt;/span>
-&lt;a href="#integration-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/data-sync-applet/" >Data Synchronization Applet&lt;/a>&lt;/strong> - Cross-tenant data sync&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/api-gateway-applet/" >API Gateway Applet&lt;/a>&lt;/strong> - Enterprise API management&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/security-management-applet/" >Security Management Applet&lt;/a>&lt;/strong> - Enterprise security&lt;/li>
-&lt;/ul>
-&lt;h2>Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide">&lt;/span>
-&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start">&lt;/span>
-&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Access T2T Admin Console&lt;/strong> - Navigate to the applet&lt;/li>
-&lt;li>&lt;strong>Define Tenant Relationships&lt;/strong> - Configure organizational structure&lt;/li>
-&lt;li>&lt;strong>Set Up Data Sharing Rules&lt;/strong> - Configure cross-tenant permissions&lt;/li>
-&lt;li>&lt;strong>Configure User Access&lt;/strong> - Set up cross-tenant user assignments&lt;/li>
-&lt;li>&lt;strong>Test Inter-Tenant Operations&lt;/strong> - Verify functionality with test scenarios&lt;/li>
-&lt;/ol>
-&lt;h3>Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup">&lt;/span>
-&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Complex Hierarchy Configuration&lt;/strong> - Set up multi-level structures&lt;/li>
-&lt;li>&lt;strong>Consolidation Rules Setup&lt;/strong> - Configure financial consolidation&lt;/li>
-&lt;li>&lt;strong>Compliance Framework Setup&lt;/strong> - Configure regulatory compliance&lt;/li>
-&lt;li>&lt;strong>Performance Optimization&lt;/strong> - Optimize for enterprise scale&lt;/li>
-&lt;li>&lt;strong>Disaster Recovery Planning&lt;/strong> - Configure enterprise-wide backup&lt;/li>
-&lt;/ol>
-&lt;h2>T2T Configuration Examples&lt;span class="hx:absolute hx:-mt-20" id="t2t-configuration-examples">&lt;/span>
-&lt;a href="#t2t-configuration-examples" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Holding Company Structure&lt;span class="hx:absolute hx:-mt-20" id="holding-company-structure-1">&lt;/span>
-&lt;a href="#holding-company-structure-1" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Enterprise&lt;/span>: &lt;span style="color:#ae81ff">Global Holdings Inc.&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Tenant Hierarchy&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Parent&lt;/span>: &lt;span style="color:#ae81ff">Global Holdings Inc. (HQ)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Subsidiaries&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Manufacturing Division (US)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">European Operations (EU)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Asia Pacific (APAC)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Shared Services Center (SSC)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Relationships&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Type&lt;/span>: &lt;span style="color:#ae81ff">Ownership (100%)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Parent&lt;/span>: &lt;span style="color:#ae81ff">Global Holdings Inc.&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Subsidiaries&lt;/span>: &lt;span style="color:#ae81ff">All divisions&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Type&lt;/span>: &lt;span style="color:#ae81ff">Shared Services&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Provider&lt;/span>: &lt;span style="color:#ae81ff">Shared Services Center&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Recipients&lt;/span>: &lt;span style="color:#ae81ff">All divisions&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Data Sharing Rules&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Financial Data&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">HQ&lt;/span>: &lt;span style="color:#ae81ff">Full access to all subsidiary data&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Subsidiaries&lt;/span>: &lt;span style="color:#ae81ff">Access to own data + shared services&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">SSC&lt;/span>: &lt;span style="color:#ae81ff">Access to administrative data only&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Operational Data&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Manufacturing&lt;/span>: &lt;span style="color:#ae81ff">Product and inventory data&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Sales Divisions&lt;/span>: &lt;span style="color:#ae81ff">Customer and sales data&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Cross-pollination&lt;/span>: &lt;span style="color:#ae81ff">Approved master data only&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&lt;h2&gt;Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview"&gt;&lt;/span&gt;
+&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The T2T (Tenant-to-Tenant) Admin Applet is an advanced Core Module component designed for enterprise-level multi-tenant administration in BigLedger. This applet provides comprehensive tools for managing inter-tenant relationships, cross-tenant data sharing, and enterprise-wide administration across multiple organizational entities.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Core Module Applet&lt;/strong&gt;: This is one of the 13 essential Core Module applets, specifically designed for enterprise environments with complex multi-tenant requirements and inter-organizational operations.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions"&gt;&lt;/span&gt;
+&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Tenant Administration&lt;/strong&gt; - Centralized management of multiple tenants&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inter-Tenant Relationships&lt;/strong&gt; - Configure relationships between organizations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cross-Tenant Data Sharing&lt;/strong&gt; - Controlled data sharing and synchronization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Enterprise Consolidation&lt;/strong&gt; - Multi-entity reporting and consolidation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tenant Lifecycle Management&lt;/strong&gt; - Tenant provisioning, configuration, and decommissioning&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Multi-Tenant Management&lt;span class="hx:absolute hx:-mt-20" id="multi-tenant-management"&gt;&lt;/span&gt;
+&lt;a href="#multi-tenant-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Centralized tenant administration console&lt;/li&gt;
+&lt;li&gt;Tenant hierarchy and relationship mapping&lt;/li&gt;
+&lt;li&gt;Cross-tenant user access management&lt;/li&gt;
+&lt;li&gt;Tenant-specific configuration and customization&lt;/li&gt;
+&lt;li&gt;Resource allocation and quota management&lt;/li&gt;
+&lt;li&gt;Tenant performance monitoring and analytics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Inter-Tenant Operations&lt;span class="hx:absolute hx:-mt-20" id="inter-tenant-operations"&gt;&lt;/span&gt;
+&lt;a href="#inter-tenant-operations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Cross-tenant transaction processing&lt;/li&gt;
+&lt;li&gt;Inter-company billing and settlements&lt;/li&gt;
+&lt;li&gt;Shared master data synchronization&lt;/li&gt;
+&lt;li&gt;Consolidated reporting across tenants&lt;/li&gt;
+&lt;li&gt;Cross-tenant workflow automation&lt;/li&gt;
+&lt;li&gt;Enterprise-wide audit and compliance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Data Sharing and Security&lt;span class="hx:absolute hx:-mt-20" id="data-sharing-and-security"&gt;&lt;/span&gt;
+&lt;a href="#data-sharing-and-security" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Granular data sharing permissions&lt;/li&gt;
+&lt;li&gt;Tenant data isolation and security&lt;/li&gt;
+&lt;li&gt;Cross-tenant data validation and integrity&lt;/li&gt;
+&lt;li&gt;Audit trails for inter-tenant operations&lt;/li&gt;
+&lt;li&gt;Compliance and regulatory reporting&lt;/li&gt;
+&lt;li&gt;Data residency and sovereignty controls&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Enterprise Consolidation&lt;span class="hx:absolute hx:-mt-20" id="enterprise-consolidation"&gt;&lt;/span&gt;
+&lt;a href="#enterprise-consolidation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Multi-entity financial consolidation&lt;/li&gt;
+&lt;li&gt;Cross-tenant performance analytics&lt;/li&gt;
+&lt;li&gt;Enterprise-wide reporting dashboards&lt;/li&gt;
+&lt;li&gt;Consolidated compliance management&lt;/li&gt;
+&lt;li&gt;Group-level policy enforcement&lt;/li&gt;
+&lt;li&gt;Enterprise resource optimization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Tenant Lifecycle Management&lt;span class="hx:absolute hx:-mt-20" id="tenant-lifecycle-management"&gt;&lt;/span&gt;
+&lt;a href="#tenant-lifecycle-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Automated tenant provisioning&lt;/li&gt;
+&lt;li&gt;Tenant configuration templates&lt;/li&gt;
+&lt;li&gt;Tenant migration and data transfer&lt;/li&gt;
+&lt;li&gt;Tenant archival and decommissioning&lt;/li&gt;
+&lt;li&gt;Backup and disaster recovery coordination&lt;/li&gt;
+&lt;li&gt;Tenant health monitoring and maintenance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications"&gt;&lt;/span&gt;
+&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements"&gt;&lt;/span&gt;
+&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Minimum Access Level&lt;/strong&gt;: Enterprise Administrator&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Dependencies&lt;/strong&gt;: Multi-tenant architecture tables&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Points&lt;/strong&gt;: All BigLedger modules across tenants&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Availability&lt;/strong&gt;: Enterprise-level administration APIs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security Standards&lt;/strong&gt;: SOC 2, ISO 27001 compliance ready&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Multi-Tenant Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="multi-tenant-configuration-options"&gt;&lt;/span&gt;
+&lt;a href="#multi-tenant-configuration-options" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tenant Capacity&lt;/strong&gt;: Up to 1,000 tenants per instance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cross-Tenant Users&lt;/strong&gt;: Unlimited cross-tenant access assignments&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Sharing Rules&lt;/strong&gt;: Granular permission management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Consolidation Entities&lt;/strong&gt;: Up to 100 consolidation hierarchies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Tenant Fields&lt;/strong&gt;: 50+ custom fields per tenant&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters"&gt;&lt;/span&gt;
+&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tenant Management&lt;/strong&gt;: Real-time tenant operations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Synchronization&lt;/strong&gt;: Near real-time cross-tenant sync&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Consolidation Processing&lt;/strong&gt;: Large-scale data consolidation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Concurrent Operations&lt;/strong&gt;: 100+ simultaneous cross-tenant operations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Report Generation&lt;/strong&gt;: Enterprise-wide reports in minutes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points"&gt;&lt;/span&gt;
+&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies"&gt;&lt;/span&gt;
+&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tenant Admin Applet&lt;/strong&gt; - Base tenant administration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Organization Applet&lt;/strong&gt; - Multi-organization structure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Employee Maintenance Applet&lt;/strong&gt; - Cross-tenant user management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chart of Account Applet&lt;/strong&gt; - Consolidated chart of accounts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration"&gt;&lt;/span&gt;
+&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Module&lt;/th&gt;
+&lt;th&gt;Integration Purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Financial Accounting&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Multi-entity consolidation and reporting&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Sales &amp;amp; CRM&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Cross-tenant customer and sales management&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Purchasing&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Group purchasing and vendor management&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;HR &amp;amp; Payroll&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Multi-entity employee management&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Manufacturing&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Supply chain across multiple entities&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;E-Commerce&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Multi-brand and multi-entity operations&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Project Management&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Cross-entity project collaboration&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations"&gt;&lt;/span&gt;
+&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Enterprise Systems&lt;/strong&gt; - ERP, CRM, and HCM integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Identity Providers&lt;/strong&gt; - LDAP, Active Directory, SAML SSO&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Warehouses&lt;/strong&gt; - Enterprise data lake integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Business Intelligence&lt;/strong&gt; - Enterprise analytics platforms&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance Systems&lt;/strong&gt; - Regulatory reporting platforms&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cloud Services&lt;/strong&gt; - Multi-cloud deployment support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements"&gt;&lt;/span&gt;
+&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements"&gt;&lt;/span&gt;
+&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Enterprise Architecture&lt;/strong&gt; - Define tenant relationships and hierarchies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security Policies&lt;/strong&gt; - Configure cross-tenant security rules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Sharing Rules&lt;/strong&gt; - Define inter-tenant data sharing permissions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Consolidation Structure&lt;/strong&gt; - Set up enterprise consolidation hierarchy&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;User Access Matrix&lt;/strong&gt; - Configure cross-tenant user permissions&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations"&gt;&lt;/span&gt;
+&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tenant Types&lt;/strong&gt;: Parent, Subsidiary, Division, Branch, Joint Venture&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Relationship Types&lt;/strong&gt;: Ownership, Partnership, Service, Shared Services&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Classification&lt;/strong&gt;: Public, Internal, Confidential, Restricted&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Access Levels&lt;/strong&gt;: View, Edit, Full Control, Administrative&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Consolidation Rules&lt;/strong&gt;: Currency, elimination, allocation rules&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations"&gt;&lt;/span&gt;
+&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Complex Ownership Structures&lt;/strong&gt; - Multi-level ownership hierarchies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regulatory Compliance&lt;/strong&gt; - Industry-specific compliance requirements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Geographic Restrictions&lt;/strong&gt; - Data residency and sovereignty rules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Workflows&lt;/strong&gt; - Inter-tenant approval and collaboration workflows&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Optimization&lt;/strong&gt; - Enterprise-scale performance tuning&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases"&gt;&lt;/span&gt;
+&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Multi-National Corporation&lt;span class="hx:absolute hx:-mt-20" id="multi-national-corporation"&gt;&lt;/span&gt;
+&lt;a href="#multi-national-corporation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Global corporation with subsidiaries in multiple countries&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Centralized administration of all country operations&lt;/li&gt;
+&lt;li&gt;Cross-border financial consolidation&lt;/li&gt;
+&lt;li&gt;Standardized processes across all entities&lt;/li&gt;
+&lt;li&gt;Compliance with multiple regulatory jurisdictions&lt;/li&gt;
+&lt;li&gt;Shared services center operations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Unified global operations with local compliance&lt;/p&gt;
+&lt;h3&gt;Holding Company Structure&lt;span class="hx:absolute hx:-mt-20" id="holding-company-structure"&gt;&lt;/span&gt;
+&lt;a href="#holding-company-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Investment holding company with diverse portfolio&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Portfolio company performance monitoring&lt;/li&gt;
+&lt;li&gt;Consolidated financial reporting&lt;/li&gt;
+&lt;li&gt;Shared administrative services&lt;/li&gt;
+&lt;li&gt;Investment performance analytics&lt;/li&gt;
+&lt;li&gt;Due diligence and compliance monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Comprehensive portfolio management and oversight&lt;/p&gt;
+&lt;h3&gt;Franchise Operations&lt;span class="hx:absolute hx:-mt-20" id="franchise-operations"&gt;&lt;/span&gt;
+&lt;a href="#franchise-operations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Franchisor managing multiple franchise locations&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Centralized brand and operational standards&lt;/li&gt;
+&lt;li&gt;Franchisee performance monitoring&lt;/li&gt;
+&lt;li&gt;Shared supplier relationships and purchasing&lt;/li&gt;
+&lt;li&gt;Brand compliance and quality assurance&lt;/li&gt;
+&lt;li&gt;Consolidated marketing and promotion management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Consistent franchise operations and brand management&lt;/p&gt;
+&lt;h3&gt;Professional Services Network&lt;span class="hx:absolute hx:-mt-20" id="professional-services-network"&gt;&lt;/span&gt;
+&lt;a href="#professional-services-network" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Multi-partner professional services firm&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Partner firm collaboration and resource sharing&lt;/li&gt;
+&lt;li&gt;Shared client and project management&lt;/li&gt;
+&lt;li&gt;Consolidated billing and revenue sharing&lt;/li&gt;
+&lt;li&gt;Knowledge management and best practice sharing&lt;/li&gt;
+&lt;li&gt;Joint marketing and business development&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Enhanced collaboration and resource optimization&lt;/p&gt;
+&lt;h2&gt;Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets"&gt;&lt;/span&gt;
+&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets"&gt;&lt;/span&gt;
+&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/tenant-admin-applet/" &gt;Tenant Admin Applet&lt;/a&gt;&lt;/strong&gt; - Base tenant administration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" &gt;Organization Applet&lt;/a&gt;&lt;/strong&gt; - Organizational structure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/employee-maintenance-applet/" &gt;Employee Maintenance Applet&lt;/a&gt;&lt;/strong&gt; - Cross-tenant users&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Enterprise Management Applets&lt;span class="hx:absolute hx:-mt-20" id="enterprise-management-applets"&gt;&lt;/span&gt;
+&lt;a href="#enterprise-management-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/consolidation-applet/" &gt;Consolidation Applet&lt;/a&gt;&lt;/strong&gt; - Financial consolidation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/enterprise-reporting-applet/" &gt;Enterprise Reporting Applet&lt;/a&gt;&lt;/strong&gt; - Cross-tenant reporting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/compliance-management-applet/" &gt;Compliance Management Applet&lt;/a&gt;&lt;/strong&gt; - Enterprise compliance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Integration Applets&lt;span class="hx:absolute hx:-mt-20" id="integration-applets"&gt;&lt;/span&gt;
+&lt;a href="#integration-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/data-sync-applet/" &gt;Data Synchronization Applet&lt;/a&gt;&lt;/strong&gt; - Cross-tenant data sync&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/api-gateway-applet/" &gt;API Gateway Applet&lt;/a&gt;&lt;/strong&gt; - Enterprise API management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/security-management-applet/" &gt;Security Management Applet&lt;/a&gt;&lt;/strong&gt; - Enterprise security&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide"&gt;&lt;/span&gt;
+&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start"&gt;&lt;/span&gt;
+&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Access T2T Admin Console&lt;/strong&gt; - Navigate to the applet&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Define Tenant Relationships&lt;/strong&gt; - Configure organizational structure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Set Up Data Sharing Rules&lt;/strong&gt; - Configure cross-tenant permissions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configure User Access&lt;/strong&gt; - Set up cross-tenant user assignments&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test Inter-Tenant Operations&lt;/strong&gt; - Verify functionality with test scenarios&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup"&gt;&lt;/span&gt;
+&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Complex Hierarchy Configuration&lt;/strong&gt; - Set up multi-level structures&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Consolidation Rules Setup&lt;/strong&gt; - Configure financial consolidation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance Framework Setup&lt;/strong&gt; - Configure regulatory compliance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Optimization&lt;/strong&gt; - Optimize for enterprise scale&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Disaster Recovery Planning&lt;/strong&gt; - Configure enterprise-wide backup&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;T2T Configuration Examples&lt;span class="hx:absolute hx:-mt-20" id="t2t-configuration-examples"&gt;&lt;/span&gt;
+&lt;a href="#t2t-configuration-examples" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Holding Company Structure&lt;span class="hx:absolute hx:-mt-20" id="holding-company-structure-1"&gt;&lt;/span&gt;
+&lt;a href="#holding-company-structure-1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Enterprise&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Global Holdings Inc.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Tenant Hierarchy&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Parent&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Global Holdings Inc. (HQ)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Subsidiaries&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Manufacturing Division (US)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;European Operations (EU)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Asia Pacific (APAC)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Shared Services Center (SSC)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Relationships&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Ownership (100%)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Parent&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Global Holdings Inc.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Subsidiaries&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;All divisions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Shared Services&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Provider&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Shared Services Center&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Recipients&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;All divisions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Data Sharing Rules&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Financial Data&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;HQ&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Full access to all subsidiary data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Subsidiaries&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Access to own data + shared services&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;SSC&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Access to administrative data only&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Operational Data&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Manufacturing&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Product and inventory data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Sales Divisions&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Customer and sales data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Cross-pollination&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Approved master data only&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Multi-Brand Retail Operations&lt;span class="hx:absolute hx:-mt-20" id="multi-brand-retail-operations">&lt;/span>
-&lt;a href="#multi-brand-retail-operations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Enterprise&lt;/span>: &lt;span style="color:#ae81ff">Retail Group Corp.&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Tenant Structure&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Brands&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Premium Brand A&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Mid-Market Brand B&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Budget Brand C&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Functions&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Central Purchasing&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Distribution Centers&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">IT Services&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Finance &amp;amp; Accounting&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Cross-Tenant Operations&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Purchasing&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Central negotiation for all brands&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Brand-specific product selections&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Shared supplier relationships&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Inventory&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Brand-specific inventory management&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Shared distribution infrastructure&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Cross-brand inventory transfers&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Financial&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Brand-specific P&amp;amp;L&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Consolidated group reporting&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Shared cost allocation&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Multi-Brand Retail Operations&lt;span class="hx:absolute hx:-mt-20" id="multi-brand-retail-operations"&gt;&lt;/span&gt;
+&lt;a href="#multi-brand-retail-operations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Enterprise&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Retail Group Corp.&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Tenant Structure&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Brands&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Premium Brand A&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Mid-Market Brand B&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Budget Brand C&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Functions&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Central Purchasing&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Distribution Centers&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;IT Services&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Finance &amp;amp; Accounting&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Cross-Tenant Operations&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Purchasing&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Central negotiation for all brands&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Brand-specific product selections&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Shared supplier relationships&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Inventory&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Brand-specific inventory management&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Shared distribution infrastructure&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Cross-brand inventory transfers&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Financial&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Brand-specific P&amp;amp;L&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Consolidated group reporting&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Shared cost allocation&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h2>Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices">&lt;/span>
-&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Multi-Tenant Architecture Best Practices&lt;span class="hx:absolute hx:-mt-20" id="multi-tenant-architecture-best-practices">&lt;/span>
-&lt;a href="#multi-tenant-architecture-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Clear Hierarchy Definition&lt;/strong> - Well-defined tenant relationships&lt;/li>
-&lt;li>&lt;strong>Data Isolation&lt;/strong> - Proper tenant data segregation&lt;/li>
-&lt;li>&lt;strong>Security by Design&lt;/strong> - Security built into architecture&lt;/li>
-&lt;li>&lt;strong>Scalability Planning&lt;/strong> - Design for enterprise growth&lt;/li>
-&lt;li>&lt;strong>Documentation&lt;/strong> - Comprehensive architecture documentation&lt;/li>
-&lt;/ul>
-&lt;h3>Cross-Tenant Operations Best Practices&lt;span class="hx:absolute hx:-mt-20" id="cross-tenant-operations-best-practices">&lt;/span>
-&lt;a href="#cross-tenant-operations-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Controlled Access&lt;/strong> - Principle of least privilege&lt;/li>
-&lt;li>&lt;strong>Audit Everything&lt;/strong> - Complete inter-tenant audit trails&lt;/li>
-&lt;li>&lt;strong>Performance Monitoring&lt;/strong> - Continuous performance optimization&lt;/li>
-&lt;li>&lt;strong>Change Management&lt;/strong> - Proper change control procedures&lt;/li>
-&lt;li>&lt;strong>Disaster Recovery&lt;/strong> - Enterprise-wide backup and recovery&lt;/li>
-&lt;/ul>
-&lt;h3>Compliance and Governance Best Practices&lt;span class="hx:absolute hx:-mt-20" id="compliance-and-governance-best-practices">&lt;/span>
-&lt;a href="#compliance-and-governance-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Regulatory Alignment&lt;/strong> - Compliance with all applicable regulations&lt;/li>
-&lt;li>&lt;strong>Policy Enforcement&lt;/strong> - Consistent policy application&lt;/li>
-&lt;li>&lt;strong>Risk Management&lt;/strong> - Enterprise-wide risk assessment&lt;/li>
-&lt;li>&lt;strong>Regular Audits&lt;/strong> - Periodic compliance and security audits&lt;/li>
-&lt;li>&lt;strong>Incident Response&lt;/strong> - Coordinated incident response procedures&lt;/li>
-&lt;/ul>
-&lt;h2>Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting">&lt;/span>
-&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues">&lt;/span>
-&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Cross-tenant access problems&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Check user permissions and role assignments&lt;/li>
-&lt;li>Verify tenant relationship configurations&lt;/li>
-&lt;li>Review data sharing rule settings&lt;/li>
-&lt;li>Confirm tenant status and activation&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Data synchronization failures&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Check network connectivity between tenants&lt;/li>
-&lt;li>Verify data mapping and transformation rules&lt;/li>
-&lt;li>Review synchronization schedules and triggers&lt;/li>
-&lt;li>Confirm data validation and integrity checks&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Consolidation reporting issues&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Verify consolidation rule configurations&lt;/li>
-&lt;li>Check currency conversion and elimination rules&lt;/li>
-&lt;li>Review data source connectivity and mappings&lt;/li>
-&lt;li>Confirm reporting hierarchy and relationships&lt;/li>
-&lt;/ul>
-&lt;h3>Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources">&lt;/span>
-&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Multi-tenant architecture design guide&lt;/li>
-&lt;li>Cross-tenant operations implementation guide&lt;/li>
-&lt;li>Enterprise compliance and governance documentation&lt;/li>
-&lt;li>Performance optimization and troubleshooting guide&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Enterprise Critical&lt;/strong>: T2T operations affect multiple organizational entities. Changes should be carefully planned, tested, and implemented with proper change management procedures.&lt;/div>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices"&gt;&lt;/span&gt;
+&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Multi-Tenant Architecture Best Practices&lt;span class="hx:absolute hx:-mt-20" id="multi-tenant-architecture-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#multi-tenant-architecture-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Clear Hierarchy Definition&lt;/strong&gt; - Well-defined tenant relationships&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Isolation&lt;/strong&gt; - Proper tenant data segregation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security by Design&lt;/strong&gt; - Security built into architecture&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Scalability Planning&lt;/strong&gt; - Design for enterprise growth&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt; - Comprehensive architecture documentation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Cross-Tenant Operations Best Practices&lt;span class="hx:absolute hx:-mt-20" id="cross-tenant-operations-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#cross-tenant-operations-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Controlled Access&lt;/strong&gt; - Principle of least privilege&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Audit Everything&lt;/strong&gt; - Complete inter-tenant audit trails&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Monitoring&lt;/strong&gt; - Continuous performance optimization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Change Management&lt;/strong&gt; - Proper change control procedures&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Disaster Recovery&lt;/strong&gt; - Enterprise-wide backup and recovery&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Compliance and Governance Best Practices&lt;span class="hx:absolute hx:-mt-20" id="compliance-and-governance-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#compliance-and-governance-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Regulatory Alignment&lt;/strong&gt; - Compliance with all applicable regulations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Policy Enforcement&lt;/strong&gt; - Consistent policy application&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Risk Management&lt;/strong&gt; - Enterprise-wide risk assessment&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regular Audits&lt;/strong&gt; - Periodic compliance and security audits&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Incident Response&lt;/strong&gt; - Coordinated incident response procedures&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues"&gt;&lt;/span&gt;
+&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Cross-tenant access problems&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check user permissions and role assignments&lt;/li&gt;
+&lt;li&gt;Verify tenant relationship configurations&lt;/li&gt;
+&lt;li&gt;Review data sharing rule settings&lt;/li&gt;
+&lt;li&gt;Confirm tenant status and activation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Data synchronization failures&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check network connectivity between tenants&lt;/li&gt;
+&lt;li&gt;Verify data mapping and transformation rules&lt;/li&gt;
+&lt;li&gt;Review synchronization schedules and triggers&lt;/li&gt;
+&lt;li&gt;Confirm data validation and integrity checks&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Consolidation reporting issues&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Verify consolidation rule configurations&lt;/li&gt;
+&lt;li&gt;Check currency conversion and elimination rules&lt;/li&gt;
+&lt;li&gt;Review data source connectivity and mappings&lt;/li&gt;
+&lt;li&gt;Confirm reporting hierarchy and relationships&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources"&gt;&lt;/span&gt;
+&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Multi-tenant architecture design guide&lt;/li&gt;
+&lt;li&gt;Cross-tenant operations implementation guide&lt;/li&gt;
+&lt;li&gt;Enterprise compliance and governance documentation&lt;/li&gt;
+&lt;li&gt;Performance optimization and troubleshooting guide&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Enterprise Critical&lt;/strong&gt;: T2T operations affect multiple organizational entities. Changes should be carefully planned, tested, and implemented with proper change management procedures.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

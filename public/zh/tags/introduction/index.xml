@@ -1,0 +1,18 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger 文档 – Introduction</title><link>https://wiki.bigledger.com/zh/tags/introduction/</link><description>Recent content in Introduction on BigLedger 文档</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://wiki.bigledger.com/zh/tags/introduction/index.xml" rel="self" type="application/rss+xml"/><item><title>团队维护小程序介绍</title><link>https://wiki.bigledger.com/zh/applets/introduction-to-team-maintenance-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/introduction-to-team-maintenance-applet/</guid><description>
+&lt;p&gt;介绍
+团队维护小程序用于管理团队的用户和权限。该小程序只有一个模块，即&amp;quot;团队&amp;quot;。
+步骤：安装 &amp;gt; 创建团队 &amp;gt; 编辑团队（添加成员、导入用户、添加权限）&lt;/p&gt;</description></item><item><title>会员管理控制台小程序介绍</title><link>https://wiki.bigledger.com/zh/applets/introduction-to-membership-admin-console-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/introduction-to-membership-admin-console-applet/</guid><description>
+&lt;p&gt;介绍
+此小程序用于配置和管理会员和积分货币，例如标记、分类会员以及设置不同积分货币的兑换率。该小程序包含七个模块，分别是会员列表、会员类别、会员标签、会员标签列表、积分货币（PTS CCY）、积分到积分货币配置（PTS to PTS），以及积分到货币兑换配置（PTS to CCY）。
+步骤：安装 &amp;gt; 创建会员 &amp;gt; 创建会员类别 &amp;gt; 创建会员标签列表 &amp;gt; 创建或编辑会员标签 &amp;gt; 创建积分货币 &amp;gt; 创建积分到积分货币配置 &amp;gt; 创建积分到货币兑换配置 &amp;gt; 编辑会员（类别、标签和积分交易）&lt;/p&gt;</description></item><item><title>盘点小程序介绍</title><link>https://wiki.bigledger.com/zh/applets/introduction-to-stock-take-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/introduction-to-stock-take-applet/</guid><description>
+&lt;p&gt;盘点小程序为您的所有库存管理需求提供一站式解决方案，为可追溯性和高效库存控制提供您所需的一切。
+关键功能：
+集中化解决方案：在一个地方管理所有库存数据，减少处理多个系统的复杂性。
+移动友好界面：随时随地进行库存盘点和管理库存。
+完全可定制：轻松处理多计量单位产品，更详细地跟踪不同单位的库存水平。
+智能库存：减少人工干预并最大化减少错误。
+序列号跟踪：按批次或序列号跟踪和追踪库存差异。
+实时报告：任何输入的数据都会立即反映在实时报告中。&lt;/p&gt;
+&lt;h3&gt;开始使用盘点小程序&lt;span class="hx:absolute hx:-mt-20" id="开始使用盘点小程序"&gt;&lt;/span&gt;
+&lt;a href="#%e5%bc%80%e5%a7%8b%e4%bd%bf%e7%94%a8%e7%9b%98%e7%82%b9%e5%b0%8f%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要开始使用盘点小程序，请确保已完成创建目录、安装小程序和管理用户的所有步骤。有关详细说明，请参阅常规设置指南。
+安装后，用户可以在Akaun主页上找到盘点小程序并开始使用它进行库存管理。以下是盘点小程序的图标。&lt;/p&gt;</description></item></channel></rss>
