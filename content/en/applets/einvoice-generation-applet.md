@@ -9,150 +9,185 @@ tags:
 - regulatory
 weight: 400
 ---
-# 1.0 Introduction
 
-## 1.1 Purpose and Scope
+## Introduction
 
-The effective management of e-invoices is a strategic imperative for maintaining compliance with the Lembaga Hasil Dalam Negeri (LHDN) and ensuring operational efficiency. This Standard Operating Procedure (SOP) provides a comprehensive guide to using the My E-Invoice Admin Applet, the central tool for this process.
+### Purpose and Scope
+
+The effective management of e-invoices is a strategic imperative for maintaining compliance with the Lembaga Hasil Dalam Negeri (LHDN) and ensuring operational efficiency. This guide explains how to use the **My E-Invoice Admin Applet**, the central tool for this process.
 
 The My E-Invoice Admin Applet is designed to manage both individual and consolidated transaction submissions to LHDN. It serves as the primary interface for users to manage, review, and cancel their e-invoice submissions, ensuring that all activities adhere to LHDN requirements.
 
-The applet is designed to handle a variety of transaction documents, including:
+The applet handles a variety of transaction documents, including:
 
-* Sales Invoices
-* Credit Notes
-* Debit Notes
-* Posted Cash Bills
-* Sales Refunds
-* Self-Billed Invoices
+- Sales Invoices
+- Credit Notes
+- Debit Notes
+- Posted Cash Bills
+- Sales Refunds
+- Self-Billed Invoices
 
-This SOP outlines the complete, end-to-end e-invoice lifecycle within the applet. It covers procedures from the initial posting of a transaction and pre-submission validation to the final LHDN submission, post-submission review, and the necessary steps for handling rejections and cancellations.
+This guide outlines the complete, end-to-end e-invoice lifecycle within the applet, from initial posting and validation to LHDN submission, review, and handling of rejections and cancellations.
 
-## 1.2 Key Process Stages Overview
+### Key Process Stages Overview
 
-The e-invoice lifecycle within the applet is structured across several distinct stages, each with a specific function. Understanding this workflow is critical for effective management.
+The e-invoice lifecycle is structured across several distinct stages. Understanding this workflow is critical for effective management.
 
-1.  **Pre-Submission Queues: Posting Queue & Batch Pool** This initial stage serves as the collection and validation point for all transactions before they are prepared for LHDN submission.
-2.  **LHDN Submission: Internal Submission Queue & To IRB E-Invoice** This stage acts as the final gateway where transactions are formally transmitted to LHDN and their immediate status can be monitored.
-3.  **Post-Submission History: Internal Submission History** This is the permanent archive where all successfully validated e-invoices are stored for review and record-keeping.
-4.  **Cancellation & Rejection: Rejection Request & Cancellation Queue** This final stage manages the time-sensitive process of requesting, approving, and troubleshooting e-invoice rejections and cancellations.
+{{< steps >}}
+### Pre-Submission
+**Posting Queue & Batch Pool**
 
-# 2.0 Pre-Submission Transaction Management
+The initial collection and validation point for all transactions before they are prepared for LHDN submission.
+---
+### LHDN Submission
+**Internal Submission Queue & To IRB E-Invoice**
 
-## 2.1 Stage 1: The Posting Queue - The Initial Checkpoint
+The final gateway where transactions are formally transmitted to LHDN and their immediate status can be monitored.
+---
+### Post-Submission
+**Internal Submission History**
 
-The Posting Queue is the first critical control point where all finalized transactions from various source applets (e.g., p in uplet, pulse casell) initially appear. Its primary function is to serve as a checkpoint to verify data integrity and ensure all mandatory fields are present before any submission attempts are made to LHDN.
+The permanent archive where all successfully validated e-invoices are stored for review and record-keeping.
+---
+### Rejection & Cancellation
+**Rejection Request & Cancellation Queue**
 
-The core functions and procedures within the Posting Queue are as follows:
+Manages the time-sensitive process of requesting, approving, and troubleshooting e-invoice rejections and cancellations.
+{{< /steps >}}
 
-1.  **Transaction Aggregation**: It acts as the initial collection point for all finalized documents, consolidating them into a single, manageable list.
-2.  **Verification**: This queue is a checkpoint where the system verifies that mandatory fields required for LHDN submission have been populated.
-3.  **Manual Submission**: A user can manually select an individual transaction from the list and submit it directly to the Internal Submission Queue for immediate processing or move it to the Batch Pool for consolidated submission.
-4.  **Automated Submission**: The system can be configured to automatically process and submit valid transactions from this queue, typically every 15 to 20 minutes.
-5.  **Reviewing Details**: By clicking on any transaction, a user can review comprehensive details, including the core document information, account details (the buyer), and all associated line items.
+## Pre-Submission Transaction Management
 
-Transactions that are designated for consolidated submission or that fail initial validation checks are systematically moved to the Batch Pool for further management.
+{{< tabs items="Posting Queue, Batch Pool" >}}
+{{< tab >}}
+### The Posting Queue - The Initial Checkpoint
 
-## 2.2 Stage 2: The Batch Pool - Managing Consolidated & Incomplete Transactions
+The **Posting Queue** is the first critical control point where all finalized transactions from various source applets (e.g., POS applet, sales applet) initially appear. Its primary function is to verify data integrity and ensure all mandatory fields are present before submission to LHDN.
 
-The Batch Pool is the primary staging area for two key scenarios: managing documents intended for a planned consolidated submission and holding transactions that have failed initial validation checks due to missing information.
+**Core Functions:**
 
-### Consolidated Submissions
+- **Transaction Aggregation**: Consolidates all finalized documents into a single, manageable list.
+- **Verification**: The system verifies that mandatory fields required for LHDN submission have been populated.
+- **Manual Submission**: Users can manually select a transaction and submit it directly to the Internal Submission Queue or move it to the Batch Pool.
+- **Automated Submission**: The system can be configured to automatically process and submit valid transactions, typically every 15 to 20 minutes.
+- **Reviewing Details**: Click on any transaction to review comprehensive details, including the core document information, buyer details, and all associated line items.
 
-The Batch Pool stores documents that are designated for consolidated e-invoice submission. These transactions must be submitted to LHDN before the 7th of the following month. If a customer whose transaction is in the Batch Pool requests an individual e-invoice, that specific transaction can be removed from the pool and processed for immediate individual submission.
+Transactions designated for consolidated submission or that fail initial validation are moved to the **Batch Pool**.
+{{< /tab >}}
+{{< tab >}}
+### The Batch Pool - Managing Consolidated & Incomplete Transactions
 
-### Error Handling
+The **Batch Pool** is the primary staging area for two key scenarios:
+1.  Managing documents for a planned **consolidated submission**.
+2.  Holding transactions that have **failed initial validation** due to missing information.
 
-The Batch Pool also holds documents from the Posting Queue that were found to be missing mandatory fields. A user can easily identify and correct these errors by following this procedure:
+#### Consolidated Submissions
 
-1.  Click on a document within the Batch Pool to open its details.
-2.  Scroll to the **Validation Error** section at the bottom of the page.
-3.  The system will display a specific error message indicating the missing information (e.g., "missing some item classification item text type").
-4.  The user must navigate back to the original source document, update it with the correct information based on the error message, and then resubmit the transaction from the Batch Pool.
+The Batch Pool stores documents designated for consolidated e-invoice submission. These must be submitted to LHDN before the 7th of the following month. If a customer requests an individual e-invoice, that transaction can be removed from the pool and processed for immediate submission.
 
-Once a transaction is validated and ready for LHDN submission, whether individually or as part of a batch, it proceeds to the Internal Submission Queue.
+#### Error Handling
 
-# 3.0 LHDN Submission and Verification Process
+The Batch Pool also holds documents with missing mandatory fields. To correct these errors:
 
-## 3.1 Stage 3: The Internal Submission Queue - The Final Gateway to LHDN
+1.  Click on a document in the Batch Pool to open its details.
+2.  Scroll to the **Validation Error** section at the bottom.
+3.  The system will display a specific error message (e.g., "missing some item classification item text type").
+4.  Navigate back to the original source document, update it with the correct information, and then resubmit the transaction from the Batch Pool.
 
-The Internal Submission Queue is the final, decisive stage before a transaction is formally transmitted to the LHDN/IRB system. This queue manages the direct pipeline of communication for both manual and automated submissions.
+Once a transaction is validated, it proceeds to the **Internal Submission Queue**.
+{{< /tab >}}
+{{< /tabs >}}
 
-The operational mechanics of this queue are as follows:
+## LHDN Submission and Verification
 
-*   **Submission Methods**: Transactions arrive here either through manual submission by a user or via the system's automated submission process.
-*   **Successful Submission**: Upon a successful submission to LHDN, the transaction is immediately removed from this queue. It is then transferred to the **Internal Submission History** for permanent record-keeping.
-*   **Failed Submission**: If LHDN rejects a submission, the transaction will remain listed in this queue with a status of "submission failed". To resolve this, the user must click into the transaction and navigate to the **from lhdn** tab. This tab displays the direct error message from LHDN (e.g., "CD is required," which indicates the buyer's city is missing), providing the exact reason for the failure so corrective action can be taken on the source document.
+{{< tabs items="Submission Queue, Monitoring, History" >}}
+{{< tab >}}
+### The Internal Submission Queue - The Final Gateway to LHDN
 
-All transactions that are successfully submitted or are in the process of being submitted can be actively monitored in the "To IRB E-Invoice" menu.
+The **Internal Submission Queue** is the final stage before a transaction is transmitted to the LHDN/IRB system.
 
-## 3.2 Stage 4: Monitoring in the "To IRB E-Invoice" Menu
+-   **Submission Methods**: Transactions arrive here either through manual submission or the system's automated process.
+-   **Successful Submission**: Upon success, the transaction is removed from this queue and transferred to the **Internal Submission History**.
+-   **Failed Submission**: If LHDN rejects a submission, the transaction remains in this queue with a "submission failed" status. To resolve this, click the transaction and navigate to the **from lhdn** tab to see the specific error message from LHDN (e.g., "CD is required," which indicates the buyer's city is missing).
 
-The "To IRB E-Invoice" menu serves as the central dashboard for monitoring active submissions and performing immediate post-submission actions. This is particularly important for actions that must be taken within the critical 72-hour window following LHDN validation.
+All transactions being submitted can be monitored in the **To IRB E-Invoice** menu.
+{{< /tab >}}
+{{< tab >}}
+### Monitoring in the "To IRB E-Invoice" Menu
 
-| Feature | Procedural Description |
-| :--- | :--- |
-| **View Submission Status** | Users can view the real-time status of transactions. `in queue` indicates the transaction is in the internal queue but not yet sent to LHDN, while `submitted` confirms it has been sent. |
-| **Send Buyer Notification** | To email the e-invoice to the buyer, a user clicks into a transaction, navigates to the notification section, and clicks **send**. |
-| **Export E-Invoice** | A user can download a PDF copy of the official e-invoice at any time by clicking the **export** button within the transaction details. |
-| **Request Rejection** | Users can initiate a rejection request directly from this screen. However, this option is only available for transactions that have been successfully validated by LHDN, not for those still `in queue`. |
+The **To IRB E-Invoice** menu is the central dashboard for monitoring active submissions and performing immediate post-submission actions, especially within the critical **72-hour window** following LHDN validation.
 
-Once an e-invoice is fully processed and validated by LHDN, its permanent and official record is stored in the **Internal Submission History**.
+{{< cards >}}
+  {{< card title="View Submission Status" >}}
+    Users can view the real-time status. `in queue` indicates the transaction is not yet sent to LHDN, while `submitted` confirms it has been sent.
+  {{< /card >}}
+  {{< card title="Send Buyer Notification" >}}
+    To email the e-invoice to the buyer, click into a transaction, navigate to the notification section, and click **send**.
+  {{< /card >}}
+  {{< card title="Export E-Invoice" >}}
+    Download a PDF copy of the official e-invoice at any time by clicking the **export** button.
+  {{< /card >}}
+  {{< card title="Request Rejection" >}}
+    Initiate a rejection request directly from this screen. This is only available for successfully validated e-invoices.
+  {{< /card >}}
+{{< /cards >}}
+{{< /tab >}}
+{{< tab >}}
+### Reviewing in the Internal Submission History
 
-## 3.3 Stage 5: Reviewing in the Internal Submission History
+The **Internal Submission History** is the official, permanent archive for all transactions successfully submitted to and validated by LHDN.
 
-The **Internal Submission History** is the official, permanent archive for all transactions that have been successfully submitted to and validated by LHDN. This menu provides the final, authoritative status of any e-invoice.
+Users can verify the final validation status:
 
-Users can verify the final validation status by observing the following indicators:
+-   **Document Accepted**: Initial status indicating the submission is accepted by the system, pending full LHDN validation.
+-   **Document is Valid**: Definitive confirmation that LHDN has validated the e-invoice. Click the transaction and view the **from lhdn** tab for the detailed validation response.
+{{< /tab >}}
+{{< /tabs >}}
 
-*   **Document Accepted**: This is an initial status indicating that the submission has been accepted by the system but is pending full validation by LHDN.
-*   **Document is Valid**: This status provides definitive confirmation that LHDN has fully validated the e-invoice. By clicking into the transaction and viewing the **from lhdn** tab, the user can review the detailed validation response directly from LHDN.
+## Post-Validation: Rejection and Cancellation
 
-While this archive marks the successful completion of a submission, procedures exist for correcting or canceling these validated documents when necessary.
+### Initiating a Rejection Request
 
-# 4.0 Post-Validation: Rejection and Cancellation Procedures
+The process for rejecting or canceling a validated e-invoice is highly time-sensitive.
 
-## 4.1 Initiating a Rejection Request
+{{< callout type="warning" >}}
+**The 72-Hour Rule**
+A rejection request must be initiated within **72 hours** of the e-invoice's validation by LHDN. The system automatically blocks any cancellation attempts after this window has expired.
+{{< /callout >}}
 
-The process for rejecting or canceling a validated e-invoice is highly time-sensitive and critical. All actions related to rejection and cancellation are governed by a strict LHDN-mandated timeframe and must be managed with precision.
+**Key Rules:**
 
-The core rules and procedures for initiating a rejection are as follows:
+1.  **Request Origin**: Requests can be initiated by internal staff or customers (via the customer portal). All requests appear in the **Rejection Request** menu under the **Cancellation** tab.
+2.  **Applicable Documents**: Cancellation can be requested for Sales Invoices, Credit Notes, Debit Notes, and Sales Credit Notes. Self-billed and consolidated e-invoices cannot be canceled this way.
+3.  **Reviewing a Request**: Click on any request to view its details, the reason for cancellation, and a timer showing the remaining time to process it.
 
-1.  **The 72-Hour Rule**: A rejection request must be initiated within 72 hours of the e-invoice's validation by LHDN. The system will automatically block any cancellation attempts made after this window has expired.
-2.  **Request Origin**: Requests can be initiated by either internal staff or customers (via the customer portal). All incoming requests appear in the **Rejection Request** menu, located under the **Cancellation** tab.
-3.  **Applicable Documents**: Cancellation can be requested for Sales Invoices, Credit Notes, Debit Notes, and Sales Credit Notes. It is important to note that self-billed invoices (self purchase in) and consolidated e-invoices cannot be canceled through this process.
-4.  **Reviewing a Request**: A user can click on any request to view its details, the stated reason for the cancellation, and a timer displaying the remaining time available to process it (e.g., `remaining hour for the cancellation: 49 hours`).
+### Processing a Rejection Request
 
-## 4.2 Processing a Rejection Request and Understanding Logic
+It is the user's responsibility to act on all rejection requests within the 72-hour window. When reviewing a request, a user can **approve**, **reject**, or place the request **on hold**.
 
-It is the user's responsibility to review and act on all incoming rejection requests promptly to ensure they are processed within the mandatory 72-hour window. When reviewing a request, a user has three primary actions: **approve**, **reject**, or place the request **unhold**.
+If approved, select one of three **Processing Logic** options:
 
-If a request is approved, the user must select one of three distinct **Processing Logic** options, each with a different outcome for the e-invoice and the original source document.
+{{< cards >}}
+  {{< card title="1. Regenerate new e-invoice" >}}
+    **Action**: Cancels the current e-invoice with LHDN and automatically creates a new one for resubmission.
+    **Impact**: The original source document is not modified. Ideal for correcting minor errors.
+  {{< /card >}}
+  {{< card title="2. Void original document" >}}
+    **Action**: Cancels the e-invoice and voids the original source document.
+    **Impact**: **Irreversible**. A new source document must be created to restart the process.
+  {{< /card >}}
+  {{< card title="3. New reversal document" >}}
+    **Action**: Does not cancel the current e-invoice. Instead, it creates and submits a corresponding reversal document to neutralize the original.
+    **Impact**: The system generates a reversal document (e.g., a Sales Invoice creates a Sales Credit Note).
+  {{< /card >}}
+{{< /cards >}}
 
-1.  **Regenerate new e-invoice**
-    *   **Action**: The system cancels the current e-invoice with LHDN and automatically creates a new one for resubmission.
-    *   **Impact**: The original source document is not modified. This is ideal for correcting minor errors on the e-invoice itself.
-2.  **Void original document**
-    *   **Action**: The system cancels the current e-invoice with LHDN and voids the original source document (e.g., the sales invoice in the accounting system).
-    *   **Impact**: This is an irreversible action. The user must create an entirely new source document and restart the e-invoice submission process from the beginning.
-3.  **New reversal document**
-    *   **Action**: This option does not cancel the current e-invoice. Instead, the system automatically creates and submits a new, corresponding reversal document to neutralize the original.
-    *   **Impact**: The system generates the reversal document based on the following logic:
-        *   Sales Invoice creates a Sales Credit Note.
-        *   Debit Note creates a Sales Credit Note.
-        *   Credit Note creates a Sales Debit Note.
-        *   Sales Refund Note creates a Receipt Voucher.
-        *   Cash Bill creates a Sales Refund.
+Failures during cancellation are tracked in the **Cancellation Queue**.
 
-Any failures that occur during the cancellation communication with LHDN are tracked in the **Cancellation Queue** for troubleshooting.
+## Troubleshooting Common Failures
 
-# 5.0 Troubleshooting Common Failures
+### Resolving LHDN Submission Failures
 
-## 5.1 Resolving LHDN Submission Failures
+Submission failures are a normal part of the process. The system provides direct feedback from LHDN to help resolve issues quickly.
 
-Submission failures are a normal part of the e-invoicing process. The system is designed to capture direct feedback from LHDN, enabling users to quickly diagnose and resolve issues.
-
-Follow this two-step procedure to handle a submission failure:
-
-1.  **Identify the Failure**: Navigate to the **Internal Submission Queue**. Locate the transaction marked with a status of `submission failed` and click into it to view the details.
-2.  **Diagnose and Correct**: Go to the final tab labeled **from lhdn**. Read the specific error message provided by LHDN (e.g., "CD is required," which means the buyer's city is missing). The user must then correct the data in the original source document and resubmit the transaction.
+1.  **Identify the Failure**: Navigate to the **Internal Submission Queue** and find the transaction marked `submission failed`.
+2.  **Diagnose and Correct**: Click the transaction and go to the **from lhdn** tab. Read the specific error message from LHDN (e.g., "CD is required," means the buyer's city is missing). Correct the data in the original source document and resubmit.
