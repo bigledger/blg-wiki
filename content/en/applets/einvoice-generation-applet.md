@@ -17,9 +17,9 @@ The effective management of e-invoices is a strategic imperative for maintaining
 
 **Key Objectives:**
 
-- To manage both individual and consolidated transaction submissions to LHDN.
-- To provide a primary interface for users to manage, review, and cancel e-invoice submissions.
-- To ensure all e-invoicing activities adhere to LHDN requirements.
+* To manage both individual and consolidated transaction submissions to LHDN.
+* To provide a primary interface for users to manage, review, and cancel e-invoice submissions.
+* To ensure all e-invoicing activities adhere to LHDN requirements.
 
 This guide outlines the complete, end-to-end e-invoice lifecycle within the applet, from initial posting and validation to LHDN submission, review, and handling of rejections and cancellations.
 
