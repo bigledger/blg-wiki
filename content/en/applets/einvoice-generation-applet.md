@@ -117,18 +117,10 @@ All transactions being submitted can be monitored in the **To IRB E-Invoice** me
 The **To IRB E-Invoice** menu is the central dashboard for monitoring active submissions and performing immediate post-submission actions, especially within the critical **72-hour window** following LHDN validation.
 
 {{< cards >}}
-  {{< card title="View Submission Status" >}}
-    Users can view the real-time status. `in queue` indicates the transaction is not yet sent to LHDN, while `submitted` confirms it has been sent.
-  {{< /card >}}
-  {{< card title="Send Buyer Notification" >}}
-    To email the e-invoice to the buyer, click into a transaction, navigate to the notification section, and click **send**.
-  {{< /card >}}
-  {{< card title="Export E-Invoice" >}}
-    Download a PDF copy of the official e-invoice at any time by clicking the **export** button.
-  {{< /card >}}
-  {{< card title="Request Rejection" >}}
-    Initiate a rejection request directly from this screen. This is only available for successfully validated e-invoices.
-  {{< /card >}}
+  {{< card title="View Submission Status" subtitle="Users can view the real-time status. `in queue` indicates the transaction is not yet sent to LHDN, while `submitted` confirms it has been sent." >}}
+  {{< card title="Send Buyer Notification" subtitle="To email the e-invoice to the buyer, click into a transaction, navigate to the notification section, and click **send**." >}}
+  {{< card title="Export E-Invoice" subtitle="Download a PDF copy of the official e-invoice at any time by clicking the **export** button." >}}
+  {{< card title="Request Rejection" subtitle="Initiate a rejection request directly from this screen. This is only available for successfully validated e-invoices." >}}
 {{< /cards >}}
 {{< /tab >}}
 {{< tab >}}
@@ -167,18 +159,9 @@ It is the user's responsibility to act on all rejection requests within the 72-h
 If approved, select one of three **Processing Logic** options:
 
 {{< cards >}}
-  {{< card title="1. Regenerate new e-invoice" >}}
-    **Action**: Cancels the current e-invoice with LHDN and automatically creates a new one for resubmission.
-    **Impact**: The original source document is not modified. Ideal for correcting minor errors.
-  {{< /card >}}
-  {{< card title="2. Void original document" >}}
-    **Action**: Cancels the e-invoice and voids the original source document.
-    **Impact**: **Irreversible**. A new source document must be created to restart the process.
-  {{< /card >}}
-  {{< card title="3. New reversal document" >}}
-    **Action**: Does not cancel the current e-invoice. Instead, it creates and submits a corresponding reversal document to neutralize the original.
-    **Impact**: The system generates a reversal document (e.g., a Sales Invoice creates a Sales Credit Note).
-  {{< /card >}}
+  {{< card title="1. Regenerate new e-invoice" subtitle="**Action**: Cancels the current e-invoice with LHDN and automatically creates a new one for resubmission. **Impact**: The original source document is not modified. Ideal for correcting minor errors." >}}
+  {{< card title="2. Void original document" subtitle="**Action**: Cancels the e-invoice and voids the original source document. **Impact**: **Irreversible**. A new source document must be created to restart the process." >}}
+  {{< card title="3. New reversal document" subtitle="**Action**: Does not cancel the current e-invoice. Instead, it creates and submits a corresponding reversal document to neutralize the original. **Impact**: The system generates a reversal document (e.g., a Sales Invoice creates a Sales Credit Note)." >}}
 {{< /cards >}}
 
 Failures during cancellation are tracked in the **Cancellation Queue**.
