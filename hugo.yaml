@@ -75,7 +75,7 @@ params:
     
   # Page settings
   page:
-    width: normal
+    width: wide
     
   # Footer
   footer:
