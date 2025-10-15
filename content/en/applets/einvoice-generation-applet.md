@@ -27,7 +27,7 @@ The applet handles a variety of transaction documents, including:
 - Sales Invoices
 - Credit Notes
 - Debit Notes
-- Posted Cash Bills
+- Cash Bills
 - Sales Refunds
 - Self-Billed Invoices
 
