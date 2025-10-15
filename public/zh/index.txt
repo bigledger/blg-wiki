@@ -140,5 +140,5 @@ PEPPOL认证什么是PEPPOL？PEPPOL(泛欧洲公共采购在线)是 …
 - [搜索文档](https://wiki.bigledger.com/zh/search/): 搜索提示使用您要查找的主题的关键词 搜索不区分大小写 按 Ctrl+K（Mac 上为 Cmd+K）快速聚焦搜索框 按 Escape …
 
 ---
-Generated on 2025-10-15 11:49:16 UTC
+Generated on 2025-10-15 12:08:15 UTC
 Site: https://wiki.bigledger.com/

@@ -53,7 +53,7 @@
 - [Document Item Maintenance Applet](https://wiki.bigledger.com/applets/doc-item-maintenance-applet/): Purpose and OverviewThe Document Item Maintenance Applet is a crucial Core Module component that …
 - [POS Terminal Applet](https://wiki.bigledger.com/applets/pos-terminal-applet/): Purpose and Overview⚠️TODO: This applet documentation needs detailed expansion. This is a …
 - [E-Commerce Catalog Applet](https://wiki.bigledger.com/applets/ecommerce-catalog-applet/): Purpose and Overview⚠️TODO: This applet documentation needs detailed expansion. This is a …
-- [My E-invoice Admin Applet](https://wiki.bigledger.com/applets/einvoice-generation-applet/): Purpose and Overview⚠️TODO: This applet documentation needs detailed expansion. This is a …
+- [My E-invoice Admin Applet](https://wiki.bigledger.com/applets/einvoice-generation-applet/): 1.0 Introduction1.1 Purpose and ScopeThe effective management of e-invoices is a strategic …
 - [AI Customer Analytics Applet](https://wiki.bigledger.com/applets/ai-customer-analytics-applet/): Purpose and Overview⚠️TODO: This applet documentation needs detailed expansion. This is a …
 
 ## Business Operations
@@ -303,5 +303,5 @@ Daily OperationsQ: How do …
 - [Demos & Resources](https://wiki.bigledger.com/demos-resources/): Experience BigLedger&rsquo;s capabilities through our comprehensive demo videos and presentation …
 
 ---
-Generated on 2025-10-15 11:49:11 UTC
+Generated on 2025-10-15 12:08:11 UTC
 Site: https://wiki.bigledger.com/

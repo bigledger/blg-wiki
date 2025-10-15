@@ -14,5 +14,5 @@
 - [البحث في الوثائق](https://wiki.bigledger.com/ar/search/): نصائح البحثاستخدم الكلمات المفتاحية من الموضوع الذي تبحث عنه البحث غير حساس لحالة الأحرف اضغط …
 
 ---
-Generated on 2025-10-15 11:49:17 UTC
+Generated on 2025-10-15 12:08:16 UTC
 Site: https://wiki.bigledger.com/
