@@ -12,22 +12,30 @@ weight: 400
 
 ## Purpose and Scope
 
-The effective management of e-invoices is a strategic imperative for maintaining compliance with the Lembaga Hasil Dalam Negeri (LHDN) and ensuring operational efficiency. This user guide provides a comprehensive guide to using the My E-Invoice Admin Applet, the central tool for this process.
-The My E-Invoice Admin Applet is designed to manage both individual and consolidated transaction submissions to LHDN. It serves as the primary interface for users to manage, review, and cancel their e-invoice submissions, ensuring that all activities adhere to LHDN requirements.
+The effective management of e-invoices is a strategic imperative for maintaining compliance with the Lembaga Hasil Dalam Negeri (LHDN) and ensuring operational efficiency.  
+
+This user guide provides a comprehensive overview of how to use the **My E-Invoice Admin Applet**, the central tool for this process.  
+
+The **My E-Invoice Admin Applet** is designed to manage both individual and consolidated transaction submissions to LHDN. It serves as the primary interface for users to manage, review, and cancel their e-invoice submissions, ensuring that all activities adhere to LHDN requirements.  
+
 The applet is designed to handle a variety of transaction documents, including:
 
 {{< cards >}}
-   {{< card title="Cash Bills" >}}
+  {{< card title="Cash Bills" >}}
   {{< card title="Sales Invoices" >}}
   {{< card title="Sales Credit Notes" >}}
   {{< card title="Sales Debit Notes" >}}
   {{< card title="Sales Return" >}}
-  {{< card title="Sales Refund Noutes" >}}
+{{< /cards >}}
+
+{{< cards >}}
+  {{< card title="Sales Refund Notes" >}}
   {{< card title="Self-Billed Purchase Invoices" >}}
   {{< card title="Self-Billed Purchase Debit Notes" >}}
   {{< card title="Self-Billed Purchase Credit Notes" >}}
   {{< card title="Self-Billed Purchase Return" >}}
 {{< /cards >}}
+
 
 ---
 
