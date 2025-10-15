@@ -21,6 +21,7 @@ The **My E-Invoice Admin Applet** is designed to manage both individual and cons
 The applet is designed to handle a variety of transaction documents, including:
 
 
+
 ### **Sales Documents**
 
 {{< cards >}}
