@@ -10,7 +10,7 @@ tags:
 weight: 400
 ---
 
-##Purpose and Scope
+## **Purpose and Scope**
 
 The effective management of e-invoices is a strategic imperative for maintaining compliance with the Lembaga Hasil Dalam Negeri (LHDN) and ensuring operational efficiency.  
 
@@ -20,9 +20,8 @@ The **My E-Invoice Admin Applet** is designed to manage both individual and cons
 
 The applet is designed to handle a variety of transaction documents, including:
 
-{{< markdown >}}
-### Sales Documents
-{{< /markdown >}}
+
+### **Sales Documents**
 
 {{< cards >}}
   {{< card title="Cash Bills" >}}
@@ -35,9 +34,7 @@ The applet is designed to handle a variety of transaction documents, including:
 
 ---
 
-{{< markdown >}}
-### Self-Billed Purchase Documents
-{{< /markdown >}}
+### **Self-Billed Purchase Documents**
 
 {{< cards >}}
   {{< card title="Self-Billed Purchase Invoices" >}}
