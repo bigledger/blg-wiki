@@ -14,6 +14,7 @@ weight: 400
 
 The effective management of e-invoices is a strategic imperative for maintaining compliance with the Lembaga Hasil Dalam Negeri (LHDN) and ensuring operational efficiency. This guide explains how to use the **My E-Invoice Admin Applet**, the central tool for this process.
 
+
 **Key Objectives:**
 
 - To manage both individual and consolidated transaction submissions to LHDN.
