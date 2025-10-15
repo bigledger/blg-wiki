@@ -20,25 +20,14 @@ The **My E-Invoice Admin Applet** is designed to manage both individual and cons
 
 The applet is designed to handle a variety of transaction documents, including:
 
-### Sales Documents
-
-{{< cards >}}
-  {{< card title="Cash Bills" >}}
-  {{< card title="Sales Invoices" >}}
-  {{< card title="Sales Credit Notes" >}}
-  {{< card title="Sales Debit Notes" >}}
-  {{< card title="Sales Return" >}}
-  {{< card title="Sales Refund Notes" >}}
-{{< /cards >}}
-
-### Self-Billed Purchase Documents
-
-{{< cards >}}
-  {{< card title="Self-Billed Purchase Invoices" >}}
-  {{< card title="Self-Billed Purchase Debit Notes" >}}
-  {{< card title="Self-Billed Purchase Credit Notes" >}}
-  {{< card title="Self-Billed Purchase Return" >}}
-{{< /cards >}}
+| **Sales Documents**              | **Self-Billed Purchase Documents**       |
+|----------------------------------|------------------------------------------|
+| Cash Bills                       | Self-Billed Purchase Invoices            |
+| Sales Invoices                   | Self-Billed Purchase Debit Notes         |
+| Sales Credit Notes               | Self-Billed Purchase Credit Notes        |
+| Sales Debit Notes                | Self-Billed Purchase Return              |
+| Sales Return                     |                                          |
+| Sales Refund Notes               |                                          |
 
 
 
