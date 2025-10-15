@@ -20,7 +20,9 @@ The **My E-Invoice Admin Applet** is designed to manage both individual and cons
 
 The applet is designed to handle a variety of transaction documents, including:
 
-###Sales Documents
+{{< markdown >}}
+### Sales Documents
+{{< /markdown >}}
 
 {{< cards >}}
   {{< card title="Cash Bills" >}}
@@ -33,7 +35,9 @@ The applet is designed to handle a variety of transaction documents, including:
 
 ---
 
-###Self-Billed Purchase Documents
+{{< markdown >}}
+### Self-Billed Purchase Documents
+{{< /markdown >}}
 
 {{< cards >}}
   {{< card title="Self-Billed Purchase Invoices" >}}
