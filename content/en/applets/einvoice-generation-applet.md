@@ -10,13 +10,17 @@ tags:
 weight: 400
 ---
 
-## Introduction
+## **Introduction**
 
 ### Purpose and Scope
 
 The effective management of e-invoices is a strategic imperative for maintaining compliance with the Lembaga Hasil Dalam Negeri (LHDN) and ensuring operational efficiency. This guide explains how to use the **My E-Invoice Admin Applet**, the central tool for this process.
 
-The My E-Invoice Admin Applet is designed to manage both individual and consolidated transaction submissions to LHDN. It serves as the primary interface for users to manage, review, and cancel their e-invoice submissions, ensuring that all activities adhere to LHDN requirements.
+The applet is designed to:
+
+- Manage both individual and consolidated transaction submissions to LHDN.
+- Serve as the primary interface for users to manage, review, and cancel their e-invoice submissions.
+- Ensure that all activities adhere to LHDN requirements.
 
 The applet handles a variety of transaction documents, including:
 
@@ -29,30 +33,28 @@ The applet handles a variety of transaction documents, including:
 
 This guide outlines the complete, end-to-end e-invoice lifecycle within the applet, from initial posting and validation to LHDN submission, review, and handling of rejections and cancellations.
 
+---
+
 ### Key Process Stages Overview
 
 The e-invoice lifecycle is structured across several distinct stages. Understanding this workflow is critical for effective management.
 
 {{< steps >}}
-### Pre-Submission
-**Posting Queue & Batch Pool**
-
-The initial collection and validation point for all transactions before they are prepared for LHDN submission.
+> ### Pre-Submission
+> **Posting Queue & Batch Pool**
+> The initial collection and validation point for all transactions before they are prepared for LHDN submission.
 ---
-### LHDN Submission
-**Internal Submission Queue & To IRB E-Invoice**
-
-The final gateway where transactions are formally transmitted to LHDN and their immediate status can be monitored.
+> ### LHDN Submission
+> **Internal Submission Queue & To IRB E-Invoice**
+> The final gateway where transactions are formally transmitted to LHDN and their immediate status can be monitored.
 ---
-### Post-Submission
-**Internal Submission History**
-
-The permanent archive where all successfully validated e-invoices are stored for review and record-keeping.
+> ### Post-Submission
+> **Internal Submission History**
+> The permanent archive where all successfully validated e-invoices are stored for review and record-keeping.
 ---
-### Rejection & Cancellation
-**Rejection Request & Cancellation Queue**
-
-Manages the time-sensitive process of requesting, approving, and troubleshooting e-invoice rejections and cancellations.
+> ### Rejection & Cancellation
+> **Rejection Request & Cancellation Queue**
+> Manages the time-sensitive process of requesting, approving, and troubleshooting e-invoice rejections and cancellations.
 {{< /steps >}}
 
 ## Pre-Submission Transaction Management
@@ -77,6 +79,7 @@ Transactions designated for consolidated submission or that fail initial validat
 ### The Batch Pool - Managing Consolidated & Incomplete Transactions
 
 The **Batch Pool** is the primary staging area for two key scenarios:
+
 1.  Managing documents for a planned **consolidated submission**.
 2.  Holding transactions that have **failed initial validation** due to missing information.
 
