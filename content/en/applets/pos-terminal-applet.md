@@ -1,5 +1,5 @@
 ---
-title: "POS Terminal Applet"
+title: "POS General Applet"
 description: "Point-of-sale terminal management and configuration for retail operations"
 tags:
 - pos-module
