@@ -16,7 +16,7 @@ weight: 200
 **TODO**: This applet documentation needs detailed expansion. This is a placeholder with basic structure and key information.
 {{< /callout >}}
 
-The POS Terminal Applet is a core component of BigLedger's Point of Sales Module, providing comprehensive point-of-sale terminal management, configuration, and real-time transaction processing for retail operations.
+The BigLedger POS General Applet provides a comprehensive interface for managing point-of-sale transactions. This document serves as the primary technical guide for the configuration of the applet, designed to assist administrators in achieving a successful implementation tailored to their organization's needs. The intended audience is System Administrators and IT Support Specialists who are responsible for the initial setup and ongoing maintenance of the POS system. This guide will detail the major configuration areas, including foundational dependencies, core operational settings, user permissions, post-transaction capabilities, and reporting features.
 
 ### Primary Functions
 - **Terminal Configuration** - POS hardware and software setup
