@@ -1,220 +1,220 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – E-Invoice Implementation</title><link>https://wiki.bigledger.com/guides/einvoice-guides/</link><description>Recent content in E-Invoice Implementation on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/guides/einvoice-guides/index.xml" rel="self" type="application/rss+xml"/><item><title>MyInvois Setup Guide</title><link>https://wiki.bigledger.com/guides/einvoice-guides/myinvois-setup/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/guides/einvoice-guides/myinvois-setup/</guid><description>
-&lt;p>Complete guide for MyInvois implementation with BigLedger.&lt;/p>
-&lt;h2>Overview&lt;span class="hx:absolute hx:-mt-20" id="overview">&lt;/span>
-&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>MyInvois is Malaysia&amp;rsquo;s national e-invoicing initiative by LHDN. BigLedger provides seamless integration as an MDEC-accredited PEPPOL service provider.&lt;/p>
-&lt;h2>Implementation Timeline&lt;span class="hx:absolute hx:-mt-20" id="implementation-timeline">&lt;/span>
-&lt;a href="#implementation-timeline" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>&lt;strong>Phase 1&lt;/strong> (Aug 2024): Turnover &amp;gt; RM 100 million&lt;/li>
-&lt;li>&lt;strong>Phase 2&lt;/strong> (Jan 2025): Turnover &amp;gt; RM 25 million&lt;/li>
-&lt;li>&lt;strong>Phase 3&lt;/strong> (Jul 2025): All businesses&lt;/li>
-&lt;/ul>
-&lt;h2>Setup Process&lt;span class="hx:absolute hx:-mt-20" id="setup-process">&lt;/span>
-&lt;a href="#setup-process" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Step 1: LHDN Registration&lt;span class="hx:absolute hx:-mt-20" id="step-1-lhdn-registration">&lt;/span>
-&lt;a href="#step-1-lhdn-registration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Access MyInvois Portal&lt;/li>
-&lt;li>Register with LHDN&lt;/li>
-&lt;li>Obtain credentials:
-&lt;ul>
-&lt;li>Client ID&lt;/li>
-&lt;li>Client Secret&lt;/li>
-&lt;li>TIN Number&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Generate certificates&lt;/li>
-&lt;/ol>
-&lt;h3>Step 2: BigLedger Configuration&lt;span class="hx:absolute hx:-mt-20" id="step-2-bigledger-configuration">&lt;/span>
-&lt;a href="#step-2-bigledger-configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Navigate to &lt;strong>E-Invoice&lt;/strong> → &lt;strong>My E-Invoice Admin&lt;/strong>&lt;/li>
-&lt;li>Enter LHDN credentials&lt;/li>
-&lt;li>Configure company details:
-&lt;ul>
-&lt;li>Legal name&lt;/li>
-&lt;li>Registration number&lt;/li>
-&lt;li>Tax identification&lt;/li>
-&lt;li>Address details&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Test connection&lt;/li>
-&lt;/ol>
-&lt;h3>Step 3: Document Setup&lt;span class="hx:absolute hx:-mt-20" id="step-3-document-setup">&lt;/span>
-&lt;a href="#step-3-document-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Configure invoice formats:&lt;/p>
-&lt;ul>
-&lt;li>Standard Invoice&lt;/li>
-&lt;li>Credit Note&lt;/li>
-&lt;li>Debit Note&lt;/li>
-&lt;li>Refund Note&lt;/li>
-&lt;li>Self-billed Invoice&lt;/li>
-&lt;/ul>
-&lt;h3>Step 4: Validation Rules&lt;span class="hx:absolute hx:-mt-20" id="step-4-validation-rules">&lt;/span>
-&lt;a href="#step-4-validation-rules" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Set up validation:&lt;/p>
-&lt;ul>
-&lt;li>Mandatory fields&lt;/li>
-&lt;li>Tax calculations&lt;/li>
-&lt;li>Format requirements&lt;/li>
-&lt;li>Business rules&lt;/li>
-&lt;/ul>
-&lt;h3>Step 5: Testing&lt;span class="hx:absolute hx:-mt-20" id="step-5-testing">&lt;/span>
-&lt;a href="#step-5-testing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Create test invoices&lt;/li>
-&lt;li>Validate format&lt;/li>
-&lt;li>Submit to sandbox&lt;/li>
-&lt;li>Verify acceptance&lt;/li>
-&lt;li>Check status updates&lt;/li>
-&lt;/ol>
-&lt;h2>Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points">&lt;/span>
-&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>With Sales Module&lt;span class="hx:absolute hx:-mt-20" id="with-sales-module">&lt;/span>
-&lt;a href="#with-sales-module" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Auto-generate e-invoices&lt;/li>
-&lt;li>Real-time submission&lt;/li>
-&lt;li>Status tracking&lt;/li>
-&lt;/ul>
-&lt;h3>With Accounting&lt;span class="hx:absolute hx:-mt-20" id="with-accounting">&lt;/span>
-&lt;a href="#with-accounting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>GL posting&lt;/li>
-&lt;li>Tax reporting&lt;/li>
-&lt;li>Reconciliation&lt;/li>
-&lt;/ul>
-&lt;h2>Go-Live Checklist&lt;span class="hx:absolute hx:-mt-20" id="go-live-checklist">&lt;/span>
-&lt;a href="#go-live-checklist" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>&lt;input disabled="" type="checkbox"> LHDN registration complete&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Credentials configured&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Test submission successful&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Staff training done&lt;/li>
-&lt;li>&lt;input disabled="" type="checkbox"> Backup process ready&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;p>&lt;em>For MyInvois support, contact &lt;a href="mailto:einvoice@bigledger.com" >einvoice@bigledger.com&lt;/a>&lt;/em>&lt;/p></description></item><item><title>PEPPOL Configuration Guide</title><link>https://wiki.bigledger.com/guides/einvoice-guides/peppol-configuration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/guides/einvoice-guides/peppol-configuration/</guid><description>
-&lt;p>Configure PEPPOL for international e-invoicing.&lt;/p>
-&lt;h2>What is PEPPOL?&lt;span class="hx:absolute hx:-mt-20" id="what-is-peppol">&lt;/span>
-&lt;a href="#what-is-peppol" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Pan-European Public Procurement On-Line (PEPPOL) enables cross-border electronic document exchange.&lt;/p>
-&lt;h2>PEPPOL ID Setup&lt;span class="hx:absolute hx:-mt-20" id="peppol-id-setup">&lt;/span>
-&lt;a href="#peppol-id-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Step 1: Obtain PEPPOL ID&lt;span class="hx:absolute hx:-mt-20" id="step-1-obtain-peppol-id">&lt;/span>
-&lt;a href="#step-1-obtain-peppol-id" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Your PEPPOL ID format:&lt;/p>
-&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>0195:MYREGISTRATIONNUMBER&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&lt;p&gt;Complete guide for MyInvois implementation with BigLedger.&lt;/p&gt;
+&lt;h2&gt;Overview&lt;span class="hx:absolute hx:-mt-20" id="overview"&gt;&lt;/span&gt;
+&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;MyInvois is Malaysia&amp;rsquo;s national e-invoicing initiative by LHDN. BigLedger provides seamless integration as an MDEC-accredited PEPPOL service provider.&lt;/p&gt;
+&lt;h2&gt;Implementation Timeline&lt;span class="hx:absolute hx:-mt-20" id="implementation-timeline"&gt;&lt;/span&gt;
+&lt;a href="#implementation-timeline" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Phase 1&lt;/strong&gt; (Aug 2024): Turnover &amp;gt; RM 100 million&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Phase 2&lt;/strong&gt; (Jan 2025): Turnover &amp;gt; RM 25 million&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Phase 3&lt;/strong&gt; (Jul 2025): All businesses&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Setup Process&lt;span class="hx:absolute hx:-mt-20" id="setup-process"&gt;&lt;/span&gt;
+&lt;a href="#setup-process" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Step 1: LHDN Registration&lt;span class="hx:absolute hx:-mt-20" id="step-1-lhdn-registration"&gt;&lt;/span&gt;
+&lt;a href="#step-1-lhdn-registration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Access MyInvois Portal&lt;/li&gt;
+&lt;li&gt;Register with LHDN&lt;/li&gt;
+&lt;li&gt;Obtain credentials:
+&lt;ul&gt;
+&lt;li&gt;Client ID&lt;/li&gt;
+&lt;li&gt;Client Secret&lt;/li&gt;
+&lt;li&gt;TIN Number&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Generate certificates&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Step 2: BigLedger Configuration&lt;span class="hx:absolute hx:-mt-20" id="step-2-bigledger-configuration"&gt;&lt;/span&gt;
+&lt;a href="#step-2-bigledger-configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Navigate to &lt;strong&gt;E-Invoice&lt;/strong&gt; → &lt;strong&gt;My E-Invoice Admin&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Enter LHDN credentials&lt;/li&gt;
+&lt;li&gt;Configure company details:
+&lt;ul&gt;
+&lt;li&gt;Legal name&lt;/li&gt;
+&lt;li&gt;Registration number&lt;/li&gt;
+&lt;li&gt;Tax identification&lt;/li&gt;
+&lt;li&gt;Address details&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Test connection&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Step 3: Document Setup&lt;span class="hx:absolute hx:-mt-20" id="step-3-document-setup"&gt;&lt;/span&gt;
+&lt;a href="#step-3-document-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Configure invoice formats:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Standard Invoice&lt;/li&gt;
+&lt;li&gt;Credit Note&lt;/li&gt;
+&lt;li&gt;Debit Note&lt;/li&gt;
+&lt;li&gt;Refund Note&lt;/li&gt;
+&lt;li&gt;Self-billed Invoice&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Step 4: Validation Rules&lt;span class="hx:absolute hx:-mt-20" id="step-4-validation-rules"&gt;&lt;/span&gt;
+&lt;a href="#step-4-validation-rules" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Set up validation:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Mandatory fields&lt;/li&gt;
+&lt;li&gt;Tax calculations&lt;/li&gt;
+&lt;li&gt;Format requirements&lt;/li&gt;
+&lt;li&gt;Business rules&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Step 5: Testing&lt;span class="hx:absolute hx:-mt-20" id="step-5-testing"&gt;&lt;/span&gt;
+&lt;a href="#step-5-testing" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Create test invoices&lt;/li&gt;
+&lt;li&gt;Validate format&lt;/li&gt;
+&lt;li&gt;Submit to sandbox&lt;/li&gt;
+&lt;li&gt;Verify acceptance&lt;/li&gt;
+&lt;li&gt;Check status updates&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points"&gt;&lt;/span&gt;
+&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;With Sales Module&lt;span class="hx:absolute hx:-mt-20" id="with-sales-module"&gt;&lt;/span&gt;
+&lt;a href="#with-sales-module" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Auto-generate e-invoices&lt;/li&gt;
+&lt;li&gt;Real-time submission&lt;/li&gt;
+&lt;li&gt;Status tracking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;With Accounting&lt;span class="hx:absolute hx:-mt-20" id="with-accounting"&gt;&lt;/span&gt;
+&lt;a href="#with-accounting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;GL posting&lt;/li&gt;
+&lt;li&gt;Tax reporting&lt;/li&gt;
+&lt;li&gt;Reconciliation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Go-Live Checklist&lt;span class="hx:absolute hx:-mt-20" id="go-live-checklist"&gt;&lt;/span&gt;
+&lt;a href="#go-live-checklist" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; LHDN registration complete&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Credentials configured&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Test submission successful&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Staff training done&lt;/li&gt;
+&lt;li&gt;&lt;input disabled="" type="checkbox"&gt; Backup process ready&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;For MyInvois support, contact &lt;a href="mailto:einvoice@bigledger.com" &gt;einvoice@bigledger.com&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description></item><item><title>PEPPOL Configuration Guide</title><link>https://wiki.bigledger.com/guides/einvoice-guides/peppol-configuration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/guides/einvoice-guides/peppol-configuration/</guid><description>
+&lt;p&gt;Configure PEPPOL for international e-invoicing.&lt;/p&gt;
+&lt;h2&gt;What is PEPPOL?&lt;span class="hx:absolute hx:-mt-20" id="what-is-peppol"&gt;&lt;/span&gt;
+&lt;a href="#what-is-peppol" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Pan-European Public Procurement On-Line (PEPPOL) enables cross-border electronic document exchange.&lt;/p&gt;
+&lt;h2&gt;PEPPOL ID Setup&lt;span class="hx:absolute hx:-mt-20" id="peppol-id-setup"&gt;&lt;/span&gt;
+&lt;a href="#peppol-id-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Step 1: Obtain PEPPOL ID&lt;span class="hx:absolute hx:-mt-20" id="step-1-obtain-peppol-id"&gt;&lt;/span&gt;
+&lt;a href="#step-1-obtain-peppol-id" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Your PEPPOL ID format:&lt;/p&gt;
+&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;0195:MYREGISTRATIONNUMBER&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;ul>
-&lt;li>0195 = Malaysia country code&lt;/li>
-&lt;li>Followed by your business registration&lt;/li>
-&lt;/ul>
-&lt;h3>Step 2: Configure in BigLedger&lt;span class="hx:absolute hx:-mt-20" id="step-2-configure-in-bigledger">&lt;/span>
-&lt;a href="#step-2-configure-in-bigledger" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Go to &lt;strong>E-Invoice&lt;/strong> → &lt;strong>PEPPOL Settings&lt;/strong>&lt;/li>
-&lt;li>Enter PEPPOL ID&lt;/li>
-&lt;li>Select document types:
-&lt;ul>
-&lt;li>Invoice&lt;/li>
-&lt;li>Credit Note&lt;/li>
-&lt;li>Order&lt;/li>
-&lt;li>Order Response&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Configure endpoints&lt;/li>
-&lt;/ol>
-&lt;h3>Step 3: Trading Partner Setup&lt;span class="hx:absolute hx:-mt-20" id="step-3-trading-partner-setup">&lt;/span>
-&lt;a href="#step-3-trading-partner-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Add trading partners:&lt;/p>
-&lt;ul>
-&lt;li>Partner PEPPOL ID&lt;/li>
-&lt;li>Document types&lt;/li>
-&lt;li>Validation rules&lt;/li>
-&lt;li>Routing preferences&lt;/li>
-&lt;/ul>
-&lt;h2>Document Standards&lt;span class="hx:absolute hx:-mt-20" id="document-standards">&lt;/span>
-&lt;a href="#document-standards" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>UBL 2.1 Format&lt;span class="hx:absolute hx:-mt-20" id="ubl-21-format">&lt;/span>
-&lt;a href="#ubl-21-format" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>XML-based standard&lt;/li>
-&lt;li>Structured data&lt;/li>
-&lt;li>Machine-readable&lt;/li>
-&lt;li>Validated format&lt;/li>
-&lt;/ul>
-&lt;h3>Compliance Requirements&lt;span class="hx:absolute hx:-mt-20" id="compliance-requirements">&lt;/span>
-&lt;a href="#compliance-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Digital signatures&lt;/li>
-&lt;li>Timestamps&lt;/li>
-&lt;li>Audit trails&lt;/li>
-&lt;li>Archival (7 years)&lt;/li>
-&lt;/ul>
-&lt;h2>Testing Process&lt;span class="hx:absolute hx:-mt-20" id="testing-process">&lt;/span>
-&lt;a href="#testing-process" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ol>
-&lt;li>Connect to PEPPOL test network&lt;/li>
-&lt;li>Exchange test documents&lt;/li>
-&lt;li>Validate receipts&lt;/li>
-&lt;li>Verify delivery&lt;/li>
-&lt;li>Check compliance&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;p>&lt;em>PEPPOL support: &lt;a href="mailto:peppol@bigledger.com" >peppol@bigledger.com&lt;/a>&lt;/em>&lt;/p></description></item><item><title>E-Invoice Validation Rules</title><link>https://wiki.bigledger.com/guides/einvoice-guides/einvoice-validation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/guides/einvoice-guides/einvoice-validation/</guid><description>
-&lt;p>Comprehensive validation rules for MyInvois compliance.&lt;/p>
-&lt;h2>Mandatory Fields&lt;span class="hx:absolute hx:-mt-20" id="mandatory-fields">&lt;/span>
-&lt;a href="#mandatory-fields" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Invoice Header&lt;span class="hx:absolute hx:-mt-20" id="invoice-header">&lt;/span>
-&lt;a href="#invoice-header" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Invoice number (unique)&lt;/li>
-&lt;li>Invoice date&lt;/li>
-&lt;li>Supplier details&lt;/li>
-&lt;li>Buyer details&lt;/li>
-&lt;li>Currency code&lt;/li>
-&lt;/ul>
-&lt;h3>Line Items&lt;span class="hx:absolute hx:-mt-20" id="line-items">&lt;/span>
-&lt;a href="#line-items" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Description&lt;/li>
-&lt;li>Quantity&lt;/li>
-&lt;li>Unit price&lt;/li>
-&lt;li>Tax code&lt;/li>
-&lt;li>Line total&lt;/li>
-&lt;/ul>
-&lt;h3>Tax Information&lt;span class="hx:absolute hx:-mt-20" id="tax-information">&lt;/span>
-&lt;a href="#tax-information" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Tax type (SST/GST)&lt;/li>
-&lt;li>Tax rate&lt;/li>
-&lt;li>Tax amount&lt;/li>
-&lt;li>Tax inclusive/exclusive&lt;/li>
-&lt;/ul>
-&lt;h2>Validation Checks&lt;span class="hx:absolute hx:-mt-20" id="validation-checks">&lt;/span>
-&lt;a href="#validation-checks" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Format Validation&lt;span class="hx:absolute hx:-mt-20" id="format-validation">&lt;/span>
-&lt;a href="#format-validation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Date format: YYYY-MM-DD&lt;/li>
-&lt;li>Amount format: 2 decimals&lt;/li>
-&lt;li>Tax number format&lt;/li>
-&lt;li>Phone number format&lt;/li>
-&lt;/ul>
-&lt;h3>Business Rules&lt;span class="hx:absolute hx:-mt-20" id="business-rules">&lt;/span>
-&lt;a href="#business-rules" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Invoice date &amp;lt;= current date&lt;/li>
-&lt;li>Tax calculations accuracy&lt;/li>
-&lt;li>Total amount validation&lt;/li>
-&lt;li>Currency code validity&lt;/li>
-&lt;/ul>
-&lt;h3>LHDN Specific&lt;span class="hx:absolute hx:-mt-20" id="lhdn-specific">&lt;/span>
-&lt;a href="#lhdn-specific" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>TIN validation&lt;/li>
-&lt;li>Business registration&lt;/li>
-&lt;li>SST registration&lt;/li>
-&lt;li>Industry codes&lt;/li>
-&lt;/ul>
-&lt;h2>Common Errors&lt;span class="hx:absolute hx:-mt-20" id="common-errors">&lt;/span>
-&lt;a href="#common-errors" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Error Codes&lt;span class="hx:absolute hx:-mt-20" id="error-codes">&lt;/span>
-&lt;a href="#error-codes" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>E001: Invalid format&lt;/li>
-&lt;li>E002: Missing mandatory field&lt;/li>
-&lt;li>E003: Invalid tax calculation&lt;/li>
-&lt;li>E004: Duplicate invoice&lt;/li>
-&lt;li>E005: Invalid supplier&lt;/li>
-&lt;/ul>
-&lt;h3>Resolution Steps&lt;span class="hx:absolute hx:-mt-20" id="resolution-steps">&lt;/span>
-&lt;a href="#resolution-steps" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Identify error code&lt;/li>
-&lt;li>Check field mapping&lt;/li>
-&lt;li>Verify data source&lt;/li>
-&lt;li>Correct and resubmit&lt;/li>
-&lt;li>Monitor status&lt;/li>
-&lt;/ol>
-&lt;hr>
-&lt;p>&lt;em>Validation support: &lt;a href="mailto:einvoice@bigledger.com" >einvoice@bigledger.com&lt;/a>&lt;/em>&lt;/p></description></item></channel></rss>
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+&lt;li&gt;0195 = Malaysia country code&lt;/li&gt;
+&lt;li&gt;Followed by your business registration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Step 2: Configure in BigLedger&lt;span class="hx:absolute hx:-mt-20" id="step-2-configure-in-bigledger"&gt;&lt;/span&gt;
+&lt;a href="#step-2-configure-in-bigledger" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Go to &lt;strong&gt;E-Invoice&lt;/strong&gt; → &lt;strong&gt;PEPPOL Settings&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Enter PEPPOL ID&lt;/li&gt;
+&lt;li&gt;Select document types:
+&lt;ul&gt;
+&lt;li&gt;Invoice&lt;/li&gt;
+&lt;li&gt;Credit Note&lt;/li&gt;
+&lt;li&gt;Order&lt;/li&gt;
+&lt;li&gt;Order Response&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Configure endpoints&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Step 3: Trading Partner Setup&lt;span class="hx:absolute hx:-mt-20" id="step-3-trading-partner-setup"&gt;&lt;/span&gt;
+&lt;a href="#step-3-trading-partner-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Add trading partners:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Partner PEPPOL ID&lt;/li&gt;
+&lt;li&gt;Document types&lt;/li&gt;
+&lt;li&gt;Validation rules&lt;/li&gt;
+&lt;li&gt;Routing preferences&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Document Standards&lt;span class="hx:absolute hx:-mt-20" id="document-standards"&gt;&lt;/span&gt;
+&lt;a href="#document-standards" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;UBL 2.1 Format&lt;span class="hx:absolute hx:-mt-20" id="ubl-21-format"&gt;&lt;/span&gt;
+&lt;a href="#ubl-21-format" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;XML-based standard&lt;/li&gt;
+&lt;li&gt;Structured data&lt;/li&gt;
+&lt;li&gt;Machine-readable&lt;/li&gt;
+&lt;li&gt;Validated format&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Compliance Requirements&lt;span class="hx:absolute hx:-mt-20" id="compliance-requirements"&gt;&lt;/span&gt;
+&lt;a href="#compliance-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Digital signatures&lt;/li&gt;
+&lt;li&gt;Timestamps&lt;/li&gt;
+&lt;li&gt;Audit trails&lt;/li&gt;
+&lt;li&gt;Archival (7 years)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Testing Process&lt;span class="hx:absolute hx:-mt-20" id="testing-process"&gt;&lt;/span&gt;
+&lt;a href="#testing-process" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;Connect to PEPPOL test network&lt;/li&gt;
+&lt;li&gt;Exchange test documents&lt;/li&gt;
+&lt;li&gt;Validate receipts&lt;/li&gt;
+&lt;li&gt;Verify delivery&lt;/li&gt;
+&lt;li&gt;Check compliance&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;PEPPOL support: &lt;a href="mailto:peppol@bigledger.com" &gt;peppol@bigledger.com&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description></item><item><title>E-Invoice Validation Rules</title><link>https://wiki.bigledger.com/guides/einvoice-guides/einvoice-validation/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/guides/einvoice-guides/einvoice-validation/</guid><description>
+&lt;p&gt;Comprehensive validation rules for MyInvois compliance.&lt;/p&gt;
+&lt;h2&gt;Mandatory Fields&lt;span class="hx:absolute hx:-mt-20" id="mandatory-fields"&gt;&lt;/span&gt;
+&lt;a href="#mandatory-fields" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Invoice Header&lt;span class="hx:absolute hx:-mt-20" id="invoice-header"&gt;&lt;/span&gt;
+&lt;a href="#invoice-header" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Invoice number (unique)&lt;/li&gt;
+&lt;li&gt;Invoice date&lt;/li&gt;
+&lt;li&gt;Supplier details&lt;/li&gt;
+&lt;li&gt;Buyer details&lt;/li&gt;
+&lt;li&gt;Currency code&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Line Items&lt;span class="hx:absolute hx:-mt-20" id="line-items"&gt;&lt;/span&gt;
+&lt;a href="#line-items" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Description&lt;/li&gt;
+&lt;li&gt;Quantity&lt;/li&gt;
+&lt;li&gt;Unit price&lt;/li&gt;
+&lt;li&gt;Tax code&lt;/li&gt;
+&lt;li&gt;Line total&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Tax Information&lt;span class="hx:absolute hx:-mt-20" id="tax-information"&gt;&lt;/span&gt;
+&lt;a href="#tax-information" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Tax type (SST/GST)&lt;/li&gt;
+&lt;li&gt;Tax rate&lt;/li&gt;
+&lt;li&gt;Tax amount&lt;/li&gt;
+&lt;li&gt;Tax inclusive/exclusive&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Validation Checks&lt;span class="hx:absolute hx:-mt-20" id="validation-checks"&gt;&lt;/span&gt;
+&lt;a href="#validation-checks" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Format Validation&lt;span class="hx:absolute hx:-mt-20" id="format-validation"&gt;&lt;/span&gt;
+&lt;a href="#format-validation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Date format: YYYY-MM-DD&lt;/li&gt;
+&lt;li&gt;Amount format: 2 decimals&lt;/li&gt;
+&lt;li&gt;Tax number format&lt;/li&gt;
+&lt;li&gt;Phone number format&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Business Rules&lt;span class="hx:absolute hx:-mt-20" id="business-rules"&gt;&lt;/span&gt;
+&lt;a href="#business-rules" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Invoice date &amp;lt;= current date&lt;/li&gt;
+&lt;li&gt;Tax calculations accuracy&lt;/li&gt;
+&lt;li&gt;Total amount validation&lt;/li&gt;
+&lt;li&gt;Currency code validity&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;LHDN Specific&lt;span class="hx:absolute hx:-mt-20" id="lhdn-specific"&gt;&lt;/span&gt;
+&lt;a href="#lhdn-specific" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;TIN validation&lt;/li&gt;
+&lt;li&gt;Business registration&lt;/li&gt;
+&lt;li&gt;SST registration&lt;/li&gt;
+&lt;li&gt;Industry codes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Common Errors&lt;span class="hx:absolute hx:-mt-20" id="common-errors"&gt;&lt;/span&gt;
+&lt;a href="#common-errors" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Error Codes&lt;span class="hx:absolute hx:-mt-20" id="error-codes"&gt;&lt;/span&gt;
+&lt;a href="#error-codes" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;E001: Invalid format&lt;/li&gt;
+&lt;li&gt;E002: Missing mandatory field&lt;/li&gt;
+&lt;li&gt;E003: Invalid tax calculation&lt;/li&gt;
+&lt;li&gt;E004: Duplicate invoice&lt;/li&gt;
+&lt;li&gt;E005: Invalid supplier&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Resolution Steps&lt;span class="hx:absolute hx:-mt-20" id="resolution-steps"&gt;&lt;/span&gt;
+&lt;a href="#resolution-steps" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Identify error code&lt;/li&gt;
+&lt;li&gt;Check field mapping&lt;/li&gt;
+&lt;li&gt;Verify data source&lt;/li&gt;
+&lt;li&gt;Correct and resubmit&lt;/li&gt;
+&lt;li&gt;Monitor status&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Validation support: &lt;a href="mailto:einvoice@bigledger.com" &gt;einvoice@bigledger.com&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description></item></channel></rss>

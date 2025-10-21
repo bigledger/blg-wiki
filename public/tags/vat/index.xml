@@ -1,374 +1,374 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Vat</title><link>https://wiki.bigledger.com/tags/vat/</link><description>Recent content in Vat on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/vat/index.xml" rel="self" type="application/rss+xml"/><item><title>Tax Configuration Applet</title><link>https://wiki.bigledger.com/applets/tax-configuration-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/tax-configuration-applet/</guid><description>
-&lt;h2>Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview">&lt;/span>
-&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The Tax Configuration Applet is a critical Core Module component that manages all tax-related configurations in BigLedger. This applet provides comprehensive tax setup, compliance management, and automated tax calculations that support all taxable transactions across every BigLedger module.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Core Module Applet&lt;/strong>: This is one of the 13 essential Core Module applets, required by all modules that generate taxable transactions including Sales, Purchasing, E-Commerce, POS, and Financial Accounting.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h3>Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions">&lt;/span>
-&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Tax Code Management&lt;/strong> - Complete tax code setup and configuration&lt;/li>
-&lt;li>&lt;strong>Tax Rate Configuration&lt;/strong> - Current and historical tax rates&lt;/li>
-&lt;li>&lt;strong>Compliance Management&lt;/strong> - Regulatory reporting and submissions&lt;/li>
-&lt;li>&lt;strong>Tax Calculation Engine&lt;/strong> - Automated tax computations&lt;/li>
-&lt;li>&lt;strong>Multi-Jurisdiction Support&lt;/strong> - Multiple tax authorities and regions&lt;/li>
-&lt;/ul>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Tax Code and Rate Management&lt;span class="hx:absolute hx:-mt-20" id="tax-code-and-rate-management">&lt;/span>
-&lt;a href="#tax-code-and-rate-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Comprehensive tax code library (GST, SST, VAT, Sales Tax)&lt;/li>
-&lt;li>Tax rate configuration with effective dates&lt;/li>
-&lt;li>Historical tax rate tracking and changes&lt;/li>
-&lt;li>Tax exemption and zero-rating management&lt;/li>
-&lt;li>Compound and cascading tax calculations&lt;/li>
-&lt;li>Import/export tax configurations&lt;/li>
-&lt;/ul>
-&lt;h3>Tax Authority and Jurisdiction&lt;span class="hx:absolute hx:-mt-20" id="tax-authority-and-jurisdiction">&lt;/span>
-&lt;a href="#tax-authority-and-jurisdiction" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Multiple tax authority support&lt;/li>
-&lt;li>Geographic tax jurisdiction mapping&lt;/li>
-&lt;li>Inter-state and international tax rules&lt;/li>
-&lt;li>Tax registration number management&lt;/li>
-&lt;li>Authority-specific reporting requirements&lt;/li>
-&lt;li>Compliance calendar and deadlines&lt;/li>
-&lt;/ul>
-&lt;h3>Tax Groups and Categories&lt;span class="hx:absolute hx:-mt-20" id="tax-groups-and-categories">&lt;/span>
-&lt;a href="#tax-groups-and-categories" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Product/service tax categorization&lt;/li>
-&lt;li>Customer/supplier tax classifications&lt;/li>
-&lt;li>Transaction-based tax rules&lt;/li>
-&lt;li>Industry-specific tax treatments&lt;/li>
-&lt;li>Promotional tax rates and holidays&lt;/li>
-&lt;li>Reverse charge mechanism setup&lt;/li>
-&lt;/ul>
-&lt;h3>Automated Tax Calculations&lt;span class="hx:absolute hx:-mt-20" id="automated-tax-calculations">&lt;/span>
-&lt;a href="#automated-tax-calculations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Real-time tax computation engine&lt;/li>
-&lt;li>Line-item and document-level taxation&lt;/li>
-&lt;li>Discount and markup tax adjustments&lt;/li>
-&lt;li>Rounding rules and precision settings&lt;/li>
-&lt;li>Tax-inclusive and exclusive pricing&lt;/li>
-&lt;li>Currency-based tax calculations&lt;/li>
-&lt;/ul>
-&lt;h3>Compliance and Reporting&lt;span class="hx:absolute hx:-mt-20" id="compliance-and-reporting">&lt;/span>
-&lt;a href="#compliance-and-reporting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Statutory tax reports generation&lt;/li>
-&lt;li>Tax return preparation and filing&lt;/li>
-&lt;li>Audit trail and tax transaction logs&lt;/li>
-&lt;li>Compliance monitoring and alerts&lt;/li>
-&lt;li>E-filing integration capabilities&lt;/li>
-&lt;li>Tax authority correspondence management&lt;/li>
-&lt;/ul>
-&lt;h2>Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications">&lt;/span>
-&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements">&lt;/span>
-&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Minimum Access Level&lt;/strong>: Tax Administrator&lt;/li>
-&lt;li>&lt;strong>Database Dependencies&lt;/strong>: Tax configuration tables&lt;/li>
-&lt;li>&lt;strong>Integration Points&lt;/strong>: All transaction-generating modules&lt;/li>
-&lt;li>&lt;strong>API Availability&lt;/strong>: Tax calculation and reporting APIs&lt;/li>
-&lt;li>&lt;strong>Real-time Processing&lt;/strong>: Instant tax calculations&lt;/li>
-&lt;/ul>
-&lt;h3>Tax Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="tax-configuration-options">&lt;/span>
-&lt;a href="#tax-configuration-options" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Tax Codes&lt;/strong>: Up to 500 tax codes per jurisdiction&lt;/li>
-&lt;li>&lt;strong>Tax Rates&lt;/strong>: Precision up to 6 decimal places&lt;/li>
-&lt;li>&lt;strong>Effective Dates&lt;/strong>: Unlimited historical rate tracking&lt;/li>
-&lt;li>&lt;strong>Tax Authorities&lt;/strong>: Support for multiple jurisdictions&lt;/li>
-&lt;li>&lt;strong>Custom Rules&lt;/strong>: Flexible tax rule configuration&lt;/li>
-&lt;/ul>
-&lt;h3>Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters">&lt;/span>
-&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Calculation Speed&lt;/strong>: &amp;lt;100ms for complex tax calculations&lt;/li>
-&lt;li>&lt;strong>Transaction Volume&lt;/strong>: Millions of tax calculations daily&lt;/li>
-&lt;li>&lt;strong>Concurrent Users&lt;/strong>: 1,000+ simultaneous users&lt;/li>
-&lt;li>&lt;strong>Report Generation&lt;/strong>: Large tax reports in &amp;lt;30 seconds&lt;/li>
-&lt;li>&lt;strong>Data Retention&lt;/strong>: 10+ years of tax transaction history&lt;/li>
-&lt;/ul>
-&lt;h2>Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points">&lt;/span>
-&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies">&lt;/span>
-&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Chart of Account Applet&lt;/strong> - Tax liability and expense accounts&lt;/li>
-&lt;li>&lt;strong>Customer Maintenance Applet&lt;/strong> - Customer tax classifications&lt;/li>
-&lt;li>&lt;strong>Supplier Maintenance Applet&lt;/strong> - Vendor tax settings&lt;/li>
-&lt;li>&lt;strong>Organization Applet&lt;/strong> - Company tax registration details&lt;/li>
-&lt;/ul>
-&lt;h3>Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration">&lt;/span>
-&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Module&lt;/th>
-&lt;th>Integration Purpose&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Sales &amp;amp; CRM&lt;/strong>&lt;/td>
-&lt;td>Sales tax calculations and reporting&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Purchasing&lt;/strong>&lt;/td>
-&lt;td>Purchase tax and input credit management&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>E-Commerce&lt;/strong>&lt;/td>
-&lt;td>Online transaction tax processing&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>POS&lt;/strong>&lt;/td>
-&lt;td>Point-of-sale tax calculations&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Financial Accounting&lt;/strong>&lt;/td>
-&lt;td>Tax posting and reconciliation&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Inventory&lt;/strong>&lt;/td>
-&lt;td>Stock valuation tax impacts&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Manufacturing&lt;/strong>&lt;/td>
-&lt;td>Production-related tax handling&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>International Trade&lt;/strong>&lt;/td>
-&lt;td>Import/export tax management&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3>External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations">&lt;/span>
-&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Tax Authority Systems&lt;/strong> - Electronic filing and submissions&lt;/li>
-&lt;li>&lt;strong>Accounting Software&lt;/strong> - Tax data synchronization&lt;/li>
-&lt;li>&lt;strong>E-Commerce Platforms&lt;/strong> - Online tax calculation services&lt;/li>
-&lt;li>&lt;strong>Banking Systems&lt;/strong> - Tax payment processing&lt;/li>
-&lt;li>&lt;strong>Tax Consulting Services&lt;/strong> - Professional tax advisory integration&lt;/li>
-&lt;li>&lt;strong>Compliance Software&lt;/strong> - Regulatory monitoring systems&lt;/li>
-&lt;/ul>
-&lt;h2>Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements">&lt;/span>
-&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements">&lt;/span>
-&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Company Tax Registration&lt;/strong> - Register business tax details&lt;/li>
-&lt;li>&lt;strong>Tax Authorities&lt;/strong> - Configure relevant tax jurisdictions&lt;/li>
-&lt;li>&lt;strong>Basic Tax Codes&lt;/strong> - Set up standard tax rates (GST/SST/VAT)&lt;/li>
-&lt;li>&lt;strong>Tax Accounts&lt;/strong> - Map tax codes to chart of accounts&lt;/li>
-&lt;li>&lt;strong>Tax Periods&lt;/strong> - Define tax reporting periods&lt;/li>
-&lt;/ol>
-&lt;h3>Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations">&lt;/span>
-&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Standard Tax Rates&lt;/strong>: 0%, 6% GST, 10% SST, etc.&lt;/li>
-&lt;li>&lt;strong>Tax Categories&lt;/strong>: Standard, Zero-rated, Exempt, Out-of-scope&lt;/li>
-&lt;li>&lt;strong>Tax Types&lt;/strong>: Output Tax, Input Tax, Reverse Charge&lt;/li>
-&lt;li>&lt;strong>Tax Accounts&lt;/strong>: Tax Payable, Tax Recoverable accounts&lt;/li>
-&lt;li>&lt;strong>Reporting Periods&lt;/strong>: Monthly, Quarterly, Annual&lt;/li>
-&lt;/ul>
-&lt;h3>Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations">&lt;/span>
-&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Multi-Jurisdiction Tax&lt;/strong> - Multiple country/state tax rules&lt;/li>
-&lt;li>&lt;strong>Industry-Specific Tax&lt;/strong> - Specialized tax treatments&lt;/li>
-&lt;li>&lt;strong>Promotional Tax Rates&lt;/strong> - Temporary tax reductions&lt;/li>
-&lt;li>&lt;strong>Complex Tax Rules&lt;/strong> - Compound and cascading taxes&lt;/li>
-&lt;li>&lt;strong>E-Filing Integration&lt;/strong> - Automated tax submission&lt;/li>
-&lt;/ul>
-&lt;h2>Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases">&lt;/span>
-&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Malaysian Business (GST/SST)&lt;span class="hx:absolute hx:-mt-20" id="malaysian-business-gstsst">&lt;/span>
-&lt;a href="#malaysian-business-gstsst" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Manufacturing company in Malaysia&lt;/p>
-&lt;ul>
-&lt;li>GST registration and configuration&lt;/li>
-&lt;li>SST on services and imported goods&lt;/li>
-&lt;li>Export zero-rating setup&lt;/li>
-&lt;li>Monthly GST return preparation&lt;/li>
-&lt;li>SST quarterly reporting&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Complete Malaysian tax compliance&lt;/p>
-&lt;h3>Multi-Country Operations&lt;span class="hx:absolute hx:-mt-20" id="multi-country-operations">&lt;/span>
-&lt;a href="#multi-country-operations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: International business with multiple offices&lt;/p>
-&lt;ul>
-&lt;li>Country-specific tax configurations&lt;/li>
-&lt;li>Inter-company transaction tax rules&lt;/li>
-&lt;li>Transfer pricing tax implications&lt;/li>
-&lt;li>Consolidated tax reporting&lt;/li>
-&lt;li>Currency-based tax calculations&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Comprehensive international tax management&lt;/p>
-&lt;h3>E-Commerce Business&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-business">&lt;/span>
-&lt;a href="#e-commerce-business" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Online retailer selling across regions&lt;/p>
-&lt;ul>
-&lt;li>Destination-based tax calculations&lt;/li>
-&lt;li>Marketplace tax collection rules&lt;/li>
-&lt;li>Digital service tax handling&lt;/li>
-&lt;li>Customer location-based taxation&lt;/li>
-&lt;li>Automated tax compliance&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Seamless online tax compliance&lt;/p>
-&lt;h3>Service Industry&lt;span class="hx:absolute hx:-mt-20" id="service-industry">&lt;/span>
-&lt;a href="#service-industry" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Professional services firm&lt;/p>
-&lt;ul>
-&lt;li>Service tax configuration&lt;/li>
-&lt;li>Reverse charge mechanism&lt;/li>
-&lt;li>Professional service exemptions&lt;/li>
-&lt;li>Client location-based taxation&lt;/li>
-&lt;li>Service export zero-rating&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Accurate service industry tax management&lt;/p>
-&lt;h2>Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets">&lt;/span>
-&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets">&lt;/span>
-&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/chart-of-account-applet/" >Chart of Account Applet&lt;/a>&lt;/strong> - Tax account mapping&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/customer-maintenance-applet/" >Customer Maintenance Applet&lt;/a>&lt;/strong> - Customer tax settings&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/supplier-maintenance-applet/" >Supplier Maintenance Applet&lt;/a>&lt;/strong> - Vendor tax configurations&lt;/li>
-&lt;/ul>
-&lt;h3>Financial Applets&lt;span class="hx:absolute hx:-mt-20" id="financial-applets">&lt;/span>
-&lt;a href="#financial-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/tax-reporting-applet/" >Tax Reporting Applet&lt;/a>&lt;/strong> - Statutory tax reports&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/tax-payment-applet/" >Tax Payment Applet&lt;/a>&lt;/strong> - Tax payment processing&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/tax-reconciliation-applet/" >Tax Reconciliation Applet&lt;/a>&lt;/strong> - Tax account reconciliation&lt;/li>
-&lt;/ul>
-&lt;h3>Transaction Applets&lt;span class="hx:absolute hx:-mt-20" id="transaction-applets">&lt;/span>
-&lt;a href="#transaction-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/sales-tax-applet/" >Sales Tax Applet&lt;/a>&lt;/strong> - Sales transaction taxation&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/purchase-tax-applet/" >Purchase Tax Applet&lt;/a>&lt;/strong> - Purchase transaction taxation&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/ecommerce-tax-applet/" >E-Commerce Tax Applet&lt;/a>&lt;/strong> - Online transaction taxation&lt;/li>
-&lt;/ul>
-&lt;h2>Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide">&lt;/span>
-&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start">&lt;/span>
-&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Access Tax Configuration&lt;/strong> - Navigate to the applet&lt;/li>
-&lt;li>&lt;strong>Company Tax Setup&lt;/strong> - Enter business tax registration details&lt;/li>
-&lt;li>&lt;strong>Basic Tax Codes&lt;/strong> - Create standard tax rates&lt;/li>
-&lt;li>&lt;strong>Account Mapping&lt;/strong> - Link tax codes to accounts&lt;/li>
-&lt;li>&lt;strong>Test Calculations&lt;/strong> - Verify tax computation accuracy&lt;/li>
-&lt;/ol>
-&lt;h3>Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup">&lt;/span>
-&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Multi-Jurisdiction Configuration&lt;/strong> - Set up multiple tax authorities&lt;/li>
-&lt;li>&lt;strong>Complex Tax Rules&lt;/strong> - Configure compound and cascading taxes&lt;/li>
-&lt;li>&lt;strong>E-Filing Integration&lt;/strong> - Connect with tax authority systems&lt;/li>
-&lt;li>&lt;strong>Reporting Automation&lt;/strong> - Set up automated report generation&lt;/li>
-&lt;li>&lt;strong>Compliance Monitoring&lt;/strong> - Configure compliance alerts and workflows&lt;/li>
-&lt;/ol>
-&lt;h2>Tax Configuration Examples&lt;span class="hx:absolute hx:-mt-20" id="tax-configuration-examples">&lt;/span>
-&lt;a href="#tax-configuration-examples" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Malaysian GST/SST Setup&lt;span class="hx:absolute hx:-mt-20" id="malaysian-gstsst-setup">&lt;/span>
-&lt;a href="#malaysian-gstsst-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Tax Authority&lt;/span>: &lt;span style="color:#ae81ff">Malaysia Royal Customs Department&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Business Registration&lt;/span>: &lt;span style="color:#ae81ff">GST123456789&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Standard GST&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Tax Code&lt;/span>: &lt;span style="color:#ae81ff">GST-STD&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Rate&lt;/span>: &lt;span style="color:#ae81ff">6&lt;/span>&lt;span style="color:#ae81ff">%&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Account&lt;/span>: &lt;span style="color:#ae81ff">2100&lt;/span> - &lt;span style="color:#ae81ff">GST Payable&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Type&lt;/span>: &lt;span style="color:#ae81ff">Output Tax&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Zero-Rated GST&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Tax Code&lt;/span>: &lt;span style="color:#ae81ff">GST-ZR&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Rate&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span>&lt;span style="color:#ae81ff">%&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Account&lt;/span>: &lt;span style="color:#ae81ff">2100&lt;/span> - &lt;span style="color:#ae81ff">GST Payable&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Type&lt;/span>: &lt;span style="color:#ae81ff">Zero-rated&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">SST on Services&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Tax Code&lt;/span>: &lt;span style="color:#ae81ff">SST-SRV&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Rate&lt;/span>: &lt;span style="color:#ae81ff">6&lt;/span>&lt;span style="color:#ae81ff">%&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Account&lt;/span>: &lt;span style="color:#ae81ff">2110&lt;/span> - &lt;span style="color:#ae81ff">SST Payable&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Type&lt;/span>: &lt;span style="color:#ae81ff">Service Tax&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Input Tax&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Tax Code&lt;/span>: &lt;span style="color:#ae81ff">GST-IN&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Rate&lt;/span>: &lt;span style="color:#ae81ff">6&lt;/span>&lt;span style="color:#ae81ff">%&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Account&lt;/span>: &lt;span style="color:#ae81ff">1350&lt;/span> - &lt;span style="color:#ae81ff">GST Recoverable&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Type&lt;/span>: &lt;span style="color:#ae81ff">Input Tax&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&lt;h2&gt;Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview"&gt;&lt;/span&gt;
+&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The Tax Configuration Applet is a critical Core Module component that manages all tax-related configurations in BigLedger. This applet provides comprehensive tax setup, compliance management, and automated tax calculations that support all taxable transactions across every BigLedger module.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Core Module Applet&lt;/strong&gt;: This is one of the 13 essential Core Module applets, required by all modules that generate taxable transactions including Sales, Purchasing, E-Commerce, POS, and Financial Accounting.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions"&gt;&lt;/span&gt;
+&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tax Code Management&lt;/strong&gt; - Complete tax code setup and configuration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Rate Configuration&lt;/strong&gt; - Current and historical tax rates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance Management&lt;/strong&gt; - Regulatory reporting and submissions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Calculation Engine&lt;/strong&gt; - Automated tax computations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Jurisdiction Support&lt;/strong&gt; - Multiple tax authorities and regions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Tax Code and Rate Management&lt;span class="hx:absolute hx:-mt-20" id="tax-code-and-rate-management"&gt;&lt;/span&gt;
+&lt;a href="#tax-code-and-rate-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Comprehensive tax code library (GST, SST, VAT, Sales Tax)&lt;/li&gt;
+&lt;li&gt;Tax rate configuration with effective dates&lt;/li&gt;
+&lt;li&gt;Historical tax rate tracking and changes&lt;/li&gt;
+&lt;li&gt;Tax exemption and zero-rating management&lt;/li&gt;
+&lt;li&gt;Compound and cascading tax calculations&lt;/li&gt;
+&lt;li&gt;Import/export tax configurations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Tax Authority and Jurisdiction&lt;span class="hx:absolute hx:-mt-20" id="tax-authority-and-jurisdiction"&gt;&lt;/span&gt;
+&lt;a href="#tax-authority-and-jurisdiction" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Multiple tax authority support&lt;/li&gt;
+&lt;li&gt;Geographic tax jurisdiction mapping&lt;/li&gt;
+&lt;li&gt;Inter-state and international tax rules&lt;/li&gt;
+&lt;li&gt;Tax registration number management&lt;/li&gt;
+&lt;li&gt;Authority-specific reporting requirements&lt;/li&gt;
+&lt;li&gt;Compliance calendar and deadlines&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Tax Groups and Categories&lt;span class="hx:absolute hx:-mt-20" id="tax-groups-and-categories"&gt;&lt;/span&gt;
+&lt;a href="#tax-groups-and-categories" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Product/service tax categorization&lt;/li&gt;
+&lt;li&gt;Customer/supplier tax classifications&lt;/li&gt;
+&lt;li&gt;Transaction-based tax rules&lt;/li&gt;
+&lt;li&gt;Industry-specific tax treatments&lt;/li&gt;
+&lt;li&gt;Promotional tax rates and holidays&lt;/li&gt;
+&lt;li&gt;Reverse charge mechanism setup&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Automated Tax Calculations&lt;span class="hx:absolute hx:-mt-20" id="automated-tax-calculations"&gt;&lt;/span&gt;
+&lt;a href="#automated-tax-calculations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Real-time tax computation engine&lt;/li&gt;
+&lt;li&gt;Line-item and document-level taxation&lt;/li&gt;
+&lt;li&gt;Discount and markup tax adjustments&lt;/li&gt;
+&lt;li&gt;Rounding rules and precision settings&lt;/li&gt;
+&lt;li&gt;Tax-inclusive and exclusive pricing&lt;/li&gt;
+&lt;li&gt;Currency-based tax calculations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Compliance and Reporting&lt;span class="hx:absolute hx:-mt-20" id="compliance-and-reporting"&gt;&lt;/span&gt;
+&lt;a href="#compliance-and-reporting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Statutory tax reports generation&lt;/li&gt;
+&lt;li&gt;Tax return preparation and filing&lt;/li&gt;
+&lt;li&gt;Audit trail and tax transaction logs&lt;/li&gt;
+&lt;li&gt;Compliance monitoring and alerts&lt;/li&gt;
+&lt;li&gt;E-filing integration capabilities&lt;/li&gt;
+&lt;li&gt;Tax authority correspondence management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications"&gt;&lt;/span&gt;
+&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements"&gt;&lt;/span&gt;
+&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Minimum Access Level&lt;/strong&gt;: Tax Administrator&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Dependencies&lt;/strong&gt;: Tax configuration tables&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Points&lt;/strong&gt;: All transaction-generating modules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Availability&lt;/strong&gt;: Tax calculation and reporting APIs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Processing&lt;/strong&gt;: Instant tax calculations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Tax Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="tax-configuration-options"&gt;&lt;/span&gt;
+&lt;a href="#tax-configuration-options" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tax Codes&lt;/strong&gt;: Up to 500 tax codes per jurisdiction&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Rates&lt;/strong&gt;: Precision up to 6 decimal places&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Effective Dates&lt;/strong&gt;: Unlimited historical rate tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Authorities&lt;/strong&gt;: Support for multiple jurisdictions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Rules&lt;/strong&gt;: Flexible tax rule configuration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters"&gt;&lt;/span&gt;
+&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Calculation Speed&lt;/strong&gt;: &amp;lt;100ms for complex tax calculations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transaction Volume&lt;/strong&gt;: Millions of tax calculations daily&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Concurrent Users&lt;/strong&gt;: 1,000+ simultaneous users&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Report Generation&lt;/strong&gt;: Large tax reports in &amp;lt;30 seconds&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Retention&lt;/strong&gt;: 10+ years of tax transaction history&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points"&gt;&lt;/span&gt;
+&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies"&gt;&lt;/span&gt;
+&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Chart of Account Applet&lt;/strong&gt; - Tax liability and expense accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Maintenance Applet&lt;/strong&gt; - Customer tax classifications&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Supplier Maintenance Applet&lt;/strong&gt; - Vendor tax settings&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Organization Applet&lt;/strong&gt; - Company tax registration details&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration"&gt;&lt;/span&gt;
+&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Module&lt;/th&gt;
+&lt;th&gt;Integration Purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Sales &amp;amp; CRM&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Sales tax calculations and reporting&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Purchasing&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Purchase tax and input credit management&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;E-Commerce&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Online transaction tax processing&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;POS&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Point-of-sale tax calculations&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Financial Accounting&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Tax posting and reconciliation&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Inventory&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Stock valuation tax impacts&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Manufacturing&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Production-related tax handling&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;International Trade&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Import/export tax management&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations"&gt;&lt;/span&gt;
+&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tax Authority Systems&lt;/strong&gt; - Electronic filing and submissions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Accounting Software&lt;/strong&gt; - Tax data synchronization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;E-Commerce Platforms&lt;/strong&gt; - Online tax calculation services&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Banking Systems&lt;/strong&gt; - Tax payment processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Consulting Services&lt;/strong&gt; - Professional tax advisory integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance Software&lt;/strong&gt; - Regulatory monitoring systems&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements"&gt;&lt;/span&gt;
+&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements"&gt;&lt;/span&gt;
+&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Company Tax Registration&lt;/strong&gt; - Register business tax details&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Authorities&lt;/strong&gt; - Configure relevant tax jurisdictions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Basic Tax Codes&lt;/strong&gt; - Set up standard tax rates (GST/SST/VAT)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Accounts&lt;/strong&gt; - Map tax codes to chart of accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Periods&lt;/strong&gt; - Define tax reporting periods&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations"&gt;&lt;/span&gt;
+&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Standard Tax Rates&lt;/strong&gt;: 0%, 6% GST, 10% SST, etc.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Categories&lt;/strong&gt;: Standard, Zero-rated, Exempt, Out-of-scope&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Types&lt;/strong&gt;: Output Tax, Input Tax, Reverse Charge&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Accounts&lt;/strong&gt;: Tax Payable, Tax Recoverable accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reporting Periods&lt;/strong&gt;: Monthly, Quarterly, Annual&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations"&gt;&lt;/span&gt;
+&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Jurisdiction Tax&lt;/strong&gt; - Multiple country/state tax rules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Industry-Specific Tax&lt;/strong&gt; - Specialized tax treatments&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Promotional Tax Rates&lt;/strong&gt; - Temporary tax reductions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Complex Tax Rules&lt;/strong&gt; - Compound and cascading taxes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;E-Filing Integration&lt;/strong&gt; - Automated tax submission&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases"&gt;&lt;/span&gt;
+&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Malaysian Business (GST/SST)&lt;span class="hx:absolute hx:-mt-20" id="malaysian-business-gstsst"&gt;&lt;/span&gt;
+&lt;a href="#malaysian-business-gstsst" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Manufacturing company in Malaysia&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GST registration and configuration&lt;/li&gt;
+&lt;li&gt;SST on services and imported goods&lt;/li&gt;
+&lt;li&gt;Export zero-rating setup&lt;/li&gt;
+&lt;li&gt;Monthly GST return preparation&lt;/li&gt;
+&lt;li&gt;SST quarterly reporting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Complete Malaysian tax compliance&lt;/p&gt;
+&lt;h3&gt;Multi-Country Operations&lt;span class="hx:absolute hx:-mt-20" id="multi-country-operations"&gt;&lt;/span&gt;
+&lt;a href="#multi-country-operations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: International business with multiple offices&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Country-specific tax configurations&lt;/li&gt;
+&lt;li&gt;Inter-company transaction tax rules&lt;/li&gt;
+&lt;li&gt;Transfer pricing tax implications&lt;/li&gt;
+&lt;li&gt;Consolidated tax reporting&lt;/li&gt;
+&lt;li&gt;Currency-based tax calculations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Comprehensive international tax management&lt;/p&gt;
+&lt;h3&gt;E-Commerce Business&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-business"&gt;&lt;/span&gt;
+&lt;a href="#e-commerce-business" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Online retailer selling across regions&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Destination-based tax calculations&lt;/li&gt;
+&lt;li&gt;Marketplace tax collection rules&lt;/li&gt;
+&lt;li&gt;Digital service tax handling&lt;/li&gt;
+&lt;li&gt;Customer location-based taxation&lt;/li&gt;
+&lt;li&gt;Automated tax compliance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Seamless online tax compliance&lt;/p&gt;
+&lt;h3&gt;Service Industry&lt;span class="hx:absolute hx:-mt-20" id="service-industry"&gt;&lt;/span&gt;
+&lt;a href="#service-industry" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Professional services firm&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Service tax configuration&lt;/li&gt;
+&lt;li&gt;Reverse charge mechanism&lt;/li&gt;
+&lt;li&gt;Professional service exemptions&lt;/li&gt;
+&lt;li&gt;Client location-based taxation&lt;/li&gt;
+&lt;li&gt;Service export zero-rating&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Accurate service industry tax management&lt;/p&gt;
+&lt;h2&gt;Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets"&gt;&lt;/span&gt;
+&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets"&gt;&lt;/span&gt;
+&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/chart-of-account-applet/" &gt;Chart of Account Applet&lt;/a&gt;&lt;/strong&gt; - Tax account mapping&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/customer-maintenance-applet/" &gt;Customer Maintenance Applet&lt;/a&gt;&lt;/strong&gt; - Customer tax settings&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/supplier-maintenance-applet/" &gt;Supplier Maintenance Applet&lt;/a&gt;&lt;/strong&gt; - Vendor tax configurations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Financial Applets&lt;span class="hx:absolute hx:-mt-20" id="financial-applets"&gt;&lt;/span&gt;
+&lt;a href="#financial-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/tax-reporting-applet/" &gt;Tax Reporting Applet&lt;/a&gt;&lt;/strong&gt; - Statutory tax reports&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/tax-payment-applet/" &gt;Tax Payment Applet&lt;/a&gt;&lt;/strong&gt; - Tax payment processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/tax-reconciliation-applet/" &gt;Tax Reconciliation Applet&lt;/a&gt;&lt;/strong&gt; - Tax account reconciliation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Transaction Applets&lt;span class="hx:absolute hx:-mt-20" id="transaction-applets"&gt;&lt;/span&gt;
+&lt;a href="#transaction-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/sales-tax-applet/" &gt;Sales Tax Applet&lt;/a&gt;&lt;/strong&gt; - Sales transaction taxation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/purchase-tax-applet/" &gt;Purchase Tax Applet&lt;/a&gt;&lt;/strong&gt; - Purchase transaction taxation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/ecommerce-tax-applet/" &gt;E-Commerce Tax Applet&lt;/a&gt;&lt;/strong&gt; - Online transaction taxation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide"&gt;&lt;/span&gt;
+&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start"&gt;&lt;/span&gt;
+&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Access Tax Configuration&lt;/strong&gt; - Navigate to the applet&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Company Tax Setup&lt;/strong&gt; - Enter business tax registration details&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Basic Tax Codes&lt;/strong&gt; - Create standard tax rates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Account Mapping&lt;/strong&gt; - Link tax codes to accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test Calculations&lt;/strong&gt; - Verify tax computation accuracy&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup"&gt;&lt;/span&gt;
+&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Jurisdiction Configuration&lt;/strong&gt; - Set up multiple tax authorities&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Complex Tax Rules&lt;/strong&gt; - Configure compound and cascading taxes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;E-Filing Integration&lt;/strong&gt; - Connect with tax authority systems&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reporting Automation&lt;/strong&gt; - Set up automated report generation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance Monitoring&lt;/strong&gt; - Configure compliance alerts and workflows&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Tax Configuration Examples&lt;span class="hx:absolute hx:-mt-20" id="tax-configuration-examples"&gt;&lt;/span&gt;
+&lt;a href="#tax-configuration-examples" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Malaysian GST/SST Setup&lt;span class="hx:absolute hx:-mt-20" id="malaysian-gstsst-setup"&gt;&lt;/span&gt;
+&lt;a href="#malaysian-gstsst-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Tax Authority&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Malaysia Royal Customs Department&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Business Registration&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;GST123456789&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Standard GST&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Tax Code&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;GST-STD&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Rate&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;6&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Account&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;2100&lt;/span&gt; - &lt;span style="color:#ae81ff"&gt;GST Payable&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Output Tax&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Zero-Rated GST&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Tax Code&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;GST-ZR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Rate&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Account&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;2100&lt;/span&gt; - &lt;span style="color:#ae81ff"&gt;GST Payable&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Zero-rated&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;SST on Services&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Tax Code&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;SST-SRV&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Rate&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;6&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Account&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;2110&lt;/span&gt; - &lt;span style="color:#ae81ff"&gt;SST Payable&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Service Tax&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Input Tax&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Tax Code&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;GST-IN&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Rate&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;6&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Account&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;1350&lt;/span&gt; - &lt;span style="color:#ae81ff"&gt;GST Recoverable&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Input Tax&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Singapore GST Setup&lt;span class="hx:absolute hx:-mt-20" id="singapore-gst-setup">&lt;/span>
-&lt;a href="#singapore-gst-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Tax Authority&lt;/span>: &lt;span style="color:#ae81ff">Inland Revenue Authority of Singapore&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Business Registration&lt;/span>: &lt;span style="color:#ae81ff">GST200123456&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Standard GST&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Tax Code&lt;/span>: &lt;span style="color:#ae81ff">SG-GST&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Rate&lt;/span>: &lt;span style="color:#ae81ff">8&lt;/span>&lt;span style="color:#ae81ff">%&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Account&lt;/span>: &lt;span style="color:#ae81ff">2100&lt;/span> - &lt;span style="color:#ae81ff">GST Payable&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Type&lt;/span>: &lt;span style="color:#ae81ff">Output Tax&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Zero-Rated Export&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Tax Code&lt;/span>: &lt;span style="color:#ae81ff">SG-ZR&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Rate&lt;/span>: &lt;span style="color:#ae81ff">0&lt;/span>&lt;span style="color:#ae81ff">%&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Account&lt;/span>: &lt;span style="color:#ae81ff">2100&lt;/span> - &lt;span style="color:#ae81ff">GST Payable&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">Type&lt;/span>: &lt;span style="color:#ae81ff">Zero-rated Export&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Singapore GST Setup&lt;span class="hx:absolute hx:-mt-20" id="singapore-gst-setup"&gt;&lt;/span&gt;
+&lt;a href="#singapore-gst-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Tax Authority&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Inland Revenue Authority of Singapore&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Business Registration&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;GST200123456&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Standard GST&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Tax Code&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;SG-GST&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Rate&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;8&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Account&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;2100&lt;/span&gt; - &lt;span style="color:#ae81ff"&gt;GST Payable&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Output Tax&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Zero-Rated Export&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Tax Code&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;SG-ZR&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Rate&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;0&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;%&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Account&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;2100&lt;/span&gt; - &lt;span style="color:#ae81ff"&gt;GST Payable&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Zero-rated Export&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h2>Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices">&lt;/span>
-&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Tax Configuration Best Practices&lt;span class="hx:absolute hx:-mt-20" id="tax-configuration-best-practices">&lt;/span>
-&lt;a href="#tax-configuration-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Regular Updates&lt;/strong> - Keep tax rates current with regulatory changes&lt;/li>
-&lt;li>&lt;strong>Backup Configuration&lt;/strong> - Regular backup of tax settings&lt;/li>
-&lt;li>&lt;strong>Testing Environment&lt;/strong> - Test tax changes before production&lt;/li>
-&lt;li>&lt;strong>Documentation&lt;/strong> - Maintain tax configuration documentation&lt;/li>
-&lt;li>&lt;strong>Access Control&lt;/strong> - Restrict tax configuration access&lt;/li>
-&lt;/ul>
-&lt;h3>Compliance Best Practices&lt;span class="hx:absolute hx:-mt-20" id="compliance-best-practices">&lt;/span>
-&lt;a href="#compliance-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Regular Reviews&lt;/strong> - Periodic tax compliance assessments&lt;/li>
-&lt;li>&lt;strong>Audit Preparation&lt;/strong> - Maintain comprehensive tax records&lt;/li>
-&lt;li>&lt;strong>Professional Advice&lt;/strong> - Regular consultation with tax advisors&lt;/li>
-&lt;li>&lt;strong>System Updates&lt;/strong> - Keep up with tax authority requirements&lt;/li>
-&lt;li>&lt;strong>Training Programs&lt;/strong> - Regular tax training for staff&lt;/li>
-&lt;/ul>
-&lt;h3>Tax Calculation Best Practices&lt;span class="hx:absolute hx:-mt-20" id="tax-calculation-best-practices">&lt;/span>
-&lt;a href="#tax-calculation-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Accuracy Verification&lt;/strong> - Regular tax calculation testing&lt;/li>
-&lt;li>&lt;strong>Rounding Rules&lt;/strong> - Proper rounding configuration&lt;/li>
-&lt;li>&lt;strong>Exception Handling&lt;/strong> - Clear tax exception procedures&lt;/li>
-&lt;li>&lt;strong>Performance Monitoring&lt;/strong> - Monitor tax calculation performance&lt;/li>
-&lt;li>&lt;strong>Error Resolution&lt;/strong> - Systematic tax error resolution processes&lt;/li>
-&lt;/ul>
-&lt;h2>Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting">&lt;/span>
-&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues">&lt;/span>
-&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Incorrect tax calculations&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Verify tax code configuration&lt;/li>
-&lt;li>Check tax rate effective dates&lt;/li>
-&lt;li>Review customer/supplier tax settings&lt;/li>
-&lt;li>Confirm account mapping accuracy&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Tax report discrepancies&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Check transaction tax postings&lt;/li>
-&lt;li>Verify period-end cutoffs&lt;/li>
-&lt;li>Review manual tax adjustments&lt;/li>
-&lt;li>Confirm tax authority requirements&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>E-filing submission errors&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Verify tax authority credentials&lt;/li>
-&lt;li>Check data format requirements&lt;/li>
-&lt;li>Review network connectivity&lt;/li>
-&lt;li>Confirm submission deadlines&lt;/li>
-&lt;/ul>
-&lt;h3>Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources">&lt;/span>
-&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Tax configuration setup guide&lt;/li>
-&lt;li>Compliance requirements documentation&lt;/li>
-&lt;li>Tax calculation troubleshooting guide&lt;/li>
-&lt;li>E-filing integration documentation&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Compliance Critical&lt;/strong>: Tax configuration directly impacts regulatory compliance. Always consult with qualified tax professionals and test thoroughly before implementing changes in production.&lt;/div>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices"&gt;&lt;/span&gt;
+&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Tax Configuration Best Practices&lt;span class="hx:absolute hx:-mt-20" id="tax-configuration-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#tax-configuration-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Regular Updates&lt;/strong&gt; - Keep tax rates current with regulatory changes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backup Configuration&lt;/strong&gt; - Regular backup of tax settings&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Testing Environment&lt;/strong&gt; - Test tax changes before production&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt; - Maintain tax configuration documentation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Access Control&lt;/strong&gt; - Restrict tax configuration access&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Compliance Best Practices&lt;span class="hx:absolute hx:-mt-20" id="compliance-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#compliance-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Regular Reviews&lt;/strong&gt; - Periodic tax compliance assessments&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Audit Preparation&lt;/strong&gt; - Maintain comprehensive tax records&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Professional Advice&lt;/strong&gt; - Regular consultation with tax advisors&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;System Updates&lt;/strong&gt; - Keep up with tax authority requirements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Training Programs&lt;/strong&gt; - Regular tax training for staff&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Tax Calculation Best Practices&lt;span class="hx:absolute hx:-mt-20" id="tax-calculation-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#tax-calculation-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Accuracy Verification&lt;/strong&gt; - Regular tax calculation testing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Rounding Rules&lt;/strong&gt; - Proper rounding configuration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Exception Handling&lt;/strong&gt; - Clear tax exception procedures&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Monitoring&lt;/strong&gt; - Monitor tax calculation performance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Error Resolution&lt;/strong&gt; - Systematic tax error resolution processes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues"&gt;&lt;/span&gt;
+&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Incorrect tax calculations&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Verify tax code configuration&lt;/li&gt;
+&lt;li&gt;Check tax rate effective dates&lt;/li&gt;
+&lt;li&gt;Review customer/supplier tax settings&lt;/li&gt;
+&lt;li&gt;Confirm account mapping accuracy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Tax report discrepancies&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check transaction tax postings&lt;/li&gt;
+&lt;li&gt;Verify period-end cutoffs&lt;/li&gt;
+&lt;li&gt;Review manual tax adjustments&lt;/li&gt;
+&lt;li&gt;Confirm tax authority requirements&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;E-filing submission errors&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Verify tax authority credentials&lt;/li&gt;
+&lt;li&gt;Check data format requirements&lt;/li&gt;
+&lt;li&gt;Review network connectivity&lt;/li&gt;
+&lt;li&gt;Confirm submission deadlines&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources"&gt;&lt;/span&gt;
+&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Tax configuration setup guide&lt;/li&gt;
+&lt;li&gt;Compliance requirements documentation&lt;/li&gt;
+&lt;li&gt;Tax calculation troubleshooting guide&lt;/li&gt;
+&lt;li&gt;E-filing integration documentation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Compliance Critical&lt;/strong&gt;: Tax configuration directly impacts regulatory compliance. Always consult with qualified tax professionals and test thoroughly before implementing changes in production.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

@@ -1,0 +1,13 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger 文档 – Membership</title><link>https://wiki.bigledger.com/zh/tags/membership/</link><description>Recent content in Membership on BigLedger 文档</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://wiki.bigledger.com/zh/tags/membership/index.xml" rel="self" type="application/rss+xml"/><item><title>会员管理控制台小程序</title><link>https://wiki.bigledger.com/zh/applets/membership-admin-console-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/membership-admin-console-applet/</guid><description>
+&lt;p&gt;1&lt;/p&gt;</description></item><item><title>会员计划</title><link>https://wiki.bigledger.com/zh/applets/membership-program/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/membership-program/</guid><description>
+&lt;p&gt;使用会员计划
+必需小程序
+组织小程序
+单据项目维护小程序
+价格簿小程序
+可选小程序
+cp-commerce管理小程序，允许您的会员登录并查看积分。
+销售点小程序&lt;/p&gt;</description></item><item><title>会员管理控制台小程序介绍</title><link>https://wiki.bigledger.com/zh/applets/introduction-to-membership-admin-console-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/introduction-to-membership-admin-console-applet/</guid><description>
+&lt;p&gt;介绍
+此小程序用于配置和管理会员和积分货币，例如标记、分类会员以及设置不同积分货币的兑换率。该小程序包含七个模块，分别是会员列表、会员类别、会员标签、会员标签列表、积分货币（PTS CCY）、积分到积分货币配置（PTS to PTS），以及积分到货币兑换配置（PTS to CCY）。
+步骤：安装 &amp;gt; 创建会员 &amp;gt; 创建会员类别 &amp;gt; 创建会员标签列表 &amp;gt; 创建或编辑会员标签 &amp;gt; 创建积分货币 &amp;gt; 创建积分到积分货币配置 &amp;gt; 创建积分到货币兑换配置 &amp;gt; 编辑会员（类别、标签和积分交易）&lt;/p&gt;</description></item></channel></rss>

@@ -1,17 +1,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – E-Commerce Module</title><link>https://wiki.bigledger.com/modules/ecommerce/</link><description>Recent content in E-Commerce Module on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/modules/ecommerce/index.xml" rel="self" type="application/rss+xml"/><item><title>2.0 Website Configuration﻿</title><link>https://wiki.bigledger.com/modules/ecommerce/20-website-configuration/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/20-website-configuration/</guid><description>
-&lt;h1>2.0 Website Configuration﻿&lt;/h1>&lt;p>&lt;strong>Page ID&lt;/strong>: 3187343370
-&lt;strong>Last Updated&lt;/strong>: 2024-11-17T11:07:01.283Z&lt;/p>
-&lt;h2>2.1 Setting Up Your Website﻿&lt;span class="hx:absolute hx:-mt-20" id="21-setting-up-your-website">&lt;/span>
-&lt;a href="#21-setting-up-your-website" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>CP-Commerce offers a user-friendly interface for configuring your website. Refer to the Website Configuration section for detailed instructions on setting up and customizing your website.&lt;/p>
-&lt;h2>2.2 Customizing Website Content﻿&lt;span class="hx:absolute hx:-mt-20" id="22-customizing-website-content">&lt;/span>
-&lt;a href="#22-customizing-website-content" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Learn how to tailor your website&amp;rsquo;s content, including product listings, images, descriptions, and pricing, to create an appealing online shopping experience for your customers.&lt;/p></description></item><item><title>B2B</title><link>https://wiki.bigledger.com/modules/ecommerce/b2b/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/b2b/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3153822181
-&lt;strong>Last Updated&lt;/strong>: 2021-06-05T09:01:05.690Z&lt;/p></description></item><item><title>CP-Commerce</title><link>https://wiki.bigledger.com/modules/ecommerce/cp-commerce/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/cp-commerce/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3153887626
-&lt;strong>Last Updated&lt;/strong>: 2024-11-17T11:04:53.671Z
-The CP-Commerce Module is a powerful solution designed to help businesses offer products and services online. It serves as an integrated platform that combines eCommerce capabilities with central data management and seamless integration with various other business systems. By eliminating duplicated data entry and providing operational data lake functionality, CP-Commerce empowers businesses to establish a robust online presence and grow their operations.&lt;/p></description></item><item><title>Create Single Tab</title><link>https://wiki.bigledger.com/modules/ecommerce/create-single-tab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/create-single-tab/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196191946
-&lt;strong>Last Updated&lt;/strong>: 2021-06-18T06:09:58.079Z
+&lt;h1&gt;2.0 Website Configuration﻿&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3187343370
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2024-11-17T11:07:01.283Z&lt;/p&gt;
+&lt;h2&gt;2.1 Setting Up Your Website﻿&lt;span class="hx:absolute hx:-mt-20" id="21-setting-up-your-website"&gt;&lt;/span&gt;
+&lt;a href="#21-setting-up-your-website" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;CP-Commerce offers a user-friendly interface for configuring your website. Refer to the Website Configuration section for detailed instructions on setting up and customizing your website.&lt;/p&gt;
+&lt;h2&gt;2.2 Customizing Website Content﻿&lt;span class="hx:absolute hx:-mt-20" id="22-customizing-website-content"&gt;&lt;/span&gt;
+&lt;a href="#22-customizing-website-content" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Learn how to tailor your website&amp;rsquo;s content, including product listings, images, descriptions, and pricing, to create an appealing online shopping experience for your customers.&lt;/p&gt;</description></item><item><title>B2B</title><link>https://wiki.bigledger.com/modules/ecommerce/b2b/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/b2b/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3153822181
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-05T09:01:05.690Z&lt;/p&gt;</description></item><item><title>CP-Commerce</title><link>https://wiki.bigledger.com/modules/ecommerce/cp-commerce/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/cp-commerce/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3153887626
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2024-11-17T11:04:53.671Z
+The CP-Commerce Module is a powerful solution designed to help businesses offer products and services online. It serves as an integrated platform that combines eCommerce capabilities with central data management and seamless integration with various other business systems. By eliminating duplicated data entry and providing operational data lake functionality, CP-Commerce empowers businesses to establish a robust online presence and grow their operations.&lt;/p&gt;</description></item><item><title>Create Single Tab</title><link>https://wiki.bigledger.com/modules/ecommerce/create-single-tab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/create-single-tab/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196191946
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-18T06:09:58.079Z
 Create - used for syncing the chosen item into a marketplace store. Create consist of 2 types :
 Create Single - used when user wants to sync 1 (one) item into the marketplace
 Create single item consist of 2 tabs :
@@ -20,9 +20,9 @@ Once the Store is chosen user will have to choose category:
 2. Item Tab - is used to select the current item that you are editing and want to sync to marketplace:
 Once the store and the category has been chosen user has to press &amp;ldquo;start listing&amp;rdquo; button which will bring to the summary page :
 User must click on the item and fill up all the attribute details:
-Once user complete filling up attribute details they may click on &amp;ldquo;Submit&amp;rdquo; button in order to sync to the marketplace.&lt;/p></description></item><item><title>EcomSync Applet</title><link>https://wiki.bigledger.com/modules/ecommerce/ecomsync-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/ecomsync-applet/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3259346357
-&lt;strong>Last Updated&lt;/strong>: 2021-07-23T05:51:22.732Z
+Once user complete filling up attribute details they may click on &amp;ldquo;Submit&amp;rdquo; button in order to sync to the marketplace.&lt;/p&gt;</description></item><item><title>EcomSync Applet</title><link>https://wiki.bigledger.com/modules/ecommerce/ecomsync-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/ecomsync-applet/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3259346357
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-07-23T05:51:22.732Z
 Table of Content
 Introduction to Ecomsync
 Ecomsync Features
@@ -36,9 +36,9 @@ Main Dashboard
 Sales Dashboard
 Order Dashboard
 Settings
-Integration with Shopify&lt;/p></description></item><item><title>Ecomsync Features</title><link>https://wiki.bigledger.com/modules/ecommerce/ecomsync-features/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/ecomsync-features/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3299247174
-&lt;strong>Last Updated&lt;/strong>: 2021-07-19T02:40:30.908Z
+Integration with Shopify&lt;/p&gt;</description></item><item><title>Ecomsync Features</title><link>https://wiki.bigledger.com/modules/ecommerce/ecomsync-features/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/ecomsync-features/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3299247174
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-07-19T02:40:30.908Z
 Readiness Status: 5 - Best possibleGreen 4 - optimalYellow 3 - averageBlue 2 - sub optimalPurple 1 - worst possibleRed
 PHASE 1
 1Module
@@ -51,83 +51,83 @@ Organisation Applet
 3Product Management
 GL Code selection
 Doc Item Maintenance
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 4Tracking of inventory
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 5Add dimension details
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 6Add product image
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 7Select image category
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 8Marketplace management
 Add marketplace
 Organisation Applet
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 9Select item category as bundled or single
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 10Choose item to be posted in marketplace
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 11EMP Sync as Sales Order (ERP system)
 EMP Sync
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 12Lazada Attributes Sync
 Select Lazada item category
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 13Fill in lazada attributes fields according to category chose
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 14Add more image in attribute page
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 15Stock Availability / Inventory Management
 Auto stock configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 16Manual stock configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 17Set stock buffer amount
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 18Sales Order Management
 Active Sales Order configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 19Inactive SO configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 20Selective active SO configuration
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 21Sync of Lazada orders from Seller account
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 22Status filter
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 23Multi select orders for Invoice print
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 24Print shipping label
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 25Print picking list
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 26Export Order to Excel
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 27Create manifest
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 28View Order details (Item, shipping, customer details)
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 29Dashboard / Reports
 Filter dashboard by 30 days
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 30Filter dashboard by 7 days
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 31Enter custom date report
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 32View total sales report
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 33View Daily sales by store report
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 34View total orders
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 35View canceled orders
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 36CP Commerce integration
 Consolidate orders from CP Commerce in Ecomsycn
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 37Manage stock balance in Ecomsync
-4 - optimalYellow&lt;br>
+4 - optimalYellow&lt;br&gt;
 38PHASE 2
 39Shopee Integration
 Sales Order, stock balance are synced to EMP
@@ -155,160 +155,160 @@ Attributes and category management from Magento to Ecomsync
 Stock / order fulfilment
 Order management (Create Consignment Note, invoice etc)
 44Audit Trail
-45Stock fulfillment&lt;/p></description></item><item><title>Integration with Shopify</title><link>https://wiki.bigledger.com/modules/ecommerce/integration-with-shopify/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/integration-with-shopify/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3292758065
-&lt;strong>Last Updated&lt;/strong>: 2021-07-15T07:56:28.266Z
-steps,..&lt;/p></description></item><item><title>Introduction to EcomSync</title><link>https://wiki.bigledger.com/modules/ecommerce/introduction-to-ecomsync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/introduction-to-ecomsync/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196485958
-&lt;strong>Last Updated&lt;/strong>: 2021-06-18T01:46:53.953Z&lt;/p>
-&lt;h2>Introduction&lt;span class="hx:absolute hx:-mt-20" id="introduction">&lt;/span>
-&lt;a href="#introduction" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>EcomSync Applet is an applet whereby users can organize and manage their items/products, orders and view their marketplace performances. The aim of EcomSync Applet is to equip users with the understanding of managing their marketplace aspects.&lt;/p>
-&lt;p>&lt;img src="https://wiki.bigledger.com/diagrams/ecomsync-integration-flow.svg" alt="EcomSync Integration Flow" loading="lazy" />
-&lt;em>Figure 1: EcomSync Integration Architecture - connecting BigLedger with major Malaysian marketplaces&lt;/em>&lt;/p>
-&lt;p>You are able to experience many benefits from the applet such as from a management perspective, EcomSync provides better and feasible control of your seller shops. You are able to simultaneously sync items into multiple seller accounts. Other than that, EcomSync acts as a pacemaker which you can manage order and its status and can link with your Enterprise Management Portal (EMP) that makes your product management process easier.&lt;/p>
-&lt;h2>Prerequisites&lt;span class="hx:absolute hx:-mt-20" id="prerequisites">&lt;/span>
-&lt;a href="#prerequisites" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>In order to proceed and start on EcomSync Applet, kindly make sure that you have created organization and branch details in Organization Applet.&lt;/p>
-&lt;h3>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Multi-marketplace Management&lt;/strong>: Connect to Shopee, Lazada, and custom stores&lt;/li>
-&lt;li>&lt;strong>Real-time Synchronization&lt;/strong>: Inventory, prices, and orders sync automatically&lt;/li>
-&lt;li>&lt;strong>Malaysian E-commerce Support&lt;/strong>: Built for local payment methods and shipping&lt;/li>
-&lt;li>&lt;strong>Centralized Control&lt;/strong>: Manage all your online sales from one dashboard&lt;/li>
-&lt;/ul></description></item><item><title>Listing</title><link>https://wiki.bigledger.com/modules/ecommerce/listing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/listing/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196846319
-&lt;strong>Last Updated&lt;/strong>: 2021-06-18T02:06:35.534Z
+45Stock fulfillment&lt;/p&gt;</description></item><item><title>Integration with Shopify</title><link>https://wiki.bigledger.com/modules/ecommerce/integration-with-shopify/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/integration-with-shopify/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3292758065
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-07-15T07:56:28.266Z
+steps,..&lt;/p&gt;</description></item><item><title>Introduction to EcomSync</title><link>https://wiki.bigledger.com/modules/ecommerce/introduction-to-ecomsync/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/introduction-to-ecomsync/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196485958
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-18T01:46:53.953Z&lt;/p&gt;
+&lt;h2&gt;Introduction&lt;span class="hx:absolute hx:-mt-20" id="introduction"&gt;&lt;/span&gt;
+&lt;a href="#introduction" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;EcomSync Applet is an applet whereby users can organize and manage their items/products, orders and view their marketplace performances. The aim of EcomSync Applet is to equip users with the understanding of managing their marketplace aspects.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://wiki.bigledger.com/diagrams/ecomsync-integration-flow.svg" alt="EcomSync Integration Flow" loading="lazy" /&gt;
+&lt;em&gt;Figure 1: EcomSync Integration Architecture - connecting BigLedger with major Malaysian marketplaces&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;You are able to experience many benefits from the applet such as from a management perspective, EcomSync provides better and feasible control of your seller shops. You are able to simultaneously sync items into multiple seller accounts. Other than that, EcomSync acts as a pacemaker which you can manage order and its status and can link with your Enterprise Management Portal (EMP) that makes your product management process easier.&lt;/p&gt;
+&lt;h2&gt;Prerequisites&lt;span class="hx:absolute hx:-mt-20" id="prerequisites"&gt;&lt;/span&gt;
+&lt;a href="#prerequisites" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;In order to proceed and start on EcomSync Applet, kindly make sure that you have created organization and branch details in Organization Applet.&lt;/p&gt;
+&lt;h3&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multi-marketplace Management&lt;/strong&gt;: Connect to Shopee, Lazada, and custom stores&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Synchronization&lt;/strong&gt;: Inventory, prices, and orders sync automatically&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Malaysian E-commerce Support&lt;/strong&gt;: Built for local payment methods and shipping&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Centralized Control&lt;/strong&gt;: Manage all your online sales from one dashboard&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Listing</title><link>https://wiki.bigledger.com/modules/ecommerce/listing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/listing/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196846319
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-18T02:06:35.534Z
 Listing shows all your Items that are synced from EMP and Marketplace. Inside the listing the item can be 2 levels, where by the first level is the one that is synced from EMP or the one that user created themselves, and the 2nd level shows the items that were synced to marketplace:
-User may customize the AG-Grid listing, where by they can move around and filter the headers of the listing.&lt;/p></description></item><item><title>Marketplace Tab</title><link>https://wiki.bigledger.com/modules/ecommerce/marketplace-tab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/marketplace-tab/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196191832
-&lt;strong>Last Updated&lt;/strong>: 2021-07-23T05:24:07.943Z
+User may customize the AG-Grid listing, where by they can move around and filter the headers of the listing.&lt;/p&gt;</description></item><item><title>Marketplace Tab</title><link>https://wiki.bigledger.com/modules/ecommerce/marketplace-tab/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/marketplace-tab/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196191832
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-07-23T05:24:07.943Z
 Marketplace Tab is used for the Users to Create, Edit, Update and Delete the Items to be sync into the marketplace. This section will let you select the Item Type to be displayed in the Marketplace.
-Click Save. - For this Module each time edit the Item detail throughout the tabs &amp;ldquo;MUST CLICK SAVE&amp;rdquo;.&lt;/p></description></item><item><title>Update and Delete Item</title><link>https://wiki.bigledger.com/modules/ecommerce/update-and-delete-item/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/update-and-delete-item/</guid><description>
-&lt;p>&lt;strong>Page ID&lt;/strong>: 3196191957
-&lt;strong>Last Updated&lt;/strong>: 2021-06-18T06:15:40.294Z
-Update/Delete Item - when user want to update or delete the item that was sync to the marketplace they will have to go to &amp;ldquo;Marketplace Tab&amp;rdquo; select the store from the current listing and update/delete the item:&lt;/p></description></item><item><title>CP-Commerce Menu &amp; Pages Configuration</title><link>https://wiki.bigledger.com/modules/ecommerce/cp-commerce-menu-pages/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/cp-commerce-menu-pages/</guid><description>
-&lt;p>CP-Commerce provides flexible tools for managing your e-commerce website&amp;rsquo;s navigation menus and static content pages. This guide covers the Menu Module and Pages Module configuration.&lt;/p>
-&lt;h2>Menu Module&lt;span class="hx:absolute hx:-mt-20" id="menu-module">&lt;/span>
-&lt;a href="#menu-module" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The Menu Module controls the navigation structure of your CP-Commerce website, allowing you to create hierarchical menus with various link types.&lt;/p>
-&lt;h3>Understanding Menu Structure&lt;span class="hx:absolute hx:-mt-20" id="understanding-menu-structure">&lt;/span>
-&lt;a href="#understanding-menu-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Menu items in CP-Commerce support:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Multi-level hierarchy&lt;/strong> - Create parent and child menu items&lt;/li>
-&lt;li>&lt;strong>Multiple link types&lt;/strong> - Link to pages, products, categories, or external URLs&lt;/li>
-&lt;li>&lt;strong>Flexible positioning&lt;/strong> - Control menu order and nesting&lt;/li>
-&lt;li>&lt;strong>Conditional display&lt;/strong> - Active/inactive status control&lt;/li>
-&lt;/ul>
-&lt;h3>Menu Listing View&lt;span class="hx:absolute hx:-mt-20" id="menu-listing-view">&lt;/span>
-&lt;a href="#menu-listing-view" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>The menu listing displays:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Column&lt;/th>
-&lt;th>Description&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Title&lt;/strong>&lt;/td>
-&lt;td>Name of the menu item displayed to users&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Menu Level&lt;/strong>&lt;/td>
-&lt;td>Hierarchy level (1 = top level, 2 = sub-menu, etc.)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Linked&lt;/strong>&lt;/td>
-&lt;td>Type of link and destination&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Status&lt;/strong>&lt;/td>
-&lt;td>Active or Inactive&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Actions&lt;/strong>&lt;/td>
-&lt;td>Edit, Delete, Reorder&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3>Creating Menu Items&lt;span class="hx:absolute hx:-mt-20" id="creating-menu-items">&lt;/span>
-&lt;a href="#creating-menu-items" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>Step 1: Basic Information&lt;span class="hx:absolute hx:-mt-20" id="step-1-basic-information">&lt;/span>
-&lt;a href="#step-1-basic-information" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ol>
-&lt;li>Navigate to &lt;strong>CP-Commerce&lt;/strong> &amp;gt; &lt;strong>Menu Module&lt;/strong>&lt;/li>
-&lt;li>Click &lt;strong>&amp;ldquo;Create New Menu Item&amp;rdquo;&lt;/strong>&lt;/li>
-&lt;li>Fill in the required fields:&lt;/li>
-&lt;/ol>
-&lt;p>&lt;strong>Title&lt;/strong>: The display name for the menu item&lt;/p>
-&lt;ul>
-&lt;li>Keep it concise and descriptive&lt;/li>
-&lt;li>Use action words for better UX (e.g., &amp;ldquo;Shop Now&amp;rdquo;, &amp;ldquo;View Categories&amp;rdquo;)&lt;/li>
-&lt;/ul>
-&lt;h4>Step 2: Configure Link Type&lt;span class="hx:absolute hx:-mt-20" id="step-2-configure-link-type">&lt;/span>
-&lt;a href="#step-2-configure-link-type" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Link Type&lt;/strong> determines the menu item&amp;rsquo;s behavior:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Type&lt;/th>
-&lt;th>Description&lt;/th>
-&lt;th>Use Case&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Page&lt;/strong>&lt;/td>
-&lt;td>Links to static page created in Pages Module&lt;/td>
-&lt;td>About Us, Terms, Privacy&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Product&lt;/strong>&lt;/td>
-&lt;td>Direct link to specific product&lt;/td>
-&lt;td>Featured items, Bestsellers&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Product Category&lt;/strong>&lt;/td>
-&lt;td>Links to category listing&lt;/td>
-&lt;td>Shop by Department&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Content Category&lt;/strong>&lt;/td>
-&lt;td>Links to content collections&lt;/td>
-&lt;td>Blog, News, Resources&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>External Link&lt;/strong>&lt;/td>
-&lt;td>Links to external URL or custom page&lt;/td>
-&lt;td>Social media, Partner sites&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h4>Step 3: Link Configuration&lt;span class="hx:absolute hx:-mt-20" id="step-3-link-configuration">&lt;/span>
-&lt;a href="#step-3-link-configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>Based on the selected Link Type:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>For Page&lt;/strong>: Select from dropdown of created pages&lt;/li>
-&lt;li>&lt;strong>For Product&lt;/strong>: Search and select specific product&lt;/li>
-&lt;li>&lt;strong>For Product Category&lt;/strong>: Choose from category tree&lt;/li>
-&lt;li>&lt;strong>For Content Category&lt;/strong>: Select content category&lt;/li>
-&lt;li>&lt;strong>For External Link&lt;/strong>: Enter full URL (https://&amp;hellip;)&lt;/li>
-&lt;/ul>
-&lt;h4>Step 4: Display Settings&lt;span class="hx:absolute hx:-mt-20" id="step-4-display-settings">&lt;/span>
-&lt;a href="#step-4-display-settings" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Status&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Active - Menu item is visible&lt;/li>
-&lt;li>Inactive - Hidden from website&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Redirect Type&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Same Window - Opens in current tab (default)&lt;/li>
-&lt;li>New Window - Opens in new tab (for external links)&lt;/li>
-&lt;/ul>
-&lt;h4>Step 5: Menu Hierarchy&lt;span class="hx:absolute hx:-mt-20" id="step-5-menu-hierarchy">&lt;/span>
-&lt;a href="#step-5-menu-hierarchy" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Nest Menu Item&lt;/strong>: Check to make this a sub-menu item&lt;/p>
-&lt;p>If nesting is enabled:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Parent Menu&lt;/strong>: Select the parent menu item&lt;/li>
-&lt;li>The item will appear as a dropdown under the parent&lt;/li>
-&lt;/ul>
-&lt;h3>Menu Hierarchy Example&lt;span class="hx:absolute hx:-mt-20" id="menu-hierarchy-example">&lt;/span>
-&lt;a href="#menu-hierarchy-example" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;pre>&lt;code>Home (Level 1)
+Click Save. - For this Module each time edit the Item detail throughout the tabs &amp;ldquo;MUST CLICK SAVE&amp;rdquo;.&lt;/p&gt;</description></item><item><title>Update and Delete Item</title><link>https://wiki.bigledger.com/modules/ecommerce/update-and-delete-item/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/update-and-delete-item/</guid><description>
+&lt;p&gt;&lt;strong&gt;Page ID&lt;/strong&gt;: 3196191957
+&lt;strong&gt;Last Updated&lt;/strong&gt;: 2021-06-18T06:15:40.294Z
+Update/Delete Item - when user want to update or delete the item that was sync to the marketplace they will have to go to &amp;ldquo;Marketplace Tab&amp;rdquo; select the store from the current listing and update/delete the item:&lt;/p&gt;</description></item><item><title>CP-Commerce Menu &amp; Pages Configuration</title><link>https://wiki.bigledger.com/modules/ecommerce/cp-commerce-menu-pages/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/modules/ecommerce/cp-commerce-menu-pages/</guid><description>
+&lt;p&gt;CP-Commerce provides flexible tools for managing your e-commerce website&amp;rsquo;s navigation menus and static content pages. This guide covers the Menu Module and Pages Module configuration.&lt;/p&gt;
+&lt;h2&gt;Menu Module&lt;span class="hx:absolute hx:-mt-20" id="menu-module"&gt;&lt;/span&gt;
+&lt;a href="#menu-module" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The Menu Module controls the navigation structure of your CP-Commerce website, allowing you to create hierarchical menus with various link types.&lt;/p&gt;
+&lt;h3&gt;Understanding Menu Structure&lt;span class="hx:absolute hx:-mt-20" id="understanding-menu-structure"&gt;&lt;/span&gt;
+&lt;a href="#understanding-menu-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Menu items in CP-Commerce support:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multi-level hierarchy&lt;/strong&gt; - Create parent and child menu items&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multiple link types&lt;/strong&gt; - Link to pages, products, categories, or external URLs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flexible positioning&lt;/strong&gt; - Control menu order and nesting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conditional display&lt;/strong&gt; - Active/inactive status control&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Menu Listing View&lt;span class="hx:absolute hx:-mt-20" id="menu-listing-view"&gt;&lt;/span&gt;
+&lt;a href="#menu-listing-view" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;The menu listing displays:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Column&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Title&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Name of the menu item displayed to users&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Menu Level&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Hierarchy level (1 = top level, 2 = sub-menu, etc.)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Linked&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Type of link and destination&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Status&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Active or Inactive&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Actions&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Edit, Delete, Reorder&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;Creating Menu Items&lt;span class="hx:absolute hx:-mt-20" id="creating-menu-items"&gt;&lt;/span&gt;
+&lt;a href="#creating-menu-items" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Step 1: Basic Information&lt;span class="hx:absolute hx:-mt-20" id="step-1-basic-information"&gt;&lt;/span&gt;
+&lt;a href="#step-1-basic-information" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;Navigate to &lt;strong&gt;CP-Commerce&lt;/strong&gt; &amp;gt; &lt;strong&gt;Menu Module&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Click &lt;strong&gt;&amp;ldquo;Create New Menu Item&amp;rdquo;&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Fill in the required fields:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Title&lt;/strong&gt;: The display name for the menu item&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Keep it concise and descriptive&lt;/li&gt;
+&lt;li&gt;Use action words for better UX (e.g., &amp;ldquo;Shop Now&amp;rdquo;, &amp;ldquo;View Categories&amp;rdquo;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Step 2: Configure Link Type&lt;span class="hx:absolute hx:-mt-20" id="step-2-configure-link-type"&gt;&lt;/span&gt;
+&lt;a href="#step-2-configure-link-type" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Link Type&lt;/strong&gt; determines the menu item&amp;rsquo;s behavior:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Type&lt;/th&gt;
+&lt;th&gt;Description&lt;/th&gt;
+&lt;th&gt;Use Case&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Page&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Links to static page created in Pages Module&lt;/td&gt;
+&lt;td&gt;About Us, Terms, Privacy&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Product&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Direct link to specific product&lt;/td&gt;
+&lt;td&gt;Featured items, Bestsellers&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Product Category&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Links to category listing&lt;/td&gt;
+&lt;td&gt;Shop by Department&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Content Category&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Links to content collections&lt;/td&gt;
+&lt;td&gt;Blog, News, Resources&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;External Link&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Links to external URL or custom page&lt;/td&gt;
+&lt;td&gt;Social media, Partner sites&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h4&gt;Step 3: Link Configuration&lt;span class="hx:absolute hx:-mt-20" id="step-3-link-configuration"&gt;&lt;/span&gt;
+&lt;a href="#step-3-link-configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;Based on the selected Link Type:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;For Page&lt;/strong&gt;: Select from dropdown of created pages&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;For Product&lt;/strong&gt;: Search and select specific product&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;For Product Category&lt;/strong&gt;: Choose from category tree&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;For Content Category&lt;/strong&gt;: Select content category&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;For External Link&lt;/strong&gt;: Enter full URL (https://&amp;hellip;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Step 4: Display Settings&lt;span class="hx:absolute hx:-mt-20" id="step-4-display-settings"&gt;&lt;/span&gt;
+&lt;a href="#step-4-display-settings" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Status&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Active - Menu item is visible&lt;/li&gt;
+&lt;li&gt;Inactive - Hidden from website&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Redirect Type&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Same Window - Opens in current tab (default)&lt;/li&gt;
+&lt;li&gt;New Window - Opens in new tab (for external links)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Step 5: Menu Hierarchy&lt;span class="hx:absolute hx:-mt-20" id="step-5-menu-hierarchy"&gt;&lt;/span&gt;
+&lt;a href="#step-5-menu-hierarchy" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Nest Menu Item&lt;/strong&gt;: Check to make this a sub-menu item&lt;/p&gt;
+&lt;p&gt;If nesting is enabled:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Parent Menu&lt;/strong&gt;: Select the parent menu item&lt;/li&gt;
+&lt;li&gt;The item will appear as a dropdown under the parent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Menu Hierarchy Example&lt;span class="hx:absolute hx:-mt-20" id="menu-hierarchy-example"&gt;&lt;/span&gt;
+&lt;a href="#menu-hierarchy-example" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;pre&gt;&lt;code&gt;Home (Level 1)
 Shop (Level 1)
 ├── Electronics (Level 2)
 │ ├── Computers (Level 3)
@@ -319,211 +319,211 @@ Shop (Level 1)
 │ └── Women&amp;#39;s Clothing (Level 3)
 └── Clearance (Level 2)
 About Us (Level 1)
-Contact (Level 1)&lt;/code>&lt;/pre>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+Contact (Level 1)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h2>Pages Module&lt;span class="hx:absolute hx:-mt-20" id="pages-module">&lt;/span>
-&lt;a href="#pages-module" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The Pages Module allows creation of static content pages for your CP-Commerce website, perfect for information pages, policies, and custom content.&lt;/p>
-&lt;h3>Creating Static Pages&lt;span class="hx:absolute hx:-mt-20" id="creating-static-pages">&lt;/span>
-&lt;a href="#creating-static-pages" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>Step 1: Page Setup&lt;span class="hx:absolute hx:-mt-20" id="step-1-page-setup">&lt;/span>
-&lt;a href="#step-1-page-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ol>
-&lt;li>Navigate to &lt;strong>CP-Commerce&lt;/strong> &amp;gt; &lt;strong>Pages Module&lt;/strong>&lt;/li>
-&lt;li>Click &lt;strong>&amp;ldquo;Create New Page&amp;rdquo;&lt;/strong>&lt;/li>
-&lt;/ol>
-&lt;h4>Step 2: Page Configuration&lt;span class="hx:absolute hx:-mt-20" id="step-2-page-configuration">&lt;/span>
-&lt;a href="#step-2-page-configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Title&lt;/strong>: The page title&lt;/p>
-&lt;ul>
-&lt;li>Displayed in browser tab&lt;/li>
-&lt;li>Used in page headers&lt;/li>
-&lt;li>Important for SEO&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>URL Key&lt;/strong>: The page&amp;rsquo;s web address&lt;/p>
-&lt;ul>
-&lt;li>Must be unique&lt;/li>
-&lt;li>Use lowercase letters and hyphens&lt;/li>
-&lt;li>Example: &lt;code>about-us&lt;/code>, &lt;code>return-policy&lt;/code>, &lt;code>shipping-info&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Status&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Active - Page is accessible&lt;/li>
-&lt;li>Inactive - Page is hidden (useful for drafts)&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Content Category&lt;/strong>: (Optional)&lt;/p>
-&lt;ul>
-&lt;li>Group related pages&lt;/li>
-&lt;li>Helps with organization&lt;/li>
-&lt;li>Can be used for automated menus&lt;/li>
-&lt;/ul>
-&lt;h4>Step 3: Page Content&lt;span class="hx:absolute hx:-mt-20" id="step-3-page-content">&lt;/span>
-&lt;a href="#step-3-page-content" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Content Editor&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Supports HTML and plain text&lt;/li>
-&lt;li>Rich text formatting available&lt;/li>
-&lt;li>Can include:
-&lt;ul>
-&lt;li>Text and headings&lt;/li>
-&lt;li>Images and media&lt;/li>
-&lt;li>Tables and lists&lt;/li>
-&lt;li>Custom HTML/CSS&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h3>Common Static Pages&lt;span class="hx:absolute hx:-mt-20" id="common-static-pages">&lt;/span>
-&lt;a href="#common-static-pages" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>Essential Pages&lt;span class="hx:absolute hx:-mt-20" id="essential-pages">&lt;/span>
-&lt;a href="#essential-pages" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>About Us&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Company history&lt;/li>
-&lt;li>Mission and values&lt;/li>
-&lt;li>Team information&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Terms &amp;amp; Conditions&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Service terms&lt;/li>
-&lt;li>User agreements&lt;/li>
-&lt;li>Legal disclaimers&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Privacy Policy&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Data collection practices&lt;/li>
-&lt;li>User rights&lt;/li>
-&lt;li>Cookie policy&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Shipping Information&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Delivery zones&lt;/li>
-&lt;li>Shipping rates&lt;/li>
-&lt;li>Estimated times&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Return Policy&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Return conditions&lt;/li>
-&lt;li>Process steps&lt;/li>
-&lt;li>Refund timeline&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;h4>Marketing Pages&lt;span class="hx:absolute hx:-mt-20" id="marketing-pages">&lt;/span>
-&lt;a href="#marketing-pages" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>Landing Pages&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Campaign-specific content&lt;/li>
-&lt;li>Product launches&lt;/li>
-&lt;li>Seasonal promotions&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>FAQ Pages&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Common questions&lt;/li>
-&lt;li>Product guides&lt;/li>
-&lt;li>Support information&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;h3>Content Best Practices&lt;span class="hx:absolute hx:-mt-20" id="content-best-practices">&lt;/span>
-&lt;a href="#content-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;h4>SEO Optimization&lt;span class="hx:absolute hx:-mt-20" id="seo-optimization">&lt;/span>
-&lt;a href="#seo-optimization" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>Use descriptive titles with keywords&lt;/li>
-&lt;li>Create unique URL keys&lt;/li>
-&lt;li>Include meta descriptions&lt;/li>
-&lt;li>Use proper heading hierarchy (H1, H2, H3)&lt;/li>
-&lt;/ul>
-&lt;h4>Content Structure&lt;span class="hx:absolute hx:-mt-20" id="content-structure">&lt;/span>
-&lt;a href="#content-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;Page Title&amp;lt;/&lt;span style="color:#f92672">h1&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;Introduction paragraph...&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">h2&lt;/span>&amp;gt;Section Heading&amp;lt;/&lt;span style="color:#f92672">h2&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">p&lt;/span>&amp;gt;Section content...&amp;lt;/&lt;span style="color:#f92672">p&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">h3&lt;/span>&amp;gt;Subsection&amp;lt;/&lt;span style="color:#f92672">h3&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">ul&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">li&lt;/span>&amp;gt;Point 1&amp;lt;/&lt;span style="color:#f92672">li&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">li&lt;/span>&amp;gt;Point 2&amp;lt;/&lt;span style="color:#f92672">li&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">ul&lt;/span>&amp;gt;&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Pages Module&lt;span class="hx:absolute hx:-mt-20" id="pages-module"&gt;&lt;/span&gt;
+&lt;a href="#pages-module" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The Pages Module allows creation of static content pages for your CP-Commerce website, perfect for information pages, policies, and custom content.&lt;/p&gt;
+&lt;h3&gt;Creating Static Pages&lt;span class="hx:absolute hx:-mt-20" id="creating-static-pages"&gt;&lt;/span&gt;
+&lt;a href="#creating-static-pages" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Step 1: Page Setup&lt;span class="hx:absolute hx:-mt-20" id="step-1-page-setup"&gt;&lt;/span&gt;
+&lt;a href="#step-1-page-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;Navigate to &lt;strong&gt;CP-Commerce&lt;/strong&gt; &amp;gt; &lt;strong&gt;Pages Module&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;Click &lt;strong&gt;&amp;ldquo;Create New Page&amp;rdquo;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Step 2: Page Configuration&lt;span class="hx:absolute hx:-mt-20" id="step-2-page-configuration"&gt;&lt;/span&gt;
+&lt;a href="#step-2-page-configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Title&lt;/strong&gt;: The page title&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Displayed in browser tab&lt;/li&gt;
+&lt;li&gt;Used in page headers&lt;/li&gt;
+&lt;li&gt;Important for SEO&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;URL Key&lt;/strong&gt;: The page&amp;rsquo;s web address&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Must be unique&lt;/li&gt;
+&lt;li&gt;Use lowercase letters and hyphens&lt;/li&gt;
+&lt;li&gt;Example: &lt;code&gt;about-us&lt;/code&gt;, &lt;code&gt;return-policy&lt;/code&gt;, &lt;code&gt;shipping-info&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Status&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Active - Page is accessible&lt;/li&gt;
+&lt;li&gt;Inactive - Page is hidden (useful for drafts)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Content Category&lt;/strong&gt;: (Optional)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Group related pages&lt;/li&gt;
+&lt;li&gt;Helps with organization&lt;/li&gt;
+&lt;li&gt;Can be used for automated menus&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Step 3: Page Content&lt;span class="hx:absolute hx:-mt-20" id="step-3-page-content"&gt;&lt;/span&gt;
+&lt;a href="#step-3-page-content" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Content Editor&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Supports HTML and plain text&lt;/li&gt;
+&lt;li&gt;Rich text formatting available&lt;/li&gt;
+&lt;li&gt;Can include:
+&lt;ul&gt;
+&lt;li&gt;Text and headings&lt;/li&gt;
+&lt;li&gt;Images and media&lt;/li&gt;
+&lt;li&gt;Tables and lists&lt;/li&gt;
+&lt;li&gt;Custom HTML/CSS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Common Static Pages&lt;span class="hx:absolute hx:-mt-20" id="common-static-pages"&gt;&lt;/span&gt;
+&lt;a href="#common-static-pages" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;Essential Pages&lt;span class="hx:absolute hx:-mt-20" id="essential-pages"&gt;&lt;/span&gt;
+&lt;a href="#essential-pages" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;About Us&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Company history&lt;/li&gt;
+&lt;li&gt;Mission and values&lt;/li&gt;
+&lt;li&gt;Team information&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Terms &amp;amp; Conditions&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Service terms&lt;/li&gt;
+&lt;li&gt;User agreements&lt;/li&gt;
+&lt;li&gt;Legal disclaimers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Privacy Policy&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Data collection practices&lt;/li&gt;
+&lt;li&gt;User rights&lt;/li&gt;
+&lt;li&gt;Cookie policy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Shipping Information&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Delivery zones&lt;/li&gt;
+&lt;li&gt;Shipping rates&lt;/li&gt;
+&lt;li&gt;Estimated times&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Return Policy&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Return conditions&lt;/li&gt;
+&lt;li&gt;Process steps&lt;/li&gt;
+&lt;li&gt;Refund timeline&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Marketing Pages&lt;span class="hx:absolute hx:-mt-20" id="marketing-pages"&gt;&lt;/span&gt;
+&lt;a href="#marketing-pages" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Landing Pages&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Campaign-specific content&lt;/li&gt;
+&lt;li&gt;Product launches&lt;/li&gt;
+&lt;li&gt;Seasonal promotions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;FAQ Pages&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Common questions&lt;/li&gt;
+&lt;li&gt;Product guides&lt;/li&gt;
+&lt;li&gt;Support information&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Content Best Practices&lt;span class="hx:absolute hx:-mt-20" id="content-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#content-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;SEO Optimization&lt;span class="hx:absolute hx:-mt-20" id="seo-optimization"&gt;&lt;/span&gt;
+&lt;a href="#seo-optimization" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Use descriptive titles with keywords&lt;/li&gt;
+&lt;li&gt;Create unique URL keys&lt;/li&gt;
+&lt;li&gt;Include meta descriptions&lt;/li&gt;
+&lt;li&gt;Use proper heading hierarchy (H1, H2, H3)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Content Structure&lt;span class="hx:absolute hx:-mt-20" id="content-structure"&gt;&lt;/span&gt;
+&lt;a href="#content-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;h1&lt;/span&gt;&amp;gt;Page Title&amp;lt;/&lt;span style="color:#f92672"&gt;h1&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;Introduction paragraph...&amp;lt;/&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;h2&lt;/span&gt;&amp;gt;Section Heading&amp;lt;/&lt;span style="color:#f92672"&gt;h2&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;Section content...&amp;lt;/&lt;span style="color:#f92672"&gt;p&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;h3&lt;/span&gt;&amp;gt;Subsection&amp;lt;/&lt;span style="color:#f92672"&gt;h3&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;&lt;span style="color:#f92672"&gt;ul&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#f92672"&gt;li&lt;/span&gt;&amp;gt;Point 1&amp;lt;/&lt;span style="color:#f92672"&gt;li&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &amp;lt;&lt;span style="color:#f92672"&gt;li&lt;/span&gt;&amp;gt;Point 2&amp;lt;/&lt;span style="color:#f92672"&gt;li&lt;/span&gt;&amp;gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&amp;lt;/&lt;span style="color:#f92672"&gt;ul&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h4>Mobile Responsiveness&lt;span class="hx:absolute hx:-mt-20" id="mobile-responsiveness">&lt;/span>
-&lt;a href="#mobile-responsiveness" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>Test content on mobile devices&lt;/li>
-&lt;li>Use responsive images&lt;/li>
-&lt;li>Avoid complex tables&lt;/li>
-&lt;li>Keep paragraphs short&lt;/li>
-&lt;/ul>
-&lt;h2>Integration Tips&lt;span class="hx:absolute hx:-mt-20" id="integration-tips">&lt;/span>
-&lt;a href="#integration-tips" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Linking Menus to Pages&lt;span class="hx:absolute hx:-mt-20" id="linking-menus-to-pages">&lt;/span>
-&lt;a href="#linking-menus-to-pages" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Create the page first in Pages Module&lt;/li>
-&lt;li>Set page status to Active&lt;/li>
-&lt;li>Create menu item with Link Type = Page&lt;/li>
-&lt;li>Select the created page from dropdown&lt;/li>
-&lt;/ol>
-&lt;h3>Dynamic Content Integration&lt;span class="hx:absolute hx:-mt-20" id="dynamic-content-integration">&lt;/span>
-&lt;a href="#dynamic-content-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>While Pages Module creates static content, you can enhance with:&lt;/p>
-&lt;ul>
-&lt;li>Product widgets&lt;/li>
-&lt;li>Category listings&lt;/li>
-&lt;li>Newsletter signup forms&lt;/li>
-&lt;li>Contact forms&lt;/li>
-&lt;/ul>
-&lt;h3>Multi-language Support&lt;span class="hx:absolute hx:-mt-20" id="multi-language-support">&lt;/span>
-&lt;a href="#multi-language-support" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>For multi-language sites:&lt;/p>
-&lt;ol>
-&lt;li>Create separate pages for each language&lt;/li>
-&lt;li>Use language-specific URL keys&lt;/li>
-&lt;li>Organize with content categories by language&lt;/li>
-&lt;/ol>
-&lt;h2>Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting">&lt;/span>
-&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Menu Not Appearing&lt;span class="hx:absolute hx:-mt-20" id="menu-not-appearing">&lt;/span>
-&lt;a href="#menu-not-appearing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Check menu status is Active&lt;/li>
-&lt;li>Verify parent menu (if nested) is Active&lt;/li>
-&lt;li>Clear website cache&lt;/li>
-&lt;li>Check user permissions&lt;/li>
-&lt;/ul>
-&lt;h3>Page Not Found (404)&lt;span class="hx:absolute hx:-mt-20" id="page-not-found-404">&lt;/span>
-&lt;a href="#page-not-found-404" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Verify URL key is correct&lt;/li>
-&lt;li>Ensure page status is Active&lt;/li>
-&lt;li>Check for duplicate URL keys&lt;/li>
-&lt;li>Clear browser cache&lt;/li>
-&lt;/ul>
-&lt;h3>Content Not Updating&lt;span class="hx:absolute hx:-mt-20" id="content-not-updating">&lt;/span>
-&lt;a href="#content-not-updating" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Clear CP-Commerce cache&lt;/li>
-&lt;li>Check if changes were saved&lt;/li>
-&lt;li>Verify you&amp;rsquo;re editing the correct page&lt;/li>
-&lt;li>Try hard refresh (Ctrl+F5)&lt;/li>
-&lt;/ul>
-&lt;h2>Related Documentation&lt;span class="hx:absolute hx:-mt-20" id="related-documentation">&lt;/span>
-&lt;a href="#related-documentation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/ecommerce/cp-commerce/" >CP-Commerce Overview&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/ecommerce/website-configuration/" >Website Configuration&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/ecommerce/" >E-Commerce Integration&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/" >Content Management Best Practices&lt;/a>&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h4&gt;Mobile Responsiveness&lt;span class="hx:absolute hx:-mt-20" id="mobile-responsiveness"&gt;&lt;/span&gt;
+&lt;a href="#mobile-responsiveness" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Test content on mobile devices&lt;/li&gt;
+&lt;li&gt;Use responsive images&lt;/li&gt;
+&lt;li&gt;Avoid complex tables&lt;/li&gt;
+&lt;li&gt;Keep paragraphs short&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration Tips&lt;span class="hx:absolute hx:-mt-20" id="integration-tips"&gt;&lt;/span&gt;
+&lt;a href="#integration-tips" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Linking Menus to Pages&lt;span class="hx:absolute hx:-mt-20" id="linking-menus-to-pages"&gt;&lt;/span&gt;
+&lt;a href="#linking-menus-to-pages" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Create the page first in Pages Module&lt;/li&gt;
+&lt;li&gt;Set page status to Active&lt;/li&gt;
+&lt;li&gt;Create menu item with Link Type = Page&lt;/li&gt;
+&lt;li&gt;Select the created page from dropdown&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Dynamic Content Integration&lt;span class="hx:absolute hx:-mt-20" id="dynamic-content-integration"&gt;&lt;/span&gt;
+&lt;a href="#dynamic-content-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;While Pages Module creates static content, you can enhance with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Product widgets&lt;/li&gt;
+&lt;li&gt;Category listings&lt;/li&gt;
+&lt;li&gt;Newsletter signup forms&lt;/li&gt;
+&lt;li&gt;Contact forms&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Multi-language Support&lt;span class="hx:absolute hx:-mt-20" id="multi-language-support"&gt;&lt;/span&gt;
+&lt;a href="#multi-language-support" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;For multi-language sites:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create separate pages for each language&lt;/li&gt;
+&lt;li&gt;Use language-specific URL keys&lt;/li&gt;
+&lt;li&gt;Organize with content categories by language&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Menu Not Appearing&lt;span class="hx:absolute hx:-mt-20" id="menu-not-appearing"&gt;&lt;/span&gt;
+&lt;a href="#menu-not-appearing" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Check menu status is Active&lt;/li&gt;
+&lt;li&gt;Verify parent menu (if nested) is Active&lt;/li&gt;
+&lt;li&gt;Clear website cache&lt;/li&gt;
+&lt;li&gt;Check user permissions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Page Not Found (404)&lt;span class="hx:absolute hx:-mt-20" id="page-not-found-404"&gt;&lt;/span&gt;
+&lt;a href="#page-not-found-404" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Verify URL key is correct&lt;/li&gt;
+&lt;li&gt;Ensure page status is Active&lt;/li&gt;
+&lt;li&gt;Check for duplicate URL keys&lt;/li&gt;
+&lt;li&gt;Clear browser cache&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Content Not Updating&lt;span class="hx:absolute hx:-mt-20" id="content-not-updating"&gt;&lt;/span&gt;
+&lt;a href="#content-not-updating" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Clear CP-Commerce cache&lt;/li&gt;
+&lt;li&gt;Check if changes were saved&lt;/li&gt;
+&lt;li&gt;Verify you&amp;rsquo;re editing the correct page&lt;/li&gt;
+&lt;li&gt;Try hard refresh (Ctrl+F5)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Related Documentation&lt;span class="hx:absolute hx:-mt-20" id="related-documentation"&gt;&lt;/span&gt;
+&lt;a href="#related-documentation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/ecommerce/cp-commerce/" &gt;CP-Commerce Overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/ecommerce/website-configuration/" &gt;Website Configuration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/ecommerce/" &gt;E-Commerce Integration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/" &gt;Content Management Best Practices&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

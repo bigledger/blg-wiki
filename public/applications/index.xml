@@ -1,269 +1,269 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Applications</title><link>https://wiki.bigledger.com/applications/</link><description>Recent content in Applications on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/applications/index.xml" rel="self" type="application/rss+xml"/><item><title>Unified Contact Center (UCC)</title><link>https://wiki.bigledger.com/applications/unified-contact-center/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applications/unified-contact-center/</guid><description>
-&lt;h2>Transform Your Customer Service Operations&lt;span class="hx:absolute hx:-mt-20" id="transform-your-customer-service-operations">&lt;/span>
-&lt;a href="#transform-your-customer-service-operations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>BigLedger&amp;rsquo;s Unified Contact Center (UCC) is a comprehensive omnichannel communication platform that consolidates all customer interactions into a single, powerful interface. Manage conversations from multiple channels, provide superior customer service, and drive sales - all from one unified platform.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Key Capability&lt;/strong>: Handle customer conversations from WhatsApp, Facebook Messenger, Telegram, Email, Live Chat, and more - all in one place.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h2>Core Features&lt;span class="hx:absolute hx:-mt-20" id="core-features">&lt;/span>
-&lt;a href="#core-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>🔄 Omnichannel Communication&lt;span class="hx:absolute hx:-mt-20" id="-omnichannel-communication">&lt;/span>
-&lt;a href="#-omnichannel-communication" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Multi-Platform Support&lt;/strong>: WhatsApp, Facebook Messenger, Telegram, WeChat, Line, Email, SMS&lt;/li>
-&lt;li>&lt;strong>Unified Inbox&lt;/strong>: All conversations in one centralized location&lt;/li>
-&lt;li>&lt;strong>Real-time Messaging&lt;/strong>: Instant message synchronization across all channels&lt;/li>
-&lt;li>&lt;strong>Channel-specific Features&lt;/strong>: Support for rich media, voice notes, location sharing&lt;/li>
-&lt;/ul>
-&lt;h3>💬 Advanced Conversation Management&lt;span class="hx:absolute hx:-mt-20" id="-advanced-conversation-management">&lt;/span>
-&lt;a href="#-advanced-conversation-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Smart Routing&lt;/strong>: Automatically route conversations to the right agents&lt;/li>
-&lt;li>&lt;strong>Queue Management&lt;/strong>: Intelligent distribution based on agent availability and expertise&lt;/li>
-&lt;li>&lt;strong>Conversation History&lt;/strong>: Complete interaction history across all channels&lt;/li>
-&lt;li>&lt;strong>Context Preservation&lt;/strong>: Maintain conversation context when switching agents&lt;/li>
-&lt;/ul>
-&lt;h3>🛒 Integrated E-Commerce&lt;span class="hx:absolute hx:-mt-20" id="-integrated-e-commerce">&lt;/span>
-&lt;a href="#-integrated-e-commerce" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Shopping Cart Integration&lt;/strong>: Send product catalogs and process orders directly in chat&lt;/li>
-&lt;li>&lt;strong>Payment Links&lt;/strong>: Generate and send secure payment links&lt;/li>
-&lt;li>&lt;strong>Order Status Updates&lt;/strong>: Real-time order tracking and notifications&lt;/li>
-&lt;li>&lt;strong>Product Recommendations&lt;/strong>: AI-powered suggestions based on customer preferences&lt;/li>
-&lt;/ul>
-&lt;h3>📊 Dashboard &amp;amp; Analytics&lt;span class="hx:absolute hx:-mt-20" id="-dashboard--analytics">&lt;/span>
-&lt;a href="#-dashboard--analytics" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Real-time Metrics&lt;/strong>: Monitor agent performance and customer satisfaction&lt;/li>
-&lt;li>&lt;strong>Response Time Tracking&lt;/strong>: Measure and optimize response times&lt;/li>
-&lt;li>&lt;strong>Conversation Analytics&lt;/strong>: Insights into customer behavior and preferences&lt;/li>
-&lt;li>&lt;strong>Custom Reports&lt;/strong>: Generate detailed reports for management review&lt;/li>
-&lt;/ul>
-&lt;h2>Key Modules&lt;span class="hx:absolute hx:-mt-20" id="key-modules">&lt;/span>
-&lt;a href="#key-modules" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>1. Inbox Module&lt;span class="hx:absolute hx:-mt-20" id="1-inbox-module">&lt;/span>
-&lt;a href="#1-inbox-module" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Central hub for all customer conversations with features like:&lt;/p>
-&lt;ul>
-&lt;li>Unified message view&lt;/li>
-&lt;li>Quick reply templates&lt;/li>
-&lt;li>File and media sharing&lt;/li>
-&lt;li>Message translation&lt;/li>
-&lt;li>Conversation tagging&lt;/li>
-&lt;/ul>
-&lt;h3>2. Contacts Management&lt;span class="hx:absolute hx:-mt-20" id="2-contacts-management">&lt;/span>
-&lt;a href="#2-contacts-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Customer Profiles&lt;/strong>: Comprehensive view of customer information&lt;/li>
-&lt;li>&lt;strong>Interaction History&lt;/strong>: Complete timeline of all interactions&lt;/li>
-&lt;li>&lt;strong>Custom Fields&lt;/strong>: Add business-specific customer data&lt;/li>
-&lt;li>&lt;strong>Segmentation&lt;/strong>: Group contacts for targeted communication&lt;/li>
-&lt;/ul>
-&lt;h3>3. Broadcast Center&lt;span class="hx:absolute hx:-mt-20" id="3-broadcast-center">&lt;/span>
-&lt;a href="#3-broadcast-center" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Mass Messaging&lt;/strong>: Send promotional messages to multiple contacts&lt;/li>
-&lt;li>&lt;strong>Campaign Management&lt;/strong>: Create and track marketing campaigns&lt;/li>
-&lt;li>&lt;strong>Template Library&lt;/strong>: Pre-approved message templates&lt;/li>
-&lt;li>&lt;strong>Scheduling&lt;/strong>: Plan broadcasts for optimal timing&lt;/li>
-&lt;/ul>
-&lt;h3>4. Task Queue System&lt;span class="hx:absolute hx:-mt-20" id="4-task-queue-system">&lt;/span>
-&lt;a href="#4-task-queue-system" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Automatic Assignment&lt;/strong>: Distribute tasks based on rules and availability&lt;/li>
-&lt;li>&lt;strong>Priority Management&lt;/strong>: Handle urgent requests first&lt;/li>
-&lt;li>&lt;strong>SLA Monitoring&lt;/strong>: Track and meet service level agreements&lt;/li>
-&lt;li>&lt;strong>Escalation Rules&lt;/strong>: Automatic escalation for unresolved issues&lt;/li>
-&lt;/ul>
-&lt;h3>5. Configuration &amp;amp; Settings&lt;span class="hx:absolute hx:-mt-20" id="5-configuration--settings">&lt;/span>
-&lt;a href="#5-configuration--settings" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Channel Setup&lt;/strong>: Easy integration with messaging platforms&lt;/li>
-&lt;li>&lt;strong>Business Hours&lt;/strong>: Define operating hours and auto-responses&lt;/li>
-&lt;li>&lt;strong>Agent Management&lt;/strong>: Roles, permissions, and team structure&lt;/li>
-&lt;li>&lt;strong>Workflow Automation&lt;/strong>: Custom rules and triggers&lt;/li>
-&lt;/ul>
-&lt;h2>Integration with BigLedger Modules&lt;span class="hx:absolute hx:-mt-20" id="integration-with-bigledger-modules">&lt;/span>
-&lt;a href="#integration-with-bigledger-modules" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>CRM Integration&lt;span class="hx:absolute hx:-mt-20" id="crm-integration">&lt;/span>
-&lt;a href="#crm-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Automatic customer record creation&lt;/li>
-&lt;li>Lead capture from conversations&lt;/li>
-&lt;li>Sales opportunity tracking&lt;/li>
-&lt;li>Customer service ticket management&lt;/li>
-&lt;/ul>
-&lt;p>&lt;a href="https://wiki.bigledger.com/modules/crm/" >Learn more about CRM Module →&lt;/a>&lt;/p>
-&lt;h3>Sales &amp;amp; Order Management&lt;span class="hx:absolute hx:-mt-20" id="sales--order-management">&lt;/span>
-&lt;a href="#sales--order-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Quote generation within chat&lt;/li>
-&lt;li>Order processing from conversations&lt;/li>
-&lt;li>Invoice sending via messaging apps&lt;/li>
-&lt;li>Payment collection through chat&lt;/li>
-&lt;/ul>
-&lt;p>&lt;a href="https://wiki.bigledger.com/business-operations/order/" >Learn more about Sales Module →&lt;/a>&lt;/p>
-&lt;h3>E-Commerce Integration&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-integration">&lt;/span>
-&lt;a href="#e-commerce-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Product catalog sharing&lt;/li>
-&lt;li>Real-time inventory checks&lt;/li>
-&lt;li>Order status updates&lt;/li>
-&lt;li>Abandoned cart recovery&lt;/li>
-&lt;/ul>
-&lt;p>&lt;a href="https://wiki.bigledger.com/modules/ecommerce/" >Learn more about E-Commerce Module →&lt;/a>&lt;/p>
-&lt;h3>Support &amp;amp; Ticketing&lt;span class="hx:absolute hx:-mt-20" id="support--ticketing">&lt;/span>
-&lt;a href="#support--ticketing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Automatic ticket creation from conversations&lt;/li>
-&lt;li>Issue tracking and resolution&lt;/li>
-&lt;li>Knowledge base integration&lt;/li>
-&lt;li>Customer satisfaction surveys&lt;/li>
-&lt;/ul>
-&lt;h2>Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases">&lt;/span>
-&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Retail &amp;amp; E-Commerce&lt;span class="hx:absolute hx:-mt-20" id="retail--e-commerce">&lt;/span>
-&lt;a href="#retail--e-commerce" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Handle product inquiries&lt;/li>
-&lt;li>Process orders through chat&lt;/li>
-&lt;li>Send order confirmations and tracking&lt;/li>
-&lt;li>Manage returns and exchanges&lt;/li>
-&lt;/ul>
-&lt;h3>Customer Support&lt;span class="hx:absolute hx:-mt-20" id="customer-support">&lt;/span>
-&lt;a href="#customer-support" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Technical support across channels&lt;/li>
-&lt;li>FAQ automation with chatbots&lt;/li>
-&lt;li>Ticket creation and tracking&lt;/li>
-&lt;li>Escalation management&lt;/li>
-&lt;/ul>
-&lt;h3>Sales &amp;amp; Marketing&lt;span class="hx:absolute hx:-mt-20" id="sales--marketing">&lt;/span>
-&lt;a href="#sales--marketing" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Lead generation through conversations&lt;/li>
-&lt;li>Product demonstrations via video chat&lt;/li>
-&lt;li>Promotional campaigns via broadcast&lt;/li>
-&lt;li>Customer feedback collection&lt;/li>
-&lt;/ul>
-&lt;h3>Service Industries&lt;span class="hx:absolute hx:-mt-20" id="service-industries">&lt;/span>
-&lt;a href="#service-industries" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Appointment scheduling&lt;/li>
-&lt;li>Service reminders&lt;/li>
-&lt;li>Status updates&lt;/li>
-&lt;li>Payment collection&lt;/li>
-&lt;/ul>
-&lt;h2>Benefits&lt;span class="hx:absolute hx:-mt-20" id="benefits">&lt;/span>
-&lt;a href="#benefits" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>For Your Business&lt;span class="hx:absolute hx:-mt-20" id="for-your-business">&lt;/span>
-&lt;a href="#for-your-business" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Increased Efficiency&lt;/strong>: Handle more conversations with fewer agents&lt;/li>
-&lt;li>&lt;strong>Higher Conversion&lt;/strong>: Convert chat conversations into sales&lt;/li>
-&lt;li>&lt;strong>Cost Reduction&lt;/strong>: Lower customer service operational costs&lt;/li>
-&lt;li>&lt;strong>Better Insights&lt;/strong>: Data-driven decision making&lt;/li>
-&lt;/ul>
-&lt;h3>For Your Customers&lt;span class="hx:absolute hx:-mt-20" id="for-your-customers">&lt;/span>
-&lt;a href="#for-your-customers" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Convenience&lt;/strong>: Contact you through their preferred channel&lt;/li>
-&lt;li>&lt;strong>Faster Response&lt;/strong>: Quick resolution of queries&lt;/li>
-&lt;li>&lt;strong>Personalized Service&lt;/strong>: Context-aware interactions&lt;/li>
-&lt;li>&lt;strong>24/7 Availability&lt;/strong>: Automated responses outside business hours&lt;/li>
-&lt;/ul>
-&lt;h2>Getting Started&lt;span class="hx:absolute hx:-mt-20" id="getting-started">&lt;/span>
-&lt;a href="#getting-started" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Step 1: Enable UCC Applet&lt;span class="hx:absolute hx:-mt-20" id="step-1-enable-ucc-applet">&lt;/span>
-&lt;a href="#step-1-enable-ucc-applet" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Access the UCC applet from the BigLedger Applet Store:&lt;/p>
-&lt;p>&lt;a href="https://wiki.bigledger.com/applets/unified-contact-center-ucc-applet/" >Access UCC Applet →&lt;/a>&lt;/p>
-&lt;h3>Step 2: Connect Channels&lt;span class="hx:absolute hx:-mt-20" id="step-2-connect-channels">&lt;/span>
-&lt;a href="#step-2-connect-channels" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Navigate to Configuration → Channel Setup&lt;/li>
-&lt;li>Select messaging platforms to integrate&lt;/li>
-&lt;li>Follow platform-specific setup guides&lt;/li>
-&lt;li>Test message flow&lt;/li>
-&lt;/ol>
-&lt;h3>Step 3: Configure Teams&lt;span class="hx:absolute hx:-mt-20" id="step-3-configure-teams">&lt;/span>
-&lt;a href="#step-3-configure-teams" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Create agent accounts&lt;/li>
-&lt;li>Define roles and permissions&lt;/li>
-&lt;li>Set up team structure&lt;/li>
-&lt;li>Configure routing rules&lt;/li>
-&lt;/ol>
-&lt;h3>Step 4: Customize Workflows&lt;span class="hx:absolute hx:-mt-20" id="step-4-customize-workflows">&lt;/span>
-&lt;a href="#step-4-customize-workflows" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Set up auto-responses&lt;/li>
-&lt;li>Create quick reply templates&lt;/li>
-&lt;li>Define escalation rules&lt;/li>
-&lt;li>Configure business hours&lt;/li>
-&lt;/ol>
-&lt;h2>Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices">&lt;/span>
-&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Response Time Management&lt;span class="hx:absolute hx:-mt-20" id="response-time-management">&lt;/span>
-&lt;a href="#response-time-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Set realistic SLA targets&lt;/li>
-&lt;li>Use auto-acknowledgment messages&lt;/li>
-&lt;li>Implement priority queuing&lt;/li>
-&lt;li>Monitor response metrics&lt;/li>
-&lt;/ul>
-&lt;h3>Agent Training&lt;span class="hx:absolute hx:-mt-20" id="agent-training">&lt;/span>
-&lt;a href="#agent-training" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Product knowledge training&lt;/li>
-&lt;li>Platform feature familiarization&lt;/li>
-&lt;li>Customer service best practices&lt;/li>
-&lt;li>Regular performance reviews&lt;/li>
-&lt;/ul>
-&lt;h3>Conversation Quality&lt;span class="hx:absolute hx:-mt-20" id="conversation-quality">&lt;/span>
-&lt;a href="#conversation-quality" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Use templates for consistency&lt;/li>
-&lt;li>Maintain professional tone&lt;/li>
-&lt;li>Personalize interactions&lt;/li>
-&lt;li>Follow up on unresolved issues&lt;/li>
-&lt;/ul>
-&lt;h3>Data Security&lt;span class="hx:absolute hx:-mt-20" id="data-security">&lt;/span>
-&lt;a href="#data-security" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Implement access controls&lt;/li>
-&lt;li>Regular data backups&lt;/li>
-&lt;li>Compliance with data protection laws&lt;/li>
-&lt;li>Secure payment processing&lt;/li>
-&lt;/ul>
-&lt;h2>Pricing &amp;amp; Plans&lt;span class="hx:absolute hx:-mt-20" id="pricing--plans">&lt;/span>
-&lt;a href="#pricing--plans" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>UCC is available as an add-on module with flexible pricing:&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Plan&lt;/th>
-&lt;th>Channels&lt;/th>
-&lt;th>Agents&lt;/th>
-&lt;th>Messages/Month&lt;/th>
-&lt;th>Price&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Starter&lt;/strong>&lt;/td>
-&lt;td>3&lt;/td>
-&lt;td>5&lt;/td>
-&lt;td>10,000&lt;/td>
-&lt;td>Contact Sales&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Professional&lt;/strong>&lt;/td>
-&lt;td>5&lt;/td>
-&lt;td>15&lt;/td>
-&lt;td>50,000&lt;/td>
-&lt;td>Contact Sales&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Enterprise&lt;/strong>&lt;/td>
-&lt;td>Unlimited&lt;/td>
-&lt;td>Unlimited&lt;/td>
-&lt;td>Unlimited&lt;/td>
-&lt;td>Contact Sales&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2>Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources">&lt;/span>
-&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>&lt;strong>Documentation&lt;/strong>: Comprehensive setup and user guides&lt;/li>
-&lt;li>&lt;strong>Video Tutorials&lt;/strong>: Step-by-step visual guides&lt;/li>
-&lt;li>&lt;strong>Training&lt;/strong>: Agent training programs available&lt;/li>
-&lt;li>&lt;strong>Support&lt;/strong>: Dedicated support team&lt;/li>
-&lt;/ul>
-&lt;h2>Related Resources&lt;span class="hx:absolute hx:-mt-20" id="related-resources">&lt;/span>
-&lt;a href="#related-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;ul>
-&lt;li>&lt;a href="https://wiki.bigledger.com/applets/unified-contact-center-ucc-applet/" >UCC Applet Details&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/crm/" >CRM Module Integration&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/ecommerce/" >E-Commerce Integration&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/developers/api-reference/" >API Documentation&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;p>&lt;strong>Ready to transform your customer service?&lt;/strong>&lt;/p>
-&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;">
+&lt;h2&gt;Transform Your Customer Service Operations&lt;span class="hx:absolute hx:-mt-20" id="transform-your-customer-service-operations"&gt;&lt;/span&gt;
+&lt;a href="#transform-your-customer-service-operations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;BigLedger&amp;rsquo;s Unified Contact Center (UCC) is a comprehensive omnichannel communication platform that consolidates all customer interactions into a single, powerful interface. Manage conversations from multiple channels, provide superior customer service, and drive sales - all from one unified platform.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Key Capability&lt;/strong&gt;: Handle customer conversations from WhatsApp, Facebook Messenger, Telegram, Email, Live Chat, and more - all in one place.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Core Features&lt;span class="hx:absolute hx:-mt-20" id="core-features"&gt;&lt;/span&gt;
+&lt;a href="#core-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;🔄 Omnichannel Communication&lt;span class="hx:absolute hx:-mt-20" id="-omnichannel-communication"&gt;&lt;/span&gt;
+&lt;a href="#-omnichannel-communication" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Platform Support&lt;/strong&gt;: WhatsApp, Facebook Messenger, Telegram, WeChat, Line, Email, SMS&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Unified Inbox&lt;/strong&gt;: All conversations in one centralized location&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Messaging&lt;/strong&gt;: Instant message synchronization across all channels&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Channel-specific Features&lt;/strong&gt;: Support for rich media, voice notes, location sharing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;💬 Advanced Conversation Management&lt;span class="hx:absolute hx:-mt-20" id="-advanced-conversation-management"&gt;&lt;/span&gt;
+&lt;a href="#-advanced-conversation-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Smart Routing&lt;/strong&gt;: Automatically route conversations to the right agents&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Queue Management&lt;/strong&gt;: Intelligent distribution based on agent availability and expertise&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conversation History&lt;/strong&gt;: Complete interaction history across all channels&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Context Preservation&lt;/strong&gt;: Maintain conversation context when switching agents&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;🛒 Integrated E-Commerce&lt;span class="hx:absolute hx:-mt-20" id="-integrated-e-commerce"&gt;&lt;/span&gt;
+&lt;a href="#-integrated-e-commerce" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Shopping Cart Integration&lt;/strong&gt;: Send product catalogs and process orders directly in chat&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Payment Links&lt;/strong&gt;: Generate and send secure payment links&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Order Status Updates&lt;/strong&gt;: Real-time order tracking and notifications&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Product Recommendations&lt;/strong&gt;: AI-powered suggestions based on customer preferences&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;📊 Dashboard &amp;amp; Analytics&lt;span class="hx:absolute hx:-mt-20" id="-dashboard--analytics"&gt;&lt;/span&gt;
+&lt;a href="#-dashboard--analytics" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Metrics&lt;/strong&gt;: Monitor agent performance and customer satisfaction&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Response Time Tracking&lt;/strong&gt;: Measure and optimize response times&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conversation Analytics&lt;/strong&gt;: Insights into customer behavior and preferences&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Reports&lt;/strong&gt;: Generate detailed reports for management review&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Key Modules&lt;span class="hx:absolute hx:-mt-20" id="key-modules"&gt;&lt;/span&gt;
+&lt;a href="#key-modules" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;1. Inbox Module&lt;span class="hx:absolute hx:-mt-20" id="1-inbox-module"&gt;&lt;/span&gt;
+&lt;a href="#1-inbox-module" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Central hub for all customer conversations with features like:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Unified message view&lt;/li&gt;
+&lt;li&gt;Quick reply templates&lt;/li&gt;
+&lt;li&gt;File and media sharing&lt;/li&gt;
+&lt;li&gt;Message translation&lt;/li&gt;
+&lt;li&gt;Conversation tagging&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2. Contacts Management&lt;span class="hx:absolute hx:-mt-20" id="2-contacts-management"&gt;&lt;/span&gt;
+&lt;a href="#2-contacts-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Customer Profiles&lt;/strong&gt;: Comprehensive view of customer information&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Interaction History&lt;/strong&gt;: Complete timeline of all interactions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Fields&lt;/strong&gt;: Add business-specific customer data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Segmentation&lt;/strong&gt;: Group contacts for targeted communication&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;3. Broadcast Center&lt;span class="hx:absolute hx:-mt-20" id="3-broadcast-center"&gt;&lt;/span&gt;
+&lt;a href="#3-broadcast-center" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Mass Messaging&lt;/strong&gt;: Send promotional messages to multiple contacts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Campaign Management&lt;/strong&gt;: Create and track marketing campaigns&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Template Library&lt;/strong&gt;: Pre-approved message templates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Scheduling&lt;/strong&gt;: Plan broadcasts for optimal timing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;4. Task Queue System&lt;span class="hx:absolute hx:-mt-20" id="4-task-queue-system"&gt;&lt;/span&gt;
+&lt;a href="#4-task-queue-system" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Automatic Assignment&lt;/strong&gt;: Distribute tasks based on rules and availability&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Priority Management&lt;/strong&gt;: Handle urgent requests first&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;SLA Monitoring&lt;/strong&gt;: Track and meet service level agreements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Escalation Rules&lt;/strong&gt;: Automatic escalation for unresolved issues&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;5. Configuration &amp;amp; Settings&lt;span class="hx:absolute hx:-mt-20" id="5-configuration--settings"&gt;&lt;/span&gt;
+&lt;a href="#5-configuration--settings" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Channel Setup&lt;/strong&gt;: Easy integration with messaging platforms&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Business Hours&lt;/strong&gt;: Define operating hours and auto-responses&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Agent Management&lt;/strong&gt;: Roles, permissions, and team structure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Workflow Automation&lt;/strong&gt;: Custom rules and triggers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration with BigLedger Modules&lt;span class="hx:absolute hx:-mt-20" id="integration-with-bigledger-modules"&gt;&lt;/span&gt;
+&lt;a href="#integration-with-bigledger-modules" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;CRM Integration&lt;span class="hx:absolute hx:-mt-20" id="crm-integration"&gt;&lt;/span&gt;
+&lt;a href="#crm-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Automatic customer record creation&lt;/li&gt;
+&lt;li&gt;Lead capture from conversations&lt;/li&gt;
+&lt;li&gt;Sales opportunity tracking&lt;/li&gt;
+&lt;li&gt;Customer service ticket management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="https://wiki.bigledger.com/modules/crm/" &gt;Learn more about CRM Module →&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Sales &amp;amp; Order Management&lt;span class="hx:absolute hx:-mt-20" id="sales--order-management"&gt;&lt;/span&gt;
+&lt;a href="#sales--order-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Quote generation within chat&lt;/li&gt;
+&lt;li&gt;Order processing from conversations&lt;/li&gt;
+&lt;li&gt;Invoice sending via messaging apps&lt;/li&gt;
+&lt;li&gt;Payment collection through chat&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="https://wiki.bigledger.com/business-operations/order/" &gt;Learn more about Sales Module →&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;E-Commerce Integration&lt;span class="hx:absolute hx:-mt-20" id="e-commerce-integration"&gt;&lt;/span&gt;
+&lt;a href="#e-commerce-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Product catalog sharing&lt;/li&gt;
+&lt;li&gt;Real-time inventory checks&lt;/li&gt;
+&lt;li&gt;Order status updates&lt;/li&gt;
+&lt;li&gt;Abandoned cart recovery&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a href="https://wiki.bigledger.com/modules/ecommerce/" &gt;Learn more about E-Commerce Module →&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Support &amp;amp; Ticketing&lt;span class="hx:absolute hx:-mt-20" id="support--ticketing"&gt;&lt;/span&gt;
+&lt;a href="#support--ticketing" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Automatic ticket creation from conversations&lt;/li&gt;
+&lt;li&gt;Issue tracking and resolution&lt;/li&gt;
+&lt;li&gt;Knowledge base integration&lt;/li&gt;
+&lt;li&gt;Customer satisfaction surveys&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases"&gt;&lt;/span&gt;
+&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Retail &amp;amp; E-Commerce&lt;span class="hx:absolute hx:-mt-20" id="retail--e-commerce"&gt;&lt;/span&gt;
+&lt;a href="#retail--e-commerce" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Handle product inquiries&lt;/li&gt;
+&lt;li&gt;Process orders through chat&lt;/li&gt;
+&lt;li&gt;Send order confirmations and tracking&lt;/li&gt;
+&lt;li&gt;Manage returns and exchanges&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Customer Support&lt;span class="hx:absolute hx:-mt-20" id="customer-support"&gt;&lt;/span&gt;
+&lt;a href="#customer-support" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Technical support across channels&lt;/li&gt;
+&lt;li&gt;FAQ automation with chatbots&lt;/li&gt;
+&lt;li&gt;Ticket creation and tracking&lt;/li&gt;
+&lt;li&gt;Escalation management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Sales &amp;amp; Marketing&lt;span class="hx:absolute hx:-mt-20" id="sales--marketing"&gt;&lt;/span&gt;
+&lt;a href="#sales--marketing" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Lead generation through conversations&lt;/li&gt;
+&lt;li&gt;Product demonstrations via video chat&lt;/li&gt;
+&lt;li&gt;Promotional campaigns via broadcast&lt;/li&gt;
+&lt;li&gt;Customer feedback collection&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Service Industries&lt;span class="hx:absolute hx:-mt-20" id="service-industries"&gt;&lt;/span&gt;
+&lt;a href="#service-industries" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Appointment scheduling&lt;/li&gt;
+&lt;li&gt;Service reminders&lt;/li&gt;
+&lt;li&gt;Status updates&lt;/li&gt;
+&lt;li&gt;Payment collection&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Benefits&lt;span class="hx:absolute hx:-mt-20" id="benefits"&gt;&lt;/span&gt;
+&lt;a href="#benefits" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;For Your Business&lt;span class="hx:absolute hx:-mt-20" id="for-your-business"&gt;&lt;/span&gt;
+&lt;a href="#for-your-business" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Increased Efficiency&lt;/strong&gt;: Handle more conversations with fewer agents&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Higher Conversion&lt;/strong&gt;: Convert chat conversations into sales&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cost Reduction&lt;/strong&gt;: Lower customer service operational costs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Better Insights&lt;/strong&gt;: Data-driven decision making&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;For Your Customers&lt;span class="hx:absolute hx:-mt-20" id="for-your-customers"&gt;&lt;/span&gt;
+&lt;a href="#for-your-customers" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Convenience&lt;/strong&gt;: Contact you through their preferred channel&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Faster Response&lt;/strong&gt;: Quick resolution of queries&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Personalized Service&lt;/strong&gt;: Context-aware interactions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;24/7 Availability&lt;/strong&gt;: Automated responses outside business hours&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Getting Started&lt;span class="hx:absolute hx:-mt-20" id="getting-started"&gt;&lt;/span&gt;
+&lt;a href="#getting-started" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Step 1: Enable UCC Applet&lt;span class="hx:absolute hx:-mt-20" id="step-1-enable-ucc-applet"&gt;&lt;/span&gt;
+&lt;a href="#step-1-enable-ucc-applet" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Access the UCC applet from the BigLedger Applet Store:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://wiki.bigledger.com/applets/unified-contact-center-ucc-applet/" &gt;Access UCC Applet →&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Step 2: Connect Channels&lt;span class="hx:absolute hx:-mt-20" id="step-2-connect-channels"&gt;&lt;/span&gt;
+&lt;a href="#step-2-connect-channels" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Navigate to Configuration → Channel Setup&lt;/li&gt;
+&lt;li&gt;Select messaging platforms to integrate&lt;/li&gt;
+&lt;li&gt;Follow platform-specific setup guides&lt;/li&gt;
+&lt;li&gt;Test message flow&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Step 3: Configure Teams&lt;span class="hx:absolute hx:-mt-20" id="step-3-configure-teams"&gt;&lt;/span&gt;
+&lt;a href="#step-3-configure-teams" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Create agent accounts&lt;/li&gt;
+&lt;li&gt;Define roles and permissions&lt;/li&gt;
+&lt;li&gt;Set up team structure&lt;/li&gt;
+&lt;li&gt;Configure routing rules&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Step 4: Customize Workflows&lt;span class="hx:absolute hx:-mt-20" id="step-4-customize-workflows"&gt;&lt;/span&gt;
+&lt;a href="#step-4-customize-workflows" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Set up auto-responses&lt;/li&gt;
+&lt;li&gt;Create quick reply templates&lt;/li&gt;
+&lt;li&gt;Define escalation rules&lt;/li&gt;
+&lt;li&gt;Configure business hours&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices"&gt;&lt;/span&gt;
+&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Response Time Management&lt;span class="hx:absolute hx:-mt-20" id="response-time-management"&gt;&lt;/span&gt;
+&lt;a href="#response-time-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Set realistic SLA targets&lt;/li&gt;
+&lt;li&gt;Use auto-acknowledgment messages&lt;/li&gt;
+&lt;li&gt;Implement priority queuing&lt;/li&gt;
+&lt;li&gt;Monitor response metrics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Agent Training&lt;span class="hx:absolute hx:-mt-20" id="agent-training"&gt;&lt;/span&gt;
+&lt;a href="#agent-training" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Product knowledge training&lt;/li&gt;
+&lt;li&gt;Platform feature familiarization&lt;/li&gt;
+&lt;li&gt;Customer service best practices&lt;/li&gt;
+&lt;li&gt;Regular performance reviews&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Conversation Quality&lt;span class="hx:absolute hx:-mt-20" id="conversation-quality"&gt;&lt;/span&gt;
+&lt;a href="#conversation-quality" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Use templates for consistency&lt;/li&gt;
+&lt;li&gt;Maintain professional tone&lt;/li&gt;
+&lt;li&gt;Personalize interactions&lt;/li&gt;
+&lt;li&gt;Follow up on unresolved issues&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Data Security&lt;span class="hx:absolute hx:-mt-20" id="data-security"&gt;&lt;/span&gt;
+&lt;a href="#data-security" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Implement access controls&lt;/li&gt;
+&lt;li&gt;Regular data backups&lt;/li&gt;
+&lt;li&gt;Compliance with data protection laws&lt;/li&gt;
+&lt;li&gt;Secure payment processing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Pricing &amp;amp; Plans&lt;span class="hx:absolute hx:-mt-20" id="pricing--plans"&gt;&lt;/span&gt;
+&lt;a href="#pricing--plans" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;UCC is available as an add-on module with flexible pricing:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Plan&lt;/th&gt;
+&lt;th&gt;Channels&lt;/th&gt;
+&lt;th&gt;Agents&lt;/th&gt;
+&lt;th&gt;Messages/Month&lt;/th&gt;
+&lt;th&gt;Price&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Starter&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;10,000&lt;/td&gt;
+&lt;td&gt;Contact Sales&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Professional&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;15&lt;/td&gt;
+&lt;td&gt;50,000&lt;/td&gt;
+&lt;td&gt;Contact Sales&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Enterprise&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Unlimited&lt;/td&gt;
+&lt;td&gt;Unlimited&lt;/td&gt;
+&lt;td&gt;Unlimited&lt;/td&gt;
+&lt;td&gt;Contact Sales&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources"&gt;&lt;/span&gt;
+&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt;: Comprehensive setup and user guides&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Video Tutorials&lt;/strong&gt;: Step-by-step visual guides&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Training&lt;/strong&gt;: Agent training programs available&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Support&lt;/strong&gt;: Dedicated support team&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Related Resources&lt;span class="hx:absolute hx:-mt-20" id="related-resources"&gt;&lt;/span&gt;
+&lt;a href="#related-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/applets/unified-contact-center-ucc-applet/" &gt;UCC Applet Details&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/crm/" &gt;CRM Module Integration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/ecommerce/" &gt;E-Commerce Integration&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/developers/api-reference/" &gt;API Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;Ready to transform your customer service?&lt;/strong&gt;&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
 &lt;a
 class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/applets/unified-contact-center-ucc-applet"
->&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Setup UCC&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Get started with UCC configuration&lt;/div>&lt;/a>
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Setup UCC&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Get started with UCC configuration&lt;/div&gt;&lt;/a&gt;
 &lt;a
 class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/demos-resources"
->&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Watch Demo&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">See UCC in action&lt;/div>&lt;/a>
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Watch Demo&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;See UCC in action&lt;/div&gt;&lt;/a&gt;
 &lt;a
 class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/support"
->&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Get Support&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Contact our team for assistance&lt;/div>&lt;/a>
-&lt;/div></description></item></channel></rss>
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Get Support&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Contact our team for assistance&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;</description></item></channel></rss>

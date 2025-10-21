@@ -1,0 +1,1513 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger 文档 – Applets</title><link>https://wiki.bigledger.com/zh/tags/applets/</link><description>Recent content in Applets on BigLedger 文档</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://wiki.bigledger.com/zh/tags/applets/index.xml" rel="self" type="application/rss+xml"/><item><title>小程序与工作流程</title><link>https://wiki.bigledger.com/zh/applets/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/</guid><description>
+&lt;p&gt;BigLedger 的模块化架构建立在小程序之上 - 可重复使用的组件提供特定的业务功能。每个小程序可以被多个模块使用，确保整个系统的一致性。&lt;/p&gt;
+&lt;h2&gt;理解小程序&lt;span class="hx:absolute hx:-mt-20" id="理解小程序"&gt;&lt;/span&gt;
+&lt;a href="#%e7%90%86%e8%a7%a3%e5%b0%8f%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;重要提示&lt;/strong&gt;：小程序与模块具有多对多关系。例如，税务配置小程序被财务会计、销售、采购和电子商务模块使用。这种设计消除了重复并确保系统中的行为一致。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;关键特征&lt;span class="hx:absolute hx:-mt-20" id="关键特征"&gt;&lt;/span&gt;
+&lt;a href="#%e5%85%b3%e9%94%ae%e7%89%b9%e5%be%81" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;可重复使用&lt;/strong&gt; - 一个小程序服务多个模块&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;可配置&lt;/strong&gt; - 根据您的业务需求定制&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;集成&lt;/strong&gt; - 无缝协同工作&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;独立&lt;/strong&gt; - 可以在不影响其他组件的情况下更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;小程序资源&lt;span class="hx:absolute hx:-mt-20" id="小程序资源"&gt;&lt;/span&gt;
+&lt;a href="#%e5%b0%8f%e7%a8%8b%e5%ba%8f%e8%b5%84%e6%ba%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;完整的小程序参考&lt;span class="hx:absolute hx:-mt-20" id="完整的小程序参考"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%8c%e6%95%b4%e7%9a%84%e5%b0%8f%e7%a8%8b%e5%ba%8f%e5%8f%82%e8%80%83" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/applet-catalog/" &gt;完整小程序目录&lt;/a&gt;&lt;/strong&gt; - 按模块组织的所有 BigLedger 小程序的综合目录&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/applet-directory/" &gt;小程序目录&lt;/a&gt;&lt;/strong&gt; - 可搜索的小程序市场和安装指南&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/applet-store/" &gt;小程序商店&lt;/a&gt;&lt;/strong&gt; - 额外小程序和扩展的市场&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;特色小程序类别&lt;span class="hx:absolute hx:-mt-20" id="特色小程序类别"&gt;&lt;/span&gt;
+&lt;a href="#%e7%89%b9%e8%89%b2%e5%b0%8f%e7%a8%8b%e5%ba%8f%e7%b1%bb%e5%88%ab" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;核心模块（13个基本小程序）&lt;span class="hx:absolute hx:-mt-20" id="核心模块13个基本小程序"&gt;&lt;/span&gt;
+&lt;a href="#%e6%a0%b8%e5%bf%83%e6%a8%a1%e5%9d%9713%e4%b8%aa%e5%9f%ba%e6%9c%ac%e5%b0%8f%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;所有其他模块所需的基础小程序：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/tenant-admin-applet/" &gt;租户管理小程序&lt;/a&gt;&lt;/strong&gt; - 系统管理和配置&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/chart-of-account-applet/" &gt;会计科目表小程序&lt;/a&gt;&lt;/strong&gt; - 财务账户结构&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/organization-applet/" &gt;组织小程序&lt;/a&gt;&lt;/strong&gt; - 公司和组织结构&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/customer-maintenance-applet/" &gt;客户维护小程序&lt;/a&gt;&lt;/strong&gt; - 客户主数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/supplier-maintenance-applet/" &gt;供应商维护小程序&lt;/a&gt;&lt;/strong&gt; - 供应商主数据&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/employee-maintenance-applet/" &gt;员工维护小程序&lt;/a&gt;&lt;/strong&gt; - 员工记录&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/tax-configuration-applet/" &gt;税务配置小程序&lt;/a&gt;&lt;/strong&gt; - 税务设置和合规&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/applet-catalog/#core-module-applets-13-applets" &gt;查看所有核心小程序 →&lt;/a&gt;&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;库存与运营&lt;span class="hx:absolute hx:-mt-20" id="库存与运营"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ba%93%e5%ad%98%e4%b8%8e%e8%bf%90%e8%90%a5" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/stock-take-applet/" &gt;库存盘点小程序&lt;/a&gt;&lt;/strong&gt; - 数字库存计数和管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/stock-balance-applet/" &gt;库存余额小程序&lt;/a&gt;&lt;/strong&gt; - 实时库存跟踪&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/internal-stock-adjustment-applet/" &gt;内部库存调整小程序&lt;/a&gt;&lt;/strong&gt; - 库存修正&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/process-monitoring-applet/" &gt;流程监控小程序&lt;/a&gt;&lt;/strong&gt; - 业务流程跟踪&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;客户参与&lt;span class="hx:absolute hx:-mt-20" id="客户参与"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%a2%e6%88%b7%e5%8f%82%e4%b8%8e" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/team-maintenance-applet/" &gt;团队维护小程序&lt;/a&gt;&lt;/strong&gt; - 团队结构和管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/membership-admin-console-applet/" &gt;会员管理控制台小程序&lt;/a&gt;&lt;/strong&gt; - 客户忠诚度计划&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/unified-contact-center-ucc-applet/" &gt;统一联络中心小程序&lt;/a&gt;&lt;/strong&gt; - 客户服务平台&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;定价与商务&lt;span class="hx:absolute hx:-mt-20" id="定价与商务"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%9a%e4%bb%b7%e4%b8%8e%e5%95%86%e5%8a%a1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/pricebook-applet/" &gt;价格表小程序&lt;/a&gt;&lt;/strong&gt; - 高级定价管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/90-ecomsync-related-applets/" &gt;EcomSync 相关小程序&lt;/a&gt;&lt;/strong&gt; - 电子商务同步&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;模块集成&lt;span class="hx:absolute hx:-mt-20" id="模块集成"&gt;&lt;/span&gt;
+&lt;a href="#%e6%a8%a1%e5%9d%97%e9%9b%86%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;小程序设计为与模块具有多对多关系：&lt;/p&gt;</description></item><item><title>完整应用目录</title><link>https://wiki.bigledger.com/zh/applets/applet-catalog/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/applet-catalog/</guid><description>
+&lt;p&gt;这个综合目录列出了BigLedger生态系统中所有可用的应用程序，按模块和功能分类。每个应用程序都描述了其主要目的、关键功能和集成点。&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;了解应用程序&lt;/strong&gt;：应用程序是可重用的功能组件，可以属于多个模块。这种多对多的关系消除了重复，确保整个BigLedger系统中的行为一致性。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;核心模块应用程序（13个应用程序）&lt;span class="hx:absolute hx:-mt-20" id="核心模块应用程序13个应用程序"&gt;&lt;/span&gt;
+&lt;a href="#%e6%a0%b8%e5%bf%83%e6%a8%a1%e5%9d%97%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f13%e4%b8%aa%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;所有其他模块都需要的基础应用程序&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;1. &lt;a href="https://wiki.bigledger.com/zh/applets/tenant-admin-applet/" &gt;租户管理应用程序&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="1-租户管理应用程序"&gt;&lt;/span&gt;
+&lt;a href="#1-%e7%a7%9f%e6%88%b7%e7%ae%a1%e7%90%86%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;系统级管理和配置&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;用户管理和安全配置&lt;/li&gt;
+&lt;li&gt;审计设置和合规管理&lt;/li&gt;
+&lt;li&gt;多租户环境设置&lt;/li&gt;
+&lt;li&gt;系统监控和健康检查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2. &lt;a href="https://wiki.bigledger.com/zh/applets/chart-of-account-applet/" &gt;科目表应用程序&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="2-科目表应用程序"&gt;&lt;/span&gt;
+&lt;a href="#2-%e7%a7%91%e7%9b%ae%e8%a1%a8%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;完整的科目表结构管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;科目层次结构和财务报表映射&lt;/li&gt;
+&lt;li&gt;多币种支持和汇率&lt;/li&gt;
+&lt;li&gt;科目分类和控制&lt;/li&gt;
+&lt;li&gt;所有财务操作的集成基础&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;3. &lt;a href="https://wiki.bigledger.com/zh/applets/organization-applet/" &gt;组织应用程序&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="3-组织应用程序"&gt;&lt;/span&gt;
+&lt;a href="#3-%e7%bb%84%e7%bb%87%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;组织结构和公司管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;公司、分支机构和地点设置&lt;/li&gt;
+&lt;li&gt;部门和成本中心管理&lt;/li&gt;
+&lt;li&gt;组织层次结构和报告结构&lt;/li&gt;
+&lt;li&gt;多地点运营支持&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;4. &lt;a href="https://wiki.bigledger.com/zh/applets/doc-item-maintenance-applet/" &gt;文档项目维护应用程序&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="4-文档项目维护应用程序"&gt;&lt;/span&gt;
+&lt;a href="#4-%e6%96%87%e6%a1%a3%e9%a1%b9%e7%9b%ae%e7%bb%b4%e6%8a%a4%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;服务和非库存项目管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;专业服务和咨询项目&lt;/li&gt;
+&lt;li&gt;数字产品和订阅&lt;/li&gt;
+&lt;li&gt;服务定价和计费配置&lt;/li&gt;
+&lt;li&gt;文档模板和标准化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;5. &lt;a href="https://wiki.bigledger.com/zh/applets/inv-item-maintenance-applet/" &gt;库存项目维护应用程序&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="5-库存项目维护应用程序"&gt;&lt;/span&gt;
+&lt;a href="#5-%e5%ba%93%e5%ad%98%e9%a1%b9%e7%9b%ae%e7%bb%b4%e6%8a%a4%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;产品和库存主数据&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;完整的产品信息管理&lt;/li&gt;
+&lt;li&gt;多地点库存控制&lt;/li&gt;
+&lt;li&gt;定价和成本核算方法&lt;/li&gt;
+&lt;li&gt;产品类别和分类&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;6. &lt;a href="https://wiki.bigledger.com/zh/applets/customer-maintenance-applet/" &gt;客户维护应用程序&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="6-客户维护应用程序"&gt;&lt;/span&gt;
+&lt;a href="#6-%e5%ae%a2%e6%88%b7%e7%bb%b4%e6%8a%a4%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;客户主数据和关系管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;完整的客户档案和联系人管理&lt;/li&gt;
+&lt;li&gt;信用限额和付款条件&lt;/li&gt;
+&lt;li&gt;客户细分和分类&lt;/li&gt;
+&lt;li&gt;多地址和多联系人支持&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;7. &lt;a href="https://wiki.bigledger.com/zh/applets/supplier-maintenance-applet/" &gt;供应商维护应用程序&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="7-供应商维护应用程序"&gt;&lt;/span&gt;
+&lt;a href="#7-%e4%be%9b%e5%ba%94%e5%95%86%e7%bb%b4%e6%8a%a4%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;供应商和采购商主数据管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;完整的供应商档案&lt;/li&gt;
+&lt;li&gt;采购条件和付款条件&lt;/li&gt;
+&lt;li&gt;供应商绩效跟踪&lt;/li&gt;
+&lt;li&gt;供应商分类和关系管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;8. &lt;a href="https://wiki.bigledger.com/zh/applets/employee-maintenance-applet/" &gt;员工维护应用程序&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="8-员工维护应用程序"&gt;&lt;/span&gt;
+&lt;a href="#8-%e5%91%98%e5%b7%a5%e7%bb%b4%e6%8a%a4%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;员工主记录和人力资源基础&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;完整的员工档案和信息&lt;/li&gt;
+&lt;li&gt;组织结构和报告关系&lt;/li&gt;
+&lt;li&gt;系统访问和角色管理&lt;/li&gt;
+&lt;li&gt;人力资源集成和薪资基础&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;9. &lt;a href="https://wiki.bigledger.com/zh/applets/tax-configuration-applet/" &gt;税务配置应用程序&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="9-税务配置应用程序"&gt;&lt;/span&gt;
+&lt;a href="#9-%e7%a8%8e%e5%8a%a1%e9%85%8d%e7%bd%ae%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;完整的税务设置和合规管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;税务代码、税率和法规合规&lt;/li&gt;
+&lt;li&gt;多管辖区税务支持（GST、SST、VAT）&lt;/li&gt;
+&lt;li&gt;自动税务计算&lt;/li&gt;
+&lt;li&gt;税务报告和电子申报集成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;10. &lt;a href="https://wiki.bigledger.com/zh/applets/cashbook-applet/" &gt;现金簿应用程序&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="10-现金簿应用程序"&gt;&lt;/span&gt;
+&lt;a href="#10-%e7%8e%b0%e9%87%91%e7%b0%bf%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;现金和银行账户管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多个现金和银行账户设置&lt;/li&gt;
+&lt;li&gt;付款方式配置&lt;/li&gt;
+&lt;li&gt;现金流跟踪和管理&lt;/li&gt;
+&lt;li&gt;银行对账和集成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;11. &lt;a href="https://wiki.bigledger.com/zh/applets/workflow-design-applet/" &gt;工作流设计应用程序&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="11-工作流设计应用程序"&gt;&lt;/span&gt;
+&lt;a href="#11-%e5%b7%a5%e4%bd%9c%e6%b5%81%e8%ae%be%e8%ae%a1%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;业务流程自动化和工作流管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;可视化工作流设计器和配置&lt;/li&gt;
+&lt;li&gt;多级审批流程&lt;/li&gt;
+&lt;li&gt;流程自动化和编排&lt;/li&gt;
+&lt;li&gt;工作流性能监控&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;12. &lt;a href="https://wiki.bigledger.com/zh/applets/webhook-applet/" &gt;Webhook应用程序&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="12-webhook应用程序"&gt;&lt;/span&gt;
+&lt;a href="#12-webhook%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;实时事件通知和系统集成&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;外部系统集成和通知&lt;/li&gt;
+&lt;li&gt;事件驱动的工作流自动化&lt;/li&gt;
+&lt;li&gt;API集成和数据同步&lt;/li&gt;
+&lt;li&gt;实时业务事件广播&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;13. &lt;a href="https://wiki.bigledger.com/zh/applets/t2t-admin-applet/" &gt;T2T管理应用程序&lt;/a&gt;&lt;span class="hx:absolute hx:-mt-20" id="13-t2t管理应用程序"&gt;&lt;/span&gt;
+&lt;a href="#13-t2t%e7%ae%a1%e7%90%86%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;企业运营的租户到租户管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多租户企业管理&lt;/li&gt;
+&lt;li&gt;跨租户数据共享和关系&lt;/li&gt;
+&lt;li&gt;企业整合和报告&lt;/li&gt;
+&lt;li&gt;复杂组织结构管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;销售点模块应用程序（6个应用程序）&lt;span class="hx:absolute hx:-mt-20" id="销售点模块应用程序6个应用程序"&gt;&lt;/span&gt;
+&lt;a href="#%e9%94%80%e5%94%ae%e7%82%b9%e6%a8%a1%e5%9d%97%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f6%e4%b8%aa%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;零售和POS操作的专业应用程序&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO：记录POS专用应用程序&lt;span class="hx:absolute hx:-mt-20" id="todo记录pos专用应用程序"&gt;&lt;/span&gt;
+&lt;a href="#todo%e8%ae%b0%e5%bd%95pos%e4%b8%93%e7%94%a8%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;POS终端应用程序&lt;/strong&gt; - 销售点终端管理和配置&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;收银员操作应用程序&lt;/strong&gt; - 收银员功能和日常操作&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;POS库存应用程序&lt;/strong&gt; - 零售实时库存管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户显示应用程序&lt;/strong&gt; - 面向客户的显示管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;收据管理应用程序&lt;/strong&gt; - 收据打印和数字收据处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;POS报告应用程序&lt;/strong&gt; - 销售点分析和报告&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;CP-Commerce模块应用程序（20个应用程序）&lt;span class="hx:absolute hx:-mt-20" id="cp-commerce模块应用程序20个应用程序"&gt;&lt;/span&gt;
+&lt;a href="#cp-commerce%e6%a8%a1%e5%9d%97%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f20%e4%b8%aa%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;包括所有核心模块应用程序加上7个商务专用应用程序的综合电子商务解决方案&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;核心模块集成&lt;span class="hx:absolute hx:-mt-20" id="核心模块集成"&gt;&lt;/span&gt;
+&lt;a href="#%e6%a0%b8%e5%bf%83%e6%a8%a1%e5%9d%97%e9%9b%86%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;CP-Commerce模块包含所有13个核心模块应用程序（如上所列）。&lt;/p&gt;
+&lt;h3&gt;商务专用应用程序&lt;span class="hx:absolute hx:-mt-20" id="商务专用应用程序"&gt;&lt;/span&gt;
+&lt;a href="#%e5%95%86%e5%8a%a1%e4%b8%93%e7%94%a8%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h3&gt;TODO：记录商务专用应用程序&lt;span class="hx:absolute hx:-mt-20" id="todo记录商务专用应用程序"&gt;&lt;/span&gt;
+&lt;a href="#todo%e8%ae%b0%e5%bd%95%e5%95%86%e5%8a%a1%e4%b8%93%e7%94%a8%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;电子商务目录应用程序&lt;/strong&gt; - 在线产品目录管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;购物车应用程序&lt;/strong&gt; - 购物车功能和管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;在线支付应用程序&lt;/strong&gt; - 支付网关集成和处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;订单履行应用程序&lt;/strong&gt; - 在线订单处理和履行&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户门户应用程序&lt;/strong&gt; - 客户自助服务门户&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;市场集成应用程序&lt;/strong&gt; - 第三方市场连接&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数字营销应用程序&lt;/strong&gt; - SEO、分析和营销自动化&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;电子发票模块应用程序（8个应用程序）&lt;span class="hx:absolute hx:-mt-20" id="电子发票模块应用程序8个应用程序"&gt;&lt;/span&gt;
+&lt;a href="#%e7%94%b5%e5%ad%90%e5%8f%91%e7%a5%a8%e6%a8%a1%e5%9d%97%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f8%e4%b8%aa%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;电子发票和合规专业化&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO：记录电子发票应用程序&lt;span class="hx:absolute hx:-mt-20" id="todo记录电子发票应用程序"&gt;&lt;/span&gt;
+&lt;a href="#todo%e8%ae%b0%e5%bd%95%e7%94%b5%e5%ad%90%e5%8f%91%e7%a5%a8%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;电子发票生成应用程序&lt;/strong&gt; - 电子发票创建和格式化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MyInvois集成应用程序&lt;/strong&gt; - 马来西亚电子发票合规&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PEPPOL网络应用程序&lt;/strong&gt; - 泛欧公共采购网络集成&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;数字签名应用程序&lt;/strong&gt; - 发票数字签名和验证&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;电子发票验证应用程序&lt;/strong&gt; - 发票验证和合规检查&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;税务机关集成应用程序&lt;/strong&gt; - 直接税务机关提交&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;电子发票归档应用程序&lt;/strong&gt; - 长期电子文档存储&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;合规报告应用程序&lt;/strong&gt; - 法规合规报告&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;会计模块应用程序（25个应用程序）&lt;span class="hx:absolute hx:-mt-20" id="会计模块应用程序25个应用程序"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bc%9a%e8%ae%a1%e6%a8%a1%e5%9d%97%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f25%e4%b8%aa%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;综合交易处理和财务管理&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO：记录会计模块应用程序&lt;span class="hx:absolute hx:-mt-20" id="todo记录会计模块应用程序"&gt;&lt;/span&gt;
+&lt;a href="#todo%e8%ae%b0%e5%bd%95%e4%bc%9a%e8%ae%a1%e6%a8%a1%e5%9d%97%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;总账应用程序&lt;/strong&gt; - 核心会计和交易处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应收账款应用程序&lt;/strong&gt; - 客户计费和收款&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;应付账款应用程序&lt;/strong&gt; - 供应商付款和处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;固定资产应用程序&lt;/strong&gt; - 资产管理和折旧&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;预算管理应用程序&lt;/strong&gt; - 预算编制和差异分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;成本会计应用程序&lt;/strong&gt; - 成本分配和分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多币种应用程序&lt;/strong&gt; - 外汇和货币管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;财务报告应用程序&lt;/strong&gt; - 财务报表和报告&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;银行对账应用程序&lt;/strong&gt; - 自动银行对账单对账&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;日记账分录应用程序&lt;/strong&gt; - 手动和自动日记账分录&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;内部公司应用程序&lt;/strong&gt; - 内部公司交易处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;收入确认应用程序&lt;/strong&gt; - 高级收入确认&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;费用管理应用程序&lt;/strong&gt; - 员工费用处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;现金流管理应用程序&lt;/strong&gt; - 现金流预测和管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;审计跟踪应用程序&lt;/strong&gt; - 财务审计和合规跟踪&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;税务会计应用程序&lt;/strong&gt; - 税务特定会计处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;合并应用程序&lt;/strong&gt; - 多实体财务合并&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;期间结账应用程序&lt;/strong&gt; - 月末和年末程序&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分配应用程序&lt;/strong&gt; - 成本和收入分配&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;财务管理应用程序&lt;/strong&gt; - 企业财务运营&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;信用管理应用程序&lt;/strong&gt; - 客户信用控制&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;催收管理应用程序&lt;/strong&gt; - 债务催收流程&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;付款处理应用程序&lt;/strong&gt; - 高级付款处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;财务分析应用程序&lt;/strong&gt; - 高级财务分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;合规管理应用程序&lt;/strong&gt; - 财务合规监控&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;数字CRM模块应用程序（3个应用程序）&lt;span class="hx:absolute hx:-mt-20" id="数字crm模块应用程序3个应用程序"&gt;&lt;/span&gt;
+&lt;a href="#%e6%95%b0%e5%ad%97crm%e6%a8%a1%e5%9d%97%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f3%e4%b8%aa%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;AI驱动的客户关系管理&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO：记录数字CRM应用程序&lt;span class="hx:absolute hx:-mt-20" id="todo记录数字crm应用程序"&gt;&lt;/span&gt;
+&lt;a href="#todo%e8%ae%b0%e5%bd%95%e6%95%b0%e5%ad%97crm%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;AI客户分析应用程序&lt;/strong&gt; - 预测性客户分析和洞察&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自动化营销应用程序&lt;/strong&gt; - AI驱动的营销自动化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户智能应用程序&lt;/strong&gt; - 高级客户行为分析&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;IT与CE模块应用程序（6个应用程序）&lt;span class="hx:absolute hx:-mt-20" id="it与ce模块应用程序6个应用程序"&gt;&lt;/span&gt;
+&lt;a href="#it%e4%b8%8ece%e6%a8%a1%e5%9d%97%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f6%e4%b8%aa%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;技术和客户参与专业化&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO：记录IT与CE应用程序&lt;span class="hx:absolute hx:-mt-20" id="todo记录it与ce应用程序"&gt;&lt;/span&gt;
+&lt;a href="#todo%e8%ae%b0%e5%bd%95it%e4%b8%8ece%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;服务台应用程序&lt;/strong&gt; - IT服务管理和票务&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;资产管理应用程序&lt;/strong&gt; - IT资产生命周期管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户参与应用程序&lt;/strong&gt; - 多渠道客户参与&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;知识管理应用程序&lt;/strong&gt; - IT知识库和文档&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;事件管理应用程序&lt;/strong&gt; - IT事件响应和解决&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;性能监控应用程序&lt;/strong&gt; - 系统性能和监控&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;服务行业模块应用程序（7个应用程序）&lt;span class="hx:absolute hx:-mt-20" id="服务行业模块应用程序7个应用程序"&gt;&lt;/span&gt;
+&lt;a href="#%e6%9c%8d%e5%8a%a1%e8%a1%8c%e4%b8%9a%e6%a8%a1%e5%9d%97%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f7%e4%b8%aa%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;基于服务的业务运营专业化&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO：记录服务行业应用程序&lt;span class="hx:absolute hx:-mt-20" id="todo记录服务行业应用程序"&gt;&lt;/span&gt;
+&lt;a href="#todo%e8%ae%b0%e5%bd%95%e6%9c%8d%e5%8a%a1%e8%a1%8c%e4%b8%9a%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;项目管理应用程序&lt;/strong&gt; - 项目规划和执行&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;时间跟踪应用程序&lt;/strong&gt; - 员工时间和考勤跟踪&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;资源调度应用程序&lt;/strong&gt; - 资源分配和调度&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;服务合同应用程序&lt;/strong&gt; - 服务协议管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;专业服务应用程序&lt;/strong&gt; - 咨询和专业服务&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;质量保证应用程序&lt;/strong&gt; - 服务质量管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户门户应用程序&lt;/strong&gt; - 客户自助服务和沟通&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;代发货模块应用程序（2个应用程序）&lt;span class="hx:absolute hx:-mt-20" id="代发货模块应用程序2个应用程序"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bb%a3%e5%8f%91%e8%b4%a7%e6%a8%a1%e5%9d%97%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f2%e4%b8%aa%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;代发货业务模式专业化&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;TODO：记录代发货应用程序&lt;span class="hx:absolute hx:-mt-20" id="todo记录代发货应用程序"&gt;&lt;/span&gt;
+&lt;a href="#todo%e8%ae%b0%e5%bd%95%e4%bb%a3%e5%8f%91%e8%b4%a7%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;供应商网络应用程序&lt;/strong&gt; - 代发货供应商管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;订单履行自动化应用程序&lt;/strong&gt; - 自动订单路由和履行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;ERP模块应用程序（总共41个应用程序）&lt;span class="hx:absolute hx:-mt-20" id="erp模块应用程序总共41个应用程序"&gt;&lt;/span&gt;
+&lt;a href="#erp%e6%a8%a1%e5%9d%97%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f%e6%80%bb%e5%85%b141%e4%b8%aa%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;完整的企业资源规划解决方案&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;包含的应用程序&lt;span class="hx:absolute hx:-mt-20" id="包含的应用程序"&gt;&lt;/span&gt;
+&lt;a href="#%e5%8c%85%e5%90%ab%e7%9a%84%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;所有会计模块应用程序&lt;/strong&gt;（25个应用程序）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;所有销售点模块应用程序&lt;/strong&gt;（6个应用程序）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;10个额外的企业专用应用程序&lt;/strong&gt;（如下所列）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;TODO：记录ERP专用应用程序&lt;span class="hx:absolute hx:-mt-20" id="todo记录erp专用应用程序"&gt;&lt;/span&gt;
+&lt;a href="#todo%e8%ae%b0%e5%bd%95erp%e4%b8%93%e7%94%a8%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;企业仪表板应用程序&lt;/strong&gt; - 高管和管理仪表板&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;商业智能应用程序&lt;/strong&gt; - 高级分析和报告&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;主数据管理应用程序&lt;/strong&gt; - 企业主数据治理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;集成中心应用程序&lt;/strong&gt; - 企业应用程序集成&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文档管理应用程序&lt;/strong&gt; - 企业文档管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;工作流编排应用程序&lt;/strong&gt; - 复杂的企业工作流&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;绩效管理应用程序&lt;/strong&gt; - KPI和计分卡管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;风险管理应用程序&lt;/strong&gt; - 企业风险评估和缓解&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;合规仪表板应用程序&lt;/strong&gt; - 法规合规监控&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;企业安全应用程序&lt;/strong&gt; - 高级安全和访问控制&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2&gt;现有专业应用程序&lt;span class="hx:absolute hx:-mt-20" id="现有专业应用程序"&gt;&lt;/span&gt;
+&lt;a href="#%e7%8e%b0%e6%9c%89%e4%b8%93%e4%b8%9a%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;库存和仓库管理&lt;span class="hx:absolute hx:-mt-20" id="库存和仓库管理"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ba%93%e5%ad%98%e5%92%8c%e4%bb%93%e5%ba%93%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/stock-balance-applet/" &gt;库存余额应用程序&lt;/a&gt;&lt;/strong&gt; - 实时库存水平和跟踪&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/stock-take-applet/" &gt;盘点应用程序&lt;/a&gt;&lt;/strong&gt; - 实物库存盘点和对账&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/internal-stock-adjustment-applet/" &gt;内部库存调整应用程序&lt;/a&gt;&lt;/strong&gt; - 库存调整和更正&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/internal-delivery-order-applet/" &gt;内部发货单应用程序&lt;/a&gt;&lt;/strong&gt; - 内部转移和发货&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;团队和组织管理&lt;span class="hx:absolute hx:-mt-20" id="团队和组织管理"&gt;&lt;/span&gt;
+&lt;a href="#%e5%9b%a2%e9%98%9f%e5%92%8c%e7%bb%84%e7%bb%87%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/team-maintenance-applet/" &gt;团队维护应用程序&lt;/a&gt;&lt;/strong&gt; - 团队结构和管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/group-maintenance-applet/" &gt;组维护应用程序&lt;/a&gt;&lt;/strong&gt; - 组配置和管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;定价和销售管理&lt;span class="hx:absolute hx:-mt-20" id="定价和销售管理"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%9a%e4%bb%b7%e5%92%8c%e9%94%80%e5%94%ae%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/pricebook-applet/" &gt;价格手册应用程序&lt;/a&gt;&lt;/strong&gt; - 高级定价管理和策略&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;流程和质量管理&lt;span class="hx:absolute hx:-mt-20" id="流程和质量管理"&gt;&lt;/span&gt;
+&lt;a href="#%e6%b5%81%e7%a8%8b%e5%92%8c%e8%b4%a8%e9%87%8f%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/process-monitoring-applet/" &gt;流程监控应用程序&lt;/a&gt;&lt;/strong&gt; - 业务流程跟踪和分析&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;会员和忠诚度计划&lt;span class="hx:absolute hx:-mt-20" id="会员和忠诚度计划"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bc%9a%e5%91%98%e5%92%8c%e5%bf%a0%e8%af%9a%e5%ba%a6%e8%ae%a1%e5%88%92" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/membership-admin-console-applet/" &gt;会员管理控制台应用程序&lt;/a&gt;&lt;/strong&gt; - 客户忠诚度计划管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/membership-points-currency/" &gt;会员积分货币&lt;/a&gt;&lt;/strong&gt; - 基于积分的奖励系统&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/membership-program/" &gt;会员计划&lt;/a&gt;&lt;/strong&gt; - 会员计划配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;沟通和客户服务&lt;span class="hx:absolute hx:-mt-20" id="沟通和客户服务"&gt;&lt;/span&gt;
+&lt;a href="#%e6%b2%9f%e9%80%9a%e5%92%8c%e5%ae%a2%e6%88%b7%e6%9c%8d%e5%8a%a1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/unified-contact-center-ucc-applet/" &gt;统一联络中心(UCC)应用程序&lt;/a&gt;&lt;/strong&gt; - 综合客户服务平台&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;电子商务集成&lt;span class="hx:absolute hx:-mt-20" id="电子商务集成"&gt;&lt;/span&gt;
+&lt;a href="#%e7%94%b5%e5%ad%90%e5%95%86%e5%8a%a1%e9%9b%86%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/90-ecomsync-related-applets/" &gt;EcomSync相关应用程序&lt;/a&gt;&lt;/strong&gt; - 电子商务同步工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;分销和供应商管理&lt;span class="hx:absolute hx:-mt-20" id="分销和供应商管理"&gt;&lt;/span&gt;
+&lt;a href="#%e5%88%86%e9%94%80%e5%92%8c%e4%be%9b%e5%ba%94%e5%95%86%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/ingram-micro-ms-esd-applet/" &gt;Ingram Micro MS ESD应用程序&lt;/a&gt;&lt;/strong&gt; - Microsoft许可证分销&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/vstecs-ms-esd-order-applet/" &gt;VSTecs MS ESD订单应用程序&lt;/a&gt;&lt;/strong&gt; - VSTecs分销集成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;按功能分类的应用程序&lt;span class="hx:absolute hx:-mt-20" id="按功能分类的应用程序"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8c%89%e5%8a%9f%e8%83%bd%e5%88%86%e7%b1%bb%e7%9a%84%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;主数据管理&lt;span class="hx:absolute hx:-mt-20" id="主数据管理"&gt;&lt;/span&gt;
+&lt;a href="#%e4%b8%bb%e6%95%b0%e6%8d%ae%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;科目表、组织、客户/供应商/员工维护&lt;/li&gt;
+&lt;li&gt;库存和文档项目维护&lt;/li&gt;
+&lt;li&gt;税务配置&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;交易处理&lt;span class="hx:absolute hx:-mt-20" id="交易处理"&gt;&lt;/span&gt;
+&lt;a href="#%e4%ba%a4%e6%98%93%e5%a4%84%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;销售订单、采购订单、发票&lt;/li&gt;
+&lt;li&gt;付款、收款、日记账分录&lt;/li&gt;
+&lt;li&gt;库存移动、调整&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;财务管理&lt;span class="hx:absolute hx:-mt-20" id="财务管理"&gt;&lt;/span&gt;
+&lt;a href="#%e8%b4%a2%e5%8a%a1%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;总账、应收账款/应付账款&lt;/li&gt;
+&lt;li&gt;预算管理、财务报告&lt;/li&gt;
+&lt;li&gt;现金流、财务管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;库存操作&lt;span class="hx:absolute hx:-mt-20" id="库存操作"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ba%93%e5%ad%98%e6%93%8d%e4%bd%9c" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;库存余额、盘点、库存调整&lt;/li&gt;
+&lt;li&gt;内部转移、库存跟踪&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;客户关系管理&lt;span class="hx:absolute hx:-mt-20" id="客户关系管理"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%a2%e6%88%b7%e5%85%b3%e7%b3%bb%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;客户维护、销售管理&lt;/li&gt;
+&lt;li&gt;会员计划、客户门户&lt;/li&gt;
+&lt;li&gt;沟通和支持工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;系统管理&lt;span class="hx:absolute hx:-mt-20" id="系统管理"&gt;&lt;/span&gt;
+&lt;a href="#%e7%b3%bb%e7%bb%9f%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;租户管理、用户管理&lt;/li&gt;
+&lt;li&gt;工作流设计、流程监控&lt;/li&gt;
+&lt;li&gt;集成和安全管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;实施路线图&lt;span class="hx:absolute hx:-mt-20" id="实施路线图"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%9e%e6%96%bd%e8%b7%af%e7%ba%bf%e5%9b%be" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;第1阶段：基础（核心模块）&lt;span class="hx:absolute hx:-mt-20" id="第1阶段基础核心模块"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac1%e9%98%b6%e6%ae%b5%e5%9f%ba%e7%a1%80%e6%a0%b8%e5%bf%83%e6%a8%a1%e5%9d%97" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;实施所有13个核心模块应用程序作为所有操作的基础。&lt;/p&gt;
+&lt;h3&gt;第2阶段：主要操作&lt;span class="hx:absolute hx:-mt-20" id="第2阶段主要操作"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac2%e9%98%b6%e6%ae%b5%e4%b8%bb%e8%a6%81%e6%93%8d%e4%bd%9c" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;根据业务需求添加专业模块应用程序：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;财务操作 → 会计模块应用程序&lt;/li&gt;
+&lt;li&gt;销售操作 → 销售和CRM应用程序&lt;/li&gt;
+&lt;li&gt;库存操作 → 仓库管理应用程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;第3阶段：高级功能&lt;span class="hx:absolute hx:-mt-20" id="第3阶段高级功能"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac3%e9%98%b6%e6%ae%b5%e9%ab%98%e7%ba%a7%e5%8a%9f%e8%83%bd" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;实施高级和专业应用程序：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;电子商务集成 → 商务应用程序&lt;/li&gt;
+&lt;li&gt;多实体操作 → ERP应用程序&lt;/li&gt;
+&lt;li&gt;合规要求 → 电子发票应用程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;第4阶段：优化&lt;span class="hx:absolute hx:-mt-20" id="第4阶段优化"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac4%e9%98%b6%e6%ae%b5%e4%bc%98%e5%8c%96" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;添加分析、自动化和优化应用程序：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;商业智能 → 数字CRM应用程序&lt;/li&gt;
+&lt;li&gt;流程自动化 → 工作流应用程序&lt;/li&gt;
+&lt;li&gt;性能监控 → 分析应用程序&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;相关资源&lt;span class="hx:absolute hx:-mt-20" id="相关资源"&gt;&lt;/span&gt;
+&lt;a href="#%e7%9b%b8%e5%85%b3%e8%b5%84%e6%ba%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;实施指南&lt;span class="hx:absolute hx:-mt-20" id="实施指南"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%9e%e6%96%bd%e6%8c%87%e5%8d%97" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/zh/modules/" &gt;模块实施指南&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/zh/modules/core/" &gt;核心模块入门&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/applet-store/" &gt;应用程序安装指南&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;集成文档&lt;span class="hx:absolute hx:-mt-20" id="集成文档"&gt;&lt;/span&gt;
+&lt;a href="#%e9%9b%86%e6%88%90%e6%96%87%e6%a1%a3" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/zh/developers/api-reference/" &gt;API参考&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/webhook-applet/" &gt;Webhook集成&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/zh/guides/advanced/integration-best-practices/" &gt;系统集成最佳实践&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;支持资源&lt;span class="hx:absolute hx:-mt-20" id="支持资源"&gt;&lt;/span&gt;
+&lt;a href="#%e6%94%af%e6%8c%81%e8%b5%84%e6%ba%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/applet-directory/" &gt;应用程序目录&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/zh/applets/applet-store/" &gt;应用程序商店&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/" &gt;用户指南&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;实施策略&lt;/strong&gt;：从核心模块应用程序开始，然后根据您的业务需求逐步添加专业应用程序。模块化架构允许灵活的实施和增长。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item><item><title>库存盘点小程序</title><link>https://wiki.bigledger.com/zh/applets/stock-take-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/stock-take-applet/</guid><description>
+&lt;p&gt;库存盘点小程序是一个前沿的数字化解决方案，旨在为企业革新库存管理。在今天的数字化库存时代，保持准确的库存水平对于减少损失和优化运营至关重要。库存盘点小程序提供了一种简化的库存盘点方法，使企业能够进行实时库存盘点，甚至在营业时间内也不会中断日常运营。&lt;/p&gt;
+&lt;p&gt;读者应该看到的内容：
+库存盘点小程序简介
+1.0 库存盘点小程序概述
+2.0 库存盘点会话
+3.0 库存盘点设备
+4.0 库存盘点报告
+&lt;a href="https://bigledger.atlassian.net/wiki/spaces/AKAUN/pages/3316809818/Stocktake&amp;#43;Applet&amp;#43;Settings" target="_blank" rel="noopener"&gt;https://bigledger.atlassian.net/wiki/spaces/AKAUN/pages/3316809818/Stocktake+Applet+Settings&lt;/a&gt;
+6.0 库存盘点个性化设置&lt;/p&gt;</description></item><item><title>团队维护小程序</title><link>https://wiki.bigledger.com/zh/applets/team-maintenance-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/team-maintenance-applet/</guid><description>
+&lt;p&gt;1&lt;/p&gt;</description></item><item><title>价格簿小程序</title><link>https://wiki.bigledger.com/zh/applets/pricebook-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/pricebook-applet/</guid><description>
+&lt;h1&gt;1.0 介绍&lt;/h1&gt;&lt;p&gt;价格簿小程序用于基于细分、客户、实体、期间等设置产品销售的促销、搭配购买(PWP)和活动。在小程序中，请点击&amp;quot;菜单&amp;quot;图标列出小程序的模块。价格簿小程序中有两个模块：&amp;ldquo;价格簿&amp;quot;和&amp;quot;价格设置&amp;rdquo;。&lt;/p&gt;</description></item><item><title>组维护小程序</title><link>https://wiki.bigledger.com/zh/applets/group-maintenance-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/group-maintenance-applet/</guid><description>
+&lt;p&gt;组维护小程序用于将用户添加到组中，并在平台级别为用户分配权限。组维护小程序中只有一个模块，即组列表。&lt;/p&gt;</description></item><item><title>流程监控小程序</title><link>https://wiki.bigledger.com/zh/applets/process-monitoring-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/process-monitoring-applet/</guid><description/></item><item><title>应用程序目录</title><link>https://wiki.bigledger.com/zh/applets/applet-directory/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/applet-directory/</guid><description>
+&lt;p&gt;应用程序商店是为与Akaun产品配合使用而设计的应用程序分发市场。它允许Akaun产品的订阅者浏览和安装应用程序。商店中的一些应用程序是免费的，但有些需要付费。&lt;/p&gt;
+&lt;p&gt;步骤：接受市场使用条款 &amp;gt; 安装应用程序 &amp;gt; 打开应用程序
+应用程序权限设置：创建权限集 &amp;gt; 创建并分配角色
+应用程序个性化：应用程序个性化&lt;/p&gt;
+&lt;h2&gt;需要找到应用程序？&lt;span class="hx:absolute hx:-mt-20" id="需要找到应用程序"&gt;&lt;/span&gt;
+&lt;a href="#%e9%9c%80%e8%a6%81%e6%89%be%e5%88%b0%e5%ba%94%e7%94%a8%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;搜索应用程序
+true&lt;/p&gt;</description></item><item><title>位置组织小程序</title><link>https://wiki.bigledger.com/zh/applets/location-organization-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/location-organization-applet/</guid><description>
+&lt;p&gt;每个分支机构可以有多个位置
+这是侧边栏中的第三个图标&amp;quot;位置&amp;quot;。本部分列出了所有位置，每个分支机构可以有多个位置。用户可以在此创建新位置或编辑现有位置。
+编辑选项卡与 &lt;a href="https://bigledger.atlassian.net/wiki/spaces/AKAUN/pages/3196191408/Branch&amp;#43;-&amp;#43;Organization&amp;#43;Applet#Edit-branch" target="_blank" rel="noopener"&gt;https://bigledger.atlassian.net/wiki/spaces/AKAUN/pages/3196191408/Branch+-+Organization+Applet#Edit-branch&lt;/a&gt; 中的类似。&lt;/p&gt;</description></item><item><title>组织小程序设置</title><link>https://wiki.bigledger.com/zh/applets/settings-of-organization-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/settings-of-organization-applet/</guid><description>
+&lt;p&gt;本部分涵盖Wavelet使用的所有设置。
+角色权限允许您在需要时设置特定权限。&lt;/p&gt;</description></item><item><title>分支机构组织小程序</title><link>https://wiki.bigledger.com/zh/applets/branch-organization-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/branch-organization-applet/</guid><description>
+&lt;p&gt;本部分涵盖侧边栏中的第二个主要选项卡&amp;quot;分支机构&amp;quot;，用户可以在其中创建和编辑分支机构的详细信息。
+一个公司可以有多个分支机构。
+用户可以选择从左侧边栏的第二个图标创建分支机构，或者转到公司列表编辑选项卡来创建分支机构。
+如何从侧边栏创建分支机构
+从公司列表选项卡创建分支机构
+本部分的第二个主题概述了编辑分支机构菜单中每个选项卡的功能，突出其改进分支机构配置的特性。&lt;/p&gt;
+&lt;h1&gt;创建分支机构&lt;/h1&gt;&lt;p&gt;用户可以创建多个分支机构，所有分支机构都链接到一个公司&lt;/p&gt;
+&lt;h2&gt;从侧边栏创建分支机构&lt;span class="hx:absolute hx:-mt-20" id="从侧边栏创建分支机构"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bb%8e%e4%be%a7%e8%be%b9%e6%a0%8f%e5%88%9b%e5%bb%ba%e5%88%86%e6%94%af%e6%9c%ba%e6%9e%84" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;左侧菜单栏的第二个图标是分支机构选项卡，允许用户手动为公司创建新的分支机构。用户可以按&amp;quot;+&amp;ldquo;按钮创建新的分支机构。
+按照以下说明填写详细信息选项卡中的所有必填字段。
+完成后，点击&amp;quot;保存&amp;quot;来保存分支机构详细信息。
+在设置分支机构时，用户可以选择&amp;quot;创建默认位置&amp;quot;或&amp;quot;从现有位置选择&amp;rdquo;。
+如果您在设置位置之前创建分支机构并选择&amp;quot;创建默认位置&amp;quot;，系统将自动创建一个默认位置。&lt;/p&gt;
+&lt;p&gt;详细信息选项卡中需要填写的字段包括：
+分支机构代码、分支机构名称
+公司名称：将分支机构链接到您的公司。这将显示为选定的公司名称
+公司注册号：显示为用户填写的内容
+分支机构开业日期
+货币：可以从下拉列表中选择不同的货币&lt;/p&gt;
+&lt;p&gt;如果用户在创建分支机构之前创建了位置，然后用户选择&amp;quot;从现有位置选择&amp;quot;，详细信息选项卡中需要的其他字段包括：
+位置代码
+默认位置&lt;/p&gt;
+&lt;p&gt;填写所有必要的详细信息后，点击&amp;quot;保存&amp;quot;来存储分支机构信息。
+按照之前的说明填写地址选项卡中的详细信息。
+确认所有信息后，点击&amp;quot;保存&amp;quot;按钮来存储分支机构详细信息。&lt;/p&gt;
+&lt;h2&gt;从公司列表选项卡创建分支机构&lt;span class="hx:absolute hx:-mt-20" id="从公司列表选项卡创建分支机构"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bb%8e%e5%85%ac%e5%8f%b8%e5%88%97%e8%a1%a8%e9%80%89%e9%a1%b9%e5%8d%a1%e5%88%9b%e5%bb%ba%e5%88%86%e6%94%af%e6%9c%ba%e6%9e%84" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;如果用户选择在公司列表页面为选定公司创建分支机构，他们将直接将分支机构链接到该公司。点击&amp;quot;+&amp;ldquo;号开始创建分支机构。
+在公司编辑中导航到分支机构选项卡，点击&amp;rdquo;+&amp;ldquo;按钮创建新的分支机构。
+从下拉列表中选择您要为其创建分支机构的公司。公司名称和公司注册号将根据您的选择自动填写。
+填写详细信息选项卡和地址中需要填写的必填字段。&lt;/p&gt;
+&lt;h1&gt;编辑分支机构&lt;/h1&gt;&lt;p&gt;从分支机构列表页面，点击您创建的分支机构以查看所有可用选项卡：&lt;/p&gt;
+&lt;p&gt;详细信息：本部分显示在2.1节中创建的主要分支机构详细信息，用户可以根据需要添加或编辑任何信息。&lt;/p&gt;
+&lt;p&gt;默认定价：是默认定价的配置。它可以按分支机构或公司设置。例如，如果您在东马来西亚和西马来西亚有不同的定价方案，您可以将东部分支机构定价应用于该地区的分支机构。&lt;/p&gt;
+&lt;p&gt;地址：查看和编辑分支机构地址。&lt;/p&gt;
+&lt;p&gt;拣选包装：用于资源订单。如果您使用交付选项，请填写；否则，您可以留空。&lt;/p&gt;
+&lt;p&gt;市场：用于EcomSync产品，它链接到您的市场，如Shopee和Lazada。这是您配置设置的地方。&lt;/p&gt;
+&lt;p&gt;位置：这里显示系统在设置分支机构时刚刚创建的默认位置。或者，您可以从现有位置中选择。&lt;/p&gt;
+&lt;p&gt;结算：这里您指定每个分支机构可以看到什么样的结算。每个分支机构可以有不同的结算。
+例如：现金、信用卡或马来亚银行。
+结算用于您的现金簿或POS，包括GrabPay或ShopeePay等支付选项。这是您配置它的地方。&lt;/p&gt;
+&lt;p&gt;标签：用于标记分支机构&lt;/p&gt;
+&lt;p&gt;扩展：用于CP商务&lt;/p&gt;
+&lt;p&gt;客户和供应商：将分支机构链接到特定的客户/供应商。在此配置时，交易将自动记录。此功能是公司间配置详细信息的一部分。&lt;/p&gt;
+&lt;p&gt;公司间：设置系统是否自动完成公司间交易或将其保留为草稿以供手动批准。您还可以配置是否创建销售发票应自动创建采购发票。这是管理自动配置设置的地方。&lt;/p&gt;</description></item><item><title>公司组织小程序</title><link>https://wiki.bigledger.com/zh/applets/company-organization-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/company-organization-applet/</guid><description>
+&lt;p&gt;登录组织小程序时，用户看到的第一个页面是左侧边栏第一个图标中的公司列表页面。
+在本节中，我们将涵盖两个关键主题：
+如何创建公司：设置公司详细信息和添加地址的分步指南。
+如何编辑公司：每个选项卡及其功能的概述，以增强公司配置。&lt;/p&gt;
+&lt;h1&gt;创建公司&lt;/h1&gt;&lt;p&gt;一个公司可以有多个子分支机构，此配置没有限制。
+要开始创建公司，用户可以点击位于左上角的&amp;quot;+&amp;ldquo;按钮。&lt;/p&gt;
+&lt;h2&gt;公司选项卡&lt;span class="hx:absolute hx:-mt-20" id="公司选项卡"&gt;&lt;/span&gt;
+&lt;a href="#%e5%85%ac%e5%8f%b8%e9%80%89%e9%a1%b9%e5%8d%a1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;创建公司&lt;span class="hx:absolute hx:-mt-20" id="创建公司-1"&gt;&lt;/span&gt;
+&lt;a href="#%e5%88%9b%e5%bb%ba%e5%85%ac%e5%8f%b8-1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;点击左上角的&amp;rdquo;+&amp;ldquo;按钮。
+用必要的信息填写所有必填字段。标有*的字段是必填的，之后无法修改。
+完成后，点击右上角的&amp;quot;保存&amp;rdquo;。
+请参考下面的屏幕截图以获取指导。
+步骤1：点击&amp;quot;+&amp;ldquo;按钮创建公司。
+步骤2和3：填写所有必填字段并点击&amp;quot;保存&amp;rdquo;。&lt;/p&gt;
+&lt;p&gt;在公司创建表单中，您需要填写以下字段：
+公司代码、名称、注册号：输入这些详细信息
+公司成立日期：公司成立时间
+税务ID、SST ID #：如果适用
+传真号码：如果适用
+电话号码：必填
+货币：从下拉列表中选择。
+会计科目表：在设置公司之前创建会计科目表。按照这里的步骤操作。一旦设置了会计科目表，从下拉菜单中选择合适的一个。
+五分舍入：如果需要 - 选择系统为交易自动填写的项目代码。
+团体折扣：您可以对整个交易应用折扣，或者系统可以自动选择项目代码。
+默认采购和销售退货选项：对于采购退货和销售退货，您可以选择类似的定价选项：
+最后采购价格：选择此选项以使用最后采购的价格进行退货。
+移动平均成本：如果您希望定价基于移动平均成本，请选择此选项。
+发票价格：最常用的选项，对退货应用相关采购或销售发票的价格。
+公司标志：用户可以立即上传公司标志或选择稍后上传。&lt;/p&gt;
+&lt;h2&gt;地址选项卡&lt;span class="hx:absolute hx:-mt-20" id="地址选项卡"&gt;&lt;/span&gt;
+&lt;a href="#%e5%9c%b0%e5%9d%80%e9%80%89%e9%a1%b9%e5%8d%a1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;创建公司时，用户需要填写地址详细信息。此信息对于准确的记录保持和通信目的至关重要。&lt;/p&gt;
+&lt;h3&gt;填写公司地址&lt;span class="hx:absolute hx:-mt-20" id="填写公司地址"&gt;&lt;/span&gt;
+&lt;a href="#%e5%a1%ab%e5%86%99%e5%85%ac%e5%8f%b8%e5%9c%b0%e5%9d%80" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;导航到地址选项卡。
+填写所有必填字段，包括邮政详细信息和国家信息。标有*的字段是必填的。
+完成后，点击右上角的&amp;quot;保存&amp;quot;来存储地址信息。
+请参考下面的屏幕截图以获取指导。
+步骤1、2：填写所需的地址详细信息并点击&amp;quot;保存&amp;quot;。&lt;/p&gt;
+&lt;p&gt;地址选项卡中必填的字段如下：
+地址第1行：主要地址详细信息
+地址第2行：附加地址详细信息
+地址第3行：可选附加行
+地址第4行：可选附加行
+地址第5行：可选附加行
+邮政编码：邮政编码
+城市：公司所在的城市
+国家：可以从下拉列表中选择不同的国家
+货币：从下拉列表中选择适用的货币
+省/州：从下拉列表中选择相关的省或地区&lt;/p&gt;
+&lt;h1&gt;编辑公司&lt;/h1&gt;&lt;p&gt;从公司列表页面，点击您创建的公司以查看所有可用选项卡：&lt;/p&gt;
+&lt;p&gt;详细信息：本部分显示在1.1节中创建的主要公司详细信息，用户可以根据需要添加或编辑任何信息。&lt;/p&gt;
+&lt;p&gt;电子发票：为公司配置向LHDN的电子开票&lt;/p&gt;
+&lt;p&gt;Peppol配置：如果使用Peppol，此选项卡用于配置中介机构。&lt;/p&gt;
+&lt;p&gt;税务：如果公司有SSD，此选项卡用于税务配置。&lt;/p&gt;
+&lt;p&gt;地址：显示在1.2节中创建的地址。用户可以根据需要编辑或添加其他信息。&lt;/p&gt;
+&lt;p&gt;分支机构：列出在选定公司下创建的所有分支机构。&lt;/p&gt;
+&lt;p&gt;位置：显示公司每个分支机构下的所有位置。&lt;/p&gt;
+&lt;p&gt;标签：用于标记公司，如按部门分组。&lt;/p&gt;
+&lt;p&gt;员工：显示公司下的员工列表。这与员工小程序相关联。&lt;/p&gt;
+&lt;h2&gt;冲销配置：&lt;span class="hx:absolute hx:-mt-20" id="冲销配置"&gt;&lt;/span&gt;
+&lt;a href="#%e5%86%b2%e9%94%80%e9%85%8d%e7%bd%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;什么是KO（冲销）？&lt;span class="hx:absolute hx:-mt-20" id="什么是ko冲销"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bb%80%e4%b9%88%e6%98%afko%e5%86%b2%e9%94%80" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;冲销（KO）配置用于公司需要管理涉及以下交易的文档发放跟踪：
+✅ 客户发票（例如，跟踪发票是否已完全支付）。
+✅ 供应商发票（例如，确保对供应商账单的付款得到正确记录）。
+本质上，KO有助于自动对帐已发放的发票和已收到的付款，防止财务记录中的差异。&lt;/p&gt;
+&lt;h3&gt;您应该何时配置KO？&lt;span class="hx:absolute hx:-mt-20" id="您应该何时配置ko"&gt;&lt;/span&gt;
+&lt;a href="#%e6%82%a8%e5%ba%94%e8%af%a5%e4%bd%95%e6%97%b6%e9%85%8d%e7%bd%aeko" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;配置KO是可选的，但在以下情况下可能是必要的：
+公司希望以自动化方式跟踪对发票的付款。
+业务要求在交易标记为完成之前进行文档发放验证。
+需要将发票发放链接到供应商/客户交易以进行内部处理。
+为公司配置工作流的关键设置。点击&amp;quot;+&amp;ldquo;按钮开始设置。
+服务器文档类型选项：设置公司工作流程的基础，例如配置采购订单流程，将其转换为采购GRN或发票，或设置销售流程（从销售订单到销售发票）。配置基于文档类型。
+用户需要选择服务器类型。服务器类型1指的是源文档，而服务器类型2指的是目标文档。&lt;/p&gt;
+&lt;p&gt;这是客户基本冲销（KO）设置流程的示例。例如，当用户创建发票时，将有两个冲销选项：销售订单和销售报价。
+这意味着在销售发票小程序中，在KO（冲销）选项卡下，用户将看到两个选项：销售订单和销售报价。
+用户可以从主选项卡页面启用或禁用冲销设置。
+KO（冲销）选项取决于客户配置和用户需求。如果需要，用户可以在组织小程序中创建或编辑公司详细信息时配置更多选项。&lt;/p&gt;
+&lt;h2&gt;高级筛选搜索&lt;span class="hx:absolute hx:-mt-20" id="高级筛选搜索"&gt;&lt;/span&gt;
+&lt;a href="#%e9%ab%98%e7%ba%a7%e7%ad%9b%e9%80%89%e6%90%9c%e7%b4%a2" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;高级筛选器允许您按公司、公司名称、注册号或状态进行搜索。每个子模块都包含此高级筛选选项。&lt;/p&gt;</description></item><item><title>会员管理控制台小程序</title><link>https://wiki.bigledger.com/zh/applets/membership-admin-console-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/membership-admin-console-applet/</guid><description>
+&lt;p&gt;1&lt;/p&gt;</description></item><item><title>会员计划</title><link>https://wiki.bigledger.com/zh/applets/membership-program/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/membership-program/</guid><description>
+&lt;p&gt;使用会员计划
+必需小程序
+组织小程序
+单据项目维护小程序
+价格簿小程序
+可选小程序
+cp-commerce管理小程序，允许您的会员登录并查看积分。
+销售点小程序&lt;/p&gt;</description></item><item><title>内部配送订单小程序</title><link>https://wiki.bigledger.com/zh/applets/internal-delivery-order-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/internal-delivery-order-applet/</guid><description>
+&lt;p&gt;内部配送订单小程序是一个多功能工具，旨在简化配送订单管理流程。它使用户能够跟踪配送项目、记录客户详细信息，并自定义其他信息，如车辆和运输公司详细信息。这种灵活性增强了小程序对各种运营需求的适应性，使其成为高效配送管理的重要资源。&lt;/p&gt;</description></item><item><title>库存余额小程序</title><link>https://wiki.bigledger.com/zh/applets/stock-balance-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/stock-balance-applet/</guid><description/></item><item><title>内部库存调整小程序</title><link>https://wiki.bigledger.com/zh/applets/internal-stock-adjustment-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/internal-stock-adjustment-applet/</guid><description>
+&lt;p&gt;内部库存调整小程序通过允许用户调整库存水平以匹配实际数量来简化库存管理。它支持创建、查看和批量导入库存调整，确保准确的库存跟踪。它与其他小程序集成，以提高运营效率。&lt;/p&gt;</description></item><item><title>EcomSync 相关小程序</title><link>https://wiki.bigledger.com/zh/applets/90-ecomsync-related-applets/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/90-ecomsync-related-applets/</guid><description>
+&lt;p&gt;Ecomsync 组织小程序
+Ecomsync - 组织小程序 - 创建公司
+Ecomsync - 组织小程序：创建虚拟分支机构（市场）
+Ecomsync - 组织小程序 - 市场：按分支机构配置库存和销售订单
+Ecomsync - 文档项目维护小程序：创建单一项目
+Ecomsync - 文档项目维护小程序：创建捆绑项目
+Ecomsync - 文档项目维护小程序：创建分组项目
+Ecomsync - 文档项目维护小程序：配置单一/捆绑项目到市场
+Ecomsync - 文档项目维护小程序：配置分组项目到市场
+Ecomsync - 文档项目维护小程序：配置库存余额和销售订单
+Ecomsync - 内部销售订单小程序：更新市场订单状态&lt;/p&gt;</description></item><item><title>Ingram Micro MS ESD 小程序</title><link>https://wiki.bigledger.com/zh/applets/ingram-micro-ms-esd-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/ingram-micro-ms-esd-applet/</guid><description/></item><item><title>价格表小程序安装指南</title><link>https://wiki.bigledger.com/zh/applets/installation-of-pricebook-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/installation-of-pricebook-applet/</guid><description>
+&lt;p&gt;请访问Akaun.cloud并找到小程序商店。
+在小程序商店中，请搜索您要安装的小程序并点击它。
+请点击&amp;quot;安装&amp;quot;按钮来安装小程序。
+请点击&amp;quot;akaun&amp;quot;返回Akaun.cloud页面搜索已安装的小程序并点击它。&lt;/p&gt;</description></item><item><title>群组维护小程序安装指南</title><link>https://wiki.bigledger.com/zh/applets/installation-of-group-maintenance-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/installation-of-group-maintenance-applet/</guid><description>
+&lt;p&gt;1.安装（Akaun Cloud）：小程序商店 &amp;gt; 搜索 &amp;gt; 安装 &amp;gt; Akaun页面 &amp;gt; 搜索
+1.1. 请访问Akaun.cloud并找到小程序商店。
+1.2. 在小程序商店中，请搜索您要安装的小程序并点击它。
+1.3. 请点击&amp;quot;安装&amp;quot;按钮来安装小程序。
+1.4 请点击&amp;quot;akaun&amp;quot;返回Akaun.cloud页面搜索已安装的小程序并点击它（与1.1相同）。&lt;/p&gt;</description></item><item><title>团队维护小程序安装指南</title><link>https://wiki.bigledger.com/zh/applets/installation-of-team-maintenance-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/installation-of-team-maintenance-applet/</guid><description>
+&lt;p&gt;1.安装（Akaun Cloud）：小程序商店 &amp;gt; 搜索 &amp;gt; 安装 &amp;gt; Akaun页面 &amp;gt; 搜索
+1.1. 请访问Akaun.cloud并找到小程序商店。
+1.2. 在小程序商店中，请搜索您要安装的小程序并点击它。
+1.3. 请点击&amp;quot;安装&amp;quot;按钮来安装小程序。
+1.4 请点击&amp;quot;akaun&amp;quot;返回Akaun.cloud页面搜索已安装的小程序并点击它（与1.1相同）。&lt;/p&gt;</description></item><item><title>团队维护小程序介绍</title><link>https://wiki.bigledger.com/zh/applets/introduction-to-team-maintenance-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/introduction-to-team-maintenance-applet/</guid><description>
+&lt;p&gt;介绍
+团队维护小程序用于管理团队的用户和权限。该小程序只有一个模块，即&amp;quot;团队&amp;quot;。
+步骤：安装 &amp;gt; 创建团队 &amp;gt; 编辑团队（添加成员、导入用户、添加权限）&lt;/p&gt;</description></item><item><title>会员管理控制台小程序介绍</title><link>https://wiki.bigledger.com/zh/applets/introduction-to-membership-admin-console-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/introduction-to-membership-admin-console-applet/</guid><description>
+&lt;p&gt;介绍
+此小程序用于配置和管理会员和积分货币，例如标记、分类会员以及设置不同积分货币的兑换率。该小程序包含七个模块，分别是会员列表、会员类别、会员标签、会员标签列表、积分货币（PTS CCY）、积分到积分货币配置（PTS to PTS），以及积分到货币兑换配置（PTS to CCY）。
+步骤：安装 &amp;gt; 创建会员 &amp;gt; 创建会员类别 &amp;gt; 创建会员标签列表 &amp;gt; 创建或编辑会员标签 &amp;gt; 创建积分货币 &amp;gt; 创建积分到积分货币配置 &amp;gt; 创建积分到货币兑换配置 &amp;gt; 编辑会员（类别、标签和积分交易）&lt;/p&gt;</description></item><item><title>盘点小程序介绍</title><link>https://wiki.bigledger.com/zh/applets/introduction-to-stock-take-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/introduction-to-stock-take-applet/</guid><description>
+&lt;p&gt;盘点小程序为您的所有库存管理需求提供一站式解决方案，为可追溯性和高效库存控制提供您所需的一切。
+关键功能：
+集中化解决方案：在一个地方管理所有库存数据，减少处理多个系统的复杂性。
+移动友好界面：随时随地进行库存盘点和管理库存。
+完全可定制：轻松处理多计量单位产品，更详细地跟踪不同单位的库存水平。
+智能库存：减少人工干预并最大化减少错误。
+序列号跟踪：按批次或序列号跟踪和追踪库存差异。
+实时报告：任何输入的数据都会立即反映在实时报告中。&lt;/p&gt;
+&lt;h3&gt;开始使用盘点小程序&lt;span class="hx:absolute hx:-mt-20" id="开始使用盘点小程序"&gt;&lt;/span&gt;
+&lt;a href="#%e5%bc%80%e5%a7%8b%e4%bd%bf%e7%94%a8%e7%9b%98%e7%82%b9%e5%b0%8f%e7%a8%8b%e5%ba%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;要开始使用盘点小程序，请确保已完成创建目录、安装小程序和管理用户的所有步骤。有关详细说明，请参阅常规设置指南。
+安装后，用户可以在Akaun主页上找到盘点小程序并开始使用它进行库存管理。以下是盘点小程序的图标。&lt;/p&gt;</description></item><item><title>相关小程序 - 库存余额</title><link>https://wiki.bigledger.com/zh/applets/related-applets-stock-balance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/related-applets-stock-balance/</guid><description>
+&lt;h3&gt;库存余额小程序可以从以下小程序导入行项目：&lt;span class="hx:absolute hx:-mt-20" id="库存余额小程序可以从以下小程序导入行项目"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ba%93%e5%ad%98%e4%bd%99%e9%a2%9d%e5%b0%8f%e7%a8%8b%e5%ba%8f%e5%8f%af%e4%bb%a5%e4%bb%8e%e4%bb%a5%e4%b8%8b%e5%b0%8f%e7%a8%8b%e5%ba%8f%e5%af%bc%e5%85%a5%e8%a1%8c%e9%a1%b9%e7%9b%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;组织小程序
+商品（库存）维护小程序
+单据商品维护小程序
+销售发票小程序
+采购发票小程序
+销售退货小程序
+采购退货小程序
+库存调整小程序
+销售贷记单小程序
+销售借记单小程序
+采购贷记单小程序
+采购借记单小程序
+内部销售货物接收单小程序
+内部采购货物接收单小程序
+内部销售货物发出单小程序
+内部采购货物发出单小程序&lt;/p&gt;
+&lt;h3&gt;库存余额小程序中的信息被哪些小程序使用：&lt;span class="hx:absolute hx:-mt-20" id="库存余额小程序中的信息被哪些小程序使用"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ba%93%e5%ad%98%e4%bd%99%e9%a2%9d%e5%b0%8f%e7%a8%8b%e5%ba%8f%e4%b8%ad%e7%9a%84%e4%bf%a1%e6%81%af%e8%a2%ab%e5%93%aa%e4%ba%9b%e5%b0%8f%e7%a8%8b%e5%ba%8f%e4%bd%bf%e7%94%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;库存可用性小程序
+库存管理小程序
+销售订单小程序
+包装订单小程序
+交付订单小程序
+采购订单小程序
+采购申请小程序
+报价单小程序
+销售贷记单小程序
+销售借记单小程序
+采购贷记单小程序
+采购借记单小程序
+销售退货小程序
+采购退货小程序
+库存调整小程序
+内部销售货物接收单小程序
+内部采购货物接收单小程序
+内部销售货物发出单小程序
+内部采购货物发出单小程序&lt;/p&gt;</description></item><item><title>相关小程序 - 内部工作订单</title><link>https://wiki.bigledger.com/zh/applets/related-applets-internal-job-order/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/related-applets-internal-job-order/</guid><description>
+&lt;h3&gt;内部工作订单小程序可以从以下小程序导入行项目：&lt;span class="hx:absolute hx:-mt-20" id="内部工作订单小程序可以从以下小程序导入行项目"&gt;&lt;/span&gt;
+&lt;a href="#%e5%86%85%e9%83%a8%e5%b7%a5%e4%bd%9c%e8%ae%a2%e5%8d%95%e5%b0%8f%e7%a8%8b%e5%ba%8f%e5%8f%af%e4%bb%a5%e4%bb%8e%e4%bb%a5%e4%b8%8b%e5%b0%8f%e7%a8%8b%e5%ba%8f%e5%af%bc%e5%85%a5%e8%a1%8c%e9%a1%b9%e7%9b%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h3&gt;内部工作订单小程序中的信息被哪些小程序使用：&lt;span class="hx:absolute hx:-mt-20" id="内部工作订单小程序中的信息被哪些小程序使用"&gt;&lt;/span&gt;
+&lt;a href="#%e5%86%85%e9%83%a8%e5%b7%a5%e4%bd%9c%e8%ae%a2%e5%8d%95%e5%b0%8f%e7%a8%8b%e5%ba%8f%e4%b8%ad%e7%9a%84%e4%bf%a1%e6%81%af%e8%a2%ab%e5%93%aa%e4%ba%9b%e5%b0%8f%e7%a8%8b%e5%ba%8f%e4%bd%bf%e7%94%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;</description></item><item><title>相关小程序 - 内部库存调整</title><link>https://wiki.bigledger.com/zh/applets/related-applets-internal-stock-adjustment/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/related-applets-internal-stock-adjustment/</guid><description>
+&lt;h3&gt;内部库存调整小程序可以从以下小程序导入行项目：&lt;span class="hx:absolute hx:-mt-20" id="内部库存调整小程序可以从以下小程序导入行项目"&gt;&lt;/span&gt;
+&lt;a href="#%e5%86%85%e9%83%a8%e5%ba%93%e5%ad%98%e8%b0%83%e6%95%b4%e5%b0%8f%e7%a8%8b%e5%ba%8f%e5%8f%af%e4%bb%a5%e4%bb%8e%e4%bb%a5%e4%b8%8b%e5%b0%8f%e7%a8%8b%e5%ba%8f%e5%af%bc%e5%85%a5%e8%a1%8c%e9%a1%b9%e7%9b%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;组织小程序
+商品（库存）维护小程序
+单据商品维护小程序
+库存余额小程序&lt;/p&gt;
+&lt;h3&gt;内部库存调整小程序被哪些小程序使用：&lt;span class="hx:absolute hx:-mt-20" id="内部库存调整小程序被哪些小程序使用"&gt;&lt;/span&gt;
+&lt;a href="#%e5%86%85%e9%83%a8%e5%ba%93%e5%ad%98%e8%b0%83%e6%95%b4%e5%b0%8f%e7%a8%8b%e5%ba%8f%e8%a2%ab%e5%93%aa%e4%ba%9b%e5%b0%8f%e7%a8%8b%e5%ba%8f%e4%bd%bf%e7%94%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;库存余额小程序&lt;/p&gt;</description></item><item><title>相关小程序 - 流程监控</title><link>https://wiki.bigledger.com/zh/applets/related-applets-process-monitoring/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/related-applets-process-monitoring/</guid><description>
+&lt;h3&gt;流程监控小程序可以从以下小程序导入行项目：&lt;span class="hx:absolute hx:-mt-20" id="流程监控小程序可以从以下小程序导入行项目"&gt;&lt;/span&gt;
+&lt;a href="#%e6%b5%81%e7%a8%8b%e7%9b%91%e6%8e%a7%e5%b0%8f%e7%a8%8b%e5%ba%8f%e5%8f%af%e4%bb%a5%e4%bb%8e%e4%bb%a5%e4%b8%8b%e5%b0%8f%e7%a8%8b%e5%ba%8f%e5%af%bc%e5%85%a5%e8%a1%8c%e9%a1%b9%e7%9b%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h3&gt;流程监控小程序中的信息被哪些小程序使用：&lt;span class="hx:absolute hx:-mt-20" id="流程监控小程序中的信息被哪些小程序使用"&gt;&lt;/span&gt;
+&lt;a href="#%e6%b5%81%e7%a8%8b%e7%9b%91%e6%8e%a7%e5%b0%8f%e7%a8%8b%e5%ba%8f%e4%b8%ad%e7%9a%84%e4%bf%a1%e6%81%af%e8%a2%ab%e5%93%aa%e4%ba%9b%e5%b0%8f%e7%a8%8b%e5%ba%8f%e4%bd%bf%e7%94%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;</description></item><item><title>统一联络中心 (UCC) 小程序</title><link>https://wiki.bigledger.com/zh/applets/unified-contact-center-ucc-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/unified-contact-center-ucc-applet/</guid><description>
+&lt;h2&gt;执行摘要&lt;span class="hx:absolute hx:-mt-20" id="执行摘要"&gt;&lt;/span&gt;
+&lt;a href="#%e6%89%a7%e8%a1%8c%e6%91%98%e8%a6%81" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;统一联络中心 (UCC) 小程序是BigLedger的旗舰客户互动解决方案，彻底革命了企业与客户沟通的方式。通过将所有沟通渠道整合到一个智能平台中，UCC使企业能够提供卓越的客户服务，同时显著提高运营效率。&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;转变您的客户服务&lt;/strong&gt;：使用相同的团队规模处理10倍的对话，同时将响应时间缩短75%&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;为什么UCC对现代企业至关重要&lt;span class="hx:absolute hx:-mt-20" id="为什么ucc对现代企业至关重要"&gt;&lt;/span&gt;
+&lt;a href="#%e4%b8%ba%e4%bb%80%e4%b9%88ucc%e5%af%b9%e7%8e%b0%e4%bb%a3%e4%bc%81%e4%b8%9a%e8%87%b3%e5%85%b3%e9%87%8d%e8%a6%81" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;挑战&lt;span class="hx:absolute hx:-mt-20" id="挑战"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8c%91%e6%88%98" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;客户期望在多个渠道上获得即时响应&lt;/li&gt;
+&lt;li&gt;管理WhatsApp、Facebook、电子邮件等单独应用程序效率低下&lt;/li&gt;
+&lt;li&gt;在平台之间切换时会丢失对话和上下文&lt;/li&gt;
+&lt;li&gt;难以跟踪客户服务绩效&lt;/li&gt;
+&lt;li&gt;通过聊天手动处理订单耗时&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;UCC解决方案&lt;span class="hx:absolute hx:-mt-20" id="ucc解决方案"&gt;&lt;/span&gt;
+&lt;a href="#ucc%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;一个平台，所有渠道&lt;/strong&gt;：从单一界面管理每个对话&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;智能路由&lt;/strong&gt;：自动将对话分配给合适的客服代表&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;集成商务&lt;/strong&gt;：直接在聊天中处理订单和付款&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实时分析&lt;/strong&gt;：即时监控和优化性能&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自动化工具&lt;/strong&gt;：使用智能模板和机器人减少响应时间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;核心功能&lt;span class="hx:absolute hx:-mt-20" id="核心功能"&gt;&lt;/span&gt;
+&lt;a href="#%e6%a0%b8%e5%bf%83%e5%8a%9f%e8%83%bd" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;📱 支持的通信渠道&lt;span class="hx:absolute hx:-mt-20" id="-支持的通信渠道"&gt;&lt;/span&gt;
+&lt;a href="#-%e6%94%af%e6%8c%81%e7%9a%84%e9%80%9a%e4%bf%a1%e6%b8%a0%e9%81%93" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;即时消息平台&lt;span class="hx:absolute hx:-mt-20" id="即时消息平台"&gt;&lt;/span&gt;
+&lt;a href="#%e5%8d%b3%e6%97%b6%e6%b6%88%e6%81%af%e5%b9%b3%e5%8f%b0" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;WhatsApp Business API&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;发送/接收消息、图像、视频、文档&lt;/li&gt;
+&lt;li&gt;向多个联系人广播消息&lt;/li&gt;
+&lt;li&gt;WhatsApp目录集成&lt;/li&gt;
+&lt;li&gt;快速回复按钮和列表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Facebook Messenger&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;页面收件箱管理&lt;/li&gt;
+&lt;li&gt;Messenger机器人集成&lt;/li&gt;
+&lt;li&gt;富媒体支持&lt;/li&gt;
+&lt;li&gt;持久菜单选项&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Telegram Business&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;机器人和频道管理&lt;/li&gt;
+&lt;li&gt;群聊支持&lt;/li&gt;
+&lt;li&gt;最大2GB文件共享&lt;/li&gt;
+&lt;li&gt;自定义键盘选项&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;微信工作&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;公众号集成&lt;/li&gt;
+&lt;li&gt;小程序支持&lt;/li&gt;
+&lt;li&gt;二维码互动&lt;/li&gt;
+&lt;li&gt;红包集成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;LINE官方账号&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;富消息和卡片&lt;/li&gt;
+&lt;li&gt;LINE Pay集成&lt;/li&gt;
+&lt;li&gt;优惠券分发&lt;/li&gt;
+&lt;li&gt;会员卡管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Instagram Direct&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Story回复管理&lt;/li&gt;
+&lt;li&gt;帖子评论响应&lt;/li&gt;
+&lt;li&gt;购物标签支持&lt;/li&gt;
+&lt;li&gt;IGTV互动处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;传统渠道&lt;span class="hx:absolute hx:-mt-20" id="传统渠道"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bc%a0%e7%bb%9f%e6%b8%a0%e9%81%93" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;电子邮件集成&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;POP3/IMAP支持&lt;/li&gt;
+&lt;li&gt;HTML电子邮件模板&lt;/li&gt;
+&lt;li&gt;附件处理&lt;/li&gt;
+&lt;li&gt;自动回复器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;短信网关&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;批量短信发送&lt;/li&gt;
+&lt;li&gt;双向消息&lt;/li&gt;
+&lt;li&gt;短代码支持&lt;/li&gt;
+&lt;li&gt;送达报告&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;在线聊天小组件&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;网站嵌入&lt;/li&gt;
+&lt;li&gt;主动聊天触发器&lt;/li&gt;
+&lt;li&gt;协同浏览功能&lt;/li&gt;
+&lt;li&gt;文件传输支持&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;模块架构&lt;span class="hx:absolute hx:-mt-20" id="模块架构"&gt;&lt;/span&gt;
+&lt;a href="#%e6%a8%a1%e5%9d%97%e6%9e%b6%e6%9e%84" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;1. 📥 收件箱模块 - 集中对话中心&lt;span class="hx:absolute hx:-mt-20" id="1--收件箱模块---集中对话中心"&gt;&lt;/span&gt;
+&lt;a href="#1--%e6%94%b6%e4%bb%b6%e7%ae%b1%e6%a8%a1%e5%9d%97---%e9%9b%86%e4%b8%ad%e5%af%b9%e8%af%9d%e4%b8%ad%e5%bf%83" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;统一消息视图&lt;span class="hx:absolute hx:-mt-20" id="统一消息视图"&gt;&lt;/span&gt;
+&lt;a href="#%e7%bb%9f%e4%b8%80%e6%b6%88%e6%81%af%e8%a7%86%e5%9b%be" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;一体化界面&lt;/strong&gt;：在一个屏幕中查看所有渠道的所有消息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;渠道指示器&lt;/strong&gt;：显示消息来源的视觉标签（WhatsApp、FB等）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对话线程&lt;/strong&gt;：通过完整的消息历史记录保持上下文&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实时同步&lt;/strong&gt;：所有客服代表屏幕上的即时消息更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;智能对话管理&lt;span class="hx:absolute hx:-mt-20" id="智能对话管理"&gt;&lt;/span&gt;
+&lt;a href="#%e6%99%ba%e8%83%bd%e5%af%b9%e8%af%9d%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;优先级队列&lt;/strong&gt;：紧急消息优先显示&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;状态跟踪&lt;/strong&gt;：新建、进行中、已解决、待处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客服分配&lt;/strong&gt;：手动或自动分配&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对话转移&lt;/strong&gt;：客服代表之间的无缝交接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;富媒体处理&lt;span class="hx:absolute hx:-mt-20" id="富媒体处理"&gt;&lt;/span&gt;
+&lt;a href="#%e5%af%8c%e5%aa%92%e4%bd%93%e5%a4%84%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;图片库&lt;/strong&gt;：查看和发送带压缩选项的图片&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;视频支持&lt;/strong&gt;：流式传输最大100MB的视频&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;文档共享&lt;/strong&gt;：PDF、Excel、Word、PowerPoint支持&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语音笔记&lt;/strong&gt;：播放和发送音频消息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;位置共享&lt;/strong&gt;：地址的地图集成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;快速操作工具栏&lt;span class="hx:absolute hx:-mt-20" id="快速操作工具栏"&gt;&lt;/span&gt;
+&lt;a href="#%e5%bf%ab%e9%80%9f%e6%93%8d%e4%bd%9c%e5%b7%a5%e5%85%b7%e6%a0%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;模板&lt;/strong&gt;：常见查询的一键回复&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;翻译&lt;/strong&gt;：实时消息翻译（50+种语言）&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;笔记&lt;/strong&gt;：客户不可见的内部评论&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;标签&lt;/strong&gt;：为报告对话分类&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;快捷键&lt;/strong&gt;：高级用户的键盘命令&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;2. 📊 仪表板模块 - 实时性能监控&lt;span class="hx:absolute hx:-mt-20" id="2--仪表板模块---实时性能监控"&gt;&lt;/span&gt;
+&lt;a href="#2--%e4%bb%aa%e8%a1%a8%e6%9d%bf%e6%a8%a1%e5%9d%97---%e5%ae%9e%e6%97%b6%e6%80%a7%e8%83%bd%e7%9b%91%e6%8e%a7" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;关键绩效指标 (KPI)&lt;span class="hx:absolute hx:-mt-20" id="关键绩效指标-kpi"&gt;&lt;/span&gt;
+&lt;a href="#%e5%85%b3%e9%94%ae%e7%bb%a9%e6%95%88%e6%8c%87%e6%a0%87-kpi" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;响应指标&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;平均首次响应时间&lt;/li&gt;
+&lt;li&gt;平均解决时间&lt;/li&gt;
+&lt;li&gt;每次对话的消息数&lt;/li&gt;
+&lt;li&gt;客户满意度分数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;客服绩效&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每个客服处理的对话数&lt;/li&gt;
+&lt;li&gt;客服响应时间&lt;/li&gt;
+&lt;li&gt;客服客户评分&lt;/li&gt;
+&lt;li&gt;活跃/空闲时间跟踪&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;渠道分析&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按渠道的消息量&lt;/li&gt;
+&lt;li&gt;高峰时段热图&lt;/li&gt;
+&lt;li&gt;渠道偏好趋势&lt;/li&gt;
+&lt;li&gt;按渠道的转化率&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;可视化分析&lt;span class="hx:absolute hx:-mt-20" id="可视化分析"&gt;&lt;/span&gt;
+&lt;a href="#%e5%8f%af%e8%a7%86%e5%8c%96%e5%88%86%e6%9e%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;实时活动流&lt;/strong&gt;：实时对话流&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;性能图表&lt;/strong&gt;：图形和趋势可视化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;比较报告&lt;/strong&gt;：期间对期间分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;导出选项&lt;/strong&gt;：PDF、Excel、CSV报告&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;3. 👥 联系人模块 - 完整的客户智能&lt;span class="hx:absolute hx:-mt-20" id="3--联系人模块---完整的客户智能"&gt;&lt;/span&gt;
+&lt;a href="#3--%e8%81%94%e7%b3%bb%e4%ba%ba%e6%a8%a1%e5%9d%97---%e5%ae%8c%e6%95%b4%e7%9a%84%e5%ae%a2%e6%88%b7%e6%99%ba%e8%83%bd" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;客户档案管理&lt;span class="hx:absolute hx:-mt-20" id="客户档案管理"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%a2%e6%88%b7%e6%a1%a3%e6%a1%88%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;360°客户视图&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;联系信息&lt;/li&gt;
+&lt;li&gt;对话历史&lt;/li&gt;
+&lt;li&gt;购买历史&lt;/li&gt;
+&lt;li&gt;支持工单&lt;/li&gt;
+&lt;li&gt;笔记和标签&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;自定义字段&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;行业特定数据&lt;/li&gt;
+&lt;li&gt;偏好跟踪&lt;/li&gt;
+&lt;li&gt;生日/纪念日期&lt;/li&gt;
+&lt;li&gt;VIP状态指示器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;分段工具&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基于行为的智能列表&lt;/li&gt;
+&lt;li&gt;自定义过滤器和搜索&lt;/li&gt;
+&lt;li&gt;批量操作支持&lt;/li&gt;
+&lt;li&gt;导入/导出功能&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;集成点&lt;span class="hx:absolute hx:-mt-20" id="集成点"&gt;&lt;/span&gt;
+&lt;a href="#%e9%9b%86%e6%88%90%e7%82%b9" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;CRM同步&lt;/strong&gt;：自动客户记录创建&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;销售数据&lt;/strong&gt;：来自销售模块的订单历史&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;支持历史&lt;/strong&gt;：以前的工单和解决方案&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;营销列表&lt;/strong&gt;：活动分段&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;4. 📢 广播模块 - 大众传播中心&lt;span class="hx:absolute hx:-mt-20" id="4--广播模块---大众传播中心"&gt;&lt;/span&gt;
+&lt;a href="#4--%e5%b9%bf%e6%92%ad%e6%a8%a1%e5%9d%97---%e5%a4%a7%e4%bc%97%e4%bc%a0%e6%92%ad%e4%b8%ad%e5%bf%83" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;活动管理&lt;span class="hx:absolute hx:-mt-20" id="活动管理"&gt;&lt;/span&gt;
+&lt;a href="#%e6%b4%bb%e5%8a%a8%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;消息活动&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;促销广播&lt;/li&gt;
+&lt;li&gt;服务公告&lt;/li&gt;
+&lt;li&gt;活动邀请&lt;/li&gt;
+&lt;li&gt;产品发布&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;受众选择&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;联系人列表定位&lt;/li&gt;
+&lt;li&gt;基于标签的过滤&lt;/li&gt;
+&lt;li&gt;自定义细分&lt;/li&gt;
+&lt;li&gt;排除列表&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;调度选项&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;即时发送&lt;/li&gt;
+&lt;li&gt;计划广播&lt;/li&gt;
+&lt;li&gt;时区优化&lt;/li&gt;
+&lt;li&gt;定期活动&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;模板库&lt;span class="hx:absolute hx:-mt-20" id="模板库"&gt;&lt;/span&gt;
+&lt;a href="#%e6%a8%a1%e6%9d%bf%e5%ba%93" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;预批准模板&lt;/strong&gt;：WhatsApp Business批准的消息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;富媒体模板&lt;/strong&gt;：图像、视频、文档&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;变量占位符&lt;/strong&gt;：个性化内容插入&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;多语言支持&lt;/strong&gt;：多种语言的模板&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;合规性和交付&lt;span class="hx:absolute hx:-mt-20" id="合规性和交付"&gt;&lt;/span&gt;
+&lt;a href="#%e5%90%88%e8%a7%84%e6%80%a7%e5%92%8c%e4%ba%a4%e4%bb%98" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;选择加入管理&lt;/strong&gt;：订阅偏好&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;交付报告&lt;/strong&gt;：阅读回执和分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;失败消息处理&lt;/strong&gt;：自动重试逻辑&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;法规合规&lt;/strong&gt;：PDPA、GDPR合规工具&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;5. ⏰ 任务队列模块 - 智能工作分配&lt;span class="hx:absolute hx:-mt-20" id="5--任务队列模块---智能工作分配"&gt;&lt;/span&gt;
+&lt;a href="#5--%e4%bb%bb%e5%8a%a1%e9%98%9f%e5%88%97%e6%a8%a1%e5%9d%97---%e6%99%ba%e8%83%bd%e5%b7%a5%e4%bd%9c%e5%88%86%e9%85%8d" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;队列管理&lt;span class="hx:absolute hx:-mt-20" id="队列管理"&gt;&lt;/span&gt;
+&lt;a href="#%e9%98%9f%e5%88%97%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;智能路由规则&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;基于技能的路由&lt;/li&gt;
+&lt;li&gt;语言偏好&lt;/li&gt;
+&lt;li&gt;VIP优先级&lt;/li&gt;
+&lt;li&gt;轮询分配&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;SLA监控&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;响应时间目标&lt;/li&gt;
+&lt;li&gt;升级触发器&lt;/li&gt;
+&lt;li&gt;警报通知&lt;/li&gt;
+&lt;li&gt;性能跟踪&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;工作负载平衡&lt;span class="hx:absolute hx:-mt-20" id="工作负载平衡"&gt;&lt;/span&gt;
+&lt;a href="#%e5%b7%a5%e4%bd%9c%e8%b4%9f%e8%bd%bd%e5%b9%b3%e8%a1%a1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;容量管理&lt;/strong&gt;：客服可用性设置&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;负载分配&lt;/strong&gt;：均匀工作分配&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;溢出处理&lt;/strong&gt;：备用队列管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;休息管理&lt;/strong&gt;：计划离线时段&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;6. ⚙️ 配置模块 - 系统设置和集成&lt;span class="hx:absolute hx:-mt-20" id="6--配置模块---系统设置和集成"&gt;&lt;/span&gt;
+&lt;a href="#6--%e9%85%8d%e7%bd%ae%e6%a8%a1%e5%9d%97---%e7%b3%bb%e7%bb%9f%e8%ae%be%e7%bd%ae%e5%92%8c%e9%9b%86%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;渠道配置&lt;span class="hx:absolute hx:-mt-20" id="渠道配置"&gt;&lt;/span&gt;
+&lt;a href="#%e6%b8%a0%e9%81%93%e9%85%8d%e7%bd%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;WhatsApp Business设置&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;API凭据&lt;/li&gt;
+&lt;li&gt;电话号码验证&lt;/li&gt;
+&lt;li&gt;商业档案设置&lt;/li&gt;
+&lt;li&gt;目录集成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Facebook集成&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;页面连接&lt;/li&gt;
+&lt;li&gt;权限设置&lt;/li&gt;
+&lt;li&gt;Webhook配置&lt;/li&gt;
+&lt;li&gt;应用审核流程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;其他渠道&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;逐步设置指南&lt;/li&gt;
+&lt;li&gt;测试工具&lt;/li&gt;
+&lt;li&gt;故障排除帮助&lt;/li&gt;
+&lt;li&gt;连接状态监控&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;业务规则&lt;span class="hx:absolute hx:-mt-20" id="业务规则"&gt;&lt;/span&gt;
+&lt;a href="#%e4%b8%9a%e5%8a%a1%e8%a7%84%e5%88%99" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;营业时间&lt;/strong&gt;：渠道特定时间表&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自动回复&lt;/strong&gt;：非工作时间消息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;路由规则&lt;/strong&gt;：对话分配逻辑&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;升级政策&lt;/strong&gt;：主管参与触发器&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;7. 🛍️ 电子商务集成 - 通过聊天销售&lt;span class="hx:absolute hx:-mt-20" id="7--电子商务集成---通过聊天销售"&gt;&lt;/span&gt;
+&lt;a href="#7--%e7%94%b5%e5%ad%90%e5%95%86%e5%8a%a1%e9%9b%86%e6%88%90---%e9%80%9a%e8%bf%87%e8%81%8a%e5%a4%a9%e9%94%80%e5%94%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;产品目录共享&lt;span class="hx:absolute hx:-mt-20" id="产品目录共享"&gt;&lt;/span&gt;
+&lt;a href="#%e4%ba%a7%e5%93%81%e7%9b%ae%e5%bd%95%e5%85%b1%e4%ba%ab" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;视觉目录&lt;/strong&gt;：分享产品图片和详细信息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实时库存&lt;/strong&gt;：库存可用性检查&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;价格表&lt;/strong&gt;：动态价格显示&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;产品搜索&lt;/strong&gt;：帮助客户找到产品&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;订单处理&lt;span class="hx:absolute hx:-mt-20" id="订单处理"&gt;&lt;/span&gt;
+&lt;a href="#%e8%ae%a2%e5%8d%95%e5%a4%84%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;购物车管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在聊天中添加/删除商品&lt;/li&gt;
+&lt;li&gt;数量调整&lt;/li&gt;
+&lt;li&gt;折扣应用&lt;/li&gt;
+&lt;li&gt;运费计算&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;付款处理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;付款链接生成&lt;/li&gt;
+&lt;li&gt;多种付款方式&lt;/li&gt;
+&lt;li&gt;付款状态跟踪&lt;/li&gt;
+&lt;li&gt;收据生成&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;订单管理&lt;span class="hx:absolute hx:-mt-20" id="订单管理"&gt;&lt;/span&gt;
+&lt;a href="#%e8%ae%a2%e5%8d%95%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;订单创建&lt;/strong&gt;：将聊天转换为销售订单&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;状态更新&lt;/strong&gt;：自动订单通知&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;跟踪信息&lt;/strong&gt;：运输更新&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;退货/换货&lt;/strong&gt;：通过聊天处理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;8. 🤖 自动化和AI功能&lt;span class="hx:absolute hx:-mt-20" id="8--自动化和ai功能"&gt;&lt;/span&gt;
+&lt;a href="#8--%e8%87%aa%e5%8a%a8%e5%8c%96%e5%92%8cai%e5%8a%9f%e8%83%bd" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;聊天机器人集成&lt;span class="hx:absolute hx:-mt-20" id="聊天机器人集成"&gt;&lt;/span&gt;
+&lt;a href="#%e8%81%8a%e5%a4%a9%e6%9c%ba%e5%99%a8%e4%ba%ba%e9%9b%86%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;FAQ自动化&lt;/strong&gt;：常见问题的即时回答&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;潜在客户资格审查&lt;/strong&gt;：自动信息收集&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;预约预订&lt;/strong&gt;：日历集成&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;订单状态机器人&lt;/strong&gt;：自动跟踪响应&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;智能建议&lt;span class="hx:absolute hx:-mt-20" id="智能建议"&gt;&lt;/span&gt;
+&lt;a href="#%e6%99%ba%e8%83%bd%e5%bb%ba%e8%ae%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;回复推荐&lt;/strong&gt;：AI驱动的回复建议&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;情感分析&lt;/strong&gt;：检测客户情绪&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;语言检测&lt;/strong&gt;：自动语言切换&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;意图识别&lt;/strong&gt;：理解客户需求&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;9. 👤 我的档案和个性化&lt;span class="hx:absolute hx:-mt-20" id="9--我的档案和个性化"&gt;&lt;/span&gt;
+&lt;a href="#9--%e6%88%91%e7%9a%84%e6%a1%a3%e6%a1%88%e5%92%8c%e4%b8%aa%e6%80%a7%e5%8c%96" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;客服设置&lt;span class="hx:absolute hx:-mt-20" id="客服设置"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%a2%e6%9c%8d%e8%ae%be%e7%bd%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;个人偏好&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通知设置&lt;/li&gt;
+&lt;li&gt;界面语言&lt;/li&gt;
+&lt;li&gt;主题选择&lt;/li&gt;
+&lt;li&gt;键盘快捷键&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;签名管理&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;电子邮件签名&lt;/li&gt;
+&lt;li&gt;聊天结束消息&lt;/li&gt;
+&lt;li&gt;个人模板&lt;/li&gt;
+&lt;li&gt;快速回复&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;性能跟踪&lt;span class="hx:absolute hx:-mt-20" id="性能跟踪"&gt;&lt;/span&gt;
+&lt;a href="#%e6%80%a7%e8%83%bd%e8%b7%9f%e8%b8%aa" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;个人仪表板&lt;/strong&gt;：个人指标&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目标跟踪&lt;/strong&gt;：目标与成就&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;反馈历史&lt;/strong&gt;：客户评分&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;培训记录&lt;/strong&gt;：技能发展&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;实施指南&lt;span class="hx:absolute hx:-mt-20" id="实施指南"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%9e%e6%96%bd%e6%8c%87%e5%8d%97" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;第1阶段：初始设置（第1周）&lt;span class="hx:absolute hx:-mt-20" id="第1阶段初始设置第1周"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac1%e9%98%b6%e6%ae%b5%e5%88%9d%e5%a7%8b%e8%ae%be%e7%bd%ae%e7%ac%ac1%e5%91%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;第1-2天：系统配置&lt;span class="hx:absolute hx:-mt-20" id="第1-2天系统配置"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac1-2%e5%a4%a9%e7%b3%bb%e7%bb%9f%e9%85%8d%e7%bd%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;启用UCC小程序&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;访问小程序商店&lt;/li&gt;
+&lt;li&gt;搜索&amp;quot;统一联络中心&amp;quot;&lt;/li&gt;
+&lt;li&gt;点击安装并接受权限&lt;/li&gt;
+&lt;li&gt;初始配置向导&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;团队结构设置&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;创建客服账户&lt;/li&gt;
+&lt;li&gt;定义角色（客服、主管、管理员）&lt;/li&gt;
+&lt;li&gt;设置团队和部门&lt;/li&gt;
+&lt;li&gt;配置权限&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;第3-4天：渠道集成&lt;span class="hx:absolute hx:-mt-20" id="第3-4天渠道集成"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac3-4%e5%a4%a9%e6%b8%a0%e9%81%93%e9%9b%86%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;主要渠道设置&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从最常用的渠道开始（通常是WhatsApp）&lt;/li&gt;
+&lt;li&gt;完成验证过程&lt;/li&gt;
+&lt;li&gt;测试消息流&lt;/li&gt;
+&lt;li&gt;配置商业档案&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;附加渠道&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;添加次要渠道&lt;/li&gt;
+&lt;li&gt;配置渠道特定设置&lt;/li&gt;
+&lt;li&gt;测试跨渠道路由&lt;/li&gt;
+&lt;li&gt;设置备用选项&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;第5-7天：流程配置&lt;span class="hx:absolute hx:-mt-20" id="第5-7天流程配置"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac5-7%e5%a4%a9%e6%b5%81%e7%a8%8b%e9%85%8d%e7%bd%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;业务规则&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;定义营业时间&lt;/li&gt;
+&lt;li&gt;创建自动回复&lt;/li&gt;
+&lt;li&gt;设置路由规则&lt;/li&gt;
+&lt;li&gt;配置升级政策&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;模板和资源&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;创建回复模板&lt;/li&gt;
+&lt;li&gt;上传产品目录&lt;/li&gt;
+&lt;li&gt;设置知识库&lt;/li&gt;
+&lt;li&gt;准备培训材料&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;第2阶段：团队培训（第2周）&lt;span class="hx:absolute hx:-mt-20" id="第2阶段团队培训第2周"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac2%e9%98%b6%e6%ae%b5%e5%9b%a2%e9%98%9f%e5%9f%b9%e8%ae%ad%e7%ac%ac2%e5%91%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;基础培训（所有客服）&lt;span class="hx:absolute hx:-mt-20" id="基础培训所有客服"&gt;&lt;/span&gt;
+&lt;a href="#%e5%9f%ba%e7%a1%80%e5%9f%b9%e8%ae%ad%e6%89%80%e6%9c%89%e5%ae%a2%e6%9c%8d" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;平台导航&lt;/li&gt;
+&lt;li&gt;消息处理基础&lt;/li&gt;
+&lt;li&gt;使用模板&lt;/li&gt;
+&lt;li&gt;客户数据访问&lt;/li&gt;
+&lt;li&gt;基础故障排除&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;高级培训（高级用户）&lt;span class="hx:absolute hx:-mt-20" id="高级培训高级用户"&gt;&lt;/span&gt;
+&lt;a href="#%e9%ab%98%e7%ba%a7%e5%9f%b9%e8%ae%ad%e9%ab%98%e7%ba%a7%e7%94%a8%e6%88%b7" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;复杂路由设置&lt;/li&gt;
+&lt;li&gt;报告生成&lt;/li&gt;
+&lt;li&gt;机器人配置&lt;/li&gt;
+&lt;li&gt;集成管理&lt;/li&gt;
+&lt;li&gt;性能优化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;第3阶段：试点启动（第3周）&lt;span class="hx:absolute hx:-mt-20" id="第3阶段试点启动第3周"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac3%e9%98%b6%e6%ae%b5%e8%af%95%e7%82%b9%e5%90%af%e5%8a%a8%e7%ac%ac3%e5%91%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;软启动策略&lt;span class="hx:absolute hx:-mt-20" id="软启动策略"&gt;&lt;/span&gt;
+&lt;a href="#%e8%bd%af%e5%90%af%e5%8a%a8%e7%ad%96%e7%95%a5" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;有限推出&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从一个渠道开始&lt;/li&gt;
+&lt;li&gt;选择试点团队&lt;/li&gt;
+&lt;li&gt;处理特定查询类型&lt;/li&gt;
+&lt;li&gt;密切监控&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;反馈收集&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;每日团队汇报&lt;/li&gt;
+&lt;li&gt;客户反馈&lt;/li&gt;
+&lt;li&gt;系统性能&lt;/li&gt;
+&lt;li&gt;流程完善&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;第4阶段：全面部署（第4周+）&lt;span class="hx:absolute hx:-mt-20" id="第4阶段全面部署第4周"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac4%e9%98%b6%e6%ae%b5%e5%85%a8%e9%9d%a2%e9%83%a8%e7%bd%b2%e7%ac%ac4%e5%91%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;扩展过程&lt;span class="hx:absolute hx:-mt-20" id="扩展过程"&gt;&lt;/span&gt;
+&lt;a href="#%e6%89%a9%e5%b1%95%e8%bf%87%e7%a8%8b" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;逐步扩展&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;添加更多渠道&lt;/li&gt;
+&lt;li&gt;包括所有客服&lt;/li&gt;
+&lt;li&gt;扩展服务时间&lt;/li&gt;
+&lt;li&gt;增加自动化&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;优化&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;分析指标&lt;/li&gt;
+&lt;li&gt;完善流程&lt;/li&gt;
+&lt;li&gt;更新模板&lt;/li&gt;
+&lt;li&gt;加强培训&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;最佳实践和技巧&lt;span class="hx:absolute hx:-mt-20" id="最佳实践和技巧"&gt;&lt;/span&gt;
+&lt;a href="#%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5%e5%92%8c%e6%8a%80%e5%b7%a7" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;响应时间优化&lt;span class="hx:absolute hx:-mt-20" id="响应时间优化"&gt;&lt;/span&gt;
+&lt;a href="#%e5%93%8d%e5%ba%94%e6%97%b6%e9%97%b4%e4%bc%98%e5%8c%96" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;快速获胜策略&lt;span class="hx:absolute hx:-mt-20" id="快速获胜策略"&gt;&lt;/span&gt;
+&lt;a href="#%e5%bf%ab%e9%80%9f%e8%8e%b7%e8%83%9c%e7%ad%96%e7%95%a5" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;使用预制回复&lt;/strong&gt;：节省70%的打字时间&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;启用快速回复按钮&lt;/strong&gt;：引导客户回复&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;实施聊天路由&lt;/strong&gt;：合适的客服，第一次&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;设置自动确认&lt;/strong&gt;：即时客户安心&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;质量保证&lt;span class="hx:absolute hx:-mt-20" id="质量保证"&gt;&lt;/span&gt;
+&lt;a href="#%e8%b4%a8%e9%87%8f%e4%bf%9d%e8%af%81" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;保持服务卓越&lt;span class="hx:absolute hx:-mt-20" id="保持服务卓越"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bf%9d%e6%8c%81%e6%9c%8d%e5%8a%a1%e5%8d%93%e8%b6%8a" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;定期模板审查&lt;/strong&gt;：保持回复最新&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对话监控&lt;/strong&gt;：随机质量检查&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客户反馈循环&lt;/strong&gt;：根据满意度分数采取行动&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;持续培训&lt;/strong&gt;：每周技能更新&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;规模管理&lt;span class="hx:absolute hx:-mt-20" id="规模管理"&gt;&lt;/span&gt;
+&lt;a href="#%e8%a7%84%e6%a8%a1%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;处理增长的数量&lt;span class="hx:absolute hx:-mt-20" id="处理增长的数量"&gt;&lt;/span&gt;
+&lt;a href="#%e5%a4%84%e7%90%86%e5%a2%9e%e9%95%bf%e7%9a%84%e6%95%b0%e9%87%8f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;渐进式自动化&lt;/strong&gt;：从简单查询开始&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;分级支持&lt;/strong&gt;：L1、L2、L3结构&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;高峰时段管理&lt;/strong&gt;：灵活人员配置&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;渠道优先级&lt;/strong&gt;：专注于高价值渠道&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;按行业的用例&lt;span class="hx:absolute hx:-mt-20" id="按行业的用例"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8c%89%e8%a1%8c%e4%b8%9a%e7%9a%84%e7%94%a8%e4%be%8b" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;零售和电子商务&lt;span class="hx:absolute hx:-mt-20" id="零售和电子商务"&gt;&lt;/span&gt;
+&lt;a href="#%e9%9b%b6%e5%94%ae%e5%92%8c%e7%94%b5%e5%ad%90%e5%95%86%e5%8a%a1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;产品咨询&lt;/strong&gt;：即时目录共享&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;订单处理&lt;/strong&gt;：在聊天中完成销售&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;配送更新&lt;/strong&gt;：自动跟踪&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;退货管理&lt;/strong&gt;：简化RMA流程&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;忠诚度计划&lt;/strong&gt;：积分和奖励跟踪&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;医疗保健&lt;span class="hx:absolute hx:-mt-20" id="医疗保健"&gt;&lt;/span&gt;
+&lt;a href="#%e5%8c%bb%e7%96%97%e4%bf%9d%e5%81%a5" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;预约预订&lt;/strong&gt;：日历集成&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;处方补充&lt;/strong&gt;：自动请求&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;检查结果&lt;/strong&gt;：安全文档共享&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;健康提醒&lt;/strong&gt;：药物时间表&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;紧急分诊&lt;/strong&gt;：优先路由&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;银行和金融&lt;span class="hx:absolute hx:-mt-20" id="银行和金融"&gt;&lt;/span&gt;
+&lt;a href="#%e9%93%b6%e8%a1%8c%e5%92%8c%e9%87%91%e8%9e%8d" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;余额查询&lt;/strong&gt;：安全信息访问&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;交易警报&lt;/strong&gt;：实时通知&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;贷款申请&lt;/strong&gt;：文档收集&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;欺诈警报&lt;/strong&gt;：即时响应&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;投资更新&lt;/strong&gt;：投资组合信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;酒店业&lt;span class="hx:absolute hx:-mt-20" id="酒店业"&gt;&lt;/span&gt;
+&lt;a href="#%e9%85%92%e5%ba%97%e4%b8%9a" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;预订&lt;/strong&gt;：餐桌/房间预订&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;礼宾服务&lt;/strong&gt;：请求处理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;反馈收集&lt;/strong&gt;：住后调查&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;忠诚度管理&lt;/strong&gt;：会员服务&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;活动协调&lt;/strong&gt;：团体预订&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;教育&lt;span class="hx:absolute hx:-mt-20" id="教育"&gt;&lt;/span&gt;
+&lt;a href="#%e6%95%99%e8%82%b2" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;入学查询&lt;/strong&gt;：项目信息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;学生支持&lt;/strong&gt;：学术援助&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;家长沟通&lt;/strong&gt;：更新和通知&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;活动注册&lt;/strong&gt;：研讨会报名&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;费用提醒&lt;/strong&gt;：付款通知&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;集成生态系统&lt;span class="hx:absolute hx:-mt-20" id="集成生态系统"&gt;&lt;/span&gt;
+&lt;a href="#%e9%9b%86%e6%88%90%e7%94%9f%e6%80%81%e7%b3%bb%e7%bb%9f" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;BigLedger模块集成&lt;span class="hx:absolute hx:-mt-20" id="bigledger模块集成"&gt;&lt;/span&gt;
+&lt;a href="#bigledger%e6%a8%a1%e5%9d%97%e9%9b%86%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;销售和CRM&lt;span class="hx:absolute hx:-mt-20" id="销售和crm"&gt;&lt;/span&gt;
+&lt;a href="#%e9%94%80%e5%94%ae%e5%92%8ccrm" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;从对话自动创建潜在客户&lt;/li&gt;
+&lt;li&gt;客户历史同步&lt;/li&gt;
+&lt;li&gt;机会跟踪&lt;/li&gt;
+&lt;li&gt;在聊天中生成报价&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;库存管理&lt;span class="hx:absolute hx:-mt-20" id="库存管理"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ba%93%e5%ad%98%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;实时库存检查&lt;/li&gt;
+&lt;li&gt;产品可用性更新&lt;/li&gt;
+&lt;li&gt;聊天期间预留商品&lt;/li&gt;
+&lt;li&gt;低库存警报&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;会计&lt;span class="hx:absolute hx:-mt-20" id="会计"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bc%9a%e8%ae%a1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;发票生成&lt;/li&gt;
+&lt;li&gt;付款对账&lt;/li&gt;
+&lt;li&gt;贷记凭证处理&lt;/li&gt;
+&lt;li&gt;发送对账单&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;人力资源&lt;span class="hx:absolute hx:-mt-20" id="人力资源"&gt;&lt;/span&gt;
+&lt;a href="#%e4%ba%ba%e5%8a%9b%e8%b5%84%e6%ba%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;内部沟通&lt;/li&gt;
+&lt;li&gt;请假请求处理&lt;/li&gt;
+&lt;li&gt;政策查询&lt;/li&gt;
+&lt;li&gt;员工支持&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;第三方集成&lt;span class="hx:absolute hx:-mt-20" id="第三方集成"&gt;&lt;/span&gt;
+&lt;a href="#%e7%ac%ac%e4%b8%89%e6%96%b9%e9%9b%86%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;支付网关&lt;span class="hx:absolute hx:-mt-20" id="支付网关"&gt;&lt;/span&gt;
+&lt;a href="#%e6%94%af%e4%bb%98%e7%bd%91%e5%85%b3" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Stripe、PayPal、Razorpay&lt;/li&gt;
+&lt;li&gt;本地银行（Maybank、CIMB等）&lt;/li&gt;
+&lt;li&gt;电子钱包（GrabPay、Touch&amp;rsquo;n&amp;rsquo;Go）&lt;/li&gt;
+&lt;li&gt;先买后付选项&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;运输合作伙伴&lt;span class="hx:absolute hx:-mt-20" id="运输合作伙伴"&gt;&lt;/span&gt;
+&lt;a href="#%e8%bf%90%e8%be%93%e5%90%88%e4%bd%9c%e4%bc%99%e4%bc%b4" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;快递服务集成&lt;/li&gt;
+&lt;li&gt;实时费率计算&lt;/li&gt;
+&lt;li&gt;标签打印&lt;/li&gt;
+&lt;li&gt;跟踪更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;营销工具&lt;span class="hx:absolute hx:-mt-20" id="营销工具"&gt;&lt;/span&gt;
+&lt;a href="#%e8%90%a5%e9%94%80%e5%b7%a5%e5%85%b7" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;Mailchimp同步&lt;/li&gt;
+&lt;li&gt;Google Analytics跟踪&lt;/li&gt;
+&lt;li&gt;Facebook Pixel集成&lt;/li&gt;
+&lt;li&gt;客户数据平台&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;定价和套餐&lt;span class="hx:absolute hx:-mt-20" id="定价和套餐"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ae%9a%e4%bb%b7%e5%92%8c%e5%a5%97%e9%a4%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;订阅计划&lt;span class="hx:absolute hx:-mt-20" id="订阅计划"&gt;&lt;/span&gt;
+&lt;a href="#%e8%ae%a2%e9%98%85%e8%ae%a1%e5%88%92" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;功能&lt;/th&gt;
+&lt;th&gt;入门版&lt;/th&gt;
+&lt;th&gt;专业版&lt;/th&gt;
+&lt;th&gt;企业版&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;渠道&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;无限制&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;客服&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;15&lt;/td&gt;
+&lt;td&gt;无限制&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;消息/月&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;10,000&lt;/td&gt;
+&lt;td&gt;50,000&lt;/td&gt;
+&lt;td&gt;无限制&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;广播&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;1,000&lt;/td&gt;
+&lt;td&gt;10,000&lt;/td&gt;
+&lt;td&gt;无限制&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;自动化&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;基础&lt;/td&gt;
+&lt;td&gt;高级&lt;/td&gt;
+&lt;td&gt;自定义AI&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;支持&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;电子邮件&lt;/td&gt;
+&lt;td&gt;优先&lt;/td&gt;
+&lt;td&gt;专属&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;价格&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;联系销售&lt;/td&gt;
+&lt;td&gt;联系销售&lt;/td&gt;
+&lt;td&gt;联系销售&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;附加服务&lt;span class="hx:absolute hx:-mt-20" id="附加服务"&gt;&lt;/span&gt;
+&lt;a href="#%e9%99%84%e5%8a%a0%e6%9c%8d%e5%8a%a1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;WhatsApp Business API&lt;/strong&gt;：基于消息量&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自定义集成&lt;/strong&gt;：一次性设置费&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;培训套餐&lt;/strong&gt;：现场或虚拟选项&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;自定义开发&lt;/strong&gt;：特定功能请求&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;成功指标和投资回报率&lt;span class="hx:absolute hx:-mt-20" id="成功指标和投资回报率"&gt;&lt;/span&gt;
+&lt;a href="#%e6%88%90%e5%8a%9f%e6%8c%87%e6%a0%87%e5%92%8c%e6%8a%95%e8%b5%84%e5%9b%9e%e6%8a%a5%e7%8e%87" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;关键绩效指标&lt;span class="hx:absolute hx:-mt-20" id="关键绩效指标"&gt;&lt;/span&gt;
+&lt;a href="#%e5%85%b3%e9%94%ae%e7%bb%a9%e6%95%88%e6%8c%87%e6%a0%87" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;效率指标&lt;span class="hx:absolute hx:-mt-20" id="效率指标"&gt;&lt;/span&gt;
+&lt;a href="#%e6%95%88%e7%8e%87%e6%8c%87%e6%a0%87" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;响应时间&lt;/strong&gt;：减少75%&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;解决时间&lt;/strong&gt;：改善60%&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;客服生产力&lt;/strong&gt;：处理3倍对话&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;首次联系解决率&lt;/strong&gt;：达到85%+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;业务影响&lt;span class="hx:absolute hx:-mt-20" id="业务影响"&gt;&lt;/span&gt;
+&lt;a href="#%e4%b8%9a%e5%8a%a1%e5%bd%b1%e5%93%8d" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;客户满意度&lt;/strong&gt;：CSAT提高40%&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;销售转化&lt;/strong&gt;：改善25%&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;运营成本&lt;/strong&gt;：减少50%&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;每个客服收入&lt;/strong&gt;：增加200%&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;投资回报率计算器&lt;span class="hx:absolute hx:-mt-20" id="投资回报率计算器"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8a%95%e8%b5%84%e5%9b%9e%e6%8a%a5%e7%8e%87%e8%ae%a1%e7%ae%97%e5%99%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;成本节约&lt;span class="hx:absolute hx:-mt-20" id="成本节约"&gt;&lt;/span&gt;
+&lt;a href="#%e6%88%90%e6%9c%ac%e8%8a%82%e7%ba%a6" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;减少人员&lt;/strong&gt;：用更少的人做更多&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;降低培训成本&lt;/strong&gt;：统一平台培训&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;减少工具成本&lt;/strong&gt;：替换多个应用&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;提高效率&lt;/strong&gt;：时间节约&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;收入生成&lt;span class="hx:absolute hx:-mt-20" id="收入生成"&gt;&lt;/span&gt;
+&lt;a href="#%e6%94%b6%e5%85%a5%e7%94%9f%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;增加销售&lt;/strong&gt;：更好的转化率&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;更高留存&lt;/strong&gt;：改善服务质量&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;向上销售机会&lt;/strong&gt;：主动参与&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;新渠道&lt;/strong&gt;：接触更多客户&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;支持和资源&lt;span class="hx:absolute hx:-mt-20" id="支持和资源"&gt;&lt;/span&gt;
+&lt;a href="#%e6%94%af%e6%8c%81%e5%92%8c%e8%b5%84%e6%ba%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;获得帮助&lt;span class="hx:absolute hx:-mt-20" id="获得帮助"&gt;&lt;/span&gt;
+&lt;a href="#%e8%8e%b7%e5%be%97%e5%b8%ae%e5%8a%a9" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;文档&lt;span class="hx:absolute hx:-mt-20" id="文档"&gt;&lt;/span&gt;
+&lt;a href="#%e6%96%87%e6%a1%a3" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;设置指南&lt;/strong&gt;：逐步说明&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;视频教程&lt;/strong&gt;：视觉学习资源&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API文档&lt;/strong&gt;：开发者资源&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;最佳实践&lt;/strong&gt;：行业特定指南&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;支持渠道&lt;span class="hx:absolute hx:-mt-20" id="支持渠道"&gt;&lt;/span&gt;
+&lt;a href="#%e6%94%af%e6%8c%81%e6%b8%a0%e9%81%93" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;帮助中心&lt;/strong&gt;：知识库文章&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;社区论坛&lt;/strong&gt;：同行支持&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;电子邮件支持&lt;/strong&gt;：support@bigledger.com&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;培训计划&lt;/strong&gt;：认证课程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;持续学习&lt;span class="hx:absolute hx:-mt-20" id="持续学习"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8c%81%e7%bb%ad%e5%ad%a6%e4%b9%a0" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;保持更新&lt;span class="hx:absolute hx:-mt-20" id="保持更新"&gt;&lt;/span&gt;
+&lt;a href="#%e4%bf%9d%e6%8c%81%e6%9b%b4%e6%96%b0" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;发布说明&lt;/strong&gt;：新功能和更新&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;网络研讨会&lt;/strong&gt;：每月培训会议&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;用户大会&lt;/strong&gt;：年度活动&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;通讯&lt;/strong&gt;：技巧和窍门&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;常见问题&lt;span class="hx:absolute hx:-mt-20" id="常见问题"&gt;&lt;/span&gt;
+&lt;a href="#%e5%b8%b8%e8%a7%81%e9%97%ae%e9%a2%98" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;一般问题&lt;span class="hx:absolute hx:-mt-20" id="一般问题"&gt;&lt;/span&gt;
+&lt;a href="#%e4%b8%80%e8%88%ac%e9%97%ae%e9%a2%98" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;问：我可以连接多少个渠道？&lt;/strong&gt;
+答：取决于您的计划。入门版支持3个，专业版5个，企业版无限制渠道。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问：我可以使用现有的WhatsApp号码吗？&lt;/strong&gt;
+答：可以，但需要升级到WhatsApp Business API，这需要审批。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问：提供培训吗？&lt;/strong&gt;
+答：是的，我们为所有用户级别提供全面的培训计划。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问：可以与我现有的CRM集成吗？&lt;/strong&gt;
+答：可以，通过我们的API或自定义集成服务。&lt;/p&gt;
+&lt;h3&gt;技术问题&lt;span class="hx:absolute hx:-mt-20" id="技术问题"&gt;&lt;/span&gt;
+&lt;a href="#%e6%8a%80%e6%9c%af%e9%97%ae%e9%a2%98" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;问：消息限制是什么？&lt;/strong&gt;
+答：因计划而异。企业计划有无限制消息。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问：平台有多安全？&lt;/strong&gt;
+答：银行级加密，ISO 27001认证，GDPR合规。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问：我可以导出对话数据吗？&lt;/strong&gt;
+答：可以，支持多种格式包括CSV、PDF和通过API。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问：有API可用吗？&lt;/strong&gt;
+答：有，提供全面的REST API用于自定义集成。&lt;/p&gt;
+&lt;h3&gt;商业问题&lt;span class="hx:absolute hx:-mt-20" id="商业问题"&gt;&lt;/span&gt;
+&lt;a href="#%e5%95%86%e4%b8%9a%e9%97%ae%e9%a2%98" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;问：投资回报率时间线是什么？&lt;/strong&gt;
+答：大多数企业在3-6个月内看到正的投资回报率。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问：我可以白标这个解决方案吗？&lt;/strong&gt;
+答：可用于有量承诺的企业合作伙伴。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问：有试用期吗？&lt;/strong&gt;
+答：有，合格企业可获得14天免费试用。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;问：包含什么支持？&lt;/strong&gt;
+答：因计划而异，从电子邮件支持到专属客户管理。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;准备好转变您的客户服务了吗？&lt;span class="hx:absolute hx:-mt-20" id="准备好转变您的客户服务了吗"&gt;&lt;/span&gt;
+&lt;a href="#%e5%87%86%e5%a4%87%e5%a5%bd%e8%bd%ac%e5%8f%98%e6%82%a8%e7%9a%84%e5%ae%a2%e6%88%b7%e6%9c%8d%e5%8a%a1%e4%ba%86%e5%90%97" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;UCC小程序不仅仅是一个消息平台 - 它是一个完整的客户互动解决方案，将革命化您与客户的互动方式。&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/applications/unified-contact-center"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;了解更多&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;探索UCC功能&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/demos-resources"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;观看演示&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;查看UCC实际操作&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="mailto:sales@bigledger.com"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;联系销售&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;获取个性化定价&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;最后更新：2024年11月 | 版本 3.0&lt;/em&gt;&lt;/p&gt;</description></item><item><title>VSTECS MS ESD 订单小程序</title><link>https://wiki.bigledger.com/zh/applets/vstecs-ms-esd-order-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/applets/vstecs-ms-esd-order-applet/</guid><description>
+&lt;p&gt;附加 MS ESD 订单用户指南和实施工作分解。
+此小程序需要从 BLG 到 EMP 和 BLG 到分销商系统的集成才能正常运行。
+检查 MS ESD 产品 SKU 更新价格的 API。
+向分销商创建订单以检索 MS ESD 产品的 API。&lt;/p&gt;
+&lt;p&gt;**注意
+此集成目前有 2 个工作流：
+快捷方法：EMP 集成到 BLG（不使用 T2T 管理小程序）
+标准方法：T2T 管理小程序启用来宾和主机租户连接，文档项目维护小程序执行项目代码映射。&lt;/p&gt;</description></item></channel></rss>

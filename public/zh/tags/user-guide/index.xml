@@ -1,0 +1,229 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger 文档 – User-Guide</title><link>https://wiki.bigledger.com/zh/tags/user-guide/</link><description>Recent content in User-Guide on BigLedger 文档</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><atom:link href="https://wiki.bigledger.com/zh/tags/user-guide/index.xml" rel="self" type="application/rss+xml"/><item><title>业务操作指南</title><link>https://wiki.bigledger.com/zh/user-guide/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/zh/user-guide/</guid><description>
+&lt;p&gt;欢迎来到 BigLedger 的全面业务操作指南。本文档将帮助您通过为各个级别用户设计的结构化学习路径，从初次使用者到经验丰富的管理员，掌握 BigLedger 的业务操作系统。&lt;/p&gt;
+&lt;h2&gt;如何使用本指南&lt;span class="hx:absolute hx:-mt-20" id="如何使用本指南"&gt;&lt;/span&gt;
+&lt;a href="#%e5%a6%82%e4%bd%95%e4%bd%bf%e7%94%a8%e6%9c%ac%e6%8c%87%e5%8d%97" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;本指南按逻辑部分组织，各部分相互构建。我们建议按照以下进度进行：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/getting-started/" &gt;入门指南&lt;/a&gt;&lt;/strong&gt; - 必要的第一步和平台导向&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/basic-operations/" &gt;基本操作&lt;/a&gt;&lt;/strong&gt; - 基本的日常任务和数据管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/daily-tasks/" &gt;日常任务&lt;/a&gt;&lt;/strong&gt; - 常见的业务操作和例行工作流程&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/administration/" &gt;管理&lt;/a&gt;&lt;/strong&gt; - 系统管理和高级配置&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/reports-analytics/" &gt;报表与分析&lt;/a&gt;&lt;/strong&gt; - 商业智能和数据分析&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/industry-solutions/" &gt;行业解决方案&lt;/a&gt;&lt;/strong&gt; - 特定行业的实施和最佳实践&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/troubleshooting/" &gt;故障排除&lt;/a&gt;&lt;/strong&gt; - 问题解决和支持&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/user-guide/best-practices/" &gt;最佳实践&lt;/a&gt;&lt;/strong&gt; - 专家提示和优化策略&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;BigLedger 新手？&lt;/strong&gt; 在探索特定功能之前，请从&lt;a href="https://wiki.bigledger.com/zh/user-guide/getting-started/" &gt;入门指南&lt;/a&gt;开始，了解平台基础知识。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2&gt;🎯 交互式演示平台&lt;span class="hx:absolute hx:-mt-20" id="-交互式演示平台"&gt;&lt;/span&gt;
+&lt;a href="#-%e4%ba%a4%e4%ba%92%e5%bc%8f%e6%bc%94%e7%a4%ba%e5%b9%b3%e5%8f%b0" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;通过我们全面的演示环境亲身体验 BigLedger。&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/demo/"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;交互式演示平台&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;针对您的行业量身定制的实践指导工作流程&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/demo/getting-started-demo/"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;演示快速入门&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;15分钟导向让您快速上手&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/demo/common-workflows/"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;常见工作流程&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;所有行业的必要业务流程&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;演示功能&lt;/strong&gt;：实时环境、行业场景、分步指南、示例数据&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;🚀 入门指南&lt;span class="hx:absolute hx:-mt-20" id="-入门指南"&gt;&lt;/span&gt;
+&lt;a href="#-%e5%85%a5%e9%97%a8%e6%8c%87%e5%8d%97" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;使用 BigLedger 业务操作系统的必要第一步。&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/getting-started/"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;入门指南&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;BigLedger 新用户的完整导向和设置&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/getting-started/introduction"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;BigLedger 简介&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;平台概述、关键概念和入门导向&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/getting-started/platform-overview"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;平台架构&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;了解 BigLedger 基于小程序的业务操作系统&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;关键主题&lt;/strong&gt;：账户设置、平台概念、导航基础、首次配置&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;📋 基本操作&lt;span class="hx:absolute hx:-mt-20" id="-基本操作"&gt;&lt;/span&gt;
+&lt;a href="#-%e5%9f%ba%e6%9c%ac%e6%93%8d%e4%bd%9c" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;掌握基本的数据管理和日常运营任务。&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/basic-operations/"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;基本操作指南&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;核心数据管理和基本业务任务&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/basic-operations/creating-an-item"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;创建项目&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;添加产品和服务的分步指南&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/basic-operations/item-maintenance"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;项目管理&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;全面的产品目录维护&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;关键主题&lt;/strong&gt;：项目创建和编辑、文档类型、数据管理基础&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;⚡ 日常任务&lt;span class="hx:absolute hx:-mt-20" id="-日常任务"&gt;&lt;/span&gt;
+&lt;a href="#-%e6%97%a5%e5%b8%b8%e4%bb%bb%e5%8a%a1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在 BigLedger 中定期执行的常见业务操作。&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/daily-tasks/"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;日常任务指南&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;例行业务操作和常见工作流程&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/daily-tasks/pricing-scheme"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;定价策略&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;客户细分的灵活定价方案&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/daily-tasks/price-book"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;价格表管理&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;全面的价格清单维护&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;关键主题&lt;/strong&gt;：定价管理、交易处理、库存操作、客户管理&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;🛠️ 管理&lt;span class="hx:absolute hx:-mt-20" id="-管理"&gt;&lt;/span&gt;
+&lt;a href="#-%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;系统管理、用户管理和高级配置。&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/administration/"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;管理指南&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;BigLedger 管理员的系统管理&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/administration/member-listing"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;用户管理&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;管理用户账户和权限&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/administration/team"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;团队配置&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;组织结构和角色管理&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;关键主题&lt;/strong&gt;：用户和团队管理、系统配置、安全设置、组织结构&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;📊 报表与分析&lt;span class="hx:absolute hx:-mt-20" id="-报表与分析"&gt;&lt;/span&gt;
+&lt;a href="#-%e6%8a%a5%e8%a1%a8%e4%b8%8e%e5%88%86%e6%9e%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;商业智能、报表和数据分析能力。&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/reports-analytics/"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;报表与分析&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;商业智能和数据驱动的洞察&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;关键主题&lt;/strong&gt;：标准报表、自定义仪表板、数据可视化、KPI 跟踪、自动报表&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;🔧 故障排除&lt;span class="hx:absolute hx:-mt-20" id="-故障排除"&gt;&lt;/span&gt;
+&lt;a href="#-%e6%95%85%e9%9a%9c%e6%8e%92%e9%99%a4" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;常见 BigLedger 问题的问题解决和支持。&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/troubleshooting/"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;故障排除指南&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;常见问题和问题的快速解决方案&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;关键主题&lt;/strong&gt;：常见错误解决、性能优化、浏览器问题、升级程序&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;🎯 最佳实践&lt;span class="hx:absolute hx:-mt-20" id="-最佳实践"&gt;&lt;/span&gt;
+&lt;a href="#-%e6%9c%80%e4%bd%b3%e5%ae%9e%e8%b7%b5" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;最大化 BigLedger 效果的专家提示和优化策略。&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/best-practices/"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;最佳实践指南&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;专家提示和经过验证的优化策略&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;关键主题&lt;/strong&gt;：实施最佳实践、卓越运营、安全指南、性能优化&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;🏭 行业解决方案&lt;span class="hx:absolute hx:-mt-20" id="-行业解决方案"&gt;&lt;/span&gt;
+&lt;a href="#-%e8%a1%8c%e4%b8%9a%e8%a7%a3%e5%86%b3%e6%96%b9%e6%a1%88" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;为您的业务部门量身定制的特定行业实施、最佳实践和成功案例。&lt;/p&gt;
+&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/industry-solutions/"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;行业解决方案概览&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;发现为您特定行业量身定制的解决方案&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/industry-solutions/automotive-and-workshop-industry"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;汽车与车间&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;车辆服务管理和零件库存&lt;/div&gt;&lt;/a&gt;
+&lt;a
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"href="https://wiki.bigledger.com/zh/user-guide/industry-solutions/food-and-beverage-fb-industry"
+&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;餐饮业&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;餐厅运营和多分店管理&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;关键主题&lt;/strong&gt;：特定行业工作流程、成功案例、专业功能、实施案例研究&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;💼 核心业务模块&lt;span class="hx:absolute hx:-mt-20" id="-核心业务模块"&gt;&lt;/span&gt;
+&lt;a href="#-%e6%a0%b8%e5%bf%83%e4%b8%9a%e5%8a%a1%e6%a8%a1%e5%9d%97" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;探索按运营领域组织的 BigLedger 全面业务功能。&lt;/p&gt;
+&lt;h3&gt;财务管理&lt;span class="hx:absolute hx:-mt-20" id="财务管理"&gt;&lt;/span&gt;
+&lt;a href="#%e8%b4%a2%e5%8a%a1%e7%ae%a1%e7%90%86" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;通过集成的会计和合规功能掌握您的财务运营：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/modules/financial-accounting/" &gt;财务会计&lt;/a&gt;&lt;/strong&gt; - 完整的复式记账系统&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/business-operations/account-receivable/" &gt;应收账款&lt;/a&gt;&lt;/strong&gt; - 客户开票和付款跟踪&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/business-operations/accounting/" &gt;会计操作&lt;/a&gt;&lt;/strong&gt; - 日常簿记和财务任务&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;销售与客户运营&lt;span class="hx:absolute hx:-mt-20" id="销售与客户运营"&gt;&lt;/span&gt;
+&lt;a href="#%e9%94%80%e5%94%ae%e4%b8%8e%e5%ae%a2%e6%88%b7%e8%bf%90%e8%90%a5" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;建立强大的客户关系并优化您的销售流程：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/modules/crm/" &gt;CRM 模块&lt;/a&gt;&lt;/strong&gt; - 360度客户关系管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/business-operations/sales-dashboard/" &gt;销售仪表板&lt;/a&gt;&lt;/strong&gt; - 实时销售分析和洞察&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/business-operations/order/" &gt;订单管理&lt;/a&gt;&lt;/strong&gt; - 端到端订单处理和履行&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;库存与供应链&lt;span class="hx:absolute hx:-mt-20" id="库存与供应链"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ba%93%e5%ad%98%e4%b8%8e%e4%be%9b%e5%ba%94%e9%93%be" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;优化您的库存水平并简化供应链运营：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/modules/inventory/" &gt;库存管理&lt;/a&gt;&lt;/strong&gt; - 多地点库存控制和跟踪&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/modules/procurement/" &gt;采购&lt;/a&gt;&lt;/strong&gt; - 采购订单和供应商关系管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/modules/manufacturing/" &gt;制造&lt;/a&gt;&lt;/strong&gt; - 生产计划和制造控制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;高级功能与集成&lt;span class="hx:absolute hx:-mt-20" id="高级功能与集成"&gt;&lt;/span&gt;
+&lt;a href="#%e9%ab%98%e7%ba%a7%e5%8a%9f%e8%83%bd%e4%b8%8e%e9%9b%86%e6%88%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;h4&gt;电子商务与多渠道&lt;span class="hx:absolute hx:-mt-20" id="电子商务与多渠道"&gt;&lt;/span&gt;
+&lt;a href="#%e7%94%b5%e5%ad%90%e5%95%86%e5%8a%a1%e4%b8%8e%e5%a4%9a%e6%b8%a0%e9%81%93" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/modules/ecommerce/" &gt;电子商务概览&lt;/a&gt;&lt;/strong&gt; - 多渠道销售和在线商店管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/modules/ecommerce/introduction-to-ecomsync/" &gt;EcomSync 平台&lt;/a&gt;&lt;/strong&gt; - 集中式销售渠道同步&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/modules/ecommerce/integration-with-shopify/" &gt;Shopify 集成&lt;/a&gt;&lt;/strong&gt; - 无缝在线商店管理&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;AI 与自动化&lt;span class="hx:absolute hx:-mt-20" id="ai-与自动化"&gt;&lt;/span&gt;
+&lt;a href="#ai-%e4%b8%8e%e8%87%aa%e5%8a%a8%e5%8c%96" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/ai-intelligence/" &gt;AI 智能&lt;/a&gt;&lt;/strong&gt; - AI 驱动的洞察和自动化&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/e-invoice-peppol/" &gt;电子发票与 PEPPOL&lt;/a&gt;&lt;/strong&gt; - 电子发票合规&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/applets-workflows/" &gt;小程序与工作流程&lt;/a&gt;&lt;/strong&gt; - 自定义自动化和可扩展性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;🎯 学习路径建议&lt;span class="hx:absolute hx:-mt-20" id="-学习路径建议"&gt;&lt;/span&gt;
+&lt;a href="#-%e5%ad%a6%e4%b9%a0%e8%b7%af%e5%be%84%e5%bb%ba%e8%ae%ae" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;新用户（第1-2周）&lt;span class="hx:absolute hx:-mt-20" id="新用户第1-2周"&gt;&lt;/span&gt;
+&lt;a href="#%e6%96%b0%e7%94%a8%e6%88%b7%e7%ac%ac1-2%e5%91%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;完成&lt;a href="https://wiki.bigledger.com/zh/user-guide/getting-started/" &gt;入门指南&lt;/a&gt;部分&lt;/li&gt;
+&lt;li&gt;掌握&lt;a href="https://wiki.bigledger.com/zh/user-guide/basic-operations/" &gt;基本操作&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;练习&lt;a href="https://wiki.bigledger.com/zh/user-guide/daily-tasks/" &gt;日常任务&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;系统管理员（第2-4周）&lt;span class="hx:absolute hx:-mt-20" id="系统管理员第2-4周"&gt;&lt;/span&gt;
+&lt;a href="#%e7%b3%bb%e7%bb%9f%e7%ae%a1%e7%90%86%e5%91%98%e7%ac%ac2-4%e5%91%a8" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;学习&lt;a href="https://wiki.bigledger.com/zh/user-guide/administration/" &gt;管理&lt;/a&gt;指南&lt;/li&gt;
+&lt;li&gt;配置用户管理和安全&lt;/li&gt;
+&lt;li&gt;设置&lt;a href="https://wiki.bigledger.com/zh/user-guide/reports-analytics/" &gt;报表与分析&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;所有用户（持续）&lt;span class="hx:absolute hx:-mt-20" id="所有用户持续"&gt;&lt;/span&gt;
+&lt;a href="#%e6%89%80%e6%9c%89%e7%94%a8%e6%88%b7%e6%8c%81%e7%bb%ad" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;应用&lt;a href="https://wiki.bigledger.com/zh/user-guide/best-practices/" &gt;最佳实践&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;需要时参考&lt;a href="https://wiki.bigledger.com/zh/user-guide/troubleshooting/" &gt;故障排除&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;探索相关业务模块&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;成功策略&lt;/strong&gt;：大多数成功的实施都遵循分阶段的方法 - 首先让核心操作正常运行，然后随着您的团队熟悉平台逐渐添加专业功能。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2&gt;🤝 获取帮助和支持&lt;span class="hx:absolute hx:-mt-20" id="-获取帮助和支持"&gt;&lt;/span&gt;
+&lt;a href="#-%e8%8e%b7%e5%8f%96%e5%b8%ae%e5%8a%a9%e5%92%8c%e6%94%af%e6%8c%81" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;支持渠道&lt;span class="hx:absolute hx:-mt-20" id="支持渠道"&gt;&lt;/span&gt;
+&lt;a href="#%e6%94%af%e6%8c%81%e6%b8%a0%e9%81%93" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;📧 常规支持&lt;/strong&gt;：sales@bigledger.com 用于咨询和销售问题&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;💬 技术支持&lt;/strong&gt;：vincent@bigledger.com 用于技术援助&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;📱 快速聊天&lt;/strong&gt;：Telegram @leehongfay 用于即时问题&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;🌐 网站&lt;/strong&gt;：&lt;a href="https://www.bigledger.com" target="_blank" rel="noopener"&gt;www.bigledger.com&lt;/a&gt; 获取最新更新&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;学习资源&lt;span class="hx:absolute hx:-mt-20" id="学习资源"&gt;&lt;/span&gt;
+&lt;a href="#%e5%ad%a6%e4%b9%a0%e8%b5%84%e6%ba%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;📚 文档&lt;/strong&gt;：全面的用户指南和教程&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;🎥 视频库&lt;/strong&gt;：分步视觉学习资源&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;👥 社区&lt;/strong&gt;：与其他 BigLedger 用户和专家联系&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;🎓 培训&lt;/strong&gt;：结构化课程和认证计划&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;快速帮助&lt;/strong&gt;：使用每页可用的应用内帮助系统（？），或从我们的&lt;a href="https://wiki.bigledger.com/zh/user-guide/troubleshooting/" &gt;故障排除指南&lt;/a&gt;开始解决常见问题。&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;开发者资源&lt;span class="hx:absolute hx:-mt-20" id="开发者资源"&gt;&lt;/span&gt;
+&lt;a href="#%e5%bc%80%e5%8f%91%e8%80%85%e8%b5%84%e6%ba%90" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;面向技术用户和系统集成商：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/developers/" &gt;开发者文档&lt;/a&gt;&lt;/strong&gt; - API、SDK 和集成指南&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/developers/api-reference/" &gt;API 参考&lt;/a&gt;&lt;/strong&gt; - 全面的技术文档&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/zh/developers/applet-sdk/" &gt;自定义开发&lt;/a&gt;&lt;/strong&gt; - 构建自定义小程序和扩展&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

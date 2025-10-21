@@ -1,117 +1,117 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Inventory Management</title><link>https://wiki.bigledger.com/guides/inventory-guides/</link><description>Recent content in Inventory Management on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/guides/inventory-guides/index.xml" rel="self" type="application/rss+xml"/><item><title>Stock Management Guide</title><link>https://wiki.bigledger.com/guides/inventory-guides/stock-management/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/guides/inventory-guides/stock-management/</guid><description>
-&lt;p>Complete inventory management with BigLedger.&lt;/p>
-&lt;h2>Stock Setup&lt;span class="hx:absolute hx:-mt-20" id="stock-setup">&lt;/span>
-&lt;a href="#stock-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Item Master&lt;span class="hx:absolute hx:-mt-20" id="item-master">&lt;/span>
-&lt;a href="#item-master" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Create item codes&lt;/li>
-&lt;li>Set descriptions&lt;/li>
-&lt;li>Define units of measure&lt;/li>
-&lt;li>Assign categories&lt;/li>
-&lt;li>Set reorder points&lt;/li>
-&lt;/ol>
-&lt;h3>Warehouse Configuration&lt;span class="hx:absolute hx:-mt-20" id="warehouse-configuration">&lt;/span>
-&lt;a href="#warehouse-configuration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Location setup&lt;/li>
-&lt;li>Bin management&lt;/li>
-&lt;li>Zone definition&lt;/li>
-&lt;li>Capacity planning&lt;/li>
-&lt;/ul>
-&lt;h2>Stock Transactions&lt;span class="hx:absolute hx:-mt-20" id="stock-transactions">&lt;/span>
-&lt;a href="#stock-transactions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Goods Receipt&lt;span class="hx:absolute hx:-mt-20" id="goods-receipt">&lt;/span>
-&lt;a href="#goods-receipt" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>From purchase orders&lt;/li>
-&lt;li>Direct receipts&lt;/li>
-&lt;li>Customer returns&lt;/li>
-&lt;li>Production output&lt;/li>
-&lt;/ol>
-&lt;h3>Stock Issue&lt;span class="hx:absolute hx:-mt-20" id="stock-issue">&lt;/span>
-&lt;a href="#stock-issue" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Sales orders&lt;/li>
-&lt;li>Internal consumption&lt;/li>
-&lt;li>Production input&lt;/li>
-&lt;li>Write-offs&lt;/li>
-&lt;/ol>
-&lt;h3>Stock Transfer&lt;span class="hx:absolute hx:-mt-20" id="stock-transfer">&lt;/span>
-&lt;a href="#stock-transfer" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Inter-warehouse&lt;/li>
-&lt;li>Inter-location&lt;/li>
-&lt;li>Consignment&lt;/li>
-&lt;li>In-transit tracking&lt;/li>
-&lt;/ul>
-&lt;h2>Stock Valuation&lt;span class="hx:absolute hx:-mt-20" id="stock-valuation">&lt;/span>
-&lt;a href="#stock-valuation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Methods Available&lt;span class="hx:absolute hx:-mt-20" id="methods-available">&lt;/span>
-&lt;a href="#methods-available" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>FIFO&lt;/li>
-&lt;li>Weighted Average&lt;/li>
-&lt;li>Standard Cost&lt;/li>
-&lt;li>Specific Identification&lt;/li>
-&lt;/ul>
-&lt;h3>Periodic Tasks&lt;span class="hx:absolute hx:-mt-20" id="periodic-tasks">&lt;/span>
-&lt;a href="#periodic-tasks" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Cycle counting&lt;/li>
-&lt;li>Physical inventory&lt;/li>
-&lt;li>Revaluation&lt;/li>
-&lt;li>Obsolescence review&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;p>&lt;em>Inventory support: &lt;a href="mailto:support@bigledger.com" >support@bigledger.com&lt;/a>&lt;/em>&lt;/p></description></item><item><title>Stock Transfer Procedures</title><link>https://wiki.bigledger.com/guides/inventory-guides/stock-transfer/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/guides/inventory-guides/stock-transfer/</guid><description>
-&lt;p>Manage inventory movements between locations.&lt;/p>
-&lt;h2>Transfer Types&lt;span class="hx:absolute hx:-mt-20" id="transfer-types">&lt;/span>
-&lt;a href="#transfer-types" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Inter-Warehouse Transfer&lt;span class="hx:absolute hx:-mt-20" id="inter-warehouse-transfer">&lt;/span>
-&lt;a href="#inter-warehouse-transfer" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Moving stock between warehouses:&lt;/p>
-&lt;ol>
-&lt;li>Create transfer order&lt;/li>
-&lt;li>Pick items&lt;/li>
-&lt;li>Ship to destination&lt;/li>
-&lt;li>Receive at target&lt;/li>
-&lt;li>Update inventory&lt;/li>
-&lt;/ol>
-&lt;h3>Inter-Branch Transfer&lt;span class="hx:absolute hx:-mt-20" id="inter-branch-transfer">&lt;/span>
-&lt;a href="#inter-branch-transfer" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Between company branches:&lt;/p>
-&lt;ul>
-&lt;li>Transfer pricing&lt;/li>
-&lt;li>Tax implications&lt;/li>
-&lt;li>Documentation&lt;/li>
-&lt;li>Approval workflow&lt;/li>
-&lt;/ul>
-&lt;h2>Transfer Process&lt;span class="hx:absolute hx:-mt-20" id="transfer-process">&lt;/span>
-&lt;a href="#transfer-process" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Initiation&lt;span class="hx:absolute hx:-mt-20" id="initiation">&lt;/span>
-&lt;a href="#initiation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Create transfer request&lt;/li>
-&lt;li>Check availability&lt;/li>
-&lt;li>Get approvals&lt;/li>
-&lt;li>Generate transfer order&lt;/li>
-&lt;/ol>
-&lt;h3>Execution&lt;span class="hx:absolute hx:-mt-20" id="execution">&lt;/span>
-&lt;a href="#execution" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Pick items&lt;/li>
-&lt;li>Pack and label&lt;/li>
-&lt;li>Create shipping docs&lt;/li>
-&lt;li>Update in-transit&lt;/li>
-&lt;li>Track shipment&lt;/li>
-&lt;/ol>
-&lt;h3>Completion&lt;span class="hx:absolute hx:-mt-20" id="completion">&lt;/span>
-&lt;a href="#completion" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>Receive goods&lt;/li>
-&lt;li>Verify quantities&lt;/li>
-&lt;li>Handle discrepancies&lt;/li>
-&lt;li>Update inventory&lt;/li>
-&lt;li>Close transfer&lt;/li>
-&lt;/ol>
-&lt;h2>Controls&lt;span class="hx:absolute hx:-mt-20" id="controls">&lt;/span>
-&lt;a href="#controls" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Approval Matrix&lt;span class="hx:absolute hx:-mt-20" id="approval-matrix">&lt;/span>
-&lt;a href="#approval-matrix" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Request approval&lt;/li>
-&lt;li>Shipping approval&lt;/li>
-&lt;li>Receiving approval&lt;/li>
-&lt;li>Variance approval&lt;/li>
-&lt;/ul>
-&lt;h3>Documentation&lt;span class="hx:absolute hx:-mt-20" id="documentation">&lt;/span>
-&lt;a href="#documentation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Transfer order&lt;/li>
-&lt;li>Packing list&lt;/li>
-&lt;li>Delivery note&lt;/li>
-&lt;li>Receipt confirmation&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;p>&lt;em>Transfer support: &lt;a href="mailto:inventory@bigledger.com" >inventory@bigledger.com&lt;/a>&lt;/em>&lt;/p></description></item></channel></rss>
+&lt;p&gt;Complete inventory management with BigLedger.&lt;/p&gt;
+&lt;h2&gt;Stock Setup&lt;span class="hx:absolute hx:-mt-20" id="stock-setup"&gt;&lt;/span&gt;
+&lt;a href="#stock-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Item Master&lt;span class="hx:absolute hx:-mt-20" id="item-master"&gt;&lt;/span&gt;
+&lt;a href="#item-master" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Create item codes&lt;/li&gt;
+&lt;li&gt;Set descriptions&lt;/li&gt;
+&lt;li&gt;Define units of measure&lt;/li&gt;
+&lt;li&gt;Assign categories&lt;/li&gt;
+&lt;li&gt;Set reorder points&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Warehouse Configuration&lt;span class="hx:absolute hx:-mt-20" id="warehouse-configuration"&gt;&lt;/span&gt;
+&lt;a href="#warehouse-configuration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Location setup&lt;/li&gt;
+&lt;li&gt;Bin management&lt;/li&gt;
+&lt;li&gt;Zone definition&lt;/li&gt;
+&lt;li&gt;Capacity planning&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Stock Transactions&lt;span class="hx:absolute hx:-mt-20" id="stock-transactions"&gt;&lt;/span&gt;
+&lt;a href="#stock-transactions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Goods Receipt&lt;span class="hx:absolute hx:-mt-20" id="goods-receipt"&gt;&lt;/span&gt;
+&lt;a href="#goods-receipt" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;From purchase orders&lt;/li&gt;
+&lt;li&gt;Direct receipts&lt;/li&gt;
+&lt;li&gt;Customer returns&lt;/li&gt;
+&lt;li&gt;Production output&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Stock Issue&lt;span class="hx:absolute hx:-mt-20" id="stock-issue"&gt;&lt;/span&gt;
+&lt;a href="#stock-issue" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Sales orders&lt;/li&gt;
+&lt;li&gt;Internal consumption&lt;/li&gt;
+&lt;li&gt;Production input&lt;/li&gt;
+&lt;li&gt;Write-offs&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Stock Transfer&lt;span class="hx:absolute hx:-mt-20" id="stock-transfer"&gt;&lt;/span&gt;
+&lt;a href="#stock-transfer" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Inter-warehouse&lt;/li&gt;
+&lt;li&gt;Inter-location&lt;/li&gt;
+&lt;li&gt;Consignment&lt;/li&gt;
+&lt;li&gt;In-transit tracking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Stock Valuation&lt;span class="hx:absolute hx:-mt-20" id="stock-valuation"&gt;&lt;/span&gt;
+&lt;a href="#stock-valuation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Methods Available&lt;span class="hx:absolute hx:-mt-20" id="methods-available"&gt;&lt;/span&gt;
+&lt;a href="#methods-available" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;FIFO&lt;/li&gt;
+&lt;li&gt;Weighted Average&lt;/li&gt;
+&lt;li&gt;Standard Cost&lt;/li&gt;
+&lt;li&gt;Specific Identification&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Periodic Tasks&lt;span class="hx:absolute hx:-mt-20" id="periodic-tasks"&gt;&lt;/span&gt;
+&lt;a href="#periodic-tasks" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Cycle counting&lt;/li&gt;
+&lt;li&gt;Physical inventory&lt;/li&gt;
+&lt;li&gt;Revaluation&lt;/li&gt;
+&lt;li&gt;Obsolescence review&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Inventory support: &lt;a href="mailto:support@bigledger.com" &gt;support@bigledger.com&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Stock Transfer Procedures</title><link>https://wiki.bigledger.com/guides/inventory-guides/stock-transfer/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/guides/inventory-guides/stock-transfer/</guid><description>
+&lt;p&gt;Manage inventory movements between locations.&lt;/p&gt;
+&lt;h2&gt;Transfer Types&lt;span class="hx:absolute hx:-mt-20" id="transfer-types"&gt;&lt;/span&gt;
+&lt;a href="#transfer-types" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Inter-Warehouse Transfer&lt;span class="hx:absolute hx:-mt-20" id="inter-warehouse-transfer"&gt;&lt;/span&gt;
+&lt;a href="#inter-warehouse-transfer" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Moving stock between warehouses:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create transfer order&lt;/li&gt;
+&lt;li&gt;Pick items&lt;/li&gt;
+&lt;li&gt;Ship to destination&lt;/li&gt;
+&lt;li&gt;Receive at target&lt;/li&gt;
+&lt;li&gt;Update inventory&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Inter-Branch Transfer&lt;span class="hx:absolute hx:-mt-20" id="inter-branch-transfer"&gt;&lt;/span&gt;
+&lt;a href="#inter-branch-transfer" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Between company branches:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Transfer pricing&lt;/li&gt;
+&lt;li&gt;Tax implications&lt;/li&gt;
+&lt;li&gt;Documentation&lt;/li&gt;
+&lt;li&gt;Approval workflow&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Transfer Process&lt;span class="hx:absolute hx:-mt-20" id="transfer-process"&gt;&lt;/span&gt;
+&lt;a href="#transfer-process" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Initiation&lt;span class="hx:absolute hx:-mt-20" id="initiation"&gt;&lt;/span&gt;
+&lt;a href="#initiation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Create transfer request&lt;/li&gt;
+&lt;li&gt;Check availability&lt;/li&gt;
+&lt;li&gt;Get approvals&lt;/li&gt;
+&lt;li&gt;Generate transfer order&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Execution&lt;span class="hx:absolute hx:-mt-20" id="execution"&gt;&lt;/span&gt;
+&lt;a href="#execution" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Pick items&lt;/li&gt;
+&lt;li&gt;Pack and label&lt;/li&gt;
+&lt;li&gt;Create shipping docs&lt;/li&gt;
+&lt;li&gt;Update in-transit&lt;/li&gt;
+&lt;li&gt;Track shipment&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Completion&lt;span class="hx:absolute hx:-mt-20" id="completion"&gt;&lt;/span&gt;
+&lt;a href="#completion" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;Receive goods&lt;/li&gt;
+&lt;li&gt;Verify quantities&lt;/li&gt;
+&lt;li&gt;Handle discrepancies&lt;/li&gt;
+&lt;li&gt;Update inventory&lt;/li&gt;
+&lt;li&gt;Close transfer&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Controls&lt;span class="hx:absolute hx:-mt-20" id="controls"&gt;&lt;/span&gt;
+&lt;a href="#controls" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Approval Matrix&lt;span class="hx:absolute hx:-mt-20" id="approval-matrix"&gt;&lt;/span&gt;
+&lt;a href="#approval-matrix" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Request approval&lt;/li&gt;
+&lt;li&gt;Shipping approval&lt;/li&gt;
+&lt;li&gt;Receiving approval&lt;/li&gt;
+&lt;li&gt;Variance approval&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Documentation&lt;span class="hx:absolute hx:-mt-20" id="documentation"&gt;&lt;/span&gt;
+&lt;a href="#documentation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Transfer order&lt;/li&gt;
+&lt;li&gt;Packing list&lt;/li&gt;
+&lt;li&gt;Delivery note&lt;/li&gt;
+&lt;li&gt;Receipt confirmation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;em&gt;Transfer support: &lt;a href="mailto:inventory@bigledger.com" &gt;inventory@bigledger.com&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description></item></channel></rss>

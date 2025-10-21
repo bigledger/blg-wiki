@@ -1,389 +1,389 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Employee-Management</title><link>https://wiki.bigledger.com/tags/employee-management/</link><description>Recent content in Employee-Management on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/employee-management/index.xml" rel="self" type="application/rss+xml"/><item><title>Employee Maintenance Applet</title><link>https://wiki.bigledger.com/applets/employee-maintenance-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/employee-maintenance-applet/</guid><description>
-&lt;h2>Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview">&lt;/span>
-&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The Employee Maintenance Applet is the foundational HR component in BigLedger&amp;rsquo;s Core Module, providing comprehensive employee master records management that supports human resources, payroll, organizational structure, and employee-related operations across all modules.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Core Module Applet&lt;/strong>: This is one of the 13 essential Core Module applets, fundamental for any business with employees and organizational structure requirements.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h3>Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions">&lt;/span>
-&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Employee Profile Management&lt;/strong> - Complete employee information repository&lt;/li>
-&lt;li>&lt;strong>Organizational Structure&lt;/strong> - Department and reporting relationships&lt;/li>
-&lt;li>&lt;strong>Role and Permission Management&lt;/strong> - System access and authorization&lt;/li>
-&lt;li>&lt;strong>Compensation Management&lt;/strong> - Salary, benefits, and compensation data&lt;/li>
-&lt;li>&lt;strong>HR Integration&lt;/strong> - Foundation for all HR and payroll operations&lt;/li>
-&lt;/ul>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Employee Information Management&lt;span class="hx:absolute hx:-mt-20" id="employee-information-management">&lt;/span>
-&lt;a href="#employee-information-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Complete employee profiles with personal information&lt;/li>
-&lt;li>Employment history and career progression&lt;/li>
-&lt;li>Emergency contact information and next of kin&lt;/li>
-&lt;li>Educational background and qualifications&lt;/li>
-&lt;li>Skills, certifications, and competencies&lt;/li>
-&lt;li>Performance evaluation history&lt;/li>
-&lt;/ul>
-&lt;h3>Organizational Structure Management&lt;span class="hx:absolute hx:-mt-20" id="organizational-structure-management">&lt;/span>
-&lt;a href="#organizational-structure-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Department and division assignments&lt;/li>
-&lt;li>Reporting relationships and hierarchies&lt;/li>
-&lt;li>Team and project assignments&lt;/li>
-&lt;li>Location and workspace allocation&lt;/li>
-&lt;li>Cost center and budget allocation&lt;/li>
-&lt;li>Matrix organization support&lt;/li>
-&lt;/ul>
-&lt;h3>Employment and Compensation&lt;span class="hx:absolute hx:-mt-20" id="employment-and-compensation">&lt;/span>
-&lt;a href="#employment-and-compensation" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Employment contracts and terms&lt;/li>
-&lt;li>Salary and compensation structures&lt;/li>
-&lt;li>Benefits enrollment and management&lt;/li>
-&lt;li>Leave entitlements and balances&lt;/li>
-&lt;li>Overtime and allowance policies&lt;/li>
-&lt;li>Performance-based compensation&lt;/li>
-&lt;/ul>
-&lt;h3>System Access and Security&lt;span class="hx:absolute hx:-mt-20" id="system-access-and-security">&lt;/span>
-&lt;a href="#system-access-and-security" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>User account creation and management&lt;/li>
-&lt;li>Role-based access control assignment&lt;/li>
-&lt;li>Module and feature permissions&lt;/li>
-&lt;li>Data access restrictions&lt;/li>
-&lt;li>Approval hierarchy definitions&lt;/li>
-&lt;li>Digital signature authorities&lt;/li>
-&lt;/ul>
-&lt;h3>HR and Administrative Support&lt;span class="hx:absolute hx:-mt-20" id="hr-and-administrative-support">&lt;/span>
-&lt;a href="#hr-and-administrative-support" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Document storage and management&lt;/li>
-&lt;li>Training and development records&lt;/li>
-&lt;li>Disciplinary actions and warnings&lt;/li>
-&lt;li>Recognition and awards tracking&lt;/li>
-&lt;li>Exit interview and termination processing&lt;/li>
-&lt;li>Regulatory compliance documentation&lt;/li>
-&lt;/ul>
-&lt;h2>Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications">&lt;/span>
-&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements">&lt;/span>
-&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Minimum Access Level&lt;/strong>: HR Administrator&lt;/li>
-&lt;li>&lt;strong>Database Dependencies&lt;/strong>: Employee master tables&lt;/li>
-&lt;li>&lt;strong>Integration Points&lt;/strong>: HR, payroll, and all operational modules&lt;/li>
-&lt;li>&lt;strong>API Availability&lt;/strong>: Full CRUD operations with privacy controls&lt;/li>
-&lt;li>&lt;strong>Document Storage&lt;/strong>: Secure employee document management&lt;/li>
-&lt;/ul>
-&lt;h3>Employee Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="employee-configuration-options">&lt;/span>
-&lt;a href="#employee-configuration-options" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Employee ID Length&lt;/strong>: 3-20 characters&lt;/li>
-&lt;li>&lt;strong>Personal Information&lt;/strong>: Comprehensive demographic data&lt;/li>
-&lt;li>&lt;strong>Employment History&lt;/strong>: Unlimited position records&lt;/li>
-&lt;li>&lt;strong>Custom Fields&lt;/strong>: Up to 40 custom fields&lt;/li>
-&lt;li>&lt;strong>Document Attachments&lt;/strong>: Secure document storage up to 1GB per employee&lt;/li>
-&lt;/ul>
-&lt;h3>Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters">&lt;/span>
-&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Employee Capacity&lt;/strong>: Up to 100,000 employees&lt;/li>
-&lt;li>&lt;strong>Search Performance&lt;/strong>: &amp;lt;1 second for complex searches&lt;/li>
-&lt;li>&lt;strong>Bulk Operations&lt;/strong>: Process 1,000+ employees per batch&lt;/li>
-&lt;li>&lt;strong>Concurrent Users&lt;/strong>: 200+ simultaneous users&lt;/li>
-&lt;li>&lt;strong>Security Compliance&lt;/strong>: GDPR, CCPA, and local privacy law compliance&lt;/li>
-&lt;/ul>
-&lt;h2>Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points">&lt;/span>
-&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies">&lt;/span>
-&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Organization Applet&lt;/strong> - Company and department structure&lt;/li>
-&lt;li>&lt;strong>Tenant Admin Applet&lt;/strong> - User account and system access&lt;/li>
-&lt;li>&lt;strong>Chart of Account Applet&lt;/strong> - Payroll and expense accounts&lt;/li>
-&lt;li>&lt;strong>Tax Configuration Applet&lt;/strong> - Employee tax settings&lt;/li>
-&lt;/ul>
-&lt;h3>Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration">&lt;/span>
-&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Module&lt;/th>
-&lt;th>Integration Purpose&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>HR &amp;amp; Payroll&lt;/strong>&lt;/td>
-&lt;td>Complete human resource management&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Time Tracking&lt;/strong>&lt;/td>
-&lt;td>Employee time and attendance&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Project Management&lt;/strong>&lt;/td>
-&lt;td>Project team assignments&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Sales &amp;amp; CRM&lt;/strong>&lt;/td>
-&lt;td>Sales representative assignments&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Manufacturing&lt;/strong>&lt;/td>
-&lt;td>Production team management&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Quality Management&lt;/strong>&lt;/td>
-&lt;td>Quality inspector assignments&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Asset Management&lt;/strong>&lt;/td>
-&lt;td>Asset custody and responsibility&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3>External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations">&lt;/span>
-&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>HRIS Systems&lt;/strong> - Human resource information systems&lt;/li>
-&lt;li>&lt;strong>Payroll Services&lt;/strong> - External payroll processing&lt;/li>
-&lt;li>&lt;strong>Time Tracking Systems&lt;/strong> - Attendance and time capture&lt;/li>
-&lt;li>&lt;strong>Learning Management&lt;/strong> - Training and development platforms&lt;/li>
-&lt;li>&lt;strong>Background Check Services&lt;/strong> - Employment verification&lt;/li>
-&lt;li>&lt;strong>Benefits Providers&lt;/strong> - Insurance and benefits administration&lt;/li>
-&lt;/ul>
-&lt;h2>Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements">&lt;/span>
-&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements">&lt;/span>
-&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Organizational Structure&lt;/strong> - Define departments and divisions&lt;/li>
-&lt;li>&lt;strong>Employee Categories&lt;/strong> - Set up employee classifications&lt;/li>
-&lt;li>&lt;strong>Position Types&lt;/strong> - Configure job positions and roles&lt;/li>
-&lt;li>&lt;strong>Compensation Structures&lt;/strong> - Set up pay scales and grades&lt;/li>
-&lt;li>&lt;strong>Benefits Plans&lt;/strong> - Configure employee benefits&lt;/li>
-&lt;/ol>
-&lt;h3>Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations">&lt;/span>
-&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Employee Types&lt;/strong>: Full-time, Part-time, Contract, Intern, Consultant&lt;/li>
-&lt;li>&lt;strong>Department Structure&lt;/strong>: Sales, Operations, Finance, HR, IT&lt;/li>
-&lt;li>&lt;strong>Position Levels&lt;/strong>: Entry, Junior, Senior, Manager, Director, Executive&lt;/li>
-&lt;li>&lt;strong>Employment Status&lt;/strong>: Active, Inactive, On Leave, Terminated&lt;/li>
-&lt;li>&lt;strong>Access Roles&lt;/strong>: Administrator, User, Manager, View-only&lt;/li>
-&lt;/ul>
-&lt;h3>Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations">&lt;/span>
-&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Matrix Organizations&lt;/strong> - Multiple reporting relationships&lt;/li>
-&lt;li>&lt;strong>Multi-Location Support&lt;/strong> - Employees across different locations&lt;/li>
-&lt;li>&lt;strong>Succession Planning&lt;/strong> - Career development and succession&lt;/li>
-&lt;li>&lt;strong>Competency Management&lt;/strong> - Skills and capability tracking&lt;/li>
-&lt;li>&lt;strong>Performance Management&lt;/strong> - Goal setting and evaluation&lt;/li>
-&lt;/ul>
-&lt;h2>Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases">&lt;/span>
-&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Small Business Operations&lt;span class="hx:absolute hx:-mt-20" id="small-business-operations">&lt;/span>
-&lt;a href="#small-business-operations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Local retail business with 20 employees&lt;/p>
-&lt;ul>
-&lt;li>Basic employee information management&lt;/li>
-&lt;li>Simple organizational structure&lt;/li>
-&lt;li>Role-based system access&lt;/li>
-&lt;li>Basic payroll integration&lt;/li>
-&lt;li>Leave management&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Streamlined employee administration&lt;/p>
-&lt;h3>Mid-Size Manufacturing Company&lt;span class="hx:absolute hx:-mt-20" id="mid-size-manufacturing-company">&lt;/span>
-&lt;a href="#mid-size-manufacturing-company" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Manufacturing facility with 200 employees&lt;/p>
-&lt;ul>
-&lt;li>Complex organizational hierarchy&lt;/li>
-&lt;li>Shift-based workforce management&lt;/li>
-&lt;li>Skills and certification tracking&lt;/li>
-&lt;li>Safety compliance monitoring&lt;/li>
-&lt;li>Production team assignments&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Comprehensive workforce management&lt;/p>
-&lt;h3>Professional Services Firm&lt;span class="hx:absolute hx:-mt-20" id="professional-services-firm">&lt;/span>
-&lt;a href="#professional-services-firm" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Consulting company with project-based work&lt;/p>
-&lt;ul>
-&lt;li>Project team assignments&lt;/li>
-&lt;li>Billable hours tracking&lt;/li>
-&lt;li>Client engagement management&lt;/li>
-&lt;li>Professional development tracking&lt;/li>
-&lt;li>Performance evaluation integration&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Optimized professional services delivery&lt;/p>
-&lt;h3>Multi-Location Enterprise&lt;span class="hx:absolute hx:-mt-20" id="multi-location-enterprise">&lt;/span>
-&lt;a href="#multi-location-enterprise" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Retail chain with 500+ employees across locations&lt;/p>
-&lt;ul>
-&lt;li>Centralized employee database&lt;/li>
-&lt;li>Location-specific management&lt;/li>
-&lt;li>Transfer and mobility tracking&lt;/li>
-&lt;li>Standardized HR processes&lt;/li>
-&lt;li>Corporate-wide reporting&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Scalable multi-location HR management&lt;/p>
-&lt;h2>Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets">&lt;/span>
-&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets">&lt;/span>
-&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" >Organization Applet&lt;/a>&lt;/strong> - Company and department structure&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/tenant-admin-applet/" >Tenant Admin Applet&lt;/a>&lt;/strong> - User access management&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/customer-maintenance-applet/" >Customer Maintenance Applet&lt;/a>&lt;/strong> - Sales representative assignments&lt;/li>
-&lt;/ul>
-&lt;h3>HR and Payroll Applets&lt;span class="hx:absolute hx:-mt-20" id="hr-and-payroll-applets">&lt;/span>
-&lt;a href="#hr-and-payroll-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/payroll-processing-applet/" >Payroll Processing Applet&lt;/a>&lt;/strong> - Employee compensation&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/time-attendance-applet/" >Time and Attendance Applet&lt;/a>&lt;/strong> - Work time tracking&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/leave-management-applet/" >Leave Management Applet&lt;/a>&lt;/strong> - Employee leave tracking&lt;/li>
-&lt;/ul>
-&lt;h3>Operational Applets&lt;span class="hx:absolute hx:-mt-20" id="operational-applets">&lt;/span>
-&lt;a href="#operational-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/project-team-applet/" >Project Team Applet&lt;/a>&lt;/strong> - Project assignments&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/sales-team-applet/" >Sales Team Applet&lt;/a>&lt;/strong> - Sales force management&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/asset-custody-applet/" >Asset Custody Applet&lt;/a>&lt;/strong> - Asset responsibility&lt;/li>
-&lt;/ul>
-&lt;h2>Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide">&lt;/span>
-&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start">&lt;/span>
-&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Access Employee Maintenance&lt;/strong> - Navigate to the applet&lt;/li>
-&lt;li>&lt;strong>Define Organizational Structure&lt;/strong> - Set up departments&lt;/li>
-&lt;li>&lt;strong>Configure Employee Categories&lt;/strong> - Set up classifications&lt;/li>
-&lt;li>&lt;strong>Create Sample Employees&lt;/strong> - Add test employee records&lt;/li>
-&lt;li>&lt;strong>Test Integration&lt;/strong> - Verify integration with other modules&lt;/li>
-&lt;/ol>
-&lt;h3>Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup">&lt;/span>
-&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Multi-Location Configuration&lt;/strong> - Set up location-based management&lt;/li>
-&lt;li>&lt;strong>Succession Planning Setup&lt;/strong> - Configure career development&lt;/li>
-&lt;li>&lt;strong>Competency Management&lt;/strong> - Set up skills tracking&lt;/li>
-&lt;li>&lt;strong>Integration Configuration&lt;/strong> - Connect external HR systems&lt;/li>
-&lt;li>&lt;strong>Compliance Setup&lt;/strong> - Configure regulatory compliance&lt;/li>
-&lt;/ol>
-&lt;h2>Employee Master Data Structure&lt;span class="hx:absolute hx:-mt-20" id="employee-master-data-structure">&lt;/span>
-&lt;a href="#employee-master-data-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Personal Information&lt;span class="hx:absolute hx:-mt-20" id="personal-information">&lt;/span>
-&lt;a href="#personal-information" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Employee ID&lt;/span>: &lt;span style="color:#ae81ff">EMP-001&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Full Name&lt;/span>: &lt;span style="color:#ae81ff">John Michael Smith&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Preferred Name&lt;/span>: &lt;span style="color:#ae81ff">John&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Date of Birth&lt;/span>: &lt;span style="color:#e6db74">1985-05-15&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Gender&lt;/span>: &lt;span style="color:#ae81ff">Male&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Nationality&lt;/span>: &lt;span style="color:#ae81ff">Malaysian&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">NRIC/Passport&lt;/span>: &lt;span style="color:#ae81ff">850515-10-1234&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Marital Status&lt;/span>: &lt;span style="color:#ae81ff">Married&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Contact Number&lt;/span>: &lt;span style="color:#ae81ff">+60-12-345-6789&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Email&lt;/span>: &lt;span style="color:#ae81ff">john.smith@company.com&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&lt;h2&gt;Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview"&gt;&lt;/span&gt;
+&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The Employee Maintenance Applet is the foundational HR component in BigLedger&amp;rsquo;s Core Module, providing comprehensive employee master records management that supports human resources, payroll, organizational structure, and employee-related operations across all modules.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Core Module Applet&lt;/strong&gt;: This is one of the 13 essential Core Module applets, fundamental for any business with employees and organizational structure requirements.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions"&gt;&lt;/span&gt;
+&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Employee Profile Management&lt;/strong&gt; - Complete employee information repository&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Organizational Structure&lt;/strong&gt; - Department and reporting relationships&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Role and Permission Management&lt;/strong&gt; - System access and authorization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compensation Management&lt;/strong&gt; - Salary, benefits, and compensation data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;HR Integration&lt;/strong&gt; - Foundation for all HR and payroll operations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Employee Information Management&lt;span class="hx:absolute hx:-mt-20" id="employee-information-management"&gt;&lt;/span&gt;
+&lt;a href="#employee-information-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Complete employee profiles with personal information&lt;/li&gt;
+&lt;li&gt;Employment history and career progression&lt;/li&gt;
+&lt;li&gt;Emergency contact information and next of kin&lt;/li&gt;
+&lt;li&gt;Educational background and qualifications&lt;/li&gt;
+&lt;li&gt;Skills, certifications, and competencies&lt;/li&gt;
+&lt;li&gt;Performance evaluation history&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Organizational Structure Management&lt;span class="hx:absolute hx:-mt-20" id="organizational-structure-management"&gt;&lt;/span&gt;
+&lt;a href="#organizational-structure-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Department and division assignments&lt;/li&gt;
+&lt;li&gt;Reporting relationships and hierarchies&lt;/li&gt;
+&lt;li&gt;Team and project assignments&lt;/li&gt;
+&lt;li&gt;Location and workspace allocation&lt;/li&gt;
+&lt;li&gt;Cost center and budget allocation&lt;/li&gt;
+&lt;li&gt;Matrix organization support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Employment and Compensation&lt;span class="hx:absolute hx:-mt-20" id="employment-and-compensation"&gt;&lt;/span&gt;
+&lt;a href="#employment-and-compensation" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Employment contracts and terms&lt;/li&gt;
+&lt;li&gt;Salary and compensation structures&lt;/li&gt;
+&lt;li&gt;Benefits enrollment and management&lt;/li&gt;
+&lt;li&gt;Leave entitlements and balances&lt;/li&gt;
+&lt;li&gt;Overtime and allowance policies&lt;/li&gt;
+&lt;li&gt;Performance-based compensation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;System Access and Security&lt;span class="hx:absolute hx:-mt-20" id="system-access-and-security"&gt;&lt;/span&gt;
+&lt;a href="#system-access-and-security" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;User account creation and management&lt;/li&gt;
+&lt;li&gt;Role-based access control assignment&lt;/li&gt;
+&lt;li&gt;Module and feature permissions&lt;/li&gt;
+&lt;li&gt;Data access restrictions&lt;/li&gt;
+&lt;li&gt;Approval hierarchy definitions&lt;/li&gt;
+&lt;li&gt;Digital signature authorities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;HR and Administrative Support&lt;span class="hx:absolute hx:-mt-20" id="hr-and-administrative-support"&gt;&lt;/span&gt;
+&lt;a href="#hr-and-administrative-support" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Document storage and management&lt;/li&gt;
+&lt;li&gt;Training and development records&lt;/li&gt;
+&lt;li&gt;Disciplinary actions and warnings&lt;/li&gt;
+&lt;li&gt;Recognition and awards tracking&lt;/li&gt;
+&lt;li&gt;Exit interview and termination processing&lt;/li&gt;
+&lt;li&gt;Regulatory compliance documentation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications"&gt;&lt;/span&gt;
+&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements"&gt;&lt;/span&gt;
+&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Minimum Access Level&lt;/strong&gt;: HR Administrator&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Dependencies&lt;/strong&gt;: Employee master tables&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Points&lt;/strong&gt;: HR, payroll, and all operational modules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Availability&lt;/strong&gt;: Full CRUD operations with privacy controls&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Document Storage&lt;/strong&gt;: Secure employee document management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Employee Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="employee-configuration-options"&gt;&lt;/span&gt;
+&lt;a href="#employee-configuration-options" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Employee ID Length&lt;/strong&gt;: 3-20 characters&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Personal Information&lt;/strong&gt;: Comprehensive demographic data&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Employment History&lt;/strong&gt;: Unlimited position records&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Fields&lt;/strong&gt;: Up to 40 custom fields&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Document Attachments&lt;/strong&gt;: Secure document storage up to 1GB per employee&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters"&gt;&lt;/span&gt;
+&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Employee Capacity&lt;/strong&gt;: Up to 100,000 employees&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Search Performance&lt;/strong&gt;: &amp;lt;1 second for complex searches&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Bulk Operations&lt;/strong&gt;: Process 1,000+ employees per batch&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Concurrent Users&lt;/strong&gt;: 200+ simultaneous users&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security Compliance&lt;/strong&gt;: GDPR, CCPA, and local privacy law compliance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points"&gt;&lt;/span&gt;
+&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies"&gt;&lt;/span&gt;
+&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Organization Applet&lt;/strong&gt; - Company and department structure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tenant Admin Applet&lt;/strong&gt; - User account and system access&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Chart of Account Applet&lt;/strong&gt; - Payroll and expense accounts&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tax Configuration Applet&lt;/strong&gt; - Employee tax settings&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration"&gt;&lt;/span&gt;
+&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Module&lt;/th&gt;
+&lt;th&gt;Integration Purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;HR &amp;amp; Payroll&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Complete human resource management&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Time Tracking&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Employee time and attendance&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Project Management&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Project team assignments&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Sales &amp;amp; CRM&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Sales representative assignments&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Manufacturing&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Production team management&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Quality Management&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Quality inspector assignments&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Asset Management&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Asset custody and responsibility&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations"&gt;&lt;/span&gt;
+&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;HRIS Systems&lt;/strong&gt; - Human resource information systems&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Payroll Services&lt;/strong&gt; - External payroll processing&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Time Tracking Systems&lt;/strong&gt; - Attendance and time capture&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Learning Management&lt;/strong&gt; - Training and development platforms&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Background Check Services&lt;/strong&gt; - Employment verification&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Benefits Providers&lt;/strong&gt; - Insurance and benefits administration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements"&gt;&lt;/span&gt;
+&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements"&gt;&lt;/span&gt;
+&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Organizational Structure&lt;/strong&gt; - Define departments and divisions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Employee Categories&lt;/strong&gt; - Set up employee classifications&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Position Types&lt;/strong&gt; - Configure job positions and roles&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compensation Structures&lt;/strong&gt; - Set up pay scales and grades&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Benefits Plans&lt;/strong&gt; - Configure employee benefits&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations"&gt;&lt;/span&gt;
+&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Employee Types&lt;/strong&gt;: Full-time, Part-time, Contract, Intern, Consultant&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Department Structure&lt;/strong&gt;: Sales, Operations, Finance, HR, IT&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Position Levels&lt;/strong&gt;: Entry, Junior, Senior, Manager, Director, Executive&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Employment Status&lt;/strong&gt;: Active, Inactive, On Leave, Terminated&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Access Roles&lt;/strong&gt;: Administrator, User, Manager, View-only&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations"&gt;&lt;/span&gt;
+&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Matrix Organizations&lt;/strong&gt; - Multiple reporting relationships&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Location Support&lt;/strong&gt; - Employees across different locations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Succession Planning&lt;/strong&gt; - Career development and succession&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Competency Management&lt;/strong&gt; - Skills and capability tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Management&lt;/strong&gt; - Goal setting and evaluation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases"&gt;&lt;/span&gt;
+&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Small Business Operations&lt;span class="hx:absolute hx:-mt-20" id="small-business-operations"&gt;&lt;/span&gt;
+&lt;a href="#small-business-operations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Local retail business with 20 employees&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basic employee information management&lt;/li&gt;
+&lt;li&gt;Simple organizational structure&lt;/li&gt;
+&lt;li&gt;Role-based system access&lt;/li&gt;
+&lt;li&gt;Basic payroll integration&lt;/li&gt;
+&lt;li&gt;Leave management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Streamlined employee administration&lt;/p&gt;
+&lt;h3&gt;Mid-Size Manufacturing Company&lt;span class="hx:absolute hx:-mt-20" id="mid-size-manufacturing-company"&gt;&lt;/span&gt;
+&lt;a href="#mid-size-manufacturing-company" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Manufacturing facility with 200 employees&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Complex organizational hierarchy&lt;/li&gt;
+&lt;li&gt;Shift-based workforce management&lt;/li&gt;
+&lt;li&gt;Skills and certification tracking&lt;/li&gt;
+&lt;li&gt;Safety compliance monitoring&lt;/li&gt;
+&lt;li&gt;Production team assignments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Comprehensive workforce management&lt;/p&gt;
+&lt;h3&gt;Professional Services Firm&lt;span class="hx:absolute hx:-mt-20" id="professional-services-firm"&gt;&lt;/span&gt;
+&lt;a href="#professional-services-firm" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Consulting company with project-based work&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Project team assignments&lt;/li&gt;
+&lt;li&gt;Billable hours tracking&lt;/li&gt;
+&lt;li&gt;Client engagement management&lt;/li&gt;
+&lt;li&gt;Professional development tracking&lt;/li&gt;
+&lt;li&gt;Performance evaluation integration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Optimized professional services delivery&lt;/p&gt;
+&lt;h3&gt;Multi-Location Enterprise&lt;span class="hx:absolute hx:-mt-20" id="multi-location-enterprise"&gt;&lt;/span&gt;
+&lt;a href="#multi-location-enterprise" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Retail chain with 500+ employees across locations&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Centralized employee database&lt;/li&gt;
+&lt;li&gt;Location-specific management&lt;/li&gt;
+&lt;li&gt;Transfer and mobility tracking&lt;/li&gt;
+&lt;li&gt;Standardized HR processes&lt;/li&gt;
+&lt;li&gt;Corporate-wide reporting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Scalable multi-location HR management&lt;/p&gt;
+&lt;h2&gt;Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets"&gt;&lt;/span&gt;
+&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets"&gt;&lt;/span&gt;
+&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" &gt;Organization Applet&lt;/a&gt;&lt;/strong&gt; - Company and department structure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/tenant-admin-applet/" &gt;Tenant Admin Applet&lt;/a&gt;&lt;/strong&gt; - User access management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/customer-maintenance-applet/" &gt;Customer Maintenance Applet&lt;/a&gt;&lt;/strong&gt; - Sales representative assignments&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;HR and Payroll Applets&lt;span class="hx:absolute hx:-mt-20" id="hr-and-payroll-applets"&gt;&lt;/span&gt;
+&lt;a href="#hr-and-payroll-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/payroll-processing-applet/" &gt;Payroll Processing Applet&lt;/a&gt;&lt;/strong&gt; - Employee compensation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/time-attendance-applet/" &gt;Time and Attendance Applet&lt;/a&gt;&lt;/strong&gt; - Work time tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/leave-management-applet/" &gt;Leave Management Applet&lt;/a&gt;&lt;/strong&gt; - Employee leave tracking&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Operational Applets&lt;span class="hx:absolute hx:-mt-20" id="operational-applets"&gt;&lt;/span&gt;
+&lt;a href="#operational-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/project-team-applet/" &gt;Project Team Applet&lt;/a&gt;&lt;/strong&gt; - Project assignments&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/sales-team-applet/" &gt;Sales Team Applet&lt;/a&gt;&lt;/strong&gt; - Sales force management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/asset-custody-applet/" &gt;Asset Custody Applet&lt;/a&gt;&lt;/strong&gt; - Asset responsibility&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide"&gt;&lt;/span&gt;
+&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start"&gt;&lt;/span&gt;
+&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Access Employee Maintenance&lt;/strong&gt; - Navigate to the applet&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Define Organizational Structure&lt;/strong&gt; - Set up departments&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Configure Employee Categories&lt;/strong&gt; - Set up classifications&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Create Sample Employees&lt;/strong&gt; - Add test employee records&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test Integration&lt;/strong&gt; - Verify integration with other modules&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup"&gt;&lt;/span&gt;
+&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Multi-Location Configuration&lt;/strong&gt; - Set up location-based management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Succession Planning Setup&lt;/strong&gt; - Configure career development&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Competency Management&lt;/strong&gt; - Set up skills tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Configuration&lt;/strong&gt; - Connect external HR systems&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Compliance Setup&lt;/strong&gt; - Configure regulatory compliance&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Employee Master Data Structure&lt;span class="hx:absolute hx:-mt-20" id="employee-master-data-structure"&gt;&lt;/span&gt;
+&lt;a href="#employee-master-data-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Personal Information&lt;span class="hx:absolute hx:-mt-20" id="personal-information"&gt;&lt;/span&gt;
+&lt;a href="#personal-information" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Employee ID&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;EMP-001&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Full Name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;John Michael Smith&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Preferred Name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;John&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Date of Birth&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;1985-05-15&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Gender&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Male&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Nationality&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Malaysian&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;NRIC/Passport&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;850515-10-1234&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Marital Status&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Married&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Contact Number&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;+60-12-345-6789&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Email&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;john.smith@company.com&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Employment Information&lt;span class="hx:absolute hx:-mt-20" id="employment-information">&lt;/span>
-&lt;a href="#employment-information" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Employee Type&lt;/span>: &lt;span style="color:#ae81ff">Full-time&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Employment Date&lt;/span>: &lt;span style="color:#e6db74">2020-03-01&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Position&lt;/span>: &lt;span style="color:#ae81ff">Senior Sales Manager&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Department&lt;/span>: &lt;span style="color:#ae81ff">Sales &amp;amp; Marketing&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Reporting Manager&lt;/span>: &lt;span style="color:#ae81ff">Jane Wilson (EMP-050)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Location&lt;/span>: &lt;span style="color:#ae81ff">Kuala Lumpur Office&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Employment Status&lt;/span>: &lt;span style="color:#ae81ff">Active&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Probation End Date&lt;/span>: &lt;span style="color:#e6db74">2020-05-31&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Contract Type&lt;/span>: &lt;span style="color:#ae81ff">Permanent&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Employment Information&lt;span class="hx:absolute hx:-mt-20" id="employment-information"&gt;&lt;/span&gt;
+&lt;a href="#employment-information" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Employee Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Full-time&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Employment Date&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;2020-03-01&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Position&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Senior Sales Manager&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Department&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Sales &amp;amp; Marketing&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Reporting Manager&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Jane Wilson (EMP-050)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Location&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Kuala Lumpur Office&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Employment Status&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Active&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Probation End Date&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;2020-05-31&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Contract Type&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Permanent&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Compensation Information&lt;span class="hx:absolute hx:-mt-20" id="compensation-information">&lt;/span>
-&lt;a href="#compensation-information" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Basic Salary&lt;/span>: &lt;span style="color:#ae81ff">RM 8,500&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Allowances&lt;/span>: &lt;span style="color:#ae81ff">RM 1,500&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Commission Structure&lt;/span>: &lt;span style="color:#ae81ff">3&lt;/span>&lt;span style="color:#ae81ff">% of sales&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Benefits Package&lt;/span>: &lt;span style="color:#ae81ff">Medical, Dental, Insurance&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">EPF Number&lt;/span>: &lt;span style="color:#ae81ff">12345678&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">SOCSO Number&lt;/span>: &lt;span style="color:#ae81ff">87654321&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Tax File Number&lt;/span>: &lt;span style="color:#ae81ff">TA12345678&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Bank Account&lt;/span>: &lt;span style="color:#ae81ff">Maybank 123456789012&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Compensation Information&lt;span class="hx:absolute hx:-mt-20" id="compensation-information"&gt;&lt;/span&gt;
+&lt;a href="#compensation-information" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Basic Salary&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;RM 8,500&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Allowances&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;RM 1,500&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Commission Structure&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;% of sales&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Benefits Package&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Medical, Dental, Insurance&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;EPF Number&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;12345678&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;SOCSO Number&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;87654321&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Tax File Number&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;TA12345678&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Bank Account&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Maybank 123456789012&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Organizational Assignment&lt;span class="hx:absolute hx:-mt-20" id="organizational-assignment">&lt;/span>
-&lt;a href="#organizational-assignment" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Department&lt;/span>: &lt;span style="color:#ae81ff">Sales &amp;amp; Marketing&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Division&lt;/span>: &lt;span style="color:#ae81ff">Commercial Operations&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Cost Center&lt;/span>: &lt;span style="color:#ae81ff">CC-SALES-001&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Supervisor&lt;/span>: &lt;span style="color:#ae81ff">Jane Wilson&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Direct Reports&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Mike Johnson (EMP-025)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Sarah Lee (EMP-030)&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Project Assignments&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Digital Transformation Project&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Customer Acquisition Campaign&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Organizational Assignment&lt;span class="hx:absolute hx:-mt-20" id="organizational-assignment"&gt;&lt;/span&gt;
+&lt;a href="#organizational-assignment" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Department&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Sales &amp;amp; Marketing&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Division&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Commercial Operations&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Cost Center&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;CC-SALES-001&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Supervisor&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Jane Wilson&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Direct Reports&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Mike Johnson (EMP-025)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Sarah Lee (EMP-030)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Project Assignments&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Digital Transformation Project&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Customer Acquisition Campaign&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h2>Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices">&lt;/span>
-&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Employee Data Management Best Practices&lt;span class="hx:absolute hx:-mt-20" id="employee-data-management-best-practices">&lt;/span>
-&lt;a href="#employee-data-management-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Data Privacy&lt;/strong> - Secure handling of personal information&lt;/li>
-&lt;li>&lt;strong>Data Accuracy&lt;/strong> - Regular verification and updates&lt;/li>
-&lt;li>&lt;strong>Access Control&lt;/strong> - Appropriate access restrictions&lt;/li>
-&lt;li>&lt;strong>Audit Trail&lt;/strong> - Complete change history tracking&lt;/li>
-&lt;li>&lt;strong>Backup Strategy&lt;/strong> - Regular secure data backups&lt;/li>
-&lt;/ul>
-&lt;h3>Organizational Structure Best Practices&lt;span class="hx:absolute hx:-mt-20" id="organizational-structure-best-practices">&lt;/span>
-&lt;a href="#organizational-structure-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Clear Hierarchy&lt;/strong> - Well-defined reporting relationships&lt;/li>
-&lt;li>&lt;strong>Role Clarity&lt;/strong> - Clear job descriptions and responsibilities&lt;/li>
-&lt;li>&lt;strong>Regular Reviews&lt;/strong> - Periodic organizational structure assessments&lt;/li>
-&lt;li>&lt;strong>Change Management&lt;/strong> - Proper handling of structural changes&lt;/li>
-&lt;li>&lt;strong>Documentation&lt;/strong> - Comprehensive organizational charts&lt;/li>
-&lt;/ul>
-&lt;h3>Security and Compliance Best Practices&lt;span class="hx:absolute hx:-mt-20" id="security-and-compliance-best-practices">&lt;/span>
-&lt;a href="#security-and-compliance-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Privacy Compliance&lt;/strong> - GDPR and local privacy law adherence&lt;/li>
-&lt;li>&lt;strong>Data Retention&lt;/strong> - Appropriate data retention policies&lt;/li>
-&lt;li>&lt;strong>Access Logging&lt;/strong> - Monitor employee data access&lt;/li>
-&lt;li>&lt;strong>Regular Audits&lt;/strong> - Periodic compliance audits&lt;/li>
-&lt;li>&lt;strong>Incident Response&lt;/strong> - Data breach response procedures&lt;/li>
-&lt;/ul>
-&lt;h2>Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting">&lt;/span>
-&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues">&lt;/span>
-&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Cannot create new employees&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Check user permissions for employee creation&lt;/li>
-&lt;li>Verify required fields are completed&lt;/li>
-&lt;li>Ensure organizational structure is defined&lt;/li>
-&lt;li>Check employee ID numbering system&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>System access issues for employees&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Verify employee status is active&lt;/li>
-&lt;li>Check role and permission assignments&lt;/li>
-&lt;li>Ensure user account is properly created&lt;/li>
-&lt;li>Review module access permissions&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Organizational hierarchy problems&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Check reporting relationship configurations&lt;/li>
-&lt;li>Verify department assignments&lt;/li>
-&lt;li>Review manager-subordinate relationships&lt;/li>
-&lt;li>Confirm organizational chart accuracy&lt;/li>
-&lt;/ul>
-&lt;h3>Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources">&lt;/span>
-&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Employee setup and configuration guide&lt;/li>
-&lt;li>Organizational structure design guide&lt;/li>
-&lt;li>Privacy and compliance documentation&lt;/li>
-&lt;li>System access management guide&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Privacy Notice&lt;/strong>: Employee data contains sensitive personal information. Ensure compliance with local privacy laws and implement appropriate security measures to protect employee data.&lt;/div>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices"&gt;&lt;/span&gt;
+&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Employee Data Management Best Practices&lt;span class="hx:absolute hx:-mt-20" id="employee-data-management-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#employee-data-management-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Data Privacy&lt;/strong&gt; - Secure handling of personal information&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Accuracy&lt;/strong&gt; - Regular verification and updates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Access Control&lt;/strong&gt; - Appropriate access restrictions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Audit Trail&lt;/strong&gt; - Complete change history tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backup Strategy&lt;/strong&gt; - Regular secure data backups&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Organizational Structure Best Practices&lt;span class="hx:absolute hx:-mt-20" id="organizational-structure-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#organizational-structure-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Clear Hierarchy&lt;/strong&gt; - Well-defined reporting relationships&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Role Clarity&lt;/strong&gt; - Clear job descriptions and responsibilities&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regular Reviews&lt;/strong&gt; - Periodic organizational structure assessments&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Change Management&lt;/strong&gt; - Proper handling of structural changes&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt; - Comprehensive organizational charts&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Security and Compliance Best Practices&lt;span class="hx:absolute hx:-mt-20" id="security-and-compliance-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#security-and-compliance-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Privacy Compliance&lt;/strong&gt; - GDPR and local privacy law adherence&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Data Retention&lt;/strong&gt; - Appropriate data retention policies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Access Logging&lt;/strong&gt; - Monitor employee data access&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regular Audits&lt;/strong&gt; - Periodic compliance audits&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Incident Response&lt;/strong&gt; - Data breach response procedures&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues"&gt;&lt;/span&gt;
+&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Cannot create new employees&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check user permissions for employee creation&lt;/li&gt;
+&lt;li&gt;Verify required fields are completed&lt;/li&gt;
+&lt;li&gt;Ensure organizational structure is defined&lt;/li&gt;
+&lt;li&gt;Check employee ID numbering system&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;System access issues for employees&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Verify employee status is active&lt;/li&gt;
+&lt;li&gt;Check role and permission assignments&lt;/li&gt;
+&lt;li&gt;Ensure user account is properly created&lt;/li&gt;
+&lt;li&gt;Review module access permissions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Organizational hierarchy problems&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check reporting relationship configurations&lt;/li&gt;
+&lt;li&gt;Verify department assignments&lt;/li&gt;
+&lt;li&gt;Review manager-subordinate relationships&lt;/li&gt;
+&lt;li&gt;Confirm organizational chart accuracy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources"&gt;&lt;/span&gt;
+&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Employee setup and configuration guide&lt;/li&gt;
+&lt;li&gt;Organizational structure design guide&lt;/li&gt;
+&lt;li&gt;Privacy and compliance documentation&lt;/li&gt;
+&lt;li&gt;System access management guide&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Privacy Notice&lt;/strong&gt;: Employee data contains sensitive personal information. Ensure compliance with local privacy laws and implement appropriate security measures to protect employee data.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

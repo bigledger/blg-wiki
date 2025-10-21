@@ -1,493 +1,493 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Item-Types</title><link>https://wiki.bigledger.com/tags/item-types/</link><description>Recent content in Item-Types on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/item-types/index.xml" rel="self" type="application/rss+xml"/><item><title>Document Item Types &amp; Classifications</title><link>https://wiki.bigledger.com/user-guide/basic-operations/document-item-types/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/user-guide/basic-operations/document-item-types/</guid><description>
-&lt;p>Understanding BigLedger&amp;rsquo;s document item types is fundamental to effective inventory management, sales processing, and business operations. Each item type serves specific business scenarios and offers unique functionality for managing complex inventory relationships.&lt;/p>
-&lt;h2>Overview&lt;span class="hx:absolute hx:-mt-20" id="overview">&lt;/span>
-&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>BigLedger supports five distinct document item types, each designed for specific business scenarios and inventory relationships. These types determine how items behave in transactions, inventory tracking, and financial reporting.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Foundation Concept&lt;/strong>: Document items in BigLedger represent business entities that can be sold, purchased, or managed. The item type determines the relationship between the document item (FI-item) and physical inventory items (INV items).&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;hr>
-&lt;h2>The Five Document Item Types&lt;span class="hx:absolute hx:-mt-20" id="the-five-document-item-types">&lt;/span>
-&lt;a href="#the-five-document-item-types" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>1. Basic Item (FI-Item)&lt;span class="hx:absolute hx:-mt-20" id="1-basic-item-fi-item">&lt;/span>
-&lt;a href="#1-basic-item-fi-item" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Definition&lt;/strong>: A basic item maintains a one-to-one relationship with a physical inventory item (INV item), representing the simplest and most common item type in BigLedger.&lt;/p>
-&lt;h4>Key Characteristics&lt;span class="hx:absolute hx:-mt-20" id="key-characteristics">&lt;/span>
-&lt;a href="#key-characteristics" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Direct Mapping&lt;/strong>: One FI-item equals one INV item&lt;/li>
-&lt;li>&lt;strong>Inventory Tracking&lt;/strong>: Real-time stock level updates&lt;/li>
-&lt;li>&lt;strong>Simple Processing&lt;/strong>: Straightforward sales and purchase transactions&lt;/li>
-&lt;li>&lt;strong>Financial Integration&lt;/strong>: Direct cost and revenue posting&lt;/li>
-&lt;li>&lt;strong>Barcode Support&lt;/strong>: Standard barcode scanning and identification&lt;/li>
-&lt;/ul>
-&lt;h4>Business Use Cases&lt;span class="hx:absolute hx:-mt-20" id="business-use-cases">&lt;/span>
-&lt;a href="#business-use-cases" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;">
+&lt;p&gt;Understanding BigLedger&amp;rsquo;s document item types is fundamental to effective inventory management, sales processing, and business operations. Each item type serves specific business scenarios and offers unique functionality for managing complex inventory relationships.&lt;/p&gt;
+&lt;h2&gt;Overview&lt;span class="hx:absolute hx:-mt-20" id="overview"&gt;&lt;/span&gt;
+&lt;a href="#overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;BigLedger supports five distinct document item types, each designed for specific business scenarios and inventory relationships. These types determine how items behave in transactions, inventory tracking, and financial reporting.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Foundation Concept&lt;/strong&gt;: Document items in BigLedger represent business entities that can be sold, purchased, or managed. The item type determines the relationship between the document item (FI-item) and physical inventory items (INV items).&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2&gt;The Five Document Item Types&lt;span class="hx:absolute hx:-mt-20" id="the-five-document-item-types"&gt;&lt;/span&gt;
+&lt;a href="#the-five-document-item-types" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;1. Basic Item (FI-Item)&lt;span class="hx:absolute hx:-mt-20" id="1-basic-item-fi-item"&gt;&lt;/span&gt;
+&lt;a href="#1-basic-item-fi-item" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Definition&lt;/strong&gt;: A basic item maintains a one-to-one relationship with a physical inventory item (INV item), representing the simplest and most common item type in BigLedger.&lt;/p&gt;
+&lt;h4&gt;Key Characteristics&lt;span class="hx:absolute hx:-mt-20" id="key-characteristics"&gt;&lt;/span&gt;
+&lt;a href="#key-characteristics" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Direct Mapping&lt;/strong&gt;: One FI-item equals one INV item&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inventory Tracking&lt;/strong&gt;: Real-time stock level updates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Simple Processing&lt;/strong&gt;: Straightforward sales and purchase transactions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Financial Integration&lt;/strong&gt;: Direct cost and revenue posting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Barcode Support&lt;/strong&gt;: Standard barcode scanning and identification&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Business Use Cases&lt;span class="hx:absolute hx:-mt-20" id="business-use-cases"&gt;&lt;/span&gt;
+&lt;a href="#business-use-cases" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Retail Products&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Individual products sold as single units&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Retail Products&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Individual products sold as single units&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Raw Materials&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Manufacturing inputs tracked individually&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Raw Materials&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Manufacturing inputs tracked individually&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Office Supplies&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Standard business supplies and consumables&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Office Supplies&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Standard business supplies and consumables&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Equipment Items&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Tools, machinery, and capital equipment&lt;/div>&lt;/a>
-&lt;/div>
-&lt;h4>Inventory Behavior&lt;span class="hx:absolute hx:-mt-20" id="inventory-behavior">&lt;/span>
-&lt;a href="#inventory-behavior" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Stock Deduction&lt;/strong>: Immediate inventory reduction upon sale&lt;/li>
-&lt;li>&lt;strong>Receiving&lt;/strong>: Direct stock increase upon purchase or receipt&lt;/li>
-&lt;li>&lt;strong>Valuation&lt;/strong>: Single item cost and selling price&lt;/li>
-&lt;li>&lt;strong>Reporting&lt;/strong>: Individual item tracking and analysis&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h3>2. Kit Item&lt;span class="hx:absolute hx:-mt-20" id="2-kit-item">&lt;/span>
-&lt;a href="#2-kit-item" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Definition&lt;/strong>: A kit combines multiple basic items into a single sellable unit while maintaining inventory tracking for individual components through automated kitting and reverse kitting processes.&lt;/p>
-&lt;h4>Key Characteristics&lt;span class="hx:absolute hx:-mt-20" id="key-characteristics-1">&lt;/span>
-&lt;a href="#key-characteristics-1" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Component Structure&lt;/strong>: Parent kit with multiple child components&lt;/li>
-&lt;li>&lt;strong>Automatic Processing&lt;/strong>: System-managed kitting and reverse kitting&lt;/li>
-&lt;li>&lt;strong>Dual Inventory Impact&lt;/strong>: Components reduce, assembled kit increases&lt;/li>
-&lt;li>&lt;strong>Manufacturing Integration&lt;/strong>: Production and assembly workflows&lt;/li>
-&lt;li>&lt;strong>Quality Control&lt;/strong>: Component verification and validation&lt;/li>
-&lt;/ul>
-&lt;h4>Component Management&lt;span class="hx:absolute hx:-mt-20" id="component-management">&lt;/span>
-&lt;a href="#component-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Kitting Process&lt;/strong>:&lt;/p>
-&lt;ol>
-&lt;li>Select kit components from inventory&lt;/li>
-&lt;li>System validates component availability&lt;/li>
-&lt;li>Component stock levels decrease&lt;/li>
-&lt;li>Assembled kit stock increases by one unit&lt;/li>
-&lt;li>Cost calculation includes all component costs&lt;/li>
-&lt;/ol>
-&lt;p>&lt;strong>Reverse Kitting Process&lt;/strong>:&lt;/p>
-&lt;ol>
-&lt;li>Kit is disassembled back to components&lt;/li>
-&lt;li>Kit stock level decreases&lt;/li>
-&lt;li>Individual component stock levels increase&lt;/li>
-&lt;li>Cost accounting reverses to component values&lt;/li>
-&lt;/ol>
-&lt;h4>Business Applications&lt;span class="hx:absolute hx:-mt-20" id="business-applications">&lt;/span>
-&lt;a href="#business-applications" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;">
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Equipment Items&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Tools, machinery, and capital equipment&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;h4&gt;Inventory Behavior&lt;span class="hx:absolute hx:-mt-20" id="inventory-behavior"&gt;&lt;/span&gt;
+&lt;a href="#inventory-behavior" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Stock Deduction&lt;/strong&gt;: Immediate inventory reduction upon sale&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Receiving&lt;/strong&gt;: Direct stock increase upon purchase or receipt&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Valuation&lt;/strong&gt;: Single item cost and selling price&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reporting&lt;/strong&gt;: Individual item tracking and analysis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;2. Kit Item&lt;span class="hx:absolute hx:-mt-20" id="2-kit-item"&gt;&lt;/span&gt;
+&lt;a href="#2-kit-item" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Definition&lt;/strong&gt;: A kit combines multiple basic items into a single sellable unit while maintaining inventory tracking for individual components through automated kitting and reverse kitting processes.&lt;/p&gt;
+&lt;h4&gt;Key Characteristics&lt;span class="hx:absolute hx:-mt-20" id="key-characteristics-1"&gt;&lt;/span&gt;
+&lt;a href="#key-characteristics-1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Component Structure&lt;/strong&gt;: Parent kit with multiple child components&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Automatic Processing&lt;/strong&gt;: System-managed kitting and reverse kitting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Dual Inventory Impact&lt;/strong&gt;: Components reduce, assembled kit increases&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Manufacturing Integration&lt;/strong&gt;: Production and assembly workflows&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Quality Control&lt;/strong&gt;: Component verification and validation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Component Management&lt;span class="hx:absolute hx:-mt-20" id="component-management"&gt;&lt;/span&gt;
+&lt;a href="#component-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Kitting Process&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Select kit components from inventory&lt;/li&gt;
+&lt;li&gt;System validates component availability&lt;/li&gt;
+&lt;li&gt;Component stock levels decrease&lt;/li&gt;
+&lt;li&gt;Assembled kit stock increases by one unit&lt;/li&gt;
+&lt;li&gt;Cost calculation includes all component costs&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;Reverse Kitting Process&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Kit is disassembled back to components&lt;/li&gt;
+&lt;li&gt;Kit stock level decreases&lt;/li&gt;
+&lt;li&gt;Individual component stock levels increase&lt;/li&gt;
+&lt;li&gt;Cost accounting reverses to component values&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Business Applications&lt;span class="hx:absolute hx:-mt-20" id="business-applications"&gt;&lt;/span&gt;
+&lt;a href="#business-applications" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Computer Systems&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">CPU, memory, storage assembled into complete computers&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Computer Systems&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;CPU, memory, storage assembled into complete computers&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Gift Sets&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Multiple products packaged together for promotions&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Gift Sets&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Multiple products packaged together for promotions&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Tool Kits&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Complete sets of tools for specific applications&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Tool Kits&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Complete sets of tools for specific applications&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Meal Packages&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Restaurant combo meals with multiple components&lt;/div>&lt;/a>
-&lt;/div>
-&lt;h4>Example: Computer Kit&lt;span class="hx:absolute hx:-mt-20" id="example-computer-kit">&lt;/span>
-&lt;a href="#example-computer-kit" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Kit Components&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>A1&lt;/strong>: Intel i7 Processor ($300)&lt;/li>
-&lt;li>&lt;strong>A2&lt;/strong>: 16GB DDR4 Memory ($120)&lt;/li>
-&lt;li>&lt;strong>A3&lt;/strong>: 512GB SSD Storage ($100)&lt;/li>
-&lt;li>&lt;strong>A4&lt;/strong>: Gaming Graphics Card ($400)&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Kit Assembly&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Kit-A&lt;/strong>: Complete Gaming Computer ($920 + assembly cost)&lt;/li>
-&lt;li>When one Kit-A is assembled, components A1, A2, A3, A4 each reduce by 1&lt;/li>
-&lt;li>Kit-A inventory increases by 1&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h3>3. Grouped Item&lt;span class="hx:absolute hx:-mt-20" id="3-grouped-item">&lt;/span>
-&lt;a href="#3-grouped-item" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Definition&lt;/strong>: Grouped items manage products with dimensions or variations (size, color, style) while maintaining a single product identity with multiple selection options for customers.&lt;/p>
-&lt;h4>Key Characteristics&lt;span class="hx:absolute hx:-mt-20" id="key-characteristics-2">&lt;/span>
-&lt;a href="#key-characteristics-2" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Dimension Management&lt;/strong>: Size, color, style, and other attribute variations&lt;/li>
-&lt;li>&lt;strong>Customer Selection&lt;/strong>: Interactive choice presentation&lt;/li>
-&lt;li>&lt;strong>Ratio Constraint&lt;/strong>: Only one basic item selected per transaction&lt;/li>
-&lt;li>&lt;strong>Unified Presentation&lt;/strong>: Single product with multiple options&lt;/li>
-&lt;li>&lt;strong>Inventory Tracking&lt;/strong>: Individual tracking for each variation&lt;/li>
-&lt;/ul>
-&lt;h4>Grouping Structure&lt;span class="hx:absolute hx:-mt-20" id="grouping-structure">&lt;/span>
-&lt;a href="#grouping-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Parent Group&lt;/strong>: T-Shirt Product Line&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Color Variations&lt;/strong>: Yellow, Blue, Red&lt;/li>
-&lt;li>&lt;strong>Size Variations&lt;/strong>: Small (3), Medium (4), Large (5)&lt;/li>
-&lt;li>&lt;strong>Customer Selection&lt;/strong>: One color + one size = one basic FI-item&lt;/li>
-&lt;/ul>
-&lt;h4>Customer Experience Flow&lt;span class="hx:absolute hx:-mt-20" id="customer-experience-flow">&lt;/span>
-&lt;a href="#customer-experience-flow" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ol>
-&lt;li>&lt;strong>Product Selection&lt;/strong>: Customer chooses &amp;ldquo;T-Shirt&amp;rdquo; from catalog&lt;/li>
-&lt;li>&lt;strong>Option Presentation&lt;/strong>: System displays color and size options&lt;/li>
-&lt;li>&lt;strong>Customer Choice&lt;/strong>: Select &amp;ldquo;Blue&amp;rdquo; color and &amp;ldquo;Medium&amp;rdquo; size&lt;/li>
-&lt;li>&lt;strong>Item Resolution&lt;/strong>: System identifies specific basic FI-item&lt;/li>
-&lt;li>&lt;strong>Transaction Processing&lt;/strong>: Sale processes for selected variation&lt;/li>
-&lt;/ol>
-&lt;h4>Business Applications&lt;span class="hx:absolute hx:-mt-20" id="business-applications-1">&lt;/span>
-&lt;a href="#business-applications-1" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;">
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Meal Packages&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Restaurant combo meals with multiple components&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;h4&gt;Example: Computer Kit&lt;span class="hx:absolute hx:-mt-20" id="example-computer-kit"&gt;&lt;/span&gt;
+&lt;a href="#example-computer-kit" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Kit Components&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;A1&lt;/strong&gt;: Intel i7 Processor ($300)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A2&lt;/strong&gt;: 16GB DDR4 Memory ($120)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A3&lt;/strong&gt;: 512GB SSD Storage ($100)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A4&lt;/strong&gt;: Gaming Graphics Card ($400)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Kit Assembly&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Kit-A&lt;/strong&gt;: Complete Gaming Computer ($920 + assembly cost)&lt;/li&gt;
+&lt;li&gt;When one Kit-A is assembled, components A1, A2, A3, A4 each reduce by 1&lt;/li&gt;
+&lt;li&gt;Kit-A inventory increases by 1&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;3. Grouped Item&lt;span class="hx:absolute hx:-mt-20" id="3-grouped-item"&gt;&lt;/span&gt;
+&lt;a href="#3-grouped-item" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Definition&lt;/strong&gt;: Grouped items manage products with dimensions or variations (size, color, style) while maintaining a single product identity with multiple selection options for customers.&lt;/p&gt;
+&lt;h4&gt;Key Characteristics&lt;span class="hx:absolute hx:-mt-20" id="key-characteristics-2"&gt;&lt;/span&gt;
+&lt;a href="#key-characteristics-2" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Dimension Management&lt;/strong&gt;: Size, color, style, and other attribute variations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Selection&lt;/strong&gt;: Interactive choice presentation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Ratio Constraint&lt;/strong&gt;: Only one basic item selected per transaction&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Unified Presentation&lt;/strong&gt;: Single product with multiple options&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inventory Tracking&lt;/strong&gt;: Individual tracking for each variation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Grouping Structure&lt;span class="hx:absolute hx:-mt-20" id="grouping-structure"&gt;&lt;/span&gt;
+&lt;a href="#grouping-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Parent Group&lt;/strong&gt;: T-Shirt Product Line&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Color Variations&lt;/strong&gt;: Yellow, Blue, Red&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Size Variations&lt;/strong&gt;: Small (3), Medium (4), Large (5)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Selection&lt;/strong&gt;: One color + one size = one basic FI-item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Customer Experience Flow&lt;span class="hx:absolute hx:-mt-20" id="customer-experience-flow"&gt;&lt;/span&gt;
+&lt;a href="#customer-experience-flow" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Product Selection&lt;/strong&gt;: Customer chooses &amp;ldquo;T-Shirt&amp;rdquo; from catalog&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Option Presentation&lt;/strong&gt;: System displays color and size options&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Choice&lt;/strong&gt;: Select &amp;ldquo;Blue&amp;rdquo; color and &amp;ldquo;Medium&amp;rdquo; size&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Item Resolution&lt;/strong&gt;: System identifies specific basic FI-item&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transaction Processing&lt;/strong&gt;: Sale processes for selected variation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h4&gt;Business Applications&lt;span class="hx:absolute hx:-mt-20" id="business-applications-1"&gt;&lt;/span&gt;
+&lt;a href="#business-applications-1" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Apparel &amp;amp; Fashion&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Clothing with size, color, and style variations&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Apparel &amp;amp; Fashion&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Clothing with size, color, and style variations&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Electronics&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Products with capacity, color, or feature variations&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Electronics&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Products with capacity, color, or feature variations&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Automotive Parts&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Parts with compatibility variations&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Automotive Parts&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Parts with compatibility variations&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Food Products&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Items with size, flavor, or packaging variations&lt;/div>&lt;/a>
-&lt;/div>
-&lt;h4>Inventory Management Benefits&lt;span class="hx:absolute hx:-mt-20" id="inventory-management-benefits">&lt;/span>
-&lt;a href="#inventory-management-benefits" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Unified Catalog&lt;/strong>: Single product listing with multiple variations&lt;/li>
-&lt;li>&lt;strong>Individual Tracking&lt;/strong>: Separate stock levels for each variation&lt;/li>
-&lt;li>&lt;strong>Customer Simplicity&lt;/strong>: Easy selection process&lt;/li>
-&lt;li>&lt;strong>Reporting Flexibility&lt;/strong>: Analysis by product line or individual variation&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h3>4. Package Item&lt;span class="hx:absolute hx:-mt-20" id="4-package-item">&lt;/span>
-&lt;a href="#4-package-item" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Definition&lt;/strong>: Package items establish one-to-many relationships where a single FI-item maps to multiple INV items, enabling complex product bundling with flexible inventory management.&lt;/p>
-&lt;h4>Key Characteristics&lt;span class="hx:absolute hx:-mt-20" id="key-characteristics-3">&lt;/span>
-&lt;a href="#key-characteristics-3" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Multiple Mapping&lt;/strong>: One FI-item contains multiple INV items&lt;/li>
-&lt;li>&lt;strong>Deferred Deduction&lt;/strong>: Inventory reduces only upon package sale&lt;/li>
-&lt;li>&lt;strong>Flexible Composition&lt;/strong>: Different quantities of various items&lt;/li>
-&lt;li>&lt;strong>Package Pricing&lt;/strong>: Single price for entire package&lt;/li>
-&lt;li>&lt;strong>Promotional Use&lt;/strong>: Special offers and bundle deals&lt;/li>
-&lt;/ul>
-&lt;h4>Package Behavior&lt;span class="hx:absolute hx:-mt-20" id="package-behavior">&lt;/span>
-&lt;a href="#package-behavior" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Pre-Sale Inventory&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Component items remain in individual inventory pools&lt;/li>
-&lt;li>No inventory movement during package creation&lt;/li>
-&lt;li>Components available for individual sale until package is sold&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Upon Package Sale&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>All component INV items reduce according to package specifications&lt;/li>
-&lt;li>Single transaction processes multiple inventory movements&lt;/li>
-&lt;li>Financial posting reflects package price allocation&lt;/li>
-&lt;/ul>
-&lt;h4>Package Composition Examples&lt;span class="hx:absolute hx:-mt-20" id="package-composition-examples">&lt;/span>
-&lt;a href="#package-composition-examples" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Office Starter Package&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>5x Pens (INV-001)&lt;/li>
-&lt;li>3x Notebooks (INV-002)&lt;/li>
-&lt;li>1x Stapler (INV-003)&lt;/li>
-&lt;li>1x Tape Dispenser (INV-004)&lt;/li>
-&lt;li>&lt;strong>Package Price&lt;/strong>: $25.00 (vs $32.00 individual total)&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Software Bundle Package&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>1x Operating System License (INV-501)&lt;/li>
-&lt;li>1x Office Suite License (INV-502)&lt;/li>
-&lt;li>1x Antivirus License (INV-503)&lt;/li>
-&lt;li>&lt;strong>Package Price&lt;/strong>: $199.00 (vs $300.00 individual total)&lt;/li>
-&lt;/ul>
-&lt;h4>Business Applications&lt;span class="hx:absolute hx:-mt-20" id="business-applications-2">&lt;/span>
-&lt;a href="#business-applications-2" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;">
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Food Products&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Items with size, flavor, or packaging variations&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;h4&gt;Inventory Management Benefits&lt;span class="hx:absolute hx:-mt-20" id="inventory-management-benefits"&gt;&lt;/span&gt;
+&lt;a href="#inventory-management-benefits" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Unified Catalog&lt;/strong&gt;: Single product listing with multiple variations&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Individual Tracking&lt;/strong&gt;: Separate stock levels for each variation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer Simplicity&lt;/strong&gt;: Easy selection process&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reporting Flexibility&lt;/strong&gt;: Analysis by product line or individual variation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3&gt;4. Package Item&lt;span class="hx:absolute hx:-mt-20" id="4-package-item"&gt;&lt;/span&gt;
+&lt;a href="#4-package-item" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Definition&lt;/strong&gt;: Package items establish one-to-many relationships where a single FI-item maps to multiple INV items, enabling complex product bundling with flexible inventory management.&lt;/p&gt;
+&lt;h4&gt;Key Characteristics&lt;span class="hx:absolute hx:-mt-20" id="key-characteristics-3"&gt;&lt;/span&gt;
+&lt;a href="#key-characteristics-3" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Multiple Mapping&lt;/strong&gt;: One FI-item contains multiple INV items&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Deferred Deduction&lt;/strong&gt;: Inventory reduces only upon package sale&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flexible Composition&lt;/strong&gt;: Different quantities of various items&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Package Pricing&lt;/strong&gt;: Single price for entire package&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Promotional Use&lt;/strong&gt;: Special offers and bundle deals&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Package Behavior&lt;span class="hx:absolute hx:-mt-20" id="package-behavior"&gt;&lt;/span&gt;
+&lt;a href="#package-behavior" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Pre-Sale Inventory&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Component items remain in individual inventory pools&lt;/li&gt;
+&lt;li&gt;No inventory movement during package creation&lt;/li&gt;
+&lt;li&gt;Components available for individual sale until package is sold&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Upon Package Sale&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;All component INV items reduce according to package specifications&lt;/li&gt;
+&lt;li&gt;Single transaction processes multiple inventory movements&lt;/li&gt;
+&lt;li&gt;Financial posting reflects package price allocation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Package Composition Examples&lt;span class="hx:absolute hx:-mt-20" id="package-composition-examples"&gt;&lt;/span&gt;
+&lt;a href="#package-composition-examples" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Office Starter Package&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;5x Pens (INV-001)&lt;/li&gt;
+&lt;li&gt;3x Notebooks (INV-002)&lt;/li&gt;
+&lt;li&gt;1x Stapler (INV-003)&lt;/li&gt;
+&lt;li&gt;1x Tape Dispenser (INV-004)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Package Price&lt;/strong&gt;: $25.00 (vs $32.00 individual total)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Software Bundle Package&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1x Operating System License (INV-501)&lt;/li&gt;
+&lt;li&gt;1x Office Suite License (INV-502)&lt;/li&gt;
+&lt;li&gt;1x Antivirus License (INV-503)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Package Price&lt;/strong&gt;: $199.00 (vs $300.00 individual total)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Business Applications&lt;span class="hx:absolute hx:-mt-20" id="business-applications-2"&gt;&lt;/span&gt;
+&lt;a href="#business-applications-2" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Promotional Bundles&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Marketing packages with special pricing&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Promotional Bundles&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Marketing packages with special pricing&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Starter Kits&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Complete solutions for new customers&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Starter Kits&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Complete solutions for new customers&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Seasonal Packages&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Holiday and seasonal product combinations&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Seasonal Packages&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Holiday and seasonal product combinations&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Service Packages&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Combined products and services offerings&lt;/div>&lt;/a>
-&lt;/div>
-&lt;hr>
-&lt;h3>5. Bundle Item&lt;span class="hx:absolute hx:-mt-20" id="5-bundle-item">&lt;/span>
-&lt;a href="#5-bundle-item" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Definition&lt;/strong>: Bundle items represent the most complex item type, capable of containing any combination of basic items, kits, grouped items, or packages in a hierarchical structure supporting up to two levels of complexity.&lt;/p>
-&lt;h4>Key Characteristics&lt;span class="hx:absolute hx:-mt-20" id="key-characteristics-4">&lt;/span>
-&lt;a href="#key-characteristics-4" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ul>
-&lt;li>&lt;strong>Universal Container&lt;/strong>: Can include any other item type&lt;/li>
-&lt;li>&lt;strong>Multiple GenDocLines&lt;/strong>: Complex transaction line generation&lt;/li>
-&lt;li>&lt;strong>Two-Level Support&lt;/strong>: Primary bundle with sub-bundle capability&lt;/li>
-&lt;li>&lt;strong>Flexible Pricing&lt;/strong>: Individual or bundle pricing strategies&lt;/li>
-&lt;li>&lt;strong>Advanced Scenarios&lt;/strong>: Enterprise-level product combinations&lt;/li>
-&lt;/ul>
-&lt;h4>Bundle Complexity Levels&lt;span class="hx:absolute hx:-mt-20" id="bundle-complexity-levels">&lt;/span>
-&lt;a href="#bundle-complexity-levels" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Level 1 Bundle&lt;/strong>: Direct combination of various item types&lt;/p>
-&lt;ul>
-&lt;li>Basic items + Kits + Grouped items + Packages&lt;/li>
-&lt;li>Single-level structure with straightforward processing&lt;/li>
-&lt;li>Suitable for most business scenarios&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Level 2 Bundle&lt;/strong>: Nested bundle structures&lt;/p>
-&lt;ul>
-&lt;li>Primary bundle containing sub-bundles&lt;/li>
-&lt;li>Complex hierarchy with multiple processing layers&lt;/li>
-&lt;li>Advanced enterprise scenarios&lt;/li>
-&lt;/ul>
-&lt;h4>Bundle Composition Examples&lt;span class="hx:absolute hx:-mt-20" id="bundle-composition-examples">&lt;/span>
-&lt;a href="#bundle-composition-examples" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Enterprise IT Solution Bundle&lt;/strong>:&lt;/p>
-&lt;p>&lt;strong>Primary Bundle&lt;/strong>: Complete Office Setup&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Hardware Kit&lt;/strong>: Computers, monitors, keyboards (Kit item)&lt;/li>
-&lt;li>&lt;strong>Software Package&lt;/strong>: Operating systems and applications (Package item)&lt;/li>
-&lt;li>&lt;strong>Basic Items&lt;/strong>: Cables, adapters, surge protectors (Basic items)&lt;/li>
-&lt;li>&lt;strong>Service Group&lt;/strong>: Installation options (Grouped item - onsite/remote/standard/premium)&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Nested Sub-Bundle&lt;/strong>: Network Infrastructure&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Network Kit&lt;/strong>: Routers, switches, cables (Kit item)&lt;/li>
-&lt;li>&lt;strong>Security Package&lt;/strong>: Firewall software and licenses (Package item)&lt;/li>
-&lt;li>&lt;strong>Basic Items&lt;/strong>: Network accessories (Basic items)&lt;/li>
-&lt;/ul>
-&lt;h4>Transaction Processing Complexity&lt;span class="hx:absolute hx:-mt-20" id="transaction-processing-complexity">&lt;/span>
-&lt;a href="#transaction-processing-complexity" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;p>&lt;strong>Multiple GenDocLines Generation&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Each bundle component generates separate document lines&lt;/li>
-&lt;li>Complex cost allocation and pricing calculations&lt;/li>
-&lt;li>Individual component tracking within bundle context&lt;/li>
-&lt;li>Detailed reporting for bundle analysis&lt;/li>
-&lt;/ul>
-&lt;h4>Business Applications&lt;span class="hx:absolute hx:-mt-20" id="business-applications-3">&lt;/span>
-&lt;a href="#business-applications-3" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;">
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Service Packages&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Combined products and services offerings&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h3&gt;5. Bundle Item&lt;span class="hx:absolute hx:-mt-20" id="5-bundle-item"&gt;&lt;/span&gt;
+&lt;a href="#5-bundle-item" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Definition&lt;/strong&gt;: Bundle items represent the most complex item type, capable of containing any combination of basic items, kits, grouped items, or packages in a hierarchical structure supporting up to two levels of complexity.&lt;/p&gt;
+&lt;h4&gt;Key Characteristics&lt;span class="hx:absolute hx:-mt-20" id="key-characteristics-4"&gt;&lt;/span&gt;
+&lt;a href="#key-characteristics-4" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Universal Container&lt;/strong&gt;: Can include any other item type&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Multiple GenDocLines&lt;/strong&gt;: Complex transaction line generation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Two-Level Support&lt;/strong&gt;: Primary bundle with sub-bundle capability&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flexible Pricing&lt;/strong&gt;: Individual or bundle pricing strategies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Advanced Scenarios&lt;/strong&gt;: Enterprise-level product combinations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Bundle Complexity Levels&lt;span class="hx:absolute hx:-mt-20" id="bundle-complexity-levels"&gt;&lt;/span&gt;
+&lt;a href="#bundle-complexity-levels" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Level 1 Bundle&lt;/strong&gt;: Direct combination of various item types&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basic items + Kits + Grouped items + Packages&lt;/li&gt;
+&lt;li&gt;Single-level structure with straightforward processing&lt;/li&gt;
+&lt;li&gt;Suitable for most business scenarios&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Level 2 Bundle&lt;/strong&gt;: Nested bundle structures&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Primary bundle containing sub-bundles&lt;/li&gt;
+&lt;li&gt;Complex hierarchy with multiple processing layers&lt;/li&gt;
+&lt;li&gt;Advanced enterprise scenarios&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Bundle Composition Examples&lt;span class="hx:absolute hx:-mt-20" id="bundle-composition-examples"&gt;&lt;/span&gt;
+&lt;a href="#bundle-composition-examples" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Enterprise IT Solution Bundle&lt;/strong&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Primary Bundle&lt;/strong&gt;: Complete Office Setup&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Hardware Kit&lt;/strong&gt;: Computers, monitors, keyboards (Kit item)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Software Package&lt;/strong&gt;: Operating systems and applications (Package item)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Basic Items&lt;/strong&gt;: Cables, adapters, surge protectors (Basic items)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Service Group&lt;/strong&gt;: Installation options (Grouped item - onsite/remote/standard/premium)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Nested Sub-Bundle&lt;/strong&gt;: Network Infrastructure&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Network Kit&lt;/strong&gt;: Routers, switches, cables (Kit item)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Security Package&lt;/strong&gt;: Firewall software and licenses (Package item)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Basic Items&lt;/strong&gt;: Network accessories (Basic items)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Transaction Processing Complexity&lt;span class="hx:absolute hx:-mt-20" id="transaction-processing-complexity"&gt;&lt;/span&gt;
+&lt;a href="#transaction-processing-complexity" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;p&gt;&lt;strong&gt;Multiple GenDocLines Generation&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Each bundle component generates separate document lines&lt;/li&gt;
+&lt;li&gt;Complex cost allocation and pricing calculations&lt;/li&gt;
+&lt;li&gt;Individual component tracking within bundle context&lt;/li&gt;
+&lt;li&gt;Detailed reporting for bundle analysis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Business Applications&lt;span class="hx:absolute hx:-mt-20" id="business-applications-3"&gt;&lt;/span&gt;
+&lt;a href="#business-applications-3" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Enterprise Solutions&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Complete business system implementations&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Enterprise Solutions&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Complete business system implementations&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Project-Based Sales&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Large projects with multiple component types&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Project-Based Sales&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Large projects with multiple component types&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Subscription Services&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Complex service offerings with multiple elements&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Subscription Services&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Complex service offerings with multiple elements&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Custom Configurations&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Tailored solutions for specific customer needs&lt;/div>&lt;/a>
-&lt;/div>
-&lt;hr>
-&lt;h2>Choosing the Right Item Type&lt;span class="hx:absolute hx:-mt-20" id="choosing-the-right-item-type">&lt;/span>
-&lt;a href="#choosing-the-right-item-type" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Decision Framework&lt;span class="hx:absolute hx:-mt-20" id="decision-framework">&lt;/span>
-&lt;a href="#decision-framework" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Use this framework to determine the appropriate item type for your business scenarios:&lt;/p>
-&lt;h4>Start with Basic Questions&lt;span class="hx:absolute hx:-mt-20" id="start-with-basic-questions">&lt;/span>
-&lt;a href="#start-with-basic-questions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h4>&lt;ol>
-&lt;li>
-&lt;p>&lt;strong>Single or Multiple Items?&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Single → Consider Basic Item&lt;/li>
-&lt;li>Multiple → Evaluate other types&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Inventory Relationship?&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>One-to-one → Basic Item&lt;/li>
-&lt;li>One-to-many → Package, Kit, or Bundle&lt;/li>
-&lt;li>Many-to-one → Grouped Item&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Component Processing?&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>No processing → Package&lt;/li>
-&lt;li>Assembly required → Kit&lt;/li>
-&lt;li>Complex combinations → Bundle&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;strong>Customer Experience?&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Simple selection → Basic Item&lt;/li>
-&lt;li>Option selection → Grouped Item&lt;/li>
-&lt;li>Bundle choice → Package or Bundle&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ol>
-&lt;h3>Business Scenario Mapping&lt;span class="hx:absolute hx:-mt-20" id="business-scenario-mapping">&lt;/span>
-&lt;a href="#business-scenario-mapping" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;">
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Custom Configurations&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Tailored solutions for specific customer needs&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2&gt;Choosing the Right Item Type&lt;span class="hx:absolute hx:-mt-20" id="choosing-the-right-item-type"&gt;&lt;/span&gt;
+&lt;a href="#choosing-the-right-item-type" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Decision Framework&lt;span class="hx:absolute hx:-mt-20" id="decision-framework"&gt;&lt;/span&gt;
+&lt;a href="#decision-framework" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Use this framework to determine the appropriate item type for your business scenarios:&lt;/p&gt;
+&lt;h4&gt;Start with Basic Questions&lt;span class="hx:absolute hx:-mt-20" id="start-with-basic-questions"&gt;&lt;/span&gt;
+&lt;a href="#start-with-basic-questions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h4&gt;&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Single or Multiple Items?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Single → Consider Basic Item&lt;/li&gt;
+&lt;li&gt;Multiple → Evaluate other types&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Inventory Relationship?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;One-to-one → Basic Item&lt;/li&gt;
+&lt;li&gt;One-to-many → Package, Kit, or Bundle&lt;/li&gt;
+&lt;li&gt;Many-to-one → Grouped Item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Component Processing?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;No processing → Package&lt;/li&gt;
+&lt;li&gt;Assembly required → Kit&lt;/li&gt;
+&lt;li&gt;Complex combinations → Bundle&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Customer Experience?&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Simple selection → Basic Item&lt;/li&gt;
+&lt;li&gt;Option selection → Grouped Item&lt;/li&gt;
+&lt;li&gt;Bundle choice → Package or Bundle&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Business Scenario Mapping&lt;span class="hx:absolute hx:-mt-20" id="business-scenario-mapping"&gt;&lt;/span&gt;
+&lt;a href="#business-scenario-mapping" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose" style="--hextra-cards-grid-cols: 3;"&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Simple Retail&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Use Basic Items for straightforward product sales&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Simple Retail&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Use Basic Items for straightforward product sales&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Manufacturing&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Use Kits for assembled products with component tracking&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Manufacturing&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Use Kits for assembled products with component tracking&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Variations&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Use Grouped Items for products with size/color options&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Variations&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Use Grouped Items for products with size/color options&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Promotions&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Use Packages for marketing bundles and special offers&lt;/div>&lt;/a>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Promotions&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Use Packages for marketing bundles and special offers&lt;/div&gt;&lt;/a&gt;
 &lt;a
-class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900">&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50">Enterprise&lt;/span>&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2">Use Bundles for complex, multi-component solutions&lt;/div>&lt;/a>
-&lt;/div>
-&lt;hr>
-&lt;h2>Implementation Best Practices&lt;span class="hx:absolute hx:-mt-20" id="implementation-best-practices">&lt;/span>
-&lt;a href="#implementation-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Planning Your Item Structure&lt;span class="hx:absolute hx:-mt-20" id="planning-your-item-structure">&lt;/span>
-&lt;a href="#planning-your-item-structure" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Inventory Assessment&lt;/strong>:&lt;/p>
-&lt;ol>
-&lt;li>Catalog all products and their relationships&lt;/li>
-&lt;li>Identify assembly or bundling requirements&lt;/li>
-&lt;li>Determine customer selection needs&lt;/li>
-&lt;li>Evaluate pricing and promotional strategies&lt;/li>
-&lt;/ol>
-&lt;p>&lt;strong>System Configuration&lt;/strong>:&lt;/p>
-&lt;ol>
-&lt;li>Start with Basic Items for simple products&lt;/li>
-&lt;li>Implement Grouped Items for variation management&lt;/li>
-&lt;li>Add Kits for assembly operations&lt;/li>
-&lt;li>Deploy Packages for promotional strategies&lt;/li>
-&lt;li>Reserve Bundles for complex enterprise scenarios&lt;/li>
-&lt;/ol>
-&lt;h3>Data Management&lt;span class="hx:absolute hx:-mt-20" id="data-management">&lt;/span>
-&lt;a href="#data-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Consistent Naming&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Use clear, descriptive item names&lt;/li>
-&lt;li>Implement standardized naming conventions&lt;/li>
-&lt;li>Include relevant identifiers and codes&lt;/li>
-&lt;li>Maintain consistency across item types&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Accurate Relationships&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Verify component mappings in Kits&lt;/li>
-&lt;li>Validate grouping structures for Grouped Items&lt;/li>
-&lt;li>Confirm package compositions&lt;/li>
-&lt;li>Test bundle hierarchies thoroughly&lt;/li>
-&lt;/ul>
-&lt;h3>Performance Optimization&lt;span class="hx:absolute hx:-mt-20" id="performance-optimization">&lt;/span>
-&lt;a href="#performance-optimization" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Database Efficiency&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Regular maintenance of item relationships&lt;/li>
-&lt;li>Cleanup of unused or obsolete items&lt;/li>
-&lt;li>Optimization of complex bundle structures&lt;/li>
-&lt;li>Monitoring of transaction processing times&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>User Experience&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Train staff on item type differences&lt;/li>
-&lt;li>Provide clear customer selection interfaces&lt;/li>
-&lt;li>Implement efficient search and filtering&lt;/li>
-&lt;li>Regular review of item type effectiveness&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2>Integration with Other Modules&lt;span class="hx:absolute hx:-mt-20" id="integration-with-other-modules">&lt;/span>
-&lt;a href="#integration-with-other-modules" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Financial Accounting Integration&lt;span class="hx:absolute hx:-mt-20" id="financial-accounting-integration">&lt;/span>
-&lt;a href="#financial-accounting-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Cost Accounting&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Basic Items: Direct cost assignment&lt;/li>
-&lt;li>Kits: Component cost accumulation&lt;/li>
-&lt;li>Grouped Items: Variation-specific costing&lt;/li>
-&lt;li>Packages: Allocated cost distribution&lt;/li>
-&lt;li>Bundles: Complex cost hierarchy management&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Revenue Recognition&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Item type determines revenue posting methods&lt;/li>
-&lt;li>Bundle components may require separate revenue streams&lt;/li>
-&lt;li>Package sales use consolidated revenue approach&lt;/li>
-&lt;li>Kit sales include assembly value-add recognition&lt;/li>
-&lt;/ul>
-&lt;h3>Inventory Management Integration&lt;span class="hx:absolute hx:-mt-20" id="inventory-management-integration">&lt;/span>
-&lt;a href="#inventory-management-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Stock Tracking&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Real-time updates for all item types&lt;/li>
-&lt;li>Component-level tracking for Kits and Bundles&lt;/li>
-&lt;li>Variation-specific levels for Grouped Items&lt;/li>
-&lt;li>Package component reservations&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Procurement Integration&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Automatic reordering based on item type requirements&lt;/li>
-&lt;li>Component availability checking for Kits&lt;/li>
-&lt;li>Package component procurement planning&lt;/li>
-&lt;li>Bundle-level purchase order generation&lt;/li>
-&lt;/ul>
-&lt;h3>Sales and CRM Integration&lt;span class="hx:absolute hx:-mt-20" id="sales-and-crm-integration">&lt;/span>
-&lt;a href="#sales-and-crm-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Customer Experience&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Product catalog presentation based on item types&lt;/li>
-&lt;li>Dynamic option selection for Grouped Items&lt;/li>
-&lt;li>Bundle configuration tools for complex sales&lt;/li>
-&lt;li>Package promotion and marketing integration&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Pricing Management&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Item type-specific pricing strategies&lt;/li>
-&lt;li>Component and bundle pricing relationships&lt;/li>
-&lt;li>Promotional pricing for Packages&lt;/li>
-&lt;li>Customer-specific pricing for all types&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2>Troubleshooting Common Issues&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting-common-issues">&lt;/span>
-&lt;a href="#troubleshooting-common-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Item Type Conversion&lt;span class="hx:absolute hx:-mt-20" id="item-type-conversion">&lt;/span>
-&lt;a href="#item-type-conversion" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Changing Item Types&lt;/strong>:
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">⚠️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Important&lt;/strong>: Converting between item types may affect existing transactions and inventory balances. Always backup data and test in a development environment before making changes.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;/p>
-&lt;p>&lt;strong>Safe Conversion Practices&lt;/strong>:&lt;/p>
-&lt;ol>
-&lt;li>Complete all pending transactions&lt;/li>
-&lt;li>Reconcile inventory balances&lt;/li>
-&lt;li>Backup relevant data&lt;/li>
-&lt;li>Test conversion in development environment&lt;/li>
-&lt;li>Plan for transaction history preservation&lt;/li>
-&lt;/ol>
-&lt;h3>Performance Issues&lt;span class="hx:absolute hx:-mt-20" id="performance-issues">&lt;/span>
-&lt;a href="#performance-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Complex Bundle Performance&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Limit bundle nesting to two levels&lt;/li>
-&lt;li>Regular cleanup of unused components&lt;/li>
-&lt;li>Monitor transaction processing times&lt;/li>
-&lt;li>Optimize database indices for item relationships&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Inventory Synchronization&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Regular reconciliation of component relationships&lt;/li>
-&lt;li>Automated validation of Kit and Package compositions&lt;/li>
-&lt;li>Monitoring of Grouped Item variation integrity&lt;/li>
-&lt;li>Performance testing with large catalogs&lt;/li>
-&lt;/ul>
-&lt;h3>Data Integrity&lt;span class="hx:absolute hx:-mt-20" id="data-integrity">&lt;/span>
-&lt;a href="#data-integrity" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Relationship Validation&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Regular audits of component mappings&lt;/li>
-&lt;li>Verification of inventory level calculations&lt;/li>
-&lt;li>Validation of pricing relationship consistency&lt;/li>
-&lt;li>Monitoring of financial posting accuracy&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2>Advanced Features and Future Enhancements&lt;span class="hx:absolute hx:-mt-20" id="advanced-features-and-future-enhancements">&lt;/span>
-&lt;a href="#advanced-features-and-future-enhancements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Automation Capabilities&lt;span class="hx:absolute hx:-mt-20" id="automation-capabilities">&lt;/span>
-&lt;a href="#automation-capabilities" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Smart Item Classification&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>AI-powered item type recommendations&lt;/li>
-&lt;li>Automated component relationship detection&lt;/li>
-&lt;li>Dynamic grouping based on product attributes&lt;/li>
-&lt;li>Intelligent bundle composition suggestions&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Integration Enhancements&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>Enhanced e-commerce platform synchronization&lt;/li>
-&lt;li>Advanced manufacturing integration&lt;/li>
-&lt;li>Improved supplier relationship management&lt;/li>
-&lt;li>Expanded financial reporting capabilities&lt;/li>
-&lt;/ul>
-&lt;h3>Scalability Considerations&lt;span class="hx:absolute hx:-mt-20" id="scalability-considerations">&lt;/span>
-&lt;a href="#scalability-considerations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Enterprise Scaling&lt;/strong>:&lt;/p>
-&lt;ul>
-&lt;li>High-volume transaction processing&lt;/li>
-&lt;li>Multi-location inventory management&lt;/li>
-&lt;li>Complex hierarchy support expansion&lt;/li>
-&lt;li>Advanced reporting and analytics&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2>Related Resources&lt;span class="hx:absolute hx:-mt-20" id="related-resources">&lt;/span>
-&lt;a href="#related-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>Expand your understanding of BigLedger&amp;rsquo;s item management:&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/basic-operations/item-maintenance/" >Item Maintenance Procedures&lt;/a> - Creating and managing individual items&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/inventory/" >Inventory Management&lt;/a> - Complete inventory control system&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/user-guide/daily-tasks/pricing-scheme/" >Pricing Schemes&lt;/a> - Advanced pricing strategies&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/crm/" >Sales Operations&lt;/a> - Customer relationship and sales management&lt;/li>
-&lt;li>&lt;a href="https://wiki.bigledger.com/modules/manufacturing/" >Manufacturing Integration&lt;/a> - Production and assembly workflows&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h2>Getting Help and Support&lt;span class="hx:absolute hx:-mt-20" id="getting-help-and-support">&lt;/span>
-&lt;a href="#getting-help-and-support" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Technical Support&lt;span class="hx:absolute hx:-mt-20" id="technical-support">&lt;/span>
-&lt;a href="#technical-support" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>For assistance with document item types:&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Technical Support&lt;/strong>: &lt;a href="mailto:vincent@bigledger.com" >vincent@bigledger.com&lt;/a>&lt;/li>
-&lt;li>&lt;strong>Implementation Consulting&lt;/strong>: &lt;a href="mailto:sales@bigledger.com" >sales@bigledger.com&lt;/a>&lt;/li>
-&lt;li>&lt;strong>Training Resources&lt;/strong>: Comprehensive video tutorials and documentation&lt;/li>
-&lt;li>&lt;strong>Community Support&lt;/strong>: User forums and knowledge base&lt;/li>
-&lt;/ul>
-&lt;h3>Professional Services&lt;span class="hx:absolute hx:-mt-20" id="professional-services">&lt;/span>
-&lt;a href="#professional-services" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>Consider professional services for:&lt;/p>
-&lt;ul>
-&lt;li>Complex item type implementation planning&lt;/li>
-&lt;li>Custom business scenario configuration&lt;/li>
-&lt;li>Advanced integration setup&lt;/li>
-&lt;li>Performance optimization and scalability planning&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Implementation Success&lt;/strong>: Businesses that properly implement BigLedger&amp;rsquo;s item type system see 40% improvement in inventory accuracy and 25% reduction in transaction processing time.&lt;/div>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+class="hextra-card hx:group hx:flex hx:flex-col hx:justify-start hx:overflow-hidden hx:rounded-lg hx:border hx:border-gray-200 hx:text-current hx:no-underline hx:dark:shadow-none hx:hover:shadow-gray-100 hx:dark:hover:shadow-none hx:shadow-gray-100 hx:active:shadow-sm hx:active:shadow-gray-200 hx:transition-all hx:duration-200 hx:hover:border-gray-300 hx:bg-transparent hx:shadow-xs hx:dark:border-neutral-800 hx:hover:bg-slate-50 hx:hover:shadow-md hx:dark:hover:border-neutral-700 hx:dark:hover:bg-neutral-900"&gt;&lt;span class="hextra-card-icon hx:flex hx:font-semibold hx:items-start hx:gap-2 hx:pt-4 hx:px-4 hx:text-gray-700 hx:hover:text-gray-900 hx:dark:text-neutral-200 hx:dark:hover:text-neutral-50"&gt;Enterprise&lt;/span&gt;&lt;div class="hextra-card-subtitle hx:line-clamp-3 hx:text-sm hx:font-normal hx:text-gray-500 hx:dark:text-gray-400 hx:px-4 hx:mb-4 hx:mt-2"&gt;Use Bundles for complex, multi-component solutions&lt;/div&gt;&lt;/a&gt;
+&lt;/div&gt;
+&lt;hr&gt;
+&lt;h2&gt;Implementation Best Practices&lt;span class="hx:absolute hx:-mt-20" id="implementation-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#implementation-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Planning Your Item Structure&lt;span class="hx:absolute hx:-mt-20" id="planning-your-item-structure"&gt;&lt;/span&gt;
+&lt;a href="#planning-your-item-structure" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Inventory Assessment&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Catalog all products and their relationships&lt;/li&gt;
+&lt;li&gt;Identify assembly or bundling requirements&lt;/li&gt;
+&lt;li&gt;Determine customer selection needs&lt;/li&gt;
+&lt;li&gt;Evaluate pricing and promotional strategies&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;System Configuration&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Start with Basic Items for simple products&lt;/li&gt;
+&lt;li&gt;Implement Grouped Items for variation management&lt;/li&gt;
+&lt;li&gt;Add Kits for assembly operations&lt;/li&gt;
+&lt;li&gt;Deploy Packages for promotional strategies&lt;/li&gt;
+&lt;li&gt;Reserve Bundles for complex enterprise scenarios&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Data Management&lt;span class="hx:absolute hx:-mt-20" id="data-management"&gt;&lt;/span&gt;
+&lt;a href="#data-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Consistent Naming&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use clear, descriptive item names&lt;/li&gt;
+&lt;li&gt;Implement standardized naming conventions&lt;/li&gt;
+&lt;li&gt;Include relevant identifiers and codes&lt;/li&gt;
+&lt;li&gt;Maintain consistency across item types&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Accurate Relationships&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Verify component mappings in Kits&lt;/li&gt;
+&lt;li&gt;Validate grouping structures for Grouped Items&lt;/li&gt;
+&lt;li&gt;Confirm package compositions&lt;/li&gt;
+&lt;li&gt;Test bundle hierarchies thoroughly&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Performance Optimization&lt;span class="hx:absolute hx:-mt-20" id="performance-optimization"&gt;&lt;/span&gt;
+&lt;a href="#performance-optimization" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Database Efficiency&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Regular maintenance of item relationships&lt;/li&gt;
+&lt;li&gt;Cleanup of unused or obsolete items&lt;/li&gt;
+&lt;li&gt;Optimization of complex bundle structures&lt;/li&gt;
+&lt;li&gt;Monitoring of transaction processing times&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;User Experience&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Train staff on item type differences&lt;/li&gt;
+&lt;li&gt;Provide clear customer selection interfaces&lt;/li&gt;
+&lt;li&gt;Implement efficient search and filtering&lt;/li&gt;
+&lt;li&gt;Regular review of item type effectiveness&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Integration with Other Modules&lt;span class="hx:absolute hx:-mt-20" id="integration-with-other-modules"&gt;&lt;/span&gt;
+&lt;a href="#integration-with-other-modules" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Financial Accounting Integration&lt;span class="hx:absolute hx:-mt-20" id="financial-accounting-integration"&gt;&lt;/span&gt;
+&lt;a href="#financial-accounting-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Cost Accounting&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Basic Items: Direct cost assignment&lt;/li&gt;
+&lt;li&gt;Kits: Component cost accumulation&lt;/li&gt;
+&lt;li&gt;Grouped Items: Variation-specific costing&lt;/li&gt;
+&lt;li&gt;Packages: Allocated cost distribution&lt;/li&gt;
+&lt;li&gt;Bundles: Complex cost hierarchy management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Revenue Recognition&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Item type determines revenue posting methods&lt;/li&gt;
+&lt;li&gt;Bundle components may require separate revenue streams&lt;/li&gt;
+&lt;li&gt;Package sales use consolidated revenue approach&lt;/li&gt;
+&lt;li&gt;Kit sales include assembly value-add recognition&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Inventory Management Integration&lt;span class="hx:absolute hx:-mt-20" id="inventory-management-integration"&gt;&lt;/span&gt;
+&lt;a href="#inventory-management-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Stock Tracking&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Real-time updates for all item types&lt;/li&gt;
+&lt;li&gt;Component-level tracking for Kits and Bundles&lt;/li&gt;
+&lt;li&gt;Variation-specific levels for Grouped Items&lt;/li&gt;
+&lt;li&gt;Package component reservations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Procurement Integration&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Automatic reordering based on item type requirements&lt;/li&gt;
+&lt;li&gt;Component availability checking for Kits&lt;/li&gt;
+&lt;li&gt;Package component procurement planning&lt;/li&gt;
+&lt;li&gt;Bundle-level purchase order generation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Sales and CRM Integration&lt;span class="hx:absolute hx:-mt-20" id="sales-and-crm-integration"&gt;&lt;/span&gt;
+&lt;a href="#sales-and-crm-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Customer Experience&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Product catalog presentation based on item types&lt;/li&gt;
+&lt;li&gt;Dynamic option selection for Grouped Items&lt;/li&gt;
+&lt;li&gt;Bundle configuration tools for complex sales&lt;/li&gt;
+&lt;li&gt;Package promotion and marketing integration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Pricing Management&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Item type-specific pricing strategies&lt;/li&gt;
+&lt;li&gt;Component and bundle pricing relationships&lt;/li&gt;
+&lt;li&gt;Promotional pricing for Packages&lt;/li&gt;
+&lt;li&gt;Customer-specific pricing for all types&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Troubleshooting Common Issues&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting-common-issues"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting-common-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Item Type Conversion&lt;span class="hx:absolute hx:-mt-20" id="item-type-conversion"&gt;&lt;/span&gt;
+&lt;a href="#item-type-conversion" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Changing Item Types&lt;/strong&gt;:
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-yellow-100 hx:bg-yellow-50 hx:text-yellow-900 hx:dark:border-yellow-200/30 hx:dark:bg-yellow-700/30 hx:dark:text-yellow-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;⚠️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Important&lt;/strong&gt;: Converting between item types may affect existing transactions and inventory balances. Always backup data and test in a development environment before making changes.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Safe Conversion Practices&lt;/strong&gt;:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Complete all pending transactions&lt;/li&gt;
+&lt;li&gt;Reconcile inventory balances&lt;/li&gt;
+&lt;li&gt;Backup relevant data&lt;/li&gt;
+&lt;li&gt;Test conversion in development environment&lt;/li&gt;
+&lt;li&gt;Plan for transaction history preservation&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Performance Issues&lt;span class="hx:absolute hx:-mt-20" id="performance-issues"&gt;&lt;/span&gt;
+&lt;a href="#performance-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Complex Bundle Performance&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Limit bundle nesting to two levels&lt;/li&gt;
+&lt;li&gt;Regular cleanup of unused components&lt;/li&gt;
+&lt;li&gt;Monitor transaction processing times&lt;/li&gt;
+&lt;li&gt;Optimize database indices for item relationships&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Inventory Synchronization&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Regular reconciliation of component relationships&lt;/li&gt;
+&lt;li&gt;Automated validation of Kit and Package compositions&lt;/li&gt;
+&lt;li&gt;Monitoring of Grouped Item variation integrity&lt;/li&gt;
+&lt;li&gt;Performance testing with large catalogs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Data Integrity&lt;span class="hx:absolute hx:-mt-20" id="data-integrity"&gt;&lt;/span&gt;
+&lt;a href="#data-integrity" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Relationship Validation&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Regular audits of component mappings&lt;/li&gt;
+&lt;li&gt;Verification of inventory level calculations&lt;/li&gt;
+&lt;li&gt;Validation of pricing relationship consistency&lt;/li&gt;
+&lt;li&gt;Monitoring of financial posting accuracy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Advanced Features and Future Enhancements&lt;span class="hx:absolute hx:-mt-20" id="advanced-features-and-future-enhancements"&gt;&lt;/span&gt;
+&lt;a href="#advanced-features-and-future-enhancements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Automation Capabilities&lt;span class="hx:absolute hx:-mt-20" id="automation-capabilities"&gt;&lt;/span&gt;
+&lt;a href="#automation-capabilities" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Smart Item Classification&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;AI-powered item type recommendations&lt;/li&gt;
+&lt;li&gt;Automated component relationship detection&lt;/li&gt;
+&lt;li&gt;Dynamic grouping based on product attributes&lt;/li&gt;
+&lt;li&gt;Intelligent bundle composition suggestions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Integration Enhancements&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Enhanced e-commerce platform synchronization&lt;/li&gt;
+&lt;li&gt;Advanced manufacturing integration&lt;/li&gt;
+&lt;li&gt;Improved supplier relationship management&lt;/li&gt;
+&lt;li&gt;Expanded financial reporting capabilities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Scalability Considerations&lt;span class="hx:absolute hx:-mt-20" id="scalability-considerations"&gt;&lt;/span&gt;
+&lt;a href="#scalability-considerations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Enterprise Scaling&lt;/strong&gt;:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;High-volume transaction processing&lt;/li&gt;
+&lt;li&gt;Multi-location inventory management&lt;/li&gt;
+&lt;li&gt;Complex hierarchy support expansion&lt;/li&gt;
+&lt;li&gt;Advanced reporting and analytics&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Related Resources&lt;span class="hx:absolute hx:-mt-20" id="related-resources"&gt;&lt;/span&gt;
+&lt;a href="#related-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Expand your understanding of BigLedger&amp;rsquo;s item management:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/basic-operations/item-maintenance/" &gt;Item Maintenance Procedures&lt;/a&gt; - Creating and managing individual items&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/inventory/" &gt;Inventory Management&lt;/a&gt; - Complete inventory control system&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/user-guide/daily-tasks/pricing-scheme/" &gt;Pricing Schemes&lt;/a&gt; - Advanced pricing strategies&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/crm/" &gt;Sales Operations&lt;/a&gt; - Customer relationship and sales management&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://wiki.bigledger.com/modules/manufacturing/" &gt;Manufacturing Integration&lt;/a&gt; - Production and assembly workflows&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2&gt;Getting Help and Support&lt;span class="hx:absolute hx:-mt-20" id="getting-help-and-support"&gt;&lt;/span&gt;
+&lt;a href="#getting-help-and-support" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Technical Support&lt;span class="hx:absolute hx:-mt-20" id="technical-support"&gt;&lt;/span&gt;
+&lt;a href="#technical-support" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;For assistance with document item types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Technical Support&lt;/strong&gt;: &lt;a href="mailto:vincent@bigledger.com" &gt;vincent@bigledger.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Implementation Consulting&lt;/strong&gt;: &lt;a href="mailto:sales@bigledger.com" &gt;sales@bigledger.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Training Resources&lt;/strong&gt;: Comprehensive video tutorials and documentation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Community Support&lt;/strong&gt;: User forums and knowledge base&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Professional Services&lt;span class="hx:absolute hx:-mt-20" id="professional-services"&gt;&lt;/span&gt;
+&lt;a href="#professional-services" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Consider professional services for:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Complex item type implementation planning&lt;/li&gt;
+&lt;li&gt;Custom business scenario configuration&lt;/li&gt;
+&lt;li&gt;Advanced integration setup&lt;/li&gt;
+&lt;li&gt;Performance optimization and scalability planning&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Implementation Success&lt;/strong&gt;: Businesses that properly implement BigLedger&amp;rsquo;s item type system see 40% improvement in inventory accuracy and 25% reduction in transaction processing time.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

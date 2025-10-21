@@ -1,387 +1,387 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>BigLedger Documentation – Business-Process</title><link>https://wiki.bigledger.com/tags/business-process/</link><description>Recent content in Business-Process on BigLedger Documentation</description><generator>Hugo -- gohugo.io</generator><language>en</language><atom:link href="https://wiki.bigledger.com/tags/business-process/index.xml" rel="self" type="application/rss+xml"/><item><title>Workflow Design Applet</title><link>https://wiki.bigledger.com/applets/workflow-design-applet/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://wiki.bigledger.com/applets/workflow-design-applet/</guid><description>
-&lt;h2>Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview">&lt;/span>
-&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;p>The Workflow Design Applet is a powerful Core Module component that enables business process automation and workflow management across BigLedger. This applet provides comprehensive tools for designing, implementing, and managing approval workflows, business processes, and automated operations that streamline organizational efficiency.&lt;/p>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">ℹ️&lt;/div>&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Core Module Applet&lt;/strong>: This is one of the 13 essential Core Module applets, enabling process automation and workflow management across all BigLedger modules.&lt;/div>
-&lt;/div>
-&lt;/div>
-&lt;h3>Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions">&lt;/span>
-&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Workflow Design and Configuration&lt;/strong> - Visual workflow builder and designer&lt;/li>
-&lt;li>&lt;strong>Approval Process Management&lt;/strong> - Multi-level approval workflows&lt;/li>
-&lt;li>&lt;strong>Business Process Automation&lt;/strong> - Automated task and process execution&lt;/li>
-&lt;li>&lt;strong>Integration Orchestration&lt;/strong> - Cross-module workflow coordination&lt;/li>
-&lt;li>&lt;strong>Performance Monitoring&lt;/strong> - Workflow efficiency and bottleneck analysis&lt;/li>
-&lt;/ul>
-&lt;h2>Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features">&lt;/span>
-&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Visual Workflow Designer&lt;span class="hx:absolute hx:-mt-20" id="visual-workflow-designer">&lt;/span>
-&lt;a href="#visual-workflow-designer" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Drag-and-drop workflow design interface&lt;/li>
-&lt;li>Flowchart-based process visualization&lt;/li>
-&lt;li>Decision nodes and conditional logic&lt;/li>
-&lt;li>Parallel and sequential workflow paths&lt;/li>
-&lt;li>Template-based workflow creation&lt;/li>
-&lt;li>Version control and workflow history&lt;/li>
-&lt;/ul>
-&lt;h3>Approval Workflow Management&lt;span class="hx:absolute hx:-mt-20" id="approval-workflow-management">&lt;/span>
-&lt;a href="#approval-workflow-management" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Multi-level approval hierarchies&lt;/li>
-&lt;li>Role-based approval routing&lt;/li>
-&lt;li>Dynamic approval based on conditions (amount, type, etc.)&lt;/li>
-&lt;li>Escalation and timeout handling&lt;/li>
-&lt;li>Delegate and substitute approver setup&lt;/li>
-&lt;li>Approval audit trails and notifications&lt;/li>
-&lt;/ul>
-&lt;h3>Process Automation Engine&lt;span class="hx:absolute hx:-mt-20" id="process-automation-engine">&lt;/span>
-&lt;a href="#process-automation-engine" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Event-triggered workflow execution&lt;/li>
-&lt;li>Scheduled and recurring workflows&lt;/li>
-&lt;li>Data transformation and mapping&lt;/li>
-&lt;li>Integration with external systems&lt;/li>
-&lt;li>Error handling and retry mechanisms&lt;/li>
-&lt;li>Real-time process monitoring&lt;/li>
-&lt;/ul>
-&lt;h3>Notification and Communication&lt;span class="hx:absolute hx:-mt-20" id="notification-and-communication">&lt;/span>
-&lt;a href="#notification-and-communication" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Email and SMS notifications&lt;/li>
-&lt;li>In-system alert management&lt;/li>
-&lt;li>Approval request notifications&lt;/li>
-&lt;li>Process status updates&lt;/li>
-&lt;li>Escalation notifications&lt;/li>
-&lt;li>Custom notification templates&lt;/li>
-&lt;/ul>
-&lt;h3>Workflow Analytics and Reporting&lt;span class="hx:absolute hx:-mt-20" id="workflow-analytics-and-reporting">&lt;/span>
-&lt;a href="#workflow-analytics-and-reporting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Process performance metrics&lt;/li>
-&lt;li>Bottleneck identification and analysis&lt;/li>
-&lt;li>Approval time tracking&lt;/li>
-&lt;li>User productivity analysis&lt;/li>
-&lt;li>Workflow completion rates&lt;/li>
-&lt;li>Custom workflow reports&lt;/li>
-&lt;/ul>
-&lt;h2>Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications">&lt;/span>
-&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements">&lt;/span>
-&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Minimum Access Level&lt;/strong>: Workflow Administrator&lt;/li>
-&lt;li>&lt;strong>Database Dependencies&lt;/strong>: Workflow engine tables&lt;/li>
-&lt;li>&lt;strong>Integration Points&lt;/strong>: All BigLedger modules&lt;/li>
-&lt;li>&lt;strong>API Availability&lt;/strong>: Workflow orchestration APIs&lt;/li>
-&lt;li>&lt;strong>Real-time Processing&lt;/strong>: Event-driven workflow execution&lt;/li>
-&lt;/ul>
-&lt;h3>Workflow Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="workflow-configuration-options">&lt;/span>
-&lt;a href="#workflow-configuration-options" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Workflow Steps&lt;/strong>: Up to 50 steps per workflow&lt;/li>
-&lt;li>&lt;strong>Approval Levels&lt;/strong>: Up to 10 approval levels&lt;/li>
-&lt;li>&lt;strong>Conditional Logic&lt;/strong>: Complex business rules support&lt;/li>
-&lt;li>&lt;strong>Integration Points&lt;/strong>: Unlimited external system connections&lt;/li>
-&lt;li>&lt;strong>Custom Fields&lt;/strong>: Workflow-specific data capture&lt;/li>
-&lt;/ul>
-&lt;h3>Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters">&lt;/span>
-&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Concurrent Workflows&lt;/strong>: 1,000+ simultaneous executions&lt;/li>
-&lt;li>&lt;strong>Response Time&lt;/strong>: &amp;lt;2 seconds for workflow initiation&lt;/li>
-&lt;li>&lt;strong>Throughput&lt;/strong>: 10,000+ workflow executions per hour&lt;/li>
-&lt;li>&lt;strong>Monitoring&lt;/strong>: Real-time workflow status tracking&lt;/li>
-&lt;li>&lt;strong>History Retention&lt;/strong>: 5+ years of workflow history&lt;/li>
-&lt;/ul>
-&lt;h2>Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points">&lt;/span>
-&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies">&lt;/span>
-&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Employee Maintenance Applet&lt;/strong> - Workflow participant management&lt;/li>
-&lt;li>&lt;strong>Organization Applet&lt;/strong> - Organizational hierarchy integration&lt;/li>
-&lt;li>&lt;strong>Tenant Admin Applet&lt;/strong> - User role and permission integration&lt;/li>
-&lt;li>&lt;strong>Customer/Supplier Maintenance&lt;/strong> - External party workflow involvement&lt;/li>
-&lt;/ul>
-&lt;h3>Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration">&lt;/span>
-&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>Module&lt;/th>
-&lt;th>Integration Purpose&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;strong>Financial Accounting&lt;/strong>&lt;/td>
-&lt;td>Financial approval workflows&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Purchasing&lt;/strong>&lt;/td>
-&lt;td>Purchase approval and procurement workflows&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Sales &amp;amp; CRM&lt;/strong>&lt;/td>
-&lt;td>Sales process and customer workflow automation&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>HR &amp;amp; Payroll&lt;/strong>&lt;/td>
-&lt;td>Employee-related approval processes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Inventory Management&lt;/strong>&lt;/td>
-&lt;td>Stock movement and adjustment approvals&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Project Management&lt;/strong>&lt;/td>
-&lt;td>Project workflow and milestone automation&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>&lt;strong>Quality Management&lt;/strong>&lt;/td>
-&lt;td>Quality control and inspection workflows&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h3>External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations">&lt;/span>
-&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Email Systems&lt;/strong> - Notification delivery&lt;/li>
-&lt;li>&lt;strong>Document Management&lt;/strong> - Document workflow integration&lt;/li>
-&lt;li>&lt;strong>ERP Systems&lt;/strong> - Cross-system workflow orchestration&lt;/li>
-&lt;li>&lt;strong>Mobile Applications&lt;/strong> - Mobile workflow participation&lt;/li>
-&lt;li>&lt;strong>Business Intelligence&lt;/strong> - Workflow analytics integration&lt;/li>
-&lt;li>&lt;strong>Third-party APIs&lt;/strong> - External service workflow integration&lt;/li>
-&lt;/ul>
-&lt;h2>Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements">&lt;/span>
-&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements">&lt;/span>
-&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Organizational Structure&lt;/strong> - Define approval hierarchies&lt;/li>
-&lt;li>&lt;strong>User Roles and Permissions&lt;/strong> - Configure workflow participants&lt;/li>
-&lt;li>&lt;strong>Email/SMS Configuration&lt;/strong> - Set up notification delivery&lt;/li>
-&lt;li>&lt;strong>Basic Workflow Templates&lt;/strong> - Create standard workflow patterns&lt;/li>
-&lt;li>&lt;strong>Integration Endpoints&lt;/strong> - Configure external system connections&lt;/li>
-&lt;/ol>
-&lt;h3>Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations">&lt;/span>
-&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Approval Hierarchies&lt;/strong>: Manager, Director, CEO approval levels&lt;/li>
-&lt;li>&lt;strong>Standard Workflows&lt;/strong>: Purchase Approval, Leave Request, Expense Approval&lt;/li>
-&lt;li>&lt;strong>Notification Templates&lt;/strong>: Email and SMS message templates&lt;/li>
-&lt;li>&lt;strong>Timeout Settings&lt;/strong>: Workflow escalation and timeout rules&lt;/li>
-&lt;li>&lt;strong>Audit Settings&lt;/strong>: Workflow logging and history retention&lt;/li>
-&lt;/ul>
-&lt;h3>Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations">&lt;/span>
-&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Complex Business Rules&lt;/strong> - Advanced conditional logic&lt;/li>
-&lt;li>&lt;strong>Integration Workflows&lt;/strong> - Cross-system process automation&lt;/li>
-&lt;li>&lt;strong>Custom Workflow Types&lt;/strong> - Industry-specific workflows&lt;/li>
-&lt;li>&lt;strong>Performance Monitoring&lt;/strong> - Advanced analytics and reporting&lt;/li>
-&lt;li>&lt;strong>Mobile Workflow Support&lt;/strong> - Mobile-optimized workflow interfaces&lt;/li>
-&lt;/ul>
-&lt;h2>Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases">&lt;/span>
-&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Purchase Approval Workflow&lt;span class="hx:absolute hx:-mt-20" id="purchase-approval-workflow">&lt;/span>
-&lt;a href="#purchase-approval-workflow" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Multi-level purchase order approval process&lt;/p>
-&lt;ul>
-&lt;li>Automatic routing based on purchase amount&lt;/li>
-&lt;li>Department manager approval for &amp;lt;$5,000&lt;/li>
-&lt;li>Finance director approval for $5,000-$25,000&lt;/li>
-&lt;li>CEO approval for &amp;gt;$25,000&lt;/li>
-&lt;li>Automatic supplier notification upon approval&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Streamlined procurement with proper controls&lt;/p>
-&lt;h3>Employee Leave Request Workflow&lt;span class="hx:absolute hx:-mt-20" id="employee-leave-request-workflow">&lt;/span>
-&lt;a href="#employee-leave-request-workflow" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: HR leave approval and management&lt;/p>
-&lt;ul>
-&lt;li>Employee submits leave request&lt;/li>
-&lt;li>Direct manager approval/rejection&lt;/li>
-&lt;li>HR notification for approved leaves&lt;/li>
-&lt;li>Automatic calendar integration&lt;/li>
-&lt;li>Leave balance updates&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Efficient leave management with proper documentation&lt;/p>
-&lt;h3>Sales Quote Approval Workflow&lt;span class="hx:absolute hx:-mt-20" id="sales-quote-approval-workflow">&lt;/span>
-&lt;a href="#sales-quote-approval-workflow" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Sales discount and pricing approval&lt;/p>
-&lt;ul>
-&lt;li>Sales representative creates quote&lt;/li>
-&lt;li>Automatic approval for standard pricing&lt;/li>
-&lt;li>Manager approval required for 10%+ discounts&lt;/li>
-&lt;li>Director approval required for 20%+ discounts&lt;/li>
-&lt;li>Customer notification upon final approval&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Controlled pricing with sales efficiency&lt;/p>
-&lt;h3>Quality Control Workflow&lt;span class="hx:absolute hx:-mt-20" id="quality-control-workflow">&lt;/span>
-&lt;a href="#quality-control-workflow" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Scenario&lt;/strong>: Product quality inspection process&lt;/p>
-&lt;ul>
-&lt;li>Incoming goods inspection trigger&lt;/li>
-&lt;li>Quality control inspection steps&lt;/li>
-&lt;li>Conditional approval based on test results&lt;/li>
-&lt;li>Rejection handling and supplier notification&lt;/li>
-&lt;li>Certificate generation for approved items&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Benefits&lt;/strong>: Systematic quality assurance with documentation&lt;/p>
-&lt;h2>Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets">&lt;/span>
-&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets">&lt;/span>
-&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/employee-maintenance-applet/" >Employee Maintenance Applet&lt;/a>&lt;/strong> - Workflow participant setup&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" >Organization Applet&lt;/a>&lt;/strong> - Organizational structure&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/tenant-admin-applet/" >Tenant Admin Applet&lt;/a>&lt;/strong> - User permissions&lt;/li>
-&lt;/ul>
-&lt;h3>Process Management Applets&lt;span class="hx:absolute hx:-mt-20" id="process-management-applets">&lt;/span>
-&lt;a href="#process-management-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/process-monitoring-applet/" >Process Monitoring Applet&lt;/a>&lt;/strong> - Process performance monitoring&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/document-management-applet/" >Document Management Applet&lt;/a>&lt;/strong> - Document workflow integration&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/notification-applet/" >Notification Applet&lt;/a>&lt;/strong> - Advanced notification management&lt;/li>
-&lt;/ul>
-&lt;h3>Business Function Applets&lt;span class="hx:absolute hx:-mt-20" id="business-function-applets">&lt;/span>
-&lt;a href="#business-function-applets" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/purchase-approval-applet/" >Purchase Approval Applet&lt;/a>&lt;/strong> - Procurement workflow specialization&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/hr-workflow-applet/" >HR Workflow Applet&lt;/a>&lt;/strong> - Human resources workflows&lt;/li>
-&lt;li>&lt;strong>&lt;a href="https://wiki.bigledger.com/applets/financial-approval-applet/" >Financial Approval Applet&lt;/a>&lt;/strong> - Financial process workflows&lt;/li>
-&lt;/ul>
-&lt;h2>Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide">&lt;/span>
-&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start">&lt;/span>
-&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Access Workflow Design&lt;/strong> - Navigate to the applet&lt;/li>
-&lt;li>&lt;strong>Define Basic Approval Hierarchy&lt;/strong> - Set up organizational approval levels&lt;/li>
-&lt;li>&lt;strong>Create Simple Workflow&lt;/strong> - Design a basic approval workflow&lt;/li>
-&lt;li>&lt;strong>Test Workflow Execution&lt;/strong> - Process test workflow instances&lt;/li>
-&lt;li>&lt;strong>Monitor Workflow Performance&lt;/strong> - Review workflow analytics&lt;/li>
-&lt;/ol>
-&lt;h3>Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup">&lt;/span>
-&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ol>
-&lt;li>&lt;strong>Complex Workflow Design&lt;/strong> - Create multi-path conditional workflows&lt;/li>
-&lt;li>&lt;strong>Integration Configuration&lt;/strong> - Set up external system connections&lt;/li>
-&lt;li>&lt;strong>Custom Notification Setup&lt;/strong> - Configure advanced notification rules&lt;/li>
-&lt;li>&lt;strong>Performance Optimization&lt;/strong> - Optimize workflow execution performance&lt;/li>
-&lt;li>&lt;strong>Analytics Dashboard Setup&lt;/strong> - Configure workflow performance monitoring&lt;/li>
-&lt;/ol>
-&lt;h2>Workflow Design Examples&lt;span class="hx:absolute hx:-mt-20" id="workflow-design-examples">&lt;/span>
-&lt;a href="#workflow-design-examples" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Purchase Order Approval Workflow&lt;span class="hx:absolute hx:-mt-20" id="purchase-order-approval-workflow">&lt;/span>
-&lt;a href="#purchase-order-approval-workflow" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Workflow Name&lt;/span>: &lt;span style="color:#ae81ff">Purchase Order Approval&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Trigger&lt;/span>: &lt;span style="color:#ae81ff">Purchase Order Creation&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Steps&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">1. Initial Review&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Condition&lt;/span>: &lt;span style="color:#ae81ff">Amount &amp;lt; $1,000&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Action&lt;/span>: &lt;span style="color:#ae81ff">Auto-approve&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Next&lt;/span>: &lt;span style="color:#ae81ff">Send to Supplier&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">2. Manager Approval&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Condition&lt;/span>: &lt;span style="color:#ae81ff">Amount $1,000 - $5,000&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Approver&lt;/span>: &lt;span style="color:#ae81ff">Department Manager&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Timeout&lt;/span>: &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#ae81ff">days&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Escalation&lt;/span>: &lt;span style="color:#ae81ff">Director&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Next&lt;/span>: &lt;span style="color:#ae81ff">Finance Review&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">3. Director Approval&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Condition&lt;/span>: &lt;span style="color:#ae81ff">Amount &amp;gt; $5,000&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Approver&lt;/span>: &lt;span style="color:#ae81ff">Finance Director&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Timeout&lt;/span>: &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#ae81ff">days&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Escalation&lt;/span>: &lt;span style="color:#ae81ff">CEO&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Next&lt;/span>: &lt;span style="color:#ae81ff">Final Approval&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">4. Final Processing&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Action&lt;/span>: &lt;span style="color:#ae81ff">Update PO Status&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Notification&lt;/span>: &lt;span style="color:#ae81ff">Supplier and Requester&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Integration&lt;/span>: &lt;span style="color:#ae81ff">Accounting System&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&lt;h2&gt;Purpose and Overview&lt;span class="hx:absolute hx:-mt-20" id="purpose-and-overview"&gt;&lt;/span&gt;
+&lt;a href="#purpose-and-overview" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The Workflow Design Applet is a powerful Core Module component that enables business process automation and workflow management across BigLedger. This applet provides comprehensive tools for designing, implementing, and managing approval workflows, business processes, and automated operations that streamline organizational efficiency.&lt;/p&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-blue-200 hx:bg-blue-100 hx:text-blue-900 hx:dark:border-blue-200/30 hx:dark:bg-blue-900/30 hx:dark:text-blue-200"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;div class="hx:select-none hx:text-xl" style="font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';"&gt;ℹ️&lt;/div&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Core Module Applet&lt;/strong&gt;: This is one of the 13 essential Core Module applets, enabling process automation and workflow management across all BigLedger modules.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Primary Functions&lt;span class="hx:absolute hx:-mt-20" id="primary-functions"&gt;&lt;/span&gt;
+&lt;a href="#primary-functions" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Workflow Design and Configuration&lt;/strong&gt; - Visual workflow builder and designer&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Approval Process Management&lt;/strong&gt; - Multi-level approval workflows&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Business Process Automation&lt;/strong&gt; - Automated task and process execution&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Orchestration&lt;/strong&gt; - Cross-module workflow coordination&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Monitoring&lt;/strong&gt; - Workflow efficiency and bottleneck analysis&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Key Features&lt;span class="hx:absolute hx:-mt-20" id="key-features"&gt;&lt;/span&gt;
+&lt;a href="#key-features" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Visual Workflow Designer&lt;span class="hx:absolute hx:-mt-20" id="visual-workflow-designer"&gt;&lt;/span&gt;
+&lt;a href="#visual-workflow-designer" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Drag-and-drop workflow design interface&lt;/li&gt;
+&lt;li&gt;Flowchart-based process visualization&lt;/li&gt;
+&lt;li&gt;Decision nodes and conditional logic&lt;/li&gt;
+&lt;li&gt;Parallel and sequential workflow paths&lt;/li&gt;
+&lt;li&gt;Template-based workflow creation&lt;/li&gt;
+&lt;li&gt;Version control and workflow history&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Approval Workflow Management&lt;span class="hx:absolute hx:-mt-20" id="approval-workflow-management"&gt;&lt;/span&gt;
+&lt;a href="#approval-workflow-management" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Multi-level approval hierarchies&lt;/li&gt;
+&lt;li&gt;Role-based approval routing&lt;/li&gt;
+&lt;li&gt;Dynamic approval based on conditions (amount, type, etc.)&lt;/li&gt;
+&lt;li&gt;Escalation and timeout handling&lt;/li&gt;
+&lt;li&gt;Delegate and substitute approver setup&lt;/li&gt;
+&lt;li&gt;Approval audit trails and notifications&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Process Automation Engine&lt;span class="hx:absolute hx:-mt-20" id="process-automation-engine"&gt;&lt;/span&gt;
+&lt;a href="#process-automation-engine" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Event-triggered workflow execution&lt;/li&gt;
+&lt;li&gt;Scheduled and recurring workflows&lt;/li&gt;
+&lt;li&gt;Data transformation and mapping&lt;/li&gt;
+&lt;li&gt;Integration with external systems&lt;/li&gt;
+&lt;li&gt;Error handling and retry mechanisms&lt;/li&gt;
+&lt;li&gt;Real-time process monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Notification and Communication&lt;span class="hx:absolute hx:-mt-20" id="notification-and-communication"&gt;&lt;/span&gt;
+&lt;a href="#notification-and-communication" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Email and SMS notifications&lt;/li&gt;
+&lt;li&gt;In-system alert management&lt;/li&gt;
+&lt;li&gt;Approval request notifications&lt;/li&gt;
+&lt;li&gt;Process status updates&lt;/li&gt;
+&lt;li&gt;Escalation notifications&lt;/li&gt;
+&lt;li&gt;Custom notification templates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Workflow Analytics and Reporting&lt;span class="hx:absolute hx:-mt-20" id="workflow-analytics-and-reporting"&gt;&lt;/span&gt;
+&lt;a href="#workflow-analytics-and-reporting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Process performance metrics&lt;/li&gt;
+&lt;li&gt;Bottleneck identification and analysis&lt;/li&gt;
+&lt;li&gt;Approval time tracking&lt;/li&gt;
+&lt;li&gt;User productivity analysis&lt;/li&gt;
+&lt;li&gt;Workflow completion rates&lt;/li&gt;
+&lt;li&gt;Custom workflow reports&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Technical Specifications&lt;span class="hx:absolute hx:-mt-20" id="technical-specifications"&gt;&lt;/span&gt;
+&lt;a href="#technical-specifications" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;System Requirements&lt;span class="hx:absolute hx:-mt-20" id="system-requirements"&gt;&lt;/span&gt;
+&lt;a href="#system-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Minimum Access Level&lt;/strong&gt;: Workflow Administrator&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Database Dependencies&lt;/strong&gt;: Workflow engine tables&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Points&lt;/strong&gt;: All BigLedger modules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;API Availability&lt;/strong&gt;: Workflow orchestration APIs&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Real-time Processing&lt;/strong&gt;: Event-driven workflow execution&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Workflow Configuration Options&lt;span class="hx:absolute hx:-mt-20" id="workflow-configuration-options"&gt;&lt;/span&gt;
+&lt;a href="#workflow-configuration-options" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Workflow Steps&lt;/strong&gt;: Up to 50 steps per workflow&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Approval Levels&lt;/strong&gt;: Up to 10 approval levels&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Conditional Logic&lt;/strong&gt;: Complex business rules support&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Points&lt;/strong&gt;: Unlimited external system connections&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Fields&lt;/strong&gt;: Workflow-specific data capture&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Performance Parameters&lt;span class="hx:absolute hx:-mt-20" id="performance-parameters"&gt;&lt;/span&gt;
+&lt;a href="#performance-parameters" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Concurrent Workflows&lt;/strong&gt;: 1,000+ simultaneous executions&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Response Time&lt;/strong&gt;: &amp;lt;2 seconds for workflow initiation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Throughput&lt;/strong&gt;: 10,000+ workflow executions per hour&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitoring&lt;/strong&gt;: Real-time workflow status tracking&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;History Retention&lt;/strong&gt;: 5+ years of workflow history&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Integration Points&lt;span class="hx:absolute hx:-mt-20" id="integration-points"&gt;&lt;/span&gt;
+&lt;a href="#integration-points" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Dependencies&lt;span class="hx:absolute hx:-mt-20" id="core-module-dependencies"&gt;&lt;/span&gt;
+&lt;a href="#core-module-dependencies" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Employee Maintenance Applet&lt;/strong&gt; - Workflow participant management&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Organization Applet&lt;/strong&gt; - Organizational hierarchy integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tenant Admin Applet&lt;/strong&gt; - User role and permission integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Customer/Supplier Maintenance&lt;/strong&gt; - External party workflow involvement&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Module Integration&lt;span class="hx:absolute hx:-mt-20" id="module-integration"&gt;&lt;/span&gt;
+&lt;a href="#module-integration" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Module&lt;/th&gt;
+&lt;th&gt;Integration Purpose&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Financial Accounting&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Financial approval workflows&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Purchasing&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Purchase approval and procurement workflows&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Sales &amp;amp; CRM&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Sales process and customer workflow automation&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;HR &amp;amp; Payroll&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Employee-related approval processes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Inventory Management&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Stock movement and adjustment approvals&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Project Management&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Project workflow and milestone automation&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Quality Management&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Quality control and inspection workflows&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h3&gt;External Integrations&lt;span class="hx:absolute hx:-mt-20" id="external-integrations"&gt;&lt;/span&gt;
+&lt;a href="#external-integrations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Email Systems&lt;/strong&gt; - Notification delivery&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Document Management&lt;/strong&gt; - Document workflow integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;ERP Systems&lt;/strong&gt; - Cross-system workflow orchestration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mobile Applications&lt;/strong&gt; - Mobile workflow participation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Business Intelligence&lt;/strong&gt; - Workflow analytics integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Third-party APIs&lt;/strong&gt; - External service workflow integration&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Configuration Requirements&lt;span class="hx:absolute hx:-mt-20" id="configuration-requirements"&gt;&lt;/span&gt;
+&lt;a href="#configuration-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Initial Setup Requirements&lt;span class="hx:absolute hx:-mt-20" id="initial-setup-requirements"&gt;&lt;/span&gt;
+&lt;a href="#initial-setup-requirements" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Organizational Structure&lt;/strong&gt; - Define approval hierarchies&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;User Roles and Permissions&lt;/strong&gt; - Configure workflow participants&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Email/SMS Configuration&lt;/strong&gt; - Set up notification delivery&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Basic Workflow Templates&lt;/strong&gt; - Create standard workflow patterns&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Endpoints&lt;/strong&gt; - Configure external system connections&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Essential Configurations&lt;span class="hx:absolute hx:-mt-20" id="essential-configurations"&gt;&lt;/span&gt;
+&lt;a href="#essential-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Approval Hierarchies&lt;/strong&gt;: Manager, Director, CEO approval levels&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Standard Workflows&lt;/strong&gt;: Purchase Approval, Leave Request, Expense Approval&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Notification Templates&lt;/strong&gt;: Email and SMS message templates&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Timeout Settings&lt;/strong&gt;: Workflow escalation and timeout rules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Audit Settings&lt;/strong&gt;: Workflow logging and history retention&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Advanced Configurations&lt;span class="hx:absolute hx:-mt-20" id="advanced-configurations"&gt;&lt;/span&gt;
+&lt;a href="#advanced-configurations" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Complex Business Rules&lt;/strong&gt; - Advanced conditional logic&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Workflows&lt;/strong&gt; - Cross-system process automation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Workflow Types&lt;/strong&gt; - Industry-specific workflows&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Monitoring&lt;/strong&gt; - Advanced analytics and reporting&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Mobile Workflow Support&lt;/strong&gt; - Mobile-optimized workflow interfaces&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Use Cases&lt;span class="hx:absolute hx:-mt-20" id="use-cases"&gt;&lt;/span&gt;
+&lt;a href="#use-cases" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Purchase Approval Workflow&lt;span class="hx:absolute hx:-mt-20" id="purchase-approval-workflow"&gt;&lt;/span&gt;
+&lt;a href="#purchase-approval-workflow" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Multi-level purchase order approval process&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Automatic routing based on purchase amount&lt;/li&gt;
+&lt;li&gt;Department manager approval for &amp;lt;$5,000&lt;/li&gt;
+&lt;li&gt;Finance director approval for $5,000-$25,000&lt;/li&gt;
+&lt;li&gt;CEO approval for &amp;gt;$25,000&lt;/li&gt;
+&lt;li&gt;Automatic supplier notification upon approval&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Streamlined procurement with proper controls&lt;/p&gt;
+&lt;h3&gt;Employee Leave Request Workflow&lt;span class="hx:absolute hx:-mt-20" id="employee-leave-request-workflow"&gt;&lt;/span&gt;
+&lt;a href="#employee-leave-request-workflow" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: HR leave approval and management&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Employee submits leave request&lt;/li&gt;
+&lt;li&gt;Direct manager approval/rejection&lt;/li&gt;
+&lt;li&gt;HR notification for approved leaves&lt;/li&gt;
+&lt;li&gt;Automatic calendar integration&lt;/li&gt;
+&lt;li&gt;Leave balance updates&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Efficient leave management with proper documentation&lt;/p&gt;
+&lt;h3&gt;Sales Quote Approval Workflow&lt;span class="hx:absolute hx:-mt-20" id="sales-quote-approval-workflow"&gt;&lt;/span&gt;
+&lt;a href="#sales-quote-approval-workflow" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Sales discount and pricing approval&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Sales representative creates quote&lt;/li&gt;
+&lt;li&gt;Automatic approval for standard pricing&lt;/li&gt;
+&lt;li&gt;Manager approval required for 10%+ discounts&lt;/li&gt;
+&lt;li&gt;Director approval required for 20%+ discounts&lt;/li&gt;
+&lt;li&gt;Customer notification upon final approval&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Controlled pricing with sales efficiency&lt;/p&gt;
+&lt;h3&gt;Quality Control Workflow&lt;span class="hx:absolute hx:-mt-20" id="quality-control-workflow"&gt;&lt;/span&gt;
+&lt;a href="#quality-control-workflow" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Scenario&lt;/strong&gt;: Product quality inspection process&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Incoming goods inspection trigger&lt;/li&gt;
+&lt;li&gt;Quality control inspection steps&lt;/li&gt;
+&lt;li&gt;Conditional approval based on test results&lt;/li&gt;
+&lt;li&gt;Rejection handling and supplier notification&lt;/li&gt;
+&lt;li&gt;Certificate generation for approved items&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Benefits&lt;/strong&gt;: Systematic quality assurance with documentation&lt;/p&gt;
+&lt;h2&gt;Related Applets&lt;span class="hx:absolute hx:-mt-20" id="related-applets"&gt;&lt;/span&gt;
+&lt;a href="#related-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Core Module Applets&lt;span class="hx:absolute hx:-mt-20" id="core-module-applets"&gt;&lt;/span&gt;
+&lt;a href="#core-module-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/employee-maintenance-applet/" &gt;Employee Maintenance Applet&lt;/a&gt;&lt;/strong&gt; - Workflow participant setup&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/organization-applet/" &gt;Organization Applet&lt;/a&gt;&lt;/strong&gt; - Organizational structure&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/tenant-admin-applet/" &gt;Tenant Admin Applet&lt;/a&gt;&lt;/strong&gt; - User permissions&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Process Management Applets&lt;span class="hx:absolute hx:-mt-20" id="process-management-applets"&gt;&lt;/span&gt;
+&lt;a href="#process-management-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/process-monitoring-applet/" &gt;Process Monitoring Applet&lt;/a&gt;&lt;/strong&gt; - Process performance monitoring&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/document-management-applet/" &gt;Document Management Applet&lt;/a&gt;&lt;/strong&gt; - Document workflow integration&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/notification-applet/" &gt;Notification Applet&lt;/a&gt;&lt;/strong&gt; - Advanced notification management&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Business Function Applets&lt;span class="hx:absolute hx:-mt-20" id="business-function-applets"&gt;&lt;/span&gt;
+&lt;a href="#business-function-applets" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/purchase-approval-applet/" &gt;Purchase Approval Applet&lt;/a&gt;&lt;/strong&gt; - Procurement workflow specialization&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/hr-workflow-applet/" &gt;HR Workflow Applet&lt;/a&gt;&lt;/strong&gt; - Human resources workflows&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;a href="https://wiki.bigledger.com/applets/financial-approval-applet/" &gt;Financial Approval Applet&lt;/a&gt;&lt;/strong&gt; - Financial process workflows&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Setup Guide&lt;span class="hx:absolute hx:-mt-20" id="setup-guide"&gt;&lt;/span&gt;
+&lt;a href="#setup-guide" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Quick Start&lt;span class="hx:absolute hx:-mt-20" id="quick-start"&gt;&lt;/span&gt;
+&lt;a href="#quick-start" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Access Workflow Design&lt;/strong&gt; - Navigate to the applet&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Define Basic Approval Hierarchy&lt;/strong&gt; - Set up organizational approval levels&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Create Simple Workflow&lt;/strong&gt; - Design a basic approval workflow&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Test Workflow Execution&lt;/strong&gt; - Process test workflow instances&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitor Workflow Performance&lt;/strong&gt; - Review workflow analytics&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h3&gt;Advanced Setup&lt;span class="hx:absolute hx:-mt-20" id="advanced-setup"&gt;&lt;/span&gt;
+&lt;a href="#advanced-setup" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Complex Workflow Design&lt;/strong&gt; - Create multi-path conditional workflows&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Integration Configuration&lt;/strong&gt; - Set up external system connections&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Custom Notification Setup&lt;/strong&gt; - Configure advanced notification rules&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Performance Optimization&lt;/strong&gt; - Optimize workflow execution performance&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Analytics Dashboard Setup&lt;/strong&gt; - Configure workflow performance monitoring&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Workflow Design Examples&lt;span class="hx:absolute hx:-mt-20" id="workflow-design-examples"&gt;&lt;/span&gt;
+&lt;a href="#workflow-design-examples" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Purchase Order Approval Workflow&lt;span class="hx:absolute hx:-mt-20" id="purchase-order-approval-workflow"&gt;&lt;/span&gt;
+&lt;a href="#purchase-order-approval-workflow" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Workflow Name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Purchase Order Approval&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Trigger&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Purchase Order Creation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Steps&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;1. Initial Review&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Condition&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Amount &amp;lt; $1,000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Action&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Auto-approve&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Next&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Send to Supplier&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;2. Manager Approval&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Condition&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Amount $1,000 - $5,000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Approver&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Department Manager&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Timeout&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;days&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Escalation&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Director&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Next&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Finance Review&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;3. Director Approval&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Condition&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Amount &amp;gt; $5,000&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Approver&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Finance Director&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Timeout&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;days&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Escalation&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;CEO&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Next&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Final Approval&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;4. Final Processing&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Action&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Update PO Status&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Notification&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Supplier and Requester&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Integration&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Accounting System&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h3>Employee Onboarding Workflow&lt;span class="hx:absolute hx:-mt-20" id="employee-onboarding-workflow">&lt;/span>
-&lt;a href="#employee-onboarding-workflow" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code">
-&lt;div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Workflow Name&lt;/span>: &lt;span style="color:#ae81ff">Employee Onboarding&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Trigger&lt;/span>: &lt;span style="color:#ae81ff">New Employee Record Creation&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">Steps&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">1. HR Documentation&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Assignee&lt;/span>: &lt;span style="color:#ae81ff">HR Administrator&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Tasks&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Collect required documents&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Create employee file&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Setup benefits enrollment&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Timeline&lt;/span>: &lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#ae81ff">days&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">2. IT Setup&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Assignee&lt;/span>: &lt;span style="color:#ae81ff">IT Administrator&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Tasks&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Create user accounts&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Setup equipment&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Configure system access&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Timeline&lt;/span>: &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#ae81ff">days&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">3. Department Orientation&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Assignee&lt;/span>: &lt;span style="color:#ae81ff">Department Manager&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Tasks&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Workplace orientation&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Role-specific training&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#ae81ff">Introduce team members&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Timeline&lt;/span>: &lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#ae81ff">week&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">4. Completion Check&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Action&lt;/span>: &lt;span style="color:#ae81ff">Verify all steps completed&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Notification&lt;/span>: &lt;span style="color:#ae81ff">HR, Manager, Employee&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> - &lt;span style="color:#f92672">Integration&lt;/span>: &lt;span style="color:#ae81ff">HRIS System Update&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0">
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h3&gt;Employee Onboarding Workflow&lt;span class="hx:absolute hx:-mt-20" id="employee-onboarding-workflow"&gt;&lt;/span&gt;
+&lt;a href="#employee-onboarding-workflow" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;div class="hextra-code-block hx:relative hx:mt-6 hx:first:mt-0 hx:group/code"&gt;
+&lt;div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"&gt;&lt;code class="language-yaml" data-lang="yaml"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Workflow Name&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Employee Onboarding&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Trigger&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;New Employee Record Creation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;Steps&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;1. HR Documentation&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Assignee&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;HR Administrator&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Tasks&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Collect required documents&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Create employee file&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Setup benefits enrollment&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Timeline&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;3&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;days&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;2. IT Setup&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Assignee&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;IT Administrator&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Tasks&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Create user accounts&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Setup equipment&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Configure system access&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Timeline&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;2&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;days&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;3. Department Orientation&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Assignee&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Department Manager&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Tasks&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Workplace orientation&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Role-specific training&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#ae81ff"&gt;Introduce team members&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Timeline&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;1&lt;/span&gt; &lt;span style="color:#ae81ff"&gt;week&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#f92672"&gt;4. Completion Check&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Action&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;Verify all steps completed&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Notification&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;HR, Manager, Employee&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; - &lt;span style="color:#f92672"&gt;Integration&lt;/span&gt;: &lt;span style="color:#ae81ff"&gt;HRIS System Update&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="hextra-code-copy-btn-container hx:opacity-0 hx:transition hx:group-hover/code:opacity-100 hx:flex hx:gap-1 hx:absolute hx:m-[11px] hx:right-0 hx:top-0"&gt;
 &lt;button
 class="hextra-code-copy-btn hx:group/copybtn hx:cursor-pointer hx:transition-all hx:active:opacity-50 hx:bg-primary-700/5 hx:border hx:border-black/5 hx:text-gray-600 hx:hover:text-gray-900 hx:rounded-md hx:p-1.5 hx:dark:bg-primary-300/10 hx:dark:border-white/10 hx:dark:text-gray-400 hx:dark:hover:text-gray-50"
 title="Copy code"
->
-&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4">&lt;/div>
-&lt;/button>
-&lt;/div>
-&lt;/div>
-&lt;h2>Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices">&lt;/span>
-&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Workflow Design Best Practices&lt;span class="hx:absolute hx:-mt-20" id="workflow-design-best-practices">&lt;/span>
-&lt;a href="#workflow-design-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Keep It Simple&lt;/strong> - Design workflows with minimal complexity&lt;/li>
-&lt;li>&lt;strong>Clear Naming&lt;/strong> - Use descriptive names for workflows and steps&lt;/li>
-&lt;li>&lt;strong>Documentation&lt;/strong> - Document workflow purpose and procedures&lt;/li>
-&lt;li>&lt;strong>Regular Review&lt;/strong> - Periodic workflow efficiency assessment&lt;/li>
-&lt;li>&lt;strong>User Training&lt;/strong> - Comprehensive workflow user training&lt;/li>
-&lt;/ul>
-&lt;h3>Approval Process Best Practices&lt;span class="hx:absolute hx:-mt-20" id="approval-process-best-practices">&lt;/span>
-&lt;a href="#approval-process-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Appropriate Levels&lt;/strong> - Right number of approval levels&lt;/li>
-&lt;li>&lt;strong>Clear Criteria&lt;/strong> - Well-defined approval criteria&lt;/li>
-&lt;li>&lt;strong>Reasonable Timeouts&lt;/strong> - Appropriate response time requirements&lt;/li>
-&lt;li>&lt;strong>Backup Approvers&lt;/strong> - Delegate and substitute approver setup&lt;/li>
-&lt;li>&lt;strong>Audit Compliance&lt;/strong> - Maintain complete approval audit trails&lt;/li>
-&lt;/ul>
-&lt;h3>Performance Optimization Best Practices&lt;span class="hx:absolute hx:-mt-20" id="performance-optimization-best-practices">&lt;/span>
-&lt;a href="#performance-optimization-best-practices" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>&lt;strong>Bottleneck Identification&lt;/strong> - Regular bottleneck analysis&lt;/li>
-&lt;li>&lt;strong>Process Streamlining&lt;/strong> - Continuous process improvement&lt;/li>
-&lt;li>&lt;strong>Automation Opportunities&lt;/strong> - Identify manual process automation&lt;/li>
-&lt;li>&lt;strong>Resource Allocation&lt;/strong> - Proper workflow resource planning&lt;/li>
-&lt;li>&lt;strong>Monitoring and Alerting&lt;/strong> - Proactive workflow monitoring&lt;/li>
-&lt;/ul>
-&lt;h2>Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting">&lt;/span>
-&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h2>&lt;h3>Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues">&lt;/span>
-&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;p>&lt;strong>Workflow not triggering&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Check trigger conditions and events&lt;/li>
-&lt;li>Verify workflow activation status&lt;/li>
-&lt;li>Review user permissions and roles&lt;/li>
-&lt;li>Confirm integration connectivity&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Approval notifications not sent&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Check email/SMS configuration&lt;/li>
-&lt;li>Verify notification template settings&lt;/li>
-&lt;li>Review user contact information&lt;/li>
-&lt;li>Confirm notification service connectivity&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Workflow performance issues&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>Analyze workflow execution logs&lt;/li>
-&lt;li>Identify bottlenecks and delays&lt;/li>
-&lt;li>Review system resource utilization&lt;/li>
-&lt;li>Optimize workflow design and logic&lt;/li>
-&lt;/ul>
-&lt;h3>Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources">&lt;/span>
-&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section">&lt;/a>&lt;/h3>&lt;ul>
-&lt;li>Workflow design and configuration guide&lt;/li>
-&lt;li>Approval process implementation guide&lt;/li>
-&lt;li>Performance optimization best practices&lt;/li>
-&lt;li>Integration troubleshooting documentation&lt;/li>
-&lt;/ul>
-&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300">
-&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2">&lt;/div>
-&lt;div class="hx:w-full hx:min-w-0 hx:leading-7">
-&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0">&lt;strong>Design Tip&lt;/strong>: Start with simple workflows and gradually add complexity. Well-designed workflows should improve efficiency without creating unnecessary bureaucracy.&lt;/div>
-&lt;/div>
-&lt;/div></description></item></channel></rss>
+&gt;
+&lt;div class="copy-icon hx:group-[.copied]/copybtn:hidden hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;div class="success-icon hx:hidden hx:group-[.copied]/copybtn:block hx:pointer-events-none hx:h-4 hx:w-4"&gt;&lt;/div&gt;
+&lt;/button&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;h2&gt;Best Practices&lt;span class="hx:absolute hx:-mt-20" id="best-practices"&gt;&lt;/span&gt;
+&lt;a href="#best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Workflow Design Best Practices&lt;span class="hx:absolute hx:-mt-20" id="workflow-design-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#workflow-design-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Keep It Simple&lt;/strong&gt; - Design workflows with minimal complexity&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clear Naming&lt;/strong&gt; - Use descriptive names for workflows and steps&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Documentation&lt;/strong&gt; - Document workflow purpose and procedures&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Regular Review&lt;/strong&gt; - Periodic workflow efficiency assessment&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;User Training&lt;/strong&gt; - Comprehensive workflow user training&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Approval Process Best Practices&lt;span class="hx:absolute hx:-mt-20" id="approval-process-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#approval-process-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Appropriate Levels&lt;/strong&gt; - Right number of approval levels&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Clear Criteria&lt;/strong&gt; - Well-defined approval criteria&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Reasonable Timeouts&lt;/strong&gt; - Appropriate response time requirements&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Backup Approvers&lt;/strong&gt; - Delegate and substitute approver setup&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Audit Compliance&lt;/strong&gt; - Maintain complete approval audit trails&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Performance Optimization Best Practices&lt;span class="hx:absolute hx:-mt-20" id="performance-optimization-best-practices"&gt;&lt;/span&gt;
+&lt;a href="#performance-optimization-best-practices" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Bottleneck Identification&lt;/strong&gt; - Regular bottleneck analysis&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Process Streamlining&lt;/strong&gt; - Continuous process improvement&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Automation Opportunities&lt;/strong&gt; - Identify manual process automation&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resource Allocation&lt;/strong&gt; - Proper workflow resource planning&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Monitoring and Alerting&lt;/strong&gt; - Proactive workflow monitoring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Troubleshooting&lt;span class="hx:absolute hx:-mt-20" id="troubleshooting"&gt;&lt;/span&gt;
+&lt;a href="#troubleshooting" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h2&gt;&lt;h3&gt;Common Issues&lt;span class="hx:absolute hx:-mt-20" id="common-issues"&gt;&lt;/span&gt;
+&lt;a href="#common-issues" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;Workflow not triggering&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check trigger conditions and events&lt;/li&gt;
+&lt;li&gt;Verify workflow activation status&lt;/li&gt;
+&lt;li&gt;Review user permissions and roles&lt;/li&gt;
+&lt;li&gt;Confirm integration connectivity&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Approval notifications not sent&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Check email/SMS configuration&lt;/li&gt;
+&lt;li&gt;Verify notification template settings&lt;/li&gt;
+&lt;li&gt;Review user contact information&lt;/li&gt;
+&lt;li&gt;Confirm notification service connectivity&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Workflow performance issues&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Analyze workflow execution logs&lt;/li&gt;
+&lt;li&gt;Identify bottlenecks and delays&lt;/li&gt;
+&lt;li&gt;Review system resource utilization&lt;/li&gt;
+&lt;li&gt;Optimize workflow design and logic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Support Resources&lt;span class="hx:absolute hx:-mt-20" id="support-resources"&gt;&lt;/span&gt;
+&lt;a href="#support-resources" class="subheading-anchor" aria-label="Permalink for this section"&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;Workflow design and configuration guide&lt;/li&gt;
+&lt;li&gt;Approval process implementation guide&lt;/li&gt;
+&lt;li&gt;Performance optimization best practices&lt;/li&gt;
+&lt;li&gt;Integration troubleshooting documentation&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="hx:overflow-x-auto hx:mt-6 hx:flex hx:rounded-lg hx:border hx:py-2 hx:ltr:pr-4 hx:rtl:pl-4 hx:contrast-more:border-current hx:contrast-more:dark:border-current hx:border-orange-100 hx:bg-orange-50 hx:text-orange-800 hx:dark:border-orange-400/30 hx:dark:bg-orange-400/20 hx:dark:text-orange-300"&gt;
+&lt;div class="hx:ltr:pl-3 hx:ltr:pr-2 hx:rtl:pr-3 hx:rtl:pl-2"&gt;&lt;/div&gt;
+&lt;div class="hx:w-full hx:min-w-0 hx:leading-7"&gt;
+&lt;div class="hx:mt-6 hx:leading-7 hx:first:mt-0"&gt;&lt;strong&gt;Design Tip&lt;/strong&gt;: Start with simple workflows and gradually add complexity. Well-designed workflows should improve efficiency without creating unnecessary bureaucracy.&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

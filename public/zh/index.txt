@@ -1,0 +1,144 @@
+# BigLedger 文档
+
+> BigLedger 文档 - 下一代区块链平台
+
+
+## 小程序与工作流程
+- [完整应用目录](https://wiki.bigledger.com/zh/applets/applet-catalog/): 这个综合目录列出了BigLedger生态系统中所有可用的应用程序，按模块和功能分类。每个应用程序都描述了其主要目的、关键功能和集成点。
+ℹ️了解应用程序：应用程序是可重用的功能组件，可以属于多个模 …
+- [租户管理应用程序](https://wiki.bigledger.com/zh/applets/tenant-admin-applet/): 执行摘要租户管理应用程序代表BigLedger管理基础设施的基石，提供综合的系统级管理能力，使组织能够以企业级安全、合规和运营卓越管理复杂的多租户环境。作为基础性核心模块应用程序，它在整 …
+- [库存项目维护小程序](https://wiki.bigledger.com/zh/applets/inv-item-maintenance-applet/): 目的和概述库存项目维护小程序是BigLedger中管理所有物理产品和库存主数据的中央枢纽。这个核心模块小程序提供全面的产品信息管理、库存控制参数和多个模块间所有库存相关操作的集成基础。
+ℹ️核心模 …
+- [客户维护应用程序](https://wiki.bigledger.com/zh/applets/customer-maintenance-applet/): 目的和概述客户维护应用程序是BigLedger中所有客户信息的中央存储库，提供支持销售、CRM、应收账款和面向客户的运营的综合客户主数据管理，跨所有模块。
+ℹ️核心模块应用程序：这是13个基本核心 …
+- [供应商维护应用程序](https://wiki.bigledger.com/zh/applets/supplier-maintenance-applet/): 执行摘要供应商维护应用程序是BigLedger中所有供应商和采购商信息的中央存储库，是一个关键核心模块组件。这个综合供应商主数据管理系统支持采购运营、应付账款流程和跨所有业务模块的供应商关系管理。凭 …
+- [员工维护应用程序](https://wiki.bigledger.com/zh/applets/employee-maintenance-applet/): 目的和概述员工维护应用程序是BigLedger核心模块的基础人力资源组件，提供支持人力资源、薪资、组织结构和跨所有模块的员工相关运营的综合员工主记录管理。
+ℹ️核心模块应用程序：这是13个基本核心 …
+- [税务配置应用程序](https://wiki.bigledger.com/zh/applets/tax-configuration-applet/): 目的和概述税务配置应用程序是BigLedger核心模块的关键组件，管理BigLedger中所有与税务相关的配置。这个应用程序提供综合的税务设置、合规管理和自动税务计算，支持每个BigLedger模块 …
+- [现金簿小程序](https://wiki.bigledger.com/zh/applets/cashbook-applet/): 目的和概述现金簿小程序是核心模块的基础组件，管理BigLedger中的所有现金和银行账户操作。此小程序提供全面的现金管理、银行账户配置、付款方式设置和现金流跟踪，支持所有BigLedger模块的财务 …
+- [Webhook 小程序](https://wiki.bigledger.com/zh/applets/webhook-applet/): 目的和概述Webhook 小程序是一个关键的核心模块集成组件，支持实时事件通知和 BigLedger 与外部系统之间的无缝通信。此小程序提供全面的 webhook 管理、事件驱动通知和 API 集成 …
+- [T2T 管理小程序](https://wiki.bigledger.com/zh/applets/t2t-admin-applet/): 目的和概述T2T（租户到租户）管理小程序是 BigLedger 中为企业级多租户管理设计的高级核心模块组件。此小程序提供全面的工具，用于管理租户间关系、跨租户数据共享以及跨多个组织实体的企业级管理。 …
+- [组织应用程序](https://wiki.bigledger.com/zh/applets/organization-applet/): 目的和概述组织应用程序是BigLedger核心模块的基础组件，它定义和管理您在BigLedger中的完整组织结构。这个应用程序提供用于设置公司、分支机构、部门、地点以及构成业务运营骨干的层次关系的综 …
+- [库存盘点小程序](https://wiki.bigledger.com/zh/applets/stock-take-applet/): 库存盘点小程序是一个前沿的数字化解决方案，旨在为企业革新库存管理。在今天的数字化库存时代，保持准确的库存水平对于减少损失和优化运营至关重要。库存盘点小程序提供了一种简化的库存盘点方法，使企业能够进行实 …
+- [团队维护小程序](https://wiki.bigledger.com/zh/applets/team-maintenance-applet/): 1
+- [应用程序商店](https://wiki.bigledger.com/zh/applets/applet-store/): 执行摘要应用程序商店作为BigLedger的集中市场和应用程序管理中心，为用户提供在BigLedger生态系统内发现、安装和管理业务应用程序（应用程序）的无缝访问。这个核心模块的重要组件使组织能够通 …
+- [价格簿小程序](https://wiki.bigledger.com/zh/applets/pricebook-applet/): 1.0 介绍价格簿小程序用于基于细分、客户、实体、期间等设置产品销售的促销、搭配购买(PWP)和活动。在小程序中，请点击&quot;菜单&quot;图标列出小程序的模块。价格簿小程序中有两个模 …
+- [组维护小程序](https://wiki.bigledger.com/zh/applets/group-maintenance-applet/): 组维护小程序用于将用户添加到组中，并在平台级别为用户分配权限。组维护小程序中只有一个模块，即组列表。
+- [流程监控小程序](https://wiki.bigledger.com/zh/applets/process-monitoring-applet/): 
+- [应用程序目录](https://wiki.bigledger.com/zh/applets/applet-directory/): 应用程序商店是为与Akaun产品配合使用而设计的应用程序分发市场。它允许Akaun产品的订阅者浏览和安装应用程序。商店中的一些应用程序是免费的，但有些需要付费。
+步骤：接受市场使用条款 &gt; 安装 …
+- [位置组织小程序](https://wiki.bigledger.com/zh/applets/location-organization-applet/): 每个分支机构可以有多个位置 这是侧边栏中的第三个图标&quot;位置&quot;。本部分列出了所有位置，每个分支机构可以有多个位置。用户可以在此创建新位置或编辑现有位置。 …
+- [组织小程序设置](https://wiki.bigledger.com/zh/applets/settings-of-organization-applet/): 本部分涵盖Wavelet使用的所有设置。 角色权限允许您在需要时设置特定权限。
+- [分支机构组织小程序](https://wiki.bigledger.com/zh/applets/branch-organization-applet/): 本部分涵盖侧边栏中的第二个主要选项卡&quot;分支机构&quot;，用户可以在其中创建和编辑分支机构的详细信息。 一个公司可以有多个分支机构。 用户可以选择从左侧边栏的第二个图标创建分支机构，或者转 …
+- [公司组织小程序](https://wiki.bigledger.com/zh/applets/company-organization-applet/): 登录组织小程序时，用户看到的第一个页面是左侧边栏第一个图标中的公司列表页面。 在本节中，我们将涵盖两个关键主题： 如何创建公司：设置公司详细信息和添加地址的分步指南。 如何编辑公司：每个选项卡及其功能 …
+- [会员管理控制台小程序](https://wiki.bigledger.com/zh/applets/membership-admin-console-applet/): 1
+- [会员计划](https://wiki.bigledger.com/zh/applets/membership-program/): 使用会员计划 必需小程序 组织小程序 单据项目维护小程序 价格簿小程序 可选小程序 cp-commerce管理小程序，允许您的会员登录并查看积分。 销售点小程序
+- [内部配送订单小程序](https://wiki.bigledger.com/zh/applets/internal-delivery-order-applet/): 内部配送订单小程序是一个多功能工具，旨在简化配送订单管理流程。它使用户能够跟踪配送项目、记录客户详细信息，并自定义其他信息，如车辆和运输公司详细信息。这种灵活性增强了小程序对各种运营需求的适应性，使其 …
+- [库存余额小程序](https://wiki.bigledger.com/zh/applets/stock-balance-applet/): 
+- [内部库存调整小程序](https://wiki.bigledger.com/zh/applets/internal-stock-adjustment-applet/): 内部库存调整小程序通过允许用户调整库存水平以匹配实际数量来简化库存管理。它支持创建、查看和批量导入库存调整，确保准确的库存跟踪。它与其他小程序集成，以提高运营效率。
+- [EcomSync 相关小程序](https://wiki.bigledger.com/zh/applets/90-ecomsync-related-applets/): Ecomsync 组织小程序 Ecomsync - 组织小程序 - 创建公司 Ecomsync - 组织小程序：创建虚拟分支机构（市场） Ecomsync - 组织小程序 - 市场：按分支机构配置库存 …
+- [应收账款小程序](https://wiki.bigledger.com/zh/applets/accounts-receivable-applet/): 目的和概述⚠️待办事项: 此小程序文档需要详细扩展。这是一个包含基本结构和关键信息的占位符。应收账款小程序管理BigLedger会计模块中的所有客户账单、付款处理和催收活动，提供全面的应收账款管 …
+- [Ingram Micro MS ESD 小程序](https://wiki.bigledger.com/zh/applets/ingram-micro-ms-esd-applet/): 
+- [价格表小程序安装指南](https://wiki.bigledger.com/zh/applets/installation-of-pricebook-applet/): 请访问Akaun.cloud并找到小程序商店。 在小程序商店中，请搜索您要安装的小程序并点击它。 请点击&quot;安装&quot;按钮来安装小程序。 请点击&quot;akaun&quot;返 …
+- [群组维护小程序安装指南](https://wiki.bigledger.com/zh/applets/installation-of-group-maintenance-applet/): 1.安装（Akaun Cloud）：小程序商店 &gt; 搜索 &gt; 安装 &gt; Akaun页面 &gt; 搜索 1.1. 请访问Akaun.cloud并找到小程序商店。 1.2. 在小程序商 …
+- [团队维护小程序安装指南](https://wiki.bigledger.com/zh/applets/installation-of-team-maintenance-applet/): 1.安装（Akaun Cloud）：小程序商店 &gt; 搜索 &gt; 安装 &gt; Akaun页面 &gt; 搜索 1.1. 请访问Akaun.cloud并找到小程序商店。 1.2. 在小程序商 …
+- [团队维护小程序介绍](https://wiki.bigledger.com/zh/applets/introduction-to-team-maintenance-applet/): 介绍 团队维护小程序用于管理团队的用户和权限。该小程序只有一个模块，即&quot;团队&quot;。 步骤：安装 &gt; 创建团队 &gt; 编辑团队（添加成员、导入用户、添加权限）
+- [会员管理控制台小程序介绍](https://wiki.bigledger.com/zh/applets/introduction-to-membership-admin-console-applet/): 介绍 此小程序用于配置和管理会员和积分货币，例如标记、分类会员以及设置不同积分货币的兑换率。该小程序包含七个模块，分别是会员列表、会员类别、会员标签、会员标签列表、积分货币（PTS CCY）、积分到积 …
+- [盘点小程序介绍](https://wiki.bigledger.com/zh/applets/introduction-to-stock-take-applet/): 盘点小程序为您的所有库存管理需求提供一站式解决方案，为可追溯性和高效库存控制提供您所需的一切。 关键功能： 集中化解决方案：在一个地方管理所有库存数据，减少处理多个系统的复杂性。 移动友好界面：随时随 …
+- [相关小程序 - 库存余额](https://wiki.bigledger.com/zh/applets/related-applets-stock-balance/): 库存余额小程序可以从以下小程序导入行项目：组织小程序 商品（库存）维护小程序 单据商品维护小程序 销售发票小程序 采购发票小程序 销售退货小程序 采购退货小程序 库存调整小程序 销售贷记单小程序 销 …
+- [相关小程序 - 内部工作订单](https://wiki.bigledger.com/zh/applets/related-applets-internal-job-order/): 内部工作订单小程序可以从以下小程序导入行项目：内部工作订单小程序中的信息被哪些小程序使用：
+- [相关小程序 - 内部库存调整](https://wiki.bigledger.com/zh/applets/related-applets-internal-stock-adjustment/): 内部库存调整小程序可以从以下小程序导入行项目：组织小程序 商品（库存）维护小程序 单据商品维护小程序 库存余额小程序
+内部库存调整小程序被哪些小程序使用：库存余额小程序
+- [相关小程序 - 流程监控](https://wiki.bigledger.com/zh/applets/related-applets-process-monitoring/): 流程监控小程序可以从以下小程序导入行项目：流程监控小程序中的信息被哪些小程序使用：
+- [会员积分货币配置](https://wiki.bigledger.com/zh/applets/membership-points-currency/): 积分货币配置指南PTS CCY（积分货币）模块允许您为会员和忠诚度计划创建和管理自定义积分货币。
+概述积分货币使客户能够根据各种业务规则赚取和兑换积分的灵活忠诚度计划成为可能。您可以为不同的计划或等 …
+- [统一联络中心 (UCC) 小程序](https://wiki.bigledger.com/zh/applets/unified-contact-center-ucc-applet/): 执行摘要统一联络中心 (UCC) 小程序是BigLedger的旗舰客户互动解决方案，彻底革命了企业与客户沟通的方式。通过将所有沟通渠道整合到一个智能平台中，UCC使企业能够提供卓越的客户服务，同时显 …
+- [工作流设计小程序](https://wiki.bigledger.com/zh/applets/workflow-design-applet/): 目的和概述工作流设计小程序是强大的核心模块组件，支持跨 BigLedger 的业务流程自动化和工作流管理。此小程序提供全面的工具，用于设计、实施和管理审批工作流、业务流程和自动化操作，从而简化组织效 …
+- [总账小程序](https://wiki.bigledger.com/zh/applets/general-ledger-applet/): 目的和概述⚠️待办事项: 此小程序文档需要详细扩展。这是一个包含基本结构和关键信息的占位符。总账小程序是BigLedger会计模块的核心会计引擎，提供全面的交易处理、账户管理和财务报告功能，构成 …
+- [VSTECS MS ESD 订单小程序](https://wiki.bigledger.com/zh/applets/vstecs-ms-esd-order-applet/): 附加 MS ESD 订单用户指南和实施工作分解。 此小程序需要从 BLG 到 EMP 和 BLG 到分销商系统的集成才能正常运行。 检查 MS ESD 产品 SKU 更新价格的 API。 向分销商创建 …
+- [科目表应用程序](https://wiki.bigledger.com/zh/applets/chart-of-account-applet/): 目的和概述科目表应用程序是BigLedger的财务基础，提供组织完整科目表结构的综合管理。这个核心模块应用程序定义了科目类别、层次结构和财务报表映射，支持每个BigLedger模块中的所有财务交易。 …
+- [文档项目维护小程序](https://wiki.bigledger.com/zh/applets/doc-item-maintenance-applet/): 目的和概述文档项目维护小程序是一个关键的核心模块组件，管理BigLedger中的所有非物理项目。这包括服务、咨询费、数字产品、许可证、订阅以及您的企业销售或购买的任何其他基于文档或非库存项目。
+ℹ️ …
+- [POS终端小程序](https://wiki.bigledger.com/zh/applets/pos-terminal-applet/): 目的和概述⚠️待办事项：此小程序文档需要详细扩展。这是一个包含基本结构和关键信息的占位符。POS终端小程序是BigLedger销售点模块的核心组件，为零售运营提供全面的销售点终端管理、配置和实时 …
+- [电子商务目录小程序](https://wiki.bigledger.com/zh/applets/ecommerce-catalog-applet/): 目的和概述⚠️待办事项：此小程序文档需要详细扩展。这是一个包含基本结构和关键信息的占位符。电子商务目录小程序是BigLedger的CP-Commerce模块的专业组件，为电子商务运营提供全面的在 …
+- [电子发票生成小程序](https://wiki.bigledger.com/zh/applets/einvoice-generation-applet/): 目的和概述⚠️待办事项: 此小程序文档需要详细扩展。这是一个包含基本结构和关键信息的占位符。电子发票生成小程序是BigLedger电子发票模块的核心组件，为多个司法管辖区的监管要求提供全面的电子 …
+- [AI 客户分析小程序](https://wiki.bigledger.com/zh/applets/ai-customer-analytics-applet/): 目的和概述⚠️待办事项：此小程序文档需要详细扩展。这是一个包含基本结构和关键信息的占位符。AI 客户分析小程序是 BigLedger 数字 CRM 模块的高级组件，提供 AI 驱动的预测分析、客 …
+
+## 业务运营
+
+## 应用程序
+
+## 指南
+
+## 教程
+
+## 开发者
+
+## 业务操作指南
+
+### 入门指南
+
+### 基本操作
+
+### 交互式演示平台
+
+#### 消费电子零售演示
+
+#### 高管决策层角色导向演示旅程
+
+##### 财务总监演示旅程
+
+##### 运营总监演示旅程
+
+##### CEO与高级管理层演示旅程
+
+#### 分销商与批发商演示
+
+#### 制造业演示
+
+#### 餐饮食品业演示
+
+#### 专业服务业演示
+
+### 日常任务
+
+### 管理
+
+### 报表和分析
+
+### 故障排除
+
+### 最佳实践
+
+### 行业解决方案
+
+## API参考
+
+## 支持
+
+## BigLedger 模块
+- [财务会计](https://wiki.bigledger.com/zh/modules/financial-accounting/): 财务会计模块概述BigLedger 财务会计模块提供全面、符合标准的会计系统，专为各种规模的企业设计。基于 GAAP、IFRS 和本地会计准则构建，在保持审计合规所需严格性的同时提供实时财务洞察。
+ …
+- [销售终端系统 (POS)](https://wiki.bigledger.com/zh/modules/pos/): 销售终端系统 (POS) 模块概述BigLedger 销售终端系统 (POS) 模块是为现代企业设计的综合零售管理解决方案。以速度、可靠性和用户友好性为设计理念，它与所有其他 BigLedger 模 …
+- [客户关系管理 (CRM)](https://wiki.bigledger.com/zh/modules/crm/): 客户关系管理 (CRM) 模块概述BigLedger CRM 模块为管理客户关系、销售管道和营销活动提供全面解决方案。旨在帮助企业更有效地了解、吸引和保留客户，与所有其他 BigLedger 模块无 …
+- [库存管理](https://wiki.bigledger.com/zh/modules/inventory/): 库存管理模块概述BigLedger 库存管理模块提供对整个供应链的全面控制，从采购到仓库管理再到订单履行。凭借实时跟踪、智能预测和跨所有渠道的无缝集成，确保最佳库存水平的同时最小化持有成本。
+主要功 …
+
+
+## Root Pages
+- [电子发票与PEPPOL](https://wiki.bigledger.com/zh/e-invoice-peppol/): BigLedger是马来西亚MDEC全认证PEPPOL服务提供商，为MyInvois倡议及更多提供全面的电子发票解决方案。
+PEPPOL认证什么是PEPPOL？PEPPOL(泛欧洲公共采购在线)是 …
+- [小程序与工作流程](https://wiki.bigledger.com/zh/applets-workflows/): BigLedger的模块化小程序架构使企业能够通过我们的中央数据枢纽无缝协作的专业化小程序来构建定制化解决方案。
+了解小程序什么是小程序？小程序是独立的业务模块，具有以下特点： …
+- [AI智能解决方案](https://wiki.bigledger.com/zh/ai-intelligence/): BigLedger的AI智能解决方案将人工智能集成到您的业务流程中，通过智能自动化、预测分析和智能决策支持提升运营效率。
+🧠 AI驱动的智能见解预测分析引擎业务预测
+销售预测和需求规划 库存优化建 …
+- [演示与资源](https://wiki.bigledger.com/zh/demos-resources/): 通过我们全面的演示视频和演示材料体验BigLedger的功能。
+视频演示🛒 销售点演示观看我们为零售和餐饮企业设计的现代POS系统的实际操作。
+您将看到：
+多网点配置 实时库存更新 客户管理 付款 …
+- [搜索文档](https://wiki.bigledger.com/zh/search/): 搜索提示使用您要查找的主题的关键词 搜索不区分大小写 按 Ctrl+K（Mac 上为 Cmd+K）快速聚焦搜索框 按 Escape …
+
+---
+Generated on 2025-10-15 12:08:15 UTC
+Site: https://wiki.bigledger.com/
