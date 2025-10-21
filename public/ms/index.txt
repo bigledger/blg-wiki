@@ -1,30 +1,0 @@
-# Dokumentasi BigLedger
-
-> Dokumentasi BigLedger - Platform Blockchain Generasi Seterusnya
-
-
-## Panduan Pengguna
-
-### Platform Demo Interaktif
-
-#### Perjalanan Demo Berdasarkan Peranan
-
-##### Perjalanan Demo Pengurus Kewangan
-
-##### Perjalanan Demo Pengurus Operasi
-
-##### Perjalanan Demo CEO & Eksekutif
-
-## Modul BigLedger
-- [Perakaunan Kewangan](https://wiki.bigledger.com/ms/modules/financial-accounting/): Modul Perakaunan KewanganGambaran KeseluruhanModul Perakaunan Kewangan BigLedger menyediakan sistem …
-- [Tempat Jualan (POS)](https://wiki.bigledger.com/ms/modules/pos/): Modul Tempat Jualan (POS)Gambaran KeseluruhanModul Tempat Jualan (POS) BigLedger adalah …
-- [Pengurusan Hubungan Pelanggan (CRM)](https://wiki.bigledger.com/ms/modules/crm/): Modul Pengurusan Hubungan Pelanggan (CRM)Gambaran KeseluruhanModul CRM BigLedger menyediakan …
-- [Pengurusan Inventori](https://wiki.bigledger.com/ms/modules/inventory/): Modul Pengurusan InventoriGambaran KeseluruhanModul Pengurusan Inventori BigLedger menyediakan …
-
-
-## Root Pages
-- [Cari Dokumentasi](https://wiki.bigledger.com/ms/search/): Petua PencarianGunakan kata kunci dari topik yang anda cari Pencarian tidak sensitif huruf …
-
----
-Generated on 2025-10-15 12:08:16 UTC
-Site: https://wiki.bigledger.com/

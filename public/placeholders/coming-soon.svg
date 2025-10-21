@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
-  <rect width="400" height="300" fill="#f8f9fa" stroke="#dee2e6" stroke-width="2" stroke-dasharray="5,5"/>
-  <text x="200" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#6c757d">📷</text>
-  <text x="200" y="160" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="#6c757d">Screenshot Coming Soon</text>
-  <text x="200" y="180" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#868e96">This screenshot will be added in a future update</text>
-  <text x="200" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#868e96">Please refer to the text description above</text>
-</svg>

@@ -1,307 +1,0 @@
-# BigLedger Documentation
-
-> BigLedger Documentation - Next-Generation Blockchain Platform
-
-
-## Applets and Workflows
-- [Complete Applet Catalog](https://wiki.bigledger.com/applets/applet-catalog/): This comprehensive catalog lists all applets available in the BigLedger ecosystem, organized by …
-- [Tenant Admin Applet](https://wiki.bigledger.com/applets/tenant-admin-applet/): Executive SummaryThe Tenant Admin Applet represents the cornerstone of BigLedger&rsquo;s …
-- [Inventory Item Maintenance Applet](https://wiki.bigledger.com/applets/inv-item-maintenance-applet/): Purpose and OverviewThe Inventory Item Maintenance Applet is the central hub for managing all …
-- [Customer Maintenance Applet](https://wiki.bigledger.com/applets/customer-maintenance-applet/): Purpose and OverviewThe Customer Maintenance Applet is the central repository for all customer …
-- [Supplier Maintenance Applet](https://wiki.bigledger.com/applets/supplier-maintenance-applet/): Executive SummaryThe Supplier Maintenance Applet is a mission-critical Core Module component that …
-- [Employee Maintenance Applet](https://wiki.bigledger.com/applets/employee-maintenance-applet/): Purpose and OverviewThe Employee Maintenance Applet is the foundational HR component in …
-- [Tax Configuration Applet](https://wiki.bigledger.com/applets/tax-configuration-applet/): Purpose and OverviewThe Tax Configuration Applet is a critical Core Module component that manages …
-- [Cashbook Applet](https://wiki.bigledger.com/applets/cashbook-applet/): Purpose and OverviewThe Cashbook Applet is a fundamental Core Module component that manages all …
-- [Webhook Applet](https://wiki.bigledger.com/applets/webhook-applet/): Purpose and OverviewThe Webhook Applet is a critical Core Module integration component that enables …
-- [T2T Admin Applet](https://wiki.bigledger.com/applets/t2t-admin-applet/): Purpose and OverviewThe T2T (Tenant-to-Tenant) Admin Applet is an advanced Core Module component …
-- [Organization Applet](https://wiki.bigledger.com/applets/organization-applet/): Purpose and OverviewThe Organization Applet is a foundational Core Module component that defines …
-- [Stock Take Applet](https://wiki.bigledger.com/applets/stock-take-applet/): The Stock Take Applet is a cutting-edge digital solution designed to revolutionize inventory …
-- [Team Maintenance Applet](https://wiki.bigledger.com/applets/team-maintenance-applet/): 1
-- [Applet Store](https://wiki.bigledger.com/applets/applet-store/): Executive SummaryThe Applet Store serves as BigLedger&rsquo;s centralized marketplace and …
-- [Pricebook Applet](https://wiki.bigledger.com/applets/pricebook-applet/): 1.0 IntroductionThe Pricebook Applet is used to set up Promotion, Purchase with Purchase (PWP) and …
-- [Group Maintenance Applet](https://wiki.bigledger.com/applets/group-maintenance-applet/): Group Maintenance applet is to add users into a Group, and assign permission to the user in Platform …
-- [Process Monitoring Applet](https://wiki.bigledger.com/applets/process-monitoring-applet/): 
-- [Applet Directory](https://wiki.bigledger.com/applets/applet-directory/): Applet Store is the marketplace for the distribution of applets that are designed for use with the …
-- [Location Organization Applet](https://wiki.bigledger.com/applets/location-organization-applet/): Each branch can have multiple locations This is the third icon in the sidebar, …
-- [Settings of Organization Applet](https://wiki.bigledger.com/applets/settings-of-organization-applet/): ﻿This section covers all the settings used by Wavelet. The role permission allows you to set …
-- [Branch Organization Applet](https://wiki.bigledger.com/applets/branch-organization-applet/): noneThis section covers the second main tab in the sidebar, Branches, where users can create and …
-- [Company Organization Applet](https://wiki.bigledger.com/applets/company-organization-applet/): noneWhen logging into the Organization Applet, the first page displayed to the user is the Company …
-- [Membership Admin Console Applet](https://wiki.bigledger.com/applets/membership-admin-console-applet/): 1
-- [Membership Program](https://wiki.bigledger.com/applets/membership-program/): To use the membership Program Compulsory applets Organization applet Doc Item Maintenance applet …
-- [Internal Delivery Order Applet](https://wiki.bigledger.com/applets/internal-delivery-order-applet/): The Internal Delivery Order Applet is a versatile tool designed to streamline the process of …
-- [Stock Balance Applet](https://wiki.bigledger.com/applets/stock-balance-applet/): 
-- [Internal Stock Adjustment Applet](https://wiki.bigledger.com/applets/internal-stock-adjustment-applet/): The Internal Stock Adjustment Applet simplifies stock management by allowing users to adjust stock …
-- [EcomSync Related Applets](https://wiki.bigledger.com/applets/90-ecomsync-related-applets/): Ecomsync Organization Applet Ecomsync - Organisation Applet - Create Company Ecomsync - Organisation …
-- [Accounts Receivable Applet](https://wiki.bigledger.com/applets/accounts-receivable-applet/): Purpose and Overview⚠️TODO: This applet documentation needs detailed expansion. This is a …
-- [Ingram Micro MS ESD Applet](https://wiki.bigledger.com/applets/ingram-micro-ms-esd-applet/): 
-- [Installation of Pricebook Applet](https://wiki.bigledger.com/applets/installation-of-pricebook-applet/): Please go to Akaun.cloud and find the Applet store. In the Applet store, Please search for the …
-- [Installation of Group Maintenance Applet](https://wiki.bigledger.com/applets/installation-of-group-maintenance-applet/): 1.Installation (Akaun Cloud): Applet Store &gt; Search &gt; Install &gt; Akaun page &gt; Search 1.1. …
-- [Installation of Team Maintenance Applet](https://wiki.bigledger.com/applets/installation-of-team-maintenance-applet/): 1.Installation (Akaun Cloud): Applet Store &gt; Search &gt; Install &gt; Akaun page &gt; Search 1.1. …
-- [Introduction to Team Maintenance Applet](https://wiki.bigledger.com/applets/introduction-to-team-maintenance-applet/): Introduction Team Maintenance applet is to manage the users and permissions of the team. There is …
-- [Introduction to Membership Admin Console Applet](https://wiki.bigledger.com/applets/introduction-to-membership-admin-console-applet/): Introduction This applet is used to Configure and manage the Membership and the point currency, such …
-- [Introduction to Stock Take Applet](https://wiki.bigledger.com/applets/introduction-to-stock-take-applet/): The Stock Take Applet offers a one-stop solution for all your inventory management needs, providing …
-- [Related Applets - Stock Balance](https://wiki.bigledger.com/applets/related-applets-stock-balance/): The stock balance applet can import Lines from the following Applets:Organisation Applet Item (inv) …
-- [Related Applets - Internal Job Order](https://wiki.bigledger.com/applets/related-applets-internal-job-order/): The internal job order applet can import Lines from the following Applets:The information in …
-- [Related Applets - Internal Stock Adjustment](https://wiki.bigledger.com/applets/related-applets-internal-stock-adjustment/): The Internal Stock Adjustment applet can import Lines from the following Applets:Organisation …
-- [Related Applets - Process Monitoring](https://wiki.bigledger.com/applets/related-applets-process-monitoring/): The process monitoring applet can import Lines from the following Applets:The information in …
-- [Membership Points Currency Configuration](https://wiki.bigledger.com/applets/membership-points-currency/): Points Currency Configuration GuideThe PTS CCY (Points Currency) Module allows you to create and …
-- [Unified Contact Center (UCC) Applet](https://wiki.bigledger.com/applets/unified-contact-center-ucc-applet/): Executive OverviewThe Unified Contact Center (UCC) Applet is BigLedger&rsquo;s flagship customer …
-- [Workflow Design Applet](https://wiki.bigledger.com/applets/workflow-design-applet/): Purpose and OverviewThe Workflow Design Applet is a powerful Core Module component that enables …
-- [General Ledger Applet](https://wiki.bigledger.com/applets/general-ledger-applet/): Purpose and Overview⚠️TODO: This applet documentation needs detailed expansion. This is a …
-- [VSTECS MS ESD Order Applet](https://wiki.bigledger.com/applets/vstecs-ms-esd-order-applet/): Attached User guide for MS ESD Order and Work Breakdown for implementation. This Applet required …
-- [Chart of Accounts Applet](https://wiki.bigledger.com/applets/chart-of-account-applet/): Purpose and OverviewThe Chart of Accounts Applet is the financial foundation of BigLedger, …
-- [Document Item Maintenance Applet](https://wiki.bigledger.com/applets/doc-item-maintenance-applet/): Purpose and OverviewThe Document Item Maintenance Applet is a crucial Core Module component that …
-- [POS Terminal Applet](https://wiki.bigledger.com/applets/pos-terminal-applet/): Purpose and Overview⚠️TODO: This applet documentation needs detailed expansion. This is a …
-- [E-Commerce Catalog Applet](https://wiki.bigledger.com/applets/ecommerce-catalog-applet/): Purpose and Overview⚠️TODO: This applet documentation needs detailed expansion. This is a …
-- [My E-invoice Admin Applet](https://wiki.bigledger.com/applets/einvoice-generation-applet/): 1.0 Introduction1.1 Purpose and ScopeThe effective management of e-invoices is a strategic …
-- [AI Customer Analytics Applet](https://wiki.bigledger.com/applets/ai-customer-analytics-applet/): Purpose and Overview⚠️TODO: This applet documentation needs detailed expansion. This is a …
-
-## Business Operations
-- [Account Receivable](https://wiki.bigledger.com/business-operations/account-receivable/): Comprehensive AR Automation PlatformBigLedger&rsquo;s Account Receivable module revolutionizes cash …
-- [Accounting](https://wiki.bigledger.com/business-operations/accounting/): Page ID: 3153854863 Last Updated: 2024-11-17T18:06:34.270Z
-Set Up Company﻿Organization Applet …
-- [Dashboard](https://wiki.bigledger.com/business-operations/dashboard/): Executive Command CenterThe BigLedger Dashboard transforms raw business data into actionable …
-- [Main Dashboard](https://wiki.bigledger.com/business-operations/main-dashboard/): Page ID: 3196486107 Last Updated: 2021-06-18T02:51:44.242Z Users able to see their selling …
-- [Order](https://wiki.bigledger.com/business-operations/order/): Unified Order Orchestration PlatformBigLedger&rsquo;s Order Management System (OMS) provides …
-- [Order Dashboard](https://wiki.bigledger.com/business-operations/order-dashboard/): Page ID: 3197010418 Last Updated: 2021-06-18T02:58:45.100Z Order dashboard also show users on the …
-- [Order Details](https://wiki.bigledger.com/business-operations/order-details/): Page ID: 3196486077 Last Updated: 2021-06-18T02:43:04.291Z When clicking on order, the details of …
-- [Order Filtering](https://wiki.bigledger.com/business-operations/order-filtering/): Page ID: 3197010347 Last Updated: 2021-06-18T02:33:29.613Z
-FilterOrder filtering help users to …
-- [Order Listing](https://wiki.bigledger.com/business-operations/order-listing/): Page ID: 3196191098 Last Updated: 2021-06-18T02:13:39.990Z The Order Listing shows all your orders …
-- [Sales Dashboard](https://wiki.bigledger.com/business-operations/sales-dashboard/): Comprehensive Sales Intelligence PlatformBigLedger&rsquo;s Sales Dashboard transforms raw …
-- [Sales Order Tab](https://wiki.bigledger.com/business-operations/sales-order-tab/): Page ID: 3196191975 Last Updated: 2021-06-18T06:19:14.245Z Sales Order Tab - allows user to …
-
-## Business Operations Guide
-
-### Getting Started
-- [Navigation & Interface Guide](https://wiki.bigledger.com/user-guide/getting-started/navigation/): Interface OverviewBigLedger&rsquo;s modern interface is designed for efficiency and ease of use, …
-- [Introduction](https://wiki.bigledger.com/user-guide/getting-started/introduction/): Welcome to BigLedger, your comprehensive gateway to streamlined business operations and valuable …
-- [Platform Overview - BigLedger Business Operating System](https://wiki.bigledger.com/user-guide/getting-started/platform-overview/): BigLedger Business Operating System Architecture🎯 TLDR (Too Long; Didn&rsquo;t Read)BigLedger is a …
-
-### Basic Operations
-- [Document Item Types & Classifications](https://wiki.bigledger.com/user-guide/basic-operations/document-item-types/): Understanding BigLedger&rsquo;s document item types is fundamental to effective inventory …
-- [Creating Items in Your Catalog](https://wiki.bigledger.com/user-guide/basic-operations/creating-an-item/): Learn how to add products and services to your BigLedger catalog with proper configuration for …
-- [Editing Items & Updating Product Information](https://wiki.bigledger.com/user-guide/basic-operations/editing-an-item/): Learn how to efficiently modify existing items in your BigLedger catalog, update specifications, …
-- [Item Maintenance & Catalog Management](https://wiki.bigledger.com/user-guide/basic-operations/item-maintenance/): Master the complete lifecycle of item management in BigLedger, from initial creation to ongoing …
-- [Document Item Maintenance & Workflow Management](https://wiki.bigledger.com/user-guide/basic-operations/document-item-maintenance/): Document item maintenance in BigLedger provides comprehensive tools for managing business documents …
-
-### Interactive Demo Platform
-
-#### Common Business Workflows
-
-#### Consumer Electronics Retail Demo
-
-#### Getting Started with Demo
-
-#### Apparel & Fashion Retail Demo
-
-#### Distributors B2B Demo
-
-#### Role-Based Demo Journeys
-
-##### Finance Manager Demo Journey
-
-##### Operations Manager Demo Journey
-
-##### CEO & Executive Demo Journey
-
-#### Manufacturing Industry Demo
-
-#### University & Education Demo
-
-#### Professional Services Demo
-
-#### Food & Beverage Industry Demo
-
-### Daily Tasks
-- [Price Book Management & Customer Pricing](https://wiki.bigledger.com/user-guide/daily-tasks/price-book/): Price books in BigLedger serve as the foundation for organized price list management, enabling …
-- [Pricing Schemes & Strategy Management](https://wiki.bigledger.com/user-guide/daily-tasks/pricing-scheme/): Master BigLedger&rsquo;s flexible pricing system to create sophisticated pricing strategies that …
-- [Price Set Configuration & Advanced Pricing Logic](https://wiki.bigledger.com/user-guide/daily-tasks/price-set/): Price sets in BigLedger provide sophisticated, rule-based pricing capabilities that enable complex …
-
-### Administration
-- [Member Label List](https://wiki.bigledger.com/user-guide/administration/member-label-list/): Page ID: 3317499439 Last Updated: 2021-07-26T04:25:30.383Z 5.Member label list: Create Member Label …
-- [Member Listing](https://wiki.bigledger.com/user-guide/administration/member-listing/): Page ID: 3317564816 Last Updated: 2021-07-26T04:28:05.761Z 2. Member Listing: Create New Member &gt; …
-- [Team](https://wiki.bigledger.com/user-guide/administration/team/): Page ID: 3321069573 Last Updated: 2021-07-27T06:18:28.861Z 2. Team: Create Team &gt; Compulsory …
-- [Member Classifications & Access Control](https://wiki.bigledger.com/user-guide/administration/member-class/): ⚠️🚧 Content Under Development: This page contains placeholder content and requires comprehensive …
-- [Group Listings & Organizational Management](https://wiki.bigledger.com/user-guide/administration/group-listing/): ⚠️🚧 Content Under Development: This page contains basic functionality notes and requires …
-- [Member Label Configuration & Management](https://wiki.bigledger.com/user-guide/administration/member-label/): ⚠️🚧 Content Under Development: This page contains basic functionality notes and requires …
-
-### Reports & Analytics
-
-### Troubleshooting
-
-### Best Practices
-
-### Industry Solutions
-- [Automotive and Workshop Industry](https://wiki.bigledger.com/user-guide/industry-solutions/automotive-and-workshop-industry/): Page ID: 3153985855 Last Updated: 2024-11-15T01:57:55.733Z
-Success Story 3 : Automotive and Workshop …
-- [Food and Beverage (F&B) Industry](https://wiki.bigledger.com/user-guide/industry-solutions/food-and-beverage-fb-industry/): Page ID: 3153854852 Last Updated: 2024-11-15T01:58:35.705Z
-Success Story 2 : Food and Beverage …
-- [Industry Guide](https://wiki.bigledger.com/user-guide/industry-solutions/industry-guide/): Page ID: 3153822073 Last Updated: 2024-11-15T01:56:59.787Z The consequences of the COVID pandemic …
-
-## Developer Documentation
-- [Installation](https://wiki.bigledger.com/developer-docs/installation/): Guide for installing and configuring BigLedger SDK.
-System RequirementsNode.js 16+ or Python 3.8+ …
-
-## Applications
-- [Unified Contact Center (UCC)](https://wiki.bigledger.com/applications/unified-contact-center/): Transform Your Customer Service OperationsBigLedger&rsquo;s Unified Contact Center (UCC) is a …
-
-## Developer Platform
-- [Getting Started](https://wiki.bigledger.com/developers/getting-started/): This comprehensive guide will walk you through everything you need to know to get started with …
-- [Authentication & Authorization](https://wiki.bigledger.com/developers/authentication/): BigLedger APIs use API key authentication with OAuth 2.0 support for secure access to your business …
-- [Webhooks](https://wiki.bigledger.com/developers/webhooks/): Comprehensive webhook system for real-time event notifications in BigLedger. Get instant …
-- [SDKs & Libraries](https://wiki.bigledger.com/developers/sdks/): Official SDKs and libraries for popular programming languages. Build integrations faster with …
-- [Tutorials & Integration Guides](https://wiki.bigledger.com/developers/tutorials/): Comprehensive tutorials and integration guides covering common scenarios, best practices, and …
-- [Applet Development Guide](https://wiki.bigledger.com/developers/applet-development/): Build custom Angular applets that integrate seamlessly with the BigLedger platform. This …
-- [Workflow Automation Guide](https://wiki.bigledger.com/developers/automation-workflows/): Design and implement sophisticated automated business processes using BigLedger&rsquo;s …
-
-### API Reference
-- [Accounting APIs](https://wiki.bigledger.com/developers/api-reference/accounting/): Complete accounting operations including chart of accounts, journal entries, and financial …
-- [E-Invoice APIs](https://wiki.bigledger.com/developers/api-reference/einvoice/): PEPPOL and MyInvois compliance with automated invoice validation, formatting, and submission to …
-- [Sales & CRM APIs](https://wiki.bigledger.com/developers/api-reference/sales/): Complete customer relationship management and sales operations including customers, contacts, sales …
-- [Inventory APIs](https://wiki.bigledger.com/developers/api-reference/inventory/): Complete inventory management including items, stock levels, transfers, adjustments, and real-time …
-- [Purchasing APIs](https://wiki.bigledger.com/developers/api-reference/purchasing/): Complete API reference for BigLedger&rsquo;s purchasing and procurement module. Manage suppliers, …
-- [Reporting APIs](https://wiki.bigledger.com/developers/api-reference/reports/): Generate financial reports, analytics dashboards, and business intelligence data programmatically. …
-- [Batch Operations API](https://wiki.bigledger.com/developers/api-reference/batch/): Process large volumes of data efficiently with BigLedger&rsquo;s batch operation APIs. Perfect for …
-- [Error Handling](https://wiki.bigledger.com/developers/api-reference/errors/): Comprehensive guide to BigLedger API error codes, troubleshooting steps, and best practices for …
-- [Integration APIs](https://wiki.bigledger.com/developers/api-reference/integrations/): Connect BigLedger with external systems, marketplaces, and business applications through our …
-
-### Architecture Documentation
-- [System Architecture Overview](https://wiki.bigledger.com/developers/architecture/overview/): BigLedger System ArchitectureComprehensive overview of BigLedger&rsquo;s system architecture, …
-
-## Implementation Guides
-
-### Accounting Guides
-- [Chart of Accounts Setup Guide](https://wiki.bigledger.com/guides/accounting-guides/chart-of-accounts-setup/): Complete guide for setting up your Chart of Accounts in BigLedger.
-OverviewThe Chart of Accounts …
-- [Journal Entries Guide](https://wiki.bigledger.com/guides/accounting-guides/journal-entries/): Master manual and automated journal entries in BigLedger.
-OverviewJournal entries are the …
-- [Financial Reporting Guide](https://wiki.bigledger.com/guides/accounting-guides/financial-reporting/): Generate accurate financial reports with BigLedger&rsquo;s reporting suite.
-Available ReportsCore …
-- [Bank Reconciliation Step-by-Step](https://wiki.bigledger.com/guides/accounting-guides/bank-reconciliation-guide/): Master the bank reconciliation process with BigLedger&rsquo;s AI-powered matching.
-OverviewBank …
-
-### E-Invoice Implementation
-- [MyInvois Setup Guide](https://wiki.bigledger.com/guides/einvoice-guides/myinvois-setup/): Complete guide for MyInvois implementation with BigLedger.
-OverviewMyInvois is Malaysia&rsquo;s …
-- [PEPPOL Configuration Guide](https://wiki.bigledger.com/guides/einvoice-guides/peppol-configuration/): Configure PEPPOL for international e-invoicing.
-What is PEPPOL?Pan-European Public Procurement …
-- [E-Invoice Validation Rules](https://wiki.bigledger.com/guides/einvoice-guides/einvoice-validation/): Comprehensive validation rules for MyInvois compliance.
-Mandatory FieldsInvoice HeaderInvoice …
-
-### Inventory Management
-- [Stock Management Guide](https://wiki.bigledger.com/guides/inventory-guides/stock-management/): Complete inventory management with BigLedger.
-Stock SetupItem MasterCreate item codes Set …
-- [Stock Transfer Procedures](https://wiki.bigledger.com/guides/inventory-guides/stock-transfer/): Manage inventory movements between locations.
-Transfer TypesInter-Warehouse TransferMoving stock …
-
-### Role-Based Guides
-- [Branch Manager Guide](https://wiki.bigledger.com/guides/roles/branch-manager/): Branch Manager Operations and Performance GuideBackground ProfileRole: Branch Manager …
-- [Cashier Guide](https://wiki.bigledger.com/guides/roles/cashier/): BigLedger POS System - Cashier Questions &amp; ScenariosBackgroundI&rsquo;m a cashier at a retail …
-- [E-Commerce Specialist Guide](https://wiki.bigledger.com/guides/roles/ecommerce-specialist/): E-commerce Specialist - Questions and ScenariosRole ProfilePosition: E-commerce Manager Company: …
-- [Finance Manager Guide](https://wiki.bigledger.com/guides/roles/finance-manager/): Finance Manager/Accountant Questions for BigLedgerBackground ProfileProfessional accountant …
-- [Internal Auditor Guide](https://wiki.bigledger.com/guides/roles/internal-audit/): Internal Auditor - BigLedger System Evaluation QuestionsRole ProfileAs an Internal Auditor (CIA, …
-- [Merchandising Manager Guide](https://wiki.bigledger.com/guides/roles/merchandising-manager/): Strategic Merchandising and Product Planning ExcellenceRole ProfilePosition: Merchandising Manager …
-- [Procurement Manager Guide](https://wiki.bigledger.com/guides/roles/procurement-manager/): Procurement Manager Questions for BigLedger DocumentationBackground ProfileProfessional procurement …
-- [Warehouse Manager Guide](https://wiki.bigledger.com/guides/roles/warehouse-manager/): Warehouse Manager - BigLedger Inventory Management QuestionsRole ProfilePosition: Warehouse Manager …
-
-### Advanced Guides
-- [Accounting Workflows Deep Dive](https://wiki.bigledger.com/guides/advanced/accounting-workflows/): Written by an ERP specialist with 30 years of experience implementing SAP R/3, Oracle ERP, Microsoft …
-- [Advanced Inventory & Manufacturing](https://wiki.bigledger.com/guides/advanced/advanced-inventory-manufacturing/): Three decades of implementing manufacturing and inventory systems across discrete, process, and …
-- [Financial Reporting Excellence](https://wiki.bigledger.com/guides/advanced/financial-reporting-excellence/): Drawing from 30 years of financial reporting across public companies, private enterprises, and …
-- [Compliance & Audit Requirements](https://wiki.bigledger.com/guides/advanced/compliance-audit/): Three decades of experience navigating audits from Big 4 firms, regulatory compliance across …
-- [Industry-Specific Workflows](https://wiki.bigledger.com/guides/advanced/industry-specific-workflows/): From implementing SAP in automotive plants to Oracle ERP in retail chains, Microsoft Dynamics in …
-- [Integration Best Practices](https://wiki.bigledger.com/guides/advanced/integration-best-practices/): Three decades of integrating ERPs with banking systems, payment gateways, EDI networks, and …
-- [Performance Optimization](https://wiki.bigledger.com/guides/advanced/performance-optimization/): Three decades of optimizing ERP systems from 10-user SAP implementations to 10,000-user Oracle …
-
-## API Reference
-
-## Modules
-- [Customer Relationship Management (CRM)](https://wiki.bigledger.com/modules/crm/): OverviewThe BigLedger CRM module provides a comprehensive solution for managing customer …
-- [Procurement](https://wiki.bigledger.com/modules/procurement/): OverviewThe BigLedger Procurement module streamlines your entire purchase-to-pay process, from …
-- [Human Resources](https://wiki.bigledger.com/modules/hr/): OverviewThe BigLedger HR module provides a complete human capital management solution, from …
-- [Project Management](https://wiki.bigledger.com/modules/projects/): OverviewThe BigLedger Project Management module helps organizations plan, execute, and deliver …
-
-### Core Module
-
-### Financial Accounting Module
-
-### Point of Sales Module
-
-### CP-Commerce Module
-
-### Sales & CRM Module
-
-### Accounting Module
-
-### E-Invoice Module
-
-### Purchasing Module
-
-### ERP Module
-
-### Inventory Module
-- [Category Groups Management](https://wiki.bigledger.com/modules/inventory/category-groups/): Category Groups provide a hierarchical structure for organizing your inventory categories in …
-
-### Inventory & Warehouse Module
-
-### IT & CE Module
-
-### Digital CRM Module
-
-### Manufacturing Module
-
-### Service Industry Module
-
-### Drop Shipping Module
-
-### HR & Payroll Module
-
-### E-Commerce Module
-- [2.0 Website Configuration﻿](https://wiki.bigledger.com/modules/ecommerce/20-website-configuration/): 2.0 Website Configuration﻿Page ID: 3187343370 Last Updated: 2024-11-17T11:07:01.283Z
-2.1 Setting Up …
-- [B2B](https://wiki.bigledger.com/modules/ecommerce/b2b/): Page ID: 3153822181 Last Updated: 2021-06-05T09:01:05.690Z
-- [CP-Commerce](https://wiki.bigledger.com/modules/ecommerce/cp-commerce/): Page ID: 3153887626 Last Updated: 2024-11-17T11:04:53.671Z The CP-Commerce Module is a powerful …
-- [Create Single Tab](https://wiki.bigledger.com/modules/ecommerce/create-single-tab/): Page ID: 3196191946 Last Updated: 2021-06-18T06:09:58.079Z Create - used for syncing the chosen item …
-- [EcomSync Applet](https://wiki.bigledger.com/modules/ecommerce/ecomsync-applet/): Page ID: 3259346357 Last Updated: 2021-07-23T05:51:22.732Z Table of Content Introduction to Ecomsync …
-- [Ecomsync Features](https://wiki.bigledger.com/modules/ecommerce/ecomsync-features/): Page ID: 3299247174 Last Updated: 2021-07-19T02:40:30.908Z Readiness Status: 5 - Best possibleGreen …
-- [Integration with Shopify](https://wiki.bigledger.com/modules/ecommerce/integration-with-shopify/): Page ID: 3292758065 Last Updated: 2021-07-15T07:56:28.266Z steps,..
-- [Introduction to EcomSync](https://wiki.bigledger.com/modules/ecommerce/introduction-to-ecomsync/): Page ID: 3196485958 Last Updated: 2021-06-18T01:46:53.953Z
-IntroductionEcomSync Applet is an applet …
-- [Listing](https://wiki.bigledger.com/modules/ecommerce/listing/): Page ID: 3196846319 Last Updated: 2021-06-18T02:06:35.534Z Listing shows all your Items that are …
-- [Marketplace Tab](https://wiki.bigledger.com/modules/ecommerce/marketplace-tab/): Page ID: 3196191832 Last Updated: 2021-07-23T05:24:07.943Z Marketplace Tab is used for the Users to …
-- [Update and Delete Item](https://wiki.bigledger.com/modules/ecommerce/update-and-delete-item/): Page ID: 3196191957 Last Updated: 2021-06-18T06:15:40.294Z Update/Delete Item - when user want to …
-- [CP-Commerce Menu & Pages Configuration](https://wiki.bigledger.com/modules/ecommerce/cp-commerce-menu-pages/): CP-Commerce provides flexible tools for managing your e-commerce website&rsquo;s navigation menus …
-
-## Tutorials
-- [Creating Your First Invoice](https://wiki.bigledger.com/tutorials/first-invoice/): Step-by-step guide to create and submit your first e-invoice.
-PrerequisitesCustomer created in …
-- [Month-End Closing Process](https://wiki.bigledger.com/tutorials/month-end-closing/): Complete month-end procedures in BigLedger.
-ChecklistWeek 4 - PreparationProcess pending …
-
-## Support & Troubleshooting
-- [Frequently Asked Questions](https://wiki.bigledger.com/support/faqs/): Find answers to commonly asked questions about BigLedger ERP.
-E-Commerce &amp; EcomSyncHow many …
-
-### Beginner's Guide
-- [Getting Started Questions](https://wiki.bigledger.com/support/beginner-guide/getting-started/): Getting Started with BigLedger: FAQ for BeginnersA comprehensive guide for small business owners new …
-- [Basic Business Operations](https://wiki.bigledger.com/support/beginner-guide/basic-business-operations/): Understanding how to manage fundamental business activities in BigLedger
-Customer ManagementQ: How …
-- [Day-to-Day Usage](https://wiki.bigledger.com/support/beginner-guide/day-to-day-usage/): Practical guidance for using BigLedger in your daily business operations
-Daily OperationsQ: How do …
-- [Malaysian Features](https://wiki.bigledger.com/support/beginner-guide/malaysian-specific-questions/): Malaysian Specific Questions: FAQ for BeginnersUnderstanding BigLedger&rsquo;s Malaysian compliance …
-- [Growth & Scaling](https://wiki.bigledger.com/support/beginner-guide/growth-and-scaling/): Growth and Scaling: FAQ for BeginnersUnderstanding how BigLedger grows with your business and …
-- [Technical Setup](https://wiki.bigledger.com/support/beginner-guide/technical-concerns/): Technical Concerns: FAQ for BeginnersAddressing common technology fears and questions for …
-- [Cost & ROI](https://wiki.bigledger.com/support/beginner-guide/cost-and-roi-questions/): Cost and ROI Questions: FAQ for BeginnersUnderstanding BigLedger pricing, value, and return on …
-
-
-## Root Pages
-- [E-Invoice & PEPPOL](https://wiki.bigledger.com/e-invoice-peppol/): BigLedger is Malaysia&rsquo;s MDEC Fully Accredited PEPPOL Service Provider, offering comprehensive …
-- [Applets & Workflows](https://wiki.bigledger.com/applets-workflows/): BigLedger&rsquo;s modular applet architecture enables businesses to build customized solutions by …
-- [Search Documentation](https://wiki.bigledger.com/search/): Search TipsUse keywords from the topic you&rsquo;re looking for Search is case-insensitive Press …
-- [AI & Intelligence Platform](https://wiki.bigledger.com/ai-intelligence/): BigLedger&rsquo;s comprehensive AI capabilities transform your business operations through …
-- [Demos & Resources](https://wiki.bigledger.com/demos-resources/): Experience BigLedger&rsquo;s capabilities through our comprehensive demo videos and presentation …
-
----
-Generated on 2025-10-15 12:08:11 UTC
-Site: https://wiki.bigledger.com/
