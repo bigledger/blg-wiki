@@ -15,85 +15,586 @@ Financial control starts with effective budgeting. The Budgetary Management Modu
 
 Designed for organizations requiring structured financial planning and budget oversight—from educational institutions managing faculty budgets to government agencies tracking departmental appropriations—this module delivers the precision and transparency needed for fiscal responsibility.
 
-{{< callout type="info" >}}
-**Who Should Use This Module**: Finance departments, budget controllers, department heads, procurement teams, and anyone responsible for managing allocated funds within approved budget limits.
-{{< /callout >}}
+### Who Benefits from This Module?
+
+**Finance Directors & Controllers:**
+- Enforce budget discipline without becoming a bottleneck
+- Get instant visibility into organizational spending patterns
+- Prevent budget overruns through automated validation
+- Generate comprehensive variance reports in minutes instead of days
+
+**Department Heads & Managers:**
+- Know real-time budget status without waiting for month-end
+- Make informed spending decisions based on current availability
+- Quickly reallocate budgets as priorities shift
+- Avoid embarrassing overspend situations
+
+**Procurement & Purchasing Teams:**
+- Validate budget availability before creating purchase orders
+- Prevent unauthorized or over-budget purchases automatically
+- Streamline approval workflows with built-in validations
+- Maintain complete audit trail for every transaction
+
+**Executive Leadership:**
+- Confidence that spending stays within authorized limits
+- Early warning system for budget pressures across the organization
+- Better cash flow predictability and planning
+- Data-driven budget allocation decisions based on actual utilization
+
+**Auditors & Compliance Officers:**
+- Complete, automated audit trail of all budget activities
+- Verification that control procedures are enforced consistently
+- Evidence of segregation of duties and proper authorization
+- Demonstrable compliance with budget governance policies
 
 ### What Problems Does This Solve?
 
 **Before BigLedger Budgetary Management:**
-- Budget overruns discovered only at month-end
-- Manual tracking through spreadsheets prone to errors
-- No real-time visibility into fund consumption
-- Difficulty enforcing spending limits across departments
-- Time-consuming budget reallocation processes
-- Limited audit trail for budget changes
+- Budget overruns discovered only at month-end when too late to correct
+- Manual tracking through spreadsheets prone to errors and version conflicts
+- No real-time visibility into fund consumption across departments
+- Difficulty enforcing spending limits without creating bottlenecks
+- Time-consuming budget reallocation processes requiring multiple approvals
+- Limited audit trail for budget changes and adjustments
+- Departments blaming finance for being the "department of no"
 
 **After Implementation:**
-- Automatic budget validation prevents overspending
-- Real-time utilization tracking and alerts
-- Departmental accountability and transparency
-- Streamlined budget transfers and adjustments
-- Complete audit trail for all budget activities
-- Comprehensive reports for variance analysis
+- Automatic budget validation prevents overspending before it happens
+- Real-time utilization tracking and alerts for all stakeholders
+- Departmental accountability and transparency with clear ownership
+- Streamlined budget transfers and adjustments with proper controls
+- Complete audit trail for all budget activities and changes
+- Comprehensive reports for variance analysis and strategic planning
+- Finance team becomes early warning system instead of roadblock
 
 ### Quick Wins You Can Achieve
 
-{{< cards  >}}
+{{< cards >}}
+  {{< card title="Prevent Budget Overruns" subtitle="Real-time validation stops over-budget transactions before they're finalized, saving you from costly surprises at month-end" >}}
 
-  {{< card title="Auditors" subtitle="Compliance verification"  >}}
+  {{< card title="Instant Budget Visibility" subtitle="Know exactly where you stand financially in seconds, not days—empowering better spending decisions across departments" >}}
 
-  {{< card title="Finance Teams" subtitle="Transaction analysis"  >}}
+  {{< card title="Streamlined Approvals" subtitle="Automated budget checks reduce approval bottlenecks while maintaining proper controls and governance" >}}
+
+  {{< card title="Flexible Reallocation" subtitle="Move funds between budget lines in minutes instead of days, responding quickly to changing business priorities" >}}
+
+  {{< card title="Complete Audit Trail" subtitle="Every budget change tracked with user, timestamp, and justification—supporting compliance and investigation" >}}
+
+  {{< card title="Accurate Forecasting" subtitle="Historical utilization patterns inform next year's budget planning, improving accuracy by 15-20%" >}}
 {{< /cards >}}
 
-#### Report Best Practices
+{{< callout type="info" >}}
+**Module vs Applet**: This module provides the strategic overview, business processes, and organizational workflows for budget management. For detailed step-by-step procedures and technical configuration, see the **[Budget Applet documentation](/applets/budget-applet/)**.
+{{< /callout >}}
 
-**For Regular Monitoring:**
-- **Daily**: Quick scan of high-value or high-risk items
-- **Weekly**: Review items approaching budget limits (>80% utilized)
-- **Monthly**: Full budget variance analysis with explanations
-- **Quarterly**: Strategic review with senior management
-- **Annually**: Comprehensive year-end analysis to inform next budget cycle
+## Module Composition
 
-**Variance Analysis Framework:**
+The Budgetary Management Module is built on a foundation of core applets that work together to deliver comprehensive budget control:
 
-When reviewing budget reports, use this framework to investigate variances:
+### Core Applets
 
-| Variance Range | Action Required | Example |
-|---------------|----------------|---------|
-| Within ±5% | Normal variance, no action | Budgeted RM 100k, spent RM 98k |
-| ±5% to ±15% | Review and document explanation | Budgeted RM 100k, spent RM 112k |
-| ±15% to ±25% | Management review and corrective action | Budgeted RM 100k, spent RM 122k |
-| > ±25% | Immediate escalation and intervention | Budgeted RM 100k, spent RM 140k |
+{{< cards >}}
+  {{< card link="/applets/budget-applet/" title="Budget Applet" subtitle="Complete budget lifecycle management from planning through reporting and analysis" >}}
 
-**Creating Effective Budget Narratives:**
+  {{< card link="/applets/profit-center-applet/" title="Profit Center Applet" subtitle="Establish organizational accountability and departmental budget ownership" >}}
 
-Good budget reports include written commentary, not just numbers:
+  {{< card link="/applets/category-applet/" title="Category Management Applet" subtitle="Multi-dimensional classification for flexible reporting and analysis" >}}
+{{< /cards >}}
 
-```
-Example Variance Narrative:
+### Shared Applets
 
-Budget Item: IT Software Licenses
-Budgeted: RM 80,000
-Actual: RM 105,000
-Variance: RM 25,000 unfavorable (31% over)
+These applets support budget management but are shared across multiple modules:
 
-Explanation: Mid-year addition of 50 new users required expanding enterprise license count. Additionally, vendor eliminated volume discount tier, increasing per-seat cost 12%. These factors were not anticipated in original budget.
+{{< cards >}}
+  {{< card link="/applets/financial-reporting-applet/" title="Financial Reporting Applet" subtitle="Budget vs actual variance reporting and financial statement integration" >}}
 
-Corrective Action: Negotiating multi-year contract to restore volume pricing. Implementing software asset management tool to optimize license utilization. Requesting budget adjustment of RM 30,000 for remainder of fiscal year.
-```
+  {{< card link="/applets/approval-workflow-applet/" title="Approval Workflow Applet" subtitle="Automated routing for budget adjustments and virements based on rules" >}}
+
+  {{< card link="/applets/audit-trail-applet/" title="Audit Trail Applet" subtitle="Complete tracking of all budget changes, approvals, and transactions" >}}
+{{< /cards >}}
+
+### Optional Applets
+
+Extend functionality based on specific organizational needs:
+
+{{< cards >}}
+  {{< card link="/applets/project-budget-applet/" title="Project Budget Applet" subtitle="Project-specific budget tracking and profitability analysis" >}}
+
+  {{< card link="/applets/grant-management-applet/" title="Grant Management Applet" subtitle="Grant-funded budget compliance and tracking for restricted funds" >}}
+
+  {{< card link="/applets/commitment-tracking-applet/" title="Commitment Tracking Applet" subtitle="Track purchase commitments and encumbrances for public sector" >}}
+{{< /cards >}}
+
+## Key Concepts
+
+### Understanding the Budgetary Framework
+
+Every budget system must answer three fundamental questions. The Budgetary Management Module provides structured answers:
+
+| Question | Component | Practical Example |
+|----------|-----------|------------------|
+| **Who** is spending? | Profit Center | Faculty of Science, Marketing Department, Regional Office |
+| **What** are they spending on? | Category & Budget Item | Laboratory Equipment, Digital Advertising, Office Rent |
+| **How** are funds allocated? | Votebook & Register | Annual Budget 2025, distributed across 12 monthly periods |
 
 {{< callout type="tip" >}}
-**Executive Summary Best Practice**: Start budget review meetings with a one-page executive summary highlighting top 5 favorable variances (wins to celebrate) and top 5 unfavorable variances (issues requiring attention).
+**Real-World Example**: The Marketing Department (WHO) has an annual budget of RM 500,000 (Votebook). Within that budget, RM 100,000 is allocated to Digital Advertising (Budget Item / WHAT), distributed as RM 8,333 per month (Budget Register / HOW). When Marketing wants to spend RM 15,000 on Google Ads in March, the system checks the March Digital Advertising register and validates sufficient balance exists.
 {{< /callout >}}
+
+### Budget Hierarchy Structure
+
+Think of the budget hierarchy as an organizational tree structure for financial control:
+
+```
+Organization (Your Company)
+│
+├── Profit Centers (Departments) ──→ WHO is responsible?
+│   │
+│   └── Votebooks (Annual Budgets) ──→ WHEN and HOW MUCH?
+│       │
+│       └── Budget Items (Expense Categories) ──→ WHAT to spend on?
+│           │
+│           └── Categories (Multi-Level Classification) ──→ HOW to analyze?
+│               │
+│               └── Budget Registers (Period Allocations) ──→ WHEN to spend?
+```
+
+**Flow Through the Hierarchy:**
+
+1. **Organization**: ABC Corporation
+2. **Profit Center**: Marketing Department (who manages this budget)
+3. **Votebook**: Marketing Budget 2025 (annual budget document)
+4. **Budget Item**: Digital Advertising (specific spending category)
+5. **Category**: Online Marketing (classification for reporting)
+6. **Budget Register**: March 2025 - Digital Advertising (monthly allocation)
+
+This hierarchical structure enables:
+- **Precise control** at the transaction level
+- **Flexible reporting** at any level of aggregation
+- **Clear accountability** through organizational assignment
+- **Period-based tracking** aligned with financial reporting
+
+## Core Features
+
+### 1. Budget Item Management
+
+![Budget Item Listing](/images/budgetary-module/budgetary-module-01.png)
+
+#### Why This Matters
+
+Budget Items form the foundation of your entire budget management system. They create a common vocabulary across departments, enabling consistent tracking, meaningful comparisons, and accurate trend analysis. Without standardized budget items, consolidating spending across departments becomes impossible.
+
+#### How It Works
+
+**The Business Case:**
+
+Imagine three departments independently buying office supplies:
+- **IT Department** calls it "Office Supplies"
+- **HR Department** calls it "Administrative Materials"
+- **Finance Department** calls it "Stationery & Supplies"
+
+Result? You can't consolidate supply spending across departments. Budget Items solve this by creating standard spending categories everyone uses.
+
+{{< callout type="info" >}}
+**Business Impact**: Standardized budget items enable apples-to-apples comparisons, accurate trend analysis, meaningful benchmarking, and data-driven decision-making. Organizations typically achieve 15-20% better budget accuracy simply through consistent categorization.
+{{< /callout >}}
+
+#### Multi-Level Category Assignment
+
+One of the module's most powerful features is multi-dimensional categorization—classify each budget item across up to **10 independent category dimensions**.
+
+**Why Multiple Category Levels?**
+
+Different stakeholders need different views of the same spending:
+
+- **Executive Team** wants: Total spending by division, strategic vs operational expenses
+- **Finance Team** needs: Spending by account type, funding source, tax treatment
+- **Department Heads** want: Their department's spending, project-based allocation
+- **Compliance Officers** require: Grant-funded vs unrestricted spending, regulatory categories
+
+**Reporting Flexibility:**
+
+With rich categorization, generate reports by ANY dimension:
+- Show me all Grant-Funded equipment purchases
+- What did we spend on R&D across all departments?
+- How much capital expenditure did North Campus make?
+- Report all spending on Nanotechnology Research
+
+**Best Practices:**
+
+- Start with 3-5 essential Category Groups that support actual decision-making
+- You can always add more later—but removing categories after data entry is problematic
+- Ask: "Will we actually filter reports by this dimension?" If no, don't create it
+- Document your category framework for consistency
+
+For detailed step-by-step procedures, see the **[Budget Item Management section](/applets/budget-applet/#1-budget-item-management)** in the Budget Applet documentation.
+
+### 2. Category Group & Category Management
+
+![Category Management](/images/budgetary-module/budgetary-module-02.png)
+
+#### Why This Matters
+
+Categories provide the analytical dimensions for reporting and decision-making. A well-designed category framework enables you to answer critical questions like "How much are we spending on research?" or "What's our capital vs operating expense split?" across the entire organization.
+
+#### How It Works
+
+The module uses a two-tier classification system:
+
+**Tier 1: Category Groups** (The Container)
+- High-level organizational umbrellas
+- Examples: "Academic Faculties", "Expense Types", "Funding Sources"
+- Purpose: Keep category lists manageable and logically organized
+
+**Tier 2: Categories** (The Specific Classification)
+- Specific classifications within each group
+- Examples: "Faculty of Science", "Capital Equipment", "Grant-Funded"
+- Purpose: The actual tags applied to budget items for reporting
+
+**Strategic Category Group Design:**
+
+| Category Group Type | Purpose | When to Use |
+|--------------------|---------|-------------|
+| **Organizational** | WHO spent the money | Always - fundamental for accountability |
+| **Functional** | WHY the money was spent | When functional analysis matters (teaching vs research) |
+| **Financial** | HOW to account for it | When financial statement classification matters |
+| **Source** | WHERE money came from | When fund accounting or grant tracking required |
+| **Geographic** | WHERE the spending occurred | Multi-location organizations |
+| **Temporal** | WHAT period or project | Project-based or initiative-based organizations |
+
+**Business Example:**
+
+```
+Budget Item: Laboratory Equipment Purchase (RM 50,000)
+
+├── Category Level 0: Organizational Unit → Faculty of Science
+├── Category Level 1: Expense Type → Scientific Equipment
+├── Category Level 2: Financial Classification → Capital Expenditure
+├── Category Level 3: Functional Area → Research & Development
+├── Category Level 4: Funding Source → Grant-Funded (NSF Award #12345)
+├── Category Level 5: Strategic Initiative → Nanotechnology Research Program
+└── Category Level 6: Geographic Location → North Campus Research Lab
+```
+
+With this rich categorization, you can generate reports by any dimension instantly.
+
+{{< callout type="tip" >}}
+**Start Simple Framework**: Most organizations need just 3-4 Category Groups initially:
+1. **Organizational Units** (departments/divisions) - for accountability
+2. **Expense Types** (personnel/operating/capital) - for financial reporting
+3. **Funding Sources** (unrestricted/grants/donations) - for fund compliance
+4. **Optional**: Strategic Initiatives, Projects, or Geographic Locations
+
+Add more Category Groups only when you have a clear reporting or compliance need.
+{{< /callout >}}
+
+For detailed configuration steps, see the **[Category Management section](/applets/budget-applet/#2-category-group--category-management)** in the Budget Applet documentation.
+
+### 3. Profit Center Management
+
+![Profit Center Management](/images/budgetary-module/budgetary-module-03.png)
+
+#### Why This Matters
+
+Profit Centers answer the question "WHO is responsible for this spending?" They transform budget management from top-down control to distributed ownership. Instead of "Finance won't let me spend," the conversation becomes "I need to manage my budget wisely."
+
+{{< callout type="info" >}}
+**Cultural Impact**: Profit Centers shift the psychological ownership of budgets. Department heads become accountable for their spending decisions, dramatically improving budget discipline and reducing finger-pointing when trade-offs are necessary.
+{{< /callout >}}
+
+#### How It Works
+
+Profit Centers represent the organizational units that manage budgets and bear accountability:
+- Marketing Department **owns** its budget—success and overruns
+- Faculty of Science is **accountable** for equipment purchases
+- Regional Office has **responsibility** for local operations
+
+**Accountability & Ownership:**
+- Department heads own their budget performance
+- Clear responsibility when overspending occurs
+- Recognition when departments stay within budget
+- Prevents "not my responsibility" mentality
+
+**Reporting & Analysis:**
+- Compare performance across peer units (Faculty A vs Faculty B)
+- Identify high-performing and struggling departments
+- Benchmark spending patterns
+- Inform next year's budget allocation
+
+**Strategic Planning:**
+- Understand true cost of each organizational unit
+- Support make-vs-buy decisions
+- Identify opportunities for consolidation
+- Allocate resources based on strategic priorities
+
+{{< callout type="tip" >}}
+**Organizational Design Principle**: Structure Profit Centers to match decision-making authority and budget control. If your Marketing Manager has authority over digital and traditional marketing budgets combined, create ONE profit center. If Digital and Traditional Marketing report to different managers with separate budgets, create TWO profit centers.
+
+**Rule of Thumb**: One Profit Center = One budget owner with decision-making authority.
+{{< /callout >}}
+
+For detailed setup procedures and industry-specific examples, see the **[Profit Center Management section](/applets/budget-applet/#3-profit-center-management)** in the Budget Applet documentation.
+
+### 4. Votebook Management
+
+![Votebook Management](/images/budgetary-module/budgetary-module-04.png)
+
+#### Why This Matters
+
+A Votebook is the **central budget document** for a Profit Center's fiscal year. Think of it as the annual "spending authority document" that connects WHO (Profit Centers), WHAT (Budget Items), and WHEN (Fiscal Periods) into a cohesive control system.
+
+#### How It Works
+
+**Helpful Analogies:**
+- **Credit Card Statement**: Shows approved credit limits, spending categories, and remaining credit
+- **Checkbook Register**: Tracks deposits (allocations), checks written (utilization), and balance
+- **Spending Playbook**: The authorized plan for how department can spend its annual budget
+
+**The Complete Votebook Lifecycle:**
+
+1. **Create Votebook** - Establish the annual budget container
+2. **Link to Profit Center** - Assign organizational ownership
+3. **Attach Authorized Budget Items** - Define what can be spent on
+4. **Generate Fiscal Year Periods** - Create monthly or quarterly registers
+5. **Allocate Initial Budget Amounts** - Put actual numbers into the framework
+6. **Budget Active** - Ready for real-time utilization tracking
+7. **Monitor Real-Time Utilization** - Track spending throughout the year
+8. **Mid-Year Adjustments** - Respond to changing priorities via virements/adjustments
+9. **Period-End Review** - Regular variance analysis and reporting
+10. **Fiscal Year-End Closeout** - Comprehensive analysis and rollover planning
+
+#### Allocation Strategies
+
+Choose the right allocation approach based on your spending patterns:
+
+**Even Distribution:**
+- Best for: Stable expenses (salaries, rent, subscriptions)
+- Simple and fast to set up
+- Example: RM 120,000 annual budget = RM 10,000 per month
+
+**Seasonal Pattern:**
+- Best for: Weather-dependent costs, academic calendars, retail seasons
+- Aligns budget with actual needs
+- Example: Higher utilities in summer/winter, lower in spring/fall
+
+**Project-Based:**
+- Best for: Capital projects, research grants, planned initiatives
+- Matches budget to project schedule
+- Example: Construction project budget allocated to active months only
+
+**Cash Flow Aligned:**
+- Best for: Organizations with tight cash flow or seasonal revenue
+- Aligns spending with revenue timing
+- Example: Higher marketing budget in high-revenue quarters
+
+{{< callout type="tip" >}}
+**Allocation Best Practice**: Start with equal distribution across all periods, then adjust based on:
+1. **Historical actuals** - How did you spend last year?
+2. **Known events** - Conferences, projects, seasonal patterns
+3. **Payment schedules** - Annual subscriptions, quarterly payments
+4. **Strategic priorities** - Front-load critical initiatives
+5. **Cash flow** - Align spending with revenue timing
+
+Document your allocation assumptions for next year's budget planning.
+{{< /callout >}}
+
+For detailed votebook creation steps and examples, see the **[Votebook Management section](/applets/budget-applet/#4-votebook-management)** in the Budget Applet documentation.
+
+### 5. Budget Virement Management
+
+#### Why This Matters
+
+Business priorities change throughout the year. Equipment breaks and needs replacement. Marketing campaigns perform better or worse than expected. Research projects shift focus. Budget Virement (transfer) enables you to reallocate funds between budget lines **without changing the total budget**.
+
+Think of it like moving money between different pockets in the same wallet—the total amount stays the same, but the distribution changes.
+
+#### How It Works
+
+**Virement Process:**
+
+1. **Identify Need**: Department realizes Budget Item A is overspent, but Item B has surplus
+2. **Create Virement Document**: Specify source register (where funds come from) and destination register (where funds go)
+3. **Request Approval**: Submit for approval per organization's approval matrix
+4. **Approval & Finalization**: Authorized approver reviews justification and approves
+5. **Automatic Register Update**: System immediately updates both registers
+6. **Audit Trail Created**: Complete record of transfer with justification
+
+**Real-World Example:**
+
+```
+Faculty of Science - March 2025
+
+Original Allocation:
+├── Laboratory Equipment: RM 30,000 (now 95% utilized, need more)
+└── Laboratory Supplies: RM 20,000 (only 40% utilized, surplus available)
+
+Virement Request: Transfer RM 5,000
+From: Laboratory Supplies (March 2025)
+To: Laboratory Equipment (March 2025)
+Justification: Urgent microscope repair required RM 8,000, current equipment budget insufficient
+
+After Virement:
+├── Laboratory Equipment: RM 35,000 (sufficient for repair)
+└── Laboratory Supplies: RM 15,000 (still adequate for needs)
+
+Total Budget: RM 50,000 (unchanged)
+```
+
+**Control Mechanisms:**
+
+| Virement Type | Amount Range | Required Approver | Typical SLA |
+|--------------|--------------|------------------|-------------|
+| Within Department | < RM 10,000 | Department Head | Same day |
+| Within Department | RM 10,000 - RM 50,000 | Department Head + Finance Manager | 2 business days |
+| Cross-Department | Any amount | Finance Director | 1 week |
+
+**Benefits:**
+- Respond quickly to changing priorities without lengthy budget revision processes
+- Maintain budget discipline while providing operational flexibility
+- Complete audit trail of all reallocations with justifications
+- Preserve total budget control while optimizing fund utilization
+
+{{< callout type="warning" >}}
+**Virement vs Adjustment**: Virement moves funds between registers **without changing total budget**. If you need to increase or decrease the total budget amount, use Budget Adjustment instead (see next section).
+{{< /callout >}}
+
+For detailed virement procedures and examples, see the **[Budget Virement section](/modules/budgetary/#5-budget-virement-transfer--budget-adjustment)** in the module documentation.
+
+### 6. Budget Adjustment Management
+
+#### Why This Matters
+
+Sometimes the total budget needs to change—a new grant is awarded, funding is cut, or strategic priorities shift dramatically. Budget Adjustment enables you to **increase or decrease the total budget allocation** for a budget register.
+
+Think of it like adding money to your wallet or taking some out—the total amount available changes.
+
+#### How It Works
+
+**Two Types of Budget Adjustments:**
+
+**Budget Adjustment In (Increase Total Allocation):**
+- New grant or funding received
+- Additional appropriation approved by board
+- Donor contribution for specific purpose
+- Revenue exceeds forecast, enabling higher spending
+
+**Budget Adjustment Out (Decrease Total Allocation):**
+- Funding cut or reduced appropriation
+- Grant or project cancelled
+- Revenue shortfall requiring spending reduction
+- Strategic reallocation to other priorities
+
+**Adjustment Process:**
+
+1. **Identify Need**: Total budget ceiling needs to change
+2. **Create Adjustment Document**: Specify register and adjustment amount (positive or negative)
+3. **Provide Justification**: Explain why adjustment is necessary
+4. **Obtain Approval**: Higher authority approval required (CFO, Board, etc.)
+5. **Finalization**: System updates budget register allocation
+6. **Communication**: Notify affected department heads
+
+**Real-World Example:**
+
+```
+Original Situation:
+Faculty of Science - Laboratory Equipment - Annual Budget: RM 100,000
+Already Utilized: RM 60,000
+Remaining: RM 40,000
+
+New Development:
+National Science Foundation awards RM 50,000 grant specifically for lab equipment
+
+Budget Adjustment In: +RM 50,000
+Justification: NSF Grant Award #2025-12345 for advanced microscopy equipment
+Approval: CFO approved (grant-funded increase)
+
+After Adjustment:
+Faculty of Science - Laboratory Equipment - Annual Budget: RM 150,000
+Already Utilized: RM 60,000
+Remaining: RM 90,000 (sufficient for grant-funded purchases)
+```
+
+**Approval Requirements:**
+
+| Adjustment Type | Amount | Required Approver | Timing |
+|----------------|--------|------------------|--------|
+| Grant/Donation Funded Increase | < RM 100,000 | Finance Director | 3 days |
+| Grant/Donation Funded Increase | > RM 100,000 | CFO | 1 week |
+| Operating Budget Increase | Any amount | CFO + Board | Board meeting cycle |
+| Minor Reduction | < RM 10,000 | Finance Manager | 2 days |
+| Significant Reduction | RM 10,000 - RM 100,000 | Finance Director | 1 week |
+| Major Reduction | > RM 100,000 | CFO + Board | Board meeting cycle |
+
+**Benefits:**
+- Respond to funding changes while maintaining control
+- Ensure budget authority matches actual funding availability
+- Prevent over-commitment when funding reduced
+- Enable new initiatives when additional funding secured
+- Maintain complete audit trail of all budget changes
+
+{{< callout type="info" >}}
+**Key Difference**: Virement moves funds between registers (total unchanged). Adjustment changes the total budget amount. Choose virement for reallocation, adjustment for funding changes.
+{{< /callout >}}
+
+### 7. Budget Reports
+
+#### Why This Matters
+
+Real-time visibility into budget status is critical for proactive management. The module provides two complementary reporting views:
+
+**Budget Report (Summary)**: Executive dashboard showing overall utilization by department and budget item
+**Budget Register Transaction Line Report (Detail)**: Complete audit trail of every transaction impacting each budget register
+
+#### How It Works
+
+**Key Report Columns Explained:**
+
+| Column | What It Shows | How to Interpret |
+|--------|--------------|------------------|
+| **Latest Allocation** | Current authorized budget after adjustments | The ceiling you must stay under |
+| **Amount Utilized** | Total spent/committed to date | Your current spending level |
+| **Remaining Balance** | Latest Allocation - Amount Utilized | How much you have left to spend |
+| **Utilization %** | (Amount Utilized / Latest Allocation) × 100% | Quick visual indicator of consumption rate |
+
+**Report Actions Available:**
+
+- **Chart**: Visual representation of utilization percentages (bar charts, pie charts)
+- **Filter**: Narrow results by profit center, budget item, period, category
+- **Export**: Download to Excel for further analysis or presentations
+- **Print**: Generate PDF for board meetings or approvals
+- **Schedule**: Automate delivery to stakeholders
+
+**Best Practices for Regular Monitoring:**
+
+- **Daily**: Quick scan of high-value or high-risk items (>RM 50,000 transactions)
+- **Weekly**: Review items approaching budget limits (>80% utilized with >25% of year remaining)
+- **Monthly**: Full budget variance analysis with explanations for all material variances
+- **Quarterly**: Strategic review with senior management, forecast year-end position
+- **Annually**: Comprehensive year-end analysis to inform next budget cycle
+
+{{< callout type="tip" >}}
+**Executive Summary Best Practice**: Start budget review meetings with a one-page executive summary highlighting:
+- Top 5 favorable variances (wins to celebrate)
+- Top 5 unfavorable variances (issues requiring attention)
+- Overall organizational utilization percentage
+- Forecast year-end position (over/under budget)
+{{< /callout >}}
+
+For detailed report examples and variance analysis frameworks, see the **[Budget Reports section](/applets/budget-applet/#6-budget-reports)** in the Budget Applet documentation.
 
 ### 8. Budget Utilization and Validation
 
 ![Budget Validation](/images/budgetary-module/budgetary-module-09.png)
 
-#### The Power of Real-Time Budget Control
+#### Why This Matters
 
-The most valuable feature of the Budgetary Module isn't budget creation or reporting—it's **automated enforcement**. Real-time budget validation prevents overspending before it happens, not after month-end when it's too late.
+The most valuable feature isn't budget creation or reporting—it's **automated enforcement**. Real-time budget validation prevents overspending before it happens, not after month-end when it's too late.
+
+{{< callout type="info" >}}
+**Business Impact**: Real-time validation shifts budget control from reactive (explaining overages) to proactive (preventing overages). This transforms finance from the "department of no" to the "department of early warning."
+{{< /callout >}}
+
+#### How It Works
 
 **Traditional Budget Control** (Spreadsheet-Based):
 1. Department creates purchase order for RM 50,000
@@ -110,68 +611,45 @@ The most valuable feature of the Budgetary Module isn't budget creation or repor
 5. Document cannot be finalized until resolved
 6. **Result**: Overspending prevented, department requests budget adjustment or reduces order size
 
-{{< callout type="info" >}}
-**Business Impact**: Real-time validation shifts budget control from reactive (explaining overages) to proactive (preventing overages). This transforms finance from the "department of no" to the "department of early warning."
-{{< /callout >}}
+**Integration with Transaction Documents:**
 
-#### Integration with Transaction Documents
-
-Budget validation seamlessly integrates with all transaction-creating applets across the BigLedger platform:
+Budget validation seamlessly integrates with all transaction-creating applets:
 
 **Purchase Cycle:**
-- **Purchase Requisitions**: Budget checked when department requests purchase
-- **Purchase Orders**: Budget validated before order sent to vendor
-- **Purchase Invoices**: Budget confirmed before payment processing
+- Purchase Requisitions: Budget checked when department requests purchase
+- Purchase Orders: Budget validated before order sent to vendor
+- Purchase Invoices: Budget confirmed before payment processing
 
 **Sales Cycle:**
-- **Sales Quotations**: Revenue budget validated for commission calculations
-- **Sales Orders**: Budget checked for sales-related expenses (shipping, commissions)
-- **Sales Invoices**: Budget confirmed for any cost allocations
+- Sales Quotations: Revenue budget validated for commission calculations
+- Sales Orders: Budget checked for sales-related expenses
+- Sales Invoices: Budget confirmed for any cost allocations
 
 **Internal Operations:**
-- **Journal Entries**: Budget validated for cost allocations and transfers
-- **Expense Claims**: Employee expenses checked against departmental budgets
-- **Asset Purchases**: Capital budget validated for major acquisitions
+- Journal Entries: Budget validated for cost allocations
+- Expense Claims: Employee expenses checked against departmental budgets
+- Asset Purchases: Capital budget validated for major acquisitions
 
-#### The Validation Process Step-by-Step
+**The Validation Process Step-by-Step:**
 
-When creating any transaction that affects budget registers, follow this process:
+**Step 1: Specify Budget Details for Each Line Item**
 
-**1. Specify Budget Details for Each Line Item**
+For every line item in a transaction, specify:
+- Budget Votebook (which department/unit budget to charge)
+- Budget Fiscal Year (usually current year)
+- Budget Fiscal Period (specific month or quarter)
+- Budget Item (expense category)
+- Budget Register (specific allocation register to charge)
 
-For every line item in a transaction document, specify:
+**Step 2: System Performs Real-Time Validation**
 
-- **Budget Votebook** - Which department/unit budget to charge
-- **Budget Fiscal Year** - Applicable budget year (usually current year)
-- **Budget Fiscal Period** - Specific month or quarter
-- **Budget Item** - Expense category (must be linked to votebook)
-- **Budget Register** - Specific allocation register to charge against
+The system automatically checks:
+- ✓ Votebook is Active
+- ✓ Budget Item is linked to selected votebook
+- ✓ Fiscal period is open for transactions
+- ✓ Transaction amount ≤ remaining balance
 
-**Example**: Creating a Purchase Order
-
-```
-Line Item: Laboratory Microscope - RM 25,000
-├── Budget Votebook: Budget 2025 - Faculty of Science
-├── Fiscal Year: FY 2025
-├── Fiscal Period: October 2025
-├── Budget Item: Laboratory Equipment
-└── Budget Register: Q4 2025 - Lab Equipment
-```
-
-**2. System Performs Real-Time Validation**
-
-As soon as budget details are entered, the system automatically checks:
-
-| Validation Check | What It Verifies | Failure Result |
-|-----------------|------------------|---------------|
-| Votebook Active | Budget votebook status is active | "Inactive votebook cannot be used" |
-| Item Linked | Budget item is linked to selected votebook | "Budget item not authorized for this votebook" |
-| Period Open | Fiscal period is open for transactions | "Cannot post to closed period" |
-| Sufficient Funds | Transaction amount ≤ remaining balance | "Budget exceeded" warning |
-
-**3. Visual Feedback to User**
-
-The system provides immediate visual indicators:
+**Step 3: Visual Feedback to User**
 
 **Budget Sufficient (Green):**
 - Line item appears normal
@@ -195,102 +673,24 @@ Total Would Be: RM 70,000
 Budget Available: RM 50,000
 Over Budget By: RM 20,000
 
-Action Required: Reduce transaction amount, request budget adjustment, or reallocate via virement.
+Action Required: Reduce transaction amount, request budget adjustment,
+                 or reallocate via virement.
 ```
+
+**Step 4: Resolution Options**
+
+When validation fails, users have clear options:
+
+- **Option A**: Reduce transaction amount to fit within available budget
+- **Option B**: Request Budget Adjustment to increase budget ceiling
+- **Option C**: Reallocate via Virement from underutilized register
+- **Option D**: Change Budget Register to different period with available budget
 
 {{< callout type="warning" >}}
 **Prevention, Not Notification**: Unlike passive budget tracking systems that simply report overspending after the fact, BigLedger actively prevents over-budget entries from being finalized. This is budget control with teeth.
 {{< /callout >}}
 
-**4. Resolution Options**
-
-When validation fails (budget exceeded), users have clear options:
-
-**Option A: Reduce Transaction Amount**
-- Modify the line item to fit within available budget
-- Split purchase into multiple periods
-- Defer non-essential items
-
-**Option B: Request Budget Adjustment**
-- Submit adjustment request to increase budget ceiling
-- Requires proper authorization (CFO, Board, etc.)
-- Process adjustment document before finalizing transaction
-
-**Option C: Reallocate via Virement**
-- Transfer budget from underutilized register
-- Requires approval per organization's virement policy
-- Complete virement document, then return to transaction
-
-**Option D: Change Budget Register**
-- Use different fiscal period with available budget
-- Shift timing of expense recognition
-- Ensure aligns with actual delivery/service timing
-
-#### The Utilization Process After Approval
-
-Once the document passes validation and is ready to finalize:
-
-**Before Finalization:**
-- Document in Draft status
-- Budget not yet impacted
-- Can be edited or deleted without financial effect
-- Budget balances unchanged
-
-**Upon Finalization:**
-
-1. **Budget Register Updated:**
-   - Utilized amount increases by transaction value
-   - Remaining balance decreases accordingly
-   - Latest allocation stays the same (unless adjustment)
-
-2. **Audit Trail Created:**
-   - Transaction recorded in Budget Register Transaction Line Report
-   - Links established between document and budget register
-   - User, date, and time stamped
-
-3. **Real-Time Reporting:**
-   - Budget Report immediately reflects new utilization
-   - Utilization percentage recalculated
-   - Remaining balance visible to all users
-
-4. **Ongoing Control:**
-   - Future transactions validated against updated balance
-   - Cumulative spending tracked throughout period
-   - Early warning when approaching limits
-
-**Example Flow:**
-
-```
-Budget Register Before Transaction:
-- Latest Allocation: RM 100,000
-- Amount Utilized: RM 60,000
-- Remaining Balance: RM 40,000
-
-Transaction Finalized: Purchase Invoice for RM 15,000
-
-Budget Register After Transaction:
-- Latest Allocation: RM 100,000 (unchanged)
-- Amount Utilized: RM 75,000 (increased)
-- Remaining Balance: RM 25,000 (decreased)
-- Utilization %: 75% (up from 60%)
-```
-
-#### Key Timing Principles
-
-Understanding when validation and utilization occur is crucial:
-
-| Stage | Budget Impact | Can Reverse? |
-|-------|--------------|-------------|
-| **Draft Document** | None - budget untouched | Yes - simply delete or edit |
-| **Validation Check** | Temporary hold (some systems) | Yes - exit without finalizing |
-| **Finalization** | Immediate utilization recorded | Requires reversal document |
-| **Reversal** | Utilization reversed, balance restored | Creates audit trail |
-
-{{< callout type="tip" >}}
-**Best Practice**: Encourage departments to check budget availability BEFORE initiating purchases or commitments. The system provides "check budget balance" functions for this purpose. Prevent surprises by planning ahead.
-{{< /callout >}}
-
-#### Benefits of Integrated Budget Control
+**Benefits by Role:**
 
 **For Department Managers:**
 - Know budget status in real-time, not waiting for month-end reports
@@ -316,11 +716,13 @@ Understanding when validation and utilization occur is crucial:
 - Evidence of segregation of duties
 - Demonstrable compliance with budget governance policies
 
+For detailed validation workflows and examples, see the **[Budget Utilization and Validation section](/applets/budget-applet/#7-budget-utilization-and-validation)** in the Budget Applet documentation.
+
 ## Configuration
 
 ### Initial Setup Workflow
 
-Setting up the Budgetary Module requires systematic progression through multiple stages. Rushing this process creates problems downstream, while careful setup pays dividends throughout the fiscal year.
+Setting up the Budgetary Management Module requires systematic progression through multiple stages. Rushing creates problems downstream, while careful setup pays dividends throughout the fiscal year.
 
 {{< callout type="warning" >}}
 **Time Investment**: Plan for 2-4 weeks for complete setup in a medium-sized organization. This includes stakeholder consultations, approval workflows, and user training. The upfront investment prevents costly mid-year corrections.
@@ -328,24 +730,15 @@ Setting up the Budgetary Module requires systematic progression through multiple
 
 #### Step 1: Organization Structure Definition
 
-Before creating any budgets, establish your organizational hierarchy.
+Before creating any budgets, establish your organizational hierarchy:
 
-**1. Define Organizational Hierarchy**
+**Tasks:**
 - Map out your complete organization chart
 - Identify all budget-responsible units (departments, faculties, divisions)
 - Determine reporting relationships
 - Document decision-making authority at each level
-
-**2. Set Up Profit Centers**
 - Create Profit Center for each budget-responsible unit
-- Use consistent naming conventions
-- Assign appropriate reference codes (campus, building, cost center)
-- Activate only currently-operating units
-
-**3. Configure Reporting Relationships**
-- Link Profit Centers to organizational hierarchy
-- Set up consolidated reporting groups (all faculties, all support departments)
-- Define budget roll-up structure for executive dashboards
+- Configure reporting relationships and consolidation groups
 
 **Documentation Checklist:**
 - [ ] Organization chart with all units identified
@@ -358,38 +751,22 @@ Before creating any budgets, establish your organizational hierarchy.
 
 Categories determine HOW you analyze and report budget data. Design thoughtfully based on decision-making needs.
 
-**1. Create Category Groups**
+**Tasks:**
+- Identify major analysis dimensions (3-5 Category Groups initially)
+- Create specific categories under each group
+- Configure Field Settings for mandatory vs optional
+- Set up validation rules
+- Define default values to reduce data entry
 
-Identify the major lenses through which you analyze spending:
+**Common Category Groups:**
 
-| Typical Category Group | Purpose | Example Categories |
-|----------------------|---------|-------------------|
+| Category Group | Purpose | Example Categories |
+|----------------|---------|-------------------|
 | Organizational Units | Who spent the money | Faculty A, Faculty B, Department X |
 | Expense Types | What was purchased | Equipment, Services, Supplies |
 | Funding Sources | Where money came from | Operating Budget, Grants, Donations |
 | Functional Areas | Why purchased | Teaching, Research, Administration |
 | Account Types | Financial classification | Capital, Operating, Personnel |
-
-**2. Define Categories Under Each Group**
-
-For each Category Group, create specific categories:
-
-- Use clear, unambiguous names
-- Avoid overlapping categories (is it "IT Equipment" or "Computer Hardware"?)
-- Create enough granularity for meaningful analysis
-- Don't over-categorize (every category you create must be maintained)
-
-**3. Set Up Mandatory Category Fields**
-
-Navigate to **Settings → Field Settings → Budget Item Settings** to:
-- Configure which Category Groups are mandatory
-- Define validation rules
-- Set up defaults to reduce data entry
-
-**Design Principles:**
-- **Mandatory**: Categories essential for compliance or reporting (e.g., funding source for grant compliance)
-- **Optional**: Categories helpful for analysis but not required (e.g., strategic initiative tagging)
-- **Default Values**: Pre-populate categories where 80%+ of items use the same value
 
 {{< callout type="tip" >}}
 **Start Simple, Expand Later**: Begin with 3-4 essential Category Groups. You can always add more later, but removing unused categories after data entry is problematic.
@@ -399,46 +776,13 @@ Navigate to **Settings → Field Settings → Budget Item Settings** to:
 
 Budget Items are the standard spending categories used across your organization.
 
-**1. Create Standard Budget Items**
-
-Develop your organization's standard budget item catalog:
-
-**For Educational Institutions:**
-- Personnel Costs (Faculty Salaries, Staff Salaries, Benefits)
-- Operating Expenses (Office Supplies, Utilities, Maintenance)
-- Instructional Costs (Laboratory Supplies, Course Materials, Equipment)
-- Student Services (Scholarships, Financial Aid, Student Activities)
-- Facilities (Building Maintenance, Grounds Keeping, Security)
-- IT & Technology (Software Licenses, Hardware, Network Services)
-
-**For Businesses:**
-- Payroll & Benefits
-- Marketing & Advertising
-- Professional Services
-- Office Operations
-- IT & Technology
-- Facilities & Equipment
-- Travel & Entertainment
-- R&D Expenses
-
-**2. Assign Multi-Level Categories**
-
-For each Budget Item, link appropriate categories across all levels:
-
-```
-Example: Laboratory Equipment Purchase
-├── Category Group 1: Organizational Unit → Faculty of Science
-├── Category Group 2: Expense Type → Capital Equipment
-├── Category Group 3: Functional Area → Research & Development
-└── Category Group 4: Funding Source → Grant-Funded
-```
-
-**3. Link Items to Category Groups**
-
-Ensure every Budget Item is properly classified:
-- Complete all mandatory category assignments
-- Validate category logic (combinations make sense)
-- Review for consistency across similar items
+**Tasks:**
+- Develop organization's standard budget item catalog (20-50 items typical)
+- Choose naming convention and apply consistently
+- Create budget items in system
+- Assign multi-level categories to each item
+- Document usage guidelines in descriptions
+- Review with department heads for completeness
 
 **Quality Checklist:**
 - [ ] Consistent naming convention applied
@@ -451,143 +795,37 @@ Ensure every Budget Item is properly classified:
 
 With foundation in place, create actual budgets for each Profit Center.
 
-**1. Create Votebooks for Each Profit Center**
-
-- One votebook per Profit Center per fiscal year (e.g., "Budget 2025 - Faculty of Science")
-- Use consistent naming pattern across all votebooks
-- Link to correct Profit Center
-- Add contextual description (scope, exclusions, special notes)
-
-**2. Link Budget Items to Votebooks**
-
-For each votebook:
-- Identify which Budget Items this unit is authorized to spend on
-- Link all applicable items via Items Tab
-- Review for completeness (missing items create problems later)
-- Ensure category classifications are appropriate for this unit
-
-**3. Generate Fiscal Year Periods**
-
-- Open each votebook's Fiscal Year Tab
-- Click "Generate Fiscal Year"
-- Verify all periods created correctly (typically 12 months)
-- Confirm Budget Registers generated for all Item-Period combinations
-
-**4. Allocate Initial Budget Amounts**
-
-The moment of truth—putting numbers in the budget:
+**Tasks:**
+- Create one votebook per Profit Center per fiscal year
+- Link authorized Budget Items to each votebook
+- Generate fiscal year periods
+- Allocate initial budget amounts
+- Adjust for seasonal patterns where appropriate
+- Get formal approval before activating
 
 **Allocation Approaches:**
 
-{{< tabs items="Top-Down,Bottom-Up,Zero-Based,Incremental" >}}
-
-{{< tab >}}
-**Top-Down Allocation**
-
-Leadership sets overall budget, distributes to units:
-
-1. Board/Management sets total organizational budget
-2. Finance allocates to major divisions or faculties
-3. Division heads sub-allocate to departments
-4. Department heads distribute to budget items
-
-**Advantages:**
+**Top-Down Allocation:**
+- Leadership sets overall budget, distributes to units
 - Ensures overall budget limits respected
 - Strategic alignment with organizational priorities
 - Faster decision-making
-- Clear accountability to targets
 
-**Disadvantages:**
-- May not reflect actual operational needs
-- Can demotivate units with insufficient budget
-- Requires leadership to understand operational details
-{{< /tab >}}
-
-{{< tab >}}
-**Bottom-Up Allocation**
-
-Departments request, leadership consolidates and approves:
-
-1. Department heads estimate needs per budget item
-2. Requests submitted with business justification
-3. Finance consolidates all requests
-4. Leadership reviews total vs available funds
-5. Negotiation and adjustment process
-6. Final budgets communicated back to departments
-
-**Advantages:**
+**Bottom-Up Allocation:**
+- Departments request, leadership consolidates and approves
 - Reflects actual operational needs
 - Department ownership and buy-in
 - Realistic planning based on frontline knowledge
-- Identifies unfunded needs for strategic discussion
 
-**Disadvantages:**
-- Requests typically exceed available funds
-- Time-consuming negotiation process
-- May lack strategic alignment
-- Can be politically challenging
-{{< /tab >}}
-
-{{< tab >}}
-**Zero-Based Budgeting**
-
-Justify every dollar from scratch each year:
-
-1. Start with zero budget for each item
-2. Departments justify each budget item as if new
-3. Prioritize all activities from essential to nice-to-have
-4. Fund activities in priority order until budget exhausted
-
-**Advantages:**
-- Questions all assumptions
-- Eliminates legacy inefficiencies
-- Aligns budget to current priorities
-- Encourages innovation and efficiency
-
-**Disadvantages:**
-- Very time-consuming
-- Requires detailed operational knowledge
-- Can be demotivating for staff
-- Difficult to do comprehensively every year
-{{< /tab >}}
-
-{{< tab >}}
-**Incremental Budgeting**
-
-Start with last year, adjust for changes:
-
-1. Use prior year actuals as baseline
-2. Adjust for inflation (e.g., +3%)
-3. Add new initiatives
-4. Subtract discontinued activities
-5. Review and approve adjustments
-
-**Advantages:**
-- Fast and efficient
-- Stable and predictable
-- Reduces conflict and negotiation
-- Easy to understand and communicate
-
-**Disadvantages:**
-- Perpetuates historical inefficiencies
-- Doesn't question baseline assumptions
-- May miss major shifts in priorities
-- Can lead to budget bloat over time
-{{< /tab >}}
-
-{{< /tabs >}}
-
-**Allocation Best Practices:**
-
-- **Document assumptions**: Inflation rates, growth projections, strategic initiatives
-- **Build in contingency**: Hold 5-10% unallocated for mid-year adjustments
-- **Align timing with cash flow**: Allocate more to periods with stronger revenue
-- **Consider seasonal patterns**: Higher utilities in summer/winter, marketing in Q4
-- **Review and iterate**: Budget allocation is a process, not a one-time event
+**Hybrid Approach (Recommended):**
+- Combine top-down and bottom-up for balanced planning
+- Strategic items funded top-down
+- Operational items allocated bottom-up
+- Balance between strategic direction and operational reality
 
 ### Field Settings Configuration
 
-Fine-tune how the Budgetary Module operates through Field Settings.
+Fine-tune how the module operates through Field Settings.
 
 **Navigate to**: Settings → Field Settings → Budget Item Settings
 
@@ -613,6 +851,8 @@ Fine-tune how the Budgetary Module operates through Field Settings.
 - Budget overage tolerance (allow 5% overage before hard stop)
 - Warning thresholds (alert at 80% utilization)
 - Approval limits for virements and adjustments
+
+For detailed configuration procedures, see the **[Configuration & Setup section](/applets/budget-applet/#configuration--setup)** in the Budget Applet documentation.
 
 ## Best Practices
 
@@ -678,7 +918,7 @@ Leadership sets budget limits, departments plan within constraints.
 - Lower departmental buy-in
 - Can suppress innovation and initiative
 
-#### 3. Hybrid Approach
+#### 3. Hybrid Approach (Recommended)
 
 Combine bottom-up and top-down for balanced planning.
 
@@ -715,9 +955,7 @@ Combine bottom-up and top-down for balanced planning.
 
 ### Budget Control and Governance
 
-Establishing clear control mechanisms ensures budget discipline throughout the year.
-
-#### 1. Approval Hierarchy
+#### Approval Hierarchy
 
 Define clear authorization limits for budget-impacting transactions.
 
@@ -737,9 +975,6 @@ Define clear authorization limits for budget-impacting transactions.
 | Minor Reduction | < RM 10,000 | Finance Manager | 2 days |
 | Significant Reduction | RM 10,000 - RM 100,000 | Finance Director | 1 week |
 | Major Reduction | > RM 100,000 | CFO + Board | Board meeting cycle |
-| **Over-Budget Transactions** |  |  |  |
-| Emergency/Critical | < RM 25,000 | Finance Director (post-approval) | Immediate |
-| Emergency/Critical | > RM 25,000 | CFO (post-approval) | Within 24 hours |
 
 **Customization Considerations:**
 - Adjust amounts based on organizational size
@@ -747,7 +982,7 @@ Define clear authorization limits for budget-impacting transactions.
 - Balance control with operational efficiency
 - Document exceptions process for genuine emergencies
 
-#### 2. Monitoring Schedule
+#### Monitoring Schedule
 
 Regular review cycles keep budgets on track.
 
@@ -791,11 +1026,45 @@ Regular review cycles keep budgets on track.
 | Variance | Actual vs Budget (%) | ±15% |
 | Utilization | YTD spend / Annual budget | >Time elapsed % + 10% |
 
+### Variance Analysis Framework
+
+When reviewing budget reports, use this framework to investigate variances:
+
+| Variance Range | Action Required | Example |
+|---------------|----------------|---------|
+| Within ±5% | Normal variance, no action | Budgeted RM 100k, spent RM 98k |
+| ±5% to ±15% | Review and document explanation | Budgeted RM 100k, spent RM 112k |
+| ±15% to ±25% | Management review and corrective action | Budgeted RM 100k, spent RM 122k |
+| > ±25% | Immediate escalation and intervention | Budgeted RM 100k, spent RM 140k |
+
+**Creating Effective Budget Narratives:**
+
+Good budget reports include written commentary, not just numbers:
+
+```
+Example Variance Narrative:
+
+Budget Item: IT Software Licenses
+Budgeted: RM 80,000
+Actual: RM 105,000
+Variance: RM 25,000 unfavorable (31% over)
+
+Explanation: Mid-year addition of 50 new users required expanding
+enterprise license count. Additionally, vendor eliminated volume
+discount tier, increasing per-seat cost 12%. These factors were
+not anticipated in original budget.
+
+Corrective Action: Negotiating multi-year contract to restore
+volume pricing. Implementing software asset management tool to
+optimize license utilization. Requesting budget adjustment of
+RM 30,000 for remainder of fiscal year.
+```
+
 ### Performance Optimization
 
 As your budgetary data grows, optimize performance to maintain system responsiveness.
 
-#### 1. Data Archiving Strategy
+#### Data Archiving Strategy
 
 Prevent database bloat while maintaining historical access.
 
@@ -808,20 +1077,13 @@ Prevent database bloat while maintaining historical access.
 | 2-7 years prior | Archive database | Full detail, slower access acceptable |
 | > 7 years | Compressed archive | Summary data + detail on request |
 
-**Archive Process:**
-1. At fiscal year-end + 2 years, archive transactions
-2. Maintain summary balances in primary system
-3. Store detail in archive database
-4. Provide archive query tool for historical research
-5. Backup archives to compliant long-term storage
-
 **Benefits:**
 - Faster primary system performance
 - Reduced backup windows
 - Lower storage costs (compressed archives)
 - Maintained compliance with retention policies
 
-#### 2. Reporting Efficiency
+#### Reporting Efficiency
 
 Large budget reports can strain system resources.
 
@@ -834,7 +1096,7 @@ Large budget reports can strain system resources.
 - Filter by budget item (specific category vs entire catalog)
 
 **Schedule Large Reports:**
-- Run comprehensive reports during off-peak hours (nights, weekends)
+- Run comprehensive reports during off-peak hours
 - Schedule recurring reports to run automatically
 - Cache frequently-used reports
 - Use incremental refresh for dashboards
@@ -845,20 +1107,13 @@ Large budget reports can strain system resources.
 - Don't perform complex calculations in the live system
 - Leverage data warehouse for historical trending
 
-**Report Performance Tips:**
-
-| Report Type | Best Practice | Avoid |
-|------------|--------------|-------|
-| Executive Dashboard | Last 12 months, summary level | 5+ years of transaction detail |
-| Variance Analysis | Current fiscal year, monthly granularity | Daily transaction detail |
-| Audit Trail | Specific date range, filtered by user/item | Unfiltered all-time history |
-| Trending | Summarized by period, key metrics only | Full transaction replay |
+For additional best practices, see the **[Best Practices section](/applets/budget-applet/#best-practices)** in the Budget Applet documentation.
 
 ## Integration
 
 ### ERP Module Integration
 
-The Budgetary Module serves as the financial control layer across the entire BigLedger ecosystem.
+The Budgetary Management Module serves as the financial control layer across the entire BigLedger ecosystem.
 
 **Financial Accounting Integration:**
 - Budget vs actual variance reporting
@@ -893,11 +1148,11 @@ The Budgetary Module serves as the financial control layer across the entire Big
 **Integration Benefits:**
 
 {{< cards >}}
-  {{< card title="Single Source of Truth" subtitle="One budget system across entire organization" >}}
+  {{< card title="Single Source of Truth" subtitle="One budget system across entire organization—no reconciliation needed" >}}
 
-  {{< card title="Real-Time Control" subtitle="Budget validation at transaction creation" >}}
+  {{< card title="Real-Time Control" subtitle="Budget validation at transaction creation prevents overspending automatically" >}}
 
-  {{< card title="Comprehensive Reporting" subtitle="Complete budget vs actual across all modules" >}}
+  {{< card title="Comprehensive Reporting" subtitle="Complete budget vs actual across all modules in unified reports" >}}
 {{< /cards >}}
 
 ### External Systems Integration
@@ -911,7 +1166,7 @@ Import budget data and export for consolidation with external systems.
 - Bulk create budget items and categories
 
 **Budget Data Export:**
-- Export to financial planning tools (Adaptive Insights, Anaplan, etc.)
+- Export to financial planning tools (Adaptive Insights, Anaplan)
 - Integration with consolidation systems (Oracle Hyperion, SAP BPC)
 - Synchronization with corporate reporting platforms
 - Data feeds to data warehouses for analytics
