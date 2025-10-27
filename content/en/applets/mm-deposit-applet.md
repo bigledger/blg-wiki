@@ -77,6 +77,10 @@ Menu source: app/models/menu-items.ts.
   - SAVE: available when the form is valid and user has permission.
   - FINAL: uses the exact same disable rule as SAVE.
 
+{{< figure src="/screenshots/deposit-applet/mm-deposit-requisition-listing.png" alt="MM Deposit Requisition listing with formatted numeric columns and filters" caption="MM Deposit Requisition listing: right‑aligned numeric columns with thousands separators and two‑decimal precision." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-requisition-edit.png" alt="Edit MM Deposit Requisition form with required fields and interest logic controls" caption="Edit MM Deposit Requisition: required fields, GL/Currency consistency, and interest logic (fixed vs floating)." >}}
+
 ### Customer Management (Select / Create / Edit)
 
 - Select existing customer from the left panel with search, column filters, and column chooser.
@@ -90,6 +94,8 @@ Menu source: app/models/menu-items.ts.
 
 {{< figure src="/screenshots/deposit-applet/customer-edit.png" alt="Customer Edit form showing core attributes like Entity Type, Status, Currency" caption="Customer Edit: update core attributes; Save keeps the selection associated with the current requisition." >}}
 
+{{< figure src="/screenshots/deposit-applet/select-customer.png" alt="Selector grid demonstrating search and filtering behavior consistent with app listings" caption="Selector grid example: search, filters, and column chooser consistent with app‑wide listing UX." >}}
+
 ### Invitee Flow (within Requisition)
 
 - Add Invitee form: only Entity Name, Email Address, Winner enabled; all others disabled including Term (Days).
@@ -99,6 +105,12 @@ Menu source: app/models/menu-items.ts.
 {{< callout type="info" >}}
 When a requisition is finalized (FINAL), the system automatically emails all invitees with a secure link to submit their offers. This ensures a consistent, auditable collection of quotations tied to the finalized requisition.
 {{< /callout >}}
+
+{{< figure src="/screenshots/deposit-applet/add-invitee.png" alt="Add Invitee modal with only Entity Name, Email, and Winner enabled" caption="Add Invitee: only Entity Name, Email Address, and optional Winner are editable; other fields are locked to preserve requisition data." >}}
+
+{{< figure src="/screenshots/deposit-applet/quotation-form.png" alt="External quotation submission form for invitees" caption="Quotation Form: invitees receive an email link after FINAL to submit offers securely." >}}
+
+{{< figure src="/screenshots/deposit-applet/invite-email.png" alt="Sample invite email sent to deposit participants with key details and a secure submission link" caption="Invitee Email: includes deposit name/code, principal, tenure, start/end dates, interest type/calculation, payout frequency, currency, and an expiring link for quotation submission with deadline." >}}
 
 ### MM Deposit Register
 
@@ -112,10 +124,28 @@ When a requisition is finalized (FINAL), the system automatically emails all inv
 Select Requisition lets you pick a previously APPROVED/FINAL requisition and bring its details into the Register. When a Register entry is finalized (FINAL), the system auto‑creates the relevant transactions (e.g., Placement, periodic Interest, Inflation adjustments, Compounds). You can perform manual Rollovers and immediately see the rolled‑over status; Auto Rollover can be enabled to keep rolling on schedule until explicitly stopped.
 {{< /callout >}}
 
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-listing.png" alt="MM Deposit Register listing with principal, rates and effective rates columns" caption="MM Deposit Register listing: posting status, dates, principal, Interest Rate and Effective Rate columns with two‑decimal formatting." >}} 
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-details.png" alt="Edit MM Deposit Register details screen with Select Requisition button" caption="Register Details: includes Select Requisition to import an approved requisition; fields follow the same validation and formatting rules as Requisition." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-transactions.png" alt="Transactions tab showing Placement, Interest, Inflation, and Compound entries" caption="Transactions: after FINAL, the system auto‑creates Placement and periodic transactions (Interest, Inflation, Compound)." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-listing-transactions.png" alt="Side‑by‑side listing and transactions view" caption="Listing + Transactions side‑by‑side for quick verification after posting." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-rollover.png" alt="Rollover tab showing rolled‑over entries" caption="Rollover: perform manual rollover and see rolled‑over status; Auto Rollover can be enabled to repeat until stopped." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-details-modal.png" alt="Deposit Register Details modal with computed maturity and transaction list" caption="Register Details modal: summary of key fields and a paginated list of generated transactions." >}}
+
 ### MM Deposit Category
 
 - Maintain category code, name, description, and status.
 - Inactive categories are hidden from pickers to preserve data integrity.
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-category-listing.png" alt="MM Deposit Category listing with code, name, posting status, created/updated dates, and status" caption="Category Listing: manage deposit categories with filters for Code, Name, Posting Status, Created/Updated dates, and Status." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-category-create.png" alt="Create MM Deposit Category form with required fields and read-only audit fields" caption="Category Create: enter Category Name, Category Code, Description; audit fields (Created/Modified by/date) are read-only and auto-filled." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-category-edit.png" alt="Edit MM Deposit Category screen showing Status and Delete action" caption="Category Edit: update Status (e.g., ACTIVE/INACTIVE). Inactive categories are hidden from requisition/register pickers." >}}
 
 ## Data Models (conceptual)
 
@@ -214,45 +244,6 @@ Locations (selected)
 - FINAL enabled while SAVE disabled:
   - FINAL now uses the exact same condition as SAVE.
 
-## Screenshots
-
-{{< callout type="tip" >}}
-Place image files in `static/screenshots/deposit-applet/` using the filenames below. Once added, they will be served at `/screenshots/deposit-applet/...` and render automatically.
-{{< /callout >}}
-
-{{< figure src="/screenshots/deposit-applet/mm-deposit-requisition-listing.png" alt="MM Deposit Requisition listing with formatted numeric columns and filters" caption="MM Deposit Requisition listing: right‑aligned numeric columns with thousands separators and two‑decimal precision." >}}
-
-{{< figure src="/screenshots/deposit-applet/mm-deposit-requisition-edit.png" alt="Edit MM Deposit Requisition form with required fields and interest logic controls" caption="Edit MM Deposit Requisition: required fields, GL/Currency consistency, and interest logic (fixed vs floating)." >}}
-
-{{< figure src="/screenshots/deposit-applet/quotation-form.png" alt="External quotation submission form for invitees" caption="Quotation Form: invitees receive an email link after FINAL to submit offers securely." >}}
-
-{{< figure src="/screenshots/deposit-applet/invite-email.png" alt="Sample invite email sent to deposit participants with key details and a secure submission link" caption="Invitee Email: includes deposit name/code, principal, tenure, start/end dates, interest type/calculation, payout frequency, currency, and an expiring link for quotation submission with deadline." >}}
-
-{{< figure src="/screenshots/deposit-applet/add-invitee.png" alt="Add Invitee modal with only Entity Name, Email, and Winner enabled" caption="Add Invitee: only Entity Name, Email Address, and optional Winner are editable; other fields are locked to preserve requisition data." >}}
-
-{{< figure src="/screenshots/deposit-applet/select-customer.png" alt="Selector grid demonstrating search and filtering behavior consistent with app listings" caption="Selector grid example: search, filters, and column chooser consistent with app‑wide listing UX." >}}
-
-### MM Deposit Register – Screens
-
-{{< figure src="/screenshots/deposit-applet/mm-deposit-register-listing.png" alt="MM Deposit Register listing with principal, rates and effective rates columns" caption="MM Deposit Register listing: posting status, dates, principal, Interest Rate and Effective Rate columns with two‑decimal formatting." >}}
-
-{{< figure src="/screenshots/deposit-applet/mm-deposit-register-details.png" alt="Edit MM Deposit Register details screen with Select Requisition button" caption="Register Details: includes Select Requisition to import an approved requisition; fields follow the same validation and formatting rules as Requisition." >}}
-
-{{< figure src="/screenshots/deposit-applet/mm-deposit-register-transactions.png" alt="Transactions tab showing Placement, Interest, Inflation, and Compound entries" caption="Transactions: after FINAL, the system auto‑creates Placement and periodic transactions (Interest, Inflation, Compound)." >}}
-
-{{< figure src="/screenshots/deposit-applet/mm-deposit-register-listing-transactions.png" alt="Side‑by‑side listing and transactions view" caption="Listing + Transactions side‑by‑side for quick verification after posting." >}}
-
-{{< figure src="/screenshots/deposit-applet/mm-deposit-register-rollover.png" alt="Rollover tab showing rolled‑over entries" caption="Rollover: perform manual rollover and see rolled‑over status; Auto Rollover can be enabled to repeat until stopped." >}}
-
-{{< figure src="/screenshots/deposit-applet/mm-deposit-register-details-modal.png" alt="Deposit Register Details modal with computed maturity and transaction list" caption="Register Details modal: summary of key fields and a paginated list of generated transactions." >}}
-
-### MM Deposit Category – Screens
-
-{{< figure src="/screenshots/deposit-applet/mm-deposit-category-listing.png" alt="MM Deposit Category listing with code, name, posting status, created/updated dates, and status" caption="Category Listing: manage deposit categories with filters for Code, Name, Posting Status, Created/Updated dates, and Status." >}}
-
-{{< figure src="/screenshots/deposit-applet/mm-deposit-category-create.png" alt="Create MM Deposit Category form with required fields and read-only audit fields" caption="Category Create: enter Category Name, Category Code, Description; audit fields (Created/Modified by/date) are read-only and auto-filled." >}}
-
-{{< figure src="/screenshots/deposit-applet/mm-deposit-category-edit.png" alt="Edit MM Deposit Category screen showing Status and Delete action" caption="Category Edit: update Status (e.g., ACTIVE/INACTIVE). Inactive categories are hidden from requisition/register pickers." >}}
 
 ## Files of Interest (selection)
 
