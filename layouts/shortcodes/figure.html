@@ -1,0 +1,12 @@
+{{ $src := .Get "src" }}
+{{ $alt := .Get "alt" }}
+{{ $caption := .Get "caption" }}
+
+<figure class="blg-figure">
+  <img src="{{$src}}" alt="{{$alt}}"
+       loading="lazy"
+       onerror="this.onerror=null;this.src='/placeholders/coming-soon.svg';" />
+  {{- if $caption -}}
+  <figcaption>{{$caption}}</figcaption>
+  {{- end -}}
+</figure>
