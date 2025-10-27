@@ -148,7 +148,20 @@ The Accounting Module delivers:
 **Used by**: Treasury and finance teams
 **Documentation**: [TODO: Cash Flow Management Applet](/applets/cash-flow-management-applet/) - *Documentation pending*
 
-### 12. Petty Cash Management Applet
+### 12. Money Market Deposit Applet (Treasury)
+**Purpose**: Money‑market deposit intake, approval, and lifecycle management
+
+- Requisition workflow with invitee emailing on FINAL
+- Invitee portal submissions saved to Invitee tab; select Winner
+- Interest handling: FIXED or FLOATING (ref value + delta → effective rate)
+- Deposit Register finalization auto‑generates placement/interest/maturity transactions
+- Auto and manual rollover to create next‑cycle registers (principal only / principal + interest / compound)
+- Consistent listings (thousands separators, 2 decimals), SAVE/FINAL parity, full audit trail
+
+**Used by**: Treasury and Finance Controllers
+**Documentation**: [Deposit Applet](/applets/mm-deposit-applet/)
+
+### 13. Petty Cash Management Applet
 **Purpose**: Small cash transaction management
 - Cash float management
 - Expense reimbursement
@@ -161,7 +174,7 @@ The Accounting Module delivers:
 
 ## Asset Management Transaction Applets
 
-### 13. Fixed Asset Transaction Applet
+### 14. Fixed Asset Transaction Applet
 **Purpose**: Fixed asset lifecycle transaction processing
 - Asset acquisition processing
 - Depreciation calculation
@@ -172,7 +185,7 @@ The Accounting Module delivers:
 **Used by**: Asset managers and accounting teams
 **Documentation**: [TODO: Fixed Asset Transaction Applet](/applets/fixed-asset-transaction-applet/) - *Documentation pending*
 
-### 14. Inventory Valuation Applet
+### 15. Inventory Valuation Applet
 **Purpose**: Inventory costing and valuation transactions
 - Cost layer management
 - Valuation method processing
@@ -185,7 +198,7 @@ The Accounting Module delivers:
 
 ## Cost Accounting Transaction Applets
 
-### 15. Cost Center Allocation Applet
+### 16. Cost Center Allocation Applet
 **Purpose**: Cost center and department cost allocation
 - Allocation rule processing
 - Step-down allocations
@@ -196,7 +209,7 @@ The Accounting Module delivers:
 **Used by**: Cost accountants and managers
 **Documentation**: [TODO: Cost Center Allocation Applet](/applets/cost-center-allocation-applet/) - *Documentation pending*
 
-### 16. Project Cost Tracking Applet
+### 17. Project Cost Tracking Applet
 **Purpose**: Project-based cost accumulation and reporting
 - Project cost capture
 - Time and expense allocation
@@ -209,7 +222,7 @@ The Accounting Module delivers:
 
 ## Tax and Compliance Transaction Applets
 
-### 17. Tax Transaction Processing Applet
+### 18. Tax Transaction Processing Applet
 **Purpose**: Tax calculation and reporting transactions
 - Multi-jurisdiction tax processing
 - Tax return preparation
@@ -220,7 +233,7 @@ The Accounting Module delivers:
 **Used by**: Tax professionals and compliance teams
 **Documentation**: [TODO: Tax Transaction Processing Applet](/applets/tax-transaction-processing-applet/) - *Documentation pending*
 
-### 18. Regulatory Reporting Applet
+### 19. Regulatory Reporting Applet
 **Purpose**: Statutory and regulatory report generation
 - Financial statement preparation
 - Regulatory filing support
@@ -233,7 +246,7 @@ The Accounting Module delivers:
 
 ## Inter-Company Transaction Applets
 
-### 19. Inter-Company Transaction Processing Applet
+### 20. Inter-Company Transaction Processing Applet
 **Purpose**: Multi-entity transaction processing and elimination
 - Inter-company billing
 - Transfer pricing
@@ -244,7 +257,7 @@ The Accounting Module delivers:
 **Used by**: Corporate accounting teams
 **Documentation**: [TODO: Inter-Company Transaction Processing Applet](/applets/intercompany-transaction-processing-applet/) - *Documentation pending*
 
-### 20. Consolidation Processing Applet
+### 21. Consolidation Processing Applet
 **Purpose**: Multi-entity financial consolidation
 - Automated consolidation
 - Minority interest calculation
@@ -257,7 +270,7 @@ The Accounting Module delivers:
 
 ## Budgeting and Planning Transaction Applets
 
-### 21. Budget Transaction Processing Applet
+### 22. Budget Transaction Processing Applet
 **Purpose**: Budget creation, management, and variance processing
 - Budget preparation workflows
 - Version control management
@@ -268,7 +281,7 @@ The Accounting Module delivers:
 **Used by**: Budget analysts and managers
 **Documentation**: [TODO: Budget Transaction Processing Applet](/applets/budget-transaction-processing-applet/) - *Documentation pending*
 
-### 22. Forecast Processing Applet
+### 23. Forecast Processing Applet
 **Purpose**: Financial forecasting and planning transactions
 - Rolling forecasts
 - Scenario planning
@@ -281,7 +294,7 @@ The Accounting Module delivers:
 
 ## Advanced Financial Transaction Applets
 
-### 23. Foreign Exchange Transaction Applet
+### 24. Foreign Exchange Transaction Applet
 **Purpose**: Multi-currency transaction processing and hedging
 - Currency conversion processing
 - Hedge accounting
@@ -292,7 +305,7 @@ The Accounting Module delivers:
 **Used by**: Treasury and international accounting teams
 **Documentation**: [TODO: Foreign Exchange Transaction Applet](/applets/foreign-exchange-transaction-applet/) - *Documentation pending*
 
-### 24. Revenue Recognition Applet
+### 25. Revenue Recognition Applet
 **Purpose**: Complex revenue recognition transaction processing
 - Multi-element arrangements
 - Contract modification handling
@@ -303,7 +316,7 @@ The Accounting Module delivers:
 **Used by**: Revenue accountants and controllers
 **Documentation**: [TODO: Revenue Recognition Applet](/applets/revenue-recognition-applet/) - *Documentation pending*
 
-### 25. Lease Accounting Applet
+### 26. Lease Accounting Applet
 **Purpose**: Lease transaction processing and compliance
 - Lease classification
 - Right-of-use asset processing

@@ -1,160 +1,279 @@
 ---
 title: "Deposit Applet"
-description: "Integrated lifecycle management for money-market deposit requisitions, registers, and categories with controlled approvals"
-draft: false
-weight: 45
+description: "Integrated lifecycle management for money‑market deposit requisitions, live registers, and categories with controlled approvals and consistent formatting"
 tags:
-  - treasury-operations
-  - deposit-management
-  - cash-investment
-  - interest-tracking
-  - financial-controls
-sidebar:
-  enable: true
-  fold: false
-toc:
-  enable: true
+- treasury-operations
+- deposit-management
+- interest-tracking
+- approval-workflow
+- financial-controls
+weight: 45
 ---
 
 ## Purpose and Overview
 
-The Deposit Applet unifies intake, approval, and tracking of corporate deposits. Treasury teams capture requisitions, monitor active placements, and maintain category structures in one workspace, improving compliance and visibility across short-term investments.
+The Deposit Applet centralizes short‑term cash placement activities: raising MM deposit requisitions, managing approved placements, and maintaining category metadata. It enforces form validation, rate logic, and permissioned state changes (SAVE vs FINAL), while keeping listings consistent and export‑ready.
 
 {{< callout type="info" >}}
-Core Coverage: MM Deposit Requisition (request pipeline), MM Deposit Register (live placements), and MM Deposit Category (classification and reporting backbone).
+This applet exposes three menus: MM Deposit Requisition, MM Deposit Register, and MM Deposit Category. Together they cover request→approval→lifecycle management.
 {{< /callout >}}
 
-## Who Benefits?
+## Primary Menus
 
-### Treasury Managers
-- Validate rates, maturities, and currencies before funds are placed.
-- Monitor outstanding deposits and rollover decisions in real time.
-- Enforce segregation of duties with SAVE/FINAL state control.
+- MM Deposit Requisition
+  - Create/edit requisitions, invite counterparties, validate inputs.
+  - Save/Final state control; FINAL disables whenever SAVE is disabled.
+- MM Deposit Register
+  - View and edit live placements once approved/finalized.
+  - Same interest logic and formatting as requisitions.
+- MM Deposit Category
+  - Maintain deposit groupings for downstream reporting.
 
-### Finance Controllers
-- Ensure GL codes, currencies, and company mappings stay consistent.
-- Export listings with formatted figures for month-end packages.
-- Track audit data (created/updated by + timestamps) automatically.
+Menu source: app/models/menu-items.ts.
 
-### Investment Analysts
-- Compare negotiated rates vs. effective floating rates.
-- Evaluate terms, payout frequencies, and maturity ladders.
-- Maintain invitee records for competitive bidding rounds.
+## User Roles and Benefits
 
-## Key Problems Solved
+- Treasury Manager: prepare/approve placements, compare fixed vs floating offers, manage rollovers.
+- Finance Controller: ensure GL and currency integrity, standardized rounding, audit trail.
+- Analyst: review rate effectiveness and term ladders; export consistent listings.
 
-| Challenge | Traditional Pain Point | Applet Resolution |
-|---|---|---|
-| Disconnected requests | Spreadsheet approvals, stale GL data | Structured form with validation, company-driven GL loading |
-| Rate accuracy | Manual rounding errors, misaligned ref rates | Two-decimal formatting, floating rate auto-computation |
-| Traceability gaps | Hard to prove who approved what | SAVE/FINAL linkage, user/time audit trail |
-| Vendor invitee chaos | Email threads with inconsistent info | Invitee sub-flow with locked fields and clean listings |
+## Key Behaviors and Business Rules
 
-## Feature Overview
+1) Validation and Permissions
+- Required fields drive SAVE availability; FINAL is disabled whenever SAVE is disabled (same condition).
+- Read‑only audit fields (Created/Updated by and dates) remain locked.
 
-{{< cards >}}
-{{< card title="Deposit Requisition" subtitle="Capture, validate, and approve new placements" >}}
-{{< card title="Invitee Management" subtitle="Record participant offers with fixed inputs" >}}
-{{< card title="Deposit Register" subtitle="Maintain active placements and audit history" >}}
-{{< card title="Category Administration" subtitle="Define deposit types for reporting" >}}
-{{< card title="Formatted Listings" subtitle="Thousands separators and 2-decimal precision" >}}
-{{< card title="Lifecycle Controls" subtitle="SAVE/FINAL synchronization and state locks" >}}
-{{< /cards >}}
+2) Interest Logic (Mutual Exclusivity)
+- FIXED: user edits Interest Rate (%); Interest Rate Effective is cleared (null).
+- FLOATING: user edits Reference Value and Delta; system disables Interest Rate and recomputes Effective; Interest Rate stays null.
+- Programmatic patches round to two decimals to prevent floating‑point artifacts.
 
-## Key Concepts
+3) GL Code and Currency Consistency
+- Currency list preloads; GL Code list loads by Company.
+- GL Code remains selected when navigating between Details and Invitee tabs (persisted and re‑patched safely).
 
-### Three-Menu Structure
-- Requisition: Draft to FINAL workflow with interest logic (Fixed vs Floating). Invitee tab restricts editing to Entity Name, Email, and Winner.
-- Register: Approved deposits with GL, currency, interest, and duration tracking. Mutual exclusivity enforced between Interest Rate and Effective Rate.
-- Category: Maintains reusable deposit groupings to standardize downstream reporting.
+4) Invitee Entry Constraints
+- Only three controls are editable: Entity Name (required), Email Address (required), Winner (optional).
+- All other fields—including Term (Days)—are disabled to ensure data parity with the requisition.
 
-### Interest Calculation Logic
+5) Unified Formatting
+- Amounts: thousands separators with 2 decimals.
+- Interest rates: always 2 decimals.
+- Right‑aligned numeric columns across all listings.
+- Dates: YYYY‑MM‑DD.
 
-| Mode | Editable Fields | Auto-Null Behaviour | Output |
-|---|---|---|---|
-| FIXED | Interest Rate (%) | Clears Interest Rate Effective | Uses entered rate |
-| FLOATING | Reference Value + Delta | Disables Interest Rate, auto-computes Effective | Displays 2-decimal effective rate |
+## Screens and Workflows
 
-## Menu Workflows in Detail
+### MM Deposit Requisition
 
-### 1. MM Deposit Requisition
+- Header fields: Deposit Name, Deposit Code, Company, GL Code, Currency, Amount Initial Deposit, Amount Upon Maturity, Interest Type, Interest Payout Frequency, Interest Calculation, Interest Convert to Principal, Start/End dates.
+- Interest rules:
+  - FIXED: Interest Rate is required, Interest Rate Effective = null.
+  - FLOATING: provide Ref Value + Ref Delta; Interest Rate = null and disabled; Effective auto‑computed.
+- Navigation:
+  - Details tab (main form) ↔ Invitee tab (counterparty offers).
+  - On return to Details, GL Code is re‑applied even if control was previously disabled.
+- Actions:
+  - SAVE: available when the form is valid and user has permission.
+  - FINAL: uses the exact same disable rule as SAVE.
 
-#### Create Draft
-- Required: Company, GL Code, Currency, Amount Initial Deposit, Interest Type, Interest Calculation, Payout Frequency, Start/End Dates.
-- Currency list preloads with search; GL Code stays patched even after Invitee tab navigation.
+### Customer Management (Select / Create / Edit)
 
-#### Interest Entry
-- FIXED: enter Interest Rate (auto-formatted to 2 decimals).
-- FLOATING: enter Reference Value/Delta; Interest Rate becomes null and disabled, Effective Rate recalculated.
+- Select existing customer from the left panel with search, column filters, and column chooser.
+- Create/Edit mode opens on the right panel:
+  - Core fields: Customer Name, Customer Code, Entity Type, Status, Company Registration, Date of Incorporation, Tax Category, Country, Currency, AR/AP Type, Email, Phone Number.
+  - Required fields are marked with “*”.
+  - Save creates a new customer or updates the selected one and keeps the selection bound to the requisition.
+- The selector supports quick switching between records; grid shows 10+ rows with pagination.
 
-#### Invitee Tab
-- Only Entity Name, Email Address (required) and Winner (optional) enabled.
-- Term (Days) and monetary fields disabled to preserve originating requisition data.
-- Listing mirrors Sales Invoice listing style: currency, amounts, rates, dates, all two-decimal and comma formatted.
+{{< figure src="/screenshots/deposit-applet/customer-create.png" alt="Create Customer form next to the Select Customer listing" caption="Customer Create: search and select on the left; create a new customer on the right when none fits." >}}
 
-#### SAVE vs FINAL
-- FINAL button shares the exact disabled condition as SAVE (invalid form, missing permissions, or ongoing calculations).
-- Audit fields (Created/Updated by & dates) auto-populate and remain read-only.
+{{< figure src="/screenshots/deposit-applet/customer-edit.png" alt="Customer Edit form showing core attributes like Entity Type, Status, Currency" caption="Customer Edit: update core attributes; Save keeps the selection associated with the current requisition." >}}
 
-### 2. MM Deposit Register
+### Invitee Flow (within Requisition)
 
-#### Listing
-- Amount Initial Deposit, Amount Upon Maturity, and Estimated Interest columns show comma-separated values with two decimals.
-- Right-aligned numeric columns for readability.
+- Add Invitee form: only Entity Name, Email Address, Winner enabled; all others disabled including Term (Days).
+- Listing columns (aligned with requisition listing) show: Deposit Name/Code, Currency, Interest Type, Interest Rate, Interest Rate Effective, Amount Initial Deposit, Amount Upon Maturity, Start/End dates, and Actions.
+- Numeric fields display two decimals; dates show in YYYY‑MM‑DD.
 
-#### Edit Entry
-- Form inherits the mutual exclusivity rules: switching logic toggles rate fields automatically.
-- On load, Interest Rate values are rounded and formatted immediately to avoid display artifacts.
-- SAVE/FINAL disable state synced with form validity and calculation flags.
+{{< callout type="info" >}}
+When a requisition is finalized (FINAL), the system automatically emails all invitees with a secure link to submit their offers. This ensures a consistent, auditable collection of quotations tied to the finalized requisition.
+{{< /callout >}}
 
-#### Lifecycle Controls
-- GL Code patching persists across navigation.
-- Duration in days auto-computed from start/end dates and stored read-only.
+### MM Deposit Register
 
-### 3. MM Deposit Category
+- Listing mirrors requisition formatting: thousands separators, two decimals, right‑aligned numeric columns.
+- Edit form inherits the same interest rules and rounding/formatting:
+  - Switching to FLOATING nulls and disables Interest Rate; Effective recomputed from Ref Value + Delta.
+  - Switching to FIXED clears Effective and enables Interest Rate.
+- SAVE/FINAL parity maintained.
 
-#### Catalog Maintenance
-- Add/edit category code, name, description, and status.
-- Inactive categories excluded from requisition/register pickers.
+{{< callout type="info" >}}
+Select Requisition lets you pick a previously APPROVED/FINAL requisition and bring its details into the Register. When a Register entry is finalized (FINAL), the system auto‑creates the relevant transactions (e.g., Placement, periodic Interest, Inflation adjustments, Compounds). You can perform manual Rollovers and immediately see the rolled‑over status; Auto Rollover can be enabled to keep rolling on schedule until explicitly stopped.
+{{< /callout >}}
 
-#### Governance
-- Single source for deposit type metadata, ensuring consistent reporting mappings.
+### MM Deposit Category
 
-## Listings & Formatting Consistency
+- Maintain category code, name, description, and status.
+- Inactive categories are hidden from pickers to preserve data integrity.
 
-Sales Invoice Listing (Requisition list) and Invitee Listing share:
+## Data Models (conceptual)
 
-- Deposit Name/Code, Currency, Interest Type, Rate, Effective Rate, Amount Initial/Maturity, Start/End dates, Actions.
-- Numeric columns formatted via toLocaleString with `{ minimumFractionDigits: 2 }`.
-- Date columns rendered as `YYYY-MM-DD`.
+Requisition Header (selected fields)
+- code, depName, company, gl_code_guid, currency, deposit_amount, maturity_amount
+- interest_type, interest_payout_frequency, interest_calculation_logic
+- interest_rate (fixed) OR interest_rate_effective (floating)
+- interest_ref_type, interest_rate_ref_source, interest_rate_ref_value, interest_rate_ref_delta
+- deposit_start_date, maturity_end_date, duration_in_days
+- created_by/updated_by, created_date/updated_date
 
-Deposit Register Listing follows identical formatting conventions, enabling straightforward comparisons.
+Invitee Row (common columns)
+- entity_name, email, winner
+- currency, deposit_amount, maturity_amount
+- interest_type, interest_rate, interest_rate_effective
+- deposit_start_date, maturity_end_date
+- created_date, updated_date
 
-## Demo Flow Summary
+Register Row (live placement)
+- company, currency, gl_code, deposit_amount, maturity_amount
+- interest calculation fields (respecting exclusivity)
+- start/end dates, auto‑rollover logic (if used)
+- audit fields
 
-| Step | Action | Outcome |
-|---:|---|---|
-| 1 | Open MM Deposit Requisition → Create | Draft requisition with validated fields |
-| 2 | Switch to FLOATING logic | Interest Rate disabled, Effective computed |
-| 3 | Add Invitee | Minimal editable fields, consistent listing |
-| 4 | Return to Details | GL Code and Currency remain patched |
-| 5 | Submit FINAL | Button enabled only when SAVE eligible |
-| 6 | Navigate to MM Deposit Register | View formatted listing and edit mutual-exclusive rates |
-| 7 | Review MM Deposit Category | Maintain reporting classifications |
+## Listings
 
-## Implementation Notes
+Shared behaviors
+- AG Grid with column filters and column chooser.
+- Numeric formatters:
+  - Amounts: toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  - Rates: number → fixed(2)
+- Date renderers: YYYY‑MM‑DD.
+- Right‑aligned styles for numeric columns.
 
-- Form control disabling executed immediately after initialization, ensuring readonly fields visually and functionally locked.
-- Interest formatting uses `formatNumberField` / `formatDisplayNumber` helper with two-decimal rounding at patch time to prevent floating-point artifacts.
-- Currency service loads on component init and stores results locally, guaranteeing dropdown availability even for new drafts.
-- Session storage fallback preserves GL selection between invitee navigation events.
+Locations (selected)
+- Requisition listing: components/sales-invoice-container/sales-invoice-listing/
+- Invitee listing: components/sales-invoice-container/sales-invoice-create/invitee/
+- Register listing: components/line-items-container/deposit-register-listing/
 
-## Supporting Resources
+## Form Architecture
 
-- Source Structure: `projects/wavelet-erp/applets/deposit-applet/src/app/components/...`
-- State Controllers: Deposit requisition/register controllers manage store synchronization.
-- Shared Utilities: Number formatting helpers in main details components ensure uniform presentation.
+- Angular Reactive Forms with FormGroup controls.
+- Required validators on core fields (e.g., depName, compContainer, glCodeContainer, currencyContainer, amounts, dates).
+- Control enable/disable toggled by interest logic and invitee restrictions.
+- Immediate two‑decimal rounding when patching Interest Rate and Effective Rate to avoid “5.0000000000…” artifacts.
 
+## State & Services
+
+- Controllers coordinate data retrieval and view models:
+  - state-controllers/deposit-requisition-controller/
+  - state-controllers/deposit-register-controller/
+  - state-controllers/deposit-category-controller/
+- Services perform API calls (REST):
+  - services/sales-invoice-pages.service.ts (requisition)
+  - services/line-items-pages.service.ts (line items/register)
+- Permission resolver guards route access: resolver/permission.resolver.ts.
+
+## SAVE/FINAL Governance
+
+- FINAL button is hard‑linked to SAVE’s disabled state; if the form is invalid or user lacks permission, both are disabled.
+- Long‑running calculations or unresolved dependencies can also disable actions where implemented.
+
+## Demo Script
+
+1) Create Requisition
+- Go to MM Deposit Requisition → “+”.
+- Fill required fields; choose Company to load GL Codes; pick Currency.
+- Customer: use the left panel to search and select an existing customer, or switch to Create/Edit mode to add a new one; Save to bind selection to the requisition.
+- Select Interest Calculation:
+  - FIXED: set Interest Rate; Effective clears to null.
+  - FLOATING: set Ref Value and Delta; Interest Rate disables and nulls; Effective auto‑fills with 2 decimals.
+- Observe SAVE disabled until all required fields are valid; FINAL mirrors SAVE.
+
+2) Add Invitee
+- Switch to Invitee tab → Add Invitee.
+- Only enter Entity Name, Email Address, and optionally Winner; other fields are disabled.
+- Save and confirm listing shows amounts/rates with commas and two decimals; dates in YYYY‑MM‑DD.
+
+3) Return to Details
+- Navigate back; confirm GL Code remains selected and Interest fields retain proper state and rounding.
+- Finalize when ready; notice FINAL enables only when SAVE would enable.
+
+4) Register Review
+- Open MM Deposit Register; view formatted listing.
+- Edit an item: flip between FIXED/FLOATING to see exclusivity and 2‑decimal formatting; SAVE/FINAL parity persists.
+
+5) Category Maintenance
+- Open MM Deposit Category; add/edit a category; set status Active; verify availability in requisition.
+
+## Troubleshooting
+
+- GL Code lost after tab switch:
+  - Ensured control is enabled before patch; selection persisted and re‑applied on return from Invitee.
+- Interest Rate shows many decimals:
+  - Patch‑time rounding to two decimals enforced on Interest Rate and Effective.
+- FINAL enabled while SAVE disabled:
+  - FINAL now uses the exact same condition as SAVE.
+
+## Screenshots
+
+{{< callout type="tip" >}}
+Place image files in `static/screenshots/deposit-applet/` using the filenames below. Once added, they will be served at `/screenshots/deposit-applet/...` and render automatically.
+{{< /callout >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-requisition-listing.png" alt="MM Deposit Requisition listing with formatted numeric columns and filters" caption="MM Deposit Requisition listing: right‑aligned numeric columns with thousands separators and two‑decimal precision." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-requisition-edit.png" alt="Edit MM Deposit Requisition form with required fields and interest logic controls" caption="Edit MM Deposit Requisition: required fields, GL/Currency consistency, and interest logic (fixed vs floating)." >}}
+
+{{< figure src="/screenshots/deposit-applet/quotation-form.png" alt="External quotation submission form for invitees" caption="Quotation Form: invitees receive an email link after FINAL to submit offers securely." >}}
+
+{{< figure src="/screenshots/deposit-applet/invite-email.png" alt="Sample invite email sent to deposit participants with key details and a secure submission link" caption="Invitee Email: includes deposit name/code, principal, tenure, start/end dates, interest type/calculation, payout frequency, currency, and an expiring link for quotation submission with deadline." >}}
+
+{{< figure src="/screenshots/deposit-applet/add-invitee.png" alt="Add Invitee modal with only Entity Name, Email, and Winner enabled" caption="Add Invitee: only Entity Name, Email Address, and optional Winner are editable; other fields are locked to preserve requisition data." >}}
+
+{{< figure src="/screenshots/deposit-applet/select-customer.png" alt="Selector grid demonstrating search and filtering behavior consistent with app listings" caption="Selector grid example: search, filters, and column chooser consistent with app‑wide listing UX." >}}
+
+### MM Deposit Register – Screens
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-listing.png" alt="MM Deposit Register listing with principal, rates and effective rates columns" caption="MM Deposit Register listing: posting status, dates, principal, Interest Rate and Effective Rate columns with two‑decimal formatting." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-details.png" alt="Edit MM Deposit Register details screen with Select Requisition button" caption="Register Details: includes Select Requisition to import an approved requisition; fields follow the same validation and formatting rules as Requisition." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-transactions.png" alt="Transactions tab showing Placement, Interest, Inflation, and Compound entries" caption="Transactions: after FINAL, the system auto‑creates Placement and periodic transactions (Interest, Inflation, Compound)." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-listing-transactions.png" alt="Side‑by‑side listing and transactions view" caption="Listing + Transactions side‑by‑side for quick verification after posting." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-rollover.png" alt="Rollover tab showing rolled‑over entries" caption="Rollover: perform manual rollover and see rolled‑over status; Auto Rollover can be enabled to repeat until stopped." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-details-modal.png" alt="Deposit Register Details modal with computed maturity and transaction list" caption="Register Details modal: summary of key fields and a paginated list of generated transactions." >}}
+
+### MM Deposit Category – Screens
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-category-listing.png" alt="MM Deposit Category listing with code, name, posting status, created/updated dates, and status" caption="Category Listing: manage deposit categories with filters for Code, Name, Posting Status, Created/Updated dates, and Status." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-category-create.png" alt="Create MM Deposit Category form with required fields and read-only audit fields" caption="Category Create: enter Category Name, Category Code, Description; audit fields (Created/Modified by/date) are read-only and auto-filled." >}}
+
+{{< figure src="/screenshots/deposit-applet/mm-deposit-category-edit.png" alt="Edit MM Deposit Category screen showing Status and Delete action" caption="Category Edit: update Status (e.g., ACTIVE/INACTIVE). Inactive categories are hidden from requisition/register pickers." >}}
+
+## Files of Interest (selection)
+
+- Menus: app/models/menu-items.ts
+- Requisition Details: components/sales-invoice-container/sales-invoice-create/main-details/
+- Invitee: components/sales-invoice-container/sales-invoice-create/invitee/
+- Requisition Listing: components/sales-invoice-container/sales-invoice-listing/
+- Register Edit: components/line-items-container/edit-deposit-register/edit-deposit-register-main-details/
+- Register Listing: components/line-items-container/deposit-register-listing/
+- Controllers: app/state-controllers/…
+- Services: app/services/…
+
+## Summary
+
+The Deposit Applet provides an end‑to‑end workflow for MM deposits with:
+- Strict form validation and SAVE/FINAL synchronization
+- Accurate interest handling (fixed vs floating) with enforced exclusivity
+- Robust GL/Currency handling across tab navigation
+- Consistent, export‑ready listings with two‑decimal formatting
+- Clear invitee constraints to preserve data integrity
+- Category administration for standardized reporting
 {{< callout type="success" >}}
-Deliver consistent treasury operations by leveraging the three-menu Deposit Applet: capture requisitions with strict validation, oversee active deposits with accurate interest calculations, and maintain clean category metadata for downstream reporting.
+Use this applet to move from ad‑hoc spreadsheets to a controlled, auditable treasury process with clean data and reliable approvals.
 {{< /callout >}}
