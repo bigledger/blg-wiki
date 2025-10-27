@@ -1,5 +1,5 @@
 ---
-title: "Deposit Applet"
+title: "Money Market Deposit Applet"
 description: "Integrated lifecycle management for money‑market deposit requisitions, live registers, and categories with controlled approvals and consistent formatting"
 tags:
 - treasury-operations
