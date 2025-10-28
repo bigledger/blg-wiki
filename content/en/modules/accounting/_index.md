@@ -159,7 +159,7 @@ The Accounting Module delivers:
 - Consistent listings (thousands separators, 2 decimals), SAVE/FINAL parity, full audit trail
 
 **Used by**: Treasury and Finance Controllers
-**Documentation**: [Deposit Applet](/applets/mm-deposit-applet/)
+**Documentation**: [Money Market Deposit Applet](/applets/mm-deposit-applet/)
 
 ### 13. Petty Cash Management Applet
 **Purpose**: Small cash transaction management
