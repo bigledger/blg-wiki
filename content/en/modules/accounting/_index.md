@@ -135,7 +135,7 @@ The Accounting Module delivers:
 - Reconciliation reporting
 
 **Used by**: Treasury and accounting teams
-**Documentation**: [TODO: Bank Reconciliation Applet](/applets/bank-reconciliation-applet/) - *Documentation pending*
+**Documentation**: [Bank Reconciliation Applet](/applets/bank-reconciliation-applet/)
 
 ### 11. Cash Flow Management Applet
 **Purpose**: Cash position monitoring and forecasting
