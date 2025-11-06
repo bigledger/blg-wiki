@@ -295,7 +295,7 @@ Ideal for companies with:
 - [E-Invoice Validation Guide](/guides/einvoice-guides/einvoice-validation/)
 
 ### Compliance Resources
-- [Malaysian E-Invoice Regulations](/guides/) - *TODO: Create regulation guide*
+- [Malaysian E-Invoice Regulations](/guides/einvoice-guides/malaysia-e-invoice-guide/)
 - [PEPPOL Standards Documentation](/guides/) - *TODO: Create standards guide*
 - [Tax Authority Requirements](/guides/) - *TODO: Create requirements guide*
 
