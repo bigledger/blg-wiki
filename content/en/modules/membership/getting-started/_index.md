@@ -1,12 +1,8 @@
-[//]: # (---)
-
-[//]: # (title: "Getting Started")
-
-[//]: # (description: "Prerequisites, setup workflow, and initial configuration for the Membership Module")
-
-[//]: # (weight: 10)
-
-[//]: # (---)
+---
+title: "Getting Started"
+description: "Prerequisites, setup workflow, and initial configuration for the Membership Module"
+weight: 10
+---
 
 Welcome to the Membership Module Getting Started guide. This section will help you understand the prerequisites, prepare your system, and successfully implement your first membership program in BigLedger.
 

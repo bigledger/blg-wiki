@@ -1,12 +1,8 @@
-[//]: # (---)
-
-[//]: # (title: "Core Concepts")
-
-[//]: # (description: "Fundamental principles and architectural design of BigLedger's Membership Module")
-
-[//]: # (weight: 20)
-
-[//]: # (---)
+---
+title: "Core Concepts"
+description: "Fundamental principles and architectural design of BigLedger's Membership Module"
+weight: 20
+---
 
 Understanding the core concepts of BigLedger's Membership Module is essential for designing effective loyalty programs and making full use of the system's capabilities. This section explains the fundamental architectural principles, key terminology, and design patterns that differentiate BigLedger's approach from traditional loyalty systems.
 
