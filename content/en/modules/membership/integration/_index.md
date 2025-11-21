@@ -1,9 +1,14 @@
----
-title: "Integration and API"
-description: "Technical documentation for integrating the Membership Module with other systems and platforms"
-weight: 40
-bookCollapseSection: false
----
+[//]: # (---)
+
+[//]: # (title: "Integration and API")
+
+[//]: # (description: "Technical documentation for integrating the Membership Module with other systems and platforms")
+
+[//]: # (weight: 40)
+
+[//]: # (bookCollapseSection: false)
+
+[//]: # (---)
 
 The Membership Module provides comprehensive integration capabilities that enable seamless connectivity with point-of-sale systems, e-commerce platforms, external applications, and third-party services. This technical documentation is designed for developers and integration specialists who need to implement, customize, or extend membership functionality within the BigLedger ecosystem.
 
