@@ -13,7 +13,7 @@
 
 ## Description
 
-This endpoint creates a new membership card for a member. It requires a JSON payload containing the membership header. The API responds with the created membership card data and any related extended information.
+This endpoint creates a new membership row for a member. It requires a JSON payload containing the membership header. The API responds with the created membership data and any related extended information.
 
 ---
 
@@ -297,6 +297,5 @@ POST 'https://api.akaun.com/core2/tnt/dm/membership-cards' \
 - Ensure JWT token is valid and tenant code is correct.  
 - `guid` values must be unique UUIDs, but can be set to null if you want the system to auto generate a UUID for you.
 - `entity_hdr_guid` links to the customer table
--  `card_no` member id/card number
 
 
