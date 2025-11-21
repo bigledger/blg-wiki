@@ -1,8 +1,12 @@
----
-title: "Related Applets"
-description: "Key applets that integrate with and support membership and loyalty programs"
-weight: 60
----
+[//]: # (---)
+
+[//]: # (title: "Related Applets")
+
+[//]: # (description: "Key applets that integrate with and support membership and loyalty programs")
+
+[//]: # (weight: 60)
+
+[//]: # (---)
 
 The Membership Module in BigLedger works seamlessly with multiple applets across different modules to deliver comprehensive loyalty and membership program functionality. Understanding these related applets and their integration points is essential for implementing and managing effective membership programs.
 

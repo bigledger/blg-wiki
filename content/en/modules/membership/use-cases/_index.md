@@ -1,8 +1,12 @@
----
-title: "Use Cases"
-description: "Real-world membership and loyalty program scenarios across different industries"
-weight: 50
----
+[//]: # (---)
+
+[//]: # (title: "Use Cases")
+
+[//]: # (description: "Real-world membership and loyalty program scenarios across different industries")
+
+[//]: # (weight: 50)
+
+[//]: # (---)
 
 The Membership Module in BigLedger powers diverse loyalty and membership programs across retail, food and beverage, hospitality, and service industries. This section presents practical use cases that demonstrate how businesses leverage membership features to drive customer engagement, increase repeat purchases, and build lasting customer relationships.
 

@@ -1,9 +1,14 @@
----
-title: "Configuration"
-description: "Complete guide to configuring the Membership Module including member setup, points systems, and rewards programs"
-weight: 30
-bookCollapseSection: false
----
+[//]: # (---)
+
+[//]: # (title: "Configuration")
+
+[//]: # (description: "Complete guide to configuring the Membership Module including member setup, points systems, and rewards programs")
+
+[//]: # (weight: 30)
+
+[//]: # (bookCollapseSection: false)
+
+[//]: # (---)
 
 The Configuration section provides comprehensive guidance for setting up and managing all aspects of the Membership Module. This is where you establish the foundation of your membership program, including member profiles, points currencies, conversion rules, and reward structures.
 
