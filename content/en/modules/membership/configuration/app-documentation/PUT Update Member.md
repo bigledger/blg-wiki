@@ -13,7 +13,7 @@
 
 ## Description
 
-This endpoint updates an existing membership card for a member. It requires a JSON payload containing the membership header. The API responds with the updated membership card data and any related extended information.
+This endpoint updates an existing membership row for a member. It requires a JSON payload containing the membership header. The API responds with the updated membership data and any related extended information.
 
 ---
 
