@@ -1,12 +1,7 @@
 ---
 title: "Cashbook Applet"
 description: "Cash and bank account management for BigLedger financial operations and cash flow tracking"
-tags:
-- core-module
-- cash-management
-- bank-accounts
-- financial-accounting
-- cash-flow
+tags: core-module, cash-management, bank-accounts, financial-accounting, cash-flow
 weight: 9
 ---
 
@@ -14,9 +9,7 @@ weight: 9
 
 The Cashbook Applet is a fundamental Core Module component that manages all cash and bank account operations in BigLedger. This applet provides comprehensive cash management, bank account configuration, payment method setup, and cash flow tracking that supports all financial transactions across every BigLedger module.
 
-{{< callout type="info" >}}
-**Core Module Applet**: This is one of the 13 essential Core Module applets, critical for any business handling cash transactions, bank payments, or financial operations.
-{{< /callout >}}
+Note: Core Module Applet — One of the 13 essential Core Module applets, critical for businesses handling cash transactions, bank payments, or financial operations.
 
 ## Primary Functions
 - **Cash Account Management** - Physical cash handling and control
