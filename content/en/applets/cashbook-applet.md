@@ -39,101 +39,65 @@ Provide clear, auditable guidelines for managing accounts, settlement configurat
 Proper setup of a new bank account ensures that all financial activity is traceable, accurate, and reflected in the general ledger.
 
 Before a bank account can be used in BigLedger, it must be created as a Cashbook and linked to a valid GL (General Ledger) Code.
-**Documentation**: [TODO: POS Terminal Applet](/applets/chart-of-account-applet/) - *Documentation pending*
+**Documentation**: [TODO: Chart Of Account Applet](/applets/chart-of-account-applet/) - *Documentation pending*
 
 After the GL code is prepared:
-
-Open the Cashbook menu in the Cashbook applet.
-
-Click Create.
-
-Enter key details:
-
-Name (e.g., “RHB Account”)
-
-Account Number
-
-Select the Company that owns the account.
-
-Assign the Currency (e.g., USD, SGD, MYR).
-
-Link the GL Code created in Section 2.1.
+- Open the Cashbook menu in the Cashbook applet.
+- Enter key details:
+  1. Name (e.g., “RHB Account”)
+  2. Account Number
+  3. Select the Company that owns the account
+  4. Assign the Currency (e.g., USD, SGD, MYR)
+  5. Link the GL Code created before
+  6. Create
 
 Once saved, proceed to the mandatory configuration of the settlement method.
 {{< /tab >}}
 {{< /tabs >}}
+
 ### Payment Method Setup (Settlement Method)
+
 A Settlement Method defines how a bank account is used in payment or receipt transactions.
 This setup is required to use the Cashbook in modules such as:
-
-Receipt Voucher
-
-Payment Voucher
-
-Cash Transfer
-
-POS payments (where applicable)
+- Receipt Voucher
+- Payment Voucher
+- Cash Transfer
+- POS payments (where applicable)
 
 ### Steps
-
-Navigate to Settlement Method.
-
-Click Create.
-
-Fill in:
-
-Code
-
-Name
-
-Description
-(You may use the same text for all three fields for consistency.)
-
-Select the corresponding Cashbook.
+- Navigate to Settlement Method
+- Fill in:
+  1. Code
+  2. Name
+  3. Description (You may use the same text for all three fields for consistency.)
+  4. Select the corresponding Cashbook.
+{{< /tab >}}
+{{< /tabs >}}
 
 ### Payment Type
 The settlement type determines how the method is used in transactions.
 Failure to assign a type will prevent it from appearing as a selectable option.
 
 Valid settlement types:
-
-Bank Transfer
-
-Cash
-
-Check
-
-Credit Card
-
-Debit Card
-
-E-wallet
+- Bank Transfer
+- Cash
+- Cheque
+- Credit Card
+- Debit Card
+- E-wallet
 
 **Configure Automatic Bank Charges (Optional)**
 This feature automates the posting of bank or transaction fees (e.g., credit card charges).
-
-Go to the Charges section.
-
-Select the Ratio option.
-
-Enter the fee percentage (e.g., 5%).
-
-When used in a transaction, the system automatically:
-
-Calculates the fee
-
-Posts it to the Bank Charges GL account
+1. Go to the Charges section
+2. Select the Ratio option
+3. Enter the fee percentage (e.g., 5%)
+4. When used in a transaction, the system automatically calculates the fee and posts it to the Bank Charges GL account (depends on setting)
+{{< /tab >}}
+{{< /tabs >}}
 
 ### Branch Linking 
-To restrict unauthorized access:
-
-Assign the settlement method only to specific branches.
-
-Example:
-
-Enable for HQ
-
-Disable for KB Branch
+To restrict unauthorized access: Assign the settlement method only to specific branches.
+Example: Enable for HQ and Disable for KB Branch
 
 #### **Inter-Account Transfers**
 
