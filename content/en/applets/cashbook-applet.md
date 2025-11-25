@@ -53,8 +53,7 @@ After the GL code is prepared:
 
 Once saved, proceed to the mandatory configuration of the settlement method.
 {{< /tab >}}
-{{< /tabs >}}
-
+{{< tab >}}
 ### Payment Method Setup (Settlement Method)
 
 A Settlement Method defines how a bank account is used in payment or receipt transactions.
@@ -72,8 +71,7 @@ This setup is required to use the Cashbook in modules such as:
   3. Description (You may use the same text for all three fields for consistency.)
   4. Select the corresponding Cashbook.
 {{< /tab >}}
-{{< /tabs >}}
-
+{{< tab >}}
 ### Payment Type
 The settlement type determines how the method is used in transactions.
 Failure to assign a type will prevent it from appearing as a selectable option.
@@ -92,7 +90,6 @@ This feature automates the posting of bank or transaction fees (e.g., credit car
 2. Select the Ratio option
 3. Enter the fee percentage (e.g., 5%)
 4. When used in a transaction, the system automatically calculates the fee and posts it to the Bank Charges GL account (depends on setting)
-{{< /tab >}}
 {{< /tabs >}}
 
 ### Branch Linking 
