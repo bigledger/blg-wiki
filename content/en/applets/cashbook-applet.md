@@ -124,8 +124,6 @@ Calculates the fee
 
 Posts it to the Bank Charges GL account
 
-{{< /tab >}}
-{{< /tabs >}}
 ### Branch Linking 
 To restrict unauthorized access:
 
