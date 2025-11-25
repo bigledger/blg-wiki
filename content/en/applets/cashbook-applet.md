@@ -194,7 +194,10 @@ Following these procedures ensures financial accuracy, compliance, and efficient
 
 
 This ensures branch-level segregation of duties and prevents misuse of corporate bank accounts.
+{{< /tab >}}
+{{< /tabs >}}
 
+## Additional Features
 
 POS payments (where applicable)
 - Multiple cash accounts (registers, petty cash, etc.)
