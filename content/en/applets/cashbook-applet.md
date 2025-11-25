@@ -90,8 +90,7 @@ Description
 (You may use the same text for all three fields for consistency.)
 
 Select the corresponding Cashbook.
-{{< /tab >}}
-{{< /tabs >}}
+
 ### Payment Type
 The settlement type determines how the method is used in transactions.
 Failure to assign a type will prevent it from appearing as a selectable option.
