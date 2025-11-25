@@ -192,10 +192,7 @@ Review and reconcile bank activity
 
 Following these procedures ensures financial accuracy, compliance, and efficient cash management within BigLedger.
 
-
 This ensures branch-level segregation of duties and prevents misuse of corporate bank accounts.
-{{< /tab >}}
-{{< /tabs >}}
 
 ## Additional Features
 
