@@ -35,7 +35,7 @@ Provide clear, auditable guidelines for managing accounts, settlement configurat
 - **There are few steps that need to be done
 {{< tabs items="1. Create New Cashbook,2. Create Settlement Method,3. Choose the Payment Type,4. Link the Payment Method with Branch" >}}
 
-{{< tabitem index="1" >}}
+{{< tab >}}
 ### Creating a New Bank Account (Cashbook)
 
 Proper setup of a new bank account ensures that all financial activity is traceable, accurate, and reflected in the general ledger.
@@ -54,9 +54,9 @@ After the GL code is prepared:
   6. Create
 
 Once saved, proceed to the mandatory configuration of the settlement method.
-{{< /tabitem >}}
+{{< /tab >}}
 
-{{< tabitem index="2" >}}
+{{< tab >}}
 ### Payment Method Setup (Settlement Method)
 
 A Settlement Method defines how a bank account is used in payment or receipt transactions.  
@@ -73,9 +73,9 @@ It is required for:
   2. Name  
   3. Description  
   4. Select the corresponding Cashbook
-{{< /tabitem >}}
+{{< /tab >}}
 
-{{< tabitem index="3" >}}
+{{< tab >}}
 ### Payment Type
 
 The settlement type determines how the method is used in transactions.  
@@ -94,13 +94,13 @@ Valid settlement types:
 2. Select the Ratio option  
 3. Enter the fee percentage (e.g., 5%)  
 4. System auto-posts the fee to the Bank Charges GL account
-{{< /tabitem >}}
+{{< /tab >}}
 
-{{< tabitem index="4" >}}
+{{< tab >}}
 ### Branch Linking 
 To restrict unauthorized access: Assign the settlement method only to specific branches.
 Example: Enable for HQ and Disable for KB Branch
-{{< /tabitem >}}
+{{< /tab >}}
 
 {{< /tabs >}}
 
