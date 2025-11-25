@@ -11,6 +11,9 @@ Welcome to BigLedger's comprehensive Business Operations Guide. This documentati
 
 ## How to Use This Guide
 
+{{< youtube id="E3XTWIcvDR4" width="800" height="450" >}}
+
+
 This guide is organized into logical sections that build upon each other. We recommend following this progression:
 
 1. **[Getting Started](/user-guide/getting-started/)** - Essential first steps and platform orientation
