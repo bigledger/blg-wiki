@@ -7,5 +7,5 @@ bookCollapseSection: false
 
 ## MemberShip API Documentation 
 1. Creating/Updating/Getting Member Data 
-2. Getting member point transactions 
-3. Posting points expiry data
+2. Creating/Getting member point transactions 
+3. Getting member point current balances
