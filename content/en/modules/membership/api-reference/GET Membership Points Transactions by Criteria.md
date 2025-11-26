@@ -13,7 +13,7 @@
 
 ## Description
 
-This endpoint retrieves membership points transaction **lines** based on filtering and pagination criteria.
+This endpoint retrieves membership points transaction based on filtering and pagination criteria.
 
 ---
 
