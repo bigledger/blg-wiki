@@ -450,25 +450,55 @@ The Ledger and Journal applet automatically creates journal entries from transac
   {{< card link="/applets/purchase-debit-note-applet/" title="Purchase Debit Note" subtitle="Posts journal entries for debits issued to suppliers." >}}
 {{< /cards >}}
 
-## Master Data Integration
-
-The Ledger and Journal applet integrates with several core applets to pull master data, ensuring consistency and eliminating redundant data entry.
-
-{{< cards >}}
-  {{< card link="/applets/organization-applet/" title="Organisation Applet" subtitle="Imports company, branch, and department structures." >}}
-  {{< card link="/applets/customer-maintenance-applet/" title="Customer Maintenance Applet" subtitle="Imports customer master data for accounts receivable." >}}
-  {{< card link="/applets/supplier-maintenance-applet/" title="Supplier Maintenance Applet" subtitle="Imports supplier master data for accounts payable." >}}
-  {{< card link="/applets/chart-of-account-applet/" title="Chart of Accounts Applet" subtitle="Defines the accounts used in all journal entries." >}}
-  {{< card link="/applets/cashbook-applet/" title="Cashbook Applet" subtitle="Imports bank and cash transaction data." >}}
-{{< /cards >}}
-
 ## Downstream Applets
 
-The data recorded in the Ledger and Journal applet is consumed by other applets for analysis and reporting.
+The data recorded in the Ledger and Journal applet is used by financial report applet for analysis and reporting.
 
-{{< cards >}}
-  {{< card link="/applets/financial-reports-applet/" title="Financial Reports Applet" subtitle="Generates key reports like Trial Balance, Profit & Loss, and Balance Sheet." >}}
-{{< /cards >}}
+### Relationship: Ledger & Journal ↔ Financial Report Applet
+
+#### 1. Ledger & Journal applet
+- Holds **GL master data** and **journal entries**:
+  - GL Section  
+  - GL Category  
+  - GL Code  
+  - Sub-ledger mappings  
+- Transactional applets (Sales Invoice, POS/Cashbill, Sales Return, Credit/Debit Notes, Purchase Invoice, Purchase Return, etc.) create **Journal Header + Journal Lines** here when a document reaches FINAL/POSTED status.
+
+#### 2. Month-end processing (accounting engine)
+Month-end is not just a “close period” button; it is a full accounting engine.  
+It performs multiple calculations and adjustments, including but not limited to:
+- Depreciation  
+- Stock valuation and cost adjustments  
+- Retained earnings processing  
+- Reversal journals  
+- Period-end accruals and adjustments  
+- Any company-specific accounting routines
+The result of month-end is a set of **processed GL balances**, which are the numbers the Financial Report applet uses.
+
+> [!TIP]
+> **Important distinction:**  
+> The Financial Report does NOT simply summarize journal entries directly.  
+> Journal entries → Month-end processing (with complex calculations) → Processed GL balances → Financial Report.  
+> This means the numbers in Financial Reports reflect accounting adjustments made during month-end, not just raw transaction totals.
+
+#### 3. Financial Report applet
+
+Important terminology:
+- A single **company can have multiple ledgers**.  
+  Example: local ledger, IFRS ledger, tax ledger.
+- A **Set of Book** can include **multiple ledgers**, and **those ledgers do not need to belong to the same company**.  
+  (This supports consolidated reporting.)
+
+- The Financial Report applet reads **processed GL balances** (post month-end) for the selected Set of Book and generates:
+  - Trial Balance  
+  - Profit & Loss  
+  - Balance Sheet
+- Reports show **aggregated totals** grouped by:
+  1. GL Section  
+  2. GL Category  
+  3. GL Code
+- To inspect source postings, use the drill-down from a GL Code row (this shows the underlying posted journal lines from the Ledger & Journal applet filtered by posting date/status).
+
 
 ## Summary
 
