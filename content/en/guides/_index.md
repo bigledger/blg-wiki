@@ -7,10 +7,32 @@ tags:
 - user-guide
 ---
 
+Comprehensive step-by-step guides for implementing and using BigLedger's features. These guides provide complete workflow documentation from start to finish for major business processes.
 
-Comprehensive step-by-step guides for implementing and using BigLedger's features.
+{{< callout type="info" >}}
+**New to Implementation Guides?** Start with the [Content Strategy Guidelines](/guides/content-guidelines/) to understand how guides relate to modules, user guides, and applets.
+{{< /callout >}}
 
 ## Guide Categories
+
+### 🛒 [Purchasing Guides](/guides/purchasing-guides/)
+Complete procurement workflows and supplier management:
+- Supplier Setup and Onboarding
+- Purchase Requisition Workflow
+- Purchase Order Processing
+- Goods Receipt and Three-Way Matching
+- Supplier Performance Management
+- Procurement Analytics
+
+### 💼 [Sales Guides](/guides/sales-guides/)
+End-to-end sales and customer relationship workflows:
+- Customer Onboarding and Setup
+- Lead Management and Conversion
+- Quotation and Proposal Process
+- Sales Order Workflow
+- Pricing and Discount Management
+- Customer Service Operations
+- Sales Analytics and Forecasting
 
 ### 📊 [Accounting Guides](/guides/accounting-guides/)
 Master financial management with BigLedger:

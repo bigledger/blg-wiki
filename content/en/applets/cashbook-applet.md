@@ -1,33 +1,267 @@
 ---
 title: "Cashbook Applet"
 description: "Cash and bank account management for BigLedger financial operations and cash flow tracking"
-tags:
-- core-module
-- cash-management
-- bank-accounts
-- financial-accounting
-- cash-flow
+tags: core-module, cash-management, bank-accounts, financial-accounting, cash-flow
 weight: 9
 ---
 
-## Purpose and Overview
+## Overview
 
 The Cashbook Applet is a fundamental Core Module component that manages all cash and bank account operations in BigLedger. This applet provides comprehensive cash management, bank account configuration, payment method setup, and cash flow tracking that supports all financial transactions across every BigLedger module.
 
-{{< callout type="info" >}}
-**Core Module Applet**: This is one of the 13 essential Core Module applets, critical for any business handling cash transactions, bank payments, or financial operations.
-{{< /callout >}}
+Note: Core Module Applet — One of the 13 essential Core Module applets, critical for businesses handling cash transactions, bank payments, or financial operations.
 
-### Primary Functions
+## Primary Functions
 - **Cash Account Management** - Physical cash handling and control
 - **Bank Account Configuration** - Multiple bank account setup and management
 - **Payment Method Setup** - Various payment method configurations
 - **Cash Flow Tracking** - Real-time cash position monitoring
 - **Bank Reconciliation** - Automated bank statement reconciliation
 
-## Key Features
+## Purposes
 
-### Cash Account Management
+This SOP aims to:
+
+- **Ensure Procedural Consistency
+Standardize all steps involved in BigLedger cashbook and bank account management.
+
+- **Maintain Financial Accuracy
+Ensure all bank accounts and cash movements are correctly linked to their respective General Ledger (GL) codes for accurate financial reporting.
+
+- **Streamline Cash Management
+Provide clear, auditable guidelines for managing accounts, settlement configurations, and inter-account transfers.
+
+## Key Features and Steps
+<<<<<<< Updated upstream
+- **There are few steps that need to be done
+{{< tabs items="1. Create New Cashbook,2. Create Settlement Method,3. Choose the Payment Type,4. Link the Payment Method with Branch" >}}
+
+{{< tab >}}
+### Creating a New Bank Account (Cashbook)
+
+=======
+
+**There are few steps that need to be done:**
+
+### 1. Creating a New Bank Account (Cashbook)
+>>>>>>> Stashed changes
+Proper setup of a new bank account ensures that all financial activity is traceable, accurate, and reflected in the general ledger.
+
+Before a bank account can be used in BigLedger, it must be created as a Cashbook and linked to a valid GL (General Ledger) Code.  
+**Documentation**: [TODO: Chart Of Account Applet](/applets/chart-of-account-applet/) — Documentation pending.
+
+After the GL code is prepared:
+- Open the Cashbook menu in the Cashbook applet.
+- Enter key details:
+  1. Name (e.g., “RHB Account”)
+  2. Account Number
+  3. Select the Company that owns the account
+  4. Assign the Currency (USD, SGD, MYR, etc.)
+  5. Link the GL Code created earlier
+  6. Create
+
+Once saved, proceed to the mandatory configuration of the settlement method.
+<<<<<<< Updated upstream
+{{< /tab >}}
+
+{{< tab >}}
+### Payment Method Setup (Settlement Method)
+
+A Settlement Method defines how a bank account is used in payment or receipt transactions.  
+It is required for:
+- Receipt Voucher  
+- Payment Voucher  
+- Cash Transfer  
+- POS payments (where applicable)
+
+### Steps
+- Navigate to Settlement Method
+- Fill in:
+  1. Code  
+  2. Name  
+  3. Description  
+  4. Select the corresponding Cashbook
+{{< /tab >}}
+
+{{< tab >}}
+### Payment Type
+
+The settlement type determines how the method is used in transactions.  
+If not assigned, it will not appear as an option.
+=======
+
+### 2. Payment Method Setup (Settlement Method)
+A Settlement Method defines how a bank account is used in payment or receipt transactions.
+This setup is required to use the Cashbook in modules such as:
+
+- Receipt Voucher
+- Payment Voucher
+- Cash Transfer
+- POS payments (where applicable)
+
+### Steps
+
+1. Navigate to Settlement Method.
+2. Click Create.
+3. Fill in:
+   - Code
+   - Name
+   - Description (You may use the same text for all three fields for consistency.)
+4. Select the corresponding Cashbook.
+
+### 3. Payment Type
+The settlement type determines how the method is used in transactions.
+Failure to assign a type will prevent it from appearing as a selectable option.
+>>>>>>> Stashed changes
+
+Valid settlement types:
+- Bank Transfer
+- Cash
+- Cheque
+- Credit Card
+- Debit Card
+- E-wallet
+
+<<<<<<< Updated upstream
+### Configure Automatic Bank Charges (Optional)
+1. Go to the Charges section  
+2. Select the Ratio option  
+3. Enter the fee percentage (e.g., 5%)  
+4. System auto-posts the fee to the Bank Charges GL account
+{{< /tab >}}
+
+{{< tab >}}
+### Branch Linking 
+To restrict unauthorized access: Assign the settlement method only to specific branches.
+Example: Enable for HQ and Disable for KB Branch
+{{< /tab >}}
+=======
+Bank Transfer
+
+Cash
+
+Check
+
+Credit Card
+
+Debit Card
+
+E-wallet
+
+**Configure Automatic Bank Charges (Optional)**
+This feature automates the posting of bank or transaction fees (e.g., credit card charges).
+
+Go to the Charges section.
+
+Select the Ratio option.
+
+Enter the fee percentage (e.g., 5%).
+
+When used in a transaction, the system automatically:
+
+Calculates the fee
+
+Posts it to the Bank Charges GL account
+
+### 4. Branch Linking 
+To restrict unauthorized access:
+>>>>>>> Stashed changes
+
+{{< /tabs >}}
+
+#### **Inter-Account Transfers**
+
+After ALL Setup Done, sse Cash Transfer to move funds between bank accounts or from cash-on-hand to a bank account.
+**1. Create a Cash Transfer**
+
+Go to Cash Transfer.
+
+Click Create.
+
+Select a Transfer Type (Bank In, TT, Cash, etc.).
+
+Choose the Company and Branch.
+
+**2. Enter Transfer Details**
+
+In the Transfer Line section:
+
+Transfer From Cashbook: Source account (Debited)
+
+Transfer To Cashbook: Destination account (Credited)
+
+Amount: Enter the transfer value
+
+Date: Posting date
+
+Remarks: Add a clear description (e.g., “Monthly transfer to salary account”)
+
+Click Add.
+
+**3. Finalize the Transfer**
+
+After reviewing: Click Finalize
+
+Once finalized:
+
+- The transaction is permanently posted
+- It cannot be edited or reversed
+- It will appear immediately in GL and Cashbook reports
+- 
+#### **Reports**
+
+**1. Query Cashbook Transaction (Detailed View)**
+
+Use this for detailed reconciliation of one bank account.
+
+Displays:
+
+- Opening Balance
+- Transaction Lines
+- Amount In (Debit)
+- Amount Out (Credit)
+- Closing Balance
+- Drill-Down Links to source documents
+
+This tool is ideal for month-end or audit reviews.
+**2. Cash Level (Summary View)**
+Use this for a high-level overview of all balances across multiple cashbooks.
+
+Features:
+
+Shows final balances for each cashbook
+
+Supports grouping (e.g., by company or currency)
+
+Allows drill-down into transaction details
+
+Example of a transfer of 10,000 from CIMB to Hong Leong:
+
+| Cashbook        | Balance Change |
+| --------------- | -------------- |
+| Hong Leong Bank | +10,000        |
+| CIMB Bank       | –10,000        |
+
+
+6. Summary
+
+This User Guide provides all steps needed to:
+
+Create bank accounts
+
+Configure settlement methods
+
+Execute fund transfers
+
+Review and reconcile bank activity
+
+Following these procedures ensures financial accuracy, compliance, and efficient cash management within BigLedger.
+
+This ensures branch-level segregation of duties and prevents misuse of corporate bank accounts.
+
+## Additional Features
+
+POS payments (where applicable)
 - Multiple cash accounts (registers, petty cash, etc.)
 - Cash denomination tracking and counting
 - Daily cash opening and closing procedures
@@ -35,6 +269,9 @@ The Cashbook Applet is a fundamental Core Module component that manages all cash
 - Multi-currency cash handling
 - Cash security and control measures
 
+- Proper setup of a new bank account ensures that all financial activity is traceable, accurate, and reflected in the general ledger.
+
+Payment Method Setup 
 ### Bank Account Configuration
 - Multiple bank account setup and management
 - Bank account details and connectivity

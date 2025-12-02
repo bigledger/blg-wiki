@@ -134,6 +134,14 @@ BigLedger is organized into functional modules, each containing a collection of 
 - Sales analytics
 - [Explore Sales & CRM →](/modules/crm/)
 
+#### Membership Module
+**Customer loyalty and membership program management**
+- Multi-membership support per customer
+- Multi-currency loyalty points system
+- Points-to-cash conversion at POS
+- Tier-based rewards and benefits
+- [Discover Membership Module →](/modules/membership/)
+
 #### Purchasing
 **Procurement and vendor management**
 - Purchase orders
