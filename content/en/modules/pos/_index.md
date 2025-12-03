@@ -33,7 +33,13 @@ The POS Module is designed for retail businesses that need:
 **Used by**: Front-line cashiers and sales staff
 **Documentation**: [TODO: POS Terminal Applet](/applets/pos-terminal-applet/) - *Documentation pending*
 
-### 2. Cash Management Applet
+### 2. Cashbook Applet 
+Before configuring the POS applet, several dependent systems must be prepared. Proper setup of these prerequisites ensures full payment functionality and a smooth cashier workflow.
+2.1 Configuring the Cashbook Applet (Mandatory for Payment Processing)
+
+The Cashbook Applet defines all payment options available in the POS.
+Two configuration steps are required:
+
 **Purpose**: Cash drawer and register management
 - Opening cash count
 - Cash drawer operations
@@ -42,7 +48,7 @@ The POS Module is designed for retail businesses that need:
 - Variance reporting
 
 **Used by**: Cashiers and store supervisors
-**Documentation**: [TODO: Cash Management Applet](/applets/cash-management-applet/) - *Documentation pending*
+**Documentation**: [Cashbook Applet](/applets/cashbook-applet/) - *Documentation pending*
 
 ### 3. Store Configuration Applet
 **Purpose**: Store-specific settings and configurations

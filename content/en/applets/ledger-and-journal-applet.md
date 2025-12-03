@@ -99,21 +99,15 @@ The Ledger and Journal Applet consists of several interconnected modules accessi
 
 - **Ledger**: The master account registry that organizes all financial data by account type. This is where you view cumulative account balances, review transaction histories for specific accounts, and manage your chart of accounts structure.
 
-- **Import Cashbook**: A time-saving feature that allows bulk import of transactions from external cashbooks or bank statements. Instead of manually entering hundreds of transactions, you can import them in batches, significantly reducing data entry time and minimizing human error.
+- **Import Journal**: A time-saving feature that allows bulk import of transactions from external sources. Instead of manually entering hundreds of transactions, you can import them in batches using a template.
+
+- **Error Checking**: A diagnostic toolset for maintaining data integrity. It helps identify and resolve issues like unbalanced journals, missing sequences, and other anomalies that could affect financial reporting.
 
 - **Settings**: Customization hub where you configure the applet to match your organization's specific needs, including currency settings, account structures, user permissions, document numbering schemes, and workflow rules.
 
 ## 1.0 Journal Transaction
 
 The Journal Transaction module is the heart of the applet—it's where all financial activities are initially recorded. This module maintains a complete, chronological history of every financial event in your business, creating an audit trail that can be reviewed, searched, and analyzed.
-
-### Module Structure
-
-The Journal Transaction section includes:
-- **Listing Page**: A searchable table displaying all journal transactions
-- **Create Function**: Tools for adding new transactions
-- **View/Edit Function**: Detailed view of individual transactions with their line items
-- **Search Capability**: Quick filtering to find specific transactions
 
 ### 1.1 Journal Transaction Listing
 
@@ -123,29 +117,22 @@ The listing page serves as your transaction dashboard, displaying all journal en
 
 **Table Columns Explained:**
 
-- **Journal No**: System-generated unique identifier for each transaction (e.g., JV-001, JV-002). This number is used throughout the system to reference specific transactions.
+- **Journal No**: System-generated unique identifier for each transaction. This number is used throughout the system to reference specific transactions.
 
 - **Journal No By Company**: Custom numbering scheme specific to each company if you're managing multiple entities. This allows each company to maintain its own numbering sequence.
-
-- **Description**: Brief narrative explaining the transaction purpose (e.g., "Monthly rent payment," "Customer payment received," "Equipment purchase"). This helps users understand the transaction without opening full details.
-
-- **Transaction Date**: The actual date when the financial event occurred. This may differ from when it was recorded in the system.
-
-- **Company**: The business entity to which this transaction belongs. Essential for multi-company environments where you need to separate financial records.
 
 - **Document Type**: Classification of the supporting document (e.g., Invoice, Receipt, Purchase Order, Credit Note). This helps categorize transactions by their nature.
 
 - **Document No**: Reference number of the supporting document, creating a link between the accounting entry and physical/digital documentation.
 
-- **Status**: Indicates the transaction's current state in the workflow (e.g., Draft, Pending Approval, Approved, Rejected). This supports review and approval processes.
+- **Status**: Indicates the transaction's current state in the workflow (e.g., Active, Inactive) enables review and approval processes.
 
 - **Posting Status**: Shows whether the transaction has been finalized in the ledger (Posted/Unposted). Unposted transactions can still be edited; posted transactions are locked to maintain data integrity.
 
-- **Amount**: The total monetary value of the transaction. This gives a quick view of transaction size without opening details.
-
-- **Created Date**: Timestamp showing when the transaction was first entered into the system. Useful for tracking data entry timing and audit purposes.
-
-- **Updated Date**: Timestamp of the most recent modification. This helps track changes and identify recently edited transactions.
+> [!TIP]
+> **Auto vs. Manual Journals**:
+> *   **AUTO**: System-generated entries from other applets (e.g., Sales, Purchases). These usually cannot be edited directly to preserve the audit trail.
+> *   **MANUAL**: Entries created directly in this applet (e.g., Adjustments, Depreciation).
 
 **Functionality**: Clicking on any row opens the detailed "View Journal Transaction" page where you can see complete transaction information including all line items.
 
@@ -161,33 +148,16 @@ Creating a journal transaction is a two-step process: first entering the main tr
 
 The Main tab captures the overall transaction information—the "who, what, when, and where" of the financial event.
 
-**Required Fields (marked with *):**
+**Fields:**
 
-- **Company***: Select which business entity this transaction belongs to. In multi-company setups, this ensures transactions are recorded in the correct company's books. Each company maintains separate financial records.
+- **Ledger**: The book of accounts (e.g., PRIMARY).
+- **Reference Number**: Your internal reference (e.g., Invoice #).
+- **Server Doc Type**: The source document type (e.g., *INTERNAL_SALES_CASHBILL*). This tells you which applet generated this journal.
+- **Server Doc No**: The unique ID of the source document. Clicking this often links back to the original transaction (e.g., the specific Invoice or Receipt).
 
-- **Branch***: Specify which physical location or branch this transaction relates to. This is crucial for businesses with multiple locations that need to track performance by branch or prepare branch-level reports.
-
-- **Ledger***: Choose the ledger book where this transaction will be recorded. Different ledgers might be used for different purposes (e.g., General Ledger, Purchase Ledger, Sales Ledger).
-
-- **Currency***: Specify the currency of the transaction. Essential for international businesses dealing with multiple currencies. The system can handle foreign currency transactions and apply appropriate exchange rates.
-
-- **Date***: The transaction date—when the financial event actually occurred. This may differ from today's date if you're recording historical transactions or backdating entries.
-
-**Optional Fields:**
-
-- **Reference Number**: Your own reference code for this transaction. This could be a check number, wire transfer reference, or internal tracking number.
-
-- **Server Doc Type**: The type of document stored in your document management system. This links the accounting entry to supporting documentation.
-
-- **Server Doc No**: The document number in your document management system. Together with Doc Type, this creates a complete link to source documents.
-
-- **Description**: A detailed explanation of what this transaction represents. Good descriptions make it easier for others to understand transactions during reviews or audits (e.g., "Payment to ABC Suppliers for office supplies per invoice #1234").
-
-**Action Buttons:**
-
-- **Reset Button** (top right): Clears all entered data, allowing you to start fresh if you made errors or changed your mind. This doesn't cancel the creation—it just resets the form.
-
-- **Create Button** (top right): Saves the transaction to the system after validating that all required fields are completed correctly. Until you click Create, the transaction is not saved.
+> [!TIP]
+> **Why are fields auto-filled?**
+> You can configure default values for **Company**, **Ledger**, and **Currency** in **Settings > Default Selection**. This speeds up data entry by pre-populating these fields for every new journal.
 
 #### 1.2.2 Lines Tab
 
@@ -202,18 +172,11 @@ The Lines tab is where you specify the actual accounting impact of the transacti
 
 **Interface Elements:**
 
-- **+ Icon** (top left): Opens the line item creation form. You'll click this once for each line item you need to add.
-
 - **Lines Table**: Displays all line items you've added, showing:
   - **GL Code**: The account code from your chart of accounts (e.g., 1000 for Cash, 4000 for Sales)
   - **Entity**: The specific customer, supplier, or other entity involved
-  - **Description**: What this particular line item represents
-  - **Debit**: Amount entered on the debit side (increases assets/expenses, decreases liabilities/income)
-  - **Credit**: Amount entered on the credit side (decreases assets/expenses, increases liabilities/income)
-
-- **Reset Button** (top right): Clears all line items, allowing you to start over with a clean slate.
-
-- **Create Button** (top right): Finalizes the transaction with all its line items. The system will validate that debits equal credits before allowing creation.
+  - **Debit**: Expenses (Expenditure) & Assets.
+  - **Credit**: Income & Liabilities.
 
 ##### 1.2.2.1 Add Line Item Main
 
@@ -221,29 +184,14 @@ The Lines tab is where you specify the actual accounting impact of the transacti
 
 Each line item specifies one account affected by the transaction and the monetary impact on that account.
 
-**Required Fields:**
+**Line Item Fields:**
 
-- **Branch***: The branch this line item relates to. Can be the same as the main transaction or different if the transaction affects multiple branches.
-
-- **Sub Ledger***: The detailed account within the ledger. This is where you select the specific account from your chart of accounts (e.g., "Cash at Bank," "Accounts Receivable - Customer A," "Rent Expense").
-
-- **Cashbook***: If this line affects cash, select the specific cashbook. Organizations often maintain multiple cashbooks (e.g., Main Bank Account, Petty Cash, Payroll Account).
-
-- **Entity***: The related party for this transaction. This could be:
-  - A customer (if receiving payment or making a sale)
-  - A supplier (if making a payment or receiving goods)
-  - An employee (if processing payroll)
-  - "Internal" for transactions not involving external parties
-
-**Amount Fields (enter amount in one field, leave the other blank):**
-
-- **Amount Debit**: Enter the amount here if this account is being debited. Debits increase assets and expenses; decrease liabilities, equity, and income.
-
-- **Amount Credit**: Enter the amount here if this account is being credited. Credits increase liabilities, equity, and income; decrease assets and expenses.
+- **Branch**: The specific branch for this line item (useful for multi-branch accounting).
+- **GL Code**: The General Ledger account to be debited or credited (e.g., *Travel Expenses*, *Cash at Bank*).
+- **Cashbook**: (Optional) Select if this line item affects a specific cash book.
+- **Entity**: The related party (Customer, Supplier, Employee) if applicable.
 
 **Important**: For each line item, enter the amount in EITHER the debit OR credit field, not both. The total of all debit line items must equal the total of all credit line items for the transaction to balance.
-
-- **Description**: Specific note about this line item. While the main transaction has an overall description, line-item descriptions explain the specific account impact (e.g., "Payment received for Invoice #1234").
 
 ##### 1.2.2.2 Add Line Item Categories
 
@@ -263,63 +211,56 @@ Categories provide additional dimensions for analyzing your financial data beyon
 
 **Usage**: Navigate to the Categories tab after entering the main line item details, fill in the relevant category fields, and click **Add** (top left). Not all categories need to be filled—only use those relevant to your organization's reporting needs.
 
-### 1.3 Search Bar
+### 1.3 Workflow Actions
 
-{{< figure src="/images/lnj-applet/62cba26e-218a-4732-b9a7-f2a5525b2af6.png" caption="Fig 7: Search Bar" >}}
+Common actions you can perform on existing journals:
 
-The search functionality allows you to quickly locate specific transactions without scrolling through the entire transaction list.
-
-**Search Capabilities**: You can search by any of the displayed fields:
-- Journal numbers
-- Descriptions (keywords)
-- Transaction dates
-- Company names
-- Document numbers
-- Amounts
-
-**Usage**: Type your search term in the search bar at the top of the Journal Transaction listing page. The system will filter the displayed transactions in real-time, showing only those that match your search criteria. This is particularly useful when:
-- Looking up a specific transaction by number
-- Finding all transactions for a particular customer or supplier
-- Locating transactions within a date range
-- Searching for transactions with specific descriptions
+*   **Void (Reverse)**: Found in the listing page (Red button). Use this to reverse a posted transaction that was incorrect. It creates a contra-entry to nullify the financial impact while keeping the original record for audit purposes.
+*   **Clone**: Found in the View page. Use this to duplicate a previous journal. This is perfect for recurring monthly entries (e.g., Rent, Subscription fees) where the accounts remain the same and only the date/amount changes.
 
 ## 2.0 Sub Ledger
 
 The Sub Ledger module provides detailed breakdowns of ledger accounts, offering granular visibility into account components. While the main ledger shows total balances (e.g., "Accounts Receivable: $50,000"), the sub-ledger breaks this down into individual components (e.g., "Customer A owes $10,000, Customer B owes $15,000," etc.).
 
-**Purpose**: Sub-ledgers are essential for:
-- Tracking individual customer balances within Accounts Receivable
-- Monitoring individual supplier balances within Accounts Payable
-- Managing individual fixed asset records within Fixed Assets
-- Maintaining detailed inventory records within Inventory
+**Purpose**: The Sub Ledger acts as the detailed registry for all operational accounts. While the main Ledger (General Ledger) maintains high-level control accounts or categories (e.g., "Current Assets", "General Expenses"), the Sub Ledger defines the specific accounts used in daily transactions.
 
-This detail is crucial for operations (knowing which customers to follow up for payment), analysis (identifying top customers or suppliers), and reconciliation (verifying that sub-ledger details sum to main ledger totals).
+Think of the **General Ledger (GL)** as the "Hanging Folders" in a filing cabinet (broad categories), and the **Sub-Ledger** as the specific "Papers" inside them (specific items). You cannot record a transaction just to a folder; you must specify the paper.
+
+It is used to manage:
+- **Operational Accounts**: Specific expense accounts (e.g., "Accounting Fees", "Travel"), cash accounts (e.g., "Cash Drawers"), and revenue accounts.
+- **Individual Entities**: Specific customer and supplier accounts for tracking receivables and payables.
+- **Asset & Inventory Records**: Specific fixed asset items and inventory categories.
+
+**Note on Inventory**: The **Inventory Applet** tracks the *quantity* and *logistics* of stock, while the **Sub-Ledger** tracks the *financial value*. When you buy stock, the Inventory Applet increases quantity, and the Journal automatically updates the Sub-Ledger value.
+
+This granular level allows for detailed tracking and reporting while maintaining a clean, summarized General Ledger.
 
 ### 2.1 Sub Ledger Listing
 
 The listing page provides an overview of all sub-ledger accounts in your system, organized in an easy-to-navigate table.
 
-**Interface Components:**
-
-- **Search Bar** (top): Quickly find specific sub-ledgers by typing names, GL codes, or descriptions. Essential when you have hundreds or thousands of sub-ledger accounts.
-
-- **Sub Ledger Rows**: Each row represents one sub-ledger account and is clickable. Clicking opens the detailed view where you can see complete sub-ledger information and all related transactions.
-
 **Display Columns:**
-
-- **Company**: Which business entity this sub-ledger belongs to. Particularly important in multi-company environments.
 
 - **Name**: The descriptive name of the sub-ledger (e.g., "ABC Corporation - Customer Account," "Office Equipment - Asset #123").
 
 - **GL Code**: The general ledger account code this sub-ledger belongs to. This links the sub-ledger back to the main chart of accounts (e.g., sub-ledger "Customer ABC" might have GL Code 1200 for Accounts Receivable).
 
-- **Description**: Detailed information about this sub-ledger account, including any relevant notes or identifiers.
+- **GL Section**: The section of the General Ledger this account belongs to.
 
-- **Status**: Whether the sub-ledger is Active or Inactive. Inactive sub-ledgers are typically kept for historical reference but are no longer used for new transactions (e.g., former customers or sold assets).
+- **GL Category**: The category within the General Ledger.
 
-- **Created Date**: When this sub-ledger account was first set up in the system.
+- **Account No**: The specific account number assigned to this sub-ledger.
 
-- **Updated Date**: When the sub-ledger details were last modified (note: this is about the sub-ledger account itself, not individual transactions).
+> [!TIP]
+> **Understanding GL Hierarchy**: These three columns work together to categorize the account:
+> 1.  **GL Section** (Broadest): The main financial statement section (e.g., *Current Assets*, *Operating Expenses*).
+> 2.  **GL Category** (Specific): The group within that section (e.g., *Inventory*, *Travel Expenses*).
+> 3.  **GL Code** (Exact): The specific account identifier linked to the Chart of Accounts (e.g., *1200-001*).
+>
+> **Mapping Impact**: This hierarchy determines exactly where the Sub-Ledger's balance appears on your financial reports.
+
+> [!TIP]
+> **GL Mapping & Reports**: The **GL Code**, **Section**, and **Category** you select determine where this sub-ledger appears on your Balance Sheet or P&L. Always verify mapping during creation. If a Sub-Ledger is missing from reports, check if it's mapped to a hidden or inactive GL account.
 
 {{< figure src="/images/lnj-applet/65bd3c8f-9b12-40d7-9514-e9ae40d0ab7a.png" caption="Fig 8: Sub Ledger Listing" >}}
 
@@ -333,9 +274,14 @@ The View/Edit Sub Ledger page allows you to review and update sub-ledger account
 
 - **Editable Fields**: Only the **Description** field can be modified. This allows you to update notes, add clarifying information, or correct typos without changing the fundamental account structure.
 
-- **Protected Fields**: Company, Ledger, Name, and GL Code are not editable to maintain data integrity. These are set when the sub-ledger is created and shouldn't change. If these need to change, you'd typically create a new sub-ledger account.
+- **Protected Fields**: Company, Ledger, Name, and GL Code are not editable to maintain data integrity. These are set when the sub-ledger is created and shouldn't change.
 
-- **Save Button**: Click to commit your description changes to the system. Until you click Save, changes are not stored.
+> [!IMPORTANT]
+> **Fixing Incorrect Mapping**: If a Sub-Ledger is linked to the wrong GL Code (e.g., "Sales" instead of "Expenses"), you generally *cannot* change it if transactions exist. Instead, create a *new* Sub-Ledger with the correct mapping, transfer the balance via Journal Entry, and deactivate the old one.
+
+> [!NOTE]
+> **Opening Balances**: You cannot "edit" the balance field directly. To set an opening balance, you must create a **Journal Transaction** (Debit the Sub-Ledger, Credit Opening Balance Equity).
+
 
 **Use Cases**: You might edit descriptions to:
 - Add customer contact information to customer sub-ledgers
@@ -351,15 +297,7 @@ This tab shows the complete transaction history for the selected sub-ledger, pro
 
 **Display Columns:**
 
-- **Txn Date**: The date each transaction occurred, listed in chronological order (typically newest first or oldest first, depending on system settings).
-
 - **Journal No**: The journal entry number for each transaction. Click this to navigate to the full journal entry and see all its line items, not just the one affecting this sub-ledger.
-
-- **Description**: What each transaction was about. This gives context without having to open the full journal entry.
-
-- **Debit**: Amounts debited to this sub-ledger. For asset and expense accounts, debits increase the balance.
-
-- **Credit**: Amounts credited to this sub-ledger. For asset and expense accounts, credits decrease the balance.
 
 **Use Cases**: 
 - Review a customer's payment history to resolve disputes
@@ -370,68 +308,65 @@ This tab shows the complete transaction history for the selected sub-ledger, pro
 
 **Running Balance**: While not explicitly mentioned, many systems show a running balance after each transaction, making it easy to see how the account balance evolved over time.
 
+> [!TIP]
+> **Drill Down**: This tab is your primary tool for "drilling down" into details. It shows every single transaction (invoice, payment, adjustment) that makes up the current balance.
+
+> [!WARNING]
+> **Reconciliation**: If your Sub-Ledger balance differs from the Trial Balance, check for **Direct GL Entries** (journals posted directly to the GL control account without a Sub-Ledger). Always transact at the Sub-Ledger level.
+>
+> If you see **"Zero Journal Lines"**, it means no *posted* transactions have hit this account yet. Check for Draft or Pending transactions.
+
 {{< figure src="/images/lnj-applet/565c7702-aff2-40b8-a13f-e21544b58c74.png" caption="Fig 10: Journal Lines Tab" >}}
 
 ## 3.0 Ledger
 
-The Ledger module is your master account registry—it organizes all financial data by account type and provides summary views of account balances and activities. Think of it as the organized filing system where all your categorized financial information lives.
+**Purpose**: The Ledger module is your master account registry. It organizes all financial data by account type and provides summary views of account balances.
 
-**Purpose**: The ledger serves several critical functions:
-- Maintains your chart of accounts (the complete list of all accounts used in your business)
-- Shows current balances for all accounts
-- Provides the foundation for financial statement preparation
-- Enables account-level analysis and reconciliation
+It serves to:
+- Maintain your Chart of Accounts.
+- Show current balances for all accounts.
+- Provide the foundation for financial statements (Trial Balance, P&L, Balance Sheet).
 
 ### 3.1 Ledger Listing
 
 The main ledger listing page displays all ledger accounts in your chart of accounts, giving you a bird's-eye view of your entire account structure.
 
-**Interface Components:**
-
-- **Search Bar** (top): Filter ledgers by typing account names, codes, types, or company names. Essential for quickly locating specific accounts in large charts of accounts.
-
-- **Ledger Rows**: Each row represents one ledger account. Clicking any row opens the detailed ledger view where you can see full account information and make edits.
-
 **Display Columns:**
 
-- **Ledger Type**: The classification of the account according to the accounting equation and financial statements:
-  - **Assets**: Resources owned (Cash, Accounts Receivable, Equipment, Inventory)
-  - **Liabilities**: Amounts owed (Accounts Payable, Loans, Accrued Expenses)
-  - **Equity**: Owner's investment and retained earnings
-  - **Revenue/Income**: Money earned from operations
-  - **Expenses**: Costs incurred to generate revenue
-  - **Cost of Goods Sold (COGS)**: Direct costs of producing goods sold
-  
-  This classification determines where the account appears on financial statements and how it behaves (increased by debits or credits).
+- **Ledger Type**: The classification of the account (e.g., **PRM** for Primary, **SEC** for Secondary).
+- **Ledger Code**: The unique identifier for this account (e.g., 1000, 1100).
+- **Ledger Name**: The descriptive name of the account (e.g., "Cash at Bank", "Sales Revenue").
 
-- **Ledger Code**: The unique identifier for this account in your chart of accounts (e.g., 1000, 1100, 4000). Many businesses use structured numbering schemes where the first digit indicates the account type (1=Assets, 2=Liabilities, 4=Revenue, 5=Expenses, etc.).
+> [!TIP]
+> **FAQ: Ledger Code vs. GL Code**
+> *   **Ledger Code** = The **Book** (e.g., "PRIMARY"). It represents the set of books you are writing in.
+> *   **GL Code** = The **Account** (e.g., "1000-Cash"). It represents the specific category of money inside that book.
+>
+> *Analogy*: You write a transaction for "Cash" (GL Code) inside your "Primary" notebook (Ledger Code).
 
-- **Ledger Name**: The descriptive name of the account (e.g., "Cash at Bank," "Accounts Receivable," "Sales Revenue," "Rent Expense"). This is what users see when selecting accounts for transactions.
+> [!TIP]
+> **Primary vs. Secondary Ledgers**:
+> *   **Primary (PRM)**: Your main book of accounts used for statutory reporting in your base currency.
+> *   **Secondary (SEC)**: Used for alternative reporting requirements, such as reporting in a different currency or under a different accounting standard.
 
-- **Company**: Which business entity this ledger account belongs to. In multi-company environments, some accounts might be company-specific while others are shared.
+> [!WARNING]
+> Only **Secondary (SEC)** ledgers can be deleted. **Primary (PRM)** ledgers are protected as they form the core of your financial system.
 
-- **Status**: Whether the account is Active or Inactive:
-  - **Active**: Currently in use for transactions
-  - **Inactive**: Kept for historical reference but not available for new transactions. This is preferable to deleting accounts that have historical data.
-
-- **Created Date**: When this ledger account was added to the chart of accounts.
-
-- **Updated Date**: When the account details were last modified.
+> [!TIP]
+> **When to use Secondary Ledgers?**
+> Secondary ledgers are useful for specific reporting needs that differ from your primary financial statements. Common uses include:
+> - **Foreign Currency Reporting**: To maintain financial records and generate reports in a currency different from your primary operating currency.
+> - **Tax Reporting**: To adjust financial data to meet specific tax regulations or reporting standards (e.g., IFRS vs. local GAAP adjustments for tax purposes).
 
 {{< figure src="/images/lnj-applet/2b662f69-b66e-48ed-b728-fdf88f5f596d.png" caption="Fig 11: Ledger Listing" >}}
 
 ### 3.2 View Ledger Details Tab
 
 The ledger detail page allows you to review complete account information and make necessary updates to account properties.
-
-**Auto-Populated Fields:**
-
 When you click on a ledger row, the system displays all current account information:
 
 - **Ledger Code**: The account's unique identifier (read-only for data integrity)
-- **Ledger Name**: The account's descriptive name (read-only to maintain consistency in reporting)
 - **Ledger Type**: The account classification
-- **Currency**: The currency this account operates in
 
 {{< figure src="/images/lnj-applet/203a9621-6b58-4b88-addf-ee22de76a7bf.png" caption="Fig 12: View Ledger Details Tab" >}}
 
@@ -439,67 +374,65 @@ When you click on a ledger row, the system displays all current account informat
 
 - **Ledger Type**: You can change the account classification if needed. For example, you might reclassify an account if you initially set it up incorrectly or if accounting standards change. However, be cautious with this—changing the type affects how the account appears on financial statements and how transactions are interpreted.
 
-- **Currency**: You can change the account currency if necessary. This might be needed if, for example, you initially set up a foreign currency account with the wrong currency. Note that changing currency can affect existing transactions, so this should be done carefully.
 
-**Action Buttons:**
+## 4.0 Import Journal
 
-- **Save**: Commits your changes to the system. The system will validate changes to ensure they don't create accounting inconsistencies.
+The Import Journal module allows for bulk uploading of journal transactions using a standardized template.
 
-- **Delete**: Removes the ledger account from the chart of accounts. Important notes about deletion:
-  - Most systems won't allow deletion if the account has transaction history (they'll require you to make it Inactive instead)
-  - Deletion is typically reserved for accounts created by mistake that were never used
-  - Some systems require special permissions to delete accounts to prevent accidental data loss
+### 4.1 Import Journal Listing
 
-**Use Cases for Editing:**
-- Correcting account classification errors
-- Updating account properties to reflect new accounting policies
-- Adjusting currency settings for international operations
-- Setting accounts to Inactive when they're no longer needed but have historical data
+The listing page displays a history of imported files and their processing status.
 
-<!--
+**Table Columns:**
 
-## 4.0 Import Cashbook
+- **Process Status**: Status of the import (e.g., DONE, FAILED, VALIDATING_DATA).
 
-The Import Cashbook module is a powerful time-saving feature that allows bulk import of financial transactions from external sources, dramatically reducing manual data entry and minimizing human error.
+### 4.2 Template Columns
 
-**Purpose**: 
-Rather than manually typing hundreds or thousands of bank transactions, cashbook entries, or payment records one by one, you can:
-- Download transaction data from your bank in a standard format (CSV, Excel)
-- Import cashbook records from other accounting systems
-- Bulk upload pre-formatted transaction files
-- Process large volumes of transactions in minutes instead of hours or days
+The CSV template contains the following columns for data entry:
 
-**Benefits**:
-- **Time Efficiency**: Import 100 transactions in seconds versus hours of manual entry
-- **Accuracy**: Eliminates typos and data entry errors that occur with manual input
-- **Consistency**: Ensures standardized data formatting across all imported transactions
-- **Reconciliation**: Simplifies bank reconciliation by directly importing bank statement data
+- **COMPANY_CODE**: Code of the company for the transaction.
+- **HDR_BRANCH_CODE**: Branch code for the transaction header.
+- **LEDGER_CODE**: Code of the ledger book.
+- **REFERENCE_NUMBER**: External reference number.
+- **CURRENCY_CODE**: Transaction currency.
+- **HDR_DESCRIPTION**: Overall description of the transaction.
+- **DATE_TXN**: Date of the transaction.
+- **LINE_BRANCH_CODE**: Branch code for the specific line item.
+- **LINE_GL_CODE**: General Ledger account code.
+- **LINE_CASHBOOK_CODE**: Cashbook code (if applicable).
+- **LINE_ENTITY_CODE**: Entity code (Customer/Supplier/Employee).
+- **LINE_AMOUNT_DEBIT**: Debit amount.
+- **LINE_AMOUNT_CREDIT**: Credit amount.
+- **LINE_DESCRIPTION**: Description for the specific line item.
 
-**Typical Workflow**:
-1. Export transaction data from your bank or cashbook system (usually CSV or Excel format)
-2. Ensure the data format matches the import template requirements (proper columns, date formats, etc.)
-3. Navigate to Import Cashbook module
-4. Upload the file
-5. Map fields from your file to system fields if necessary
-6. Review and validate the data before final import
-7. Confirm import to create journal transactions automatically
+### 4.3 Uploading a Journal
 
-**Common Import Sources**:
-- Bank statements (downloaded from online banking)
-- Point-of-sale (POS) systems
-- Payment gateways (PayPal, Stripe, etc.)
-- Legacy accounting systems during migration
-- Excel spreadsheets maintained by branch offices
-- External cashbook applications
+To import transactions:
 
-This module is particularly valuable for:
-- Businesses with high transaction volumes
-- Companies with multiple bank accounts
-- Organizations migrating from other systems
-- Businesses with decentralized operations that collect data from branches
+1.  **Download Template**: Click the **Sample Format** link to download the template file (e.g., `MasterData_Upload_Ledger_&_Journal.csv`). The necessary information can be refered in 4.2 Template Columns.
+2.  **Upload**: Drag and drop your file into the "Upload Master Data" area or click **Upload File**.
+3.  **Monitor Status**: Check the listing page to see if your import was successful or if there were errors.
 
--->
+## 5.0 Error Checking
 
+The Error Checking module is a diagnostic tool designed to maintain data integrity within your financial records. It helps identify anomalies such as unbalanced journals, missing sequences, or incomplete transactions that could affect financial reporting.
+
+### 5.1 Journal Not Balance
+This tab identifies transactions where the total **Debit** amount does not equal the total **Credit** amount. In double-entry bookkeeping, every transaction must balance. Unbalanced journals can lead to an inaccurate Trial Balance and Balance Sheet.
+
+**Common Causes:**
+- System interruptions during posting.
+- Data migration errors.
+- Complex multi-currency rounding differences.
+
+**Action**: Review these entries and correct them to ensure your accounts balance.
+
+### 5.2 Other Diagnostic Tabs
+- **Missing Journal**: Identifies gaps in the sequential numbering of journals, which is important for audit completeness.
+- **Missing Journal Forex Gain Loss**: Checks for missing foreign exchange gain/loss entries on multi-currency transactions.
+- **Update Journal Remarks**: A utility to review and update narrative remarks for transactions.
+- **Missing Credit Card Charge**: Identifies potential discrepancies in credit card transaction recording.
 
 ## Source Document Integrations
 
@@ -517,25 +450,55 @@ The Ledger and Journal applet automatically creates journal entries from transac
   {{< card link="/applets/purchase-debit-note-applet/" title="Purchase Debit Note" subtitle="Posts journal entries for debits issued to suppliers." >}}
 {{< /cards >}}
 
-## Master Data Integration
-
-The Ledger and Journal applet integrates with several core applets to pull master data, ensuring consistency and eliminating redundant data entry.
-
-{{< cards >}}
-  {{< card link="/applets/organization-applet/" title="Organisation Applet" subtitle="Imports company, branch, and department structures." >}}
-  {{< card link="/applets/customer-maintenance-applet/" title="Customer Maintenance Applet" subtitle="Imports customer master data for accounts receivable." >}}
-  {{< card link="/applets/supplier-maintenance-applet/" title="Supplier Maintenance Applet" subtitle="Imports supplier master data for accounts payable." >}}
-  {{< card link="/applets/chart-of-account-applet/" title="Chart of Accounts Applet" subtitle="Defines the accounts used in all journal entries." >}}
-  {{< card link="/applets/cashbook-applet/" title="Cashbook Applet" subtitle="Imports bank and cash transaction data." >}}
-{{< /cards >}}
-
 ## Downstream Applets
 
-The data recorded in the Ledger and Journal applet is consumed by other applets for analysis and reporting.
+The data recorded in the Ledger and Journal applet is used by financial report applet for analysis and reporting.
 
-{{< cards >}}
-  {{< card link="/applets/financial-reports-applet/" title="Financial Reports Applet" subtitle="Generates key reports like Trial Balance, Profit & Loss, and Balance Sheet." >}}
-{{< /cards >}}
+### Relationship: Ledger & Journal ↔ Financial Report Applet
+
+#### 1. Ledger & Journal applet
+- Holds **GL master data** and **journal entries**:
+  - GL Section  
+  - GL Category  
+  - GL Code  
+  - Sub-ledger mappings  
+- Transactional applets (Sales Invoice, POS/Cashbill, Sales Return, Credit/Debit Notes, Purchase Invoice, Purchase Return, etc.) create **Journal Header + Journal Lines** here when a document reaches FINAL/POSTED status.
+
+#### 2. Month-end processing (accounting engine)
+Month-end is not just a “close period” button; it is a full accounting engine.  
+It performs multiple calculations and adjustments, including but not limited to:
+- Depreciation  
+- Stock valuation and cost adjustments  
+- Retained earnings processing  
+- Reversal journals  
+- Period-end accruals and adjustments  
+- Any company-specific accounting routines
+The result of month-end is a set of **processed GL balances**, which are the numbers the Financial Report applet uses.
+
+> [!TIP]
+> **Important distinction:**  
+> The Financial Report does NOT simply summarize journal entries directly.  
+> Journal entries → Month-end processing (with complex calculations) → Processed GL balances → Financial Report.  
+> This means the numbers in Financial Reports reflect accounting adjustments made during month-end, not just raw transaction totals.
+
+#### 3. Financial Report applet
+
+Important terminology:
+- A single **company can have multiple ledgers**.  
+  Example: local ledger, IFRS ledger, tax ledger.
+- A **Set of Book** can include **multiple ledgers**, and **those ledgers do not need to belong to the same company**.  
+  (This supports consolidated reporting.)
+
+- The Financial Report applet reads **processed GL balances** (post month-end) for the selected Set of Book and generates:
+  - Trial Balance  
+  - Profit & Loss  
+  - Balance Sheet
+- Reports show **aggregated totals** grouped by:
+  1. GL Section  
+  2. GL Category  
+  3. GL Code
+- To inspect source postings, use the drill-down from a GL Code row (this shows the underlying posted journal lines from the Ledger & Journal applet filtered by posting date/status).
+
 
 ## Summary
 

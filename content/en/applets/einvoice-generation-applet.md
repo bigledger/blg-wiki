@@ -19,7 +19,7 @@ The **My E-Invoice Admin Applet** is your comprehensive digital command center f
 
 ### **Why E-Invoicing Matters**
 
-Electronic invoicing is now mandatory for all businesses in Malaysia under the MyInvois system. This digital transformation ensures:
+E-invoicing is now mandatory for all businesses in Malaysia under the MyInvois system. This digital transformation ensures:
 
 *   **Real-time validation** of invoices by LHDN
 *   **Immediate compliance verification** with tax regulations
@@ -34,7 +34,7 @@ This comprehensive guide serves every stakeholder in your e-invoicing ecosystem:
 *   **Accounts Receivable (B2B):** Perfect for issuing individual e-invoices to business customers with full validation tracking
 *   **Counter Sales (B2C):** Ideal for managing walk-in customer transactions and monthly consolidated submissions
 *   **Finance Managers:** Essential for overseeing the entire e-invoice workflow, monitoring key compliance metrics, and ensuring regulatory adherence
-*   **Procurement Teams:** Streamlines self-billed e-invoice creation when suppliers don't issue electronic invoices
+*   **Procurement Teams:** Streamlines self-billed e-invoice creation when suppliers don't issue E-invoices
 *   **Auditors & Compliance Officers:** Provides complete traceability and evidence export capabilities for regulatory reviews
 
 ### **What can you do with the Applet?**
@@ -54,35 +54,44 @@ The My E-Invoice Admin Applet empowers you with comprehensive e-invoice manageme
 Get up and running quickly with your first validated e-invoice for a B2B sale. This streamlined guide walks you through the essentials, assuming you have basic system access.
 
 {{< callout type="tip" >}}
-**Time to complete:** 3–7 minutes (depending on data completeness).
-**Pro Tip:** Prepare your master data in advance to avoid delays.
+**Tip:** Prepare your master data in advance to avoid delays.
 {{< /callout >}}
 
 ### **Prerequisites: What You Need Before Starting**
 
 Before creating your first e-invoice, ensure these key elements are set up in your system. Missing information is the most common cause of validation errors.
 
-*   **Customer Record:** Must include:
+*   **Customer Record (Use Customer Maintenance Applet to update):** Must include:
     *   `ID Type` (e.g., BRN, NRIC, Passport)
     *   `Registration/ID Number`
     *   `TIN` (Tax Identification Number)
     *   `Email Address` (for notifications)
     *   `Complete Address` (including city, state, postcode)
-*   **Item Details:** Each item in the invoice needs:
-    *   `Tax Type Code` (e.g., SST codes)
-    *   `UOM` (Unit of Measure, like PCS for pieces or KG for kilograms)
-*   **Organization Profile:** Your company's details should have:
+
+    ![Description](/images/einvoice-applet/customer-applet-1.png)
+
+*   **Item Details (Use Doc Item Maintenance Applet to update > E-Invoice Tab):** Each item in the invoice needs:
+    *   `CLASSIFICATION_CODE`
+    *   `EINVOICE_TAXABLE_TYPE_CODE`
+    *   `EINVOICE_UOM`
+
+    ![Description](/images/einvoice-applet/doc-item-applet-1.png)
+
+*   **Organization Profile (Use Organization Applet to update):** Your company's details should have:
     *   `TIN` (Tax Identification Number)
     *   `BRN` (Business Registration Number)
     *   `MSIC` (Malaysia Standard Industrial Classification code for business activity)
-    *   `Branch Address` (full physical address)
+    *   `Company Address` (full address including Postal Code, City, State etc.)
 
-If any of these are missing, update them in the respective maintenance applets before proceeding.
+    ![Description](/images/einvoice-applet/org-applet-1.png)
+
+
+If any of these are missing, update them in the applets before proceeding.
 
 ### **Step-by-Step Instructions**
 
 1.  **Create the Invoice:**
-    *   Navigate to the **Sales Applet** in your dashboard.
+    *   Navigate to the **Sales Invoice Applet** in your akaun homepage.
     *   Click on `New Sales Invoice` to start a fresh document.
     *   Select the appropriate customer from your records.
 
@@ -95,11 +104,16 @@ If any of these are missing, update them in the respective maintenance applets b
     *   Click `Save` to store your changes.
     *   Then, click `FINAL` to lock the invoice – this step is crucial as only finalized documents can be submitted for e-invoicing.
 
+
+    ![Description](/images/einvoice-applet/sales-invoice-finalization.png)
+
 4.  **Submit the Invoice:**
     *   Switch to the **My E-invoice Admin Applet** and go to **Posting Queue**.
     *   Locate your invoice in the list.
-    *   If the status is `PROCESSED` (meaning it passed initial validation), select it and click `Submit` to send to LHDN.
+    *   If the status is `PROCESSED` (meaning it passed initial validation), select it and click `Submit` to send to LHDN (this is for manual testing only, ideally this part will be done by our Cron Processors).
     *   If it's `UNPROCESSED`, click to open the invoice, review the listed **Validation Errors**, correct them in the source document, save changes, and refresh the queue.
+
+    ![Description](/images/einvoice-applet/e-invoice-applet-posting-queue.png)
 
 5.  **Monitor and Verify Submission:**
     *   Head to **To IRB E-Invoice** section to track progress.
@@ -112,6 +126,9 @@ If any of these are missing, update them in the respective maintenance applets b
 *   An official **IRBM Reference Number** is assigned and visible.
 *   A scannable **QR code** appears with a validation URL for verification.
 *   You'll receive confirmation notifications via email or system alerts.
+
+![Validated E-Invoice with QR Code](/images/einvoice-applet/validated-invoice-qr.png)
+*Figure 3: Successfully validated e-invoice showing QR code and IRBM reference*
 
 If you encounter issues, refer to the Troubleshooting section below.
 
@@ -177,6 +194,9 @@ At the heart of the applet is a multi-stage queue system that automates much of 
 #### **Posting Queue Operations: Your Entry Point**
 The **Posting Queue** serves as the initial gateway for all newly created invoices, acting as a validation checkpoint before anything reaches LHDN.
 
+![Posting Queue Interface](/images/einvoice-applet/posting-queue.png)
+*Figure 1: Posting Queue - Your entry point for e-invoice submissions*
+
 *   **Auto-Processing Mechanism:** The system runs automatic processing cycles every 15-20 minutes, scanning for new documents and validating them against LHDN requirements.
 *   **Key Status Indicators:**
     *   `PROCESSED`: Indicates the document has passed all internal checks and is submission-ready. No action needed unless you want to submit immediately.
@@ -186,6 +206,9 @@ The **Posting Queue** serves as the initial gateway for all newly created invoic
 
 #### **Batch Pool Scenarios: Handling Consolidated and Special Cases**
 The **Batch Pool** functions as a flexible staging area for documents requiring grouping or additional processing, particularly useful for high-volume operations.
+
+![Batch Pool Management](/images/einvoice-applet/batch-pool.png)
+*Figure 2: Batch Pool - Managing consolidated submissions*
 
 *   **Auto Consolidated Submission:**
     *   The system intelligently groups eligible transactions (e.g., B2C sales) into a single consolidated e-invoice.

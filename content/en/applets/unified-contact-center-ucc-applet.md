@@ -72,7 +72,11 @@ The Live Dashboard gives supervisors real-time visibility into agent activity, s
 
 #### System Architecture
 
-The UCC Applet consists of multiple integrated modules that work together to provide comprehensive contact center functionality:
+The UCC Applet is built around a cohesive architecture where incoming communications are intelligently managed, routed, and tracked. At its core is the relationship between conversations, sessions, and tasks. When a customer initiates a conversation, the system starts a **Session**, which represents a single, continuous interaction. This session automatically generates a **Task** in the `Task Queue`, creating a trackable work item for an agent. When the agent resolves the inquiry and closes the conversation, the session ends, and the corresponding task is completed. This ensures every customer interaction is accounted for as a manageable piece of work.
+
+Underpinning this is a powerful **Contact Merging** algorithm. UCC automatically identifies and links contacts from the same person across different channels (e.g., WhatsApp, Facebook, Email), consolidating their interaction history into a single, unified profile. This provides agents with a true 360-degree view of the customer.
+
+The UCC Applet consists of multiple integrated modules that leverage these core concepts:
 
 -   **Task Queue**: The operational backbone where all work is organized, prioritized, and distributed. Includes specialized views (All Task Queue, Team Task Queue, My Task Queue) for different organizational roles and separate queues for inbound and outbound work.
 
@@ -155,15 +159,11 @@ The All Task Queue provides a comprehensive, organization-wide view of every tas
 
 The listing page is where Admins, Owners, and Managers can view all available tasks, their details and assignment status. This centralized view allows supervisors to monitor workload distribution, identify bottlenecks, and ensure tasks are properly assigned across teams and agents.
 
-**Available Fields:**
+**Fields Legends:**
 -   **Task Code**: A brief, unique identifier that provides a quick reference for the task. This code can be used for searching, referencing in conversations, or tracking specific tasks across the system.
 -   **Team Code**: Identifies which team the task is currently assigned to. Tasks can be assigned to either a team (making them visible to all team members) or to a specific agent (making them exclusive to that person). This field will be empty if the task is assigned directly to an agent instead.
--   **Agent Code**: Shows the specific agent the task is assigned to. When a task is assigned to an individual agent, it becomes their exclusive responsibility. This field will be empty if the task is assigned to a team instead.
+-   **Agent Code**: Shows the specific agent the task is assigned to. This field will be empty if the task is assigned to a team instead.
 -   **Channel**: Indicates the communication channel through which this task originated or should be handled (WhatsApp, Email, SMS, Telegram Messenger, or Voice-Call). This helps agents understand the context and preferred communication method for the task.
--   **Description**: Provides detailed information about what the task entails, including context, customer information, or specific actions required.
--   **Priority**: A numerical value from 1-10 that indicates the urgency or importance of the task. Higher priority tasks should generally be handled first to ensure critical work is completed promptly.
--   **Create Date**: Timestamp showing when the task was originally created in the system. This helps identify how long a task has been pending.
--   **Update Date**: Timestamp showing the last time any changes were made to the task, including status updates, reassignments, or detail modifications.
 
 {{< figure src="/images/ucc-applet/e91298aa-3164-438a-9fcf-c479c35a4ea5.jpeg" caption="Fig 1: all-task-queue-listing" >}} 
 
@@ -196,8 +196,8 @@ Once you've selected the worker type, the system will display a list of availabl
 The edit page provides detailed control over individual tasks, allowing supervisors to modify task information and manage both the task's status and assignment. This page is accessed by clicking on a specific task from the listing page.
 
 **Details That Can Be Updated:**
--   **Priority**: Adjust the priority level (1-10) based on changing business needs or urgency. Increasing priority can help ensure critical tasks receive attention first.
--   **Description**: Modify or add details to the task description to provide clearer instructions, add context, or update information as situations evolve.
+-   **Priority**
+-   **Description**
 
 {{< figure src="/images/ucc-applet/dda65f67-d7e4-4a50-b09f-315b5337a70a.jpeg" caption="Fig 5: all-task-queue-edit-part-1" >}}
 
@@ -217,14 +217,10 @@ The Team Task Queue is designed for collaborative work environments where tasks 
 
 This listing page is where members of a team can view all tasks assigned to their team. When a task appears in this queue, it means the task is available for any team member to claim and work on. This creates a flexible work distribution model where agents can self-assign based on their availability and expertise.
 
-**Available Fields:**
+**Fields Legends:**
 -   **Task Code**: A brief, unique identifier for quick reference and tracking of the task.
 -   **Team Code**: Shows which team the task is assigned to. Since this is the Team Task Queue, this will always show your team's code.
 -   **Channel**: Indicates the communication channel (WhatsApp, Email, SMS, Telegram Messenger, or Voice-Call) associated with the task, helping you understand the nature and context of the work.
--   **Description**: Detailed information about the task, providing context and instructions for completion.
--   **Priority**: The urgency level (1-10) of the task, helping team members decide which tasks to tackle first.
--   **Create Date**: When the task was originally created, indicating how long it has been waiting.
--   **Update Date**: The last time the task was modified, showing recent activity or changes.
 
 Note that the Agent Code field is not shown in this view because these tasks are assigned to the team as a whole, not to individual agents yet.
 
@@ -245,8 +241,8 @@ Team members can use bulk actions to efficiently claim multiple tasks at once or
 The team task queue edit page provides a simplified interface focused on task assignment actions. Team members can claim tasks for themselves or release tasks back to the team pool, but cannot modify task details like priority or description (those changes are reserved for supervisory roles in the All Task Queue).
 
 **Actions Available:**
--   **UNASSIGN**: Releases the task back to the team, removing your individual assignment and making it available for other team members to claim.
--   **ASSIGN_TO_ME**: Claims the task for yourself, moving it from the team queue to your personal My Task Queue.
+-   **UNASSIGN**
+-   **ASSIGN_TO_ME**
 
 "Task Assignment" can be updated by clicking the "TASK ACTIONS" dropdown, which shows the assignment options available for this task.
 
@@ -260,14 +256,10 @@ The My Task Queue is your personal workspace showing only tasks that have been s
 
 This listing page displays all tasks that are currently assigned directly to you, whether they were assigned by a supervisor or claimed by you from a team queue. This focused view helps you concentrate on your specific responsibilities without distraction from other team members' work.
 
-**Available Fields:**
+**Fields Legends:**
 -   **Task Code**: The unique identifier for the task, useful for referencing in communications or searching.
--   **Team Code**: Shows which team this task is associated with, even though it's now assigned to you individually. This provides context about the task's origin.
+<!-- -   **Team Code**: Shows which team this task is associated with, even though it's now assigned to you individually. This provides context about the task's origin. -->
 -   **Channel**: The communication channel (WhatsApp, Email, SMS, Telegram Messenger, or Voice-Call) for the task, indicating how you should interact with the customer or how the task originated.
--   **Description**: Full details about what needs to be accomplished, including any relevant context or customer information.
--   **Priority**: The urgency level (1-10) helping you decide which tasks to work on first when managing multiple assignments.
--   **Create Date**: When the task was created, showing how long the task has been in the system.
--   **Update Date**: The most recent modification timestamp, indicating recent activity or status changes.
 
 {{< figure src="/images/ucc-applet/ae77ad3e-7657-4d13-adc5-f3ba9802d00d.jpeg" caption="Fig 10: my-task-queue-listing" >}}
 
@@ -276,10 +268,10 @@ This listing page displays all tasks that are currently assigned directly to you
 From your personal queue, you can efficiently update the status of multiple tasks simultaneously. This is particularly useful at the end of a work session when you need to mark several completed tasks or need to adjust the status of multiple related items. Selecting tick boxes in the my task queue listing activates the bulk actions functionality.
 
 **Available Bulk Actions:**
--   **IN-PROGRESS**: Updates the task status to indicate you're actively working on it. This signals to supervisors and team members that the task is being addressed and helps track which items are currently being handled.
--   **COMPLETED**: Marks tasks as finished, removing them from your active queue. Use this when you've successfully completed all required work for the task.
--   **CANCELED**: Updates the task status to canceled, typically used when a task becomes irrelevant or is superseded by other work. Canceled tasks are removed from active work queues.
--   **UNASSIGNED**: Removes your assignment from the task, returning it to an unassigned state. Use this when you can't complete a task and need it to be reassigned to someone else.
+-   **IN-PROGRESS**
+-   **COMPLETED**
+-   **CANCELED**
+-   **UNASSIGNED**
 
 {{< figure src="/images/ucc-applet/9b48ed3e-e61f-4999-9984-cc6f82f4933c.jpeg" caption="Fig 11: my-task-queue-listing-bulk-actions" >}}
 
@@ -303,15 +295,11 @@ The All Task Queue Outbound provides supervisors with complete visibility into a
 
 The listing page lets Admins, Owners, and Managers view all available outbound tasks, their details, and assignment status. This centralized dashboard allows leadership to oversee all outbound initiatives, track which campaigns or follow-ups are in progress, and identify any outbound work that needs attention or reassignment.
 
-**Available Fields:**
+**Fields Legends:**
 -   **Task Code**: A unique identifier that provides quick reference for the outbound task. This code is particularly useful when coordinating outbound campaigns or tracking specific customer outreach initiatives.
 -   **Team Code**: Indicates which team is responsible for this outbound task. Outbound tasks can be assigned to an entire team (allowing any member to handle the outreach) or to a specific agent (for personalized or relationship-based follow-ups). This field remains empty if the task is assigned directly to an individual agent.
 -   **Agent Code**: Shows the specific agent assigned to handle this outbound task. When outbound work requires a personal touch or specific expertise, tasks can be assigned directly to individuals. This field is empty if the task is assigned to a team instead.
 -   **Channel**: Specifies the communication channel to be used for the outbound contact (WhatsApp, Email, SMS, Telegram Messenger, or Voice-Call). This helps agents prepare appropriately and use the right tools for their outreach.
--   **Description**: Provides comprehensive details about the outbound task, including the purpose of the contact, any relevant customer history, talking points, or specific goals for the interaction.
--   **Priority**: A numerical ranking from 1-10 indicating the urgency or importance of the outbound task. High-priority outbound tasks might include time-sensitive follow-ups or valuable customer contacts that should be reached quickly.
--   **Create Date**: Timestamp showing when the outbound task was created. This helps track how long outbound work has been waiting and ensures timely customer contact.
--   **Update Date**: Shows the most recent modification to the task, including status changes, reassignments, or updates to task details.
 
 {{< figure src="/images/ucc-applet/8739cf78-a47e-4368-b561-ddd517996343.jpeg" caption="Fig 13: all-task-queue-outbound-listing" >}}
 
@@ -320,10 +308,10 @@ The listing page lets Admins, Owners, and Managers view all available outbound t
 Bulk actions enable supervisors to efficiently manage large volumes of outbound tasks simultaneously, which is particularly valuable when coordinating campaigns or redistributing workload across teams. Selecting tick boxes in the all task queue outbound listing component activates the bulk actions functionality, allowing you to perform the same operation across multiple outbound tasks at once.
 
 **Available Bulk Actions:**
--   **ASSIGN_WORKER**: Allows you to assign multiple outbound tasks to a specific agent or team in one operation. This is especially useful when launching outbound campaigns, balancing call lists across agents, or reallocating work based on agent availability or expertise.
--   **COMPLETE**: Marks selected outbound tasks as completed when the outreach has been successfully conducted. Use this to close tasks that have been finished but not yet marked complete by the assigned agent.
--   **CANCEL**: Cancels selected outbound tasks when the contact is no longer needed—for example, if a customer has already been reached through another channel, if the opportunity has closed, or if the outbound initiative has been discontinued.
--   **UNASSIGN**: Removes current assignments from selected outbound tasks, returning them to an unassigned state. This is useful when redistributing work or when you need to clear assignments before reassigning tasks based on new criteria.
+-   **ASSIGN_WORKER**
+-   **COMPLETE**
+-   **CANCEL**
+-   **UNASSIGN**
 
 {{< figure src="/images/ucc-applet/516cb2fa-9199-4bb6-abf8-f00934b74b87.jpeg" caption="Fig 14: all-task-queue-listing-bulk-actions" >}}
 
@@ -344,8 +332,8 @@ Once you've selected the worker type, a filtered list will appear showing only t
 The edit page provides detailed control over individual outbound tasks, allowing supervisors to refine task information and manage both the task's status and assignment. Access this page by clicking on a specific outbound task from the listing to make adjustments as circumstances change or new information becomes available.
 
 **Details That Can Be Updated:**
--   **Priority**: Adjust the priority level (1-10) to reflect changing business needs. For example, you might increase priority if a customer becomes more valuable or if a time-sensitive opportunity emerges.
--   **Description**: Modify the task description to add new information, update talking points, include recent customer interactions, or clarify the purpose of the outbound contact. This ensures agents have the most current and relevant information when they make contact.
+-   **Priority**
+-   **Description**
 
 {{< figure src="/images/ucc-applet/43d575f8-e9a3-4fea-b14b-9c3a848695ee.jpeg" caption="Fig 17: all-task-queue-outbound-edit-part-1" >}}
 
@@ -365,14 +353,10 @@ The Team Task Queue Outbound is designed for collaborative outbound work where t
 
 This listing page is where members of a team can view all outbound tasks assigned to their team. When an outbound task appears here, it's available for any team member to claim and complete. This flexible model allows agents to self-select outbound work when they have capacity, are in the right mindset for proactive outreach, or have relevant expertise for specific types of customer contact.
 
-**Available Fields:**
+**Fields Legends:**
 -   **Task Code**: The unique identifier for the outbound task, useful for referencing in team discussions or tracking specific customer contacts.
 -   **Team Code**: Displays which team is responsible for this outbound work. Since this is the Team Task Queue Outbound, this will always show your team's identifier.
 -   **Channel**: Shows the communication channel (WhatsApp, Email, SMS, Telegram Messenger, or Voice-Call) to be used for the outbound contact. This helps you prepare with the appropriate tools and mindset for the type of customer interaction.
--   **Description**: Comprehensive details about the outbound task, including who to contact, why you're reaching out, any relevant customer history, and what you hope to accomplish with the contact.
--   **Priority**: The urgency level (1-10) of the outbound task. Higher priority might indicate time-sensitive follow-ups, high-value customers, or contacts that need to be made within a specific timeframe.
--   **Create Date**: When the outbound task was created, helping you identify how long the contact has been waiting and whether any urgency has increased due to elapsed time.
--   **Update Date**: The most recent modification timestamp, showing if the task has been recently updated with new information or instructions.
 
 Note that the Agent Code field is not displayed in this view because these outbound tasks are assigned to the team as a collective, not to specific individuals yet. Once you claim a task, it will move to your personal My Task Queue Outbound.
 
@@ -383,8 +367,8 @@ Note that the Agent Code field is not displayed in this view because these outbo
 Team members can use bulk actions to efficiently claim multiple outbound tasks at once or release tasks back to the team pool. This is particularly useful when preparing for a focused outbound calling session or when redistributing work within the team. Selecting tick boxes in the team task queue outbound listing component activates the bulk actions functionality.
 
 **Available Bulk Actions:**
--   **ASSIGN_TO_ME**: Allows you to claim multiple outbound tasks simultaneously, assigning them all to yourself. This is valuable when you're ready to conduct a series of outbound contacts—for example, starting a calling session where you plan to reach multiple customers in sequence.
--   **UNASSIGN**: Releases selected outbound tasks back to the team pool, making them available for other team members to claim. Use this if you've claimed tasks but circumstances change, such as discovering you lack specific information needed for the contact or if other priorities take precedence.
+-   **ASSIGN_TO_ME**
+-   **UNASSIGN**
 
 {{< figure src="/images/ucc-applet/1011f5ca-9416-4b7e-8d61-d8b5a006df43.jpeg" caption="Fig 20: team-task-queue-listing-bulk-actions" >}}
 
@@ -393,8 +377,8 @@ Team members can use bulk actions to efficiently claim multiple outbound tasks a
 The team task queue outbound edit page provides a focused interface for managing task assignments. Team members can claim outbound tasks for themselves or release them back to the team, but cannot modify task details like priority or description—those administrative functions are reserved for supervisory roles in the All Task Queue Outbound.
 
 **Actions Available:**
--   **UNASSIGN**: Releases the outbound task back to the team, removing your individual assignment and making it available for other team members to claim. Use this when you can't complete the outbound contact or if someone else is better positioned to make the call.
--   **ASSIGN_TO_ME**: Claims the outbound task for yourself, moving it from the team queue to your personal My Task Queue Outbound where you can manage it through completion.
+-   **UNASSIGN**
+-   **ASSIGN_TO_ME**
 
 "Task Assignment" can be updated by clicking the "TASK ACTIONS" dropdown, which displays the assignment management options available for this outbound task.
 
@@ -412,10 +396,6 @@ This listing page displays all outbound tasks currently assigned directly to you
 -   **Task Code**: The unique identifier for the outbound task, useful for referencing in notes, logs, or communications about your customer contacts.
 -   **Team Code**: Shows which team this outbound task originated from, even though it's now your individual responsibility. This provides context about the broader campaign or initiative the task belongs to.
 -   **Channel**: Identifies the communication channel (WhatsApp, Email, SMS, Telegram Messenger, or Voice-Call) you should use for this outbound contact. This helps you prepare mentally and practically for the type of customer interaction ahead.
--   **Description**: Complete details about the outbound contact, including customer information, the purpose of reaching out, any background context, talking points, and what you're hoping to achieve with the interaction.
--   **Priority**: The urgency level (1-10) helping you decide which outbound contacts to make first. High-priority tasks might be time-sensitive follow-ups or high-value customer opportunities that shouldn't wait.
--   **Create Date**: When the outbound task was created, showing how long the contact has been pending. This helps you identify any aging tasks that need immediate attention.
--   **Update Date**: The most recent modification timestamp, indicating if new information or instructions have been added since the task was assigned to you.
 
 {{< figure src="/images/ucc-applet/35c3a67e-3a94-41e4-85c7-d886d4487233.jpeg" caption="Fig 22: my-task-queue-listing" >}}
 
@@ -590,6 +570,38 @@ The Conversation History tab shows all previous conversations, inquiries, and in
 
 {{< figure src="/images/ucc-applet/87fff6ae-a9c8-452d-9e57-8258c7971571.jpeg" caption="Fig 39: inbox-all-task-conversation-messages-customer-details-information-task-assignment" >}}
 
+###### 4.1.2.9.5 Inbox -> All Task -> Conversation -> Messages -> Customer Details -> Tags
+
+Tags allow agents to categorize conversations based on specific topics, urgency, or customer types. Agents can create new tags or select existing ones to label the conversation, making it easier to filter and organize interactions later.
+
+###### 4.1.2.9.6 Inbox -> All Task -> Conversation -> Messages -> Customer Details -> Issue Tracker
+
+The Issue Tracker tab allows agents to log and track specific problems or requests raised during the conversation. Agents can view details of the issue, assign categories, and attach relevant files, ensuring that customer complaints or technical problems are formally recorded and monitored.
+
+###### 4.1.2.9.7 Inbox -> All Task -> Conversation -> Messages -> Customer Details -> Shopping Cart
+
+The Shopping Cart tab facilitates integrated commerce by allowing agents to create orders directly within the UCC interface. Linked to the Customer and Doc Item applets, agents can select the branch, location, currency, and sales agent, and then add items to the cart. Agents can also configure delivery details and settlement options for the order, streamlining the entire sales process from selection to fulfillment within the conversation.
+
+###### 4.1.2.9.8 Inbox -> All Task -> Conversation -> Messages -> Customer Details -> Transaction History
+
+This tab provides a consolidated view of the customer's past transactions across all platforms. Using contact merging, the system identifies the user and displays their order details, amounts, and settlement status from various sources (e.g., Shopee, Lazada), giving agents a complete picture of the customer's purchasing behavior.
+
+###### 4.1.2.9.9 Inbox -> All Task -> Conversation -> Messages -> Customer Details -> E-Invoice
+
+The E-Invoice tab enables agents to issue electronic invoices to customers upon request. Agents can input transaction details (e.g., invoice number, amount, date, PIN) or use a snapshot of a receipt to generate the invoice. The tab also maintains a history of issued e-invoices, allowing agents to reuse a customer's saved tax information for future invoices without having to ask for it again. This history includes the validation status of each document with relevant authorities (e.g., IRB), confirming whether it has been successfully accepted.
+
+###### 4.1.2.9.10 Inbox -> All Task -> Conversation -> Messages -> Customer Details -> Product
+
+The Product tab allows agents to browse and share product links directly with customers. If a requested item is out of stock, agents can use this feature to find and recommend similar available products, sending a shareable link to the customer to encourage purchase completion.
+
+###### 4.1.2.9.11 Inbox -> All Task -> Conversation -> Messages -> Customer Details -> Marketing (Vouchers)
+
+Under the Marketing tab, agents can access and share vouchers with customers. This feature supports syncing vouchers from marketplace platforms (like Shopee). Vouchers can be synced manually by the agent using the "Sync Voucher" option, or they can be updated automatically by a background process that runs at regular intervals. Agents can use these vouchers to resolve complaints, such as delivery issues or faulty products, by offering discounts or compensation directly through the chat.
+
+###### 4.1.2.9.12 Inbox -> All Task -> Conversation -> Messages -> Customer Details -> Agent Handover
+
+The Agent Handover feature integrates with the Bot Applet to manage conversations when agents are unavailable. If a customer initiates a chat (e.g., via Web Chat) and receives no response, agents can use this menu to trigger an automated bot reply via email, ensuring the customer's inquiry is acknowledged even during busy periods.
+
 ### 4.2 My Team Tasks
 
 My Team Tasks provides a team-level view of incoming communications, showing all inbox items assigned to your team. This view is functionally the same as the All Tasks view described above (section 4.1), but filtered to show only communications assigned to teams you're a member of.
@@ -695,14 +707,9 @@ The task report shows a summary of the most important information for tasks in U
 {{< figure src="/images/ucc-applet/c3ec35f6-3da8-4866-b602-30a3aed7631c.jpeg" caption="Fig 49: report-task-report-listing-1" >}}
 
 The task report shows the following information for each task:
--   **Code**: The unique task code identifier that can be used to reference or locate specific tasks in the system.
--   **Name**: The descriptive name of the task, providing a quick understanding of what the task involves.
 -   **Target Type**: Indicates the communication medium for the task—Conversation (messaging platforms), Email (email communications), or Voice (phone calls). This helps you understand the distribution of work across different communication channels.
--   **Task Status**: Shows the current state of the task with values like Canceled (task was discontinued), Completed (task was successfully finished), Agent_Assigned (task has been given to a specific agent), Team_Assigned (task is assigned to a team), In_Progress (task is actively being worked on), and other status indicators. This helps track task progression and identify bottlenecks.
 -   **Channel**: Specifies the exact platform or service used, such as WHATSAPP, TELEGRAM, EMAIL, SMS, or VOICE. This granular detail helps you understand which specific channels are most active.
--   **Total Duration**: Shows how long the task has lasted from creation to completion (or current time if ongoing). This metric is crucial for understanding response times, identifying tasks taking too long, and calculating average handling times.
--   **Created Date**: Timestamp showing when the task was originally created in the system.
--   **Last Modified Date**: Shows the most recent change to the task, helping you understand task activity and freshness.
+-   **Total Duration**: Shows how long the task has lasted from creation to completion (or current time if ongoing).
 
 This comprehensive information can be exported using the "Export CSV" button, allowing you to download the complete dataset for analysis in Excel, import into business intelligence tools, create custom reports, or maintain records for compliance purposes.
 
@@ -717,13 +724,10 @@ The Agent report shows a summary of agent activities in UCC, with each agent rep
 {{< figure src="/images/ucc-applet/2671ff99-ef7c-4164-9940-8ad2ac28d4a6.jpeg" caption="Fig 51: report-agent-report-listing-1" >}}
 
 The agent report shows the following information for each agent:
--   **Code**: The unique agent identifier code used in the system for tracking and reference purposes.
--   **Name**: The agent's name, making it easy to identify individual team members in the report.
--   **Total Tasks**: The total number of tasks that have been assigned to the agent during the reporting period. This shows overall workload and how much work each agent is receiving.
--   **Completed Tasks**: The total number of tasks that have been successfully completed by the agent. This is a key productivity metric showing how much work the agent has finished.
--   **Canceled Tasks**: The total number of tasks assigned to the agent that were canceled. High cancellation rates might indicate issues with task routing, or could be normal depending on your business processes.
--   **In-progress Tasks**: Tasks that are currently being actively handled by the agent. This shows current workload and can help identify if agents are overloaded or have capacity for more work.
--   **Average Duration**: The average time required by the agent to complete tasks from assignment to completion. This efficiency metric helps identify fast performers, understand typical task complexity, and spot agents who might need support or training.
+-   **Completed Tasks**
+-   **Canceled Tasks**
+-   **In-progress Tasks**
+-   **Average Duration**
 
 The report can also be exported as CSV using the "Export CSV" button, enabling further analysis in spreadsheet software, integration with HR or performance management systems, or archival for performance review purposes.
 
@@ -752,6 +756,8 @@ The QR Codes tab generates a unique QR code specific to you which you can share 
 When a customer scans your QR code using their smartphone, it provides them with your agent information and also designates you as their preferred agent in the system. Future communications from that customer can then be intelligently routed to you when possible, ensuring they receive consistent service from someone who already understands their needs and history.
 
 This feature is particularly valuable in businesses where relationship continuity matters—such as technical support where understanding a customer's setup is important, account management where knowing customer preferences is valuable, or any service where building trust and rapport improves outcomes.
+
+*(Note: This personal QR code for designating a preferred agent is distinct from the QR codes generated in the `Configuration` section, which are used on product packaging to initiate new support conversations.)*
 
 {{< figure src="/images/ucc-applet/99ed0bcd-4e1e-451d-a297-b5883c2ac5ce.jpeg" caption="Fig 54: profile-qr-code-preferred-agent" >}}
 
@@ -787,14 +793,14 @@ Clicking the plus (+) button from the listing page will bring the user to the Cr
 
 The following details can be entered when manually creating a contact:
 
--   **First Name**: The customer's given name for personalization and proper addressing.
--   **Last Name**: The customer's family name for complete identification and formal communications.
+-   **First Name**
+-   **Last Name**
 -   **Contact Name**: Usually the customer's username on the platform if known, or their phone number if no username exists. This is what appears in conversation lists.
 -   **Channel**: Select from a dropdown menu with communication platform options including SMS, TELEGRAM, WHATSAPP, and FB_MESSENGER. This determines how the system will communicate with this contact.
--   **Phone number**: The mobile or contact number connected to this contact, with country code selectable from a dropdown to ensure proper international formatting.
+-   **Phone number**
 -   **Reference**: The platform-specific identifier such as Telegram handle (e.g., @username), WhatsApp number, or Facebook username that uniquely identifies them on that platform.
--   **Email**: The customer's email address if known, enabling email-based communications and providing an alternative contact method.
--   **Description**: A free-text field for notes about the customer, their preferences, how you met them, or any other contextual information that will help agents provide better service.
+-   **Email**: filling this in, enables email-based communications and providing an alternative contact method.
+-   **Description**
 
 {{< figure src="/images/ucc-applet/33f85d62-f031-404c-a2ca-8dd03a5e72fd.jpeg" caption="Fig 57: contact-create-manual-creation" >}}
 
@@ -820,14 +826,9 @@ Clicking an item from the listing page will open the contact detail view where u
 
 Fields that can be updated include all the same information captured during creation:
 
--   **First Name**: Update if you learn the customer's proper name or correct a misspelling.
--   **Last Name**: Correct or update as needed.
 -   **Contact Name**: Modify if the customer changes their username or you discover a more appropriate identifier.
 -   **Channel**: Change if the customer prefers a different communication platform (for example, switching from SMS to WhatsApp).
--   **Phone number**: Update if the customer gets a new number. The country code can be adjusted from the dropdown if they relocate internationally.
 -   **Reference**: Update the platform-specific handle if it changes.
--   **Email**: Update with current email addresses as they change.
--   **Description**: Add new notes, update information, or refine details as you learn more about the customer through ongoing interactions.
 
 Keeping contact information current ensures communications reach customers reliably, reduces bounced messages, and demonstrates professionalism through accurate addressing.
 
@@ -955,32 +956,53 @@ The screenshot below shows the result after grouping—agents are organized in a
 
 This section is currently under development and will provide additional capabilities for viewing and managing agent status and activity. Check back for updates as this feature becomes available.
 
-## 13. Configurations
+## 13. Task Router
 
-The Configurations section provides administrative controls for setting up and managing the foundational elements of your UCC system. These settings determine how your organization uses UCC, what resources are available, how work is routed, and what automation rules govern system behavior. Proper configuration is essential for optimal system performance and ensuring UCC meets your organization's specific needs.
+The Task Router menu provides a technical view into the lifecycle of tasks as they move through the UCC system. It makes a critical distinction between live operations and historical records, separated into two main views:
 
-Configuration capabilities include:
+-   **Router Queue**: This is the queue of **live, ongoing tasks**. When a new task is created (e.g., from a new customer conversation), it first appears here while it is open and waiting to be handled or is actively in progress. This view represents the current, real-time state of work in the system.
 
--   **Projects**: Define and manage organizational projects or business units that help categorize and organize work. Projects might represent different product lines, customer segments, departments, or any other logical division of your business operations.
+-   **Tasks**: This view acts as a comprehensive **history table** for all tasks that have been completed or closed. Once an agent ends a session and its corresponding task is marked as completed, the task moves from the `Router Queue` to this `Tasks` list. Here, you can review the full history of past work, click on any completed task to see its detailed event log, and audit the entire lifecycle of any interaction.
 
--   **Virtual Contacts**: Configure the phone numbers, messaging accounts, and communication endpoints your organization uses to interact with customers. These virtual contacts are the identities customers see when you communicate with them.
+## 14. Configuration
 
--   **Teams**: Create and manage teams of agents who work together on shared work queues. Team configuration determines which agents can access team-based task queues and collaborate on group assignments.
+The Configuration menu allows administrators and managers to set up the foundational elements of the UCC system, ensuring it aligns with organizational workflows and campaigns.
 
--   **Agents**: Set up individual agent accounts, manage permissions, configure access levels, and maintain the roster of people who use UCC to interact with customers.
+### 14.1 Projects
 
--   **Predefined Messages**: Create templated responses for common scenarios, ensuring consistent messaging across your team and enabling faster response times for frequently asked questions.
+Projects allow you to organize tasks and agents around specific initiatives, such as marketing campaigns (e.g., "CNY Campaign"). You can assign specific agents to handle a project and configure settings like payment gateways and settlement links specific to that initiative.
 
--   **QR Codes**: Generate and manage QR codes for various purposes, including agent-specific codes for preferred agent designation and potentially other scanning-based features.
+### 14.2 Virtual Contacts
+
+Virtual Contacts represent the communication endpoints for your organization. Here, you can configure profiles for various channels including WhatsApp, SMS, Voice, Email, and Web Chat. This setup defines how customers can reach you and identifies the "sender" identity for your outbound communications.
+
+### 14.3 Teams and Skills
+
+This section allows you to create Teams and define the Skills associated with them.
+*   **Teams**: specific groups of agents (e.g., "Support Team", "Sales Team").
+*   **Skills**: Attributes or expertise required for certain tasks.
+By linking skills to teams, the system can intelligently route incoming conversations to the most appropriate group of agents based on the nature of the inquiry.
+
+### 14.4 Agents
+
+The Agent configuration section is used for onboarding new customer support agents into the UCC system. This typically involves setting up agent profiles and assigning them to teams or projects.
+
+### 14.5 Predefined Messages
+
+Administrators can configure Predefined Messages to standardize agent responses and improve efficiency. These templates can be categorized (e.g., Welcome Message, Closing Message, Thank You) and made available to agents within the conversation interface.
+
+### 14.6 QR Code
+
+The QR Code configuration allows you to generate unique QR codes linked to specific routing keywords. These codes can be printed on parcels or product packaging. When a customer scans the code, it initiates a conversation (typically via Web Chat) with a specific context, such as "Product Inquiry" or "Returns," allowing for streamlined handling of post-purchase interactions.
+
+*(Note: This QR code for product and parcel inquiries is distinct from the personal QR codes found in the `My Profile` section, which are used by customers to select a preferred agent.)*
+
+### 14.7 Other Configurations
 
 -   **Tasks**: Configure task-related settings, workflows, and parameters that govern how inbound work is created, assigned, and managed through the system.
-
 -   **Outbound Tasks**: Set up configurations specific to outbound task management, including settings for proactive outreach campaigns and agent-initiated customer contacts.
-
 -   **Automation Rule**: Define automated behaviors that trigger based on specific conditions, helping streamline operations by automatically routing work, sending notifications, or taking actions without manual intervention.
-
 -   **Rule**: Configure conditional logic that determines when automation should occur, what criteria must be met, and how the system should evaluate different scenarios.
-
 -   **Action**: Set up specific actions that the system can take automatically, such as assigning tasks, sending messages, updating statuses, or triggering workflows.
 
 ## Ready to Transform Your Customer Service?
