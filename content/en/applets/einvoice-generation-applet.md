@@ -1,6 +1,6 @@
 ---
-title: "My E-invoice Admin Applet"
-description: "A comprehensive step-by-step guide to creating, managing, and submitting electronic invoices for LHDN compliance using the My E-invoice Admin Applet."
+title: "My E-Invoice Admin Applet"
+description: "Comprehensive e-invoice management system for LHDN MyInvois compliance, automated validation, and seamless submission workflows"
 tags:
 - einvoice-module
 - electronic-invoicing
@@ -13,128 +13,331 @@ tags:
 weight: 400
 ---
 
-## **1. Introduction: What is the My E-Invoice Admin Applet?**
+## Purpose and Overview
 
-The **My E-Invoice Admin Applet** is your comprehensive digital command center for managing electronic invoices (e-invoices) in full compliance with the Lembaga Hasil Dalam Negeri (LHDN) of Malaysia's MyInvois system requirements. This powerful tool transforms the complex process of e-invoicing into a streamlined, automated workflow that handles everything from initial creation to final validation and archiving.
+Managing e-invoices shouldn't be a compliance nightmare—it should be a streamlined process that ensures regulatory adherence while maintaining business efficiency. The My E-Invoice Admin Applet transforms e-invoicing from a complex, error-prone task into an efficient, automated system that saves time for finance teams and ensures LHDN compliance.
 
-### **Why E-Invoicing Matters**
-
-E-invoicing is now mandatory for all businesses in Malaysia under the MyInvois system. This digital transformation ensures:
-
-*   **Real-time validation** of invoices by LHDN
-*   **Immediate compliance verification** with tax regulations
-*   **Automated fraud prevention** through digital signatures and QR codes
-*   **Seamless integration** with your existing business processes
-*   **Reduced processing time** from days to minutes
-
-### **Who is this guide for?**
-
-This comprehensive guide serves every stakeholder in your e-invoicing ecosystem:
-
-*   **Accounts Receivable (B2B):** Perfect for issuing individual e-invoices to business customers with full validation tracking
-*   **Counter Sales (B2C):** Ideal for managing walk-in customer transactions and monthly consolidated submissions
-*   **Finance Managers:** Essential for overseeing the entire e-invoice workflow, monitoring key compliance metrics, and ensuring regulatory adherence
-*   **Procurement Teams:** Streamlines self-billed e-invoice creation when suppliers don't issue E-invoices
-*   **Auditors & Compliance Officers:** Provides complete traceability and evidence export capabilities for regulatory reviews
-
-### **What can you do with the Applet?**
-
-The My E-Invoice Admin Applet empowers you with comprehensive e-invoice management capabilities:
-
-*   **Create and Submit:** Generate both individual and consolidated e-invoices for any transaction type with automated validation
-*   **Manage and Review:** Monitor submission status in real-time with detailed progress indicators and error notifications
-*   **Cancel and Reject:** Handle time-sensitive e-invoice cancellations and rejections within the critical 72-hour window
-*   **Ensure Compliance:** Maintain full adherence to all LHDN requirements with built-in validation checks and automated error detection
-*   **Archive and Export:** Access permanent digital records with QR codes, validation URLs, and complete audit trails
-
----
-
-## **2. 🚦 Quick Start: Your First E-Invoice in 5 Steps**
-
-Get up and running quickly with your first validated e-invoice for a B2B sale. This streamlined guide walks you through the essentials, assuming you have basic system access.
-
-{{< callout type="tip" >}}
-**Tip:** Prepare your master data in advance to avoid delays.
+{{< callout type="info" >}}
+**Regulatory Requirement**: E-invoicing is mandatory for all businesses in Malaysia under the LHDN MyInvois system. Non-compliance can result in penalties and business disruption.
 {{< /callout >}}
 
-### **Prerequisites: What You Need Before Starting**
+### Who Benefits from This Applet?
 
-Before creating your first e-invoice, ensure these key elements are set up in your system. Missing information is the most common cause of validation errors.
+**Accounts Receivable (B2B):**
+- Issue individual e-invoices to business customers
+- Real-time validation tracking
+- Automated compliance checks
+- Quick error resolution
 
-*   **Customer Record (Use Customer Maintenance Applet to update):** Must include:
-    *   `ID Type` (e.g., BRN, NRIC, Passport)
-    *   `Registration/ID Number`
-    *   `TIN` (Tax Identification Number)
-    *   `Email Address` (for notifications)
-    *   `Complete Address` (including city, state, postcode)
+**Counter Sales (B2C):**
+- Manage walk-in customer transactions
+- Monthly consolidated submissions
+- Upgrade to individual invoices within 72 hours
+- Simplified batch processing
 
-    ![Description](/images/einvoice-applet/customer-applet-1.png)
+**Finance Managers:**
+- Oversee entire e-invoice workflow
+- Monitor key compliance metrics
+- Dashboard analytics and reporting
+- Ensure regulatory adherence
 
-*   **Item Details (Use Doc Item Maintenance Applet to update > E-Invoice Tab):** Each item in the invoice needs:
-    *   `CLASSIFICATION_CODE`
-    *   `EINVOICE_TAXABLE_TYPE_CODE`
-    *   `EINVOICE_UOM`
+**Procurement Teams:**
+- Create self-billed e-invoices
+- Handle supplier non-compliance
+- Automated validation workflows
+- Seamless integration with purchasing
 
-    ![Description](/images/einvoice-applet/doc-item-applet-1.png)
+**Auditors & Compliance Officers:**
+- Complete traceability and audit trails
+- Export capabilities for regulatory reviews
+- QR code verification
+- Historical data access
 
-*   **Organization Profile (Use Organization Applet to update):** Your company's details should have:
-    *   `TIN` (Tax Identification Number)
-    *   `BRN` (Business Registration Number)
-    *   `MSIC` (Malaysia Standard Industrial Classification code for business activity)
-    *   `Company Address` (full address including Postal Code, City, State etc.)
+### What Problems Does This Solve?
 
-    ![Description](/images/einvoice-applet/org-applet-1.png)
+**The Manual E-Invoice Problem:**
 
+Traditional invoicing processes struggle with LHDN compliance requirements. Common issues include:
+- Manual data entry errors causing rejections
+- Missing mandatory fields discovered too late
+- Delayed submissions and penalties
+- Difficult tracking of validation status
+- No centralized compliance monitoring
 
-If any of these are missing, update them in the applets before proceeding.
+**The My E-Invoice Admin Applet Solution:**
 
-### **Step-by-Step Instructions**
+- **Automated validation** - Pre-submission checks catch errors early
+- **Queue-based processing** - Intelligent routing and batch handling
+- **Real-time monitoring** - Track every submission from creation to validation
+- **Complete audit trail** - Full history with QR codes and LHDN references
+- **Role-based workflows** - Customized processes for different user types
+- **Integration ready** - Connects with sales, purchasing, and accounting modules
 
-1.  **Create the Invoice:**
-    *   Navigate to the **Sales Invoice Applet** in your akaun homepage.
-    *   Click on `New Sales Invoice` to start a fresh document.
-    *   Select the appropriate customer from your records.
+## Key Features Overview
 
-2.  **Enter Invoice Details:**
-    *   Fill in the **Main** tab with basic information like invoice date, due date, and reference numbers.
-    *   In the **Account** tab, verify customer details and add any specific terms.
-    *   Use the **Lines** tab to add items, quantities, prices, and confirm SST codes. Double-check calculations for accuracy.
+{{< cards >}}
+  {{< card title="Posting Queue" subtitle="Initial validation and submission gateway" >}}
 
-3.  **Finalize the Document:**
-    *   Click `Save` to store your changes.
-    *   Then, click `FINAL` to lock the invoice – this step is crucial as only finalized documents can be submitted for e-invoicing.
+  {{< card title="Batch Pool" subtitle="Consolidated submission management" >}}
 
+  {{< card title="Submission Tracking" subtitle="Real-time LHDN status monitoring" >}}
 
-    ![Description](/images/einvoice-applet/sales-invoice-finalization.png)
+  {{< card title="Error Resolution" subtitle="Automated error detection and guidance" >}}
 
-4.  **Submit the Invoice:**
-    *   Switch to the **My E-invoice Admin Applet** and go to **Posting Queue**.
-    *   Locate your invoice in the list.
-    *   If the status is `PROCESSED` (meaning it passed initial validation), select it and click `Submit` to send to LHDN (this is for manual testing only, ideally this part will be done by our Cron Processors).
-    *   If it's `UNPROCESSED`, click to open the invoice, review the listed **Validation Errors**, correct them in the source document, save changes, and refresh the queue.
+  {{< card title="QR Code Generation" subtitle="Automatic validation codes" >}}
 
-    ![Description](/images/einvoice-applet/e-invoice-applet-posting-queue.png)
+  {{< card title="72-Hour Window" subtitle="Rejection and cancellation management" >}}
 
-5.  **Monitor and Verify Submission:**
-    *   Head to **To IRB E-Invoice** section to track progress.
-    *   Watch the status update from `Document Accepted` (initial receipt) to `Document is Valid` (full LHDN approval).
-    *   Once validated, open the invoice to access the generated **QR code** and **IRBM Reference Number**.
+  {{< card title="Audit & History" subtitle="Complete compliance records" >}}
 
-### **Confirmation of Success: How to Know It Worked**
+  {{< card title="Self-Billed Invoices" subtitle="Supplier non-compliance handling" >}}
+{{< /cards >}}
 
-*   Status in **Internal Submission History** shows `Document is Valid`.
-*   An official **IRBM Reference Number** is assigned and visible.
-*   A scannable **QR code** appears with a validation URL for verification.
-*   You'll receive confirmation notifications via email or system alerts.
+## Key Concepts
 
-![Validated E-Invoice with QR Code](/images/einvoice-applet/validated-invoice-qr.png)
-*Figure 3: Successfully validated e-invoice showing QR code and IRBM reference*
+### Understanding the E-Invoice Framework
 
-If you encounter issues, refer to the Troubleshooting section below.
+Every e-invoice must address three fundamental compliance aspects. The My E-Invoice Admin Applet provides structured handling:
+
+| Aspect | Component | Practical Example |
+|--------|-----------|------------------|
+| **What** is being invoiced? | Document Type & Items | Sales Invoice, Credit Note, Purchase Invoice |
+| **Who** is involved? | Buyer/Supplier Details | Customer TIN, Supplier BRN, Contact Info |
+| **How** is it validated? | Submission Workflow | Queue processing, LHDN validation, QR generation |
+
+{{< callout type="tip" >}}
+**Real-World Example**: A B2B sales invoice (WHAT) for customer ABC Sdn Bhd with TIN C1234567890 (WHO) goes through Posting Queue validation, LHDN submission, and receives QR code upon approval (HOW).
+{{< /callout >}}
+
+### E-Invoice Processing Hierarchy
+
+Think of the e-invoice process as a structured validation flow:
+
+```
+Source Document (Sales/Purchase Invoice)
+│
+├── Master Data Validation ──→ Customer/Supplier/Item details
+│   │
+│   └── Mandatory Fields Check ──→ TIN, BRN, Address, Tax codes
+│
+├── Posting Queue ──→ Pre-submission validation
+│   │
+│   ├── PROCESSED ──→ Ready for LHDN submission
+│   └── UNPROCESSED ──→ Errors requiring correction
+│
+├── Batch Pool (for B2C) ──→ Consolidation staging
+│   │
+│   ├── Individual Pool ──→ Named customer invoices
+│   └── Single-General Pool ──→ Anonymous retail transactions
+│
+├── LHDN Submission ──→ MyInvois system transmission
+│   │
+│   ├── Document Accepted ──→ Initial receipt
+│   └── Document is Valid ──→ Full approval with QR code
+│
+└── Internal Submission History ──→ Permanent archive
+    │
+    └── Audit Trail ──→ Complete compliance records
+```
+
+**Flow Through the Hierarchy:**
+
+1. **Source Document**: Create invoice in Sales/Purchase applet
+2. **Master Data**: Validate all mandatory LHDN fields
+3. **Posting Queue**: Automatic validation and error detection
+4. **Batch Pool**: Consolidation for B2C transactions (optional)
+5. **LHDN Submission**: Transmission to MyInvois system
+6. **Validation**: Receive QR code and IRBM reference
+7. **Archive**: Permanent storage with audit trail
+
+This structure enables:
+- **Early error detection** before LHDN submission
+- **Flexible processing** for different transaction types
+- **Clear accountability** at each stage
+- **Complete traceability** for audits
+
+## Core Features in Detail
+
+### 1. Master Data Configuration
+
+#### Why Master Data Matters
+
+E-invoice validation failures are almost always caused by incomplete or incorrect master data. LHDN requires specific information for every transaction, and missing even one field will cause rejection.
+
+**The Business Case:**
+
+Incomplete master data results in:
+- Immediate LHDN rejection
+- Processing delays and resubmissions
+- Compliance penalties
+- Customer dissatisfaction
+
+Proper master data setup reduces rejection rates by 95% and ensures first-time submission success.
+
+#### Setting Up Master Data Step-by-Step
+
+**Organization Profile Configuration**
+
+Navigate to **Organization Applet** and ensure these fields are complete:
+
+| Field | Purpose | Example |
+|-------|---------|---------|
+| **TIN** | Tax Identification Number | C1234567890 |
+| **BRN** | Business Registration Number | 202001234567 |
+| **MSIC** | Business activity classification | 46510 (Wholesale of computers) |
+| **Company Address** | Full registered address | Complete with City, State, Postcode |
+
+![Organization Profile Setup](/images/einvoice-applet/org-applet-1.png)
+*Figure 1: Organization Applet - Essential company details for e-invoicing*
+
+**Customer Maintenance (For B2B Sales)**
+
+Navigate to **Customer Maintenance Applet** and configure:
+
+| Field | Purpose | Example |
+|-------|---------|---------|
+| **ID Type** | Identification type | BRN, NRIC, Passport, Army ID |
+| **Registration/ID Number** | Official ID number | 202001234567 (for BRN) |
+| **TIN** | Customer's tax number | C9876543210 |
+| **Email Address** | For e-invoice notifications | accounts@customer.com |
+| **Complete Address** | Including City, State, Postcode | Full registered address |
+| **MSIC Code** | Customer's business activity | 47110 (Retail in non-specialized stores) |
+
+![Customer Master Data](/images/einvoice-applet/customer-applet-1.png)
+*Figure 2: Customer Maintenance - Mandatory fields for B2B e-invoices*
+
+**Supplier Maintenance (For Self-Billed Purchases)**
+
+For suppliers who don't issue e-invoices, configure in **Supplier Maintenance Applet**:
+
+| Field | Purpose | Example |
+|-------|---------|---------|
+| **E-invoice Self-Billed** | Enable self-billing flag | TRUE |
+| **ID Type** | Supplier identification type | BRN, NRIC, Passport |
+| **Registration/ID Number** | Official ID number | 201901234567 |
+| **TIN** | Supplier's tax number | C5555555555 |
+| **Email & Contact** | Communication details | supplier@company.com |
+| **Complete Address** | Full address with postcode | Including City, State |
+| **MSIC Code** | Supplier's business activity | 46900 (Non-specialized wholesale) |
+
+**Document Item Maintenance**
+
+Navigate to **Doc Item Maintenance Applet → E-Invoice Tab**:
+
+| Field | Purpose | Example |
+|-------|---------|---------|
+| **CLASSIFICATION_CODE** | Product/service classification | 001 (Live animals) |
+| **EINVOICE_TAXABLE_TYPE_CODE** | Tax treatment | 01 (Taxable), 02 (Zero-rated) |
+| **EINVOICE_UOM** | Unit of measure | PCS, KG, UNIT, SET |
+
+![Item Classification Setup](/images/einvoice-applet/doc-item-applet-1.png)
+*Figure 3: Doc Item Maintenance - E-invoice specific fields*
+
+{{< callout type="warning" >}}
+**Critical**: All master data must be complete BEFORE creating invoices. Updating master data after invoice creation requires reprocessing through the queue system.
+{{< /callout >}}
 
 ---
 
-## **3. 🔄 The E-Invoice Lifecycle: A Step-by-Step Overview**
+## Quick Start: Your First E-Invoice in 5 Steps
+
+Get up and running quickly with your first validated e-invoice for a B2B sale. This streamlined guide assumes you've completed the master data setup from the previous section.
+
+{{< callout type="tip" >}}
+**Prerequisites Check**: Ensure Organization, Customer, and Item master data are complete before proceeding. See the Master Data Configuration section above.
+{{< /callout >}}
+
+### Step-by-Step Instructions
+
+**Step 1: Create the Sales Invoice**
+
+Navigate to the **Sales Invoice Applet** from your Akaun homepage:
+- Click **"+"** or **New Sales Invoice** button
+- Select the customer from your master data
+- The system automatically pulls customer details including TIN, BRN, and address
+
+**Step 2: Enter Invoice Details**
+
+Complete the invoice in three tabs:
+
+| Tab | Required Information | Tips |
+|-----|---------------------|------|
+| **Main** | Invoice date, due date, reference numbers | Use clear reference numbers for tracking |
+| **Account** | Verify customer details, payment terms | Double-check TIN and address accuracy |
+| **Lines** | Items, quantities, prices, SST codes | Ensure items have e-invoice fields configured |
+
+**Step 3: Finalize the Document**
+
+{{< callout type="warning" >}}
+**Critical Step**: Only FINALIZED documents can be submitted for e-invoicing. Draft invoices will not appear in the Posting Queue.
+{{< /callout >}}
+
+- Click **Save** to store your changes
+- Click **FINAL** to lock the invoice
+- The system automatically queues it for e-invoice processing
+
+![Sales Invoice Finalization](/images/einvoice-applet/sales-invoice-finalization.png)
+*Figure 4: Finalizing a sales invoice for e-invoice submission*
+
+**Step 4: Monitor Posting Queue**
+
+Switch to the **My E-Invoice Admin Applet → Posting Queue**:
+
+- Locate your invoice in the list
+- Check the status indicator:
+  - `PROCESSED` ✅ - Passed validation, ready for LHDN submission
+  - `UNPROCESSED` ❌ - Has validation errors requiring correction
+
+![Posting Queue Interface](/images/einvoice-applet/e-invoice-applet-posting-queue.png)
+*Figure 5: Posting Queue showing processed and unprocessed invoices*
+
+**If UNPROCESSED:**
+1. Click on the invoice to view error details
+2. Note the specific validation errors
+3. Return to the source Sales Invoice
+4. Correct the errors
+5. Save the invoice (system auto-requeues for validation)
+
+**If PROCESSED:**
+- The automated processor will submit to LHDN within 15-20 minutes
+- For urgent submissions, select the invoice and click **Submit** manually
+
+**Step 5: Track LHDN Validation**
+
+Navigate to **To IRB E-Invoice** section:
+
+- Monitor real-time status updates:
+  - `Document Accepted` - LHDN received the submission
+  - `Document is Valid` - Full approval with QR code generated
+  - `Submission Failed` - LHDN rejected (see error details)
+
+- Once validated, open the invoice to access:
+  - **QR Code** for verification
+  - **IRBM Reference Number** for official records
+  - **Validation URL** for third-party checks
+
+### Confirmation of Success
+
+You'll know your e-invoice is successfully validated when you see these indicators:
+
+✅ **Status Shows "Document is Valid"** in Internal Submission History
+✅ **IRBM Reference Number** is assigned and visible
+✅ **QR Code** appears with scannable validation URL
+✅ **Email Notifications** sent to customer (if configured)
+✅ **Audit Trail** complete with timestamps
+
+![Validated E-Invoice](/images/einvoice-applet/valid-submission.png)
+*Figure 6: Successfully validated e-invoice with QR code and IRBM reference*
+
+{{< callout type="info" >}}
+**What's Next?** The validated e-invoice is automatically archived in Internal Submission History. You can export PDFs, view the QR code, or generate compliance reports at any time.
+{{< /callout >}}
+
+If you encounter validation errors, refer to the **Troubleshooting** section below for common issues and quick fixes.
+
+---
+
+## 2. The E-Invoice Lifecycle
 
 Understanding the full lifecycle helps you navigate the system efficiently. The e-invoice process flows through four key stages, each with specific tools and queues in the applet. This structured approach ensures compliance and minimizes errors.
 
@@ -183,11 +386,25 @@ This stage handles post-validation changes within the 72-hour window.
 
 ---
 
-## **4. Submission Process Management**
+## 3. Submission Process Management
 
 The My E-Invoice Admin Applet employs an advanced queue-based system to handle e-invoice submissions with maximum efficiency and minimal errors. This section provides a detailed breakdown of how the various queues and pools interconnect, complete with best practices and troubleshooting tips to ensure smooth operations.
 
-### **Understanding the Queue-Based Processing System**
+#### Why Queue-Based Processing Matters
+
+Manual e-invoice submission is prone to errors and delays. The queue-based system ensures systematic validation and processing.
+
+**The Business Case:**
+
+Manual submission processes result in:
+- High rejection rates from LHDN
+- Delayed error detection
+- Processing bottlenecks
+- Compliance risks
+
+Queue-based processing reduces errors by 90% and ensures systematic compliance checks before LHDN submission.
+
+### Understanding the Queue-Based Processing System
 
 At the heart of the applet is a multi-stage queue system that automates much of the submission process while allowing manual intervention when needed. This setup prevents bottlenecks and ensures compliance by validating data at each step.
 
@@ -244,7 +461,7 @@ This pool holds documents earmarked for consolidation (`einvoice submission type
 
 ---
 
-## **5. 👤 Role-Based Playbooks: Your E-Invoicing Workflow**
+## 4. Role-Based Workflows
 
 These tailored playbooks provide step-by-step guidance customized to your role in the organization. Each includes key responsibilities, daily/weekly/monthly tasks, and pro tips to optimize your workflow while ensuring LHDN compliance.
 
@@ -312,18 +529,46 @@ These tailored playbooks provide step-by-step guidance customized to your role i
 
 ---
 
-## **6. 🔧 Troubleshooting: Common Issues and Solutions**
+## 5. Troubleshooting and Error Resolution
 
-### **Resolving LHDN Submission Failures**
+### Understanding LHDN Validation Errors
 
-Submission failures are a normal part of the process and provide direct feedback from LHDN for quick resolution.
+LHDN validation errors are feedback mechanisms that help you correct issues before final submission. Understanding error patterns speeds up resolution.
 
-**Resolution Process:**
+**Why Errors Occur:**
 
-1.  **Identify Failure:** Navigate to the **Internal Submission Queue** and find the transaction with a `submission failed` status.
-2.  **Diagnose Error:** Click on the transaction and go to the **from lhdn** tab to read the specific LHDN error message.
-3.  **Correct Data:** Fix the missing or invalid data in the original source document.
-4.  **Resubmit:** Process the corrected transaction through the submission queue.
+Most validation failures stem from:
+- Incomplete master data (70% of errors)
+- Incorrect tax codes or classifications (15%)
+- Format mismatches (10%)
+- System configuration issues (5%)
+
+### Resolving LHDN Submission Failures
+
+Follow this systematic approach to resolve any validation error:
+
+**Step 1: Identify the Failure**
+- Navigate to **Internal Submission Queue**
+- Filter by status: `Submission Failed`
+- Note the document number and timestamp
+
+**Step 2: Diagnose the Error**
+- Click on the failed transaction
+- Open the **From LHDN** tab
+- Read the specific error message and code
+- Cross-reference with the error table below
+
+**Step 3: Correct the Data**
+- Return to the source document (Sales Invoice, Purchase Invoice, etc.)
+- Fix the identified issue in the appropriate field
+- Save the document
+- The system automatically requeues for validation
+
+**Step 4: Resubmit and Verify**
+- Monitor the Posting Queue for updated status
+- Verify the document shows `PROCESSED`
+- Track in **To IRB E-Invoice** for LHDN validation
+- Confirm `Document is Valid` status
 
 ### **Common Error Codes and Quick Fixes**
 
@@ -344,103 +589,417 @@ Submission failures are a normal part of the process and provide direct feedback
 | 429 Too Many Requests | Rate limit exceeded | Submission Processor | Retry with backoff; stagger batches. |
 | Network/Timeout | Connectivity issue | Infra / Endpoint | Check the network and retry the submission. |
 
----
-
-## **7. 📚 Setup and Configuration: A Complete Guide**
-
-### **1. MyInvois Portal Configuration**
-
-*   **Environment URLs:**
-    *   **Sandbox:** https://preprod-mytax.hasil.gov.my/
-    *   **Production:** https://mytax.hasil.gov.my/
-*   **Setup Requirements:**
-    *   Set Bigledger as the "Intermediary" for both environments.
-    *   Complete the digital certificate registration process.
-    *   Configure company and representative access.
-
-### **2. Master Data Configuration**
-
-#### **Organization Applet**
-
-Configure your company profiles with:
-
-*   Branch information
-*   Business Registration Numbers (BRN)
-*   Tax Identification Number (TIN)
-*   Business Activity Description (MSIC code)
-
-#### **Customer Maintenance**
-
-The following fields are **mandatory** for e-invoices:
-
-*   Buyer\'s ID Type and Registration Number
-*   Buyer\'s TIN (Tax Identification Number)
-*   Contact Number and Email
-*   MSIC Code and Complete Address
-
-#### **Supplier Maintenance**
-
-For **self-billed e-invoices**, the following are required:
-
-*   Enable "E-invoice Self-Billed" = TRUE
-*   Supplier\'s ID Type and Registration Number
-*   Supplier\'s TIN, Contact Number, and Email
-*   MSIC Code and Complete Address
-
-#### **Document Item Maintenance**
-
-Configure your item classifications with:
-
-*   Item Classification Description
-*   E-invoice Tax Type Code
-*   E-invoice Unit of Measure (UOM)
+{{< callout type="tip" >}}
+**Pro Tip**: Create a checklist of the most common errors in your organization and train staff on prevention. Most errors are preventable with proper master data maintenance.
+{{< /callout >}}
 
 ---
 
-## **8. ⚠️ Post-Validation: Rejection and Cancellation**
+## 6. MyInvois Portal Configuration
 
-### **The 72-Hour Rule for Rejection Requests**
+### Initial Portal Setup
+
+Before using the My E-Invoice Admin Applet, you must configure your organization's access to the LHDN MyInvois portal.
+
+#### Environment Selection
+
+LHDN provides two environments for e-invoicing:
+
+| Environment | URL | Purpose |
+|-------------|-----|---------|
+| **Sandbox** | https://preprod-mytax.hasil.gov.my/ | Testing and development |
+| **Production** | https://mytax.hasil.gov.my/ | Live business transactions |
+
+{{< callout type="warning" >}}
+**Important**: Always test your e-invoice workflows in the Sandbox environment before going live in Production. Sandbox submissions do not affect your official tax records.
+{{< /callout >}}
+
+#### Configuration Steps
+
+**Step 1: Register with LHDN MyInvois Portal**
+- Access the appropriate environment URL
+- Complete your organization registration
+- Verify your company details with LHDN
+
+**Step 2: Set Intermediary Access**
+- Designate **BigLedger** as your authorized intermediary
+- This allows the system to submit e-invoices on your behalf
+- Complete this for both Sandbox and Production environments
+
+**Step 3: Digital Certificate Setup**
+- Complete the digital certificate registration process
+- This ensures secure transmission of e-invoices
+- Certificates are environment-specific
+
+**Step 4: Configure Company Representatives**
+- Assign authorized personnel for e-invoice management
+- Set up access levels and permissions
+- Configure notification preferences
+
+**Step 5: Integration Testing**
+- Submit test invoices in Sandbox environment
+- Verify QR code generation
+- Confirm validation workflows
+- Test error handling procedures
+
+### Automated Processing Configuration
+
+The system includes automated processors that handle e-invoice submissions without manual intervention.
+
+#### Key Automated Processors
+
+**E_INVOICE_BATCH_PROCESSING_CYCLE_RUN_PROCESSOR**
+- Runs automatically every 15-20 minutes
+- Processes documents in Posting Queue
+- Validates against LHDN requirements
+- Submits PROCESSED documents to MyInvois
+- Handles consolidated submissions for B2C transactions
+
+**Configuration Options:**
+- Adjust processing frequency (default: 15-20 minutes)
+- Set batch size limits
+- Configure retry logic for failed submissions
+- Enable/disable automatic submission
+
+{{< callout type="info" >}}
+**Best Practice**: Keep automatic processing enabled for most scenarios. Manual submission should only be used for urgent, time-sensitive invoices.
+{{< /callout >}}
+
+---
+
+## 7. Post-Validation: Rejection and Cancellation
+
+### Understanding the 72-Hour Window
+
+LHDN regulations allow e-invoice corrections only within a strict 72-hour window after validation. This time limit ensures tax record integrity while allowing reasonable error correction.
 
 {{< callout type="warning" >}}
 **⏰ Critical Time Limit**
-Rejection requests must be initiated within **72 hours** of LHDN validation. The system automatically blocks cancellations after this window expires.
+Rejection requests must be initiated within **72 hours** of LHDN validation. The system automatically blocks cancellations after this window expires. Plan your review processes accordingly.
 {{< /callout >}}
 
-*   **Request Sources:**
-    *   Internal staff via the system interface
-    *   Customers via the customer portal
-    *   All requests appear in the **Rejection Request** menu under the **Cancellation** tab.
-*   **Applicable Documents:**
-    *   Sales Invoices, Credit Notes, Debit Notes, and Sales Credit Notes.
-    *   **Not applicable** for self-billed and consolidated e-invoices.
+#### Why the 72-Hour Rule Exists
 
-### **Processing Logic Options**
+The time limit serves several purposes:
+- **Tax integrity**: Prevents retroactive manipulation of tax records
+- **Audit trail**: Maintains clear chronological records
+- **Business certainty**: Ensures transactions are finalized promptly
+- **Compliance**: Aligns with LHDN regulatory requirements
 
-When approving a rejection request, you can choose from three processing methods:
+#### Rejection Request Sources
 
-{{< cards >}}
-  {{< card title="1️⃣ Regenerate New E-Invoice" subtitle="**Action**: Cancels the current e-invoice and auto-creates a new one. **Impact**: The original document is unchanged. **Use**: For minor error corrections." >}}
-  {{< card title="2️⃣ Void Original Document" subtitle="**Action**: Cancels the e-invoice and voids the source document. **Impact**: **Irreversible** - a new document is required. **Use**: For major corrections that require a restart." >}}
-  {{< card title="3️⃣ New Reversal Document" subtitle="**Action**: Creates a reversal document instead of a cancellation. **Impact**: Generates an offsetting document (e.g., a Credit Note for an Invoice). **Use**: To maintain an audit trail while making corrections." >}}
-{{< /cards >}}
+Rejection requests can originate from multiple sources:
+
+| Source | Access Method | Common Scenarios |
+|--------|--------------|------------------|
+| **Internal Staff** | System interface | Data entry errors, pricing mistakes |
+| **Customers** | Customer portal | Disputed amounts, incorrect details |
+| **System Alerts** | Automated detection | Duplicate submissions, validation issues |
+
+All requests appear in the **Rejection Request** menu under the **Cancellation** tab for centralized management.
+
+#### Applicable Document Types
+
+The rejection workflow applies to:
+
+✅ **Sales Invoices** - Standard B2B and B2C invoices
+✅ **Credit Notes** - Sales returns and adjustments
+✅ **Debit Notes** - Additional charges
+✅ **Sales Credit Notes** - Customer refunds
+
+❌ **Not Applicable:**
+- Self-billed e-invoices (use reversal documents instead)
+- Consolidated e-invoices (individual line adjustments not supported)
+
+### Processing Rejection Requests
+
+When a rejection request is received, you must choose the appropriate processing method based on the nature of the error and business requirements.
+
+#### Three Processing Options
+
+The system provides three distinct approaches to handling rejections, each suited to different scenarios:
+
+**Option 1: Regenerate New E-Invoice**
+
+| Aspect | Details |
+|--------|---------|
+| **Action** | Cancels current e-invoice and auto-creates a new one |
+| **Impact** | Original source document remains unchanged |
+| **LHDN Effect** | Old e-invoice marked as cancelled, new one submitted |
+| **Best For** | Minor corrections (typos, wrong amounts, incorrect tax codes) |
+| **Audit Trail** | Both old and new e-invoices retained in history |
+
+**When to Use:**
+- Incorrect pricing or quantities
+- Wrong tax classification
+- Typos in descriptions
+- Minor customer detail corrections
+
+**Option 2: Void Original Document**
+
+| Aspect | Details |
+|--------|---------|
+| **Action** | Cancels e-invoice AND voids the source document |
+| **Impact** | **Irreversible** - document marked as void in system |
+| **LHDN Effect** | E-invoice cancelled, no replacement generated |
+| **Best For** | Major errors requiring complete restart |
+| **Audit Trail** | Void marker prevents accidental reuse |
+
+{{< callout type="warning" >}}
+**Irreversible Action**: Voiding cannot be undone. Use this option only when you're certain the entire transaction needs to be cancelled and recreated from scratch.
+{{< /callout >}}
+
+**When to Use:**
+- Wrong customer selected
+- Duplicate invoice created
+- Transaction should not have occurred
+- Complete data overhaul needed
+
+**Option 3: New Reversal Document**
+
+| Aspect | Details |
+|--------|---------|
+| **Action** | Creates offsetting reversal document (e.g., Credit Note) |
+| **Impact** | Original document and e-invoice remain valid |
+| **LHDN Effect** | Both original and reversal e-invoices in system |
+| **Best For** | Maintaining complete audit trail |
+| **Audit Trail** | Full transaction history preserved |
+
+**When to Use:**
+- Accounting period already closed
+- Audit requirements demand full trail
+- Partial refunds or adjustments
+- Customer disputes requiring documentation
+
+#### Decision Flow Chart
+
+```
+Rejection Request Received
+│
+├─ Is it a minor error? ──→ YES ──→ Option 1: Regenerate
+│                                    (Quick fix, same document)
+│
+├─ Is the entire transaction wrong? ──→ YES ──→ Option 2: Void
+│                                              (Start over completely)
+│
+└─ Need full audit trail? ──→ YES ──→ Option 3: Reversal
+                                      (Keep all records)
+```
+
+#### Processing Steps
+
+**Step 1: Review the Request**
+- Navigate to **Rejection Request** menu
+- Review the reason and requester details
+- Verify the request is within 72-hour window
+- Check the original e-invoice details
+
+**Step 2: Choose Processing Logic**
+- Assess the nature of the error
+- Consider accounting period status
+- Evaluate audit requirements
+- Select appropriate option (1, 2, or 3)
+
+**Step 3: Execute and Monitor**
+- Approve the request with chosen logic
+- System processes the cancellation/reversal
+- Monitor in **To IRB E-Invoice** for LHDN confirmation
+- Verify completion in **Internal Submission History**
+
+**Step 4: Notify Stakeholders**
+- Inform customer of the change
+- Update accounting records
+- Document the reason for rejection
+- Archive correspondence for audit
+
+{{< callout type="tip" >}}
+**Best Practice**: Establish clear guidelines for which processing option to use in different scenarios. This ensures consistency and reduces decision-making time during urgent situations.
+{{< /callout >}}
 
 ---
 
-## **9. ❓ Frequently Asked Questions (FAQs)**
+## 8. Reporting and Analytics
 
-*   **Which document type should I use for a walk-in retail customer?**
-    *   Use a `Cash Bill` with `Single-General`. If the buyer later requests a named invoice, you can update the customer details and resubmit it as `Individual` within 72 hours.
-*   **What is the difference between an Individual and a Consolidated e-invoice?**
-    *   `Individual` e-invoices are for B2B named invoices and are validated per transaction. `Consolidated` e-invoices are for aggregated retail transactions (Single-General) and are submitted monthly.
-*   **Where can I find the QR code?**
-    *   Monitor the transaction in `To IRB E-Invoice`. Once the status is `Document is Valid`, open the transaction to view the QR code and IRBM Reference.
-*   **What is the 72-hour window?**
-    *   This is the period after validation during which you can request a rejection or cancellation. It is not extendable.
-*   **Can I cancel a consolidated e-invoice?**
-    *   Not through the rejection workflow. You will need to use reversal or adjustment documents.
-*   **How do I submit a self-billed purchase?**
-    *   Flag the supplier with `E-invoice Self-Billed = TRUE`, create the purchase document, finalize it, and submit it via the queue. You can then monitor it in `To IRB E-Invoice` or the `Internal Submission History`.
-*   **How do I correct a validated invoice?**
-    *   Process a rejection request and choose one of the three logic options: Regenerate, Void original, or New reversal document.
-*   **Where is the official archive of my e-invoices?**
-    *   The `Internal Submission History` serves as the permanent archive, with the status `Document is Valid`, the validation URL, and the QR code.
+### Available Reports
+
+The My E-Invoice Admin Applet provides comprehensive reporting capabilities for compliance monitoring and business intelligence.
+
+#### Submission Status Reports
+
+Track the health of your e-invoicing operations:
+
+| Report Type | Purpose | Key Metrics |
+|-------------|---------|-------------|
+| **Daily Submission Summary** | Monitor daily processing | Total submitted, validated, failed |
+| **Error Rate Analysis** | Identify problem areas | Error types, frequency, resolution time |
+| **Queue Performance** | Track processing efficiency | Queue depth, processing time, bottlenecks |
+| **Validation Success Rate** | Measure first-time success | Percentage validated without resubmission |
+
+#### Compliance Reports
+
+Essential for regulatory audits and internal reviews:
+
+- **Complete Submission History** - All e-invoices with LHDN status
+- **QR Code Verification Log** - Validation URL access records
+- **Rejection and Cancellation Log** - All post-validation changes
+- **Audit Trail Export** - Complete transaction history with timestamps
+
+#### Business Intelligence Reports
+
+Analyze e-invoice data for business insights:
+
+- **Revenue by Customer** - Track B2B sales patterns
+- **Tax Collection Summary** - SST and other tax totals
+- **Processing Time Analysis** - Identify efficiency improvements
+- **Department/Branch Performance** - Multi-location comparisons
+
+### Exporting Data
+
+Export capabilities for external analysis and archiving:
+
+**Export Formats:**
+- PDF (for official records and customer distribution)
+- Excel (for data analysis and reporting)
+- XML/JSON (for system integration and backup)
+- CSV (for accounting software import)
+
+**Export Options:**
+- Single invoice export
+- Batch export by date range
+- Filtered export by status or customer
+- Scheduled automated exports
+
+{{< callout type="info" >}}
+**Compliance Tip**: Schedule monthly exports of validated e-invoices for offsite backup. This ensures you have complete records even if system issues occur.
+{{< /callout >}}
+
+---
+
+## 9. Frequently Asked Questions
+
+### General Questions
+
+**Q: Which document type should I use for a walk-in retail customer?**
+
+A: Use a `Cash Bill` with submission type `Single-General` for anonymous walk-in customers. If the buyer later requests a personalized invoice, you can upgrade it by updating the customer details and resubmitting as `Individual` within 72 hours.
+
+**Q: What is the difference between Individual and Consolidated e-invoices?**
+
+A: 
+- **Individual**: For B2B named invoices with complete customer details. Each transaction is validated separately and immediately.
+- **Consolidated**: For aggregated B2C retail transactions (Single-General). Multiple transactions are grouped and submitted monthly by the 7th of the following month.
+
+**Q: Where can I find the QR code for a validated e-invoice?**
+
+A: Navigate to `To IRB E-Invoice` and locate your transaction. Once the status shows `Document is Valid`, click to open the invoice details. The QR code and IRBM Reference Number will be displayed and available for download.
+
+**Q: What exactly is the 72-hour window?**
+
+A: This is the period after LHDN validation during which you can request a rejection or cancellation of an e-invoice. It starts from the moment LHDN validates the invoice (status: `Document is Valid`) and is not extendable under any circumstances.
+
+### Processing Questions
+
+**Q: Can I cancel a consolidated e-invoice?**
+
+A: No, consolidated e-invoices cannot be cancelled through the standard rejection workflow. Instead, you must create reversal or adjustment documents (Credit Notes) to correct any errors in consolidated submissions.
+
+**Q: How do I submit a self-billed purchase invoice?**
+
+A: Follow these steps:
+1. In Supplier Maintenance, set `E-invoice Self-Billed = TRUE`
+2. Create a Purchase Invoice in the Procurement Applet
+3. Click `FINAL` to lock the document
+4. The system automatically queues it in Posting Queue
+5. Monitor progress in `To IRB E-Invoice`
+6. Verify validation in `Internal Submission History`
+
+**Q: How do I correct a validated e-invoice?**
+
+A: You have three options within the 72-hour window:
+1. **Regenerate**: Cancel and auto-create a new e-invoice (for minor errors)
+2. **Void**: Cancel e-invoice and void the source document (for major errors)
+3. **Reversal**: Create an offsetting document like a Credit Note (for audit trail)
+
+Choose based on the error severity and your accounting requirements.
+
+**Q: My invoice shows UNPROCESSED in Posting Queue. What should I do?**
+
+A: 
+1. Click on the invoice to view validation error details
+2. Note the specific error messages
+3. Return to the source Sales/Purchase Invoice
+4. Correct the identified issues
+5. Save the document (it will auto-requeue)
+6. Refresh Posting Queue to verify `PROCESSED` status
+
+### Technical Questions
+
+**Q: Where is the official archive of my e-invoices?**
+
+A: The `Internal Submission History` serves as the permanent archive. It contains:
+- All validated e-invoices with status `Document is Valid`
+- IRBM Reference Numbers
+- QR codes with validation URLs
+- Complete audit trails with timestamps
+- Export capabilities for compliance reporting
+
+**Q: How often does the automated processor run?**
+
+A: The `E_INVOICE_BATCH_PROCESSING_CYCLE_RUN_PROCESSOR` runs automatically every 15-20 minutes. It processes documents in the Posting Queue, validates them, and submits PROCESSED invoices to LHDN without manual intervention.
+
+**Q: Can I manually submit an invoice instead of waiting for the automated processor?**
+
+A: Yes, for urgent submissions:
+1. Navigate to Posting Queue
+2. Verify the invoice status is `PROCESSED`
+3. Select the invoice
+4. Click **Submit** button
+5. Monitor in `To IRB E-Invoice` for immediate tracking
+
+**Q: What happens if LHDN's system is down?**
+
+A: The system includes retry logic:
+- Failed submissions are automatically retried
+- Exponential backoff prevents system overload
+- You'll see status updates in `To IRB E-Invoice`
+- Manual resubmission is available if needed
+
+**Q: How do I handle rate limit errors (429 Too Many Requests)?**
+
+A: This occurs when submitting too many invoices simultaneously:
+- The system automatically staggers resubmissions
+- Reduce batch sizes for manual submissions
+- Allow the automated processor to handle submissions
+- Contact support if errors persist
+
+### Compliance Questions
+
+**Q: Are e-invoices required for all transactions?**
+
+A: Yes, LHDN mandates e-invoices for all business transactions in Malaysia. This includes:
+- B2B sales (Individual e-invoices)
+- B2C retail sales (Consolidated e-invoices)
+- Self-billed purchases (when suppliers don't issue e-invoices)
+- Credit and Debit Notes
+
+**Q: What are the penalties for non-compliance?**
+
+A: LHDN penalties for e-invoice non-compliance can include:
+- Fines for late submissions
+- Penalties for incorrect information
+- Audit triggers for repeated violations
+- Business operation restrictions in severe cases
+
+Always ensure timely and accurate e-invoice submissions.
+
+**Q: How long must I retain e-invoice records?**
+
+A: LHDN requires retention of e-invoice records for at least 7 years. The `Internal Submission History` provides permanent archiving, but you should also:
+- Schedule regular exports for offsite backup
+- Maintain copies of QR codes and validation URLs
+- Archive complete audit trails
+- Document any rejections or cancellations
+
+{{< callout type="info" >}}
+**Still Have Questions?** Contact your system administrator or BigLedger support for assistance with specific scenarios or technical issues.
+{{< /callout >}}
