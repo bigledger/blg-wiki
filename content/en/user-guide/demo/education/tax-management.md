@@ -1,424 +1,331 @@
 ---
-title: "Tax Rate Management"
-description: "Evaluate tax configuration and government directive compliance (Requirement 9.17)"
+title: "Tax Configuration"
+description: "Evaluate tax rate management and government directive compliance"
 weight: 10
 ---
 
-This section covers the Tax Rate Management functionality as specified in UTM Tender Requirement 9.17. Our system provides flexible tax configuration capabilities to support government directives and various tax scenarios.
+## What You'll Learn
 
-## Overview
+In this module, you'll explore how BigLedger handles taxes - from configuring SST rates to generating tax reports. You'll see how the system ensures compliance with government directives and LHDN requirements.
 
-The Tax Rate Management module provides:
-- **Tax Rate Configuration** - Set up various tax rates per government directives
-- **Authorized User Configuration** - Finance staff can manage tax settings
-- **Effective Date Management** - Tax rates with validity periods
-- **Multiple Tax Types** - SST, Service Tax, Sales Tax, Withholding Tax
-- **Integration** - Automatic tax calculation in transactions
-
-## Test Scenario 1: Tax Rate Configuration
-
-### Objective
-Verify the system provides tax rate configuration based on government directives (Requirement 9.17a).
-
-### Steps to Follow
-
-1. **Login** to the demo system
-2. **Navigate** to: `Settings` → `Tax Configuration` → `Tax Rates`
-3. **View** existing tax rates
-4. **Add** a new tax rate:
-   - **Tax Code:** SST-6
-   - **Description:** Service Tax 6%
-   - **Rate:** 6%
-   - **Effective Date:** 01/03/2024
-   - **Tax Type:** Service Tax
-5. **Save** the configuration
-
-### What to Verify
-
-**Tax Rate Elements:**
-| Field | Description |
-|-------|-------------|
-| Tax Code | Unique identifier |
-| Tax Name | Descriptive name |
-| Rate | Percentage or fixed amount |
-| Effective From | Start date |
-| Effective To | End date (optional) |
-| Tax Account | GL account for posting |
-
-### Expected Results
-- Tax rate saved successfully
-- Effective date recorded
-- Available in transactions from effective date
-- Audit trail of change
+{{< callout type="info" >}}
+**Time Required:** 15 minutes | **Skill Level:** Beginner-friendly | **UTM Requirements:** 9.17
+{{< /callout >}}
 
 ---
 
-## Test Scenario 2: Authorized Staff Configuration
+## Before You Begin: Key Terms Explained
 
-### Objective
-Verify that authorized financial staff can configure tax rates (Requirement 9.17b).
-
-### Steps to Follow
-
-1. **Login** as `demo+utm.finance@bigledger.com`
-2. **Navigate** to: `Settings` → `Tax Configuration`
-3. **Verify** access to tax settings
-4. **Modify** a tax rate
-5. **Confirm** changes saved
-
-### What to Verify
-
-**Access Control:**
-| Role | Permission |
-|------|------------|
-| Finance Officer | View, Create, Edit |
-| Finance Manager | View, Create, Edit, Approve |
-| General User | View only |
-| Administrator | Full access |
-
-### Expected Results
-- Finance staff has configuration access
-- No technical support required
-- Changes effective immediately
-- Approval workflow (if configured)
+| Term | What It Means |
+|------|---------------|
+| **SST** | Sales and Service Tax - Malaysia's consumption tax |
+| **Service Tax** | 6% tax on certain services |
+| **Withholding Tax** | Tax deducted at source for certain payments |
+| **Tax Code** | A shortcut code for a tax rate (e.g., "SST-6" for 6% service tax) |
+| **E-Invoice** | Electronic invoice submitted to LHDN |
+| **LHDN** | Lembaga Hasil Dalam Negeri - Malaysian tax authority |
 
 ---
 
-## Test Scenario 3: Tax Effective Date Management
+## Why This Module Matters
 
-### Objective
-Test tax rate validity period management.
+Tax management is essential because:
 
-### Steps to Follow
+- **Legal compliance** - Must charge and report correct taxes
+- **E-Invoice requirement** - Tax codes must align with LHDN requirements
+- **Audit readiness** - Tax records must be accurate and complete
+- **Government reporting** - Regular submissions to tax authorities
 
-1. **Navigate** to: `Settings` → `Tax Configuration` → `Tax Rates`
-2. **View** a tax rate with historical changes
-3. **Add** a future rate change:
-   - **Current Rate:** 6% (effective today)
-   - **New Rate:** 8% (effective future date)
-4. **Save** both rates
-
-### What to Verify
-
-**Effective Date Features:**
-| Scenario | Behavior |
-|----------|----------|
-| Current Rate | Applied to today's transactions |
-| Future Rate | Applied from effective date |
-| Past Rate | Applied to backdated transactions |
-| Multiple Rates | System uses correct rate per date |
-
-### Expected Results
-- Multiple rates co-exist with different dates
-- System auto-selects based on transaction date
-- Historical transactions unaffected
-- Reports show rate at time of transaction
+{{< callout type="info" >}}
+**For UTM:** This addresses requirement 9.17 for tax rate configuration based on government directives.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 4: Tax Types Configuration
+## Test Scenario 1: View Tax Rates
 
-### Objective
-Test various tax type configurations.
+**Objective:** See configured tax rates
 
-### Steps to Follow
+**Time:** 2 minutes
 
-1. **Navigate** to: `Settings` → `Tax Configuration` → `Tax Types`
-2. **View** available tax types:
-   - Service Tax (SST)
-   - Sales Tax
-   - Withholding Tax
-   - Import Duty
-3. **Configure** tax type properties
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Settings → Tax Configuration → Tax Rates
 
-**Tax Type Properties:**
-| Property | Description |
-|----------|-------------|
-| Tax Type | Category of tax |
-| Calculation Method | Percentage, Fixed, Compound |
-| GL Accounts | Payable, Receivable, Expense |
-| Reporting Code | Government reporting category |
+2. **View** the list of tax rates
 
-### Expected Results
-- All required tax types available
-- Proper calculation methods
-- Correct GL account mapping
-- Reporting alignment
+3. **Notice** the key information:
+   | Column | Description |
+   |--------|-------------|
+   | Tax Code | Short identifier (SST-6) |
+   | Description | What the tax is for |
+   | Rate | Percentage (6%) |
+   | Effective Date | When this rate applies |
+   | Tax Type | Service, Sales, Withholding |
+
+### Common Tax Codes You'll See
+
+| Code | Rate | Use |
+|------|------|-----|
+| SST-6 | 6% | Service tax |
+| SST-0 | 0% | Zero-rated |
+| EXEMPT | 0% | Tax exempt |
+| WHT-10 | 10% | Withholding tax |
+
+{{< callout type="info" >}}
+**BigLedger Advantage:** Tax rates can have effective dates, so you can set up future rate changes in advance.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 5: Tax in Sales Invoice
+## Test Scenario 2: Create a New Tax Rate
 
-### Objective
-Test automatic tax calculation in sales transactions.
+**Objective:** Add a new tax rate (for finance staff, no IT needed)
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Sales` → `Sales Invoice` → `New`
-2. **Create** invoice with taxable items:
-   - **Item:** Service Fee
-   - **Amount:** RM 1,000
-   - **Tax Code:** SST-6
-3. **Observe** tax calculation
-4. **Save** invoice
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Settings → Tax Configuration → Tax Rates
 
-**Tax Calculation:**
+2. **Click** "New Tax Rate"
+
+3. **Fill in the details:**
+   | Field | Example |
+   |-------|---------|
+   | Tax Code | SST-8 |
+   | Description | Service Tax 8% |
+   | Rate | 8% |
+   | Tax Type | Service Tax |
+   | Effective Date | Future date |
+   | GL Account | Select tax payable account |
+
+4. **Save** the tax rate
+
+### What to Notice
+
+- No technical skills required
+- Clear form with help text
+- Validation prevents duplicate codes
+- Audit trail records who created it
+
+{{< callout type="info" >}}
+**UTM Requirement (9.17a,b):** The system must allow authorized financial staff to configure tax rates based on government directives, without technical support.
+{{< /callout >}}
+
+---
+
+## Test Scenario 3: Tax in Sales Invoice
+
+**Objective:** See how tax is automatically calculated
+
+**Time:** 3 minutes
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Sales → Sales Invoice → New Invoice
+
+2. **Add a line item** with a taxable service
+
+3. **Select** the tax code (e.g., SST-6)
+
+4. **Observe** the automatic calculation
+
+### What You'll See
+
 | Element | Amount |
 |---------|--------|
 | Net Amount | RM 1,000.00 |
 | Tax (6%) | RM 60.00 |
-| Total | RM 1,060.00 |
+| **Total** | **RM 1,060.00** |
 
-### Expected Results
-- Tax auto-calculated from tax code
-- Correct rate applied based on date
-- Tax amount posted to correct GL
-- E-invoice shows proper tax breakdown
+### What Happens Behind the Scenes
+
+- Tax amount calculated automatically
+- Correct GL accounts used (Revenue vs Tax Payable)
+- E-invoice generated with proper tax codes
+- Tax reports updated
 
 ---
 
-## Test Scenario 6: Tax in Purchase Invoice
+## Test Scenario 4: Tax in Purchase Invoice
 
-### Objective
-Test tax handling in purchase transactions.
+**Objective:** See how input tax is handled
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Purchasing` → `Purchase Invoice` → `New`
-2. **Create** invoice:
-   - **Supplier:** Registered supplier
-   - **Item:** Equipment purchase
-   - **Amount:** RM 5,000
-   - **Tax Code:** Input Tax
-3. **Observe** tax treatment
-4. **Save** invoice
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Purchasing → Purchase Invoice → New Invoice
 
-**Input Tax Handling:**
-| Element | Treatment |
-|---------|-----------|
+2. **Add a line item** with tax
+
+3. **Observe** the tax treatment
+
+### What You'll See
+
+| Element | Amount |
+|---------|--------|
 | Net Amount | RM 5,000.00 |
-| Input Tax | RM 300.00 (claimable) |
-| Total | RM 5,300.00 |
+| Input Tax (6%) | RM 300.00 |
+| **Total** | **RM 5,300.00** |
 
-### Expected Results
-- Input tax recognized
-- Posted to correct GL account
-- Available for tax reporting
-- Tracked for claims
+### Input vs Output Tax
 
----
+| Tax Type | Meaning |
+|----------|---------|
+| **Output Tax** | Tax you collect from customers (on sales) |
+| **Input Tax** | Tax you pay to suppliers (on purchases) |
 
-## Test Scenario 7: Tax Exempt Configuration
-
-### Objective
-Test tax exemption scenarios.
-
-### Steps to Follow
-
-1. **Navigate** to: `Settings` → `Tax Configuration` → `Tax Exemptions`
-2. **View** exempt categories:
-   - Education services
-   - Government supplies
-   - Zero-rated items
-3. **Apply** exemption to a customer/item
-
-### What to Verify
-
-**Exemption Types:**
-| Type | Application |
-|------|-------------|
-| Zero-Rated | 0% tax, still reported |
-| Exempt | No tax, excluded from returns |
-| Out of Scope | Not subject to tax law |
-
-### Expected Results
-- Correct exemption applied
-- Proper coding in e-invoice
-- Tax return accuracy
-- Audit trail of exemption
+{{< callout type="info" >}}
+**BigLedger Advantage:** The system tracks input and output tax separately for accurate reporting and potential claims.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 8: Tax Reporting
+## Test Scenario 5: Tax Exemptions
 
-### Objective
-Test tax-related reporting capabilities.
+**Objective:** See how exemptions work
 
-### Steps to Follow
+**Time:** 2 minutes
 
-1. **Navigate** to: `Finance` → `Tax Reports`
-2. **Generate** reports:
-   - SST Summary Report
-   - Tax Ledger Report
-   - Tax Reconciliation
-   - E-Invoice Tax Summary
-3. **Review** report outputs
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Settings → Tax Configuration → Tax Exemptions
 
-**Tax Reports Available:**
-| Report | Purpose |
-|--------|---------|
-| SST Summary | Total output/input tax |
-| Tax by Code | Breakdown by tax code |
-| Tax Ledger | Transaction details |
-| Reconciliation | GL to tax return |
+2. **View** the exemption categories:
+   | Category | Treatment |
+   |----------|-----------|
+   | Zero-Rated | 0% tax, still reported |
+   | Exempt | No tax, excluded from returns |
+   | Out of Scope | Not subject to tax law |
 
-### Expected Results
-- Comprehensive tax reporting
-- E-filing support data
-- Reconciliation capability
-- Export to government format
+3. **See** how exemptions are applied to customers or items
+
+### When You'd Use This
+
+- Educational services (often exempt)
+- Government supplies
+- Exported services (zero-rated)
 
 ---
 
-## Test Scenario 9: Withholding Tax Configuration
+## Test Scenario 6: Withholding Tax
 
-### Objective
-Test withholding tax setup and application.
+**Objective:** See withholding tax configuration
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Settings` → `Tax Configuration` → `Withholding Tax`
-2. **View** withholding tax rules
-3. **Configure** for specific payment types:
-   - Professional fees
-   - Contract payments
-   - Interest payments
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Settings → Tax Configuration → Withholding Tax
 
-**Withholding Tax Elements:**
-| Element | Configuration |
-|---------|---------------|
-| Payment Type | Category of payment |
-| Rate | Withholding percentage |
-| Threshold | Minimum amount threshold |
-| Reporting | CP22 reporting integration |
+2. **View** the withholding tax rules
 
-### Expected Results
-- Automatic WHT calculation
-- Deduction at payment
-- Certificate generation
-- LHDN reporting support
+### What You'll See
+
+| Payment Type | Rate | Notes |
+|--------------|------|-------|
+| Professional Fees | 10% | Deducted at payment |
+| Contract Work | 10% | Foreign contractors may be higher |
+| Interest | 15% | Bank interest payments |
+
+### How It Works
+
+When you pay a supplier subject to withholding tax:
+1. System calculates the withholding amount
+2. Net payment to supplier is reduced
+3. Withheld amount posted to tax payable
+4. Reports generated for LHDN submission
 
 ---
 
-## Test Scenario 10: Tax Audit Trail
+## Test Scenario 7: Tax Reports
 
-### Objective
-Verify complete audit trail for tax configurations.
+**Objective:** Generate tax reporting
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Settings` → `Tax Configuration` → `Tax Rates`
-2. **Select** any tax rate
-3. **View** change history
-4. **Review** audit details
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Finance → Tax Reports
 
-**Audit Information:**
-| Field | Content |
-|-------|---------|
-| Changed By | User who made change |
-| Changed Date | When change occurred |
-| Previous Value | Old rate/setting |
-| New Value | New rate/setting |
-| Reason | Change justification |
+2. **Generate** available reports:
+   | Report | Purpose |
+   |--------|---------|
+   | SST Summary | Total output and input tax |
+   | Tax by Code | Breakdown by tax code |
+   | Tax Ledger | Transaction details |
+   | E-Invoice Summary | E-invoice tax totals |
 
-### Expected Results
-- Complete change history
-- Before/after values
-- User identification
-- Timestamp accuracy
+3. **Export** for filing
+
+### What to Notice
+
+- Reports match LHDN required formats
+- Can be exported for government submission
+- Drill-down to individual transactions
 
 ---
 
-## Key Features Demonstrated
+## Your Progress Checklist
 
-### Tax Configuration
-- Multiple tax types
-- Flexible rate settings
-- Effective date management
-- GL account mapping
+Mark off what you've completed:
 
-### Compliance Support
-- Government directive alignment
-- E-invoice tax requirements
-- Reporting format compliance
-- Audit trail maintenance
-
-### Automation
-- Auto-calculation in transactions
-- Correct rate selection by date
-- Exemption handling
-- Report generation
+| Scenario | Status |
+|----------|--------|
+| 1. Viewed tax rates | ⬜ |
+| 2. Created a new tax rate | ⬜ |
+| 3. Saw tax in sales invoice | ⬜ |
+| 4. Saw tax in purchase invoice | ⬜ |
+| 5. Explored tax exemptions | ⬜ |
+| 6. Reviewed withholding tax | ⬜ |
+| 7. Generated tax reports | ⬜ |
 
 ---
 
-## Advanced Features
+## Key Takeaways
 
-### Multi-Rate Support
-- Different rates by item category
-- Location-based variations
-- Customer-specific rates
-- Time-based rate changes
+After completing this module, you've seen that BigLedger:
 
-### Integration
-- E-invoice tax codes
-- LHDN reporting formats
-- Bank payment integration
-- Customs duty handling
-
-### Reporting
-- Real-time tax position
-- Compliance dashboards
-- Variance analysis
-- Filing preparation
+| Feature | What It Does |
+|---------|-------------|
+| **Tax Configuration** | Multiple tax types and rates |
+| **Effective Dates** | Schedule future rate changes |
+| **Auto-Calculation** | Tax computed automatically in transactions |
+| **E-Invoice Integration** | Proper tax codes for LHDN |
+| **Exemption Handling** | Zero-rated, exempt, out of scope |
+| **Withholding Tax** | Automatic deduction and reporting |
+| **Tax Reports** | Compliance-ready outputs |
 
 ---
 
-## Navigation Tips
+## Quick Reference: Navigation
 
-| Task | Menu Path |
-|------|-----------|
-| Tax Rates | Settings → Tax Configuration → Tax Rates |
-| Tax Types | Settings → Tax Configuration → Tax Types |
+| What You Want to Do | Where to Find It |
+|---------------------|------------------|
+| Tax rates | Settings → Tax Configuration → Tax Rates |
+| Tax types | Settings → Tax Configuration → Tax Types |
 | Exemptions | Settings → Tax Configuration → Exemptions |
-| Withholding Tax | Settings → Tax Configuration → Withholding Tax |
-| Tax Reports | Finance → Tax Reports |
-| Tax Ledger | Finance → Reports → Tax Ledger |
+| Withholding tax | Settings → Tax Configuration → Withholding Tax |
+| Tax reports | Finance → Tax Reports |
 
 ---
 
-## Related Documentation
+## Congratulations!
 
-For detailed technical documentation:
-- [Tax Configuration Applet](/applets/tax-configuration-applet/)
-
----
-
-## Complete Your Evaluation
-
-You have now completed the test script for all major modules. Return to the overview to access any module for further testing:
+You've completed all modules in the UTM Integrated Financial System evaluation!
 
 {{< cards >}}
-  {{< card link="../" title="Back to Overview" subtitle="Return to main evaluation guide" >}}
+  {{< card link="../" title="Back to Overview" subtitle="Review all modules or restart" >}}
 {{< /cards >}}
 
 ---
 
-## Summary of Evaluated Modules
+## Summary of What You've Evaluated
 
-| Module | Requirements Covered |
-|--------|---------------------|
+| Module | UTM Requirements |
+|--------|------------------|
 | General Ledger & COA | 9.18, 9.19 |
 | Budget & Vote Book | 9.23-9.55 |
 | Accounts Payable | 9.16b |
@@ -427,9 +334,18 @@ You have now completed the test script for all major modules. Return to the over
 | Cash Management | 9.56 |
 | Asset Management | 9.57-9.65 |
 | Financial Reporting | 9.20 |
-| User Access Control | 9.15 |
+| Security & Access | 9.15 |
 | Tax Management | 9.17 |
 
-For questions or additional demonstrations, please contact:
+---
+
+## Next Steps
+
+For questions or to schedule a deeper demonstration:
+
 - **Demo Coordinator:** fatimah@bigledger.com
 - **Technical Support:** support@bigledger.com
+- **Sales Inquiries:** sales@bigledger.com
+
+**Reference:** UTM Tender B.30/2024
+

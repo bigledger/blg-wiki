@@ -1,439 +1,375 @@
 ---
 title: "Asset Management"
-description: "Evaluate asset registration, tracking, depreciation, and disposal (Requirements 9.57-9.65)"
+description: "Evaluate asset tracking, depreciation, and lifecycle management"
 weight: 7
 ---
 
-This section covers the comprehensive Asset Management functionality as specified in UTM Tender Requirements 9.57-9.65. Our system provides complete asset lifecycle management from acquisition to disposal with full integration to the financial system.
+## What You'll Learn
 
-## Overview
+In this module, you'll explore how UTM tracks its physical assets - from computers and furniture to vehicles and buildings. You'll see how BigLedger manages the complete asset lifecycle from purchase to disposal.
 
-The Asset Management module addresses:
-- **Asset Receipt (9.57)** - Recording incoming assets
-- **Asset Registration (9.58)** - Formal asset recording with QR codes
-- **Asset Record Update (9.59)** - Maintaining asset information
-- **Asset Transfer (9.60)** - Moving assets between locations/custodians
-- **Asset Loan (9.61)** - Temporary asset assignments
-- **Asset Maintenance (9.62)** - Service and repair tracking
-- **Asset Disposal (9.63)** - End-of-life processing
-- **Asset Inspection (9.64)** - Physical verification
-- **Asset Loss (9.65)** - Lost asset handling
-
-## Test Scenario 1: Asset Receipt
-
-### Objective
-Test the asset receipt process when goods arrive (Requirement 9.57).
-
-### Steps to Follow
-
-1. **Login** to the demo system
-2. **Navigate** to: `Assets` → `Asset Receipt`
-3. **Create** new asset receipt:
-   - **Source:** Purchase Order / Direct Receipt
-   - **Supplier:** Select vendor
-   - **Items:** List of received assets
-   - **Quantity:** Number of items
-4. **Process** the receipt
-
-### What to Verify
-
-**Integration Capabilities (9.57a-c):**
-| Requirement | Feature |
-|-------------|---------|
-| Module Integration | Links to Purchasing, Inventory |
-| System Integration | Ready for external system data |
-| Comprehensive System | Full asset management coverage |
-
-### Expected Results
-- Receipt recorded with reference
-- Assets ready for registration
-- Link to purchase documentation
-- Audit trail created
+{{< callout type="info" >}}
+**Time Required:** 20 minutes | **Skill Level:** Beginner-friendly | **UTM Requirements:** 9.57-9.65
+{{< /callout >}}
 
 ---
 
-## Test Scenario 2: Asset Registration
+## Before You Begin: Key Terms Explained
 
-### Objective
-Test formal asset registration with QR code generation (Requirement 9.58).
+| Term | What It Means |
+|------|---------------|
+| **Asset** | Something of value owned by UTM (equipment, vehicles, buildings) |
+| **Depreciation** | The decrease in value of an asset over time |
+| **Net Book Value (NBV)** | Original cost minus accumulated depreciation |
+| **Asset Register** | The complete list of all assets |
+| **QR Code** | Scannable code attached to each asset for easy identification |
+| **Custodian** | The person or department responsible for an asset |
+| **Disposal** | Removing an asset from the register (sold, scrapped, donated) |
 
-### Steps to Follow
+---
 
-1. **Navigate** to: `Assets` → `Asset Registration` → `New Asset`
-2. **Register** a new asset:
-   - **Asset Code:** Auto-generated or manual
-   - **Description:** Computer Workstation
-   - **Category:** Office Equipment
-   - **Location:** Block A, Room 101
-   - **Custodian:** Finance Department
-   - **Acquisition Date:** Purchase date
-   - **Acquisition Cost:** RM 5,000
-3. **Generate** QR Code
+## Why This Module Matters
+
+Asset Management is essential for:
+
+- **Tracking valuable equipment** - Know where everything is
+- **Financial accuracy** - Proper depreciation for financial statements
+- **Audit compliance** - Complete history of all assets
+- **Budget planning** - Know when assets need replacement
+
+{{< callout type="info" >}}
+**For UTM:** This addresses requirements 9.57-9.65 covering asset receipt, registration, transfer, loan, maintenance, disposal, inspection, and loss reporting.
+{{< /callout >}}
+
+---
+
+## Test Scenario 1: View the Asset Register
+
+**Objective:** See all registered assets
+
+**Time:** 3 minutes
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Assets → Asset Register
+
+2. **View** the list of assets
+
+3. **Use filters** to find specific assets:
+   | Filter | Example |
+   |--------|---------|
+   | Category | Office Equipment |
+   | Location | Block A |
+   | Custodian | Finance Department |
+   | Status | Active |
+
+4. **Click** on any asset to see details
+
+### What You'll See
+
+| Information | Description |
+|-------------|-------------|
+| Asset Code | Unique identifier |
+| Description | What the asset is |
+| Location | Where it's located |
+| Custodian | Who's responsible |
+| Purchase Date | When acquired |
+| Cost | Original purchase price |
+| Net Book Value | Current value after depreciation |
+
+{{< callout type="info" >}}
+**BigLedger Advantage:** Every asset has a QR code that can be scanned with a mobile phone for instant lookup.
+{{< /callout >}}
+
+---
+
+## Test Scenario 2: Register a New Asset
+
+**Objective:** Add a new asset to the system
+
+**Time:** 5 minutes
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Assets → Asset Registration → New Asset
+
+2. **Fill in asset details:**
+   | Field | Example |
+   |-------|---------|
+   | Description | Dell Computer Workstation |
+   | Category | Office Equipment |
+   | Location | Block A, Room 101 |
+   | Custodian | Finance Department |
+   | Purchase Date | Today |
+   | Cost | RM 5,000 |
+
+3. **Set depreciation:**
+   | Field | Example |
+   |-------|---------|
+   | Method | Straight-Line |
+   | Useful Life | 5 years |
+   | Residual Value | RM 500 |
+
 4. **Save** the registration
 
-### What to Verify
+### What Happens
 
-**Registration Features (9.58a-i):**
-| Requirement | Feature |
-|-------------|---------|
-| Integration | Links to procurement and receiving |
-| Complete Management | Full lifecycle support |
-| Asset Classification | Categories and sub-categories |
-| Custodian Recording | Who is responsible |
-| Asset Documentation | Supporting documents attached |
-| Warranty Tracking | Warranty period management |
-| Depreciation Config | Automatic calculation setup |
-| QR Code | Unique identifier generation |
-| Disposal Control | Lifecycle tracking |
-
-### Expected Results
-- Asset registered with unique code
-- QR code generated for tracking
-- Depreciation schedule created
-- GL posting for asset value
+- Unique asset code is generated
+- QR code is created for the asset
+- Depreciation schedule is calculated
+- GL entries are posted (Debit: Asset, Credit: Bank/AP)
 
 ---
 
-## Test Scenario 3: Asset Record Update
+## Test Scenario 3: Transfer an Asset
 
-### Objective
-Test asset information maintenance capabilities (Requirement 9.59).
+**Objective:** Move an asset to a different location or department
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Assets` → `Asset Register`
-2. **Search** for an existing asset
-3. **Update** asset details:
-   - Change location
-   - Update custodian
-   - Add maintenance notes
-   - Attach documents
-4. **Save** changes
+### When You'd Do This
 
-### What to Verify
+- Staff moves to a different office
+- Department reorganization
+- Equipment relocated to another building
 
-**Update Capabilities (9.59a-e):**
-| Feature | Capability |
-|---------|------------|
-| Location Update | Change physical location |
-| Custodian Change | Transfer responsibility |
-| Status Update | Active, Inactive, Under repair |
-| Document Management | Add/remove attachments |
-| Audit Trail | Track all changes |
+### Step-by-Step Instructions
 
-### Expected Results
-- Changes saved with timestamp
-- Previous values maintained in history
-- Notification to relevant parties
-- Complete audit trail
+1. **Navigate to:** Assets → Asset Transfer → New Transfer
 
----
+2. **Fill in transfer details:**
+   | Field | Example |
+   |-------|---------|
+   | Asset | Select the asset |
+   | From Location | Block A, Room 101 |
+   | To Location | Block B, Room 205 |
+   | From Custodian | Finance Department |
+   | To Custodian | HR Department |
+   | Reason | Staff relocation |
 
-## Test Scenario 4: Asset Transfer
+3. **Submit** the transfer
 
-### Objective
-Test asset transfer between departments/locations (Requirement 9.60).
+4. **Wait for approval** (if required)
 
-### Steps to Follow
+### What Happens
 
-1. **Navigate** to: `Assets` → `Asset Transfer` → `New Transfer`
-2. **Create** transfer request:
-   - **Asset:** Select asset(s)
-   - **From Location:** Current location
-   - **To Location:** Destination
-   - **From Custodian:** Current holder
-   - **To Custodian:** New holder
-   - **Reason:** Transfer justification
-3. **Submit** for approval
-4. **Approve/Complete** transfer
+- Transfer request is routed for approval
+- Both parties are notified
+- Once approved, asset record is updated
+- Complete history is maintained
 
-### What to Verify
-
-**Transfer Features (9.60a-f):**
-| Requirement | Feature |
-|-------------|---------|
-| Module Integration | Updates all linked records |
-| System Integration | External system updates |
-| Comprehensive System | Complete tracking |
-| Notification | Auto-alert to parties |
-| Workflow | Approval process |
-| Recording | Complete audit trail |
-
-### Expected Results
-- Transfer request created
-- Approval workflow triggered
-- Both parties notified
-- Asset record updated upon completion
+{{< callout type="info" >}}
+**UTM Requirement (9.60):** The system must support asset transfer with notifications and workflow.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 5: Asset Loan
+## Test Scenario 4: Asset Loan
 
-### Objective
-Test temporary asset assignment functionality (Requirement 9.61).
+**Objective:** Temporarily assign an asset to someone
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Assets` → `Asset Loan` → `New Loan`
-2. **Create** loan request:
-   - **Asset:** Select available asset
-   - **Borrower:** Person/Department
-   - **Loan Date:** Start date
-   - **Expected Return:** Due date
-   - **Purpose:** Reason for loan
+### When You'd Do This
+
+- Laptop loaned to staff for event
+- Projector borrowed for meeting
+- Equipment for off-site work
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Assets → Asset Loan → New Loan
+
+2. **Fill in loan details:**
+   | Field | Example |
+   |-------|---------|
+   | Asset | Projector P-001 |
+   | Borrower | Ahmad bin Ali |
+   | Loan Date | Today |
+   | Expected Return | 3 days from now |
+   | Purpose | Conference presentation |
+
 3. **Process** the loan
 
-### What to Verify
+### What to Notice
 
-**Loan Features (9.61a-g):**
-| Requirement | Feature |
-|-------------|---------|
-| Integration | Module connectivity |
-| System Integration | External system support |
-| Complete Management | Full loan lifecycle |
-| Loan Recording | All details captured |
-| Status Tracking | Borrowed, Returned status |
-| Overdue Monitoring | Alert for overdue items |
-| Mobile Support | Mobile-friendly interface |
-
-### Expected Results
-- Loan recorded with due date
-- Asset status updated
-- Reminder notifications scheduled
-- Return processing available
+- Asset status changes to "On Loan"
+- Reminder is scheduled for return date
+- Overdue items are flagged
+- Complete loan history is kept
 
 ---
 
-## Test Scenario 6: Asset Maintenance
+## Test Scenario 5: Run Depreciation
 
-### Objective
-Test maintenance and service history tracking (Requirement 9.62).
+**Objective:** Calculate monthly depreciation
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Assets` → `Asset Maintenance` → `New Record`
-2. **Record** maintenance:
-   - **Asset:** Select asset
-   - **Maintenance Type:** Repair/Service/Upgrade
-   - **Date:** Service date
-   - **Cost:** Maintenance cost
-   - **Vendor:** Service provider
-   - **Description:** Work performed
-3. **Save** the record
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Assets → Depreciation → Run Depreciation
 
-**Maintenance Features (9.62a-e):**
-| Requirement | Feature |
-|-------------|---------|
-| Integration | Links to asset record |
-| Complete Management | Full maintenance history |
-| Schedule Support | Preventive maintenance |
-| Cost Tracking | Maintenance costs recorded |
-| Warranty Impact | Warranty consideration |
+2. **Select options:**
+   | Field | Example |
+   |-------|---------|
+   | Period | Current month |
+   | Category | All (or specific) |
 
-### Expected Results
-- Maintenance logged to asset
-- Cost recorded for reporting
-- Service history viewable
-- Maintenance alerts configurable
+3. **Preview** the depreciation amounts
+
+4. **Post** the depreciation
+
+### What Happens
+
+| Action | Result |
+|--------|--------|
+| Calculation | System calculates based on each asset's method |
+| Journal Entry | Debit: Depreciation Expense, Credit: Accumulated Depreciation |
+| Asset Update | Net Book Value is reduced |
+| Reports | Depreciation schedule is updated |
+
+{{< callout type="info" >}}
+**BigLedger Advantage:** Supports multiple depreciation methods - Straight-Line, Declining Balance, Units of Production.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 7: Asset Disposal
+## Test Scenario 6: Dispose of an Asset
 
-### Objective
-Test asset disposal/write-off process (Requirement 9.63).
+**Objective:** Remove an asset from service
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Assets` → `Asset Disposal` → `New Disposal`
-2. **Process** disposal:
-   - **Asset:** Select asset(s)
-   - **Disposal Type:** Sale/Write-off/Donation
-   - **Disposal Date:** Effective date
-   - **Proceeds:** Sale amount (if applicable)
-   - **Reason:** Justification
+### When You'd Do This
+
+- Asset is sold
+- Asset is scrapped (no longer usable)
+- Asset is donated
+- Asset is written off
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Assets → Asset Disposal → New Disposal
+
+2. **Fill in disposal details:**
+   | Field | Example |
+   |-------|---------|
+   | Asset | Select the asset |
+   | Disposal Type | Sale / Write-Off / Donation |
+   | Disposal Date | Today |
+   | Proceeds | RM 500 (if sold) |
+   | Reason | End of useful life |
+
 3. **Submit** for approval
-4. **Complete** disposal
 
-### What to Verify
+### What Happens
 
-**Disposal Features (9.63a-e):**
-| Requirement | Feature |
-|-------------|---------|
-| Integration | GL impact posting |
-| Complete Management | End-to-end process |
-| Approval Workflow | Authorization required |
-| Gain/Loss Calculation | Automatic computation |
-| Audit Trail | Complete documentation |
-
-### Expected Results
-- Disposal request recorded
-- Approval obtained
-- GL entries posted (gain/loss)
-- Asset marked as disposed
-- History retained for audit
+- Gain/Loss is calculated automatically
+- GL entries are posted
+- Asset is marked as disposed
+- History is retained for audit
 
 ---
 
-## Test Scenario 8: Asset Inspection
+## Test Scenario 7: Physical Inspection
 
-### Objective
-Test physical asset verification capabilities (Requirement 9.64).
+**Objective:** Verify assets exist and are in their recorded locations
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Assets` → `Asset Inspection` → `New Inspection`
-2. **Create** inspection:
-   - **Location:** Select area to inspect
-   - **Inspector:** Assigned person
-   - **Date:** Inspection date
-3. **Generate** location list
-4. **Perform** verification (mark found/not found)
-5. **Submit** results
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Assets → Asset Inspection → New Inspection
 
-**Inspection Features (9.64a-e):**
-| Requirement | Feature |
-|-------------|---------|
-| Integration | Updates asset status |
-| Complete Management | Full verification process |
-| Location List | Generate assets by location |
-| Mobile Support | Mobile-friendly verification |
-| Variance Reporting | Missing asset identification |
+2. **Select** a location to inspect
 
-### Expected Results
-- Inspection checklist generated
-- QR code scanning support
-- Discrepancies flagged
-- Follow-up actions triggered
+3. **Generate** the inspection checklist
 
----
+4. **For each asset:**
+   - Scan QR code (or search manually)
+   - Mark as Found / Not Found
+   - Note any discrepancies
 
-## Test Scenario 9: Asset Loss Reporting
+5. **Submit** the inspection results
 
-### Objective
-Test lost asset handling process (Requirement 9.65).
+### What to Notice
 
-### Steps to Follow
+- System shows expected assets for that location
+- QR scanning speeds up verification
+- Missing assets are flagged for investigation
+- Reports show inspection coverage
 
-1. **Navigate** to: `Assets` → `Asset Loss` → `Report Loss`
-2. **Report** lost asset:
-   - **Asset:** Identify lost item
-   - **Discovery Date:** When noticed
-   - **Last Known Location:** Where last seen
-   - **Circumstances:** How it was lost
-   - **Police Report:** Reference number (if applicable)
-3. **Submit** report
-
-### What to Verify
-
-**Loss Handling Features (9.65a-d):**
-| Requirement | Feature |
-|-------------|---------|
-| Integration | Status update across system |
-| Complete Management | End-to-end loss process |
-| Case Tracking | Investigation workflow |
-| Financial Impact | Book value write-off |
-
-### Expected Results
-- Loss report created
-- Investigation workflow initiated
-- Asset status updated
-- Financial adjustments processed
+{{< callout type="info" >}}
+**UTM Requirement (9.64):** The system must support physical verification with location lists and variance reporting.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 10: Depreciation Calculation
+## Your Progress Checklist
 
-### Objective
-Test automatic depreciation processing.
+Mark off what you've completed:
 
-### Steps to Follow
-
-1. **Navigate** to: `Assets` → `Depreciation` → `Run Depreciation`
-2. **Configure** depreciation run:
-   - **Period:** Month/Year
-   - **Asset Category:** All or specific
-3. **Preview** depreciation amounts
-4. **Post** depreciation entries
-
-### What to Verify
-
-**Depreciation Features:**
-| Method | Support |
-|--------|---------|
-| Straight-Line | Supported |
-| Declining Balance | Supported |
-| Units of Production | Configurable |
-| Sum of Years Digits | Configurable |
-
-### Expected Results
-- Depreciation calculated correctly
-- GL journal entries created
-- Accumulated depreciation updated
-- Asset NBV (Net Book Value) updated
+| Scenario | Status |
+|----------|--------|
+| 1. Viewed asset register | ⬜ |
+| 2. Registered a new asset | ⬜ |
+| 3. Created an asset transfer | ⬜ |
+| 4. Processed an asset loan | ⬜ |
+| 5. Ran depreciation | ⬜ |
+| 6. Disposed of an asset | ⬜ |
+| 7. Performed physical inspection | ⬜ |
 
 ---
 
-## Key Features Demonstrated
+## Key Takeaways
 
-### Asset Lifecycle Management
-- Acquisition → Registration → Use → Maintenance → Disposal
-- Complete tracking at every stage
-- Audit trail throughout
+After completing this module, you've seen that BigLedger:
 
-### QR Code Tracking
-- Unique QR per asset
-- Mobile scanning support
-- Quick asset lookup
-- Physical verification aid
-
-### Financial Integration
-- Acquisition posting
-- Depreciation posting
-- Disposal gain/loss
-- Budget validation
-
-### Reporting
-- Asset register report
-- Depreciation schedule
-- Location-wise report
-- Category analysis
+| UTM Requirement | How BigLedger Meets It |
+|-----------------|----------------------|
+| **9.57** Asset Receipt | Record incoming assets from purchases |
+| **9.58** Asset Registration | Complete registration with QR codes |
+| **9.59** Asset Update | Maintain and update asset information |
+| **9.60** Asset Transfer | Move assets with workflow |
+| **9.61** Asset Loan | Temporary assignments with tracking |
+| **9.62** Asset Maintenance | Service and repair history |
+| **9.63** Asset Disposal | End-of-life processing |
+| **9.64** Asset Inspection | Physical verification |
+| **9.65** Asset Loss | Lost asset reporting |
 
 ---
 
-## Navigation Tips
+## Quick Reference: Navigation
 
-| Task | Menu Path |
-|------|-----------|
-| Asset Receipt | Assets → Asset Receipt |
-| Asset Registration | Assets → Asset Registration |
-| Asset Register | Assets → Asset Register |
-| Asset Transfer | Assets → Asset Transfer |
-| Asset Loan | Assets → Asset Loan |
-| Asset Maintenance | Assets → Asset Maintenance |
-| Asset Disposal | Assets → Asset Disposal |
-| Asset Inspection | Assets → Asset Inspection |
-| Asset Loss | Assets → Asset Loss |
-| Depreciation | Assets → Depreciation |
+| What You Want to Do | Where to Find It |
+|---------------------|------------------|
+| View all assets | Assets → Asset Register |
+| Register new asset | Assets → Asset Registration |
+| Transfer asset | Assets → Asset Transfer |
+| Loan asset | Assets → Asset Loan |
+| Run depreciation | Assets → Depreciation |
+| Dispose asset | Assets → Asset Disposal |
+| Physical count | Assets → Asset Inspection |
 
 ---
 
-## Related Documentation
+## What's Next?
 
-For detailed technical documentation:
-- [Asset Module Applet](/applets/asset-module-applet/)
-
----
-
-## Next Steps
-
-After evaluating Asset Management, proceed to:
+You've completed the Asset Management evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../financial-reporting" title="Financial Reporting" subtitle="Test financial statement generation" >}}
-  {{< card link="../user-access-control" title="User Access Control" subtitle="Test security and permissions" >}}
+  {{< card link="../financial-reporting" title="Financial Reporting" subtitle="Generate financial statements" >}}
+  {{< card link="../user-access-control" title="Security & Access" subtitle="See security features" >}}
+  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
+
+---
+
+## Questions?
+
+If anything wasn't clear or you'd like a live demonstration:
+
+- **Demo Coordinator:** fatimah@bigledger.com
+- **Technical Support:** support@bigledger.com
+

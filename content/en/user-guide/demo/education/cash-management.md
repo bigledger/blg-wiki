@@ -1,376 +1,299 @@
 ---
-title: "Cash Management & Banking"
-description: "Evaluate cashbook management, bank reconciliation, and internet banking integration"
+title: "Cash & Banking"
+description: "Evaluate cashbook management, bank reconciliation, and payment processing"
 weight: 6
 ---
 
-This section covers the Cash Management and Internet Banking functionality as specified in UTM Tender Requirement 9.56. Our system provides comprehensive cash and bank account management with modern banking integration capabilities.
+## What You'll Learn
 
-## Overview
+In this module, you'll explore how UTM manages its bank accounts. From tracking cash balances to reconciling bank statements to generating payment files - it all happens in **Cash Management**.
 
-The Cash Management module provides:
-- **Cashbook Management** - Multiple bank and cash accounts
-- **Settlement Methods** - Various payment types configuration
-- **Inter-Account Transfers** - Cash and bank transfers
-- **Bank Reconciliation** - Automated statement matching
-- **Internet Banking Integration** - Payment gateway connectivity
-- **Cash Flow Reporting** - Real-time cash position
-
-## Test Scenario 1: Cashbook Setup and Viewing
-
-### Objective
-Verify the system's bank account and cashbook management (Requirement 9.56a).
-
-### Steps to Follow
-
-1. **Login** to the demo system
-2. **Navigate** to: `Finance` → `Cashbook` → `Cashbook List`
-3. **View** the list of configured bank accounts
-4. **Select** a cashbook to view details
-
-### What to Verify
-
-**Cashbook Information:**
-| Field | Description |
-|-------|-------------|
-| Account Name | Bank/Cash account name |
-| Account Number | Bank account number |
-| Bank Name | Financial institution |
-| Currency | Account currency |
-| GL Code | Linked General Ledger account |
-| Current Balance | Real-time balance |
-
-### Expected Results
-- All bank accounts listed
-- Balance information current
-- GL linkage visible
-- Transaction history accessible
+{{< callout type="info" >}}
+**Time Required:** 15 minutes | **Skill Level:** Beginner-friendly | **UTM Requirements:** 9.56
+{{< /callout >}}
 
 ---
 
-## Test Scenario 2: Payment Gateway Integration
+## Before You Begin: Key Terms Explained
 
-### Objective
-Verify integration with UTM's main payment gateway (Requirement 9.56b).
-
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Cashbook` → `Settings` → `Payment Gateway`
-2. **View** the configured payment gateways
-3. **Observe** the integration capabilities
-
-### What to Verify
-
-**Payment Gateway Features:**
-| Gateway Type | Capabilities |
-|--------------|-------------|
-| FPX (Online Banking) | Real-time bank transfers |
-| Credit/Debit Cards | Visa, Mastercard processing |
-| E-Wallets | Touch n Go, Boost, GrabPay |
-| Direct Debit | Recurring payments |
-
-### Expected Results
-- Multiple payment gateways configurable
-- Transaction status tracking
-- Automatic reconciliation
-- Fee management
+| Term | What It Means |
+|------|---------------|
+| **Cashbook** | A record of all transactions for a specific bank account |
+| **Bank Reconciliation** | Matching your records with the bank's records |
+| **IBG** | Interbank GIRO - electronic bank transfers |
+| **Settlement Method** | How you pay or receive money (cash, cheque, bank transfer) |
+| **Cash Transfer** | Moving money between your own bank accounts |
+| **Outstanding Items** | Transactions in your books but not yet on bank statement (or vice versa) |
 
 ---
 
-## Test Scenario 3: Bank File Generation for IBG/GIRO
+## Why This Module Matters
 
-### Objective
-Test bank file generation for batch payments (Requirement 9.56c).
+Cash Management is critical because:
 
-### Steps to Follow
+- **Know your cash position** - How much money do you have right now?
+- **Reconcile with bank** - Make sure your records match the bank's
+- **Generate payment files** - Create files for bank uploads
+- **Track all movements** - Complete audit trail of every transaction
 
-1. **Navigate** to: `Finance` → `Accounts Payable` → `Payment Processing`
-2. **Select** approved invoices for payment
-3. **Choose** Bank Transfer method
-4. **Generate** bank file
-
-### What to Verify
-
-**Bank File Features:**
-| Feature | Capability |
-|---------|------------|
-| File Format | Bank-specific formats (CIMB, Maybank, etc.) |
-| Batch Processing | Multiple payments in one file |
-| Validation | Account number verification |
-| Audit Trail | Complete payment tracking |
-
-### Expected Results
-- Bank file generated in correct format
-- Download available for bank upload
-- Payment status tracked
-- Reconciliation support
+{{< callout type="info" >}}
+**For UTM:** This addresses requirement 9.56 covering cashbook management and internet banking integration.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 4: Settlement Method Configuration
+## Test Scenario 1: View Your Bank Accounts
 
-### Objective
-Test the payment method setup capabilities.
+**Objective:** See all bank accounts and their current balances
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Finance` → `Cashbook` → `Settlement Method`
-2. **View** configured settlement methods
-3. **Create** or edit a settlement method
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Finance → Cashbook → Cashbook List
 
-**Settlement Method Types:**
-| Type | Description |
-|------|-------------|
-| Bank Transfer | IBG, GIRO, RENTAS |
-| Cash | Physical cash handling |
-| Cheque | Cheque payments |
-| Credit Card | Card payments |
-| Debit Card | Card payments |
-| E-Wallet | Digital wallet payments |
+2. **View** the list of bank accounts
 
-### Expected Results
-- Multiple payment types configurable
-- Branch-level restrictions
-- GL account mapping
-- Bank charge configuration
+3. **Note** the information displayed:
+   | Column | What It Shows |
+   |--------|---------------|
+   | Account Name | Description of the account |
+   | Bank | Financial institution |
+   | Account Number | Bank account number |
+   | Currency | MYR, USD, etc. |
+   | Current Balance | Real-time balance |
+
+4. **Click** on any account to see more details
+
+### What to Notice
+
+- Balances update in real-time as transactions post
+- Each account links to a GL account
+- You can drill down to see all transactions
+
+{{< callout type="info" >}}
+**BigLedger Advantage:** Multi-currency support means you can manage accounts in USD, SGD, or any currency, with automatic exchange rate handling.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 5: Inter-Account Cash Transfer
+## Test Scenario 2: View Cashbook Transactions
 
-### Objective
-Test fund transfer between bank accounts.
+**Objective:** See the transaction history for a bank account
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Finance` → `Cashbook` → `Cash Transfer`
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Cashbook → Query Cashbook Transaction
+
+2. **Select** a cashbook (bank account)
+
+3. **Set** a date range (e.g., last month)
+
+4. **Click** Search
+
+### What You'll See
+
+| Column | Description |
+|--------|-------------|
+| Date | Transaction date |
+| Reference | Document number |
+| Description | What the transaction was for |
+| Debit | Money coming in |
+| Credit | Money going out |
+| Balance | Running balance |
+
+### Try This
+
+- **Click on any transaction** to see the source document (invoice, payment, etc.)
+- **Export to Excel** for further analysis
+- **Print** for your records
+
+---
+
+## Test Scenario 3: Transfer Between Bank Accounts
+
+**Objective:** Move money from one account to another
+
+**Time:** 3 minutes
+
+### When You'd Do This
+
+- Replenish petty cash
+- Move funds to a different currency account
+- Transfer to savings account
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Cashbook → Cash Transfer
+
 2. **Create** a new transfer:
-   - **From Cashbook:** Main Operating Account
-   - **To Cashbook:** Petty Cash Fund
-   - **Amount:** RM 5,000
-   - **Reference:** Transfer for petty cash replenishment
-3. **Submit** and finalize
+   | Field | Example |
+   |-------|---------|
+   | From Account | Main Operating Account |
+   | To Account | Petty Cash |
+   | Amount | RM 5,000 |
+   | Reference | Petty cash replenishment |
 
-### What to Verify
+3. **Submit** the transfer
 
-**Transfer Features:**
-- Real-time balance validation
-- Both accounts updated simultaneously
-- GL journal automatically created
-- Audit trail recorded
+### What Happens
 
-### Expected Results
-- Transfer completed successfully
-- Both cashbook balances updated
-- Journal entry posted
-- Transfer history accessible
+- Both accounts update simultaneously
+- Journal entry is created automatically
+- Complete audit trail recorded
 
----
-
-## Test Scenario 6: Bank Reconciliation
-
-### Objective
-Test the bank statement reconciliation process.
-
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Bank Reconciliation` → `New Session`
-2. **Create** reconciliation session:
-   - **Cashbook:** Select bank account
-   - **Opening Date:** Start of period
-   - **Closing Date:** End of period
-   - **Opening Balance:** Bank statement opening
-3. **Upload** bank statement (CSV format)
-4. **Run** auto-matching
-
-### What to Verify
-
-**Reconciliation Features:**
-| Feature | Capability |
-|---------|------------|
-| Statement Upload | CSV, Excel, MT940 formats |
-| Auto-Matching | Rule-based transaction matching |
-| Manual Matching | For exceptions |
-| Unmatched Items | Clear identification |
-| Reports | Reconciliation summary |
-
-### Expected Results
-- Statement uploaded and parsed
-- Transactions automatically matched
-- Unmatched items highlighted
-- Reconciliation report available
+{{< callout type="warning" >}}
+**Note:** Transfers may require approval depending on your organization's policies.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 7: Auto-Matching Rules
+## Test Scenario 4: Bank Reconciliation
 
-### Objective
-Test the automated matching configuration.
+**Objective:** Match your records with the bank statement
 
-### Steps to Follow
+**Time:** 5 minutes
 
-1. **Navigate** to: `Finance` → `Bank Reconciliation` → `Settings` → `Matching Rules`
-2. **View** configured rules
-3. **Observe** the matching criteria
+### Why This Is Important
 
-### What to Verify
+Even if your records are accurate, they might differ from the bank because:
+- Cheques not yet cashed
+- Bank fees not yet recorded
+- Deposits in transit
+- Errors (yours or the bank's)
 
-**Matching Criteria:**
-| Criteria | Description |
-|----------|-------------|
-| Amount | Exact or tolerance-based |
-| Date | Transaction date range |
-| Reference | Reference number matching |
-| Description | Description keyword matching |
-| Check Number | Cheque number matching |
+### Step-by-Step Instructions
 
-### Expected Results
-- Configurable matching rules
-- Priority-based application
-- Confidence level scoring
-- Override capability
+1. **Navigate to:** Finance → Bank Reconciliation → New Session
+
+2. **Select** the bank account to reconcile
+
+3. **Enter** the statement details:
+   | Field | Example |
+   |-------|---------|
+   | Statement Date | End of month |
+   | Opening Balance | From bank statement |
+   | Closing Balance | From bank statement |
+
+4. **Upload** the bank statement (CSV or Excel format)
+
+5. **Run** auto-matching
+
+### What Happens
+
+The system automatically matches transactions based on:
+- Amount (exact match)
+- Date (within range)
+- Reference number
+
+**You'll see:**
+| Status | Meaning |
+|--------|---------|
+| **Matched** | Found in both your records and bank statement |
+| **Unmatched (Your Side)** | In your books, not on statement (e.g., outstanding cheque) |
+| **Unmatched (Bank Side)** | On statement, not in your books (need to record) |
+
+### Try This
+
+- Click "Match" to manually match items
+- Create missing entries directly from the reconciliation screen
+- Generate the reconciliation report
+
+{{< callout type="info" >}}
+**BigLedger Advantage:** Supports multiple bank statement formats including CSV, Excel, and MT940. Auto-matching rules are configurable.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 8: Cash Position Report
+## Test Scenario 5: Cash Position Report
 
-### Objective
-Test real-time cash position reporting.
+**Objective:** See your overall cash situation
 
-### Steps to Follow
+**Time:** 2 minutes
 
-1. **Navigate** to: `Finance` → `Cashbook` → `Reports` → `Cash Position`
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Cashbook → Reports → Cash Position
+
 2. **Generate** the report
-3. **View** cash levels across all accounts
 
-### What to Verify
+3. **Review** the summary:
+   | Information | Description |
+   |-------------|-------------|
+   | Opening Balance | Start of period |
+   | Receipts | Money received |
+   | Payments | Money paid out |
+   | Closing Balance | Current position |
+   | By Currency | Breakdown if multi-currency |
 
-**Report Features:**
-| Element | Information |
+### What to Notice
+
+- All bank accounts are summarized
+- Real-time data (as of now)
+- Export available for management reports
+
+---
+
+## Your Progress Checklist
+
+Mark off what you've completed:
+
+| Scenario | Status |
+|----------|--------|
+| 1. Viewed bank accounts | ⬜ |
+| 2. Explored cashbook transactions | ⬜ |
+| 3. Created a cash transfer | ⬜ |
+| 4. Performed bank reconciliation | ⬜ |
+| 5. Generated cash position report | ⬜ |
+
+---
+
+## Key Takeaways
+
+After completing this module, you've seen that BigLedger:
+
+| Feature | What It Does |
 |---------|-------------|
-| Opening Balance | Start of period balance |
-| Receipts | Total inflows |
-| Payments | Total outflows |
-| Closing Balance | Current balance |
-| Projected | Forecasted cash position |
-
-### Expected Results
-- All bank accounts summarized
-- Real-time balance reflection
-- Currency-wise breakdown
-- Export capability (Excel, PDF)
+| **Multiple Bank Accounts** | Manage all your accounts in one place |
+| **Real-Time Balances** | Know your cash position instantly |
+| **Auto-Matching** | Reconciliation made faster and easier |
+| **Bank File Generation** | Payment files in bank-specific formats |
+| **Multi-Currency** | Handle foreign currency accounts |
+| **Audit Trail** | Complete record of all cash movements |
 
 ---
 
-## Test Scenario 9: Cashbook Transaction Query
+## Quick Reference: Navigation
 
-### Objective
-Test detailed transaction querying.
-
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Cashbook` → `Query Cashbook Transaction`
-2. **Select** a cashbook
-3. **Set** date range
-4. **Generate** report
-
-### What to Verify
-
-**Transaction Details:**
-- Transaction date
-- Document reference
-- Description
-- Debit/Credit amounts
-- Running balance
-- Source document link
-
-### Expected Results
-- Complete transaction listing
-- Drill-down to source documents
-- Export functionality
-- Print capability
+| What You Want to Do | Where to Find It |
+|---------------------|------------------|
+| View bank accounts | Finance → Cashbook → Cashbook List |
+| Cashbook transactions | Finance → Cashbook → Query Cashbook Transaction |
+| Cash transfers | Finance → Cashbook → Cash Transfer |
+| Bank reconciliation | Finance → Bank Reconciliation |
+| Cash position report | Finance → Cashbook → Reports → Cash Position |
+| Payment methods | Finance → Cashbook → Settlement Method |
 
 ---
 
-## Key Features Demonstrated
+## What's Next?
 
-### Cashbook Management
-- Multiple bank accounts
-- Multi-currency support
-- Real-time balance updates
-- GL integration
-
-### Payment Processing
-- Multiple payment methods
-- Bank file generation
-- Payment gateway integration
-- Batch processing
-
-### Reconciliation
-- Automated matching
-- Exception handling
-- Comprehensive reporting
-- Audit trail
-
-### Internet Banking
-- Payment gateway connectivity
-- Real-time transaction processing
-- Security features
-- Transaction tracking
-
----
-
-## Advanced Features
-
-### Cash Flow Forecasting
-- Projected receipts and payments
-- Historical trend analysis
-- Working capital planning
-- Alert configuration
-
-### Bank Integration
-- Direct bank feeds (where available)
-- Real-time balance checking
-- Automated reconciliation
-- Payment status updates
-
-### Security Features
-- Dual authorization for transfers
-- Amount limits per user
-- Audit logging
-- Segregation of duties
-
----
-
-## Navigation Tips
-
-| Task | Menu Path |
-|------|-----------|
-| View Cashbooks | Finance → Cashbook → Cashbook List |
-| Settlement Methods | Finance → Cashbook → Settlement Method |
-| Cash Transfer | Finance → Cashbook → Cash Transfer |
-| Bank Reconciliation | Finance → Bank Reconciliation |
-| Cash Position | Finance → Cashbook → Reports → Cash Position |
-| Transaction Query | Finance → Cashbook → Query Cashbook Transaction |
-
----
-
-## Related Documentation
-
-For detailed technical documentation:
-- [Cashbook Applet](/applets/cashbook-applet/)
-- [Bank Reconciliation Applet](/applets/bank-reconciliation-applet/)
-- [Bank Reconciliation Guide](/guides/accounting-guides/bank-reconciliation-guide/)
-
----
-
-## Next Steps
-
-After evaluating Cash Management, proceed to:
+You've completed the Cash Management evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../asset-management" title="Asset Management" subtitle="Test asset tracking and depreciation" >}}
-  {{< card link="../financial-reporting" title="Financial Reporting" subtitle="Test financial statement generation" >}}
+  {{< card link="../asset-management" title="Asset Management" subtitle="Track equipment and property" >}}
+  {{< card link="../financial-reporting" title="Financial Reporting" subtitle="Generate financial statements" >}}
+  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
+
+---
+
+## Questions?
+
+If anything wasn't clear or you'd like a live demonstration:
+
+- **Demo Coordinator:** fatimah@bigledger.com
+- **Technical Support:** support@bigledger.com
+

@@ -1,340 +1,297 @@
 ---
 title: "Budget & Vote Book Management"
-description: "Evaluate budget allocation, monitoring, virement, and real-time utilization tracking (Buku Vot)"
+description: "Evaluate budget allocation, monitoring, and the Vote Book (Buku Vot) system"
 weight: 2
 ---
 
-This section covers the comprehensive Budget and Vote Book (Buku Vot) management functionality. Our system provides real-time budget monitoring with controls that prevent over-spending, supporting UTM's requirement for robust financial governance.
+## What You'll Learn
 
-## Overview
+In this module, you'll explore the **Budget and Vote Book (Buku Vot)** system - the heart of government financial control. You'll see how BigLedger prevents overspending and gives you real-time visibility into budget utilization.
 
-The Budget Management module addresses UTM Tender Requirements 9.23-9.55, providing:
-- **Vote Book (Buku Vot) Management** - Central budget document per fiscal year
-- **Real-Time Budget Validation** - Prevent over-budget transactions
-- **Budget Virement** - Transfer funds between budget items
-- **Budget Adjustment** - Increase or decrease total allocations
-- **Multi-Dimensional Budgeting** - By PTJ, cost center, project, and activity
-- **Comprehensive Reporting** - Summary and detailed budget analysis
+{{< callout type="info" >}}
+**Time Required:** 20-25 minutes | **Skill Level:** Beginner-friendly | **UTM Requirements:** 9.23-9.55
+{{< /callout >}}
 
-## Test Scenario 1: Viewing Vote Book Display (Paparan Buku Vot)
+---
 
-### Objective
-Verify the system displays a user-friendly Vote Book interface as per Requirement 9.23.
+## Before You Begin: Key Terms Explained
 
-### Steps to Follow
+| Term | What It Means |
+|------|---------------|
+| **Vote Book (Buku Vot)** | The official budget record that tracks all allocations and spending for a department |
+| **PTJ (Pusat Tanggungjawab)** | Responsibility Center - a department or unit with its own budget |
+| **Budget Allocation** | The amount of money assigned to a specific purpose |
+| **Commitment** | Money set aside for approved purchases (like a Purchase Order) that hasn't been paid yet |
+| **Virement** | Moving budget from one category to another (requires approval) |
+| **Available Balance** | Allocation minus commitments minus actual spending = what you can still spend |
+
+---
+
+## Why This Module Matters
+
+The Vote Book is **critical for government agencies** because:
+
+- **Prevents overspending** - The system blocks transactions that exceed your budget
+- **Real-time tracking** - Know exactly how much budget remains at any moment
+- **Audit compliance** - Complete record of all budget movements
+- **Better planning** - Historical data helps plan future budgets
+
+{{< callout type="info" >}}
+**For UTM:** This directly addresses requirements 9.23-9.55 of the tender, covering all Vote Book operations from viewing to transfers.
+{{< /callout >}}
+
+---
+
+## Test Scenario 1: View Your Vote Book
+
+**Objective:** See the Vote Book display and understand the budget status
+
+**Time:** 3 minutes
+
+### Step-by-Step Instructions
 
 1. **Login** to the demo system
-2. **Navigate** to: `Finance` → `Budget` → `Vote Book Exposure`
-3. **Select** a Profit Center (PTJ) to view its vote book
-4. **Observe** the display layout
+
+2. **Navigate to:** Finance → Budget → Vote Book Exposure
+
+3. **Select a PTJ** (department) from the dropdown
+
+4. **View the Vote Book display**
+
+### What You'll See
+
+The Vote Book shows your budget at a glance:
+
+| Column | What It Means |
+|--------|---------------|
+| **Budget Item** | What the money is for (e.g., "Travel", "Supplies") |
+| **Allocation** | Total approved budget for this item |
+| **Commitment** | Money reserved for approved POs (not yet paid) |
+| **Expenditure** | Money already spent |
+| **Available** | What you can still spend (Allocation - Commitment - Expenditure) |
+
+### Try This
+
+- Look for **color indicators**: Green = healthy, Yellow = caution, Red = near/over limit
+- Click on any line to see detailed transactions
+- Try changing the period (month/quarter/year)
+
+{{< callout type="info" >}}
+**BigLedger Advantage:** The Vote Book updates in real-time. The moment a PO is approved or payment is made, balances change instantly.
+{{< /callout >}}
+
+---
+
+## Test Scenario 2: Create a Budget (for Finance Staff)
+
+**Objective:** See how finance staff can set up budgets without IT help
+
+**Time:** 5 minutes
+
+### Why This Matters
+
+UTM Requirement 9.24 specifies that **financial staff** (not IT) should be able to maintain the Vote Book. No programming or technical skills needed.
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Budget → Vote Book Organizer
+
+2. **Click** "New Vote Book" or select an existing one
+
+3. **Fill in the basics:**
+   | Field | Example |
+   |-------|---------|
+   | Year | 2025 |
+   | PTJ | Faculty of Engineering |
+   | Description | Operating Budget 2025 |
+
+4. **Add budget line items:**
+   - Click "Add Item"
+   - Select expense category
+   - Enter allocation amount
+
+5. **Save** the Vote Book
+
+### What to Notice
+
+- Forms use plain language (no codes required)
+- Help text explains each field
+- Dropdown menus for standard categories
+- Error messages are clear and helpful
+
+{{< callout type="warning" >}}
+**Demo Note:** In production, new Vote Books typically require approval. The demo may skip this step.
+{{< /callout >}}
+
+---
+
+## Test Scenario 3: Budget Blocking (The Most Important Feature!)
+
+**Objective:** See how the system prevents overspending
+
+**Time:** 5 minutes
+
+### Why This Is Critical
+
+This is the **core purpose** of the Vote Book - stopping transactions that would exceed the budget.
+
+### Step-by-Step Instructions
+
+1. **First, check available budget:**
+   - Go to Finance → Budget → Vote Book Exposure
+   - Note the "Available" amount for any budget item
+
+2. **Try to exceed it:**
+   - Go to Purchasing → Purchase Order → New
+   - Create a PO for an amount **larger** than available budget
+   - Try to submit it
+
+3. **Observe the system response**
+
+### What Should Happen
+
+The system should:
+1. **Show a warning** when you're close to the limit
+2. **Block submission** when you exceed the budget
+3. **Display a clear message** explaining why
+4. **Offer options**: Request exception, modify amount, or cancel
+
+{{< callout type="info" >}}
+**BigLedger Advantage:** Budget checking happens at the exact moment of transaction, not at month-end when it's too late.
+{{< /callout >}}
+
+---
+
+## Test Scenario 4: Budget Virement (Transfer)
+
+**Objective:** See how to move budget from one item to another
+
+**Time:** 5 minutes
+
+### When You'd Use This
+
+Imagine you budgeted RM10,000 for travel but only spent RM3,000. Meanwhile, you need more money for training. A virement lets you move the unused travel budget to training.
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Budget → Budget Virement
+
+2. **Create a new virement request:**
+   | Field | Example |
+   |-------|---------|
+   | From | Travel Expenses (underspent) |
+   | To | Training Expenses (needs more) |
+   | Amount | RM 5,000 |
+   | Reason | Training needs exceeded initial estimate |
+
+3. **Submit for approval**
+
+4. **Observe the workflow:**
+   - Request goes to approver
+   - Both budget items are "locked" pending approval
+   - Once approved, balances update automatically
 
 ### What to Verify
 
-**Interface Requirements (9.23a):**
-- User-friendly interface with clear layout
-- Easy to understand transaction descriptions and amounts
-- Systematic and organized presentation
+- The system validates that the source has enough funds
+- Shows impact on both budgets before you confirm
+- Tracks the complete approval history
 
-| Column | Description |
-|--------|-------------|
-| Budget Item | Category of spending |
-| Allocation | Total approved budget |
-| Commitment | Reserved amounts (POs) |
-| Expenditure | Actual spending |
-| Available Balance | Remaining budget |
-
-### Expected Results
-- Clean, intuitive display of budget status
-- Color-coded indicators for budget health (green/yellow/red)
-- Real-time balance updates
-- Easy navigation between periods
+{{< callout type="info" >}}
+**UTM Requirement (9.29):** The system must support transfer between objects within the same General Object, with appropriate approvals based on amount.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 2: Vote Book Maintenance by Authorized Staff
+## Test Scenario 5: Budget Reports
 
-### Objective
-Demonstrate that authorized financial staff can maintain the Vote Book without technical assistance (Requirement 9.24).
+**Objective:** See the various budget monitoring reports
 
-### Steps to Follow
+**Time:** 5 minutes
 
-1. **Login** as `demo+utm.finance@bigledger.com`
-2. **Navigate** to: `Finance` → `Budget` → `Vote Book Organizer`
-3. **Select** a Vote Book to maintain
-4. **Try** modifying budget allocations for a period
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Finance → Budget → Reports
 
-**Self-Service Capabilities:**
-- Financial staff can create new vote books
-- Add/modify budget items without IT support
-- Configure fiscal periods and allocations
-- No coding or technical skills required
+2. **Try these reports:**
 
-### Expected Results
-- Intuitive forms for budget entry
-- Validation messages in plain language
-- Help text and tooltips available
-- Changes saved with audit trail
+| Report | What It Shows |
+|--------|---------------|
+| **Budget Summary** | High-level overview of all budgets |
+| **Budget vs Actual** | Comparison of planned vs. spent |
+| **Utilization Rate** | Percentage of budget used |
+| **Commitment Report** | Outstanding POs and their amounts |
 
----
+3. **Export a report:**
+   - Click on any report
+   - Click "Export" → Choose Excel or PDF
+   - Download and open
 
-## Test Scenario 3: Vote Book Logic Configuration
+### Try This
 
-### Objective
-Verify authorized staff can configure vote book logic without technical support (Requirement 9.25).
-
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Budget` → `Settings` → `Vote Book Logic`
-2. **View** the configuration options
-3. **Observe** the available rules and settings
-
-### What to Verify
-
-**Configurable Rules:**
-- Budget validation thresholds (warning vs. blocking)
-- Approval workflow settings
-- Period allocation rules (even, seasonal, custom)
-- Transfer/virement limits
-
-### Expected Results
-- Dropdown menus and checkboxes for configuration
-- No programming required
-- Preview of rule effects before saving
-- Immediate application of changes
+- Use the drill-down feature: Click on any total to see the transactions behind it
+- Change date ranges to see different periods
+- Filter by PTJ to focus on specific departments
 
 ---
 
-## Test Scenario 4: Budget Application Processing
+## Your Progress Checklist
 
-### Objective
-Test the budget application workflow covering various budget types (Requirement 9.26).
+Mark off what you've completed:
 
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Budget` → `Budget Application`
-2. **Create** a new budget application:
-   - **Budget Type:** Operating Budget
-   - **PTJ:** Faculty of Engineering
-   - **Period:** 2025
-   - **Items:** List of budget items with requested amounts
-3. **Submit** for approval
-
-### What to Verify
-
-**System Capabilities (9.26a-d):**
-| Requirement | Feature |
-|-------------|---------|
-| Distinguish budget types | Operating, Capital, Grant, Special Project |
-| Receive and display estimates | Year-over-year comparison |
-| Integrate historical data | Previous year actuals auto-populated |
-| Approval workflow | Multi-level approval routing |
-
-### Expected Results
-- Different forms for different budget types
-- Historical data automatically populated
-- Integration with estimates from departments
-- Clear approval status and routing
+| Scenario | Status |
+|----------|--------|
+| 1. Viewed Vote Book display | ⬜ |
+| 2. Explored budget creation | ⬜ |
+| 3. Tested budget blocking | ⬜ |
+| 4. Created a virement request | ⬜ |
+| 5. Generated budget reports | ⬜ |
 
 ---
 
-## Test Scenario 5: Budget Virement (Transfer)
+## Key Takeaways
 
-### Objective
-Test the budget transfer functionality between objects within the same General Object (Requirement 9.29).
+After completing this module, you've seen that BigLedger:
 
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Budget` → `Budget Virement`
-2. **Create** a new virement request:
-   - **From:** Budget Item A (e.g., Travel Expenses)
-   - **To:** Budget Item B (e.g., Training Expenses)
-   - **Amount:** RM 5,000
-   - **Justification:** Training needs increased
-3. **Submit** for approval
-
-### What to Verify
-
-**Virement Rules (9.29a-e):**
-| Requirement | Verification |
-|-------------|--------------|
-| Distinguish budget types | System recognizes budget categories |
-| Transfer between objects in same General Object | Allowed transfers highlighted |
-| Multi-level approval | Routes to appropriate approvers |
-| Lock until resolved | Affected budgets show pending status |
-| Approval hierarchy based on limits | Different approvers based on amount |
-
-### Expected Results
-- System validates transfer is permitted
-- Shows impact on both source and destination budgets
-- Approval workflow activates based on amount
-- Audit trail records all virement actions
+| UTM Requirement | How BigLedger Meets It |
+|-----------------|----------------------|
+| **9.23** Vote Book Display | User-friendly interface with real-time balances |
+| **9.24** Staff Maintenance | Finance staff can manage without IT |
+| **9.25** Logic Configuration | Configurable rules for validation and approval |
+| **9.26-9.28** Budget Application | Different budget types with approval workflow |
+| **9.29** Virement | Transfer between budget items with controls |
+| **9.30-9.55** Other Operations | Full range of budget management features |
 
 ---
 
-## Test Scenario 6: Real-Time Budget Validation
+## Quick Reference: Navigation
 
-### Objective
-Demonstrate the system prevents over-budget transactions.
-
-### Steps to Follow
-
-1. **Navigate** to: `Purchasing` → `Purchase Order`
-2. **Create** a new PO with amount exceeding available budget
-3. **Observe** the system response
-
-### What to Verify
-
-**Validation Behavior:**
-- Warning message when approaching budget limit
-- Blocking message when exceeding budget
-- Option to request budget exception (with approval)
-- Clear display of available balance
-
-### Expected Results
-- Transaction blocked with informative message
-- Shows current allocation, committed, spent, and available
-- Suggests actions (virement, adjustment, approval request)
-- Audit trail records the validation event
-
----
-
-## Test Scenario 7: Budget Utilization Reporting
-
-### Objective
-Test the budget reporting and monitoring capabilities.
-
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Budget` → `Reports`
-2. **Select** "Budget Summary Report"
-3. **Configure** parameters:
-   - **Period:** Current fiscal year
-   - **PTJ:** All or specific
-   - **Format:** Summary or Detailed
-
-### What to Verify
-
-**Report Types Available:**
-| Report | Purpose |
-|--------|---------|
-| Budget Summary | Executive overview of all budgets |
-| Budget Register Transaction | Detailed line-by-line transactions |
-| Variance Analysis | Budget vs. Actual comparison |
-| Commitment Report | Outstanding commitments |
-| Utilization Rate | Burn rate analysis |
-
-### Expected Results
-- Fast report generation (< 5 seconds)
-- Export to Excel, PDF available
-- Drill-down from summary to detail
-- Real-time data reflection
-
----
-
-## Test Scenario 8: Budget Period Operations
-
-### Objective
-Verify budget operations across different periods (monthly, quarterly, annual).
-
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Budget` → `Vote Book Organizer`
-2. **Select** a Vote Book
-3. **View** the period allocation structure
-
-### What to Verify
-
-**Period Management:**
-- Monthly period breakdowns
-- Quarterly roll-up views
-- Annual summary totals
-- Carry-forward of unused budgets (if configured)
-
-### Expected Results
-- Flexible period views
-- Automatic aggregation at higher levels
-- Period-specific budget controls
-- Year-end closing procedures
-
----
-
-## Key Features Demonstrated
-
-### Budget Control Mechanisms
-- Real-time validation at point of transaction
-- Configurable tolerance levels (soft warning vs. hard block)
-- Exception request workflow
-- Multi-level approval based on amount thresholds
-
-### Profit Center (PTJ) Management
-- Hierarchical PTJ structure
-- Budget accountability by organizational unit
-- Consolidated reporting across PTJs
-- Transfer capabilities between PTJs (with approval)
-
-### Budget Categories (up to 10 dimensions)
-- Organizational Unit
-- Expense Type
-- Funding Source
-- Project Code
-- Strategic Initiative
-- Geographic Location
-- And more...
-
----
-
-## Advanced Features
-
-### Budget Forecasting
-- Trend analysis based on historical data
-- Projected year-end balance calculations
-- Seasonal adjustment factors
-- Cash flow forecasting
-
-### Integration Points
-- Purchasing module (PO budget validation)
-- Accounts Payable (invoice posting validation)
-- General Ledger (actual expense posting)
-- Project Management (project budget tracking)
-
-### Audit & Compliance
-- Complete audit trail for all budget changes
-- Approval history with timestamps
-- Virement/adjustment documentation
-- Period-end reports for audit
-
----
-
-## Navigation Tips
-
-| Task | Menu Path |
-|------|-----------|
+| What You Want to Do | Where to Find It |
+|---------------------|------------------|
 | View Vote Book | Finance → Budget → Vote Book Exposure |
 | Maintain Vote Book | Finance → Budget → Vote Book Organizer |
-| Create Budget Application | Finance → Budget → Budget Application |
-| Request Virement | Finance → Budget → Budget Virement |
-| Budget Adjustment | Finance → Budget → Budget Adjustment |
-| Budget Reports | Finance → Budget → Reports |
-| Configure Logic | Finance → Budget → Settings → Vote Book Logic |
+| Request virement | Finance → Budget → Budget Virement |
+| Budget adjustment | Finance → Budget → Budget Adjustment |
+| Budget reports | Finance → Budget → Reports |
 
 ---
 
-## Related Documentation
+## What's Next?
 
-For detailed technical documentation:
-- [Budget Applet](/applets/budget-applet/)
-- [Vote Book Applet](/applets/vote-book-applet/)
-- [Budgetary Management Module](/modules/budgetary/)
-
----
-
-## Next Steps
-
-After evaluating the Budget Management module, proceed to:
+You've completed the Budget Management evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../accounts-payable" title="Accounts Payable" subtitle="Test payment and vendor management" >}}
-  {{< card link="../accounts-receivable" title="Accounts Receivable" subtitle="Test receipt and debtor management" >}}
+  {{< card link="../accounts-payable" title="Accounts Payable" subtitle="Learn how supplier payments work" >}}
+  {{< card link="../accounts-receivable" title="Accounts Receivable" subtitle="See how collections are managed" >}}
+  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
+
+---
+
+## Questions?
+
+If anything wasn't clear or you'd like a live demonstration:
+
+- **Demo Coordinator:** fatimah@bigledger.com
+- **Technical Support:** support@bigledger.com
+

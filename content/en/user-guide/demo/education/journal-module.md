@@ -1,373 +1,297 @@
 ---
-title: "Journal Module"
-description: "Evaluate auto journal generation and manual journal entry capabilities"
+title: "Journal Entries"
+description: "Evaluate auto-generated and manual journal entries"
 weight: 5
 ---
 
-This section covers the Journal Module functionality as specified in UTM Tender Requirements 9.21 (Auto Journal) and 9.22 (Manual Journal). Our system provides comprehensive journal management with full integration across all financial modules.
+## What You'll Learn
 
-## Overview
+In this module, you'll explore **journal entries** - the behind-the-scenes records that track every financial transaction. You'll see how most entries happen automatically, and how to make manual adjustments when needed.
 
-The Journal Module provides:
-- **Auto Journal Generation** - Automatic journal entries from source transactions
-- **Manual Journal Entry** - For adjustments, accruals, and corrections
-- **Inter-Module Integration** - Seamless posting from AR, AP, Inventory, Assets
-- **Month-End Processing** - Depreciation, accruals, and closing entries
-- **Complete Audit Trail** - Full tracking of all journal activities
-
-## Test Scenario 1: Auto Journal from Sales Invoice
-
-### Objective
-Verify auto journal generation from sales transactions (Requirement 9.21a).
-
-### Steps to Follow
-
-1. **Create** a Sales Invoice (refer to AR module)
-2. **Navigate** to: `Finance` → `Ledger and Journal` → `Journal Transaction`
-3. **Search** for the auto-generated journal
-4. **View** the journal details
-
-### What to Verify
-
-**Auto Journal Entry:**
-| Account | Debit | Credit |
-|---------|-------|--------|
-| Accounts Receivable (1100) | Invoice Amount | - |
-| Revenue (4000) | - | Net Amount |
-| SST Payable (2200) | - | Tax Amount |
-
-### Expected Results
-- Journal automatically created upon invoice posting
-- Correct account mapping based on configuration
-- Balanced entry (Debits = Credits)
-- Link to source document maintained
+{{< callout type="info" >}}
+**Time Required:** 15 minutes | **Skill Level:** Intermediate | **UTM Requirements:** 9.21, 9.22
+{{< /callout >}}
 
 ---
 
-## Test Scenario 2: Auto Journal from Purchase Invoice
+## Before You Begin: Key Terms Explained
 
-### Objective
-Test auto journal generation from purchase transactions.
+| Term | What It Means |
+|------|---------------|
+| **Journal Entry** | A record of a financial transaction showing debits and credits |
+| **Debit** | Left side of an entry - increases assets/expenses, decreases liabilities/income |
+| **Credit** | Right side of an entry - decreases assets/expenses, increases liabilities/income |
+| **Auto Journal** | Entry created automatically when you post an invoice, payment, etc. |
+| **Manual Journal** | Entry created by hand for adjustments, corrections, accruals |
+| **Month 13** | Special period for year-end adjustments (auditor corrections) |
 
-### Steps to Follow
+### Understanding Debits and Credits (The Simple Version)
 
-1. **Create** a Purchase Invoice (refer to AP module)
-2. **Navigate** to: `Finance` → `Ledger and Journal` → `Journal Transaction`
-3. **Search** for the auto-generated journal
-4. **View** the journal details
-
-### What to Verify
-
-**Auto Journal Entry:**
-| Account | Debit | Credit |
-|---------|-------|--------|
-| Expense/Asset (5xxx/1xxx) | Net Amount | - |
-| SST Input Tax (1300) | Tax Amount | - |
-| Accounts Payable (2100) | - | Invoice Amount |
-
-### Expected Results
-- Journal automatically created
-- Budget validation applied
-- Correct expense/asset categorization
-- Link to source PO and GRN
+| Transaction Type | What Gets Debited | What Gets Credited |
+|------------------|-------------------|-------------------|
+| Customer pays you | Bank (goes up) | Accounts Receivable (goes down) |
+| You pay supplier | Accounts Payable (goes down) | Bank (goes down) |
+| Record expense | Expense account | Bank or AP |
+| Record income | Bank or AR | Income account |
 
 ---
 
-## Test Scenario 3: Auto Journal from External System
+## Why This Module Matters
 
-### Objective
-Verify auto journal generation from integrated systems (Requirement 9.21b).
+Journals are the **core accounting record** - they:
 
-### Steps to Follow
+- Create an **audit trail** of every transaction
+- Ensure books **balance** (debits = credits)
+- Allow **corrections** without deleting original entries
+- Support **month-end and year-end** processes
 
-1. **Navigate** to: `Finance` → `Ledger and Journal` → `Import Journal`
-2. **View** the import template structure
-3. **Observe** the integration capabilities
-
-### What to Verify
-
-**Integration Capabilities:**
-| System | Integration Type |
-|--------|-----------------|
-| UTM HR (UTMHR) | API/File Import |
-| Research (RADIS) | API Integration |
-| Student System (MyAIMS) | API Integration |
-| Payroll | Direct Integration |
-
-### Expected Results
-- Import template available
-- Field mapping configuration
-- Validation before posting
-- Error handling and reporting
+{{< callout type="info" >}}
+**For UTM:** This addresses requirement 9.21 (Auto Journal) and 9.22 (Manual Journal) from the tender.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 4: Manual Journal Entry
+## Test Scenario 1: View Auto-Generated Journals
 
-### Objective
-Test manual journal entry for adjustments (Requirement 9.22).
+**Objective:** See how journals are created automatically from transactions
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Finance` → `Ledger and Journal` → `Journal Transaction` → `New`
-2. **Create** a manual journal:
-   - **Journal Type:** General Journal
-   - **Reference:** ADJ-2025-001
-   - **Description:** Monthly accrual adjustment
-   - **Lines:** Add debit and credit entries
-3. **Save and Post**
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Finance → Ledger and Journal → Journal Transaction
 
-**Manual Journal Capabilities (9.22a):**
+2. **Search** for recent journals (leave filters blank, click Search)
 
-| Use Case | Example |
-|----------|---------|
-| Monthly Account Closure | Period-end accruals |
-| Annual Account Closure | Jernal Bulan 13 |
-| Allocation Transfer | Cost allocation between PTJs |
-| Accrual Adjustments | Prepaid/accrued expenses |
-| Error Corrections | Reversing entries |
+3. **Click** on any journal entry to view details
 
-### Expected Results
-- Free-form journal entry
-- Multiple line items supported
-- Balance validation (must equal)
-- Audit trail created
+### What to Look For
 
----
+When you view an auto-generated journal (e.g., from a sales invoice):
 
-## Test Scenario 5: Month 13 Closing Journal
+| Line | Account | Debit | Credit |
+|------|---------|-------|--------|
+| 1 | Accounts Receivable | RM 5,300 | |
+| 2 | Revenue | | RM 5,000 |
+| 3 | SST Payable | | RM 300 |
 
-### Objective
-Test year-end adjustment journal capability (Jernal Bulan 13).
+Notice:
+- **Total Debits = Total Credits** (the entry is "balanced")
+- **Source Document** link takes you back to the original invoice
+- **Auto-Created** badge shows it wasn't manual
 
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Ledger and Journal` → `Journal Transaction` → `New`
-2. **Select** Period 13 (Year-End Adjustments)
-3. **Create** closing entries
-4. **Post** the journal
-
-### What to Verify
-
-**Year-End Journal Types:**
-- Closing entries for revenue accounts
-- Closing entries for expense accounts
-- Transfer to retained earnings
-- Audit adjustments
-
-### Expected Results
-- Period 13 available for posting
-- Restricted to authorized users
-- Complete audit trail
-- Affects only equity/retained earnings
+{{< callout type="info" >}}
+**BigLedger Advantage:** Every transaction creates a journal automatically. No manual posting required for routine transactions.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 6: Reversal Journal Entry
+## Test Scenario 2: Create a Manual Journal Entry
 
-### Objective
-Test the void/reverse functionality for journals.
+**Objective:** Make a manual adjustment entry
 
-### Steps to Follow
+**Time:** 5 minutes
 
-1. **Navigate** to: `Finance` → `Ledger and Journal` → `Journal Transaction`
-2. **Select** an existing journal
-3. **Click** `Void (Reverse)`
+### When You'd Do This
+
+- Month-end accruals (expenses incurred but not yet invoiced)
+- Corrections to previously posted entries
+- Cost allocations between departments
+- Year-end adjustments (Month 13)
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Ledger and Journal → Journal Transaction → New
+
+2. **Fill in the header:**
+   | Field | Example |
+   |-------|---------|
+   | Reference | ADJ-2025-001 |
+   | Description | Monthly rental accrual |
+   | Period | Current month |
+
+3. **Add journal lines:**
+   | Account | Description | Debit | Credit |
+   |---------|-------------|-------|--------|
+   | 5100 (Rental Expense) | Dec rental accrual | RM 10,000 | |
+   | 2300 (Accrued Expenses) | Dec rental accrual | | RM 10,000 |
+
+4. **Verify**: The totals must balance (Debit = Credit)
+
+5. **Save and Post**
+
+### What to Notice
+
+- System validates that debits equal credits
+- You can add as many lines as needed
+- Approval workflow may be required
+- Audit trail records who created it and when
+
+{{< callout type="warning" >}}
+**Tip:** If your journal doesn't balance, the system won't let you post it. Check your amounts!
+{{< /callout >}}
+
+---
+
+## Test Scenario 3: Month 13 (Year-End) Journals
+
+**Objective:** Understand how year-end adjustments work
+
+**Time:** 3 minutes
+
+### What is Month 13?
+
+Government accounting allows a special **Period 13** after the fiscal year ends for:
+- Auditor adjustments
+- Corrections discovered after year-end
+- Reclassifications
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Ledger and Journal → Journal Transaction → New
+
+2. **In the Period dropdown**, look for Period 13 (Year-End)
+
+3. **Observe** that Period 13 is available but may require special permission
+
+### What to Verify
+
+- Period 13 exists in the system
+- Only authorized users can post to it
+- Period 13 entries affect the previous year's financial statements
+
+{{< callout type="info" >}}
+**UTM Requirement (9.22a):** The system must support Jernal Bulan 13 for annual account closure adjustments.
+{{< /callout >}}
+
+---
+
+## Test Scenario 4: Reverse a Journal Entry
+
+**Objective:** See how to correct a posted journal
+
+**Time:** 3 minutes
+
+### Why Reverse Instead of Delete?
+
+In accounting, you **never delete** transactions because:
+- Audit trail must be complete
+- Regulators require full history
+- Errors should be visible and corrected, not hidden
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Ledger and Journal → Journal Transaction
+
+2. **Find** the journal you want to reverse
+
+3. **Click** "Void (Reverse)"
+
 4. **Confirm** the reversal
 
-### What to Verify
+### What Happens
 
-**Reversal Features:**
-- Original journal remains for audit
-- New reversal journal created
-- Opposite entries posted
-- Link maintained between original and reversal
-
-### Expected Results
-- Reversal journal with reference to original
-- GL balances correctly adjusted
-- Complete audit trail
-- No deletion of original entry
+- Original journal stays in the system (marked as "Reversed")
+- New journal is created with opposite entries
+- Net effect on balances is zero
+- Audit trail shows both transactions
 
 ---
 
-## Test Scenario 7: Journal Categories and Dimensions
+## Test Scenario 5: Import Journals from Excel
 
-### Objective
-Test multi-dimensional journal posting.
+**Objective:** See how to bulk-load journals
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Create** a new manual journal
-2. **On the Lines tab**, expand the Categories section
-3. **Assign** dimensions to each line
+### When You'd Do This
 
-### What to Verify
+- Importing data from another system (e.g., payroll)
+- Bulk adjustments at month-end
+- Migration of historical data
 
-**Available Dimensions:**
-| Dimension | Purpose |
-|-----------|---------|
-| Segment | Organizational segment |
-| Dimension | Additional classification |
-| Project | Project code tracking |
-| Profit Center | PTJ/Cost center |
-| Category | Budget category |
+### Step-by-Step Instructions
 
-### Expected Results
-- All dimensions available per line
-- Optional assignment
-- Reporting by dimension
-- Budget validation per dimension
+1. **Navigate to:** Finance → Ledger and Journal → Import Journal
 
----
+2. **Download** the template
 
-## Test Scenario 8: Journal Import/Upload
+3. **Review** the template structure:
+   | Column | Description |
+   |--------|-------------|
+   | COMPANY_CODE | Company identifier |
+   | REFERENCE | Journal reference |
+   | GL_CODE | Account code |
+   | DEBIT | Debit amount |
+   | CREDIT | Credit amount |
+   | DESCRIPTION | Line description |
 
-### Objective
-Test bulk journal import capability.
+4. **Observe** the import process:
+   - Upload your filled template
+   - System validates all rows
+   - Valid rows are posted
+   - Error report shows any issues
 
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Ledger and Journal` → `Import Journal`
-2. **Download** the import template
-3. **Review** the template structure
-4. **Observe** the import process flow
-
-### What to Verify
-
-**Import Template Fields:**
-| Field | Description |
-|-------|-------------|
-| COMPANY_CODE | Company identifier |
-| LEDGER_CODE | Ledger book |
-| REFERENCE_NUMBER | Journal reference |
-| CURRENCY_CODE | Transaction currency |
-| GL_CODE | Account code |
-| DEBIT | Debit amount |
-| CREDIT | Credit amount |
-| DESCRIPTION | Line description |
-
-### Expected Results
-- Clear template structure
-- Validation before posting
-- Error report for failed rows
-- Successful rows posted automatically
+{{< callout type="info" >}}
+**BigLedger Advantage:** The import validates account codes and ensures each journal balances before posting.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 9: Recurring Journal Setup
+## Your Progress Checklist
 
-### Objective
-Test recurring journal template functionality.
+Mark off what you've completed:
 
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Ledger and Journal` → `Recurring Journals`
-2. **Create** a recurring template:
-   - **Name:** Monthly Depreciation
-   - **Frequency:** Monthly
-   - **Start Date:** Beginning of fiscal year
-   - **Journal Lines:** Standard depreciation entries
-3. **Activate** the template
-
-### What to Verify
-
-**Recurring Features:**
-| Feature | Capability |
-|---------|------------|
-| Frequency Options | Daily, Weekly, Monthly, Quarterly, Annually |
-| End Date | Fixed or indefinite |
-| Auto-Post | Optional automatic posting |
-| Notification | Alert when due |
-
-### Expected Results
-- Template saved successfully
-- Generates journals per schedule
-- Review queue before posting
-- Audit trail of all generated journals
+| Scenario | Status |
+|----------|--------|
+| 1. Viewed auto-generated journals | ⬜ |
+| 2. Created a manual journal entry | ⬜ |
+| 3. Explored Month 13 journals | ⬜ |
+| 4. Saw how to reverse a journal | ⬜ |
+| 5. Reviewed journal import process | ⬜ |
 
 ---
 
-## Key Features Demonstrated
+## Key Takeaways
 
-### Auto Journal Processing
-- Source document integration
-- Configurable account mapping
-- Multi-module support
-- Real-time posting
+After completing this module, you've seen that BigLedger:
 
-### Manual Journal Entry
-- Flexible entry format
-- Multi-line support
-- Dimension assignment
-- Approval workflow (if configured)
-
-### Import Capabilities
-- CSV template support
-- Bulk processing
-- Validation and error handling
-- Audit trail
-
-### Month-End Processing
-- Depreciation calculation
-- Stock valuation
-- Accrual processing
-- Period closing
+| UTM Requirement | How BigLedger Meets It |
+|-----------------|----------------------|
+| **9.21** Auto Journal | Automatic entries from all modules (AR, AP, etc.) |
+| **9.21b** External Integration | Import from HR, payroll, research systems |
+| **9.22** Manual Journal | Flexible entry for adjustments and corrections |
+| **9.22a** Period 13 | Year-end adjustment period supported |
 
 ---
 
-## Advanced Features
+## Quick Reference: Navigation
 
-### Journal Approval Workflow
-- Configurable approval levels
-- Amount-based routing
-- Email notifications
-- Mobile approval
-
-### Error Checking & Validation
-- Balanced entry validation
-- Account code validation
-- Period validation
-- Duplicate detection
-
-### Integration Points
-- Sales/AR posting
-- Purchase/AP posting
-- Inventory movements
-- Asset depreciation
-- Payroll posting
-- Bank transactions
+| What You Want to Do | Where to Find It |
+|---------------------|------------------|
+| View all journals | Finance → Ledger and Journal → Journal Transaction |
+| Create manual journal | Finance → Ledger and Journal → Journal Transaction → New |
+| Import journals | Finance → Ledger and Journal → Import Journal |
+| View ledger | Finance → Ledger and Journal → Ledger |
 
 ---
 
-## Navigation Tips
+## What's Next?
 
-| Task | Menu Path |
-|------|-----------|
-| View All Journals | Finance → Ledger and Journal → Journal Transaction |
-| Create Manual Journal | Finance → Ledger and Journal → Journal Transaction → New |
-| Import Journals | Finance → Ledger and Journal → Import Journal |
-| Recurring Templates | Finance → Ledger and Journal → Recurring Journals |
-| View Ledger | Finance → Ledger and Journal → Ledger |
-| View Sub-Ledger | Finance → Ledger and Journal → Sub-Ledger |
-
----
-
-## Related Documentation
-
-For detailed technical documentation:
-- [Ledger and Journal Applet](/applets/ledger-and-journal-applet/)
-- [Journal Entries Guide](/guides/accounting-guides/journal-entries/)
-
----
-
-## Next Steps
-
-After evaluating the Journal Module, proceed to:
+You've completed the Journal Module evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../cash-management" title="Cash Management" subtitle="Test banking and reconciliation" >}}
-  {{< card link="../financial-reporting" title="Financial Reporting" subtitle="Test financial statement generation" >}}
+  {{< card link="../cash-management" title="Cash Management" subtitle="Explore banking and reconciliation" >}}
+  {{< card link="../financial-reporting" title="Financial Reporting" subtitle="See how reports are generated" >}}
+  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
+
+---
+
+## Questions?
+
+If anything wasn't clear or you'd like a live demonstration:
+
+- **Demo Coordinator:** fatimah@bigledger.com
+- **Technical Support:** support@bigledger.com
+

@@ -1,257 +1,326 @@
 ---
 title: "General Ledger & Chart of Accounts"
-description: "Evaluate the core accounting structure, GL hierarchy, account types, and financial statement mapping"
+description: "Evaluate the core accounting structure - the foundation of the financial system"
 weight: 1
 ---
 
-This section covers the General Ledger and Chart of Accounts functionality, which forms the foundation of UTM's Integrated Financial System. Our system fully supports SAGA-compliant account structures with the flexibility to accommodate UTM's existing Chart of Accounts codes.
+## What You'll Learn
 
-## Overview
+In this module, you'll explore the **General Ledger (GL)** and **Chart of Accounts (COA)** - the foundation of any accounting system. By the end, you'll understand how BigLedger organizes financial data to meet SAGA requirements.
 
-The General Ledger module provides:
-- **Hierarchical Account Structure** - Up to 10 levels deep
-- **Flexible Account Coding** - Supporting UTM's existing code structure (Hasil, Belanja, Aset, Liabiliti, Ekuiti)
-- **Chargeable Combination Codes** - Support for Tajuk, Pusat Kos, Aktiviti, Akaun, and SODOG
-- **Real-Time Balance Updates** - Instant posting and balance calculations
-- **Multi-Currency Support** - 150+ currencies with automatic exchange rate handling
-
-## Test Scenario 1: Viewing Chart of Accounts Structure
-
-### Objective
-Verify that the system supports UTM's Chart of Accounts structure including all five account types.
-
-### Steps to Follow
-
-1. **Login** to the demo system using your credentials
-2. **Navigate** to: `Finance` → `Chart of Accounts`
-3. **Observe** the hierarchical structure displayed
-
-### What to Verify
-
-The Chart of Accounts should display:
-
-| Account Type | Code Range | Description |
-|--------------|------------|-------------|
-| **Hasil (Revenue)** | 4000-4999 | Income accounts |
-| **Belanja (Expenses)** | 5000-9999 | Expense accounts |
-| **Aset (Assets)** | 1000-1999 | Current and non-current assets |
-| **Liabiliti (Liabilities)** | 2000-2999 | Current and long-term liabilities |
-| **Ekuiti (Equity)** | 3000-3999 | Capital and retained earnings |
-
-### Expected Results
-- Hierarchical tree view with expandable/collapsible sections
-- GL Section → GL Category → GL Code hierarchy
-- Account status (Active/Inactive) clearly displayed
-- Quick search and filter capabilities
+{{< callout type="info" >}}
+**Time Required:** 15-20 minutes | **Skill Level:** Beginner-friendly | **UTM Requirements:** 9.18, 9.19
+{{< /callout >}}
 
 ---
 
-## Test Scenario 2: Creating a New GL Account
+## Before You Begin: Key Terms Explained
 
-### Objective
-Demonstrate the system's capability to add new accounts while maintaining structure integrity.
-
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Chart of Accounts` → `New Account`
-2. **Enter** account details:
-   - **GL Code:** 5099
-   - **Account Name:** Perbelanjaan Latihan (Training Expenses)
-   - **Account Type:** Expense
-   - **GL Category:** Operating Expenses
-   - **Currency:** MYR
-   - **Status:** Active
-3. **Click** `Save`
-
-### Expected Results
-- System validates the GL code is unique
-- Account appears in the correct hierarchy
-- Audit trail records the creation with timestamp and user
+| Term | What It Means |
+|------|---------------|
+| **General Ledger (GL)** | The master record of all financial transactions - like a comprehensive financial diary |
+| **Chart of Accounts (COA)** | A list of all account categories, organized like folders for different types of money |
+| **GL Code** | A unique number for each account (e.g., 4001 for "Tuition Fees Income") |
+| **SAGA** | Standard Accounting System for Government Agencies - the rules UTM must follow |
+| **Period** | An accounting month (Period 1 = January, Period 12 = December) |
+| **Month 13** | A special adjustment period at year-end for auditor corrections |
 
 ---
 
-## Test Scenario 3: GL Hierarchy and Financial Statement Mapping
+## Why This Module Matters
 
-### Objective
-Verify that accounts are properly mapped to financial statements for SAGA compliance.
+The General Ledger is like the **foundation of a building** - everything else depends on it:
 
-### Steps to Follow
+- All financial reports pull data from here
+- Budget tracking connects to GL accounts
+- Every payment and receipt flows through the GL
+- Auditors review this first
 
-1. **Navigate** to: `Finance` → `Chart of Accounts`
-2. **Select** any account (e.g., GL Code 1001 - Cash at Bank)
-3. **View** the account details
-4. **Check** the Financial Statement Mapping section
-
-### What to Verify
-
-| Field | Description |
-|-------|-------------|
-| **Balance Sheet Mapping** | Shows where account appears on Balance Sheet |
-| **P&L Mapping** | Shows income statement classification (if applicable) |
-| **Cash Flow Mapping** | Operating, Investing, or Financing activity |
-| **Ledger Type** | Primary (PRM) or Secondary (SEC) |
-
-### Expected Results
-- Each account has clear financial statement mapping
-- Mappings align with MPSAS and SAGA requirements
-- System prevents invalid mapping combinations
+{{< callout type="info" >}}
+**For UTM:** Your existing account codes (Hasil, Belanja, Aset, Liabiliti, Ekuiti) are fully supported. No need to change your account structure.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 4: Period Management (Opening/Closing)
+## Test Scenario 1: View the Chart of Accounts
 
-### Objective
-Test the system's ability to handle accounting period opening and closing as per Requirement 9.19.
+**Objective:** See how accounts are organized in BigLedger
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Finance` → `Period Management`
-2. **View** the list of accounting periods
-3. **Observe** the status of each period (Open/Closed/Future)
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Login** to the demo system at [demo-v1.bigledger.com](https://demo-v1.bigledger.com)
 
-**Period Configuration:**
-- Monthly periods (Period 1-12)
-- Period 13 for year-end adjustments (Jernal Bulan 13)
-- Year-end closing process available
-- New fiscal year automatic creation after closing
+2. **Look at the left menu** and click on **Finance**
 
-**System Capabilities:**
-- Restrict posting to closed periods
-- Allow authorized users to post to specific closed periods (adjustments)
-- Automatic carry-forward of opening balances
-- Multi-campus/multi-budget period handling
+3. **Click on** "Chart of Accounts"
 
-### Expected Results
-- Clear visual indication of period status
-- Period opening/closing with proper authorization
-- Audit trail for all period changes
+4. **You should see** a list of accounts organized in a tree structure
+
+### What to Look For
+
+You'll see five main account types (this matches UTM's structure):
+
+| Account Type | Malay Name | Example |
+|-------------|------------|---------|
+| **Revenue** | Hasil | Tuition fees, grants received |
+| **Expenses** | Belanja | Salaries, utilities, supplies |
+| **Assets** | Aset | Cash, equipment, buildings |
+| **Liabilities** | Liabiliti | Loans, amounts owed to suppliers |
+| **Equity** | Ekuiti | University funds, accumulated surplus |
+
+### Try This
+
+- **Click the arrow** next to any account type to expand it
+- **Use the search box** to find a specific account (try typing "cash")
+- **Notice the GL codes** - each account has a unique number
+
+{{< callout type="info" >}}
+**BigLedger Advantage:** The hierarchical view lets you see summary totals at any level - from grand totals down to individual accounts.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 5: Sub-Ledger Management
+## Test Scenario 2: Create a New Account
 
-### Objective
-Demonstrate the sub-ledger functionality for detailed transaction tracking.
+**Objective:** See how easy it is to add new accounts when needed
 
-### Steps to Follow
+**Time:** 5 minutes
 
-1. **Navigate** to: `Finance` → `Ledger and Journal` → `Sub-Ledger`
-2. **Select** a control account (e.g., Accounts Receivable - 1100)
-3. **View** the subsidiary ledger entries
+### Why You'd Do This
 
-### What to Verify
+Universities often need new accounts for:
+- New programs or courses
+- Special grants or projects
+- New expense categories
 
-**Sub-Ledger Features:**
-- Individual customer/supplier account tracking
-- Link to parent GL control account
-- Transaction history with complete details
-- Running balance for each sub-ledger
+### Step-by-Step Instructions
 
-### Expected Results
-- Subsidiary ledger balances reconcile to control account
-- Drill-down capability from GL to sub-ledger details
-- Complete audit trail for all entries
+1. **Navigate to:** Finance → Chart of Accounts
+
+2. **Click** the "+ New" or "Add Account" button
+
+3. **Fill in these details:**
+   | Field | What to Enter |
+   |-------|---------------|
+   | GL Code | 5099 |
+   | Account Name | Training Expenses (Perbelanjaan Latihan) |
+   | Account Type | Select "Expense" |
+   | Category | Operating Expenses |
+   | Status | Active |
+
+4. **Click "Save"**
+
+### What Should Happen
+
+- The system checks if the code already exists (no duplicates allowed)
+- The new account appears in the list under Expenses
+- An audit trail records who created it and when
+
+{{< callout type="warning" >}}
+**Demo Note:** In the demo environment, you can create accounts freely. In production, this would typically require Finance Manager approval.
+{{< /callout >}}
+
+---
+
+## Test Scenario 3: View Account Details and Mappings
+
+**Objective:** Understand how accounts connect to financial statements
+
+**Time:** 3 minutes
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Chart of Accounts
+
+2. **Click on any account** (e.g., search for "Cash" and click on it)
+
+3. **View the details panel** that appears
+
+### What to Look For
+
+| Section | What It Shows |
+|---------|---------------|
+| **Basic Info** | Account code, name, type, status |
+| **Balance Sheet Mapping** | Where this appears on the Balance Sheet |
+| **Income Statement Mapping** | Where this appears on the P&L (if applicable) |
+| **Cash Flow Mapping** | Operating, Investing, or Financing category |
+| **Budget Link** | Connected Vote Book codes |
+
+### Why This Matters
+
+{{< callout type="info" >}}
+**SAGA Requirement:** Financial statements must follow MPSAS format. These mappings ensure your reports are automatically compliant.
+{{< /callout >}}
+
+---
+
+## Test Scenario 4: Check Period Management
+
+**Objective:** See how BigLedger handles accounting periods (months)
+
+**Time:** 3 minutes
+
+### Background
+
+Government agencies follow a fiscal year (January - December for most). The system needs to:
+- Control which periods are open for transactions
+- Close periods when the month is finalized
+- Support "Month 13" for year-end adjustments
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Period Management
+
+2. **View the period list** showing all 12 months (plus Month 13)
+
+3. **Look at the Status column:**
+   | Status | What It Means |
+   |--------|---------------|
+   | **Open** | Transactions can be posted |
+   | **Closed** | No changes allowed (month is finalized) |
+   | **Future** | Not yet available |
+
+### What You Can Test
+
+- Try to see which periods are currently open
+- Note the "Month 13" period for year-end adjustments
+
+{{< callout type="info" >}}
+**UTM Requirement (9.19):** The system must support year-end closing with automatic carry-forward of balances to the new year. BigLedger handles this automatically.
+{{< /callout >}}
+
+---
+
+## Test Scenario 5: View Ledger Transactions
+
+**Objective:** See how transactions are recorded in the General Ledger
+
+**Time:** 5 minutes
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Ledger and Journal → Ledger
+
+2. **Select an account** from the dropdown (e.g., "Cash at Bank")
+
+3. **Set a date range** (e.g., current month)
+
+4. **Click "Search"** or "View"
+
+### What to Look For
+
+| Column | What It Shows |
+|--------|---------------|
+| Date | When the transaction occurred |
+| Reference | Document number (invoice, payment, etc.) |
+| Description | What the transaction was for |
+| Debit | Money coming in (for asset accounts) |
+| Credit | Money going out (for asset accounts) |
+| Balance | Running total |
+
+### Try This
+
+- **Click on any transaction** to see more details
+- **Drill down** to the original document (invoice, payment, etc.)
+
+{{< callout type="info" >}}
+**BigLedger Advantage:** Every transaction links back to its source document. Auditors can trace any number in seconds.
+{{< /callout >}}
 
 ---
 
 ## Test Scenario 6: Multi-Dimensional Tracking
 
-### Objective
-Verify support for UTM's chargeable combination structure (Tajuk, Pusat Kos, Aktiviti, Akaun, SODOG).
+**Objective:** See how BigLedger tracks costs by department, project, and more
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Finance` → `Ledger and Journal` → `Journal Transaction`
-2. **Create** a new journal entry
-3. **On the Lines tab**, observe the available dimension fields
+### Why This Matters
 
-### What to Verify
+UTM needs to track spending by:
+- **Campus** (JB main, KL branch)
+- **Faculty/Department** (PTJ)
+- **Project** (research grants, construction)
+- **Budget category** (operating, capital)
 
-**Dimension Fields Available:**
-- **Segment** - Organizational segment/division
-- **Dimension** - Additional classification
-- **Project** - Project code tracking
-- **Profit Center** - Cost center/PTJ tracking
-- **Category** - Budget category assignment
+### Step-by-Step Instructions
 
-### Expected Results
-- Flexible dimension assignment per line item
-- Reporting by any dimension combination
-- Integration with budget module for validation
+1. **Navigate to:** Finance → Ledger and Journal → Journal Transaction
 
----
+2. **Click "New"** to start a new journal entry
 
-## Key Features Demonstrated
+3. **Look at the line item fields** - notice the dimension dropdowns:
+   | Dimension | Purpose |
+   |-----------|---------|
+   | Segment | Campus or division |
+   | Profit Center | Faculty/Department (PTJ) |
+   | Project | Specific project code |
+   | Category | Budget category |
 
-### Account Structure Flexibility
-- Support for 4-20 character account codes
-- Hierarchical structure up to 10 levels
-- Account groups and categories for organization
-- Custom fields for additional classifications
-
-### Financial Statement Generation
-- Balance Sheet (Penyata Kedudukan Kewangan)
-- Profit & Loss / Income Statement (Penyata Pendapatan Komprehensif)
-- Cash Flow Statement (Penyata Aliran Tunai)
-- Statement of Changes in Equity (Penyata Perubahan Ekuiti)
-
-### SAGA Compliance
-- Accrual-based accounting
-- Complete audit trail
-- Government account code compatibility
-- Period management including Month 13
+{{< callout type="info" >}}
+**SAGA Compliance:** These dimensions map to UTM's chargeable combination codes (Tajuk, Pusat Kos, Aktiviti, Akaun, SODOG) for full government reporting compliance.
+{{< /callout >}}
 
 ---
 
-## Advanced Features
+## Your Progress Checklist
 
-### Real-Time Reporting
-- Instant balance updates upon posting
-- Dashboard showing key financial metrics
-- Drill-down from summary to detail
+Mark off what you've completed:
 
-### Integration Points
-- Automatic posting from AR/AP modules
-- Budget validation during posting
-- Bank reconciliation integration
-- Asset module depreciation posting
-
-### Data Security
-- Role-based access to accounts
-- Audit log for all changes
-- Period-based posting controls
+| Scenario | Status |
+|----------|--------|
+| 1. Viewed Chart of Accounts structure | ⬜ |
+| 2. Created a new GL account | ⬜ |
+| 3. Viewed account details and mappings | ⬜ |
+| 4. Checked period management | ⬜ |
+| 5. Viewed ledger transactions | ⬜ |
+| 6. Explored multi-dimensional tracking | ⬜ |
 
 ---
 
-## Navigation Tips
+## Key Takeaways
 
-| Task | Menu Path |
-|------|-----------|
-| View Chart of Accounts | Finance → Chart of Accounts |
-| Create New Account | Finance → Chart of Accounts → New |
-| View Ledger Balances | Finance → Ledger and Journal → Ledger |
-| View Sub-Ledger | Finance → Ledger and Journal → Sub-Ledger |
-| Period Management | Finance → Period Management |
-| GL Reports | Finance → Financial Reports → General Ledger |
+After completing this module, you've seen that BigLedger:
 
----
-
-## Related Documentation
-
-For detailed technical documentation on these features:
-- [Chart of Accounts Applet](/applets/chart-of-account-applet/)
-- [Ledger and Journal Applet](/applets/ledger-and-journal-applet/)
-- [Chart of Accounts Setup Guide](/guides/accounting-guides/chart-of-accounts-setup/)
+| Requirement | How BigLedger Meets It |
+|-------------|----------------------|
+| **9.18 Chart of Accounts** | Full hierarchical structure with UTM's 5 account types |
+| **9.19 Period Management** | 12 months + Month 13, with controlled opening/closing |
+| **SAGA Compliance** | Pre-built mappings for government financial statements |
+| **Audit Trail** | Every action logged with user and timestamp |
 
 ---
 
-## Next Steps
+## Quick Reference: Navigation
 
-After evaluating the General Ledger module, proceed to:
+| What You Want to Do | Where to Find It |
+|---------------------|------------------|
+| View all accounts | Finance → Chart of Accounts |
+| Create new account | Finance → Chart of Accounts → New |
+| View ledger transactions | Finance → Ledger and Journal → Ledger |
+| Manage periods | Finance → Period Management |
+| Run GL reports | Finance → Financial Reports → General Ledger |
+
+---
+
+## What's Next?
+
+You've completed the General Ledger evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../budget-management" title="Budget & Vote Book Management" subtitle="Test budget allocation and monitoring capabilities" >}}
-  {{< card link="../journal-module" title="Journal Module" subtitle="Explore auto and manual journal processing" >}}
+  {{< card link="../budget-management" title="Budget & Vote Book" subtitle="Learn how budget control prevents overspending" >}}
+  {{< card link="../journal-module" title="Journal Entries" subtitle="See how adjustments and corrections are made" >}}
+  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
+
+---
+
+## Questions?
+
+If anything wasn't clear or you'd like a live demonstration:
+
+- **Demo Coordinator:** fatimah@bigledger.com
+- **Technical Support:** support@bigledger.com
+

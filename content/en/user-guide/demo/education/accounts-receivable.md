@@ -1,369 +1,317 @@
 ---
-title: "Accounts Receivable (Receipt Module)"
-description: "Evaluate debtor management, billing, collections, and receipt processing"
+title: "Accounts Receivable (Collections)"
+description: "Evaluate debtor management, invoicing, and receipt processing"
 weight: 4
 ---
 
-This section covers the Accounts Receivable functionality, including debtor/customer registration as specified in UTM Tender Requirement 9.16(a). Our system provides comprehensive receivables management with robust collection tools and e-invoice compliance.
+## What You'll Learn
 
-## Overview
+In this module, you'll explore how UTM collects money from students, organizations, and other parties. From invoicing to receipt processing to collection follow-ups - that's **Accounts Receivable (AR)**.
 
-The Accounts Receivable module provides:
-- **Debtor Registration** - Complete customer/debtor master management
-- **e-Perolehan Integration** - Ready to sync with UTM's procurement system for registered suppliers as debtors
-- **Invoice Generation** - Various invoice types (Tax Invoice, Debit Note, Credit Note)
-- **Receipt Processing** - Multiple payment methods and automatic allocation
-- **Collection Management** - Aging analysis, reminders, and collection workflows
-- **E-Invoice Compliance** - LHDN MyInvois integration
-
-## Test Scenario 1: Debtor Registration
-
-### Objective
-Verify the debtor registration and management capabilities (Requirement 9.16a).
-
-### Steps to Follow
-
-1. **Login** to the demo system
-2. **Navigate** to: `Sales` → `Customer Maintenance` → `New Customer`
-3. **Enter** customer/debtor details:
-   - **Customer Name:** XYZ Corporation Sdn Bhd
-   - **Registration No:** 987654-X
-   - **Tax ID (TIN):** C98765432
-   - **Contact Person:** Fatimah binti Hassan
-   - **Address:** Business address
-   - **Credit Terms:** 30 days
-
-### What to Verify
-
-**Registration Capabilities (9.16a):**
-
-| Requirement | System Feature |
-|-------------|----------------|
-| e-Perolehan Integration | API ready for registered debtor sync |
-| Complete debtor data | Comprehensive profile fields |
-| Credit management | Credit limits and terms |
-| Document attachment | Supporting documents upload |
-
-### Expected Results
-- Comprehensive debtor profile created
-- Validation of mandatory fields
-- Customer code generated automatically
-- Credit limit assigned
+{{< callout type="info" >}}
+**Time Required:** 20 minutes | **Skill Level:** Beginner-friendly | **UTM Requirements:** 9.16a
+{{< /callout >}}
 
 ---
 
-## Test Scenario 2: Debtor Profile Management
+## Before You Begin: Key Terms Explained
 
-### Objective
-Test the complete debtor information management.
-
-### Steps to Follow
-
-1. **Navigate** to: `Sales` → `Customer Maintenance`
-2. **Search** for an existing customer
-3. **Explore** all tabs:
-   - Main Information
-   - Contact Persons
-   - Addresses (Billing, Delivery)
-   - Credit Management
-   - Transaction History
-
-### What to Verify
-
-**Debtor Data Elements:**
-| Category | Fields |
-|----------|--------|
-| **Identity** | Company name, Registration no., TIN |
-| **Contact** | Multiple contact persons |
-| **Addresses** | Billing, Shipping, Service addresses |
-| **Financial** | Credit limit, Payment terms, Currency |
-| **History** | Past transactions, Payment patterns |
-
-### Expected Results
-- All customer data accessible
-- Transaction history visible
-- Credit status clearly displayed
-- Outstanding balance shown
+| Term | What It Means |
+|------|---------------|
+| **Accounts Receivable (AR)** | Money owed to you - invoices you've sent that haven't been paid yet |
+| **Debtor** | Someone who owes you money (students, organizations, sponsors) |
+| **Credit Terms** | How many days the debtor has to pay (e.g., "Net 30" = 30 days) |
+| **Aging** | How old unpaid invoices are (current, 30 days, 60 days, etc.) |
+| **E-Invoice** | Electronic invoice required by LHDN for tax compliance |
+| **Collection** | The process of following up on unpaid invoices |
 
 ---
 
-## Test Scenario 3: Invoice Generation
+## Why This Module Matters
 
-### Objective
-Test the billing/invoice creation process.
+Accounts Receivable is where UTM:
 
-### Steps to Follow
+- **Tracks who owes money** - Students, sponsors, corporate partners
+- **Sends invoices** - Bills for tuition, services, rentals, etc.
+- **Records payments** - When money comes in
+- **Follows up on overdue accounts** - Collection reminders and escalation
 
-1. **Navigate** to: `Sales` → `Sales Invoice` → `New Invoice`
-2. **Create** an invoice:
-   - **Customer:** Select from master
-   - **Invoice Date:** Today
-   - **Due Date:** Based on credit terms
-   - **Items:** Services or products
-   - **Tax:** SST as applicable
-3. **Save and Post**
-
-### What to Verify
-
-**Invoice Features:**
-| Feature | Capability |
-|---------|------------|
-| Invoice Types | Tax Invoice, Proforma, Debit Note, Credit Note |
-| Line Items | Multiple items with descriptions |
-| Tax Calculation | Automatic SST calculation |
-| Currency | Multi-currency support |
-| E-Invoice | Automatic LHDN submission |
-
-### Expected Results
-- Invoice generated with proper numbering
-- Tax calculated correctly
-- E-invoice submitted to LHDN (if applicable)
-- GL posting created automatically
-- Customer balance updated
+{{< callout type="info" >}}
+**For UTM:** This addresses requirement 9.16(a) for debtor registration and e-Perolehan integration.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 4: E-Invoice Generation and Submission
+## Test Scenario 1: Register a New Debtor
 
-### Objective
-Test the e-invoice compliance workflow.
+**Objective:** Add a new customer/debtor to the system
 
-### Steps to Follow
+**Time:** 5 minutes
 
-1. **Create** an invoice as in Scenario 3
-2. **Observe** the e-invoice status
-3. **Navigate** to: `Finance` → `E-Invoice` → `Submission Status`
-4. **Track** the invoice through the LHDN MyInvois process
+### When You'd Do This
+
+Before you can invoice someone, they need to be registered with their contact details and credit terms.
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Sales → Customer Maintenance
+
+2. **Click** "New Customer"
+
+3. **Fill in the customer details:**
+
+   | Tab | Information to Enter |
+   |-----|---------------------|
+   | **Main** | Customer name, Registration no. (if company), TIN |
+   | **Contact** | Contact person, phone, email |
+   | **Address** | Billing and delivery addresses |
+   | **Credit** | Credit limit, payment terms (e.g., 30 days) |
+
+4. **Click "Save"**
 
 ### What to Verify
 
-**E-Invoice Workflow:**
-| Stage | Status |
-|-------|--------|
-| Posting Queue | Initial validation |
-| Submitted | Sent to LHDN |
-| Validated | LHDN approved |
-| Rejected | If errors (72-hour correction window) |
+- Customer code is generated automatically
+- Duplicate checking prevents double entries
+- Credit limit is recorded
 
-### Expected Results
-- Automatic e-invoice generation
-- Real-time submission status
-- QR code generated upon validation
-- Complete audit trail
+{{< callout type="info" >}}
+**BigLedger Advantage:** For corporate debtors, the system can validate TIN numbers against LHDN for e-invoice compliance.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 5: Receipt Processing
+## Test Scenario 2: Create a Sales Invoice
 
-### Objective
-Test the payment receipt and allocation process.
+**Objective:** Generate an invoice for services or fees
 
-### Steps to Follow
+**Time:** 5 minutes
 
-1. **Navigate** to: `Finance` → `Accounts Receivable` → `Receipts` → `New Receipt`
-2. **Record** a payment:
-   - **Customer:** Select debtor
-   - **Amount:** Payment amount
-   - **Payment Method:** Bank transfer, Cheque, Cash, etc.
-   - **Reference:** Bank reference or cheque number
-3. **Allocate** to outstanding invoices
-4. **Save**
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Sales → Sales Invoice → New Invoice
 
-**Receipt Features:**
-| Feature | Capability |
-|---------|------------|
-| Payment Methods | Bank transfer, Cheque, Cash, Credit card, E-wallet |
-| Auto-Allocation | Automatic matching to oldest invoices |
-| Partial Payment | Support for partial payments |
-| Advance Payment | Handle deposits/advances |
-| Multi-Invoice | Apply to multiple invoices |
+2. **Select the customer** from the dropdown
 
-### Expected Results
-- Receipt recorded with reference
-- Automatic GL posting (Bank Dr, AR Cr)
-- Customer balance updated
-- Invoice status updated (Partial/Paid)
+3. **Fill in invoice details:**
 
----
+   | Field | What to Enter |
+   |-------|---------------|
+   | Invoice Date | Today's date |
+   | Due Date | Automatically calculated from credit terms |
+   | Reference | Any internal reference number |
 
-## Test Scenario 6: Debtor Aging Analysis
+4. **Add line items:**
+   | Column | Example |
+   |--------|---------|
+   | Description | "Training Program Fee" |
+   | Quantity | 1 |
+   | Unit Price | RM 5,000 |
+   | Tax | SST if applicable |
 
-### Objective
-Test the receivables aging and monitoring capabilities.
+5. **Save and Post** the invoice
 
-### Steps to Follow
+### What Happens Next
 
-1. **Navigate** to: `Finance` → `Accounts Receivable` → `Reports` → `Aging Analysis`
-2. **Configure** report:
-   - **As of Date:** Current date
-   - **Aging Buckets:** Current, 30, 60, 90, 120+ days
-   - **Customer:** All or specific
+- Invoice number is generated automatically
+- GL entries are created (Debit: AR, Credit: Revenue)
+- E-invoice is submitted to LHDN (if configured)
+- Customer balance is updated
 
-### What to Verify
-
-**Aging Report Features:**
-- Outstanding invoices by age
-- Customer-wise breakdown
-- Summary and detailed views
-- Overdue highlighting
-
-### Expected Results
-- Clear aging buckets display
-- Drill-down to invoice details
-- Export to Excel/PDF
-- Collection action triggers
+{{< callout type="info" >}}
+**E-Invoice Note:** For invoices above certain thresholds, the system automatically generates and submits e-invoices to LHDN's MyInvois portal.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 7: Collection Management
+## Test Scenario 3: Track E-Invoice Status
 
-### Objective
-Test the collection workflow and reminder system.
+**Objective:** See how e-invoices are submitted and tracked
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Finance` → `Accounts Receivable` → `Collections`
-2. **View** the collection queue
-3. **Select** an overdue account
-4. **Generate** reminder letter
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Finance → E-Invoice → Submission Status
 
-**Collection Features:**
-| Feature | Capability |
-|---------|------------|
-| Collection Queue | Prioritized list of overdue accounts |
-| Reminder Letters | Automated reminder generation |
-| Communication Log | Track all collection activities |
-| Promise to Pay | Record payment commitments |
-| Escalation | Workflow for escalating cases |
+2. **View** the list of recent invoices
 
-### Expected Results
-- Prioritized collection list
-- Automated reminder templates
-- Activity logging
-- Payment promise tracking
+3. **Check the status:**
+
+   | Status | What It Means |
+   |--------|---------------|
+   | **Pending** | Waiting to be submitted |
+   | **Submitted** | Sent to LHDN, awaiting response |
+   | **Validated** | LHDN approved - QR code available |
+   | **Rejected** | Error found - needs correction within 72 hours |
+
+### What to Notice
+
+- Each validated invoice has a unique QR code
+- You can download the validated e-invoice
+- Rejection reasons are clearly displayed
 
 ---
 
-## Test Scenario 8: Customer Statement Generation
+## Test Scenario 4: Record a Payment (Receipt)
 
-### Objective
-Test the statement of account generation.
+**Objective:** Record when a customer pays their invoice
 
-### Steps to Follow
+**Time:** 5 minutes
 
-1. **Navigate** to: `Finance` → `Accounts Receivable` → `Statements`
-2. **Select** customer(s)
-3. **Generate** statement:
-   - **Period:** Select date range
-   - **Format:** Summary or Detailed
-   - **Delivery:** Print, Email, Portal
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Finance → Accounts Receivable → Receipts → New Receipt
 
-**Statement Features:**
+2. **Select the customer**
+
+3. **Enter payment details:**
+   | Field | Example |
+   |-------|---------|
+   | Payment Amount | RM 5,000 |
+   | Payment Method | Bank Transfer |
+   | Bank Reference | Transaction reference |
+   | Date Received | When the money arrived |
+
+4. **Allocate to invoices:**
+   - The system shows outstanding invoices
+   - Select which invoice(s) this payment is for
+   - For partial payments, enter the amount for each invoice
+
+5. **Save** the receipt
+
+### What Happens
+
+- Customer balance is reduced
+- Invoice status changes to "Paid" (or "Partial")
+- Bank account balance increases
+- GL entries are posted automatically
+
+{{< callout type="info" >}}
+**BigLedger Advantage:** The system can auto-allocate payments to the oldest invoices, or you can manually choose which invoices to pay off.
+{{< /callout >}}
+
+---
+
+## Test Scenario 5: View Customer Aging
+
+**Objective:** See how much is owed and how old the debts are
+
+**Time:** 3 minutes
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Accounts Receivable → Reports → Aging Analysis
+
+2. **Generate** the report
+
+3. **Review** the aging buckets:
+
+| Age | What It Means | Action Needed |
+|-----|---------------|---------------|
+| Current | Within payment terms | Normal |
+| 30 Days | Slightly overdue | Send reminder |
+| 60 Days | Moderately overdue | Follow up call |
+| 90+ Days | Seriously overdue | Escalate |
+
+### Try This
+
+- Click on any customer to see their individual invoices
+- Export to Excel for analysis
+- Use this report for collection priority
+
+---
+
+## Test Scenario 6: Generate Customer Statement
+
+**Objective:** Create a statement of account for a customer
+
+**Time:** 3 minutes
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Accounts Receivable → Statements
+
+2. **Select** one or more customers
+
+3. **Choose options:**
+   | Option | Description |
+   |--------|-------------|
+   | Period | Date range to include |
+   | Format | Summary or Detailed |
+   | Delivery | Print, Email, or Download |
+
+4. **Generate** the statement
+
+### What's on the Statement
+
 - Opening balance
-- All transactions in period
+- All invoices in the period
 - Payments received
-- Closing balance
+- Closing balance owed
 - Aging summary
 
-### Expected Results
-- Professional statement format
-- Multiple delivery options
-- Automatic email capability
-- Customer portal access
+---
+
+## Your Progress Checklist
+
+Mark off what you've completed:
+
+| Scenario | Status |
+|----------|--------|
+| 1. Registered a new customer | ⬜ |
+| 2. Created a sales invoice | ⬜ |
+| 3. Tracked e-invoice status | ⬜ |
+| 4. Recorded a payment receipt | ⬜ |
+| 5. Reviewed customer aging | ⬜ |
+| 6. Generated customer statement | ⬜ |
 
 ---
 
-## Key Features Demonstrated
+## Key Takeaways
 
-### Debtor Master Data
-- Comprehensive profile management
-- Credit limit management
-- Payment terms configuration
-- Transaction history tracking
-- Document attachments
+After completing this module, you've seen that BigLedger:
 
-### Billing & Invoicing
-- Multiple invoice types
-- Automatic tax calculation
-- E-invoice compliance
-- Credit/Debit notes
-- Recurring billing
-
-### Receipt Management
-- Multiple payment methods
-- Automatic allocation
-- Partial payments
-- Advance payments
-- Bank reconciliation integration
-
-### Collection Management
-- Aging analysis
-- Automated reminders
-- Collection workflows
-- Payment promises
-- Legal action tracking
+| Feature | What It Does |
+|---------|-------------|
+| **Customer Master** | Complete debtor information management |
+| **Invoicing** | Multiple invoice types with automatic numbering |
+| **E-Invoice** | Automatic LHDN submission and QR codes |
+| **Receipt Processing** | Multiple payment methods, auto-allocation |
+| **Aging Analysis** | Clear view of overdue accounts |
+| **Collections** | Automated reminders and follow-up tracking |
 
 ---
 
-## Advanced Features
+## Quick Reference: Navigation
 
-### Credit Management
-- Credit limit monitoring
-- Credit hold automation
-- Credit scoring
-- Risk assessment
-- Credit insurance integration ready
-
-### E-Invoice Features
-- Individual and consolidated e-invoices
-- B2B and B2C support
-- Self-billed for supplier payments
-- 72-hour rejection handling
-- Complete audit trail
-
-### Integration Points
-- General Ledger posting
-- Budget validation (for internal billings)
-- Bank reconciliation
-- LHDN MyInvois
-- Customer portal
-
----
-
-## Navigation Tips
-
-| Task | Menu Path |
-|------|-----------|
-| Customer List | Sales → Customer Maintenance |
-| New Customer | Sales → Customer Maintenance → New |
-| Sales Invoices | Sales → Sales Invoice |
-| Receipts | Finance → Accounts Receivable → Receipts |
-| Aging Report | Finance → Accounts Receivable → Reports → Aging |
+| What You Want to Do | Where to Find It |
+|---------------------|------------------|
+| Manage customers | Sales → Customer Maintenance |
+| Create invoices | Sales → Sales Invoice |
+| E-invoice status | Finance → E-Invoice → Submission Status |
+| Record receipts | Finance → Accounts Receivable → Receipts |
+| Customer aging | Finance → Accounts Receivable → Reports → Aging |
 | Statements | Finance → Accounts Receivable → Statements |
-| Collections | Finance → Accounts Receivable → Collections |
 
 ---
 
-## Related Documentation
+## What's Next?
 
-For detailed technical documentation:
-- [Customer Maintenance Applet](/applets/customer-maintenance-applet/)
-- [Accounts Receivable Applet](/applets/accounts-receivable-applet/)
-- [E-Invoice Guide](/guides/einvoice-guides/malaysia-e-invoice-guide/)
-
----
-
-## Next Steps
-
-After evaluating the Accounts Receivable module, proceed to:
+You've completed the Accounts Receivable evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../journal-module" title="Journal Module" subtitle="Test auto and manual journal entries" >}}
-  {{< card link="../cash-management" title="Cash Management" subtitle="Test banking and reconciliation" >}}
+  {{< card link="../journal-module" title="Journal Module" subtitle="Learn about adjustments and corrections" >}}
+  {{< card link="../cash-management" title="Cash Management" subtitle="Explore banking and reconciliation" >}}
+  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
+
+---
+
+## Questions?
+
+If anything wasn't clear or you'd like a live demonstration:
+
+- **Demo Coordinator:** fatimah@bigledger.com
+- **Technical Support:** support@bigledger.com
+

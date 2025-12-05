@@ -1,420 +1,325 @@
 ---
-title: "User Access Control"
-description: "Evaluate security profiles, audit trails, and role-based permissions (Requirement 9.15)"
+title: "Security & Access Control"
+description: "Evaluate user permissions, audit trails, and security features"
 weight: 9
 ---
 
-This section covers the User Access Control (ACL) functionality as specified in UTM Tender Requirement 9.15. Our system provides enterprise-grade security with comprehensive user management, role-based access, and complete audit trail capabilities.
+## What You'll Learn
 
-## Overview
+In this module, you'll explore how BigLedger keeps your data secure. You'll see user management, role-based permissions, session controls, and complete audit trails of all activities.
 
-The User Access Control module provides:
-- **User ID Expiry Management** - Set expiration dates for user accounts
-- **Automatic Session Timeout** - Log out inactive users automatically
-- **Last Access Display** - Show login history information
-- **Role-Based Access Control** - Define permissions by role
-- **Audit Trail** - Complete activity logging
-- **Security Administration** - Centralized user management
-
-## Test Scenario 1: User ID Expiry Configuration
-
-### Objective
-Verify the system can set expiration dates for user IDs (Requirement 9.15a).
-
-### Steps to Follow
-
-1. **Login** as administrator
-2. **Navigate** to: `Admin` → `User Management` → `Users`
-3. **Select** a user account
-4. **Configure** expiry settings:
-   - **Expiry Date:** Set specific date
-   - **Expiry Action:** Lock/Disable on expiry
-5. **Save** settings
-
-### What to Verify
-
-**User Expiry Features:**
-| Feature | Capability |
-|---------|------------|
-| Expiry Date | Calendar date selection |
-| Auto-Lock | Account locked on expiry |
-| Notification | Alert before expiry |
-| Extension | Renewal process available |
-
-### Expected Results
-- Expiry date saved successfully
-- Warning notifications configured
-- Account auto-locks on expiry
-- Audit log records change
+{{< callout type="info" >}}
+**Time Required:** 15 minutes | **Skill Level:** Beginner-friendly | **UTM Requirements:** 9.15
+{{< /callout >}}
 
 ---
 
-## Test Scenario 2: Automatic Logout for Inactive Users
+## Before You Begin: Key Terms Explained
 
-### Objective
-Test automatic session termination for inactive users (Requirement 9.15b).
-
-### Steps to Follow
-
-1. **Navigate** to: `Admin` → `System Settings` → `Security`
-2. **View** session timeout configuration
-3. **Verify** the settings:
-   - **Timeout Period:** Minutes of inactivity
-   - **Warning:** Alert before logout
-4. **Test** by remaining inactive
-
-### What to Verify
-
-**Session Management:**
-| Setting | Default |
-|---------|---------|
-| Timeout Period | Configurable (e.g., 30 minutes) |
-| Warning Message | 5 minutes before timeout |
-| Session Extension | One-click renewal |
-| Multiple Sessions | Prevent or allow |
-
-### Expected Results
-- Warning message appears before logout
-- Session terminates after configured period
-- User redirected to login page
-- Activity logged
+| Term | What It Means |
+|------|---------------|
+| **User** | Someone who logs into the system |
+| **Role** | A set of permissions (e.g., "Finance Officer" can do X, Y, Z) |
+| **Permission** | The ability to do something (view, create, edit, delete, approve) |
+| **Session Timeout** | Automatic logout after a period of inactivity |
+| **Audit Trail** | A log of who did what and when |
+| **Maker-Checker** | One person creates, another approves |
 
 ---
 
-## Test Scenario 3: Last Access Information Display
+## Why This Module Matters
 
-### Objective
-Verify display of last access information during login (Requirement 9.15c).
+Security is critical because:
 
-### Steps to Follow
+- **Data protection** - Only authorized people access sensitive information
+- **Accountability** - Know who did what and when
+- **Compliance** - Meet government security requirements
+- **Fraud prevention** - Separation of duties and approvals
 
-1. **Logout** from current session
-2. **Login** again with credentials
-3. **Observe** the welcome/dashboard screen
-4. **View** last access information
-
-### What to Verify
-
-**Access Information Displayed:**
-| Information | Description |
-|-------------|-------------|
-| Last Login Date | Previous login timestamp |
-| Last Login Time | Time of last access |
-| Login Location | IP address or location |
-| Failed Attempts | Recent failed logins |
-
-### Expected Results
-- Last login details visible
-- Failed login attempts shown
-- Security alert if suspicious activity
-- Option to report unauthorized access
+{{< callout type="info" >}}
+**For UTM:** This addresses requirement 9.15 covering user ID expiry, automatic logout, last access display, and role-based access control.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 4: Role-Based Access Control
+## Test Scenario 1: User Management
 
-### Objective
-Test the role-based permission system.
+**Objective:** See how users are managed
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Admin` → `User Management` → `Roles`
-2. **View** existing roles
-3. **Select** a role to view permissions
-4. **Observe** the permission matrix
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Admin → User Management → Users
 
-**Role Configuration:**
-| Element | Description |
-|---------|-------------|
-| Role Name | Finance Officer, Approver, etc. |
-| Menu Access | Which modules visible |
-| Function Access | View, Create, Edit, Delete, Approve |
-| Data Access | Which data visible (PTJ, Campus) |
+2. **View** the list of users
 
-### Expected Results
-- Clear role definitions
-- Granular permission settings
-- Inheritance support
-- Easy assignment to users
+3. **Click** on any user to see their profile
 
----
+### What You'll See
 
-## Test Scenario 5: User Profile Management
+| Tab | Information |
+|-----|-------------|
+| **Profile** | Name, email, department, status |
+| **Roles** | Assigned roles and permissions |
+| **Security** | Password policy, expiry date |
+| **History** | Login history, last access |
 
-### Objective
-Test user administration capabilities.
+### Try This
 
-### Steps to Follow
+- Look at the different roles assigned
+- See when the user last logged in
+- Check if there's an expiry date set
 
-1. **Navigate** to: `Admin` → `User Management` → `Users`
-2. **Create** a new user:
-   - **Username:** test.user@utm.my
-   - **Full Name:** Test User
-   - **Department:** Finance
-   - **Role:** Finance Officer
-   - **Status:** Active
-3. **Configure** security settings
-4. **Save** user
-
-### What to Verify
-
-**User Profile Elements:**
-| Field | Purpose |
-|-------|---------|
-| Username | Login identifier |
-| Email | Contact and notifications |
-| Department | Organizational unit |
-| Roles | Assigned role(s) |
-| Status | Active/Inactive/Locked |
-| Password Policy | Complexity requirements |
-
-### Expected Results
-- User created successfully
-- Role permissions applied
-- Welcome email sent (if configured)
-- Audit log updated
+{{< callout type="info" >}}
+**UTM Requirement (9.15a):** The system must allow setting expiry dates for user IDs.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 6: Audit Trail Review
+## Test Scenario 2: Role-Based Permissions
 
-### Objective
-Test the audit trail and activity logging.
+**Objective:** Understand how permissions work
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Admin` → `Audit Trail`
-2. **Search** audit logs:
-   - **Date Range:** Select period
-   - **User:** Specific user or all
-   - **Module:** Specific module or all
-   - **Action:** Login, Create, Edit, Delete, Approve
-3. **View** detailed log entries
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Admin → User Management → Roles
 
-**Audit Log Details:**
-| Field | Information |
-|-------|-------------|
-| Timestamp | Date and time of action |
-| User ID | Who performed action |
-| Action | What was done |
-| Module | Where action occurred |
-| Details | Before/After values |
-| IP Address | Source of action |
+2. **View** the list of roles (e.g., Finance Officer, Finance Manager)
 
-### Expected Results
-- Complete activity history
-- Detailed change tracking
-- Searchable and filterable
-- Export capability
+3. **Click** on any role to see its permissions
+
+### What You'll See
+
+| Permission Area | Available Actions |
+|-----------------|-------------------|
+| **Menu Access** | Which modules the role can see |
+| **Data Access** | Which departments/PTJs visible |
+| **Function Access** | View, Create, Edit, Delete, Approve |
+| **Amount Limits** | Approval thresholds |
+
+### Example: Finance Officer vs Finance Manager
+
+| Action | Finance Officer | Finance Manager |
+|--------|-----------------|-----------------|
+| Create Invoice | Yes | Yes |
+| Approve Invoice | No | Yes |
+| View Reports | Limited | Full |
+| Manage Users | No | No |
+
+{{< callout type="info" >}}
+**BigLedger Advantage:** Permissions are granular - you can control access at the menu, function, and data level.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 7: Password Policy Configuration
+## Test Scenario 3: Session Timeout (Auto-Logout)
 
-### Objective
-Test password security policy settings.
+**Objective:** Verify automatic logout for inactive users
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Admin` → `System Settings` → `Password Policy`
-2. **View** current policy settings
-3. **Verify** security requirements
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Admin → System Settings → Security
 
-**Password Policy Elements:**
+2. **View** the session timeout settings
+
+3. **Observe:**
+   | Setting | Purpose |
+   |---------|---------|
+   | Timeout Period | How long before logout (e.g., 30 minutes) |
+   | Warning Time | When to show warning (e.g., 5 minutes before) |
+   | Action | What happens (logout, save draft) |
+
+### What Happens When You're Inactive
+
+1. Warning message appears 5 minutes before timeout
+2. Option to extend session
+3. If no response, automatic logout
+4. Redirected to login page
+5. Event logged in audit trail
+
+{{< callout type="info" >}}
+**UTM Requirement (9.15b):** The system must automatically log out inactive users.
+{{< /callout >}}
+
+---
+
+## Test Scenario 4: Last Access Information
+
+**Objective:** See when and where a user last logged in
+
+**Time:** 2 minutes
+
+### Step-by-Step Instructions
+
+1. **Login** to the system
+
+2. **Look at the dashboard** or user profile
+
+3. **Find** the last access information
+
+### What You'll See
+
+| Information | Purpose |
+|-------------|---------|
+| Last Login Date | When you previously logged in |
+| Last Login Time | What time |
+| IP Address | Where from (for suspicious activity) |
+| Failed Attempts | Any recent failed logins |
+
+{{< callout type="info" >}}
+**UTM Requirement (9.15c):** The system must display last access information during login.
+{{< /callout >}}
+
+---
+
+## Test Scenario 5: Audit Trail
+
+**Objective:** See the complete activity log
+
+**Time:** 5 minutes
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Admin → Audit Trail
+
+2. **Search** for activities:
+   | Filter | Example |
+   |--------|---------|
+   | Date Range | Last 7 days |
+   | User | Specific user or all |
+   | Module | Finance, Sales, etc. |
+   | Action | Create, Edit, Delete, Approve |
+
+3. **View** the results
+
+### What You'll See
+
+| Column | Information |
+|--------|-------------|
+| Timestamp | Exact date and time |
+| User | Who performed the action |
+| Action | What they did |
+| Module | Where they did it |
+| Details | Before/after values, document reference |
+| IP Address | Where they were |
+
+### Try This
+
+- Search for all "Delete" actions
+- Filter by a specific user
+- Look at "before and after" values for edits
+- Export the audit trail
+
+{{< callout type="info" >}}
+**BigLedger Advantage:** Every action is logged - there's no way to hide what happened. Perfect for auditors.
+{{< /callout >}}
+
+---
+
+## Test Scenario 6: Password Policy
+
+**Objective:** See password security settings
+
+**Time:** 2 minutes
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Admin → System Settings → Password Policy
+
+2. **View** the settings
+
+### What You'll See
+
 | Policy | Setting |
 |--------|---------|
 | Minimum Length | 8+ characters |
-| Complexity | Upper, lower, number, special |
-| Expiry | Password change frequency |
-| History | Prevent reuse of recent passwords |
-| Lockout | Failed attempt threshold |
+| Complexity | Requires uppercase, lowercase, number, special |
+| Expiry | Password must change every X days |
+| History | Can't reuse last X passwords |
+| Lockout | Account locks after X failed attempts |
 
-### Expected Results
-- Strong password requirements
-- Forced password change on expiry
-- Account lockout after failures
-- Self-service password reset
+### Why This Matters
+
+Strong password policies prevent unauthorized access and meet security compliance requirements.
 
 ---
 
-## Test Scenario 8: Access Request Workflow
+## Your Progress Checklist
 
-### Objective
-Test the access request and approval process.
+Mark off what you've completed:
 
-### Steps to Follow
-
-1. **Navigate** to: `Admin` → `Access Requests` → `New Request`
-2. **Submit** access request:
-   - **Module:** Requested module access
-   - **Function:** Specific permissions
-   - **Justification:** Business need
-3. **Track** approval status
-
-### What to Verify
-
-**Workflow Features:**
-| Stage | Action |
-|-------|--------|
-| Request | User submits request |
-| Review | Manager reviews |
-| Approve | Authorization granted |
-| Implement | IT applies access |
-| Notify | User notified |
-
-### Expected Results
-- Request recorded with details
-- Routing to appropriate approver
-- Email notifications
-- Audit trail of approval
+| Scenario | Status |
+|----------|--------|
+| 1. Explored user management | ⬜ |
+| 2. Reviewed role-based permissions | ⬜ |
+| 3. Checked session timeout settings | ⬜ |
+| 4. Viewed last access information | ⬜ |
+| 5. Searched audit trail | ⬜ |
+| 6. Reviewed password policy | ⬜ |
 
 ---
 
-## Test Scenario 9: Security Reports
+## Key Takeaways
 
-### Objective
-Test security-related reporting capabilities.
+After completing this module, you've seen that BigLedger:
 
-### Steps to Follow
-
-1. **Navigate** to: `Admin` → `Reports` → `Security Reports`
-2. **Generate** various reports:
-   - User Access Report
-   - Login Activity Report
-   - Failed Login Report
-   - Permission Matrix Report
-
-### What to Verify
-
-**Available Reports:**
-| Report | Content |
-|--------|---------|
-| User List | All users with roles |
-| Access Matrix | Permission by role |
-| Login History | Login/logout activity |
-| Security Events | Unauthorized attempts |
-
-### Expected Results
-- Comprehensive security visibility
-- Export to Excel/PDF
-- Scheduled generation option
-- Compliance audit support
+| UTM Requirement | How BigLedger Meets It |
+|-----------------|----------------------|
+| **9.15a** User ID Expiry | Set expiration dates for user accounts |
+| **9.15b** Auto Logout | Configurable session timeout |
+| **9.15c** Last Access | Display login history |
+| **RBAC** | Granular role-based access control |
+| **Audit Trail** | Complete activity logging |
+| **Password Policy** | Strong password enforcement |
 
 ---
 
-## Test Scenario 10: System Log Monitoring
+## Additional Security Features
 
-### Objective
-Test server and application logging capabilities (Requirement 3.31).
+BigLedger also provides:
 
-### Steps to Follow
-
-1. **Navigate** to: `Admin` → `System Logs`
-2. **View** log categories:
-   - Application logs
-   - Database logs
-   - Security logs
-   - Error logs
-3. **Search** and filter logs
-
-### What to Verify
-
-**Log Information:**
-| Log Type | Content |
-|----------|---------|
-| Application | System events, transactions |
-| Security | Login attempts, access violations |
-| Error | Exceptions, failures |
-| Audit | Business transactions |
-
-### Expected Results
-- Real-time log viewing
-- Search and filter capability
-- Log retention policy
-- Alert configuration
+| Feature | Description |
+|---------|-------------|
+| **Encryption** | AES-256 for data at rest, TLS 1.3 in transit |
+| **Two-Factor Auth** | Optional 2FA for sensitive operations |
+| **IP Restrictions** | Limit access by IP address |
+| **SSO Integration** | Connect to MyUTM portal |
+| **Security Reports** | Login activity, failed attempts, etc. |
 
 ---
 
-## Key Features Demonstrated
+## Quick Reference: Navigation
 
-### User Management
-- Centralized user administration
-- Self-service capabilities
-- Lifecycle management
-- Bulk operations
-
-### Access Control
-- Role-based permissions
-- Menu-level access
-- Function-level control
-- Data-level restrictions
-
-### Security Features
-- Session management
-- Password policies
-- Account lockout
-- Multi-factor authentication (optional)
-
-### Audit & Compliance
-- Complete audit trail
-- Activity monitoring
-- Security reporting
-- Compliance support
+| What You Want to Do | Where to Find It |
+|---------------------|------------------|
+| Manage users | Admin → User Management → Users |
+| Manage roles | Admin → User Management → Roles |
+| View audit trail | Admin → Audit Trail |
+| Security settings | Admin → System Settings → Security |
+| Password policy | Admin → System Settings → Password Policy |
 
 ---
 
-## Advanced Features
+## What's Next?
 
-### Single Sign-On (SSO)
-- Integration with MyUTM portal
-- SAML/OAuth support
-- Centralized authentication
-- Seamless user experience
-
-### Data Encryption
-- AES-256 encryption at rest
-- TLS 1.3 in transit
-- Encrypted backups
-- Key management
-
-### Security Monitoring
-- Real-time alerts
-- Anomaly detection
-- Failed login monitoring
-- Session tracking
-
----
-
-## Navigation Tips
-
-| Task | Menu Path |
-|------|-----------|
-| User List | Admin → User Management → Users |
-| Role Management | Admin → User Management → Roles |
-| Audit Trail | Admin → Audit Trail |
-| Security Settings | Admin → System Settings → Security |
-| System Logs | Admin → System Logs |
-| Security Reports | Admin → Reports → Security Reports |
-
----
-
-## Related Documentation
-
-For detailed technical documentation on security features, please contact your BigLedger implementation team.
-
----
-
-## Next Steps
-
-After evaluating User Access Control, proceed to:
+You've completed the Security & Access Control evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../tax-management" title="Tax Management" subtitle="Test tax configuration" >}}
-  {{< card link="../" title="Back to Overview" subtitle="Return to main evaluation guide" >}}
+  {{< card link="../tax-management" title="Tax Management" subtitle="Configure tax rates and compliance" >}}
+  {{< card link="../" title="Back to Overview" subtitle="Choose a different module or finish" >}}
 {{< /cards >}}
+
+---
+
+## Questions?
+
+If anything wasn't clear or you'd like a live demonstration:
+
+- **Demo Coordinator:** fatimah@bigledger.com
+- **Technical Support:** support@bigledger.com
+

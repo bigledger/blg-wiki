@@ -1,187 +1,189 @@
 ---
 title: "UTM Integrated Financial System Evaluation Guide"
-description: "Test script and user guide for evaluating BigLedger's SAGA-compliant Integrated Financial System for Universiti Teknologi Malaysia"
+description: "Step-by-step test scripts for evaluating BigLedger's SAGA-compliant Integrated Financial System"
 weight: 25
 bookCollapseSection: false
 ---
 
-Welcome to the BigLedger Integrated Financial System Evaluation Guide for **Universiti Teknologi Malaysia (UTM)**. This guide serves as a comprehensive "test script" to help evaluators explore and understand the capabilities of our SAGA-compliant financial system.
+## Welcome, Evaluators!
 
-## Getting Started
+Thank you for taking the time to evaluate the **BigLedger Integrated Financial System** for Universiti Teknologi Malaysia (UTM). This guide will walk you through each module with clear, step-by-step instructions.
 
-### Demo Environment Access
+{{< callout type="info" >}}
+**Estimated Total Evaluation Time:** 2-3 hours for all modules, or 15-20 minutes per module if evaluating individually.
+{{< /callout >}}
 
-To begin your evaluation, please request login credentials from:
+---
+
+## Before You Start
+
+### Who Is This Guide For?
+
+This guide is designed for **all evaluators**, regardless of accounting background:
+- **Finance professionals** - You'll find detailed test scenarios aligned with SAGA requirements
+- **IT administrators** - Look for integration, security, and technical specifications
+- **Management** - Focus on dashboards, reports, and ease of use
+- **Non-technical evaluators** - Follow the step-by-step instructions; we explain everything
+
+### Quick Glossary
+
+Not familiar with accounting terms? Here's a quick reference:
+
+| Term | Simple Explanation |
+|------|-------------------|
+| **General Ledger (GL)** | The main record book of all financial transactions |
+| **Chart of Accounts** | The list of all account categories (like folders for organizing money) |
+| **SAGA** | Standard Accounting System for Government Agencies - Malaysia's government accounting rules |
+| **Vote Book (Buku Vot)** | Government budget tracking - ensures you don't overspend |
+| **Accounts Payable (AP)** | Money you owe to suppliers (bills to pay) |
+| **Accounts Receivable (AR)** | Money owed to you (invoices sent, waiting for payment) |
+| **E-Invoice** | Electronic invoice required by LHDN (Malaysian tax authority) |
+
+---
+
+## Step 1: Access the Demo System
+
+### Get Your Login Credentials
+
+{{< callout type="warning" >}}
+**Action Required:** Contact our demo coordinator to receive your login details.
+{{< /callout >}}
 
 **Contact:** fatimah@bigledger.com
 
-**Available Demo Accounts:**
-| Username | Role | Access Level |
-|----------|------|--------------|
-| demo+utm.finance@bigledger.com | Finance Officer | Full financial operations |
-| demo+utm.manager@bigledger.com | Finance Manager | Approval workflows and reporting |
+Once you receive your credentials, you'll have access to one of these accounts:
+
+| Role | What You Can Do |
+|------|-----------------|
+| **Finance Officer** | Create transactions, invoices, payments, and run reports |
+| **Finance Manager** | Everything above, plus approvals and advanced reports |
 
 **Demo URL:** [https://akaun.com](https://akaun.com)
 
-### Understanding the Platform Architecture
+### Login to the Demo
 
-BigLedger is a **cloud-native, multi-tenant platform** built with modern enterprise technologies:
+1. **Open your browser** and go to: [https://demo-v1.bigledger.com](https://demo-v1.bigledger.com)
+2. **Enter your email** and password (provided by our coordinator)
+3. **Click "Sign In"**
+4. You should see the main dashboard
 
-- **Backend:** Java-based microservices architecture
-- **Frontend:** Angular (responsive, modern UI/UX)
-- **Database:** PostgreSQL (enterprise-grade, ACID-compliant)
-- **Infrastructure:** AWS Cloud (serverless, auto-scaling, high availability)
-
-**Multi-Tenant Capability:**
-- Single platform supports multiple organizations (tenants)
-- Each tenant has isolated, secure database
-- Multiple companies (Sdn Bhd) can operate under one tenant
-- Complete data segregation with enterprise-grade security
-
-This architecture provides significant advantages over traditional on-premise ERP systems:
-- **Zero infrastructure maintenance** for UTM
-- **Automatic updates and security patches**
-- **99.9% uptime guarantee** with built-in disaster recovery
-- **Scalable performance** handling millions of transactions
-- **Accessibility** from any device, anywhere
+{{< callout type="info" >}}
+**Tip:** The demo contains sample data from a fictional university similar to UTM. Feel free to explore without worrying about breaking anything!
+{{< /callout >}}
 
 ---
 
-## System Modules Overview
+## Step 2: Understand What You're Evaluating
 
-Based on UTM's requirements for a SAGA-compliant Integrated Financial System, this evaluation guide covers the following modules:
+### What is BigLedger?
+
+BigLedger is a **cloud-based financial management system** designed specifically for Malaysian organizations, including government agencies and universities.
+
+**In simple terms:** It's like an online accounting system where your finance team can:
+- Record all income and expenses
+- Track budgets and ensure you don't overspend
+- Generate reports for auditors and management
+- Process payments and receipts
+- Manage university assets
+
+### Why Cloud-Based Matters
+
+| Traditional System | BigLedger Cloud |
+|-------------------|-----------------|
+| Need to install on servers | Access from any browser |
+| IT team maintains updates | We handle all updates automatically |
+| Backup responsibility is yours | Automatic daily backups |
+| Server downtime = no access | 99.9% uptime guarantee |
+| Limited remote access | Work from anywhere |
+
+---
+
+## Step 3: Choose What to Evaluate
+
+### Evaluation Modules
+
+Each module below has its own test script. **Click on any module to start evaluating:**
 
 {{< cards >}}
-  {{< card link="general-ledger" title="General Ledger & Chart of Accounts" subtitle="Core accounting structure, GL hierarchy, and financial statement mapping" >}}
-  {{< card link="budget-management" title="Budget & Vote Book Management" subtitle="Budget allocation, monitoring, virement, and real-time utilization tracking" >}}
-  {{< card link="accounts-payable" title="Accounts Payable (Payment Module)" subtitle="Vendor management, invoice processing, and payment workflows" >}}
-  {{< card link="accounts-receivable" title="Accounts Receivable (Receipt Module)" subtitle="Debtor management, billing, collections, and receipt processing" >}}
-  {{< card link="journal-module" title="Journal Module" subtitle="Auto and manual journal entries, sub-ledger management" >}}
-  {{< card link="cash-management" title="Cash Management & Banking" subtitle="Cashbook, bank reconciliation, and internet banking integration" >}}
-  {{< card link="asset-management" title="Asset Management" subtitle="Asset registration, tracking, depreciation, and disposal" >}}
-  {{< card link="financial-reporting" title="Financial Reporting" subtitle="Full set of accounts, SAGA compliance reports, and dashboards" >}}
-  {{< card link="user-access-control" title="User Access Control" subtitle="Security profiles, audit trails, and role-based permissions" >}}
-  {{< card link="tax-management" title="Tax Rate Management" subtitle="Tax configuration and government directive compliance" >}}
+  {{< card link="general-ledger" title="General Ledger & Chart of Accounts" subtitle="Start here - the foundation of all accounting" >}}
+  {{< card link="budget-management" title="Budget & Vote Book" subtitle="Essential for government budget control" >}}
+  {{< card link="accounts-payable" title="Accounts Payable (Payments)" subtitle="How you pay your suppliers" >}}
+  {{< card link="accounts-receivable" title="Accounts Receivable (Collections)" subtitle="How you collect money owed" >}}
+  {{< card link="journal-module" title="Journal Entries" subtitle="Recording adjustments and corrections" >}}
+  {{< card link="cash-management" title="Cash & Banking" subtitle="Managing bank accounts and reconciliation" >}}
+  {{< card link="asset-management" title="Asset Management" subtitle="Track equipment, furniture, and property" >}}
+  {{< card link="financial-reporting" title="Financial Reports" subtitle="Generate statements and compliance reports" >}}
+  {{< card link="user-access-control" title="Security & Access Control" subtitle="User permissions and audit trails" >}}
+  {{< card link="tax-management" title="Tax Configuration" subtitle="SST, withholding tax, and e-invoice" >}}
 {{< /cards >}}
 
----
-
-## SAGA Compliance Assurance
-
-Our system is designed to fully comply with the **Standard Accounting System for Government Agencies (SAGA)** requirements, including:
-
-### Accounting Standards Compliance
-- **MPSAS** (Malaysian Public Sector Accounting Standards)
-- **GAAP** (Generally Accepted Accounting Principles)
-- **Accrual-Based Accounting** as mandated by government policies
-- **JANM Requirements** (Jabatan Akauntan Negara Malaysia)
-
-### Key SAGA Features
-- Flexible Chart of Accounts structure supporting UTM's existing codes
-- Complete audit trail for all transactions
-- Multi-level approval workflows
-- Real-time budget control and monitoring
-- Full set of financial statements (Balance Sheet, Income Statement, Cash Flow, Changes in Equity)
-- Government circular compliance (including Surat Pekeliling Akauntan Negara)
-
-### Regulatory Compliance
-- **E-Invoice Integration** with LHDN MyInvois Portal
-- **SST/GST** compliance and reporting
-- **Bank Negara** reporting capabilities
-- **PEPPOL** network ready for cross-border transactions
+{{< callout type="info" >}}
+**Recommended Starting Point:** If you're new to the system, start with **General Ledger & Chart of Accounts** - it's the foundation that all other modules build upon.
+{{< /callout >}}
 
 ---
 
-## System Highlights & Competitive Advantages
+## Your Evaluation Checklist
 
-### Technology Excellence
+Use this checklist to track your progress:
 
-| Feature | BigLedger Advantage |
-|---------|-------------------|
-| **Cloud-Native** | No server maintenance, automatic scaling |
-| **Real-Time Processing** | Instant transaction posting and balance updates |
-| **Mobile Responsive** | Access from any device (PC, tablet, phone) |
-| **Multi-Currency** | 150+ currencies with real-time exchange rates |
-| **API Integration** | Ready to integrate with UTM HR, RADIS, MyAIMS |
-| **Single Sign-On** | Integration with MyUTM portal supported |
-
-### Operational Excellence
-
-| Capability | Specification |
-|------------|---------------|
-| Account Capacity | Up to 100,000 GL accounts |
-| Transaction Volume | Millions of transactions per year |
-| Concurrent Users | 500+ simultaneous users |
-| Report Generation | < 5 seconds for standard reports |
-| Data Retention | 7+ years with full audit trail |
-| Backup & Recovery | Automated daily backups with instant recovery |
-
-### Security & Compliance
-
-- **Encryption:** AES-256 for data at rest, TLS 1.3 for data in transit
-- **Access Control:** Role-based permissions with maker-checker workflows
-- **Audit Trail:** Complete logging of all user activities
-- **Session Management:** Configurable auto-logout for inactive users
-- **Security Auditing:** Regular vulnerability assessments and penetration testing
+| Module | Status | UTM Requirements |
+|--------|--------|------------------|
+| General Ledger & Chart of Accounts | ⬜ Not Started | 9.18, 9.19 |
+| Budget & Vote Book Management | ⬜ Not Started | 9.23-9.55 |
+| Accounts Payable | ⬜ Not Started | 9.16b |
+| Accounts Receivable | ⬜ Not Started | 9.16a |
+| Journal Module | ⬜ Not Started | 9.21, 9.22 |
+| Cash Management | ⬜ Not Started | 9.56 |
+| Asset Management | ⬜ Not Started | 9.57-9.65 |
+| Financial Reporting | ⬜ Not Started | 9.20 |
+| User Access Control | ⬜ Not Started | 9.15 |
+| Tax Management | ⬜ Not Started | 9.17 |
 
 ---
 
-## Evaluation Approach
+## What Makes BigLedger Different?
 
-This test script is organized to help you systematically evaluate each module:
+### Built for Malaysian Government & Universities
 
-1. **Navigate** to the specific module section using the cards above
-2. **Follow** the step-by-step instructions provided
-3. **Test** the scenarios described with sample data
-4. **Observe** the system behavior and outputs
-5. **Verify** the results match your requirements
+| Feature | Why It Matters |
+|---------|----------------|
+| **SAGA Compliant** | Meets all government accounting standards |
+| **Malay & English** | Full bilingual support |
+| **E-Invoice Ready** | Integrated with LHDN MyInvois Portal |
+| **Multi-Campus** | Handle JB, KL, and other campuses in one system |
+| **Vote Book** | Real-time budget control prevents overspending |
 
-Each module section includes:
-- Overview of capabilities
-- Step-by-step test scenarios
-- Expected outcomes
-- Tips for advanced features
+### Enterprise-Grade Security
 
----
-
-## Quick Navigation by UTM Tender Requirements
-
-### Lampiran IV Requirements Mapping
-
-| Tender Section | System Module | Guide Link |
-|----------------|---------------|------------|
-| 9.15 User Access Control | Security & ACL | [User Access Control](user-access-control) |
-| 9.16 Debtor & Creditor Registration | AR/AP Masters | [Accounts Receivable](accounts-receivable), [Accounts Payable](accounts-payable) |
-| 9.17 Tax Rate Management | Tax Configuration | [Tax Management](tax-management) |
-| 9.18 Chart of Accounts | GL & COA | [General Ledger](general-ledger) |
-| 9.19 Year Opening/Closing | Period Management | [General Ledger](general-ledger) |
-| 9.20 Financial Reports | Reporting Module | [Financial Reporting](financial-reporting) |
-| 9.21 Auto Journal | Journal Module | [Journal Module](journal-module) |
-| 9.22 Manual Journal | Journal Module | [Journal Module](journal-module) |
-| 9.23-9.25 Vote Book | Budget Module | [Budget Management](budget-management) |
-| 9.26-9.55 Budget Operations | Budget Module | [Budget Management](budget-management) |
-| 9.56 Internet Banking | Cash Management | [Cash Management](cash-management) |
-| 9.57-9.65 Asset Module | Asset Management | [Asset Management](asset-management) |
+| Security Feature | What It Means |
+|-----------------|---------------|
+| **Bank-Level Encryption** | Your data is protected like online banking |
+| **Complete Audit Trail** | Every action is recorded for auditors |
+| **Role-Based Access** | Staff only see what they need |
+| **Auto-Logout** | Inactive sessions are logged out automatically |
 
 ---
 
-## Support & Contact
+## Need Help During Evaluation?
 
-For technical questions during your evaluation:
+We're here to support your evaluation:
 
-- **Email:** support@bigledger.com
-- **Demo Coordinator:** fatimah@bigledger.com
+| Contact | Purpose |
+|---------|---------|
+| **fatimah@bigledger.com** | Demo access and coordination |
+| **support@bigledger.com** | Technical questions |
+| **sales@bigledger.com** | Business and pricing inquiries |
 
-For business inquiries:
-- **Sales:** sales@bigledger.com
-- **Reference:** UTM Tender B.30/2024
+**Reference:** UTM Tender B.30/2024
 
 ---
 
-## Continue Your Evaluation
+## Ready to Start?
 
-Select a module from the cards above to begin your detailed system evaluation. We recommend starting with the **General Ledger & Chart of Accounts** module as it forms the foundation for all other financial operations.
+Click on the **General Ledger & Chart of Accounts** module below to begin your evaluation:
 
 {{< cards >}}
-  {{< card link="general-ledger" title="Start Here: General Ledger" subtitle="Begin with the core accounting foundation" >}}
+  {{< card link="general-ledger" title="Start Evaluation: General Ledger" subtitle="Begin with the foundation of the financial system" >}}
 {{< /cards >}}
+

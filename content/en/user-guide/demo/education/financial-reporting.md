@@ -1,404 +1,322 @@
 ---
-title: "Financial Reporting"
-description: "Evaluate full set of accounts generation, SAGA compliance reports, and dashboards"
+title: "Financial Reports"
+description: "Evaluate financial statement generation and compliance reports"
 weight: 8
 ---
 
-This section covers the Financial Reporting functionality as specified in UTM Tender Requirement 9.20. Our system generates comprehensive financial statements compliant with SAGA, MPSAS, and government reporting requirements.
+## What You'll Learn
 
-## Overview
+In this module, you'll explore how BigLedger generates financial reports - from daily cash reports to full year-end financial statements. You'll see how reports are formatted for SAGA compliance and how easily they can be exported.
 
-The Financial Reporting module provides:
-- **Full Set of Accounts** - Balance Sheet, Income Statement, Cash Flow, Changes in Equity
-- **Periodic Reporting** - Daily, Monthly, Quarterly, Annual
-- **SAGA Compliance** - Government agency reporting formats
-- **Customizable Reports** - Ad-hoc reporting capabilities
-- **Dashboard Analytics** - Real-time KPIs and metrics
-- **Export Flexibility** - Excel, PDF, and print options
-
-## Test Scenario 1: Full Set of Financial Statements
-
-### Objective
-Verify the system generates complete financial statements periodically (Requirement 9.20a).
-
-### Steps to Follow
-
-1. **Login** to the demo system
-2. **Navigate** to: `Finance` → `Financial Reports` → `Financial Statements`
-3. **Select** report type: Balance Sheet
-4. **Configure** parameters:
-   - **Period:** Select fiscal period
-   - **Company:** UTM
-   - **Currency:** MYR
-5. **Generate** report
-
-### What to Verify
-
-**Full Set of Accounts:**
-| Statement | Description |
-|-----------|-------------|
-| Balance Sheet | Penyata Kedudukan Kewangan |
-| Income Statement | Penyata Pendapatan Komprehensif |
-| Cash Flow Statement | Penyata Aliran Tunai |
-| Changes in Equity | Penyata Perubahan Ekuiti |
-| Notes to Accounts | Supporting schedules |
-
-### Expected Results
-- Complete financial statements generated
-- Proper format per MPSAS/SAGA
-- Balancing verification
-- Export options available
+{{< callout type="info" >}}
+**Time Required:** 15 minutes | **Skill Level:** Beginner-friendly | **UTM Requirements:** 9.20
+{{< /callout >}}
 
 ---
 
-## Test Scenario 2: SAGA Compliance Reports
+## Before You Begin: Key Terms Explained
 
-### Objective
-Test generation of government-required reports (Requirement 9.20b).
-
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Financial Reports` → `Statutory Reports`
-2. **Select** SAGA compliance report
-3. **Generate** report
-
-### What to Verify
-
-**SAGA Report Elements:**
-| Element | Requirement |
-|---------|-------------|
-| Account Structure | JANM-compliant format |
-| Classification | Government account categories |
-| Period Format | Fiscal year alignment |
-| Disclosure | Required notes and schedules |
-
-### Expected Results
-- SAGA-formatted output
-- Complete disclosure requirements
-- Ready for submission
-- Audit trail maintained
+| Term | What It Means |
+|------|---------------|
+| **Balance Sheet** | A snapshot of what you own (assets) and owe (liabilities) at a point in time |
+| **Income Statement** | Revenue minus expenses = surplus or deficit for a period |
+| **Cash Flow Statement** | Where cash came from and where it went |
+| **SAGA** | Standard Accounting System for Government Agencies - government format requirements |
+| **MPSAS** | Malaysian Public Sector Accounting Standards |
+| **Drill-Down** | Clicking on a total to see the details behind it |
 
 ---
 
-## Test Scenario 3: Penyata Pendapatan Komprehensif (Income Statement)
+## Why This Module Matters
 
-### Objective
-Test Income Statement generation.
+Financial Reporting is essential because:
 
-### Steps to Follow
+- **Statutory compliance** - Government agencies must submit specific reports
+- **Decision making** - Management needs accurate financial information
+- **Audit support** - Auditors review these statements
+- **Transparency** - Stakeholders need to see how money is used
 
-1. **Navigate** to: `Finance` → `Financial Reports` → `Financial Statements`
-2. **Select:** Penyata Pendapatan Komprehensif
-3. **Parameters:**
-   - **Period:** Year to Date
-   - **Comparison:** Previous Year
-4. **Generate** report
-
-### What to Verify
-
-**Income Statement Components:**
-| Section | Content |
-|---------|---------|
-| Revenue | All income sources |
-| Direct Costs | Cost of services/goods |
-| Gross Surplus | Revenue minus direct costs |
-| Operating Expenses | Administrative, operating costs |
-| Net Surplus/Deficit | Bottom line result |
-
-### Expected Results
-- Comprehensive income display
-- Comparative columns
-- Variance calculation
-- Drill-down to details
+{{< callout type="info" >}}
+**For UTM:** This addresses requirement 9.20 for generating the full set of financial statements and SAGA-compliant reports.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 4: Penyata Kedudukan Kewangan (Balance Sheet)
+## Test Scenario 1: Generate Balance Sheet
 
-### Objective
-Test Balance Sheet generation.
+**Objective:** Produce the Statement of Financial Position (Penyata Kedudukan Kewangan)
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Navigate** to: `Finance` → `Financial Reports` → `Financial Statements`
-2. **Select:** Penyata Kedudukan Kewangan
-3. **Parameters:**
-   - **As of Date:** Period end
-   - **Comparison:** Prior period
-4. **Generate** report
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Finance → Financial Reports → Financial Statements
 
-**Balance Sheet Components:**
-| Section | Content |
-|---------|---------|
-| Aset Semasa | Current Assets |
-| Aset Bukan Semasa | Non-Current Assets |
-| Liabiliti Semasa | Current Liabilities |
-| Liabiliti Bukan Semasa | Long-term Liabilities |
-| Ekuiti | Equity |
+2. **Select:** Balance Sheet (or Penyata Kedudukan Kewangan)
 
-### Expected Results
-- Assets = Liabilities + Equity
-- Proper classification
-- Comparative display
-- Supporting schedules linked
+3. **Set parameters:**
+   | Field | Example |
+   |-------|---------|
+   | As of Date | End of current month |
+   | Comparison | Previous year |
+   | Format | SAGA Format |
 
----
+4. **Generate** the report
 
-## Test Scenario 5: Penyata Aliran Tunai (Cash Flow Statement)
+### What You'll See
 
-### Objective
-Test Cash Flow Statement generation.
-
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Financial Reports` → `Financial Statements`
-2. **Select:** Penyata Aliran Tunai
-3. **Generate** report
-
-### What to Verify
-
-**Cash Flow Sections (Requirement 9.20b-iv):**
-| Activity | Description |
-|----------|-------------|
-| Operating | Day-to-day operations cash |
-| Investing | Asset purchases/sales |
-| Financing | Loans, grants, equity |
-| Net Change | Total cash movement |
-
-### Expected Results
-- Three-activity format
-- Reconciliation to cash balance
-- Direct or indirect method
-- Period comparisons
-
----
-
-## Test Scenario 6: Penyata Perubahan Ekuiti
-
-### Objective
-Test Statement of Changes in Equity generation.
-
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Financial Reports` → `Financial Statements`
-2. **Select:** Penyata Perubahan Ekuiti
-3. **Generate** report
-
-### What to Verify
-
-**Equity Components:**
-| Element | Tracking |
+| Section | Contents |
 |---------|----------|
-| Opening Balance | Start of period |
-| Surplus/Deficit | Period result |
-| Other Comprehensive Income | Non-operating items |
-| Transactions with Owners | Capital changes |
-| Closing Balance | End of period |
+| **Assets (Aset)** | Cash, receivables, equipment, buildings |
+| **Liabilities (Liabiliti)** | Payables, loans, obligations |
+| **Equity (Ekuiti)** | Accumulated funds, reserves |
 
-### Expected Results
-- Movement analysis display
-- Reconciliation to Balance Sheet
-- Component breakdown
-- Multi-year comparison
+**Key Check:** Assets = Liabilities + Equity (must always balance!)
 
----
+### Try This
 
-## Test Scenario 7: Campus and Budget-Specific Reports
+- Click on any line item to drill down to the underlying accounts
+- Export to Excel or PDF
+- Compare with previous period
 
-### Objective
-Test reporting by campus and budget classification.
-
-### Steps to Follow
-
-1. **Navigate** to: `Finance` → `Financial Reports` → `Segment Reports`
-2. **Select** dimension:
-   - By Campus (JB, KL)
-   - By Budget Type (Operating, Capital, Grant)
-   - By PTJ (Department/Faculty)
-3. **Generate** report
-
-### What to Verify
-
-**Segmented Reporting:**
-| Dimension | Capability |
-|-----------|------------|
-| Campus | Separate financial position per campus |
-| Budget | Revenue/Expense by budget category |
-| PTJ | Departmental performance |
-| Project | Project-based financials |
-
-### Expected Results
-- Segment-wise statements
-- Consolidation capability
-- Inter-segment elimination
-- Comparative analysis
+{{< callout type="info" >}}
+**BigLedger Advantage:** Reports are generated in seconds, not hours. Real-time data means you always see current figures.
+{{< /callout >}}
 
 ---
 
-## Test Scenario 8: Drill-Down and Audit Trail
+## Test Scenario 2: Generate Income Statement
 
-### Objective
-Test the drill-down capability for detailed analysis.
+**Objective:** Produce the Statement of Comprehensive Income (Penyata Pendapatan Komprehensif)
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Generate** any financial report
-2. **Click** on a line item amount
-3. **Drill down** to transaction details
-4. **Continue** to source document
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Finance → Financial Reports → Financial Statements
 
-**Drill-Down Path:**
-Report Total → Account Summary → Transaction List → Source Document
+2. **Select:** Income Statement
 
-### Expected Results
-- Seamless navigation
-- Complete audit trail
-- Document links preserved
-- Back navigation available
+3. **Set parameters:**
+   | Field | Example |
+   |-------|---------|
+   | Period | Year to Date |
+   | Comparison | Previous Year |
+   | Detail Level | Summary or Detailed |
 
----
+4. **Generate** the report
 
-## Test Scenario 9: Real-Time Dashboard
+### What You'll See
 
-### Objective
-Test the financial dashboard capabilities.
+| Section | Contents |
+|---------|----------|
+| **Revenue (Hasil)** | Grants, fees, other income |
+| **Expenses (Belanja)** | Salaries, utilities, supplies |
+| **Surplus/Deficit** | Revenue minus Expenses |
 
-### Steps to Follow
+### Try This
 
-1. **Navigate** to: `Finance` → `Dashboard`
-2. **View** key financial metrics
-3. **Interact** with visualizations
-
-### What to Verify
-
-**Dashboard Elements:**
-| Widget | Information |
-|--------|-------------|
-| Cash Position | Current cash balances |
-| Budget Utilization | Spending vs allocation |
-| Receivables | Outstanding amounts |
-| Payables | Due payments |
-| Key Ratios | Financial metrics |
-
-### Expected Results
-- Real-time data display
-- Interactive charts
-- Configurable widgets
-- Alert indicators
+- View by month to see trends
+- Filter by department (PTJ)
+- Look at percentage changes from prior year
 
 ---
 
-## Test Scenario 10: Report Export and Distribution
+## Test Scenario 3: Cash Flow Statement
 
-### Objective
-Test report export and sharing capabilities.
+**Objective:** Produce the Statement of Cash Flows (Penyata Aliran Tunai)
 
-### Steps to Follow
+**Time:** 3 minutes
 
-1. **Generate** any financial report
-2. **Click** Export options
-3. **Select** format (Excel, PDF)
-4. **Download** or email
+### Step-by-Step Instructions
 
-### What to Verify
+1. **Navigate to:** Finance → Financial Reports → Financial Statements
 
-**Export Options:**
-| Format | Use Case |
-|--------|----------|
-| Excel | Data analysis, manipulation |
-| PDF | Distribution, archival |
-| Print | Physical copies |
-| Schedule | Automated distribution |
+2. **Select:** Cash Flow Statement
 
-### Expected Results
-- Clean export formatting
-- All data preserved
-- Charts included (PDF)
-- Pivot-ready (Excel)
+3. **Generate** the report
 
----
+### What You'll See
 
-## Key Features Demonstrated
+The cash flow is divided into three activities:
 
-### Financial Statement Generation
-- Full set of accounts
-- SAGA/MPSAS compliant
-- Multi-period comparison
-- Consolidated and standalone
+| Activity | What It Includes |
+|----------|-----------------|
+| **Operating** | Day-to-day cash from operations |
+| **Investing** | Buying/selling assets |
+| **Financing** | Loans, grants, capital movements |
 
-### Reporting Frequency
-- Daily cash position
-- Weekly management reports
-- Monthly financial close
-- Quarterly reviews
-- Annual statements
+**Key Check:** Opening Cash + Net Cash Flow = Closing Cash
 
-### Compliance Features
-- Government format compliance
-- Audit trail requirements
-- Disclosure completeness
-- Signature/approval tracking
-
-### Analysis Tools
-- Drill-down capability
-- Variance analysis
-- Trend analysis
-- Ratio calculations
+{{< callout type="info" >}}
+**UTM Requirement (9.20b-iv):** The system must generate cash flow statements showing operating, investing, and financing activities.
+{{< /callout >}}
 
 ---
 
-## Advanced Features
+## Test Scenario 4: Trial Balance
 
-### Custom Report Builder
-- Design custom layouts
-- Add calculations
-- Save templates
-- Schedule generation
+**Objective:** See all account balances at a glance
 
-### Budget vs Actual
-- Variance highlighting
-- Percentage analysis
-- Forecast updates
-- Management commentary
+**Time:** 2 minutes
 
-### KPI Dashboard
-- Configurable metrics
-- Real-time updates
-- Alert thresholds
-- Trend indicators
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Financial Reports → Trial Balance
+
+2. **Set parameters:**
+   | Field | Example |
+   |-------|---------|
+   | As of Date | End of month |
+   | Level | Summary or Detailed |
+
+3. **Generate** the report
+
+### What You'll See
+
+| Account | Debit | Credit |
+|---------|-------|--------|
+| Cash at Bank | RM 500,000 | |
+| Accounts Receivable | RM 150,000 | |
+| Revenue | | RM 1,000,000 |
+| ... | ... | ... |
+| **Total** | RM 2,500,000 | RM 2,500,000 |
+
+**Key Check:** Total Debits must equal Total Credits
+
+### Why This Matters
+
+The trial balance is used to verify that your books are in balance before generating financial statements. If it doesn't balance, there's an error somewhere.
 
 ---
 
-## Navigation Tips
+## Test Scenario 5: Budget vs Actual Report
 
-| Task | Menu Path |
-|------|-----------|
-| Financial Statements | Finance → Financial Reports → Financial Statements |
-| Trial Balance | Finance → Financial Reports → Trial Balance |
-| General Ledger | Finance → Financial Reports → General Ledger |
-| Budget Reports | Finance → Budget → Reports |
+**Objective:** Compare planned budget with actual spending
+
+**Time:** 3 minutes
+
+### Step-by-Step Instructions
+
+1. **Navigate to:** Finance → Budget → Reports
+
+2. **Select:** Budget vs Actual
+
+3. **Set parameters:**
+   | Field | Example |
+   |-------|---------|
+   | Period | Current Year |
+   | PTJ | All or specific |
+   | Detail | Summary or Line Item |
+
+4. **Generate** the report
+
+### What You'll See
+
+| Item | Budget | Actual | Variance | % |
+|------|--------|--------|----------|---|
+| Travel | RM 50,000 | RM 35,000 | RM 15,000 | 30% under |
+| Training | RM 30,000 | RM 45,000 | (RM 15,000) | 50% over |
+
+### Try This
+
+- Look for significant variances
+- Drill down to see transactions
+- Export for management presentation
+
+---
+
+## Test Scenario 6: Export and Print Reports
+
+**Objective:** Get reports out of the system
+
+**Time:** 2 minutes
+
+### Step-by-Step Instructions
+
+1. **Generate** any report from above
+
+2. **Click** the Export button
+
+3. **Choose format:**
+   | Format | Best For |
+   |--------|----------|
+| Excel | Further analysis, manipulation |
+   | PDF | Distribution, printing |
+   | Print | Physical copies |
+
+4. **Download** or print
+
+### What to Notice
+
+- Excel exports maintain formulas for drill-down
+- PDFs are properly formatted for presentation
+- Headers and footers include report details
+
+{{< callout type="info" >}}
+**BigLedger Advantage:** Reports can be scheduled to generate automatically and email to recipients.
+{{< /callout >}}
+
+---
+
+## Your Progress Checklist
+
+Mark off what you've completed:
+
+| Scenario | Status |
+|----------|--------|
+| 1. Generated Balance Sheet | ⬜ |
+| 2. Generated Income Statement | ⬜ |
+| 3. Generated Cash Flow Statement | ⬜ |
+| 4. Viewed Trial Balance | ⬜ |
+| 5. Ran Budget vs Actual report | ⬜ |
+| 6. Exported a report | ⬜ |
+
+---
+
+## Key Takeaways
+
+After completing this module, you've seen that BigLedger:
+
+| Feature | What It Does |
+|---------|-------------|
+| **Full Set of Statements** | Balance Sheet, Income Statement, Cash Flow, Changes in Equity |
+| **SAGA Compliance** | Reports formatted per government requirements |
+| **Real-Time Data** | Always current - no waiting for month-end close |
+| **Drill-Down** | Click any number to see details |
+| **Export Options** | Excel, PDF, print |
+| **Comparison** | Prior period, budget, other PTJ |
+
+---
+
+## Quick Reference: Navigation
+
+| What You Want to Do | Where to Find It |
+|---------------------|------------------|
+| Financial statements | Finance → Financial Reports → Financial Statements |
+| Trial balance | Finance → Financial Reports → Trial Balance |
+| General ledger | Finance → Financial Reports → General Ledger |
+| Budget reports | Finance → Budget → Reports |
 | Dashboard | Finance → Dashboard |
-| Segment Reports | Finance → Financial Reports → Segment Reports |
 
 ---
 
-## Related Documentation
+## What's Next?
 
-For detailed technical documentation:
-- [Financial Reporting Guide](/guides/accounting-guides/financial-reporting/)
-- [Financial Reporting Excellence](/guides/advanced/financial-reporting-excellence/)
-
----
-
-## Next Steps
-
-After evaluating Financial Reporting, proceed to:
+You've completed the Financial Reporting evaluation. Choose your next module:
 
 {{< cards >}}
-  {{< card link="../user-access-control" title="User Access Control" subtitle="Test security and permissions" >}}
-  {{< card link="../tax-management" title="Tax Management" subtitle="Test tax configuration" >}}
+  {{< card link="../user-access-control" title="Security & Access" subtitle="See user permissions and audit trails" >}}
+  {{< card link="../tax-management" title="Tax Management" subtitle="Explore tax configuration" >}}
+  {{< card link="../" title="Back to Overview" subtitle="Choose a different module" >}}
 {{< /cards >}}
+
+---
+
+## Questions?
+
+If anything wasn't clear or you'd like a live demonstration:
+
+- **Demo Coordinator:** fatimah@bigledger.com
+- **Technical Support:** support@bigledger.com
+
