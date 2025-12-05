@@ -15,6 +15,7 @@ In this module, you'll explore the **General Ledger (GL)** and **Chart of Accoun
 ---
 
 ## Before You Begin: Key Terms Explained
+<img width="3462" height="2620" alt="image" src="https://github.com/user-attachments/assets/a5262283-4ee0-4e0d-b2ae-648a0572bbde" />
 
 | Term | What It Means |
 |------|---------------|
