@@ -21,7 +21,7 @@ To begin your evaluation, please request login credentials from:
 | demo+utm.finance@bigledger.com | Finance Officer | Full financial operations |
 | demo+utm.manager@bigledger.com | Finance Manager | Approval workflows and reporting |
 
-**Demo URL:** [https://demo-v1.bigledger.com](https://demo-v1.bigledger.com)
+**Demo URL:** [https://akaun.com](https://akaun.com)
 
 ### Understanding the Platform Architecture
 
