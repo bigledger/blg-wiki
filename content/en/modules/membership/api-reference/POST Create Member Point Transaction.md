@@ -2,7 +2,7 @@
 
 ## Endpoint
 
-**URL:** `https://api.akaun.com/core2/tnt/dm/membership-cards`  
+**URL:** `https://api.akaun.com/core2/tnt/dm/crm/membership-points-txn/txn-line/backoffice-ep`  
 **Method:** `POST`  
 **Headers:**
 - `Authorization: <JWT Token>`  
