@@ -9,6 +9,27 @@ tags:
 - financial-planning
 ---
 
+## Budgetary Applet Overview
+
+![Budgetary Applet Workflow](/images/budget-workflow.png)
+### Legend
+• **Budget Item** – What will be spent  
+• **Category / Category Group** – How spending is classified  
+• **Profit Center** – Who is responsible for spending  
+• **Votebook** – Budget container for a fiscal year  
+• **Register** – Period-based allocation
+
+### How to Read This Diagram
+This workflow illustrates the **end-to-end lifecycle of budgets** in the system:
+
+• **Setup & Configuration** – Define what, who, and how budgets are created  
+• **Budget Transactions** – Manage reallocations and adjustments  
+• **Utilization & Reporting** – Track spending through Gen Docs and reports
+
+> 💡 *Tip: If you are new to the Budgetary Applet, review this diagram before proceeding to individual modules.*
+
+---
+
 ## Module 1: Budget Item Management
 
 ### Purpose & Concept
