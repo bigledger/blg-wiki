@@ -180,6 +180,13 @@ menu:
       pageRef: /modules/accounting
       weight: 50
       
+    # E-Claim Module
+    - identifier: e-claim-module
+      name: E-Claim Module
+      parent: modules
+      pageRef: /modules/claim-module
+      weight: 55
+      
     # ERP Module
     - identifier: erp-module
       name: ERP Module

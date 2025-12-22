@@ -73,6 +73,13 @@ BigLedger is organized into functional modules, each containing a collection of 
 - Industry-specific accounting workflows
 - [Explore Accounting Module →](/modules/accounting/)
 
+#### Claim Module
+**Complete expense claim management**
+- 3 integrated claim processing applets
+- Employee submission to reimbursement
+- Batch processing and project-based tracking
+- [Explore Claim Module →](/modules/claim-module/)
+
 #### Digital CRM Module
 **Modern customer relationship management**
 - 3 AI-powered CRM applets
