@@ -886,6 +886,3 @@ The UCC Applet is more than just a messaging platform - it's a complete customer
   {{< card link="/demos-resources" title="Watch Demo" subtitle="See UCC in action" >}}
   {{< card link="mailto:sales@bigledger.com" title="Contact Sales" subtitle="Get personalized pricing" >}}
 {{< /cards >}}
-
-
-<!-- *Last updated: November 2024 | Version 3.0* -->
