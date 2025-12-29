@@ -56,13 +56,12 @@ To access the Doc Item Maintenance Applet, you need to log in with your credenti
 
 ### Item Listing
 
-Under items, create and edit the items, or click the item listing to see the item information.
+> [!NOTE]
+> Click the item listing to see the item information and to edit said items.
 
 {{< figure src="/images/doc_item_maintenance/item_listing.png" caption="Fig 1: Item Listing Page" >}}
 
 ### Create Items
-
-To create an item click on the plus button. It takes you to the Create tab.
 
 {{< figure src="/images/doc_item_maintenance/create_item_default.png" caption="Fig 2: Create Item - Default Tab" >}}
 
@@ -70,13 +69,10 @@ To create an item click on the plus button. It takes you to the Create tab.
 
 Defaults have fields such as item code, item name, item type, sub-item type, base UOM, Product manager, remarks, item description, and currency.
 
-- **Item Code** - Once Item Code is created it cannot be edited
+Some things to keep in mind for the fields:
+- **Item Code** - Unique identifier for the item, Once Item Code is created it cannot be edited
 - **Item Name** - Item Name can be edited at any time
-- **Base UOM** - Quantities of warehouse materials (quants) are counted using the base unit of measure (UoM). Quantities in alternative units of measure are always converted to the base unit of measure for calculation purposes. For example: cm, kg, ml
-- **Item Description** - Not compulsory
-- **Remarks** - Write your comments
-- **Currency** - Select the currency from the dropdown list
-- **Product Manager** - Select the Product Manager from the dropdown list
+- **Base UOM** - Quantities of warehouse materials (quants) are counted using the base unit of measure (UoM).
 - **Item Type** - Consists of many types as follows
 
 #### Types of Items
@@ -119,17 +115,14 @@ When a user selects any sub-item type, it will be reflected in the POS applet. T
 
 #### Additional Checkboxes
 
-Depending on your business workflow, you may also see the following checkboxes during item creation:
+{{< callout type="warning" >}}
+**Important**: Once the item has been created more information can be added in the EDIT ITEM section. Only basic information is required to be filled in the CREATE section and afterwards, users can continue editing items in order to add more information at any time. We exclude adding more information in the CREATE section because if there is a lot of information to be added the user might forget to click save. Adding as little information as possible in the CREATE section prevents and/or reduces data being lost.
+{{< /callout >}}
 
 - **Consignment Item** - Check this box if the item is a consignment item. This is important for items you hold but don't own (e.g., items provided by a supplier that you sell on their behalf).
 - **Required Production** - Check this box if the item requires production. This is relevant for manufacturing industries where the item needs to go through a production process before it can be sold.
 - **Alternate Item Code** - An optional field where you can enter an alternative code for the item. This is useful when items have multiple identification codes across different systems.
 
-{{< callout type="warning" >}}
-**Important**: Once the item has been created more information can be added in the EDIT ITEM section. Only basic information is required to be filled in the CREATE section and afterwards, users can continue editing items in order to add more information at any time. We exclude adding more information in the CREATE section because if there is a lot of information to be added the user might forget to click save. Adding as little information as possible in the CREATE section prevents and/or reduces data being lost.
-{{< /callout >}}
-
-Once all required fields are filled up, the user can press CREATE, so the item will be saved into the database and can proceed to be edited.
 
 {{< callout type="info" >}}
 **Note**: Items can be created manually or synced from EMP (if the user is currently using Wavelet EMP)
@@ -137,11 +130,11 @@ Once all required fields are filled up, the user can press CREATE, so the item w
 
 ### Edit Items
 
-Once the user creates an Item, it will appear in the listing. When the user wants to update the item or add more information they can click on the Item itself, a 2nd container will pop up once clicked containing the following tabs:
+Once the user creates an Item, it will appear in the listing. When the user wants to update the item or add more information they can click on the Item itself.
 
 {{< figure src="/images/doc_item_maintenance/edit_item_main_tab.png" caption="Fig 3: Edit Item - Main Tab" >}}
 
-- Main Tab
+<!-- - Main Tab
 - E-invoice Tab
 - Label Tab
 - Item Category Tab
@@ -162,7 +155,7 @@ Once the user creates an Item, it will appear in the listing. When the user want
 - Stock Card Tab
 - Attribute Set Tab
 - Pages Tab
-- Reviews Tab
+- Reviews Tab -->
 
 {{< callout type="info" >}}
 **Note**: The information provided can be used in transactional Applets. Additional tabs may appear if the user chooses Grouped or Bundle as Item type.
@@ -190,19 +183,16 @@ Once the user creates an Item, it will appear in the listing. When the user want
 This Tab consists of general Item information such as:
 
 - **Item Name** - can be updated at any time
-- **Item Code** - cannot be updated
-- **Item Type** - cannot be updated
+- **Item Code & Item Type** - both of these fields are set in the create item, cannot be updated
 - **Sub Item Type** - used when items are in a batch or have a serial number
 - **GL Code** - The general ledger is an accounting document that provides a general overview of an organization's financial transactions. An account, or general ledger (GL) code, is a number used to record business transactions in the general ledger
-- **Base UOM** - an amount in which the stock of a material is managed for example ml, kg, min
 - **Abbreviation (Prefix)** - is used in the voucher applet, in order to make it easier to view a specific group of items
 - **EAN Code** - The International Article Number is a standard describing a barcode symbology and numbering system used in global trade to identify a specific retail product type, in a specific packaging configuration, from a specific manufacturer.
-- **Currency** - a system of money in general use in a particular country. For example, USD, MYR
-- **Status** - to specify whether an item is active, inactive, or obsolete
-- **Remarks** - Write your comments
-- **Summary** - shows who created the item or who updated the item, also shows the date modified and created
+- **Additional Checkboxes**: Here the user can also find the additional checkbox mentioned at the create item section
 
 #### E-invoice Tab
+
+{{< figure src="/images/doc_item_maintenance/e-invoice_tab.png" caption="Fig 2c: Edit Item - E-invoice Tab" >}}
 
 This tab is for MSIC, Tax type, and UOM. Here users can do e-invoice classification.
 
@@ -214,7 +204,7 @@ This can also be done under Classification in the applet menu.
 
 The Label tab allows you to assign category labels to items. It contains a search bar and a grid displaying:
 - **Category Code** - Unique identifier for the category label
-- **Category Name** - Name of the category label
+- **Category Name**
 - **Category Group** - The group the category belongs to
 - **Level Value** - Hierarchical level of the category
 
@@ -224,22 +214,15 @@ The Label tab allows you to assign category labels to items. It contains a searc
 
 The item category tab is used to link a category to the item. Currently, have 0 - 20 categories but can add more for users upon request. Categories can be created in the "Category" module.
 
-In order to add the category click "+". Once clicked the 3rd container with category listings will be shown. Users can select any category that applies to the Item.
-
 #### Tax Tab
 
 {{< figure src="/images/doc_item_maintenance/edit_item_tax.png" caption="Fig 2f: Edit Item - Tax Tab" >}}
 
-If tax is applicable the user can tick the checkbox. Once ticked the tax information will appear where the user can set the tax for:
-
-- Tax Country
-- Output Tax
-- Input Tax
-- Withholding tax
+If tax is applicable the user can tick the checkbox. Once ticked the tax information will appear where the user can set the tax for the item.
 
 #### Dimension Details Tab
 
-To fill in Product dimensions. Here user set the Height, Length, Width, Weight of the item.
+To fill in Product dimensions. Here the user can set the Height, Length, Width, Weight of the item.
 
 #### Multi UOM Tab
 
@@ -253,38 +236,30 @@ This module allows stock items with multiple units of measurement, UOM auto conv
 
 The above UOM specifics the conversion of one type of UOM to another UOM, with a specific ratio.
 
-To add Multi UOM click "+". Once clicked it will open a 3rd container for the user to add UOM details
-
-- **UOM** - Unit of Measure. UOMs are used to quantify the inventory items and enable items to be tracked easily.
+- **UOM**
 - **Ratio** - used to specify how many items. For example:
   - if base UOM is = "Bottle", then ratio = 20 bottles
   - The number 20 specifies the number of the items
-- **Status** - to specify whether the item is active or inactive
+- **Status**
 - **Base UOM** - unable to edit. Users may edit it in the Main Details Tab
 - **Sort-Code** - The sort code helps identify the hierarchy of the UOM from the smallest to largest starting from 001. For example, pill would be 001 followed by the carton which would be 002 and finally box which would be 003.
 
+{{< callout type="tip" >}}
 For example:
 - a. pill = 001
 - b. carton = 002
 - c. box = 003
+{{< /callout >}}
 
 #### Branch Linking
 
 Specify item by branch and company by linking it to them here. This tab is used to link specific branches. This function will be used in all transactional applets. for example, if a user links branches A and B then only these respective branches will be able to see the selected item in the POS applet. Branches can be created in the Organization applet.
 
-To add a branch click "+". Once clicked it will open a 3rd container for users to view listings of all branches where the user can select the preferred branches:
-
 #### Company Linking
 
 {{< figure src="/images/doc_item_maintenance/edit_item_company.png" caption="Fig 2h: Edit Item - Company Linking Tab" >}}
 
-Used to link companies. Specify item by branch and company by linking it to them here. Companies can be created in the Organization applet. When linking a company the item will be visible for all branches that are under the chosen Company.
-
-The Company Linking tab displays a grid with:
-- **Company Code** - Unique identifier for the company
-- **Company Name** - Name of the company
-
-In Order to add a company click "+". Once clicked it will open a 3rd container for users to view listings of all companies. Here the user can select the preferred company.
+Specify item by branch and company by linking it to them here. Companies can be created in the Organization applet. When linking a company the item will be visible for all branches that are under the chosen Company.
 
 {{< callout type="warning" >}}
 **Important**: if the user links company A and it has been linked to 5 BRANCHES but in Branch linking TAB the user only chooses 2 branches, then the item will be visible to ALL BRANCHES THAT IS LINKED UNDER THE COMPANY. If the user wants to link only specific branches then it needs to be chosen in the BRANCH LINKING TAB ONLY and COMPANY LINKING should remain empty.
@@ -293,16 +268,16 @@ In Order to add a company click "+". Once clicked it will open a 3rd container f
 #### PNS Settlement Method Tab
 
 {{< callout type="info" >}}
-**Advanced Feature**: This is an advanced module that may not be covered in basic walkthrough videos. It is used for specific business workflows involving payment providers and membership points.
+**Advanced Feature**: This is an advanced module that may not be covered in basic walkthrough videos, and is hidden by default - to show this tab go to the Settings > Application Settings > Item Edit Tab Hidden > disable the HIDE_PNS_SETTLEMENT_METHOD. It is used for specific business workflows involving payment providers and membership points.
 {{< /callout >}}
 
 The PNS Settlement Method module is used to link the Product to the PNS (Products and Services) Settlement Method.
 
+{{< figure src="/images/doc_item_maintenance/edit_item_pns_settlement_method.png" caption="Fig 2h: Edit Item - PNS Settlement Method Tab" >}}
+
 There is a dropdown list, where the user selects the Settlement Type:
 - Payment Provider
 - Membership Point Currency
-
-In order to add a Settlement Method click "+". Once clicked it will open a 3rd container for users to choose settlement type. Here the user can select the preferred type.
 
 #### Pricing Scheme
 
@@ -310,53 +285,45 @@ In order to add a Settlement Method click "+". Once clicked it will open a 3rd c
 
 This tab is used to specify and set the prices of items. The Pricing Scheme template is added in the PRICING SCHEME module, in this tab users can add a unit price for existing pricing scheme templates. Once added this information can be used in transactional applets.
 
-The Pricing Scheme tab displays:
-- **UOM Selection** - Dropdown to select the unit of measure
-- **Pricing Scheme Code** - Identifier for the pricing scheme
-- **Pricing Scheme Name** - Name of the pricing scheme
-- **Sales Unit Price** - The selling price for this scheme
-- **Purchase Unit Price** - The purchasing price for this scheme
-
-In Order to edit the price, click the item and it will open 3rd container for users to edit the Unit Price.
-
 #### Manage Image Tab
 
 {{< figure src="/images/doc_item_maintenance/edit_item_manage_image.png" caption="Fig 2j: Edit Item - Manage Image Tab" >}}
 
-This tab is used to add and categorize images based on their type for example main image, promotional image, or additional image. Users may update the period of the images they are going to be using as a reference, it has no functionality. Images may also be used in the Ecomsync applet, CP Commerce applet, and transactional applets such as POS and GRN. However, the date is only for user reference and is not meant to perform any actions.
+{{< callout type="info" >}}
+Users may update the period of the images they are going to be using as a reference, it has no functionality.
+{{< /callout >}}
+
+Images may also be used in the Ecomsync applet, CP Commerce applet, and transactional applets such as POS and GRN. However, the date is only for user reference and is not meant to perform any actions.
 
 Image type is based on ecommerce requirements. There are three image types such as:
 
-**Main Image** - the image that is supposed to be displayed in the marketplace. Setting the Image type is only for the user's reference and a library. When syncing the item, the user has to manually select the image they wish to sync to the marketplace under attribute details.
+**Main Image** - the image that is supposed to be displayed in the marketplace. Setting the Image type is only for the user's reference and a library.
 
-**Promotional Image** - when there are certain promotions, some users might need to use special images related to the promotion, it will replace the main image. Setting the Image type is only for the user's reference and the library. When syncing the item, the user has to manually select the image they wish to sync to the marketplace under attribute details.
+**Promotional Image** - when there are certain promotions, some users might need to use special images related to the promotion, it will replace the main image.
 
-**Additional images** - images that end users can view when they view full item information.
+**Additional images**
 
+{{< callout type="tip" >}}
 As an illustration:
 - Item = Samsung Phone
 - Main Image = the image of a Samsung phone
 - Promotional Image = a themed image (based on the occasion) of a Samsung phone eg. Christmas sale
 - Additional images = images of Samsung phone in different angles, the box, or additional items inside the box
+{{< /callout >}}
 
 #### Entity Pricing
 
 {{< figure src="/images/doc_item_maintenance/edit_item_entity_pricing.png" caption="Fig 2k: Edit Item - Entity Pricing Tab" >}}
 
-Entity Pricing module is used to set the price for the Product depending on the Entity. If u have a specific price for a specific item that has multiple suppliers, u can set it here. For instance: A single product's price is individual for different Entities.
-
-The Entity Pricing tab displays a grid with:
-- **Entity Code** - Unique identifier for the entity
-- **Entity Name** - Name of the entity
-- **Status** - Active or Inactive
-- **UOM** - Unit of measure for pricing
-- **Currency** - Currency used for pricing
+Entity Pricing module is used to set the price for the Product depending on the Entity. If you have a specific price for a specific item that has multiple suppliers, you can set it here. For instance: A single product's price is individual for different Entities.
 
 {{< callout type="tip" >}}
 **When to use Entity Pricing**: This feature is particularly useful when an item has specific pricing for specific suppliers, allowing you to map different costs to different entities. For example, if you purchase the same product from multiple suppliers at different prices, you can configure entity-specific pricing here.
 {{< /callout >}}
 
 To add an Entity Price click "+". It will open 3rd container for users to create the Price. Then click "Entity Code" to choose the entity type.
+
+{{< figure src="/images/doc_item_maintenance/entity_pricing_select_entity.png" caption="Fig 2l: Edit Item - Entity Pricing Tab - Select Entity" >}}
 
 Select the Entity type from the advanced search. There are three types of Entity to select:
 - Customer
@@ -391,45 +358,22 @@ Marketplace tab includes three more tabs to do all the configurations:
 
 **Checking** - The checking Tab is for the reports shown from the Ecomsync applet.
 
-#### Add Item Images to Marketplace
+<!-- #### Add Item Images to Marketplace -->
 
-#### Stock Availability Tab
+#### Other Tabs:
 
-This tab is to link your Marketplace stock balance. Stock availability tabs allow users to check whether the products are available in-store.
-
-#### Attribute Set Tab
-
-Attribute sets can be defined as a list of attributes where all the characteristics of a product are demonstrated.
-
-#### Pages Tab
-
-When the user clickss on the plus button, it will create a Post with a Draft status and an untitled post.
-
-Users should click the created post to edit the status and the name of the post.
-
-#### Reviews Tab
-
-The review tab allows the User or an Admin to configure reviews, settings, and votes for an item
-
+Here are some other tabs that are in the edit item tab with a short introduction of what the user can do within:
+- **Stock Availability Tab** - This tab is to link your Marketplace stock balance. Stock availability tabs allow users to check whether the products are available in-store.
+- **Bundle Config** - Applicable for the Bundle Item type
+- **Child Item** - Applicable for the Grouped Item type.
+- **Voucher Details** - This is Applicable for the voucher item type only.
+- **Stock Card** - This is for Stock balance for the Basic Item type.
+- **Attribute Set Tab** - Attribute sets can be defined as a list of attributes where all the characteristics of a product are demonstrated.
+- **Pages Tab** - When the user clickss on the plus button, it will create a Post with a Draft status and an untitled post. Users should click the created post to edit the status and the name of the post.
+- **Reviews Tab** - The review tab allows the User or an Admin to configure reviews, settings, and votes for an item
 {{< callout type="info" >}}
 **Note**: Attributes, Pages, and Reviews tab is mostly used in E-Commerce Modules.
 {{< /callout >}}
-
-#### Bundle Config
-
-Applicable for the Bundle Item type
-
-#### Child Item
-
-Applicable for the Grouped Item type.
-
-#### Voucher Details
-
-This is Applicable for the voucher item type only.
-
-#### Stock Card
-
-This is for Stock balance for the Basic Item type.
 
 {{< callout type="warning" >}}
 **Note**: The Stock Card tab is **only available for Basic Item type**. If you have selected a different item type (such as Service, Voucher, or Bundle), this tab will not appear in the item details.
@@ -442,7 +386,7 @@ Under category group, user can create and edit the categories and specify the ca
 {{< figure src="/images/doc_item_maintenance/category_group_listing.png" caption="Fig 4: Category Group Listing" >}}
 
 {{< callout type="info" >}}
-**Note**: Category groups and categories of the item can be handled from both doc item maintenance and inventory item maintenance applet. Every category is linked to the Category Group. Category Group is used for organizing categories.
+**Note**: Category groups and categories of the item can be handled from both doc item maintenance and inventory item maintenance applet. Every category is linked to the Category Group.
 {{< /callout >}}
 This feature allows users to organize items hierarchically and manage how they are classified. Below are the details regarding the Category Group:
 
@@ -466,17 +410,15 @@ This feature allows users to organize items hierarchically and manage how they a
 
 ### Create Category Group
 
-In Order to create a Category group, click the "+" button. It will open 3rd container for users to create category groups.
-
 {{< figure src="/images/doc_item_maintenance/category_group_create.png" caption="Fig 4b: Create Category Group" >}}
 
-These are the fields in the main tab to fill in:
-- **Category Group Code** - Unique identifier for the category group
-- **Category Group Name** - Descriptive name for the category group
-- **Type** - The type of category group (dropdown selection)
-- **Param Code** - Parameter code for additional configuration
-- **Param Name** - Parameter name for additional configuration
-- **Status** - Whether the category group is Active or Inactive
+These are the fields in the main tab to fill in (all fields are mandatory to be filled):
+- **Category Group Code**
+- **Category Group Name**
+- **Type** - The type of category group (dropdown selection either CP_COM or DOC_ITEM)
+- **Param Code**
+- **Param Name**
+- **Status**
 
 ### Edit Category Group
 
@@ -492,21 +434,14 @@ This tab shows the information on the category that was filled up when creating 
 
 #### Categories Tab
 
-Categories Tab where the listing of linked categories is shown. Users can manage the categories in this tab.
+Lists all categories linked to this group. From here you can:
+- View linked categories in a nested grid
+- Add new categories to the group
+- Edit or remove existing category links
 
-### Create
+{{< figure src="/images/doc_item_maintenance/item_category_edit.png" caption="Fig 4c: Edit Category Group" >}}
 
-To add the category to the group users click '+' and create the new item.
-
-### Edit / Delete
-
-Users edit or delete the categories linked to the group in this Item Category Edit tab.
-
-#### Main
-
-#### Manage Image
-
-Category Images can be uploaded or edited in the Manage Image tab.
+Category images can be managed in the **Manage Image** sub-tab when editing individual categories.
 
 ## Categories
 
@@ -514,25 +449,22 @@ The category module is used to create categories, as well as nest categories tha
 
 {{< figure src="/images/doc_item_maintenance/category_listing.png" caption="Fig 5: Category Listing" >}}
 
-When user land in Category Listing, they will see the AG-Grid listing of all categories that have been created
-
-The screenshot above shows the listing of all categories. Users may customize the columns by removing them or relocating them. Users may search categories through fuzzy search in the listing itself or may search through a general search bar. In addition, they may search by status and modified date in advanced search as shown in the picture below:
-
-Pagination Row can be customized based on user's preference as shown in screenshot below:
-
 ### Create Category
 
-When user wants to create a new category for an item they can go to "Category Module". then the user must click on "+" It will redirect to the 2nd container where the user must fill up the required fields. Category will make it easier for users to search specific groups of items either in Doc Item Maintenance or in transactional applets.
+Category will make it easier for users to search specific groups of items either in Doc Item Maintenance or in transactional applets.
 
 {{< figure src="/images/doc_item_maintenance/category_create.png" caption="Fig 5b: Create Category" >}}
 
 The Create Category panel includes the following fields:
 - **Category Group** - Select the parent category group from a dropdown list
-- **Category Code** - Unique identifier for the category (mandatory)
-- **Category Name** - Descriptive name for the category (mandatory)
-- **Description** - Additional details about the category (optional)
+- **Category Code** - Mandatory
+- **Category Name** - Mandatory
+- **Description** - Optional
 - **Search Filter** - Link a search filter for e-commerce filtering (optional)
-- **Parent Category** - Select a parent category for nesting
+- **Parent Category** - it is when a single category can be associated with multiple categories. Can be adjusted. 
+Example of nested category:
+  - Main category = Smartphones
+  - Nested Category = iPhone
 
 {{< callout type="tip" >}}
 **Nesting Categories**: Categories can be nested hierarchically. For example, a "Smartphones" category can have "iPhone" and "Android" as nested child categories.
@@ -544,49 +476,28 @@ When a user wants to edit existing categories they may click on any of the speci
 
 {{< figure src="/images/doc_item_maintenance/category_edit.png" caption="Fig 5c: Edit Category - Main Tab" >}}
 
-There are two tabs when editing Category which are:
+The Edit panel contains multiple tabs:
 
 #### Main Tab
 
-This tab shows basic information on the category that was filled up when creating the category.
-
-These are the fields in the main tab:
-- **Category Name** - can be adjusted, compulsory to fill up
-- **Category Code** - can be adjusted, compulsory to fill up
-- **Description** - can be adjusted, not compulsory
-- **Status** - to specify whether the category is Active or Inactive
-- **Nesting the category** - it is when a single category can be associated with multiple categories. Can be adjusted. Example of nested category:
-  - Main category = Smartphones
-  - Nested Category = iPhone
-- **Summary** - cannot be adjusted, as it is used as a reference for the user to show details such as:
-  - Created by who
-  - Modified by who
-  - Creation date
-  - Modified Date
+- **Category Name** - Editable (required)
+- **Category Code** - Editable (required)
+- **Description** - Editable (optional)
+- **Status**
+- **Parent Category**
 
 #### Manage Image Tab
 
-CP Commerce displays product categories for easy referral for customers. Users can use the Manage Image Tab in the Doc Item Maintenance applet to upload relevant category images. Upon clicking on categories, the user will be shown all relevant products under said categories.
-
 {{< figure src="/images/doc_item_maintenance/category_manage_image.png" caption="Fig 5d: Category - Manage Image Tab" >}}
 
-When users want to add an image, they click on the "+" button, once clicked the second container will appear, where the user can select the image and specify the image name.
+Upload category images for display in CP Commerce. These images appear when customers browse product categories on the storefront.
 
-These are the fields in the main tab:
+#### Other Tabs
+Here are the other tabs in the Category Edit panel with a short introduction of their use:
 
-#### Manage Item Tab
+- **Manage Item Tab** - Users can use the Manage Item Tab in the Doc Item Maintenance applet to upload relevant category items. Upon clicking on categories, the user will be shown all relevant products under said categories.
 
-Users can use the Manage Item Tab in the Doc Item Maintenance applet to upload relevant category items. Upon clicking on categories, the user will be shown all relevant products under said categories.
-
-When users want to add an item, they click on the "+" button, once clicked the second container will appear, where the user can select the item and add it.
-
-#### Login Tab
-
-Please click the "Add" button to create a new login.
-
-Enter a valid email address and verify it. Then set the status of the email address to be active.
-
-Users can update their mail status or delete it.
+- **Login Tab** - Enter a valid email address and verify it. Then set the status of the email address to be active. Users can update their mail status or delete it.
 
 ## Classifications
 
@@ -611,16 +522,14 @@ Once a user clicks on the pricing scheme module it will land on the pricing sche
 {{< figure src="/images/doc_item_maintenance/pricing_scheme_listing.png" caption="Fig 7: Pricing Scheme Listing" >}}
 
 {{< callout type="warning" >}}
-**Important Distinction**: You define the scheme name here (e.g., "Wholesale Price"), but you define the actual dollar amount for that scheme inside the individual Items menu under the Pricing Scheme tab.
+**Important Distinction**: Define the scheme name here (e.g., "Wholesale Price"), but assign the actual prices inside individual items under their Pricing Scheme tab.
 {{< /callout >}}
 
-For example, in the POS applet, users can go to the settings and choose which Pricing Scheme they want to use for a minimum price, maximum price or the retail price as shown in the screenshot below.
-
-Users also may search pricing schemes in the listing itself using fuzzy search in the AG-Grid listing. Pricing schemes can be searched in general search or advanced search:
+{{< callout type="tip" >}}
+**POS Integration**: In the POS applet settings, you can select which pricing scheme to use for minimum price, maximum price, or retail price calculations.
+{{< /callout >}}
 
 ### Pricing Scheme Create
-
-To create a Pricing Scheme, the user should click on the "+" button, once clicked it will open a second container where the user can fill up general details on the pricing scheme.
 
 {{< figure src="/images/doc_item_maintenance/pricing_scheme_create.png" caption="Fig 7b: Create Pricing Scheme" >}}
 
@@ -635,20 +544,10 @@ If the user wishes to edit the Pricing Scheme they can click on a specific prici
 
 {{< figure src="/images/doc_item_maintenance/pricing_scheme_edit.png" caption="Fig 7c: Edit Pricing Scheme" >}}
 
-There are three tabs included In the Pricing Scheme Edit
+The Edit panel contains these tabs:
 
-#### Main Tab
-
-- **Pricing Code** - cannot be edited
-- **Pricing name** - The user able to edit the name
-- **Description** - The user can edit the description. the description is not compulsory
-- **Status** - The user can specify whether the pricing scheme is active or inactive
-
-In addition, users may delete the pricing scheme if they wish to. Users may click on the "Remove" button at the bottom.
-
-#### Copy Tab
-
-The user selects one item from the Pricing list in the dropdown list and makes some amendments to the pricing.
+- **Main Tab** - allows the user to edit and delete the pricing scheme details with the exception of Pricing Scheme Code.
+- **Copy Tab** - Duplicate pricing from an existing scheme. Select a source scheme from the dropdown and apply it to items, with optional amendments.
 
 ## Import Item
 
@@ -656,36 +555,40 @@ Import the item to the applet by clicking on the plus and selecting Upload. Choo
 
 {{< figure src="/images/doc_item_maintenance/import_item.png" caption="Fig 8: Import Item Page" >}}
 
-### Import Item Templates
+### Import Templates
 
-There are several upload templates to choose from under the import item menu, which include:
-- Doc Item (for 1 invoice creation for an item)
+Available templates for different import scenarios:
+<!-- - Doc Item (for 1 invoice creation for an item)
 - Doc Item Category Link (if you want to import for category item)
 - Doc Item Relationship (for group/bundle items)
 - Doc Item Pricing (for pricing upload)
-- Doc Item With GL Code (for item with account code type)
-- Doc Item Label Link
-- Doc Item Company Link
-- Doc Item Branch Link
-- Doc Item Category
+- Doc Item With GL Code (for item with account code type) -->
+
+| Template | Use Case |
+|----------|----------|
+| **Doc Item** | Standard item creation |
+| **Doc Item Category Link** | Link items to categories |
+| **Doc Item Relationship** | Group/bundle item relationships |
+| **Doc Item Pricing** | Bulk pricing data upload |
+| **Doc Item With GL Code** | Items with Account Code type |
+| **Doc Item Label Link** | Item label associations |
+| **Doc Item Company Link** | Company-level item linking |
+| **Doc Item Branch Link** | Branch-level item linking |
+| **Doc Item Category** | Category data import |
 
 {{< callout type="tip" >}}
 **Template Usage Tip**: The "Doc Item Pricing" template is often used in conjunction with items that have the "Account Code" item type. If you are importing pricing data for Account Code items, use this template for bulk uploads.
 {{< /callout >}}
 
-Import Item Module is used to mass upload the products using CSV files. This function is especially useful for the user if they have a wide range of products. It could tremendously save your time and be accurate.
+### Import Process
 
-To upload products in bulk, click "+", and it will direct you File Import page. First, you need to choose the file type and download the upload file template by clicking the chosen file type.
+1. Select the file type/template
+2. Download the template CSV
+3. Fill in your product details in the CSV
+4. Save as .csv format
+5. Upload via the Upload File button or drag-and-drop
 
-Open the CSV file, insert your product details into the file accordingly.
-
-Once done, save the file in .csv format.
-
-Upload the file by just clicking the Upload File button or by dragging and dropping a file in the box.
-
-The user will see the uploaded file at the bottom of the page.
-
-Users can delete the uploaded file in the File Import Edit page
+Uploaded files appear in the listing below and can be managed or deleted from the File Import Edit page.
 
 ---
 
@@ -717,11 +620,18 @@ The information in Doc Item Maintenance applet, is used by which applets:
 If the user wants to export the item, several templates are available to choose from, which include:
 
 {{< figure src="/images/doc_item_maintenance/export_item.png" caption="Fig 9: Export Item Page" >}}
-- Doc Item Pricing
-- Doc Item With GL Code
-- Doc Item Company Link
-- Doc Item Branch Link
-- Doc Item Label Link
+
+### Export Templates
+
+| Template | Data Exported |
+|----------|---------------|
+| **Doc Item Pricing** | Item pricing across schemes |
+| **Doc Item With GL Code** | Items with GL/Account codes |
+| **Doc Item Company Link** | Company linking data |
+| **Doc Item Branch Link** | Branch linking data |
+| **Doc Item Label Link** | Label associations |
+
+Select a template, configure the export options, and download the resulting file.
 
 ---
 
@@ -756,17 +666,9 @@ To edit or remove Scheduler, select the specific scheduler you want and it will 
 
 Search Filters allow you to create customizable filter configurations that can be used in e-commerce platforms like CP-Commerce. These filters help customers narrow down product searches based on specific attributes or categories.
 
-{{< figure src="/images/doc_item_maintenance/search_filter_listing.png" caption="Fig 11: Search Filter Listing" >}}
-
 ### Search Filter Listing
 
-The Search Filter listing page displays all existing search filters in a data grid with the following columns:
-
-- **Code** - Unique identifier for the search filter
-- **Name** - Descriptive name of the search filter
-- **Status** - Whether the filter is ACTIVE or INACTIVE
-- **Created Date** - When the filter was created
-- **Updated Date** - When the filter was last modified
+{{< figure src="/images/doc_item_maintenance/search_filter_listing.png" caption="Fig 11: Search Filter Listing" >}}
 
 The toolbar provides options to export the list to PDF or XLS formats, and includes a search bar for quick filtering.
 
@@ -781,21 +683,14 @@ To create a new Search Filter, click the blue circular **+** button. A panel wil
 The Main tab contains the basic information for the search filter:
 
 - **Search Filter Code** - A unique identifier for the filter (required)
-- **Search Filter Name** - A descriptive name for the filter (required)
+- **Search Filter Name** - Required
 - **Status** - Set the filter as ACTIVE or INACTIVE
-
-Click the **CREATE** button at the top right to save the new search filter.
 
 ### Edit Search Filter
 
-Click on any existing search filter in the listing to open the Edit panel. This panel displays the same fields as the Create panel, plus audit information:
+{{< figure src="/images/doc_item_maintenance/edit_search_filter.png" caption="Fig 12: Edit Search Filter" >}}
 
-- **Created By** - User who created the filter
-- **Created Date** - Date and time of creation
-- **Modified By** - User who last modified the filter
-- **Modified Date** - Date and time of last modification
-
-You can update the filter details and click **UPDATE** to save changes, or use the **Delete** button to remove the filter.
+Click on any existing search filter in the listing to open the Edit panel. This panel displays the same fields as the Create panel. Updates can be saved, or the filter can be deleted from this panel.
 
 ### Sections Tab
 
@@ -805,12 +700,12 @@ Each search filter can have multiple sections that define the filter options dis
 
 The Sections tab contains a nested grid with the following columns:
 
-- **Section Name** - Display name of the section
-- **Section Code** - Unique identifier for the section
+- **Section Name**
+- **Section Code** - Unique identifier
 - **Type** - The type of filter section (e.g., checkbox, dropdown)
 - **Sort Code** - Used to order sections in the display
 
-To add a new section, click the **+** button within the Sections tab. Each section can be linked to item attributes, allowing customers to filter products based on those attributes.
+Each section can be linked to item attributes, allowing customers to filter products based on those attributes.
 
 {{< callout type="tip" >}}
 **Usage in CP-Commerce**: When a search filter is configured and linked to a product category in CP-Commerce, customers will see the filter sections on the storefront, allowing them to narrow down product searches by selecting specific attribute values.
@@ -820,9 +715,9 @@ To add a new section, click the **+** button within the Sections tab. Each secti
 
 ## Application Settings
 
-The Application Settings menu is used for personalization and configuration of the Doc Item Maintenance Applet.
+The Application Settings menu provides personalization and configuration options for the Doc Item Maintenance Applet.
 
-{{< figure src="/images/doc_item_maintenance/applet_settings.png" caption="Fig 10: Application Settings" >}}
+{{< figure src="/images/doc_item_maintenance/applet_settings.png" caption="Fig 14: Application Settings" >}}
 
 ### Hiding Tabs
 
