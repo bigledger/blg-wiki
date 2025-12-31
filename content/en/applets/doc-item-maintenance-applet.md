@@ -63,7 +63,8 @@ To access the Doc Item Maintenance Applet, you need to log in with your credenti
 
 ### Create Items
 
-{{< figure src="/images/doc_item_maintenance/create_item_default.png" caption="Fig 2: Create Item - Default Tab" >}}
+{{< figure src="/images/doc_item_maintenance/create_item.gif" caption="Fig 2: Create Item - Default Tab" >}}
+<!-- {{< figure src="/images/doc_item_maintenance/create_item_default.png" caption="Fig 2: Create Item - Default Tab" >}} -->
 
 #### Default Fields
 
@@ -77,39 +78,40 @@ Some things to keep in mind for the fields:
 
 #### Types of Items
 
-Under the type of item, the user can select from the following sub-item types. Each item type will have different information:
+{{< figure src="/images/doc_item_maintenance/item_types.gif" caption="Fig 2: Types of Items" >}}
 
-{{< cards >}}
-  {{< card title="Basic Item" subtitle="This is the default type that is relevant to most items" >}}
-  {{< card title="Voucher" subtitle="An item that is part of a voucher. The voucher will have a 'Link Voucher' option as a subtype" >}}
-  {{< card title="Grouped Item" subtitle="An item that is part of a group of related products that share common attributes like features, use, production processes, etc." >}}
-  {{< card title="Bundle" subtitle="A package of two or more stand-alone products sold together for a single price. Stock is deducted from child items, not parent" >}}
-  {{< card title="Coupon" subtitle="Used to record the Stock In and Stock Out of vouchers tied to this item. Reflected in the Voucher Management Applet" >}}
-  {{< card title="Service" subtitle="A basic item without inventory tracking" >}}
-  {{< card title="Warranty" subtitle="A written guarantee issued to the purchaser, promising to repair or replace if necessary within a specified period" >}}
-  {{< card title="GL Code" subtitle="General ledger code used to record business transactions in the general ledger" >}}
-{{< /cards >}}
+Under the type of item, the user can select from the following item types. Each item type will have different information:
 
-{{< cards >}}
-  {{< card title="Doc Header Adjustment" subtitle="Used to group discounts in the POS applet" >}}
-  {{< card title="Membership" subtitle="Used to define member attributes, dues payment schedule, and expiration settings" >}}
-  {{< card title="Made to Order (MTO)" subtitle="Manufacturing process where products are assembled according to customer requirements" >}}
-  {{< card title="Account Code" subtitle="Accounting code for financial tracking" >}}
-  {{< card title="Digital Goods" subtitle="Non-physical products delivered electronically" >}}
-  {{< card title="Fixed Asset Register" subtitle="Items tracked as company assets" >}}
-  {{< card title="Sales Contract" subtitle="Contract-based sales items" >}}
-  {{< card title="Delivery Charger" subtitle="Shipping and delivery cost items" >}}
-{{< /cards >}}
+| Item Type | Description |
+|-----------|-------------|
+| **Basic Item** | This is the default type that is relevant to most items |
+| **Voucher** | An item that is part of a voucher. The voucher will have a 'Link Voucher' option as a subtype |
+| **Grouped Item** | An item that is part of a group of related products that share common attributes like features, use, production processes, etc. |
+| **Bundle** | A package of two or more stand-alone products sold together for a single price. Stock is deducted from child items, not parent |
+| **Coupon** | Used to record the Stock In and Stock Out of vouchers tied to this item. Reflected in the Voucher Management Applet |
+| **Service** | A basic item without inventory tracking |
+| **Warranty** | A written guarantee issued to the purchaser, promising to repair or replace if necessary within a specified period |
+| **GL Code** | General ledger code used to record business transactions in the general ledger |
+| **Doc Header Adjustment** | Used to group discounts in the POS applet |
+| **Membership** | Used to define member attributes, dues payment schedule, and expiration settings |
+| **Made to Order (MTO)** | Manufacturing process where products are assembled according to customer requirements |
+| **Account Code** | Accounting code for financial tracking |
+| **Digital Goods** | Non-physical products delivered electronically |
+| **Fixed Asset Register** | Items tracked as company assets |
+| **Sales Contract** | Contract-based sales items |
+| **Delivery Charger** | Shipping and delivery cost items |
 
 #### Sub Item Types
 
 There are five sub-item types available:
 
-- **Basic Quantity** - Standard quantity tracking
-- **Batch Number** - Container Measure is set to 1 by default, Container Quantity can be changed by user
-- **Serial Number** - Container Measure and Container Quantity are both set to 1 by default
-- **Bin Number** - Both Container Measure and Container Quantity can be changed by user
-- **Digital Goods** - For non-physical products
+| Sub Item Type | Description |
+|---------------|-------------|
+| **Basic Quantity** | Standard quantity tracking |
+| **Batch Number** | Container Measure is set to 1 by default, Container Quantity can be changed by user |
+| **Serial Number** | Container Measure and Container Quantity are both set to 1 by default |
+| **Bin Number** | Both Container Measure and Container Quantity can be changed by user |
+| **Digital Goods** | For non-physical products |
 
 When a user selects any sub-item type, it will be reflected in the POS applet. The Base Quantity is calculated as the sum of Container Measure and Container Quantity.
 
@@ -118,6 +120,8 @@ When a user selects any sub-item type, it will be reflected in the POS applet. T
 {{< callout type="warning" >}}
 **Important**: Once the item has been created more information can be added in the EDIT ITEM section. Only basic information is required to be filled in the CREATE section and afterwards, users can continue editing items in order to add more information at any time. We exclude adding more information in the CREATE section because if there is a lot of information to be added the user might forget to click save. Adding as little information as possible in the CREATE section prevents and/or reduces data being lost.
 {{< /callout >}}
+
+{{< figure src="/images/doc_item_maintenance/create_item_workflow.gif" caption="Fig 2: Create Item Workflow" >}}
 
 - **Consignment Item** - Check this box if the item is a consignment item. This is important for items you hold but don't own (e.g., items provided by a supplier that you sell on their behalf).
 - **Required Production** - Check this box if the item requires production. This is relevant for manufacturing industries where the item needs to go through a production process before it can be sold.
@@ -132,7 +136,8 @@ When a user selects any sub-item type, it will be reflected in the POS applet. T
 
 Once the user creates an Item, it will appear in the listing. When the user wants to update the item or add more information they can click on the Item itself.
 
-{{< figure src="/images/doc_item_maintenance/edit_item_main_tab.png" caption="Fig 3: Edit Item - Main Tab" >}}
+{{< figure src="/images/doc_item_maintenance/item_edit.gif" caption="Fig 3: Edit Item" >}}
+<!-- {{< figure src="/images/doc_item_maintenance/edit_item_main_tab.png" caption="Fig 3: Edit Item - Main Tab" >}} -->
 
 <!-- - Main Tab
 - E-invoice Tab
@@ -198,16 +203,6 @@ This tab is for MSIC, Tax type, and UOM. Here users can do e-invoice classificat
 
 This can also be done under Classification in the applet menu.
 
-#### Label Tab
-
-{{< figure src="/images/doc_item_maintenance/edit_item_label.png" caption="Fig 2d: Edit Item - Label Tab" >}}
-
-The Label tab allows you to assign category labels to items. It contains a search bar and a grid displaying:
-- **Category Code** - Unique identifier for the category label
-- **Category Name**
-- **Category Group** - The group the category belongs to
-- **Level Value** - Hierarchical level of the category
-
 #### Item Category
 
 {{< figure src="/images/doc_item_maintenance/edit_item_category.png" caption="Fig 2e: Edit Item - Item Category Tab" >}}
@@ -219,10 +214,6 @@ The item category tab is used to link a category to the item. Currently, have 0 
 {{< figure src="/images/doc_item_maintenance/edit_item_tax.png" caption="Fig 2f: Edit Item - Tax Tab" >}}
 
 If tax is applicable the user can tick the checkbox. Once ticked the tax information will appear where the user can set the tax for the item.
-
-#### Dimension Details Tab
-
-To fill in Product dimensions. Here the user can set the Height, Length, Width, Weight of the item.
 
 #### Multi UOM Tab
 
@@ -253,6 +244,8 @@ For example:
 
 #### Branch Linking
 
+{{< figure src="/images/doc_item_maintenance/item_edit_branch_linking.png" caption="Fig 2h: Edit Item - Branch Linking Tab" >}}
+
 Specify item by branch and company by linking it to them here. This tab is used to link specific branches. This function will be used in all transactional applets. for example, if a user links branches A and B then only these respective branches will be able to see the selected item in the POS applet. Branches can be created in the Organization applet.
 
 #### Company Linking
@@ -273,7 +266,7 @@ Specify item by branch and company by linking it to them here. Companies can be 
 
 The PNS Settlement Method module is used to link the Product to the PNS (Products and Services) Settlement Method.
 
-{{< figure src="/images/doc_item_maintenance/edit_item_pns_settlement_method.png" caption="Fig 2h: Edit Item - PNS Settlement Method Tab" >}}
+{{< figure src="/images/doc_item_maintenance/pns_settlement_method.png" caption="Fig 2h: Edit Item - PNS Settlement Method Tab" >}}
 
 There is a dropdown list, where the user selects the Settlement Type:
 - Payment Provider
@@ -313,17 +306,13 @@ As an illustration:
 
 #### Entity Pricing
 
-{{< figure src="/images/doc_item_maintenance/edit_item_entity_pricing.png" caption="Fig 2k: Edit Item - Entity Pricing Tab" >}}
+{{< figure src="/images/doc_item_maintenance/entity_pricing.gif" caption="Fig 2: Edit Item - Entity Pricing Tab - Select Entity" >}}
 
 Entity Pricing module is used to set the price for the Product depending on the Entity. If you have a specific price for a specific item that has multiple suppliers, you can set it here. For instance: A single product's price is individual for different Entities.
 
 {{< callout type="tip" >}}
 **When to use Entity Pricing**: This feature is particularly useful when an item has specific pricing for specific suppliers, allowing you to map different costs to different entities. For example, if you purchase the same product from multiple suppliers at different prices, you can configure entity-specific pricing here.
 {{< /callout >}}
-
-To add an Entity Price click "+". It will open 3rd container for users to create the Price. Then click "Entity Code" to choose the entity type.
-
-{{< figure src="/images/doc_item_maintenance/entity_pricing_select_entity.png" caption="Fig 2l: Edit Item - Entity Pricing Tab - Select Entity" >}}
 
 Select the Entity type from the advanced search. There are three types of Entity to select:
 - Customer
@@ -350,9 +339,11 @@ To do the mapping, click the "+" button, which will lead the user to the new pag
 
 The Marketplace Tab is used to list the products on multiple marketplaces. This tab is to link your doc items to your Lazada Shopee or any e-commerce site. It is mainly used for Marketplaces such as Lazada, Shopee, and CP-Commerce. So the user can sell one product in various stores.
 
+{{< figure src="/images/doc_item_maintenance/marketplace.gif" caption="Fig 2: Edit Item - Marketplace Tab" >}}
+
 Marketplace tab includes three more tabs to do all the configurations:
 
-**Main** - Users select and add the Stores by clicking the "+" button in the Main Tab
+**Main** - Users select and add the Stores
 
 **Other Resellers Tab** - This tab is used if there are resellers who are distributing your products and selling them in other different Marketplaces. Fill in the URL of the Marketplace they use.
 
@@ -363,6 +354,8 @@ Marketplace tab includes three more tabs to do all the configurations:
 #### Other Tabs:
 
 Here are some other tabs that are in the edit item tab with a short introduction of what the user can do within:
+- **Label Tab** - The Label tab allows you to assign category labels to items
+- **Dimension Details Tab** - To fill in Product dimensions. Here the user can set the Height, Length, Width, Weight of the item.
 - **Stock Availability Tab** - This tab is to link your Marketplace stock balance. Stock availability tabs allow users to check whether the products are available in-store.
 - **Bundle Config** - Applicable for the Bundle Item type
 - **Child Item** - Applicable for the Grouped Item type.
@@ -688,7 +681,7 @@ The Main tab contains the basic information for the search filter:
 
 ### Edit Search Filter
 
-{{< figure src="/images/doc_item_maintenance/edit_search_filter.png" caption="Fig 12: Edit Search Filter" >}}
+{{< figure src="/images/doc_item_maintenance/search_filter_edit.png" caption="Fig 12: Edit Search Filter" >}}
 
 Click on any existing search filter in the listing to open the Edit panel. This panel displays the same fields as the Create panel. Updates can be saved, or the filter can be deleted from this panel.
 
@@ -717,7 +710,8 @@ Each section can be linked to item attributes, allowing customers to filter prod
 
 The Application Settings menu provides personalization and configuration options for the Doc Item Maintenance Applet.
 
-{{< figure src="/images/doc_item_maintenance/applet_settings.png" caption="Fig 14: Application Settings" >}}
+{{< figure src="/images/doc_item_maintenance/application_settings.gif" caption="Fig 14: Application Settings" >}}
+<!-- {{< figure src="/images/doc_item_maintenance/applet_settings.png" caption="Fig 14: Application Settings" >}} -->
 
 ### Hiding Tabs
 
