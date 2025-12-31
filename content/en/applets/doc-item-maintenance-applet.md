@@ -41,12 +41,22 @@ A short introduction to the Doc Item Maintenance Applet:
 
 ## Key Features
 
-{{< cards >}}
-  {{< card title="Item Management" subtitle="Users can create and regularly update item information, ensuring records remain current and accurate." >}}
-  {{< card title="Item Grouping" subtitle="Categorize items into groups, with predefined categories or create a new category based on business needs." >}}
-  {{< card title="Pricing Management" subtitle="Enables the configuration of multiple pricing schemes for individual items, accommodating diverse pricing strategies." >}}
-  {{< card title="Marketplace Management" subtitle="Synchronize item listings across popular online marketplaces, ensuring data consistency between internal and external records." >}}
-{{< /cards >}}
+{{< callout type="info" >}}
+**📦 Item Management**  
+Users can create and regularly update item information, ensuring records remain current and accurate.
+{{< /callout >}}
+{{< callout type="tip" >}}
+**🗂️ Item Grouping**  
+Categorize items into groups, with predefined categories or create a new category based on business needs.
+{{< /callout >}}
+{{< callout type="warning" >}}
+**💰 Pricing Management**  
+Enables the configuration of multiple pricing schemes for individual items, accommodating diverse pricing strategies.
+{{< /callout >}}
+{{< callout type="info" >}}
+**🛒 Marketplace Management**  
+Synchronize item listings across popular online marketplaces, ensuring data consistency between internal and external records.
+{{< /callout >}}
 
 ## Getting Started
 
