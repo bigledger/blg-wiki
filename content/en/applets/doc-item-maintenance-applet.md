@@ -244,6 +244,8 @@ The above UOM specifics the conversion of one type of UOM to another UOM, with a
 - **Status**
 - **Base UOM** - unable to edit. Users may edit it in the Main Details Tab
 - **Sort-Code** - The sort code helps identify the hierarchy of the UOM from the smallest to largest starting from 001. For example, pill would be 001 followed by the carton which would be 002 and finally box which would be 003.
+- **EAN Code** - The barcode/scan code for this specific UOM. Each UOM can have its own unique barcode for scanning purposes.
+- **E-Invoice UOM** - The E-Invoicing compliant UOM code (for Malaysia E-Invoicing requirements). Select from the standardized list of UOM codes.
 
 {{< callout type="tip" >}}
 For example:
