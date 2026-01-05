@@ -333,17 +333,86 @@ After selecting the Entity, click on the Item and it will automatically leads th
 
 #### T2T Item Mapping Tab
 
-The tenant to Tenant Item Mapping module is used to map Companies, Product Codes, and Names to sync transactions
+##### What is Tenant-to-Tenant (T2T)?
 
-The T2T Item Mapping tab includes three tabs as follows:
+In this system, a **Tenant** is essentially a company/organization that uses the same ERP platform. Think of it like multiple companies sharing the same software system, but each has their own separate data.
 
-**Host Tenant** - Main tab where the Mapping of the items is processed
+**T2T (Tenant-to-Tenant)** is a feature that allows two different companies/tenants to link their data together so they can do business with each other seamlessly.
 
-**Guest Tenant Item Mapping** - A list of Tenants that are already Mapped
+##### Why T2T Mapping is Needed
 
-**Guest Tenant Permission Listing** - A list of Tenants to which permission is given for mapping. All the Permissions are given from the T2T Admin applet
+Imagine this scenario:
 
-To do the mapping, click the "+" button, which will lead the user to the new page, where the user selects the Tenant from the dropdown list and add the item.
+| Your Company (Tenant A) | Your Supplier (Tenant B) |
+|-------------------------|--------------------------|
+| You call an item: "Widget-001" | They call the same item: "PROD-ABC-123" |
+| Your item name: "Blue Steel Widget" | Their item name: "Premium Widget Blue" |
+
+**The Problem:** When Tenant B sends you a Purchase Order or Invoice, their system says "PROD-ABC-123", but your system doesn't recognize it!
+
+**The Solution:** T2T Item Mapping links these two items together, so the system knows:
+> "When Tenant B says 'PROD-ABC-123', it means our 'Widget-001'"
+
+##### Understanding the Tabs
+
+| Tab Name | Purpose |
+|----------|---------|
+| **Host Tenant** | Map YOUR item to a HOST tenant's item (the tenant you're connecting TO) |
+| **Guest Tenant Item Mapping** | View items that GUEST tenants have mapped to YOUR item (read-only) |
+| **Guest Tenant Permission Listing** | Manage which GUEST tenants have permission to map items to your tenant |
+
+##### Host Tenant Tab
+
+{{< figure src="/images/doc_item_maintenance/t2t_item_mapping_host_tenant.png" caption="Fig 2: Edit Item - T2T Item Mapping Tab - Host Tenant" >}}
+
+**Purpose:** Map your current item to an item in a HOST tenant (a tenant you do business with)
+
+- Shows your Item Code and Item Name (read-only)
+- Has a Tenant dropdown to select which host tenant to view/map
+- Lists existing item mappings for the selected tenant
+- Columns: Host Tenant Item Code, Host Tenant Item Name, Host Tenant Code, Host Tenant Name, Created Date, Status
+- Click "+" to create a new mapping between your item and the selected tenant's item
+
+{{< callout type="tip" >}}
+**Use Case:** "I want to link my item 'WIDGET-001' to ABC Company's item 'PROD-123' so our systems can sync transactions."
+{{< /callout >}}
+
+##### Guest Tenant Item Mapping Tab
+
+**Purpose:** View which guest tenants have mapped THEIR items to YOUR current item (read-only)
+
+- Shows items from OTHER tenants that have been linked to your item
+- Columns: Guest Tenant Item Code, Guest Tenant Item Name, Guest Tenant Code, Guest Tenant Name
+- This is a view-only listing - you can't add/edit from here
+
+{{< callout type="tip" >}}
+**Use Case:** "I want to see which of my customers/suppliers have linked their item codes to my 'WIDGET-001'."
+{{< /callout >}}
+
+##### Guest Tenant Permission Listing Tab
+
+{{< figure src="/images/doc_item_maintenance/t2t_item_mapping_guesttenant.png" caption="Fig 2: Edit Item - T2T Item Mapping Tab - Guest Tenant Item Mapping" >}}
+
+**Purpose:** Manage which guest tenants have permission to map items to YOUR tenant's items
+
+- Lists tenants that have been granted permission (Guest Tenant Code, Guest Tenant Name, Status)
+- Click "+" to add new tenant permissions
+- Click on a row to view/edit the permission
+
+**To add tenant permission:**
+
+1. Click the "+" button
+2. Shows a list of tenants (from T2T Admin permissions)
+3. Select one or more tenants
+4. Click "Add" to grant them permission
+
+{{< callout type="tip" >}}
+**Use Case:** "I want to allow XYZ Company to map their items to my item catalog."
+{{< /callout >}}
+
+{{< callout type="info" >}}
+**Prerequisite**: T2T permissions must first be configured in the T2T Admin applet before tenants will appear in the selection lists.
+{{< /callout >}}
 
 #### Marketplace Tab
 
@@ -579,17 +648,40 @@ Available templates for different import scenarios:
 | **Doc Item Branch Link** | Branch-level item linking |
 | **Doc Item Category** | Category data import |
 
+
+Every templates have different columns required for importing to know what are the required column 
+{{< figure src="/images/doc_item_maintenance/master_data_import.png" caption="Fig 8: Import Item Master Data" >}}
+
 {{< callout type="tip" >}}
 **Template Usage Tip**: The "Doc Item Pricing" template is often used in conjunction with items that have the "Account Code" item type. If you are importing pricing data for Account Code items, use this template for bulk uploads.
 {{< /callout >}}
 
+### Customizable Import Template (Doc Item Only)
+
+{{< callout type="info" >}}
+**Custom Template Generation**: When importing **Doc Item** type, a configurable dialog allows you to create a custom CSV template with only the fields you need for your specific scenario.
+{{< /callout >}}
+
+{{< figure src="/images/doc_item_maintenance/import_item.gif" caption="Fig 8: Import Item" >}}
+
+Instead of downloading a massive template with 50+ columns, you can select exactly what fields you need:
+
+| User Scenario | Example Fields Selected |
+|---------------|-------------------------|
+| Basic import | ITEM_CODE, ITEM_NAME, BASE_UOM, STATUS |
+| Full import | ITEM_CODE, ITEM_NAME, BASE_UOM, STATUS, EAN_CODE, CURRENCY, all TAX fields |
+| Pricing focus | ITEM_CODE, ITEM_NAME, BASE_UOM, CURRENCY, pricing-related fields |
+
+This feature is available **only for the Doc Item template type** - other import templates (Category Link, Pricing, etc.) use fixed column formats.
+
 ### Import Process
 
 1. Select the file type/template
-2. Download the template CSV
-3. Fill in your product details in the CSV
-4. Save as .csv format
-5. Upload via the Upload File button or drag-and-drop
+2. **For Doc Item**: Use the configurable dialog to select which fields to include in your template
+3. Download the template CSV (with your selected fields or all fields for other templates)
+4. Fill in your product details in the CSV
+5. Save as .csv format
+6. Upload via the Upload File button or drag-and-drop
 
 Uploaded files appear in the listing below and can be managed or deleted from the File Import Edit page.
 
@@ -626,6 +718,8 @@ If the user wants to export the item, several templates are available to choose 
 
 ### Export Templates
 
+Each export type has a **fixed column set** - all relevant columns for that export type are included automatically:
+
 | Template | Data Exported |
 |----------|---------------|
 | **Doc Item Pricing** | Item pricing across schemes |
@@ -634,7 +728,19 @@ If the user wants to export the item, several templates are available to choose 
 | **Doc Item Branch Link** | Branch linking data |
 | **Doc Item Label Link** | Label associations |
 
-Select a template, configure the export options, and download the resulting file.
+### Export Filtering vs Column Selection
+
+{{< callout type="warning" >}}
+**Important**: The export function does **NOT** allow you to select which specific columns to include. Each export type has a predetermined set of columns.
+{{< /callout >}}
+
+| What You CAN Do | What You CANNOT Do |
+|-----------------|--------------------|
+| ✅ Filter BY criteria (pricing scheme, item status, categories) | ❌ Pick specific columns to include in export |
+| ✅ Choose which export template/type to use | ❌ Customize the column set for an export type |
+| ✅ Export only items matching your filter criteria | ❌ Exclude specific columns from the export |
+
+Select a template, configure the filter options to narrow down which items to export, and download the resulting file containing all columns for that export type.
 
 ---
 
@@ -669,6 +775,10 @@ To edit or remove Scheduler, select the specific scheduler you want and it will 
 
 Search Filters allow you to create customizable filter configurations that can be used in e-commerce platforms like CP-Commerce. These filters help customers narrow down product searches based on specific attributes or categories.
 
+{{< callout type="info" >}}
+**Where Search Filters Are Used**: Within this applet, Search Filters are integrated **only with Category management screens** (Category Create and Category Edit). They are NOT used in the main Item Listing, Item Edit/Create, Pricing Scheme, or Export screens.
+{{< /callout >}}
+
 ### Search Filter Listing
 
 {{< figure src="/images/doc_item_maintenance/search_filter_listing.png" caption="Fig 11: Search Filter Listing" >}}
@@ -677,17 +787,7 @@ The toolbar provides options to export the list to PDF or XLS formats, and inclu
 
 ### Create Search Filter
 
-To create a new Search Filter, click the blue circular **+** button. A panel will appear on the right side with the following tabs:
-
 {{< figure src="/images/doc_item_maintenance/search_filter_create.png" caption="Fig 12: Create Search Filter - Main Tab" >}}
-
-#### Main Tab
-
-The Main tab contains the basic information for the search filter:
-
-- **Search Filter Code** - A unique identifier for the filter (required)
-- **Search Filter Name** - Required
-- **Status** - Set the filter as ACTIVE or INACTIVE
 
 ### Edit Search Filter
 
@@ -701,12 +801,18 @@ Each search filter can have multiple sections that define the filter options dis
 
 {{< figure src="/images/doc_item_maintenance/search_filter_sections.png" caption="Fig 13: Search Filter - Sections Tab" >}}
 
-The Sections tab contains a nested grid with the following columns:
+### Section Types
 
-- **Section Name**
-- **Section Code** - Unique identifier
-- **Type** - The type of filter section (e.g., checkbox, dropdown)
-- **Sort Code** - Used to order sections in the display
+The unique value of Search Filter is the **Section Types** - these define what users can filter by:
+
+| Type | What It Filters |
+|------|-----------------|
+| **ATTRIBUTE** | Filter items by a specific attribute (e.g., Brand, Color, Size) |
+| **PRICE** | Filter items by price range |
+| **RATING** | Filter items by rating score |
+| **POINT_CURRENCY** | Filter items by membership point currency |
+| **STOCK_AVAILABILITY** | Filter by in-stock/out-of-stock status |
+| **POINT_REDEEM** | Filter items by redeemable points |
 
 Each section can be linked to item attributes, allowing customers to filter products based on those attributes.
 
