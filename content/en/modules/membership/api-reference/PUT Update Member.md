@@ -300,4 +300,4 @@ PUT 'https://api.akaun.com/core2/tnt/dm/membership-cards' \
 - `revision` should match the value of the existing member row, otherwise it would throw a race condition
 -  To get latest revision, guid value it is recommended to GET latest version of member data and update that
 - `obj_status` is used to store member verification status  
-  (default value = `VERIFIED`, possible values = `VERIFIED`, `UNVERIFIED`, `REVIEWED`, `EXPIRED`)
+  (default value = `UNVERIFIED`, possible values = `VERIFIED`, `UNVERIFIED`, `REVIEWED`, `EXPIRED`)
