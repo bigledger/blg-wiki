@@ -298,5 +298,5 @@ POST 'https://api.akaun.com/core2/tnt/dm/membership-cards' \
 - `guid` values must be unique UUIDs, but can be set to null if you want the system to auto generate a UUID for you.
 - `entity_hdr_guid` links to the customer table
 - `obj_status` is used to store member verification status  
-  (default value = `VERIFIED`, possible values = `VERIFIED`, `UNVERIFIED`, `REVIEWED`, `EXPIRED`)
+  (default value = `UNVERIFIED`, possible values = `VERIFIED`, `UNVERIFIED`, `REVIEWED`, `EXPIRED`)
 
