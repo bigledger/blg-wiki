@@ -286,6 +286,8 @@ All 13 Core Module applets (listed above) are included in CP-Commerce Module.
 
 ### Process and Quality Management
 - **[Process Monitoring Applet](/applets/process-monitoring-applet/)** - Business process tracking and analysis
+- **[Production Planning & Monitoring Applet](/applets/production-planning-and-monitoring-applet/)** - Manufacturing planning and job order management
+- **[Manufacturing Operation Applet](/applets/manufacturing-operation-applet/)** - Shop floor execution and production tracking
 
 ### Membership and Loyalty Programs
 - **[Membership Admin Console Applet](/applets/membership-admin-console-applet/)** - Customer loyalty program management

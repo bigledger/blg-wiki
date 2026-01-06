@@ -48,6 +48,8 @@ Foundation applets required by all other modules:
 - **[Stock Take Applet](/applets/stock-take-applet/)** - Digital inventory counting and management
 - **[Stock Balance Applet](/applets/stock-balance-applet/)** - Real-time inventory tracking
 - **[Internal Stock Adjustment Applet](/applets/internal-stock-adjustment-applet/)** - Inventory corrections
+- **[Production Planning & Monitoring Applet](/applets/production-planning-and-monitoring-applet/)** - Manufacturing planning and job order management
+- **[Manufacturing Operation Applet](/applets/manufacturing-operation-applet/)** - Shop floor execution and production tracking
 - **[Process Monitoring Applet](/applets/process-monitoring-applet/)** - Business process tracking
 
 #### Customer Engagement
