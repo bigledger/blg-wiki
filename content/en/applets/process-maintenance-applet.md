@@ -38,6 +38,8 @@ Think of it as your manufacturing knowledge base: which machines do what, what m
 - Validate production costing accuracy
 - Review input/output relationships
 
+{{< figure src="/screenshots/process-maintenance/process-maintenance-workflow.png.png" alt="How to Configure a Manufacturing Workflow in the Process Maintenance Applet showing three steps: Configure Prerequisites, Build Process Templates, and Assemble the Job Template" caption="Process Maintenance Workflow: Configure machines and process types, build process templates with inputs/outputs, then assemble job templates for complete production sequences." >}}
+
 ## Key Features Overview
 
 {{< cards >}}

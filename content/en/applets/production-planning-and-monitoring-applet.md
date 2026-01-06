@@ -38,6 +38,8 @@ The Production Planning & Monitoring (PPM) Applet is your central hub for conver
 - Identify bottlenecks
 - Prioritize urgent work
 
+{{< figure src="/screenshots/ppm/ppm-workflow.png.png" alt="From Request to Production: A Workflow Guide showing Phase 1 Planning and Order Creation and Phase 2 Execution and Monitoring" caption="Production Planning Workflow: Manage incoming requests, create job orders, generate manufacturing plans, and track all active processes through to sales order fulfillment." >}}
+
 ## Key Features Overview
 
 {{< cards >}}

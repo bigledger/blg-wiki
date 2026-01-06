@@ -35,6 +35,8 @@ The Manufacturing Operations Applet is your shop floor execution hub where produ
 - Manage process status
 - Ensure quality compliance
 
+{{< figure src="/screenshots/manufacturing-ops/manufacturing-ops-workflow.png.png" alt="Streamlining Production: The BigLedger Manufacturing Workflow showing Stage 1 The Supervisor for Planning and Oversight and Stage 2 The Operator for Execution and Logging" caption="Manufacturing Operations Workflow: Supervisors set priorities and grant approvals while operators focus on execution, logging work with start/end times, raw materials, and quantities produced." >}}
+
 ## Key Features Overview
 
 {{< cards >}}
