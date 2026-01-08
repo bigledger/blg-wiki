@@ -74,23 +74,24 @@ The **Claim Cycle Applet** is designed for **Finance and HR teams** who need to 
 
 ## Key Features Overview
 
-{{% cards %}}
-  {{% card title="Cycle Management" subtitle="Create and manage claim processing cycles" link="#cycle-creation--management" %}}
+{{< cards >}}
+  {{< card title="Cycle Management" subtitle="Create and manage claim processing cycles" link="#cycle-creation--management" >}}
 
-  {{% card title="Claim Lines" subtitle="View and process individual claims in batch" link="#claim-lines-tab" %}}
+  {{< card title="Claim Lines" subtitle="View and process individual claims in batch" link="#claim-lines-tab" >}}
 
-  {{% card title="Checking Reports" subtitle="Inbox, Approved, and On-Hold workflows" link="#checking-reports-tab" %}}
+  {{< card title="Checking Reports" subtitle="Inbox, Approved, and On-Hold workflows" link="#checking-reports-tab" >}}
 
-  {{% card title="Payroll Payment" subtitle="Integration with salary processing" link="#payroll-payment-tab" %}}
+  {{< card title="Payroll Payment" subtitle="Integration with salary processing" link="#payroll-payment-tab" >}}
 
-  {{% card title="Sampling & Audit" subtitle="Random and targeted claim auditing" link="#sampling--audit" %}}
+  {{< card title="Sampling & Audit" subtitle="Random and targeted claim auditing" link="#sampling--audit" >}}
 
-  {{% card title="Multi-Format Reports" subtitle="Bank, PV, Cross-Billing, Pivot reports" link="#reports" %}}
+  {{< card title="Multi-Format Reports" subtitle="Bank, PV, Cross-Billing, Pivot reports" link="#reports" >}}
 
-  {{% card title="History & Audit Trail" subtitle="Complete processing history" link="#history--audit-trail" %}}
+  {{< card title="History & Audit Trail" subtitle="Complete processing history" link="#history--audit-trail" >}}
 
-  {{% card title="Settings & Permissions" subtitle="Configure applet behavior" link="#settings--configuration" %}}
-{{% /cards %}}
+  {{< card title="Settings & Permissions" subtitle="Configure applet behavior" link="#settings--configuration" >}}
+{{< /cards >}}
+
 
 ---
 
@@ -199,6 +200,9 @@ Use the **Summary UI** in Claim Lines tab for quick totals before diving into in
 
 The main view showing all claim cycles for your organization.
 
+![Claim Cycles Listing](/images/claim-cycle-applet/claim-cycles-listing.png)
+*Claim Cycles Listing showing cycle Code, Name, Status, and Total Claims for each batch.*
+
 **What You See:**
 - Cycle code and name
 - Company/Branch
@@ -210,6 +214,9 @@ The main view showing all claim cycles for your organization.
 - **Create (+)**: New cycle
 - **Edit**: Modify cycle details
 - **Open**: Access cycle tabs
+
+![Create Claim Cycle Form](/images/claim-cycle-applet/create-claim-cycle-form.png)
+*Create new claim cycle form with Company, Status, and date configuration.*
 
 ---
 
@@ -233,6 +240,9 @@ When you open a cycle, you'll see the Main Details form:
 1. Modify allowed fields
 2. Click **Update** button
 3. Changes saved immediately
+
+![Main Details Tab](/images/claim-cycle-applet/main-details-tab.png)
+*Main Details tab showing cycle configuration, dates, and status.*
 
 ---
 
@@ -274,6 +284,9 @@ When you open a cycle, you'll see the Main Details form:
 3. Select file (PDF, JPG, PNG)
 4. File attached to claim record
 
+![Claim Lines Tab](/images/claim-cycle-applet/claim-lines-tab.png)
+*Claim Lines tab showing employee claims with amounts and status indicators.*
+
 ---
 
 ### Checking Reports Tab
@@ -309,6 +322,9 @@ Claims flagged for follow-up.
 1. Issue resolved
 2. Move back to Inbox for re-review
 3. Approve or reject
+
+![Checking Reports Tab](/images/claim-cycle-applet/checking-reports-tab.png)
+*Checking Reports tab with Inbox, Approved, and On Hold queues for claim review.*
 
 ---
 
@@ -363,6 +379,9 @@ Full audit trail of:
 - Review actions taken
 - Status changes
 
+![Sampling Tab](/images/claim-cycle-applet/sampling-tab.png)
+*Sampling tab for creating audit samples and linking claim lines.*
+
 ---
 
 #### Sampling Analysis Report Tab
@@ -402,6 +421,9 @@ Full audit trail of:
 3. Download file
 4. Upload to banking system
 
+![Bank Report Tab](/images/claim-cycle-applet/bank-report-tab.png)
+*Bank Report tab for generating payment files with employee payments.*
+
 ---
 
 #### PV Details Report
@@ -417,6 +439,9 @@ Full audit trail of:
 - Accounting entries
 - Payment authorization
 - Audit documentation
+
+![PV Details Report Tab](/images/claim-cycle-applet/pv-details-tab.png)
+*PV Details Report with transaction references, amounts, and GL coding.*
 
 ---
 

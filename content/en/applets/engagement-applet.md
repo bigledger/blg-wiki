@@ -72,23 +72,24 @@ In professional services, an "engagement" refers to a formal agreement to provid
 
 ## Key Features Overview
 
-{{% cards %}}
-  {{% card title="Engagement Management" subtitle="Create and manage client engagements" link="#engagement-listing" %}}
+{{< cards >}}
+  {{< card title="Engagement Management" subtitle="Create and manage client engagements" link="#engagement-listing" >}}
 
-  {{% card title="Fiscal Year End" subtitle="Track audit and financial year cycles" link="#fiscal-year-end-tab" %}}
+  {{< card title="Fiscal Year End" subtitle="Track audit and financial year cycles" link="#fiscal-year-end-tab" >}}
 
-  {{% card title="Employee Assignment" subtitle="Assign team members to engagements" link="#employee-management" %}}
+  {{< card title="Employee Assignment" subtitle="Assign team members to engagements" link="#employee-management" >}}
 
-  {{% card title="Engagement Roles" subtitle="Define Partner, Manager, Director roles" link="#engagement-roles" %}}
+  {{< card title="Engagement Roles" subtitle="Define Partner, Manager, Director roles" link="#engagement-roles" >}}
 
-  {{% card title="Document Generation" subtitle="Create engagement documents" link="#gen-doc-tab" %}}
+  {{< card title="Document Generation" subtitle="Create engagement documents" link="#gen-doc-tab" >}}
 
-  {{% card title="Engagement Categories" subtitle="Organize engagements by type" link="#engagement-category" %}}
+  {{< card title="Engagement Categories" subtitle="Organize engagements by type" link="#engagement-category" >}}
 
-  {{% card title="Entity Details" subtitle="Access client information" link="#entity-details" %}}
+  {{< card title="Entity Details" subtitle="Access client information" link="#entity-details" >}}
 
-  {{% card title="Settings & Permissions" subtitle="Configure applet behavior" link="#settings--configuration" %}}
-{{% /cards %}}
+  {{< card title="Settings & Permissions" subtitle="Configure applet behavior" link="#settings--configuration" >}}
+{{< /cards >}}
+
 
 ---
 
@@ -220,6 +221,9 @@ After creating, go to **Fiscal Year End** tab to add year-end periods.
 - Toggle between grid and list views
 - Pagination for large datasets
 
+![Engagement Listing Interface](/images/engagement-applet/engagement-listing.png)
+*The Engagement Listing shows all client engagements with Code, Name, Entity, and Created Date columns.*
+
 ---
 
 ### Engagement Edit - Main Tab
@@ -239,6 +243,9 @@ After creating, go to **Fiscal Year End** tab to add year-end periods.
 | **Status** | Current state | Draft, Active, Complete, etc. |
 | **Description** | Scope and notes | Free text |
 
+![Create Engagement Form](/images/engagement-applet/create-engagement-form.png)
+*The Create/Edit Engagement form with Customer, Code, Branch, FYE Type, and role assignment fields.*
+
 #### Engagement Roles (Perpetual Type)
 
 For perpetual engagements, assign roles directly on the Main tab:
@@ -256,6 +263,9 @@ Click **"Entity Details"** button to:
 - Access contact information
 - See related accounts
 
+![Edit Engagement - Main Tab](/images/engagement-applet/edit-engagement-main.png)
+*Editing an engagement shows customer details, engagement code, and role assignments.*
+
 ---
 
 ### Fiscal Year End Tab
@@ -272,6 +282,9 @@ See all fiscal year periods for this engagement:
 - Date range (e.g., Jan 1 - Dec 31, 2024)
 - Status
 - Year indicator
+
+![Fiscal Year End Tab](/images/engagement-applet/fiscal-year-end-tab.png)
+*The Fiscal Year End tab showing Date Start, Date End, and Status columns.*
 
 #### Creating a Fiscal Year End
 
@@ -371,6 +384,9 @@ The Gen Doc (Generated Documents) tab provides:
 {{% callout type="tip" %}}
 The Gen Doc feature integrates with document generation workflows. Consult your administrator for available document templates.
 {{% /callout %}}
+
+![Gen Doc Tab](/images/engagement-applet/gen-doc-tab.png)
+*The Gen Doc tab showing generated documents with Doc Type, Doc No, Status, and Transaction Date.*
 
 ---
 
