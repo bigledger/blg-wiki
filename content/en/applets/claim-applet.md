@@ -86,6 +86,8 @@ Traditional claim management relies on paper forms and email chains. Common issu
   {{< card title="Personalization" subtitle="Favorite claims and settings" link="#personalization" >}}
 {{< /cards >}}
 
+{{< figure src="/images/claim-applet/claim-applet-overview-infographic.jpg" alt="From Paper Piles to Fast Payouts: Your Guide to the Claim Applet - comparing the old manual claim process with the new digital solution" caption="From Paper Piles to Fast Payouts: The Old Way (lost paperwork, delayed approvals, compliance headaches) vs The New Way (submit in seconds, one-click approval, get reimbursed in 7-14 days)." >}}
+
 ## Key Concepts
 
 ### Understanding the Claim Framework
@@ -159,6 +161,8 @@ To effectively manage the system, it is crucial to understand how **Claim Items*
 
 Get up and running quickly with these essential workflows.
 
+{{< figure src="/images/claim-applet/quick-start-guide-infographic.png" alt="Effortless Expense Claims: A Quick Guide for Every Role - showing workflows for Employees, Managers, and Admins" caption="Effortless Expense Claims: A visual at-a-glance guide for Employees (Submit Your Claim), Managers (Process Team Claims), and Admins (Initial System Setup)." >}}
+
 ### For Employees: Submit Your First Claim
 
 **Goal:** Submit a claim and get reimbursed in 5 simple steps.
@@ -173,6 +177,10 @@ Get up and running quickly with these essential workflows.
    - Upload **Receipt** (system auto-extracts data with OCR)
 4. **Review**: Check all details are correct
 5. **Submit**: Click **Submit** → Claim goes to your manager
+
+{{< figure src="/images/claim-applet/my-claims-listing.png" alt="My Claims Listing showing claim summary with Draft, Submitted, Approved and Closed tabs" caption="My Claims Listing: View all your claims with status summary cards" >}}
+
+{{< figure src="/images/claim-applet/claim-edit-form.png" alt="Claim Edit Form with Main Details and Claim Lines tabs" caption="Claim Edit Form: Enter claim title, add expense lines, and submit for approval" >}}
 
 **What happens next?** You'll get email notifications when approved/rejected. Payment typically within 7-14 days.
 
@@ -194,6 +202,10 @@ Get up and running quickly with these essential workflows.
    - **Reject**: Click ✗ **Reject** → Add reason → Employee notified
    - **Query**: Click **Query** → Ask for more info
 
+{{< figure src="/images/claim-applet/pending-approvals.png" alt="Approvals Queue showing pending claims with Expand All and Approve buttons" caption="Pending Approvals: Review and approve team claims from the Approvals Queue" >}}
+
+{{< figure src="/images/claim-applet/team-claims-menu.png" alt="Team Claims sidebar menu showing Staff Reports and Pending Approvals options" caption="Supervisor Menu: Access Pending Approvals, Staff Reports, and other team management features" >}}
+
 **Going on Leave?** Set up delegation: `Settings > Claim Approval Delegation Period` → Select someone to approve on your behalf.
 
 ---
@@ -206,9 +218,13 @@ Get up and running quickly with these essential workflows.
 - Create funds like "Medical Fund", "Transport Fund"
 - Set currency and enable balance display
 
+{{< figure src="/images/claim-applet/claim-accounts-settings.png" alt="Claim Accounts Settings showing configured funds" caption="Claim Accounts: Define the funding pools for employee claims" >}}
+
 **Step 2: Create Entitlements** (`Settings > Claim Entitlements`)  
 - Link to Claim Accounts (e.g., Medical Fund → RM 1,500/year)
 - Set recurring top-ups (Monthly/Yearly)
+
+{{< figure src="/images/claim-applet/entitlement-topup-templates.png" alt="Entitlement Auto Top-up Templates for recurring allowance renewal" caption="Entitlement Top-up Templates: Configure automatic recurring entitlement renewals" >}}
 
 **Step 3: Create Claim Items** (`Settings > Claim Items`)
 - Define expense types (GP Visit, Taxi, Parking)
@@ -355,6 +371,8 @@ This section is your personal guide to submitting and tracking your expense clai
 
 ### My Claim - Your Personal Expense Hub
 
+{{< figure src="/images/claim-applet/my-claims-dashboard.png" alt="My Claims Dashboard showing claim summary with status cards" caption="My Claims Dashboard: Your personal expense hub with status summary" >}}
+
 **What is My Claim?**
 
 This is YOUR workspace—where you create, submit, and track all your expense claims. Think of it as your personal expense diary that automatically gets processed for reimbursement.
@@ -485,6 +503,8 @@ What to do:
 
 ### Line Report - Detailed Expense Tracking
 
+{{< figure src="/images/claim-applet/line-report-listing.png" alt="Line Reports Listing showing individual expense items" caption="Line Report: View every individual expense you've claimed, line by line" >}}
+
 **What is Line Report?**
 
 While "My Claim" shows your full claims, **Line Report** shows every individual expense you've claimed—line by line. It's like having an itemized expense history.
@@ -585,6 +605,8 @@ Steps:
 ---
 
 ### Engagement Reports - Project Claims
+
+{{< figure src="/images/claim-applet/engagement-report.png" alt="Engagement Reports view showing project-based claims" caption="Engagement Reports: Track expenses tied to specific client projects" >}}
 
 **Submit expenses tied to specific client projects or engagements.**
 
@@ -1062,6 +1084,8 @@ Result: Employees claim remaining balance, satisfaction up
 
 ### Non-Reimbursable Report - Company-Paid Tracking
 
+{{< figure src="/images/claim-applet/non-reimbursable-report.png" alt="Non-Reimbursable Report showing company-paid expenses" caption="Non-Reimbursable Report: Track expenses the company pays directly" >}}
+
 **What is Non-Reimbursable Report?**
 
 These are expenses the company pays DIRECTLY—no money goes to employees. Think: corporate credit cards, company car allowances, direct vendor billing.
@@ -1167,6 +1191,8 @@ Proves: Proper authorization and documentation
 ---
 
 ### Professional Study Scheme Report - Education Tracking
+
+{{< figure src="/images/claim-applet/professional-study-report.png" alt="Professional Study Scheme Report showing education expenses" caption="Professional Study Scheme: Track educational and professional development expenses" >}}
 
 **What is Professional Study Scheme?**
 
@@ -1339,7 +1365,11 @@ Ahmad    | Leadership Course   | RM 1,200  | Completed | Promoted after!
 
 ## Configuration & Settings
 
+{{< figure src="/images/claim-applet/settings-page.png" alt="Applet Settings page showing all configuration options including Claim Accounts, Entitlements, Approval Settings, and more" caption="Settings Overview: Access all configuration options from the Settings menu in the sidebar" >}}
+
 #### Claim Items (`Settings > Claim Items`)
+
+{{< figure src="/images/claim-applet/claim-items-settings.png" alt="Claim Items Listing showing all configured expense types" caption="Claim Items Listing: Define what types of expenses employees can claim" >}}
 
 The **Claim Items** menu defines what employees can claim. Think of this as building your organization's "expense menu". Each item represents a specific type of expense (e.g., Taxi, Meals, Medical).
 
@@ -1408,6 +1438,8 @@ Creating a "Client Meal" expense item:
 
 #### Item Categories (`Settings > Claim Item Category`)
 
+{{< figure src="/images/claim-applet/claim-item-category.png" alt="Claim Item Category Listing showing expense categories" caption="Item Categories: Organize claim items into logical groups for reporting" >}}
+
 Categories organize your claim items into logical groups for reporting and analysis. Instead of viewing 50 individual expense types, you can analyze spending by category.
 
 **Creating a Category - Field Guide:**
@@ -1432,6 +1464,8 @@ Creating a "Professional Development" category:
 4. **Items to assign**: Course Fees, Conference Registration, ACCA Membership, Books & Materials
 
 #### Travel Allowance (`Settings > Travel Allowance`)
+
+{{< figure src="/images/claim-applet/travel-allowance-settings.png" alt="Travel Allowance Settings showing per-diem rate configurations" caption="Travel Allowance Settings: Configure per-diem rates for business travel" >}}
 
 The **Travel Allowance** feature automates per-diem (daily allowance) calculations for business travel. Instead of employees manually calculating meal allowances, the system applies pre-defined rates based on travel destination.
 
@@ -1630,6 +1664,8 @@ An accounting firm wants to support professional development:
 
 #### Cut-Off Logics (`Settings > Claim Cut Off Logics`)
 
+{{< figure src="/images/claim-applet/claim-cutoff-settings.png" alt="Claim Cut-Off Logics settings showing cut-off date configurations" caption="Cut-Off Logics: Configure submission deadlines aligned with payroll cycles" >}}
+
 Cut-off dates align claim submissions with your payroll or accounting cycles. They prevent last-minute claims from disrupting closed financial periods.
 
 **Creating a Cut-Off Rule - Field Guide:**
@@ -1672,6 +1708,8 @@ Scenario: Cut-off on 25th, Grace period: 3 days, Today: November 27th
 
 #### Branches (`Settings > Branches`)
 
+{{< figure src="/images/claim-applet/branches-settings.png" alt="Branches Settings showing office locations and cost centers" caption="Branches: Configure organizational locations and cost centers" >}}
+
 Branches represent your organization's physical locations or cost centers. They enable expense tracking by location and proper budget allocation.
 
 **Creating a Branch - Field Guide:**
@@ -1710,6 +1748,8 @@ A retail chain with 5 locations:
 - Assign managers to automate approval routing
 
 #### Email Templates (`Settings > Email Template`)
+
+{{< figure src="/images/claim-applet/email-template-settings.png" alt="Email Template Settings showing notification templates" caption="Email Templates: Customize automated notifications for claim status changes" >}}
 
 Email templates control the automated notifications sent when claims change status. Customize the messaging to match your company's tone and include relevant information.
 
@@ -1785,6 +1825,8 @@ Next steps:
 
 #### File Import (`Settings > Upload Employee Entitlement`)
 
+{{< figure src="/images/claim-applet/upload-entitlement.png" alt="Upload Employee Entitlement page for bulk importing entitlements" caption="File Import: Bulk upload employee entitlements via Excel/CSV" >}}
+
 Bulk import allows you to set entitlements for hundreds or thousands of employees at once, instead of creating them one-by-one.
 
 **When to Use File Import:**
@@ -1859,6 +1901,8 @@ EMP001      | John Tan    | TRAVEL-FUND   | 500    | 2024-01-01    | 2024-12-31 
 
 
 #### Claim Approval Settings (`Settings > Claim Approval Settings`)
+
+{{< figure src="/images/claim-applet/claim-approval-settings.png" alt="Claim Approval Settings showing approval workflow configurations" caption="Claim Approval Settings: Define approval chains and workflow rules" >}}
 
 **What are Approval Settings?**
 
@@ -2004,6 +2048,8 @@ Use case: Expensive training courses need consensus
 
 #### Claim Approval Delegation Period (`Settings > Claim Approval Delegation Period`)
 
+{{< figure src="/images/claim-applet/delegation-period-settings.png" alt="Claim Approval Delegation Period Settings" caption="Delegation Period: Temporarily transfer approval rights when managers are on leave" >}}
+
 When managers go on leave, claims shouldn't get stuck. The Delegation feature temporarily transfers approval rights to another person.
 
 **Creating a Delegation:**
@@ -2048,6 +2094,8 @@ Result during period:
 ---
 
 #### Printable Format Settings (`Settings > Printable Format Settings`)
+
+{{< figure src="/images/claim-applet/printable-format-settings.png" alt="Printable Format Settings for claim exports" caption="Printable Format: Customize how claims appear when printed or exported to PDF" >}}
 
 Customize how claims appear when printed or exported to PDF. This is essential for formal documentation, audits, and record-keeping.
 
