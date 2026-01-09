@@ -53,7 +53,7 @@ This comprehensive catalog lists all applets available in the BigLedger ecosyste
 - Complete product information management
 - Multi-location inventory control
 - Pricing and costing methodologies
-- Product categories and classification.
+- Product categories and classification
 
 ### 6. [Customer Maintenance Applet](/applets/customer-maintenance-applet/)
 **Customer master data and relationship management**
