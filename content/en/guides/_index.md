@@ -73,6 +73,9 @@ Optimize stock and warehouse operations:
 - [E-Invoice Validation Rules](/guides/einvoice-guides/einvoice-validation/)
 - [Stock Transfer Procedures](/guides/inventory-guides/stock-transfer/)
 
+### 🤖 AI-Powered Documentation
+- [AI Documentation Guide](/guides/ai-documentation-guide/) - Create applet documentation using AI assistance
+
 ## By Business Process
 
 ### Order-to-Cash
