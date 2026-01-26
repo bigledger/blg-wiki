@@ -143,7 +143,7 @@ Create comprehensive documentation for [APPLET NAME] following the exact format 
 1. Follow the same frontmatter format with title, description, and relevant tags
 2. Include "Who Benefits from This Applet?" section with at least 3 user roles
 3. Include "What Problems Does This Solve?" section
-4. Create Key Features Overview with {{< cards >}} shortcode
+4. Create Key Features Overview with cards shortcode
 5. Add Quick Start Guide with role-specific steps
 6. Include Configuration & Settings section
 7. Add FAQ section with at least 4 questions
@@ -170,7 +170,7 @@ Please help me:
 4. Add figure shortcodes to the documentation in appropriate sections
 
 Use this format for screenshots:
-{{< figure src="/images/[applet-name]-applet/[screenshot-name].png" alt="[Description]" caption="[Caption text]" >}}
+{{</* figure src="/images/[applet-name]-applet/[screenshot-name].png" alt="[Description]" caption="[Caption text]" */>}}
 ```
 
 ---
