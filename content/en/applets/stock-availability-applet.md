@@ -65,6 +65,8 @@ tags:
   {{< card title="Batch Number Tracing" subtitle="Trace batch numbers" link="#batch-number-tracing" >}}
 {{< /cards >}}
 
+{{< figure src="/images/stock-availability-applet/stock-availability-overview-infographic.png" alt="Mastering Real-Time Inventory: The Stock Availability Applet - showing traditional inventory challenges like overselling, manual tracking errors, and multi-location blind spots versus the real-time solution with precision stock logic, granular item tracing, and smart aging reports" caption="Mastering Real-Time Inventory: From manual tracking challenges to a unified real-time solution with precision stock logic, granular serial/batch tracing, and smart aging reports." >}}
+
 ---
 
 ## Key Concepts
