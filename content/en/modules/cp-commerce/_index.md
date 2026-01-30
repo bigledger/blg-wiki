@@ -6,6 +6,33 @@ weight: 25
 
 The CP-Commerce Module provides a complete e-commerce solution that combines all Core Module capabilities with specialized commerce-focused applets. This module is designed for businesses that need both foundational ERP capabilities and advanced e-commerce functionality.
 
+## Purpose and Overview
+
+The CP-Commerce Module is where you define how your online business operates. It serves as the bridge between your back-office operations (Inventory, Sales, CRM) and your customer-facing digital storefront.
+
+Think of it as your digital command center: managing product catalogs, customizing store layouts, processing online orders, and engaging customers—all integrated seamlessly with your core ERP data.
+
+{{< figure src="/images/cp-commerce/cp-commerce-overview-infographic.png" caption="CP Commerce Module Overview" >}}
+
+## Who Uses This Applet
+
+**Business Owners:**
+-   Gain strategic insights and improve decision-making
+-   Drive revenue growth
+-   Enhance overall business efficiency and scalability
+
+**Store Managers:**
+-   Optimize inventory levels (reduce stockouts and overstocking)
+-   Streamline daily operations
+-   Improve team productivity
+
+**Marketing Teams:**
+-   Create highly targeted campaigns based on accurate data
+-   Improve customer segmentation
+-   Increase engagement and maximize ROI
+
+
+
 A short introduction to the CP-Commerce Module:
 
 <div style="max-width:560px; margin:24px auto;">
