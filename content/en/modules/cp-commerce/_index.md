@@ -12,7 +12,7 @@ The CP-Commerce Module is where you define how your online business operates. It
 
 Think of it as your digital command center: managing product catalogs, customizing store layouts, processing online orders, and engaging customers—all integrated seamlessly with your core ERP data.
 
-{{< figure src="/images/cp-commerce/cp-commerce-overview-infographic.png" caption="CP Commerce Module Overview" >}}
+{{< figure src="/images/cp-commerce/infographic2.png">}}
 
 ## Who Uses This Applet
 
@@ -31,7 +31,7 @@ Think of it as your digital command center: managing product catalogs, customizi
 -   Improve customer segmentation
 -   Increase engagement and maximize ROI
 
-
+{{< figure src="/images/cp-commerce/cp-commerce-overview-infographic.png" caption="CP Commerce Module Overview" >}}
 
 A short introduction to the CP-Commerce Module:
 
