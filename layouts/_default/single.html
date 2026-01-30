@@ -5,7 +5,7 @@
     <article class='hx:w-full hx:break-words hx:flex-1 hx:min-w-0 hx:min-h-[calc(100vh-var(--nextra-navbar-height))] hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]'>
       <main class='hx:flex-col hx:flex'>
         <div class="hx:mb-8">
-          {{ partial "breadcrumb.html" . }}
+          {{ partial "breadcrumb.html" (dict "page" . "enable" true) }}
         </div>
         <h1 class='hx:mt-2 hx:text-4xl hx:tracking-tight hx:font-bold hx:text-slate-900 dark:hx:text-slate-100'>{{ .Title }}</h1>
         <div class='hx:content hx:mt-6'>
