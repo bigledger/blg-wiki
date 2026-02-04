@@ -101,13 +101,14 @@ Count Discrepancy → Create Adjustment → Approval (if required) → Posted
 
 1. **Navigate**: Go to **Stock Adjustment** from the sidebar
 2. **Create New**: Click **"+"** to create adjustment
-3. **Select Item**: Search and select the item to adjust
-4. **Enter Details**:
-   - Select **Location/Warehouse**
-   - Choose **Adjustment Type** (Increase/Decrease)
-   - Enter **Quantity** difference
-   - Select **Reason Code**
-   - Add **Remarks** for context
+3. **Configure**: Select item, enter adjustment details as shown below:
+
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-edit-details.png" alt="Stock Adjustment Edit Form" caption="Configure adjustment: select location, item, adjustment type, quantity, reason code, and remarks." >}}
+
+4. **Add Line Items**: Click the Lines tab to add items:
+
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-edit-lines.png" alt="Stock Adjustment Lines Tab" caption="Add line items with quantities and reason codes for the adjustment." >}}
+
 5. **Submit**: Post or send for approval
 
 ### For Controllers: Bulk Adjust via File
@@ -115,6 +116,9 @@ Count Discrepancy → Create Adjustment → Approval (if required) → Posted
 **Goal:** Process multiple adjustments from a spreadsheet
 
 1. **Navigate**: Go to **File Import**
+
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-file-import.png" alt="Stock Adjustment File Import" caption="Use File Import for bulk adjustments from spreadsheets." >}}
+
 2. **Download Template**: Get the adjustment template
 3. **Prepare Data**: Fill in items, quantities, and reasons
 4. **Upload**: Import the completed file
@@ -125,12 +129,12 @@ Count Discrepancy → Create Adjustment → Approval (if required) → Posted
 
 **Goal:** Correct a serial number record
 
-1. **Navigate**: Go to **Serial Adjustment**
+1. **Navigate**: Go to **Serial Number Adjustment**
+
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-serial-number.png" alt="Serial Number Adjustment" caption="Adjust serialized items: write-off, transfer, or correct data." >}}
+
 2. **Find Serial**: Search for the serial number
-3. **Select Action**:
-   - Write-off (remove from inventory)
-   - Transfer (move to different location)
-   - Correct (fix data errors)
+3. **Select Action**: Write-off, Transfer, or Correct
 4. **Complete**: Add reason and submit
 
 ---
@@ -139,11 +143,29 @@ Count Discrepancy → Create Adjustment → Approval (if required) → Posted
 
 ### Creating Adjustments
 
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-listing.png" alt="Stock Adjustment Listing" caption="Main Stock Adjustment listing showing all adjustment records with status, location, and transaction details." >}}
+
 Main adjustment features:
 - **Single Item Adjustment** - Adjust one item at a time
 - **Multi-Item Adjustment** - Adjust multiple items in one document
 - **Reason Codes** - Categorize why adjustment was made
 - **Approval Workflow** - Route for approval if required
+
+### Stock Adjustment Edit Tabs
+
+When editing a stock adjustment, click on a row to open the edit panel:
+
+#### Main Details Tab
+
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-edit-details.png" alt="Stock Adjustment Details Tab" caption="Details Tab: Set location, date, status, and header-level information." >}}
+
+#### Lines Tab
+
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-edit-lines.png" alt="Stock Adjustment Lines Tab" caption="Lines Tab: Add items with quantities, adjustment types, and reason codes." >}}
+
+#### Attachment Tab
+
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-edit-attachment.png" alt="Stock Adjustment Attachment Tab" caption="Attachment Tab: Upload supporting documents for the adjustment." >}}
 
 ### Key Fields
 
@@ -179,6 +201,8 @@ Process adjustments in bulk:
 
 ### Serialized Item Corrections
 
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-serial-item.png" alt="Stock Adjustment By Serial Item" caption="Stock Adjustment By Serial Item: View and adjust serialized inventory items." >}}
+
 Adjust items tracked by serial number:
 - **Write-off Serial** - Remove from inventory
 - **Write-on Serial** - Add to inventory
@@ -191,6 +215,8 @@ Adjust items tracked by serial number:
 
 ### Batch Quantity Corrections
 
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-batch-item.png" alt="Stock Adjustment By Batch Item" caption="Stock Adjustment By Batch Item: Adjust batch-tracked inventory with expiry dates." >}}
+
 Adjust items tracked by batch number:
 - **Adjust Batch Quantity** - Increase or decrease
 - **Split Batch** - Divide into multiple batches
@@ -202,6 +228,8 @@ Adjust items tracked by batch number:
 ## Reset Moving Average
 
 ### Moving Average Cost Reset
+
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-reset-ma.png" alt="Reset Moving Average" caption="Reset Moving Average: Recalculate item costs for accurate inventory valuation." >}}
 
 Recalculate item costing:
 - **Reset MA** - Reset moving average for item

@@ -33,6 +33,7 @@ Provide clear, auditable guidelines for managing accounts, settlement configurat
 
 ## Key Features and Steps
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 - **There are few steps that need to be done
 {{< tabs items="1. Create New Cashbook,2. Create Settlement Method,3. Choose the Payment Type,4. Link the Payment Method with Branch" >}}
 
@@ -40,10 +41,15 @@ Provide clear, auditable guidelines for managing accounts, settlement configurat
 ### Creating a New Bank Account (Cashbook)
 
 =======
+=======
+>>>>>>> Stashed changes
 
 **There are few steps that need to be done:**
 
 ### 1. Creating a New Bank Account (Cashbook)
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 Proper setup of a new bank account ensures that all financial activity is traceable, accurate, and reflected in the general ledger.
 
@@ -61,6 +67,7 @@ After the GL code is prepared:
   6. Create
 
 Once saved, proceed to the mandatory configuration of the settlement method.
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 {{< /tab >}}
 
@@ -89,6 +96,8 @@ It is required for:
 The settlement type determines how the method is used in transactions.  
 If not assigned, it will not appear as an option.
 =======
+=======
+>>>>>>> Stashed changes
 
 ### 2. Payment Method Setup (Settlement Method)
 A Settlement Method defines how a bank account is used in payment or receipt transactions.

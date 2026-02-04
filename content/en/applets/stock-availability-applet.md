@@ -136,6 +136,8 @@ View stock levels with filters for:
 - **Item Category** - Filter by product categories
 - **Stock Status** - In stock, Low stock, Out of stock
 
+{{< figure src="/images/stock-availability-applet/stock-availability-listing.png" alt="Stock Availability Report showing item codes, locations, and stock balances" caption="Stock Availability Report - View real-time stock levels by item and location" >}}
+
 ### Key Columns
 
 | Column | Description |
@@ -201,6 +203,8 @@ See the complete picture:
 - **Expected (PO)** - Incoming from purchases
 - **Net Available** - What you can actually sell
 
+{{< figure src="/images/stock-availability-applet/so-po-availability.png" alt="Stock Availability with SO and PO showing item codes, companies, locations, stock balance, document types and numbers" caption="SO/PO Availability - View stock committed to Sales Orders and expected from Purchase Orders" >}}
+
 ---
 
 ## Serial Number Tracing
@@ -212,6 +216,8 @@ Track individual serialized items:
 - Current location
 - Associated documents
 - Warranty tracking
+
+{{< figure src="/images/stock-availability-applet/trace-serial-no-listing.png" alt="Trace Serial Number Stock Movement listing showing serial numbers, locations, dates, and quantities" caption="Trace Serial No Listing - Track complete movement history for serialized items" >}}
 
 ### Serial Number Balance
 
@@ -231,6 +237,8 @@ Track batched items:
 - Expiry tracking
 - Batch location distribution
 - Quality status
+
+{{< figure src="/images/stock-availability-applet/trace-batch-no-listing.png" alt="Trace Batch Number Stock Movement listing showing batch numbers, issue and expiry dates, locations, and quantities" caption="Trace Batch No Listing - Track batch movement with expiry date visibility" >}}
 
 ---
 

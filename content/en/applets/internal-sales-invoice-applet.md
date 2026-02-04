@@ -1,23 +1,23 @@
 ---
 title: "Internal Sales Invoice Applet"
-description: "Comprehensive sales transaction management system for invoicing, inventory logic, and financial posting"
+description: "Comprehensive sales transaction management system for invoicing, inventory logic, financial posting, and intercompany commerce."
 tags:
 - sales-management
 - invoice-processing
 - financial-posting
 - stock-control
-- order-to-cash
+- intercompany-transactions
 weight: 101
-date: 2026-01-26
+date: 2026-02-03
 draft: false
 ---
 
 ## Purpose and Overview
 
-The **Internal Sales Invoice Applet** is a powerful tool designed to manage the entire order-to-cash process. It moves beyond simple billing by integrating sales transactions with real-time inventory deduction, financial posting, and logistics coordination.
+The **Internal Sales Invoice Applet** is the engine room of the order-to-cash process. It moves beyond simple billing by integrating sales transactions with real-time inventory deduction, financial posting, logistics coordination, and intercompany transfers.
 
 {{< callout type="info" >}}
-**Core Concept**: The system bridges **Sales Operations** (Orders) with **Financial Control** (Ledgers) and **Logistics** (Stock Deductions) in a single workflow.
+**Core Concept**: The system bridges **Sales Operations** (Orders) with **Financial Control** (Ledgers), **Logistics** (Pick & Pack), and **Intercompany** logic in a single workflow.
 {{< /callout >}}
 
 {{< figure src="/images/internal-sales-invoice-applet/internal-sales-invoice-overview-infographic.png" alt="Internal Sales Invoice Overview Infographic" caption="Visual guide to the challenges, solutions, and benefits of the applet." >}}
@@ -29,152 +29,159 @@ The **Internal Sales Invoice Applet** is a powerful tool designed to manage the 
 ### Who Benefits from This Applet?
 
 **Sales Representatives:**
-- Quick conversion of orders to invoices via Knock-Off (KO)
-- Real-time visibility of stock availability
-- History tracking of customer transactions
-- Personalized default settings for faster entry
+- **Instant Conversion**: Convert confirmed orders to invoices via Knock-Off (KO) without manual re-entry.
+- **Strategic Efficiency**: Use **Templates** for recurring high-volume orders.
+- **Inventory Visibility**: See real-time stock availability to prevent over-promising.
 
 **Finance & Accounts Teams:**
-- Automated General Ledger (GL) postings
-- Accurate tax calculations and breakdowns
-- Contra settlement management (Credit/Debit notes)
-- Complete audit trails for every transaction
+- **Fiscal Automation**: Automated General Ledger (GL) postings upon finalization.
+- **Intercompany Reconciliation**: Seamless management of cross-entity billing.
+- **Compliance**: Accurate tax calculations and "Selling Below Cost" alerts.
+- **Auditability**: Complete forensic trails for every price change and status update.
 
 **Logistics & Warehouse Teams:**
-- Integrated pack queue management
-- Auto-generation of Delivery Orders (DO)
-- Direct link between invoicing and stock reporting
+- **Fulfillment Integration**: Approved invoices automatically populate the **Pick & Pack Queue**.
+- **Correction Tools**: **Swap Serial** allows inventory correction without financial reversals.
+- **Reporting**: Direct link between invoicing and stock movement reports.
 
 **Business Managers:**
-- Real-time sales performance monitoring
-- Strict access controls and permission management
-- Comprehensive activity logs to prevent fraud
+- **Control Tower**: Centralized **Approval Dashboard** for overriding credit limits or price floors.
+- **Performance**: Real-time sales performance monitoring.
+- **Security**: Strict access controls via permission sets (User, Team, Role).
 
 ### What Problems Does This Solve?
 
-**The Manual Invoicing Problem:**
-
-Traditional sales processing often suffers from disconnected systems. Common issues include:
-- **Data Re-entry Errors**: Manually typing data from orders to invoices leads to mistakes.
-- **Inventory Discrepancies**: Billed amounts don't match actual stock deductions.
-- **Delayed Reporting**: Financial data is only available after batch posting.
-- **Phantom Stock**: Selling items that physically exist but are systemically reserved.
+**The Disconnected Systems Problem:**
+Traditional sales processing often separates billing from inventory and accounting. This leads to data re-entry errors, phantom stock (selling what you don't have), and month-end reconciliation nightmares.
 
 **The Sales Invoice Applet Solution:**
-
-- **Instant Knock-off (KO)** - Convert Sales Orders to Invoices with zero manual data entry.
-- **Real-time Posting** - Financial ledgers and inventory levels update immediately upon finalization.
-- **Unified Workflow** - Pack queue and delivery logistics live within the same ecosystem.
-- **Forensic Audit Trail** - Track every click, status change, and user action.
-- **Flexible Settlement** - Handle complex payments via Contra, Credit Notes, or Vouchers.
+- **Single Source of Truth**: The invoice drives the GL, Stock Card, and Logistics Queue simultaneously.
+- **Unified Workflow**: Pack queue, delivery logistics, and intercompany transfers live in one ecosystem.
+- **Forensic Audit Trail**: Track every click, status change, and user action.
+- **Flexible Settlement**: Handle complex payments via Contra, Credit Notes, or Vouchers.
 
 ## Key Features Overview
 
 {{< cards >}}
   {{< card title="Transaction Listing" subtitle="View and track invoice status" link="#transaction-listing" >}}
 
-  {{< card title="Knock-off (KO)" subtitle="Convert orders to invoices instantly" link="#for-sales-teams-generate-invoices-quickly" >}}
+  {{< card title="Knock-off (KO)" subtitle="Convert orders to invoices instantly" link="#efficient-invoice-generation" >}}
 
-  {{< card title="Pack Queue" subtitle="Manage logistics and delivery" link="#logistic-features" >}}
+  {{< card title="Templates" subtitle="Create reusable invoice structures" link="#sales-invoice-templates" >}}
 
-  {{< card title="Contra Settlements" subtitle="Offset payments with credit notes" link="#contra-settlements" >}}
+  {{< card title="Pick & Pack" subtitle="Manage logistics and delivery" link="#pick--pack-queue" >}}
 
-  {{< card title="Document Tracing" subtitle="Audit financial journal postings" link="#trace-document" >}}
+  {{< card title="Intercompany" subtitle="Manage cross-entity transactions" link="#intercompany-transactions" >}}
 
-  {{< card title="Personalization" subtitle="Customize layouts and columns" link="#configuration--settings" >}}
+  {{< card title="Approvals" subtitle="Centralized permission requests" link="#approvals-management" >}}
 
-  {{< card title="Bulk Operations" subtitle="Import/Export large datasets" link="#bulk-importexport" >}}
+  {{< card title="Swap Serial" subtitle="Correct serial number issues" link="#swap-serial" >}}
 
-  {{< card title="Permission Control" subtitle="Granular access management" link="#administration--permissions" >}}
+  {{< card title="Document Tracing" subtitle="Audit financial journal postings" link="#document-tracing" >}}
 {{< /cards >}}
 
 ## Key Concepts
 
-### The Order-to-Cash Cycle
+### The Invoice Lifecycle
 
-Understanding how the Sales Invoice Applet fits into the bigger picture is crucial for effective management.
+Understanding the state transitions is crucial for effective management.
 
-| Stage | Component | Action | Impact |
+| Stage | Component | System Action | Financial Impact |
 |-------|-----------|--------|--------|
-| **1. Demand** | Sales Order (SLS OR) | Customer confirms order | Stock is **Reserved** (Not deducted) |
-| **2. Billing** | **Sales Invoice (SLS INV)** | **Invoice is Finalized** | **Stock Deducted** + **Revenue Recognized** |
-| **3. Fulfillment** | Delivery Order (DO) | Goods leave warehouse | Stock movement verified |
-| **4. Payment** | Receipt/Contra | Payment received | Customer Balance reduced |
+| **1. Creation** | Sales Order / Template | Confirmed demand | **Reserved Stock** (No GL impact) |
+| **2. Billing** | **Sales Invoice** | Finalization | **Stock Deducted** + **Revenue Recognized** + **Tax Posted** |
+| **3. Fulfillment** | Pick & Pack / DO | Goods leave warehouse | Physical stock movement verified |
+| **4. Payment** | Receipt/Contra | Payment received | Customer AR Balance reduced |
 
-{{< callout type="tip" >}}
-**Golden Rule**: The **Sales Invoice** is the "Source of Truth" for financial revenue and physical stock deduction. Until an invoice is "Finalized", no accounting entries are made.
-{{< /callout >}}
-
-### Understanding "Knock-Off" (KO)
-
-**"Knock-Off"** is the process of converting a source document (like a Sales Order) into a destination document (Sales Invoice) while maintaining a link between them.
-
-*   **Partial Knock-Off**: You can invoice 5 items from a 10-item order. The system keeps the remaining 5 as "Backorder".
-*   **Fully Knock-Off**: The entire order is invoiced, and the order status becomes "Closed".
-*   **Benefits**: Prevents over-invoicing and ensures every invoiced item traces back to an authorized order.
+### Intercompany Transactions
+For organizations with multiple entities, this applet handles the complexity of selling from Entity A to Entity B. It automates the corresponding AP/AR entries to ensure books balance across the group, eliminating the need for manual dual-entry.
 
 ---
 
-## Quick Start Guide
+## Workflow Guide
 
-Get up and running quickly with these essential workflows.
+This section outlines the primary workflows for different roles, focusing on best practices and system behavior.
 
-### For Sales Teams: Generate Invoices Quickly
+### Efficient Invoice Generation
 
-**Goal:** Create a valid sales invoice and deduct stock in 5 simple steps.
+**Goal:** Create valid sales invoices that accurately reflect inventory and financial obligations.
 
-1.  **Initialize**: Click the **Plus (+)** button in the main toolbar to open a blank invoice canvas.
-    {{< figure src="/images/internal-sales-invoice-applet/create-form.png" alt="Invoice Creation Form" caption="The streamlined interface for creating new sales invoices." >}}
-2.  **Select Customer**:
-    *   Navigate to the **Account** tab.
-    *   Search for the **Entity ID** or Name.
-    *   *System Action*: Automatically pulls in Bill-To/Ship-To addresses and Credit Terms.
-3.  **Add Items**:
-    *   Go to the **Line** tab and click **(+) Add Item**.
-    *   Select the Product and enter **Quantity**.
-    *   *Note*: For serialized items, select specific serial numbers from the dropdown.
-4.  **Review Financials**: Check the **Total Amount**, Tax details, and any applicable **Discounts**.
-5.  **Finalize**: Switch status from **Draft** to **Final**.
-    *   ✅ System assigns an Invoice Number.
-    *   ✅ Stock is deducted immediately.
-    *   ✅ Revenue is posted to GL.
+**1. Leveraging Templates & Knock-Offs**
+Instead of manual entry, prioritize using **Knock-Off (KO)** from Sales Orders or **Sales Invoice Templates**.
+*   **KO Logic**: Inherits all customer details, pricing, and terms from the source document.
+*   **Impact**: Ensures data consistency and prevents "creative invoicing" where details differ from the approved order.
 
-**Pro Tip:** Use the **Knock-off (KO)** button to instantly copy all details from an existing Sales Order instead of typing them manually.
+**2. The Creation Form**
+{{< figure src="/images/internal-sales-invoice-applet/create-form.png" alt="Invoice Creation Form" caption="The streamlined interface for creating new sales invoices." >}}
 
----
+*   **Entity Selection**: Selecting a customer auto-populates critical financial data: Credit Terms, Default Currency, and Billing Address.
+*   **Item Selection**:
+    *   **Stock Checking**: The system validates availability in real-time.
+    *   **Serialization**: For serialized inventory, specific serial numbers must be allocated here to ensure the correct unit is deducted.
+*   **Pricing**: Unit prices are typically locked to the Price Book. Overrides may trigger an approval workflow.
 
-### For Managers: Review and Control
-
-**Goal:** Ensure data integrity and audit compliance.
-
-1.  **Monitor Statuses**:
-    *   **Draft (Blue)**: Working copies; safe to edit or delete.
-    *   **Final (Green)**: Legal documents; locked and posted.
-    *   **Modification (Orange)**: Final docs with minor non-financial edits (e.g., updating remarks).
-2.  **Audit Sensitive Actions**:
-    *   Use the **Audit Trail** to see who modified prices or changed dates.
-    *   Check for "Selling Below Cost" warnings in the line items.
-3.  **Manage Exceptions**:
-    *   Approve special requests for **Backdating** or **Credit Limit Overrides** if you have Admin permissions.
+**3. Finalization & Posting**
+Switching status to **Final** is the "point of no return" for financial posting.
+*   **Immediate Actions**: Revenue is recognized, Tax is posted, and Inventory is deducted.
+*   **Logistics Trigger**: The item is visible in the Pick & Pack Queue.
 
 ---
 
-### For Admins: System Configuration
+### Management & Control
 
-**Goal:** Set up the environment for your branch or team.
+**Goal:** Maintain financial integrity and operational compliance.
 
-**Step 1: Define Default Branch** (`Personalization > Default Settings`)
-- Set the primary business unit and warehouse location.
-- *Why?* Reduces errors by auto-selecting the correct stock source for every new invoice.
+**1. Status Monitoring**
+*   **Draft**: Working documents. No financial impact.
+*   **Final**: Legal documents. Locked. Requires **Voiding** to reverse.
+*   **Modification**: Limited editing of non-financial fields (e.g., Remarks, Delivery Instructions) on Final documents.
 
-**Step 2: Configure Permissions** (`Settings > Permission Wizard`)
-- **Allow Change Date**: decide if users can backdate invoices (usually **OFF** for junior staff).
-- **Allow Price Edit**: decide if sales reps can change system prices (usually **OFF** to prevent unauthorized discounts).
-- **View Cost**: decide if users can see the profit margin per item.
+**2. Handling Exceptions (Approvals)**
+Sensitive actions automatically trigger the **Approval Workflow**.
+*   **Triggers**: Exceeding Credit Limit, Selling Below Cost, Backdating Transaction Date.
+*   **Action**: Managers review these in the **Approval Permission** dashboard.
+*   **Result**: The invoice remains in a "Pending" state until authorized. This prevents high-risk transactions from slipping through.
 
-**Step 3: Set Up Printing Templates**
-- Configure the default layouts for **Tax Invoices** and **Delivery Orders**.
-- Add company logos and footer terms (e.g., "Goods sold are not returnable").
+---
+
+## Feature Deep Dive
+
+### Sales Invoice Templates
+Reduce repetitive data entry by standardizing common sales scenarios.
+-   **Strategic Use**: Create templates for "Standard Service Packs" or "Monthly Retainers".
+-   **Organization**: Share templates with specific teams to ensure everyone sells the same package structure.
+
+### Intercompany Transactions
+Manually handle complex inter-entity billing via the **Intercompany** route.
+-   **Scenario**: HQ purchasing bulk inventory and selling it to regional branches.
+-   **System Logic**: Accessing the Intercompany route allows you to select internal entities as customers. The system validates that the "Sales" in HQ corresponds to a potential "Purchase" in the destination entity.
+
+### Pick & Pack Queue
+A dedicated view for warehouse operations to close the loop between "Sold" and "Shipped".
+-   **Process**: Items from approved invoices appear here.
+-   **Action**: Warehouse staff mark items as "Picked" (gathered) and "Packed" (ready for courier).
+-   **Outcome**: Generates the Delivery Order (DO) and updates the shipment status, providing visibility to Sales teams.
+
+### Swap Serial
+A critical tool for correcting inventory errors without financial rollback.
+-   **The Problem**: You sold "Serial A" physically, but the invoice says "Serial B".
+-   **The Fix**: Instead of Voiding (which messes up the accounts for a non-financial error), use **Swap Serial**.
+-   **Result**: The system swaps the serial numbers in the backend inventory records while keeping the Invoice and GL entries intact.
+
+### Contra Settlements
+Contra Settlement allows you to pay an invoice using *other documents* instead of cash.
+*   **Use Case**: You buy raw materials from Supplier X and sell finished goods to Customer X (same entity).
+*   **Execution**: In the **Contra** tab, "Knock Off" the Invoice against a Credit Note or Purchase Bill to offset the balance.
+
+### Document Tracing
+The **Trace** button is your audit best friend.
+*   **Financials**: Review the exact Journal Entries (Debit AR / Credit Sales) generated.
+*   **Inventory**: Verify which Batch or Serial Number was deducted from which Location.
+*   **Costing**: specific Cost of Goods Sold (COGS) calculation for that transaction.
+
+### Line Reports
+{{< figure src="/images/internal-sales-invoice-applet/reports-page.png" alt="Line Reports Listing" caption="Detailed listing of all invoice line items for granular reporting." >}}
+For deep analysis, the Line Reports view breaks down invoices into individual row items. This allows for granular reporting on "Product X sales by Region" or "Salesman Y performance by Item Category".
 
 ---
 
@@ -185,68 +192,13 @@ Get up and running quickly with these essential workflows.
 {{< figure src="/images/internal-sales-invoice-applet/settings-page.png" alt="Applet Settings" caption="Configure default branches, layouts, and permissions." >}}
 
 ### Personalization Menu
-
 Access the **Personalization** menu to adapt the applet to your specific role.
+-   **Default Settings**: Set Default Branch and Location to avoid repetitive selection.
+-   **View Layouts**: Switch between Horizontal (Data-dense) or Vertical (Visual) orientation.
 
-**Default Settings:**
-Save time by locking in your most-used parameters:
-- **Default Branch**: Business unit for recording sales.
-- **Default Location**: Warehouse for stock draws.
-- **Delivery Branch**: Default hub for logistics documents.
-
-**View Layouts:**
-- **UI Orientation**: Switch between **Horizontal** (Standard tabs) or **Vertical** (Widescreen optimized).
-- **Layout Mode**:
-    - **Single-Page**: Clean focus for high-speed retail entry.
-    - **Double-Page**: Split-screen for complex B2B invoicing (view Invoice and Stock list side-by-side).
-
-**Column Manager:**
-- **Visibility**: Tick/Untick columns to hide unused fields (e.g., hide "Project Code" if not used).
-- **Ordering**: Drag and drop headers to prioritize critical info (e.g., move "Total Amount" to the left).
-
----
-
-## Detailed Feature Guides
-
-### Contra Settlements
-
-**What is it?**
-Contra Settlement allows you to pay an invoice using *other documents* instead of cash or bank transfer. This is common in B2B trade where you buy and sell to the same partner.
-
-**How to use it:**
-1.  Open a **Draft** Invoice.
-2.  Go to the **Contra** tab.
-3.  Select **Knock-off (KO)**.
-4.  Choose a valid **Credit Note** or **Receipt Voucher** from the list.
-5.  Enter the amount to offset.
-6.  The "Balance Due" of the invoice will decrease accordingly.
-
-### Document Tracing
-
-**Why trace?**
-To verify that the system performed the correct accounting and inventory moves.
-
-**How to trace:**
-Click the **Trace** button on any **Final** invoice to see:
-*   **Journal Postings**: The exact Debit (Customer) and Credit (Sales) entries.
-*   **Stock Movement**: Which specific batch or serial number was deducted.
-*   **Costing**: The cost of goods sold (COGS) calculation for that specific transaction.
-
----
-
-## FAQ
-
-**Q: Can I edit an invoice after finalizing it?**
-A: **No, for financial fields.** Price, Quantity, Item, and Customer cannot be changed once Final. You must **Void** the invoice (reversing all entries) and create a new one. Non-financial fields like *Remarks* or *Salesman* can be edited, changing the status to "Modification".
-
-**Q: Why is the "Transaction Date" greyed out?**
-A: To prevent accounting fraud or accidental period closures. Backdating requires the specific **"Allow Change Transaction Date"** permission. Contact your Admin if you need this enabled.
-
-**Q: I have sold the wrong item, but the goods haven't left the warehouse. What do I do?**
-A: **Void** the invoice immediately. This will return the stock to the system. Then create a new invoice with the correct item. Do *not* use a Credit Note for this if the goods never left, as Voiding is cleaner for audit trails.
-
-**Q: How do I handle partial payments?**
-A: The invoice itself records the full sale. Payments are handled in the **Official Receipt** applet. However, you can use the **Contra** tab on the invoice to offset any *deposits* previously collected.
-
-**Q: Can I print a Delivery Order (DO) without showing prices?**
-A: Yes. When clicking the **Printer Icon**, select the **Delivery Order** template. This template is designed for logistics staff and hides all financial information (Unit Price, Total) while showing Item Codes, Descriptions, and Quantities.
+### Admin Configuration
+System Administrators can fine-tune behavior via the Settings panel.
+-   **Field Settings**: Toggle visibility of Profit Margin, Cost Price, etc., based on user roles.
+-   **Workflow Settings**: Define custom logic for approval flows (e.g., "Invoices > $10k require Manager").
+-   **Printable Format Settings**: Customize the Tax Invoice and Delivery Order PDF layouts with company branding.
+-   **Webhooks**: Set up event-driven notifications to external systems (e.g., "On Finalize -> Send to Slack").
