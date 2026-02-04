@@ -91,6 +91,9 @@ Browse → Add to Cart → Checkout → Pending Approval → Approved → Fulfil
 1. **Browse**: Navigate to **Catalog** and find items
 2. **Add to Cart**: Click **"Add"** for each needed item
 3. **Review Cart**: Check quantities and adjust if needed
+
+![Shopping Cart Listing](/images/shopping-cart-applet/shopping-cart-listing.png)
+
 4. **Checkout**: 
    - Add **Purpose/Reason**
    - Select **Delivery Location**
@@ -114,6 +117,38 @@ Your virtual cart to collect items before submitting:
 - Adjust quantities
 - Save for later
 - View estimated costs
+
+### Shopping Cart Listing
+
+View all shopping cart documents with document number, branch, posting status, and creation date.
+
+![Shopping Cart Listing](/images/shopping-cart-applet/shopping-cart-listing.png)
+
+### Edit/View Shopping Cart
+
+Click on any cart to view or edit its details.
+
+#### Main Details
+
+![Shopping Cart Edit Details](/images/shopping-cart-applet/shopping-cart-edit-details.png)
+
+#### Line Items
+
+View items added to the cart with quantities and pricing.
+
+![Shopping Cart Line Items](/images/shopping-cart-applet/shopping-cart-edit-lines.png)
+
+#### Payment
+
+Review payment and pricing summary.
+
+![Shopping Cart Payment](/images/shopping-cart-applet/shopping-cart-edit-payment.png)
+
+### Create New Shopping Cart
+
+Start a new cart with customer details, identity, and currency settings.
+
+![Shopping Cart Create](/images/shopping-cart-applet/shopping-cart-create-main.png)
 
 ---
 
@@ -159,6 +194,12 @@ Access past orders:
 ---
 
 ## Configuration & Settings
+
+### Personalization
+
+Configure applet behavior and display preferences.
+
+![Shopping Cart Personalization](/images/shopping-cart-applet/shopping-cart-personalization.png)
 
 ### Catalog Settings
 - Manage available items
