@@ -8,7 +8,7 @@ tags:
 - stock-control
 - intercompany-transactions
 weight: 101
-date: 2026-02-03
+date: 2026-02-06
 draft: false
 ---
 
@@ -202,3 +202,437 @@ System Administrators can fine-tune behavior via the Settings panel.
 -   **Workflow Settings**: Define custom logic for approval flows (e.g., "Invoices > $10k require Manager").
 -   **Printable Format Settings**: Customize the Tax Invoice and Delivery Order PDF layouts with company branding.
 -   **Webhooks**: Set up event-driven notifications to external systems (e.g., "On Finalize -> Send to Slack").
+
+---
+
+## Applet Reference
+
+This section provides a comprehensive reference of all menu items, settings, permissions, and configurable features available in the Internal Sales Invoice Applet.
+
+### Menu Items
+
+The following main navigation menu items are available in the applet:
+
+| Menu Item | Description | Route Path |
+|-----------|-------------|------------|
+| **Sales Invoice** | Main listing of all sales invoice transactions | `/sales-invoice` |
+| **Line Items** | Detailed line-by-line item reports for granular analysis | `/line-items` |
+| **Pick & Pack Queue** | Fulfillment queue for warehouse pick and pack operations | `/pick-pack-queue` |
+| **Sales Invoice Template** | Create and manage reusable invoice templates | `/sales-invoice-template` |
+| **Approval Permission** | Centralized dashboard for pending approvals | `/approval-permission` |
+| **File Import** | Bulk import sales invoices from external files | `/file-import` |
+| **Intercompany** | Manage intercompany sales transactions between entities | `/intercompany` |
+| **File Export** | Export sales invoice data to external formats | `/file-export` |
+| **Swap Serial** | Correct serial number assignments without financial reversal | `/swap-serial` |
+| **Settings** | Administrative configuration panel | `/settings` |
+| **Personalization** | User-specific preference settings | `/personalization` |
+
+### Settings Sub-Menu Items
+
+The Settings panel contains the following configuration sections:
+
+| Setting | Description | Route Path |
+|---------|-------------|------------|
+| **Default Selection** | Configure default branch, location, and other selection defaults | `/settings/default-selection` |
+| **Field Settings** | Toggle visibility and behavior of form fields | `/settings/field-settings` |
+| **Printable Format Settings** | Customize PDF layouts for Tax Invoice, Delivery Order, etc. | `/settings/printable-format-settings` |
+| **Email Template** | Configure automated email templates for notifications | `/settings/email-template` |
+| **Webhook** | Set up event-driven integrations with external systems | `/settings/webhook` |
+| **Feature Visibility** | Control which features are visible to users | `/settings/feature-visibility` |
+| **Branch Settings** | Configure branch-specific behaviors and defaults | `/settings/branch-settings` |
+| **Workflow Settings** | Define approval workflows and business rules | `/settings/workflow-settings` |
+| **Permission Set Listing** | Manage predefined permission sets | `/settings/permission-set-listing` |
+| **User Permission Listing** | Configure individual user permissions | `/settings/user-permission-listing` |
+| **Team Permission Listing** | Configure team-based permissions | `/settings/team-permission-listing` |
+| **Role Permission Listing** | Configure role-based permissions | `/settings/role-permission-listing` |
+| **Client-Side Permission Listing** | Manage UI/display-level permissions | `/settings/client-side-permission-listing` |
+| **Role Pricing Scheme Link** | Link roles to specific pricing schemes | `/settings/role-pricing-scheme-link-listing` |
+| **Permission Wizard** | Guided setup for permission configuration | `/settings/permission-wizard-listing` |
+| **Release Notes** | View applet version history and updates | `/settings/release-notes` |
+| **Applet Log** | Audit log of applet activities and changes | `/settings/applet-log` |
+
+---
+
+## Settings Configuration Guide
+
+This section provides detailed explanations of each settings option, including their purpose, use cases, and best practices for configuration.
+
+### Default Selection Settings
+
+**Purpose:** Streamline data entry by pre-populating commonly used values, reducing repetitive selections and minimizing user error.
+
+**Key Configurations:**
+
+**Default Branch & Location**
+- **Purpose**: Automatically populate the operating branch and inventory location when creating new invoices
+- **Use Case**: Sales teams operating from a single branch avoid selecting the same branch repeatedly
+- **Best Practice**: Configure per user or role based on their primary working location
+
+**Default Price Book**
+- **Purpose**: Automatically apply the correct pricing tier when adding items to invoices
+- **Use Case**: Different sales channels (retail, wholesale, online) can have different default price books
+- **Configuration**: Set via `DEFAULT_PRICEBOOK` setting
+- **Impact**: Ensures pricing consistency and prevents manual pricing errors
+
+**Default Orientation** 
+- **Purpose**: Control the default layout mode (Horizontal vs Vertical) for the invoice form
+- **Options**: 
+  - `HORIZONTAL`: Data-dense, suitable for wide screens and power users
+  - `VERTICAL`: Visual-friendly, better for touch devices and new users
+- **Configuration**: `DEFAULT_ORIENTATION` and `VERTICAL_ORIENTATION` settings
+- **Best Practice**: Horizontal for desktop users, Vertical for tablet/mobile access
+
+---
+
+### Field Settings
+
+**Purpose:** Control which fields are visible, required, or hidden based on user roles and business requirements. This enforces data governance and simplifies the user interface.
+
+**Key Use Cases:**
+
+**Sensitive Financial Data**
+- Hide **Cost Price** and **Profit Margin** from sales representatives
+- Show these fields only to managers and finance team
+- **Benefit**: Prevents disclosure of sensitive margins to external parties
+
+**Regulatory Compliance**
+- Make **Tax ID** and **E-Invoice Fields** mandatory for certain customer types
+- Enforce **Serial Number** tracking for regulated products
+- **Benefit**: Ensures compliance with tax and industry regulations
+
+**Workflow Simplification**
+- Hide unused fields (e.g., **Shipping Details** for digital products)
+- Make **Purchase Order Number** mandatory for B2B customers
+- **Benefit**: Reduces clutter and prevents incomplete transactions
+
+**Configuration Approach:**
+1. Identify user roles (Sales, Finance, Admin)
+2. Map business rules to field visibility
+3. Test workflows after configuration changes
+
+---
+
+### Printable Format Settings
+
+**Purpose:** Customize the appearance and content of printed/PDF documents to match company branding and meet legal requirements.
+
+**Supported Document Types:**
+
+**Tax Invoice**
+- **Purpose**: Official billing document for customers
+- **Customization Options**:
+  - Company logo and branding colors
+  - Tax registration details and disclaimers
+  - Payment terms and bank account information
+  - Custom headers/footers for different branches
+- **Use Case**: Multi-entity businesses need different branding per legal entity
+
+**Delivery Order (DO)**
+- **Purpose**: Shipping document for warehouse and logistics
+- **Customization Options**:
+  - Barcode/QR code for warehouse scanning
+  - Packing instructions and handling notes
+  - Multi-language support for international shipments
+- **Use Case**: Streamline warehouse operations with clear picking instructions
+
+**Custom Formats**
+- Create specialized documents (Proforma Invoice, Commercial Invoice, Packing List)
+- **Use Case**: Export businesses requiring customs documentation
+- **Configuration**: Define custom templates for specific customer groups or product categories
+
+**Best Practices:**
+- Test printable formats before going live
+- Maintain separate templates for different regulatory jurisdictions
+- Include all legally required information (tax ID, business registration, etc.)
+
+---
+
+### Email Template Settings
+
+**Purpose:** Automate customer communications with consistent, professional messaging at key transaction milestones.
+
+**Common Email Triggers:**
+
+**Invoice Finalized**
+- Automatically send invoice PDF to customer email
+- Include payment instructions and due date
+- **Benefit**: Immediate delivery, reduces manual follow-up
+
+**Payment Reminder**
+- Escalating reminders (7 days before, on due date, 7 days overdue)
+- Configurable tone (polite → firm)
+- **Benefit**: Improves cash flow without manual intervention
+
+**Approval Requests**
+- Notify managers when invoices require approval (credit limit exceeded, below-cost pricing)
+- Include approval link for quick action
+- **Benefit**: Reduces approval bottlenecks
+
+**Shipment Notifications**
+- Alert customers when orders are packed and ready for delivery
+- Include tracking number and estimated delivery date
+- **Benefit**: Enhances customer experience and reduces support tickets
+
+**Configuration Elements:**
+- **Subject Line**: Dynamic variables (Invoice Number, Customer Name, Amount)
+- **Body Template**: HTML support for rich formatting
+- **Attachments**: Automatically attach invoice PDF
+- **Conditions**: Send only if specific criteria met (e.g., Amount > $1000)
+
+---
+
+### Webhook Settings
+
+**Purpose:** Enable real-time integration with external systems by sending event notifications when key actions occur in the applet.
+
+**Common Webhook Use Cases:**
+
+**Accounting System Integration**
+- **Trigger**: Invoice finalized
+- **Action**: Post invoice data to external accounting software (QuickBooks, Xero)
+- **Benefit**: Eliminates double-entry, ensures real-time sync
+
+**CRM Updates**
+- **Trigger**: Large invoice created (>$10,000)
+- **Action**: Update customer account in Salesforce with latest transaction
+- **Benefit**: Sales team has complete customer view
+
+**Slack/Teams Notifications**
+- **Trigger**: Invoice requires approval
+- **Action**: Post message to #approvals channel
+- **Benefit**: Faster response time from management
+
+**Inventory Replenishment**
+- **Trigger**: Invoice depletes stock below reorder point
+- **Action**: Create purchase requisition in procurement system
+- **Benefit**: Automated inventory management
+
+**Configuration:**
+- **Webhook URL**: Endpoint to receive event data
+- **Events**: Select which actions trigger the webhook (create, update, finalize, void)
+- **Payload**: JSON format with invoice details
+- **Authentication**: API key or OAuth for secure transmission
+- **Retries**: Automatic retry on failure (exponential backoff)
+
+---
+
+### Feature Visibility Settings
+
+**Purpose:** Control which applet features are accessible to users, allowing you to enable/disable functionality based on business needs and user maturity.
+
+**Configurable Features:**
+
+**Pick & Pack Queue** (`HIDE_PICK_PACK_QUEUE_MENU`)
+- **Show When**: Using integrated warehouse management
+- **Hide When**: Using external 3PL or manual fulfillment
+- **Benefit**: Simplifies interface for non-warehouse users
+
+**Sales Invoice Template** (`HIDE_SALES_INVOICE_TEMPLATE_MENU`)
+- **Show When**: Selling recurring services or standard packages
+- **Hide When**: Every sale is custom/one-off
+- **Benefit**: Reduces complexity for businesses without template usage
+
+**File Import** (`HIDE_FILE_IMPORT_MENU`)
+- **Show When**: Bulk importing invoices from external systems
+- **Hide When**: All invoices created manually or via API
+- **Benefit**: Prevents accidental bulk imports by untrained users
+
+**Intercompany Transactions** (`HIDE_INTERCOMPANY_MENU`)
+- **Show When**: Multiple legal entities with inter-entity trading
+- **Hide When**: Single entity operation
+- **Benefit**: Avoids confusion for single-entity businesses
+
+**File Export** (`HIDE_FILE_EXPORT_MENU`)
+- **Show When**: Need to export invoice data to external analytics tools
+- **Hide When**: No external data requirements
+- **Benefit**: Reduces menu clutter
+
+**Swap Serial** (`HIDE_SWAP_SERIAL_NUMBER`)
+- **Show When**: Selling serialized inventory (electronics, vehicles)
+- **Hide When**: No serial number tracking required
+- **Benefit**: Prevents access to advanced inventory corrections by unauthorized users
+
+---
+
+### Branch Settings
+
+**Purpose:** Configure branch-specific business rules, defaults, and operational parameters for multi-branch organizations.
+
+**Key Configurations:**
+
+**Branch-Level Pricing**
+- Different branches may have different cost structures or market pricing
+- **Example**: Urban branch uses premium pricing, rural branch uses standard pricing
+
+**Branch-Level Inventory**
+- Control whether branches can fulfill orders from other branch inventory
+- **Cross-Branch Transfer**: Enable/disable inter-branch stock transfers
+- **Benefit**: Prevents overselling at branch level
+
+**Branch-Level Permissions**
+- Sales team at Branch A can only view/edit Branch A invoices
+- Managers can view all branches
+- **Benefit**: Data segregation for security and performance
+
+**Branch-Level Defaults**
+- Default shipping carrier per branch
+- Default payment terms per branch region
+- **Benefit**: Operational flexibility while maintaining consistency
+
+---
+
+### Workflow Settings
+
+**Purpose:** Define business rules and approval workflows to enforce governance and prevent high-risk transactions.
+
+**Common Approval Workflows:**
+
+**Credit Limit Exceeded**
+- **Rule**: Invoice total + customer outstanding > credit limit
+- **Action**: Require manager approval before finalization
+- **Approver**: Credit controller or finance manager
+- **Benefit**: Prevents bad debt
+
+**Below-Cost Pricing**
+- **Rule**: Unit price < cost price
+- **Action**: Require approval with justification
+- **Approver**: Sales director
+- **Benefit**: Protects profit margins, prevents pricing errors
+
+**High-Value Transactions**
+- **Rule**: Invoice amount > $50,000
+- **Action**: Dual approval (Sales Manager + Finance Manager)
+- **Benefit**: Additional scrutiny for large transactions
+
+**Backdated Transactions**
+- **Rule**: Transaction date < today - 7 days
+- **Action**: Require approval from accounts manager
+- **Benefit**: Prevents financial period manipulation
+
+**Configuration:**
+- **Threshold Values**: Define dollar amounts, percentage discounts, date ranges
+- **Approver Hierarchy**: Primary approver, escalation approver
+- **Timeout**: Auto-reject if not approved within X days
+- **Notification**: Email/webhook when approval needed
+
+---
+
+### Permission Settings (Advanced)
+
+The applet provides **four layers** of permission control for granular access management:
+
+**Permission Sets**
+- **Purpose**: Pre-configured bundles of permissions that can be assigned in bulk
+- **Example**: "Sales Team" permission set includes READ + CREATE, excludes DELETE
+- **Use Case**: Quickly onboard new users with consistent permissions
+
+**User Permissions**
+- **Purpose**: Override or extend permissions for specific individuals
+- **Example**: Give one senior salesperson DELETE permission while others don't have it
+- **Use Case**: Handle exceptions without creating new roles
+
+**Team Permissions**
+- **Purpose**: Grant permissions based on team membership (auto-assigned)
+- **Example**: "North Region Sales Team" can only see North region customers
+- **Use Case**: Automatic access control as team composition changes
+
+**Role Permissions**
+- **Purpose**: Permissions tied to organizational roles (Sales Rep, Manager, Admin)
+- **Example**: "Manager" role has approval authority
+- **Use Case**: Standard organizational hierarchy mapping
+
+**Client-Side Permissions**
+- **Purpose**: UI-level feature visibility (doesn't replace API-level security)
+- **Example**: Hide "Void Invoice" button from users without void permission
+- **Use Case**: Cleaner UI by hiding inaccessible features
+
+**Role Pricing Scheme Link**
+- **Purpose**: Automatically apply pricing tier based on user role
+- **Example**: "Retail Sales" role always uses "Standard Pricing", "Wholesale Sales" role uses "Bulk Pricing"
+- **Use Case**: Enforce pricing policy without manual price book selection
+
+---
+
+### Release Notes & Applet Log
+
+**Release Notes**
+- **Purpose**: Track applet version history and feature changes
+- **Contents**: New features, bug fixes, breaking changes
+- **Audience**: Administrators and power users
+- **Use Case**: Plan user training around new features
+
+**Applet Log**
+- **Purpose**: Forensic audit trail of system changes and administrative actions
+- **Logged Actions**: 
+  - Settings changes (who changed what, when)
+  - Permission modifications
+  - Feature enable/disable events
+- **Retention**: Permanent record for compliance
+- **Use Case**: Troubleshoot issues, investigate unauthorized changes, demonstrate compliance to auditors
+
+### Personalization Sub-Menu Items
+
+User-level personalization options:
+
+| Setting | Description | Route Path |
+|---------|-------------|------------|
+| **Personal Default Selection** | Set personal defaults for branch, location, etc. | `/personalization/personal-default-selection` |
+| **Sidebar** | Customize sidebar layout and menu visibility | `/personalization/sidebar` |
+
+### Permission Types
+
+The applet supports **four permission levels** for granular access control:
+
+| Permission Type | Description |
+|-----------------|-------------|
+| **Permission Set** | Predefined bundles of permissions that can be assigned to users/roles |
+| **User Permission** | Direct permission assignments to individual users |
+| **Team Permission** | Permissions granted to all members of a team |
+| **Role Permission** | Permissions based on organizational roles |
+| **Client-Side Permission** | UI-level feature visibility controls |
+| **Role Pricing Scheme Link** | Links roles to specific pricing tiers |
+
+#### Technical API Permission Codes
+For system administrators and developers configuration backend permissions:
+
+| Permission Code | Purpose |
+|-----------------|---------|
+| `TNT_API_DOC_INTERNAL_SALES_INVOICE_READ_TGT_GUID` | Read access to sales invoice documents |
+| `TNT_API_DOC_INTERNAL_SALES_INVOICE_CREATE_TGT_GUID` | Permission to create new invoices |
+| `TNT_API_DOC_INTERNAL_SALES_INVOICE_UPDATE_TGT_GUID` | Permission to update/edit existing invoices |
+| `TNT_API_DOC_INTERNAL_SALES_INVOICE_DELIVERY_BRANCH_READ` | Access to delivery branch information |
+| `TNT_TENANT_ADMIN` | Full tenant administration access |
+| `TNT_TENANT_OWNER` | Owner-level access |
+
+### Feature Visibility Toggles
+
+The following features can be toggled on/off via client-side permissions or settings:
+
+| Feature Code | Menu/Feature Controlled |
+|--------------|------------------------|
+| `SHOW_PICK_PACK_QUEUE_MENU` | Pick & Pack Queue menu visibility |
+| `SHOW_SALES_INVOICE_TEMPLATE_MENU` | Sales Invoice Template menu visibility |
+| `SHOW_FILE_IMPORT_MENU` | File Import menu visibility |
+| `SHOW_INTERCOMPANY_MENU` | Intercompany menu visibility |
+| `SHOW_FILE_EXPORT_MENU` | File Export menu visibility |
+| `SHOW_SWAP_SERIAL_NUMBER` | Swap Serial menu visibility |
+
+These can be configured via:
+- **Client-Side Permission Settings**: Assign feature toggles to roles
+- **Master Settings**: Global enable/disable via `HIDE_*` settings
+
+### Printable Formats
+
+The applet supports customizable printable document formats:
+
+| Document Type | Purpose |
+|---------------|---------|
+| **Tax Invoice** | Standard sales invoice for customers with tax details |
+| **Delivery Order (DO)** | Shipping document for logistics and fulfillment |
+| **Custom Formats** | Additional formats configurable via Printable Format Settings |
+
+Printable formats can be customized with:
+- Company branding (logo, colors)
+- Custom field layouts
+- Dynamic content blocks
+- Per-branch configurations
