@@ -1367,6 +1367,394 @@ Ahmad    | Leadership Course   | RM 1,200  | Completed | Promoted after!
 
 {{< figure src="/images/claim-applet/settings-page.png" alt="Applet Settings page showing all configuration options including Claim Accounts, Entitlements, Approval Settings, and more" caption="Settings Overview: Access all configuration options from the Settings menu in the sidebar" >}}
 
+#### Claim Accounts (`Settings > Claim Accounts`)
+
+{{< figure src="/images/claim-applet/claim-accounts-settings.png" alt="Claim Accounts Settings showing configured funds" caption="Claim Accounts: Define the funding pools for employee claims" >}}
+
+**Claim Accounts** are the foundation of your claim system—they define the "money pools" that fund employee claims. Think of each account as a separate budget or fund (e.g., Medical Fund, Transport Fund, Training Fund).
+
+**Why Claim Accounts Matter:**
+- Each account has its own balance and rules
+- Employees are linked to accounts via entitlements
+- Claims draw from specific accounts automatically
+- Enables separate tracking of different benefit types
+
+**Creating a Claim Account - Field Guide:**
+
+| Field | Purpose | Example |
+|-------|---------|---------|
+| **Account Name** | Display name for the fund | "Medical & Wellness Fund" |
+| **Account Code** | Unique identifier | MED-001 |
+| **Currency** | Account currency | MYR |
+| **Display Balance** | Show employees their remaining balance | Yes (recommended) |
+| **Description** | Admin notes about this account | "Covers GP, Dental, Optical" |
+
+---
+
+**Claim Account Edit - Tabs Overview:**
+
+When you edit a Claim Account, you'll see the following tabs:
+
+| Tab | Purpose |
+|-----|---------|
+| **Main Details** | Basic account information (name, code, currency, description) |
+| **Claim Entitlement** | Configure entitlements linked to this account |
+| **Account Conversion** | Define which other accounts this account can convert to |
+| **HR Claim Approval** | Assign HR approvers for claims from this account |
+| **Employee Balance** | View employee balances for this account |
+| **Claim Items** | View which claim items use this account |
+
+---
+
+##### Account Conversion (`Settings > Claim Accounts > [Account] > Account Conversion`)
+
+**What is Account Conversion?**
+
+Account Conversion defines which other claim accounts the current account's balance can be converted to. When configured, employees can transfer their unused entitlement from one account to another (e.g., transfer Medical Fund balance to Training Fund).
+
+{{< callout type="info" >}}
+**Why This Feature Exists**: Employees often have unused balances in one benefit account while needing more in another. Account Conversion provides flexibility by allowing pre-approved transfers between accounts.
+{{< /callout >}}
+
+---
+
+**How It Works:**
+
+1. Admin defines conversion rules for each claim account
+2. Each rule specifies which target account(s) money can flow into
+3. When employees have remaining balance, they can request conversion to allowed target accounts
+4. The converted amount is deducted from the source account and added to the target account
+
+---
+
+**How to Set Up Account Conversion:**
+
+1. Navigate to `Settings > Claim Accounts`
+2. Select the **source account** (where balance comes FROM)
+3. Click on the **Account Conversion** tab
+4. Click **"+ Add"** to create a new conversion rule
+5. Fill in the form fields:
+
+| Field | Description | Example |
+|-------|-------------|---------|
+| **Name** | Descriptive name for this conversion rule | "Medical to Training" |
+| **Main Account** | The source account (auto-filled, read-only) | "Medical & Wellness Fund" |
+| **Convertible Account** | Select the target account for conversion | "Professional Development Fund" |
+
+6. Click **CREATE** to save the rule
+
+---
+
+**Example Setup:**
+
+To allow employees to convert Medical Fund → Training Fund:
+
+1. Go to `Settings > Claim Accounts`
+2. Select "Medical & Wellness Fund"
+3. Click **Account Conversion** tab
+4. Click **+ Add**
+5. Enter:
+   - **Name**: "Medical to Training Conversion"
+   - **Main Account**: Medical & Wellness Fund (auto-filled)
+   - **Convertible Account**: Professional Development Fund
+6. Click **CREATE**
+
+Now employees with balances in Medical Fund can convert to Training Fund.
+
+---
+
+**Best Practices:**
+
+✓ **Plan Conversion Paths Carefully**: Decide which accounts should allow conversion and in which direction
+
+✓ **Communicate to Employees**: Announce which conversions are available and any deadlines
+
+✓ **Review Regularly**: Monitor conversion patterns to understand employee benefit preferences
+
+---
+
+##### HR Claim Approval Setting (`Settings > Claim Accounts > [Account] > HR Claim Approval`)
+
+**What is HR Claim Approval Setting?**
+
+HR Claim Approval Setting allows you to assign specific employees as HR approvers for claims submitted against this claim account. When configured, claims from this account will route through the assigned HR approvers based on their approval level.
+
+{{< callout type="info" >}}
+**Why This Feature Exists**: For certain claim accounts (especially medical or sensitive benefits), HR oversight is required. This feature lets you designate who in HR can approve claims and at what level in the approval chain.
+{{< /callout >}}
+
+---
+
+**How It Works:**
+
+1. Admin assigns employees as HR approvers for a specific claim account
+2. Each approver is assigned an **Approval Level** (1, 2, 3, etc.)
+3. When claims are submitted to this account, they route through the assigned approvers in order of their approval level
+4. Level 1 approvers review first, then Level 2, and so on
+
+---
+
+**How to Add an HR Approver:**
+
+1. Navigate to `Settings > Claim Accounts`
+2. Select the claim account (e.g., Medical Fund)
+3. Click on **HR Claim Approval** tab
+4. Click **"+ Add"** to add an approver
+5. A dialog will open to select an employee
+6. Fill in the form fields:
+
+| Field | Description | Example |
+|-------|-------------|---------|
+| **Employee Name** | The employee designated as approver (read-only after selection) | "John Smith" |
+| **Rank** | Employee's rank/position (read-only, from profile) | "HR Manager" |
+| **Email** | Employee's email for notifications (read-only) | "john.smith@company.com" |
+| **Approval Level** | Order in approval chain (1 = first, 2 = second) | 1 |
+
+7. Click **CREATE** to save
+
+---
+
+**Example Setup:**
+
+For a Medical Fund that requires two-level HR approval:
+
+1. **Level 1 Approver**: HR Executive (Sarah) - Reviews all claims first
+2. **Level 2 Approver**: HR Manager (John) - Final HR approval for escalated/large claims
+
+Setup steps:
+1. Go to `Settings > Claim Accounts > Medical Fund`
+2. Click **HR Claim Approval** tab
+3. Click **+ Add**, select Sarah, set Approval Level = 1
+4. Click **+ Add**, select John, set Approval Level = 2
+
+Now claims from Medical Fund will route: Employee → Manager → Sarah (HR L1) → John (HR L2) → Finance
+
+---
+
+**Best Practices:**
+
+✓ **Assign Backup Approvers**: Have multiple approvers at each level in case of leave
+
+✓ **Use Approval Levels Wisely**: Level 1 for initial screening, higher levels for escalation
+
+✓ **Keep the List Updated**: Remove approvers who leave or change roles
+
+---
+
+##### Claim Entitlement Tab (`Settings > Claim Accounts > [Account] > Claim Entitlement`)
+
+**What is the Claim Entitlement Tab?**
+
+This tab shows all entitlements that draw funds from this specific claim account. It answers the question: *"Who can claim from this account and how much are they entitled to?"*
+
+{{< callout type="info" >}}
+**Why This Tab Exists**: When you create entitlements (e.g., "Staff Medical RM 1,000/year"), they must be linked to a claim account. This tab lets you see ALL entitlements connected to this account in one place—without navigating to the separate Entitlements settings menu.
+{{< /callout >}}
+
+---
+
+**Real-World Scenario:**
+
+You manage a Medical Fund with RM 50,000 annual budget. You want to see:
+- How many entitlements are using this fund?
+- What are the individual limits?
+- Is the total allocated close to the budget?
+
+**Solution**: Go to `Medical Fund > Claim Entitlement` tab to see all entitlements at a glance.
+
+---
+
+**What You'll See in This Tab:**
+
+| Column | What It Shows | Why It Matters |
+|--------|---------------|----------------|
+| **Entitlement Name** | e.g., "Staff Medical", "Executive Medical" | Identifies the entitlement type |
+| **Code** | Unique identifier like MED-STAFF | For exports and reporting |
+| **Topup Amount** | e.g., RM 1,000 | The limit per employee |
+| **Recurring** | Yes/No | Whether it auto-renews |
+
+---
+
+**Common Questions This Tab Answers:**
+
+1. **"Why is our Medical Fund overspent?"**
+   - Check if multiple entitlements are drawing from the same account
+   - Example: "Staff Medical (RM 1,000)" + "Family Medical (RM 3,000)" both use Medical Fund
+
+2. **"Which entitlement type gives the highest limit?"**
+   - Compare all entitlements linked to an account
+   - Useful for policy reviews
+
+3. **"How many entitlement types exist for this fund?"**
+   - Quick count without navigating elsewhere
+
+---
+
+**How to Add an Entitlement from This Tab:**
+
+1. Open the Claim Account (e.g., Medical Fund)
+2. Go to **Claim Entitlement** tab
+3. Click the **"+"** button
+4. Fill in the entitlement details (Name, Code, Topup Amount, Recurring)
+5. Save
+
+This creates an entitlement automatically linked to this account—no need to select the account separately.
+
+---
+
+##### Employee Balance Tab (`Settings > Claim Accounts > [Account] > Employee Balance`)
+
+**What is the Employee Balance Tab?**
+
+This tab shows the **real-time claim balance** of every employee who has entitlements under this account. It's your "balance dashboard" for a specific fund.
+
+{{< callout type="info" >}}
+**Why This Tab Exists**: Instead of checking each employee individually or running a report, you can instantly see who has used their entitlement, who hasn't, and who's running low—all for a specific claim account.
+{{< /callout >}}
+
+---
+
+**Real-World Scenarios:**
+
+**Scenario 1: Year-End Entitlement Review**
+
+*Problem*: It's December, and you want to remind employees to use their unused medical benefits before they expire.
+
+*Solution*: 
+1. Go to `Medical Fund > Employee Balance` tab
+2. Sort by "Remaining Balance" descending
+3. Export the list of employees with high remaining balances
+4. Send a reminder email to those employees
+
+---
+
+**Scenario 2: Budget Monitoring**
+
+*Problem*: Finance wants to know how much of the Medical Fund has been utilized this quarter.
+
+*Solution*:
+1. Go to `Medical Fund > Employee Balance` tab
+2. Review the Total Utilized column across all employees
+3. Calculate: Total Budget - Total Utilized = Remaining Budget
+
+---
+
+**Scenario 3: Investigating an Employee Query**
+
+*Problem*: An employee says "My medical claim was rejected due to insufficient balance, but I haven't used anything this year!"
+
+*Solution*:
+1. Go to `Medical Fund > Employee Balance` tab
+2. Search for the employee's name
+3. Check their:
+   - Assigned Entitlement
+   - Used Amount
+   - Remaining Balance
+4. Identify if there's a discrepancy or if claims were already approved
+
+---
+
+**What You'll See in This Tab:**
+
+| Column | What It Shows | Example |
+|--------|---------------|---------|
+| **Employee Name** | Full name of the employee | "Ahmad bin Hassan" |
+| **Employee Code** | Staff ID | "EMP-001" |
+| **Entitlement** | Which entitlement they have | "Staff Medical (RM 1,000)" |
+| **Initial Balance** | Starting amount for the period | RM 1,000.00 |
+| **Used** | Amount claimed and approved | RM 350.00 |
+| **Pending** | Amount in pending claims | RM 150.00 |
+| **Remaining** | Available balance | RM 500.00 |
+
+---
+
+**Tips for Using This Tab:**
+
+✓ **Export to Excel**: Use the export function for detailed analysis or to share with finance
+
+✓ **Filter by Department**: Some views allow filtering to see only your team's balances
+
+✓ **Check Regularly**: Review monthly to catch any unusual patterns early
+
+---
+
+##### Claim Items Tab (`Settings > Claim Accounts > [Account] > Claim Items`)
+
+**What is the Claim Items Tab?**
+
+This tab shows which **expense types (claim items)** are configured to use this account. It answers: *"What can employees claim against this fund?"*
+
+{{< callout type="info" >}}
+**Why This Tab Exists**: When creating claim items (like "GP Visit" or "Dental Treatment"), you link them to an account. This tab gives you a consolidated view of all expense types that draw from a specific fund—useful for auditing and configuration reviews.
+{{< /callout >}}
+
+---
+
+**Real-World Scenarios:**
+
+**Scenario 1: Policy Audit**
+
+*Problem*: HR asks: "Which expense types are covered under our Medical Fund?"
+
+*Solution*:
+1. Go to `Medical Fund > Claim Items` tab
+2. You'll see a list like:
+   - GP Visit
+   - Specialist Consultation
+   - Dental Treatment
+   - Optical (Glasses)
+   - Traditional Medicine
+3. Screenshot or export this list for the policy document
+
+---
+
+**Scenario 2: Adding a New Expense Type**
+
+*Problem*: The company now wants to cover mental health counseling under Medical Fund.
+
+*Solution*:
+1. First, check `Medical Fund > Claim Items` tab to see existing items
+2. Verify "Mental Health Counseling" isn't already there
+3. Go to `Settings > Claim Items` to create the new item
+4. Link it to Medical Fund during creation
+5. Return to the Claim Items tab to verify it now appears
+
+---
+
+**Scenario 3: Troubleshooting Missing Claim Type**
+
+*Problem*: An employee says "I can't find Dental Treatment in my claim options."
+
+*Solution*:
+1. Go to `Medical Fund > Claim Items` tab
+2. Check if "Dental Treatment" is listed
+3. If not listed → the item isn't linked to this account
+4. If listed → check the employee's entitlement to ensure they're eligible
+
+---
+
+**What You'll See in This Tab:**
+
+| Column | What It Shows | Example |
+|--------|---------------|---------|
+| **Item Name** | The expense type | "GP Visit", "Dental Treatment" |
+| **Item Code** | Unique code | "MED-GP", "MED-DENTAL" |
+| **Category** | Grouping | "Medical & Wellness" |
+| **Threshold** | Max per claim (if set) | RM 200 per visit |
+| **Status** | Active/Inactive | Active |
+
+---
+
+**Tips for Using This Tab:**
+
+✓ **Review Before Policy Changes**: Always check which items use an account before modifying limits
+
+✓ **Cross-Reference with Entitlements**: An employee needs BOTH an entitlement to the account AND the claim item must be linked to that account
+
+✓ **Identify Unused Items**: If an item is listed but never claimed, consider if it's still needed
+
+---
+
 #### Claim Items (`Settings > Claim Items`)
 
 {{< figure src="/images/claim-applet/claim-items-settings.png" alt="Claim Items Listing showing all configured expense types" caption="Claim Items Listing: Define what types of expenses employees can claim" >}}
@@ -1442,18 +1830,38 @@ Creating a "Client Meal" expense item:
 
 Categories organize your claim items into logical groups for reporting and analysis. Instead of viewing 50 individual expense types, you can analyze spending by category.
 
+{{< callout type="info" >}}
+**Why This Feature Exists**: Categories help finance teams analyze spending patterns (e.g., "How much did we spend on Travel vs Medical this year?") and simplify reporting by grouping similar expense types together.
+{{< /callout >}}
+
+---
+
 **Creating a Category - Field Guide:**
 
 | Field | Purpose | Why It Matters | Example |
 |-------|---------|----------------|---------|
-| **Category Name** | Display name for the group | Used in reports and dashboards. Keep it broad enough to group multiple items. | "Medical & Wellness", "Travel & Transport" |
-| **Category Code** | Unique identifier | Short code for integrations and exports. Usually alphanumeric. | MED, TRV, ENT |
+| **Name** | Display name for the group | Used in reports and dashboards. Keep it broad enough to group multiple items. | "Medical & Wellness", "Travel & Transport" |
+| **Code** | Unique identifier | Short code for integrations and exports. Usually alphanumeric. | MED, TRV, ENT |
 | **Description** | What belongs in this category | Helps other admins understand what items fit here. | "All medical-related expenses including GP visits, dental, optical" |
+
+---
+
+**Editing a Category - Tabs Overview:**
+
+When you select an existing category to edit, you'll see **2 tabs**:
+
+| Tab | Purpose |
+|-----|---------|
+| **Main Details** | Edit the category name, code, and description. Also shows audit info (Created By, Creation Date, Modified By, Modified Date) |
+| **Claim Items** | View all claim items currently assigned to this category. Useful for reviewing what's grouped together. |
+
+---
 
 **Best Practices:**
 - **Keep it simple**: 5-10 categories are usually enough (Medical, Travel, Entertainment, Training, Equipment)
 - **Align with finance**: Match your accounting department's expense categories
 - **Think reporting**: Categories appear in charts and summaries—make them meaningful
+- **Review periodically**: Use the "Claim Items" tab to ensure items are correctly categorized
 
 **Real-World Example:**
 
@@ -1462,6 +1870,340 @@ Creating a "Professional Development" category:
 2. **Code**: PROF-DEV
 3. **Description**: Training courses, certifications, conferences, and professional subscriptions
 4. **Items to assign**: Course Fees, Conference Registration, ACCA Membership, Books & Materials
+
+#### Claim Entitlements (`Settings > Claim Entitlements`)
+
+{{< figure src="/images/claim-applet/claim-entitlements-settings.png" alt="Claim Entitlements Settings showing entitlement configurations" caption="Claim Entitlements: Define what employees are entitled to claim" >}}
+
+**Claim Entitlements** define how much employees can claim from a specific Claim Account. Think of it as the "rule" that sets claim limits.
+
+{{< callout type="info" >}}
+**Why This Feature Exists**: Without entitlements, you'd need to manually track each employee's claim limits. Entitlements automate this—when an employee submits a claim, the system automatically checks if they have remaining balance.
+{{< /callout >}}
+
+---
+
+**Creating an Entitlement - Field-by-Field Guide:**
+
+| Field | Purpose | Why It Matters | Example |
+|-------|---------|----------------|---------|
+| **Claim Account** | Which account this entitlement draws from | Links to available funds | "Medical Fund", "Training Allowance" |
+| **Name** | Descriptive name for the entitlement | Users see this when checking balances | "Annual Medical Entitlement", "Monthly Transport" |
+| **Code** | Unique identifier | Used for imports and exports | MED-ENT-2024, TRV-MTH |
+| **Topup Amount** | How much balance to add | The actual claimable amount | RM 1,000 (annual), RM 200 (monthly) |
+| **Required Recurring** | Enable automatic recurring top-ups | For monthly/yearly renewals | Check for monthly transport |
+
+**Recurring Top-up Configuration:**
+
+When "Required Recurring" is enabled, you can configure:
+- **Frequency**: Daily, Weekly, Monthly, Yearly
+- **Interval**: Every 1, 2, 3... periods
+- **End Date**: When to stop recurring (optional)
+
+---
+
+**Editing an Entitlement - Tabs Overview:**
+
+When you select an existing entitlement to edit, you'll see **3 tabs**:
+
+| Tab | Purpose |
+|-----|---------|
+| **Main Details** | Edit the entitlement configuration (same fields as create + audit info) |
+| **Employees** | View/manage employees who have this entitlement |
+| **Resigned Employees** | View resigned employees who had this entitlement |
+
+---
+
+**How It Works:**
+
+```
+Claim Account: Medical Fund (pool of RM 100,000)
+       ↓
+Entitlement: "Staff Medical" (RM 1,000/year per employee)
+       ↓
+Assigned to: 50 employees
+       ↓
+Each employee can claim up to RM 1,000 from Medical Fund
+```
+
+---
+
+**Real-World Examples:**
+
+**Example 1: Annual Medical Entitlement**
+```
+Claim Account: Medical & Wellness Fund
+Entitlement Name: Annual Medical Allowance
+Code: MED-ANNUAL-2024
+Topup Amount: RM 2,000
+Recurring: Yes (Yearly on Jan 1st)
+```
+Result: Each employee gets RM 2,000 medical claim limit, auto-renewed yearly.
+
+**Example 2: Monthly Transport Allowance**
+```
+Claim Account: Transport Allowance Fund
+Entitlement Name: Monthly Transport
+Code: TRV-MTH
+Topup Amount: RM 200
+Recurring: Yes (Monthly on 1st)
+```
+Result: Employees get RM 200/month for transport claims, auto-renewed monthly.
+
+---
+
+**Best Practices:**
+
+✓ **Use Descriptive Names**: "Staff Medical 2024" is clearer than "ENT-001"
+
+✓ **Set Up Recurring for Renewals**: Avoid manual annual top-ups
+
+✓ **Check Employees Tab**: Review who has access to each entitlement
+
+✓ **Archive Resigned Employees**: Use the "Resigned Employees" tab to track former staff claims
+
+---
+
+### Claim Entitlement Auto Top-up System
+
+The **Auto Top-up System** is a powerful feature that automates the process of adding entitlement credits to employees. Instead of manually updating balances, you can set up automated rules that top-up employee entitlements on a schedule.
+
+{{< callout type="important" >}}
+**Understanding the Relationship**: These three settings work together in a hierarchy:
+- **Templates** → Define WHAT to top-up (which entitlement)
+- **Events** → Define WHEN to top-up (scheduling/recurrence)
+- **Runs** → Execute the top-up (actual processing)
+{{< /callout >}}
+
+```mermaid
+flowchart TD
+    A[Auto Top-up Template] -->|Links to| B[Entitlement]
+    A -->|Used by| C[Auto Top-up Event]
+    A -->|Used by| D[Auto Top-up Run]
+    C -->|Recurring Schedule| E[Automatic Top-ups]
+    D -->|One-time Execution| F[Manual Top-ups]
+    
+    subgraph Filters
+    G[Company Filter]
+    H[Job Role Filter]
+    end
+    
+    C --> Filters
+    D --> Filters
+    Filters -->|Target specific| I[Employees]
+```
+
+---
+
+#### Claim Entitlement Auto Top-up Template (`Settings > Claim Entitlement Auto Top-up Template`)
+
+**What are Auto Top-up Templates?**
+
+Templates are the foundation of the auto top-up system. They define which entitlement will be topped-up and serve as reusable configurations for Events and Runs.
+
+{{< callout type="info" >}}
+**Why Use Templates?**: Instead of configuring the same entitlement repeatedly, create a template once and reuse it across multiple events and runs. Templates also let you apply company and job role filters to target specific employee groups.
+{{< /callout >}}
+
+---
+
+**Creating a Template - Field-by-Field Guide:**
+
+| Field | Purpose | Required | Example |
+|-------|---------|----------|---------|
+| **Template Name** | Descriptive name for the template | Yes | "Annual Medical Top-up", "Monthly Meal Allowance" |
+| **Entitlement** | Which entitlement to top-up | Yes | "Medical Fund - RM 500/year" |
+| **Description** | Admin notes | No | "Tops up medical entitlement annually on Jan 1" |
+
+---
+
+**Editing a Template - Tabs Overview:**
+
+When you select an existing template to edit, you'll see **3 tabs**:
+
+| Tab | Purpose | What You Can Do |
+|-----|---------|-----------------|
+| **Main Details** | Template configuration | Edit name, entitlement, description, view audit info |
+| **Company Filter** | Target specific companies | Limit top-up to employees from selected companies only |
+| **Job Role Filter** | Target specific roles | Limit top-up to employees with specific job roles |
+
+---
+
+##### Company Filter Tab
+
+**What is Company Filter?**
+
+If your organization has multiple companies, you can restrict the template to apply only to certain companies. Leave empty to apply to all companies.
+
+**Scenario**: You have ABC Holdings and XYZ Sdn Bhd under the same system. Medical entitlements are different—ABC gets RM 1,000, XYZ gets RM 500. Create separate templates with company filters.
+
+---
+
+##### Job Role Filter Tab
+
+**What is Job Role Filter?**
+
+Different job roles may have different entitlements. Use this filter to target specific roles.
+
+**Scenario**: Executives get RM 2,000 medical, while non-executives get RM 1,000. Create two templates:
+- "Executive Medical Top-up" → Filter: Executive, Manager, Director
+- "Staff Medical Top-up" → Filter: Officer, Clerk, Assistant
+
+---
+
+#### Claim Entitlement Auto Top-up Event (`Settings > Claim Entitlement Auto Top-up Events`)
+
+**What are Auto Top-up Events?**
+
+Events define **when** top-ups occur. They can be one-time or recurring (monthly, quarterly, annually). Events automatically trigger top-ups based on your schedule.
+
+{{< callout type="info" >}}
+**Events vs Runs**: Events are for **scheduled, automatic** top-ups. Runs are for **manual, one-time** top-ups. Use Events for predictable annual renewals; use Runs for ad-hoc adjustments.
+{{< /callout >}}
+
+---
+
+**Creating an Event - Field-by-Field Guide:**
+
+| Field | Purpose | Required | Example |
+|-------|---------|----------|---------|
+| **Event Name** | Descriptive name | Yes | "Annual Medical Renewal 2024" |
+| **Event Code** | Unique identifier | Yes | MED-2024-ANNUAL |
+| **Template** | Which template to use | Yes | "Annual Medical Top-up" |
+| **Entitlement** | Auto-populated from template | Read-only | Shows the linked entitlement |
+| **Required Recurring** | One-time or repeat? | Checkbox | ✓ = Recurring, ☐ = One-time |
+| **Event Start Date** | When the event activates | Yes | 01/01/2024 |
+| **Event End Date** | When the event expires | Conditional | 31/12/2024 (hides if recurring) |
+| **Recurrence Editor** | Define repeat pattern | Conditional | Every year on January 1st |
+| **Description** | Admin notes | No | "Automatic annual medical reset" |
+
+---
+
+**The Recurrence Editor:**
+
+When "Required Recurring" is checked, you can define complex schedules:
+- **Daily**: Every X days
+- **Weekly**: Every Monday, or every first Monday of the month
+- **Monthly**: On the 1st of every month, or every 3 months
+- **Yearly**: Every January 1st
+
+---
+
+**Editing an Event - Tabs Overview:**
+
+When you select an existing event to edit, you'll see **3 tabs**:
+
+| Tab | Purpose | What You Can Do |
+|-----|---------|-----------------|
+| **Main Details** | Event configuration | Edit all fields, manage recurrence |
+| **Company Filter** | Override template's company filter | Further restrict to specific companies |
+| **Job Role Filter** | Override template's job role filter | Further restrict to specific roles |
+
+---
+
+**Real-World Scenario - Annual Medical Renewal:**
+
+*Goal*: Every January 1st, all employees automatically get their medical entitlement reset to RM 1,000.
+
+*Setup*:
+1. **Create Template**: "Annual Medical Top-up" → Link to "Medical Fund" entitlement
+2. **Create Event**:
+   - Name: "2024 Medical Renewal"
+   - Template: "Annual Medical Top-up"
+   - Required Recurring: ✓
+   - Start Date: 01/01/2024
+   - Recurrence: Yearly on January 1st
+3. **Result**: Every year on Jan 1, eligible employees get RM 1,000 added automatically
+
+---
+
+#### Claim Entitlement Auto Top-up Run (`Settings > Claim Entitlement Auto Top-up Run`)
+
+**What are Auto Top-up Runs?**
+
+Runs are for **manual, one-time** top-ups. Unlike Events (which run automatically), Runs require you to explicitly execute them. This gives you full control over which employees get topped-up and when.
+
+{{< callout type="info" >}}
+**When to Use Runs**: Use Runs for ad-hoc situations like mid-year adjustments, new joiner bulk top-ups, or when you need to review the list before processing.
+{{< /callout >}}
+
+---
+
+**Creating a Run - Field-by-Field Guide:**
+
+| Field | Purpose | Required | Example |
+|-------|---------|----------|---------|
+| **Run Name** | Descriptive name | Yes | "Q2 2024 Medical Adjustment" |
+| **Template** | Which template to use | Yes | "Annual Medical Top-up" |
+| **Entitlement** | Auto-populated from template | Read-only | Shows the linked entitlement |
+| **Start Date** | Processing period start | Yes | 01/04/2024 |
+| **End Date** | Processing period end | No | 30/06/2024 |
+| **Description** | Admin notes | No | "Ad-hoc medical top-up for Q2 new joiners" |
+
+---
+
+**Editing a Run - Tabs Overview:**
+
+When you select an existing run to edit, you'll see **4 tabs**:
+
+| Tab | Purpose | What You Can Do |
+|-----|---------|-----------------|
+| **Main Details** | Run configuration | Edit all fields, view audit info |
+| **Company Filter** | Target specific companies | Limit run to employees from selected companies |
+| **Job Role Filter** | Target specific roles | Limit run to employees with specific job roles |
+| **Employee Top-up** | Process the actual top-ups | Review and execute top-ups |
+
+---
+
+##### Employee Top-up Tab (The Most Important Tab!)
+
+This tab has **2 sub-tabs**:
+
+| Sub-Tab | Purpose | What It Shows |
+|---------|---------|---------------|
+| **Draft** | Preview before processing | List of employees who WILL be topped-up when you execute |
+| **Top-up** | Already processed | List of employees who HAVE been topped-up |
+
+**How to Process a Run:**
+
+1. Go to `Settings > Claim Entitlement Auto Top-up Run`
+2. Select your run
+3. Click **Employee Top-up** tab
+4. Review the **Draft** list—these are employees who will receive top-ups
+5. Verify the amounts and employee list
+6. Click **Process** or **Execute** to move them to the "Top-up" tab
+7. Employees now have their entitlements credited!
+
+---
+
+**Real-World Scenario - New Joiner Bulk Top-up:**
+
+*Problem*: 50 new employees joined in Q2 and missed the annual renewal on Jan 1st.
+
+*Solution*:
+1. **Create Run**: "Q2 2024 New Joiner Medical"
+2. Template: "Annual Medical Top-up"
+3. Start Date: 01/04/2024, End Date: 30/06/2024
+4. Go to **Employee Top-up** tab
+5. Review the Draft list (system automatically identifies eligible new joiners)
+6. Execute the run
+7. All 50 employees get RM 1,000 medical credit
+
+---
+
+### Auto Top-up Best Practices
+
+✓ **Start with Templates**: Always create a template first, then link events/runs to it
+
+✓ **Use Events for Predictable Schedules**: Annual renewals, monthly allowances—set them up once and forget
+
+✓ **Use Runs for Ad-hoc Needs**: Mid-year adjustments, new joiner catch-ups, one-time grants
+
+✓ **Apply Filters Carefully**: Test with a small company or role group first before rolling out
+
+✓ **Review Before Executing**: Always check the Draft tab in Runs before processing
+
+---
 
 #### Travel Allowance (`Settings > Travel Allowance`)
 
@@ -1627,40 +2369,120 @@ A: For Non-Asian destinations, you can set rates in USD/EUR. System converts at 
 
 #### Professional Bodies & Subscriptions
 
-**Professional Body (`Settings > Professional Body`)**
+These two settings work together to manage claims for professional organization memberships.
 
-Maintains a master list of recognized professional organizations your company will reimburse.
+---
 
-| Field | Purpose | Example |
-|-------|---------|--------|
-| **Body Name** | Official name of the organization | Association of Chartered Certified Accountants (ACCA) |
-| **Body Code** | Short reference code | ACCA, CPA, CIMA |
-| **Description** | Type of certification/purpose | Accounting professional qualification |
+##### Professional Body (`Settings > Professional Body`)
 
-**Subscriptions & Memberships (`Settings > Subscriptions and Memberships`)**
+**What is a Professional Body?**
 
-Defines specific membership types and their reimbursement rules.
+A Professional Body is an organization that certifies professional qualifications—like ACCA for accountants, CIMA for management accountants, or MIA for Malaysian accountants. This setting creates a master list of recognized professional organizations your company will reimburse.
+
+{{< callout type="info" >}}
+**Why This Feature Exists**: Companies often reimburse employees for professional memberships relevant to their job. This master list ensures only approved organizations are claimable, preventing employees from claiming memberships to unrelated bodies.
+{{< /callout >}}
+
+---
+
+**Creating a Professional Body - Field-by-Field Guide:**
 
 | Field | Purpose | Why It Matters | Example |
 |-------|---------|----------------|---------|
-| **Professional Body** | Links to the body | Associates this subscription with an approved organization | ACCA |
-| **Subscription Type** | Membership level/tier | Different levels may have different fees | Student, Affiliate, Member, Fellow |
-| **Annual Fee** | Standard cost | Auto-populates when employees claim. Prevents over-claiming. | RM 500 |
-| **Claimable Amount** | How much company pays | May be partial (e.g., 50%) or full reimbursement | RM 500 (100%) or RM 250 (50%) |
-| **Valid Period** | Membership duration | Usually annual, helps track renewals | 12 months |
+| **Name** | Full official name of the organization | Employees will see this when claiming | "Association of Chartered Certified Accountants" |
+| **Code** | Short identifier | Used for reporting and exports | ACCA, CPA, CIMA, MIA |
+| **Country** | Country where body is headquartered | Different countries have different bodies | United Kingdom, Malaysia, Singapore |
+| **Description** | What this body certifies | Helps HR identify valid claims | "International accounting qualification for finance professionals" |
 
-**How It Works Together:**
-1. Admin creates "ACCA" in Professional Bodies
-2. Admin creates subscription types: "ACCA Student (RM 300)", "ACCA Member (RM 500)"
-3. When employee claims, they select their membership type
-4. System auto-fills the amount and validates against policy
+---
 
-**Common Use Case:**
+**Real-World Scenario:**
 
-An accounting firm wants to support professional development:
-- Reimburses 100% of ACCA, CPA, CIMA memberships
-- Reimburses 50% of optional certifications (CFE, CIA)
-- Tracks renewal dates to remind employees
+*Problem*: Your accounting firm wants to support professional development by reimbursing membership fees, but only for relevant qualifications.
+
+*Solution*:
+1. Go to `Settings > Professional Body`
+2. Add approved bodies:
+   - ACCA (UK) - "Accounting qualification"
+   - CIMA (UK) - "Management accounting"
+   - MIA (Malaysia) - "Malaysian Institute of Accountants"
+   - CPA (Malaysia) - "Certified Public Accountants"
+3. Now employees can only claim memberships for these approved bodies
+
+---
+
+**Best Practices:**
+
+✓ **Be Specific with Names**: Use official names, not abbreviations (employees will see this)
+
+✓ **Add Country for Clarity**: Some bodies have similar names in different countries
+
+✓ **Review Annually**: Add new relevant bodies as your company's needs evolve
+
+---
+
+##### Subscriptions and Memberships (`Settings > Subscriptions and Memberships`)
+
+**What are Subscriptions and Memberships?**
+
+This setting defines specific **membership types** that employees can claim. While Professional Body defines the *organization*, this setting defines the *membership categories* and how they're classified.
+
+{{< callout type="info" >}}
+**Why This Feature Exists**: Professional bodies often have multiple membership tiers (Student, Associate, Fellow) with different fees. This setting lets you pre-define these tiers for easier claiming.
+{{< /callout >}}
+
+---
+
+**Creating a Subscription/Membership - Field-by-Field Guide:**
+
+| Field | Purpose | Why It Matters | Example |
+|-------|---------|----------------|---------|
+| **Name** | Descriptive name for this membership | What employees see when selecting | "ACCA Annual Membership", "CPA Student Fee" |
+| **Code** | Unique identifier | For reporting and exports | ACCA-MEMBER, CPA-STUDENT |
+| **Type** | Category of subscription | Groups similar subscriptions together | Dropdown selection |
+| **Description** | Additional details | Clarifies what this covers | "Annual membership fee for fully qualified members" |
+
+---
+
+**Real-World Scenario:**
+
+*Problem*: ACCA has different membership levels—Student, Affiliate, and Full Member—each with different fees. You want employees to select the correct one.
+
+*Solution*:
+1. Go to `Settings > Subscriptions and Memberships`
+2. Create entries for each level:
+   - Name: "ACCA Student Registration" | Code: ACCA-STU | Type: Student
+   - Name: "ACCA Affiliate Subscription" | Code: ACCA-AFF | Type: Professional
+   - Name: "ACCA Full Member Subscription" | Code: ACCA-MEM | Type: Professional
+3. When employees claim, they pick the one that matches their membership level
+
+---
+
+**How Professional Body and Subscriptions Work Together:**
+
+```
+Step 1: Admin creates Professional Body "ACCA"
+              ↓
+Step 2: Admin creates Subscriptions for ACCA:
+        - "ACCA Student (RM 300/year)"
+        - "ACCA Affiliate (RM 450/year)"
+        - "ACCA Member (RM 600/year)"
+              ↓
+Step 3: When employee claims "Professional Subscription" expense:
+        - Select Professional Body: ACCA
+        - Select Membership Type: ACCA Member
+        - Enter fee amount for approval
+```
+
+---
+
+**Best Practices:**
+
+✓ **Use Clear Naming**: Include the body name in subscription names (e.g., "ACCA Member" not just "Member")
+
+✓ **Group by Type**: Use consistent Type values to group similar subscriptions in reports
+
+✓ **Keep Updated**: Professional bodies often change fee structures—update your records yearly
 
 #### Cut-Off Logics (`Settings > Claim Cut Off Logics`)
 
@@ -1668,105 +2490,274 @@ An accounting firm wants to support professional development:
 
 Cut-off dates align claim submissions with your payroll or accounting cycles. They prevent last-minute claims from disrupting closed financial periods.
 
+{{< callout type="info" >}}
+**Why This Feature Exists**: Without cut-offs, employees might submit claims after Finance has closed the books, creating reconciliation headaches and delayed payments.
+{{< /callout >}}
+
+---
+
 **Creating a Cut-Off Rule - Field Guide:**
 
-| Field | Purpose | Why It Matters | Example |
-|-------|---------|----------------|---------|
-| **Cut-Off Name** | Descriptive label for this rule | Helps identify different cycles (monthly payroll vs quarterly close) | "Monthly Payroll Cut-Off" |
-| **Cut-Off Day** | Day of the month when submissions close | Claims after this date roll to next period | 25 (submissions close on the 25th) |
-| **Processing Month** | Which month this affects | Current month or next month processing | Current Month |
-| **Grace Period (Days)** | Extra days allowed after cut-off | Gives flexibility for urgent/forgotten claims | 3 days (can submit until 28th) |
-| **Applied To** | Which claim types follow this rule | Medical, Travel, All Claims | All Claims |
+| Field | Purpose | Example |
+|-------|---------|---------|
+| **Company** | Which company this cut-off applies to | "ABC Sdn Bhd" |
+
+**Finance Cut-Off Section:**
+
+This controls when Finance stops processing claims for the current period.
+
+| Option | Description |
+|--------|-------------|
+| **Last Day of the Month** | Finance cut-off is always the last day of each month |
+| **Specific Day of the Month** | Finance cut-off is a fixed day (e.g., 25th of each month) |
+
+**Approval Cut-Off Section:**
+
+This controls when approvers must complete their approvals.
+
+| Option | Description |
+|--------|-------------|
+| **Specific Day of the Month** | Approvals must be completed by a fixed day (e.g., 23rd) |
+| **Number of Days Before Finance Cut-Off** | Approvals must be X days before finance cut-off (e.g., 2 days before) |
+
+**Extended Cut-Off Section (Optional):**
+
+For claims placed "On Hold", allows extension beyond normal cut-off.
+
+| Field | Description |
+|-------|-------------|
+| **Enable Extension** | Checkbox to allow extension |
+| **Extension Days** | Number of days to extend for on-hold claims |
+
+---
 
 **How Cut-Offs Work:**
 
 ```
-Scenario: Cut-off on 25th, Grace period: 3 days, Today: November 27th
+Scenario: Finance Cut-off on 25th, Approval Cut-off 2 days before, Extension: 3 days
 
-✓ Claim submitted on Nov 20th → Processed in November payroll
-✓ Claim submitted on Nov 26th → Grace period, processed in November payroll  
-✗ Claim submitted on Nov 29th → Too late, processed in December payroll
+Timeline:
+- Day 23 (Approval Cut-off): All approvers must complete reviews
+- Day 25 (Finance Cut-off): Finance stops processing for this month
+- Day 28 (Extended Cut-off): On-hold claims can still be resolved
+
+Claims submitted:
+✓ Nov 20th → Approved by Nov 23rd → Processed in November payroll
+✗ Nov 24th → Approval deadline passed → Rolls to December payroll
+✓ Nov 26th (On-hold claim) → Within extension → Can still be processed
 ```
 
+---
+
 **Best Practices:**
+
 - **Align with payroll**: If payroll closes on the 25th, set cut-off on 23rd-24th to allow processing time
 - **Communicate clearly**: Employees need to know the deadlines
-- **Be consistent**: Same cut-off for all months avoids confusion
-- **Grace period**: 2-3 days handles edge cases without being too lenient
+- **Use approval buffer**: Set approval cut-off 2-3 days before finance cut-off
+- **Extension for disputes**: Allow extension for investigative holds only
 
 **Common Configurations:**
 
 1. **Monthly Payroll Cycle**:
-   - Cut-off: 23rd
-   - Grace: 2 days
-   - Result: Claims by 25th included in current month's pay
+   - Finance Cut-off: 25th
+   - Approval Cut-off: 2 days before (23rd)
+   - Extension: 3 days for on-hold claims
+   - Result: Claims by 23rd get approved, processed by 25th
 
-2. **Quarterly Accounting Close**:
-   - Cut-off: Last day of quarter
-   - Grace: 5 days
+2. **Last Day of Month (Quarterly Close)**:
+   - Finance Cut-off: Last Day of Month
+   - Approval Cut-off: 3 days before
+   - Result: Aligns with financial reporting periods
    - Result: Aligns with financial reporting periods
 
 #### Branches (`Settings > Branches`)
 
-{{< figure src="/images/claim-applet/branches-settings.png" alt="Branches Settings showing office locations and cost centers" caption="Branches: Configure organizational locations and cost centers" >}}
+{{< figure src="/images/claim-applet/branches-settings.png" alt="Branches Settings showing office locations synced from employee system" caption="Branches: View organizational locations synced from your employee management system" >}}
 
-Branches represent your organization's physical locations or cost centers. They enable expense tracking by location and proper budget allocation.
+**What are Branches in the Claim Applet?**
 
-**Creating a Branch - Field Guide:**
+Branches represent your organization's physical locations or departments. Unlike other settings, **branches are not created here**—they are automatically synced from your Employee Management System. This ensures consistency across all applets.
 
-| Field | Purpose | Why It Matters | Example |
-|-------|---------|----------------|---------|
-| **Branch Name** | Location or department name | What employees see when selecting their base | "Kuala Lumpur HQ", "Penang Office", "Singapore Branch" |
-| **Branch Code** | Unique identifier | Used in accounting exports and GL codes | KL-HQ, PNG-01, SG-01 |
-| **Cost Center Code** | Links to accounting system | Ensures expenses hit the right department budget | 1000-HQ, 2000-Northern, 3000-International |
-| **Address** | Physical location | Useful for compliance, tax reporting, location-based policies | "Menara ABC, Jalan Ampang, KL" |
-| **Manager** | Branch head/approver | Defaults claims from this branch to this manager | John Tan (HOD - Northern Region) |
-| **Active Status** | Enable/disable branch | Deactivate closed locations without deleting historical data | Active / Inactive |
+{{< callout type="info" >}}
+**Why View-Only?**: Branches are managed centrally in your HR/Employee system to ensure all applets use the same organizational structure. The Claim Applet reads this data to enable location-based expense tracking and approval routing.
+{{< /callout >}}
 
-**Why Branches Matter:**
+---
 
-1. **Budget Tracking**: "How much did the Penang office spend on travel this quarter?"
-2. **Approval Routing**: Claims auto-route to the branch manager
-3. **Tax Compliance**: Different locations may have different tax rules
-4. **Cost Allocation**: Multi-location businesses need to track expenses by site
+**Viewing a Branch - Field Guide:**
 
-**Real-World Setup:**
+When you click on a branch, you'll see these **read-only** fields in the Main Details tab:
 
-A retail chain with 5 locations:
+| Field | What It Shows | Example |
+|-------|---------------|---------|
+| **Name** | Branch/location name | "Kuala Lumpur HQ", "Penang Office" |
+| **Code** | Unique identifier | KL-HQ, PNG-01, SG-01 |
+| **Company** | Which company this branch belongs to | "ABC Holdings Sdn Bhd" |
+| **Currency** | Default currency for this location | MYR, SGD, USD |
 
-| Branch | Code | Cost Center | Use Case |
-|--------|------|-------------|----------|
-| KL Flagship Store | KL-FS | 1001 | Staff claims route to Store Manager |
-| Penang Outlet | PNG-01 | 2001 | Separate budget tracking for Northern region |
-| Online Operations | ONLINE | 3001 | E-commerce team, virtual location |
-| Warehouse & Logistics | WH-KL | 4001 | Different approval flow (Ops Manager) |
-| Corporate Office | HQ | 1000 | Management and admin staff |
+Plus audit fields: Created By, Creation Date, Modified By, Modified Date
 
-**Best Practice:**
-- Match branch codes to your accounting system's cost center structure
-- Keep branch names consistent (all "Office" or all "Branch", not mixed)
-- Assign managers to automate approval routing
+---
+
+**Branch Tabs Overview:**
+
+When you select a branch, you'll see up to **3 tabs**:
+
+| Tab | Purpose | What You Can Do |
+|-----|---------|-----------------|
+| **Main Details** | View branch information | Read-only view of branch name, code, company, currency |
+| **Employee Ranking** | View employee seniority rankings | See how employees are ranked within this branch (may be hidden based on settings) |
+| **Approval Designation** | Configure approval roles | Assign employees to approval roles for this branch |
+
+---
+
+##### Employee Ranking Tab
+
+**What is Employee Ranking?**
+
+This tab shows the seniority or ranking of employees within the branch. Rankings affect approval workflows—higher-ranked employees may have different approval requirements.
+
+**When to Use:**
+- Review who's ranked highest in a branch
+- Understand approval hierarchy
+- Troubleshoot "why does my claim need more approvals?"
+
+---
+
+##### Approval Designation Tab
+
+**What is Approval Designation?**
+
+This tab lets you assign employees to specific approval roles for this branch. When claims are submitted, the system uses these designations to route approvals correctly.
+
+**Real-World Scenario:**
+
+*Problem*: The Penang Office needs a local approver instead of routing all claims to KL HQ.
+
+*Solution*:
+1. Go to `Settings > Branches`
+2. Select "Penang Office"
+3. Click **Approval Designation** tab
+4. Add the local manager as an approver
+5. Now Penang claims go to the local manager first
+
+---
+
+**How Branches Work in Claims:**
+
+```
+Employee submits claim
+        ↓
+System checks employee's branch (e.g., "Penang Office")
+        ↓
+Claim routes to Penang Office approver (from Approval Designation)
+        ↓
+After branch approval → routes to central finance
+```
+
+---
+
+**Why Branches Matter for Claims:**
+
+1. **Approval Routing**: Claims automatically go to the right branch approver
+2. **Budget Tracking**: "How much did Penang spend on travel this quarter?"
+3. **Currency Handling**: Different branches may use different currencies
+4. **Compliance**: Location-specific policies can be applied
+
+---
+
+**Best Practices:**
+
+✓ **Ensure Branches are Synced**: If you don't see expected branches, check your Employee Management System
+
+✓ **Assign Approval Designations**: Each branch should have at least one designated approver
+
+✓ **Review Rankings Periodically**: Keep employee rankings updated for accurate approval flows
 
 #### Email Templates (`Settings > Email Template`)
 
 {{< figure src="/images/claim-applet/email-template-settings.png" alt="Email Template Settings showing notification templates" caption="Email Templates: Customize automated notifications for claim status changes" >}}
 
-Email templates control the automated notifications sent when claims change status. Customize the messaging to match your company's tone and include relevant information.
+**What are Email Templates?**
+
+Email templates define the automated notifications sent when claims change status. Each template controls what message is sent, when it's active, and what content it contains.
+
+{{< callout type="info" >}}
+**Why This Feature Exists**: Automated emails keep employees informed about their claims without HR having to manually send updates. You can customize the messaging to match your company's tone and include relevant claim details.
+{{< /callout >}}
+
+---
+
+**Creating an Email Template - Field-by-Field Guide:**
+
+| Field | Purpose | Why It Matters | Example |
+|-------|---------|----------------|---------|
+| **Name** | Template display name | Identifies the template in the list | "Claim Approved Notification" |
+| **Message Type** | Email or SMS | Determines delivery channel | Email, SMS |
+| **Description** | Admin notes | Helps identify template purpose | "Sent when manager approves a claim" |
+| **Message Status** | Active/Inactive | Controls if template sends | Active |
+| **Start Date** | When template becomes active | Schedule template changes | 01/01/2024 |
+| **Expiry Date** | When template stops sending | Auto-disable old templates | 31/12/2024 |
+| **Template Code** | System trigger code | Links to specific claim events | Claim Submitted, Claim Approved, Claim Rejected |
+
+---
+
+**Editing an Email Template - Tabs Overview:**
+
+When you select an existing template to edit, you'll see **2 tabs**:
+
+| Tab | Purpose | What You Can Do |
+|-----|---------|-----------------|
+| **Details** | Basic template configuration | Edit name, description, validity dates, view audit info |
+| **Line** | Email content and recipients | Define email subject, body content, and recipient rules |
+
+---
+
+##### Details Tab
+
+The Details tab shows the template's configuration plus audit trail:
+- Name, Type, Description
+- Start Date, Expiry Date
+- Created By, Creation Date, Modified By, Modified Date
+
+---
+
+##### Line Tab
+
+**What is the Line Tab?**
+
+This is where you define the actual email content—subject lines, body text, and recipient rules. Multiple lines can be configured for different scenarios.
+
+**Real-World Scenario:**
+
+*Problem*: You want the "Claim Approved" email to go to both the employee AND their manager for visibility.
+
+*Solution*:
+1. Go to `Settings > Email Template`
+2. Select "Claim Approved" template
+3. Go to **Line** tab
+4. Add two lines:
+   - Line 1: To Employee → "Your claim has been approved..."
+   - Line 2: To Manager → "A claim under your team has been processed..."
+
+---
 
 **Template Types & When They're Sent:**
 
-| Template | Triggered When | Recipient | Purpose |
-|----------|----------------|-----------|----------|
-| **Claim Submitted** | Employee submits a claim | Employee + Approver | Confirmation & notification |
-| **Claim Approved** | Approver clicks "Approve" | Employee | Good news! |
-| **Claim Rejected** | Approver clicks "Reject" | Employee | Explain why + next steps |
-| **Claim Queried** | Approver requests info | Employee | Ask for clarification |
-| **Payment Processed** | Finance marks as paid | Employee | "Money's on the way" |
-| **Approaching Cut-Off** | X days before cut-off | All employees | Reminder to submit pending claims |
+| Template Code | Triggered When | Typical Recipient |
+|---------------|----------------|-------------------|
+| **Claim Submitted** | Employee submits a claim | Employee + Approver |
+| **Claim Approved** | Approver clicks "Approve" | Employee |
+| **Claim Rejected** | Approver clicks "Reject" | Employee |
+| **Claim Queried** | Approver requests info | Employee |
+| **Payment Processed** | Finance marks as paid | Employee |
+| **Approaching Cut-Off** | X days before cut-off | All employees |
 
-**Customizing Templates - Available Fields:**
+---
 
-You can insert dynamic placeholders that auto-populate:
+**Customizing Template Content - Dynamic Placeholders:**
+
+You can insert these placeholders that auto-populate with claim data:
 
 ```
 {{employee_name}} - Claimant's name
@@ -1779,49 +2770,17 @@ You can insert dynamic placeholders that auto-populate:
 {{claim_link}} - Direct link to view claim
 ```
 
-**Example Template - Claim Approved:**
-
-```
-Subject: ✓ Your Claim {{claim_id}} Has Been Approved
-
-Dear {{employee_name}},
-
-Good news! Your claim for RM {{claim_amount}} has been approved by {{approver_name}}.
-
-**Claim Details:**
-- Reference: {{claim_id}}
-- Amount: RM {{claim_amount}}
-- Approved on: {{approval_date}}
-- Expected payment: {{payment_date}}
-
-You can view your claim here: {{claim_link}}
-
-If you have questions, contact finance@yourcompany.com
-
-Best regards,
-Finance Team
-```
+---
 
 **Best Practices:**
 
-1. **Be Clear**: Use plain language, avoid jargon
-2. **Include Actions**: What should the recipient do next?
-3. **Add Links**: Direct link to the claim saves time
-4. **Set Expectations**: When will they get paid? What happens next?
-5. **Match Tone**: Formal for approvals, encouraging for rejections
+✓ **Set Start/Expiry Dates**: Schedule template changes for policy updates without deleting old templates
 
-**Pro Tip - Rejection Template:**
-A good rejection email explains the reason AND guides employees on how to fix it:
+✓ **Use Multiple Lines**: Send different messages to different recipients (employee vs approver)
 
-```
-Your claim was rejected for: {{rejection_reason}}
+✓ **Include Action Links**: Add {{claim_link}} so recipients can view the claim directly
 
-Next steps:
-1. Review the feedback above
-2. If you have questions, contact your manager
-3. Make corrections and re-submit
-4. Need help? Check our Claims Policy: [link]
-```
+✓ **Test Before Going Live**: Set Message Status to Inactive while editing, then activate when ready
 
 #### File Import (`Settings > Upload Employee Entitlement`)
 
@@ -1908,143 +2867,135 @@ EMP001      | John Tan    | TRAVEL-FUND   | 500    | 2024-01-01    | 2024-12-31 
 
 Approval Settings define the "approval chain"—who needs to approve claims, in what order, and under what conditions. This is one of the most powerful features for maintaining control and compliance.
 
-**Why You Need Structured Approvals:**
-
-- **Compliance**: Ensures proper authorization hierarchy
-- **Budget Control**: Higher amounts get more scrutiny
-- **Segregation of Duties**: Prevents self-approval fraud
-- **Flexibility**: Different workflows for different claim types
+{{< callout type="info" >}}
+**Why This Feature Exists**: Different claim types need different approval paths. A RM 50 parking claim shouldn't need 5 approvers, while a RM 10,000 training expense might need committee approval.
+{{< /callout >}}
 
 ---
 
 **Creating an Approval Setting - Field-by-Field Guide:**
 
-**Basic Configuration:**
-
-| Field | Purpose | Example |
-|-------|---------|--------|
-| **Name** | Approval workflow name | "Standard Travel Approval", "High-Value Claims" |
-| **Code** | Unique identifier | STD-TRVL, HIGH-VAL |
-| **Approval Workflow** | Type of workflow logic | Claim Account, Engagement PIC, Employee Org Chart |
-| **Default Approver** | Final fallback approver | CFO (for top-level approvals) |
-| **Branch** | Which location/department | KL Office, Singapore Branch |
-
-**Approval Workflow Types:**
-
-1. **Claim Account:**
-   - Standard hierarchy-based approval
-   - Follows organizational reporting structure
-   - Example: Employee → Manager → Department Head
-
-2. **Engagement PIC:**
-   - Project-based approval
-   - Goes to project manager or client engagement leader
-   - Example: Consultant → Project Manager → Partner
-
-3. **Employee Org Chart:**
-   - Strictly follows org chart reporting lines
-   - Escalates up the management chain
-   - Example: Staff → Supervisor → Manager → Director
+| Field | Purpose | Required | Example |
+|-------|---------|----------|---------|
+| **Name** | Approval workflow name | Yes | "Standard Travel Approval" |
+| **Code** | Unique identifier | Yes | STD-TRVL |
+| **Approval Workflow** | Type of workflow logic | Yes | Claim Account, Engagement PIC, Employee Org Chart |
+| **Default Approver** | Final fallback approver (for top management) | No | CFO |
+| **Branch** | *Conditional* - Shows for Engagement PIC or Employee Org Chart workflows | Conditional | KL Office |
+| **Engagement Role** | *Conditional* - Shows for Engagement PIC workflow only | Conditional | Partner, Manager |
 
 ---
 
-**Defining Approval Levels:**
+**Approval Workflow Types Explained:**
 
-Each approval setting can have up to **5 levels**. Each level defines:
+| Workflow Type | When to Use | How It Works |
+|---------------|-------------|--------------|
+| **Claim Account** | Standard hierarchy-based approvals | Routes based on org structure: Employee → Manager → Dept Head |
+| **Engagement PIC** | Project/client-based approvals | Routes to project managers based on engagement role assignments |
+| **Employee Org Chart** | Strict org chart following | Escalates directly up reporting lines regardless of claim type |
+
+---
+
+**Defining Approval Levels (Up to 5 Levels):**
+
+Each approval setting can have multiple levels. Click **"Add level"** to add more (maximum 5).
+
+**Each Level Contains:**
 
 | Level Field | Purpose | Example |
-|-------------|---------|--------|
+|-------------|---------|---------|
 | **Approval Type** | How approvers are selected | Direct Manager, Specific Role, Any from List |
-| **No of Approvers** | How many people must approve at this level | 1 (manager only) or 2 (any 2 from finance team) |
-| **Engagement Role** | For project claims, which role approves | Project Manager, Engagement Partner |
-
-**Approval Types Explained:**
-
-- **Direct Manager**: System automatically routes to employee's line manager
-- **Specific Employee**: Always goes to a named person (e.g., "Finance Director")
-- **Role-Based**: Anyone with a specific role can approve (e.g., "Any Department Head")
-- **Quorum**: Requires X out of Y approvers (e.g., "2 out of 3 directors")
+| **No of Approvers** | How many must approve | 1 (single approver) or 2+ (quorum) |
+| **Engagement Role to Approve** | *For Engagement PIC* - Which project roles can approve | Project Manager, Engagement Partner |
 
 ---
 
-**Real-World Approval Scenarios:**
+**Editing an Approval Setting - Tabs Overview:**
+
+When you select an existing approval setting to edit, you'll see **2 tabs**:
+
+| Tab | Purpose | What You Can Do |
+|-----|---------|-----------------|
+| **Main Details** | Workflow configuration | Edit all fields, manage approval levels, view audit info |
+| **Claim Items** | Link expense types | Associate specific claim items with this approval setting |
+
+---
+
+##### Main Details Tab
+
+Contains all the create fields plus:
+- Approval levels configuration (add/remove/edit)
+- Audit fields: Created By, Creation Date, Modified By, Modified Date
+
+---
+
+##### Claim Items Tab
+
+**What is the Claim Items Tab?**
+
+This tab lets you associate specific expense types with this approval setting. Only claim items linked here will use this approval workflow.
+
+**Real-World Scenario:**
+
+*Problem*: You want travel expenses to follow a 3-level approval, but parking claims only need 1 level.
+
+*Solution*:
+1. Create "Travel Approval" setting with 3 levels
+2. Go to **Claim Items** tab
+3. Add: Flight, Hotel, Transportation
+4. Create "Simple Approval" with 1 level
+5. In its **Claim Items** tab, add: Parking, Toll
+
+Now each expense type follows its own approval path!
+
+---
+
+**Real-World Approval Examples:**
 
 **Example 1: Simple 2-Level Approval**
-
 ```
 Name: Standard Claims
 Workflow: Employee Org Chart
 
-Level 1: Direct Manager (1 approver needed)
-Level 2: Department Head (1 approver needed)
+Level 1: Direct Manager (1 approver)
+Level 2: Department Head (1 approver)
 
-Flow: Employee → Manager → Dept Head → Approved
+Result: Employee → Manager → Dept Head → Approved
 ```
 
-**Example 2: Amount-Based Escalation**
-
-```
-Name: High-Value Claims (>RM 5,000)
-Workflow: Claim Account
-
-Level 1: Direct Manager
-Level 2: Department Head
-Level 3: Finance Director
-Level 4: CFO (for amounts > RM 20,000)
-
-Note: Levels 3-4 triggered by amount thresholds
-```
-
-**Example 3: Project/Engagement Approval**
-
+**Example 2: Project/Engagement Approval**
 ```
 Name: Client Billable Expenses
 Workflow: Engagement PIC
+Branch: All branches
 
-Level 1: Project Manager (validates project budget)
-Level 2: Engagement Partner (client relationship owner)
+Level 1: Project Manager (validates budget)
+Level 2: Engagement Partner (client owner)
 Level 3: Finance (billing verification)
-
-Flow ensures client costs are properly authorized
 ```
 
-**Example 4: Committee Approval (Quorum)**
-
+**Example 3: Committee Approval (Quorum)**
 ```
 Name: Training & Development
 Workflow: Claim Account
 
-Level 1: Direct Manager
+Level 1: Direct Manager (1 approver)
 Level 2: HR Committee (2 out of 3 must approve)
-  - HR Director
-  - Training Manager
-  - Finance Controller
-
-Use case: Expensive training courses need consensus
 ```
 
 ---
 
 **Best Practices:**
 
-1. **Keep It Simple**: 2-3 levels are usually sufficient. Too many levels = frustration and delays
-2. **Test First**: Create a test approval setting and run sample claims through it
-3. **Document Clearly**: Use the Description field to explain when this workflow applies
-4. **Set Fallbacks**: Always define a Default Approver for edge cases
-5. **Monitor Performance**: Track average approval time—if >3 days, simplify the workflow
+✓ **Keep It Simple**: 2-3 levels are usually enough. More levels = delays
 
-**Common Mistakes to Avoid:**
+✓ **Use Claim Items Tab**: Link specific expense types to appropriate workflows
 
-❌ **Circular Approvals**: Employee A approves for B, B approves for A  
-✓ **Solution**: Use org chart hierarchy strictly
+✓ **Set Default Approver**: Always have a fallback for edge cases
 
-❌ **No Fallback**: Manager on leave = claim stuck  
-✓ **Solution**: Set up delegation or default approvers
+✓ **Test Before Go-Live**: Run sample claims through the workflow first
 
-❌ **Too Many Levels**: 5-level approval for RM 50 parking claim  
-✓ **Solution**: Simple claims = simple approvals (1-2 levels max)
-
----
+✓ **Document Clearly**: Use Description to explain when this workflow applies
 
 #### Claim Approval Delegation Period (`Settings > Claim Approval Delegation Period`)
 
@@ -2167,22 +3118,96 @@ Customize how claims appear when printed or exported to PDF. This is essential f
 - **Multiple Templates**: Different formats for different purposes
 - **Version Control**: Note format version in footer ("v2.1 - Updated Jan 2024")
 
+
 ---
 
-## Reporting & Audit
-
-#### Reports
-- **My Claims**: Personal dashboard.
-- **Pending Approvals**: Manager dashboard.
-- **Staff Reports**: Team oversight.
-- **Printable Formats**: Customize how printed claims look (`Settings > Printable Format Settings`).
+## Audit
 
 #### Audit Trail (`Settings > Applet Log`)
-A "black box" recording every system action.
-- **Who**: User ID.
-- **What**: Action (Create, Edit, Approve).
-- **When**: Timestamp.
-- **Data**: Before and After values.
+
+The Audit Trail (also known as Applet Log) is your system's "black box"—a comprehensive log of every action taken within the Claim Applet. This feature is essential for compliance, fraud detection, and troubleshooting.
+
+{{< callout type="info" >}}
+**Why Audit Trails Matter**: During audits or investigations, you can trace exactly who did what, when, and what changed. This is crucial for SOX compliance, ISO audits, and internal investigations.
+{{< /callout >}}
+
+---
+
+**Listing View - What You Can See:**
+
+The main listing shows all logged actions in a searchable grid:
+
+| Column | Description | Example |
+|--------|-------------|---------|
+| **Table Name** | Which data table was affected | `bl_aat_claim_hdr` (claim header), `bl_aat_claim_account` |
+| **Action** | Type of action performed | CREATE, UPDATE, DELETE, APPROVE, REJECT |
+| **Action Date** | When the action occurred | 2024-01-15 |
+| **Description** | Details of what changed | "Status changed from DRAFT to PENDING" |
+| **Status** | Current status of the record | ACTIVE, DELETED |
+
+---
+
+**Advanced Search Options:**
+
+Click the search icon to access advanced filtering:
+
+| Search Field | What It Filters | Use Case |
+|--------------|-----------------|----------|
+| **Table Name** | Filter by specific data table | "Show only claim header changes" |
+| **Action Name** | Filter by action type | "Show only DELETEs" |
+| **Action By** | Filter by user who performed action | "Show all actions by John Tan" |
+| **Action Date (From/To)** | Filter by date range | "Show all actions in January 2024" |
+
+---
+
+**Viewing Details:**
+
+Click on any log entry to see the **Main Details** tab:
+
+| Field | Description |
+|-------|-------------|
+| **Table Name** | The database table that was modified |
+| **Action** | The type of action (CREATE, UPDATE, DELETE, etc.) |
+| **Action Date** | Timestamp when the action occurred |
+| **Description** | Detailed breakdown showing before/after values |
+| **Status** | Current status of the log entry |
+
+---
+
+**Real-World Scenarios:**
+
+**Scenario 1: Investigating a Suspicious Claim**
+```
+Problem: A claim for RM 50,000 was approved unusually fast
+Action: 
+1. Go to Settings > Applet Log
+2. Search by Table Name: "bl_aat_claim_hdr"
+3. Filter by Action: "APPROVE"
+4. Find the specific claim
+5. Review who approved it and when
+```
+
+**Scenario 2: Tracking Who Modified a Claim**
+```
+Problem: An employee says they didn't change their claim amount
+Action:
+1. Search for the claim by date range
+2. Filter Action: "UPDATE"
+3. View the Description field to see before/after values
+4. Identify who made the change
+```
+
+---
+
+**Best Practices:**
+
+✓ **Regular Reviews**: Periodically review audit logs for unusual patterns
+
+✓ **Export for Audits**: Use the grid's export feature before external audits
+
+✓ **Date Range Filtering**: For investigations, narrow down to specific date ranges first
+
+✓ **Retention**: Discuss with IT/Compliance about log retention policies
 
 ## Personalization
 
