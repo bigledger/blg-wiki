@@ -44,8 +44,6 @@ The applet is organized into the following primary sections:
 - **Settings**
   - **System Configuration**: Configure application-wide settings, default selections, printable formats, and branch-specific settlement settings.
 
-Menu structure and routing definitions can be found in `src/app/models/menu-items.ts` and `src/app/app.routing.ts`.
-
 ## User Roles and Benefits
 
 - Finance Executive / Accountant: creates vouchers, records receipts, and handles corrections.
@@ -95,8 +93,8 @@ The primary workflow revolves around the **Internal Receipt Voucher** menu. User
 ### 2. Line Item Management
 For each voucher, users can add detailed line items. This includes:
 - **Inventory Details**: Specify items, quantities, and unit prices.
-- **Bin & Batch Tracking**: specialized support for assigning Bin Numbers and Batch Numbers (`LineItemBinNumberListingComponent`, `LineItemBatchNumberListingComponent`).
-- **Issue Links**: Link line items to specific issues or tickets, with support for time logging (`IssueLinkEditComponent`, `LogTimeComponent`).
+- **Bin & Batch Tracking**: Support for assigning bin numbers and batch numbers where required.
+- **Issue Links**: Link line items to related issues or tickets, with support for activity/time logging.
 - **Cost Allocation**: Allocate costs to Segments, Projects, Profit Centers, and Dimensions via tree selectors.
 
 {{< figure src="/screenshots/internal-receipt-voucher/image-1771214574661.png" alt="Line item and accounting details" caption="Line item entry and accounting-related details." >}}
@@ -104,9 +102,9 @@ For each voucher, users can add detailed line items. This includes:
 {{< figure src="/screenshots/internal-receipt-voucher/image-1771214585248.png" alt="Additional line item details" caption="Additional line item fields and references." >}}
 
 ### 3. Financial Processing
-- **Payments**: Add and edit payment details directly within the voucher (`AddPaymentComponent`, `EditPaymentComponent`).
-- **Contras**: Handle contra entries to offset balances against other accounts (`AddContraComponent`).
-- **Settlement Adjustments**: Perform adjustments to settlements where necessary (`AddSettlementAdjustmentComponent`).
+- **Payments**: Add and edit payment details directly within the voucher.
+- **Contras**: Handle contra entries to offset balances against other accounts.
+- **Settlement Adjustments**: Perform adjustments to settlements where necessary.
 
 {{< figure src="/screenshots/internal-receipt-voucher/settlement-tab.png" alt="Settlement tab" caption="Settlement tab for viewing and maintaining settlement entries." >}}
 
@@ -132,30 +130,30 @@ The **Import Receipt Voucher** feature allows for bulk creation of vouchers from
 
 The applet offers extensive configuration options under the **Settings** menu:
 
-- **Application Settings** (`field-settings`): Toggle visibility of specific fields and potential validation rules.
+- **Application Settings**: Toggle visibility of specific fields and potential validation rules.
 - **Default Selection**: Set default values for common fields to speed up data entry.
 - **Printable Format Settings**: Configure how the receipt vouchers appear when printed.
 - **Branch Settings**: Define specific settlement behaviors and rules per branch.
 
 ## Data Model (Conceptual)
 
-**Internal Receipt Voucher Header** (`IRVMain`)
-- **Core**: `docNo`, `reference`, `transactionDate`, `branch`, `company`, `location`.
-- **Financial**: `currency`, `currencyRate`, `groupDiscount`, `creditTerms`.
-- **Logistics**: `shipVia`, `trackingID`, `permitNo`.
-- **Coding**: `salesAgent`, `salesLead`.
+**Receipt Voucher Header**
+- **Core**: Document No, Reference, Transaction Date, Branch, Company, Location.
+- **Financial**: Currency, Exchange Rate, Group Discount, Credit Terms.
+- **Logistics**: Ship Via, Tracking ID, Permit No.
+- **Commercial**: Sales Agent, Sales Lead.
 
-**Departmental/Cost Coding** (`IRVDepartment`)
-- `segment`, `dimension`, `profitCenter`, `project`.
+**Department / Cost Coding**
+- Segment, Dimension, Profit Center, Project.
 
-**Status Flags** (`IRVPosting`)
-- `journalStatus`, `inventoryStatus`, `membershipStatus`, `cashbookStatus`, `taxStatus`.
+**Posting Status**
+- Journal Status, Inventory Status, Membership Status, Cashbook Status, Tax Status.
 
 ## Form Architecture
 
-- Angular reactive form patterns for voucher header, line items, and settlement operations.
-- Two-column container UX with view-column state transitions for create/edit/detail flows.
-- Permission-aware navigation and settings integration for role-based access.
+- Structured form flow for voucher header, line items, and settlement operations.
+- Two-column user experience for faster list/detail navigation.
+- Role-based access and action visibility based on user permissions.
 
 ## Demo Script (Quick Walkthrough)
 
@@ -188,10 +186,10 @@ The applet offers extensive configuration options under the **Settings** menu:
 
 ## Technical Architecture
 
-The applet is built using a Micro-Frontend architecture with Angular.
-- **State Management**: Uses NgRx for state management (e.g., `ColumnViewModelStates`, `SessionStates`).
-- **UI Layout**: Utilizes a flexible column layout system (`ViewColumnFacade`) supporting split-views (List + Detail/Create).
-- **Services**: Dedicated services for each functional area (e.g., `InternalReceiptVoucherPagesService`, `SettlementAdjustmentService`) manage the view stacks and business logic.
+The applet is designed for scalable enterprise operations:
+- Supports a split-view interface for efficient listing and editing.
+- Applies permission-based behavior for secure access to actions.
+- Organizes voucher, import, settlement, and settings features in dedicated work areas.
 
 ## Related Applets
 
