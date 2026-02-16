@@ -51,15 +51,21 @@ The Firebase configuration is stored in the backend database in the `bl_cms_webs
 
 {{< figure src="/images/push-notifications/db-config-in-bl-cms-website-hdr.jpg" alt="Database Configuration in bl_cms_website_hdr Table" caption="Database Configuration in bl_cms_website_hdr Table" >}}
 
+![Database Configuration in bl_cms_website_hdr Table](../../../../static/images/push-notifications/db-config-in-bl-cms-website-hdr.jpg)
+
 #### Firebase Cloud Messaging Settings
 
 Firebase Cloud Messaging must be enabled in the Firebase Console for push notifications to work.
 
 {{< figure src="/images/push-notifications/firebase-config-cloud-messaging.jpg" alt="Firebase Cloud Messaging Configuration" caption="Firebase Cloud Messaging Configuration" >}}
 
+![Firebase Cloud Messaging Configuration](../../../../static/images/push-notifications/firebase-config-cloud-messaging.jpg)
+
 #### General Project Settings
 
 {{< figure src="/images/push-notifications/project-settings-general-common.jpg" alt="Firebase Project General Settings" caption="Firebase Project General Settings" >}}
+
+![Firebase Project General Settings](../../../../static/images/push-notifications/project-settings-general-common.jpg)
 
 ---
 
@@ -68,6 +74,8 @@ Firebase Cloud Messaging must be enabled in the Firebase Console for push notifi
 ### Android Project Settings in Firebase
 
 {{< figure src="/images/push-notifications/project-settings-general-android.jpg" alt="Firebase Android-specific Settings" caption="Firebase Android-specific Settings" >}}
+
+![Firebase Android-specific Settings](../../../../static/images/push-notifications/project-settings-general-android.jpg)
 
 ### google-services.json Configuration
 
@@ -204,6 +212,8 @@ Main Activity Configuration:
 ### iOS Project Settings in Firebase
 
 {{< figure src="/images/push-notifications/project-settings-general-ios.jpg" alt="Firebase iOS-specific Settings" caption="Firebase iOS-specific Settings" >}}
+
+![Firebase iOS-specific Settings](../../../../static/images/push-notifications/project-settings-general-ios.jpg)
 
 ### GoogleService-Info.plist Configuration
 
