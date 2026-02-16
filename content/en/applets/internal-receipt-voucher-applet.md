@@ -12,115 +12,152 @@ tags:
 weight: 100
 ---
 
-## Purpose and Overview
+### Introduction
 
-The Internal Receipt Voucher Applet is a comprehensive tool designated for managing internal receipt transactions within the ERP system. It facilitates the end-to-end lifecycle of a receipt voucher, from creation and line item management to payment processing, contra handling, and settlement adjustments. It serves as a central hub for recording internal cash inflows, tracking associated documents, and ensuring proper financial coding across branches, projects, and profit centers.
+The Internal Receipt Voucher Applet is a comprehensive financial tool designed to streamline the management of internal receipt transactions within your ERP system. It serves as a central hub for recording cash inflows, tracking associated documents, and ensuring financial accuracy across your organization's branches and profit centers.
 
-{{< callout type="info" >}}
-This applet supports complex financial workflows including multi-currency transactions, bin/batch tracking for inventory-related items, and multi-level approval processes (Checked By / Approved By).
-{{< /callout >}}
+With this applet, finance teams can handle the entire lifecycle of a receipt voucher—from initial creation and line item entry to payment processing, contra handling, and final settlement. It eliminates manual tracking errors and provides a unified workspace for all receipt-related activities.
 
-## Video Walkthrough
+---
 
-Watch this video to see how to use the Internal Receipt Voucher Applet:
+### Core Capabilities
 
-{{< youtube tnTYuYGV6J4 >}}
+**Voucher Management & Listing**
 
-## Primary Menus
+The applet provides a powerful dashboard to list and manage all internal receipt vouchers. Users can easily search, filter, and sort vouchers by status (Draft, Final, Void), document number, or date. Key actions like Printing, Finalizing, Discarding, and Voiding vouchers are accessible directly from the main listing, ensuring quick processing of daily transactions.
 
-The applet is organized into the following primary sections:
+![Internal Receipt Voucher Listing](/screenshots/internal-receipt-voucher/listing.png)
 
-- **Internal RCT Voucher**
-  - The core interface for listing, creating, and editing internal receipt vouchers.
-  - Manage line items, payments, contras, and attachments.
-- **Import Receipt Voucher**
-  - A dedicated tool for bulk importing receipt vouchers from external files.
-- **Settlement Adjustment**
-  - Manage and view settlement adjustments associated with receipt vouchers.
-- **Settings**
-  - **System Configuration**: Configure application-wide settings, default selections, printable formats, and branch-specific settlement settings.
+**Detailed Voucher Creation**
 
-Menu structure and routing definitions can be found in `src/app/models/menu-items.ts` and `src/app/app.routing.ts`.
+Creating a receipt voucher is a structured process divided into logical tabs to ensure data integrity:
+- **Main Details**: Capture essential header information such as Branch, Location, Transaction Date, and Currency. This section also supports multi-level approval workflows (Checked By / Approved By).
+- **Account**: Link the voucher to specific Entities (Customers/Payees). You can manage complex billing and shipping addresses, ensuring the receipt is attributed to the correct party.
 
-## Key Features and Workflows
+![Edit Voucher Main Details](/screenshots/internal-receipt-voucher/main-details.png)
 
-### 1. Internal Receipt Voucher Management
-The primary workflow revolves around the **Internal Receipt Voucher** menu. Users can:
-- **List Vouchers**: View a paginated list of existing vouchers with filtering capabilities.
-- **Create/Edit Vouchers**: Enter header details such as Branch, Company, Location, Document Number, Reference, Transaction Date, and Currency.
-- **Entity Linking**: Link vouchers to specific Entities, Billing Addresses, Shipping Addresses, and Contacts.
+**Comprehensive Financial Processing**
 
-### 2. Line Item Management
-For each voucher, users can add detailed line items. This includes:
-- **Inventory Details**: Specify items, quantities, and unit prices.
-- **Bin & Batch Tracking**: specialized support for assigning Bin Numbers and Batch Numbers (`LineItemBinNumberListingComponent`, `LineItemBatchNumberListingComponent`).
-- **Issue Links**: Link line items to specific issues or tickets, with support for time logging (`IssueLinkEditComponent`, `LogTimeComponent`).
-- **Cost Allocation**: Allocate costs to Segments, Projects, Profit Centers, and Dimensions via tree selectors.
+The applet goes beyond simple data entry by integrating robust financial processing tools:
+- **Revenue & Expenses**: Record detailed line items for products or services (Revenue) or operational costs (Expenses).
+- **Settlement**: Manage payments directly within the voucher. You can add multiple settlement methods (e.g., Cash, Bank Transfer) and track the total settlement amount against the voucher value.
+- **Settlement Adjustment**: Handle discrepancies or adjustments to settlements, ensuring your ledger always balances.
 
-### 3. Financial Processing
-- **Payments**: Add and edit payment details directly within the voucher (`AddPaymentComponent`, `EditPaymentComponent`).
-- **Contras**: Handle contra entries to offset balances against other accounts (`AddContraComponent`).
-- **Settlement Adjustments**: Perform adjustments to settlements where necessary (`AddSettlementAdjustmentComponent`).
+![Edit Voucher Settlement](/screenshots/internal-receipt-voucher/settlement.png)
 
-### 4. Workflow and Approvals
-The applet supports a verification workflow:
-- **Checked By**: Assign an employee to check the voucher details.
-- **Approved By**: Assign an employee to give final approval.
+---
 
-### 5. File Import
-The **Import Receipt Voucher** feature allows for bulk creation of vouchers from external files, streamlining high-volume data entry.
+### User Guide: Creating a Receipt Voucher
 
-## Settings and Configuration
+Follow this step-by-step flow to create and finalize a new Internal Receipt Voucher.
 
-The applet offers extensive configuration options under the **Settings** menu:
+#### 1. Initialize the Voucher
+Navigate to the **Internal RCT Voucher** menu and click the **+ (Add)** button. You will be taken to the creation screen.
 
-- **Application Settings** (`field-settings`): Toggle visibility of specific fields and potential validation rules.
-- **Default Selection**: Set default values for common fields to speed up data entry.
-- **Printable Format Settings**: Configure how the receipt vouchers appear when printed.
-- **Branch Settings**: Define specific settlement behaviors and rules per branch.
+#### 2. Enter Main Details
+In the **Main Details** tab, fill in the required fields:
+- **Branch & Location**: Select the issuing branch.
+- **Transaction Date**: The date of the receipt.
+- **Currency**: The currency of the transaction (defaults to the system base currency).
+- **Workflow**: If your organization requires it, assign a "Checked By" and "Approved By" user.
 
-## Data Model (Conceptual)
+#### 3. Assign an Entity (Account)
+Switch to the **Account** tab to link the voucher to a payer.
+- Click **Select Entity** to open the search dialog.
+- Search for the customer or payee by name or code.
+- Once selected, their details (Address, Contact Info, GL Code) will auto-populate.
 
-**Internal Receipt Voucher Header** (`IRVMain`)
-- **Core**: `docNo`, `reference`, `transactionDate`, `branch`, `company`, `location`.
-- **Financial**: `currency`, `currencyRate`, `groupDiscount`, `creditTerms`.
-- **Logistics**: `shipVia`, `trackingID`, `permitNo`.
-- **Coding**: `salesAgent`, `salesLead`.
+![Select Entity](/screenshots/internal-receipt-voucher/select-entity.png)
 
-**Departmental/Cost Coding** (`IRVDepartment`)
-- `segment`, `dimension`, `profitCenter`, `project`.
+![Entity Details](/screenshots/internal-receipt-voucher/entity-details.png)
 
-**Status Flags** (`IRVPosting`)
-- `journalStatus`, `inventoryStatus`, `membershipStatus`, `cashbookStatus`, `taxStatus`.
+Use **Select Payee Entity** to assign the final payee profile when required by your workflow.
 
-## Technical Architecture
+![Payee Entity Details](/screenshots/internal-receipt-voucher/payee-entity.png)
 
-The applet is built using a Micro-Frontend architecture with Angular.
-- **State Management**: Uses NgRx for state management (e.g., `ColumnViewModelStates`, `SessionStates`).
-- **UI Layout**: Utilizes a flexible column layout system (`ViewColumnFacade`) supporting split-views (List + Detail/Create).
-- **Services**: Dedicated services for each functional area (e.g., `InternalReceiptVoucherPagesService`, `SettlementAdjustmentService`) manage the view stacks and business logic.
+Use **Select Shipping Entity** when shipping/contact details need to differ from the main entity.
 
-## Quick Start
+![Select Shipping Entity](/screenshots/internal-receipt-voucher/select-shipping-entity.png)
 
-1. **Create Voucher**: Navigate to **Internal RCT Voucher** and click the "+" button. Fill in the `Document No`, `Branch`, and `Entity`.
-2. **Add Line Items**: Use the Line Item grid to add products or services. Assign `Cost Centers` if needed.
-3. **Record Payment**: Create a Payment record within the voucher to reflect the receipt of funds.
-4. **Submit for Approval**: Once verified, set the `Checked By` and `Approved By` fields to complete the workflow.
+#### 4. Add Line Items (Revenue/Expenses)
+Go to the **Revenue** tab (for income) or **Expenses** tab (for costs).
+- Click **Add Item**.
+- Select the relevant item or service code.
+- Enter the Quantity and Unit Price.
+- Assign Cost Centers (Project, Segment) if necessary for departmental tracking.
 
-## Troubleshooting
+#### 5. Record Settlement
+Move to the **Settlement** tab to record how the money was received.
+- Click the **+** button to add a settlement.
+- **Settlement Method**: Choose the method (e.g., Bank Transfer, Cash, Cheque).
+- **Amount**: Enter the amount received.
+- **Reference**: Add a transaction reference number (e.g., Bank Ref No).
+- Click **Add** to save the settlement.
 
-- **Cannot Save Voucher**: Check if the `Document No` is unique and if the `Branch` is selected.
-- **GL Posting Issues**: Ensure the `Journal Status` is set correctly and the Period is open.
-- **Missing Settlement**: Verify that the voucher is fully paid or settled. Use the **Settlement Adjustment** menu to correct discrepancies.
+![Settlement Tab Overview](/screenshots/internal-receipt-voucher/settlement-tab.png)
 
-## Related Applets
+![Add Settlement](/screenshots/internal-receipt-voucher/add-settlement.png)
 
-The Internal Receipt Voucher Applet interacts with several other core modules:
+![Add Settlement Form](/screenshots/internal-receipt-voucher/add-settlement-form.png)
 
-- **[Customer Applet](/applets/customer-applet/)**: For selecting entities and managing customer billing/shipping details.
-- **[Chart of Account Applet](/applets/chart-of-account-applet/)**: For defining the underlying GL accounts used in vouchers and contras.
-- **[General Ledger Applet](/applets/general-ledger-applet/)**: Where the final financial postings and journals from receipt vouchers are recorded.
-- **[Accounts Receivable Applet](/applets/accounts-receivable-applet/)**: For managing customer outstanding balances and aging.
-- **[Cashbook Applet](/applets/cashbook-applet/)**: For reconciling bank transactions linked to receipts.
-- **[Tax Configuration Applet](/applets/tax-configuration-applet/)**: For managing tax codes and rules applied to line items.
-- **[Debtor and Creditor Report Applet](/applets/debtor-and-creditor-report-applet/)**: For viewing detailed reports on debtor balances.
+#### 6. Finalize
+Once all details are verified:
+- Click **Save** to keep it as a Draft.
+- Click **Final** to post the voucher to the ledger. This action will generate the GL entries and lock the voucher from further editing.
+
+---
+
+### User Guide: Import Receipt Voucher (Bulk Upload)
+
+Use **Import Receipt Voucher** when you need to upload many receipt vouchers from a CSV file in one process.
+
+#### 1. Open Import Screen
+Navigate to **Import Receipt Voucher** from the left menu, then click **+ (Add)** to start a new import batch.
+
+![Import Listing](/screenshots/internal-receipt-voucher/import-listing.png)
+
+#### 2. Upload File
+In **Upload Master Data**:
+- Select the file delimiter (for example, `COMMA`).
+- Drag and drop the file or click **Upload File**.
+- Optionally download or follow the sample format link before upload.
+
+![Upload Master Data](/screenshots/internal-receipt-voucher/import-upload-master-data.png)
+
+#### 3. Validate in Checking Tab
+After upload, open the **Checking** tab to review validation results by row and column (for example, branch code errors or missing mandatory values).
+
+![Import Checking Tab](/screenshots/internal-receipt-voucher/import-checking-tab.png)
+
+#### 4. Review Import Status
+In the **Main** tab, check processing details such as:
+- File Name and File Size
+- Import Format
+- Process Status (`DONE`, `FAILED`, `VALIDATING_DATA`, or `UNPROCESSED`)
+- Error Message (when available)
+
+![Import Main Tab Status](/screenshots/internal-receipt-voucher/import-main-tab-status.png)
+
+#### 5. Troubleshoot Failed Batches
+If a batch shows **FAILED**:
+- Open the batch from the import listing.
+- Read the error message and review invalid rows in **Checking**.
+- Correct the source CSV and upload a new batch.
+
+---
+
+### Settings & Configuration
+
+The **Settings** menu allows administrators to tailor the applet to organizational needs:
+- **Application Settings**: Toggle the visibility of specific fields (e.g., Permit No, Tracking ID) to simplify the UI for users.
+- **Default Selection**: Set default values for frequently used fields like "Currency" or "Payment Terms" to speed up data entry.
+- **Branch Settings**: Configure how settlements behave for specific branches.
+
+### Related Applets
+
+To fully utilize the Internal Receipt Voucher Applet, familiarity with these related modules is recommended:
+- **[Customer Applet](/applets/customer-applet/)**: For managing customer entities.
+- **[Chart of Account Applet](/applets/chart-of-account-applet/)**: For GL account definitions.
+- **[General Ledger Applet](/applets/general-ledger-applet/)**: For viewing the financial impact of your vouchers.
+- **[Accounts Receivable Applet](/applets/accounts-receivable-applet/)**: For managing outstanding customer debt.
+- **[Cashbook Applet](/applets/cashbook-applet/)**: For bank reconciliation.
