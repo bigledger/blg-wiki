@@ -49,17 +49,17 @@ The application uses Firebase Cloud Messaging for push notifications. The Fireba
 
 The Firebase configuration is stored in the backend database in the `bl_cms_website_hdr` table within the `property` JSON column under the `firebase` key.
 
-![Database Configuration in bl_cms_website_hdr Table](/images/push-notifications/db%20config%20in%20bl_cms_website_hdr.jpg)
+![Database Configuration in bl_cms_website_hdr Table](/images/push-notifications/db-config-in-bl-cms-website-hdr.jpg)
 
 #### Firebase Cloud Messaging Settings
 
 Firebase Cloud Messaging must be enabled in the Firebase Console for push notifications to work.
 
-![Firebase Cloud Messaging Configuration](/images/push-notifications/Firebase_config_cloud_messaging.jpg)
+![Firebase Cloud Messaging Configuration](/images/push-notifications/firebase-config-cloud-messaging.jpg)
 
 #### General Project Settings
 
-![Firebase Project General Settings](/images/push-notifications/project_settings_general_common.jpg)
+![Firebase Project General Settings](/images/push-notifications/project-settings-general-common.jpg)
 
 ---
 
@@ -67,7 +67,7 @@ Firebase Cloud Messaging must be enabled in the Firebase Console for push notifi
 
 ### Android Project Settings in Firebase
 
-![Firebase Android-specific Settings](/images/push-notifications/project_settings_general_android.jpg)
+![Firebase Android-specific Settings](/images/push-notifications/project-settings-general-android.jpg)
 
 ### google-services.json Configuration
 
@@ -203,7 +203,7 @@ Main Activity Configuration:
 
 ### iOS Project Settings in Firebase
 
-![Firebase iOS-specific Settings](/images/push-notifications/project_settings_general_ios.jpg)
+![Firebase iOS-specific Settings](/images/push-notifications/project-settings-general-ios.jpg)
 
 ### GoogleService-Info.plist Configuration
 
