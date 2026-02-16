@@ -30,6 +30,26 @@ Watch this video to see how to use the Internal Receipt Voucher Applet:
 If video playback is blocked by browser/network policy, open directly: <https://www.youtube.com/watch?v=tnTYuYGV6J4>
 {{< /callout >}}
 
+### What the Video Demonstrates
+
+Based on the walkthrough, the video explains these practical scenarios:
+
+- **Receipt against customer invoices**
+  - Create receipt, select branch/customer, record settlement, then offset against sales invoice(s).
+  - You can offset manually (choose invoice) or use auto offset behavior.
+- **Receipt for other income (no invoice)**
+  - Create receipt, choose the payer account, add revenue line with the correct income account, add settlement, then finalize.
+- **Sales Credit Note flow (extra discount/rebate)**
+  - Create credit note after invoice issuance, add discount line, then offset against the related sales invoice.
+- **Sales Debit Note flow (extra charge such as delivery)**
+  - Create debit note with account and line amount, then offset later together with receipt/invoice flows.
+- **E-Invoice options in credit/debit note flow**
+  - Choose Individual or Consolidated mode, and fill related reference fields when available.
+
+{{< callout type="warning" >}}
+Key control highlighted in the video: always ensure outstanding balance is fully cleared before closure (for example, no remaining AR/AP offset balance).
+{{< /callout >}}
+
 ## Primary Menus
 
 The applet is organized into the following primary sections:
@@ -65,6 +85,7 @@ The applet is organized into the following primary sections:
 - Add/edit payment lines for receipt allocation.
 - Maintain contra entries for offset and balancing scenarios.
 - Add/edit settlement adjustments when reconciliation corrections are needed.
+- For receipt scenarios, contra/offset can be adjusted later if the initial allocation is incorrect.
 
 4) Import Flow
 - Use Import Receipt Voucher for higher-volume voucher onboarding.
@@ -175,6 +196,11 @@ The applet offers extensive configuration options under the **Settings** menu:
 4) Review and Approve
 - Set Checked By and Approved By assignments.
 - Re-open listing to verify status and traceability.
+
+5) Discount/Charge Adjustment Scenarios (From Video)
+- Use **Sales Credit Note** when giving additional discount/rebate after invoice creation.
+- Use **Sales Debit Note** when charging additional amount (for example delivery charges).
+- Offset the related documents and confirm there is no remaining open balance.
 
 ## Troubleshooting
 
