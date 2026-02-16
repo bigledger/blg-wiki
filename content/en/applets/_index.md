@@ -44,6 +44,12 @@ Foundation applets required by all other modules:
 - **[Tax Configuration Applet](/applets/tax-configuration-applet/)** - Tax setup and compliance
 - **[View All Core Applets →](/applets/applet-catalog/#core-module-applets-13-applets)**
 
+#### Financial & Accounting
+- **[General Ledger Applet](/applets/general-ledger-applet/)** - Core financial transactions
+- **[Bank Reconciliation Applet](/applets/bank-reconciliation-applet/)** - Automated bank statement matching
+- **[Internal Receipt Voucher Applet](/applets/internal-receipt-voucher-applet/)** - Manage receipts, payments, and contras
+- **[Debtor and Creditor Report Applet](/applets/debtor-and-creditor-report-applet/)** - AR/AP reporting and analysis
+
 #### Inventory & Operations
 - **[Stock Take Applet](/applets/stock-take-applet/)** - Digital inventory counting and management
 - **[Stock Balance Applet](/applets/stock-balance-applet/)** - Real-time inventory tracking

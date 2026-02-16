@@ -1,5 +1,5 @@
----
-title: "Internal Receipt Voucher Applet v2"
+﻿---
+title: "Internal Receipt Voucher Applet"
 description: "Manage internal receipt vouchers, including line items, payments, contras, settlement adjustments, and bulk imports."
 tags:
 - internal-receipt-voucher
@@ -14,7 +14,7 @@ weight: 100
 
 ## Purpose and Overview
 
- The Internal Receipt Voucher Applet is a comprehensive tool designated for managing internal receipt transactions within the ERP system. It facilitates the end-to-end lifecycle of a receipt voucher, from creation and line item management to payment processing, contra handling, and settlement adjustments. It serves as a central hub for recording internal cash inflows, tracking associated documents, and ensuring proper financial coding across branches, projects, and profit centers.
+The Internal Receipt Voucher Applet is a comprehensive tool designated for managing internal receipt transactions within the ERP system. It facilitates the end-to-end lifecycle of a receipt voucher, from creation and line item management to payment processing, contra handling, and settlement adjustments. It serves as a central hub for recording internal cash inflows, tracking associated documents, and ensuring proper financial coding across branches, projects, and profit centers.
 
 {{< callout type="info" >}}
 This applet supports complex financial workflows including multi-currency transactions, bin/batch tracking for inventory-related items, and multi-level approval processes (Checked By / Approved By).
@@ -42,7 +42,7 @@ The applet is organized into the following primary sections:
 
 Menu structure and routing definitions can be found in `src/app/models/menu-items.ts` and `src/app/app.routing.ts`.
 
-## Key Features and workflows
+## Key Features and Workflows
 
 ### 1. Internal Receipt Voucher Management
 The primary workflow revolves around the **Internal Receipt Voucher** menu. Users can:
@@ -100,6 +100,19 @@ The applet is built using a Micro-Frontend architecture with Angular.
 - **UI Layout**: Utilizes a flexible column layout system (`ViewColumnFacade`) supporting split-views (List + Detail/Create).
 - **Services**: Dedicated services for each functional area (e.g., `InternalReceiptVoucherPagesService`, `SettlementAdjustmentService`) manage the view stacks and business logic.
 
+## Quick Start
+
+1. **Create Voucher**: Navigate to **Internal RCT Voucher** and click the "+" button. Fill in the `Document No`, `Branch`, and `Entity`.
+2. **Add Line Items**: Use the Line Item grid to add products or services. Assign `Cost Centers` if needed.
+3. **Record Payment**: Create a Payment record within the voucher to reflect the receipt of funds.
+4. **Submit for Approval**: Once verified, set the `Checked By` and `Approved By` fields to complete the workflow.
+
+## Troubleshooting
+
+- **Cannot Save Voucher**: Check if the `Document No` is unique and if the `Branch` is selected.
+- **GL Posting Issues**: Ensure the `Journal Status` is set correctly and the Period is open.
+- **Missing Settlement**: Verify that the voucher is fully paid or settled. Use the **Settlement Adjustment** menu to correct discrepancies.
+
 ## Related Applets
 
 The Internal Receipt Voucher Applet interacts with several other core modules:
@@ -107,4 +120,7 @@ The Internal Receipt Voucher Applet interacts with several other core modules:
 - **[Customer Applet](/applets/customer-applet/)**: For selecting entities and managing customer billing/shipping details.
 - **[Chart of Account Applet](/applets/chart-of-account-applet/)**: For defining the underlying GL accounts used in vouchers and contras.
 - **[General Ledger Applet](/applets/general-ledger-applet/)**: Where the final financial postings and journals from receipt vouchers are recorded.
-
+- **[Accounts Receivable Applet](/applets/accounts-receivable-applet/)**: For managing customer outstanding balances and aging.
+- **[Cashbook Applet](/applets/cashbook-applet/)**: For reconciling bank transactions linked to receipts.
+- **[Tax Configuration Applet](/applets/tax-configuration-applet/)**: For managing tax codes and rules applied to line items.
+- **[Debtor and Creditor Report Applet](/applets/debtor-and-creditor-report-applet/)**: For viewing detailed reports on debtor balances.
