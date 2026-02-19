@@ -17,6 +17,8 @@ The **Stock Transfer Applet** enables seamless movement of inventory between loc
 **Core Concept**: Stock transfers move inventory from a **Source Location** to a **Destination Location**, maintaining complete traceability of all stock movements.
 {{< /callout >}}
 
+![Stock Transfer Applet Overview](/images/stock-transfer/stock-transfer-overview.jpg)
+
 ## Key Features Overview
 
 ### Who Benefits from This Applet?
@@ -64,15 +66,15 @@ The **Stock Transfer Applet** enables seamless movement of inventory between loc
 ## Key Features Overview
 
 {{< cards >}}
-  {{< card title="Transfer Listing" subtitle="View all stock transfers" link="#stock-transfer-listing" >}}
+  {{< card title="Inbound Transfers" subtitle="Receive stock from other locations" link="#inbound-stock-transfer" >}}
 
-  {{< card title="Create Transfer" subtitle="Initiate new stock movements" link="#create-stock-transfer" >}}
+  {{< card title="Outbound Transfers" subtitle="Send stock to other locations" link="#outbound-stock-transfer" >}}
 
-  {{< card title="Transfer Details" subtitle="View and edit transfer information" link="#transfer-details" >}}
+  {{< card title="Multi-Location Transfer" subtitle="Transfer to multiple destinations at once" link="#multi-location-transfer" >}}
 
-  {{< card title="Approval Workflow" subtitle="Manage transfer approvals" link="#approval-workflow" >}}
+  {{< card title="Stock Replenishment" subtitle="Automated replenishment with templates, events, and runs" link="#stock-replenishment-system" >}}
 
-  {{< card title="Settings" subtitle="Configure transfer options" link="#configuration--settings" >}}
+  {{< card title="Settings" subtitle="Configure transfer options and custom statuses" link="#configuration--settings" >}}
 
   {{< card title="Personalization" subtitle="Customize your experience" link="#personalization" >}}
 {{< /cards >}}
@@ -88,6 +90,8 @@ The **Stock Transfer Applet** enables seamless movement of inventory between loc
 | **Internal Transfer** | Between locations within same company | Main Warehouse → Branch Store |
 | **Outbound Transfer** | From your location to another | HQ Warehouse → Regional DC |
 | **Inbound Transfer** | Receiving from another location | Receiving from HQ |
+
+![Inbound Stock Transfer Listing](/images/stock-transfer-applet/inbound-listing.png)
 
 ### Transfer Status Flow
 
@@ -163,6 +167,8 @@ Draft → Submitted → In Transit → Received → Completed
 
 ### Main Transfer Listing
 
+![Outbound Stock Transfer Listing](/images/stock-transfer-applet/outbound-listing.png)
+
 View all stock transfers with filters for:
 - **Status** - Draft, Submitted, In Transit, Completed
 - **Date Range** - Filter by transfer date
@@ -184,6 +190,8 @@ View all stock transfers with filters for:
 ---
 
 ## Create Stock Transfer
+
+![View Internal Outbound Stock Transfer](/images/stock-transfer-applet/outbound-view.png)
 
 ### Transfer Header
 
@@ -255,33 +263,232 @@ Depending on your organization's settings:
 
 ---
 
+## Stock Replenishment System
+
+The **Stock Replenishment System** automates the process of identifying and replenishing low stock items. It uses a **Template → Events → Runs** pattern for flexible, automated stock management.
+
+{{< callout type="important" >}}
+**Understanding the Relationship**: These three settings work together:
+- **Template** → Defines WHAT to replenish (item filters, supplier filters, location filters)
+- **Events** → Defines WHEN to replenish (schedule, recurring rules)
+- **Runs** → Executes the replenishment (manual or automated processing)
+{{< /callout >}}
+
+```mermaid
+flowchart TD
+    A[Replenishment Template] -->|Defines filters| B[Items to Monitor]
+    A -->|Used by| C[Replenishment Event]
+    A -->|Used by| D[Replenishment Run]
+    C -->|Recurring Schedule| E[Automatic Processing]
+    D -->|Manual Execution| F[One-time Processing]
+    E --> G[Generate Transfer/PO Suggestions]
+    F --> G
+```
+
+---
+
+### Replenishment Template (`Stock Replenishment Template`)
+
+Templates define **which items** to monitor for replenishment and **from whom** to replenish.
+
+**Creating a Template - Field-by-Field Guide:**
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Template Name** | Identifies this template | Yes |
+| **Description** | Explain the template's purpose | No |
+| **Status** | Active/Inactive | Yes |
+
+**Editing a Template - 6 Tabs:**
+
+When you select a template to edit, you'll see:
+
+| Tab | Purpose |
+|-----|---------|
+| **Details** | Basic info + audit fields (Created By, Modified By, etc.) |
+| **Items Filter** | Select which items to include/exclude from replenishment |
+| **Suppliers Filter** | Filter by preferred suppliers |
+| **Locations Filter** | Which locations to monitor for low stock |
+| **Category Filter** | Filter by item categories |
+| **Items List** | View the resulting list of items to monitor |
+
+**Real-World Scenario - Setting Up a Template:**
+
+*Goal*: Monitor all electronics in the Main Warehouse from approved suppliers.
+
+1. Create Template: "Electronics Replenishment"
+2. In **Items Filter** tab: Select electronics item codes
+3. In **Suppliers Filter** tab: Add approved electronics vendors
+4. In **Locations Filter** tab: Select "Main Warehouse"
+5. In **Category Filter** tab: Select "Electronics" category
+6. Save → Check **Items List** tab to verify the items included
+
+---
+
+### Replenishment Events (`Stock Replenishment Events`)
+
+Events define **when** replenishment checks should occur—either one-time or on a recurring schedule.
+
+**Creating an Event - Field-by-Field Guide:**
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Replenishment Template** | Which template to use | Yes |
+| **Event Code** | Unique identifier for this event | Yes |
+| **Event Name** | Descriptive name | Yes |
+| **Cycle Start Date** | When to start checking | No |
+| **Cycle End Date** | When to stop (for one-time events) | No |
+| **Recurring** | Enable recurring schedule | No |
+| **Recurrence Editor** | Define frequency (daily, weekly, monthly) | Conditional - shows when Recurring is checked |
+| **Description** | Additional notes | No |
+| **Status** | Active/Inactive | Yes |
+
+**Real-World Scenario - Monthly Replenishment Check:**
+
+*Goal*: Check electronics stock every 1st of the month.
+
+1. Create Event: "Monthly Electronics Check"
+2. Select Template: "Electronics Replenishment"
+3. Check **Recurring** checkbox
+4. In Recurrence Editor: Set to "Monthly" on day 1
+5. Set Status: Active
+6. Save → System will automatically run on the 1st of each month
+
+---
+
+### Replenishment Runs (`Stock Replenishment`)
+
+Runs are **manual executions** of replenishment checks. Use these for ad-hoc or one-time replenishment processing.
+
+**Creating a Run - Field-by-Field Guide:**
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Replenishment Template** | Which template to use | No |
+| **Run Name** | Identify this run | Yes |
+| **Current Run Start Date** | Date range for this run | No |
+| **Current Run End Date** | End of date range | No |
+| **Previous Run Name** | Reference to last run (read-only) | No |
+| **Previous Run Start Date** | Last run's start date | No |
+| **Previous Run End Date** | Last run's end date | No |
+| **Description** | Notes for this run | No |
+| **Status** | Status of the run | Yes |
+
+**Real-World Scenario - Emergency Stock Check:**
+
+*Goal*: Run an urgent replenishment check after a large order depleted stock.
+
+1. Go to Stock Replenishment → Create Run
+2. Select Template: "Electronics Replenishment"
+3. Set Run Name: "Emergency Check - March 2024"
+4. Set dates for the period to analyze
+5. Save → Review the items list generated
+6. Create transfer requests or POs based on results
+
+---
+
+### Best Practices for Stock Replenishment
+
+✓ **Start with Templates**: Set up comprehensive templates with all filters before creating events
+
+✓ **Use Recurring Events for Regular Checks**: Weekly or monthly schedules reduce manual work
+
+✓ **Manual Runs for Ad-hoc Needs**: Use runs for urgent or one-off replenishment checks
+
+✓ **Review Items List**: Always check the Items List tab after editing filters to verify coverage
+
+✗ **Avoid Too Many Overlapping Events**: Multiple events on the same template can create duplicate suggestions
+
+---
+
 ## Configuration & Settings
 
-### Application Settings
-Configure applet behavior and default values.
+![Applet Settings](/images/stock-transfer-applet/settings.png)
 
-### Default Settings
-Set up default source/destination locations and other defaults.
+### Custom Status (`Settings > Custom Status`)
 
-### Field Configuration
-Customize visible fields and column order in listings.
+Define custom transfer statuses beyond the default ones to match your workflow.
 
-### Permissions
-Control access to transfer functions:
-- **Create** - Who can create new transfers
-- **Edit** - Who can modify transfers
-- **Delete** - Who can delete transfers
-- **Approve** - Who can approve transfers
+| Field | Purpose | Example |
+|-------|---------|---------|
+| **Status Name** | Display name | "Pending Inspection" |
+| **Status Code** | Internal code | "PENDING_INSPECT" |
+| **Description** | Explain when to use | "Waiting for quality check" |
 
-### Release Notes
-View applet version history and updates.
+**Use Case**: Add "Quality Check" status for transfers that need inspection before receiving.
 
-### Applet Log
-Audit trail of user actions within the applet.
+---
+
+### Default Settings (`Settings > Default Settings`)
+
+Configure default values that auto-populate when creating new transfers.
+
+| Setting | What It Does |
+|---------|--------------|
+| **Default Source Location** | Pre-selects your usual source warehouse |
+| **Default Destination** | Pre-selects common destination |
+| **Default Transfer Type** | Internal, Inbound, or Outbound |
+
+---
+
+### Field Configuration (`Settings > Field Configuration`)
+
+Customize which columns appear in listing views and their order.
+
+- Add/remove columns from listings
+- Reorder columns by drag-and-drop
+- Save configurations per user
+
+---
+
+### Printable Format Settings
+
+The applet has **two separate printable format settings** for inbound and outbound transfers:
+
+#### Inbound Printable Format (`Settings > Inbound Printable Format Settings`)
+
+Configure print templates for receiving documents.
+
+**Edit View Tabs:**
+| Tab | Purpose |
+|-----|---------|
+| **Details** | Template name, format settings |
+| **Line** | Line item layout configuration |
+
+#### Outbound Printable Format (`Settings > Outbound Printable Format Settings`)
+
+Configure print templates for shipping documents.
+
+**Edit View Tabs:**
+| Tab | Purpose |
+|-----|---------|
+| **Details** | Template name, format settings |
+| **Line** | Line item layout configuration |
+
+---
+
+### Applet Log (`Settings > Applet Log`)
+
+Audit trail showing all user actions within the applet.
+
+| Column | Description |
+|--------|-------------|
+| **Table Name** | Which data was affected |
+| **Action** | CREATE, UPDATE, DELETE |
+| **Action Date** | When it happened |
+| **Description** | Details of the change |
+
+---
+
+### Release Notes (`Settings > Release Notes`)
+
+View applet version history and feature updates.
 
 ---
 
 ## Personalization
+
+![Personalization](/images/stock-transfer-applet/personalization.png)
 
 ### Personal Default Settings
 Save your preferred source location and filters.
