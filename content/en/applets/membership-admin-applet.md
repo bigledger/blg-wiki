@@ -22,6 +22,51 @@ The **Membership Admin Applet** is the central control hub for your organization
 
 ---
 
+## Quick Start in 5 Minutes
+
+**New to this system?** Here's the absolute minimum to get started:
+
+### For Admins (First-Time Setup)
+1. **Create one point type**: Go to `Membership Points Currency Listing` → Click `Create` → Name it "Loyalty Points" → Set expiry to "Calendar Year" → Save
+2. **Set conversion rate**: Go to `Points to Money Conversion` → Create rule "100 points = 1.00 MYR" → Save
+3. **Configure basic fields**: Go to `Settings > Field Configuration` → Make Email and Phone mandatory → Save
+4. **Done!** You can now register members and they can earn/redeem points.
+
+### For Support Staff (Daily Use)
+1. **Find member**: Go to `Member Listing` → Search by name/phone/email
+2. **Adjust points if needed**: Click member → Click `Add Point Adjustment` → Enter amount and reason → Submit
+3. **Check history**: Scroll to Transaction History section in member profile
+
+### For Marketing Teams
+1. **Create tier**: Go to `Member Privilege` → Create "VIP" tier → Set benefits → Save
+2. **Create label**: Go to `Member Label` → Create "Frequent Shopper" tag → Save
+3. **Find members**: Go to `Member Listing` → Filter by tier/label → Export for campaigns
+
+{{< callout type="tip" >}}
+**For detailed explanations**: Read the full sections below. This quick start just gets you operational fast.
+{{< /callout >}}
+
+---
+
+## Admin Setup Checklist
+
+**Setting up a new loyalty program?** Complete these steps in order:
+
+- [ ] **Step 1**: Review [Before You Begin](#before-you-begin) business decisions (30 mins)
+- [ ] **Step 2**: Create point currencies → [Guide](#for-admins-initial-system-setup)
+- [ ] **Step 3**: Set up conversion rates → [Guide](#for-admins-initial-system-setup)
+- [ ] **Step 4**: Configure registration fields → [Guide](#for-admins-initial-system-setup)
+- [ ] **Step 5**: Create member tiers (optional) → [Guide](#for-admins-initial-system-setup)
+- [ ] **Step 6**: Create member labels (optional) → [Guide](#for-admins-initial-system-setup)
+- [ ] **Step 7**: Set up permissions → [Guide](#permission-management-controlling-who-can-do-what)
+- [ ] **Step 8**: Test with fake member account → [Guide](#for-admins-initial-system-setup)
+- [ ] **Step 9**: Train staff on daily operations
+- [ ] **Step 10**: Launch to real customers!
+
+**Estimated time**: 2-4 hours for basic setup
+
+---
+
 ## Before You Begin
 
 Before diving into the system, take time to make these key business decisions. These choices will shape how your entire loyalty program works:
@@ -159,7 +204,7 @@ Managing a membership program often involves scattered spreadsheets, disconnecte
 {{< /cards >}}
 
 {{< callout type="tip" >}}
-**📋 Before diving in:** If you're setting up a new loyalty program, review the [Before You Begin](#before-you-begin) section to make key business decisions first. It will save you time and prevent costly redesigns later.
+**Before diving in:** If you're setting up a new loyalty program, review the [Before You Begin](#before-you-begin) section to make key business decisions first. It will save you time and prevent costly redesigns later.
 {{< /callout >}}
 
 ---
@@ -187,19 +232,25 @@ To effectively manage the system, you need to understand four core building bloc
 
 ### Member Class vs Member Label: When to Use Which?
 
-This is one of the most important concepts to understand:
+**This is the #1 concept to master — it determines your entire program structure.**
+
+{{< callout type="info" >}}
+**Quick Definition:**
+- **Member Class** = Membership tier (Bronze/Silver/Gold) — ONE per member, tied to benefits
+- **Member Label** = Flexible tag (VIP/Vegetarian/Golfer) — MANY per member, for marketing
+{{< /callout >}}
 
 **Member Classes (Tiers)** — Use for **long-term status**
-- ✓ Mutually exclusive: A member is Gold **OR** Silver, never both
-- ✓ Usually tied to benefits: Gold members get 10% discount, Silver get 5%
-- ✓ Hard to change: Moving tiers usually requires hitting spending thresholds
-- ✓ Think: "What VIP level is this customer?"
+- Mutually exclusive: A member is Gold **OR** Silver, never both
+- Usually tied to benefits: Gold members get 10% discount, Silver get 5%
+- Hard to change: Moving tiers usually requires hitting spending thresholds
+- Think: "What VIP level is this customer?"
 
 **Member Labels (Tags)** — Use for **flexible segmentation**
-- ✓ Stackable: A member can be "VIP" **AND** "Vegetarian" **AND** "Golfer" simultaneously
-- ✓ Usually for marketing: Send golf promotions to all "Golfer" label holders
-- ✓ Easy to add/remove: Apply or remove labels anytime
-- ✓ Think: "What categories does this customer belong to?"
+- Stackable: A member can be "VIP" **AND** "Vegetarian" **AND** "Golfer" simultaneously
+- Usually for marketing: Send golf promotions to all "Golfer" label holders
+- Easy to add/remove: Apply or remove labels anytime
+- Think: "What categories does this customer belong to?"
 
 **Real-World Example:**
 ```
@@ -531,6 +582,84 @@ Get your membership program running with these role-specific workflows. Each ste
 
 ---
 
+## 📄 Quick Reference Cards
+
+### Point Adjustment Quick Reference
+
+**When to Use:**
+- Service failure compensation
+- Fixing errors
+- Goodwill gestures
+- Birthday bonuses
+
+**How:**
+1. Find member in Member Listing
+2. Click "Add Point Adjustment"
+3. Enter amount (+positive or -negative)
+4. Write clear reason
+5. Submit
+
+**Best Practices:**
+- Always explain WHY
+- Include reference numbers (order #, ticket #)
+- Double-check amount
+- Never use vague reasons like "adjustment"
+
+---
+
+### Bulk Import Checklist
+
+**Before Upload:**
+- [ ] Download CSV template first
+- [ ] Test with 10 members before full upload
+- [ ] Set Excel columns to "Text" format
+- [ ] Verify dates are YYYY-MM-DD format
+- [ ] Check phone numbers have country codes
+- [ ] Remove duplicate Member IDs
+- [ ] Save as UTF-8 encoded CSV
+
+**Common Errors:**
+- Duplicate Member ID → Use unique IDs
+- Invalid email → Check for @ and .com
+- Wrong date format → Use YYYY-MM-DD
+- Missing required field → Fill all asterisk columns
+
+---
+
+### Permission Matrix Quick Guide
+
+| Role | View Members | Adjust Points | Delete Members | Configure System |
+|------|-------------|---------------|----------------|------------------|
+| **Cashier** | Yes | No | No | No |
+| **Support Agent** | Yes | Yes (up to 500) | No | No |
+| **Supervisor** | Yes | Yes (up to 5,000) | No | No |
+| **Marketing Manager** | Yes | No | No | Limited (labels only) |
+| **System Admin** | Yes | Yes (unlimited) | Yes | Yes |
+
+---
+
+### Most Common Daily Tasks
+
+**Task: Find a member's point balance**
+→ `Member Listing` → Search → View profile → See Wallet Balance
+
+**Task: Add compensation points**
+→ `Member Listing` → Find member → `Add Point Adjustment` → Enter amount & reason
+
+**Task: Check why points were deducted**
+→ `Member profile` → Scroll to Transaction History → Find transaction → View details
+
+**Task: Export members for campaign**
+→ `Member Listing` → Apply filters (tier/label) → Click Export
+
+**Task: Create a new promotion label**
+→ `Member Label` → Create → Name it → Save → Assign to members
+
+**Task: Upload new members in bulk**
+→ `Member Master Data Listing` → Download template → Fill data → Upload
+
+---
+
 ## Member Management
 
 **The central directory of your customers and their loyalty data.**
@@ -583,15 +712,15 @@ Get your membership program running with these role-specific workflows. Each ste
 **What it is:** The ability to add or remove points from a member's account directly (bypassing the normal earning process).
 
 **When to use it:**
-- ✓ Compensating for service failures ("Sorry your order was late — here's 500 points")
-- ✓ Fixing errors ("We accidentally gave you 5,000 points instead of 500 — correction needed")
-- ✓ Goodwill gestures ("Welcome back after being away — bonus 200 points")
-- ✓ Promotional bonuses ("Happy birthday — 100 bonus points!")
+- Compensating for service failures ("Sorry your order was late — here's 500 points")
+- Fixing errors ("We accidentally gave you 5,000 points instead of 500 — correction needed")
+- Goodwill gestures ("Welcome back after being away — bonus 200 points")
+- Promotional bonuses ("Happy birthday — 100 bonus points!")
 
 **When NOT to use it:**
-- ✗ Regular purchase earning (should come from POS automatically)
-- ✗ Promotional campaigns (use bulk operations instead)
-- ✗ Favoring specific customers without business justification (creates unfairness)
+- Regular purchase earning (should come from POS automatically)
+- Promotional campaigns (use bulk operations instead)
+- Favoring specific customers without business justification (creates unfairness)
 
 ---
 
@@ -620,19 +749,19 @@ Get your membership program running with these role-specific workflows. Each ste
 
 **Best Practices for Adjustments:**
 
-✓ **Always explain why**: Write reasons like "Compensation for delayed order #12345" instead of just "Adjustment"
+**Always explain why**: Write reasons like "Compensation for delayed order #12345" instead of just "Adjustment"
 
-✓ **Be specific**: "Goodwill for 30-min wait time on 12/15/2025" is better than "Goodwill"
+**Be specific**: "Goodwill for 30-min wait time on 12/15/2025" is better than "Goodwill"
 
-✓ **Get approval for large amounts**: If your company policy requires manager approval for adjustments over 1,000 points, follow it
+**Get approval for large amounts**: If your company policy requires manager approval for adjustments over 1,000 points, follow it
 
-✓ **Document everything**: If a member calls asking "Why did I lose points?", the reason field will have the answer
+**Document everything**: If a member calls asking "Why did I lose points?", the reason field will have the answer
 
-✓ **Use reference numbers**: Link adjustments to support tickets or order numbers for easy tracking
+**Use reference numbers**: Link adjustments to support tickets or order numbers for easy tracking
 
-✓ **Double-check amounts**: Adding 50,000 instead of 5,000 is a costly mistake
+**Double-check amounts**: Adding 50,000 instead of 5,000 is a costly mistake
 
-❌ **Common Mistakes to Avoid:**
+**Common Mistakes to Avoid:**
 - Adjusting the wrong member (always verify name before submitting)
 - Forgetting the negative sign when deducting points
 - Vague reasons like "error" (what kind of error?)
@@ -662,6 +791,15 @@ Every adjustment creates a permanent record showing:
 ## Points & Currency Management
 
 **The engine that powers how members earn and spend rewards.**
+
+{{< callout type="info" >}}
+**This section is detailed (380+ lines).** For most businesses:
+- Use **single currency** strategy (simplest)
+- Set **100 points = $1** conversion rate (easy math)
+- Choose **calendar year expiry** (clean accounting)
+
+[Skip to Configuration](#configuration--settings) if you just need basic setup.
+{{< /callout >}}
 
 ### Understanding Point Currencies (Multiple "Wallets")
 
@@ -1195,52 +1333,52 @@ Member automatically gets VIP newsletters
 
 **Cashier / Frontline Staff:**
 ```
-✓ View member profiles
-✓ Earn points for members (via POS integration)
-✗ Cannot manually adjust points
-✗ Cannot delete members
-✗ Cannot view financial reports
+- View member profiles
+- Earn points for members (via POS integration)
+- Cannot manually adjust points
+- Cannot delete members
+- Cannot view financial reports
 ```
 
 **Customer Support Agents:**
 ```
-✓ View member profiles
-✓ Edit member contact info
-✓ Adjust points (up to 500 points, requires reason)
-✓ View transaction history
-✗ Cannot delete members
-✗ Cannot change tier manually
-✗ Cannot configure system settings
+- View member profiles
+- Edit member contact info
+- Adjust points (up to 500 points, requires reason)
+- View transaction history
+- Cannot delete members
+- Cannot change tier manually
+- Cannot configure system settings
 ```
 
 **Supervisors / Team Leads:**
 ```
-✓ All of Customer Support +
-✓ Adjust points (up to 5,000, requires reason)
-✓ Manually change member tier
-✓ View team reports
-✗ Cannot delete members
-✗ Cannot configure system settings
+- All of Customer Support +
+- Adjust points (up to 5,000, requires reason)
+- Manually change member tier
+- View team reports
+- Cannot delete members
+- Cannot configure system settings
 ```
 
 **Marketing Team:**
 ```
-✓ View member profiles
-✓ Create and assign labels
-✓ Export member lists for campaigns
-✓ View analytics reports
-✗ Cannot adjust points
-✗ Cannot edit member details
-✗ Cannot configure system settings
+- View member profiles
+- Create and assign labels
+- Export member lists for campaigns
+- View analytics reports
+- Cannot adjust points
+- Cannot edit member details
+- Cannot configure system settings
 ```
 
 **System Administrators:**
 ```
-✓ Full access to everything
-✓ Configure all settings
-✓ Manage users and permissions
-✓ Delete members (with audit trail)
-✓ Access all reports
+- Full access to everything
+- Configure all settings
+- Manage users and permissions
+- Delete members (with audit trail)
+- Access all reports
 ```
 
 ---
@@ -1268,17 +1406,17 @@ Member automatically gets VIP newsletters
 
 **Permission Best Practices:**
 
-✓ **Follow "Least Privilege" Principle**: Only give access people need for their job (don't give everyone admin rights)
+- **Follow "Least Privilege" Principle**: Only give access people need for their job (don't give everyone admin rights)
 
-✓ **Use Teams, Not Individuals**: Assign permissions to "Customer Support Team" rather than 20 individual agents (easier to manage)
+- **Use Teams, Not Individuals**: Assign permissions to "Customer Support Team" rather than 20 individual agents (easier to manage)
 
-✓ **Review Quarterly**: As people change roles, update permissions
+- **Review Quarterly**: As people change roles, update permissions
 
-✓ **Enable Audit Logging**: Track who does what (especially important for point adjustments)
+- **Enable Audit Logging**: Track who does what (especially important for point adjustments)
 
-✓ **Test Before Rolling Out**: Create a test user, apply permissions, verify they work as expected
+- **Test Before Rolling Out**: Create a test user, apply permissions, verify they work as expected
 
-❌ **Common Mistakes:**
+**Common Mistakes:**
 - Giving too many people admin access
 - Not documenting who has what permissions
 - Forgetting to revoke access when someone leaves
@@ -1362,9 +1500,9 @@ Member automatically gets VIP newsletters
 1. Back in **Member Master Data Listing**, click **Upload**
 2. Select your CSV file
 3. System validates the data:
-   - ✓ Green = All good, ready to import
-   - ⚠️ Yellow = Warnings (can still import)
-   - ✗ Red = Errors (must fix before importing)
+   - Green = All good, ready to import
+   - Yellow = Warnings (can still import)
+   - Red = Errors (must fix before importing)
 4. Review the validation report
 5. Click **Confirm Import**
 
@@ -1386,17 +1524,17 @@ Member automatically gets VIP newsletters
 
 **Best Practices:**
 
-✓ **Test with 10 members first**: Before uploading 10,000 members, test with a small sample to catch formatting errors
+- **Test with 10 members first**: Before uploading 10,000 members, test with a small sample to catch formatting errors
 
-✓ **Clean your data**: Remove duplicate rows, fix typos, standardize formats before uploading
+- **Clean your data**: Remove duplicate rows, fix typos, standardize formats before uploading
 
-✓ **Back up first**: Export existing members before bulk import (in case something goes wrong)
+- **Back up first**: Export existing members before bulk import (in case something goes wrong)
 
-✓ **Upload during off-hours**: Large imports can slow the system — do it when fewer users are online
+- **Upload during off-hours**: Large imports can slow the system — do it when fewer users are online
 
-✓ **Use unique IDs**: Member IDs must be unique (no two members can have same ID)
+- **Use unique IDs**: Member IDs must be unique (no two members can have same ID)
 
-❌ **Common Mistakes:**
+**Common Mistakes:**
 - Excel auto-formats dates wrong (changes 2025-01-15 to 1/15/2025) → Set column to "Text" format first
 - Phone numbers lose leading zeros (0123456789 becomes 123456789) → Prefix with apostrophe '0123456789
 - Mixing encodings (special characters become gibberish) → Save as UTF-8 encoding
@@ -1457,12 +1595,7 @@ Member automatically gets VIP newsletters
 - **Negative Balance Prevention**: Won't let you deduct more points than a member has (unless you override)
 
 ---
-
-### Reporting & Data Export
-
-**What it is:** Download data from the system to analyze in Excel, send to finance, or archive.
-
-**Common Exports:**
+ *(See [Member Class vs Label](#member-class-vs-member-label-when-to-use-which) for full explanation)*
 
 **Member List Export:**
 - Go to **Member Listing**
