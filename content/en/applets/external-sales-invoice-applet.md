@@ -83,13 +83,86 @@ Traditional invoicing relies on spreadsheets, email chains, and manual data entr
 
 ---
 
+## Key Concepts
+
+### Understanding the Invoice Framework
+
+Every invoicing system must address three fundamental aspects. The External Sales Invoice Applet provides structured handling:
+
+| Aspect | Component | Practical Example |
+|--------|-----------|------------------|
+| **What** are you selling? | Item/Product | Laptops, Services, Spare Parts |
+| **Who** is the customer? | Customer Account | Corporate client, Walk-in customer |
+| **How** is it processed? | Document Workflow | Draft review, Tax calculation, GL posting |
+
+{{< callout type="tip" >}}
+**Real-World Example**: A company (WHO) purchases 50 laptops (WHAT) at RM 5,000 each. The system creates a sales order, then converts it to an invoice (HOW), calculates SST automatically, and posts to accounting upon finalization.
+{{< /callout >}}
+
+### Document Flow Hierarchy
+
+Think of the invoicing process as a structured document flow:
+
+```
+Customer Order
+│
+├── Quotation (Optional) ──→ Initial pricing proposal
+│
+├── Sales Order ──→ Confirmed order
+│   │
+│   └── Delivery Order ──→ Fulfillment confirmation
+│       │
+│       └── External Sales Invoice ──→ Billing document
+│           │
+│           └── Payment Receipt ──→ Collection
+│
+└── GL Posting ──→ Accounting records
+```
+
+**Flow Through the Hierarchy:**
+
+1. **Quotation**: Initial price proposal to customer
+2. **Sales Order**: Confirmed order with agreed pricing
+3. **Delivery Order**: Goods delivered to customer
+4. **Invoice**: Bill customer for delivered goods
+5. **Payment**: Customer pays invoice
+6. **GL**: Accounting entry for revenue recognition
+
+This structure enables:
+- **Complete traceability** from quotation to payment
+- **Flexible workflows** (skip steps if not needed)
+- **Document linking** for audit purposes
+- **Status tracking** at each stage
+
+### The "Core Triangle" of Sales Invoicing
+
+To effectively manage the system, understand how **Items**, **Pricing**, and **Taxes** work together.
+
+| Component | Analogy | Definition | Example |
+|-----------|---------|------------|---------|
+| **Item/Product** | The "What" | What you're selling to the customer. | Dell Laptop XPS 15 |
+| **Pricing Scheme** | The "Value" | How much it costs (standard, promotional, negotiated). | RM 5,500 (VIP customer RM 5,000) |
+| **Tax Configuration** | The "Obligation" | Tax applied based on item type and regulations. | SST 10% = RM 500 |
+
+**How they link:**
+1. You select an **Item** (e.g., Dell Laptop)
+2. System applies **Pricing** (standard RM 5,500 or special customer rate)
+3. System calculates **Tax** (SST 10% if applicable)
+4. Invoice total = Item Price + Tax - Discounts
+
+---
+
 ## Quick Start Guide
 
 Get up and running quickly with these essential workflows.
 
+{{< figure src="/images/external-sales-invoice-applet/quick-start-guide-infographic.png" alt="Streamlined Sales Invoicing: A Quick Guide for Every Role - showing workflows for Sales Reps, Finance Teams, and Admins" caption="Streamlined Sales Invoicing: Visual at-a-glance guide for Sales (Create Invoice), Finance (Review & Finalize), and Admins (System Setup)." >}}
+
 ### For Sales Representatives: Create Your First Invoice
 
 **Goal:** Create and submit an invoice for customer billing in 5 steps.
+
+{{< figure src="/images/external-sales-invoice-applet/my-invoices-listing.png" alt="External Sales Invoice Listing showing invoice summary with Draft, Submitted, and Posted tabs" caption="External Sales Invoice Listing: View all your invoices with status summary cards" >}}
 
 **Step 1: Create Invoice Header**
 1. Navigate to **"External Sales Invoice"** from the sidebar
@@ -101,6 +174,8 @@ Get up and running quickly with these essential workflows.
    - **Conversion Name**: Invoice reference (e.g., "ABC Corp - January Invoice")
    - **Description** (Optional): Additional notes
 4. Click **"Create"** (saves as DRAFT)
+
+{{< figure src="/images/external-sales-invoice-applet/invoice-edit-form.png" alt="Invoice Edit Form with Main Details and Lines tabs" caption="Invoice Edit Form: Enter header details, add line items, and manage document workflow" >}}
 
 **Step 2: Add Line Items**
 
@@ -121,7 +196,7 @@ Choose ONE of these methods to add items:
 1. Go to **"Lines"** tab
 2. Click **"KO For Sales Order"** (Knock Off)
 3. Search for customer's outstanding sales order
-4. Select order → System imports all line items with pricing
+4. Select order - System imports all line items with pricing
 5. Review and adjust quantities if needed
 
 **Method C: Convert Quotation**
@@ -153,7 +228,7 @@ Choose ONE of these methods to add items:
 - Invoice posts to accounting system
 - Customer receives bill
 
-**What happens next?** Invoice moves from DRAFT → FINAL → Posted to GL → Revenue recognized → Customer billed
+**What happens next?** Invoice moves from DRAFT to FINAL to Posted to GL to Revenue recognized to Customer billed
 
 **Pro Tip:** Enable serial number validation in Settings if you sell electronics or high-value items requiring tracking.
 
@@ -177,19 +252,19 @@ Click on a draft invoice to review:
 - **Serial Numbers**: Valid serial numbers for trackable items
 
 **Key Checks:**
-- ✓ Pricing matches approved rates
-- ✓ Tax calculations are correct (SST/VAT/GST)
-- ✓ Quantities match source documents
-- ✓ Serial numbers are valid (if applicable)
-- ✓ Customer details are accurate
-- ✓ No duplicate invoices
+- Pricing matches approved rates
+- Tax calculations are correct (SST/VAT/GST)
+- Quantities match source documents
+- Serial numbers are valid (if applicable)
+- Customer details are accurate
+- No duplicate invoices
 
 **Step 3: Finalize and Post**
 1. Select invoice(s) ready for posting
 2. Click **"FINAL"** button
 3. Confirm action
 4. System:
-   - Changes Posting Status: DRAFT → FINAL
+   - Changes Posting Status: DRAFT to FINAL
    - Posts to General Ledger
    - Recognizes revenue
    - Updates inventory (reduces stock)
@@ -218,11 +293,11 @@ If invoice has errors:
 
 **Step 2: Configure Application Settings** (`Settings > Application Settings`)
 Enable features your business needs:
-- ✓ **Enable SST** (Sales & Service Tax) - For Malaysia
-- ✓ **Enable VAT** (Value Added Tax) - For other regions
-- ✓ **Enable WHT** (Withholding Tax) - If required
-- ✓ **Enable Dimension Tracking** - For cost center analysis
-- ✓ **Enable Project Tracking** - For project-based billing
+- **Enable SST** (Sales & Service Tax) - For Malaysia
+- **Enable VAT** (Value Added Tax) - For other regions
+- **Enable WHT** (Withholding Tax) - If required
+- **Enable Dimension Tracking** - For cost center analysis
+- **Enable Project Tracking** - For project-based billing
 
 **Configure Pricing Visibility:**
 Choose which price fields users can see:
@@ -343,7 +418,7 @@ Steps:
 3. Select SO-2024-050
 4. System imports: 100 laptops @ RM 2,500 = RM 275,000 (incl. SST)
 5. Save as DRAFT
-6. Finance finalizes → ABC Corp receives invoice
+6. Finance finalizes and ABC Corp receives invoice
 ```
 
 ---
@@ -357,7 +432,7 @@ Steps:
 1. Create invoice header
 2. Click **"KO For Sales Quotation"**
 3. Search for approved quotation
-4. Select quotation → System imports items and pricing
+4. Select quotation - System imports items and pricing
 5. System converts **quoted prices** into **invoice amounts**
 
 **Use Case:**
@@ -470,8 +545,8 @@ Walk-in customer buys:
 Total: RM 1,410 + SST
 
 You:
-1. Search "Office Chair" → Select → Qty 5
-2. Search "Desk Lamp" → Select → Qty 2
+1. Search "Office Chair" - Select - Qty 5
+2. Search "Desk Lamp" - Select - Qty 2
 3. System calculates total: RM 1,410 + SST = RM 1,551
 4. Invoice ready
 ```
@@ -546,13 +621,13 @@ System calculates:
 
 ```
 Line 1: 50 boxes of tiles - Delivery Required: YES
-  → Warehouse team prepares delivery
-  → Logistics schedules truck
-  → Delivery order created
+  - Warehouse team prepares delivery
+  - Logistics schedules truck
+  - Delivery order created
 
 Line 2: Software license key - Delivery Required: NO
-  → Email sent to customer
-  → No warehouse action needed
+  - Email sent to customer
+  - No warehouse action needed
 ```
 
 ---
@@ -580,10 +655,10 @@ Unique IDs for individual items (like your phone's IMEI number). Used for high-v
    - SN-DELL-001235
    - SN-DELL-001236
 6. System validates:
-   - ✓ Serial numbers exist in inventory
-   - ✓ Not already invoiced
-   - ✓ Status = VALID
-7. If any invalid → Warning: "Serial SN-DELL-001235 already invoiced"
+   - Serial numbers exist in inventory
+   - Not already invoiced
+   - Status = VALID
+7. If any invalid - Warning: "Serial SN-DELL-001235 already invoiced"
 
 **Why This Matters:**
 - Warranty tracking: Which specific laptop did customer receive?
@@ -633,10 +708,10 @@ Summary:
 
 **Pro Tips:**
 
-✓ **Always verify quantities** before saving (prevent over/under-billing)  
-✓ **Check serial numbers** for high-value items (avoid disputes later)  
-✓ **Mark delivery required** accurately (warehouse needs to know)  
-✓ **Review totals** in summary section before finalizing
+**Always verify quantities** before saving (prevent over/under-billing)
+**Check serial numbers** for high-value items (avoid disputes later)
+**Mark delivery required** accurately (warehouse needs to know)
+**Review totals** in summary section before finalizing
 
 ---
 
@@ -774,9 +849,9 @@ Systems round to: RM 1,234.57 (2 decimal places)
 But, summing multiple lines may cause small discrepancies:
 
 ```
-Line 1: RM 1,234.567 → Rounded: RM 1,234.57
-Line 2: RM 2,345.678 → Rounded: RM 2,345.68
-Line 3: RM 3,456.789 → Rounded: RM 3,456.79
+Line 1: RM 1,234.567 to Rounded: RM 1,234.57
+Line 2: RM 2,345.678 to Rounded: RM 2,345.68
+Line 3: RM 3,456.789 to Rounded: RM 3,456.79
 
 Sum: RM 7,037.04
 Actual: RM 7,037.034
@@ -826,12 +901,12 @@ Unique identifiers for individual items—like a birth certificate for products.
 
 **When to Use Serial Numbers:**
 
-✓ **High-value items**: Laptops, phones, servers, machinery  
-✓ **Warranty-tracked products**: Electronics with manufacturer warranties  
-✓ **Regulated items**: Medical devices, safety equipment  
-✓ **Returns-prone products**: Items with high return rates
+**High-value items**: Laptops, phones, servers, machinery
+**Warranty-tracked products**: Electronics with manufacturer warranties
+**Regulated items**: Medical devices, safety equipment
+**Returns-prone products**: Items with high return rates
 
-❌ **Don't Use For:**
+**Don't Use For:**
 - Consumables (paper, pens, office supplies)
 - Low-value items (< RM 100)
 - Bulk commodities (screws, nails)
@@ -864,10 +939,10 @@ Sales rep enters:
 **Step 3: System Validates**
 
 Real-time checks:
-- ✓ Serial number exists in inventory?
-- ✓ Not already invoiced/sold?
-- ✓ Status = VALID (not DAMAGED, RETURNED)?
-- ✓ Matches item type (Dell laptop serial for Dell laptop)?
+- Serial number exists in inventory?
+- Not already invoiced/sold?
+- Status = VALID (not DAMAGED, RETURNED)?
+- Matches item type (Dell laptop serial for Dell laptop)?
 
 **Step 4: Lock Serial Numbers**
 
@@ -902,9 +977,9 @@ SN-DELL-100241
 SN-DELL-100242
 SN-DELL-100243
 
-System validates all 10 → All VALID
+System validates all 10 and all are VALID
 
-Invoice finalized → Serial numbers locked → Laptops shipped
+Invoice finalized and serial numbers locked and laptops shipped
 
 ---
 
@@ -917,7 +992,7 @@ Return Document:
 System:
 1. Searches serial: SN-DELL-100237
 2. Finds original invoice: INV-2024-150
-3. Checks warranty: Within 12-month warranty period ✓
+3. Checks warranty: Within 12-month warranty period (valid)
 4. Processes return/replacement
 5. Un-locks serial SN-DELL-100237 for new sale
 ```
@@ -1020,18 +1095,18 @@ Finance catches error during review:
 - Sales rep edits draft
 - Corrects: Quantity 100
 - Re-submits for finalization
-- Finance finalizes: Status → FINAL
+- Finance finalizes: Status changes to FINAL
 - Customer billed correctly
 ```
 
 Without draft workflow:
-- Invoice posts immediately → Customer billed RM 100,000 instead of RM 10,000
+- Invoice posts immediately and customer billed RM 100,000 instead of RM 10,000
 - Requires credit note to reverse (messy)
 - Customer loses confidence
 
 ---
 
-**Complete Workflow: Draft → Final → Posted**
+**Complete Workflow: Draft to Final to Posted**
 
 **Stage 1: Sales Creates Draft**
 1. Sales rep creates invoice
@@ -1043,18 +1118,18 @@ Without draft workflow:
 **Stage 2: Finance Reviews**
 1. Finance opens draft invoice
 2. Checks:
-   - Pricing matches approved rates ✓
-   - Quantities match source documents ✓
-   - Tax calculated correctly ✓
-   - No duplicate invoices ✓
-   - Customer credit limit ok ✓
+   - Pricing matches approved rates
+   - Quantities match source documents
+   - Tax calculated correctly
+   - No duplicate invoices
+   - Customer credit limit ok
 3. Decision:
-   - **Approve**: Click "FINAL" → Proceeds to Stage 3
-   - **Reject**: Leave comment → Back to Sales
+   - **Approve**: Click "FINAL" - Proceeds to Stage 3
+   - **Reject**: Leave comment - Back to Sales
 
 **Stage 3: System Posts**
 Automatically upon "FINAL" click:
-1. **Change status**: DRAFT → FINAL
+1. **Change status**: DRAFT to FINAL
 2. **Post to GL**:
    ```
    Dr. Accounts Receivable (Customer)   RM 52,250
@@ -1063,7 +1138,7 @@ Automatically upon "FINAL" click:
    ```
 3. **Update Inventory**:
    - Reduce stock quantities
-   - Update serial number status (AVAILABLE → SOLD)
+   - Update serial number status (AVAILABLE to SOLD)
 4. **Generate Documents**:
    - PDF invoice for customer
    - Delivery order (if delivery required)
@@ -1108,7 +1183,7 @@ Automatically upon "FINAL" click:
 - Select draft invoice
 - Click **"Delete"** button
 - Confirm action
-- Invoice status: ACTIVE → DELETED
+- Invoice status: ACTIVE to DELETED
 - Not permanently removed (audit trail preserved)
 
 **Cannot Delete Final:**
@@ -1134,13 +1209,13 @@ Monday 11:00 AM: Finance Reviews
 
 Monday 2:00 PM: Sales Rep Corrects
 - Opens draft invoice
-- Adjusts pricing: RM 25,000 → RM 27,500
+- Adjusts pricing: RM 25,000 to RM 27,500
 - Re-saves draft
 - Notifies Finance: "Pricing corrected"
 
 Monday 3:00 PM: Finance Approves
 - Re-reviews draft
-- Pricing correct ✓
+- Pricing correct (approved)
 - Clicks "FINAL"
 - System posts to GL
 - Customer receives invoice via email
@@ -1182,10 +1257,10 @@ Finance teams are the checkpoint before invoices hit the books and customers rec
 
 Compare invoice pricing against approved sources:
 
-✓ **Sales orders**: Does invoice match SO pricing?  
-✓ **Quotations**: Does invoice match quoted amounts?  
-✓ **Price lists**: Are prices from current, valid price list?  
-✓ **Discounts**: Are discounts within authorized limits?
+**Sales orders**: Does invoice match SO pricing?
+**Quotations**: Does invoice match quoted amounts?
+**Price lists**: Are prices from current, valid price list?
+**Discounts**: Are discounts within authorized limits?
 
 **Example:**
 
@@ -1198,9 +1273,9 @@ Question: Why the difference?
 Check:
 - Discount applied: 10% promotional discount
 - Authorized by: Sales Manager (approval email attached)
-- Valid until: Oct 31, 2024 ✓
+- Valid until: Oct 31, 2024 (Valid)
 
-Decision: Approve ✓
+Decision: Approve
 ```
 
 **Red Flag:**
@@ -1217,7 +1292,7 @@ Check:
 - No approval email
 - Exceeds limit (Sales Manager max: 15%)
 
-Decision: Reject → Request proper authorization
+Decision: Reject and request proper authorization
 ```
 
 **2. Tax Calculation Accuracy**
@@ -1227,7 +1302,7 @@ Decision: Reject → Request proper authorization
 ```
 Subtotal: RM 10,000
 SST 10%: Should be RM 1,000
-Invoice shows: RM 1,000 ✓
+Invoice shows: RM 1,000 (Correct)
 
 Approve
 ```
@@ -1262,7 +1337,7 @@ Sales Order: 100 units
 Delivery Order: 100 units delivered
 Invoice: 100 units
 
-Perfect match ✓ → Approve
+Perfect match and approved
 ```
 
 **Partial Delivery Scenario:**
@@ -1287,16 +1362,16 @@ For items requiring serial numbers:
 Line Item: 10 x Servers @ RM 15,000 = RM 150,000
 
 Check:
-- Serial numbers entered: 10 ✓
-- All serials VALID: ✓
-- No duplicates: ✓
-- Match item type: ✓
+- Serial numbers entered: 10
+- All serials VALID
+- No duplicates
+- Match item type
 
 Warehouse confirmation:
-- Physical count: 10 servers packed for delivery ✓
-- Serial list matches system: ✓
+- Physical count: 10 servers packed for delivery
+- Serial list matches system
 
-Decision: Approve ✓
+Decision: Approve
 ```
 
 **Red Flag:**
@@ -1329,7 +1404,7 @@ Outstanding + New = RM 75,000 + RM 35,000 = RM 110,000
 Exceeds Credit Limit by RM 10,000
 
 Decision Options:
-A) Reject invoice → Request Sales to get payment first
+A) Reject invoice and request Sales to get payment first
 B) Escalate to CFO for credit limit increase
 C) Request 50% down payment before finalizing
 ```
@@ -1348,11 +1423,11 @@ Search Existing:
 Possible duplicate!
 
 Verify:
-- Check source docs: Different sales orders ✓
-- Check items: Different products ✓
-- Confirm with sales: Two separate orders ✓
+- Check source docs: Different sales orders
+- Check items: Different products
+- Confirm with sales: Two separate orders
 
-Decision: Not duplicate → Approve both
+Decision: Not duplicate and approve both
 ```
 
 **7. GL Account Mapping**
@@ -1362,15 +1437,15 @@ Verify invoice posts to correct accounts:
 ```
 Invoice Type: Product Sale
 Should post to:
-- Dr. Accounts Receivable → Customer
-- Cr. Sales Revenue - Product Sales → Revenue Account 4100
-- Cr. SST Payable → Liability Account 2500
+- Dr. Accounts Receivable | Customer
+- Cr. Sales Revenue - Product Sales | Revenue Account 4100
+- Cr. SST Payable | Liability Account 2500
 
 Invoice Type: Service Fee
 Should post to:
-- Dr. Accounts Receivable → Customer
-- Cr. Sales Revenue - Services → Revenue Account 4200
-- Cr. WHT Payable → Liability Account 2501
+- Dr. Accounts Receivable | Customer
+- Cr. Sales Revenue - Services | Revenue Account 4200
+- Cr. WHT Payable | Liability Account 2501
 
 Verify correct accounts before finalizing.
 ```
@@ -1392,7 +1467,7 @@ Verify correct accounts before finalizing.
 **Step 3: Make Decision**
 
 **Option A: Approve and Finalize**
-1. All checks passed ✓
+1. All checks passed
 2. Select invoice(s)
 3. Click **"FINAL"** button
 4. Confirm action
@@ -2660,7 +2735,7 @@ Branch: Export Branch → Zero-rated (0% tax)
 
 **7. User Activity Report**
 - Who created how many invoices
-- Finalization turnaround time (Draft → Final)
+- Finalization turnaround time (Draft to Final)
 - User productivity metrics
 - Use for: Performance reviews, process improvement
 
@@ -2866,7 +2941,7 @@ Email customer:
 Original: +RM 10,000 revenue
 Credit Note: -RM 10,000 revenue
 Corrected: +RM 9,000 revenue
-Net Effect: RM 9,000 revenue ✓
+Net Effect: RM 9,000 revenue (correct)
 ```
 
 ---
@@ -2958,6 +3033,102 @@ Accounting books: RM 4,500
 
 **Tax Implications:**
 Different countries may have different tax rules for foreign currency invoices. Consult your tax advisor.
+
+---
+
+**Q: How do I handle returns or refunds?**
+
+A: **Returns Process:**
+
+**Step 1: Customer Returns Item**
+- Customer notifies you of defect or change of mind
+- Verify return policy eligibility
+- Check serial number (if applicable)
+
+**Step 2: Create Credit Note**
+- Do NOT edit original invoice (locked)
+- Create Credit Note referencing original invoice
+- Amount: Negative value equals original invoice line
+- Reason: "Item returned - defective" or "Customer cancellation"
+
+**Step 3: Process Refund**
+- Finance processes credit note
+- GL entry reverses revenue
+- Refund customer or apply credit to future invoices
+
+**Step 4: Update Inventory**
+- Return item to inventory (if resellable)
+- Update serial number status to AVAILABLE
+- Scrap item (if defective)
+
+**Example:**
+```
+Original Invoice: INV-2024-500, RM 5,000 (Laptop)
+Customer returns laptop (screen defect)
+
+Credit Note: CN-2024-080, -RM 5,000
+Inventory: Laptop serial returned, status = DEFECTIVE
+Refund: RM 5,000 credited to customer account
+```
+
+---
+
+**Q: Can I edit an invoice after sending to customer but before finalizing?**
+
+A: **Yes, if still in DRAFT status:**
+
+1. Go to External Sales Invoice listing
+2. Find your draft invoice
+3. Click to open
+4. Click **"Edit"** button
+5. Make changes:
+   - Add/remove line items
+   - Adjust quantities or pricing
+   - Update customer information
+   - Modify serial numbers
+6. Click **"Save"**
+7. Re-send to customer (if already sent)
+
+**If Already FINAL:**
+- Cannot edit directly
+- Must use Credit Note + New Invoice process
+
+**Best Practice:** Keep invoices in DRAFT until customer confirms all details are correct. Only finalize after confirmation.
+
+---
+
+**Q: How do I track which invoices have been paid?**
+
+A: **Payment Tracking Options:**
+
+**Option 1: Within Invoice Applet**
+- Go to External Sales Invoice listing
+- Filter by: **Status = "PAID"** or **Status = "UNPAID"**
+- See payment status for each invoice
+
+**Option 2: Accounts Receivable Module**
+- More comprehensive payment tracking
+- Match payments to invoices
+- Generate aging reports
+- Track collection activities
+
+**Option 3: Custom Reports**
+- Generate "Outstanding Invoices" report
+- Filter by:  
+  - Date range
+  - Customer
+  - Amount outstanding
+- Export to Excel for follow-up
+
+**Payment Workflow:**
+```
+1. Invoice finalized (Status: FINAL, Unpaid)
+2. Customer pays (bank transfer/check)
+3. Finance records payment in system
+4. System matches payment to invoice
+5. Invoice status updated: PAID
+6. AR balance reduced
+```
 
 ---
 
@@ -3144,49 +3315,52 @@ Cause: Tax base is RM 9,500 (after discount), not RM 10,000
 
 ### For Sales Representatives
 
-✅ **Create invoices promptly** after delivery (improves cash flow)  
-✅ **Verify customer details** before finalizing (prevents payment delays)  
-✅ **Link to source documents** (Sales Orders, Quotations) for traceability  
-✅ **Add clear descriptions** on line items (helps customer understand charges)  
-✅ **Check serial numbers carefully** for high-value items (prevents disputes)  
-✅ **Use DRAFT status wisely** - Save drafts if uncertain, let Finance review  
-✅ **Respond quickly to Finance queries** (prevents billing delays)
+**Create invoices promptly** after delivery (improves cash flow)  
+**Verify customer details** before finalizing (prevents payment delays)  
+**Link to source documents** (Sales Orders, Quotations) for traceability  
+**Add clear descriptions** on line items (helps customer understand charges)  
+**Check serial numbers carefully** for high-value items (prevents disputes)  
+**Use DRAFT status wisely** - Save drafts if uncertain, let Finance review  
+**Respond quickly to Finance queries** (prevents billing delays)
 
-❌ **Don't skip serial numbers** when required—causes errors later  
-❌ **Don't manually override taxes** unless authorized  
-❌ **Don't rush through invoice creation**—errors = credit notes = delays  
+**Avoid:**
+- Skipping serial numbers when required—causes errors later  
+- Manually overriding taxes unless authorized  
+- Rushing through invoice creation—errors = credit notes = delays  
 
 ---
 
 ### For Finance Teams
 
-✅ **Review drafts within 4 hours** (SLA target—prevents revenue delays)  
-✅ **Document rejection reasons clearly** (helps sales learn)  
-✅ **Spot-check calculations** even if system-generated (trust but verify)  
-✅ **Reconcile daily** invoice totals vs GL revenue (catch errors early)  
-✅ **Monitor credit limits** before finalizing (reduces bad debt risk)  
-✅ **Bulk-finalize routine invoices** (<RM 5,000) for efficiency  
-✅ **Individually review high-value invoices** (>RM 50,000) carefully
+**Review drafts within 4 hours** (SLA target—prevents revenue delays)  
+**Document rejection reasons clearly** (helps sales learn)  
+**Spot-check calculations** even if system-generated (trust but verify)  
+**Reconcile daily** invoice totals vs GL revenue (catch errors early)  
+**Monitor credit limits** before finalizing (reduces bad debt risk)  
+**Bulk-finalize routine invoices** (<RM 5,000) for efficiency  
+**Individually review high-value invoices** (>RM 50,000) carefully
 
-❌ **Don't finalize invoices with missing serial numbers** (fraud risk)  
-❌ **Don't override tax calculations** without CFO approval  
-❌ **Don't let drafts sit unreviewed** for days (hurts cash flow)  
+**Avoid:**
+- Finalizing invoices with missing serial numbers (fraud risk)  
+- Overriding tax calculations without CFO approval  
+- Letting drafts sit unreviewed for days (hurts cash flow)  
 
 ---
 
 ### For Administrators
 
-✅ **Configure defaults before rollout** (branch, location, tax settings)  
-✅ **Train users thoroughly** before going live (reduces support tickets)  
-✅ **Start with minimal field visibility** add complexity gradually  
-✅ **Review permissions quarterly** (remove access when roles change)  
-✅ **Monitor system logs** for unusual activity (security audit)  
-✅ **Back up data regularly** (disaster recovery)  
-✅ **Test end-to-end workflows** after configuration changes  
+**Configure defaults before rollout** (branch, location, tax settings)  
+**Train users thoroughly** before going live (reduces support tickets)  
+**Start with minimal field visibility** and add complexity gradually  
+**Review permissions quarterly** (remove access when roles change)  
+**Monitor system logs** for unusual activity (security audit)  
+**Back up data regularly** (disaster recovery)  
+**Test end-to-end workflows** after configuration changes  
 
-❌ **Don't grant unnecessary permissions** (security risk)  
-❌ **Don't change tax settings without accounting team approval**  
-❌ **Don't skip user training** (leads to errors and support burden)  
+**Avoid:**
+- Granting unnecessary permissions (security risk)  
+- Changing tax settings without accounting team approval  
+- Skipping user training (leads to errors and support burden)  
 
 ---
 
