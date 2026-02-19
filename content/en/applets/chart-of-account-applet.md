@@ -18,14 +18,6 @@ The **Chart of Account Applet** is the architectural backbone of your financial 
 **Core Concept**: This applet acts as the **architect** of your financial data, ensuring every transaction finds its correct home through a structured hierarchy of **Sections**, **Categories**, and **Codes**.
 {{< /callout >}}
 
-### Key Terms
-
-| Term | Description |
-| :--- | :--- |
-| **GL Section** | The top-level grouping for financial statement presentation (e.g., Assets, Liabilities, Equity, Revenue, Expenses). |
-| **GL Category** | A sub-grouping within a section that organizes related accounts together (e.g., "Current Assets", "Fixed Assets"). |
-| **GL Code** | The individual account used for recording transactions (e.g., "1001 - Petty Cash", "1102 - Cash at Bank"). |
-
 ## Key Features Overview
 
 ### Who Benefits from This Applet?
@@ -127,6 +119,14 @@ A quick guide to every option available in the applet's sidebar.
 
 ## Key Concepts
 
+### Key Terms
+
+| Term | Description |
+| :--- | :--- |
+| **GL Section** | The top-level grouping for financial statement presentation (e.g., Assets, Liabilities, Equity, Revenue, Expenses). |
+| **GL Category** | A sub-grouping within a section that organizes related accounts together (e.g., "Current Assets", "Fixed Assets"). |
+| **GL Code** | The individual account used for recording transactions (e.g., "1001 - Petty Cash", "1102 - Cash at Bank"). |
+
 ### Understanding the Financial Hierarchy
 
 At the heart of the applet is a strict 3-level hierarchy designed to ensure accurate financial reporting.
@@ -207,8 +207,7 @@ Get your financial structure ready with these essential workflows.
 **Goal:** Establish the legal and accounting entities for the system.
 
 1. **Verify Company Details** (`Sidebar > Companies`):
-   - Navigate to **Companies** settings.
-   - Verify the Company Code, Name, Registration No, and Currency in the **Main** tab (Note: These are typically read-only or pre-configured).
+   - Verify the Company Code, Name, Registration No, and Currency in the **Main** tab.
 
 2. **Create Ledgers** (`Companies > Ledgers`):
    - Create the financial ledgers for the company.
@@ -538,6 +537,8 @@ Companies are automatically listed after the Chart of Accounts is selected in th
 
 **Ledgers Tab:**
 
+In accounting, a ledger is the principal book (or digital record) that contains all financial transactions for a company. Sub-ledgers break this down further by individual GL Code for detailed tracking.
+
 Create and manage company ledgers.
 
 {{< figure src="/images/chart-of-account-applet/screenshots/company-ledgers.png" alt="Company Ledgers Tab" caption="Creating and managing Ledgers and Sub-Ledgers." >}}
@@ -582,6 +583,8 @@ Critical configuration for system automation.
 ### Set of Books Management
 *Menu: **Set Of Books***
 
+In accounting, a Set of Books is a complete, self-contained accounting record — grouping one or more ledgers together for a specific reporting purpose (e.g., statutory reporting, management reporting, or multi-currency consolidation).
+
 {{< figure src="/images/chart-of-account-applet/screenshots/set-of-books-ledgers.png" alt="Set of Books Ledgers" caption="Linking Ledgers to Set of Books." >}}
 
 **Details Tab:**
@@ -594,6 +597,8 @@ Critical configuration for system automation.
 ---
 
 ## Fiscal Year Management
+In accounting, a fiscal year defines the 12-month period used for financial reporting and tax purposes. It may or may not align with the calendar year. Fiscal periods (usually monthly) within the year can be individually locked to prevent changes to finalized data.
+
 *Menu: **Fiscal Year***
 
 {{< figure src="/images/chart-of-account-applet/screenshots/fiscal-year-listing.png" alt="Fiscal Year Listing" caption="Fiscal Year listing with create option." >}}
@@ -826,13 +831,23 @@ Tag with Profit Center:
 
 *Found in: **Settings > General Settings***
 
-- **Default GL Code**: A JSON configuration textarea for specifying default GL Code mappings
-- **Closing Stock Balance Settings**: Toggle which inventory values are visible in financial reports:
-  - Inventory Stock Value (General)
-  - Raw Material Stock
-  - WIP (Work In Progress) Stock
-  - Finished Goods Stock
-  - NSTI (Non-Stock Trade-In) Stock
+Two collapsible panels:
+
+**Default GL Code**
+A JSON textarea where you define fallback GL Code mappings. The system reads this configuration when automatically assigning GL Codes to transactions that do not have an explicit mapping elsewhere.
+
+**Closing Stock Balance Settings**
+Slide toggles that control which inventory stock values appear in your financial reports (e.g., Balance Sheet, Profit & Loss). Each toggle corresponds to a stock category:
+
+| Toggle | What It Controls |
+| :--- | :--- |
+| `SHOW_INVENTORY_STOCK_VALUE` | General inventory (finished goods for trading companies) |
+| `SHOW_RAW_MATERIAL_STOCK_VALUE` | Raw material stock (manufacturing) |
+| `SHOW_WIP_STOCK_VALUE` | Work-In-Progress stock (manufacturing) |
+| `SHOW_FINISHED_GOODS_STOCK_VALUE` | Finished goods stock (manufacturing) |
+| `SHOW_NSTI_STOCK_VALUE` | Non-Stock & Trade-In items |
+
+Click **SAVE** after changing any setting.
 
 ---
 
@@ -880,7 +895,7 @@ Set your preferred working context to avoid repeated selections:
 A: A **GL Section** is the highest level (e.g., Assets). A **GL Category** is a subdivision (e.g., Current Assets). GL Codes sit inside Categories.
 
 **Q: How do I lock a specific month?**  
-A: Go to **Fiscal Year** → select the year → open the **Fiscal Period** tab for the specific month → change **Closing Status** to `LOCK_ALL`.
+A: Go to **Fiscal Year** → select the year → open the **Fiscal Period** tab → click on the specific period row to open **Fiscal Period Details** → change the **Closing Status** dropdown to `LOCK_ALL` → click **SAVE**.
 
 **Q: Can I manage multiple companies in this applet?**  
 A: Yes. You can define multiple **Companies** and **Sets of Books**. When working, you can switch between contexts.
