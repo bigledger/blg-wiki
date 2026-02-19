@@ -167,32 +167,50 @@ All 13 Core Module applets (listed above) are included in CP-Commerce Module.
 
 **Comprehensive transaction processing and financial management**
 
-### TODO: Document Accounting Module Applets
-1. **General Ledger Applet** - Core accounting and transaction processing
-2. **Accounts Receivable Applet** - Customer billing and collections
-3. **Accounts Payable Applet** - Vendor payments and processing
-4. **Fixed Assets Applet** - Asset management and depreciation
-5. **Budget Management Applet** - Budgeting and variance analysis
-6. **Cost Accounting Applet** - Cost allocation and analysis
-7. **Multi-Currency Applet** - Foreign exchange and currency management
-8. **Financial Reporting Applet** - Financial statements and reports
-9. **Bank Reconciliation Applet** - Automated bank statement reconciliation
-10. **Journal Entry Applet** - Manual and automated journal entries
-11. **Intercompany Applet** - Inter-company transaction processing
-12. **Revenue Recognition Applet** - Advanced revenue recognition
-13. **Expense Management Applet** - Employee expense processing
-14. **Cash Flow Management Applet** - Cash flow forecasting and management
-15. **Audit Trail Applet** - Financial audit and compliance tracking
-16. **Tax Accounting Applet** - Tax-specific accounting treatments
-17. **Consolidation Applet** - Multi-entity financial consolidation
-18. **Period Close Applet** - Month-end and year-end procedures
-19. **Allocation Applet** - Cost and revenue allocation
-20. **Treasury Management Applet** - Corporate treasury operations
-21. **Credit Management Applet** - Customer credit control
-22. **Collection Management Applet** - Debt collection processes
-23. **Payment Processing Applet** - Advanced payment handling
-24. **Financial Analytics Applet** - Advanced financial analysis
-25. **Compliance Management Applet** - Financial compliance monitoring
+### 1. [General Ledger Applet](/applets/general-ledger-applet/)
+**Core accounting and transaction processing**
+- Manage journals, ledgers, and financial postings
+- Real-time trial balance and financial statements
+
+### 2. [Internal Receipt Voucher Applet](/applets/internal-receipt-voucher-applet/)
+**Internal receipt management and processing**
+- Create and manage internal receipt vouchers
+- Handle payments, contras, and settlement adjustments
+- Built-in approval workflows and file import capabilities
+
+### 3. [Bank Reconciliation Applet](/applets/bank-reconciliation-applet/)
+**Automated bank statement reconciliation**
+- Match bank statements with system transactions
+- Auto-match rules and manual reconciliation tools
+
+### 4. [Debtor and Creditor Report Applet](/applets/debtor-and-creditor-report-applet/)
+**Comprehensive AP/AR reporting**
+- Aging reports and transaction history
+- Customer and supplier statement generation
+
+### Other Accounting Applets
+5. **Accounts Receivable Applet** - Customer billing and collections
+6. **Accounts Payable Applet** - Vendor payments and processing
+7. **Fixed Assets Applet** - Asset management and depreciation
+8. **Budget Management Applet** - Budgeting and variance analysis
+9. **Cost Accounting Applet** - Cost allocation and analysis
+10. **Multi-Currency Applet** - Foreign exchange and currency management
+11. **Financial Reporting Applet** - Financial statements and reports
+12. **Journal Entry Applet** - Manual and automated journal entries
+13. **Intercompany Applet** - Inter-company transaction processing
+14. **Revenue Recognition Applet** - Advanced revenue recognition
+15. **Expense Management Applet** - Employee expense processing
+16. **Cash Flow Management Applet** - Cash flow forecasting and management
+17. **Audit Trail Applet** - Financial audit and compliance tracking
+18. **Tax Accounting Applet** - Tax-specific accounting treatments
+19. **Consolidation Applet** - Multi-entity financial consolidation
+20. **Period Close Applet** - Month-end and year-end procedures
+21. **Allocation Applet** - Cost and revenue allocation
+22. **Treasury Management Applet** - Corporate treasury operations
+23. **Credit Management Applet** - Customer credit control
+24. **Collection Management Applet** - Debt collection processes
+25. **Financial Analytics Applet** - Advanced financial analysis
+
 
 ---
 

@@ -208,6 +208,19 @@ Filter by Customer → See payment history and patterns
 As of Date = Month End → Generate for management reporting
 ```
 
+### Viewing Aging Report Details - 2 Tabs
+
+When you click on a customer row in the Debtor Aging Report, the view shows:
+
+| Tab | Purpose |
+|-----|---------|
+| **Main** | Summary of the customer's aging breakdown, payment history |
+| **Outstanding Docs** | List of individual documents (invoices, credit notes) that make up the balance |
+
+{{< callout type="tip" >}}
+**Drill-Down Tip**: Use the Outstanding Docs tab to see exactly which invoices are aging, then click on individual documents for full details.
+{{< /callout >}}
+
 ---
 
 ## Creditor Aging Report
@@ -272,16 +285,53 @@ The summary view provides:
 
 ---
 
-## Detailed Reports
+## Outstanding Document Report
 
-### Transaction-Level Detail
+The **Outstanding Document Report** provides transaction-level detail for each document (invoice, credit note, payment) affecting balances.
 
-Drill down to see individual documents:
-- Invoice number and date
-- Original amount
-- Paid amount
-- Outstanding amount
-- Days overdue
+### Viewing a Document - 8 Tabs
+
+When you select a document from the report, you see detailed information across multiple tabs:
+
+| Tab | Purpose |
+|-----|---------|
+| **Details** | Document header info: number, date, entity, amounts, status |
+| **Account** | GL account breakdown and accounting entries |
+| **Line Items** | Individual line items on the document |
+| **Delivery Details** | Shipping/delivery information (for sales documents) |
+| **Settlement** | Payment history and settlement transactions |
+| **Department** | Department allocation and cost center breakdown |
+| **Contra** | Contra entries and offsetting transactions |
+| **Doc Link** | Links to related documents (POs, invoices, payments) |
+
+{{< callout type="tip" >}}
+**Settlement Tab**: This is especially useful for AR/AP reconciliation—see exactly which payments settled which invoices.
+{{< /callout >}}
+
+### Key Use Cases
+
+**Invoice Investigation:**
+- Open the document → Check **Details** for basic info
+- Go to **Line Items** to see what was sold/purchased
+- Check **Settlement** to see payment status
+
+**Document Tracing:**
+- Use **Doc Link** tab to trace the document chain
+- See related PO → Invoice → Payment connections
+
+---
+
+## Outstanding Entity Report
+
+The **Outstanding Entity Report** shows balances grouped by customer or vendor entity.
+
+### What It Shows
+
+- Entity name and code
+- Total outstanding amount
+- Document count
+- Last transaction date
+- Contact information
 
 ### Statement Generation
 
@@ -314,20 +364,39 @@ Generate customer/vendor statements showing:
 
 ## Configuration & Settings
 
-### Report Settings
-- Default aging buckets (customize days)
-- Default currency for reporting
-- Include/exclude certain document types
+### Default Settings (`Settings > Default Settings`)
 
-### Default Filters
-- Set your default company
-- Default date range
-- Preferred report layout
+Configure default values for reports:
 
-### Permissions
-- **View Reports** - Who can view AR/AP reports
-- **Export** - Who can export data
-- **Admin** - Who can change settings
+| Setting | Purpose |
+|---------|---------|
+| **Default Company** | Pre-selects your primary company |
+| **Default Currency** | Reporting currency preference |
+| **Default Date Range** | How far back to load data |
+
+---
+
+### Field Configuration (`Settings > Field Configuration`)
+
+Customize which columns appear in report listings and their order.
+
+---
+
+### Printable Format Settings (`Settings > Printable Format Settings`)
+
+Configure print templates for reports.
+
+**Edit View Tabs:**
+| Tab | Purpose |
+|-----|---------|
+| **Details** | Template name, header/footer settings |
+| **Line** | Line item layout and column configuration |
+
+---
+
+### Release Notes (`Settings > Release Notes`)
+
+View applet version history and feature updates.
 
 ---
 

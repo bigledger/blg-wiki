@@ -22,6 +22,8 @@ The **Internal Sales Invoice Applet** is the engine room of the order-to-cash pr
 
 {{< figure src="/images/internal-sales-invoice-applet/internal-sales-invoice-overview-infographic.png" alt="Internal Sales Invoice Overview Infographic" caption="Visual guide to the challenges, solutions, and benefits of the applet." >}}
 
+{{< figure src="/images/internal-sales-invoice-applet/infographic.png" alt="Process Flow Infographic" caption="Detailed process flow for the sales invoice lifecycle." >}}
+
 {{< figure src="/images/internal-sales-invoice-applet/main-listing-page.png" alt="Internal Sales Invoice Main Listing" caption="The central hub for managing all sales transactions and their statuses." >}}
 
 ## Key Features Overview
@@ -142,6 +144,8 @@ Sensitive actions automatically trigger the **Approval Workflow**.
 *   **Action**: Managers review these in the **Approval Permission** dashboard.
 *   **Result**: The invoice remains in a "Pending" state until authorized. This prevents high-risk transactions from slipping through.
 
+{{< figure src="/images/claim-applet/pending-approvals.png" alt="Pending Approvals Dashboard" caption="Managers can review and approve/reject high-risk transactions." >}}
+
 ---
 
 ## Feature Deep Dive
@@ -167,6 +171,14 @@ A critical tool for correcting inventory errors without financial rollback.
 -   **The Problem**: You sold "Serial A" physically, but the invoice says "Serial B".
 -   **The Fix**: Instead of Voiding (which messes up the accounts for a non-financial error), use **Swap Serial**.
 -   **Result**: The system swaps the serial numbers in the backend inventory records while keeping the Invoice and GL entries intact.
+
+### File Import
+Bulk import sales invoices using CSV files (Comma or Pipe delimited) to streamline high-volume data entry.
+-   **E-Invoice Ready**: Supports direct import of LHDN E-Invoice fields (TIN, Entity ID, SST No), ensuring compliance for imported transactions.
+-   **Comprehensive Data Mapping**: Handles complex data points including billing/shipping addresses, serial/batch numbers, and accounting codes (GL, Segment, Project).
+-   **Template Generation**: Download dynamic CSV templates to ensure your data matches the system's requirements.
+
+{{< figure src="/images/doc_item_maintenance/import_item.png" alt="File Import Interface" caption="Upload CSV files to bulk create invoices." >}}
 
 ### Contra Settlements
 Contra Settlement allows you to pay an invoice using *other documents* instead of cash.
