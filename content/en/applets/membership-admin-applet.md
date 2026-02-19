@@ -20,6 +20,8 @@ The **Membership Admin Applet** is the central control hub for your organization
 **Core Concept**: This applet acts as the **backend engine** (the behind-the-scenes system) for your loyalty ecosystem, handling the complex logic of **who** your members are, **what** they are entitled to, and **how** they earn and spend points.
 {{< /callout >}}
 
+{{< figure src="/images/membership-admin-applet/membership-admin-applet-overview.png" alt="Membership Admin Applet Overview: The Challenges (Scattered Data, Rigid Rules, Hidden Liability) vs The Solution (Centralized Profiles, Flexible Logic, Full Visibility, Targeted Tiers & Marketing Labels, Seamless POS & Mobile Integration)" caption="From Fragmented Data to Centralized Control: How the Membership Admin Applet solves common loyalty program challenges with flexible, integrated features." >}}
+
 ---
 
 ## Quick Start in 5 Minutes
@@ -221,6 +223,8 @@ To effectively manage the system, you need to understand four core building bloc
 
 ### The Four Building Blocks Explained
 
+{{< figure src="/images/membership-admin-applet/the%20four%20building%20blocks%20of%20membership.png" alt="The Four Building Blocks of Membership: Member (Individual), Member Class (Tier), Member Label (Tag), and Points Currency shown in a hierarchical diagram" caption="The Four Building Blocks: Understanding how Member, Member Class, Member Labels, and Points Currency work together in the membership system." >}}
+
 | Building Block | What It Is (Plain English) | Example |
 |----------------|----------------------------|---------|
 | **Member** | An individual customer enrolled in your program | Sarah Chen, Customer #12345 |
@@ -233,6 +237,8 @@ To effectively manage the system, you need to understand four core building bloc
 ### Member Class vs Member Label: When to Use Which?
 
 **This is the #1 concept to master — it determines your entire program structure.**
+
+{{< figure src="/images/membership-admin-applet/member-class-vs-label.png" alt="The Golden Rule: Class vs. Label - showing Member Class as linear hierarchy (Bronze to Silver to Gold, mutually exclusive, tied to benefits) versus Member Label as stackable tags (VIP, Vegetarian, Golfer - flexible, many per member, tied to marketing)" caption="The Golden Rule: Member Class (linear hierarchy, one per member, benefits-driven) vs. Member Label (stackable tags, many per member, marketing-driven)." >}}
 
 {{< callout type="info" >}}
 **Quick Definition:**
@@ -1759,6 +1765,8 @@ Click on any transaction to see full details including who made the change and w
 ## Glossary
 
 **Simple definitions for technical terms used in this system**
+
+{{< figure src="/images/membership-admin-applet/system-glossary.png" alt="System Glossary infographic showing definitions for Webhook (The 'Doorbell' - notifies external systems), API (The 'Connector' - allows systems to talk), Rolling Expiry (The '12-Month Clock' - points expire after one year), Liability (The 'Debt' - value of unspent points), and Backend (The 'Engine' - applet running behind scenes)" caption="System Glossary: Visual guide to key technical terms used in the Membership Admin Applet." >}}
 
 **API (Application Programming Interface)**
 A way for two software systems to talk to each other automatically (like your POS system talking to this membership system).
