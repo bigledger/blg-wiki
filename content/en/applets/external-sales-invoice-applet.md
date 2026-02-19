@@ -156,13 +156,9 @@ To effectively manage the system, understand how **Items**, **Pricing**, and **T
 
 Get up and running quickly with these essential workflows.
 
-{{< figure src="/images/external-sales-invoice-applet/quick-start-guide-infographic.png" alt="Streamlined Sales Invoicing: A Quick Guide for Every Role - showing workflows for Sales Reps, Finance Teams, and Admins" caption="Streamlined Sales Invoicing: Visual at-a-glance guide for Sales (Create Invoice), Finance (Review & Finalize), and Admins (System Setup)." >}}
-
 ### For Sales Representatives: Create Your First Invoice
 
 **Goal:** Create and submit an invoice for customer billing in 5 steps.
-
-{{< figure src="/images/external-sales-invoice-applet/my-invoices-listing.png" alt="External Sales Invoice Listing showing invoice summary with Draft, Submitted, and Posted tabs" caption="External Sales Invoice Listing: View all your invoices with status summary cards" >}}
 
 **Step 1: Create Invoice Header**
 1. Navigate to **"External Sales Invoice"** from the sidebar
@@ -174,8 +170,6 @@ Get up and running quickly with these essential workflows.
    - **Conversion Name**: Invoice reference (e.g., "ABC Corp - January Invoice")
    - **Description** (Optional): Additional notes
 4. Click **"Create"** (saves as DRAFT)
-
-{{< figure src="/images/external-sales-invoice-applet/invoice-edit-form.png" alt="Invoice Edit Form with Main Details and Lines tabs" caption="Invoice Edit Form: Enter header details, add line items, and manage document workflow" >}}
 
 **Step 2: Add Line Items**
 
