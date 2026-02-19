@@ -103,7 +103,7 @@ A quick guide to every option available in the applet's sidebar.
 
 | Menu Item | Description |
 | :--- | :--- |
-| **Chart of Account** | The main hierarchical tree view. Includes tabs for **Details**, **Templates**, **Segments**, **Dimensions**, **Profit Center**, and **Project**. |
+| **Chart of Account** | The main hierarchical tree view. Includes tabs for **Details**, **GL Code Link**, **GL Code**, **Segment Tree**, **Dimension Tree**, **Profit Center Tree**, and **Project Tree**. |
 | **GL Section** | Define main reporting sections (Assets, Liabilities, etc.). |
 | **GL Category** | Group accounts within sections. Includes tabs for **Details** (Name, Account No.) and **GL Code** (create codes directly here). |
 | **Import GL Category** | Bulk upload categories via CSV/Excel. |
@@ -198,26 +198,34 @@ Get your financial structure ready with these essential workflows.
 
 **Goal:** Establish the legal and accounting entities for the system.
 
-1. **Define Company** (`Sidebar > Companies`):
-   - Navigate to **Companies** settings
-   - Create the legal entity and set the Base Currency
-   - Enter Company Name, Registration No, and contact details
+1. **Verify Company Details** (`Sidebar > Companies`):
+   - Navigate to **Companies** settings.
+   - Verify the Company Code, Name, Registration No, and Currency in the **Main** tab (Note: These are typically read-only or pre-configured).
 
-2. **Configure Defaults** (`Companies > Default GL Codes`):
-   - Map critical **Default GL Codes** to ensure automation works:
-     - **General**: Retained Earnings, Profit/Loss, Rounding
-     - **Entity**: Trade Debtor/Creditor accounts
-     - **Sales/Purchase**: Revenue, Expenses, Tax accounts
-     - **Stock**: COGS, Inventory accounts
+2. **Create Ledgers** (`Companies > Ledgers`):
+   - Create the financial ledgers for the company.
+   - **Required Fields**: Ledger Code, Ledger Name, Ledger Type (Primary/Secondary/Consolidated), Currency.
+   - **Note**: A company can have multiple ledgers, but typically one **Primary** ledger is required.
 
-3. **Create Set of Books** (`Sidebar > Set Of Books`):
-   - Create the accounting book linked to the company
-   - This acts as the unique container for your financial ledgers
+3. **Configure Defaults** (`Companies > Default GL Codes`):
+   - **Prerequisite**: Ensure your Chart of Accounts has GL Codes created. If this is a new setup, you may need to import or create GL Codes first (see "Build the Hierarchy" section).
+   - Map critical **Default GL Codes** to ensure automation works. This is split into several tabs:
+     - **General**: Retained Earnings, Profit/Loss, Non-Stock & Trade-In, Fixed Asset Register, Rounding, Settlement Charges.
+     - **Entity**: Trade/Non-Trade Debtor & Creditor accounts, Merchant Receivable/Payable, Employee Payable.
+     - **Sales/Purchase**: Sales/Purchase accounts, Returns, Discounts, Tax accounts.
+     - **Stock**: Stock Adjustment, Reset MA, Stock Balance, COGS, Inventory Not Invoiced, Raw Material/WIP/Finished Goods/NSTI Stock & COGS.
+     - **Forex**: Forex Gain, Forex Loss.
+     - **Consignment**: Consignment Stock, Consignment Liability.
 
-4. **Set Fiscal Year** (`Sidebar > Fiscal Year`):
-   - Define your accounting year (e.g., Jan 1 - Dec 31)
-   - The system auto-creates monthly periods
-   - Set closing status for each period as needed
+4. **Create Set of Books** (`Sidebar > Set Of Books`):
+   - Create a **Set of Books** by providing a **Name**.
+   - Navigate to the **Ledgers** tab to link your created Ledgers to this Set of Books.
+
+5. **Set Fiscal Year** (`Sidebar > Fiscal Year`):
+   - Select the **Company**.
+   - Enter a **Name** for the fiscal year (e.g., "FY 2024").
+   - Define the **Date Start** and **Date End**.
+   - The system will auto-generate the fiscal periods.
 
 {{< callout type="tip" >}}
 **Pro Tip**: Complete the Default GL Codes mapping before starting operations. Missing mappings will cause posting errors later.
@@ -306,10 +314,12 @@ The main hierarchical view showing your complete account structure.
 | Tab | Purpose |
 | :--- | :--- |
 | **Details** | Edit COA name and description |
-| **Segments** | Add reporting segments for multi-dimensional analysis |
-| **Dimensions** | Add custom dimensions for advanced reporting |
-| **Profit Center** | Define profit centers for departmental P&L tracking |
-| **Project** | Track financial data by project |
+| **GL Code Link** | Manage GL Codes linked to this Chart of Account |
+| **GL Code** | View and manage GL Codes within this Chart |
+| **Segment Tree** | Manage the hierarchy of reporting segments |
+| **Dimension Tree** | Manage the hierarchy of custom dimensions |
+| **Profit Center Tree** | Manage the hierarchy of profit centers |
+| **Project Tree** | Manage the hierarchy of projects |
 
 {{< figure src="/images/chart-of-account-applet/screenshots/coa-edit-tabs.png" alt="Chart of Account Edit" caption="Editing Chart of Account details and viewing available tabs." >}}
 
@@ -323,7 +333,9 @@ Add reporting segments to your COA for multi-dimensional analysis.
 
 **Required Fields:** Segment Code, Segment Name
 
-**Editable After Creation:** Segment Name, Description, Status
+**Additional Fields:** Ref 1 - Ref 5 (Code, Name, Description) for advanced tagging.
+
+**Editable After Creation:** Segment Name, Description, Status, Reference Fields
 
 **Use Cases:**
 - Track by Business Unit (e.g., Retail, Wholesale)
@@ -338,7 +350,9 @@ Add custom dimensions for advanced reporting.
 
 **Required Fields:** Dimension Code, Dimension Name
 
-**Editable After Creation:** Dimension Name, Description, Status
+**Additional Fields:** Ref 1 - Ref 5 (Code, Name, Description) for advanced tagging.
+
+**Editable After Creation:** Dimension Name, Description, Status, Reference Fields
 
 **Use Cases:**
 - Cost Centers (Marketing, Operations, IT)
@@ -353,7 +367,9 @@ Define profit centers for departmental P&L tracking.
 
 **Required Fields:** Profit Center Code, Profit Center Name
 
-**Editable After Creation:** Profit Center Name, Description, Status
+**Additional Fields:** Ref 1 - Ref 5 (Code, Name, Description) for advanced tagging.
+
+**Editable After Creation:** Profit Center Name, Description, Status, Reference Fields
 
 **Use Cases:**
 - Department-level profitability
@@ -368,9 +384,11 @@ Track financial data by project.
 
 {{< figure src="/images/chart-of-account-applet/screenshots/coa-project.png" alt="Project Tab" caption="Managing projects linked to the Chart of Accounts." >}}
 
-**Required Fields:** Project Code, Project Name, Description
+**Required Fields:** Project Code, Project Name
 
-**Editable After Creation:** Project Name, Description, Status
+**Additional Fields:** Ref 1 - Ref 5 (Code, Name, Description) for advanced tagging.
+
+**Editable After Creation:** Project Name, Description, Status, Reference Fields
 
 **Use Cases:**
 - Capital expenditure projects
@@ -404,7 +422,7 @@ Group accounts within sections for organized reporting.
 
 {{< figure src="/images/chart-of-account-applet/screenshots/gl-category-listing.png" alt="GL Category Listing" caption="GL Category listing and creation interface." >}}
 
-**When you click on a GL Category, you access two tabs:**
+**When you click on a GL Category, you access three tabs:**
 
 **Details Tab:**
 - **GL Category Name** - Editable
@@ -416,6 +434,9 @@ Group accounts within sections for organized reporting.
 **GL Code Tab:**
 - Create GL Codes directly from within a Category (Category is auto-selected)
 - GL Codes created here also appear in the GL Code module
+
+**GL Section Tab:**
+- Link the Category to a specific GL Section
 
 ---
 
@@ -453,7 +474,7 @@ Companies are automatically listed after the Chart of Accounts is selected in th
 
 {{< figure src="/images/chart-of-account-applet/screenshots/company-main-tab.png" alt="Company Main Tab" caption="Company Main tab showing read-only company information." >}}
 
-**Main Tab (Read-Only):** Code, Name, Company Registration No, Currency
+**Main Tab (Read-Only):** Code, Name, Company Registration No, Currency, Tax ID, SST ID, Chart of Account, Inventory Cost Base On.
 
 ---
 
@@ -463,7 +484,7 @@ Create and manage company ledgers.
 
 {{< figure src="/images/chart-of-account-applet/screenshots/company-ledgers.png" alt="Company Ledgers Tab" caption="Creating and managing Ledgers and Sub-Ledgers." >}}
 
-**Required Fields:** Ledger Code, Ledger Name, Ledger Type, Currency
+**Required Fields:** Ledger Code, Ledger Name, Ledger Type (Primary/Secondary/Consolidated), Currency
 
 After creation, click on the Ledger to manage **Sub-Ledgers**.
 
