@@ -18,8 +18,6 @@ The **Internal Sales Return Applet** is a powerful tool designed to streamline t
 **Core Concept**: The system links **what** is being returned (Items) to **who** is returning (Customer) and **how** it's processed (Workflow & Settlement).
 {{< /callout >}}
 
-## Key Features Overview
-
 ### Who Benefits from This Applet?
 
 **Sales Teams:**
@@ -80,16 +78,18 @@ Traditional return management relies on paper forms and disconnected systems. Co
 - **Flexible reporting** - Analyze returns by product, customer, or reason
 - **Multi-location support** - Handle returns across branches and warehouses
 
+{{< figure src="/images/internal-sales-return-applet/internal-sales-return-applet-overview.png" alt="Mastering Sales Returns: From Manual Chaos to Digital Control - showing The Challenges (manual return processes, high operational risk, financial inefficiency, lack of oversight) vs The Solution (intelligent automated workflows, real-time system integration, complete traceability) and Who Benefits (operational efficiency for sales & warehouse, financial integrity for finance & approvers, strategic growth for leadership & service)" caption="From Manual Chaos to Digital Control: How the Internal Sales Return Applet solves common return management challenges with automated workflows, real-time integration, and complete traceability." >}}
+
 ## Key Features Overview
 
 {{< cards >}}
   {{< card title="Return Document Creation" subtitle="Easy digital return processing with customer lookup" link="#for-sales-teams-create-your-first-return" >}}
-  {{< card title="Line Item Management" subtitle="Detailed item tracking with serial/batch numbers" link="#line-items-tracking-what-was-returned" >}}
-  {{< card title="Approval Workflows" subtitle="Multi-level approval routing" link="#approval-workflows-controlling-the-process" >}}
-  {{< card title="Inventory Integration" subtitle="Real-time stock adjustments" link="#inventory-integration" >}}
-  {{< card title="Financial Settlement" subtitle="Automated refund and credit processing" link="#financial-settlement-processing-refunds" >}}
-  {{< card title="Intercompany Returns" subtitle="Cross-company return handling" link="#intercompany-transactions-cross-company-returns" >}}
-  {{< card title="File Import/Export" subtitle="Bulk data processing capabilities" link="#file-import--export-bulk-operations" >}}
+  {{< card title="Line Item Management" subtitle="Detailed item tracking with serial/batch numbers" link="#line-items---tracking-what-was-returned" >}}
+  {{< card title="Approval Workflows" subtitle="Multi-level approval routing" link="#approval-workflows---controlling-the-process" >}}
+  {{< card title="Quick Start Guide" subtitle="Get started with role-based workflows" link="#quick-start-guide" >}}
+  {{< card title="Financial Settlement" subtitle="Automated refund and credit processing" link="#financial-settlement---processing-refunds" >}}
+  {{< card title="Intercompany Returns" subtitle="Cross-company return handling" link="#intercompany-transactions---cross-company-returns" >}}
+  {{< card title="File Import/Export" subtitle="Bulk data processing capabilities" link="#file-import--export---bulk-operations" >}}
   {{< card title="Configuration & Settings" subtitle="Customize workflows and fields" link="#configuration--settings" >}}
 {{< /cards >}}
 
@@ -97,7 +97,7 @@ Traditional return management relies on paper forms and disconnected systems. Co
 
 ---
 
-## 📋 Admin Setup Checklist
+## Admin Setup Checklist
 
 **Setting up returns for the first time?** Complete these steps in order:
 
@@ -360,6 +360,8 @@ Create   Review    Authorize    Inspect &      Issue      Archive
 
 Get up and running quickly with these essential workflows.
 
+{{< figure src="/images/internal-sales-return-applet/sales-return-quick-start-guide.png" alt="Sales Return Quick Start Guide for Every Role - showing workflows for Sales Teams (Create Return), Managers (Approve Return), Warehouse Staff (Process Returned Goods), and Finance Teams (Process Refund)" caption="Sales Return Quick Start: A visual at-a-glance guide for Sales Teams (Create Return in 6 steps), Managers (Approve in 4 steps), Warehouse (Process Goods in 5 steps), and Finance (Process Refund in 5 steps)." >}}
+
 ### For Sales Teams: Create Your First Return
 
 **Goal:** Create a sales return document in 6 simple steps.
@@ -456,7 +458,7 @@ If integrated with accounting, entries are automatically posted to GL accounts.
 
 ---
 
-## 📄 Quick Reference Cards
+## Quick Reference Cards
 
 ### Return Processing Cheat Sheet
 
@@ -662,7 +664,7 @@ START: Customer requests return
 - Add Serial Numbers only for electronics/high-value items
 - Add Batch Numbers only for perishables/regulated products
 
-[Skip to Approval Workflows](#approval-workflows-controlling-the-process) if you don't use serial/batch tracking.
+[Skip to Approval Workflows](#approval-workflows---controlling-the-process) if you don't use serial/batch tracking.
 {{< /callout >}}
 
 #### Adding Line Items
@@ -1695,7 +1697,7 @@ You can always increase limits later once you build trust and see patterns.
 
 ---
 
-**Covered earlier in:**  [Approval Workflows](#approval-workflows-controlling-the-process)
+**Covered earlier in:**  [Approval Workflows](#approval-workflows---controlling-the-process)
 
 Additional settings:
 
@@ -2193,11 +2195,3 @@ Officially recording a loss when returned goods can't be resold. Example: Damage
 
 ---
 
-{{< callout type="info" >}}
-**Still confused by a term?** Contact your system administrator or refer to your company's return policy documentation for specific definitions related to your business.
-{{< /callout >}}
-
----
-
-**Document Version:** 1.0  
-**Last Updated:** February 2026
