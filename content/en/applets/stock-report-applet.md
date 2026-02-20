@@ -93,8 +93,6 @@ The **Stock Report Applet** provides a comprehensive suite of inventory reports 
 {{< /cards >}}
 
 {{< figure src="/images/stock-report-applet/stock-report-applet-overview-infographic.png" alt="Stock Report Applet Overview Infographic">}}
----
-
 
 ## Key Concepts
 
