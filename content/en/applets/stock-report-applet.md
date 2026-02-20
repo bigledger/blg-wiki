@@ -174,6 +174,7 @@ Admins can toggle these in **Settings > Application Settings** under the "Stock 
 ---
 
 ## Stock Movement Report
+{{< figure src="/images/stock-report-applet/stock-movement-report.png" alt="Stock Movement Report" caption="Detailed transaction log of all stock movements grouped by item code." >}}
 
 The **Stock Movement Report** provides a detailed transaction log of all stock movements—goods received, goods issued, transfers, adjustments, and more—grouped by item code.
 
@@ -198,9 +199,20 @@ The **Stock Movement Report** provides a detailed transaction log of all stock m
 - Identify unusual movement patterns (e.g., spikes in qty out)
 - Reconcile physical stock counts against system records
 
+#### Business Context
+- **Inventory Management**: Used to investigate stock discrepancies (e.g., "Why is our count short by 5 units?").
+- **Audit & Compliance**: Provides a complete audit trail of every stock movement for internal controls.
+
+#### Data Source & Logic
+- **Source**: Fetches raw transaction records from the **Stock Transaction Ledger**.
+- **Logic**: Every single inventory event (Purchase, Sale, Transfer, Adjustment) creates a strict debit/credit entry here. This is the "source of truth" for all stock movements.
+
+
+
 ---
 
 ## Stock Aging Report
+{{< figure src="/images/stock-report-applet/stock-aging-report.png" alt="Stock Aging Report" caption="Analyze inventory age with configurable aging buckets." >}}
 
 The **Stock Aging Report** breaks down your inventory by how long items have been in stock. Aging periods are dynamically configurable—you can choose between **day-based** or **month-based** aging buckets.
 
@@ -224,9 +236,25 @@ The aging report uses the **Aging Period Settings** configured in Application Se
 - Support warehouse optimization by highlighting old inventory
 - Provide data for inventory write-down decisions
 
+#### Business Context
+- **Accounting**: Used to calculate **Inventory Obsolescence Provision** (write-downs) for financial statements.
+- **Warehouse Management**: Identifies "dead stock" taking up valuable space that should be cleared or discounted.
+
+#### Key Calculations
+- **Aging Buckets**: Items are categorized into buckets (e.g., 0-30 days, 31-60 days) based on the time elapsed since they were received or last moved.
+- **Value**: The report calculates total value in each bucket using the item's **Moving Average (MA) Cost**.
+
+#### Data Source & Logic
+The report queries the **historical stock transaction ledger**. It looks at the *remaining quantity* of each inbound shipment (GRN, Adjustment In) and calculates its age:
+`Age = Current Date - Transaction Date`
+It then sums up the value of these specific aged quantities to give you the total aging value.
+
+
+
 ---
 
 ## Stock Summary Report by Location
+{{< figure src="/images/stock-report-applet/stock-summary-report-by-location.png" alt="Stock Summary Report by Location" caption="High-level summary of stock quantities and values per location." >}}
 
 A high-level summary of stock quantities and values grouped by location. Use this to quickly compare inventory distribution across your warehouses.
 
@@ -238,9 +266,18 @@ A high-level summary of stock quantities and values grouped by location. Use thi
 | **Category 1–10** | Item category classifications |
 | **Location-based data** | Quantities and values per location |
 
+#### Business Context
+- **Executive Overview**: Used by management to quickly see how much stock value is sitting in each warehouse branch.
+- **Logistics**: Helps decide if stock needs to be transferred from a surplus location to a deficit location.
+
+#### Data Source & Logic
+- **Source**: Aggregates data from the **Item Location Balance** table.
+- **Logic**: Sums up the `Quantity` and `Value` (Qty × Cost) for all items, grouped strictly by **Location ID**.
+
 ---
 
 ## Historical Stock Balance
+{{< figure src="/images/stock-report-applet/historical-stock-balance.png" alt="Historical Stock Balance" caption="Stock balance snapshots over a selected date range." >}}
 
 The **Historical Stock Balance** report shows stock balance snapshots over a selected date range. This lets you track how stock levels changed over time.
 
@@ -250,9 +287,20 @@ The **Historical Stock Balance** report shows stock balance snapshots over a sel
 - Support inventory forecasting and planning
 - Audit historical inventory records
 
+#### Business Context
+- **Supply Chain Planning**: Analyzing historical trends helps predict future stock needs based on past consumption patterns.
+- **Accounting**: Used to reconstruct inventory value at a specific past date (e.g., for month-end or year-end closing verification).
+
+#### Data Source & Logic
+- **Source**: **Transaction History** + **Current Balance**.
+- **Calculation**: It starts with the *current* stock balance and "rolls back" transactions (reversing In/Out movements) to calculate what the balance *must have been* on the selected date.
+
+
+
 ---
 
 ## Stock Balance Report
+{{< figure src="/images/stock-report-applet/stock-balance-report.png" alt="Stock Balance Report" caption="Current stock balance overview with valuation metrics." >}}
 
 The **Stock Balance Report** shows the current stock balance for each item across your company, with cost valuations.
 
@@ -282,9 +330,22 @@ The **Stock Balance Report** shows the current stock balance for each item acros
 - Identify items with zero balance that may need reordering
 - Export for accounting reconciliation
 
+#### Business Context
+- **Finance**: Provides the **data source for the Balance Sheet** "Inventory" asset line item.
+- **Purchasing**: Used to verify current stock-on-hand before placing new supplier orders to avoid overstocking.
+
+#### Data Source & Calculation
+- **Quantity**: Pulled directly from the live **Item Stock Ledger**. It represents the real-time physical quantity available in the system.
+- **Value**: Calculated using the **Weighted Moving Average (MA) Cost**.
+`Total Cost = Quantity × Current MA Unit Cost`
+*Note: This report reflects the status at the exact moment the report is run.*
+
+
+
 ---
 
 ## Stock Sales & Purchase by Item Code
+{{< figure src="/images/stock-report-applet/stock-sales-and-purchase-by-item-code.png" alt="Stock Sales & Purchase by Item Code" caption="Comparison of sales vs. purchase activity with Gross Profit analysis." >}}
 
 This report provides a side-by-side comparison of **sales** and **purchase** activity for each item within a date range. It also calculates **Gross Profit (GP)**.
 
@@ -312,9 +373,28 @@ This report provides a side-by-side comparison of **sales** and **purchase** act
 - Identify items with declining sales or increasing costs
 - Support pricing strategy decisions
 
+#### Business Context
+- **Sales & Marketing**: Identifies high-performing items (high sales, high GP) versus loss-leaders.
+- **Purchasing**: Helps negotiators compare **Last Purchase Price** trends against sales performance.
+
+#### Data Source & Logic
+- **Sales Data**: Aggregated from **Posted Sales Invoices** and **Cash Sales** within the date range.
+- **Purchase Data**: Aggregated from **Posted Supplier Invoices** and **GRNs**.
+- **Logic**: Matches total sales quantity vs. total purchase quantity for the *same item code* to allow side-by-side comparison.
+
+
+#### Key Calculations
+Assuming permission to view costs:
+- **Sales Amount**: `Unit Price × Qty Sold`
+- **Cost (COGS)**: `Unit Cost (MA) × Qty Sold`
+- **Gross Profit (GP)**: `Sales Amount - Cost`
+- **Stock Turn Ratio**: Indicates how many times inventory is sold and replaced over a period (Higher = Better efficiency).
+
+
 ---
 
 ## Stock Value by Level
+{{< figure src="/images/stock-report-applet/stock-value-by-level-report.png" alt="Stock Value by Level" caption="Aggregated stock values grouped by item category levels and location." >}}
 
 The **Stock Value by Level** report aggregates stock quantity and value data grouped by **item categories** and broken down by **location**. It uses pivot-style columns to show per-location quantities and amounts.
 
@@ -332,9 +412,19 @@ The **Stock Value by Level** report aggregates stock quantity and value data gro
 - Support category-level inventory valuation
 - Compare stock allocation across warehouses
 
+#### Business Context
+- **Category Management**: Used by merchandisers to analyze stock investment across different product families (e.g., "Do we have too much value tied up in Accessories vs. Main Units?").
+
+#### Data Source & Logic
+- **Source**: **Item Master** (Category Links) + **Stock Balance**.
+- **Logic**: Groups all items by their assigned **Category Hierarchy** (Level 1–10) and sums their total stock value. Useful for high-level financial reporting rather than item-level checking.
+
+
+
 ---
 
 ## Batch & Expiry Date Report
+{{< figure src="/images/stock-report-applet/batch-and-expiry-date-report.png" alt="Batch & Expiry Date Report" caption="Track items approaching expiry with month-based buckets." >}}
 
 Track items with **batch numbers** and **expiry dates**. The report categorizes items into month-based expiry buckets to help you manage perishable or time-sensitive inventory.
 
@@ -355,9 +445,20 @@ Track items with **batch numbers** and **expiry dates**. The report categorizes 
 - Support FIFO/FEFO picking strategies
 - Generate reports for regulatory compliance
 
+#### Business Context
+- **Quality Control**: Critical for FIFO (First-In-First-Out) and FEFO (First-Expired-First-Out) inventory management to prevent spoilage.
+- **Compliance**: Required for regulated industries (food, pharma) to trace batch history and expiry.
+
+#### Data Source & Logic
+- **Source**: **Batch Master Table**.
+- **Logic**: Filters batch records where `Expiry Date` is approaching. It groups items into month-based buckets (e.g., "Expiring in 0 Months", "1 Month", etc.) relative to the **Current Date**.
+
+
+
 ---
 
 ## Stock Balance (Supplier & Serial)
+{{< figure src="/images/stock-report-applet/stock-balance-report-by-supplier-with-serial.png" alt="Stock Balance (Supplier & Serial)" caption="Stock balances grouped by supplier with serial number details." >}}
 
 This report shows stock balances **grouped by supplier**, with links to the original purchase documents and **serial number** details for tracked items.
 
@@ -379,9 +480,20 @@ This report shows stock balances **grouped by supplier**, with links to the orig
 - Manage warranty or after-sales by linking serial numbers back to suppliers
 - Audit purchase transactions linked to current inventory
 
+#### Business Context
+- **Vendor Management**: Used to evaluate supplier performance and track defective items back to their source.
+- **Warranty Claims**: Essential for verifying if a returned item with a specific serial number was indeed purchased from a specific supplier.
+
+#### Data Source & Logic
+- **Source**: **Purchase History** linked to **Serial Number Registry**.
+- **Logic**: Instead of just showing "Item A: 10 units", it traces each unit back to its original **Goods Received Note (GRN)** to display the *Supplier* who delivered it.
+
+
+
 ---
 
 ## Stock Balance by Item, Supplier & Batch
+{{< figure src="/images/stock-report-applet/stock-balance-by-item-supplier-and-batch-expiry-report.png" alt="Stock Balance by Item, Supplier & Batch" caption="Cross-referenced view of items, suppliers, and batch numbers." >}}
 
 A cross-referenced report combining **item**, **supplier**, and **batch** data in one view.
 
