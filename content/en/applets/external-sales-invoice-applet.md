@@ -70,6 +70,8 @@ Traditional invoicing relies on spreadsheets, email chains, and manual data entr
 - **Flexible tax support** - SST, VAT, GST, WHT all handled automatically
 - **Branch/location control** - Multi-location businesses operate efficiently
 
+{{< figure src="/images/external-sales-invoice-applet/external-sales-invoice-applet-overview.png" alt="External Sales Invoice Applet Overview - From Manual Chaos to Automated Efficiency" caption="Visual overview: Transform your invoicing from error-prone manual processes to streamlined automated workflows with multi-source creation, real-time calculations, and complete audit trails." >}}
+
 ## Key Features Overview
 
 {{< cards >}}
@@ -133,6 +135,8 @@ This structure enables:
 - **Flexible workflows** (skip steps if not needed)
 - **Document linking** for audit purposes
 - **Status tracking** at each stage
+
+{{< figure src="/images/external-sales-invoice-applet/the-invoice-journey.png" alt="The Invoice Journey - Complete End-to-End Process Flow" caption="Follow the complete invoice lifecycle: From customer order through quotation, sales order, delivery, invoicing, payment, to final GL posting. Each step builds on the previous, creating a complete audit trail." >}}
 
 ### The "Core Triangle" of Sales Invoicing
 
@@ -359,6 +363,8 @@ Instead of manually entering invoice data, the system lets you convert existing 
 - **Document traceability** - Always know which order generated which invoice
 - **Customer confidence** - Invoice matches what they ordered
 
+{{< figure src="/images/external-sales-invoice-applet/choose-your-creation-method.png" alt="Choose Your Creation Method - Decision Tree for Invoice Creation" caption="Quick decision guide: Follow the flowchart to instantly know which creation method to use based on your situation - Sales Order, Delivery Order, Quotation, Jobsheet, or direct Item Search." >}}
+
 ---
 
 **Method 1: Convert Sales Order (Most Common)**
@@ -559,6 +565,40 @@ You:
 | Service work completed, jobsheet exists | **KO Jobsheet** | Bill for labor + materials |
 | Quick sale, no prior documents | **Search Items** | Fastest for ad-hoc sales |
 
+{{< callout type="tip" >}}
+**At a Glance: Best Practices**
+
+**80% of invoices should come from Sales Orders** for best traceability and audit compliance. Use other methods strategically:
+- **Delivery Orders**: When actual delivered quantity differs from order
+- **Quotations**: For fast-track approvals without formal sales orders
+- **Jobsheets**: Service-based businesses only
+- **Direct Search**: Emergency or walk-in sales only
+
+When in doubt, always link to a source document for complete audit trail.
+{{< /callout >}}
+
+---
+
+### Common Questions - Multi-Source Invoice Creation
+
+**Q: Can I combine multiple sales orders into one invoice?**  
+A: Yes! Add lines from SO-001, then click "Add Line" again and import from SO-002. Both orders will appear on the same invoice.
+
+**Q: What if customer pricing changes after I create the invoice?**  
+A: The invoice uses pricing from the linked source document (Sales Order/Quotation) at time of creation. Future price changes do not affect existing invoices.
+
+**Q: Can I edit line items after importing from a sales order?**  
+A: Yes, while in DRAFT status. You can adjust quantities, change pricing (with authorization), or remove lines. Changes do not affect the original sales order.
+
+**Q: What happens if I import from the wrong sales order?**  
+A: While in DRAFT status, delete all line items and re-import from the correct sales order. If already finalized, you must create a Credit Note to reverse.
+
+**Q: How do I invoice partial deliveries?**  
+A: Use "KO For Delivery Order" instead of "KO For Sales Order". The Delivery Order shows actual delivered quantities, not ordered quantities.
+
+**Q: Can I manually adjust prices after importing from a quotation?**  
+A: Yes, while in DRAFT status, but this requires proper authorization. System logs all price changes for audit purposes.
+
 ---
 
 ### Line Item Management
@@ -711,7 +751,13 @@ Summary:
 
 ### Pricing and Tax Configuration
 
-**How Pricing Works:**
+{{< callout type="info" >}}
+**Quick Summary: How Pricing and Tax Work**
+
+The system supports multiple pricing tiers (Standard, VIP, Negotiated) and automatically calculates taxes (SST, VAT, GST, WHT). Prices can be displayed inclusive or exclusive of tax based on your business model. Discounts can be applied at unit level or invoice level. All calculations are automated—you just need to select the right configuration during invoice creation.
+{{< /callout >}}
+
+#### Pricing Tiers Explained
 
 The system supports multiple pricing tiers to accommodate different scenarios:
 
@@ -732,7 +778,7 @@ The system supports multiple pricing tiers to accommodate different scenarios:
 
 ---
 
-**Price Display Options:**
+#### Price Display Options
 
 **Inclusive vs Exclusive of Tax:**
 
@@ -766,7 +812,7 @@ Net Amount: RM 1,000
 
 ---
 
-**Tax Calculations:**
+#### Tax Calculations
 
 **SST (Sales & Service Tax) - Malaysia:**
 
@@ -801,7 +847,7 @@ Comprehensive tax on all transactions (replaced by SST in Malaysia).
 
 ---
 
-**Discount Management:**
+#### Discount Management
 
 **Unit Discount (Per Item):**
 
@@ -832,7 +878,7 @@ Grand Total: RM 52,250
 
 ---
 
-**Rounding Adjustments:**
+#### Rounding Adjustments
 
 **Why Rounding?**
 
@@ -857,7 +903,7 @@ Rounding Adjustment: +RM 0.01
 
 ---
 
-**Real-World Pricing Scenario:**
+#### Real-World Pricing Example
 
 ```
 Customer: JKL Enterprises (VIP Customer)
@@ -884,6 +930,28 @@ Total: RM 47,300
 ```
 
 **Pro Tip:** Always verify pricing with Finance before finalizing if discounts exceed authorized limits (e.g., >10%).
+
+---
+
+### Common Questions - Pricing and Tax
+
+**Q: Can I change the tax rate on an invoice?**  
+A: Yes, while in DRAFT status, if you have proper authorization. After finalization, the tax rate is locked. You would need to void and recreate the invoice.
+
+**Q: Why is my discount not showing correctly?**  
+A: Check if admin configured discounts to apply before or after tax. Also verify you have authorization to apply discounts exceeding your limit (typically 10% for sales reps).
+
+**Q: What if the customer is tax-exempt?**  
+A: Select the customer's tax configuration profile which should be set to "Tax Exempt" or "Zero-Rated". The system will automatically apply 0% tax.
+
+**Q: Can I mix tax rates on the same invoice?**  
+A: Yes. Each line item has its own tax configuration. For example, Line 1 might have SST 10%, while Line 2 is Zero-Rated.
+
+**Q: How do I apply WHT (Withholding Tax)?**  
+A: WHT is configured at the customer level. When you select a customer with WHT enabled, the system automatically calculates and deducts the withholding amount.
+
+**Q: What causes rounding adjustments?**  
+A: When individual line items are rounded to 2 decimal places, small differences (0.01 to 0.05) can occur. The system auto-adjusts to ensure the total matches accounting precision.
 
 ---
 
@@ -1055,6 +1123,38 @@ For large orders (50+ items with serial numbers), use bulk upload:
 
 **Pro Tip:** Use barcode scanners to scan serial numbers directly into the system—faster and fewer typos!
 
+{{< callout type="warning" >}}
+**Critical: Serial Number Lock Warning**
+
+Once an invoice is finalized, serial numbers are **permanently locked** to that invoice. They cannot be reused on another invoice until:
+- The original invoice is voided through proper procedures, OR
+- A return is processed that releases the serial number
+
+Always **double-check serial numbers before finalizing** to avoid inventory discrepancies and customer disputes.
+{{< /callout >}}
+
+---
+
+### Common Questions - Serial Number Management
+
+**Q: What if I accidentally enter the wrong serial number?**  
+A: While in DRAFT status, you can edit and correct the serial number. After finalization, contact Finance to void the invoice and recreate it.
+
+**Q: Can I use the same serial number on multiple invoices?**  
+A: No. Each serial number can only be invoiced once. The system validates in real-time and prevents duplicate entries.
+
+**Q: What happens if a serialized item is returned?**  
+A: Process a return through the Returns module. The system will unlock the serial number, changing its status from SOLD back to AVAILABLE for resale.
+
+**Q: How do I find which invoice a specific serial number was sold on?**  
+A: Use the Serial Number Search function: Enter the serial number, and the system displays the invoice number, customer, date, and warranty status.
+
+**Q: Do I need serial numbers for all items?**  
+A: No. Only items configured as "Serial Number Required" need them. Typically high-value electronics, machinery, and warranty-tracked items.
+
+**Q: Can I bulk upload serial numbers?**  
+A: Yes. Use the "Upload Serial Numbers" feature with a CSV/Excel template. Useful for large orders with 20+ serialized items.
+
 ---
 
 ### Document Workflow
@@ -1142,6 +1242,72 @@ Automatically upon "FINAL" click:
 
 **Stage 4: Customer Payment**
 (Handled in separate Accounts Receivable module)
+
+{{< callout type="warning" >}}
+**Important: Draft vs Final Status**
+
+The two-step workflow exists to **prevent billing errors**:
+- **DRAFT**: Fully editable, not posted to accounting, allows review
+- **FINAL**: Locked permanently, posted to GL, cannot be edited
+
+Once you click "FINAL", there is no undo button. To correct errors in finalized invoices, you must create a Credit Note to reverse the transaction. Always review carefully before finalizing.
+{{< /callout >}}
+
+---
+
+**Invoice Statuses Explained:**
+
+| Status | What It Means | What You Can Do | Impact |
+|--------|---------------|-----------------|--------|
+| **Draft** | Created but not finalized | Edit all fields, add/remove lines, delete invoice | No accounting impact, not visible to customer |
+| **Final** | Locked and posted | View only - no edits allowed | Posted to GL, customer receives invoice |
+| **Posted to GL** | In accounting system | Track payment status | Revenue recognized, inventory reduced |
+| **Partially Paid** | Customer paid partial amount | Follow up for remaining balance | Some receivables outstanding |
+| **Fully Paid** | Completely settled | Archive for records | Accounts receivable closed |
+| **Cancelled** | Voided invoice | Create credit note if needed | Reversed in accounting |
+| **Overdue** | Past payment due date | Send payment reminder, apply late fees | Affects customer credit rating |
+
+**Status Progression:**
+```
+DRAFT → FINAL → Posted to GL → Partially Paid → Fully Paid
+  ↓
+Cancelled (if errors found)
+```
+
+{{< callout type="info" >}}
+**Best Practice Timing:**
+- **Sales Reps**: Create and save as DRAFT within same business day
+- **Finance Teams**: Review and finalize within 24-48 hours maximum
+- **Customer**: Receives invoice immediately upon finalization
+- **Payment**: Track receivables and follow up at 7, 14, 30 days
+
+Faster finalization = Faster customer billing = Better cash flow
+{{< /callout >}}
+
+---
+
+### Common Questions - Document Workflow
+
+**Q: Can I edit an invoice after it's finalized?**  
+A: No. Once finalized, invoices are locked for audit compliance. You must create a Credit Note to reverse any errors, then create a new correct invoice.
+
+**Q: What if I accidentally finalized the wrong invoice?**  
+A: Contact Finance or Admin immediately. Only authorized personnel can void finalized invoices. They will create a Credit Note to reverse it.
+
+**Q: How long do draft invoices stay in the system?**  
+A: Indefinitely, but best practice is to finalize within 24-48 hours to maintain healthy cash flow and prevent backlogs.
+
+**Q: Can I delete a finalized invoice?**  
+A: No. Finalized invoices cannot be deleted for audit trail purposes. Use Credit Notes to reverse transactions.
+
+**Q: What happens if Finance rejects my draft?**  
+A: The invoice remains in DRAFT status. Finance will leave comments explaining what needs correction. You edit the draft, fix the issues, and resubmit.
+
+**Q: Can I bypass the draft workflow and finalize immediately?**  
+A: Only if you have special authorization (typically Finance roles). Best practice is to always use the two-step workflow to catch errors.
+
+**Q: Who gets notified when an invoice is finalized?**  
+A: The system sends email notifications to: (1) The sales rep who created it, (2) The customer with invoice PDF attached, (3) Finance team for records.
 
 ---
 
@@ -1654,7 +1820,7 @@ Dr. WHT Receivable (Gov't refund)      RM 2,250
    Cr. Sales Revenue                            RM 45,000
    Cr. SST Payable                              RM 4,500
 
-Total: Balanced ✓
+Total: Balanced
 ```
 
 **Explanation:**
@@ -1739,7 +1905,7 @@ Total finalized invoices (Oct 2024): RM 5,000,000
 GL Report: Account 4100 - Sales Revenue
 Total credits (Oct 2024): RM 5,000,000
 
-Match ✓
+Match - Balanced
 ```
 
 **Step 2: Tax Reconciliation**
@@ -1754,7 +1920,7 @@ Total credits (Oct 2024): RM 500,000
 Tax Return:
 SST declared (Oct 2024): RM 500,000
 
-All match ✓
+All match - Balanced
 ```
 
 **Step 3: Accounts Receivable Aging**
@@ -1772,7 +1938,7 @@ AR Aging Report:
 
 Total Outstanding: RM 1,500,000
 
-Matches invoice system ✓
+Matches invoice system - Balanced
 ```
 
 ---
@@ -1911,9 +2077,9 @@ User creates invoice:
 
 Step 1: Select Branch → "KL North"
 Step 2: System loads locations for KL North:
-   - Warehouse KL01 ✓
-   - Warehouse KL02 ✓
-   - JB Warehouse ✗ (belongs to different branch)
+   - Warehouse KL01
+   - Warehouse KL02
+   - JB Warehouse (belongs to different branch)
 
 Step 3: User selects Location → "Warehouse KL01"
 
@@ -1941,35 +2107,35 @@ Invoice saved with:
 Enable tax types your business needs:
 
 **Enable SST (Sales & Service Tax):**
-- ✓ Check: Enable SST calculations
+- Check: Enable SST calculations
 - Effect: SST fields appear on invoices, auto-calculated
 
 **Enable VAT (Value Added Tax):**
-- ✓ Check: Enable VAT calculations
+- Check: Enable VAT calculations
 - Effect: VAT fields appear instead of SST
 
 **Enable GST (Goods & Services Tax):**
-- ✓ Check: Enable GST calculations
+- Check: Enable GST calculations
 - Effect: GST fields and rates applied
 
 **Enable WHT (Withholding Tax):**
-- ✓ Check: Enable WHT deductions
+- Check: Enable WHT deductions
 - Effect: WHT fields appear, auto-calculates deductions
 
 **Example:**
 
 ```
 Malaysia Business:
-✓ Enable SST (10% standard rate)
-✗ Disable VAT
-✗ Disable GST
-✓ Enable WHT (for B2B service invoices)
+Enable SST (10% standard rate)
+Disable VAT
+Disable GST
+Enable WHT (for B2B service invoices)
 
 Singapore Business:
-✗ Disable SST
-✓ Enable GST (8% standard rate)
-✗ Disable VAT
-✗ Disable WHT
+Disable SST
+Enable GST (8% standard rate)
+Disable VAT
+Disable WHT
 ```
 
 ---
@@ -2002,16 +2168,16 @@ Enable financial dimensions for detailed reporting:
 
 ```
 Consulting Firm:
-✓ Enable Project (critical for billing clients)
-✓ Enable Profit Center (track division profitability)
-✓ Enable Dimension (cost center allocation)
-✗ Disable Segment (not needed)
+Enable Project (critical for billing clients)
+Enable Profit Center (track division profitability)
+Enable Dimension (cost center allocation)
+Disable Segment (not needed)
 
 Manufacturing:
-✓ Enable Dimension (production line tracking)
-✓ Enable Segment (export vs domestic sales)
-✗ Disable Project (not project-based)
-✗ Disable Profit Center (single profit center)
+Enable Dimension (production line tracking)
+Enable Segment (export vs domestic sales)
+Disable Project (not project-based)
+Disable Profit Center (single profit center)
 ```
 
 ---
@@ -2052,24 +2218,24 @@ Control which pricing fields users see:
 
 ```
 Retail Store (Consumer Sales):
-✓ Show: Unit Price Inclusive of Tax
-✗ Hide: Unit Price Exclusive of Tax
-✗ Hide: Unit Price Standard
-✓ Show: Discount Amount (%)
-✗ Hide: Quantity Base (UOM only)
-✓ Show: Transaction Amount only
+Show: Unit Price Inclusive of Tax
+Hide: Unit Price Exclusive of Tax
+Hide: Unit Price Standard
+Show: Discount Amount (%)
+Hide: Quantity Base (UOM only)
+Show: Transaction Amount only
 
 Effect: Simple invoice, easy to understand
 
 ---
 
 B2B Distributor:
-✗ Hide: Unit Price Inclusive of Tax
-✓ Show: Unit Price Exclusive of Tax
-✓ Show: Unit Price Standard (reference)
-✓ Show: Unit Discount
-✓ Show: Quantity Base AND UOM
-✓ Show: All amounts (Standard, Net, Transaction)
+Hide: Unit Price Inclusive of Tax
+Show: Unit Price Exclusive of Tax
+Show: Unit Price Standard (reference)
+Show: Unit Discount
+Show: Quantity Base AND UOM
+Show: All amounts (Standard, Net, Transaction)
 
 Effect: Detailed pricing breakdown, full transparency
 ```
@@ -2304,10 +2470,10 @@ Assign permissions to individual users:
 ```
 User: John Doe (Sales Rep)
 Permissions:
-✓ Create Invoice
-✓ View Own Invoices
-✗ Finalize Invoice (Finance only)
-✗ Delete Invoice (Manager only)
+Create Invoice
+View Own Invoices
+Not Allowed: Finalize Invoice (Finance only)
+Not Allowed: Delete Invoice (Manager only)
 ```
 
 **Configure:**
@@ -2326,11 +2492,11 @@ Assign permissions to entire teams:
 Team: Sales Team
 Members: 15 sales reps
 Permissions:
-✓ Create Invoice
-✓ Edit DRAFT Invoice
-✓ View Team Invoices
-✗ Finalize Invoice
-✗ Delete Invoice
+Create Invoice
+Edit DRAFT Invoice
+View Team Invoices
+Not Allowed: Finalize Invoice
+Not Allowed: Delete Invoice
 ```
 
 **Configure:**
@@ -2348,19 +2514,19 @@ Define permissions by role:
 ```
 Role: Finance Manager
 Permissions:
-✓ All Create/Edit/Delete
-✓ Finalize Invoices
-✓ View All Invoices
-✓ Configure Settings
-✓ Generate Financial Reports
+All Create/Edit/Delete
+Finalize Invoices
+View All Invoices
+Configure Settings
+Generate Financial Reports
 
 Role: Sales Representative
 Permissions:
-✓ Create Invoice
-✓ Edit Own DRAFT Invoices
-✓ View Own Invoices
-✗ Finalize Invoice
-✗ View Others' Invoices
+Create Invoice
+Edit Own DRAFT Invoices
+View Own Invoices
+Not Allowed: Finalize Invoice
+Not Allowed: View Others' Invoices
 ```
 
 **Configure:**
@@ -2401,10 +2567,10 @@ Effect: Quick onboarding—assign permission set instead of individual permissio
 User: Sarah (New Sales Rep)
 Assign: Permission Set "Standard Sales Access"
 Effect:
-✓ Can create invoices
-✓ Can edit own drafts
-✗ Cannot finalize (Finance only)
-✗ Cannot see co-workers' invoices (privacy)
+Can create invoices
+Can edit own drafts
+Cannot finalize (Finance only)
+Cannot see co-workers' invoices (privacy)
 ```
 
 **Scenario 2: Finance Team Member**
@@ -2413,10 +2579,10 @@ Effect:
 User: John (Finance Officer)
 Assign: Role "Finance Team Member"
 Effect:
-✓ Can view all DRAFT invoices
-✓ Can finalize invoices
-✓ Can query/reject invoices
-✗ Cannot delete FINAL invoices (Manager only)
+Can view all DRAFT invoices
+Can finalize invoices
+Can query/reject invoices
+Cannot delete FINAL invoices (Manager only)
 ```
 
 **Scenario 3: Branch Manager**
@@ -2425,10 +2591,10 @@ Effect:
 User: Mary (Branch Manager)
 Assign: Role "Branch Manager"
 Effect:
-✓ Can view all branch invoices
-✓ Can approve high-value discounts
-✓ Can override credit limits (within authority)
-✓ Can generate branch reports
+Can view all branch invoices
+Can approve high-value discounts
+Can override credit limits (within authority)
+Can generate branch reports
 ```
 
 **Pro Tip:** Follow principle of least privilege—grant minimum permissions needed for job function. Add more as needed.
@@ -2531,7 +2697,7 @@ Customize invoice listing columns:
 
 **How to Customize:**
 1. In invoice listing view
-2. Click **Column Visibility** icon (⚙️)
+2. Click **Column Visibility** icon
 3. Check/uncheck columns
 4. Drag to reorder
 5. System saves preferences automatically
@@ -2540,10 +2706,10 @@ Customize invoice listing columns:
 
 **Benefits of Personalization:**
 
-✓ **Efficiency**: Pre-filled defaults save time  
-✓ **Focus**: Customized views show relevant info only  
-✓ **Productivity**: Navigation shortcuts for frequent tasks  
-✓ **Comfort**: Interface adapts to individual workflow
+**Efficiency**: Pre-filled defaults save time  
+**Focus**: Customized views show relevant info only  
+**Productivity**: Navigation shortcuts for frequent tasks  
+**Comfort**: Interface adapts to individual workflow
 
 **Pro Tip:** Encourage new users to personalize after 2 weeks (once they understand the system workflows).
 
@@ -2605,9 +2771,9 @@ Branch: Singapore Office
 **Step 2: Location Options Load**
 - System filters locations for "KL North"
 - Dropdown shows:
-  - Warehouse KL01 ✓
-  - Warehouse KL02 ✓
-  - Retail Store KL ✓
+  - Warehouse KL01
+  - Warehouse KL02
+  - Retail Store KL
   - (JB Warehouse not shown—belongs to JB Branch)
 
 **Step 3: Select Location**
