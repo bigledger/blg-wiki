@@ -42,6 +42,8 @@ Foundation applets required by all other modules:
 - **[Supplier Maintenance Applet](/applets/supplier-maintenance-applet/)** - Vendor master data
 - **[Employee Maintenance Applet](/applets/employee-maintenance-applet/)** - Employee records
 - **[Tax Configuration Applet](/applets/tax-configuration-applet/)** - Tax setup and compliance
+- **[Tax Config Applet](/applets/tax-config-applet/)** - Advanced tax configuration
+- **[SST Applet](/applets/sst-applet/)** - Malaysian SST reporting
 - **[View All Core Applets →](/applets/applet-catalog/#core-module-applets-13-applets)**
 
 #### Financial & Accounting

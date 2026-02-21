@@ -20,12 +20,14 @@ The Financial Accounting Module provides comprehensive, standards-compliant acco
 - **Period End Closing Applet** - Month/year-end processes
 
 ### Shared Applets (From Core Module)
-- **[Chart of Accounts Applet](/applets/)** - Account structure
-- **[Tax Configuration Applet](/applets/)** - GST/SST setup
-- **[Cashbook Applet](/applets/)** - Cash management
+- **[Chart of Accounts Applet](/applets/chart-of-account-applet/)** - Account structure
+- **[Tax Configuration Applet](/applets/tax-configuration-applet/)** - Standard tax setup
+- **[Tax Config Applet](/applets/tax-config-applet/)** - Advanced tax configuration
+- **[SST Applet](/applets/sst-applet/)** - Malaysian SST reporting
+- **[Cashbook Applet](/applets/cashbook-applet/)** - Cash management
 - **[Organization Applet](/applets/organization-applet/)** - Multi-entity
-- **[Customer Maintenance](/applets/)** - AR master data
-- **[Supplier Maintenance](/applets/)** - AP master data
+- **[Customer Maintenance](/applets/customer-maintenance-applet/)** - AR master data
+- **[Supplier Maintenance](/applets/supplier-maintenance-applet/)** - AP master data
 
 ### Optional Enhancement Applets
 - **Budget Management Applet** - Budget vs actual

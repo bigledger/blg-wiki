@@ -103,7 +103,7 @@ A quick guide to every option available in the applet's sidebar.
 
 | Menu Item | Description |
 | :--- | :--- |
-| **Chart of Account** | The main hierarchical tree view. Includes tabs for **Details**, **Templates**, **Segments**, **Dimensions**, **Profit Center**, and **Project**. |
+| **Chart of Account** | The main hierarchical tree view. Includes tabs for **Details**, **GL Code Link**, **GL Code**, **Segment Tree**, **Dimension Tree**, **Profit Center Tree**, and **Project Tree**. |
 | **GL Section** | Define main reporting sections (Assets, Liabilities, etc.). |
 | **GL Category** | Group accounts within sections. Includes tabs for **Details** (Name, Account No.) and **GL Code** (create codes directly here). |
 | **Import GL Category** | Bulk upload categories via CSV/Excel. |
@@ -118,6 +118,14 @@ A quick guide to every option available in the applet's sidebar.
 ---
 
 ## Key Concepts
+
+### Key Terms
+
+| Term | Description |
+| :--- | :--- |
+| **GL Section** | The top-level grouping for financial statement presentation (e.g., Assets, Liabilities, Equity, Revenue, Expenses). |
+| **GL Category** | A sub-grouping within a section that organizes related accounts together (e.g., "Current Assets", "Fixed Assets"). |
+| **GL Code** | The individual account used for recording transactions (e.g., "1001 - Petty Cash", "1102 - Cash at Bank"). |
 
 ### Understanding the Financial Hierarchy
 
@@ -198,26 +206,33 @@ Get your financial structure ready with these essential workflows.
 
 **Goal:** Establish the legal and accounting entities for the system.
 
-1. **Define Company** (`Sidebar > Companies`):
-   - Navigate to **Companies** settings
-   - Create the legal entity and set the Base Currency
-   - Enter Company Name, Registration No, and contact details
+1. **Verify Company Details** (`Sidebar > Companies`):
+   - Verify the Company Code, Name, Registration No, and Currency in the **Main** tab.
 
-2. **Configure Defaults** (`Companies > Default GL Codes`):
-   - Map critical **Default GL Codes** to ensure automation works:
-     - **General**: Retained Earnings, Profit/Loss, Rounding
-     - **Entity**: Trade Debtor/Creditor accounts
-     - **Sales/Purchase**: Revenue, Expenses, Tax accounts
-     - **Stock**: COGS, Inventory accounts
+2. **Create Ledgers** (`Companies > Ledgers`):
+   - Create the financial ledgers for the company.
+   - **Required Fields**: Ledger Code, Ledger Name, Ledger Type (Primary/Secondary/Consolidated), Currency.
+   - **Note**: A company can have multiple ledgers, but typically one **Primary** ledger is required.
 
-3. **Create Set of Books** (`Sidebar > Set Of Books`):
-   - Create the accounting book linked to the company
-   - This acts as the unique container for your financial ledgers
+3. **Configure Defaults** (`Companies > Default GL Codes`):
+   - **Prerequisite**: Ensure your Chart of Accounts has GL Codes created. If this is a new setup, you may need to import or create GL Codes first (see "Build the Hierarchy" section).
+   - Map critical **Default GL Codes** to ensure automation works. This is split into several tabs:
+     - **General**: Retained Earnings, Profit/Loss, Non-Stock & Trade-In, Fixed Asset Register, Rounding, Settlement Charges.
+     - **Entity**: Trade/Non-Trade Debtor & Creditor accounts, Merchant Receivable/Payable, Employee Payable.
+     - **Sales/Purchase**: Sales/Purchase accounts, Returns, Discounts, Tax accounts.
+     - **Stock**: Stock Adjustment, Reset MA, Stock Balance, COGS, Inventory Not Invoiced, Raw Material/WIP/Finished Goods/NSTI Stock & COGS.
+     - **Forex**: Forex Gain, Forex Loss.
+     - **Consignment**: Consignment Stock, Consignment Liability.
 
-4. **Set Fiscal Year** (`Sidebar > Fiscal Year`):
-   - Define your accounting year (e.g., Jan 1 - Dec 31)
-   - The system auto-creates monthly periods
-   - Set closing status for each period as needed
+4. **Create Set of Books** (`Sidebar > Set Of Books`):
+   - Create a **Set of Books** by providing a **Name**.
+   - Navigate to the **Ledgers** tab to link your created Ledgers to this Set of Books.
+
+5. **Set Fiscal Year** (`Sidebar > Fiscal Year`):
+   - Select the **Company**.
+   - Enter a **Name** for the fiscal year (e.g., "FY 2024").
+   - Define the **Date Start** and **Date End**.
+   - The system will auto-generate the fiscal periods.
 
 {{< callout type="tip" >}}
 **Pro Tip**: Complete the Default GL Codes mapping before starting operations. Missing mappings will cause posting errors later.
@@ -229,28 +244,37 @@ Get your financial structure ready with these essential workflows.
 
 **Goal:** Create the account structure for daily operations.
 
-1. **Define Sections** (`Sidebar > GL Section`):
-   - Create or activate high-level sections:
-     - Assets, Liabilities, Equity, Revenue, Expenses
+1. **Review Sections** (`Sidebar > GL Section`):
+   - GL Sections typically come pre-populated (e.g., Current, Fixed Assets, Long Term Liabilities, Equity, Revenue, Expenses).
+   - You can **create** new sections or **edit** existing ones to update their Name or Account No.
+   - **Editable Fields**: Name, Account No.
 
 2. **Create Categories** (`Sidebar > GL Category`):
-   - Add categories under sections (e.g., "Current Assets" under "Assets")
-   - Assign specific code ranges (e.g., 1000-1999 for Current Assets)
+   - Create categories to group accounts (e.g., "Current Assets", "Fixed Assets").
+   - **Required Fields**: GL Category Code (immutable after creation), GL Category Name.
+   - **Optional Fields**: Description, Account No.
+   - **Note**: Categories are created independently. To link a Category to a Section, edit the Category and use the **GL Section** tab to assign it.
 
-3. **Add GL Codes** (`Sidebar > GL Code` or `Chart` view):
-   - Create individual accounts (e.g., "1001 - Petty Cash")
-   - Link them to the appropriate Category
-   - Add descriptions for clarity
+3. **Link Categories to Sections** (`GL Category > Edit > GL Section tab`):
+   - Open the GL Category you created.
+   - Navigate to the **GL Section** tab.
+   - Add the appropriate GL Section to establish the hierarchy.
+   - This is how the system knows that "Current Assets" belongs under "Assets".
+
+4. **Add GL Codes** (`Sidebar > GL Code` or `Chart` view):
+   - Create individual accounts (e.g., "1001 - Petty Cash").
+   - **Required Fields**: GL Code (immutable after creation), GL Name, Chart of Account, GL Category.
+   - **Optional Fields**: Description, Account No.
 
 **Example Structure:**
 ```
-1000 - Assets
-├── 1100 - Current Assets
-│   ├── 1101 - Petty Cash
+1000 - Assets                    (GL Section)
+├── 1100 - Current Assets        (GL Category, linked to Assets via GL Section tab)
+│   ├── 1101 - Petty Cash        (GL Code)
 │   ├── 1102 - Cash at Bank - ABC
 │   ├── 1103 - Cash at Bank - XYZ
 │   └── 1110 - Trade Debtors
-├── 1500 - Fixed Assets
+├── 1500 - Fixed Assets          (GL Category, linked to Assets via GL Section tab)
 │   ├── 1501 - Office Equipment
 │   ├── 1502 - Motor Vehicles
 │   └── 1510 - Accumulated Depreciation
@@ -274,15 +298,19 @@ Get your financial structure ready with these essential workflows.
 
 3. **Merge Codes** (`Sidebar > GL Code Merge`):
    - If duplicates are found:
+     - Select the **Chart of Account**
+     - Select the **GL Category**
      - Select **Source GL Code** (the duplicate)
      - Select **Target GL Code** (the correct one)
-     - Click **MERGE** and confirm
+     - Click **MERGE**, then **CLICK AGAIN TO CONFIRM**
    - All history moves to Target; Source is deactivated
 
 4. **Fiscal Closing** (`Sidebar > Fiscal Year`):
    - At month-end, open the Fiscal Year
-   - Navigate to **Fiscal Period** tab
-   - Change status from **OPEN** to **LOCK_TXN** or **LOCK_ALL** to prevent changes
+   - Navigate to the **Fiscal Period** tab
+   - **Click on the specific period row** to open **Fiscal Period Details**
+   - Change the **Closing Status** dropdown (`OPEN` → `LOCK_GL`, `LOCK_TXN`, or `LOCK_ALL`)
+   - Click **SAVE**
 
 ---
 
@@ -300,16 +328,25 @@ The main hierarchical view showing your complete account structure.
 - ✓ Quick audit for misclassified accounts
 - ✓ Search and filter accounts
 - ✓ Create new Charts of Account
+- ✓ Delete a Chart of Account (with confirmation)
+
+**Creating a Chart of Account:**
+- **Required Fields**: COA Code (immutable after creation), COA Name
+- **Optional Fields**: Description
 
 **Tabs Available When Editing a Chart:**
 
 | Tab | Purpose |
 | :--- | :--- |
-| **Details** | Edit COA name and description |
-| **Segments** | Add reporting segments for multi-dimensional analysis |
-| **Dimensions** | Add custom dimensions for advanced reporting |
-| **Profit Center** | Define profit centers for departmental P&L tracking |
-| **Project** | Track financial data by project |
+| **Details** | COA Code (read-only), COA Name, Description. Also shows audit trail (Created By/Date, Updated By/Date) |
+| **GL Code Link** | Select a GL Code from the dropdown and **Add** or **Delete** the link |
+| **GL Code** | View all GL Codes within this Chart |
+| **Segment Tree** | Manage reporting segments — used to tag transactions by business unit (e.g., Retail, Wholesale, Online) |
+| **Dimension Tree** | Manage custom dimensions — flexible tags for cost tracking (e.g., Department, Region, Branch) |
+| **Profit Center Tree** | Manage profit centers — track revenue and expenses per unit for P&L analysis (e.g., KL Branch, Penang Branch) |
+| **Project Tree** | Manage projects — track financial data by project (e.g., "Office Renovation", "System Upgrade") |
+
+> **Note**: Tab order is configurable via Applet Settings (`CHART_OF_ACCOUNT_DETAILS_TAB_ORDER`).
 
 {{< figure src="/images/chart-of-account-applet/screenshots/coa-edit-tabs.png" alt="Chart of Account Edit" caption="Editing Chart of Account details and viewing available tabs." >}}
 
@@ -317,13 +354,19 @@ The main hierarchical view showing your complete account structure.
 
 ### Segments Tab
 
+In accounting, segments classify transactions by distinct operational divisions — such as business units, regions, or product lines — allowing financial reports to be broken down by each segment independently.
+
 Add reporting segments to your COA for multi-dimensional analysis.
 
 {{< figure src="/images/chart-of-account-applet/screenshots/coa-segments.png" alt="Segments Tab" caption="Adding and managing segments for multi-dimensional reporting." >}}
 
-**Required Fields:** Segment Code, Segment Name
+**Required Fields:** Segment Code (immutable after creation), Segment Name
 
-**Editable After Creation:** Segment Name, Description, Status
+**Optional Fields:** Description, Parent Segment (searchable dropdown, select "No Parent" for top-level)
+
+**Additional Fields:** Ref 1 - Ref 5 (Code, Name, Description) for advanced tagging.
+
+**Editable After Creation:** Segment Name, Description, Status, Parent Segment, Reference Fields
 
 **Use Cases:**
 - Track by Business Unit (e.g., Retail, Wholesale)
@@ -334,11 +377,17 @@ Add reporting segments to your COA for multi-dimensional analysis.
 
 ### Dimensions Tab
 
+In accounting, dimensions (also called analysis dimensions) provide a flexible tagging system for transactions. Unlike the fixed GL Code hierarchy, dimensions let you cross-cut financial data by categories like departments, cost centers, or campaigns — without duplicating GL Codes.
+
 Add custom dimensions for advanced reporting.
 
-**Required Fields:** Dimension Code, Dimension Name
+**Required Fields:** Dimension Code (immutable after creation), Dimension Name
 
-**Editable After Creation:** Dimension Name, Description, Status
+**Optional Fields:** Description, Parent Dimension (searchable dropdown, select "No Parent" for top-level)
+
+**Additional Fields:** Ref 1 - Ref 5 (Code, Name, Description) for advanced tagging.
+
+**Editable After Creation:** Dimension Name, Description, Status, Parent Dimension, Reference Fields
 
 **Use Cases:**
 - Cost Centers (Marketing, Operations, IT)
@@ -349,11 +398,17 @@ Add custom dimensions for advanced reporting.
 
 ### Profit Center Tab
 
+In accounting, a profit center is any unit within an organization that generates its own revenue and bears its own costs. Assigning transactions to profit centers enables individual P&L statements per branch, department, or business line.
+
 Define profit centers for departmental P&L tracking.
 
-**Required Fields:** Profit Center Code, Profit Center Name
+**Required Fields:** Profit Center Code (immutable after creation), Profit Center Name
 
-**Editable After Creation:** Profit Center Name, Description, Status
+**Optional Fields:** Description, Parent Profit Center (searchable dropdown, select "No Parent" for top-level)
+
+**Additional Fields:** Ref 1 - Ref 5 (Code, Name, Description) for advanced tagging.
+
+**Editable After Creation:** Profit Center Name, Description, Status, Parent Profit Center, Reference Fields
 
 **Use Cases:**
 - Department-level profitability
@@ -364,13 +419,19 @@ Define profit centers for departmental P&L tracking.
 
 ### Project Tab
 
+In accounting, project tracking captures all revenue and expenses tied to a specific initiative — such as construction, a client engagement, or an internal upgrade — allowing organizations to monitor project-level profitability and budgets separately from day-to-day operations.
+
 Track financial data by project.
 
 {{< figure src="/images/chart-of-account-applet/screenshots/coa-project.png" alt="Project Tab" caption="Managing projects linked to the Chart of Accounts." >}}
 
-**Required Fields:** Project Code, Project Name, Description
+**Required Fields:** Project Code (immutable after creation), Project Name
 
-**Editable After Creation:** Project Name, Description, Status
+**Optional Fields:** Description, Parent Project (searchable dropdown, select "No Parent" for top-level)
+
+**Additional Fields:** Ref 1 - Ref 5 (Code, Name, Description) for advanced tagging.
+
+**Editable After Creation:** Project Name, Description, Status, Parent Project, Reference Fields
 
 **Use Cases:**
 - Capital expenditure projects
@@ -404,9 +465,10 @@ Group accounts within sections for organized reporting.
 
 {{< figure src="/images/chart-of-account-applet/screenshots/gl-category-listing.png" alt="GL Category Listing" caption="GL Category listing and creation interface." >}}
 
-**When you click on a GL Category, you access two tabs:**
+**When you click on a GL Category, you access three tabs:**
 
 **Details Tab:**
+- **GL Category Code** - Read-only after creation
 - **GL Category Name** - Editable
 - **Chart of Account** - Editable (move category to different COA)
 - **GL Category** - Parent category (for sub-categories)
@@ -417,6 +479,9 @@ Group accounts within sections for organized reporting.
 - Create GL Codes directly from within a Category (Category is auto-selected)
 - GL Codes created here also appear in the GL Code module
 
+**GL Section Tab:**
+- Link the Category to a specific GL Section
+
 ---
 
 ### GL Code
@@ -425,10 +490,6 @@ Group accounts within sections for organized reporting.
 The primary workspace for managing individual accounts.
 
 {{< figure src="/images/chart-of-account-applet/screenshots/gl-code-listing.png" alt="GL Code Listing" caption="GL Code listing showing all accounts with search and filter options." >}}
-
-**How to Use:**
-- **Search**: Use the filter bar to find codes by Name, Category, or Status
-- **Edit**: Update descriptions or status (Note: Code number cannot be changed once transactions exist)
 
 **Required Fields for GL Code Creation:**
 
@@ -441,6 +502,15 @@ The primary workspace for managing individual accounts.
 | **Chart of Account** | ✓ (Select from the list of COAs) |
 | **GL Category** | ✓ (Select from GL Categories module) |
 | **Description** | Optional |
+| **Account No.** | Optional |
+| **Status** | Editable (dropdown) |
+
+**Tabs Available When Editing a GL Code:**
+
+| Tab | Purpose |
+| :--- | :--- |
+| **Details** | GL Code, GL Name, Chart of Account, GL Category, Description, Account No., Status, audit trail |
+| **Chart of Account Link** | Link this GL Code to one or more Charts of Account |
 
 ---
 
@@ -453,23 +523,35 @@ Companies are automatically listed after the Chart of Accounts is selected in th
 
 {{< figure src="/images/chart-of-account-applet/screenshots/company-main-tab.png" alt="Company Main Tab" caption="Company Main tab showing read-only company information." >}}
 
-**Main Tab (Read-Only):** Code, Name, Company Registration No, Currency
+**Main Tab:**
+- **Company Code** - Read-only
+- **Company Name** - Editable
+- **Company Registration No.** - Editable
+- **Currency** - Editable (searchable dropdown)
+- **Tax ID** - Editable
+- **SST ID** - Editable
+- **Chart of Account** - Editable (dropdown)
+- **Inventory Cost Base On** - Editable (dropdown)
 
 ---
 
 **Ledgers Tab:**
 
+In accounting, a ledger is the principal book (or digital record) that contains all financial transactions for a company. Sub-ledgers break this down further by individual GL Code for detailed tracking.
+
 Create and manage company ledgers.
 
 {{< figure src="/images/chart-of-account-applet/screenshots/company-ledgers.png" alt="Company Ledgers Tab" caption="Creating and managing Ledgers and Sub-Ledgers." >}}
 
-**Required Fields:** Ledger Code, Ledger Name, Ledger Type, Currency
+**Required Fields:** Ledger Code, Ledger Name, Ledger Type (Primary/Secondary/Consolidated), Currency
 
-After creation, click on the Ledger to manage **Sub-Ledgers**.
+After creation, click on the Ledger to access:
 
-**Sub-Ledgers:**
-- GL Codes of the company will be listed on the "Edit Sub Ledgers" page
-- Click on the action to create a sub-ledger for specific GL Codes
+**Opening Balance Tab** (Primary Ledgers only):
+- Enter opening balances for GL Codes linked to this ledger
+
+**Remove Journal Tab:**
+- Remove journal entries associated with this ledger
 
 ---
 
@@ -485,10 +567,10 @@ Critical configuration for system automation.
 | Tab | GL Codes |
 | :--- | :--- |
 | **General** | Retained Earnings, Profit/Loss, NSTI, Fixed Asset Register, Rounding, Settlement Charges |
-| **Entity** | Trade Debtor/Creditor, Non-Trade Debtor/Creditor, Not Invoiced accounts, Merchant Receivable/Payable, Employee Payable |
+| **Entity** | Trade Debtor/Creditor, Non-Trade Debtor/Creditor, Trade Not Invoiced Debtor/Creditor, Non-Trade Not Invoiced Debtor/Creditor, Merchant Receivable/Payable, Employee Other Payable |
 | **Sales** | Sales, Sales Return, Sales Discount, Output Tax |
 | **Purchase** | Purchase, Purchase Return, Purchase Discount, Input Tax |
-| **Stock** | Stock Adjustment, Reset MA, Stock Balance, COGS, Inventory Not Invoiced, Raw Material, WIP, Finished Goods, NSTI Stock |
+| **Stock** | Stock Adjustment, Reset MA, Stock Balance, COGS, Inventory Not Invoiced, Raw Material (Stock Value + COGS), WIP (Closing + COGS), Finished Goods (Closing + COGS), NSTI (Closing + COGS) |
 | **Forex** | Forex Gain, Forex Loss |
 | **Consignment** | Consignment Stock, Consignment Liability |
 
@@ -500,6 +582,8 @@ Critical configuration for system automation.
 
 ### Set of Books Management
 *Menu: **Set Of Books***
+
+In accounting, a Set of Books is a complete, self-contained accounting record — grouping one or more ledgers together for a specific reporting purpose (e.g., statutory reporting, management reporting, or multi-currency consolidation).
 
 {{< figure src="/images/chart-of-account-applet/screenshots/set-of-books-ledgers.png" alt="Set of Books Ledgers" caption="Linking Ledgers to Set of Books." >}}
 
@@ -513,6 +597,8 @@ Critical configuration for system automation.
 ---
 
 ## Fiscal Year Management
+In accounting, a fiscal year defines the 12-month period used for financial reporting and tax purposes. It may or may not align with the calendar year. Fiscal periods (usually monthly) within the year can be individually locked to prevent changes to finalized data.
+
 *Menu: **Fiscal Year***
 
 {{< figure src="/images/chart-of-account-applet/screenshots/fiscal-year-listing.png" alt="Fiscal Year Listing" caption="Fiscal Year listing with create option." >}}
@@ -558,15 +644,15 @@ Each fiscal year contains monthly (or custom) periods. For each period:
 ### Import GL Category
 *Menu: **Import GL Category***
 
-Bulk upload categories via CSV/Excel file.
+Bulk upload categories via CSV file.
 
 **How to Import:**
 1. Navigate to **Import GL Category**
-2. **Download Template**: Click the link to get the sample file
+2. **Download Sample**: Click the **\*Sample Format** link to get the CSV template
 3. **Prepare Data**: Fill in your rows following the template format
-4. **Upload**: Drag & Drop your file
+4. **Upload**: Drag & Drop your `.csv` file (or click **Upload File**)
 5. **Review**: Check for any validation errors
-6. **Commit**: Click **Add** to finalize
+6. **Commit**: Click **ADD** to finalize
 
 ---
 
@@ -588,14 +674,14 @@ Bulk upload GL codes to populate your chart quickly.
 
 **How to Import:**
 1. Navigate to **Import GL Code**
-2. **Download Template**: Click the link to get the `.csv` file
+2. **Download Sample**: Click the **\*Sample Format** link to get the `.csv` template
 3. **Prepare Data**: Fill in your rows. Ensure `GL_CATEGORY` matches exactly what is already in the system
-4. **Upload**: Drag & Drop your file
+4. **Upload**: Drag & Drop your `.csv` file (or click **Upload File**)
 5. **Review**: The system will show a preview. Green ticks mean "Ready". Red flags mean "Error" (hover to see why)
-6. **Commit**: Click **Add** to finalize
+6. **Commit**: Click **ADD** to finalize
 
 {{< callout type="tip" >}}
-**Template Download**: You can download the official `.csv` template directly from the **Import GL Code** screen in the applet.
+**Sample Format**: You can download the official `.csv` template directly from the **Import GL Code** screen via the **\*Sample Format** link.
 {{< /callout >}}
 
 ---
@@ -635,10 +721,11 @@ Bridge the gap between Accounting and Sales/Inventory.
 
 **How to Use:**
 1. Navigate to **GL Code Create Item**
-2. Select the **GL Category** and search for available GL Codes
-3. Select the GL Code(s) you want to create items for
+2. Select the **GL Category** from the dropdown
+3. Click **SEARCH** to list all GL Codes in that category
+4. Click **CREATE** to generate Items for the listed GL Codes
 
-The system will generate a saleable Item linked to that GL code, allowing the sales team to pick it in an invoice and automatically route revenue to the correct account.
+The system will generate a saleable Item linked to each GL Code, allowing the sales team to pick it in an invoice and automatically route revenue to the correct account.
 
 ---
 
@@ -744,32 +831,23 @@ Tag with Profit Center:
 
 *Found in: **Settings > General Settings***
 
-- **Closing Stock Display**: Toggle which inventory values are visible in financial reports:
-  - Inventory Stock Value (General)
-  - Raw Material Stock
-  - WIP (Work In Progress) Stock
-  - Finished Goods Stock
-  - NSTI (Non-Stock Trade-In) Stock
+Two collapsible panels:
 
-### Permission Management
+**Default GL Code**
+A JSON textarea where you define fallback GL Code mappings. The system reads this configuration when automatically assigning GL Codes to transactions that do not have an explicit mapping elsewhere.
 
-*Found in: **Settings > Permission Management***
+**Closing Stock Balance Settings**
+Slide toggles that control which inventory stock values appear in your financial reports (e.g., Balance Sheet, Profit & Loss). Each toggle corresponds to a stock category:
 
-Centralized control over who can do what.
-
-| Permission Type | Description |
+| Toggle | What It Controls |
 | :--- | :--- |
-| **Permission Wizard** | Step-by-step guide to setting up access |
-| **Permission Sets** | Pre-configured permission bundles |
-| **User Permissions** | Individual user access controls |
-| **Team Permissions** | Group-based access controls |
-| **Role Permissions** | Role-based access controls |
+| `SHOW_INVENTORY_STOCK_VALUE` | General inventory (finished goods for trading companies) |
+| `SHOW_RAW_MATERIAL_STOCK_VALUE` | Raw material stock (manufacturing) |
+| `SHOW_WIP_STOCK_VALUE` | Work-In-Progress stock (manufacturing) |
+| `SHOW_FINISHED_GOODS_STOCK_VALUE` | Finished goods stock (manufacturing) |
+| `SHOW_NSTI_STOCK_VALUE` | Non-Stock & Trade-In items |
 
-### Webhooks
-
-*Found in: **Settings > Webhooks***
-
-Configure external triggers. Use this to notify other systems (like Slack or a 3rd party ERP) when specific events occur in the Chart of Accounts.
+Click **SAVE** after changing any setting.
 
 ---
 
@@ -782,10 +860,6 @@ Configure external triggers. Use this to notify other systems (like Slack or a 3
 Set your preferred working context to avoid repeated selections:
 - **Default Branch**: The system will auto-select this branch for new transactions
 - **Default Location**: Your primary inventory location
-
-### Sidebar Customization
-
-Customize which menu items appear in your sidebar for faster navigation.
 
 ---
 
@@ -821,7 +895,7 @@ Customize which menu items appear in your sidebar for faster navigation.
 A: A **GL Section** is the highest level (e.g., Assets). A **GL Category** is a subdivision (e.g., Current Assets). GL Codes sit inside Categories.
 
 **Q: How do I lock a specific month?**  
-A: Go to **Fiscal Year** → select the year → open the **Fiscal Period** tab for the specific month → change **Closing Status** to `LOCK_ALL`.
+A: Go to **Fiscal Year** → select the year → open the **Fiscal Period** tab → click on the specific period row to open **Fiscal Period Details** → change the **Closing Status** dropdown to `LOCK_ALL` → click **SAVE**.
 
 **Q: Can I manage multiple companies in this applet?**  
 A: Yes. You can define multiple **Companies** and **Sets of Books**. When working, you can switch between contexts.
