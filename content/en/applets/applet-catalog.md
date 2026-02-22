@@ -308,6 +308,7 @@ All 13 Core Module applets (listed above) are included in CP-Commerce Module.
 - **[Stock Take Applet](/applets/stock-take-applet/)** - Physical inventory counting and reconciliation
 - **[Internal Stock Adjustment Applet](/applets/internal-stock-adjustment-applet/)** - Inventory adjustments and corrections
 - **[Internal Delivery Order Applet](/applets/internal-delivery-order-applet/)** - Internal transfers and deliveries
+- **[Internal Consignment GIN Applet](/applets/internal-consignment-gin-applet/)** - Consignment Goods Issue Notes and line item tracking for sales
 
 ### Team and Organization Management
 - **[Team Maintenance Applet](/applets/team-maintenance-applet/)** - Team structure and management
