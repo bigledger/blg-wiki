@@ -397,14 +397,17 @@ Pentadbir mengkonfigurasi Internal Consignment GIN Applet melalui **Settings** d
 
 ### Struktur Menu Settings
 
-| Tetapan                                   | Tujuan                                   |
-| ----------------------------------------- | ---------------------------------------- |
-| **Application Settings** (Field Settings) | Konfigurasi medan dan tab yang kelihatan |
-| **Default Selection**                     | Set nilai lalai untuk dokumen baru       |
-| **Printable Format Settings**             | Konfigurasi templat export/cetak         |
-| **Webhook**                               | Konfigurasi webhook untuk integrasi      |
-| **Feature Visibility**                    | Kawal keterlihatan ciri                  |
-| **Permissions**                           | Senarai kebenaran User, Team dan Role    |
+| Tetapan                                     | Tujuan                                     |
+| ------------------------------------------- | ------------------------------------------ |
+| **Application Settings** (Field Settings)   | Konfigurasi medan dan tab yang kelihatan   |
+| **Default Selection**                       | Set nilai lalai untuk dokumen baru         |
+| **Printable Format Settings**               | Konfigurasi templat export/cetak           |
+| **Webhook**                                 | Konfigurasi webhook untuk integrasi        |
+| **Feature Visibility**                      | Kawal keterlihatan ciri                    |
+| **Permissions**                             | Senarai kebenaran User, Team dan Role      |
+| ------------------------------------------- | ------------------------------------------ |
+
+{{< figure src="/images/internal-consignment-gin-applet/settings-page.png" alt="Halaman Settings Internal Consignment GIN menunjukkan Application Settings, Default Selection, dan pilihan konfigurasi lain" caption="Konfigurasi & Tetapan: Akses konfigurasi applet terperinci melalui menu Settings" >}}
 
 ### Tab Boleh Dikonfigurasi (Application Settings)
 

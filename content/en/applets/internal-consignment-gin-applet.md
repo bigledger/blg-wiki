@@ -2,11 +2,11 @@
 title: "Internal Consignment GIN Applet"
 description: "Create and manage consignment Goods Issue Notes with full visibility of items and line-level tracking for sales operations"
 tags:
-- applets
-- consignment
-- goods-issue-note
-- inventory-management
-- sales-operations
+  - applets
+  - consignment
+  - goods-issue-note
+  - inventory-management
+  - sales-operations
 weight: 85
 ---
 
@@ -23,21 +23,25 @@ The **Internal Consignment GIN Applet** is designed to streamline the management
 ### Who Benefits from This Applet?
 
 **Sales Representatives:**
+
 - Create consignment GIN items quickly for customer demos or trial placements
 - Track what has been issued to which customer or location
 - View line-level details for accurate follow-up and reconciliation
 
 **Sales Managers:**
+
 - Monitor all consignment issues across the team
 - Review consignment stock usage patterns
 - Ensure proper documentation of items released from consignment
 
 **Warehouse & Inventory Teams:**
+
 - Maintain accurate consignment inventory records
 - Support physical issuance with proper documentation
 - Reconcile consignment stock levels against GIN records
 
 **Finance & Operations:**
+
 - Audit trail for consignment consumption
 - Support monthly billing and supplier reconciliation
 - Compliance with consignment agreement tracking
@@ -47,6 +51,7 @@ The **Internal Consignment GIN Applet** is designed to streamline the management
 **The Manual Consignment Tracking Problem:**
 
 Managing consignment stock without a dedicated system leads to:
+
 - Lost or missing records of what was issued
 - Difficulty reconciling physical stock with supplier billing
 - No visibility into which items went where
@@ -63,13 +68,13 @@ Managing consignment stock without a dedicated system leads to:
 ## Key Features Overview
 
 {{< cards >}}
-  {{< card title="Internal Consignment GIN Listing" subtitle="View all consignment GIN documents with advanced search" link="#consignment-gin-listing" >}}
+{{< card title="Internal Consignment GIN Listing" subtitle="View all consignment GIN documents with advanced search" link="#consignment-gin-listing" >}}
 
-  {{< card title="Create & Edit Consignment GIN" subtitle="Record consignment stock issues with header, account, and line details" link="#creating-a-consignment-gin" >}}
+{{< card title="Create & Edit Consignment GIN" subtitle="Record consignment stock issues with header, account, and line details" link="#creating-a-consignment-gin" >}}
 
-  {{< card title="Line Items" subtitle="Dedicated view to search and manage line-level details across all GINs" link="#line-item-listing" >}}
+{{< card title="Line Items" subtitle="Dedicated view to search and manage line-level details across all GINs" link="#line-item-listing" >}}
 
-  {{< card title="Settings & Configuration" subtitle="Configure field visibility, default selections, and printable formats" link="#configuration--settings" >}}
+{{< card title="Settings & Configuration" subtitle="Configure field visibility, default selections, and printable formats" link="#configuration--settings" >}}
 {{< /cards >}}
 
 {{< figure src="/images/internal-consignment-gin-applet/internal-consignment-gin-overview-infographic.png" alt="Internal Consignment GIN Applet Overview: The challenges of manual consignment tracking vs the applet solution, and who benefits" caption="From Manual Tracking to Digital Control: The Challenges (lost records, reconciliation difficulty, no visibility, spreadsheet errors) vs The Solution (digital documentation, centralized listing, line-item visibility, audit compliance). Who Benefits: Sales Representatives, Sales Managers, Warehouse & Inventory, Finance & Operations." >}}
@@ -80,11 +85,11 @@ Managing consignment stock without a dedicated system leads to:
 
 A **Goods Issue Note (GIN)** for consignment stock documents the release of items from consignment inventory. Unlike owned stock, consignment items remain supplier property until consumed or sold.
 
-| Concept | Definition | Example |
-|---------|------------|---------|
-| **Consignment Stock** | Goods physically at your location but owned by the supplier | Display products from a distributor |
-| **Consignment GIN** | Document recording the issuance of consignment items | Issuing demo units to a showroom |
-| **Line Item** | Individual item and quantity on a GIN | 5 units of Product A, 3 units of Product B |
+| Concept               | Definition                                                  | Example                                    |
+| --------------------- | ----------------------------------------------------------- | ------------------------------------------ |
+| **Consignment Stock** | Goods physically at your location but owned by the supplier | Display products from a distributor        |
+| **Consignment GIN**   | Document recording the issuance of consignment items        | Issuing demo units to a showroom           |
+| **Line Item**         | Individual item and quantity on a GIN                       | 5 units of Product A, 3 units of Product B |
 
 {{< callout type="tip" >}}
 **Real-World Example**: A sales rep issues 10 demo units of Product XYZ (WHAT) to ABC Store for a 30-day trial (WHY). The system creates a consignment GIN, reduces the consignment inventory balance, and records the transaction for supplier billing when the trial converts to sale.
@@ -120,12 +125,12 @@ Consignment GIN Header (Main Details)
 
 ### Consignment vs. Owned Stock
 
-| Aspect | Consignment Stock | Owned Stock |
-|--------|-------------------|-------------|
-| **Ownership** | Supplier owns until used/sold | Your organization owns |
-| **Payment** | Pay when consumed | Pay on receipt |
-| **GIN Impact** | Reduces consignment balance | Reduces owned inventory |
-| **Billing** | Supplier bills based on consumption | Already paid |
+| Aspect         | Consignment Stock                   | Owned Stock             |
+| -------------- | ----------------------------------- | ----------------------- |
+| **Ownership**  | Supplier owns until used/sold       | Your organization owns  |
+| **Payment**    | Pay when consumed                   | Pay on receipt          |
+| **GIN Impact** | Reduces consignment balance         | Reduces owned inventory |
+| **Billing**    | Supplier bills based on consumption | Already paid            |
 
 ---
 
@@ -188,23 +193,28 @@ Get up and running quickly with these essential workflows.
 **Goal:** Get the consignment GIN system ready for the Sales team in 5 steps.
 
 **Step 1: Configure Consignment Items** (`Master Data > Items > [Item] > Consignment`)
+
 - Flag items as consignment and link to the correct supplier
 - Set default consignment location for each item
 
 **Step 2: Set Up Warehouses** (`Master Data > Warehouses` or `Inventory > Locations`)
+
 - Define locations that hold consignment stock
 - Ensure consignment items are allocated to the correct storage areas
 
 **Step 3: Assign Permissions** (`Settings > Permissions` or `Tenant Admin > Roles`)
+
 - Grant Sales reps: Create Consignment GIN, View Consignment GIN
 - Grant Warehouse: View Consignment GIN
 - Grant Finance: View Consignment GIN (for reconciliation)
 
 **Step 4: Verify Consignment Receipt** (if applicable)
+
 - Ensure consignment stock has been received via [Consignment GRN](/guides/purchasing-guides/consignment-purchasing/) before issuing
 - Check consignment inventory balances
 
 **Step 5: Test**
+
 - Create a test consignment GIN as a Sales rep
 - Verify it appears in the listing
 - Confirm line items display correctly
@@ -215,11 +225,12 @@ Get up and running quickly with these essential workflows.
 
 {{< callout type="tip" >}}
 **New to the system?** Start with the basics:
+
 1. Sales reps should create a test consignment GIN for familiarization
 2. Sales managers should review the listing and filters
 3. Warehouse staff should practice fulfilling a GIN from the pending list
 4. Admins should complete the Initial System Setup above, then review **Configuration & Settings** for detailed options
-{{< /callout >}}
+   {{< /callout >}}
 
 ---
 
@@ -240,32 +251,32 @@ Before creating a consignment GIN, ensure:
 
 **Step 1: Main Details Tab**
 
-| Field | Purpose | Example |
-|-------|---------|---------|
-| **Branch** | Issuing branch | Main Branch |
+| Field                | Purpose                | Example      |
+| -------------------- | ---------------------- | ------------ |
+| **Branch**           | Issuing branch         | Main Branch  |
 | **Transaction Date** | Business date of issue | Today's date |
-| **Currency** | Document currency | MYR |
-| **Purchaser** | Person responsible | John Smith |
+| **Currency**         | Document currency      | MYR          |
+| **Purchaser**        | Person responsible     | John Smith   |
 
 **Step 2: Account Tab**
 
-| Field | Purpose | Example |
-|-------|---------|---------|
-| **Supplier** | Entity who owns consignment stock | Supplier ABC |
-| **Bill To** | Billing address | Select or enter |
-| **Ship To** | Shipping/delivery address | Select or enter |
+| Field        | Purpose                           | Example         |
+| ------------ | --------------------------------- | --------------- |
+| **Supplier** | Entity who owns consignment stock | Supplier ABC    |
+| **Bill To**  | Billing address                   | Select or enter |
+| **Ship To**  | Shipping/delivery address         | Select or enter |
 
 **Step 3: Lines Tab**
 
 For each item being issued:
 
-| Field | Purpose | Example |
-|-------|---------|---------|
-| **Item** | Consignment product | Product XYZ |
-| **Quantity** | Units issued (Base/UOM) | 10 |
-| **Serial Number** | For serialized items (if enabled) | SN-12345 |
-| **Batch Number** | For batch-tracked items (if enabled) | BATCH-001 |
-| **Pricing Details** | Unit price, discount, amounts | As configured |
+| Field               | Purpose                              | Example       |
+| ------------------- | ------------------------------------ | ------------- |
+| **Item**            | Consignment product                  | Product XYZ   |
+| **Quantity**        | Units issued (Base/UOM)              | 10            |
+| **Serial Number**   | For serialized items (if enabled)    | SN-12345      |
+| **Batch Number**    | For batch-tracked items (if enabled) | BATCH-001     |
+| **Pricing Details** | Unit price, discount, amounts        | As configured |
 
 **Step 4: Optional Tabs**
 
@@ -283,12 +294,12 @@ For each item being issued:
 
 When editing a consignment GIN, additional tabs appear (if enabled in Application Settings):
 
-| Tab | Purpose |
-|-----|---------|
-| **Contra** | Link contra documents (e.g., related GRN, invoice) |
-| **Doc Link** | Link to related documents |
-| **Attachments** | Attach files (receipts, supporting documents) |
-| **Export** | Generate PDF via printable format |
+| Tab             | Purpose                                            |
+| --------------- | -------------------------------------------------- |
+| **Contra**      | Link contra documents (e.g., related GRN, invoice) |
+| **Doc Link**    | Link to related documents                          |
+| **Attachments** | Attach files (receipts, supporting documents)      |
+| **Export**      | Generate PDF via printable format                  |
 
 Use **SAVE** to persist changes, **RESET** to discard, or **DELETE** (with confirmation) to remove a draft GIN.
 
@@ -310,28 +321,28 @@ The listing provides a comprehensive view of all consignment GIN items created.
 
 ### Listing Columns
 
-| Column | Description |
-|--------|-------------|
-| **Consignment GIN No** | Unique document identifier |
-| **Posting Status** | DRAFT or posted status |
-| **Branch** | Issuing branch |
-| **Supplier Name** | Supplier (entity) for consignment stock |
-| **Purchaser** | Person responsible for the GIN |
-| **Updated Date** | Last modification date |
-| **Created Date** | When the GIN was created |
-| **Transaction Date** | Business transaction date |
-| **Created by** | User who created the GIN |
+| Column                 | Description                             |
+| ---------------------- | --------------------------------------- |
+| **Consignment GIN No** | Unique document identifier              |
+| **Posting Status**     | DRAFT or posted status                  |
+| **Branch**             | Issuing branch                          |
+| **Supplier Name**      | Supplier (entity) for consignment stock |
+| **Purchaser**          | Person responsible for the GIN          |
+| **Updated Date**       | Last modification date                  |
+| **Created Date**       | When the GIN was created                |
+| **Transaction Date**   | Business transaction date               |
+| **Created by**         | User who created the GIN                |
 
 ### Advanced Search Fields
 
-| Field | Description |
-|-------|-------------|
+| Field                  | Description               |
+| ---------------------- | ------------------------- |
 | **Consignment GIN No** | Search by document number |
-| **Branch Name** | Filter by branch |
-| **Supplier Name** | Filter by supplier |
-| **Created Date** | Date range (from/to) |
-| **Transaction Date** | Date range (from/to) |
-| **Created by** | Filter by creator |
+| **Branch Name**        | Filter by branch          |
+| **Supplier Name**      | Filter by supplier        |
+| **Created Date**       | Date range (from/to)      |
+| **Transaction Date**   | Date range (from/to)      |
+| **Created by**         | Filter by creator         |
 
 ---
 
@@ -343,26 +354,26 @@ The **Line Items** navigation provides a dedicated view to search and manage con
 
 ### Line Item Search Fields
 
-| Field | Description |
-|-------|-------------|
-| **Consignment GIN No** | Filter by parent GIN document |
-| **Item Code** | Search by product code |
-| **Item Name** | Search by product name |
-| **Txn Amt** | Filter by transaction amount range |
+| Field                  | Description                        |
+| ---------------------- | ---------------------------------- |
+| **Consignment GIN No** | Filter by parent GIN document      |
+| **Item Code**          | Search by product code             |
+| **Item Name**          | Search by product name             |
+| **Txn Amt**            | Filter by transaction amount range |
 
 ### Line Item Details (per line)
 
-| Field | Description |
-|-------|-------------|
-| **Item Code** | Product identifier |
-| **Item Name** | Product description |
-| **Quantity** | Units issued (Base and UOM) |
-| **Unit of Measure** | UOM (e.g., EA, Box) |
-| **Serial Number** | For serialized items (if enabled) |
-| **Batch Number** | For batch-tracked items (if enabled) |
-| **Bin Number** | Storage location (if enabled) |
-| **Pricing Details** | Unit price, discount, amounts |
-| **Issue Link** | Link to source documents |
+| Field               | Description                          |
+| ------------------- | ------------------------------------ |
+| **Item Code**       | Product identifier                   |
+| **Item Name**       | Product description                  |
+| **Quantity**        | Units issued (Base and UOM)          |
+| **Unit of Measure** | UOM (e.g., EA, Box)                  |
+| **Serial Number**   | For serialized items (if enabled)    |
+| **Batch Number**    | For batch-tracked items (if enabled) |
+| **Bin Number**      | Storage location (if enabled)        |
+| **Pricing Details** | Unit price, discount, amounts        |
+| **Issue Link**      | Link to source documents             |
 
 ### Viewing Line Items
 
@@ -386,27 +397,30 @@ Administrators configure the Internal Consignment GIN Applet via **Settings** in
 
 ### Settings Menu Structure
 
-| Setting | Purpose |
-|---------|---------|
+| Setting                                   | Purpose                                     |
+| ----------------------------------------- | ------------------------------------------- |
 | **Application Settings** (Field Settings) | Configure which fields and tabs are visible |
-| **Default Selection** | Set default values for new documents |
-| **Printable Format Settings** | Configure export/print templates |
-| **Webhook** | Configure webhooks for integrations |
-| **Feature Visibility** | Control feature visibility |
-| **Permissions** | User, Team, and Role permission listings |
+| **Default Selection**                     | Set default values for new documents        |
+| **Printable Format Settings**             | Configure export/print templates            |
+| **Webhook**                               | Configure webhooks for integrations         |
+| **Feature Visibility**                    | Control feature visibility                  |
+| **Permissions**                           | User, Team, and Role permission listings    |
+| -----------------                         | ------------------------------------------  |
+
+{{< figure src="/images/internal-consignment-gin-applet/settings-page.png" alt="Internal Consignment GIN Settings page showing Application Settings, Default Selection, and other configuration options" caption="Configuration & Settings: Access detailed applet configuration via the Settings menu" >}}
 
 ### Configurable Tabs (Application Settings)
 
 The following tabs can be shown or hidden per tenant via **Settings > Application Settings**:
 
-| Tab | Description | Default |
-|-----|-------------|---------|
-| **Payment** | Record and manage payments | Visible |
-| **Department Hdr** | Department-level details | Visible |
-| **Contra** | Link contra documents | Visible |
-| **Doc Link** | Link related documents | Visible |
-| **Attachments** | Attach files | Visible |
-| **Export** | Export to printable format (PDF) | Visible |
+| Tab                | Description                      | Default |
+| ------------------ | -------------------------------- | ------- |
+| **Payment**        | Record and manage payments       | Visible |
+| **Department Hdr** | Department-level details         | Visible |
+| **Contra**         | Link contra documents            | Visible |
+| **Doc Link**       | Link related documents           | Visible |
+| **Attachments**    | Attach files                     | Visible |
+| **Export**         | Export to printable format (PDF) | Visible |
 
 ### Consignment Item Setup
 
@@ -414,11 +428,11 @@ The following tabs can be shown or hidden per tenant via **Settings > Applicatio
 
 Before creating consignment GINs, ensure items are properly configured:
 
-| Setting | Purpose | Example |
-|---------|---------|---------|
-| **Consignment Item** | Flag item as consignment | Checked |
-| **Consignment Supplier** | Link to supplier who owns stock | Supplier ABC |
-| **Consignment Location** | Default storage location | Consignment Area |
+| Setting                  | Purpose                         | Example          |
+| ------------------------ | ------------------------------- | ---------------- |
+| **Consignment Item**     | Flag item as consignment        | Checked          |
+| **Consignment Supplier** | Link to supplier who owns stock | Supplier ABC     |
+| **Consignment Location** | Default storage location        | Consignment Area |
 
 ### Warehouse/Location Setup
 
@@ -432,12 +446,12 @@ Before creating consignment GINs, ensure items are properly configured:
 
 **Navigation**: `Settings > [Permission Set / User / Team / Role Permission Listing]`
 
-| Permission | Description | Typical Role |
-|------------|-------------|--------------|
-| **Create Consignment GIN** | Create new GIN records | Purchaser, Sales Rep |
-| **View Consignment GIN** | Access listing and details | Purchaser, Warehouse |
-| **Edit Consignment GIN** | Modify draft GINs | Purchaser, Manager |
-| **Delete Consignment GIN** | Delete draft GINs | Manager (if applicable) |
+| Permission                 | Description                | Typical Role            |
+| -------------------------- | -------------------------- | ----------------------- |
+| **Create Consignment GIN** | Create new GIN records     | Purchaser, Sales Rep    |
+| **View Consignment GIN**   | Access listing and details | Purchaser, Warehouse    |
+| **Edit Consignment GIN**   | Modify draft GINs          | Purchaser, Manager      |
+| **Delete Consignment GIN** | Delete draft GINs          | Manager (if applicable) |
 
 ### Integration with Consignment Purchasing
 
