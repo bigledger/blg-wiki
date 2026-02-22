@@ -91,7 +91,7 @@ Traditional goods issue management relies on paper forms and disconnected system
 
 {{< cards >}}
   {{< card title="GIN Document Management" subtitle="Create and manage purchase GINs with ease" link="#for-warehouse-staff-create-your-first-gin" >}}
-  {{< card title="Line Item Tracking" subtitle="Detailed tracking with serial/batch/bin numbers" link="#line-items-tracking-what-was-issued" >}}
+  {{< card title="Line Item Tracking" subtitle="Detailed tracking with serial/batch/bin numbers" link="#line-items---tracking-what-was-issued" >}}
   {{< card title="Supplier Management" subtitle="Complete supplier account integration" link="#supplier--account-management" >}}
   {{< card title="Inventory Integration" subtitle="Real-time stock adjustments" link="#inventory-integration" >}}
   {{< card title="Payment Processing" subtitle="Automated payment and contra handling" link="#payment--contra-management" >}}
@@ -104,7 +104,7 @@ Traditional goods issue management relies on paper forms and disconnected system
 
 ---
 
-## 📋 Admin Setup Checklist
+## Admin Setup Checklist
 
 **Setting up the GIN system for the first time?** Complete these steps in order:
 
@@ -118,7 +118,7 @@ Traditional goods issue management relies on paper forms and disconnected system
 - [ ] **Step 8**: Configure Webhooks (if integrating with external systems) → [Guide](#webhook-configuration-advanced)
 - [ ] **Step 9**: Test with Dummy GIN → [Guide](#for-warehouse-staff-create-your-first-gin)
 - [ ] **Step 10**: Train warehouse and purchasing staff
-- [ ] **Step 11**: Go Live! 🎉
+- [ ] **Step 11**: Go Live
 
 **Estimated time**: 2-3 hours for basic setup, 5-6 hours for advanced configuration
 
@@ -167,11 +167,10 @@ Before configuring the GIN system, make these key business decisions. These choi
 **Why This Matters:** Bin management reduces picking errors and speeds fulfillment, but requires upfront setup and ongoing maintenance.
 
 **When to Use Bin Management:**
-✓ Warehouse > 5,000 sq ft  
-✓ Multiple aisles/zones  
-✓ High SKU count (> 500 items)  
-✓ Multiple warehouse staff (prevent picking conflicts)  
-✓ FIFO/FEFO inventory rotation needed  
+- Warehouse > 5,000 sq ft  
+- Multiple aisles/zones  
+- Multiple warehouse staff (prevent picking conflicts)  
+- FIFO/FEFO inventory rotation needed  
 
 ---
 
@@ -185,16 +184,16 @@ Before configuring the GIN system, make these key business decisions. These choi
 ```
 Warehouse Staff Creates GIN → Submits → Inventory Adjusted Immediately
 ```
-✓ Fast processing  
-✓ Less overhead  
-✗ Risk of errors  
+- Fast processing  
+- Less overhead  
+- Risk of errors  
 
 **Simple Approval:**
 ```
 Staff Creates GIN → Warehouse Supervisor Approves → Inventory Adjusted
 ```
-✓ Basic oversight  
-✓ Catch obvious errors  
+- Basic oversight  
+- Catch obvious errors  
 
 **Value-Based Approval:**
 ```
@@ -202,8 +201,8 @@ Staff Creates GIN → Warehouse Supervisor Approves → Inventory Adjusted
 RM 5,000-20,000: Warehouse Supervisor
 > RM 20,000: Operations Manager + Finance
 ```
-✓ Focus oversight on high-value transactions  
-✓ Balance speed with control  
+- Focus oversight on high-value transactions  
+- Balance speed with control  
 
 **Why This Matters:** More approvals = better control but slower processing. Returns to suppliers may be time-sensitive.
 
@@ -320,8 +319,6 @@ Get up and running quickly with these essential workflows.
 - Set default branch
 - Set default currency
 - Configure auto-numbering
-
-{{< figure src="/images/internal-purchase-gin-applet/default-settings.png" alt="Default Settings configuration screen" caption="Default Settings: Configure system-wide defaults" >}}
 
 **Step 2: Configure Field Visibility** (`Settings > Field Settings`)
 - Enable/disable fields based on business needs
@@ -623,12 +620,12 @@ This is typically used by larger organizations with complex cost allocation need
 
 **Before Submitting - Checklist:**
 
-- ✓ All required fields filled (red indicators gone)
-- ✓ Supplier is correct
-- ✓ All line items added with correct quantities
-- ✓ Serial numbers added for serialized items
-- ✓ Batch numbers for batch-tracked items
-- ✓ No duplicate line items
+- All required fields filled (red indicators gone)
+- Supplier is correct
+- All line items added with correct quantities
+- Serial numbers added for serialized items
+- Batch numbers for batch-tracked items
+- No duplicate line items
 
 **Submission Options:**
 
@@ -748,12 +745,12 @@ Result:
 
 It depends on the status:
 
-**Draft GINs**: ✓ Fully editable
+**Draft GINs**: Fully editable
 - Open the GIN from listing
 - Makes changes as needed
 - Save or Submit
 
-**Submitted GINs**: ✗ Usually locked (check with your admin)
+**Submitted GINs**: Usually locked (check with your admin)
 - Some systems allow editing before posting
 - Some require reversal and recreation
 - Check your organization's policy
@@ -1182,11 +1179,11 @@ Physical warehouse storage locations. Examples:
 
 **Best Practices:**
 
-✓ **Always Attach Photos of Defects**: Visual proof for supplier claims  
-✓ **Scan Original Documents**: Delivery orders, return authorizations  
-✓ **Clear Filenames**: "RMA-12345-Product-Photos.pdf" not "IMG_001.jpg"  
-✓ **Compress Large Files**: Keep attachments under 10MB each  
-✓ **Attach Before Submission**: Easier than adding later
+- **Always Attach Photos of Defects**: Visual proof for supplier claims  
+- **Scan Original Documents**: Delivery orders, return authorizations  
+- **Clear Filenames**: "RMA-12345-Product-Photos.pdf" not "IMG_001.jpg"  
+- **Compress Large Files**: Keep attachments under 10MB each  
+- **Attach Before Submission**: Easier than adding later
 
 ---
 
@@ -1501,9 +1498,9 @@ Reference: Optional (nice to have)
 2. Choose permission type: Client-Side, User, Team, or Role
 3. Select user/team/role to configure
 4. Set permissions:
-   - ✓ Allow: Green checkmark
-   - ✗ Deny: Red X
-   - ○ Inherit: Use default
+   - Allow: Green checkmark
+   - Deny: Red X
+   - Inherit: Use default
 5. **Save** configuration
 6. Test with affected user accounts
 
@@ -1513,42 +1510,42 @@ Reference: Optional (nice to have)
 
 **Warehouse Clerk:**
 ```
-Create GIN: ✓ Yes
-Edit Own GIN: ✓ Yes
-Edit Others' GIN: ✗ No
-Delete GIN: ✗ No
-Submit GIN: ✓ Yes (drafts only)
-Print: ✓ Yes
+Create GIN: Yes
+Edit Own GIN: Yes
+Edit Others' GIN: No
+Delete GIN: No
+Submit GIN: Yes (drafts only)
+Print: Yes
 ```
 
 **Warehouse Supervisor:**
 ```
-Create GIN: ✓ Yes
-Edit Any GIN: ✓ Yes
-Delete GIN: ✓ Yes (drafts only)
-Submit GIN: ✓ Yes
-View All: ✓ Yes
-Configure Settings: ✓ Yes
+Create GIN: Yes
+Edit Any GIN: Yes
+Delete GIN: Yes (drafts only)
+Submit GIN: Yes
+View All: Yes
+Configure Settings: Yes
 ```
 
 **Purchasing Manager:**
 ```
-Create GIN: ✓ Yes
-Edit Any GIN: ✓ Yes
-Delete GIN: ✓ Yes
-Submit GIN: ✓ Yes
-View All: ✓ Yes
-Export/Report: ✓ Yes
-Configure Settings: ✓ Yes
+Create GIN: Yes
+Edit Any GIN: Yes
+Delete GIN: Yes
+Submit GIN: Yes
+View All: Yes
+Export/Report: Yes
+Configure Settings: Yes
 ```
 
 **Finance User:**
 ```
-Create GIN: ✗ No
-Edit GIN: ✗ No
-Delete GIN: ✗ No
-View All: ✓ Yes
-Export/Report: ✓ Yes
+Create GIN: No
+Edit GIN: No
+Delete GIN: No
+View All: Yes
+Export/Report: Yes
 ```
 
 ---
@@ -1637,7 +1634,7 @@ Webhooks allow the GIN system to automatically notify external systems when even
 
 1. Go to **Settings > Feature Visibility**
 2. See list of all toggleable features
-3. Enable (✓) or Disable (✗) each feature
+3. Enable or Disable each feature
 4. **Save** configuration
 5. Changes take effect for all users immediately
 
@@ -2050,74 +2047,74 @@ A: The Internal Purchase GIN is specifically for purchase-related dispatches (ty
 
 **For Warehouse Staff:**
 
-✓ **Always verify physical count** before creating GIN—once submitted, inventory adjusts immediately  
-✓ **Use clear descriptions** in line items—future you (or colleagues) will thank you  
-✓ **Photograph defective items** before dispatch—attach photos to GIN for documentation  
-✓ **Print packing lists** before picking—reduces errors and speeds up fulfillment  
-✓ **Add tracking IDs** after courier pickup—enables status tracking  
-✓ **Double-check serial numbers**—incorrect serial number = audit nightmare  
+- **Always verify physical count** before creating GIN—once submitted, inventory adjusts immediately  
+- **Use clear descriptions** in line items—future you (or colleagues) will thank you  
+- **Photograph defective items** before dispatch—attach photos to GIN for documentation  
+- **Print packing lists** before picking—reduces errors and speeds up fulfillment  
+- **Add tracking IDs** after courier pickup—enables status tracking  
+- **Double-check serial numbers**—incorrect serial number = audit nightmare  
 
 ---
 
 **For Purchasing Team:**
 
-✓ **Obtain supplier RA number** before creating GIN—many suppliers require authorization first  
-✓ **Use Reference field** consistently—link to PO numbers, RMA numbers, or support tickets  
-✓ **Create contra entries** when applicable—reduces manual reconciliation work  
-✓ **Review GIN patterns monthly**—identify problem suppliers or recurring defect issues  
-✓ **Maintain supplier address data**—keep Bill To and Ship To addresses updated in supplier master  
+- **Obtain supplier RA number** before creating GIN—many suppliers require authorization first  
+- **Use Reference field** consistently—link to PO numbers, RMA numbers, or support tickets  
+- **Create contra entries** when applicable—reduces manual reconciliation work  
+- **Review GIN patterns monthly**—identify problem suppliers or recurring defect issues  
+- **Maintain supplier address data**—keep Bill To and Ship To addresses updated in supplier master  
 
 ---
 
 **For Inventory Managers:**
 
-✓ **Regular reconciliation**—match GIN transactions to physical inventory counts  
-✓ **Batch/serial audits**—spot-check that tracked items match system records  
-✓ **Monitor bin accuracy**—ensure warehouse staff picking from correct locations  
-✓ **Track disposition rates**—analyze return volumes by product, supplier, reason  
-✓ **Set up inventory alerts**—get notified when stock levels drop unexpectedly  
+- **Regular reconciliation**—match GIN transactions to physical inventory counts  
+- **Batch/serial audits**—spot-check that tracked items match system records  
+- **Monitor bin accuracy**—ensure warehouse staff picking from correct locations  
+- **Track disposition rates**—analyze return volumes by product, supplier, reason  
+- **Set up inventory alerts**—get notified when stock levels drop unexpectedly  
 
 ---
 
 **For Finance Teams:**
 
-✓ **Reconcile GINs to supplier credits**—ensure credits match GIN values  
-✓ **Review contra entries**—verify offsets are correct and properly applied  
-✓ **Month-end accruals**—account for GINs awaiting supplier credits  
-✓ **Audit trail verification**—ensure complete documentation for auditors  
-✓ **Cost allocation review**—verify department/project codes are correct  
+- **Reconcile GINs to supplier credits**—ensure credits match GIN values  
+- **Review contra entries**—verify offsets are correct and properly applied  
+- **Month-end accruals**—account for GINs awaiting supplier credits  
+- **Audit trail verification**—ensure complete documentation for auditors  
+- **Cost allocation review**—verify department/project codes are correct  
 
 ---
 
 **For System Administrators:**
 
-✓ **Start with minimal features**—enable only what users need, add complexity gradually  
-✓ **Configure clear print formats**—invest time in templates, saves hours later  
-✓ **Set up sensible defaults**—reduce data entry time and errors  
-✓ **Regular permission audits**—ensure users have appropriate access, no more  
-✓ **Test integrations thoroughly**—webhooks, item masters, inventory sync—test before go-live  
-✓ **User training documentation**—create quick reference guides customized to your setup  
-✓ **Backup configurations**—document all settings changes, enable rollback if needed  
+- **Start with minimal features**—enable only what users need, add complexity gradually  
+- **Configure clear print formats**—invest time in templates, saves hours later  
+- **Set up sensible defaults**—reduce data entry time and errors  
+- **Regular permission audits**—ensure users have appropriate access, no more  
+- **Test integrations thoroughly**—webhooks, item masters, inventory sync—test before go-live  
+- **User training documentation**—create quick reference guides customized to your setup  
+- **Backup configurations**—document all settings changes, enable rollback if needed  
 
 ---
 
 **Security & Compliance:**
 
-✓ **Segregation of duties**—warehouse staff create, supervisors approve (if workflow enabled)  
-✓ **Regular access reviews**—remove permissions for terminated/transferred employees  
-✓ **Audit trail preservation**—never delete submitted GINs, use reversals instead  
-✓ **Document retention**—follow your industry's compliance requirements (typically 7 years)  
-✓ **Sensitive data handling**—protect supplier financial information, customer warranty data  
+- **Segregation of duties**—warehouse staff create, supervisors approve (if workflow enabled)  
+- **Regular access reviews**—remove permissions for terminated/transferred employees  
+- **Audit trail preservation**—never delete submitted GINs, use reversals instead  
+- **Document retention**—follow your industry's compliance requirements (typically 7 years)  
+- **Sensitive data handling**—protect supplier financial information, customer warranty data  
 
 ---
 
 **Continuous Improvement:**
 
-✓ **Collect user feedback**—monthly survey or feedback session with warehouse staff  
-✓ **Monitor key metrics**—average time to create GIN, error rates, inventory accuracy  
-✓ **Quarterly process review**—what's working? what's frustrating users?  
-✓ **Benchmark against standards**—compare to industry best practices for your sector  
-✓ **Iterate on workflows**—small improvements compound over time  
+- **Collect user feedback**—monthly survey or feedback session with warehouse staff  
+- **Monitor key metrics**—average time to create GIN, error rates, inventory accuracy  
+- **Quarterly process review**—what's working? what's frustrating users?  
+- **Benchmark against standards**—compare to industry best practices for your sector  
+- **Iterate on workflows**—small improvements compound over time  
 
 ---
 
