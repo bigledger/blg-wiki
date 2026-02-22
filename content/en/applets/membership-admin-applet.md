@@ -24,51 +24,6 @@ The **Membership Admin Applet** is the central control hub for your organization
 
 ---
 
-## Quick Start in 5 Minutes
-
-**New to this system?** Here's the absolute minimum to get started:
-
-### For Admins (First-Time Setup)
-1. **Create one point type**: Go to `Membership Points Currency Listing` → Click `Create` → Name it "Loyalty Points" → Set expiry to "Calendar Year" → Save
-2. **Set conversion rate**: Go to `Points to Money Conversion` → Create rule "100 points = 1.00 MYR" → Save
-3. **Configure basic fields**: Go to `Settings > Field Configuration` → Make Email and Phone mandatory → Save
-4. **Done!** You can now register members and they can earn/redeem points.
-
-### For Support Staff (Daily Use)
-1. **Find member**: Go to `Member Listing` → Search by name/phone/email
-2. **Adjust points if needed**: Click member → Click `Add Point Adjustment` → Enter amount and reason → Submit
-3. **Check history**: Scroll to Transaction History section in member profile
-
-### For Marketing Teams
-1. **Create tier**: Go to `Member Privilege` → Create "VIP" tier → Set benefits → Save
-2. **Create label**: Go to `Member Label` → Create "Frequent Shopper" tag → Save
-3. **Find members**: Go to `Member Listing` → Filter by tier/label → Export for campaigns
-
-{{< callout type="tip" >}}
-**For detailed explanations**: Read the full sections below. This quick start just gets you operational fast.
-{{< /callout >}}
-
----
-
-## Admin Setup Checklist
-
-**Setting up a new loyalty program?** Complete these steps in order:
-
-- [ ] **Step 1**: Review [Before You Begin](#before-you-begin) business decisions (30 mins)
-- [ ] **Step 2**: Create point currencies → [Guide](#for-admins-initial-system-setup)
-- [ ] **Step 3**: Set up conversion rates → [Guide](#for-admins-initial-system-setup)
-- [ ] **Step 4**: Configure registration fields → [Guide](#for-admins-initial-system-setup)
-- [ ] **Step 5**: Create member tiers (optional) → [Guide](#for-admins-initial-system-setup)
-- [ ] **Step 6**: Create member labels (optional) → [Guide](#for-admins-initial-system-setup)
-- [ ] **Step 7**: Set up permissions → [Guide](#permission-management-controlling-who-can-do-what)
-- [ ] **Step 8**: Test with fake member account → [Guide](#for-admins-initial-system-setup)
-- [ ] **Step 9**: Train staff on daily operations
-- [ ] **Step 10**: Launch to real customers!
-
-**Estimated time**: 2-4 hours for basic setup
-
----
-
 ## Before You Begin
 
 Before diving into the system, take time to make these key business decisions. These choices will shape how your entire loyalty program works:
@@ -143,7 +98,7 @@ Before diving into the system, take time to make these key business decisions. T
 **Pro Tip:** Start simple! Many businesses launch with just **one point type**, **two tiers** (Regular and VIP), and **calendar-year expiry**. You can always add complexity later once you understand how members behave.
 {{< /callout >}}
 
-## Key Features Overview
+## Who Benefits and Problems Solved
 
 ### Who Benefits from This Applet?
 
@@ -194,20 +149,106 @@ Managing a membership program often involves scattered spreadsheets, disconnecte
 {{< cards >}}
   {{< card title="Member Management" subtitle="Create, edit, and manage member profiles" link="#member-management" >}}
 
-  {{< card title="Points & Currencies" subtitle="Configure point types and conversion rates" link="#points--currency-management" >}}
+   {{< card title="Points & Currencies" subtitle="Configure point types and conversion rates" link="#points-currency-management" >}}
 
-  {{< card title="Privileges & Labels" subtitle="Tiering and segmentation tools" link="#privileges--labels" >}}
+   {{< card title="Member Profile 360" subtitle="View complete profile, wallet, and transaction history" link="#member-profile-360" >}}
 
   {{< card title="Bulk Operations" subtitle="Upload master data and transactions" link="#bulk-operations" >}}
 
-  {{< card title="Configuration" subtitle="System settings and permissions" link="#configuration--settings" >}}
+   {{< card title="Point Adjustments" subtitle="Add or deduct points with full audit trail" link="#manual-adjustments" >}}
 
-  {{< card title="Reporting" subtitle="Membership insights and analytics" link="#reporting--data-export" >}}
+   {{< card title="Reporting" subtitle="Membership insights and analytics" link="#reporting-and-data-export" >}}
 {{< /cards >}}
 
 {{< callout type="tip" >}}
 **Before diving in:** If you're setting up a new loyalty program, review the [Before You Begin](#before-you-begin) section to make key business decisions first. It will save you time and prevent costly redesigns later.
 {{< /callout >}}
+
+---
+
+## Quick Start in 5 Minutes
+
+**New to this system?** Here's the absolute minimum to get started:
+
+{{< figure src="/images/membership-admin-applet/sidebar-overview.png" alt="Membership Admin Applet left sidebar showing all menu items: Member Listing, Member Class, Member Label, Member Label List, PTS CCY Module, PTS to CCY Config, Membership Report, Upload Membership, Upload Member Point Transaction, and Settings" caption="The Membership Admin Applet sidebar — your starting point for all navigation." >}}
+
+### For Admins (First-Time Setup)
+1. **Create one point type**: Click **`PTS CCY Module`** in the left sidebar → Click the **Create** button (add icon, top-left) → Fill in the form:
+   - **Membership Point Currency Code**: Short code in ALL-CAPS (e.g., `LPT`)
+   - **Membership Point Currency Name**: Display name (e.g., `Loyalty Points`)
+   - **Conversion Rate**: Enter `1`
+   → Click **CREATE**
+
+{{< figure src="/images/membership-admin-applet/PTS-CCY-Module-Create-Form.png" alt="Create Membership Points Currency form showing fields: Membership Point Currency Code (e.g. RWD), Membership Point Currency Name (e.g. Reward Points), Conversion Rate, and Point to point cross-over conversion, with CREATE button" caption="PTS CCY Module — Create form. Fill in the Code, Name and Conversion Rate, then click CREATE." >}}
+
+2. **Set the points-to-money rate**: Click **`PTS to CCY Config`** in the left sidebar → Click **Create** → Fill in the form:
+   - **Point Currency**: Select the currency you just created (e.g., `LPT - Loyalty Points`)
+   - **Conversion Rate**: How many points = 1 unit of money (e.g., `100` means 100 points = 1 MYR)
+   - **Money Currency**: Select `MYR` (or your local currency)
+   - **Status**: Select `ACTIVE`
+   → Click **SUBMIT**
+
+{{< figure src="/images/membership-admin-applet/PTS-to-CCY-Config-Create-Form.png" alt="Add New Points to Money Currency Conversion form showing: 1X Point Currency (RWD - Reward Points) = Conversion Rate (100) Money Currency (MYR), with Status set to ACTIVE and SUBMIT button" caption="PTS to CCY Config — Set the exchange rate between your points and real money (e.g. 100 Reward Points = 1 MYR). Click SUBMIT." >}}
+
+3. **Review field settings**: Click the **Settings** icon in the sidebar → Select **`Field Settings`** from the sub-menu → Review the **Details** tab with toggle switches for card number configuration → Click **SAVE**
+
+{{< figure src="/images/membership-admin-applet/settings-field-settings.png" alt="Field Settings page showing tab navigation (Details, Member Photos, Labels, Point Transactions, Points Expiry, Member Suspension, Member Listing) and toggle switches under the Details tab for card number configuration" caption="Settings > Field Settings — use the tabs and toggle switches to configure field behaviour. Click SAVE when done." >}}
+
+4. **Done!** You can now register members and they can earn/redeem points.
+
+### For Support Staff (Daily Use)
+1. **Find a member**: Click **`Member Listing`** in the left sidebar → Use the search bar at the top to search by name, phone, or email → Click on the member's row to open their profile
+
+{{< figure src="/images/membership-admin-applet/Member-Listing-Page.png" alt="Member Listing page showing the search bar at the top, the Create (add) button on the left, total member count, and an ag-grid table listing member records" caption="Member Listing — use the search bar to find a member by name, phone, or email. Click any row to open their full profile." >}}
+
+2. **Adjust points (if needed)**: From inside the member's profile, click the **Add Point Adjustment** button → Fill in the form:
+   - **Transaction Date**: Select today's date using the date picker
+   - **Branch**: Select your branch from the dropdown
+   - **Point Currency**: Select the point type (e.g., `LPT - Loyalty Points`)
+   - **Item Code & Name**: Click the arrow icon to select an item/reason, or type it directly
+   - **Point Adjustment**: Enter positive to add (e.g., `500`) or negative to deduct (e.g., `-500`)
+   - **Remarks / Reason**: Type a clear explanation (e.g., `Goodwill for delayed order #ORD-123`)
+   → Click **Save**
+
+{{< figure src="/images/membership-admin-applet/add-point-adjustment-form-1.png" alt="Add Point Adjustment form showing fields: Transaction Date, Branch, Point Currency (RWD - Reward Points), Reference Number, Item Code and Name, Point Adjustment (500), Valid Date From, Valid Date To, Remarks/Reason (Goodwill compensation for delayed order), Display Type, and Save button" caption="Add Point Adjustment — fill in all fields and always include a clear Remarks / Reason. Click Save to apply the adjustment." >}}
+
+3. **Check transaction history**: Scroll down inside the member's profile to find the **Transaction History** section
+
+{{< figure src="/images/membership-admin-applet/Member-Profile-Transaction%20History.png" alt="Member Profile page showing the Transaction History tab with a table of point movements, including Date, Transaction Type, Point Currency, Points (Earned/Redeemed), Remark, and Source" caption="Transaction History — A full audit trail of every point earned or redeemed by the member." >}}
+
+### For Marketing Teams
+1. **Create a tier**: Click **`Member Class`** in the left sidebar → Click the **Create** button → Enter the class name (e.g., `Gold`) and configure benefits → Click **SAVE**
+ 
+{{< figure src="/images/membership-admin-applet/member-class-create-form.png" alt="Membership Class Create form showing fields for Membership Class Code (GOLD) and Membership Class Name (Gold Tier) with a CREATE button at the top right" caption="Membership Class Create — define the code and name for your membership levels (e.g. Bronze, Silver, Gold)." >}}
+2. **Create a label**: Click **`Member Label`** in the left sidebar → Click **Create** → Enter a label name (e.g., `Frequent Shopper`) → Click **SAVE**
+
+{{< figure src="/images/membership-admin-applet/Member-Label-Create-Form.png" alt="Membership Label Create form showing fields for Label List, Label Name (Frequent Shopper), and Label Code (FREQ-SHOP) with a CREATE button at the top right" caption="Membership Label Create — use these for flexible marketing tags like 'Vegetarian' or 'Frequent Shopper'." >}}
+3. **Member Export for Campaigns**: Navigate to **`Membership Report`** in the sidebar → Select your filters (e.g. Join Date or DOB) → Click **Generate CSV** → Download the completed report from the list below.
+
+{{< figure src="/images/membership-admin-applet/Membership-Report-Generate-CSV.png" alt="Membership Report page showing the date range filters (Join Date From/To) and the Generate CSV button at the top" caption="Membership Report — Use the filters (Join Date, End Date, DOB) to segment your audience, then click Generate CSV. Your report will appear in the list below for download." >}}
+
+{{< callout type="tip" >}}
+**For detailed explanations**: Read the full sections below. This quick start just gets you operational fast.
+{{< /callout >}}
+
+---
+
+## Admin Setup Checklist
+
+**Setting up a new loyalty program?** Complete these steps in order:
+
+- [ ] **Step 1**: Review [Before You Begin](#before-you-begin) business decisions (30 mins)
+- [ ] **Step 2**: Create point currencies → [Guide](#points-currency-management)
+- [ ] **Step 3**: Set up conversion rates → [Guide](#points-currency-management)
+- [ ] **Step 4**: Configure registration fields → [Guide](#field-configuration-customizing-registration-forms)
+- [ ] **Step 5**: Create member tiers (optional) → [Guide](#member-class-vs-member-label-when-to-use-which)
+- [ ] **Step 6**: Create member labels (optional) → [Guide](#member-class-vs-member-label-when-to-use-which)
+- [ ] **Step 7**: Set up permissions → [Guide](#permission-management-controlling-who-can-do-what)
+- [ ] **Step 8**: Test with fake member account → [Guide](#quick-start-in-5-minutes)
+- [ ] **Step 9**: Train staff on daily operations
+- [ ] **Step 10**: Launch to real customers!
+
+**Estimated time**: 2-4 hours for basic setup
 
 ---
 
@@ -338,257 +379,9 @@ The system allows for complex point interactions:
 **Behind-the-Scenes Explanation:** When a member makes a purchase, the system checks their **Class** to determine earning rate (e.g., Gold = 2x points), updates their **Points Wallet**, checks if they have enough balance for redemption, and applies any **Label**-based bonus offers.
 {{< /callout >}}
 
----
 
-## Quick Start Guide
 
-Get your membership program running with these role-specific workflows. Each step explains **why** you're doing it before showing you **how**.
-
-### For Admins: Initial System Setup
-
-**Goal:** Build the foundation of your loyalty program before members can join.
-
----
-
-**Step 1: Define Point Currencies** (`Membership Points Currency Listing`)
-
-**Why:** Before members can earn or spend points, you need to tell the system what types of points exist and how they behave. This is like setting up bank accounts before anyone can deposit money.
-
-**How:**
-1.  Navigate to **Membership Points Currency Listing** from the sidebar.
-2.  Click **Create** (the "+" button).
-3.  Fill in the details:
-    -   **Currency Name**: What you'll call it (e.g., "Loyalty Points", "Reward Coins")
-    -   **Expiry Policy**: Choose when points expire (e.g., "Never", "End of calendar year", "12 months from earning")
-    -   **Transferability**: Can members gift points to others? (Usually "No" to prevent abuse)
-4.  Click **Save**.
-
-**What happens next:** This currency becomes available for members to earn and spend. You'll use it in the next steps.
-
----
-
-**Step 2: Set Up Conversions** (`Points to Money` / `Points to Points`)
-
-**Why:** You need to tell the system what points are worth. Without this, members can't redeem their points for anything. Think of it as setting the exchange rate.
-
-**How (Points to Money):**
-1.  Navigate to **Membership Points to Money Currency Conversion**.
-2.  Click **Create**.
-3.  Create a rule:
-    -   **From Currency**: Select "Loyalty Points" (the currency you created)
-    -   **Conversion Rate**: Enter the value (e.g., "100" points equals "1.00" MYR)
-    -   **Date Range**: Set when this rate is valid (you can change rates for promotions)
-4.  Click **Save**.
-
-**What happens next:** When members shop, they can now redeem 100 points to get $1.00 off their purchase.
-
-**Optional — Points to Points Conversion:**
-- Use this if you have partner programs (e.g., convert your store points to airline miles)
-- Same process, but you're converting one point type to another instead of money
-
----
-
-**Step 3: Configure Fields** (`Settings > Field Settings`)
-
-**Why:** Every business collects different information about members. This step lets you control which fields appear on registration forms and which are mandatory.
-
-**How:**
-1.  Go to **Settings** > **Field Configuration**.
-2.  Review the list of available fields (IC Number, Date of Birth, Gender, Email, etc.).
-3.  For each field, decide:
-    -   **Show or Hide**: Should this appear on forms?
-    -   **Optional or Mandatory**: Can members skip it or must they fill it?
-    -   **Visible to Staff**: Should customer service see this?
-4.  Click **Save Changes**.
-
-**Example Decision:**
-- Email → **Mandatory** (you need it for sending receipts)
-- Date of Birth → **Optional** (nice for birthday rewards, but not critical)
-- IC Number → **Hidden** (if you don't need it for compliance)
-
-**What happens next:** Registration forms will only show the fields you enabled, making sign-up faster and cleaner.
-
----
-
-**Step 4 (Optional): Create Member Classes (Tiers)** (`Member Privilege`)
-
-**Why:** If you want a tiered program (Bronze/Silver/Gold), you need to set up those tiers. If everyone gets the same benefits, you can skip this step.
-
-**How:**
-1.  Go to **Member Privilege** (this is where Member Classes are managed).
-2.  Click **Create New Class**.
-3.  Fill in:
-    -   **Class Name**: "Bronze", "Silver", "Gold", "Platinum", etc.
-    -   **Entry Criteria**: How members qualify (e.g., "Spend $1,000 in a year")
-    -   **Benefits**: What this tier gets (e.g., "10% discount", "Earn 2x points")
-4.  Repeat for each tier you want.
-5.  Click **Save**.
-
-**What happens next:** As members meet the spending criteria, the system can auto-upgrade them to the next tier (or you can manually assign tiers).
-
----
-
-**Step 5 (Optional): Create Member Labels** (`Member Label`)
-
-**Why:** Labels help you segment members for marketing. For example, tag all vegetarians so you can send them veggie menu promotions.
-
-**How:**
-1.  Go to **Member Label**.
-2.  Click **Create Label**.
-3.  Enter:
-    -   **Label Name**: "Vegetarian", "Frequent Shopper", "Birthday This Month", etc.
-    -   **Description**: Internal note about what this label means
-4.  Click **Save**.
-5.  Repeat for all your segmentation categories.
-
-**What happens next:** Staff can apply these labels to members manually, or you can bulk-assign them based on data imports.
-
----
-
-**Step 6: Test the System**
-
-**Why:** Before launching to real customers, test the full journey to catch any issues.
-
-**How:**
-1.  Create a test member account (use a fake email like `test@yourcompany.com`).
-2.  Manually add points to test earning.
-3.  Try redeeming those points to test conversion rates.
-4.  Verify email notifications work (welcome email, point balance updates).
-5.  Test tier upgrades if you're using Member Classes.
-
-**What happens next:** Once everything works smoothly, you're ready to launch!
-
----
-
-### For Marketing: Creating Tiers & Segments
-
-**Goal:** Set up a "Gold Tier" with specific benefits and create labels for targeted campaigns.
-
----
-
-**Step 1: Create a Member Class (Tier)**
-
-**Why:** You want to reward high-value customers with Gold status and special perks.
-
-**How:**
-1.  Go to **Member Privilege** (where Member Classes are managed).
-2.  Click **Create New Class**.
-3.  Name it **"Gold Tier"**.
-4.  Set entry requirement: "Annual spending > $5,000" (or whatever threshold makes sense).
-5.  Define benefits: "10% discount on all purchases" + "Earn double points".
-6.  Click **Save**.
-
-**What happens next:** When a member's annual spending hits $5,000, they're automatically upgraded to Gold (or you can manually assign it).
-
----
-
-**Step 2: Create Labels for Campaigns**
-
-**Why:** You want to send personalized offers (e.g., golf club promotions to golfers, pet food deals to pet owners).
-
-**How:**
-1.  Go to **Member Label**.
-2.  Create labels for your campaigns:
-    -   **"VIP Customer"** — For white-glove treatment
-    -   **"Golfer"** — For targeting with golf-related offers
-    -   **"Pet Owner"** — For pet product promotions
-3.  Click **Save** for each.
-
-**What happens next:** You can now filter members by these labels when sending email campaigns or push notifications.
-
----
-
-**Step 3: Assign Labels to Members**
-
-**Why:** Labels aren't useful until members have them. You need to tag members based on their preferences or behavior.
-
-**How (Manual Assignment):**
-1.  Go to **Member Listing**.
-2.  Search for the member (by name, phone, or email).
-3.  Click **Edit** on their profile.
-4.  Check the boxes for relevant labels (e.g., "Golfer", "VIP Customer").
-5.  Click **Save**.
-
-**How (Bulk Assignment):**
-1.  Go to **Member Listing**.
-2.  Use filters to narrow down members (e.g., "Show all Gold tier members").
-3.  Select multiple members (use checkboxes).
-4.  Click **Bulk Actions** > **Assign Label**.
-5.  Choose the label (e.g., "VIP Customer").
-
-**What happens next:** These members now receive targeted campaigns when you filter by label.
-
----
-
-### For Support: Managing a Member
-
-**Goal:** Help a customer who needs a point adjustment or has a question about their account.
-
----
-
-**Step 1: Find the Member**
-
-**Why:** You can't help a member until you pull up their account.
-
-**How:**
-1.  Go to **Member Listing**.
-2.  Use the search bar to find them:
-    -   Enter their name, phone number, or email
-    -   Press Enter or click Search
-3.  Click the **Eye Icon** next to their name to view their full profile.
-
-**What you'll see:** Their current point balance, tier, transaction history, and labels.
-
----
-
-**Step 2: Adjust Points (If Needed)**
-
-**Why:** Sometimes you need to manually add or remove points (e.g., compensation for a service issue, fixing an error).
-
-**How:**
-1.  From the member's profile, click **Add Point Adjustment**.
-2.  Fill in the form:
-    -   **Currency**: Select "Loyalty Points" (or whichever currency)
-    -   **Amount**: Enter a positive number to add points (e.g., `500`) or negative to deduct (e.g., `-500`)
-    -   **Reason**: Type a clear explanation (e.g., "Goodwill compensation for delayed delivery" or "Correcting duplicate earning")
-3.  Click **Submit**.
-
-**What happens next:** The member's balance updates immediately, and they'll see the change in their app/account.
-
-{{< callout type="warning" >}}
-**Important:** Always enter a detailed reason! This creates an audit trail. If someone asks "Why did this member get 500 extra points?", your reason will be recorded.
-{{< /callout >}}
-
----
-
-**Step 3: Check Transaction History**
-
-**Why:** Members sometimes ask "Where did my points go?" You need to see their full history to answer.
-
-**How:**
-1.  From the member's profile, scroll to **Transaction History**.
-2.  Review the list:
-    -   Each row shows: Date, Type (Earned/Redeemed/Adjusted), Amount, Balance After
-3.  Use filters to narrow down (e.g., "Show only redemptions in December").
-
-**What you'll see:** A complete audit trail of every point movement.
-
----
-
-**Step 4: Update Member Info (If Needed)**
-
-**Why:** Members change phone numbers, emails, or addresses. You need to keep their profile current.
-
-**How:**
-1.  From the member's profile, click **Edit**.
-2.  Update any fields (email, phone, address, etc.).
-3.  Click **Save**.
-
-**What happens next:** Future communications go to the updated contact info.
-
----
-
-## 📄 Quick Reference Cards
+## Quick Reference Cards
 
 ### Point Adjustment Quick Reference
 
@@ -794,7 +587,7 @@ Every adjustment creates a permanent record showing:
 
 ---
 
-## Points & Currency Management
+## Points Currency Management
 
 **The engine that powers how members earn and spend rewards.**
 
@@ -804,7 +597,7 @@ Every adjustment creates a permanent record showing:
 - Set **100 points = $1** conversion rate (easy math)
 - Choose **calendar year expiry** (clean accounting)
 
-[Skip to Configuration](#configuration--settings) if you just need basic setup.
+[Skip to Configuration](#configuration-settings) if you just need basic setup.
 {{< /callout >}}
 
 ### Understanding Point Currencies (Multiple "Wallets")
@@ -1057,7 +850,7 @@ When creating a Points Currency, here's what each setting means:
 |---------|------------------|---------|
 | **Currency Name** | Display name shown to members | "Loyalty Points", "Reward Coins" |
 | **Currency Code** | Internal system identifier (like a nickname for the database) | "LP", "RC" |
-| **Symbol** | Icon shown next to balance | "⭐" or "📍" or leave blank for just numbers |
+| **Symbol** | Icon shown next to balance | Leave blank for just numbers or use simple text symbols |
 | **Decimals** | Can members have fractional points? | 0 decimals = whole numbers only (1, 2, 3). 2 decimals = allows cents (1.25, 3.50) |
 | **Expiry Policy** | When points expire (see Expiry Management above) | "12 months from earning" |
 | **Transferability** | Can members gift points to others? | Usually "Disabled" to prevent fraud |
@@ -1602,6 +1395,8 @@ Member automatically gets VIP newsletters
 
 ---
  *(See [Member Class vs Label](#member-class-vs-member-label-when-to-use-which) for full explanation)*
+
+### Reporting and Data Export
 
 **Member List Export:**
 - Go to **Member Listing**
