@@ -14,6 +14,8 @@ weight: 61
 
 The **Internal Purchase GRN Supplier Access Applet** gives suppliers a dedicated portal to view and access **Internal Purchase Goods Received Notes (GRNs)** issued by the buying organization. Suppliers can see which GRNs reference them, inspect line-level details, view attachments and payments, and drill into linked issues—all in read-only mode tailored for vendor users.
 
+![Empowering Suppliers: The Internal Purchase GRN Portal](/images/internal-purchase-grn-supplier-access-applet/internal-purchase-grn-supplier-access-applet-overview.png)
+
 {{< callout type="info" >}}
 **Core Concept**: The applet links **who** (Supplier) to **what** (GRN documents and line items) and **how** they access it (listing, view, line items, settings, and personalization).
 {{< /callout >}}
