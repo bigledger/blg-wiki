@@ -83,6 +83,20 @@ This comprehensive catalog lists all applets available in the BigLedger ecosyste
 - Automated tax calculations
 - Tax reporting and e-filing integration
 
+### 9a. [Tax Config Applet](/applets/tax-config-applet/)
+**Centralized tax management and system-wide configuration**
+- Advanced tax rule definitions and GL mapping
+- Effective date management for tax rate changes
+- Multi-authority and multi-jurisdiction configuration
+- Integration with external compliance engines
+
+### 9b. [SST Applet](/applets/sst-applet/)
+**Malaysian Sales and Service Tax reporting and compliance**
+- Automated SST-02 form generation
+- Bi-monthly taxable period management
+- Transaction-level tax audit trails
+- Exemption certificate tracking and management
+
 ### 10. [Cashbook Applet](/applets/cashbook-applet/)
 **Cash and bank account management**
 - Multiple cash and bank account setup
@@ -294,6 +308,7 @@ All 13 Core Module applets (listed above) are included in CP-Commerce Module.
 - **[Stock Take Applet](/applets/stock-take-applet/)** - Physical inventory counting and reconciliation
 - **[Internal Stock Adjustment Applet](/applets/internal-stock-adjustment-applet/)** - Inventory adjustments and corrections
 - **[Internal Delivery Order Applet](/applets/internal-delivery-order-applet/)** - Internal transfers and deliveries
+- **[Internal Consignment GIN Applet](/applets/internal-consignment-gin-applet/)** - Consignment Goods Issue Notes and line item tracking for sales
 
 ### Team and Organization Management
 - **[Team Maintenance Applet](/applets/team-maintenance-applet/)** - Team structure and management

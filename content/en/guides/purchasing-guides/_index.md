@@ -5,54 +5,88 @@ weight: 35
 bookCollapseSection: false
 ---
 
-Master the art of procurement with flexible workflows designed for real-world business scenarios. Not every purchase follows the same path, and BigLedger supports multiple purchasing approaches to match your business needs.
+Master the art of procurement with flexible workflows designed for real-world business scenarios.
 
-## Understanding Purchasing Workflows
+---
 
-Different businesses require different purchasing approaches based on their industry, supplier relationships, and operational requirements. BigLedger provides flexibility to handle:
+## 🚀 Get Started / Setup
 
-- **Full procurement cycle** with purchase orders, goods receipt, and invoice matching
-- **Simplified workflows** that skip unnecessary steps
-- **Special scenarios** like consignment stock and prepayments
-- **Emergency purchases** requiring expedited processing
+New to purchasing in BigLedger? Start with the standard workflow to learn the full procurement cycle.
 
-{{< callout type="info" >}}
-**Workflow Flexibility**: Choose the workflow that matches your business process. You can use different workflows for different suppliers or purchase types within the same system.
+{{< cards >}}
+  {{< card link="/guides/purchasing-guides/standard-procurement-workflow" title="📋 Standard Procurement Workflow" subtitle="Complete PO → GRN → Invoice flow — start here to understand the full purchasing process" >}}
+  {{< card link="/guides/purchasing-guides/direct-grn-workflow" title="📦 Direct GRN Workflow" subtitle="Skip PO creation — ideal for walk-in purchases or urgent deliveries" >}}
+{{< /cards >}}
+
+**Before you begin, ensure:**
+- Supplier master data is configured in [Supplier Maintenance](/applets/supplier-maintenance-applet/)
+- Inventory items are set up in [Item Maintenance](/applets/inv-item-maintenance-applet/)
+- Chart of accounts includes purchase expense and tax accounts
+- Approval workflows and limits are defined
+
+{{< callout type="tip" >}}
+**First time?** Use the [Standard Procurement Workflow](/guides/purchasing-guides/standard-procurement-workflow) as your default. Only use simplified workflows when there's a clear business reason to skip steps.
 {{< /callout >}}
 
-## Available Purchasing Workflows
+---
+
+## 📝 Daily Tasks
+
+Guides for everyday purchasing operations your team performs.
 
 ### Standard Workflows
 
 {{< cards >}}
-{{< card link="/guides/purchasing-guides/standard-procurement-workflow" title="Standard Procurement Workflow" subtitle="Complete PO → GRN → Invoice flow with three-way matching for full control and audit trail" >}}
-{{< card link="/guides/purchasing-guides/direct-grn-workflow" title="Direct GRN Workflow" subtitle="Skip PO creation and go directly to goods receipt - ideal for walk-in purchases or urgent deliveries" >}}
-{{< card link="/guides/purchasing-guides/direct-invoice-workflow" title="Direct Invoice Workflow" subtitle="Process purchases without PO or GRN - perfect for services, utilities, and non-stock items" >}}
+  {{< card link="/guides/purchasing-guides/standard-procurement-workflow" title="Standard Procurement Workflow" subtitle="Complete PO → GRN → Invoice flow with three-way matching for full control and audit trail" >}}
+  {{< card link="/guides/purchasing-guides/direct-grn-workflow" title="Direct GRN Workflow" subtitle="Skip PO creation and go directly to goods receipt — ideal for walk-in purchases or urgent deliveries" >}}
+  {{< card link="/guides/purchasing-guides/direct-invoice-workflow" title="Direct Invoice Workflow" subtitle="Process purchases without PO or GRN — perfect for services, utilities, and non-stock items" >}}
 {{< /cards >}}
 
 ### Special Scenarios
 
 {{< cards >}}
-{{< card link="/guides/purchasing-guides/invoice-first-workflow" title="Invoice-First Workflow" subtitle="Handle situations where invoice arrives before goods delivery with proper tracking and matching" >}}
-{{< card link="/guides/purchasing-guides/consignment-purchasing" title="Consignment Purchasing" subtitle="Manage consignment stock where you only pay when items are used or sold" >}}
+  {{< card link="/guides/purchasing-guides/invoice-first-workflow" title="Invoice-First Workflow" subtitle="Handle situations where invoice arrives before goods delivery with proper tracking and matching" >}}
+  {{< card link="/guides/purchasing-guides/consignment-purchasing" title="Consignment Purchasing" subtitle="Manage consignment stock where you only pay when items are used or sold" >}}
 {{< /cards >}}
 
-## Workflow Selection Guide
+---
 
-Choose the right workflow for your situation:
+## ⚠️ Common Scenarios / Pitfalls
 
-| Your Situation | Recommended Workflow | Key Benefits |
-|----------------|---------------------|--------------|
-| **Standard supplier purchases** with planned orders | Standard Procurement | Full audit trail, budget control, three-way matching |
-| **Walk-in purchases** from local suppliers | Direct GRN | Fast processing, immediate stock receipt |
-| **Service purchases**, utilities, subscriptions | Direct Invoice | No stock tracking needed, simple processing |
-| **Goods delivered** before invoice arrives | Standard Procurement | Track receivables, match invoice later |
-| **Invoice arrives first** (prepayment required) | Invoice-First | Manage prepayments, track pending delivery |
-| **Consignment stock** from suppliers | Consignment Purchasing | Pay only for what you use, better cash flow |
+Watch out for these frequent purchasing issues:
 
-{{< callout type="tip" >}}
-**Best Practice**: Use the Standard Procurement Workflow as your default for most purchases. Only use simplified workflows when there's a clear business reason to skip steps.
+| Scenario | What Happens | How to Handle |
+|----------|-------------|---------------|
+| **Partial deliveries** | Only some items arrive | Create GRN for received quantity, keep PO open for balance |
+| **Price changed since PO** | Invoice doesn't match PO price | If within tolerance, accept; if significant, get approval first |
+| **Goods damaged in transit** | Stock quality issue | GRN for good items, reject damaged, request credit note from supplier |
+| **Invoice lost or delayed** | Month-end close blocked | Track outstanding GRNs, follow up with supplier, accrue for close |
+| **Urgent after-hours purchase** | No time for standard process | Use Direct GRN workflow, document reason, get retrospective approval |
+| **Duplicate PO created** | Double-ordering risk | Check existing POs before creating new ones; search by supplier |
+
+{{< callout type="warning" >}}
+**Three-Way Matching**: Always verify PO ↔ GRN ↔ Invoice match before processing payment. Discrepancies in quantity or price should be resolved before approval.
 {{< /callout >}}
+
+---
+
+## 📊 Reporting Usage
+
+Track your procurement performance and spending health.
+
+**Key Purchasing Reports:**
+- **PO Status Report** — All POs by status (Draft, Approved, Partial, Complete)
+- **GRN Pending Report** — Outstanding goods not yet received
+- **Invoice Aging Report** — Unpaid supplier invoices by age
+- **Purchase by Supplier** — Spend analysis by supplier
+- **Purchase by Item** — Item-level procurement analysis
+- **Three-Way Matching Report** — Match status across PO, GRN, and Invoice
+
+**Reporting tips:**
+- Check GRN Pending weekly to follow up on late deliveries
+- Review Invoice Aging to manage cash flow and payment scheduling
+- Use Supplier Spend analysis quarterly for contract negotiations
+- Monitor three-way matching rate to identify process issues
 
 ## Core Purchasing Concepts
 
