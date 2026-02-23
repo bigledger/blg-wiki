@@ -1,710 +1,354 @@
----
+﻿---
 title: "Tenant Admin Applet"
-description: "Comprehensive system administration and tenant management platform for BigLedger enterprise environments"
+description: "Centralized tenant governance applet for catalogues, users, roles, permission sets, settings, and audit traceability"
 tags:
-- core-module
-- system-administration
-- tenant-management
-- security
-- enterprise-architecture
-weight: 3
+- tenant-administration
+- access-control
+- role-management
+- permission-sets
+- audit-trail
+weight: 61
 ---
 
-## Executive Summary
+## Purpose and Overview
 
-The Tenant Admin Applet represents the cornerstone of BigLedger's administrative infrastructure, providing comprehensive system-wide administration capabilities that enable organizations to manage complex multi-tenant environments with enterprise-grade security, compliance, and operational excellence. As the foundational Core Module applet, it orchestrates user management, security policies, system configuration, and tenant isolation across the entire BigLedger ecosystem.
-
-**Key Business Benefits:**
-- Centralized administration reducing operational complexity and costs
-- Enterprise-grade security framework protecting organizational assets
-- Scalable multi-tenant architecture supporting business growth
-- Comprehensive audit capabilities ensuring regulatory compliance
-- Automated provisioning and deprovisioning reducing manual errors
-
-**Strategic Importance:**
-The Tenant Admin Applet is the command center for BigLedger implementations, enabling IT administrators to maintain operational excellence while supporting business agility. It provides the foundation for secure, compliant, and scalable enterprise operations, making it indispensable for organizations requiring sophisticated administrative controls.
-
-**Enterprise Capabilities:**
-- Support for up to 10,000 concurrent users across 1,000 tenants
-- Advanced role-based access control with inheritance and delegation
-- Real-time security monitoring and threat detection
-- Automated compliance reporting for multiple regulatory frameworks
-- High-availability architecture with 99.9% uptime guarantee
-
-## Overview & Purpose
-
-The Tenant Admin Applet is the central system administration tool in BigLedger's Core Module. It provides comprehensive system-wide administration capabilities, user management, security configuration, and audit settings that form the foundation of your BigLedger implementation.
+The **Tenant Admin Applet** is a tenant governance workspace in Akaun Platform. It centralizes administration of catalogue access, user access, applet assignment, role and permission controls, and operational audit visibility.
 
 {{< callout type="info" >}}
-**Core Module Applet**: This is one of the 13 essential Core Module applets required by all other BigLedger modules.
+**Core Concept**: Control **who** can access the tenant, **what** they can access (catalogues/applets), and **how** access is governed (roles, permission sets, and audit trail).
 {{< /callout >}}
 
-### Primary Functions
-- **System Administration** - Overall system configuration and management
-- **User Management** - Create, manage, and configure user accounts
-- **Security Configuration** - Set security policies and access controls
-- **Audit Management** - Configure audit trails and compliance settings
-- **Tenant Configuration** - Multi-tenant environment setup
+{{< figure src="/images/tenant-admin-applet/tenant-main-listing.png" alt="Tenant Admin main listing page showing governance modules" caption="Main Listing Page: Central menu for tenant governance modules" >}}
 
-## Key Features
+## Key Features Overview
 
-### System Administration
-- Global system settings and configurations
-- System-wide parameter management
-- Database maintenance and optimization
-- System monitoring and health checks
-- Backup and recovery configuration
+### Who Benefits from This Applet?
 
-### User Management
-- User account creation and management
-- Role-based access control (RBAC)
-- Permission sets and assignment
-- User authentication settings
-- Password policies and security
+**Tenant Administrators:**
+- Manage tenant users, admins, applets, and catalogues in one place
+- Configure role and permission structures
+- Control menu/module visibility through settings flags
 
-### Security Configuration
-- Security policy management
-- Access control configuration
-- Login security settings
-- Session management
-- IP restrictions and whitelist
+**Security & Operations Teams:**
+- Standardize role-based access controls
+- Reduce access drift with assignment visibility and review flows
+- Monitor risky changes through audit logs
 
-### Audit and Compliance
-- Audit trail configuration
-- Compliance reporting setup
-- Change tracking settings
-- Data retention policies
-- Regulatory compliance tools
+**Compliance & Audit Stakeholders:**
+- Trace who changed what and when
+- Review action metadata for access governance controls
+- Support internal/external audit evidence collection
 
-### Multi-Tenant Management
-- Tenant isolation and configuration
-- Resource allocation per tenant
-- Cross-tenant data access controls
-- Tenant-specific customizations
+**Tenant End Users:**
+- Receive more accurate access assignment
+- Get appropriate applet and catalogue visibility based on role
+- Experience fewer access configuration issues
 
-## Technical Specifications
+### What Problems Does This Solve?
 
-### System Requirements
-- **Minimum Access Level**: System Administrator
-- **Database Dependencies**: Core system tables
-- **Integration Points**: All BigLedger modules
-- **API Availability**: Full administrative API access
-- **Audit Logging**: Complete activity logging
+**Before:**
+- Access administration often spread across multiple workflows
+- User/applet/catalogue assignments were harder to validate consistently
+- Role and permission changes were difficult to trace end-to-end
+- Manual setup increased risk of misconfiguration
 
-### Supported Configurations
-- **Single Tenant**: Standard single-organization setup
-- **Multi-Tenant**: Enterprise multi-organization environment
-- **Hybrid Cloud**: On-premise and cloud deployment
-- **High Availability**: Clustered deployment support
+**After:**
+- A single route-driven applet for tenant administration workflows
+- Role and permission set governance with target scoping support
+- Structured user and applet assignment visibility (counts and drill-ins)
+- Audit trail-based traceability for administrative changes
 
-### Performance Parameters
-- **User Capacity**: Up to 10,000 concurrent users
-- **Tenant Capacity**: Up to 1,000 tenants per instance
-- **Audit Retention**: Configurable up to 7 years
-- **Response Time**: <2 seconds for administrative operations
+## Key Features Overview
 
-## Integration Points
+{{< cards >}}
+  {{< card title="Catalogue Governance" subtitle="Catalogue records and applet linkage controls" link="#main-modules" >}}
 
-### Core Module Dependencies
-- **Organization Applet** - Organizational structure management
-- **Employee Maintenance Applet** - User-employee relationship
-- **Workflow Design Applet** - Administrative workflow automation
+  {{< card title="User Access Control" subtitle="Tenant and platform user assignment workflows" link="#user-access-control" >}}
 
-### Module Integration
-| Module | Integration Purpose |
-|--------|-------------------|
-| **All Modules** | User authentication and authorization |
-| **Financial Accounting** | Financial audit and compliance |
-| **HR & Payroll** | Employee access management |
-| **E-Commerce** | Customer access configuration |
-| **Manufacturing** | Production system access |
+  {{< card title="Roles & Permissions" subtitle="Role listing, assignment counts, and permission sets" link="#roles--permission-sets" >}}
 
-### External Integrations
-- **LDAP/Active Directory** - Enterprise authentication
-- **SAML/SSO Providers** - Single sign-on integration
-- **SMTP Servers** - Email notifications
-- **Backup Systems** - Automated backup integration
-- **Monitoring Tools** - System health monitoring
+  {{< card title="Role File Import" subtitle="Template download + bulk upload with status tracking" link="#role-file-import" >}}
 
-## Configuration Requirements
+  {{< card title="Audit Visibility" subtitle="Searchable action history for governance and compliance" link="#audit-trail" >}}
 
-### Initial Setup Requirements
-1. **System Database** - Core database configuration
-2. **Administrative User** - Super admin account creation
-3. **Security Policies** - Basic security configuration
-4. **Audit Settings** - Audit trail activation
-5. **Backup Configuration** - Data protection setup
+  {{< card title="Settings & Personalization" subtitle="Menu visibility, defaults, and personalization" link="#configuration--settings" >}}
+{{< /cards >}}
 
-### Essential Configurations
-- **User Roles**: Define organizational roles and permissions
-- **Security Policies**: Configure password policies and access rules
-- **Audit Trails**: Enable comprehensive activity logging
-- **System Parameters**: Set global system configurations
-- **Email Settings**: Configure system notifications
+{{< figure src="/images/tenant-admin-applet/tenant-admin-overview-infographic.png" alt="Tenant Admin infographic showing before challenges, applet solution, and user roles" caption="Tenant Admin Overview: Before-state challenges, applet solution, and who benefits" >}}
 
-### Advanced Configurations
-- **Multi-Factor Authentication** - Enhanced security setup
-- **API Rate Limiting** - API usage control
-- **Custom Workflows** - Administrative process automation
-- **Integration Endpoints** - External system connections
-- **Compliance Rules** - Industry-specific compliance
+## Key Concepts
 
-## Use Cases
+### Tenant Access Governance Model
 
-### Small Business Setup
-**Scenario**: Single location retail business
-- Configure basic user roles (Owner, Manager, Staff)
-- Set up simple audit trails
-- Establish backup procedures
-- Configure basic security policies
+| Governance Question | Primary Module(s) | Outcome |
+|---|---|---|
+| Who can access the tenant? | Tenant Users, Platform Users, Tenant Admins | Controlled subject-level access |
+| What can they open? | Catalogue, Applets | Controlled applet/catalogue footprint |
+| What can they do? | Tenant Roles, Permission Sets | Action-level control by role/perm set |
+| How do we validate changes? | Audit Trail | Traceable governance history |
 
-**Benefits**: Simple, secure foundation for growth
-
-### Multi-Branch Enterprise
-**Scenario**: Multi-location manufacturing company
-- Configure complex organizational hierarchy
-- Set up branch-specific access controls
-- Implement comprehensive audit trails
-- Establish disaster recovery procedures
-
-**Benefits**: Scalable, secure, compliant operations
-
-### Compliance-Heavy Industry
-**Scenario**: Financial services or healthcare
-- Configure strict audit requirements
-- Implement advanced security policies
-- Set up regulatory compliance reporting
-- Establish data retention policies
-
-**Benefits**: Full regulatory compliance and security
-
-### SaaS Provider Implementation
-**Scenario**: Service provider using BigLedger for clients
-- Configure multi-tenant environment
-- Set up tenant isolation
-- Implement automated provisioning
-- Configure usage monitoring
-
-**Benefits**: Scalable SaaS platform foundation
-
-## Related Applets
-
-### Core Module Applets
-- **[Organization Applet](/applets/organization-applet/)** - Organizational structure management
-- **[Employee Maintenance Applet](/applets/employee-maintenance-applet/)** - User-employee relationships
-- **[Workflow Design Applet](/applets/workflow-design-applet/)** - Process automation
-
-### Security-Related Applets
-- **[Webhook Applet](/applets/webhook-applet/)** - External system notifications
-- **[T2T Admin Applet](/applets/t2t-admin-applet/)** - Tenant-to-tenant administration
-
-### Integration Applets
-- **[Process Monitoring Applet](/applets/process-monitoring-applet/)** - System process monitoring
-
-## Setup Guide
-
-### Quick Start
-1. **Access System Administration** - Log in with super admin credentials
-2. **Configure Organization** - Set up basic company information
-3. **Create Users** - Add initial user accounts and roles
-4. **Set Security Policies** - Configure basic security settings
-5. **Enable Audit Trails** - Activate system monitoring
-
-### Advanced Setup
-1. **Multi-Tenant Configuration** - Set up tenant isolation
-2. **Integration Setup** - Configure external system connections
-3. **Compliance Configuration** - Set up regulatory requirements
-4. **Disaster Recovery** - Configure backup and recovery procedures
-5. **Performance Tuning** - Optimize system performance
-
-## Best Practices
-
-### Security Best Practices
-- **Principle of Least Privilege** - Grant minimum required permissions
-- **Regular Access Reviews** - Periodic user access audits
-- **Strong Authentication** - Implement MFA where possible
-- **Audit Monitoring** - Regular audit trail review
-- **Backup Testing** - Regular backup restoration tests
-
-### Administrative Best Practices
-- **Change Management** - Document all system changes
-- **User Training** - Comprehensive administrator training
-- **Documentation** - Maintain system configuration documentation
-- **Monitoring** - Continuous system health monitoring
-- **Updates** - Regular system updates and patches
-
-## Troubleshooting
-
-### Common Issues
-**Users cannot log in**
-- Check user account status
-- Verify password policies
-- Review security settings
-- Check audit logs
-
-**System performance issues**
-- Review system resource usage
-- Check database optimization
-- Monitor user activity
-- Review audit log size
-
-**Integration failures**
-- Verify external system connectivity
-- Check API credentials
-- Review integration logs
-- Test connection parameters
-
-### Support Resources
-- System administration documentation
-- Technical support escalation
-- Community forums and knowledge base
-- Professional services consultation
-
-## Target Users and Roles
-
-### Primary Users
-
-**System Administrators**
-- Complete system administration and configuration authority
-- User lifecycle management across all tenants
-- Security policy definition and enforcement
-- System monitoring and performance optimization
-- Disaster recovery and business continuity management
-
-**Security Officers**
-- Security policy development and implementation
-- Access control and permission management
-- Security incident response and investigation
-- Compliance monitoring and audit coordination
-- Risk assessment and vulnerability management
-
-**Compliance Managers**
-- Regulatory compliance monitoring and reporting
-- Audit trail management and documentation
-- Policy compliance assessment and remediation
-- Risk management and control effectiveness evaluation
-- External auditor coordination and support
-
-### Secondary Users
-
-**IT Support Managers**
-- User support escalation and resolution
-- System troubleshooting and maintenance coordination
-- Performance monitoring and capacity planning
-- Integration support and configuration assistance
-- Documentation and knowledge management
-
-**Business Administrators**
-- Organizational structure configuration
-- Business process workflow administration
-- Department and team management
-- Resource allocation and cost center management
-- Business continuity planning coordination
-
-**Tenant Administrators**
-- Tenant-specific configuration and customization
-- Local user management within tenant boundaries
-- Tenant resource utilization monitoring
-- Local compliance and policy enforcement
-- Business unit coordination and support
-
-## Advanced System Architecture
-
-### Multi-Tenant Framework
-
-#### Tenant Isolation Architecture
-The Tenant Admin Applet implements a sophisticated multi-tenant architecture ensuring complete data and operational isolation:
-
-```yaml
-Tenant Isolation Model:
-  Data Separation:
-    - Database schema isolation
-    - Encrypted data partitioning
-    - Secure API endpoint segregation
-    - File system access controls
-
-  Resource Allocation:
-    - CPU and memory quotas per tenant
-    - Storage limits and monitoring
-    - Network bandwidth allocation
-    - Concurrent user limitations
-
-  Security Boundaries:
-    - Authentication realm separation
-    - Authorization policy isolation
-    - Audit trail segregation
-    - Cross-tenant access prevention
-
-  Customization Framework:
-    - Tenant-specific configurations
-    - Branding and UI customization
-    - Workflow and process adaptation
-    - Integration endpoint management
-```
-
-#### Scalability and Performance
-
-**Horizontal Scaling Capabilities:**
-- Auto-scaling based on tenant demand
-- Load balancing across multiple instances
-- Dynamic resource allocation
-- Performance monitoring and optimization
-
-**Performance Optimization Features:**
-- Intelligent caching strategies
-- Database query optimization
-- CDN integration for global performance
-- Predictive scaling based on usage patterns
-
-### Enterprise Security Framework
-
-#### Advanced Authentication and Authorization
-
-**Multi-Factor Authentication (MFA)**
-- Support for hardware tokens, mobile apps, and biometric authentication
-- Risk-based authentication with adaptive security policies
-- Integration with enterprise identity providers
-- Centralized authentication policy management
-
-**Role-Based Access Control (RBAC)**
-- Hierarchical role inheritance and delegation
-- Dynamic permission assignment based on context
-- Temporal access controls with automatic expiration
-- Segregation of duties enforcement
-
-**Privileged Access Management (PAM)**
-- Elevated privilege request and approval workflows
-- Session recording and monitoring for privileged operations
-- Just-in-time access provisioning
-- Break-glass emergency access procedures
-
-#### Security Monitoring and Threat Detection
-
-**Real-Time Security Monitoring:**
-- Behavioral analytics for anomaly detection
-- Automated threat intelligence integration
-- Real-time alerting and incident response
-- Security dashboard with risk visualization
-
-**Compliance and Audit Framework:**
-- Automated compliance assessment and reporting
-- Continuous control monitoring
-- Evidence collection and audit trail management
-- Regulatory framework mapping and alignment
-
-### Advanced Configuration Management
-
-#### System Configuration Framework
-
-**Global Configuration Management:**
-- Centralized configuration repository
-- Version control and change tracking
-- Configuration validation and testing
-- Automated rollback capabilities
-
-**Environment Management:**
-- Development, staging, and production environment isolation
-- Configuration promotion workflows
-- Environment-specific customizations
-- Data synchronization and migration tools
-
-**Integration Configuration:**
-- API gateway configuration and management
-- Third-party system integration settings
-- Data transformation and mapping rules
-- Connection pooling and load balancing
-
-#### Workflow and Process Automation
-
-**Administrative Workflow Engine:**
-- Automated user provisioning and deprovisioning
-- Approval workflows for sensitive operations
-- Scheduled maintenance and update procedures
-- Incident response automation
-
-**Business Process Integration:**
-- Integration with HR systems for employee lifecycle
-- Automated role assignment based on organizational structure
-- Policy enforcement through automated controls
-- Exception handling and escalation procedures
-
-## Enterprise Integration Capabilities
-
-### Identity and Access Management Integration
-
-**Enterprise Directory Services:**
-- Active Directory and LDAP integration
-- Azure AD and Google Workspace connectivity
-- SAML 2.0 and OAuth 2.0 support
-- Cross-domain trust relationships
-
-**Identity Federation:**
-- Multi-domain identity federation
-- Cross-organizational authentication
-- Identity mapping and transformation
-- Federated single sign-on (SSO)
-
-### Enterprise System Integration
-
-**ERP and Business System Integration:**
-- SAP, Oracle, and Microsoft Dynamics connectivity
-- Real-time data synchronization
-- Master data management integration
-- Business process orchestration
-
-**Monitoring and Management Tools:**
-- SIEM system integration for security monitoring
-- ITSM tool connectivity for incident management
-- Performance monitoring tool integration
-- Backup and disaster recovery system coordination
-
-### Cloud and Infrastructure Integration
-
-**Multi-Cloud Support:**
-- AWS, Azure, and Google Cloud integration
-- Hybrid cloud deployment models
-- Cloud resource management and optimization
-- Cross-cloud data replication and backup
-
-**Container and Orchestration:**
-- Kubernetes cluster management
-- Docker container lifecycle management
-- Service mesh integration
-- Microservices architecture support
-
-## Advanced Use Cases and Implementation Patterns
-
-### Enterprise Multi-Tenant SaaS Platform
-
-**Scenario**: Software company providing BigLedger-based services to multiple clients
-
-**Implementation Approach:**
-- Complete tenant isolation with dedicated resources
-- White-label branding and customization capabilities
-- Automated customer onboarding and provisioning
-- Usage-based billing and resource monitoring
-- Compliance with multiple regulatory frameworks
-
-**Technical Configuration:**
-```yaml
-SaaS Platform Setup:
-  Tenant Management:
-    - Automated tenant provisioning
-    - Resource quota management
-    - Billing integration
-    - Customer portal access
-
-  Security Framework:
-    - Multi-tenant security policies
-    - Data encryption and isolation
-    - Compliance monitoring
-    - Incident response procedures
-
-  Operational Excellence:
-    - 24/7 monitoring and alerting
-    - Automated backup and recovery
-    - Performance optimization
-    - Capacity planning and scaling
-```
-
-**Business Benefits:**
-- Reduced time-to-market for new customer onboarding
-- Scalable architecture supporting business growth
-- Operational efficiency through automation
-- Compliance assurance for regulated industries
-
-### Global Enterprise Deployment
-
-**Scenario**: Multinational corporation with complex organizational structure
-
-**Implementation Approach:**
-- Regional data sovereignty compliance
-- Multi-language and localization support
-- Complex approval workflows and delegation
-- Integration with existing enterprise systems
-- Centralized governance with local autonomy
-
-**Technical Configuration:**
-```yaml
-Global Enterprise Setup:
-  Regional Deployment:
-    - Geographic data residency
-    - Local compliance frameworks
-    - Regional administrator delegation
-    - Cross-region collaboration controls
-
-  Integration Architecture:
-    - Enterprise directory federation
-    - ERP system synchronization
-    - Global identity management
-    - Cross-system audit trails
-
-  Governance Framework:
-    - Centralized policy management
-    - Local implementation flexibility
-    - Compliance monitoring and reporting
-    - Risk management coordination
-```
-
-**Business Benefits:**
-- Global consistency with local compliance
-- Reduced administrative overhead through centralization
-- Enhanced security through unified governance
-- Improved operational visibility and control
-
-### Highly Regulated Environment
-
-**Scenario**: Financial institution with stringent regulatory requirements
-
-**Implementation Approach:**
-- Advanced audit trails and evidence collection
-- Segregation of duties enforcement
-- Real-time compliance monitoring
-- Automated regulatory reporting
-- Enhanced security controls and monitoring
-
-**Technical Configuration:**
-```yaml
-Regulated Environment Setup:
-  Compliance Framework:
-    - Automated compliance assessment
-    - Real-time policy enforcement
-    - Comprehensive audit logging
-    - Regulatory report generation
-
-  Security Controls:
-    - Multi-factor authentication
-    - Privileged access management
-    - Continuous security monitoring
-    - Incident response automation
-
-  Risk Management:
-    - Risk assessment automation
-    - Control effectiveness monitoring
-    - Exception management workflows
-    - Remediation tracking and reporting
-```
-
-**Business Benefits:**
-- Automated compliance reducing manual effort
-- Enhanced security reducing risk exposure
-- Streamlined audit processes
-- Improved regulatory relationship management
-
-## Best Practices for Enterprise Implementation
-
-### Implementation Planning and Strategy
-
-**Pre-Implementation Assessment:**
-- Current state analysis and gap identification
-- Stakeholder requirements gathering and prioritization
-- Risk assessment and mitigation planning
-- Resource allocation and timeline development
-- Success criteria definition and measurement planning
-
-**Phased Implementation Approach:**
-1. **Foundation Phase**: Core infrastructure and security setup
-2. **Pilot Phase**: Limited user group deployment and testing
-3. **Rollout Phase**: Gradual expansion to full user base
-4. **Optimization Phase**: Performance tuning and enhancement
-5. **Maintenance Phase**: Ongoing support and continuous improvement
-
-### Governance and Change Management
-
-**Governance Framework:**
-- Executive sponsorship and steering committee
-- Clear roles and responsibilities definition
-- Decision-making processes and escalation procedures
-- Performance monitoring and reporting mechanisms
-- Continuous improvement and feedback loops
-
-**Change Management Strategy:**
-- Stakeholder communication and engagement
-- Comprehensive training and support programs
-- User adoption monitoring and assistance
-- Feedback collection and response mechanisms
-- Success celebration and recognition programs
-
-### Security and Compliance Best Practices
-
-**Security Implementation:**
-- Zero-trust security model implementation
-- Regular security assessments and penetration testing
-- Incident response plan development and testing
-- Security awareness training and education
-- Continuous security monitoring and improvement
-
-**Compliance Management:**
-- Regulatory requirement mapping and implementation
-- Regular compliance assessments and gap analysis
-- Audit preparation and evidence collection
-- Policy enforcement and violation remediation
-- Stakeholder communication and reporting
-
-### Performance and Scalability Optimization
-
-**Performance Monitoring:**
-- Comprehensive performance metrics collection
-- Real-time monitoring and alerting
-- Capacity planning and resource optimization
-- User experience monitoring and improvement
-- Predictive analytics for proactive management
-
-**Scalability Planning:**
-- Growth projection and capacity planning
-- Infrastructure scaling strategies
-- Performance testing and optimization
-- Disaster recovery and business continuity
-- Technology refresh and upgrade planning
-
-## Troubleshooting and Support
-
-### Advanced Troubleshooting Procedures
-
-**System Performance Issues:**
-- Performance monitoring and analysis tools
-- Resource utilization assessment and optimization
-- Database performance tuning and optimization
-- Network connectivity and latency analysis
-- Cache optimization and configuration
-
-**Security and Access Issues:**
-- Authentication and authorization debugging
-- Permission and role assignment verification
-- Security policy evaluation and testing
-- Audit trail analysis and investigation
-- Incident response and remediation procedures
-
-**Integration and Configuration Issues:**
-- External system connectivity testing
-- Configuration validation and verification
-- Data synchronization and integrity checking
-- Workflow and process troubleshooting
-- Error handling and exception management
-
-### Support Resources and Escalation
-
-**Self-Service Resources:**
-- Comprehensive documentation and knowledge base
-- Video tutorials and training materials
-- Community forums and user groups
-- Automated diagnostic and troubleshooting tools
-- Best practices guides and implementation templates
-
-**Professional Support Services:**
-- Technical support escalation procedures
-- Expert consulting and advisory services
-- Custom implementation and configuration services
-- Training and certification programs
-- Managed services and ongoing support
-
-**Emergency Support:**
-- 24/7 critical issue support
-- Dedicated emergency response team
-- Rapid escalation and resolution procedures
-- Business continuity and disaster recovery support
-- Executive escalation and communication
-
-{{< callout type="warning" >}}
-**Important**: The Tenant Admin Applet controls critical system functions. Always test changes in a development environment before implementing in production. Establish proper change management procedures and maintain comprehensive backup and recovery capabilities.
+{{< callout type="tip" >}}
+**Recommended sequence**: Configure Roles and Permission Sets first, then assign users and applets, then validate all changes in Audit Trail.
 {{< /callout >}}
+
+---
+
+## Quick Start Guide
+
+Get up and running quickly using these role-focused workflows.
+
+### For Tenant Administrators: Baseline Setup
+
+**Goal:** Set up tenant governance in 10 practical steps.
+
+1. Open `Tenant Admin` and verify the current tenant context.
+2. Go to `Settings` and ensure required modules are visible (Catalogue, Users, Roles, Permission Sets, Audit Trail).
+3. Configure default selections (branch, location, company, row count).
+4. Configure `Catalogue` records and applet linkages.
+5. Review `Applets` listing and validate status/availability.
+6. Configure `Tenant Roles` and review role distribution counts.
+7. Configure `Permission Sets` and map to applet/target requirements.
+8. Validate `Tenant Users` and `Platform Users` assignments.
+9. Register and verify at least two active `Tenant Admins`.
+10. Execute one test update and confirm traceability in `Audit Trail`.
+
+### For Security & Operations: Control Hardening
+
+**Goal:** Reduce misconfiguration and over-privileged access.
+
+1. Review duplicate or obsolete roles in `Tenant Roles`.
+2. Review `Permission Sets` for unnecessary broad permissions.
+3. Check role `No. of Users` and `No. of Teams` for over-assignment patterns.
+4. Enforce target scoping (company/branch/location) where required.
+5. Ensure continuity coverage with backup admin accounts.
+6. Validate module visibility policy by role (admin vs operations vs audit).
+7. Perform recurring `Audit Trail` review for privileged changes.
+
+### For Compliance/Audit Teams: Evidence Review
+
+**Goal:** Produce defensible governance evidence.
+
+1. Filter `Audit Trail` by date, action type, and actor.
+2. Sample high-impact changes (role edits, permission changes, admin updates).
+3. Verify timestamp and actor data consistency.
+4. Capture/export artifacts for audit working papers.
+5. Log unresolved exceptions for remediation tracking.
+
+### For Application Support: Resolve Access Issues Fast
+
+**Goal:** Close common access tickets with consistent checks.
+
+1. Confirm module visibility in `Settings`.
+2. Check user assignment in `Tenant Users` or `Platform Users`.
+3. Verify role assignment and corresponding `Permission Sets`.
+4. Confirm applet/catalogue linkage in `Catalogue` and `Applets`.
+5. Use `Audit Trail` to identify recent changes causing the issue.
+
+### Real-World Walkthrough: New Tenant Access Rollout (End-to-End)
+
+**Scenario:** A tenant is onboarding a new Finance operations team and needs controlled access by end of day.
+
+1. Admin enables required modules in `Settings` (`Catalogue`, `Applets`, `Tenant Users`, `Tenant Roles`, `Permission Sets`, `Audit Trail`).
+2. Admin verifies or creates Finance-related catalogue entries in `Catalogue`.
+3. Admin confirms required applets are active in `Applets` and linked to the correct catalogue.
+4. Admin creates/updates `Tenant Roles` for Finance Clerk and Finance Supervisor.
+5. Admin maps appropriate `Permission Sets` to each role with required target scoping.
+6. Admin assigns pilot users in `Tenant Users` and validates applet/catalogue visibility.
+7. Support performs login validation with pilot users and checks expected menu access.
+8. Compliance reviews `Audit Trail` for all setup actions and records evidence.
+
+**Outcome:** Access is provisioned consistently, validated by support, and traceable for audit.
+
+### Common Mistakes (Quick Start)
+
+- Enabling roles before module visibility is configured in `Settings`.
+- Assigning users before applet-to-catalogue linkage is verified.
+- Reusing broad permission sets for specialized roles without scoping.
+- Skipping pilot-user validation before full rollout.
+- Missing audit verification after high-impact access changes.
+
+**How to avoid them:** Always follow sequence: visibility -> catalogue/applet linkage -> role/permission set -> user assignment -> pilot test -> audit verification.
+
+{{< callout type="tip" >}}
+**Go-live checklist**: module visibility verified, defaults configured, roles finalized, permission sets mapped, user assignments tested, and first-week audit monitoring scheduled.
+{{< /callout >}}
+
+---
+
+## Main Modules
+
+The applet is organized into these governance modules:
+
+| Module | Primary Use |
+|---|---|
+| `Catalogue` | Manage catalogue records and applet-to-catalogue linkage |
+| `Subscription` | Handle tenant subscription-related administration |
+| `Tenant Users` | Manage tenant-level user access and assignments |
+| `Platform Users` | Manage platform-level user access in tenant context |
+| `Applets` | Review and govern applet availability |
+| `Tenant Roles` | Define role structures and review assignment counts |
+| `Role File Import` | Bulk upload role definitions via template |
+| `Tenant Admins` | Maintain tenant administrator accounts |
+| `Permission Sets` | Configure reusable permission packages |
+| `Data Sync` | Manage synchronization controls (branch readiness dependent) |
+| `Audit Trail` | Review action history and traceability |
+| `Settings` | Configure defaults, field settings, webhooks, and permission views |
+| `Personalization` | User-level personalization controls |
+
+## Core UI Workflows
+
+### Listings and Operational Views
+
+The UI provides grid-driven operations for major modules:
+- User views include assignment counts (`No. of Catalogue`, `No. of Applets`) and status fields
+- Role views include distribution metrics (`No. of Users`, `No. of Teams`)
+- Permission set views include code/name/applet/date tracking
+- Role import views include file status and processing error messages
+- Audit views include actor/action/date filtering for traceability
+
+### Create/Edit and Action Flows
+
+Common workflows available in the applet:
+- Catalogue create/edit and applet linkage flows
+- Permission set add/edit with multi-step line configuration
+- Role file upload with sample CSV download support
+- Tenant admin create/edit flows
+- Applet add-to-catalogue and install-for-user operations
+
+{{< figure src="/images/tenant-admin-applet/tenant-main-listing.png" alt="Catalogue listing for tenant-admin" caption="Catalogue Listing: Manage tenant catalogue entries" >}}
+
+{{< figure src="/images/tenant-admin-applet/tenant-catalogue-create.png" alt="Catalogue create form" caption="Create Form: Configure and maintain catalogue records" >}}
+
+{{< figure src="/images/tenant-admin-applet/tenant-catalogue-edit.png" alt="Catalogue edit form" caption="Edit Form: Configure and maintain catalogue records" >}}
+
+## User Access Control
+
+Use `Tenant Users`, `Platform Users`, and `Tenant Admins` for access operations.
+
+- Review assignment footprint and status
+- Maintain tenant-level administrators
+- Verify user-to-applet and user-to-catalogue consistency
+
+{{< figure src="/images/tenant-admin-applet/tenant-user.png" alt="Tenant users listing" caption="Tenant Users Listing: User access footprint and status" >}}
+
+## Roles & Permission Sets
+
+Role and permission components provide access governance primitives:
+
+- `Tenant Roles` for role definitions and assignment metrics
+- `Permission Sets` for reusable permission packages
+- Target scoping support in role/app permission flows (company/branch/location)
+
+{{< figure src="/images/tenant-admin-applet/tenant-role.png" alt="Roles listing" caption="Tenant Roles : Structured role-based governance" >}}
+
+{{< figure src="/images/tenant-admin-applet/tenant-permission-set.png" alt="Permission sets listing" caption="Tenant Permission Sets: Structured role-based governance" >}}
+
+## Role File Import
+
+Role onboarding supports bulk import:
+
+- Download sample template CSV
+- Upload role file
+- Review process status and row-level error information
+
+{{< figure src="/images/tenant-admin-applet/role-file-import-page.png" alt="Role file import page" caption="Role File Import: Template-based bulk setup and status monitoring" >}}
+
+## Audit Trail
+
+`Audit Trail` supports traceability and governance monitoring:
+
+- Filter by action/date/actor
+- Review change history for sensitive operations
+- Produce compliance evidence
+
+{{< figure src="/images/tenant-admin-applet/tenant-audit-trail-2.png" alt="Audit trail listing" caption="Audit Trail: Searchable administrative change history" >}}
+
+## Configuration & Settings
+
+Settings and personalization modules include:
+
+- Menu/module visibility flags
+- Default selection settings
+- Field settings and webhook configuration
+- Personalization sidebar/defaults
+
+{{< figure src="/images/tenant-admin-applet/tenant-setting-page.png" alt="Tenant admin settings page" caption="Settings Page: Configure module visibility and defaults" >}}
+
+### Configuration Checklist (Recommended)
+
+Use this sequence when configuring a new tenant:
+
+1. Verify module visibility flags in `Settings`.
+2. Set default values (company, branch, location, row count).
+
+{{< figure src="/images/tenant-admin-applet/tenant-default.png" alt="Tenant defaults configuration for company, branch, location, and list row count" caption="Default Settings: Set company, branch, location, and row-count defaults" >}}
+
+3. Configure roles and permission sets.
+
+{{< figure src="/images/tenant-admin-applet/tenant-perm-wizard.png" alt="Permission wizard for target scoping and permission configuration" caption="Permission Wizard: Define scoped permissions by company, branch, and location" >}}
+
+{{< figure src="/images/tenant-admin-applet/tenant-perm-set.png" alt="Permission set configuration screen" caption="Permission Sets: Create reusable access packages for applets" >}}
+
+{{< figure src="/images/tenant-admin-applet/tenant-user-perm.png" alt="User-level permission configuration screen" caption="User Permissions: Override or refine access for specific users" >}}
+
+{{< figure src="/images/tenant-admin-applet/tenant-role-perm.png" alt="Role permission mapping screen" caption="Role Permissions: Map roles to permission sets and scoped actions" >}}
+
+4. Validate tenant/platform user assignments.
+5. Confirm audit logging visibility for key actions.
+
+### Module Visibility Guidance by Role
+
+| Role | Recommended Visible Modules |
+|---|---|
+| Tenant Administrator | Catalogue, Tenant Users, Platform Users, Applets, Tenant Roles, Permission Sets, Tenant Admins, Audit Trail |
+| Security/Operations | Tenant Roles, Permission Sets, Tenant Users, Platform Users, Audit Trail, Data Sync |
+| Compliance/Audit | Audit Trail, Tenant Roles (read access), Permission Sets (read access) |
+
+### Role and Permission Governance Settings
+
+Apply these controls to reduce misconfiguration risk:
+
+- Keep role definitions business-function based (not user-specific).
+- Use permission sets for reusable access patterns.
+- Apply target scoping (company/branch/location) where required.
+- Review role assignment counts (`No. of Users`, `No. of Teams`) regularly.
+
+### Audit and Monitoring Configuration
+
+Operationally recommended checks:
+
+- Daily: review high-impact role/permission/admin changes in `Audit Trail`.
+- Weekly: verify unexpected module visibility changes.
+- Monthly: recertify role and permission set usage with business owners.
+
+### Environment Notes
+
+- `Data Sync` may be partially implemented depending on branch.
+- `Subscription` hostname-related functionality may require environment-specific integration completion.
+- Validate settings route defaults in your deployment branch to avoid redirect inconsistencies.
+
+## FAQ
+
+**Q1: A user is assigned but still cannot see a module. What should I check first?**  
+A: Check in this order: module visibility in `Settings`, user assignment (`Tenant Users`/`Platform Users`), role assignment, then linked permission set.
+
+**Q2: When should I use Tenant Users vs Platform Users?**  
+A: Use `Tenant Users` for tenant-scoped account operations. Use `Platform Users` when access is managed from platform-level identity context.
+
+**Q3: How do I safely roll out a new role to many users?**  
+A: Create and validate the role with a pilot user first, map the correct permission set, then roll out in batches while monitoring `Audit Trail`.
+
+**Q4: How do I bulk onboard roles quickly?**  
+A: Use `Role File Import`: download sample CSV, populate required columns, upload, then review file status and error rows.
+
+**Q5: How can I verify who changed a permission or role setting?**  
+A: Use `Audit Trail` filters (actor, action, date) and inspect event details for traceability.
+
+**Q6: Why do labels sometimes appear in English only?**  
+A: Some views rely on shared-host `labels` translations. If unavailable, components use built-in English fallback text.
+
+**Q7: What should I validate before go-live?**  
+A: Validate module visibility, defaults, roles, permission sets, user assignments, backup admins, and run an end-to-end test recorded in `Audit Trail`.
+
+**Q8: Is Data Sync production-ready in all environments?**  
+A: Not always. Confirm branch/environment readiness because some implementations contain TODO or partial sync wiring.
