@@ -7,7 +7,7 @@ tags:
 - queue-management
 - workflow-automation
 - reporting
-weight: 62
+weight: 61
 ---
 
 ## Purpose and Overview
@@ -62,7 +62,7 @@ The **PDG Applet** is designed to simplify and automate deposit management, prod
   {{< card title="Advanced Reporting" subtitle="Generate deposit and product reports" link="#reporting-and-history" >}}
   {{< card title="Personalization" subtitle="Customize settings and workflows" link="#configuration-settings" >}}
   {{< card title="Audit Trail" subtitle="Full traceability of transactions" link="#faq" >}}
-
+{{< /cards >}}
 {{< figure src="/images/pdg-applet/pdg-applet-overview-infographic.png" alt="PDG Applet Overview Infographic" caption="PDG Applet: Challenges (manual queues, errors, no reporting), Solution (automation, bulk import, reporting, audit), and Who Benefits (Operations, Finance, Sales)." >}}
 {{< figure src="/images/pdg-applet/pdg-applet-overview-infographic.jpg" alt="PDG Applet Overview Infographic" caption="PDG Applet: Challenges (manual queues, errors, no reporting), Solution (automation, bulk import, reporting, audit), and Who Benefits (Operations, Finance, Sales)." >}}
 ### For Operations: Manage Deposit Queues
