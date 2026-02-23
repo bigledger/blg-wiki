@@ -1,6 +1,6 @@
 ---
 title: "Claim Cycle Applet"
-description: "Streamlined claim processing, cycle management, and approval workflows with comprehensive reporting and sampling analysis"
+description: "Batch processing, auditing, and payment generation workflows for Finance teams handling employee claims"
 tags:
 - claim-management
 - approval-workflow
@@ -12,733 +12,202 @@ weight: 60
 
 ## Purpose and Overview
 
-The **Claim Cycle Applet** is designed for **Finance and HR teams** who need to process employee claims in **batches** rather than individually. While the Claim Applet handles individual expense submissions and approvals, the Claim Cycle Applet consolidates approved claims into cycles for efficient batch processing, payment generation, and financial reconciliation.
+The **Claim Cycle Applet** is an advanced batch-processing engine designed specifically for **Finance Teams, Payroll Officers, and Auditors**. While the standard *Claim Applet* handles individual employees submitting their RM 50 taxi receipts, the *Claim Cycle Applet* is where Finance bundles 500 of those approved receipts together, audits them for fraud, and generates the final bank payment file.
 
-{{% callout type="info" %}}
-**Core Concept**: A **Claim Cycle** is a batch of claims processed together, typically representing a pay period (weekly, bi-weekly, or monthly). Think of it as bundling individual claims into a single payroll processing unit.
-{{% /callout %}}
+{{< callout type="info" >}}
+**Core Concept: What is a Claim Cycle?**
+A Claim Cycle is a "processing batch." Instead of paying employees one-by-one every day, an organization groups all claims from a specific period (e.g., "November 2024 Payroll") into a single Cycle. This Cycle moves through processing, auditing, and payment as one combined entity.
+{{< /callout >}}
 
 ### Claim Applet vs Claim Cycle Applet
 
-| Aspect | Claim Applet | Claim Cycle Applet |
-|--------|--------------|-------------------|
-| **Focus** | Individual claim submission | Batch processing of claims |
-| **Primary User** | Employees & Managers | Finance & HR Teams |
-| **Workflow** | Submit → Approve → Pay | Collect → Review → Process → Report |
-| **Output** | Individual reimbursements | Bank files, Payment Vouchers, Reports |
+| Feature | Claim Applet | Claim Cycle Applet |
+|---------|--------------|-------------------|
+| **Primary Users** | All Employees, Direct Managers | Finance Teams, Auditors |
+| **Action** | Submit 1 claim → Manager Approves | Pull 500 approved claims → Finance Audits |
+| **Output** | Individual "Approved" status | Bank Files, PVs, Cross-Billing Reports |
+| **Granularity** | Single receipt | Monthly Batch |
+
+{{< figure src="/images/claim-cycle-applet/claim-cycle-process.jpg" alt="Mastering the Claim Cycle: From Batch to Bank - showing triage, duplicate detection, risk-based sampling, and one-click reporting" caption="Mastering the Claim Cycle: From Batch to Bank. A visual overview of the workflow moving from the Checking Reports triage, Automated Duplicate Detection, Risk-Based Sampling, down to One-Click Bank & GL Reporting." >}}
 
 ---
 
-## Who Benefits from This Applet?
+## The "Golden Triangle" of Claim Cycles
 
-### Finance Teams
-- **Batch Processing**: Process hundreds of claims in one cycle instead of individually
-- **Report Generation**: Generate Bank Reports, PV Details, Cross-Billing automatically
-- **Reconciliation**: Match claims to payments with full audit trail
-- **Payment Integration**: Export directly to payroll systems
+To master this applet, understand how these three objects interact:
 
-### HR Managers
-- **Period Management**: Control claim submission and approval periods
-- **Compliance**: Ensure claims follow cut-off dates and policies
-- **Visibility**: Track all employee claims by cycle
-
-### Approvers & Reviewers
-- **Checking Reports**: Inbox, Approved, and On-Hold queues for systematic review
-- **Sampling**: Audit-based sampling for high-volume processing
-- **History Tracking**: Full approval and reviewer history
-
-### Executive Leadership
-- **Audit Controls**: Sampling-based audit for risk management
-- **Analytics**: Pivot reports for expense analysis
-- **Financial Oversight**: Cross-billing and professional subscription tracking
+1. **The Cycle**: The "Bucket." It defines the time period (e.g., Nov 1 - Nov 30) and the cut-off dates.
+2. **The Claim Lines**: The "Items in the Bucket." These are the individual employee claims that got pulled into this cycle.
+3. **The Reports**: The "Output." The data generated from the bucket so the company can actually pay the staff (Bank Files, Payment Vouchers).
 
 ---
 
-## What Problems Does This Solve?
+## Role-Based Quick Start Guides
 
-**Without Claim Cycles:**
-- Finance manually collects approved claims
-- Payment files created manually (error-prone)
-- No batch reconciliation
-- Difficult to manage cut-off periods
-- Limited audit sampling capabilities
+### For Finance Managers: Run the Monthly Claim Batch
+Your goal is to collect all approved claims for the month and generate a bank payment file.
 
-**With Claim Cycle Applet:**
-- ✓ **Automated Collection** - Pull approved claims into cycles automatically
-- ✓ **Batch Processing** - Process entire periods in one go
-- ✓ **Payment Reports** - Generate Bank Reports, PV Details instantly
-- ✓ **Audit Sampling** - Random or targeted claim sampling
-- ✓ **Complete Traceability** - Full history of every action
+**Step 1: Create the "Bucket" (The Cycle)**
+1. Go to **Claim Cycles** from the sidebar.
+2. Click **"+"** to create a new cycle.
+3. Name it (e.g., *Nov 2024 Employee Claims*).
+4. Set the **Finance Cut-off Date** (If set to Nov 25th, only claims approved by managers before this date will be pulled in).
+5. Click **Create**.
 
----
+**Step 2: Collect the Claims**
+1. Once created, the system systematically pulls all eligible, manager-approved claims into this cycle. 
+2. Go to the **Claim Lines** tab to verify the total amount (e.g., 420 claims totaling RM 45,000).
 
-## Key Features Overview
+**Step 3: Finance Verification**
+1. Go to the **Checking Reports** tab.
+2. Open the **Inbox**. Here you'll see every claim. 
+3. Review the receipts and amounts.
+4. Click **Approved** for clean claims. Click **On Hold** if a receipt looks suspicious (this stops it from being paid).
 
-{{< cards >}}
-  {{< card title="Cycle Management" subtitle="Create and manage claim processing cycles" link="#cycle-creation--management" >}}
-
-  {{< card title="Claim Lines" subtitle="View and process individual claims in batch" link="#claim-lines-tab" >}}
-
-  {{< card title="Checking Reports" subtitle="Inbox, Approved, and On-Hold workflows" link="#checking-reports-tab" >}}
-
-  {{< card title="Payroll Payment" subtitle="Integration with salary processing" link="#payroll-payment-tab" >}}
-
-  {{< card title="Sampling & Audit" subtitle="Random and targeted claim auditing" link="#sampling--audit" >}}
-
-  {{< card title="Multi-Format Reports" subtitle="Bank, PV, Cross-Billing, Pivot reports" link="#reports" >}}
-
-  {{< card title="History & Audit Trail" subtitle="Complete processing history" link="#history--audit-trail" >}}
-
-  {{< card title="Settings & Permissions" subtitle="Configure applet behavior" link="#settings--configuration" >}}
-{{< /cards >}}
-
+**Step 4: Pay the Employees**
+1. Go to the **Bank Report** tab.
+2. Click **Generate**.
+3. Download the payment file and upload it to your corporate banking portal.
+4. Go to the **PV Details Report** to generate the data needed for your accounting system.
 
 ---
 
-## Key Concepts
+### For Auditors: Perform a Fraud Check (Sampling)
+Your goal is to ensure employees aren't submitting fake receipts or inflating costs.
 
-### Understanding Claim Cycle Lifecycle
+**Step 1: Create an Audit Sample**
+1. Open up a pending Claim Cycle.
+2. Go to the **Sampling** tab.
+3. Click **Create Sample**.
+4. Define your rule: *"Give me a random 10% of all claims"* OR *"Give me 100% of all claims over RM 1,000."*
 
-A claim cycle moves through distinct phases:
+**Step 2: Deep Dive Verification**
+1. The system generates a focused list of claims based on your rule.
+2. Click into each sampled claim.
+3. Verify the receipt image against the claimed amount.
+4. Check for duplicate receipt uploads across different dates.
 
-```
-Draft → Open → In Review → Finalized → Closed
-  │       │        │           │          │
-  │       │        │           │          └── Archived, no changes
-  │       │        │           └── Reports generated, payments processed
-  │       │        └── Checking Reports active (reviewers working)
-  │       └── Collecting claims, supervisors approving
-  └── Initial creation, setting up dates
-```
-
-### Cycle Structure
-
-| Component | Description | Example |
-|-----------|-------------|---------|
-| **Claim Cycle** | Batch of claims for a period | "December 2024 Payroll Cycle" |
-| **Claim Line** | Individual claim in the cycle | Sarah's medical claim RM 150 |
-| **Sample** | Subset for detailed audit | Random 10% of claims > RM 500 |
-| **Report** | Output for finance processing | Bank Report for payment |
-
-### Key Dates in a Cycle
-
-| Date Field | Purpose |
-|------------|---------|
-| **Supervisor Approval Start** | When managers can start approving claims |
-| **Supervisor Approval End** | Deadline for manager approvals |
-| **Finance Cut-off Date** | When Finance begins processing |
-| **Extension End Date** | Final deadline for late submissions |
+**Step 3: The Audit Report**
+1. Once finished, go to the **Sampling Analysis Report** tab.
+2. Export the findings. This proves to external auditors that you have internal controls enforcing expense policies.
 
 ---
 
-## Quick Start Guide
+## Deep-Dive: The Cycle Details
 
-### For Finance Teams: Process Your First Cycle
+When you open a Claim Cycle, you manage the batch through a series of specialized tabs.
 
-**Goal:** Create a cycle and process claims to payment in 6 steps.
+### 1. Main Details Tab
+This defines the rules of the batch.
 
-**Step 1: Navigate to Claim Cycles**
-1. Go to **Claim Cycles Listing** from the sidebar
-2. Click **"+"** to create a new cycle
+{{< figure src="/images/claim-cycle-applet/main-details-tab.png" alt="Main Details tab showing cycle configuration, dates, and status." caption="Main Details: Define the strict cut-off dates for when claims can enter this batch." >}}
 
-**Step 2: Configure the Cycle**
-1. Select **Company** and **Branch**
-2. Enter **Cycle Name** (e.g., "Dec 2024 Claims")
-3. Set **Supervisor Approval Dates** (start and end)
-4. Set **Finance Cut-off Date**
-5. Click **Create**
+| Field | Purpose |
+|-------|---------|
+| **Status** | *Draft* (Setting up) → *Open* (Collecting) → *In Review* (Finance auditing) → *Closed* (Paid). |
+| **Supervisor Approval Dates** | The specific window when managers must approve claims for them to make it into this pay cycle. |
+| **Finance Cut-off Date** | The absolute deadline. Anything approved after this date rolls over to next month's cycle. |
 
-**Step 3: Review Claim Lines**
-1. Open the cycle → **Claim Lines** tab
-2. See all claims pulled into this cycle
-3. Review summary totals
+### 2. Checking Reports Tab (The Finance Inbox)
+This is where Finance staff spend 90% of their time. It acts as an email inbox for processing claims.
 
-**Step 4: Use Checking Reports**
-1. Go to **Checking Reports** tab
-2. **Inbox**: Claims pending review
-3. Review and move to **Approved** or **On Hold**
+{{< figure src="/images/claim-cycle-applet/checking-reports-tab.png" alt="Checking Reports tab with Inbox, Approved, and On Hold queues for claim review." caption="Checking Reports: Triage claims moving from Inbox to Approved or On-Hold." >}}
 
-**Step 5: Run Sampling (Optional)**
-1. Go to **Sampling** tab
-2. Create a sample (e.g., 10% of claims > RM 500)
-3. Review sampled claims in detail
-4. Generate **Sampling Analysis Report**
+- **Inbox Queue:** Claims that have been approved by the employee's direct manager, but haven't been verified by Finance yet.
+- **Approved Queue:** Claims Finance has verified are legitimate and compliant with company policy.
+- **On Hold Queue:** Claims with issues. 
+  - *Example:* An employee claimed RM 200 for a hotel, but attached a restaurant receipt instead. Finance puts this "On Hold." It will not be generated in the Bank Report until the employee fixes it.
 
-**Step 6: Generate Reports**
-1. **Bank Report**: For payment file
-2. **PV Details Report**: For accounting
-3. **Pivot Report**: For analysis
+### 3. Claim Lines Tab
+A raw data view of every single line item inside the cycle.
 
-**Done!** Claims are now ready for payroll processing.
+{{< figure src="/images/claim-cycle-applet/claim-lines-tab.png" alt="Claim Lines tab showing employee claims with amounts and status indicators." caption="Claim Lines: See a high-level summary of total amounts, or drill down into individual receipts." >}}
+
+- **Duplicate Detection System:** The system automatically flags potential duplicates (e.g., if two employees claim the same Grab receipt, or one employee submits the same toll receipt twice). These show up warned in this listing.
+
+### 4. Sampling Tab
+The dedicated audit environment.
+
+{{< figure src="/images/claim-cycle-applet/sampling-tab.png" alt="Sampling tab for creating audit samples and linking claim lines." caption="Sampling: Generate risk-based audit pools to verify high-value claims." >}}
 
 ---
 
-### For Reviewers: Review Claims in a Cycle
+## Report Generation
 
-**Goal:** Review and approve/hold claims in 3 steps.
+Once Finance has moved all valid claims to the "Approved" queue and placed problematic ones "On Hold," it's time to generate the outputs.
 
-1. **Open Cycle** → Go to **Checking Reports** tab
-2. **Inbox Queue**: Click on claims waiting for review
-   - Check receipt images
-   - Verify amounts and descriptions
-   - Look for duplicate flags
-3. **Decide**:
-   - **Approve** → Moves to Approved list
-   - **On Hold** → Flags for follow-up
+### Bank Report
+**What it is:** A formatted file containing employee bank account numbers and their total approved payout.
+**Why you need it:** Instead of manually typing 500 bank transfers, you upload this single file to your corporate bank (e.g., Maybank2e, CIMB BizChannel) for mass payout.
 
-{{% callout type="tip" %}}
-Use the **Summary UI** in Claim Lines tab for quick totals before diving into individual claims.
-{{% /callout %}}
+### PV (Payment Voucher) Details Report
+**What it is:** The accounting breakdown of the cycle.
+**Why you need it:** Your accountants need to know which General Ledger (GL) codes to charge. This report summarizes the cycle by GL Code (e.g., *RM 5,000 to Travel Expense GL, RM 2,000 to Medical GL*).
 
----
-
-## Core Features in Detail
-
-### Cycle Creation & Management
-
-#### Claim Cycles Listing
-
-The main view showing all claim cycles for your organization.
-
-![Claim Cycles Listing](/images/claim-cycle-applet/claim-cycles-listing.png)
-*Claim Cycles Listing showing cycle Code, Name, Status, and Total Claims for each batch.*
-
-**What You See:**
-- Cycle code and name
-- Company/Branch
-- Status (Draft, Open, In Review, Finalized, Closed)
-- Date ranges
-- Grand totals
-
-**Actions:**
-- **Create (+)**: New cycle
-- **Edit**: Modify cycle details
-- **Open**: Access cycle tabs
-
-![Create Claim Cycle Form](/images/claim-cycle-applet/create-claim-cycle-form.png)
-*Create new claim cycle form with Company, Status, and date configuration.*
+### Cross-Billing Report
+**What it is:** An inter-company billing breakdown.
+**Why you need it:** If your organization has multiple legal entities (Company A and Company B). If an employee from Company A buys a server for Company B, they claim it under Company A. This report automatically calculates how much Company B owes Company A to balance the books.
 
 ---
 
-#### Main Details Tab
+## Applet Configuration (For Admins)
 
-When you open a cycle, you'll see the Main Details form:
-
-| Field | Description |
-|-------|-------------|
-| **Company** | Legal entity for this cycle |
-| **Status** | Current lifecycle stage |
-| **Code** | Auto-generated identifier |
-| **Name** | Descriptive cycle name |
-| **Supervisor Approval Start Date** | When managers can approve |
-| **Supervisor Approval End Date** | Manager approval deadline |
-| **Finance Cut-off Date** | When Finance processing begins |
-| **Extension End Date** | Final deadline for exceptions |
-| **Created/Modified By** | Audit tracking |
-
-**Updating a Cycle:**
-1. Modify allowed fields
-2. Click **Update** button
-3. Changes saved immediately
-
-![Main Details Tab](/images/claim-cycle-applet/main-details-tab.png)
-*Main Details tab showing cycle configuration, dates, and status.*
-
----
-
-### Claim Lines Tab
-
-**View all individual claims within this cycle.**
-
-#### Features:
-
-**Summary UI**
-- Total claim count
-- Total amount
-- Breakdown by category/status
-
-**Claim Line Listing**
-- Employee name
-- Claim item
-- Amount
-- Status
-- Receipt indicators
-
-**Actions per Claim Line:**
-- **View Details**: Full claim information
-- **View Receipt**: Receipt image dialog
-- **Upload File**: Add supporting documents
-- **Duplicate Detection**: System flags potential duplicates
-
-#### Viewing Receipt Images
-
-1. Click on a claim line
-2. Click **View Receipt**
-3. Receipt image opens in dialog
-4. Zoom/pan for verification
-
-#### File Upload
-
-1. Select a claim line
-2. Click **Upload**
-3. Select file (PDF, JPG, PNG)
-4. File attached to claim record
-
-![Claim Lines Tab](/images/claim-cycle-applet/claim-lines-tab.png)
-*Claim Lines tab showing employee claims with amounts and status indicators.*
-
----
-
-### Checking Reports Tab
-
-**The heart of the review workflow with three sub-queues.**
-
-#### Inbox
-Claims waiting for reviewer action.
-
-**Workflow:**
-1. Claim appears in Inbox
-2. Reviewer examines details
-3. Moves to Approved or On Hold
-
-#### Approved
-Claims that passed review.
-
-**What's Here:**
-- All accepted claims
-- Ready for payment processing
-- Included in reports
-
-#### On Hold
-Claims flagged for follow-up.
-
-**Common Reasons:**
-- Missing documentation
-- Amount discrepancy
-- Needs clarification
-- Pending additional approval
-
-**Resolution:**
-1. Issue resolved
-2. Move back to Inbox for re-review
-3. Approve or reject
-
-![Checking Reports Tab](/images/claim-cycle-applet/checking-reports-tab.png)
-*Checking Reports tab with Inbox, Approved, and On Hold queues for claim review.*
-
----
-
-### Payroll Payment Tab
-
-**Integration with salary payment processing.**
-
-{{% callout type="info" %}}
-This tab may be hidden based on application settings (`hideSalaryPaymentTab`).
-{{% /callout %}}
-
-**Purpose:**
-- Link claims to salary payments
-- Generate payment listings
-- Track payment status
-
-**Use Case:**
-When claims are paid through payroll rather than separate reimbursement, this tab manages the integration.
-
----
-
-### Sampling & Audit
-
-**Risk-based claim auditing through sampling.**
-
-#### Sampling Tab
-
-**Create Samples:**
-1. Click **Create Sample**
-2. Define criteria:
-   - Random percentage (e.g., 10%)
-   - Amount threshold (e.g., > RM 500)
-   - Specific categories
-3. System selects claims matching criteria
-
-**Sample Management:**
-- View sample listing
-- Link claim lines to samples
-- Edit sample parameters
-- View sample history
-
-#### Claim Line Links
-Each sample contains linked claim lines:
-- Direct link to claim details
-- View receipts from sample view
-- Approve/flag through sample
-
-#### Sample History
-Full audit trail of:
-- Sample creation
-- Claims added/removed
-- Review actions taken
-- Status changes
-
-![Sampling Tab](/images/claim-cycle-applet/sampling-tab.png)
-*Sampling tab for creating audit samples and linking claim lines.*
-
----
-
-#### Sampling Analysis Report Tab
-
-**Insights from your sampling data.**
-
-**Report Contents:**
-- Sample size and coverage
-- Pass/fail rates
-- Issues identified
-- Trend analysis
-
-**Use For:**
-- Audit documentation
-- Risk assessment
-- Process improvement
-- Compliance reporting
-
----
-
-### Reports
-
-**Multiple report formats for different needs.**
-
-#### Bank Report
-**Purpose:** Generate payment file for bank transfer.
-
-**Contains:**
-- Employee bank details
-- Payment amounts
-- Reference numbers
-- File format for bank upload
-
-**How to Generate:**
-1. Go to **Bank Report** tab
-2. Click **Generate**
-3. Download file
-4. Upload to banking system
-
-![Bank Report Tab](/images/claim-cycle-applet/bank-report-tab.png)
-*Bank Report tab for generating payment files with employee payments.*
-
----
-
-#### PV Details Report
-**Purpose:** Payment Voucher details for accounting.
-
-**Contains:**
-- Transaction reference
-- Claim details
-- GL coding
-- Tax information
-
-**Use For:**
-- Accounting entries
-- Payment authorization
-- Audit documentation
-
-![PV Details Report Tab](/images/claim-cycle-applet/pv-details-tab.png)
-*PV Details Report with transaction references, amounts, and GL coding.*
-
----
-
-#### Cross-Billing Report
-**Purpose:** Inter-company billing for shared costs.
-
-**Contains:**
-- Billing company
-- Receiving company
-- Expense allocation
-- Amount breakdown
-
-**Use Case:**
-When employees from one legal entity claim expenses that should be billed to another entity.
-
----
-
-#### Pivot Report
-**Purpose:** Flexible analysis with customizable dimensions.
-
-**Features:**
-- Drag-and-drop dimensions
-- Row and column grouping
-- Aggregation options (Sum, Count, Average)
-- Export to Excel
-
-**Common Analysis:**
-- Claims by department
-- Claims by category over time
-- Top claimants
-- Cost center breakdown
-
----
-
-#### Professional Subscription Report
-**Purpose:** Track professional body memberships and subscriptions.
-
-**Contains:**
-- Membership type
-- Professional body
-- Renewal dates
-- Amounts
-
-**Use For:**
-- Tax documentation
-- Professional development tracking
-- Budget planning
-
----
-
-### History & Audit Trail
-
-#### Claim Cycles History Listing
-**Complete history of all cycles.**
-
-**What's Tracked:**
-- All lifecycle changes
-- Who made changes
-- When changes occurred
-- Previous values
-
-**Filters:**
-- Date range
-- Status
-- Created by
-- Company/Branch
-
----
-
-#### Approval History
-**Within each cycle:**
-- Who approved what
-- Timestamps
-- Approval comments
-- Rejection reasons
-
-#### Reviewer History
-**Track reviewer actions:**
-- Claims reviewed
-- Decisions made
-- Time spent
-- Reviewer assignments
-
----
-
-## Settings & Configuration
-
-### Default Selection
-**Pre-configure default values for new cycles.**
-
-- Default company
-- Default branch
-- Standard date offsets
-- Auto-naming patterns
-
----
+To tailor the Claim Cycle Applet for your company, navigate to **Settings** in the sidebar.
 
 ### Application Settings
-**Control applet behavior.**
-
-| Setting | Purpose |
-|---------|---------|
-| **Hide Salary Payment Tab** | Show/hide payroll integration |
-| **Default Cycle Duration** | Standard cycle length |
-| **Auto-close Settings** | Automatic cycle closure rules |
-
----
-
-### Reviewer Settings
-**Configure reviewer assignments and workflows.**
-
-- Assign reviewers to cycles
-- Set review quotas
-- Define escalation rules
-- Manage reviewer permissions
-
----
-
-### Field Settings
-**Customize visible fields and requirements.**
-
-- Show/hide specific fields
-- Set required fields
-- Configure field labels
-- Default values
-
----
-
-### Webhook Configuration
-**Integrate with external systems.**
-
-- Trigger webhooks on cycle events
-- Send data to external systems
-- Receive status updates
-- Configure endpoints
-
----
+Control the global behavior of the processing engine.
+- **`hideSalaryPaymentTab`**: Turn this on if you pay claims via direct bank transfer. Turn it off if you integrate claims directly into their monthly salary slip.
+- **Auto-close Settings**: Set rules to automatically change cycle status to "Closed" once the Bank Report is generated, preventing accidental double-payments.
 
 ### Feature Visibility
-**Control which features are available.**
+Control which tabs your staff can see to prevent unauthorized actions.
+- Hide the **Sampling Tab** from junior Finance staff, keeping it visible only to internal auditors.
+- Hide the **PV Details Report** from HR staff who only need to track the Bank Report.
 
-- Enable/disable tabs
-- Show/hide reports
-- Control access to sampling
-- Module-level visibility
-
----
-
-### Permission Management
-
-#### Permission Wizard
-**Guided permission setup for common roles.**
-
-#### Permission Sets
-**Pre-defined permission bundles.**
-
-| Set | Access Level |
-|-----|--------------|
-| **Viewer** | Read-only access |
-| **Reviewer** | Can approve/hold claims |
-| **Manager** | Full cycle management |
-| **Admin** | All settings access |
-
-#### User/Team/Role Permissions
-**Granular access control:**
-- Per-user permissions
-- Team-based assignments
-- Role inheritance
+### Permission Mapping
+Enforce strict segregation of duties (SoD).
+- **Setup:** User A (Finance Clerk) can only move claims from Inbox → Approved.
+- **Setup:** User B (Finance Manager) is the only one who can click "Generate Bank Report."
 
 ---
 
-### Audit Trail (Applet Log)
-**System-level logging of all actions.**
+## Common Real-World Scenarios
 
-- User actions
-- System events
-- Configuration changes
-- Security events
+### Scenario 1: The "Missed Deadline" Employee
+**The Situation:** It's November 26th. The Finance Cut-off date was November 25th. An employee calls complaining their RM 800 travel claim wasn't paid.
+**The Workflow:**
+1. Finance opens the *Nov 2024 Cycle*.
+2. Because the manager approved the claim on Nov 26th, the algorithm correctly excluded it from the November batch.
+3. Finance creates the *Dec 2024 Cycle*.
+4. The system automatically sweeps up the "missed" November claim and places it in the December cycle Inbox. The employee will be paid in the next physical payment run.
 
----
+### Scenario 2: The Cross-Billing Expense
+**The Situation:** You run a Group with 3 subsidiaries. A developer under *Subsidiary A* buys a software license for *Subsidiary C*.
+**The Workflow:**
+1. Developer submits the claim to their manager in Company A. Manager approves.
+2. Finance in Company A runs the Monthly cycle.
+3. Finance generates the **Cross-Billing Report**.
+4. The report explicitly shows an accounts receivable entry: *Subsidiary C owes Subsidiary A RM 500 for Software Licenses*. Finance uses this to generate an inter-company invoice.
 
-## Personalization
-
-### Personal Default Settings
-**Save your preferences:**
-- Preferred company/branch
-- Default filters
-- Saved views
-- Column configurations
-
-### Sidebar Customization
-**Arrange sidebar menu items:**
-- Show/hide menu items
-- Reorder sections
-- Pin favorites
-- Quick access shortcuts
-
----
-
-## Common Scenarios
-
-### Scenario 1: Month-End Claim Processing
-
-```
-1. January 1st: Create "January 2024 Claims" cycle
-   - Supervisor Approval: Jan 1-15
-   - Finance Cut-off: Jan 16
-   
-2. Jan 1-15: Managers approve individual claims
-   - Claims automatically flow into cycle
-   
-3. Jan 16: Finance team opens cycle
-   - Review Checking Reports (Inbox)
-   - Move valid claims to Approved
-   - Flag issues to On Hold
-   
-4. Jan 17: Run sampling
-   - 10% random sample of claims > RM 500
-   - Detailed verification
-   
-5. Jan 18: Generate reports
-   - Bank Report → Upload to bank
-   - PV Details → Send to Accounting
-   
-6. Jan 20: Close cycle
-   - All claims paid ✓
-```
-
-### Scenario 2: Audit Sampling
-
-```
-Auditor requests: "Show me how you verify claims"
-
-1. Open recent cycle
-2. Go to Sampling tab
-3. Show sample creation criteria:
-   - 10% of all claims
-   - 100% of claims > RM 1,000
-4. Show Sampling Analysis Report:
-   - 95% pass rate
-   - 5 issues identified and resolved
-5. Export for audit documentation
-```
-
-### Scenario 3: Cross-Company Claims
-
-```
-Employee from Company A claims meal with Client served by Company B
-
-1. Claim submitted under Company A
-2. Cycle processing identifies cross-billing
-3. Cross-Billing Report generated:
-   - Company A: RM 200 claimed
-   - Company B: RM 200 to be billed
-4. Inter-company billing processed
-```
+### Scenario 3: Investigating High-Risk Departments
+**The Situation:** Management suspects the Sales team is inflating entertainment claims.
+**The Workflow:**
+1. Auditor opens the latest Claim Cycle.
+2. Goes to the **Sampling** tab.
+3. Creates a specific rule: *"Pull 100% of claims from Department = Sales where Amount > RM 200"*.
+4. Auditor reviews all 45 receipts generated by the rule, finds 3 receipts that are non-compliant, puts them "On Hold", and generates the **Sampling Analysis Report** for the Sales Director.
 
 ---
 
-## Tips & Best Practices
+## FAQs
 
-### For Finance Teams
+**Q: If I put a claim "On Hold", is it deleted?**
+A: No. It remains in the system. It simply won't be included in the Bank Report for that specific payout. Once the issue is resolved, it can be moved to Approved.
 
-✓ **Establish Clear Cut-offs**: Communicate deadlines to all managers  
-✓ **Regular Sampling**: Implement consistent sampling to deter fraud  
-✓ **Use Pivot Reports**: Analyze spending patterns monthly  
-✓ **Close Cycles Promptly**: Don't let cycles remain open indefinitely
+**Q: What is the difference between Rejecting a claim in the standard Claim Applet, and putting it On Hold in the Claim Cycle?**
+A: 
+- **Employee's Manager Rejects (Claim Applet):** The claim is dead. The employee must fix and resubmit a brand new claim from scratch.
+- **Finance puts On Hold (Claim Cycle):** The claim is valid, but Finance needs a clarification (like a clearer picture of the receipt). The employee provides the picture, and Finance pushes it through without forcing the employee to restart the entire manager-approval process.
 
-### For Reviewers
-
-✓ **Check Inbox Daily**: Don't let claims pile up  
-✓ **Document On Hold Reasons**: Clear notes help resolution  
-✓ **Use Summary UI**: Quick totals before detailed review  
-✓ **Verify Receipts**: Always check receipt images match claims
-
-### For Administrators
-
-✓ **Configure Permissions Carefully**: Use permission sets for consistency  
-✓ **Set Up Webhooks**: Integrate with accounting systems  
-✓ **Review Audit Logs**: Monitor for unusual activity  
-✓ **Train Users**: Ensure all stakeholders understand the workflow
-
----
-
-## Frequently Asked Questions
-
-**Q: What's the difference between rejecting a claim in Claim Applet vs putting On Hold here?**  
-A: Rejection in Claim Applet sends back to employee. On Hold in Claim Cycle is an internal finance review flag—the claim is already approved by manager.
-
-**Q: Can I remove a claim from a cycle?**  
-A: Claims are linked to cycles based on approval dates. Consult your administrator for cycle adjustments.
-
-**Q: How are duplicate claims detected?**  
-A: System compares receipt details, amounts, and dates. Flagged duplicates appear in Claim Line View.
-
-**Q: Who can generate reports?**  
-A: Users with Reviewer or higher permissions. Specific report access can be controlled via Feature Visibility.
-
-**Q: Can cycles span multiple months?**  
-A: Yes, cycle dates are configurable. However, most organizations align with payroll periods.
+**Q: Can a single claim belong to two different cycles?**
+A: Absolutely not. The architecture uses a strict locking mechanism. Once a claim is pulled into a Cycle, it is permanently locked to that cycle to prevent double-payment fraud.
