@@ -62,31 +62,29 @@ The **PDG Applet** is designed to simplify and automate deposit management, prod
   {{< card title="Advanced Reporting" subtitle="Generate deposit and product reports" link="#reporting-and-history" >}}
   {{< card title="Personalization" subtitle="Customize settings and workflows" link="#configuration-settings" >}}
   {{< card title="Audit Trail" subtitle="Full traceability of transactions" link="#faq" >}}
-{{< /cards >}}
 
 {{< figure src="/images/pdg-applet/pdg-applet-overview-infographic.png" alt="PDG Applet Overview Infographic" caption="PDG Applet: Challenges (manual queues, errors, no reporting), Solution (automation, bulk import, reporting, audit), and Who Benefits (Operations, Finance, Sales)." >}}
-
----
-
-## Quick Start Guide
-
+{{< figure src="/images/pdg-applet/pdg-applet-overview-infographic.jpg" alt="PDG Applet Overview Infographic" caption="PDG Applet: Challenges (manual queues, errors, no reporting), Solution (automation, bulk import, reporting, audit), and Who Benefits (Operations, Finance, Sales)." >}}
 ### For Operations: Manage Deposit Queues
-
 1. **Access Deposit Queue:**
    - Go to **Deposit Queue** from the sidebar
    - View all pending deposits
 {{< figure src="/images/pdg-applet/image-1771815019763.png" alt="Outlet Listing Page" caption="Outlet listing page showing all outlets and their details." >}}
+{{< figure src="/images/pdg-applet/image-1771815019763.jpg" alt="Outlet Listing Page" caption="Outlet listing page showing all outlets and their details." >}}
 {{< figure src="/images/pdg-applet/image-1771815097497.png" alt="PDG Listing Page" caption="PDG listing page showing all PDG documents and their status." >}}
+{{< figure src="/images/pdg-applet/image-1771815097497.jpg" alt="PDG Listing Page" caption="PDG listing page showing all PDG documents and their status." >}}
 2. **Process Deposits:**
    - Select a deposit
    - Review details and attachments
    - Approve, reject, or query as needed
 {{< figure src="/images/pdg-applet/image-1771815115851.png" alt="Edit PDG Form" caption="Edit PDG form with details and guide tabs." >}}
+{{< figure src="/images/pdg-applet/image-1771815115851.jpg" alt="Edit PDG Form" caption="Edit PDG form with details and guide tabs." >}}
 {{< figure src="/images/pdg-applet/image-1771815130937.png" alt="Edit PDG Guide Tab" caption="Guide tab for PDG edit form, showing category selection." >}}
+{{< figure src="/images/pdg-applet/image-1771815130937.jpg" alt="Edit PDG Guide Tab" caption="Guide tab for PDG edit form, showing category selection." >}}
 {{< figure src="/images/pdg-applet/image-1771815143961.png" alt="Edit PDG Outlet Guide" caption="Outlet guide tab for PDG edit form, showing outlet details." >}}
+{{< figure src="/images/pdg-applet/image-1771815143961.jpg" alt="Edit PDG Outlet Guide" caption="Outlet guide tab for PDG edit form, showing outlet details." >}}
 **What happens next?**
 - You’ll receive notifications when deposits are approved, rejected, or queried.
-- Approved deposits are processed for reconciliation.
 - If queried, respond with additional info or documents.
 
 **Pro Tip:** Use filters and search to quickly locate specific deposits.
@@ -101,18 +99,18 @@ The **PDG Applet** is designed to simplify and automate deposit management, prod
 ### For Sales: Register Products
 
 1. **Navigate to Product Registration:**
-   - Go to **Product Registration**
    - Click **Add New Product**
 {{< figure src="/images/pdg-applet/image-1771815155088.png" alt="Product Registration Listing" caption="Product registration listing page showing all products and their details." >}}
+{{< figure src="/images/pdg-applet/image-1771815155088.jpg" alt="Product Registration Listing" caption="Product registration listing page showing all products and their details." >}}
 2. **Enter Product Details:**
    - Fill in product info, category, and customer
    - Attach relevant documents
 {{< figure src="/images/pdg-applet/image-1771815173074.png" alt="Product Registration Edit Form" caption="Edit form for product registration, showing product details." >}}
+{{< figure src="/images/pdg-applet/image-1771815173074.jpg" alt="Product Registration Edit Form" caption="Edit form for product registration, showing product details." >}}
 **What happens next?**
 - Product registration is submitted for review.
 - You’ll be notified if additional info is required or if registration is approved.
 
-**Pro Tip:** Use the CSV import for bulk product registration to save time.
 
 3. **Bulk Upload:**
    - Use **Master Data Upload** for CSV imports
@@ -125,8 +123,8 @@ The **PDG Applet** is designed to simplify and automate deposit management, prod
 
 1. **Access Deposit Register:**
    - Go to **Deposit Register**
-   - View all deposit transactions
 {{< figure src="/images/pdg-applet/image-1771815198481.png" alt="Deposit Register Listing" caption="Deposit register listing page showing all deposit transactions." >}}
+{{< figure src="/images/pdg-applet/image-1771815198481.jpg" alt="Deposit Register Listing" caption="Deposit register listing page showing all deposit transactions." >}}
 2. **Reconcile Transactions:**
    - Match deposits with register entries
    - Generate reconciliation reports
@@ -140,14 +138,10 @@ The **PDG Applet** is designed to simplify and automate deposit management, prod
 
 ---
 
-### For Line-Item Editing
 
 1. **Access Line-Items:**
    - Go to **Line-Items Container** from the sidebar or deposit/product detail view
-   - View, add, edit, or delete individual line items
-2. **Edit Details:**
    - Update item descriptions, amounts, and categories
-   - Attach supporting documents if needed
 3. **Save Changes:**
    - Confirm edits and save
    - Changes are reflected in deposit/product records
@@ -182,6 +176,7 @@ The **PDG Applet** is designed to simplify and automate deposit management, prod
    - Set up deposit categories, approval workflows, and product registration options
    - Personalize notification preferences
 {{< figure src="/images/pdg-applet/pdg-settings.png" alt="PDG Settings Page" caption="Settings page for deposit categories, approval workflows, and personalization options." >}}
+{{< figure src="/images/pdg-applet/pdg-settings.jpg" alt="PDG Settings Page" caption="Settings page for deposit categories, approval workflows, and personalization options." >}}
 2. **Test User Flows:**
    - Create a test deposit and product registration
    - Approve/reject/query as manager/finance
@@ -250,6 +245,7 @@ A: Go to the OPDG Report Listing Container to view, filter, and export reports. 
 - Access audit logs for all transactions
 - Export data for further analysis
 {{< figure src="/images/pdg-applet/pdg-audit-trail.png" alt="PDG Audit Trail" caption="Audit trail screen showing full traceability of deposit and registration transactions." >}}
+{{< figure src="/images/pdg-applet/pdg-audit-trail.jpg" alt="PDG Audit Trail" caption="Audit trail screen showing full traceability of deposit and registration transactions." >}}
 
 ---
 
