@@ -129,13 +129,33 @@ Create an Outlet Product Distribution Guide (OPDG) based on a PDG, then tailor i
 
 ---
 
-## OPDG Outlet Listing
 
-View all OPDGs assigned to outlets, with type and size visible at a glance.
+## OPDG Report Listing
 
-{{< figure src="/screenshots/pdg-applet/opdg-outlet-listing.png" alt="OPDG Outlet Listing" caption="OPDG Outlet Listing: All OPDGs by outlet." >}}
-{{< figure src="/screenshots/pdg-applet/opdg-pdg-listing.png" alt="OPDG PDG Listing" caption="OPDG PDG Listing: Linked PDG view." >}}
-{{< figure src="/screenshots/pdg-applet/opdg-pdg-chart.png" alt="OPDG PDG Chart" caption="OPDG PDG Chart: Chart tab for OPDG." >}}
+This report provides a detailed view of each outlet's OPDG quantity, the corresponding PDG quantity, brand, and brand quantity. It helps managers and planners track product distribution at a granular level for every outlet.
+
+{{< figure src="/screenshots/pdg-applet/opdg-report-listing.png" alt="OPDG Report Listing" caption="OPDG Report Listing: See OPDG QTY, PDG QTY, Brand, and Brand QTY for each outlet." >}}
+
+**Report Columns:**
+- Outlet Name
+- Outlet Code
+- Description
+- Outlet Size
+- Outlet Type
+- Product Department
+- Product Type
+- PDG QTY (Recommended display quantity from PDG)
+- OPDG QTY (Actual quantity set for outlet)
+- Brand
+- Brand QTY (Quantity allocated per brand)
+
+This listing allows you to:
+- Compare OPDG QTY vs PDG QTY for compliance and adjustments
+- See brand-level allocations for each outlet
+- Filter and sort by outlet, product group, or brand
+- Audit and review distribution plans across all outlets
+
+Use this report to ensure each outlet is following the recommended guidelines and to quickly identify any discrepancies or customizations made at the outlet level.
 
 ---
 
@@ -149,102 +169,5 @@ Bulk upload or update PDG templates using Excel for fast rollout.
 
 ---
 
-## Applet Installation Guide {#applet-installation-guide}
-
-Platform ADMIN users can install and assign the PDG/OPDG applets and permissions via the Platform Sysadmin Applet.
-
-{{< figure src="/screenshots/pdg-applet/catalogue-listing.png" alt="Catalogue Listing" caption="Catalogue Listing: Find Senheng PDG Catalog." >}}
-{{< figure src="/screenshots/pdg-applet/catalogue-add-user.png" alt="Add User to Catalogue" caption="Add users to the PDG catalogue." >}}
-{{< figure src="/screenshots/pdg-applet/catalogue-install-applet.png" alt="Install Applet for Users" caption="Install PDG Applet for users." >}}
-{{< figure src="/screenshots/pdg-applet/applet-settings-role-permission.png" alt="Applet Settings - Role Permission" caption="Assign user roles for PDG applet access." >}}
-{{< figure src="/screenshots/pdg-applet/applet-details-installed-users.png" alt="Applet Details - Installed by User" caption="Applet Details: Users with applet installed." >}}
-
-> **Alternative:** The BigLedger team can invite users by email for instant access and permissions.
-## 5.0 PDG Import/Upload
-
-📥 This section is intended for uploading PDG templates only.
-
-#### Step 1: Navigate to File Import
-In the PDG Applet, go to the third menu tab titled “File Import.”
-Click to upload the PDG template file (in the prescribed Excel format).
-
-{{< figure src="/screenshots/pdg-applet/file-import-listing.png" alt="File Import Listing" caption="File Import: Upload and monitor PDG templates." >}}
-
-#### Step 2: Understand the PDG Template Format
-The PDG upload template contains two major sections:
-Header Fields:
-- PDG Name
-- PDG Code
-- Create Date
-- Modified Date
-- Effective Date
-- End Date
-- Status
-
-Line Item Fields (PDG Line Items):
-- No – Row number (for reference only)
-- GROUP – Category Group (e.g., S9 for Product Department)
-- S5 – Product Group
-- Product Category
-- Outlet Type (e.g., B, P, SP)
-- Outlet Size (e.g., <5K, 5–7K, etc.)
-- Quantity – Recommended display quantity
-
-{{< figure src="/screenshots/pdg-applet/pdg-upload-template.png" alt="PDG Upload Template" caption="PDG upload template format (Excel)." >}}
-
-📊 Tip: Make sure combinations are valid (i.e., they exist in the system and are assigned to at least one item), or the upload may fail.
-
-#### Step 3: Monitor Upload Results
-After uploading, each file will appear in the listing with a processing status.
-Click into a listing to view:
-- Detailed upload results
-- Success or failure reasons for each row (e.g., missing fields, invalid combinations)
-A successful upload will be indicated clearly with a processed status in the listing.
-
-{{< figure src="/screenshots/pdg-applet/file-import-errors.png" alt="File Import Errors" caption="File Import: View upload errors and results." >}}
-
----
-
-## 6.0 Applet Installation Guide
-
-🛠️ This section is intended for Platform ADMIN users.
-To access and use PDG-related functionalities, the required applets must be installed for relevant users via the Platform Sysadmin Applet.
-
-#### Step-by-Step Guide:
-
-**Step 1: Locate the PDG Catalog**
-Go to Platform Sysadmin Applet > Catalogue Listing.
-Search for “Senheng PDG Catalog” and click into it.
-
-{{< figure src="/screenshots/pdg-applet/catalogue-listing.png" alt="Catalogue Listing" caption="Catalogue Listing: Find Senheng PDG Catalog." >}}
-
-**Step 2: Add Users to the Catalogue**
-Select the User Tab.
-Click “Invite” or “Add” to assign users who need access to PDG applets.
-
-{{< figure src="/screenshots/pdg-applet/catalogue-add-user.png" alt="Add User to Catalogue" caption="Add users to the PDG catalogue." >}}
-
-**Step 3: Install Applets for Users**
-Go to the Applet Tab within the catalog.
-Click on the desired PDG Applet.
-Under the Installed by User Tab, add users to trigger applet installation on their platform view.
-
-{{< figure src="/screenshots/pdg-applet/catalogue-install-applet.png" alt="Install Applet for Users" caption="Install PDG Applet for users." >}}
-
-**Step 4: Assign User Roles**
-Link each user to the appropriate user role that includes PDG permissions.
-This ensures they have sufficient access rights to view, edit, and manage the PDG applet functionalities.
-✅ Once the above are complete, these users will be able to view and interact with PDG and OPDG applets on their platform.
-
-{{< figure src="/screenshots/pdg-applet/applet-settings-role-permission.png" alt="Applet Settings - Role Permission" caption="Assign user roles for PDG applet access." >}}
-{{< figure src="/screenshots/pdg-applet/applet-details-installed-users.png" alt="Applet Details - Installed by User" caption="Applet Details: Users with applet installed." >}}
-
-**Alternative Installation Method:**
-If you prefer to streamline the process, the BigLedger team can directly send email invitations:
-Provide the user emails to the BigLedger team.
-Invited users will receive registration links.
-Upon logging in, the PDG applet will already be installed, and the necessary permissions will be automatically applied.
-
----
 
 
