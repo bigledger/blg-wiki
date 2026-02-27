@@ -1,7 +1,7 @@
 ---
 title: "EcomSync Related Applets"
 description: "Collection of applets for e-commerce synchronization across marketplaces and platforms"
-weight: 95
+weight: 195
 tags:
 - applets
 - ecommerce

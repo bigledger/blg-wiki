@@ -7,7 +7,7 @@ tags:
 - supplier-access
 - goods-received-note
 - purchase-order
-weight: 61
+weight: 161
 ---
 
 ## Purpose and Overview

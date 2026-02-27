@@ -7,7 +7,7 @@ tags:
   - goods-issue-note
   - inventory-management
   - sales-operations
-weight: 85
+weight: 185
 ---
 
 ## Purpose and Overview

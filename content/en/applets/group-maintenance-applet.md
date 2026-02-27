@@ -1,7 +1,7 @@
 ---
 title: "Group Maintenance Applet"
 description: "Add users to groups and assign platform-level permissions for group-based access control"
-weight: 35
+weight: 135
 tags:
 - applets
 - group-management

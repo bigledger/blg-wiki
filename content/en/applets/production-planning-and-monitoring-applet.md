@@ -9,7 +9,7 @@ tags:
   - process-monitoring
   - make-to-order
   - make-to-stock
-weight: 70
+weight: 170
 ---
 
 ## Purpose and Overview
