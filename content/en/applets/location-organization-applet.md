@@ -1,7 +1,7 @@
 ---
 title: "Location Organization Applet"
 description: "Manage and organize multiple locations within branches for comprehensive organizational structure"
-weight: 50
+weight: 150
 tags:
 - applets
 - organization

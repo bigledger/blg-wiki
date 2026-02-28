@@ -7,7 +7,7 @@ tags:
 - inventory-tracking
 - warehouse-operations
 - procurement-management
-weight: 70
+weight: 170
 ---
 
 ## Purpose and Overview
