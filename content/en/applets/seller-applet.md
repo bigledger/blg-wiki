@@ -18,8 +18,6 @@ The **Seller Applet** is a robust platform designed to manage the entire lifecyc
 **Core Concept**: The system manages the relationship between the **Seller Account** (Who), their **Marketplace Products** (What), and the **Pick & Pack Queue** (How) that drive business growth. It acts as a bridge between your core business and external partners.
 {{< /callout >}}
 
-## Key Features Overview
-
 ### Who Benefits from This Applet?
 
 **Sales & Procurement Teams:**
@@ -42,8 +40,6 @@ The **Seller Applet** is a robust platform designed to manage the entire lifecyc
 - **Pick & Pack Queue**: Granular visibility into the fulfillment status of every order line.
 - **Settlement Transparency**: View pending and historical payouts with itemized breakdowns.
 - **Branch Support**: Ability to manage multiple operational locations within a single seller account.
-
-{{< figure src="/images/seller-applet/seller-account-listing.png" alt="Seller Account Listing" caption="The Seller Account Listing page provides a centralized view of all registered sellers and their marketplace statuses." >}}
 
 ### What Problems Does This Solve?
 
@@ -80,7 +76,44 @@ Traditional marketplace management often suffers from fragmented data and manual
 {{< card title="Branch/Store Mapping" subtitle="Support for localized multi-store operations" link="#multi-branch-support" >}}
 {{< /cards >}}
 
-{{< figure src="/images/seller-applet/product-listing.png" alt="Product Listing Page" caption="Track and manage marketplace products, inventory levels, and synchronization status across the platform." >}}
+## Visual Overview: From Manual Chaos to Automated Growth
+
+```mermaid
+graph TD
+    subgraph Challenges ["The Manual Chaos (Before)"]
+        direction TB
+        C1[Fragmented Seller Data]
+        C2[Fulfillment Bottlenecks]
+        C3[Reconciliation Errors]
+        C4[Inventory Blind Spots]
+    end
+
+    Challenges == "Transition to Automation" ==> Hub["<b>Seller Applet Hub</b>"]
+
+    subgraph Solution ["The Digital Solution"]
+        direction TB
+        S1[Standardized Onboarding]
+        S2[Pick & Pack Queue]
+        S3[Settlement Triangle]
+        S4[Live Store Sync]
+    end
+
+    Hub ==> Solution
+
+    subgraph Benefits ["Who Benefits?"]
+        direction LR
+        B1["<b>Sales Teams</b><br/>Growth & Efficiency"]
+        B2["<b>Finance Teams</b><br/>Financial Integrity"]
+        B3["<b>Sellers</b><br/>Empowerment & Trust"]
+    end
+
+    Solution ==> Benefits
+
+    style Hub fill:#f9f,stroke:#333,stroke-width:4px
+    style Challenges fill:#fee,stroke:#f66
+    style Solution fill:#eef,stroke:#66f
+    style Benefits fill:#efe,stroke:#6f6
+```
 
 ---
 
@@ -110,19 +143,6 @@ The Seller Applet ensures financial accuracy through a linked three-step process
 
 Get your marketplace operations running quickly with these essential workflows.
 
-### For Admins: Initial System Setup
-
-**Goal:** Prepare the environment for seller onboarding in 6 steps.
-
-1.  **Verify Accounting Categories**: Define `AKN_ETY_CTG` labels to classify your sellers (e.g., Corporate vs. Individual).
-2.  **Setup Printable Formats** (`Settings > Printable Format`): Customize the look of Invoices and Payment Vouchers with your branding.
-3.  **Configure Branches/Stores**: Map out the physical locations in `Settings > Branches`.
-4.  **Define Webhooks** (`Settings > Webhook`): Enable external notifications for new orders or inventory changes.
-5.  **Establish Permission Sets**: Define granular access for Sales, Finance, and Seller roles.
-6.  **Set Settlement Types**: Enable relevant payment modes like Bank Transfer or e-Wallet for your region.
-
-{{< figure src="/images/seller-applet/seller-applet-settings.png" alt="Seller Applet Settings" caption="Configure system-wide settings, printable formats, webhooks, and granular user permissions." >}}
-
 ### For Staff: Onboarding a New Seller
 
 **Goal:** Successfully register a seller and their products.
@@ -147,32 +167,81 @@ Get your marketplace operations running quickly with these essential workflows.
 3.  **Verify Settlements**: Review generated **Purchase Invoices** to confirm the amount owed for the period.
 4.  **Download Vouchers**: View your **Payment Vouchers** to confirm when funds are released.
 
+{{< figure src="/images/seller-applet/seller-order-listing.png" alt="Seller Order Dashboard" caption="Sellers can monitor their fulfillment queue and track the status of all incoming marketplace orders." >}}
+
+---
+
+## Feature Sections
+
+### Seller Account Management
+
+The foundation of the applet is the **Seller Account**. This section allows you to manage the master data for all third-party partners. Each account is linked to an `mst_entity` and captures unique attributes like tax registration numbers and specific accounting categories.
+
+{{< figure src="/images/seller-applet/seller-account-listing.png" alt="Seller Account Listing" caption="The Seller Account Listing page provides a centralized view of all registered sellers and their marketplace statuses." >}}
+
+- **Credit Limits**: Set hard limits on the amount of business a seller can process before payout.
+- **Entity Extensions**: Use custom fields to track unique metadata for each seller.
+
+### Product and Catalog Sync
+
+Synchronize your marketplace listings with your financial inventory. This ensures that every sale is tracked against a valid item in your ERP.
+
+{{< figure src="/images/seller-applet/product-listing.png" alt="Product Listing Page" caption="Track and manage marketplace products, inventory levels, and synchronization status across the platform." >}}
+
+- **MKP to FI Linkage**: Map Marketplace Items directly to Financial Items.
+- **Pre-Order Control**: Enable flags for items that require longer lead times.
+
+### Pick & Pack Fulfillment (Seller Orders)
+
+The **Seller Order** dashboard houses the **Pick & Pack Queue**, a real-time fulfillment engine that guides sellers through the picking, packing, and shipping process.
+
 {{< figure src="/images/seller-applet/seller-order-listing.png" alt="Seller Order / Pick & Pack Queue" caption="Monitor and fulfill customer orders through the integrated Pick & Pack fulfillment queue." >}}
+
+- **Granular Status Tracking**: View the exact status of every line item in an order.
+- **Goods Issued Note (GIN)**: Automatically update order statuses by issuing a GIN upon shipment.
+
+### Accounts Payable & Settlement
+
+Automate the financial reconciliation between the platform and the seller using the generated documents in this section.
+
+- **Purchase Invoices (PI)**: Created automatically based on fulfilled orders.
+  {{< figure src="/images/seller-applet/purchase-invoice-listing.png" alt="Purchase Invoice Listing" caption="Automated generation of purchase records following successful order fulfillment." >}}
+
+- **Payment Vouchers (PV)**: Process settlements via Bank Transfer, e-Wallets, or even Membership Points.
+  {{< figure src="/images/seller-applet/payment-voucher-listing.png" alt="Payment Voucher Listing" caption="Streamlined tracking and processing of seller payouts across multiple settlement channels." >}}
+
+### Multi-Branch & Store Mapping
+
+Support complex multi-location operations by mapping specific sellers and products to physical branches.
+
+{{< figure src="/images/seller-applet/branch-listing.png" alt="Branch and Store Listing" caption="Manage physical locations and map them to inventory stores for intelligent order routing." >}}
 
 ---
 
 ## Configuration & Settings
 
-### Seller Account Management
+### Admin: Initial System Setup
 
-- **Entity Attributes**: Customize `mst_entity_ext` parameters like Website URL or Seller Remarks.
-- **Status Lifecycle**: Manage accounts through states: `Active`, `Inactive`, or `Pending Approval`.
+**Goal:** Prepare the environment for seller onboarding.
 
-### Product & Inventory Logic
+1.  **Verify Accounting Categories**: Define `AKN_ETY_CTG` labels to classify your sellers (e.g., Corporate vs. Individual).
+2.  **Setup Printable Formats** (`Settings > Printable Format`): Customize Invoices and Payment Vouchers.
+3.  **Configure Branches/Stores**: Map out physical locations in `Settings > Branches`.
+4.  **Define Webhooks** (`Settings > Webhook`): Enable external notifications for new orders.
+5.  **Establish Permission Sets**: Define access for Sales, Finance, and Seller roles.
+6.  **Set Settlement Types**: Enable payment modes like Bank Transfer or e-Wallet.
 
-- **Require Delivery/Production**: Toggle these flags per product to trigger different fulfillment workflows.
-- **UOM Management**: Set multi-unit measurements and pricing schemes for complex product catalogs.
+{{< figure src="/images/seller-applet/seller-applet-settings.png" alt="Seller Applet Settings" caption="Configure system-wide settings, printable formats, webhooks, and granular user permissions." >}}
 
-### Accounts Payable & Settlement
+### Detailed Admin Controls
 
-- **Settlement Modes**: Configure regional payment gateways or membership currency options.
-- **Batch Processing**: Group multiple Seller Orders into a single settlement cycle for efficiency.
-
-{{< figure src="/images/seller-applet/purchase-invoice-listing.png" alt="Purchase Invoice Listing" caption="Automated generation of purchase records following successful order fulfillment." >}}
-
-{{< figure src="/images/seller-applet/payment-voucher-listing.png" alt="Payment Voucher Listing" caption="Streamlined tracking and processing of seller payouts across multiple settlement channels." >}}
-
-{{< figure src="/images/seller-applet/branch-listing.png" alt="Branch and Store Listing" caption="Manage physical locations and map them to inventory stores for intelligent order routing." >}}
+- **Seller Account Management**:
+  - **Entity Attributes**: Customize `mst_entity_ext` parameters.
+  - **Status Lifecycle**: Manage accounts through `Active`, `Inactive`, or `Pending Approval`.
+- **Product & Inventory Logic**:
+  - **Fulfillment Flags**: Toggle `Require Delivery` or `Require Production` per product.
+  - **UOM Management**: Set multi-unit measurements and complex pricing.
+    - **Batch Processing**: Group Seller Orders into single settlement cycles.
 
 ---
 
