@@ -241,6 +241,8 @@ The system is hard-coded to protect your data integrity:
 
 Admins can tailor the applet to specific business needs via the **Settings** menu.
 
+{{< figure src="/images/internal-inbound-delivery-order-applet/settings-2.png" alt="Applet Settings" caption="Applet Settings: Configure field visibility, custom statuses, and permissions for the inbound process." >}}
+
 ### Custom Clearance Statuses
 
 Allows you to track additional logistics milestones (e.g., "Customs Cleared", "In Quality Check", "Quarantined").
