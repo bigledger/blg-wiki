@@ -45,29 +45,73 @@ Week 20: Release $1,500 → Office chairs
 
 ---
 
-### Why Use Blanket Purchase Orders?
+## Key Features Overview
 
-**Problem Solved:**
+### Who Benefits from This Applet?
 
-Traditional procurement involves repetitive PO creation for regular purchases—t same supplier, similar items, predictable needs. This creates:
-- ❌ Redundant administrative work
-- ❌ Inconsistent pricing (no volume leverage)
-- ❌ Slow response to urgent needs (approval delays)
-- ❌ Poor spend visibility (scattered across many small POs)
-- ❌ Weak supplier relationships (transactional, not strategic)
+**Procurement Staff:**
+- Negotiate once, benefit all year with long-term agreements
+- Reduce administrative workload by 70%+ (one agreement vs. dozens of POs)
+- Build strategic supplier partnerships
+- Better pricing leverage through volume commitment
+- Clear audit trail for compliance
 
-**Benefits:**
+**Department Users & Requesters:**
+- Fast requisitioning against pre-approved agreements
+- No waiting for negotiations or approvals
+- Predictable pricing (no budget surprises)
+- Self-service release creation
+- Clear visibility of available balance
 
-✓ **Reduce Admin Work** — Create once, release many times  
-✓ **Better Pricing** — Volume commitment = supplier discounts  
-✓ **Faster Fulfillment** — Pre-approved, just release and deliver  
-✓ **Budget Control** — Fixed maximum spend with real-time tracking  
-✓ **Simplified Compliance** — One contract, one approval, many transactions  
-✓ **Stronger Supplier Partnerships** — Long-term commitment builds trust
+**Managers & Approvers:**
+- Better budget control with maximum spend caps
+- Real-time visibility into committed vs. available amounts
+- Early warnings for expiring or near-exhaustion agreements
+- Simplified approval process (releases, not full POs)
+- Spend tracking by department, project, or supplier
+
+**Finance & Accounting Teams:**
+- Accurate budget forecasting and tracking
+- Reduced invoice processing time
+- Better cash flow management with predictable commitments
+- Complete spend visibility by supplier
+- Simplified period-end accruals
+
+**Suppliers & Vendors:**
+- Long-term business commitment and revenue predictability
+- Reduced quote/proposal effort (one negotiation)
+- Faster order fulfillment (pre-approved releases)
+- Stronger customer relationships
+- Guaranteed volume for better capacity planning
+
+### What Problems Does This Solve?
+
+**The Manual Procurement Process Problem:**
+
+Traditional procurement requires creating individual purchase orders for every transaction—even for routine, recurring purchases from the same supplier. Common issues include:
+
+- **Lost in paperwork** - Multiple PO approvals clog the system
+- **Wasted negotiation time** - Renegotiating prices for the same items monthly
+- **Inconsistent pricing** - No volume leverage, prices vary between orders
+- **Delayed fulfillment** - Approval bottlenecks slow urgent needs
+- **Poor spend visibility** - Scattered data across dozens of small POs
+- **Weak supplier relationships** - Transactional, not strategic partnerships
+- **Budget overruns** - No central cap on total supplier spend
+
+**The Blanket PO Applet Solution:**
+
+- **Digital agreements** - Create long-term contracts with suppliers in minutes
+- **Automated release management** - Departments self-serve without bottlenecks
+- **Volume-based pricing** - Lock in discounts for the entire period
+- **Spending caps** - Built-in maximum amount prevents overruns
+- **Real-time tracking** - Monitor committed vs. available balance instantly
+- **Complete traceability** - Full audit trail from agreement to delivery
+- **Flexible reporting** - Analyze by supplier, department, or time period
+- **Integration ready** - Connects with ERP, accounting, and approval systems
 
 ---
 
-## Key Features Overview
+## Key Features at a Glance
 
 - **Long-term agreements** — Define 3-month, 6-month, or yearly purchase contracts
 - **Maximum value contracts** — Set spending caps with automatic tracking
@@ -89,7 +133,7 @@ Traditional procurement involves repetitive PO creation for regular purchases—
   {{< card title="Settings" subtitle="Configure defaults, formats, and permissions" link="#configuration--settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/blanket-purchase-order-applet/blanket-po-old-way-vs-new-way.png" alt="The Old Way vs The New Way: Traditional PO process compared to Blanket PO approach" caption="From Repetitive Orders to Smart Agreements: The Old Way (create PO every time, renegotiate prices, wait for approval) vs The New Way (one agreement, pre-approved terms, instant releases)." >}}
+{{< figure src="/images/blanket-purchase-order-applet/blanket-purchase-order-overview.png" alt="Transforming Procurement with Blanket Purchase Orders: Three-column infographic showing procurement challenges, BPO solutions, and user benefits" caption="Transforming Procurement: The Challenges (redundant admin work, inconsistent pricing, slow response, poor visibility, transactional relationships) vs The Solution (purchasing credit line, efficient release management, locked-in pricing, real-time tracking, streamlined dashboard) vs Who Benefits (procurement staff, department users, managers, finance teams, suppliers)." >}}
 
 ---
 
@@ -171,6 +215,8 @@ To effectively manage blanket purchase orders, understand how **Line Items**, **
 
 Get up and running quickly with these role-specific workflows.
 
+{{< figure src="/images/blanket-purchase-order-applet/quick-start-guide.png" alt="Quick Start Guide: Step-by-step workflows for Procurement Staff, Department Users, and Administrators" caption="Quick Start Guide: Visual workflows showing how to create agreements (procurement), make releases (departments), and configure settings (admins)." >}}
+
 ### For Procurement Staff: Create Your First Blanket PO
 
 **Goal:** Establish a long-term purchase agreement with a supplier in 7 steps.
@@ -197,7 +243,20 @@ Get up and running quickly with these role-specific workflows.
 
 **What happens next?** The Blanket PO is now active. Authorized staff can create releases against it. The system tracks cumulative spend and prevents releases exceeding the maximum value.
 
-**Pro Tip:** Always set a realistic **Maximum Amount** based on historical spend data. Over-estimating locks budget unnecessarily; under-estimating requires frequent renewals.
+**Pro Tips:**
+
+- **Set Realistic Maximum Amounts**: Base on historical spend data (review last year's transactions)
+- **Add Buffer**: Set max at 110-120% of expected spend for flexibility
+- **Use Round Numbers**: RM 50,000 is clearer than RM 47,350 for budget discussions
+- **Document Supplier Contact**: Add key contact details in the Account tab
+- **Attach Signed Agreement**: Upload the supplier-signed contract for audit compliance
+
+**Common Mistakes to Avoid:**
+
+- Creating Blanket POs without supplier confirmation (get written agreement first)
+- Setting unrealistic validity periods (too long = stale pricing, too short = admin overhead)
+- Forgetting to add line items (a Blanket PO without items can't be used)
+- Not assigning departments (makes cost tracking difficult later)
 
 ---
 
@@ -214,7 +273,20 @@ Get up and running quickly with these role-specific workflows.
    - Enter required quantity and delivery location
 4. **Submit**: Release goes to supplier → Goods delivered → Receive via GRN
 
-**Pro Tip:** Check the **Available Balance** before creating a release. If the Blanket PO is nearly exhausted, coordinate with Procurement for renewal before ordering.
+**Pro Tips:**
+
+- **Check Available Balance First**: Avoid rejected releases due to insufficient budget
+- **Use Descriptive References**: "Marketing Dept - Q1 Materials" vs. "Release 1"
+- **Attach Supporting Docs**: If internal approval needed, attach request form
+- **Monitor Delivery Status**: Follow up on releases stuck in "Sent" for > 5 days
+- **Coordinate with Team**: Share BPO reference number with colleagues to avoid duplicate agreements
+
+**What to Do if Balance is Insufficient:**
+
+1. Check if you selected the correct Blanket PO (maybe another agreement covers this item)
+2. Review Doc Link tab to see where budget was spent
+3. Contact Procurement to request budget increase or renewal
+4. Consider splitting your order across multiple periods if renewal is imminent
 
 ---
 
@@ -291,7 +363,308 @@ Get up and running quickly with these role-specific workflows.
 
 ---
 
-## Blanket Purchase Order Listing - Your Agreements Dashboard
+## Spend Tracking & Monitoring
+
+**Monitor your agreement budgets and utilization rates in real-time.**
+
+### What is Spend Tracking?
+
+Spend Tracking shows procurement staff, managers, and finance teams how much of each Blanket PO's maximum amount has been committed through releases and what remains available. Think of it as your "agreement budget dashboard."
+
+**For Procurement Staff:**
+- See which agreements are being actively used vs. underutilized
+- Identify agreements approaching exhaustion (need renewal)
+- Spot unusual spending patterns that require investigation
+- Demonstrate value delivered (cost savings, efficiency gains)
+
+**For Department Users:**
+- Check available balance before creating releases
+- Avoid rejected releases due to insufficient budget
+- Plan requisitions across the remaining agreement period
+
+**For Managers:**
+- Monitor team spending against approved budgets
+- Get early warnings for agreements needing renewal
+- Track utilization rates to optimize future agreements
+- Identify opportunities to consolidate spend
+
+**For Finance Teams:**
+- Real-time visibility into procurement commitments
+- Accurate accrual forecasting for financial close
+- Budget consumption tracking by supplier, category, department
+- Audit trail for compliance and variance analysis
+
+---
+
+### How to Check Spend Status
+
+**Method 1: BPO Listing View**
+
+1. Go to **Blanket Purchase Order Listing**
+2. See at-a-glance spend data for each agreement:
+   - **Maximum Amount**: Budget ceiling (e.g., RM 50,000)
+   - **Committed Amount**: Total releases created (e.g., RM 13,550)
+   - **Available Balance**: Remaining budget (e.g., RM 36,450)
+   - **Utilization %**: Percentage consumed (e.g., 27%)
+
+**Visual Example:**
+
+```
+BPO-2024-001 | ABC Office Supplies      | RM 50,000 | RM 13,550 | RM 36,450 | 27%  | Active
+BPO-2024-002 | XYZ Steel Trading       | RM 500,000| RM 475,000| RM 25,000 | 95%  | Critical!
+BPO-2024-003 | Tech Solutions Inc      | RM 120,000| RM 45,000 | RM 75,000 | 38%  | Healthy
+BPO-2024-004 | Corporate Uniforms Ltd  | RM 150,000| RM 8,500  | RM 141,500| 6%   | Underused
+```
+
+**Method 2: Individual BPO Detail View**
+
+1. Open any Blanket PO
+2. View the **Header** section for spend summary
+3. Go to **Doc Link** tab to see itemized releases
+
+**Visual Spend Dashboard:**
+
+```
+Blanket PO: ABC Office Supplies - 2024 Annual Agreement
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Maximum Amount:     RM 50,000.00
+Committed to Date:  RM 13,550.00 (27%)
+Available Balance:  RM 36,450.00 (73%)
+Valid Period:       Jan 1 - Dec 31, 2024 (4 months elapsed, 8 months remaining)
+
+[████████░░░░░░░░░░░░░░░░] 27% utilized
+
+Status: HEALTHY ✓
+
+Recent Releases (Last 5):
+- Mar 15: RM 1,550 (Office supplies) - Approved
+- Mar 8:  RM 950  (Stationery)      - Received
+- Feb 22: RM 800  (Paper & pens)     - Invoiced
+- Feb 10: RM 1,200 (Folders)         - Delivered
+- Jan 28: RM 2,050 (Mixed items)     - Invoiced
+```
+
+---
+
+### Key Spend Tracking Features
+
+**Real-Time Updates:**
+- Balance updates immediately after each release is created
+- No manual calculation needed—system tracks automatically
+- Prevents accidental over-commitment
+
+**Multi-Currency Support:**
+- View balances in MYR, USD, SGD, or other currencies
+- Auto-conversion for consolidated reporting
+- Exchange rate tracking for foreign suppliers
+
+**Breakdown by Category:**
+- Supplier-level: Total spend across all BPOs with a supplier
+- Department-level: Total spend by cost center
+- Category-level: Office Supplies vs. Raw Materials vs. Services
+- Time period: Monthly, quarterly, or yearly trends
+
+**Validity Period Tracking:**
+- See how long the agreement has left
+- Calculate burn rate (spending pace)
+- Predict if budget will last until period end
+
+**Release Status Visibility:**
+- Drafted: Created but not sent
+- Submitted: Awaiting supplier confirmation
+- Approved: Confirmed by supplier
+- Received: Goods delivered
+- Invoiced: Payment processed
+
+---
+
+### Common Spend Monitoring Scenarios
+
+**Scenario 1: Planning Your Department's Requisitions**
+
+```
+Your team's needs for Q2: RM 15,000
+
+Check Blanket PO status:
+Maximum:   RM 50,000
+Committed: RM 35,000 (70% used)
+Available: RM 15,000
+
+Analysis: Exactly enough! But...
+- 2 more pending releases totaling RM 3,000
+- Actual available: RM 12,000
+
+Decision: 
+- Release urgent items first (RM 8,000)
+- Defer nice-to-have items until renewal or create separate BPO
+```
+
+**Scenario 2: Procurement Manager Monthly Review**
+
+```
+Monthly Check (Day 1 of month):
+
+BPO Status Overview:
+┌─────────────────────────────────────────────────────────────┐
+│ 15 Active Agreements                                         │
+│ - 3 at >90% utilization → URGENT: Plan renewals            │
+│ - 8 healthy (40-75% utilization)                            │
+│ - 4 underutilized (<20% after 6 months) → Investigate why   │
+│                                                              │
+│ Expiring Soon (next 30 days): 2 agreements                  │
+│ - Contact suppliers for renewal quotes this week            │
+└─────────────────────────────────────────────────────────────┘
+
+Actions:
+1. Call suppliers for 3 near-exhaustion BPOs
+2. Email departments about 4 underutilized agreements
+3. Prepare renewal proposals for 2 expiring BPOs
+```
+
+**Scenario 3: Finance Period-End Accruals**
+
+```
+Task: Calculate procurement commitments for March financial close
+
+Steps:
+1. Export all Active Blanket POs
+2. Sum "Committed Amount" across all agreements: RM 2.5M
+3. Filter for uncommitted balance: RM 1.2M
+4. Analyze:
+   - RM 2.5M committed → Will need payment within 30-60 days
+   - RM 1.2M uncommitted → Flexible (can roll forward)
+5. Report to CFO: "Open purchase commitments: RM 2.5M"
+```
+
+**Scenario 4: Supplier Performance Review**
+
+```
+Question: "Should we renew with Supplier XYZ for another year?"
+
+Data from Spend Tracking:
+- BPO Value: RM 200,000 for 12 months
+- Actual Utilization: RM 85,000 (43%) → Underutilized
+- Release Count: 24 releases
+- Average Release: RM 3,542
+
+Analysis:
+- Either: We overestimated need (reduce next year's BPO to RM 100K)
+- Or: Departments aren't using it (pricing not competitive?)
+- Or: Alternative supplier emerged mid-year
+
+Action: Survey departments before renewal decision
+```
+
+---
+
+### Utilization Health Indicators
+
+The system categorizes agreements into health zones based on utilization and time remaining:
+
+| Utilization % | Time Elapsed | Status | Interpretation | Action |
+|--------------|-------------|--------|----------------|--------|
+| 0-25% | <50% of period | Slow Start | Normal if just started | Monitor |
+| 0-25% | >50% of period | **Underutilized** | Budget too high or not communicated | Investigate |
+| 26-50% | Any | Moderate | Reasonable pacing | Monitor |
+| 51-75% | Any | Good | Healthy usage | Continue |
+| 76-90% | <75% of period | High | Fast burn rate | Watch closely |
+| 91-99% | Any | **Critical** | Nearly exhausted | Renew urgently |
+| 100% | Any | **Exhausted** | No more releases possible | New BPO required |
+
+**Visual Health Dashboard:**
+
+```
+Your Blanket PO Portfolio Health (15 Agreements):
+
+Status Distribution:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ 4 | Healthy      ████████████  (27%)
+ 6 | Good         ████████████████████████  (40%)
+ 2 | Moderate     ████████  (13%)
+ 1 | Underutilized ████  (7%)
+ 2 | Critical     ████████  (13%)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Action Items:
+⚠️  3 agreements need immediate attention
+✓  10 agreements are on track
+ℹ️  2 agreements need investigation
+```
+
+---
+
+### Best Practices for Spend Monitoring
+
+**Daily (5 minutes):**
+- Quick scan of new releases created
+- Check for any agreements hitting 100% utilization
+
+**Weekly (15 minutes):**
+- Review agreements approaching 80%+ utilization
+- Check for pending releases stuck in Submitted status
+- Monitor agreements expiring in next 45 days
+
+**Monthly (1 hour):**
+- Deep analysis of utilization rates vs. planned pace
+- Identify underutilized agreements (training issue? communication gap?)
+- Supplier performance review (on-time delivery, quality)
+- Budget vs. actual variance analysis
+- Prepare renewal pipeline for expiring agreements
+
+**Quarterly (2 hours):**
+- Portfolio review with department heads
+- Consolidation opportunities (can we combine agreements?)
+- Category spend analysis (are we getting best pricing?)
+- Forecast next quarter's budget needs
+- Executive summary for leadership
+
+---
+
+### Tips for Effective Spend Tracking
+
+**For Procurement Staff:**
+
+- **Set Up Alerts**: Configure system to email you when agreements hit 85% and 95% utilization
+- **Use Filters Smartly**: Create saved views ("Expiring Soon", "High Utilization", "Underused")
+- **Track Trends**: Compare this year's spending patterns to last year—spot anomalies early
+- **Document Assumptions**: When setting maximum amounts, note the basis (helps with next year's budgeting)
+
+**For Department Users:**
+
+- **Check Before You Release**: Always verify available balance before creating release requests
+- **Respect the Budget**: If balance is low, coordinate with other departments sharing the BPO
+- **Report Issues**: If you can't find a needed item in the BPO, tell Procurement immediately
+- **Use Descriptive References**: Help Procurement track which dept/project is consuming budget
+
+**For Finance Teams:**
+
+- **Export Regularly**: Download utilization reports weekly for trending analysis
+- **Reconcile with AP**: Match committed amounts to supplier invoices received
+- **Forecast Accruals**: Use uncommitted balances to estimate period-end liabilities
+- **Variance Analysis**: Investigate agreements with >20% variance from planned consumption
+
+---
+
+### Common Questions
+
+**Q: Why is my available balance lower than expected?**  
+A: Pending releases (created but not yet received/invoiced) consume the balance immediately to prevent over-commitment. Check the Doc Link tab for pending releases.
+
+**Q: Can I increase the maximum amount mid-period?**  
+A: Depends on your organization's policy. Some allow amendments with approval; others require creating a new Blanket PO. Consult your procurement policy or system admin.
+
+**Q: What happens if I try to create a release exceeding the available balance?**  
+A: The system will block the release and show an error: "Insufficient balance. Available: RM X, Requested: RM Y." You'll need to reduce the release amount or request a BPO amendment.
+
+**Q: How do I track spending by department across multiple Blanket POs?**  
+A: Use the reporting feature to filter by Department and export. You can also assign departments to releases, then aggregate by department in your analysis.
+
+**Q: Does voiding a release restore the available balance?**  
+A: Yes. When a release is voided or canceled, the committed amount is released back into the available balance automatically.
+
+---
+
+##Blanket Purchase Order Listing - Your Agreements Dashboard
 
 **What is the BPO Listing?**
 
@@ -300,12 +673,12 @@ This is your central command center for all purchase agreements—active, expire
 {{< figure src="/images/blanket-purchase-order-applet/bpo-listing-with-filters.png" alt="Blanket Purchase Order Listing with filters showing Active, Expired, and Near Exhaustion tabs" caption="BPO Listing: Filter by status, supplier, or validity period to manage your agreement portfolio" >}}
 
 **What You Can Do:**
-- ✓ View all Blanket POs with status (Draft, Active, Expired, Voided)
-- ✓ Filter by supplier, branch, department, or validity dates
-- ✓ See spend utilization (Committed Value vs. Maximum Value)
-- ✓ Identify expiring agreements (< 30 days remaining)
-- ✓ Create new Blanket POs or edit drafts
-- ✓ Generate reports on agreement utilization
+- View all Blanket POs with status (Draft, Active, Expired, Voided)
+- Filter by supplier, branch, department, or validity dates
+- See spend utilization (Committed Value vs. Maximum Value)
+- Identify expiring agreements (< 30 days remaining)
+- Create new Blanket POs or edit drafts
+- Generate reports on agreement utilization
 
 ---
 
@@ -365,10 +738,21 @@ Steps:
 
 **Best Practices:**
 
-✓ **Review Weekly**: Spend 15 minutes checking expiring agreements and utilization  
-✓ **Use Filters**: Don't scroll—filter by supplier or department to find what you need  
-✓ **Monitor Near-Exhaustion**: Agreements at > 90% utilization may need urgent renewal  
-✓ **Clean Up Drafts**: Delete or finalize draft Blanket POs older than 30 days
+- **Daily 5-Minute Check**: Quick scan of new releases and status changes
+- **Weekly 15-Minute Review**: Check expiring agreements and utilization rates
+- **Monthly Deep Dive**: Analyze spend patterns, supplier performance, and budget consumption
+- **Use Smart Filters**: Create saved filter views for common queries ("Expiring in 30 Days", "Near Exhaustion >90%")
+- **Monitor Near-Exhaustion**: Agreements at >90% utilization need urgent action
+- **Clean Up Drafts**: Delete or finalize draft Blanket POs older than 30 days
+- **Document Decisions**: Use the Notes/Attachments section to record why agreements were created or modified
+- **Set Reminders**: Calendar alerts 45 days before major agreements expire
+
+**Red Flags to Watch For:**
+
+- Blanket PO at 95%+ utilization with >60 days remaining (budget underestimated)
+- Multiple agreements with same supplier (consolidation opportunity?)
+- <20% utilization after 50% of period elapsed (overestimated or not communicated to departments)
+- Draft agreements older than 2 weeks (stuck in approvals or forgotten?)
 
 ---
 
@@ -471,11 +855,22 @@ Usage: IT department releases as projects arise
 
 **Tips for Defining Line Items:**
 
-✓ **Be Specific**: "A4 Paper - 80gsm White" is better than "Paper"  
-✓ **Lock Competitive Prices**: Once unit price is in the Blanket PO, it won't change even if market prices rise  
-✓ **Use Maximum Quantities Strategically**: For items where you want to force supplier re-negotiation if volumes exceed forecast  
-✓ **Include Common Variants**: Don't create a new Blanket PO for every minor variation—add multiple line items  
-✓ **Review Periodically**: If an item is never released, remove it on renewal to.simplify the agreement
+- **Be Specific**: "A4 Paper - 80gsm White, 500 sheets/box" is better than "Paper"
+- **Include Specifications**: "HP CF217A Black Toner" vs. "Toner" prevents order errors
+- **Lock Competitive Prices**: Once unit price is in the Blanket PO, it won't change even if market prices rise (your protection)
+- **Use Maximum Quantities Strategically**: For volatile items where you want flexibility to renegotiate if volumes change
+- **Include Common Variants**: Cover all sizes/colors in one Blanket PO rather than creating multiple agreements
+- **Standardize UOM**: Ensure Unit of Measure matches your inventory system (Box vs. Piece, Kg vs. Litre)
+- **Document Item Codes**: Use supplier's item codes in description for faster order processing
+- **Review Periodically**: Remove never-released items on renewal to simplify the agreement
+
+**Common Line Item Mistakes:**
+
+- Vague descriptions leading to wrong items delivered
+- UOM mismatches (ordered "pieces" but supplier ships "boxes")
+- Forgetting to link item to the Blanket PO account (system won't allow releases)
+- Setting maximum quantities too low (causes premature exhaustion)
+- Not including tax codes (invoice reconciliation nightmares)
 
 ---
 
@@ -488,11 +883,11 @@ The **Doc Link** tab shows all **releases** (call-offs, delivery orders, or purc
 {{< figure src="/images/blanket-purchase-order-applet/bpo-doc-link-releases.png" alt="Doc Link tab showing list of releases against the Blanket PO with Release No, Date, Amount, and Status" caption="Doc Link: Track every release made against the Blanket PO agreement" >}}
 
 **What You Can See:**
-- ✓ All releases created from this Blanket PO
-- ✓ Release dates and amounts
-- ✓ Cumulative spend vs. available balance
-- ✓ Status of each release (Draft, Sent, Received, Invoiced)
-- ✓ Quick navigation to release documents
+- All releases created from this Blanket PO
+- Release dates and amounts
+- Cumulative spend vs. available balance
+- Status of each release (Draft, Sent, Received, Invoiced)
+- Quick navigation to release documents
 
 ---
 
@@ -534,24 +929,48 @@ Release #4 - Feb 22 - RM 950 - Status: Draft
 Total Released: RM 13,550 of RM 50,000 (27% utilized)
 ```
 
+**Visual Spend Tracking:**
+
+```
+Blanket PO: Office Supplies 2024
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Maximum:    RM 50,000
+Committed:  RM 13,550 (27%)
+Available:  RM 36,450 (73%)
+
+[███████░░░░░░░░░░░░░░░░] 27% utilized
+
+Status: HEALTHY ✓ (plenty of budget remaining)
+```
+
+**Utilization Health Indicators:**
+
+| Utilization % | Status | Action Required |
+|--------------|--------|------------------|
+| 0-50% | Healthy | Monitor normally |
+| 51-75% | Good | Track more frequently |
+| 76-90% | Caution | Plan renewal/extension |
+| 91-99% | Critical | Immediate action needed |
+| 100% | Exhausted | Create new agreement |
+
 ---
 
 **Key Benefits of Doc Link Tracking:**
 
-✓ **Complete Audit Trail**: See every transaction against the agreement  
-✓ **Spend Visibility**: Real-time tracking of committed vs. available budget  
-✓ **Fast Navigation**: Click on any release to view or edit details  
-✓ **Status Monitoring**: Know which releases are pending, received, or invoiced  
-✓ **Supplier Performance**: Identify delivery delays or issues by tracking release fulfillment
+- **Complete Audit Trail**: See every transaction against the agreement  
+- **Spend Visibility**: Real-time tracking of committed vs. available budget  
+- **Fast Navigation**: Click on any release to view or edit details  
+- **Status Monitoring**: Know which releases are pending, received, or invoiced  
+- **Supplier Performance**: Identify delivery delays or issues by tracking release fulfillment
 
 ---
 
 **Tips:**
 
-✓ **Review Regularly**: Check Doc Link tab weekly to monitor utilization patterns  
-✓ **Close Old Releases**: Mark completed releases as "Closed" to keep the list clean  
-✓ **Use Release References**: Add clear references (e.g., "Manufacturing Floor - Week 8") for easy tracking  
-✓ **Monitor Pending**: Follow up on releases stuck in "Sent" status for too long
+- **Review Regularly**: Check Doc Link tab weekly to monitor utilization patterns  
+- **Close Old Releases**: Mark completed releases as "Closed" to keep the list clean  
+- **Use Release References**: Add clear references (e.g., "Manufacturing Floor - Week 8") for easy tracking  
+- **Monitor Pending**: Follow up on releases stuck in "Sent" status for too long
 
 ---
 
@@ -619,99 +1038,694 @@ Store all agreement-related files:
 
 The Settings page provides system-wide configuration for the Blanket Purchase Order Applet. Navigate via **Settings** in the sidebar.
 
+{{< callout type="tip" >}}
+**Admin Tip**: Complete initial configuration in this order: (1) Application Settings → (2) Default Selection → (3) Printable Formats → (4) Permissions. This ensures proper system behavior before users start creating agreements.
+{{< /callout >}}
+
 ### Application Settings
 
-**Feature Visibility:**
-Toggle which features and menu items are visible within the applet.
+**What Are Application Settings?**
 
-**Field Configuration:**
-Control field-level behavior on Blanket PO forms:
-- Set fields as **Required** — cannot save without completing
-- Set fields as **Optional** — shown but not mandatory  
-- Set fields as **Hidden** — removed from view
+Application Settings control the core behavior of the Blanket PO Applet—what features are available, which fields are mandatory, and how the workflow operates.
 
-**Workflows:**
-Define approval workflows for:
-- Blanket PO creation (who must approve new agreements?)
-- Release creation (can departments self-serve or need approval?)
-- Maximum amount thresholds (agreements > RM 100,000 need CFO approval)
+#### Feature Visibility (`Settings > Application Settings > Feature Visibility`)
+
+Control which navigation menu items and features users can access.
+
+| Feature | Description | When to Hide |
+|---------|-------------|--------------|
+| **BPO Listing** | Main dashboard of all agreements | Never (core feature) |
+| **Create BPO** | Button to create new Blanket POs | For users who only create releases |
+| **Reports** | Analytics and reporting section | For basic users |
+| **Settings** | Admin configuration area | For non-admin users |
+| **Doc Link** | Release tracking tab | Never (essential for monitoring) |
+| **Department Assignment** | Cost center allocation | If not using department tracking |
+
+**How to Configure:**
+1. Go to **Settings** > **Application Settings** > **Feature Visibility**
+2. Toggle features ON/OFF for different user roles
+3. Click **Save**
+
+---
+
+#### Field Configuration (`Settings > Application Settings > Field Configuration`)
+
+Control field-level behavior on Blanket PO forms. For each field, set it as:
+
+| Field State | Behavior | When to Use |
+|-------------|----------|-------------|
+| **Required** | Must be filled before saving | Critical data (Supplier, Valid From/To, Maximum Amount) |
+| **Optional** | Shown but can be left blank | Nice-to-have data (Reference Number, Notes) |
+| **Hidden** | Removed from view entirely | Features not used by your organization |
+
+**Recommended Field Settings:**
+
+| Field Name | Recommended State | Reason |
+|------------|-------------------|---------|
+| **Document Number** | Required | Unique identifier for tracking |
+| **Supplier** | Required | Core agreement component |
+| **Valid From** | Required | Start date mandatory |
+| **Valid To** | Required | End date mandatory |
+| **Maximum Amount** | Required | Budget control essential |
+| **Currency** | Required | Financial clarity |
+| **Branch** | Optional/Required | Depends on multi-branch setup |
+| **Location** | Optional | Only if inventory location matters |
+| **Reference** | Optional | For cross-referencing with external systems |
+| **Department** | Optional/Required | Depends on cost tracking needs |
+| **Description/Notes** | Optional | Free-text annotation |
+
+**How to Configure:**
+1. Go to **Settings** > **Application Settings** > **Field Configuration**
+2. For each field, select **Required**, **Optional**, or **Hidden**
+3. Click **Save Changes**
+4. Test by creating a Blanket PO to verify behavior
+
+---
+
+#### Approval Workflow (`Settings > Application Settings > Approval Workflow`)
+
+Define who must approve Blanket POs before they become active.
+
+**Workflow Components:**
+
+| Component | Purpose | Example |
+|-----------|---------|---------|
+| **Approval Levels** | Sequential approvers | Level 1: Manager → Level 2: Finance → Level 3: CFO |
+| **Amount Thresholds** | Trigger extra approvals for high-value agreements | > RM 100,000 requires CFO approval |
+| **Department-Based Routing** | Route to different approvers by department | Marketing Dept → Marketing Manager |
+| **Document Status Triggers** | Actions that trigger approvals | Changing status from Draft → Submitted |
+
+**Common Approval Scenarios:**
+
+**Scenario 1: Small Organization (Single Approver)**
+```
+All Blanket POs → Procurement Manager → Finance Officer → Active
+```
+
+**Scenario 2: Large Organization (Tiered by Amount)**
+```
+< RM 50,000     → Department Manager → Active
+RM 50K - 100K   → Department Manager → Procurement Manager → Active
+> RM 100,000    → Department Manager → Procurement Manager → CFO → Active
+```
+
+**Scenario 3: Release-Level Approval**
+```
+Blanket PO Creation → Procurement Manager (one-time approval)
+Each Release       → Department Manager (ongoing approval as needed)
+```
+
+**How to Configure:**
+1. Go to **Settings** > **Application Settings** > **Approval Workflow**
+2. Click **"Add Approval Level"**
+3. Define:
+   - **Level**: 1, 2, 3 (sequential order)
+   - **Approver Role**: Select from roles/users
+   - **Conditions**: Amount thresholds, departments, etc.
+4. Click **Save**
+5. Test with a sample Blanket PO
+
+**Best Practices:**
+
+- **Keep It Simple**: Too many approval levels = delays and frustration
+- **Use Amount Thresholds**: Small agreements shouldn't need CFO approval
+- **Set Backup Approvers**: Avoid bottlenecks when approvers are on leave
+- **Document the Process**: Create a flowchart for employees to understand routing
+- **Review Quarterly**: Remove unnecessary approval steps that add no value
+
+---
+
+#### Auto-Numbering (`Settings > Application Settings > Auto-Numbering`)
+
+Configure automatic document number generation for Blanket POs.
+
+| Field | Purpose | Example |
+|-------|---------|---------|
+| **Prefix** | Start of document number | BPO- |
+| **Number Format** | Padding and structure | 0000 (4 digits) |
+| **Suffix** | End of document number (optional) | -2024 |
+| **Starting Number** | First number in sequence | 1 (results in BPO-0001) |
+| **Reset Frequency** | When to restart sequence | Yearly, Never |
+
+**Example Configurations:**
+
+```
+Config 1 (Simple):
+  Prefix: BPO-
+  Format: 000
+  Suffix: (none)
+  Result: BPO-001, BPO-002, BPO-003...
+
+Config 2 (With Year):
+  Prefix: BPO-
+  Format: 0000
+  Suffix: -2024
+  Result: BPO-0001-2024, BPO-0002-2024...
+  
+Config 3 (Branch-Specific):
+  Prefix: HQ-BPO-
+  Format: 00000
+  Suffix: (none)
+  Result: HQ-BPO-00001, HQ-BPO-00002...
+```
+
+**How to Configure:**
+1. Go to **Settings** > **Application Settings** > **Auto-Numbering**
+2. Enter prefix, format, suffix, starting number
+3. Set reset frequency (Yearly recommended for new year reset)
+4. Click **Save**
+5. Create a test Blanket PO to verify numbering
+
+---
+
+#### Cut-Off Period (`Settings > Application Settings > Cut-Off Period`)
+
+Set monthly or period-end deadlines for Blanket PO and release submissions.
+
+**Why Use Cut-Off Periods?**
+
+Finance teams need to close accounting periods. Cut-off periods ensure:
+- All releases for the month are submitted by a deadline
+- Finance can process without late entries disrupting closed periods
+- Clear communication to employees about submission windows
+
+**How It Works:**
+
+```
+Example: Monthly Cut-Off = 25th of each month
+
+Timeline:
+- Jan 1-25: Employees create releases for January transactions
+- Jan 25 (5 PM): Cut-off deadline
+- Jan 26-31: Finance processes January releases
+- Feb 1: New period opens for February transactions
+```
+
+**Configuration Options:**
+
+| Setting | Options | Impact |
+|---------|---------|--------|
+| **Cut-Off Date** | Day of month (e.g., 25th) | Deadline for submissions |
+| **Grace Period** | 0-5 days | Extra time for late entries with manager approval |
+| **Hard vs. Soft Close** | Hard = System blocks, Soft = Warning only | Enforcement level |
+
+**How to Configure:**
+1. Go to **Settings** > **Application Settings** > **Cut-Off Period**
+2. Set cut-off day (e.g., 25th)
+3. Set grace period (recommend 2 days)
+4. Choose hard or soft enforcement
+5. Click **Save**
+
+**Best Practice:** Communicate cut-off dates clearly to all users via email and training sessions
 
 ---
 
 ### Default Selection
 
-Set defaults that pre-populate when creating new Blanket POs:
+Set defaults that pre-populate when creating new Blanket POs, saving time and ensuring consistency.
 
-| Setting | Purpose | Example |
-|---------|---------|---------|
-| **Default Branch** | Pre-fills Branch on new Blanket POs | Headquarters |
-| **Default Location** | Pre-fills warehouse location | Main Warehouse |
-| **Default Validity Period** | Auto-fills "Valid To" date (e.g., +12 months from today) | 12 months |
-| **Default Currency** | Pre-selects currency | MYR, USD, SGD |
+**Why Use Defaults?**
 
-**How to Configure Defaults:**
+Users creating Blanket POs typically work from the same branch/location and use the same currency. Pre-filling these values:
+- Reduces data entry errors
+- Saves 30-60 seconds per Blanket PO creation
+- Ensures consistency across agreements
+- Simplifies onboarding for new procurement staff
+
+**Available Default Settings:**
+
+| Setting | Purpose | Example | Impact |
+|---------|---------|---------|--------|
+| **Default Branch** | Pre-fills Branch on new Blanket POs | Headquarters, Regional Office South | Saves selection time |
+| **Default Location** | Pre-fills warehouse/fulfillment location | Main Warehouse, Distribution Center 1 | Automatic release routing |
+| **Default Validity Period** | Auto-calculates "Valid To" date | 12 months, 6 months, 90 days | Consistent agreement lengths |
+| **Default Currency** | Pre-selects currency | MYR, USD, SGD | Matches local operations |
+| **Default Maximum Amount** | Pre-fills a placeholder max amount | RM 10,000, RM 50,000 | Starting point for discussion |
+
+**How Defaults Work:**
+
+```
+Without Defaults:
+1. Click "Create BPO" → Empty form
+2. Select Branch: (scroll through 20 options)
+3. Select Location: (scroll through 15 options)
+4. Select Currency: (scroll through 10 options)
+5. Enter Valid To: (calculate date manually)
+Time: ~90 seconds
+
+With Defaults:
+1. Click "Create BPO" → Form pre-filled
+2. Verify defaults are correct (usually are)
+3. Proceed to supplier and amount
+Time: ~30 seconds (60% faster!)
+```
+
+**How to Configure System-Wide Defaults:**
 1. Go to **Settings** > **Default Selection**
-2. Select your defaults
+2. Select preferred defaults for:
+   - Branch
+   - Location
+   - Validity Period (months)
+   - Currency
 3. Click **Save**
 
-**User Override:** Individual users can set personal defaults under **Personalization** > **Personal Default Selection**.
+**User Override:**
+
+Individual users can set personal defaults under **Personalization** > **Personal Default Selection**. These override system defaults.
+
+**Example: Multi-Branch Setup**
+
+```
+System Default (Headquarters):
+  Branch: HQ
+  Location: Main Warehouse
+  Currency: MYR
+
+User Override (Regional Manager):
+  Branch: Regional Office - Penang
+  Location: Penang Warehouse
+  Currency: MYR
+
+When the Regional Manager creates a BPO, their personal defaults take precedence.
+```
+
+**Best Practices:**
+
+- **Set Conservative Defaults**: Use the most common values (typically HQ branch)
+- **Train Users on Overrides**: Let power users know they can personalize
+- **Review Annually**: Update defaults if organizational structure changes
+- **Match Accounting**: Ensure default branch matches financial setup
 
 ---
 
 ### Printable Format Settings
 
-Manage Blanket PO print templates:
+Manage Blanket PO print templates for professional supplier documents and internal records.
 
-| Field | Description |
-|-------|-------------|
-| **Format Code** | Template identifier (e.g., BPO-STD) |
-| **Format Name** | Display name (e.g., "Standard Blanket PO", "Supplier Agreement") |
-| **File Name** | Jasper report filename on server |
+**What Are Printable Formats?**
+
+Printable Formats are PDF templates used to generate formal Blanket PO documents. Each template can have different layouts for different purposes (supplier copy, internal approval, executive summary).
+
+**Why Multiple Formats?**
+
+| Format Type | Audience | What It Includes | When to Use |
+|-------------|----------|------------------|-------------|
+| **Standard Blanket PO** | Supplier | Full agreement: terms, line items, T&Cs | Sending to supplier for signature |
+| **Supplier Agreement** | Legal/Supplier | Legal terms, signatures, conditions | Formal contracts |
+| **Internal Approval** | Management | Summary, justification, cost breakdown | Seeking management approval |
+| **Executive Summary** | Leadership | High-level: supplier, amount, period | Board reporting |
+| **Purchase Requisition** | Finance | Budget allocation, account codes | Internal budget authorization |
+
+**Configuration Fields:**
+
+| Field | Purpose | Example |
+|-------|---------|---------|
+| **Format Code** | Unique identifier | BPO-STD, BPO-SUPPLIER, BPO-EXEC |
+| **Format Name** | Display name in dropdown | "Standard Blanket PO", "Supplier Agreement" |
+| **File Name** | Jasper/template file on server | blanket_po_standard.jrxml |
+| **Description** | Admin notes | "For external supplier with T&Cs" |
+| **Default Format** | Auto-selected format | Yes/No |
 
 **How to Add a Print Format:**
-1. Go to **Settings** > **Printable Format Settings**
-2. Click **"Add Format"**
-3. Enter Format Code, Name, and File Name
-4. Save
+1. Prepare your Jasper report file (.jrxml) or template
+2. Upload file to server's report directory
+3. Go to **Settings** > **Printable Format Settings**
+4. Click **"Add Format"**
+5. Enter:
+   - **Format Code**: BPO-SUPPLIER
+   - **Format Name**: Supplier Agreement
+   - **File Name**: blanket_po_supplier.jrxml
+   - **Default**: Check if this should be default option
+6. Click **Save**
+
+**Testing Your Format:**
+1. Open an existing Blanket PO
+2. Go to **Export** tab
+3. Select your new format from dropdown
+4. Click **"Export as PDF"**
+5. Review PDF output for formatting issues
+
+**Common Format Customizations:**
+
+- **Logo & Branding**: Add company logo, colors, fonts
+- **Language**: Multilingual templates (English, Malay, Chinese)
+- **Terms & Conditions**: Include legal clauses
+- **Signature Blocks**: Areas for authorized signatories
+- **QR Codes**: For digital verification
+- **Barcodes**: For document management systems
+
+**Best Practices:**
+
+- **Test Thoroughly**: Use sample data to verify all fields render correctly
+- **Version Control**: Name templates with versions (BPO_Standard_v2.jrxml)
+- **Backup Old Templates**: Don't delete—archive in case rollback needed
+- **Document Changes**: Maintain a changelog for template modifications
+- **User Training**: Show users which format to use when
 
 ---
 
 ### Webhook
 
-Configure webhook notifications for Blanket PO events:
-- New Blanket PO created
-- Blanket PO finalized (activated)
-- Release created
-- Agreement expiring (< 30 days)
-- Agreement exhausted (> 95% utilized)
+Configure webhook notifications to integrate Blanket PO events with external systems.
 
-**Use Cases:**
-- Push to ERP or accounting system
-- Send alerts to Slack or Teams
-- Trigger external approval workflows
+**What Are Webhooks?**
+
+Webhooks send real-time HTTP notifications when specific Blanket PO events occur. Think of them as "automated phone calls" to other systems when something happens.
+
+**Why Use Webhooks?**
+
+**Without Webhooks (Manual):**
+```
+Event: New Blanket PO created
+Manual Action:
+1. Export data from BPO Applet
+2. Open ERP system
+3. Manually enter details
+4. Send email to team
+5. Update dashboard
+Time: 15 minutes + human error risk
+```
+
+**With Webhooks (Automated):**
+```
+Event: New Blanket PO created
+Automatic Action:
+1. Webhook fires → ERP receives data
+2. ERP auto-creates PO record
+3. Slack notification sent to team
+4. Dashboard auto-updates
+Time: < 1 second + zero errors
+```
+
+**Available Webhook Events:**
+
+| Event | When It Triggers | Typical Use Case |
+|-------|------------------|------------------|
+| **BPO Created** | New Blanket PO saved as draft | Notify procurement team |
+| **BPO Finalized** | Blanket PO activated | Push to ERP, notify departments |
+| **BPO Modified** | Changes to active agreement | Audit log, alert approvers |
+| **Release Created** | New release against BPO | Send to supplier automatically |
+| **Agreement Expiring** | 30 days before Valid To date | Alert procurement to renew |
+| **Near Exhaustion** | Committed > 95% of maximum | Urgent notification to manager |
+| **Agreement Expired** | Past Valid To date | Archive notification |
+
+**Webhook Configuration Fields:**
+
+| Field | Description | Example |
+|-------|-------------|---------|
+| **Webhook Name** | Descriptive label | "ERP Integration - New BPO" |
+| **Event Type** | What triggers this webhook | BPO Finalized |
+| **Target URL** | Endpoint to send data | https://erp.company.com/api/blanket-po/receive |
+| **HTTP Method** | Request type | POST, PUT |
+| **Headers** | Authentication and content type | Authorization: Bearer {token} |
+| **Payload Template** | JSON structure sent | Custom mapping |
+| **Active** | Enable/disable | Toggle on/off |
+| **Retry Policy** | What to do if endpoint fails | Retry 3 times with 5-min intervals |
+
+**How to Add a Webhook:**
+1. Obtain API endpoint from target system (ERP, Slack, etc.)
+2. Get authentication credentials (API key, bearer token)
+3. Go to **Settings** > **Webhook**
+4. Click **"Add Webhook"**
+5. Fill in:
+   - **Name**: "Send to ERP"
+   - **Event**: BPO Finalized
+   - **URL**: https://your-erp.com/api/receive
+   - **Method**: POST
+   - **Headers**: Authorization, Content-Type
+6. Click **Test** to verify connection
+7. Click **Save**
+
+**Common Integration Examples:**
+
+**Example 1: Slack Notifications**
+```json
+Event: BPO Near Exhaustion (>95%)
+URL: https://hooks.slack.com/services/YOUR/WEBHOOK/URL
+Method: POST
+Payload:
+{
+  "text": "🚨 Blanket PO Alert",
+  "attachments": [{
+    "color": "danger",
+    "fields": [
+      {"title": "BPO Number", "value": "{document_no}"},
+      {"title": "Supplier", "value": "{supplier_name}"},
+      {"title": "Utilization", "value": "{utilization_percentage}%"},
+      {"title": "Available", "value": "{available_balance}"}
+    ]
+  }]
+}
+```
+
+**Example 2: ERP System Integration**
+```json
+Event: BPO Finalized
+URL: https://erp.company.com/api/purchasing/blanket-po
+Method: POST
+Headers: {
+  "Authorization": "Bearer abc123xyz",
+  "Content-Type": "application/json"
+}
+Payload:
+{
+  "erp_action": "create_blanket_po",
+  "document_number": "{document_no}",
+  "supplier_id": "{supplier_id}",
+  "amount": "{maximum_amount}",
+  "currency": "{currency}",
+  "valid_from": "{valid_from}",
+  "valid_to": "{valid_to}",
+  "line_items": "{line_items_array}"
+}
+```
+
+**Example 3: Email Notification Service**
+```json
+Event: Agreement Expiring (30 days)
+URL: https://mail-service.company.com/send
+Method: POST
+Payload:
+{
+  "to": "procurement@company.com",
+  "subject": "Blanket PO Expiring Soon - {document_no}",
+  "body": "The Blanket PO with {supplier_name} will expire on {valid_to}. Please review and renew if necessary."
+}
+```
+
+**Testing Webhooks:**
+
+1. Use the **Test** button to send sample data
+2. Monitor webhook logs for success/failure
+3. Check target system to verify data received correctly
+4. Test error scenarios (what if endpoint is down?)
+
+**Troubleshooting:**
+
+| Issue | Possible Cause | Solution |
+|-------|----------------|----------|
+| **Connection Failed** | Wrong URL or blocked firewall | Verify URL, check network |
+| **401 Unauthorized** | Invalid API credentials | Update Authorization header |
+| **Timeout** | Endpoint responding slowly | Increase timeout setting |
+| **Data Not Appearing** | Payload format mismatch | Check target system's expected JSON structure |
+
+**Best Practices:**
+
+- **Use HTTPS Only**: Never send data over unencrypted HTTP
+- **Secure API Keys**: Store credentials securely, rotate regularly
+- **Monitor Webhook Logs**: Regular review to catch failures
+- **Set Up Alerts**: Get notified if webhooks consistently fail
+- **Document Integrations**: Maintain wiki of which webhooks do what
+- **Test Before Production**: Use staging environment first
 
 ---
 
 ### Permissions
 
-Control who can access and perform actions:
+Control who can access and perform actions within the Blanket PO Applet.
 
-| Permission Type | Description |
-|----------------|-------------|
-| **Permission Set** | Named groups (e.g., "Procurement Officer", "Department Manager") |
-| **User Permission** | Individual user access |
-| **Team Permission** | Assign permissions to entire teams |
-| **Role Permission** | Assign by organizational role |
+**Why Permissions Matter:**
 
-**Recommended Permission Levels:**
+**Without Proper Permissions:**
+- Junior staff accidentally void million-dollar agreements
+- Unauthorized users see sensitive supplier pricing
+- Departments create duplicate agreements
+- Audit compliance fails
 
-| Role | Recommended Permissions |
-|------|------------------------|
-| Procurement Staff | Create Blanket PO, Add Line Items, Edit Draft, View All |
-| Procurement Manager | All above + Finalize Blanket PO, Void Blanket PO, Approve |
-| Department Users | View Active Blanket POs, Create Releases (against approved BPOs only) |
-| Finance Officer | View All, Export Reports, Monitor Spend |
-| System Admin | Full Access including Settings and Permission Management |
+**With Proper Permissions:**
+- Clear role separation (procurement creates, managers approve, departments use)
+- Sensitive data protected
+- Audit trail shows who did what
+- Compliance with SOX, ISO, internal policies
+
+**Permission Architecture:**
+
+| Permission Type | Scope | Use When |
+|----------------|-------|----------|
+| **Permission Set** | Named groups with bundled permissions | Creating role-based access (e.g., "Procurement Officer" set) |
+| **User Permission** | Individual user access | Granting specific user unique permissions |
+| **Team Permission** | Assign to entire teams | Giving all Finance team members view access |
+| **Role Permission** | Assign by organizational role | All "Department Managers" can create releases |
+
+---
+
+#### Permission Levels Explained
+
+**Read vs. Write vs. Approve vs. Admin:**
+
+| Level | What They Can Do | Who Should Have It |
+|-------|------------------|-------------------|
+| **Read Only** | View Blanket POs, releases, reports | Finance analysts, auditors, general employees |
+| **Create** | Create draft Blanket POs | Procurement staff |
+| **Edit** | Modify draft Blanket POs | Procurement staff |
+| **Finalize** | Activate Blanket POs | Procurement managers |
+| **Create Release** | Make releases against active BPOs | Department users, requesters |
+| **Approve** | Approve Blanket POs in workflow | Managers, approvers |
+| **Void** | Cancel active Blanket POs | Procurement managers, finance |
+| **Export** | Download reports and data | Analysts, managers |
+| **Admin** | Full access including settings | System administrators |
+
+---
+
+#### Recommended Permission Levels by Role
+
+**Detailed Permission Matrix:**
+
+| Role | Read | Create BPO | Edit BPO | Finalize | Create Release | Approve | Void | Export | Admin |
+|------|------|-----------|---------|----------|---------------|---------|------|--------|-------|
+| **Procurement Staff** | ✓ | ✓ | ✓ (own drafts) | - | ✓ | - | - | ✓ | - |
+| **Procurement Manager** | ✓ | ✓ | ✓ (all) | ✓ | ✓ | ✓ | ✓ | ✓ | - |
+| **Department User** | ✓ (active only) | - | - | - | ✓ | - | - | - | - |
+| **Department Manager** | ✓ | - | - | - | ✓ | ✓ (releases) | - | ✓ | - |
+| **Finance Officer** | ✓ | - | - | - | - | - | - | ✓ | - |
+| **Finance Manager** | ✓ | - | - | - | - | ✓ | ✓ | ✓ | - |
+| **Executive/CFO** | ✓ | - | - | - | - | ✓ (high-value) | ✓ | ✓ | - |
+| **System Admin** | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Auditor** | ✓ | - | - | - | - | - | - | ✓ | - |
+
+---
+
+#### How to Set Up Permissions
+
+**Step 1: Create Permission Sets**
+
+1. Go to **Settings** > **Permissions** > **Permission Sets**
+2. Click **"Create Permission Set"**
+3. Name it: "Procurement Officer"
+4. Select permissions:
+   - Read: ✓
+   - Create BPO: ✓
+   - Edit BPO: ✓ (own only)
+   - Create Release: ✓
+   - Export: ✓
+5. Click **Save**
+
+Repeat for other roles: "Department User", "Procurement Manager", etc.
+
+**Step 2: Assign Permission Sets to Users**
+
+1. Go to **Settings** > **Permissions** > **User Permissions**
+2. Search for user: "John Doe"
+3. Assign permission set: "Procurement Officer"
+4. Click **Save**
+
+User John Doe now inherits all permissions from "Procurement Officer" set.
+
+**Step 3: Grant Individual Exceptions (If Needed)**
+
+Sometimes a user needs permissions outside their standard role:
+
+1. Go to **Settings** > **Permissions** > **User Permissions**
+2. Find user: "Sarah Lee"
+3. Her role: "Department User" (normally can't finalize)
+4. Add exception: Grant "Finalize" permission
+5. Reason: Sarah is backfilling for Procurement Manager this month
+6. Click **Save**
+
+---
+
+#### Advanced Permission Scenarios
+
+**Scenario 1: Multi-Branch Organization**
+
+```
+Branch A users: Can only view/create BPOs for Branch A
+Branch B users: Can only view/create BPOs for Branch B
+HQ users: Can view/create BPOs for all branches
+
+Setup:
+1. Create permission sets: "Branch A Procurement", "Branch B Procurement"
+2. Add branch filters to each set
+3. Assign users to respective sets
+```
+
+**Scenario 2: Amount-Based Tiering**
+
+```
+<RM 50,000: Department Manager approval
+RM 50K-100K: Procurement Manager approval
+>RM 100,000: CFO approval
+
+Setup:
+1. Configure workflow with amount thresholds
+2. Assign "Approve" permission with conditions:
+   - Department Manager: Amount < 50,000
+   - Procurement Manager: Amount 50,000-100,000
+   - CFO: Amount > 100,000
+```
+
+**Scenario 3: Temporary Delegation**
+
+```
+Situation: Procurement Manager on leave for 2 weeks
+Solution: Grant temporary admin rights to deputy
+
+Setup:
+1. Go to user's permission settings
+2. Checkbox: "Temporary Permission"
+3. Set start/end date
+4. Permission auto-revokes after end date
+```
+
+---
+
+#### Permission Audit & Compliance
+
+**Regular Review Process:**
+
+1. **Quarterly Access Review**: Export user permission report, verify all users still need their access
+2. **Separation of Duties**: Ensure no single user can create AND approve high-value BPOs
+3. **Least Privilege Principle**: Remove unnecessary permissions
+4. **Onboarding/Offboarding**: Add/remove permissions when employees join/leave
+
+**Audit Questions to Answer:**
+
+- Who has Finalize permission? (Should be only managers)
+- Who has Void permission? (High-risk action)
+- Can anyone bypass approvals? (Should be no)
+- Are terminated employees' access revoked? (Essential)
+- Who modified permission settings? (Admin audit log)
+
+**Compliance Considerations:**
+
+| Regulation | Requirement | How Permissions Help |
+|------------|-------------|----------------------|
+| **SOX (Sarbanes-Oxley)** | Separation of duties in financial processes | Different users create vs. approve BPOs |
+| **ISO 27001** | Access control and least privilege | Role-based permissions limit data exposure |
+| **GDPR** | Data access logging | Audit trail shows who accessed supplier data |
+| **Internal Policy** | Manager approval for spending | Workflow enforces approval before activation |
+
+---
+
+**Best Practices Summary:**
+
+- **Start Restrictive**: Easier to grant permissions later than revoke
+- **Use Permission Sets**: Don't assign individual permissions—use role-based sets
+- **Document Decisions**: Maintain a permission matrix document
+- **Regular Audits**: Quarterly review of who has what access
+- **Test User Workflows**: Verify users can do their job (not too restrictive)
+- **Monitor High-Risk Actions**: Set alerts for Void, high-value approvals
+- **Train Users**: Explain why permissions exist (not just restrictions, but protection)
 
 ---
 
