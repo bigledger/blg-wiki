@@ -1,7 +1,7 @@
 ---
 title: "Applet Directory"
 description: "Search and discover available applets in the BigLedger ecosystem with filtering and browsing capabilities"
-weight: 45
+weight: 145
 tags:
 - applets
 - directory

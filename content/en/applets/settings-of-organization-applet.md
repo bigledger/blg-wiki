@@ -1,7 +1,7 @@
 ---
 title: "Settings of Organization Applet"
 description: "Configure organization-wide settings and role permissions for comprehensive system management"
-weight: 55
+weight: 155
 tags:
 - applets
 - organization

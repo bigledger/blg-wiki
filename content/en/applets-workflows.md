@@ -111,6 +111,8 @@ PEPPOL-compliant e-invoicing solutions:
 Malaysian tax compliance:
 
 - **Tax Configuration** - Tax setup and rules
+- **Tax Config** - Advanced tax configuration and compliance
+- **[SST Applet](/applets/sst-applet/)** - Malaysian SST reporting
 - **MY-SST Applet** - Sales and Service Tax management
 
 ### 💱 Forex Applets

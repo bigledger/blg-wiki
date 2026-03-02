@@ -5,43 +5,95 @@ weight: 30
 bookCollapseSection: false
 ---
 
-Complete guides for managing your sales processes from customer order through delivery and payment collection. These workflows are designed to accommodate various business models and sales scenarios.
+Complete guides for managing your sales processes from customer order through delivery and payment collection. These workflows accommodate various business models and sales scenarios.
 
-## Why Multiple Sales Workflows?
+---
 
-Not every business follows the same sales process. Your workflow depends on:
-- **Payment terms** - Cash, credit, deposit, or instalment
-- **Delivery requirements** - Immediate, scheduled, or installation required
-- **Product type** - Standard goods, appliances requiring installation, or services
-- **Customer relationship** - Walk-in customers vs credit-approved accounts
+## 🚀 Get Started / Setup
 
-{{< callout type="info" >}}
-**Workflow Selection**: Choose the workflow that best matches your transaction type. Many businesses use multiple workflows depending on the customer and product involved.
+New to sales in BigLedger? Start with the standard workflow to learn the complete process.
+
+{{< cards >}}
+  {{< card link="standard-sales-workflow" title="📋 Standard Sales Workflow" subtitle="The complete order-to-delivery flow — start here to understand the full sales process" >}}
+  {{< card link="cash-sales-workflow" title="💵 Cash Sales Workflow" subtitle="Simplest sales flow — walk-in customers with immediate payment and delivery" >}}
+{{< /cards >}}
+
+**Before you begin, ensure:**
+- Customer profiles are configured in [Customer Maintenance](/applets/customer-maintenance-applet/)
+- Product catalog and pricing are set up in [Pricebook](/applets/pricebook-applet/)
+- Tax codes and payment terms are defined
+- User permissions for the sales module are assigned
+
+{{< callout type="tip" >}}
+**First time?** Start with the [Standard Sales Workflow](standard-sales-workflow) — it covers the complete process. Then explore specialized workflows as your business requires.
 {{< /callout >}}
 
-## Available Sales Workflows
+---
+
+## 📝 Daily Tasks
+
+Guides for everyday sales operations your team performs regularly.
 
 ### Core Sales Processes
 
 {{< cards >}}
-{{< card link="standard-sales-workflow" title="Standard Sales Workflow" subtitle="Complete order-to-delivery flow with deposit collection and scheduled delivery" >}}
-{{< card link="credit-sales-workflow" title="Credit Sales Workflow" subtitle="Sales to approved customers with credit terms, no upfront deposit required" >}}
-{{< card link="cash-sales-workflow" title="Cash Sales Workflow" subtitle="Walk-in cash sales with immediate payment and delivery" >}}
+  {{< card link="standard-sales-workflow" title="Standard Sales Workflow" subtitle="Complete order-to-delivery flow with deposit collection and scheduled delivery" >}}
+  {{< card link="credit-sales-workflow" title="Credit Sales Workflow" subtitle="Sales to approved customers with credit terms, no upfront deposit required" >}}
+  {{< card link="cash-sales-workflow" title="Cash Sales Workflow" subtitle="Walk-in cash sales with immediate payment and delivery" >}}
 {{< /cards >}}
 
 ### Specialized Sales Scenarios
 
 {{< cards >}}
-{{< card link="instalment-sales-workflow" title="Instalment Sales Workflow" subtitle="Sales with financing agreements through AEON, JCL, or other providers" >}}
-{{< card link="partial-delivery-workflow" title="Partial Delivery Workflow" subtitle="Split shipments and multiple delivery handling" >}}
-{{< card link="installation-scheduling-workflow" title="Installation Scheduling" subtitle="Appliances and equipment requiring professional installation" >}}
+  {{< card link="instalment-sales-workflow" title="Instalment Sales Workflow" subtitle="Sales with financing agreements through AEON, JCL, or other providers" >}}
+  {{< card link="partial-delivery-workflow" title="Partial Delivery Workflow" subtitle="Split shipments and multiple delivery handling" >}}
+  {{< card link="installation-scheduling-workflow" title="Installation Scheduling" subtitle="Appliances and equipment requiring professional installation" >}}
 {{< /cards >}}
 
 ### Post-Sales Processes
 
 {{< cards >}}
-{{< card link="returns-exchanges-workflow" title="Returns & Exchanges" subtitle="Handling product returns and exchanges after delivery" >}}
+  {{< card link="returns-exchanges-workflow" title="Returns & Exchanges" subtitle="Handling product returns and exchanges after delivery" >}}
 {{< /cards >}}
+
+---
+
+## ⚠️ Common Scenarios / Pitfalls
+
+Watch out for these frequent sales issues:
+
+| Scenario | What Happens | How to Handle |
+|----------|-------------|---------------|
+| **Customer not in system** | Cannot create sales order | Create customer profile first with all required fields |
+| **Stock not available** | Order cannot be fulfilled | Check inventory before confirming; consider partial delivery |
+| **Deposit not collected** | Order processing blocked | Collect deposit per workflow requirements before proceeding |
+| **Wrong pricing applied** | Customer billed incorrectly | Verify pricebook and discount rules before invoice generation |
+| **Delivery rescheduled** | Customer unavailable on delivery day | Update trip listing, communicate via WhatsApp group |
+| **Payment discrepancy** | Collected ≠ invoice amount | Match physical documents with system, verify deposit/balance split |
+
+{{< callout type="warning" >}}
+**Key Rule**: Always match the physical delivery order (signed by customer) against the system record before marking delivery as complete. Discrepancies caught later are much harder to resolve.
+{{< /callout >}}
+
+---
+
+## 📊 Reporting Usage
+
+Track your sales performance and operational health.
+
+**Key Sales Reports:**
+- **Sales Order Listing** — All orders by status (Draft, Confirmed, Delivered, Completed)
+- **Delivery Order Report** — Track delivery completion and pending deliveries
+- **Invoice Aging Report** — Outstanding invoices by customer and age
+- **Sales by Customer** — Revenue breakdown by customer account
+- **Sales by Product** — Top-selling items and revenue by product category
+- **Collection Report** — Cash, cheque, and bank transfer collections by period
+
+**Reporting tips:**
+- Check outstanding deliveries daily using DO status report
+- Review invoice aging weekly to follow up on overdue accounts
+- Compare sales-by-product monthly to identify trends
+- Use collection reports for daily cash reconciliation
 
 ## Quick Workflow Comparison
 

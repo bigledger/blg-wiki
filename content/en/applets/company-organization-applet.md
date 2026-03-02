@@ -1,7 +1,7 @@
 ---
 title: "Company Organization Applet"
 description: "Create and configure companies with detailed settings, branches, and organizational structure"
-weight: 65
+weight: 165
 tags:
 - applets
 - organization

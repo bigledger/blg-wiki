@@ -7,7 +7,7 @@ tags:
 - product-master
 - master-data
 - stock-control
-weight: 4
+weight: 104
 ---
 
 ## Purpose and Overview

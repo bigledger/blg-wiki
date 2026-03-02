@@ -1,7 +1,7 @@
----
+﻿---
 title: "Branch Organization Applet"
 description: "Create and manage multiple branches under a company with comprehensive configuration options"
-weight: 60
+weight: 10
 tags:
 - applets
 - organization
@@ -12,11 +12,11 @@ noneThis section covers the second main tab in the sidebar, Branches, where user
 A company can have multiple branches
 Users can either choose to create their branch from the second icon on the left sidebar or move to the Company Listing Edit Tab to create a branch.
 How to create a Branch from the Sidebar
-Create a Branch From the Company Listing Tab﻿﻿
+Create a Branch From the Company Listing Tabï»¿ï»¿
 The second topic in this section provides an overview of each tab in the Edit Branch menu, highlighting its features to improve branch configuration.
-#  Create Branch﻿
+#  Create Branchï»¿
 Users can create multiple branches, all linked to one company
-## Create Branch From Sidebar﻿
+## Create Branch From Sidebarï»¿
 The second icon on the left menu bar is the Branch Tab, which allows users to create a new branch for a company manually. Users can press the '+' button to create a new branch.
 Fill in all required fields in the Details Tab as outlined below.
 Once completed, click 'Save' to save the branch details.
@@ -34,12 +34,12 @@ Default Location
 After filling in all necessary details, click 'Save' to store the branch information.
 Fill in the details in the Address Tab as previously instructed.
 After confirming all the information, click the 'Save' button to store the branch details.
-##  Create Branch From Company Listing Tab﻿﻿
+##  Create Branch From Company Listing Tabï»¿ï»¿
 If the users choose to create a branch for the selected company in the Company Listing Page, they are directly linking the branch to that company. Click the '+' sign to start creating the branch.
 Navigate to the Branch Tab in the company edit and click the '+' button to create a new branch.
 Select the company you wish to create a branch for from the drop-down list. The Company Name and Company Registration No. will be auto-filled based on your selection.
 Fill in the mandatory fields that need to be filled in the Details Tab and Address
-#  Edit branch﻿
+#  Edit branchï»¿
 From the Branch Listing page, click on your created Branch to view all the available tabs:
 Details: This section displays the main branch details created in section 2.1, where users can add or edit any information if needed.
 Default Pricing: is the configuration of default pricing. It can be set by branch or company. For example, if you have different pricing schemes for East and West Malaysia, you can apply the East branch pricing to branches in that area.

@@ -75,6 +75,23 @@ The Core Module is the foundation of BigLedger ERP, providing:
 
 **Used by**: All modules generating taxable transactions
 
+### 6a. Tax Config Applet
+**Purpose**: Advanced tax configuration and system-wide settings
+- Complex tax rule definitions
+- GL account mapping for taxes
+- Effective date management
+- Regulatory compliance integration
+
+**Used by**: Finance administrators and compliance officers
+
+### 6b. SST Applet
+**Purpose**: Malaysian SST reporting and compliance
+- SST-02 form generation
+- Taxable period management
+- Transaction-level tax audits
+
+**Used by**: Malaysian tax compliance teams
+
 ### 7. Inventory Item Maintenance Applet
 **Purpose**: Product and inventory master data
 - Product creation
@@ -236,7 +253,9 @@ Core Module applets provide APIs for:
 ### Setup Guides
 - [Organization Setup Guide](/applets/organization-applet/)
 - [Chart of Accounts Configuration](/guides/accounting-guides/chart-of-accounts-setup/)
-- [Tax Configuration Guide](/guides/)
+- [Tax Configuration Guide](/applets/tax-configuration-applet/)
+- [Tax Config Guide](/applets/tax-config-applet/)
+- [SST Guide](/applets/sst-applet/)
 
 ### Module Documentation
 - [Financial Accounting Module](/modules/financial-accounting/)
