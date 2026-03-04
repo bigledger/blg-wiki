@@ -14,7 +14,7 @@ weight: 10
 
 The **Membership Admin Applet** is the central control hub for your organization's membership and loyalty programs. It empowers you to manage member data, define point systems, configure currency conversions, and orchestrate member privileges from a single interface.
 
-**In Simple Terms:** Think of this applet as your loyalty program's control panel â€” like the dashboard of your car. Just as your car dashboard lets you control speed, music, and temperature from one place, this applet lets you control who your members are, what rewards they can earn, and how those rewards work.
+**In Simple Terms:** Think of this applet as your loyalty program's control panel - like the dashboard of your car. Just as your car dashboard lets you control speed, music, and temperature from one place, this applet lets you control who your members are, what rewards they can earn, and how those rewards work.
 
 {{< callout type="info" >}}
 **Core Concept**: This applet acts as the **backend engine** (the behind-the-scenes system) for your loyalty ecosystem, handling the complex logic of **who** your members are, **what** they are entitled to, and **how** they earn and spend points.
@@ -46,8 +46,8 @@ Before diving into the system, take time to make these key business decisions. T
 **Decision:** What membership levels will you offer?
 
 **Examples:**
-- **3 Tiers**: Bronze â†’ Silver â†’ Gold
-- **4 Tiers**: Standard â†’ Premium â†’ VIP â†’ Elite
+- **3 Tiers**: Bronze -> Silver -> Gold
+- **4 Tiers**: Standard -> Premium -> VIP -> Elite
 - **No Tiers**: Everyone is equal (all members get the same benefits)
 
 **Why This Matters:** Tiers create aspiration and reward loyalty. But more tiers = more complexity to manage.
@@ -151,7 +151,7 @@ Managing a membership program often involves scattered spreadsheets, disconnecte
 
    {{< card title="Points & Currencies" subtitle="Configure point types and conversion rates" link="#points-currency-management" >}}
 
-   {{< card title="Member Profile 360" subtitle="View complete profile, wallet, and transaction history" link="#member-profile-360" >}}
+   {{< card title="Membership Edit View" subtitle="Open a member record and manage details across tabs" link="#membership-edit-member-detail-view" >}}
 
   {{< card title="Bulk Operations" subtitle="Upload master data and transactions" link="#bulk-operations" >}}
 
@@ -170,62 +170,80 @@ Managing a membership program often involves scattered spreadsheets, disconnecte
 
 **New to this system?** Here's the absolute minimum to get started:
 
-{{< figure src="/images/membership-admin-applet/sidebar-overview.png" alt="Membership Admin Applet left sidebar showing all menu items: Member Listing, Member Class, Member Label, Member Label List, PTS CCY Module, PTS to CCY Config, Membership Report, Upload Membership, Upload Member Point Transaction, and Settings" caption="The Membership Admin Applet sidebar â€” your starting point for all navigation." >}}
+{{< figure src="/images/membership-admin-applet/sidebar-overview.png" alt="Membership Admin Applet left sidebar showing all menu items: Member Listing, Member Class, Member Label, Member Label List, PTS CCY Module, PTS to CCY Config, Membership Report, Upload Membership, Upload Member Point Transaction, and Settings" caption="The Membership Admin Applet sidebar - your starting point for all navigation." >}}
 
 ### For Admins (First-Time Setup)
-1. **Create one point type**: Click **`PTS CCY Module`** in the left sidebar â†’ Click the **Create** button (add icon, top-left) â†’ Fill in the form:
+**Goal:** Configure minimum settings and complete one end-to-end test flow.
+
+1. **Create one point type**: Click **`PTS CCY Module`** in the left sidebar -> Click the **Create** button (add icon, top-left) -> Fill in the form:
    - **Membership Point Currency Code**: Short code in ALL-CAPS (e.g., `LPT`)
    - **Membership Point Currency Name**: Display name (e.g., `Loyalty Points`)
    - **Conversion Rate**: Enter `1`
-   â†’ Click **CREATE**
+   -> Click **CREATE**
 
-{{< figure src="/images/membership-admin-applet/PTS-CCY-Module-Create-Form.png" alt="Create Membership Points Currency form showing fields: Membership Point Currency Code (e.g. RWD), Membership Point Currency Name (e.g. Reward Points), Conversion Rate, and Point to point cross-over conversion, with CREATE button" caption="PTS CCY Module â€” Create form. Fill in the Code, Name and Conversion Rate, then click CREATE." >}}
+{{< figure src="/images/membership-admin-applet/PTS-CCY-Module-Create-Form.png" alt="Create Membership Points Currency form showing fields: Membership Point Currency Code (e.g. RWD), Membership Point Currency Name (e.g. Reward Points), Conversion Rate, and Point to point cross-over conversion, with CREATE button" caption="PTS CCY Module - Create form. Fill in the Code, Name and Conversion Rate, then click CREATE." >}}
 
-2. **Set the points-to-money rate**: Click **`PTS to CCY Config`** in the left sidebar â†’ Click **Create** â†’ Fill in the form:
+2. **Set the points-to-money rate**: Click **`PTS to CCY Config`** in the left sidebar -> Click **Create** -> Fill in the form:
    - **Point Currency**: Select the currency you just created (e.g., `LPT - Loyalty Points`)
    - **Conversion Rate**: How many points = 1 unit of money (e.g., `100` means 100 points = 1 MYR)
    - **Money Currency**: Select `MYR` (or your local currency)
    - **Status**: Select `ACTIVE`
-   â†’ Click **SUBMIT**
+   -> Click **SUBMIT**
 
-{{< figure src="/images/membership-admin-applet/PTS-to-CCY-Config-Create-Form.png" alt="Add New Points to Money Currency Conversion form showing: 1X Point Currency (RWD - Reward Points) = Conversion Rate (100) Money Currency (MYR), with Status set to ACTIVE and SUBMIT button" caption="PTS to CCY Config â€” Set the exchange rate between your points and real money (e.g. 100 Reward Points = 1 MYR). Click SUBMIT." >}}
+{{< figure src="/images/membership-admin-applet/PTS-to-CCY-Config-Create-Form.png" alt="Add New Points to Money Currency Conversion form showing: 1X Point Currency (RWD - Reward Points) = Conversion Rate (100) Money Currency (MYR), with Status set to ACTIVE and SUBMIT button" caption="PTS to CCY Config - Set the exchange rate between your points and real money (e.g. 100 Reward Points = 1 MYR). Click SUBMIT." >}}
 
-3. **Review field settings**: Click the **Settings** icon in the sidebar â†’ Select **`Field Settings`** from the sub-menu â†’ Review the **Details** tab with toggle switches for card number configuration â†’ Click **SAVE**
+3. **Review field settings**: Click the **Settings** icon in the sidebar -> Select **`Field Settings`** from the sub-menu -> Review the **Details** tab with toggle switches for card number configuration -> Click **SAVE**
 
-{{< figure src="/images/membership-admin-applet/settings-field-settings.png" alt="Field Settings page showing tab navigation (Details, Member Photos, Labels, Point Transactions, Points Expiry, Member Suspension, Member Listing) and toggle switches under the Details tab for card number configuration" caption="Settings > Field Settings â€” use the tabs and toggle switches to configure field behaviour. Click SAVE when done." >}}
+4. **Create minimum segmentation structure**: Add one **Member Class** (e.g., `Regular`) and one **Member Label** (e.g., `Newsletter`) so teams can test tiering and campaigns immediately.
 
-4. **Done!** You can now register members and they can earn/redeem points.
+5. **Run a 2-minute smoke test**:
+   - Create a test member from **`Member Listing`**
+   - Post `+100` points using **Add Point Adjustment**
+   - Post `-20` points as a test redemption simulation
+   - Confirm both entries appear in **Transaction History**
+
+{{< figure src="/images/membership-admin-applet/settings-field-settings.png" alt="Field Settings page showing tab navigation (Details, Member Photos, Labels, Point Transactions, Points Expiry, Member Suspension, Member Listing) and toggle switches under the Details tab for card number configuration" caption="Settings > Field Settings - use the tabs and toggle switches to configure field behaviour. Click SAVE when done." >}}
+
+6. **Done!** You can now register real members and run controlled pilot transactions.
 
 ### For Support Staff (Daily Use)
-1. **Find a member**: Click **`Member Listing`** in the left sidebar â†’ Use the search bar at the top to search by name, phone, or email â†’ Click on the member's row to open their profile
+**Goal:** Resolve common member requests with a complete audit trail.
 
-{{< figure src="/images/membership-admin-applet/Member-Listing-Page.png" alt="Member Listing page showing the search bar at the top, the Create (add) button on the left, total member count, and an ag-grid table listing member records" caption="Member Listing â€” use the search bar to find a member by name, phone, or email. Click any row to open their full profile." >}}
+1. **Find a member**: Click **`Member Listing`** in the left sidebar -> Use the search bar at the top to search by name, phone, or email -> Click on the member's row to open their profile
 
-2. **Adjust points (if needed)**: From inside the member's profile, click the **Add Point Adjustment** button â†’ Fill in the form:
+{{< figure src="/images/membership-admin-applet/Member-Listing-Page.png" alt="Member Listing page showing the search bar at the top, the Create (add) button on the left, total member count, and an ag-grid table listing member records" caption="Member Listing - use the search bar to find a member by name, phone, or email. Click any row to open their full profile." >}}
+
+2. **Adjust points (if needed)**: From inside the member's profile, click the **Add Point Adjustment** button -> Fill in the form:
    - **Transaction Date**: Select today's date using the date picker
    - **Branch**: Select your branch from the dropdown
    - **Point Currency**: Select the point type (e.g., `LPT - Loyalty Points`)
    - **Item Code & Name**: Click the arrow icon to select an item/reason, or type it directly
    - **Point Adjustment**: Enter positive to add (e.g., `500`) or negative to deduct (e.g., `-500`)
    - **Remarks / Reason**: Type a clear explanation (e.g., `Goodwill for delayed order #ORD-123`)
-   â†’ Click **Save**
+   -> Click **Save**
 
-{{< figure src="/images/membership-admin-applet/add-point-adjustment-form-1.png" alt="Add Point Adjustment form showing fields: Transaction Date, Branch, Point Currency (RWD - Reward Points), Reference Number, Item Code and Name, Point Adjustment (500), Valid Date From, Valid Date To, Remarks/Reason (Goodwill compensation for delayed order), Display Type, and Save button" caption="Add Point Adjustment â€” fill in all fields and always include a clear Remarks / Reason. Click Save to apply the adjustment." >}}
+{{< figure src="/images/membership-admin-applet/add-point-adjustment-form-1.png" alt="Add Point Adjustment form showing fields: Transaction Date, Branch, Point Currency (RWD - Reward Points), Reference Number, Item Code and Name, Point Adjustment (500), Valid Date From, Valid Date To, Remarks/Reason (Goodwill compensation for delayed order), Display Type, and Save button" caption="Add Point Adjustment - fill in all fields and always include a clear Remarks / Reason. Click Save to apply the adjustment." >}}
 
-3. **Check transaction history**: Scroll down inside the member's profile to find the **Transaction History** section
+3. **Check transaction history**: Scroll down inside the member's profile to find the **Transaction History** section.
 
-{{< figure src="/images/membership-admin-applet/Member-Profile-Transaction%20History.png" alt="Member Profile page showing the Transaction History tab with a table of point movements, including Date, Transaction Type, Point Currency, Points (Earned/Redeemed), Remark, and Source" caption="Transaction History â€” A full audit trail of every point earned or redeemed by the member." >}}
+4. **Close the support loop**: Confirm the member can see the updated balance (if member app/web is enabled) and record your case/ticket reference in the adjustment remarks.
+
+{{< figure src="/images/membership-admin-applet/Member-Profile-Transaction%20History.png" alt="Membership Edit screen showing the Point Transaction tab with point movement records" caption="Membership Edit - Point Transaction tab showing member point movement history." >}}
 
 ### For Marketing Teams
-1. **Create a tier**: Click **`Member Class`** in the left sidebar â†’ Click the **Create** button â†’ Enter the class name (e.g., `Gold`) and configure benefits â†’ Click **SAVE**
+**Goal:** Build one campaign-ready segment and export it.
+
+1. **Create a tier**: Click **`Member Class`** in the left sidebar -> Click the **Create** button -> Enter the class name (e.g., `Gold`) and configure benefits -> Click **SAVE**
  
-{{< figure src="/images/membership-admin-applet/member-class-create-form.png" alt="Membership Class Create form showing fields for Membership Class Code (GOLD) and Membership Class Name (Gold Tier) with a CREATE button at the top right" caption="Membership Class Create â€” define the code and name for your membership levels (e.g. Bronze, Silver, Gold)." >}}
-2. **Create a label**: Click **`Member Label`** in the left sidebar â†’ Click **Create** â†’ Enter a label name (e.g., `Frequent Shopper`) â†’ Click **SAVE**
+{{< figure src="/images/membership-admin-applet/member-class-create-form.png" alt="Membership Class Create form showing fields for Membership Class Code (GOLD) and Membership Class Name (Gold Tier) with a CREATE button at the top right" caption="Membership Class Create - define the code and name for your membership levels (e.g. Bronze, Silver, Gold)." >}}
+2. **Create a label**: Click **`Member Label`** in the left sidebar -> Click **Create** -> Enter a label name (e.g., `Frequent Shopper`) -> Click **SAVE**
 
-{{< figure src="/images/membership-admin-applet/Member-Label-Create-Form.png" alt="Membership Label Create form showing fields for Label List, Label Name (Frequent Shopper), and Label Code (FREQ-SHOP) with a CREATE button at the top right" caption="Membership Label Create â€” use these for flexible marketing tags like 'Vegetarian' or 'Frequent Shopper'." >}}
-3. **Member Export for Campaigns**: Navigate to **`Membership Report`** in the sidebar â†’ Select your filters (e.g. Join Date or DOB) â†’ Click **Generate CSV** â†’ Download the completed report from the list below.
+{{< figure src="/images/membership-admin-applet/Member-Label-Create-Form.png" alt="Membership Label Create form showing fields for Label List, Label Name (Frequent Shopper), and Label Code (FREQ-SHOP) with a CREATE button at the top right" caption="Membership Label Create - use these for flexible marketing tags like 'Vegetarian' or 'Frequent Shopper'." >}}
+3. **Member Export for Campaigns**: Navigate to **`Membership Report`** in the sidebar -> Select your filters (e.g. Join Date or DOB) -> Click **Generate CSV** -> Download the completed report from the list below.
 
-{{< figure src="/images/membership-admin-applet/Membership-Report-Generate-CSV.png" alt="Membership Report page showing the date range filters (Join Date From/To) and the Generate CSV button at the top" caption="Membership Report â€” Use the filters (Join Date, End Date, DOB) to segment your audience, then click Generate CSV. Your report will appear in the list below for download." >}}
+4. **Validate campaign audience quality**: Spot-check at least 5 exported records to confirm the right class/labels are included before sending promotions.
+
+{{< figure src="/images/membership-admin-applet/Membership-Report-Generate-CSV.png" alt="Membership Report page showing the date range filters (Join Date From/To) and the Generate CSV button at the top" caption="Membership Report - Use the filters (Join Date, End Date, DOB) to segment your audience, then click Generate CSV. Your report will appear in the list below for download." >}}
 
 {{< callout type="tip" >}}
 **For detailed explanations**: Read the full sections below. This quick start just gets you operational fast.
@@ -238,13 +256,13 @@ Managing a membership program often involves scattered spreadsheets, disconnecte
 **Setting up a new loyalty program?** Complete these steps in order:
 
 - [ ] **Step 1**: Review [Before You Begin](#before-you-begin) business decisions (30 mins)
-- [ ] **Step 2**: Create point currencies â†’ [Guide](#points-currency-management)
-- [ ] **Step 3**: Set up conversion rates â†’ [Guide](#points-currency-management)
-- [ ] **Step 4**: Configure registration fields â†’ [Guide](#field-configuration-customizing-registration-forms)
-- [ ] **Step 5**: Create member tiers (optional) â†’ [Guide](#member-class-vs-member-label-when-to-use-which)
-- [ ] **Step 6**: Create member labels (optional) â†’ [Guide](#member-class-vs-member-label-when-to-use-which)
-- [ ] **Step 7**: Set up permissions â†’ [Guide](#permission-management-controlling-who-can-do-what)
-- [ ] **Step 8**: Test with fake member account â†’ [Guide](#quick-start-in-5-minutes)
+- [ ] **Step 2**: Create point currencies -> [Guide](#points-currency-management)
+- [ ] **Step 3**: Set up conversion rates -> [Guide](#points-currency-management)
+- [ ] **Step 4**: Configure registration fields -> [Guide](#field-configuration-customizing-registration-forms)
+- [ ] **Step 5**: Create member tiers (optional) -> [Guide](#member-class-vs-member-label-when-to-use-which)
+- [ ] **Step 6**: Create member labels (optional) -> [Guide](#member-class-vs-member-label-when-to-use-which)
+- [ ] **Step 7**: Set up permissions -> [Guide](#permission-setup-playbook)
+- [ ] **Step 8**: Test with fake member account -> [Guide](#quick-start-in-5-minutes)
 - [ ] **Step 9**: Train staff on daily operations
 - [ ] **Step 10**: Launch to real customers!
 
@@ -259,7 +277,7 @@ Managing a membership program often involves scattered spreadsheets, disconnecte
 To effectively manage the system, you need to understand four core building blocks and how they work together.
 
 {{< callout type="info" >}}
-**Important Terminology Note:** In the system menus, you'll see the term **"Member Privilege"** â€” this is the same thing as **"Member Class"** (your membership tiers like Bronze/Silver/Gold). We'll use **"Member Class"** throughout this guide because it's clearer, but remember they refer to the same feature.
+**Important Terminology Note:** In the system menus, you'll see the term **"Member Privilege"** - this is the same thing as **"Member Class"** (your membership tiers like Bronze/Silver/Gold). We'll use **"Member Class"** throughout this guide because it's clearer, but remember they refer to the same feature.
 {{< /callout >}}
 
 ### The Four Building Blocks Explained
@@ -277,23 +295,23 @@ To effectively manage the system, you need to understand four core building bloc
 
 ### Member Class vs Member Label: When to Use Which?
 
-**This is the #1 concept to master â€” it determines your entire program structure.**
+**This is the #1 concept to master - it determines your entire program structure.**
 
 {{< figure src="/images/membership-admin-applet/member-class-vs-label.png" alt="The Golden Rule: Class vs. Label - showing Member Class as linear hierarchy (Bronze to Silver to Gold, mutually exclusive, tied to benefits) versus Member Label as stackable tags (VIP, Vegetarian, Golfer - flexible, many per member, tied to marketing)" caption="The Golden Rule: Member Class (linear hierarchy, one per member, benefits-driven) vs. Member Label (stackable tags, many per member, marketing-driven)." >}}
 
 {{< callout type="info" >}}
 **Quick Definition:**
-- **Member Class** = Membership tier (Bronze/Silver/Gold) â€” ONE per member, tied to benefits
-- **Member Label** = Flexible tag (VIP/Vegetarian/Golfer) â€” MANY per member, for marketing
+- **Member Class** = Membership tier (Bronze/Silver/Gold) - ONE per member, tied to benefits
+- **Member Label** = Flexible tag (VIP/Vegetarian/Golfer) - MANY per member, for marketing
 {{< /callout >}}
 
-**Member Classes (Tiers)** â€” Use for **long-term status**
+**Member Classes (Tiers)** - Use for **long-term status**
 - Mutually exclusive: A member is Gold **OR** Silver, never both
 - Usually tied to benefits: Gold members get 10% discount, Silver get 5%
 - Hard to change: Moving tiers usually requires hitting spending thresholds
 - Think: "What VIP level is this customer?"
 
-**Member Labels (Tags)** â€” Use for **flexible segmentation**
+**Member Labels (Tags)** - Use for **flexible segmentation**
 - Stackable: A member can be "VIP" **AND** "Vegetarian" **AND** "Golfer" simultaneously
 - Usually for marketing: Send golf promotions to all "Golfer" label holders
 - Easy to add/remove: Apply or remove labels anytime
@@ -306,10 +324,10 @@ Sarah Chen is a:
 - Labels: Vegetarian, Birthday-March, Frequent-Online-Shopper
 
 This means:
-â†’ She gets Gold-tier discount (10% off) on all purchases [from her Class]
-â†’ She receives vegetarian menu promotions [from Vegetarian label]
-â†’ She gets a birthday gift in March [from Birthday-March label]
-â†’ She sees online-exclusive deals [from Frequent-Online-Shopper label]
+-> She gets Gold-tier discount (10% off) on all purchases [from her Class]
+-> She receives vegetarian menu promotions [from Vegetarian label]
+-> She gets a birthday gift in March [from Birthday-March label]
+-> She sees online-exclusive deals [from Frequent-Online-Shopper label]
 ```
 
 {{< callout type="tip" >}}
@@ -332,14 +350,14 @@ Here's a visual map showing how these four pieces fit together:
       MEMBER CLASS                      MEMBER LABELS
    (One per member)                  (Many per member)
             |                                   |
-      [Gold Tier] â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€> [VIP, Vegetarian, Golfer]
+      [Gold Tier] ----------------------> [VIP, Vegetarian, Golfer]
             |                                   |
             |                                   |
             v                                   v
     Benefits Granted:                  Marketing Segments:
-    â€¢ 10% Discount                     â€¢ Golf promotions
-    â€¢ Earn 2x Points                   â€¢ Veggie menu offers
-    â€¢ Priority Support                 â€¢ VIP event invites
+       - 10% Discount                      - Golf promotions
+       - Earn 2x Points                    - Veggie menu offers
+       - Priority Support                  - VIP event invites
             |
             |
             v
@@ -370,8 +388,8 @@ The system allows for complex point interactions:
 
 1.  **Earning**: Members earn **Points** through actions (e.g., 1 Point per $1 spent, bonus points for birthdays, etc.)
 2.  **Conversion** (optional): 
-    -   **Points-to-Points**: Convert 1,000 Reward Points â†’ 500 Partner Miles
-    -   **Points-to-Money**: Redeem 100 Points â†’ $1.00 off next purchase
+   -   **Points-to-Points**: Convert 1,000 Reward Points -> 500 Partner Miles
+   -   **Points-to-Money**: Redeem 100 Points -> $1.00 off next purchase
 3.  **Expiry**: Points can be set to expire based on rules you define (e.g., "Expires December 31" or "Expires 12 months after earning")
 4.  **Balance Tracking**: Members see their current balance in real-time via mobile app or website
 
@@ -418,10 +436,10 @@ The system allows for complex point interactions:
 - [ ] Save as UTF-8 encoded CSV
 
 **Common Errors:**
-- Duplicate Member ID â†’ Use unique IDs
-- Invalid email â†’ Check for @ and .com
-- Wrong date format â†’ Use YYYY-MM-DD
-- Missing required field â†’ Fill all asterisk columns
+- Duplicate Member ID -> Use unique IDs
+- Invalid email -> Check for @ and .com
+- Wrong date format -> Use YYYY-MM-DD
+- Missing required field -> Fill all asterisk columns
 
 ---
 
@@ -439,23 +457,23 @@ The system allows for complex point interactions:
 
 ### Most Common Daily Tasks
 
-**Task: Find a member's point balance**
-â†’ `Member Listing` â†’ Search â†’ View profile â†’ See Wallet Balance
+**Task: Check a member's current details**
+-> `Member Listing` -> Search -> Click row -> `Membership Edit` (Details tab)
 
 **Task: Add compensation points**
-â†’ `Member Listing` â†’ Find member â†’ `Add Point Adjustment` â†’ Enter amount & reason
+-> `Member Listing` -> Find member -> `Add Point Adjustment` -> Enter amount & reason
 
 **Task: Check why points were deducted**
-â†’ `Member profile` â†’ Scroll to Transaction History â†’ Find transaction â†’ View details
+-> `Member Listing` -> Click row -> `Membership Edit` -> `Point Transaction` tab -> Find transaction
 
 **Task: Export members for campaign**
-â†’ `Member Listing` â†’ Apply filters (tier/label) â†’ Click Export
+-> `Member Listing` -> Apply filters (tier/label) -> Click Export
 
 **Task: Create a new promotion label**
-â†’ `Member Label` â†’ Create â†’ Name it â†’ Save â†’ Assign to members
+-> `Member Label` -> Create -> Name it -> Save -> Assign to members
 
 **Task: Upload new members in bulk**
-â†’ `Member Master Data Listing` â†’ Download template â†’ Fill data â†’ Upload
+-> `Upload Membership` -> Download template -> Fill data -> Upload
 
 ---
 
@@ -463,58 +481,47 @@ The system allows for complex point interactions:
 
 **The central directory of your customers and their loyalty data.**
 
-### Member Profile 360
+### Membership Edit (Member Detail View)
 
-**What it is:** A complete view of everything about one member â€” like opening their full customer file.
+**What it is:** The member record screen opened from **Member Listing**.
 
 **How to access it:**
 1. Go to **Member Listing**
 2. Find the member (search by name, phone, or email)
-3. Click on their name or the **Eye Icon**
+3. Click the member row in the grid
 
-**What you'll see:**
+**What is explicitly shown in source:**
 
-**Profile Details Section:**
-- Full name, contact info (email, phone, address)
-- Join date (when they enrolled)
-- Current tier (Bronze, Silver, Gold, etc.)
-- Member ID or card number
-- Assigned labels (Vegetarian, VIP, Golfer, etc.)
+- Screen title: **Membership Edit**
+- Top actions: **Back** and **SAVE**
+- Tabbed layout with these panel titles:
+   - **Details**
+   - **E-Invoice** (shown conditionally)
+   - **Member Photos**
+   - **Labels**
+   - **Point Transaction**
+   - **Points Expiry**
+   - **Upload Attachments**
+   - **Referrals**
+   - **MLM**
+   - **Member Suspension**
 
-**Wallet Balance Section:**
-- Current balance for **each type of point currency** (if you have multiple)
-- Example: "Reward Points: 1,540" and "Status Miles: 8,200"
-- Click on a currency to see detailed breakdown
-
-**Transaction History Section:**
-- **Every point movement** ever recorded for this member:
-  - **Earned**: Points from purchases (shows date, amount, order number)
-  - **Redeemed**: Points used for rewards (shows what they got)
-  - **Adjusted**: Manual changes by staff (shows who made the change and why)
-  - **Expired**: Points removed by expiry rules
-- **Date range filters**: Show only recent transactions or specific months
-- **Export button**: Download their full history to Excel if needed
-
-**Privileges/Benefits Section:**
-- Shows which Member Class they belong to (their tier)
-- Lists what benefits they get (e.g., "10% discount", "Double point earning")
-- Shows qualification criteria (e.g., "Must spend $5,000/year to maintain Gold status")
-
-{{< callout type="tip" >}}
-**Power User Tip:** Bookmark frequently-viewed members (like VIP customers) using your browser favorites for instant access.
-{{< /callout >}}
-
----
+**Details tab includes fields such as:**
+- Member Name, Card No, Customer Name, Member ID
+- Branch, Phone Number, Email, IC / Passport, Date of Birth, Gender
+- Card Type, Referral Code, Member Class, Verification Status
+- Membership Join/Start/End Date (End Date visibility is permission-gated)
+- Remarks and audit fields (Created By / Creation Date / Modified By / Modified Date)
 
 ### Manual Adjustments
 
 **What it is:** The ability to add or remove points from a member's account directly (bypassing the normal earning process).
 
 **When to use it:**
-- Compensating for service failures ("Sorry your order was late â€” here's 500 points")
-- Fixing errors ("We accidentally gave you 5,000 points instead of 500 â€” correction needed")
-- Goodwill gestures ("Welcome back after being away â€” bonus 200 points")
-- Promotional bonuses ("Happy birthday â€” 100 bonus points!")
+- Compensating for service failures ("Sorry your order was late - here's 500 points")
+- Fixing errors ("We accidentally gave you 5,000 points instead of 500 - correction needed")
+- Goodwill gestures ("Welcome back after being away - bonus 200 points")
+- Promotional bonuses ("Happy birthday - 100 bonus points!")
 
 **When NOT to use it:**
 - Regular purchase earning (should come from POS automatically)
@@ -525,7 +532,7 @@ The system allows for complex point interactions:
 
 **How to Make an Adjustment:**
 
-1. Open the member's profile (see Member Profile 360 above)
+1. Open the member record in **Membership Edit** (see section above)
 2. Click **Add Point Adjustment** button
 3. Fill in the form:
    - **Select Currency**: Choose which type of points (e.g., "Loyalty Points")
@@ -663,7 +670,7 @@ Best for: Large enterprises, complex ecosystems
 
 **Example Setup:**
 ```
-Conversion Rule: "Loyalty Points â†’ MYR"
+Conversion Rule: "Loyalty Points -> MYR"
 Rate: 100 points = 1.00 MYR
 Valid: January 1 - December 31, 2025
 
@@ -679,8 +686,8 @@ At checkout:
 **Advanced: Tiered Conversion Rates**
 ```
 Regular Members: 100 points = $1.00 (1% value)
-Gold Members:    100 points = $1.25 (1.25% value â€” better deal!)
-Platinum:        100 points = $1.50 (1.5% value â€” best deal!)
+Gold Members:    100 points = $1.25 (1.25% value - better deal!)
+Platinum:        100 points = $1.50 (1.5% value - best deal!)
 
 This rewards high-tier members with better redemption value.
 ```
@@ -688,7 +695,7 @@ This rewards high-tier members with better redemption value.
 **Time-Limited Promotions:**
 ```
 Normal rate (Always):  100 points = $1.00
-Holiday rate (Dec only): 80 points = $1.00   â† Better value!
+Holiday rate (Dec only): 80 points = $1.00   <- Better value!
 
 Use this to drive redemptions during slow periods.
 ```
@@ -701,7 +708,7 @@ Use this to drive redemptions during slow periods.
 
 **Example Setup:**
 ```
-Conversion Rule: "Loyalty Points â†’ Airline Miles"
+Conversion Rule: "Loyalty Points -> Airline Miles"
 Rate: 1,000 Loyalty Points = 500 Airline Miles
 Valid: All year
 
@@ -722,7 +729,7 @@ This gives members flexibility to choose their preferred reward type.
 **How to Set Up Conversions:**
 
 **For Points-to-Money:**
-1. Go to **Membership Points to Money Currency Conversion**
+1. Go to **`PTS to CCY Config`**
 2. Click **Create New Conversion**
 3. Fill in:
    - **From Currency**: Select your point type (e.g., "Loyalty Points")
@@ -730,16 +737,16 @@ This gives members flexibility to choose their preferred reward type.
    - **Conversion Rate**: Enter the ratio (e.g., "100" points = "1.00" money)
    - **Valid From/To Dates**: Set when this rate applies
    - **Member Class Filter** (optional): Apply different rates to different tiers
-4. Click **Save**
+4. Click **SAVE**
 
 **For Points-to-Points:**
-1. Go to **Membership Points to Points Currency Conversion**
+1. Go to **`PTS to PTS Config`** (if enabled in your menu)
 2. Click **Create New Conversion**
 3. Fill in:
    - **From Currency**: Your store points
    - **To Currency**: Partner points
    - **Conversion Rate**: Enter the ratio
-4. Click **Save**
+4. Click **SAVE**
 
 ---
 
@@ -750,13 +757,13 @@ Before launching, verify your rates make financial sense:
 **Example Calculation:**
 ```
 If you give 1 point per $1 spent, and 100 points = $1 off...
-â†’ 1% reward rate (customer gets back 1% of spending)
-â†’ For every $10,000 in sales, you give $100 in rewards
-â†’ Is this sustainable for your margins?
+-> 1% reward rate (customer gets back 1% of spending)
+-> For every $10,000 in sales, you give $100 in rewards
+-> Is this sustainable for your margins?
 
 If your margin is 30% ($3 profit per $10 sale):
-â†’ $100 reward cost = 33 sales @ $3 profit each
-â†’ You need the member to make 33+ purchases to break even
+-> $100 reward cost = 33 sales @ $3 profit each
+-> You need the member to make 33+ purchases to break even
 ```
 
 **Pro Tip:** Most retail programs use 1-2% reward rates. Airlines use 5-10% because they have high margins on loyalty redemptions (empty seats cost them almost nothing).
@@ -949,7 +956,7 @@ When creating a Points Currency, here's what each setting means:
 | **Phone Number** | Mobile or landline | Mandatory (for account recovery and OTP) |
 | **Date of Birth** | Birthday | Optional (nice for birthday rewards, but sensitive) |
 | **Gender** | Male/Female/Other | Optional (useful for demographic analysis, but can be sensitive) |
-| **IC Number / National ID** | Government ID | Only if legally required (very sensitive â€” hide if not needed) |
+| **IC Number / National ID** | Government ID | Only if legally required (very sensitive - hide if not needed) |
 | **Address (Line 1, 2, City, State, Postal Code)** | Mailing address | Optional (unless you ship physical rewards) |
 | **Company Name** | Employer (for B2B) | Hide for B2C, Mandatory for B2B |
 | **Member Since** | Join date | Read-only (auto-filled by system) |
@@ -961,10 +968,10 @@ When creating a Points Currency, here's what each setting means:
 
 Before configuring, ask yourself:
 
-1. **Do we legally need this?** (Example: Age verification for alcohol sales â†’ Yes, collect Date of Birth)
-2. **Will we use this data?** (Example: If you never send mail â†’ No, hide Address fields)
+1. **Do we legally need this?** (Example: Age verification for alcohol sales -> Yes, collect Date of Birth)
+2. **Will we use this data?** (Example: If you never send mail -> No, hide Address fields)
 3. **Does this speed up or slow down sign-ups?** (Each extra field = more friction = fewer sign-ups)
-4. **Is this sensitive information?** (IC Numbers, Date of Birth â†’ Only collect if necessary; consider privacy laws)
+4. **Is this sensitive information?** (IC Numbers, Date of Birth -> Only collect if necessary; consider privacy laws)
 
 ---
 
@@ -1034,7 +1041,7 @@ Optional: Gender, Address
 
 **What it is (Simple Explanation):** An automatic notification your system sends to other systems when something important happens.
 
-**Real-World Analogy:** Like setting up your door to automatically send a text message to your phone every time someone rings the bell. You don't have to constantly check â€” you get notified when it happens.
+**Real-World Analogy:** Like setting up your door to automatically send a text message to your phone every time someone rings the bell. You don't have to constantly check - you get notified when it happens.
 
 **Common Use Cases:**
 
@@ -1074,7 +1081,7 @@ Member automatically gets VIP newsletters
    - **Trigger Event**: What activates this (e.g., "On Member Tier Change")
    - **Endpoint URL**: The web address to send data to (provided by receiving system's IT team)
    - **Authentication**: Security credentials (if required)
-   - **Payload Format**: What data to send (usually JSON â€” your IT team will define this)
+   - **Payload Format**: What data to send (usually JSON - your IT team will define this)
 4. **Test**: Click "Send Test" to verify it works
 5. **Save & Enable**
 
@@ -1101,161 +1108,72 @@ Member automatically gets VIP newsletters
 
 ---
 
-### Permission Management (Controlling Who Can Do What)
+### Permission Setup Playbook
 
-**What it is:** Security settings that control which staff members can access which features.
+**What this section covers:** How to configure access using the permission screens that are actually wired in this applet source.
 
-**Why this matters:** You don't want every cashier to have the power to delete members or manually add 1,000,000 points. Permissions prevent accidental or malicious actions.
-
----
-
-**Permission Levels Explained:**
-
-**1. User Permissions** (Individual Access)
-- Assign permissions to specific people
-- Example: "Jane from Support can view members but cannot adjust points"
-- Use for: Unique roles or temporary access
-
-**2. Team Permissions** (Group Access)
-- Assign permissions to a whole team
-- Example: "All Customer Support team members can adjust points up to 1,000"
-- Use for: Standard roles (Support, Sales, Finance)
-
-**3. Role Permissions** (Job Title Access)
-- Assign permissions based on job role
-- Example: "All Store Managers can approve point adjustments over 1,000"
-- Use for: Org-wide consistent roles
+**Why this matters:** If users cannot see features, buttons, or data scope they expect, the fix is usually in permission assignment, client-side permission, or feature visibility.
 
 ---
 
-**Common Permission Configurations:**
+**Permission and visibility screens available in this applet:**
 
-**Cashier / Frontline Staff:**
-```
-- View member profiles
-- Earn points for members (via POS integration)
-- Cannot manually adjust points
-- Cannot delete members
-- Cannot view financial reports
-```
+- `Settings > Permission Wizard` (`settings/permission-wizard-listing`)
+- `Settings > Permission Set` (`settings/permission-set-listing`)
+- `Settings > User Permission` (`settings/user-permission-listing`)
+- `Settings > Team Permission` (`settings/team-permission-listing`)
+- `Settings > Role Permission` (`settings/role-permission-listing`)
+- `Settings > Client-Side Permission` (`settings/client-side-permission-listing`)
+- `Settings > Feature Visibility` (`settings/feature-visibility`)
 
-**Customer Support Agents:**
-```
-- View member profiles
-- Edit member contact info
-- Adjust points (up to 500 points, requires reason)
-- View transaction history
-- Cannot delete members
-- Cannot change tier manually
-- Cannot configure system settings
-```
+**Step-by-step setup flow (button-accurate):**
 
-**Supervisors / Team Leads:**
-```
-- All of Customer Support +
-- Adjust points (up to 5,000, requires reason)
-- Manually change member tier
-- View team reports
-- Cannot delete members
-- Cannot configure system settings
-```
+1. Go to **Settings > Permission Wizard**.
+2. Open the required template, then go to the **Targets** tab:
+   - Select target rows using the grid checkboxes (or turn on **Select All**).
+   - (Optional) tick **Auto Create Roles**.
+   - Click **Generate Permission Sets**.
+3. Go to **Settings > Permission Set**:
+   - Click the **+** icon button (tooltip: **Create**).
+   - Fill the form.
+   - Click **SAVE**.
+4. Assign at one level first (User **or** Team **or** Role) to avoid conflicts during rollout:
+   - Go to **Settings > User Permission** (or **Team Permission** / **Role Permission**).
+   - Click the **+** icon button (tooltip: **Create**).
+   - Choose the permission set.
+   - Click **SAVE**.
+5. Configure UI-gated actions in **Settings > Client-Side Permission**:
+   - Click the **+** icon button (tooltip: **Create**).
+   - Select **Role** and **Client Side Permission**.
+   - Click **SAVE**.
+6. Configure **Settings > Feature Visibility** so users only see allowed menu modules.
+7. Validate using a test login from the target group before assigning to production users.
 
-**Marketing Team:**
-```
-- View member profiles
-- Create and assign labels
-- Export member lists for campaigns
-- View analytics reports
-- Cannot adjust points
-- Cannot edit member details
-- Cannot configure system settings
-```
+**Permission keys observed in source and what they affect:**
 
-**System Administrators:**
-```
-- Full access to everything
-- Configure all settings
-- Manage users and permissions
-- Delete members (with audit trail)
-- Access all reports
-```
+| Permission Key | Observed Usage | Practical Impact |
+|---|---|---|
+| `API_TNT_DM_CRM_MEMBERSHIP_CARD_HDR_READ` | Permission inquiry on app init; used for branch target filtering in member listing/create/edit | Controls read scope and which branch targets are available for membership card data |
+| `API_TNT_DM_CRM_MEMBERSHIP_CARD_HDR_CREATE` | Permission inquiry on app init | Required for create flows tied to membership card header domain |
+| `API_TNT_DM_CRM_MEMBERSHIP_CARD_HDR_UPDATE` | Permission inquiry on app init | Required for update flows tied to membership card header domain |
+| `TNT_TENANT_ADMIN` | Permission inquiry on app init | Tenant-level admin capability check |
+| `TNT_TENANT_OWNER` | Permission inquiry on app init | Tenant owner-level capability check |
+| `EDIT_MEMBERSHIP_END_DATE` | `*appPermission` gate in member create/edit screens | Controls whether Membership End Date field is shown/editable |
 
 ---
 
-**How to Set Permissions:**
+**Troubleshooting: "I still can't see or do X"**
 
-**Option A: Use Permission Wizard (Easiest for Beginners)**
-1. Go to `Settings > Permission Wizard`
-2. System guides you step-by-step:
-   - "What job role is this?" â†’ Select (e.g., "Customer Support")
-   - "Can they view member data?" â†’ Yes/No
-   - "Can they adjust points?" â†’ Yes (up to limit) / No
-   - Wizard suggests appropriate settings
-3. Review summary
-4. Apply to user/team
-
-**Option B: Manual Configuration (For Advanced Users)**
-1. Go to `Settings > User/Team/Role Permissions`
-2. Select the user, team, or role
-3. Check/uncheck permission boxes for each feature
-4. Set limits where applicable (e.g., "Max point adjustment: 1,000")
-5. Save
-
----
-
-**Permission Best Practices:**
-
-- **Follow "Least Privilege" Principle**: Only give access people need for their job (don't give everyone admin rights)
-
-- **Use Teams, Not Individuals**: Assign permissions to "Customer Support Team" rather than 20 individual agents (easier to manage)
-
-- **Review Quarterly**: As people change roles, update permissions
-
-- **Enable Audit Logging**: Track who does what (especially important for point adjustments)
-
-- **Test Before Rolling Out**: Create a test user, apply permissions, verify they work as expected
-
-**Common Mistakes:**
-- Giving too many people admin access
-- Not documenting who has what permissions
-- Forgetting to revoke access when someone leaves
-- Making permission changes without testing
-
----
-
-{{< callout type="info" >}}
-**Security Tip:** When in doubt, assign fewer permissions initially. It's easier to grant more access later than to recover from a security incident caused by over-permissioning.
-{{< /callout >}}
-
----
-
-### Feature Visibility (Showing/Hiding Menu Options)
-
-**What it is:** Control which menu items appear in the sidebar for different users.
-
-**Why use this:** Simplify the interface by hiding features users don't need.
-
-**Example:**
-- Frontline staff don't need to see "Reports" or "Settings" in their menu (less clutter, fewer mistakes)
-- Marketing team only sees Member Listing, Labels, and Reports
-- Only admins see the full menu
-
-**How to configure:**
-1. Go to `Settings > Feature Visibility`
-2. See list of all menu items
-3. For each item, choose:
-   - **Visible to Everyone**
-   - **Visible to Admin Only**
-   - **Hidden from Everyone** (if you don't use that feature)
-4. Optionally assign visibility by Team or Role
-5. Save
-
-**What affected users see:** The menu automatically hides items they shouldn't access.
+1. **Menu item missing** -> check `Feature Visibility` first.
+2. **Page opens but button/field missing** -> verify Client-Side Permission and app permission assignment (example: `EDIT_MEMBERSHIP_END_DATE`).
+3. **Can open page but data scope is too narrow** -> verify target assignment and branch scope for read permission (`API_TNT_DM_CRM_MEMBERSHIP_CARD_HDR_READ`).
+4. **Permission pages missing in Settings** -> confirm your shared settings menu deployment exposes permission routes.
+5. **Changes not reflected** -> log out/in and retest with a clean user session.
 
 ---
 
 {{< callout type="tip" >}}
-**Pro Tip:** Combine Permission Management (what users can do) with Feature Visibility (what users can see). This creates a clean, role-appropriate interface while maintaining security.
+**Operational tip:** Start with minimum access, test with one user, then scale to teams/roles. This reduces rollout risk and support tickets.
 {{< /callout >}}
 
 ---
@@ -1279,7 +1197,7 @@ Member automatically gets VIP newsletters
 **How it works:**
 
 **Step 1: Download Template**
-1. Go to **Member Master Data Listing**
+1. Go to **Upload Membership**
 2. Click **Download Template** button
 3. System gives you a CSV file with the correct column headers
 
@@ -1296,7 +1214,7 @@ Member automatically gets VIP newsletters
 5. Save the file as CSV
 
 **Step 3: Upload**
-1. Back in **Member Master Data Listing**, click **Upload**
+1. Back in **Upload Membership**, click **Upload**
 2. Select your CSV file
 3. System validates the data:
    - Green = All good, ready to import
@@ -1329,14 +1247,14 @@ Member automatically gets VIP newsletters
 
 - **Back up first**: Export existing members before bulk import (in case something goes wrong)
 
-- **Upload during off-hours**: Large imports can slow the system â€” do it when fewer users are online
+- **Upload during off-hours**: Large imports can slow the system - do it when fewer users are online
 
 - **Use unique IDs**: Member IDs must be unique (no two members can have same ID)
 
 **Common Mistakes:**
-- Excel auto-formats dates wrong (changes 2025-01-15 to 1/15/2025) â†’ Set column to "Text" format first
-- Phone numbers lose leading zeros (0123456789 becomes 123456789) â†’ Prefix with apostrophe '0123456789
-- Mixing encodings (special characters become gibberish) â†’ Save as UTF-8 encoding
+- Excel auto-formats dates wrong (changes 2025-01-15 to 1/15/2025) -> Set column to "Text" format first
+- Phone numbers lose leading zeros (0123456789 becomes 123456789) -> Prefix with apostrophe '0123456789
+- Mixing encodings (special characters become gibberish) -> Save as UTF-8 encoding
 
 ---
 
@@ -1353,7 +1271,7 @@ Member automatically gets VIP newsletters
 **How it works:**
 
 **Step 1: Download Template**
-1. Go to **Member Point Transaction Data Listing**
+1. Go to **Upload Member Point Transaction**
 2. Click **Download Template**
 3. System gives you a CSV file
 
@@ -1374,7 +1292,7 @@ Member automatically gets VIP newsletters
    ```
 
 **Step 3: Upload**
-1. Back in **Member Point Transaction Data Listing**, click **Upload**
+1. Back in **Upload Member Point Transaction**, click **Upload**
 2. Select your CSV
 3. System validates:
    - Does each Member ID exist?
@@ -1412,7 +1330,7 @@ Member automatically gets VIP newsletters
 - Get detailed report of all point movements
 
 **Analytics Reports:**
-- Go to **Membership Reports**
+- Go to **Membership Report**
 - Choose report type:
   - Member Demographics (age, gender distribution)
   - Point Liability Report (total outstanding points)
@@ -1438,122 +1356,130 @@ Member automatically gets VIP newsletters
 
 **Q: Can I support multiple types of points?**
 
-A: Yes! You can create multiple "Currencies" (e.g., Loyalty Points, Store Credit, Status Miles) and manage them independently. Each currency can have different expiry rules and conversion rates. For example, your "Spending Points" might expire annually, while your "Status Miles" never expire.
+A: Yes. You can create multiple currencies (e.g., Loyalty Points, Store Credit, Status Miles) and manage each one with its own expiry and conversion rules.
 
 ---
 
 **Q: How do I bulk import members from an old system?**
 
-A: Use the **Member Master Data Listing** feature:
-1. Click on **Member Master Data Listing** in the sidebar
-2. Download the CSV template (this shows you exactly which columns are needed)
-3. Fill in your existing member data in the CSV file
-4. Upload the completed file back to the system
-5. The system will create all member profiles in one go
+A: Use **Upload Membership**:
+1. Download the CSV template
+2. Fill required fields in the same column order
+3. Upload the file and review validation results
+4. Fix failed rows and re-upload only those rows
 
-**Tip:** Test with a small batch first (e.g., 10 members) to make sure your data format is correct before uploading thousands.
+**Tip:** Test with 10 records first before uploading a large file.
+
+---
+
+**Q: My bulk upload failed. What should I do first?**
+
+A: Start with the validation report and fix errors in this order:
+1. Duplicate Member ID
+2. Missing required fields
+3. Invalid date/email formats
+4. Unknown class/label/currency values
+
+Then re-upload only corrected rows so you do not create duplicates.
 
 ---
 
 **Q: Can I set points to expire automatically?**
 
-A: Yes. When configuring a **Points Currency**, you define expiry rules:
-- **"Never expires"** â€” Points last forever
-- **"Calendar year"** â€” All points expire on December 31st
-- **"Rolling expiry"** â€” Points expire 12 months from the date earned
-- **"Custom date"** â€” You choose a specific deadline
+A: Yes. In **Points Currency** settings, choose an expiry mode:
+- **Never expires** - points are permanent
+- **Calendar year** - all points expire on a fixed date
+- **Rolling expiry** - points expire after a period (e.g., 12 months)
+- **Custom date** - campaign or policy-specific date
 
-The system automatically removes expired points, and members receive advance warning (if you enable expiry notifications).
-
----
-
-**Q: What's the difference between 'Member Privilege' in the menu and 'Member Class' in this guide?**
-
-A: They're the **same thing**! The system menu uses "Member Privilege" as the label, but it manages Member Classes (your tiers like Bronze/Silver/Gold). We use "Member Class" in this guide because it's clearer. Both terms refer to your membership tiers.
-
-**Where you'll see this:**
-- Menu label: "Member Privilege"
-- What it does: Manages Member Classes/Tiers
-- What you create: Gold, Silver, Bronze (your tier names)
+The system processes expiry automatically and can notify members before expiry when enabled.
 
 ---
 
-**Q: How does this integrate with my point-of-sale system (store registers)?**
+**Q: A member says points are missing after checkout. How do I troubleshoot?**
 
-A: The applet acts as the **central brain** that stores all member data. Your POS system connects to it through an API (a connection that lets software talk to each other):
+A: Use this quick checklist:
+1. Confirm the POS transaction completed successfully
+2. Verify the correct member ID/phone was used
+3. Check **Transaction History** for delayed sync entries
+4. Confirm the earning rule and member class were active at transaction time
+5. If still missing, create a documented manual adjustment and escalate integration logs to IT
 
-**Flow when a customer shops:**
-1. Cashier scans member card or enters phone number at POS
-2. POS sends request to Membership Applet: "Who is this member?"
-3. Applet responds with: Member name, current balance, tier, applicable discounts
-4. Transaction completes at POS
-5. POS sends back to Applet: "Add 50 points to this member"
-6. Applet updates member balance immediately
+---
 
-**Webhooks** can push real-time notifications back to your POS (e.g., "Member just upgraded to Gold â€” update their discount").
+**Q: I adjusted the wrong member by mistake. How do I reverse it safely?**
 
-**Technical Note:** Your IT team or software vendor handles the integration setup. Once connected, it runs automatically.
+A: Create a reversal adjustment immediately:
+1. Open the incorrect member profile and post the exact opposite value
+2. Add a clear remark: `Reversal for mistaken adjustment ref #...`
+3. Apply the intended adjustment to the correct member
+4. Record both transaction references in your support ticket
+
+Do not edit or delete historical transactions; always reverse with an equal opposite entry.
+
+---
+
+**Q: Why can a member have balance but still cannot redeem?**
+
+A: Common causes are:
+- Currency is not marked redeemable
+- Conversion rule is inactive or outside validity dates
+- Member status blocks redemption (e.g., suspended)
+- Tier/class rule restricts redemption type
+- Balance is in a different currency than the redemption channel expects
+
+---
+
+**Q: What's the difference between `Member Privilege` in the menu and `Member Class` in this guide?**
+
+A: They refer to the same feature. The menu label is **Member Privilege**, while this guide uses **Member Class** for clarity.
+
+---
+
+**Q: How does this integrate with POS?**
+
+A: Typical flow:
+1. POS identifies member
+2. Membership applet returns profile/tier/balance
+3. POS completes sale
+4. POS sends earn/redeem transaction to membership applet
+5. Membership applet updates wallet and history
+
+Webhooks can then notify downstream systems (e.g., CRM, mobile app, marketing tools).
 
 ---
 
 **Q: Can I test changes without affecting real members?**
 
-A: Yes! Best practice is to:
-1. Create test member accounts (use fake emails like `test@yourcompany.com`)
-2. Make your configuration changes
-3. Test earning and redeeming with the test accounts
-4. Once verified, apply changes to production
-
-**Warning:** Always test conversions and expiry rules with fake accounts first. Mistakes can frustrate real members.
+A: Yes. Use a test member set and a test branch/profile:
+1. Create test members (e.g., `test+loyalty01@yourcompany.com`)
+2. Run earn, redeem, expiry, and adjustment scenarios
+3. Validate reports and exports
+4. Promote settings only after test sign-off
 
 ---
 
-**Q: What happens if I change a conversion rate (e.g., from 100 points = $1 to 200 points = $1)?**
+**Q: What happens if I change a conversion rate from 100:1 to 200:1?**
 
-A: The system uses the conversion rate **active at the time of redemption**:
-- Old rate: 100 points = $1 (valid until June 30)
-- New rate: 200 points = $1 (valid from July 1)
-
-**Example:**
-- Member redeems points on June 25 â†’ Uses 100:1 rate
-- Member redeems points on July 5 â†’ Uses 200:1 rate
-
-You can set date ranges for each rate, so the system automatically switches on the right date.
+A: Redemptions use the rate active at redemption time (based on rule validity dates). Existing transaction history remains unchanged.
 
 ---
 
-**Q: Do members see the changes I make immediately?**
+**Q: Do members see changes immediately?**
 
-A: Most changes are **immediate**:
-- Point adjustments â†’ Instant
-- Label assignments â†’ Instant
-- Tier upgrades â†’ Instant
-
-Some changes need a **refresh**:
-- Conversion rate changes â†’ Members see new rate after closing and reopening app
-- Field configuration changes â†’ Affects new registrations going forward, not existing profiles
+A: Most operational changes are immediate (adjustments, labels, tier moves). Some UI areas may require app refresh or re-login, especially after configuration updates.
 
 ---
 
 **Q: Can members transfer points to each other?**
 
-A: Only if you enable **Transferability** when creating the Points Currency:
-- **Disabled** (default): Members can only use their own points
-- **Enabled**: Members can gift points to other members (you can set limits to prevent abuse)
-
-Most businesses keep this disabled to avoid fraud (e.g., people selling points).
+A: Only if transferability is enabled on that currency. Most organizations keep it disabled to reduce fraud risk.
 
 ---
 
-**Q: How do I know if someone manually adjusted points vs. points earned naturally?**
+**Q: How do I identify manual adjustments during audit?**
 
-A: Every point movement has a **transaction type** in the history:
-- **Earned**: From purchases or campaigns
-- **Redeemed**: Used for discounts or rewards
-- **Adjusted**: Manual change by staff (with reason recorded)
-- **Expired**: Removed by system due to expiry rules
-
-Click on any transaction to see full details including who made the change and why.
+A: Filter transaction history by type = **Adjusted** and export with fields for user, timestamp, reason, and reference number.
 
 ---
 
@@ -1584,7 +1510,7 @@ A simple spreadsheet file format (Comma-Separated Values) that most programs can
 ---
 
 **Currency (in Points Context)**
-A type of point in your loyalty program (like "Reward Points" or "Status Miles" â€” not actual money, but a unit of value your program uses).
+A type of point in your loyalty program (like "Reward Points" or "Status Miles" - not actual money, but a unit of value your program uses).
 
 ---
 
@@ -1604,7 +1530,7 @@ A flexible tag you put on members to group them for marketing (like tagging all 
 ---
 
 **Liability (Points Liability)**
-The total value of all outstanding points across all members â€” money your business owes if everyone redeemed at once (important for accounting).
+The total value of all outstanding points across all members - money your business owes if everyone redeemed at once (important for accounting).
 
 ---
 
