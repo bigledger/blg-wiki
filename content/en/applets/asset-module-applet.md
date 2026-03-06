@@ -194,3 +194,72 @@ A decentralized inventory management system for departments.
 - **Mini-Stock Control:** Allows individual departments or faculties (PTJs) to manage their own local stores of consumables or minor equipment.
 - **Track Receipt, Usage, and Balance:** The PTJ can record the receipt of items into their store, track usage by staff, and always have a real-time stock balance.
 - **Reduces Central Burden:** Empowers departments to manage their own low-value, high-volume inventory, freeing up the central asset team to focus on major assets.
+
+---
+
+## Technical Specifications
+
+### System Capabilities
+- **Batch Processing**: Calculate depreciation for 10,000+ assets in minutes.
+- **Mobile Access**: Full functionality on BigLedger Mobile App for inspections and loans.
+- **QR Engine**: Support for high-resolution thermal and laser printing.
+- **Security**: Role-based access control (RBAC) down to the field level (e.g., hiding cost from inspectors).
+
+### Data Retention
+- **Audit Logs**: Indefinite storage of all lifecycle events.
+- **Photo Storage**: High-compression storage for asset and damage photos.
+- **Historical Reporting**: Generate balance sheets for any historical period.
+
+---
+
+## Integration Points
+
+The Asset Module is highly interconnected with other BigLedger components to ensure data consistency.
+
+| Integration | Purpose |
+|-------------|---------|
+| **Purchasing / Accounts Payable** | Automatically triggers "Asset Receipt" when fixed assets are purchased. |
+| **General Ledger (GL)** | Posts monthly depreciation entries and write-off losses automatically. |
+| **Organization Applet** | Uses location and hierarchy data for asset assignment and inspections. |
+| **Employee Maintenance** | Links assets (laptops, vehicles) to specific employees for accountability. |
+| **Maintenance Module** | Links physical assets to work orders and preventive maintenance schedules. |
+
+---
+
+## Setup Guide
+
+### 1. Initial Configuration (Finance/Admin)
+1. **Define Categories**: Create asset categories (e.g., IT Equipment, Land & Buildings) and assign default GL codes.
+2. **Set Depreciation Rates**: Configure the percentage and method (e.g., Straight Line) for each category.
+3. **Configure Locations**: Ensure all rooms, buildings, and departments exist in the **Organization Applet**.
+
+### 2. Physical Preparation (Operations)
+1. **Labeling Strategy**: Decide on the size and material for QR code labels.
+2. **Inventory Census**: Perform an initial physical count to register existing "old" assets.
+3. **Hardware Setup**: Configure mobile devices or tablets for the inspection team.
+
+---
+
+## FAQ
+
+**Q: Can I track non-fixed assets (consumables)?**
+**A:** Yes, using the **Responsibility Center Store (PTJ)** feature, you can manage low-value items that don't need formal depreciation but still need tracking.
+
+**Q: What happens if an asset is sold?**
+**A:** Use the **Disposal of Assets** feature. The system will calculate the remaining book value, record the sale price, and automatically post the Profit/Loss on Disposal to the GL.
+
+**Q: Can a single QR code be used for a group of items?**
+**A:** We recommend one QR code per unique asset. However, for bulk furniture (e.g., 50 identical chairs), you can register them as a single "Asset Group" with one ID.
+
+**Q: How often should I run depreciation?**
+**A:** Most organizations run it monthly as part of their month-end closing process to ensure financial statements are always accurate.
+
+---
+
+## Summary
+
+The **Asset Module Applet** is more than just a list of items; it is a lifecycle management engine. By integrating procurement, maintenance, and accounting into a single workflow, BigLedger ensures that no university asset is ever "lost" or improperly valued. Whether you are conducting a physical audit with a tablet or generating complex financial reports, the Asset Module provides the accuracy and efficiency required for modern institutional management.
+
+{{< callout type="tip" >}}
+**Implementation Tip**: Start by registering all NEW assets. Then, phase in the "Old Asset Registration" for existing items one department at a time to ensure data quality.
+{{< /callout >}}
