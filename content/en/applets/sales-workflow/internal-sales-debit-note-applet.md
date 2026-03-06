@@ -79,32 +79,6 @@ This applet acts as a bridge between several other parts of the system:
 - Consolidated view of all intercompany debit activity
 - Data-driven analysis of inter-branch service volumes
 
-## Key Menu Functions
-
-When utilizing this applet, users have access to several key functions to manage their daily workflows:
-
-**1. Create/Edit Document**
-- Create new additional charges (Debit Notes).
-- Select the destination branch, describe why the charge is occurring, and add specific item codes and amounts.
-- Tag original internal invoices, department codes, and cost centers.
-
-**2. File Import**
-- Upload an Excel or CSV file containing hundreds of extra charges at once.
-- A massive time-saver for month-end reconciliation if many small items were under-billed.
-
-**3. Intercompany Transaction Listing (Manual processing)**
-![Intercompany Dashboard](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_21c7678b2dd3810c82bbe3f3b68ca14881b930766766b4938dcbb1dd5f0a48f6.png)
-
-- View a dedicated dashboard tracking the status of intercompany syncs.
-- **Inbound vs Outbound:** View transactions originating from your branch (Outbound) and coming to your branch (Inbound).
-- **Unprocessed vs Processed:** Track documents waiting to be automatically synced versus those that have successfully completed the intercompany transfer. 
-
-**4. Applet Settings**
-- Configure branch mappings, default accounts, workflow approval chains, printable formats, and knock-off rules.
-
-**5. Personal Default Settings**
-- Save favorite defaults (like preferred branch or currency) to speed up continuous data entry.
-
 ### What Problems Does This Solve?
 
 **The Manual Internal Adjustment Problem:**
@@ -144,6 +118,8 @@ Traditional intercompany adjustments rely on emails and isolated accounting entr
   {{< card title="Personalization" subtitle="Save default settings for faster data entry" link="#personalization" >}}
 {{< /cards >}}
 
+{{< figure src="/images/internal-sales-debit-note-applet/internalSalesDebitNoteInfographic.png" alt="Internal Sales Debit Note Workflow - comparing the old manual intercompany adjustment process with the new automated solution" caption="The Internal Adjustment Evolution: The Old Way (manual emails, out-of-sync branch ledgers, delayed month-end reconciliation) vs The New Way (single point of entry, auto-synced intercompany documents, perfectly balanced AR/AP)." >}}
+
 ## Key Concepts
 
 ### Intercompany Transaction Flow
@@ -164,6 +140,32 @@ Accounts Receivable ▲                        Accounts Payable ▲
 {{< callout type="tip" >}}
 **Real-World Example**: HQ realizes they under-billed Branch A for inventory by RM 500. HQ issues an Internal Sales Debit Note. The system automatically updates HQ's receivables by +RM 500 and provisions Branch A's payables by +RM 500—keeping everything in sync without either party doing double entry.
 {{< /callout >}}
+
+## Key Menu Functions
+
+When utilizing this applet, users have access to several key functions to manage their daily workflows:
+
+**1. Create/Edit Document**
+- Create new additional charges (Debit Notes).
+- Select the destination branch, describe why the charge is occurring, and add specific item codes and amounts.
+- Tag original internal invoices, department codes, and cost centers.
+
+**2. File Import**
+- Upload an Excel or CSV file containing hundreds of extra charges at once.
+- A massive time-saver for month-end reconciliation if many small items were under-billed.
+
+**3. Intercompany Transaction Listing (Manual processing)**
+![Intercompany Dashboard](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_21c7678b2dd3810c82bbe3f3b68ca14881b930766766b4938dcbb1dd5f0a48f6.png)
+
+- View a dedicated dashboard tracking the status of intercompany syncs.
+- **Inbound vs Outbound:** View transactions originating from your branch (Outbound) and coming to your branch (Inbound).
+- **Unprocessed vs Processed:** Track documents waiting to be automatically synced versus those that have successfully completed the intercompany transfer. 
+
+**4. Applet Settings**
+- Configure branch mappings, default accounts, workflow approval chains, printable formats, and knock-off rules.
+
+**5. Personal Default Settings**
+- Save favorite defaults (like preferred branch or currency) to speed up continuous data entry.
 
 ## Quick Start Guide
 
