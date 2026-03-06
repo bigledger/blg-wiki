@@ -7,7 +7,7 @@ tags:
 - logistics
 - order-tracking
 - status-updates
-weight: 70
+weight: 170
 ---
 
 ## Purpose and Overview

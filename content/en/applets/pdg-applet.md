@@ -1,254 +1,173 @@
 ---
 title: "PDG Applet"
-description: "Comprehensive deposit management and product registration applet for streamlined workflows, queue management, and advanced reporting."
+description: "Product Distribution Guide (PDG) and Outlet Product Distribution Guide (OPDG) applets for streamlined product display planning and outlet-specific distribution management."
 tags:
-- deposit-management
-- product-registration
-- queue-management
-- workflow-automation
-- reporting
-weight: 61
+- product-distribution
+- outlet-management
+- category-groups
+- planning
+- import-upload
+- installation
+weight: 161
+---
+
+
+---
+
+---
+
 ---
 
 ## Purpose and Overview
 
-The **PDG Applet** is designed to simplify and automate deposit management, product registration, and related workflows within the ERP system. It provides robust queue handling, advanced reporting, and seamless integration with other business processes.
+The **PDG Applet** (Product Distribution Guide) and **OPDG Applet** (Outlet Product Distribution Guide) are designed to streamline and optimize product display planning and outlet-specific distribution management across all Senheng outlets.
 
 {{< callout type="info" >}}
-**Core Concept**: The applet centralizes deposit and product registration operations, enabling efficient queue management, personalized settings, and real-time reporting.
+**Core Concept**: PDG defines the recommended display quantity for each item by outlet type and size. OPDG enables outlet managers to tailor and execute these plans for their specific location.
 {{< /callout >}}
 
 ## Key Features Overview
 
 ### Who Benefits from This Applet?
 
-**Operations Team:**
-- Manage deposit queues efficiently
-- Track product registration status
-- Handle bulk uploads and imports
+**Outlet Managers & Staff:**
+- Quickly configure outlet-specific product displays
+- Ensure compliance with company display standards
+- Easily adjust for outlet type and size
 
-**Finance Team:**
-- Monitor deposit transactions
-- Reconcile deposit registers
-- Access audit trails and reports
+**Head Office & Planners:**
+- Centralized control of display guidelines
+- Efficient rollout of new display plans
+- Data-driven planning by outlet segmentation
 
-**Sales & Customer Service:**
-- Register new products quickly
-- View customer deposit history
-- Respond to customer queries with up-to-date info
+**IT & Admin Teams:**
+- Streamlined applet installation and user management
+- Role-based access and permissions
 
 ### What Problems Does This Solve?
 
-**Manual Deposit & Registration Issues:**
-- Time-consuming queue handling
-- Errors in manual product registration
-- Lack of centralized reporting
-- Difficult reconciliation and audit
+**The Manual Display Planning Problem:**
 
-**PDG Applet Solution:**
-- **Automated queue management** for deposits and registrations
-- **Bulk import** and file handling for master data
-- **Advanced reporting** for deposits, products, and transactions
-- **Personalized settings** for user roles and workflows
-- **Audit-ready** with full traceability
+Traditional product display planning is manual, error-prone, and inconsistent across outlets. Common issues include:
+- Lack of standardization by outlet type/size
+- Time-consuming updates for new products or promotions
+- Difficult tracking of compliance and execution
+- No easy way to tailor plans for unique outlet needs
+
+**The PDG/OPDG Applet Solution:**
+- **Centralized guidelines** – Define display rules once, apply everywhere
+- **Outlet-specific planning** – Managers can adjust for local needs
+- **Category-driven** – Plan by product group, type, or brand
+- **Easy import/upload** – Bulk update plans via Excel
+- **Full traceability** – Audit who changed what, when
 
 ## Key Features Overview
 
 {{< cards >}}
-  {{< card title="Deposit Queue Management" subtitle="Automate deposit queue workflows and tracking" link="#quick-start-guide-for-operations" >}}
-  {{< card title="Product Registration" subtitle="Register products with bulk import and validation" link="#quick-start-guide-for-sales" >}}
-  {{< card title="Line-Item Editing" subtitle="Edit and manage detailed line items for deposits and products" link="#quick-start-guide-for-line-items" >}}
-  {{< card title="OPDG Report Listing" subtitle="View and analyze OPDG reports for insights and compliance" link="#quick-start-guide-for-report-listing" >}}
-  {{< card title="Advanced Reporting" subtitle="Generate deposit and product reports" link="#reporting-and-history" >}}
-  {{< card title="Personalization" subtitle="Customize settings and workflows" link="#configuration-settings" >}}
-  {{< card title="Audit Trail" subtitle="Full traceability of transactions" link="#faq" >}}
+	{{< card title="Outlet Type & Size Management" subtitle="Categorize outlets for tailored planning" link="#outlet-type-and-size" >}}
+	{{< card title="Category Grouping" subtitle="Plan by product group, type, or brand" link="#items-category-groups" >}}
+	{{< card title="PDG Creation & Editing" subtitle="Define and update display guidelines" link="#pdg-listing" >}}
+	{{< card title="OPDG Creation & Customization" subtitle="Outlet-specific execution and adjustment" link="#opdg-creation" >}}
+	{{< card title="Import/Upload" subtitle="Bulk update plans via Excel" link="#pdg-importupload" >}}
+	{{< card title="Installation & Permissions" subtitle="Easy applet setup and user roles" link="#applet-installation-guide" >}}
 {{< /cards >}}
-{{< figure src="/images/pdg-applet/pdg-applet-overview-infographic.png" alt="PDG Applet Overview Infographic" caption="PDG Applet: Challenges (manual queues, errors, no reporting), Solution (automation, bulk import, reporting, audit), and Who Benefits (Operations, Finance, Sales)." >}}
-{{< figure src="/images/pdg-applet/pdg-applet-overview-infographic.jpg" alt="PDG Applet Overview Infographic" caption="PDG Applet: Challenges (manual queues, errors, no reporting), Solution (automation, bulk import, reporting, audit), and Who Benefits (Operations, Finance, Sales)." >}}
-### For Operations: Manage Deposit Queues
-1. **Access Deposit Queue:**
-   - Go to **Deposit Queue** from the sidebar
-   - View all pending deposits
-{{< figure src="/images/pdg-applet/image-1771815019763.png" alt="Outlet Listing Page" caption="Outlet listing page showing all outlets and their details." >}}
-{{< figure src="/images/pdg-applet/image-1771815019763.jpg" alt="Outlet Listing Page" caption="Outlet listing page showing all outlets and their details." >}}
-{{< figure src="/images/pdg-applet/image-1771815097497.png" alt="PDG Listing Page" caption="PDG listing page showing all PDG documents and their status." >}}
-{{< figure src="/images/pdg-applet/image-1771815097497.jpg" alt="PDG Listing Page" caption="PDG listing page showing all PDG documents and their status." >}}
-2. **Process Deposits:**
-   - Select a deposit
-   - Review details and attachments
-   - Approve, reject, or query as needed
-{{< figure src="/images/pdg-applet/image-1771815115851.png" alt="Edit PDG Form" caption="Edit PDG form with details and guide tabs." >}}
-{{< figure src="/images/pdg-applet/image-1771815115851.jpg" alt="Edit PDG Form" caption="Edit PDG form with details and guide tabs." >}}
-{{< figure src="/images/pdg-applet/image-1771815130937.png" alt="Edit PDG Guide Tab" caption="Guide tab for PDG edit form, showing category selection." >}}
-{{< figure src="/images/pdg-applet/image-1771815130937.jpg" alt="Edit PDG Guide Tab" caption="Guide tab for PDG edit form, showing category selection." >}}
-{{< figure src="/images/pdg-applet/image-1771815143961.png" alt="Edit PDG Outlet Guide" caption="Outlet guide tab for PDG edit form, showing outlet details." >}}
-{{< figure src="/images/pdg-applet/image-1771815143961.jpg" alt="Edit PDG Outlet Guide" caption="Outlet guide tab for PDG edit form, showing outlet details." >}}
-**What happens next?**
-- You’ll receive notifications when deposits are approved, rejected, or queried.
-- If queried, respond with additional info or documents.
 
-**Pro Tip:** Use filters and search to quickly locate specific deposits.
-
-3. **Bulk Import:**
-   - Use **File Import** to upload deposit data
-   - Validate and process in batches
-   - Check import logs for errors and resolve any failed entries
+{{< figure src="/screenshots/pdg-applet/location-listing.png" alt="Location Listing" caption="Organization Applet: Location listing for outlets." >}}
 
 ---
 
-### For Sales: Register Products
+## Key Concepts
 
-1. **Navigate to Product Registration:**
-   - Click **Add New Product**
-{{< figure src="/images/pdg-applet/image-1771815155088.png" alt="Product Registration Listing" caption="Product registration listing page showing all products and their details." >}}
-{{< figure src="/images/pdg-applet/image-1771815155088.jpg" alt="Product Registration Listing" caption="Product registration listing page showing all products and their details." >}}
-2. **Enter Product Details:**
-   - Fill in product info, category, and customer
-   - Attach relevant documents
-{{< figure src="/images/pdg-applet/image-1771815173074.png" alt="Product Registration Edit Form" caption="Edit form for product registration, showing product details." >}}
-{{< figure src="/images/pdg-applet/image-1771815173074.jpg" alt="Product Registration Edit Form" caption="Edit form for product registration, showing product details." >}}
-**What happens next?**
-- Product registration is submitted for review.
-- You’ll be notified if additional info is required or if registration is approved.
+### Outlet Type and Size {#outlet-type-and-size}
 
+Each outlet is categorized by type (e.g., Basic, Premium, Super Premium) and size (e.g., <5K, 5K–7K, etc.) to ensure appropriate product distribution.
 
-3. **Bulk Upload:**
-   - Use **Master Data Upload** for CSV imports
-   - Review and confirm imported products
-   - Check for import errors and correct them as needed
+{{< figure src="/screenshots/pdg-applet/applet-settings-outlet-type.png" alt="Outlet Type Listing" caption="Outlet Type listing in Applet Settings." >}}
+{{< figure src="/screenshots/pdg-applet/applet-settings-outlet-size.png" alt="Outlet Size Listing" caption="Outlet Size listing in Applet Settings." >}}
+{{< figure src="/screenshots/pdg-applet/location-edit.png" alt="Edit Location - Assign Type and Size" caption="Edit Location: Assign outlet type and size." >}}
+
+### Items Category Groups {#items-category-groups}
+
+Product categorization is structured using category groups, categories, and items. This enables granular planning and reporting.
+
+{{< figure src="/screenshots/pdg-applet/doc-item-maintenance-items.png" alt="Items Listing" caption="Doc Item Maintenance Applet: Items listing." >}}
+{{< figure src="/screenshots/pdg-applet/doc-item-maintenance-category-groups.png" alt="Category Group Listing" caption="Category Group listing in Doc Item Maintenance Applet." >}}
+{{< figure src="/screenshots/pdg-applet/category-group-mapping.png" alt="Category Group Mapping" caption="Category group mapping in Settings page." >}}
+{{< figure src="/screenshots/pdg-applet/item-edit-category.png" alt="Item Edit - Category Assignment" caption="Item Edit: View category assignments." >}}
 
 ---
 
-### For Finance: Reconcile Deposits
+## PDG Listing {#pdg-listing}
 
-1. **Access Deposit Register:**
-   - Go to **Deposit Register**
-{{< figure src="/images/pdg-applet/image-1771815198481.png" alt="Deposit Register Listing" caption="Deposit register listing page showing all deposit transactions." >}}
-{{< figure src="/images/pdg-applet/image-1771815198481.jpg" alt="Deposit Register Listing" caption="Deposit register listing page showing all deposit transactions." >}}
-2. **Reconcile Transactions:**
-   - Match deposits with register entries
-   - Generate reconciliation reports
-   - Flag discrepancies for follow-up
+### PDG Creation & Editing
 
-**What happens next?**
-- Reconciled deposits are marked as complete.
-- Unmatched deposits are flagged for investigation.
+Create a new Product Distribution Guide (PDG) to define display rules by outlet type, size, and product category.
 
-**Pro Tip:** Export reconciliation reports for audit and compliance.
+{{< figure src="/screenshots/pdg-applet/pdg-listing-create.png" alt="PDG Listing - Create" caption="Create new PDG in PDG Listing." >}}
+{{< figure src="/screenshots/pdg-applet/pdg-edit-details.png" alt="Edit PDG Details" caption="Edit PDG: Enter details for PDG." >}}
+{{< figure src="/screenshots/pdg-applet/pdg-edit-guide.png" alt="Edit PDG Guide Tab" caption="Guide tab: Category combinations in PDG." >}}
+{{< figure src="/screenshots/pdg-applet/pdg-edit-quantity.png" alt="Edit PDG Quantity" caption="Set recommended quantity in PDG." >}}
+
+> ⚠️ **Tip:** The system only generates combinations of selected category groups that are actually used by at least one item, for performance and clarity.
+
+---
+
+## OPDG Creation & Customization {#opdg-creation}
+
+Create an Outlet Product Distribution Guide (OPDG) based on a PDG, then tailor it for a specific outlet.
+
+{{< figure src="/screenshots/pdg-applet/opdg-set-outlet-empty.png" alt="Set OPDG Outlet - Empty" caption="Set OPDG Outlet: Empty state example." >}}
+{{< figure src="/screenshots/pdg-applet/opdg-set-outlet-filled.png" alt="Set OPDG Outlet - Filled" caption="Set OPDG Outlet: Filled example." >}}
+{{< figure src="/screenshots/pdg-applet/opdg-chart.png" alt="OPDG Chart Tab" caption="OPDG Chart: Set OPDG quantities." >}}
+{{< figure src="/screenshots/pdg-applet/opdg-by-brands.png" alt="OPDG By Brands" caption="OPDG By Brands: Allocate by brand." >}}
+
+**Brand Corner Setup:**
+- Set the OPDG quantity (e.g., 10)
+- Set Brand Corner to Y (Yes) to allocate by brand
+- Add rows for each brand and assign quantities (must total the OPDG quantity)
+- If Brand Corner is N, just enter the total OPDG quantity
 
 ---
 
 
-1. **Access Line-Items:**
-   - Go to **Line-Items Container** from the sidebar or deposit/product detail view
-   - Update item descriptions, amounts, and categories
-3. **Save Changes:**
-   - Confirm edits and save
-   - Changes are reflected in deposit/product records
+## OPDG Report Listing
 
-**What happens next?**
-- Line-item changes are tracked for audit
-- Updated items are included in reports and workflows
+This report provides a detailed view of each outlet's OPDG quantity, the corresponding PDG quantity, brand, and brand quantity. It helps managers and planners track product distribution at a granular level for every outlet.
 
----
+{{< figure src="/screenshots/pdg-applet/opdg-report-listing.png" alt="OPDG Report Listing" caption="OPDG Report Listing: See OPDG QTY, PDG QTY, Brand, and Brand QTY for each outlet." >}}
 
-### For OPDG Report Listing
+**Report Columns:**
+- Outlet Name
+- Outlet Code
+- Description
+- Outlet Size
+- Outlet Type
+- Product Department
+- Product Type
+- PDG QTY (Recommended display quantity from PDG)
+- OPDG QTY (Actual quantity set for outlet)
+- Brand
+- Brand QTY (Quantity allocated per brand)
 
-1. **Access OPDG Reports:**
-   - Go to **OPDG Report Listing Container** from the sidebar
-   - View available reports for deposits, products, and transactions
-2. **Analyze Reports:**
-   - Filter and sort reports by date, category, or user
-   - Export reports for compliance or further analysis
+This listing allows you to:
+- Compare OPDG QTY vs PDG QTY for compliance and adjustments
+- See brand-level allocations for each outlet
+- Filter and sort by outlet, product group, or brand
+- Audit and review distribution plans across all outlets
 
-**What happens next?**
-- Reports provide actionable insights for operations and finance
-- Exported reports can be used for audits and presentations
-
----
-
-### For Admins: Test and Configure the Applet
-
-**Goal:** Ensure the PDG Applet is set up and working for all users.
-
-1. **Configure Settings:**
-   - Go to **Settings**
-   - Set up deposit categories, approval workflows, and product registration options
-   - Personalize notification preferences
-{{< figure src="/images/pdg-applet/pdg-settings.png" alt="PDG Settings Page" caption="Settings page for deposit categories, approval workflows, and personalization options." >}}
-{{< figure src="/images/pdg-applet/pdg-settings.jpg" alt="PDG Settings Page" caption="Settings page for deposit categories, approval workflows, and personalization options." >}}
-2. **Test User Flows:**
-   - Create a test deposit and product registration
-   - Approve/reject/query as manager/finance
-   - Verify notifications and audit logs
-3. **Handle Errors:**
-   - Review import logs and error messages
-   - Resolve failed imports or approvals
-4. **Delegate Approvals:**
-   - Set up approval delegation for managers on leave
-
-**What happens next?**
-- Admins can monitor all flows and ensure users are onboarded smoothly.
-- Use audit logs for compliance and troubleshooting.
+Use this report to ensure each outlet is following the recommended guidelines and to quickly identify any discrepancies or customizations made at the outlet level.
 
 ---
 
-## Configuration & Settings
+## PDG Import/Upload {#pdg-importupload}
 
-- **Personalization:**
-  - Set favorite queues and reports
-  - Configure notification preferences
-- **Deposit Settings:**
-  - Define deposit categories and types
-  - Set approval workflows
-{{< figure src="/images/pdg-applet/pdg-settings.png" alt="PDG Settings Page" caption="Settings page for deposit categories, approval workflows, and personalization options." >}}
-- **Product Registration Settings:**
-  - Configure product categories
-  - Enable bulk import options
-- **Reporting:**
-  - Customize report templates
-  - Schedule automated report generation
+Bulk upload or update PDG templates using Excel for fast rollout.
+
+{{< figure src="/screenshots/pdg-applet/file-import-listing.png" alt="File Import Listing" caption="File Import: Upload and monitor PDG templates." >}}
+{{< figure src="/screenshots/pdg-applet/pdg-upload-template.png" alt="PDG Upload Template" caption="PDG upload template format (Excel)." >}}
+{{< figure src="/screenshots/pdg-applet/file-import-errors.png" alt="File Import Errors" caption="File Import: View upload errors and results." >}}
 
 ---
 
-## FAQ
 
-**Q1: How do I bulk import deposit data?**
-A: Use the File Import feature in the Deposit Queue section. Upload your CSV file, validate entries, and process in batches. Check import logs for errors and correct any failed entries.
 
-**Q2: Can I customize approval workflows?**
-A: Yes, admins can configure approval chains and conditions in Deposit Settings. You can also delegate approvals for managers who are unavailable.
-
-**Q3: How do I track product registration status?**
-A: Navigate to Product Registration and view the status dashboard for all products. You’ll be notified of approvals or queries.
-
-**Q4: Is there an audit trail for deposits and registrations?**
-A: Yes, every transaction is logged with full traceability for compliance and review. Use the audit log to investigate discrepancies or failed actions.
-
-**Q5: How do I test the applet as an admin?**
-A: Create test deposits and product registrations, approve/reject/query them, and verify notifications and audit logs.
-
-**Q6: What should I do if a deposit or product registration is queried or rejected?**
-A: Respond with additional information or documents as requested. Check the notification for details and resubmit if needed.
-
-**Q7: How do I edit line-items for a deposit or product?**
-A: Use the Line-Items Container to view and edit individual line items. You can update descriptions, amounts, and attach documents. All changes are tracked for audit.
-
-**Q8: How do I access and use OPDG reports?**
-A: Go to the OPDG Report Listing Container to view, filter, and export reports. These reports help with compliance, analysis, and audit preparation.
-
----
-
-## Reporting and History
-
-- Generate deposit and product reports
-- Access audit logs for all transactions
-- Export data for further analysis
-{{< figure src="/images/pdg-applet/pdg-audit-trail.png" alt="PDG Audit Trail" caption="Audit trail screen showing full traceability of deposit and registration transactions." >}}
-{{< figure src="/images/pdg-applet/pdg-audit-trail.jpg" alt="PDG Audit Trail" caption="Audit trail screen showing full traceability of deposit and registration transactions." >}}
-
----
-
-## Visual Overview
-
-{{< figure src="/images/pdg-applet/pdg-applet-overview-infographic.jpg" alt="PDG Applet Overview Infographic" caption="PDG Applet: Streamlining deposit and product registration workflows with automation, reporting, and audit-ready features." >}}

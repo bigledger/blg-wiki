@@ -1,7 +1,7 @@
 ---
 title: "Stock Take Applet"
 description: "Digital solution for streamlined inventory management with real-time stock counting capabilities during business hours"
-weight: 15
+weight: 115
 tags:
 - applets
 - inventory

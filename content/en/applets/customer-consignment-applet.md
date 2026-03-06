@@ -6,7 +6,7 @@ tags:
 - stock-transfer
 - inventory-tracking
 - off-site-stock
-weight: 70
+weight: 170
 ---
 
 ## Purpose and Overview
