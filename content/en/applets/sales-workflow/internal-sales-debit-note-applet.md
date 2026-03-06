@@ -20,6 +20,19 @@ The **Internal Sales Debit Note Applet** manages upward revisions to internal sa
 **Core Concept**: Issue a Debit Note from one branch → system automatically increases your branch's **Accounts Receivable** and creates a matching **Internal Purchase Debit Note** at the destination branch, keeping both ledgers perfectly synchronized.
 {{< /callout >}}
 
+A Webinar to get to know about the functionalities of the Internal Sales Debit Note Applet:
+
+<div style="max-width:560px; margin:24px auto;">
+  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+    <iframe
+      src="https://www.youtube.com/embed/BlC3GtLoHzo"
+      style="position:absolute; top:0; left:0; width:100%; height:100%;"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
 ### What is the Internal Sales Debit Note Applet? (Explained Simply)
 
 Imagine your company has two branches: **HQ (in Kuala Lumpur)** and **Branch A (in Penang)**.
@@ -80,14 +93,25 @@ When utilizing this applet, users have access to several key functions to manage
 - A massive time-saver for month-end reconciliation if many small items were under-billed.
 
 **3. Intercompany Transaction Listing (Manual processing)**
+![Intercompany Dashboard](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_21c7678b2dd3810c82bbe3f3b68ca14881b930766766b4938dcbb1dd5f0a48f6.png)
+
 - View a dedicated dashboard tracking the status of intercompany syncs.
 - **Inbound vs Outbound:** View transactions originating from your branch (Outbound) and coming to your branch (Inbound).
 - **Unprocessed vs Processed:** Track documents waiting to be automatically synced versus those that have successfully completed the intercompany transfer. 
 
-**4. Applet Settings**
+**4. Search and Advanced Filters (Listing Page)**
+The smart search and advanced filter functionality on the main listing page allows users to efficiently locate specific debit notes:
+- **Customer Filter:** Select a specific customer from the dropdown list to view all related debit notes.
+- **Branch Filter:** Select "All" or drill down into one specific branch.
+- **Sales Agent Filter:** Track performance or follow up on specific agents' transactions.
+- **Posting Status:** Filter by Draft (in progress), Final (completed), Void (cancelled), or Discarded to track the current state of each note.
+- **Active Status:** View debit notes that are currently Active or Inactive within the system.
+- **Date Filters:** Refine search by Transaction Date, Update Date, or Creation Date.
+
+**5. Applet Settings**
 - Configure branch mappings, default accounts, workflow approval chains, printable formats, and knock-off rules.
 
-**5. Personal Default Settings**
+**6. Personal Default Settings**
 - Save favorite defaults (like preferred branch or currency) to speed up continuous data entry.
 
 ### What Problems Does This Solve?
@@ -176,6 +200,11 @@ Get up and running quickly with these essential workflows.
 6. **Attach Supporting Docs** *(if visible)*: Switch to the **Attachments** tab:
    - Upload the original purchase order, correspondence, or any supporting evidence
 7. **Create**: Click **CREATE** → Document is saved in **Draft** status
+
+**Creation Action Controls (Top Right)**
+*   **Reset**: Clears all entered data and restores the form to its original blank state.
+*   **Save**: Saves any changes made without finalizing, allowing you to update the draft later.
+*   **Final**: Finalizes the debit note, locking it as complete.
 
 **What happens next?**
 
@@ -276,6 +305,8 @@ When creating or editing a debit note, the screen is organized into tabs. Here i
 | **Export** | Generate a printable PDF of the Debit Note. |
 
 #### Deep Dive: Main Details Tab
+![Main Details Overview](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_14a7809355449c24c22c87013ec80e8b160ff8fb12a1f08d9e74f720e1fd70b8.png)
+
 This tab captures the fundamental information about the debit note. Beyond standard dates and currencies, it includes important tracking fields:
 *   **Tracking ID & Client Documents (1-5):** These optional fields are used to input reference numbers from external systems. For example, if you are issuing a debit note for extra freight costs, you would put the logistics provider's tracking number in the "Tracking ID" field. If your branch uses a separate third-party system to generate repair requests, you would put that system's ID into "Client Doc 1 No." This cross-references the ERP internal debit note with outside physical shipments or external software.
 *   **Debit Terms & Due Date:** You select the agreed-upon payment terms (e.g., Net 30). The system will then automatically calculate and lock in the "Due Date."
@@ -314,14 +345,21 @@ This section contains the tax identity of the destination branch.
 *   **Validation URL:** Once successfully submitted to and approved by the government tax authority, an official QR code and URL are generated at the very bottom of the page to prove the document's legal validity.
 
 #### Deep Dive: Account Tab
+![Account Tab Search](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_31bd232830790bfedd6dd14adf9d521ace0d6d45875c034034744fd21181c98a.png)
+![Account Tab Create](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_6ff15c4c20dea5e78cf299aba5fbbae4e6b45758c170d7605825f07c3cc71186.png)
+
 While most of this tab contains standard business information (who the internal customer is, and where to bill/ship), it contains one crucial sub-tab that powers this applet's main feature:
 *   **Entity Details, Bill To, Ship To:** Standard fields to select the destination branch, and verify their exact Billing and Shipping addresses.
+    *   **Quick Create:** If the customer you need is not available in the list, you don't need to abruptly halt your workflow or open a separate customer management app. Simply toggle the switch at the top to **Create and Edit mode**, fill in the new customer details, and the system saves it instantly. Once created or if they already existed, use **Select mode** to pick them from the list.
 *   **Intercompany Sub-Tab:** This is the core engine of the applet. When you finalize this debit note, this sub-tab acts as a live monitor for the intercompany sync. It displays the **Transaction Status** and tracks the generation of the exact **Internal Purchase Debit Note** sent to the destination branch's system. If there are any errors or delays in the sync between branches, the status is tracked here.
 
 #### Deep Dive: Lines Tab
+![Lines Tab Selection](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_f0445bd93b9002f7a0d46fb920ca6cd70da21dd33bfc809e10c2ad6014f135ac.png)
+
 This is where you specify the exact charges. While adding internal items is standard, there are a few unique features available when you edit a line item:
 *   **Costing & Pricing Details:** You can view the exact cost metrics and markup for the item being billed to the destination branch.
-*   **Serial / Batch / Bin Numbers:** If the debit note involves moving physical inventory (like a replacement part), you can specify exactly which Serial or Batch number was sent.
+*   **Delivery Details (From & To):** A sub-tab to manage shipment-specific information including trip number, driver, vehicle details, job start/end dates, delivery status, recipient name, and quantities.
+*   **Serial Number (Scan & Import):** Two sub-tabs are available if the debit note involves moving tracked physical inventory. You can either manually "Scan" to add serials or "Import" a file to bulk-upload tracked serials and batches.
 *   **Issue Link:** A unique sub-tab that allows you to link this specific line item charge to an external ticketing system (like a Jira ticket or internal helpdesk issue) for traceability.
 
 #### Deep Dive: Settlement Tab
@@ -337,7 +375,15 @@ This tab is designed for extremely precise internal reporting. If HQ charges Bra
 *   **Profit Centre:** Allows you to attribute the transaction to a specific department (e.g., if you are charging Branch A for an IT software license, you can tag Branch A's specific "IT Helpdesk" profit center so their budget takes the hit, not Branch A's general fund).
 *   **Project:** If the debit note is related to a specific internal initiative (e.g., "Warehouse Relocation 2024"), you can link the cost directly to that project's budget.
 
+**KO For (Knock-Off For)**
+This tab also provides dedicated sub-tabs designed to organize and link related sales documents:
+*   **Delivery Order:** Lists delivery documents linked to the transaction for quick search.
+*   **Job Sheet:** Shows job-related documents easily locatable via branch and customer.
+*   **Sales Order:** Efficiently links directly to upstream sales order records.
+
 #### Deep Dive: Contra Tab
+![Contra Tab Summary](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_414411e36aba01c12afa5cb6dac652a018e8bc4a2160763955e5462135f56b55.png)
+
 **The core concept:** Why transfer real money back and forth between bank accounts if you can just call it even? 
 The Contra tab is where you resolve debts without actually transferring cash. 
 
@@ -351,6 +397,8 @@ Instead of Branch A wiring RM 500 back to HQ (which is a waste of time and bank 
 *   **Reversals:** If a mistake is made, you can easily delete a finalized Contra entry using the "DELETE" button (which requires double-confirmation), automatically restoring the outstanding balances to both ledgers.
 
 #### Deep Dive: ARAP Tab
+![ARAP Tab View](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_b6fc662f59214dc4315cb691d02a861605e82fb97e00d1046e81296d364c89eb.png)
+
 You can think of the ARAP (Accounts Receivable / Accounts Payable) tab as a **Read-Only Financial Dashboard**. It is not a status bar for the whole company; rather, it's a specific summary of *this exact document*. It shows five locked fields:
 *   **Product & Services:** The total monetary value of all the line items you added.
 *   **Settlement:** How much of this document has already been paid for (via the Settlement tab).
@@ -372,20 +420,28 @@ Instead of guessing if the transaction went through over to the other branch, th
     *   **Inv Txn (Inventory):** If this debit note involved returning or moving physical stock, it tracks the exact value of the inventory entering or leaving the warehouse.
 
 #### Deep Dive: Attachments Tab
-Yes, this tab acts exactly as your permanent filing cabinet for **Proof**. Because issuing a debit note means you are legally charging another branch extra money, auditors will want to see *why*. 
+This tab acts exactly as your permanent filing cabinet for **Proof**. Because issuing a debit note means you are legally charging another branch extra money, auditors will want to see *why*. 
 You use this tab to upload the "receipts"—such as PDF email approvals from the Branch Manager, scanned delivery invoices proving an extra charge, or screenshots of internal chat logs explicitly authorizing the difference.
+
+#### Deep Dive: Export Tab
+The Export tab provides options to reprint or save the active document. First, select the desired printable format from the dropdown menu (configured by your administrator). Once chosen, export the document as a PDF file by clicking **Export as PDF**. This serves as a formal printable representation for record-keeping or physical sign-offs.
 
 ---
 
 ## Configuration & Settings
 
-Fine-tune the applet behavior to match your organizational processes. Access all settings from the **Settings** menu in the sidebar.
+Fine-tune the applet behavior to match your organizational processes. Access all settings from the **Settings** menu in the sidebar. These application-wide options are controlled by admins and affect all users.
+
+### Applet Settings (`Settings > Applet Settings`)
+Admins can choose which tabs to show or hide in the applet interface, helping to streamline the user experience by completely removing unused sections.
 
 ### Branch Settings (`Settings > Branch Settings`)
+![Branch Settings](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_Settings_&_Personalization_2c7bc853144ee26223616f3c3f6d45b8c74c44445cfd4fba1129d52cd61049f8.png)
+
 Configure branch-specific behaviors:
 - Map internal customers and suppliers per branch
 - Set default GL accounts for intercompany transactions
-- Define branch-level document access permissions
+- **Permissions Wizard**: Control user access and permissions within the applet, ensuring that the right people have appropriate levels of document access.
 
 ### Workflow Settings (`Settings > Workflow Settings`)
 Control the approval flow:
@@ -394,6 +450,8 @@ Control the approval flow:
 - **Role-Based Access**: Restrict who can create, edit, finalize, or void documents
 
 ### Default Settings (`Settings > Default Settings`)
+![Default Settings](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_Settings_&_Personalization_4905d09f800466e1a157dcdae2bae4b3d12b7ddc516cba88ba6a51ae29db0f8c.png)
+
 Set system-wide defaults:
 - Default currency for new documents
 - Running number format and sequence
@@ -454,7 +512,10 @@ Use the **Export** tab on any document to generate PDF output using your configu
 
 ## Personalization
 
+Personalization allows individual users to customize certain settings to fit their personal preferences, **overriding the default application-wide configurations** set by admins. For example, User A might set Branch A as their personal default location, while User B selects Branch B, tailoring the application to their individual role.
+
 #### Personal Default Settings
+![Personalization](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_Settings_&_Personalization_772f7bfa58516319b14b79973555f0323f29958c8e8a34477519ab98188da19a.png)
 
 Save your frequently used defaults to speed up document creation:
 - Default branch and currency
@@ -467,15 +528,19 @@ Access via **Personalization > Personal Default Settings** in the sidebar.
 
 ## File Imports
 
+The **File Import** page is a powerful tool designed to simplify and accelerate the process of entering multiple Sales Debit Notes into the system. Instead of manually inputting each record one by one, users can prepare data in a CSV file and upload it all at once.
+
+![File Import Interface](/images/internal-sales-debit-note-applet/File_Import_-_Internal_Sales_Debit_Note.png)
+
 Bulk-create debit note line items by uploading a formatted file:
 
-1. Navigate to the **File Import** section
-2. Download the standard import template
-3. Fill in line item details (item codes, quantities, amounts)
-4. Upload the completed file
-5. Review the validation results and confirm the import
+1. Click the **(+)** button to download the standard import CSV template.
+2. Fill in the required line item details (item codes, quantities, amounts).
+3. Click **Choose File** (or drag and drop) to select the completed file.
+4. Click **Apply** to submit the file. The system will process it and display any errors that need correction.
+5. If successful, you will receive a confirmation message.
 
-This is especially useful when processing a large number of adjustments at once, such as during month-end closing.
+This is especially useful when processing a large volume of adjustments at once, reducing manual entry errors drastically during month-end closings.
 
 ---
 
@@ -498,6 +563,39 @@ This is especially useful when processing a large number of adjustments at once,
 
 **Q: Can I link one debit note to multiple original internal invoices?**  
 **A:** Yes. Add multiple line items, each referencing a different original Internal Sales Invoice. This consolidates adjustments into a single document.
+
+---
+
+## Related Applets to Internal Sales Debit Note
+
+The Internal Sales Debit Note Applet does not work in isolation; it operates within a broader system ecosystem. Understanding its connection with related applets is vital for accurate financial reporting.
+
+### Doc Item Maintenance Applet
+![Doc Item Account Setup](/images/internal-sales-debit-note-applet/Related_Applets_-_Internal_Sales_Debit_Note_12ee5625ed31cafce4d4ac3ed3627c0fcf9d7baef6940effad2a4ed24366e381.png)
+
+**Purpose:** Manages the creation and editing of item codes used in various transactions.
+
+**Relation to Sales Debit Note:** 
+The items you select when creating a sales debit note (such as specific charges or fees) must be pre-configured here.
+*   The item's **Type** must be set to "Account Type," which deliberately links it to a General Ledger (GL) code rather than a physical product in a warehouse.
+*   You assign this item to specific company branches via the **Company Linking** tab, ensuring the system recognizes which branches are allowed to use it.
+*   When a GL Code is matched to an item here, you guarantee correct accounting classification downward into your sales debit notes.
+
+### Chart of Account Applet
+![Chart of Account General View](/images/internal-sales-debit-note-applet/Related_Applets_-_Internal_Sales_Debit_Note_14a469ad615e4e412eba67b6267efad5b65a069ecc4280abca7904031f5ca296.png)
+![GL Code Specifics](/images/internal-sales-debit-note-applet/Related_Applets_-_Internal_Sales_Debit_Note_529ae7682d81c4742baafbab1668f756b7690ba27ac8c6be1de2de20c16c1fb6.png)
+
+**Purpose:** The central applet for managing your organization's financial accounts and GL codes.
+
+**Relation to Sales Debit Note:** 
+Before you can link an item in the Doc Item Maintenance applet, the underlying GL Code must physically exist. You create or verify these in the **GL Code Create Item** page. 
+
+**Prerequisite Workflows:**
+1.  **Create the GL Code** (Chart of Accounts Applet)
+2.  **Create the Item & Link the GL Code** (Doc Item Maintenance Applet)
+3.  **Use the Item** (Internal Sales Debit Note Applet)
+
+By ensuring these prerequisites are met, any Internal Sales Debit Note transaction you finalize will automatically and cleanly map revenue and expenses to the exact correct accounts.
 
 **Q: How do I bulk-create debit notes or line items?**  
 **A:** Use the **File Import** feature. Download the template, fill in your data, and upload. The system validates and imports all entries at once.
