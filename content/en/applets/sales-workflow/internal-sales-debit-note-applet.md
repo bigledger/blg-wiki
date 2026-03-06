@@ -99,19 +99,10 @@ When utilizing this applet, users have access to several key functions to manage
 - **Inbound vs Outbound:** View transactions originating from your branch (Outbound) and coming to your branch (Inbound).
 - **Unprocessed vs Processed:** Track documents waiting to be automatically synced versus those that have successfully completed the intercompany transfer. 
 
-**4. Search and Advanced Filters (Listing Page)**
-The smart search and advanced filter functionality on the main listing page allows users to efficiently locate specific debit notes:
-- **Customer Filter:** Select a specific customer from the dropdown list to view all related debit notes.
-- **Branch Filter:** Select "All" or drill down into one specific branch.
-- **Sales Agent Filter:** Track performance or follow up on specific agents' transactions.
-- **Posting Status:** Filter by Draft (in progress), Final (completed), Void (cancelled), or Discarded to track the current state of each note.
-- **Active Status:** View debit notes that are currently Active or Inactive within the system.
-- **Date Filters:** Refine search by Transaction Date, Update Date, or Creation Date.
-
-**5. Applet Settings**
+**4. Applet Settings**
 - Configure branch mappings, default accounts, workflow approval chains, printable formats, and knock-off rules.
 
-**6. Personal Default Settings**
+**5. Personal Default Settings**
 - Save favorite defaults (like preferred branch or currency) to speed up continuous data entry.
 
 ### What Problems Does This Solve?
@@ -200,11 +191,6 @@ Get up and running quickly with these essential workflows.
 6. **Attach Supporting Docs** *(if visible)*: Switch to the **Attachments** tab:
    - Upload the original purchase order, correspondence, or any supporting evidence
 7. **Create**: Click **CREATE** → Document is saved in **Draft** status
-
-**Creation Action Controls (Top Right)**
-*   **Reset**: Clears all entered data and restores the form to its original blank state.
-*   **Save**: Saves any changes made without finalizing, allowing you to update the draft later.
-*   **Final**: Finalizes the debit note, locking it as complete.
 
 **What happens next?**
 
