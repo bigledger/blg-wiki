@@ -65,6 +65,7 @@ The Inventory Module delivers:
 {{< cards >}}
   {{< card link="/applets/internal-stock-adjustment-applet/" title="Internal Stock Adjustment Applet" subtitle="Inventory adjustments and variance management" >}}
   {{< card link="/applets/internal-delivery-order-applet/" title="Internal Delivery Order Applet" subtitle="Inter-location stock transfers and deliveries" >}}
+  {{< card link="/applets/stock-reservation-applet/" title="Stock Reservation Applet" subtitle="Precision inventory allocation and reservation management" >}}
 {{< /cards >}}
 
 ### Inventory Analytics

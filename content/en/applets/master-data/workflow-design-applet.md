@@ -18,56 +18,104 @@ The Workflow Design Applet is a powerful Core Module component that enables busi
 **Core Module Applet**: This is one of the 13 essential Core Module applets, enabling process automation and workflow management across all BigLedger modules.
 {{< /callout >}}
 
-### Primary Functions
-- **Workflow Design and Configuration** - Visual workflow builder and designer
-- **Approval Process Management** - Multi-level approval workflows
-- **Business Process Automation** - Automated task and process execution
-- **Integration Orchestration** - Cross-module workflow coordination
-- **Performance Monitoring** - Workflow efficiency and bottleneck analysis
+### Who Benefits from This Applet?
 
-## Key Features
+**Business Process Owners & Administrators:**
+- **Full Control**: Design and modify workflows without coding or complex technical setup.
+- **Audit Transparency**: Detailed logs showing who approved what and when.
+- **Version Control**: Safely iterate on processes with workflow versioning.
+
+**Department Managers & Team Leads:**
+- **Automated Routing**: Ensure requests reach the right approver instantly.
+- **Delegation Management**: Easily assign backup approvers when team members are on leave.
+- **SLA Tracking**: Monitor how long approvals take and identify bottlenecks.
+
+**Finance & HR Teams:**
+- **Compliance Enforcement**: Enforce multi-level approval rules for high-value transactions.
+- **Standardized Processes**: Ensure every request follows the official company policy.
+- **Seamless Integration**: Automated updates to GL, payroll, or procurement once approved.
+
+### What Problems Does This Solve?
+
+**The "Approval Bottleneck" Problem:**
+Orders or leave requests sit in someone's inbox for days because the process is manual, and nobody knows where the document is.
+- **Solution**: The applet provides **Real-time Status Tracking** and **Auto-Escalation** if an approval is delayed.
+
+**Lack of Accountability:**
+Decisions are made via email or verbal agreement, making it impossible to reconstruct an audit trail months later.
+- **Solution**: A **Permanent Audit Trail** is attached to every document, recording every transition and comment.
+
+**Manual Data Entry Errors:**
+Passing information between departments leads to typos and data loss.
+- **Solution**: **Automated Data Mapping** ensures that once a workflow is approved, the data flows directly into the next module (e.g., Sales Order → Delivery Order).
+
+## Key Features Overview
+
+{{< cards >}}
+  {{< card title="Visual Designer" subtitle="Drag-and-drop workflow builder" link="#visual-workflow-designer" >}}
+
+  {{< card title="Approval Hierarchies" subtitle="Configurable multi-level routing" link="#approval-workflow-management" >}}
+
+  {{< card title="Event Triggers" subtitle="Automate based on system actions" link="#process-automation-engine" >}}
+
+  {{< card title="Notifications" subtitle="Email, SMS, and In-app alerts" link="#notification-and-communication" >}}
+
+  {{< card title="Workflow Analytics" subtitle="Identify and solve bottlenecks" link="#workflow-analytics-and-reporting" >}}
+
+  {{< card title="Mobile Approvals" subtitle="Approve on the go via BigLedger App" link="#technical-specifications" >}}
+{{< /cards >}}
+
+{{< figure src="/images/workflow-design-applet/workflow-logic-infographic.png" alt="Workflow Design Logic" caption="From Design to Execution: Create Visual Flows → Set Rules & Conditions → Automate Notifications → Monitor Performance." >}}
+
+---
+
+## Key Concepts
+
+### Workflow Hierarchy
+
+To effectively manage workflows, it's important to understand how they are structured within BigLedger.
+
+```mermaid
+graph TD
+    A[Trigger Event] --> B{Step 1: Condition Check}
+    B -- Match --> C[Action: Notify Approver]
+    B -- No Match --> D[Action: Auto-Approve]
+    C --> E{Step 2: Decision}
+    E -- Approved --> F[Action: Update Document Status]
+    E -- Rejected --> G[Action: Notify Requester]
+    F --> H[End: Trigger Next Workflow]
+```
+
+### Roles and Participants
+
+| Role | Responsibility | Example |
+|------|----------------|---------|
+| **Requester** | Initiates the workflow | Employee submitting a claim |
+| **Approver** | Reviews and decides | Department Manager |
+| **Observer** | Can view status but not decide | Internal Auditor |
+| **Administrator** | Configures the rules | Workflow Designer |
+
+---
+
+## Core Features in Detail
 
 ### Visual Workflow Designer
-- Drag-and-drop workflow design interface
-- Flowchart-based process visualization
-- Decision nodes and conditional logic
-- Parallel and sequential workflow paths
-- Template-based workflow creation
-- Version control and workflow history
+- **Drag-and-Drop Interface**: Build complex flows using intuitive visual nodes.
+- **Condition Engine**: Use logic like `if amount > 5000` or `if department = Sales`.
+- **Parallel Tasks**: Allow multiple departments to review a document simultaneously.
+- **Loopback Support**: Route a document back to the requester for clarification.
 
 ### Approval Workflow Management
-- Multi-level approval hierarchies
-- Role-based approval routing
-- Dynamic approval based on conditions (amount, type, etc.)
-- Escalation and timeout handling
-- Delegate and substitute approver setup
-- Approval audit trails and notifications
+- **Hierarchy Mapping**: Link to the "Organization Applet" to automatically find the requester's manager.
+- **Proxy Approvals**: Define "Delegates" who can approve when the primary approver is away.
+- **SLA Timers**: Set a 24-hour limit for a step before it escalates to the next supervisor.
 
-### Process Automation Engine
-- Event-triggered workflow execution
-- Scheduled and recurring workflows
-- Data transformation and mapping
-- Integration with external systems
-- Error handling and retry mechanisms
-- Real-time process monitoring
+### Process Automation
+- **Status Automation**: Change document status from "Draft" to "Final" automatically upon approval.
+- **Document Generation**: Trigger the creation of a PDF or a new record in another applet.
+- **API Integration**: Send a webhook to an external CRM or external database.
 
-### Notification and Communication
-- Email and SMS notifications
-- In-system alert management
-- Approval request notifications
-- Process status updates
-- Escalation notifications
-- Custom notification templates
-
-### Workflow Analytics and Reporting
-- Process performance metrics
-- Bottleneck identification and analysis
-- Approval time tracking
-- User productivity analysis
-- Workflow completion rates
-- Custom workflow reports
-
-## Technical Specifications
+---
 
 ### System Requirements
 - **Minimum Access Level**: Workflow Administrator
@@ -335,3 +383,33 @@ Steps:
 {{< callout type="tip" >}}
 **Design Tip**: Start with simple workflows and gradually add complexity. Well-designed workflows should improve efficiency without creating unnecessary bureaucracy.
 {{< /callout >}}
+<<<<<<< Updated upstream:content/en/applets/master-data/workflow-design-applet.md
+=======
+
+## FAQ
+
+**Q: Can I have different workflows for different branches?**
+**A:** Yes. You can define branch-specific conditions within a single workflow or create entirely different workflows triggered by different branch IDs.
+
+**Q: What happens if an approver is on leave?**
+**A:** If configured, the "Approval Delegation" feature will automatically route the request to a designated backup. Alternatively, administrators can manually reassign individual pending tasks.
+
+**Q: Can a workflow trigger another workflow?**
+**A:** Yes. A common pattern is "Chained Workflows," where the final stage of one process (e.g., Purchase Order Approval) triggers the start of another (e.g., Payment Voucher Creation).
+
+**Q: Is there a limit to the number of approval levels?**
+**A:** Technically no, but we recommend keeping workflows under 5-7 levels for operational efficiency.
+
+**Q: Can I attach documents to a workflow?**
+**A:** Yes. Requesters and approvers can upload files at any stage, which remain part of the permanent audit trail.
+
+---
+
+## Summary
+
+The **Workflow Design Applet** is the engine of organizational efficiency in BigLedger. By digitizing manual processes, enforcing compliance, and providing real-time visibility into every business decision, it empowers organizations to scale without losing control or transparency.
+
+{{< callout type="tip" >}}
+**Design Tip**: Start with a simple "Line Manager Approval" flow and gradually add complex conditions (like amount-based escalation) as your team becomes familiar with the system.
+{{< /callout >}}
+>>>>>>> Stashed changes:content/en/applets/workflow-design-applet.md
