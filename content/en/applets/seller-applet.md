@@ -78,6 +78,8 @@ Traditional marketplace management often suffers from fragmented data and manual
 
 ## Visual Overview: From Manual Chaos to Automated Growth
 
+{{< figure src="/images/seller-applet/seller-overview-infographic.png" alt="Seller Infographic - Challenges, Solutions, and Benefits" caption="Seller Applet Overview: Transforming manual discrepancies into digital precision" >}}
+
 ```mermaid
 graph TD
     subgraph Challenges ["The Manual Chaos (Before)"]
