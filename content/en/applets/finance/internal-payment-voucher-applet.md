@@ -441,7 +441,7 @@ Use **Void** to cancel a voucher **after** it has been finalized, while keeping 
 
 {{< figure src="/images/internal-payment-voucher-applet/pv-void-confirm.png" alt="Confirmation on void document" caption="Pop out confirmation to make sure user really want to VOID the Payment Voucher" >}}
 
-4. Confirm the action in the prompt dialog. If you void from the edit view, you will be asked to **re‑enter the document number** to confirm.
+4. Confirm the action in the Pop out.
 
 {{< figure src="/images/internal-payment-voucher-applet/pv-void-success.png" alt="Successfuly VOID the payment voucher" caption="Pop out success message on voiding the document" >}}
 
@@ -452,9 +452,9 @@ Use **Void** to cancel a voucher **after** it has been finalized, while keeping 
 
 6. Open the voucher, then go to **Trace Document** in the edit view to review the posting trace; review **Applet Log** for audit confirmation.
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-void-before.png" alt="Payment Voucher before void" caption="Payment Voucher before void" >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-before-void.png" alt="Payment Voucher before void" caption="Payment Voucher before void" >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-after-void.png" alt="Payment Voucher after void" caption="Payment Voucher after void" >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-void-after.png" alt="Payment Voucher after void" caption="Payment Voucher after void" >}}
 
 
 ### Handling “Ready” or Posted Vouchers
