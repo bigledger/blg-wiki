@@ -313,69 +313,6 @@ The **Doc Link** tab shows **related documents** linked to this Blanket PO (for 
 
 ---
 
-**Common Release Scenarios:**
-
-**Scenario 1: Department Creates a Release**
-```
-Active Blanket PO: Office Supplies - RM 50,000 total
-Current Committed: RM 12,000
-Available Balance: RM 38,000
-
-Department Action:
-1. Open **Internal Purchase Order** applet → create new IPO
-2. Go to **Import Knock Off** → **Blanket Purchase Order**
-3. Select the Blanket PO and click **KNOCK OFF**
-4. System pre-fills supplier/pricing from linked Blanket PO lines
-5. Enter quantities needed:
-   - 50 boxes of A4 Paper @ RM 25 = RM 1,250
-   - 20 packs of Pens @ RM 15 = RM 300
-   Total Release: RM 1,550
-6. Finalize IPO → Supplier receives order
-
-Updated Blanket PO:
-- Committed: RM 13,550 (was RM 12,000)
-- Available: RM 36,450 (was RM 38,000)
-```
-
-**Scenario 2: Tracking Multiple Releases Over Time**
-```
-View in Doc Link Tab:
-
-Release #1 - Jan 15 - RM 1,200 - Status: Received
-Release #2 - Jan 28 - RM 800 - Status: Invoiced
-Release #3 - Feb 10 - RM 1,550 - Status: Sent
-Release #4 - Feb 22 - RM 950 - Status: Draft
-...
-
-Total Released: RM 13,550 of RM 50,000 (27% utilized)
-```
-
-**Visual Spend Tracking:**
-
-```
-Blanket PO: Office Supplies 2024
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Maximum:    RM 50,000
-Committed:  RM 13,550 (27%)
-Available:  RM 36,450 (73%)
-
-[███████░░░░░░░░░░░░░░░░] 27% utilized
-
-Status: HEALTHY ✓ (plenty of budget remaining)
-```
-
-**Utilization Health Indicators:**
-
-| Utilization % | Status | Action Required |
-|--------------|--------|------------------|
-| 0-50% | Healthy | Monitor normally |
-| 51-75% | Good | Track more frequently |
-| 76-90% | Caution | Plan renewal/extension |
-| 91-99% | Critical | Immediate action needed |
-| 100% | Exhausted | Create new agreement |
-
----
-
 **Key Benefits of Doc Link Tracking:**
 
 - **Complete Audit Trail**: See every transaction against the agreement  
@@ -589,11 +526,4 @@ A: Default selection uses permission inquiry targets. Tenant admin/owner can byp
 A: Start with `TNT_API_DOC_INTERNAL_CUSTOM_INTERNAL_BLANKET_PURCHASE_ORDER_READ_TGT_GUID`, `TNT_API_DOC_INTERNAL_CUSTOM_INTERNAL_BLANKET_PURCHASE_ORDER_CREATE_TGT_GUID`, `TNT_API_DOC_INTERNAL_CUSTOM_INTERNAL_BLANKET_PURCHASE_ORDER_UPDATE_TGT_GUID`, plus `TNT_TENANT_ADMIN` and `TNT_TENANT_OWNER`.
 
 ---
-
-**Need More Help?**
-
-- **For Procurement Questions**: Contact your Procurement Manager
-- **For System Configuration**: Contact your System Administrator
-- **For Supplier Issues**: Check the **Account** tab for supplier contact details
-- **For Technical Support**: Refer to the system help documentation or raise a support ticket
 
