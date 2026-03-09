@@ -512,7 +512,7 @@ Understand the financial and operational impact of goods receipts on inventory m
 
 ---
 
-## Personalization
+## Configuration & Settings
 
 Tailor the Internal Purchase GRN applet to your specific workflow for faster processing.
 
