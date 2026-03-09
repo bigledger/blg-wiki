@@ -80,6 +80,7 @@ Foundation applets required by all other modules:
 - **[Tax Configuration Applet](/applets/tax-configuration-applet/)** - Tax setup and compliance
 - **[Tax Config Applet](/applets/tax-config-applet/)** - Advanced tax configuration
 - **[SST Applet](/applets/sst-applet/)** - Malaysian SST reporting
+- **[Shipping Pricebook Applet](/applets/master-data/shipping-pricebook-applet/)** - Automated shipping fee calculations
 - **[View All Core Applets →](/applets/applet-catalog/#core-module-applets-13-applets)**
 
 #### Financial & Accounting
@@ -103,7 +104,6 @@ Foundation applets required by all other modules:
 
 #### Pricing & Commerce
 - **[Pricebook Applet](/applets/pricebook-applet/)** - Advanced pricing management
-- **[Shipping Pricebook Applet](/applets/shipping-pricebook-applet/)** - Automated shipping fee calculations
 - **[EcomSync Related Applets](/applets/90-ecomsync-related-applets/)** - E-commerce synchronization
 
 ## Module Integration
