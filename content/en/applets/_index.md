@@ -47,7 +47,7 @@ Complete sales cycle — POS, sales orders, invoicing, delivery, returns, credit
 Financial accounting operations — receipt and payment vouchers, purchase invoices, debtor/creditor reports, ledger and journal, financial reports, bank reconciliation, statement of accounts, deposits, and budgeting.
 
 ### [E-Invoice](/applets/e-invoice/)
-Electronic invoicing administration and LHDN compliance.
+Electronic invoicing administration, monitoring portals, and LHDN compliance.
 
 ### [SST](/applets/sst/)
 Sales and Service Tax compliance and administration.
@@ -101,6 +101,11 @@ Foundation applets required by all other modules:
 - **[Team Maintenance Applet](/applets/team-maintenance-applet/)** - Team structure and management
 - **[Membership Admin Console Applet](/applets/membership-admin-console-applet/)** - Customer loyalty programs
 - **[Unified Contact Center Applet](/applets/unified-contact-center-ucc-applet/)** - Customer service platform
+
+#### E-Invoice Compliance
+- **[My E-invoice Portal Applet](/applets/e-invoice/my-e-invoice-portal-applet/)** - Centralized submission and status monitoring
+- **[My E-Invoice Admin Applet](/applets/e-invoice/einvoice-generation-applet/)** - E-invoice management and LHDN compliance
+- **[SST Applet](/applets/sst-applet/)** - Malaysian SST reporting
 
 #### Pricing & Commerce
 - **[Pricebook Applet](/applets/pricebook-applet/)** - Advanced pricing management
