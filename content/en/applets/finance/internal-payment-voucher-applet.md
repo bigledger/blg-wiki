@@ -412,6 +412,62 @@ The main workflow centers on the **Internal Payment Voucher** menu:
 
 ---
 
+## Voiding Payment Vouchers
+
+Use **Void** to cancel a voucher **after** it has been finalized, while keeping an audit trail. For drafts, use **Discard** instead.
+
+### When to Use Void (Common Scenarios)
+
+- The voucher was finalized with the wrong entity or amount.
+- The payment was cancelled or should not proceed.
+- The expense lines were materially incorrect and must be reversed before re‑issuing.
+- The voucher was duplicated and needs to be cancelled cleanly.
+
+### When to Use Discard Instead
+
+- The voucher is still in **Draft** and was created in error.
+- You want to abandon edits without creating a posting trail.
+
+### How to Void a Payment Voucher (User Guide)
+
+1. Open **Internal Payment Voucher** from the sidebar.
+2. Filter and select the **Final** voucher you want to void.
+{{< figure src="/images/internal-payment-voucher-applet/pv-filter-final.png" alt="Search Filter for Posting Status FINAL" caption="Filter using Posting Status into FINAL to make it faster to search for Payment Voucher which have been FINAL" >}}
+
+{{< figure src="/images/internal-payment-voucher-applet/pv-final-result.png" alt="Search result for FINAL" caption="All the payment voucher in the listing is with Posting Status FINAL" >}}
+
+3. Click **Void** from the listing action bar.
+{{< figure src="/images/internal-payment-voucher-applet/pv-void.png" alt="Void button" caption="Click in the VOID button to void the Payment Voucher" >}}
+
+{{< figure src="/images/internal-payment-voucher-applet/pv-void-confirm.png" alt="Confirmation on void document" caption="Pop out confirmation to make sure user really want to VOID the Payment Voucher" >}}
+
+4. Confirm the action in the prompt dialog. If you void from the edit view, you will be asked to **re‑enter the document number** to confirm.
+
+{{< figure src="/images/internal-payment-voucher-applet/pv-void-success.png" alt="Successfuly VOID the payment voucher" caption="Pop out success message on voiding the document" >}}
+
+5. Verify the status becomes **Voided** by using the Search Filter.
+{{< figure src="/images/internal-payment-voucher-applet/pv-void-done.png" alt="Search recent VOID Payment Voucher" caption="Use the Search Filter to search for the VOID document using the Posting Status" >}}
+
+{{< figure src="/images/internal-payment-voucher-applet/pv-void-result.png" alt="Show all the voided payment voucher" caption="All the voided Payment Voucher will show in the Payment Voucher Listing" >}}
+
+6. Open the voucher, then go to **Trace Document** in the edit view to review the posting trace; review **Applet Log** for audit confirmation.
+
+{{< figure src="/images/internal-payment-voucher-applet/pv-void-before.png" alt="Payment Voucher before void" caption="Payment Voucher before void" >}}
+
+{{< figure src="/images/internal-payment-voucher-applet/pv-after-void.png" alt="Payment Voucher after void" caption="Payment Voucher after void" >}}
+
+
+### Handling “Ready” or Posted Vouchers
+
+If a voucher is already **Final**, exported, or has settlement/trace entries:
+
+- **Check Trace Document** to see what has posted (Journal/Cashbook/Tax/Inv/Points). Note that Trace Document may still show the original postings even after a void, depending on your configuration.
+- **Confirm settlement status** in **Payment**, **AR/AP**, or **Settlement Adjustment**.
+- If your policy requires, **coordinate with finance control** before voiding.
+- If **Void** is not allowed, use **adjustments/contra** to correct balances and keep the audit trail intact.
+
+---
+
 ## Line Item and Expenses
 
 Use the **Expenses** tab to capture detailed costs:
