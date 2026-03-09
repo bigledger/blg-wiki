@@ -165,15 +165,25 @@ All 13 Core Module applets (listed above) are included in CP-Commerce Module.
 
 **Electronic invoicing and compliance specialization**
 
-### TODO: Document E-Invoice Applets
-1. **My E-Invoice Admin Applet** - Electronic invoice creation and formatting
-2. **MyInvois Integration Applet** - Malaysian e-invoicing compliance
-3. **PEPPOL Network Applet** - Pan-European Public Procurement integration
-4. **Digital Signature Applet** - Invoice digital signing and verification
-5. **E-Invoice Validation Applet** - Invoice validation and compliance checking
-6. **Tax Authority Integration Applet** - Direct tax authority submissions
-7. **E-Invoice Archive Applet** - Long-term electronic document storage
-8. **Compliance Reporting Applet** - Regulatory compliance reporting
+### 1. [My E-Invoice Admin Applet](/applets/e-invoice/einvoice-generation-applet/)
+**Comprehensive e-invoice management system for LHDN compliance**
+- Automated validation and pre-submission checks
+- Queue-based processing for individual and batch submissions
+- Real-time monitoring and LHDN status tracking
+- Complete audit trails and QR code generation
+
+### 2. [My E-invoice Portal Applet](/applets/e-invoice/my-e-invoice-portal-applet/)
+**Centralized monitoring and rejection management portal**
+- Track e-invoice submission status (Accepted, Valid, Failed)
+- Process buyer rejection requests within the 72-hour window
+- Manage customer invitations for the buyer portal
+- Configure system-wide e-invoice field settings and webhooks
+
+### 3. PEPPOL Network Applet
+**Pan-European Public Procurement Online integration**
+- Secure B2B/B2G document exchange via the PEPPOL network
+- Automated cross-border e-invoicing compliance
+- Standardized document formatting and delivery verification
 
 ---
 
