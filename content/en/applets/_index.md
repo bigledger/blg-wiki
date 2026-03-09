@@ -103,6 +103,7 @@ Foundation applets required by all other modules:
 
 #### Pricing & Commerce
 - **[Pricebook Applet](/applets/pricebook-applet/)** - Advanced pricing management
+- **[Shipping Pricebook Applet](/applets/shipping-pricebook-applet/)** - Automated shipping fee calculations
 - **[EcomSync Related Applets](/applets/90-ecomsync-related-applets/)** - E-commerce synchronization
 
 ## Module Integration
