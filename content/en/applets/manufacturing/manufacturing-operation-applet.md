@@ -13,484 +13,262 @@ tags:
 weight: 175
 ---
 
+## About the Applet
+
+- **Purpose**: A comprehensive shop floor execution system designed to bridge the gap between production planning and physical inventory movement.
+- **Target Users**: Machine Operators, Production Supervisors, and Floor Managers.
+- **Key Features**: Work Queue Management, Bin-Level Traceability, Real-time Time Tracking, and Gated Quality Approvals.
+
 ## Purpose and Overview
 
-The Manufacturing Operations Applet is your shop floor execution hub where production actually happens. It takes the Job Orders created in the Production Planning & Monitoring (PPM) Applet and turns them into finished goods through structured work logging, material tracking, and supervisor approval.
+The **Manufacturing Operations Applet** is your shop floor execution hub where production actually happens. It takes the formal Job Orders created in the Production Planning & Monitoring (PPM) Applet and turns them into finished goods through structured work logging, material tracking, and supervisor approval.
 
 {{< callout type="info" >}}
 **Core Function**: Execute Job Orders → Record Work Logs → Consume Materials → Create Finished Goods → Transfer to Packing
 {{< /callout >}}
 
-### Who Uses This Applet
-
-**Machine Operators:**
-- Claim and execute assigned jobs
-- Record time, materials, and measurements
-- Enter production quantities
-- Report discrepancies
-
-**Production Supervisors:**
-- Set job priorities
-- Review and approve work logs
-- Manage process status
-- Ensure quality compliance
-
-{{< figure src="/screenshots/manufacturing-ops/manufacturing-ops-workflow.png.png" alt="Streamlining Production: The BigLedger Manufacturing Workflow showing Stage 1 The Supervisor for Planning and Oversight and Stage 2 The Operator for Execution and Logging" caption="Manufacturing Operations Workflow: Supervisors set priorities and grant approvals while operators focus on execution, logging work with start/end times, raw materials, and quantities produced." >}}
-
 ## Key Features Overview
 
+### Who Benefits from This Applet?
+
+**Machine Operators:**
+- Claim and execute assigned jobs from a prioritized queue
+- Record precise machine time, raw materials consumed, and measurements taken
+- Report accurate production quantities directly from the floor
+- Flag discrepancies instantly rather than at the end of the shift
+
+**Production Supervisors:**
+- Set dynamic job priorities to sequence operator work queues
+- Review strictly formatted work logs before inventory gets permanently updated
+- Intervene and place problematic jobs "On Hold"
+- Ensure uncompromised quality compliance before output moves to packing
+
+**Quality Assurance / Floor Managers:**
+- Trace the exact origin bin of a raw material used in a finished good
+- Audit completed measurements and specifications entered during production
+- Identify discrepancies between planned versus actual yield
+
+### What Problems Does This Solve?
+
+**The Manual Execution Problem:**
+
+Traditional shop floors rely on paper travelers, manual stopwatches, and memory to record production. This leads to severe issues:
+- Untraceable materials where operators pick whichever bin is closest
+- Inaccurate labor hour calculations as timesheets are filled out hours later
+- Massive inventory discrepancies found days later when paper logs are manually typed in
+- Lack of immediate visibility for supervisors to intercept quality failures
+
+**The Manufacturing Operations Solution:**
+
+- **Work Queue Management** — Operators see exactly what to work on next, prioritized by the supervisor
+- **Bin-Level Traceability** — Operators must digitally select the exact physical bin they are drawing raw materials from
+- **Live Time Tracking** — Real-time start/stop buttons capture the literal minute production shifts
+- **Digital Quality Gates** — Supervisors must digitally approve the work log before the inventory state updates
+
+{{< figure src="/screenshots/manufacturing-ops/manufacturing-ops-workflow.png.png" alt="Streamlining Production: The BigLedger Manufacturing Workflow" caption="Manufacturing Operations Workflow: Supervisors set priorities and grant approvals while operators focus on execution, logging work with start/end times, raw materials, and quantities produced." >}}
+
+### Core Capabilities
+
 {{< cards >}}
-  {{< card title="Work Queue Management" subtitle="Prioritized job lists for operators" >}}
+  {{< card title="Work Queue Management" subtitle="Dynamic, prioritized job lists for operators" link="#2-operator-pmc-executing-production" >}}
 
-  {{< card title="Work Log Recording" subtitle="Time, materials, and measurements capture" >}}
+  {{< card title="Bin-Level Traceability" subtitle="Strict linking of raw material bins to finished goods" link="#material-input-bin-selection" >}}
 
-  {{< card title="Bin-Level Traceability" subtitle="Link raw materials to finished goods" >}}
+  {{< card title="Quality Measurements" subtitle="Record OD, Heater Temp, and Die specifications" link="#quality-measurements-and-specifications" >}}
 
-  {{< card title="Time Tracking" subtitle="Automatic labor hour calculation" >}}
+  {{< card title="Initial Check SOPs" subtitle="Verification steps before production begins" link="#the-five-tab-interface" >}}
 
-  {{< card title="Measurement Recording" subtitle="Quality specifications at each step" >}}
+  {{< card title="Gated Approvals" subtitle="The 'FINAL' button safety mechanism" link="#quality-gate-the-final-approval" >}}
 
-  {{< card title="Supervisor Approval" subtitle="Quality gate before packing" >}}
+  {{< card title="Custom Statuses" subtitle="Configure up to 10 unique process states" link="#custom-status-engines" >}}
 
-  {{< card title="Discrepancy Tracking" subtitle="Planned vs actual output analysis" >}}
+  {{< card title="Field Configuration" subtitle="Toggle SST, Project, and Dimension visibility" link="#application-field-settings" >}}
 
-  {{< card title="Status Management" subtitle="Complete process lifecycle control" >}}
+  {{< card title="Status Management" subtitle="Complete process lifecycle control from Claim to Final" link="#process-status-lifecycle" >}}
 {{< /cards >}}
 
-## How It Works: The Execution Flow
+{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-applet-overview-infographic.png" alt="Manufacturing Operations Applet Overview: Challenges, Solutions, and Benefits" caption="Manufacturing Operations Applet: Solving manual execution challenges with digital traceability, live time tracking, and gated approvals for Operators and Supervisors." >}}
 
-```
-Job Order (From PPM Applet)
-    ↓
-Supervisor Sets Priority (Supervisor PI)
-    ↓
-Operator Claims Job (Operator PMC)
-    ↓
-Work Log Created (Time, Materials, Measurements)
-    ↓
-Production Completed (Output Recorded)
-    ↓
-Supervisor Approves (Quality Gate)
-    ↓
-Transfer to Internal Packing
-```
-
-### Key Concepts
+## Key Concepts
 
 | Concept | What It Means | Example |
 |---------|---------------|---------|
 | **Process Instance** | Individual manufacturing step from Job Order | "Armoring" step for JO-2024-001 |
-| **Work Log** | Record of production activity | Time spent, bins used, quantity produced |
-| **Bin** | Specific inventory container/location | BIN-RAW-001 containing steel wire |
-| **Priority Number** | Job sequence ranking | 1 = highest priority, larger = lower |
+| **Work Log** | Record of production activity submitted by the operator | Time spent, bins used, quantity produced |
+| **Priority Number** | Job sequence ranking set by the supervisor | 1 = highest priority, larger = lower |
 | **Discrepancy** | Difference between planned and actual output | Planned 1000, produced 800 = 200 discrepancy |
-| **Ready Status** | Supervisor-approved, ready for next stage | Process complete, transfer to packing |
-
-## Prerequisites: From Planning to Execution
+| **Ready Status** | Supervisor-approved state | Process complete, safe to transfer to inventory/packing |
 
 {{< callout type="warning" >}}
-**Before You Start**: Job Orders must be created and Process Instances generated in the **PPM Applet** first. Without them, there's nothing to execute here.
+**Prerequisite**: Job Orders must be created and Process Instances fully generated in the **Production Planning & Monitoring (PPM) Applet** first. Without pending instances, there is nothing to execute in this applet.
 {{< /callout >}}
 
-| Required Setup | Where It Happens | What It Provides |
-|----------------|------------------|------------------|
-| **Job Orders** | PPM Applet | Manufacturing instructions |
-| **Process Instances** | PPM Applet (Generate) | Individual steps to execute |
-| **Material Availability** | Inventory | Bins with raw materials |
-| **User Permissions** | User Management | Operator and Supervisor access |
+## Quick Start Guide
 
-**Checklist Before Execution:**
-1. Planner has created Job Order in PPM
-2. Process Instances have been generated
-3. Required materials are available in bins
-4. Operators have system access
-5. Supervisors have "MRP supervisor" permission
+Get up and running quickly with these essential workflows based on your role on the shop floor.
 
-## Applet Structure: Two Role-Based Menus
+### For Production Supervisors: Managing the Queue
 
-| Menu | Role | Purpose |
-|------|------|---------|
-| **Supervisor PI** | Production Supervisor | Set priorities, review logs, approve processes |
-| **Operator PMC** | Machine Operator | Claim jobs, record work, enter production data |
+**Goal:** Sequence the floor's work and approve completed operations.
 
-{{< callout type="info" >}}
-**Access Control**: Users only see menus relevant to their role. If a Supervisor can't see **Supervisor PI**, verify the **"MRP supervisor"** permission is enabled in their user profile.
-{{< /callout >}}
+1. **Set Priorities**: Open the **Supervisor PI** menu. Review incoming process instances and enter a **Priority Number** for each (1 is highest priority).
+2. **Monitor the Floor**: Watch processes move from "Available" to "In Progress" as operators claim them.
+3. **Review Submissions**: Click on jobs marked "Pending Approval". Verify the logged time, the selected material bins, and the submitted measurements.
+4. **Approve Output**: If the work log is accurate and the physical inspection passes, change the status to **Ready**. The system will now update inventory.
+
+### For Machine Operators: Executing Work
+
+**Goal:** Claim jobs, log accurate time, and record your actual consumed materials.
+
+1. **Find Your Job**: Open the **Operator PMC** menu. The jobs at the top of your list (lowest priority number) are what you must work on first.
+2. **Claim It**: Change the process status from "Available" to **In Progress** to let the supervisor know you've started.
+3. **Clock In**: Click the **Start** button inside the Work Log the moment your machine physically begins running to precisely track your labor time.
+4. **Log Materials**: Under inputs, select the exact **Bin Code** of the raw materials you loaded into the machine. 
+5. **Clock Out & Submit**: Click **End** when finished, enter your **Quantity Produced**, and save the log to send it back to the supervisor for approval.
+
+### For Admins: Initial System Setup
+
+**Goal:** Ensure users have the correct access to their respective menus.
+
+1. **User Permissions**: Navigate to the user profile settings within the platform.
+2. **Supervisor Access**: Find the users acting as Floor Supervisors and explicitly grant them the `MRP supervisor` permission. This unlocks the **Supervisor PI** view.
+3. **Operator Access**: Standard operators only need default access to see the standard **Operator PMC** execution menus.
 
 ---
 
-## 1. Supervisor PI: Managing the Production Queue
+## Core Workflows and Operations
 
-The Supervisor PI (Process Instance) menu is your command center for controlling what gets produced and when, and for ensuring quality through work log approval.
+### 1. Supervisor PI: Managing Production
 
-### Setting Job Priorities
+The **Supervisor PI** (Process Instance) menu is the command center for controlling what gets produced and when, and for ensuring quality through rigid work log approval.
 
-Operators see jobs ordered by the priority you set here. This is how you control the production sequence.
+**Setting Priorities**
+Operators see jobs ordered strictly by the priority you set here. 
+- Use gaps when numbering (e.g., set jobs to 10, 20, 30) so you can easily insert rush orders later (at 15) without having to renumber everything.
 
-**Steps:**
-1. Open **Supervisor PI**
-2. Select an active Job Order
-3. Enter a **Priority Number**
+#### Quality Gate (The 'FINAL' Approval)
 
-**Priority Logic:**
+When an operator finishes, the log enters `Pending Approval`. The Supervisor holds the final authority via the **Supervisor PI** view.
 
-| Priority | Meaning | When to Use |
-|----------|---------|-------------|
-| **1** | Highest priority | Rush orders, customer escalations |
-| **2-10** | High priority | Important deadlines |
-| **11-50** | Normal priority | Standard production |
-| **51+** | Low priority | Fill-in work, no deadline |
+- **The Gated 'FINAL' Button**: The system includes a strict safety mechanism. The **FINAL** button remains disabled until:
+  - Every **Input Item** has at least one associated Bin and Actual Quantity.
+  - Every **Output Item** has at least one associated Bin and Actual Quantity.
+- **Data Validation**: Review recorded **PIC (Person in Charge)** and **Shift Types** to ensure accountability.
+- **Reviewing Logs**: Supervisors can add **Supervisor Remarks** to work logs if corrections or feedback are required.
+- **Status Lifecycle**: Once marked `Ready` or `FINAL`, inventory and costing engines update immediately.
 
-{{< callout type="tip" >}}
-**Priority Strategy**: Use gaps in numbering (1, 5, 10, 20) so you can insert urgent jobs without renumbering everything.
-{{< /callout >}}
+### 2. Operator PMC: Executing Production
 
-### Reviewing and Approving Work Logs
+The **Operator PMC** (Production Management Console) translates physical production into digital records. Your accuracy directly drives inventory levels and company financials.
 
-When an operator completes a task, it appears as **Pending Approval**. This is your quality gate.
+#### Creating a Work Log
 
-**Review Checklist:**
-- Verify time entries are reasonable
-- Check correct bins were selected
-- Confirm measurements are within spec
-- Validate output quantity
+This is the most critical interaction in the applet. 
 
-**Status Actions:**
+**Live Time Tracking:**
+Instead of typing times, click **Start** when work begins and **End** when the machine stops. The system automatically calculates Total Time spent. Do not hit Start when you merely *claim* the job; only hit Start when production begins.
 
-| Action | When to Use | Result |
-|--------|-------------|--------|
-| **Ready / Completed** | Work log is accurate and complete | Process moves to next stage or packing |
-| **On Hold** | Issue needs resolution | Pauses production (machine issue, QA check) |
-| **Cancelled** | Process should not continue | Terminates the process instance |
+#### Quality Measurements and Specifications
 
-{{< callout type="warning" >}}
-**Quality Gate**: Never approve a work log without reviewing it. This is your last checkpoint before inventory is updated and product moves to packing.
-{{< /callout >}}
+Inside the **Worklogs** tab, operators record critical production variables that vary by the process type:
 
-### Handling Corrections
+- **OD (Outside Diameter)**: Record measurements in millimeters for the **Start**, **Mid**, and **End** of the production run.
+- **Extrusion Specifications**: For relevant processes, you can record **Heater Temperature** (with UOM), **In Die (mm)**, and **Out Die (mm)**.
+- **Labor Tracking**: Clock in with **Start** and **End** buttons; select your **Shift Type** and verify the **PIC** (Person in Charge).
 
-If an operator made an error in a saved Work Log:
+#### Handling Bulk Quantities and Discrepancies
 
-**Before marking Ready:**
-- Supervisor can edit the log directly, OR
-- Revert status to **In Progress** for operator correction
+When recording the final Quantity Produced, you can enter a single quantity for one container, or utilize **Bulk Add** if the output was scattered across multiple reels, pallets, or bins.
 
-**After marking Ready:**
-- Contact system administrator
-- May require inventory adjustment
+- **Shift Discrepancy**: The system auto-calculates `Planned Quantity - Actual Quantity`. If you experience a surplus (Over Production), that excess will simply remain in safe stock for future orders.
+
+### The Five-Tab Interface
+
+Both Operators and Supervisors have access to a consistent, detailed view organized into five distinct tabs:
+1. **Main Details**: High-level process overview and machine status.
+2. **Input Items**: Detailed bin-level material consumption.
+3. **Output Items**: Recording of produced semi-finished or finished goods.
+4. **Initial Check**: Verification step for attachments and SOPs prior to production.
+5. **Worklogs**: The primary data entry hub for time and measurements.
 
 ---
 
-## 2. Operator PMC: Executing Production
+## Process Status Lifecycle
 
-The Operator PMC (Production Management Console) is where you translate physical production into digital records. Accuracy here drives inventory, costing, and traceability.
+Understanding the flow of a process instance is key to mastering the shop floor:
 
-### Viewing Your Work Queue
-
-Navigate to **Operator PMC** to see jobs assigned to you or your machine.
-
-**Queue Organization:**
-- Jobs appear in priority order (lowest number = highest priority)
-- Filter by Machine Code if needed
-- Status shows current state of each process
-
-**Status Indicators:**
-
-| Status | Meaning | Your Action |
-|--------|---------|-------------|
-| **Available** | Ready to claim | Claim and start work |
-| **In Progress** | Currently being worked | Continue or complete |
-| **Pending Approval** | Waiting for supervisor | Wait for approval |
-| **Ready** | Approved, moving forward | No action needed |
-
-### Claiming a Job
-
-Before you can record work, you must claim the job.
-
-**Steps:**
-1. Open **Operator PMC**
-2. Locate your job (highest priority at top)
-3. Change status from **Claim** → **In Progress**
-
-{{< callout type="info" >}}
-**One Job at a Time**: Claim only what you're actively working on. This gives supervisors accurate visibility into what's happening on the floor.
-{{< /callout >}}
-
-### Creating a Work Log
-
-Click the **"+"** icon to create a Work Log. This is the most critical step for production accuracy.
-
-**Required Inputs:**
-
-#### Time Tracking
-
-| Field | Action | System Behavior |
-|-------|--------|-----------------|
-| **Start** | Click when work begins | Records start timestamp |
-| **End** | Click when work stops | Records end timestamp |
-| **Total Time** | Automatic | Calculates End - Start |
-
-{{< callout type="tip" >}}
-**Accurate Time**: Click Start when you actually begin production, not when you claim the job. This data feeds labor costing.
-{{< /callout >}}
-
-#### Material Input (Bin Selection)
-
-Select the exact bins used for raw materials. This creates traceability from raw material to finished good.
-
-**Steps:**
-1. View required input materials
-2. Select specific bin(s) containing those materials
-3. Confirm quantities consumed
-
-{{< callout type="warning" >}}
-**Bin Accuracy Critical**: Selecting the wrong bin breaks traceability. If a quality issue is found later, the system traces back to the bins you selected here.
-{{< /callout >}}
-
-#### Measurements
-
-Enter required specifications for quality control.
-
-**Common Measurements:**
-- OD (Outer Diameter) - Start, Mid, End
-- Length measurements
-- Weight specifications
-- Visual inspection results
-
-All measurements should follow defined standards (e.g., OD in millimeters).
-
-#### Quantity Produced
-
-Enter the final produced quantity.
-
-**Options:**
-- Single entry for one output container
-- **Bulk Add** if output is split across multiple reels or bins
-
-**Discrepancy Handling:**
-
-The system automatically calculates discrepancy:
-
-```
-Discrepancy = Planned Quantity - Actual Quantity
-```
-
-| Scenario | Example | System Records |
-|----------|---------|----------------|
-| **On Target** | Planned 1000, Produced 1000 | No discrepancy |
-| **Under Production** | Planned 1000, Produced 800 | 200 unit discrepancy |
-| **Over Production (Surplus)** | Planned 1000, Produced 1050 | 50 unit surplus |
-
-Surplus remains in stock for future orders.
+1. **Available**: Sent from Planning; ready for an operator to claim.
+2. **In Progress**: Operator has claimed the job and is physically working.
+3. **Pending Approval**: Operator finished and submitted the Work Log.
+4. **Ready**: Supervisor reviewed and approved the log. The item is safe to move to packing.
+5. **On Hold**: Supervisor paused the job (e.g., machine broke, missing QA specs).
+6. **Cancelled**: Supervisor permanently terminated the run.
 
 ---
 
-## 3. Work Log Best Practices
+## Configuration & Settings
 
-### Data Quality Standards
+### User Access Control
 
-| Data Element | Standard | Example |
-|--------------|----------|---------|
-| **Job Order** | Format: Year/Month/Day sequence | JO-2024-0115 |
-| **Measurements** | All in millimeters | OD: 12.5mm |
-| **Time** | Actual work time only | Exclude breaks |
-| **Bins** | Exact bin codes | BIN-RAW-001 |
+The applet utilizes role-based gated views.
 
-### Common Mistakes to Avoid
+| Permission Toggle | Resulting Access | Target Role |
+|-------------------|------------------|-------------|
+| **(Default)** | Grants access to `Operator PMC` | Machine Operators |
+| **MRP supervisor** | Unlocks `Supervisor PI` | Floor Supervisors |
 
-**Time Recording:**
-- ❌ Clicking Start when claiming job (inflates time)
-- ✅ Clicking Start when production actually begins
+*If a supervisor cannot see the approval queues, an admin must enable the `MRP supervisor` permission on their account profile.*
 
-**Bin Selection:**
-- ❌ Selecting any available bin
-- ✅ Selecting the exact bin you're physically using
+### Application Field Settings
 
-**Quantity Entry:**
-- ❌ Entering planned quantity instead of actual
-- ✅ Counting/measuring actual output
+Administrators can toggle the visibility and requirement of specific fields to match the company's accounting and reporting needs:
 
-**Measurements:**
-- ❌ Skipping measurements or entering estimates
-- ✅ Taking actual measurements at specified points
+- **Financial Dimensions**: Toggle visibility for **Segment**, **G/L Dimension**, and **Profit Center**.
+- **Project Tracking**: Enable/Disable the **Project** field for job-specific cost allocation.
+- **Taxation Support**: Enable visibility for **SST (Sales and Service Tax)** and **WHT (Withholding Tax)**.
+- **UI Customization**: Hide specific technical fields such as **Tracking ID**, **Permit No**, or detailed **Costing Details** if they are not required on the floor.
 
----
+### Custom Status Engines
 
-## 4. Process Status Lifecycle
+The system allows for deep customization of the production lifecycle through the **Custom Status** setting.
 
-| Status | Set By | Meaning | Next Step |
-|--------|--------|---------|-----------|
-| **Available** | System | Ready for operator | Operator claims |
-| **In Progress** | Operator | Work underway | Complete work log |
-| **Pending Approval** | Operator | Work log submitted | Supervisor reviews |
-| **Ready** | Supervisor | Approved | Transfer to packing |
-| **On Hold** | Supervisor | Paused for issue | Resolve and resume |
-| **Cancelled** | Supervisor | Terminated | Document reason |
-
-**Status Flow:**
-```
-Available → In Progress → Pending Approval → Ready → Packing
-                              ↓
-                           On Hold → Resume → Pending Approval
-```
-
----
-
-## 5. Integration with Other Applets
-
-### From PPM Applet (Upstream)
-
-| What Comes In | How It's Used |
-|---------------|---------------|
-| Job Orders | Defines what to produce |
-| Process Instances | Individual steps to execute |
-| Material Requirements | What bins to select |
-| Priority Flags | Initial priority guidance |
-
-### To Internal Packing (Downstream)
-
-| What Goes Out | When It Transfers |
-|---------------|-------------------|
-| Completed Process | After supervisor marks Ready |
-| Output Quantity | Recorded in work log |
-| Quality Data | Measurements and approvals |
-
-### Inventory Updates
-
-| Action | Inventory Effect |
-|--------|------------------|
-| Bin Selection | Reserves/consumes raw materials |
-| Output Recording | Creates finished/semi-finished goods |
-| Discrepancy | Adjusts expected vs actual |
-
----
-
-## 6. Settings and Permissions
-
-### User Permissions
-
-| Permission | Role | Grants Access To |
-|------------|------|------------------|
-| **Default** | Operator | Operator PMC menu |
-| **MRP supervisor** | Supervisor | Supervisor PI menu |
-
-{{< callout type="warning" >}}
-**Permission Setup**: The "MRP supervisor" permission must be enabled client-side in the user profile. Without it, supervisors cannot access Supervisor PI.
-{{< /callout >}}
+- **Header Statuses**: Define up to 5 custom statuses for the overall Process Instance header.
+- **Line Statuses**: Define up to 5 custom statuses for individual production lines.
+- **Status Parameters**: For each custom status, you can define the **Name**, a **Description**, and set a **Default** state.
 
 ### Machine Code Configuration
 
-Each Work Log is tied to a specific Machine Code.
+Each Work Log is explicitly tied to a predefined **Machine Code**. 
+The system enforces a strict rule: **One Work Log per Machine Code per process instance**. This guarantees that machine-hour utilization reporting and maintenance tracking remain completely mathematically pure.
 
-**Rule**: One Work Log per Machine Code per process instance.
+### Printables
 
-This ensures accurate machine-hour reporting and maintenance tracking.
-
----
-
-## 7. Common Issues
-
-**Job Order not visible in Operator list?**
-- Check if Process Instances were generated in PPM
-- Verify correct Machine Code filter
-- Confirm job has been released
-
-**Can't create Work Log?**
-- Job must be in "In Progress" status
-- Claim the job first
-
-**Wrong quantity entered in saved Work Log?**
-- If not yet "Ready": Supervisor can edit or revert to In Progress
-- If already "Ready": Contact administrator
-
-**Supervisor PI menu not visible?**
-- Enable "MRP supervisor" permission in user profile
-- Re-login after permission change
-
-**Time calculation seems wrong?**
-- Verify Start and End times are correct
-- Check for accidental double-clicks
-- Supervisor can edit before approval
-
-**Bin not appearing in selection?**
-- Verify bin has available stock
-- Check bin is for correct item
-- Confirm bin is active in inventory
+Administrators can configure specific **Printable Templates** for production documents. This allows for the generation of physical labels, job sheets, or transfer notes directly from the applet once a process reaches a specific state.
 
 ---
 
-## 8. Quick Reference
+## Frequently Asked Questions (FAQ)
 
-### Supervisor Daily Routine
+**1. Why can't the operators see any Job Orders in their queue?**
 
-**Start of Shift:**
-1. Review incoming Process Instances from PPM
-2. Set priorities based on deadlines and urgency
-3. Communicate priorities to operators
+First, verify that the planners actually clicked "Generate Process Instance" inside the Job Order within the PPM Applet. Second, check if the operator has accidentally filtered their view to the wrong Machine Code. Finally, ensure the job has been properly released into the "Available" state.
 
-**During Shift:**
-- Monitor work queue progress
-- Review and approve completed work logs
-- Handle On Hold situations
-- Adjust priorities as needed
+**2. An operator clicked 'Start' by mistake and let the timer run for 5 hours. How do we fix this?**
 
-**End of Shift:**
-- Approve all pending work logs
-- Review discrepancies
-- Update PPM on completion status
-- Prepare handover notes
+As long as the supervisor has not yet marked the log as `Ready`, the supervisor can manually edit the Work Log's timestamp fields inside the Supervisor PI menu to correct the actual duration before approving it.
 
-### Operator Daily Routine
+**3. What happens if an operator selects the wrong Bin for a raw material?**
 
-**Start of Shift:**
-1. Check work queue in Operator PMC
-2. Review priority order
-3. Gather materials for first job
+If the log hits `Ready` status, that specific bin will have its inventory depleted in the system. If this was a mistake, a manual correction via the **Internal Stock Adjustment Applet** is required to fix the physical vs system bin balances.
 
-**For Each Job:**
-1. Claim job → In Progress
-2. Click **Start** when beginning work
-3. Select correct input bins
-4. Perform production
-5. Enter measurements
-6. Click **End** when complete
-7. Enter quantity produced
-8. Submit for approval
+**4. Can an operator put a job 'On Hold' if their machine breaks down?**
 
-**End of Shift:**
-- Complete current work log
-- Do not leave jobs "In Progress" without work log
-- Report any issues to supervisor
+No, only supervisors can place jobs `On Hold` or `Cancelled`. The operator must physically inform the supervisor, who will then update the status in the Supervisor PI menu so the delay is formally noted in management reports.
 
-### Key Actions Summary
+**5. Why is the Supervisor PI menu completely missing from my sidebar?**
 
-| Task | Role | Where | How |
-|------|------|-------|-----|
-| Set job priority | Supervisor | Supervisor PI | Enter priority number |
-| Approve work log | Supervisor | Supervisor PI | Review and mark Ready |
-| Claim job | Operator | Operator PMC | Change to In Progress |
-| Record time | Operator | Work Log | Click Start/End |
-| Select materials | Operator | Work Log | Choose bins |
-| Enter output | Operator | Work Log | Enter quantity, Bulk Add if needed |
-| Submit for approval | Operator | Work Log | Save and submit |
+You lack the necessary administrative permission. Your system administrator must go to your user profile and explicitly enable the `MRP supervisor` client-side permission. You will need to log out and log back in for the menu to appear.
 
----
+**6. I am a supervisor, but the 'FINAL' button is greyed out. Why?**
 
-## Related Documentation
-
-### Manufacturing Ecosystem
-- **[Production Planning & Monitoring Applet](/applets/production-planning-and-monitoring-applet/)** - Job Order creation and planning
-- **[Process Maintenance Applet](/applets/process-maintenance-applet/)** - Process templates and machine setup
-- **[Manufacturing Module](/modules/manufacturing/)** - Complete module overview
-
-### Supporting Applets
-- **[Stock Balance Applet](/applets/stock-balance-applet/)** - Inventory visibility
-- **[Internal Stock Adjustment Applet](/applets/internal-stock-adjustment-applet/)** - Inventory corrections
-
-{{< callout type="warning" >}}
-**Important**: This applet directly updates inventory and creates production records. Ensure all operators are trained on accurate data entry. Incorrect bin selection breaks traceability; incorrect quantities affect inventory accuracy and costing.
-{{< /callout >}}
-
-{{< callout type="info" >}}
-**Need Help?** For additional support with manufacturing operations, visit our [Support Center](/support/) or contact our technical team.
-{{< /callout >}}
+The system enforces strict data completeness. The **FINAL** button will not enable until **every single line** in both the 'Input Items' and 'Output Items' tabs has an assigned **Bin** and a recorded **Actual Quantity**. Check those tabs for any missing or zero-quantity lines.
