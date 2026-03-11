@@ -14,76 +14,71 @@ weight: 170
 
 ## Purpose and Overview
 
-The Production Planning & Monitoring (PPM) Applet is your central hub for converting customer demand into factory floor instructions. It bridges Sales Orders with Manufacturing Operations, ensuring clear communication and complete traceability from order to delivery.
+The **Production Planning & Monitoring (PPM) Applet** is your central hub for converting customer demand into factory floor instructions. It bridges Sales Orders with Manufacturing Operations, ensuring clear communication and complete traceability from order to delivery.
 
 {{< callout type="info" >}}
 **Core Function**: Convert Sales Orders → Production Requests → Job Orders → Manufacturing Execution
 {{< /callout >}}
 
-### Who Uses This Applet
-
-**Production Planners:**
-
-- Create and manage Job Orders
-- Approve/reject production requests
-- Link orders to customer demand
-- Monitor capacity and priorities
-
-**Sales Coordinators:**
-
-- Check production status for customer orders
-- Get accurate delivery estimates
-- Track order fulfillment
-
-**Factory Supervisors:**
-
-- Review daily production load
-- Identify bottlenecks
-- Prioritize urgent work
-
-{{< figure src="/screenshots/ppm/ppm-workflow.png.png" alt="From Request to Production: A Workflow Guide showing Phase 1 Planning and Order Creation and Phase 2 Execution and Monitoring" caption="Production Planning Workflow: Manage incoming requests, create job orders, generate manufacturing plans, and track all active processes through to sales order fulfillment." >}}
-
-{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-listing.png" alt="Job Order Listing" caption="Main listing page showing all Job Orders and their current status." >}}
-
 ## Key Features Overview
 
+### Who Benefits from This Applet?
+
+**Production Planners:**
+- Create and manage Job Orders (defining Container vs. Ad-Hoc quantities)
+- Approve or reject system-generated production requests
+- Link Job Orders directly to customer demand (Make-to-Order)
+- Monitor factory capacity and set work priorities
+
+**Sales Coordinators:**
+- Check production status for specific customer orders in real-time
+- Review detailed Stock Balance Summaries (reservations vs. job orders)
+- Obtain accurate delivery estimates without interrupting the factory
+- Track end-to-end order fulfillment 
+
+**Factory Supervisors:**
+- Review the daily production load across all stations
+- Identify bottlenecks before they pause operations
+- Flag and sequence urgent work instructions
+
+### What Problems Does This Solve?
+
+**The Manual Planning Problem:**
+
+Traditional production planning relies on disconnected spreadsheets, manual order tracking, and verbal communication. Common issues include:
+- Missing the link between Customer Sales Orders and Factory Job Orders
+- Over-producing or under-producing due to a lack of real-time inventory checks
+- Inability to quickly check the status of a specific customer's order
+- Missing a centralized queue of what needs to be produced next and in what order
+
+**The PPM Applet Solution:**
+
+- **Centralized demand management** — Auto-generated production requests straight from sales orders
+- **Accurate capacity planning** — Outstanding reports that factor in existing warehouse stock
+- **Seamless traceability** — Clear links from the Job Order down to the exact customer Sales Order
+- **Real-time visibility** — Live status monitoring for both planners and sales teams
+
+{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-workflow.png" alt="From Request to Production: A Workflow Guide" caption="Production Planning Workflow: Manage incoming requests, create job orders, generate manufacturing plans, and track all active processes through to sales order fulfillment." >}}
+
+### Core Capabilities
+
 {{< cards >}}
-{{< card title="Job Order Management" subtitle="Create and track production instructions" >}}
+  {{< card title="Production Requests" subtitle="Manage your incoming demand queue and make approval decisions" link="#1-managing-production-requests" >}}
 
-{{< card title="Production Requests" subtitle="Manage incoming demand queue" >}}
+  {{< card title="Job Order Management" subtitle="Create and track formal production instructions for the factory floor" link="#2-creating-job-orders-master-list" >}}
 
-{{< card title="Sales Order Linking" subtitle="Make-to-Order fulfillment tracking" >}}
+  {{< card title="Sales Order Linking" subtitle="Track fulfillment exactly with Make-to-Order linking" link="#defining-quantities-make-to-order-vs-make-to-stock" >}}
 
-{{< card title="Process Generation" subtitle="Automated manufacturing step creation" >}}
+  {{< card title="Process Generation" subtitle="Automatically expand templates into actionable manufacturing steps" link="#generating-process-instances" >}}
 
-{{< card title="Resource Planning" subtitle="Input/output material management" >}}
+  {{< card title="Outstanding Reports" subtitle="Analyze demand vs existing capacity and warehouse stock" link="#outstanding-production-report" >}}
 
-{{< card title="Priority Control" subtitle="Flag and sequence urgent jobs" >}}
-
-{{< card title="Outstanding Reports" subtitle="Demand vs capacity analysis" >}}
-
-{{< card title="Status Monitoring" subtitle="Real-time production visibility" >}}
+  {{< card title="Status Monitoring" subtitle="Gain real-time production visibility by Job or Sales Order" link="#3-monitoring-production" >}}
 {{< /cards >}}
 
-## How It Works: The Planning Flow
+{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-and-monitoring-applet-overview-infographic.png" alt="Production Planning Overview: From manual chaos to automated structure" caption="The Production Planning Applet transforms disconnected manual spreadsheets into a centralized, auto-generated digital workflow, benefiting Planners, Sales Coordinators, and Factory Supervisors." >}}
 
-```
-Sales Order (Customer demand)
-    ↓
-Production Request (System-generated)
-    ↓
-Planner Decision (Produce / Use Stock / Reject)
-    ↓
-Job Order (Factory instruction)
-    ↓
-Process Instances (Manufacturing steps)
-    ↓
-Manufacturing Operations (Execution)
-    ↓
-Completed (Stock created, SO fulfilled)
-```
-
-### Key Concepts
+## Key Concepts
 
 | Concept                | What It Means                           | Example                                             |
 | ---------------------- | --------------------------------------- | --------------------------------------------------- |
@@ -94,66 +89,63 @@ Completed (Stock created, SO fulfilled)
 | **Make-to-Order**      | Produce for specific customer order     | Link Job Order to SO-2024-001                       |
 | **Make-to-Stock**      | Produce for inventory                   | Ad hoc quantity for warehouse                       |
 
-## Prerequisites: Master Data Setup
-
 {{< callout type="warning" >}}
-**Before You Start**: Configure these in the **Process Maintenance Applet** first. Without them, you can't create Job Orders.
+**Prerequisite**: Configure **Machines**, **Process Types**, **Process Templates**, and **Job Templates** in the **Process Maintenance Applet** first. Without them, you cannot create Job Orders.
 {{< /callout >}}
 
-| Required Setup           | What It Does                                    | Example                                                        |
-| ------------------------ | ----------------------------------------------- | -------------------------------------------------------------- |
-| **Machines**             | Defines production equipment                    | Armoring Machine A1, Bedding Line B2                           |
-| **Process Types**        | Categories of manufacturing steps               | Armoring, Bedding, Cabling, Testing                            |
-| **Process Templates**    | Individual step definitions with inputs/outputs | "Armoring Process" requires steel wire, produces armored cable |
-| **Job Templates**        | Complete production sequences                   | "Armored Cable Job" = Armoring + Bedding + Cabling             |
-| **Item Category Groups** | Product classification for filtering            | Cables, Assemblies, Components                                 |
+## Quick Start Guide
 
-**Setup Order:**
+Get up and running quickly with these essential workflows.
 
-1. Define Machines and Process Types
-2. Create Process Templates (individual steps)
-3. Assemble Job Templates (combine steps into sequences)
-4. Configure Item Category Groups for filtering
+### For Production Planners: Processing Daily Demand
 
-See the **Process Maintenance Applet** documentation for detailed setup instructions.
+**Goal:** Convert incoming sales orders into factory instructions.
 
-## Applet Structure: Four Main Menus
+1. **Review Requests**: Navigate to the **Production Requests** menu to see pending demand from Sales.
+2. **Make Decisions**: For each request, verify if you have stock. If not, click **Approve** to authorize production.
+3. **Create Job Order**: Go to **Master List** → add a new Job Order. Select the Item Code, Branch, and the Job Template (Process Instance Group Name). 
+4. **Link Quantities**: Open the **Sales Order Link** tab in the Job Order to allocate quantities to specific customer orders.
+5. **Generate Steps**: Switch to the **Process Instance** tab and click **Generate Process Instance** to expand the manufacturing steps.
 
-| Menu                    | Purpose                                        | When to Use                                                         |
-| ----------------------- | ---------------------------------------------- | ------------------------------------------------------------------- |
-| **Production Requests** | Review incoming demand from Sales              | Start here daily - approve/reject/mark as existing stock            |
-| **Master List**         | Create and manage Job Orders                   | Main workspace - create Job Orders, generate processes, link to SOs |
-| **Processes**           | View all manufacturing steps across Job Orders | Set priorities, check material requirements, identify bottlenecks   |
-| **Sales Orders**        | Track production status by customer order      | Answer "when will it be ready?" questions from Sales team           |
+### For Factory Supervisors: Prioritizing Operations
 
-## 1. Managing Production Requests
+**Goal:** Ensure the factory floor knows what to work on next.
+
+1. **Review Load**: Navigate to the **Processes** menu to see all active manufacturing steps across all Job Orders.
+2. **Identify Urgent Work**: Filter by Process Type (e.g., all "Cutting" jobs).
+3. **Set Priorities**: Click into critical Process Instances and mark them as **High Priority**.
+4. **Check Readiness**: Review the Input Summary to ensure materials are available before operators start on the floor.
+
+### For Sales Coordinators: Checking Job Status
+
+**Goal:** Answer customer questions about delivery timelines.
+
+1. **Find the Order**: Navigate to the **Sales Orders** menu within the applet.
+2. **Review Status**: Look up the specific Customer Name or Order Number.
+3. **Check Stock Balance**: Click into the Item Details to review the Stock Balance Summary.
+4. **Relay Information**: Check pending Job Orders to provide an accurate delivery estimate.
+
+### For Admins: Initial System Setup
+
+**Goal:** Configure the foundational settings before planners begin operations.
+
+1. **System Prerequisite**: Ensure **Machines**, **Process Types**, **Process Templates**, and **Job Templates** are fully populated in the Process Maintenance Applet.
+2. **Global Defaults**: Go to **Settings > Default Selection** and define the Default Branch and Default Location for production.
+3. **Field Configuration**: Go to **Settings > Field Settings** to enable necessary accounting fields (Segment, G/L Dimension, Profit Center, Project) and tax lines (SST, WHT).
+4. **Custom Statuses**: Navigate to **Settings > Custom Status** and activate any bespoke lifecycle flags your floor uses (e.g., "Quality Hold", "Awaiting Parts").
+5. **Printables**: Upload any specific Sales Order (SO) Printables required logically in **Settings > Printables**.
+
+---
+
+## Core Workflows and Operations
+
+### 1. Managing Production Requests
 
 Production Requests are auto-generated when Sales Orders are confirmed. This is your daily queue of what needs to be made.
-
-### Viewing Requests
 
 Navigate to **Production Requests** menu to see all pending requests.
 
 {{< figure src="/images/production-planning-and-monitoring-applet/production-planning-requests.png" alt="Production Requests Listing" caption="The Production Requests queue where planners approve or reject incoming demand." >}}
-
-**Status Indicators:**
-
-| Status       | Meaning                      |
-| ------------ | ---------------------------- |
-| **P**        | Production request           |
-| **S**        | Scheduled                    |
-| **Approved** | Ready for Job Order creation |
-| **Rejected** | Will not be produced         |
-| **EX**       | Fulfill from existing stock  |
-
-**Useful Filters:**
-
-- Location (production facility)
-- Item Category Group (product type)
-- Date Range
-- Approved/Rejected status
-
-### Making the Decision
 
 For each request, choose one of three actions:
 
@@ -167,311 +159,141 @@ For each request, choose one of three actions:
 **Check Stock First**: Always verify warehouse inventory before approving. Producing items already in stock wastes capacity.
 {{< /callout >}}
 
-### Outstanding Production Report
+#### Outstanding Production Report
 
 This report aggregates all pending production demand and shows you the gap between what's requested and what you have in stock. It's your capacity planning tool.
 
 {{< figure src="/images/production-planning-and-monitoring-applet/production-planning-outstanding-report.png" alt="Outstanding Production Report" caption="The Outstanding Production Report showing net production requirements after stock deduction." >}}
 
-Click **Filter and generate outstanding report**, select your Location and Item Category Group (or leave broad for a complete view), and generate. The CSV export shows:
+Click **Filter and generate outstanding report** to view a CSV export showing the Total Outstanding Quantity, Net Outstanding (after stock), Linked Sales Orders, and Request Dates.
 
-- **Total Outstanding Quantity** - Sum of all production requests
-- **Net Outstanding** - The actual production needed after accounting for current stock
-- **Linked Sales Orders** - Which customer orders are driving the demand
-- **Request dates** - How long items have been waiting
-
-The "Net Outstanding" column is what matters for planning. If you have 1000m requested but 300m in stock, you need to produce 700m. Use this to sequence your Job Orders, coordinate material procurement, and give realistic timelines to Sales.
-
-Generate this daily for high-volume operations, weekly for moderate production, or monthly for project-based manufacturing. It's also your go-to report for management updates on production load.
-
----
-
-## 2. Creating Job Orders (Master List)
+### 2. Creating Job Orders (Master List)
 
 A Job Order is the formal manufacturing instruction that tells the factory floor what to make, how to make it, and what materials are needed.
 
-### Creating a Job Order
-
-From **Master List**, click **"+"** to open the Job Order form. The key decisions here are:
+From **Master List**, click **"+"** to open the Job Order form.
 
 {{< figure src="/images/production-planning-and-monitoring-applet/production-planning-form.png" alt="Create Job Order Form" caption="The Job Order creation form where details like item code, branch, and job template are specified." >}}
 
-**Item Code** - What you're manufacturing. The system pulls in the item description and UOM automatically.
+- **Branch**: Sets both your production location and where finished goods will be deposited.
+- **Job Order Number**: Leave blank for sequential auto-numbering.
+- **Process Instance Group Name (Job Template)**: Your production recipe.
+- **Estimated Packing Date & Completion Date**: Used for timeline projections.
+- **Process Status**: The current lifecycle flag.
 
-**Branch** - This is a dual-purpose field: it sets both your production location and where finished goods will be deposited. For multi-site operations, this matters for inventory accuracy.
+#### Generating Process Instances
 
-**Job Order Number** - Leave blank for sequential auto-numbering (JO-2024-0001, etc.). Manual entry is available if you've enabled it in settings, useful for project-based numbering or legacy system integration.
+Creating the Job Order doesn't automatically generate the manufacturing steps. Open your Job Order and navigate to the **Process Instance** tab. Click **Generate Process Instance** to expand the Job Template into individual, executable steps.
 
-**Process Instance Group Name (Job Template)** - This is your production recipe. Selecting "Armored Cable Production" automatically defines every manufacturing step, material requirement, and expected output. If the dropdown is empty, the item hasn't been configured in Process Maintenance yet.
+#### Inactivating Unnecessary Steps
 
-**Optional fields** (Start/End dates, Remarks, Priority) are useful for scheduling and communicating special requirements to the factory floor.
+Sometimes you don't need to run every step (e.g., reworks or semi-finished goods available). Click on a generated Process Instance and select **Inactivate**. The system grays it out, removing its input materials from your material plan.
 
-{{< callout type="warning" >}}
-**Branch Selection**: Sets both production location AND stock destination. Choose carefully for multi-location operations.
-{{< /callout >}}
+#### Defining Quantities: Make-to-Order vs Make-to-Stock
 
-### Generating Process Instances
+The system tracks two distinct types of production quantities on the main form, which map directly to your production strategy:
 
-Creating the Job Order doesn't automatically generate the manufacturing steps—that's a deliberate two-step process. Open your Job Order and navigate to the **Process Instance** tab. Click **Generate Process Instance** to expand the Job Template into individual, executable steps.
+**Make-to-Order (Container Quantity via Sales Order Linking)**
+For customer-specific production, open the **Sales Order Link** tab. Select the SO line and enter your production quantity. This populates the **Container Quantity** (Sales Order Quantity) field on the main details page, giving you complete customer traceability.
 
-Each Process Instance represents one manufacturing operation with its own:
+**Make-to-Stock (Ad-Hoc Quantity)**
+For forecast-based production, simply enter an **Ad-Hoc Quantity** in the Job Order main details. The finished goods go to the warehouse as safety stock without being tied to a specific order. 
 
-- **Process Type** and **Sequence** - What operation and in what order
-- **Machine assignment** - Which equipment will be used
-- **Input Summary** - Material requirements with quantities and stock locations
-- **Output Summary** - Expected yield and where it goes next
+**Total Quantity**: The system automatically sums the Container Quantity and the Ad-Hoc Quantity to show you the total production run measure.
 
-This is your opportunity to verify material availability before releasing to the factory floor. Click into any Process Instance to see detailed input requirements—if you're short on materials, you'll know now, not when operators are standing at the machine.
+### 3. Monitoring Production
 
-{{< callout type="tip" >}}
-**Material Planning**: The Input Summary shows real-time stock availability. Use this to coordinate with procurement before releasing the Job Order.
-{{< /callout >}}
+#### Processes Menu: Step-Level View
 
-### Inactivating Unnecessary Steps
-
-Sometimes you don't need to run every step in the template. If you have semi-finished goods from a previous run sitting in the warehouse, or you're doing a partial rework where certain steps were already completed correctly, you can inactivate those Process Instances.
-
-Click on the Process Instance and select **Inactivate**. The system grays it out, removes its input requirements from your material plan, and assumes its output is coming from existing stock. The subsequent processes remain active and will look for that semi-finished good in inventory.
-
-**Common scenarios:**
-
-- Armored cable production where the armoring step is done but you need to complete bedding and cabling
-- Rework situations where only specific operations need to be repeated
-- Process optimization where the customer has approved an alternative sequence
-
-{{< callout type="warning" >}}
-**Stock Verification Critical**: Inactivating tells the system the output already exists. If it doesn't, the next process will fail when it looks for materials. Always verify warehouse inventory first.
-{{< /callout >}}
-
-### Defining Quantities: Make-to-Order vs Make-to-Stock
-
-Now you need to specify how much to produce and why. The system supports two approaches, and you can use both in the same Job Order.
-
-**Make-to-Order (Sales Order Linking)**
-
-For customer-specific production, open the **Sales Order Link** tab. You'll see all confirmed Sales Orders for this item, showing the ordered quantity, balance remaining (not yet linked to production), and delivery date. Select the SO line, enter your production quantity—it can't exceed the balance—and click **Add**. The link is established, the SO balance decreases, and your Job Order quantity updates.
-
-This gives you complete traceability: you know exactly which customer gets which production batch. You can split one large Sales Order across multiple Job Orders for capacity reasons, or combine multiple small Sales Orders into one efficient production run.
-
-**Make-to-Stock (Ad Hoc Production)**
-
-For forecast-based production, simply enter an **Ad Hoc Quantity** in the Job Order. No Sales Order link required. The finished goods go to the warehouse and are available for any future order. This is your safety stock strategy—produce standard items in anticipation of demand.
-
-**Hybrid Approach**: Link 300m to a confirmed customer order (Make-to-Order) and add 200m ad hoc (Make-to-Stock) in the same Job Order. You get efficient batch production while serving both immediate customer needs and future demand.
-
-{{< callout type="tip" >}}
-**Capacity Optimization**: Batch production is more efficient. If you're setting up a machine for a customer order, consider adding ad hoc quantity to build safety stock in the same run.
-{{< /callout >}}
-
----
-
-## 3. Monitoring Production
-
-### Processes Menu: Step-Level View
-
-See all manufacturing steps across all Job Orders.
+See all manufacturing steps across all Job Orders to identify bottlenecks at specific machines or set High Priority flags.
 
 {{< figure src="/images/production-planning-and-monitoring-applet/production-planning-processes.png" alt="Processes Listing" caption="View and manage individual manufacturing steps across all active Job Orders." >}}
 
-**Use this to:**
-
-- Filter by Process Type (Armoring, Bedding, Cabling, etc.)
-- Set High Priority flags for urgent work
-- Check material availability (Input Summary)
-- Verify expected outputs (Output Summary)
-- Identify bottlenecks at specific machines
-
-**Setting Priorities:**
-
-1. Click on Process Instance
-2. Mark as **High Priority**
-3. Operators see this flag in Manufacturing Operations Applet
-
-### Sales Orders Menu: Customer View
+#### Sales Orders Menu: Customer View
 
 Track production status from the customer order perspective.
 
 {{< figure src="/images/production-planning-and-monitoring-applet/production-planning-sales-orders.png" alt="Sales Orders Production Status" caption="Monitor the production progress of specific Sales Orders for delivery coordination." >}}
 
-**Status Categories:**
-
-| Status                     | Meaning                              |
-| -------------------------- | ------------------------------------ |
-| **Production Not Started** | Job Order created, work hasn't begun |
-| **In Progress**            | Factory actively working             |
-| **Production Complete**    | Manufacturing finished               |
-
-**Shows:**
-
-- Customer Name and Order Date
-- Delivery Date (deadline)
-- Linked Job Orders
-- Completion %
-
-**Use this to:**
-
-- Answer "when will it be ready?" questions
-- Identify at-risk orders (approaching deadline, not started)
-- Coordinate delivery for completed orders
-
-{{< callout type="info" >}}
-**For Sales Teams**: Grant read-only access so they can check status without interrupting planners.
-{{< /callout >}}
-
-### Job Order Status Lifecycle
-
-| Status          | Meaning                                                      | What Happens Next        |
-| --------------- | ------------------------------------------------------------ | ------------------------ |
-| **Planned**     | Job Order created, processes generated                       | Release to factory floor |
-| **Released**    | Available to Manufacturing Operations                        | Operators start work     |
-| **In Progress** | Operators working                                            | Monitor progress         |
-| **On Hold**     | Paused (material shortage, quality issue, machine breakdown) | Resolve blocker, resume  |
-| **Completed**   | All processes finished, stock created                        | Fulfill Sales Order      |
-| **Cancelled**   | Voided, will not be produced                                 | Document reason          |
+**Stock Balance Summary**
+From the Sales Order view, navigating into the Item Details reveals a deeply granular **Stock Balance Summary**. This dashboard is the ultimate truth for Sales Coordinators, displaying:
+- **System Stock Balance**
+- **Total Sales Order Quantity**
+- **Total Reservation Quantity** (with drill-down details)
+- **Total Job Order Quantity** (with drill-down details)
+- **Available Stock Inclusive / Not Inclusive of Reserve**
 
 **Status Flow:**
-
-```
-Planned → Released → In Progress → Completed
-                          ↓
-                       On Hold → Resume → In Progress
-```
-
-{{< callout type="warning" >}}
-**Note**: Status changes from In Progress onward happen in the Manufacturing Operations Applet, not here. You monitor status but don't manually change it during execution.
-{{< /callout >}}
+`Planned → Released → In Progress → Completed`
 
 ---
 
-## 4. Handoff to Manufacturing Operations
-
-**PPM Applet** = Planning (what to make)
-**Manufacturing Operations Applet** = Execution (making it)
-
-**After you create Job Orders, operators use Manufacturing Operations to:**
-
-- View assigned work
-- Start processes (changes status to In Progress)
-- Consume materials (updates inventory)
-- Record outputs (creates finished goods)
-- Complete processes
-- Report issues
-
-**Your role during execution:**
-
-- Monitor Job Order status progression
-- Address material shortages
-- Reprioritize based on urgency
-- Communicate delays to Sales
-- Analyze actual vs. planned output
-
----
-
-## 5. Settings and Configuration
+## Configuration & Settings
 
 ### Job Order Numbering
 
-{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-settings.png" alt="Applet Settings" caption="Configuration options for numbering, field settings, and user permissions." >}}
+Control how your Job Orders are numbered via **Application Settings → Master List Main Details**.
 
 **Automatic (Recommended):**
-
 - Leave Job Order Number blank when creating
-- System generates sequential numbers (JO-2024-0001)
-- No duplicates
+- System generates sequential numbers (e.g., JO-2024-0001) ensuring no duplicates
 
 **Manual:**
+- Enable manual numbering for custom project-based numbering or legacy system integration.
 
-- Enable in **Application Settings → Master List Main Details**
-- Enter custom numbers
-- Useful for legacy system integration
+### Field Configuration
+
+Under `Settings > Field Settings`, you can enable operational flags based on how your business organizes its data:
+
+**Department Settings:**
+Track job orders against specific financial or organizational divisions.
+* Toggle the visibility of **Segment**, **G/L Dimension**, **Profit Center**, and **Project**.
+
+**Tax / Line Settings:**
+* Toggle the visibility of **SST/VAT/GST** and **WHT** forms on data entry.
+
+### Custom Status Engine
+
+You can map highly customized lifecycle stages to both your document Headers and Line Items. 
+Under `Settings > Custom Status`, the system allows you to configure up to **5 Custom Header Statuses** and **5 Custom Line Statuses**. You can set specific localized names and descriptions for these statuses to match your unique factory workflow terminology.
 
 ### Item Category Groups
 
-Configure in **Application Settings** to enable filtering.
-
-**Examples:**
-
-- Cables (all cable products)
-- Assemblies (assembled products)
-- Components (individual parts)
+Configure Category Groups in **Application Settings** to enable targeted filtering.
 
 **Benefits:**
-
-- Filter Production Requests by category
-- Generate focused Outstanding Reports
-- Assign planners to specific product lines
-
----
-
-## 6. Common Issues
-
-**Can't see Production Requests?**
-
-- Check if Sales Orders are confirmed
-- Clear filters and refresh
-
-**Job Template dropdown empty?**
-
-- Configure in Process Maintenance Applet first
-
-**Process Instances didn't generate?**
-
-- Click "Generate Process Instance" button
-- Check Job Template has process steps defined
-
-**Can't see Sales Order in Link tab?**
-
-- Verify SO is Confirmed status
-- Check Item Code matches
-- Check if SO already fully linked
-
-**Error when adding SO quantity?**
-
-- Quantity exceeds Balance Quantity
-- Enter amount ≤ available balance
-
-**Job Order stuck in "Planned"?**
-
-- Release to Manufacturing Operations
-- Check material availability
-
-**Process shows "On Hold"?**
-
-- Check remarks for reason
-- Resolve blocker (materials, quality, machine)
+- Filter Production Requests by specific category types (e.g., Cables vs Assemblies)
+- Generate highly focused Outstanding Reports
+- Easily assign production planners to specific product lines
 
 ---
 
-## 7. Quick Reference
+## Frequently Asked Questions (FAQ)
 
-### Daily Routine
+**1. Why can't I see any incoming Production Requests?**
 
-**Morning:**
+Check if the original Sales Orders have been moved to "Confirmed" status. The system only generates requests for confirmed orders. If they are confirmed, try clearing your filters and refreshing the view.
 
-1. Generate Outstanding Report
-2. Review Production Requests → Approve/Reject/EX
-3. Create Job Orders
-4. Set priorities
+**2. Why is the Job Template dropdown empty when I create a Job Order?**
 
-**During Day:**
+The selected item has not been configured with a Job Template in the **Process Maintenance Applet**. You must define the process steps and group them as a template there before you can use them here.
 
-- Monitor Job Order status
-- Address material shortages
-- Reprioritize as needed
+**3. Why didn't my manufacturing steps (Process Instances) automatically generate?**
 
-**End of Day:**
+This is by design to give you a chance to review the Job Order. You must navigate to the **Process Instance** tab inside the Job Order and manually click the "Generate Process Instance" button.
 
-- Review completion rates
-- Update Sales team
-- Plan tomorrow
+**4. I get an error when adding a Sales Order Linking quantity. Why?**
 
-### Key Actions
+The quantity you entered likely exceeds the "Balance Quantity" available for that Sales Order. You must enter an amount that is less than or equal to the remaining available balance.
 
-| Task                          | Where                   | How                                  |
-| ----------------------------- | ----------------------- | ------------------------------------ |
-| Review demand                 | Production Requests     | Filter and approve/reject            |
-| Create production instruction | Master List             | Create Job Order, generate processes |
-| Link to customer order        | Job Order → SO Link tab | Select SO, enter quantity            |
-| Set priority                  | Processes menu          | Mark as High Priority                |
-| Check customer status         | Sales Orders menu       | View production status               |
-| Generate capacity report      | Production Requests     | Outstanding Report                   |
+**5. How do I actually move a Job Order from "Planned" to "In Progress"?**
+
+You don't manually change this status here. Job Orders progress from "Planned" to "Released" and eventually to "In Progress" once operators begin executing the steps in the **Manufacturing Operations Applet**. Your role here is to plan and monitor that execution.
+
+**6. I want to add an internal project code to my Job Orders, how do I do that?**
+
+Go to **Settings > Field Settings** and toggle "Project" under Department Settings. This will expose the Project selection field on the Job Order main details page.
+
+**7. How do I print specific Sales Order documents?**
+
+Navigate to **Settings > Printables** where an administrator can upload an 'SO Printable' layout. Once uploaded and selected, it will be available for printing in the Sales Order view.
