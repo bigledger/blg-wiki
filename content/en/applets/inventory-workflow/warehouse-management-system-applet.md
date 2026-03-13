@@ -66,6 +66,8 @@ Traditional warehouse management relies on paper-based tracking and manual proce
 - **Scan sessions** — Barcode/QR scanning for fast, error-free operations
 - **Full traceability** — Complete audit trail from dock to stock to dispatch
 
+{{< figure src="/images/warehouse-management-system-applet/wms-infographic.jpg" alt="Master Your Warehouse: A Step-by-Step Guide to the WMS Applet - showing the 4 phases: Physical Setup, Inbound Workflow, Outbound Workflow, and Accuracy & Efficiency Tools, plus Integration Flow table" caption="Master Your Warehouse: A Step-by-Step Guide to the WMS Applet. From physical setup and inbound receiving through to outbound dispatch and accuracy tools." >}}
+
 ## Key Features Overview
 
 {{< cards >}}

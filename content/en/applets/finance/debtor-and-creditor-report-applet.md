@@ -1,6 +1,6 @@
-﻿---
+---
 title: "Debtor and Creditor Report Applet"
-description: "Financial reporting for Accounts Receivable (Debtors) and Accounts Payable (Creditors) with aging analysis"
+description: "Real-time aging analysis, outstanding balance tracking, and financial health reporting for Accounts Receivable and Accounts Payable teams"
 tags:
 - accounts-receivable
 - accounts-payable
@@ -8,431 +8,264 @@ tags:
 - creditor-report
 - aging-analysis
 - financial-reports
+weight: 70
 ---
 
 ## Purpose and Overview
 
-The **Debtor and Creditor Report Applet** provides comprehensive financial reporting for managing your organization's receivables (money owed to you) and payables (money you owe). It offers powerful aging analysis and outstanding balance tracking.
+The **Debtor and Creditor Report Applet** is the financial intelligence center for your organization's cash flow. It answers two of the most critical questions in business: **"Who owes us money, and how old is that debt?"** and **"Who do we owe money to, and when is it due?"**
+
+Instead of manually pulling data from dozens of invoices and payment records, this applet automatically calculates aging buckets, tracks outstanding balances in real-time, and generates professional statements — all from a single screen.
 
 {{< callout type="info" >}}
-**Core Concept**: **Debtors** are customers who owe you money (Accounts Receivable). **Creditors** are vendors/suppliers you owe money to (Accounts Payable).
+**Core Concept: Debtors vs Creditors**
+- **Debtor (Accounts Receivable):** A customer who owes *you* money. They bought your goods but haven't paid yet.
+- **Creditor (Accounts Payable):** A supplier *you* owe money to. They delivered materials but you haven't paid yet.
 {{< /callout >}}
-
-## Key Features Overview
 
 ### Who Benefits from This Applet?
 
-**Finance Teams:**
-- Monitor outstanding receivables and payables
-- Track aging of invoices
-- Ensure timely collections and payments
-- Generate financial reports for audits
-
-**Accounts Receivable (AR) Teams:**
-- Track customer outstanding balances
-- Identify overdue accounts
-- Prioritize collection efforts
-- Monitor customer payment patterns
-
-**Accounts Payable (AP) Teams:**
-- Track vendor outstanding balances
-- Plan payment schedules
-- Ensure timely supplier payments
-- Monitor payment terms compliance
-
-**Management & Executives:**
-- Dashboard view of cash flow position
-- Monitor working capital
-- Identify credit risks
-- Make data-driven collection decisions
-
-### What Problems Does This Solve?
-
-**Traditional AR/AP Challenges:**
-- No consolidated view of outstanding balances
-- Manual aging calculations prone to errors
-- Difficulty identifying overdue accounts
-- Lack of visibility into payment patterns
-- Time-consuming report generation
-
-**The Solution:**
-- **Real-time reporting** - Up-to-date balance information
-- **Automated aging** - Instant aging bucket calculations
-- **Multi-currency support** - View balances in any currency
-- **Flexible filtering** - Drill down by customer, vendor, date
-- **Export options** - Generate Excel/PDF reports easily
-
-## Key Features Overview
-
-{{< cards >}}
-  {{< card title="Debtor Aging Report" subtitle="AR aging analysis by customer" link="#debtor-aging-report" >}}
-
-  {{< card title="Creditor Aging Report" subtitle="AP aging analysis by vendor" link="#creditor-aging-report" >}}
-
-  {{< card title="Outstanding Summary" subtitle="Balance overview dashboard" link="#outstanding-summary" >}}
-
-  {{< card title="Detailed Reports" subtitle="Transaction-level details" link="#detailed-reports" >}}
-
-  {{< card title="Export & Print" subtitle="Generate PDF and Excel reports" link="#export--print" >}}
-
-  {{< card title="Settings" subtitle="Configure report options" link="#configuration--settings" >}}
-{{< /cards >}}
+| Role | How they use it |
+|------|-----------------|
+| **AR Collection Officers** | Identifying which customers are 90+ days overdue and prioritizing collection calls. |
+| **AP Payment Officers** | Planning the weekly payment run by seeing which supplier invoices are about to become overdue. |
+| **Finance Managers** | Running month-end aging reports to present the company's receivable/payable health to management. |
+| **CFOs / Management** | Monitoring the net cash position (Total Receivables vs Total Payables) to make strategic decisions. |
+| **External Auditors** | Pulling aging confirmation letters and outstanding document trails during annual audits. |
 
 ---
 
-## Key Concepts
+## What Problems Does This Solve?
 
-### Debtor vs Creditor
+**Without This Applet:**
+- Aging calculations are done manually in spreadsheets, often with formula errors that misclassify 90-day debts as 30-day.
+- Finance staff open invoices one-by-one to figure out which customers haven't paid.
+- There's no single "source of truth" — the AR team's number never matches the GL team's number.
+- Creating a customer statement for a collection letter takes an hour of copy-pasting.
 
-| Term | Also Known As | Description | Example |
-|------|---------------|-------------|---------|
-| **Debtor** | Customer, Accounts Receivable | Someone who owes you money | Customer with unpaid invoices |
-| **Creditor** | Vendor/Supplier, Accounts Payable | Someone you owe money to | Supplier with unpaid bills |
+**With Debtor & Creditor Report Applet:**
+- ✓ **Automated Aging Buckets** — The system instantly classifies every outstanding amount into Current, 1-30, 31-60, 61-90, and 90+ day buckets based on invoice due dates.
+- ✓ **Real-Time Balances** — Numbers update the moment a payment is posted or an invoice is finalized. No more stale data.
+- ✓ **Drill-Down Traceability** — Click any customer's total to see the exact invoices, credit notes, and partial payments that make up that balance.
+- ✓ **One-Click Export** — Generate Excel reports for pivot table analysis or PDF statements for customer communication.
 
-### Aging Buckets
-
-Aging analysis categorizes outstanding amounts by how long they've been due:
-
-| Bucket | Description | Risk Level |
-|--------|-------------|------------|
-| **Current** | Not yet due | Low |
-| **1-30 Days** | 1-30 days overdue | Medium |
-| **31-60 Days** | 31-60 days overdue | High |
-| **61-90 Days** | 61-90 days overdue | Very High |
-| **90+ Days** | Over 90 days overdue | Critical |
-
-### Outstanding vs Overdue
-
-- **Outstanding**: Total amount not yet paid (includes current and overdue)
-- **Overdue**: Amounts past the payment due date
-- **Current**: Amounts not yet due (within payment terms)
+{{< figure src="/images/debtor-and-creditor-report-applet/debtor-creditor-infographic.jpg" alt="Master Your Cash Flow: A Guide to the Debtor & Creditor Report Applet - showing the Core Fundamentals, Aging Engine, Risk Levels, Role-Based Workflows, and Drill-Down Traceability Features" caption="Master Your Cash Flow: A Guide to the Debtor & Creditor Report Applet. From core AR/AP fundamentals through the aging engine and risk levels to role-based workflows and one-click exports." >}}
 
 ---
 
-## Quick Start Guide
+## The Aging Framework: Understanding the Numbers
 
-### For Finance: Run Debtor Aging Report
+Before diving into the reports, you must understand how the system calculates "aging." This is the single most important concept in this applet.
 
-**Goal:** View all customer outstanding balances with aging.
+### The Aging Buckets
 
-1. **Navigate**: Go to **Debtor Aging Report** from the sidebar
-2. **Set Filters**:
-   - **As of Date**: Report date (usually today)
-   - **Company**: Select your company
-   - **Currency**: Reporting currency
-3. **Generate**: Click **Search** or **Generate Report**
-4. **Review**: See customers grouped by aging buckets
-5. **Export**: Click **Export to Excel** for further analysis
+| Bucket | Meaning | Risk Level | Action Required |
+|--------|---------|------------|-----------------|
+| **Current** | Invoice is NOT yet due. The customer still has time to pay within their agreed terms. | 🟢 Low | Monitor only. |
+| **1-30 Days** | Invoice is 1 to 30 days *past* its due date. | 🟡 Medium | Send a friendly payment reminder. |
+| **31-60 Days** | Invoice is 31 to 60 days overdue. | 🟠 High | Escalate. Make a collection call. |
+| **61-90 Days** | Invoice is 61 to 90 days overdue. Payment is significantly delayed. | 🔴 Very High | Issue a formal demand letter. Consider putting the customer's account on hold. |
+| **90+ Days** | Invoice has been overdue for over 3 months. This debt is at serious risk of becoming a bad debt. | ⛔ Critical | Escalate to management. Consider engaging a collection agency or initiating write-off procedures. |
 
-**Key Insight:** Large amounts in 90+ days need immediate collection attention.
-
----
-
-### For Finance: Run Creditor Aging Report
-
-**Goal:** View all vendor outstanding balances with aging.
-
-1. **Navigate**: Go to **Creditor Aging Report** from the sidebar
-2. **Set Filters**:
-   - **As of Date**: Report date
-   - **Company**: Select your company
-   - **Currency**: Reporting currency
-3. **Generate**: Click **Search** or **Generate Report**
-4. **Review**: See vendors grouped by aging buckets
-5. **Plan**: Identify payments due soon to manage cash flow
-
-**Key Insight:** Focus on 1-30 days bucket for immediate payment planning.
-
----
-
-### For Managers: Monitor Outstanding Balances
-
-**Goal:** Get a quick overview of AR/AP position.
-
-1. **Check Summary**: Review the Outstanding Summary dashboard
-2. **Compare**: 
-   - Total Receivables vs Total Payables
-   - Overdue amounts in each category
-3. **Drill Down**: Click on any amount to see details
-4. **Take Action**: Assign follow-ups for critical accounts
-
----
-
-## Debtor Aging Report
-
-### What It Shows
-
-The Debtor Aging Report displays:
-- Customer/debtor name and code
-- Total outstanding amount
-- Breakdown by aging bucket (Current, 1-30, 31-60, 61-90, 90+)
-- Invoice details (optional drill-down)
-
-### Report Columns
-
-| Column | Description |
-|--------|-------------|
-| Customer Code | Unique customer identifier |
-| Customer Name | Customer/debtor name |
-| Current | Amounts not yet due |
-| 1-30 Days | 1-30 days overdue |
-| 31-60 Days | 31-60 days overdue |
-| 61-90 Days | 61-90 days overdue |
-| 90+ Days | Over 90 days overdue |
-| Total | Total outstanding balance |
-
-### Filter Options
-
-| Filter | Description |
-|--------|-------------|
-| As of Date | Calculate aging as of this date |
-| Company | Filter by company |
-| Customer | Specific customer (optional) |
-| Currency | Reporting currency |
-| Include Zero Balances | Show customers with no outstanding |
-
-### Use Cases
-
-**Collections Prioritization:**
-```
-Sort by 90+ Days Descending â†’ Focus on oldest debts first
-```
-
-**Customer Credit Review:**
-```
-Filter by Customer â†’ See payment history and patterns
-```
-
-**Monthly Reporting:**
-```
-As of Date = Month End â†’ Generate for management reporting
-```
-
-### Viewing Aging Report Details - 2 Tabs
-
-When you click on a customer row in the Debtor Aging Report, the view shows:
-
-| Tab | Purpose |
-|-----|---------|
-| **Main** | Summary of the customer's aging breakdown, payment history |
-| **Outstanding Docs** | List of individual documents (invoices, credit notes) that make up the balance |
-
-{{< callout type="tip" >}}
-**Drill-Down Tip**: Use the Outstanding Docs tab to see exactly which invoices are aging, then click on individual documents for full details.
+{{< callout type="warning" >}}
+**Critical Distinction: Invoice Date vs Due Date.** Aging is calculated from the **Due Date**, not the Invoice Date. If you issue an invoice on Jan 1st with 30-day payment terms, the Due Date is Jan 31st. The aging clock only starts ticking on Feb 1st.
 {{< /callout >}}
 
----
+### Outstanding vs Overdue — Know the Difference
 
-## Creditor Aging Report
-
-### What It Shows
-
-The Creditor Aging Report displays:
-- Vendor/supplier name and code
-- Total outstanding amount owed
-- Breakdown by aging bucket
-- Invoice details (optional drill-down)
-
-### Report Columns
-
-| Column | Description |
-|--------|-------------|
-| Vendor Code | Unique vendor identifier |
-| Vendor Name | Vendor/supplier name |
-| Current | Amounts not yet due |
-| 1-30 Days | 1-30 days overdue |
-| 31-60 Days | 31-60 days overdue |
-| 61-90 Days | 61-90 days overdue |
-| 90+ Days | Over 90 days overdue |
-| Total | Total outstanding balance |
-
-### Use Cases
-
-**Payment Planning:**
-```
-Filter: 1-30 Days â†’ Identify payments due this month
-```
-
-**Cash Flow Management:**
-```
-Review Total column â†’ Plan cash requirements
-```
-
-**Vendor Relationship:**
-```
-Monitor 90+ Days â†’ Avoid damaging supplier relationships
-```
+- **Outstanding**: The *total* unpaid amount. This includes invoices that are not yet due (Current) *and* invoices that are past due. An outstanding balance is not necessarily a problem.
+- **Overdue**: *Only* the amounts that have passed their due date. An overdue balance *is* a problem and requires action.
 
 ---
 
-## Outstanding Summary
+## Role-Based Quick Start Guides
 
-### Dashboard Overview
+### For AR Officers: Hunt Down Overdue Receivables
+Your goal is to identify which customers need a collection call today.
 
-The summary view provides:
-- **Total Debtors Outstanding**: Sum of all receivables
-- **Total Creditors Outstanding**: Sum of all payables
-- **Net Position**: Debtors minus Creditors
-- **Aging Distribution**: Visual breakdown by bucket
+1. Go to **Debtor Aging Report** from the sidebar.
+2. Set the **As of Date** to today's date.
+3. Select your **Company**.
+4. Click **Search / Generate Report**.
+5. The report loads, showing every customer with an outstanding balance, broken down by aging bucket.
+6. **Sort the `90+ Days` column from highest to lowest.** The customer at the top of this list is your #1 priority.
+7. Click on that customer's row to drill down into their **Outstanding Docs** tab.
+8. You can now see *exactly* which invoices are causing the overdue amount (e.g., Invoice #INV-2024-0234, RM 15,000, issued 4 months ago).
+9. Export the customer's details to PDF to attach to your collection email.
 
-### Key Metrics
+### For AP Officers: Plan the Weekly Payment Run
+Your goal is to identify which suppliers need to be paid this week to avoid damaging relationships.
 
-| Metric | Formula | Interpretation |
-|--------|---------|----------------|
-| **DSO** (Days Sales Outstanding) | (Avg AR / Revenue) Ã— Days | Lower is better |
-| **DPO** (Days Payable Outstanding) | (Avg AP / COGS) Ã— Days | Depends on strategy |
-| **Overdue %** | Overdue / Total Outstanding | Lower is better |
+1. Go to **Creditor Aging Report** from the sidebar.
+2. Set the **As of Date** to today's date.
+3. Click **Search / Generate Report**.
+4. **Focus on the `Current` and `1-30 Days` columns.** These are the invoices that are either about to become due or have just become overdue.
+5. Sort by `1-30 Days` descending to see which supplier is owed the most overdue money.
+6. Use this report as the basis for your weekly payment batch in the Payment Voucher applet.
+
+### For Finance Managers: The Month-End Aging Snapshot
+Your goal is to generate the official month-end aging report for the management meeting.
+
+1. Go to **Debtor Aging Report**.
+2. Set the **As of Date** to the **last day of the month** (e.g., `31 Jan 2025`). This is critical — it freezes the report in time, showing the exact position at month-end.
+3. Click **Generate**.
+4. Click **Export to Excel**.
+5. Repeat the process for the **Creditor Aging Report**.
+6. You now have a matched pair of AR/AP aging reports that represent the company's receivable and payable health at a single point in time.
 
 ---
 
-## Outstanding Document Report
+## Deep-Dive: The Report Workspaces
 
-The **Outstanding Document Report** provides transaction-level detail for each document (invoice, credit note, payment) affecting balances.
+### 1. Debtor Aging Report (The AR Command Center)
+This is the primary report for tracking money owed *to* your company.
 
-### Viewing a Document - 8 Tabs
+**Report Columns:**
 
-When you select a document from the report, you see detailed information across multiple tabs:
+| Column | What it shows |
+|--------|---------------|
+| **Customer Code** | The unique identifier for the customer from the Customer Maintenance Applet. |
+| **Customer Name** | The customer's business name. |
+| **Current** | Total amount of invoices that are NOT yet due. |
+| **1-30 Days** | Total amount of invoices that are 1-30 days past their due date. |
+| **31-60 Days** | Total of invoices 31-60 days overdue. |
+| **61-90 Days** | Total of invoices 61-90 days overdue. |
+| **90+ Days** | Total of invoices more than 90 days overdue. This is the danger column. |
+| **Total** | The grand total of all outstanding amounts for that customer. |
+
+**Filters:**
+
+| Filter | Purpose |
+|--------|---------|
+| **As of Date** | The most important filter. It determines *when* aging is calculated. Setting it to a past date lets you generate historical reports. |
+| **Company** | Filter by your legal entity. Essential for multi-company organizations. |
+| **Customer** | Narrow down to a specific customer for a focused view. |
+| **Currency** | Switch the reporting currency. |
+| **Include Zero Balances** | Toggle on to show customers who have fully paid up (useful for audits). |
+
+**Drill-Down Tabs (Click on any customer row):**
 
 | Tab | Purpose |
 |-----|---------|
-| **Details** | Document header info: number, date, entity, amounts, status |
-| **Account** | GL account breakdown and accounting entries |
-| **Line Items** | Individual line items on the document |
-| **Delivery Details** | Shipping/delivery information (for sales documents) |
-| **Settlement** | Payment history and settlement transactions |
-| **Department** | Department allocation and cost center breakdown |
-| **Contra** | Contra entries and offsetting transactions |
-| **Doc Link** | Links to related documents (POs, invoices, payments) |
+| **Main** | A summary of the customer's overall aging breakdown and their payment behavior pattern. |
+| **Outstanding Docs** | The critical detail view — lists every individual invoice, credit note, and debit note that makes up the customer's total balance. Click any document to trace it back to the original transaction. |
 
 {{< callout type="tip" >}}
-**Settlement Tab**: This is especially useful for AR/AP reconciliationâ€”see exactly which payments settled which invoices.
+**Pro Tip:** Use the **Outstanding Docs** tab during collection calls. You can tell the customer exactly: *"Invoice #INV-0234 for RM 15,000 dated Oct 5th is now 90 days overdue."* This level of specificity accelerates payment.
 {{< /callout >}}
 
-### Key Use Cases
+### 2. Creditor Aging Report (The AP Command Center)
+This is the mirror image of the Debtor report, but it tracks money *you owe* to suppliers.
 
-**Invoice Investigation:**
-- Open the document â†’ Check **Details** for basic info
-- Go to **Line Items** to see what was sold/purchased
-- Check **Settlement** to see payment status
+The column structure and filters are identical to the Debtor Aging Report, but the perspective is reversed:
+- **Current** = Supplier invoices you haven't paid yet, but they are not due yet. You're within terms.
+- **90+ Days** = Supplier invoices you are severely late on. This risks damaged supplier relationships, late fees, or supply disruption.
 
-**Document Tracing:**
-- Use **Doc Link** tab to trace the document chain
-- See related PO â†’ Invoice â†’ Payment connections
+### 3. Outstanding Document Report (The Transaction-Level Audit Trail)
+This is the most granular report in the applet. It shows *every single document* (invoice, credit note, debit note, payment) across all customers or vendors.
 
----
+**Document Detail Tabs (8 Tabs):**
 
-## Outstanding Entity Report
-
-The **Outstanding Entity Report** shows balances grouped by customer or vendor entity.
-
-### What It Shows
-
-- Entity name and code
-- Total outstanding amount
-- Document count
-- Last transaction date
-- Contact information
-
-### Statement Generation
-
-Generate customer/vendor statements showing:
-- Opening balance
-- All transactions in period
-- Payments received/made
-- Closing balance
-
----
-
-## Export & Print
-
-### Export Options
-
-| Format | Use Case |
-|--------|----------|
-| **Excel (.xlsx)** | Further analysis, pivot tables |
-| **PDF** | Formal reports, attachments |
-| **Print** | Physical copies for review |
-
-### Export Steps
-
-1. Run the desired report
-2. Click **Export** button
-3. Select format (Excel/PDF)
-4. Download file
-
----
-
-## Configuration & Settings
-
-### Default Settings (`Settings > Default Settings`)
-
-Configure default values for reports:
-
-| Setting | Purpose |
-|---------|---------|
-| **Default Company** | Pre-selects your primary company |
-| **Default Currency** | Reporting currency preference |
-| **Default Date Range** | How far back to load data |
-
----
-
-### Field Configuration (`Settings > Field Configuration`)
-
-Customize which columns appear in report listings and their order.
-
----
-
-### Printable Format Settings (`Settings > Printable Format Settings`)
-
-Configure print templates for reports.
-
-**Edit View Tabs:**
 | Tab | Purpose |
 |-----|---------|
-| **Details** | Template name, header/footer settings |
-| **Line** | Line item layout and column configuration |
+| **Details** | Document header: number, date, entity, total amount, status. |
+| **Account** | The General Ledger (GL) account breakdown and accounting double-entry. |
+| **Line Items** | Individual line items on the invoice (e.g., 10x Laptops @ RM 3,000 each). |
+| **Delivery Details** | Shipping and delivery information (for sales-related documents). |
+| **Settlement** | **The Reconciliation Powerhouse.** Shows exactly which payments settled which invoices, including partial payments. |
+| **Department** | Department allocation and cost center breakdown for internal reporting. |
+| **Contra** | Contra entries and offsetting transactions between AR and AP. |
+| **Doc Link** | **The Paper Trail.** Links to all related documents (Purchase Order → GRN → Invoice → Payment) for full end-to-end traceability. |
+
+{{< callout type="tip" >}}
+**Auditor's Best Friend:** When an external auditor asks, *"Show me the payment trail for Invoice #5567,"* open the document, go to the **Settlement** tab to see the payment, then go to **Doc Link** to show the original PO and GRN. The entire audit trail is one click away.
+{{< /callout >}}
+
+### 4. Outstanding Entity Report (The Customer/Vendor Summary)
+This report groups balances by entity (customer or vendor) and is the primary source for generating **Statements of Account**.
+
+- **Statement Generation:** Generate a professional document showing a customer's opening balance, all transactions in a given period, all payments received, and the closing balance. This is the document you attach to a formal collection letter.
 
 ---
 
-### Release Notes (`Settings > Release Notes`)
+## Applet Configuration (For Admins)
 
-View applet version history and feature updates.
+Navigate to **Settings** in the sidebar to configure the applet.
+
+### Default Settings
+Pre-set values that auto-populate when running reports, saving repetitive clicks.
+
+| Setting | Purpose | Example |
+|---------|---------|---------|
+| **Default Company** | Auto-selects your primary legal entity so you don't have to pick it every time. | *BigLedger Sdn Bhd* |
+| **Default Currency** | Sets the reporting currency. | *MYR* |
+| **Default Date Range** | Controls how far back the report loads data by default. | *Current Month* |
+
+### Field Configuration
+Customize which columns appear in each report listing and their display order. Use this to hide columns that are irrelevant to your team's workflow and reduce visual clutter.
+
+### Printable Format Settings
+Configure the templates used when exporting to PDF or printing.
+
+| Tab | Purpose |
+|-----|---------|
+| **Details** | Control the header and footer of the printed report (company logo, address, footer notes). |
+| **Line** | Control the column layout and ordering on the printed line items. |
 
 ---
 
-## Personalization
+## Common Real-World Scenarios
 
-### Personal Default Settings
-Save your preferred filters and report options.
+### Scenario 1: The Month-End Collection Blitz
+**The Situation:** It's January 31st. The CFO wants to reduce the company's overdue receivables by 20% before the board meeting next week.
+**The Workflow:**
+1. AR Manager opens the **Debtor Aging Report** with As of Date = Jan 31.
+2. Sorts the `90+ Days` column descending. The top 5 customers account for RM 500,000 of the RM 800,000 total overdue.
+3. For each of these 5 customers, the AR Manager clicks into the **Outstanding Docs** tab and identifies the specific invoices.
+4. The AR Manager exports each customer's aging detail to **PDF** and distributes them to 5 AR Officers, one customer per officer.
+5. Each officer calls their assigned customer with the exact invoice numbers and amounts, accelerating the collection process.
 
-### Favorite Reports
-Bookmark frequently used reports for quick access.
+### Scenario 2: The Supplier Threatening to Stop Delivery
+**The Situation:** A key raw materials supplier calls and says, *"You owe us RM 120,000. If you don't pay by Friday, we are suspending all deliveries."*
+**The Workflow:**
+1. AP Officer opens the **Creditor Aging Report** and filters by that specific Vendor.
+2. The report confirms: RM 45,000 in the `Current` bucket, RM 50,000 in the `1-30 Days` bucket, and RM 25,000 in the `61-90 Days` bucket.
+3. AP clicks into the **Outstanding Docs** tab. The RM 25,000 in the 61-90 bucket is a single invoice from 2 months ago that was somehow missed.
+4. AP immediately creates a priority payment for the RM 25,000 overdue invoice and communicates the plan to the supplier, preserving the relationship and the supply chain.
+
+### Scenario 3: The External Audit Confirmation
+**The Situation:** External auditors require a list of all outstanding receivables as of Dec 31st for year-end confirmation letters.
+**The Workflow:**
+1. Finance Manager opens the **Debtor Aging Report** with As of Date = `31 Dec 2024`.
+2. Enables **Include Zero Balances** to capture the complete customer list.
+3. Exports the full report to **Excel**.
+4. For each material customer, opens the **Outstanding Entity Report** and generates a **Statement of Account** for the period Jan 1 - Dec 31.
+5. The Statement is exported to PDF and attached to the auditor's confirmation letter, showing opening balance, all transactions, payments, and closing balance.
 
 ---
 
-## FAQ
+## FAQs
 
-**Q: What's the difference between "As of Date" and "Report Date"?**
-A: "As of Date" determines which invoices are included and how aging is calculated. Setting it to month-end shows the position at that point in time.
+**Q: What is the most important filter in this applet?**
+A: The **As of Date**. It determines *when* the aging is calculated. If you set it to Dec 31st, the report shows you the exact financial position at that date, even if you run it in February. This is how you generate historical, point-in-time reports for audits and board meetings.
 
-**Q: Why do some customers show zero balance but appear in the report?**
-A: Check if "Include Zero Balances" filter is enabled. Disable it to show only customers with outstanding amounts.
+**Q: Why does my aging report total not match the General Ledger balance?**
+A: This is one of the most common questions. Check three things:
+1. Ensure you are using the exact same **As of Date** in both the aging report and the GL Trial Balance.
+2. Ensure you are filtering by the same **Company** and **Currency**.
+3. Verify that all relevant invoices and payments have been **Finalized/Posted**. Draft or unposted documents will not appear in the aging report but may exist in the GL.
 
-**Q: Can I see the original invoice details?**
-A: Yes, click on any customer/vendor row to drill down and see individual invoice details.
+**Q: Can I see why a customer's balance is so high?**
+A: Yes. Click on the customer's row in the Debtor Aging Report. Go to the **Outstanding Docs** tab. This lists every single unpaid invoice, credit note, and debit note. You can see the exact document numbers, dates, and amounts that make up their total balance.
 
-**Q: How is aging calculated?**
-A: Aging is calculated from the invoice due date (not invoice date) to the "As of Date" you selected.
+**Q: How is aging calculated — from Invoice Date or Due Date?**
+A: Aging is always calculated from the **Due Date** to the **As of Date** you selected. The Invoice Date is irrelevant for aging purposes. This means if you issue an invoice on Jan 1st with Net 30 terms (Due Date = Jan 31st), the invoice will remain in the "Current" bucket until Feb 1st.
 
-**Q: Can I export reports to send to customers?**
-A: Yes, use the Export to PDF option to generate professional statements for customers.
+**Q: Can I generate a formal Statement of Account to send to a customer?**
+A: Yes. Use the **Outstanding Entity Report**, select the customer, and use the Statement Generation feature. It produces a professional document showing Opening Balance → Transactions → Payments → Closing Balance for a given period.
 
-**Q: Why do my totals differ from the GL?**
-A: Ensure you're using the same "As of Date" and currency. Also verify all documents are posted and finalized.
+**Q: I see some customers with zero balance in the report. How do I hide them?**
+A: Uncheck the **Include Zero Balances** filter before generating the report. This keeps the listing clean and focused on customers who actually owe money.
 
-**Q: Can I customize the aging buckets?**
-A: Yes, administrators can configure custom aging periods in Settings.
-
-**Q: How often is the data updated?**
-A: Reports run in real-time against current data. Refresh the report to see the latest information.
-
+**Q: How often does this data update?**
+A: In real-time. The moment a payment is posted or an invoice is finalized in the system, the aging report reflects the change immediately. Simply refresh or re-generate the report to see the latest data.
