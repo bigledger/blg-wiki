@@ -142,17 +142,34 @@ Get up and running quickly with these essential workflows based on your role on 
 
 The **Supervisor PI** (Process Instance) menu is the command center for controlling what gets produced and when, and for ensuring quality through rigid work log approval.
 
+{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-supervisor PI.png" alt="Supervisor PI Listing" caption="The Supervisor PI menu listing all production tasks." >}}
+
 **Setting Priorities**
+
+{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-supervisor PI-update priority.png" alt="Supervisor PI Update Priority" caption="Set dynamic job priorities to sequence operator work queues." >}}
+
 Operators see jobs ordered strictly by the priority you set here. 
 - Use gaps when numbering (e.g., set jobs to 10, 20, 30) so you can easily insert rush orders later (at 15) without having to renumber everything.
 
 #### Quality Gate (The 'FINAL' Approval)
+
+{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-supervisor PI-worklog-approval.png" alt="Supervisor PI Worklog Approval" caption="Review and approve work logs submitted by operators." >}}
 
 When an operator finishes, the log enters `Pending Approval`. The Supervisor holds the final authority via the **Supervisor PI** view.
 
 - **The Gated 'FINAL' Button**: The system includes a strict safety mechanism. The **FINAL** button remains disabled until:
   - Every **Input Item** has at least one associated Bin and Actual Quantity.
   - Every **Output Item** has at least one associated Bin and Actual Quantity.
+
+**Reviewing items and verifying bins:**
+
+{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-supervisor PI-input items.png" alt="Supervisor PI Input Items" caption="Review the raw materials consumed in the input items tab." >}}
+
+{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-supervisor PI-input items-select bin.png" alt="Supervisor PI Input Items Select Bin" caption="Verify that the correct bin was selected for input items." >}}
+
+{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-supervisor PI-outout-items-main details.png" alt="Supervisor PI Output Items Main Details" caption="Review the main details of the output items." >}}
+
+{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-supervisor PI-outout-items-BIN number.png" alt="Supervisor PI Output Items Bin Number" caption="Ensure the output item is mapped to the correct destination bin." >}}
 - **Data Validation**: Review recorded **PIC (Person in Charge)** and **Shift Types** to ensure accountability.
 - **Reviewing Logs**: Supervisors can add **Supervisor Remarks** to work logs if corrections or feedback are required.
 - **Status Lifecycle**: Once marked `Ready` or `FINAL`, inventory and costing engines update immediately.
@@ -161,9 +178,13 @@ When an operator finishes, the log enters `Pending Approval`. The Supervisor hol
 
 The **Operator PMC** (Production Management Console) translates physical production into digital records. Your accuracy directly drives inventory levels and company financials.
 
+{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-operator-pmc-listing.png" alt="Operator PMC Listing" caption="The Operator PMC work queue listing available jobs." >}}
+
 #### Creating a Work Log
 
 This is the most critical interaction in the applet. 
+
+{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-operator-pmc-worklog-creation.png" alt="Operator PMC Worklog Creation" caption="Create a new work log to record time and production details." >}}
 
 **Live Time Tracking:**
 Instead of typing times, click **Start** when work begins and **End** when the machine stops. The system automatically calculates Total Time spent. Do not hit Start when you merely *claim* the job; only hit Start when production begins.
@@ -175,6 +196,14 @@ Inside the **Worklogs** tab, operators record critical production variables that
 - **OD (Outside Diameter)**: Record measurements in millimeters for the **Start**, **Mid**, and **End** of the production run.
 - **Extrusion Specifications**: For relevant processes, you can record **Heater Temperature** (with UOM), **In Die (mm)**, and **Out Die (mm)**.
 - **Labor Tracking**: Clock in with **Start** and **End** buttons; select your **Shift Type** and verify the **PIC** (Person in Charge).
+
+#### Input Materials and Bin Selection
+
+Operators must specify the exact bin where raw materials were sourced to maintain strict inventory tracking.
+
+{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-operator-pmc-input item-bin selection.png" alt="Operator PMC Input Item Bin Selection" caption="Select the bin code for the raw materials being consumed." >}}
+
+{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-operator-pmc-input item-bin number update.png" alt="Operator PMC Input Item Bin Number Update" caption="Update the bin number to log the source of the materials." >}}
 
 #### Handling Bulk Quantities and Discrepancies
 
@@ -211,6 +240,8 @@ Understanding the flow of a process instance is key to mastering the shop floor:
 ### User Access Control
 
 The applet utilizes role-based gated views.
+
+{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-client-side-permission.png" alt="Client Side Permission" caption="Configure client-side permissions to grant MRP supervisor access." >}}
 
 | Permission Toggle | Resulting Access | Target Role |
 |-------------------|------------------|-------------|

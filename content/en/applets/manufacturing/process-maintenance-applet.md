@@ -185,6 +185,8 @@ Machines are your physical production assets. Define them once, then reference t
 
 Navigate to the **Machine** menu and create entries for each piece of equipment.
 
+{{< figure src="/images/process-maintenance-applet/process-maintenance-applet-machine-listing-edit machine.png" alt="Machine Registration" caption="Create a new machine by specifying name, code, type, and description." >}}
+
 | Field | Description |
 |-------|-------------|
 | **Machine Name** | Unique name for the machine (read-only after creation) |
@@ -210,6 +212,10 @@ Process Types categorize your manufacturing operations and define their sequence
 **Creating Process Types:**
 
 Navigate to the **Process Type** menu. Each Process Type represents a category of work.
+
+{{< figure src="/images/process-maintenance-applet/process-maintenance-applet-processtype-listing.png" alt="Process Type Listing" caption="Listing of Process Types showing Name, Code, Sequence, and Category." >}}
+
+{{< figure src="/images/process-maintenance-applet/process-maintenance-applet-processtype-edit.png" alt="Edit Process Type" caption="Creating or editing a Process Type, including sequence number and toggle settings." >}}
 
 | Field | Description |
 |-------|-------------|
@@ -237,7 +243,11 @@ Process Templates are individual manufacturing steps. Each one defines what goes
 
 Navigate to **Process Template** menu and create a new template.
 
+{{< figure src="/images/process-maintenance-applet/process-maintenance-applet-process-template.png" alt="Process Template Listing" caption="Process Template listing displaying all available recipes." >}}
+
 **Main Details Tab:**
+
+{{< figure src="/images/process-maintenance-applet/process-maintenance-applet-process-template-main.png" alt="Process Template Main Details" caption="Main details tab for a Process Template." >}}
 
 | Field | Description |
 |-------|-------------|
@@ -248,6 +258,8 @@ Navigate to **Process Template** menu and create a new template.
 | **Description** | Free-text description |
 
 **Output Items Tab:**
+
+{{< figure src="/images/process-maintenance-applet/process-maintenance-applet-process-template-output-items.png" alt="Process Template Output Items" caption="Define the production outputs and quantities in the Output Items tab." >}}
 
 Add the item(s) this process creates. For each output:
 - **INV Item Code** — Click to select from the item list
@@ -260,6 +272,8 @@ Add the item(s) this process creates. For each output:
 {{< /callout >}}
 
 **Input Items Tab:**
+
+{{< figure src="/images/process-maintenance-applet/process-maintenance-applet-process-template-input-items.png" alt="Process Template Input Items" caption="Specify the required raw materials in the Input Items tab." >}}
 
 Add the materials consumed. Same fields as Output Items (INV Item Code, UOM, Ratio, Description).
 
@@ -279,9 +293,15 @@ Inputs:
 
 **Machine Used Tab:**
 
+{{< figure src="/images/process-maintenance-applet/process-maintenance-applet-process-template-machined-used.png" alt="Process Template Machine Used" caption="Review machines capable of performing this process." >}}
+
+{{< figure src="/images/process-maintenance-applet/process-maintenance-applet-process-template-machined-used-add.png" alt="Process Template Add Machine Used" caption="Select and set default machines for the process." >}}
+
 Select which equipment can perform this process. If multiple machines are capable, link all of them and set one as the **default**. The default machine is pre-selected when Job Orders are generated.
 
 **Machine Specifications Tab:**   {#machine-specifications}
+
+{{< figure src="/images/process-maintenance-applet/process-maintenance-applet-process-template-machine-spec-add.png" alt="Process Template Add Machine Specification" caption="Attach relevant documentation to the Process Template." >}}
 
 Attach documentation to the Process Template:
 - Equipment manuals (PDF)
@@ -320,6 +340,8 @@ A single product might have multiple ways to manufacture it—different process 
 
 The Options tab displays all available Process Templates. Select the ones needed for this production route.
 
+{{< figure src="/images/process-maintenance-applet/process-maintenance-applet-job%20template-edit%20template.png" alt="Job Template Options and Process Groups" caption="Configure Options and Process Groups for a complete Job sequence." >}}
+
 **To finalize a Process Group:**
 1. Select the Process Templates for your Option
 2. Enter a **Group Name** (e.g., "Standard Armored Cable", "Premium Finish Table")
@@ -338,6 +360,8 @@ View the finalized Process Groups with all their linked Process Templates in seq
 ### 5. Process Template File Import
 
 For large-scale setups, you can bulk import Process Templates from external files instead of creating them one by one.
+
+{{< figure src="/images/process-maintenance-applet/process-maintenance-applet-process-template-import.png" alt="Process Template Import" caption="Import Process Templates in bulk via external files." >}}
 
 Navigate to the **Import Process Template** sidebar menu. The import interface follows a listing → create → edit pattern for managing import batches.
 
