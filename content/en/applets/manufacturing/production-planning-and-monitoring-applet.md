@@ -58,8 +58,6 @@ Traditional production planning relies on disconnected spreadsheets, manual orde
 - **Seamless traceability** — Clear links from the Job Order down to the exact customer Sales Order
 - **Real-time visibility** — Live status monitoring for both planners and sales teams
 
-{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-workflow.png" alt="From Request to Production: A Workflow Guide" caption="Production Planning Workflow: Manage incoming requests, create job orders, generate manufacturing plans, and track all active processes through to sales order fulfillment." >}}
-
 ### Core Capabilities
 
 {{< cards >}}
@@ -145,7 +143,9 @@ Production Requests are auto-generated when Sales Orders are confirmed. This is 
 
 Navigate to **Production Requests** menu to see all pending requests.
 
-{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-requests.png" alt="Production Requests Listing" caption="The Production Requests queue where planners approve or reject incoming demand." >}}
+{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-and-monitoring-applet-production-request.png" alt="Production Requests Listing" caption="The Production Requests queue where planners manage incoming demand." >}}
+
+{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-and-monitoring-applet-production-request-approve or reject.png" alt="Approve or Reject Production Requests" caption="Approve or reject production requests based on stock availability." >}}
 
 For each request, choose one of three actions:
 
@@ -163,7 +163,7 @@ For each request, choose one of three actions:
 
 This report aggregates all pending production demand and shows you the gap between what's requested and what you have in stock. It's your capacity planning tool.
 
-{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-outstanding-report.png" alt="Outstanding Production Report" caption="The Outstanding Production Report showing net production requirements after stock deduction." >}}
+{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-and-monitoring-applet-outstanding-report-generation.png" alt="Outstanding Production Report Generation" caption="Generate outstanding reports to analyze demand against inventory." >}}
 
 Click **Filter and generate outstanding report** to view a CSV export showing the Total Outstanding Quantity, Net Outstanding (after stock), Linked Sales Orders, and Request Dates.
 
@@ -173,7 +173,9 @@ A Job Order is the formal manufacturing instruction that tells the factory floor
 
 From **Master List**, click **"+"** to open the Job Order form.
 
-{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-form.png" alt="Create Job Order Form" caption="The Job Order creation form where details like item code, branch, and job template are specified." >}}
+{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-and-monitoring-applet-job-order-listing.png" alt="Job Order Master List" caption="The Master List of Job Orders." >}}
+
+{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-and-monitoring-applet-job-order-creation.png" alt="Create Job Order Form" caption="The Job Order creation form where details like item code, branch, and job template are specified." >}}
 
 - **Branch**: Sets both your production location and where finished goods will be deposited.
 - **Job Order Number**: Leave blank for sequential auto-numbering.
@@ -183,7 +185,11 @@ From **Master List**, click **"+"** to open the Job Order form.
 
 #### Generating Process Instances
 
-Creating the Job Order doesn't automatically generate the manufacturing steps. Open your Job Order and navigate to the **Process Instance** tab. Click **Generate Process Instance** to expand the Job Template into individual, executable steps.
+Creating the Job Order doesn't automatically generate the manufacturing steps. Open your Job Order and navigate to the **Process Instance** tab. 
+
+{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-and-monitoring-applet-job-order-edit-generate-process-instance.png" alt="Generate Process Instance" caption="Click to expand the Job Template into executable manufacturing steps." >}}
+
+Click **Generate Process Instance** to expand the Job Template into individual, executable steps.
 
 #### Inactivating Unnecessary Steps
 
@@ -194,7 +200,11 @@ Sometimes you don't need to run every step (e.g., reworks or semi-finished goods
 The system tracks two distinct types of production quantities on the main form, which map directly to your production strategy:
 
 **Make-to-Order (Container Quantity via Sales Order Linking)**
-For customer-specific production, open the **Sales Order Link** tab. Select the SO line and enter your production quantity. This populates the **Container Quantity** (Sales Order Quantity) field on the main details page, giving you complete customer traceability.
+For customer-specific production, open the **Sales Order Link** tab. 
+
+{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-and-monitoring-applet-job-order-edit-link-sales-order.png" alt="Job Order Sales Order Linking" caption="Link specific Sales Orders to a Job Order for direct fulfillment traceability." >}}
+
+Select the SO line and enter your production quantity. This populates the **Container Quantity** (Sales Order Quantity) field on the main details page, giving you complete customer traceability.
 
 **Make-to-Stock (Ad-Hoc Quantity)**
 For forecast-based production, simply enter an **Ad-Hoc Quantity** in the Job Order main details. The finished goods go to the warehouse as safety stock without being tied to a specific order. 
@@ -213,10 +223,15 @@ See all manufacturing steps across all Job Orders to identify bottlenecks at spe
 
 Track production status from the customer order perspective.
 
-{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-sales-orders.png" alt="Sales Orders Production Status" caption="Monitor the production progress of specific Sales Orders for delivery coordination." >}}
+{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-and-monitoring-applet-sales-order-listing.png" alt="Sales Orders Listing" caption="Sales Order master list for checking production status." >}}
+
+{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-and-monitoring-applet-sales-order-listing-main-details.png" alt="Sales Order Main Details" caption="Monitor the production progress of specific Sales Orders for delivery coordination." >}}
 
 **Stock Balance Summary**
 From the Sales Order view, navigating into the Item Details reveals a deeply granular **Stock Balance Summary**. This dashboard is the ultimate truth for Sales Coordinators, displaying:
+
+{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-and-monitoring-applet-sales-order-listing-item-details-stock-summary.png" alt="Stock Balance Summary" caption="Deep dive into stock balances, reservations, and job order quantities." >}}
+
 - **System Stock Balance**
 - **Total Sales Order Quantity**
 - **Total Reservation Quantity** (with drill-down details)
