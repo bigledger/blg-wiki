@@ -35,17 +35,19 @@ Marketing, Sales, Operations, and Customer Service teams use it to create vouche
 | **Scanned Event** | Review scan or redemption records, shipping address details, remarks, and attachments. |
 | **Recurring Voucher** | Create vouchers that repeat on a schedule. |
 | **Import Tickets** | Upload import files and review processing and checking results. |
-| **Settings** | Set applet defaults, field toggles, feature visibility, webhooks, and permissions. |
-| **Personalization** | Save user-level defaults and sidebar preferences. |
+| **Settings** | Set applet defaults, reorder voucher edit tabs, and manage field toggles. Some admin-enabled builds also expose feature visibility, webhook, and permission pages. |
+| **Personalization** | Save user-level defaults and, where enabled, maintain personal sidebar preferences. |
 
 ---
 
 ## Strategic Configuration: Building Your Voucher Logic
 
-Creating a voucher in this applet happens in two stages:
+Creating a standard voucher in this applet uses two work stages, but the first stage depends on the voucher type:
 
-1. Use **Create Voucher** to save the voucher shell.
-2. Reopen the voucher from **Voucher Listing** to configure **Treatment Value**, **Apply Rules**, **Image**, **Ticket Management**, **Website Link**, and **Audit**.
+1. Use **Create Voucher** to complete **Details**. If the voucher type is `DISCOUNT` or `REWARDS`, the create screen also exposes **Treatment Value** before the first save.
+2. After the voucher is saved, reopen it from **Voucher Listing** to use the full edit workspace: **Details**, **Treatment Value**, **Apply Rules**, **Image**, **Ticket Management**, **Website Link**, and **Audit**.
+
+`SETTLEMENT` vouchers only use the **Details** tab during create. `DISCOUNT` vouchers show `Product` and `For All` treatment setup during create. `REWARDS` vouchers show the `For All` treatment setup during create.
 
 {{< callout type="tip" >}}
 **Creation Checklist: Things to Decide Before You Save**
@@ -53,13 +55,15 @@ Creating a voucher in this applet happens in two stages:
 - [ ] **Quantity Type:** `FIXED`, `DYNAMIC`, `IMPORT`, or `INVENTORY`
 - [ ] **Status:** Set the voucher to `ACTIVE` only when it is ready for use
 - [ ] **Security:** Decide whether you need **Softpin**, **Activation Pin**, **URL Key**, or **Prefix**
-- [ ] **Dates:** Set both the **Event Period** and the **Redemption Period**
-- [ ] **Next Step:** Remember that rules, images, website links, and ticket operations happen after the initial save
+- [ ] **Dates:** Set both the **Event Period** and the **Redemption Period** during create
+- [ ] **Website Exposure:** If needed, link the voucher to CP-Com websites during create
+- [ ] **Treatment:** For `DISCOUNT` and `REWARDS`, complete **Treatment Value** before the first save if you want the voucher logic ready immediately
+- [ ] **Next Step:** Rules, images, ticket operations, website maintenance, and audit review happen after the voucher is saved
 {{< /callout >}}
 
 ### Step 1: Create the Voucher Shell (Details Tab)
 
-The initial **Details** tab is where you save the voucher header. This is the screen users must complete before they can move into rules, ticket management, image uploads, or audit review.
+The initial **Details** tab stores the voucher header and the create-stage settings that users should confirm up front. In this build, `DISCOUNT` and `REWARDS` users can continue into **Treatment Value** before the first save, but rules, images, ticket operations, website maintenance, and audit review still require the saved voucher record.
 
 | Setting | What it controls | What to know in the UI |
 |:---:|---|---|
@@ -74,11 +78,11 @@ The initial **Details** tab is where you save the voucher header. This is the sc
 | **Currency** | Currency for settlement and value calculations. | Defaults to `MYR` in the current form. |
 | **Allow Anonymous** | Lets guests claim or redeem. | Useful for guest checkout or public campaigns. |
 | **Is Shipping Voucher** | Marks the voucher as shipping-related. | Optional toggle in the main details form. |
-| **Event Period** | When customers can claim or collect the voucher. | Uses start and end date-time fields. |
-| **Redemption Period** | When the voucher can actually be redeemed. | Uses start and end date-time fields. |
-| **Add Voucher To CP-Com** | Links the voucher to selected website records. | Available during create for website-level exposure. |
+| **Event Period** | When customers can claim or collect the voucher. | Uses start and end date-time fields. In the current UI this block is part of the create form, not the edit details form. |
+| **Redemption Period** | When the voucher can actually be redeemed. | Uses start and end date-time fields. In the current UI this block is part of the create form, not the edit details form. |
+| **Add Voucher To CP-Com** | Links the voucher to selected website records. | Available during create for website-level exposure. After save, use **Website Link** to add or remove linked sites. |
 | **Description** | Free-text business description. | Useful for internal context and listings. |
-| **Terms and Conditions** | Rich-text content shown with the voucher setup. | Managed in the embedded editor at the bottom of the form. |
+| **Terms and Conditions** | Rich-text terms stored on the voucher header. | Managed in the embedded editor at the bottom of the form. |
 
 | Optional Control | What it does |
 |:---:|---|
@@ -88,7 +92,7 @@ The initial **Details** tab is where you save the voucher header. This is the sc
 | **Prefix** | Adds a serial prefix and lets you set the serial number length. |
 
 {{< callout type="info" >}}
-After you click **SAVE**, reopen the voucher from **Voucher Listing** to continue with **Treatment Value**, **Apply Rules**, **Image**, **Ticket Management**, **Website Link**, and **Audit**.
+Before the first **SAVE**, `DISCOUNT` and `REWARDS` vouchers can already use **Treatment Value**. After the first **SAVE**, reopen the voucher from **Voucher Listing** to continue with **Apply Rules**, **Image**, **Ticket Management**, **Website Link**, and **Audit**.
 {{< /callout >}}
 
 ---
@@ -101,18 +105,21 @@ Not all vouchers use the same redemption logic. The selected type changes which 
 **Why:** Use this when the voucher behaves like stored value or store credit.
 - **Core field:** `Face Value Amount`
 - **How it works:** The ticket or voucher redeems against a fixed value instead of a discount treatment formula.
+- **Create flow:** Only the **Details** tab is required during create. There is no **Treatment Value** tab for settlement vouchers.
 - **Best for:** Gift vouchers, service recovery credits, and compensation vouchers.
 
 ### 2. Discount Vouchers (`DISCOUNT`)
 **Why:** Use this for promotions where the final discount depends on treatment logic and rules.
-- **Treatment setup:** In **Treatment Value**, use the `Product` or `For All` sub-tabs.
+- **Treatment setup:** The create flow already exposes **Treatment Value** with `Product` and `For All` sub-tabs.
 - **How it works:** Users define fields such as `Price Source`, `Operator`, `Value`, `Min Spend`, `Max Discount Value`, and `Auto Apply to All Child Items`.
+- **What it affects:** The treatment formula controls how much discount is granted, while **Apply Rules** decides where and when that formula is allowed to work.
 - **Best for:** Promo codes, campaign discounts, and item- or cart-based offers.
 
 ### 3. Rewards Vouchers (`REWARDS`)
 **Why:** Use this when redemption should award points, or combine value logic with loyalty outcomes.
-- **Treatment setup:** In **Treatment Value**, the `For All` flow exposes reward fields.
-- **How it works:** Users can configure `Customer Points Value`, `Customer Points Expires Within (days)`, `Retailer Points Value`, `Retailer Points Expires Within (days)`, and `Point Currency`.
+- **Treatment setup:** The create flow already exposes **Treatment Value**. In the current create screen, the main reward setup is in `For All`.
+- **How it works:** Users can configure `Customer Points Value`, `Customer Points Expires Within (days)`, `Retailer Points Value`, `Retailer Points Expires Within (days)`, `Point Currency`, and optional value-based treatment settings.
+- **What it affects:** The voucher can contribute reward points, discount-like value treatment, or both, depending on the fields enabled in the treatment form.
 - **Best for:** Loyalty campaigns, event reward programs, and membership-based incentives.
 
 {{< callout type="info" >}}
@@ -125,7 +132,7 @@ The **Field Settings** screen can hide `DISCOUNT` or `REWARDS` from the create f
 ## Key Features Deep-Dive
 
 {{< cards >}}
-  {{< card title="Voucher Setup" subtitle="Create the voucher shell and save the header" link="#step-1-create-the-voucher-shell-details-tab" >}}
+  {{< card title="Voucher Setup" subtitle="Create voucher details and type-based treatment logic" link="#step-1-create-the-voucher-shell-details-tab" >}}
 
   {{< card title="Rule Engine" subtitle="Apply header, multi-line, and single-line rules" link="#apply-rules-the-3-rule-builders" >}}
 
@@ -152,13 +159,13 @@ The **Field Settings** screen can hide `DISCOUNT` or `REWARDS` from the create f
 
 1. Open **Voucher** from the sidebar and click **"+" (Add New)**.
 2. In **Details**, set **Voucher Code** to `BF2024`, **Voucher Type** to `DISCOUNT`, choose the required **Quantity Type**, set the date windows, and set **Status** to `ACTIVE`.
-3. Click **SAVE**.
-4. Open the newly created voucher from **Voucher Listing**.
-5. Go to **Treatment Value** and enter the discount logic in **For All** or **Product**.
+3. Still in the create screen, open **Treatment Value** and enter the discount logic in **For All** or **Product**.
+4. Click **SAVE**.
+5. Open the newly created voucher from **Voucher Listing** if you need **Apply Rules**, **Image**, **Ticket Management**, **Website Link**, or **Audit**.
 6. If the promotion should only work for specific branches, companies, members, or items, go to **Apply Rules** and add the required rules.
 7. Use **Image**, **Website Link**, or **Ticket Management** only if the campaign needs those extras.
 
-{{< figure src="/images/voucher-management-applet/voucher-edit.png" alt="Voucher Create Form showing Main Details tab with Code and active toggle" caption="Campaign Creation: setup the voucher header first, then reopen it to continue with treatments and rules." >}}
+{{< figure src="/images/voucher-management-applet/voucher-edit.png" alt="Voucher Create Form showing Main Details tab with Code and active toggle" caption="Campaign Creation: for discount and rewards vouchers, complete details and treatment during create, then reopen the saved voucher for rules, ticket handling, website links, and audit." >}}
 
 ### For Customer Service: Create a Fixed-Value Voucher (Settlement Type)
 
@@ -169,7 +176,7 @@ The **Field Settings** screen can hide `DISCOUNT` or `REWARDS` from the create f
 3. Enter **Face Value Amount** = `50`.
 4. Choose the correct **Quantity Type**. Use `FIXED` if you want a controlled number of ticket serials.
 5. Set **Status** to `ACTIVE`, then click **SAVE**.
-6. Reopen the voucher if you need extra controls such as **Apply Rules**, **Ticket Management**, or security options like **Softpin** and **Activation Pin**.
+6. Reopen the voucher if you need extra controls such as **Apply Rules**, **Ticket Management**, **Website Link**, or **Audit**.
 
 ### For Operations: Create and Maintain Individual Tickets
 
@@ -192,6 +199,8 @@ The **Field Settings** screen can hide `DISCOUNT` or `REWARDS` from the create f
 - **Allow Anonymous:** Lets guests claim or redeem without a full account-based flow.
 - **Is Shipping Voucher:** Marks the voucher as shipping-related for shipping voucher scenarios.
 
+These controls affect how the final ticket or voucher can be activated, redeemed, and shared with users. They do not replace **Apply Rules**; they add security or delivery behavior on top of the voucher logic.
+
 ### Serial Number Generation (Prefix Logic)
 When you enable **Prefix**, the form exposes both **Prefix** and **Character length - Serial Number**.
 - **Example:** Set Prefix to `VIP-` and Character Length to `8`. The system can then generate serials such as `VIP-AX72J9K1`.
@@ -200,54 +209,80 @@ When you enable **Prefix**, the form exposes both **Prefix** and **Character len
 
 After the first save, the voucher opens into a 7-tab workspace. Admins can reorder these tabs in **Settings > Default Selection**.
 
-| Edit Tab | What users do there |
-|:---:|---|
-| **Details** | Review and update the voucher header fields. |
-| **Treatment Value** | Define discount or reward logic. |
-| **Apply Rules** | Restrict where, when, and for whom the voucher works. |
-| **Image** | Upload voucher images. |
-| **Ticket Management** | Generate, import, review, cancel, or activate ticket serial numbers. |
-| **Website Link** | Map the voucher to websites and search the linked records. |
-| **Audit** | Review audit activity for the voucher. |
+| Edit Tab | What users do there | What it affects |
+|:---:|---|---|
+| **Details** | Review and update editable voucher header fields such as name, type-dependent values, security settings, description, and terms. | Changes the main voucher definition. In the current build, the create-only **Event Period**, **Redemption Period**, and initial CP-Com picker are not shown again here. |
+| **Treatment Value** | Maintain the discount or reward formula after the voucher exists. | Changes how much value, discount, or points the voucher gives when it is applied. |
+| **Apply Rules** | Restrict the voucher by date, entity, member profile, company, branch, item, or category. | Controls who can use the voucher, where it works, and which lines or documents qualify. |
+| **Image** | Upload and review voucher attachments. | Changes the image assets linked to the voucher record. |
+| **Ticket Management** | Generate, import, review, cancel, or activate voucher serial numbers. | Changes the actual ticket inventory and status records under that voucher. |
+| **Website Link** | Add or remove website links and review the linked website code, name, and modified date. | Controls which website records remain linked to the voucher after it has been saved. |
+| **Audit** | Review date, user, action, and event code history for the voucher. | Does not change voucher behavior; it gives traceability for support and review. |
+
+### Treatment Value: `Product` vs `For All`
+
+| Area | What users can do there | What it affects |
+|:---:|---|---|
+| **Product** | Add item-specific treatment rows by searching items and saving row-level treatment settings such as item name, item code, price source, operator, treatment value, and max value. | Affects only the matched items or lines, so this is the place for targeted item-level voucher treatment. |
+| **For All** | Maintain the voucher-wide treatment formula. `DISCOUNT` exposes `Price Source`, `Operator`, `Value`, `Min Spend`, `Max Discount Value`, and `Auto Apply to All Child Items`. `REWARDS` adds points-related fields such as customer points, retailer points, expiry days, and point currency. | Affects the general treatment outcome when the voucher qualifies. Use this when the rule should apply broadly rather than to a selected item row. |
+
+`SETTLEMENT` vouchers do not show **Treatment Value**. In the standard voucher create flow, `DISCOUNT` exposes both `Product` and `For All`, while `REWARDS` starts with the main reward setup in `For All`.
 
 ### Apply Rules: The 3 Rule Builders
 
 | Rule Area | Best used for | Available rule types |
 |:---:|---|---|
-| **Rules - Doc Hdr** | Control header-level eligibility | `Event Date Range`, `Redemption Date Range`, `Entity Type`, `Member Class`, `Member Label`, `Company`, `Branch`, `Delivery Region` |
+| **Rules - Doc Hdr** | Control header-level eligibility for the whole document or customer context | `Event Date Range`, `Redemption Date Range`, `Entity Type`, `Member Class`, `Member Label`, `Company`, `Branch`, `Delivery Region` |
 | **Rules - Multi Line** | Target items or categories across multi-line documents | `Item`, `Item Category`, `Item Code Regex`, `Item Name Regex`, `Category Code Regex`, `Category Name Regex` |
 | **Rules - Single Line** | Target only one matched line at a time | `Item`, `Item Category`, `Item Code Regex`, `Item Name Regex`, `Category Code Regex`, `Category Name Regex` |
+
+- Use **Rules - Doc Hdr** when the whole transaction should pass or fail together.
+- Use **Rules - Multi Line** when the voucher can evaluate across several matched lines.
+- Use **Rules - Single Line** when the voucher should judge each matched line individually.
 
 {{< figure src="/images/voucher-management-applet/voucher-edit-details.png" alt="Voucher configuration showing the main edit tabs for details, treatment value, rules, images, ticket management, website link, and audit" caption="Voucher Edit Workspace: move from header setup into treatments, rules, images, ticket handling, website mapping, and audit review." >}}
 
 ### Ticket Management and Ticket Applet
-- Inside a voucher, **Ticket Management** shows summary counts for **Vouchers Generated**, **Vouchers Assigned**, and **Vouchers Redeemed**.
+- Inside a voucher, **Ticket Management** shows summary counts for **Vouchers Generated**, **Vouchers Assigned**, and **Vouchers Redeemed**. This is the main workspace for ticket activity under one selected voucher.
+- The ticket grid under the voucher shows **Serial Number**, **Assignee**, **Assigned To**, **Validity**, **Cancellation**, **Redeemable Status**, **Created Date**, and **Modified Date** so users can review the current state of each serial.
 - The **Create Ticket** flow inside a voucher has three sub-tabs: **Generate Ticket**, **Import Ticket**, and **Ticket Files Listing**.
-- **Generate Ticket** asks for **Max Quantity** when you want to bulk-generate serials.
-- Opening a generated ticket shows voucher code, voucher name, serial number, softpin, assignment status, redemption status, and a button to **Cancel** or **Activate** the serial.
-- The top-level **Ticket** menu is for standalone ticket maintenance. It lets users create tickets from existing vouchers, update assignment, validity, cancellation, and redeemable status, and review **Ticket History**.
-- **Ticket History** traces the serial through movements such as stock-in, award to customer, and redemption.
+- **Generate Ticket** bulk-generates serials by entering **Max Quantity**.
+- **Import Ticket** loads ticket data into the selected voucher.
+- **Ticket Files Listing** reviews ticket file batches linked to that voucher flow.
+- Opening a voucher-managed ticket shows voucher code, voucher name, serial number, softpin, assignment status, redemption status, created and modified dates, plus a button to **Cancel** or **Activate** the serial.
+- The top-level **Ticket** menu is for standalone ticket maintenance. Users select a voucher, then create or update one serial at a time with **Assignment Status**, **Validity Status**, **Cancellation Status**, and **Redeemable Status**.
+- The top-level ticket edit screen also shows readonly **URL Key** and **Activation Pin** values when they exist on the ticket.
+- **Ticket History** is the detailed trace view. It shows fields such as **Location**, **Code**, **Transaction Description**, **Transaction Date**, **Document**, **Server Doc Type**, **Entity**, **Reference**, **Quantity**, **Amount**, **MA Cost**, **Posting Status**, and **Remarks**.
+- In the current UI, **Ticket History** remaps some backend transaction descriptions into clearer user-facing wording such as `Stocked in`, `Awarded to customer`, and `Redeemed`.
 
 {{< callout type="info" >}}
 If **Field Settings > ENABLE_MULTIPLE_TICKET** is turned off, a `FIXED` voucher may stop showing the add button after the allowed ticket count has been generated.
 {{< /callout >}}
 
 ### Scanned Event Monitoring
-- The **Scanned Event** listing shows **Serial Number**, **Item Name**, **Email**, **Phone**, **Scan Date**, **Reward Points**, **User Type**, **Status**, **Remarks**, and **Shipping Address**.
+- The **Scanned Event** listing shows **Serial Number**, **Item Name**, **Email**, **Phone**, **Scan Date**, **Reward Points**, **User Type**, **Status**, **Remarks**, **Shipping Address**, and **Attachment**.
 - Opening a record shows a **Details** tab plus an **Attchment** tab in the current UI.
-- Customer-type records can update **Shipping Address** from the detail view.
-- The attachment area displays uploaded images linked to the scanned event record.
+- The **Details** tab is mainly for review. It shows serial, item, contact details, reward points, user type, status, remarks, activation pin, and audit fields.
+- Customer-type records can update **Shipping Address** from the detail view. This is useful when a scanned voucher or event record needs fulfillment follow-up.
+- The **Attchment** tab stores image records with **Created Date** and **Updated Date**. Opening an attachment lets users inspect the linked scan evidence.
 
 ### Recurring Voucher Automation
-- The **Recurring Voucher** flow mirrors voucher setup but adds a **Recurring?** toggle, **Start Date**, **End Date**, and a recurrence editor.
-- Recurring vouchers support `SETTLEMENT`, `DISCOUNT`, and `REWARDS`, with `FIXED` and `DYNAMIC` quantity types in the recurring form.
-- After saving, users continue in **Treatment Value** and **Apply Rules**, just like a standard voucher.
-- Use this menu for scheduled campaigns or recurring reward programs that must repeat automatically.
+- The **Recurring Voucher** flow is a scheduled voucher template, not a full copy of the standard voucher workspace.
+- The recurring create form supports `SETTLEMENT`, `DISCOUNT`, and `REWARDS`, but its quantity types are only `FIXED` and `DYNAMIC`.
+- The recurring create form adds **Recurring ?**, **Start Date**, **End Date**, and a recurrence editor so users can define when the recurring voucher should run.
+- Unlike the standard voucher create form, the recurring create form does not show **Event Period**, **Redemption Period**, or **Add Voucher To CP-Com** in the current UI.
+- For non-settlement recurring vouchers, the create flow includes **Treatment Value** during create. The recurring treatment form is a single treatment workspace rather than the standard voucher's `Product` plus `For All` split.
+- After save, the recurring edit workspace has **Details**, **Treatment Value**, **Apply Rules**, and **Image**.
+- In the current recurring workspace there is no **Ticket Management**, **Website Link**, or **Audit** tab.
+- Use this menu when the main requirement is repeated scheduled issuance. If the process depends on manual ticket handling or website-link maintenance, users still need the standard **Voucher** workspace.
 
 ### Import Tickets
-- The **Import Tickets** area stores uploaded files, then shows **File Name**, **File Size**, **Format**, **Status**, **Process Status**, and **Error Message**.
+- The upload screen is labelled **Upload Master Data** in the current UI. Users drag and drop a `.csv` file, preview the selected file, remove it if needed, then click **ADD**.
 - Use the **Sample Format** link in the upload screen before submitting files.
-- After upload, open the import record and review the **Checking** tab for line-level validation results.
+- After upload, the listing shows file-level results such as **File Name**, **File Size**, **Format**, **Status**, **Process Status**, **User Error Message**, **Created Date**, **Updated Date**, and **Created by**.
+- Opening an import record shows a **Main** tab and a **Checking** tab.
+- The **Main** tab shows file name, file size, import format, process status, status, and error message so users can tell whether the file was accepted or rejected.
+- The **Checking** tab is the line-level review area. It helps users validate `Voucher Code`, `Serial No.`, `Validity Status`, `Assignment Status`, `Redemption Status`, `Cancellation Status`, and **Short Error Message** before correcting the CSV and re-uploading it.
 - Import behavior can be tenant-specific, so users should follow the file template provided in their current environment.
 
 ---
@@ -260,40 +295,57 @@ Navigate to **Settings** in the applet sidebar to configure global behavior, the
 
 ### Default Selection
 - Set the applet-wide **Default Branch**, **Default Location**, and **Default Timezone**.
+- These defaults affect what the applet preselects for users and which timezone is used when the create form prepares date-time defaults such as **Event Period** and **Redemption Period**.
 - Reorder the voucher edit tabs: **Details**, **Treatment Value**, **Apply Rules**, **Image**, **Ticket Management**, **Website Link**, and **Audit**.
+- Tab ordering changes the saved voucher edit workspace only; it does not change the create screen.
 
 ### Field Settings
-- **ENABLE_MULTIPLE_TICKET:** Controls whether more than one ticket can be generated where the flow allows it.
+- **ENABLE_MULTIPLE_TICKET:** Controls whether more than one ticket can be generated where the flow allows it. When disabled, a `FIXED` voucher may stop showing the add button once the allowed ticket record exists.
 - **HIDE_VOUCHER_TYPE_REWARD:** Removes `REWARDS` from the voucher type selector.
 - **HIDE_VOUCHER_TYPE_DISCOUNT:** Removes `DISCOUNT` from the voucher type selector.
 - **ENABLE_EDIT_VOUCHER_CODE:** Allows voucher code editing after create when enabled.
 
 ### Feature Visibility, Webhooks, and Permissions
+- The applet route set includes **Feature Visibility**, **Webhook**, and permission administration pages, but tenant navigation and permissions determine whether users can open them from the current environment.
 - **Feature Visibility** lets admins hide features that are not relevant to the tenant.
 - **Webhook** supports outbound integration behavior from the settings area.
 - Permission administration is available for **Permission Set Listing**, **User Permission Listing**, **Team Permission Listing**, and **Role Permission Listing**.
 
 ### Personalization
 - **Personal Default Selection** lets each user override the applet defaults for their own profile.
-- **Sidebar** personalization lets users maintain their own navigation preferences.
+- In the current build, the user-level component clearly persists **Default Branch** and **Default Location**.
+- The current UI also shows a **Default Timezone** row, but the component logic only saves branch and location in this build. Users should treat branch and location as the reliable personalization overrides here.
+- **Sidebar** personalization may be available when the shared personalization route is exposed for the tenant.
 
 ---
 
 ## FAQs
 
-**Q: Why do I only see the `Details` tab when I first create a voucher?**  
-A: The create flow only saves the voucher shell. After you save and reopen the voucher from **Voucher Listing**, the full edit workspace becomes available.
+**Q: Why do I see `Treatment Value` during create for some vouchers but not others?**  
+A: `DISCOUNT` and `REWARDS` vouchers expose **Treatment Value** during create. `SETTLEMENT` vouchers do not. Tenant field settings can also hide `DISCOUNT` or `REWARDS` from the selector.
+
+**Q: Why are `Event Period`, `Redemption Period`, or `Add Voucher To CP-Com` not on the edit details screen?**  
+A: In the current build those blocks are part of the create details form. After save, use **Website Link** to maintain linked websites, and use **Apply Rules** for additional eligibility control, but confirm the create-only date windows before the first save.
 
 **Q: Can I edit the voucher code after creation?**  
 A: Only if **Settings > Field Settings > ENABLE_EDIT_VOUCHER_CODE** is enabled. Otherwise the code stays locked after create.
 
-**Q: Why do I not see `Treatment Value` on some vouchers?**  
-A: `SETTLEMENT` vouchers do not use the same treatment flow as `DISCOUNT`, and tenant settings can also hide `DISCOUNT` or `REWARDS`.
-
 **Q: Where should I generate or import ticket serial numbers?**  
 A: Use **Voucher > open voucher > Ticket Management** for voucher-level batch work. Use the top-level **Ticket** menu for standalone ticket creation and maintenance.
 
+**Q: Why did the add button disappear in voucher `Ticket Management`?**  
+A: If **ENABLE_MULTIPLE_TICKET** is turned off and the voucher uses `FIXED` quantity type, the applet can hide the add button once the allowed ticket record already exists.
+
+**Q: What is the difference between `Add Voucher To CP-Com` and `Website Link`?**  
+A: `Add Voucher To CP-Com` is the create-stage website picker. **Website Link** is the saved-voucher maintenance tab where users can add or remove links and review linked website code and name.
+
+**Q: How is `Recurring Voucher` different from the normal `Voucher` workspace?**  
+A: Recurring vouchers are scheduled templates. They use a smaller workspace with **Details**, **Treatment Value**, **Apply Rules**, and **Image**, and they do not expose **Ticket Management**, **Website Link**, or **Audit** in this build.
+
 **Q: Where do I check what happened to a ticket after it was issued?**  
 A: Open the ticket and review **Ticket History** for the serial trace, or use **Scanned Event** for event-style scan records and attachments.
+
+**Q: Why does Personalization show `Default Timezone` but not behave like Branch or Location?**  
+A: The current UI shows the row, but the component logic in this build only persists branch and location overrides.
 
 ---
