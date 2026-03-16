@@ -12,11 +12,29 @@ weight: 70
 
 ## Purpose and Overview
 
-The **Internal Purchase Debit Note Applet** is the receiving-side counterpart of the Internal Sales Debit Note. When an internal supplier branch issues a debit note to charge your branch for under-billed goods, services, or additional fees, this applet is where that incoming charge is recorded, reviewed, and managed.
+The **Internal Purchase Debit Note Applet** is your branch's gateway for managing incoming intercompany adjustments. While a standard invoice records the initial purchase, a **Purchase Debit Note** is used to accurately record an **increase** in what you owe an internal supplier after the original transaction has been posted.
+
+### When is this Applet used?
+
+You will find a record in this applet (or create one manually) in the following common business scenarios:
+
+*   **Price Under-billing Corrections**: If a supplier branch accidentally billed you at RM 10.00 per unit instead of the agreed RM 12.00, this applet records the additional RM 2.00 per unit to correct the record.
+*   **Omitted Surcharges**: When tertiary costs—such as urgent freight, specialized handling, or insurance fees—were discovered or calculated *after* the original Purchase Invoice was finalized.
+*   **Internal Service Recognition**: For recording monthly management fees, IT support costs, or shared-service allocations issued by HQ to your branch.
+*   **Audit & Year-End Adjustments**: To reflect valuation corrections requested by auditors to ensure that inter-branch payables and receivables are perfectly balanced before closing the books.
 
 {{< callout type="info" >}}
-**Core Concept**: When an internal supplier branch finalizes an Internal Sales Debit Note targeting your branch, the system **automatically creates** a corresponding Internal Purchase Debit Note in this applet. Your branch's **Accounts Payable** increases to reflect the additional amount owed to the supplier branch.
+**Core Concept**: This applet represents an **Incoming Additional Charge**. When finalized, it increases your branch's **Accounts Payable** and recognizes an additional expense in your Profit & Loss statement. In most cases, these documents arrive **automatically** when the supplier branch finalizes their Sales Debit Note.
 {{< /callout >}}
+
+### Why is this Important in Accounting?
+
+Maintaining a disciplined Internal Purchase Debit Note process is critical for several key accounting objectives:
+
+*   **Intercompany Elimination & Consolidation**: For a group of companies to produce accurate consolidated financial statements, intercompany receivables must perfectly offset intercompany payables. This applet ensures that when your supplier branch records an asset, you record an identical liability, preventing month-end "out-of-balance" discrepancies during group consolidation.
+*   **Completeness & Accuracy Assertions**: Financial audits require that all liabilities belonging to a period are recorded (**Completeness**) and stated at the correct value (**Accuracy**). This applet allows you to book corrections even after an original invoice is closed, ensuring your Balance Sheet truthfully reflects your obligations.
+*   **Expense Matching (Accrual Principle)**: Accounting standards require expenses to be recognized in the same period as the related business activity. By using a Debit Note to correct under-billing, you ensure the additional cost hits the Profit & Loss statement in the correct fiscal period, maintaining the integrity of your performance reporting.
+*   **Input Tax Integrity**: When a supplier branch issues an additional charge, it often includes a tax portion (SST/GST/VAT). This applet ensures you accurately capture and claim the **Input Tax** on these adjustments, preventing your branch from overpaying its net tax liability to the government.
 
 ### What is the Internal Purchase Debit Note Applet? (Explained Simply)
 
@@ -104,6 +122,8 @@ Traditional intercompany adjustment workflows require the receiving branch to ma
 
   {{< card title="Personalization" subtitle="Save default settings for faster data entry" link="#personalization" >}}
 {{< /cards >}}
+
+{{< figure src="/images/internal-purchase-debit-note-applet/purchase debit note applet-overview-infographic.png" alt="Internal Purchase Debit Note Applet Overview: Problems, Solution, and Benefits" caption="Internal Purchase Debit Note Overview: Moving from disjointed intercompany adjustments (The Problems) to automated, synchronized, and traceable financial control (The Solution) for Procurement, Finance, and Management (Who Benefits)." >}}
 
 ## Key Concepts
 
