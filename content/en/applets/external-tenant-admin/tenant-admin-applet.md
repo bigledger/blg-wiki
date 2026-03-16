@@ -129,6 +129,28 @@ By assigning a **Role** to a user, you give them all the **Permission Sets** ins
 ### The Intercompany Link
 In many configurations, the Tenant Admin Applet manages how your branch interacts with external entities. It handles the "Platform Identity" of your organization, which is crucial for intercompany document syncing.
 
+---
+
+## Primary Menu Navigator
+
+The sidebar menu is organized to move from high-level platform configuration to granular user security.
+
+| Menu Item | Purpose | Key Activity |
+|:---|:---|:---|
+| **Catalogue** | The platform marketplace. | Browse and install new business modules (Accounting, POS, HR). |
+| **Subscription** | Financial control of applets. | Manage active versions and billing status of your subscribed tools. |
+| **Tenant Users** | Local identity management. | Create and manage users specific to your business environment. |
+| **Platform Users** | Global identity bridge. | Link local tenant users to their master BigLedger platform ID. |
+| **Applets** | Instance Management. | Configure specific settings for each applet instance active in your tenant. |
+| **Tenant Admins** | Privilege Governance. | Designate and manage users with master administrative control. |
+| **Tenant Roles** | Security Packaging. | Group permission sets into functional job titles (e.g., "Cashier"). |
+| **Role File Import** | Bulk Migration. | Upload and batch-create multiple roles from external JSON/CSV files. |
+| **Permission Sets** | Atomic Access Control. | Define reusable groups of granular technical permissions. |
+| **Data Sync** | Environment Alignment. | Synchronize metadata and critical settings across different platform nodes. |
+| **Audit Trail** | Accountability Log. | View a permanent record of every administrative system change. |
+
+---
+
 ## Quick Start Guide
 
 ### For Admins: Onboarding a New Employee
@@ -136,10 +158,9 @@ In many configurations, the Tenant Admin Applet manages how your branch interact
 **Goal:** Give a new staff member access to the **Sales Applet**.
 
 1.  **Navigate**: Go to **Tenant Users**.
-2.  **Add User**: Click **(+) Add**. Enter their email and basic details.
-3.  **Link Platform User**: Ensure they are linked to a platform identity (this allows them to log in).
-4.  **Assign Role**: Stay in the user's profile and go to the **Roles** or **Permissions** tab.
-5.  **Save & Notify**: The system will now grant them access to the appropriate apps on their next login.
+2.  **Link Platform User**: Ensure they are linked to a platform identity (this allows them to log in).
+3.  **Assign Role**: Stay in the user's profile and go to the **Roles** or **Permissions** tab.
+4.  **Save & Notify**: The system will now grant them access to the appropriate apps on their next login.
 
 ---
 
@@ -147,7 +168,7 @@ In many configurations, the Tenant Admin Applet manages how your branch interact
 
 **Goal:** Create a "ReadOnly Auditor" role who can see everything but change nothing.
 
-1.  **Navigate**: Go to **Role** > **(+) Add**.
+1.  **Navigate**: Go to **Role**.
 2.  **Define Role**: Name it "Auditor_ReadOnly".
 3.  **Map Permissions**: Go to the **Permissions** tab within the Role or use the **Permission Wizard** in Settings.
 4.  **Select Read-Only Flags**: Filter for "READ" permissions and exclude "CREATE", "UPDATE", or "DELETE".
@@ -166,8 +187,9 @@ In many configurations, the Tenant Admin Applet manages how your branch interact
 
 ---
 
-#### Deep Dive: Catalogue Tab
+### Deep Dive: Catalogue Menu
 
+{{< figure src="/images/tenant-admin-applet/catalogue-management.png" alt="Catalogue Management" caption="Catalogue Menu: Browse, activate, and manage the lifecycle of platform business modules." >}}
 **Concept: The Platform Marketplace.**
 This tab is where you manage the "Software Inventory" of your organization. It allows you to browse and subscribe to the entire BigLedger ecosystem.
 
@@ -175,7 +197,22 @@ This tab is where you manage the "Software Inventory" of your organization. It a
 *   **Subscription Management**: Displays the status of your active tools. This is critical for **Subscription Lifecycle Management**, allowing you to see which versions of an applet are currently deployed.
 *   **Applet Info**: Technical metadata that explains what the applet does and, more importantly, the **Permission Dependencies**—the hidden technical "gates" that must be opened for the applet to function for your users.
 
-#### Deep Dive: Tenant Users Tab
+*   **Tabs & Components:**
+    *   **Details Tab**: Control the core metadata of your catalogue entries.
+    *   **Applet Listing Tab**: View and manage specific applet instances associated with a catalogue item.
+    *   **User Listing Tab**: Monitor which users are currently utilizing the applets from this catalogue selection.
+
+#### Deep Dive: Subscription Menu
+
+**Concept: Financial & License Governance.**
+Ensures your organization is correctly licensed and that the infrastructure (hostnames) is mapped to your business entities.
+
+*   **Tabs & Components:**
+    *   **Details Tab**: Primary subscription settings and tier management.
+    *   **Akaun HQ Entity Tab**: Maps the subscription to your master financial entity for billing and intercompany identification.
+    *   **Hostname Tab**: Manages the technical URLs (domains) that point to your tenant’s digital workspace.
+
+#### Deep Dive: Tenant Users Menu
 
 **Concept: Identity Management.**
 This tab is the "Digital Directory" of your personnel. It bridges the gap between a physical human being and their digital platform identity.
@@ -185,16 +222,76 @@ This tab is the "Digital Directory" of your personnel. It bridges the gap betwee
 *   **Installed Applet Sub-tab**: A powerful diagnostic view. If a user says "I can't see the Sales applet," you check here to verify if it is assigned to their profile.
 *   **Employee Link**: Connects the software account to the **Physical Employee Record** (from the HR applet), ensuring that payroll, performance, and access data stay synchronized.
 
-#### Deep Dive: Roles & Permissions Tab
+*   **Tabs & Components:**
+    *   **Details Tab**: Core user profile management (Email, Status, Name).
+    *   **Employee Link Tab**: A critical synchronization component that links the platform user to their physical record in the **Employee Maintenance Applet**.
+    *   **Installed Applet Tab**: A diagnostic view of exactly which business tools this specific user has in their sidebar.
+    *   **Catalogue Tab**: View which catalogue subscriptions are driving the user's current access levels.
+
+#### Deep Dive: Platform Users Menu
+
+**Concept: The Global ID Pool.**
+While a Tenant User belongs to your company, a **Platform User** is their universal key to the BigLedger ecosystem.
+
+*   **Identity Pinning**: Allows a single person to log in once and switch between different companies (Tenants) they belong to.
+*   **Security Linking**: By linking local staff to platform identities, you ensure that password resets and multi-factor authentication are handled at the highest security level.
+
+*   **Tabs & Components:**
+    *   **Details Tab**: Global ID pinning and credential health.
+    *   **Installed Applet Tab**: High-level view of applets assigned to this platform ID across the tenant.
+    *   **Available Applet Tab**: Displays applets that *can* be assigned but are not yet active for this user.
+    *   **Catalogue Tab**: Cross-reference platform identity with organizational catalogue availability.
+
+#### Deep Dive: Applets Menu
+
+{{< figure src="/images/tenant-admin-applet/applet-configuration.png" alt="Applet Configuration" caption="Applets Menu: Fine-tune permissions and UI behavior for specific applet instances." >}}
+**Concept: Individual Tool Tuning.**
+Once you subscribe to an applet, this tab allows you to manage the specific "Instance" of that applet for your tenant.
+
+*   **Applet Instance ID**: The unique code identifying your specific installation.
+*   **Version Control**: See which specific release of the applet your team is currently using, which is vital for troubleshooting and feature updates.
+
+*   **Tabs & Components:**
+    *   **Details Tab**: Displays Instance IDs, build versions, and technical health status.
+    *   **Permission Sets Tab**: List of all backend API "gates" available for this specific applet.
+    *   **Clientside Permissions Tab**: Manage UI-level toggles (e.g., hiding a specific button or menu item in the applet for certain roles).
+
+#### Deep Dive: Roles & Permissions Menu
 
 **Concept: Role-Based Access Control (RBAC).**
 Instead of giving permissions to users one by one, you create "Job Packages" called Roles.
 
 *   **Role Name & Code**: Defines the functional identity (e.g., `ROLE_JUNIOR_ACC`). This makes it easy to broadcast security changes to groups of users simultaneously.
 *   **Permission Set Mapping**: A granular matrix where you toggle thousands of specific actions. This is where you enforce **Operational Boundaries** (e.g., allowing a user to see a list of invoices but not click the 'Delete' button).
-*   **Inheritance Logic**: Allows you to build "Senior" roles that inherit everything from "Junior" roles, ensuring that hierarchy is maintainable and scalable without manual re-entry.
+*   **Role File Import**: A "Hidden Power User" feature. Instead of clicking checkboxes for 500 permissions, you can upload a **Permission Template** in bulk, which is essential for setting up new tenants or branches rapidly.
 
-#### Deep Dive: Audit Trail Tab
+*   **Tabs & Components:**
+    *   **Details Tab**: Role naming, descriptions, and status.
+    *   **User Tab**: See exactly which employees are assigned to this specific role.
+    *   **Applet Tab**: Control which applets this role has permission to access.
+    *   **Permission Set Tab**: The core matrix where you assign functional groups of permissions to the role.
+    *   **Copy Permission Set Tab**: Accelerate setup by duplicating existing security templates from other roles.
+
+#### Deep Dive: Permission Sets Menu
+
+{{< figure src="/images/tenant-admin-applet/permission-set-listing.png" alt="Permission Set Listing" caption="Permission Sets: Define granular blocks of access (Main Listing)." >}}
+{{< figure src="/images/tenant-admin-applet/permission-set-lines.png" alt="Permission Set Lines" caption="Permission Set Lines: Toggle specific technical technical 'gates' for fine-grained security." >}}
+**Concept: Atomic Access Control.**
+Define the smallest "blocks" of security that can be reused across multiple roles.
+
+*   **Tabs & Components:**
+    *   **Main Details Tab**: Manage the code, name, and target type of the permission set.
+    *   **Lines Tab**: A granular editor for selecting individual technical permission strings (e.g., `CREATE_INVOICE`, `VIEW_GL_HISTORY`).
+
+#### Deep Dive: Tenant Admins Menu
+
+**Concept: Privilege Governance.**
+A specialized view to manage users who hold the "Master Keys" to the system.
+
+*   **Tabs & Components:**
+    *   **Details Tab**: Manage the profile and active status of designated system administrators.
+
+#### Deep Dive: Audit Trail Menu
 
 **Concept: The "Immutable Ledger" of Actions.**
 This tab is for **Forensic Investigation** and **Compliance Reporting**. It records every administrative "Who, What, and When."
@@ -203,21 +300,51 @@ This tab is for **Forensic Investigation** and **Compliance Reporting**. It reco
 *   **Before/After JSON**: Shows the exact data change. This is critical for **Change Management Audits**, allowing you to see exactly what a configuration looked like before it was modified.
 *   **Search & Filter**: Allows auditors to pinpoint specific dates or user IDs, turning millions of rows into a targeted **Compliance Report**.
 
+*   **Tabs & Components:**
+    *   **Listing Component**: Searchable grid of actions (Who, What, When).
+    *   **Detail Component**: Displays the "Before/After" JSON data, allowing you to see exactly what a configuration looked like before it was changed.
+
+#### Deep Dive: Data Sync Menu
+
+**Concept: The Synchronized Backbone.**
+For large organizations with multiple environments, the Data Sync ensures that your system nodes "talk" to each other correctly.
+
+*   **Consistency Checks**: Monitors the health of data flows between your tenant and the master platform.
+*   **Metadata Propagation**: Ensures that global changes (like new tax rules or currency updates) are synchronized into your local environment without manual entry.
+
+*   **Tabs & Components:**
+    *   **Listing Component**: Real-time monitor of data flow health between nodes.
+
+### Deep Dive: Role File Import
+
+**Purpose: Rapid Deployment & Migration.**
+Essential for high-scale environments. Instead of manually clicking checkboxes for hundreds of permissions, you can upload structured templates to define roles instantly.
+
+*   **Tabs & Components:**
+    *   **Main Tab**: Displays file metadata (Name, Size) and the **Process Status** (e.g., Processing, Completed, Error).
+    *   **Checking Tab**: A validation layer that previews the mapping before it is permanently committed to the database.
+
 ---
 
 ## Configuration & Settings
 
-### Permission Wizard (`Settings > Permission Wizard`)
-The most important configuration tool. It provides an interactive interface to:
-1.  **Search** for a specific behavior (e.g., "Void Invoice").
-2.  **Identify** which technical permission controls that behavior.
-3.  **Assign** it directly to a Role or User.
+The settings are divided into organizational configurations and user-specific personalizations.
 
-### User & Team Permissions (`Settings > User/Team Permission Listing`)
-Manage exceptions. If a specific user needs access *more* than their role allows, or a specialized team needs a temporary permission set, configure those overrides here.
+### Field Settings (`Settings > Field Settings`)
+Allows administrators to simplify the user interface by toggling the visibility of specific sidebar menus.
+- **Sidebar Menu Toggles**: Instantly hide/show menus like Catalogue, Subscription, or Audit Trail based on the tenant's operational needs.
+
+### Organizational Defaults (`Settings > Default Selection`)
+Establish the baseline operational environment for the applet instance.
+- **Default Branch & Location**: Set the primary branch and physical location used as the default starting point for all administrative actions within this applet.
+
+### Personalization (`Personalization > Default Selection`)
+User-specific overrides that allow for individual efficiency.
+- **User Default Settings**: Allows a specific admin to override the organizational defaults for their own session (e.g., a specific branch they manage).
+- **Default Row Count**: Control the density of data in grids (e.g., 20, 50, or 100 rows per page).
 
 ### Webhooks (`Settings > Webhook`)
-For advanced integrations. Configure URL endpoints that BigLedger will "ping" when certain administrative events occur (e.g., "New User Added").
+For advanced integrations, webhooks allow BigLedger to push real-time notifications to external systems when administrative events occur (e.g., a new user creation).
 
 ---
 
