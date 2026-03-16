@@ -297,7 +297,7 @@ When creating or editing a purchase debit note, the screen is organized into tab
 | **Export** | Generate a printable PDF of the Purchase Debit Note. |
 
 #### Deep Dive: Main Details Tab
-
+{{< figure src="/images/internal-purchase-debit-note-applet/main-details.png" alt="Purchase Debit Note Main Details" caption="Main Details: Capture the document's legal and financial header data." >}}
 This tab captures the header-level data that defines the transaction's legal and financial identity. It ensures **Internal Control & Auditability** across your entire organization.
 
 *   **Tenant, Company, & Branch Document IDs**: These are the three levels of system-generated numbers displayed at the top. In a decentralized ERP, they provide **Internal Control**. The Tenant ID offers a globally unique reference for HQ audits, while the Branch ID maintains local sequence integrity for tax compliance, preventing "missing document" gaps in your records.
@@ -309,17 +309,22 @@ This tab captures the header-level data that defines the transaction's legal and
 *   **Debit Terms & Due Date**: The credit period (e.g., Net 30) and the automatically calculated payment date. These drive **Liquidity Management** by feeding directly into your **Accounts Payable Aging** reports, allowing you to forecast cash outflows accurately.
 
 #### Deep Dive: Account Tab
-
+{{< figure src="/images/internal-purchase-debit-note-applet/account-tab.png" alt="Purchase Debit Note Account Tab" caption="Account Tab: Identify the internal supplier and counterparty branch." >}}
 **Concept: Identifying your Internal Supplier.**
 In this tab, you are selecting the **"Counterparty"**—the specific branch that is issuing the charge to you. Precise selection here ensures that your branch’s liability perfectly offsets their receivable during consolidation.
 
 *   **Entity ID & Entity Branch**: The core identifiers for the internal supplier. This is critical for **Intercompany Eliminations**. Under standard consolidation rules, revenues and expenses between branches must net to zero. Selecting the exact issuing branch ensures your branch's **Accounts Payable** perfectly matches their **Accounts Receivable**, preventing imbalances in the consolidated financial statements.
+
+{{< figure src="/images/internal-purchase-debit-note-applet/bill-to-address.png" alt="Bill To Address" caption="Bill To Address: Legal billing information for tax compliance." >}}
 *   **Bill To Address**: Captures the legal billing name and statutory **Tax ID**. This defines the **Legal Debtor**, ensuring the debt is attributed to the correct legal entity and that tax records are compliant with regional regulations.
+
+{{< figure src="/images/internal-purchase-debit-note-applet/ship-to-address.png" alt="Ship To Address" caption="Ship To Address: Physical delivery destination for inventory valuation." >}}
 *   **Ship To Address**: Captures the physical delivery destination. This follows the principle of **Substance Over Form**. While the "Bill To" establishes the legal liability, the "Ship To" identifies where the physical risk and rewards of ownership (Inventory) are transferred, which impacts **Inventory Valuation** and **Tax Jurisdiction**.
 *   **Intercompany Sub-Tab**: A live monitor for sync status. This ensures **Data Integrity** by confirming that the document remains electronically linked to the originating branch's records, guaranteeing that any updates are reflected on both sides of the transaction.
 
 #### Deep Dive: Lines Tab
 
+{{< figure src="/images/internal-purchase-debit-note-applet/lines-tab.png" alt="Purchase Debit Note Lines Tab" caption="Lines Tab: Specify the economic substance and cost allocation of the charge." >}}
 **Concept: Selecting the Economic Substance.**
 This is where you select **"What"** you are being charged for. Each line defines a specific commitment of value and where that cost should be allocated.
 
@@ -356,6 +361,7 @@ This tab facilitates the **"Right of Offset" (IAS 32)**, allowing you to net deb
 
 #### Deep Dive: ARAP Tab
 
+{{< figure src="/images/internal-purchase-debit-note-applet/arap-tab.png" alt="Purchase Debit Note ARAP Tab" caption="ARAP Tab: Real-time reconciliation of charges, offsets, and balances." >}}
 **Concept: Reconciliation Dashboard.**
 **ARAP** (Accounts Receivable / Accounts Payable) is a real-time monitor of the document’s financial equation:
 > **Gross Charges (Lines)** - **Offsets (Contra)** - **Cash Payments** = **Outstanding Balance.**
@@ -366,6 +372,7 @@ This tab facilitates the **"Right of Offset" (IAS 32)**, allowing you to net deb
 
 #### Deep Dive: Trace Document Tab
 
+{{< figure src="/images/internal-purchase-debit-note-applet/trace-document-tab.png" alt="Purchase Debit Note Trace Document Tab" caption="Trace Document: Visual map of intercompany links and GL entries." >}}
 **Concept: Double-Entry Transparency.**
 This tab allows you to lookup exactly how the system updated your financial records. It "traces" the digital record into the actual **General Ledger (GL)** notebooks of the branch.
 
@@ -375,6 +382,7 @@ This tab allows you to lookup exactly how the system updated your financial reco
 
 #### Deep Dive: E-Invoice, Attachments, & Export
 
+{{< figure src="/images/internal-purchase-debit-note-applet/einvoice-attachments-export.png" alt="Purchase Debit Note Statutory Records" caption="E-Invoice & Attachments: Statutory digital records and audit proof." >}}
 **Concept: Statutory Digital Records.**
 The **E-Invoice** tab manages the legal submission of this adjustment to government tax portals (like LHDN). It ensures your debit note is an officially recognized tax document, complete with the required UUID and digital signatures.
 
