@@ -12,11 +12,38 @@ weight: 100
 
 ## Purpose and Overview
 
-The **Transaction Reconciliation Applet** is a specialized financial control tool used to verify that every electronic payment recorded in your system has a corresponding entry in your external payment gateway statements (and vice versa). In modern retail and e-commerce, where payments flow through multiple channels like iPay88, GoPay, and 7-Eleven, this applet ensures that no revenue "leaks" through the cracks.
+The **Transaction Reconciliation Applet** is a core financial control tool designed to verify that electronic payments in your system perfectly match the external statements from your payment gateways (e.g., iPay88, GoPay). It acts as a specialized auditor, ensuring that every cent recorded by your POS or sales team has actually been received by the merchant provider.
+
+### TL;DR: The Core Concept
+
+Think of this applet as a digital "Spot the Difference" game between two lists:
+
+*   **List A (Your System)**: What your POS or Sales applet says should have been paid.
+*   **List B (The Bank/Gateway)**: What the payment gateway actually deposited into your account.
+
+When they match, you are safe. When they don't, you have a **Dispute** that needs investigation before you lose revenue.
+
+### When is this Applet used?
+
+This applet is essential for businesses processing high volumes of non-cash transactions:
+
+*   **Daily Payment Verification**: Reconciling yesterday’s credit card or e-wallet sales against the gateway's settlement report to ensure zero "leakage."
+*   **Gateway Settlement Audits**: Verifying that the net funds settled into your bank account match the gross sales minus the gateway's transaction fees.
+*   **Dispute Investigation**: Pinpointing transactions where a customer was charged but no sale was recorded in your POS, or vice versa.
+*   **Hardware/Network Failure Recovery**: Detecting missing transactions caused by internet outages during the payment authorization process.
 
 {{< callout type="info" >}}
-**Core Concept**: This applet acts as a digital auditor. It compares your **System Transaction Log** (what your software says happened) with your **Payment Channel Statement** (what the gateway says happened). If they match, they are reconciled; if not, they are flagged as a **Dispute**.
+**Core Concept**: This applet compares your **System Transaction Log** (Internal Truth) with your **Payment Channel Statement** (External Truth). Mismatches are flagged as **Disputes** for immediate investigation.
 {{< /callout >}}
+
+### Why is this Important in Accounting?
+
+Reconciliation is the bedrock of financial integrity. This applet supports several critical accounting objectives:
+
+*   **Valuation & Allocation (Existence)**: It proves that the "Accounts Receivable - Gateway" on your balance sheet is backed by real, verified transactions. It satisfies the audit assertion of **Existence**.
+*   **Revenue Assurance**: By detecting "System Txn Log Disputes," it prevents revenue loss from sales that were recorded internally but never actually processed or paid by the gateway.
+*   **Cash Control & Security**: It serves as a deterrent against internal fraud, ensuring that staff cannot manipulate sales records without being caught during the reconciliation process.
+*   **Fee Transparency**: It allows the Finance team to verify that the gateway is charging the correct commission rates as per your service agreement.
 
 ### What is the Transaction Reconciliation Applet? (Explained Simply)
 
@@ -79,6 +106,8 @@ Mismatches are often forgotten if they aren't tracked. By categorizing mismatche
 
   {{< card title="Company Scoping" subtitle="Manage recons by specific business unit and branch" link="#configuration--settings" >}}
 {{< /cards >}}
+
+{{< figure src="/images/txn-recon-applet/transaction-reconciliation-applet-overview-infographic.png" alt="Transaction Reconciliation Applet Overview: Problems, Solution, and Benefits" caption="Transaction Reconciliation Overview: Moving from high-volume manual matching and revenue leaks (The Problems) to intelligent auto-matching and real-time dispute reporting (The Solution) for Accountants, Auditors, and Finance Directors (Who Benefits)." >}}
 
 ## Key Concepts
 
@@ -145,50 +174,44 @@ Reconciliation statements move through the following statuses to ensure accounta
 
 The Transaction Recon Applet organizes the workflow into four primary tabs. Use these tabs to move from initial data entry to final approval.
 
-### Details Tab
-The "Header" of your reconciliation.
-- **Context**: Defines the **Company**, **Branch**, and **Payment Channel System Log** being audited.
-- **Period**: Sets the **Opening Date** and **Closing Date** for the reconciliation window.
-- **Financials**: Stores the **Opening Balance** and **Closing Balance** as reflected in the payment gateway's portal.
-- **Status Management**: Track the progress of the document from *Processing* to *Reviewed and Approved*.
+#### Deep Dive: Details Tab
 
-#### Deep Dive: Details Fields
-*   **Payment Channel System Log**: This links to your internal database of transactions. You must select the correct log (e.g., "Terminal A - iPay88") to ensure you are comparing the right data.
-*   **Balance Fields**: These are mandatory. If the **Closing Balance** you enter here doesn't match the sum of your matched transactions, the system will highlight the discrepancy.
-*   **Status Dropdown**: This is the workflow control. Changing this triggers the next stage of the financial approval cycle.
+**Concept: Defining the Audit Scoping.**
+This tab sets the legal and temporal boundaries for the reconciliation. You are defining exactly **"Who"** is being reconciled and **"When"** the transaction window occurred.
 
----
+*   **Company & Branch**: Selects the legal entity and physical cost center. This ensures that the reconciliation is scoped to the correct sub-ledger.
+*   **Payment Channel System Log**: You select the specific internal data stream (e.g., "Main Terminal iPay88"). This tells the system which internal records to pull for comparison.
+*   **Opening/Closing Balance**: You input the starting and ending totals from your gateway portal. These are the **Control Totals** that the system must match to ensure a "balanced" reconciliation.
+*   **Status**: Manages the **Financial Approval Cycle**. Moving a document from *Processing* to *Approved by HOD* locks the audit trail and signals that the reconciliation is verified.
 
-### Upload Statement Tab
-Where external data enters the system.
-- **File Uploader**: Drag and drop your gateway-provided CSV or Excel file here.
-- **Import Format**: Crucial selection. Different gateways (GoPay vs iPay88) have different data columns. Selecting the correct format ensures the "Transaction ID" and "Amount" are read correctly.
-- **Help Guide**: Displays bank-specific format rules to ensure successful uploads.
+#### Deep Dive: Upload Statement Tab
 
----
+**Concept: Importing External Evidence.**
+This tab is where the "External Truth" enters the system.
 
-### Manual Matching Tab
-The "Human Intervention" workspace for items the computer couldn't quite match.
-- **System Txn Log (Sub-tab)**: Shows internal transactions that *haven't* been matched to an external statement yet.
-- **Payment Channel Txn (Sub-tab)**: Shows statement lines that *haven't* been matched to an internal system record yet.
-- **Matching Action**: Click a row to see details, then use the **Matched** feature to pair them manually if you've verified they represent the same transaction (e.g., if a transaction ID has a prefix in one system but not the other).
-
-#### Deep Dive: Matching Fields
-When reviewing transactions for manual matching, you will see these critical data points:
-*   **Txn ID / Payment ID**: The unique identifier from the gateway.
-*   **Ref Num**: Your internal reference (e.g., Invoice Number).
-*   **Bank MID**: The Merchant Identification Number — useful for businesses with multiple merchant accounts.
-*   **Amount & Currency**: Must match exactly for a standard reconciliation.
+*   **Import Format**: You select the gateway type (e.g., iPay88, 7-Eleven). This tells the system how to read the columns in your CSV file, ensuring that **Transaction IDs** and **Amounts** are mapped correctly for auto-matching.
+*   **File Uploader**: The portal for your gateway statement. This file serves as the **Primary Audit Evidence**.
+*   **PC Statement Name**: A descriptive label for the file, used to simplify future audit lookups.
 
 ---
 
-### Report Tab
-The dashboard of discrepancies. If something is in this tab, there is a problem that needs investigation.
-- **System Txn Log Dispute (Sub-tab)**: Lists transactions that exist in your system but the Payment Gateway has no record of. 
-    - *Common Cause*: Technical failure during payment submission or internal data entry error.
-- **Payment Channel Txn Dispute (Sub-tab)**: Lists money received by the bank that your system has no record of.
-    - *Common Cause*: Manual payments received outside the app or POS system errors.
-- **Reconciliation Action**: Use the **Reconcile** button within these reports to finalise an item after its dispute has been resolved.
+#### Deep Dive: Manual Matching Tab
+
+**Concept: Resolving Mismatched Logic.**
+Even with Auto-Matching (which uses Transaction ID + Amount), some items require human intervention. This tab is the workspace for **Manual Verification**.
+
+*   **System Txn Log (Pending)**: Shows internal transactions that haven't been seen by the bank yet. Use this to identify **Missing Settlements**.
+*   **Payment Channel Txn (Pending)**: Shows statement lines that haven't been linked to a sale. These often signify **Unrecorded Revenue**.
+*   **Match Action**: Allows you to pair records manually. This is used when the "Substance" is the same but the "Form" (like the ID string) differs slightly between systems.
+
+#### Deep Dive: Report Tab
+
+**Concept: Dispute Accountability.**
+Anything appearing in this tab represents a breakdown in the financial chain. This is the **Management Exception Report**.
+
+*   **System Txn Log Dispute**: Lists internal sales with no bank record. This is a **Revenue Leak** risk.
+*   **Payment Channel Txn Dispute**: Lists money in the bank with no internal sale record. This is an **Accounting Completeness** risk.
+*   **Reconcile Button**: Once you have investigated and fixed the error (e.g., by recording the missing sale), you use this button to "clear" the dispute and finalize the record.
 
 ---
 
