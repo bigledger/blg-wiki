@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Tenant Admin Applet"
 description: "The primary administrative control panel for BigLedger platform tenants. Manage applet subscriptions, user access, role-based permissions, and system-wide configurations from a single, centralized hub."
 tags:
@@ -12,11 +12,39 @@ weight: 10
 
 ## Purpose and Overview
 
-The **Tenant Admin Applet** serves as the cockpit for your platform's administrative engine. It is designed for organizational administrators to oversee the entire lifecycle of their BigLedger environment—from subscribing to new applets in the Catalogue to managing granular user permissions and auditing critical system changes.
+The **Tenant Admin Applet** is the central nervous system of your BigLedger environment. It provides organizational administrators with the master controls required to govern user access, subscribe to business modules, and maintain a secure, audit-ready platform. It is the single source of truth for "who can do what" within your digital workspace.
+
+### TL;DR: The Administrative Cockpit
+
+This applet is the "Master Switchboard" for your entire organization:
+
+*   **The Catalogue**: Where you "install" business tools (Accounting, HR, POS).
+*   **Tenant Users**: Where you create digital identities for your staff.
+*   **Roles & Permissions**: Where you define the "keys" each staff member holds (e.g., can they *view* an invoice or *delete* it?).
+
+It is the foundation that ensures your business data is only accessible to authorized personnel.
+
+### When is this Applet used?
+
+Administrators reach for this applet during critical organizational milestones:
+
+*   **Employee Onboarding/Offboarding**: Quickly granting a new hire access to their required tools or revoking access instantly when a staff member leaves.
+*   **Security Audits**: Reviewing the **Audit Trail** to investigate who authorized a specific system change or permission override.
+*   **Module Activation**: Expanding your business capabilities by subscribing to new applets (like Fixed Assets or E-Invoice) in the **Catalogue**.
+*   **Role Standardization**: Creating uniform access tiers (e.g., "Branch Manager" vs. "Cashier") to ensure consistent security across different locations.
 
 {{< callout type="info" >}}
-**Core Concept**: This is the "Applet of Applets." It manages the relationships between **Users**, **Roles**, and **Applet Instances** within your specific tenant environment. It ensures that the right people have exactly the right amount of access to the business tools they need.
+**Core Concept**: This applet governs the three-way link between **Users**, **Roles**, and **Applet Instances**. It is the ultimate tool for implementing the principle of **Least Privilege Security**.
 {{< /callout >}}
+
+### Why is this Important in Platform Governance?
+
+A disciplined Tenant Admin process is the backbone of organizational security and compliance:
+
+*   **Segregation of Duties (SoD)**: By carefully mapping permissions, you ensure that no single person has enough access to commit and conceal fraud (e.g., the person who *creates* a payment cannot be the same person who *approves* it).
+*   **Regulatory Compliance**: Many industries (and tax authorities) require a permanent, unalterable record of who accessed sensitive financial data. This applet provides the **Audit Evidence** required for these certifications.
+*   **Cost Management**: By overlooking **Catalogue Subscriptions**, you can identify underutilized modules and optimize your platform investment.
+*   **Operational Continuity**: Centralized user management ensures that if an admin is unavailable, the organization can still maintain access control through shared administrative roles.
 
 {{< figure src="/images/tenant-admin-applet/tenant-main-listing.png" alt="Tenant Admin main listing page" caption="Main Listing Page: Central menu for tenant governance modules" >}}
 
@@ -36,7 +64,7 @@ This applet is the foundation upon which all other applets operate:
 - **Audit Traceability**: Actions taken in this applet are recorded to ensure that administrative changes (like giving someone "Admin" rights) are tracked.
 - **Permission Wizard**: A specialized tool within the settings that simplifies the complex task of mapping thousands of individual permissions into manageable Roles.
 
-{{< figure src="/images/tenant-admin-applet/tenant-admin-overview-infographic.png" alt="Tenant Admin infographic" caption="Tenant Admin Overview: Challenges, solutions, and user roles" >}}
+{{< figure src="/images/tenant-admin-applet/tenant-admin-applet-overview-infographic.png" alt="Tenant Admin Applet Overview: Problems, Solution, and Benefits" caption="Tenant Admin Overview: Moving from administrative chaos and security risks (The Problems) to centralized user governance and granular role-based access control (The Solution) for Platform Admins, IT Managers, and HR Leads (Who Benefits)." >}}
 
 ## Key Features Overview
 
@@ -138,53 +166,42 @@ In many configurations, the Tenant Admin Applet manages how your branch interact
 
 ---
 
-## Document Tabs Overview
+#### Deep Dive: Catalogue Tab
 
-The Tenant Admin Applet uses a comprehensive tabbed interface to manage different aspects of the environment.
+**Concept: The Platform Marketplace.**
+This tab is where you manage the "Software Inventory" of your organization. It allows you to browse and subscribe to the entire BigLedger ecosystem.
 
-### Catalogue Tab
-The "App Store" for your tenant.
-- **Catalogue Listing**: Shows every available applet and service in the BigLedger ecosystem.
-- **Subscription Status**: Color-coded indicators showing which items you currently have active.
-- **Deep Dive**: Within each catalogue item, you can see the technical **Main Details**, **Applet Info**, and **Required Permissions** needed for that service to function.
+*   **Catalogue Listing**: Shows every available applet. You use this to scale your business by adding new functional modules as you grow.
+*   **Subscription Management**: Displays the status of your active tools. This is critical for **Subscription Lifecycle Management**, allowing you to see which versions of an applet are currently deployed.
+*   **Applet Info**: Technical metadata that explains what the applet does and, more importantly, the **Permission Dependencies**—the hidden technical "gates" that must be opened for the applet to function for your users.
 
-{{< figure src="/images/tenant-admin-applet/tenant-catalogue-edit.png" alt="Catalogue edit form" caption="Catalogue Management: Maintain applet-to-catalogue linkage" >}}
+#### Deep Dive: Tenant Users Tab
 
-### Tenant Users Tab
-The directory of your internal users.
-- **User Listing**: A searchable grid of everyone in your tenant.
-- **Main Details**: Name, email, active status, and platform links.
-- **Installed Applet Sub-tab**: A powerful view showing exactly which apps a specific user has access to.
-- **Employee Link**: For organizations using HR modules, this links the "Software User" to the "Physical Employee" record.
+**Concept: Identity Management.**
+This tab is the "Digital Directory" of your personnel. It bridges the gap between a physical human being and their digital platform identity.
 
-### Roles & Permissions Tab
-The engine of Access Control.
-- **Role Listing**: Manage the list of functional titles (e.g., Admin, Storekeeper, Salesperson).
-- **Role Permission Add/Edit**: A matrix view allowing you to toggle thousands of granular permissions for a role.
-- **Inheritance**: View how permissions flow from a "Parent Role" to children roles.
+*   **User Listing**: A searchable grid of all staff. This is where you manage **User Activation/Deactivation**—the most fundamental security action.
+*   **User GUID & Email**: The unique digital fingerprint of the user. This ensures that permissions are linked to a specific, unique person across the entire platform.
+*   **Installed Applet Sub-tab**: A powerful diagnostic view. If a user says "I can't see the Sales applet," you check here to verify if it is assigned to their profile.
+*   **Employee Link**: Connects the software account to the **Physical Employee Record** (from the HR applet), ensuring that payroll, performance, and access data stay synchronized.
 
-{{< figure src="/images/tenant-admin-applet/role-file-import-page.png" alt="Role file import page" caption="Role File Import: Bulk setup for complex role structures" >}}
+#### Deep Dive: Roles & Permissions Tab
 
-### Applet Tab
-Managing the active instances of your apps.
-- **Applet Listing**: A list of every applet currently running on your tenant.
-- **Applet View**:
-    - **Applet Details**: Technical metadata and endpoint info.
-    - **Permission Sets**: View which permission groupings are specific to this applet.
-    - **Client-Side Permissions**: Managing UI-specific permissions (e.g., "SHOW_DELETE_BUTTON").
+**Concept: Role-Based Access Control (RBAC).**
+Instead of giving permissions to users one by one, you create "Job Packages" called Roles.
 
-### Audit Trail Tab
-The accountability log.
-- **Action Tracking**: Every time a permission is changed, a role is deleted, or a user is added, it is recorded here.
-- **Filtering**: Search by **Who** made the change, **When**, and **What table** was affected.
-- **Compliance**: Used during security audits to prove that access is being managed correctly.
+*   **Role Name & Code**: Defines the functional identity (e.g., `ROLE_JUNIOR_ACC`). This makes it easy to broadcast security changes to groups of users simultaneously.
+*   **Permission Set Mapping**: A granular matrix where you toggle thousands of specific actions. This is where you enforce **Operational Boundaries** (e.g., allowing a user to see a list of invoices but not click the 'Delete' button).
+*   **Inheritance Logic**: Allows you to build "Senior" roles that inherit everything from "Junior" roles, ensuring that hierarchy is maintainable and scalable without manual re-entry.
 
-### Data Sync Tab
-Environment management.
-- **Sync Status**: View the health of data flows between different tenants or modules.
-- **Manual Trigger**: Push data updates immediately when configuration changes are made.
+#### Deep Dive: Audit Trail Tab
 
-{{< figure src="/images/tenant-admin-applet/tenant-audit-trail-2.png" alt="Audit trail listing" caption="Audit Trail: Permanent record of all administrative actions" >}}
+**Concept: The "Immutable Ledger" of Actions.**
+This tab is for **Forensic Investigation** and **Compliance Reporting**. It records every administrative "Who, What, and When."
+
+*   **Action Tracking**: Logs every `CREATE`, `UPDATE`, and `DELETE` on security tables (e.g., `bl_aas_subject_to_role_link`). It proves who gave a certain user "Admin" rights.
+*   **Before/After JSON**: Shows the exact data change. This is critical for **Change Management Audits**, allowing you to see exactly what a configuration looked like before it was modified.
+*   **Search & Filter**: Allows auditors to pinpoint specific dates or user IDs, turning millions of rows into a targeted **Compliance Report**.
 
 ---
 
