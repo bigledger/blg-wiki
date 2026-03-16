@@ -14,6 +14,16 @@ weight: 70
 
 The **Internal Purchase Debit Note Applet** is your branch's gateway for managing incoming intercompany adjustments. While a standard invoice records the initial purchase, a **Purchase Debit Note** is used to accurately record an **increase** in what you owe an internal supplier after the original transaction has been posted.
 
+### TL;DR: The Mirror Relationship
+
+This applet is just the "other side" of a **Sales Debit Note**.
+
+*   **Branch A (Supplier)** forgot to charge you for something (like a delivery fee).
+*   **Branch A** issues an **Internal Sales Debit Note** to say: *"I'm charging you extra."*
+*   **You (Branch B)** receive an **Internal Purchase Debit Note** to say: *"I owe you extra."*
+
+They are mirror images. One branch issues the charge (Sales), and your branch accepts the liability (Purchase).
+
 ### When is this Applet used?
 
 You will find a record in this applet (or create one manually) in the following common business scenarios:
