@@ -12,11 +12,39 @@ weight: 150
 
 ## Purpose and Overview
 
-The **Custom Processor Applet** is an automation engine designed to handle the background processing of internal documents within the ecosystem. Rather than requiring staff to manually "push" every document through its lifecycle, this applet uses customizable filters to identify documents (such as Internal Sales Orders or Invoices) and process them automatically in batches.
+The **Custom Processor Applet** is the high-performance automation exhaust for your BigLedger environment. It is designed to replace manual document handling with automated, background task execution. By monitoring specifically defined document types and statuses, it ensures that your logistics and financial workflows move forward without human intervention, reducing bottlenecks and eliminating manual status errors.
+
+### TL;DR: The Automation Engine
+
+Think of this applet as a "Digital Clerk" that never sleeps:
+
+*   **You define the rules**: "Watch for all Internal Sales Orders in Branch A."
+*   **The clerk watches**: It scans the system for documents matching your criteria.
+*   **The clerk acts**: It automatically pushes those documents to the next stage (e.g., from *Draft* to *Finalized*).
+
+It turns manual "clicks" into automated "background events."
+
+### When is this Applet used?
+
+This applet is critical for organizations managing high document volumes or complex inter-branch logistics:
+
+*   **Inter-Branch Fulfillment**: Automatically finalizing internal sales orders so that the receiving branch sees the stock in transit immediately.
+*   **Mass Pricing Updates**: Processing "Price Tag" document sets in the background to avoid locking the UI during thousands of pricing changes.
+*   **Automated Financial Posting**: Moving recurring internal documents (like Debit Notes) from *Draft* to *Finalized* status the moment they are generated.
+*   **Logistics Acceleration**: Ensuring that return authorizations (Internal Sales Returns) are processed instantly to maintain accurate inventory levels across the group.
 
 {{< callout type="info" >}}
-**Core Concept**: The applet works as a "listening service." It monitors your system for specific document types and statuses (e.g., *INTERNAL_SALES_ORDER* in *DRAFT* status) and adds them to a processing queue for automated execution.
+**Core Concept**: The applet serves as a **Batch Listener**. It captures documents matching your **Processing Filters**, moves them into a **Processing Queue**, and logs the result in **Processing History**.
 {{< /callout >}}
+
+### Why is this Important in Automation and Operations?
+
+Effective use of the Custom Processor drives significant gains in organizational efficiency:
+
+*   **Operational Velocity**: Documents no longer sit in "Draft" waiting for a manager to log in. Workflows move at the speed of the system, not the speed of the staff.
+*   **Data Integrity**: Because filters are pre-defined, the system never "forgets" to process a document, ensuring that your inventory and financial records are always up-to-date.
+*   **Resource Optimization**: Your staff is freed from the repetitive task of manually processing thousands of low-level internal documents, allowing them to focus on high-value business exceptions.
+*   **Scalability**: The background processor can handle 10,000 documents as easily as 10. As your business grows, your administrative overhead remains flat.
 
 ### What is the Custom Processor Applet? (Explained Simply)
 
@@ -80,6 +108,8 @@ Background tasks are often "invisible." This applet provides a dedicated **Queue
   {{< card title="Company & Branch Scoping" subtitle="Control automation rules by specific business units" link="#configuration--settings" >}}
 {{< /cards >}}
 
+{{< figure src="/images/custom-processor-applet/custom-processor-applet-overview-infographic.png" alt="Custom Processor Applet Overview: Problems, Solution, and Benefits" caption="Custom Processor Overview: Moving from manual document bottlenecks and human error (The Problems) to automated filters and real-time background queues (The Solution) for Operations Managers, IT Admins, and Logistics Leads (Who Benefits)." >}}
+
 ## Key Concepts
 
 ### Document Triggers & Filters
@@ -133,31 +163,41 @@ The "Brain" of the applet. You define a **Filter Code** that specifies:
 
 ## Document Tabs Overview
 
-The Custom Processor Applet uses a modular tab system to separate configuration from auditing.
+#### Deep Dive: Processing Filter Tab
 
-### Processing Filter Tab
-Where the rules are defined.
-- **Filter Listing**: A grid of all automated rules currently in the system.
-- **Form Deep Dive**:
-    - **Filter Code**: A human-readable identifier for your automated rule.
-    - **Server Doc Type**: Supports various internal documents like `INTERNAL_SALES_ORDER`, `INTERNAL_SALES_RETURN`, and `INTERNAL_SALES_INVOICE`.
-    - **Posting Status**: The trigger point (typically `DRAFT` or `FINAL`).
-    - **Status (ACTIVE/INACTIVE)**: A master switch to enable or disable the automation without deleting the filter.
+**Concept: Defining the Automation Logic.**
+This tab is the "Brain" where you script the rules for your background robot.
 
-### Processing Queue Tab
-The "Waiting Room" for documents.
-- **Queue Listing**: Shows documents that have been picked up by the filters but are still "waiting" for the backend to finish processing.
-- **Grid Features**: includes columns for **Doc ID**, **Creation Date**, and **Target Company**.
+*   **Filter Code**: A unique identifier for the rule (e.g., `ISO_AUTO_BRANCH_NY`). This allows you to track specific automation flows during performance audits.
+*   **Server Doc Type**: You select the target document (e.g., `INTERNAL_SALES_ORDER`, `INTERNAL_SALES_INVOICE`). This defines **"What"** is being monitored.
+*   **Posting Status**: The trigger status (typically `DRAFT`). The processor waits for a document to hit this state before capturing it.
+*   **Status (Active / Inactive)**: The "Master Toggle." Setting a filter to *Inactive* immediately pauses that specific automation without losing your configuration settings.
 
-### Processing History Tab
-The audit log for all generic documents.
-- **Searchable Database**: Look up any document that has ever been handled by the processor.
-- **Outcome Tracking**: Verifies whether the background action was successful.
+#### Deep Dive: Processing Queue Tab
 
-### Price Tag History Tab
-A specialized auditing view.
-- **Dedicated Logging**: Tracks the "Price Tag" document sets specifically.
-- **Batch Visibility**: Allows users to see the processing of multiple pricing updates within a single batch.
+**Concept: Real-Time Workload Visibility.**
+Anything in this tab is an active task being handled by the background engine.
+
+*   **Pending Queue**: High-volume environments use this to monitor **Processing Latency**. If the queue length is growing, it signals that the volume of sales/stock movements is exceeding the processing frequency.
+*   **Doc ID & Creation Date**: Allows you to pinpoint exactly which document is currently "on the workbench."
+*   **Target Company**: Confirms that the workload is being distributed to the correct business entity.
+
+#### Deep Dive: Processing History Tab
+
+**Concept: The Automation Audit Trail.**
+Because background tasks are usually invisible, this tab provides the **Evidence of Execution**.
+
+*   **Success/Failure Ledger**: Every attempt by the robot is logged. This is where you find "orphaned" documents that failed to process due to validation errors (e.g., zero-priced line items).
+*   **Historical Trace**: Provides the **Proof of Posting**. It satisfies auditors that documents moved from *Draft* to *Final* through an authorized and configured system rule.
+
+#### Deep Dive: Price Tag History Tab
+
+**Concept: Modern Retail & Electronic Shelf Labeling (ESL).**
+This is a specialized auditing stream for high-velocity pricing changes, specifically designed to synchronize with physical store infrastructure.
+
+*   **Price Set Visibility**: Tracks the background generation of barcode and label sets.
+*   **Batch Integrity**: Verifies that mass pricing updates (e.g., for 5,000+ items) completed without data loss.
+*   **Advanced NFC Mapping**: The system records **NFC URLs** (`nfc_url`). This allows retailers to monitor the deployment of **Electronic Shelf Labels**, where customers can tap their smartphones on a shelf tag to view real-time digital content or promotion details in the store.
 
 ---
 
@@ -168,9 +208,14 @@ Configure the baseline environment for the applet.
 - **Company & Branch**: Ensure the applet is focused on the correct business scope.
 - **Default Page Count**: Adjust the density of the Queue and History grids for high-volume monitoring.
 
-### Permission Set Listing (`Settings`)
-Control access to sensitive automation rules.
-- **Role Permissions**: Limit who can **Delete** or **Modify** Processing Filters, as incorrect changes here can disrupt entire document lifecycles.
+### Field Configuration (`Settings > Field Settings`)
+Fine-tune the processing engine by enabling or disabling specific document features. This is critical for keeping the processing queue weight consistent:
+
+*   **Lines Settings**: Toggle the processing logic for **Unit Discounts**, **Tax Schemes (SST/VAT/GST)**, and **Withholding Tax (WHT)**. Disabling these for internal-only transactions can increase processing speed.
+*   **Department/Dimensions**: Enable or disable accounting tags like **Segments**, **G/L Dimensions**, **Profit Centers**, and **Projects** within your processed document batches.
+
+### Personalization (`Personalization > Default Selection`)
+Users can override system-wide defaults with their own preferred **Company** and **Branch** context. This is useful for managers who only oversee a specific region and want the applet to always open with their relevant filters pre-selected.
 
 ---
 
