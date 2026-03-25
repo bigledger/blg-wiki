@@ -1,50 +1,49 @@
 ﻿---
 title: "Internal Purchase Invoice Applet"
-description: "Streamline intercompany and intra-company purchasing workflows, managing bill-to details, settlement methods, and automated accounting entries."
+description: "Comprehensive guide to managing internal purchase invoices, including three-way matching, intercompany transactions, settlement management, and E-Invoice integration."
 tags:
 - finance
 - purchase-invoice
 - intercompany
 - settlement
 - accounts-payable
+- e-invoice
 weight: 120
 ---
 
 ## Purpose and Overview
 
-The **Internal Purchase Invoice Applet** is designed to handle the critical "Invoicing" stage of the procurement cycle, specifically tailored for organizations with complex multi-branch or intercompany structures. It allows users to create official purchase invoices that reconcile with Goods Received Notes (GRN) or existing Purchase Orders (PO), ensuring that the financial liability is accurately recorded in the accounts.
+The **Internal Purchase Invoice Applet** is the financial cornerstone of the procurement lifecycle within BigLedger. It facilitates the conversion of procurement activities into formal accounting records, specifically optimized for organizations managing multiple branches or complex intercompany relationships.
+
+By linking physical receipts (Goods Received Notes) and procurement commitments (Purchase Orders) to financial obligations, it ensures accurate **Accounts Payable (AP)** management and financial integrity.
 
 {{< callout type="info" >}}
-**Core Concept**: This applet transforms procurement documents into financial records, linking physical stock receipts to billing obligations and settlement processes.
+**Core Concept**: This applet acts as the bridge between operations and finance, transforming operational data into verified financial liabilities.
 {{< /callout >}}
 
-## Key Features
+## Key Features & Benefits
 
-### Who Benefits from This Applet?
+### 1. Robust Three-Way Matching (Knock-Off)
+Reduce overbilling and errors by verifying invoices against existing documents:
+- **KO For Purchase GRN**: Direct reconciliation against received goods.
+- **KO For Purchase Order**: Validation against original procurement commitments.
+- **Prevents Duplicate Billing**: The "Knock-Off" (KO) mechanism ensures a single delivery or order cannot be invoiced multiple times.
 
-**AP Clerks & Finance Teams:**
-- Generate purchase invoices by knocking off (**KO**) against established POs or GRNs.
-- Manage "Bill To" and "Entity Details" to ensure tax and legal compliance.
-- Record settlements (payments) directly against the invoice using the **Add Settlement** feature.
+### 2. Comprehensive Intercompany Management
+Specifically designed for internal ecosystem transactions:
+- **Inbound & Outbound Queues**: Dedicated views for unprocessed and processed intercompany transactions.
+- **Automated Synchronization**: Ensure that a "Sales Invoice" in one branch correctly appears as a "Purchase Invoice" in the receiving branch.
 
-**Warehouse & Procurement Managers:**
-- Verify that billed items match received items (Three-way matching logic).
-- Track the conversion status of procurement steps to avoid double-billing.
+### 3. Integrated Settlement & Payment
+Manage the full lifecycle of the invoice within a single interface:
+- **Add Settlement**: Record partial or full payments directly against the invoice.
+- **Settlement Methods**: Support for multiple payment groups and methods (Cash, Bank, E-Wallet, etc.).
+- **Real-time Balance Tracking**: Instantly see total settlements vs. invoice totals.
 
-**Management & Branch Supervisors:**
-- Oversee intercompany billing through the dedicated **Intercompany** tab.
-- Monitor high-volume imports via the **File Import** feature.
-
-### What Problems Does This Solve?
-
-**Manual Data Entry Errors:**
-- Instead of typing details from a paper invoice, users "pull" data from existing GRNs or POs, reducing typos and price mismatches.
-
-**Intercompany Reconciliation Issues:**
-- Dedicated status tracking for intercompany transactions ensures both the "sending" and "receiving" branches reflect the same financial reality.
-
-**Payment Tracking Gaps:**
-- The ability to link settlements directly to the invoice header ensures no payment is lost or misallocated.
+### 4. Advanced Operational Tools
+- **E-Invoice Integration**: Native support for digital invoicing requirements.
+- **Self-Billed Invoices**: Support for self-billing scenarios where the purchaser generates the invoice on behalf of the supplier.
+- **Bulk Operations**: High-volume **File Import** and **File Export/Bulk Print** capabilities.
 
 ---
 
@@ -52,12 +51,9 @@ The **Internal Purchase Invoice Applet** is designed to handle the critical "Inv
 
 {{< cards >}}
   {{< card title="Purchase Invoice" subtitle="Listing, create & edit with bill-to and line items" link="#for-ap-clerks-creating-a-new-invoice" >}}
-
-  {{< card title="Knock-Off (KO)" subtitle="Linking invoices to POs or GRNs" link="#quick-start-guide" >}}
-
-  {{< card title="Settlement" subtitle="Adding payments and managing KO for payments" link="#frequently-asked-questions" >}}
-
-  {{< card title="Intercompany" subtitle="Managing transactions between branches" link="#who-benefits-from-this-applet" >}}
+  {{< card title="Intercompany" subtitle="Managing Inbound/Outbound unprocessed transactions" link="#managing-intercompany-transactions" >}}
+  {{< card title="Settlement" subtitle="Adding payments and managing settlement methods" link="#recording-settlements-and-payments" >}}
+  {{< card title="E-Invoice" subtitle="Digital invoicing and compliance status" link="#e-invoice-integration" >}}
 {{< /cards >}}
 
 ---
@@ -66,72 +62,76 @@ The **Internal Purchase Invoice Applet** is designed to handle the critical "Inv
 
 ### For AP Clerks: Creating a New Invoice
 
-**Goal:** Create a purchase invoice and link it to a previous delivery (GRN) within 5 steps.
+**Goal:** Transform a Goods Received Note (GRN) into a financial invoice.
 
-1. **Select Branch**: Open the applet and select your current **Branch** from the dropdown.
-2. **Initialize Invoice**: Click **"+" (Create)** from the main listing view.
-3. **Configure Header**:
-   - **Entity Details**: Select the supplier/vendor.
-   - **Bill To**: Confirm the billing address and tax details.
-4. **Link to Received Goods (KO)**:
-   - Navigate to the **Lines** tab.
-   - Click **"+"** and select **KO For Purchase GRN** (or **KO For Purchase Order**).
-   - Select the relevant records to pull the items, quantities, and prices automatically.
-5. **Finalize**: Review the totals in the **Summary** section and click **Save**.
+1. **Initialize**: Click **"+" (Create)** from the main listing view.
+2. **Account Details**: 
+   - Under the **Account** tab, select the **Entity** (Supplier).
+   - Verify the **Bill To** and **Ship To** addresses are correct.
+3. **Add Items via KO**:
+   - Go to the **Lines** tab.
+   - Click **"+"** and select **KO For Purchase GRN**.
+   - Select the relevant receipt(s) from the listing to auto-populate items and prices.
+4. **Validation**: Use the **Final** button to lock the document and prepare it for accounting posting.
 
-### For Supervisors: Managing Settlements
+### Managing Intercompany Transactions
 
-**Goal:** Record a payment against an existing invoice.
+**Goal:** Process an inbound stock transfer from another branch.
 
-1. **Search**: Locate the approved Purchase Invoice in the main listing.
-2. **Edit**: Click the invoice number to open the edit screen.
-3. **Add Payment**:
-   - Go to the **Settlement** tab.
-   - Click **Add Settlement**.
-   - Enter the payment amount and choose the method (Cash, Bank, etc.).
-4. **Verify**: Check the **Total Settlement** vs **Total Amount** to ensure the balance is correct.
+1. Navigate to the **Intercompany** tab.
+2. Select **Inbound > UNPROCESSED**.
+3. Locate the transaction sent by the sister branch.
+4. Review and process it into a local Purchase Invoice to reflect the internal liability.
+
+### Recording Settlements and Payments
+
+**Goal:** Record a partial payment made to a supplier.
+
+1. Open the target Purchase Invoice in **Edit** mode.
+2. Navigate to the **Settlement** tab.
+3. Click **Add Settlement**.
+4. Select the **Settlement Type** (e.g., Bank) and **Method** (e.g., Maybank Account).
+5. Enter the amount and **Save**.
 
 ---
 
-## Config & Settings
+## Configuration & Settings
 
-The applet behavior is highly customizable through the **Settings** menu:
+Fine-tune the applet behavior to match your organizational policies:
 
-- **Application Settings**: Configure default decimal places, auto-generation of invoice numbers, and mandatory field requirements.
-- **Printable Format**: Design the layout of the PDF/printed invoice (logos, footer notes).
-- **Default Selection**: Set default branches or tax codes to speed up data entry.
-- **Workflow Settings**: Define if an invoice requires a supervisor's approval before it is finalized.
+| Category | Description |
+| :--- | :--- |
+| **Default Selection** | Set default branches and tax codes for faster entry. |
+| **Field Configuration** | Define mandatory fields and visibility for specific roles. |
+| **Knock-Off Settings** | Configure how documents are linked and what triggers a "closed" state. |
+| **Printable Format** | Customize the PDF layout including logos and terms & conditions. |
 
 ---
 
 ## Frequently Asked Questions
 
-**Q: Can I create an invoice if there is no PO or GRN yet?**
-A: Yes, you can manually add items in the **Lines** tab by selecting **Search Item** instead of using the Knock-Off (KO) features. However, for audit compliance, linking to a GRN is recommended.
+**Q: Can I create an invoice without a preceding GRN or PO?**
+A: Yes. In the **Lines** tab, click **"+"** and select **Search Item** to manually add lines. This is common for service-based or non-stock expenses.
 
-**Q: What does "KO For Purchase GRN" mean?**
-A: **KO** stands for "Knock-Off." It means you are marking a specific GRN as "billed" so it cannot be invoiced again, preventing duplicate payments to suppliers.
+**Q: What is the difference between SAVE and FINAL?**
+A: **SAVE** keeps the document in a draft state (editable). **FINAL** locks the document for financial reporting and prevents further edits unless voided or reversed.
 
-**Q: How do I handle a price difference between the PO and the actual Invoice?**
-A: During the KO process, you can manually adjust the **Price** item if it varies from the PO, provided you have the necessary permissions.
+**Q: How do I handle Multi-Currency invoices?**
+A: If enabled, a **Forex** button will appear in the header of the edit screen, allowing you to set exchange rates for the document.
 
-**Q: Where can I see intercompany invoices from other branches?**
-A: Navigate to the **Intercompany** tab. This view specifically filters for invoices where the purchaser and supplier are both within your organization's branch network.
-
-**Q: Can I import a large batch of invoices from an Excel file?**
-A: Yes, use the **File Import** menu. You will need to map your Excel columns to the standard applet fields (e.g., Code, Qty, Amount).
+**Q: Can I clone a recurring invoice?**
+A: Yes. Use the **CLONE** option in the dropdown menu from the Edit screen to create a new copy of an existing invoice.
 
 ---
 
-## Audit and Traceability
+## Audit and Compliance
 
-To ensure financial integrity, use the following tools:
-- **Audit Trail**: Located in Settings, this logs every change made to an invoice, including who created it and who modified the prices.
-- **Release Notes**: Check this section frequently to see new updates and improvements made to the applet.
+- **Audit Trail**: Every modification to an invoice (price changes, quantity adjustments) is logged with a timestamp and user ID in **Settings > Audit Trail**.
+- **E-Invoice Status**: Monitor the status of digital submissions via the dedicated **E-Invoice** tab within each record.
 
 ---
 
 {{< callout type="tip" >}}
-**Next Steps**: After perfecting the invoice, proceed to the **Supplier Statement** report in the Finance module to reconcile your total outstanding balance with your vendors.
+**Reporting Tip**: Use the **File Export** feature to generate batch reports for external auditors or for deep-dive reconciliation in Excel.
 {{< /callout >}}
 
