@@ -200,6 +200,8 @@ The document view header also includes **PRINT**, which is useful when users nee
 ### 2. Outstanding Aging Report (The Month-Based Aging Workspace)
 This screen is the prioritization workspace. Use it when the main question is not "Which exact invoice?" but "How old is this exposure, and which balances need attention first?"
 
+{{< figure src="/images/debtor-and-creditor-report-applet/outstanding-aging-report-listing.png" alt="Outstanding Aging Report Listing view" caption="Outstanding Aging Report: Review current outstanding balances by dynamic month columns, including Days and 6 Month+ aging." >}}
+
 **Use this report when:**
 - AR teams want a collections priority view
 - AP teams want to understand how vendor balances are aging before payment planning
@@ -237,6 +239,8 @@ The aging row view header includes **EXPORT**, so users can take the current row
 ### 3. Outstanding Entity Report (The Entity Summary and Statement Workspace)
 This screen is the relationship-level workspace by entity. It is the best starting point when finance wants to talk about one customer or supplier as a whole instead of one document at a time.
 
+{{< figure src="/images/debtor-and-creditor-report-applet/outstanding-entity-report-listing.png" alt="Outstanding Entity Report Listing view" caption="Outstanding Entity Report: Summarize the total position by entity and access statement generation actions." >}}
+
 **Use this report when:**
 - managers need a summary by customer, supplier, merchant, or employee entity
 - teams want to prepare statement output for communication or confirmation
@@ -270,7 +274,9 @@ This screen is the relationship-level workspace by entity. It is the best starti
 |--------|------------------|
 | **Statement** | A default printable format for `STATEMENT_OF_ACCOUNT_TRANSACTION`. |
 | **Statement(aging)** | A default printable format for `STATEMENT_OF_ACCOUNT_AGING`. |
-
+ 
+{{< figure src="/images/debtor-and-creditor-report-applet/entity-report-transactions-drill-down.png" alt="Entity Report Transactions drill-down view" caption="Entity Report Transactions: Access the entity's details, transaction documents, and statement generation actions." >}}
+ 
 {{< callout type="warning" >}}
 If users click **Statement** or **Statement(aging)** without a configured default printable format, the applet shows the message **Please setup the default printable format**.
 {{< /callout >}}
@@ -299,6 +305,8 @@ The current screen shows two setting groups.
 
 ### Printable Format Settings
 This setup is important if users need the entity-level statement actions. Without it, the statement buttons in **Outstanding Entity Report** will not work.
+
+{{< figure src="/images/debtor-and-creditor-report-applet/debtor-creditor-printable-format-settings.png" alt="Printable Format Settings view" caption="Printable Format Settings: Manage .jrxml templates for Statement or Statement(aging) report outputs." >}}
 
 | Area | What users see |
 |-----|-----------------|

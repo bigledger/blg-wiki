@@ -14,6 +14,8 @@ weight: 30
 
 The **Organisation Applet** is the core master-data applet for setting up the structure that many other BigLedger applets rely on. It is where teams define the legal company, operating branches, physical or operational locations, reusable classification records, and notification templates that shape downstream finance, stock, operations, and messaging workflows.
 
+{{< figure src="/images/organisation-applet/organisation-applet-infographic.jpg" alt="Mastering the BigLedger Organisation Applet infographic showing the three-level hierarchy, the golden chain setup workflow, and advanced setup options." caption="Mastering the Organisation Applet: A visual guide to the three-level hierarchy (Company, Branch, Location), the 'Golden Chain' setup workflow, and advanced master data configuration." >}}
+
 {{< callout type="info" >}}
 **Core Concept**: Create **Company** first, then **Branch**, then **Location**. Most advanced setup happens after you save and reopen the record in edit mode.
 {{< /callout >}}
@@ -168,6 +170,8 @@ Get up and running quickly with these essential workflows.
 
 **Goal:** Create the main company record and unlock the company-level configuration tabs.
 
+{{< figure src="/images/organisation-applet/create-company.png" alt="Create Company view showing the Details tab with required fields like Company Code and Name." caption="Create Company: Complete the core identity fields to establish your legal and accounting base." >}}
+
 1. Go to **Company**. This is the default landing page of the applet.
 2. Click **Create**.
 3. Complete the **Details** tab with fields such as **Company Code**, **Company Name**, **Company Registration No.**, **Company Incorporation Date**, **Currency**, and **Chart of Account**.
@@ -184,6 +188,8 @@ Get up and running quickly with these essential workflows.
 ### For Operations Teams: Add Branches and Locations
 
 **Goal:** Build the operating structure under the selected company.
+
+{{< figure src="/images/organisation-applet/create-branch.png" alt="Create Branch view showing the Details tab with options to create or choose a location, and branch identity fields." caption="Create Branch: Establish your operating unit and decide whether to create a default location immediately." >}}
 
 1. Go to **Branch** and click **Create**.
 2. In **Details**, choose whether to **Create default location** or **Choose from existing location**.
@@ -248,6 +254,8 @@ The core setup area is where users create the three records that anchor the rest
 
 Manage company master records and their linked company-level configuration.
 
+{{< figure src="/images/organisation-applet/company-listing.png" alt="Company Listing view in the Organisation Applet showing a grid of active company records." caption="Company Listing: Access all registered legal entities and their core details from a single workspace." >}}
+
 **Listing View:**
 - Title: **Company Listing**
 - Search supports **Company Name** and **Company Registration Number**
@@ -270,6 +278,8 @@ Manage company master records and their linked company-level configuration.
 | **Address** | Enter address lines, postal code, city, country, and state. |
 
 **Edit View Tabs:**
+
+{{< figure src="/images/organisation-applet/edit-company.png" alt="Edit Company view showing the Details tab for an existing record with additional sub-tabs unlocked." caption="Edit Company: Access expanded configuration tabs like Tax, Branch, and Location after saving the record." >}}
 
 | Tab | What users see |
 |-----|----------------|
@@ -318,6 +328,9 @@ The company **Create** screen is only the starting point. Most company-specific 
 Manage branch master records and branch-level operational configuration.
 
 **Listing View:**
+
+{{< figure src="/images/organisation-applet/branch-listing.png" alt="Branch Listing view in the Organisation Applet showing a grid of active branches with their codes, names, and parent companies." caption="Branch Listing: Review and manage your operational units across all linked companies." >}}
+
 - Title: **Branch Listing**
 - Search supports **Company** and **Branch Name**
 - Keyword searches shorter than 3 characters are rejected
@@ -340,6 +353,8 @@ Manage branch master records and branch-level operational configuration.
 | **Marketplace** | Maintain marketplace-related setup during creation when needed. |
 
 **Edit View Tabs:**
+
+{{< figure src="/images/organisation-applet/edit-branch.png" alt="Branch Edit view showing the Details tab for an existing record with additional sub-tabs unlocked like Pick Pack and Marketplace." caption="Branch Edit: Access expanded configuration tabs like Marketplace and Settlement after saving the branch." >}}
 
 | Tab | What users see |
 |-----|----------------|
@@ -408,6 +423,9 @@ Finish **Details** and **Address** first, confirm the correct **Main Location** 
 Manage location master records and location-level linking or configuration.
 
 **Listing View:**
+
+{{< figure src="/images/organisation-applet/location-listing.png" alt="Location Listing view in the Organisation Applet showing a grid of active and inactive location records." caption="Location Listing: Access all registered physical or operational sites across your organisation." >}}
+
 - Title: **Location Listing**
 - Search supports **Company Name**, **Location Name**, and **Status**
 - Keyword searches shorter than 3 characters are rejected
@@ -423,12 +441,16 @@ Manage location master records and location-level linking or configuration.
 
 **Create View Tabs:**
 
+{{< figure src="/images/organisation-applet/create-location.png" alt="Create Location view showing the Details tab with required fields like Location Code, Name, and Company/Branch links." caption="Create Location: Define the identity and hierarchy for your new physical or operational site." >}}
+
 | Tab | What users do there |
 |-----|---------------------|
 | **Details** | Maintain location code, location name, company, branch, company registration number, commencement date, phone number, description, and **Location Class**. |
 | **Address** | Maintain address lines, postal code, city, country, and state. |
 
 **Edit View Tabs:**
+
+{{< figure src="/images/organisation-applet/edit-location.png" alt="Location Edit view showing the Details tab for an existing record with additional sub-tabs unlocked like Branch links and Extensions." caption="Location Edit: Access expanded configuration tabs like Branch and Extensions after saving the location." >}}
 
 | Tab | What users see |
 |-----|----------------|
@@ -591,6 +613,8 @@ Use a **Group** when you need the classification master. Use a **Label** when yo
 
 ### Notification Template
 
+{{< figure src="/images/organisation-applet/notification-template.png" alt="Notification Template view showing the Listing grid on the left and the Create/Edit interface on the right with WhatsApp/Internal Sales Order selected." caption="Notification Template: Configure automated alerts and messaging for specific document actions across your organisation." >}}
+
 Manage notification templates and their supporting configuration.
 
 **Listing View:**
@@ -645,6 +669,8 @@ Start with the **Template** tab, choose the **Notification Type** first, then mo
 ## Configuration & Settings
 
 ### Field Settings (`Settings > Field Settings`)
+
+{{< figure src="/images/organisation-applet/field-settings.png" alt="Field Settings view in the Organisation Applet showing toggles for XTN_MAPPING_01 through 05 and SHOW_PARENT_BRANCH under the Branch > Main Details settings group." caption="Field Settings: Toggle optional configuration fields and external mapping indicators for your organisation levels." >}}
 
 The visible settings menu in the current sidebar includes **Field Settings** and **Default Selection**. The field-settings screen is intentionally narrow and exposes only a small set of toggles.
 
