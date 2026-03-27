@@ -75,7 +75,7 @@ Whether you have 10 laptops or 10,000 pieces of equipment, this applet keeps eve
   {{< card title="Settings & Configuration" subtitle="Set defaults, permissions, and feature visibility" link="#configuration--settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/asset-register-applet/asset-register-applet-overview-infographic.png" alt="Asset Register Applet Overview — track every asset from purchase to disposal" caption="From spreadsheet chaos to a single organised registry — register assets, track depreciation, and maintain a full audit trail." >}}
+{{< figure src="/images/asset-register-applet/asset-register-applet-overview.png" alt="Asset Register Applet Overview — track every asset from purchase to disposal" caption="From spreadsheet chaos to a single organised registry — register assets, track depreciation, and maintain a full audit trail." >}}
 
 ---
 
