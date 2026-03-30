@@ -413,3 +413,21 @@ All fields are optional. Omitting all fields returns recent documents up to the 
 - The `companyGuid` in the path determines which LHDN intermediary token is used for authentication.
 - Documents returned are those associated with the company's LHDN account (either as supplier or receiver, depending on `invoiceDirection`).
 - Date format must follow ISO 8601 with timezone, e.g. `2024-01-01T00:00:00Z`.
+
+
+## API 5 - Planned Endpoint
+
+```
+POST /core2/tnt/dm/erp/e-invoice/lhdn-integrations/retrieve-tax-payer-by-qr-code/etl-ep
+```
+
+**Controller:** `MyEInvoiceLHDNIntegrationController`
+
+### Planned Behaviour
+
+- Accepts a QR code string scanned from an LHDN-issued e-invoice
+- Queries LHDN MyInvois to resolve the taxpayer's TIN, name, and ID details
+- Returns structured taxpayer information that can be used to populate `einvoice_buyer_entity_hdr_json` or `einvoice_supplier_entity_hdr_json`
+
+Documentation will be updated with full request/response schemas and example usage when this feature is released.
+

@@ -267,19 +267,3 @@ Submission
 > **Note: This feature is currently in progress and will be implemented in a future release.**
 
 Retrieves taxpayer information by scanning or parsing a QR code from an LHDN MyInvois e-invoice document. This is useful for automatically populating buyer or supplier details without manual data entry.
-
-### Planned Endpoint
-
-```
-POST /core2/tnt/dm/erp/e-invoice/lhdn-integrations/retrieve-tax-payer-by-qr-code/etl-ep
-```
-
-**Controller:** `MyEInvoiceLHDNIntegrationController`
-
-### Planned Behaviour
-
-- Accepts a QR code string scanned from an LHDN-issued e-invoice
-- Queries LHDN MyInvois to resolve the taxpayer's TIN, name, and ID details
-- Returns structured taxpayer information that can be used to populate `einvoice_buyer_entity_hdr_json` or `einvoice_supplier_entity_hdr_json`
-
-Documentation will be updated with full request/response schemas and example usage when this feature is released.
