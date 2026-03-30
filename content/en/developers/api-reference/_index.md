@@ -70,6 +70,7 @@ PEPPOL and MyInvois compliance with automated validation and submission.
 - **[Validation API](./einvoice#validate)** - Validate invoice data before submission
 - **[Submission API](./einvoice#submit)** - Submit to government portals
 - **[Status Tracking API](./einvoice#status)** - Track submission status
+- **[Cancellation & Rejection API](./einvoice-api-reference/)** - Direct cancellation and rejection request workflows (Malaysia MyInvois)
 
 ### Inventory APIs
 Complete inventory management including stock levels, transfers, and adjustments.
