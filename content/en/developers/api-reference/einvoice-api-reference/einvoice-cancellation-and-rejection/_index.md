@@ -5,7 +5,7 @@ tags:
 - einvoice
 - cancellation
 - rejection
-title: eInvoice Cancellation & Rejection
+title: E-Invoice Cancellation & Rejection
 weight: 10
 ---
 
