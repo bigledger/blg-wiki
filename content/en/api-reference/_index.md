@@ -21,3 +21,6 @@ Complete API reference for BigLedger services.
 - **Smart Contract API** - Deploy and interact with smart contracts
 - **Analytics API** - Access transaction analytics and reports
 - **Webhook API** - Configure and manage webhooks
+
+### eInvoice APIs
+- **[eInvoice API Reference](einvoice-api-reference/)** - Malaysia MyInvois e-Invoice APIs including cancellation and rejection workflows
