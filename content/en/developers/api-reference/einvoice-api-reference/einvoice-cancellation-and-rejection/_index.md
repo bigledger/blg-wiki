@@ -34,7 +34,7 @@ In Malaysia's MyInvois system, a validated e-invoice can only be cancelled withi
 All endpoints are relative to the tenant-scoped base path:
 
 ```
-/core2/tnt/dm/erp/e-invoice/request-rejections
+https://api.akaun.com/core2/tnt/dm/erp/e-invoice/request-rejections
 ```
 
 > **Note:** All API calls require a valid bearer authentication token in the `Authorization` header. The tenant code is resolved from the token.
