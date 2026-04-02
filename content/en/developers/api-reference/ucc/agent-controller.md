@@ -1,4 +1,4 @@
-# AgentController APIs
+# Agent Controller APIs
 
 ## createAgent
 - **HTTP Method:** `POST`
