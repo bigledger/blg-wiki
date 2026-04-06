@@ -86,7 +86,7 @@ Without a dedicated workflow, teams usually rely on spreadsheets, email threads,
   {{< card title="Personalization" subtitle="User-level default branch/location preferences" link="#personalization" >}}
 {{< /cards >}}
 
-{{< figure src="/images/internal-purchase-self-billed-invoice-applet/internal-purchase-self-billed-invoice-overview.png" alt="Internal Purchase Self Billed Invoice infographic showing process challenges, applet solutions, and user roles." caption="Internal Purchase Self Billed Invoice Overview: Challenges solved, key capabilities, and the teams that benefit." >}}
+{{< figure src="/images/internal-purchase-self-billing-invoice-applet/internal-purchase-self-billed-invoice-overview.png" alt="Internal Purchase Self Billed Invoice infographic showing process challenges, applet solutions, and user roles." caption="Internal Purchase Self Billed Invoice Overview: Challenges solved, key capabilities, and the teams that benefit." >}}
 
 ## Key Concepts
 
@@ -168,7 +168,7 @@ The listing supports day-to-day AP operations with:
 - Bulk operations such as Final, Discard, Void, and printing (permission dependent)
 - ARAP-related columns for settlement and balance visibility
 
-{{< figure src="/images/internal-purchase-self-billed-invoice-applet/internal-purchase-self-billed-invoice-listing.png" alt="Internal Purchase Self Billed Invoice listing with filters, statuses, and bulk actions." caption="Main Listing Page: Search, monitor, and process invoice records at scale." >}}
+{{< figure src="/images/internal-purchase-self-billing-invoice-applet/internal-purchase-self-billed-invoice-listing.png" alt="Internal Purchase Self Billed Invoice listing with filters, statuses, and bulk actions." caption="Main Listing Page: Search, monitor, and process invoice records at scale." >}}
 
 ### Create and Edit Workspace
 
@@ -188,7 +188,7 @@ The edit workspace is tab-driven and includes:
 - Attachment
 - Export
 
-{{< figure src="/images/internal-purchase-self-billed-invoice-applet/internal-purchase-self-billed-invoice-create-edit-form.png" alt="Create/Edit invoice workspace with tabbed sections for details, lines, payment, posting, and links." caption="Create/Edit Form: Complete invoice details with structured tabs and control points." >}}
+{{< figure src="/images/internal-purchase-self-billing-invoice-applet/internal-purchase-self-billed-invoice-create-edit-form.png" alt="Create/Edit invoice workspace with tabbed sections for details, lines, payment, posting, and links." caption="Create/Edit Form: Complete invoice details with structured tabs and control points." >}}
 
 ### Action Rules
 
