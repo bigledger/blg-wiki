@@ -440,7 +440,7 @@ The Ledger and Journal applet automatically creates journal entries from transac
 
 {{< cards >}}
   {{< card link="/applets/sales-invoice-applet/" title="Sales Invoice" subtitle="Generates journal entries for sales revenue and accounts receivable." >}}
-  {{< card link="/applets/pos-terminal-applet/" title="Cash Bill (POS)" subtitle="Creates journal entries for point-of-sale transactions." >}}
+  {{< card link="/applets/pos-general-applet/" title="Cash Bill (POS)" subtitle="Creates journal entries for point-of-sale transactions." >}}
   {{< card link="/applets/sales-return-applet/" title="Sales Return" subtitle="Records journal entries for customer returns." >}}
   {{< card link="/applets/sales-credit-note-applet/" title="Sales Credit Note" subtitle="Posts journal entries for credits issued to customers." >}}
   {{< card link="/applets/sales-debit-note-applet/" title="Sales Debit Note" subtitle="Posts journal entries for debits issued to customers." >}}
