@@ -10,6 +10,10 @@ tags:
 weight: 61
 ---
 
+{{< callout type="warning" >}}
+**Under Review**: This applet is still under review.
+{{< /callout >}}
+
 ## Purpose and Overview
 
 The **Employee Applet** is the central hub for managing employee master data in the Akaun Platform. It brings together employee profiles, reporting lines, login access, payroll and tax configuration, claims setup, and compliance records in one structured system.

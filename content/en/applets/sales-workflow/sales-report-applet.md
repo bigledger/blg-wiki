@@ -10,6 +10,10 @@ tags:
 weight: 120
 ---
 
+{{< callout type="warning" >}}
+**Under Review**: This applet is still under review.
+{{< /callout >}}
+
 ## Purpose and Overview
 
 The **Sales Report Applet** is a powerful tool designed to analyze sales records and performance. It helps teams track revenue, monitor trends, and spot opportunities or issues over time. The applet lets users review, compare figures and periods; and assess team or product performanceâ€”providing the data and views needed to support data-driven decisions.

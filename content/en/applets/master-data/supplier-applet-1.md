@@ -13,6 +13,10 @@ tags:
 weight: 70
 ---
 
+{{< callout type="warning" >}}
+**Under Review**: This applet is still under review.
+{{< /callout >}}
+
 ## Purpose and Overview
 
 The **Supplier Applet** is a centralized workspace for supplier master data across procurement and finance. It supports supplier onboarding, profile maintenance, payment and tax setup, credit controls, bulk upload/download workflows, and duplicate cleanup.

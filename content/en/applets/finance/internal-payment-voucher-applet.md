@@ -14,6 +14,10 @@ tags:
 weight: 20
 ---
 
+{{< callout type="warning" >}}
+**Work in progress**: This applet documentation needs changes and more explaination.
+{{< /callout >}}
+
 ## Purpose and Overview
 
 The **Internal Payment Voucher Applet** streamlines the full lifecycle of internal payment vouchers, from creation and expense capture to settlement, adjustments, and final posting. It brings together voucher header details, expense lines, payment lines, and traceability so finance teams can process payments with speed and control across the main menus: **Internal Payment Voucher**, **File Import**, **File Export**, **Intercompany**, **Settlement Adjustment**, and **Expenses Adjustment**.

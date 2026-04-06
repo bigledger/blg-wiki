@@ -10,6 +10,10 @@ tags:
 weight: 20
 ---
 
+{{< callout type="warning" >}}
+**Under Review**: This applet is still under review.
+{{< /callout >}}
+
 ## Purpose and Overview
 
 The **Internal Sales Order Applet** is a full lifecycle sales order management module for Wavelet ERP. It covers order creation, editing, approval, fulfillment, delivery planning, e-commerce synchronization, reporting, and file import/export. It is designed to centralize sales order data, enforce operational controls (credit limits, workflow status, posting status), and connect downstream processes such as pick/pack, delivery, invoicing, and accounting.

@@ -10,6 +10,10 @@ tags:
 weight: 185
 ---
 
+{{< callout type="warning" >}}
+**Under Review**: This applet is still under review.
+{{< /callout >}}
+
 ## Purpose and Overview
 
 The **Stock Balance Applet** provides a live, consolidated view of inventory quantities across your organization. It helps you understand what is on hand, where it is stored, and how balances change across locations.
