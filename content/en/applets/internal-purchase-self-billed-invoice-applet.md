@@ -241,7 +241,7 @@ Typical progress stages include pending queue states and submitted state trackin
 
 ## Configuration & Settings
 
-{{< figure src="/images/internal-purchase-self-billed-invoice-applet/internal-purchase-self-billed-invoice-settings,png" alt="Settings page with default selection, application settings, and printable format controls." caption="Settings Page: Configure defaults, visibility behavior, KO options, and governance controls." >}}
+{{< figure src="/images/internal-purchase-self-billed-invoice-applet/internal-purchase-self-billed-invoice-settings.png" alt="Settings page with default selection, application settings, and printable format controls." caption="Settings Page: Configure defaults, visibility behavior, KO options, and governance controls." >}}
 
 ### Application Settings (`Settings > Application Settings`)
 
