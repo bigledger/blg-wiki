@@ -13,6 +13,12 @@ lastmod: 2026-04-06
 draft: false
 ---
 
+{{< callout type="warning" >}}
+**Supplier Delivery Order Applet user guide still under progress**
+
+**Work in Progress: This documentation is currently under development. Visual assets (screenshots) and further details will be added soon.**
+{{< /callout >}}
+
 ## Executive Summary
 
 The **Supplier Delivery Order Applet** lets your organization record and manage **supplier delivery orders** in one place: maintain documents tied to suppliers, capture **delivery instructions** (branch, location, regions), and support **driver** workflows via a dedicated listing. It uses the same configurable document pattern as other Wavelet procurement applets, with permissions, printable formats, webhooks, and personalization aligned to your tenant.
