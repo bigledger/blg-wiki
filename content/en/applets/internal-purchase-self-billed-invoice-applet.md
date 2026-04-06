@@ -225,7 +225,7 @@ Use file import for bulk document loading:
 4. Upload file and submit.
 5. Review process status and error message columns.
 
-{{< figure src="/images/internal-purchase-self-billed-invoice-applet/internal-purchase-self-billed-invoice-file-import.png" alt="File Import screen with delimiter options, template download, upload controls, and process status listing." caption="File Import: Bulk upload with delimiter selection and status/error monitoring." >}}
+{{< figure src="/images/internal-purchase-self-billing-invoice-applet/internal-purchase-self-billed-invoice-create-edit-form.png" alt="File Import screen with delimiter options, template download, upload controls, and process status listing." caption="File Import: Bulk upload with delimiter selection and status/error monitoring." >}}
 
 ## E-Invoice Workflow
 
@@ -241,7 +241,7 @@ Typical progress stages include pending queue states and submitted state trackin
 
 ## Configuration & Settings
 
-{{< figure src="/images/internal-purchase-self-billed-invoice-applet/internal-purchase-self-billed-invoice-settings.png" alt="Settings page with default selection, application settings, and printable format controls." caption="Settings Page: Configure defaults, visibility behavior, KO options, and governance controls." >}}
+{{< figure src="/images/internal-purchase-self-billed-invoice-applet/internal-purchase-self-billed-invoice-settings,png" alt="Settings page with default selection, application settings, and printable format controls." caption="Settings Page: Configure defaults, visibility behavior, KO options, and governance controls." >}}
 
 ### Application Settings (`Settings > Application Settings`)
 
