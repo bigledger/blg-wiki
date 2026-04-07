@@ -65,7 +65,7 @@ Without a structured approach, businesses often face:
 - **PO Generation** - Convert order quantities directly into Purchase Orders
 - **Reporting** - Centralized Order Qty Reports for analysis and decision-making
 
-## Key Features Overview
+## Applet Components & Navigation
 
 {{< cards >}}
   {{< card title="Replenishment Runs" subtitle="Execute and review replenishment calculations" link="#replenishment-runs" >}}
@@ -180,6 +180,17 @@ Get up and running quickly with these essential workflows.
 
 ---
 
+### For Inventory Managers: Analyze Consolidated Needs
+
+**Goal:** Review overall order quantities across multiple replenishment runs and locations independently from daily purchasing.
+
+1. **Navigate**: Go to **Order Qty Reports**
+2. **Filter**: Use the advanced filters to isolate specific **Categories**, **Run Dates**, or **Templates**.
+3. **Analyze**: Compare calculated order quantities globally to spot duplication or bulk-discount opportunities.
+4. **Export**: Export the consolidated report for budget forecasting and management review.
+
+---
+
 ## Executing Replenishment Runs
 
 This section details your primary workspace for executing and reviewing replenishment calculations.
@@ -203,8 +214,9 @@ Once a run is created, you access a powerful tabbed interface:
 | Tab | What It Shows | How to Use It |
 |-----|---------------|---------------|
 | **Details** | Run metadata, dates, and audit trail | Verify the period you are analyzing. |
-| **Locations / Items / Suppliers** | The specific entities scoped in this run | Use these to exclude specific items or suppliers from this specific run. |
+| **Locations / Items / Suppliers / Categories** | The specific entities scoped in this run | Use these to exclude specific items, categories, or suppliers from this run. |
 | **Item List** | Master view of all stock data | Use this table to analyze `qty_balance`, `qty_available`, and costs (`ma_cost`, `last_purchase_cost`) per item. |
+| **Order Qty** | Calculated suggested order amounts | Review the system-calculated order suggestions based on demand and balance. |
 | **Order Fulfillments (PO)** | Status of POs generated from this run | Track whether suppliers have fulfilled the orders you placed last week! |
 | **Purchase Orders** | The generated PO records | Your gateway to creating actual supplier orders from the calculated quantities. |
 | **Export** | Data extraction tools | Download the run data to Excel for management review. |
@@ -316,3 +328,6 @@ A: Yes! Admins can go to **Settings > Default Selection > Details Tab Ordering**
 
 **Q: Who can see the `ma_cost` (Moving Average Cost) in the Item List?**
 A: Field visibility can be controlled via **Settings > Field Settings** and through the permission matrices, ensuring sensitive cost data is only visible to authorized purchasers or managers.
+
+**Q: Why is a specific item not appearing in my Replenishment Run?**
+A: First check the scope tabs (Locations / Items / Categories / Suppliers) within your run to ensure it wasn't manually excluded. If it's missing entirely from the *Item List*, verify that the associated **Replenishment Template** actually includes the item's category and the location it is stored in.
