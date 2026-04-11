@@ -11,7 +11,7 @@ weight: 165
 ---
 
 {{< callout type="warning" >}}
-**Work in progress**: This applet documentation needs detailed expansion. This is a placeholder with basic structure and key information.
+**Work in progress**: This applet documentation needs is in review.
 {{< /callout >}}
 
 ## Purpose and Overview
