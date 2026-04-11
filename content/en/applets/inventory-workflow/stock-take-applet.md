@@ -22,7 +22,7 @@ The **Stock Take Applet** is a practical, operations-ready tool for running accu
 **Core Concept**: The applet links your count process end-to-end: **Session** (when/where you count), **Device** (who counts), **Records** (what was counted), and **Report** (how variance is reconciled).
 {{< /callout >}}
 
-{{< figure src="/images/stock-take-applet/stock-take-main-listing.png" alt="Stock Take Applet main listing with session visibility, status indicators, and navigation to key workflows." caption="Main Listing Page: Monitor stock take sessions and move quickly into counting and reconciliation flows." >}}
+{{< figure src="/images/stock-take-applet/stock-take-main-overview.png" alt="Stock Take Applet landing view showing module navigation for sessions, devices, reports, settings, and personalization." caption="Stock Take Applet Overview: Access all core stock take workflows from a single operational workspace." >}}
 
 ### About the Applet
 
@@ -178,7 +178,11 @@ Use these role-specific workflows to go live quickly.
    - `ENABLE_AUTO_SCAN` (if you want scan-to-list automation)
    - `ENABLE_VALIDATE_SERIAL` (for serialized stock control)
    - `SCAN_CODE_MOBILE_VIEW` (if mobile camera scanning is used)
+
 3. Configure `WORKFLOW_PROCESS_GUID` if workflow control is required for session progression.
+
+{{< figure src="/images/stock-take-applet/auto-scan.png" alt="Field Settings screen with auto scan, serial validation, mobile scan, and workflow process configuration options." caption="Field Settings: Configure scan behavior, validation controls, and workflow process linking before go-live." >}}
+
 4. Open **Settings > Default Selection** and set default Branch and Location.
 5. Open **Personalization > Default Selection** and verify user-level overrides for pilot users.
 6. Test end-to-end with one sample session:
@@ -196,7 +200,14 @@ Use these role-specific workflows to go live quickly.
 **Goal:** Complete variance review with evidence-ready notes.
 
 1. Open the target session and go to **Report** tab.
+
+{{< figure src="/images/stock-take-applet/session-report.png" alt="Session Report tab displaying generated report lines, variance columns, and reconciliation context for a selected stock take session." caption="Session Report View: Analyze item-level variance and prepare reconciliation within the active stock take session." >}}
+
 2. Filter by report type (`Scanned Items`, `Active Items`, or `All Items`).
+
+
+{{< figure src="/images/stock-take-applet/session-report-search.png" alt="Session Report advanced search with report type filters for Scanned Items, Active Items, or All Items." caption="Session Report Search: Filter report scope quickly to focus on the exact reconciliation set." >}}
+
 3. Review quantity variance, serial variance, and total cost impact.
 4. Enter reasons inline for key exceptions, or click **UPLOAD REASON**.
 5. Export report template, fill `TotalQty` and `reason`, then import it back.
@@ -237,9 +248,13 @@ The **Details** tab includes:
 
 Use this tab to attach active devices to the session. A device can then be used by counters to record stock lines during that session.
 
+{{< figure src="/images/stock-take-applet/device-tab.png" alt="Devices tab inside Session Edit showing assigned counting devices and their current statuses." caption="Session Devices Tab: Attach and review active counting devices for the selected stock take session." >}}
+
 ### Records Tab
 
 Provides session-wide visibility of counted lines across assigned devices. Supervisors can spot missing lines, mismatches, and outliers quickly.
+
+{{< figure src="/images/stock-take-applet/session-record.png" alt="Records tab showing counted item lines with item code, quantity, UOM, and last updated information." caption="Session Records Tab: Track captured stock counts and review record-level details during execution." >}}
 
 ### Report Tab
 
@@ -248,6 +263,8 @@ This is the reconciliation workspace:
 - Filter and inspect variance
 - Capture reasons
 - Launch reason upload flow
+
+{{< figure src="/images/stock-take-applet/session-report-tab.png" alt="Session Report tab controls with Generate/Regenerate actions, report listing, and reason update flow." caption="Session Report Tab: Generate variance output and manage reconciliation actions from one tab." >}}
 
 ## Device Management
 
@@ -258,9 +275,9 @@ The **Devices** menu manages your master stock take devices:
 
 {{< figure src="/images/stock-take-applet/stock-take-device-listing.png" alt="Stock Take Device listing with device code, model information, and active status used for assignment." caption="Device Listing Page: Manage available counting devices before assigning them to stock take sessions." >}}
 
-{{< figure src="/images/stock-take-applet/stock-take-device-create-form.png" alt="Stock Take Device create and edit form with device identity fields and activation controls." caption="Device Form Page: Add or update device profiles to support controlled session-based counting." >}}
+{{< figure src="/images/stock-take-applet/stock-take-device-create-form.png" alt="Create Device form with device name, code, brand, model, and status fields for new counting devices." caption="Create Device Form: Register a new stock take device for assignment into session workflows." >}}
 
-{{< figure src="/images/stock-take-applet/stock-take-device-edit-form.png" alt="Stock Take Device create and edit form with device identity fields and activation controls." caption="Device Form Page: Add or update device profiles to support controlled session-based counting." >}}
+{{< figure src="/images/stock-take-applet/stock-take-device-edit-form.png" alt="Edit Device form showing existing device details, status updates, and audit metadata fields." caption="Edit Device Form: Maintain device profile details and activation status for ongoing operations." >}}
 
 ## Counting Workflows
 
@@ -301,7 +318,6 @@ Report lines include:
 **Terminology Note**: In report screens, **EMP Quantity** refers to the system ending balance used for variance comparison.
 {{< /callout >}}
 
-//find
 {{< figure src="/images/stock-take-applet/stock-take-session-report-details.png" alt="Stock Take Session report details showing item-level quantities, variance metrics, and reason fields." caption="Session Report Details Page: Reconcile counted quantities against system balances at item level." >}}
 
 ### Cross-Session Report Listing
@@ -324,10 +340,9 @@ The applet supports reconciliation at scale:
 3. Import file to update report lines in bulk.
 4. Re-open report to verify updates.
 
-//find
 {{< figure src="/images/stock-take-applet/stock-take-upload-reason.png" alt="Upload reason screen for importing Excel-based variance notes and quantity adjustments." caption="Upload Reason Page: Import reconciliation reasons in bulk using the stock take report template." >}}
 
-{{< figure src="/images/stock-take-applet/stock-take-upload-reason-1.png" alt="Upload reason screen for importing Excel-based variance notes and quantity adjustments." caption="Upload Reason Page: Import reconciliation reasons in bulk using the stock take report template." >}}
+{{< figure src="/images/stock-take-applet/stock-take-upload-reason-1.png" alt="Upload Reason follow-up screen showing selected file state and import action readiness." caption="Upload Reason Confirmation: Validate the prepared file and proceed with bulk reason import." >}}
 
 ## Configuration & Settings
 
@@ -352,14 +367,6 @@ Control runtime behavior through these toggles:
 Set applet-level defaults:
 - Default Branch
 - Default Location
-
-### `Personalization > Default Selection`
-
-Set user-level defaults that override applet defaults:
-- User Default Branch
-- User Default Location
-
-{{< figure src="/images/stock-take-applet/stock-take-personalization-page.png" alt="Stock Take Applet personalization settings for user-specific branch and location defaults." caption="Personalization Page: Set user-level defaults to streamline day-to-day stock take execution." >}}
 
 ### Permission and Integration Utilities
 
