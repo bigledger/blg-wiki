@@ -12,7 +12,7 @@ weight: 161
 ---
 
 {{< callout type="warning" >}}
-**Work in progress**: This applet documentation needs detailed expansion. This is a placeholder with basic structure and key information.
+**Work in progress**: Need confirmation weather need to continue or not due to same funcion as Purchase Return Applet
 {{< /callout >}}
 
 ## Purpose and Overview
@@ -225,7 +225,7 @@ Use file import for bulk document loading:
 4. Upload file and submit.
 5. Review process status and error message columns.
 
-{{< figure src="/images/internal-purchase-self-billing-invoice-applet/internal-purchase-self-billed-invoice-create-edit-form.png" alt="File Import screen with delimiter options, template download, upload controls, and process status listing." caption="File Import: Bulk upload with delimiter selection and status/error monitoring." >}}
+{{< figure src="/images/internal-purchase-self-billing-invoice-applet/internal-purchase-self-billed-invoice-file-import.png" alt="File Import screen with delimiter options, template download, upload controls, and process status listing." caption="File Import: Bulk upload with delimiter selection and status/error monitoring." >}}
 
 ## E-Invoice Workflow
 
