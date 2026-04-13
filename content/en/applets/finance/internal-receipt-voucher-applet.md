@@ -1,6 +1,6 @@
 ﻿---
-title: "Internal Receipt Voucher Applet"
-description: "End-to-end internal receipt voucher processing: create vouchers, manage line items and payments, handle settlement adjustments, and import vouchers in bulk."
+title: "Receipt Voucher (Internal) Applet"
+description: "End-to-end Receipt Voucher (Internal) processing: create vouchers, manage line items and payments, handle settlement adjustments, and import vouchers in bulk."
 tags:
 - internal-receipt-voucher
 - finance
@@ -15,7 +15,7 @@ weight: 10
 
 ## Purpose and Overview
 
-The **Internal Receipt Voucher Applet** streamlines the end-to-end process of managing internal receipt vouchers. It enables finance teams to create, edit, and import vouchers, manage line items, payments, contras, and settlement adjustments—all while maintaining audit traceability and compliance with branch/accounting controls.
+The **Receipt Voucher (Internal) Applet** streamlines the end-to-end process of managing internal receipt vouchers. It enables finance teams to create, edit, and import vouchers, manage line items, payments, contras, and settlement adjustments—all while maintaining audit traceability and compliance with branch/accounting controls.
 
 {{< callout type="info" >}}
 **Core Concept:** This applet unifies receipt processing, settlement, and adjustments in a single workflow, supporting multi-currency, inventory tracking, and multi-level approvals.
@@ -56,7 +56,7 @@ The **Internal Receipt Voucher Applet** streamlines the end-to-end process of ma
 
 **Manual voucher processing is slow, error-prone, and hard to audit.**
 
-**The Internal Receipt Voucher Applet Solution:**
+**The Receipt Voucher (Internal) Applet Solution:**
 - Digitalizes voucher creation and approval
 - Automates settlement and contra management
 - Supports bulk import for high volume
@@ -99,7 +99,7 @@ Receipt Voucher
 4. **Add Payments/Contras**: Allocate receipts, add contra lines if needed
 5. **Save & Submit**: Save as draft or submit for approval
 
-{{< figure src="/screenshots/internal-receipt-voucher/listing.png" alt="Internal Receipt Voucher listing" caption="Voucher listing view with filters and actions." >}}
+{{< figure src="/screenshots/internal-receipt-voucher/listing.png" alt="Receipt Voucher (Internal) listing" caption="Voucher listing view with filters and actions." >}}
 
 ---
 
@@ -124,7 +124,7 @@ Receipt Voucher
 
 ## Voucher Management
 
-The main workflow centers on the **Internal Receipt Voucher** menu:
+The main workflow centers on the **Receipt Voucher (Internal)** menu:
 
 - **List Vouchers**: Paginated, filterable list of vouchers
 - **Create/Edit**: Enter header details, link entities, and save
@@ -220,11 +220,11 @@ Configure the applet under **Settings**:
 
 ## Summary
 
-The Internal Receipt Voucher Applet delivers a controlled, auditable workflow for internal receipt handling—combining voucher entry, line-item and financial management, settlement tools, and bulk import, with seamless integration into core finance processes.
+The Receipt Voucher (Internal) Applet delivers a controlled, auditable workflow for internal receipt handling—combining voucher entry, line-item and financial management, settlement tools, and bulk import, with seamless integration into core finance processes.
 
 ## Video Walkthrough
 
-Watch this video to see how to use the Internal Receipt Voucher Applet:
+Watch this video to see how to use the Receipt Voucher (Internal) Applet:
 
 {{< youtube tnTYuYGV6J4 >}}
 
@@ -299,13 +299,13 @@ The applet is organized into the following primary sections:
 
 ## Screens and Workflows
 
-### 1. Internal Receipt Voucher Management
-The primary workflow revolves around the **Internal Receipt Voucher** menu. Users can:
+### 1. Receipt Voucher (Internal) Management
+The primary workflow revolves around the **Receipt Voucher (Internal)** menu. Users can:
 - **List Vouchers**: View a paginated list of existing vouchers with filtering capabilities.
 - **Create/Edit Vouchers**: Enter header details such as Branch, Company, Location, Document Number, Reference, Transaction Date, and Currency.
 - **Entity Linking**: Link vouchers to specific Entities, Billing Addresses, Shipping Addresses, and Contacts.
 
-{{< figure src="/screenshots/internal-receipt-voucher/listing.png" alt="Internal Receipt Voucher listing" caption="Internal Receipt Voucher listing view." >}}
+{{< figure src="/screenshots/internal-receipt-voucher/listing.png" alt="Receipt Voucher (Internal) listing" caption="Receipt Voucher (Internal) listing view." >}}
 
 {{< figure src="/screenshots/internal-receipt-voucher/main-details.png" alt="Main details form" caption="Main details section for voucher setup." >}}
 
@@ -421,7 +421,7 @@ The applet is designed for scalable enterprise operations:
 
 ## Related Applets
 
-The Internal Receipt Voucher Applet interacts with several other core modules:
+The Receipt Voucher (Internal) Applet interacts with several other core modules:
 
 - **[Customer Applet](/applets/customer-applet/)**: For selecting entities and managing customer billing/shipping details.
 - **[Chart of Account Applet](/applets/chart-of-account-applet/)**: For defining the underlying GL accounts used in vouchers and contras.
@@ -429,6 +429,6 @@ The Internal Receipt Voucher Applet interacts with several other core modules:
 
 ## Summary
 
-The Internal Receipt Voucher Applet provides a controlled, auditable workflow for internal receipt handling. It combines voucher entry, line-item and financial detail management, settlement correction tools, and bulk import support in one applet, with clear integration into customer, chart of account, and general ledger processes.
+The Receipt Voucher (Internal) Applet provides a controlled, auditable workflow for internal receipt handling. It combines voucher entry, line-item and financial detail management, settlement correction tools, and bulk import support in one applet, with clear integration into customer, chart of account, and general ledger processes.
 
 

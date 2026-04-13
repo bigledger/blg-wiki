@@ -261,6 +261,6 @@ The Transaction Recon applet requires a properly configured Company profile to m
 **Purpose:** The central bookkeeping record for your entire organization.  
 **Relation:** Reconciled data provides "Verified" balances for your gateway receivables in the G/L.
 
-### Internal Receipt Voucher Applet
+### Receipt Voucher (Internal) Applet
 **Purpose:** Confirms receipt of funds for intercompany or customer transactions.  
 **Relation:** Reconciled transactions are often the "Proof of Payment" required to finalize a Receipt Voucher.

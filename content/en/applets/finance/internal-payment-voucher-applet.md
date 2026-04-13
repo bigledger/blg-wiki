@@ -1,6 +1,6 @@
 ---
-title: "Internal Payment Voucher Applet"
-description: "End-to-end internal payment voucher processing: create vouchers, manage expenses and payments, handle settlements and adjustments, and export or import vouchers in bulk."
+title: "Payment Voucher (Internal) Applet"
+description: "End-to-end Payment Voucher (Internal) processing: create vouchers, manage expenses and payments, handle settlements and adjustments, and export or import vouchers in bulk."
 tags:
 - internal-payment-voucher
 - finance
@@ -20,7 +20,7 @@ weight: 20
 
 ## Purpose and Overview
 
-The **Internal Payment Voucher Applet** streamlines the full lifecycle of internal payment vouchers, from creation and expense capture to settlement, adjustments, and final posting. It brings together voucher header details, expense lines, payment lines, and traceability so finance teams can process payments with speed and control across the main menus: **Internal Payment Voucher**, **File Import**, **File Export**, **Intercompany**, **Settlement Adjustment**, and **Expenses Adjustment**.
+The **Payment Voucher (Internal) Applet** streamlines the full lifecycle of internal payment vouchers, from creation and expense capture to settlement, adjustments, and final posting. It brings together voucher header details, expense lines, payment lines, and traceability so finance teams can process payments with speed and control across the main menus: **Payment Voucher (Internal)**, **File Import**, **File Export**, **Intercompany**, **Settlement Adjustment**, and **Expenses Adjustment**.
 
 {{< callout type="info" >}}
 **Core Concept**: The applet links **who** is paid (entity/supplier) to **what** is paid (expense lines) and **how** it is settled (payment lines, contra, and adjustments) while preserving posting and audit traceability.
@@ -66,7 +66,7 @@ Manual payment vouchers often lead to:
 - Unclear settlement balances
 - Weak audit trails and poor traceability
 
-**The Internal Payment Voucher Applet Solution:**
+**The Payment Voucher (Internal) Applet Solution:**
 
 - **Structured voucher capture** with header, expenses, and payments
 - **Built-in settlement controls** and adjustments
@@ -88,7 +88,7 @@ Manual payment vouchers often lead to:
   {{< card title="Trace and Audit" subtitle="Trace documents and audit logs" link="#trace-and-audit" >}}
 {{< /cards >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/internal-payment-voucher-overview.png" alt="Internal Payment Voucher overview infographic" caption="Infographic highlighting challenges, solutions, and beneficiary roles." >}}
+{{< figure src="/images/internal-payment-voucher-applet/internal-payment-voucher-overview.png" alt="Payment Voucher (Internal) overview infographic" caption="Infographic highlighting challenges, solutions, and beneficiary roles." >}}
 
 internal-payment-voucher-overview
 
@@ -149,14 +149,14 @@ This triangle keeps payment processing consistent and auditable. If one side cha
 
 ## Quick Start Guide
 
-{{< figure src="/images/internal-payment-voucher-applet/internal-payment-voucher-quick-start.png" alt="Quick start infographic for Internal Payment Voucher" caption="Role-based quick start flow for creating, reviewing, and exporting vouchers." >}}
+{{< figure src="/images/internal-payment-voucher-applet/internal-payment-voucher-quick-start.png" alt="Quick start infographic for Payment Voucher (Internal)" caption="Role-based quick start flow for creating, reviewing, and exporting vouchers." >}}
 
 ### For Finance Executives: Create Your First Payment Voucher
 
-1. Go to **Internal Payment Voucher** from the sidebar.
-{{< figure src="/images/internal-payment-voucher-applet/pv.png" alt="Internal Payment Voucher listing" caption="Listing view with filters, actions, and email template selection." >}}
+1. Go to **Payment Voucher (Internal)** from the sidebar.
+{{< figure src="/images/internal-payment-voucher-applet/pv.png" alt="Payment Voucher (Internal) listing" caption="Listing view with filters, actions, and email template selection." >}}
 2. Click **+** and fill main details (branch, company, date, currency, reference).
-{{< figure src="/images/internal-payment-voucher-applet/pv-add.png" alt="Add Internal Payment Voucher button" caption="Plus button on the listing used to create a new voucher." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-add.png" alt="Add Payment Voucher (Internal) button" caption="Plus button on the listing used to create a new voucher." >}}
 3. Open **Account** and select the entity, billing, and shipping details.
 {{< figure src="/images/internal-payment-voucher-applet/pv-entity.png" alt="Account tab with Entity Details" caption="Entity Details fields for the payee in the Account tab." >}}
 
@@ -220,10 +220,10 @@ This triangle keeps payment processing consistent and auditable. If one side cha
 
 ### For Managers/Controllers: Review and Finalize
 
-1. Open **Internal Payment Voucher** and filter by status or date.
+1. Open **Payment Voucher (Internal)** and filter by status or date.
 {{< figure src="/images/internal-payment-voucher-applet/pv-stat-date.png" alt="Advanced search filters" caption="Status and date range filters for the listing." >}}
 2. Review **Main Details**, **Expenses**, and **Payment** tabs for completeness.
-{{< figure src="/images/internal-payment-voucher-applet/pv-edit.png" alt="Edit Internal Payment Voucher - Main Details" caption="Edit view showing Main Details fields and actions." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-edit.png" alt="Edit Payment Voucher (Internal) - Main Details" caption="Edit view showing Main Details fields and actions." >}}
 
 {{< figure src="/images/internal-payment-voucher-applet/pv-expenses-edit.png" alt="Expenses tab in edit view" caption="Expenses tab with line items and totals." >}}
 
@@ -373,7 +373,7 @@ Status: Fully settled
 
 ## Voucher Management
 
-The main workflow centers on the **Internal Payment Voucher** menu:
+The main workflow centers on the **Payment Voucher (Internal)** menu:
 
 - **List and filter vouchers** with advanced search and column toggles
 - **Create, edit, and clone** vouchers from the listing
@@ -381,9 +381,9 @@ The main workflow centers on the **Internal Payment Voucher** menu:
 - **Send email** and **print** vouchers from the listing (email requires a selected template)
 - **Template selection** for Send Email is available directly on the listing toolbar
 
-{{< figure src="/images/internal-payment-voucher-applet/pv.png" alt="Internal Payment Voucher listing (alternate view)" caption="Listing view for Internal Payment Voucher." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv.png" alt="Payment Voucher (Internal) listing (alternate view)" caption="Listing view for Payment Voucher (Internal)." >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-edit.png" alt="Internal Payment Voucher create/edit form" caption="Create/Edit form with tabs for details, expenses, and payment." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-edit.png" alt="Payment Voucher (Internal) create/edit form" caption="Create/Edit form with tabs for details, expenses, and payment." >}}
 
 **Common Statuses:**
 
@@ -434,7 +434,7 @@ Use **Void** to cancel a voucher **after** it has been finalized, while keeping 
 
 ### How to Void a Payment Voucher (User Guide)
 
-1. Open **Internal Payment Voucher** from the sidebar.
+1. Open **Payment Voucher (Internal)** from the sidebar.
 2. Filter and select the **Final** voucher you want to void.
 {{< figure src="/images/internal-payment-voucher-applet/pv-filter-final.png" alt="Search Filter for Posting Status FINAL" caption="Filter using Posting Status into FINAL to make it faster to search for Payment Voucher which have been FINAL" >}}
 
@@ -530,7 +530,7 @@ Intercompany records are generated from **Internal Payment Vouchers** that are f
 
 ### How to Create an Intercompany Transaction
 
-1. Create or open an **Internal Payment Voucher**.
+1. Create or open an **Payment Voucher (Internal)**.
 2. Go to **Account** and open the **Intercompany** sub‑tab (if enabled).
 3. Select the intercompany entity/branch or required intercompany fields.
 4. Save and **Final** the voucher.
@@ -569,7 +569,7 @@ Generate payment voucher exports for downstream payment runs:
 
 ## Trace and Audit
 
-- **Where to trace a payment voucher**: Open **Internal Payment Voucher** from the sidebar, select a voucher, and go to **Trace Document** in the edit view. Trace tabs appear after the voucher is **Final**.
+- **Where to trace a payment voucher**: Open **Payment Voucher (Internal)** from the sidebar, select a voucher, and go to **Trace Document** in the edit view. Trace tabs appear after the voucher is **Final**.
 - **Trace Document**: View posting trace and downstream status (available after finalization).
 - **Applet Log**: Review who changed what, and when (Settings > Applet Log).
 
@@ -599,7 +599,7 @@ Configure the applet under **Settings**:
 - **Applet Log**: System audit trail for voucher actions.
 - **Release Notes**: Track changes delivered to the applet.
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-app-setting.png" alt="Internal Payment Voucher settings" caption="Settings page for field visibility, defaults, and templates." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-app-setting.png" alt="Payment Voucher (Internal) settings" caption="Settings page for field visibility, defaults, and templates." >}}
 
 ---
 
@@ -614,7 +614,7 @@ Configure the applet under **Settings**:
 
 ## Summary
 
-The Internal Payment Voucher Applet provides a controlled, auditable workflow for managing internal payments. It combines voucher entry, expense and payment management, settlement adjustments, intercompany handling, and file import/export in one place, with clear traceability for finance and compliance.
+The Payment Voucher (Internal) Applet provides a controlled, auditable workflow for managing internal payments. It combines voucher entry, expense and payment management, settlement adjustments, intercompany handling, and file import/export in one place, with clear traceability for finance and compliance.
 
 ---
 
@@ -633,7 +633,7 @@ A: Payment lines and settlement adjustments do not fully match the expense total
 A: Go to **File Export**, pick the transaction date range, and click **Generate CSV**.
 
 **Q: Where can I trace a payment voucher?**
-A: Open the voucher from **Internal Payment Voucher** and go to **Trace Document** in the edit view. Trace tabs appear after the voucher is **Final**.
+A: Open the voucher from **Payment Voucher (Internal)** and go to **Trace Document** in the edit view. Trace tabs appear after the voucher is **Final**.
 
 **Q: Can I link a voucher to related documents?**
 A: Yes. Use **Doc Link** to connect related documents and keep traceability intact.

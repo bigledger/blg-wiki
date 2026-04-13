@@ -1,5 +1,5 @@
-﻿---
-title: "Internal Purchase Quotation Applet"
+---
+title: "Purchase Quotation (Internal) Applet"
 description: "Create and manage internal purchase quotations (PQ), including supplier/account details, line items, delivery/payment details, contra, attachments, KO import (Purchase Requisition), and line-level analysis."
 weight: 90
 tags:
@@ -12,7 +12,7 @@ tags:
 
 ## Purpose and Overview
 
-The **Internal Purchase Quotation Applet** supports preparing and managing **Purchase Quotations (PQ)** in a controlled workflow.
+The **Purchase Quotation (Internal) Applet** supports preparing and managing **Purchase Quotations (PQ)** in a controlled workflow.
 
 It is designed to:
 - Create purchase quotation documents with structured header, account, and line details

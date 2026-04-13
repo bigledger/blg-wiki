@@ -196,7 +196,7 @@ All 13 Core Module applets (listed above) are included in CP-Commerce Module.
 - Manage journals, ledgers, and financial postings
 - Real-time trial balance and financial statements
 
-### 2. [Internal Receipt Voucher Applet](/applets/internal-receipt-voucher-applet/)
+### 2. [Receipt Voucher (Internal) Applet](/applets/internal-receipt-voucher-applet/)
 **Internal receipt management and processing**
 - Create and manage internal receipt vouchers
 - Handle payments, contras, and settlement adjustments
@@ -316,9 +316,9 @@ All 13 Core Module applets (listed above) are included in CP-Commerce Module.
 ### Inventory and Warehouse Management
 - **[Stock Balance Applet](/applets/stock-balance-applet/)** - Real-time inventory levels and tracking
 - **[Stock Take Applet](/applets/stock-take-applet/)** - Physical inventory counting and reconciliation
-- **[Internal Stock Adjustment Applet](/applets/internal-stock-adjustment-applet/)** - Inventory adjustments and corrections
-- **[Internal Delivery Order Applet](/applets/internal-delivery-order-applet/)** - Internal transfers and deliveries
-- **[Internal Consignment GIN Applet](/applets/internal-consignment-gin-applet/)** - Consignment Goods Issue Notes and line item tracking for sales
+- **[Stock Adjustment (Internal) Applet](/applets/internal-stock-adjustment-applet/)** - Inventory adjustments and corrections
+- **[Delivery Order (Internal) Applet](/applets/internal-delivery-order-applet/)** - Internal transfers and deliveries
+- **[Consignment GIN (Internal) Applet](/applets/internal-consignment-gin-applet/)** - Consignment Goods Issue Notes and line item tracking for sales
 
 ### Team and Organization Management
 - **[Team Maintenance Applet](/applets/team-maintenance-applet/)** - Team structure and management

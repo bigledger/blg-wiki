@@ -46,25 +46,25 @@ Essential foundational applets for system configuration:
 Complete procurement and purchasing management:
 
 - **Internal Blanket Purchase Order** - Long-term purchase agreements
-- **Internal Purchase Requisition** - Purchase request management
-- **Internal Purchase Order** - PO creation and tracking
-- **Internal Purchase GRN** - Goods Receipt Note processing
-- **Internal Purchase Invoice** - Supplier invoice management
-- **Internal Purchase Return** - Return to vendor processing
-- **Internal Purchase Debit Note** - Purchase adjustments
-- **Internal Purchase Credit Note** - Vendor credits
-- **Internal Purchase Quotation** - RFQ and quotation management
+- **Purchase Requisition (Internal)** - Purchase request management
+- **Purchase Order (Internal)** - PO creation and tracking
+- **Purchase GRN (Internal)** - Goods Receipt Note processing
+- **Purchase Invoice (Internal)** - Supplier invoice management
+- **Purchase Return (Internal)** - Return to vendor processing
+- **Purchase Debit Note (Internal)** - Purchase adjustments
+- **Purchase Credit Note (Internal)** - Vendor credits
+- **Purchase Quotation (Internal)** - RFQ and quotation management
 - **Purchase Report** - Comprehensive purchasing analytics
-- **Internal Purchase GIN** - Goods Issue Note
-- **Internal Purchase Refund Note** - Refund processing
+- **Purchase GIN (Internal)** - Goods Issue Note
+- **Purchase Refund Note (Internal)** - Refund processing
 
 ### 📦 Inventory Workflow Applets
 
 Advanced inventory and stock management:
 
-- **Internal Stock Requisition** - Stock request management
+- **Stock Requisition (Internal)** - Stock request management
 - **Stock Transfer** - Inter-location transfers
-- **Internal Stock Adjustment** - Inventory adjustments
+- **Stock Adjustment (Internal)** - Inventory adjustments
 - **Stock Availability** - Real-time stock visibility
 - **Stock Replenishment Applet** - Automatic reordering
 - **Stock Allocation** - Reserve and allocate inventory
@@ -75,24 +75,24 @@ Advanced inventory and stock management:
 End-to-end sales and distribution management:
 
 - **POS General** - Point of Sale operations
-- **Internal Sales Quotation** - Quote generation
-- **Internal Sales Order** - Order processing
-- **Internal Sales Invoice** - Customer invoicing
-- **Internal Delivery Order** - Shipping and delivery
-- **Internal Sales Debit Note** - Sales adjustments
+- **Sales Quotation (Internal)** - Quote generation
+- **Sales Order (Internal)** - Order processing
+- **Sales Invoice (Internal)** - Customer invoicing
+- **Delivery Order (Internal)** - Shipping and delivery
+- **Sales Debit Note (Internal)** - Sales adjustments
 - **Internal Sales Credit Note** - Customer credits
-- **Internal Sales Proforma Invoice** - Pro forma documentation
+- **Sales Proforma Invoice (Internal)** - Pro forma documentation
 - **Delivery and Installation Driver** - Service scheduling
 - **Sales Report** - Sales analytics
-- **Internal Sales Refund Note** - Customer refunds
-- **Internal Sales Return** - Return processing
+- **Sales Refund Note (Internal)** - Customer refunds
+- **Sales Return (Internal)** - Return processing
 
 ### 💰 Finance Applets
 
 Comprehensive financial management:
 
-- **Internal Receipt Voucher** - Payment receipts
-- **Internal Payment Voucher** - Payment processing
+- **Receipt Voucher (Internal)** - Payment receipts
+- **Payment Voucher (Internal)** - Payment processing
 - **Debtor Report Applet** - Accounts receivable analytics
 - **Creditor Report Applet** - Accounts payable analytics
 - **Ledger and Journal** - GL entries and journals

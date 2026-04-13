@@ -455,7 +455,7 @@ Opening balance setup involves transferring existing data for the following area
     ![Export as CSV Screenshot](/images/user-guide/Opening-Balance/7.png)
 
 *   **Import to Bigledger**
-    *   Open Internal Purchase Invoice Applet
+    *   Open Purchase Invoice (Internal) Applet
     *   Click Import File
     *   Click + button
     *   Drag or upload the exported csv format file and submit
@@ -467,7 +467,7 @@ Opening balance setup involves transferring existing data for the following area
 
 ![Checking data Screenshot](/images/user-guide/Opening-Balance/9.png)
 
-*   Open Internal purchase invoice menu, and the uploaded csv file saved as Draft mode
+*   Open Purchase Invoice (Internal) menu, and the uploaded csv file saved as Draft mode
 *   Click into check the line items details, and FINAL it once confirm
 
 ![Finalize Screenshot](/images/user-guide/Opening-Balance/10.png)
@@ -512,16 +512,16 @@ The upload is typically performed after go-live but after disabling e-invoice su
 *   Open CSV in Excel or Google Sheets
 *   Apply filters and sort Document (Column A) A → Z
 *   Create separate tabs for:
-    *   Sales Invoice (Internal Sales Invoice Applet)
+    *   Sales Invoice (Sales Invoice (Internal) Applet)
     *   Sales Credit Note (Internal Sales Credit Note Applet)
-    *   Receipt Voucher (Internal Receipt Voucher Applet)
+    *   Receipt Voucher (Receipt Voucher (Internal) Applet)
 *   Prepare upload templates for each document type.
 
 ![Filtering Data Screenshot 1](/images/user-guide/Opening-Balance/15.png)
 ![Filtering Data Screenshot 2](/images/user-guide/Opening-Balance/16.png)
 
 #### Updating of Sales Invoice Template
-Sales Invoice - Will be uploaded to Internal Sales Invoice Applet
+Sales Invoice - Will be uploaded to Sales Invoice (Internal) Applet
 *   Branch code- Please follow the Branch code in BLG
 *   `DOC_CURRENCY` always `MYR`
 *   `SETTLEMENT_OR_ITEM_CODE` - `OPENING BALANCE`
@@ -558,14 +558,14 @@ Sales Credit Note - Will be uploaded to Internal Sales Credit Note Applet
 *   Delete empty columns and rows
 *   Then the file is ready for upload, you can download it as CSV and upload to Relevant Applets
 
-##### Internal Sales Invoice Applet File import
-![Internal Sales Invoice Applet File import](/images/user-guide/Opening-Balance/17.png)
+##### Sales Invoice (Internal) Applet File import
+![Sales Invoice (Internal) Applet File import](/images/user-guide/Opening-Balance/17.png)
 
 ##### Internal Sales Credit Note Applet File import
 ![Internal Sales Credit Note Applet File import](/images/user-guide/Opening-Balance/18.png)
 
-##### Internal Receipt Voucher Applet File import
-![Internal Receipt Voucher Applet File import](/images/user-guide/Opening-Balance/19.png)
+##### Receipt Voucher (Internal) Applet File import
+![Receipt Voucher (Internal) Applet File import](/images/user-guide/Opening-Balance/19.png)
 
 #### Post-Upload Verification
 *   Open Debtor Report Applet → Debtor Outstanding Document Report
@@ -623,7 +623,7 @@ The AP Supplier Outstanding Upload process is used to bring forward supplier out
 ![Filtering of the Data Screenshot 2](/images/user-guide/Opening-Balance/26.png)
 
 #### Updating of PurchaseInvoice Template
-Purchase Invoice - Will be uploaded to Internal Purchase Invoice Applet
+Purchase Invoice - Will be uploaded to Purchase Invoice (Internal) Applet
 *   Branch code- Please follow the Branch code in BLG
 *   `DOC_CURRENCY` always `MYR`
 *   `SETTLEMENT_OR_ITEM_CODE` - `OPENING BALANCE`
@@ -636,7 +636,7 @@ Purchase Invoice - Will be uploaded to Internal Purchase Invoice Applet
 |             |          |            |              |                         |     |                 |             |             |     |                |
 
 #### Updating of Purchase Debit Note Template
-Purchase Debit Note - Will be uploaded to Internal Purchase Debit Note Applet
+Purchase Debit Note - Will be uploaded to Purchase Debit Note (Internal) Applet
 *   Branch code and location code- Please follow the Branch code and Location code in BLG
 *   `DOC_CURRENCY` always `MYR`
 *   `SETTLEMENT_OR_ITEM_CODE` - `OPENING-BALANCE`
@@ -649,7 +649,7 @@ Purchase Debit Note - Will be uploaded to Internal Purchase Debit Note Applet
 |             |               |          |            |              |                         |     |                 |             |             |     |                |
 
 #### Updating of Payment Voucher Template
-Payment Voucher - Will be uploaded to Internal Payment voucher Applet
+Payment Voucher - Will be uploaded to Payment Voucher (Internal) Applet
 *   Branch code - Please follow the Branch code in BLG
 *   `DOC_CURRENCY` always `MYR`
 *   `SETTLEMENT_OR_ITEM_CODE` - `ABC-Opening cashbook` (for ABC Company only)

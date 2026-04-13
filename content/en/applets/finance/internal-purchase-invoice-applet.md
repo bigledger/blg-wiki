@@ -1,5 +1,5 @@
-﻿---
-title: "Internal Purchase Invoice Applet"
+---
+title: "Purchase Invoice (Internal)"
 description: "Comprehensive guide to managing internal purchase invoices, including three-way matching, intercompany transactions, settlement management, and E-Invoice integration."
 tags:
 - finance
@@ -13,7 +13,7 @@ weight: 120
 
 ## Purpose and Overview
 
-The **Internal Purchase Invoice Applet** is the financial cornerstone of the procurement lifecycle within BigLedger. It facilitates the conversion of procurement activities into formal accounting records, specifically optimized for organizations managing multiple branches or complex intercompany relationships.
+The **Purchase Invoice (Internal)** is the financial cornerstone of the procurement lifecycle within BigLedger. It facilitates the conversion of procurement activities into formal accounting records, specifically optimized for organizations managing multiple branches or complex intercompany relationships.
 
 By linking physical receipts (Goods Received Notes) and procurement commitments (Purchase Orders) to financial obligations, it ensures accurate **Accounts Payable (AP)** management and financial integrity.
 

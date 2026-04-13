@@ -86,13 +86,13 @@ Foundation applets required by all other modules:
 #### Financial & Accounting
 - **[General Ledger Applet](/applets/general-ledger-applet/)** - Core financial transactions
 - **[Bank Reconciliation Applet](/applets/bank-reconciliation-applet/)** - Automated bank statement matching
-- **[Internal Receipt Voucher Applet](/applets/internal-receipt-voucher-applet/)** - Manage receipts, payments, and contras
+- **[Receipt Voucher (Internal) Applet](/applets/internal-receipt-voucher-applet/)** - Manage receipts, payments, and contras
 - **[Debtor and Creditor Report Applet](/applets/debtor-and-creditor-report-applet/)** - AR/AP reporting and analysis
 
 #### Inventory & Operations
 - **[Stock Take Applet](/applets/stock-take-applet/)** - Digital inventory counting and management
 - **[Stock Balance Applet](/applets/stock-balance-applet/)** - Real-time inventory tracking
-- **[Internal Stock Adjustment Applet](/applets/internal-stock-adjustment-applet/)** - Inventory corrections
+- **[Stock Adjustment (Internal) Applet](/applets/internal-stock-adjustment-applet/)** - Inventory corrections
 - **[Production Planning & Monitoring Applet](/applets/production-planning-and-monitoring-applet/)** - Manufacturing planning and job order management
 - **[Manufacturing Operation Applet](/applets/manufacturing-operation-applet/)** - Shop floor execution and production tracking
 - **[Process Monitoring Applet](/applets/process-monitoring-applet/)** - Business process tracking

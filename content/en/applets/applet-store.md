@@ -239,7 +239,7 @@ Firstly, users can navigate to the "Settings" tab which is located at the bottom
 
 ## 6.1 Permission Set﻿
 
-A permission template is a template that consists of one or multiple permission lines. Every permission line refers to a specific defined permission. For example, permission to create internal sales order invoices.
+A permission template is a template that consists of one or multiple permission lines. Every permission line refers to a specific defined permission. For example, permission to create Sales Order (Internal) invoices.
 
 A permission set is a permission template in which the permission lines are configured to targets. The target can be a branch, company, or location, depending on the permission template. By doing that, the targets are permitted to perform certain operations.
 

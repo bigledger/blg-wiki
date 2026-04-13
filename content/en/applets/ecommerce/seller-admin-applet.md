@@ -94,7 +94,7 @@ The Seller Admin Applet operates on a structured framework that connects four ma
 
 | Component                      | Definition                                                                                               | Practical Example                                                    |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| **Internal Sales Order (ISO)** | The core transaction representing a demand for products. Includes financial settlement and contra logic. | A bulk order for 50 units of "Wireless Mice" with a 10% downpayment. |
+| **Sales Order (Internal) (ISO)** | The core transaction representing a demand for products. Includes financial settlement and contra logic. | A bulk order for 50 units of "Wireless Mice" with a 10% downpayment. |
 | **Merchant Account**           | The entity responsible for fulfilling the order. Acting as a seller or fulfillment partner.              | "TechDistro Inc." acting as a regional fulfillment partner.          |
 | **Pick-Pack Queue**            | The operational stage where items are prepared for shipping.                                             | Warehouse staff selecting pending orders to pack.                    |
 | **Ecomsync**                   | The engine that syncs data with marketplace platforms like **Shopee** and **Lazada**.                    | Automatically updating stock on Shopee or Lazada.                    |
@@ -125,11 +125,11 @@ Sales Order Created
 
 Get your seller operations running smoothly with these essential workflows.
 
-### For Sales Admins: Create an Internal Sales Order
+### For Sales Admins: Create an Sales Order (Internal)
 
 **Goal:** Generate a new order to be fulfilled by a merchant in 5 steps.
 
-1. **Navigate**: Go to **Internal Sales Order** from the sidebar.
+1. **Navigate**: Go to **Sales Order (Internal)** from the sidebar.
 2. **Initialize**: Click **"+" (Create New)**.
 3. **Select Details**: Choose the **Merchant**, **Project**, and **Warehouse**.
 4. **Add Items**: Click **"Add Line"**, select your products, and specify quantities.
@@ -164,7 +164,7 @@ Get your seller operations running smoothly with these essential workflows.
 
 ## Internal Sales Orders
 
-The **Internal Sales Order (ISO)** module is the primary entry point for transactions.
+The **Sales Order (Internal) (ISO)** module is the primary entry point for transactions.
 
 - **Status Tracking**: Monitor orders through various stages (Draft, Pending, Confirmed, Cancelled).
 - **Financial Controls**: Manage **Settlements** (downpayments), **Contra** (offsetting), and **Credit Terms/Limits** directly within the order.
@@ -173,9 +173,9 @@ The **Internal Sales Order (ISO)** module is the primary entry point for transac
 - **Attachments**: Securely store POs, receipts, and other critical documentation as part of the order audit trail.
 - **Detailed Reports**: Export order data via the **Sales Order Detailed Report** for financial analysis.
 
-{{< figure src="/images/seller-admin-applet/iso-listing.png" alt="Internal Sales Order Listing" caption="Internal Sales Order Listing: View and manage all your internal sales orders from a single screen." >}}
+{{< figure src="/images/seller-admin-applet/iso-listing.png" alt="Sales Order (Internal) Listing" caption="Sales Order (Internal) Listing: View and manage all your internal sales orders from a single screen." >}}
 
-{{< figure src="/images/seller-admin-applet/iso-create-form.png" alt="Internal Sales Order Create/Edit Form" caption="Create/Edit ISO: Enter order details, select merchants, and add line items with ease." >}}
+{{< figure src="/images/seller-admin-applet/iso-create-form.png" alt="Sales Order (Internal) Create/Edit Form" caption="Create/Edit ISO: Enter order details, select merchants, and add line items with ease." >}}
 
 ## Merchant Account Admin
 
