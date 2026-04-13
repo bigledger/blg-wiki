@@ -529,8 +529,10 @@ The SST Applet provides three dedicated reporting views accessible from the side
 
 **What it shows:** A summary grouped by **Tax Code**, showing total taxable amounts and tax values per code.
 
-- **Use case**: Identify which tax codes are generating the most liability; useful for rate reconciliation.
+- **Use case**: Perfect for reconciling the SST-02 form totals.
 - **Access**: **SST Tax Code Summary** from the sidebar.
+
+{{< figure src="/images/sst-applet/sst-tax-code-summary-search.png" alt="Tax Code Summary Report Search" caption="Advanced filtering for tax code audits and reconciliation." >}}
 
 ---
 
