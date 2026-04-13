@@ -172,6 +172,10 @@ If documents remain in queue longer than expected:
 
 ## 2. Inbox History
 
+{{< figure src="/images/peppol-ap-admin-applet/inbox-history-listing.png" alt="Inbox History Listing showing process ID, sender, receiver, and routing status" caption="Inbox History Listing: The centralized audit trail for all incoming documents showing sender, receiver, and execution paths." >}}
+
+{{< figure src="/images/peppol-ap-admin-applet/inbox-history-edit.png" alt="Inbox History Edit showing detailed JSON body and routing execution details" caption="Inbox History Details: Click into any record to view the raw payload and comprehensive routing execution results." >}}
+
 Permanent archive of all processed documents. This is your audit trail and troubleshooting tool.
 
 ### Information Available
