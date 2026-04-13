@@ -253,6 +253,10 @@ Your workflow:
 
 ## 3. Registered Companies
 
+{{< figure src="/images/peppol-ap-admin-applet/registered-companies-listing.png" alt="Registered Companies Listing showing Peppol ID mapped to destination tenants" caption="Registered Companies: Shows every active Peppol ID and its mapped destination tenant." >}}
+
+{{< figure src="/images/peppol-ap-admin-applet/registered-companies-edit.png" alt="Registered Companies Edit showing company details and configuration" caption="Company Configuration: Keep tenant mappings synchronized with the Organization Applet." >}}
+
 Central registry of all Peppol ID to tenant mappings. This determines where documents are routed.
 
 ### What You See
@@ -327,6 +331,8 @@ This ensures single source of truth and prevents configuration drift.
 ---
 
 ## 4. Test Bed (Inactive)
+
+{{< figure src="/images/peppol-ap-admin-applet/testbed-validation-test.png" alt="Testbed Validation configuration" caption="Testbed module: Currently inactive. All official testing should happen via the MDC Test Bed." >}}
 
 This tab is currently inactive and scheduled for removal.
 
