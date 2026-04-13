@@ -52,7 +52,9 @@ The Peppol AP Admin Applet is your control center for managing incoming Peppol d
   {{< card title="Document Routing" subtitle="Automated distribution to correct tenants" >}}
 {{< /cards >}}
 
-## How It Works: Document Flow
+## Key Concepts
+
+### How It Works: Document Flow
 
 ```
 Peppol Network (External sender)
@@ -87,6 +89,31 @@ Destination Tenant (Demo/Living/Production)
 - Regulatory audit trail
 - Access control
 - Data integrity
+
+---
+
+## Quick Start Guide
+
+Get up and running quickly with these essential workflows.
+
+### For Support Teams: Verify Document Delivery
+
+**Goal:** Confirm if a customer's document was successfully received and routed.
+
+1. **Gather details**: Get the Process ID, Sender Peppol ID, or Receiver Peppol ID.
+2. **Navigate**: Go to **Inbox History** from the sidebar.
+3. **Search**: Enter the ID in the search bar.
+4. **Check Outcome**: Look at the **Status** (Delivered/Failed) and **Destination Tenant**.
+5. **Report**: Provide the exact delivery status and Process ID to the original requester.
+
+### For Administrators: Troubleshoot Failed Routing
+
+**Goal:** Identify why a document failed to reach its target destination.
+
+1. **Check the Queue**: Go to **Inbox Queue** to see if the document is stuck.
+2. **Check History**: Go to **Inbox History** and find the failed document.
+3. **Verify Registration**: Go to **Registered Companies** and search for the Receiver Peppol ID.
+4. **Fix Mapping**: Ensure the Peppol ID is active and mapped to the correct Destination Tenant. If it's missing or wrong, update it in the Organization Applet's Peppol Config tab.
 
 ---
 
@@ -537,35 +564,20 @@ account.cloud → Peppol AP Tenant → Peppol AP Admin Applet
 
 ## 11. Frequently Asked Questions
 
-**Q: Why is the queue usually empty?**
-A: Documents process within seconds. Empty queue indicates normal operation.
+**Q: A customer claims they sent a document 5 minutes ago, but it's not in the destination tenant. Where do I check first?**
+A: Check **Inbox History** first. If it was successfully routed, it will show as "Delivered" with the target tenant. If it failed or is still processing, verify the Peppol ID in **Registered Companies** and check the **Inbox Queue**.
 
-**Q: How long are documents kept in Inbox History?**
-A: Permanently, for audit and compliance purposes.
+**Q: What should I do if the Inbox Queue suddenly has 50+ documents and isn't clearing?**
+A: This indicates a system blockage or severe load issue. DO NOT ignore it. Check system logs for immediate errors, verify that destination tenants are accessible, and escalate to the technical team immediately.
 
-**Q: Can I manually re-route a document?**
-A: Not currently. Contact technical team for re-routing needs.
+**Q: We onboarded a new company, but their received documents are failing. What's wrong?**
+A: They are likely missing their Peppol ID mapping. Go to **Organization Applet → Peppol Config** and ensure their correct Peppol ID is mapped to their active tenant. Verify the update reflects in this applet's **Registered Companies** list.
 
-**Q: Why can't I export from Inbox History?**
-A: Export button is non-functional. Contact administrator for alternatives.
+**Q: Why can't I manually re-route a document that went to the wrong tenant?**
+A: To maintain strict audit trails and compliance, manual re-routing is disabled. You must fix the root cause (the mapping in Registered Companies) and have the technical team re-process or ask the sender to resubmit.
 
-**Q: What if documents are stuck in queue?**
-A: Verify Peppol ID registration, check tenant accessibility, escalate if needed.
-
-**Q: How do I know where a document was routed?**
-A: Check Inbox History for destination tenant information.
-
-**Q: Can customers access this applet?**
-A: No. Strictly internal use only.
-
-**Q: What is a Process ID?**
-A: Unique identifier tracking documents end-to-end across all systems.
-
-**Q: How often should I check Registered Companies?**
-A: Monthly for accuracy, immediately when troubleshooting.
-
-**Q: What happens if Peppol ID is unregistered?**
-A: Document fails routing and remains in queue or logs as failed.
+**Q: Can I export the Inbox History to send a delivery report to a customer?**
+A: The export button is currently non-functional. Instead, take a screenshot of the specific record containing the Process ID and status, or contact your administrator for a direct database extract if a large volume of data is needed.
 
 {{< callout type="info" >}}
 **Need Help?** Contact your system administrator or technical team for assistance with specific scenarios.
