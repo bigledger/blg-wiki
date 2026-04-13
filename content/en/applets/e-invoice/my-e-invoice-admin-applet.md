@@ -83,6 +83,8 @@ Without a dedicated tool, managing LHDN e-invoice compliance is fragmented and e
   {{< card title="Monthly Report" subtitle="Discrepancy reports for monthly compliance reconciliation" link="#8-monthly-report" >}}
 {{< /cards >}}
 
+{{< figure src="/images/my-e-invoice-admin-applet/my-e-invoice-admin-applet-overview-infographic.png" alt="My E-Invoice Admin Applet Overview Infographic" caption="My E-Invoice Admin Applet Overview: Streamlining LHDN compliance from submission to reconciliation." >}}
+
 ## Key Concepts
 
 ### Understanding the E-Invoice Flow
