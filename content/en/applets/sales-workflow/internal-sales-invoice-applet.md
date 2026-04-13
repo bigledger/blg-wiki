@@ -26,6 +26,8 @@ The **Sales Invoice (Internal) Applet** is the engine room of the order-to-cash 
 
 {{< figure src="/images/internal-sales-invoice-applet/main-listing-page.png" alt="Sales Invoice (Internal) Main Listing" caption="The central hub for managing all sales transactions and their statuses." >}}
 
+{{< figure src="/images/internal-sales-invoice-applet/search-filter.png" alt="Advanced Search Drawer" caption="Instantly filter through thousands of records using the advanced search capabilities." >}}
+
 ## Key Features Overview
 
 ### Who Benefits from This Applet?
@@ -123,6 +125,9 @@ Instead of manual entry, prioritize using **Knock-Off (KO)** from Sales Orders o
     *   **Stock Checking**: The system validates availability in real-time.
     *   **Serialization**: For serialized inventory, specific serial numbers must be allocated here to ensure the correct unit is deducted.
 *   **Pricing**: Unit prices are typically locked to the Price Book. Overrides may trigger an approval workflow.
+*   **E-Invoice**: Handle mandatory LHDN e-invoice submission requirements directly from the drafting stage.
+
+{{< figure src="/images/internal-sales-invoice-applet/e-invoice-submission.png" alt="E-Invoice Submission details tab" caption="E-Invoice tab: Configure submission logic and compliance right from the invoice creation screen." >}}
 
 **3. Finalization & Posting**
 Switching status to **Final** is the "point of no return" for financial posting.
@@ -206,7 +211,9 @@ The **Trace** button is your audit best friend.
 *   **Costing**: specific Cost of Goods Sold (COGS) calculation for that transaction.
 
 ### Line Reports
-{{< figure src="/images/internal-sales-invoice-applet/reports-page.png" alt="Line Reports Listing" caption="Detailed listing of all invoice line items for granular reporting." >}}
+{{< figure src="/images/internal-sales-invoice-applet/reports-page.png" alt="Line Reports Listing Filter" caption="Advanced filtering capabilities for line items." >}}
+
+{{< figure src="/images/internal-sales-invoice-applet/reports-page-records.png" alt="Line Reports Listing Data Grid" caption="Analyze individual row items across all transactions for granular reporting." >}}
 For deep analysis, the Line Reports view breaks down invoices into individual row items. This allows for granular reporting on "Product X sales by Region" or "Salesman Y performance by Item Category".
 
 ---
@@ -216,6 +223,10 @@ For deep analysis, the Line Reports view breaks down invoices into individual ro
 **Customize the interface to match your workflow.**
 
 {{< figure src="/images/internal-sales-invoice-applet/settings-page.png" alt="Applet Settings" caption="Configure default branches, layouts, and permissions." >}}
+
+{{< figure src="/images/internal-sales-invoice-applet/settings-gen-doc.png" alt="Applet Settings - Gen Doc Listing toggles" caption="Hide or show specific actions on the main document listing." >}}
+
+{{< figure src="/images/internal-sales-invoice-applet/settings-main-details.png" alt="Applet Settings - Main Details toggles" caption="Control exactly which advanced fields are exposed to users during document creation." >}}
 
 ### Personalization Menu
 Access the **Personalization** menu to adapt the applet to your specific role.
