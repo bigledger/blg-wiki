@@ -1,4 +1,4 @@
-﻿---
+---
 title: "SST (Service / Sales Tax) Applet"
 description: "Comprehensive tax management system for Malaysian SST compliance, covering tax year setup, tariff codes, tax code configuration, filing workflows, and SST-02 report generation"
 tags:
@@ -62,7 +62,7 @@ Traditional tax management often involves manual spreadsheets and complex tariff
 - **Integrated Penalty Management** â€” Built-in fields for late filing adjustments and penalty calculations.
 - **Dual Tax Type Support** â€” Handles both **Service Tax** and **Sales Tax** within a single filing cycle.
 
-## Key Features Roadmap
+## Key Features Overview
 
 {{< cards >}}
   {{< card title="Tax Year" subtitle="Configure fiscal periods and filing cycles" link="#tax-year" >}}
@@ -144,6 +144,8 @@ To effectively manage SST, you must understand how **Tax Years**, **Tariff Codes
 3. You create **Tax Codes** linked to those Tariff Codes to define *how much* to tax.
 4. Transactions tagged with these codes are automatically pooled into the correct **Filing Cycle** for filing.
 
+{{< figure src="/images/sst-applet/main-listing-page.png" alt="SST Applet Main Listing" caption="The central hub for managing your tax years, tariff codes, and tax cycles." >}}
+
 ---
 
 ## Quick Start Guide
@@ -192,7 +194,7 @@ Get your tax compliance engine running with these essential workflows.
 
 ---
 
-## Key Features In Detail
+## Feature Deep Dive
 
 ### Tax Year
 
@@ -344,6 +346,8 @@ A filing cycle can be in two states:
 **Caution**: Once a filing cycle is **Locked**, it cannot be unlocked. Only lock a cycle after the SST-02 PDF has been exported and verified for RMCD submission.
 {{< /callout >}}
 
+{{< figure src="/images/sst-applet/tax-filing-cycle.png" alt="Tax Filing Cycle View" caption="Tax Filing Cycle: Manage your locked and open cycles seamlessly." >}}
+
 #### The Tax Filing View (Tabs)
 
 When you open a filing cycle, you will see two main tabs:
@@ -469,6 +473,8 @@ The report is divided into 5 official parts, mirroring the RMCD's actual SST-02 
 6. Click **EXPORT TO PDF** to generate the official PDF document.
 7. Submit the PDF to RMCD via the MySST portal.
 
+{{< figure src="/images/sst-applet/sst-02-report.png" alt="SST-02 Report Generation" caption="Generate and verify your SST-02 report across Part A to E before final submission." >}}
+
 {{< callout type="tip" >}}
 **Always click SEARCH first** before exporting. The report only populates after `SEARCH` is clicked, ensuring the latest filed transaction data is reflected.
 {{< /callout >}}
@@ -502,7 +508,7 @@ The SST Applet provides three dedicated reporting views accessible from the side
 
 ---
 
-## Common Scenarios
+## Common Scenarios & Use Cases
 
 **Scenario 1: Updating Tax Rate Mid-Year**
 ```
