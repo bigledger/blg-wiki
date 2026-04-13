@@ -1,5 +1,5 @@
 ---
-title: "Internal Purchase Order Supplier Access Applet"
+title: "Purchase Order Supplier Access (Internal) Applet"
 description: "Efficient purchase order visibility and acknowledgement for suppliers"
 tags:
 - supplier-portal

@@ -1,5 +1,5 @@
 ---
-title: "Internal Shopping Cart Applet"
+title: "Shopping Cart (Internal) Applet"
 description: "Effortless internal procurement and supply requests for employees and departments"
 tags:
 - internal-shopping

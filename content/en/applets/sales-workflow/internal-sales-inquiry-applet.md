@@ -1,5 +1,5 @@
 ---
-title: "Internal Sales Inquiry Applet"
+title: "Sales Inquiry (Internal) Applet"
 description: "Capture and manage internal sales inquiries with customer and line-item detail, posting controls, export, conversion to receipt voucher, and a dedicated line-items workspace."
 tags:
 - sales-workflow

@@ -1,5 +1,5 @@
 ---
-title: "Internal Packing Order Applet"
+title: "Packing Order (Internal) Applet"
 description: "Supplier workspace to create and manage internal packing orders with knock-off support for sales orders, jobsheets, quotations, and delivery orders."
 tags:
 - purchase-workflow

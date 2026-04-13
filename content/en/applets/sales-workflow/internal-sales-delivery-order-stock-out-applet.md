@@ -1,5 +1,5 @@
 ---
-title: "Internal Sales Delivery Order Stock Out Applet"
+title: "Sales Delivery Order Stock Out (Internal) Applet"
 description: "Create and manage customer Delivery Orders while automatically reducing warehouse stock — combining delivery documentation and inventory management in one step."
 tags:
 - delivery-order

@@ -1,5 +1,5 @@
 ---
-title: "Purchase Credit Note Supplier Access Applet"
+title: "Purchase Credit Note Supplier Access (Internal) Applet"
 description: "Supplier portal for viewing Purchase Credit Notes issued by the buying organisation—check credit adjustments, line items, and linked documents in read-only mode"
 tags:
 - purchase-credit-note

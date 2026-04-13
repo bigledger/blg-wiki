@@ -1,5 +1,5 @@
 ---
-title: "Internal Consignment Billing Applet"
+title: "Consignment Billing (Internal) Applet"
 description: "Comprehensive financial system for converting consignment stock issues into final sales invoices and financial settlements"
 tags:
 - sales-workflow

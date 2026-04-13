@@ -1,5 +1,5 @@
 ---
-title: "Internal Goods Dispatch Note Applet"
+title: "Goods Dispatch Note (Internal) Applet"
 description: "Standardized warehouse management system for recording and tracking the physical dispatch of goods including logistics and vehicle details"
 tags:
 - inventory-workflow

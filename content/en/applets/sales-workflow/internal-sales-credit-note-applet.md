@@ -1,4 +1,15 @@
-﻿# Internal Sales Credit Note Applet
+---
+title: "Sales Credit Note (Internal) Applet"
+description: "Correct, adjust, or reverse previously issued sales invoices using account code items, with contra and settlement support"
+tags:
+- sales-workflow
+- credit-note
+- accounts-receivable
+- financial-adjustment
+- contra-settlement
+---
+
+# Sales Credit Note (Internal) Applet
 
 ## 1. Overview
 

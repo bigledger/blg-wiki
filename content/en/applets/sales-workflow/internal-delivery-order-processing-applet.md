@@ -1,5 +1,5 @@
 ---
-title: "Internal Delivery Order Processing Applet"
+title: "Delivery Order Processing (Internal) Applet"
 description: "Comprehensive management system for the warehouse and logistics lifecycle of delivery orders"
 tags:
 - logistics

@@ -1,5 +1,5 @@
 ---
-title: "Internal Purchase Invoice Supplier Access Applet"
+title: "Purchase Invoice Supplier Access (Internal) Applet"
 description: "Secure portal for suppliers to view and manage purchase invoices"
 tags:
 - supplier-portal

@@ -1,5 +1,5 @@
 ---
-title: "Internal Sales Invoice (No Stock-Out) Applet"
+title: "Sales Invoice No Stock-Out (Internal) Applet"
 description: "Comprehensive financial invoicing system for services, non-inventory items, and intercompany transactions without physical stock deduction"
 tags:
 - sales-workflow

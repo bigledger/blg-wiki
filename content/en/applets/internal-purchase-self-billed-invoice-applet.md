@@ -1,5 +1,5 @@
 ﻿---
-title: "Internal Purchase Self Billed Invoice Applet"
+title: "Purchase Self Billed Invoice (Internal) Applet"
 description: "Comprehensive internal self-billed purchase invoice management for AP teams, with knock-off linking, posting controls, and file import support."
 tags:
 - finance

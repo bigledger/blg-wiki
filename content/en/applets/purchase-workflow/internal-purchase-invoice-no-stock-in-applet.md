@@ -1,5 +1,5 @@
 ---
-title: "Purchase Invoice No Stock In Applet"
+title: "Purchase Invoice No Stock In (Internal) Applet"
 description: "Process and manage purchase invoices for non-inventory expenses—services, overheads, and intangible purchases—without triggering stock movements"
 tags:
 - purchase-invoice

@@ -1,5 +1,5 @@
 ---
-title: "Internal Jobsheet Applet"
+title: "Jobsheet (Internal) Applet"
 description: "Comprehensive management system for internal job sheets, service tracking, and integrated financial processing"
 tags:
 - service-management

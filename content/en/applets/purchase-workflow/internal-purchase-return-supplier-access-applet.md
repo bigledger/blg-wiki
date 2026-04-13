@@ -1,5 +1,5 @@
 ---
-title: "Internal Purchase Return Supplier Access Applet"
+title: "Purchase Return Supplier Access (Internal) Applet"
 description: "Secure purchase return visibility and debit note management for suppliers"
 tags:
 - supplier-portal
