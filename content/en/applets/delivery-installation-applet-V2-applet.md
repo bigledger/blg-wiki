@@ -11,7 +11,7 @@ weight: 186
 ---
 
 {{< callout type="warning" >}}
-**Work in progress**: This user guide is still in progress.
+**In review**: This user guide is in review.
 {{< /callout >}}
 
 ## Purpose and Overview

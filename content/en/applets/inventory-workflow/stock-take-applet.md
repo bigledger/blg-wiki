@@ -11,7 +11,7 @@ weight: 165
 ---
 
 {{< callout type="warning" >}}
-**Work in progress**: This applet documentation needs is in review.
+**Work in progress**: This applet documentation is in review.
 {{< /callout >}}
 
 ## Purpose and Overview
