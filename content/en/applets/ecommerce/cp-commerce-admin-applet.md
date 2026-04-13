@@ -27,6 +27,8 @@ Instead of relying on developers to push website changes, this applet gives Mark
 **Core Concept**: This applet manages the *admin side* of the Customer Portal. It controls **Websites**, **Forms**, **Events**, **Shipping**, **Notifications**, and **Customer Access** — everything the customer experiences on the storefront is configured here.
 {{< /callout >}}
 
+{{< figure src="/images/cp-commerce/cp-commerce-overview-infographic.jpg" alt="CP Commerce Admin Applet Overview" caption="A high-level view of the CP Commerce Admin Applet, illustrating how the backend configuration console controls the Website Builder and the external Customer Portal frontend." >}}
+
 ## Key Features Overview
 
 ### Who Benefits from This Applet?
@@ -76,6 +78,8 @@ Managing an e-commerce customer portal traditionally requires:
 
 ## Key Features Overview
 
+{{< figure src="/images/cp-commerce/cp-commerce-features.jpg" alt="CP Commerce Admin: One Applet, Complete Control" caption="A visualization of the fragmented management problem and how the centralized CP Commerce Admin applet solves it." >}}
+
 {{< cards >}}
   {{< card title="Website Management" subtitle="Configure layouts, menus, and website settings" link="#website-management-website-route" >}}
 
@@ -97,6 +101,8 @@ Managing an e-commerce customer portal traditionally requires:
 ## Key Concepts
 
 ### Understanding the CP Commerce Framework
+
+{{< figure src="/images/cp-commerce/cp-commerce-framework.png" alt="CP Commerce Admin: Your Unified Storefront Command Center" caption="A visual guide to the 'Golden Chain' of website setup and key concepts within the CP Commerce Admin framework." >}}
 
 The CP Commerce Admin controls the **admin-side configuration** that drives what customers see on the **Customer Portal** (the front-end).
 
@@ -170,6 +176,8 @@ Get up and running quickly with these essential workflows.
 
 **Goal:** Create and publish a basic Customer Portal website.
 
+{{< figure src="/images/cp-commerce/launch-website.png" alt="Website Creation Interface" caption="The split-view Website Creator: Website Listing view on the left, and the creation form on the right displaying required fields like Website Code, Branch, and Pricing Model." >}}
+
 1. **Navigate** to the **Website** section from the sidebar (default landing page)
 2. **Create Website**: Click **"+"** → Enter Website Title (e.g., "My Brand Store") → Select Branch → Choose Pricing Model → Select Membership Class → Click **Create**
 3. **Configure Details**: In the edit view, assign:
@@ -191,6 +199,10 @@ Get up and running quickly with these essential workflows.
 ### For Marketing Teams: Create a Customer Survey
 
 **Goal:** Build a dynamic form, publish it to the portal, and review submissions.
+
+{{< figure src="/images/cp-commerce/cp-commerce-create-form.png" alt="Create Dynamic Form" caption="The Dynamic Form Creator: Configure the form's name, status, and link it to a specific Website entity." >}}
+
+{{< figure src="/images/cp-commerce/cp-commerce-form-questions.png" alt="Dynamic Form Questions" caption="The Question Builder Tab: Define form fields like text inputs, checkboxes, or dropdowns, mark them as required, and set their sorting order." >}}
 
 1. **Navigate** to **Dynamic Form** from the sidebar
 2. **Create**: Click **"+"** → Enter form title (e.g., "Customer Satisfaction Q1")
@@ -218,7 +230,49 @@ Get up and running quickly with these essential workflows.
 
 ---
 
+## The Webstore Management Dashboard
+
+**Goal:** Provide Store Managers a unified, simplified front-end console to configure their website without needing to navigate the complex backend ERP menus.
+
+When an administrator clicks the **Website Builder** button from the backend (or navigates to `https://[your-store-url]/page/website-builder/layout-menu/webstore`), they are greeted by the **Webstore Management Dashboard**.
+
+This dashboard acts as an aggregated shortcut center, presenting the most critical e-commerce configuration tools as large, easy-to-click tiles.
+
+![Webstore Dashboard Interface](/images/cp-commerce/webstore-dashboard.png)
+
+### The 10 Dashboard Tiles
+
+| Dashboard Tile | Purpose & Benefit | Corresponding Backend Module |
+|----------------|-------------------|------------------------------|
+| **Menu Manager** | Allows store managers to visually build and link the site navigation (Top Menus, Footer Menus, Sidebars) directly within the frontend context. **Benefit:** Instant routing updates without backend catalog searches. | CP Commerce Admin -> Menu List |
+| **Layout Manager** | The gateway to the visual drag-and-drop page editor. **Benefit:** Enables marketing teams to instantly redesign the homepage, landing pages, or product grids without writing code. | CP Commerce Admin -> Layout Instance |
+| **Image Manager** | A centralized visual media library for the website. **Benefit:** Store managers can upload banners, logos, and product graphics in bulk, ensuring all media is organized before attaching them to layouts. | CP Commerce Admin -> Manage Image |
+| **Product Management** | Instantly opens the active product catalog linked to this specific storefront. **Benefit:** Rapidly update pricing, names, or out-of-stock statuses without accessing the master ERP Inventory module. | Master Data -> Doc Item Maintenance |
+| **Voucher Management** | Interface for configuring promotional codes, discounts, and expiration parameters. **Benefit:** Enables marketers to rapidly launch flash sales via promo codes. | CP Commerce Admin -> Voucher Management |
+| **Event Manager** | Dashboard to configure bookable seminars, classes, or ticketed events. **Benefit:** Simplifies capacity and schedule management for experiential retail operations. | Event & Activity Management |
+| **Notification** | Command center for constructing push-notifications, email blasts, and SMS campaigns to registered portal users. **Benefit:** Enhances customer engagement without third-party mailing tools. | CP Commerce Admin -> Notification |
+| **Shipping** | Gateway to configure third-party logistics (3PL) flat rates and weight-based delivery fees. **Benefit:** Real-time adjustments to courier options and free-shipping thresholds. | CP Commerce Admin -> Shipping Provider |
+| **QR Code Manager** | Generates dynamic QR codes linked directly to store landing pages, specific products, or checkout carts. **Benefit:** Bridges offline marketing (flyers/posters) to online conversions natively. | (Dependent on Applet Version) |
+| **Activity Manager** | Configure recurring classes/activities happening within your physical corporate facilities. **Benefit:** Integrates physical store operations into the digital booking portal. | CP Commerce Admin -> Activity |
+
+---
+
+### Dashboard Access Controls & Visibility
+
+Not every store employee should have access to the entire Webstore Dashboard. 
+
+To enforce **Role-Based Access Control (RBAC)** or to simply declutter the interface for smaller stores, super-administrators can hide specific tiles from the frontend dashboard. 
+
+To hide a tile:
+1. Navigate to the **Website Edit** > **Details** tab in the backend CP Commerce Applet.
+2. Scroll down to the **Hide Website Builder Elements** section.
+3. Check the respective boxes (e.g., `Hide Voucher Management` or `Hide Image Manager`).
+4. **Save** the website configuration. The specified tiles will immediately vanish from the frontend Webstore Dashboard for all managers. 
+
+---
+
 ## Website Management (`website` route)
+
 
 ### Website Listing
 
@@ -242,25 +296,37 @@ After clicking **Create**, you are taken to the full edit view with many more fi
 
 ### Website Edit — Tabs Overview
 
+{{< figure src="/images/cp-commerce/website-edit-tabs.png" alt="Website Edit Content Tabs" caption="The complete Website Edit configuration panel, displaying the multiple tabs (Details, App Version, Manage Image, etc.) used to govern different aspects of the Customer Portal." >}}
+
 When you select a website to edit, you'll see the **full configuration panel** with the following tabs:
 
 | Tab | Purpose |
 |-----|---------|
-| **Details** | Core configuration: pricing, menus, shipping, merchant, app store URLs, reseller settings, web-chat, and many checkboxes |
-| **App Version** | Manage iOS and Android app version requirements (sub-tabs: iOS, Android) |
-| **Manage Image** | Image library manager for the website — upload, search, and link images |
-| **Digital Signature** | Generate RSA/ECDSA key pairs for secure API communication |
-| **Post Registration Config** | Configure what happens after a customer registers on the portal |
-| **3rd Party Auth Config** | Integration settings for external login and analytics providers |
-| **Layout Instance** | Build and manage website page layouts using the visual Website Builder |
-| **Reviews** | Configure review settings and manage review vote options (sub-tabs: Review Settings, Review Votes) |
-| **Menu List** | Create and manage navigation menus (Top Menu, User Menu, Left-side Menu, Bottom Menu) |
-| **Country Config** | Localization settings by country — languages, settlement methods, labels |
-| **Label List** | Content classification labels and hierarchical child labels |
-| **Content Category** | Categories for organizing website content |
+| **[Details](#details-tab-deep-dive)** | Core configuration: pricing, menus, shipping, merchant, app store URLs, reseller settings, and administrative controls |
+| **[App Version](#app-version-tab-deep-dive)** | Manage iOS and Android app version requirements and mandatory update checks |
+| **[Manage Image](#manage-image-tab-deep-dive)** | Image library manager — upload, search, and manage visual assets for the website |
+| **[Digital Signature](#digital-signature-tab-deep-dive)** | Generate and manage RSA key pairs used for secure API request signing |
+| **[Post Registration Config](#post-registration-config-tab-deep-dive)** | Configure workflows and settings triggered after a customer completes registration |
+| **[3rd Party Auth Config](#third-party-auth-config-tab-deep-dive)** | Integration settings for external providers (Google Login/Analytics, Facebook, reCAPTCHA, Apple Login) |
+| **[Layout Instance](#layout-instance-tab-deep-dive)** | Access the visual Website Builder to create and manage page layouts |
+| **[Reviews](#reviews-tab-deep-dive)** | Moderate customer feedback and configure voting/rating settings |
+| **[Menu List](#menu-list-tab-deep-dive)** | Design and manage navigation structures (Top, User, Side, and Footer menus) |
+| **[Label List](#label-list-tab-deep-dive)** | Create hierarchical tags and classification labels for content organization |
+| **[Content Category](#content-category-tab-deep-dive)** | Define logical categories to group storefront content and products |
+| **[Posts](#posts-tab-deep-dive)** | Manage blog posts, news, announcements, and informational content |
+| **[User Agreement](#user-agreement-tab-deep-dive)** | Manage legal documents like Privacy Policy and Terms & Conditions |
+| **[Account](#account-tab-deep-dive)** | Detailed management of customer accounts and B2B spending entities |
+| **[Commission Scheme](#commission-scheme-tab-deep-dive)** | Configure sales commission logic, rules, and calculation methods |
+| **[Language](#language-tab-deep-dive)** | Enable and manage multi-language support for the storefront |
+| **[Branch](#branch-tab-deep-dive)** | Link and configure multiple branches to the storefront for delivery and inventory |
+| **[Region](#region-tab-deep-dive)** | Define regional zones for localized settings and shipping rules |
+| **[Country](#country-tab-deep-dive)** | Configure country-specific localization, date formats, and locale defaults |
+| **[Voucher Management](#voucher-management-tab-deep-dive)** | Create and manage discount codes, promo vouchers, and marketing campaigns |
+| **[Settlement Method](#settlement-method-tab-deep-dive)** | Configure payment gateways and available settlement options for customers |
 
 ---
 
+<a id="details-tab-deep-dive"></a>
 #### Details Tab (Deep Dive)
 
 This is the most field-heavy tab. Here's the full configuration:
@@ -313,7 +379,8 @@ This is the most field-heavy tab. Here's the full configuration:
 
 ---
 
-#### App Version Tab
+<a id="app-version-tab-deep-dive"></a>
+#### App Version Tab (Deep Dive)
 
 Manages iOS and Android mobile app version tracking with two sub-tabs:
 
@@ -336,87 +403,90 @@ Manages iOS and Android mobile app version tracking with two sub-tabs:
 
 ---
 
-#### 3rd Party Auth Config Tab
+<a id="manage-image-tab-deep-dive"></a>
+#### Manage Image Tab (Deep Dive)
 
-Integrations with external authentication and analytics providers. Contains **7 sub-tabs**:
+The **Manage Image** tab serves as the central asset library for your storefront. Here, you upload and organize specifically formatted images that are later referenced in branding, layout banners, and product displays.
 
-| Sub-Tab | Purpose |
-|---------|---------|
-| **Google reCAPTCHA** | Configure site key and secret key for bot protection on forms |
-| **Google Login** | Enable "Sign in with Google" for portal customers |
-| **Facebook Login** | Enable "Sign in with Facebook" |
-| **Mini-Orange Login** | SSO integration via Mini-Orange identity provider |
-| **Apple Login** | Enable "Sign in with Apple" for iOS users |
-| **Google Analytics** | Configure GA tracking ID to monitor website traffic |
-| **Zendesk Live Chat** | Embed Zendesk chat widget on the Customer Portal |
+| Feature | Description |
+|---------|-------------|
+| **Image Asset** | High-resolution visual file (JPG/PNG) used on the storefront. |
+| **Param_Code** | A unique internal identifier used by the Website Builder to hook images into specific layout positions. |
+| **Image Type** | Categorization labels (e.g., `LOGO`, `BANNER`, `FAVICON`) used to filter assets by location. |
+| **Search Function** | Quick-filter across your entire library by Parameter Code or Image Type. |
+
+**Image Listing Grid:**
+
+| Column | Purpose |
+|--------|---------|
+| **Param_Code** | The code reference for layouts |
+| **Value** | A thumbnail preview of the asset |
+| **Created Date** | Timestamp of the original upload |
 
 ---
 
+<a id="digital-signature-tab-deep-dive"></a>
 #### Digital Signature Tab
 
-Generate cryptographic key pairs used for secure API communication between the Customer Portal and external systems.
+Generate and manage cryptographic key pairs (RSA/DSA) used to digitally sign API requests between the Customer Portal and external ERP systems. This ensures data integrity and authenticity.
 
 | Field | Purpose | Required |
 |-------|---------|----------|
-| **Key Algorithm** | Select the encryption algorithm (RSA, ECDSA, etc.) | Yes |
-| **Key Size** | Select key length (2048, 4096, etc.) | Yes |
-| **Key Status** | Active/Inactive status of the key pair | Yes |
-| **Generate Key Pair** | Button to generate the public/private keys | — |
-| **Private Key** | The generated private key (keep confidential) | Read-only |
-| **Public Key** | The generated public key (share with integrators) | Read-only |
+| **Key Algorithm** | Select the encryption standard (RSA or DSA) | Yes |
+| **Key Size** | Select the strength of the key (ranges from 512 to 4096 bits) | Yes |
+| **Key Status** | Set the key to ACTIVE to begin using it for request signing | Yes |
+| **Private Key** | The generated secret key. **Keep this confidential.** | Read-only |
+| **Public Key** | The generated public key shared with external systems for verification. | Read-only |
+
+<a id="post-registration-config-tab-deep-dive"></a>
+#### Post Registration Config Tab
+
+Define automated actions that occur immediately after a new customer finishes the registration process.
+
+| Field | Purpose | Required |
+|-------|----------|----------|
+| **Team** | Select which internal Team the new customer should be automatically assigned to | Yes |
+
+<a id="third-party-auth-config-tab-deep-dive"></a>
+#### 3rd Party Auth Config Tab
+
+Centralize all external API integrations for authentication, security (reCAPTCHA), and analytics. Each provider has its own sub-tab:
+
+| Provider | Purpose | Key Fields |
+|----------|---------|------------|
+| **Google reCAPTCHA** | Protects forms (Login/Registration) from bot spam. | Site Key, Secret Key |
+| **Google Login** | Enables "Sign in with Google" for social proof and ease of use. | Client ID, Secret |
+| **Facebook Login** | Enables "Sign in with Facebook" portal access. | App ID, App Secret |
+| **Apple Login** | Enables "Sign in with Apple" (required for most iOS apps). | Client ID, Team ID |
+| **Mini-Orange** | Enterprise SSO integration via the Mini-Orange platform. | API Key, Customer Key |
+| **Google Analytics** | Tracks portal traffic and customer conversion behavior. | Measurement ID (G-XXXX) |
+| **Zendesk** | Embeds a live chat bubble on the storefront for support. | Widget Snippet / Key |
 
 ---
 
+<a id="layout-instance-tab-deep-dive"></a>
 #### Layout Instance Tab
 
-Lists all page layouts configured for this website. Each layout represents a visual page (homepage, product listing page, etc.) that you build using the **Website Builder**.
+The **Layout Instance** tab is the control center for your site's pages. A "Layout Instance" represents a specific page (e.g., Homepage, About Us, Landing Page).
 
-**Creating a Layout Instance:**
-- Click **"+"** to create a new layout
-- Set a layout code and enter basic details
-- Use the **Website Builder** (accessible from the Website Edit header button) to visually design the page
-
-**Editing a Layout Instance — Tabs:**
-
-| Tab | Purpose |
-|-----|---------|
-| **Main** | Layout code, name, and basic configuration |
-| **Node Configuration** | Add and configure content nodes (widgets, sections, product grids) within the layout |
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Code** | Unique identifier for this page layout (used in URLs) | Yes |
+| **Name** | Friendly name for internal organization | Yes |
+| **Description** | Admin notes about the page's purpose | No |
 
 ##### How the Visual Website Builder Works
 
-The Website Builder provides a visual, drag-and-drop workspace similar to platforms like Wix or Shopify, allowing you to design pages interactively.
+Accessible via the **Website Builder** button in the header, this drag-and-drop environment allows you to design your pages using a hierarchical node system:
 
-The workspace is divided into three main columns:
+1. **Rows**: Horizontal containers that define the page flow.
+2. **Columns**: Vertical dividers inside rows to control content width.
+3. **Widgets**: Functional UI components (Product Sliders, Banners, Form Embeds).
 
-1. **Elements Palette (Left)**: Contains structural and functional elements (Rows, Columns, Widgets) that you can drag into your page.
-2. **Interactive Canvas (Center)**: The drag-and-drop layout area. Drop elements here, rearrange them, or select them to edit their properties.
-3. **Properties Panel (Right)**: Contains tabs to configure whatever is selected:
-   - **Selected Node**: Adjust settings, choose a **Widget ID** (from 65+ options), and set basic styles.
-   - **Layout**: Configure global layout settings.
-   - **JSON**: A technical view to directly inspect or edit the raw layout configuration schema.
-
-**Building a page works like this:**
-
-Every layout is built using a node-based architecture using three fundamental blocks:
-
-| Element Type | What It Does | Example |
-|-----------|-------------|---------|
-| **Row** | A horizontal container that holds columns side by side | A full-width banner section |
-| **Column** | A vertical container within a row to control width | A 25% sidebar next to a 75% main content area |
-| **Widget** | A functional UI component that renders content | Product Slider, Checkout Step, Image Gallery |
-
-**Workflow:**
-1. **Drag a Row element** from the palette onto the canvas.
-2. **Set the Number of Children** inside the Row's properties to divide it into Columns.
-3. **Drag Widgets** into the columns to add functionality.
-4. **Configure each widget** in the Properties Panel by selecting its **Widget ID** and filling in specific parameters.
-
-{{< callout type="tip" >}}
-**Pro Tip**: Think of it like building a bookshelf. Rows are the shelves, Columns are the dividers, and Widgets are the books, decorations, and items you place on the shelves to bring it to life!
-{{< /callout >}}
-
----
+**Configuration Palette:**
+- **Elements Palette (Left)**: Drag Rows, Columns, and Widgets onto the canvas.
+- **Interactive Canvas (Center)**: Rearrange elements visually.
+- **Properties Panel (Right)**: Configure the specific settings for the selected element.
 
 ##### Widget Reference Guide
 
@@ -426,189 +496,223 @@ Below is the complete catalog of all available widgets, organized by category. W
 
 ###### 🏗️ Structure & Header Widgets
 
-These widgets control the overall page structure — headers, footers, and navigation shells.
-
 | Widget ID | Widget Name | What It Does | Key Configurable Parameters |
 |-----------|------------|-------------|----------------------------|
-| `GENERIC_HEADER` | Generic Header | Standard website header with logo, search, and cart icon. | Sticky mode, image width, search route, search button color/text, hide cart, menu background/color, disable parent route |
-| `CLICKNET_HEADER` | Clicknet Header | Themed header for Clicknet-style websites. | Sticky mode, image width, search route, show search button |
-| `FUSION_HEADER` | Fusion Header | Themed header for FusionTech-style websites. | Sticky mode, image width, search route, show search button |
-| `MOBILE_HEADER` | Mobile Header | Header optimized for mobile app views. | Cart route, show logo, show menu, enable sidebar, show back button, search bar toggle, sticky mode, badge background/color, search background/shadow, category GUID, cart/back/menu position, sub-menu toggle, menu list GUID, display entity, full display, line length |
-| `FOOTER` | Footer | Website footer with contact info and links. | Mobile mode, header size, mobile footer field, email, Facebook URL, Instagram URL, capitalize text, display description, display logo, description color, footer headers and text blocks (1 & 2) |
-| `BIO_FOOTER` | Bio Footer | Footer with company bio, address, and social links. | Footer line 1/2/3, postal code, city, state, email, phone, social title, social icon color, Facebook URL, Instagram URL, TikTok URL, YouTube URL |
-
----
+| `GENERIC_HEADER` | Generic Header | Standard website header with logo, search, and cart icon. | Sticky mode, image width, search route, search button color/text, hide cart, menu background/color |
+| `MOBILE_HEADER` | Mobile Header | Header optimized for mobile app views. | Cart route, show logo, show menu, enable sidebar, show back button, search bar toggle |
+| `FOOTER` | Footer | Website footer with contact info and links. | Mobile mode, header size, mobile footer field, email, Facebook URL, Instagram URL, display logo |
+| `BIO_FOOTER` | Bio Footer | Footer with company bio, address, and social links. | Footer line 1/2/3, postal code, city, state, email, phone, social links (FB/IG/TikTok/YT) |
 
 ###### 🛍️ Product Display Widgets
 
-These widgets showcase products on the storefront.
-
 | Widget ID | Widget Name | What It Does | Key Configurable Parameters |
 |-----------|------------|-------------|----------------------------|
-| `PRODUCT_SLIDER` | Product Slider | Horizontal carousel of products, filterable by category. | Title, category group (label list), category (label hdr), product list display layout, product details layout, line count for name, hide add to cart, hide favourite, display attribute icons, multiple pricing scheme design |
-| `PRODUCT_SLIDER_V2` | Product Slider V2 | Enhanced product slider with visibility and arrow controls. | All Product Slider params + visible items (desktop), visible items (mobile), hide arrows, hide add to cart, hide favourite |
+| `PRODUCT_SLIDER` | Product Slider | Horizontal carousel of products, filterable by category. | Title, category group (label list), category (label hdr), add to cart toggle, favourite toggle |
+| `PRODUCT_SLIDER_V2` | Product Slider V2 | Enhanced product slider with visibility and arrow controls. | All Product Slider params + visible items (desktop/mobile), hide arrows |
 | `PRODUCT_LIST` | Product List | Grid/list view of all products. | Product details layout URL |
-| `PRODUCT_DETAILS` | Product Details | Full product detail page with images, price, description. | Enable auth guarantee, auth color, show socials (share buttons), show vouchers |
-| `EXTERNAL_PRODUCT_DETAILS` | External Product Details | Product detail page with WhatsApp inquiry button. | WhatsApp number |
+| `PRODUCT_DETAILS` | Product Details | Full product detail page with images, price, description. | Enable auth guarantee, show socials, show vouchers |
 | `PRODUCT_CATEGORY` | Product Category | Display product categories as browsable sections. | Category group filter, label list, product listing layout URL |
-| `PRODUCT_POSTS` | Product Posts | Display product-related posts (specification, description, pages). | Drag-and-drop ordering of: Product Specification, Product Description, Product E-Com Description, Product Pages |
-| `CATEGORY_FILTER_PRODUCT_LIST` | Category Filter Product List | Product list with a category filter bar on top. | All Product Slider params + background/text/active/scroll colors, enable filter bar, display title, infinite scrolling toggle, web/mobile column count, product limit, show all products |
-| `CATEGORY_SLIDER` | Category Slider | Horizontal slider of product categories. | Label, category title, category card style, category padding, category group GUID |
-| `CATEGORY_TILES_LISTING` | Category Tiles Listing | Visual grid of category tiles with images. | Title, label list, choose specific categories to display, display card mode, button position |
-| `POWER_SEARCH_FILTER` | Power Search Filter | Advanced search with sorting and filtering controls. | Line count, hide add-to-cart, hide favourite, disable square image, custom image height, sorting functions (Latest/Popular/Top Sales/Price via drag-and-drop), show search result message, display attribute icons |
-| `CARD_LAYOUT_WIDGET` | Card Layout Widget | Display items in a card-based layout. | Card title, post GUIDs |
-| `CARD_SLIDER_WIDGET` | Card Slider Widget | Horizontal card slider with image management. | Card images array |
-| `IMAGE_CARD_WIDGET` | Image Card Widget | Display images in card format with links. | Card image array |
-
----
+| `CATEGORY_FILTER_PRODUCT_LIST` | Category Filter Product List | Product list with a category filter bar on top. | Background/text/active colors, infinite scrolling toggle, column count |
+| `POWER_SEARCH_FILTER` | Power Search Filter | Advanced search with sorting and filtering controls. | Sorting functions (Latest/Popular/Top Sales/Price), display attribute icons |
 
 ###### 🧭 Navigation & Menu Widgets
-
-These widgets control how customers navigate the website.
 
 | Widget ID | Widget Name | What It Does | Key Configurable Parameters |
 |-----------|------------|-------------|----------------------------|
 | `VERTICAL_MENU` | Vertical Menu | Sidebar-style vertical navigation menu. | Menu list selection |
 | `HORIZONTAL_MENU` | Horizontal Menu | Top-bar horizontal navigation menu. | Menu list selection |
 | `TAB_MENU` | Tab Menu | Tab-style navigation for sub-sections. | Menu list selection |
-| `SCROLLABLE_MENU_WIDGET` | Scrollable Menu | Horizontally scrollable menu for mobile views. | Menu list selection |
-| `BORDERED_TAB_MENU` | Bordered Tab Menu | Tab menu with bordered styling. | Menu list selection |
 | `MOBILE_TAB_MENU` | Mobile Tab Menu | Bottom tab bar for mobile app navigation. | Menu list selection |
-| `MENU_BTN` | Menu Button | A standalone menu button widget. | Menu list selection |
-
----
 
 ###### 🛒 E-Commerce Workflow Widgets
-
-These widgets handle the shopping and purchasing journey.
 
 | Widget ID | Widget Name | What It Does | Key Configurable Parameters |
 |-----------|------------|-------------|----------------------------|
 | `SHOPPING_CART` | Shopping Cart | The customer's shopping cart view. | Checkout route URL |
-| `CHECKOUT_STEP_V2` | Checkout Step (V2) | Multi-step checkout flow widget. | Enable shipping, enable membership points conversion, enable cash voucher, enable payment gateway, allow self pick-up, shipping/billing address layout URLs, product listing layout URL, + full style configuration for each step (Shopping Cart, Shipping, Voucher, Membership Points, PGW) including: title, back/next button text, colors, backgrounds, and borders |
-| `ORDER_LISTING` | Order Listing | List of customer's past orders. | Order details layout, order item details layout, enable status icons, tracking website URL, product category listing route, sales order status, sales order cancel status, show received button |
-| `SALES_ORDER_DETAILS` | Sales Order Details | Individual order detail page. | Background color, border, confirmation message |
+| `CHECKOUT_STEP_V2` | Checkout Step (V2) | Multi-step checkout flow widget. | Enable shipping, membership points, cash voucher, payment gateway, style configuration for each step |
+| `ORDER_LISTING` | Order Listing | List of customer's past orders. | Order details layout, tracking website URL, show received button |
 | `MY_INVOICE` | My Invoice | List of customer's invoices. | Invoice detail layout URL |
-| `MY_INVOICE_DETAIL` | My Invoice Detail | Individual invoice detail view with refund option. | Invoice item detail layout, enable refund request, request refund layout URL, max number of days for refund |
-| `REQUEST_REFUND` | Request Refund | Refund request form. | Reasons array (add/remove refund reasons), email recipient for refund notifications |
-| `MY_SHIPPING_ADDRESS` | My Shipping Address | List of saved shipping addresses. | Add address route, edit address route |
-| `MY_SHIPPING_ADDRESS_ADD` | Add Shipping Address | Form to add a new shipping address. | On-save redirect route |
-| `MY_SHIPPING_ADDRESS_DETAILS` | Shipping Address Details | View/edit an existing shipping address. | On-save redirect route |
-| `PROMOTIONAL_WIDGET` | Promotional Widget | Display promotions and special offers. | *(Minimal configuration)* |
-
----
-
-###### 📝 Content & Media Widgets
-
-These widgets display content, images, videos, and text.
-
-| Widget ID | Widget Name | What It Does | Key Configurable Parameters |
-|-----------|------------|-------------|----------------------------|
-| `TEXT_WIDGET` | Text Widget | Rich-text content block using Froala editor. | Content (WYSIWYG HTML editor) |
-| `IMAGE_DISPLAY` | Image Display | Display a single image with optional link. | Image URL (from media library), image link route, query parameters |
-| `IMAGE_GALLERY` | Image Gallery | Gallery grid of images from a Drive folder. | Drive folder selection, media display layout URL |
-| `VIDEO_GALLERY` | Video Gallery | Gallery grid of videos from a Drive folder. | Drive folder selection, media display layout URL |
-| `AUDIO_GALLERY` | Audio Gallery | Gallery grid of audio files from a Drive folder. | Drive folder selection, media display layout URL |
-| `MEDIA_PLAY_LIST` | Media Playlist | Playlist-style media player. | Drive folder selection, media display layout URL, thumbnail driver |
-| `VIDEO_SLIDER_WIDGET` | Video Slider | Horizontal video carousel. | Media array with video entries |
-| `SLIDER_V2` | Image Slider V2 | Advanced image carousel with button overlays. | Images array with: image URL, link route, query params + button overlays with text, font, color, background, border, icon, time |
-| `SLIDER_BUTTON_WIDGET` | Slider Button Widget | Slider with configurable CTA buttons. | Button array with: text, font, text color, background, border color, time, icon |
-| `STATIC_PAGE_DISPLAY` | Static Page Display | Render a static content page by its post GUID. | Post selection dropdown |
-| `POST_CATEGORY_TAB` | Post Category Tab | Display posts grouped by category in tabs. | Post/Content category selection |
-| `POST_CATEGORY_CARD` | Post Category Card | Display posts as cards with image and content columns. | Image column width, content column width, header font, content category |
-| `IFRAME_DISPLAY` | Iframe Display | Embed an external page in an iframe. | Target URL |
-| `COUNTDOWN_TIMER` | Countdown Timer | Display a countdown to a specific date/time. | Target date/time |
-
----
+| `REQUEST_REFUND` | Request Refund | Refund request form. | Reasons array, email recipient for notifications |
 
 ###### 👤 User Account & Membership Widgets
 
-These widgets handle user authentication, registration, and membership features.
-
 | Widget ID | Widget Name | What It Does | Key Configurable Parameters |
 |-----------|------------|-------------|----------------------------|
-| `LOGIN_WIDGET` | Login Widget | Login and registration page. | Reset password page route, sign-up page route, privacy agreement doc, T&C agreement doc, disable privacy/terms during sign-up, require date of birth, require name, enable privacy policy, enable T&C, registration type, privacy policy layout, button font |
-| `LOGIN_V2_WIDGET` | Login V2 Widget | Enhanced login widget with updated design. | Same as Login Widget with improved layout |
-| `WELCOME_HEADER` | Welcome Header | Personalized welcome message for logged-in users. | Welcome message text, email, phone number |
-| `MEMBERSHIP` | Membership | Display membership tier cards. | Membership class array, primary/secondary font color, default background color, icon color |
-| `MEMBER_POINTS_COUNTER` | Membership Points Counter | Display member's loyalty points balance. | Point color, line color, desktop margin |
-| `WARRANTY_REGISTRATION_WIDGET` | Warranty Registration | Warranty registration form for products. | *(Minimal configuration)* |
-
----
+| `LOGIN_WIDGET` | Login Widget | Login and registration page. | Reset password route, sign-up route, privacy/T&C doc links, registration type |
+| `MEMBERSHIP` | Membership | Display membership tier cards. | Membership class array, icon color, background color |
+| `MEMBER_POINTS_COUNTER` | Membership Points Counter | Display member's loyalty points balance. | Point color, line color |
 
 ###### 📋 Form & Interaction Widgets
-
-These widgets embed forms, surveys, and interactive elements.
 
 | Widget ID | Widget Name | What It Does | Key Configurable Parameters |
 |-----------|------------|-------------|----------------------------|
 | `DYNAMIC_FORM_WIDGET` | Dynamic Form Widget | Embed a dynamic form/survey on the page. | Dynamic form selection |
-| `TEMPLATE_FORM_WIDGET` | Template Form Widget | Embed a template form on the page. | Template form selection, string array for custom fields |
-| `ACTIVITY_SCHEDULE` | Activity Schedule | Display bookable activity schedules. | Activity GUID |
-| `CALENDAR_WIDGET` | Calendar Widget | Interactive calendar for viewing events/bookings. | Activity category array |
-| `BUTTON_SINGLE` | Button Single | A standalone CTA button with full styling. | Text, font, text color, background color, border (radius, width, style, color), size, height, destination URL, link type (Component / Page / Content Category / External Link / Layout Instance), position |
-| `STICKY_TEXT_BUTTON` | Sticky Text Button | A floating button fixed to the screen. | Button text, color, background, route |
+| `TEMPLATE_FORM_WIDGET` | Template Form Widget | Embed a template form on the page. | Template form selection, custom field array |
+| `BUTTON_SINGLE` | Button Single | A standalone CTA button with full styling. | Text, font, destination URL, link type, styling (colors/borders/radius) |
 
 ---
 
-###### 🎨 Theme-Specific Widgets
+<a id="menu-list-tab-deep-dive"></a>
+#### Menu List Tab
 
-These are special-purpose widgets designed for specific platform themes or client implementations.
+Manage the navigation structures utilized by the **Generic Header**, **Footer**, and **Vertical Menu** widgets.
 
-| Widget ID | Widget Name | What It Does |
-|-----------|------------|-------------|
-| `MONALIZA_HOME` | Monaliza Homepage | Custom homepage widget for Monaliza theme — includes activity categories configuration |
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Menu Title** | The name of the navigation menu (e.g., "Footer Links") | Yes |
+| **Status** | Toggle visibility on the storefront | Yes |
 
----
+<a id="posts-tab-deep-dive"></a>
+#### Posts Tab
 
-##### Widget Configuration Quick Reference
+Manage individual content entries like blog articles, news items, and announcements. This is where you create the "Static Pages" referenced by layout widgets.
 
-When you click on any placed widget on the interactive canvas, the **Properties Panel** on the right side updates to show the **Selected Node** form. This form allows you to:
-
-- **Set the Node Name & Type**
-- **Select the Widget ID** via the dropdown
-- **Input Widget Config (JSON)** for advanced configurations 
-- **Declare basic CSS Styles**
-
-**Common patterns across widget configuration:**
-
-- **Layout Route Fields** — Many widgets ask you to specify "layout URLs" (e.g., Product Details Layout, Invoice Detail Layout). These are the **layout instance codes** of other pages in your website. For example, if your Product Details page has layout code `product-detail-page`, you enter that code here so the widget knows where to navigate when a customer clicks.
-
-- **Category Group / Category Fields** — Product-related widgets let you filter by category using Label List (category group) and Label Hdr (specific category). This controls which products appear in the widget.
-
-- **Button Style Fields** — Many widgets (Checkout Step, Slider Button, Sticky Button) expose granular style controls: text, font, text color, background color, border color, border radius, and size. Use these to match your brand guidelines.
-
-- **Drag-and-Drop Sorting** — Some widgets (Power Search Filter, Product Posts) let you drag items between "Available" and "Selected" lists to control which features appear and in what order.
-
-{{< callout type="important" >}}
-**Key Concept — Layout Routes**: When a widget parameter asks for a "Layout URL" or "Layout Route", it expects the **code** of another Layout Instance within the same website. This is how widgets link pages together — for example, the Product Slider widget needs to know which layout to open when a customer clicks a product. If this is left blank, customers will see a broken navigation.
-{{< /callout >}}
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Title** | The display title of the post | Yes |
+| **URL Key** | The search-engine-friendly URL slug (e.g., `brand-story`) | Yes |
+| **Status** | Controls whether the post is visible | Yes |
+| **Publish/Expiry Date** | Schedule content visibility for limited-time campaigns | No |
+| **Content Category** | Group posts together for collective display in widgets | No |
+| **Layout Instance** | Link this post to a specific layout design | Optional |
 
 ---
 
-#### Country Config Tab
+<a id="user-agreement-tab-deep-dive"></a>
+#### User Agreement Tab
 
-Manage locale-specific settings per country.
+Central repository for legal documents such as Privacy Policies and Terms of Use. These documents are referenced in registration and checkout widgets.
 
-**Country Edit — Tabs:**
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Title** | The name of the agreement (e.g., "Privacy Policy 2024") | Yes |
+| **Document Code** | Unique identifier for linking in widgets | Yes |
+| **Expiry Date** | Automatic version control for legal updates | No |
+| **Status** | Set to ACTIVE to make the document available on the portal | Yes |
 
-| Tab | Purpose |
-|-----|---------|
-| **Main** | Country name and basic settings |
-| **Language Selection** | Assign which languages are available for this country |
-| **Settlement Methods** | Configure payment/settlement options per country |
-| **FI Label List Link** | Link financial instrument labels for this country (Details + Label Hdrs sub-tabs) |
-
----
-
+<a id="reviews-tab-deep-dive"></a>
 #### Reviews Tab
 
-Contains two sub-tabs for managing the review system:
+Configure how the product review and rating system functions on the storefront.
 
 | Sub-Tab | Purpose |
 |---------|---------|
-| **Review Settings** | Configure review rules: min/max rating, auto-approve thresholds, review fields |
-| **Review Votes** | Manage voting options (e.g., "Was this review helpful?") |
+| **Review Settings** | Define rules for review submission: min/max scores, auto-approval thresholds, and required fields. |
+| **Review Votes** | Manage the configuration of "Helpful/Not Helpful" voting on customer reviews. |
+
+<a id="label-list-tab-deep-dive"></a>
+#### Label List Tab
+
+Create classification labels used to tag and filter content across the website. These are often used as "Category Groups" in widgets.
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Label Name** | Primary display name for the label | Yes |
+| **Label Code** | Internal code used for layout configuration | Yes |
+| **Status** | Toggle availability for widget filtering | Yes |
+
+<a id="content-category-tab-deep-dive"></a>
+#### Content Category Tab
+
+Define logical groupings for products and posts to enable organized browsing.
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Category Name** | The display name of the category | Yes |
+| **Category Code** | Unique ID for URL routing and layout links | Yes |
+| **Category Type** | Classification for internal sorting | No |
+
+---
+
+<a id="account-tab-deep-dive"></a>
+#### Account Tab
+
+View and manage the administrative details of customer accounts associated with this website.
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Name / Email** | Primary contact identity for the account | Yes |
+| **Phone** | Contact number for delivery and alerts | No |
+| **Type** | Classification (Corporate, Retail, Supplier, etc.) | Yes |
+| **Codes** | Linked identifiers from the ERP system (Customer Code, Merchant Code, etc.) | No |
+
+<a id="branch-tab-deep-dive"></a>
+#### Branch Tab
+
+Manage the physical branch locations or pickup points linked to this specific digital storefront.
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Branch Code** | Unique identifier for the physical location | Yes |
+| **Branch Name** | Friendly name displayed to customers in pickup options | Yes |
+
+<a id="region-tab-deep-dive"></a>
+#### Region Tab
+
+Define the geographical regions used for shipping calculation and content localization.
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Region Name** | The name of the territory (e.g., "South East Asia") | Yes |
+| **Region Code** | Unique ID for regional rule mapping | Yes |
+| **Status** | Toggle availability for shipping rules | Yes |
+
+<a id="country-tab-deep-dive"></a>
+#### Country Tab
+
+Configure country-level localization, including languages and payment methods available to customers in specific nations.
+
+| Sub-Tab | Purpose |
+|---------|---------|
+| **Main** | Set the primary country name and ISO code. |
+| **Language Selection** | Assign which languages are enabled for this country's portal view. |
+| **Settlement Methods** | Configure which payment methods are available to customers in this country. |
+
+---
+
+<a id="voucher-management-tab-deep-dive"></a>
+#### Voucher Management Tab
+
+Link and manage discount vouchers and promotional coupons that customers can use during checkout.
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Voucher Code** | The code customers enter at checkout (e.g., "SAVE10") | Yes |
+| **Voucher Name** | Internal description of the campaign | Yes |
+| **Voucher Type** | Discount logic (Fixed Amount or Percentage) | Yes |
+| **Status** | Toggle to activate/deactivate the coupon instantly | Yes |
+
+<a id="commission-scheme-tab-deep-dive"></a>
+#### Commission Scheme Tab
+
+Define how sales commissions are calculated for agents or affiliates linked to this website.
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Commission Code** | Primary identifier for the commission ruleset | Yes |
+| **Commission Name** | Descriptive name for the scheme | Yes |
+
+<a id="language-tab-deep-dive"></a>
+#### Language Tab
+
+Configure the multi-language support settings for the storefront Frontend.
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Language Name** | The display name (e.g., "Bahasa Malaysia") | Yes |
+| **Language Code** | Standard ISO locale code (e.g., `ms-MY`) | Yes |
+| **Status** | Enable/Disable the language option on the site | Yes |
+
+<a id="settlement-method-tab-deep-dive"></a>
+#### Settlement Method Tab
+
+Link the payment settlement gateways (Stripe, Bank Transfer, Card, etc.) available for this website's checkout process.
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Settlement Code** | Technical ID for the payment processor | Yes |
+| **Settlement Name** | The name shown to customers (e.g., "Pay with Credit Card") | Yes |
+| **Status** | Toggle to enable/disable the payment method | Yes |
 
 ---
 
