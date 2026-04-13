@@ -15,7 +15,7 @@ weight: 268
 
 The **Internal Packing Order Applet** is the supplier-facing workspace in BigLedger (including **akaun.com**) for documenting goods **leaving** your warehouse toward the buyer. Each packing order captures the dispatching branch, location, the items being shipped, and how the movement links to upstream documents like Sales Orders and Jobsheets.
 
-Think of it as **your dispatch paperwork, digitised**: you record what is going out, pull items automatically from existing orders, and lock the document with **FINAL** so the buyer's receiving team can match against what you shipped.
+Think of it as **your dispatch paperwork, digitised**: you record what is going out, pull items automatically from existing orders, and lock the document when it is ready so the buyer's receiving team can match against what you shipped.
 
 {{< callout type="info" >}}
 Menus, tabs, and buttons can vary by **posting status**, **feature visibility**, and **permissions**. If something described here does not appear on your screen, ask your administrator.
@@ -46,15 +46,16 @@ Without a central record, outbound shipments are tracked in spreadsheets or emai
 - **Structured details** capturing the exact branch, location, and movement classification
 - **Automated knock-off flows** to pull items directly from Sales Orders, Jobsheets, Quotations, or Delivery Orders—eliminating manual re-entry
 - **Financial summaries** on each order: Total Transaction Amount, SST/VAT/GST, and Rounding
-- **Status locking** via FINAL to ensure downstream reliability
 
 {{< cards >}}
-  {{< card title="Listing" subtitle="Search, filter, create, and finalise from the grid" link="#the-listing-view" >}}
+  {{< card title="Listing" subtitle="Search, filter, create, and manage from the grid" link="#the-listing-view" >}}
   {{< card title="Create & Edit" subtitle="Main Details, Lines, and Matchings tabs" link="#create-and-edit" >}}
   {{< card title="Lines & Knock-Off" subtitle="Search items or import from existing documents" link="#lines-and-knock-off-ko" >}}
   {{< card title="Quick Start" subtitle="Step-by-step for your first packing order" link="#quick-start-guide" >}}
   {{< card title="Sidebar Modules" subtitle="Manual Packing, Operator Queue, Coil, and more" link="#understanding-your-sidebar-modules" >}}
 {{< /cards >}}
+
+{{< figure src="/images/internal-packing-order-applet/internal-packing-order-overview-infographic.png" alt="Internal Packing Order Applet Overview — from order creation to dispatch" caption="Internal Packing Order at a glance: create orders, add lines manually or via knock-off, review totals, print, and finalise for dispatch." >}}
 
 ---
 
@@ -62,9 +63,7 @@ Without a central record, outbound shipments are tracked in spreadsheets or emai
 
 ### Document Flow
 
-**Open Listing** &rarr; **Create (+)** &rarr; **Fill Main Details** &rarr; **Save** &rarr; **Add Lines** (Manual or Knock-Off) &rarr; **Matchings** (optional) &rarr; **FINAL** (when ready)
-
-After a document is marked **FINAL**, it is locked and cannot be edited unless your company has a controlled reversal or void process.
+**Open Listing** &rarr; **Create (+)** &rarr; **Fill Main Details** &rarr; **Save** &rarr; **Add Lines** (Manual or Knock-Off) &rarr; **Matchings** (optional) &rarr; **Finalise** (when ready to dispatch)
 
 ### Technical Terms Explained
 
@@ -84,7 +83,7 @@ After a document is marked **FINAL**, it is locked and cannot be edited unless y
 
 ### For Supplier Operations: Create Your First Packing Order
 
-**Goal:** Create a packing order, add items, and finalise it for dispatch.
+**Goal:** Create a packing order, add items, and dispatch.
 
 1. **Navigate:** Open the sidebar and go to the **Internal Packing Order** applet. You will land on the **Listing** view.
 2. **Create:** Click the **+** button (tooltip: "Create").
@@ -98,7 +97,7 @@ After a document is marked **FINAL**, it is locked and cannot be edited unless y
    - Or use a **Knock-Off (KO)** tab (e.g., **KO For Sales Order**) to automatically pull items from an existing document.
 6. **Review Totals:** Check the **Total Txn Amount** and **SST/VAT/GST Amount** displayed above the line grid.
 7. **Print:** Click the **Print** icon to generate a PDF for your logistics driver.
-8. **Finalise:** Click **FINAL** to lock the document. The status changes and the order is ready for buyer-side receiving.
+8. **Finalise:** When ready, click **FINAL** to lock the document for dispatch.
 
 {{< callout type="tip" >}}
 If you are new to this applet, create one **test** packing order end-to-end (save, add a line, finalise) before using it for live shipments.
@@ -151,25 +150,15 @@ You can mix methods on a single order: knock off some items from a Sales Order a
 
 ---
 
-### For Supplier Operations: Bulk Finalise from the Listing
-
-**Goal:** Finalise multiple packing orders at once without opening each one individually.
-
-1. On the **Listing** view, use the checkboxes to **select multiple rows**.
-2. Click the **FINAL** button in the listing toolbar.
-3. All selected orders that meet the finalisation criteria will be locked.
-
----
-
 ### For Administrators: First-Time Setup
 
-**Goal:** Ensure your team can create, save, and finalise packing orders.
+**Goal:** Ensure your team can create, save, and use the applet.
 
 1. Open **Settings** &rarr; **Feature Visibility** and ensure the applet appears for the correct roles.
 2. Review **Field Settings** to confirm which Main Details fields are mandatory.
 3. Configure **Printable Format Settings** if printed packing orders are required.
 4. Set **Permissions** so only intended users can create, edit, or finalise.
-5. Run a full test: create a packing order, add a line, save, and finalise.
+5. Run a full test: create a packing order, add a line, save, and test the full workflow.
 
 ---
 
@@ -184,7 +173,7 @@ The **Internal Packing Order Listing** is your control centre for all packing or
 | **Create** | Click the **+** button to open a new packing order |
 | **Search** | Use the search bar or advanced search to filter by branch, reference, date, or status |
 | **Open** | Click any row to open the full edit screen |
-| **Multi-select** | Select multiple rows to apply bulk actions like **FINAL** |
+| **Multi-select** | Select multiple rows to apply bulk actions (e.g., finalise) |
 | **Paginate** | Adjust page size and navigate through pages |
 
 ---
@@ -196,8 +185,7 @@ The **Internal Packing Order Listing** is your control centre for all packing or
 - **SAVE** is disabled until all required Main Details fields are completed
 
 **Edit Screen** — Title: *Edit Supplier Outbound Delivery Note*
-- Actions available: **Back**, **RESET**, **SAVE**, **FINAL**
-- **FINAL** only appears when the document state and your permissions allow it
+- Actions available: **Back**, **RESET**, **SAVE**, **FINAL** (conditional — only appears when the document is active and not already finalised)
 
 Both screens have three tabs:
 
@@ -247,7 +235,7 @@ A Sales Order #1002 comes in for 50 Laptops.
 3. Click **+** and select the **KO For Sales Order** tab.
 4. Find and select Sales Order #1002.
 5. The system pulls in 50 Laptops automatically. Adjust the quantity if only 40 are going on this truck.
-6. Click **FINAL** to lock the order for dispatch.
+6. Save and finalise when ready.
 
 **Scenario 2: Manual Packing Order**
 
@@ -255,7 +243,7 @@ A Sales Order #1002 comes in for 50 Laptops.
 2. Click **SAVE**, then open the **Lines** tab.
 3. Click **+** and use the **Search Item** tab.
 4. Browse or search the catalogue, select items, and enter quantities.
-5. Click **FINAL** to dispatch.
+5. Save and finalise when ready to dispatch.
 
 **Scenario 3: Partial Delivery**
 
@@ -263,7 +251,7 @@ Sales Order #2050 requires 100 units. Only 60 are ready.
 
 1. Knock off from Sales Order #2050 — the system imports 100 units.
 2. Adjust the quantity to **60** on the line.
-3. Finalise this packing order.
+3. Save and finalise.
 4. When the remaining 40 units are ready, create a **second** packing order and knock off the remaining items.
 
 ---
@@ -343,7 +331,7 @@ The applet shares the standard BigLedger settings structure. Key areas include:
 **A:** Yes. When using the Knock-Off flow, adjust the imported item quantity to match only what you are loading onto the truck. You can create additional packing orders for the remaining items later.
 
 **Q: What if I accidentally finalised the wrong quantity?**
-**A:** Once marked as FINAL, the document is locked. Depending on your company policy, you may need to void it or create a manual return/adjustment.
+**A:** Once finalised, the document is locked. Depending on your company policy, you may need to void it or create a manual return/adjustment.
 
 **Q: How do I print the packing order for my driver?**
 **A:** Once your Main Details and Lines are saved, click the **Print** icon on the Edit screen to generate a PDF.
@@ -356,8 +344,8 @@ The applet shares the standard BigLedger settings structure. Key areas include:
 **Q: Why is SAVE disabled?**
 **A:** The Main Details form must be valid. Ensure Branch, Location, Conversion Code, and Conversion Name are all filled in.
 
-**Q: FINAL is not showing — why?**
-**A:** FINAL visibility depends on the document state and your permissions. You may need to SAVE first. If the document is already final, the button will not appear.
+**Q: A button is missing (e.g., FINAL) — why?**
+**A:** Button visibility depends on the document state and your permissions. For example, FINAL only appears on active, unfinalised documents. If a button is missing, check with your administrator.
 
 **Q: What is the Matchings tab for?**
 **A:** It links this packing order to other documents in the system. If the tab is empty, your workflow may not require matching for this document type.
