@@ -146,6 +146,8 @@ To effectively manage SST, you must understand how **Tax Years**, **Tariff Codes
 
 {{< figure src="/images/sst-applet/main-listing-page.png" alt="SST Applet Main Listing" caption="The central hub for managing your tax years, tariff codes, and tax cycles." >}}
 
+{{< figure src="/images/sst-applet/search-filter.png" alt="SST Applet Search Filter" caption="Efficiently filter data by Company and Date Range." >}}
+
 ---
 
 ## Quick Start Guide
@@ -233,6 +235,10 @@ The Tax Year is the master configuration that defines the fiscal filing framewor
 7. If **Custom Month** is selected, enter the number of months.
 8. Click **CREATE**.
 
+{{< figure src="/images/sst-applet/tax-year-create.png" alt="Create Tax Year Drawer" caption="Configuration for new Tax Years including company and duration selection." >}}
+
+{{< figure src="/images/sst-applet/tax-year-edit.png" alt="Edit Tax Year Drawer" caption="Modify existing Tax Year details or delete historical configurations." >}}
+
 {{< callout type="tip" >}}
 **Best Practice**: Set up one Tax Year per company per fiscal year. Use a clear naming convention like `[Year] - [Company Name]` so the filing history is easy to audit.
 {{< /callout >}}
@@ -259,6 +265,10 @@ A Tariff Code (also referred to as **Label** in the system) is the official clas
 3. Enter the **Tariff Code** (from the official RMCD tariff schedule).
 4. Enter the **Tariff Name** (e.g., `Management Services`).
 5. Click **CREATE**.
+
+{{< figure src="/images/sst-applet/tariff-code-listing.png" alt="Tariff Code Listing" caption="Main listing of official RMCD tariff codes with activation status." >}}
+
+{{< figure src="/images/sst-applet/tariff-code-create.png" alt="Create Tariff Code" caption="Define new tariff classifications for services or manufactured goods." >}}
 
 **Why Tariff Codes Matter:**
 
@@ -306,6 +316,12 @@ A Tax Code is the calculation rule that defines the tax rate and type applied to
 7. Select the **Tariff Code** to link this rule to.
 8. Click **CREATE**.
 
+{{< figure src="/images/sst-applet/tax-code-listing.png" alt="Tax Code Listing" caption="Summary of configured tax rates and their associated types." >}}
+
+{{< figure src="/images/sst-applet/tax-code-create.png" alt="Create Tax Code" caption="Configure specific tax rules with rates (e.g., 6%, 10%) mapped to tariff codes." >}}
+
+{{< figure src="/images/sst-applet/tax-code-edit.png" alt="Edit Tax Code" caption="Update existing tax rules as government policies change." >}}
+
 {{< callout type="tip" >}}
 **Rate Update Tip**: If the Malaysian government revises tax rates (e.g., from 6% to 8%), simply open the existing Tax Code and update the **Rate** field. Future transactions will use the new rate while historical filed data remains intact.
 {{< /callout >}}
@@ -346,11 +362,17 @@ A filing cycle can be in two states:
 **Caution**: Once a filing cycle is **Locked**, it cannot be unlocked. Only lock a cycle after the SST-02 PDF has been exported and verified for RMCD submission.
 {{< /callout >}}
 
-{{< figure src="/images/sst-applet/tax-filing-cycle.png" alt="Tax Filing Cycle View" caption="Tax Filing Cycle: Manage your locked and open cycles seamlessly." >}}
+{{< figure src="/images/sst-applet/tax-filing-listing.png" alt="Tax Filing Listing" caption="Monitor all open and locked filing cycles across different tax years." >}}
+
+{{< figure src="/images/sst-applet/tax-filing-create.png" alt="Create Tax Filing Cycle" caption="Initialize a new taxable period for processing transactions." >}}
+
+{{< figure src="/images/sst-applet/tax-filing-cycle-details.png" alt="Tax Filing Cycle Details" caption="Cycle metadata management with Lock and Delete capabilities." >}}
 
 #### The Tax Filing View (Tabs)
 
 When you open a filing cycle, you will see two main tabs:
+
+{{< figure src="/images/sst-applet/tax-filing-view.png" alt="Tax Filing Main View" caption="Unified interface for managing Service and Sales Tax filing workflows." >}}
 
 **Tab 1: Details**
 - Displays filing cycle metadata: Company, Tax Year, Name, Start Date, End Date.
@@ -492,12 +514,16 @@ The SST Applet provides three dedicated reporting views accessible from the side
 - **Use case**: Cross-check filed service tax amounts against original invoices.
 - **Access**: **SST Service Tax Report** from the sidebar.
 
+{{< figure src="/images/sst-applet/sst-service-tax-report-search.png" alt="Service Tax Report Search" caption="Advanced filtering for granular Service Tax transaction audits." >}}
+
 #### SST Sales Tax Report
 
 **What it shows:** A consolidated listing of all **Sales Tax** transactions.
 
 - **Use case**: Compare sales tax collected across branches and periods.
 - **Access**: **SST Sales Tax Report** from the sidebar.
+
+{{< figure src="/images/sst-applet/sst-sales-tax-report-search.png" alt="Sales Tax Report Search" caption="Advanced filtering for granular Sales Tax transaction audits." >}}
 
 #### SST Tax Code Summary
 
