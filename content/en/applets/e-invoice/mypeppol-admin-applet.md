@@ -1,6 +1,6 @@
 ---
 title: "My Peppol Admin Applet"
-description: "Manage Peppol network documents - send invoices to suppliers, receive from customers, and track e-invoice submissions"
+description: "Manage Peppol network documents - send invoices to suppliers, receive from customers, track e-invoice submissions, and reconcile documents"
 tags:
 - peppol
 - e-invoice
@@ -12,83 +12,177 @@ weight: 175
 
 ## Purpose and Overview
 
-The My Peppol Admin Applet is your interface for managing documents sent and received through the Peppol network. While Peppol supports various document types, this applet currently focuses on e-invoice workflows—particularly the handoff between LHDN submission and Peppol distribution.
-
-When you submit an e-invoice to LHDN via the My E-Invoice Admin Applet and it's validated, that document can then be sent to your supplier or customer through Peppol if they're connected to the network.
+The My Peppol Admin Applet is your company-facing interface for managing every document sent and received through the Peppol network. It bridges LHDN e-invoice submission (handled in My E-Invoice Admin Applet) with actual Peppol network distribution, and provides full lifecycle tracking from the moment a document enters the system to its final delivery or receipt.
 
 {{< callout type="info" >}}
-**Integration Point**: This applet works in tandem with My E-Invoice Admin Applet. LHDN submission happens there; Peppol distribution happens here.
+**Integration Point**: This applet works in tandem with the My E-Invoice Admin Applet. LHDN submission happens there; Peppol distribution and tracking happens here.
 {{< /callout >}}
 
-### Who Uses This Applet
+### Who Benefits from This Applet?
 
 **Accounts Payable:**
-- Send purchase invoices to suppliers via Peppol
-- Track document delivery status
-- Handle transmission errors
+- Send purchase invoices and debit notes to suppliers via Peppol
+- Monitor outgoing document delivery status
+- Trigger manual processing for urgent documents
+- Handle transmission errors in the outgoing queue
 
 **Accounts Receivable:**
 - Receive sales invoices from customers via Peppol
-- Monitor incoming documents
-- Process received invoices
+- Monitor all incoming documents from the Peppol network
+- Process received e-invoices into the accounting system
 
 **Finance Teams:**
-- Oversee Peppol document flow
-- Ensure supplier/customer connectivity
-- Manage Peppol registrations
+- Oversee the full Peppol document flow end-to-end
+- Run reconciliation checks between LHDN submissions and Peppol history
+- Manage company Peppol ID registrations
+- Review monthly queue and history reports
+- Configure printable formats for sent and received documents
+
+### What Problems Does This Solve?
+
+**The Manual Peppol Management Problem:**
+Prior to a centralized admin applet, exchanging e-invoices via Peppol involved:
+- Disconnected workflows between LHDN submission and Peppol distribution
+- Blind spots when an e-invoice got stuck or failed transmission
+- Messy, unorganized receiving workflows for inbound documents from customers
+- Complex reconciliation across disparate platforms
+
+**The My Peppol Admin Solution:**
+- **Centralized queues** - Instantly see what is pending, what succeeded, and what failed.
+- **End-to-end tracing** - Track documents using the same Process ID from LHDN through to Peppol delivery.
+- **Automated workflows** - Background cron jobs handle document processing 24/7.
+- **Integrated Reconciliation** - Dedicated checks to ensure internal documents match Peppol records.
 
 ## Key Features Overview
 
 {{< cards >}}
-  {{< card title="Waiting Queue" subtitle="Documents pending Peppol processing" >}}
+  {{< card title="Posting Queue" subtitle="Pre-submission staging area for outgoing documents" link="#1-posting-queue" >}}
 
-  {{< card title="Internal Submission" subtitle="Track documents you're sending out" >}}
+  {{< card title="Waiting Queue" subtitle="Documents pending Peppol processing after LHDN validation" link="#2-waiting-queue" >}}
 
-  {{< card title="External Reception" subtitle="Monitor documents you're receiving" >}}
+  {{< card title="Internal Submission" subtitle="Track all documents you're sending out via Peppol" link="#3-internal-submission-sending-documents" >}}
 
-  {{< card title="Peppol Config" subtitle="Manage company Peppol registrations" >}}
+  {{< card title="External Reception" subtitle="Monitor all documents you're receiving via Peppol" link="#4-external-reception-receiving-documents" >}}
+
+  {{< card title="Monthly Reports" subtitle="Queue and history reports for auditing and reconciliation" link="#5-monthly-reports" >}}
+
+  {{< card title="Reconciliation" subtitle="Match LHDN submissions against Peppol delivery history" link="#6-reconciliation" >}}
+
+  {{< card title="Peppol Config" subtitle="Manage company Peppol ID registrations" link="#7-peppol-config" >}}
+
+  {{< card title="Peppol Testbed" subtitle="Test Peppol document receiving in a sandbox environment" link="#9-peppol-testbed" >}}
 {{< /cards >}}
+
+<br/>
+
+![My Peppol Admin Applet Overview](/images/my-peppol-admin-applet/my-peppol-admin-applet-overview-infographic.png)
+
+<br/>
+
+## Quick Start Guide
+
+Get up and running quickly with these essential workflows.
+
+### For Finance/Admins: Initial Setup
+**Goal:** Configure your company to send and receive Peppol documents.
+1. **Register Peppol ID**: Go to **Peppol Config > Peppol ID Registration**. Enter your company details and register your official ID (e.g., `0195:XXXXXXXXX` for Malaysia).
+2. **Review Print Formats**: Under **Settings**, set up your "To Peppol Printable Format" and "From Peppol Printable Format".
+3. **Sandbox Testing**: Use the **Peppol Testbed** to simulate receiving a document before going fully live.
+
+### For Accounts Payable: Fixing Outgoing Errors
+**Goal:** Track and resubmit a failed outgoing document.
+1. **Check the Queue**: Go to **Internal Submission > Queue**. Look for documents with an Error status.
+2. **Identify Issue**: Click the row to review the specific transmission or validation error.
+3. **Resubmit**: Select the document checkbox and click **Submit**. (Note: Only one document can be resubmitted at a time).
+4. **Verify Delivery**: Check the **To Peppol AP** or **History** tab a few minutes later to confirm success.
+
+### For Accounts Receivable: Processing Received Invoices
+**Goal:** Retrieve a customer invoice sent directly to your Peppol ID.
+1. **Check Incoming List**: Go to **External Reception > From Peppol AP**.
+2. **Review Details**: Click the newest document to verify the Supplier ID, Tax ID, and transaction amounts.
+3. **Move to ERP**: Process the validated document into your core accounting flow (handled automatically in most downstream configurations).
+4. **Verify History**: The document moves to the **History** tab once successfully processed.
+
+---
 
 ## How It Works: Document Flow
 
+**Outgoing Documents (Sending to Suppliers/Customers):**
 ```
+Document Created in ERP
+    ↓
+Posting Queue (pre-submission staging)
+    ↓
 LHDN Submission (My E-Invoice Admin)
     ↓
-Document Status: "Submitted"
+Waiting Queue (ready for Peppol dispatch)
     ↓
-Waiting Queue (My Peppol Admin)
+Automatic or Manual Processing
     ↓
-Processing (Automatic or Manual)
+Internal Submission → To Peppol AP (sent)
     ↓
-To Peppol AP (Sending to recipient)
-    ↓
-Recipient's Peppol ID receives document
+Internal Submission → Queue (errors) or History (success)
 ```
 
-**For Incoming Documents:**
+**Incoming Documents (Receiving from Suppliers/Customers):**
 ```
-Supplier sends via Peppol
+Supplier/Customer sends via Peppol
     ↓
-From Peppol AP (Your Peppol ID receives)
+External Reception → From Peppol AP (received)
     ↓
-Processing and validation
-    ↓
-History (Successfully received)
+External Reception → Queue (errors) or History (success)
 ```
 
 ---
 
-## 1. Waiting Queue
+## 1. Posting Queue
 
-The Waiting Queue holds documents that have been submitted to LHDN and are ready for Peppol distribution.
+The Posting Queue is the **pre-submission staging area** for outgoing documents before they are submitted to LHDN. It uses the `bl_fi_generic_doc_peppol_posting_queue` entity.
 
-### How Documents Enter
+{{< figure src="/images/my-peppol-admin-applet/posting-queue.png" alt="Posting Queue showing list of documents with Submit, Export, and Withdraw buttons" caption="Posting Queue: Pre-submission staging area where outgoing documents await LHDN processing." >}}
 
-When you submit an e-invoice to LHDN via My E-Invoice Admin Applet:
-1. Document is validated by LHDN
-2. Status changes to "Submitted"
-3. Document automatically moves to Waiting Queue
-4. Ready for Peppol processing
+### Columns Displayed
+
+| Column | Description |
+|--------|-------------|
+| **Doc Version** | e-Invoice schema version (e.g. `1.1.1`) |
+| **Doc No.** | Internal document reference number |
+| **Doc Short Code** | Mapped short code for the document type |
+| **Company** | Company code associated with the document |
+| **Entity Name** | Trading partner name |
+| **Original Ref. No** | Original e-invoice reference number |
+| **Document Date** | Transaction date (YYYY-MM-DD) |
+| **Amount** | Transaction amount |
+| **Status** | Current `process_status` — `UNPROCESSED` or processed |
+
+### Actions
+
+- **Select & Process**: Select rows with `UNPROCESSED` status (checkbox enabled) and trigger the **postToProcess()** action to push them forward in the workflow.
+- **View Details**: Click any row to open the document detail panel.
+
+{{< figure src="/images/my-peppol-admin-applet/view-posting-queue-details.png" alt="View Posting Queue detail panel showing specific document details like Version, Type, No, Company, and Currency" caption="View Posting Queue: Click any row to inspect the full Document Details, Account, and Lines before submitting." >}}
+
+{{< figure src="/images/my-peppol-admin-applet/view-posting-queue-account.png" alt="View Posting Queue showing the Account tab with Entity Details like TIN, Identity Type, and Contact Number" caption="Account Details: Verify trading partner information such as the Tax Identification Number (TIN) before proceeding." >}}
+
+{{< figure src="/images/my-peppol-admin-applet/view-posting-queue-lines.png" alt="View Posting Queue showing the Lines tab with Item Code, Item Name, Tariff Code, and Quantities" caption="Line Items: Inspect individual items, amounts, and tax configurations attached to the document." >}}
+
+{{< callout type="tip" >}}
+**Tip**: Checkboxes only appear on rows with `UNPROCESSED` status. Already-processed documents are view-only.
+{{< /callout >}}
+
+---
+
+## 2. Waiting Queue
+
+The Waiting Queue holds documents that have been successfully validated by LHDN and are now queued for Peppol network distribution.
+
+{{< figure src="/images/my-peppol-admin-applet/waiting-queue.png" alt="Waiting Queue showing list of documents with Process, Export, and Withdraw buttons" caption="Waiting Queue: Documents that have passed LHDN validation gather here before being dispatched to the Peppol network." >}}
+
+### How Documents Enter the Waiting Queue
+
+1. Invoice submitted to LHDN via My E-Invoice Admin Applet
+2. LHDN validates the document → status becomes `"Submitted"`
+3. Document is automatically moved to the Waiting Queue with status `UNPROCESSED`
 
 ### Processing Methods
 
@@ -98,456 +192,187 @@ When you submit an e-invoice to LHDN via My E-Invoice Admin Applet:
 - Typical processing time: minutes
 
 **Manual Processing:**
-- Trigger processing on-demand
-- Useful for urgent documents
-- Available via process button
-
-### What Happens Next
-
-After processing:
-- Document sent to recipient's Peppol ID
-- Moves to "To Peppol AP" for tracking
-- Or moves to "Queue" if errors occur
+- Select rows with `UNPROCESSED` status
+- Click the process button to dispatch immediately — calls `postToProcess()`
+- Useful for urgent documents that cannot wait for the next cron cycle
 
 {{< callout type="tip" >}}
-**Normal Operation**: Waiting Queue should clear quickly. Documents lingering here may indicate processing delays or configuration issues.
+**Normal Operation**: The Waiting Queue should clear quickly. Documents lingering here may indicate processing delays or Peppol configuration issues.
 {{< /callout >}}
 
 ---
 
-## 2. Internal Submission (Sending Documents)
+## 3. Internal Submission (Sending Documents)
 
-Track documents you're sending to suppliers or customers via Peppol.
+Track all documents your company is sending to trading partners via the Peppol network.
 
-### To Peppol AP
+### 3a. To Peppol AP
 
-Shows all documents you've sent through the Peppol network.
+The primary log of all outgoing documents successfully dispatched to the Peppol Access Point.
 
-**Information Available:**
+{{< figure src="/images/my-peppol-admin-applet/internal-submission-to-peppol-ap.png" alt="Internal Submission To Peppol AP listing showing all outgoing Peppol documents with Sender and Receiver IDs" caption="To Peppol AP: Track all documents dispatched by your company to the Peppol edge node, verifying Sender and Receiver routing rules." >}}
 
-| Field | Details | Use |
-|-------|---------|-----|
-| **Document Type** | Purchase debit note, invoice, etc. | Identify document category |
-| **Document Number** | Your internal reference | Track specific documents |
-| **Total Amount** | Before tax and after tax | Financial verification |
-| **Process ID** | Unique Peppol identifier | End-to-end tracking |
-| **Buyer/Supplier Info** | Party details | Verify recipients |
-| **Line Items** | Document details | Content verification |
+{{< figure src="/images/my-peppol-admin-applet/internal-submission-to-peppol-ap-details.png" alt="Internal Submission To Peppol Edit detail view showing Document No, Document Type, Currency, Issue Date, Amounts, Process ID, and Buyer's Info" caption="To Peppol AP Details: View individual document specifics, tax totals, and importantly, the Process ID to trace the exact transaction." >}}
 
-**Recipient Identification:**
-- Documents sent using recipient's **Peppol ID**
-- Format: 0195:XXXXXXXXX (Malaysia)
-- Must be registered on Peppol network
+{{< figure src="/images/my-peppol-admin-applet/internal-submission-to-peppol-ap-export.png" alt="Internal Submission To Peppol Edit panel showing the Export tab with Printable Format dropdown and EXPORT AS PDF button" caption="Export Sent Documents: Select a custom 'To Peppol' printable format and export the document as a PDF." >}}
 
-### Queue (Error Handling)
+**Key Information Tracked:**
+- Document identifiers (Type, No., Original Ref.)
+- Peppol routing numbers (Sender ID, Receiver ID, Org ID)
+- Trading partner details (Name, ID, Tax ID for both Buyer and Supplier)
+- Transaction values (Amounts, Dates, e-Invoice Version `1.1.1` and Code)
 
-Documents that fail transmission or validation appear here.
+### 3b. Queue (Error Handling — Outgoing)
 
-**Current Capabilities:**
-- View error type (transport error, validation error, etc.)
-- See which documents are stuck
-- Identify failure patterns
+Documents that fail transmission or validation during outgoing Peppol processing appear here.
 
-**Current Limitations:**
-- Cannot resolve errors from frontend
-- Requires backend intervention
-- No direct resubmission capability
+{{< figure src="/images/my-peppol-admin-applet/internal-submission-queue.png" alt="Internal Submission Queue listing showing documents with transmission errors like AS4_ERROR and TRANSPORT_ERROR" caption="Internal Submission Queue: Monitor and resubmit documents that failed to reach the Peppol network due to routing or validation errors." >}}
 
-**Planned Enhancements:**
-- Display detailed validation errors
-- Allow field updates from interface
-- Support direct resubmission
-- Similar to Batch Pool in My E-Invoice Admin Applet
+**Actions Available:**
+- **Submit**: Resubmit a selected stuck document. Only one document can be submitted at a time.
+- **View Details**: Click a row to inspect exact validation errors.
 
-**Temporary Workaround:**
-1. Note the error details
+{{< figure src="/images/my-peppol-admin-applet/internal-submission-queue-details.png" alt="Internal Submission Queue Edit view showing document details with Delete and Submit action buttons" caption="Queue Action Panel: Review details for a stuck document and click Submit to manually retry transmission." >}}
+
+**Temporary Workaround (if resubmission fails):**
+1. Note the error type and document number
 2. Contact technical support
-3. Provide Process ID and document number
+3. Provide the document GUID and document number
 4. Backend team resolves and resubmits
 
-### History
+### 3c. History (Successfully Sent)
 
-Complete archive of successfully sent documents.
+Complete archive of all outgoing documents that were successfully transmitted via Peppol. Use this to confirm delivery and audit your Peppol transmission volume.
 
-**Use this to:**
-- Verify document delivery
-- Track sent document volume
-- Audit Peppol transmissions
-- Confirm supplier received documents
+{{< figure src="/images/my-peppol-admin-applet/internal-submission-history.png" alt="Internal Submission History listing showing successfully transmitted documents with Sent Dates and Amounts" caption="Internal Submission History: The permanent ledger of all successful outgoing Peppol transmissions." >}}
 
 ---
 
-## 3. External Reception (Receiving Documents)
+## 4. External Reception (Receiving Documents)
 
-Monitor and manage documents sent to you by suppliers or customers via Peppol.
+Monitor and manage all documents sent to your company by suppliers or customers via the Peppol network.
 
-### From Peppol AP
+### 4a. From Peppol AP
 
-Lists all incoming documents sent to your Peppol ID.
+Lists all incoming documents received on your company's Peppol ID.
 
-**Common Scenario:**
-```
-Supplier issues purchase invoice
-    ↓
-Sends via Peppol to your Peppol ID
-    ↓
-Appears in "From Peppol AP"
-    ↓
-You process and record in your system
-```
+{{< figure src="/images/my-peppol-admin-applet/external-reception-from-peppol-ap.png" alt="External Reception From Peppol AP listing showing incoming invoices with Process IDs and Buyer details" caption="From Peppol AP: Central hub for monitoring all inbound documents sent from your trading partners directly to your Peppol ID." >}}
 
-**Document Details:**
+**Key Information Tracked:**
+- **Process ID**: The unique Peppol process identifier
+- Originator references and Document types
+- Counterparty details to ensure the invoice is legitimate
+- Amounts and line items for processing
 
-| Field | Information | Purpose |
-|-------|-------------|---------|
-| **Total Amount** | Before tax and after tax | Financial verification |
-| **Process ID** | Unique identifier | Tracking and support |
-| **Currency** | Transaction currency | Forex handling |
-| **Invoice Type** | Document classification | Processing rules |
-| **Buyer/Supplier Details** | Party information | Verification |
-| **Line Items** | Document content | Detailed review |
+{{< figure src="/images/my-peppol-admin-applet/external-reception-from-peppol-ap-details.png" alt="External Reception From Peppol Edit detail view showing Document No, Document Type, Amounts, and Buyer's Info" caption="From Peppol AP Details: Inspect the precise header information sent by the supplier, including all calculated tax totals." >}}
 
-### Queue (Error Handling)
+{{< figure src="/images/my-peppol-admin-applet/external-reception-from-peppol-ap-export.png" alt="External Reception From Peppol Edit panel showing the Export tab with Printable Format dropdown and EXPORT AS PDF button" caption="Export Received Documents: Use custom printable formats to export incoming Peppol documents as PDFs for your records." >}}
 
-Documents that fail processing appear here.
+### 4b. Queue (Error Handling — Incoming)
 
-**Similar to Internal Submission Queue:**
-- Shows stuck documents
-- Displays error types
-- Requires backend intervention for resolution
+Documents that fail processing upon receipt appear here. Common issues include format validation failures, missing mandatory fields, or Peppol ID mismatches. Requires backend intervention for resolution.
 
-**Common Issues:**
-- Format validation failures
-- Missing required fields
-- Peppol ID mismatches
-- System processing errors
+### 4c. History (Successfully Received)
 
-### History
-
-Archive of successfully received documents.
+Archive of all incoming documents that were successfully processed into your ERP.
 
 {{< callout type="warning" >}}
-**Known Issue**: At time of documentation, a mapping issue prevented the History list from displaying. Fix was planned and may now be resolved.
+**Known Issue**: A mapping issue may occasionly prevent the History list from displaying received documents correctly. This is a known issue being tracked for resolution.
 {{< /callout >}}
-
-**Use this to:**
-- Verify document receipt
-- Track incoming document volume
-- Audit received invoices
-- Confirm supplier submissions
 
 ---
 
-## 4. Peppol Config
+## 5. Monthly Reports
 
-Administrative control for Peppol settings and registrations.
+The Monthly Reports section provides summary views for auditing document flow over a date range.
 
-### Registration Management
+### Queue Report
+Displays a per-company summary of documents that passed through the queue, logging Start/End dates, and user modification history.
 
-**Company Registration:**
-- Register your company on Peppol network
-- Obtain Peppol ID
-- Configure network settings
-- Activate Peppol connectivity
-
-**Multi-Company Support:**
-- View all companies under your profile
-- Manage multiple Peppol IDs
-- Configure per-company settings
-- Track registration status
-
-### Configuration Options
-
-**Peppol ID Management:**
-- Register new Peppol IDs
-- Update existing registrations
-- Deactivate unused IDs
-- Verify registration status
-
-**Network Settings:**
-- Configure access point
-- Set default preferences
-- Manage document routing
-- Update contact information
+### History Report
+Displays a per-company summary of successfully processed documents over a reporting period.
 
 {{< callout type="info" >}}
-**Integration Note**: Peppol Config settings sync with Organization Applet → Peppol Config tab. Changes in one location reflect in the other.
+**Note**: The Queue Report and History Report currently display sample data. Live API integration is actively being developed.
 {{< /callout >}}
 
 ---
 
-## 5. Common Workflows
+## 6. Reconciliation
 
-### Sending a Purchase Invoice to Supplier
+The Reconciliation section lets Finance teams cross-match documents across different stages of the pipeline to identify gaps or mismatches.
 
-**Prerequisites:**
-- Supplier has Peppol ID
-- Your company registered on Peppol
-- Invoice submitted to LHDN
+### IRB Internally Submitted vs Submission History
+Compares documents submitted internally to LHDN against what appears in the Peppol submission history. Highlights mismatches in Supplier Amount vs Buyer Amount and tracks the **Remaining Time To Request** for dispute claims.
 
-**Workflow:**
-1. Submit invoice to LHDN via My E-Invoice Admin
-2. Wait for LHDN validation (status: "Submitted")
-3. Document appears in Waiting Queue
-4. Automatic processing sends to supplier's Peppol ID
-5. Track in "To Peppol AP"
-6. Verify delivery in History
-
-### Receiving an Invoice from Customer
-
-**Prerequisites:**
-- Your company has Peppol ID
-- Customer knows your Peppol ID
-- Customer sends via Peppol network
-
-**Workflow:**
-1. Customer sends invoice to your Peppol ID
-2. Document appears in "From Peppol AP"
-3. Review document details
-4. Process in your accounting system
-5. Document moves to History
-
-### Troubleshooting Failed Transmission
-
-**For Outgoing Documents:**
-1. Check "Queue" under Internal Submission
-2. Note error type and Process ID
-3. Verify recipient's Peppol ID is correct
-4. Contact support with details
-5. Monitor for resubmission
-
-**For Incoming Documents:**
-1. Check "Queue" under External Reception
-2. Review error details
-3. Verify your Peppol ID registration
-4. Contact support if needed
-5. Confirm resolution in History
+### IRB Externally Submitted vs Internal Gendoc
+Compares externally received Peppol documents against internally generated documents to detect discrepancies.
 
 ---
 
-## 6. Integration Points
+## 7. Peppol Config
+
+Administrative control for managing your company's Peppol network registrations.
+
+### Peppol ID Registration
+Register and manage your company's Peppol IDs. Supports Create, Edit, and View details indicating your registration status.
+
+{{< figure src="/images/my-peppol-admin-applet/peppol-id-registration.png" alt="Peppol ID Registration listing and Create panel showing Special Identifier, Business Identifier, and Company Info mapping" caption="Peppol ID Registration: Officially register your business entity onto the Peppol network by providing your authorized identification codes." >}}
+
+### Registered Companies
+View and manage all companies under your profile that are registered on the Peppol network. Settings automatically sync with the **Organisation Applet**.
+
+{{< figure src="/images/my-peppol-admin-applet/peppol-registered-companies.png" alt="Registered Companies listing showing active entities on the Peppol network" caption="Registered Companies: Validate your internal organizational units that are active and ready to transact on Peppol." >}}
+
+---
+
+## 8. Settings
+
+Configure applet-level behaviour and document formatting:
+- **Default Settings & Field Configuration**: Customize selections and visible columns.
+- **Printable Format Settings**: Add and Edit formats for `To Peppol` and `From Peppol` communications.
+- **Webhook**: Set up endpoints for real-time Peppol transaction alerts.
+- **Permissions Framework**: Role-based access control governed by User, Team, and Role permission sets.
+
+---
+
+## 9. Peppol Testbed
+
+A secure sandbox where you can simulate receiving documents. Use the **Receiving Test History** to validate connectivity and parsing logic before turning your official Peppol ID live.
+
+---
+
+## 10. Integration Points
 
 ### With My E-Invoice Admin Applet
-
-**Document Flow:**
-```
-My E-Invoice Admin: LHDN submission
-    ↓
-Status: "Submitted"
-    ↓
-My Peppol Admin: Peppol distribution
-```
-
-**Process ID Linking:**
-- Same Process ID used across both applets
-- Enables end-to-end tracking
-- Links LHDN submission to Peppol delivery
-
-### With Organization Applet
-
-**Peppol Config Sync:**
-- Registrations sync between applets
-- Single source of truth
-- Consistent configuration
+Documents flow from LHDN submission (My E-Invoice Admin) into the Waiting Queue (My Peppol Admin) automatically once validated. The same **Process ID** is used across both systems for end-to-end traceability.
 
 ### With Peppol AP Admin Applet
-
-**For Internal Staff:**
-- Peppol AP Admin: Central routing hub
-- My Peppol Admin: Company-specific view
-- Process IDs link documents across systems
-
----
-
-## 7. Best Practices
-
-### Daily Operations
-
-**Morning Check:**
-- Review Waiting Queue (should be empty or minimal)
-- Check for stuck documents in Queues
-- Verify overnight processing completed
-
-**Throughout Day:**
-- Monitor "To Peppol AP" for delivery confirmation
-- Check "From Peppol AP" for incoming documents
-- Process received documents promptly
-
-**End of Day:**
-- Ensure Waiting Queue cleared
-- Review any error Queue items
-- Escalate unresolved issues
-
-### Document Management
-
-**For Outgoing:**
-- Verify recipient Peppol ID before submission
-- Monitor delivery status
-- Keep History for audit trail
-- Document any transmission issues
-
-**For Incoming:**
-- Process received documents promptly
-- Verify sender Peppol ID
-- Reconcile with expected deliveries
-- Archive in History
-
-### Error Handling
-
-**When Documents Stuck:**
-1. Note Process ID and error type
-2. Check Peppol ID accuracy
-3. Verify network connectivity
-4. Contact support with details
-5. Document resolution for future reference
-
-### Registration Management
-
-**Regular Reviews:**
-- Verify active Peppol IDs
-- Remove unused registrations
-- Update contact information
-- Test connectivity periodically
-
----
-
-## 8. Common Issues
-
-**Documents stuck in Waiting Queue?**
-- Check if automatic processing is running
-- Try manual processing
-- Verify Peppol configuration
-- Contact support if persists
-
-**Can't see sent documents in History?**
-- Check "To Peppol AP" first
-- Verify document actually sent
-- Check date range filters
-- Confirm processing completed
-
-**Received documents not appearing?**
-- Verify your Peppol ID is correct
-- Check "From Peppol AP" for pending
-- Look in Queue for errors
-- Confirm sender used correct Peppol ID
-
-**Error in Queue but can't resolve?**
-- Note Process ID and error details
-- Contact technical support
-- Provide document number
-- Wait for backend resolution
-
-**Peppol Config changes not reflecting?**
-- Allow time for sync
-- Refresh the page
-- Check Organization Applet
-- Verify permissions
-
----
-
-## 9. Limitations and Future Enhancements
-
-### Current Limitations
-
-**Error Resolution:**
-- Cannot fix errors from frontend
-- Requires backend intervention
-- No direct resubmission capability
-
-**History Display:**
-- Received documents History may have display issues
-- Mapping problems being addressed
-
-**Queue Management:**
-- Limited error detail visibility
-- No field editing capability
-- Manual intervention required
-
-### Planned Enhancements
-
-**Improved Error Handling:**
-- Detailed validation error display
-- Frontend field editing
-- Direct resubmission capability
-- Similar to My E-Invoice Admin Batch Pool
-
-**Better History Management:**
-- Fix mapping issues
-- Enhanced filtering options
-- Export capabilities
-- Better search functionality
-
-**Enhanced Monitoring:**
-- Real-time status updates
-- Automated alerts for stuck documents
-- Performance metrics
-- Volume tracking
-
----
-
-## 10. Quick Reference
-
-### Key Menus
-
-| Menu | Purpose | Check When |
-|------|---------|------------|
-| **Waiting Queue** | Documents pending Peppol processing | After LHDN submission |
-| **To Peppol AP** | Documents you've sent | Verifying delivery |
-| **From Peppol AP** | Documents you've received | Checking incoming |
-| **Queue (Internal)** | Stuck outgoing documents | Troubleshooting sends |
-| **Queue (External)** | Stuck incoming documents | Troubleshooting receives |
-| **History** | Successfully processed | Audit and verification |
-| **Peppol Config** | Registration management | Setup and configuration |
-
-### Critical Information
-
-**Process ID:** Unique identifier across LHDN and Peppol systems
-**Peppol ID Format:** 0195:XXXXXXXXX (Malaysia)
-**Document Flow:** LHDN → Waiting Queue → Peppol AP → Recipient
-**Processing Time:** Typically minutes via automatic processing
-
-### When to Contact Support
-
-- Documents stuck in Queue with errors
-- Cannot resolve transmission failures
-- Peppol ID registration issues
-- History not displaying correctly
-- Need backend intervention for resubmission
+- **Peppol AP Admin** is the internal staff tool for managing all tenants' Peppol routing.
+- **My Peppol Admin** is the company-facing view strictly showing your internal documents.
 
 ---
 
 ## 11. Frequently Asked Questions
 
-**Q: What's the difference between My Peppol Admin and Peppol AP Admin?**
-A: My Peppol Admin is for your company's documents. Peppol AP Admin is internal staff tool for managing all tenants' Peppol routing.
+**Q: What is the difference between the Posting Queue and the Waiting Queue?**
+A: Important distinction: The Posting Queue is the pre-LHDN staging area. The Waiting Queue holds documents *after* LHDN validates them, ready for Peppol dispatch. Both must clear for a document to successfully reach the recipient.
 
-**Q: Why do documents go to Waiting Queue after LHDN submission?**
-A: LHDN submission and Peppol distribution are separate steps. Waiting Queue bridges them.
+**Q: Can I manually resubmit a failed document?**
+A: Yes. Go to **Internal Submission > Queue**, select the document checkbox, and click **Submit**. Note: The system restricts resubmission to one document at a time.
 
-**Q: How long do documents stay in Waiting Queue?**
-A: Typically minutes. Automatic processing runs at set intervals.
+**Q: How do I know if an outbound invoice was properly delivered?**
+A: Check **Internal Submission > To Peppol AP**. Once it clears processing, it will permanently appear in your **Internal Submission > History**.
 
-**Q: Can I manually send a document to Peppol?**
-A: Yes, use manual processing in Waiting Queue for urgent documents.
+**Q: I keep seeing a mismatch in the Reconciliation tab. What does this mean?**
+A: This usually means the amount logged natively in your system differs from the exact data processed by LHDN/Peppol. Check the "Remaining Time To Request" field; you only have a limited window to raise disputes or corrections with LHDN once submitted.
 
-**Q: What if recipient doesn't have Peppol ID?**
-A: Document cannot be sent via Peppol. Use alternative delivery methods.
+**Q: Why don’t my Queue Reports show current data?**
+A: The Monthly Reports functionality (Queue and History Reports) is currently undergoing an API upgrade and may display sample sandbox data. Rely on the direct Queue or History lists under Internal/External sections for live data.
 
-**Q: How do I know if document was successfully sent?**
-A: Check "To Peppol AP" and verify it appears in History.
-
-**Q: What if I receive a document with errors?**
-A: It appears in External Reception Queue. Contact support for resolution.
-
-**Q: Can I edit a document stuck in Queue?**
-A: Not currently. This feature is planned for future release.
-
-**Q: How do I register for Peppol?**
-A: Use Peppol Config menu or Organization Applet → Peppol Config tab.
-
-**Q: Are Process IDs the same across all systems?**
-A: Yes. Same Process ID used in My E-Invoice Admin, My Peppol Admin, and Peppol AP Admin.
+**Q: Do I need to set up my Peppol ID here AND in the Organisation Applet?**
+A: No. Peppol Config settings are synchronized globally. Changes made here will reflect in the Organisation Applet automatically.
 
 {{< callout type="info" >}}
-**Need Help?** Contact your system administrator or support team for assistance with Peppol connectivity and document transmission issues.
+**Need Help?** Contact your system administrator or support team for assistance with advanced Peppol configuration, transmission issues, or deep reconciliation discrepancies.
 {{< /callout >}}
