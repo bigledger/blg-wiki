@@ -641,3 +641,47 @@ A: Yes. Each Filing Cycle has both a **Service** sub-tab and a **Sales** sub-tab
 
 A: This usually means no transactions have been filed yet for the selected cycle, or the Filing Cycle has no linked Company. Ensure: (1) transactions have been filed via the Unfiled Transactions tab and (2) the Filing Cycle is correctly linked to a Company with a valid SST registration number.
 
+---
+
+## Applet Reference
+
+This section provides a comprehensive reference of all menu items, settings, and configurable features available in the SST Applet, verified directly against the system's routing paths (`app.routing.ts`) and navigational constants.
+
+### Menu Items
+
+The following main navigation menu items are available in the applet:
+
+| Menu Item | Description | Route Path |
+|-----------|-------------|------------|
+| **Tax Year** | Main listing of fiscal tax years and duration logic | `/tax-year` |
+| **Tariff Code** | Definition of RMCD official classification codes | `/label` |
+| **Tax Code** | Configured tax rules, linking tariff codes to rates | `/tax-code` |
+| **Tax Filing** | Operational hub for managing filing cycles | `/tax-filing` |
+| **SST Service Tax Report** | Consolidated reporting for service tax transactions | `/tax-report` |
+| **SST Sales Tax Report** | Consolidated reporting for sales tax transactions | `/tax-report-sales` |
+| **SST Tax Code Summary** | Granular reporting broken down by specific Tax Codes | `/tax-code-summary` |
+| **Settings** | Administrative configuration panel | `/settings/...` |
+| **Personalization** | User-specific interface preferences | `/personalization/...` |
+
+### Settings Sub-Menu Items
+
+The Settings panel (via `/settings` route) provides access to deeper system configurations:
+
+| Setting | Description | Route Path |
+|---------|-------------|------------|
+| **Default Tax Settings** | Configure default branch and location for data entry | `/settings/default-selection` |
+| **Field Settings** | Control visibility of fields across the applet | `/settings/field-settings` |
+| **Webhook** | Set up event-driven notifications to external systems | `/settings/webhook` |
+| **Client-Side Permissions** | Manage interface visibility options for user roles | `/settings/client-side-permission-listing` |
+| **Permission Sets** | Manage predefined authorization bundles | `/settings/permission-set-listing` |
+| **User/Team/Role Permissions**| Assign customized access controls | `/settings/*-permission-listing` |
+
+### Personalization Sub-Menu Items
+
+User-level personalization options (via `/personalization` route):
+
+| Setting | Description | Route Path |
+|---------|-------------|------------|
+| **Default Selection** | Set your individual default branch / location | `/personalization/personal-default-selection` |
+| **Sidebar** | Customize the main sidebar navigation layout | `/personalization/sidebar` |
+
