@@ -1,5 +1,5 @@
 ﻿---
-title: "Internal Sales Debit Note Applet"
+title: "Sales Debit Note (Internal) Applet"
 description: "Streamlined system for managing internal intercompany debit adjustments, post-billing charges, and account reconciliations."
 tags:
 - sales-management
@@ -14,13 +14,13 @@ weight: 80
 
 **TL;DR:** It allows your branch to officially charge another internal branch *extra money* to correct a past transaction that was under-billed.
 
-The **Internal Sales Debit Note Applet** manages upward revisions to internal sales invoices between branches, subsidiaries, or divisions within your organization. When your branch has under-billed an internal customer, this applet lets you issue a debit note that simultaneously updates both parties' ledgers through automated intercompany transaction matching.
+The **Sales Debit Note (Internal) Applet** manages upward revisions to internal sales invoices between branches, subsidiaries, or divisions within your organization. When your branch has under-billed an internal customer, this applet lets you issue a debit note that simultaneously updates both parties' ledgers through automated intercompany transaction matching.
 
 {{< callout type="info" >}}
-**Core Concept**: Issue a Debit Note from one branch → system automatically increases your branch's **Accounts Receivable** and creates a matching **Internal Purchase Debit Note** at the destination branch, keeping both ledgers perfectly synchronized.
+**Core Concept**: Issue a Debit Note from one branch → system automatically increases your branch's **Accounts Receivable** and creates a matching **Purchase Debit Note (Internal)** at the destination branch, keeping both ledgers perfectly synchronized.
 {{< /callout >}}
 
-A Webinar to get to know about the functionalities of the Internal Sales Debit Note Applet:
+A Webinar to get to know about the functionalities of the Sales Debit Note (Internal) Applet:
 
 <div style="max-width:560px; margin:24px auto;">
   <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
@@ -33,7 +33,7 @@ A Webinar to get to know about the functionalities of the Internal Sales Debit N
   </div>
 </div>
 
-### What is the Internal Sales Debit Note Applet? (Explained Simply)
+### What is the Sales Debit Note (Internal) Applet? (Explained Simply)
 
 Imagine your company has two branches: **HQ (in Kuala Lumpur)** and **Branch A (in Penang)**.
 
@@ -41,19 +41,19 @@ Imagine your company has two branches: **HQ (in Kuala Lumpur)** and **Branch A (
 2. Later, HQ realizes they forgot to include the **RM 200 delivery fee** on that bill.
 3. HQ needs to tell Branch A, *"Hey, you actually owe us an extra RM 200."*
 
-Instead of sending emails back and forth and doing manual data entry twice, HQ uses the **Internal Sales Debit Note Applet** to create an official document for that extra RM 200.
+Instead of sending emails back and forth and doing manual data entry twice, HQ uses the **Sales Debit Note (Internal) Applet** to create an official document for that extra RM 200.
 
 **The "Magic" Part:** When HQ hits "FINAL" on this document, the system automatically does two things:
 - It updates HQ's records to say they will receive RM 200 (Accounts Receivable).
-- It automatically creates a matching document over at Branch A's system (an Internal Purchase Debit Note), telling Branch A they need to pay the extra RM 200 (Accounts Payable).
+- It automatically creates a matching document over at Branch A's system (an Purchase Debit Note (Internal)), telling Branch A they need to pay the extra RM 200 (Accounts Payable).
 
 No one has to type it in twice. It prevents Branch A from forgetting to pay, and it keeps everyone on the exact same page. A "Debit Note" in this context basically means an **"Additional Charge"** or an **"Upward Revision"** to a previous invoice.
 
 ### Relationship to Other Applets
 
 This applet acts as a bridge between several other parts of the system:
-- **Internal Sales Invoice Applet (The Origin):** You usually create a Debit Note because an original invoice was incorrect. When creating a debit note, you "tag" or link the original Internal Sales Invoice so everyone knows *why* there is an extra charge.
-- **Internal Purchase Debit Note Applet (The Destination):** This is the mirror image. Finalizing a Sales Debit Note here automatically triggers the creation of an Internal Purchase Debit Note at the receiving branch's account.
+- **Sales Invoice (Internal) Applet (The Origin):** You usually create a Debit Note because an original invoice was incorrect. When creating a debit note, you "tag" or link the original Sales Invoice (Internal) so everyone knows *why* there is an extra charge.
+- **Purchase Debit Note (Internal) Applet (The Destination):** This is the mirror image. Finalizing a Sales Debit Note here automatically triggers the creation of an Purchase Debit Note (Internal) at the receiving branch's account.
 - **General Ledger (Accounting Core):** Once approved and finalized, this applet sends the financial data straight to the core accounting system, automatically hitting the Revenue account for the issuing branch and the Expense account for the receiving branch.
 - **Approval Workflow Applets:** If the extra charge is large, the system uses the Workflow rules to pause the document and route it to a manager or director for approval before it can become Final.
 
@@ -90,11 +90,11 @@ Traditional intercompany adjustments rely on emails and isolated accounting entr
 - Missing approval trails when internal pricing or quantities change
 - Double data entry by separate regional finance teams
 
-**The Internal Sales Debit Note Applet Solution:**
+**The Sales Debit Note (Internal) Applet Solution:**
 
 - **Single Point of Entry** — Create the debit note once; the system automatically updates both entities
-- **Intercompany Sync** — Auto-generates the corresponding Internal Purchase Debit Note at the receiving branch
-- **Complete Traceability** — Every adjustment links to an original internal sales invoice or account
+- **Intercompany Sync** — Auto-generates the corresponding Purchase Debit Note (Internal) at the receiving branch
+- **Complete Traceability** — Every adjustment links to an original Sales Invoice (Internal) or account
 - **Approval Workflows** — Configurable routing ensures the right people authorize changes
 - **Error Reduction** — Eliminates out-of-balance intercompany accounts at month-end
 
@@ -118,13 +118,13 @@ Traditional intercompany adjustments rely on emails and isolated accounting entr
   {{< card title="Personalization" subtitle="Save default settings for faster data entry" link="#personalization" >}}
 {{< /cards >}}
 
-{{< figure src="/images/internal-sales-debit-note-applet/internalSalesDebitNoteInfographic.png" alt="Internal Sales Debit Note Workflow - comparing the old manual intercompany adjustment process with the new automated solution" caption="The Internal Adjustment Evolution: The Old Way (manual emails, out-of-sync branch ledgers, delayed month-end reconciliation) vs The New Way (single point of entry, auto-synced intercompany documents, perfectly balanced AR/AP)." >}}
+{{< figure src="/images/internal-sales-debit-note-applet/internalSalesDebitNoteInfographic.png" alt="Sales Debit Note (Internal) Workflow - comparing the old manual intercompany adjustment process with the new automated solution" caption="The Internal Adjustment Evolution: The Old Way (manual emails, out-of-sync branch ledgers, delayed month-end reconciliation) vs The New Way (single point of entry, auto-synced intercompany documents, perfectly balanced AR/AP)." >}}
 
 ## Key Concepts
 
 ### Intercompany Transaction Flow
 
-When you finalize an Internal Sales Debit Note, the system executes an automated two-sided posting:
+When you finalize an Sales Debit Note (Internal), the system executes an automated two-sided posting:
 
 ```
 Issuing Branch (HQ)                          Receiving Branch (Branch A)
@@ -138,7 +138,7 @@ Accounts Receivable ▲                        Accounts Payable ▲
 ```
 
 {{< callout type="tip" >}}
-**Real-World Example**: HQ realizes they under-billed Branch A for inventory by RM 500. HQ issues an Internal Sales Debit Note. The system automatically updates HQ's receivables by +RM 500 and provisions Branch A's payables by +RM 500—keeping everything in sync without either party doing double entry.
+**Real-World Example**: HQ realizes they under-billed Branch A for inventory by RM 500. HQ issues an Sales Debit Note (Internal). The system automatically updates HQ's receivables by +RM 500 and provisions Branch A's payables by +RM 500—keeping everything in sync without either party doing double entry.
 {{< /callout >}}
 
 ## Key Menu Functions
@@ -175,7 +175,7 @@ Get up and running quickly with these essential workflows.
 
 **Goal:** Issue a debit note to correct an under-billed internal customer.
 
-1. **Navigate**: Go to **Internal Sales Debit Note** from the sidebar
+1. **Navigate**: Go to **Sales Debit Note (Internal)** from the sidebar
 2. **Create Header**: Fill in the **Main Details** tab:
    - Select the **internal customer** (destination branch)
    - Set the **document date** and **currency**
@@ -215,7 +215,7 @@ You can also **RESET** the form at any time before creating to clear all fields.
    - **Account**: Check that the correct billing entity is selected
    - **Lines**: Verify item codes, quantities, and amounts are accurate
    - **Attachments**: Review supporting documentation
-3. **Check Trace Document** *(if visible)*: Confirm the debit note links to the correct upstream internal sales invoice
+3. **Check Trace Document** *(if visible)*: Confirm the debit note links to the correct upstream Sales Invoice (Internal)
 4. **Decide**:
    - **Approve / Finalize**: Click **FINAL** → System posts GL entries and generates the intercompany document
    - **Return for Correction**: Inform the creator of any discrepancies before finalization
@@ -256,7 +256,7 @@ You can also **RESET** the form at any time before creating to clear all fields.
 
 {{< callout type="tip" >}}
 **New to the system?** Start with the basics:
-1. Operations staff: Create a test Internal Sales Debit Note in Draft mode and explore each tab
+1. Operations staff: Create a test Sales Debit Note (Internal) in Draft mode and explore each tab
 2. Managers: Practice reviewing and finalizing a test document
 3. Admins: Review **Configuration & Settings** below for detailed setup guides
 {{< /callout >}}
@@ -265,7 +265,7 @@ You can also **RESET** the form at any time before creating to clear all fields.
 
 ### Document Lifecycle
 
-Every Internal Sales Debit Note follows a predictable lifecycle:
+Every Sales Debit Note (Internal) follows a predictable lifecycle:
 
 | Status | What It Means | What Happens Next |
 |--------|---------------|-------------------|
@@ -339,7 +339,7 @@ This section contains the tax identity of the destination branch.
 While most of this tab contains standard business information (who the internal customer is, and where to bill/ship), it contains one crucial sub-tab that powers this applet's main feature:
 *   **Entity Details, Bill To, Ship To:** Standard fields to select the destination branch, and verify their exact Billing and Shipping addresses.
     *   **Quick Create:** If the customer you need is not available in the list, you don't need to abruptly halt your workflow or open a separate customer management app. Simply toggle the switch at the top to **Create and Edit mode**, fill in the new customer details, and the system saves it instantly. Once created or if they already existed, use **Select mode** to pick them from the list.
-*   **Intercompany Sub-Tab:** This is the core engine of the applet. When you finalize this debit note, this sub-tab acts as a live monitor for the intercompany sync. It displays the **Transaction Status** and tracks the generation of the exact **Internal Purchase Debit Note** sent to the destination branch's system. If there are any errors or delays in the sync between branches, the status is tracked here.
+*   **Intercompany Sub-Tab:** This is the core engine of the applet. When you finalize this debit note, this sub-tab acts as a live monitor for the intercompany sync. It displays the **Transaction Status** and tracks the generation of the exact **Purchase Debit Note (Internal)** sent to the destination branch's system. If there are any errors or delays in the sync between branches, the status is tracked here.
 
 #### Deep Dive: Lines Tab
 ![Lines Tab Selection](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_f0445bd93b9002f7a0d46fb920ca6cd70da21dd33bfc809e10c2ad6014f135ac.png)
@@ -377,7 +377,7 @@ The Contra tab is where you resolve debts without actually transferring cash.
 
 **Scenario:** 
 Let's say HQ owes Branch A RM 1,000 for a previous shipment. 
-Today, HQ issues this new Internal Sales Debit Note, charging Branch A RM 500 for a marketing campaign. 
+Today, HQ issues this new Sales Debit Note (Internal), charging Branch A RM 500 for a marketing campaign. 
 Instead of Branch A wiring RM 500 back to HQ (which is a waste of time and bank fees), HQ can use the **Contra** tab on this Debit Note. HQ selects the old RM 1,000 debt they owe and "knocks off" the RM 500 charge against it. 
 **The Result:** The RM 500 marketing charge is considered fully paid, and HQ's outstanding debt to Branch A is reduced to RM 500. No cash actually moved!
 *   **How it works:** When you create a Contra entry, the system automatically checks the AR/AP (who owes who) balances of both documents.
@@ -398,8 +398,8 @@ You can think of the ARAP (Accounts Receivable / Accounts Payable) tab as a **Re
 Because this applet relies heavily on automation, the **Trace Document** tab exists to show you exactly what the system is doing behind the scenes once you finalize a debit note. It acts as an automated audit trail. 
 
 Instead of guessing if the transaction went through over to the other branch, this tab provides a visual map showing:
-*   **Upstream Documents:** The original Internal Sales Invoice that prompted this Debit Note in the first place.
-*   **Downstream Documents:** The exact **Internal Purchase Debit Note** that the system automatically generated and pushed into the destination branch's system. The system even links the document ID here so you can trace it directly.
+*   **Upstream Documents:** The original Sales Invoice (Internal) that prompted this Debit Note in the first place.
+*   **Downstream Documents:** The exact **Purchase Debit Note (Internal)** that the system automatically generated and pushed into the destination branch's system. The system even links the document ID here so you can trace it directly.
 *   **General Ledger (GL) Postings:** For the accountants, it breaks down the exact bookkeeping journal entries across five specific sub-tabs:
     *   **Journal Txn:** The core double-entry accounting (Debits and Credits) hitting your main Accounts Receivable and Revenue ledgers.
     *   **Cashbook Txn:** If any immediate payment was made via the "Settlement" tab, it shows exactly how that cash hit your bank ledger.
@@ -534,7 +534,7 @@ This is especially useful when processing a large volume of adjustments at once,
 
 ## FAQ
 
-**Q: Does finalizing an Internal Sales Debit Note immediately affect the General Ledger?**  
+**Q: Does finalizing an Sales Debit Note (Internal) immediately affect the General Ledger?**  
 **A:** Yes. When you click **FINAL**, GL entries are posted immediately—increasing your branch's receivable and, via intercompany sync, increasing the destination branch's payable.
 
 **Q: Can I edit a debit note after finalizing it?**  
@@ -546,17 +546,17 @@ This is especially useful when processing a large volume of adjustments at once,
 **Q: Does the destination branch need to manually accept the auto-generated purchase debit note?**  
 **A:** This depends on your intercompany configuration. It can be set to auto-finalize at the destination branch, or to arrive as a Draft requiring their finance team's acknowledgment.
 
-**Q: Where can I find the corresponding Internal Purchase Debit Note created at the destination branch?**  
-**A:** Open your finalized Internal Sales Debit Note and check the **Trace Document** tab. It shows all linked upstream and downstream documents, including the auto-generated purchase debit note.
+**Q: Where can I find the corresponding Purchase Debit Note (Internal) created at the destination branch?**  
+**A:** Open your finalized Sales Debit Note (Internal) and check the **Trace Document** tab. It shows all linked upstream and downstream documents, including the auto-generated purchase debit note.
 
 **Q: Can I link one debit note to multiple original internal invoices?**  
-**A:** Yes. Add multiple line items, each referencing a different original Internal Sales Invoice. This consolidates adjustments into a single document.
+**A:** Yes. Add multiple line items, each referencing a different original Sales Invoice (Internal). This consolidates adjustments into a single document.
 
 ---
 
-## Related Applets to Internal Sales Debit Note
+## Related Applets to Sales Debit Note (Internal)
 
-The Internal Sales Debit Note Applet does not work in isolation; it operates within a broader system ecosystem. Understanding its connection with related applets is vital for accurate financial reporting.
+The Sales Debit Note (Internal) Applet does not work in isolation; it operates within a broader system ecosystem. Understanding its connection with related applets is vital for accurate financial reporting.
 
 ### Doc Item Maintenance Applet
 ![Doc Item Account Setup](/images/internal-sales-debit-note-applet/Related_Applets_-_Internal_Sales_Debit_Note_12ee5625ed31cafce4d4ac3ed3627c0fcf9d7baef6940effad2a4ed24366e381.png)
@@ -581,9 +581,9 @@ Before you can link an item in the Doc Item Maintenance applet, the underlying G
 **Prerequisite Workflows:**
 1.  **Create the GL Code** (Chart of Accounts Applet)
 2.  **Create the Item & Link the GL Code** (Doc Item Maintenance Applet)
-3.  **Use the Item** (Internal Sales Debit Note Applet)
+3.  **Use the Item** (Sales Debit Note (Internal) Applet)
 
-By ensuring these prerequisites are met, any Internal Sales Debit Note transaction you finalize will automatically and cleanly map revenue and expenses to the exact correct accounts.
+By ensuring these prerequisites are met, any Sales Debit Note (Internal) transaction you finalize will automatically and cleanly map revenue and expenses to the exact correct accounts.
 
 **Q: How do I bulk-create debit notes or line items?**  
 **A:** Use the **File Import** feature. Download the template, fill in your data, and upload. The system validates and imports all entries at once.

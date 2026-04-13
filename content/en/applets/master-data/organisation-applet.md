@@ -360,7 +360,7 @@ Manage branch master records and branch-level operational configuration.
 |-----|----------------|
 | **Details** | Main branch fields plus **Default Entity Branch**, **Main Location**, **Delivery Location**, **Default Pricing**, **Status**, **Branch Closed Date**, and operational fields such as GPS, opening hours, tax-applicable, store-locator, rounding, and logo. |
 | **Address** | Branch address maintenance. |
-| **Pick Pack** | Checkboxes for delivery quantity balance behavior on internal sales order, sales invoice, and delivery order. |
+| **Pick Pack** | Checkboxes for delivery quantity balance behavior on Sales Order (Internal), sales invoice, and delivery order. |
 | **Marketplace** | Marketplace integration workspace with nested tabs for **Details**, **Settlement**, **Stock Configuration**, **Stock Availability**, **Pricing Scheme**, and **Publish Item**. |
 | **Location** | Branch-linked location listing showing **Location Code**, **Location Name**, and **Status**. |
 | **Settlement** | Branch settlement-method link listing with settlement code, name, type, and status. |
@@ -377,7 +377,7 @@ Manage branch master records and branch-level operational configuration.
 |-----|---------------------|----------------|
 | **Details** | Maintain branch identity, company link, parent branch, entity branch, main and delivery locations, currency, default pricing, branch references, CP Commerce store-locator flag, GPS, opening hours, tax-applicable flag, remarks, rounding setup, group-discount item, skip-e-invoice flag, logo, status, and closed-date information. | Controls the core branch record and several operational defaults reused by downstream branch-aware workflows, storefront behavior, and branch-specific document processing. |
 | **Address** | Maintain the branch address and contact location details. | Affects the address stored for the branch and used in branch-related records. |
-| **Pick Pack** | Turn on delivery quantity balance checks for **Internal Sales Order**, **Internal Sales Invoice**, and **Internal Delivery Order**. | Affects whether those internal transaction flows enforce delivery quantity balance rules for the branch. |
+| **Pick Pack** | Turn on delivery quantity balance checks for **Sales Order (Internal)**, **Sales Invoice (Internal)**, and **Delivery Order (Internal)**. | Affects whether those internal transaction flows enforce delivery quantity balance rules for the branch. |
 | **Location** | Review the branch-linked location list, add a location link, or open a linked location in its location workspace. | Affects which locations are attached to the branch structure and which location records users treat as part of that branch. |
 | **Settlement** | Link or remove settlement methods for the branch and review settlement code, name, type, and link status. | Affects which general settlement methods are associated with the branch outside the marketplace-specific settlement selection. |
 | **Labels** | Review linked branch labels and open the linked label records for maintenance. | Affects branch classification, filtering, and any logic that depends on branch labels. |
@@ -613,7 +613,7 @@ Use a **Group** when you need the classification master. Use a **Label** when yo
 
 ### Notification Template
 
-{{< figure src="/images/organisation-applet/notification-template.png" alt="Notification Template view showing the Listing grid on the left and the Create/Edit interface on the right with WhatsApp/Internal Sales Order selected." caption="Notification Template: Configure automated alerts and messaging for specific document actions across your organisation." >}}
+{{< figure src="/images/organisation-applet/notification-template.png" alt="Notification Template view showing the Listing grid on the left and the Create/Edit interface on the right with WhatsApp/Sales Order (Internal) selected." caption="Notification Template: Configure automated alerts and messaging for specific document actions across your organisation." >}}
 
 Manage notification templates and their supporting configuration.
 

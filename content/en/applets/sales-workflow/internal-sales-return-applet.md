@@ -1,5 +1,5 @@
 ﻿---
-title: "Internal Sales Return Applet"
+title: "Sales Return (Internal) Applet"
 description: "Comprehensive sales return management system for processing customer returns, refunds, and inventory adjustments with finalization workflows"
 tags:
 - sales-return
@@ -12,9 +12,9 @@ weight: 60
 
 ## Purpose and Overview
 
-The **Internal Sales Return Applet** handles customer return processing, integrating inventory adjustments, financial settlements, and document workflows.
+The **Sales Return (Internal) Applet** handles customer return processing, integrating inventory adjustments, financial settlements, and document workflows.
 
-![Internal Sales Return Applet Overview - Manual Chaos vs Integrated Workflow](/images/internal-sales-return-applet/internal-sales-return-overview-infographic.png)
+![Sales Return (Internal) Applet Overview - Manual Chaos vs Integrated Workflow](/images/internal-sales-return-applet/internal-sales-return-overview-infographic.png)
 
 **Who uses this:**
 - **Sales Teams** - Create return documents, select customers, track status
@@ -46,7 +46,7 @@ Get up and running quickly with these essential workflows.
 
 **Goal:** Create a sales return document with precise navigation through tabs.
 
-**Open Create Screen:** Go to Internal Sales Return > Click "+" button in toolbar - a new screen opens showing "Create Internal Sales Return" with multiple tabs.
+**Open Create Screen:** Go to Sales Return (Internal) > Click "+" button in toolbar - a new screen opens showing "Create Sales Return (Internal)" with multiple tabs.
 
 **Main Details Tab** (opens by default):
    - **Branch:** Select branch from dropdown (e.g., "Head Office")
@@ -113,7 +113,7 @@ Get up and running quickly with these essential workflows.
 **Goal:** Coordinate physical receipt of returned items based on finalized return documents.
 
 **Access Finalized Returns:**
-   - Go to **Internal Sales Return** applet
+   - Go to **Sales Return (Internal)** applet
    - Use Advanced Search or filter
    - Filter by **Posting Status: FINAL** (finalized returns)
    - Click on a return document to view details
@@ -157,7 +157,7 @@ Inventory updates are handled by the system when returns are finalized. Your rol
 **Goal:** Complete financial settlement and issue refund.
 
 **Access Returns Ready for Settlement:**
-   - Go to **Internal Sales Return** applet  
+   - Go to **Sales Return (Internal)** applet  
    - Use Advanced Search or filter
    - Filter by **Posting Status: FINAL** (finalized returns)
    - Coordinate with warehouse to confirm goods physically received
@@ -201,7 +201,7 @@ Settlement workflow varies by organization. If Payment tab is not visible or set
 ## Common Daily Tasks
 
 **Task: Create a return**
-â†’ Internal Sales Return â†’ Click `+` â†’ Fill Main Details/Account/Lines tabs â†’ SAVE or FINAL
+â†’ Sales Return (Internal) â†’ Click `+` â†’ Fill Main Details/Account/Lines tabs â†’ SAVE or FINAL
 
 **Task: Find a return**
 â†’ Use Search or filter by status/customer/date â†’ Click to open

@@ -1,5 +1,5 @@
 ---
-title: "Internal Sales Order"
+title: "Sales Order (Internal)"
 description: "Full lifecycle sales order management for Wavelet ERP covering order entry, fulfillment, delivery, and reporting"
 tags:
 - sales-order
@@ -16,7 +16,7 @@ weight: 20
 
 ## Purpose and Overview
 
-The **Internal Sales Order Applet** is a full lifecycle sales order management module for Wavelet ERP. It covers order creation, editing, approval, fulfillment, delivery planning, e-commerce synchronization, reporting, and file import/export. It is designed to centralize sales order data, enforce operational controls (credit limits, workflow status, posting status), and connect downstream processes such as pick/pack, delivery, invoicing, and accounting.
+The **Sales Order (Internal) Applet** is a full lifecycle sales order management module for Wavelet ERP. It covers order creation, editing, approval, fulfillment, delivery planning, e-commerce synchronization, reporting, and file import/export. It is designed to centralize sales order data, enforce operational controls (credit limits, workflow status, posting status), and connect downstream processes such as pick/pack, delivery, invoicing, and accounting.
 
 {{< callout type="info" >}}
 **Core Concept**: A Sales Order is the master document that links **who** is buying (customer), **what** is being sold (items and prices), **how** it is fulfilled (delivery and pick/pack), and **how** it is settled (AR/AP, receipt vouchers, and posting status).
@@ -65,7 +65,7 @@ Traditional sales order handling is fragmented across spreadsheets, email thread
 - Poor visibility into approval status and credit limits
 - Difficulty tracking order history and changes
 
-**The Internal Sales Order Applet Solution:**
+**The Sales Order (Internal) Applet Solution:**
 
 - **Single source of truth** - One centralized sales order record across teams
 - **Controlled posting** - DRAFT, FINAL, VOID, DISCARD, CLOSE with rules
@@ -94,7 +94,7 @@ Traditional sales order handling is fragmented across spreadsheets, email thread
   {{< card title="Settings and Personalization" subtitle="Configurable defaults and system control" link="#configuration--settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/internal-sales-order-applet/internal-sales-order-overview.png" alt="Internal Sales Order Applet overview showing the flow from order entry to fulfillment and reporting" caption="Internal Sales Order Applet: Order creation, fulfillment, delivery planning, and reporting in one flow." >}}
+{{< figure src="/images/internal-sales-order-applet/internal-sales-order-overview.png" alt="Sales Order (Internal) Applet overview showing the flow from order entry to fulfillment and reporting" caption="Sales Order (Internal) Applet: Order creation, fulfillment, delivery planning, and reporting in one flow." >}}
 
 ## Key Concepts
 
@@ -108,7 +108,7 @@ Traditional sales order handling is fragmented across spreadsheets, email thread
 | **How** is it settled? | Posting / Settlement | FINAL status with settlement lines |
 
 {{< callout type="tip" >}}
-**Real-World Example**: A sales admin creates an Internal Sales Order for Customer X. The order is DRAFT until approved, then FINAL. Warehouse picks items using Pick Pack Queue, delivery is scheduled, and finance records settlement and invoices.
+**Real-World Example**: A sales admin creates an Sales Order (Internal) for Customer X. The order is DRAFT until approved, then FINAL. Warehouse picks items using Pick Pack Queue, delivery is scheduled, and finance records settlement and invoices.
 {{< /callout >}}
 
 ### Sales Order Lifecycle
@@ -130,7 +130,7 @@ Draft -> Final -> Fulfillment -> Delivery -> Settlement/Invoice -> Close
 
 Get started fast based on your role.
 
-[![Internal Sales Order Applet Video](https://img.youtube.com/vi/L7nSvCluFbM/hqdefault.jpg)](https://youtu.be/L7nSvCluFbM?si=L5-JHPl_Yvp9oeGf)
+[![Sales Order (Internal) Applet Video](https://img.youtube.com/vi/L7nSvCluFbM/hqdefault.jpg)](https://youtu.be/L7nSvCluFbM?si=L5-JHPl_Yvp9oeGf)
 
 {{< callout type="note" >}}
 **Before you start**: Make sure the customer/entity exists, items are set up, and you have permission to create and FINAL orders.
@@ -424,10 +424,10 @@ Line items are the heart of the sales order. Use them to control pricing, fulfil
 
 ## Configuration & Settings
 
-The Internal Sales Order Applet is highly configurable. Settings are accessed under:
+The Sales Order (Internal) Applet is highly configurable. Settings are accessed under:
 `Settings`
 
-{{< figure src="/images/internal-sales-order-applet/so-setting-page.png" alt="Settings page for Internal Sales Order Applet showing configuration modules" caption="Settings: Configure defaults, workflow, printables, and feature visibility." >}}
+{{< figure src="/images/internal-sales-order-applet/so-setting-page.png" alt="Settings page for Sales Order (Internal) Applet showing configuration modules" caption="Settings: Configure defaults, workflow, printables, and feature visibility." >}}
 
 ### Application Settings
 

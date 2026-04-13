@@ -1,5 +1,5 @@
 ---
-title: "Internal Sales Refund Note Applet (V3)"
+title: "Sales Refund Note (Internal) Applet (V3)"
 description: "Comprehensive workflow for managing customer refunds, returns, E-Invoice integrations, and payment adjustments."
 tags:
 - sales
@@ -16,7 +16,7 @@ weight: 120
 
 ## Purpose and Overview
 
-The **Internal Sales Refund Note Applet (V3)** is a critical financial control mechanism within the Sales Workflow. It is used to properly document, authorize, and process financial refunds given back to customers. This V3 iteraton includes native support for LHDN E-Invoicing requirements and Strict Amount Balancing validations.
+The **Sales Refund Note (Internal) Applet (V3)** is a critical financial control mechanism within the Sales Workflow. It is used to properly document, authorize, and process financial refunds given back to customers. This V3 iteraton includes native support for LHDN E-Invoicing requirements and Strict Amount Balancing validations.
 
 {{< callout type="info" >}}
 **Core Concept:** A Sales Refund Note is the financial counterpart to a Sales Return. While a Sales Return handles the physical reversal of goods, the Refund Note manages the reversal of cash, credit, and Accounts Receivable (AR).
@@ -78,7 +78,7 @@ If a user tries to finalize a document where PNS is RM 2100 but the Payment is R
 
 ### Processing a Standard Item Refund
 
-1. Navigate to **Internal Sales Refund Note** from the sidebar and click **"+" (Create)**.
+1. Navigate to **Sales Refund Note (Internal)** from the sidebar and click **"+" (Create)**.
 2. **Search Tab**: Enter the original Sales Invoice or DO number. Select the document to auto-populate the refund details.
 3. **Lines Tab**: Review the items being refunded. Remove any lines that the customer is *not* returning.
 4. **Payment Tab**: Add a Settlement line indicating how you are paying the customer back (e.g., Bank Transfer, Credit Card Reversal). 
@@ -91,7 +91,7 @@ If a user tries to finalize a document where PNS is RM 2100 but the Payment is R
 ## Feature Sections & Tabs
 
 ### Sidebar Routes
-- **Internal Sales Refund Note:** The main document management view.
+- **Sales Refund Note (Internal):** The main document management view.
 - **Line Items:** A flattened reporting view showing every refunded item across all notes.
 - **Intercompany:** Dedicated workflow for managing refunds where the selling branch and refunding branch belong to different GL entities.
 - **File Export & Import:** Batch operations.

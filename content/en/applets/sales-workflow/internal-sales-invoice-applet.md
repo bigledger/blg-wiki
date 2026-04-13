@@ -1,5 +1,5 @@
 ﻿---
-title: "Internal Sales Invoice Applet"
+title: "Sales Invoice (Internal) Applet"
 description: "Comprehensive sales transaction management system for invoicing, inventory logic, financial posting, and intercompany commerce."
 tags:
 - sales-management
@@ -14,17 +14,17 @@ draft: false
 
 ## Purpose and Overview
 
-The **Internal Sales Invoice Applet** is the engine room of the order-to-cash process. It moves beyond simple billing by integrating sales transactions with real-time inventory deduction, financial posting, logistics coordination, and intercompany transfers.
+The **Sales Invoice (Internal) Applet** is the engine room of the order-to-cash process. It moves beyond simple billing by integrating sales transactions with real-time inventory deduction, financial posting, logistics coordination, and intercompany transfers.
 
 {{< callout type="info" >}}
 **Core Concept**: The system bridges **Sales Operations** (Orders) with **Financial Control** (Ledgers), **Logistics** (Pick & Pack), and **Intercompany** logic in a single workflow.
 {{< /callout >}}
 
-{{< figure src="/images/internal-sales-invoice-applet/internal-sales-invoice-overview-infographic.png" alt="Internal Sales Invoice Overview Infographic" caption="Visual guide to the challenges, solutions, and benefits of the applet." >}}
+{{< figure src="/images/internal-sales-invoice-applet/internal-sales-invoice-overview-infographic.png" alt="Sales Invoice (Internal) Overview Infographic" caption="Visual guide to the challenges, solutions, and benefits of the applet." >}}
 
 {{< figure src="/images/internal-sales-invoice-applet/infographic.png" alt="Process Flow Infographic" caption="Detailed process flow for the sales invoice lifecycle." >}}
 
-{{< figure src="/images/internal-sales-invoice-applet/main-listing-page.png" alt="Internal Sales Invoice Main Listing" caption="The central hub for managing all sales transactions and their statuses." >}}
+{{< figure src="/images/internal-sales-invoice-applet/main-listing-page.png" alt="Sales Invoice (Internal) Main Listing" caption="The central hub for managing all sales transactions and their statuses." >}}
 
 ## Key Features Overview
 
@@ -219,7 +219,7 @@ System Administrators can fine-tune behavior via the Settings panel.
 
 ## Applet Reference
 
-This section provides a comprehensive reference of all menu items, settings, permissions, and configurable features available in the Internal Sales Invoice Applet.
+This section provides a comprehensive reference of all menu items, settings, permissions, and configurable features available in the Sales Invoice (Internal) Applet.
 
 ### Menu Items
 

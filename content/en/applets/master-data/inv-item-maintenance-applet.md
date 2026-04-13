@@ -193,7 +193,7 @@ The Inventory Item Maintenance Applet is the central hub for managing all physic
 ### Inventory Management Applets
 - **[Stock Balance Applet](/applets/stock-balance-applet/)** - Real-time inventory levels
 - **[Stock Take Applet](/applets/stock-take-applet/)** - Physical inventory counting
-- **[Internal Stock Adjustment Applet](/applets/internal-stock-adjustment-applet/)** - Inventory adjustments
+- **[Stock Adjustment (Internal) Applet](/applets/internal-stock-adjustment-applet/)** - Inventory adjustments
 
 ### Pricing and Sales Applets
 - **[Pricebook Applet](/applets/pricebook-applet/)** - Advanced pricing management

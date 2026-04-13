@@ -1,5 +1,5 @@
 ---
-title: "Internal Sales GRN Applet"
+title: "Sales GRN (Internal) Applet"
 description: "Comprehensive goods return management system for recording customer returns, managing settlements, and reconciling inventory against internal sales transactions"
 tags:
 - grn
@@ -15,13 +15,13 @@ weight: 125
 
 ## Purpose and Overview
 
-The **Internal Sales GRN Applet** is a powerful tool designed to streamline the entire goods return process. It moves beyond simple stock reinstatement by integrating settlement management, contra document linking, and serial/batch/bin-level inventory tracking.
+The **Sales GRN (Internal) Applet** is a powerful tool designed to streamline the entire goods return process. It moves beyond simple stock reinstatement by integrating settlement management, contra document linking, and serial/batch/bin-level inventory tracking.
 
 {{< callout type="info" >}}
 **Core Concept**: The system links **who** is returning goods (Customer) to **what** is being returned (Line Items with serial/batch/bin tracking) and **how** it is resolved financially (Settlements and Contra entries).
 {{< /callout >}}
 
-{{< figure src="/images/internal-sales-grn-applet/internal-sales-grn-the-old-way-vs-new-way.png" alt="From Return Chaos to Digital Precision: The Old Way (Manual Returns Chaos) vs The New Way (Digital GRN Precision) - showing how the Internal Sales GRN Applet solves lost paperwork, inventory mismatches, unreconciled credits, broken audit trails, and disorganized warehouse storage" caption="From Return Chaos to Digital Precision: The Old Way relies on manual paperwork, causing lost authorizations, inventory mismatches, and broken audit trails — The New Way uses structured digital GRNs with serial/batch/bin tracking, automated settlements, and complete end-to-end traceability." >}}
+{{< figure src="/images/internal-sales-grn-applet/internal-sales-grn-the-old-way-vs-new-way.png" alt="From Return Chaos to Digital Precision: The Old Way (Manual Returns Chaos) vs The New Way (Digital GRN Precision) - showing how the Sales GRN (Internal) Applet solves lost paperwork, inventory mismatches, unreconciled credits, broken audit trails, and disorganized warehouse storage" caption="From Return Chaos to Digital Precision: The Old Way relies on manual paperwork, causing lost authorizations, inventory mismatches, and broken audit trails — The New Way uses structured digital GRNs with serial/batch/bin tracking, automated settlements, and complete end-to-end traceability." >}}
 
 ## Key Features Overview
 
@@ -63,7 +63,7 @@ Traditional goods return management relies on ad hoc paperwork and fragmented co
 - No traceability from a returned unit back to the original sale
 - Warehouse staff unsure where to put returned goods without bin-level guidance
 
-**The Internal Sales GRN Solution:**
+**The Sales GRN (Internal) Solution:**
 
 - **Structured return capture** — Every return gets a formal document with header, line items, and status
 - **Inventory precision** — Serial, batch, and bin tracking ensure returned stock is recorded exactly where it physically goes
@@ -85,7 +85,7 @@ Traditional goods return management relies on ad hoc paperwork and fragmented co
 
 ### Understanding the GRN Framework
 
-Every goods return process must address three fundamental aspects. The Internal Sales GRN Applet provides structured handling for all three:
+Every goods return process must address three fundamental aspects. The Sales GRN (Internal) Applet provides structured handling for all three:
 
 | Aspect | Component | Practical Example |
 |--------|-----------|------------------|
@@ -163,7 +163,7 @@ Get up and running quickly with these role-specific workflows.
 
 **Goal:** Create a GRN when goods are physically received back at the warehouse.
 
-1. **Navigate**: Go to **Internal Sales GRN** from the sidebar
+1. **Navigate**: Go to **Sales GRN (Internal)** from the sidebar
 2. **Create New**: Click **"+"** → A blank GRN form opens
 3. **Fill Header**:
    - Select **Branch** and **Location** (where goods are being received)
@@ -178,7 +178,7 @@ Get up and running quickly with these role-specific workflows.
 6. **Attach Evidence**: Go to **Attachments** tab → Upload inspection photos
 7. **Finalize**: Click **Final** → Stock is reinstated, document is locked
 
-{{< figure src="/images/internal-sales-grn-applet/grn-listing.png" alt="Internal Sales GRN Listing showing GRN summary with Sales GRN No, Posting Status, Customer Name and Transaction Date columns" caption="GRN Listing: View all return records with posting status and customer details at a glance" >}}
+{{< figure src="/images/internal-sales-grn-applet/grn-listing.png" alt="Sales GRN (Internal) Listing showing GRN summary with Sales GRN No, Posting Status, Customer Name and Transaction Date columns" caption="GRN Listing: View all return records with posting status and customer details at a glance" >}}
 
 **What happens next?** Finance will process the settlement and post the contra entry. Stock is available again at the specified location.
 
@@ -190,7 +190,7 @@ Get up and running quickly with these role-specific workflows.
 
 **Goal:** Verify line items and process the financial settlement in 4 steps.
 
-1. **Find the GRN**: Go to **Internal Sales GRN** → Use Advanced Search to find the return by Customer or Reference
+1. **Find the GRN**: Go to **Sales GRN (Internal)** → Use Advanced Search to find the return by Customer or Reference
 2. **Review Line Items**:
    - Open the GRN → Go to **Lines** tab
    - Verify quantities match the physical return receipt
@@ -275,7 +275,7 @@ Return Tracking in the GRN Applet gives warehouse staff, sales teams, and financ
 ### How to Track a Return
 
 **From the GRN Listing:**
-1. Go to **Internal Sales GRN** from the sidebar
+1. Go to **Sales GRN (Internal)** from the sidebar
 2. Use **Posting Status** column to filter returns by state
 3. Use **Advanced Search** to find returns by customer name, GRN number, or date range
 
@@ -322,7 +322,7 @@ Customer Returns Goods → GRN Created → Lines Added → GRN Finalized
 
 This section is your step-by-step guide to creating and completing a GRN when goods are returned.
 
-### Internal Sales GRN Listing — Your Returns Dashboard
+### Sales GRN (Internal) Listing — Your Returns Dashboard
 
 **What is the GRN Listing?**
 
@@ -340,7 +340,7 @@ This is your main workspace — where you see every return record, create new GR
 **How to Create a GRN** (The Complete Journey)
 
 **Step 1: Create the GRN Header**
-1. Click **"Internal Sales GRN"** from the sidebar
+1. Click **"Sales GRN (Internal)"** from the sidebar
 2. Click **"+" (Add New)**
 3. Fill in:
    - **Branch**: The branch receiving the returned goods
@@ -479,7 +479,7 @@ Steps:
 
 **What is the Line Items Page?**
 
-While the **Internal Sales GRN** listing shows complete return documents, the **Line Items** page shows every individual returned product across all GRNs — one row per item line. It's like having a complete itemized return history.
+While the **Sales GRN (Internal)** listing shows complete return documents, the **Line Items** page shows every individual returned product across all GRNs — one row per item line. It's like having a complete itemized return history.
 
 **Why Is This Useful?**
 
@@ -551,7 +551,7 @@ Settlement is the financial record of how a customer is compensated for returned
 **How to Process a Settlement (Step-by-Step):**
 
 **Step 1: Open the GRN**
-1. Go to **Internal Sales GRN** from the sidebar
+1. Go to **Sales GRN (Internal)** from the sidebar
 2. Search using the GRN number or customer name
 3. Click to open the record
 
@@ -672,7 +672,7 @@ Result: Invoice fully cleared; cheque payment logged
 
 ## Configuration & Settings
 
-The Settings page provides access to system-wide configuration for the Internal Sales GRN Applet. Navigate via the **Settings** option in the sidebar.
+The Settings page provides access to system-wide configuration for the Sales GRN (Internal) Applet. Navigate via the **Settings** option in the sidebar.
 
 ### Application Settings
 
@@ -750,7 +750,7 @@ Configure webhook notifications to push GRN lifecycle events (create, update, fi
 
 ### Permissions
 
-Control who can access and perform actions within the Internal Sales GRN Applet. The system supports granular permission management:
+Control who can access and perform actions within the Sales GRN (Internal) Applet. The system supports granular permission management:
 
 | Permission Type | Description |
 |----------------|-------------|

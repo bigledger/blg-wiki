@@ -290,7 +290,7 @@ As long as the supervisor has not yet marked the log as `Ready`, the supervisor 
 
 **3. What happens if an operator selects the wrong Bin for a raw material?**
 
-If the log hits `Ready` status, that specific bin will have its inventory depleted in the system. If this was a mistake, a manual correction via the **Internal Stock Adjustment Applet** is required to fix the physical vs system bin balances.
+If the log hits `Ready` status, that specific bin will have its inventory depleted in the system. If this was a mistake, a manual correction via the **Stock Adjustment (Internal) Applet** is required to fix the physical vs system bin balances.
 
 **4. Can an operator put a job 'On Hold' if their machine breaks down?**
 

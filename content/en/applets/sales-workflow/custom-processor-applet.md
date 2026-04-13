@@ -50,14 +50,14 @@ Effective use of the Custom Processor drives significant gains in organizational
 
 Imagine you have a warehouse that receives 1,000 internal stock transfer orders every day.
 - **Without the Applet**: A clerk has to manually open each order, check it, and click "Process" to move it to the next stage.
-- **With the Custom Processor**: You create a "Filter" that says: *"Every time an Internal Sales Order is created by Company X in Branch Y, process it immediately."*
+- **With the Custom Processor**: You create a "Filter" that says: *"Every time an Sales Order (Internal) is created by Company X in Branch Y, process it immediately."*
 
 The applet automatically gathers these orders in a **Queue**, processes them in the background, and keeps a detailed **History** of everything it did.
 
 ### Relationship to Other Applets
 
 This applet acts as the "automation layer" for your core workflows:
-- **Internal Sales Order / Invoice Applets**: These applets generate the source documents that the Custom Processor handles.
+- **Sales Order (Internal) / Invoice Applets**: These applets generate the source documents that the Custom Processor handles.
 - **Price Tag Applet**: The processor includes specialized history tracking for price tags, often used to automate label printing or pricing updates.
 - **General Ledger Applet**: Once documents are processed (e.g., converted from DRAFT to FINAL), they flow into the audit trails and ledgers verified by this applet.
 
@@ -237,7 +237,7 @@ Users can override system-wide defaults with their own preferred **Company** and
 
 ## Related Applets
 
-### Internal Sales Order / Invoice Applets
+### Sales Order (Internal) / Invoice Applets
 **Purpose:** The source apps where the items being processed are originally created.
 
 ### Price Tag Applet

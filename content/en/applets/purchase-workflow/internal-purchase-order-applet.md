@@ -1,6 +1,6 @@
 ---
-title: "Internal Purchase Order Applet"
-description: "Internal purchase order management for creating POs, approval workflows, supplier management, stock replenishment, and reporting"
+title: "Purchase Order (Internal) Applet"
+description: "Purchase Order (Internal) management for creating POs, approval workflows, supplier management, stock replenishment, and reporting"
 tags:
 - purchase-order
 - procurement
@@ -12,7 +12,7 @@ weight: 170
 
 ## Purpose and Overview
 
-The **Internal Purchase Order Applet** is designed to streamline the full purchase order lifecycle within your organization. It supports creating and editing purchase orders, managing suppliers and line items, approval workflows, stock replenishment, file import/export, and reporting—all in one place. It is used by procurement and purchasing staff, approvers and managers, finance and operations, and system administrators.
+The **Purchase Order (Internal) Applet** is designed to streamline the full purchase order lifecycle within your organization. It supports creating and editing purchase orders, managing suppliers and line items, approval workflows, stock replenishment, file import/export, and reporting—all in one place. It is used by procurement and purchasing staff, approvers and managers, finance and operations, and system administrators.
 
 {{< callout type="info" >}}
 **Core Concept**: The applet links **who** orders (purchaser/supplier), **what** is ordered (line items), and **how** it is approved (workflow) so procurement and finance stay in control.
@@ -55,7 +55,7 @@ Managing POs with spreadsheets and email leads to:
 - No single place for supplier and line-item details
 - Difficult reporting and audit trails
 
-**The Internal Purchase Order Applet Solution:**
+**The Purchase Order (Internal) Applet Solution:**
 
 - **Structured PO creation** — Header, supplier, addresses, line items, payments, and attachments in one flow
 - **Approval workflow** — Submit for approval, act in Approval Request, and review history
@@ -202,7 +202,7 @@ For production rollout, run this walkthrough with real branch/supplier data in a
 
 ### For Admins: Initial System Setup
 
-**Goal:** Get the Internal Purchase Order applet ready for your users in a few steps.
+**Goal:** Get the Purchase Order (Internal) Applet ready for your users in a few steps.
 
 **Step 1: Branch setup** (`Settings > Branch Settings` and `Settings > Branch Designation`)  
 - Configure branches so POs can be assigned to the right locations.
@@ -273,7 +273,7 @@ Use the filters and columns in each report to narrow by date, supplier, branch, 
 
 ## Configuration & Settings
 
-Access **Settings** from the sidebar to configure how the Internal Purchase Order applet behaves for your organization. The table below summarizes the main options; configure them to match your procurement and approval policies.
+Access **Settings** from the sidebar to configure how the Purchase Order (Internal) Applet behaves for your organization. The table below summarizes the main options; configure them to match your procurement and approval policies.
 
 | Setting | Purpose |
 |--------|---------|
@@ -382,7 +382,7 @@ A: Yes. Open **File Export**, set the date range to cover the full year (and any
 A: Buttons are disabled when no row is selected, or when the selected request status already prevents that action (for example, already approved/rejected).
 
 **Q: How do I set Option 2 (disable "document conversion required") so POs don’t need to be created from a PR?**  
-A: An administrator with access to the Internal Purchase Order applet Settings can do this:
+A: An administrator with access to the Purchase Order (Internal) Applet Settings can do this:
 
 1. Open the applet and go to **Settings** in the sidebar.
 2. Open **Approval Monitor**. You’ll see a list of conversion rules with columns **From**, **To**, and **Remarks**.

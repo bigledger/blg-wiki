@@ -927,7 +927,7 @@ The Chart of Account applet is a foundational module. Its data is used by many o
 | **Core Modules** | Organization Applet, Ledger and Journal Applet, CashBook Applet |
 | **Customer/Entity** | Customer Maintenance Applet |
 | **Sales Cycle** | Sales Order, Sales Invoice, Sales Return, Receipt Voucher, Debit Note, Credit Note |
-| **Purchase Cycle** | Internal Purchase Order, Internal Purchase Invoice, Internal Purchase Return, Payment Voucher |
+| **Purchase Cycle** | Purchase Order (Internal), Purchase Invoice (Internal), Purchase Return (Internal), Payment Voucher |
 
 ---
 

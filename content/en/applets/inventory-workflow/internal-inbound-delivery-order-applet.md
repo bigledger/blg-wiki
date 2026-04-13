@@ -1,5 +1,5 @@
 ---
-title: "Internal Inbound Delivery Order Applet"
+title: "Inbound Delivery Order (Internal) Applet"
 description: "Streamline internal stock receiving, intercompany inventory transfers, and serialized item tracking"
 tags:
   - inventory-management
@@ -12,7 +12,7 @@ weight: 170
 
 ## Purpose and Overview
 
-The **Internal Inbound Delivery Order (DO) Applet** is designed to manage the receiving process for goods transferred internally between branches or intercompany entities. It ensures accurate inventory updates and provides robust tracking for serialized items, bridging the gap between outbound shipping and inbound receiving.
+The **Inbound Delivery Order (Internal) (DO) Applet** is designed to manage the receiving process for goods transferred internally between branches or intercompany entities. It ensures accurate inventory updates and provides robust tracking for serialized items, bridging the gap between outbound shipping and inbound receiving.
 
 {{< callout type="info" >}}
 **Core Concept**: The applet converts an outbound document (like an Intercompany Sales Invoice or Purchase Order) into an internal receiving record, ensuring stock levels are updated correctly in the destination warehouse.

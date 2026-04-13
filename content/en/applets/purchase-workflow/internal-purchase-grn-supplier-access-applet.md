@@ -1,5 +1,5 @@
 ---
-title: "Internal Purchase GRN Supplier Access Applet"
+title: "Purchase GRN Supplier Access (Internal) Applet"
 description: "Supplier portal for viewing Internal Purchase Goods Received Notes (GRNs), line items, and related documents"
 tags:
 - internal-purchase
@@ -12,9 +12,9 @@ weight: 161
 
 ## Purpose and Overview
 
-The **Internal Purchase GRN Supplier Access Applet** gives suppliers a dedicated portal to view and access **Internal Purchase Goods Received Notes (GRNs)** issued by the buying organization. Suppliers can see which GRNs reference them, inspect line-level details, view attachments and payments, and drill into linked issues—all in read-only mode tailored for vendor users.
+The **Purchase GRN Supplier Access (Internal) Applet** gives suppliers a dedicated portal to view and access **Internal Purchase Goods Received Notes (GRNs)** issued by the buying organization. Suppliers can see which GRNs reference them, inspect line-level details, view attachments and payments, and drill into linked issues—all in read-only mode tailored for vendor users.
 
-![Empowering Suppliers: The Internal Purchase GRN Portal](/images/internal-purchase-grn-supplier-access-applet/internal-purchase-grn-supplier-access-applet-overview.png)
+![Empowering Suppliers: The Purchase GRN (Internal) Portal](/images/internal-purchase-grn-supplier-access-applet/internal-purchase-grn-supplier-access-applet-overview.png)
 
 {{< callout type="info" >}}
 **Core Concept**: The applet links **who** (Supplier) to **what** (GRN documents and line items) and **how** they access it (listing, view, line items, settings, and personalization).
@@ -55,7 +55,7 @@ Without a dedicated portal, suppliers often:
 - Cannot easily check line-level details or attachments
 - Struggle to reconcile their records with buyer records
 
-**The Internal Purchase GRN Supplier Access Solution:**
+**The Purchase GRN Supplier Access (Internal) Solution:**
 
 - **GRN listing** — Filter by supplier, branch, purchaser, dates, and posting status
 - **Document view** — Main details, account, lines, payment, department, contra, doc link, attachments, and export
@@ -86,7 +86,7 @@ Without a dedicated portal, suppliers often:
 | Aspect | Component | Practical Example |
 |--------|-----------|-------------------|
 | **Who** is viewing? | Supplier / vendor user | Supplier ABC logs in and sees only GRNs where they are the supplier |
-| **What** is being viewed? | Internal Purchase GRN & line items | GRN document with header (branch, purchaser, dates) and lines (item, qty, price, tax, amount) |
+| **What** is being viewed? | Purchase GRN (Internal) & line items | GRN document with header (branch, purchaser, dates) and lines (item, qty, price, tax, amount) |
 | **How** is it accessed? | Listing, view, line items, issue links | Search → open GRN → open line → open issue link |
 
 {{< callout type="tip" >}}

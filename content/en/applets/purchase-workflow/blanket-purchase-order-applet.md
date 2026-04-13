@@ -76,7 +76,7 @@ Use these concepts when working in the applet:
 
 - **BPO Header**: the agreement shell (supplier, validity dates, status, references).
 - **Line Items**: the item/price scope that can be consumed.
-- **Release Transaction**: downstream document created against the BPO (in this implementation, via Internal Purchase Order knock-off).
+- **Release Transaction**: downstream document created against the BPO (in this implementation, via Purchase Order (Internal) knock-off).
 - **Doc Link**: relationship view for linked documents and release activity.
 - **Posting Status**: lifecycle state that controls whether further edits/actions are allowed.
 
@@ -131,15 +131,15 @@ Get up and running quickly with these role-specific workflows.
 
 ### For Requesting Departments: Create a Release Against Blanket PO
 
-**Goal:** Create an **Internal Purchase Order (IPO)** that consumes quantity from an active Blanket PO.
+**Goal:** Create an **Purchase Order (Internal) (IPO)** that consumes quantity from an active Blanket PO.
 
 {{< callout type="info" >}}
-In this implementation, there is no direct **"Create Release"** button inside Blanket PO **Doc Link**. The release transaction is created from the **Internal Purchase Order** applet.
+In this implementation, there is no direct **"Create Release"** button inside Blanket PO **Doc Link**. The release transaction is created from the **Purchase Order (Internal)** applet.
 {{< /callout >}}
 
 **Before you start:**
 
-- In **Internal Purchase Order Listing**, the **"+" (Create)** button is enabled for your user.
+- In **Purchase Order (Internal) Listing**, the **"+" (Create)** button is enabled for your user.
 - In **Create Purchase Order**, the **KO For** tab is visible.
 - Inside **KO For**, the **Blanket Purchase Order** tab is visible.
 - The KO list contains at least one BPO row to select.
@@ -152,8 +152,8 @@ If **KO For** or **Blanket Purchase Order** is missing, contact your administrat
 
 **Exact IPO click path (UI labels as implemented):**
 
-1. Open **Internal Purchase Order** applet.
-2. In **Internal Purchase Order Listing**, click the **"+" (Create)** button.
+1. Open **Purchase Order (Internal)** applet.
+2. In **Purchase Order (Internal) Listing**, click the **"+" (Create)** button.
 3. In **Create Purchase Order** screen, open **Main Details** tab and complete required fields.
 4. Open **Account** tab and select the supplier/entity.
 5. Open **KO For** tab.
@@ -162,11 +162,11 @@ If **KO For** or **Blanket Purchase Order** is missing, contact your administrat
 8. Click **KNOCK OFF**.
 9. Open **Lines** tab and confirm BPO items/quantities were imported.
 10. Click **CREATE** (top-right of **Create Purchase Order**).
-11. Back in **Internal Purchase Order Listing**, select the new IPO row, then click **FINAL**.
+11. Back in **Purchase Order (Internal) Listing**, select the new IPO row, then click **FINAL**.
 
-{{< figure src="/images/blanket-purchase-order-applet/IPO-KO-FOR-TAB.png" alt="Internal Purchase Order listing and Create Purchase Order screen with KO For tab and KNOCK OFF button highlighted" caption="Internal Purchase Order: Open a new IPO and use the KO For tab to knock off from Blanket Purchase Order." >}}
+{{< figure src="/images/blanket-purchase-order-applet/IPO-KO-FOR-TAB.png" alt="Purchase Order (Internal) listing and Create Purchase Order screen with KO For tab and KNOCK OFF button highlighted" caption="Purchase Order (Internal): Open a new IPO and use the KO For tab to knock off from Blanket Purchase Order." >}}
 
-{{< figure src="/images/blanket-purchase-order-applet/IPO-LINES-TAB.png" alt="Edit Purchase Order screen with Lines tab and imported line items highlighted" caption="Internal Purchase Order: Review imported items in the Lines tab before finalizing." >}}
+{{< figure src="/images/blanket-purchase-order-applet/IPO-LINES-TAB.png" alt="Edit Purchase Order screen with Lines tab and imported line items highlighted" caption="Purchase Order (Internal): Review imported items in the Lines tab before finalizing." >}}
 
 This finalized IPO is the release transaction against the Blanket PO.
 
@@ -501,8 +501,8 @@ Branch settings route is wired to branch configuration pages that include:
 
 ## FAQ
 
-**Q: I cannot see the `+` button to create a release in Internal Purchase Order. What should I check?**
-A: Verify your permission assignment first. Release creation is done in the Internal Purchase Order applet, so users need create access there and relevant role assignment.
+**Q: I cannot see the `+` button to create a release in Purchase Order (Internal). What should I check?**
+A: Verify your permission assignment first. Release creation is done in the Purchase Order (Internal) Applet, so users need create access there and relevant role assignment.
 
 **Q: The `KO For` tab is missing in Create Purchase Order.**
 A: This is usually a permission/configuration issue. Ask admin to validate access for IPO knock-off flow and confirm your role has the required screens enabled.

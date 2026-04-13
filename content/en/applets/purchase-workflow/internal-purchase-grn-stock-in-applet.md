@@ -1,5 +1,5 @@
 ﻿---
-title: "Internal Purchase GRN Stock In Applet"
+title: "Purchase GRN Stock In (Internal) Applet"
 description: "Goods Received Note (GRN) management for processing stock-in operations linked to internal purchase transactions"
 tags:
 - grn
@@ -12,7 +12,7 @@ tags:
 
 ## Purpose and Overview
 
-The **Internal Purchase GRN Stock In Applet** manages the creation and processing of Goods Received Notes (GRN) for internal purchase transactions. A GRN is the document that records and confirms the physical receipt of goods into a warehouse, linking the received stock to the originating purchase order.
+The **Purchase GRN Stock In (Internal) Applet** manages the creation and processing of Goods Received Notes (GRN) for internal purchase transactions. A GRN is the document that records and confirms the physical receipt of goods into a warehouse, linking the received stock to the originating purchase order.
 
 {{< callout type="info" >}}
 **Core Concept**: A GRN is your proof that goods have arrived at the warehouse. It connects a purchase transaction to the actual physical stock received, ensuring inventory records and supplier accounts stay accurate.
@@ -121,7 +121,7 @@ The GRN is a critical component of **three-way matching** in the procure-to-pay 
 
 **Goal:** Create a GRN to record goods received from a supplier
 
-1. **Navigate**: Go to **Internal Purchase GRN Stock In** from the sidebar
+1. **Navigate**: Go to **Purchase GRN Stock In (Internal)** from the sidebar
 2. **Create New**: Click **"+"** to create a new GRN
 3. **Fill Header Details**:
    - Select **Company** and **Branch**

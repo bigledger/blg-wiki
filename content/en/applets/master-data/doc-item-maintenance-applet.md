@@ -699,15 +699,15 @@ The Doc Item Maintenance applet can import Lines from the following Applets:
 
 The information in Doc Item Maintenance applet, is used by which applets:
 - Ecomsync Applet
-- Internal Sales Order Applet
+- Sales Order (Internal) Applet
 - Delivery Order Applet
-- Internal Purchase Order Applet
+- Purchase Order (Internal) Applet
 - Process Maintenance Applet
 - Beauty POS Applet
 - POS General Applet
 - Internal Job Order Applet
 - CellLabs- QR Code Management Applet
-- Internal Packing Order Applet
+- Packing Order (Internal) Applet
 - UCC - Unified Contact Centre Applet
 
 ---

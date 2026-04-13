@@ -1,5 +1,5 @@
 ---
-title: "Internal Consignment GIN Applet"
+title: "Consignment GIN (Internal) Applet"
 description: "Create and manage consignment Goods Issue Notes with full visibility of items and line-level tracking for sales operations"
 tags:
   - applets
@@ -12,7 +12,7 @@ weight: 185
 
 ## Purpose and Overview
 
-The **Internal Consignment GIN Applet** is designed to streamline the management of consignment stock issues within your organization. It enables the Sales team to create Goods Issue Notes (GIN) for consignment items, track all consignment issues in a centralized listing, and view detailed line-item information for each transaction.
+The **Consignment GIN (Internal) Applet** is designed to streamline the management of consignment stock issues within your organization. It enables the Sales team to create Goods Issue Notes (GIN) for consignment items, track all consignment issues in a centralized listing, and view detailed line-item information for each transaction.
 
 {{< callout type="info" >}}
 **Core Concept**: A consignment GIN records the issuance of consignment stock—goods you hold but don't own—to internal locations, customers, or for specific sales activities. This creates an audit trail and updates consignment inventory balances.
@@ -57,7 +57,7 @@ Managing consignment stock without a dedicated system leads to:
 - No visibility into which items went where
 - Manual spreadsheets prone to errors
 
-**The Internal Consignment GIN Applet Solution:**
+**The Consignment GIN (Internal) Applet Solution:**
 
 - **Digital documentation** - Create GIN records for every consignment issue
 - **Centralized listing** - View all consignment GIN items in one place
@@ -68,7 +68,7 @@ Managing consignment stock without a dedicated system leads to:
 ## Key Features Overview
 
 {{< cards >}}
-{{< card title="Internal Consignment GIN Listing" subtitle="View all consignment GIN documents with advanced search" link="#consignment-gin-listing" >}}
+{{< card title="Consignment GIN (Internal) Listing" subtitle="View all consignment GIN documents with advanced search" link="#consignment-gin-listing" >}}
 
 {{< card title="Create & Edit Consignment GIN" subtitle="Record consignment stock issues with header, account, and line details" link="#creating-a-consignment-gin" >}}
 
@@ -77,7 +77,7 @@ Managing consignment stock without a dedicated system leads to:
 {{< card title="Settings & Configuration" subtitle="Configure field visibility, default selections, and printable formats" link="#configuration--settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/internal-consignment-gin-applet/internal-consignment-gin-overview-infographic.png" alt="Internal Consignment GIN Applet Overview: The challenges of manual consignment tracking vs the applet solution, and who benefits" caption="From Manual Tracking to Digital Control: The Challenges (lost records, reconciliation difficulty, no visibility, spreadsheet errors) vs The Solution (digital documentation, centralized listing, line-item visibility, audit compliance). Who Benefits: Sales Representatives, Sales Managers, Warehouse & Inventory, Finance & Operations." >}}
+{{< figure src="/images/internal-consignment-gin-applet/internal-consignment-gin-overview-infographic.png" alt="Consignment GIN (Internal) Applet Overview: The challenges of manual consignment tracking vs the applet solution, and who benefits" caption="From Manual Tracking to Digital Control: The Challenges (lost records, reconciliation difficulty, no visibility, spreadsheet errors) vs The Solution (digital documentation, centralized listing, line-item visibility, audit compliance). Who Benefits: Sales Representatives, Sales Managers, Warehouse & Inventory, Finance & Operations." >}}
 
 ## Key Concepts
 
@@ -142,7 +142,7 @@ Get up and running quickly with these essential workflows.
 
 **Goal:** Issue consignment stock and create a proper GIN record in 5 steps.
 
-1. **Navigate**: Go to **Internal Consignment GIN** from the sidebar (default landing)
+1. **Navigate**: Go to **Consignment GIN (Internal)** from the sidebar (default landing)
 2. **Create New**: Click the **"+"** (Create) button on the listing
 3. **Main Details Tab**:
    - Select **Branch** and **Transaction Date**
@@ -152,7 +152,7 @@ Get up and running quickly with these essential workflows.
 5. **Lines Tab**: Click **Add Line** → Select **Item**, enter **Quantity** → Optionally add Serial Number, Batch Number, Bin Number, Pricing Details, or Issue Link
 6. **Create**: Click **CREATE** (or **RESET** to clear)
 
-{{< figure src="/images/internal-consignment-gin-applet/create-edit-form.png" alt="Internal Consignment GIN Create/Edit form with Main Details, Account, and Lines tabs" caption="Create Form: Enter Main Details, Account (supplier), and Lines (items) for consignment stock issue" >}}
+{{< figure src="/images/internal-consignment-gin-applet/create-edit-form.png" alt="Consignment GIN (Internal) Create/Edit form with Main Details, Account, and Lines tabs" caption="Create Form: Enter Main Details, Account (supplier), and Lines (items) for consignment stock issue" >}}
 
 **What happens next?** The GIN is created and you are taken to the Edit view. Use **FINAL** to post the document when ready.
 
@@ -164,7 +164,7 @@ Get up and running quickly with these essential workflows.
 
 **Goal:** View and monitor all consignment GIN documents created by your team.
 
-1. **Open Listing**: Go to **Internal Consignment GIN** from the sidebar → the main listing opens by default
+1. **Open Listing**: Go to **Consignment GIN (Internal)** from the sidebar → the main listing opens by default
 2. **Advanced Search**: Use filters for **Consignment GIN No**, **Branch Name**, **Supplier Name**, **Created Date**, **Transaction Date**, or **Created by**
 3. **Review Details**: Click on any row to open the Edit view with full header, account, and line items
 4. **Post Documents**: Select records and click **FINAL** to post GINs
@@ -309,7 +309,7 @@ Use **SAVE** to persist changes, **RESET** to discard, or **DELETE** (with confi
 
 The listing provides a comprehensive view of all consignment GIN items created.
 
-{{< figure src="/images/internal-consignment-gin-applet/main-listing.png" alt="Internal Consignment GIN main listing page showing all consignment GIN records in table format" caption="Main Listing: View all consignment GIN items with filters and search" >}}
+{{< figure src="/images/internal-consignment-gin-applet/main-listing.png" alt="Consignment GIN (Internal) main listing page showing all consignment GIN records in table format" caption="Main Listing: View all consignment GIN items with filters and search" >}}
 
 ### What You Can Do
 
@@ -379,7 +379,7 @@ The **Line Items** navigation provides a dedicated view to search and manage con
 
 **Option 1: From a GIN record**
 
-1. Open the **Internal Consignment GIN** listing and click on a GIN row
+1. Open the **Consignment GIN (Internal)** listing and click on a GIN row
 2. In the Edit view, go to the **Lines** tab
 3. Add, edit, or view line items for that GIN
 
@@ -393,7 +393,7 @@ The **Line Items** navigation provides a dedicated view to search and manage con
 
 ## Configuration & Settings
 
-Administrators configure the Internal Consignment GIN Applet via **Settings** in the applet sidebar. The following settings are available:
+Administrators configure the Consignment GIN (Internal) Applet via **Settings** in the applet sidebar. The following settings are available:
 
 ### Settings Menu Structure
 
@@ -407,7 +407,7 @@ Administrators configure the Internal Consignment GIN Applet via **Settings** in
 | **Permissions**                           | User, Team, and Role permission listings    |
 | -----------------                         | ------------------------------------------  |
 
-{{< figure src="/images/internal-consignment-gin-applet/settings-page.png" alt="Internal Consignment GIN Settings page showing Application Settings, Default Selection, and other configuration options" caption="Configuration & Settings: Access detailed applet configuration via the Settings menu" >}}
+{{< figure src="/images/internal-consignment-gin-applet/settings-page.png" alt="Consignment GIN (Internal) Settings page showing Application Settings, Default Selection, and other configuration options" caption="Configuration & Settings: Access detailed applet configuration via the Settings menu" >}}
 
 ### Configurable Tabs (Application Settings)
 
@@ -455,7 +455,7 @@ Before creating consignment GINs, ensure items are properly configured:
 
 ### Integration with Consignment Purchasing
 
-The Internal Consignment GIN Applet integrates with:
+The Consignment GIN (Internal) Applet integrates with:
 
 - **Consignment Receipt/GRN** - Stock received into consignment
 - **Consignment Inventory** - Current balances
@@ -467,8 +467,8 @@ Ensure the [Consignment Purchasing](/guides/purchasing-guides/consignment-purcha
 
 ## FAQ
 
-**Q: Where do I find the Internal Consignment GIN applet?**
-A: Go to **Internal Consignment GIN** in the sidebar (typically under Inventory or Purchasing, depending on your tenant setup). If you don't see it, your role may not have access—contact your administrator.
+**Q: Where do I find the Consignment GIN (Internal) Applet?**
+A: Go to **Consignment GIN (Internal)** in the sidebar (typically under Inventory or Purchasing, depending on your tenant setup). If you don't see it, your role may not have access—contact your administrator.
 
 **Q: What is the difference between a consignment GIN and a regular GIN?**
 A: A consignment GIN issues items from consignment inventory (supplier-owned stock at your location). A regular GIN issues your owned inventory. Consignment GINs reduce consignment balances and feed into supplier billing when you're charged for consumed items.
@@ -480,7 +480,7 @@ A: It depends on your system configuration. Draft GINs can usually be edited. On
 A: No. The system validates stock availability at the issuing location. If you get an error, check the consignment inventory balance for that item and location. Stock must be received via a Consignment GRN first.
 
 **Q: How do I find a specific consignment GIN I created?**
-A: Open the Internal Consignment GIN Listing and use **Advanced Search**: filter by Consignment GIN No, Branch Name, Supplier Name, Created Date, Transaction Date, or Created by.
+A: Open the Consignment GIN (Internal) Listing and use **Advanced Search**: filter by Consignment GIN No, Branch Name, Supplier Name, Created Date, Transaction Date, or Created by.
 
 **Q: How does a consignment GIN affect supplier billing?**
 A: Each consignment GIN reduces your consignment inventory. When the supplier sends a consumption invoice (typically monthly), it's based on these GIN transactions. Finance uses the GIN records to reconcile and verify the invoice.

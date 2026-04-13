@@ -1,5 +1,5 @@
 ---
-title: "Internal Sales GIN Stock Out Applet"
+title: "Sales GIN Stock Out (Internal) Applet"
 description: "Goods Issue Note (GIN) management for processing stock-out operations linked to internal sales transactions"
 tags:
 - gin
@@ -12,7 +12,7 @@ tags:
 
 ## Purpose and Overview
 
-The **Internal Sales GIN Stock Out Applet** manages the creation and processing of Goods Issue Notes (GIN) for internal sales transactions. A GIN is the document that authorizes and records the physical release of stock from a warehouse location when fulfilling a sales order.
+The **Sales GIN Stock Out (Internal) Applet** manages the creation and processing of Goods Issue Notes (GIN) for internal sales transactions. A GIN is the document that authorizes and records the physical release of stock from a warehouse location when fulfilling a sales order.
 
 {{< callout type="info" >}}
 **Core Concept**: A GIN is your proof that goods have left the warehouse. It connects a sales transaction to the actual physical stock movement, ensuring your inventory records stay accurate.
@@ -100,7 +100,7 @@ Sales Order Received → GIN Created → Items Picked → GIN Finalized → Stoc
 
 **Goal:** Create a GIN to issue stock for a sales order
 
-1. **Navigate**: Go to **Internal Sales GIN Stock Out** from the sidebar
+1. **Navigate**: Go to **Sales GIN Stock Out (Internal)** from the sidebar
 2. **Create New**: Click **"+"** to create a new GIN
 3. **Fill Header Details**:
    - Select **Company** and **Branch**

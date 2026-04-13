@@ -1,5 +1,5 @@
 ﻿---
-title: "Internal Stock Requisition Applet"
+title: "Stock Requisition (Internal) Applet"
 description: "Create and manage internal outbound stock requisitions between locations, including line item tracking, knock-off (KO) import from Purchase GRN, attachments, printing, and stock transfer creation."
 weight: 10
 tags:
@@ -12,7 +12,7 @@ tags:
 
 ## Purpose and Overview
 
-The **Internal Stock Requisition Applet** supports internal stock movements by letting teams create an **Internal Outbound Stock Requisition** (often shown as **Requisition Out**) from one location to another.
+The **Stock Requisition (Internal) Applet** supports internal stock movements by letting teams create an **Internal Outbound Stock Requisition** (often shown as **Requisition Out**) from one location to another.
 
 It is designed to:
 - Capture the intent to move stock (**what** items, **how many**, **from** which location, **to** which location)

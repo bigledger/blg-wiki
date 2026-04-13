@@ -1,5 +1,5 @@
 ---
-title: "Internal Sales Quotation Applet"
+title: "Sales Quotation (Internal) Applet"
 description: "Comprehensive quotation management system for creating professional quotes, pricing proposals, and converting quotes to sales orders"
 tags:
 - sales-management
@@ -12,7 +12,7 @@ weight: 70
 
 ## Purpose and Overview
 
-The **Internal Sales Quotation Applet** is a powerful tool designed to streamline the entire quotation creation and management process. It moves beyond simple quote generation by integrating pricing schemes, customer management, approval workflows, and seamless conversion to sales orders.
+The **Sales Quotation (Internal) Applet** is a powerful tool designed to streamline the entire quotation creation and management process. It moves beyond simple quote generation by integrating pricing schemes, customer management, approval workflows, and seamless conversion to sales orders.
 
 {{< callout type="info" >}}
 **Core Concept**: The system links **what** you're quoting (Items) to **who** you're quoting (Customers) and **how much** to charge (Pricing Schemes), creating professional quotations that can be converted to orders.
@@ -412,7 +412,7 @@ This is YOUR workspace—where you create, submit, and track all your quotations
 - ✓ Resend quotes to customers
 - ✓ Convert approved quotes to sales orders
 
-{{< figure src="/images/internal-sales-quotation-applet/main-listing.png" alt="Internal Sales Quotation main listing page showing all quotations" caption="Fig 1: Main listing page displaying all quotations with status filters and search functionality" >}}
+{{< figure src="/images/internal-sales-quotation-applet/main-listing.png" alt="Sales Quotation (Internal) main listing page showing all quotations" caption="Fig 1: Main listing page displaying all quotations with status filters and search functionality" >}}
 
 ### Navigating the Sales Quotation Listing & Advanced Filtering
 

@@ -1,5 +1,5 @@
 ﻿---
-title: "Internal Purchase Return Applet"
+title: "Purchase Return (Internal) Applet"
 description: "Comprehensive purchase return management system for handling supplier returns, inventory adjustments, and financial reconciliation."
 tags:
 - purchase-management
@@ -14,7 +14,7 @@ draft: false
 
 ## Purpose and Overview
 
-The **Internal Purchase Return Applet** is a specialized tool designed to manage the end-to-end process of returning goods to suppliers. It serves as the critical link between your warehouse operations (inventory) and financial accounts (payables), ensuring that every return is accurately recorded, tracked, and reconciled.
+The **Purchase Return (Internal) Applet** is a specialized tool designed to manage the end-to-end process of returning goods to suppliers. It serves as the critical link between your warehouse operations (inventory) and financial accounts (payables), ensuring that every return is accurately recorded, tracked, and reconciled.
 
 {{< callout type="info" >}}
 **Core Concept**: A Purchase Return is not just "sending goods back." It is a **financial transaction** that must result in either a **Refund**, a **Credit Note**, or a **Contra breakdown** against outstanding invoices.
@@ -22,7 +22,7 @@ The **Internal Purchase Return Applet** is a specialized tool designed to manage
 
 {{< figure src="/images/internal-purchase-return-applet/internal-purchase-return-overview-infographic.png" alt="Mastering the BigLedger Purchase Return Applet â€” Overview Infographic" caption="Overview: Initiate returns via Manual Entry or Document Search, manage Draft vs. Final status, and leverage advanced tools including Contra, Settlement, Traceability, and e-Invoice Integration." >}}
 
-{{< figure src="/images/internal-purchase-return-applet/purchase-return-listing.png" alt="Internal Purchase Return Main Listing" caption="Main Listing: View and manage your purchase return documents and their statuses." >}}
+{{< figure src="/images/internal-purchase-return-applet/purchase-return-listing.png" alt="Purchase Return (Internal) Main Listing" caption="Main Listing: View and manage your purchase return documents and their statuses." >}}
 
 
 ---
@@ -556,7 +556,7 @@ The applet provides **four layers** of permission control for granular access ma
 
 ## Summary
 
-The **Internal Purchase Return Applet** provides a structured, auditable environment for handling the complex logistics and financials of returning goods to suppliers. By strictly linking returns to original purchases and ensuring proper settlement (Contra or Cash Refund), organizations can prevent revenue leakage, maintain impeccable inventory records, and remain compliant with tax regulations (including LHDN e-Invoice requirements).
+The **Purchase Return (Internal) Applet** provides a structured, auditable environment for handling the complex logistics and financials of returning goods to suppliers. By strictly linking returns to original purchases and ensuring proper settlement (Contra or Cash Refund), organizations can prevent revenue leakage, maintain impeccable inventory records, and remain compliant with tax regulations (including LHDN e-Invoice requirements).
 
 The key to success with this applet is:
 1. **Always link to source documents** â€” this guarantees correct costing.

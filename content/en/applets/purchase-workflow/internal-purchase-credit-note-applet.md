@@ -1,5 +1,5 @@
 ﻿---
-title: "Internal Purchase Credit Note Applet"
+title: "Purchase Credit Note (Internal) Applet"
 description: "Step-by-step help for purchase credit notes: create documents, finalize or void, use line items and file import, and find settings when something is hidden."
 tags:
   - purchase-workflow
@@ -15,7 +15,7 @@ draft: false
 ---
 
 {{< callout type="warning" >}}
-**Internal Purchase Credit Note Applet user guide still under progress**
+**Purchase Credit Note (Internal) Applet user guide still under progress**
 
 **Work in Progress: This documentation is currently under development. Visual assets (screenshots) and further details will be added soon.**
 {{< /callout >}}
@@ -24,11 +24,11 @@ draft: false
 
 In **purchasing**, a **credit note** (you may also hear **supplier credit** or **purchase credit note**) is a formal record that **reduces what your company owes a supplier**—or **corrects** what you already recorded—when something changes after a purchase or invoice. Common reasons include **returned goods**, **wrong quantities or prices**, **agreed rebates**, or **duplicate billing**. Think of it as the mirror of a **supplier invoice**: an invoice says “pay more”; a credit note says “pay less” or “take this amount off the account.”
 
-In BigLedger, an **internal purchase credit note** is that record kept **inside your ERP**, with the same kind of structure as other purchase documents: header details, supplier account, and lines—so finance and procurement stay aligned.
+In BigLedger, an **Purchase Credit Note (Internal)** is that record kept **inside your ERP**, with the same kind of structure as other purchase documents: header details, supplier account, and lines—so finance and procurement stay aligned.
 
 ## What this applet is for
 
-The **Internal Purchase Credit Note** applet is where you **create, review, and post** those credit notes: for example returns, rebates, or corrections linked to your purchase process. You work with a familiar document: **main details**, **supplier account** (who you are crediting and where goods or invoices relate), and **line items** (what is being credited and for how much).
+The **Purchase Credit Note (Internal)** applet is where you **create, review, and post** those credit notes: for example returns, rebates, or corrections linked to your purchase process. You work with a familiar document: **main details**, **supplier account** (who you are crediting and where goods or invoices relate), and **line items** (what is being credited and for how much).
 
 Depending on how your company configured BigLedger, you may also use **e-invoicing**, **settlement (ARAP)**, **contra**, **attachments**, **exports**, a separate **Line Items** screen to work across many documents at once, and **File Import** to bring in data from a spreadsheet.
 
@@ -87,7 +87,7 @@ Depending on how your company configured BigLedger, you may also use **e-invoici
 {{< card title="If something is wrong" subtitle="Common fixes" link="#if-something-is-wrong" >}}
 {{< /cards >}}
 
-{{< figure src="/images/internal-purchase-credit-note-applet/internal-purchase-credit-note-applet-overview-infographic.png" alt="Overview of the Internal Purchase Credit Note applet: documents, line items, and import" caption="Overview of purchase credit notes, the Line Items workspace, and file import in one place." >}}
+{{< figure src="/images/internal-purchase-credit-note-applet/internal-purchase-credit-note-applet-overview-infographic.png" alt="Overview of the Purchase Credit Note (Internal) Applet: documents, line items, and import" caption="Overview of purchase credit notes, the Line Items workspace, and file import in one place." >}}
 
 ---
 
@@ -125,7 +125,7 @@ Get up and running with the tasks people do most often. Start with **your role**
 
 **Goal:** Record a supplier credit with the right supplier, header, and lines—while the document is still a **draft** if your process says so.
 
-1. Open **Internal Purchase Credit Note** and click **Create** or **+**.
+1. Open **Purchase Credit Note (Internal)** and click **Create** or **+**.
 2. Complete **Main Details** (dates and references your company requires).
 3. On **Account**, pick the **supplier** and addresses.
 4. Add or adjust **Line Items** (items, quantities, amounts).
@@ -137,7 +137,7 @@ Get up and running with the tasks people do most often. Start with **your role**
 
 **Goal:** Move approved credits to **posted** (or cancel drafts) so downstream accounting and compliance steps can run.
 
-1. Open the document from **Internal Purchase Credit Note** or search the list.
+1. Open the document from **Purchase Credit Note (Internal)** or search the list.
 2. Check **supplier**, **totals**, and **lines** against your approval rules.
 3. Use **Final** (or **FINAL**) to **post** when ready—or **Void** / **Discard** when your policy allows.
 4. If your tenant uses them, complete **E-Invoice**, **ARAP**, **Contra**, or **Knock-off** only as trained.
@@ -162,7 +162,7 @@ Get up and running with the tasks people do most often. Start with **your role**
 
 **Goal:** Start a new credit note and save it as a working document.
 
-1. Open the applet and go to **Internal Purchase Credit Note** (main list).
+1. Open the applet and go to **Purchase Credit Note (Internal)** (main list).
 2. Click **Create** or **+**.
 3. Fill in **Main Details** (dates, references, and other header fields your company requires).
 4. Open **Account** and select the **supplier** and **Bill To** / **Ship To** addresses as needed.
@@ -176,7 +176,7 @@ Get up and running with the tasks people do most often. Start with **your role**
 
 **Goal:** Move a credit note to a **posted** state, or cancel it when your rules allow.
 
-1. Find the document on **Internal Purchase Credit Note** or open it from the list.
+1. Find the document on **Purchase Credit Note (Internal)** or open it from the list.
 2. Use the action your process describes:
    - **Final** (or **FINAL**) — marks the document as posted / confirmed for downstream use.
    - **Void** or **Discard** — cancels or removes a draft according to your company rules.
@@ -186,7 +186,7 @@ Get up and running with the tasks people do most often. Start with **your role**
 
 ### Search and open existing credit notes {#search-and-open-existing-credit-notes}
 
-1. Stay on **Internal Purchase Credit Note**.
+1. Stay on **Purchase Credit Note (Internal)**.
 2. Use **search** or **filters** at the top of the list (your columns may include document number, dates, amounts, e-invoice fields, and status).
 3. Click a row to **open** and view or edit (if you have edit rights).
 
@@ -246,7 +246,7 @@ After you **Final** / **post** a purchase credit note, your company’s BigLedge
 
 ## Purchase credit notes in detail {#purchase-credit-notes-in-detail}
 
-### Main menu: Internal Purchase Credit Note
+### Main menu: Purchase Credit Note (Internal)
 
 This is the **home list** for all purchase credit notes.
 
@@ -320,17 +320,17 @@ Use the document your **finance and procurement policy** names for each situatio
 | Situation | Often use | Short explanation |
 |-----------|-----------|-------------------|
 | Supplier should **charge you less** (return, error, rebate, duplicate bill) | **Purchase credit note** (this applet) | Records **reduction** of what you owe or correction of what you already recorded. |
-| You need to **charge the supplier more** (under-billing, extra cost to supplier) | [Internal Purchase Debit Note](/applets/purchase-workflow/internal-purchase-debit-note-applet/) | Increases what the supplier owes **you** or adjusts payables the other way—follow your policy. |
-| Physical **return** of goods with a dedicated return process | [Internal Purchase Return](/applets/purchase-workflow/internal-purchase-return-applet/) | May handle **stock movement** and paperwork; the credit note may still be the **financial** record depending on setup. |
-| **Money back** or refund flows your company separates from standard credits | [Internal Purchase Refund Note](/applets/purchase-workflow/internal-purchase-refund-note-applet/) | Use when trained for **refund-specific** processing—not every company uses this alongside credit notes. |
+| You need to **charge the supplier more** (under-billing, extra cost to supplier) | [Purchase Debit Note (Internal)](/applets/purchase-workflow/internal-purchase-debit-note-applet/) | Increases what the supplier owes **you** or adjusts payables the other way—follow your policy. |
+| Physical **return** of goods with a dedicated return process | [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) | May handle **stock movement** and paperwork; the credit note may still be the **financial** record depending on setup. |
+| **Money back** or refund flows your company separates from standard credits | [Purchase Refund Note (Internal)](/applets/purchase-workflow/internal-purchase-refund-note-applet/) | Use when trained for **refund-specific** processing—not every company uses this alongside credit notes. |
 
 **Related guides:**
 
-- [Internal Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet/)
-- [Internal Purchase GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/)
-- [Internal Purchase Debit Note Applet](/applets/purchase-workflow/internal-purchase-debit-note-applet/)
-- [Internal Purchase Return Applet](/applets/purchase-workflow/internal-purchase-return-applet/)
-- [Internal Purchase Refund Note Applet](/applets/purchase-workflow/internal-purchase-refund-note-applet/)
+- [Purchase Order (Internal) Applet](/applets/purchase-workflow/internal-purchase-order-applet/)
+- [Purchase GRN (Internal) Applet](/applets/purchase-workflow/internal-purchase-grn-applet/)
+- [Purchase Debit Note (Internal) Applet](/applets/purchase-workflow/internal-purchase-debit-note-applet/)
+- [Purchase Return (Internal) Applet](/applets/purchase-workflow/internal-purchase-return-applet/)
+- [Purchase Refund Note (Internal) Applet](/applets/purchase-workflow/internal-purchase-refund-note-applet/)
 - [Supplier Delivery Order Applet](/applets/purchase-workflow/supplier-delivery-order-applet/)
 
 ---
@@ -379,9 +379,9 @@ Some companies use **self-billed** flows for specific statutory or commercial ar
 
 ## Related Documentation Links
 
-- [Internal Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet/)
-- [Internal Purchase GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/)
-- [Internal Purchase Debit Note Applet](/applets/purchase-workflow/internal-purchase-debit-note-applet/)
-- [Internal Purchase Return Applet](/applets/purchase-workflow/internal-purchase-return-applet/)
-- [Internal Purchase Refund Note Applet](/applets/purchase-workflow/internal-purchase-refund-note-applet/)
+- [Purchase Order (Internal) Applet](/applets/purchase-workflow/internal-purchase-order-applet/)
+- [Purchase GRN (Internal) Applet](/applets/purchase-workflow/internal-purchase-grn-applet/)
+- [Purchase Debit Note (Internal) Applet](/applets/purchase-workflow/internal-purchase-debit-note-applet/)
+- [Purchase Return (Internal) Applet](/applets/purchase-workflow/internal-purchase-return-applet/)
+- [Purchase Refund Note (Internal) Applet](/applets/purchase-workflow/internal-purchase-refund-note-applet/)
 - [Supplier Delivery Order Applet](/applets/purchase-workflow/supplier-delivery-order-applet/)

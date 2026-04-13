@@ -17,7 +17,7 @@ Step-by-step guide to create and submit your first e-invoice.
 ## Steps
 
 ### 1. Create Sales Order
-Navigate to **Sales** → **Internal Sales Order**
+Navigate to **Sales** → **Sales Order (Internal)**
 
 ### 2. Add Customer
 Select or create customer

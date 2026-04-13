@@ -56,14 +56,14 @@ The Inventory & Warehouse Module delivers:
 
 {{< cards >}}
   {{< card link="/applets/stock-balance-applet/" title="Stock Balance Applet" subtitle="Advanced multi-location inventory balance management" >}}
-  {{< card link="/applets/internal-delivery-order-applet/" title="Internal Delivery Order Applet" subtitle="Inter-warehouse transfers and distribution management" >}}
+  {{< card link="/applets/internal-delivery-order-applet/" title="Delivery Order (Internal) Applet" subtitle="Inter-warehouse transfers and distribution management" >}}
   {{< card link="/applets/stock-take-applet/" title="Stock Take Applet" subtitle="Comprehensive physical inventory and cycle counting" >}}
 {{< /cards >}}
 
 ### Advanced Operations
 
 {{< cards >}}
-  {{< card link="/applets/internal-stock-adjustment-applet/" title="Internal Stock Adjustment Applet" subtitle="Complex inventory adjustments and variance management" >}}
+  {{< card link="/applets/internal-stock-adjustment-applet/" title="Stock Adjustment (Internal) Applet" subtitle="Complex inventory adjustments and variance management" >}}
   {{< card link="/applets/process-monitoring-applet/" title="Process Monitoring Applet" subtitle="Warehouse process tracking and optimization" >}}
 {{< /cards >}}
 

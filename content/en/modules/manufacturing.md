@@ -303,7 +303,7 @@ Internal Packing → Inventory → Sales Fulfillment
 ### Supporting Applets
 - **[Inventory Item Maintenance](/applets/inv-item-maintenance-applet/)** - Product master data
 - **[Stock Balance Applet](/applets/stock-balance-applet/)** - Real-time inventory tracking
-- **[Internal Stock Adjustment](/applets/internal-stock-adjustment-applet/)** - Inventory corrections
+- **[Stock Adjustment (Internal)](/applets/internal-stock-adjustment-applet/)** - Inventory corrections
 
 ### Module Integration
 - **[Inventory Module](/modules/inventory/)** - Stock management and warehouse operations

@@ -1,5 +1,5 @@
 ﻿---
-title: "Internal Purchase Requisition Applet"
+title: "Purchase Requisition (Internal) Applet"
 description: "Create and manage internal purchase requisitions with posting controls, line item tracking, knock-off from Jobsheet, printing, approvals, and line item queue approvals."
 weight: 10
 date: 2026-04-10
@@ -17,11 +17,11 @@ tags:
 
 ## Purpose and Overview
 
-A **purchase requisition** is your company's formal way of saying *"we need to buy this."* Before any money is spent or a supplier is contacted, someone fills in a purchase requisition to record exactly what is needed, how much of it, and from where. A manager or approver then reviews and signs off on it. Only after that approval does purchasing move forward — typically by raising a purchase order in the [Internal Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet/).
+A **purchase requisition** is your company's formal way of saying *"we need to buy this."* Before any money is spent or a supplier is contacted, someone fills in a purchase requisition to record exactly what is needed, how much of it, and from where. A manager or approver then reviews and signs off on it. Only after that approval does purchasing move forward — typically by raising a purchase order in the [Purchase Order (Internal) Applet](/applets/purchase-workflow/internal-purchase-order-applet/).
 
 Think of it like a **pre-approved shopping list**: you specify what you need, your manager checks it makes sense and fits the budget, and then it gets handed off to procurement to place the actual order. The purchase requisition is the internal request; the purchase order is the formal commitment sent to the supplier.
 
-The **Internal Purchase Requisition Applet** is where your team creates, tracks, approves, and manages those requisitions — from the first draft all the way through to approval and any follow-up your company requires.
+The **Purchase Requisition (Internal) Applet** is where your team creates, tracks, approves, and manages those requisitions — from the first draft all the way through to approval and any follow-up your company requires.
 
 ---
 
@@ -119,7 +119,7 @@ Requisition marked FINAL            Requester is notified,
 (locked for changes)                corrects, and resubmits
     ↓
 Purchasing raises a purchase order
-(separate step — see Internal Purchase Order Applet)
+(separate step — see Purchase Order (Internal) Applet)
 
 At any point before Final:
 VOID or DISCARD → Requisition cancelled (see Glossary for the difference)
@@ -152,7 +152,7 @@ Depending on how your company has configured the applet, the edit screen may sho
 
 **Goal:** Save a new purchase requisition ready for approval.
 
-1. Open **Internal Purchase Requisition** from the left menu. You will see the list of existing requisitions.
+1. Open **Purchase Requisition (Internal)** from the left menu. You will see the list of existing requisitions.
 2. Click **Create** (the **+** icon, usually at the top left).
 3. On the **Main Details** tab, fill in:
    - **Transaction Date** — the date you are raising the request
@@ -227,7 +227,7 @@ Complete these steps in order when setting up the applet for the first time.
 
 ### The List View
 
-When you open **Internal Purchase Requisition** from the left menu, you see a list of all requisitions your role has access to. From here you can:
+When you open **Purchase Requisition (Internal)** from the left menu, you see a list of all requisitions your role has access to. From here you can:
 
 - Click **Create** (**+**) to start a new requisition (if you have create access)
 - Select a requisition and use **Final** or **Void** when those actions are available for that document's current state
@@ -354,10 +354,10 @@ Purchase requisitions are part of a broader purchasing workflow in BigLedger. De
 
 | Applet | How it relates |
 | --- | --- |
-| [Internal Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet/) | The typical next step after a requisition is approved — a purchase order is raised to formally commit the purchase with the supplier |
-| [Internal Purchase Quotation Applet](/applets/purchase-workflow/internal-purchase-quotation-applet/) | Some companies request a quote from suppliers before or alongside raising a requisition |
-| [Internal Purchase GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/) | Once goods are delivered, a Goods Received Note (GRN) is raised to confirm receipt against the purchase order |
-| [Internal Purchase Invoice Applet](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/) | Records the supplier invoice for payment after goods or services are received |
+| [Purchase Order (Internal) Applet](/applets/purchase-workflow/internal-purchase-order-applet/) | The typical next step after a requisition is approved — a purchase order is raised to formally commit the purchase with the supplier |
+| [Purchase Quotation (Internal) Applet](/applets/purchase-workflow/internal-purchase-quotation-applet/) | Some companies request a quote from suppliers before or alongside raising a requisition |
+| [Purchase GRN (Internal) Applet](/applets/purchase-workflow/internal-purchase-grn-applet/) | Once goods are delivered, a Goods Received Note (GRN) is raised to confirm receipt against the purchase order |
+| [Purchase Invoice (Internal) Applet](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/) | Records the supplier invoice for payment after goods or services are received |
 | [Purchase Report Applet](/applets/purchase-workflow/purchase-report-applet/) | Reporting across the full purchase workflow, including requisitions and orders |
 
 {{< callout type="info" >}}
@@ -393,7 +393,7 @@ When a requisition is rejected, the approver should have left a remark explainin
 Yes — once the requisition is saved, open it for editing and go to the **Attachments** section. From there you can upload files such as quotes, images, or emails. The **Attachments** section only appears in the edit view, not during initial creation.
 
 **How do I find an old purchase requisition?**
-Open **Internal Purchase Requisition** from the left menu to see the list. Use the search bar and filters to narrow down by document number, date, status, or other fields. If you cannot see a document you expect to find, it may be outside your access rights — ask your administrator.
+Open **Purchase Requisition (Internal)** from the left menu to see the list. Use the search bar and filters to narrow down by document number, date, status, or other fields. If you cannot see a document you expect to find, it may be outside your access rights — ask your administrator.
 
 **Can I copy a previous purchase requisition instead of starting from scratch?**
 This depends on whether your company's configuration includes a duplicate or copy function. If you do not see that option, raise a new requisition manually. Your administrator can confirm whether copying is supported in your setup.
@@ -405,7 +405,7 @@ If the menu is missing, the feature may be disabled in **Settings** or your role
 Once a document reaches **Final**, editing is locked to preserve the record. If a correction is needed, your process may require voiding the document and raising a new one. Check with your administrator or finance team before doing this, as it may affect related documents like a purchase order that was already raised from this requisition.
 
 **Where do purchase requisitions go after they are approved?**
-An approved requisition is typically handed off to purchasing, who raise an internal purchase order as the next step. That happens in the **[Internal Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet/)**. The exact process depends on how your company has set things up.
+An approved requisition is typically handed off to purchasing, who raise an Purchase Order (Internal) as the next step. That happens in the **[Purchase Order (Internal) Applet](/applets/purchase-workflow/internal-purchase-order-applet/)**. The exact process depends on how your company has set things up.
 
 ---
 

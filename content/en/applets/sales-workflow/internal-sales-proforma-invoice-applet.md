@@ -1,5 +1,5 @@
 ---
-title: "Internal Sales Proforma Invoice Applet"
+title: "Sales Proforma Invoice (Internal) Applet"
 description: "Comprehensive internal billing management system for creating, editing, and tracking sales proforma invoices and line items"
 tags:
   - proforma-invoice
@@ -12,13 +12,13 @@ weight: 170
 
 ## Purpose and Overview
 
-The **Internal Sales Proforma Invoice Applet** is designed to streamline the preliminary billing process within an organization. It allows sales teams to generate proforma invoices—often referred to as **Internal Job Sheets**—which serve as draft or estimated billing documents before a final invoice is issued.
+The **Sales Proforma Invoice (Internal) Applet** is designed to streamline the preliminary billing process within an organization. It allows sales teams to generate proforma invoices—often referred to as **Internal Job Sheets**—which serve as draft or estimated billing documents before a final invoice is issued.
 
 {{< callout type="info" >}}
 **Core Concept**: The applet manages the lifecycle of an **Internal Job Sheet**, linking client details, project dimensions, and itemized costs into a unified document for internal review and approval.
 {{< /callout >}}
 
-{{< figure src="/images/internal-sales-proforma-invoice-applet/main-listing.png" alt="Internal Sales Proforma Invoice Main Listing" caption="Main Listing: Overview of all Internal Job Sheets with search and filtering options." >}}
+{{< figure src="/images/internal-sales-proforma-invoice-applet/main-listing.png" alt="Sales Proforma Invoice (Internal) Main Listing" caption="Main Listing: Overview of all Internal Job Sheets with search and filtering options." >}}
 
 ## Key Features Overview
 
@@ -53,7 +53,7 @@ Drafting invoices often involves manual spreadsheets, leading to:
 - Inconsistent tax application and UOM conversions
 - Lack of centralized visibility for pending proforma documents
 
-**The Internal Sales Proforma Invoice Solution:**
+**The Sales Proforma Invoice (Internal) Solution:**
 
 - **Centralized Management** - A single source of truth for all internal proforma invoices
 - **Granular Control** - Extensive configuration settings to hide/show fields based on business needs
@@ -79,7 +79,7 @@ Drafting invoices often involves manual spreadsheets, leading to:
 
 {{< /cards >}}
 
-{{< figure src="/images/internal-sales-proforma-invoice-applet/internal-sales-proforma-invoice-applet-overview-infographic.png" alt="Internal Sales Proforma Invoice Applet: The Old Way vs The New Way" caption="Internal Sales Proforma Invoice Applet Overview: Visualizing the journey from manual, fragmented processes to a centralized, digital billing solution." >}}
+{{< figure src="/images/internal-sales-proforma-invoice-applet/internal-sales-proforma-invoice-applet-overview-infographic.png" alt="Sales Proforma Invoice (Internal) Applet: The Old Way vs The New Way" caption="Sales Proforma Invoice (Internal) Applet Overview: Visualizing the journey from manual, fragmented processes to a centralized, digital billing solution." >}}
 
 ## Key Concepts
 
@@ -142,7 +142,7 @@ Get up and running quickly with these essential workflows.
 
 **Goal:** Generate a proforma invoice (Internal Job Sheet) in 5 steps.
 
-1. **Navigate**: Open **Internal Sales Proforma Invoice** from the applet menu.
+1. **Navigate**: Open **Sales Proforma Invoice (Internal)** from the applet menu.
 2. **Create New**: Click the **"+"** button to start a new document.
 3. **Fill Header**:
    - Select **Company** and **Branch**.
@@ -165,7 +165,7 @@ Get up and running quickly with these essential workflows.
 
 **Goal:** Review team proformas and prepare them for final invoicing.
 
-1. **Check Listing**: Go to the **Internal Sales Proforma Invoice Listing**.
+1. **Check Listing**: Go to the **Sales Proforma Invoice (Internal) Listing**.
 2. **Filter by Status**: Look for documents in "Draft" or "Pending" status.
 3. **Review Details**:
    - Open the document and verify the **Line Items** and **Pricing**.

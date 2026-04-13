@@ -1,5 +1,5 @@
 ---
-title: "Internal Purchase GIN Applet"
+title: "Purchase GIN (Internal) Applet"
 description: "Comprehensive goods issue note management system for purchase transactions, tracking inventory releases with complete line-item visibility and warehouse integration"
 tags:
 - purchase-management
@@ -12,7 +12,7 @@ weight: 170
 
 ## Purpose and Overview
 
-The **Internal Purchase GIN Applet** is a powerful tool designed to streamline the management of Goods Issue Notes (GIN) for purchase-related transactions. It enables warehouse and purchasing teams to document and track the release of goods from inventory, whether for supplier returns, transfers, or other purchase-related dispatches.
+The **Purchase GIN (Internal) Applet** is a powerful tool designed to streamline the management of Goods Issue Notes (GIN) for purchase-related transactions. It enables warehouse and purchasing teams to document and track the release of goods from inventory, whether for supplier returns, transfers, or other purchase-related dispatches.
 
 {{< callout type="info" >}}
 **Core Concept**: The system links **what** is being issued (Items) to **where** it's going (Supplier/Account) and **how** it's tracked (Inventory, Payment & Settlement).
@@ -73,7 +73,7 @@ Traditional goods issue management relies on paper forms and disconnected system
 - Manual financial reconciliation
 - Difficult audit compliance
 
-**The Internal Purchase GIN Applet Solution:**
+**The Purchase GIN (Internal) Applet Solution:**
 
 - **Digital processing** - Create and track GINs from anywhere with real-time updates
 - **Automated workflows** - Intelligent routing and inventory updates
@@ -83,7 +83,7 @@ Traditional goods issue management relies on paper forms and disconnected system
 - **Flexible reporting** - Analyze by supplier, item, or warehouse
 - **Multi-location support** - Handle dispatches across branches and warehouses
 
-{{< figure src="/images/internal-purchase-gin-applet/internal-purchase-gin-applet-overview.png" alt="Internal Purchase GIN: From Manual Chaos to Digital Control" caption="Transform from paper-based chaos to digital control: See how the Internal Purchase GIN Applet solves documentation risks, inventory inconsistencies, and financial inefficiencies while benefiting warehouse staff, purchasing teams, finance, and executive leadership." >}}
+{{< figure src="/images/internal-purchase-gin-applet/internal-purchase-gin-applet-overview.png" alt="Purchase GIN (Internal): From Manual Chaos to Digital Control" caption="Transform from paper-based chaos to digital control: See how the Purchase GIN (Internal) Applet solves documentation risks, inventory inconsistencies, and financial inefficiencies while benefiting warehouse staff, purchasing teams, finance, and executive leadership." >}}
 
 ---
 
@@ -128,7 +128,7 @@ Traditional goods issue management relies on paper forms and disconnected system
 
 Before configuring the GIN system, make these key business decisions. These choices will shape how your entire goods issue process works:
 
-{{< figure src="/images/internal-purchase-gin-applet/gin-decision-tree.png" alt="Admin Blueprint: Configuring Your Internal Purchase GIN Applet" caption="Strategic decision framework for GIN system setup: Navigate 5 critical decisions across Operational Foundation (Item Tracking Strategy, Spatial Management, Workflow Governance) and Policy & Ecosystem (Supplier Compliance, Ecosystem Connectivity) before final setup validation." >}}
+{{< figure src="/images/internal-purchase-gin-applet/gin-decision-tree.png" alt="Admin Blueprint: Configuring Your Purchase GIN (Internal) Applet" caption="Strategic decision framework for GIN system setup: Navigate 5 critical decisions across Operational Foundation (Item Tracking Strategy, Spatial Management, Workflow Governance) and Policy & Ecosystem (Supplier Compliance, Ecosystem Connectivity) before final setup validation." >}}
 
 ### 1. Define Your Inventory Tracking Requirements
 
@@ -257,13 +257,13 @@ Create internal procedures:
 
 Get up and running quickly with these essential workflows.
 
-{{< figure src="/images/internal-purchase-gin-applet/role-based-workflow.png" alt="Internal Purchase GIN Applet: Role-Based Workflow Quick Reference" caption="Role-based responsibilities across the GIN workflow: Warehouse Staff handle document creation and dispatch with serial/batch/bin tracking; Purchasing Team manages supplier RA numbers and return history; Finance Team processes contra offsets and reconciliation; Admins govern system configuration and permissions. Each role has distinct data responsibilities and key outputs." >}}
+{{< figure src="/images/internal-purchase-gin-applet/role-based-workflow.png" alt="Purchase GIN (Internal) Applet: Role-Based Workflow Quick Reference" caption="Role-based responsibilities across the GIN workflow: Warehouse Staff handle document creation and dispatch with serial/batch/bin tracking; Purchasing Team manages supplier RA numbers and return history; Finance Team processes contra offsets and reconciliation; Admins govern system configuration and permissions. Each role has distinct data responsibilities and key outputs." >}}
 
 ### For Warehouse Staff: Create Your First GIN
 
 **Goal:** Issue goods from warehouse in 5 simple steps.
 
-1. **Navigate**: Go to **Internal Purchase GIN** from the sidebar
+1. **Navigate**: Go to **Purchase GIN (Internal)** from the sidebar
 2. **Create Header**: Click **"+"** → The create form opens
 3. **Main Details Tab**: 
    - Select **Branch** (issuing location)
@@ -297,7 +297,7 @@ Get up and running quickly with these essential workflows.
 
 **Goal:** Monitor goods returned to suppliers in 3 steps.
 
-1. **Check Listing**: Go to **Internal Purchase GIN** listing
+1. **Check Listing**: Go to **Purchase GIN (Internal)** listing
 2. **Filter by Supplier**: 
    - Use **Advanced Search**
    - Select specific supplier
@@ -470,7 +470,7 @@ This is the core document you'll create every time goods need to leave the wareh
 
 **Step 1: Access the Create Form**
 
-1. Click **"Internal Purchase GIN"** from the sidebar
+1. Click **"Purchase GIN (Internal)"** from the sidebar
 2. You'll see the listing of existing GINs
 3. Click the **"+"** (Add New) button in the top toolbar
 4. The create form opens with multiple tabs
@@ -758,7 +758,7 @@ It depends on the status:
 
 **To Edit a Draft:**
 
-1. Go to **Internal Purchase GIN** listing
+1. Go to **Purchase GIN (Internal)** listing
 2. Find your draft GIN (filter by Posting Status = "Draft")
 3. Click on the GIN to open
 4. Edit form appears with all tabs
@@ -827,7 +827,7 @@ While the GIN listing shows document headers, the **Line Items** view shows ever
 **How to Use Line Items View:**
 
 **Access:**
-1. From sidebar, click **"Line Items"** (may be under Internal Purchase GIN section)
+1. From sidebar, click **"Line Items"** (may be under Purchase GIN (Internal) section)
 2. See complete list of all line items from all GINs
 
 **Key Information Displayed:**
@@ -933,7 +933,7 @@ When you select a supplier in Account tab:
 
 **View All GINs for a Specific Supplier:**
 
-1. Go to **Internal Purchase GIN** listing
+1. Go to **Purchase GIN (Internal)** listing
 2. Use **Advanced Search**
 3. Filter: Supplier Name = [Your Supplier]
 4. See complete history of all goods issued to that supplier
@@ -1281,7 +1281,7 @@ Create frequently-used search filters:
 
 ### Overview of Settings
 
-Access settings from the sidebar: **Settings** menu under Internal Purchase GIN section.
+Access settings from the sidebar: **Settings** menu under Purchase GIN (Internal) section.
 
 **Available Settings:**
 
@@ -1925,8 +1925,8 @@ If using issue tracking integration:
 
 ## FAQ
 
-**Q: Where do I find the Internal Purchase GIN applet?**  
-A: Go to **Internal Purchase GIN** in the sidebar (typically under Purchasing or Warehouse Management, depending on your tenant setup). If you don't see it, your role may not have access—contact your administrator.
+**Q: Where do I find the Purchase GIN (Internal) Applet?**  
+A: Go to **Purchase GIN (Internal)** in the sidebar (typically under Purchasing or Warehouse Management, depending on your tenant setup). If you don't see it, your role may not have access—contact your administrator.
 
 **Q: What is a Purchase GIN?**  
 A: A Purchase GIN (Goods Issue Note) documents goods leaving your warehouse related to purchase transactions, such as returning defective items to suppliers, warranty claims, or dispatching samples for testing.
@@ -1976,8 +1976,8 @@ A: This is set by your organization's document retention policy, typically 7 yea
 **Q: Can I reverse a submitted GIN?**  
 A: Reversal capability depends on system configuration. Some systems allow authorized users to reverse GINs (creates counter-entry, restores inventory). Others require manual journal entries. Contact your administrator.
 
-**Q: What's the difference between Internal Purchase GIN and other GIN types?**  
-A: "Internal Purchase GIN" specifically handles goods issued related to purchase transactions (returns to suppliers, warranty claims, etc.). Other GIN types might be for sales (dispatching to customers) or transfers (between your own locations).
+**Q: What's the difference between Purchase GIN (Internal) and other GIN types?**  
+A: "Purchase GIN (Internal)" specifically handles goods issued related to purchase transactions (returns to suppliers, warranty claims, etc.). Other GIN types might be for sales (dispatching to customers) or transfers (between your own locations).
 
 **Q: How do I handle partial returns?**  
 A: Create a GIN for the quantity you're returning now. If more units need to be returned later, create additional GINs. Each GIN is a separate transaction.
@@ -2040,7 +2040,7 @@ A: Best practice: Create separate GINs for accepted vs. rejected items once supp
 A: Create a new, separate GIN for the additional units. Reference the original GIN number in remarks for linkage. Each GIN is a distinct transaction—don't try to modify submitted GINs.
 
 **Q: Can I use this for goods transfer between my own warehouses?**  
-A: The Internal Purchase GIN is specifically for purchase-related dispatches (typically to suppliers). Inter-warehouse transfers usually require different document types (Transfer Orders, Stock Movements). Check with your administrator.
+A: The Purchase GIN (Internal) is specifically for purchase-related dispatches (typically to suppliers). Inter-warehouse transfers usually require different document types (Transfer Orders, Stock Movements). Check with your administrator.
 
 ---
 
@@ -2121,7 +2121,7 @@ A: The Internal Purchase GIN is specifically for purchase-related dispatches (ty
 
 ## Summary
 
-The **Internal Purchase GIN Applet** transforms goods issue management from a paper-based, error-prone process into a streamlined digital workflow. By integrating document creation, inventory tracking, supplier management, and financial settlement into a single system, it provides complete visibility and control over purchase-related goods dispatches.
+The **Purchase GIN (Internal) Applet** transforms goods issue management from a paper-based, error-prone process into a streamlined digital workflow. By integrating document creation, inventory tracking, supplier management, and financial settlement into a single system, it provides complete visibility and control over purchase-related goods dispatches.
 
 **Key Takeaways:**
 

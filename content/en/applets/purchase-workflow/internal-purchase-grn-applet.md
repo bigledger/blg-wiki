@@ -1,5 +1,5 @@
 ---
-title: "Internal Purchase GRN Applet"
+title: "Purchase GRN (Internal) Applet"
 description: "Comprehensive Goods Received Note management system for internal purchase transactions, inventory tracking, and supplier verification"
 tags:
   - internal-purchase
@@ -13,7 +13,7 @@ weight: 160
 
 ## Purpose and Overview
 
-The **Internal Purchase GRN Applet** is a powerful tool designed to streamline the entire goods receipt process for internal purchase transactions. It moves beyond simple receipt recording by integrating inventory management, supplier verification, and quality control workflows.
+The **Purchase GRN (Internal) Applet** is a powerful tool designed to streamline the entire goods receipt process for internal purchase transactions. It moves beyond simple receipt recording by integrating inventory management, supplier verification, and quality control workflows.
 
 {{< callout type="info" >}}
 **Core Concept**: The system links **what** you received (Items) to **where** it came from (Purchase Orders) and **how much** was received (Quantities & Quality).
@@ -63,7 +63,7 @@ Traditional goods receipt relies on paper forms and manual data entry. Common is
 - Difficult supplier performance tracking
 - No centralized receiving records
 
-**The Internal Purchase GRN Solution:**
+**The Purchase GRN (Internal) Solution:**
 
 - **Digital receipt recording** - Capture receipts anytime with mobile support
 - **Automated PO matching** - Intelligent linking to purchase orders
@@ -72,7 +72,7 @@ Traditional goods receipt relies on paper forms and manual data entry. Common is
 - **Complete traceability** - Full audit history for every receipt
 - **Integration ready** - Connects with inventory and accounting systems
 
-{{< figure src="/images/internal-purchase-grn-applet/internal-purchase-grn-overview-infographic.png" alt="Internal Purchase GRN Overview Infographic: Challenges, Solutions, and Beneficiaries" caption="Process Overview: From manual challenges to digital precision with the Internal Purchase GRN applet." >}}
+{{< figure src="/images/internal-purchase-grn-applet/internal-purchase-grn-overview-infographic.png" alt="Purchase GRN (Internal) Overview Infographic: Challenges, Solutions, and Beneficiaries" caption="Process Overview: From manual challenges to digital precision with the Purchase GRN (Internal) Applet." >}}
 
 ---
 
@@ -98,7 +98,7 @@ Traditional goods receipt relies on paper forms and manual data entry. Common is
 
 ### Understanding the GRN Framework
 
-Every goods receipt system must address three fundamental aspects. The Internal Purchase GRN Applet provides structured handling:
+Every goods receipt system must address three fundamental aspects. The Purchase GRN (Internal) Applet provides structured handling:
 
 | Aspect                      | Component                        | Practical Example                             |
 | --------------------------- | -------------------------------- | --------------------------------------------- |
@@ -202,7 +202,7 @@ graph TD
 
 **Goal:** Record a goods receipt and update inventory in 5 simple steps.
 
-1.  **Navigate**: Go to **Internal Purchase GRN** from the sidebar
+1.  **Navigate**: Go to **Purchase GRN (Internal)** from the sidebar
 2.  **Create Header**: Click **"+"** → Enter GRN details (Supplier, Date, Reference) → **Create**
 3.  **Link Purchase Order**:
     - Click **"Link PO"**
@@ -214,9 +214,9 @@ graph TD
     - Upload **Delivery Note** photos
 5.  **Finalize**: Click **Submit** → GRN goes for approval → Inventory updates automatically
 
-{{< figure src="/images/internal-purchase-grn-applet/main-listing.png" alt="Internal Purchase GRN Main Listing showing document summary and status tabs" caption="GRN Listing: View and manage all your internal purchase goods receipt notes." >}}
+{{< figure src="/images/internal-purchase-grn-applet/main-listing.png" alt="Purchase GRN (Internal) Main Listing showing document summary and status tabs" caption="GRN Listing: View and manage all your internal purchase goods receipt notes." >}}
 
-{{< figure src="/images/internal-purchase-grn-applet/create-edit-form.png" alt="Internal Purchase GRN Create Form with header details and line item search" caption="Create/Edit Form: Enter receipt details and link to purchase orders." >}}
+{{< figure src="/images/internal-purchase-grn-applet/create-edit-form.png" alt="Purchase GRN (Internal) Create Form with header details and line item search" caption="Create/Edit Form: Enter receipt details and link to purchase orders." >}}
 
 **What happens next?** You'll get notifications when approved. Inventory updates automatically upon finalization.
 
@@ -299,7 +299,7 @@ Track warehouse efficiency and supplier performance.
 
 ### Detailed Line Items Management
 
-{{< figure src="/images/internal-purchase-grn-applet/line-items-listing.png" alt="Internal Purchase GRN Line Items Listing showing detailed item-level receipt data" caption="Line Items Listing: Track quantities, quality status, and PO links for individual items." >}}
+{{< figure src="/images/internal-purchase-grn-applet/line-items-listing.png" alt="Purchase GRN (Internal) Line Items Listing showing detailed item-level receipt data" caption="Line Items Listing: Track quantities, quality status, and PO links for individual items." >}}
 
 Line Items Management allows warehouse staff and purchase teams to record and track the receipt of individual items within a GRN. Each line represents a specific product with its own quantity, condition, and quality status.
 
@@ -387,7 +387,7 @@ Configure the system to match your organizational workflows and inventory polici
 
 ### Core Configuration & Integration
 
-{{< figure src="/images/internal-purchase-grn-applet/settings-page.png" alt="Internal Purchase GRN Settings page showing system configuration and permission options" caption="Applet Settings: Configure approval workflows, numbering, and quality control parameters." >}}
+{{< figure src="/images/internal-purchase-grn-applet/settings-page.png" alt="Purchase GRN (Internal) Settings page showing system configuration and permission options" caption="Applet Settings: Configure approval workflows, numbering, and quality control parameters." >}}
 
 Administrators are responsible for setting up the foundational parameters that govern how receipts are processed, approved, and integrated with inventory.
 
@@ -514,7 +514,7 @@ Understand the financial and operational impact of goods receipts on inventory m
 
 ## Configuration & Settings
 
-Tailor the Internal Purchase GRN applet to your specific workflow for faster processing.
+Tailor the Purchase GRN (Internal) Applet to your specific workflow for faster processing.
 
 ### Customizing Your View
 

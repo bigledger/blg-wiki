@@ -1,5 +1,5 @@
 ﻿---
-title: "Internal RMA Applet"
+title: "RMA (Internal) Applet"
 description: "Return Merchandise Authorization management for internal stock returns and warranty claims processing"
 tags:
 - rma
@@ -41,7 +41,7 @@ tags:
 - No visibility into return reasons for quality improvement
 - Manual coordination between departments
 
-**The Internal RMA Solution:**
+**The RMA (Internal) Solution:**
 - **Centralized RMA tracking** - All returns in one system
 - **Automated workflows** - Route returns to correct handlers
 - **Reason tracking** - Capture return reasons for analysis
@@ -211,7 +211,7 @@ The RMA Report page provides analytics and reporting on return trends, processin
 
 ## Configuration & Settings
 
-The Settings page provides access to all system configuration options for the Internal RMA Applet, organized into System Configuration, Server Side Permissions, and Developer Tools sections.
+The Settings page provides access to all system configuration options for the RMA (Internal) Applet, organized into System Configuration, Server Side Permissions, and Developer Tools sections.
 
 {{< figure src="/images/internal-rma-applet/settings-overview.png" alt="Applet Settings overview page showing System Configuration links including Application Settings, Default Selection, Printable Format Settings, Return Reasons Settings, Request Action Settings, and Workflow Settings, plus Server Side Permissions and Developer Tools sections" caption="Settings Overview: All configuration options organized by category. Click any link to navigate to that sub-page." >}}
 

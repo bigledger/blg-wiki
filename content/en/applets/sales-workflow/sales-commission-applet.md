@@ -1,5 +1,5 @@
 ---
-title: "Internal Sales Commission Applet"
+title: "Sales Commission (Internal) Applet"
 description: "Comprehensive reporting and payout processing engine for calculating, analyzing, and disbursing sales commissions."
 tags:
 - sales
@@ -16,7 +16,7 @@ weight: 160
 
 ## Purpose and Overview
 
-The **Internal Sales Commission Applet** provides a specialized workflow bridging the gap between Sales performance and Payroll/HR disbursement. It automates the generation of commission reports based on predefined performance logic, manages cycle periods, and converts approved commission reports into actionable payout documents (Internal Payment Vouchers).
+The **Sales Commission (Internal) Applet** provides a specialized workflow bridging the gap between Sales performance and Payroll/HR disbursement. It automates the generation of commission reports based on predefined performance logic, manages cycle periods, and converts approved commission reports into actionable payout documents (Internal Payment Vouchers).
 
 {{< callout type="info" >}}
 **Core Concept:** The applet strictly separates "Calculation" (Reports) from "Disbursement" (Payouts). A commission report calculates what is owed based on sales figures, but no money moves until a Payout Processing document is finalized.
@@ -94,7 +94,7 @@ The standard operational flow within this applet occurs in three phases:
 
 ### Payout Processing Tabs (The 6-Tab View)
 
-The Payout Processing module acts as a specialized Internal Payment Voucher with 6 specific tabs:
+The Payout Processing module acts as a specialized Payment Voucher (Internal) with 6 specific tabs:
 
 1. **Details**: Document numbering, dates, and branch routing.
 2. **Account**: The target employee or vendor receiving the funds.
