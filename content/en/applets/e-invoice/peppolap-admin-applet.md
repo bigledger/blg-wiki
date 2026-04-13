@@ -52,6 +52,8 @@ The Peppol AP Admin Applet is your control center for managing incoming Peppol d
   {{< card title="Document Routing" subtitle="Automated distribution to correct tenants" >}}
 {{< /cards >}}
 
+{{< figure src="/images/peppol-ap-admin-applet/peppol-ap-admin-applet-overview-infographic.png" alt="Peppol AP Admin Applet Overview Infographic" caption="Peppol AP Admin Applet Overview: Centralizing incoming document flow and ensuring verified tenant routing." >}}
+
 ## Key Concepts
 
 ### How It Works: Document Flow
