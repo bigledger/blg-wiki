@@ -495,8 +495,6 @@ The report is divided into 5 official parts, mirroring the RMCD's actual SST-02 
 6. Click **EXPORT TO PDF** to generate the official PDF document.
 7. Submit the PDF to RMCD via the MySST portal.
 
-{{< figure src="/images/sst-applet/sst-02-report.png" alt="SST-02 Report Generation" caption="Generate and verify your SST-02 report across Part A to E before final submission." >}}
-
 {{< callout type="tip" >}}
 **Always click SEARCH first** before exporting. The report only populates after `SEARCH` is clicked, ensuring the latest filed transaction data is reflected.
 {{< /callout >}}
