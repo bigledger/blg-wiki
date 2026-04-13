@@ -21,7 +21,7 @@ draft: false
 **Purchase Invoice (Internal)** is the accounts-payable document used to record what you owe suppliers (and, where configured, intercompany counterparties) after goods or services are received or ordered. It connects operational records—such as **purchase orders** and **goods received notes (GRN)**—to the financial invoice, then supports **payments**, **contra** entries, **attachments**, **E-Invoice** compliance, and traceability back to posting.
 
 {{< callout type="info" >}}
-**Core concept**: The applet ties **who** you pay (supplier entity, purchaser, bill-to/ship-to) to **what** you were billed (lines, taxes, dimensions) and **how** you settle and report (**Payment**, **Posting**, **TraceDocument**, optional **E-Invoice**).
+**Core Concept**: You choose the **supplier** and addressing (**bill-to** / **ship-to**), enter or import **invoice lines** (items, tax, and any analytical fields your company uses), then record **payments**, run **posting** and **trace** steps as required, and use **E-Invoice** when your tax process needs it—all on one document.
 {{< /callout >}}
 
 You open it from the main **Purchase Invoice** flow, with separate menus for **Line Items**, **File Import**, **File Export**, and **Intercompany** when your administrator enables them. **Settings** and **Personalization** control defaults, visible fields, knock-off behaviour, permissions, and layout.
@@ -63,9 +63,9 @@ You open it from the main **Purchase Invoice** flow, with separate menus for **L
 - Offering **File Import** and **File Export** for volume scenarios when menus are not hidden
 - Exposing **TraceDocument** and **Applet Log** for investigation and audit support
 
----
+### Guide navigation
 
-## Key Features Overview
+Use the cards below to jump to detailed sections in this guide.
 
 {{< cards >}}
   {{< card title="Quick Start Guide" subtitle="By role: AP, intercompany, lines, batch, admin" link="#quick-start-guide" >}}

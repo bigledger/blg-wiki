@@ -17,11 +17,15 @@ weight: 150
 
 ## Purpose and Overview
 
-The **Packing Order (Internal) Applet** is a specialized capability within the manufacturing suite designed to manage the production floor, specifically the coiling, packing, and output tracking workflows. It provides distinct views tailored for factory floor operators and production supervisors.
+The **Packing Order (Internal) Applet** helps manufacturing teams move from a production request to packed finished goods with clear roles on the floor. Operators see assigned work, record what they consumed and produced, and capture scrap; supervisors and planners use the same process in richer views to assign queues, review variances, and keep inventory aligned with what actually ran.
+
+**In Simple Terms:** Think of it as the shop-floor control board for packing and coiling. Operators get short, task-focused screens so they are not buried in full ERP forms; supervisors get the detail they need to approve, adjust, and trace each job from inputs through outputs.
 
 {{< callout type="info" >}}
-**Core Concept:** This applet handles the conversion of raw materials into finished, packed goods. It tracks production requests (Job Orders), handles machine and operator queues, logs input components, records output items, and properly accounts for production scrap.
+**Core Concept**: Production starts from a **job order** or **packing request**, moves through **Operator Queue** and coiling screens where machines and staff do the work, and finishes with clear stock movements: raw materials **consumed** as inputs, finished goods **received** as outputs, and **scrap** recorded so you can see yield and waste.
 {{< /callout >}}
+
+---
 
 ## Key Features Overview
 
@@ -52,7 +56,7 @@ Traditional ERP systems are often too complex for use on the factory floor. Oper
 - **Real-Time Data**: As soon as an operator completes a task in the queue, inventory is updated. 
 - **Centralized Work Queues**: Supervisors assign jobs digitally; operators pick tasks from their screen.
 
-## Key Features Overview
+### Guide navigation
 
 {{< cards >}}
   {{< card title="Operator Queue" subtitle="Task list for machine operators" link="#operator-queue" >}}

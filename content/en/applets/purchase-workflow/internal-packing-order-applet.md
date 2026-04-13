@@ -13,13 +13,15 @@ weight: 268
 
 ## Purpose and Overview
 
-The **Internal Packing Order Applet** is the supplier-facing workspace in BigLedger (including **akaun.com**) for documenting goods **leaving** your warehouse toward the buyer. Each packing order captures the dispatching branch, location, the items being shipped, and how the movement links to upstream documents like Sales Orders and Jobsheets.
+The **Internal Packing Order Applet** is your workspace for documenting goods **leaving** your warehouse toward the buyer. Each packing order records the dispatching branch and location, the items being shipped, and how the movement links to upstream documents such as Sales Orders, Jobsheets, Quotations, and Delivery Orders.
 
-Think of it as **your dispatch paperwork, digitised**: you record what is going out, pull items automatically from existing orders, and lock the document when it is ready so the buyer's receiving team can match against what you shipped.
+**In Simple Terms:** Think of it as **your dispatch paperwork, digitised** in one place—you record what is going out, pull line detail from existing orders when your process allows, and finalise the document so receiving can reconcile against what you shipped.
 
 {{< callout type="info" >}}
-Menus, tabs, and buttons can vary by **posting status**, **feature visibility**, and **permissions**. If something described here does not appear on your screen, ask your administrator.
+**Core Concept**: Each packing order is a single record of an outbound shipment: which **items** and **quantities** you send, which **branch** and **location** they leave from, and—when you use them—which **sales orders**, **jobsheets**, or other documents the lines were pulled from (**knock-off**) or linked to (**matchings**).
 {{< /callout >}}
+
+---
 
 ## Key Features Overview
 
