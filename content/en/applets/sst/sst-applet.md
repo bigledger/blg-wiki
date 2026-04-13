@@ -92,7 +92,7 @@ Every SST compliance system must address three fundamental aspects. The SST Appl
 |--------|-----------|------------------|
 | **When** are you filing? | Tax Year & Filing Cycle | 2025 Fiscal Year, Jan–Feb period |
 | **What** is being taxed? | Tariff Code & Tax Code | Service Tariff 9018 (6% Service Tax) |
-| **How** is it processed? | Tax Filing & SST-02 | File transactions â†’ Generate PDF |
+| **How** is it processed? | Tax Filing & SST-02 | File transactions → Generate PDF |
 
 {{< callout type="tip" >}}
 **Real-World Example**: A company (WHEN — 2025 Jan–Feb cycle) provides IT consulting services (WHAT — Service Tariff Code linked to 6% Service Tax Code). At month-end, the accountant files all unfiled service invoices and generates the SST-02 report for RMCD submission.
@@ -104,19 +104,19 @@ Think of the tax process as a structured flow:
 
 ```
 Company Organization
-â”‚
-â”œâ”€â”€ Tax Year â”€â”€â†’ DEFINES filing frequency (Monthly/Quarterly/Custom)
-â”‚   â”‚
-â”‚   â””â”€â”€ Filing Cycles â”€â”€â†’ SPECIFIC periods (e.g., Jan–Feb 2025)
-â”‚       â”‚
-â”‚       â”œâ”€â”€ Service Tax Tab â”€â”€â†’ Filed / Unfiled Transactions & SST-02
-â”‚       â””â”€â”€ Sales Tax Tab   â”€â”€â†’ Filed / Unfiled Transactions & SST-02
-â”‚
-â”œâ”€â”€ Tariff Code â”€â”€â†’ CLASSIFICATION master list (from RMCD)
-â”‚   â”‚
-â”‚   â””â”€â”€ Tax Code â”€â”€â†’ RATE mapping (6% Service Tax, 10% Sales Tax)
-â”‚
-â””â”€â”€ SST-02 Report â”€â”€â†’ OFFICIAL submission output (Part A–E)
+│
+├── Tax Year ──→ DEFINES filing frequency (Monthly/Quarterly/Custom)
+│   │
+│   └── Filing Cycles ──→ SPECIFIC periods (e.g., Jan–Feb 2025)
+│       │
+│       ├── Service Tax Tab ──→ Filed / Unfiled Transactions & SST-02
+│       └── Sales Tax Tab   ──→ Filed / Unfiled Transactions & SST-02
+│
+├── Tariff Code ──→ CLASSIFICATION master list (from RMCD)
+│   │
+│   └── Tax Code ──→ RATE mapping (6% Service Tax, 10% Sales Tax)
+│
+└── SST-02 Report ──→ OFFICIAL submission output (Part A–E)
 ```
 
 **Flow Through the Hierarchy:**
@@ -182,15 +182,15 @@ Get your tax compliance engine running with these essential workflows.
 
 **Goal:** Execute the filing process and generate the SST-02 report.
 
-1. **Create Filing Cycle**: Go to **Tax Filing** â†’ Click **"+"** â†’ Select Company, Tax Year, Name, Start Date & End Date.
+1. **Create Filing Cycle**: Go to **Tax Filing** → Click **"+"** → Select Company, Tax Year, Name, Start Date & End Date.
 2. **Select Filing Cycle**: Click the filing cycle record to open its details.
-3. **Review Unfiled Transactions**: Go to the **Tax Filing** tab â†’ Select **Service** or **Sales** sub-tab â†’ Click **Unfiled Transactions** â†’ Use the search filter (Branch, Date Range) to load transactions.
+3. **Review Unfiled Transactions**: Go to the **Tax Filing** tab → Select **Service** or **Sales** sub-tab → Click **Unfiled Transactions** → Use the search filter (Branch, Date Range) to load transactions.
 4. **File Transactions**:
    - **FILE ALL**: Files every transaction matching the filter with one click.
    - **FILE IT**: Select specific rows using the checkbox, then click **FILE IT**.
 5. **Handle Corrections**: Use the **Filed Transactions** tab to review. If an error is found, use the **Unfile** action to move the transaction back to Unfiled.
-6. **Generate SST-02**: Go to the **SST-02** tab â†’ Enter **Penalty Amount** and **Penalty %** (if applicable) â†’ Click **SEARCH** to populate the report â†’ Click **EXPORT TO PDF** for RMCD submission.
-7. **Lock Filing Cycle**: Once confirmed, go to **Details** tab â†’ Click **Lock** to prevent further changes.
+6. **Generate SST-02**: Go to the **SST-02** tab → Enter **Penalty Amount** and **Penalty %** (if applicable) → Click **SEARCH** to populate the report → Click **EXPORT TO PDF** for RMCD submission.
+7. **Lock Filing Cycle**: Once confirmed, go to **Details** tab → Click **Lock** to prevent further changes.
 
 ---
 
@@ -415,7 +415,7 @@ The **Unfiled Transactions** grid is where you review and submit transactions in
 **Step-by-Step Filing:**
 
 1. Open the desired **Filing Cycle** from the Tax Filing Listing.
-2. Go to **Tax Filing â†’ Service** (or **Sales**) sub-tab.
+2. Go to **Tax Filing → Service** (or **Sales**) sub-tab.
 3. Click the **Unfiled Transactions** tab.
 4. Use the **Advanced Search** filter to set: **Branch** + **Date From** + **Date To**.
 5. Click **Search** to load matching transactions.
@@ -464,7 +464,7 @@ The report is divided into 5 official parts, mirroring the RMCD's actual SST-02 
 **How to Generate the SST-02 Report:**
 
 1. Open the desired **Filing Cycle**.
-2. Navigate to **Tax Filing â†’ Service** (or **Sales**) â†’ **SST-02** tab.
+2. Navigate to **Tax Filing → Service** (or **Sales**) → **SST-02** tab.
 3. If there is a late filing penalty, enter:
    - **Penalty Amount** (fixed RM amount, if applicable).
    - **Penalty %** (percentage rate, if applicable).
@@ -514,7 +514,7 @@ The SST Applet provides three dedicated reporting views accessible from the side
 ```
 Policy Update: Service Tax increases from 6% to 8%
 Action:
-  1. Go to Tax Code â†’ Find the 6% Service Tax Code.
+  1. Go to Tax Code → Find the 6% Service Tax Code.
   2. Update "Tax Rate (%)" field to 8.00.
   3. Click SAVE.
 Result: Future transactions use 8% while historical filed data remains intact.
@@ -525,7 +525,7 @@ Result: Future transactions use 8% while historical filed data remains intact.
 Problem: Invoice INV-001 was filed in the wrong filing cycle.
 Action:
   1. Open the incorrect Filing Cycle.
-  2. Go to Tax Filing â†’ Service â†’ Filed Transactions.
+  2. Go to Tax Filing → Service → Filed Transactions.
   3. Find INV-001 and click "Unfile".
   4. The transaction returns to "Unfiled Transactions".
   5. Open the correct filing cycle and re-file the transaction.
@@ -536,10 +536,10 @@ Result: Transaction is correctly assigned to the right period.
 ```
 Problem: Filing is submitted 2 weeks after the RMCD due date.
 Action:
-  1. Open the Filing Cycle â†’ Tax Filing â†’ Service â†’ SST-02.
+  1. Open the Filing Cycle → Tax Filing → Service → SST-02.
   2. Enter Penalty % (e.g., 10%) in the Penalty % field.
   3. System auto-fills Penalty Amount based on total tax payable.
-  4. Click SEARCH â†’ EXPORT TO PDF.
+  4. Click SEARCH → EXPORT TO PDF.
 Result: SST-02 PDF includes Section 15 (Penalty) and Section 16 (Total inclusive penalty).
 ```
 
@@ -547,7 +547,7 @@ Result: SST-02 PDF includes Section 15 (Penalty) and Section 16 (Total inclusive
 ```
 Requirement: Company files every 2 months as approved by RMCD.
 Action:
-  1. Create Tax Year â†’ Set Filing Cycle Duration = "Custom Month".
+  1. Create Tax Year → Set Filing Cycle Duration = "Custom Month".
   2. Enter "2" in Specify Month field.
   3. Save the Tax Year.
   4. When creating a Filing Cycle, Start Date and End Date will span 2 months.
@@ -627,7 +627,7 @@ A: A **LOCKED** filing cycle cannot have any new transactions filed or unfiled. 
 
 **Q: How do I know which transactions were already filed?**
 
-A: Open the Filing Cycle â†’ Tax Filing tab â†’ Select the relevant sub-tab (Service or Sales) â†’ Click **Filed Transactions** to see all transactions already included in this cycle, along with their document numbers, dates, and amounts.
+A: Open the Filing Cycle → Tax Filing tab → Select the relevant sub-tab (Service or Sales) → Click **Filed Transactions** to see all transactions already included in this cycle, along with their document numbers, dates, and amounts.
 
 ---
 
