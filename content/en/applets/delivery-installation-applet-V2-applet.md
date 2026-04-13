@@ -203,6 +203,7 @@ Get started quickly with these role-specific workflows.
 
 ---
 
+<a id="for-drivers--installers-execute-and-close-jobs"></a>
 ### For Drivers & Installers: Execute and Close Jobs
 
 **Goal:** Complete field jobs with accurate timestamps and evidence.
@@ -243,6 +244,7 @@ Get started quickly with these role-specific workflows.
 
 ---
 
+<a id="delivery-job-workbench"></a>
 ## Delivery Job Workbench
 
 The **Delivery Job** screen (`Job Shipment Listing`) is the operational control center for high-volume assignment and updates.
@@ -269,6 +271,7 @@ This workbench reduces dispatcher effort from job-by-job updates to controlled b
 
 ---
 
+<a id="shipment-listing"></a>
 ## Shipment Listing
 
 **Shipment Listing** is where available shipment quantities are turned into executable jobs.
@@ -294,6 +297,7 @@ You can also use **Import** to load shipment files and track processing through 
 
 ---
 
+<a id="trip-listing"></a>
 ## Trip Listing
 
 **Trip Listing** is the execution hub for route-level operations.
@@ -310,6 +314,7 @@ This keeps dispatch and field timelines aligned, even when updates arrive late.
 
 ---
 
+<a id="trip-calendar"></a>
 ## Trip Calendar
 
 The **Trip Calendar** provides visual planning with monthly/weekly/daily/agenda views.
@@ -327,6 +332,7 @@ This helps teams detect load imbalance, vehicle conflicts, and capacity gaps ear
 
 ---
 
+<a id="job-sources-so-si-do"></a>
 ## Job Sources (SO, SI, DO)
 
 V2 supports parallel delivery job streams for:
@@ -344,6 +350,7 @@ Across these sources, teams can run consistent job statuses (`Ready To Ship`, `S
 
 ---
 
+<a id="delivery-job-line-report"></a>
 ## Delivery Job Line Report
 
 The **Delivery Job Line Report** gives line-level traceability and reporting.
@@ -365,6 +372,7 @@ The **Delivery Job Line Report** gives line-level traceability and reporting.
 
 ---
 
+<a id="configuration--settings"></a>
 ## Configuration & Settings
 
 Use the Settings area to enforce business rules and keep operations clean.

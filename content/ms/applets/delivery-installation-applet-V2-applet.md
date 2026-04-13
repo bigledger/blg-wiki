@@ -203,6 +203,7 @@ Mulakan dengan cepat menggunakan aliran kerja khusus peranan berikut.
 
 ---
 
+<a id="for-drivers--installers-execute-and-close-jobs"></a>
 ### Untuk Drivers & Installers: Laksana dan Tutup Job
 
 **Matlamat:** Selesaikan job lapangan dengan cap masa dan bukti yang tepat.
@@ -243,6 +244,7 @@ Mulakan dengan cepat menggunakan aliran kerja khusus peranan berikut.
 
 ---
 
+<a id="delivery-job-workbench"></a>
 ## Delivery Job Workbench
 
 Skrin **Delivery Job** (`Job Shipment Listing`) ialah pusat kawalan operasi untuk peruntukan dan kemas kini volum tinggi.
@@ -269,6 +271,7 @@ Workbench ini mengurangkan usaha dispatcher daripada kemas kini satu-per-satu ke
 
 ---
 
+<a id="shipment-listing"></a>
 ## Shipment Listing
 
 **Shipment Listing** ialah tempat kuantiti shipment tersedia ditukar kepada job yang boleh dilaksanakan.
@@ -294,6 +297,7 @@ Anda juga boleh menggunakan **Import** untuk memuatkan fail shipment dan menjeja
 
 ---
 
+<a id="trip-listing"></a>
 ## Trip Listing
 
 **Trip Listing** ialah hab pelaksanaan untuk operasi peringkat laluan.
@@ -310,6 +314,7 @@ Ini memastikan garis masa dispatch dan lapangan kekal selaras walaupun kemas kin
 
 ---
 
+<a id="trip-calendar"></a>
 ## Trip Calendar
 
 **Trip Calendar** menyediakan perancangan visual dengan paparan bulanan/mingguan/harian/agenda.
@@ -327,6 +332,7 @@ Ini membantu pasukan mengesan ketidakseimbangan beban, konflik kenderaan, dan ju
 
 ---
 
+<a id="job-sources-so-si-do"></a>
 ## Sumber Job (SO, SI, DO)
 
 V2 menyokong aliran delivery job selari untuk:
@@ -344,6 +350,7 @@ Merentas sumber ini, pasukan boleh menjalankan status job yang konsisten (`Ready
 
 ---
 
+<a id="delivery-job-line-report"></a>
 ## Delivery Job Line Report
 
 **Delivery Job Line Report** menyediakan kebolehjejakkan dan pelaporan peringkat baris.
@@ -365,6 +372,7 @@ Merentas sumber ini, pasukan boleh menjalankan status job yang konsisten (`Ready
 
 ---
 
+<a id="configuration--settings"></a>
 ## Konfigurasi & Tetapan
 
 Gunakan kawasan Settings untuk menguatkuasakan peraturan perniagaan dan memastikan operasi kekal kemas.
