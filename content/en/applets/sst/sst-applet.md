@@ -14,7 +14,7 @@ weight: 20
 
 ## Purpose and Overview
 
-The **SST (Service / Sales Tax) Applet** is a specialized tool designed to streamline Malaysian tax compliance. It provides a structured environment for managing the entire tax lifecycleâ€”from initial configuration of tax years and tariff codes to the final generation of official SST-02 reports for submission to the Royal Malaysian Customs Department (RMCD).
+The **SST (Service / Sales Tax) Applet** is a specialized tool designed to streamline Malaysian tax compliance. It provides a structured environment for managing the entire tax lifecycle—from initial configuration of tax years and tariff codes to the final generation of official SST-02 reports for submission to the Royal Malaysian Customs Department (RMCD).
 
 {{< callout type="info" >}}
 **Core Concept**: The system automates tax categorization by linking **Tariff Codes** to **Tax Codes**, ensuring that every transaction is classified and recorded accurately for official filing.
@@ -55,12 +55,12 @@ Traditional tax management often involves manual spreadsheets and complex tariff
 
 **The SST Applet Solution:**
 
-- **Digital Filing Workflow** â€” Process thousands of transactions in seconds with automated validation.
-- **Tariff Code Integration** â€” Link items directly to official tariff classifications to ensure regulatory compliance.
-- **Flexible Reporting Cycles** â€” Handle standard or custom duration filings (e.g., every 2 months) with ease.
-- **"Unfile" Functionality** â€” Correction workflow to fix errors before final submission without breaking system integrity.
-- **Integrated Penalty Management** â€” Built-in fields for late filing adjustments and penalty calculations.
-- **Dual Tax Type Support** â€” Handles both **Service Tax** and **Sales Tax** within a single filing cycle.
+- **Digital Filing Workflow** — Process thousands of transactions in seconds with automated validation.
+- **Tariff Code Integration** — Link items directly to official tariff classifications to ensure regulatory compliance.
+- **Flexible Reporting Cycles** — Handle standard or custom duration filings (e.g., every 2 months) with ease.
+- **"Unfile" Functionality** — Correction workflow to fix errors before final submission without breaking system integrity.
+- **Integrated Penalty Management** — Built-in fields for late filing adjustments and penalty calculations.
+- **Dual Tax Type Support** — Handles both **Service Tax** and **Sales Tax** within a single filing cycle.
 
 ## Key Features Overview
 
@@ -90,12 +90,12 @@ Every SST compliance system must address three fundamental aspects. The SST Appl
 
 | Aspect | Component | Practical Example |
 |--------|-----------|------------------|
-| **When** are you filing? | Tax Year & Filing Cycle | 2025 Fiscal Year, Janâ€“Feb period |
+| **When** are you filing? | Tax Year & Filing Cycle | 2025 Fiscal Year, Jan–Feb period |
 | **What** is being taxed? | Tariff Code & Tax Code | Service Tariff 9018 (6% Service Tax) |
 | **How** is it processed? | Tax Filing & SST-02 | File transactions â†’ Generate PDF |
 
 {{< callout type="tip" >}}
-**Real-World Example**: A company (WHEN â€” 2025 Janâ€“Feb cycle) provides IT consulting services (WHAT â€” Service Tariff Code linked to 6% Service Tax Code). At month-end, the accountant files all unfiled service invoices and generates the SST-02 report for RMCD submission.
+**Real-World Example**: A company (WHEN — 2025 Jan–Feb cycle) provides IT consulting services (WHAT — Service Tariff Code linked to 6% Service Tax Code). At month-end, the accountant files all unfiled service invoices and generates the SST-02 report for RMCD submission.
 {{< /callout >}}
 
 ### SST Filing Hierarchy
@@ -107,7 +107,7 @@ Company Organization
 â”‚
 â”œâ”€â”€ Tax Year â”€â”€â†’ DEFINES filing frequency (Monthly/Quarterly/Custom)
 â”‚   â”‚
-â”‚   â””â”€â”€ Filing Cycles â”€â”€â†’ SPECIFIC periods (e.g., Janâ€“Feb 2025)
+â”‚   â””â”€â”€ Filing Cycles â”€â”€â†’ SPECIFIC periods (e.g., Jan–Feb 2025)
 â”‚       â”‚
 â”‚       â”œâ”€â”€ Service Tax Tab â”€â”€â†’ Filed / Unfiled Transactions & SST-02
 â”‚       â””â”€â”€ Sales Tax Tab   â”€â”€â†’ Filed / Unfiled Transactions & SST-02
@@ -116,15 +116,15 @@ Company Organization
 â”‚   â”‚
 â”‚   â””â”€â”€ Tax Code â”€â”€â†’ RATE mapping (6% Service Tax, 10% Sales Tax)
 â”‚
-â””â”€â”€ SST-02 Report â”€â”€â†’ OFFICIAL submission output (Part Aâ€“E)
+â””â”€â”€ SST-02 Report â”€â”€â†’ OFFICIAL submission output (Part A–E)
 ```
 
 **Flow Through the Hierarchy:**
 
 1. **Tax Year**: Defines filing frequency and fiscal boundaries.
 2. **Tariff Code**: Official customs classification (e.g., `018.000`).
-3. **Tax Code**: The rate rule â€” Input (Purchase) or Output (Sales).
-4. **Filing Cycle**: A specific period (e.g., Jan 1 â€“ Feb 28) within a Tax Year.
+3. **Tax Code**: The rate rule — Input (Purchase) or Output (Sales).
+4. **Filing Cycle**: A specific period (e.g., Jan 1 – Feb 28) within a Tax Year.
 5. **Transaction Filing**: Link invoices/documents to the filing cycle.
 6. **SST-02**: The final report exported as PDF for RMCD submission.
 
@@ -135,7 +135,7 @@ To effectively manage SST, you must understand how **Tax Years**, **Tariff Codes
 | Component | Analogy | Definition | Example |
 |-----------|---------|------------|---------|
 | **Tax Year** | The "Container" | The fiscal period grouping all filing cycles. | **2025 Fiscal Year** |
-| **Tariff Code** | The "Label" | Official RMCD classification for a taxable good/service. | **018.000 â€” IT Services** |
+| **Tariff Code** | The "Label" | Official RMCD classification for a taxable good/service. | **018.000 — IT Services** |
 | **Tax Code** | The "Rule" | The specific rate and type applied to transactions. | **SST-S8 (8% Service Tax Output)** |
 
 **How they link:**
@@ -210,16 +210,16 @@ The Tax Year is the master configuration that defines the fiscal filing framewor
 | **Fiscal Year** | The underlying fiscal year to align with accounting periods. |
 | **Name** | A descriptive identifier (e.g., `2025 - ABC Sdn Bhd`). |
 | **Filing Cycle Duration** | How often filings are submitted (see table below). |
-| **Specify Month** | Visible only for Custom Month â€” enter the number of months per cycle. |
-| **Approval No** | Visible for Custom Duration â€” for RMCD-approved non-standard cycles. |
+| **Specify Month** | Visible only for Custom Month — enter the number of months per cycle. |
+| **Approval No** | Visible for Custom Duration — for RMCD-approved non-standard cycles. |
 
 **Filing Cycle Duration Options:**
 
 | Option | Description | Example |
 |--------|-------------|---------|
 | **Monthly** | One filing every calendar month. | Jan, Feb, Mar each separate. |
-| **Quarterly** | One filing every 3 months. | Janâ€“Mar, Aprâ€“Jun, Julâ€“Sep, Octâ€“Dec. |
-| **Custom Month** | A custom number of months per cycle. | Every 2 months (Janâ€“Feb, Marâ€“Apr). |
+| **Quarterly** | One filing every 3 months. | Jan–Mar, Apr–Jun, Jul–Sep, Oct–Dec. |
+| **Custom Month** | A custom number of months per cycle. | Every 2 months (Jan–Feb, Mar–Apr). |
 | **Custom Duration** | A fully custom date range approved by RMCD. | Non-standard period per approval. |
 
 **How to Create a Tax Year:**
@@ -320,7 +320,7 @@ Tax Filing is the operational core of the SST Applet. It is where you create fil
 
 #### Tax Filing Cycle
 
-A **Filing Cycle** represents a specific taxable period (e.g., January 1 â€“ February 28, 2025). It exists within a Tax Year.
+A **Filing Cycle** represents a specific taxable period (e.g., January 1 – February 28, 2025). It exists within a Tax Year.
 
 **Filing Cycle Fields:**
 
@@ -328,7 +328,7 @@ A **Filing Cycle** represents a specific taxable period (e.g., January 1 â€�
 |-------|-------------|
 | **Company** | The entity the cycle belongs to. |
 | **Tax Year** | The parent Tax Year for this cycle. |
-| **Name** | A descriptive name (e.g., `Janâ€“Feb 2025`). |
+| **Name** | A descriptive name (e.g., `Jan–Feb 2025`). |
 | **Filing Duration** | Auto-inherited from the Tax Year (read-only). |
 | **Start Date** | The first day of the taxable period. |
 | **End Date** | The last day of the taxable period. |
@@ -380,7 +380,7 @@ The **Sales** sub-tab manages all Sales Tax transactions with the same three nes
 | **Unfiled Transactions** | Pending sales transactions eligible for this period. |
 | **SST-02** | The official SST-02 form for Sales Tax, ready for export. |
 
-#### Unfiled Transactions â€” How to File
+#### Unfiled Transactions — How to File
 
 The **Unfiled Transactions** grid is where you review and submit transactions into the filing cycle.
 
@@ -439,7 +439,7 @@ The report is divided into 5 official parts, mirroring the RMCD's actual SST-02 
 |------|-------|----------|
 | **Part A** | Registered Person Particulars | SST No., Company Name, Taxable Period, Due Date. |
 | **Part B** | Sales / Service Details | Tariff-level breakdown of taxable goods and services. |
-| **Part B2** | Value of Tax Payable | Summary by tax rate (5%, 10%, 6%, Group H). Sections 11â€“16. |
+| **Part B2** | Value of Tax Payable | Summary by tax rate (5%, 10%, 6%, Group H). Sections 11–16. |
 | **Part C** | Schedule 2 Goods | Goods taxed at specific rates (per litre, per kg). |
 | **Part D** | Sales Exempted from Sales Tax | Exports, exempted persons (Schedule A, B, C). |
 | **Part E** | Schedule C Purchases | Raw materials purchased/imported exempt from Sales Tax. |
@@ -603,13 +603,13 @@ A: Credit Notes appear in the Unfiled Transactions list with **negative** base a
 
 **Q: Can I change my filing cycle from Quarterly to Monthly?**
 
-A: Yes â€” update the **Filing Cycle Duration** in the Tax Year settings. It is strongly recommended to make this change only at the **start of a new Tax Year** to avoid overlapping periods and logic conflicts mid-year. Consult RMCD approval if your filing frequency changes are mandated.
+A: Yes — update the **Filing Cycle Duration** in the Tax Year settings. It is strongly recommended to make this change only at the **start of a new Tax Year** to avoid overlapping periods and logic conflicts mid-year. Consult RMCD approval if your filing frequency changes are mandated.
 
 ---
 
 **Q: What is the difference between "Unfile" and "Delete"?**
 
-A: **Unfile** moves a transaction from the "Filed" pool back to "Unfiled" â€” it preserves all records and allows re-filing into the correct cycle. You should **never delete** a historical tax transaction, as this breaks audit integrity. The system does not support bulk deletion of filed transactions for this reason.
+A: **Unfile** moves a transaction from the "Filed" pool back to "Unfiled" — it preserves all records and allows re-filing into the correct cycle. You should **never delete** a historical tax transaction, as this breaks audit integrity. The system does not support bulk deletion of filed transactions for this reason.
 
 ---
 
