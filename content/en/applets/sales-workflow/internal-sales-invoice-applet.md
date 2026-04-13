@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Sales Invoice (Internal) Applet"
 description: "Comprehensive sales transaction management system for invoicing, inventory logic, financial posting, and intercompany commerce."
 tags:
@@ -117,6 +117,8 @@ Instead of manual entry, prioritize using **Knock-Off (KO)** from Sales Orders o
 {{< figure src="/images/internal-sales-invoice-applet/create-form.png" alt="Invoice Creation Form" caption="The streamlined interface for creating new sales invoices." >}}
 
 *   **Entity Selection**: Selecting a customer auto-populates critical financial data: Credit Terms, Default Currency, and Billing Address.
+
+{{< figure src="/images/internal-sales-invoice-applet/entity-selection.png" alt="Entity Selection Drawer mapping Customer details" caption="Entity Selection: Quickly pull in pre-configured customer and billing data." >}}
 *   **Item Selection**:
     *   **Stock Checking**: The system validates availability in real-time.
     *   **Serialization**: For serialized inventory, specific serial numbers must be allocated here to ensure the correct unit is deducted.
@@ -162,8 +164,12 @@ Manually handle complex inter-entity billing via the **Intercompany** route.
 
 ### Pick & Pack Queue
 A dedicated view for warehouse operations to close the loop between "Sold" and "Shipped".
+
+{{< figure src="/images/internal-sales-invoice-applet/pick-pack-queue.png" alt="Pick Pack Queue Listing with Delivery Job drawer" caption="Pick Pack Queue: Manage the fulfillment phase and automatically generate your delivery jobs." >}}
 -   **Process**: Items from approved invoices appear here.
 -   **Action**: Warehouse staff mark items as "Picked" (gathered) and "Packed" (ready for courier).
+
+{{< figure src="/images/internal-sales-invoice-applet/delivery-details.png" alt="Delivery Details tab for assigning logistics" caption="Delivery Details: Assign and verify logistics details alongside the invoice." >}}
 -   **Outcome**: Generates the Delivery Order (DO) and updates the shipment status, providing visibility to Sales teams.
 
 ### Swap Serial
@@ -178,12 +184,20 @@ Bulk import sales invoices using CSV files (Comma or Pipe delimited) to streamli
 -   **Comprehensive Data Mapping**: Handles complex data points including billing/shipping addresses, serial/batch numbers, and accounting codes (GL, Segment, Project).
 -   **Template Generation**: Download dynamic CSV templates to ensure your data matches the system's requirements.
 
-{{< figure src="/images/doc_item_maintenance/import_item.png" alt="File Import Interface" caption="Upload CSV files to bulk create invoices." >}}
+{{< figure src="/images/internal-sales-invoice-applet/file-import.png" alt="File Import Interface" caption="Upload CSV files to bulk create invoices." >}}
+
+### File Export
+Extract your sales invoice data into customizable formats for external analysis or integrations.
+-   **Data Mapping**: Graphically select the exact 'Source Fields' you need from the database and map them to custom 'Target Fields' headers.
+
+{{< figure src="/images/internal-sales-invoice-applet/file-export.png" alt="File Export Data Customization Drawer" caption="File Export: Build specific extraction templates tailored to your destination system." >}}
 
 ### Contra Settlements
 Contra Settlement allows you to pay an invoice using *other documents* instead of cash.
 *   **Use Case**: You buy raw materials from Supplier X and sell finished goods to Customer X (same entity).
 *   **Execution**: In the **Contra** tab, "Knock Off" the Invoice against a Credit Note or Purchase Bill to offset the balance.
+
+{{< figure src="/images/internal-sales-invoice-applet/arap-settlement.png" alt="ARAP Settlement tab showing Doc Open Amount and Contra values" caption="ARAP Tab: View the outstanding balance and manually settle it using Contra documents if needed." >}}
 
 ### Document Tracing
 The **Trace** button is your audit best friend.
@@ -362,6 +376,8 @@ This section provides detailed explanations of each settings option, including t
 ### Email Template Settings
 
 **Purpose:** Automate customer communications with consistent, professional messaging at key transaction milestones.
+
+{{< figure src="/images/internal-sales-invoice-applet/email-templates.png" alt="Email Template options showing Billing and Shipping Email selectors" caption="Email Automation: Select specific configurations for triggering outbound document delivery." >}}
 
 **Common Email Triggers:**
 
