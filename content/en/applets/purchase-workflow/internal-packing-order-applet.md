@@ -81,217 +81,126 @@ Without a central record, outbound shipments are tracked in spreadsheets or emai
 
 ## Quick Start Guide
 
-### For Supplier Operations: Create Your First Packing Order
-
-**Goal:** Create a packing order, add items, and dispatch.
-
-1. **Navigate:** Open the sidebar and go to the **Internal Packing Order** applet. You will land on the **Listing** view.
-2. **Create:** Click the **+** button (tooltip: "Create").
+### 1. Manual Packing Workflow
+**Goal:** Create an ad-hoc packing order and manually select items to dispatch.
+1. **Navigate:** Under the applet sidebar, click **Manual Packing**.
+2. **Create:** Click the **+** button (Create) at the top of the listing.
 3. **Fill Main Details:**
-   - Select your **Branch** and **Location** (both required).
-   - Enter the **Conversion Code** and **Conversion Name** (both required).
-   - Optionally add a **Description**.
-4. **Save:** Click **SAVE**. The system generates your document record and switches to the Edit screen.
-5. **Add Lines:** Open the **Lines** tab, then click the **+** button to add a line.
-   - Use **Search Item** to manually pick items from the catalogue.
-   - Or use a **Knock-Off (KO)** tab (e.g., **KO For Sales Order**) to automatically pull items from an existing document.
-6. **Review Totals:** Check the **Total Txn Amount** and **SST/VAT/GST Amount** displayed above the line grid.
-7. **Print:** Click the **Print** icon to generate a PDF for your logistics driver.
-8. **Finalise:** When ready, click **FINAL** to lock the document for dispatch.
+   - Select the dispatching **Branch** and **Location**.
+   - Select the required **Conversion Code** and **Conversion Name**.
+4. **Save:** Click **SAVE**. The document is generated and you can now add lines.
+5. **Add Lines:** Go to the **Lines** tab.
+   - Click the **+** (Add) button.
+   - Use the **Search Item** tab to browse your catalogue and enter the dispatched quantities.
+   - Click **Back** to return to the Lines grid.
+6. **Finalise:** Once all items are added, click **FINAL** to lock the document for dispatch.
+
+### 2. Operator Queue Workflow
+**Goal:** Process a pre-assigned packing job from the warehouse queue.
+1. **Navigate:** Under the applet sidebar, click **Operator Queue**.
+2. **Select Task:** Find a pending task assigned to you or your station, and click the row to open it.
+3. **Process Lines:** Navigate to the **Lines** tab to review the items that must be packed.
+4. **Update Status/Finalise:** Pack the items physically, ensure quantities match, and click **FINAL** (or trigger the relevant workflow status) to complete your queue task.
+
+### 3. Knock-Off (KO) Workflow
+**Goal:** Pull items automatically from an upstream document (like a Sales Order).
+1. **Navigate:** Open or create a packing order (e.g., via **Manual Packing** &rarr; **+**).
+2. **Save Details:** Ensure your **Main Details** are filled and click **SAVE**.
+3. **Import Lines:** Go to the **Lines** tab and click the **+** button.
+   - Switch to the required KO tab (e.g., **KO For Sales Order** or **KO For Jobsheet**).
+   - Search for the specific Sales Order or Jobsheet number.
+   - Select the source document to automatically import all pending line items.
+4. **Adjust & Finalise:** Adjust quantities if delivering a partial shipment, then click **FINAL**.
 
 {{< callout type="tip" >}}
-If you are new to this applet, create one **test** packing order end-to-end (save, add a line, finalise) before using it for live shipments.
+If you are new to this applet, evaluate a **test** workflow end-to-end to familiarise yourself with the tabs before handling live shipments.
 {{< /callout >}}
-
----
-
-### For Supplier Operations: Edit an Existing Packing Order
-
-**Goal:** Open a saved order, update its details or lines, and save your changes.
-
-1. **Find the order:** On the **Listing** view, use the search bar or scroll to locate your packing order. Click on the row to open it.
-2. **Edit Main Details:** On the **Main Details** tab, update any field (Branch, Location, Conversion Code, Conversion Name, or Description).
-3. **Edit Lines:** Switch to the **Lines** tab.
-   - **To add a new line:** Click the **+** button, select items via Search Item or a KO tab, and confirm.
-   - **To edit an existing line:** Click on a row in the line grid to open and modify it.
-   - **To delete a line:** Click the **delete** action on the line row and confirm the deletion.
-4. **Save:** Click **SAVE** to apply your changes.
-5. **Undo changes:** If you made a mistake, click **RESET** to discard all unsaved changes and reload the last saved state.
-
-{{< callout type="warning" >}}
-**RESET** discards all unsaved changes without confirmation. If you have already clicked **SAVE**, those changes are permanent and RESET will not undo them.
-{{< /callout >}}
-
----
-
-### For Supplier Operations: Using Knock-Off (KO) to Import Lines
-
-**Goal:** Automatically pull line items from an upstream document instead of typing them manually.
-
-1. Open your packing order (create a new one or edit an existing one).
-2. Go to the **Lines** tab and click the **+** button to add a line.
-3. On the **Select Item** screen, choose the appropriate KO tab:
-
-| Tab | Use When |
-|-----|----------|
-| **KO For Sales Order** | You are fulfilling a confirmed sales order |
-| **KO For Jobsheet** | You are dispatching items produced against a manufacturing jobsheet |
-| **KO For Sales Quotation** | You are packing items quoted to a buyer |
-| **KO For Delivery Order** | You are completing an existing delivery order |
-
-4. Browse or search the listed source documents and select the one you want to knock off from.
-5. The system pulls the line items into your packing order automatically.
-6. **Adjust quantities** if needed (e.g., only shipping a partial quantity).
-7. Click **Back** to return to the Lines tab — your imported lines now appear in the grid.
-
-{{< callout type="info" >}}
-You can mix methods on a single order: knock off some items from a Sales Order and manually add others via **Search Item**.
-{{< /callout >}}
-
----
-
-### For Administrators: First-Time Setup
-
-**Goal:** Ensure your team can create, save, and use the applet.
-
-1. Open **Settings** &rarr; **Feature Visibility** and ensure the applet appears for the correct roles.
-2. Review **Field Settings** to confirm which Main Details fields are mandatory.
-3. Configure **Printable Format Settings** if printed packing orders are required.
-4. Set **Permissions** so only intended users can create, edit, or finalise.
-5. Run a full test: create a packing order, add a line, save, and test the full workflow.
-
----
-
-## For Supplier Operations
-
-### The Listing View
-
-The **Internal Packing Order Listing** is your control centre for all packing orders.
-
-| Action | How |
-|--------|-----|
-| **Create** | Click the **+** button to open a new packing order |
-| **Search** | Use the search bar or advanced search to filter by branch, reference, date, or status |
-| **Open** | Click any row to open the full edit screen |
-| **Multi-select** | Select multiple rows to apply bulk actions (e.g., finalise) |
-| **Paginate** | Adjust page size and navigate through pages |
-
----
-
-### Create and Edit
-
-**Create Screen** — Title: *Create Supplier Outbound Delivery Note*
-- Actions available: **Back**, **RESET**, **SAVE**
-- **SAVE** is disabled until all required Main Details fields are completed
-
-**Edit Screen** — Title: *Edit Supplier Outbound Delivery Note*
-- Actions available: **Back**, **RESET**, **SAVE**, **FINAL** (conditional — only appears when the document is active and not already finalised)
-
-Both screens have three tabs:
-
-| Tab | Purpose |
-|-----|---------|
-| **Main Details** | Branch, Location, Conversion Code, Conversion Name, Description |
-| **Lines** | The list of items being dispatched. This is where you add, edit, and delete line items. |
-| **Matchings** | Links this packing order to other documents. Content depends on your company's configuration. |
-
----
-
-### Lines and Knock-Off (KO)
-
-The **Lines** tab is where you define exactly what is leaving the warehouse.
-
-**Adding a Line:**
-1. Click the **+** button on the Lines tab.
-2. You will see the **Select Item** screen with the following tabs:
-
-| Tab | When It Appears | What It Does |
-|-----|-----------------|--------------|
-| **Search Item** | Always available | Manually browse and select items from the catalogue |
-| **KO For Sales Order** | When enabled by admin | Pulls line items from an existing **Sales Order** |
-| **KO For Jobsheet** | When enabled by admin | Pulls line items from an existing **Jobsheet** |
-| **KO For Sales Quotation** | When enabled by admin | Pulls line items from an existing **Sales Quotation** |
-| **KO For Delivery Order** | When enabled by admin | Pulls line items from an existing **Delivery Order** |
-
-{{< callout type="warning" >}}
-KO tabs are **conditional**. If you do not see a particular KO tab, it has not been enabled for your company. Contact your administrator.
-{{< /callout >}}
-
-**Line Grid Summary:** After adding lines, the grid displays running totals:
-- **Total Txn Amount** — Sum of all line item values in the document currency
-- **Total SST/VAT/GST Amount** — Sum of all tax amounts
-- **Rounding** — Displayed when rounding adjustments apply
-
----
-
-### Common Scenarios
-
-**Scenario 1: Dispatching from a Sales Order (Using Knock-Off)**
-
-A Sales Order #1002 comes in for 50 Laptops.
-
-1. Create a new packing order and fill in the **Main Details**.
-2. Click **SAVE**, then open the **Lines** tab.
-3. Click **+** and select the **KO For Sales Order** tab.
-4. Find and select Sales Order #1002.
-5. The system pulls in 50 Laptops automatically. Adjust the quantity if only 40 are going on this truck.
-6. Save and finalise when ready.
-
-**Scenario 2: Manual Packing Order**
-
-1. Create a new packing order and fill in the **Main Details**.
-2. Click **SAVE**, then open the **Lines** tab.
-3. Click **+** and use the **Search Item** tab.
-4. Browse or search the catalogue, select items, and enter quantities.
-5. Save and finalise when ready to dispatch.
-
-**Scenario 3: Partial Delivery**
-
-Sales Order #2050 requires 100 units. Only 60 are ready.
-
-1. Knock off from Sales Order #2050 — the system imports 100 units.
-2. Adjust the quantity to **60** on the line.
-3. Save and finalise.
-4. When the remaining 40 units are ready, create a **second** packing order and knock off the remaining items.
 
 ---
 
 ## Understanding Your Sidebar Modules
 
-Depending on your company's configuration, the sidebar may display specialised modules beyond the main listing. These modules represent different stages of the packing and dispatch workflow:
+This applet handles several operational flows. Depending on your company's configuration, you will interact with the following modules in your sidebar:
 
 ### Core Packing Operations
 
-| Module | Purpose |
-|--------|---------|
-| **Packing Request** | Formal requests routed from sales or logistics to the packing team. This is where the outbound preparation process begins. |
-| **Manual Packing** | For ad-hoc or complex orders where operators must define the packing structure (box by box) manually. |
-| **Operator Queue** | The digital task list for warehouse floor staff. Operators use this queue to pick up and process their next assigned packing job. |
+| Module | What It Is | How To Use It |
+|--------|------------|---------------|
+| **Manual Packing** | For ad-hoc or complex orders where operators must define the packing structure manually. | Click **Manual Packing** &rarr; List displays all manual orders. Click **+** to create a new one, fill details, and add lines. |
+| **Operator Queue** | The digital task list for warehouse floor staff. Tasks are pushed here automatically. | Click **Operator Queue** &rarr; Find your assigned task &rarr; Click row to open &rarr; Pack the indicated items &rarr; Finalise. |
+| **Packing Request** | Formal requests routed from sales or logistics to the packing team, initiating the outbound process. | Click **Packing Request** &rarr; Review incoming requests &rarr; Convert requests into actable packing orders. |
 
 ### Specialized Manufacturing (Coil)
 
-| Module | Purpose |
-|--------|---------|
-| **Auto Coil Operator** | An automated interface for operators handling coiled goods (e.g., steel, wire). Integrates with automated winding and packing machinery. |
-| **Auto Coil Supervisor** | The management console for automated coil lines. Supervisors monitor output rates, approve overrides, and track operator performance. |
+| Module | What It Is | How To Use It |
+|--------|------------|---------------|
+| **Auto Coil Operator** | An interface for machine operators handling coiled goods (steel, wire) via automated winding integration. | Click **Auto Coil Operator** &rarr; Select machine line &rarr; Review automated output lengths &rarr; Confirm packing. |
+| **Auto Coil Supervisor** | The management console for automated coil lines. | Click **Auto Coil Supervisor** &rarr; Monitor output rates, approve operator overrides, and track performance metrics. |
 
-### Production & Inventory
+### Production & Exception Handling
 
-| Module | Purpose |
-|--------|---------|
-| **Job Order** | Links outbound packing to specific manufacturing work orders. Tracks produced goods directly into their dispatched state. |
-| **Packing Containers** | Manages physical containers (pallets, crates, boxes, drums) — their inventory, dimensions, and tare weights. |
-| **Scrap & Short** | The exception-handling hub. Log materials damaged during packing (**Scrap**) or flag orders that could not be completed due to missing stock (**Short**). |
+| Module | What It Is | How To Use It |
+|--------|------------|---------------|
+| **Job Order** | Links outbound packing directly to specific manufacturing work orders. | Click **Job Order** &rarr; Select the manufacturing job &rarr; Pack the finished goods produced from that job. |
+| **Packing Containers** | Manages reusable physical containers (pallets, crates, drums) and their tare weights. | Click **Packing Containers** &rarr; Create or update container records to track what items are packed into. |
+| **Scrap & Short** | The exception-handling hub for damaged materials (Scrap) or missing stock (Short). | Click **Scrap & Short** &rarr; Log any items damaged during packing or document why an order is short. |
 
 ### System & Testing
 
-| Module | Purpose |
-|--------|---------|
-| **TESTING** | A diagnostic area for admins and developers to test barcode scanners, packing workflows, or scale integrations without affecting live data. |
+| Module | What It Is | How To Use It |
+|--------|------------|---------------|
+| **TESTING** | A diagnostic sandbox for administrators and developers. | Click **TESTING** &rarr; Test barcode scanner integrations or weight scale hardware without affecting live data. |
 
-{{< callout type="info" >}}
-Not all modules appear for every company. Your sidebar is configured by your administrator based on your company's specific workflow requirements.
-{{< /callout >}}
+---
+
+## Create and Edit Details
+
+When you open a document from any of the sidebar modules (e.g., creating a new Manual Packing order), you will enter the detailed document view. 
+
+**Available Actions (Top Right):**
+- **Back:** Return to the listing.
+- **RESET:** Discard unsaved changes and reload the last saved state. *(Warning: Cannot undo a SAVE).*
+- **SAVE:** Commits your current data. Disabled if required fields are missing.
+- **FINAL:** Locks the document. *(Conditional: Only appears when the document is active and you have permission).*
+
+### Document Tabs Explained
+
+Transactions utilise a generic tab structure to organise data. Depending on your admin's setup, you will see some or all of these tabs:
+
+#### 1. Main Details
+This tab captures the core operational scope of the movement:
+* **Branch / Location:** Exactly where the goods are leaving from (Mandatory).
+* **Transaction Date:** The operational date of dispatch.
+* **Conversion Code & Name:** The internal category of this movement (Mandatory).
+* **Description / Remarks:** Notes for internal reference.
+* **Reference / Document No:** External tracking numbers for logistics.
+
+#### 2. Account
+This tab houses the financial and logistical entity data associated with the receiver:
+* **Entity Details:** Links to the specific Customer or Intercompany Branch receiving the goods.
+* **Credit Terms / Limit:** Read-only financial constraints associated with the selected entity.
+* **Ship To:** The physical delivery address where the items are being dispatched.
+* **Bill To:** The invoicing address for the selected entity.
+
+#### 3. Matchings & Contra
+Used for linking documents and reconciling values:
+* **Matchings:** Links this internal packing order to other associated documents (e.g., grouping a packing order with a specific delivery manifest).
+* **Contra:** Displays associated contra entries if the shipment involves offsetting balances between debtor and creditor accounts.
+
+#### 4. Lines (Adding Items & Knock-Off)
+The **Lines** tab defines precisely what is leaving the warehouse.
+1. Click **+** (Add) inside the Lines tab.
+2. The **Select Item** screen opens, presenting multiple sourcing methods:
+
+| Source Tab | When To Use It | Workflow |
+|------------|----------------|----------|
+| **Search Item** | Standalone manual packing | Browse or scan item codes from the catalogue, enter quantities. |
+| **KO For Sales Order** | Fulfilling a sales order | Search Sales Order No &rarr; Automatically import pending lines. |
+| **KO For Jobsheet** | Dispatching produced goods | Search Jobsheet No &rarr; Automatically import produced lines. |
+| **KO For Quotation** | Packing quoted items | Search Quotation No &rarr; Automatically import quoted lines. |
+| **KO For Delivery Order**| Fulfilling a DO | Search Delivery Order No &rarr; Automatically import pending deliveries. |
+
+*Note: The Line grid also automatically calculates the **Total Txn Amount** and any associated **SST/VAT/GST** for the dispatched items.*
 
 ---
 
