@@ -32,6 +32,13 @@ Watch the video tutorial below for a complete walkthrough of the Internal Purcha
 
 ## Key Features Overview
 
+{{< cards >}}
+  {{< card title="Invoice Creation" subtitle="Create directly or auto-fill from Goods Received Notes (GRN)" link="#for-ap-clerks-create-an-invoice-directly" >}}
+{{< card title="Bulk File Import" subtitle="Upload hundreds of invoices via CSV/Excel with validation" link="#processing-bulk-invoices-with-file-import" >}}
+  {{< card title="Intercompany Billing" subtitle="Process transactions between internal branches easily" link="#intercompany-transactions" >}}
+  {{< card title="E-Invoice Compliance" subtitle="Automate Self-Billed tax portal submissions and tracking" link="#for-finance-teams-handling-self-billed-e-invoices" >}}
+{{< /cards >}}
+
 ### Who Benefits from This Applet?
 
 **Accounts Payable (AP) & Finance:**
@@ -52,7 +59,7 @@ Watch the video tutorial below for a complete walkthrough of the Internal Purcha
 
 ### What Problems Does This Solve?
 
-**The Manual Invoice Problem:**
+**The Standard Invoice Problem:**
 Traditional accounts payable involves re-typing data from delivery orders into the accounting system. This leads to:
 - Mismatched quantities between what was received and what is billed.
 - Duplicate payments for the same items.
@@ -84,16 +91,13 @@ To effectively manage your invoices, it helps to understand the main components 
 ### Common Daily Tasks
 
 **Task: Create an invoice from a Goods Received Note (GRN)**
--> Click `+` -> Go to `KO For` tab -> Select GRN -> Click `Knock-off` -> Click `Create`.
+-> Click `+` -> Go to `KO For` tab (KO stands for Knock-off — where you link your invoice to a source document like a GRN or PO) -> Select GRN -> Click `Knock-off` -> Click `Create`.
 
 **Task: Offset an invoice with an existing deposit**
 -> Open Invoice -> Go to `Contra` tab -> Click `+` -> Select the existing Payment Voucher or Deposit -> Save.
 
 **Task: Upload multiple invoices from an Excel template**
 -> Go to `File Import` menu -> Download template -> Fill data -> Click `+` in File Import -> Upload File. 
-
-**Task: Handle a returned item or mistake on a finalized invoice**
--> Open the Finalized Invoice -> Click the `Return` button at the top -> Fill out the return pop-up to generate a Credit Note.
 
 ---
 
@@ -112,13 +116,7 @@ The Purchase Invoice applet is divided into four main workspaces accessible from
 
 Get up and running with the most common invoice workflows.
 
-{{< cards >}}
-  {{< card title="Manual Invoice Creation" subtitle="Create an invoice from scratch" link="#for-ap-clerks-create-a-manual-invoice" >}}
-  {{< card title="Create from GRN (Recommended)" subtitle="Auto-fill data from a received order" link="#for-ap-clerks-the-fast-way-creating-from-a-grn" >}}
-  {{< card title="Self-Billed E-Invoices" subtitle="Submit directly to the tax portal" link="#for-finance-teams-handling-self-billed-e-invoices" >}}
-{{< /cards >}}
-
-### For AP Clerks: Create a Manual Invoice
+### For AP Clerks: Create an Invoice Directly
 
 Use this method if you are creating an invoice that does not have an existing purchase order or system receipt.
 
@@ -131,17 +129,25 @@ Use this method if you are creating an invoice that does not have an existing pu
 4. **Add Lines**: Move to the **Line Items** tab. Click **"+"** to add the products or services you are being billed for. You can adjust the quantity, unit price, and apply relevant taxes in this grid.
 5. **Save & Finalize**: Click **Create** to save the document. Once verified, click **FINAL** to lock it for payment processing.
 
+{{< figure src="/images/internal-purchase-invoice-applet/create-purchase-invoice.png" alt="Create Purchase Invoice screen showing the initial data entry form" caption="Create Purchase Invoice: Enter document details before adding supplier and line items." >}}
+{{< figure src="/images/internal-purchase-invoice-applet/account-tab-select-supplier.png" alt="Account tab with supplier selection in purchase invoice" caption="Account Tab - Select Supplier: Link the invoice to the correct supplier profile before posting." >}}
+
 ---
 
 ### For AP Clerks: The Fast Way (Creating from a GRN)
 
-This is the recommended method. Instead of typing everything manually, you "Knock-off" (KO) an existing Goods Received Note (GRN). This copies all supplier details and items instantly.
+This is the recommended method. Instead of typing everything from scratch, you "Knock-off" (KO) an existing Goods Received Note (GRN). This copies all supplier details and items instantly.
 
 1. **Navigate**: Click **"+" (Add New)** from the main listing.
 2. **Start the Knock-Off**: Instead of going to the Account tab, go straight to the **KO For** tab.
-3. **Select Source**: Search for and select the specific **Purchase GRN** you want to bill.
+3. **Select Source**: Search for and select the specific **Purchase GRN** you want to bill. 
+   {{< callout type="warning" >}}
+   **Prerequisite**: The source document (e.g., GRN) must be fully approved and finalized before it will appear in this search list. If you cannot find your GRN, check its status in the GRN applet.
+   {{< /callout >}}
 4. **Auto-Populate**: Click **Knock-off**. The system will automatically construct the entire invoice using the data from the GRN.
 5. **Review & Create**: Check the items to ensure they match the physical bill from the supplier, then click **Create**.
+
+{{< figure src="/images/internal-purchase-invoice-applet/ko-for-purhcase-order.png" alt="KO For tab showing source document selection using Purchase Order" caption="KO For Tab: Select an eligible source document to auto-populate invoice data." >}}
 
 ---
 
@@ -152,43 +158,60 @@ When you generate a Purchase Invoice on behalf of your supplier, it acts as a "S
 **Automatic Self-Billing:**
 If you edit a Supplier's profile and set "E-Invoice Self-Bill" to **True**, every invoice created for them will automatically be marked as Self-Billed.
 
-**Manual Self-Billing:**
+**On-Demand Self-Billing:**
 If the supplier defaults are not set, open your Purchase Invoice, click the **Self-Bill** button at the top, and the system will flag the document.
 
 **Tracking the Submission:**
-1. Once finalized, the invoice goes to the **MyInvois Portal**.
-2. Check the **E-Invoice Tab** on your document. It will show the progress: 
-   - **Queue** → **IRB Processing** → **Validated** (or Failed with an error message).
+1. Once finalized, the invoice goes to the **[My E-invoice Portal Applet](/applets/e-invoice/my-e-invoice-portal-applet)**. You must navigate there to monitor the LHDN submission status, check for validation errors, and download the final generated PDF with the validation QR code.
 
-{{< callout type="warning" >}}
-**Note on Consolidated Invoices:** Combining multiple invoices into a single Self-Billed invoice is only permitted during the designated government grace period.
-{{< /callout >}}
+{{< figure src="/images/internal-purchase-invoice-applet/self-billed-e-invoice.png" alt="Self-Billed E-Invoice workflow in purchase invoice" caption="Self-Billed E-Invoice: Mark and track invoices that must be submitted through MyInvois." >}}
+
+---
+
+### For AP Clerks: Recording a Payment
+
+Once an invoice is finalized, it's time to record the settlement. There are two ways to settle a bill: **Payment** (new cash/bank transfer out) or **Contra** (offsetting against an existing deposit).
+
+1. **Navigate**: Open the finalized **Purchase Invoice**.
+2. **Choose Method**: 
+   - If you are making a new payment, go to the **Payment** tab.
+   - If you are offsetting against an existing deposit or overpayment, go to the **Contra** tab.
+3. **Record Payment**: 
+   - Under the **Payment** tab, click **"+"** to add a new line.
+   - Select your Payment Method (e.g., Bank Transfer, Cheque, Cash).
+   - Enter the exact amount paid.
+   - Click **Save** to complete the settlement. The Outstanding Balance on the invoice will automatically update.
+
+{{< figure src="/images/internal-purchase-invoice-applet/recording-a-payment.png" alt="Payment tab showing payment entry for purchase invoice" caption="Recording a Payment: Add settlement entries and reduce outstanding balance." >}}
+{{< figure src="/images/internal-purchase-invoice-applet/contra-workflow.png" alt="Contra tab workflow for offsetting purchase invoice with existing credit" caption="Contra Workflow: Offset invoice balances using existing deposits or credits." >}}
 
 ---
 
 ## Advanced Workflows
 
 ### Processing Bulk Invoices With File Import
-If you have a large volume of bills from suppliers, manually keying them in is inefficient. Use the **File Import** workspace instead.
+If you have a large volume of bills from suppliers, typing them in individually is inefficient. Use the **File Import** workspace instead.
 1. Download the file import CSV or Excel template from the File Import screen.
-2. Ensure columns (like dates in YYYY-MM-DD, Entity IDs, and Item Codes) are correctly filled out.
+2. Ensure data formatting is exact (e.g., Dates must be exactly in `YYYY-MM-DD` format, and Item Codes/Supplier Codes must match the system records exactly to prevent validation errors).
 3. Click **Add New (+)** and upload your spreadsheet.
 4. The system runs an automated **Helper Checking** validation on upload. If any rows fail (e.g., an Item Code does not exist), the list of errors will show on the screen.
 5. Click on the error lines to use the **Helper Checking Edit Form** to quickly correct rows directly from the browser without needing to modify and re-upload the spreadsheet.
 6. Once all errors are cleared, process the import to finalize the invoices into the system en masse.
 
-### Manual Intercompany Transactions
-If your organization has multiple branches or sister companies configured within the same tenant, you can bill internally using the built-in **Intercompany Transaction** mechanics. This bypasses the typical "Account payable to external vendor" flow.
-1. Navigate to the **Manual Intercompany Transaction** menu.
-2. Select your sending branch and receiving branch.
-3. Proceed just like a standard invoice. The system will automatically map the double-entry accounting to ensure both sides of the intercompany transaction are properly booked without manual journal postings.
+{{< figure src="/images/internal-purchase-invoice-applet/file-import-tab.png" alt="File Import workspace for template download and bulk upload" caption="File Import Workspace: Download template files and upload invoice data in bulk." >}}
 
-### Handling Supplier Returns
-If you have already clicked **FINAL** on a Purchase Invoice but later realize goods must be returned, or the supplier incorrectly overcharged:
-1. Open the finalized **Purchase Invoice**.
-2. Click the **Return Pop-Up** button located in the top actions bar.
-3. A return wizard will appear letting you select exactly which line items and quantities are being sent back.
-4. The system automatically creates a linked **Purchase Credit Note** to reverse the financial liability and adjust inventory without losing the audit trail of the original invoice.
+### Intercompany Transactions
+If your organization has multiple branches or sister companies configured within the same tenant, you can bill internally using the built-in **Intercompany Transaction** mechanics. This bypasses the typical "Account payable to external vendor" flow.
+
+{{< callout type="warning" >}}
+**Prerequisite**: This workflow requires that your organization's branches or sister companies are fully configured and linked within the same system tenant. If you do not see the target branch you are trying to bill in the dropdown list, contact your System Administrator to set up the intercompany entity mappings first.
+{{< /callout >}}
+
+1. Navigate to the **Intercompany Transaction** menu.
+2. Select your sending branch and receiving branch.
+3. Proceed just like a standard invoice. The system will automatically map the double-entry accounting to ensure both sides of the intercompany transaction are properly booked automatically without extra journal postings.
+
+{{< figure src="/images/internal-purchase-invoice-applet/intercomapny-transactions.png" alt="Intercompany transactions screen in purchase invoice applet" caption="Intercompany Transactions: Process invoices between linked internal branches or entities." >}}
 
 ---
 
@@ -196,22 +219,64 @@ If you have already clicked **FINAL** on a Purchase Invoice but later realize go
 
 When you open an existing invoice, you will see a variety of tabs. Here is what they do:
 
-- **Main Details:** Contains the header info, dates, Delivery Branch/Location (can be hidden), Purchaser, Credit Terms/Limits for the supplier, External Document References (DOs, quotations), and foreign exchange auto-rates.
-- **Search Document:** Used only when the invoice is in a `TEMP` (Draft) status. Search across other forms and modules to quickly reference un-linked orders.
-- **E-Invoice:** Your dashboard for tax portal submissions and error checking (MyInvois Processing, Failures, etc).
-- **Account:** The profile, billing, and shipping address of the supplier. You can toggle to create one on the fly here.
-- **Line Items:** The itemized breakdown of what you bought (quantity, prices, taxes).
-- **KO For (Knock-off):** A dedicated workspace to search and import existing Goods Received Notes (GRN) or Purchase Orders to auto-populate the invoice.
-- **Delivery Details:** This tab tracks shipping info, delivery address changes, and consignment parameters distinct from the supplier's billing account.
-- **AR AP (Outstanding Balance):** Quickly see the total invoice amount versus what is still remaining to be paid.
-- **Payment:** Add or view cash/bank settlements made against this invoice.
-- **Department Header:** Tag the invoice with a Dimension, Profit Center, or Project for management reporting.
-- **Posting:** View the accounting double-entry for inventory and general ledgers.
-- **Trace Document:** A visual map showing the flow from Purchase Order → GRN → Invoice.
-- **Contra:** Use this to offset the invoice balance against a previous deposit or existing Payment Voucher.
-- **Doc Link:** Manually link a related system file outside of the standard traceability chain (such as associating an arbitrary internal memo or ticket).
-- **Attachment:** Upload digital copies of physical receipts or supplier PDFs.
-- **Export:** Export the invoice to a predefined printable format.
+### **Main Details**
+Contains the header info, dates, Delivery Branch/Location (can be hidden), Purchaser, Credit Terms/Limits for the supplier, External Document References (such as Delivery Orders or quotations), and foreign exchange auto-rates.
+
+### **Search Document**
+Used only when the invoice is in a `TEMP` (Draft) status. This tab has sub-sections for **Search Purchase Order**, **Search Purchase GRN**, and **Search Purchase Invoice** so you can easily reference historical documents while building your current invoice.
+
+### **E-Invoice**
+Your dashboard for tax portal submissions and error checking (MyInvois Processing, Failures, etc).
+
+### **Account**
+The profile, billing, and shipping address of the supplier. You can switch to "Create" mode to quickly add a new supplier directly from this screen.
+
+### **Line Items**
+A spreadsheet-like grid where you can add rows, adjust quantities, toggle tax inclusiveness, and override unit prices for the specific items you bought.
+
+### **KO For (Knock-off)**
+A dedicated workspace to search and import existing approved records. It features two sub-tabs: **Purchase GRN** and **Purchase Order** allowing you to automatically pull in the exact items without re-typing them.
+
+### **Delivery Details**
+This tab tracks shipping info, delivery address changes, and consignment parameters distinct from the supplier's billing account.
+
+### **AR AP (Outstanding Balance)**
+Quickly check the financial health of the invoice. It shows read-only fields for Product & Services, Settlement, Contra, and Outstanding.
+- **How to use this:** A fully paid invoice will display a `0.00` Outstanding balance. If the balance is higher than expected, it tells you a payment or contra offset was missed.
+
+### **Payment**
+Add or view cash and bank transfers made against this invoice.
+
+### **Department Header**
+Tag the invoice with a Dimension, Profit Center, or Project for management reporting.
+
+### **Posting**
+View exactly which internal ledgers this invoice has updated. It shows status indicators for **Journal Posting**, **Inventory Posting**, **Membership Points Posting**, **Cashbook Posting**, and **Tax Posting**.
+
+### **Contra**
+Use this tab if your company has an existing prepayment or deposit from this supplier. Instead of making a fresh bank payment, you can deduct the invoice amount from that deposit here.
+
+### **Doc Link**
+Directly link a related system file to this invoice that is outside of the standard workflow (such as associating an arbitrary internal memo, a support ticket, or a related sales order).
+
+### **Attachment**
+Upload digital copies of physical receipts or supplier PDFs.
+
+### **Export**
+Export the invoice to a predefined printable format.
+
+---
+
+## Understanding The Top Action Buttons
+
+Once an invoice is created, you will notice a row of action buttons along the top of the document. Here is what they do:
+
+- **FINAL:** Locks the document. Once an invoice is finalized, it cannot be edited. It updates your accounting ledgers and makes the invoice ready for payment or E-Invoice submission.
+- **VOID:** Cancels a document that has already been finalized. Only users with specific permissions can do this.
+- **DISCARD:** Deletes a draft document (a document in `TEMP` status) permanently before it affects your accounting or inventory.
+- **SELF-BILLED:** Directly triggers this invoice to be submitted to the MyInvois tax portal as a Self-Billed invoice. Useful if the supplier does not automatically default to self-billing.
+- **BASE:** Toggles the financial values displayed on the screen into your company's Base Currency. This is incredibly helpful when viewing a foreign currency invoice, as it instantly shows you the converted equivalent without leaving the page. For example, if you entered a USD invoice and your base currency is MYR, clicking **BASE** shows you the MYR equivalent at the exchange rate recorded on the invoice — without leaving the page.
+- **SINGLE / MULTI PRINT:** Generates a printable PDF of the invoice. "Single" prints just the current document, while "Multi" lets you combine multiple records into a continuous print job.
 
 ---
 
@@ -225,6 +290,8 @@ If your screen feels cluttered with tabs you don't use, you can turn them off to
 2. Locate the "Feature Visibility" controls.
 3. Toggle off unused tabs (e.g., Hide Delivery Details, Hide Attachments, etc.).
 4. Explore **Vertical UI**: Toggle this to ON. This changes the traditional horizontal tab approach into an infinitely scrolling vertical layout, so you don't have to constantly click tab headers to see different sections.
+
+{{< figure src="/images/internal-purchase-invoice-applet/applet-configuration.png" alt="Application settings screen for purchase invoice applet configuration" caption="Applet Configuration: Manage feature visibility and layout options for the Purchase Invoice applet." >}}
 
 ---
 
@@ -240,4 +307,23 @@ The E-Invoice tab will remain empty during standard creation until a supplier is
 No. If there are no existing deposits or payment vouchers linked to this supplier, the Contra list will be empty.
 
 **What happens if I make a mistake on a finalized invoice?**  
-Once FINAL, lines cannot be edited. Depending on your policy, you must either VOID the document and recreate it, or issue a Credit Note.  
+Once FINAL, lines cannot be edited. Depending on your business policy, you must request the document be **VOIDED** to recreate it correctly, or you must process a separate Purchase Credit Note to reverse the liability.
+
+**Why can't I find my receipt or order in the "KO For" tab?**  
+The source document (like a Goods Received Note or Purchase Order) must be approved and finalized before it appears for knock-off. Additionally, ensure the document has not already been fully knocked-off and billed on a different invoice!
+
+**My Bulk File Import failed with row errors. Do I have to fix my spreadsheet and re-upload?**  
+No! Click on the failed rows on the screen and use the **Helper Checking Edit Form**. You can correct issues—like fixing a misspelled Item Code or adjusting a date—directly in the browser and then finalize the import.
+
+**I forgot to set a supplier to default to "Self-Billed" before creating their invoice. What do I do?**  
+Simply open your Draft/TEMP invoice and click the **SELF-BILLED** button in the top action bar. This will manually force the document into the self-billing tax workflow for the My E-Invoice Portal Applet.
+
+**How do I quickly see the total of a foreign currency invoice in our local reporting base?**  
+Click the **BASE** button at the top of the invoice screen. It will instantly recalculate and display the values in your company's local base currency without navigating to another applet. For example, if you entered a USD invoice and your base currency is MYR, clicking **BASE** shows you the MYR equivalent at the exchange rate recorded on the invoice — without leaving the page.
+
+**Why can't I finalize my document?**  
+If the **FINAL** button fails or is preventing you from completing the invoice, it is typically because:
+1. **Missing Information:** Mandatory fields, like the **Supplier Invoice No** or dates, are blank.
+2. **Amounts Don't Balance:** The total invoice amount you entered does not match the sum of the individual line items.
+3. **Knock-Off Mismatch:** The invoice is tied to a source document (like a GRN) and the quantities or knocking amounts do not equal what was received.
+4. **Tax Discrepancies:** The tax calculations or rounding adjustments are inaccurate. Ensure all red error indicators on the screen are resolved.  
