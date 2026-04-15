@@ -58,6 +58,9 @@ Customer loyalty programs, membership administration, commission schemes, and vo
 ### [Sales Commission](/applets/sales-commission/)
 Commission scheme configuration and sales commission tracking.
 
+### [Human Resources](/applets/human-resources/)
+Applets for employee management — including time and attendance tracking, monitoring presence across branches, and HR administrative oversight.
+
 ### [RMA](/applets/rma/)
 Return Merchandise Authorization — managing product returns, approvals, and tracking.
 
