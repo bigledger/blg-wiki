@@ -245,7 +245,20 @@ The Account tab has three sub-tabs that together define **who** this job is for 
 
 ---
 
-### 5. Payment Tab
+### 5. Contra Tab
+
+*   **What it is**: A way to offset the Jobsheet's balance against an existing credit — instead of collecting cash, you "net off" what the customer owes against a credit they already have.
+*   **The Analogy**: Imagine a customer overpaid on a previous job and has a RM200 credit sitting on their account. Instead of paying cash for this new job, you apply that credit to reduce the amount owed. That's a contra.
+*   **Key Actions**:
+    *   **Add Contra** — Select a source document (e.g., a credit note) to offset against this Jobsheet.
+    *   **Select Document** — Browse and pick the credit document to apply.
+*   **Accounting Importance**: Contra entries keep the books clean without cash changing hands. Instead of two separate transactions (pay cash, then refund cash), one contra entry settles both sides simultaneously. This reduces bank reconciliation work and avoids unnecessary cash movements.
+
+> This tab is available in both Create and Edit modes.
+
+---
+
+### 6. Payment Tab
 
 *   **What it is**: A record of any payments received directly against this Jobsheet (e.g., a deposit or full payment collected on-site).
 *   **The Analogy**: The **Cash Register Receipt** given to the customer at the workshop counter before a formal invoice is raised.
@@ -260,16 +273,78 @@ The Account tab has three sub-tabs that together define **who** this job is for 
 
 ---
 
-### 6. Department Hdr Tab
+### 7. Department Hdr Tab
 
-*   **What it is**: The **cost center allocation** for this Jobsheet — which internal department is responsible for or benefiting from this job.
-*   **The Analogy**: The **Internal Charge-Back Form** in a large company. If the IT department calls in a technician to fix a server, the cost is "charged back" to the IT department's budget, not the general company account.
-*   **Accounting Importance**: This is the foundation of **Management Accounting**. Without department tagging:
-    *   You cannot produce a **Profit & Loss by Department** report.
-    *   You cannot hold department heads **accountable** for their team's service costs.
-    *   Month-end **cost allocation** becomes a manual, error-prone exercise.
+*   **What it is**: Four dropdown fields that tag this Jobsheet to the correct internal team, division, or project inside your company. Think of it like a **branch dropdown — but with four levels of detail instead of one**.
 
-> This tab can be hidden via **Application Settings** if your organization does not use departmental cost centers.
+**The simple version**: Your company has multiple departments — Service, Sales, IT, etc. When a technician from the Service department completes a job, someone needs to tell the system "this job belongs to the Service department." That's all this tab does. At month end, finance can then ask "how much did the Service department earn this month?" and the system already knows, because every job was tagged.
+
+The tab has four dropdowns, each one a different way of labelling who owns the job:
+
+| Field | What it is | Example |
+|-------|-----------|---------|
+| **Segment** | The broadest label — which part of the business? | "Retail" vs "Corporate" vs "Government" |
+| **Profit Centre** | Which specific team or branch did this job? | "KL Service Team" or "Penang Branch" |
+| **G/L Dimension** | An extra custom tag your finance team defined for their own reporting needs | "North Region" or "Product Line A" |
+| **Project** | If this job is part of a bigger ongoing project, link it here | "Senheng Maintenance Contract 2026" |
+
+None of these affect the customer or the invoice. They are purely internal labels so management can slice the numbers at month end — by branch, by team, by project — without manually sorting through every job.
+
+> This tab can be hidden via **Application Settings** if your organization does not use these classifications.
+
+---
+
+### Edit-Only Tabs
+
+The following tabs only appear when **editing** an existing Jobsheet (not during initial creation). They unlock additional capabilities once the record has been saved.
+
+### 8. Delivery Details Tab
+
+*   **What it is**: A listing of delivery-related records linked to this Jobsheet — tracking any physical movement of goods associated with the job.
+*   **The Analogy**: The **Dispatch Log** at the back of the workshop — showing which parts were sent out and when.
+*   **Accounting Importance**: Links the service record to physical stock movements, ensuring inventory deductions are traceable back to the originating job. Prevents stock discrepancies where parts were dispatched but never tied to a document.
+
+---
+
+### 9. Attachments Tab
+
+*   **What it is**: A file repository for documents related to this Jobsheet — photos, signed forms, warranties, inspection reports, etc.
+*   **The Analogy**: The **physical folder** clipped to the Job Card at a workshop, containing the customer's signature, before/after photos, and any warranty paperwork.
+*   **Key Actions**:
+    *   **Add Attachment** — Upload a file (image, PDF, etc.) to the Jobsheet record.
+    *   **View Attachment** — Open and review an existing attached file.
+*   **Accounting Importance**: Attachments serve as **supporting evidence** for audit purposes. If a customer disputes a charge, the signed job approval or photo evidence attached here is the proof that the work was authorised and completed.
+
+---
+
+### 10. Doc Link Tab
+
+*   **What it is**: A traceability panel showing which documents this Jobsheet was **copied from** and which documents were **copied from** this Jobsheet.
+*   **Sub-tabs**:
+    *   **Copied From** — Shows the upstream document (e.g., a Sales Order or Service Note) that this Jobsheet originated from.
+    *   **Copied To** — Shows downstream documents (e.g., a Sales Invoice) that were created using this Jobsheet as a source.
+*   **The Analogy**: The **paper trail** on a Job Card — "this job came from Work Order #123" and "this job was billed as Invoice #456."
+*   **Accounting Importance**: This is the **Audit Chain**. Auditors and finance teams can trace any invoice back to the original service request, and any service request forward to its final billing document. Without this, you cannot prove the full lifecycle of a transaction.
+
+---
+
+### 11. Export Tab
+
+*   **What it is**: A PDF export tool for printing the Jobsheet as a formatted document.
+*   **Key Actions**:
+    *   Select a **Printable Format** (configured in Settings).
+    *   Click **Export as PDF** to generate the printable version.
+*   **The Analogy**: The **Print button** — turning the digital Job Card into a physical document you can hand to the customer or file away.
+*   **Accounting Importance**: The printed Jobsheet serves as a **source document** for manual filing and customer sign-off. In some workflows, the customer signs the printed Jobsheet to authorise billing before the invoice is raised.
+
+---
+
+### 12. Convert Tab
+
+*   **What it is**: A one-click action to convert the Jobsheet directly into an **Internal Receipt Voucher**.
+*   **Important**: This action **cancels the current Jobsheet** and creates a Receipt Voucher in its place.
+*   **The Analogy**: Tearing up the Job Card and replacing it with a Receipt — used when the job was simple enough that a full invoice isn't needed, just a proof of payment.
+*   **Accounting Importance**: A Receipt Voucher is a simpler financial document than an Invoice. Converting to one is appropriate for cash-on-the-spot jobs where no credit terms or formal billing cycle is needed. It closes the job financially in one step.
 
 ---
 
