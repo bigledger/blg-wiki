@@ -115,6 +115,8 @@ Implementing e-invoicing often introduces complex administrative overhead, espec
   {{< card title="Monthly Reporting" subtitle="Generate comprehensive summaries for tax audits and filing" link="#reporting-and-analytics" >}}
 {{< /cards >}}
 
+{{< figure src="/images/my-einvoice-for-customer-and-supplier-applet/my-einvoice-for-customer-and-supplier-overview-infographic.png" alt="My E-Invoice for Customer & Supplier Applet Overview - Challenges (fragmentation, compliance risk, manual matching), Solution (unified hub, automated submission, smart reconciliation), and User Roles (Tax Officers, Finance Teams, AR/AP Specialists)" caption="My E-Invoice Operations Hub: Transforming fragmented workflows into a unified compliance engine with automated submissions and strategic reconciliation." >}}
+
 ## Key Concepts
 
 ### Understanding the E-Invoice Lifecycle

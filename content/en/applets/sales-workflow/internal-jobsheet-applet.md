@@ -130,6 +130,8 @@ Traditional service tracking often relies on loose papers, manual logs, or separ
   {{< card title="Draft & History" subtitle="Save progress and maintain a full audit trail" link="#draft-management--audit" >}}
 {{< /cards >}}
 
+{{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-overview-infographic.png" alt="Internal Jobsheet Applet Overview - Challenges (lost paperwork, billing delays, inaccurate tracking), Solution (digital worklog, seamless invoicing, real-time parts tracking), and User Roles (Technicians, Operations Managers, Finance Teams)" caption="Service-to-Cash Workflow: Eliminating disconnected service bottlenecks by centralizing digital job recordings, integrated parts tracking, and automated financial settlements." >}}
+
 ---
 
 ## Key Concepts

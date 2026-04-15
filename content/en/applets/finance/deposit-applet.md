@@ -160,6 +160,8 @@ Managing deposits across multiple banks using ad-hoc spreadsheets leads to signi
 - **Strict Data Parity** - Ensures invitee details match requisition constraints, preventing data drift
 - **Strategic Auto-Rollover** - Configurable logic to keep funds invested according to schedule until stopped
 
+{{< figure src="/images/deposit-applet/deposit-overview-infographic.png" alt="Deposit Applet Overview - Challenges (manual spreadsheets, scattered emails, stagnant cash), Solution (automated interest engine, competitive bidding hub, smart auto-rollover), and User Roles (Treasury Managers, Finance Controllers, Financial Analysts)" caption="Deposit Management Hub: Transforming manual treasury risks into a streamlined, automated investment lifecycle with competitive bank quoting and intelligent rollover logic." >}}
+
 ---
 
 ## Key Concepts
