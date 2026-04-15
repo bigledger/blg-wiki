@@ -25,38 +25,54 @@ weight: 10
 
 ---
 
-## Purpose and Overview
+## How This Applet Differs from the My E-Invoice Admin Applet
 
-The **My E-Invoice for Customer & Supplier Applet** is the operational nerve center for an organization's daily electronic invoicing tasks. It provides a unified interface to manage e-invoice lifecycles for both **Sales (Customer)** and **Purchase (Supplier)** transactions at the branch or departmental level.
-
-### User Applet vs. Admin Applet (The "Shopkeeper vs. Auditor" Analogy)
-
-If you are a new employee, it is easy to confuse these two. Think of it like a chain of retail stores:
+These two applets are often confused because they both deal with e-invoices. The key is understanding **who uses them and what they actually do**.
 
 #### 1. This Applet (The Shopkeeper - Operational)
-*   **The Analogy**: You are the **Shopkeeper** running your specific store. You handle your own customers, ring up their sales, and handle returns for your local shop.
-*   **The Reality**: This is where you perform the **Legal Submission**. You take the sales invoice created in the Sales Applet and "Show it to the Government." Once they approve it, your invoice becomes an "Official Tax Document."
-*   **Accounting Importance**: **To keep your customers happy.** In modern tax systems (like LHDN), a customer can only claim a "Tax Refund" if the invoice is officially validated. If you forget to use this applet to submit the sale, your customer receives a document that is "illegal" for tax claims, and they will not be able to get their money back from the government.
+*   **The Analogy**: You are the **Shopkeeper** running your specific store. You handle your own customers, ring up their sales, handle returns, and make sure every receipt is stamped and legal — all for your branch.
+*   **The Reality**: This is where the **actual daily compliance work happens**. Your five core tasks in this applet are:
+    1. **Submit invoices to LHDN** — the main daily task. Take invoices created in the Sales Applet and get them officially validated by the government.
+    2. **Match incoming supplier invoices** against your internal purchase records to confirm what you received is what was billed.
+    3. **Fix rejections** when LHDN sends a document back with an error — correct the data and resubmit.
+    4. **Cancel validated invoices** when a transaction needs to be voided (within LHDN's cancellation window).
+    5. **Reconcile your internal records** against what LHDN has on file to ensure your books and the government's records match.
+*   **Accounting Importance**: **To keep your customers happy and your branch compliant.** In Malaysia's tax system (LHDN), a customer can only claim a tax refund if the invoice is officially validated. If you skip submission, your customer holds a document that is illegal for tax claims — they cannot recover the tax they paid.
 
 #### 2. The Admin Applet (The Head Auditor - Governance)
-*   **The Analogy**: This is the **Head Auditor** at the HQ office. They don't sell items to customers. Instead, they look at the performance of **ALL stores** at once. They can see if one store is having "Technical Glitches" across the country.
-*   **The Reality**: This is for **Oversight and Mass Maintenance**. It has a **Master List** to see every transaction in the whole company. It also has "Tools" to fix thousands of customer records (TINs) at once, rather than one by one.
-*   **Accounting Importance**: This ensures **Corporate-Wide Safety**. It prevents "Systemic Risk"—if a major government rule changes, the Admin fixes it once for everyone, so individual shopkeepers don't have to worry about the technical details.
+*   **The Analogy**: This is the **Head Auditor** at the HQ office. They don't sell items to customers or process individual invoices. Instead, they look at the performance of **ALL stores** at once and can spot if one branch is having systemic problems.
+*   **The Reality**: This is for **Oversight and Mass Maintenance**. It has a **Master List** to see every transaction across the whole company, and tools like Bulk TIN Validation to fix thousands of customer records at once rather than one by one.
+*   **Accounting Importance**: This ensures **Corporate-Wide Safety**. It prevents systemic risk — if a major LHDN rule changes, the Admin fixes it once for everyone, so individual shopkeepers don't have to worry about the technical details.
 
 | Feature | **My E-Invoice (Customer & Supplier)** | **My E-Invoice Admin Applet** |
 | :--- | :--- | :--- |
 | **Your Role** | **"Doing the Work"** | **"Watching the System"** |
 | **Visibility** | Your Branch Data Only | **All Branches (Master List)** |
-| **Special Task** | Document Matching & Submission | **Bulk Data Cleaning & Auditing** |
+| **Daily Tasks** | Submit, Match, Fix, Cancel, Reconcile | Audit, Bulk Clean, Monitor, Configure |
 | **Analogy** | The **Shopkeeper** (Branch Store) | The **Head Auditor** (HQ Office) |
 
-{{< callout type="info" >}}
-**New Employee Note**: If your job is to process invoices for your department, you will spend 100% of your time in **this applet**. You will only ever need the **Admin Applet** if you are promoted to a management or system-wide auditing role.
-{{< /callout >}}
+### The 3-Step Lifecycle (Where Each Applet Fits)
+
+```
+Step 1 — CREATE   →  Sales / Purchase Applet
+                      (Write the invoice)
+
+Step 2 — ACTION   →  This Applet (Customer & Supplier)   ← You are here
+                      (Submit, Match, Fix Rejections, Cancel, Reconcile)
+
+Step 3 — MONITOR  →  My E-Invoice Admin Applet
+                      (Check if all branches completed Step 2 correctly)
+```
 
 {{< callout type="info" >}}
-**Core Concept**: This applet (**Customer & Supplier**) acts as the final "Compliance Gateway" where internal financial documents are prepared, validated against tax rules, and formally submitted for government approval.
+**New employee rule of thumb**: If your job is to process invoices for your team or branch, you will spend 100% of your time in **this applet**. You only need the Admin Applet if you move into a management or company-wide auditing role.
 {{< /callout >}}
+
+---
+
+## Purpose and Overview
+
+The **My E-Invoice for Customer & Supplier Applet** is the operational nerve center for an organization's daily electronic invoicing tasks. It provides a unified interface to manage e-invoice lifecycles for both **Sales (Customer)** and **Purchase (Supplier)** transactions at the branch or departmental level.
 
 ## Key Features Overview
 
