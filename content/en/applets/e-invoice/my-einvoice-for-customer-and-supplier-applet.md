@@ -66,6 +66,8 @@ Step 3 — MONITOR  →  My E-Invoice Admin Applet
 
 {{< callout type="info" >}}
 **New employee rule of thumb**: If your job is to process invoices for your team or branch, you will spend 100% of your time in **this applet**. You only need the Admin Applet if you move into a management or company-wide auditing role.
+
+**Core Concept**: This applet (**Customer & Supplier**) acts as the final "Compliance Gateway" where internal financial documents are prepared, validated against tax rules, and formally submitted for government approval.
 {{< /callout >}}
 
 ---
