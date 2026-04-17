@@ -3,7 +3,7 @@ title: "Purchase Requisition (Internal) Applet"
 description: "Create and manage internal purchase requisitions with posting controls, line item tracking, knock-off from Jobsheet, printing, approvals, and line item queue approvals."
 weight: 10
 date: 2026-04-10
-lastmod: 2026-04-10
+lastmod: 2026-04-13
 draft: false
 tags:
 - purchase-workflow
@@ -22,6 +22,8 @@ A **purchase requisition** is your company's formal way of saying *"we need to b
 Think of it like a **pre-approved shopping list**: you specify what you need, your manager checks it makes sense and fits the budget, and then it gets handed off to procurement to place the actual order. The purchase requisition is the internal request; the purchase order is the formal commitment sent to the supplier.
 
 The **Purchase Requisition (Internal) Applet** is where your team creates, tracks, approves, and manages those requisitions — from the first draft all the way through to approval and any follow-up your company requires.
+
+{{< figure src="/images/internal-purchase-requisition-applet/internal-purchase-requisition-infographic-overview.png" alt="Purchase Requisition (Internal) Applet overview: structured internal requests, approvals, line-level views, and handoff to purchasing" caption="Overview of the internal purchase requisition journey—from what you need to buy, through approval, to procurement and follow-up." >}}
 
 ---
 
