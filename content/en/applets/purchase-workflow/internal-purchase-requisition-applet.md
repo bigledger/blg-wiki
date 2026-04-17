@@ -3,7 +3,7 @@ title: "Purchase Requisition (Internal) Applet"
 description: "Create and manage internal purchase requisitions with posting controls, line item tracking, knock-off from Jobsheet, printing, approvals, and line item queue approvals."
 weight: 10
 date: 2026-04-10
-lastmod: 2026-04-13
+lastmod: 2026-04-20
 draft: false
 tags:
 - purchase-workflow
@@ -24,6 +24,12 @@ Think of it like a **pre-approved shopping list**: you specify what you need, yo
 The **Purchase Requisition (Internal) Applet** is where your team creates, tracks, approves, and manages those requisitions — from the first draft all the way through to approval and any follow-up your company requires.
 
 {{< figure src="/images/internal-purchase-requisition-applet/internal-purchase-requisition-infographic-overview.png" alt="Purchase Requisition (Internal) Applet overview: structured internal requests, approvals, line-level views, and handoff to purchasing" caption="Overview of the internal purchase requisition journey—from what you need to buy, through approval, to procurement and follow-up." >}}
+
+## Video Overview
+
+{{< youtube acPX2sXOPVo >}}
+
+*This video is a walkthrough of the workflows in the Internal Purchase Requisition Applet.*
 
 ---
 
@@ -93,6 +99,7 @@ Having the right information ready before you begin will make the process faster
 	{{< card title="Approval History" subtitle="See what was approved or rejected before" link="#approval-history" >}}
 	{{< card title="Settings" subtitle="Fields, workflow, print, approvals, and access" link="#configuration--settings" >}}
 	{{< card title="Quick Start" subtitle="Step-by-step guides by role" link="#quick-start-guide" >}}
+	{{< card title="Glossary" subtitle="Key terms used in this applet" link="#glossary" >}}
 	{{< card title="FAQ" subtitle="Common questions and answers" link="#faq" >}}
 {{< /cards >}}
 
@@ -154,6 +161,8 @@ Depending on how your company has configured the applet, the edit screen may sho
 
 **Goal:** Save a new purchase requisition ready for approval.
 
+{{< figure src="/images/internal-purchase-requisition/For-Requesters-Create-Your-First-Purchase-Requisition.png" alt="Purchase requisition create screen with main details, account, and line items areas" caption="Create requisition: use the listing **+** to start a new document, then work through **Main Details**, **Account**, and **Line Items** (red markers usually mean required fields)." >}}
+
 1. Open **Purchase Requisition (Internal)** from the left menu. You will see the list of existing requisitions.
 2. Click **Create** (the **+** icon, usually at the top left).
 3. On the **Main Details** tab, fill in:
@@ -172,6 +181,8 @@ Depending on how your company has configured the applet, the edit screen may sho
 6. If your company uses them and the tabs are visible, complete **Delivery Details**, **Payment**, or **Department Header**.
 7. If **KO For** appears and you have a Jobsheet to reference, open that tab, find your Jobsheet in the list, and select it — the relevant details will be brought into your requisition automatically.
 8. Click **Create** to save the requisition.
+
+{{< figure src="/images/internal-purchase-requisition/submit-for-approval.png" alt="Submit for approval or generic doc approval area on a purchase requisition" caption="When the draft is complete, start approval from the document using **Submit for approval** or **Generic Doc Approval** (labels depend on your setup), then track status from the list or **Approval Request**." >}}
 
 **What happens next?** Your requisition is saved as a draft. Depending on your company's workflow, you may need to click **Final** from the list, or the document will automatically enter the approval queue. Follow your internal purchasing process.
 
@@ -286,6 +297,8 @@ Other document types — such as purchase orders or quotations — are not avail
 
 The **Line Items** option in the left menu gives you a single list of all individual lines from many purchase requisitions at once. This is useful for operations or procurement teams who want to see what items are being requested across the company without opening each requisition individually. You can filter and search by item, date, branch, or other criteria depending on your settings.
 
+{{< figure src="/images/internal-purchase-requisition/line-items-listing-view.png" alt="Line Items menu listing showing lines from multiple purchase requisitions" caption="**Line Items** (left menu): one grid of lines from many requisitions—use filters and **Search** to narrow by item, branch, date, or other fields your company exposes." >}}
+
 {{< callout type="warning" >}}
 The **Line Items menu** is not the same as the **Line Items tab** inside a single purchase requisition. The menu shows lines from all documents; the tab is for adding or editing lines on one specific document only.
 {{< /callout >}}
@@ -297,6 +310,8 @@ The **Line Items menu** is not the same as the **Line Items tab** inside a singl
 The **Line Items Queue** is an approval step that works at the **individual line level**, rather than on the whole document. When this feature is enabled, individual lines from purchase requisitions are placed into a queue, and a user with the correct access rights can approve them in bulk using the **Approve** action.
 
 This is typically used by companies that need a separate sign-off on specific line items before the overall requisition can move forward — for example, IT equipment lines that require sign-off from the IT department before the full requisition is approved by a manager.
+
+{{< figure src="/images/internal-purchase-requisition/line-items-queue-approve.png" alt="Line Items Queue with Approve action for pending lines" caption="**Line Items Queue**: open each line (or use your screen’s bulk actions), review branch, item, and quantity, then **Approve** when the line is ready to proceed." >}}
 
 {{< callout type="warning" >}}
 If the **Line Items Queue** menu or the **Approve** action is missing, the feature may have been turned off in **Settings**, or your role may not include access to it. Contact your administrator if you expect to see it and do not.
@@ -368,13 +383,38 @@ Not all of these applets may be visible or enabled for your company. Which apple
 
 ---
 
+## Glossary {#glossary}
+
+| Term | What it means |
+| --- | --- |
+| **ARAP** | Short for Accounts Receivable / Accounts Payable. Used by finance to link the requisition to the right accounts. Most requesters do not need to use this section. |
+| **Branch** | A location, office, or division in your company. Bill To, Ship To, and many defaults are tied to branch; yours may be pre-filled from your user profile. |
+| **Branch Designation** | Configuration that links users and approval routing to branches (for example, Branch A requests route to the Branch A approver). |
+| **Contra** | Links this document to another to offset or balance an amount (for example, netting against an earlier requisition). |
+| **Cost Centre** | Your department’s budget or billing code for this purchase. Ask finance or your manager if you do not know the code. |
+| **Discard** | Removes a draft that was never properly completed. Unlike **Void**, it does not leave a formal cancellation record on the books. |
+| **Doc Link** | Links this requisition to other BigLedger documents so they stay easy to find together (for example after a purchase order is created from the requisition). |
+| **Draft** | The requisition can still be edited; it is not locked. Approval tasks may not exist until your process moves it forward from Draft. |
+| **Export** | Download the requisition (for example PDF or Excel) for sharing or filing outside the system. |
+| **Final** | Posting status that locks the document so header and lines usually cannot be changed. Often set when your process finalizes the requisition before or with approval. |
+| **Generic Doc Approval** | On a saved document: start or check the approval workflow and see who must act next. |
+| **Jobsheet** | A job or service document (for example maintenance work). In this applet it can be a **knock-off** source into a requisition when enabled. |
+| **Knock-Off (KO)** | Pulls data from another document (such as a Jobsheet) into the requisition so you do not retype lines and details. |
+| **Line Items Queue** | Line-level approval: individual lines wait here until approved, which can be required before or alongside full document approval. |
+| **Posting Status** | **Draft** vs **Final** (and similar): whether the document is still open for editing or locked. |
+| **Status** | The record’s general state (for example Active). Separate from **Posting Status**. |
+| **Trace Document / Posting** | Shows how this requisition connects to follow-on documents (purchase order, invoice, and so on). |
+| **Void** | Formal cancellation with an audit trail in reports. Use for a real requisition you must cancel; not the same as **Discard**. |
+
+---
+
 ## FAQ {#faq}
 
 **Why can't I see the Create button?**
 Your account may not have permission to create purchase requisitions, or the button may have been hidden for your role by an administrator. Contact your administrator and ask them to check your **Permissions** and **Feature Visibility** settings.
 
 **Why are Final, Void, or Print missing from the list?**
-These actions only appear when the document is in **Draft** status and your role has access to them. Print is also only shown when a print format has been configured and enabled by your administrator.
+These actions apply to rows you select on the **Purchase Requisition** list. **Final** and **Void** usually appear when the requisition is still in **Draft** (posting) and your role is allowed to use them. **Print** also needs a **print format** to be set up and enabled for your role. If you expect **Print** on a **Final** document, ask your administrator—visibility can depend on settings.
 
 **Why don't I see the Delivery Details, Payment, Department Header, or KO For tabs?**
 Those tabs are optional and can be hidden by your administrator through **Application Settings** or **Feature Visibility**. If you need one of those tabs and cannot see it, ask your administrator to enable it.
@@ -382,11 +422,17 @@ Those tabs are optional and can be hidden by your administrator through **Applic
 **What is the difference between Void and Discard?**
 Both cancel a requisition, but they work differently. **Void** creates a formal cancellation record that is visible in reports and leaves a clear audit trail — use this for requisitions that were properly created and need to be cancelled. **Discard** is for drafts that were never properly completed and removes the document without leaving a cancellation record. If you are unsure which to use, ask your finance team or administrator before taking action.
 
+**Why can't I Void my requisition (the action is missing or blocked)?**
+Often the requisition was **already converted to a purchase order** or is **linked to downstream documents** your rules will not break. Open **Trace Document / Posting** or **Doc Link** to see related POs. Follow your company process to adjust or cancel the downstream document first, or ask your administrator.
+
+**I saved my requisition—why hasn't it gone to my approver?**
+Saving with **Create** stores the document; your company may still require **Final** on the list and/or **Submit for approval** / **Generic Doc Approval** on the document before a task appears in **Approval Request**. Open the requisition, check **Generic Doc Approval**, and confirm **Posting Status** matches what your process expects.
+
 **My purchase requisition is not showing up in Approval Request — why?**
-The most common reasons are: the document is still in **Draft** and has not been submitted for approval yet; the approval routing is sending it to a different approver or branch; or the approval step was not triggered correctly. Open the document, check the **Generic Doc Approval** section to see if an approval task has been created, and contact your administrator if nothing is showing there.
+The most common reasons are: the document is still in **Draft** and has not been submitted for approval yet; the approval routing is sending it to a different approver or branch; or the approval step was not triggered correctly. If your company uses **Line Items Queue**, lines may need to be **approved there first** before the header appears in **Approval Request**. Open the document, check **Generic Doc Approval**, and contact your administrator if nothing is showing there.
 
 **I submitted a requisition for approval but the approver says they cannot see it. What should I check?**
-Ask your administrator to check the **Approval Settings** and confirm that the routing is pointing to the correct approver. Also confirm the document has left **Draft** status — if it is still Draft, the approval task may not have been created yet.
+Ask your administrator to check the **Approval Settings** and confirm that the routing is pointing to the correct approver. Also confirm the document has left **Draft** status — if it is still Draft, the approval task may not have been created yet. Check **Line Items Queue** if line approval runs before the approver’s queue.
 
 **What do I do if my purchase requisition is rejected?**
 When a requisition is rejected, the approver should have left a remark explaining what needs to change. Open the document, read the rejection reason, make the corrections, and resubmit it for approval. If no reason was given, contact the approver directly to ask what needs to be fixed.
@@ -404,49 +450,33 @@ This depends on whether your company's configuration includes a duplicate or cop
 If the menu is missing, the feature may be disabled in **Settings** or your role may not include access to it. If the menu is visible but the queue is empty, there may simply be no lines waiting at this time, or your current filters may be hiding them. Try clearing your filters or contact your administrator.
 
 **Can I edit a purchase requisition after it has been set to Final?**
-Once a document reaches **Final**, editing is locked to preserve the record. If a correction is needed, your process may require voiding the document and raising a new one. Check with your administrator or finance team before doing this, as it may affect related documents like a purchase order that was already raised from this requisition.
+Once a document reaches **Final**, header and line editing are usually locked. You may still add **Attachments** or **reprint** where your product allows. If a correction is needed, your process may require **Void** and a new requisition. Check with your administrator or finance team before voiding, especially if a **purchase order** was already raised from this requisition.
 
 **Where do purchase requisitions go after they are approved?**
-An approved requisition is typically handed off to purchasing, who raise an Purchase Order (Internal) as the next step. That happens in the **[Purchase Order (Internal) Applet](/applets/purchase-workflow/internal-purchase-order-applet/)**. The exact process depends on how your company has set things up.
+Purchasing usually continues in the **[Purchase Order (Internal) Applet](/applets/purchase-workflow/internal-purchase-order-applet/)** — for example by creating a new PO and **searching by purchase requisition** so **Final** requisitions appear. That step is **not always automatic**; it depends on your workflow and configuration. If nothing happens after approval, confirm your internal SOP and settings with your administrator.
 
----
+**I'm raising a PO—why doesn't my requisition appear when I search for it?**
+Typical causes: the requisition is not **Final** yet, filters (company, branch, supplier) do not match, or the requisition was **already fully used** on another PO. Open the requisition and check **Trace Document / Posting** and **Doc Link** for existing links.
 
-## Glossary
+**The screen shows red fields or I cannot save—what am I missing?**
+Red or highlighted fields are usually **required**. Check every tab (**Main Details**, **Account**, **Line Items**, and optional tabs your company uses) and ensure each line has item, quantity, and any mandatory pricing or dimensions.
 
-**ARAP** — Short for Accounts Receivable / Accounts Payable. The ARAP section is used by your finance team to link the requisition to the correct accounts for payment processing. Most requesters do not need to interact with this section directly.
+**I cannot find “create new supplier” or I picked the wrong supplier on Account.**
+Use the **Select** vs **Create** (or edit) mode on the **Account** tab: in **Select** mode you pick an existing supplier; in **Create** / edit supplier mode your administrator may allow a **+** to add a new supplier. If the toggle is missing, your role may be restricted—ask your administrator.
 
-**Branch** — A specific location, office, or division within your company. Many fields in the applet, such as Bill To and Ship To, are tied to a branch. Your default branch may be pre-filled based on your user settings.
+**My Jobsheet does not appear under KO For—why?**
+The Jobsheet may not be in the right **status**, may be outside your **branch** filter, or **KO For** / document types may be disabled in **Settings**. Confirm with your administrator which sources are enabled for knock-off.
 
-**Branch Designation** — A configuration setting that links users and approval routing to specific branches. For example, a requester in Branch A may automatically have their requisition routed to the Branch A manager for approval.
+**First approver approved—where did the requisition go?**
+It may be waiting on the **next approver** in the chain. Open **Generic Doc Approval** on the document and use **Approval History** to see who has acted and who is next.
 
-**Contra** — A section that links a document to another document in order to offset or balance a value. For example, if a previous requisition was raised for too much, a Contra can be used to reduce the outstanding amount against it.
+**Print is missing, blank, or looks wrong.**
+Confirm a **print format** exists in **Printable Format Settings**, that **Feature Visibility** allows print for your role, and that you are using **Single print** / **Multiple print** from the list when supported.
 
-**Cost Centre** — Your department's internal billing or budget reference code. It tells the finance team which department's budget should be used for this purchase. If you do not know your cost centre code, ask your finance team or manager.
+**Why does my document number or reference still look “temporary”?**
+Many companies only assign the **official** document number (or fill certain reference fields) when the requisition reaches **Final** or when numbering rules run at that step. If it stays blank unexpectedly, ask your administrator about numbering setup.
 
-**Discard** — Cancels a draft requisition that was never properly completed or submitted. Unlike Void, Discard does not leave a formal cancellation record. Only use this for documents you genuinely want to delete entirely.
-
-**Doc Link** — A section where you can attach references to other related documents within BigLedger, so they can be found and traced together.
-
-**Draft** — The initial stage of a purchase requisition. A document in Draft can still be edited freely. It has not been submitted for approval yet.
-
-**Export** — A feature that lets you download the requisition as a file (such as a PDF or Excel spreadsheet) for sharing or filing outside of BigLedger.
-
-**Final** — A posting status that locks the document. Once a requisition is Final, it generally cannot be edited. This typically happens after the requisition has been approved.
-
-**Generic Doc Approval** — The section on a saved document where you can start an approval request or check the current status of one. When you open a requisition and look for whether it has been sent for approval, this is the section to check.
-
-**Jobsheet** — A document that records the details of a job or service task — typically used in maintenance, operations, or project-based businesses to describe work that needs to be done or materials required. In this applet, a Jobsheet can be used as a source to knock off (copy details) into a purchase requisition.
-
-**Knock-Off (KO)** — The process of pulling data from one document (such as a Jobsheet) into another (such as a purchase requisition), so you do not need to re-enter the same information by hand.
-
-**Line Items Queue** — An approval step that works at the individual line level rather than on the whole document. Lines are placed in a queue and can be approved separately, before or alongside the overall document approval.
-
-**Posting Status** — A field that tells you whether a document is still open for changes (Draft) or locked (Final). This is separate from Status, which tracks the general lifecycle of the record.
-
-**Status** — A field that shows the general working state of a record — for example, whether it is currently Active or has been deactivated. This is separate from Posting Status, which tracks whether the document is locked or still editable.
-
-**Trace Document / Posting** — A view that shows how a purchase requisition connects to other documents in the chain — for example, which purchase order or invoice was raised from it. Useful for tracking the full history of a transaction.
-
-**Void** — A formal cancellation of a purchase requisition that leaves a clear cancellation record visible in reports. Use Void (not Discard) when cancelling a requisition that was properly created, submitted, or approved.
+**I rejected a requisition by mistake—can I undo it?**
+There is not always an “undo” button. Your administrator or finance team may need to **reverse** the decision or restart approval according to your policy. Do not assume the requester can resubmit without guidance.
 
 ---
