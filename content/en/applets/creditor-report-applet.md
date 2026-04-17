@@ -17,6 +17,12 @@ The **Creditor Report Applet** gives your finance team a single place to see eve
 **In plain English:** A "creditor" is any supplier or vendor you owe money to. This applet helps you track, review, and report on all of that in one place.
 {{< /callout >}}
 
+### Video Overview
+
+{{< youtube BVuTwlyGJ4Y >}}
+
+The walkthrough follows the same flows as this guide: **Outstanding Document Report** (today’s balances), **Aging Report**, **Statement of Account**, **Historical** reports, and the **AP & payment** reports.
+
 ### Who Benefits from This Applet?
 
 **Accounts Payable (AP) Team:**
@@ -75,14 +81,17 @@ The **Creditor Report Applet** gives your finance team a single place to see eve
 
 ### AP Analyst: Check Unpaid Invoices
 
-**Goal:** Find all outstanding supplier documents in 3 steps.
+**Goal:** Find all outstanding supplier documents quickly.
 
 1. Click **Outstanding Document Report** in the sidebar
-2. Set your search filters (supplier, date range, branch) and click **Search**
-3. Click any row to open the full document — review the **Details**, **Settlement**, and **Line Items** tabs
-4. Hit **PRINT** to generate a printable copy
+2. Use the filters at the top (for example **Entity**, **Supplier Category**, **Company**, **Branch**, or **Currency**), then click **Search**
+3. Review the list: each row shows **balances** and, when the system has them, **GRN** and **PO** references. This screen is **as of today** — there is **no date range** here; everything listed is still **unpaid right now**
+4. Click any row to open the full document — review the **Details**, **Settlement**, and **Line Items** tabs
+5. Click **PRINT** to generate a printable copy
 
 **Pro Tip:** The **Settlement** tab shows you which payments have already been applied against this invoice.
+
+**Need a past period?** Use **Statement of Account** after you pick a supplier, then set **Month From** / **Month To** on the statement tab.
 
 ---
 
@@ -91,10 +100,11 @@ The **Creditor Report Applet** gives your finance team a single place to see eve
 **Goal:** Understand how long your payables have been outstanding.
 
 1. Click **Aging Report** in the sidebar
-2. Run the search to load your creditor aging data
-3. Click a supplier row to open **Aging Report Transactions**
-4. Review the **Main** tab for aging bucket breakdown and **Outstanding Docs** tab for the underlying documents
-5. Use **EXPORT** in the header to download the data
+2. Choose **Company** first (this is how most teams scope the list), then optionally pick one **supplier** or leave **Entity** empty to include **all** suppliers. Click **Search**. If you search by keyword, enter **at least three characters**
+3. Read the grid: **scroll sideways** to see every **time bucket** column. Where rows are **grouped by supplier**, use **expand** or **collapse** to show or hide the lines under each supplier
+4. Click a supplier row to open **Aging Report Transactions**
+5. Review the **Main** tab for aging bucket breakdown and **Outstanding Docs** tab for the underlying documents
+6. Use **EXPORT** in the header to download the data
 
 ---
 
@@ -103,21 +113,23 @@ The **Creditor Report Applet** gives your finance team a single place to see eve
 **Goal:** Get a full statement of account for any supplier.
 
 1. Click **Statement of Account** in the sidebar
-2. Search and select a supplier
-3. Open the row to see **Entity Report Transactions**
-4. Go to the **Statement Of Account** tab for the formatted statement
-5. Use **Export to PDF** for a shareable copy
+2. Set filters at the top (for example **Entity**, **Company**, **Branch** if shown), then click **Search**. If you search by keyword, enter **at least three characters**
+3. The first grid is a **supplier summary** — click a **supplier row** to open **Entity Report Transactions**
+4. Open the **Transaction Docs** tab to see all movements, or the **Statement Of Account** tab for the formatted run. On **Statement Of Account**, set **Month From** and **Month To**, click **Search**, then read **opening balance**, each line, and **closing balance** (money in and out). Use **Export to PDF** when you need a file
+5. Open the **Aging** tab for an aging-style view for that supplier: set **Month To** only, click **Search**, then **Export to PDF** if you need a copy (**Month From** is not used on this tab)
 
 ---
 
 ### Audit User: Trace Historical Transactions
 
-**Goal:** Look at the AP position as it was at a past date.
+**Goal:** Look at the AP position as it was in a **past month** (not “today”).
 
 1. Click **Historical Transaction Aging Analysis Report** in the sidebar
-2. Set your historical date and search
+2. Set **As Of Date** (pick the **month** you want), plus **Company**, **Entity**, **Branch**, or other filters your team uses, then click **Search**
 3. Click any row to open **View Document** — check **Details**, **Settlement**, and **Line Items**
-4. For a creditor-level historical snapshot, use **Historical Creditor Report** instead
+4. For a **supplier-level summary** for the same kind of “as of” month, open **Historical Creditor Report** instead, set **As Of Date** and filters, then **Search**
+
+**Why two historical reports?** The **transaction aging** view is **line-by-line** for audits. The **historical creditor** view is a **shorter balance per supplier**. A document can still look **outstanding** in an older month even if something newer was created later—the report shows **what was owed back then**, which helps tie numbers to month-end or balance-sheet work.
 
 ---
 
@@ -125,11 +137,12 @@ The **Creditor Report Applet** gives your finance team a single place to see eve
 
 ### Outstanding Document Report
 
-This is your go-to report for **daily AP monitoring**. It shows every supplier document (invoices, debit notes, etc.) that hasn't been fully paid yet.
+This is your go-to report for **daily AP monitoring**. It lists every supplier document (invoices, debit notes, and so on) that still has an **open balance as of today**. There is **no calendar date range** on this screen—if you need a statement for a past month, use **Statement of Account** instead.
 
 | What you can do | How |
 |---|---|
-| See all unpaid supplier documents | Run search from the listing |
+| See all unpaid supplier documents | Set filters at the top (supplier, category, company, branch, currency as needed) → click **Search** |
+| See balance and linked order references on the list | Stay on the listing—check **balance** and **GRN** / **PO** columns when they appear |
 | Drill into a document | Click any row → **View Outstanding Document** |
 | Review payment history on a doc | Open the **Settlement** tab |
 | Print the document | Click **PRINT** in the detail header |
@@ -140,63 +153,62 @@ This is your go-to report for **daily AP monitoring**. It shows every supplier d
 
 ### Aging Report
 
-The Aging Report answers one key question: **"How old is our money owed to suppliers?"** It groups outstanding amounts into time buckets — so you can see at a glance if most of your payables are current (0–30 days) or overdue (90+ days).
+The Aging Report answers one key question: **"How old is our money owed to suppliers?"** It groups outstanding amounts into time buckets — so you can see at a glance if most of your payables are current (0–30 days) or overdue (90+ days). Like the outstanding list, it reflects **balances through today**; bucket labels follow your **Field Settings** (**Day** or **Month** ranges).
 
 | What you can do | How |
 |---|---|
-| See aging buckets per supplier | Run search from the Creditor Aging Report listing |
+| Load the aging grid | Open **Aging Report** → pick **Company**, then narrow with **Entity** (supplier), **Supplier Category**, or keyword if needed → click **Search** |
+| Read all bucket columns | **Scroll horizontally** across the grid |
+| Work with supplier groups | Use **expand** / **collapse** on grouped supplier rows to show or hide detail lines |
 | See individual transactions behind a bucket | Click a row → **Aging Report Transactions** → **Outstanding Docs** tab |
 | Export the aging data | Click **EXPORT** in the detail header |
 
 {{< callout type="tip" >}}
-**You can control how aging buckets are defined.** Go to **Settings → Field Settings** and set **Aging Period Type** to either **MONTH** (groups by calendar month) or **DAY** (groups by number of days). This affects all aging reports.
+**You can control how aging buckets are defined.** Go to **Settings → Field Settings** and set **Aging Period Type** to **Month** (calendar months) or **Day** (day ranges). This affects all aging reports.
 {{< /callout >}}
 
 ---
 
 ### Statement of Account
 
-Think of this like a **bank statement — but for a supplier**. It shows every transaction (invoices, payments, credit notes) between your company and a supplier over a chosen period, along with the running balance.
+Think of this like a **bank statement — but for a supplier**. You start from a **supplier summary** list; after you **open a supplier**, you can switch between **transaction lines**, a **formatted statement**, and an **aging** view for that supplier.
 
 | What you can do | How |
 |---|---|
-| Get a full supplier transaction history | Search from the Statement of Account listing |
-| See the formatted statement | Open a row → **Statement Of Account** tab |
-| View individual transaction docs | Open a row → **Transaction Docs** tab |
-| Export as PDF | Click **Export to PDF** inside the statement |
+| Find suppliers | Open **Statement of Account** from the left menu → set filters → click **Search** |
+| See the summary list | Stay on the first grid—one row per supplier with headline figures |
+| See every movement | Click a supplier row → **Transaction Docs** tab |
+| See a formal statement with balances | Open **Statement Of Account** tab → set **Month From** and **Month To** → click **Search** → read **opening balance**, lines, and **closing balance** → **Export to PDF** if needed |
+| See aging for that supplier only | Open the **Aging** tab → set **Month To** (this tab does **not** use **Month From**) → click **Search** → **Export to PDF** if needed |
 
 ---
 
 ### Historical Reports
 
-Two reports let you **look back in time** at the AP position:
+Use these when you need **balances or aging as of a past month**, not “today.”
+
+**Shared workflow:** Open the report from the left menu → set **As Of Date** (pick the **month**) and the other filters shown on that screen (for example **Company**, **Entity**, **Branch**, **Currency** on the transaction report) → click **Search** → click rows to open document detail when you need to drill down.
 
 **Historical Transaction Aging Analysis Report**
-- Shows the aging analysis as it was on a specific past date
-- Useful for month-end reconciliation and audits
-- Drill into any row for full document detail
+- **Line-level** aging and documents for the month you pick—best for **audits** and tracing **what was still open then**
+- A document can appear **outstanding** in an older month even if related paperwork was created later—the grid reflects **what was owed in that historical month**
 
 **Historical Creditor Report**
-- Shows creditor balances as they were historically
-- Good for comparing current position against a prior period
+- **Summary** balance **per supplier** for the same **As Of Date** idea—best when you want a **short comparison** across months
+- Use **Outstanding Only** on that screen when you want the list limited to suppliers that still had an open balance in that month
+- When you use the **same month and matching filters** as the transaction aging report, the **totals should line up**; one view is detail, the other is the headline balance
 
 ---
 
 ### AP & Payment Reports
 
-Three reports focused on **payment activity and invoice settlement**:
+Three reports focused on **payment activity and invoice settlement**. Open each one from the **left menu** using the names below.
 
-**AP Transaction Report**
-- A full log of all accounts payable transactions
-- Great for reconciling your AP ledger
-
-**Payment Details with Purchase Invoice**
-- Links each payment back to the specific purchase invoice it was for
-- Answers: "Which invoices did this payment cover?"
-
-**Purchase Invoice with Settlement Details**
-- Shows each purchase invoice alongside its settlement history
-- Answers: "How was this invoice paid?"
+| What you can do | How |
+|---|---|
+| See AP activity between two dates | Open **AP Transaction Report** → choose **Company** (required) → set **Transaction Date** **from** and **to** → optional **Entity** / **Branch** / **Sort by** → click **Search**. Rows **group by supplier**—**expand** a supplier to see each line; the **Balance** column walks through your dates so you can see the position **before** your start date and **through** the end date |
+| See which invoices a payment cleared | Open **Payment Details with Purchase Invoice** → click **Search** → read each line: it shows the **payment** and the **purchase invoice** (or similar document) it settled—helpful when one payment covers several invoices or when a **debit note** reduced an invoice |
+| See settlement lines per purchase invoice | Open **Purchase Invoice with Settlement Details** → choose **Branch** and **Transaction Date** range → optional **Entity** → click **Search**. By default the list focuses on invoices **with** settlement; tick **Show purchase invoice without settlement details** if you also need invoices that **do not** yet have settlement lines |
 
 ---
 
@@ -204,24 +216,22 @@ Three reports focused on **payment activity and invoice settlement**:
 
 ### Field Settings
 
-Control the **core behavior** of all reports in the applet.
+These options apply to **everyone** who uses the applet. Go to **Settings → Field Settings**, adjust the table below, then click **SAVE**.
 
 | Setting | What it does |
 |---|---|
-| **Aging Period Type** | Choose **MONTH** (default) to group aging by calendar month, or **DAY** to group by number of days |
-| **Document Types to Exclude** | Select specific document types that should be excluded from creditor reports |
-
-Click **SAVE** after making changes.
+| **Aging Period Type** | Choose **Month** (default) to group aging by calendar month, or **Day** to group by number of days |
+| **Document Types to Exclude** | Hide selected document types from creditor reports |
 
 ---
 
 ### Default Selection (Applet-Wide)
 
-Set **default filters** that apply to all users when they open any report.
+Go to **Settings → Default Selection**. Set **default filters** that apply to all users when they open a report.
 
 - **Default Branch** — pre-select a branch so users don't have to pick one every time
 - **Default Location** — same as above for location
-- **Details Tab Ordering** — drag and drop to change the order of tabs in the document detail view
+- **Details Tab Ordering** — changes the order of tabs when you open a document from **Outstanding Document Report** (for example **Details**, **Settlement**, **Line Items**). **Click and hold** a tab name, **drag** it left or right, then **release**. Click **SAVE** when you are done
 
 ---
 
@@ -283,13 +293,13 @@ Yes. Go to **Personalization → Default Selection**, set your **Default Branch*
 
 ### 4. How do I change whether aging is shown by month or by day?
 
-Go to **Settings → Field Settings**, change the **Aging Period Type** to `MONTH` or `DAY`, and click **SAVE**. This affects all aging reports for all users.
+Go to **Settings → Field Settings**, change the **Aging Period Type** to **Month** or **Day**, and click **SAVE**. This affects all aging reports for all users.
 
 ---
 
 ### 5. How do I get a statement to send to a supplier for reconciliation?
 
-Open **Statement of Account**, search for the supplier, click the row, and go to the **Statement Of Account** tab. Use **Export to PDF** to download a shareable copy.
+Open **Statement of Account**, set filters, click **Search**, then click the supplier row. Open the **Statement Of Account** tab (next to **Transaction Docs**), set **Month From** and **Month To**, click **Search**, then use **Export to PDF** for a shareable copy.
 
 ---
 
@@ -299,3 +309,21 @@ Open **Statement of Account**, search for the supplier, click the row, and go to
 - **Historical Creditor Report** — shows the balance per creditor at a historical point in time. More of a summary snapshot.
 
 Use the first for transaction-level audits. Use the second for period-end balance comparisons.
+
+---
+
+### 7. How do I know if a payment has already been applied to an invoice?
+
+Open the document from **Outstanding Document Report** (or any report that lets you drill into a document). In the detail screen, open the **Settlement** tab. There you can see how payments or credits have been applied to that invoice.
+
+---
+
+### 8. Why does my Aging Report show different amounts than my Outstanding Document Report?
+
+The two screens answer different questions. **Outstanding Document Report** lists **each unpaid document** on its own row. **Aging Report** rolls amounts up **by supplier** and splits them into **time buckets** (how long the balance has been outstanding). Totals can also look different if you used **different filters** on each screen (for example **Branch** or **Currency** on Outstanding Document), or if you are comparing one supplier's aging row to many separate document lines.
+
+---
+
+### 9. Can I filter the Statement of Account by date range?
+
+The first **Statement of Account** screen is for finding a supplier. After you **click a supplier row**, open the **Statement Of Account** tab, set **Month From** and **Month To**, then click **Search** to show that period (with **opening** and **closing** balances). Use **Export to PDF** when you need a file to share. For the supplier’s **Aging** tab inside the same screen, only **Month To** applies—set it, click **Search**, then export if needed.
