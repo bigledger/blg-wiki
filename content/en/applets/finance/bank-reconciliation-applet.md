@@ -17,7 +17,7 @@ weight: 80
 
 The **Bank Reconciliation Applet** is the month-end and period-end control center that validates whether your **cashbook-ledger transactions** match your **actual bank statement movements**.
 
-{{< figure src="/screenshots/bank-recon/bank-recon-infographic.png" alt="Master Your Month-End: The BigLedger Bank Reconciliation Applet - infographic showing challenges of manual reconciliation, key features, and who benefits" caption="Master Your Month-End: The BigLedger Bank Reconciliation Applet — Infographic overview of manual reconciliation challenges, solution features, and key beneficiaries." >}}
+{{< figure src="/screenshots/bank-recon/infograhic.png" alt="Master Your Month-End: The BigLedger Bank Reconciliation Applet - infographic showing challenges of manual reconciliation, key features, and who benefits" caption="Master Your Month-End: The BigLedger Bank Reconciliation Applet — Infographic overview of manual reconciliation challenges, solution features, and key beneficiaries." >}}
 
 It is not a standalone process. Reconciliation quality depends on how well upstream applets are configured:
 
