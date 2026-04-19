@@ -72,6 +72,8 @@ Traditional product display planning is manual, error-prone, and inconsistent ac
 	{{< card title="Installation & Permissions" subtitle="Easy applet setup and user roles" link="#applet-installation-guide" >}}
 {{< /cards >}}
 
+{{< figure src="/screenshots/pdg-applet/infographics.png" alt="PDG Applet overview infographic showing manual planning challenges and PDG OPDG solution benefits" caption="PDG Applet Overview: Move from manual, inconsistent outlet planning to centralized standards with outlet-level execution and bulk management." >}}
+
 {{< figure src="/screenshots/pdg-applet/location-listing.png" alt="Location Listing" caption="Organization Applet: Location listing for outlets." >}}
 
 ---
