@@ -18,10 +18,10 @@ The **Bank Reconciliation Applet** is the month-end and period-end control cente
 
 It is not a standalone process. Reconciliation quality depends on how well upstream applets are configured:
 
-- **Cashbook Applet** creates the cashbook accounts used by finance operations.
-- **Settlement Methods** are linked to specific cashbooks.
-- **Receipt Voucher (Internal)** and **Payment Voucher (Internal)** post settlements through these methods.
-- **POS General** cash and payment settlements also flow into linked cashbooks.
+- **[Cashbook Applet](/applets/master-data/cashbook-applet/)** creates the cashbook accounts used by finance operations.
+- **Settlement methods** are linked to specific cashbooks.
+- **[Receipt Voucher (Internal) Applet](/applets/finance/internal-receipt-voucher-applet/)** and **[Payment Voucher (Internal) Applet](/applets/finance/internal-payment-voucher-applet/)** post settlements through those methods.
+- **[POS General Applet](/applets/sales-workflow/pos-general-applet/)** cash and card settlements also flow into linked cashbooks.
 - **Bank Reconciliation** then compares all those ledger movements against imported bank statement lines.
 
 {{< callout type="info" >}}
@@ -35,7 +35,7 @@ It is not a standalone process. Reconciliation quality depends on how well upstr
 **Finance Executives and Accountants:**
 - Run period-by-period reconciliation with clear status and matching controls
 - Investigate variances quickly using manual and auto matching tools
-- Maintain traceable records for every reconcile/unreconcile decision
+- Maintain traceable records for every reconcile and unreconcile decision
 
 **Finance Managers and Controllers:**
 - Verify cashbook integrity before close
@@ -49,250 +49,300 @@ It is not a standalone process. Reconciliation quality depends on how well upstr
 
 ### What Problems Does This Solve?
 
-**The common reconciliation problem:**
+**The Manual Reconciliation Problem:**
 
-- Cashbook balances do not match bank balances at period close
+Traditional bank reconciliation often relies on spreadsheets and ad hoc checks. Common issues include:
+
+- Cashbook balances that do not match bank balances at period close
 - Missing links between settlements and bank entries
-- Manual spreadsheet reconciliation is slow and difficult to audit
-- Corrections are unclear and not consistently documented
+- Slow, error-prone manual matching with weak audit trails
+- Corrections that are hard to explain or reproduce
 
-**The applet solution:**
+**The Bank Reconciliation Applet Solution:**
 
 - **Structured recon session** by cashbook and date range
-- **Statement import workflow** with bank/default format support
+- **Statement import workflow** with bank format or default helper support
 - **Manual matching controls** (reconcile and unreconcile)
-- **Auto matching run** for high-volume acceleration
-- **Report suite** to explain variances and unresolved items
+- **Auto matching** for high-volume acceleration
+- **Report suite** (Report 1, Report 2, Report 3) for variance explanation and audit evidence
 
 ## Key Features Overview
 
 {{< cards >}}
-  {{< card title="Recon Session Setup" subtitle="Cashbook + period + opening balances with guided hints" link="#quick-start-guide" >}}
-  {{< card title="Statement Import" subtitle="Upload bank statements using bank or default formats" link="#key-menu-functions" >}}
-  {{< card title="Manual Matching" subtitle="Reconcile and unreconcile with full line visibility" link="#matching-methods" >}}
-  {{< card title="Auto Matching" subtitle="Run automation and review matched/unmatched results" link="#matching-methods" >}}
-  {{< card title="Report Suite" subtitle="Report 1, Report 2, and Report 3 for reconciliation evidence" link="#reporting--audit" >}}
-  {{< card title="Cross-Applet Integration" subtitle="Cashbook, vouchers, and POS settlement flow into recon" link="#how-bank-recon-connects-to-cashbook-vouchers-and-pos" >}}
+  {{< card title="Recon Session Setup" subtitle="Cashbook, period, and opening balances with guided hints" link="#quick-start-guide" >}}
+  {{< card title="Statement Import" subtitle="Upload bank statements and review cash statement lines" link="#sidebar-menu-reference" >}}
+  {{< card title="Manual Matching" subtitle="Reconcile, unreconcile, and inspect statement lines" link="#manual-matching" >}}
+  {{< card title="Auto Matching" subtitle="Run automation and monitor processing status" link="#auto-matching" >}}
+  {{< card title="Reporting and Audit" subtitle="Report 1, 2, and 3 for close evidence" link="#reporting--audit" >}}
+  {{< card title="Cross-Applet Flow" subtitle="Cashbook, vouchers, and POS into recon" link="#how-bank-recon-connects-to-cashbook-vouchers-and-pos" >}}
 {{< /cards >}}
 
 {{< figure src="/screenshots/bank-recon/bank_recon_listing.png" alt="Bank Reconciliation listing screen showing reconciliation sessions and status summary" caption="Bank Reconciliation Overview: Central listing to manage recon sessions by cashbook and period." >}}
 
 ## Key Concepts
 
-### How Bank Recon Connects to Cashbook, Vouchers, and POS
+### Understanding the Bank Reconciliation Framework {#understanding-the-bank-reconciliation-framework}
+
+Every reconciliation process must align three perspectives. This applet keeps them explicit:
+
+| Aspect | Component | Practical Example |
+|--------|-----------|-------------------|
+| **What** are you reconciling? | Cashbook (ledger) | Operating account at Bank ABC |
+| **Against what**? | Bank statement lines | CSV import for the same month |
+| **How** do you close the gap? | Manual match, auto match, adjustments, reports | Match RCT lines to statement rows, then run Report 3 |
+
+{{< callout type="tip" >}}
+**Real-World Example**: Your settlement method for card sales points to **Cashbook A**. POS settlements for the month post to **Cashbook A**. You import the bank CSV for **Cashbook A**, match lines, then use **Report 1** to show journal and statement alignment before sign-off.
+{{< /callout >}}
+
+### How Bank Recon Connects to Cashbook, Vouchers, and POS {#how-bank-recon-connects-to-cashbook-vouchers-and-pos}
 
 Bank reconciliation works best when upstream configuration is done in the right order:
 
-1. **Cashbook is created** in the Cashbook applet.
-2. **Settlement Methods are linked to that cashbook**.
-3. Transactions are created in:
-   - `internal-receipt-voucher-applet.md`
-   - `internal-payment-voucher-applet.md`
-   - `pos-general-applet.md`
-4. Those settled transactions hit the linked cashbook.
-5. Bank Reconciliation compares cashbook transactions against bank statement lines for the same period.
+1. **Create the cashbook** in the [Cashbook Applet](/applets/master-data/cashbook-applet/).
+2. **Link settlement methods** to that cashbook (and branch where required).
+3. Process transactions that use those methods in:
+   - [Receipt Voucher (Internal) Applet](/applets/finance/internal-receipt-voucher-applet/)
+   - [Payment Voucher (Internal) Applet](/applets/finance/internal-payment-voucher-applet/)
+   - [POS General Applet](/applets/sales-workflow/pos-general-applet/)
+4. Confirmed movements appear on the **cashbook transaction** side for the period.
+5. **Bank Reconciliation** compares those lines to **imported bank statement** lines.
 
 {{< callout type="tip" >}}
-If settlement methods are mapped to the wrong cashbook, reconciliation variances will appear in the wrong account and period.
+If settlement methods are mapped to the wrong cashbook, variances appear in the wrong account and period. Fix master data before spending time on matching.
 {{< /callout >}}
 
 ### Reconciliation Lifecycle
 
 | Stage | What You Do | Why It Matters |
-|---|---|---|
+|-------|---------------|----------------|
 | **Setup** | Create recon session with cashbook, dates, opening balances | Defines reconciliation scope and controls |
-| **Ingest** | Upload statement files (bank format/default helper) | Brings external bank data into the session |
-| **Match** | Use manual reconcile/unreconcile and auto matching | Connects ledger lines to statement lines |
-| **Review** | Analyze unmatched lines and adjustments | Explains variances before close |
-| **Report** | Generate Report 1 / 2 / 3 | Provides audit-ready documentation |
+| **Ingest** | Upload statement files (bank format or default helper) | Brings external bank data into the session |
+| **Match** | Manual reconcile or unreconcile; run auto matching | Links ledger activity to bank lines |
+| **Review** | Inspect unmatched lines and adjustments | Explains variances before close |
+| **Report** | Generate Report 1, Report 2, or Report 3 | Produces audit-ready documentation |
 
-{{< figure src="/screenshots/bank-recon/bank_recon_listing_with_cashbook_group_by.png" alt="Bank reconciliation listing grouped by cashbook for easier period review" caption="Cashbook Grouping: Analyze reconciliation sessions grouped by cashbook for operational clarity." >}}
+{{< figure src="/screenshots/bank-recon/bank_recon_listing_with_cashbook_group_by.png" alt="Bank reconciliation listing grouped by cashbook for easier period review" caption="Cashbook Grouping: Review recon sessions grouped by cashbook for operational clarity." >}}
 
 ### Core Data You Reconcile
 
 | Source | Typical Content |
-|---|---|
-| **Cashbook Transactions** | Voucher settlements, POS settlements, cashbook transfers, adjustments |
-| **Bank Statement Lines** | Imported bank debits/credits and descriptions |
-| **Recon Header** | Cashbook, period, opening/closing balances, status |
-| **Match Links** | Manual or auto links between internal and external lines |
+|--------|-----------------|
+| **Cashbook transactions** | Voucher settlements, POS settlements, cash transfers, adjustments |
+| **Bank statement lines** | Imported debits, credits, descriptions, references |
+| **Recon header** | Cashbook, period, opening and closing balances, status |
+| **Match links** | Manual or automatic links between internal and bank-side lines |
 
-## Key Menu Functions
-
-The applet source defines these main menus:
-
-- **Bank Reconciliation**
-  - Create and run reconciliation sessions.
-  - Access Details, Upload Statement, Manual Matching, Auto Matching, and Report.
-- **Imported External Cashbook**
-  - Manage imported external cashbook/GL lines that support reconciliation.
-- **Settings**
-  - Application Settings
-  - Default Selection
-- **Personalization**
-  - Personal Default Selection
+---
 
 ## Quick Start Guide
 
-### Prerequisites (Do This First)
+Get up and running quickly with these essential workflows.
 
-Before starting Bank Reconciliation:
+{{< figure src="/screenshots/bank-recon/report3_overview_of_bank_recon.png" alt="Report 3 overview of bank reconciliation outcomes and balances" caption="At-a-Glance: Use reports together with matching to close the period with clear evidence." >}}
 
-1. Ensure your **cashbook exists** in `cashbook-applet.md`.
-2. Ensure **settlement methods are linked to the correct cashbook**.
-3. Verify receipt/payment voucher settlements and POS settlement flows use those methods.
-4. Prepare your bank statement file for the same period.
+### For Admins: Prerequisite Setup
 
-{{< figure src="/screenshots/bank-recon/weightage_setup_in_cashbook.png" alt="Cashbook setup page showing weightage and reconciliation related settings" caption="Cashbook Prerequisite: Ensure the relevant cashbook and recon-related setup are correctly configured before recon starts." >}}
+**Goal:** Ensure cashbooks and settlement paths are correct before users create recon sessions.
 
-{{< figure src="/screenshots/bank-recon/automatching_weightage_configuration_in_cashbook_applet.png" alt="Cashbook applet automatching weightage configuration screen" caption="Automatching Weightage Setup: Configure weightage logic in Cashbook to improve auto-matching quality." >}}
+1. Complete **cashbook** setup in the [Cashbook Applet](/applets/master-data/cashbook-applet/) (including GL link where required).
+2. Define **settlement methods** and map them to the correct **cashbook** and **branches** (see [POS General Applet](/applets/sales-workflow/pos-general-applet/) for retail settlement linking).
+3. Confirm [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) and [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) settlement lines use those methods.
+4. Optionally configure **automatching weightage** in Cashbook to improve auto-match quality.
+
+{{< figure src="/screenshots/bank-recon/weightage_setup_in_cashbook.png" alt="Cashbook setup page showing weightage and reconciliation related settings" caption="Cashbook Prerequisite: Configure cashbook and weightage-related settings used by reconciliation." >}}
+
+{{< figure src="/screenshots/bank-recon/automatching_weightage_configuration_in_cashbook_applet.png" alt="Cashbook applet automatching weightage configuration screen" caption="Automatching Weightage: Tune matching behavior from Cashbook configuration." >}}
+
+---
 
 ### For Accountants: Run Your First Reconciliation
 
 **Goal:** Complete one full reconciliation cycle for a cashbook period.
 
-1. Open **Bank Reconciliation** and click create.
-2. Fill required fields:
-   - Cashbook
-   - Opening Date
-   - Closing Date
-   - Cash Book Transaction Opening Balance
-   - Cash Statement Opening Balance
-3. Use suggested balance hints when available (previous/calculated closing values).
-4. Save the session.
-5. Go to **Upload Statement** and import bank statement lines.
-6. Use **Manual Matching**:
-   - Reconcile tab for linking lines
-   - Unreconcile tab for corrections
-   - Bank Statement Lines tab for investigation
-7. Run **Auto Matching** for high-volume items and review results.
-8. Open **Report** tab and generate Report 1 / 2 / 3.
-9. Resolve unmatched items until acceptable variance is reached.
+1. Open **Bank Reconciliation** from the sidebar and create a new session.
+2. On **Details**, set **Cashbook**, **Opening Date**, **Closing Date**, **Cash Book Transaction Opening Balance**, and **Cash Statement Opening Balance** (use suggested hints where shown).
+3. Save the session.
+4. Open **Upload Statement** and import your bank file; review the **Cash Statement** tab listing.
+5. Open **Manual Matching**:
+   - **Reconcile** tab to link cashbook and statement lines
+   - **Unreconcile** tab to reverse incorrect matches
+   - **Bank Statement Lines** tab to investigate outliers
+6. Open **Auto Matching**, run the processor, and wait for status to refresh; review unmatched sets.
+7. Open **Report**, generate **Report 1**, **Report 2**, and **Report 3** as needed for sign-off.
 
-{{< figure src="/screenshots/bank-recon/details_tab.png" alt="Bank reconciliation details tab with required fields and balances" caption="Details Tab: Define cashbook, period, and opening balances before processing statements." >}}
+{{< figure src="/screenshots/bank-recon/details_tab.png" alt="Bank reconciliation details tab with required fields and balances" caption="Details Tab: Define cashbook, period, and balances before statement work." >}}
 
-{{< figure src="/screenshots/bank-recon/bank_statement_upload.png" alt="Upload statement screen in bank reconciliation applet" caption="Statement Upload: Import bank statement files for the selected reconciliation session." >}}
+{{< figure src="/screenshots/bank-recon/bank_statement_upload.png" alt="Upload statement screen in bank reconciliation applet" caption="Statement Upload: Import bank statement files for the active session." >}}
 
-{{< figure src="/screenshots/bank-recon/upload_statement_cash_statement_tab.png" alt="Cash statement tab under upload statement with imported file listing" caption="Cash Statement Tab: Review uploaded statement records and source details." >}}
+{{< figure src="/screenshots/bank-recon/upload_statement_cash_statement_tab.png" alt="Cash statement tab under upload statement with imported file listing" caption="Cash Statement Tab: Review uploaded files and parsed statement context." >}}
+
+---
 
 ### For Controllers: Validate Before Close
 
-1. Confirm period dates and opening balances are correct.
-2. Review unmatched transaction lines after manual/auto matching.
-3. Confirm major settlements from Receipt Voucher, Payment Voucher, and POS are represented.
-4. Validate final reports and keep them for audit evidence.
+**Goal:** Confirm the recon is defensible for period close.
 
-## Matching Methods
+1. Verify **dates** and **opening balances** match the prior period close and bank records.
+2. After matching, review **unmatched** cashbook and statement lines.
+3. Confirm material **Receipt Voucher**, **Payment Voucher**, and **POS** settlements appear on the expected cashbook for the period.
+4. Retain **Report 1 / 2 / 3** outputs with the recon session for audit file.
 
-### Manual Matching
+{{< figure src="/screenshots/bank-recon/report1_which_is_jrnl_with_bank_stmt_line.png" alt="Report 1 output showing journal lines matched with bank statement lines" caption="Report 1: Evidence of journal and bank statement alignment." >}}
 
-Manual matching gives exact control:
+---
 
-- **Reconcile**: Match selected cashbook and statement lines.
-- **Unreconcile**: Reverse an incorrect match safely.
-- **Bank Statement Lines**: Inspect imported statement rows in detail.
+{{< callout type="tip" >}}
+**New to bank recon?** Start in this order: **Prerequisite Setup** (cashbook and settlements) → **Details** session → **Upload Statement** → **Manual Matching** → **Auto Matching** → **Report**.
+{{< /callout >}}
 
-Use manual matching for unusual references, partial matches, or exception handling.
+---
 
-{{< figure src="/screenshots/bank-recon/manual_matching_reconcile_tab.png" alt="Manual matching reconcile tab with transaction matching options" caption="Manual Matching - Reconcile: Match internal cashbook transactions with statement lines." >}}
+## Sidebar Menu Reference
 
-{{< figure src="/screenshots/bank-recon/unreconcile_tab.png" alt="Unreconcile tab for reversing previous match links" caption="Manual Matching - Unreconcile: Undo incorrect matches while preserving auditability." >}}
+| Menu Item | Description |
+| :--- | :--- |
+| **Bank Reconciliation** | Listing, create, and edit recon sessions. Tabs include **Details**, **Upload Statement**, **Manual Matching**, **Auto Matching**, and **Report**. |
+| **Imported External Cashbook** | Manage imported external cashbook or GL movements that support reconciliation. |
+| **Settings** | **Application Settings** and **Default Selection** for applet behavior and field visibility. |
+| **Personalization** | **Personal Default Selection** for user-specific defaults. |
 
-{{< figure src="/screenshots/bank-recon/manual_match_bank_stmt_lines.png" alt="Bank statement lines tab used in manual matching" caption="Bank Statement Lines: Investigate imported rows and references during matching." >}}
+---
 
-{{< figure src="/screenshots/bank-recon/reconcile_clicking_detail.png" alt="Detail pop-up after selecting reconcile action" caption="Reconcile Detail: Drill into matching detail before confirming reconciliation." >}}
+## Manual Matching {#manual-matching}
 
-{{< figure src="/screenshots/bank-recon/pop_up_page_of_document.png" alt="Document pop-up page showing linked transaction context" caption="Document Pop-up: Inspect linked document context and references during review." >}}
+Manual matching gives exact control when references are non-standard or amounts need judgment.
 
-{{< figure src="/screenshots/bank-recon/matching_reconcile_with_bank_stmt_lines_manually.png" alt="Manual reconciliation with selected bank statement lines and journal lines" caption="Manual Line Matching: Confirm selected journal and bank statement lines before reconciling." >}}
+- **Reconcile**: Link selected cashbook transactions to bank statement lines.
+- **Unreconcile**: Reverse a prior match safely when you identify an error.
+- **Bank Statement Lines**: Inspect every imported line (date, description, references, amounts).
 
-{{< figure src="/screenshots/bank-recon/umatch_adjustment_to_reocncile_transactiosn.png" alt="Unmatched adjustment screen for reconciling residual differences" caption="Unmatched Adjustment: Apply adjustments to resolve residual differences in reconciliation." >}}
+Use manual matching for partial matches, one-to-many relationships, and investigation before you rely on automation.
 
-{{< figure src="/screenshots/bank-recon/bank_stmt_line_detail_on_clicking.png" alt="Detailed statement line view opened from bank statement lines listing" caption="Statement Line Detail: Validate payor, references, and amounts for each line." >}}
+{{< figure src="/screenshots/bank-recon/manual_matching_reconcile_tab.png" alt="Manual matching reconcile tab with transaction matching options" caption="Manual Matching - Reconcile: Select internal and bank lines to match." >}}
 
-{{< figure src="/screenshots/bank-recon/bank_stmt_line_matching_with_jrn_line.png" alt="Bank statement line matched to journal line detail" caption="Line-Level Match View: Confirm mapping between statement line and journal entry." >}}
+{{< figure src="/screenshots/bank-recon/unreconcile_tab.png" alt="Unreconcile tab for reversing previous match links" caption="Manual Matching - Unreconcile: Undo incorrect matches while preserving history." >}}
 
-{{< figure src="/screenshots/bank-recon/bank_stmT_line_with_adjistment.png" alt="Bank statement line with adjustment applied in matching workflow" caption="Statement Adjustment View: Review adjustment effects on matched statement lines." >}}
+{{< figure src="/screenshots/bank-recon/manual_match_bank_stmt_lines.png" alt="Bank statement lines tab used in manual matching" caption="Bank Statement Lines: Browse and filter imported statement rows." >}}
 
-### Auto Matching
+{{< figure src="/screenshots/bank-recon/reconcile_clicking_detail.png" alt="Detail view after selecting reconcile action" caption="Reconcile Detail: Review match context before confirming." >}}
 
-Auto matching accelerates high-volume reconciliation:
+{{< figure src="/screenshots/bank-recon/pop_up_page_of_document.png" alt="Document pop-up page showing linked transaction context" caption="Document Pop-up: Open linked document context from a line." >}}
 
-- Trigger **Run Auto Matching** from the Auto Matching page.
-- System processes possible links and updates matched/unmatched sets.
-- Processing status is tracked and refreshed in the app.
-- Always review unmatched items afterward.
+{{< figure src="/screenshots/bank-recon/matching_reconcile_with_bank_stmt_lines_manually.png" alt="Manual reconciliation with selected bank statement lines and journal lines" caption="Manual Line Selection: Align journal and bank statement lines explicitly." >}}
 
-{{< figure src="/screenshots/bank-recon/auto_matching_processor_page.png" alt="Auto matching processor page with run action and processing status" caption="Auto Matching Processor: Run automatic matching and monitor processing status." >}}
+{{< figure src="/screenshots/bank-recon/umatch_adjustment_to_reocncile_transactiosn.png" alt="Unmatched adjustment screen for reconciling residual differences" caption="Unmatched Adjustment: Handle residual differences with controlled adjustments." >}}
 
-## Reporting and Audit
+{{< figure src="/screenshots/bank-recon/bank_stmt_line_detail_on_clicking.png" alt="Detailed statement line view opened from bank statement lines listing" caption="Statement Line Detail: Validate payor, references, and amounts." >}}
 
-The app provides three report views from the Report tab:
+{{< figure src="/screenshots/bank-recon/bank_stmt_line_matching_with_jrn_line.png" alt="Bank statement line matched to journal line detail" caption="Line-Level Match: Confirm statement line to journal mapping." >}}
 
-- **Report 1**: Core reconciliation summary and variance context.
+{{< figure src="/screenshots/bank-recon/bank_stmT_line_with_adjistment.png" alt="Bank statement line with adjustment applied in matching workflow" caption="Statement Line with Adjustment: Review adjustment impact on the line." >}}
+
+---
+
+## Auto Matching {#auto-matching}
+
+Auto matching accelerates high-volume periods:
+
+- Run the **Auto Matching** processor from the **Auto Matching** tab.
+- The system updates **matched** and **unmatched** sets based on rules and configured weightage.
+- **Processing** status is polled; wait for completion before you sign off.
+- Always perform a **manual review** of unmatched lines after a run.
+
+{{< figure src="/screenshots/bank-recon/auto_matching_processor_page.png" alt="Auto matching processor page with run action and processing status" caption="Auto Matching Processor: Execute automation and monitor processing status." >}}
+
+---
+
+## Reporting & Audit {#reporting--audit}
+
+The **Report** tab hosts three report views:
+
+- **Report 1**: Journal-oriented view with bank statement line alignment.
 - **Report 2**: Detailed schedule-style output for follow-up and evidence.
-- **Report 3**: Additional reporting view for deeper analysis.
+- **Report 3**: High-level overview of reconciliation outcomes and balances.
 
-Use reports as your month-end reconciliation package for reviewers and auditors.
+Use these together as your **month-end reconciliation pack** for reviewers and auditors.
 
-{{< figure src="/screenshots/bank-recon/report1_which_is_jrnl_with_bank_stmt_line.png" alt="Report 1 output showing journal lines matched with bank statement lines" caption="Report 1: Matched and reconciliation-linked journal and bank statement view." >}}
+{{< figure src="/screenshots/bank-recon/report2_with_bank_stmt_lines_with_journal.png" alt="Report 2 output with statement lines and journal mapping details" caption="Report 2: Detailed schedule for reconciliation evidence and follow-up." >}}
 
-{{< figure src="/screenshots/bank-recon/report2_with_bank_stmt_lines_with_journal.png" alt="Report 2 output with statement lines and journal mapping details" caption="Report 2: Detailed schedule for reconciliation evidence and follow-up actions." >}}
+---
 
-{{< figure src="/screenshots/bank-recon/report3_overview_of_bank_recon.png" alt="Report 3 overview page for bank reconciliation summary" caption="Report 3: High-level overview of reconciliation outcomes and balances." >}}
+## Configuration & Settings
 
-## Settings and Personalization
+**Application Settings** control field visibility and behavior on recon screens (for example branch visibility and delete controls). Align these with your internal control policy.
 
-### Application Settings
+**Default Selection** reduces repeated entry for users who perform reconciliation frequently.
 
-Application Settings control field visibility and behavior in recon pages (for example, branch visibility and delete controls). Configure based on your control policy.
+For automatching weightage, configure the related options in the **Cashbook** applet (see **Prerequisite Setup** screenshots above).
 
-{{< figure src="/screenshots/bank-recon/automatching_weightage_configuration_in_cashbook_applet.png" alt="Automatching configuration settings in cashbook applet related to reconciliation behavior" caption="Application Configuration: Adjust automatching behavior and weightage to align with your reconciliation policy." >}}
+---
 
-### Default Selection
+## Personalization
 
-Set defaults to reduce repeated data entry for frequent reconciliation users.
+Use **Personalization → Default Selection** so each user can keep preferred defaults without changing tenant-wide configuration.
 
-### Personal Default Selection
+---
 
-Personalization lets each user keep their preferred defaults without changing global behavior.
+## Audit
 
-## Troubleshooting
+Bank reconciliation is audit-sensitive:
 
-**Cannot create a recon session**
-- Check required fields and date logic.
-- Ensure opening balances are filled.
+- **Reconcile** and **Unreconcile** actions should be restricted by role.
+- Keep the final **Report 1**, **Report 2**, and **Report 3** outputs with the recon session and bank file archive.
+- Document **adjustment** reasons when you use unmatched adjustment workflows.
 
-**Transactions missing from recon**
-- Confirm settlement methods are linked to the expected cashbook.
-- Confirm upstream vouchers/POS were posted into the same period.
+---
 
-**No statement lines after upload**
-- Check bank format selection or default statement helper usage.
-- Validate source file structure.
+## FAQ
 
-**Variance remains after matching**
-- Review unmatched lines in manual/auto matching.
-- Recheck cross-applet settlement mapping and cashbook transfer/adjustment postings.
+**Q: Why do my cashbook lines not match the bank file?**
+
+A: Check that **settlement methods** point to the correct **cashbook**, that **dates** fall inside the recon period, and that upstream **Receipt Voucher**, **Payment Voucher**, and **POS** documents are posted.
+
+**Q: Auto matching ran but many lines remain unmatched.**
+
+A: Review **weightage** configuration in Cashbook, verify **bank import format**, then use **Manual Matching** for exceptions.
+
+**Q: Where do I start if I am new to the applet?**
+
+A: Follow **Quick Start Guide** in order: prerequisites, session **Details**, **Upload Statement**, matching, then **Report**.
+
+---
 
 ## Related Applets
 
-- **[Cashbook Applet](/applets/master-data/cashbook-applet/)**: Cashbook account creation and setup
-- **[Receipt Voucher (Internal) Applet](/applets/finance/internal-receipt-voucher-applet/)**: Receipt settlement flows into cashbook
-- **[Payment Voucher (Internal) Applet](/applets/finance/internal-payment-voucher-applet/)**: Payment settlement flows into cashbook
-- **[POS General Applet](/applets/sales-workflow/pos-general-applet/)**: POS settlements mapped to cashbooks
+- **[Cashbook Applet](/applets/master-data/cashbook-applet/)**: Cashbook accounts and automatching weightage
+- **[Receipt Voucher (Internal) Applet](/applets/finance/internal-receipt-voucher-applet/)**: Receipt settlement into cashbook
+- **[Payment Voucher (Internal) Applet](/applets/finance/internal-payment-voucher-applet/)**: Payment settlement into cashbook
+- **[POS General Applet](/applets/sales-workflow/pos-general-applet/)**: POS settlement methods and branch mapping
+
+---
 
 ## Summary
 
-The Bank Reconciliation Applet is the financial control layer that verifies whether settlement-driven cashbook movements match external bank reality. When Cashbook and settlement mappings are configured correctly, reconciliation becomes faster, cleaner, and audit-ready across vouchers, POS, transfers, and adjustments.
+The Bank Reconciliation Applet is the control layer that proves **settlement-driven cashbook activity** matches **bank reality** for a defined period. When cashbooks and settlement mappings are correct, reconciliation is faster, clearer, and easier to defend in audit.
 
 ## Video Walkthrough
 
-Watch this walkthrough to see the Bank Reconciliation flow in action:
+Watch this video to see the Bank Reconciliation flow in action:
 
 {{< youtube D0Pw7ytJ_JA >}}
 
 {{< callout type="tip" >}}
-If the embedded video is blocked by browser or network policy, open it directly on YouTube: [Bank Reconciliation Walkthrough](https://www.youtube.com/watch?v=D0Pw7ytJ_JA).
+If video playback is blocked by browser or network policy, open directly: [Bank Reconciliation Walkthrough](https://www.youtube.com/watch?v=D0Pw7ytJ_JA).
 {{< /callout >}}
 
+### What the Video Demonstrates
+
+Based on the walkthrough, the video typically covers:
+
+- **Creating a recon session** and entering opening balances on **Details**
+- **Uploading a bank statement** and reviewing the **Cash Statement** tab
+- **Manual matching** using Reconcile, Unreconcile, and Bank Statement Lines
+- **Running auto matching** and interpreting processing status
+- **Generating reports** (Report 1, Report 2, Report 3) for close evidence
+
+{{< callout type="warning" >}}
+Always reconcile **unmatched** and **adjustment** items to a clear resolution before you treat the period as closed. Unexplained variance should not roll forward silently.
+{{< /callout >}}
