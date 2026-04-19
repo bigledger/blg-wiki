@@ -85,6 +85,8 @@ This applet is commonly used in these scenarios:
   {{< card title="Printable Format" subtitle="Configure output templates for print/export" link="#settings-and-personalization" >}}
 {{< /cards >}}
 
+{{< figure src="/images/internal-purchase-refund-note-applet/infographics.png" alt="Purchase Refund Note Internal applet infographic showing challenges, digital workflow solution, and stakeholder benefits" caption="Purchase Refund Note (Internal) Overview: Standardize refund-note processing with traceable workflows, stronger controls, and faster operational execution." >}}
+
 {{< figure src="/images/internal-purchase-refund-note-applet/Main_Listing_Main_Tab.png" alt="Purchase Refund Note main listing page showing transaction records and summary columns" caption="Purchase Refund Note Listing: Central workspace to view, search, and manage refund note documents." >}}
 
 ## Key Concepts
