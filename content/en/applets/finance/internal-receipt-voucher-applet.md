@@ -50,6 +50,8 @@ The **Receipt Voucher (Internal) Applet** streamlines the end-to-end process of 
   {{< card title="Settings & Configuration" subtitle="Customizable fields, defaults, and printable formats" link="#settings-and-configuration" >}}
 {{< /cards >}}
 
+{{< figure src="/screenshots/internal-receipt-voucher/infograhic.png" alt="Receipt Voucher Internal applet infographic showing manual processing challenges, digital workflow solution, and stakeholder benefits" caption="Receipt Voucher (Internal) Overview: Streamline manual voucher handling with digital creation, settlement controls, bulk import, and audit-ready traceability." >}}
+
 ---
 
 ## What Problems Does This Solve?
