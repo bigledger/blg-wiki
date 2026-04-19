@@ -14,7 +14,10 @@ weight: 80
 
 ## Purpose and Overview
 
+
 The **Bank Reconciliation Applet** is the month-end and period-end control center that validates whether your **cashbook-ledger transactions** match your **actual bank statement movements**.
+
+{{< figure src="/screenshots/bank-recon/bank-recon-infographic.png" alt="Master Your Month-End: The BigLedger Bank Reconciliation Applet - infographic showing challenges of manual reconciliation, key features, and who benefits" caption="Master Your Month-End: The BigLedger Bank Reconciliation Applet — Infographic overview of manual reconciliation challenges, solution features, and key beneficiaries." >}}
 
 It is not a standalone process. Reconciliation quality depends on how well upstream applets are configured:
 
@@ -151,8 +154,8 @@ Get up and running quickly with these essential workflows.
 4. Optionally configure **automatching weightage** in Cashbook to improve auto-match quality.
 
 {{< figure src="/screenshots/bank-recon/weightage_setup_in_cashbook.png" alt="Cashbook setup page showing weightage and reconciliation related settings" caption="Cashbook Prerequisite: Configure cashbook and weightage-related settings used by reconciliation." >}}
-
 {{< figure src="/screenshots/bank-recon/automatching_weightage_configuration_in_cashbook_applet.png" alt="Cashbook applet automatching weightage configuration screen" caption="Automatching Weightage: Tune matching behavior from Cashbook configuration." >}}
+{{< figure src="/screenshots/bank-recon/application-settings.png" alt="Bank Reconciliation Applet Application Settings screen" caption="Application Settings: Control field visibility (e.g., branch, delete button, cashbook balances) for the Bank Reconciliation applet. These settings help tailor the reconciliation interface to your internal control policies and user needs." >}}
 
 ---
 
@@ -172,9 +175,7 @@ Get up and running quickly with these essential workflows.
 7. Open **Report**, generate **Report 1**, **Report 2**, and **Report 3** as needed for sign-off.
 
 {{< figure src="/screenshots/bank-recon/details_tab.png" alt="Bank reconciliation details tab with required fields and balances" caption="Details Tab: Define cashbook, period, and balances before statement work." >}}
-
 {{< figure src="/screenshots/bank-recon/bank_statement_upload.png" alt="Upload statement screen in bank reconciliation applet" caption="Statement Upload: Import bank statement files for the active session." >}}
-
 {{< figure src="/screenshots/bank-recon/upload_statement_cash_statement_tab.png" alt="Cash statement tab under upload statement with imported file listing" caption="Cash Statement Tab: Review uploaded files and parsed statement context." >}}
 
 ---
@@ -220,23 +221,14 @@ Manual matching gives exact control when references are non-standard or amounts 
 Use manual matching for partial matches, one-to-many relationships, and investigation before you rely on automation.
 
 {{< figure src="/screenshots/bank-recon/manual_matching_reconcile_tab.png" alt="Manual matching reconcile tab with transaction matching options" caption="Manual Matching - Reconcile: Select internal and bank lines to match." >}}
-
 {{< figure src="/screenshots/bank-recon/unreconcile_tab.png" alt="Unreconcile tab for reversing previous match links" caption="Manual Matching - Unreconcile: Undo incorrect matches while preserving history." >}}
-
 {{< figure src="/screenshots/bank-recon/manual_match_bank_stmt_lines.png" alt="Bank statement lines tab used in manual matching" caption="Bank Statement Lines: Browse and filter imported statement rows." >}}
-
 {{< figure src="/screenshots/bank-recon/reconcile_clicking_detail.png" alt="Detail view after selecting reconcile action" caption="Reconcile Detail: Review match context before confirming." >}}
-
 {{< figure src="/screenshots/bank-recon/pop_up_page_of_document.png" alt="Document pop-up page showing linked transaction context" caption="Document Pop-up: Open linked document context from a line." >}}
-
 {{< figure src="/screenshots/bank-recon/matching_reconcile_with_bank_stmt_lines_manually.png" alt="Manual reconciliation with selected bank statement lines and journal lines" caption="Manual Line Selection: Align journal and bank statement lines explicitly." >}}
-
 {{< figure src="/screenshots/bank-recon/umatch_adjustment_to_reocncile_transactiosn.png" alt="Unmatched adjustment screen for reconciling residual differences" caption="Unmatched Adjustment: Handle residual differences with controlled adjustments." >}}
-
 {{< figure src="/screenshots/bank-recon/bank_stmt_line_detail_on_clicking.png" alt="Detailed statement line view opened from bank statement lines listing" caption="Statement Line Detail: Validate payor, references, and amounts." >}}
-
 {{< figure src="/screenshots/bank-recon/bank_stmt_line_matching_with_jrn_line.png" alt="Bank statement line matched to journal line detail" caption="Line-Level Match: Confirm statement line to journal mapping." >}}
-
 {{< figure src="/screenshots/bank-recon/bank_stmT_line_with_adjistment.png" alt="Bank statement line with adjustment applied in matching workflow" caption="Statement Line with Adjustment: Review adjustment impact on the line." >}}
 
 ---
