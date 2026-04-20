@@ -441,11 +441,27 @@ Generate and manage cryptographic key pairs (RSA/DSA) used to digitally sign API
 <a id="post-registration-config-tab-deep-dive"></a>
 #### Post Registration Config Tab
 
-Define automated actions that occur immediately after a new customer finishes the registration process.
+**What is Post Registration Config?**
 
-| Field | Purpose | Required |
-|-------|----------|----------|
-| **Team** | Select which internal Team the new customer should be automatically assigned to | Yes |
+This tab controls **what happens automatically** the moment a new customer completes their registration on the Customer Portal. Instead of manually creating records in multiple applets, you can configure the system to handle onboarding steps instantly — adding the user to your tenant, creating a customer record, or setting up their membership.
+
+{{< callout type="important" >}}
+**Why This Matters**: Without proper post-registration configuration, a newly registered portal user may not show up in your Customer Master, Membership Applet, or team assignment lists. This means your sales, support, and marketing teams won't see the new customer until someone manually creates these records — potentially losing engagement during the critical onboarding window.
+{{< /callout >}}
+
+**Post Registration Config — Fields:**
+
+| Field | Purpose | Required | What Happens When Enabled |
+|-------|---------|----------|---------------------------|
+| **Team** | Select which internal Team(s) the new customer should be automatically assigned to | No | The registered user is linked to the selected team(s) for CRM workflow routing |
+| **Add user to tenant** | Checkbox — Automatically add the registered user to the current tenant | No | The user appears in your tenant's user directory and can be managed centrally |
+| **Create customer** | Checkbox — Automatically create a Customer record in the Customer Master | No | A new customer entity is auto-created in the **Customer Master Applet**, pre-populated with the user's registration details (name, email, phone) |
+| **Create membership and customer** | Checkbox — Create both a Membership record AND a Customer record | No | A customer entity is created **and** a membership profile is created in the **Membership Admin Applet** — useful when your portal requires membership tiers |
+| **Create membership without customer** | Checkbox — Create only a Membership record (no customer entity) | No | Only a membership profile is created — useful for loyalty-only programs where you don't need a full customer account |
+
+{{< callout type="tip" >}}
+**Common Setup**: Most B2C portals check "Create membership and customer" so that every new sign-up is immediately available in both your Customer Master (for orders/invoicing) and Membership Applet (for loyalty points/tiers). B2B portals typically only check "Add user to tenant" since corporate accounts are pre-created.
+{{< /callout >}}
 
 <a id="third-party-auth-config-tab-deep-dive"></a>
 #### 3rd Party Auth Config Tab
@@ -468,6 +484,19 @@ Centralize all external API integrations for authentication, security (reCAPTCHA
 #### Layout Instance Tab
 
 The **Layout Instance** tab is the control center for your site's pages. A "Layout Instance" represents a specific page (e.g., Homepage, About Us, Landing Page).
+
+**Layout Instance Edit — Tabs:**
+
+When you open a layout instance, you'll see **4 tabs**:
+
+| Tab | Purpose | What You Can Do |
+|-----|---------|-----------------|
+| **Main** | Core layout identity | Set the code (used in URLs), name, and description |
+| **Nodes** | Manage the page structure — the rows, columns, and widgets that make up the layout | Add, edit, reorder, and delete nodes. Each node has its own detailed config with **5 sub-tabs**: Main, Config, Json Params, Input Params, Preview |
+| **Json** | View and edit the raw JSON structure of the page layout | For advanced users who prefer to work directly with the layout data |
+| **Platform Config** | Set platform-specific rendering rules | Configure how this layout renders on different platforms (web, mobile app, tablet) |
+
+**Create Form Fields:**
 
 | Field | Purpose | Required |
 |-------|---------|----------|
@@ -555,17 +584,34 @@ Below is the complete catalog of all available widgets, organized by category. W
 <a id="menu-list-tab-deep-dive"></a>
 #### Menu List Tab
 
-Manage the navigation structures utilized by the **Generic Header**, **Footer**, and **Vertical Menu** widgets.
+**What is the Menu List Tab?**
+
+This tab manages the **navigation structures** used across your storefront — the top menu bar, user dropdown, sidebar, and footer links. Menus created here are referenced by the Generic Header, Vertical Menu, Horizontal Menu, and Footer widgets in Layout Instance.
+
+**Creating a Menu:**
 
 | Field | Purpose | Required |
 |-------|---------|----------|
-| **Menu Title** | The name of the navigation menu (e.g., "Footer Links") | Yes |
+| **Menu Title** | The name of the navigation menu (e.g., "Footer Links", "Main Navigation") | Yes |
 | **Status** | Toggle visibility on the storefront | Yes |
+
+**Menu Item Edit — Tabs:**
+
+Each individual menu item (link) within a menu has its own edit view with **2 tabs**:
+
+| Tab | Purpose |
+|-----|---------|
+| **Main** | Set the link text, destination URL, display order, and parent menu item (for sub-menus) |
+| **Manage Image** | Upload an icon or thumbnail image for this menu item |
 
 <a id="posts-tab-deep-dive"></a>
 #### Posts Tab
 
-Manage individual content entries like blog articles, news items, and announcements. This is where you create the "Static Pages" referenced by layout widgets.
+**What is the Posts Tab?**
+
+Posts are your website's content entries — blog articles, news items, brand stories, FAQs, and announcements. These are the "static pages" that layout widgets reference to display non-product content on the storefront.
+
+**Creating a Post:**
 
 | Field | Purpose | Required |
 |-------|---------|----------|
@@ -576,40 +622,97 @@ Manage individual content entries like blog articles, news items, and announceme
 | **Content Category** | Group posts together for collective display in widgets | No |
 | **Layout Instance** | Link this post to a specific layout design | Optional |
 
+**Post Edit — Tabs:**
+
+| Tab | Purpose |
+|-----|---------|
+| **Main** | Edit the post title, URL key, content body, category, and layout assignment |
+| **Manage Image** | Upload featured images, banners, or thumbnails for this post |
+
 ---
 
 <a id="user-agreement-tab-deep-dive"></a>
 #### User Agreement Tab
 
-Central repository for legal documents such as Privacy Policies and Terms of Use. These documents are referenced in registration and checkout widgets.
+**What is the User Agreement Tab?**
 
-| Field | Purpose | Required |
-|-------|---------|----------|
-| **Title** | The name of the agreement (e.g., "Privacy Policy 2024") | Yes |
-| **Document Code** | Unique identifier for linking in widgets | Yes |
-| **Expiry Date** | Automatic version control for legal updates | No |
-| **Status** | Set to ACTIVE to make the document available on the portal | Yes |
+This is your central repository for legally binding documents — Privacy Policies, Terms & Conditions, Data Protection Agreements — that customers must agree to when registering or making purchases on the portal. Beyond storage, this tab gives you a **full audit trail**: you can see exactly **who** agreed to **which version** of a document, **when** they agreed, and **how** (IP address, consent method).
+
+{{< callout type="info" >}}
+**Why This Matters**: Under regulations like PDPA (Personal Data Protection Act) and GDPR, businesses must prove that users gave informed consent to specific versions of legal documents. This tab provides that proof — every agreement is version-tracked with expiry dates, and every user's consent is recorded with timestamps and IP addresses.
+{{< /callout >}}
+
+**Creating an Agreement Document:**
+
+| Field | Purpose | Required | Example |
+|-------|---------|----------|---------|
+| **Title** | Display name shown to customers during registration/checkout | Yes | "Privacy Policy v2.1 — January 2026" |
+| **Document Code** | Unique internal code used to reference this document in Login Widget configurations | No | "PP-2026-V2" |
+| **Expiry Date** | When this version expires — after this date, customers will be prompted to agree to a newer version | No | 2027-01-01 |
+| **Status** | Must be set to ACTIVE for the document to appear on the portal | Yes | ACTIVE |
+| **PDF Upload** | Drag-and-drop or click to upload the legal document as a PDF file | Yes | privacy-policy-v2.pdf |
+
+**Editing an Agreement — Tabs:**
+
+When you open an existing agreement document, you'll see **2 tabs**:
+
+| Tab | Purpose | What You Can Do |
+|-----|---------|-----------------|
+| **Main** | Edit the document details and replace the uploaded PDF | Update title, document code, expiry date, status, or upload a new PDF version. You can also delete the agreement from here. |
+| **Agreed Users** | View a complete audit trail of every user who agreed to this document | Search and browse all users who consented — see their name, email, phone, member ID, IP address, consent method, and agreement date |
+
+##### Agreed Users Tab
+
+This tab provides the compliance proof you need. It shows a searchable grid of every portal user who has accepted this specific agreement document:
+
+| Column | What It Shows |
+|--------|---------------|
+| **User Name** | The registered name of the user who agreed |
+| **Email** | The email address used at time of consent |
+| **Phone** | The phone number associated with their account |
+| **Member ID** | Their membership ID (if applicable) |
+| **IP Address** | The IP address from which consent was given — critical for legal audits |
+| **Consent Method** | How the user agreed (e.g., checkbox during registration, pop-up prompt) |
+| **Creation Date** | The exact date and time when consent was recorded |
+| **Updated Date** | When the consent record was last updated |
+
+{{< callout type="tip" >}}
+**Version Control Workflow**: When you update your Privacy Policy, create a **new** agreement document (e.g., "Privacy Policy v3.0") with the updated PDF, and set the old document's expiry date. The Login Widget will automatically prompt returning users to agree to the new version on their next login.
+{{< /callout >}}
 
 <a id="reviews-tab-deep-dive"></a>
 #### Reviews Tab
 
-Configure how the product review and rating system functions on the storefront.
+**What is the Reviews Tab?**
 
-| Sub-Tab | Purpose |
-|---------|---------|
-| **Review Settings** | Define rules for review submission: min/max scores, auto-approval thresholds, and required fields. |
-| **Review Votes** | Manage the configuration of "Helpful/Not Helpful" voting on customer reviews. |
+This tab configures the **rules and settings** for how the product review system works on your storefront — whether reviews need admin approval, minimum character counts, and how the "helpful" voting system operates.
+
+| Sub-Tab | Purpose | What You Configure |
+|---------|---------|-----------|
+| **Review Settings** | Define rules for review submission | Min/max scores, auto-approval thresholds, minimum review length, required fields, and moderation rules |
+| **Review Votes** | Configure the "Helpful/Not Helpful" voting buttons on customer reviews | Voting labels, display settings, and the raw JSON configuration (editable in the **JSON** sub-tab within the vote edit view) |
 
 <a id="label-list-tab-deep-dive"></a>
 #### Label List Tab
 
-Create classification labels used to tag and filter content across the website. These are often used as "Category Groups" in widgets.
+**What is the Label List Tab?**
+
+Labels are **classification tags** used to organize and filter content across your website. They power the "Category Group" dropdowns in product widgets and the "Content Category" filters in post listings. Labels can also be **hierarchical** — a parent label can have child labels for multi-level categorization.
+
+**Creating a Label List:**
 
 | Field | Purpose | Required |
 |-------|---------|----------|
 | **Label Name** | Primary display name for the label | Yes |
 | **Label Code** | Internal code used for layout configuration | Yes |
 | **Status** | Toggle availability for widget filtering | Yes |
+
+**Label List Edit — Tabs:**
+
+| Tab | Purpose |
+|-----|---------|
+| **Main** | Edit the label name, code, and status |
+| **Child Label** | Create and manage sub-labels under this parent label — useful for multi-level categorization (e.g., Parent: "Apparel" → Children: "T-Shirts", "Jeans", "Accessories") |
 
 <a id="content-category-tab-deep-dive"></a>
 #### Content Category Tab
@@ -627,19 +730,61 @@ Define logical groupings for products and posts to enable organized browsing.
 <a id="account-tab-deep-dive"></a>
 #### Account Tab
 
-View and manage the administrative details of customer accounts associated with this website.
+**What is the Account Tab?**
 
-| Field | Purpose | Required |
-|-------|---------|----------|
-| **Name / Email** | Primary contact identity for the account | Yes |
-| **Phone** | Contact number for delivery and alerts | No |
-| **Type** | Classification (Corporate, Retail, Supplier, etc.) | Yes |
-| **Codes** | Linked identifiers from the ERP system (Customer Code, Merchant Code, etc.) | No |
+This tab controls **which customer accounts (entities) are linked** to your website. It works hand-in-hand with the **"Restrict View/Access by Entity"** setting in the Details tab — when that setting is enabled, only customers whose accounts are linked here can see and access the portal content.
+
+{{< callout type="important" >}}
+**Key Dependency — "Restrict View/Access by Entity"**: If you enable this checkbox in the **Details tab** (see [Details Tab](#details-tab-deep-dive)), the portal becomes a **gated storefront** — only the accounts you explicitly add in this Account tab can log in, browse products, and place orders. This is essential for **B2B portals** where you only want approved corporate clients to access your catalog and pricing.
+{{< /callout >}}
+
+**Account Listing:**
+
+The listing shows all accounts currently linked to this website. Key columns:
+
+| Column | What It Shows |
+|--------|---------------|
+| **Name** | The account holder's registered name |
+| **Phone** | Contact phone number |
+| **Email** | Contact email address |
+| **Account Type** | Classification — Corporate, Retail, Supplier, etc. |
+| **Customer Code** | Linked customer code from the ERP system |
+| **Supplier Code** | Linked supplier code (if applicable) |
+| **Employee Code** | Linked employee code (if applicable) |
+| **Merchant Code** | Linked merchant code (if applicable) |
+
+**Adding an Account ("Link to Website"):**
+
+Clicking the **"+"** button opens a selection grid showing all available accounts from your ERP system. You are **selecting and linking** an existing account — not creating a new one. Select the account row and click **Add** to link it to this website.
+
+**Viewing/Editing a Linked Account:**
+
+Clicking any account row opens a read-only detail view. All fields are **view-only** — account details are managed in the source applet (e.g., Customer Master), not here.
+
+| Field | What It Shows | Editable? |
+|-------|---------------|-----------|
+| **Name** | Account holder's name | Read-only |
+| **Email** | Contact email | Read-only |
+| **Phone** | Contact phone | Read-only |
+| **Type** | Account classification | Read-only |
+| **Customer Code** | ERP customer code | Read-only |
+| **Supplier Code** | ERP supplier code | Read-only |
+| **Employee Code** | ERP employee code | Read-only |
+| **Merchant Code** | ERP merchant code | Read-only |
+| **Credit Limit** | Visual progress bar showing available credit out of total credit limit with currency (e.g., "RM 3,200 MYR available out of RM 5,000 MYR"). If no credit limit is assigned, shows "No Credit Limit Information is available." | Read-only |
+
+**Unlinking an Account:**
+
+Click the **Delete** button in the account detail view to **unlink** (remove) the account from this website. This does not delete the account from the system — it only removes the website association.
+
+{{< callout type="tip" >}}
+**B2B Onboarding Workflow**: For B2B portals, the typical setup is: (1) Create the customer account in **Customer Master Applet** → (2) Go to **CP Commerce Admin > Website Edit > Account tab** → (3) Link the account → (4) Enable "Restrict View/Access by Entity" in Details tab. Now only approved clients can access the portal.
+{{< /callout >}}
 
 <a id="branch-tab-deep-dive"></a>
 #### Branch Tab
 
-Manage the physical branch locations or pickup points linked to this specific digital storefront.
+Manage the physical branch locations or pickup points linked to this specific digital storefront. Branches are created and managed in the [Organisation Applet](/applets/master-data/organisation-applet/).
 
 | Field | Purpose | Required |
 |-------|---------|----------|
@@ -660,20 +805,28 @@ Define the geographical regions used for shipping calculation and content locali
 <a id="country-tab-deep-dive"></a>
 #### Country Tab
 
-Configure country-level localization, including languages and payment methods available to customers in specific nations.
+**What is the Country Tab?**
 
-| Sub-Tab | Purpose |
-|---------|---------|
-| **Main** | Set the primary country name and ISO code. |
-| **Language Selection** | Assign which languages are enabled for this country's portal view. |
-| **Settlement Methods** | Configure which payment methods are available to customers in this country. |
+This tab allows you to configure **country-specific settings** for your storefront. If your portal supports customers from multiple countries, each country can have its own language options, payment methods, support contacts, and financial label configurations.
+
+**Country Edit — Tabs:**
+
+When you open a country record, you'll see **5 tabs**:
+
+| Sub-Tab | Purpose | What You Can Do |
+|---------|---------|-----------------|
+| **Main** | Set the primary country name and ISO code | Define the country identity for localization rules |
+| **Language Selection** | Assign which languages are enabled for this country's portal view | Add or remove language options that customers from this country can choose |
+| **Support** | Configure country-specific customer support information | Set up support contact details, helpdesk URLs, or escalation paths for this region |
+| **Fi Label List Link** | Link financial label lists to this country for accounting classification | Connect label lists used for financial categorization in invoices and reporting for this country. Each linked label has its own sub-view with **Details** and **Label Hdrs** tabs |
+| **Settlement Method** | Configure which payment methods are available to customers in this country | Enable or disable specific payment gateways (Stripe, bank transfer, etc.) per country |
 
 ---
 
 <a id="voucher-management-tab-deep-dive"></a>
 #### Voucher Management Tab
 
-Link and manage discount vouchers and promotional coupons that customers can use during checkout.
+Link and manage discount vouchers and promotional coupons that customers can use during checkout. For full voucher configuration details, see the [Voucher Management Applet](/applets/membership/voucher-management-applet/).
 
 | Field | Purpose | Required |
 |-------|---------|----------|
@@ -685,7 +838,7 @@ Link and manage discount vouchers and promotional coupons that customers can use
 <a id="commission-scheme-tab-deep-dive"></a>
 #### Commission Scheme Tab
 
-Define how sales commissions are calculated for agents or affiliates linked to this website.
+Define how sales commissions are calculated for agents or affiliates linked to this website. For full commission configuration details, see the [Commission Scheme Applet](/applets/sales-workflow/commission-scheme-applet/).
 
 | Field | Purpose | Required |
 |-------|---------|----------|
@@ -706,7 +859,7 @@ Configure the multi-language support settings for the storefront Frontend.
 <a id="settlement-method-tab-deep-dive"></a>
 #### Settlement Method Tab
 
-Link the payment settlement gateways (Stripe, Bank Transfer, Card, etc.) available for this website's checkout process.
+Link the payment settlement gateways (Stripe, Bank Transfer, Card, etc.) available for this website's checkout process. Settlement methods are configured in the [Cashbook Applet](/applets/master-data/cashbook-applet/).
 
 | Field | Purpose | Required |
 |-------|---------|----------|
@@ -718,17 +871,50 @@ Link the payment settlement gateways (Stripe, Bank Transfer, Card, etc.) availab
 
 ## Shipping Providers (`shipping-provider` route)
 
-**What is the Shipping Provider section?**
+**What are Shipping Providers?**
 
-Configure third-party logistics (3PL) providers that appear as delivery options during customer checkout.
+This section lets you configure all the **delivery options** your customers see at checkout. Whether you use a flat fee, weight-based rates, or a real-time API from a logistics partner, each shipping option is set up here as a "provider method."
 
-**Shipping Provider Edit — Tabs:**
+{{< callout type="info" >}}
+**How It Connects**: After creating a shipping provider here, you still need to **enable shipping** on your website. Go to **Website Edit > Details tab** → check "Enable Shipping Fee Process" → select your Shipping Fee Option → Save. Only then will customers see these delivery options at checkout.
+{{< /callout >}}
+
+**Shipping Provider Types:**
+
+The edit view changes based on the provider type. There are **3 types**, each with different configuration fields:
+
+**Type 1 — Flat Rate:**
+
+A single fixed delivery fee regardless of order weight or destination.
+
+| Field | Purpose | Required | Editable? |
+|-------|---------|----------|-----------|
+| **Shipping Provider Title** | The name shown to customers at checkout | Yes | Read-only (set on create) |
+| **Type** | Provider type identifier | Yes | Read-only |
+| **Handling Fee** | Additional processing fee per order | Yes | Yes |
+| **Min Purchase** | Minimum cart value required to use this shipping option | No | Yes |
+| **Duration** | Estimated delivery time shown to customers (e.g., "3-5 business days") | No | Yes |
+| **Rate** | The flat delivery fee amount | No | Yes |
+| **Currency** | Currency for the rate | No | Yes |
+| **Active** | Checkbox to enable/disable this option at checkout | No | Yes |
+
+**Type 2 — Table Rate:**
+
+Variable delivery fees based on weight, destination zone, or order value. Has **2 tabs**:
 
 | Tab | Purpose |
 |-----|---------|
-| **Main Details** | Provider name, code, type (Flat Rate, Table Rate, API-driven), base rate |
-| **Table Rate** | Define rate rules based on weight tiers, geographic zones, or order value ranges |
-| **API Details** | Enter API credentials (key, secret, endpoint) for real-time shipping rate queries |
+| **Main Details** | Provider title (read-only), type (read-only), duration, handling fee, currency, active toggle |
+| **Table Rate** | Define rate rules — add rows for weight tiers (e.g., 0–1kg = RM 5, 1–5kg = RM 10), geographic zones, or order value ranges |
+
+**Type 3 — Integration (API-driven):**
+
+Real-time rate calculation via a third-party logistics API (e.g., J&T Express, DHL). Has **2 tabs**:
+
+| Tab | Purpose |
+|-----|---------|
+| **Main Details** | Provider title (read-only), type (read-only), duration, handling fee, currency (dropdown with search), active toggle |
+| **API Details** | Enter the provider's API credentials (key, secret, endpoint URL) for real-time rate queries |
 
 ---
 
@@ -768,6 +954,8 @@ The central inbox for all customer form submissions across both Dynamic Forms an
 ---
 
 ## Events & Facilities Booking Engine
+
+Manage events, facilities, activities, and calendar bookings directly within the CP Commerce Admin. For a dedicated events workflow with expenses, guest management, and advanced scheduling, see the [Events Management Applet](/applets/crm/events-management-applet/).
 
 ### Facilities (`facilities` route)
 
@@ -834,18 +1022,41 @@ Scheduler view for visualizing bookings across facilities and time slots.
 
 **What are Spending Limits?**
 
-Automated financial controls for B2B customer accounts. Set maximum purchasing amounts per period (daily, monthly, yearly).
+Spending Limits are **automated financial controls** designed for **B2B customer accounts**. When a corporate customer's purchasing manager tries to place an order that would exceed their company's approved spending limit, the checkout is automatically **blocked** — preventing unauthorized overruns without manual finance intervention.
+
+{{< callout type="info" >}}
+**Who Uses This**: Spending Limits are designed exclusively for B2B Corporate customer groups. Regular B2C retail customers are not affected — their purchases are limited only by their payment method.
+{{< /callout >}}
 
 **Real-World Scenario:**
 ```
 Company: XYZ Corp
 Purchasing Manager: Ahmad
-Spending Limit: RM 5,000 / month
+Spending Limit: RM 5,000 / 30 days
 
 Scenario: Ahmad's cart totals RM 6,200
-Result: Checkout is BLOCKED — exceeds monthly limit
+Result: Checkout is BLOCKED — exceeds the 30-day spending limit
 Action: Finance approves an exception, or Ahmad splits the order
+
+If Ahmad exceeds the limit 3 times: His account is banned for the configured Ban Period
 ```
+
+**Spending Limit Edit — Fields:**
+
+| Field | Purpose | Required | Example |
+|-------|---------|----------|---------|
+| **Name** | Descriptive name for this spending limit rule | Yes | "Corporate Standard Limit" |
+| **Code** | Unique code identifier | Yes | "CORP-STD-5K" |
+| **Spending Limit Amount** | Maximum total spending allowed within the period | Yes | 5000 |
+| **Spending Limit Period (Days)** | The rolling window in days for tracking spending | Yes | 30 |
+| **Ban Period (Days)** | How many days to suspend the account if the limit is repeatedly violated | Yes | 7 |
+| **Status** | Active or Inactive | Yes | ACTIVE |
+| **Currency** | The currency for the spending limit amount | Yes | MYR |
+| **Member Class** | Which membership class this spending limit applies to | No | "Corporate Gold" |
+| **Spending Limit Amount New Member** | A different (usually lower) limit for newly registered members | No | 1000 |
+| **Email** | Notification email(s) to alert when a limit is approached or exceeded | No | finance@company.com |
+| **Phone Number** | SMS notification number(s) for spending alerts | No | +60123456789 |
+| **Created By / Created Date / Modified By / Modified Date** | Audit trail fields | Read-only | Auto-populated |
 
 ---
 
@@ -863,13 +1074,28 @@ Manage product/service star ratings submitted by customers.
 
 ### Reviews (`review` route)
 
-Moderate written product/service reviews before they appear publicly on the portal.
+**What is the Review section?**
+
+This is the global moderation queue where admins can **create, view, and approve/reject** customer product reviews before they appear on the Customer Portal. Unlike the Review Settings inside Website Edit (which configure *rules*), this section manages the actual *review content*.
+
+**Creating a Review (Admin-side):**
+
+Admins can manually create reviews on behalf of customers — useful for importing testimonials or seeding initial reviews for new products.
+
+| Field | Purpose | Required | Example |
+|-------|---------|----------|---------|
+| **Product** | Select which product this review is for (opens a product picker) | Yes | "Organic Premium Coffee Beans" |
+| **Product Rating** | Click stars (1–5) to set the rating score | Yes | ★★★★☆ (4 stars) |
+| **Customer Name** | Select which customer authored this review (opens a customer picker) | Yes | "Ahmad bin Ibrahim" |
+| **Review Summary** | The review body text | No | "Great quality, fast delivery" |
+| **Review Title** | Headline for the review | Yes | "Excellent product!" |
+| **Status** | Approval status — controls whether the review appears on the portal | Yes | Approved / Pending / Rejected |
 
 **Review Edit — Tab:**
 
 | Tab | Purpose |
 |-----|---------|
-| **Details** | Review text, author, rating score, approval status |
+| **Details** | View and edit all review fields: product, customer, rating, title, summary, and approval status |
 
 ---
 
@@ -893,29 +1119,33 @@ Blacklist management — block abusive, fraudulent, or defaulting users from acc
 
 ## Newsletter Topics (`newsletter-topic` route)
 
-Create topic-based mailing lists. Customers subscribe to topics they care about.
+**What are Newsletter Topics?**
+
+Newsletter Topics let you create **topic-based mailing lists** for your Customer Portal. Instead of sending every email to every customer, you define topics (e.g., "Weekly Deals", "New Arrivals", "Events") and customers choose which ones to subscribe to.
 
 **Newsletter Topic Edit — Tabs:**
 
-| Tab | Purpose |
-|-----|---------|
-| **Details** | Topic name, description, and configuration |
-| **Manage Image** | Upload header/banner images for the newsletter |
-| **Subscribers** | View and manage subscribed members |
-| **Member Label Link** | Link membership labels to auto-subscribe relevant customer segments |
+| Tab | Purpose | What You Can Do |
+|-----|---------|-----------------|
+| **Details** | Topic name, description, and configuration | Set the topic identity and status |
+| **Manage Image** | Upload header/banner images for the newsletter | Add visual branding to your email campaigns |
+| **Subscribers** | View and manage subscribed members | See who's subscribed, remove subscribers, or view individual subscriber details in a sub-edit view |
+| **Member Label Link** | Link membership labels to auto-subscribe relevant customer segments | Automatically subscribe all members tagged with specific labels (e.g., all "VIP" members auto-subscribe to "Exclusive Deals" topic). This creates **targeted segments** without manual enrollment |
 
 ---
 
 ## Notifications (`notification` route)
 
-Send push notifications to Customer Portal mobile app users.
+**What is the Notification section?**
+
+Send **push notifications** directly to Customer Portal mobile app users. Each notification can include a title, detailed content, images, and can be scheduled for future delivery — ideal for flash sale announcements, order status updates, or event reminders.
 
 **Notification Edit — Tabs:**
 
-| Tab | Purpose |
-|-----|---------|
-| **Details** | Notification title, body content, and targeting rules |
-| **Scheduled** | Set date/time for scheduled delivery |
+| Tab | Purpose | What You Can Do |
+|-----|---------|-----------------|
+| **Details** | Notification title, body content, and targeting rules | Write the notification message and choose which customer segments receive it |
+| **Scheduled** | Set date/time for scheduled delivery | Schedule the notification to be sent at a specific future time (e.g., "Send 'Flash Sale' notification at 9:00 AM Monday") |
 
 Each notification can have **Posts** (sub-items) with their own tabs:
 

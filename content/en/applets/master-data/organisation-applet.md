@@ -352,6 +352,19 @@ Manage branch master records and branch-level operational configuration.
 | **Address** | Maintain the branch address. |
 | **Marketplace** | Maintain marketplace-related setup during creation when needed. |
 
+{{< callout type="info" >}}
+**Create default location vs. Choose from existing location**
+
+This is the first decision to make when creating a branch:
+
+| Option | What it does | When to use it |
+|--------|--------------|----------------|
+| **Create default location** | Automatically creates a new, linked location record when the branch is saved. | Use when the branch needs a brand-new location immediately. |
+| **Choose from existing location** | Links the branch to a location record that already exists in the system. | Use when a location has already been created and should not be duplicated. |
+
+If the location fields feel unpopulated, complete the **Company Name** field first — the dependent dropdowns will load correctly after that.
+{{< /callout >}}
+
 **Edit View Tabs:**
 
 {{< figure src="/images/organisation-applet/edit-branch.png" alt="Branch Edit view showing the Details tab for an existing record with additional sub-tabs unlocked like Pick Pack and Marketplace." caption="Branch Edit: Access expanded configuration tabs like Marketplace and Settlement after saving the branch." >}}
@@ -473,8 +486,17 @@ Manage location master records and location-level linking or configuration.
 | **Intercompany Configuration** | Link, review, or remove target-location intercompany stock configuration rows. | Affects location-level intercompany stock behavior in linked workflows. |
 
 **Location Class Options:**
-- `BASIC`
-- `CCSG`
+
+When creating a location, the **Location Class** dropdown determines **what kind of location** this represents:
+
+| Class | Full Name | What it means | When to use it |
+|-------|-----------|---------------|----------------|
+| **BASIC** | Basic (Standard Location) | A **real, physical location** owned and operated by your company — such as a warehouse, retail outlet, office, or distribution center. This is where your company's own stock is stored and managed. | Use for all standard company-owned locations: head office, branch warehouse, retail store, factory, etc. **This is the default for most setups.** |
+| **CCSG** | Consignment | A **consignment location** — a temporary or virtual holding point representing stock that is physically at a **customer's or supplier's premises**, but the ownership hasn't fully transferred yet. These are not "real" company locations in the traditional sense. | Use when setting up **Customer Consignment Locations** (your stock held at a customer's site for them to sell/use) or **Supplier Consignment Locations** (a supplier's stock held at your site that you haven't purchased yet). |
+
+{{< callout type="info" >}}
+**Understanding Consignment (CCSG)**: In a consignment arrangement, stock moves to another party's site but ownership stays with the original party until the stock is sold or consumed. For example, if you send 100 units of product to a retailer's shop but they only pay you when a unit is sold, you need a CCSG location to track that stock separately from your own warehouse inventory. The system uses consignment-specific document types (e.g., Customer Consignment In/Out, Supplier Consignment In/Out) to manage these stock movements.
+{{< /callout >}}
 
 {{< callout type="warning" >}}
 **Status wording**
