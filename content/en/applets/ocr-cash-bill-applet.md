@@ -22,7 +22,7 @@ The **OCR Cash Bill Applet** helps teams digitize physical receipts and process 
 **Core Concept**: Convert receipt images into structured documents, then move them through **review**, **status control**, **line-item mapping**, and **final posting lock**.
 {{< /callout >}}
 
-## Key Features Overview
+## Who Benefits and What Problems It Solves
 
 ### Who Benefits from This Applet?
 
@@ -165,7 +165,7 @@ Quick Start Guide video: Click the thumbnail to watch on YouTube.
 {{< figure src="/images/ocr-cash-bill-applet/scanned-receipt-listing.png" alt="Scanned Receipt Listing page showing uploaded documents and processing statuses" caption="Scanned Receipt Listing: Track uploaded receipts and their process status in one view." >}}
 
 1. Go to **Scanned Receipt**
-2. Click **Create**
+2. Click the **+ (Create)** button on the listing toolbar
 3. Set **Status** (default `ACTIVE`)
 4. Select **Execution Strategy**:
    - `RUN_NOW` for immediate OCR processing
@@ -245,8 +245,8 @@ Quick Start Guide video: Click the thumbnail to watch on YouTube.
 
 **Goal:** Prepare the applet for production use with consistent defaults and access control.
 
-1. Go to `Settings > Default Selection` and set branch, location, and timezone defaults
-2. Go to `Settings > Field Settings` and decide whether to enable member/customer advanced search options
+1. From the applet left sidebar, go to `Settings > Default Selection` and set branch, location, and timezone defaults
+2. From the same `Settings` menu, open `Field Settings` and decide how advanced search should behave
 3. Configure permission sets and user/team/role permissions for Operations, Finance, and Admin users
 4. Load baseline OCR Company and OCR Item master data
 5. Run an end-to-end test cycle: upload -> review -> map -> finalize
@@ -471,9 +471,11 @@ Use `FINAL` only after:
 
 {{< figure src="/images/ocr-cash-bill-applet/settings-field-settings.png" alt="Field Settings page with advanced search toggle options" caption="Field Settings: Configure advanced search behavior for OCR Generic Doc listing." >}}
 
+Use the left sidebar inside **OCR Cash Bill Applet** to open `Settings` and `Personalization` pages. Depending on role permissions, direct route links may not land on the expected sub-page.
+
 ### Field Settings (`Settings > Field Settings`)
 
-Control advanced search behavior for OCR Generic Doc listing:
+Control advanced search behavior for OCR Generic Doc listing. In current UI, these appear under **OCR LIST ADVANCED SEARCH SETTING**:
 - `HIDE_CUSTOMER_ADVANCED_SEARCH`
 - `ENABLE_MEMBER_ADVANCED_SEARCH`
 
@@ -486,8 +488,9 @@ Use these toggles to simplify search UX or enable member-focused filtering.
 Set applet-wide defaults for:
 - `DEFAULT_BRANCH`
 - `DEFAULT_LOCATION`
-- `DEFAULT_COMPANY` (auto-derived from selected branch)
 - `DEFAULT_TIMEZONE`
+
+`DEFAULT_COMPANY` may be tenant-dependent (for some tenants it is auto-derived from branch and not shown as an editable field).
 
 These reduce repetitive input and standardize user context.
 
