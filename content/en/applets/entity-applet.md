@@ -61,7 +61,7 @@ When entity data lives in spreadsheets and disconnected systems, teams face:
 - **Financial readiness** - payment config, tax, credit term, and credit limit in one workflow
 - **Operational completeness** - address, contact, login mapping, remarks, and branch/company links
 
-## Key Features Overview
+## Feature Highlights
 
 {{< cards >}}
   {{< card title="Entity Listing" subtitle="Grid-based listing with search, filters, and edit drill-down" link="#entity-listing-and-search" >}}
@@ -76,9 +76,7 @@ When entity data lives in spreadsheets and disconnected systems, teams face:
 
   {{< card title="Company and Branch Mapping" subtitle="Company Linking and Intercompany Branch maintenance" link="#company-linking-and-intercompany-branch" >}}
 
-  {{< card title="Configuration and Defaults" subtitle="Default selection, field settings, and optional governance routes" link="#configuration--settings" >}}
-
-  {{< card title="Personalization" subtitle="User-level branch and location defaults" link="#personalization" >}}
+  {{< card title="Configuration and Defaults" subtitle="Default selection, field settings, and optional governance routes" link="#configuration-settings" >}}
 {{< /cards >}}
 
 {{< figure src="/images/entity-applet/entity-create-overview.png" alt="Entity Maintenance create form with required master fields and type selections" caption="Entity Create Form: Define core fields such as Entity Name, Status, Type, Entity Type, ID Number, Currency, and AR/AP Type before saving." >}}
@@ -120,7 +118,7 @@ Entity Listing
         -> Company Linking
         -> Remark
         -> Credit Term and Limit
-  -> Settings and Personalization Defaults
+  -> Settings Defaults (if enabled in tenant)
 ```
 
 ### Category Domains
@@ -143,7 +141,7 @@ Use these role-based quick starts to onboard with minimal setup errors.
 
 **Goal:** Create an entity profile that operations teams can use immediately.
 
-1. Open **Entity Listing** and click **Create**.
+1. Open the **Entity** menu (Entity Listing) and click the **+ (Create)** icon.
 2. Fill required header fields: Entity Name, Status, Type, Entity Type, ID Number, Currency, AR/AP Type.
 3. Save the new header and reopen the record in edit mode.
 4. Complete **Address** and **Contact** tabs so teams can transact and communicate.
@@ -159,7 +157,7 @@ Use these role-based quick starts to onboard with minimal setup errors.
 **Goal:** Ensure AP/AR processing can run without master-data gaps.
 
 1. Open the entity and verify role (customer/supplier/employee/merchant) and AR/AP direction.
-2. Configure **Payment Config** with payee status, payment type, country, bank, and account data.
+2. Configure **Payment Config** with **Payee Resident Status**, payment type, country, bank, and account data.
 3. Configure **Tax** with country, tax type, tax code, rate, and option.
 4. Add **Credit Term** and **Credit Limit** entries with currency and status.
 5. Set **Company Linking** and **Intercompany Branch** where required.
@@ -175,13 +173,12 @@ Use these role-based quick starts to onboard with minimal setup errors.
 
 1. Define category structures for Entity, Customer, Employee, and Supplier modules.
 2. Set parent-child hierarchy in each category module where needed.
-3. Configure defaults by route availability: use **Settings > Default Selection** when available; otherwise use **Personalization > Default Selection**.
+3. Configure **Settings > Default Selection** if the `Settings` menu is available in your tenant.
 4. If `Settings` is available, review **Settings > Field Settings** toggles to standardize form behavior.
 5. Validate route-level governance features such as feature visibility and permissions if enabled in your tenant.
-6. Configure **Personalization > Default Selection** for user-level overrides.
-7. Run UAT with at least one customer and one supplier onboarding scenario.
+6. Run UAT with at least one customer and one supplier onboarding scenario.
 
-{{< figure src="/images/entity-applet/entity-settings-default-selection.png" alt="Default selection configuration screen for branch and location in Entity Maintenance applet" caption="Default Selection: Set applet-level branch and location defaults to reduce data-entry errors." >}}
+{{< figure src="/images/entity-applet/entity-settings-default-selection.png" alt="Default Selection screen for branch and location defaults in Entity Maintenance setup" caption="Default Selection: Configure branch and location defaults through Settings when this menu is enabled for your tenant." >}}
 
 ---
 
@@ -204,7 +201,9 @@ The left-side menu in Entity Maintenance commonly includes:
 
 Use this section as the practical map of each menu and what users can do inside it.
 
-### Entity Listing and Search (`Entity` menu)
+### Entity Listing and Search
+
+Menu: `Entity`
 
 The listing page is the daily control center for entity maintenance:
 - Search and advanced filtering
@@ -228,13 +227,19 @@ The form includes behavior rules:
 - If `EMPLOYEE` is selected in Type, Entity Type is constrained to `INDIVIDUAL`
 - ID field placeholder changes based on Entity Type context
 
-{{< figure src="/images/entity-applet/entity-edit-form.png" alt="Entity edit screen with multi-tab profile management including Main, Category, Login, Payment, and Tax" caption="Entity Edit: Continue setup through modular tabs after saving the entity header." >}}
+{{< figure src="/images/entity-applet/entity-create-form.png" alt="Entity create panel with required fields such as Entity Name, Status, Type, Entity Type, Currency, and AR/AP Type" caption="Entity Create Panel: Fill required fields, then use CREATE to generate the entity header." >}}
+
+After creation, open any row from Entity Listing to continue on the edit workspace tabs.
+
+{{< figure src="/images/entity-applet/entity-edit-form.png" alt="Entity edit screen with multi-tab profile management including Main, Category, Login, Payment, and Tax" caption="Entity Edit Workspace: Continue setup through tabs such as Category, Payment Config, Tax, Address, Contact, and Credit Term and Limit." >}}
 
 ### Category Management Menus
 
 Each category menu follows a similar listing/create/edit workflow with search and status control.
 
-### Entity Category (`Entity Category` menu)
+### Entity Category
+
+Menu: `Entity Category`
 
 Use this menu to maintain broad entity classification used across modules.
 
@@ -246,7 +251,9 @@ Key functionality:
 
 {{< figure src="/images/entity-applet/entity-category-listing.png" alt="Entity Category listing showing category code, category name, level value, type, dates, and status columns" caption="Entity Category Listing: Maintain top-level category taxonomy for entity master governance." >}}
 
-### Customer Category (`Customer Category` menu)
+### Customer Category
+
+Menu: `Customer Category`
 
 Use this menu to maintain customer-specific segmentation for customer policies and reporting.
 
@@ -258,7 +265,9 @@ Key functionality:
 
 {{< figure src="/images/entity-applet/customer-category-listing.png" alt="Customer Category listing screen with customer category records and maintenance controls" caption="Customer Category Listing: Manage customer-focused category setup and hierarchy." >}}
 
-### Employee Category (`Employee Category` menu)
+### Employee Category
+
+Menu: `Employee Category`
 
 Use this menu to classify employee entities for internal assignment and reporting control.
 
@@ -270,7 +279,9 @@ Key functionality:
 
 {{< figure src="/images/entity-applet/employee-category-listing.png" alt="Employee Category listing screen with records, columns, and category maintenance actions" caption="Employee Category Listing: Organize employee-related entity categories with searchable records." >}}
 
-### Supplier Category (`Supplier Category` menu)
+### Supplier Category
+
+Menu: `Supplier Category`
 
 Use this menu to maintain supplier segmentation for procurement and vendor governance.
 
@@ -285,7 +296,7 @@ Key functionality:
 ### Payment Configuration
 
 Payment configuration captures settlement-related details used by finance:
-- Payee residential status
+- Payee Resident Status
 - Payment type
 - Country and bank
 - Bank identifier code
@@ -310,7 +321,7 @@ Use both sections when entities operate across multiple companies or branches.
 
 ---
 
-## Configuration & Settings
+## Configuration Settings
 
 ### Applet Default Selection (`Settings > Default Selection`)
 
@@ -321,7 +332,7 @@ Configure applet-wide defaults:
 These defaults reduce repetitive data entry and improve consistency.
 
 {{< callout type="warning" >}}
-**Tenant behavior note**: In some tenants, the `Settings` menu is not exposed for Entity Maintenance. When that happens, use **Personalization > Default Selection** to configure user-level defaults.
+**Tenant behavior note**: In some tenants, the `Settings` menu is not exposed for Entity Maintenance. If this happens, request tenant admin/role permission updates before applying default settings.
 {{< /callout >}}
 
 {{< figure src="/images/entity-applet/entity-settings-default-selection.png" alt="Default selection configuration screen for branch and location in Entity Maintenance applet" caption="Default Selection Screen: Configure default branch and location for consistent data entry." >}}
@@ -356,20 +367,6 @@ The applet primarily uses built-in labels from component definitions. A lightwei
 
 ---
 
-## Personalization
-
-### User Default Selection (`Personalization > Default Selection`)
-
-Users can define personal defaults for:
-- Default Branch
-- Default Location
-
-These settings let teams keep global defaults while supporting user-specific workflows.
-
-{{< figure src="/images/entity-applet/entity-personalization-default-selection.png" alt="Personalization default selection screen for user-level branch and location defaults" caption="Personalization: Set user-level branch and location defaults to speed up daily entry." >}}
-
----
-
 ## FAQ
 
 **Q: Why does my new entity not appear where I expect after saving?**  
@@ -383,9 +380,6 @@ A: Not always. For entities that will be used in AP/AR transactions, these secti
 
 **Q: Can one entity hold multiple roles (for example, both customer and supplier)?**  
 A: Yes. The Type field supports multi-role usage, so one profile can represent multiple business relationships when governance allows it.
-
-**Q: What is the difference between applet defaults and personalization defaults?**  
-A: Applet defaults apply to everyone, while personalization defaults are user-level overrides for daily convenience.
 
 **Q: How can we prevent duplicate entity creation?**  
 A: Enforce pre-create search by legal name and registration ID, maintain naming standards, and assign a data steward to review uncertain matches.
