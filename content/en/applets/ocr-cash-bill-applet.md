@@ -154,6 +154,8 @@ When a document is rejected, use one of the configured reasons:
 
 Get started quickly with the most important role-based workflows.
 
+Navigation note: If direct URL navigation redirects, open modules from the applet sidebar.
+
 [![Quick Start Guide video thumbnail for OCR Cash Bill Applet](https://img.youtube.com/vi/2lvMSe6y97U/hqdefault.jpg)](https://youtu.be/2lvMSe6y97U?si=ptozYiPHTFgClxQg)
 
 Quick Start Guide video: Click the thumbnail to watch on YouTube.
@@ -191,7 +193,7 @@ Quick Start Guide video: Click the thumbnail to watch on YouTube.
 
 1. Open **OCR Generic Doc**
 2. Use search filters (Doc No, Scanned Doc No, Process Status, Verification Status, date ranges) if needed
-3. Open a document and review **Main Details**:
+3. Click a row in **OCR Generic Doc Listing** to open the edit panel, then review **Main Details**:
    - Doc No, Amount, Receipt Date
    - Company, Confidence Level, Verification Status
    - Current Process Status and updated-by info
