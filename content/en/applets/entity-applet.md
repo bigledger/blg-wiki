@@ -68,7 +68,7 @@ When entity data lives in spreadsheets and disconnected systems, teams face:
 
   {{< card title="Entity Create and Edit" subtitle="Core fields plus extension tabs for complete profiles" link="#entity-create-and-main-validation-rules" >}}
 
-  {{< card title="Category Modules" subtitle="Entity, Customer, Employee, and Supplier category governance" link="#category-management" >}}
+  {{< card title="Category Modules" subtitle="Entity, Customer, Employee, and Supplier category governance" link="#category-management-menus" >}}
 
   {{< card title="Payment and Tax Setup" subtitle="Country, bank, payment method, and tax configurations" link="#payment-configuration" >}}
 
@@ -175,9 +175,9 @@ Use these role-based quick starts to onboard with minimal setup errors.
 
 1. Define category structures for Entity, Customer, Employee, and Supplier modules.
 2. Set parent-child hierarchy in each category module where needed.
-3. Configure **Settings > Default Selection** for default branch and default location.
-4. Review **Settings > Field Settings** toggles to standardize form behavior.
-5. Validate route-level governance features such as feature visibility and permissions if enabled in tenant.
+3. Configure defaults by route availability: use **Settings > Default Selection** when available; otherwise use **Personalization > Default Selection**.
+4. If `Settings` is available, review **Settings > Field Settings** toggles to standardize form behavior.
+5. Validate route-level governance features such as feature visibility and permissions if enabled in your tenant.
 6. Configure **Personalization > Default Selection** for user-level overrides.
 7. Run UAT with at least one customer and one supplier onboarding scenario.
 
@@ -193,7 +193,18 @@ Use these role-based quick starts to onboard with minimal setup errors.
 
 ## Entity Operations Walkthrough
 
-### Entity Listing and Search
+### Menu Functionality Reference
+
+The left-side menu in Entity Maintenance commonly includes:
+- `Entity` (Entity Listing)
+- `Entity Category`
+- `Customer Category`
+- `Employee Category`
+- `Supplier Category`
+
+Use this section as the practical map of each menu and what users can do inside it.
+
+### Entity Listing and Search (`Entity` menu)
 
 The listing page is the daily control center for entity maintenance:
 - Search and advanced filtering
@@ -219,21 +230,57 @@ The form includes behavior rules:
 
 {{< figure src="/images/entity-applet/entity-edit-form.png" alt="Entity edit screen with multi-tab profile management including Main, Category, Login, Payment, and Tax" caption="Entity Edit: Continue setup through modular tabs after saving the entity header." >}}
 
-### Category Management
+### Category Management Menus
 
-Category modules follow a consistent listing/create/edit pattern:
-- `Entity Category`
-- `Customer Category`
-- `Employee Category`
-- `Supplier Category`
+Each category menu follows a similar listing/create/edit workflow with search and status control.
 
-Core capabilities:
-- Category code and name maintenance
-- Active/inactive status control
-- Parent category linking for hierarchy
-- Searchable listing for easier cleanup and governance
+### Entity Category (`Entity Category` menu)
 
-{{< figure src="/images/entity-applet/entity-category-report.png" alt="Entity category listing screen used as a report-style view for category governance and status monitoring" caption="Entity Category Report View: Use this listing to review category structure, statuses, and maintenance coverage." >}}
+Use this menu to maintain broad entity classification used across modules.
+
+Key functionality:
+- Create new entity category records
+- Edit category names and status
+- Set parent category and hierarchy level
+- Search existing categories for cleanup and governance
+
+{{< figure src="/images/entity-applet/entity-category-listing.png" alt="Entity Category listing showing category code, category name, level value, type, dates, and status columns" caption="Entity Category Listing: Maintain top-level category taxonomy for entity master governance." >}}
+
+### Customer Category (`Customer Category` menu)
+
+Use this menu to maintain customer-specific segmentation for customer policies and reporting.
+
+Key functionality:
+- Create customer category records
+- Set category code, name, and status
+- Maintain parent-child category structure
+- Search and filter customer category lists
+
+{{< figure src="/images/entity-applet/customer-category-listing.png" alt="Customer Category listing screen with customer category records and maintenance controls" caption="Customer Category Listing: Manage customer-focused category setup and hierarchy." >}}
+
+### Employee Category (`Employee Category` menu)
+
+Use this menu to classify employee entities for internal assignment and reporting control.
+
+Key functionality:
+- Create employee category records
+- Maintain category names and active/inactive status
+- Apply parent category where hierarchy is required
+- Review and search employee category records
+
+{{< figure src="/images/entity-applet/employee-category-listing.png" alt="Employee Category listing screen with records, columns, and category maintenance actions" caption="Employee Category Listing: Organize employee-related entity categories with searchable records." >}}
+
+### Supplier Category (`Supplier Category` menu)
+
+Use this menu to maintain supplier segmentation for procurement and vendor governance.
+
+Key functionality:
+- Create and update supplier category records
+- Maintain status and hierarchy structure
+- Standardize supplier grouping for purchasing operations
+- Search supplier categories for faster maintenance
+
+{{< figure src="/images/entity-applet/supplier-category-listing.png" alt="Supplier Category listing screen showing supplier category records, status, and hierarchy columns" caption="Supplier Category Listing: Maintain supplier grouping and governance for procurement workflows." >}}
 
 ### Payment Configuration
 
@@ -272,6 +319,10 @@ Configure applet-wide defaults:
 - Default Location
 
 These defaults reduce repetitive data entry and improve consistency.
+
+{{< callout type="warning" >}}
+**Tenant behavior note**: In some tenants, the `Settings` menu is not exposed for Entity Maintenance. When that happens, use **Personalization > Default Selection** to configure user-level defaults.
+{{< /callout >}}
 
 {{< figure src="/images/entity-applet/entity-settings-default-selection.png" alt="Default selection configuration screen for branch and location in Entity Maintenance applet" caption="Default Selection Screen: Configure default branch and location for consistent data entry." >}}
 
