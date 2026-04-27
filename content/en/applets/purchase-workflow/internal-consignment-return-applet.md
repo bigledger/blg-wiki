@@ -54,6 +54,8 @@ The **Internal Consignment Return Applet** is a specialized tool designed to man
 - **Document Linkage**: KO For Purchase GRN and KO For Purchase Order prevent over-returning and ensure every return is traceable
 - **Flexible Settlement**: Supports cash refunds, contra offsets, and multiple payment modes
 
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-overview-infographic.png" alt="Consignment Returns: From Manual Chaos to Unified Control - comparing manual return challenges with the unified applet solution" caption="Consignment Returns: From Manual Chaos to Unified Control — Inventory ghost stock, missing credits, and untracked settlements solved by unified finalization, document linkage via KO, and flexible settlement options." >}}
+
 ---
 
 ## Key Concepts
@@ -124,6 +126,8 @@ FINAL  ──→  Stock adjusted + ARAP posted + Document locked
 Once a document is set to **FINAL**, it cannot be edited. Ensure all line items, quantities, and account details are correct before finalizing.
 {{< /callout >}}
 
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-listing.png" alt="Internal Consignment Return Listing showing document list with split-panel edit form" caption="Internal Consignment Return Listing: Select a document from the list to open the edit form in the side panel. The FINAL button in the toolbar allows bulk finalization of selected draft documents." >}}
+
 ### Editing a Consignment Return (Draft)
 
 1. From the listing, click on a **Draft** document to open it
@@ -174,6 +178,8 @@ Manages the supplier and billing/shipping entity information.
 - **Shipping Info**: Shipping contact name, email, phone
 - **Shipping Address**: Full shipping/delivery address
 
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-account-tab.png" alt="Account tab showing Entity Details sub-tab with Entity Id, Entity Name, Status, Entity Type, Identity Type, and Currency fields" caption="Account Tab — Entity Details: Select the supplier entity. The Bill To and Ship To sub-tabs capture the corresponding billing and shipping addresses." >}}
+
 ### Lines Tab
 
 Manages the individual products being returned.
@@ -201,9 +207,13 @@ Manages the individual products being returned.
 Using **KO For Purchase GRN** or **KO For Purchase Order** is recommended. It creates a document link for traceability and prevents returning more than what was originally received.
 {{< /callout >}}
 
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-lines-tab.png" alt="Lines tab showing item CSG-001 with Item Code, Item Name, UOM and Delivery columns, with Total Txn Amount displayed" caption="Lines Tab: Each line represents a product being returned. The Total Txn Amount and Total SST/VAT/GST Amount are summarized at the top right." >}}
+
 ### Delivery Details Tab
 
 Records delivery-related information for the physical movement of returned goods, including delivery schedules and logistics notes.
+
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-delivery-details-tab.png" alt="Delivery Details tab showing Tracking ID, Delivery Branch, Delivery Type, Delivery Location fields with Apply to Lines buttons and item CSG-001 listed" caption="Delivery Details Tab: Set Tracking ID, Delivery Branch, Delivery Type, and Delivery Location. Use Apply to Lines to apply changes to all line items at once." >}}
 
 ### Settlement Tab
 
@@ -221,6 +231,8 @@ Records how the return is being financially settled with the supplier.
 | **Open Credit** | Applied as open credit on the supplier account |
 | **Others** | Any other settlement type |
 
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-settlement-tab.png" alt="Settlement tab showing Total Settlement, Doc Open Amount, and Doc ARAP Balance summary with Date, Amount, Details and Remarks columns" caption="Settlement Tab: Displays the Total Settlement applied, Doc Open Amount, and remaining Doc ARAP Balance. Click the + button to add a new settlement entry." >}}
+
 ### KO For Tab *(Create mode only)*
 
 Use the **KO For** tab to import knock-off line items from source documents. This links the return to specific originating documents and ensures financial accuracy.
@@ -236,25 +248,39 @@ Captures cost centre and department allocation for the return document header.
 | **Profit Center** | Profit centre allocation |
 | **Project** | Project code if applicable |
 
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-department-hdr-tab.png" alt="Department Hdr tab showing Segment, G/L Dimension, Profit Centre, and Project dropdown fields" caption="Department Hdr Tab: Assign the consignment return to a Segment, G/L Dimension, Profit Centre, and Project for cost allocation and reporting." >}}
+
 ### ARAP Tab *(Edit mode only)*
 
 Displays the Accounts Receivable / Accounts Payable entries generated when the document is finalized. This is a read-only view of the financial impact.
+
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-arap-tab.png" alt="ARAP tab showing Product and Services amount, Settlement, Doc Open Amount, Contra, and Outstanding balance fields" caption="ARAP Tab: A read-only summary of the financial posting — Products & Services value, Settlement applied, Contra offset, and the remaining Outstanding balance." >}}
 
 ### Trace Document Tab *(Edit mode only)*
 
 Provides a complete audit trail of all documents linked to this consignment return — from the original Purchase Order through the GRN to this return document.
 
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-trace-document-tab.png" alt="Trace Document tab showing Journal Txn sub-tab with GL Code, Entity, Description, Debit and Credit columns and Total Debit/Credit summary" caption="Trace Document Tab — Journal Txn: View all general ledger journal entries generated by this document. Sub-tabs include Cashbook Txn, Points Txn, Tax Txn, and Inv Txn for a complete audit trail." >}}
+
 ### Contra Tab *(Edit mode only)*
 
 Allows the return amount to be offset against outstanding supplier invoices or credit notes instead of receiving a cash refund.
+
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-contra-tab.png" alt="Contra tab showing Total Contra, Doc Open Amount and Doc ARAP Balance with an empty document list" caption="Contra Tab: Shows Total Contra applied, Doc Open Amount, and Doc ARAP Balance. Click + to select a document to offset against." >}}
+
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-contra-document-selection.png" alt="Select Document to Contra With popup showing CSGGRIN and PURINV documents with Doc Short, Doc No, Branch, Server Doc Type and Status columns" caption="Contra Document Selection: Search and select from available supplier documents (Consignment GRN, Purchase Invoice, etc.) to apply as a contra offset against the return amount." >}}
 
 ### Doc Link Tab *(Edit mode only)*
 
 Links this consignment return to other related documents in the system for cross-referencing.
 
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-doc-link-tab.png" alt="Doc Link tab showing Copy From and Copy To sub-tabs with Doc Short, Doc No, Branch, Server Doc Type, Status and Date columns" caption="Doc Link Tab: The Copy From sub-tab shows source documents this return was copied from. The Copy To sub-tab shows documents that were subsequently created from this return." >}}
+
 ### Export Tab *(Edit mode only)*
 
 Exports the consignment return document in configurable formats for record-keeping, sending to suppliers, or integration with external systems.
+
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-export-tab.png" alt="Export tab showing Printable Format dropdown and Export as PDF button" caption="Export Tab: Select a Printable Format template and click Export as PDF to generate a formatted document for supplier correspondence or internal record-keeping." >}}
 
 ### Attachments Tab *(Edit mode only)*
 
@@ -263,6 +289,8 @@ Upload and manage supporting documents such as:
 - Delivery order copies
 - Photos of defective goods
 - Inspection reports
+
+{{< figure src="/images/internal-consignment-return-applet/consignment-return-attachments-tab.png" alt="Attachments tab showing File Name, bl_fi_generic_doc_attachme, Uploaded Date, Uploaded By and Actions columns with an add button" caption="Attachments Tab: Click the + button to upload supporting files. Uploaded documents are listed with their file name, upload date, and the user who uploaded them." >}}
 
 ---
 
