@@ -1,5 +1,5 @@
 ---
-title: "Internal Sales GIN Applet"
+title: "Sales GIN (Internal)"
 description: "User guide for the Internal Sales GIN applet: list and search documents, create and edit goods issue notes, account and lines, settlement, then SAVE and FINAL."
 tags:
 - internal-sales-gin
@@ -26,10 +26,9 @@ This guide uses the **exact screen titles and tab names** from the applet (for e
 
 - You need **customers**, **items**, **branches**, and **locations** in master data; **Branch** and **Location** on **Main Details** control where stock issues from.
 - **Credit Terms** and **Due Date** on **Main Details** depend on the customer: the screen notes that **Entity ID** must be selected first on **Account** → **Entity Details**.
-- **Member Card** ties the document to a **loyalty / membership** record. Click the field to open member selection; membership master data and rules are maintained in **[Membership Admin Applet](/applets/membership/membership-admin-applet/)**. If your process does not use members, ask your administrator how your tenant expects this field to be filled—the header form treats it as a required field in the applet code.
-- **Who may create or post** is controlled by **permissions** and tenant policy; ask your **administrator** if you are blocked.
-- If **Settlement** or **Department Hdr** never appears, your tenant may hide those tabs (**HIDE_SETTLEMENT_TAB** / **HIDE_DEPARTMENT_HDR_TAB** in applet settings). Ask your administrator.
-- **Line prices** (unit price, tax, and amount columns) only appear if your login has the **INTERNAL_SALES_GIN_DISPLAY_PRICING** permission; otherwise those columns are hidden (see [FAQ — Why can’t I see prices on the Lines tab?](#faq-prices)).
+- **Member Card** ties the document to a **loyalty / membership** record. Click the field to open member selection; membership master data and rules are maintained in **[Membership Admin Applet](/applets/membership/membership-admin-applet/)**. If your process does not use members, ask your administrator how this field should be handled in your company setup—the header form treats it as a required field in the applet code.
+- **Who may create or post** is controlled by **permissions** and company policy; ask your **administrator** if you are blocked.
+- For hidden tabs and hidden pricing columns, see [FAQ](#faq).
 
 ---
 
@@ -71,6 +70,8 @@ Goal: first **saved** internal sales GIN (draft on the server), ready for **FINA
 
 If **CREATE** or **SAVE** stays disabled, complete **Main Details**, ensure **Account** → **Entity Details** is valid, and keep **at least one line** on **Lines**—those are the same checks the applet uses before save.
 
+![Create Internal Sales GIN screen](/images/internal-sales-gin-applet/create-sales-gin.png)
+
 ### Two ways to add lines {#two-ways-to-add-lines}
 
 **Path A — Search Item (catalog)**
@@ -85,7 +86,9 @@ If **CREATE** or **SAVE** stays disabled, complete **Main Details**, ensure **Ac
 2. On **Select Item**, open the **KO by …** or **KO for …** tab that matches your source (for example **KO by Sales Order Item** or **KO for Delivery Order Item**—labels match the screen).
 3. Choose source lines and quantities as your process allows; return until new lines appear on **Lines**.
 
-Your tenant may not use every KO tab; follow the tab your administrator or procedure names for the sale you are fulfilling.
+Your administrator may configure different KO tabs for different companies or roles; follow the tab your administrator or procedure names for the sale you are fulfilling.
+
+![Two pathways for adding line items (Path A and Path B)](/images/internal-sales-gin-applet/line-item-path-a-path-b.png)
 
 ---
 
@@ -111,7 +114,7 @@ Your tenant may not use every KO tab; follow the tab your administrator or proce
 - **FINAL** on the listing applies to **selected rows**: each selected document that is not already **FINAL** is posted, then the grid refreshes.
 
 {{< callout type="warning" >}}
-**Multi-select FINAL is high impact.** If you select several rows and click **FINAL**, the applet posts **every selected document** that is not already **FINAL** in one action. There is no “undo” button on this listing screen. Correcting posted documents depends on your organisation (for example void, reversal, or adjustment in the ERP or another screen). Use this only when you are sure every selected GIN should be posted, and ask your **administrator** how your tenant handles corrections.
+**Multi-select FINAL is high impact.** If you select several rows and click **FINAL**, the applet posts **every selected document** that is not already **FINAL** in one action. There is no “undo” button on this listing screen. Correcting posted documents depends on your organisation (for example void, reversal, or adjustment in the ERP or another screen). Use this only when you are sure every selected GIN should be posted, and ask your **administrator** how corrections are handled in your company setup.
 {{< /callout >}}
 
 ### Create and edit Internal Sales GIN {#create-and-edit-internal-sales-gin}
@@ -166,7 +169,7 @@ Your tenant may not use every KO tab; follow the tab your administrator or proce
 
 - **Branch** and **Location** pickers.
 - **Sales Agent** (labels may follow applet settings).
-- **Member Card** — Read-only field; click it to open **member selection**. The value is stored with the document as the member card number from membership data. For **what membership means** and how cards are issued, see **[Membership Admin Applet](/applets/membership/membership-admin-applet/)**. Selecting a member links this sale to that member for loyalty or reporting; leaving the wrong member on the document does not change physical stock by itself—correct the selection before **FINAL** if your policy requires it. If your tenant expects every GIN to have a member, you must complete this field so **CREATE** / **SAVE** validation can pass; if you believe the field should be optional for your shop, ask your **administrator** (only they can confirm tenant rules beyond what the screen enforces).
+- **Member Card** — Read-only field; click it to open **member selection**. The value is stored with the document as the member card number from membership data. For **what membership means** and how cards are issued, see **[Membership Admin Applet](/applets/membership/membership-admin-applet/)**. Selecting a member links this sale to that member for loyalty or reporting; leaving the wrong member on the document does not change physical stock by itself—correct the selection before **FINAL** if your policy requires it. If your administrator requires every GIN to have a member, you must complete this field so **CREATE** / **SAVE** validation can pass; if you believe the field should be optional for your shop, ask your **administrator** (only they can confirm company rules beyond what the screen enforces).
 - **Transaction Date**, **Credit Terms**, **Due Date**, **Reference**, **Remarks**, **Currency**, **Customer**, and document number fields such as **Doc No (Tenant)** / company / branch when your configuration shows them.
 - **Permit No** — Optional free-text field on the header. Use it when your business or jurisdiction needs a **permit, licence, or customs / export reference** on the goods issue; leave it blank when it does not apply. The applet does not define which regulator or permit type you must use—confirm with your **administrator** or compliance team.
 
@@ -205,6 +208,8 @@ Your tenant may not use every KO tab; follow the tab your administrator or proce
 - **Settlement**: grid with **+** for new settlement rows (not available after **FINAL**), with **Outstanding** and currency totals where shown.
 - **Department Hdr**: department header fields your configuration exposes.
 
+![Settlement and Department Hdr section](/images/internal-sales-gin-applet/settlement-departmnet-hdr.png)
+
 ### Edit-only tabs {#edit-only-tabs}
 
 {{< callout type="info" >}}
@@ -220,7 +225,7 @@ On **Edit Internal Sales GIN** (after **CREATE**), these tabs are available alon
 
 **Delete**
 
-- In vertical layout, **DELETE** can appear at the bottom of the panel stack. It shows only when the tenant enables **SHOW_DOCUMENT_DELETE_BUTTON** and the document is not **FINAL**. The first click asks you to click again; the second click confirms delete.
+- In vertical layout, **DELETE** can appear at the bottom of the panel stack. It shows only when your administrator enables **SHOW_DOCUMENT_DELETE_BUTTON** and the document is not **FINAL**. The first click asks you to click again; the second click confirms delete.
 
 ---
 
@@ -265,6 +270,10 @@ A **GIN (Goods Issue Note)** in this applet is centred on **recording the issue 
 ### Why can’t I see prices on the Lines tab? {#faq-prices}
 
 Price-related columns (**Unit Price (Inclusive of Tax)**, **SST/VAT/GST**, **Txn Amount**) are hidden unless your login passes the **INTERNAL_SALES_GIN_DISPLAY_PRICING** check. Ask your **administrator** to grant that permission if your role should see amounts.
+
+### Why can’t I see Settlement or Department Hdr tabs? {#faq-hidden-tabs}
+
+If **Settlement** or **Department Hdr** never appears, your administrator may have hidden those tabs in applet settings (**HIDE_SETTLEMENT_TAB** / **HIDE_DEPARTMENT_HDR_TAB**). Confirm with your administrator whether your role should see these tabs.
 
 ### What happens to stock levels when I click FINAL? {#faq-stock}
 
