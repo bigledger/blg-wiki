@@ -28,15 +28,18 @@ This applet is the tool that generates that end-of-month invoice. It looks at wh
 Without this applet, that billing step would be manual — spreadsheets, phone calls, and a high chance of billing the wrong quantity or missing a batch entirely.
 {{< /callout >}}
 
-The **Internal Consignment Billing Applet** is a specialized financial tool designed to manage the process of invoicing goods that have been previously issued on consignment.
+**Where this applet fits in one line per step:**
 
-{{< callout type="info" >}}
-**Related Applet**: The [Customer Consignment Applet](/applets/sales-workflow/customer-consignment-applet) handles the physical side of this workflow — dispatching stock to consignee locations and receiving unsold stock back. This applet handles the financial side — billing for what was actually consumed. The two applets work together: you cannot bill what was never transferred out.
-{{< /callout >}}
+| Step | Applet | What it does |
+|------|--------|-------------|
+| 1 | Consignment GRN | Supplier delivers — you sign for it and record it coming in |
+| 2 | Consignment GIN | You send the stock out from your warehouse to the consignee |
+| 3 | Customer Consignment | You track what's at the consignee's location, manage returns |
+| 4 | **Consignment Billing** ← this applet | Consignee consumed some stock — you generate the invoice for it like a report |
 
-In simple terms — the [Customer Consignment Applet](/applets/sales-workflow/customer-consignment-applet) handles the customer's side: it tracks the stock sitting at their location, sends it out, and gets back whatever they didn't use. This applet handles the billing report: once the customer has consumed some of that stock, this is where you record what was used and generate the invoice for it.
+The **Internal Consignment Billing Applet** is a specialized financial tool designed to manage the process of invoicing goods that have been previously issued on consignment. Once the customer has consumed some of that stock, this is where you record what was used and generate the invoice for it — the billing report for what was taken.
 
-This applet handles that invoicing step. It allows teams to convert Goods Issue Notes (GINs) — the records of stock that was physically sent out — into final sales invoices once the goods are confirmed as used or sold by the consignee. This ensures accurate financial recognition and keeps inventory records in sync with revenue.
+This applet converts Goods Issue Notes (GINs) — the records of stock that was physically sent out — into final sales invoices once the goods are confirmed as used or sold by the consignee. This ensures accurate financial recognition and keeps inventory records in sync with revenue.
 
 {{< callout type="info" >}}
 **Core Concept**: A **Consignment Billing** record is the financial finalization of a previous physical stock movement, moving the asset from "Consignment Out" to "Revenue" within the organization's ERP.
@@ -139,13 +142,21 @@ Understanding where this applet sits in the broader system is essential before u
 ### Document Chain
 
 ```
-Customer Consignment Applet  (see related applet below)
-└── Transfer Out — physical stock dispatched to consignee location
-└── Transfer Receive — unsold stock returned from consignee
+Internal Purchase Order Applet (purchase-workflow)
+└── Purchase Order — formal order raised to supplier for consignment stock
         │
         ▼
-Inventory Applet
-└── Goods Issue Note (GIN) — stock movement recorded against consignee
+Consignment GRN Applet (Internal)
+└── Goods Received Note — stock received into your warehouse from supplier
+        │
+        ▼
+Consignment GIN Applet (Internal)
+└── Goods Issue Note (GIN) — stock issued out from your warehouse to consignee
+        │
+        ▼
+Customer Consignment Applet
+└── Transfer Out — stock tracked at the consignee's location
+└── Transfer Receive — unsold stock returned to your warehouse
         │
         ▼
 Internal Consignment Billing Applet  ← YOU ARE HERE
@@ -156,6 +167,14 @@ Internal Consignment Billing Applet  ← YOU ARE HERE
         ├── Tax Applet ─────── SST/VAT/GST computed and posted
         └── Cashbook / Payment — settlement recorded when consignee pays
 ```
+
+{{< callout type="info" >}}
+**Related Applets:**
+- [Internal Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet) — the furthest upstream step. A Purchase Order is raised to the supplier before any stock arrives. There is no dedicated consignment PO applet — consignment stock procurement goes through the standard purchase order workflow.
+- [Consignment GRN Applet (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet) — records stock being **received into your warehouse** from the supplier against the PO. Without a GRN, there is no stock to issue.
+- [Consignment GIN Applet (Internal)](/applets/inventory-workflow/internal-consignment-gin-applet) — records stock being **issued out from your warehouse** to the consignee. The GIN is the internal record this billing applet links back to when generating invoices.
+- [Customer Consignment Applet](/applets/sales-workflow/customer-consignment-applet) — tracks the stock **at the consignee's location**, manages returns, and monitors what has been consumed vs what remains.
+{{< /callout >}}
 
 ### Customer Consignment Applet vs Internal Consignment Billing Applet
 
