@@ -11,7 +11,7 @@ weight: 60
 ---
 
 {{< callout type="warning" >}}
-**Daily cashier report applet user guide still under progress**
+**Internal Goods Dispatch Note Applet user guide still under progress**
 
 **Work in Progress: This documentation is currently under development. Visual assets (screenshots) and further details will be added soon.**
 {{< /callout >}}
