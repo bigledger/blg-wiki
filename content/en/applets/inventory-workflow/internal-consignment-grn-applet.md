@@ -1,6 +1,6 @@
 ---
-title: "Internal Consignment GRN Applet"
-description: "User guide for receiving consignment stock, validating line items, and posting Internal Consignment GRN documents."
+title: "Consignment GRN Applet (Internal)"
+description: "User guide for receiving consignment stock, validating line items, and posting consignment GRN documents in the internal workflow."
 tags:
 - internal-consignment-grn
 - consignment
@@ -14,14 +14,29 @@ draft: false
 
 ## Purpose and overview
 
-Use this applet to record and control incoming consignment stock receipts in your inventory process.
+### What is a GRN?
 
-In consignment, stock can be physically received into your operation while ownership or billing settlement may be completed later through the wider consignment flow.
+A GRN (Goods Received Note) is a structured record that answers: goods were received, which items and quantities, for which supplier or party, and on what date. It is the standard receiving document your teams use so the system matches what physically arrived.
 
-This applet has two main menu areas:
+### What is consignment?
 
-- **Consignment GRN** for document listing, create, edit, final, void, and print.
-- **Line Items** for cross-document line-level searching and review.
+Consignment is a commercial arrangement where stock may arrive at your site or move between parties before ownership or customer billing is finalized in a separate step. You still need a proper receiving record so inventory counts, audits, and later billing or settlement stay accurate and traceable.
+
+### What this applet is for
+
+Use the Consignment GRN Applet (Internal) to prepare, review, and post consignment GRN documents: capture header and account details, add or link line items, save drafts, then finalize when receipt is confirmed. Posting (FINAL) is the step that locks the document as the official received record for your configured process.
+
+### Problems it helps solve
+
+- Informal receiving (email, spreadsheets, or paper only) that does not match inventory or finance records.
+- Uncertainty about whether received stock is reflected in the system before billing or consumption reporting.
+- Slow reconciliation when auditors or finance ask for proof of what was received, when, and against which party.
+- Rework when lines are wrong or incomplete because there was no clear draft-and-review step before posting.
+
+### Where to work in the menu
+
+- Consignment GRN: listing, create, edit, FINAL, VOID, and print for full documents.
+- Line Items: search and open individual lines across documents when you need line-level review or correction.
 
 ---
 
@@ -40,7 +55,7 @@ This applet has two main menu areas:
 
 | Role | Main responsibility |
 |------|----------------------|
-| Warehouse / receiving operations | Create and complete Internal Consignment GRN for physical incoming stock. |
+| Warehouse / receiving operations | Create and complete consignment GRN documents for physical incoming stock. |
 | Inventory controller | Review listings, validate line details, and control posting actions. |
 | Purchasing / operations lead | Verify supplier/entity details, references, and KO-linked line intake. |
 | Admin | Configure visibility settings, default values, and role permissions. |
@@ -50,7 +65,7 @@ This applet has two main menu areas:
 ## Key features
 
 {{< cards >}}
-  {{< card title="GRN Listing" subtitle="Search, review, create, FINAL, VOID, and print Internal Consignment GRN documents" link="#internal-consignment-grn-listing" >}}
+  {{< card title="GRN Listing" subtitle="Search, review, create, FINAL, VOID, and print consignment GRN documents" link="#internal-consignment-grn-listing" >}}
   {{< card title="Create and Edit Flow" subtitle="Complete Main Details, Account, and Lines before posting" link="#create-and-edit-flow" >}}
   {{< card title="Line Item Intake Paths" subtitle="Add lines from Search Item or KO source documents" link="#line-item-intake-paths" >}}
   {{< card title="Posting and Control" subtitle="Understand CREATE, SAVE, FINAL, VOID, and post-final behavior" link="#status-reference" >}}
@@ -63,7 +78,7 @@ This applet has two main menu areas:
 
 **Role: Warehouse / receiving operations**
 
-Goal: create your first completed Internal Consignment GRN.
+Goal: create your first completed consignment GRN in this applet.
 
 1. Open **Consignment GRN** and click **Create** (`+`) from **Internal Consignment GRN Listing**.
 2. In **Main Details**, complete required fields:
@@ -101,6 +116,8 @@ What happens next:
 
 Use listing to manage the full document lifecycle.
 
+{{< figure src="/images/internal-consignment-grn-applet/1.png" alt="Internal Consignment GRN listing and Create Internal Consignment GRN screen" caption="Listing view with search and actions, and the Create Internal Consignment GRN screen with header and tabs when you start a new receipt." >}}
+
 Main actions from listing:
 
 - **Create** (`+`) opens new GRN draft.
@@ -126,6 +143,8 @@ Main tab sequence for core work:
 2. **Account**: entity, billing, and shipping account details.
 3. **Lines**: add and maintain item rows.
 
+{{< figure src="/images/internal-consignment-grn-applet/1.2.png" alt="Lines tab on Create Internal Consignment GRN with add control and CREATE" caption="On the Lines tab, use the plus control to add rows, then click Create when Main Details, Account, and at least one valid line are complete." >}}
+
 Button usage and decision guide:
 
 - **CREATE**: first save of a new GRN.
@@ -145,6 +164,8 @@ Practical decision flow:
 
 From **Lines**, click add and choose the appropriate source path in **Select Item**:
 
+{{< figure src="/images/internal-consignment-grn-applet/1.3.png" alt="Select Item screen after plus from Lines tab" caption="After you add a line from the Lines tab, the Select Item screen opens. Use Search Item or knock-off tabs when your administrator has enabled them." >}}
+
 - **Search Item**: manual item lookup (most common path).
 - **KO For Purchase Order**: source lines from linked PO flow (if enabled).
 - **KO For Purchase Requisition**: source lines from linked PR flow (if enabled).
@@ -161,6 +182,14 @@ Tracking tab visibility rule:
 
 - Serial/Batch/Bin tabs appear based on item subtype and applet settings.
 - If you expect a tracking tab but do not see it, verify item master subtype and applet visibility settings with your administrator.
+
+### Edit a line from the Line Items listing
+
+**Role: Warehouse / inventory operations**
+
+From **Line Items** in the sidebar, open the line listing and click a row to edit that line in the line editor.
+
+{{< figure src="/images/internal-consignment-grn-applet/3.png" alt="Line item edit screen opened from Line Items listing" caption="From the Line Items listing, selecting a row opens the line editor for that line." >}}
 
 ### Conditional tabs and fields
 
@@ -234,7 +263,7 @@ Common user interpretation:
 
 ## FAQ
 
-### What is the main purpose of Internal Consignment GRN?
+### What is the main purpose of this applet?
 
 It records incoming consignment stock receipt as a controlled GRN document so teams can validate details first, then post with **FINAL**.
 
@@ -280,9 +309,9 @@ Use **Search Item** for direct/manual selection. Use KO tabs when your process r
 
 ## Glossary
 
-- **Consignment**: stock physically moved/held for operations while ownership or settlement can follow a separate billing process.
-- **GRN (Goods Received Note)**: document that records goods receipt.
-- **Internal Consignment GRN**: GRN transaction used for internal consignment receipt workflow.
+- **Consignment**: an arrangement where goods can be received or held while ownership or customer billing may be finalized later; receiving still needs a clear system record.
+- **GRN (Goods Received Note)**: the receiving document that records what arrived, quantities, party, and date so inventory and audits match physical goods.
+- **Consignment GRN (Internal)**: GRN document type used for the internal consignment receipt workflow in this applet.
 - **Line Item**: one item row with quantity and related pricing/tracking details.
 - **KO (Knock Off)**: linking or pulling line items from an upstream source document (for example PO/PR/PI).
 - **Posting Status**: transaction stage such as **DRAFT**, **FINAL**, or **VOID**.
