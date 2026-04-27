@@ -72,6 +72,8 @@ Use the Consignment GRN Applet (Internal) to prepare, review, and post consignme
   {{< card title="Config-dependent Tabs" subtitle="Delivery, Payment, Department, Contra, Doc Link, Attachments, Export, Status visibility by admin settings" link="#conditional-tabs-and-fields" >}}
 {{< /cards >}}
 
+{{< figure src="/images/internal-consignment-grn-applet/internal-consignment-grn-overview.png" alt="Consignment GRN Applet (Internal) overview infographic" caption="Overview of the internal consignment GRN workflow: main areas of the applet, document flow from draft to posted receipt, and how lines and posting fit together." >}}
+
 ---
 
 ## Quick start
