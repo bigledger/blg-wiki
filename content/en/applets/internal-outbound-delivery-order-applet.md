@@ -74,7 +74,7 @@ When outbound delivery is handled across disconnected tools, teams face:
 - **Branch-aware behavior** - Apply branch-level printable, pricing, settlement, and category filters
 - **Integrated communication** - Export/print and send emails using managed templates
 
-## Key Features Overview
+## Feature Cards
 
 {{< cards >}}
   {{< card title="Delivery Order Workspace" subtitle="Create, edit, finalize, and manage outbound DO lifecycle" link="#delivery-order-workspace" >}}
@@ -93,6 +93,8 @@ When outbound delivery is handled across disconnected tools, teams face:
 
   {{< card title="Branch-Level Controls" subtitle="Branch-specific defaults, pricing, settlement, and filters" link="#branch-level-controls" >}}
 {{< /cards >}}
+
+{{< figure src="/images/internal-outbound-delivery-order-applet/internal-outbound-delivery-order-applet-overview-infographic.png" alt="Overview infographic of Internal Outbound Delivery Order Applet from document preparation to queue execution and settings governance" caption="Internal Outbound Delivery Order Applet overview: from delivery order preparation and source document KO to pick-pack execution, intercompany tracking, and governed output settings." >}}
 
 ## Key Concepts
 
@@ -169,6 +171,8 @@ Get up and running quickly with these role-based workflows.
 8. Click **Final** when the document is operationally ready.
 9. Verify the row status/posting state in listing, then run **Export as PDF** or **Send Email** if required.
 
+**Expected Outcome:** A delivery order is saved/finalized successfully and appears in listing with the expected posting/status state.
+
 ---
 
 ### For Warehouse / Fulfillment: Turn Queue Lines into Delivery Jobs
@@ -185,6 +189,8 @@ Get up and running quickly with these role-based workflows.
 8. Click **Create Delivery Job**.
 9. Verify the created job reference and confirm processed lines no longer appear as pending in queue.
 
+**Expected Outcome:** A delivery job is created successfully and selected queue lines move out of pending flow.
+
 ---
 
 ### For Admins / Process Owners: Configure Workflow, Print, and Email
@@ -199,6 +205,8 @@ Get up and running quickly with these role-based workflows.
 6. Review `Settings > Custom Status` and align status labels with your operations team terminology.
 7. Perform an end-to-end UAT flow (create, final, pick-pack, delivery job, print/email) before production rollout.
 
+**Expected Outcome:** Workflow, printable, and email configurations are saved and validated through one successful end-to-end UAT cycle.
+
 ---
 
 ### For Intercompany Coordinators: Process Inbound and Outbound Queues
@@ -211,6 +219,8 @@ Get up and running quickly with these role-based workflows.
 4. Recheck **Inbound > PROCESSED** to verify completion.
 5. Repeat the same control pattern for **Outbound > UNPROCESSED** and **Outbound > PROCESSED**.
 6. Investigate rows that stay unprocessed by checking source document state and branch/company mapping.
+
+**Expected Outcome:** Intercompany rows are moved from unprocessed to processed states with clear action traceability.
 
 {{< callout type="tip" >}}
 **Permission Note**: If users cannot access **Create**, **Final**, or **Settings** actions, validate role/client permissions and hidden-menu flags first before troubleshooting data issues.
