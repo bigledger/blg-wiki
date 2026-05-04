@@ -163,14 +163,14 @@ Get up and running quickly with these essential workflows.
 **Goal:** Record and process an incoming delivery in 5 steps.
 
 1. **Navigate**: Go to **Inbound Process > Receiving Doc** from the sidebar
-2. **Create the Header**: Click **"+"** → Select the **Supplier** from the account picker → Enter a reference number → **Create**
+2. **Create the Header**: Click **"+"** → Search for and select the **Warehouse** → Enter a reference number → **Create**
 3. **Add Line Items**:
    - Click **"Add Line"**
    - Search for the **Item** by code or name
    - Enter received **Quantity** and **UOM**
    - Add a **Tracking ID** if provided by the supplier
    - Record **Serial Numbers** (scan or manually enter) if the item requires individual tracking
-4. **Process**: Items automatically appear in the **Processing Queue** for inspection — verify quantities and WMS attributes
+4. **Process**: After the Receiving Doc is finalised, navigate to **Inbound Process > Processing Queue** to find and inspect the items — verify quantities and WMS attributes
 5. **Putaway**: Once processed, the item appears in the **Putaway List** — assign a container and storage location
 
 **What happens next?** Items are tracked at their exact bin location, ready for outbound order fulfilment.
@@ -424,10 +424,14 @@ A Receiving Document (also called a Goods Received Note) is the official record 
 
 **Receiving Doc Statuses Explained:**
 
+{{< callout type="info" >}}
+The **Status** field is not directly editable via a picker. It advances automatically through workflow actions (e.g., saving line items moves it to Submitted; posting closes it). To cancel a document, use the designated Cancel action rather than editing the status field directly.
+{{< /callout >}}
+
 | Status | What It Means | What to Do |
 |--------|---------------|------------|
 | **Draft** | Created but items not yet confirmed | Add all line items and verify quantities before saving |
-| **Submitted** | Lines added and document is pending posting | Items should flow to the Processing Queue automatically |
+| **Submitted** | Lines added and document is pending posting | Navigate to Processing Queue to inspect items |
 | **Posted** | All items processed and posted to inventory | Record is closed — no further edits allowed |
 | **Cancelled** | Receiving doc voided before posting | Investigate reason before cancelling — inventory will not be affected |
 
@@ -439,7 +443,7 @@ When you open a Receiving Doc, you'll work across these tabs:
 
 | Tab | Purpose |
 |-----|---------|
-| **Account** | Supplier details — who the goods came from |
+| **Account** | Supplier details — who the goods came from *(appears after the document is created)* |
 | **Line Items** | Individual items received with quantity, UOM, and tracking |
 | **Xtn GenDoc Line Link** | Link receiving lines to external purchase order or source document lines |
 | **Print** | Print the receiving document (GRN) |
@@ -451,14 +455,25 @@ When you open a Receiving Doc, you'll work across these tabs:
 **Step 1: Create the Document Header**
 1. Go to **Inbound Process > Receiving Doc**
 2. Click **"+"** to create a new document
-3. System opens the **Account** tab — select the **Supplier**:
+3. Search for and select the **Warehouse** that is receiving the goods
+4. Enter any required reference details
+5. Click **Create** to save the header
+
+**Step 2: Link the Supplier**
+
+{{< callout type="info" >}}
+The **Account** tab (where you link the Supplier) only becomes visible after the document has been created and saved.
+{{< /callout >}}
+
+1. Open the newly created document and go to the **Account** tab
+2. Select the **Supplier**:
    - Search by Supplier Code or Name
    - Select and review full entity details (name, contact number, type)
-4. Set the **Billing Address** (where invoices come from)
-5. Set the **Shipping Address** (if the delivery origin differs)
-6. Click **Create** or save the header
+3. Set the **Billing Address** (where invoices come from)
+4. Set the **Shipping Address** (if the delivery origin differs)
+5. Save
 
-**Step 2: Add Line Items**
+**Step 3: Add Line Items**
 1. Go to the **Line Items** tab
 2. Click **"Add Line"**
 3. Fill in the line item:
@@ -469,7 +484,7 @@ When you open a Receiving Doc, you'll work across these tabs:
 4. Save the line and repeat for each item in the delivery
 5. For items requiring serial number tracking, open the line and use the **Serial Number** tab
 
-**Step 3: Link to Source Documents (Optional)**
+**Step 4: Link to Source Documents (Optional)**
 1. Go to the **Xtn GenDoc Line Link** tab
 2. Click **"+"** to link this receiving line to an existing Purchase Order line
 3. System pulls: Doc No, Item Code, Item Name, Type, UOM, Quantity, Tracking ID
@@ -484,10 +499,11 @@ When you open a Receiving Doc, you'll work across these tabs:
 Supplier ABC delivers PO-2024-001: 500 units of Item X
 
 Steps:
-1. Create Receiving Doc header → Select Supplier ABC
-2. Add Line: Item X, Qty 500, UOM = Each
-3. Link to PO-2024-001 via Xtn GenDoc Line Link tab
-4. Save → Item appears in Processing Queue
+1. Create Receiving Doc header → Select Warehouse
+2. Go to Account tab (visible after creation) → Link Supplier ABC
+3. Add Line: Item X, Qty 500, UOM = Each
+4. Link to PO-2024-001 via Xtn GenDoc Line Link tab
+5. Finalise the doc → Navigate to Processing Queue to inspect the item
 
 Result: Full traceability from PO to physical receipt
 ```
@@ -860,8 +876,8 @@ A Picking List is a work order assigned to a specific **Picker** (warehouse staf
 |-----|---------|
 | **Main Details** | Reference, date, description, picker assignment |
 | **Lines** | Line items to pick — item, quantity, storage location |
-| **Add to Cart** | Scan-based cart filling as items are picked |
-| **Add to Cart (Manual)** | Manual entry for picked items (no scanner needed) |
+| **Add to Cart** | Scan-based cart filling as items are picked *(items must be added to the Lines tab first before they will appear here)* |
+| **Add to Cart (Manual)** | Manual entry for picked items (no scanner needed) *(items must be added to the Lines tab first)* |
 | **Container Scan** | Scan container codes during picking to link to storage |
 | **Space Scanner** | Scan shelf/bin location codes to verify correct pick location |
 | **Discarded Carts** | Items removed from the cart (cancelled or errors) |
