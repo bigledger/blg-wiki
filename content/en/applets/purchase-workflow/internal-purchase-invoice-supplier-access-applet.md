@@ -1,24 +1,20 @@
 ---
 title: "Purchase Invoice Supplier Access (Internal) Applet"
-description: "Secure portal for suppliers to view and manage purchase invoices"
+description: "Secure portal for suppliers to view and manage purchase invoices, payments, and document history"
 tags:
 - supplier-portal
 - purchase-invoices
 - vendor-management
 - financial-transparency
-- invoice-tracking
+- payment-tracking
 weight: 260
+date: 2026-05-04
+lastmod: 2026-05-04
 ---
-
-{{< callout type="warning" >}}
-**Internal Purchase Invoice Supplier Access Applet user guide still under progress**
-
-**Work in Progress: This documentation is currently under development. Visual assets (screenshots) and further details will be added soon.**
-{{< /callout >}}
 
 ## Purpose and Overview
 
-The **Internal Purchase Invoice Supplier Access Applet** provides a secure, self-service interface for vendors and suppliers to view their financial transactions with your organization. This applet reduces administrative overhead by allowing suppliers to track invoice status and payment history directly.
+The **Internal Purchase Invoice Supplier Access Applet** provides a secure, self-service interface for vendors and suppliers to view their financial transactions with your organization. This applet reduces administrative overhead by allowing suppliers to track invoice status, payment history, and linked documents directly.
 
 {{< callout type="info" >}}
 **Core Concept**: A **Supplier Portal** provides restricted, real-time access to purchase invoice (PI) data, ensuring transparency and reducing manual inquiries.
@@ -28,20 +24,20 @@ The **Internal Purchase Invoice Supplier Access Applet** provides a secure, self
 
 ### Who Benefits from This Applet?
 
-**Suppliers & Their Finance Teams:**
+**Supplier Finance Teams:**
 - 24/7 visibility into invoice status (Submitted, Approved, Paid)
+- Track payment history and reconciliation data
+- Reconcile their accounts receivable with your organization's system
+
+**Supplier Logistics & Sales:**
+- Verify line item details and quantities received
+- Access supporting documents and attachments (e.g., Delivery Orders, Proof of Delivery)
 - Download PDF copies of finalized purchase invoices
-- Reconcile their accounts receivable with your system
 
-**Procurement & AP Teams:**
+**Internal Procurement & Accounts Payable Teams:**
 - Reduced volume of "where is my payment?" emails and calls
-- Simplified dispute resolution through shared data
+- Simplified dispute resolution through shared data access
 - Improved vendor relationships through financial transparency
-
-**Finance Leaders & Controllers:**
-- Real-time audit of vendor interactions
-- Accelerated reconciliation processes
-- Clearer visibility into upcoming payables
 
 ### What Problems Does This Solve?
 
@@ -53,24 +49,31 @@ Without a supplier portal:
 
 **The Supplier Access Solution:**
 - **Shared Data Source** - One "gold standard" invoice record for both parties
-- **Self-Service Status** - Suppliers check payment dates themselves
-- **Secure File Access** - Instant download of official documents without manual sending
+- **Self-Service Status** - Suppliers check payment dates and status themselves
+- **Secure File Access** - Instant download of official documents and attachments
+- **Linked Document Visibility** - See related documents like Contra or Doc Links
 
 ## Key Features Overview
 
 {{< cards >}}
-  {{< card title="Invoice Listing" subtitle="View all current and historical invoices" link="#invoice-listing" >}}
+  {{< card title="Invoice Listing" subtitle="Comprehensive view of all historical and current invoices" link="#invoice-listing" >}}
 
-  {{< card title="Status Tracking" subtitle="Real-time payment and approval status" link="#status-tracking" >}}
+  {{< card title="Payment Tracking" subtitle="Real-time visibility into payment status and history" link="#payment-tracking" >}}
 
-  {{< card title="Document Center" subtitle="Download PDF invoices and supporting files" link="#documents" >}}
+  {{< card title="Document Center" subtitle="Download PDF invoices and view attachments" link="#document-center" >}}
 
-  {{< card title="Dispute Portal" subtitle="Communicate and resolve invoice queries" link="#disputes" >}}
+  {{< card title="Account Reconciliation" subtitle="View account details and contra entries" link="#account-reconciliation" >}}
 {{< /cards >}}
+
+{{< figure src="/images/internal-purchase-invoice-supplier-access-applet/internal-purchase-invoice-supplier-access-applet-overview-infographic.png" alt="Internal Purchase Invoice Supplier Access Flow: From Invoice Creation to Payment Settlement" caption="Seamless Financial Transparency: A visual overview of how internal purchase invoices, line items, and payment settlements are synchronized between the organization and the supplier portal." >}}
+
+---
 
 ## Key Concepts
 
-### Invoice Awareness
+### Understanding the Supplier Access Framework
+
+Every supplier portal must address three fundamental aspects. The Purchase Invoice Supplier Access Applet provides structured handling:
 
 | Aspect | Component | Practical Example |
 |--------|-----------|------------------|
@@ -78,47 +81,115 @@ Without a supplier portal:
 | **What** is visible? | Finalized Purchase Invoices | Project PI #10234 for RM 5,000 |
 | **How** is it accessed? | Secure Portal Login | Unique Supplier Access Link/Login |
 
+### Hierarchy Structure
+
+Think of the supplier access flow as a structured hierarchy:
+
+```
+Organization (The Customer)
+│
+└── Supplier Entity ──→ WHO is accessing?
+    │
+    └── Purchase Invoices ──→ WHAT is being viewed?
+        │
+        ├── Main Details ──→ Header info (Date, Amount, Status)
+        ├── Line Items ──→ Itemized breakdown
+        ├── Payment History ──→ Settlement details
+        └── Attachments ──→ Digital copies of original docs
+```
+
+### The "Golden Trio" of Supplier Access
+
+To effectively manage expectations, it is crucial to understand how these three pillars work together:
+
+| Component | Analogy | Definition | System Impact |
+|-----------|---------|------------|---------------|
+| **Purchase Invoice** | The "Bill" | The official record of goods/services provided and the amount owed. | Becomes the single source of truth for both parties. |
+| **Payment Status** | The "Checkmark" | The real-time indicator of whether an invoice is unpaid, partially paid, or settled. | Eliminates manual payment inquiries. |
+| **Supplier Access** | The "Key" | The secure permission set that allows a vendor to see ONLY their own data. | Ensures data privacy and security. |
+
+---
+
 ## Quick Start Guide
 
-### For Suppliers: Checking Invoice Status
+### For Supplier Accounts: Checking Payment Status
 
-**Goal:** Review your pending invoices in 3 steps.
+**Goal:** Quickly identify which invoices have been paid and which are pending.
 
-1. **Login**: Access the **Supplier Portal** using your provided credentials
-2. **Filter**: Go to **My Invoices** and filter by "Unpaid" or "Pending"
-3. **Verify**: Click on an invoice to see its status and expected payment date
+1. **Login**: Access the **Supplier Portal** using your provided credentials.
+2. **Filter**: On the **Invoice Listing**, use the advanced search to filter by "Outstanding" or specific date ranges.
+3. **View Detail**: Click on an invoice row to open the full view.
+4. **Check Payment**: Navigate to the **Payment** tab to see linked payment vouchers and settlement dates.
+
+{{< figure src="/images/internal-purchase-invoice-supplier-access-applet/invoice-listing.png" alt="Invoice Listing showing all invoices with status and outstanding amounts" caption="Invoice Listing: Monitor all your invoices and their real-time payment status." >}}
+
+---
+
+### For Supplier Logistics: Verifying Shipments
+
+**Goal:** Confirm that line items match what was delivered.
+
+1. **Locate Invoice**: Search for the relevant PI number in the **Invoice Listing**.
+2. **Review Lines**: Go to the **Line Items** tab to see the itemized list, quantities, and unit prices.
+3. **Check Attachments**: Switch to the **Attachment** tab to view uploaded Delivery Orders (DO) or inspection reports.
+
+{{< figure src="/images/internal-purchase-invoice-supplier-access-applet/line-items-view.png" alt="Line Items view showing itemized breakdown of the purchase" caption="Line Items View: Verify quantities and pricing for each item delivered." >}}
 
 ---
 
-### For Internal Admins: Granting Access
+## Status Lifecycle
 
-**Goal:** Enable a supplier to use the portal in 3 steps.
+From the supplier's perspective, invoices typically follow this lifecycle:
 
-1. **Identify**: Go to **Supplier Maintenance** and select the vendor
-2. **Invite**: Click **"Enable Portal Access"** and enter the supplier's contact email
-3. **Monitor**: Check the **Access Logs** to see when the supplier first logged in
+| Status | Meaning | Action Required |
+|--------|---------|-----------------|
+| **Draft / Pending** | The invoice is being processed internally by the customer. | None - Check back later. |
+| **Approved / Finalized** | The invoice is confirmed and awaiting payment. | Verify that amounts match your records. |
+| **Partially Paid** | A portion of the invoice has been settled. | Check **Payment** tab for details. |
+| **Settled / Paid** | The invoice is fully paid. | Reconcile with your bank statement. |
 
 ---
+
+## Feature Deep Dive
+
+### Invoice Listing & Advanced Search
+The main dashboard provides a powerful grid with filtering capabilities. You can toggle columns to show only the information you need, such as `Invoice Date`, `Total Amount`, `Amount Outstanding`, and `Status`.
+
+### Detailed View Tabs
+The detailed view is broken down into several specialized tabs:
+
+- **Main Details**: Header level information including currency, branch, and overall status.
+- **Account**: Financial coding and account-level summaries.
+- **Line Items**: Item-by-item breakdown of the purchase.
+- **Payment**: List of all payment transactions linked to this invoice.
+- **Department Header**: Tag the invoice with a Dimension, Profit Center, or Project for management reporting.
+- **Contra**: Visibility into any contra entries or set-offs applied to the invoice.
+- **Doc Link**: Links to related system documents (e.g., Goods Received Notes).
+- **Attachment**: Repository for digital files like PDFs, images, or spreadsheets.
+- **Export**: Export the invoice to a predefined printable format.
+
+{{< figure src="/images/internal-purchase-invoice-supplier-access-applet/payment-tab.png" alt="Payment tab showing settlement details" caption="Payment Tracking: View all payments and settlements made against the invoice." >}}
 
 ## Configuration & Settings
 
-Fine-tune your supplier portal in **Settings**:
-- **Field Visibility**: Choose which invoice fields suppliers can see (e.g., exclude internal notes).
-- **Notification Alerts**: Set automated emails for when an invoice is marked as "Paid".
-- **Download Permissions**: Control which document types are available for download.
-
----
+Suppliers can personalize their experience in **Settings**:
+- **Sidebar Customization**: Organize the menu for easier navigation.
+- **Default Selections**: Set preferred branches or date filters as defaults.
+- **Field Configuration**: (Admin only) Controls which fields are visible to the supplier users.
 
 ## FAQ
 
-**Q: Can suppliers edit the invoices?**
-A: No, the access is typically "Read-Only" to ensure financial integrity. Any changes must be requested through the **Dispute Portal** or via standard procurement channels.
+**Q: Can I edit an invoice if I find a discrepancy?**
+A: No, the portal is "Read-Only". If you find an error, please contact the procurement department of the customer organization with the specific PI number.
 
-**Q: What happens if a supplier forgets their password?**
-A: They can use the "Forgot Password" link on the portal login page, or your internal admin can trigger a password reset from the **User Management** applet.
+**Q: Where can I download a PDF copy of my invoice?**
+A: In the **Export** tab or sometimes via a "Print" button on the **Main Details** tab, depending on the customer's configuration.
 
-**Q: Is there a limit to how much history a supplier can see?**
-A: This is configurable, but most systems show at least 12-24 months of historical financial data by default.
+{{< figure src="/images/internal-purchase-invoice-supplier-access-applet/export-tab.png" alt="Export tab for downloading documents" caption="Document Center: Download official copies and reports for your records." >}}
 
-**Q: Can a supplier have multiple users?**
-A: Yes, you can invite multiple contacts from the same supplier entity to have their own individual portal accounts.
+**Q: Why can't I see all my historical invoices?**
+A: Your access might be limited to a specific date range (e.g., the last 12 months) or specific branches as configured by the customer admin.
+
+**Q: Can I have multiple users for my supplier account?**
+A: Yes. The customer organization's admin can invite multiple contacts from your company to have their own individual portal accounts.
+
