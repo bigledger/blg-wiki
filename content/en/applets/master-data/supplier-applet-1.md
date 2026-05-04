@@ -285,7 +285,7 @@ What can be configured in create/edit:
 - **Add Year / Add Month / Add Day**
 - Audit information in edit mode (**Created By**, **Creation Date**, **Modified By**, **Modified Date**)
 
-Client-facing value:
+Advantages:
 - Keeps payment term logic standardized so procurement and finance apply the same due-date rules across suppliers.
 
 {{< figure src="/images/supplier-applet/menu-credit-term-listing.png" alt="Credit term Listing" caption="Supplier Credit Term Listing: to view the Credit term listing" >}}
@@ -390,6 +390,10 @@ Important behavior from component logic:
 - Records load only after selecting **Merge Criteria**.
 
 After merge execution, use **Entity Merge Processing** to monitor merge status and merged/total progress.
+
+{{< callout type="info" >}}
+**What happen to the previous transactions if the Entity is Merge?**: All previous transaction will be merged to the new supplier name..
+{{< /callout >}}
 
 {{< figure src="/images/supplier-applet/menu-entity-merging.png" alt="Entity merging screen with merge criteria selector and grouped duplicate entities" caption="Entity Merging: Select criteria, review grouped records, and execute duplicate merges." >}}
 
