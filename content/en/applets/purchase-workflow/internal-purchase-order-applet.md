@@ -20,6 +20,12 @@ The **Purchase Order (Internal) Applet** is designed to streamline the full purc
 
 {{< figure src="/images/internal-purchase-order-applet/internal-purchase-order-overview-infographic.png" alt="Purchase Order (Internal) Applet overview — procurement flow from request through approval" caption="Overview of how purchase orders, suppliers, line items, and approvals fit together in one applet." >}}
 
+### Video overview
+
+Start here for a full pass through the Internal Purchase Order Applet: creating, editing, knock-off, and canceling internal POs; file import and export; GRN flow; status control; and PO reports. The session covers the listing and advanced search, tab layout, knock-off and GRN options, manual creation and KO4 knock-off, status flow, reports, multi-PO creation, intercompany, numbering, status types, and personalization.
+
+{{< youtube MpzkihO4NYQ >}}
+
 ## Key Features Overview
 
 ### Who Benefits from This Applet?
