@@ -175,8 +175,6 @@ The detailed view is broken down into several specialized tabs:
 - **Attachment**: Repository for digital files like PDFs, images, or spreadsheets.
 - **Export**: Export the invoice to a predefined printable format.
 
-{{< figure src="/images/internal-purchase-invoice-supplier-access-applet/payment-tab.png" alt="Payment tab showing settlement details" caption="Payment Tracking: View all payments and settlements made against the invoice." >}}
-
 ## Configuration & Settings
 
 Suppliers can personalize their experience in **Settings**:
