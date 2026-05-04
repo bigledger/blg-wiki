@@ -18,6 +18,8 @@ The **Purchase Order (Internal) Applet** is designed to streamline the full purc
 **Core Concept**: The applet links **who** orders (purchaser/supplier), **what** is ordered (line items), and **how** it is approved (workflow) so procurement and finance stay in control.
 {{< /callout >}}
 
+{{< figure src="/images/internal-purchase-order-applet/internal-purchase-order-overview-infographic.png" alt="Purchase Order (Internal) Applet overview — procurement flow from request through approval" caption="Overview of how purchase orders, suppliers, line items, and approvals fit together in one applet." >}}
+
 ## Key Features Overview
 
 ### Who Benefits from This Applet?
@@ -139,6 +141,10 @@ Get up and running quickly with these essential workflows.
 
 **Goal:** Create a purchase order with supplier, addresses, and line items in a few steps.
 
+This video shows how to create a new internal purchase order, select supplier and item details, manage draft and final statuses, and see how the PO connects to the Internal Purchase GRN Applet—including the **Account** and **Lines** tabs, printable formats and status flow, cancel or revert of a final PO, the line item report, **Purchase Order Queue**, knock-off from PO to GRN, and GRN details from the linked PO.
+
+{{< youtube n36EtVIclmE >}}
+
 1. **Navigate**: Go to **Purchase Order** from the sidebar (default view when you open the applet).
 2. **Create header**: Click **"+"** (Create) → **Create Purchase Order** opens.
 3. **Enter main details**:
@@ -182,6 +188,10 @@ Get up and running quickly with these essential workflows.
 ### Core Feature Walkthrough (Client Onboarding)
 
 **Goal:** Validate the applet’s core capabilities in one guided pass after initial setup.
+
+This extended session walks through GRN receiving and serialized items, knock-off from requisition, confirming and finalizing a PO from knock-off, viewing and tracing linked documents, attachments and export, bulk export and email, hiding menus and button permissions, listing filters and search, field visibility and print pop-ups, external documents and branch filters, pricing and GL segments, line item controls and permissions, printable formats (including no-price and branch-based options), workflow, email templates, app and row-level permissions, and ends with Q&A.
+
+{{< youtube 00GJ3yJsVrY >}}
 
 1. **Queue visibility check**: Open **Purchase Order Queue** and confirm users can see the expected open-queue records.
 2. **Bulk import check**: Open **File Import**, upload a small test file, and verify records are created/updated as expected.
@@ -274,6 +284,10 @@ Use the filters and columns in each report to narrow by date, supplier, branch, 
 ## Configuration & Settings
 
 Access **Settings** from the sidebar to configure how the Purchase Order (Internal) Applet behaves for your organization. The table below summarizes the main options; configure them to match your procurement and approval policies.
+
+This session focuses on setup and behavior in **Settings** and related screens: listing sorting and search, field visibility and pop-ups, vertical UI and line item queue, external documents, branch filtering and supplier setup, line item fields and GL segments, knock-off restrictions, costing and the serial tab, hiding payment and AR tabs, default branch and page view, printable formats (including no-price and branch-based print), workflow, email templates, app permissions and view-only access, and client-side role permissions.
+
+{{< youtube 5ri6Qjio32Q >}}
 
 | Setting | Purpose |
 |--------|---------|
