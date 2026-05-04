@@ -56,7 +56,6 @@ Instead of manually reconciling purchase orders, invoices, and GRNs across multi
 - You get a **shared purchase reporting workspace** with filters for **Supplier**, **Company**, **Branch**, and **Date Range**.
 - You can move from **document-level detail** to **item-level summaries** without leaving the applet.
 - The report views support **Export** actions for Excel-compatible outputs at every level.
-- The document and drill-down views support **PRINT** actions where the workflow needs a shareable output.
 
 {{< callout type="warning" >}}
 **Best used for operational review and period reporting**
@@ -93,7 +92,7 @@ All main report listings use a shared advanced-search model.
 | Reviewing supplier spend by document type, date, or amount | Editing source purchase transactions |
 | Drilling into line items and document detail for specific purchases | Posting payments, creating GRNs, or approving purchase orders |
 | Exporting purchase data for audit, reconciliation, or planning | Replacing the source purchase order or invoice applets |
-| Generating printable purchase summaries | Changing purchase document status or finalizing documents |
+| Viewing the complete PO to Invoice audit trail | Changing purchase document status or finalizing documents |
 
 ---
 
@@ -130,7 +129,6 @@ Your goal is to produce a purchase document review for cost-of-goods or budget r
 3. Review the listing columns: **Document**, **Supplier**, **Amount**, and **Doc Type**.
 4. Click a document row to open the detail view and review the tabs.
 5. Use **Export** to download the result set as an Excel file.
-6. If the applet shows **Please setup the default printable format**, go to **Settings > Printable Format Settings** and configure the required format first before generating printable output.
 
 ---
 
@@ -146,7 +144,7 @@ This is the default landing view for document-level purchase investigation.
 - AP needs to verify one specific invoice or credit note
 - Finance needs to see the exact line items and amounts behind a purchase total
 - An auditor requests the supporting documents for a purchase transaction
-- A reviewer wants a printable document-level view
+- A reviewer needs a comprehensive audit trail of a transaction
 
 **Report Columns:**
 
@@ -204,57 +202,72 @@ This screen provides an aggregated view of purchase activity grouped by item cod
 
 ---
 
-## Applet Configuration (For Admins)
+## Configuration & Settings
 
-Navigate to **Settings** in the sidebar to configure the applet.
+The Purchase Report applet is highly configurable. Administrators can tailor the workspace to hide unnecessary complexity or sensitive financial information from general staff, while enabling deep spend tracking for controllers.
 
-### Application Settings
+### 1. Application Settings (System-Wide)
 
-The **Application Settings** screen allows administrators to control the visibility of specific menu items within the applet.
+Accessed via `Settings > Application Settings`, these toggles change how the applet looks and functions for all users.
 
-{{< figure src="/images/purchase-report-applet/purchase-applet-settings.png" alt="Purchase Applet Application Settings view showing toggles to hide or show specific report menus." caption="Application Settings: Toggle visibility for individual report menus and manage core applet behavior." >}}
+{{< figure src="/images/purchase-report-applet/purchase-applet-settings.png" alt="Purchase Applet Application Settings view showing tabs for Sidebar Menu, Purchase Report Listing, and Item Category Group." caption="Application Settings: Control menu visibility, report columns, and category groupings." >}}
+
+**A. Tailoring the Sidebar (Menu Visibility)**
+Administrators can hide sidebar menus that their layout doesn't use. 
+
+| Setting | What It Does |
+|---------|--------------|
+| `Sidebar Menu` | Use these toggles to hide or show the **Purchase Report** and **Purchase Report By Item Code** menu items for all users. |
+
+**B. Tailoring the Report Listing (Field Visibility)**
+If you need to protect sensitive financial data (like cost and margins) from general staff, or simplify the grid, you can toggle the visibility of specific columns on the report listing:
+
+| Setting | What It Does |
+|---------|--------------|
+| `Hide MA Cost` | Hides the moving average cost column. Turn on if you only want users to see purchase amounts, not internal costs. |
+| `Hide Quotation` | Hides quotation reference columns. |
+| `Hide GP` | Hides the Gross Profit column, keeping margin data confidential. |
+| `Hide Order` | Hides the linked Purchase Order column. |
+| `Hide Delivery Order` | Hides the linked Delivery Order column. |
+| `Hide Invoice` | Hides the linked Invoice column. |
+| `Hide Others` | Hides generic reference columns to save screen space. |
+
+**C. Item Category Group Mapping**
+| Setting | What It Does |
+|---------|--------------|
+| `Item Category Group (1-20)` | Allows administrators to map up to 20 different item category groups for filtering. Use the eye icon to toggle visibility of these filters on the report listings. |
+
+### 2. Default Selection
+
+This screen provides applet-wide default values to speed up user workflows.
 
 | Setting | Purpose |
 |---------|---------|
-| **Sidebar Menu Toggles** | Use these toggles to hide or show the **Purchase Report** and **Purchase Report By Item Code** menu items for all users. |
+| **Default Branch** | Preselects a specific branch automatically when opening the applet. |
+| **Default Location** | Preselects a specific location automatically when opening the applet. |
 
-### Default Selection
+### 3. Permissions Governance
 
-This screen provides applet-wide default values.
+Because this applet exposes complete procurement spend data, access is managed through a layered permission system in the Settings menu:
 
-| Setting | Purpose |
-|---------|---------|
-| **Default Branch** | Preselects a branch for the applet. |
-| **Default Location** | Preselects a location for the applet. |
+- **Permission Wizard:** A guided tool to set up basic view access.
+- **Role Permission:** Grant access by job title.
+- **User/Team Permission:** Grant granular exceptions to specific individuals or squads.
 
-### Field Settings
+---
 
-The field-settings screen controls which optional columns or fields appear in the report listings.
+## Personalization
 
-| Group | Available toggles |
-|-------|-------------------|
-| **Report Settings** | Column visibility toggles specific to each report listing. |
-| **Department Settings** | `Segment`, `G/L Dimension`, `Profit Center`, `Project` |
+Individual users can override certain system defaults to speed up their daily workflow via the **Personalization** sidebar menu.
 
-### Printable Format Settings
+### Personal Default Settings
 
-This setup is important if users need to generate printable report outputs.
+To save clicks when running reports daily, users should set their own defaults:
 
-| Area | What users see |
-|-----|-----------------|
-| **Listing** | `Format Code`, `Format Name`, `File Name`, `File Size`, `Uploaded Date`, and `Uploaded By` |
-| **Add Printable Format** | `Format Code`, `Format Name`, `Type`, `Default`, and file upload / drag-and-drop |
-| **Edit Printable Format** | The same fields plus download and delete actions |
-
-The uploaded file must be a **`.jrxml`** file. Mark the format as **Default** if you want report print actions to use it automatically.
-
-### Personalization
-
-Users also have a personalization area.
-
-| Section | Purpose |
-|---------|---------|
-| **Default Selection** | User-level default **Branch** and **Location** that override the applet defaults for that user. |
+| Setting | Why use it? |
+|---------|-------------|
+| **Default Branch** | If you only review purchases for the "Penang Hub", set this so you never have to select it from the filter dropdown again. |
+| **Default Location** | If you only verify invoices for "Warehouse A", set this as your default location. |
 
 {{< callout type="info" >}}
 Depending on deployment and permissions, administrators may also have access to additional routes such as **Webhook**, permission pages, and **Release Notes**. These are part of the applet routing but may not appear for every user in the standard menu.
@@ -295,7 +308,7 @@ Depending on deployment and permissions, administrators may also have access to 
 2. Search for the invoice document number or filter by supplier and date.
 3. Open the document row in the detail view.
 4. Use **Doc Link** to show the full PO → GRN → Invoice trail.
-5. Use **PRINT** to generate a shareable output of the document detail.
+5. Export the detailed view or refer to the specific source document if necessary.
 
 **Why this report fits the scenario:** This is the document investigation workspace. It provides the complete audit trail without leaving the applet.
 
@@ -317,10 +330,6 @@ Check three things:
 1. Ensure you are using the exact same date range in both the purchase report and the GL.
 2. Ensure you are filtering by the same **Company** and **Currency**.
 3. Verify that all relevant invoices have been **Finalized/Posted**. Draft or unposted documents may not appear in purchase reports but may exist in the GL.
-
-**Q: Can I generate a printable purchase statement from this applet?**
-
-Yes, if printable formats are configured. Go to **Settings > Printable Format Settings**, upload a `.jrxml` file for the required report type, and mark it as **Default**. Then use the **PRINT** action in the report or document detail view.
 
 **Q: Can I edit or post documents from this applet?**
 

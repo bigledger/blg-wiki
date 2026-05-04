@@ -20,30 +20,27 @@ The **Organisation Applet** is the core master-data applet for setting up the st
 **Core Concept**: Create **Company** first, then **Branch**, then **Location**. Most advanced setup happens after you save and reopen the record in edit mode.
 {{< /callout >}}
 
-## Key Features Overview
-
 ### Who Benefits from This Applet?
 
-**System Administrators:**
-- Create and maintain the organisation structure used across applets
-- Control field visibility and default selections
-- Manage reusable group, label, and category master data
-- Review route-based admin pages such as release notes and feature visibility
+**Tenant Administrators:**
+- Centralized Organisation Structure — Define your Company, Branch, and Location hierarchy in one place, automatically syncing it across all applets.
+- Smart Default Controls — Set default branches and locations to ensure users instantly load the correct workspace context, reducing data-entry errors.
+- Unified Master Data — Manage reusable groups, labels, and categories in a shared library to avoid duplicate setup across different modules.
+
+
 
 **Finance & Back-Office Teams:**
-- Maintain company registration, tax, chart-of-account, and contact details
-- Complete company-level tabs such as Tax, Labels, Knock Off Config, and Intercompany Configuration
-- Manage active and closed organisation records with the correct status behavior
+- Set company-level tax defaults and chart-of-account links that flow automatically into downstream finance documents — no re-entry per transaction
+- Configure knock-off rules and intercompany document flows from a single company record
+- Complete Peppol and e-invoice company setup when those workflows are enabled for your deployment
 
 **Operations Teams:**
-- Set up branches and locations used by day-to-day operational workflows
-- Manage branch marketplace, settlement, pick-pack, and linked location setup
-- Maintain branch and location labels for operational filtering and organization
+- Configure branch pick-pack rules, marketplace integrations, and settlement methods in one place — so operations teams do not need to re-enter context across multiple applets
+- Build and manage the branch and location structure that stock, sales, and purchase workflows depend on
+- Automate WhatsApp, SMS, and Email alerts for specific document events — scoped by company or branch — without touching code
+- Scope notification templates precisely to the companies or branches that should use them, so the right message goes to the right team
 
-**Integration & Messaging Teams:**
-- Configure notification templates by document type and action
-- Manage placeholders, languages, endpoints, and company or branch scope
-- Review conditional e-invoice and Peppol-related company tabs where enabled
+
 
 ### What Problems Does This Solve?
 
@@ -53,11 +50,10 @@ Without a single organisation applet, teams usually maintain company, branch, an
 
 **The Organisation Applet Solution:**
 
-- **Single source of structure** - Company, Branch, and Location are managed in one applet
-- **Reusable classification records** - Groups, Labels, and Category Group support cleaner organization
-- **Post-save administration** - Edit screens expose the richer configuration users actually need
-- **Document messaging support** - Notification templates include placeholders, languages, endpoints, and scope controls
-- **Controlled defaults** - Applet-level and user-level defaults reduce repetitive setup in daily work
+- **Single source of structure** - Company, Branch, and Location are defined once and shared across all dependent applets
+- **Reusable classification records** - Groups, Labels, and Category Group eliminate duplicate setup across teams
+- **Document messaging support** - Notification templates with placeholders, languages, and scope controls mean the right message reaches the right team automatically
+- **Controlled defaults** - Preselect a default branch and location so every user opens the right context automatically — no manual re-selection each session
 
 ## Key Features Overview
 
@@ -177,7 +173,13 @@ Get up and running quickly with these essential workflows.
 3. Complete the **Details** tab with fields such as **Company Code**, **Company Name**, **Company Registration No.**, **Company Incorporation Date**, **Currency**, and **Chart of Account**.
 4. Complete the **Address** tab.
 5. Click **Save**.
-6. Reopen the saved company to access additional tabs such as **Tax**, **Branch**, **Location**, **Labels**, **Knock Off Config**, **Employee**, **Engagement Access**, **Intercompany Configuration**, and conditional **E-Invoice** or **Peppol Config**.
+6. Reopen the saved company to complete the core financial setup. Work through tabs in this order:
+   - **Tax** — sets the default tax behaviour for all company documents
+   - **Branch** and **Location** — required before operational workflows can run
+   - **Labels** — add when the core structure is stable
+   - **Knock Off Config** and **Intercompany Configuration** — only if your team uses those document flows
+   - **Employee** and **Engagement Access** — complete as needed for linked-record workflows
+   - **E-Invoice** and **Peppol Config** — available only if enabled in your deployment
 
 **What happens next?** The company becomes the parent record used by branch and location setup.
 
@@ -195,8 +197,12 @@ Get up and running quickly with these essential workflows.
 2. In **Details**, choose whether to **Create default location** or **Choose from existing location**.
 3. Fill in **Branch Code**, **Branch Name**, **Company Name**, **Branch Commencement Date**, and the other required branch fields.
 4. Complete the **Address** tab and use the **Marketplace** tab if marketplace setup is needed during branch creation.
-5. Save the branch, then reopen it to work with **Pick Pack**, **Marketplace**, **Location**, **Settlement**, **Labels**, **Extension**, **Customer**, **Employee**, **Supplier**, and **Intercompany Configuration**.
-6. Go to **Location**, create the location with **Location Code**, **Location Name**, **Company Name**, **Branch Name**, **Location Commencement Date**, and **Location Class**, then save and reopen it if you need **Branch**, **Labels**, **Extension**, or **Intercompany Configuration**.
+5. Save the branch, then reopen it to complete branch setup. Work through tabs by area:
+   - **Operations core:** Location, Settlement, Pick Pack
+   - **Marketplace:** Marketplace tab (includes nested Details, Settlement, Stock Configuration, Stock Availability, Pricing Scheme, and Publish Item sub-tabs)
+   - **Linked records:** Customer, Employee, Supplier, Labels
+   - **Advanced:** Extension, Intercompany Configuration
+6. Go to **Location**, create the location with **Location Code**, **Location Name**, **Company Name**, **Branch Name**, **Location Commencement Date**, and **Location Class**, then save and reopen it to access **Branch**, **Labels**, **Extension**, or **Intercompany Configuration**.
 
 **What happens next?** Your company now has the branch and location structure needed for operational and stock-related workflows.
 
@@ -300,18 +306,18 @@ Manage company master records and their linked company-level configuration.
 
 | Company tab | What users can do | What it affects |
 |-----|---------------------|----------------|
-| **Details** | Maintain company identity, registration, contact, timezone, currency, chart-of-account, main branch, entity link, return-pricing defaults, rounding setup, group-discount item, logo, and status. | Controls the core company header and several default values reused by downstream finance, organisation, and document workflows. |
-| **E-Invoice** | Maintain company e-invoice details when the tab is enabled in the build. | Affects whether company-level e-invoice setup is available for supported invoicing workflows. |
+| **Details** | Maintain company identity, registration, contact, timezone, currency, chart-of-account, main branch, entity link, return-pricing defaults, rounding setup, group-discount item, logo, and status. A read-only audit block at the bottom shows Created By, Creation Date, Modified By, and Modified Date. | Controls the core company header and the default values — currency, chart-of-account, rounding rules, return pricing — that downstream finance and document workflows inherit automatically. |
+| **E-Invoice** | Maintain company e-invoice details. This tab is only visible when e-invoice is enabled in the current deployment. | Affects company-level e-invoice registration details used in supported e-invoice document flows. If the tab is not visible, e-invoice is not enabled for this deployment. |
 | **Peppol Config** | Create or edit Peppol participant registration records, maintain company Peppol participant IDs, choose the default Peppol ID, and toggle notification channels such as **Peppol**, **Email**, **UCC Channels**, and **Customer Portals**. | Affects Peppol onboarding status, which participant ID is used as the company default, and which notification channels are stored for e-invoice or Peppol-related flows. |
-| **Address** | Maintain the company address. | Affects the address stored on the company record and used in company-facing documents or references. |
-| **Tax** | Use the **Sales** and **Purchase** subtabs to assign default tax codes and decide whether tax is inclusive on each side. | Affects the company-level default tax behavior applied in downstream sales and purchase flows. |
-| **Branch** | Review the company-filtered branch list, add a new branch from the company context, or open a branch row in the full branch workspace. | Affects which branches are attached to the company and helps users manage branch setup without leaving the company context. |
-| **Location** | Review the company-filtered location list, add a new location from the company context, or open a location row in the full location workspace. | Affects which locations sit under the company structure and helps users manage locations from the company context. |
-| **Labels** | Review labels already linked to the company and open linked label records for maintenance. | Affects company classification, filtering, and any workflow that depends on company labels. |
-| **Knock Off Config** | Add, edit, delete, or enable knock-off rules by **Flow Type**, **Server Doc Type 1**, and **Server Doc Type 2**. The applet also prevents conflicting active KO rules for the same source document across certain internal GRN and GRN-stock-in targets. | Affects how matching or knock-off logic behaves for company-level document-flow combinations. If a KO rule is enabled here, downstream matching behavior follows this configuration. |
-| **Employee** | Review linked employees with employee name, code, email, and status, then add or edit company employee links. | Affects which employee records are associated with the company in linked workflows. |
-| **Engagement Access** | Add another company to the accessible-company list, review which companies are currently accessible, or remove an access link from the detail screen. | Affects which other company records are reachable through engagement-access linking. |
-| **Intercompany Configuration** | Create or edit company intercompany configurations with config name, config code, mode, and source or target gendoc mapping, then copy those configurations to company branches. | Affects company-level intercompany behavior and provides the branch-level starting point when configs are copied down. |
+| **Address** | Maintain the company address. | Affects the address printed on company-facing documents such as invoices and quotations. |
+| **Tax** | Use the **Sales** and **Purchase** subtabs to assign default tax codes and decide whether tax is inclusive on each side. | Affects the default tax code and inclusive-tax setting pre-filled on Sales Invoices, Purchase Orders, Credit Notes, and other tax-sensitive documents for this company. Users can still override tax per document. |
+| **Branch** | Review the company-filtered branch list, add a new branch from the company context, or open a branch row in the full branch workspace. | Affects which branches are attached to the company. Changes here are reflected in any branch-filtered dropdown or listing across the platform. |
+| **Location** | Review the company-filtered location list, add a new location from the company context, or open a location row in the full location workspace. | Affects which locations sit under the company structure and appear in company-filtered location dropdowns. |
+| **Labels** | Review labels already linked to the company and open linked label records for maintenance. | Affects company-label-based filtering in listing views and classification logic in workflows such as CP Commerce category publishing that filter by company label. |
+| **Knock Off Config** | Add, edit, delete, or enable knock-off rules by **Flow Type**, **Server Doc Type 1**, and **Server Doc Type 2**. The applet prevents conflicting active KO rules for the same source document across certain internal GRN and GRN-stock-in targets. | Affects the automatic document-matching behaviour for company-level flows. An enabled KO rule means the system matches documents automatically; a disabled rule means users must match manually. Conflicting rules are blocked to prevent duplicate knock-offs. |
+| **Employee** | Review linked employees with employee name, code, email, and status, then add or edit company employee links. | Affects which employees appear when a company-employee assignment is needed in HR, payroll, or document workflows scoped to this company. |
+| **Engagement Access** | Add another company to the accessible-company list, review which companies are currently accessible, or remove an access link from the detail screen. | Affects which other company records are reachable through engagement-access linking. This is a cross-company access configuration, not a replacement for normal company creation. |
+| **Intercompany Configuration** | Create or edit company intercompany configurations with config name, config code, mode, and source or target gendoc mapping, then copy those configurations to company branches. | Affects company-level intercompany document automation. Copying configs to branches gives each branch a starting baseline that can be further adjusted in the branch's own Intercompany Configuration tab. |
 
 {{< callout type="tip" >}}
 **Recommended company setup order**
@@ -348,9 +354,9 @@ Manage branch master records and branch-level operational configuration.
 
 | Tab | What users do there |
 |-----|---------------------|
-| **Details** | Choose whether to create a default location or use an existing location, then maintain branch code, branch name, company, company registration number, optional parent branch, optional XTN mapping fields, commencement date, branch contact fields, and other branch details. |
-| **Address** | Maintain the branch address. |
-| **Marketplace** | Maintain marketplace-related setup during creation when needed. |
+| **Details** | Choose whether to create a default location or use an existing location, then enter branch code, branch name, company, company registration number, optional parent branch, commencement date, and contact fields (mobile, phone, fax, email). |
+| **Address** | Maintain the branch address (up to 5 address lines, plus postal code, city, country, and state). |
+| **Marketplace** | Use this tab during creation only if the branch connects to an external marketplace (Lazada, Shopee, CP Commerce, etc.). Skip it and configure after saving if marketplace setup is not immediately needed. |
 
 {{< callout type="info" >}}
 **Create default location vs. Choose from existing location**
@@ -371,9 +377,9 @@ If the location fields feel unpopulated, complete the **Company Name** field fir
 
 | Tab | What users see |
 |-----|----------------|
-| **Details** | Main branch fields plus **Default Entity Branch**, **Main Location**, **Delivery Location**, **Default Pricing**, **Status**, **Branch Closed Date**, and operational fields such as GPS, opening hours, tax-applicable, store-locator, rounding, and logo. |
-| **Address** | Branch address maintenance. |
-| **Pick Pack** | Checkboxes for delivery quantity balance behavior on Sales Order (Internal), sales invoice, and delivery order. |
+| **Details** | Main branch fields plus **Default Entity Branch**, **Main Location**, **Delivery Location**, **Default Pricing**, **Default Timezone**, **Currency**, **Status**, **Branch Closed Date**, and operational fields: **Mobile Number**, **Phone Number**, **Phone Number 2**, **Fax Number**, **Email**, **Branch Ref 1 / 2 / 3**, **Abbreviation**, **Tax Registration Number**, **Remarks** (read-only), **GPS in Decimal Degrees**, **Opening Hours**, **Tax Applicable** (checkbox), **Show in CP Commerce Store Locator** (checkbox), **Skip E-Invoice** (slide toggle), **Rounding Five Cent** (checkbox, reveals a Rounding Item selector when enabled), **Group Discount Item**, and **Upload Logo** with a remove option. A read-only audit block at the bottom shows **Created By**, **Creation Date**, **Modified By**, and **Modified Date**. |
+| **Address** | Branch address maintenance (up to 5 address lines, plus postal code, city, country, and state). |
+| **Pick Pack** | Checkboxes for delivery quantity balance enforcement on three internal document types: **Internal Sales Order**, **Internal Sales Invoice**, and **Internal Delivery Order**. |
 | **Marketplace** | Marketplace integration workspace with nested tabs for **Details**, **Settlement**, **Stock Configuration**, **Stock Availability**, **Pricing Scheme**, and **Publish Item**. |
 | **Location** | Branch-linked location listing showing **Location Code**, **Location Name**, and **Status**. |
 | **Settlement** | Branch settlement-method link listing with settlement code, name, type, and status. |
@@ -388,17 +394,17 @@ If the location fields feel unpopulated, complete the **Company Name** field fir
 
 | Branch tab | What users can do | What it affects |
 |-----|---------------------|----------------|
-| **Details** | Maintain branch identity, company link, parent branch, entity branch, main and delivery locations, currency, default pricing, branch references, CP Commerce store-locator flag, GPS, opening hours, tax-applicable flag, remarks, rounding setup, group-discount item, skip-e-invoice flag, logo, status, and closed-date information. | Controls the core branch record and several operational defaults reused by downstream branch-aware workflows, storefront behavior, and branch-specific document processing. |
-| **Address** | Maintain the branch address and contact location details. | Affects the address stored for the branch and used in branch-related records. |
-| **Pick Pack** | Turn on delivery quantity balance checks for **Sales Order (Internal)**, **Sales Invoice (Internal)**, and **Delivery Order (Internal)**. | Affects whether those internal transaction flows enforce delivery quantity balance rules for the branch. |
-| **Location** | Review the branch-linked location list, add a location link, or open a linked location in its location workspace. | Affects which locations are attached to the branch structure and which location records users treat as part of that branch. |
-| **Settlement** | Link or remove settlement methods for the branch and review settlement code, name, type, and link status. | Affects which general settlement methods are associated with the branch outside the marketplace-specific settlement selection. |
-| **Labels** | Review linked branch labels and open the linked label records for maintenance. | Affects branch classification, filtering, and any logic that depends on branch labels. |
-| **Extension** | Add or edit active extension rows by **Param Code**, **Value String**, and **Param Type**. JSON-type rows are not shown in this listing. | Affects tenant-specific or extension-driven branch behavior that depends on branch extension values. |
-| **Customer** | Link customers to the branch, review linked customer code and name, and remove unwanted links. | Affects which customer records are associated with the branch in linked workflows. |
-| **Employee** | Link employees to the branch, review linked employee code and name, and remove unwanted links. | Affects which employee records are associated with the branch in linked workflows. |
-| **Supplier** | Link suppliers to the branch, review linked supplier code and name, and remove unwanted links. | Affects which supplier records are associated with the branch in linked workflows. |
-| **Intercompany Configuration** | Create or edit branch intercompany configs, choose config name and code, set auto or manual execution options, turn on mapping pairs such as sales invoice to purchase invoice or purchase order to sales order, and copy company configs into the branch when needed. | Affects branch-level intercompany automation and manual intercompany document behavior in linked stock or finance workflows. |
+| **Details** | Maintain branch identity, company link, parent branch, entity branch, main and delivery locations, currency, default pricing, branch references (Ref 1/2/3), abbreviation, tax registration number, CP Commerce store-locator flag, GPS, opening hours, tax-applicable flag, skip-e-invoice toggle, remarks, rounding setup, group-discount item, logo, status, and closed-date information. | Controls the core branch record and the operational defaults that downstream branch-aware workflows, storefront behaviour, and branch-specific document processing inherit. |
+| **Address** | Maintain the branch address and contact location details. | Affects the address printed on branch-facing documents and records. |
+| **Pick Pack** | Turn on delivery quantity balance checks for **Internal Sales Order**, **Internal Sales Invoice**, and **Internal Delivery Order**. | Affects whether those internal transaction flows enforce a delivery quantity balance rule before the document can be completed for this branch. |
+| **Location** | Review the branch-linked location list, add a location link, or open a linked location in its location workspace. | Affects which locations are attached to the branch structure and which location records operational workflows treat as part of that branch. |
+| **Settlement** | Link or remove settlement methods for the branch and review settlement code, name, type, and link status. | Affects which settlement methods are available for branch-level transactions outside of the marketplace-specific settlement flow. |
+| **Labels** | Review linked branch labels and open the linked label records for maintenance. | Affects branch-label-based filtering and any classification logic that depends on branch labels in linked workflows. |
+| **Extension** | Add or edit active extension rows by **Param Code**, **Value String**, and **Param Type**. JSON-type rows are not shown in this listing. | Stores non-standard branch configuration values used by BigLedger implementation teams. Do not edit unless instructed by your system administrator or BigLedger support. |
+| **Customer** | Link customers to the branch, review linked customer code and name, and remove unwanted links. | Affects which customer records are associated with this branch in customer-branch-filtered workflows. |
+| **Employee** | Link employees to the branch, review linked employee code and name, and remove unwanted links. | Affects which employee records appear when a branch-employee assignment is needed in HR or document workflows. |
+| **Supplier** | Link suppliers to the branch, review linked supplier code and name, and remove unwanted links. | Affects which supplier records are associated with this branch in supplier-branch-filtered workflows. |
+| **Intercompany Configuration** | Create or edit branch intercompany configs, choose config name and code, set auto or manual execution options, turn on mapping pairs such as sales invoice to purchase invoice or purchase order to sales order, and copy company configs into the branch when needed. | Affects branch-level intercompany automation and controls whether intercompany document creation is triggered automatically or requires manual action. |
 
 **Marketplace Details Highlights:**
 - The **Marketplace Type** dropdown includes values such as **None**, **Lazada**, **Shopee**, **CP Commerce**, **Magento**, **Selluseller**, **Samsung BOPIS**, **Anchanto OMS**, **Shopify**, and **Tiktok**
@@ -423,7 +429,9 @@ The nested **Marketplace -> Settlement** tab is for the marketplace-specific set
 
 {{< callout type="tip" >}}
 **Conditional branch fields**
-The **Parent Branch** selector and **`XTN_MAPPING_01` to `XTN_MAPPING_05`** fields only appear when the corresponding field settings are enabled.
+The **Parent Branch** selector only appears when the `SHOW_PARENT_BRANCH` field setting is enabled.
+
+Each **XTN Mapping** group (`XTN_MAPPING_01` to `XTN_MAPPING_05`) exposes **three separate fields** when enabled: **Xtn Mapping Source**, **Xtn Mapping Table**, and **Xtn Mapping Value**. With all five groups active, up to 15 XTN-related fields can appear in the Details tab. Enable only the groups your implementation requires.
 {{< /callout >}}
 
 {{< callout type="tip" >}}
@@ -458,8 +466,8 @@ Manage location master records and location-level linking or configuration.
 
 | Tab | What users do there |
 |-----|---------------------|
-| **Details** | Maintain location code, location name, company, branch, company registration number, commencement date, phone number, description, and **Location Class**. |
-| **Address** | Maintain address lines, postal code, city, country, and state. |
+| **Details** | Enter location code, location name, company, branch, company registration number, commencement date, **Mobile Number**, **Phone Number**, **Fax Number**, **Email**, description, and **Location Class**. |
+| **Address** | Maintain address lines (up to 5), postal code, city, country, and state. |
 
 **Edit View Tabs:**
 
@@ -467,8 +475,8 @@ Manage location master records and location-level linking or configuration.
 
 | Tab | What users see |
 |-----|----------------|
-| **Details** | Main location fields plus company and branch links, contact details, currency, **Location Class**, **Outlet Size**, **Outlet Type**, **Status**, and **Location Closed Date** when the location is closed. |
-| **Address** | Location address maintenance. |
+| **Details** | Main location fields plus company and branch links, **Location Commencement Date**, **Currency**, **Location Mobile Number**, **Location Phone Number**, **Location Fax Number**, **Location Email**, **Description**, **Location Class**, **Outlet Size**, **Outlet Type**, **Status**, **Location Closed Date** when the location is closed, and a read-only audit block showing **Created By**, **Creation Date**, **Modified By**, and **Modified Date**. |
+| **Address** | Location address maintenance (up to 5 address lines, plus postal code, city, country, and state). |
 | **Branch** | Branch-link listing for the selected location with **Branch Code**, **Branch Name**, and **Status**. |
 | **Labels** | Location label listing with **Label Code**, **Label Name**, **Description**, **Modified Date**, and **Status**. |
 | **Extension** | Location extension listing showing active non-JSON extension rows by param code, value string, and param type. |
@@ -478,12 +486,12 @@ Manage location master records and location-level linking or configuration.
 
 | Location tab | What users can do | What it affects |
 |-----|---------------------|----------------|
-| **Details** | Maintain location identity, company and branch links, commencement date, mobile, phone, fax, email, currency, description, status, location class, outlet type, outlet size, and closed-date information. | Controls how the location is defined, classified, contacted, and linked into the organisation structure. |
-| **Address** | Maintain the location address. | Affects the address stored on the location record. |
-| **Branch** | Review branch links for the location, add a branch link, or open a linked branch from the location context. | Affects which branch relationship is attached to the location and helps users manage branch-location linkage from the location side. |
-| **Labels** | Review linked location labels and open linked label records for maintenance. | Affects location classification and filtering based on labels. |
-| **Extension** | Add or edit active location extension rows by **Param Code**, **Value String**, and **Param Type**. | Affects custom or extension-based location data used by tenant-specific workflows. |
-| **Intercompany Configuration** | Link, review, or remove target-location intercompany stock configuration rows. | Affects location-level intercompany stock behavior in linked workflows. |
+| **Details** | Maintain location identity, company and branch links, commencement date, mobile, phone, fax, email, currency, description, status, location class, outlet type, outlet size, and closed-date information. | Controls how the location is identified, classified, and linked into the organisation structure. The location class (BASIC or CCSG) determines which stock document types apply to this location. |
+| **Address** | Maintain the location address. | Affects the address printed on location-facing documents and stored on the location record. |
+| **Branch** | Review branch links for the location, add a branch link, or open a linked branch from the location context. | Affects which branch relationship is attached to the location and supports managing branch-location linkage from the location side. |
+| **Labels** | Review linked location labels and open linked label records for maintenance. | Affects location-label-based filtering and classification in listing views and linked workflows. |
+| **Extension** | Add or edit active location extension rows by **Param Code**, **Value String**, and **Param Type**. | Stores non-standard location configuration values. Do not edit unless instructed by your system administrator or BigLedger support. |
+| **Intercompany Configuration** | Link, review, or remove target-location intercompany stock configuration rows. | Affects location-level intercompany stock movement behaviour when stock is transferred between companies. |
 
 **Location Class Options:**
 
@@ -522,10 +530,11 @@ On the location edit screen, users see **ACTIVE** and **CLOSED** in the status d
 
 ### Tips for Admins
 
-- Treat **Create** as the minimum data-entry screen and **Edit** as the full setup workspace
-- Expect **Company** and **Branch** listings to default to active rows
-- Use structured filters first when keyword search is too short or too strict
-- Finish the core hierarchy before adding labels, category groups, or notification scope
+- **Finish the core hierarchy first** — create the Company, then Branch, then Location before adding labels, category groups, or notification templates
+- Treat **Create** as the minimum data-entry screen and **Edit** as the full setup workspace — most configuration only appears after the first save
+- **Company Code**, **Branch Code**, and **Location Code** are read-only for users who are not **OWNER** or **ADMIN** rank — only those roles can change codes after creation
+- Company and Branch listings default to **ACTIVE** rows. Location includes both active and inactive by default. Apply a status filter when a record is not appearing in search
+- The search rejects keywords shorter than 3 characters — use the structured dropdown filters first when a keyword search returns no results
 
 ---
 
@@ -734,9 +743,9 @@ The applet route tree also includes admin pages such as:
 
 These are route-defined, but they are not part of the basic sidebar settings menu for every user.
 
-**Release Notes currently mention:**
-- **Version 1.49 (2025-09-26)**: fixed advanced-search issues in Company, Branch, and Location; removed date and status filters from advanced search
-- **Version 1.02 (2025-09-23)**: moved Company, Branch, and Location modules to `aggrid-custom`
+**Release Notes:**
+- **Version 1.49 (2025-09-26)**: Improved search stability in Company, Branch, and Location listings. Advanced search now uses structured filter dropdowns only — date and status filter fields have been removed from the advanced search panel.
+- **Version 1.02 (2025-09-23)**: Updated Company, Branch, and Location listing grids to use the enhanced grid component for improved performance and consistency.
 
 ---
 

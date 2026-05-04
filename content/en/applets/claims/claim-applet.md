@@ -18,8 +18,6 @@ The **Claim Applet** is a powerful tool designed to streamline the entire expens
 **Core Concept**: The system links **what** you claim (Items) to **where** the money comes from (Accounts) and **how much** is allowed (Entitlements).
 {{< /callout >}}
 
-## Key Features Overview
-
 ### Who Benefits from This Applet?
 
 **Employees & Claimants:**

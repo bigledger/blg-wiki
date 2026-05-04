@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Stock Availability Applet"
 description: "Real-time inventory visibility, advanced bin tracking, and serial/batch traceability for warehouse and sales operations"
 tags:
@@ -26,7 +26,6 @@ The Stock Availability Applet exists to calculate your **True Available Stock** 
 | Role | How they use it |
 |------|-----------------|
 | **Sales Reps** | Checking if a product is in stock *before* committing to a customer order. |
-| **Warehouse Pickers** | Finding the exact aisle and Bin location of specific items. |
 | **Procurement** | Checking running low stock to know what needs to be reordered. |
 | **Quality/Compliance** | Tracing a defective Serial Number back to its original supplier. |
 
@@ -41,10 +40,10 @@ The Stock Availability Applet exists to calculate your **True Available Stock** 
 - Recalling a specific defective batch takes days of manual paperwork auditing.
 
 **With Stock Availability Applet:**
-- âœ“ **Real-time Formulas** - Instantly calculate *Physical - Reserved = Available*
-- âœ“ **Bin-Level Precision** - Know exactly which shelf an item is sitting on.
-- âœ“ **End-to-End Traceability** - Trace a Serial Number from the Supplier PO all the way to the Customer Invoice.
-- âœ“ **Aging Analytics** - Spot dead stock before it loses complete value.
+- ✓ **Real-time Formulas** - Instantly calculate *Physical - Reserved = Available*
+- ✓ **Bin-Level Precision** - Know exactly which shelf an item is sitting on.
+- ✓ **End-to-End Traceability** - Trace a Serial Number from the Supplier PO all the way to the Customer Invoice.
+- ✓ **Aging Analytics** - Spot dead stock before it loses complete value.
 
 {{< figure src="/images/stock-availability-applet/stock-availability-infographic.jpg" alt="Mastering Real-Time Inventory: The Stock Availability Applet - showing the Master Formula (A = P - R), Strategic Visibility, End-to-End Audit Trails, and a Role-Specific Quick Reference Guide" caption="Mastering Real-Time Inventory: The Stock Availability Applet. A visual overview of the Master Formula, Bin-Level Precision, Aging Analytics, and Role-Specific Visibility." >}}
 
@@ -69,13 +68,12 @@ To use this applet effectively, you must understand the four pillars of inventor
 ## Role-Based Quick Start Guides
 
 ### For Sales Reps: The Pre-Sale Check
-Your goal is to ensure you don't sell stock you don't have.
+Your goal is to ensure you don't sell stock you don't have, and to manage customer expectations. Since you often need to know *why* stock is unavailable or *when* it will arrive, you should primarily use the **Stock Availability Details** listing.
 
-1. Go to **Stock Availability Listing**.
+1. Go to **Stock Availability Details** listing.
 2. Search for the Item Code (e.g., *LAPTOP-PRO*).
-3. Look at the **Available** column. *Do not look at the Physical column.*
-4. If Available is 0, double-click the item and go to the **SO/PO Availability View**.
-5. Check the **Incoming** column to tell the customer when the next shipment from the supplier is arriving.
+3. If the **Available** column is 0, check the breakdown rows for that item.
+4. You will see specific **Sales Orders** holding the stock, or **Purchase Orders** that show when the next shipment from the supplier is arriving.
 
 ### For Warehouse Pickers: Finding an Item
 Your goal is to find where 5 specific mice are located in a massive warehouse.
@@ -104,56 +102,133 @@ A customer reported a defect with Serial Number `SN-998877`. Your goal is to fin
 ### 1. Stock Availability Listing (The Global View)
 This is the highest-level view. It aggregates stock across all your locations.
 
+{{< figure src="/images/stock-availability-applet/stock-availability-listing.png" alt="Stock Availability Listing showing company-wide inventory levels with branch filters and color-coded status indicators." caption="Stock Availability Listing: A global snapshot of total physical and available stock across all locations." >}}
+
 - **Multi-Branch View:** If you have warehouses in KL, Penang, and Johor, you can see the total company-wide stock, or filter down to a specific branch to see local availability.
 - **Color Indicators:** Configurable warning colors (e.g., Red) highlight items that have fallen below their required Minimum Stock levels.
 
-### 2. Bin Availability Listing (The Micro View)
+### 2. Stock Availability Details (The primary operational view)
+While the main listing gives you a simple physical snapshot, the **Details Listing** is the most frequently used workspace because it answers the "Why?". It provides a granular view of exactly which operational documents are affecting your inventory levels.
+
+{{< figure src="/images/stock-availability-applet/stock-availability-details.png" alt="Stock Availability Details view highlighting reserved quantities and pending transactions." caption="Stock Availability Details: Deep-dive into the documents (Sales Orders, Purchase Orders) affecting your available stock." >}}
+
+**Primary Use Cases:**
+- **Troubleshooting "Missing" Availability:** When a sales rep complains, *"It says we physically have 50 items, but 0 available. Why?"* The details listing shows the exact Sales Orders (SO) that have reserved those 50 items.
+- **Managing Incoming Stock:** If an item is out of stock, this view shows the specific Purchase Orders (PO) or Goods Receive Notes (GRN) incoming, allowing sales reps to tell customers exactly when stock will arrive.
+- **Advanced Search & Filtering ("Optional" Field):** The advanced search includes an **Optional** multi-select dropdown designed to declutter your view. By default, it hides zero balances and pending document balances (`HIDE_ZERO_BALANCE`, `HIDE_GOODS_RECEIVE_NOTE_BALANCE`, `HIDE_PURCHASE_ORDER_BALANCE`, `HIDE_SALES_ORDER_BALANCE`). You can uncheck these to explicitly isolate and view pending documents and balances.
+
+### 3. Stock Aging Report
+Identifies "Dead Stock."
+
+{{< figure src="/images/stock-availability-applet/stock-aging-report.png" alt="Stock Aging Report showing inventory grouped by time periods (e.g., February, March, April, May)." caption="Stock Aging Report: Identify items that have been sitting in the warehouse for extended periods to prevent obsolescence." >}}
+
+- Groups inventory by how long it has been sitting in your warehouse (e.g., *0-30 days, 31-60 days, 90+ days*).
+
+- Allows Procurement and Sales to run targeted discounts to clear out 90+ day old stock before it becomes obsolete.
+
+### 4. Stock Availability with SO and PO
+A dedicated consolidated workspace focused purely on stock movement tied explicitly to ongoing Sales and Purchase Orders, providing a streamlined view for fulfillment teams.
+
+{{< figure src="/images/stock-availability-applet/stock-availability-with-so-po.png" alt="Stock Availability with SO and PO view showing specific document links and outstanding quantities." caption="SO & PO Tracking: Monitor inventory specifically committed to or expected from open documents." >}}
+
+### 5. Trace Serial No
+Crucial for electronics, machinery, and high-value items tracked individually.
+
+{{< figure src="/images/stock-availability-applet/trace-serial-no.png" alt="Trace Serial Number view showing the full stock movement history of a specific serial number." caption="Trace Serial No: View the complete lifecycle and transaction history of any serialized item." >}}
+
+- **Dedicated Search:** Search by exact Serial Number, Keyword, or Date Range to find specific item histories.
+
+- **Forward Tracing:** Trace a serial number from the moment it was received from a Supplier PO all the way to the Customer Invoice.
+- **Backward Tracing:** "Customer brought back a broken TV. Which container did this specific TV arrive in, so we can claim warranty from the manufacturer?"
+
+### 6. Serial Number Balance
+- View the exact current physical balance of items tracked by a specific Serial Number within your warehouses.
+
+{{< figure src="/images/stock-availability-applet/serial-number-balance.png" alt="Serial Number Balance view showing quantities and specific serial numbers currently in stock." caption="Serial Number Balance: Instantly verify which serial numbers are physically present in each location." >}}
+
+- Utilizes an Advanced Search grid with column toggling, allowing for highly specific filtering and reporting of serialized inventory.
+
+
+### 7. Trace Batch No
+Crucial for food, pharmaceuticals, and items with expiry dates.
+
+{{< figure src="/images/stock-availability-applet/trace-batch-no.png" alt="Trace Batch Number view showing movement history for batch-tracked items." caption="Trace Batch No: Track stock movements and transactions for specific batch numbers." >}}
+
+- **Dedicated Search:** Search by exact Batch Number, Keyword, or Date Range to trace all related transactions.
+
+- **Recall Management:** "We just realized Batch #XYZ of flour is contaminated. Which customers did we sell bread to using this flour?" Instantly identify all affected parties for a recall.
+
+### 8. Bin Availability Listing (The Micro View)
 While the main listing tells you *if* you have stock, this listing tells you *exactly where* it is.
 
+{{< figure src="/images/stock-availability-applet/bin-availability.png" alt="Bin Availability Report showing item locations and quantities across different bins." caption="Bin Availability: Precise location mapping for every item in your warehouse." >}}
+
 {{< callout type="tip" >}}
+
 **Why Use Bins?** If you have 10,000 screws in a warehouse, knowing you have 10,000 is useless if you don't know which box they are in. Bins represent the physical shelves, racks, or boxes in your facility.
 {{< /callout >}}
 
-### 3. SO/PO View (Sales/Purchasing Breakdown)
-This tab answers the "Why?" When a sales rep complains, *"It says we physically have 50 items, but 0 available. Why?"*
+---
 
-1. Open the SO/PO View for that item.
-2. The grid will list the exact **Sales Orders** that are currently "Holding" (Reserving) the 50 items.
-3. The grid will also list the exact **Purchase Orders** that are "Incoming", so you know which supplier is bringing more, and when.
+## Configuration & Settings
 
-### 4. Serial / Batch Tracing (The Audit Trail)
-Crucial for electronics (Serial Numbers) and food/pharma (Batch Numbers).
+The Stock Availability applet is highly configurable. Administrators can tailor the workspace to hide unnecessary complexity from warehouse staff while enabling deep financial tracking for controllers.
 
-- **Forward Tracing:** "We just realized Batch #XYZ of flour is contaminated. Which customers did we sell bread to using this flour?"
-- **Backward Tracing:** "Customer brought back a broken TV. Which container did this specific TV arrive in, so we can claim warranty from the manufacturer?"
+### 1. Application Settings (System-Wide)
 
-### 5. Aging Report
-Identifies "Dead Stock."
+Accessed via `Settings > Application Settings`, these toggles change how the applet looks and functions for all users.
 
-- Groups inventory by how long it has been sitting in your warehouse (e.g., *0-30 days, 31-60 days, 90+ days*).
-- Allows Procurement and Sales to run targeted discounts to clear out 90+ day old stock before it becomes obsolete.
+**A. Tailoring the Sidebar (Menu Visibility)**
+To prevent mistakes or clutter, administrators can hide sidebar menus that their layout doesn't use. 
+
+| Setting | What It Does |
+|---------|--------------|
+| `Hide Trace Serial No Menu` | Removes the Serial Trace tracking tools. Turn on if you don't sell serialized goods. |
+| `Hide Trace Batch No Menu` | Removes the Batch tracking tools. Turn on if you don't track expiry dates. |
+| `Hide Stock Aging Report Menu` | Removes the aging report from non-finance staff to simplify their UI. |
+
+**B. Tailoring the Listing (Field Visibility)**
+You can hide sensitive financial information from standard warehouse staff, or declutter the main stock availability listing.
+
+| Setting | What It Does |
+|---------|--------------|
+| `Hide Listing Avg Cost` | Hides the Average Cost column, preventing standard users from seeing your inventory valuation. |
+| `Hide Listing Last Purchase Cost` | Hides the Last Purchase Cost column to protect supplier pricing visibility. |
+| `Hide Listing Sales Price` | Hides the default selling price from the stock listing view. |
+| `Hide Report Inventory Value` | Hides total inventory valuation data from reports. |
+| `Pricing Schemes` & `Price Metrics` | Globally defines which pricing structures and metrics to use when displaying costs/prices in the listings. |
+
+**C. Tailoring Item Categories**
+Administrators can enable up to 20 custom Item Category Groups and toggle their visibility across the application.
+
+| Setting | What It Does |
+|---------|--------------|
+| `Item Category Group 1-20` | Defines multi-level categorization for inventory grouping. |
+| `Hide Item Category Group` | Toggles the visibility of specific category groupings to clean up the UI if they aren't needed. |
+
+### 2. Permissions Governance
+
+Access to inventory data is managed through a layered permission system in the Settings menu:
+
+- **Permission Wizard:** A guided tool to set up basic access levels.
+- **Role Permission:** Grant access by job title (e.g., "Sales Reps can View Availability, but only Finance can View Cost").
+- **User/Team Permission:** Grant granular exceptions to specific individuals or squads.
 
 ---
 
-## Applet Configuration (For Admins)
+## Personalization
 
-To tailor the Stock Availability Applet for your company, navigate to **Settings** in the sidebar.
+Individual users can override certain system defaults to speed up their daily workflow via the **Personalization** sidebar menu.
 
-### Application Settings
-Control the global calculation logic.
+### Personal Default Settings
 
-- **`INCLUDE_INCOMING_STOCK`**: If checked, the Available formula becomes `A = P - R + I`. Ideal for fast-moving consumer goods where you sell items while they are still on the delivery truck. 
-- **`NEGATIVE_STOCK_WARNING`**: Configure whether to show hard stops or just warnings if the system detects negative availability (which usually indicates a process error).
+To save clicks on every single lookup, users should set their defaults:
 
-### Field Settings & Visibility
-- Hide the **Cost** columns from standard Sales Reps (so they don't see your profit margins), while keeping it visible for Finance.
-- Hide the **Aging Report** from warehouse pickers to simplify their UI.
-
-### Permission Mapping
-Enforce strict access controls.
-
-- **Setup:** Sales Team can only `View` the Stock Availability listing. Menu items for Settings are completely hidden.
-- **Setup:** Branch Managers can only see the Stock Availability for their *own* specific branch, preventing them from seeing another branch's inventory.
+| Setting | Why use it? |
+|---------|-------------|
+| **Default Branch** | If you only work at the "Penang Hub", set this so you never have to select it from the dropdown again. |
+| **Default Location** | If you only manage "Aisle B", set this as your default location. |
+| **Default Toggle Column** | Set your personal preference for reading forms in a `SINGLE` (narrow) or `DOUBLE` (wide) column layout based on your monitor size. |
 
 ---
 
@@ -165,16 +240,16 @@ Enforce strict access controls.
 1. Sales Rep opens **Stock Availability Listing** and searches for the server.
 2. The UI shows: Physical: 60, Reserved: 20, Available: 40.
 3. The Rep cannot fulfill the order of 50. 
-4. The Rep opens the **SO/PO View**. 
+4. The Rep opens the **Stock Availability Details** menu. 
 5. They see an Incoming PO for 30 servers expected *today* at 3:00 PM.
 6. The Rep confidently tells the client, "Yes, we can deliver tomorrow," knowing the stock will arrive today.
 
 ### Scenario 2: The Expiring Medicine (Batch Tracing)
 **The Situation:** A pharmacy warehouse realizes a specific batch of insulin (`BATCH-NOV24`) expires next month.
 **The Workflow:**
-1. Warehouse Manager opens **Serial / Batch Availability**.
-2. Filters by Expiry Date = "Next Month".
-3. Identifies that 500 units of `BATCH-NOV24` are sitting in Bin `COLD-STORAGE-A`.
+1. Warehouse Manager opens **Trace Batch No**.
+2. Filters by the specific Batch Number.
+3. Identifies that 500 units of `BATCH-NOV24` are currently sitting in Bin `COLD-STORAGE-A`.
 4. Manager immediately issues a priority transfer to move them to the front-of-store shelves with a 50% discount to clear them before expiry.
 
 ### Scenario 3: Investigating Missing Stock in Bins
