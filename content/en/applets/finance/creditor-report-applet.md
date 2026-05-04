@@ -1,12 +1,15 @@
 ---
 title: "Creditor Report Applet"
 description: "Your one-stop dashboard for tracking what your company owes to suppliers — with aging analysis, statements, payment history, and more."
+weight: 41
 tags:
 - finance
 - creditor-report
 - accounts-payable
 - aging-analysis
 - statement-of-account
+aliases:
+- /applets/creditor-report-applet/
 ---
 
 ## Purpose and Overview
