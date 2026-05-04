@@ -11,7 +11,7 @@ weight: 45
 ---
 
 {{< callout type="warning" >}}
-**Daily cashier report applet user guide still under progress**
+**Internal Delivery Order Processing Applet user guide still under progress**
 
 **Work in Progress: This documentation is currently under development. Visual assets (screenshots) and further details will be added soon.**
 {{< /callout >}}

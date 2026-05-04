@@ -1,0 +1,388 @@
+---
+title: "Entity Maintenance Applet"
+description: "Comprehensive entity master management system for customers, suppliers, employees, and merchants with category governance, financial controls, and operational settings"
+tags:
+- entity-management
+- master-data
+- customer-supplier
+- credit-control
+- configuration
+weight: 171
+---
+{{< callout type="warning" >}}
+**Warning**: this documentation is still in review
+{{< /callout >}}
+
+## Purpose and Overview
+
+The **Entity Applet** is the main master-data workspace for maintaining business entities used across operations and finance. It centralizes customer, supplier, employee, and merchant records, then extends each record with category assignments, address/contact data, payment details, tax setup, credit controls, and company mappings.
+
+{{< callout type="info" >}}
+**Core Concept**: Create a clean entity header first, then enrich it through modular tabs such as **Payment Config**, **Tax**, **Address**, **Contact**, **Company Linking**, and **Credit Term and Limit**.
+{{< /callout >}}
+
+## Key Features Overview
+
+### Who Benefits from This Applet?
+
+**Sales and Commercial Teams:**
+- Maintain customer and merchant profiles in one place
+- Keep contacts and addresses current for quoting and billing
+- Reuse consistent category structures for reporting and segmentation
+
+**Procurement and Operations Teams:**
+- Maintain supplier records with standardized fields
+- Organize suppliers with dedicated category hierarchies
+- Reduce onboarding delays caused by incomplete master data
+
+**Finance and Credit Control Teams:**
+- Configure payment and tax information per entity
+- Set credit terms and credit limits with clear status control
+- Maintain AR/AP context and company-level linking for transaction readiness
+
+**Master Data Admins and System Owners:**
+- Govern defaults for branch and location
+- Control field-level behavior from settings
+- Apply permission and visibility governance when enabled in tenant routes
+
+### What Problems Does This Solve?
+
+**The Fragmented Entity Master Problem:**
+
+When entity data lives in spreadsheets and disconnected systems, teams face:
+- Duplicate and inconsistent entity records
+- Missing contact, tax, or payment information at transaction time
+- Manual credit control outside the platform
+- Repeated corrections across sales, purchasing, and finance
+- Slow onboarding because ownership and validation rules are unclear
+
+**The Entity Applet Solution:**
+
+- **Single source of truth** - one managed profile per entity
+- **Role-aware setup** - entity can be customer, supplier, employee, merchant, or mixed
+- **Category governance** - dedicated modules for Entity, Customer, Employee, and Supplier categories
+- **Financial readiness** - payment config, tax, credit term, and credit limit in one workflow
+- **Operational completeness** - address, contact, login mapping, remarks, and branch/company links
+
+## Feature Highlights
+
+{{< cards >}}
+  {{< card title="Entity Listing" subtitle="Grid-based listing with search, filters, and edit drill-down" link="#entity-listing-and-search" >}}
+
+  {{< card title="Entity Create and Edit" subtitle="Core fields plus extension tabs for complete profiles" link="#entity-create-and-main-validation-rules" >}}
+
+  {{< card title="Category Modules" subtitle="Entity, Customer, Employee, and Supplier category governance" link="#category-management-menus" >}}
+
+  {{< card title="Payment and Tax Setup" subtitle="Country, bank, payment method, and tax configurations" link="#payment-configuration" >}}
+
+  {{< card title="Credit Controls" subtitle="Credit term templates and credit limits by currency" link="#credit-term-and-limit" >}}
+
+  {{< card title="Company and Branch Mapping" subtitle="Company Linking and Intercompany Branch maintenance" link="#company-linking-and-intercompany-branch" >}}
+
+  {{< card title="Configuration and Defaults" subtitle="Default selection, field settings, and optional governance routes" link="#configuration-settings" >}}
+{{< /cards >}}
+
+{{< figure src="/images/entity-applet/entity-create-overview.png" alt="Entity Maintenance create form with required master fields and type selections" caption="Entity Create Form: Define core fields such as Entity Name, Status, Type, Entity Type, ID Number, Currency, and AR/AP Type before saving." >}}
+
+## Key Concepts
+
+### Understanding the Entity Framework
+
+The applet follows a practical framework: identity, role, classification, transaction controls, and risk controls.
+
+| Aspect | Component | Practical Example |
+|--------|-----------|------------------|
+| **Who is this record?** | Entity Header | "ABC Industrial Sdn Bhd" |
+| **What role does it play?** | Type + Entity Type | Supplier + Corporate |
+| **How is it classified?** | Category modules | Supplier Category: Raw Materials |
+| **How will it transact?** | AR/AP Type, Payment Config, Tax | AP with bank transfer and tax code |
+| **How is exposure controlled?** | Credit Term and Credit Limit | NET30 with MYR 100,000 limit |
+
+{{< callout type="tip" >}}
+**Implementation pattern**: Start with a minimal valid header, then complete operational and financial tabs before allowing live transactions.
+{{< /callout >}}
+
+### Entity Lifecycle Structure
+
+Think of the applet as a staged entity lifecycle:
+
+```
+Entity Listing
+  -> Create Entity Header
+     -> Entity Edit Tabs
+        -> Main
+        -> Entity Category
+        -> Login
+        -> Payment Config
+        -> Tax
+        -> Address
+        -> Contact
+        -> Intercompany Branch
+        -> Company Linking
+        -> Remark
+        -> Credit Term and Limit
+  -> Settings Defaults (if enabled in tenant)
+```
+
+### Category Domains
+
+The applet separates category governance into four dedicated modules:
+- **Entity Category** for broad classification
+- **Customer Category** for customer-specific policy and reporting use
+- **Employee Category** for employee-related classification
+- **Supplier Category** for procurement and vendor segmentation
+
+Each module supports create, edit, status control, and parent-category hierarchy.
+
+---
+
+## Quick Start Guide
+
+Use these role-based quick starts to onboard with minimal setup errors.
+
+### For Sales and Operations: Create Your First Entity
+
+**Goal:** Create an entity profile that operations teams can use immediately.
+
+1. Open the **Entity** menu (Entity Listing) and click the **+ (Create)** icon.
+2. Fill required header fields: Entity Name, Status, Type, Entity Type, ID Number, Currency, AR/AP Type.
+3. Save the new header and reopen the record in edit mode.
+4. Complete **Address** and **Contact** tabs so teams can transact and communicate.
+5. Assign the correct **Entity Category** and validate status as active.
+6. Return to listing and confirm the record appears correctly in search/filter results.
+
+{{< figure src="/images/entity-applet/entity-create-form.png" alt="Entity Maintenance create form with required master fields and type selections" caption="Entity Create Form: Complete core identity and transaction fields before saving." >}}
+
+---
+
+### For Finance and Credit Control: Make the Entity Financially Ready
+
+**Goal:** Ensure AP/AR processing can run without master-data gaps.
+
+1. Open the entity and verify role (customer/supplier/employee/merchant) and AR/AP direction.
+2. Configure **Payment Config** with **Payee Resident Status**, payment type, country, bank, and account data.
+3. Configure **Tax** with country, tax type, tax code, rate, and option.
+4. Add **Credit Term** and **Credit Limit** entries with currency and status.
+5. Set **Company Linking** and **Intercompany Branch** where required.
+6. Perform a readiness check to confirm no mandatory financial fields are missing.
+
+{{< figure src="/images/entity-applet/entity-payment-config-tab.png" alt="Entity payment config tab with country, payment type, bank, and identifier fields in a tabular view" caption="Payment Config: Set settlement method and bank details before live AP or AR use." >}}
+
+---
+
+### For Admins and Data Owners: Standardize Before Bulk Onboarding
+
+**Goal:** Build consistent governance so onboarding scales cleanly.
+
+1. Define category structures for Entity, Customer, Employee, and Supplier modules.
+2. Set parent-child hierarchy in each category module where needed.
+3. Configure **Settings > Default Selection** if the `Settings` menu is available in your tenant.
+4. If `Settings` is available, review **Settings > Field Settings** toggles to standardize form behavior.
+5. Validate route-level governance features such as feature visibility and permissions if enabled in your tenant.
+6. Run UAT with at least one customer and one supplier onboarding scenario.
+
+{{< figure src="/images/entity-applet/entity-settings-default-selection.png" alt="Default Selection screen for branch and location defaults in Entity Maintenance setup" caption="Default Selection: Configure branch and location defaults through Settings when this menu is enabled for your tenant." >}}
+
+---
+
+{{< callout type="tip" >}}
+**Rollout tip**: Finalize categories and defaults first, then onboard entities in batches by business function (for example, customers first, then suppliers).
+{{< /callout >}}
+
+---
+
+## Entity Operations Walkthrough
+
+### Menu Functionality Reference
+
+The left-side menu in Entity Maintenance commonly includes:
+- `Entity` (Entity Listing)
+- `Entity Category`
+- `Customer Category`
+- `Employee Category`
+- `Supplier Category`
+
+Use this section as the practical map of each menu and what users can do inside it.
+
+### Entity Listing and Search
+
+Menu: `Entity`
+
+The listing page is the daily control center for entity maintenance:
+- Search and advanced filtering
+- Grid columns for name, type, ext type, currency, status, creation date, and modified date
+- Pagination and row-click navigation to edit pages
+- Quick create access for new records
+
+{{< figure src="/images/entity-applet/entity-listing-main.png" alt="Entity listing grid with search, filters, pagination, and row-based navigation to edit view" caption="Entity Listing: Search, filter, and open entity records from a centralized grid." >}}
+
+### Entity Create and Main Validation Rules
+
+The create flow captures base attributes needed for downstream usage:
+- Entity Name
+- Status
+- Type (`CUSTOMER`, `SUPPLIER`, `EMPLOYEE`, `MERCHANT`)
+- Entity Type (`CORPORATE` or `INDIVIDUAL`)
+- Identity Type and ID Number
+- Tax ID, Currency, Description, and AR/AP Type
+
+The form includes behavior rules:
+- If `EMPLOYEE` is selected in Type, Entity Type is constrained to `INDIVIDUAL`
+- ID field placeholder changes based on Entity Type context
+
+{{< figure src="/images/entity-applet/entity-create-form.png" alt="Entity create panel with required fields such as Entity Name, Status, Type, Entity Type, Currency, and AR/AP Type" caption="Entity Create Panel: Fill required fields, then use CREATE to generate the entity header." >}}
+
+After creation, open any row from Entity Listing to continue on the edit workspace tabs.
+
+{{< figure src="/images/entity-applet/entity-edit-form.png" alt="Entity edit screen with multi-tab profile management including Main, Category, Login, Payment, and Tax" caption="Entity Edit Workspace: Continue setup through tabs such as Category, Payment Config, Tax, Address, Contact, and Credit Term and Limit." >}}
+
+### Category Management Menus
+
+Each category menu follows a similar listing/create/edit workflow with search and status control.
+
+### Entity Category
+
+Menu: `Entity Category`
+
+Use this menu to maintain broad entity classification used across modules.
+
+Key functionality:
+- Create new entity category records
+- Edit category names and status
+- Set parent category and hierarchy level
+- Search existing categories for cleanup and governance
+
+{{< figure src="/images/entity-applet/entity-category-listing.png" alt="Entity Category listing showing category code, category name, level value, type, dates, and status columns" caption="Entity Category Listing: Maintain top-level category taxonomy for entity master governance." >}}
+
+### Customer Category
+
+Menu: `Customer Category`
+
+Use this menu to maintain customer-specific segmentation for customer policies and reporting.
+
+Key functionality:
+- Create customer category records
+- Set category code, name, and status
+- Maintain parent-child category structure
+- Search and filter customer category lists
+
+{{< figure src="/images/entity-applet/customer-category-listing.png" alt="Customer Category listing screen with customer category records and maintenance controls" caption="Customer Category Listing: Manage customer-focused category setup and hierarchy." >}}
+
+### Employee Category
+
+Menu: `Employee Category`
+
+Use this menu to classify employee entities for internal assignment and reporting control.
+
+Key functionality:
+- Create employee category records
+- Maintain category names and active/inactive status
+- Apply parent category where hierarchy is required
+- Review and search employee category records
+
+{{< figure src="/images/entity-applet/employee-category-listing.png" alt="Employee Category listing screen with records, columns, and category maintenance actions" caption="Employee Category Listing: Organize employee-related entity categories with searchable records." >}}
+
+### Supplier Category
+
+Menu: `Supplier Category`
+
+Use this menu to maintain supplier segmentation for procurement and vendor governance.
+
+Key functionality:
+- Create and update supplier category records
+- Maintain status and hierarchy structure
+- Standardize supplier grouping for purchasing operations
+- Search supplier categories for faster maintenance
+
+{{< figure src="/images/entity-applet/supplier-category-listing.png" alt="Supplier Category listing screen showing supplier category records, status, and hierarchy columns" caption="Supplier Category Listing: Maintain supplier grouping and governance for procurement workflows." >}}
+
+### Payment Configuration
+
+Payment configuration captures settlement-related details used by finance:
+- Payee Resident Status
+- Payment type
+- Country and bank
+- Bank identifier code
+- Account number and account holder name
+- IBN number and account expiry
+
+### Credit Term and Limit
+
+Credit governance is handled in two linked sections:
+- **Credit Term** for term logic and timing offsets
+- **Credit Limit** for amount, currency, and status controls
+
+These controls support risk management before approving orders or credit exposure.
+
+### Company Linking and Intercompany Branch
+
+Company and branch mapping ensures entities are available in the correct context:
+- **Company Linking** maps entity to company scope and AR/AP context
+- **Intercompany Branch** maps entity to specific intercompany branch relationships
+
+Use both sections when entities operate across multiple companies or branches.
+
+---
+
+## Configuration Settings
+
+### Applet Default Selection (`Settings > Default Selection`)
+
+Configure applet-wide defaults:
+- Default Branch
+- Default Location
+
+These defaults reduce repetitive data entry and improve consistency.
+
+{{< callout type="warning" >}}
+**Tenant behavior note**: In some tenants, the `Settings` menu is not exposed for Entity Maintenance. If this happens, request tenant admin/role permission updates before applying default settings.
+{{< /callout >}}
+
+{{< figure src="/images/entity-applet/entity-settings-default-selection.png" alt="Default selection configuration screen for branch and location in Entity Maintenance applet" caption="Default Selection Screen: Configure default branch and location for consistent data entry." >}}
+
+### Field Settings (`Settings > Field Settings`)
+
+Field settings allow toggle-based control for selected form areas. Common toggles include:
+- Unit Discount
+- SST/VAT/GST
+- WHT
+- Blanket Order
+- Segment
+- G/L Dimension
+- Profit Center
+- Project
+
+### Advanced Governance Routes (Tenant Dependent)
+
+Depending on tenant configuration, additional settings routes may be available:
+- `Settings > Webhook`
+- `Settings > Feature Visibility`
+- `Settings > Permission Set Listing`
+- `Settings > User Permission Listing`
+- `Settings > Team Permission Listing`
+- `Settings > Role Permission Listing`
+
+Use these routes to align security, visibility, and operational governance.
+
+### Label and i18n Notes
+
+The applet primarily uses built-in labels from component definitions. A lightweight i18n helper is used for dropdown tree selection text (for example, showing `All` when no specific item is selected).
+
+---
+
+## FAQ
+
+**Q: Why does my new entity not appear where I expect after saving?**  
+A: Verify status is active, check the assigned role/type, confirm company or intercompany links, and ensure your role permissions allow visibility in that module.
+
+**Q: When should I use Entity Category versus Customer or Supplier Category?**  
+A: Use Entity Category for broad classification, and role-specific categories when reporting or process rules are specific to customer, supplier, or employee contexts.
+
+**Q: Do I need to fill Payment, Tax, and Credit for every entity?**  
+A: Not always. For entities that will be used in AP/AR transactions, these sections should be completed before go-live. For non-transactional records, fields can be completed later based on policy.
+
+**Q: Can one entity hold multiple roles (for example, both customer and supplier)?**  
+A: Yes. The Type field supports multi-role usage, so one profile can represent multiple business relationships when governance allows it.
+
+**Q: How can we prevent duplicate entity creation?**  
+A: Enforce pre-create search by legal name and registration ID, maintain naming standards, and assign a data steward to review uncertain matches.
