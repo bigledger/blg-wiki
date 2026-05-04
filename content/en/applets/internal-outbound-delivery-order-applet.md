@@ -100,9 +100,6 @@ When outbound delivery is handled across disconnected tools, teams face:
 
 ### Main Navigation Map
 
-The applet route path is based on:
-- `applet/tnt/wavelet/erp/internal-delivery-order-applet`
-
 Core app menus:
 - **Delivery Order** (`internal-delivery-order`)
 - **Line Items** (`line-items`)
@@ -413,15 +410,6 @@ Commonly used setting flags include:
 - `HIDE_*` tab/field toggles for operational simplification
 
 Use these carefully in UAT before production rollout to avoid unexpected behavior for end users.
-
-## Audit
-
-### Audit Trail (`Settings > Applet Log`)
-
-Use the applet log entry point to support:
-- Change traceability for operational and compliance checks
-- Investigation of status changes and posting actions
-- Review workflows during incident or dispute handling
 
 ## Personalization
 
