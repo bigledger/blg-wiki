@@ -18,8 +18,6 @@ The **Workflow Design Applet** is the central engine of organizational efficienc
 **Core Concept**: The system defines a **Process** (What it is), its **Statuses** (Where it is), and the **Transitions** (How it moves) between them, ensuring every action automatically follows your official company policy.
 {{< /callout >}}
 
-## Key Features Overview
-
 ### Who Benefits from This Applet?
 
 **Business Administrators & Process Architects:**
@@ -75,7 +73,7 @@ Traditional manual approvals rely on paper forms and email chains. Common issues
 
   {{< card title="Advanced Permissions" subtitle="Granular role, team, and user access" link="#advanced-permissions" >}}
 
-  {{< card title="Visual Dashboard" subtitle="Track real-time workflow performance" link="#sidebar-menu-reference" >}}
+  {{< card title="Visual Dashboard" subtitle="Track real-time workflow performance" link="#feature-visibility" >}}
 
   {{< card title="Personalization" subtitle="Custom sidebars and default selections" link="#personalization" >}}
 {{< /cards >}}
@@ -228,7 +226,7 @@ Get up and running quickly with these essential workflows.
 
 This section details how to construct robust, enterprise-grade workflows.
 
-### The Process Master Registry
+### Process
 
 The **Process** screen is your master control room for all business logic.
 
@@ -240,7 +238,7 @@ The **Process** screen is your master control room for all business logic.
 
 {{< figure src="/images/workflow-design-applet/process-edit-form.png" title="Process Create/Edit Form" caption="The process creation panel with Details, Status, and Transition tabs for full workflow configuration." >}}
 
-### Advanced Status Management
+### Process Status
 
 Statuses are more than just labels; they dictate document security.
 
@@ -250,9 +248,17 @@ Statuses are more than just labels; they dictate document security.
 
 {{< figure src="/images/workflow-design-applet/process-status-listing.png" title="Process Status Listing" caption="Registry of all lifecycle stages, including custom statuses like FINANCE-REVIEW, SUPERVISOR-APPROVAL, and IN PROGRESS." >}}
 
+### Process Resolution
+
+Resolutions define the final outcome of a completed workflow path — the concluding state once a document has reached the end of its lifecycle.
+
+- **Success outcomes**: e.g., Approved, Completed, Confirmed
+- **Failure outcomes**: e.g., Rejected, Cancelled, Voided
+- **Pending outcomes**: e.g., On Hold, Deferred
+
 {{< figure src="/images/workflow-design-applet/process-resolution-listing.png" title="Process Resolution Listing" caption="The final outcome classifications for terminated workflows, such as Approved, Rejected, Pending, and Refund." >}}
 
-### Transition Actions: The Automation Engine
+### Transition Action
 
 Transition actions turn static forms into an active, intelligent system. You can define custom **Transition Action Types** to categorize and manage the various automated events your organization uses.
 
