@@ -1,5 +1,5 @@
 ---
-title: "SST (Service / Sales Tax) Applet"
+title: "MY-SST Applet"
 description: "Comprehensive tax management system for Malaysian SST compliance, covering tax year setup, tariff codes, tax code configuration, filing workflows, and SST-02 report generation"
 tags:
 - sst-compliance
@@ -14,13 +14,11 @@ weight: 20
 
 ## Purpose and Overview
 
-The **SST (Service / Sales Tax) Applet** is a specialized tool designed to streamline Malaysian tax compliance. It provides a structured environment for managing the entire tax lifecycle—from initial configuration of tax years and tariff codes to the final generation of official SST-02 reports for submission to the Royal Malaysian Customs Department (RMCD).
+The **MY-SST Applet** is a specialized tool designed to streamline Malaysian tax compliance. It provides a structured environment for managing the entire tax lifecycle—from initial configuration of tax years and tariff codes to the final generation of official SST-02 reports for submission to the Royal Malaysian Customs Department (RMCD).
 
 {{< callout type="info" >}}
 **Core Concept**: The system automates tax categorization by linking **Tariff Codes** to **Tax Codes**, ensuring that every transaction is classified and recorded accurately for official filing.
 {{< /callout >}}
-
-## Key Features Overview
 
 ### Who Benefits from This Applet?
 
@@ -170,12 +168,9 @@ Get your tax compliance engine running with these essential workflows.
 **Step 3: Define Tax Codes** (`Tax Code` menu)
 - Create Output Tax (Sales) and Input Tax (Purchase) codes.
 - Set the **Tax Rate** (e.g., `6.00` for 6%, `8.00` for 8%).
-- Link each Tax Code to the appropriate **Tariff Code** from Step 2.
+- Link the Tax Code to item codes via the **Doc Item Maintenance Applet** to apply taxes automatically to transactions.
 
-**Step 4: Map Accounts**
-- Link your Tax Codes to the correct GL accounts in the `Chart of Account Applet`.
-
-**Step 5: Test Transaction**
+**Step 4: Test Transaction**
 - Create a draft Sales Invoice, apply the tax code, and verify it appears in the **Unfiled Transactions** tab of a filing cycle.
 
 ---
@@ -249,7 +244,7 @@ The Tax Year is the master configuration that defines the fiscal filing framewor
 
 **What is a Tariff Code?**
 
-A Tariff Code (also referred to as **Label** in the system) is the official classification code issued by the Royal Malaysian Customs Department (RMCD). It identifies the exact category of a taxable good or service so the correct tax rate is applied.
+A **Tariff Code** identifies what type of product/service you're selling. It's like a classification number used by the Royal Malaysian Customs Department (RMCD) to categorise taxable goods and services.
 
 **Fields Explained:**
 
@@ -301,9 +296,9 @@ A Tax Code is the calculation rule that defines the tax rate and type applied to
 
 | Tax Type | Description | Example |
 |----------|-------------|---------|
-| **Output (Sales Tax)** | Tax collected from customers on sales. | 10% on manufactured goods. |
-| **Output (Service Tax)** | Tax collected on services rendered. | 8% on professional services (from 2024). |
-| **Input (Purchase Tax)** | Tax paid on purchases (where applicable). | For tracking input costs. |
+| **Output (Sales Tax)** | Costs customers pay on sales — tax you collect from customers. | 10% on manufactured goods. |
+| **Output (Service Tax)** | Costs customers pay for services — tax you collect on services rendered. | 8% on professional services (from 2024). |
+| **Input (Purchase Tax)** | Costs your company pays on purchases — tax you pay to suppliers. | For tracking input costs. |
 
 **How to Create a Tax Code:**
 
