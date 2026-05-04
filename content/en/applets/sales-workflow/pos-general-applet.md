@@ -27,6 +27,7 @@ The **BigLedger POS General Applet** is engineered with a modular architecture t
   {{< card title="Financial Integration" subtitle="Cashbook linking and settlement methods" link="#financial-integration-cashbook-linking-and-settlement-methods" >}}
   {{< card title="Operational Controls" subtitle="Sessions, Drawers, and Serial Management" link="#for-cashiers-front-line" >}}
   {{< card title="Reporting & Audit" subtitle="Management intelligence and audit tools" link="#reporting-framework-and-audit-intelligence" >}}
+  {{< card title="Customer Display" subtitle="Enhanced secondary screen visibility" link="#pos-customer-display-extension" >}}
 {{< /cards >}}
 
 {{< figure src="/images/pos-general-applet/pos-overview-infographic.png" alt="From Scattered Sales to Centralized Control: Your Guide to the POS General Applet" caption="From Scattered Sales to Centralized Control: The Old Way (isolated terminals, manual cashbook entries, back-dating risks) vs The New Way (strict permission hierarchies, automated ledger synchronization, immutable audit trails)." >}}
@@ -228,6 +229,24 @@ The "So What?" of the reporting framework lies in its utility for the Finance De
 {{< /callout >}}
 
 {{< figure src="/images/pos-general-applet/pos-z-report-export.png" alt="Z Report PDF Export: The definitive audit document for finance reconciliation" caption="Z Report PDF Export: The definitive audit document for finance reconciliation" >}}
+
+---
+
+## POS Customer Display (Extension)
+
+The **POS Customer Display** is a specialized retail extension designed to manage a secondary monitor facing the customer. It provides real-time transaction transparency and promotional messaging.
+
+{{< figure src="/images/pos-customer-diplay-applet/pos-customer-display-main.png" alt="POS Customer Display Interface" caption="POS Customer Display: Real-time transaction visibility and promotional space." >}}
+
+### Key Functions
+*   **Idle State**: Displays promotional slideshows or branding when the terminal is not in use.
+*   **Active State**: Shows a live itemized list and totals as the cashier scans products.
+*   **Payment State**: Presents the final total and integrated QR codes (e.g., TNG, GrabPay) for rapid checkout.
+
+### Quick Setup
+1.  **Hardware**: Connect a secondary monitor via HDMI/USB.
+2.  **Launch**: Within the POS interface, click the **Launch Display Window** button.
+3.  **Position**: Drag the window to the secondary screen and maximize it to fill the display.
 
 ---
 
