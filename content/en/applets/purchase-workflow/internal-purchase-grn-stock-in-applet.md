@@ -1,306 +1,403 @@
-﻿---
+---
 title: "Purchase GRN Stock In (Internal) Applet"
-description: "Goods Received Note (GRN) management for processing stock-in operations linked to internal purchase transactions"
+description: "Record and control goods receipt for internal purchasing with stock-in posting, line-level verification, delivery branch handling, posting status controls, and full audit traceability."
 tags:
+- purchase-workflow
 - grn
 - goods-received-note
 - stock-in
-- purchase-receiving
-- inventory-management
 - warehouse-operations
+- inventory-management
+weight: 19
+date: 2026-05-06
+lastmod: 2026-05-06
+draft: false
 ---
 
 ## Purpose and Overview
 
-The **Purchase GRN Stock In (Internal) Applet** manages the creation and processing of Goods Received Notes (GRN) for internal purchase transactions. A GRN is the document that records and confirms the physical receipt of goods into a warehouse, linking the received stock to the originating purchase order.
+The **Purchase GRN Stock In (Internal) Applet** is where your team records the **physical receipt of goods** and posts those goods into stock. It is the control point between what purchasing expected, what the warehouse actually received, and what finance later matches for payment.
 
 {{< callout type="info" >}}
-**Core Concept**: A GRN is your proof that goods have arrived at the warehouse. It connects a purchase transaction to the actual physical stock received, ensuring inventory records and supplier accounts stay accurate.
+**Core Concept**: This applet links **what was ordered** (purchase flow), **what arrived** (GRN line items, serial/batch/bin detail), and **what gets posted** (stock increase, branch/location allocation, and downstream invoice matching).
 {{< /callout >}}
 
-### Who Benefits from This Applet?
+A GRN (Goods Received Note) is not just a receipt log. It is the operational document used by warehouse staff to confirm quantity, delivery site, item controls, and posting status before downstream billing and three-way matching.
 
-**Warehouse / Receiving Staff:**
-- Record goods received from suppliers accurately
-- Verify received quantities against purchase order quantities
-- Specify delivery branch and location for multi-location operations
-- Generate receiving documentation
+## Document Status Reference {#document-status-reference}
 
-**Purchasing Teams:**
-- Track fulfillment status of purchase orders
-- Monitor supplier delivery performance
-- Link GRN records to purchase invoices for three-way matching
+| Posting Status | Meaning | What you can do |
+|----------------|---------|-----------------|
+| **DRAFT** | Work in progress | **SAVE**, edit header and lines, add serial/batch/bin details, add remarks, discard if incorrect |
+| **FINAL** | Posted / locked | **VIEW**, **PRINT/EXPORT**, **VOID** (when allowed), proceed with invoice matching |
+| **VOID** | Reversed posted document | View for audit and traceability; stock and financial logic follow reversal workflow |
+| **DISCARDED** | Draft cancelled before posting | View history only; create a new GRN if receipt still applies |
 
-**Inventory Managers:**
-- Monitor real-time stock-in movements
-- View line-item level receiving history across all transactions
-- Reconcile physical receipts with expected deliveries
+{{< callout type="warning" >}}
+After **FINAL**, the GRN is normally locked for structural edits. In most setups, header and line-item quantity fields are read-only. If a posted GRN is wrong, standard correction is **VOID** (if allowed) and recreate with correct receipt details.
+{{< /callout >}}
 
-**Finance Teams:**
-- Enable three-way matching (PO â†’ GRN â†’ Invoice)
-- Track supplier credit terms and foreign exchange rates
-- Maintain complete audit trail for goods received
-- Support multi-currency purchasing
+{{< callout type="info" >}}
+**What FINAL does in practice**: the document becomes the official stock-in record for the delivery branch and location. Warehouse users should expect the inventory quantity to increase immediately after posting, while purchasing and finance can use the same document for receipt confirmation and invoice matching.
+{{< /callout >}}
 
-### What Problems Does This Solve?
+---
 
-**Traditional Goods Receiving Challenges:**
-- Manual stock-in records leading to inventory inaccuracies
-- No systematic way to verify what was ordered vs. what was received
-- Poor reconciliation between purchasing, warehouse, and finance
-- Forex rate discrepancies on international purchases
-- No paper trail for goods entering the warehouse
+## Before You Start
 
-**The GRN Stock In Solution:**
-- **Automated stock addition** â€” Stock levels update automatically when a GRN is finalized
-- **Purchase linkage** â€” Every GRN ties back to the originating purchase transaction
-- **Multi-currency support** â€” Handle forex rates and base currency conversion
-- **Delivery branch tracking** â€” Record goods received at a different branch than the ordering branch
-- **Custom status workflows** â€” Define custom status fields to track receiving stages
-- **Printable formats** â€” Generate professional GRN documents for suppliers and internal records
+- Confirm the related purchase transaction exists or that you have the supplier delivery reference that will be used on the GRN.
+- Confirm the receiving **Branch** and **Delivery Location** where stock should be posted.
+- Prepare delivery evidence: supplier document number, delivery date, and received quantities.
+- If items require tracking, prepare **serial numbers**, **batch numbers**, and **bin locations** before you start.
+- Confirm currency and forex handling for non-base-currency purchases.
+- Verify user permission for create, final, void, and discard actions.
+
+{{< callout type="info" >}}
+**Delivery Branch vs Branch**: use **Branch** for the organizational branch that owns the document and **Delivery Branch** for the physical site where stock is received. Example: Branch = HQ Purchasing, Delivery Branch = KL Warehouse.
+{{< /callout >}}
+
+---
+
+## Glossary {#glossary}
+
+| Term | Meaning in this guide |
+|------|------------------------|
+| **GRN** | Goods Received Note document confirming goods arrival. |
+| **Stock In** | Inventory increase posted from finalized GRN lines. |
+| **DRAFT** | Editable pre-posting state. |
+| **FINAL** | Posted state used for downstream matching and control. |
+| **VOID** | Reversal state for previously finalized GRN. |
+| **DISCARDED** | Cancelled draft, not posted. |
+| **Delivery Branch** | Branch where goods physically arrive, which may differ from purchasing branch. |
+| **Delivery Location** | Specific receiving location/warehouse for stock posting. |
+| **Serial Number** | Unique identifier tracked per unit. |
+| **Batch Number** | Lot grouping identifier for batch-controlled items. |
+| **Bin Number** | Storage bin/rack location inside warehouse. |
+| **Three-way Matching** | Matching Purchase Order, GRN, and Purchase Invoice before payment. |
+
+---
 
 ## Key Features Overview
 
-{{< cards >}}
-  {{< card title="GRN Stock In" subtitle="Create and manage Goods Received Notes for purchase fulfillment" link="#grn-stock-in" >}}
+### Who Benefits from This Applet?
 
-  {{< card title="Line Items" subtitle="View all GRN line items across transactions" link="#line-items" >}}
+**Warehouse / receiving teams:**
+- Record actual quantity received and receiving location.
+- Capture serial, batch, and bin detail at line level.
+- Prevent posting errors with controlled DRAFT to FINAL workflow.
 
-  {{< card title="Settings" subtitle="Configure defaults, branch settings, custom statuses, and print formats" link="#configuration--settings" >}}
+**Purchasing teams:**
+- Monitor supplier fulfillment and partial deliveries.
+- Compare ordered vs received quantity quickly.
+- Keep clean document trail for supplier follow-up.
 
-  {{< card title="Personalization" subtitle="Set your personal default preferences" link="#personalization" >}}
-{{< /cards >}}
+**Inventory control teams:**
+- Ensure stock-in is posted to correct branch/location.
+- Maintain line-level movement history via listing and line-items workspace.
+- Track complex item controls (serial/batch/bin).
+
+**Finance teams:**
+- Use GRN as receipt proof for three-way matching.
+- Control posting status before invoice settlement.
+- Audit status history (DRAFT, FINAL, VOID, DISCARDED).
+
+**Administrators:**
+- Configure field visibility and defaults.
+- Control branch behavior, printable formats, and custom statuses.
+- Manage permission matrices for posting actions.
+
+### What Problems Does This Solve?
+
+Without a controlled GRN process, receiving teams often update stock based on informal notes, causing quantity mismatches, posting delays, and invoice disputes.
+
+This applet solves that by providing:
+
+- **Controlled stock posting** from DRAFT to FINAL.
+- **Line-level receipt verification** including serial/batch/bin support.
+- **Branch/location-accurate stock in** for multi-site operations.
+- **Status-controlled corrections** via discard/void workflows.
+- **Audit-ready document history** for operations and finance.
 
 ---
 
 ## Key Concepts
 
-### GRN Stock In Lifecycle
+### GRN as Receiving Control Point
 
-```
-Purchase Order Placed â†’ Goods Arrive â†’ GRN Created â†’ Items Verified â†’ GRN Finalized â†’ Stock Added
-          â”‚                  â”‚              â”‚               â”‚               â”‚               â”‚
-          â”‚                  â”‚              â”‚               â”‚               â”‚               â””â”€â”€ Inventory updated
-          â”‚                  â”‚              â”‚               â”‚               â””â”€â”€ Document locked
-          â”‚                  â”‚              â”‚               â””â”€â”€ Qty checked vs PO
-          â”‚                  â”‚              â””â”€â”€ GRN header + lines created
-          â”‚                  â””â”€â”€ Physical delivery received
-          â””â”€â”€ Originating purchase transaction
-```
+| Business Question | Answered by |
+|-------------------|-------------|
+| What was expected? | Upstream purchase document (PO/DO context) |
+| What physically arrived? | GRN line items and tracked quantities |
+| Where did stock go? | Delivery Branch and Delivery Location |
+| Is receipt posted yet? | Posting Status (DRAFT vs FINAL) |
+| Can this be corrected? | Discard (draft) or Void (posted) workflow |
 
-### Three-Way Matching
+### Three-Way Matching Role
 
-The GRN is a critical component of **three-way matching** in the procure-to-pay process:
+A GRN is the receipt leg in **PO -> GRN -> Purchase Invoice** control. Finance checks the PO for what was ordered, the GRN for what actually arrived, and the invoice for what the supplier is billing. If quantity or price differs, the mismatch is investigated before payment.
 
-| Step | Document | What It Proves |
-|------|----------|---------------|
-| **1** | **Purchase Order (PO)** | What was ordered and at what price |
-| **2** | **GRN** | What was physically received |
-| **3** | **Purchase Invoice** | What the supplier is billing |
+### Worked Example
 
-{{< callout type="tip" >}}
-**Why Three-Way Matching Matters**: Before paying a supplier, finance verifies that the invoice matches both the PO (price) and the GRN (quantity). This prevents overpayment, duplicate billing, and payment for goods never received.
-{{< /callout >}}
+Example receipt scenario:
 
-### Key Terms
+- Supplier: **ABC Trading Sdn Bhd**
+- Branch: **HQ Purchasing**
+- Delivery Branch: **KL Warehouse**
+- Delivery Location: **Receiving Bay 2**
+- Supplier document: **DO-45821**
+- Received item: **FG-1001 Finished Goods**
+- Quantity received: **12 units**
+- Tracking: **Batch B2405** and **Serial SN-001 to SN-012**
 
-| Term | Definition | Example |
-|------|------------|---------|
-| **GRN** | Goods Received Note â€” document confirming physical receipt of goods | GRN-2024-005678 |
-| **Stock In** | Physical addition of inventory into the warehouse | 100 units of SKU-B002 received |
-| **Delivery Branch** | The branch where goods are physically received (may differ from ordering branch) | Penang Warehouse |
-| **Credit Terms** | Supplier payment terms | Net 60, Net 30 |
-| **Forex Rate** | Currency exchange rate for international purchases | 1 USD = 4.47 MYR |
-| **Custom Status** | User-defined status fields for tracking receiving workflows | Quality Check, Shelf Allocation |
+In this example, the warehouse clerk opens the GRN, confirms the delivery site, enters 12 units, captures the batch and serial data, and then finalizes the document so the 12 units become visible in stock at KL Warehouse.
 
 ---
 
 ## Quick Start Guide
 
-### For Receiving Staff: Process a Goods Receipt
+### Step 1: Open Listing
+Go to **Internal Purchase GRN Stock In** from the sidebar.
 
-**Goal:** Create a GRN to record goods received from a supplier
+### Step 2: Create New GRN
+Click **Create** to open a new draft document.
 
-1. **Navigate**: Go to **Purchase GRN Stock In (Internal)** from the sidebar
-2. **Create New**: Click **"+"** to create a new GRN
-3. **Fill Header Details**:
-   - Select **Company** and **Branch**
-   - Select **Location** (receiving warehouse)
-   - Select **Purchaser** (buyer responsible)
-   - Set **Transaction Date**
-   - Set **Delivery Branch** and **Delivery Location** (if different from ordering branch)
-   - Select **Currency** and verify **Currency Rate**
-   - Add **Reference** number (e.g., purchase order number)
-4. **Add Line Items**:
-   - Select items received
-   - Enter received quantities
-   - Verify against purchase order
-5. **Finalize**: Submit the GRN to trigger stock-in
+### Step 3: Set the header correctly
+Choose the company and branch that own the document, then set the transaction date to the date the goods physically arrived. Fill the supplier reference or delivery note number so the warehouse team can trace the receipt later.
 
-### For Purchasing Managers: Track Receipts
+### Step 4: Confirm where stock should post
+Set **Delivery Branch** and **Delivery Location** before you enter quantities. If the delivery branch is wrong, the stock will post into the wrong site and your warehouse balances will not match.
 
-**Goal:** Monitor goods received across all purchase orders
+### Step 5: Add the received lines
+For each item on the delivery note, enter the actual received quantity. If the supplier shipped 12 boxes, enter 12 boxes, not the ordered amount if they are different.
 
-1. **Navigate**: Go to **Line Items** from the sidebar
-2. **Filter**: Use column filters to find items by supplier, date, or branch
-3. **Verify**: Compare received quantities against purchase orders
-4. **Export**: Generate reports for analysis
+### Step 6: Complete item controls
+If the item is controlled, fill the correct serial numbers, batch number, or bin numbers before saving. For example, if you received 12 serialized items, the serial count should match the line quantity.
 
----
+### Step 7: Check quantity and control totals
+Review the line total, item count, and control count before saving. If the line says 12 units, the serial, batch, or bin detail must resolve to the same 12 units.
 
-## GRN Stock In
+### Step 8: Save the draft
+Click **SAVE** if you still need to validate the delivery note or wait for supervisor review.
 
-The GRN Stock In listing is the main entry point for viewing and managing all Goods Received Notes. Each row represents a GRN document.
+### Step 9: Finalize the GRN
+Click **FINAL** only after the received quantity, branch/location, and item control details are correct. Posting will add the stock into the chosen receiving location.
 
-### Listing View
-
-The listing displays all GRN records with key columns including GRN number, transaction date, branch, location, supplier, currency, and status. You can search, filter, and sort by any column.
-
-### Create a GRN
-
-Click the **"+"** button to create a new GRN. The create form includes:
-
-**Main Details:**
-
-| Field | Description | Required |
-|-------|-------------|----------|
-| **Doc Description** | Description for the GRN document | No |
-| **Company** | The company entity receiving goods | Yes |
-| **Branch** | Branch that placed the purchase order | Yes |
-| **Location** | Warehouse location for stock-in | Yes |
-| **Purchaser** | Buyer responsible for the purchase | No |
-| **Transaction Date** | Date goods were received | Yes |
-| **Credit Terms** | Supplier payment terms | No |
-| **Credit Limit** | Supplier credit limit | No |
-| **Reference** | External reference (PO number, DO number) | No |
-| **Remarks** | Internal notes | No |
-| **External Remarks** | Remarks visible on external documents | No |
-| **Permit No** | Import permit number if applicable | No |
-| **Base Currency** | Organization's base currency | Auto |
-| **Currency** | Transaction currency | Yes |
-| **Currency Rate** | Exchange rate (base to transaction currency) | Auto/Manual |
-| **Tracking ID** | Shipment tracking reference | No |
-| **Delivery Branch** | Branch where goods are delivered (if different from ordering branch) | No |
-| **Delivery Location** | Specific delivery location within the delivery branch | No |
-
-**Additional Sections:**
-- **Department Details** â€” Segment, Dimension, Profit Center, Project
-- **Billing Info & Address** â€” Supplier billing details including contact person, email, phone, and full address
-- **Shipping Info & Address** â€” Delivery recipient details including contact person, email, phone, and full address
-- **Custom Document References** â€” Up to 5 custom reference fields (xtn_doc_ref_1 through xtn_doc_ref_5)
-- **Custom Status Fields** â€” Up to 5 configurable status fields for workflow tracking
-
-### View / Edit a GRN
-
-Double-click any row in the listing to open the full GRN record. You can view all header details, line items, attachments, and related documents.
+### Step 10: Hand off for invoice matching
+After FINAL, send the GRN to purchasing or finance so they can use it for invoice matching and receipt verification.
 
 ---
 
-## Line Items
+## Detailed Walkthrough
 
-The Line Items page provides a flattened, cross-transaction view of all individual items across all GRN documents. This is useful for:
+### GRN Listing
 
-- **Tracking specific products** â€” Find every receipt of a particular item across all GRNs
-- **Supplier analysis** â€” Review what has been received from specific suppliers
-- **Quantity verification** â€” Cross-reference received quantities against purchase orders
-- **Audit purposes** â€” Trace individual line items back to their parent GRN documents
-- **Filtering and search** â€” Filter by item code, description, branch, supplier, or date range
+The listing is your operational queue:
+- Search and filter by supplier, date range, status, and branch.
+- Open a row to view/edit document details.
+- Perform batch actions where enabled (for example finalizing selected drafts).
+- Use **VOID** only on rows in **FINAL** status.
+- Use **DISCARD** only on rows in **DRAFT** status.
+
+Use the listing when a receiving dock needs to quickly find the right document, confirm status, or check whether a receipt was already posted.
+
+### Main/Header Information
+
+Common header fields include:
+
+| Field | What to enter | Why it matters |
+|------|---------------|-----------------|
+| **Company** | The legal entity receiving the goods | Ensures stock and audit ownership are correct |
+| **Branch** | The organizational branch tied to the document | Used for document ownership and permissions |
+| **Location** | The receiving warehouse or storage area | Helps route the receipt to the right inventory area |
+| **Transaction Date** | The date the goods physically arrived | Used for posting and reporting |
+| **Purchaser** | The buyer or procurement owner | Helps purchasing trace the receipt back to the request |
+| **Credit Terms** | Supplier payment timing if the field is enabled | Used later for invoice settlement |
+| **Credit Limit** | Supplier credit cap if your process uses it | Helps finance control exposure |
+| **Reference** | PO number, delivery note number, or internal reference | Ties the GRN back to the upstream document |
+| **Remarks** | Internal notes for your team | Useful for receiving issues or special handling |
+| **External Remarks** | Notes that should appear externally | Use only if the supplier or another team needs to read it |
+| **Currency / Base Currency / Currency Rate** | Select the transaction currency and rate if non-base currency applies | Makes amounts consistent for finance |
+| **Delivery Branch** | The physical branch where goods are received | Determines where stock is posted |
+| **Delivery Location** | The precise receiving location within the branch | Avoids stock going into the wrong warehouse |
+
+**Important distinction**: if HQ created the order but KL Warehouse receives the goods, keep **Branch = HQ** and **Delivery Branch = KL Warehouse**.
+
+### Line Items Workspace
+
+The applet includes a dedicated **Line Items** menu for cross-document line visibility. Use it to review receipt quantity patterns by item and troubleshoot quantity mismatch without opening each header one by one.
+
+### Item Details tab
+
+Use **Item Details** for the basic receipt line. This is where you verify the item, the quantity received, and the main receipt data before control tabs are filled. If the quantity is wrong here, the rest of the document will be wrong too.
+
+### Serial Number tab
+
+Use **Serial Number** only for serial-controlled items. Add each serial number that was physically received. The tab is complete when the serial count matches the line quantity.
+
+### Batch Number tab
+
+Use **Batch Number** for lot-controlled items. Enter the batch number and quantity that belongs to the lot. This is usually required when traceability or expiry tracking matters.
+
+### Bin Number tab
+
+Use **Bin Number** when the warehouse stores stock in specific bins or racks. Enter the receiving split by bin so the system can place the quantity in the correct storage location.
+
+### Costing Details tab
+
+Use **Costing Details** when your business needs receipt-level costing, landed cost context, or similar finance-controlled detail. If your organization does not use costing detail, this section may remain minimal.
+
+### Pricing Details tab
+
+Use **Pricing Details** to confirm the item price context. The template shows fields such as UOM and purchase price values. A correct entry means the unit price aligns with the supplier documentation and any tax-inclusive fields are consistent.
+
+### Issue Link tab
+
+Use **Issue Link** when the receipt needs to be tied back to an issue, investigation, or internal tracking thread. It is most useful when a receipt has a discrepancy that must be reviewed later.
+
+### Detail rule
+
+The line-item area is complete only when the receipt quantity, any required serial/batch/bin data, and any required pricing/costing fields all agree with the supplier note and the actual goods in hand.
+
+### Posting Actions and Rules
+
+- **FINAL** posts stock movement and transitions status to FINAL. In practice, the stock becomes available in the delivery branch/location immediately after posting, and the GRN becomes the official receiving record for downstream matching.
+- **VOID** is typically allowed only for FINAL documents. If a void is blocked, it usually means the document is already linked to another document or a downstream process has used it.
+- **DISCARD** is typically allowed only for DRAFT documents. Use it when the draft was created in error or should not be posted.
+
+**Void dependency check**: if VOID is blocked, check whether the GRN is already linked to an invoice, knock-off, or another dependent document. In that case, the receiving or finance team must clear or reverse the linked document first.
+
+### Settings and Personalization
+
+System settings available in applet navigation include:
+
+| Setting | What it changes | Who should manage it |
+|---------|-----------------|----------------------|
+| **Application / Field Settings** | Field visibility and workflow behavior | Administrator / applet owner |
+| **Default Selection** | Pre-filled branch and location defaults | Administrator or power user |
+| **Printable Format Settings** | GRN print layout and report format | Administrator / reporting owner |
+| **Branch Settings** | Branch-specific receiving behavior | Administrator / operations lead |
+| **Custom Status** | Extra workflow statuses for receiving stages | Administrator / process owner |
+
+User personalization supports personal default selection to speed up repeated receiving work.
 
 ---
 
-## Configuration & Settings
+## Finalize / Save / Reset
 
-The Settings page provides access to system configuration options for the GRN Stock In applet.
+### SAVE
 
-### Application Settings
+Use SAVE during receiving to keep the document in DRAFT while validation is in progress. This is the right action when the goods are counted but the supervisor has not yet approved final posting.
 
-Configure field-level visibility, access controls, and feature toggles for various modules within the applet. Control which fields are required, optional, or hidden.
+### FINAL
 
-### Default Selection
+Use FINAL when quantity, location, and item controls are correct. FINAL:
 
-Set the default **Branch** and **Location** values that will be pre-filled when creating new GRN records. This saves time for users who primarily receive goods at a single location.
+- Posts stock into the selected delivery location.
+- Locks the document for normal edits.
+- Makes the GRN available to purchasing and finance for invoice matching.
+- Starts the official inventory/audit record for that receipt.
 
-### Printable Format Settings
+### VOID
 
-Manage the available print templates for GRN documents. Configure which Jasper report formats are available for generating printable GRN documents for supplier acknowledgment and internal records.
+Use VOID to reverse a posted GRN (subject to permission and dependency checks). If blocked, look for invoice links, knock-off links, or other dependent documents and clear those first with the relevant team.
 
-### Branch Settings
+### DISCARD
 
-Configure branch-specific settings that control behavior per branch. This is particularly useful in multi-branch operations where different branches may have different receiving workflows or requirements.
+Use DISCARD for incorrect drafts that should not be posted. A discarded document is not a stock movement and is normally used for abandoned or mistyped drafts.
 
-### Custom Status
+### Reset behavior
 
-Define custom status fields that can be used to track additional workflow stages beyond the standard GRN lifecycle. For example:
-- **Quality Inspection** â€” Pending / Passed / Failed
-- **Shelf Allocation** â€” Unassigned / Assigned / Stocked
-
-Custom statuses allow you to extend the applet's tracking capabilities to match your organization's receiving processes.
-
-**Summary of Settings:**
-
-| Setting | Purpose |
-|---------|---------|
-| Application Settings | Toggle field visibility and feature access |
-| Default Selection | Pre-fill Branch and Location for new records |
-| Printable Format Settings | Configure print templates for GRN documents |
-| Branch Settings | Branch-specific receiving configurations |
-| Custom Status | Define custom workflow status fields |
-
-**Server Side Permissions (accessible from Settings):**
-
-| Setting | Purpose |
-|---------|---------|
-| Permission Wizard | Guided permission setup |
-| Permission Set | Define permission groups |
-| Client Side Permission | Configure UI-level permissions |
-| Role Pricing Scheme Link | Link pricing schemes to user roles |
-| User Permission | Assign permissions to specific users |
-| Team Permission | Assign permissions to teams |
-| Role Permission | Assign permissions by role |
-
-**Developer Tools (accessible from Settings):**
-
-| Setting | Purpose |
-|---------|---------|
-| Release Notes | View applet version history |
-| Applet Log | Check applet activity and error logs |
+If the screen provides **RESET**, it should return the current form to the last saved state. Use this when you want to abandon unsaved edits without changing posting status.
 
 ---
 
-## Personalization
+## Audit Trail
 
-The Personalization section lets individual users set their own preferences that override the system-wide defaults.
+The applet preserves operational traceability through document metadata and status events:
+- Created By / Created Date
+- Updated By / Updated Date
+- Posting Status transitions
+- Document references and linked records
+- Line-level changes through save/final flows
 
-### Default Selection
+Use this during supplier disputes, stock variance review, and internal audit.
 
-Set your personal default **Branch** and **Location**. When you create a new GRN, these values will be pre-filled instead of the system defaults.
+The audit trail is also the place to verify who posted the GRN, who last changed it, and whether a posted document was later voided or discarded.
+
+## Troubleshooting
+
+| Problem | What it usually means | What to do |
+|---------|-----------------------|------------|
+| **Create is disabled** | Missing permission or wrong user role | Ask the administrator to confirm create access |
+| **FINAL is blocked** | Required fields, quantities, or control data are incomplete | Recheck header, line quantity, serial/batch/bin input, and branch/location |
+| **VOID is unavailable** | The row is not FINAL or a dependent document already exists | Confirm status first, then clear invoice/knock-off dependencies |
+| **Serial/batch/bin counts do not match** | Item control data does not match line quantity | Return to the item-control tab and correct the mismatch |
+| **Stock posted to wrong site** | Branch vs Delivery Branch was set incorrectly | Correct the document if still draft; otherwise reverse and recreate |
+| **Invoice does not match GRN** | Receipt quantity differs from billing quantity | Finance should investigate the variance before payment |
 
 ---
 
 ## FAQ
 
-**Q: What is the difference between Branch and Delivery Branch?**
-A: **Branch** is the organizational branch that placed the purchase order. **Delivery Branch** is where the goods are physically received. These may differ when a central purchasing team orders on behalf of a regional warehouse.
+**Q: What is the difference between Purchase GRN Stock In and Purchase GIN?**
 
-**Q: Does finalizing a GRN automatically increase stock?**
-A: Yes. Once a GRN is finalized, the system automatically adds the received quantities to the inventory at the specified delivery branch and location.
+A: **GRN Stock In** records goods coming **into** inventory from suppliers. **Purchase GIN** is used for goods moving **out** in relevant purchase-side issue scenarios (for example returns/issue flows). GRN increases stock, GIN typically reduces or reallocates stock depending on process.
 
-**Q: How do I handle partial deliveries?**
-A: Create a GRN for the quantity actually received. The remaining items can be recorded in a subsequent GRN when they arrive. Each GRN document records what was physically received at a specific point in time.
+---
 
-**Q: Can I receive goods in a different currency?**
-A: Yes. The applet supports multi-currency transactions. Select the supplier's currency and set the exchange rate. The system will convert to your base currency for accounting purposes.
+**Q: When should I use DISCARD vs VOID?**
 
-**Q: What are the Custom Status fields used for?**
-A: Custom Status fields allow you to track additional workflow stages specific to your organization. For example, you might add statuses for "Quality Check," "Shelf Allocation," or "Manager Approval." Configure these in **Settings > Custom Status**.
+A: Use **DISCARD** for unposted drafts. Use **VOID** for already finalized documents that require reversal.
 
-**Q: How do I link a GRN to a Purchase Invoice?**
-A: The GRN is typically linked via the Reference field or through the purchase document flow (Purchase Order â†’ GRN â†’ Purchase Invoice). This enables three-way matching for payment verification.
+---
 
-**Q: Can I reverse or cancel a finalized GRN?**
-A: Finalized GRNs cannot be directly edited. You would need to create a purchase return or adjustment document to reverse the stock-in movement.
+**Q: Why can VOID be disabled for my selected rows?**
 
-**Q: What are the extra document reference fields (xtn_doc_ref) for?**
-A: These are five flexible reference fields that can be used to store additional document references specific to your business process, such as customs declaration numbers, container numbers, or logistics tracking IDs.
+A: VOID is generally available only when all selected rows are in **FINAL** status and have no blocking dependency conditions.
 
+---
 
+**Q: What if supplier delivered partially?**
+
+A: Record the quantity actually received on the GRN now, finalize that receipt, and create another GRN when the remaining goods arrive. Do not post the expected quantity if the supplier delivered less than that.
+
+---
+
+**Q: Do I need serial or batch input for every item?**
+
+A: Only for items configured with serial or batch control. Non-controlled items can be posted without those fields, but the line quantity still needs to match the physical count.
+
+---
+
+**Q: Can delivery branch be different from purchasing branch?**
+
+A: Yes. Use Delivery Branch/Location to ensure stock posts to the physical receiving site. Example: Branch = HQ Purchasing, Delivery Branch = KL Warehouse, so the document stays owned by HQ but stock lands in KL.
+
+---
+
+**Q: Is GRN required before purchase invoice posting?**
+
+A: In most controlled purchasing workflows, yes. GRN is the receipt evidence for three-way matching, and finance uses it to confirm that the invoice only bills what was actually received.
+
+---
+
+**Q: What does three-way matching actually mean for me?**
+
+A: It means finance checks three documents together: the purchase order for what was ordered, the GRN for what actually arrived, and the purchase invoice for what the supplier wants paid. If the quantities or amounts do not match, the invoice should be held until the difference is resolved.
+
+---
+
+**Q: What should I do if VOID is blocked because of a linked document?**
+
+A: Identify the linked document first. If an invoice or other dependent document already used the GRN, finance or purchasing usually has to reverse that linked document before the GRN can be voided. If the blocking document is another warehouse process, the warehouse lead should clear it first.
+
+---
+
+## Related Applets
+
+- **[Internal Purchase Order Applet](/en/applets/purchase-workflow/internal-purchase-order-applet/)** - Upstream purchasing commitment that GRN fulfills.
+- **[Supplier Delivery Order Applet](/en/applets/purchase-workflow/supplier-delivery-order-applet/)** - Supplier-side delivery context often referenced during receiving.
+- **[Internal Purchase Invoice (No Stock In) Applet](/en/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/)** - Downstream billing and matching against receipt evidence.
+- **[Internal Purchase Debit Note Applet](/en/applets/purchase-workflow/internal-purchase-debit-note-applet/)** - Adjustment path for supplier-side claim/financial correction scenarios.
+- **[Internal Purchase Return Applet](/en/applets/purchase-workflow/internal-purchase-return-applet/)** - Return workflow when received goods are rejected or sent back.
+- **[Purchase GIN (Internal) Applet](/en/applets/purchase-workflow/internal-purchase-gin-applet/)** - Purchase-side goods issue companion flow.
