@@ -147,6 +147,9 @@ There are two ways to create a GRN depending on your workflow:
 
 **Path A: Manual Entry (No Upstream Reference)**
 Use this when you are receiving goods without a linked Purchase Order in the system.
+
+![Path A: Manual Entry](/images/internal-purchase-grn-stock-in-applet/path-a.png)
+
 1. **Open Listing**: Go to **Internal Purchase GRN Stock In** from the sidebar.
 2. **Create New GRN**: Click **Create** to open a new draft document.
 3. **Fill Main Details**: On the **Main Details** tab, choose the company and branch that own the document, set the transaction date, and fill the supplier reference or delivery note number.
@@ -155,6 +158,9 @@ Use this when you are receiving goods without a linked Purchase Order in the sys
 
 **Path B: Knock-Off from Purchase Order (Auto-fill)**
 Use this when you have a PO number and want to auto-fill the receipt lines.
+
+![Path B: Knock-Off from Purchase Order](/images/internal-purchase-grn-stock-in-applet/path-b.png)
+
 1. **Open Listing**: Go to **Internal Purchase GRN Stock In** from the sidebar.
 2. **Create New GRN**: Click **Create** to open a new draft document.
 3. **Fill Main Details**: On the **Main Details** tab, fill the basic details and confirm the **Delivery Branch** and **Delivery Location**.
