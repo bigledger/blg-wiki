@@ -23,25 +23,7 @@ The **Purchase GRN Stock In (Internal) Applet** is where your team records the *
 {{< /callout >}}
 
 A GRN (Goods Received Note) is not just a receipt log. It is the operational document used by warehouse staff to confirm quantity, delivery site, item controls, and posting status before downstream billing and three-way matching.
-
-## Document Status Reference {#document-status-reference}
-
-| Posting Status | Meaning | What you can do |
-|----------------|---------|-----------------|
-| **DRAFT** | Work in progress | **SAVE**, edit header and lines, add serial/batch/bin details, add remarks, discard if incorrect |
-| **FINAL** | Posted / locked | **VIEW**, **PRINT/EXPORT**, **VOID** (when allowed), proceed with invoice matching |
-| **VOID** | Reversed posted document | View for audit and traceability; stock and financial logic follow reversal workflow |
-| **DISCARDED** | Draft cancelled before posting | View history only; create a new GRN if receipt still applies |
-
-{{< callout type="warning" >}}
-After **FINAL**, the GRN is normally locked for structural edits. In most setups, header and line-item quantity fields are read-only. If a posted GRN is wrong, standard correction is **VOID** (if allowed) and recreate with correct receipt details.
-{{< /callout >}}
-
-{{< callout type="info" >}}
-**What FINAL does in practice**: the document becomes the official stock-in record for the delivery branch and location. Warehouse users should expect the inventory quantity to increase immediately after posting, while purchasing and finance can use the same document for receipt confirmation and invoice matching.
-{{< /callout >}}
-
----
+![Internal Purchase GRN Stock In Overview](/images/internal-purchase-grn-stock-in-applet/internal-purchase-grn-stock-in.png)
 
 ## Before You Start
 
@@ -136,6 +118,10 @@ This applet solves that by providing:
 
 A GRN is the receipt leg in **PO -> GRN -> Purchase Invoice** control. Finance checks the PO for what was ordered, the GRN for what actually arrived, and the invoice for what the supplier is billing. If quantity or price differs, the mismatch is investigated before payment.
 
+### The Knock-Off (KO) Workflow
+
+Instead of typing every received item manually, the warehouse can use the **KO (Knock-Off)** tab in the Line Items workspace to pull expected lines directly from an approved **Purchase Order**, **Purchase Requisition**, or **Purchase Invoice**. This links the GRN to the upstream document, auto-fills the Item Details, and ensures the receipt quantities match the original commitment (though you can adjust them down for partial deliveries).
+
 ### Worked Example
 
 Example receipt scenario:
@@ -155,35 +141,37 @@ In this example, the warehouse clerk opens the GRN, confirms the delivery site, 
 
 ## Quick Start Guide
 
-### Step 1: Open Listing
-Go to **Internal Purchase GRN Stock In** from the sidebar.
+### Warehouse Receiver: Create GRN
 
-### Step 2: Create New GRN
-Click **Create** to open a new draft document.
+There are two ways to create a GRN depending on your workflow:
 
-### Step 3: Set the header correctly
-Choose the company and branch that own the document, then set the transaction date to the date the goods physically arrived. Fill the supplier reference or delivery note number so the warehouse team can trace the receipt later.
+**Path A: Manual Entry (No Upstream Reference)**
+Use this when you are receiving goods without a linked Purchase Order in the system.
+1. **Open Listing**: Go to **Internal Purchase GRN Stock In** from the sidebar.
+2. **Create New GRN**: Click **Create** to open a new draft document.
+3. **Fill Main Details**: On the **Main Details** tab, choose the company and branch that own the document, set the transaction date, and fill the supplier reference or delivery note number.
+4. **Confirm delivery site**: Set **Delivery Branch** and **Delivery Location** so stock posts correctly.
+5. **Add lines manually**: Go to the Line Items workspace and use the Search Item tab to add each received item and its actual quantity.
 
-### Step 4: Confirm where stock should post
-Set **Delivery Branch** and **Delivery Location** before you enter quantities. If the delivery branch is wrong, the stock will post into the wrong site and your warehouse balances will not match.
+**Path B: Knock-Off from Purchase Order (Auto-fill)**
+Use this when you have a PO number and want to auto-fill the receipt lines.
+1. **Open Listing**: Go to **Internal Purchase GRN Stock In** from the sidebar.
+2. **Create New GRN**: Click **Create** to open a new draft document.
+3. **Fill Main Details**: On the **Main Details** tab, fill the basic details and confirm the **Delivery Branch** and **Delivery Location**.
+4. **Use KO Tab**: In the Line Items workspace, go to the **KO For Purchase Order** tab (or DO/Requisition depending on your process).
+5. **Select and Knock-Off**: Search for the PO number, select the lines, and click **KNOCK OFF** to import them into your GRN.
+6. **Adjust quantities**: Review the imported lines on the Item Details tab and reduce the quantity if the supplier delivered a partial amount.
 
-### Step 5: Add the received lines
-For each item on the delivery note, enter the actual received quantity. If the supplier shipped 12 boxes, enter 12 boxes, not the ordered amount if they are different.
+**Next Steps for Both Paths:**
+7. **Complete item controls**: If items are controlled, fill the serial numbers, batch number, or bin numbers before saving.
+8. **Check totals**: Review the line total, item count, and control count.
+9. **Finalize**: Click **FINAL** only after everything is correct. Posting will add the stock into the chosen receiving location.
 
-### Step 6: Complete item controls
-If the item is controlled, fill the correct serial numbers, batch number, or bin numbers before saving. For example, if you received 12 serialized items, the serial count should match the line quantity.
+### Purchasing / Finance: After FINAL
 
-### Step 7: Check quantity and control totals
-Review the line total, item count, and control count before saving. If the line says 12 units, the serial, batch, or bin detail must resolve to the same 12 units.
-
-### Step 8: Save the draft
-Click **SAVE** if you still need to validate the delivery note or wait for supervisor review.
-
-### Step 9: Finalize the GRN
-Click **FINAL** only after the received quantity, branch/location, and item control details are correct. Posting will add the stock into the chosen receiving location.
-
-### Step 10: Hand off for invoice matching
-After FINAL, send the GRN to purchasing or finance so they can use it for invoice matching and receipt verification.
+1. **Find the GRN**: Go to the listing and filter by **FINAL** status, supplier name, or date.
+2. **Verify Receipt**: Open the document to confirm what the warehouse actually received against what was ordered.
+3. **Invoice Matching**: Use the finalized GRN as the receipt evidence when posting the Purchase Invoice.
 
 ---
 
@@ -226,9 +214,20 @@ Common header fields include:
 
 The applet includes a dedicated **Line Items** menu for cross-document line visibility. Use it to review receipt quantity patterns by item and troubleshoot quantity mismatch without opening each header one by one.
 
+You can filter this workspace by Item Code, Date Range, Supplier, or Status.
+
+**Common Use Case:** 
+Use the Line Items workspace when a finance user asks "did we receive item FG-1001 in March?" — simply filter by the item code and date range to get the answer instantly, without having to open and check dozens of individual GRN headers.
+
 ### Item Details tab
 
 Use **Item Details** for the basic receipt line. This is where you verify the item, the quantity received, and the main receipt data before control tabs are filled. If the quantity is wrong here, the rest of the document will be wrong too.
+
+Key fields include:
+- **Item Code / Name**: The specific product being received.
+- **UOM (Unit of Measure)**: How the item is packed or counted (e.g., BOX, PCS).
+- **Quantity Base**: The actual physical count received by the warehouse. Adjust this if it differs from the ordered amount.
+- **Unit Price**: The cost per unit, which defaults from the knocked-off document or item master.
 
 ### Serial Number tab
 
@@ -294,8 +293,10 @@ Use FINAL when quantity, location, and item controls are correct. FINAL:
 
 - Posts stock into the selected delivery location.
 - Locks the document for normal edits.
-- Makes the GRN available to purchasing and finance for invoice matching.
 - Starts the official inventory/audit record for that receipt.
+
+**What happens next?** 
+After FINAL, the GRN is visible in the listing with status FINAL. Purchasing and finance can search for it by supplier or date and use it for invoice matching — no separate notification is sent unless your administrator has configured a workflow trigger.
 
 ### VOID
 
@@ -329,7 +330,7 @@ The audit trail is also the place to verify who posted the GRN, who last changed
 | Problem | What it usually means | What to do |
 |---------|-----------------------|------------|
 | **Create is disabled** | Missing permission or wrong user role | Ask the administrator to confirm create access |
-| **FINAL is blocked** | Required fields, quantities, or control data are incomplete | Recheck header, line quantity, serial/batch/bin input, and branch/location |
+| **FINAL is blocked** | Required fields, quantities, or control data are incomplete | Check in this order: (1) Is Branch and Delivery Branch set? (2) Is there at least one line with a quantity greater than zero? (3) For controlled items, does serial/batch/bin count match line quantity? Fix the first failure found and try again. |
 | **VOID is unavailable** | The row is not FINAL or a dependent document already exists | Confirm status first, then clear invoice/knock-off dependencies |
 | **Serial/batch/bin counts do not match** | Item control data does not match line quantity | Return to the item-control tab and correct the mismatch |
 | **Stock posted to wrong site** | Branch vs Delivery Branch was set incorrectly | Correct the document if still draft; otherwise reverse and recreate |
@@ -390,6 +391,18 @@ A: It means finance checks three documents together: the purchase order for what
 **Q: What should I do if VOID is blocked because of a linked document?**
 
 A: Identify the linked document first. If an invoice or other dependent document already used the GRN, finance or purchasing usually has to reverse that linked document before the GRN can be voided. If the blocking document is another warehouse process, the warehouse lead should clear it first.
+
+---
+
+**Q: What is the minimum I must complete before CREATE is enabled?**
+
+A: You must select at least a Company and Branch. Until these organizational ownership fields are set, you cannot create or save a document.
+
+---
+
+**Q: Can I receive against a Purchase Order automatically, or do I have to type everything manually?**
+
+A: You can receive automatically. Use the **KO For Purchase Order** tab in the Line Items workspace to pull the ordered items and quantities directly into your GRN, then adjust the quantities down if you only received a partial delivery.
 
 ---
 
