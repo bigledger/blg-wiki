@@ -22,21 +22,17 @@ The **OCR Cash Bill Applet** helps teams digitize physical receipts and process 
 **Core Concept**: Convert receipt images into structured documents, then move them through **review**, **status control**, **line-item mapping**, and **final posting lock**.
 {{< /callout >}}
 
-## Who Benefits and What Problems It Solves
-
 ### Who Benefits from This Applet?
 
-**Operations / Shared Service Teams:**
+**Operations / Shared Service Teams (including Finance Reviewers / AP):**
 - Upload receipt images quickly
 - Track processing progress from listing views
 - Reduce repetitive manual data entry
 - Review raw OCR output beside the uploaded image
-
-**Finance Reviewers / AP Teams:**
 - Validate extracted document details before posting
 - Control process status consistently (`PENDING_REVIEW`, `DUPLICATE`, `REJECTED`)
 - Apply standardized rejection reasons
-- Finalize approved records with posting lock
+- Finalize review-complete records with posting lock
 
 **Master Data Admins:**
 - Maintain OCR Company master records
@@ -117,13 +113,22 @@ Receipt Image Upload
   -> OCR Scanned Doc Report Export
 ```
 
-### Module Visibility (Routed vs Menu)
+### Sidebar Menu and Route Reference
 
-The applet route configuration includes additional modules beyond the default sidebar menu:
-- **Primary sidebar modules**: Scanned Receipt, OCR Generic Doc, OCR Generic Doc Line Item, OCR Company, OCR Item, OCR Scanned Doc Report
-- **Routed but not shown by default in menu**: OCR Branch (`/ocr-branch`) and Inventory Item listing (`/inv-item`)
+The applet route configuration includes additional modules beyond the default sidebar menu.
 
-This is useful when troubleshooting environment differences between role-based menu visibility and direct route access.
+| Navigation Group | Menu Label | Route | Typical Owner | What It Is Used For |
+|---|---|---|---|---|
+| Main Sidebar | Scanned Receipt | `/scanned-receipt` | Operations / Shared Service | Upload receipts, choose execution strategy, and monitor receipt-level process status |
+| Main Sidebar | OCR Generic Doc | `/ocr-generic-doc` | Operations / Finance Reviewer | Validate header OCR output, set process status, and trigger FINAL |
+| Main Sidebar | OCR Generic Doc Line Item | `/ocr-generic-doc-line-item` | Finance Reviewer | Refine line-level details and map to financial items |
+| Main Sidebar | OCR Company | `/ocr-company` | Master Data Admin | Maintain company references used by OCR documents |
+| Main Sidebar | OCR Item | `/ocr-item` | Master Data Admin | Maintain OCR item references for cleaner line mapping |
+| Main Sidebar | OCR Scanned Doc Report | `/ocr-report` | Reporting / Compliance | Generate and download report files |
+| Routed (Hidden by Default) | OCR Branch | `/ocr-branch` | Admin / Data Setup | Branch-level reference maintenance (route exists but menu may be hidden by role/menu config) |
+| Routed (Hidden by Default) | Inventory Item Listing | `/inv-item` | Admin / Data Setup | Inventory item lookup route (available by route, not always shown in menu) |
+
+Use this reference when troubleshooting differences between role-based menu visibility and direct route access.
 
 ### Status Model You Should Know
 
@@ -148,11 +153,33 @@ When a document is rejected, use one of the configured reasons:
 - Rejected - Exceeded Monthly Submission Limit (Max. 7 receipts per month)
 - Rejected - More than 1 receipt
 
+### How Rejection Works (and When to Use Each Reason)
+
+Rejection is a process-status decision. In the OCR Generic Doc edit flow:
+1. Set **Process Status** to `REJECTED`
+2. Select **Reason to Reject**
+3. Click **UPDATE** to persist the decision and audit trail
+
+Use these practical scenarios:
+
+| Rejection Reason | Use This When | Example Scenario |
+|---|---|---|
+| Rejected - Duplicated receipt | The same receipt was already submitted/processed | User accidentally uploads the same receipt image twice |
+| Rejected - Incomplete details | Key information is missing or unreadable | Amount/date/merchant text is cut off or too blurred |
+| Rejected - Non-related receipt | Receipt is not valid for this workflow/policy | Uploaded document is not a cash bill relevant to claim process |
+| Rejected - Outdated receipt | Receipt falls outside allowed submission window | Receipt date is older than policy limit |
+| Rejected - Exceeded Monthly Submission Limit (Max. 7 receipts per month) | User has crossed monthly receipt cap | 8th receipt is submitted in the same month |
+| Rejected - More than 1 receipt | Single upload contains multiple receipts where policy expects one | One photo contains two separate receipts |
+
+{{< callout type="tip" >}}
+Always choose the most specific rejection reason available. This improves audit traceability and makes downstream support faster.
+{{< /callout >}}
+
 ---
 
 ## Quick Start Guide
 
-Get started quickly with the most important role-based workflows.
+Get up and running quickly with these essential workflows.
 
 Navigation note: If direct URL navigation redirects, open modules from the applet sidebar.
 
@@ -291,6 +318,15 @@ This is the ingestion module for receipt images.
 - Track process status in listing
 - View OCR output JSON in edit mode
 - Rotate and zoom uploaded images for better review
+
+### Automated Intake with CP-COM Widget (If Enabled)
+
+In deployments where the CP-COM widget is enabled, receipt capture can be automated before OCR review:
+- Receipt image is captured/submitted through CP-COM flow
+- Scanned receipt record is created automatically in this applet
+- OCR processing continues through the same Scanned Receipt -> OCR Generic Doc pipeline
+
+If your tenant does not enable CP-COM integration, use manual upload in **Scanned Receipt Create**.
 
 ### Listing Highlights
 
@@ -457,7 +493,8 @@ Finalization is a critical safeguard for downstream accounting quality.
 
 - Marks posting status as `FINAL`
 - Restricts further edits on key header and line-item flows
-- Preserves reviewed values for audit consistency
+- Triggers posting/finalization checks and moves the document into a locked state for operational use
+- In current flow, rejection reason is cleared during finalization handling before posting update
 
 ### When to Use FINAL
 
@@ -466,6 +503,14 @@ Use `FINAL` only after:
 - Company/item mapping is validated
 - Quantity and unit price checks are done
 - Reviewer confirms no further corrections are needed
+
+### What to Follow Up After FINAL
+
+After a document is finalized:
+1. Confirm the record appears as finalized (`FINAL`) in your listing/search view
+2. Verify line-item updates are no longer editable in normal reviewer flow
+3. Run/download OCR report output if reporting or reconciliation is required
+4. If correction is still needed, escalate to admin/support workflow rather than editing in-place
 
 ---
 
@@ -540,60 +585,32 @@ If multi-language support is planned later, these UI strings are the main extrac
 
 ## FAQ
 
-### 1. Why is the **CREATE** button disabled in Scanned Receipt Create?
+**Q: Why is the `CREATE` button disabled in Scanned Receipt Create?**  
+A: At least one receipt image must be uploaded before creation is allowed.
 
-At least one receipt image must be uploaded before creation is allowed.
+**Q: What is the difference between `Verification Status` and `Process Status`?**  
+A: `Verification Status` indicates OCR validation quality (`PASS`, `FAIL`, `FLAGGED`). `Process Status` indicates review decision flow (`PENDING_REVIEW`, `DUPLICATE`, `REJECTED`, `APPROVED`).
 
----
+**Q: Why can I not edit some OCR Generic Docs or line items?**  
+A: If posting status is `FINAL`, editing is restricted to protect finalized data integrity.
 
-### 2. What is the difference between `Verification Status` and `Process Status`?
+**Q: When should I choose `RUN_NOW` vs `INSERT_TO_QUEUE`?**  
+A: Use `RUN_NOW` for immediate processing. Use `INSERT_TO_QUEUE` when batching uploads or when processing should be deferred.
 
-`Verification Status` indicates OCR validation quality (`PASS`, `FAIL`, `FLAGGED`). `Process Status` indicates review decision flow (`PENDING_REVIEW`, `DUPLICATE`, `REJECTED`, `APPROVED`).
+**Q: How do I map OCR lines to accounting items correctly?**  
+A: Open the line item, click **Financial Item**, select the appropriate item from the financial item list, then update. Use **RESET** if you need to remap.
 
----
+**Q: Why can't I set process status to `APPROVED` directly in some screens?**  
+A: In the standard review flow, users typically set review statuses (`PENDING_REVIEW`, `DUPLICATE`, `REJECTED`). In current UI behavior, `APPROVED` is not offered in the reviewer dropdown and is generally system-controlled.
 
-### 3. Why can I not edit some OCR Generic Docs or line items?
+**Q: A generated report is not downloadable yet. What should I check?**  
+A: Open **OCR Scanned Doc Report** and verify the row `Status` and `Error Message`. Download is available only after successful generation.
 
-If posting status is `FINAL`, editing is restricted to protect finalized data integrity.
+**Q: Which rejection reason should I use for too many submissions in one month?**  
+A: Use: **Rejected - Exceeded Monthly Submission Limit (Max. 7 receipts per month)**.
 
----
+**Q: I selected the wrong company on OCR Generic Doc. What should I do?**  
+A: Open the document, click the **Company** field, choose the correct OCR Company, then recheck line mapping before updating/finalizing.
 
-### 4. When should I choose `RUN_NOW` vs `INSERT_TO_QUEUE`?
-
-Use `RUN_NOW` for immediate processing. Use `INSERT_TO_QUEUE` when batching uploads or when processing should be deferred.
-
----
-
-### 5. How do I map OCR lines to accounting items correctly?
-
-Open the line item, click **Financial Item**, select the appropriate item from the financial item list, then update. Use **RESET** if you need to remap.
-
----
-
-### 6. Why can't I set process status to `APPROVED` directly in some screens?
-
-In the standard review flow, users typically set review statuses (`PENDING_REVIEW`, `DUPLICATE`, `REJECTED`). In current UI behavior, `APPROVED` is not offered in the reviewer dropdown and is generally system-controlled.
-
----
-
-### 7. A generated report is not downloadable yet. What should I check?
-
-Open **OCR Scanned Doc Report** and verify the row `Status` and `Error Message`. Download is available only after successful generation.
-
----
-
-### 8. Which rejection reason should I use for too many submissions in one month?
-
-Use: **Rejected - Exceeded Monthly Submission Limit (Max. 7 receipts per month)**.
-
----
-
-### 9. I selected the wrong company on OCR Generic Doc. What should I do?
-
-Open the document, click the **Company** field, choose the correct OCR Company, then recheck line mapping before updating/finalizing.
-
----
-
-### 10. A receipt looks duplicated. What is the correct handling flow?
-
-Set process status to `DUPLICATE`, add an appropriate rejection reason where required, and keep a short remark for audit clarity before saving.
+**Q: A receipt looks duplicated. What is the correct handling flow?**  
+A: Set process status to `DUPLICATE`, add an appropriate rejection reason where required, and keep a short remark for audit clarity before saving.
