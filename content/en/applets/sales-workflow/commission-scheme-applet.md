@@ -72,6 +72,8 @@ The **Commission Scheme Applet** gives sales administrators and finance teams a 
   {{< card title="Settings" subtitle="Configure field settings and default selections" link="#configuration--settings" >}}
 {{< /cards >}}
 
+{{< figure src="/images/commission-scheme-applet/infograhic.png" alt="Commission Scheme Applet infographic explaining rules, treatment levels, and tiered pricing model payouts" caption="Commission Scheme Applet overview: define who qualifies with rules and calculate final payouts with treatments and tiered pricing models." >}}
+
 ---
 
 ## Quick Start Guide
@@ -92,6 +94,8 @@ The **Commission Scheme Applet** gives sales administrators and finance teams a 
 
 **Pro Tip:** Set the scheme **Status** to `ACTIVE` to enable it. Set it to `INACTIVE` to pause without deleting it.
 
+{{< figure src="/images/commission-scheme-applet/create-commision-scheme.png" alt="Create Commission Scheme form with code, name, status, description, and commission type fields" caption="Create Commission Scheme: set the scheme identity and type before adding rules and treatment logic." >}}
+
 ---
 
 ### Sales Manager: Set Up a Sales Group
@@ -105,6 +109,8 @@ The **Commission Scheme Applet** gives sales administrators and finance teams a 
 5. Repeat to add all members of this group
 
 **Use this group** in Commission Scheme rules (via the **Sales Group Rule**) to limit a scheme to this group's members only.
+
+{{< figure src="/images/commission-scheme-applet/create-sales-group.png" alt="Create Sales Group form with code, name, description, and status fields" caption="Create Sales Group: define a named team to target commission rules by sales personnel grouping." >}}
 
 ---
 
@@ -123,11 +129,15 @@ The **Commission Scheme Applet** gives sales administrators and finance teams a 
 
 **Link this Pricing Model** in a Commission Scheme Treatment by selecting **PRICING MODEL** as the **Operator** and choosing your model from the dropdown.
 
+{{< figure src="/images/commission-scheme-applet/create-pricing-model.png" alt="Create Pricing Model form with model code, name, logic code, and logic type" caption="Create Pricing Model: set up a reusable tier model for range-based commission calculations." >}}
+
 ---
 
 ## Commission Scheme
 
 A **Commission Scheme** is the top-level container that holds everything: the scheme's identity, its rules that determine when it applies, and its treatment that determines what is paid.
+
+{{< figure src="/images/commission-scheme-applet/Commission-Scheme-Listing.png" alt="Commission Scheme Listing table showing existing schemes with status and modification dates" caption="Commission Scheme Listing: search, review, and open existing schemes for maintenance." >}}
 
 ### Creating a Commission Scheme
 
@@ -163,6 +173,8 @@ Use the search bar or the advanced filter panel to find schemes by:
 - **Modified Date** range
 - Free-text keyword (matches Code, Name, or Description)
 
+{{< figure src="/images/commission-scheme-applet/edit-commision-main-details.png" alt="Edit Commission Scheme Main Details tab with scheme code, name, status, and type" caption="Main Details tab: maintain status, metadata, and commission type for each scheme." >}}
+
 ---
 
 ## Rules in Detail
@@ -171,6 +183,12 @@ Rules are the conditions that must be met before a scheme applies to a transacti
 
 - **Rules - Doc Hdr**: conditions evaluated at the document header level (the whole document)
 - **Rules - Multi Line / Single Line**: conditions evaluated at the individual line item level
+
+{{< figure src="/images/commission-scheme-applet/rules-doc-hdr-tab.png" alt="Rules Doc Header tab showing rule list including date range, sales group, and document type" caption="Rules - Doc Hdr: configure document-level qualifiers such as document type, period, and sales group." >}}
+
+{{< figure src="/images/commission-scheme-applet/rule-multi-line-tab.png" alt="Rules Multi Line tab showing item category rule and logic settings" caption="Rules - Multi Line: target specific items or categories with AND or OR matching logic." >}}
+
+{{< figure src="/images/commission-scheme-applet/rules-single-line-tab.png" alt="Rules Single Line tab showing item-level rule conditions" caption="Rules - Single Line: define single-line item matching conditions for focused scheme targeting." >}}
 
 Each rule has:
 - **Rule Name**: a label for this rule
@@ -207,6 +225,8 @@ Each rule has:
 ## Treatment
 
 The **Treatment** tab defines **how much** commission is earned and **how** it is calculated. For MLM schemes, you configure a treatment per downline level.
+
+{{< figure src="/images/commission-scheme-applet/treatement-tab.png" alt="Treatment tab showing Level 0 commission settings, membership points, and add uplines option" caption="Treatment tab: configure payout operators, values, and optional membership points by downline level." >}}
 
 ### Treatment Levels
 
@@ -249,6 +269,8 @@ Alongside cash commission, you can award **membership points**:
 
 A **Sales Group** organises your salespeople (employees) into named groups. You can then reference a Sales Group in Commission Scheme rules to restrict a scheme to members of that group.
 
+{{< figure src="/images/commission-scheme-applet/sales-group-listing.png" alt="Sales Group Listing table showing group codes, names, and status" caption="Sales Group Listing: manage group records used in commission rule targeting." >}}
+
 ### Creating a Sales Group
 
 1. Click **Sales Group** in the sidebar
@@ -260,6 +282,10 @@ A **Sales Group** organises your salespeople (employees) into named groups. You 
 2. Click **"+"** → search for an employee → click **CREATE** to link them
 3. To update or remove a link, click an existing salesman row and edit or delete
 
+{{< figure src="/images/commission-scheme-applet/sales-group.png" alt="Edit Salesman group tab with sales group details" caption="Sales Group detail: maintain group metadata and status before assigning members." >}}
+
+{{< figure src="/images/commission-scheme-applet/sales-salesman-listing.png" alt="Salesman tab listing members linked to a selected sales group" caption="Salesman tab: link or remove sales personnel assigned to the selected sales group." >}}
+
 **Searching Sales Groups** — filter by Sales Group Code, Sales Group Name, Status, Created Date, or Modified Date.
 
 ---
@@ -267,6 +293,8 @@ A **Sales Group** organises your salespeople (employees) into named groups. You 
 ## Pricing Model
 
 A **Pricing Model** is a tiered commission rate table. Instead of a flat percentage, you define **ranges** (e.g. sales value bands) and the **commission multiplier or fixed value** that applies in each band.
+
+{{< figure src="/images/commission-scheme-applet/pricing-model-listing.png" alt="Pricing Model Listing table with model code, name, logic code, and logic type" caption="Pricing Model Listing: view and open tier models used in treatment calculations." >}}
 
 ### Creating a Pricing Model
 
@@ -296,6 +324,8 @@ Range 50,001+         → Commission Multiplier: 0.10  (10%)
 ```
 
 Once saved, reference this Pricing Model in a Commission Scheme Treatment by selecting **PRICING MODEL** as the Operator.
+
+{{< figure src="/images/commission-scheme-applet/edit-pricing-model.png" alt="Edit Pricing Model screen with tier lines for range from, range to, and commission values" caption="Edit Pricing Model: define and maintain tier lines for multiplier and absolute commission values." >}}
 
 ---
 

@@ -75,11 +75,7 @@ Many workshops use disconnected tools for intake, service execution, and billing
   {{< card title="Personalization" subtitle="Personal defaults and sidebar layout" link="#personalization" >}}
 {{< /cards >}}
 
-{{< figure src="/images/car-workshop-applet/car-workshop-applet-overview-infographic.png" alt="Car Workshop Applet overview placeholder showing consultation, checklist, job sheet, and billing handoff" caption="Car Workshop Applet overview workflow (placeholder image path for design handoff)." >}}
-
-{{< callout type="warning" >}}
-Image placeholders have been scaffolded. Replace placeholder assets in `/static/images/car-workshop-applet/` with final visuals using the same filenames.
-{{< /callout >}}
+{{< figure src="/images/car-workshop-applet/infographics.png" alt="Car Workshop Applet infographic showing intake to invoice flow from consultation to checklist, job sheet, and financial documents" caption="Car Workshop Applet overview: from consultation intake to checklist control, job sheet execution, and financial handoff." >}}
 
 ## Key Concepts
 
@@ -125,6 +121,14 @@ Use Consultation as the service truth source and Job Sheet as the execution trut
 
 **What you can track in listing:** Consultation No, Branch, Consultant, Member, Vehicle Plate, Last Update, Created Date, and Status.
 
+{{< figure src="/images/car-workshop-applet/consultation-listing.png" alt="Consultation listing with consultation number, branch, consultant, member, vehicle plate, status, and timestamps" caption="Consultation listing: monitor open and active workshop consultations at a glance." >}}
+
+{{< figure src="/images/car-workshop-applet/consulation-details.png" alt="Create or edit consultation details tab with branch, vehicle plate, consultant, member card, and posting status" caption="Consultation details tab: capture the primary intake context for each workshop case." >}}
+
+{{< figure src="/images/car-workshop-applet/consulation-account.png" alt="Consultation account tab showing linked entity details such as status, type, currency, contact, and phone" caption="Consultation account tab: verify linked customer account information before downstream billing." >}}
+
+{{< figure src="/images/car-workshop-applet/consultation-requests.png" alt="Consultation requests tab showing issue descriptions, remarks, status flags, and created date" caption="Consultation requests tab: track customer-reported issues and request statuses." >}}
+
 ---
 
 ### For Service Team: Build and Progress a Job Sheet
@@ -152,13 +156,19 @@ Use Consultation as the service truth source and Job Sheet as the execution trut
 4. Set **Default Selection** for company/branch/location and workflow behavior.
 5. Validate with a test consultation and a test job sheet.
 
+{{< figure src="/images/car-workshop-applet/checklisting-settings-predefined.png" alt="Applet settings checklist screen with checklist listing and editable checklist details" caption="Checklist settings: maintain predefined checklist headers and descriptions for workshop quality control." >}}
+
+{{< figure src="/images/car-workshop-applet/predefined-checklist-lines.png" alt="Checklist settings lines tab showing predefined checklist line items" caption="Checklist lines: standardize line-level checks under each checklist template." >}}
+
+{{< figure src="/images/car-workshop-applet/add-checklist-lines.png" alt="Add checklist line form with name, remarks, and description fields" caption="Add checklist line: define new inspection checks and remarks structure." >}}
+
 ---
 
 ## Consultation Workspace
 
 The Consultation screen is the intake center for workshop operations.
 
-{{< figure src="/images/car-workshop-applet/consultation-listing-placeholder.png" alt="Consultation listing placeholder with branch, consultant, member, and status columns" caption="Consultation listing screen placeholder." >}}
+{{< figure src="/images/car-workshop-applet/consultation-listing.png" alt="Consultation listing screen with branch, consultant, member, vehicle plate, status, and update timestamps" caption="Consultation workspace listing: search and open consultation records for execution." >}}
 
 ### What You Can Do
 
@@ -197,6 +207,12 @@ The consultation flow is tab-oriented. Typical tabs and key fields are:
 | **Last Update / Created Date** | Timing of last modification and creation | Identify stalled or old drafts |
 | **Status** | Consultation progression status | Move items from open intake to execution |
 
+{{< figure src="/images/car-workshop-applet/vehicle-listing.png" alt="Select vehicle listing with plate number, brand, model year, and engine capacity" caption="Vehicle selection: choose the correct vehicle record during consultation intake." >}}
+
+{{< figure src="/images/car-workshop-applet/create-vehicel.png" alt="Create or edit consultation with side panel vehicle selection and select mode options" caption="Vehicle selection panel: link the intake record to an existing or newly created vehicle." >}}
+
+{{< figure src="/images/car-workshop-applet/vehicle-entity-link.png" alt="View or edit vehicle account tab with entity details and bill-to or ship-to fields" caption="Vehicle-to-entity link: connect vehicle records with customer entity profile details." >}}
+
 ## Consultation Checklist
 
 The checklist framework enforces service consistency before and during work.
@@ -207,6 +223,14 @@ The checklist framework enforces service consistency before and during work.
 - **Car Condition**: Vehicle condition observations, including image capture flows
 - **Safety**: Critical safety checks and pass/fail control points
 - **Quality Control**: Verification before release or billing handoff
+
+{{< figure src="/images/car-workshop-applet/consulation-pre-inspect-car-condition.png" alt="Consultation checklist pre-inspection details tab with technician, date, description, and status" caption="Pre-inspection details: record baseline technical findings and intake condition notes." >}}
+
+{{< figure src="/images/car-workshop-applet/car-pre-inspection-details.png" alt="Consultation checklist pre-inspection screen with details tab and technician assignment" caption="Pre-inspection checklist details: capture technician ownership and inspection status." >}}
+
+{{< figure src="/images/car-workshop-applet/checklist-pre-insepect-car-condition.png" alt="Car condition checklist screen with image list and add image panel for position and description" caption="Car condition capture: attach condition photos and labeled positions for service evidence." >}}
+
+{{< figure src="/images/car-workshop-applet/preinspection-checklist-selection.png" alt="Checklist selection panel showing predefined checklist groups and selectable checklist lines" caption="Checklist selection: apply predefined checklist groups and lines to each consultation." >}}
 
 ### Checklist Settings
 
@@ -228,8 +252,6 @@ Admins can maintain checklist templates from Settings:
 ## Job Sheet Workspace
 
 Internal Job Sheet is the operational execution record for workshop work.
-
-{{< figure src="/images/car-workshop-applet/job-sheet-listing-placeholder.png" alt="Job Sheet listing placeholder with posting status and transaction date" caption="Internal Job Sheet listing placeholder." >}}
 
 ### Listing and Actions
 
@@ -331,8 +353,6 @@ From **Personalization**, users can configure:
 - **Sidebar preferences** to match frequent workflow paths
 
 Personalization helps each role reduce repetitive input without changing global policy.
-
-{{< figure src="/images/car-workshop-applet/settings-and-personalization-placeholder.png" alt="Settings and personalization placeholder for car workshop applet" caption="Settings and personalization placeholder." >}}
 
 ## Reporting and Audit Readiness
 

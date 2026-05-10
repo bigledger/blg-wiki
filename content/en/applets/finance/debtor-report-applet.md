@@ -74,6 +74,8 @@ The **Debtor Report Applet** gives your finance and credit control team a single
   {{< card title="Settings and Defaults" subtitle="Configure aging periods, default filters, and print formats" link="#configuration--settings" >}}
 {{< /cards >}}
 
+{{< figure src="/images/debtor-report-applet/infograhic.png" alt="Debtor Report Applet infographic showing fragmented AR reporting problems, unified reporting solution, and key stakeholder benefits" caption="Debtor Report Applet Overview: move from fragmented AR reporting to a unified debtor reporting and collection workflow." >}}
+
 ---
 
 ## Quick Start Guide
@@ -149,6 +151,8 @@ The **Debtor Report Applet** gives your finance and credit control team a single
 
 This is your go-to report for **daily AR monitoring**. It lists every customer document (invoices, debit notes, and so on) that still has an **open balance as of today**. There is **no calendar date range** on this screen — if you need a statement for a past month, use **Statement of Account** instead.
 
+{{< figure src="/images/debtor-report-applet/Debtor_Outstanding_Document_Report_listing.png" alt="Debtor Outstanding Document Report listing screen with open AR documents and balances" caption="Outstanding Document Report: monitor all unpaid customer documents and drill down into each document's balance and status." >}}
+
 | What you can do | How |
 |---|---|
 | See all unpaid customer documents | Set filters at the top (customer, category, company, branch, ARAP type, currency as needed) then click **Search** |
@@ -171,6 +175,8 @@ This is your go-to report for **daily AR monitoring**. It lists every customer d
 
 The Aging Report answers one key question: **"How old is the money our customers owe us?"** It groups outstanding amounts into time buckets — so you can see at a glance if most of your receivables are current (0–30 days) or seriously overdue (90+ days). Bucket labels follow your **Field Settings** (**Day** or **Month** ranges).
 
+{{< figure src="/images/debtor-report-applet/debtor-aging-report-listing.png" alt="Debtor Aging Report listing with aging summary cards and grouped customer aging buckets" caption="Aging Report: view receivable balances by aging buckets to prioritize collection follow-up." >}}
+
 | What you can do | How |
 |---|---|
 | Load the aging grid | Open **Aging Report** → pick **Company**, then narrow with **Entity** (customer), **Customer Category**, **Employee** (salesman), or keyword → click **Search** |
@@ -189,6 +195,8 @@ The Aging Report answers one key question: **"How old is the money our customers
 
 Think of this like a **bank statement — but for a customer**. You start from a **customer summary** list; after you **open a customer**, you can switch between **transaction lines**, a **formatted statement**, and an **aging** view for that customer.
 
+{{< figure src="/images/debtor-report-applet/statemet-0f-account-listing.png" alt="Statement of Account listing with customer balances, settlement values, and open documents" caption="Statement of Account: access customer-level balances and drill into statement transactions for reconciliation." >}}
+
 | What you can do | How |
 |---|---|
 | Find customers | Open **Statement of Account** from the left menu → set filters → click **Search** |
@@ -204,6 +212,10 @@ Think of this like a **bank statement — but for a customer**. You start from a
 ### Historical Reports
 
 Use these when you need **balances or aging as of a past month**, not "today."
+
+{{< figure src="/images/debtor-report-applet/Historical-Transaction-Aging-Analysis-Report.png" alt="Historical Transaction Aging Analysis Report listing with as-of-date aging summary and grouped transactions" caption="Historical Transaction Aging Analysis: trace month-end AR position with line-level historical detail." >}}
+
+{{< figure src="/images/debtor-report-applet/historical-debtor-report.png" alt="Historical Debtor Report listing showing customer balances for a selected as-of date" caption="Historical Debtor Report: compare customer-level AR balances for a selected historical month." >}}
 
 **Shared workflow:** Open the report from the left menu → set **As Of Date** (pick the **month**) and the other filters shown on that screen → click **Search** → click rows to open document detail when you need to drill down.
 
@@ -223,6 +235,8 @@ Use these when you need **balances or aging as of a past month**, not "today."
 
 Focused on **AR activity within a date range** — useful for reconciliation, audits, and reviewing all movements between two dates.
 
+{{< figure src="/images/debtor-report-applet/ar-transaction-report.png" alt="AR Transaction Report listing with grouped transactions, debit and credit columns, and running balance" caption="AR Transaction Report: review AR movements and running balances across a selected transaction date range." >}}
+
 | What you can do | How |
 |---|---|
 | See AR activity between two dates | Open **AR Transaction Report** → choose **Company** (required) → set **Transaction Date** **from** and **to** → optional **Entity** / **Branch** / **Sort by** → click **Search** |
@@ -236,6 +250,8 @@ Focused on **AR activity within a date range** — useful for reconciliation, au
 ### Collection Invoice with Aging
 
 A specialized report for **sales and collection teams** to see invoices grouped by salesman, with aging buckets showing how long each invoice has been unpaid.
+
+{{< figure src="/images/debtor-report-applet/collection-with-invoice-aging.png" alt="Collection with Invoice Aging listing grouped by salesman and customer with invoice aging columns" caption="Collection Invoice with Aging: track outstanding invoices by salesman and aging bucket for collection performance reviews." >}}
 
 | What you can do | How |
 |---|---|
