@@ -11,158 +11,626 @@ weight: 150
 ---
 
 {{< callout type="warning" >}}
-**Daily cashier report applet user guide still under progress**
-
-**Work in Progress: This documentation is currently under development. Visual assets (screenshots) and further details will be added soon.**
+**Work in Progress: This documentation is currently under development. Visual assets (screenshots) will be added soon.**
 {{< /callout >}}
 
 ## Purpose and Overview
 
-The **Merchant Applet** is a specialized tool designed to manage the entire lifecycle of merchants within a business or payment platform. It serves as the primary administrative hub for onboarding new merchants, configuring their technical and financial parameters, and managing formalized service agreements or contracts.
+{{< callout type="tip" >}}
+**TL;DR — Read this first.**
+
+**What is a Merchant?** Think of a **merchant** like a **shop registered inside a shopping mall**. The mall (your platform) needs to know who each shop is, what their terms are, and how money flows to them. You can't just let anyone sell without a signed agreement and a way to route their payments.
+
+That is what this applet manages. Every business or partner that operates on your platform is a **Merchant**. Before they can transact, you need to:
+1. Register their identity (who they are, what company they belong to)
+2. Set up their payment gateway credentials (so money gets routed correctly)
+3. Formalize the relationship with a **Contract** (what rates apply, how long the agreement lasts)
+
+Without this applet, onboarding a new merchant would mean emails, spreadsheets, and manually configuring payment systems — with no audit trail of who approved what or when.
+
+This applet is the single place where platform administrators register merchants, configure their technical credentials, and track the formal contracts that govern those relationships.
+
+Once a merchant is registered here, that record does not stay isolated — it flows into several downstream applets automatically. The Peppol ID you configure here is what the E-Invoice applets use to send documents through the government network. The credit limits you set here are what the AR applet enforces when the merchant owes money. The GL codes and tax codes attached to the merchant's branch are what the General Ledger and Tax applets post against. You set it up once here; everywhere else just reads it.
+
+**Is this the same as the Organization Applet?** No — and this is a common point of confusion:
+
+| Applet | POV | Who it manages |
+|--------|-----|---------------|
+| **Organization Applet** | Internal | Your own company's structure — your branches, departments, staff |
+| **Merchant Applet** | External-facing | Outside businesses that use your platform to accept payments |
+
+You are the mall. The Organization Applet manages your own mall offices and departments. The Merchant Applet manages the shops that rent space and plug into your payment infrastructure. A merchant is never your own branch — they are an external partner with their own bank account, their own payment gateway credentials, and a signed contract with you.
+{{< /callout >}}
+
+The **Merchant Applet** is the administrative hub for onboarding and managing every merchant on the platform. It handles the full lifecycle — from creating a merchant identity and configuring payment gateway credentials, through to managing contracts and auditing every change made to a merchant record.
 
 {{< callout type="info" >}}
-**Core Concept**: A **Merchant** represents a distinct partner entity identified by a unique **Merchant ID** and secured by **Merchant Keys** and **PGW Merchant Codes** for integration into the platform ecosystem.
+**Core Concept**: A **Merchant** represents a distinct partner entity identified by a unique **Merchant ID**, secured by **Merchant Keys** and **PGW Merchant Codes** for technical integration, and governed by a formal **Contract** that defines the commercial terms of the relationship.
 {{< /callout >}}
+
+---
 
 ## Key Features Overview
 
 ### Who Benefits from This Applet?
 
 **Platform Administrators:**
-- Centralized control of merchant registrations
-- Management of secure API keys and gateway credentials
-- Real-time status monitoring (Active vs. Inactive)
-- Efficient configuration of merchant types and classifications
+- Centralized creation and management of merchant profiles
+- Secure storage of API keys and payment gateway credentials
+- Real-time status monitoring (Active vs. Deactivated)
+- Configuration of merchant types, entity types, and AR/AP categories
 
 **Merchant Relationship Managers:**
-- Seamless onboarding process for new partners
-- Visibility into valid and expiring contracts or agreements
-- Ability to update merchant profiles and contact details
-- Detailed auditing of all administrative changes or interactions
+- Structured onboarding workflow for new partners
+- Full visibility into active, expiring, and historical contracts
+- Ability to update merchant profiles, contact details, and addresses
+- Audit trail of every administrative change made to a merchant record
 
-**Compliance & Audit Teams:**
-- Complete audit trails of every modification in the system
-- Centralized repository of all merchant-related contracts
-- Verification of account status and eligibility periods
-- Identification of unauthorized changes through transaction logs
+**Finance & Compliance Teams:**
+- Centralized repository of all merchant contracts and rate cards
+- Credit limit and credit term management per merchant
+- Complete audit logs for every modification in the system
+- Verification of merchant status and eligibility before transactions
 
 ### What Problems Does This Solve?
 
 **The Partner Management Friction Problem:**
 
-Managing a large ecosystem of merchants often becomes difficult using spreadsheets or fragmented systems. Common issues include:
+Managing a large ecosystem of merchants through spreadsheets or fragmented systems creates significant operational risk:
 - Scattered merchant profile data across multiple departments
-- Manual handling of sensitive Merchant Keys leading to security risks
-- Lost or undocumented contractual agreements
-- Lack of a formal approval process for merchant state changes
-- Difficulty in verifying compliance for every registered merchant
+- Manual handling of sensitive Merchant Keys, creating security exposure
+- Lost or undocumented contractual agreements and rate cards
+- No formal approval process or audit trail for merchant state changes
+- Difficulty verifying compliance for every registered merchant
 
 **The Merchant Applet Solution:**
 
-- **Structured Onboarding Workflow** - Standardized field-driven creation of merchant identities
-- **Secure Key Repository** - Dedicated storage of Payment Gateway (PGW) codes and keys
-- **Contract Lifecycle Hub** - Integrated tracking of formalized agreements with start and end date controls
-- **Comprehensive Event Logging** - Advanced audit trails for every profile and contract modification
-- **Flexible Segmentation** - Define merchants by type (Direct vs. Indirect), entity types, and AR/AP categories
+- **Structured Onboarding Workflow** — standardized field-driven creation of merchant identities, credentials, and configurations
+- **Secure Credential Repository** — dedicated storage of Payment Gateway (PGW) codes, merchant keys, and return URLs
+- **Contract Lifecycle Hub** — integrated tracking of formal agreements with rate cards and validity controls
+- **Comprehensive Event Logging** — audit trails for every profile and contract modification
+- **Flexible Segmentation** — define merchants by type (Corporate vs. Individual), entity type, and AR/AP category
 
-## Key Features Overview
+---
+
+{{< figure src="/images/merchant-applet-applet/merchant-applet-overview-infographic.png" alt="Merchant Applet Overview: From Manual Friction to Streamlined Partner Success - comparing manual merchant management with the digital solution" caption="Merchant Applet Overview: The Old Way (scattered data, security risks, lost contracts) vs The New Way (unified profiles, secure vault, integrated contracts)." >}}
+
+## Key Features
+
 
 {{< cards >}}
-  {{< card title="Merchant Admin" subtitle="Centralized profile creation and profile lifecycle management" link="#merchant-administration" >}}
-
-  {{< card title="Contract Tracking" subtitle="Manage formal agreements and service level commitments" link="#merchant-contracts" >}}
-
-  {{< card title="Secure Keys" subtitle="Centralize PGW Codes and sensitive integration keys" link="#payment-gateway-configuration" >}}
-
-  {{< card title="Audit Trail" subtitle="Deep visibility into every configuration change and state transition" link="#audit-trails" >}}
-
-  {{< card title="Merchant Reports" subtitle="Analyze merchant distributions and performance trends" link="#reporting-and-analytics" >}}
-
-  {{< card title="System Personalization" subtitle="Customize dashboard views for specific admin roles" link="#personalization" >}}
+  {{< card title="Merchant Admin" subtitle="Centralized profile creation, credential management, and lifecycle administration" link="#merchant-admin" >}}
+  {{< card title="Contract Container" subtitle="Manage formal agreements, rate cards, and payment channel configurations" link="#contract-container" >}}
+  {{< card title="Report" subtitle="Analyze merchant distributions and performance data" link="#report" >}}
+  {{< card title="Audit Trail" subtitle="Deep visibility into every configuration change and state transition" link="#audit-trail" >}}
+  {{< card title="Permission Control" subtitle="Role and user-level access management per merchant action" link="#settings" >}}
+  {{< card title="Personalization" subtitle="Customize sidebar layout and personal defaults for your admin role" link="#personalization" >}}
 {{< /cards >}}
+
+---
 
 ## Key Concepts
 
 ### Understanding the Merchant Framework
 
-The system ensures security and operational integrity through a structured hierarchy of information for every merchant:
+Every merchant in the system is built from three layers:
 
-| Component | Definition | Management Goal |
-|-----------|------------|-----------------|
-| **Merchant ID** | The unique internal identifier for the entity. | Uniqueness and traceability. |
-| **Merchant Key/Key Material** | Secret credentials for technical integration. | Security and controlled rotates. |
-| **Merchant Contract** | The formal agreement defining terms and validity. | Compliance and renewal management. |
+| Layer | Component | Purpose |
+|-------|-----------|---------|
+| **Identity** | Merchant ID, Merchant Name, Merchant Company | Who they are and how they are uniquely identified in the platform |
+| **Credentials** | PGW Merchant Code, Merchant Key | How their payment transactions are routed and authenticated |
+| **Agreement** | Merchant Contract, Rate Card | What commercial terms apply and for how long |
 
 {{< callout type="tip" >}}
-**Real-World Example**: A relationship manager onboards a new Retailer (MERCHANT). They define the unique **Merchant ID**, set up the **PGW Code** for payment routing, and upload the signed **Contract**. The system then manages the transition to an "ACTIVE" state once compliance is verified.
+**Real-World Example**: A new retail partner wants to accept payments through your platform. The platform admin creates a Merchant record with the partner's company registration, assigns a unique PGW Merchant Code so the payment gateway knows where to route funds, and then creates a Contract that locks in their transaction rate (e.g., 1.5% MDR) with a start and end date. The partner can only go live once all three layers are in place.
 {{< /callout >}}
 
-### Lifecycle Progression
-
-The applet manages the strategic movement of merchants through various operational states:
+### Merchant Lifecycle
 
 ```
-Platform Onboarding
+New Partner Request
 │
-├── Identity Registry ──→ Creation of ID, Name, and Company links
+├── Merchant Creation ──→ Register ID, Name, Company, Entity Type, Keys
 │   │
-│   └── Technical Configuration ──→ Security Keys and PGW Setup
+│   └── Credential Setup ──→ PGW Merchant Code, Merchant Key, Return URLs
 │       │
-│       └── Contract Activation ──→ Formality of agreements and terms
+│       └── Contract Creation ──→ Rate Card, Payment Channels, Validity Period
 │           │
-│           └── Ongoing Audit ──→ Real-time tracking of modifications
+│           └── Active & Ongoing ──→ Audit Trail logs every change
 ```
 
----
+### Entity Type vs. Merchant Type
 
-## Quick Start Guide
+These two fields are often confused because they both classify the merchant — but they operate at completely different levels.
 
-### For Platform Admins: Registering a New Merchant
+| Field | Nature | Changes system behavior? |
+|-------|--------|--------------------------|
+| **Entity Type** | Functional | Yes — affects financial posting, applet visibility, AR/AP categorization |
+| **Merchant Type** | Descriptive | No — used for reporting and documentation classification only |
 
-**Goal:** Create a profile and activate a merchant in 5 steps.
+**Entity Type** is functional — it drives how the system behaves. It controls which applets recognize the record, how financial entries are categorized (AR vs AP), and what workflows the entity participates in. Changing it has downstream consequences across the platform.
 
-1. **Navigate**: Go to **Merchant Admin** and click **"Create Merchant"**.
-2. **Identity Entry**: Enter the **Merchant ID**, **Merchant Name**, and **Merchant Company** details.
-3. **Configure Technicals**: Provide the **PGW Merchant Code** and the **Merchant Key**.
-4. **Define Types**: Select the appropriate **Entity Type** (e.g., Sole Proprietor, Sdn Bhd) and **Merchant Type**.
-5. **Set Status**: Mark the status as **Active** or **Pending** and click **CREATE**.
+**Merchant Type** (CORPORATE vs INDIVIDUAL) is descriptive — it classifies the business structure for reporting and documentation. It tells you *what kind of business* the merchant is, but does not change how the system routes transactions or which applets see the record.
 
----
-
-### For Compliance Officers: Reviewing a Contract
-
-**Goal:** Verify and monitor partner agreements.
-
-1. **Access Contracts**: Navigate to the **Contract Container** tab.
-2. **Review Listing**: Use the **Contract Listing** to search for a specific merchant’s agreement.
-3. **Check Validity**: Open the contract to see the **Start Date**, **End Date**, and associated documentation.
-4. **Audit History**: Use the **Audit Trail** tab to see who activated or modified the contract parameters.
+The two are not fully independent. Merchant Type only becomes meaningful on records where Entity Type includes MERCHANT — it would not make sense on a pure SUPPLIER or EMPLOYEE record. Think of it as a sub-classification that sits beneath Entity Type: Entity Type establishes the functional role, Merchant Type describes the business form within that role.
 
 ---
 
-## Configuration & Settings
+## Navigation Menu
 
-Tailor your merchant management platform through the **Settings** hub:
+The applet sidebar contains four main sections, plus Settings and Personalization:
 
-- **Merchant Type Config**: Define the categorization rules used for merchant types.
-- **Contract Templates**: Standardize the data fields required for new merchant agreements.
-- **Entity Type Management**: Maintain the listing of legal entities (e.g., LLP, Private Limited).
-- **Listing Personalization**: Define which columns are visible (e.g., "ID", "Name", "Key Last Updated") to optimize admin efficiency.
+### Merchant Admin
+The primary working area. Lists all registered merchant profiles and is the entry point for creating new merchants. This is where the full create/edit lifecycle happens — from initial registration through credential setup to status management.
+
+### Contract Container
+Lists all merchant contracts. A contract formalizes the commercial relationship between your platform and a merchant — it defines the rate card (what fees apply per payment channel) and the validity period of the agreement.
+
+### Report
+Provides reporting views on merchant data — distributions, status breakdowns, and performance trends across the merchant portfolio.
+
+### Audit Trail
+A read-only log of every change made across all merchant records and contracts. Used by compliance teams to trace who changed what and when. Every create, edit, and status change is recorded here with a timestamp and the user responsible.
+
+---
+
+## Merchant Admin
+
+### Listing
+
+The listing shows all registered merchant profiles.
+
+---
+
+### Create
+
+Creates a new merchant profile. Only the core identity and credential fields are available at creation — the deeper configuration tabs (Peppol, Login, Contract, Payment Config, etc.) become available after the record is saved.
+
+**Required fields:** Merchant ID, Merchant Name, Merchant Company, Company Registration No / ID Number, Entity Type, AR/AP Type, PGW Merchant Code, Merchant Key, Status
+
+**Optional fields:** Merchant Type, Description
+
+**Fields that need context:**
+
+| Field | Notes |
+|-------|-------|
+| **Merchant ID** | Must be unique across all merchants — used as the primary reference in payment gateway routing and transaction logs. |
+| **Entity Type** | The functional role this merchant plays — CUSTOMER, SUPPLIER, EMPLOYEE, or MERCHANT. A single merchant can hold multiple types simultaneously. Drives financial posting behavior and which applets recognize this record. |
+| **Merchant Type** | Descriptive classification only — CORPORATE or INDIVIDUAL. Used for reporting; does not affect system behavior. |
+| **AR/AP Type** | Determines whether this merchant generates Accounts Receivable (money owed to you) or Accounts Payable (money you owe them). Getting this wrong causes mis-categorization in AR aging reports. |
+| **PGW Merchant Code** | The identifier the payment gateway uses to route transactions to this merchant's account. |
+| **Merchant Key** | Secret key for API authentication. Treat like a password — any rotation must be reflected in connected integrations to avoid transaction failures. |
+| **Status** | DEACTIVATE suspends access while preserving all data and history. |
+| **Description** | Internal notes only — not visible to the merchant. |
+
+---
+
+### Edit
+
+The edit form contains all the same fields as create, plus additional configuration tabs that manage the deeper aspects of the merchant relationship.
+
+**Action buttons on the edit form:**
+
+| Button | Function |
+|--------|----------|
+| **SAVE** | All changes are logged to the Audit Trail. |
+| **Remove** | Permanently deletes the merchant record. Use with caution — this cannot be undone. |
+
+#### Details Tab
+
+Contains all the core fields from the create form. Every change is logged to the Audit Trail.
+
+---
+
+#### Peppol Config Tab
+
+Configures this merchant's participation in the **Peppol network** — the international e-invoicing infrastructure used for government and enterprise B2B electronic invoicing (relevant for e-invoice compliance in Malaysia and other Peppol-participating countries).
+
+{{< callout type="info" >}}
+**What is Peppol?** Peppol is a set of open standards that allows businesses to send electronic invoices and other business documents directly to each other's systems — without PDFs, emails, or manual entry. In Malaysia, this is part of the e-invoicing mandate. If a merchant needs to send or receive e-invoices through the Peppol network, their Peppol IDs must be configured here.
+{{< /callout >}}
+
+**Peppol IDs sub-tab**
+
+Manages the Peppol participant identifiers for this merchant. A Peppol ID is the network address that uniquely identifies a business on the Peppol network — similar to an email address, but for invoices.
+
+**Notification Config sub-tab**
+
+Controls how this merchant receives e-invoice notifications. Each channel can be toggled independently:
+
+**Channels:** Peppol, Email, Other UCC Channels (Telegram, Facebook, etc.), Through Customer Portals
+
+The Peppol channel is only available if the merchant has a valid Peppol ID configured in the Peppol IDs sub-tab.
+
+---
+
+#### Login Tab
+
+Manages the merchant's portal login credentials — giving the merchant's own staff access to a self-service portal to view their transaction data, download reports, or check their account status.
+
+**Fields:** User Email, Rank, Status
+
+**Action buttons:**
+
+| Button | Function |
+|--------|----------|
+| **Verify Email** | Confirms the email address is valid and reachable before sending an invite. |
+| **Send Invite** | Sends the merchant a portal invitation with login setup instructions. |
+
+---
+
+#### Contract Tab
+
+Lists all contracts associated with this merchant. Contracts are created and managed in the [Contract Container](#contract-container) section of the applet, but this tab gives you a quick view of all agreements for this specific merchant without leaving the merchant profile.
+
+---
+
+#### Return URL Tab
+
+Configures the redirect URLs used after payment gateway transactions — where the payment gateway sends the user after a successful or failed payment attempt.
+
+**Fields:** Return URL Code, Return URL Name, Success Return URL, Error Return URL
+
+Success and Error Return URLs each have a toggle — the URL field only appears when the toggle is enabled.
+
+---
+
+#### Tax & Billing Tab
+
+Manages tax registration details and billing configurations for this merchant. Tax settings here affect how tax entries are generated when financial transactions are processed against this merchant.
+
+---
+
+#### Payment Config Tab
+
+Lists all payment channel configurations for this merchant — which payment methods are enabled, their gateway settings, and any channel-level parameters.
+
+**Supported settlement types include:** Bank Transfer, Cash, Cheque, Credit Card, E-Wallet, FPX/eMandate, Payment Gateway, Membership Points, Open Credit, Voucher, and Others.
+
+---
+
+#### Address Tab
+
+Manages the registered addresses for this merchant — billing address, correspondence address, and any additional branch or site addresses. Multiple addresses can be stored and individually labeled.
+
+---
+
+#### Contact Tab
+
+Manages the contact persons for this merchant — names, phone numbers, email addresses, and roles. Multiple contacts can be stored for different purposes (e.g., finance contact, technical contact, account manager).
+
+---
+
+#### Company Linking Tab
+
+Links this merchant record to one or more companies within your platform. Company linking determines which company's financial accounts and GL structures this merchant's transactions post to — important in multi-company platform environments.
+
+---
+
+#### Merchant Branch Tab
+
+Configures intercompany branch relationships for this merchant. Used when a merchant operates across multiple branches or legal entities that need to be tracked separately within the platform's intercompany settlement framework.
+
+---
+
+#### Credit Limit and Terms Tab
+
+Manages the credit facilities extended to this merchant. Contains two nested sub-tabs:
+
+**Credit Term sub-tab**
+
+Defines the payment terms for this merchant — how many days they have to settle outstanding amounts. Credit terms drive AR aging calculations and payment due date computations.
+
+**Credit Limit sub-tab**
+
+Sets the maximum outstanding balance allowed for this merchant at any point in time. When a transaction would push the merchant over their approved credit limit, the system flags it for review.
+
+You can either:
+- **Existing Credit Limit** — select a pre-configured credit limit profile from the system
+- **New Credit Limit** — create a new limit with a code, name, status, currency, and limit amount
+
+**Fields:** Credit Limit Code, Credit Limit Name, Status, Currency, Credit Limit Amount
+
+---
+
+#### Logo Tab
+
+Manages the merchant's logo — uploaded and stored against the merchant profile. The logo is used in merchant-facing documents, portal pages, and any printed output associated with this merchant.
+
+---
+
+## Contract Container
+
+{{< callout type="tip" >}}
+**TL;DR** — The contract is not just paperwork. It is the live pricing configuration the payment engine reads on every transaction to determine what fee applies. No contract = no transactions.
+{{< /callout >}}
+
+### How Merchant and Contract relate
+
+A merchant record and a contract are created separately, and in that order:
+
+```
+1. Create Merchant     →  registers identity and payment credentials
+2. Sign agreement      →  commercial terms agreed outside the system
+3. Create Contract     →  formalizes terms in the system (rate card, payment channels)
+4. Merchant goes live  →  system can now route payments and apply fees
+```
+
+A merchant can exist without a contract — registered but not yet live. The contract is what activates them. Every time the merchant processes a payment, the system looks up their active contract to answer two questions:
+- Is this payment method allowed? (is it in the rate card?)
+- What fee do we take? (what is the MDR or flat rate for this channel?)
+
+**The relationship is not 1 merchant = 1 contract.** A contract is tied to a specific **merchant + platform company** pair. This means:
+- One company can have contracts with many merchants
+- One merchant can have contracts with multiple companies on your platform (each with their own rate card)
+- A merchant can also have multiple contracts over time as agreements renew or terms change — old contracts remain on record for audit purposes
+
+Contracts are kept separate from the merchant profile because commercial terms change independently — a contract can be renewed or renegotiated without touching the merchant's identity or credentials.
+
+---
+
+### Listing
+
+Lists all merchant contracts across all merchants.
+
+---
+
+### Create
+
+Creates a new contract once the commercial agreement with the merchant has been signed.
+
+{{< callout type="info" >}}
+**What is a Merchant Contract?** A contract formalizes the commercial relationship between your platform and a merchant. It is not just a document — it is the system record that drives what rates are applied to transactions. Without a contract, the platform does not know what fee to charge or apply for a merchant's transactions.
+{{< /callout >}}
+
+**Required fields:** Contract Name, Merchant, Contract Company, Status
+
+**Auto-generated:** Contract Code (system-generated, read-only)
+
+**Fields that need context:**
+
+| Field | Notes |
+|-------|-------|
+| **Contract Name** | Typically includes the merchant name and period, e.g. "RetailCo 2024 MDR Agreement". |
+| **Contract Company** | The platform entity entering the agreement — determines which company's financials the contract terms post against. |
+| **Status** | ACTIVE (in effect) or DEACTIVATE (suspended). |
+
+---
+
+### Edit
+
+The edit form contains all the same fields as create, plus tabs for managing the commercial details of the contract.
+
+#### Details Tab
+
+Contains the core contract fields — Contract Name, Contract Code, Merchant Contract Key, Contract Company, Merchant Name, Type, and Status. The Contract Code and Merchant Contract Key are system-generated and read-only. Status is the only field that is editable after creation beyond the contract name.
+
+---
+
+#### Rate Card Tab
+
+{{< callout type="tip" >}}
+**TL;DR** — Fee schedule per payment method. Defines what rate the merchant pays for each payment channel they accept.
+{{< /callout >}}
+
+The rate card is the pricing schedule inside this contract — it defines what fee the merchant pays per payment method.
+
+Each entry pairs a **Payment Channel** (e.g., Credit Card Visa, FPX, E-Wallet) with a **Charge Rate** — either a percentage of the transaction amount or a flat fee per transaction. The percentage form is called **MDR (Merchant Discount Rate)**: if the rate is 1.8% and the merchant processes RM 100, the platform keeps RM 1.80 and the merchant receives RM 98.20.
+
+A single contract can have multiple payment channels, each with its own rate. This is normal — credit card transactions typically carry a higher MDR than FPX or e-wallet transactions because the underlying processing costs differ.
+
+Without a rate card, the system has no fee to apply when the merchant transacts — so this must be configured before the merchant goes live.
+
+---
+
+#### Annex Tab
+
+{{< callout type="tip" >}}
+**TL;DR** — File uploads for this contract. Attach the signed PDF, amendment letters, or any supporting paperwork here.
+{{< /callout >}}
+
+Document storage for this contract record. Upload the signed physical contract PDF, amendment letters, approval emails, or any other supporting paperwork that belongs alongside this agreement. This is not a functional tab — it does not affect system behavior. It exists so the digital contract record and the physical paperwork stay together in one place.
+
+---
+
+## Report
+
+{{< callout type="tip" >}}
+**TL;DR** — A read-only monthly summary of merchant transaction activity. The system populates it automatically — you just view and export.
+{{< /callout >}}
+
+The Report menu shows a **Monthly Merchant Transaction Summary** — a pre-aggregated view of transaction activity across all merchants, broken down by merchant and payment channel.
+
+**What it shows per row:** Merchant, Payment Channel, Currency, No. of Transactions, Total Transaction Amount, VAT %, PC Charges, UNIPIN Charges
+
+**Columns that need context:**
+
+| Column | Notes |
+|--------|-------|
+| **PC Charges** | Payment Channel charges — the fee the platform takes for processing a transaction through that specific payment method. Shown as either a percentage of the transaction amount or a flat fee per transaction. Up to 4 separate charge types can apply per channel. |
+| **UNIPIN Charges** | Additional charges specific to UNIPIN — a payment network used for certain digital payment methods. These sit on top of the PC charges and follow the same percentage-or-flat-fee structure. Up to 4 charge types. |
+| **VAT %** | The tax rate applied to the transaction fees — not the transaction amount itself. |
+
+**Where the data comes from:** The system aggregates transaction data automatically from payment activity — you do not feed it anything manually. It reads from the same merchant and payment channel records configured in Merchant Admin and Contract Container.
+
+**What you can do with it:**
+- View the monthly summary per merchant and channel
+- Click a row to drill into the detail of that specific entry
+- Export to CSV or Excel for further analysis
+
+It does not post to any other applet and has no financial impact — it is purely a reporting and export tool.
+
+---
+
+## Audit Trail
+
+A complete, read-only log of every action taken across all merchant records and contracts. Every create, edit, status change, and deletion is recorded with:
+
+- The exact field that changed and the before/after values
+- The user who made the change
+- The timestamp of the change
+- The merchant or contract record affected
+
+Use this section to investigate unauthorized changes, trace who approved a merchant activation, or verify the history of a specific credential update. The audit trail cannot be edited or deleted.
+
+---
+
+## Settings
+
+Accessed via the top navigation. All settings here are system-wide and affect all users of this applet.
+
+### Field Settings
+
+Controls which fields are shown or hidden across the merchant create and edit forms. For example, the Entity Type field can be hidden if your platform only operates with a single entity type.
+
+### Default Selection
+
+Sets system-wide default values pre-populated when creating a new document:
+
+| Setting | Effect |
+|---------|--------|
+| **Default Branch** | The branch pre-selected on new documents. Reduces data entry time for teams that primarily work from a single branch. |
+| **Default Location** | The inventory location pre-selected within the default branch. |
+
+### Permission Management
+
+Controls who can perform which actions within the applet. Four layers of permission management are available:
+
+| Permission Level | Description |
+|----------------|-------------|
+| **Permission Set** | Named sets of permissions that can be reused across multiple users or teams. Define once, assign many times. |
+| **User Permission** | Permissions assigned directly to individual users — overrides the team or role defaults for specific individuals. |
+| **Team Permission** | Permissions applied to all members of a team. Useful for department-level access control (e.g., "Finance Team can view but not create"). |
+| **Role Permission** | Permissions applied to all users holding a specific role. The broadest level of permission assignment. |
+
+### Webhook Configuration
+
+Configures outgoing webhooks that fire when specific events happen in the merchant applet — for example, notifying an external system when a new merchant is created or a contract status changes. Used for integration with external platforms or notification systems.
+
+### Feature Visibility
+
+Controls which features within the applet are visible to end users. Use this to simplify the interface for specific user groups by hiding features they do not need.
+
+---
+
+## Personalization
+
+User-level customization of the applet experience. Unlike Settings (which are system-wide), Personalization settings apply only to the individual user configuring them.
+
+### Personal Default Settings
+
+Sets personal default values for fields on new documents — overrides the system-wide defaults from Settings for this user only.
+
+### Sidebar Configuration
+
+Controls which items appear in the sidebar navigation and in what order. Users can hide menu items they do not use to reduce visual clutter and keep their working area focused.
+
+---
+
+## Related Applets
+
+### How This Applet Connects to Others
+
+The Merchant Applet has no direct navigation links to other applets — there are no buttons that take you from here into another applet. Instead, the data you configure here is shared with downstream applets automatically. When you register a merchant, set a Peppol ID, or configure a credit limit, those values are immediately available wherever the platform needs them — you do not need to enter them again elsewhere.
+
+---
+
+### Customer Applet & Employee Applet
+
+Merchants, customers, and employees are all stored as **entity records** under the same unified identity framework. The only difference between a merchant record and a customer record is their classification — the underlying structure is identical.
+
+This has a practical implication: if a partner is both a merchant on your payment platform *and* a customer who buys from you, they do not need two separate records. A single entity can carry both classifications at once, and both applets will recognize them correctly.
+
+Credit limits and credit terms configured here use the same credit management system as the Customer Applet — so a credit profile set up in either applet is visible in both.
+
+---
+
+### My E-Invoice Admin Applet & My Peppol Admin Applet
+
+The **Peppol Config** tab in this applet is the source of truth for a merchant's Peppol network identity. When you register a Peppol ID here, the E-Invoice and Peppol Admin applets read it automatically — they do not have their own place to enter it.
+
+This means the e-invoice workflow depends on this applet being set up correctly first:
+
+```
+Merchant Applet
+└── Peppol Config Tab (register Peppol ID here)
+        │
+        ├── My E-Invoice Admin Applet — uses it for LHDN submission
+        └── My Peppol Admin Applet   — uses it for Peppol network routing
+```
+
+If a merchant's Peppol ID is missing or incorrect here, e-invoice submissions for that merchant will fail downstream. Always configure Peppol IDs in this applet before attempting any e-invoice workflow for a merchant.
+
+---
+
+### Tax Configuration Applet
+
+When setting up a merchant's intercompany branch, you attach tax codes and withholding tax types to that branch. Those tax codes are not created here — they are defined and managed in the **Tax Configuration Applet** and simply selected here.
+
+If a required tax code does not appear in the dropdown during merchant branch setup, it means it has not been configured in the Tax Configuration Applet yet.
+
+---
+
+### General Ledger Applet
+
+GL account codes can be attached to a merchant's intercompany branch to define which ledger accounts the merchant's transactions post to. Those GL codes are maintained in the **General Ledger Applet** — this applet only reads and selects from them.
+
+---
+
+### Accounts Receivable Applet
+
+The **AR/AP Type** field on every merchant record determines how financial entries are categorized when that merchant transacts on the platform. When a merchant owes your platform money, the Accounts Receivable Applet tracks that outstanding balance — but it relies on the AR/AP Type set here to know how to categorize and report it correctly.
+
+If the AR/AP Type is configured incorrectly on a merchant, their outstanding balances will appear under the wrong category in the AR applet's aging reports and collection workflows.
+
+---
+
+### Seller Admin Applet
+
+The Seller Admin Applet manages the operational side of a merchant's activity — order creation, fulfillment queues, and pick-pack workflows. It uses the merchant identity created here as its foundation.
+
+The division of responsibility is:
+- **Merchant Applet** — register the merchant, set up credentials and contracts (*who they are*)
+- **Seller Admin Applet** — process their orders and fulfillment (*what they are selling and shipping*)
+
+---
+
+### Summary
+
+| Applet | What this applet provides to it |
+|--------|--------------------------------|
+| **Customer Applet** | Shared entity identity framework; same credit limit and credit term system |
+| **My E-Invoice Admin Applet** | Merchant's Peppol ID for LHDN e-invoice submission |
+| **My Peppol Admin Applet** | Merchant's Peppol ID for network document routing |
+| **Tax Configuration Applet** | Reads tax codes from it; merchant branch setup depends on it |
+| **General Ledger Applet** | Reads GL account codes from it for merchant branch configuration |
+| **Accounts Receivable Applet** | AR/AP Type drives how merchant balances are categorized in AR aging |
+| **Seller Admin Applet** | Merchant identity and account used as the basis for seller operations |
 
 ---
 
 ## FAQ
 
 **Q: Can a merchant have multiple contracts?**
-A: Yes, the applet's contract container allows you to track successive contracts, ensuring historical continuity as agreements renew over time.
+A: Yes. The Contract Container tracks all contracts for all merchants. A merchant can have successive contracts as agreements renew, giving a full historical record of the commercial relationship over time.
+
+**Q: What is the difference between PGW Merchant Code and Merchant Key?**
+A: The **PGW Merchant Code** is the identifier the payment gateway uses to know which merchant account to route a transaction to — think of it as the merchant's "account number" with the gateway. The **Merchant Key** is the secret credential used for API authentication — think of it as the merchant's "password." Both are required for secure payment routing.
 
 **Q: What happens if I change a Merchant Key?**
-A: Any modification to sensitive keys is logged in the Audit Trail. Ensure you update any connected services to prevent downtime during the key rotation.
+A: The change is logged in the Audit Trail. You must also update the Merchant Key in any connected integration or payment gateway configuration to avoid transaction failures caused by credential mismatch.
 
-**Q: Can I deactivate a merchant immediately?**
-A: Yes. Changing the **Status** to **INACTIVE** in the profile will disable their operational capabilities on the platform while preserving their data for audit purposes.
+**Q: Can I deactivate a merchant without deleting them?**
+A: Yes. Setting the Status to DEACTIVATE disables the merchant's access and transactions on the platform while preserving all their data, contracts, and audit history. This is the preferred approach over deletion, which is permanent.
+
+**Q: What does Entity Type affect downstream?**
+A: Entity Type determines how financial entries are categorized when transactions are posted. A merchant tagged as CUSTOMER generates Accounts Receivable entries. One tagged as SUPPLIER generates Accounts Payable entries. Getting this right at the time of onboarding prevents GL mis-postings later.
 
 **Q: Is there support for multi-currency merchants?**
-A: Merchant profiles support specific **Currency** and **AR/AP Type** definitions to facilitate correct financial settlement processes within the larger ecosystem.
+A: Yes. Credit limits can be denominated in specific currencies, and merchant-level currency settings drive how financial settlements are calculated and posted. The AR/AP Type field also factors into multi-currency settlement logic.
 
----
+**Q: What is the Merchant Contract Key?**
+A: The Merchant Contract Key is a system-generated unique identifier for the contract record itself — distinct from the Merchant ID and the Merchant Key. It is used internally for API calls and cross-system references to uniquely identify a specific contract without ambiguity.
+
+**Q: Why would a contract have multiple payment channels with different rates?**
+A: Different payment methods carry different processing costs. Credit card transactions typically carry higher MDR (Merchant Discount Rate) than FPX or e-wallet transactions. The rate card lets you formalize these different rates per channel in a single contract, so the correct fee is applied automatically for each transaction type.
