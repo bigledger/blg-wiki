@@ -10,6 +10,10 @@ tags:
 weight: 170
 ---
 
+{{< callout type="warning" >}}
+**Warning**: this documentation is still in review
+{{< /callout >}}
+
 ## Purpose and Overview
 
 The **OCR Cash Bill Applet** helps teams digitize physical receipts and process them through a controlled finance workflow. Instead of manually keying receipt details line-by-line, users upload images, review OCR output, map line items to financial items, and finalize records for downstream processing.
