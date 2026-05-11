@@ -13,6 +13,10 @@ tags:
 weight: 20
 ---
 
+{{< callout type="warning" >}}
+**Work in progress**: This applet documentation is in review.
+{{< /callout >}}
+
 ## Purpose and Overview
 
 The **Payment Voucher (Internal) Applet** is a structured tool for creating, reviewing, finalizing, and tracing internal payment vouchers. It combines expense entry, payment method selection, settlement control, and posting visibility in one workflow.
