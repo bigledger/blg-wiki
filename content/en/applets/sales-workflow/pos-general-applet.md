@@ -1,268 +1,229 @@
 ---
 title: "POS General Applet"
-description: "System Configuration & Administration Guide for Point-of-Sale terminal management and retail operations"
+description: "A simple guide for managing sales and store operations at the checkout counter"
 tags:
 - pos-module
 - point-of-sale
 - retail
-- terminal-management
-- cashier-operations
-- system-configuration
+- store-management
+- cashier-tools
+- system-setup
 weight: 200
 ---
 
 ## Purpose and Overview
 
-The **BigLedger POS General Applet** is engineered with a modular architecture that prioritizes front-end operational velocity without compromising back-end data integrity. From a systems perspective, this modularity allows the platform to maintain a consistent state across distributed multi-branch environments. For the Enterprise Architect, centralized administrative oversight is the primary mechanism for ensuring that every transaction aligns with corporate governance and fiscal standards.
+The **BigLedger POS General Applet** is a fast and easy-to-use tool designed for managing sales at the store counter. It helps you process customer orders quickly while keeping your records accurate across all your store locations. Managers can easily see and control all activities from one place, ensuring everything follows company rules and financial standards.
+
+### Who Benefits from This Applet?
+
+**Cashiers & Front-line Staff:**
+- Fast and easy interface for busy hours
+- Simple ways to start and end your shift
+- Instant view of available stock and item details
+
+**Store Managers & Supervisors:**
+- Real-time view of all sales activities
+- Tools to reprint receipts or fix simple mistakes
+- Easy ways to check daily totals and cash records
+
+**Finance & IT Administrators:**
+- Sales records automatically update your accounts
+- Easy control over payment methods and staff access
+- Secure and permanent history for tax and audit purposes
+
+**Business Owners & Executives:**
+- A single view of how all your stores are performing
+- Reduced risk of cash errors or fraud
+- Clear information to help make better business decisions
+
+### What Problems Does This Solve?
+
+**The "Disconnected Data" Problem:**
+
+Traditional sales systems often keep records only at the counter, which leads to:
+- Mismatches between store records and the main office
+- Trouble knowing exactly how much stock you have
+- Waiting a long time for sales reports
+
+**The BigLedger POS Solution:**
+
+- **Instant Updates** - Every sale is updated across your entire business immediately
+- **Manage Everything in One Place** - Control all your stores and counters from a single screen
+- **Automatic Bookkeeping** - Sales go directly into your accounts, preventing manual errors
+- **Secure Records** - Strict rules and automatic timestamps keep your records safe and honest
 
 {{< callout type="info" >}}
-**Core Concept:** The POS General Applet functions as the front-end capture point for retail operations, while the Cashbook Applet serves as the authoritative financial ledger. Successful integration requires seamless linking between these two systems.
+**Core Concept:** The POS applet is where you record sales at the counter. These records automatically flow into your main accounts (Cashbook) to keep your finances accurate.
 {{< /callout >}}
 
 ## Key Features Overview
 
 {{< cards >}}
-  {{< card title="Access Control" subtitle="Rigorous Permission Level hierarchy" link="#for-supervisors-managers" >}}
-  {{< card title="Environmental Defaults" subtitle="Global settings vs. Personalization" link="#for-admins-financeit" >}}
-  {{< card title="Financial Integration" subtitle="Cashbook linking and settlement methods" link="#financial-integration-cashbook-linking-and-settlement-methods" >}}
-  {{< card title="Operational Controls" subtitle="Sessions, Drawers, and Serial Management" link="#for-cashiers-front-line" >}}
-  {{< card title="Reporting & Audit" subtitle="Management intelligence and audit tools" link="#reporting-framework-and-audit-intelligence" >}}
-  {{< card title="Customer Display" subtitle="Enhanced secondary screen visibility" link="#pos-customer-display-extension" >}}
+  {{< card title="Access Rules" subtitle="Control who can perform specific tasks" link="#for-admins-setting-up-the-system" >}}
+  {{< card title="System Settings" subtitle="Set up your store and staff defaults" link="#for-admins-setting-up-the-system" >}}
+  {{< card title="Payment Methods" subtitle="Manage cash, cards, and e-wallets" link="#for-admins-setting-up-the-system" >}}
+  {{< card title="Shift Controls" subtitle="Manage shifts, cash drawers, and stock" link="#for-staff-start-your-shift" >}}
+  {{< card title="Reporting Tools" subtitle="Simple tools to track sales and history" link="#sales-reports-and-history" >}}
 {{< /cards >}}
 
-{{< figure src="/images/pos-general-applet/pos-overview-infographic.png" alt="From Scattered Sales to Centralized Control: Your Guide to the POS General Applet" caption="From Scattered Sales to Centralized Control: The Old Way (isolated terminals, manual cashbook entries, back-dating risks) vs The New Way (strict permission hierarchies, automated ledger synchronization, immutable audit trails)." >}}
+{{< figure src="/images/pos-general-applet/pos-overview-infographic.png" alt="From Scattered Sales to Centralized Control: Your Guide to the POS General Applet" caption="From Scattered Sales to Centralized Control: The Old Way (unconnected counters, manual records, risk of errors) vs The New Way (secure access, automatic updates, permanent records)." >}}
 
 ## Key Concepts
 
-### Understanding the POS Framework
+### Understanding how POS works
 
-Every POS system must address fundamental operational aspects. The POS General Applet provides structured handling:
+Every sales system needs to track three basic things. The BigLedger POS makes this simple:
 
-| Aspect | Component | Practical Example |
+| Question | Component | Example |
 |--------|-----------|------------------|
-| **Where** is the sale? | Branch / Terminal | Retail Storefront HQ, Terminal 1 |
-| **Who** is processing? | Sales Agent (Cashier) | John Doe (Agent ID 101) |
-| **How** is it paid? | Settlement Method | Credit Card, Cash, E-Wallet |
+| **Where** is the sale? | Store / Counter | Main Branch, Counter 1 |
+| **Who** is selling? | Staff (Cashier) | Jane Smith (Staff ID 102) |
+| **How** is it paid? | Payment Method | Credit Card, Cash, GrabPay |
 
 {{< callout type="tip" >}}
-**Real-World Example**: A customer buys a shirt. The Cashier (WHO) rings it up at Terminal 1 (WHERE). The customer pays with a Credit Card (HOW). The system logs this exactly to ensure accurate Z-reports at the end of the shift.
+**Real-World Example**: A customer buys a bag. The staff member (WHO) rings it up at Counter 1 (WHERE). The customer pays by Credit Card (HOW). The system records this exactly so you can check your totals at the end of the day.
 {{< /callout >}}
 
-### POS Hierarchy Structure
+### How the System is Organized
 
-Think of the retail settlement process as a structured flow:
+Think of your store operations as a simple flow:
 
 ```
-Organization
+Company
 │
-├── Branch / Terminal ──→ WHERE does the sale happen?
+├── Store / Counter ──→ WHERE does the sale happen?
 │   │
-│   └── Sales Agent (Cashier) ──→ WHO is processing the sale?
+│   └── Staff member ──→ WHO is making the sale?
 │       │
-│       └── POS Session ──→ WHEN is the shift open?
+│       └── Work Shift ──→ WHEN is the counter open?
 │           │
-│           └── Retail Transactions ──→ WHAT is being sold?
+│           └── Sales ──→ WHAT is being sold?
 │
-└── Cashbook / Ledger ──→ WHERE is the money deposited?
+└── Accounting ──→ WHERE is the money recorded?
     │
-    └── Settlement Methods ──→ HOW is the customer paying?
+    └── Payment Methods ──→ HOW is the customer paying?
 ```
 
-**Flow Through the Hierarchy:**
-1. **Organization**: Company-wide governance
-2. **Branch**: The physical store default settings
-3. **Sales Agent**: Individual accountability via Personalization
-4. **Session**: The temporal shift container 
-5. **Transaction**: The actual sales data
-6. **Cashbook**: The final verified financial repository
-
-### The "Golden Triangle" of POS
-
-To effectively manage the retail system, it is crucial to understand how the core components work together.
-
-| Component | Analogy | Definition | Example |
-|-----------|---------|------------|---------|
-| **Cashbook** | The "Vault" | The final authoritative financial ledger. | **UOB Bank Account** |
-| **Settlement Method** | The "Bridge" | The specific payment type mapped to the Cashbook. | **GrabPay Integration** |
-| **POS Terminal** | The "Register" | The physical/digital active branch where sales happen. | **Store Terminal 1** |
+**Steps in the Flow:**
+1. **Company**: Your overall business rules
+2. **Store**: The settings for each physical location
+3. **Staff**: Tracking who is responsible for each sale
+4. **Shift**: A record of work done during a specific time
+5. **Sales**: The actual items sold
+6. **Accounting**: The final place where all money is tracked
 
 ---
+
 
 ## Quick Start Guide
 
-### For Cashiers: Start Your Shift
+### For Staff: Start Your Shift
 
-**Goal:** Open a secure session to begin ringing up customers.
+**Goal:** Open your counter and start selling in 4 simple steps.
 
-1. **Log In:** Access the POS interface.
-2. **Personalization:** Ensure your Default Selection is set (Agent, Branch).
-3. **New Session:** Click to open a new operational session. This isolates all your shift data for the day.
-4. **Process Sales:** Ring up items and select the appropriate Settlement Method (Cash, Card).
+1. **Log In:** Open the POS and log in with your username and password.
+2. **Set your Defaults:** Go to **Default Selection** to make sure the right Store and Staff name are selected.
+3. **Start Shift:** Click **"New Session"** to start your work for the day. This keeps your cash and sales separate from other shifts.
+4. **Make Sales:** Scan items, enter serial numbers if needed, and choose how the customer is paying (Cash, Card, etc.) to finish.
 
-### For Managers: Adjusting Terminals
-
-**Goal:** Provide oversight and perform necessary overrides.
-
-1. **Review Bills:** Use the Cash Bill Listing to find transactions.
-2. **Reprint Receipts:** Authorized managers can reprint receipts for disputes.
-3. **Serial Number Swaps:** Correct scanned inventory serials post-finalization without deleting the whole transaction.
-
-### For Admins: Initial System Setup
-
-**Goal:** Connect the physical storefront to the central accounting ledger.
-
-1. **Create Cashbooks:** Define the financial vaults.
-2. **Define Settlement Methods:** Add Cash, Card, and E-Wallets.
-3. **Map to Branches:** Link the settlement methods to specific physical terminals.
-4. **Configure Permissions:** Restrict roles so standard users cannot "Change Date" or view "GP Visibility".
+**What happens next?** Your sales are instantly recorded in the main accounts and stock levels are updated.
 
 ---
 
-## For Cashiers (Front-Line)
+### For Managers: Supporting the Team
 
-### Advanced Operational Controls: Sessions, Drawers, and Serial Management
+**Goal:** Help staff and make sure sales records are correct.
 
-To maintain shift-based accountability and control over high-value inventory, leverage the system's temporal and serialized tracking tools.
+1. **Check Sales:** Use the **Cash Bill Listing** to see all recent sales.
+2. **Reprint Receipts:** If a customer needs another copy of a receipt, you can reprint it here.
+3. **Fix Serial Numbers:** If the wrong serial number was scanned, use the **Swap Serial Number** tool to fix it easily.
+4. **View Collections:** Check the **Cashier Collection** tool to see how much money has been collected by each payment method.
 
-**Session and Drawer Control:**
-* **Temporal Containers:** Once enabled, the standard sales UI is replaced by a "New Session" prompt. For example, a session opened on August 5th acts as a temporal container, isolating all transactional data and float movements for that specific shift.
-* **Hold and Recall:** During active sessions, the system allows for "Hold and Recall" functionality, permitting cashiers to suspend a transaction state and resume it later without losing data or blocking the terminal.
-
-**Serialized Inventory:**
-BigLedger POS is an "Auto-Final" system, meaning transactions are persisted and finalized immediately upon settlement.
-* **Serial Management:** Serialized items trigger a "Serial Number" tab. Input is facilitated via Manual Search (`+` button) or E-code scanning. The system validates the status as "Valid" or "Invalid" in real-time.
-
-{{< figure src="/images/pos-general-applet/pos-new-session.png" alt="New Session Prompt & Serial Number Management" caption="New Session Prompt & Serial Number Management" >}}
+**Need to check from home?** You can see all store activity in real-time from any device with manager access.
 
 ---
 
-## For Supervisors (Managers)
+### For Admins: Setting up the System
 
-### Administrative Foundation and Access Control
+**Goal:** Link your store to your main accounting in 4 steps.
 
-Visibility and functional access within the applet are governed by a rigorous **Permission Level hierarchy**. While the "Admin" role possesses unfettered visibility into modules such as Cash Bill Listing, Settlement Adjustments, and Gross Profit (GP) data, standard user roles are restricted to a subset of tools. This reduction of "operational noise" is a deliberate design choice to minimize input errors and cognitive load for front-end staff.
+1. **Create Accounts:** Define your "Money Vaults" (like Petty Cash or Bank Accounts) in the Cashbook Applet.
+2. **Add Payment Methods:** Create options like "Credit Card" or "E-Wallet" and link them to the right account.
+3. **Link to Stores:** Use the **Settlement Method Setting** to choose which payment methods are available at each store location. (Look for the "Red Color" warning if something is missing!)
+4. **Set Access Rules:** Choose who can use special features like "Change Date" or "View Profit" to keep your records safe.
 
-**Role Permissions Overview:**
-```
-[Administrator]
-  ├── Change Branch
-  ├── Change Date
-  ├── GP Visibility
-  └── Settlement Adjustment
+**Ongoing:** Check your **Z Report** settings to make sure your daily summaries show all the information you need.
 
-[Manager]
-  ├── Reprint Receipt
-  └── Swap Serial Number
+## Sales Reports and History
 
-[Standard User / Cashier]
-  ├── Basic Sales UI
-  └── Open/Close Session
-```
+The BigLedger POS provides simple tools to help you track your sales and check your records at the end of the day.
 
-| Function | UI Location / Context | Permission Requirement |
-|----------|-----------------------|------------------------|
-| **Reprint Receipt** | Cash Bill Listing Module | Manager / Administrator |
-| **Change Branch** | Main POS UI | Administrator / Multi-branch User |
-| **Change Date** | POS Header / Settings | Administrator Only |
-| **Swap Serial Number** | Cash Bill Listing | Manager / Administrator |
-| **GP Visibility** | Item Detail / Discount Tab | Administrator / Auditor |
-| **Settlement Adjustment** | Dedicated Admin Module | Administrator Only |
-
-{{< callout type="warning" >}}
-**Architectural Mandate: Audit Integrity**
-Restricting functions like "Change Date" and "GP Visibility" is fundamental to preventing back-dating fraud and protecting sensitive margin data. By locking the transactional timestamp to the server's system time for standard users, the system ensures an immutable audit trail.
-{{< /callout >}}
-
-{{< figure src="/images/pos-general-applet/pos-permission-settings.png" alt="Permission Settings UI: Configuring access control for different roles" caption="Permission Settings UI: Configuring access control for different roles" >}}
-
----
-
-## For Admins (Finance/IT)
-
-### Configuring Environmental Defaults: Global Settings vs. Personalization
-
-System efficiency in BigLedger relies on a hierarchy of configuration inheritance. 
-
-**Global vs Personalization Setup Flow:**
-```
-1. Global Settings (Set by Admin) -> Defines baseline for all users
-2. Personalization Menu (Set by User) -> Navigates to Default Selection
-3. Agent/Customer/Branch config -> Auto-populates data upon login
-```
-
-{{< callout type="tip" >}}
-**Analytical Perspective: Configuration Inheritance**
-This hierarchy utilizes a "User Override" logic. While the system maintains a "Static Default" for the branch, personalization allows roaming agents to maintain individual accountability. In shared-terminal retail environments, this ensures that the system accurately attributes performance and inventory movements to the specific authenticated agent rather than a generic terminal ID.
-{{< /callout >}}
-
-{{< figure src="/images/pos-general-applet/pos-personalization-menu.png" alt="User Personalization: Default Selection Menu" caption="User Personalization: Default Selection Menu" >}}
-
-### Financial Integration: Cashbook Linking and Settlement Methods
-
-The POS General Applet functions as the front-end capture point for the Cashbook Applet, which serves as the authoritative financial ledger. Successful integration requires a multi-step linking process:
-
-**Configuration Protocol:**
-1. **Cashbook Creation:** Before defining a payment method, a Cashbook (e.g., "UOB Bank Account") must be created.
-2. **Settlement Method Definition:** Define specific methods (e.g., UOB Credit Card, GrabPay, Cash) and link them to their respective Cashbook source.
-3. **Branch Linking:** Navigate to the "Settlement Method Setting" to map these methods to specific Branches.
-
-{{< callout type="important" >}}
-**The "Red Color" Fail-Safe:**
-The UI utilizes red color coding to indicate unlinked settlement methods. If a method is not explicitly mapped to the active branch, it will not appear in the POS interface. This prevents cross-branch accounting errors!
-{{< /callout >}}
-
-{{< figure src="/images/pos-general-applet/pos-settlement-method-linking.png" alt="Settlement Method Setting: Linking payment methods to specific branches" caption="Settlement Method Setting: Linking payment methods to specific branches" >}}
-
----
-
-## Reporting Framework and Audit Intelligence
-
-The BigLedger POS reporting suite transforms raw transactional data into actionable management intelligence, providing the final link in the administrative loop.
-
-* **Cash Bill Listing:** This provides document-level detail. It is the primary interface for locating specific transactions via advanced filtering (Date, Branch, Status). 
-* **Cashier Collection:** This module functions as a line-item method analysis. It displays every discrete payment received during a period. Users can utilize the "Drag and Group" UI feature to organize collections by Settlement Method.
-* **Z Report:** The summary-level end-of-day instrument. It aggregates all session data, including Net Sales, rounding adjustments, void counts, and the User ID of the responsible agent.
+* **Detailed Sales Records:** Use the **Cash Bill Listing** to see every sale made. You can filter by date, store, or status to find exactly what you need.
+* **Breakdown of Payments:** The **Cashier Collection** tool shows you a list of all payments received. You can group them by payment type (like Cash or Card) to see how much you collected for each.
+* **Daily Sales Summary (Z-Report):** This is your end-of-day report. It shows total sales, any rounding, canceled orders, and who was responsible for the shift.
 
 {{< callout type="info" >}}
-**Audit Intelligence: The Finance Cross-Check**
-The "So What?" of the reporting framework lies in its utility for the Finance Department. By exporting the Z Report to PDF, administrators provide Finance with a static record to cross-check physical credit card slips and bank statements against the digital system of record.
+**How to check your cash:**
+The Z-Report is the best way to double-check your physical cash and card slips against the system. You can export it to PDF and send it to your finance team for their final checks.
 {{< /callout >}}
 
-{{< figure src="/images/pos-general-applet/pos-z-report-export.png" alt="Z Report PDF Export: The definitive audit document for finance reconciliation" caption="Z Report PDF Export: The definitive audit document for finance reconciliation" >}}
+{{< figure src="/images/pos-general-applet/pos-z-report-export.png" alt="Exporting the daily sales summary for records" caption="Exporting the daily sales summary for records" >}}
+
 
 ---
 
-## POS Customer Display (Extension)
+## Common Examples
 
-The **POS Customer Display** is a specialized retail extension designed to manage a secondary monitor facing the customer. It provides real-time transaction transparency and promotional messaging.
+### Example 1: Paying with Cash and E-Wallet
+**Situation:** A customer wants to pay RM 50 in cash and the rest (RM 150) using an E-Wallet.
 
-{{< figure src="/images/pos-customer-diplay-applet/pos-customer-display-main.png" alt="POS Customer Display Interface" caption="POS Customer Display: Real-time transaction visibility and promotional space." >}}
-
-### Key Functions
-*   **Idle State**: Displays promotional slideshows or branding when the terminal is not in use.
-*   **Active State**: Shows a live itemized list and totals as the cashier scans products.
-*   **Payment State**: Presents the final total and integrated QR codes (e.g., TNG, GrabPay) for rapid checkout.
-
-### Quick Setup
-1.  **Hardware**: Connect a secondary monitor via HDMI/USB.
-2.  **Launch**: Within the POS interface, click the **Launch Display Window** button.
-3.  **Position**: Drag the window to the secondary screen and maximize it to fill the display.
+**Steps:**
+1. Scan the items.
+2. Choose **Cash** and type "50".
+3. Choose **E-Wallet** for the rest.
+4. The system finishes the sale.
+5. **Result:** Stock is updated immediately, and the money is recorded in the right place.
 
 ---
 
-## Integration Points
+### Example 2: Fixing a Serial Number Mistake
+**Situation:** After the sale, you realize the wrong serial number was scanned for a product.
 
-### Core Module Dependencies
-- **[Inventory Item Maintenance Applet](/applets/inv-item-maintenance-applet/)** - Product information
-- **[Customer Maintenance Applet](/applets/customer-maintenance-applet/)** - Customer data
-- **[Cashbook Applet](/applets/cashbook-applet/)** - Payment processing
-- **[Tax Configuration Applet](/applets/tax-configuration-applet/)** - Sales tax calculations
+**Steps:**
+1. Open the **Cash Bill Listing**.
+2. Find the sale.
+3. Click **Fix Serial Number** (Swap Serial).
+4. Enter the correct number and save.
+5. **Result:** The system fixes the stock records for both items without you having to cancel the whole sale.
 
 ---
 
-## Related Applets
+### Example 3: Closing your Shift
+**Situation:** Your shift is over and you need to hand over the cash drawer.
 
-- **Cashier Operations Applet**
-- **POS Inventory Applet**
-- **Receipt Management Applet**
-- **POS Reporting Applet**
+**Steps:**
+1. Click **Close Shift**.
+2. The system gives you a **Summary Report** (Z-Report).
+3. Count your cash and check it against the report.
+4. Save or print the report for the finance team.
+5. **Result:** Your shift is safely closed, and the records are locked to prevent changes.
+
+---
+
+## Other Helpful Tools
+
+### Linked Apps
+- **[Stock Management](/applets/inv-item-maintenance-applet/)** - Manage product details
+- **[Customer Records](/applets/customer-maintenance-applet/)** - Manage customer information
+- **[Accounting Vaults](/applets/cashbook-applet/)** - Track your money
+- **[Tax Settings](/applets/tax-configuration-applet/)** - Set up sales tax
+
+---
+
+## Related Guides
+
+- **Cashier Daily Tasks**
+- **Store Inventory Tools**
+- **Receipt Management**
+- **Sales Reports**
