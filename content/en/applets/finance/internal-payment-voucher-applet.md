@@ -1,96 +1,84 @@
 ---
 title: "Payment Voucher (Internal) Applet"
-description: "End-to-end Payment Voucher (Internal) processing: create vouchers, manage expenses and payments, handle settlements and adjustments, and export or import vouchers in bulk."
+description: "Comprehensive internal payment voucher management system for expense settlement, contra handling, adjustments, and audit traceability"
 tags:
-- internal-payment-voucher
-- finance
+- payment-voucher
+- internal-payment
 - accounts-payable
-- payments
 - settlement
 - contra
 - intercompany
-- import
-- export
+- file-import
+- file-export
 weight: 20
 ---
 
 {{< callout type="warning" >}}
-**Work in progress**: This applet documentation needs changes and more explaination.
+**Work in progress**: This applet documentation is in review.
 {{< /callout >}}
 
 ## Purpose and Overview
 
-The **Payment Voucher (Internal) Applet** streamlines the full lifecycle of internal payment vouchers, from creation and expense capture to settlement, adjustments, and final posting. It brings together voucher header details, expense lines, payment lines, and traceability so finance teams can process payments with speed and control across the main menus: **Payment Voucher (Internal)**, **File Import**, **File Export**, **Intercompany**, **Settlement Adjustment**, and **Expenses Adjustment**.
+The **Payment Voucher (Internal) Applet** is a structured tool for creating, reviewing, finalizing, and tracing internal payment vouchers. It combines expense entry, payment method selection, settlement control, and posting visibility in one workflow.
 
 {{< callout type="info" >}}
-**Core Concept**: The applet links **who** is paid (entity/supplier) to **what** is paid (expense lines) and **how** it is settled (payment lines, contra, and adjustments) while preserving posting and audit traceability.
+**Core Concept**: The applet links **who** is paid (entity or supplier) to **what** is paid (expense lines) and **how** it is settled (payment lines, contra, and adjustments).
 {{< /callout >}}
-
-## About the Applet
-
-- **Purpose**: Create, track, and finalize internal payment vouchers with settlement, adjustments, and audit controls.
-- **Target Users**: Accounts Payable clerks, finance executives, treasury/payment operations, and finance controllers.
-- **Key Features**: Voucher lifecycle management, expense and line-item capture, payment and settlement handling, adjustments and contra, intercompany processing, file import/export, and operational controls like **Final/Discard/Void**, **Send Email**, **Single/Multiple Print**, and **Clone**.
-
-## Key Features Overview
 
 ### Who Benefits from This Applet?
 
 **Accounts Payable and Finance Executives:**
-- Fast voucher creation and controlled edits
-- Clear visibility of expenses, payments, and balances
-- Built-in actions to final, discard, or void
+- Faster voucher creation and updates
+- Clear visibility of expense, payment, and balance position
+- Controlled actions such as **Final**, **Discard**, and **Void**
+
+**Managers and Controllers:**
+- Easier document review before finalization
+- Better control of settlement and correction flows
+- Stronger posting and audit traceability
 
 **Treasury and Payment Operations:**
-- Organized payment lines and settlement tracking
+- Structured payment lines for payment execution
 - Export-ready payment files for bank processing
-- Better coordination of payment timing and method
+- Better control of payment timing and method
 
-**Finance Managers and Controllers:**
-- Review-ready documents and settlement consistency
-- Trace document visibility before period close
-- Audit trails for compliance
-
-**Auditors and Compliance:**
-- Full history of voucher changes and status
-- Traceability from voucher to posting
-- Attachment and document linkage
+**Auditors and Compliance Teams:**
+- Full history of voucher status and changes
+- Traceable links to posting impact
+- Supporting attachments and document relationships
 
 ### What Problems Does This Solve?
 
 **The Manual Payment Voucher Problem:**
 
-Manual payment vouchers often lead to:
+Manual processes often cause:
 - Missing or inconsistent expense details
-- Slow approvals and late payments
+- Slow review and delayed payment processing
 - Unclear settlement balances
-- Weak audit trails and poor traceability
+- Weak traceability for posting and audit
 
 **The Payment Voucher (Internal) Applet Solution:**
 
-- **Structured voucher capture** with header, expenses, and payments
-- **Built-in settlement controls** and adjustments
-- **Contra handling** to offset balances
-- **Intercompany processing** for cross-entity settlement
-- **Export-ready files** for downstream payment runs
-- **Audit-ready visibility** through trace and logs
+- **Structured voucher capture** for header, expenses, and payment lines
+- **Controlled settlement handling** with adjustments and contra
+- **Trace-ready posting visibility** through Trace Document and logs
+- **Bulk file operations** for import and export
+- **Role-based controls** for finance operations and approvals
 
 ## Key Features Overview
 
 {{< cards >}}
-  {{< card title="Voucher Management" subtitle="Create, edit, and finalize internal payment vouchers" link="#voucher-management" >}}
+  {{< card title="Voucher Management" subtitle="Create, edit, and finalize internal payment vouchers" link="#for-daily-users" >}}
   {{< card title="Line Item and Expenses" subtitle="Capture expense details with cost coding" link="#line-item-and-expenses" >}}
-  {{< card title="Payments and Settlement" subtitle="Add payment lines and manage settlement" link="#payments-and-settlement" >}}
-  {{< card title="Adjustments and Contra" subtitle="Handle expenses and settlement adjustments" link="#adjustments-and-contra" >}}
-  {{< card title="File Import" subtitle="Bulk creation of payment vouchers" link="#file-import" >}}
+  {{< card title="Payments and Settlement" subtitle="Select payment method and settlement lines" link="#payments-and-settlement" >}}
+  {{< card title="Adjustments and Contra" subtitle="Correct post-final mismatches and offset balances" link="#adjustments-and-contra" >}}
+  {{< card title="Intercompany Processing" subtitle="Process unprocessed and processed intercompany queues" link="#intercompany-processing" >}}
+  {{< card title="File Import" subtitle="Bulk upload payment vouchers" link="#file-import" >}}
   {{< card title="File Export (CSV)" subtitle="Generate payment export files by date" link="#file-export-csv" >}}
-  {{< card title="Intercompany Processing" subtitle="Track unprocessed and processed intercompany" link="#intercompany-processing" >}}
-  {{< card title="Trace and Audit" subtitle="Trace documents and audit logs" link="#trace-and-audit" >}}
+  {{< card title="Trace and Audit" subtitle="Validate posting impact and audit logs" link="#reporting-and-audit" >}}
 {{< /cards >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/internal-payment-voucher-overview.png" alt="Payment Voucher (Internal) overview infographic" caption="Infographic highlighting challenges, solutions, and beneficiary roles." >}}
-
-internal-payment-voucher-overview
+{{< figure src="/images/internal-payment-voucher-applet/internal-payment-voucher-overview.png" alt="Payment Voucher (Internal) overview infographic" caption="Overview of payment voucher processing, settlement control, and traceability." >}}
 
 ## Key Concepts
 
@@ -100,27 +88,29 @@ internal-payment-voucher-overview
 |--------|-----------|------------------|
 | **Who** is paid? | Entity or Supplier | Vendor ABC Trading |
 | **What** is paid? | Expense Line Item | Freight Charge, RM 2,500 |
-| **How** is it settled? | Payment Line and Settlement | Bank transfer, contra offset |
-| **Where** does it post? | AR/AP and Trace Document | Posting to AP and Cashbook |
+| **How** is it settled? | Payment Line and Method | Bank transfer, cash, cheque |
+| **Where** does it post? | GL and Cashbook Trace | Freight expense GL and cashbook |
 
 {{< callout type="tip" >}}
-**Example**: A payment voucher for freight charges is created, linked to the supplier, assigned cost coding, paid via bank transfer, and traced to the final posting for audit.
+**Real-World Example**: A freight expense voucher is created for a supplier, settled by bank transfer, finalized, and then traced to journal and cashbook postings.
 {{< /callout >}}
 
 ### Payment Voucher Hierarchy Structure
 
+Think of payment voucher processing as a structured flow:
+
 ```
 Organization
 │
-├── Entities/Suppliers ──> WHO is paid?
+├── Entity/Supplier ──> WHO is paid?
 │   │
 │   └── Voucher Header ──> Core document details
 │       │
-│       ├── Account & Address Details
-│       ├── Expense Lines & Cost Coding
-│       └── Payment Lines & Settlement
+│       ├── Account Details
+│       ├── Expense Lines
+│       └── Payment Lines
 │
-└── Adjustments & Contra ──> Balance corrections
+└── Adjustments and Contra ──> Balance corrections
     │
     └── Trace Document ──> Posting visibility
 ```
@@ -128,223 +118,171 @@ Organization
 **Flow Through the Hierarchy:**
 
 1. **Organization**: Company policies and controls
-2. **Entity**: Supplier or payee
-3. **Voucher Header**: Branch, date, currency, reference
-4. **Expenses**: Line items and cost allocation
-5. **Payments**: Method and settlement details
-6. **Adjustments/Contra**: Corrections and offsets
-7. **Trace Document**: Posting status and audit
+2. **Entity/Supplier**: Payee and account details
+3. **Voucher Header**: Date, branch, currency, and references
+4. **Expenses**: Expense lines and allocations
+5. **Payment**: Settlement method and payment amounts
+6. **Adjustments/Contra**: Corrections and offsets when needed
+7. **Trace Document**: Posting verification and audit tracking
 
-### The "Settlement Triangle" of Payments
+### The "Golden Triangle" of Payments
 
 | Component | Role | Example |
 |-----------|------|---------|
-| **Voucher Header** | The document to be paid | IPV-2026-00045 |
-| **Payment Lines** | How the payment is executed | Bank transfer, cheque |
-| **Settlement/Contra** | How the balance is cleared | Offset against AP invoice |
+| **Voucher Header** | The payment document | IPV-2026-00045 |
+| **Payment Lines** | How payment is executed | Bank transfer, cheque |
+| **Contra** | How balance is offset | Offset against related AP document |
 
-This triangle keeps payment processing consistent and auditable. If one side changes, the other two must be reviewed to keep the voucher balanced.
+**How they link:**
+1. You create the voucher header and expense lines.
+2. You add payment lines to settle the amount.
+3. You use contra only when a true document offset is required.
+4. You verify the final balance in AR/AP before finalizing.
 
 ---
 
 ## Quick Start Guide
 
-{{< figure src="/images/internal-payment-voucher-applet/internal-payment-voucher-quick-start.png" alt="Quick start infographic for Payment Voucher (Internal)" caption="Role-based quick start flow for creating, reviewing, and exporting vouchers." >}}
+Get started quickly with these essential workflows.
+
+{{< figure src="/images/internal-payment-voucher-applet/internal-payment-voucher-quick-start.png" alt="Quick start infographic for Payment Voucher (Internal)" caption="Role-based quick start guide for finance users, managers, and admins." >}}
 
 ### For Finance Executives: Create Your First Payment Voucher
 
+**Goal:** Create, balance, and save a payment voucher correctly.
+
 1. Go to **Payment Voucher (Internal)** from the sidebar.
-{{< figure src="/images/internal-payment-voucher-applet/pv.png" alt="Payment Voucher (Internal) listing" caption="Listing view with filters, actions, and email template selection." >}}
-2. Click **+** and fill main details (branch, company, date, currency, reference).
-{{< figure src="/images/internal-payment-voucher-applet/pv-add.png" alt="Add Payment Voucher (Internal) button" caption="Plus button on the listing used to create a new voucher." >}}
-3. Open **Account** and select the entity, billing, and shipping details.
-{{< figure src="/images/internal-payment-voucher-applet/pv-entity.png" alt="Account tab with Entity Details" caption="Entity Details fields for the payee in the Account tab." >}}
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-entity-select.png" alt="Select Entity dialog" caption="Entity selection list used to populate Account details." >}}
-
-4. Open **Expenses** and add line items with amounts and cost coding.
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-expenses.png" alt="Expenses tab with item list and Select Item" caption="Expenses tab with line list and item selection panel." >}}
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-expenses-line.png" alt="Add Item form - Item Details" caption="Add Item form showing Item Details fields." >}}
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-batch.png" alt="Add Item form - Batch Number" caption="Batch Number tab for lot-controlled items." >}}
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-sn.png" alt="Add Item form - Serial Number" caption="Serial Number tab for serialized items with scan/import." >}}
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-bi.png" alt="Add Item form - Item Details (Main Details)" caption="Item Details main fields for the selected item." >}}
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-cost.png" alt="Add Item form - Costing Details" caption="Costing Details tab for cost allocation and pivot view." >}}
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-issue-link.png" alt="Add Item form - Issue Link" caption="Issue Link tab for linking related issues or tickets." >}}
-
+2. Click **+** and enter voucher header details (branch, date, currency, reference).
+3. Open **Account** and select entity, billing, and shipping details.
+4. Open **Expenses** and add line items with amount and allocation.
 5. Open **Payment** and add payment lines to match the payable amount.
+6. Review **AR/AP** balance.
+7. Save as draft or click **Final** when complete.
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-payment.png" alt="Payment tab in voucher edit" caption="Payment tab ready for settlement lines." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv.png" alt="Payment Voucher listing" caption="Payment Voucher listing with actions and filters." >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-payment-add.png" alt="Add Settlement drawer" caption="Add Settlement form with Settlement Group and Method." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-add.png" alt="Add payment voucher" caption="Use the plus button to create a new voucher." >}}
 
-**Settlement Type Reference (examples; depends on your configured payment methods):**
+{{< figure src="/images/internal-payment-voucher-applet/pv-entity.png" alt="Account tab entity details" caption="Entity details and payee information in Account tab." >}}
 
-| Settlement Type | When to Use | Notes |
-|-----------------|-------------|-------|
-| **Cash** | Cash payment at point of processing | Posts to cashbook when finalized |
-| **Bank Transfer** | Bank-to-bank payment | Capture bank reference if required |
-| **Cheque** | Cheque-based payment | Record cheque number and date |
-| **Contra/Offset** | Offset against related documents | Reduces open balance without cash movement |
-| **Other (FPX/e-Wallet)** | Digital payment channels | Use if configured in your settlement methods |
+{{< figure src="/images/internal-payment-voucher-applet/pv-expenses.png" alt="Expenses tab" caption="Add expense lines and costing details in Expenses tab." >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-payment-data.png" alt="Payment lines with totals" caption="Payment line list showing total payment and balances." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-payment.png" alt="Payment tab" caption="Add settlement/payment lines in Payment tab." >}}
 
-6. Review **AR/AP** or **Settlement Adjustment** if the balance is not zero.
+{{< figure src="/images/internal-payment-voucher-applet/pv-arap.png" alt="ARAP tab" caption="Review settlement, contra, and outstanding balance in AR/AP." >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-arap.png" alt="AR/AP tab summary" caption="AR/AP summary for settlement, contra, and outstanding balances." >}}
-
-7. Add **Doc Link** or **Attachments** if approvals or invoices must be stored.
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-doc-link.png" alt="Doc Link tab" caption="Doc Link tab for linking related documents." >}}
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-attach.png" alt="Attachments tab" caption="Attachments tab for uploading supporting files." >}}
-
-8. Click **Save** for draft or **Final** to lock the voucher.
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-save.png" alt="Save action in voucher edit" caption="Save button on the voucher form." >}}
-
-**What happens next?** Managers or controllers can review and finalize, and the trace document will reflect posting status when available.
-
-{{< callout type="tip" >}}
-**Pro Tip**: Use **Send Email** and **Single/Multiple Print** from the listing to speed up communication and approvals.
+{{< callout type="info" >}}
+**Doc Link behavior**: Doc Link is used for KO relationships generated by document flow. Users do not manually free-link documents.
 {{< /callout >}}
-
----
 
 ### For Managers/Controllers: Review and Finalize
 
-1. Open **Payment Voucher (Internal)** and filter by status or date.
-{{< figure src="/images/internal-payment-voucher-applet/pv-stat-date.png" alt="Advanced search filters" caption="Status and date range filters for the listing." >}}
-2. Review **Main Details**, **Expenses**, and **Payment** tabs for completeness.
-{{< figure src="/images/internal-payment-voucher-applet/pv-edit.png" alt="Edit Payment Voucher (Internal) - Main Details" caption="Edit view showing Main Details fields and actions." >}}
+**Goal:** Review accuracy and finalize only balanced vouchers.
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-expenses-edit.png" alt="Expenses tab in edit view" caption="Expenses tab with line items and totals." >}}
+1. Open **Payment Voucher (Internal)** and filter by status/date.
+2. Review **Main Details**, **Expenses**, and **Payment** tabs.
+3. Check **Settlement Adjustment** or **Contra** only if balances do not align.
+4. Review **Trace Document** readiness.
+5. Click **Final** when all checks pass.
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-payment-edit.png" alt="Payment tab in edit view" caption="Payment tab showing settlement lines and totals." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-edit.png" alt="Edit payment voucher" caption="Review voucher content before finalizing." >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-payment-edit-1.png" alt="Edit Payment form" caption="Edit Payment form with Settlement Type, Method, Date, and Amount." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-payment-edit.png" alt="Payment edit tab" caption="Validate payment lines and totals in edit mode." >}}
 
-3. Check **Settlement Adjustment** or **Contra** if balances do not align.
+{{< figure src="/images/internal-payment-voucher-applet/pv-contra.png" alt="Contra tab" caption="Use Contra tab for valid document offset scenarios." >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-contra.png" alt="Contra tab in voucher edit" caption="Contra tab listing offsets and balances." >}}
+{{< callout type="info" >}}
+**Separate these two flows clearly:**
+- **Payment to supplier**: Use the Payment tab to settle the supplier amount.
+- **Payment to expense**: If **Expense = Payment** (for example RM100 expense and RM100 payment), voucher balance is 0, so **no contra is needed**.
+{{< /callout >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-contra-add.png" alt="Add Contra button" caption="Plus button used to add a contra document." >}}
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-contra-add-1.png" alt="Select document to contra" caption="Selection list for choosing documents to offset." >}}
-
-4. Review **Trace Document** (if available) to confirm posting readiness.
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-trace-doc.png" alt="Trace Document tabs" caption="Trace Document tabs for Journal, Cashbook, Points, Tax, and Inventory." >}}
-
-**Trace Document Differences**
-
-| Trace Type | What It Represents | When It Appears | Why It Matters |
-|------------|--------------------|----------------|----------------|
-| **Journal Txn** | General ledger postings | After voucher is **Final** and GL posting is created | Confirms debit/credit accounts and amounts |
-| **Cashbook Txn** | Cash or bank movements | After voucher is **Final** and settlement method posts to cash/bank | Validates cash/bank impact and references |
-| **Points Txn** | Points ledger movement | Only when points-based settlement is used | Confirms points redemption or accrual entries |
-| **Tax Txn** | Tax-related postings | When tax is applied on expense lines | Validates tax amount and tax account mapping |
-| **Inv Txn** | Inventory movement postings | When expenses affect inventory items | Confirms stock impact and valuation entries |
-
-5. Click **Final** to approve, or **Query** offline if corrections are needed.
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-final.png" alt="Final action in Trace Document view" caption="Final button highlighted with Trace Document tab open." >}}
-
----
+{{< figure src="/images/internal-payment-voucher-applet/pv-trace-doc.png" alt="Trace document tabs" caption="Trace journal, cashbook, points, tax, and other posting traces." >}}
 
 ### For Admins: Initial System Setup
 
-1. Configure **Settings > Application Settings** to show or hide key tabs.
+**Goal:** Configure core settings for stable voucher operations.
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-app-setting.png" alt="Application Settings" caption="Application Settings for field visibility and tab configuration." >}}
+**Step 1: Application Settings** (`Settings > Application Settings`)
+- Configure tab visibility and field behavior
+- Enable or disable optional flows
 
-2. Set defaults in **Settings > Default Selection** for faster entry.
+{{< figure src="/images/internal-payment-voucher-applet/pv-app-setting.png" alt="Application settings" caption="Application settings for feature visibility and behavior." >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-deff-setting.png" alt="Default Selection settings" caption="Default Selection settings for branch and location defaults." >}}
+**Step 2: Default Selection** (`Settings > Default Selection`)
+- Configure default branch and location values
+- Reduce manual input during voucher creation
 
-3. Define **Printable Format Settings** for voucher output.
+{{< figure src="/images/internal-payment-voucher-applet/pv-deff-setting.png" alt="Default selection settings" caption="Default settings for faster and consistent data entry." >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-print-format.png" alt="Printable Format Settings listing" caption="Printable Format Settings listing for voucher templates." >}}
+**Step 3: Printable Format Settings** (`Settings > Printable Format Settings`)
+- Set voucher print layout and output templates
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-print-add.png" alt="Add Printable Format" caption="Add Printable Format form with upload area." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-print-format.png" alt="Printable format settings" caption="Manage printable templates for voucher output." >}}
 
-4. Configure **Email Template** for voucher notifications.
+**Step 4: Email Template** (`Settings > Email Template`)
+- Configure voucher email subject and body templates
+- Ensure correct recipient communication format
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-email.png" alt="Email Template listing" caption="Email Template list for voucher notifications." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-email.png" alt="Email template settings" caption="Email template management for voucher sending." >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-email-add.png" alt="Create Email Template form" caption="Create Email Template form with printable format and template body." >}}
+**Step 5: Permissions and Feature Visibility**
+- Control user access to actions and menus
+- Verify finance roles can perform required tasks
 
-5. Review **Permissions** and field visibility for role-based access.
+{{< figure src="/images/internal-payment-voucher-applet/pv-perm-setting.png" alt="Permission settings" caption="Permission and role-based access control configuration." >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-perm-setting.png" alt="Permission Set settings" caption="Permission Set listing for role-based access." >}}
-
-6. Test a full voucher flow (create → payment → final → trace).
-
-
-
----
-
-### For Treasury/Payment Ops: Generate a Payment Export (CSV)
-
-1. Open **File Export** from the sidebar.
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-export.png" alt="Payment Voucher File Export listing" caption="File Export listing with Generate CSV and export history." >}}
-
-2. Select the transaction date range.
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-export-date.png" alt="File Export date range filters" caption="Choose transaction date range before generating CSV." >}}
-
-3. Click **Generate CSV** to download the payment file.
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-generate-csv.png" alt="Generate CSV action" caption="Generate CSV button in File Export." >}}
-
-4. Confirm the export appears in the listing.
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-saved-gene.png" alt="Generated export entry" caption="Export listing showing a generated CSV with download action." >}}
+**Step 6: Test End-to-End Flow**
+- Create test voucher
+- Add expenses and payment lines
+- Finalize and verify trace visibility
 
 ---
-
-### For Finance Operations: Bulk Import Payment Vouchers
-
-1. Open **File Import** from the sidebar.
-{{< figure src="/images/internal-payment-voucher-applet/pv-file-import.png" alt="File Import listing" caption="File Import listing with uploaded files and statuses." >}}
-2. Download and fill the import template (Excel/CSV). The Excel/CSV template file can be download from File Export menu
-
-3. Upload the file and review the **Checking** tab.
-{{< figure src="/images/internal-payment-voucher-applet/pv-import-check.png" alt="File Import Checking tab" caption="Checking tab showing validation results." >}}
-4. Fix errors and re-upload if needed.
-5. Confirm the import and review the created vouchers.
-
 
 {{< callout type="tip" >}}
-**New rollout checklist**: Validate a full workflow from draft to final, including payment lines, adjustments, and trace document visibility.
+**New to the system?** Start in this order:
+1. Finance users submit and save a test voucher.
+2. Managers practice review and finalization.
+3. Admins validate settings and permissions.
 {{< /callout >}}
 
 ---
 
-## Payment Allocation and Settlement Tracking
+## Settlement Tracking
 
-Payment vouchers are only complete when the settlement position is clear. This section explains how to confirm what is paid, what is offset, and what remains outstanding.
+**Monitor settlement balances and outstanding amounts in real time.**
+
+### What is Settlement Tracking?
+
+Settlement Tracking shows how much of a voucher is already settled, what remains outstanding, and whether corrections are needed before finalization.
+
+**For Finance Users:**
+- Confirm payment lines match expense lines
+- Avoid incorrect contra usage
+- Finalize only when balance checks pass
+
+**For Managers and Controllers:**
+- Validate correction flows before final approval
+- Ensure posting-impact documents are accurate
+
+**For Treasury Operations:**
+- Confirm payable position before export runs
+- Reduce payment and reconciliation exceptions
 
 ### How to Check Your Settlement Position
 
-1. Open the voucher and go to the **Payment** tab to review payment lines.
-2. Check **Settlement Adjustment** for corrections or balance fixes.
-3. Use **AR/AP** (edit view) to verify outstanding and settled amounts.
-4. Recheck totals after any **Expenses** or **Payment** edits.
+1. Open the voucher in edit mode.
+2. Review all payment lines in **Payment** tab.
+3. Review **AR/AP** for outstanding and settled amounts.
+4. If required, review **Settlement Adjustment** or **Contra**.
+5. Recheck totals after any expense or payment update.
 
 ### Key Features
 
-- Real-time recalculation when payments or expenses change
-- Settlement adjustment workflows for corrections
-- Contra support for offsetting related documents
+- Real-time recalculation after payment and expense edits
+- Correction flow through Settlement Adjustment
+- Contra support for document-to-document offsets
+- AR/AP visibility for pre-final verification
 
 ### Common Scenarios
 
@@ -363,225 +301,190 @@ Contra offset: RM 3,000
 Status: Fully settled
 ```
 
+**Scenario 3: Expense and Payment Fully Matched**
+```
+Expense total: RM 100
+Payment total: RM 100
+Voucher balance: RM 0
+Action: No contra required
+```
+
 ### Tips for Finance Teams
 
 - Recheck settlement after editing expense lines
-- Use adjustments for late corrections instead of reissuing vouchers
-- Confirm AR/AP tab balance before finalizing
+- Use adjustments for correction flows instead of reissuing documents
+- Finalize only after AR/AP balance validation
 
 ---
 
-## Voucher Management
+## For Daily Users
 
-The main workflow centers on the **Payment Voucher (Internal)** menu:
+This section is your practical reference for daily voucher operations.
 
-- **List and filter vouchers** with advanced search and column toggles
-- **Create, edit, and clone** vouchers from the listing
-- **Final, discard, or void** vouchers based on status and control policies
-- **Send email** and **print** vouchers from the listing (email requires a selected template)
-- **Template selection** for Send Email is available directly on the listing toolbar
+### Payment Voucher Listing and Edit Workspace
 
-{{< figure src="/images/internal-payment-voucher-applet/pv.png" alt="Payment Voucher (Internal) listing (alternate view)" caption="Listing view for Payment Voucher (Internal)." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv.png" alt="Payment voucher listing workspace" caption="Daily workspace for searching, creating, and acting on payment vouchers." >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-edit.png" alt="Payment Voucher (Internal) create/edit form" caption="Create/Edit form with tabs for details, expenses, and payment." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-edit.png" alt="Payment voucher edit workspace" caption="Edit workspace with tabs for details, expenses, payment, and trace." >}}
 
-**Common Statuses:**
+**What You Can Do:**
+- Create, edit, and clone vouchers
+- Use **Final**, **Discard**, and **Void** based on status
+- Send voucher email and print from listing
+- Track posting visibility in Trace Document
 
-| Status | Meaning | Typical Action |
-|--------|---------|----------------|
-| **Draft** | In progress | Continue editing and save |
-| **Final** | Approved and locked | Proceed to posting/trace |
-| **Discarded** | Cancelled before final | No posting impact |
-| **Voided** | Cancelled after final | Audit trail retained |
+### Common Statuses
 
-**Create/Edit Tabs (Core):**
+| Status | What It Means | Typical Action |
+|--------|---------------|----------------|
+| **Draft** | Work in progress | Continue editing and save |
+| **Final** | Finalized posting document | Trace and monitor |
+| **Discarded** | Draft cancelled | No posting impact |
+| **Voided** | Final document cancelled | Keep audit trail |
 
-- **Main Details**: Document header fields (branch, date, currency, reference).
-- **Account**: Entity, billing, and shipping details.
-- **Expenses**: Line items and cost coding.
-- **Payment**: Payment lines and settlement alignment.
-- **Department Hdr**: Department header coding.
-- **Doc Link**: Link to related documents.
+### Core Tabs in Edit View
 
-**Create/Edit Tabs (Edit-Only or Conditional):**
+- **Main Details**: Header information
+- **Account**: Entity and account-related details
+- **Expenses**: Expense lines and allocation
+- **Payment**: Settlement/payment line input
+- **Doc Link**: System-generated KO relationships
 
-- **Expenses Adjustment**: Correct expense allocation after creation.
-- **AR/AP**: Review outstanding and settled balances.
-- **Settlement Adjustment**: Correct settlement mismatches.
-- **Contra**: Offset balances against related documents.
-- **Trace Document**: Posting trace and downstream status.
-- **Attachments**: Supporting documents and approvals.
-- **Export**: Export voucher data when enabled.
-- **Sales Commission**: Link commission records when configured.
+### Conditional and Advanced Tabs
+
+- **AR/AP**: Outstanding and settled amount review
+- **Settlement Adjustment**: Post-final settlement corrections
+- **Expenses Adjustment**: Post-final expense corrections
+- **Contra**: Offset against related documents
+- **Trace Document**: Journal and cashbook visibility
+- **Attachments**: Supporting files
+- **Intercompany**: Cross-entity processing flow
 
 ---
 
 ## Voiding Payment Vouchers
 
-Use **Void** to cancel a voucher **after** it has been finalized, while keeping an audit trail. For drafts, use **Discard** instead.
+Use **Void** when a finalized voucher must be cancelled while preserving an audit trail. Use **Discard** for drafts.
 
 ### When to Use Void (Common Scenarios)
 
-- The voucher was finalized with the wrong entity or amount.
-- The payment was cancelled or should not proceed.
-- The expense lines were materially incorrect and must be reversed before re‑issuing.
-- The voucher was duplicated and needs to be cancelled cleanly.
+- Finalized voucher has incorrect supplier or amount
+- Payment should not proceed
+- Finalized voucher must be reversed for control reasons
+- Duplicate finalized voucher needs cancellation
 
 ### When to Use Discard Instead
 
-- The voucher is still in **Draft** and was created in error.
-- You want to abandon edits without creating a posting trail.
+- Voucher is still draft and should be abandoned
+- You want to cancel without creating posting impact
 
-### How to Void a Payment Voucher (User Guide)
+### How to Void a Payment Voucher
 
-1. Open **Payment Voucher (Internal)** from the sidebar.
-2. Filter and select the **Final** voucher you want to void.
-{{< figure src="/images/internal-payment-voucher-applet/pv-filter-final.png" alt="Search Filter for Posting Status FINAL" caption="Filter using Posting Status into FINAL to make it faster to search for Payment Voucher which have been FINAL" >}}
+1. Open **Payment Voucher (Internal)** listing.
+2. Filter for **Final** vouchers.
+3. Select target voucher and click **Void**.
+4. Confirm the void action.
+5. Verify posting status changes to **Voided**.
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-final-result.png" alt="Search result for FINAL" caption="All the payment voucher in the listing is with Posting Status FINAL" >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-filter-final.png" alt="Filter final vouchers" caption="Filter the listing by posting status FINAL before voiding." >}}
 
-3. Click **Void** from the listing action bar.
-{{< figure src="/images/internal-payment-voucher-applet/pv-void.png" alt="Void button" caption="Click in the VOID button to void the Payment Voucher" >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-void.png" alt="Void action" caption="Void action from listing toolbar." >}}
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-void-confirm.png" alt="Confirmation on void document" caption="Pop out confirmation to make sure user really want to VOID the Payment Voucher" >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-void-confirm.png" alt="Void confirmation" caption="Confirm void action before processing." >}}
 
-4. Confirm the action in the Pop out.
+### Handling Final or Posted Vouchers
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-void-success.png" alt="Successfuly VOID the payment voucher" caption="Pop out success message on voiding the document" >}}
-
-5. Verify the status becomes **Voided** by using the Search Filter.
-{{< figure src="/images/internal-payment-voucher-applet/pv-void-done.png" alt="Search recent VOID Payment Voucher" caption="Use the Search Filter to search for the VOID document using the Posting Status" >}}
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-void-result.png" alt="Show all the voided payment voucher" caption="All the voided Payment Voucher will show in the Payment Voucher Listing" >}}
-
-6. Open the voucher, then go to **Trace Document** in the edit view to review the posting trace; review **Applet Log** for audit confirmation.
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-before-void.png" alt="Payment Voucher before void" caption="Payment Voucher before void" >}}
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-void-after.png" alt="Payment Voucher after void" caption="Payment Voucher after void" >}}
-
-
-### Handling “Ready” or Posted Vouchers
-
-If a voucher is already **Final**, exported, or has settlement/trace entries:
-
-- **Check Trace Document** to see what has posted (Journal/Cashbook/Tax/Inv/Points). Note that Trace Document may still show the original postings even after a void, depending on your configuration.
-- **Confirm settlement status** in **Payment**, **AR/AP**, or **Settlement Adjustment**.
-- If your policy requires, **coordinate with finance control** before voiding.
-- If **Void** is not allowed, use **adjustments/contra** to correct balances and keep the audit trail intact.
+- Check **Trace Document** to understand current posting impact
+- Confirm settlement position in **Payment**, **AR/AP**, or **Settlement Adjustment**
+- Coordinate with finance control when policy requires pre-void review
+- If void is restricted, use adjustment or contra correction flows
 
 ---
 
-## Line Item and Expenses
+## Feature Reference
 
-Use the **Expenses** tab to capture detailed costs:
+### Line Item and Expenses
 
-- Line items with quantities and amounts
-- Pricing details and taxes
-- Department or cost coding for segment, project, profit center, and dimension
-- Item references such as serial, bin, or batch when applicable
-- Optional issue links and delivery details
+Use **Expenses** tab to capture:
+- Itemized expense amounts
+- Costing and allocation details
+- Optional item-level references such as serial or batch
 
----
+### Payments and Settlement
 
-## Payments and Settlement
+Use **Payment** tab to manage:
+- Payment method selection (bank, cash, transfer, cheque, and configured methods)
+- Multiple payment lines
+- Currency and exchange-rate impact (when enabled)
 
-The **Payment** tab manages how the voucher is paid:
+### Adjustments and Contra
 
-- Multiple payment lines per voucher
-- Multi-currency and forex handling when enabled
-- Settlement alignment with expenses and adjustments
-- Reviewable AR/AP position for outstanding balances
+Use these options for corrections:
+- **Expenses Adjustment** for expense-side corrections
+- **Settlement Adjustment** for payment-settlement corrections
+- **Contra** for valid document offset scenarios
 
-**Tip:** If the forex button is enabled, review the exchange rate before finalizing to avoid posting variance.
+{{< figure src="/images/internal-payment-voucher-applet/pv-adjust-set.png" alt="Settlement adjustment listing" caption="Settlement Adjustment listing for payment voucher corrections." >}}
 
----
+### Intercompany Processing
 
-## Adjustments and Contra
+Intercompany menu provides two queues:
+- **Unprocessed**: Transactions pending processing
+- **Processed**: Completed intercompany transactions
 
-For corrections and balancing:
+{{< figure src="/images/internal-payment-voucher-applet/pv-intercompany.png" alt="Intercompany listing" caption="Intercompany queue with Unprocessed and Processed tabs." >}}
 
-- **Expenses Adjustment**: Fix or reallocate expense line issues
-- **Settlement Adjustment**: Correct settlement mismatches
-- **Contra**: Offset balances against related documents
+#### Where Intercompany Data Comes From
 
-Use the **Settlement Adjustment** and **Expenses Adjustment** menus for a full listing view and audit.
+Intercompany records are generated from finalized vouchers with intercompany data in Account tab.
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-adjust-set.png" alt="Settlement Adjustment listing" caption="Settlement Adjustment listing for payment vouchers." >}}
+#### How to Create an Intercompany Transaction
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-expenses.png" alt="Expenses Adjustment listing" caption="Expenses Adjustment listing for payment vouchers." >}}
+1. Create or edit a voucher.
+2. Fill intercompany fields in **Account** tab.
+3. Save and finalize the voucher.
+4. Open **Intercompany** and process the new queue entry.
 
----
+### File Import
 
-## Intercompany Processing
+Bulk upload flow:
+1. Open **File Import**.
+2. Upload source file.
+3. Review **Checking** tab.
+4. Fix errors and re-upload if needed.
 
-The **Intercompany** menu separates work into two queues:
+{{< figure src="/images/internal-payment-voucher-applet/pv-file-import.png" alt="File import listing" caption="File Import listing with uploaded files and status tracking." >}}
 
-- **Unprocessed**: Pending intercompany transactions to be linked or resolved
-- **Processed**: Completed intercompany links for audit
+### File Export CSV
 
-This supports cross-entity payment flows without losing traceability.
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-intercompany.png" alt="Intercompany transaction listing" caption="Intercompany listing with unprocessed and processed tabs." >}}
-
-### Where Intercompany Data Comes From
-
-Intercompany records are generated from **Internal Payment Vouchers** that are flagged for intercompany processing. Once a voucher is saved and finalized, the system creates intercompany entries that appear in the **Unprocessed** queue for linking or resolution. Availability depends on your intercompany configuration and permissions.
-
-### How to Create an Intercompany Transaction
-
-1. Create or open an **Payment Voucher (Internal)**.
-2. Go to **Account** and open the **Intercompany** sub‑tab (if enabled).
-3. Select the intercompany entity/branch or required intercompany fields.
-4. Save and **Final** the voucher.
-5. Open **Intercompany** from the sidebar to view the new record under **Unprocessed**.
-6. Link or resolve it, then confirm it moves to **Processed**.
-
-**Tip:** If the Intercompany sub‑tab is hidden, enable it in **Settings > Application Settings** or check your role permissions.
-
----
-
-## File Import
-
-Bulk creation is available through **File Import**:
-
-1. Upload the source file (Excel/CSV as provided by your template).
-2. Validate data in the checking view.
-3. Resolve errors and confirm the import.
-4. Open a sample voucher to verify header, expenses, and payment lines.
-
-{{< figure src="/images/internal-payment-voucher-applet/pv-file-import.png" alt="File Import listing" caption="File Import listing with uploaded files and statuses." >}}
-
----
-
-## File Export CSV
-
-Generate payment voucher exports for downstream payment runs:
-
+Export flow:
 1. Open **File Export**.
-2. Select the transaction date range.
-3. Click **Generate CSV** to download the file.
-4. If the file is empty, confirm the vouchers are **Final** and within the date range.
+2. Select transaction date range.
+3. Click **Generate CSV**.
+4. Download from generated record.
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-export.png" alt="Payment Voucher file export listing" caption="File Export screen for generating voucher CSV output." >}}
-
----
-
-## Trace and Audit
-
-- **Where to trace a payment voucher**: Open **Payment Voucher (Internal)** from the sidebar, select a voucher, and go to **Trace Document** in the edit view. Trace tabs appear after the voucher is **Final**.
-- **Trace Document**: View posting trace and downstream status (available after finalization).
-- **Applet Log**: Review who changed what, and when (Settings > Applet Log).
-
-Use these tools to support audits and period close review.
+{{< figure src="/images/internal-payment-voucher-applet/pv-export.png" alt="File export listing" caption="File Export listing for CSV generation and download." >}}
 
 ---
 
-## Document Links and Attachments
+## Reporting and Audit
 
-- **Doc Link**: Connect vouchers to related documents for traceability.
-- **Attachments**: Store invoices, approvals, and supporting files.
-- **Sales Commission**: Link commission records when enabled.
+### Trace Document
+
+Use **Trace Document** after finalization to verify posting results such as:
+- Journal transactions
+- Cashbook transactions
+- Tax transactions
+- Other configured traces
+
+### Applet Log
+
+Use **Settings > Applet Log** to review:
+- Who performed each action
+- What changed
+- When changes occurred
+
+This supports compliance reviews, troubleshooting, and audit validation.
 
 ---
 
@@ -589,63 +492,54 @@ Use these tools to support audits and period close review.
 
 Configure the applet under **Settings**:
 
-- **Application Settings**: Field visibility, tab enablement, and validation behavior.
-- **Default Selection**: Set defaults for branch, currency, and common fields.
-- **Printable Format Settings**: Control voucher print layout and branding.
-- **Email Template**: Configure email content used by Send Email.
-- **Feature Visibility**: Show or hide menu items and features by role.
-- **Permissions**: Client-side permission sets and user/team/role assignments.
-- **Webhook**: Configure outbound notifications for downstream systems.
-- **Applet Log**: System audit trail for voucher actions.
-- **Release Notes**: Track changes delivered to the applet.
+- **Application Settings**: Field and tab behavior
+- **Default Selection**: Default values for faster entry
+- **Printable Format Settings**: Print/PDF layout controls
+- **Email Template**: Email body and subject templates
+- **Feature Visibility**: Show/hide features by role
+- **Permissions**: Role and user access control
+- **Webhook**: Outbound integration behavior
+- **Release Notes**: Version change visibility
+- **Applet Log**: Audit history
 
-{{< figure src="/images/internal-payment-voucher-applet/pv-app-setting.png" alt="Payment Voucher (Internal) settings" caption="Settings page for field visibility, defaults, and templates." >}}
+{{< figure src="/images/internal-payment-voucher-applet/pv-app-setting.png" alt="Settings page" caption="Settings page for feature control, defaults, and templates." >}}
 
 ---
 
 ## Related Applets
 
 - **[Supplier Maintenance Applet](/applets/supplier-maintenance-applet/)**: Manage supplier master data used in payment vouchers.
-- **[Chart of Account Applet](/applets/chart-of-account-applet/)**: Define GL accounts used for expenses and postings.
-- **[General Ledger Applet](/applets/general-ledger-applet/)**: Review the final journal postings from payment vouchers.
-- **[Cashbook Applet](/applets/cashbook-applet/)**: Validate cash and bank movements tied to payment vouchers.
+- **[Chart of Account Applet](/applets/chart-of-account-applet/)**: Define GL accounts used for postings.
+- **[General Ledger Applet](/applets/general-ledger-applet/)**: Review journal impact from finalized vouchers.
+- **[Cashbook Applet](/applets/cashbook-applet/)**: Validate cash and bank movement tied to vouchers.
 
 ---
 
 ## Summary
 
-The Payment Voucher (Internal) Applet provides a controlled, auditable workflow for managing internal payments. It combines voucher entry, expense and payment management, settlement adjustments, intercompany handling, and file import/export in one place, with clear traceability for finance and compliance.
+The **Payment Voucher (Internal) Applet** provides a controlled and traceable workflow for internal payment processing. It combines voucher creation, expense capture, payment settlement, corrections, and audit visibility in one operational flow.
 
 ---
 
 ## FAQ
 
 **Q: Why is the Final button disabled?**
-A: Required fields may be missing, or your role does not have final permission. Check Main Details, Expenses, and Payment tabs.
+A: Required data may be incomplete, the voucher may be unbalanced, or your role may not have final permission.
 
-**Q: Why is the Payment or Expenses tab hidden?**
-A: It can be disabled in Application Settings or by role-based field configuration.
+**Q: When should I use Contra?**
+A: Use Contra only for valid document offset cases, not to force-match totals when expense and payment already match.
 
-**Q: Why does my voucher show an outstanding balance?**
-A: Payment lines and settlement adjustments do not fully match the expense total. Review payments, contra, and adjustments.
+**Q: What if expense total and payment total are equal?**
+A: If both are equal (for example RM100 and RM100), voucher balance is 0 and no contra is required.
 
 **Q: How do I export payment files for the bank?**
-A: Go to **File Export**, pick the transaction date range, and click **Generate CSV**.
+A: Open **File Export**, select date range, click **Generate CSV**, then download from generated rows.
 
-**Q: Where can I trace a payment voucher?**
-A: Open the voucher from **Payment Voucher (Internal)** and go to **Trace Document** in the edit view. Trace tabs appear after the voucher is **Final**.
+**Q: Where do I check posting impact?**
+A: Open the voucher and go to **Trace Document** after finalization.
 
-**Q: Can I link a voucher to related documents?**
-A: Yes. Use **Doc Link** to connect related documents and keep traceability intact.
+**Q: Why can't I see Intercompany records?**
+A: You may not have access permissions, or there are no intercompany transactions in your scope.
 
-**Q: Why is the export file empty?**
-A: Check that vouchers are **Final** and the transaction date range matches the voucher dates.
-
-**Q: Why can't I select a supplier/entity?**
-A: The supplier may be inactive or missing in master data, or your role lacks permission.
-
-**Q: Why is Send Email missing or disabled?**
-A: Email can be hidden in Application Settings or your role does not have permission; also confirm an Email Template is selected.
-
-**Q: Why don't I see Intercompany records?**
-A: You may not have access to intercompany data, or there are no transactions within your branch or date scope.
+**Q: Is Send Email used for approval workflow?**
+A: No. Send Email is for sending voucher output to supplier or recipient, not for approval routing.
