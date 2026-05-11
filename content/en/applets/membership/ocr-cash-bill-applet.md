@@ -11,77 +11,80 @@ weight: 170
 ---
 
 {{< callout type="warning" >}}
-**Warning**: this documentation is still in review
+**Work in progress**: This applet documentation needs changes and more explaination.
 {{< /callout >}}
 
 ## Purpose and Overview
 
-The **OCR Cash Bill Applet** helps teams digitize physical receipts and process them through a controlled finance workflow. Instead of manually keying receipt details line-by-line, users upload images, review OCR output, map line items to financial items, and finalize records for downstream processing.
+The **OCR Cash Bill Applet** helps teams convert receipt images into structured financial records with a controlled review workflow. Instead of manual key-in, users upload receipts, review OCR output, map line items, apply process decisions, and finalize documents for downstream processing.
 
 {{< callout type="info" >}}
-**Core Concept**: Convert receipt images into structured documents, then move them through **review**, **status control**, **line-item mapping**, and **final posting lock**.
+**Core Concept**: Convert receipt images into structured OCR documents, then move them through **review**, **status control**, **line-item mapping**, and **final posting lock**.
 {{< /callout >}}
 
 ### Who Benefits from This Applet?
 
-**Operations / Shared Service Teams (including Finance Reviewers / AP):**
-- Upload receipt images quickly
-- Track processing progress from listing views
+**Operations / Shared Service Teams:**
+- Upload and process receipt images quickly
 - Reduce repetitive manual data entry
-- Review raw OCR output beside the uploaded image
+- Monitor processing outcomes from listing views
+- Standardize review decisions with clear statuses
+
+**Finance Reviewers / AP Teams:**
 - Validate extracted document details before posting
-- Control process status consistently (`PENDING_REVIEW`, `DUPLICATE`, `REJECTED`)
-- Apply standardized rejection reasons
-- Finalize review-complete records with posting lock
+- Review OCR output side-by-side with receipt images
+- Apply rejection reasons consistently
+- Finalize review-complete records with lock control
 
 **Master Data Admins:**
-- Maintain OCR Company master records
-- Maintain OCR Item master records
+- Maintain OCR Company references
+- Maintain OCR Item references
 - Improve line-item mapping quality
-- Standardize retailer/item references for downstream finance use
+- Standardize merchant and item references for accounting use
 
 **Audit, Compliance, and Finance Leadership:**
 - Monitor verification and process outcomes
-- Access status-driven report exports
+- Export report files for reconciliation and audit follow-up
 - Preserve auditability with finalization controls
-- Improve policy enforcement and reporting transparency
 
 ### What Problems Does This Solve?
 
 **The Manual Receipt Processing Problem:**
 
 Traditional cash bill handling is often fragmented and error-prone:
-- Receipts arrive in image/PDF formats with inconsistent quality
-- Teams manually key data, causing bottlenecks and key-in errors
-- Duplicate and invalid submissions are hard to detect consistently
-- Review decisions are not standardized across users
-- Reporting and audit evidence extraction is time-consuming
+- Receipt quality is inconsistent (blurred, cropped, incomplete)
+- Manual key-in causes delays and data entry errors
+- Duplicate and invalid submissions are hard to control consistently
+- Review decisions vary without standardized status usage
+- Reporting and audit evidence extraction is slow
 
 **The OCR Cash Bill Applet Solution:**
 
-- **Receipt digitization** - Upload once and process from a structured document flow
+- **Receipt digitization** - Upload once, process through a structured workflow
 - **Controlled statuses** - Standard process states and rejection reasons
-- **Line-level mapping** - Link OCR lines to financial items for better accounting quality
-- **Finalization lock** - Prevent accidental post-review edits
-- **Master data governance** - Keep company and item references clean
-- **Exportable reporting** - Generate CSV outputs for follow-up, reconciliation, and audits
+- **Line-level mapping** - Link OCR lines to financial items for cleaner accounting
+- **Finalization lock** - Prevent post-review accidental edits
+- **Master data governance** - Keep company/item references consistent
+- **Exportable reporting** - Generate CSV outputs for follow-up and reconciliation
 
 ## Key Features Overview
 
 {{< cards >}}
-  {{< card title="Scanned Receipt Intake" subtitle="Upload receipt images and trigger OCR processing" link="#scanned-receipt" >}}
+  {{< card title="Scanned Receipt Intake" subtitle="Upload receipt images and trigger OCR processing" link="#for-operations-users-upload-your-first-receipt" >}}
 
-  {{< card title="OCR Generic Doc Review" subtitle="Review header-level OCR output with process controls" link="#ocr-generic-doc" >}}
+  {{< card title="OCR Generic Doc Review" subtitle="Review header-level OCR output with process controls" link="#for-finance-reviewers-process-an-ocr-generic-doc" >}}
 
-  {{< card title="Line Item Mapping" subtitle="Map OCR lines to financial items and refine quantities/prices" link="#ocr-generic-doc-line-item" >}}
+  {{< card title="Line Item Mapping" subtitle="Map OCR lines to financial items and refine extracted values" link="#ocr-generic-doc-line-item---line-mapping-workspace" >}}
 
-  {{< card title="Master Data Setup" subtitle="Maintain OCR Company and OCR Item references" link="#master-data-setup-ocr-company--ocr-item" >}}
+  {{< card title="Master Data Setup" subtitle="Maintain OCR Company and OCR Item references" link="#master-data-setup" >}}
 
-  {{< card title="Finalization Control" subtitle="Set posting status to FINAL to lock edited data" link="#finalization-control" >}}
+  {{< card title="Finalization Control" subtitle="Set posting status to FINAL and lock reviewed records" link="#finalization-control" >}}
 
-  {{< card title="OCR Report Export" subtitle="Generate and download scanned document CSV reports" link="#ocr-scanned-doc-report" >}}
+  {{< card title="OCR Report Export" subtitle="Generate and download scanned document CSV reports" link="#reporting" >}}
 
-  {{< card title="Configuration & Settings" subtitle="Manage field settings, defaults, and permissions" link="#configuration--settings" >}}
+  {{< card title="Configuration & Settings" subtitle="Manage defaults, field settings, and permissions" link="#configuration--settings" >}}
+
+  {{< card title="FAQ" subtitle="Common processing and status handling questions" link="#faq" >}}
 {{< /cards >}}
 
 {{< figure src="/images/ocr-cash-bill-applet/ocr-cash-bill-overview.png" alt="OCR Cash Bill Applet overview showing upload, review, mapping, and finalization flow" caption="OCR Cash Bill Applet Overview: From receipt upload to finalized posting-ready records." >}}
@@ -92,88 +95,74 @@ Traditional cash bill handling is often fragmented and error-prone:
 
 | Aspect | Component | Practical Example |
 |--------|-----------|------------------|
-| **What is uploaded?** | Scanned Receipt | A cashier receipt image from a retail purchase |
-| **What is reviewed?** | OCR Generic Doc | Auto-extracted doc number, date, amount, company |
-| **What is mapped?** | OCR Generic Doc Line Item | OCR item line linked to a valid financial item |
+| **What is uploaded?** | Scanned Receipt | Cashier receipt image from a retail purchase |
+| **What is reviewed?** | OCR Generic Doc | Extracted doc no, date, amount, and company |
+| **What is mapped?** | OCR Generic Doc Line Item | OCR line linked to a financial item |
 | **How is it controlled?** | Process + Posting Status | `REJECTED` with reason, then `FINAL` after review |
 
 {{< callout type="tip" >}}
-**Practical Example**: Ops uploads a receipt with `RUN_NOW`, Finance reviews OCR output in `OCR Generic Doc`, maps line items to financial items, sets process decision, and then finalizes the record.
+**Practical Example**: Operations uploads a receipt with `RUN_NOW`, Finance reviews OCR header data, maps line items, sets process status, and finalizes the document when complete.
 {{< /callout >}}
 
-### OCR Workflow Pipeline
+### OCR Hierarchy Structure
+
+Think of OCR cash bill processing as a structured flow:
 
 ```
-Receipt Image Upload
-  -> Scanned Receipt Record
+Receipt Upload
+  -> Scanned Receipt
   -> OCR Generic Doc (Header Review)
-  -> OCR Generic Doc Line Items (Line Review)
-  -> Financial Item Mapping + Status Decision
+  -> OCR Generic Doc Line Item (Line Review)
+  -> Company/Item Mapping + Process Decision
   -> FINAL Posting Status (Lock)
   -> OCR Scanned Doc Report Export
 ```
 
-### Sidebar Menu and Route Reference
+**Flow Through the Hierarchy:**
 
-The applet route configuration includes additional modules beyond the default sidebar menu.
+1. **Scanned Receipt**: Upload and process image
+2. **OCR Generic Doc**: Validate extracted header data
+3. **OCR Generic Doc Line Item**: Validate and map extracted lines
+4. **Process Status**: Set review decision (`PENDING_REVIEW`, `DUPLICATE`, `REJECTED`)
+5. **Finalization**: Set posting lock as `FINAL`
+6. **Reporting**: Generate CSV for tracking and audit
+
+### The "Golden Triangle" of OCR Processing
+
+| Component | Analogy | Role | Example |
+|-----------|---------|------|---------|
+| **Scanned Receipt** | The "Source Image" | Input document for OCR | Uploaded receipt photo |
+| **OCR Generic Doc** | The "Review Header" | Header-level validation and status decision | Process status + rejection reason |
+| **OCR Generic Doc Line Item** | The "Accounting Mapping" | Line-level mapping for posting quality | Financial item mapping + quantity/unit price |
+
+**How they link:**
+1. The source image creates the scanned receipt record.
+2. OCR extraction generates header and line records.
+3. Reviewers validate and map extracted data.
+4. Finalization locks approved review output.
+
+### Sidebar Menu and Route Reference
 
 | Navigation Group | Menu Label | Route | Typical Owner | What It Is Used For |
 |---|---|---|---|---|
-| Main Sidebar | Scanned Receipt | `/scanned-receipt` | Operations / Shared Service | Upload receipts, choose execution strategy, and monitor receipt-level process status |
-| Main Sidebar | OCR Generic Doc | `/ocr-generic-doc` | Operations / Finance Reviewer | Validate header OCR output, set process status, and trigger FINAL |
-| Main Sidebar | OCR Generic Doc Line Item | `/ocr-generic-doc-line-item` | Finance Reviewer | Refine line-level details and map to financial items |
-| Main Sidebar | OCR Company | `/ocr-company` | Master Data Admin | Maintain company references used by OCR documents |
-| Main Sidebar | OCR Item | `/ocr-item` | Master Data Admin | Maintain OCR item references for cleaner line mapping |
-| Main Sidebar | OCR Scanned Doc Report | `/ocr-report` | Reporting / Compliance | Generate and download report files |
-| Routed (Hidden by Default) | OCR Branch | `/ocr-branch` | Admin / Data Setup | Branch-level reference maintenance (route exists but menu may be hidden by role/menu config) |
-| Routed (Hidden by Default) | Inventory Item Listing | `/inv-item` | Admin / Data Setup | Inventory item lookup route (available by route, not always shown in menu) |
-
-Use this reference when troubleshooting differences between role-based menu visibility and direct route access.
-
-### Status Model You Should Know
-
-| Status Type | Values | Usage |
-|-------------|--------|-------|
-| **Verification Status** | `PASS`, `FAIL`, `FLAGGED` | OCR quality/validation result |
-| **Process Status** | `PENDING_REVIEW`, `DUPLICATE`, `REJECTED`, `APPROVED` | Operational workflow state |
-| **Posting Status** | `FINAL` | Accounting lock control |
-
-**Important behavior:**
-- In edit screens, users typically set `PENDING_REVIEW`, `DUPLICATE`, or `REJECTED`.
-- `APPROVED` is usually system-driven and treated as read-only in the process flow.
-- Once posting becomes `FINAL`, key edit actions are restricted.
+| Main Sidebar | Scanned Receipt | `/scanned-receipt` | Operations / Shared Service | Upload receipts and monitor process status |
+| Main Sidebar | OCR Generic Doc | `/ocr-generic-doc` | Finance Reviewer | Validate OCR header data and status |
+| Main Sidebar | OCR Generic Doc Line Item | `/ocr-generic-doc-line-item` | Finance Reviewer | Refine line-level details and mapping |
+| Main Sidebar | OCR Company | `/ocr-company` | Master Data Admin | Maintain merchant/company references |
+| Main Sidebar | OCR Item | `/ocr-item` | Master Data Admin | Maintain OCR item references |
+| Main Sidebar | OCR Scanned Doc Report | `/ocr-report` | Reporting / Compliance | Generate and download CSV reports |
+| Routed (Hidden by Default) | OCR Branch | `/ocr-branch` | Admin / Data Setup | Branch-level reference maintenance |
+| Routed (Hidden by Default) | Inventory Item Listing | `/inv-item` | Admin / Data Setup | Inventory item lookup route |
 
 ### Standardized Rejection Reasons
 
-When a document is rejected, use one of the configured reasons:
+Use one of these reasons when setting process status to `REJECTED`:
 - Rejected - Duplicated receipt
 - Rejected - Incomplete details
 - Rejected - Non-related receipt
 - Rejected - Outdated receipt
 - Rejected - Exceeded Monthly Submission Limit (Max. 7 receipts per month)
 - Rejected - More than 1 receipt
-
-### How Rejection Works (and When to Use Each Reason)
-
-Rejection is a process-status decision. In the OCR Generic Doc edit flow:
-1. Set **Process Status** to `REJECTED`
-2. Select **Reason to Reject**
-3. Click **UPDATE** to persist the decision and audit trail
-
-Use these practical scenarios:
-
-| Rejection Reason | Use This When | Example Scenario |
-|---|---|---|
-| Rejected - Duplicated receipt | The same receipt was already submitted/processed | User accidentally uploads the same receipt image twice |
-| Rejected - Incomplete details | Key information is missing or unreadable | Amount/date/merchant text is cut off or too blurred |
-| Rejected - Non-related receipt | Receipt is not valid for this workflow/policy | Uploaded document is not a cash bill relevant to claim process |
-| Rejected - Outdated receipt | Receipt falls outside allowed submission window | Receipt date is older than policy limit |
-| Rejected - Exceeded Monthly Submission Limit (Max. 7 receipts per month) | User has crossed monthly receipt cap | 8th receipt is submitted in the same month |
-| Rejected - More than 1 receipt | Single upload contains multiple receipts where policy expects one | One photo contains two separate receipts |
-
-{{< callout type="tip" >}}
-Always choose the most specific rejection reason available. This improves audit traceability and makes downstream support faster.
-{{< /callout >}}
 
 ---
 
@@ -191,167 +180,183 @@ Quick Start Guide video: Click the thumbnail to watch on YouTube.
 
 **Goal:** Create a scanned receipt and trigger OCR processing.
 
-{{< figure src="/images/ocr-cash-bill-applet/scanned-receipt-listing.png" alt="Scanned Receipt Listing page showing uploaded documents and processing statuses" caption="Scanned Receipt Listing: Track uploaded receipts and their process status in one view." >}}
-
-1. Go to **Scanned Receipt**
-2. Click the **+ (Create)** button on the listing toolbar
-3. Set **Status** (default `ACTIVE`)
+1. Go to **Scanned Receipt**.
+2. Click **+ (Create)**.
+3. Set **Status** (default `ACTIVE`).
 4. Select **Execution Strategy**:
    - `RUN_NOW` for immediate OCR processing
-   - `INSERT_TO_QUEUE` for queued processing
-5. Upload receipt image in **Receipts Upload**
-6. Click **CREATE**
+   - `INSERT_TO_QUEUE` for deferred/queued processing
+5. Upload receipt image in **Receipts Upload**.
+6. Click **CREATE**.
 
-{{< figure src="/images/ocr-cash-bill-applet/scanned-receipt-create-form.png" alt="Scanned Receipt Create form with status, execution strategy, and receipt upload area" caption="Scanned Receipt Create: Upload a receipt and choose processing strategy before creating the record." >}}
+{{< figure src="/images/ocr-cash-bill-applet/scanned-receipt-listing.png" alt="Scanned Receipt Listing page showing uploaded documents and processing statuses" caption="Scanned Receipt Listing: Track uploaded receipts and process status in one view." >}}
 
-**What happens next?**
-- The document appears in **Scanned Receipt Listing**
-- Reviewers can open it in **OCR Generic Doc** for validation
+{{< figure src="/images/ocr-cash-bill-applet/scanned-receipt-create-form.png" alt="Scanned Receipt Create form with status, execution strategy, and receipt upload area" caption="Scanned Receipt Create: Upload receipt and choose processing strategy before creating record." >}}
 
-**Note:** The `CREATE` button stays disabled until a receipt image is uploaded.
-
----
+**What happens next?** The document appears in listing and is ready for reviewer validation in **OCR Generic Doc**.
 
 ### For Finance Reviewers: Process an OCR Generic Doc
 
-**Goal:** Validate OCR output, assign process status, and finalize.
+**Goal:** Validate OCR output, apply process status, and finalize correctly.
+
+1. Open **OCR Generic Doc**.
+2. Search by Doc No, Process Status, Verification Status, or date ranges.
+3. Open target record and review **Main Details** (amount, receipt date, company, confidence level, status).
+4. Set **Process Status** to `PENDING_REVIEW`, `DUPLICATE`, or `REJECTED`.
+5. If `REJECTED`, select **Reason to Reject**.
+6. Open **Line Items** tab and validate mapping/values.
+7. Click **UPDATE**.
+8. Click **FINAL** once review is complete.
 
 {{< figure src="/images/ocr-cash-bill-applet/ocr-generic-doc-listing.png" alt="OCR Generic Doc Listing with search filters and document statuses" caption="OCR Generic Doc Listing: Review extracted documents with process and verification visibility." >}}
 
-1. Open **OCR Generic Doc**
-2. Use search filters (Doc No, Scanned Doc No, Process Status, Verification Status, date ranges) if needed
-3. Click a row in **OCR Generic Doc Listing** to open the edit panel, then review **Main Details**:
-   - Doc No, Amount, Receipt Date
-   - Company, Confidence Level, Verification Status
-   - Current Process Status and updated-by info
-4. Set **Process Status** (`PENDING_REVIEW`, `DUPLICATE`, or `REJECTED`)
-5. If `REJECTED`, choose **Reason to Reject**
-6. Review **Line Items** tab and adjust mappings/amount details where required
-7. Click **UPDATE**
-8. Click **FINAL** when review is complete
-
-{{< figure src="/images/ocr-cash-bill-applet/ocr-generic-doc-edit-form.png" alt="OCR Generic Doc Edit form showing main details, process status, rejection reason, and final button" caption="OCR Generic Doc Edit: Validate details, update process status, and finalize reviewed documents." >}}
-
-{{< figure src="/images/ocr-cash-bill-applet/ocr-generic-doc-edit-form-line.png" alt="OCR Generic Doc Edit form showing main details, process status, rejection reason, and final button" caption="OCR Generic Doc Edit: Validate details, update process status, and finalize reviewed documents." >}}
-
-**Outcome:** The document is controlled, traceable, and locked from further unintended edits after finalization.
-
----
+{{< figure src="/images/ocr-cash-bill-applet/ocr-generic-doc-edit-form.png" alt="OCR Generic Doc Edit form showing process status and final button" caption="OCR Generic Doc Edit: Validate details, update process status, and finalize reviewed documents." >}}
 
 ### For Master Data Admins: Set Up OCR Company and OCR Item
 
-**Goal:** Prepare reliable reference data for cleaner OCR mapping.
+**Goal:** Build clean references for stable line-item mapping.
 
-1. Open **OCR Company** and create supplier/retailer references
-2. Maintain required details: company code, company name, country, and active status
-3. Complete support details: address, postal code, city/state, contact number
-4. Open **OCR Item** and create item references linked to OCR company records
-5. Maintain required details: item code, item name, linked company, and active status
-6. During line-item review, map OCR lines to valid financial items for consistent posting
-7. Run a test receipt and confirm the expected company/item suggestions appear
-
-**Outcome:** Better matching accuracy and reduced review friction for finance teams.
-
----
+1. Open **OCR Company** and maintain company master details.
+2. Open **OCR Item** and maintain item master records linked to company.
+3. Run a sample receipt and verify expected company/item mapping behavior.
 
 ### For Reporting Users: Generate OCR Scanned Doc Report CSV
 
-**Goal:** Export OCR process history for analysis and audit follow-up.
+**Goal:** Export OCR process data for operational analysis and audit.
 
-1. Open **OCR Scanned Doc Report**
-2. Optionally set date filters:
-   - Created Date From / To
-   - Updated Date From / To
-3. Click **Generate CSV**
-4. Wait for background processing (status appears in listing)
-5. Use **Actions** to download completed reports
+1. Open **OCR Scanned Doc Report**.
+2. Set optional created/updated date filters.
+3. Click **Generate CSV**.
+4. Wait for background processing to complete.
+5. Download from listing **Actions**.
 
-**Outcome:** Downloadable report files with status and error visibility.
+### For Applet Admins: Initial System Setup
 
----
+**Goal:** Prepare production-ready defaults and governance controls.
 
-### For Applet Admins: Initial System Setup Checklist
-
-**Goal:** Prepare the applet for production use with consistent defaults and access control.
-
-1. From the applet left sidebar, go to `Settings > Default Selection` and set branch, location, and timezone defaults
-2. From the same `Settings` menu, open `Field Settings` and decide how advanced search should behave
-3. Configure permission sets and user/team/role permissions for Operations, Finance, and Admin users
-4. Load baseline OCR Company and OCR Item master data
-5. Run an end-to-end test cycle: upload -> review -> map -> finalize
-6. Generate one test CSV report from **OCR Scanned Doc Report** to verify reporting access
-
-**Outcome:** Teams start with correct defaults, right permissions, and a validated workflow.
+1. Configure `Settings > Default Selection` (branch, location, timezone).
+2. Configure `Settings > Field Settings` for advanced search behavior.
+3. Configure user/team/role permissions for Operations, Finance, and Admin users.
+4. Load baseline OCR Company and OCR Item records.
+5. Test upload -> review -> map -> finalize.
+6. Generate a test CSV report to verify reporting access.
 
 ---
 
 {{< callout type="tip" >}}
-**New rollout suggestion:**
-1. Operations uploads 5-10 sample receipts
-2. Finance practices process-status and rejection controls
-3. Admins confirm master data quality
-4. Reporting users validate CSV outputs before go-live
+**New to the system?** Start with this sequence:
+1. Operations uploads 5-10 sample receipts.
+2. Finance reviews and applies process statuses.
+3. Admin validates master data and permission controls.
+4. Reporting users verify CSV outputs before go-live.
 {{< /callout >}}
-
-### Common Mistakes (Quick Start)
-
-| Common Mistake | What Happens | How to Avoid It |
-|---|---|---|
-| Uploading without clear receipt image | OCR fields are incomplete or flagged | Use clear, well-lit images with visible date, amount, and merchant details |
-| Finalizing too early | Needed corrections are blocked by `FINAL` lock | Complete status checks and line-item mapping before clicking **FINAL** |
-| Missing rejection reason for rejected docs | Audit trail becomes unclear | Always set a standardized **Reason to Reject** when using `REJECTED` |
-| Incorrect financial item mapping | Reporting and posting quality degrades | Verify selected financial item against item name/description before update |
-| Skipping default settings setup | Users spend extra time fixing branch/location context | Configure `Settings > Default Selection` before production rollout |
 
 ---
 
-## Scanned Receipt
+## Processing Status Tracking
 
-This is the ingestion module for receipt images.
+**Monitor review, quality, and lock status clearly before finalization.**
+
+### What is Processing Status Tracking?
+
+Processing status tracking helps teams distinguish OCR quality state from operational decision state and final posting lock state.
+
+| Status Type | Values | Usage |
+|-------------|--------|-------|
+| **Verification Status** | `PASS`, `FAIL`, `FLAGGED` | OCR quality/validation result |
+| **Process Status** | `PENDING_REVIEW`, `DUPLICATE`, `REJECTED`, `APPROVED` | Operational review state |
+| **Posting Status** | `FINAL` | Finalized lock control |
+
+### How to Check Processing Status
+
+1. Open **Scanned Receipt** to check intake progress.
+2. Open **OCR Generic Doc** for verification and process decisions.
+3. Review **OCR Generic Doc Line Item** for mapping completeness.
+4. Confirm posting status before and after finalization.
+
+### Key Features
+
+- Clear separation between OCR quality and process decision states
+- Standardized rejection reason selection
+- Finalization lock to protect reviewed data
+- Status-driven report export visibility
+
+### Common Scenarios
+
+**Scenario 1: Duplicate Submission**
+```
+Process Status: DUPLICATE
+Action: Mark duplicate and keep audit notes
+Outcome: Prevents duplicate posting flow
+```
+
+**Scenario 2: Incomplete OCR Data**
+```
+Verification Status: FLAGGED
+Process Status: REJECTED
+Reason: Rejected - Incomplete details
+Outcome: Controlled rejection with clear audit reason
+```
+
+**Scenario 3: Review Completed**
+```
+Process Status: PENDING_REVIEW -> APPROVED (system flow)
+Posting Status: FINAL
+Outcome: Record is locked and ready for reporting/reconciliation
+```
+
+### Tips for Reviewers
+
+- Use the most specific rejection reason available
+- Complete line-item mapping before finalization
+- Avoid setting `FINAL` until process checks are complete
+- Re-check process and posting statuses before exporting reports
+
+---
+
+## For Operations Users
+
+### Scanned Receipt - Your Intake Workspace
 
 {{< figure src="/images/ocr-cash-bill-applet/scanned-receipt-edit.png" alt="Scanned Receipt Edit page showing uploaded image preview and OCR output JSON" caption="Scanned Receipt Edit: Inspect uploaded images and OCR output during receipt review." >}}
 
-### What You Can Do
-
-- Upload receipt files and preview the image
+**What You Can Do:**
+- Upload receipt files and preview images
 - Set execution strategy (`RUN_NOW` or `INSERT_TO_QUEUE`)
-- Track process status in listing
-- View OCR output JSON in edit mode
-- Rotate and zoom uploaded images for better review
+- Track process status from listing
+- View OCR output JSON during review
+- Rotate and zoom image previews
 
-### Automated Intake with CP-COM Widget (If Enabled)
-
-In deployments where the CP-COM widget is enabled, receipt capture can be automated before OCR review:
-- Receipt image is captured/submitted through CP-COM flow
-- Scanned receipt record is created automatically in this applet
-- OCR processing continues through the same Scanned Receipt -> OCR Generic Doc pipeline
-
-If your tenant does not enable CP-COM integration, use manual upload in **Scanned Receipt Create**.
-
-### Listing Highlights
-
+**Listing Highlights:**
 - Scanned Doc No.
 - Process Status
 - Creation Date
 - Modified Date
 - Created By
 
-### Edit Behavior
-
+**Edit Behavior:**
 - Process status can be updated during review
-- Approved records are treated as locked for process status edits
-- OCR output is displayed as read-only text for traceability
+- Approved records are treated as locked for process-status edits
+- OCR output remains read-only for traceability
+
+### Automated Intake with CP-COM Widget (If Enabled)
+
+In CP-COM-enabled deployments:
+- Receipt image can be captured/submitted via CP-COM flow
+- Scanned receipt record is created automatically in this applet
+- OCR processing continues through the same review pipeline
+
+If CP-COM integration is not enabled, use manual upload in **Scanned Receipt Create**.
 
 ---
 
-## OCR Generic Doc
+## For Finance Reviewers
 
-This is the main review workspace for OCR-converted header data.
+### OCR Generic Doc - Header Review Workspace
 
-{{< figure src="/images/ocr-cash-bill-applet/ocr-generic-doc-main-details.png" alt="OCR Generic Doc Main Details tab with doc number, amount, company, and statuses" caption="OCR Generic Doc Main Details: Central workspace for header-level OCR validation and process control." >}}
+{{< figure src="/images/ocr-cash-bill-applet/ocr-generic-doc-main-details.png" alt="OCR Generic Doc Main Details tab with doc number, amount, company, and statuses" caption="OCR Generic Doc Main Details: Central workspace for header validation and process control." >}}
 
-### Main Details Tab
-
+**Main Details Tab includes:**
 - Doc No
 - Amount (calculated from line totals)
 - Receipt Date
@@ -359,71 +364,75 @@ This is the main review workspace for OCR-converted header data.
 - Company
 - Verification Status
 - Process Status
-- Reason to Reject (shown when rejected)
-- Status
+- Reason to Reject (when rejected)
 - Updated By
 
-### Line Items Tab
-
-The line item tab opens detailed line-level records where users can map financial items and adjust key fields.
+**Line Items Tab:**
+- Opens line-level records for mapping and value refinement
 
 {{< figure src="/images/ocr-cash-bill-applet/ocr-generic-doc-line-items-tab.png" alt="OCR Generic Doc Line Items tab listing extracted OCR lines" caption="OCR Generic Doc Line Items: Review and drill into extracted line-level details." >}}
 
-### Key Controls
+**Key Controls:**
+- **UPDATE** saves reviewer changes
+- **FINAL** locks reviewed record
+- Process status updates sync to linked scanned receipt status
+- `FINAL` posting status restricts editable actions
 
-- **UPDATE** saves review changes
-- **FINAL** triggers posting lock flow
-- Process status updates in this screen also sync to the linked **Scanned Receipt** process status
-- If posting status is `FINAL`, selected fields and workflows become read-only
+### Rejection Handling Guide
+
+1. Set **Process Status** to `REJECTED`.
+2. Select **Reason to Reject**.
+3. Click **UPDATE**.
+
+| Rejection Reason | Use This When | Example Scenario |
+|---|---|---|
+| Rejected - Duplicated receipt | Same receipt already processed | User uploads the same image twice |
+| Rejected - Incomplete details | Key data missing or unreadable | Amount/date/merchant text is unclear |
+| Rejected - Non-related receipt | Receipt not valid for this process | Non-cash-bill document uploaded |
+| Rejected - Outdated receipt | Submission outside allowed period | Receipt date is beyond policy window |
+| Rejected - Exceeded Monthly Submission Limit (Max. 7 receipts per month) | Monthly cap exceeded | 8th receipt submitted in one month |
+| Rejected - More than 1 receipt | One upload contains multiple receipts | Single image contains two receipts |
 
 ---
 
-## OCR Generic Doc Line Item
+### OCR Generic Doc Line Item - Line Mapping Workspace
 
-Use this module to refine OCR line-level data.
+{{< figure src="/images/ocr-cash-bill-applet/ocr-line-item-edit.png" alt="OCR Generic Doc Line Item Edit page with financial item mapping and quantity price fields" caption="OCR Line Item Edit: Map OCR lines to financial items and adjust key values before finalization." >}}
 
-{{< figure src="/images/ocr-cash-bill-applet/ocr-line-item-edit.png" alt="OCR Generic Doc Line Item Edit page with financial item mapping and quantity/price fields" caption="OCR Line Item Edit: Map OCR lines to financial items and adjust key values before finalization." >}}
-
-### Editable Fields
-
-- Financial Item (via selection dialog)
+**Editable Fields:**
+- Financial Item
 - Item Name
 - Remarks
 - Quantity
 - Unit Price
 - Status
 
-### Read-Only Context Fields
-
+**Read-Only Context Fields:**
 - OCR Generic Doc No
 - OCR Item Code
 - Description
 - Company
 - Updated By
 
-### Mapping Workflow
+**Mapping Workflow:**
+1. Open a line-item record.
+2. Click **Financial Item**.
+3. Select item from financial item listing.
+4. Save update.
+5. Use **RESET** if remapping is required.
 
-1. Open line item record
-2. Click **Financial Item**
-3. Select item from financial item listing
-4. Save update
-5. Use **RESET** if mapping should be cleared and remapped
+{{< figure src="/images/ocr-cash-bill-applet/select-financial-item-dialog.png" alt="Select Financial Item listing screen used for mapping OCR line items" caption="Select Financial Item: Choose correct financial item for standardized posting and reporting." >}}
 
-{{< figure src="/images/ocr-cash-bill-applet/select-financial-item-dialog.png" alt="Select Financial Item listing screen used for mapping OCR line items" caption="Select Financial Item: Choose the correct financial item to standardize posting and reporting." >}}
-
-### Finalization Rule
-
-If posting status is `FINAL`, line-item update actions are disabled.
+**Finalization Rule:**
+If posting status is `FINAL`, line-item updates are disabled.
 
 ---
 
-## Master Data Setup: OCR Company & OCR Item
-
-{{< figure src="/images/ocr-cash-bill-applet/ocr-company-listing.png" alt="OCR Company Listing showing company code, name, country, and status" caption="OCR Company Listing: Maintain retailer/company references used during OCR review." >}}
+## Master Data Setup
 
 ### OCR Company
 
-Maintain retailer/company references used by OCR documents.
+Maintain company/merchant references used by OCR documents.
 
 **Typical fields:**
 - Company Code
@@ -437,13 +446,11 @@ Maintain retailer/company references used by OCR documents.
 - Contact No.
 - Status
 
-**Listing view includes:** code, name, description, status, country, and contact/address details.
+{{< figure src="/images/ocr-cash-bill-applet/ocr-company-listing.png" alt="OCR Company Listing showing company code name country and status" caption="OCR Company Listing: Maintain retailer/company references used during OCR review." >}}
 
 ### OCR Item
 
-Maintain OCR item references linked to OCR companies.
-
-{{< figure src="/images/ocr-cash-bill-applet/ocr-item-listing.png" alt="OCR Item Listing showing item code, name, linked company, and status" caption="OCR Item Listing: Keep OCR item references clean for more reliable line-item mapping." >}}
+Maintain OCR item references linked to OCR Company records.
 
 **Typical fields:**
 - Item Code
@@ -453,25 +460,25 @@ Maintain OCR item references linked to OCR companies.
 - Remarks
 - Status
 
-**Listing view includes:** item code, name, company, description, and status.
+{{< figure src="/images/ocr-cash-bill-applet/ocr-item-listing.png" alt="OCR Item Listing showing item code name linked company and status" caption="OCR Item Listing: Keep item references clean for reliable line-item mapping." >}}
 
 ---
 
-## OCR Scanned Doc Report
+## Reporting
 
-Use this module for report generation and file download.
+### OCR Scanned Doc Report - CSV Export Workflow
 
-{{< figure src="/images/ocr-cash-bill-applet/ocr-scanned-doc-report-listing.png" alt="OCR Scanned Doc Report page with date filters, Generate CSV button, and report status listing" caption="OCR Scanned Doc Report: Generate CSV exports and monitor report processing status." >}}
+Use this module to generate and download report files.
 
-### Report Workflow
+{{< figure src="/images/ocr-cash-bill-applet/ocr-scanned-doc-report-listing.png" alt="OCR Scanned Doc Report page with date filters Generate CSV button and report status listing" caption="OCR Scanned Doc Report: Generate CSV exports and monitor report processing status." >}}
 
-1. Set optional created/updated date filters
-2. Click **Generate CSV**
-3. Wait for background generation
-4. Download report from listing action button
+**Report Workflow:**
+1. Set optional created/updated date filters.
+2. Click **Generate CSV**.
+3. Wait for background generation.
+4. Download from listing action button.
 
-### Listing Columns
-
+**Listing Columns:**
 - Report Name
 - Status
 - Error Message
@@ -479,9 +486,8 @@ Use this module for report generation and file download.
 - Updated Date
 - Actions (download/delete)
 
-### Operational Tip
-
-If report generation is delayed, check status and error message in the listing before regenerating.
+**Operational Tip:**
+If generation is delayed, check row status and error message before regenerating.
 
 ---
 
@@ -492,43 +498,38 @@ Finalization is a critical safeguard for downstream accounting quality.
 ### What FINAL Does
 
 - Marks posting status as `FINAL`
-- Restricts further edits on key header and line-item flows
-- Triggers posting/finalization checks and moves the document into a locked state for operational use
+- Restricts edits on key header and line-item flows
+- Triggers finalization checks and moves the document into a locked state
 - In current flow, rejection reason is cleared during finalization handling before posting update
 
 ### When to Use FINAL
 
 Use `FINAL` only after:
-- Process status and rejection logic (if any) are complete
+- Process status and rejection logic are complete
 - Company/item mapping is validated
-- Quantity and unit price checks are done
+- Quantity and unit price checks are complete
 - Reviewer confirms no further corrections are needed
 
 ### What to Follow Up After FINAL
 
-After a document is finalized:
-1. Confirm the record appears as finalized (`FINAL`) in your listing/search view
-2. Verify line-item updates are no longer editable in normal reviewer flow
-3. Run/download OCR report output if reporting or reconciliation is required
-4. If correction is still needed, escalate to admin/support workflow rather than editing in-place
+1. Confirm document appears as `FINAL` in listing/search view.
+2. Verify line-item update actions are locked.
+3. Generate/download report output if reconciliation is required.
+4. Escalate corrections through admin/support flow instead of in-place edits.
 
 ---
 
 ## Configuration & Settings
 
-{{< figure src="/images/ocr-cash-bill-applet/settings-field-settings.png" alt="Field Settings page with advanced search toggle options" caption="Field Settings: Configure advanced search behavior for OCR Generic Doc listing." >}}
+Use the applet left sidebar to open **Settings** and **Personalization** pages.
 
-Use the left sidebar inside **OCR Cash Bill Applet** to open `Settings` and `Personalization` pages. Depending on role permissions, direct route links may not land on the expected sub-page.
+{{< figure src="/images/ocr-cash-bill-applet/settings-field-settings.png" alt="Field Settings page with advanced search toggle options" caption="Field Settings: Configure advanced search behavior for OCR Generic Doc listing." >}}
 
 ### Field Settings (`Settings > Field Settings`)
 
-Control advanced search behavior for OCR Generic Doc listing. In current UI, these appear under **OCR LIST ADVANCED SEARCH SETTING**:
+Control advanced search behavior for OCR listing. Current UI includes:
 - `HIDE_CUSTOMER_ADVANCED_SEARCH`
 - `ENABLE_MEMBER_ADVANCED_SEARCH`
-
-Use these toggles to simplify search UX or enable member-focused filtering.
-
----
 
 ### Default Selection (`Settings > Default Selection`)
 
@@ -537,13 +538,9 @@ Set applet-wide defaults for:
 - `DEFAULT_LOCATION`
 - `DEFAULT_TIMEZONE`
 
-`DEFAULT_COMPANY` may be tenant-dependent (for some tenants it is auto-derived from branch and not shown as an editable field).
+`DEFAULT_COMPANY` can be tenant-dependent and may be auto-derived from branch.
 
-These reduce repetitive input and standardize user context.
-
-{{< figure src="/images/ocr-cash-bill-applet/settings-default-selection.png" alt="Default Selection settings page for branch, location, company, and timezone" caption="Default Selection: Set applet-wide defaults to reduce repetitive user input." >}}
-
----
+{{< figure src="/images/ocr-cash-bill-applet/settings-default-selection.png" alt="Default Selection settings page for branch location company and timezone" caption="Default Selection: Set applet-wide defaults to reduce repetitive user input." >}}
 
 ### Personalization > Default Selection
 
@@ -551,66 +548,77 @@ Users can set personal overrides for:
 - Default Branch
 - Default Location
 
-These personal values override applet-level defaults for that user.
+These personal values override applet-level defaults for the user.
 
 {{< figure src="/images/ocr-cash-bill-applet/personal-default-selection.png" alt="Personal Default Selection page for user-level branch and location preferences" caption="Personal Default Selection: User-level defaults that override applet-wide settings." >}}
 
----
-
 ### Access, Permission, and Integration Controls
 
-The applet also includes standard admin routes for:
+Use admin controls for:
 - Webhook
 - Client-side permission listing
 - Permission sets
 - User/team/role permission controls
 - Sidebar personalization
 
-Use these during rollout to enforce role-based access and operational governance.
+### Labels and Localization Notes
+
+- No applet-specific i18n JSON is currently defined under this applet's `src/assets`.
+- Shared template exists at `micro-fe/src/assets/i18n/template.json` and is currently `{}`.
+- Most labels are defined directly in templates, listing column headers, and advanced search label maps.
 
 ---
 
-### Labels & Localization Notes
+## Audit
 
-- No applet-specific i18n translation JSON file is currently defined under this applet's `src/assets`.
-- A shared template file exists at `micro-fe/src/assets/i18n/template.json`, and it is currently empty (`{}`).
-- In practice, labels are defined directly in:
-  - Component templates (`mat-label`, button text, tab labels)
-  - Listing column definitions (`headerName`)
-  - Advanced search model label maps (for OCR Generic Doc, Scanned Receipt, OCR Company, OCR Item)
+### Audit Trail (`Settings > Applet Log`)
 
-If multi-language support is planned later, these UI strings are the main extraction points.
+Use Applet Log to track:
+- Who performed each action
+- What fields changed
+- When changes occurred
+- Which document/status was affected
+
+This supports compliance checks, investigation workflows, and operational troubleshooting.
+
+---
+
+## Personalization
+
+### Default Selection
+
+Set personal default branch and location to speed up daily processing. Personalization values override applet defaults for the specific user.
 
 ---
 
 ## FAQ
 
-**Q: Why is the `CREATE` button disabled in Scanned Receipt Create?**  
+**Q: Why is the `CREATE` button disabled in Scanned Receipt Create?**
 A: At least one receipt image must be uploaded before creation is allowed.
 
-**Q: What is the difference between `Verification Status` and `Process Status`?**  
-A: `Verification Status` indicates OCR validation quality (`PASS`, `FAIL`, `FLAGGED`). `Process Status` indicates review decision flow (`PENDING_REVIEW`, `DUPLICATE`, `REJECTED`, `APPROVED`).
+**Q: What is the difference between `Verification Status` and `Process Status`?**
+A: `Verification Status` represents OCR quality (`PASS`, `FAIL`, `FLAGGED`), while `Process Status` represents reviewer decision flow (`PENDING_REVIEW`, `DUPLICATE`, `REJECTED`, `APPROVED`).
 
-**Q: Why can I not edit some OCR Generic Docs or line items?**  
+**Q: Why can I not edit some OCR Generic Docs or line items?**
 A: If posting status is `FINAL`, editing is restricted to protect finalized data integrity.
 
-**Q: When should I choose `RUN_NOW` vs `INSERT_TO_QUEUE`?**  
-A: Use `RUN_NOW` for immediate processing. Use `INSERT_TO_QUEUE` when batching uploads or when processing should be deferred.
+**Q: When should I choose `RUN_NOW` vs `INSERT_TO_QUEUE`?**
+A: Use `RUN_NOW` for immediate processing and `INSERT_TO_QUEUE` for deferred or batched processing.
 
-**Q: How do I map OCR lines to accounting items correctly?**  
-A: Open the line item, click **Financial Item**, select the appropriate item from the financial item list, then update. Use **RESET** if you need to remap.
+**Q: How do I map OCR lines to accounting items correctly?**
+A: Open line item, click **Financial Item**, select correct mapping from list, and update. Use **RESET** if remapping is needed.
 
-**Q: Why can't I set process status to `APPROVED` directly in some screens?**  
-A: In the standard review flow, users typically set review statuses (`PENDING_REVIEW`, `DUPLICATE`, `REJECTED`). In current UI behavior, `APPROVED` is not offered in the reviewer dropdown and is generally system-controlled.
+**Q: Why can't I set process status to `APPROVED` directly in some screens?**
+A: Reviewer flows typically use `PENDING_REVIEW`, `DUPLICATE`, or `REJECTED`. In current behavior, `APPROVED` is generally system-controlled.
 
-**Q: A generated report is not downloadable yet. What should I check?**  
-A: Open **OCR Scanned Doc Report** and verify the row `Status` and `Error Message`. Download is available only after successful generation.
+**Q: A generated report is not downloadable yet. What should I check?**
+A: Check row `Status` and `Error Message` in **OCR Scanned Doc Report**. Download is available only after successful generation.
 
-**Q: Which rejection reason should I use for too many submissions in one month?**  
-A: Use: **Rejected - Exceeded Monthly Submission Limit (Max. 7 receipts per month)**.
+**Q: Which rejection reason should I use for too many submissions in one month?**
+A: Use **Rejected - Exceeded Monthly Submission Limit (Max. 7 receipts per month)**.
 
-**Q: I selected the wrong company on OCR Generic Doc. What should I do?**  
-A: Open the document, click the **Company** field, choose the correct OCR Company, then recheck line mapping before updating/finalizing.
+**Q: I selected the wrong company on OCR Generic Doc. What should I do?**
+A: Open the document, choose the correct company, then recheck line mapping before updating or finalizing.
 
-**Q: A receipt looks duplicated. What is the correct handling flow?**  
-A: Set process status to `DUPLICATE`, add an appropriate rejection reason where required, and keep a short remark for audit clarity before saving.
+**Q: A receipt looks duplicated. What is the correct handling flow?**
+A: Set process status to `DUPLICATE`, provide a clear remark or rejection context if required, then save for audit traceability.
