@@ -75,10 +75,8 @@ For a visual walkthrough of the POS General Applet, watch the video below:
 ## Key Features Overview
 
 {{< cards >}}
-  {{< card title="Access Rules" subtitle="Control who can perform specific tasks" link="#for-admins-setting-up-the-system" >}}
-  {{< card title="System Settings" subtitle="Set up your store and staff defaults" link="#for-admins-setting-up-the-system" >}}
-  {{< card title="Payment Methods" subtitle="Manage cash, cards, and e-wallets" link="#for-admins-setting-up-the-system" >}}
-  {{< card title="Sales Controls" subtitle="Manage cash drawers and stock" link="#for-staff-cashier-daily-workflow" >}}
+  {{< card title="Sales Controls" subtitle="Manage cashiers, cash drawers, and stock" link="#for-staff-cashier-daily-workflow" >}}
+  {{< card title="Manager Tools" subtitle="Reprint receipts, fix mistakes, and adjust payments" link="#for-managers-supporting-the-team" >}}
   {{< card title="Reporting Tools" subtitle="Simple tools to track sales and history" link="#sales-reports-and-history" >}}
 {{< /cards >}}
 
@@ -268,7 +266,13 @@ The report will automatically group your totals by settlement method (e.g., Cash
 The BigLedger POS provides simple tools to help you track your sales and check your records at the end of the day.
 
 * **Detailed Sales Records:** Use the **Cash Bill Listing** to see every sale made. You can filter by date, store, or status to find exactly what you need.
+{{< figure src="/images/pos-general-applet/cashbill listing search.png" alt="Cash Bill Listing" caption="Filter and search for any transaction in your history." >}}
+{{< figure src="/images/pos-general-applet/review it.png" alt="Reviewing Sales" caption="Review individual sale details, remarks, and email history." >}}
+
 * **Breakdown of Payments:** The **Cashier Collection** tool shows you a list of all payments received. You can group them by payment type (like Cash or Card) to see how much you collected for each.
+{{< figure src="/images/pos-general-applet/cashier collection report.png" alt="Payment Breakdown" caption="View totals grouped by payment method." >}}
+{{< figure src="/images/pos-general-applet/report desaign.png" alt="Collection Report" caption="Reconcile your physical collections against system records." >}}
+
 * **Daily Sales Summary (Z-Report):** This is your end-of-day report. It shows total sales, any rounding, canceled orders, and a summary of all collections.
 
 {{< callout type="info" >}}
@@ -300,17 +304,24 @@ The Z-Report is the best way to double-check your physical cash and card slips a
 **Situation:** After the sale, you realize the wrong serial number was scanned for a product.
 
 **Steps:**
-1. Open the **Cash Bill Listing**.
-2. Find the sale.
-3. Click **Fix Serial Number** (Swap Serial).
-4. Enter the correct number and save.
-5. **Result:** The system fixes the stock records for both items without you having to cancel the whole sale.
+1. Open the **Cash Bill Listing** and find the sale.
+2. Click into the specific **Item** that has the wrong serial number.
+3. Select the **Swap Serial Number** tab.
+4. Select the current (wrong) serial number and choose the correct one from the available list.
+5. Save the changes.
+**Result:** The system fixes the stock records for both items immediately.
 
 ---
 
----
+### Example 3: Settlement (Payment) Adjustment
+**Situation:** A customer paid by Credit Card, but the staff accidentally recorded it as Cash.
 
----
+**Steps:**
+1. Open the cash bill and go to the **Settlement** tab.
+2. Under **Adjustment**, select the "Cash" entry and click **Delete**.
+3. Click **Add** and select "Credit Card" as the new payment method.
+4. Key in the correct details and click **Adjust Settlement**.
+**Result:** Your accounting records are corrected to show the money in the Bank/Card account instead of the Cash drawer.
 
 ## Other Helpful Tools
 
