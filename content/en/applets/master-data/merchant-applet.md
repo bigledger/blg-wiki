@@ -201,7 +201,6 @@ Creates a new merchant profile. Only the core identity and credential fields are
 | **PGW Merchant Code** | The identifier the payment gateway uses to route transactions to this merchant's account. |
 | **Merchant Key** | Secret key for API authentication. Treat like a password — any rotation must be reflected in connected integrations to avoid transaction failures. |
 | **Status** | DEACTIVATE suspends access while preserving all data and history. |
-| **Description** | Internal notes only — not visible to the merchant. |
 
 ---
 
@@ -263,7 +262,7 @@ Manages the merchant's portal login credentials — giving the merchant's own st
 {{< figure src="/images/merchant-applet-applet/merchant-applet-contract-tab.png" alt="Merchant Contract Tab - summary of agreements associated with this merchant" caption="Contract Tab: A centralized view of all commercial agreements linked to the merchant profile." >}}
 Lists all contracts associated with this merchant. Contracts are created and managed in the [Contract Container](#contract-container) section of the applet, but this tab gives you a quick view of all agreements for this specific merchant without leaving the merchant profile.
 {{< figure src="/images/merchant-applet-applet/merchant-applet-rate-card-view.png" alt="Rate Card View - detailed breakdown of fees per payment channel" caption="Rate Card: Defining the commercial MDR and flat fees for different payment methods." >}}
-(Need to explain Rate Card)
+Expanding a contract row reveals its **Rate Card** — the pricing schedule that defines what fee applies per payment channel (e.g., 1.5% MDR for Credit Card, flat RM 0.50 for FPX). This is a read-only summary view; to create or edit rate cards, open the contract in the [Contract Container](#contract-container). For a full breakdown of how the Rate Card works, see the [Rate Card Tab](#rate-card-tab) section below.
 ---
 
 #### Return URL Tab
@@ -293,7 +292,8 @@ Lists all payment channel configurations for this merchant — which payment met
 #### Address Tab
 {{< figure src="/images/merchant-applet-applet/merchant-applet-address-tab.png" alt="Merchant Address Tab - management of multiple office and billing locations" caption="Address Tab: Maintaining billing, correspondence, and branch addresses for the merchant." >}}
 Manages the registered addresses for this merchant — billing address, correspondence address, and any additional branch or site addresses. Multiple addresses can be stored and individually labeled.
-(need explain set default)
+
+Each address has a **Set as Default** toggle. When a merchant has more than one address of the same type, marking one as default tells the system which address to use by default for document generation, invoicing, and correspondence. The address listing shows **(default)** next to the address type label for the designated address. Only one address per type can be set as default at a time — setting a new default automatically clears the previous one.
 ---
 
 #### Contact Tab
@@ -311,7 +311,48 @@ Links this merchant record to one or more companies within your platform. Compan
 #### Merchant Branch Tab
 {{< figure src="/images/merchant-applet-applet/merchant-applet-branch-tab.png" alt="Merchant Branch Tab - intercompany branch relationship settings" caption="Merchant Branch Tab: Configuring branch-level mappings for intercompany settlements." >}}
 Configures intercompany branch relationships for this merchant. Used when a merchant operates across multiple branches or legal entities that need to be tracked separately within the platform's intercompany settlement framework.
-(need explain every fields)
+
+Each branch record is divided into four sections:
+
+**Identity & Mapping**
+
+| Field | Notes |
+|-------|-------|
+| **Selected Entity** | Read-only. Auto-filled with the current merchant's name. |
+| **Mapping Value 01–05** | Five free-form extension fields for mapping this branch to external systems — e.g., ERP codes, legacy system references, or intercompany settlement identifiers. The platform does not enforce a format. |
+
+**Branch Address**
+
+Standard contact and location fields: Address Name, Email, Phone Number, Address Lines 1–5, Country, State, City, Postal Code.
+
+**Control Account**
+
+These fields tie this branch's transactions to specific GL accounts — determining where the platform posts financial entries for this branch.
+
+| Field | Notes |
+|-------|-------|
+| **Account AR/AP Type** | Whether this branch's transactions post to Accounts Receivable or Accounts Payable. |
+| **Account GL Code** | The General Ledger account from the [General Ledger Applet](/applets/finance/general-ledger-applet/) that this branch posts to. |
+| **Account Subledger** | The subledger under the GL code for more granular transaction tracking. |
+
+**Output Tax / Input Tax**
+
+Configures the tax codes applied when this branch transacts. Output tax is applied on sales; input tax is applied on purchases. Tax type and rate fields are read-only — they auto-fill when you select a tax code.
+
+| Field | Notes |
+|-------|-------|
+| **SST/GST Tax Code** | Select the applicable tax code from the [Tax Configuration Applet](/applets/master-data/tax-configuration-applet/). |
+| **Tax Type** | Auto-filled from the selected tax code. Indicates the tax category (e.g., SR, ZRL, ES). |
+| **SST/GST/VAT %** | Auto-filled from the selected tax code. Shows the effective tax rate. |
+| **WHT Code** | Withholding Tax code, if applicable to this branch's transactions. |
+| **WHT Type** | Auto-filled from the selected WHT code. |
+| **WHT %** | Auto-filled from the selected WHT code. |
+
+**E-Invoice**
+
+| Field | Notes |
+|-------|-------|
+| **E-Invoice Tax Type Code** | Maps this branch to a MyInvois-compliant tax classification code. Required for LHDN e-invoice submissions involving this branch. Codes are defined in the [Tax Configuration Applet](/applets/master-data/tax-configuration-applet/). |
 ---
 
 #### Credit Limit and Terms Tab
@@ -536,7 +577,7 @@ The Merchant Applet has no direct navigation links to other applets — there ar
 
 ---
 
-### Customer Applet & Employee Applet
+### [Customer Applet](/applets/master-data/customer-applet/) & [Employee Applet](/applets/master-data/employee-applet/)
 
 Merchants, customers, and employees are all stored as **entity records** under the same unified identity framework. The only difference between a merchant record and a customer record is their classification — the underlying structure is identical.
 
@@ -546,7 +587,7 @@ Credit limits and credit terms configured here use the same credit management sy
 
 ---
 
-### My E-Invoice Admin Applet & My Peppol Admin Applet
+### [My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) & [My Peppol Admin Applet](/applets/e-invoice/mypeppol-admin-applet/)
 
 The **Peppol Config** tab in this applet is the source of truth for a merchant's Peppol network identity. When you register a Peppol ID here, the E-Invoice and Peppol Admin applets read it automatically — they do not have their own place to enter it.
 
@@ -564,13 +605,13 @@ If a merchant's Peppol ID is missing or incorrect here, e-invoice submissions fo
 
 ---
 
-### Chart of Accounts Applet
+### [General Ledger Applet](/applets/finance/general-ledger-applet/)
 
-GL account codes can be attached to a merchant's intercompany branch to define which ledger accounts the merchant's transactions post to. Those GL codes are maintained in the **Chart of Accounts Applet** — this applet only reads and selects from them.
+GL account codes can be attached to a merchant's intercompany branch to define which ledger accounts the merchant's transactions post to. Those GL codes are maintained in the **General Ledger Applet** — this applet only reads and selects from them.
 
 ---
 
-### Seller Admin Applet
+### [Seller Admin Applet](/applets/ecommerce/seller-admin-applet/)
 
 The Seller Admin Applet manages the operational side of a merchant's activity — order creation, fulfillment queues, and pick-pack workflows. It uses the merchant identity created here as its foundation.
 
@@ -584,13 +625,13 @@ The division of responsibility is:
 
 | Applet | What this applet provides to it |
 |--------|--------------------------------|
-| **Customer Applet** | Shared entity identity framework; same credit limit and credit term system |
-| **My E-Invoice Admin Applet** | Merchant's Peppol ID for LHDN e-invoice submission |
-| **My Peppol Admin Applet** | Merchant's Peppol ID for network document routing |
-| **Tax Configuration Applet** | Reads tax codes from it; merchant branch setup depends on it |
-| **General Ledger Applet** | Reads GL account codes from it for merchant branch configuration |
-| **Accounts Receivable Applet** | AR/AP Type drives how merchant balances are categorized in AR aging |
-| **Seller Admin Applet** | Merchant identity and account used as the basis for seller operations |
+| [**Customer Applet**](/applets/master-data/customer-applet/) | Shared entity identity framework; same credit limit and credit term system |
+| [**My E-Invoice Admin Applet**](/applets/e-invoice/my-e-invoice-admin-applet/) | Merchant's Peppol ID for LHDN e-invoice submission |
+| [**My Peppol Admin Applet**](/applets/e-invoice/mypeppol-admin-applet/) | Merchant's Peppol ID for network document routing |
+| [**Tax Configuration Applet**](/applets/master-data/tax-configuration-applet/) | Reads tax codes from it; merchant branch setup depends on it |
+| [**General Ledger Applet**](/applets/finance/general-ledger-applet/) | Reads GL account codes from it for merchant branch configuration |
+| [**Accounts Receivable Applet**](/applets/finance/accounts-receivable-applet/) | AR/AP Type drives how merchant balances are categorized in AR aging |
+| [**Seller Admin Applet**](/applets/ecommerce/seller-admin-applet/) | Merchant identity and account used as the basis for seller operations |
 
 ---
 
