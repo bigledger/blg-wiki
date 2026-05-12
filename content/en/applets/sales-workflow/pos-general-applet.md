@@ -19,7 +19,7 @@ The **BigLedger POS General Applet** is a fast and easy-to-use tool designed for
 
 **Cashiers & Front-line Staff:**
 - Fast and easy interface for busy hours
-- Simple ways to start and end your shift
+- Simple ways to manage your sales and cash flow
 - Instant view of available stock and item details
 
 **Store Managers & Supervisors:**
@@ -78,7 +78,7 @@ For a visual walkthrough of the POS General Applet, watch the video below:
   {{< card title="Access Rules" subtitle="Control who can perform specific tasks" link="#for-admins-setting-up-the-system" >}}
   {{< card title="System Settings" subtitle="Set up your store and staff defaults" link="#for-admins-setting-up-the-system" >}}
   {{< card title="Payment Methods" subtitle="Manage cash, cards, and e-wallets" link="#for-admins-setting-up-the-system" >}}
-  {{< card title="Shift Controls" subtitle="Manage shifts, cash drawers, and stock" link="#for-staff-start-your-shift" >}}
+  {{< card title="Sales Controls" subtitle="Manage cash drawers and stock" link="#for-staff-cashier-daily-workflow" >}}
   {{< card title="Reporting Tools" subtitle="Simple tools to track sales and history" link="#sales-reports-and-history" >}}
 {{< /cards >}}
 
@@ -111,9 +111,7 @@ Company
 │   │
 │   └── Staff member ──→ WHO is making the sale?
 │       │
-│       └── Work Shift ──→ WHEN is the counter open?
-│           │
-│           └── Sales ──→ WHAT is being sold?
+│       └── Sales ──→ WHAT is being sold?
 │
 └── Accounting ──→ WHERE is the money recorded?
     │
@@ -124,23 +122,72 @@ Company
 1. **Company**: Your overall business rules
 2. **Store**: The settings for each physical location
 3. **Staff**: Tracking who is responsible for each sale
-4. **Shift**: A record of work done during a specific time
-5. **Sales**: The actual items sold
-6. **Accounting**: The final place where all money is tracked
+4. **Sales**: The actual items sold
+5. **Accounting**: The final place where all money is tracked
 
 ---
 
 
 ## Quick Start Guide
 
-### For Staff: Start Your Shift
+### For Staff: Cashier Daily Workflow
 
-**Goal:** Open your counter and start selling in 4 simple steps.
+**Goal:** Open your counter and start selling in simple steps.
 
-1. **Log In:** Open the POS and log in with your username and password.
-2. **Set your Defaults:** Go to **Default Selection** to make sure the right Store and Staff name are selected.
-3. **Start Shift:** Click **"New Session"** to start your work for the day. This keeps your cash and sales separate from other shifts.
-4. **Make Sales:** Scan items, enter serial numbers if needed, and choose how the customer is paying (Cash, Card, etc.) to finish.
+1. **Open the Applet:** Navigate to the **POS General Applet** from the main dashboard of your BigLedger account.
+{{< figure src="/images/pos-general-applet/login pos general.png" alt="Opening POS General Applet" caption="Navigate to the POS General Applet from your main account page." >}}
+
+2. **Set your Defaults:** Go to **Default Selection** to ensure the correct Store and Staff name are selected. This usually only needs to be done the first time you use the system.
+{{< figure src="/images/pos-general-applet/personalization-default setting.png" alt="Setting Defaults" caption="Configure your default store and staff settings." >}}
+
+3. **Make Sales:** Follow the detailed process below to record transactions and accept payments.
+
+---
+
+### Detailed Guide: Making a Sale
+
+Follow these steps to process a customer transaction from start to finish.
+
+#### Step 1: Create a New Cash Bill
+Click the **"New"** or **"Add"** button to start a fresh transaction.
+{{< figure src="/images/pos-general-applet/create cashbiil.png" alt="Create Cash Bill" caption="Initiate a new cash bill transaction." >}}
+
+#### Step 2: Select or Change Customer
+By default, the system selects your primary "Default Customer". If you need to record the sale for a specific customer:
+- Click the **Customer** button.
+- Click on the **Entity ID** field to search.
+{{< figure src="/images/pos-general-applet/change customer.png" alt="Change Customer" caption="Click the Entity ID field to search for a specific customer." >}}
+
+- Search for the customer and select them from the list.
+{{< figure src="/images/pos-general-applet/select customer.png" alt="Select Customer" caption="Search and select the correct customer record." >}}
+
+#### Step 3: Add Items to the Sale
+You can add products in two ways:
+- **Scan:** Use your barcode scanner directly in the search box.
+- **Manual:** Click the **Add** button to manually select items.
+{{< figure src="/images/pos-general-applet/add item or scane code.png" alt="Add Item" caption="Scan barcodes or click 'Add' for manual selection." >}}
+
+For manual selection, search for the item name or code and click to select it.
+{{< figure src="/images/pos-general-applet/search item and select item.png" alt="Search Item" caption="Search and select items from your inventory." >}}
+
+#### Step 4: Adjust Quantity and Price
+Once an item is added, you can edit the **Quantity** or **Price** (if you have the necessary permissions).
+{{< figure src="/images/pos-general-applet/edit qty and edit price.png" alt="Edit Qty/Price" caption="Adjust the quantity and price as needed." >}}
+
+Continue adding items to the bill using the same method until the order is complete.
+{{< figure src="/images/pos-general-applet/continue adding tje item.png" alt="Adding More Items" caption="Add multiple items to build the complete order." >}}
+
+#### Step 5: Process Payment
+When the customer is ready to pay:
+- Select the relevant payment method (e.g., Cash, Card, E-Wallet) by clicking the **red payment button**.
+{{< figure src="/images/pos-general-applet/payment method.png" alt="Payment Method" caption="Select the payment method used by the customer." >}}
+
+- Enter the payment **Amount** and any other required information in the fields, then click **Add**.
+{{< figure src="/images/pos-general-applet/key in relevant info.png" alt="Enter Payment Info" caption="Key in the received amount and relevant payment details." >}}
+
+#### Step 6: Finalize the Sale
+Review the transaction one last time. Once confirmed, click the **Final** button to complete the sale and update your records.
+{{< figure src="/images/pos-general-applet/ready for final.png" alt="Finalize Sale" caption="Click 'Final' to complete the transaction and update stock/accounting." >}}
 
 **What happens next?** Your sales are instantly recorded in the main accounts and stock levels are updated.
 
@@ -176,7 +223,7 @@ The BigLedger POS provides simple tools to help you track your sales and check y
 
 * **Detailed Sales Records:** Use the **Cash Bill Listing** to see every sale made. You can filter by date, store, or status to find exactly what you need.
 * **Breakdown of Payments:** The **Cashier Collection** tool shows you a list of all payments received. You can group them by payment type (like Cash or Card) to see how much you collected for each.
-* **Daily Sales Summary (Z-Report):** This is your end-of-day report. It shows total sales, any rounding, canceled orders, and who was responsible for the shift.
+* **Daily Sales Summary (Z-Report):** This is your end-of-day report. It shows total sales, any rounding, canceled orders, and a summary of all collections.
 
 {{< callout type="info" >}}
 **How to check your cash:**
@@ -214,15 +261,7 @@ The Z-Report is the best way to double-check your physical cash and card slips a
 
 ---
 
-### Example 3: Closing your Shift
-**Situation:** Your shift is over and you need to hand over the cash drawer.
-
-**Steps:**
-1. Click **Close Shift**.
-2. The system gives you a **Summary Report** (Z-Report).
-3. Count your cash and check it against the report.
-4. Save or print the report for the finance team.
-5. **Result:** Your shift is safely closed, and the records are locked to prevent changes.
+---
 
 ---
 
