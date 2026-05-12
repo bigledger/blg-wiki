@@ -57,6 +57,21 @@ Traditional sales systems often keep records only at the counter, which leads to
 **Core Concept:** The POS applet is where you record sales at the counter. These records automatically flow into your main accounts (Cashbook) to keep your finances accurate.
 {{< /callout >}}
 
+## Video Tutorial
+
+For a visual walkthrough of the POS General Applet, watch the video below:
+
+<div style="max-width:560px; margin:24px auto;">
+  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+    <iframe
+      src="https://www.youtube.com/embed/Gf6gXUfHebE"
+      style="position:absolute; top:0; left:0; width:100%; height:100%;"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
 ## Key Features Overview
 
 {{< cards >}}
