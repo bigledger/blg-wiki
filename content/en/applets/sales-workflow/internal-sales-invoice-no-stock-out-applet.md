@@ -335,6 +335,7 @@ Identical in layout to External Delivery, but filtered to show only jobs marked 
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-pickup-subtab.png" alt="Pickup Listing - managing customer collection points" caption="Pickup Tracking: Logging instances where the customer self-collects the invoiced items." >}}
 
 Identical in layout to External and Internal Delivery, but filtered to show only jobs where the delivery type is **Pickup** — meaning the customer is collecting the goods themselves rather than receiving a delivery.
+
 ---
 
 #### KO For Tab

@@ -11,9 +11,7 @@ weight: 210
 ---
 
 {{< callout type="warning" >}}
-**Deposit Applet user guide still under progress**
-
-**Work in Progress: This documentation is currently under development. Visual assets (screenshots) and further details will be added soon.**
+**Work in Progress: This documentation is currently pending review**
 {{< /callout >}}
 
 ### 🚀 TL;DR: What Is This Applet For?
@@ -68,7 +66,6 @@ When a company has idle cash sitting in a current account earning nothing, the t
 | **This Applet (Deposit Applet)** | Manages the full deposit lifecycle — request, tracking, interest, rollover |
 | **Internal Payment Voucher Applet** | Records the cash going OUT to the bank when you make the placement. Think of it as the "we paid the bank" receipt inside the system. |
 | **Internal Receipt Voucher Applet** | Records the cash coming BACK from the bank at maturity. The "we received money from the bank" receipt. |
-| **General Ledger Applet** | The master accounting book. All the automatic entries created by this applet end up here. Finance uses it to see the full picture of all money movements. |
 | **Bank Reconciliation Applet** | A checking tool. It compares what your system says happened against what the bank's actual statement says. If they match, everything is correct. If they don't, something needs to be investigated. Think of it like checking your bank app against your own spending notes. |
 | **Cashbook Applet** | Shows your company's overall bank account balances — including how much is currently locked up in deposits and unavailable for spending. |
 
@@ -210,11 +207,15 @@ The applet has three main sections accessible from the sidebar.
 
 ## 1. MM Deposit Requisition
 
+{{< figure src="/images/deposit-applet/deposit-requisition-listing.png" alt="Deposit Requisition Listing - centralized dashboard for managing all investment requests" caption="Requisition Management: Tracking the status of new placement requests and bank bidding cycles." >}}
+
 This is where you **request** a new deposit placement and collect quotes from banks.
 
 **Think of it as**: Sending out a tender to multiple banks — "we have RM5 million to place for 3 months, who gives us the best rate?"
 
 ### Requisition — Details Tab
+
+{{< figure src="/images/deposit-applet/deposit-requisition-details-tab.png" alt="Requisition Details Tab - defining principal amount, interest logic, and investment terms" caption="Requisition Configuration: Establishing the core parameters for the deposit placement before bank invitation." >}}
 
 The core form for defining the deposit terms.
 
@@ -243,6 +244,8 @@ The core form for defining the deposit terms.
 
 *(Appears after the record is saved, not in TEMP status)*
 
+{{< figure src="/images/deposit-applet/deposit-requisition-invitee-tab.png" alt="Invitee Tab - bank bidding portal for competitive rate submission" caption="Invitee Management: Managing bank invitations and monitoring the automated quote submission process." >}}
+
 *   **What it is**: A list of banks or financial institutions you are inviting to submit their deposit rate quotes.
 *   **The Analogy**: The **Tender Invitation List** — you send each bank a secure link, they log in and submit their offered rate, and it flows back into this tab for comparison.
 *   **Key Actions**:
@@ -258,11 +261,17 @@ Once a Requisition is set to **FINAL**, the interest type and core terms are loc
 
 ## 2. MM Deposit Register
 
+{{< figure src="/images/deposit-applet/deposit-register-listing.png" alt="Deposit Register Listing - monitoring active investments and maturity schedules" caption="Asset Monitoring: A unified view of all live placements currently earning interest at counterparties." >}}
+
 This is where you **activate and monitor** a live deposit after selecting a bank from the requisition quotes.
 
 **Think of it as**: The actual Fixed Deposit Certificate — the live record of money that is currently placed at a bank, earning interest.
 
 ### Register — Details Tab
+
+{{< figure src="/images/deposit-applet/deposit-register-details-1.png" alt="Register Details (Section 1) - finalized placement terms and bank selection" caption="Placement Confirmation (1): Recording the finalized terms from the bank's official deposit certificate." >}}
+
+{{< figure src="/images/deposit-applet/deposit-register-details-2.png" alt="Register Details (Section 2) - interest accounting and rollover configuration" caption="Placement Confirmation (2): Configuring accounting mappings and automated renewal strategies for the live asset." >}}
 
 Contains all the same core fields as the Requisition (amount, interest, dates) plus additional fields that only apply once the deposit is live:
 
@@ -278,11 +287,12 @@ Contains all the same core fields as the Requisition (amount, interest, dates) p
 | **GL Code for Interest Expense** | The accounting category for any interest costs (rare for deposits, but used in some structures). "When we pay interest costs, put it in the 'Interest Expense' bucket." |
 | **Collaterals** | Any assets pledged as security for this deposit arrangement |
 | **Approval Workflow** | The chain of people who need to approve this deposit before it goes live |
-| **Description / Supervisor Remarks** | Free-text notes for internal reference |
 
 ### Register — Transactions Tab
 
 *(Appears after the record is saved, not in TEMP status)*
+
+{{< figure src="/images/deposit-applet/deposit-register-transactions-tab.png" alt="Transactions Tab - automated ledger of placement and interest journal entries" caption="Financial Automation: Reviewing the system-generated GL entries for principal and interest postings." >}}
 
 *   **What it is**: An auto-generated ledger of every financial transaction created by this deposit — the initial placement, each interest payment, and any compound entries.
 *   **The Analogy**: The **transaction history** on your bank statement for this specific FD account.
@@ -292,6 +302,8 @@ Contains all the same core fields as the Requisition (amount, interest, dates) p
 
 *(Appears after the record is saved, not in TEMP status)*
 
+{{< figure src="/images/deposit-applet/deposit-register-payment-tab.png" alt="Payment/Receipt Tab - tracking physical cash settlements against the ledger" caption="Settlement Tracking: Verifying the physical movement of funds to and from the bank for each transaction." >}}
+
 *   **What it is**: Records of actual cash movements — money paid out to place the deposit, and money received back (principal + interest) at maturity or on interest payment dates.
 *   **The Analogy**: The **bank receipts** — proof that the money actually moved, as opposed to the Transactions tab which shows the accounting entries.
 *   **Accounting Importance**: Reconciles the accounting entries (Transactions tab) against actual bank movements. If the GL shows interest income but no receipt was recorded, there is a reconciliation gap.
@@ -299,6 +311,8 @@ Contains all the same core fields as the Requisition (amount, interest, dates) p
 ### Register — Attachment Tab
 
 *(Appears after the record is saved, not in TEMP status)*
+
+{{< figure src="/images/deposit-applet/deposit-register-attachment-tab.png" alt="Attachment Tab - secure storage for bank certificates and confirmation letters" caption="Document Vault: Maintaining the official evidence and signed agreements for treasury audits." >}}
 
 *   **What it is**: File uploads for supporting documents — the bank's FD confirmation letter, the signed placement agreement, bank statements, etc.
 *   **Accounting Importance**: Supporting documents are required for audit purposes. The FD confirmation letter from the bank is the primary evidence that the placement exists and the terms are as recorded.
@@ -319,10 +333,12 @@ Contains all the same core fields as the Requisition (amount, interest, dates) p
 
 | Button | When it appears | What it does |
 |--------|----------------|--------------|
-| **Select Requisition** | When not yet FINAL and not INACTIVE | Links this register entry to an approved requisition, importing its terms |
+| **Select Requisition** | When not yet FINAL and not INACTIVE | Opens a searchable panel of all FINAL requisitions. Picking one **copies its field values** into this register form — amount, interest rate, calculation logic, GL codes, dates, rollover settings — so you do not need to type them in manually. This is not a knock-off: the requisition is not fulfilled or closed, it is just used as a data source. The requisition stays unchanged; only the register form is pre-filled. Requisitions are created in the **MM Deposit Requisition** section of this same applet (Step 1 of the workflow) before a register entry is opened (Step 2). |
 | **SAVE** | When not yet FINAL | Saves the current state as a draft |
 | **FINAL** | When status is ACTIVE and not yet FINAL | Activates the deposit — auto-generates all Placement, Interest, and Compound transactions |
 | **DELETE** | On draft entries (bottom of page) | Permanently removes the register entry. Requires a second click to confirm. |
+
+{{< figure src="/images/deposit-applet/deposit-register-actions.png" alt="Register Action Buttons - managing the transition from draft to finalized asset" caption="Lifecycle Control: The interface for saving drafts and triggering the final accounting generation." >}}
 
 {{< callout type="warning" >}}
 Clicking **FINAL** on the Register is the most consequential action in this applet. It triggers automatic GL transaction generation. Ensure all details — especially the GL codes and interest rate — are correct before finalising.
@@ -331,6 +347,8 @@ Clicking **FINAL** on the Register is the most consequential action in this appl
 ---
 
 ## 3. MM Deposit Category
+
+{{< figure src="/images/deposit-applet/deposit-category-listing.png" alt="Deposit Category Listing - organizing investments by duration or strategy" caption="Metadata Classification: Labeling deposits for strategic reporting and portfolio analysis." >}}
 
 *   **What it is**: A simple master data list for grouping and labelling deposits. Each category has a Code, Name, and Description.
 *   **The Analogy**: **Folders** for your deposits. You might have categories like "Short Term (< 3 months)", "Medium Term (3–12 months)", or "USD Placements" — so you can filter and report by group.
