@@ -11,9 +11,7 @@ weight: 200
 ---
 
 {{< callout type="warning" >}}
-**Internal Jobsheet Applet user guide still under progress**
-
-**Work in Progress: This documentation is currently under development. Visual assets (screenshots) and further details will be added soon.**
+**Work in Progress: This documentation is currently pending review**
 {{< /callout >}}
 
 ### 🚀 TL;DR: What Is This Applet For?
