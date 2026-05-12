@@ -11,7 +11,7 @@ weight: 150
 ---
 
 {{< callout type="warning" >}}
-**Work in Progress: This documentation is currently under development. Visual assets (screenshots) will be added soon.**
+**Work in Progress: This documentation is currently pending review**
 {{< /callout >}}
 
 ## Purpose and Overview
