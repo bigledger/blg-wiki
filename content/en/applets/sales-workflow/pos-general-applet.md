@@ -189,6 +189,13 @@ When the customer is ready to pay:
 Review the transaction one last time. Once confirmed, click the **Final** button to complete the sale and update your records.
 {{< figure src="/images/pos-general-applet/ready for final.png" alt="Finalize Sale" caption="Click 'Final' to complete the transaction and update stock/accounting." >}}
 
+4. **Closing the Store:** At the end of the business day, you must print a Z-Report to summarize your sales and collections.
+- Select the relevant details to search for your Z-Report.
+{{< figure src="/images/pos-general-applet/Z REPORT.png" alt="Search Z-Report" caption="Search for the daily sales summary." >}}
+- You can print the Z-Report by clicking the **Export to PDF** button.
+{{< figure src="/images/pos-general-applet/EXPORT TO PDF.png" alt="Export Z-Report" caption="Click Export to PDF to generate the report." >}}
+{{< figure src="/images/pos-general-applet/PRINT Z REPORT.png" alt="Print Z-Report" caption="Print the generated PDF for your records." >}}
+
 **What happens next?** Your sales are instantly recorded in the main accounts and stock levels are updated.
 
 ---
@@ -197,25 +204,64 @@ Review the transaction one last time. Once confirmed, click the **Final** button
 
 **Goal:** Help staff and make sure sales records are correct.
 
-1. **Check Sales:** Use the **Cash Bill Listing** to see all recent sales.
-2. **Reprint Receipts:** If a customer needs another copy of a receipt, you can reprint it here.
-3. **Fix Serial Numbers:** If the wrong serial number was scanned, use the **Swap Serial Number** tool to fix it easily.
-4. **View Collections:** Check the **Cashier Collection** tool to see how much money has been collected by each payment method.
+#### 1. Check and Review Sales
+Use the **Cash Bill Listing** to see all recent sales. You can use the **Advanced Search** to filter for specific dates or periods.
+{{< figure src="/images/pos-general-applet/cashbill listing search.png" alt="Cash Bill Search" caption="Use advanced search to find specific transactions." >}}
+
+Click into a specific cash bill to review its details. From here, you can edit remarks or email the receipt directly to the customer.
+{{< figure src="/images/pos-general-applet/review it.png" alt="Review Cash Bill" caption="Review details, edit remarks, or email receipts." >}}
+
+#### 2. Reprint Receipts
+If a customer needs another copy of a receipt:
+- Select the cash bill from the listing.
+- Click the **Single/Multiple Print** button to reprint.
+{{< figure src="/images/pos-general-applet/reprint.png" alt="Reprint Receipt" caption="Reprint receipts directly from the listing." >}}
+
+#### 3. Fix Serial Number Mistakes
+If the wrong serial number was scanned:
+- Open the cash bill from the listing and click into the specific **Item**.
+{{< figure src="/images/pos-general-applet/click into item.png" alt="Click Item" caption="Navigate to the item details within the cash bill." >}}
+
+- Click the **Swap Serial Number** tab.
+{{< figure src="/images/pos-general-applet/swap sn.png" alt="Swap Serial Number Tab" caption="Access the serial number swap tool." >}}
+
+- Select the current serial number and choose the correct available serial number from the box to swap them.
+{{< figure src="/images/pos-general-applet/sawp sn 2.png" alt="Execute Swap" caption="Select and swap the incorrect serial number." >}}
+
+You can view a history of all swapped serial numbers and their details in the **Swap Serial Number** menu.
+{{< figure src="/images/pos-general-applet/;ist of sawp sn.png" alt="Swap History" caption="Review the list of all serial number adjustments." >}}
+
+#### 4. Settlement (Payment) Adjustments
+If a staff member selects the wrong payment method, you can fix it using the **Settlement Adjustment** tool:
+- Go to the specific cash bill and click the **Settlement** tab.
+{{< figure src="/images/pos-general-applet/settlement tab.png" alt="Settlement Tab" caption="Navigate to the payment settlement details." >}}
+
+- In the **Adjustment** tab, click on the incorrect settlement method.
+{{< figure src="/images/pos-general-applet/remove wrong settlement method.png" alt="Select Wrong Payment" caption="Select the payment method that needs to be removed." >}}
+
+- Click **Delete** to remove the wrong method.
+{{< figure src="/images/pos-general-applet/click delete to remove wrong settlement.png" alt="Delete Payment" caption="Confirm the removal of the incorrect payment." >}}
+
+- Click the **Add** button to insert the correct settlement method.
+{{< figure src="/images/pos-general-applet/add correct settlement.png" alt="Add Correct Payment" caption="Initiate adding the correct payment method." >}}
+
+- Key in the correct payment details and click **Add**.
+{{< figure src="/images/pos-general-applet/add correct details.png" alt="Enter Details" caption="Enter the correct payment information." >}}
+
+- Finally, click the **Adjust Settlement** button to confirm and save the changes.
+{{< figure src="/images/pos-general-applet/adjust settlemetn.png" alt="Confirm Adjustment" caption="Click 'Adjust Settlement' to finalize the fix." >}}
+
+A history of adjusted payments can be found in the **Settlement Adjustment** menu.
+{{< figure src="/images/pos-general-applet/settlement adjustment menu.png" alt="Adjustment Menu" caption="View all historical payment corrections." >}}
+
+#### 5. View Collections
+Use the **Cashier Collection** tool to see how much money has been collected by each payment method. Use the **Advanced Search** to generate reports for specific periods.
+{{< figure src="/images/pos-general-applet/cashier collection report.png" alt="Collection Report" caption="Search for collection data across specific dates." >}}
+
+The report will automatically group your totals by settlement method (e.g., Cash, Card, E-Wallet).
+{{< figure src="/images/pos-general-applet/report desaign.png" alt="Collection Totals" caption="Reports are organized by payment type for easy reconciliation." >}}
 
 **Need to check from home?** You can see all store activity in real-time from any device with manager access.
-
----
-
-### For Admins: Setting up the System
-
-**Goal:** Link your store to your main accounting in 4 steps.
-
-1. **Create Accounts:** Define your "Money Vaults" (like Petty Cash or Bank Accounts) in the Cashbook Applet.
-2. **Add Payment Methods:** Create options like "Credit Card" or "E-Wallet" and link them to the right account.
-3. **Link to Stores:** Use the **Settlement Method Setting** to choose which payment methods are available at each store location. (Look for the "Red Color" warning if something is missing!)
-4. **Set Access Rules:** Choose who can use special features like "Change Date" or "View Profit" to keep your records safe.
-
-**Ongoing:** Check your **Z Report** settings to make sure your daily summaries show all the information you need.
 
 ## Sales Reports and History
 
@@ -230,7 +276,8 @@ The BigLedger POS provides simple tools to help you track your sales and check y
 The Z-Report is the best way to double-check your physical cash and card slips against the system. You can export it to PDF and send it to your finance team for their final checks.
 {{< /callout >}}
 
-{{< figure src="/images/pos-general-applet/pos-z-report-export.png" alt="Exporting the daily sales summary for records" caption="Exporting the daily sales summary for records" >}}
+{{< figure src="/images/pos-general-applet/Z REPORT.png" alt="Daily Sales Summary (Z-Report)" caption="Viewing the end-of-day Z-Report." >}}
+{{< figure src="/images/pos-general-applet/EXPORT TO PDF.png" alt="Exporting Z-Report" caption="Exporting the daily sales summary for records." >}}
 
 
 ---
