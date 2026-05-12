@@ -90,7 +90,10 @@ Managing stock held by third parties or internal branches through consignment in
 
 ---
 
+{{< figure src="/images/internal-consignment-billing-applet-applet/internal-consignment-billing-applet-overview-infographic.png" alt="Consignment Billing Overview: Closing the Consignment-to-Cash Gap - comparing manual reconciliation with the automated billing solution" caption="Consignment Billing Overview: The Old Way (scattered records, manual reconciliation, pricing errors) vs The New Way (direct GIN mapping, consumption-based billing, real-time financial sync)." >}}
+
 ## Key Features
+
 
 {{< cards >}}
   {{< card title="Billing Conversion" subtitle="Directly convert consignment issues into final sales invoices" link="#consignment-billing" >}}
@@ -310,7 +313,7 @@ The listing shows all consignment billing documents with their statuses. Multi-r
 Creates a new consignment billing document. The form is organized into tabs.
 
 #### Main Details Tab
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-main-details-tab.png" alt="Main Details Tab - capturing primary document header information including branch and location" caption="Main Details Tab: Defining the core operational context and stock source for the consignment billing document." >}}
 Captures the document header information that applies to the entire billing document.
 
 | Field | Description | Hidden |
@@ -338,7 +341,7 @@ Captures the document header information that applies to the entire billing docu
 ---
 
 #### Account Tab
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-account-tab.png" alt="Account Tab - managing consignee entity details and billing relationships" caption="Account Tab: Identifying the primary consignee and establishing the financial link to their master record." >}}
 Manages the consignee entity and address information. Contains three sub-tabs.
 
 **Entity Details sub-tab**
@@ -354,7 +357,7 @@ Identifies who is being billed. The Entity ID field opens a searchable entity se
 | **Currency** | The entity's default billing currency. This becomes the currency of the entire document — all line item amounts will be in this currency. |
 
 **Bill To sub-tab**
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-bill-to-subtab.png" alt="Bill To Sub-tab - specifying the formal billing address for the invoice" caption="Bill To: Ensuring the financial claim is sent to the correct registered address for tax and compliance." >}}
 The billing address for the invoice. Can be selected from the entity's registered addresses or manually overridden. This address appears on the printed invoice.
 
 **Ship To sub-tab**
@@ -381,7 +384,7 @@ Clicking a line item row opens the **Add/Edit Item** form.
 When adding or editing a line item, the form has the following sub-tabs:
 
 **Item Details sub-tab**
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-item-details-subtab.png" alt="Item Details Sub-tab - detailed breakdown of quantities, pricing, and discounts per line item" caption="Item Details: The primary interface for recording specific consumed quantities and applying commercial terms." >}}
 Contains its own nested sub-tabs:
 
 - **Main Details** — item code, description, quantity, UOM, unit price, discount, tax configuration, and WHT configuration. The visible price fields are individually configurable via Application Settings (`HIDE_UNIT_PRICE_STD_*`, `HIDE_UNIT_PRICE_NET_*`, `HIDE_UNIT_PRICE_TXN_*`, `HIDE_UNIT_DISCOUNT`, `HIDE_QTY_BASE`, `HIDE_QTY_UOM`, etc.).
@@ -420,7 +423,7 @@ Without a valid Issue Link, the billing cannot be traced back to a physical stoc
 #### Delivery Details Tab
 
 *(Hidden if `HIDE_DELIVERY_DETAILS_TAB` is enabled)*
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-delivery-details-tab.png" alt="Delivery Details Tab - bulk-apply interface for logistics tracking across line items" caption="Delivery Details Tab: Coordinating physical logistics and tracking references for the billed goods." >}}
 Provides a bulk-apply interface for delivery information across all line items. Rather than editing each line individually, you set a value here and apply it to all selected lines at once:
 
 | Field | Description |
@@ -437,7 +440,7 @@ The grid below shows the current delivery details per line item and supports inl
 #### Payment Tab
 
 *(Hidden if `HIDE_MAIN_PAYMENT_TAB` is enabled)*
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-payment-tab.png" alt="Payment Tab - recording deposits and partial payments against the billing document" caption="Payment Tab: Capturing financial settlements and deposits received at the point of billing." >}}
 Records advance or partial payments against this billing document before or at the time of finalization.
 
 - **Total Payment** — how much cash has already been received against this invoice. If the consignee paid a deposit upfront, it shows here.
@@ -451,7 +454,7 @@ Each payment entry links to the Cashbook Applet, so the cash receipt is recorded
 #### KO For Tab
 
 *(Hidden if `HIDE_KO_FOR_TAB` is enabled)*
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-ko-for-tab.png" alt="KO For Tab - linking the billing record to upstream purchase orders or GRNs" caption="Knock-Off (KO) Tab: Establishing the formal relationship between the billing invoice and the documents it fulfills." >}}
 **KO** stands for **Knock-Off** — an accounting term for linking a document to another document it is fulfilling or closing off.
 
 Think of it this way: sometimes a Purchase Order or GRN was raised upstream, and this billing invoice is the document that fulfills or settles it. The KO For tab records that relationship — it says *"this invoice is knocking off (closing) that upstream document."* It does not copy or create new documents; it simply draws a line between this billing and the document it is settling against.
@@ -463,7 +466,7 @@ The document types available to knock off are controlled by the **Knock-Off Sett
 #### Department Hdr Tab
 
 *(Hidden if `HIDE_DEPARTMENT_HDR_TAB` is enabled)*
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-department-tab.png" alt="Department Hdr Tab - allocating billing revenue and costs to internal profit centers" caption="Departmental Classification: Tagging the transaction to specific internal teams for management reporting." >}}
 **Department Hdr** (Header) is deeper than Branch or Location. Branch and Location tell you *where* the transaction happened physically. Department tells you *which internal team or cost center owns the cost* of this transaction.
 
 For example, a billing document might be issued from the KL Branch (Branch), from the Main Warehouse (Location), but the cost belongs to the Service Department (Department). This matters for internal management reporting — finance needs to know which department is responsible for the revenue and costs, not just which building it came from.
@@ -506,7 +509,7 @@ In plain terms: once this invoice is finalized, the customer owes you money. Tha
 This tab is the primary reference for AR aging and collection follow-up.
 
 **Posting Tab** *(hidden if `HIDE_POSTING_TAB` is enabled)*
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-posting-tab.png" alt="Posting Tab - real-time status of financial, inventory, and tax subsystem integration" caption="Posting Status: Monitoring the successful synchronization of the transaction across all financial modules." >}}
 Shows the system posting status for each financial subsystem after finalization. All fields are read-only:
 
 | Field | Description |
@@ -520,11 +523,11 @@ Shows the system posting status for each financial subsystem after finalization.
 If any status shows an error, it indicates a posting failure — usually due to a missing GL account mapping, a closed accounting period, or a tax configuration issue. The document remains in FINAL status but the affected posting needs to be investigated and re-triggered.
 
 **TraceDocument Tab** *(hidden if `HIDE_TRACE_DOCUMENT_TAB` is enabled)*
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-trace-document-tab.png" alt="TraceDocument Tab - full end-to-end visibility of the document chain" caption="Traceability Chain: Providing auditors with a complete view of the transaction from GIN issue to final payment." >}}
 Displays the full document chain for this billing record — both upstream (the GINs and stock movements that led to this invoice) and downstream (any credit notes, payments, or other documents generated from it). This is the primary tool for auditors tracing a transaction end-to-end across the system.
 
 **Contra Tab** *(hidden if `HIDE_MAIN_CONTRA_TAB` is enabled)*
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-contra-tab.png" alt="Contra Tab - offsetting invoice balances against existing customer credits" caption="Contra Tab: Managing non-cash settlements by applying credit notes or overpayments to the current invoice." >}}
 **Contra** is an accounting term for offsetting one document against another to reduce what is owed — without an actual cash payment changing hands.
 
 The most common scenario: the customer has a credit note from a previous return or overpayment. Instead of paying the full invoice amount in cash, you agree to apply that credit note against this invoice. The credit note and the invoice partially cancel each other out. The customer then only pays the difference.
@@ -540,7 +543,7 @@ This tab manages those offsets and shows:
 Each contra entry links to the originating credit or debit document in the respective applet, maintaining a two-sided audit trail.
 
 **Doc Link Tab** *(hidden if `HIDE_DOC_LINK_TAB` is enabled)*
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-doc-link-tab.png" alt="Doc Link Tab - direct links to source and destination documents" caption="Document Linkage: Navigating between source draft records and final generated financial documents." >}}
 Shows the document linkage chain with two sub-tabs:
 
 - **Copy From** — documents that were used as the source when creating this billing (e.g., a GIN or a previous draft that was copied forward).
@@ -572,7 +575,7 @@ A standalone listing of all line items across all consignment billing documents.
 Shows all previously submitted import batches with their processing status. Clicking a row opens the import detail view.
 
 ### Upload (Create)
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-upload-form.png" alt="File Upload Interface - bulk processing of consignment billing cycles via CSV" caption="File Import: Facilitating high-volume billing through standardized data upload templates." >}}
 Used for bulk billing cycles. The upload process:
 
 1. Select the **Delimiter** (comma, semicolon, etc.) that matches your CSV file format.
@@ -583,7 +586,7 @@ Used for bulk billing cycles. The upload process:
 ### Import Detail (Edit)
 
 After submission, clicking an import batch shows:
-
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-import-detail-view.png" alt="Import Detail View - validation results and status of bulk upload batches" caption="Import Detail: Reviewing validation row results and correcting errors from bulk processing cycles." >}}
 **Details sub-tab** — read-only metadata about the upload:
 
 | Field | Description |
