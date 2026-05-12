@@ -17,6 +17,21 @@ The **Daily Cashier Report Applet** is a simple and focused tool for checking yo
 
 While these reports are also available inside the main POS system, this applet gives you a dedicated space to review your financials without the distraction of the active selling screen.
 
+## Video Tutorial
+
+For a visual walkthrough of the Daily Cashier Reports, watch the video below:
+
+<div style="max-width:560px; margin:24px auto;">
+  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+    <iframe
+      src="https://www.youtube.com/embed/eQ2V1zNr8QA"
+      style="position:absolute; top:0; left:0; width:100%; height:100%;"
+      frameborder="0"
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
 ### Why is this a separate applet?
 
 We created a standalone applet for these reports to make your work easier:
