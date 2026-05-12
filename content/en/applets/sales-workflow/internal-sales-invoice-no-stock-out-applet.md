@@ -158,7 +158,9 @@ Manages cross-entity transaction matching and reconciliation. Where an invoice g
 ## Sales Invoice No Stock-Out
 
 ### Listing
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-listing.png" alt="Sales Invoice Listing - central dashboard for tracking all non-inventory financial documents" caption="Document Listing: A unified view of all active and finalized no stock-out invoices, supporting bulk actions and status tracking." >}}
+
 Lists all no stock-out invoices with their statuses. Multi-row selection is supported for bulk operations.
 
 **Bulk action buttons on the listing:**
@@ -180,9 +182,13 @@ Creates a new no stock-out invoice. The form is organized into tabs.
 #### Main Details Tab
 
 Captures the document header information that applies to the entire invoice.
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-main-details-1.png" alt="Main Details Tab (Section 1) - branch, location, and staff assignments" caption="Header Configuration (1): Establishing the physical and organizational origin of the invoice." >}}
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-main-details-2.png" alt="Main Details Tab (Section 2) - currency, terms, and regulatory permit fields" caption="Header Configuration (2): Managing commercial terms, currencies, and industry-specific compliance data." >}}
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-main-details-3.png" alt="Main Details Tab (Section 3) - internal and external remarks" caption="Header Configuration (3): Capturing internal context and formal messages destined for the printed document." >}}
+
 **Required fields:** Branch, Location, Transaction Date
 
 **Optional fields:** Company, Sales Agent, Credit Terms, Credit Limit, Reference, Remarks, External Remarks, Permit No, Currency, Delivery Branch, Delivery Location, Tracking ID, CRM Contact, Member Card, Sales Lead, Due Date
@@ -208,15 +214,21 @@ Document number fields (Tenant / Company / Branch Doc No, Client Doc 1–5) are 
 #### Account Tab
 
 Identifies who is being billed and manages address information. Contains sub-tabs:
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-account-tab.png" alt="Account Tab - managing debtor entity details and billing address" caption="Account Tab: Defining the primary debtor and linking to their financial master record." >}}
+
 **Bill To sub-tab** — The billing address for the invoice. Populated from the entity's master data. This address appears on the printed invoice.
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-ship-to-subtab.png" alt="Ship To Sub-tab - specifying the physical service or delivery destination" caption="Ship To: Recording the physical location where services were performed, separate from the billing address." >}}
+
 **Ship To sub-tab** — The delivery address. Can differ from the billing address — common when the invoice goes to head office but goods or services are delivered to a branch site.
 
 ---
 
 #### Lines Tab
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-lines-tab.png" alt="Lines Tab - detailed list of services, fees, and charges" caption="Lines Tab: The core body of the invoice where billable services and non-stock items are recorded." >}}
+
 Lists all items being billed in this document. Each line item represents one service, fee, or non-inventory charge.
 
 Running totals shown at the top:
@@ -224,10 +236,14 @@ Running totals shown at the top:
 - **Total Tax Amount** — total tax across all lines, posted to the tax authority account on finalization
 
 Clicking a line item opens the Add/Edit Item form with sub-tabs:
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-item-details-subtab.png" alt="Item Details Sub-tab - specific line item configuration for pricing and taxes" caption="Item Details: Managing the financial values and tax classifications for individual service lines." >}}
+
 **Item Details sub-tab** — item code, description, quantity, UOM, unit price, discount, tax configuration. Price fields and discount visibility are configurable in Application Settings.
 
-**Serial Number sub-tab** *(only shown if the item is configured as serial-number tracked)*
+#### Serial Number sub-tab
+
+*(only shown if the item is configured as serial-number tracked)*
 
 {{< callout type="tip" >}}
 **TL;DR** — No stock is deducted, but the serial number is still recorded against the invoice for audit and traceability purposes.
@@ -250,7 +266,9 @@ Records which storage bin the item was picked from, along with container and qua
 ---
 
 #### Settlement Tab
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-settlement-tab.png" alt="Settlement Tab - recording partial payments and deposits" caption="Settlement Tab: Capturing immediate cash receipts and upfront payments against the invoice." >}}
+
 Records advance or partial payments against this invoice before or at finalization.
 
 | Field | Notes |
@@ -266,7 +284,9 @@ Each payment entry links to the Cashbook Applet so the cash receipt is recorded 
 #### Delivery Details Tab
 
 *(Hidden if disabled in Application Settings)*
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-pick-pack-subtab.png" alt="Pick Pack Sub-tab - staging delivery logistics even without inventory movement" caption="Pick Pack Management: Coordinating physical handling and transport logistics for the services or goods invoiced." >}}
+
 Bulk-apply delivery information across all line items at once — Tracking ID, Delivery Branch, Delivery Type (Internal, External, or Pickup), and Delivery Location. More efficient than editing each line individually when all lines share the same delivery details.
 
 This tab contains four sub-tabs, each covering a different stage or method of delivery:
@@ -290,8 +310,10 @@ The grid also shows per-line quantities: **Qty To Deliver**, **Qty Pending To De
 
 ---
 
-**External Delivery sub-tab**
+##### External Delivery sub-tab
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-external-delivery-subtab.png" alt="External Delivery Listing - tracking third-party courier jobs" caption="External Delivery: Monitoring dispatch status for items handled by outside logistics providers." >}}
+
 A read-only listing of all delivery jobs raised for lines marked as **External Delivery** (third-party courier). Jobs appear here automatically once they are created from the Pick Pack sub-tab. Rows are grouped by **Delivery Job ID**.
 
 Shows: Delivery Job ID, Sales Invoice No, Requested Delivery Date, Recipient Address, Delivery Region, Tracking ID, Item Code, Item Name, Delivery Type, Qty, Delivery Status, Remarks.
@@ -300,14 +322,18 @@ You can **Cancel Job** directly from this listing if a delivery needs to be reca
 
 ---
 
-**Internal Delivery sub-tab**
+##### Internal Delivery sub-tab
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-internal-delivery-subtab.png" alt="Internal Delivery Listing - tracking company fleet dispatches" caption="Internal Delivery: Managing logistics for items delivered via the organization's own transport." >}}
+
 Identical in layout to External Delivery, but filtered to show only jobs marked as **Internal Delivery** (your own fleet or internal transport). Same grouping, same cancel action.
 
 ---
 
-**Pickup sub-tab**
+##### Pickup sub-tab
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-pickup-subtab.png" alt="Pickup Listing - managing customer collection points" caption="Pickup Tracking: Logging instances where the customer self-collects the invoiced items." >}}
+
 Identical in layout to External and Internal Delivery, but filtered to show only jobs where the delivery type is **Pickup** — meaning the customer is collecting the goods themselves rather than receiving a delivery.
 ---
 
@@ -337,10 +363,12 @@ Each document type is only shown if enabled in Application Settings.
 #### Department Hdr Tab
 
 *(Hidden if disabled in Application Settings)*
-{{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-department-tab.png" alt="Department Hdr Tab - internal cost center allocation" caption="Departmental Tagging: Ensuring revenue and expenses are correctly attributed to the responsible internal team." >}}
+
 {{< callout type="tip" >}}
 **TL;DR** — Tags the entire invoice to a specific internal cost center or department for management reporting.
 {{< /callout >}}
+
+{{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-department-tab.png" alt="Department Hdr Tab - internal cost center allocation" caption="Departmental Tagging: Ensuring revenue and expenses are correctly attributed to the responsible internal team." >}}
 
 Branch and Location tell you *where* the transaction happened. Department tells you *which internal team owns the cost*. For example, an invoice might be issued from the KL Branch but the cost belongs to the IT Department. Setting the department here ensures it shows up correctly in departmental P&L reports.
 
@@ -351,7 +379,9 @@ Fields: Segment, Dimension, Profit Center, Project.
 #### Posting Tab
 
 *(Hidden if disabled in Application Settings)*
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-posting-tab.png" alt="Posting Tab - real-time financial synchronization status" caption="Posting Status: Verifying the successful integration of the invoice with the GL, Tax, and Cashbook modules." >}}
+
 Shows the system posting status for each financial subsystem after finalization. All fields are read-only:
 
 | Field | Notes |
@@ -383,10 +413,12 @@ The edit form contains all the same tabs as create, plus additional tabs that on
 #### Additional Edit-Only Tabs
 
 **ARAP Tab** *(hidden if disabled in Application Settings)*
-{{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-arap-tab.png" alt="ARAP Tab - accounts receivable balance and settlement tracking" caption="ARAP Overview: A real-time view of the document's financial lifecycle, from original invoice to final settlement." >}}
+
 {{< callout type="tip" >}}
 **TL;DR** — Shows the current state of what the customer owes on this invoice. Read-only, auto-computed.
 {{< /callout >}}
+
+{{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-arap-tab.png" alt="ARAP Tab - accounts receivable balance and settlement tracking" caption="ARAP Overview: A real-time view of the document's financial lifecycle, from original invoice to final settlement." >}}
 
 ARAP = Accounts Receivable / Accounts Payable. Once finalized, the customer owes you the invoice amount. This tab shows how much was invoiced, how much has been paid, and how much is still outstanding.
 
@@ -399,7 +431,9 @@ ARAP = Accounts Receivable / Accounts Payable. Once finalized, the customer owes
 | **Outstanding** | Net amount the customer still owes after all payments and contras. |
 
 **TraceDocument Tab** *(hidden if disabled in Application Settings)*
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-trace-document-tab.png" alt="TraceDocument Tab - detailed GL journal entry audit" caption="Accounting Traceability: Providing a complete audit trail of every General Ledger entry created by the invoice." >}}
+
 {{< callout type="info" >}}
 **Who this tab is for:** Accountants and auditors only. Service managers, technicians, and billing staff do not need to use this tab.
 {{< /callout >}}
@@ -413,7 +447,9 @@ Shows the **accounting journal entries** (GL postings) that were created in the 
 {{< /callout >}}
 
 **Contra Tab** *(hidden if disabled in Application Settings)*
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-contra-tab.png" alt="Contra Tab - offsetting balances against other documents" caption="Contra Offsets: Managing the netting-off of balances against existing customer credits or debit notes." >}}
+
 {{< callout type="tip" >}}
 **TL;DR** — Apply an existing credit or debit document against this invoice so the customer pays only the net difference instead of the full amount.
 {{< /callout >}}
@@ -428,6 +464,7 @@ The system only shows documents eligible for contra — meaning they must:
 There is no fixed list of document types — the system dynamically shows whatever eligible documents exist for that customer at the time.
 
 **Doc Link Tab** — Shows documents linked to this invoice in two directions: Copy From (source documents used to create this invoice) and Copy To (documents created from this invoice as a source).
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-doc-link-tab.png" alt="Doc Link Tab - traceability to upstream orders and quotes" caption="Document Linkage: Visualizing the full workflow from initial quotation through to the final invoice." >}}
 
 **Attachment Tab** — Stores supporting documents — signed agreements, approval emails, supporting calculations. Stored against the invoice and accessible to all users with view permission.
@@ -435,13 +472,21 @@ There is no fixed list of document types — the system dynamically shows whatev
 **Export Tab** — Data export options for sending invoice data to external accounting systems or generating custom reports.
 
 **E-Invoice Tab** — Manages the full LHDN e-invoice submission lifecycle for this document. Contains four sub-tabs:
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-einvoice-progress.png" alt="E-Invoice Progress - LHDN submission pipeline tracking" caption="E-Invoice Workflow: Monitoring the real-time status of regulatory submissions to LHDN." >}}
+
 - **Progress** — Shows where the document is in the submission pipeline: Pending Posting, Pending in Batch Queue, Pending Submission to IRB, and Submitted to IRB. Validation errors appear here if the document fails pre-submission checks.
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-einvoice-submission.png" alt="E-Invoice Submission - LHDN retrieval data and digital signature" caption="Submission Details: Accessing the official IRBM Unique Identifier and digital certificate for the document." >}}
+
 - **Submission** — Read-only view of the e-invoice data retrieved from LHDN after submission: e-invoice type, purpose, document reference, IRBM status, validation date, IRBM Unique Identifier Number, and a QR code of the digital signature.
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-einvoice-communication.png" alt="E-Invoice Communication - IRB message logs" caption="IRB Communication: Maintaining a record of all automated exchanges with the tax authority regarding this invoice." >}}
+
 - **Communication** — Records and messages exchanged with IRB related to this document.
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-einvoice-cancellation.png" alt="E-Invoice Cancellation - managing withdrawn submissions" caption="Cancellation Management: The interface for requesting document withdrawal from the tax authority after submission." >}}
+
 - **Cancellation** — Used to initiate an e-invoice cancellation request if the document needs to be withdrawn from LHDN after submission.
 
 **Delivery Trips Tab** — Route planning for any physical handling associated with this invoice — used when internal delivery tracking is needed even though stock is not deducted.
@@ -449,7 +494,9 @@ There is no fixed list of document types — the system dynamically shows whatev
 ---
 
 ## Line Items
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-line-items-listing.png" alt="Line Items Listing - cross-document audit of all billed services" caption="Line Item Audit: A comprehensive view of every service billed across the system, ideal for month-end reconciliation." >}}
+
 A standalone listing of all line items across all no stock-out invoices. Used by finance teams to:
 - Audit billed amounts across multiple invoices without opening each header
 - Filter by item, entity, or date range
@@ -458,7 +505,9 @@ A standalone listing of all line items across all no stock-out invoices. Used by
 ---
 
 ## Pick Pack Queue
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-pick-pack-queue.png" alt="Pick Pack Queue - staging area for physical fulfillment" caption="Fulfillment Queue: Managing the physical logistics flow for items that require handling without inventory impact." >}}
+
 {{< callout type="tip" >}}
 **TL;DR** — A delivery staging queue. Even though no stock is deducted, physical delivery still needs to be coordinated. This is where you manage that.
 {{< /callout >}}
@@ -479,7 +528,9 @@ The financial invoice and the delivery job are separate records. The invoice han
 ---
 
 ## Sales Invoice No Stock-Out Template
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-template-listing.png" alt="Template Listing - managing recurring billing shortcuts" caption="Template Management: Creating and maintaining shortcuts for frequent, identical billing scenarios." >}}
+
 {{< callout type="tip" >}}
 **TL;DR** — A saved shortcut for recurring invoices. Build a template once with the standard header fields and line items, then reference it whenever you need to raise the same invoice again.
 {{< /callout >}}
@@ -515,11 +566,15 @@ Templates can be edited and deleted after creation. Open the template from the l
 ## File Import
 
 ### Listing
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-import-listing.png" alt="File Import Listing - history of bulk upload batches" caption="Import History: Reviewing the status and logs of previous bulk billing cycles." >}}
+
 Shows all previously submitted import batches with their processing status.
 
 ### Upload (Create)
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-import-upload.png" alt="File Upload Interface - bulk processing via CSV" caption="Bulk Upload: The primary interface for high-volume invoice processing using standardized templates." >}}
+
 Used for bulk billing cycles. The upload process:
 
 1. Download the **Sample Format** first — this gives you the exact column structure the system expects. The file is named `Sales_Invoice_Master_Data_Template.csv`. The column definitions come from the backend, so always download a fresh copy rather than reusing an old one.
@@ -532,17 +587,23 @@ Used for bulk billing cycles. The upload process:
 After submission, clicking an import batch shows:
 
 **Details sub-tab** — read-only metadata: Process Status, Error Message, File Name, File Size, Import Format, Created By, Creation Date.
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-import-detail.png" alt="Import Detail View - validation metadata and processing status" caption="Import Audit: Detailed metadata and error logging for a specific bulk upload batch." >}}
+
 {{< callout type="info" >}}
 If the batch fails, check the **Error Message** field first — it identifies the specific row or value that caused the failure. Fix the file and re-upload rather than re-submitting the same file.
 {{< /callout >}}
 
 **Checking sub-tab** — line-by-line validation results showing which rows passed or failed, so you can identify and correct specific data issues before re-uploading.
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-import-checking.png" alt="Import Checking Sub-tab - line-by-line validation results" caption="Data Validation: Identifying specific row errors before final document generation." >}}
+
 ---
 
 ## Intercompany
+
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-intercompany-reconciliation.png" alt="Intercompany Menu - matching cross-entity sales and purchases" caption="Intercompany Bridge: Reconciling internal sales with the corresponding purchase records in the receiving entity." >}}
+
 {{< callout type="tip" >}}
 **TL;DR** — When you invoice another entity within your own group, this menu shows the matched purchase document on their side and lets you reconcile both records.
 {{< /callout >}}

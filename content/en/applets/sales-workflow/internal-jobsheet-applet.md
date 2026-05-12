@@ -173,7 +173,9 @@ Organization
 Below is the complete functional breakdown of every tab inside the Jobsheet form. For each tab, we explain what it does, what data it holds, and why it matters from an accounting perspective.
 
 ### 1. Search Tab
+
 {{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-search-tab.png" alt="Search Tab - quickly locate existing service notes or customers by serial number" caption="Search Tab: The reception desk of the jobsheet, preventing duplicate records and enabling fast retrieval of service history." >}}
+
 *   **What it is**: A quick-lookup panel that lets you find an existing **Service Note** or locate a customer by **Serial Number** before creating a new Jobsheet.
 *   **The Analogy**: The **Reception Desk** at a workshop. Before opening a new Job Card, the receptionist checks if this customer or device has been in before.
 *   **Data Source**: Searches across existing Service Notes and customer/serial number records in the system.
@@ -184,7 +186,9 @@ Below is the complete functional breakdown of every tab inside the Jobsheet form
 ---
 
 ### 2. Main Details Tab
+
 {{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-main-details-tab.png" alt="Main Details Tab - primary job header information including technician and branch" caption="Main Details Tab: Capturing the core operational details of the job, including responsible staff and service location." >}}
+
 *   **What it is**: The **header** of the Jobsheet. This is where you fill in the core identifying information for the job.
 *   **The Analogy**: The **top section of a Job Card** — the customer's name, the date the car came in, the mechanic assigned, and the job reference number.
 *   **Key Fields**:
@@ -208,7 +212,9 @@ Below is the complete functional breakdown of every tab inside the Jobsheet form
 ---
 
 ### 3. Account Tab
+
 {{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-account-tab.png" alt="Account Tab - managing debtor entity details and billing relationships" caption="Account Tab: Defining the primary debtor and link to CRM contacts for the service job." >}}
+
 The Account tab has three sub-tabs that together define **who** this job is for and **where** documents should be sent.
 
 #### 3a. Entity Details
@@ -218,7 +224,9 @@ The Account tab has three sub-tabs that together define **who** this job is for 
 *   **Accounting Importance**: This is the **Debtor Record**. When the Jobsheet is converted to an Invoice, the system uses this entity to post the Accounts Receivable entry. A wrong entity means the invoice goes to the wrong debtor account.
 
 #### 3b. Bill To
+
 {{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-bill-to-subtab.png" alt="Bill To Sub-tab - specifying the formal billing address for tax and compliance" caption="Bill To: Ensuring the financial claim is sent to the correct legal address for accounting accuracy." >}}
+
 *   **What it is**: The billing address — where the invoice should be sent.
 *   **The Analogy**: The **Registered Office Address** of the company paying the bill (which may differ from where the work was done).
 *   **Accounting Importance**: Critical for **Tax Compliance**. The billing address determines which tax jurisdiction applies to the transaction. An incorrect address can result in the wrong tax rate being applied.
@@ -231,7 +239,9 @@ The Account tab has three sub-tabs that together define **who** this job is for 
 ---
 
 ### 4. Lines Tab
+
 {{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-lines-tab.png" alt="Lines Tab - detailed breakdown of services performed, parts used, and labor hours" caption="Lines Tab: The technical body of the jobsheet where parts consumption and billable services are recorded." >}}
+
 *   **What it is**: The **body** of the Jobsheet — the detailed list of every service performed, every part used, and every hour billed.
 *   **The Analogy**: The **Parts & Labour Breakdown** on a mechanic's invoice. Each row is one item: "Engine Oil (2L) — RM 40" or "Labour: 2 hours — RM 100."
 *   **Key Actions**:
@@ -247,7 +257,9 @@ The Account tab has three sub-tabs that together define **who** this job is for 
 ---
 
 ### 5. Contra Tab
+
 {{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-contra-tab.png" alt="Contra Tab - offsetting jobsheet balances against existing customer credits" caption="Contra Tab: Managing financial settlements by netting off outstanding balances against prior credits." >}}
+
 *   **What it is**: A way to offset the Jobsheet's balance against an existing credit — instead of collecting cash, you "net off" what the customer owes against a credit they already have.
 *   **The Analogy**: Imagine a customer overpaid on a previous job and has a RM200 credit sitting on their account. Instead of paying cash for this new job, you apply that credit to reduce the amount owed. That's a contra.
 *   **Key Actions**:
@@ -260,7 +272,9 @@ The Account tab has three sub-tabs that together define **who** this job is for 
 ---
 
 ### 6. Payment Tab
+
 {{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-payment-tab.png" alt="Payment Tab - recording deposits and direct payments received against the job" caption="Payment Tab: Capturing real-time cash collections and upfront deposits associated with the service work." >}}
+
 *   **What it is**: A record of any payments received directly against this Jobsheet (e.g., a deposit or full payment collected on-site).
 *   **The Analogy**: The **Cash Register Receipt** given to the customer at the workshop counter before a formal invoice is raised.
 *   **Key Actions**:
@@ -275,7 +289,9 @@ The Account tab has three sub-tabs that together define **who** this job is for 
 ---
 
 ### 7. Department Hdr Tab
+
 {{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-department-tab.png" alt="Department Hdr Tab - allocating job costs and revenue to internal profit centers" caption="Departmental Classification: Tagging the job to specific internal teams or projects for month-end reporting." >}}
+
 *   **What it is**: Four dropdown fields that tag this Jobsheet to the correct internal team, division, or project inside your company. Think of it like a **branch dropdown — but with four levels of detail instead of one**.
 
 **The simple version**: Your company has multiple departments — Service, Sales, IT, etc. When a technician from the Service department completes a job, someone needs to tell the system "this job belongs to the Service department." That's all this tab does. At month end, finance can then ask "how much did the Service department earn this month?" and the system already knows, because every job was tagged.
@@ -300,7 +316,9 @@ None of these affect the customer or the invoice. They are purely internal label
 The following tabs only appear when **editing** an existing Jobsheet (not during initial creation). They unlock additional capabilities once the record has been saved.
 
 ### 8. Delivery Details Tab
+
 {{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-delivery-details-tab.png" alt="Delivery Details Tab - read-only view of linked physical stock movements" caption="Delivery Tracking: Providing visibility into dispatched parts and logistics associated with the jobsheet." >}}
+
 *   **What it is**: A **read-only** view of delivery records that have been linked to this Jobsheet. You cannot create or add deliveries from here — this tab only displays records that already exist in the Delivery system.
 *   **The Analogy**: The **Dispatch Log** at the back of the workshop — a read-only copy that shows which trips were dispatched against this job. The actual dispatch is arranged by the warehouse, not the technician.
 *   **Why it is empty / why you cannot add anything**: Delivery records are created and managed in the **Delivery Order (Internal) Applet** or **Packing Order Applet**. Once a delivery is created there and linked to this Jobsheet's line items, it automatically appears here. If no deliveries have been dispatched against this job yet, the tab will be empty — that is expected behaviour, not a permission issue.
@@ -321,7 +339,9 @@ The following tabs only appear when **editing** an existing Jobsheet (not during
 ---
 
 ### 10. Doc Link Tab
+
 {{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-doc-link-tab.png" alt="Doc Link Tab - traceability between upstream orders and downstream invoices" caption="Audit Chain: Visualizing the full lifecycle of the document from source request to final settlement." >}}
+
 *   **What it is**: A traceability panel showing which documents this Jobsheet was **copied from** and which documents were **copied from** this Jobsheet.
 *   **Sub-tabs**:
     *   **Copied From** — Shows the upstream document (e.g., a Sales Order or Service Note) that this Jobsheet originated from.
@@ -343,7 +363,9 @@ The following tabs only appear when **editing** an existing Jobsheet (not during
 ---
 
 ### 12. Convert Tab
+
 {{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-convert-tab.png" alt="Convert Tab - one-click conversion of jobsheet to receipt voucher" caption="Financial Conversion: A direct action to finalize a job and replace it with a formal receipt." >}}
+
 *   **What it is**: A one-click action to convert the Jobsheet directly into an **Internal Receipt Voucher**.
 *   **Important**: This action **cancels the current Jobsheet** and creates a Receipt Voucher in its place.
 *   **The Analogy**: Tearing up the Job Card and replacing it with a Receipt — used when the job was simple enough that a full invoice isn't needed, just a proof of payment.
