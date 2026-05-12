@@ -15,30 +15,16 @@ The Unified Contact Center (UCC) Applet is a comprehensive customer communicatio
 
 A short introduction to the Unified Contact Center (UCC) Applet:
 
-<div style="max-width:560px; margin:24px auto;">
-  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-    <iframe
-      src="https://www.youtube.com/embed/cgGqMnSo5bQ"
-      style="position:absolute; top:0; left:0; width:100%; height:100%;"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
+{{< youtube cgGqMnSo5bQ >}}
 
 
 A Webinar to get to know about the functionalities of the Unified Contact Center (UCC) Applet:
 
-<div style="max-width:560px; margin:24px auto;">
-  <div style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
-    <iframe
-      src="https://www.youtube.com/embed/jbh717rxfuk"
-      style="position:absolute; top:0; left:0; width:100%; height:100%;"
-      frameborder="0"
-      allowfullscreen>
-    </iframe>
-  </div>
-</div>
+{{< youtube jbh717rxfuk >}}
+
+A Second Webinar to get to know about the functionalities of the Unified Contact Center (UCC) Applet:
+
+{{< youtube zY0rVA_a_LY >}}
 
 ---
 

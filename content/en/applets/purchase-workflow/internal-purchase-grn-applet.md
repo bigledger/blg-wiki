@@ -15,6 +15,11 @@ weight: 160
 
 The **Purchase GRN (Internal) Applet** is a powerful tool designed to streamline the entire goods receipt process for internal purchase transactions. It moves beyond simple receipt recording by integrating inventory management, supplier verification, and quality control workflows.
 
+A short introduction to the Purchase GRN (Internal) Applet:
+
+{{< youtube yeurWHR4BpM >}}
+
+
 {{< callout type="info" >}}
 **Core Concept**: The system links **what** you received (Items) to **where** it came from (Purchase Orders) and **how much** was received (Quantities & Quality).
 {{< /callout >}}

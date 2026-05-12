@@ -14,6 +14,11 @@ weight: 104
 
 The Inventory Item Maintenance Applet is the central hub for managing all physical product and inventory master data in BigLedger. This Core Module applet provides comprehensive product information management, stock control parameters, and integration foundation for all inventory-related operations across multiple modules.
 
+A short introduction to the Inventory Item Maintenance Applet:
+
+{{< youtube wBAbnAasGyY >}}
+
+
 {{< callout type="info" >}}
 **Core Module Applet**: This is one of the 13 essential Core Module applets, critical for any business handling physical products or maintaining inventory.
 {{< /callout >}}

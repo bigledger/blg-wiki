@@ -48,6 +48,14 @@ The **Merchant Applet** is the administrative hub for onboarding and managing ev
 **Core Concept**: A **Merchant** represents a distinct partner entity identified by a unique **Merchant ID**, secured by **Merchant Keys** and **PGW Merchant Codes** for technical integration, and governed by a formal **Contract** that defines the commercial terms of the relationship.
 {{< /callout >}}
 
+A short introduction to the Merchant Applet:
+
+{{< youtube c-Yc6bo7_Jw >}}
+
+A a webinar for the Merchant Applet:
+
+{{< youtube bypy25YiVCI >}}
+
 ---
 
 ## Key Features Overview

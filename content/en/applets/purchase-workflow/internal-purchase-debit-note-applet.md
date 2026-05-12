@@ -14,6 +14,11 @@ weight: 70
 
 The **Purchase Debit Note (Internal) Applet** is your branch's gateway for managing incoming intercompany adjustments. While a standard invoice records the initial purchase, a **Purchase Debit Note** is used to accurately record an **increase** in what you owe an internal supplier after the original transaction has been posted.
 
+A short introduction to the Purchase Debit Note (Internal) Applet:
+
+{{< youtube lsNRnSRHHT8 >}}
+
+
 ### TL;DR: The Mirror Relationship
 
 This applet is just the "other side" of a **Sales Debit Note**.

@@ -14,6 +14,11 @@ weight: 10
 
 The **Tenant Admin Applet** is the central nervous system of your BigLedger environment. It provides organizational administrators with the master controls required to govern user access, subscribe to business modules, and maintain a secure, audit-ready platform. It is the single source of truth for "who can do what" within your digital workspace.
 
+A short introduction to the Tenant Admin Applet:
+
+{{< youtube Sqj-JtFKzgQ >}}
+
+
 ### TL;DR: The Administrative Cockpit
 
 This applet is the "Master Switchboard" for your entire organization:

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Ledger and Journal Applet"
 description: "A financial management tool to streamline recording, tracking, and organization of financial transactions."
 tags:
@@ -14,6 +14,11 @@ weight: 60
 ## Purpose and Overview
 
 The Ledger and Journal Applet is a comprehensive financial management tool designed to streamline the recording and tracking of financial transactions. It serves as the backbone of financial record-keeping by organizing transactions in two complementary ways: chronologically in journals and categorically in ledgers. This dual approach provides businesses with both a timeline of financial activities and a structured view of account balances.
+
+A short introduction to the Ledger and Journal Applet:
+
+{{< youtube gfeKHc7R70w >}}
+
 
 This applet is essential for managing all aspects of financial activity.
 
