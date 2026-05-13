@@ -14,15 +14,20 @@ weight: 150
 
 The **Custom Processor Applet** is the high-performance automation exhaust for your BigLedger environment. It is designed to replace manual document handling with automated, background task execution. By monitoring specifically defined document types and statuses, it ensures that your logistics and financial workflows move forward without human intervention, reducing bottlenecks and eliminating manual status errors.
 
-### TL;DR: The Automation Engine
+{{< callout type="tip" >}}
+**TL;DR — Read this first.**
 
-Think of this applet as a "Digital Clerk" that never sleeps:
+You have documents (Sales Orders, Invoices, Returns) being created constantly. Normally someone has to manually open each one and click a button to move it forward. At high volumes, that is a bottleneck.
 
-*   **You define the rules**: "Watch for all Internal Sales Orders in Branch A."
-*   **The clerk watches**: It scans the system for documents matching your criteria.
-*   **The clerk acts**: It automatically pushes those documents to the next stage (e.g., from *Draft* to *Finalized*).
+This applet removes that bottleneck. You configure a **Processing Filter** that says: *"Every time an Internal Sales Order is created by Company X in DRAFT status — process it automatically."* The system then picks up every matching document, moves it through the workflow in the background, and logs what it did.
 
-It turns manual "clicks" into automated "background events."
+**Three things this applet manages:**
+1. **Processor Filter** — where you define the rules (what to watch for and when to act)
+2. **Processing Queue** — documents currently waiting to be processed
+3. **Processing History** — a log of everything the processor has already done
+
+The applet opens on the **Processing Queue** by default so you can immediately see what is happening.
+{{< /callout >}}
 
 ### When is this Applet used?
 
@@ -161,36 +166,102 @@ The "Brain" of the applet. You define a **Filter Code** that specifies:
 
 ---
 
-## Document Tabs Overview
+## Navigation Menu
 
-#### Deep Dive: Processing Filter Tab
+The applet has four menu items in the sidebar. The applet opens on **Processing Queue** by default.
 
-**Concept: Defining the Automation Logic.**
-This tab is the "Brain" where you script the rules for your background robot.
+---
 
-*   **Filter Code**: A unique identifier for the rule (e.g., `ISO_AUTO_BRANCH_NY`). This allows you to track specific automation flows during performance audits.
-*   **Server Doc Type**: You select the target document (e.g., `INTERNAL_SALES_ORDER`, `INTERNAL_SALES_INVOICE`). This defines **"What"** is being monitored.
-*   **Posting Status**: The trigger status (typically `DRAFT`). The processor waits for a document to hit this state before capturing it.
-*   **Status (Active / Inactive)**: The "Master Toggle." Setting a filter to *Inactive* immediately pauses that specific automation without losing your configuration settings.
+### 1. Processor Filter
 
-#### Deep Dive: Processing Queue Tab
+**Concept: Defining the Automation Logic.** This is the "Brain" where you script the rules for your background robot.
 
-**Concept: Real-Time Workload Visibility.**
-Anything in this tab is an active task being handled by the background engine.
+*   **Filter Code**: A unique name you assign to identify this rule (e.g., `ISO_AUTO_PROCESS`). The system uses this code internally to tag every document it captures.
+*   **Server Doc Type**: Tells the system *which kind* of document to watch for (e.g., `INTERNAL_SALES_ORDER`).
+*   **Posting Status**: Tells the system *when* to act — only capture a document when it is in a specific status, such as `DRAFT`.
+*   **Status**: The master on/off switch. Set to `ACTIVE` to enable the rule, or `INACTIVE` to pause it without deleting it.
 
-*   **Pending Queue**: High-volume environments use this to monitor **Processing Latency**. If the queue length is growing, it signals that the volume of sales/stock movements is exceeding the processing frequency.
-*   **Doc ID & Creation Date**: Allows you to pinpoint exactly which document is currently "on the workbench."
-*   **Target Company**: Confirms that the workload is being distributed to the correct business entity.
+#### Listing
 
-#### Deep Dive: Processing History Tab
+Shows all configured filters with their Filter Code, Server Doc Type, Posting Status, Company, and Status (ACTIVE/INACTIVE).
 
-**Concept: The Automation Audit Trail.**
-Because background tasks are usually invisible, this tab provides the **Evidence of Execution**.
+#### Create
 
-*   **Success/Failure Ledger**: Every attempt by the robot is logged. This is where you find "orphaned" documents that failed to process due to validation errors (e.g., zero-priced line items).
-*   **Historical Trace**: Provides the **Proof of Posting**. It satisfies auditors that documents moved from *Draft* to *Final* through an authorized and configured system rule.
+| Field | Required | Notes |
+|-------|----------|-------|
+| **Filter Code** | Yes | Must be unique. Cannot be changed after saving. |
+| **Server Doc Type** | Yes | The document type to watch — INTERNAL_SALES_ORDER, INTERNAL_SALES_RETURN, INTERNAL_SALES_DEBIT_NOTE, INTERNAL_SALES_CREDIT_NOTE, or INTERNAL_SALES_INVOICE. Cannot be changed after saving. |
+| **Company** | No | Scope this filter to a specific company. If left blank, applies across all companies. Cannot be changed after saving. |
+| **Posting Status** | Yes | The document status that triggers the processor — DRAFT or FINAL. Cannot be changed after saving. |
+| **Status** | Yes | ACTIVE or INACTIVE. Setting to INACTIVE pauses this filter without deleting it. Can be changed at any time. |
 
-#### Deep Dive: Price Tag History Tab
+{{< callout type="warning" >}}
+**Most fields lock after creation.** Once a filter is saved, only **Status** and **Description** can be edited. Filter Code, Server Doc Type, Company, and Posting Status are permanently locked. If you need to change the logic, delete the filter and create a new one.
+{{< /callout >}}
+
+#### Edit
+
+The edit form loads all saved values. Only two fields are editable:
+- **Status** — toggle between ACTIVE and INACTIVE at any time
+- **Description** — update the label freely
+
+All other fields are displayed as read-only.
+
+---
+
+### 2. Processing Queue
+
+**Concept: Real-Time Workload Visibility.** Anything in this tab is an active task being handled by the background engine.
+
+*   **Pending Queue**: Every document here is waiting to be processed. A long and growing queue may indicate a backlog or a paused processor.
+*   **Doc ID & Creation Date**: Helps you identify exactly which document was captured and when, so you can cross-reference it in the source applet.
+*   **Target Company**: Shows the company scope the document belongs to, useful when filters are configured across multiple entities.
+
+A real-time view of documents that have been captured by an active filter and are waiting to be processed by the background engine.
+
+**What the columns show:**
+
+| Column | Notes |
+|--------|-------|
+| **Filter Code** | Which filter rule picked up this document |
+| **Server Doc Type** | The type of document queued |
+| **Posting Status** | The status the document was in when captured |
+| **Txn Date / Created Date** | When the document was created |
+| **Company** | Which company the document belongs to |
+| **Processor** | The background processor assigned to handle it |
+| **External Process Status / Error** | Whether the processor has started acting on it and any errors encountered |
+| **External Response Status / Error** | The result returned after the processor attempted to act |
+
+If the queue is growing and not shrinking, it means documents are coming in faster than the processor is handling them — or the backend processor is paused/erroring.
+
+---
+
+### 3. Processing History
+
+**Concept: The Automation Audit Trail.** Because background tasks are usually invisible, this tab provides the **Evidence of Execution**.
+
+*   **Success/Failure Ledger**: Every processed document is recorded here with its outcome — so you always know whether automation completed correctly or encountered an error.
+*   **Historical Trace**: Links each history entry back to its source document number, letting you reconstruct the full lifecycle of any automated transaction.
+
+A permanent, read-only audit log of every document the processor has already acted on.
+
+**What the columns show:**
+
+| Column | Notes |
+|--------|-------|
+| **Company / Processor** | Which company and processor handled this entry |
+| **Server Doc Type / Client Doc Type** | The document type processed |
+| **Posting Status** | The status the document was in at the time of processing |
+| **Internal Doc No** | The document number from the source applet |
+| **External Doc Type / Code / Submission No** | Reference details if the processor submitted the document to an external system |
+| **Description** | Notes or error messages from the processing attempt |
+| **Created Date / Status** | When the processing happened and whether it succeeded |
+
+Use this to investigate why a specific document was or was not processed, and to satisfy audit requirements that status transitions happened through a configured rule.
+
+---
+
+### 4. Price Tag Sync History
 
 **Concept: Modern Retail & Electronic Shelf Labeling (ESL).**
 This is a specialized auditing stream for high-velocity pricing changes, specifically designed to synchronize with physical store infrastructure.
@@ -198,6 +269,8 @@ This is a specialized auditing stream for high-velocity pricing changes, specifi
 *   **Price Set Visibility**: Tracks the background generation of barcode and label sets.
 *   **Batch Integrity**: Verifies that mass pricing updates (e.g., for 5,000+ items) completed without data loss.
 *   **Advanced NFC Mapping**: The system records **NFC URLs** (`nfc_url`). This allows retailers to monitor the deployment of **Electronic Shelf Labels**, where customers can tap their smartphones on a shelf tag to view real-time digital content or promotion details in the store.
+
+**What the columns show:** Item Code, Item Name, Scan Code, Company Code, Store Code, Sales Unit Price, Created Date, Updated Date, NFC URL.
 
 ---
 
