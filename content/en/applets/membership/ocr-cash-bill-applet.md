@@ -141,19 +141,6 @@ Receipt Upload
 3. Reviewers validate and map extracted data.
 4. Finalization locks approved review output.
 
-### Sidebar Menu and Route Reference
-
-| Navigation Group | Menu Label | Route | Typical Owner | What It Is Used For |
-|---|---|---|---|---|
-| Main Sidebar | Scanned Receipt | `/scanned-receipt` | Operations / Shared Service | Upload receipts and monitor process status |
-| Main Sidebar | OCR Generic Doc | `/ocr-generic-doc` | Finance Reviewer | Validate OCR header data and status |
-| Main Sidebar | OCR Generic Doc Line Item | `/ocr-generic-doc-line-item` | Finance Reviewer | Refine line-level details and mapping |
-| Main Sidebar | OCR Company | `/ocr-company` | Master Data Admin | Maintain merchant/company references |
-| Main Sidebar | OCR Item | `/ocr-item` | Master Data Admin | Maintain OCR item references |
-| Main Sidebar | OCR Scanned Doc Report | `/ocr-report` | Reporting / Compliance | Generate and download CSV reports |
-| Routed (Hidden by Default) | OCR Branch | `/ocr-branch` | Admin / Data Setup | Branch-level reference maintenance |
-| Routed (Hidden by Default) | Inventory Item Listing | `/inv-item` | Admin / Data Setup | Inventory item lookup route |
-
 ### Standardized Rejection Reasons
 
 Use one of these reasons when setting process status to `REJECTED`:
@@ -342,9 +329,9 @@ Outcome: Record is locked and ready for reporting/reconciliation
 ### Automated Intake with CP-COM Widget (If Enabled)
 
 In CP-COM-enabled deployments:
-- Receipt image can be captured/submitted via CP-COM flow
-- Scanned receipt record is created automatically in this applet
-- OCR processing continues through the same review pipeline
+- Use the CP-COM **REQUEST_REFUND** widget as the primary intake widget for receipt submission
+- For widget setup, go to CP-COM **Website Container > Layout Instance > Nodes Edit > REQUEST_REFUND**
+- After CP-COM submission, continue review in this applet through the same OCR processing pipeline
 
 If CP-COM integration is not enabled, use manual upload in **Scanned Receipt Create**.
 
@@ -486,6 +473,14 @@ Use this module to generate and download report files.
 - Updated Date
 - Actions (download/delete)
 
+**Scenario-Based Examples:**
+1. Daily finance reconciliation:
+Set `Created Date` to today, generate CSV, and use the file to match newly scanned receipts against daily finance review workload.
+2. Month-end compliance review:
+Set `Updated Date` to the month range, export the CSV, and use it as audit evidence for processed, rejected, and finalized receipt records.
+3. Exception follow-up by operations:
+Generate the report for the target period, then use `Status` and `Error Message` columns to identify failed/blocked records before reprocessing.
+
 **Operational Tip:**
 If generation is delayed, check row status and error message before regenerating.
 
@@ -495,27 +490,46 @@ If generation is delayed, check row status and error message before regenerating
 
 Finalization is a critical safeguard for downstream accounting quality.
 
-### What FINAL Does
+### What Happens When You Click FINAL (From Source Code)
 
-- Marks posting status as `FINAL`
-- Restricts edits on key header and line-item flows
-- Triggers finalization checks and moves the document into a locked state
-- In current flow, rejection reason is cleared during finalization handling before posting update
+1. Clicking **FINAL** triggers `checkMembershipHdrStatusOnFinal`.
+2. If `membership_hdr_guid` is missing, the applet looks up membership by `login_subject_guid` and `entity_hdr_guid`.
+3. The resolved membership GUID is saved to both OCR Generic Doc and Scanned Receipt.
+4. `rejection_reason` is cleared before posting.
+5. The applet calls `updatePostingStatus(..., FINAL)` to post/finalize.
+6. On success, the listing refreshes and the record is returned in final state.
+
+### Scenario-Based Examples
+
+1. Missing membership header scenario:
+User clicks **FINAL**, system auto-resolves and writes `membership_hdr_guid`, then continues posting to `FINAL`.
+2. Reward settlement scenario (pricebook/config-based):
+During `updatePostingStatus(..., FINAL)`, reward logic is handled by backend configuration. After successful finalization, points data (`Membership Points`, `Points Currency`, `Points Type`) is shown as read-only in final views.
+3. Posting blocked scenario:
+If backend validation fails (for example fiscal period locked or stock/serial mismatch), finalization is rejected and an error message is shown; posting status does not move to `FINAL`.
+
+### What Changes After FINAL
+
+- Posting status is `FINAL`.
+- `Reason to Reject` is locked in OCR Generic Doc edit.
+- Line-item update action is blocked when posting status is `FINAL`.
+- Points fields are displayed as read-only in final mode.
 
 ### When to Use FINAL
 
 Use `FINAL` only after:
-- Process status and rejection logic are complete
-- Company/item mapping is validated
-- Quantity and unit price checks are complete
-- Reviewer confirms no further corrections are needed
+- Process status and rejection logic are complete.
+- Company and item mapping is validated.
+- Quantity and unit price checks are complete.
+- Reviewer confirms no further corrections are needed.
 
 ### What to Follow Up After FINAL
 
-1. Confirm document appears as `FINAL` in listing/search view.
-2. Verify line-item update actions are locked.
-3. Generate/download report output if reconciliation is required.
-4. Escalate corrections through admin/support flow instead of in-place edits.
+1. Confirm the document appears as `FINAL` in listing/search view.
+2. Verify line-item edits are no longer allowed.
+3. Check membership points fields if reward settlement is expected.
+4. Generate/download report output if reconciliation is required.
+5. Escalate corrections through admin/support flow instead of in-place edits.
 
 ---
 
@@ -560,12 +574,6 @@ Use admin controls for:
 - Permission sets
 - User/team/role permission controls
 - Sidebar personalization
-
-### Labels and Localization Notes
-
-- No applet-specific i18n JSON is currently defined under this applet's `src/assets`.
-- Shared template exists at `micro-fe/src/assets/i18n/template.json` and is currently `{}`.
-- Most labels are defined directly in templates, listing column headers, and advanced search label maps.
 
 ---
 
