@@ -330,7 +330,7 @@ Outcome: Record is locked and ready for reporting/reconciliation
 
 In CP-COM-enabled deployments:
 - Use the CP-COM **REQUEST_REFUND** widget as the primary intake widget for receipt submission
-- For widget setup, go to CP-COM **Website Container > Layout Instance > Nodes Edit > REQUEST_REFUND**
+- For widget setup, go to CP-COM **Website > Website Edit > Layout Instance > Layout Instance Edit > Nodes > Nodes Edit > Widget ID: Request Refund (REQUEST_REFUND)**
 - After CP-COM submission, continue review in this applet through the same OCR processing pipeline
 
 If CP-COM integration is not enabled, use manual upload in **Scanned Receipt Create**.
