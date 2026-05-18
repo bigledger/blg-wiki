@@ -90,10 +90,10 @@ Traditional sales processing often separates billing from inventory and accounti
 
 Understanding the state transitions is crucial for effective management.
 
-| Stage | Component | System Action | Financial Impact |
-|-------|-----------|--------|--------|
-| **1. Creation** | Sales Order / Template | Confirmed demand | **Reserved Stock** (No GL impact) |
-| **2. Billing** | **Sales Invoice** | Finalization | **Stock Deducted** + **Revenue Recognized** + **Tax Posted** |
+| Stage | System Action | Financial & Inventory Impact |
+|-------|--------|--------|
+| **1. Drafting** | Invoice Draft Created | No GL impact. No Stock Impact. |
+| **2. Billing** | Finalization | **Stock Deducted** + **Revenue Recognized** + **Tax Posted** |
 | **3. Fulfillment** | Pick & Pack / DO | Goods leave warehouse | Physical stock movement verified |
 | **4. Payment** | Receipt/Contra | Payment received | Customer AR Balance reduced |
 
@@ -110,12 +110,13 @@ This section outlines the primary workflows for different roles, focusing on bes
 
 **Goal:** Create valid sales invoices that accurately reflect inventory and financial obligations.
 
-**1. Leveraging Templates & Knock-Offs**
-Instead of manual entry, prioritize using **Knock-Off (KO)** from Sales Orders or **Sales Invoice Templates**.
-*   **KO Logic**: Inherits all customer details, pricing, and terms from the source document.
-*   **Impact**: Ensures data consistency and prevents "creative invoicing" where details differ from the approved order.
+**1. Methods of Creation**
+There are two primary methods to generate a Sales Invoice:
+*   **Method 1: By Knock-Off (KO)**: Prioritize this method. Create the invoice directly from a confirmed preceding document (like a Sales Order or Delivery Order). This inherits all customer details, pricing, and terms, ensuring data consistency.
+*   **Method 2: Without KO (Normal Creation)**: Create a standalone invoice from scratch. You can also use **Sales Invoice Templates** for recurring high-volume orders.
 
 **2. The Creation Form**
+<!-- TODO: Replace wrong screenshot below as per PR feedback -->
 {{< figure src="/images/internal-sales-invoice-applet/create-form.png" alt="Invoice Creation Form" caption="The streamlined interface for creating new sales invoices." >}}
 
 *   **Entity Selection**: Selecting a customer auto-populates critical financial data: Credit Terms, Default Currency, and Billing Address.
@@ -165,7 +166,8 @@ Reduce repetitive data entry by standardizing common sales scenarios.
 ### Intercompany Transactions
 Manually handle complex inter-entity billing via the **Intercompany** route.
 -   **Scenario**: HQ purchasing bulk inventory and selling it to regional branches.
--   **System Logic**: Accessing the Intercompany route allows you to select internal entities as customers. The system validates that the "Sales" in HQ corresponds to a potential "Purchase" in the destination entity.
+-   **Configuration**: Ensure both source and destination entities are configured, with appropriate Customer/Supplier mappings. Define transfer pricing or intercompany price books to automate the rate at which goods are transferred.
+-   **System Logic**: Accessing the Intercompany route allows you to select internal entities as customers. The system will automatically mirror the transaction, creating a corresponding Purchase Invoice (or draft) in the receiving entity's ledger to ensure balanced intercompany accounts.
 
 ### Pick & Pack Queue
 A dedicated view for warehouse operations to close the loop between "Sold" and "Shipped".
@@ -183,11 +185,26 @@ A critical tool for correcting inventory errors without financial rollback.
 -   **The Fix**: Instead of Voiding (which messes up the accounts for a non-financial error), use **Swap Serial**.
 -   **Result**: The system swaps the serial numbers in the backend inventory records while keeping the Invoice and GL entries intact.
 
+**How to Swap a Serial Number:**
+1. Navigate to the **Swap Serial** menu.
+2. Search for the Sales Invoice or the specific incorrect Serial Number.
+3. Select the incorrect Serial Number that was invoiced.
+4. Input or scan the actual physical Serial Number that was dispatched.
+5. Confirm the swap. The system updates the stock card without affecting the GL posting.
+
 ### File Import
 Bulk import sales invoices using CSV files (Comma or Pipe delimited) to streamline high-volume data entry.
 -   **E-Invoice Ready**: Supports direct import of LHDN E-Invoice fields (TIN, Entity ID, SST No), ensuring compliance for imported transactions.
 -   **Comprehensive Data Mapping**: Handles complex data points including billing/shipping addresses, serial/batch numbers, and accounting codes (GL, Segment, Project).
 -   **Template Generation**: Download dynamic CSV templates to ensure your data matches the system's requirements.
+
+**Mandatory Information for Upload:**
+When preparing your CSV file for import, the following fields are strictly mandatory to ensure a successful upload:
+*   **Customer ID / Code**: To identify the billing entity.
+*   **Item Code**: The specific product or service being invoiced.
+*   **Quantity**: Number of units.
+*   **Unit Price**: The selling price per unit.
+*   **Branch/Location**: To ensure correct inventory deduction and GL posting.
 
 {{< figure src="/images/internal-sales-invoice-applet/file-import.png" alt="File Import Interface" caption="Upload CSV files to bulk create invoices." >}}
 
@@ -201,6 +218,11 @@ Extract your sales invoice data into customizable formats for external analysis 
 Contra Settlement allows you to pay an invoice using *other documents* instead of cash.
 *   **Use Case**: You buy raw materials from Supplier X and sell finished goods to Customer X (same entity).
 *   **Execution**: In the **Contra** tab, "Knock Off" the Invoice against a Credit Note or Purchase Bill to offset the balance.
+
+**Situation on Date (Contra Date Logic):**
+When performing a contra settlement, the system will always follow the **latest date** among the documents involved to determine the contra posting date.
+*   **Example 1**: Receipt (RCT) is Jan 2026, Invoice is Feb 2026 ➔ **Contra date will be Feb 2026**.
+*   **Example 2**: Sales Credit Note (SCN) is Dec 2025, Invoice is Feb 2025 ➔ **Contra date will be Dec 2025**.
 
 {{< figure src="/images/internal-sales-invoice-applet/arap-settlement.png" alt="ARAP Settlement tab showing Doc Open Amount and Contra values" caption="ARAP Tab: View the outstanding balance and manually settle it using Contra documents if needed." >}}
 
