@@ -1,5 +1,5 @@
 ﻿---
-title: "Internal Outbound Delivery Order Applet"
+title: "Delivery Order Applet (Internal)"
 description: "Comprehensive internal outbound delivery order management for document conversion, fulfillment execution, intercompany coordination, and configurable workflow control"
 tags:
 - internal-delivery-order
