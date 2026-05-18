@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Purchase Return (Internal) Applet"
 description: "Comprehensive purchase return management system for handling supplier returns, inventory adjustments, and financial reconciliation."
 tags:
@@ -20,7 +20,7 @@ The **Purchase Return (Internal) Applet** is a specialized tool designed to mana
 **Core Concept**: A Purchase Return is not just "sending goods back." It is a **financial transaction** that must result in either a **Refund**, a **Credit Note**, or a **Contra breakdown** against outstanding invoices.
 {{< /callout >}}
 
-{{< figure src="/images/internal-purchase-return-applet/internal-purchase-return-overview-infographic.png" alt="Mastering the BigLedger Purchase Return Applet â€” Overview Infographic" caption="Overview: Initiate returns via Manual Entry or Document Search, manage Draft vs. Final status, and leverage advanced tools including Contra, Settlement, Traceability, and e-Invoice Integration." >}}
+{{< figure src="/images/internal-purchase-return-applet/internal-purchase-return-overview-infographic.png" alt="Mastering the BigLedger Purchase Return Applet — Overview Infographic" caption="Overview: Initiate returns via Manual Entry or Document Search, manage Draft vs. Final status, and leverage advanced tools including Contra, Settlement, Traceability, and e-Invoice Integration." >}}
 
 {{< figure src="/images/internal-purchase-return-applet/purchase-return-listing.png" alt="Purchase Return (Internal) Main Listing" caption="Main Listing: View and manage your purchase return documents and their statuses." >}}
 
@@ -97,17 +97,17 @@ Think of the purchase return within the broader procurement flow:
 
 ```
 Procurement Lifecycle
-â”‚
-â”œâ”€â”€ Purchase Order (PO) â”€â”€â†’ What we planned
-â”‚   â”‚
-â”‚   â””â”€â”€ Goods Received (GRN) â”€â”€â†’ What arrived
-â”‚       â”‚
-â”‚       â””â”€â”€ Purchase Invoice (PI) â”€â”€â†’ What we owe
-â”‚           â”‚
-â”‚           â””â”€â”€ PURCHASE RETURN (PR) â”€â”€â†’ What we sent back
-â”‚               â”‚
-â”‚               â”œâ”€â”€ Contra â”€â”€â†’ Resets PI balance
-â”‚               â””â”€â”€ Settlement â”€â”€â†’ Records cash refund
+│
+├── Purchase Order (PO) ──→ What we planned
+│   │
+│   └── Goods Received (GRN) ──→ What arrived
+│       │
+│       └── Purchase Invoice (PI) ──→ What we owe
+│           │
+│           └── PURCHASE RETURN (PR) ──→ What we sent back
+│               │
+│               ├── Contra ──→ Resets PI balance
+│               └── Settlement ──→ Records cash refund
 ```
 
 {{< callout type="tip" >}}
@@ -187,9 +187,9 @@ Use this when returning against an original GRN or Purchase Invoice for accurate
 
 1. Click **"Search Existing Document"** on the create form.
 2. Search by original GRN or PI number.
-3. Select the document â€” all item, price, and supplier details auto-populate.
+3. Select the document — all item, price, and supplier details auto-populate.
 4. Adjust **Return Quantity** per line (cannot exceed original received quantity).
-5. Save as **Draft** â†’ Finalize after verification.
+5. Save as **Draft** → Finalize after verification.
 
 {{< callout type="tip" >}}
 **Best Practice**: Always prefer Method 2. It inherits the exact unit cost from the original GRN/Invoice, ensuring your inventory valuation and AP entries are accurate.
@@ -277,7 +277,7 @@ For deep analysis, the Line Reports view breaks down all purchase returns into i
 
 ### Printable Format (Debit Note)
 
-When finalizing a Purchase Return, the system can generate a **Debit Note** â€” a formal notice to the supplier that their account has been debited.
+When finalizing a Purchase Return, the system can generate a **Debit Note** — a formal notice to the supplier that their account has been debited.
 
 - **Configuration**: Customize the Debit Note layout in `Settings > Printable Format Settings`.
 - **Options**: Add company logo, business registration numbers, custom footers.
@@ -533,7 +533,7 @@ The applet provides **four layers** of permission control for granular access ma
 **A:** You must select the specific batch number during the return process. This ensures the correct First-In-First-Out (FIFO) cost is deducted from the right inventory batch.
 
 **Q3: Is a Purchase Return the same as a Debit Note?**
-**A:** In this applet, yes â€” conceptually. Finalizing a Purchase Return generates the financial equivalent of a **Debit Note** to the supplier, signifying that they owe you money (or that you owe them less on outstanding invoices).
+**A:** In this applet, yes — conceptually. Finalizing a Purchase Return generates the financial equivalent of a **Debit Note** to the supplier, signifying that they owe you money (or that you owe them less on outstanding invoices).
 
 **Q4: Can I handle multi-currency returns?**
 **A:** Yes. If you purchased in USD, the system will process the return in USD, maintaining the exchange rate used in the original transaction to avoid currency fluctuation errors in inventory valuation.
@@ -559,7 +559,7 @@ The applet provides **four layers** of permission control for granular access ma
 The **Purchase Return (Internal) Applet** provides a structured, auditable environment for handling the complex logistics and financials of returning goods to suppliers. By strictly linking returns to original purchases and ensuring proper settlement (Contra or Cash Refund), organizations can prevent revenue leakage, maintain impeccable inventory records, and remain compliant with tax regulations (including LHDN e-Invoice requirements).
 
 The key to success with this applet is:
-1. **Always link to source documents** â€” this guarantees correct costing.
-2. **Finalize promptly** â€” Draft returns don't update inventory; delays create phantom stock discrepancies.
-3. **Close the loop with Contra or Settlement** â€” An unsettled Purchase Return means a Credit Balance in your AP that isn't being utilized.
+1. **Always link to source documents** — this guarantees correct costing.
+2. **Finalize promptly** — Draft returns don't update inventory; delays create phantom stock discrepancies.
+3. **Close the loop with Contra or Settlement** — An unsettled Purchase Return means a Credit Balance in your AP that isn't being utilized.
 
