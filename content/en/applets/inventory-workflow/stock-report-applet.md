@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Stock Report Applet"
 description: "Comprehensive stock and inventory reporting with movement analysis, aging reports, balance tracking, and sales/purchase insights"
 tags:
@@ -58,11 +58,11 @@ The **Stock Report Applet** provides a comprehensive suite of inventory reports 
 - Limited drill-down and filtering capabilities
 
 **The Stock Report Applet Solution:**
-- **Centralized reports** â€” All stock reports accessible from a single sidebar menu
-- **Advanced filtering** â€” Filter by location, date range, item code, item categories, and more
-- **Real-time data** â€” Reports pull live inventory data
-- **Flexible views** â€” Toggle columns on/off, group by categories, and pivot data
-- **Export capabilities** â€” Export any report to Excel or PDF via the status bar
+- **Centralized reports** — All stock reports accessible from a single sidebar menu
+- **Advanced filtering** — Filter by location, date range, item code, item categories, and more
+- **Real-time data** — Reports pull live inventory data
+- **Flexible views** — Toggle columns on/off, group by categories, and pivot data
+- **Export capabilities** — Export any report to Excel or PDF via the status bar
 
 ## Key Features Overview
 
@@ -116,11 +116,11 @@ Most reports support the following filters in the Advanced Search panel:
 |--------|-------------|
 | **Location** | Filter by warehouse/storage location |
 | **Item Code** | Search by specific item code or keyword |
-| **Item Range** | Filter items within a code range (From â†’ To) |
+| **Item Range** | Filter items within a code range (From → To) |
 | **Item Type** | Filter by item transaction type |
 | **Item Status** | Filter by item status (Active, Inactive) |
 | **Item Category Levels** | Filter by up to 20 item category levels |
-| **Date Range** | Filter by transaction date (From â†’ To) |
+| **Date Range** | Filter by transaction date (From → To) |
 | **Location Labels** | Filter by location label groups |
 
 ### Permission-Controlled Columns
@@ -131,7 +131,7 @@ Some columns are only visible based on your permissions and admin settings:
 |-------------|---------|------------|
 | **MA Cost** (Unit Cost, Total Cost) | `HIDE_MA_COST` | `SHOW_MA_COST` |
 | **Gross Profit (GP)** | `HIDE_GP` | `SHOW_GP` |
-| **GP Percentage** | `HIDE_GP_PERCENTAGE` | â€” |
+| **GP Percentage** | `HIDE_GP_PERCENTAGE` | — |
 
 Admins can toggle these in **Settings > Application Settings** under the "Stock Report Listing" tab.
 
@@ -144,7 +144,7 @@ Admins can toggle these in **Settings > Application Settings** under the "Stock 
 **Goal:** Generate any stock report in 3 steps.
 
 1. **Select Report**: Click the desired report from the sidebar (e.g., **Stock Movement Report**)
-2. **Apply Filters**: Click the **Advanced Search** panel â†’ Set your filters (location, date range, item code, etc.) â†’ Click **Search**
+2. **Apply Filters**: Click the **Advanced Search** panel → Set your filters (location, date range, item code, etc.) → Click **Search**
 3. **View & Export**: Data loads in the grid. Use the **Column Toggle** to show/hide columns. Use the **Status Bar** to export to Excel or PDF.
 
 ---
@@ -153,9 +153,9 @@ Admins can toggle these in **Settings > Application Settings** under the "Stock 
 
 **Goal:** Identify slow-moving or expiring inventory.
 
-1. **Open Stock Aging Report** â†’ Filter by location â†’ Search
+1. **Open Stock Aging Report** → Filter by location → Search
 2. Review aging columns to identify stock sitting too long
-3. **Open Batch & Expiry Date Report** â†’ Filter by date range â†’ Search
+3. **Open Batch & Expiry Date Report** → Filter by date range → Search
 4. Review items approaching expiry and plan accordingly
 
 ---
@@ -164,17 +164,17 @@ Admins can toggle these in **Settings > Application Settings** under the "Stock 
 
 **Goal:** Set up defaults, toggle menu items, and configure aging periods.
 
-1. **Set Defaults**: Go to **Settings > Default Selection** â†’ Set default branch, location, and language
-2. **Configure Fields**: Go to **Settings > Application Settings** â†’ Toggle sidebar menu items and report columns on/off
-3. **Set Aging Periods**: In **Application Settings** â†’ Select aging period type (Day or Month)
-4. **Manage Permissions**: Go to **Settings > Permissions** â†’ Assign read/create/update/delete permissions
+1. **Set Defaults**: Go to **Settings > Default Selection** → Set default branch, location, and language
+2. **Configure Fields**: Go to **Settings > Application Settings** → Toggle sidebar menu items and report columns on/off
+3. **Set Aging Periods**: In **Application Settings** → Select aging period type (Day or Month)
+4. **Manage Permissions**: Go to **Settings > Permissions** → Assign read/create/update/delete permissions
 
 ---
 
 ## Stock Movement Report
 {{< figure src="/images/stock-report-applet/stock-movement-report.png" alt="Stock Movement Report" caption="Detailed transaction log of all stock movements grouped by item code." >}}
 
-The **Stock Movement Report** provides a detailed transaction log of all stock movementsâ€”goods received, goods issued, transfers, adjustments, and moreâ€”grouped by item code.
+The **Stock Movement Report** provides a detailed transaction log of all stock movements—goods received, goods issued, transfers, adjustments, and more—grouped by item code.
 
 **Key Columns:**
 
@@ -212,22 +212,22 @@ The **Stock Movement Report** provides a detailed transaction log of all stock m
 ## Stock Aging Report
 {{< figure src="/images/stock-report-applet/stock-aging-report.png" alt="Stock Aging Report" caption="Analyze inventory age with configurable aging buckets." >}}
 
-The **Stock Aging Report** breaks down your inventory by how long items have been in stock. Aging periods are dynamically configurableâ€”you can choose between **day-based** or **month-based** aging buckets.
+The **Stock Aging Report** breaks down your inventory by how long items have been in stock. Aging periods are dynamically configurable—you can choose between **day-based** or **month-based** aging buckets.
 
 **Key Columns:**
 
 | Column | Description |
 |--------|-------------|
-| **Category 1â€“10** | Item category levels (hidden by default, reveal as needed) |
+| **Category 1–10** | Item category levels (hidden by default, reveal as needed) |
 | **Item Code** | Item identifier |
 | **Item Name** | Item description |
-| **Dynamic Aging Columns** | Generated based on your aging period settings (e.g., 0â€“30 days, 31â€“60 days, etc.) |
+| **Dynamic Aging Columns** | Generated based on your aging period settings (e.g., 0–30 days, 31–60 days, etc.) |
 
 **Aging Period Configuration:**
-
+{{< figure src="/images/stock-report-applet/aging-period-configuration.png" alt="Aging Period Configuration" >}}
 The aging report uses the **Aging Period Settings** configured in Application Settings. You can set the period type to:
-- **Day** â€” Buckets in day ranges (e.g., 0â€“30, 31â€“60, 61â€“90, etc.)
-- **Month** (Default) â€” Buckets by month count
+- **Day** — Buckets in day ranges (e.g., 0–30, 31–60, 61–90, etc.)
+- **Month** (Default) — Buckets by month count
 
 **Use Cases:**
 - Identify slow-moving or dead stock that needs discounting or disposal
@@ -261,7 +261,7 @@ A high-level summary of stock quantities and values grouped by location. Use thi
 | Column | Description |
 |--------|-------------|
 | **Item Code / Item Name** | Item identification |
-| **Category 1â€“10** | Item category classifications |
+| **Category 1–10** | Item category classifications |
 | **Location-based data** | Quantities and values per location |
 
 #### Business Context
@@ -270,7 +270,7 @@ A high-level summary of stock quantities and values grouped by location. Use thi
 
 #### Data Source & Logic
 - **Source**: Aggregates data from the **Item Location Balance** table.
-- **Logic**: Sums up the `Quantity` and `Value` (Qty Ã— Cost) for all items, grouped strictly by **Location ID**.
+- **Logic**: Sums up the `Quantity` and `Value` (Qty × Cost) for all items, grouped strictly by **Location ID**.
 
 ---
 
@@ -307,19 +307,19 @@ The **Stock Balance Report** shows the current stock balance for each item acros
 | Column | Description |
 |--------|-------------|
 | **Company** | Company name |
-| **Category 1â€“10** | Item category levels (hidden by default) |
+| **Category 1–10** | Item category levels (hidden by default) |
 | **Item Code** | Item identifier |
 | **Item Name** | Item description |
 | **Type / Sub Type** | Item transaction type and sub-type (hidden by default) |
 | **UOM** | Unit of measurement (hidden by default) |
 | **Bal Qty** | Current ledger balance quantity |
 | **Unit Cost** | Moving Average (MA) cost per unit |
-| **Total Cost** | MA cost Ã— balance quantity |
+| **Total Cost** | MA cost × balance quantity |
 | **Unit Last Cost** | Last purchase cost per unit |
-| **Total Last Cost** | Last purchase cost Ã— balance quantity |
+| **Total Last Cost** | Last purchase cost × balance quantity |
 
 **Search Options:**
-- Filter by **Company**, **Item Type**, **Item Status**, **Item Range**, and **Item Category Levels 1â€“20**
+- Filter by **Company**, **Item Type**, **Item Status**, **Item Range**, and **Item Category Levels 1–20**
 - Optionally **Show Zero Balance** items via the optional filters
 
 **Use Cases:**
@@ -335,7 +335,7 @@ The **Stock Balance Report** shows the current stock balance for each item acros
 #### Data Source & Calculation
 - **Quantity**: Pulled directly from the live **Item Stock Ledger**. It represents the real-time physical quantity available in the system.
 - **Value**: Calculated using the **Weighted Moving Average (MA) Cost**.
-`Total Cost = Quantity Ã— Current MA Unit Cost`
+`Total Cost = Quantity × Current MA Unit Cost`
 *Note: This report reflects the status at the exact moment the report is run.*
 
 
@@ -351,14 +351,14 @@ This report provides a side-by-side comparison of **sales** and **purchase** act
 
 | Column | Description |
 |--------|-------------|
-| **Category 1â€“10** | Item category classifications (hidden by default) |
+| **Category 1–10** | Item category classifications (hidden by default) |
 | **Location** | Formatted as `Location Code | Location Name` |
 | **Item Code / Item Name** | Item identification |
 | **Item Description** | Additional description (hidden by default) |
 | **Qty Sold** | Total units sold in the period |
 | **Sales Amount** | Total revenue from sales |
 | **Cost** | Cost of goods sold (permission-controlled) |
-| **GP** | Gross Profit = Sales Amount âˆ’ Cost (permission-controlled) |
+| **GP** | Gross Profit = Sales Amount − Cost (permission-controlled) |
 | **Purchase Qty** | Total units purchased in the period |
 | **Purchase Amount** | Total purchase spending |
 | **Bal Qty** | Closing balance quantity |
@@ -383,8 +383,8 @@ This report provides a side-by-side comparison of **sales** and **purchase** act
 
 #### Key Calculations
 Assuming permission to view costs:
-- **Sales Amount**: `Unit Price Ã— Qty Sold`
-- **Cost (COGS)**: `Unit Cost (MA) Ã— Qty Sold`
+- **Sales Amount**: `Unit Price × Qty Sold`
+- **Cost (COGS)**: `Unit Cost (MA) × Qty Sold`
 - **Gross Profit (GP)**: `Sales Amount - Cost`
 - **Stock Turn Ratio**: Indicates how many times inventory is sold and replaced over a period (Higher = Better efficiency).
 
@@ -400,7 +400,7 @@ The **Stock Value by Level** report aggregates stock quantity and value data gro
 
 | Column | Description |
 |--------|-------------|
-| **Category 1â€“10** | Item category levels (Category 1 and 2 used as row groups) |
+| **Category 1–10** | Item category levels (Category 1 and 2 used as row groups) |
 | **Total Qty** | Aggregated quantity across all locations |
 | **Total Amount** | Aggregated MA amount across all locations |
 | **Location Columns** | Dynamically generated per-location columns showing Qty and Amount |
@@ -415,7 +415,7 @@ The **Stock Value by Level** report aggregates stock quantity and value data gro
 
 #### Data Source & Logic
 - **Source**: **Item Master** (Category Links) + **Stock Balance**.
-- **Logic**: Groups all items by their assigned **Category Hierarchy** (Level 1â€“10) and sums their total stock value. Useful for high-level financial reporting rather than item-level checking.
+- **Logic**: Groups all items by their assigned **Category Hierarchy** (Level 1–10) and sums their total stock value. Useful for high-level financial reporting rather than item-level checking.
 
 
 
@@ -430,12 +430,12 @@ Track items with **batch numbers** and **expiry dates**. The report categorizes 
 
 | Column | Description |
 |--------|-------------|
-| **Category 1â€“10** | Item category classifications (hidden by default) |
+| **Category 1–10** | Item category classifications (hidden by default) |
 | **Item Code / Item Name** | Item identification |
 | **Qty** | Current quantity |
 | **Amount** | MA price (permission-controlled) |
 | **Expiry Date** | The item's expiry date |
-| **Dynamic Month Columns** | Items categorized into: 0 Month, 1 Month, 2 Months, 3 Months, 4â€“6 Months, 7â€“12 Months, 13â€“24 Months, >24 Months |
+| **Dynamic Month Columns** | Items categorized into: 0 Month, 1 Month, 2 Months, 3 Months, 4–6 Months, 7–12 Months, 13–24 Months, >24 Months |
 
 **Use Cases:**
 - Identify items nearing expiry for clearance or disposal
@@ -467,7 +467,7 @@ This report shows stock balances **grouped by supplier**, with links to the orig
 | **Supplier** | Supplier name and code (used as row group header) |
 | **Txn Date** | Transaction date from the purchase document |
 | **Doc Short Code / Doc No** | Document type abbreviation and document number |
-| **Category 1â€“10** | Item categories (hidden by default) |
+| **Category 1–10** | Item categories (hidden by default) |
 | **Item Code / Item Name** | Item identification |
 | **Bal Qty** | Current stock balance |
 | **Unit Cost / Total Cost** | MA cost values (permission-controlled) |
@@ -484,7 +484,7 @@ This report shows stock balances **grouped by supplier**, with links to the orig
 
 #### Data Source & Logic
 - **Source**: **Purchase History** linked to **Serial Number Registry**.
-- **Logic**: Instead of just showing "Item A: 10 units", it traces each unit back to its original **Goods Received Note (GRN)** to display the *Supplier* who delivered it.
+- **Logic**: Instead of just showing "Item A: 10 units", it traces each unit back to its original **Purchase Invoice** or **Purchase Goods Received Note (GRN)** to display the *Supplier* who delivered it.
 
 
 
@@ -564,11 +564,11 @@ Configure webhook integrations for automated notifications or data sync with ext
 
 ### Permissions
 
-Permission settings control who can access reports and modify applet settings. Since this is a read-only reporting applet, these permissions do **not** affect stock or inventory dataâ€”they only control access to the reports themselves and the applet's configuration.
+Permission settings control who can access reports and modify applet settings. Since this is a read-only reporting applet, these permissions do **not** affect stock or inventory data—they only control access to the reports themselves and the applet's configuration.
 
 | Permission Setting | Description |
 |-------------------|-------------|
-| **Read Permission** | Controls who can view reports â€” permissions can be targeted to specific locations and branches |
+| **Read Permission** | Controls who can view reports — permissions can be targeted to specific locations and branches |
 | **Create Permission** | Controls who can create applet setting configurations |
 | **Update Permission** | Controls who can update applet settings |
 | **Delete Permission** | Controls who can delete applet setting configurations |
@@ -624,27 +624,29 @@ Arrange and customize sidebar menu items to match your preferred workflow.
 A: Column visibility is controlled by two things: (1) **Application Settings** toggles (e.g., `HIDE_MA_COST`), and (2) **User Permissions** (e.g., `SHOW_MA_COST`). Contact your admin if you need access to hidden columns.
 
 **Q: How do I change the aging period in the Stock Aging Report?**
-A: Go to **Settings > Application Settings** â†’ under the "Stock Report Listing" tab, change the **Aging Period** dropdown from Month to Day (or vice versa).
+{{< figure src="/images/stock-report-applet/faq-aging-period-setting.png" alt="Aging Period Settings in Application Settings" >}}
+A: Go to **Settings > Application Settings** → change the **Aging Period Settings** tick row Month or Day.
 
 **Q: Why does my search return no results?**
 A: Ensure your search keyword is at least 3 characters long. Also check that your location, date range, and other filters are not too restrictive.
 
 **Q: Can I export reports?**
-A: Yes. All reports support export via the **Status Bar** at the bottom of the grid. You can export to Excel or PDF.
+{{< figure src="/images/stock-report-applet/faq-export-reports.png" alt="Export Report Options" >}}
+A: Yes. All reports support export via the **Status Bar** at the Top Right of the grid. You can export to Excel or PDF.
 
 **Q: Why can't I see certain reports in the sidebar?**
 A: Some reports may be hidden via **Settings > Application Settings** (Sidebar Menu tab). Ask your admin to enable the reports you need.
 
 **Q: What is the difference between the various Stock Balance reports?**
 A: The applet offers multiple stock balance views for different needs:
-- **Stock Balance Report** â€” Basic balance with MA and last purchase cost
-- **Stock Balance (Supplier & Serial)** â€” Balance grouped by supplier with serial number tracking
-- **Stock Balance (Item, Supplier & Batch)** â€” Balance cross-referenced by item, supplier, and batch number
+- **Stock Balance Report** — Basic balance with MA and last purchase cost
+- **Stock Balance (Supplier & Serial)** — Balance grouped by supplier with serial number tracking
+- **Stock Balance (Item, Supplier & Batch)** — Balance cross-referenced by item, supplier, and batch number
 
 Choose the one that matches your analysis needs.
 
 **Q: How do item category levels work in the reports?**
-A: Item categories (Category 1â€“10) are additional classification fields on your items. They are hidden by default in most reports but can be revealed using the **Column Toggle**. Use them in the **Advanced Search** filters to narrow results to specific item groups.
+A: Item categories (Category 1–10) are additional classification fields on your items. They are hidden by default in most reports but can be revealed using the **Column Toggle**. Use them in the **Advanced Search** filters to narrow results to specific item groups.
 
 **Q: What does "Show Zero Balance" do?**
 A: By default, the Stock Balance Report excludes items with zero quantity. Enabling "Show Zero Balance" in the search options includes all items, even those with no current stock.
