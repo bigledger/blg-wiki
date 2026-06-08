@@ -112,7 +112,7 @@ Before diving into the system, take time to make these key business decisions. T
 - Ability to perform manual point adjustments
 - Manage member suspensions and status
 
-**System Administrators:**
+**Tenant Administrators:**
 - Configure system-wide settings and field visibility
 - Manage webhooks for integration with external systems
 - specific permission controls for teams and users
@@ -274,7 +274,7 @@ Managing a membership program often involves scattered spreadsheets, disconnecte
 
 ### Understanding the Membership Framework
 
-To effectively manage the system, you need to understand four core building blocks and how they work together.
+To effectively manage the system, you need to understand the core building blocks of membership — including how members relate to each other through referrals and multi-level marketing programs.
 
 {{< callout type="info" >}}
 **Important Terminology Note:** In the system menus, you'll see the term **"Member Privilege"** - this is the same thing as **"Member Class"** (your membership tiers like Bronze/Silver/Gold). We'll use **"Member Class"** throughout this guide because it's clearer, but remember they refer to the same feature.
@@ -290,6 +290,27 @@ To effectively manage the system, you need to understand four core building bloc
 | **Member Class (Tier)** | A membership level that grants specific benefits. Each member belongs to ONE class at a time. | Bronze, Silver, Gold, Platinum |
 | **Member Label (Tag)** | A flexible category for grouping members. Each member can have MANY labels at once. | VIP Customer, Vegetarian, Golfer, Birthday This Month |
 | **Points Currency** | A specific type of value a member can collect and spend | Reward Points, Status Miles, Gift Certificates |
+| **Referrals** | Tracks who a member invited and who invited them | Sarah invited Mike and Lisa; Tom invited Sarah |
+| **Multi-Level Marketing** | A member's position in a referral program — members above them (Uplines) and below them (Downlines) | In Program "Partner Rewards", Bob's Upline is Alice; Carol is his Downline |
+
+---
+
+### Referrals and Multi-Level Marketing
+
+Some loyalty programs track member invite relationships. The Membership Admin Applet supports two features for this:
+
+| Feature | What it does | Where to find it |
+|---------|--------------|------------------|
+| **Referrals** | Shows direct invite links between members | **Membership Edit** → **Referrals** tab |
+| **Multi-Level Marketing** | Shows a member's network in a referral **Program** | **Membership Edit** → **MLM** tab |
+
+**Referrals** answers two questions: who did this member invite (**Invited Members**), and who invited this member (**Invited By**). Each member can have a **Referral Code** on the **Details** tab.
+
+**Multi-Level Marketing** goes further than a single referral link. Select a **Program**, then view **Uplines** (members above) and **Downlines** (members below). Each record shows **Level**, **Invite Method**, and **Invite Status**.
+
+{{< callout type="tip" >}}
+Use **Referrals** for direct invite history. Use **Multi-Level Marketing** when your business runs a formal **Program** with upline and downline structure.
+{{< /callout >}}
 
 ---
 
@@ -338,47 +359,43 @@ This means:
 
 ### How Members, Classes, Labels, and Currencies Connect
 
-Here's a visual map showing how these four pieces fit together:
+Here's a visual map showing how these pieces fit together:
 
 ```
                         MEMBER (Sarah Chen)
                               |
+        +---------------------+---------------------+
+        |                     |                     |
+   MEMBER CLASS          MEMBER LABELS          REFERRALS
+ (One per member)      (Many per member)    (Direct invites)
+        |                     |                     |
+   [Gold Tier]          [VIP, Vegetarian]     Invited Members: Mike, Lisa
+        |                     |                Invited By: Tom
+        |                     |                     |
+        +---------------------+---------------------+
                               |
-            +-----------------+-----------------+
-            |                                   |
-            |                                   |
-      MEMBER CLASS                      MEMBER LABELS
-   (One per member)                  (Many per member)
-            |                                   |
-      [Gold Tier] ----------------------> [VIP, Vegetarian, Golfer]
-            |                                   |
-            |                                   |
-            v                                   v
-    Benefits Granted:                  Marketing Segments:
-       - 10% Discount                      - Golf promotions
-       - Earn 2x Points                    - Veggie menu offers
-       - Priority Support                  - VIP event invites
-            |
-            |
-            v
-      POINTS WALLET
-            |
-    +-------+-------+
-    |               |
-Reward Points   Status Miles
-  (1,540)          (8,200)
-    |               |
-    v               v
-Spending       Tier Progress
-(Redeem)       (Qualification)
+                    MULTI-LEVEL MARKETING
+                    (Program: Partner Rewards)
+                              |
+                    Uplines: Tom | Downlines: Mike, Lisa
+                              |
+                              v
+                        POINTS WALLET
+                              |
+                    +---------+---------+
+                    |                   |
+              Reward Points        Status Miles
+                (1,540)              (8,200)
 ```
 
 **Flow Explanation:**
 1. **Sarah** (Member) is assigned to the **Gold** tier (Member Class)
-2. She is also tagged with three **Labels**: VIP, Vegetarian, Golfer
-3. Her **Gold Class** gives her specific benefits (discounts, bonus earning rates)
+2. She is tagged with **Labels**: VIP, Vegetarian, Golfer
+3. Her **Gold Class** gives her tier benefits (discounts, bonus earning rates)
 4. Her **Labels** determine what promotions she receives
-5. She earns two types of **Points**: Reward Points (for spending) and Status Miles (for tier qualification)
+5. **Referrals** show Tom invited Sarah, and Sarah invited Mike and Lisa
+6. **Multi-Level Marketing** shows Sarah's upline and downline position in **Partner Rewards**
+7. She earns **Reward Points** (for spending) and **Status Miles** (for tier qualification)
 
 ---
 
@@ -503,8 +520,61 @@ The system allows for complex point interactions:
    - **Points Expiry**
    - **Upload Attachments**
    - **Referrals**
-   - **MLM**
+   - **MLM** (Multi-Level Marketing)
    - **Member Suspension**
+
+#### Referrals Tab
+
+Open a member from **Member Listing**, then select the **Referrals** tab.
+
+| Sub-tab | What it shows |
+|---------|---------------|
+| **Invited Members** | Members this person referred — Referred Member Card No, Member ID, Name, Email, Phone, Member Join Date |
+| **Invited By** | Who referred this member — Inviter Member Card No, Member ID, Name, Email, Phone, Inviter Referral Code |
+
+The member's **Referral Code** on the **Details** tab is the code used when linking new sign-ups to this member.
+
+#### Multi-Level Marketing Tab
+
+Open a member from **Member Listing**, then select the **MLM** tab. Select a **Program** from the dropdown first — **Uplines** and **Downlines** appear only after a program is selected.
+
+| Sub-tab | What it shows |
+|---------|---------------|
+| **Uplines** | Members above this member — Upline, Level, Invite Method, Invite Status, Date Created, Date Updated |
+| **Downlines** | Members below this member — Downline, Level, Invite Method, Invite Status, Date Created, Date Updated |
+
+To add a link, click **Create** on the **Uplines** or **Downlines** listing. This opens **Add Upline** or **Add DownLine**. Click a row to open **Edit Upline** or **Edit DownLine**.
+
+#### Member Suspension Tab
+
+Open a member from **Member Listing**, then select the **Member Suspension** tab.
+
+The listing shows suspension periods with **Start Date**, **End Date**, **Duration (in days)**, **Remarks**, **Created Date**, and **Created By**.
+
+- Click **Create** to open **Create Suspension**. Enter **Start Date**, **End Date**, **Duration (in days)**, and **Remarks**, then click **SAVE**.
+- Click a row to open **Edit Suspension** and update the record.
+
+**Scenario:** A support officer needs to pause a member's account while a complaint is reviewed.
+
+1. Open the member in **Membership Edit** → **Member Suspension** tab.
+2. Click **Create**.
+3. Set **Start Date** and **End Date** for the suspension period, add a **Remarks** note (for example, the case reference), then click **SAVE**.
+4. Confirm the new row appears in the listing with the correct dates and **Duration (in days)**.
+
+#### Points Expiry Tab
+
+Open a member from **Member Listing**, then select the **Points Expiry** tab.
+
+The listing shows **Balance Amount**, **Start Date**, **End Date**, **Next Expiry Date Check**, **Point Currency**, and **Created Date**. Use the search bar to filter records if needed.
+
+- Click a row to open **Point Expiry Edit**, then click **SAVE** after reviewing the details.
+
+**Scenario:** A member asks when their points will expire.
+
+1. Open the member in **Membership Edit** → **Points Expiry** tab.
+2. Find the row for the relevant **Point Currency**.
+3. Check **Next Expiry Date Check** and **End Date** to answer the member.
+4. Click the row to open **Point Expiry Edit** if you need to review the full record.
 
 **Details tab includes fields such as:**
 - Member Name, Card No, Customer Name, Member ID
@@ -1182,137 +1252,63 @@ Member automatically gets VIP newsletters
 
 ## Bulk Operations
 
-**Efficiently handle large volumes of data using import/export tools.**
+**Import member records or point transactions from CSV files.**
 
-### Member Master Data Upload (Bulk Import Members)
+### Upload Membership
 
-**What it is:** Import hundreds or thousands of members at once using a spreadsheet file instead of typing them one-by-one.
+**What it is:** Import many member records at once from a CSV file.
 
-**When to use:**
-- Migrating from an old system to this new membership system
-- Loading existing customer database into loyalty program
-- Annual membership renewals (uploading updated data)
-- Corporate batch registration (B2B programs with company-wide enrollment)
+**Download the template:**
 
-**How it works:**
+1. Click **Upload Membership** in the sidebar to open **Member Master Data Listing**.
+2. Click **Create** to open **Upload Master Data**.
+3. Click **Sample Format** to download the CSV template (`Member_Master_Data_Template.csv`).
+4. Open the file in Excel or Google Sheets. Each row is one member — fill in the columns shown in the template header row.
+5. Save the file as `.csv`.
 
-**Step 1: Download Template**
-1. Go to **Upload Membership**
-2. Click **Download Template** button
-3. System gives you a CSV file with the correct column headers
+**Upload the file:**
 
-**Step 2: Fill in Your Data**
-1. Open the template in Excel or Google Sheets
-2. Each row = one member
-3. Fill in columns:
-   - **Required columns** (marked with asterisk): Member ID, Name, Email, Phone
-   - **Optional columns**: Date of Birth, Gender, Address, etc.
-4. Follow formatting rules (shown in template):
-   - Dates: YYYY-MM-DD format (e.g., 1990-05-15)
-   - Phone: Include country code without spaces (e.g., +60123456789)
-   - Email: Valid email format only
-5. Save the file as CSV
+1. On **Upload Master Data**, drag and drop your `.csv` file or click **Upload File**.
+2. Click **ADD**.
 
-**Step 3: Upload**
-1. Back in **Upload Membership**, click **Upload**
-2. Select your CSV file
-3. System validates the data:
-   - Green = All good, ready to import
-   - Yellow = Warnings (can still import)
-   - Red = Errors (must fix before importing)
-4. Review the validation report
-5. Click **Confirm Import**
+Uploaded files appear in **Member Master Data Listing** with **File Name**, **Size**, **Import Format**, **Status**, **Uploaded Date**, and **Uploaded By**.
 
-**What happens:** System creates all member profiles in one batch. You'll see a success count (e.g., "1,450 members imported successfully, 5 failed").
+**Scenario:** You need to register 200 members from a spreadsheet export.
+
+1. Go to **Upload Membership** → **Create**.
+2. Click **Sample Format** to download the template, add your member rows, and save as `.csv`.
+3. Upload the file on **Upload Master Data** and click **ADD**.
+4. Return to **Member Master Data Listing** and check **Status** for the uploaded file.
 
 ---
 
-**Validation Rules (Why Imports Fail):**
+### Upload Member Point Transaction
 
-| Error Type | What It Means | How to Fix |
-|------------|---------------|------------|
-| **Duplicate Member ID** | This ID already exists in system | Use a different ID or update existing member instead |
-| **Invalid Email Format** | Email doesn't look right | Check for typos (must have @ and domain like .com) |
-| **Missing Required Field** | A mandatory column is blank | Fill in all fields marked with asterisk |
-| **Invalid Date Format** | Date not in YYYY-MM-DD format | Change to 1990-05-15 (not 05/15/1990) |
-| **Member Class Not Found** | Tier name doesn't exist | Check spelling or create the tier first in Member Privilege |
+**What it is:** Import point transactions for many members at once from a CSV file.
 
----
+**Download the template:**
 
-**Best Practices:**
+1. Click **Upload Member Point Transaction** in the sidebar to open **Membership Point Txn File Listing**.
+2. Click **Create** to open **Upload Member Point Transaction Import**.
+3. Under **Sample Format**, click **Member Point Txn** to download the CSV template.
+4. Open the file in Excel or Google Sheets. Each row is one transaction — fill in the columns shown in the template header row.
+5. Save the file as `.csv`.
 
-- **Test with 10 members first**: Before uploading 10,000 members, test with a small sample to catch formatting errors
+**Upload the file:**
 
-- **Clean your data**: Remove duplicate rows, fix typos, standardize formats before uploading
+1. On **Upload Member Point Transaction Import**, drag and drop your `.csv` file or click **Upload File**.
+2. Click **Submit**.
 
-- **Back up first**: Export existing members before bulk import (in case something goes wrong)
+Uploaded files appear in **Membership Point Txn File Listing** with **File Name**, **File Size**, **Format**, **Status**, **Process Status**, **Error Message**, **Created Date**, and **Updated Date**. Click a row to view the file details.
 
-- **Upload during off-hours**: Large imports can slow the system - do it when fewer users are online
+**Scenario:** Marketing runs an anniversary campaign and needs to credit bonus points to many members.
 
-- **Use unique IDs**: Member IDs must be unique (no two members can have same ID)
-
-**Common Mistakes:**
-- Excel auto-formats dates wrong (changes 2025-01-15 to 1/15/2025) -> Set column to "Text" format first
-- Phone numbers lose leading zeros (0123456789 becomes 123456789) -> Prefix with apostrophe '0123456789
-- Mixing encodings (special characters become gibberish) -> Save as UTF-8 encoding
+1. Go to **Upload Member Point Transaction** → **Create**.
+2. Under **Sample Format**, click **Member Point Txn** to download the template, add one row per member transaction, and save as `.csv`.
+3. Upload the file and click **Submit**.
+4. Check **Membership Point Txn File Listing** for **Status** and **Process Status**. If **Error Message** is shown, open the file row to review the details.
 
 ---
-
-### Member Point Transaction Upload (Bulk Add Points)
-
-**What it is:** Add points to multiple members at once (like running a promotion where 500 members each get 100 bonus points).
-
-**When to use:**
-- Promotional campaigns ("Everyone gets 100 points for our anniversary!")
-- Compensating multiple affected members (system downtime, service failure)
-- Migrating historical point balances from old system
-- Awarding contest winners
-
-**How it works:**
-
-**Step 1: Download Template**
-1. Go to **Upload Member Point Transaction**
-2. Click **Download Template**
-3. System gives you a CSV file
-
-**Step 2: Fill in Transaction Data**
-1. Each row = one transaction
-2. Required columns:
-   - **Member ID**: Who gets the points
-   - **Currency**: Which point type (e.g., "Loyalty Points")
-   - **Amount**: How many points (positive = add, negative = deduct)
-   - **Transaction Date**: When this happened
-   - **Reason**: Why (for audit trail)
-3. Example rows:
-   ```
-   Member ID, Currency, Amount, Date, Reason
-   12345, Loyalty Points, 100, 2025-12-15, Anniversary Bonus
-   12346, Loyalty Points, 100, 2025-12-15, Anniversary Bonus
-   12347, Loyalty Points, 50, 2025-12-15, Contest Runner-Up
-   ```
-
-**Step 3: Upload**
-1. Back in **Upload Member Point Transaction**, click **Upload**
-2. Select your CSV
-3. System validates:
-   - Does each Member ID exist?
-   - Is the currency valid?
-   - Are amounts reasonable? (flags if someone gets 1,000,000 points)
-4. Review validation report
-5. Click **Confirm Import**
-
-**What happens:** All points are added instantly. Each member's balance updates and they see the transaction in their history.
-
----
-
-**Safety Features:**
-
-- **Duplicate Detection**: System flags if you're uploading the same transaction twice
-- **Amount Limits**: Warns if a single transaction exceeds your configured threshold (e.g., > 10,000 points)
-- **Negative Balance Prevention**: Won't let you deduct more points than a member has (unless you override)
-
----
- *(See [Member Class vs Label](#member-class-vs-member-label-when-to-use-which) for full explanation)*
 
 ### Reporting and Data Export
 
