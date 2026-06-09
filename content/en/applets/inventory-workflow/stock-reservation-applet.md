@@ -141,7 +141,7 @@ To effectively manage the system, it is crucial to understand how **Physical**, 
 
 Get up and running quickly with these essential workflows.
 
-{{< figure src="/images/stock-reservation-applet/quick-start-guide.png" alt="Stock Reservation Workflows for Sales, Warehouse, and Admin roles" caption="Effortless Inventory Allocation: A visual at-a-glance guide for Sales (Make a Hold), Warehouse (View Commitments), and Admins (System Setup)." >}}
+{{< figure src="/images/stock-reservation-applet/reservation-listing.png" alt="Stock Reservation Listing" caption="The Stock Reservation Listing displays all reservation records with their Doc No, Item, Branch, Location, Reserved Qty, and Status." >}}
 
 ### For Sales Team: Create Your First Manual Hold
 
@@ -153,6 +153,11 @@ Get up and running quickly with these essential workflows.
    - Select the **Customer**
    - Choose your **Branch/Location**
    - Set an **Expiry Date** (e.g., 48 hours from now)
+
+{{< figure src="/images/stock-reservation-applet/reservation-create.png" alt="Create Stock Reservation — Main Details" caption="The Create Stock Reservation form: fill in Branch, Location, Item, Reserve Qty, Expiry Date, and Status." >}}
+
+{{< figure src="/images/stock-reservation-applet/reservation-create-account.png" alt="Create Stock Reservation — Account Tab" caption="Account tab: Select the Entity ID to link the reservation to a specific customer." >}}
+
 3. **Add Items**: 
    - Click **"Add Line"**
    - Select the **Item Code**
@@ -178,6 +183,10 @@ Get up and running quickly with these essential workflows.
 3. **Decide/Manage**:
    - If a reservation is expired, click **Release** to restore "Available" balance
    - Use this view to plan pick lists for actual confirmed orders
+
+{{< figure src="/images/stock-reservation-applet/reservation-details.png" alt="Edit Stock Reservation — Main Details" caption="Reservation Details: View and edit the reservation including Branch, Location, Item, Reserve Qty, Status, and Expiry Date." >}}
+
+{{< figure src="/images/stock-reservation-applet/reservation-details-account.png" alt="Edit Stock Reservation — Account Tab" caption="Account tab: View the linked entity details including Entity ID, Name, Type, Currency, and Contact information." >}}
 
 ---
 
@@ -313,10 +322,16 @@ This is used when you need to hold a generic quantity of an item at a specific l
 *   **Best for**: Sales teams locking in inventory for pending deals.
 *   **Required Fields**: Branch, Location, Item Name, Reserve Qty, Expiry Date.
 
+{{< figure src="/images/stock-reservation-applet/reservation-bin-number.png" alt="Stock Reservation — Bin Number Tab" caption="Bin Number tab within a Stock Reservation: View the Bin Header Code, Bin Line Code, Container Measure, and Container Qty." >}}
+
 #### Bin Reservation
 This is used when your warehouse utilizes Bin Management (`BIN_NUMBER` sub-items). It locks stock at the most granular level—the exact bin line code on the warehouse floor.
 *   **Best for**: Warehouse operators prepping specific shelves for fulfillment or quarantine.
 *   **Required Fields**: Bin Header Code, Bin Line Code.
+
+{{< figure src="/images/stock-reservation-applet/bin-reservation-listing.png" alt="Bin Reservation Listing" caption="The Bin Reservation Listing displays all bin-level reservations with Item Code, Bin Header/Line Codes, Customer, Branch, Location, and Status." >}}
+
+{{< figure src="/images/stock-reservation-applet/bin-reservation-details.png" alt="Bin Reservation Edit — Main Details" caption="Edit a Bin Reservation: View and modify Item Code, Bin Header/Line Codes, Container Measure, UOM, and Reserved quantities." >}}
 
 ---
 
