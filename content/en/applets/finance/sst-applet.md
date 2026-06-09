@@ -23,7 +23,7 @@ The **MY-SST Applet** is a specialized tool designed to streamline Malaysian tax
 ### Who Benefits from This Applet?
 
 **Finance Team & Tax Accountants:**
-- Automated calculation of Input (Purchase) and Output (Sales) tax.
+- Automated calculation of tax you pay to suppliers (Input) and tax you collect from customers (Output).
 - Simplified filing cycle management (Monthly, Quarterly, or Custom periods).
 - One-click SST-02 report generation for customs submission.
 - Consolidated tax summary reports for service and sales tax.
@@ -121,7 +121,7 @@ Company Organization
 
 1. **Tax Year**: Defines filing frequency and fiscal boundaries.
 2. **Tariff Code**: Official customs classification (e.g., `018.000`).
-3. **Tax Code**: The rate rule — Input (Purchase) or Output (Sales).
+3. **Tax Code**: The rate rule — costs you pay (Input) or costs customers pay (Output).
 4. **Filing Cycle**: A specific period (e.g., Jan 1 – Feb 28) within a Tax Year.
 5. **Transaction Filing**: Link invoices/documents to the filing cycle.
 6. **SST-02**: The final report exported as PDF for RMCD submission.
@@ -154,7 +154,7 @@ Get your tax compliance engine running with these essential workflows.
 
 ### For Admins: Initial System Setup
 
-**Goal:** Configure the foundation for tax processing in 5 steps.
+**Goal:** Configure the foundation for tax processing.
 
 **Step 1: Setup Tax Year** (`Tax Year` menu)
 - Select the Company and link to a Fiscal Year.
@@ -170,7 +170,11 @@ Get your tax compliance engine running with these essential workflows.
 - Set the **Tax Rate** (e.g., `6.00` for 6%, `8.00` for 8%).
 - Link the Tax Code to item codes via the **Doc Item Maintenance Applet** to apply taxes automatically to transactions.
 
-**Step 4: Test Transaction**
+**Step 4: Map Accounts** (`Chart of Account Applet`)
+- Link your Tax Codes to the correct GL accounts in the **Chart of Account Applet**.
+- This ensures that tax amounts are posted to the appropriate General Ledger accounts during transaction processing.
+
+**Step 5: Test Transaction**
 - Create a draft Sales Invoice, apply the tax code, and verify it appears in the **Unfiled Transactions** tab of a filing cycle.
 
 ---
