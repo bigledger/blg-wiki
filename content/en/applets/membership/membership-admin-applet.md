@@ -202,6 +202,8 @@ Managing a membership program often involves scattered spreadsheets, disconnecte
    - Post `-20` points as a test redemption simulation
    - Confirm both entries appear in **Transaction History**
 
+{{< figure src="/images/membership-admin-applet/create-member.png" alt="Member Create form opened from Member Listing with required fields such as Member Name, Phone Number, and IC or Passport" caption="Member Listing → + opens Member Create. Fill required fields, then click CREATE." >}}
+
 {{< figure src="/images/membership-admin-applet/settings-field-settings.png" alt="Field Settings page showing tab navigation (Details, Member Photos, Labels, Point Transactions, Points Expiry, Member Suspension, Member Listing) and toggle switches under the Details tab for card number configuration" caption="Settings > Field Settings - use the tabs and toggle switches to configure field behaviour. Click SAVE when done." >}}
 
 6. **Done!** You can now register real members and run controlled pilot transactions.
@@ -473,6 +475,12 @@ The system allows for complex point interactions:
 
 **The central directory of your customers and their loyalty data.**
 
+### Create member
+
+From **Member Listing**, click **+** to open **Member Create**. Complete required fields (your tenant may require phone, IC / Passport, branch, and other details from **Field Settings**), then click **CREATE**.
+
+{{< figure src="/images/membership-admin-applet/create-member.png" alt="Member Create form opened from Member Listing with required fields such as Member Name, Phone Number, and IC or Passport" caption="Member Create: use + on Member Listing, complete required fields, then CREATE." >}}
+
 ### Membership Edit (Member Detail View)
 
 **What it is:** The member record screen opened from **Member Listing**.
@@ -535,6 +543,8 @@ The listing shows suspension periods with **Start Date**, **End Date**, **Durati
 2. Click **Create**.
 3. Set **Start Date** and **End Date** for the suspension period, add a **Remarks** note (for example, the case reference), then click **SAVE**.
 4. Confirm the new row appears in the listing with the correct dates and **Duration (in days)**.
+
+{{< figure src="/images/membership-admin-applet/member-suspension.png" alt="Member Suspension tab with Create Suspension form showing Start Date, End Date, Duration, and Remarks" caption="Member Suspension: open the tab from Membership Edit, click + to create a suspension, then SAVE." >}}
 
 #### Points Expiry Tab
 
@@ -1255,6 +1265,8 @@ Uploaded files appear in **Member Master Data Listing** with **File Name**, **Si
 3. Upload the file on **Upload Master Data** and click **ADD**.
 4. Return to **Member Master Data Listing** and check **Status** for the uploaded file.
 
+{{< figure src="/images/membership-admin-applet/upload-membership.png" alt="Upload Master Data screen with Sample Format link, Upload File, and ADD button beside Member Master Data Listing" caption="Upload Membership: download Sample Format, upload your CSV on Upload Master Data, click ADD, then check Status in Member Master Data Listing." >}}
+
 ---
 
 ### Upload Member Point Transaction
@@ -1282,6 +1294,8 @@ Uploaded files appear in **Membership Point Txn File Listing** with **File Name*
 2. Under **Sample Format**, click **Member Point Txn** to download the template, add one row per member transaction, and save as `.csv`.
 3. Upload the file and click **Submit**.
 4. Check **Membership Point Txn File Listing** for **Status** and **Process Status**. If **Error Message** is shown, open the file row to review the details.
+
+{{< figure src="/images/membership-admin-applet/upload-member-point-transaction.png" alt="Upload Member Point Transaction Import with Member Point Txn sample format, Upload File, and Submit" caption="Upload Member Point Transaction: download Member Point Txn under Sample Format, upload your CSV, click Submit, then check Status in the listing." >}}
 
 ---
 
