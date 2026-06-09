@@ -183,14 +183,31 @@ Get your tax compliance engine running with these essential workflows.
 
 **Goal:** Execute the filing process and generate the SST-02 report.
 
+{{< figure src="/images/sst-applet/tax-filing-listing.png" alt="Tax Filing Cycle Listing" caption="The Tax Filing Cycle Listing displays all open and locked filing cycles across tax years." >}}
+
 1. **Create Filing Cycle**: Go to **Tax Filing** → Click **"+"** → Select Company, Tax Year, Name, Start Date & End Date.
+
+{{< figure src="/images/sst-applet/tax-filing-create.png" alt="Create Tax Filing Cycle" caption="Initialize a new filing cycle by selecting the Company, Tax Year, and date range." >}}
+
 2. **Select Filing Cycle**: Click the filing cycle record to open its details.
+
+{{< figure src="/images/sst-applet/tax-filing-cycle-details.png" alt="Tax Filing Cycle Details" caption="The Details tab shows cycle metadata with Lock and Delete actions." >}}
+
 3. **Review Unfiled Transactions**: Go to the **Tax Filing** tab → Select **Service** or **Sales** sub-tab → Click **Unfiled Transactions** → Use the search filter (Branch, Date Range) to load transactions.
+
+{{< figure src="/images/sst-applet/tax-filing-unfiled-transactions.png" alt="Unfiled Transactions View" caption="Filter unfiled transactions by Branch and date range, then use FILE ALL to file them into the cycle." >}}
+
 4. **File Transactions**:
    - **FILE ALL**: Files every transaction matching the filter with one click.
    - **FILE IT**: Select specific rows using the checkbox, then click **FILE IT**.
 5. **Handle Corrections**: Use the **Filed Transactions** tab to review. If an error is found, use the **Unfile** action to move the transaction back to Unfiled.
+
+{{< figure src="/images/sst-applet/tax-filing-filed-transactions.png" alt="Filed Transactions View" caption="Review filed transactions and use UNFILE IT to move incorrect entries back to the Unfiled queue." >}}
+
 6. **Generate SST-02**: Go to the **SST-02** tab → Enter **Penalty Amount** and **Penalty %** (if applicable) → Click **SEARCH** to populate the report → Click **EXPORT TO PDF** for RMCD submission.
+
+{{< figure src="/images/sst-applet/tax-filing-sst02-tab.png" alt="SST-02 Report Tab" caption="Enter penalty details if applicable, click SEARCH to populate the report, then EXPORT TO PDF for RMCD submission." >}}
+
 7. **Lock Filing Cycle**: Once confirmed, go to **Details** tab → Click **Lock** to prevent further changes.
 
 ---
