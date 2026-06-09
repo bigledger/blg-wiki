@@ -139,6 +139,8 @@ To effectively manage the system, it is crucial to understand how **Physical**, 
 
 Get up and running quickly with these essential workflows.
 
+{{< figure src="/images/stock-reservation-applet/reservation-listing.png" alt="Stock Reservation Listing" caption="The Stock Reservation Listing displays all reservation records with Doc No, Item Name, Branch, Location, UOM, Reserved Qty, and Status." >}}
+
 ### For Sales Team: Create Your First Manual Hold
 
 **Goal:** Lock 10 units for a VIP customer to prevent others from taking the stock in 4 simple steps.
@@ -146,16 +148,23 @@ Get up and running quickly with these essential workflows.
 1. **Navigate**: Go to **Stock Reservation** from the sidebar
 2. **Create Header**: 
    - Click **"+"** (Add New)
-   - Select the **Customer**
-   - Choose your **Branch/Location**
+   - Select the **Branch**
+   - Choose your **Location**
    - Set an **Expiry Date** (e.g., 48 hours from now)
 
-3. **Add Items**: 
-   - Click **"Add Line"**
+{{< figure src="/images/stock-reservation-applet/reservation-create-branch.png" alt="Create Stock Reservation — Branch Selection" caption="Select the Branch from the dropdown to define where the reserved stock is located." >}}
+
+{{< figure src="/images/stock-reservation-applet/reservation-create-location.png" alt="Create Stock Reservation — Location Selection" caption="Select the Location within the Branch, then fill in Item Name, Reserve Qty, Expiry Date, and Status." >}}
+
+3. **Link Customer**: Go to the **Account** tab and select the customer entity for this reservation.
+
+{{< figure src="/images/stock-reservation-applet/reservation-select-customer.png" alt="Create Stock Reservation — Select Customer" caption="Account tab: Search and select the customer entity to link the reservation to a specific customer." >}}
+
+4. **Add Items**: 
    - Select the **Item Code**
    - Enter the **Reserved Quantity** (e.g., 10)
    - Enter **Reason Code/Remarks** ("VIP Hold for 48hrs")
-4. **Finalize**: Click **Active** to save
+5. **Finalize**: Click **Active** to save
 
 **What happens next?** The **Available** count for this item drops immediately across the entire system. No one else can sell those 10 units.
 
@@ -172,6 +181,9 @@ Get up and running quickly with these essential workflows.
    - Filter by **Item Code** or **Location**
    - See which customers are holding the stock
    - Check the **Link Document** (Sales Order or Manual Hold)
+
+{{< figure src="/images/stock-reservation-applet/reservation-details.png" alt="Edit Stock Reservation — Main Details" caption="View reservation details: Branch, Location, Item, Reserve Qty, Expiry Date, Status, and Description." >}}
+
 3. **Decide/Manage**:
    - If a reservation is expired, click **Release** to restore "Available" balance
    - Use this view to plan pick lists for actual confirmed orders
