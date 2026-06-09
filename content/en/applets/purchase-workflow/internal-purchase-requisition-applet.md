@@ -197,7 +197,7 @@ Depending on your company's configuration, the edit screen may show sections as 
 **Goal:** Review items being requested across requisitions, work through a line queue if your company uses one, and print documents when needed.
 
 1. Open **Line Items** from the left menu to see a single list of all lines from many requisitions. Use the filters and search to narrow by item, date, branch, or other criteria.
-2. If your company uses **Line Items Queue**, open it to see lines waiting for queue-level approval. Use the **Approve** action when your process calls for it.
+2. If your company uses **Line Items Queue**, open it to see lines waiting for queue-level approval. Tick the line or lines you want, then click **APPROVE**.
 3. To print, open Internal Purchase Requisition, select the document or documents you need, and use Single print or Multiple print when those actions appear.
 
 ---
@@ -226,6 +226,8 @@ Open Internal Purchase Requisition from the left menu.
 **List view**
 
 You see all requisitions your role can access. From the list you can start a new requisition with Create (+), use Final or Void on a selected document when those actions are available, print with Single print or Multiple print when enabled, and search or filter the grid. Columns typically include document number, company, branch, posting status, status, transaction date, and amounts.
+
+{{< figure src="/images/internal-purchase-requisition/purchase-requisition-list.png" alt="Purchase Requisition listing with Create, search, Final, and Void actions" caption="List view: search and filter requisitions, select rows, then use FINAL, VOID, or print when those actions are available for your role." >}}
 
 **Create screen**
 
@@ -257,6 +259,8 @@ After the first save, opening the document again shows extra sections such as At
 | Export | Export to PDF or Excel |
 | Generic Doc Approval | Start or track approval on this document |
 
+{{< figure src="/images/internal-purchase-requisition/attach-document.png" alt="Edit Purchase Requisition Attachment tab with Add Attachment upload panel" caption="After the first save, open Attachment on the edit screen. Use + to add files such as quotes or supporting documents." >}}
+
 Discard may appear on drafts that were never submitted. Unlike Void, it removes the draft without a formal cancellation record.
 
 **Send for approval**
@@ -283,9 +287,9 @@ The Line Items left menu lists lines from many requisitions in one grid. Use fil
 
 **Line Items Queue**
 
-When enabled, individual lines wait here for line-level approval before or alongside full document approval. Open Line Items Queue from the left menu and use Approve when your process requires it.
+When enabled, individual lines wait here for line-level approval before or alongside full document approval. Open **Line Items Queue** from the left menu, tick the line or lines you want, then click **APPROVE**.
 
-{{< figure src="/images/internal-purchase-requisition/line-items-queue-approve.png" alt="Line Items Queue with Approve action for pending lines" caption="Line Items Queue: review branch, item, and quantity, then Approve when the line is ready." >}}
+{{< figure src="/images/internal-purchase-requisition/line-items-queue-approve.png" alt="Line Items Queue listing with a line selected and the Approve button" caption="Line Items Queue: select one or more lines, then click APPROVE. Review branch, item, and quantity before you approve." >}}
 
 {{< callout type="warning" >}}
 If Line Items Queue or Approve is missing, the feature may be off in Settings or your role may not have access.
@@ -301,6 +305,8 @@ Approval Request is the left-menu screen where approvers review pending requisit
 
 Open Approval Request from the left menu. The list shows requisitions assigned to you. Open a record, review lines, amounts, and attachments, then Approve or Reject. Add remarks on reject so the requester knows what to fix. Approved items leave your queue; rejected items return to the requester for correction.
 
+{{< figure src="/images/internal-purchase-requisition/apprival-request.png" alt="Approval Request listing with Approve and Reject actions" caption="Approval Request: pending requisitions assigned to you. Select a row, review the document, then Approve or Reject." >}}
+
 **Approval History**
 
 Open Approval History from the left menu for a record of past decisions—who approved or rejected, when, and any remarks. Use it to trace a decision or confirm a requisition completed the correct steps.
@@ -310,6 +316,8 @@ Open Approval History from the left menu for a record of past decisions—who ap
 ## Configuration & Settings {#configuration--settings}
 
 Open **Settings** from the left menu. The areas available depend on your company's configuration and your own access level.
+
+{{< figure src="/images/internal-purchase-requisition/settings.png" alt="Applet Settings screen showing System Configuration areas such as Application Settings, Workflow Settings, and Approval Settings" caption="Settings opens Applet Settings. System Configuration covers fields, defaults, print, workflow, and approval routing; other sections cover permissions and release notes." >}}
 
 | Area | What it controls |
 | --- | --- |
