@@ -116,15 +116,20 @@ There are two primary methods to generate a Sales Invoice:
 *   **Method 2: Without KO (Normal Creation)**: Create a standalone invoice from scratch. You can also use **Sales Invoice Templates** for recurring high-volume orders.
 
 **2. The Creation Form**
-<!-- TODO: Replace wrong screenshot below as per PR feedback -->
-{{< figure src="/images/internal-sales-invoice-applet/create-form.png" alt="Invoice Creation Form" caption="The streamlined interface for creating new sales invoices." >}}
+
+{{< figure src="/images/internal-sales-invoice-applet/create-form.png" alt="Invoice Creation Form — Main Details" caption="The Create Sales Invoice form showing Main Details: Branch, Location, Delivery Branch, and Sales Agent fields." >}}
+
+{{< figure src="/images/internal-sales-invoice-applet/ko-search-document.png" alt="KO For — Search Sales Order" caption="KO For tab: Search and select a confirmed Sales Order to knock off into the invoice." >}}
 
 *   **Entity Selection**: Selecting a customer auto-populates critical financial data: Credit Terms, Default Currency, and Billing Address.
 
-{{< figure src="/images/internal-sales-invoice-applet/entity-selection.png" alt="Entity Selection Drawer mapping Customer details" caption="Entity Selection: Quickly pull in pre-configured customer and billing data." >}}
+{{< figure src="/images/internal-sales-invoice-applet/entity-selection.png" alt="Entity Selection — Account Tab" caption="Account tab: Select the Entity ID to auto-populate customer details, billing address, and currency." >}}
+
 *   **Item Selection**:
     *   **Stock Checking**: The system validates availability in real-time.
     *   **Serialization**: For serialized inventory, specific serial numbers must be allocated here to ensure the correct unit is deducted.
+
+{{< figure src="/images/internal-sales-invoice-applet/item-selection.png" alt="Select Item Dialog" caption="Item Selection: Search and add items with real-time stock balance visibility." >}}
 *   **Pricing**: Unit prices are typically locked to the Price Book. Overrides may trigger an approval workflow.
 *   **E-Invoice**: Handle mandatory LHDN e-invoice submission requirements directly from the drafting stage.
 
