@@ -12,68 +12,60 @@ weight: 170
 
 ## Purpose and Overview
 
-The **Seller Admin Applet** is a comprehensive solution designed to manage the end-to-end lifecycle of seller operations within the ERP. It centralizes sales order creation, merchant account administration, and fulfillment workflows into a single, intuitive interface.
+The **Seller Admin Applet** is a specialized management system designed for **marketplace owners and administrators** (similar to Shopee or Lazada). It facilitates the management of sellers registered on the platform, allowing admins to oversee merchant accounts, allocate sales orders, and manage fulfillment workflows.
 
 {{< callout type="info" >}}
-**Core Concept**: This applet bridges the gap between **Sales** (Internal Sales Orders), **Merchants** (Seller Accounts), and **Fulfillment** (Pick-Pack Queue & Ecomsync).
+**Core Concept**: This applet is the "control center" for marketplace operations, bridging **Marketplace Sales Orders**, **Merchant Account Allocation**, and **Seller Fulfillment**.
 {{< /callout >}}
 
 ## Key Features Overview
 
 ### Who Benefits from This Applet?
 
-**Sales Administrators:**
+**Marketplace Administrators:**
 
-- Rapid creation and management of Internal Sales Orders (ISO)
-- Streamlined merchant account onboarding and configuration
-- Real-time tracking of order statuses across different merchants
+- Oversee and manage merchant account onboarding and configurations.
+- Allocate product order lines to specific sellers via the **SO Processing Queue**.
+- Monitor the fulfillment status of all orders across the entire marketplace.
 
-**Operations & Warehouse Teams:**
+**Sellers & Merchants:**
 
-- Efficient order processing via a dedicated Pick-Pack Queue
-- Optimized fulfillment with batch printing and delivery item management
-- Reduced manual data entry through automated synchronization
+- Manage orders allocated to them by the marketplace admin.
+- Handle picking, packing, and delivery of products.
+- Maintain their seller profiles and product mappings.
 
-**Product & Inventory Managers:**
+**Operations Teams:**
 
-- Centralized management of seller-specific products
-- Precise control over marketplace synchronization via Ecomsync
-- Visibility into stock levels and SKU mappings
-
-**Business Owners & Executives:**
-
-- Holistic view of multi-seller performance via dashboards
-- Detailed audit trails for every transaction and setting change
-- Data-driven decision making with advanced sales reports
+- Efficiently process allocated orders via dedicated fulfillment queues.
+- Optimize delivery with batch printing and item management.
 
 ### What Problems Does This Solve?
 
-**The Fragmented Seller Management Problem:**
-Traditional seller management relies on disconnected spreadsheets and manual fulfillment. Common issues include:
+**The Fragmented Marketplace Problem:**
+Managing multiple sellers and high volumes of orders can be chaotic without a central system. Common issues include:
 
-- Difficulty in tracking orders across different merchant accounts
-- Inefficient picking and packing processes leading to delays
-- Manual stock updates causing overselling risks on marketplaces
-- Lack of centralized reporting for seller-specific performance
+- Difficulty in allocating orders to the right sellers.
+- Inefficient fulfillment tracking across various merchant accounts.
+- Lack of a unified view for marketplace-wide sales and delivery.
 
 **The Seller Admin Applet Solution:**
 
-- **Unified Interface** - Manage ISOs, merchants, and products in one place
-- **Automated Fulfillment** - A specialized queue to move orders from "Pending" to "Delivered" faster
-- **Ecomsync Integration** - Real-time synchronization of products and orders with external channels
-- **Advanced Batch Tools** - Mass print labels and process multiple orders in seconds
-- **Granular Control** - Detailed permission settings and field-level configurations
+- **Unified Admin Interface** - Manage marketplace merchants and order allocations in one place.
+- **Seller Account Allocation** - A specialized tool (SO Processing Queue) to distribute order items to sellers.
+- **Automated Seller Orders** - Automatically generate seller-specific orders once allocation is complete.
+- **Batch Fulfillment Tools** - Mass print labels and process multiple orders across different sellers.
+- **Scalable Merchant Management** - Easily onboard and manage a growing network of sellers.
 
 ## Key Features Overview
 
 {{< cards >}}
-{{< card title="Sales Order Management" subtitle="Create and track internal sales orders" link="#internal-sales-orders" >}}
+{{< card title="Marketplace SO Listing" subtitle="View orders from Internal Sales Order Applet" link="#internal-sales-orders" >}}
 
 {{< card title="Merchant Admin" subtitle="Manage seller accounts and profiles" link="#merchant-account-admin" >}}
 
-{{< card title="Fulfillment Queue" subtitle="Streamlined pick-pack-ship workflow" link="#seller-order-listing-pick-pack-queue" >}}
+{{< card title="SO Processing Queue" subtitle="Allocate orders to specific sellers" link="#so-processing-queue" >}}
 
-{{< card title="Ecomsync Integration" subtitle="Automated marketplace synchronization" link="#ecomsync-dashboard--scheduler" >}}
+{{< card title="Seller Fulfillment" subtitle="Manage seller-specific order processing" link="#seller-order-listing" >}}
 
 {{< card title="Seller Products" subtitle="Manage marketplace-specific SKUs" link="#seller-product-management" >}}
 
@@ -84,39 +76,37 @@ Traditional seller management relies on disconnected spreadsheets and manual ful
 {{< card title="Settings & Config" subtitle="Granular applet customization" link="#configuration--settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/seller-admin-applet/seller-admin-overview-infographic.png" alt="Seller Admin Applet Overview - From Order to Delivery" caption="Efficiency Unlocked: The Seller Admin Applet streamlines your multi-seller operations from the moment an order is created to the final delivery." >}}
+
 
 ## Key Concepts
 
-### Understanding the Seller Ecosystem
-
-The Seller Admin Applet operates on a structured framework that connects four main components:
+The Seller Admin Applet operates on a structured framework that connects marketplace orders to individual sellers:
 
 | Component                      | Definition                                                                                               | Practical Example                                                    |
 | ------------------------------ | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| **Sales Order (Internal) (ISO)** | The core transaction representing a demand for products. Includes financial settlement and contra logic. | A bulk order for 50 units of "Wireless Mice" with a 10% downpayment. |
-| **Merchant Account**           | The entity responsible for fulfilling the order. Acting as a seller or fulfillment partner.              | "TechDistro Inc." acting as a regional fulfillment partner.          |
-| **Pick-Pack Queue**            | The operational stage where items are prepared for shipping.                                             | Warehouse staff selecting pending orders to pack.                    |
-| **Ecomsync**                   | The engine that syncs data with marketplace platforms like **Shopee** and **Lazada**.                    | Automatically updating stock on Shopee or Lazada.                    |
+| **Internal Sales Order (ISO)** | The core product order received by the marketplace. Focuses on item details and delivery requirements. | An order for 50 units of "Wireless Mice" received via the platform. |
+| **Merchant Account**           | The seller entity registered on the marketplace responsible for fulfilling orders.              | "TechDistro Inc." registered as a seller for electronics.          |
+| **SO Processing Queue**        | The stage where marketplace admins allocate order items to specific sellers (Seller Account Allocation). | Admin selecting which seller will fulfill a specific order line.     |
+| **Seller Order**               | An order automatically generated for a specific seller after allocation is complete.                    | A fulfillment request sent to "TechDistro Inc." for 10 Mice.         |
 
 {{< callout type="tip" >}}
-**Real-World Example**: A Sales Admin creates an ISO (The Order). The system identifies the linked Merchant (The Seller). The order appears in the Pick-Pack Queue (The Fulfillment), and once shipped, Ecomsync (The Sync) updates the marketplace status.
+**Real-World Example**: A marketplace receives an Internal Sales Order. The Admin uses the **SO Processing Queue** to allocate items to a Merchant (Seller Account Allocation). This automatically creates a **Seller Order**, which the merchant then processes for delivery.
 {{< /callout >}}
 
 ### The Order Lifecycle
 
 ```
-Sales Order Created
+Internal Sales Order Received
 │
-├── Assigned to Merchant ──→ WHO fulfills it?
-│   │
-│   └── Verification ──→ Check stock and details
-│       │
-│       └── Pick-Pack Queue ──→ OPERATIONS workflow
-│           │
-│           └── Batch Printing ──→ Shipping labels & Invoices
-│               │
-│               └── Delivery/Sync ──→ SHIPPING & MARKETPLACE update
+└── SO Processing Queue ──→ WHO fulfills which items?
+    │
+    └── Seller Account Allocation ──→ Assign items to Merchants
+        │
+        └── Seller Order Created ──→ AUTO-GENERATED for the seller
+            │
+            └── Seller Fulfillment ──→ Pick-Pack-Ship workflow
+                │
+                └── Delivery ──→ Order marked as fulfilled
 ```
 
 ---
@@ -125,25 +115,24 @@ Sales Order Created
 
 Get your seller operations running smoothly with these essential workflows.
 
-### For Sales Admins: Create an Sales Order (Internal)
+### For Marketplace Admins: Allocate Orders (Seller Account Allocation)
 
-**Goal:** Generate a new order to be fulfilled by a merchant in 5 steps.
+**Goal:** Distribute items from incoming Sales Orders to the appropriate sellers.
 
-1. **Navigate**: Go to **Sales Order (Internal)** from the sidebar.
-2. **Initialize**: Click **"+" (Create New)**.
-3. **Select Details**: Choose the **Merchant**, **Project**, and **Warehouse**.
-4. **Add Items**: Click **"Add Line"**, select your products, and specify quantities.
-5. **Finalize**: Review the totals and click **Submit**. The order is now ready for fulfillment.
+1. **Navigate**: Go to **SO Processing Queue** (or Marketplace SO Line Queue).
+2. **Review Lines**: View all pending Sales Order lines that need allocation.
+3. **Allocate**: Select the product and quantity, then choose the **Merchant (Seller Account)** to fulfill it.
+4. **Confirm**: Click **Allocate**. The system will automatically create a **Seller Order** for that merchant.
+5. **Monitor**: Track the status of the allocation to ensure no orders are left unassigned.
 
-### For Operations: Process the Pick-Pack Queue
+### For Sellers: Process the Seller Order
 
-**Goal:** Efficiently pack and ship pending orders.
+**Goal:** Efficiently pack and ship orders allocated to you.
 
-1. **Check Queue**: Go to **Seller Order Listing** to see all pending orders.
-2. **Select & Print**: Select the orders you wish to process and use **Batch Printing** to generate labels.
-3. **Pack & Ship**: Verify items are packed correctly.
-4. **Update Status**: Select the orders and click **Process** or **Deliver** to update the system.
-5. **Verification**: Check **Delivery Items** to ensure the fulfillment is recorded.
+1. **Check Queue**: Go to **Seller Order Listing** to see orders assigned to your account.
+2. **Select & Print**: Select the orders and use **Batch Printing** to generate labels or invoices.
+3. **Pack & Ship**: Verify items and update the status to **Process** or **Deliver**.
+4. **Verification**: Check **Delivery Items** to ensure the fulfillment is recorded correctly.
 
 ---
 
@@ -151,11 +140,10 @@ Get your seller operations running smoothly with these essential workflows.
 
 **Goal:** Configure the applet for first-time use in 6 steps.
 
-1. **Merchant Onboarding**: Go to **Merchant Account Admin** → Create profiles for all fulfillment partners.
-2. **Product Mapping**: In **Seller Product Management**, link your internal stock items to marketplace SKUs.
-3. **Configure Sync**: Access **Ecomsync Scheduler** to set up automated stock and order update intervals.
-4. **Define Workflows**: Go to **Settings > Sales Order Status** to customize the fulfillment stages (e.g., Picked, Packed, Dispatched).
-5. **Set Permissions**: Role-based access control in **Settings > Role Permission Listing** to define who can create ISOs vs. who can process the queue.
+1. **Merchant Onboarding**: Go to **Merchant Account Admin** → Create profiles for all registered sellers.
+2. **Product Mapping**: In **Seller Product Management**, link marketplace items to internal product masters.
+3. **Define Workflows**: Go to **Settings > Sales Order Status** to customize fulfillment stages.
+4. **Set Permissions**: Define roles for Marketplace Admins (Allocation) vs. Sellers (Fulfillment) in **Settings > Role Permission Listing**.
 6. **Print Setup**: Customize document layouts in **Printable Format Settings** for Invoices and Packing Slips.
 
 {{< figure src="/images/seller-admin-applet/settings-page.png" alt="Seller Admin Applet Settings" caption="Admin Setup: Use the Applet Settings to define the core operational rules for your sellers." >}}
@@ -164,18 +152,15 @@ Get your seller operations running smoothly with these essential workflows.
 
 ## Internal Sales Orders
 
-The **Sales Order (Internal) (ISO)** module is the primary entry point for transactions.
+The **Internal Sales Order (ISO)** module serves as the repository for orders received from the **Internal Sales Order Applet**.
 
-- **Status Tracking**: Monitor orders through various stages (Draft, Pending, Confirmed, Cancelled).
-- **Financial Controls**: Manage **Settlements** (downpayments), **Contra** (offsetting), and **Credit Terms/Limits** directly within the order.
-- **Member Card Support**: Integrate with loyalty systems to apply member-specific pricing or rewards.
-- **Logistics Integration**: Track **Permit Numbers** and **Tracking IDs** for international or specialized shipping.
-- **Attachments**: Securely store POs, receipts, and other critical documentation as part of the order audit trail.
-- **Detailed Reports**: Export order data via the **Sales Order Detailed Report** for financial analysis.
+- **Order Repository**: View and manage all incoming Sales Orders in one place.
+- **Order Details**: Click on any SO in the listing to redirect to the **Edit Internal Sales Order** page for detailed review.
+- **Product & Delivery Focus**: Monitor product lines and delivery requirements for each order.
+- **Attachments**: Securely store POs, receipts, and other documentation related to the marketplace transaction.
+- **Logistics Tracking**: View **Permit Numbers** and **Tracking IDs** for specialized shipping.
 
-{{< figure src="/images/seller-admin-applet/iso-listing.png" alt="Sales Order (Internal) Listing" caption="Sales Order (Internal) Listing: View and manage all your internal sales orders from a single screen." >}}
-
-{{< figure src="/images/seller-admin-applet/iso-create-form.png" alt="Sales Order (Internal) Create/Edit Form" caption="Create/Edit ISO: Enter order details, select merchants, and add line items with ease." >}}
+{{< figure src="/images/seller-admin-applet/iso-listing.png" alt="Internal Sales Order Listing" caption="Internal Sales Order Listing: View orders synced from the Internal Sales Order Applet." >}}
 
 ## Merchant Account Admin
 
@@ -189,26 +174,26 @@ Manage the "Who" of your operations. The **Merchant Account Admin** section (als
 
 {{< figure src="/images/seller-admin-applet/seller-account-form.png" alt="Seller Account Admin Create/Edit Form" caption="Merchant Profile: Detailed configuration for seller entities, including entity types and status." >}}
 
-## Seller Order Listing (Pick-Pack Queue)
+## SO Processing Queue (Seller Account Allocation)
 
-This is the "Engine Room" of the applet. It provides a real-time queue of orders that need attention.
+The **SO Processing Queue** (also known as Marketplace SO Line Queue) is where marketplace admins manage order distribution.
 
-- **Fulfillment States**: Filter by "Need to Pick", "Need to Pack", and "Ready to Ship".
-- **Batch Processing**: Select multiple orders to update statuses simultaneously.
-- **Barcode Support**: Integration with scanners for quick item verification (where applicable).
+- **Seller Account Allocation**: The core process of choosing which products and quantities are allocated to which seller account.
+- **Item-Level Control**: Admins can split a single Sales Order across multiple sellers if necessary.
+- **Auto-Creation**: Once allocation is confirmed, the system automatically generates **Seller Orders** for the respective merchants.
 
-{{< figure src="/images/seller-admin-applet/so-processing-queue.png" alt="SO Processing Queue Listing" caption="SO Processing Queue: Monitor the flow of sales orders through the marketplace fulfillment stages." >}}
+{{< figure src="/images/seller-admin-applet/so-processing-queue.png" alt="SO Processing Queue Listing" caption="SO Processing Queue: Allocate marketplace order lines to specific sellers." >}}
 
-{{< figure src="/images/seller-admin-applet/seller-order-listing.png" alt="Seller Order Listing" caption="Pick-Pack Queue: Current view of orders being processed for delivery." >}}
+## Seller Order Listing
 
-## Ecomsync Dashboard & Scheduler
+This section displays the orders assigned to sellers for fulfillment.
 
-The **Ecomsync** module manages the digital bridge between your ERP and external marketplaces.
+- **Fulfillment Tracking**: Monitor orders as they move through "Need to Pick", "Need to Pack", and "Ready to Ship" states.
+- **Batch Processing**: Sellers can select multiple orders to mass-update statuses or print documents.
 
-- **Marketplace Dashboards**: Specialized views for **Shopee** and **Lazada** to monitor platform-specific sales and sync performance.
-- **Sync Scheduler**: Automate the timing of stock updates and order downloads.
-- **Status Monitoring**: Identify and troubleshoot sync failures immediately to prevent stock discrepancies.
-- **Catalog Management**: Monitor new catalog listings and map items to marketplace-specific SKUs.
+{{< figure src="/images/seller-admin-applet/seller-order-listing.png" alt="Seller Order Listing" caption="Seller Order Listing: View and process orders allocated to the merchant." >}}
+
+
 
 ## Seller Product Management
 
@@ -247,20 +232,23 @@ Configure the layout of your physical documents.
 
 ## FAQ
 
-**Q: How do I handle a sync error in Ecomsync?**  
-A: Navigate to the **Ecomsync Dashboard**, identify the failed task, and check the error message. Common issues include invalid SKU mappings or expired marketplace API tokens.
+**Q: What is the SO Processing Queue?**  
+A: It is a tool for marketplace admins to allocate Sales Order items to specific sellers. This process is called Seller Account Allocation.
 
-**Q: Can I process orders from different merchants in a single batch?**  
-A: Yes, as long as they are selected within the **Seller Order Listing**, you can trigger batch actions like printing or status updates across any number of merchants.
+**Q: Does allocating an order create a new document?**  
+A: Yes, once the marketplace admin allocates an item to a seller, the system automatically creates a **Seller Order** for that merchant.
 
-**Q: What is the difference between an ISO and a standard Sales Order?**  
-A: An ISO is specifically designed for internal routing to merchant accounts for fulfillment, often carrying additional metadata for Ecomsync and merchant-specific logistics.
+**Q: Can I split one Sales Order among multiple sellers?**  
+A: Yes, the **SO Processing Queue** allows you to allocate different products or quantities from a single order to different seller accounts.
 
-**Q: How do I add new seller-specific products?**  
-A: Use the **Seller Product** module. You can link these directly to your internal product master while maintaining merchant-specific SKU identifiers.
+**Q: What is the difference between an Internal Sales Order and a Seller Order?**  
+A: An Internal Sales Order is the original order received by the marketplace. A Seller Order is the specific portion of that order allocated to an individual merchant for fulfillment.
 
-**Q: Why are my marketplace stock levels not updating?**  
-A: Check if the **Ecomsync Scheduler** is active and that the Product Mapping is correctly configured. Also, verify that the warehouse inventory levels in the ERP have sufficient stock for sync.
+**Q: How do I edit an Internal Sales Order?**  
+A: Navigate to the **Internal Sales Order** listing and click on the order. You will be redirected to the **Edit Internal Sales Order** page.
+
+**Q: Why is there no "Create" button in the Internal Sales Order section?**  
+A: The Seller Admin Applet acts as a listing and allocation tool. New Sales Orders should be created in the **Internal Sales Order Applet** before appearing here for allocation.
 
 **Q: Can I customize the fields shown in the ISO creation form?**  
 A: Yes, go to **Settings > Field Settings** to enable, disable, or make fields mandatory depending on your business requirements.

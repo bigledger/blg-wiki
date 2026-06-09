@@ -82,6 +82,20 @@ Traditional or fragmented systems often lead to operational friction:
 
 {{< figure src="/images/warranty-admin-applet/warranty-admin-overview-infographic.png" alt="Warranty Admin Applet Overview Infographic" caption="From Manual Chaos to Digital Certainty: A visual guide to how the Warranty Admin Applet solves tracking challenges for all stakeholders." >}}
 
+## Connected Applets & Integration
+
+The Warranty Admin Applet is part of an integrated ecosystem, communicating with several other modules to automate tracking and claims:
+
+- **External Sales Invoice Applet / POS Applet**: 
+  - **Feature**: Automatic creation of registrations.
+  - **Details**: When a serialized product (item with "Serial Number Required" enabled) is sold, these applets capture the serial number and customer details. Once the invoice/sale is completed, a corresponding Product Registration is automatically created in `PENDING` status in the Warranty Admin Applet.
+- **Customer RMA / Internal RMA Applet**:
+  - **Feature**: Active warranty validation.
+  - **Details**: When processing returns or claims, support staff can query the **Warranty Certificate** listing to verify coverage status, expiry date, and original purchase details prior to approving a customer return or supplier return-to-vendor (RTV).
+- **Inventory / Items Master**:
+  - **Feature**: Base warranty configuration.
+  - **Details**: Connects with the items registry to pull standard warranty duration templates (e.g., years, months, days configured on the Item SKU) when calculating warranty expiry dates.
+
 ## Key Concepts
 
 ### Understanding the Warranty Framework
@@ -100,15 +114,22 @@ Every record in the system relies on the "Golden Triangle" of Warranty Administr
 
 ### Registration Lifecycle Statuses
 
-Understanding the current status of a registration is critical for operational flow:
+Understanding the current status of a registration and its generated certificate is critical for operational flow:
 
-| Status             | Meaning                | Action Required                                |
-| ------------------ | ---------------------- | ---------------------------------------------- |
-| **Draft**          | Data entry in progress | Complete missing details and submit.           |
-| **Submitted**      | Pending review         | Admin must verify the purchase proof.          |
-| **Verified**       | **Active Coverage**    | No action; warranty is valid for claims.       |
-| **Expired**        | Coverage period ended  | Offer extended warranty or paid repairs.       |
-| **Void/Cancelled** | Protection revoked     | Investigate cause (e.g., unauthorized repair). |
+#### Product Registration (Approval Status)
+
+| Status | Meaning | Action Required |
+| :--- | :--- | :--- |
+| **PENDING** | Automatically generated from a sale or submitted for review. | Admin must verify the details and purchase proof (invoice attachment) then click **APPROVE** or **DECLINE**. |
+| **APPROVED** | The registration has been verified and confirmed. | No action; this automatically creates an active **Warranty Certificate**. |
+| **DECLINED** | The registration was rejected (e.g. invalid invoice, discrepancy in serial number). | Review the remarks and update/correct details to resubmit if applicable. |
+
+#### Warranty Certificate (Status)
+
+| Status | Meaning | Action Required |
+| :--- | :--- | :--- |
+| **ACTIVE** | Active warranty coverage. | Valid for processing claims. |
+| **EXPIRED** | The coverage period has ended (current date is past the warranty expiry date). | Offer extended warranty template or charge for repairs/parts. |
 
 ---
 
@@ -116,49 +137,50 @@ Understanding the current status of a registration is critical for operational f
 
 Get your team up and running with these standard operating procedures.
 
-### For Sales Staff: Register a New Sale
+### For Sales & Retail Teams: Automatic Warranty Registration
 
-**Goal:** Activate warranty coverage at the point of sale in under 2 minutes.
+**Goal:** Record a sale and automatically register product warranty coverage in under 2 minutes.
 
-1. **New Registration**: Go to **Product Registration** > Click **"+" (Add New)**.
-2. **Identify Product**: Enter or scan the **Serial Number/IMEI**.
-   - _System Check_: If the SN is found, it will auto-populate product details.
-3. **Assign Owner**: Search for an existing customer via phone/email or click **"Create New"**.
-4. **Apply Terms**: Select the appropriate **Warranty Template** (e.g., "12-Month Standard").
-5. **Finalize**: Click **"Verify"** to activate or **"Save as Draft"** for later review.
+> [!NOTE]
+> There is no manual creation or "+" button in the Warranty Admin Applet. Product registrations are created automatically when a sale is captured in the connected sales systems.
 
-**Pro Tip:** Always capture a clear photo of the physical invoice and attach it to the registration for audit purposes.
+1. **Record the Sale**: Open the **POS Applet** or **External Sales Invoice Applet** to create a new sale.
+2. **Scan/Identify Product**: Enter or scan the **Serial No.** of the hardware unit (must be a serialized item).
+3. **Capture Customer Details**: Link the sale to a customer profile, ensuring **Customer Name**, **Customer Email**, and **Mobile No.** are filled in.
+4. **Complete Transaction**: Confirm the transaction/invoice. A new record will automatically appear in the **Warranty Admin Applet** in `PENDING` status.
+
+**Pro Tip:** Always capture a clear photo/scan of the physical invoice/receipt and attach it to the registration record under the **Attachments** tab for audit purposes.
 
 ---
 
-### For Support Teams: Verify & Validate
+### For Support & Admin Teams: Review, Verify, and Approve
 
-**Goal:** Confirm if a customer is eligible for warranty service.
+**Goal:** Confirm registration data, approve the warranty, and issue the certificate.
 
-1. **Global Search**: Enter the Serial Number in the top search bar.
-2. **Validate Coverage**:
-   - Check the **Status** (Must be "Verified").
-   - Check the **Expiry Date** (System highlights red if expired).
-   - Check the **Registered Owner** (Does it match the customer in front of you?).
-3. **Process**: If valid, click **"Initiate Service"** (if integrated) or advise the customer on the next steps.
+1. **Find Registration**: In the **Warranty Admin Applet**, go to **Product Registration** listing. Look for registrations in `PENDING` status.
+2. **Verify Details**: Click on the record to open the **Product Registration View**.
+   - Review the customer name, email, serial number, and purchase date.
+   - Click the **Attachments** tab to verify the uploaded receipt image.
+3. **Set Warranty Period**: The system automatically calculates the **Warranty Expiry Date** based on the product's basic warranty definitions (configured in Settings). If needed, adjust the **Warranty Period** or **Warranty Expiry Date** field.
+4. **Approve and Activate**:
+   - Click **APPROVE** to confirm. This moves the status to `APPROVED` and generates a **Warranty Certificate** under the **Warranty Certificate** listing in `ACTIVE` status.
+   - Click **DECLINE** (and click again to confirm) if information is incorrect. This moves status to `DECLINED`.
+   - Click **SAVE** to persist draft edits without changing status.
 
 ---
 
 ### For Admins: System Configuration
 
-**Goal:** Define the rules and templates for your business.
+**Goal:** Set up rules, templates, and layouts for the business.
 
-**Step 1: Define Warranty Terms** (`Settings > Default Selection`)
-
-- Create templates with duration (Months/Days) and specific inclusion/exclusion text.
-
-**Step 2: Design Certificates** (`Settings > Email Template`)
-
-- Customize the automated email that sends the PDF certificate to the customer.
-
-**Step 3: Access Control** (`Settings > Role Permission`)
-
-- Ensure Sales can "Create" but only Managers can "Void" or "Verify" registrations.
+- **Configure Default Periods** (`Settings > Default Selection`):
+  - Set default warranty periods (Years, Months, Days) that automatically apply to product registrations based on item attributes.
+- **Set Form Fields** (`Settings > Application Settings`):
+  - Choose which fields are mandatory, visible, or read-only during registration review.
+- **Design Email Templates** (`Settings > Email Template`):
+  - Customize the subject line, body, and placeholders for the automated email sent to customers when their warranty certificate is generated.
+- **Design PDF Certificates** (`Settings > Printable Format Settings`):
+  - Choose and configure the printable template format layouts for the PDF certificates generated for customers.
 
 ---
 
@@ -166,17 +188,32 @@ Get your team up and running with these standard operating procedures.
 
 ### Product Registration Management
 
-The centralized hub for tracking every unit. The listing view provides powerful filtering capabilities to find registrations by date range, dealer, or product type.
+The centralized hub for tracking and validating every product registration. The listing view provides powerful filtering capabilities to find registrations by customer details, serial number, product name, or purchase date.
 
 {{< figure src="/images/warranty-admin-applet/product-registration-listing.png" alt="Product Registration Listing Page" caption="Product Registration Listing: A centralized view of all active, draft, and expired warranties with advanced filtering." >}}
 
-**Key Fields in Registration:**
+Clicking any row opens the **Product Registration View**, which contains the following details organized into tabs:
 
-- **Product Model**: Linked to your inventory master data.
-- **Serial Number**: The unique ID for the unit.
-- **Date of Purchase**: The anchor point for warranty calculations.
-- **Dealer/Store**: Which outlet sold the unit.
-- **Owner Information**: Contact details for the customer.
+#### 1. Main Details Tab
+This tab contains the primary information about the transaction, customer, and warranty period:
+
+- **Created Date**: Read-only date representing when the registration was generated in the system.
+- **Customer Name**: The name of the registered owner/purchaser.
+- **Customer Email**: The email address of the registered owner (used for automated certificate delivery).
+- **Customer Mobile**: The contact mobile number for the owner.
+- **Product Name**: The name/description of the item purchased.
+- **Serial No.**: The unique serial number(s) scanned for the unit. Multiple serial numbers are displayed as comma-separated values.
+- **Purchase Date**: The transaction date of the purchase.
+- **Purchased From**: The dealer, outlet, or sales channel where the unit was sold.
+- **Warranty Period**: The duration of coverage (calculated automatically from default settings, but adjustable by an administrator).
+- **Warranty Expiry Date**: The final date of coverage, calculated from the purchase date and warranty period.
+- **Remarks**: A text area for additional notes, audit logs, or special instructions.
+
+#### 2. Attachments Tab
+Allows upload and viewing of documents (such as photos of the physical receipt, invoices, or product images) to serve as verification proof before approving registrations.
+
+#### 3. Warranty Certificates Tab
+Displays the generated PDF certificate details and allows administrators to preview or download the certificate using the printable templates.
 
 ### Warranty Certificates & Documentation
 
@@ -192,45 +229,45 @@ Admins have granular control over how the system behaves.
 
 {{< figure src="/images/warranty-admin-applet/settings-page.png" alt="Applet Settings Page" caption="Admin Control Center: Configure the logic, aesthetics, and permissions for the entire applet." >}}
 
-### Field Configuration (`Settings > Field Settings`)
+### Field Configuration (`Settings > Application Settings`)
 
-Define which data points are mandatory for a registration.
+Define which data points are mandatory, visible, or read-only during registration review.
 
 | Setting       | Effect                                            | Example          |
 | ------------- | ------------------------------------------------- | ---------------- |
-| **Mandatory** | Prevents saving if the field is empty.            | Date of Purchase |
-| **Visible**   | Toggles field display for staff.                  | Dealer Code      |
-| **Read-Only** | Prevents staff from changing data after creation. | Serial Number    |
+| **Mandatory** | Prevents saving or approving if the field is empty.| Purchase Date    |
+| **Visible**   | Toggles field display for staff.                  | Purchased From   |
+| **Read-Only** | Prevents staff from changing data after creation. | Serial No.       |
 
 ### Custom Status Logic (`Settings > Custom Status`)
 
-Tailor the registration lifecycle to your business process (e.g., adding a "Refurbished" or "Return Processed" status).
+Tailor the registration lifecycle to your business process (e.g., adding custom statuses to fit operational flows).
 
 ---
 
 ## FAQ & Troubleshooting
 
 **Q: Can a warranty be transferred if the product is sold second-hand?**
-A: **Yes.** An authorized admin can update the **Owner** details on a verified registration. The original **Registration Date** remains unchangeable to maintain the existing warranty period.
+A: **Yes.** An authorized admin can update the customer details on an approved registration. The original **Purchase Date** remains unchangeable to maintain the original warranty period.
 
 **Q: How do I handle a product exchange (DOA)?**
-A: You should **Void** the original registration (noting the serial number was defective) and create a **New Registration** for the replacement unit using its new Serial Number.
+A: Product replacements (DOA) are processed through the connected RMA or sales systems. When the defective item is returned and a replacement unit is issued with a new Serial No., a new Product Registration is automatically created for the replacement unit.
 
 **Q: We sold 50 units to a corporate client. Do I have to register them manually?**
-A: **No.** Use the **Batch Upload** feature under `Product Registration`. You can upload an Excel template containing all Serial Numbers and link them to the corporate owner in one action.
+A: **No.** You do not need to register them manually. When billing the client, you can use the Excel invoice/line import features in the POS or External Sales Invoice applet to upload all 50 units with their serial numbers. Once the transaction is finalized, all registrations will automatically appear in the Warranty Admin Applet.
 
 **Q: The customer didn't receive their certificate email. What should I do?**
-A: Go to **Warranty Certificates**, find the specific certificate, and click **"Resend Email"**. Ensure you verify the customer's email address in their profile first.
+A: Go to **Warranty Certificates**, find the specific certificate under the **Warranty Certificates** tab in the approved product registration (or in the main Warranty Certificate listing), and print/download the PDF format to dispatch or send to the customer. Ensure you verify the customer's email address in their profile first.
 
 **Q: Can I extend a warranty that is about to expire?**
-A: Yes, if your business offers extended protection, you can apply an "Extension Template" to an existing registration to push the expiry date forward.
+A: Yes, you can modify the **Warranty Period** or **Warranty Expiry Date** field in the Product Registration main details view and click **SAVE**.
 
 ---
 
 ## Best Practices for Success
 
-✓ **Check SN Early**: Always search for the Serial Number before creating a new draft to prevent duplicates.  
+✓ **Verify Serial Numbers**: Always search the Serial No. before approving a pending registration to ensure no duplicate registrations exist for the same unit.  
 ✓ **Consistent Naming**: Ensure customers are registered with standardized names (Last Name, First Name) to make searching easier.  
-✓ **Verify Before Verifying**: Double-check the uploaded receipt photo against the entered data before moving a registration to "Verified" status.  
+✓ **Verify Before Approving**: Double-check the uploaded receipt/invoice photo in the Attachments tab against the entered metadata before clicking APPROVE.  
 ✓ **Automate Communications**: Use the Email Template feature to ensure every customer gets their certificate immediately—this reduces support calls.  
-✓ **Regular Audits**: Monthly review of "Draft" registrations to ensure the sales team completes the data entry for all sales.
+✓ **Regular Audits**: Monthly review of PENDING registrations to ensure they are processed promptly so customers receive their certificates.
