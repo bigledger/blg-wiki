@@ -115,6 +115,58 @@ graph TD
 
 ---
 
+### Pricebook vs Priceset: What is the Difference?
+
+A common point of confusion is the relationship between a **Pricebook** and a **Priceset**. They serve distinct roles in the pricing hierarchy:
+
+| Aspect | Pricebook | Priceset |
+|--------|-----------|----------|
+| **Role** | The master container or category | A specific rule instance within a Pricebook |
+| **Analogy** | A filing cabinet drawer labelled by topic | An individual policy document inside that drawer |
+| **Quantity** | You create one per shipping strategy | You create many within a single Pricebook |
+| **Contains** | One or more Pricesets | Rules, Treatments, and Priority settings |
+| **Example** | "Domestic Shipping Rates" | "Free Shipping for Orders > RM 500" |
+
+{{< callout type="tip" >}}
+**Think of it this way:** The Pricebook answers *"What category of shipping logic is this?"* while the Priceset answers *"What is the specific rule, when does it apply, and how much does it charge?"*
+{{< /callout >}}
+
+**Scenario: Two Shipping Pricebooks for a Multi-Channel Business**
+
+A company sells both domestically and internationally. They set up two separate Shipping Pricebooks to keep the logic clean and manageable:
+
+```
+Pricebook A: "Domestic Shipping"
+├── Priceset 1: "West Malaysia Standard" (Priority 100)
+│   Rule: Delivery Region = Selangor, KL, Penang
+│   Treatment: Standard Shipping = RM 8 (Absolute)
+│
+├── Priceset 2: "East Malaysia Surcharge" (Priority 50)
+│   Rule: Delivery Region = Sabah, Sarawak
+│   Treatment: Standard Shipping = RM 25 (Absolute) + Handling = RM 10 (Absolute)
+│
+└── Priceset 3: "Free Domestic Shipping" (Priority 1)
+    Rule: Transaction Amount > RM 500
+    Treatment: Standard Shipping = RM 0 (Absolute)
+
+Pricebook B: "International Shipping"
+├── Priceset 1: "ASEAN Countries" (Priority 100)
+│   Rule: Delivery Region = Singapore, Thailand, Indonesia
+│   Treatment: Standard Shipping = RM 45 (Absolute) + Fuel Surcharge = 3% of Transaction Amount
+│
+└── Priceset 2: "Rest of World" (Priority 200)
+    Rule: Default (no region filter)
+    Treatment: Standard Shipping = RM 120 (Absolute) + Fuel Surcharge = 5% of Transaction Amount
+```
+
+In this setup:
+- **Pricebook A** handles all domestic delivery logic. Its three Pricesets cover West Malaysia, East Malaysia, and a free-shipping override. Because "Free Domestic Shipping" has the lowest Priority number (1), it wins whenever a domestic order exceeds RM 500 — regardless of region.
+- **Pricebook B** handles international orders separately. ASEAN countries get a lower base rate and fuel surcharge compared to the rest of the world.
+
+By separating domestic and international into two Pricebooks, the logistics team can manage, audit, and update each strategy independently without affecting the other.
+
+---
+
 ### The "Golden Triangle" of Shipping Logic
 
 To effectively manage the system, it is crucial to understand how **Rules**, **Priority**, and **Treatments** interact.
@@ -183,29 +235,118 @@ Get up and running quickly with these essential workflows.
 The Applet provides layers of rules to handle every possible business scenario.
 
 ### 1. Header Rules (Doc Hdr)
-Logic that applies to the entire document. Supported Rule Types:
+Logic that applies to the **entire document as a whole**. When a user selects a Header Rule, the system evaluates the order-level attributes — not individual line items. If the rule matches, the Treatment applies once to the entire order.
+
+**Supported Rule Types:**
 - **Valid Date Range**: Trigger specific rates only during promotional periods.
 - **Delivery Region**: Destination-based pricing (States, Cities, Postcodes).
 - **Entity Rules**: Special rates for specific Member Classes, Member Labels, or Entity Types.
 - **Corporate Rules**: Restrict pricebooks to specific Branches or Companies.
-**Real-Life Example**: *Applying a "Holiday Shipping Surcharge" for orders originating from the "Kuala Lumpur" Branch during a specific Valid Date Range.*
+
+**Effect When Selected:** The system reads the document header fields (delivery address, customer entity, branch, order date) and checks them against the rule conditions. If all conditions pass, the associated Treatment fee is applied once to the entire order total.
 
 {{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-edit-rules-doc-hdr.png" alt="Document Header Rules Configuration" caption="Configuring rules that evaluate the entire order, such as Delivery Region or Valid Date Range." >}}
 
+**Scenario: Holiday Surcharge for a Specific Branch**
+```
+Situation: During the year-end holiday season, the KL warehouse has 
+limited staffing, causing higher fulfillment costs.
+
+Rule Setup:
+  - Type: Header Rule (Doc Hdr)
+  - Condition 1 (Valid Date Range): Dec 20 – Jan 5
+  - Condition 2 (Corporate Rule): Branch = "Kuala Lumpur HQ"
+
+Treatment: Handling Fee = RM 15 (Absolute)
+
+How It Works:
+  - A sales order created on Dec 22 from the KL branch → Both conditions 
+    match → RM 15 handling fee is added to the order total.
+  - A sales order created on Dec 22 from the Penang branch → Branch 
+    condition fails → No surcharge applied.
+  - A sales order created on Feb 10 from the KL branch → Date condition 
+    fails → No surcharge applied.
+
+Result: Only KL-originated orders during the holiday window incur the 
+extra handling fee. All other orders are unaffected.
+```
+
 ### 2. Multi-Line Rules
-Logic that checks for combinations of items across the entire cart. Supported Rule Types use item criteria but evaluate the order as a whole grouped entity:
+Logic that checks for **combinations of items across the entire cart**. When a user selects a Multi-Line Rule, the system scans all line items in the order, groups them by the matching criteria, and evaluates the aggregated result (e.g., total quantity, total weight). The Treatment is applied once based on the grouped outcome, not per individual line.
+
+**Supported Rule Types:**
 - **Item Matches**: Group by specific Item, Item Category, or use Regex on Item Code/Name.
-**Real-Life Example**: *Applying a fee if the total quantity of items matching the "Office Supplies" Item Category exceeds 10 units in the order.*
+
+**Effect When Selected:** The system iterates through every line item in the order, filters those matching the rule criteria, then aggregates their quantities or values. If the aggregated result meets the threshold, the Treatment is triggered once for the entire group.
 
 {{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-edit-rules-multi-line.png" alt="Multi-Line Rules Configuration" caption="Setting up rules that group items together across the document to calculate accumulated metrics." >}}
 
+**Scenario: Bulk Office Supplies Handling Fee**
+```
+Situation: Orders containing more than 10 units of office supplies 
+require special palletized packaging, adding to handling costs.
+
+Rule Setup:
+  - Type: Multi-Line Rule
+  - Condition: Item Category = "Office Supplies", Total Quantity > 10
+
+Treatment: Handling Fee = RM 20 (Absolute)
+
+How It Works:
+  - Order with 5x Printer Paper + 8x Ink Cartridges (both "Office 
+    Supplies") → Total = 13 units → Exceeds 10 → RM 20 handling fee 
+    applied once to the order.
+  - Order with 3x Printer Paper + 2x Ink Cartridges → Total = 5 units 
+    → Below threshold → No handling fee.
+  - Order with 15x Laptop Bags (category "Electronics Accessories") → 
+    Does not match "Office Supplies" → No handling fee.
+
+Result: The fee is evaluated across all matching lines combined and 
+charged once — not per line item.
+```
+
 ### 3. Single-Line Rules
-Logic that applies individually to specific items within the cart. Supported Rule Types:
+Logic that applies **individually to each specific item** within the cart. When a user selects a Single-Line Rule, the system evaluates each line item independently. If a line matches the rule criteria, the Treatment is calculated and applied to that specific line. Multiple matching lines each incur their own fee.
+
+**Supported Rule Types:**
 - **Item & Item Category**: Target explicit products or broad classes.
 - **Regex Matching**: Code/Name matching via Item Code Regex, Item Name Regex, Category Code Regex, or Category Name Regex.
-**Real-Life Example**: *Automatically adding a "Special Handling" fee if a specific "Glassware" item is detected in the cart, evaluated on a per-piece basis.*
+
+**Effect When Selected:** The system checks each line item one by one. For every line that matches, the Treatment fee is calculated based on that line's own values (its quantity, unit cost, or amount). This means a single order can generate multiple fee entries if multiple lines match.
 
 {{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-edit-rules-single-line.png" alt="Single-Line Rules Configuration" caption="Defining rule conditions for individual lines within the order." >}}
+
+**Scenario: Fragile Item Special Handling**
+```
+Situation: Glassware items require individual bubble-wrap packaging, 
+costing RM 3 per unit.
+
+Rule Setup:
+  - Type: Single-Line Rule
+  - Condition: Item Category = "Glassware"
+
+Treatment: Handling Fee = RM 3, Price Source = Base Quantity, 
+           Operator = Multiply
+
+How It Works:
+  - Order contains: 10x Wine Glasses ("Glassware") + 5x Dinner Plates 
+    ("Ceramics") + 2x Crystal Vases ("Glassware")
+  - Line 1: Wine Glasses → Matches → 10 × RM 3 = RM 30 handling fee
+  - Line 2: Dinner Plates → Does not match "Glassware" → No fee
+  - Line 3: Crystal Vases → Matches → 2 × RM 3 = RM 6 handling fee
+  - Total handling fee on this order = RM 36
+
+Result: Each matching line is evaluated and charged independently, 
+based on its own quantity.
+```
+
+### Choosing the Right Rule Type
+
+| Question | Use This Rule Type |
+|----------|-------------------|
+| Does the condition depend on the order as a whole (date, region, customer)? | **Header Rule (Doc Hdr)** |
+| Does the condition depend on the combined total of specific items? | **Multi-Line Rule** |
+| Should the fee be calculated per individual item line? | **Single-Line Rule** |
 
 ---
 
@@ -297,6 +438,23 @@ Each fee is calculated using a combination of **Price Sources** and **Operators*
 | **Transaction Amount** | Multiply, Absolute, Add, Subtract | 5% Fuel Surcharge, using `Multiply` against Transaction Amount (*0.05*). |
 | **Pricing Scheme** | N/A (Uses linked scheme table) | Complex weight-based logic reading from a dynamic Tier Scheme. |
 | **Price Unit Cost / Net Amount**| Multiply, Absolute, Add, Subtract | Advanced margin-based freight adjustments. |
+
+### Where Does Each Price Source Come From?
+
+The **Price Source** determines which value the system uses as the base number for the fee calculation. Each source pulls its data from a different part of the ERP ecosystem:
+
+| Price Source | What It Reads | Where It Comes From | Related Applet |
+| :--- | :--- | :--- | :--- |
+| **Standard Amount** | A fixed value you enter directly in the Treatment field | Defined within the **Shipping Pricebook Applet** itself — no external data needed | Shipping Pricebook Applet |
+| **Base Quantity** | The quantity of items on the order line (e.g., 10 units) | Pulled from the line item data on the **Sales Order** or **Invoice** document | Internal Sales Quotation Applet / Sales Order |
+| **Transaction Amount** | The total monetary value of the order or line (e.g., RM 1,500) | Calculated from line item prices and quantities on the active document | Internal Sales Quotation Applet / Sales Order |
+| **Pricing Scheme** | A tiered rate table (e.g., weight bands, distance tiers) | Reads from a pre-configured **Pricing Scheme** table linked to the Priceset | Pricebook Applet (Pricing Scheme module) |
+| **Price Unit Cost** | The cost price of the item (what you paid the supplier) | Pulled from the item's cost record in the **Item Master** | Item Maintenance Applet |
+| **Net Amount** | The net line amount after discounts but before tax | Calculated from the document line after applying any active promotions | Internal Sales Quotation Applet / Pricebook Applet |
+
+{{< callout type="info" >}}
+**How the Operator Works with the Price Source:** The Price Source provides the base value and the Operator determines the math. For example, if Price Source = **Transaction Amount** (RM 1,000) and Operator = **Multiply** with value `0.05`, the resulting fee = RM 1,000 × 0.05 = **RM 50**. If the Operator is **Absolute**, the Price Source is ignored and the fee is the fixed value you entered (e.g., RM 15 regardless of order size).
+{{< /callout >}}
 
 ### Applet Integration & Permissions
 The Shipping Pricebook Applet includes built-in settings for deeper system integration:
