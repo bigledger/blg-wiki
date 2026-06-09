@@ -55,12 +55,12 @@ Traditional inventory management relies on physical counts. Common issues includ
 - **Complete traceability** - Full audit history for every reserved item
 - **Flexible reporting** - Analyze shortages by department, customer, or urgency
 
-### Key Features at a Glance
+## Key Features Inventory
 
 {{< cards >}}
   {{< card title="Stock Reservation" subtitle="Lock specific item quantities across branches and locations" link="#quick-start-guide" >}}
 
-  {{< card title="Bin Reservation" subtitle="Reserve stock down to the exact warehouse bin level" link="#deep-dive-stock-vs-bin-reservations" >}}
+  {{< card title="Bin Reservation" subtitle="Reserve stock down to the exact warehouse bin level" link="#stock-vs-bin-reservations" >}}
 
   {{< card title="Advanced Permissions" subtitle="Control who can create, reserve, or release stock holds" link="#configuration--settings" >}}
 
@@ -201,9 +201,7 @@ Get up and running quickly with these essential workflows.
 
 ---
 
-## Reservation Logic Deep Dive
-
-**Monitor your commitments and unfulfilled demand in real-time.**
+## Feature Deep Dive
 
 ### Reservation Expiry Logic
 
@@ -226,11 +224,11 @@ Physical: 50 | Reserved: 0 | Available: 50
 
 ---
 
-## For Requesters (Sales/Production)
+### For Requesters (Sales/Production)
 
 This section is your personal guide to submitting and tracking your stock promises.
 
-### My Reservations - Your Personal Commitment Hub
+#### My Reservations - Your Personal Commitment Hub
 
 **What is My Reservations?**
 
@@ -306,16 +304,16 @@ Result: The stock immediately becomes Available to Sell again.
 
 ---
 
-## Deep Dive: Stock vs. Bin Reservations
+### Stock vs. Bin Reservations
 
 The Applet splits reservations into two distinct categories to handle both general holds and highly specific warehouse controls.
 
-### Stock Reservation
+#### Stock Reservation
 This is used when you need to hold a generic quantity of an item at a specific location, without caring exactly which shelf it sits on.
 *   **Best for**: Sales teams locking in inventory for pending deals.
 *   **Required Fields**: Branch, Location, Item Name, Reserve Qty, Expiry Date.
 
-### Bin Reservation
+#### Bin Reservation
 This is used when your warehouse utilizes Bin Management (`BIN_NUMBER` sub-items). It locks stock at the most granular level—the exact bin line code on the warehouse floor.
 *   **Best for**: Warehouse operators prepping specific shelves for fulfillment or quarantine.
 *   **Required Fields**: Bin Header Code, Bin Line Code.
@@ -324,7 +322,7 @@ This is used when your warehouse utilizes Bin Management (`BIN_NUMBER` sub-items
 
 ## Configuration & Settings
 
-#### Default Selection (`Settings > Default Selection`)
+### Default Selection (`Settings > Default Selection`)
 
 **Default Selection** streamlines data entry by pre-populating commonly used values, reducing repetitive selections and minimizing user error.
 
@@ -333,7 +331,7 @@ This is used when your warehouse utilizes Bin Management (`BIN_NUMBER` sub-items
 
 ---
 
-#### Field Settings (`Settings > Field Settings`)
+### Field Settings (`Settings > Field Settings`)
 
 **Field Settings** control which fields are visible, required, or hidden based on user roles and business requirements. 
 
@@ -343,7 +341,7 @@ This is used when your warehouse utilizes Bin Management (`BIN_NUMBER` sub-items
 
 ---
 
-#### Advanced Configuration (`Settings`)
+### Advanced Configuration (`Settings`)
 
 - **Printable Format Settings**: Configure standard templates for exporting or printing your reservation records.
 - **Webhook**: Trigger external notification systems (like Slack or email) when a reservation changes status (e.g., from `DRAFT` to `RESERVED`).
@@ -365,6 +363,47 @@ This is used when your warehouse utilizes Bin Management (`BIN_NUMBER` sub-items
 
 **Q4: Does creating a reservation affect the General Ledger (GL)?**
 **A:** No. Reservations are purely logistical placeholders. Financial entries (COGS, Inventory Value reduction) are only generated during physical movement (Delivery Order) or invoicing.
+
+---
+
+## Applet Reference
+
+This section provides a comprehensive reference of all menu items, settings, and configurable features available in the Stock Reservation Applet.
+
+### Menu Items
+
+The following main navigation menu items are available in the applet:
+
+| Menu Item | Description | Route Path |
+|-----------|-------------|------------|
+| **Stock Reservation** | Main listing of all stock reservation records | `/stock-reservation` |
+| **Bin Reservation** | Manage bin-level stock reservations | `/bin-reservation` |
+| **Settings** | Administrative configuration panel | `/settings/...` |
+| **Personalization** | User-specific interface preferences | `/personalization/...` |
+
+### Settings Sub-Menu Items
+
+The Settings panel (via `/settings` route) provides access to deeper system configurations:
+
+| Setting | Description | Route Path |
+|---------|-------------|------------|
+| **Default Selection** | Configure default branch and location for data entry | `/settings/default-selection` |
+| **Field Settings** | Control visibility of fields across the applet | `/settings/field-settings` |
+| **Printable Format Settings** | Configure standard templates for exporting/printing reservation records | `/settings/printable-format-settings` |
+| **Webhook** | Set up event-driven notifications to external systems | `/settings/webhook` |
+| **Feature Visibility** | Show/hide specific sections of the UI | `/settings/feature-visibility` |
+| **Permission Sets** | Manage predefined authorization bundles | `/settings/permission-set-listing` |
+| **User/Team/Role Permissions** | Assign customized access controls | `/settings/*-permission-listing` |
+| **Client-Side Permissions** | Manage UI-level feature visibility for user roles | `/settings/client-side-permission-listing` |
+
+### Personalization Sub-Menu Items
+
+User-level personalization options (via `/personalization` route):
+
+| Setting | Description | Route Path |
+|---------|-------------|------------|
+| **Default Selection** | Set your individual default branch / location | `/personalization/personal-default-selection` |
+| **Sidebar** | Customize the main sidebar navigation layout | `/personalization/sidebar` |
 
 ---
 
