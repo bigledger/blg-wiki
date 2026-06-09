@@ -69,8 +69,6 @@ Traditional inventory management relies on physical counts. Common issues includ
 
 {{< figure src="/images/stock-reservation-applet/stock-reservation-overview-infographic.png" alt="Stock Reservation Applet Overview Infographic" caption="At a Glance: The Challenges, Solutions, and Beneficiaries of the Stock Reservation Applet." >}}
 
-{{< figure src="/images/stock-reservation-applet/stock-logic-infographic.png" alt="BigLedger Stock Calculation Logic: Physical (On-Hand) - Reserved = Available (To Sell). Available + Incoming (PO) = Potential Availability." caption="The Golden Equation: Understanding the difference between what's in your bin and what's free to be sold." >}}
-
 ## Key Concepts
 
 ### Understanding the Reservation Framework
