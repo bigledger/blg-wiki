@@ -445,7 +445,7 @@ When you open a Receiving Doc, you'll work across these tabs:
 |-----|---------|
 | **Account** | Supplier details — who the goods came from *(appears after the document is created)* |
 | **Line Items** | Individual items received with quantity, UOM, and tracking |
-| **Xtn GenDoc Line Link** | Link receiving lines to external purchase order or source document lines |
+| **External Generic Document** | Link receiving lines to external purchase order or source document lines |
 | **Print** | Print the receiving document (GRN) |
 
 ---
@@ -485,7 +485,7 @@ The **Account** tab (where you link the Supplier) only becomes visible after the
 5. For items requiring serial number tracking, open the line and use the **Serial Number** tab
 
 **Step 4: Link to Source Documents (Optional)**
-1. Go to the **Xtn GenDoc Line Link** tab
+1. Go to the **External Generic Document** tab
 2. Click **"+"** to link this receiving line to an existing Purchase Order line
 3. System pulls: Doc No, Item Code, Item Name, Type, UOM, Quantity, Tracking ID
 4. This creates a clear audit trail from PO → GRN
@@ -502,7 +502,7 @@ Steps:
 1. Create Receiving Doc header → Select Warehouse
 2. Go to Account tab (visible after creation) → Link Supplier ABC
 3. Add Line: Item X, Qty 500, UOM = Each
-4. Link to PO-2024-001 via Xtn GenDoc Line Link tab
+4. Link to PO-2024-001 via External Generic Document tab
 5. Finalise the doc → Navigate to Processing Queue to inspect the item
 
 Result: Full traceability from PO to physical receipt
