@@ -280,18 +280,18 @@ To effectively manage the system, you need to understand the core building block
 **Important Terminology Note:** In the system menus, you'll see the term **"Member Privilege"** - this is the same thing as **"Member Class"** (your membership tiers like Bronze/Silver/Gold). We'll use **"Member Class"** throughout this guide because it's clearer, but remember they refer to the same feature.
 {{< /callout >}}
 
-### The Four Building Blocks Explained
+### The Six Building Blocks Explained
 
-{{< figure src="/images/membership-admin-applet/the%20four%20building%20blocks%20of%20membership.png" alt="The Four Building Blocks of Membership: Member (Individual), Member Class (Tier), Member Label (Tag), and Points Currency shown in a hierarchical diagram" caption="The Four Building Blocks: Understanding how Member, Member Class, Member Labels, and Points Currency work together in the membership system." >}}
+{{< figure src="/images/membership-admin-applet/the-six-blocks.png" alt="The six building blocks of membership: Member at the center with Member Class, Member Label, Points Currency, Referrals, and Multi-Level Marketing" caption="The six building blocks: Member, Member Class, Member Label, Points Currency, Referrals, and Multi-Level Marketing." >}}
 
 | Building Block | What It Is (Plain English) | Example |
 |----------------|----------------------------|---------|
 | **Member** | An individual customer enrolled in your program | Sarah Chen, Customer #12345 |
 | **Member Class (Tier)** | A membership level that grants specific benefits. Each member belongs to ONE class at a time. | Bronze, Silver, Gold, Platinum |
 | **Member Label (Tag)** | A flexible category for grouping members. Each member can have MANY labels at once. | VIP Customer, Vegetarian, Golfer, Birthday This Month |
-| **Points Currency** | A specific type of value a member can collect and spend | Reward Points, Status Miles, Gift Certificates |
 | **Referrals** | Tracks who a member invited and who invited them | Sarah invited Mike and Lisa; Tom invited Sarah |
 | **Multi-Level Marketing** | A member's position in a referral program — members above them (Uplines) and below them (Downlines) | In Program "Partner Rewards", Bob's Upline is Alice; Carol is his Downline |
+| **Points Currency** | A specific type of value a member can collect and spend | Reward Points, Status Miles, Gift Certificates |
 
 ---
 
@@ -361,32 +361,7 @@ This means:
 
 Here's a visual map showing how these pieces fit together:
 
-```
-                        MEMBER (Sarah Chen)
-                              |
-        +---------------------+---------------------+
-        |                     |                     |
-   MEMBER CLASS          MEMBER LABELS          REFERRALS
- (One per member)      (Many per member)    (Direct invites)
-        |                     |                     |
-   [Gold Tier]          [VIP, Vegetarian]     Invited Members: Mike, Lisa
-        |                     |                Invited By: Tom
-        |                     |                     |
-        +---------------------+---------------------+
-                              |
-                    MULTI-LEVEL MARKETING
-                    (Program: Partner Rewards)
-                              |
-                    Uplines: Tom | Downlines: Mike, Lisa
-                              |
-                              v
-                        POINTS WALLET
-                              |
-                    +---------+---------+
-                    |                   |
-              Reward Points        Status Miles
-                (1,540)              (8,200)
-```
+{{< figure src="/images/membership-admin-applet/Membership_Framework_Data_Flow_Guide.png" alt="Membership framework data flow: Member at the center, Member Class, Member Labels, Referrals, Multi-Level Marketing, and Points Wallet with Reward Points and Status Miles" caption="How membership data connects: one Member profile links to class, labels, referrals, MLM program position, and points wallets." >}}
 
 **Flow Explanation:**
 1. **Sarah** (Member) is assigned to the **Gold** tier (Member Class)
@@ -468,7 +443,7 @@ The system allows for complex point interactions:
 | **Support Agent** | Yes | Yes (up to 500) | No | No |
 | **Supervisor** | Yes | Yes (up to 5,000) | No | No |
 | **Marketing Manager** | Yes | No | No | Limited (labels only) |
-| **System Admin** | Yes | Yes (unlimited) | Yes | Yes |
+| **Tenant Admin** | Yes | Yes (unlimited) | Yes | Yes |
 
 ---
 
@@ -1586,7 +1561,7 @@ Extra-special customer service given to VIP members (like dedicated support, pri
 ---
 
 {{< callout type="info" >}}
-**Still confused by a term?** Contact your system administrator or technical support team. They can explain it in the context of how your specific business uses the system.
+**Still confused by a term?** Contact your tenant administrator or technical support team. They can explain it in the context of how your specific business uses the system.
 {{< /callout >}}
 
 
