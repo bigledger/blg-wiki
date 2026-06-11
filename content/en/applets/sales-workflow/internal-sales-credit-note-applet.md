@@ -75,6 +75,8 @@ After an invoice is finalized, corrections cannot be made directly to the origin
   {{< card title="Bulk Import" subtitle="Import credit notes in bulk using downloadable templates" link="#importing-sales-credit-notes" >}}
 {{< /cards >}}
 
+{{< figure src="/images/internal-sales-credit-note-applet/sales-credit-note-overview-infographic.png" alt="Sales Credit Note Applet Overview Infographic" caption="At a Glance: The Challenges, Solutions, and Beneficiaries of the Internal Sales Credit Note Applet." >}}
+
 ## Key Concepts
 
 ### Contra vs Settlement
