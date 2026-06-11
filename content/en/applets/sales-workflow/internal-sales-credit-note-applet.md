@@ -179,6 +179,8 @@ Before creating a Credit Note, ensure the required **Account Code Type items** a
 
 The **Listing Screen** provides a centralized view of all Sales Credit Notes with powerful search and filter capabilities.
 
+{{< figure src="/images/internal-sales-credit-note-applet/credit-note-listing.png" alt="Sales Credit Note Listing Screen" caption="The Sales Credit Note Listing screen showing all credit notes with their statuses, branch codes, and amounts." >}}
+
 **Search By:**
 - Customer
 - Branch
@@ -189,13 +191,23 @@ The **Listing Screen** provides a centralized view of all Sales Credit Notes wit
 - Transaction Date Range
 - Posting Status: Draft, Final, Void, Discard
 
+{{< figure src="/images/internal-sales-credit-note-applet/listing-search-filter.png" alt="Listing Search and Filter Panel" caption="The expanded search and filter panel with options to filter by Customer, Company, Branch, Sales Agent, Posting Status, and date ranges." >}}
+
 **Common Actions:**
 - View transaction details
 - Edit Draft documents
 - Track posting, contra, and settlement status
 - Audit historical credit adjustments
 
+{{< figure src="/images/internal-sales-credit-note-applet/listing-email-options.png" alt="Listing Email Options" caption="Email options available from the listing screen — Billing and Shipping Email, Billing Email Only, or Shipping Email Only." >}}
+
 ### Credit Note Creation Details
+
+#### Search Document Tab
+
+When creating a new credit note, you can optionally link it to an existing Sales Invoice via the **Search Document** tab.
+
+{{< figure src="/images/internal-sales-credit-note-applet/create-search-document.png" alt="Create Credit Note - Search Document Tab" caption="The Search Document tab allows you to link the credit note to an existing Internal Sales Invoice." >}}
 
 #### Main Details Tab
 
@@ -215,10 +227,14 @@ Configure the transaction header information:
 Default values may auto-populate based on user personalization settings.
 {{< /callout >}}
 
+{{< figure src="/images/internal-sales-credit-note-applet/create-main-details.png" alt="Create Credit Note - Main Details Tab" caption="The Main Details tab with Branch, Location, Sales Agent, Transaction Date, and other header fields." >}}
+
 #### Account Tab
 
 - Select an existing **Customer**, or click **Plus (+)** to create a new customer on the fly
 - The selected customer controls available Contra and Settlement options
+
+{{< figure src="/images/internal-sales-credit-note-applet/create-account-tab.png" alt="Create Credit Note - Account Tab" caption="The Account tab with Entity Details, Bill To, Ship To, and Intercompany sub-tabs for customer selection." >}}
 
 #### Line Tab
 
@@ -230,6 +246,8 @@ Examples of line items:
 - Marketplace commission fee
 - Post-invoice discount
 - Service or billing adjustment
+
+{{< figure src="/images/internal-sales-credit-note-applet/create-select-item.png" alt="Select Item Dialog" caption="The Select Item dialog for choosing Account Code Type items to add to the credit note lines." >}}
 
 ### Contra Handling
 
@@ -246,6 +264,8 @@ Contra is used to offset the credit note against **existing or future invoices**
 - Overbilling corrections
 - Credit applied to next invoice
 - Internal accounting adjustments
+
+{{< figure src="/images/internal-sales-credit-note-applet/create-contra-tab.png" alt="Contra Tab" caption="The Contra tab with search filters to find open invoices for the same customer and branch." >}}
 
 ### Settlement Processing
 
@@ -278,6 +298,12 @@ For high-volume credit processing, the applet supports bulk import:
 - Bulk discount processing
 - High-volume credit operations
 
+{{< figure src="/images/internal-sales-credit-note-applet/file-import-listing.png" alt="File Import Listing" caption="The File Import listing screen showing uploaded CSV files with their process status." >}}
+
+{{< figure src="/images/internal-sales-credit-note-applet/file-import-upload.png" alt="File Import Upload Dialog" caption="The Upload Master Data dialog for importing credit notes via CSV file with a downloadable sample format." >}}
+
+{{< figure src="/images/internal-sales-credit-note-applet/file-import-details.png" alt="File Import Details" caption="The File Import Edit screen showing import details, file format, process status, and error messages." >}}
+
 ## Configuration & Settings
 
 ### App Settings
@@ -298,6 +324,18 @@ Users can define personal defaults to reduce manual input:
 |---------|-------------|
 | Default Branch | Pre-fill the branch field on new credit notes |
 | Default Location | Pre-fill the location field on new credit notes |
+
+{{< figure src="/images/internal-sales-credit-note-applet/settings-gen-doc-listing.png" alt="App Settings - Gen Doc Listing" caption="Application Settings showing the Gen Doc Listing tab with field visibility toggles and configuration options." >}}
+
+{{< figure src="/images/internal-sales-credit-note-applet/settings-e-invoice.png" alt="App Settings - E-Invoice" caption="Application Settings showing the E-Invoice tab with import/export and original invoice reference configuration." >}}
+
+Below are screenshots of a finalized credit note showing the completed Main Details, Account, and Lines tabs:
+
+{{< figure src="/images/internal-sales-credit-note-applet/edit-main-details.png" alt="Edit Credit Note - Main Details" caption="A finalized credit note showing the Main Details tab with branch, transaction date, and credit terms." >}}
+
+{{< figure src="/images/internal-sales-credit-note-applet/edit-account-tab.png" alt="Edit Credit Note - Account Tab" caption="A finalized credit note showing the Account tab with the selected customer entity details." >}}
+
+{{< figure src="/images/internal-sales-credit-note-applet/edit-lines-tab.png" alt="Edit Credit Note - Lines Tab" caption="A finalized credit note showing the Lines tab with the posted account code item and transaction amount." >}}
 
 ## FAQ
 
