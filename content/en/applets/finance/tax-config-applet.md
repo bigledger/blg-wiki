@@ -122,6 +122,8 @@ Tax codes are shared across all modules — Sales, Purchasing, Invoicing, Credit
 
 Navigate to the **Tax Configuration Applet** from the Finance module. The listing screen displays all existing tax codes.
 
+{{< figure src="/images/tax-config-applet/tax-config-listing.png" alt="Tax Configuration Listing Screen" caption="The Tax Configuration Listing screen showing all tax codes with their country, tax code, name, tax type, rate, status, and dates." >}}
+
 ### Step 2: Create a New Tax Code
 
 1. Click the **Create (+)** button
@@ -158,6 +160,8 @@ When creating a new tax code, the following fields must be configured:
 **Best Practice**: Use clear and descriptive names rather than abbreviations. For example, use "Service Tax 6%" instead of "ST6". This improves usability and reduces selection errors in other applets.
 {{< /callout >}}
 
+{{< figure src="/images/tax-config-applet/create-tax-type-dropdown.png" alt="Create Tax Code - Tax Type Dropdown" caption="The Create Tax Configuration form showing the Tax Type dropdown with available options: GST-INPUT, GST-OUTPUT, SST-SLS-INPUT, SST-SLS-OUTPUT." >}}
+
 ### Editing and Updating Tax Codes
 
 To modify an existing tax entry:
@@ -167,6 +171,10 @@ To modify an existing tax entry:
 3. Click **Save** to apply changes
 
 Changes are immediately reflected across all modules that reference this tax code.
+
+{{< figure src="/images/tax-config-applet/edit-tax-code.png" alt="Edit Tax Code" caption="The Tax Configuration Edit form showing tax code details — Country, Tax Code, Tax Name, Tax Type, Rate, and Status fields." >}}
+
+{{< figure src="/images/tax-config-applet/edit-tax-type-dropdown.png" alt="Edit Tax Code - Tax Type Dropdown" caption="The Tax Type dropdown during editing, showing additional options: SST-SLS-OUTPUT, SST-SVC-INPUT, SST-SVC-OUTPUT, WITH-INPUT." >}}
 
 ### Rate Configuration
 
@@ -199,6 +207,8 @@ To deactivate a tax code:
 1. Open the tax code record
 2. Change the status from **Active** to **Inactive**
 3. Save the changes
+
+{{< figure src="/images/tax-config-applet/listing-search-filter.png" alt="Listing Search and Filter Panel" caption="The search and filter panel with options to filter by Country, Tax Type, date range, and Status." >}}
 
 ## Configuration & Settings
 
