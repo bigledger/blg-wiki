@@ -18,6 +18,14 @@ The **Purchase Return Supplier Access (Internal) Applet** is a specialized commu
 **Core Concept**: This applet bridges the gap between a client's warehouse and a supplier's warehouse. It allows suppliers to see **exactly** what is being returned, **why** it is being returned, and **how** it affects their financial standing.
 {{< /callout >}}
 
+{{< callout type="warning" >}}
+**Disambiguation**: This applet is distinct from the [Purchase Return (Internal) Applet].
+
+- The standard **Purchase Return (Internal) Applet** is used internally by the client's own warehouse and finance teams to initiate and manage returns to all suppliers.
+- The **Purchase Return Supplier Access (Internal) Applet** is designed specifically for external suppliers to view their own purchase returns.
+- In accordance with business ethics and data privacy, one supplier must not have access to another supplier's data. Therefore, this applet runs on completely separate login endpoints (`login-ep`) to ensure that a logged-in supplier can only view and interact with return documents specifically linked to their own account.
+  {{< /callout >}}
+
 ## Key Features Overview
 
 ### Who Benefits from This Applet?
@@ -206,7 +214,17 @@ Administrators can fine-tune what suppliers see to protect internal data:
 
 ---
 
+## Related Documentation
+
+- [Purchase Return (Internal) Applet](file:///e:/repo/blg-wiki/content/en/applets/purchase-workflow/internal-purchase-return-applet.md) — Alternative internal applet; used by the client's internal team to manage and record returns across all suppliers.
+- [Purchase Order Supplier Access (Internal) Applet](file:///e:/repo/blg-wiki/content/en/applets/purchase-workflow/internal-purchase-order-supplier-access-applet.md) — Upstream supplier applet; used by suppliers to manage the incoming Purchase Orders that might later require returns.
+
+---
+
 ## Frequently Asked Questions (FAQ)
+
+**Q: How does this applet differ from the standard Purchase Return (Internal) Applet?**  
+**A:** The standard **Purchase Return (Internal) Applet** is used by the client's internal team to manage and record returns across all suppliers. This **Purchase Return Supplier Access (Internal) Applet** is an external portal designed specifically for suppliers to view their own purchase returns. For security and business ethics, it uses separate login endpoints (`login-ep`) to isolate supplier data, ensuring that you can only view return documents linked to your user account and cannot access another supplier's data.
 
 **Q: Why can't I edit the quantity of a return?**
 **A:** As a supplier, you have "Read & Collaborate" access. Only the client can modify the document quantities. If you disagree with a quantity, use the **Comment** tab in the **Issue Link** to request an adjustment.

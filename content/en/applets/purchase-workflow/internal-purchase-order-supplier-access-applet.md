@@ -18,6 +18,14 @@ The **Purchase Order Supplier Access (Internal) Applet** serves as a digital bri
 **Core Concept**: This portal replaces manual order handling with a structured, digital workflow. It allows suppliers to see **what** has been ordered, **acknowledge** receipt, and **access** all necessary documentation (specs, terms, attachments) in one place.
 {{< /callout >}}
 
+{{< callout type="warning" >}}
+**Disambiguation**: This applet is distinct from the [Purchase Order (Internal) Applet].
+
+- The standard **Purchase Order (Internal) Applet** is used internally by your organization's procurement and purchasing staff to manage all purchase orders across all vendors.
+- The **Purchase Order Supplier Access (Internal) Applet** is designed exclusively for suppliers/vendors to view and upload their own POs.
+- In accordance with business ethics and data privacy, one supplier must not have access to another supplier's data. Therefore, this applet runs on completely separate login endpoints (`login-ep`) to ensure that a logged-in supplier can only view and interact with information linked to their specific user profile.
+  {{< /callout >}}
+
 ## Who Benefits from This Applet?
 
 ### Supplier Sales & Order Desk
@@ -199,7 +207,17 @@ Administrators can control what vendors see to ensure data governance:
 
 ---
 
+## Related Documentation
+
+- [Purchase Order (Internal) Applet](file:///e:/repo/blg-wiki/content/en/applets/purchase-workflow/internal-purchase-order-applet.md) — Alternative internal applet; used by the client's internal procurement staff to manage POs across all vendors.
+- [Internal Purchase GRN Supplier Access Applet](file:///e:/repo/blg-wiki/content/en/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet.md) — Downstream supplier applet; used by suppliers to view Goods Received Notes linked to their user account.
+
+---
+
 ## Frequently Asked Questions (FAQ)
+
+**Q: How does this applet differ from the standard Purchase Order (Internal) Applet?**  
+**A:** The standard **Purchase Order (Internal) Applet** is an internal tool for your client's procurement team to manage all purchase orders across all vendors. This **Purchase Order Supplier Access (Internal) Applet** is designed specifically for suppliers/vendors to view and upload their own POs. To comply with business ethics and data privacy, it uses separate login endpoints (`login-ep`) to only show supplier info linked to your user account, preventing any supplier from accessing another supplier's data.
 
 **Q: Can I change the price or quantity of a PO?**
 **A:** No. As a supplier, you have "View & Acknowledge" access. If you need to negotiate a change, use the **Comments** or **Issue Link** (if enabled) to notify the client's procurement officer.
