@@ -73,9 +73,7 @@ Historically, once a truck leaves the warehouse, operations go blind. Dispatcher
   {{< card title="Driver Preferences" subtitle="Configure vehicle defaults and settings" link="#personalization" >}}
 {{< /cards >}}
 
-{{< figure src="/images/delivery-installation-driver-applet/delivery-installation-driver-applet-overview-infographic.png" alt="Delivery Installation Driver Applet Overview: Challenges, Solutions, and Benefits" caption="From Chaos to Control: How the Driver Applet transforms field operations with digital Proof of Delivery and real-time tracking." >}}
-
-{{< figure src="/images/delivery-installation-applet/driver-applet-workflow.png" alt="Driver Applet Flow: From Warehouse loading to Customer e-Signature" caption="The Seamless execution: Paperless routing, one-tap navigation, and digital sign-offs." >}}
+{{< figure src="/images/delivery-installation-driver-applet/delivery-installation-driver-applet-overview-infographic.png" alt="Delivery Installation Driver Applet Overview: Challenges, Solutions, and Benefits" caption="From Chaos to Control: How the Driver Applet transforms field operations with digital manifests, e-PoD, and real-time tracking." >}}
 
 ---
 
