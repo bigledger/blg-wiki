@@ -104,12 +104,24 @@ Unlike static paper manifests, the Driver Applet allows for real-time adjustment
 
 Get moving quickly on your route with these essential steps.
 
+### Trip Calendar Views
+
+The Driver Applet provides a **Trip Calendar** for viewing and managing assigned trips. Drivers can switch between four views to find their scheduled deliveries:
+
+{{< figure src="/images/delivery-installation-driver-applet/trip-calendar-month.png" alt="Trip Calendar - Month View" caption="The Trip Calendar in Month view showing the full monthly overview of scheduled trips." >}}
+
+{{< figure src="/images/delivery-installation-driver-applet/trip-calendar-week.png" alt="Trip Calendar - Week View" caption="The Trip Calendar in Week view showing hourly time slots across the week." >}}
+
+{{< figure src="/images/delivery-installation-driver-applet/trip-calendar-day.png" alt="Trip Calendar - Day View" caption="The Trip Calendar in Day view showing detailed hourly schedule for a single day." >}}
+
+{{< figure src="/images/delivery-installation-driver-applet/trip-calendar-agenda.png" alt="Trip Calendar - Agenda View" caption="The Trip Calendar in Agenda view for a quick list of upcoming trips and events." >}}
+
 ### For Drivers: Executing Your First Trip
 
 **Goal:** Start your trip, complete a delivery, and capture Proof of Delivery.
 
 1. **Start Your Day**: 
-   - Open the Applet and navigate to **My Trips**.
+   - Open the Applet and navigate to the **Trip Calendar** or **My Trips**.
    - Locate today's assigned Trip and click **Start Trip**.
 2. **Navigate to Customer**: 
    - Tap on your first Job/Stop.
