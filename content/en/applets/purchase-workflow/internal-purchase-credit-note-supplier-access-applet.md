@@ -229,6 +229,10 @@ The main landing view shows all **finalised** Purchase Credit Notes your supplie
 Only credit notes with posting status **FINAL** appear in the listing. Draft, void, or discarded credit notes are not shown to supplier users.
 {{< /callout >}}
 
+{{< figure src="/images/Purchase-Credit-Note-Supplier-Access-applet/credit-note-listing.png" alt="Purchase Credit Note Listing Screen" caption="The Internal Purchase Credit Note Listing screen showing all credit notes with columns for Credit Note No, Branch, Purchase Agent, Supplier ID, Supplier Name, Creation Date, Transaction Date, and Status." >}}
+
+{{< figure src="/images/Purchase-Credit-Note-Supplier-Access-applet/credit-note-search-filter.png" alt="Credit Note Listing Search and Filter Panel" caption="The search and filter panel with options to filter by Purchase Credit Note No, Branch Name, Supplier Name, date ranges, and Status." >}}
+
 ---
 
 ## View Purchase Credit Note Details
@@ -263,6 +267,10 @@ The **Line Items** sidebar route shows **Supplier Purchase Credit Note Line Item
 - Open **View Line Items** for a selected line, then **Line Item View Issue** for linked issues (details, comments, worklog, subtasks)
 
 All lines are filtered to document type **Internal Purchase Credit Note** with **ACTIVE** status.
+
+{{< figure src="/images/Purchase-Credit-Note-Supplier-Access-applet/line-items-listing.png" alt="Line Items Listing Screen" caption="The Line Items Listing screen showing all credit note line items with columns for Purchase Credit Note No, Branch, Supplier Name, Project, Shipping Address, Item Code, Item Name, and Ordered Qty." >}}
+
+{{< figure src="/images/Purchase-Credit-Note-Supplier-Access-applet/line-items-search-filter.png" alt="Line Items Search and Filter Panel" caption="The Line Items search and filter panel with options to filter by Purchase Credit Note No, Item Code, Item Name, and Transaction Amount range." >}}
 
 ---
 
