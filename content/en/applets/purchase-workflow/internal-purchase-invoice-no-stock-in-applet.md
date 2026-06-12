@@ -151,12 +151,22 @@ Get up and running quickly with these essential workflows.
    - **Reference No**: The supplier's invoice number (for reconciliation)
    - **Currency**: MYR or foreign currency (system will apply exchange rate)
    - **Branch / Location**: Your company branch receiving the service
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/create-search-document.png" alt="Create Invoice - Search Document Tab" caption="The Search Document tab allows you to search and clone from an existing Purchase Invoice, Purchase Order, or Purchase GRN." >}}
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/create-main-details.png" alt="Create Invoice - Main Details Tab" caption="The Main Details tab with Branch selection, Delivery Location, Purchaser, and Transaction Date fields." >}}
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/create-account-select-supplier.png" alt="Create Invoice - Account Tab with Supplier Selection" caption="The Account tab showing Entity Details fields alongside the Select Supplier dialog for choosing from available suppliers." >}}
+
 3. **Add Lines**: Click **"Add Line"** for each expense:
    - **Description**: What the service is (e.g., "Monthly SaaS Subscription – April")
    - **Account**: GL cost account (e.g., "IT Expenses")
    - **Quantity & Unit Price**: e.g., 1 × RM 2,500
    - **Tax Code**: Select SST/GST/VAT code if applicable
    - **Department / Profit Center / Project**: Cost allocation
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/create-line-items-select-item.png" alt="Create Invoice - Line Items with Item Type Selection" caption="The Line Items tab showing the Select Item dialog with Item Type filter options: BASIC_ITEM, MADE_TO_ORDER, BUNDLE, NSTI, VOUCHER, and ACCOUNT_CODE." >}}
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/create-contra-tab.png" alt="Create Invoice - Contra Tab" caption="The Contra tab with the Select Document to Contra With dialog, listing available purchase invoices for offsetting." >}}
+
 4. **Attach Supporting Docs**: Upload the supplier's invoice PDF or any contract
 5. **Verify Tax & Totals**: Ensure the calculated tax amount matches the physical supplier invoice.
 6. **Submit / Finalize**: Save the invoice to finalize it and automatically post to the AP ledger.
@@ -181,6 +191,12 @@ Get up and running quickly with these essential workflows.
 4. **Upload**: Select your completed file and click **Upload**
 5. **Verify**: The system will validate the file. Check for any errors (e.g., missing mandatory fields or invalid GL accounts).
 6. **Process**: Once validated, click **Process Import** to create the invoices.
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/file-import-listing.png" alt="File Import Listing" caption="The File Import Listing showing uploaded CSV files with File Name, File Size, Format, Status, Process Status, Error Message, and Created Date." >}}
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/file-import-details.png" alt="File Import - Details Tab" caption="The File Details panel showing File Name, File Size, Import Format, Process Status, Error Message, Created By, and Creation Date." >}}
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/file-import-checking.png" alt="File Import - Checking Tab" caption="The File Details Checking tab showing validation errors per line with Line Number, Processed status, Validation Error details, and Branch Code." >}}
 
 **Going on leave?** Ensure another team member has permission to run imports by checking `Settings > Permissions`.
 
@@ -242,6 +258,28 @@ The main landing view shows all non-stock purchase invoices your user has access
 
 **Advanced search criteria:** Supplier, Branch, Date range (Transaction Date, Created Date), Posting Status, Reference No, Amount range, GL Dimension, Profit Center, Project.
 
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/invoice-listing.png" alt="Invoice Listing Screen" caption="The Internal Purchase Invoice No Stock In Listing screen showing all invoices with Doc Short Code, E-Invoice Running No, Doc No, Posting Status, Branch Code, and Currency columns." >}}
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/listing-search-filter.png" alt="Listing Search and Filter Panel" caption="The search and filter panel with Supplier selection, date range filters for Created Date, Updated Date, and E-Invoice Billing Frequency." >}}
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/listing-search-filter-extended.png" alt="Listing Search and Filter Panel - Extended Filters" caption="Extended search filters showing E-Invoice Billing Period, E-Invoice Date, External Quotation, Order, Delivery Order, Invoice, and Other date range filters." >}}
+
+---
+
+## Viewing & Editing Invoices
+
+Below are screenshots of an existing invoice showing the completed tabs:
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/edit-main-details.png" alt="Edit Invoice - Main Details Tab" caption="The Main Details tab of an existing invoice showing Doc Short Code, Branch, Location, Delivery Branch, and Delivery Location fields." >}}
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/edit-e-invoice-tab.png" alt="Edit Invoice - E-Invoice Tab" caption="The E-Invoice tab showing Submission Type, Document No, Document Type, E-Invoice Number, UUID, Document Date, and Billing Frequency fields." >}}
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/edit-account-tab.png" alt="Edit Invoice - Account Tab" caption="The Account tab showing Entity Details with Entity ID, Entity Name, Entity Type, Status, Identity Type, Currency, and contact information." >}}
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/edit-line-items.png" alt="Edit Invoice - Line Items Tab" caption="The Line Items tab showing item lines with Item Code, Item Name, UOM, and Remarks columns, along with Total Transaction Amount and SST/VAT/GST totals." >}}
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/edit-delivery-details.png" alt="Edit Invoice - Delivery Details Tab" caption="The Delivery Details tab with Tracking ID, Delivery Type, Delivery Branch, Delivery Location fields and Apply to Lines buttons for bulk assignment." >}}
+
 ---
 
 ## Line Item Management
@@ -265,6 +303,16 @@ Each invoice can have multiple lines. Each line captures:
 {{< callout type="info" >}}
 **Multi-line Invoices**: You can split a single supplier invoice across multiple GL accounts. For example, a managed services invoice covering both IT infrastructure (70%) and telecoms (30%) can be recorded as two lines pointing to different GL accounts—no need to split into separate invoices.
 {{< /callout >}}
+
+### Line Items Listing
+
+The **Line Items** sidebar route provides a flat grid of all invoice line items across all invoices, making it easy to search and analyse costs by item, supplier, or branch.
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/line-items-listing.png" alt="Line Items Listing" caption="The Line Items Listing showing all invoice line items across all documents with Purchase Invoice No, Transaction Date, Branch Code, Supplier Name, Item Code, Item Name, and quantities." >}}
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/line-items-search-filter.png" alt="Line Items Search and Filter Panel" caption="The Line Items search and filter panel with options to filter by Branch, Item Code/Name, date ranges, and State." >}}
+
+{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/edit-line-item-doc-link.png" alt="Edit Line Item - Doc Link Tab" caption="The Edit Line Item view showing the Doc Link tab with linked documents such as Purchase GRN references." >}}
 
 ---
 
