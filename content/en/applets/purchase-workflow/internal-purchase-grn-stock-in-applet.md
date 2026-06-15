@@ -10,7 +10,7 @@ tags:
 - inventory-management
 weight: 19
 date: 2026-05-06
-lastmod: 2026-05-06
+lastmod: 2026-06-15
 draft: false
 ---
 
@@ -27,7 +27,7 @@ A GRN (Goods Received Note) is not just a receipt log. It is the operational doc
 
 ## Before You Start
 
-- Confirm the related purchase transaction exists or that you have the supplier delivery reference that will be used on the GRN.
+- Confirm the related purchase transaction exists or that you have the supplier delivery reference that will be used on the GRN. If receiving from a PO, confirm the PO is **FINAL** and still has **open receive quantity** before you start.
 - Confirm the receiving **Branch** and **Delivery Location** where stock should be posted.
 - Prepare delivery evidence: supplier document number, delivery date, and received quantities.
 - If items require tracking, prepare **serial numbers**, **batch numbers**, and **bin locations** before you start.
@@ -120,7 +120,16 @@ A GRN is the receipt leg in **PO -> GRN -> Purchase Invoice** control. Finance c
 
 ### The Knock-Off (KO) Workflow
 
-Instead of typing every received item manually, the warehouse can use the **KO (Knock-Off)** tab in the Line Items workspace to pull expected lines directly from an approved **Purchase Order**, **Purchase Requisition**, or **Purchase Invoice**. This links the GRN to the upstream document, auto-fills the Item Details, and ensures the receipt quantities match the original commitment (though you can adjust them down for partial deliveries).
+Instead of typing every received item manually, the warehouse can use the **KO For** tab to pull expected lines from a **Purchase Order**, **Purchase Requisition**, or **Supplier Delivery Order**.
+
+A source PO appears in the list only when **all** of these are true:
+
+- The PO is **FINAL** (draft POs do not appear).
+- The PO still has **open receive quantity** (not fully received on earlier GRNs).
+- The GRN **supplier**, **branch**, and **location** are set and **match** the PO (supplier and branch must align).
+- Your user account has permission to read that PO's branch.
+
+This links the GRN to the upstream document, auto-fills line items, and lets you reduce quantities for partial deliveries.
 
 ### Worked Example
 
@@ -163,15 +172,20 @@ Use this when you have a PO number and want to auto-fill the receipt lines.
 
 1. **Open Listing**: Go to **Internal Purchase GRN Stock In** from the sidebar.
 2. **Create New GRN**: Click **Create** to open a new draft document.
-3. **Fill Main Details**: On the **Main Details** tab, fill the basic details and confirm the **Delivery Branch** and **Delivery Location**.
-4. **Use KO Tab**: In the Line Items workspace, go to the **KO For Purchase Order** tab (or DO/Requisition depending on your process).
-5. **Select and Knock-Off**: Search for the PO number, select the lines, and click **KNOCK OFF** to import them into your GRN.
-6. **Adjust quantities**: Review the imported lines on the Item Details tab and reduce the quantity if the supplier delivered a partial amount.
+3. **Fill header details**: On **Main Details**, set **Company**, **Branch**, **Location**, **Delivery Branch**, and **Delivery Location**.
+4. **Select supplier**: On the **Account** tab, select the **same supplier** as on the PO you want to receive against. Knock-off is disabled until supplier, branch, and location are set.
+5. **Use KO tab**: Open the **KO For** tab → **Purchase Order** sub-tab (or DO/Requisition, depending on your process).
+6. **Select and knock-off**: Search for the PO number (at least 3 characters), select the lines, and click **KNOCK OFF**.
+7. **Adjust quantities**: Review imported lines and reduce quantity if the supplier delivered a partial amount.
+
+{{< callout type="warning" >}}
+**PO not showing in KO For?** The PO must be **FINAL** in the [Purchase Order applet](/applets/purchase-workflow/internal-purchase-order-applet/) and still have **open quantity** to receive. If the PO was fully received on another GRN, it will not appear. Also confirm the GRN **supplier** and **branch** match the PO.
+{{< /callout >}}
 
 **Next Steps for Both Paths:**
-7. **Complete item controls**: If items are controlled, fill the serial numbers, batch number, or bin numbers before saving.
-8. **Check totals**: Review the line total, item count, and control count.
-9. **Finalize**: Click **FINAL** only after everything is correct. Posting will add the stock into the chosen receiving location.
+8. **Complete item controls**: If items are controlled, fill the serial numbers, batch number, or bin numbers before saving.
+9. **Check totals**: Review the line total, item count, and control count.
+10. **Finalize**: Click **FINAL** only after everything is correct. Posting will add the stock into the chosen receiving location.
 
 ### Purchasing / Finance: After FINAL
 
@@ -225,6 +239,8 @@ You can filter this workspace by Item Code, Date Range, Supplier, or Status.
 **Common Use Case:** 
 Use the Line Items workspace when a finance user asks "did we receive item FG-1001 in March?" — simply filter by the item code and date range to get the answer instantly, without having to open and check dozens of individual GRN headers.
 
+{{< figure src="/images/internal-purchase-grn-stock-in-applet/line-item-workspace-purgrn-stock-in.png" alt="Line Items workspace showing cross-document GRN line visibility and filters" caption="Line Items Workspace: Filter and review receipt lines across GRN documents by item, date, supplier, or status." >}}
+
 ### Item Details tab
 
 Use **Item Details** for the basic receipt line. This is where you verify the item, the quantity received, and the main receipt data before control tabs are filled. If the quantity is wrong here, the rest of the document will be wrong too.
@@ -270,20 +286,6 @@ The line-item area is complete only when the receipt quantity, any required seri
 - **DISCARD** is typically allowed only for DRAFT documents. Use it when the draft was created in error or should not be posted.
 
 **Void dependency check**: if VOID is blocked, check whether the GRN is already linked to an invoice, knock-off, or another dependent document. In that case, the receiving or finance team must clear or reverse the linked document first.
-
-### Settings and Personalization
-
-System settings available in applet navigation include:
-
-| Setting | What it changes | Who should manage it |
-|---------|-----------------|----------------------|
-| **Application / Field Settings** | Field visibility and workflow behavior | Administrator / applet owner |
-| **Default Selection** | Pre-filled branch and location defaults | Administrator or power user |
-| **Printable Format Settings** | GRN print layout and report format | Administrator / reporting owner |
-| **Branch Settings** | Branch-specific receiving behavior | Administrator / operations lead |
-| **Custom Status** | Extra workflow statuses for receiving stages | Administrator / process owner |
-
-User personalization supports personal default selection to speed up repeated receiving work.
 
 ---
 
@@ -341,6 +343,7 @@ The audit trail is also the place to verify who posted the GRN, who last changed
 | **Serial/batch/bin counts do not match** | Item control data does not match line quantity | Return to the item-control tab and correct the mismatch |
 | **Stock posted to wrong site** | Branch vs Delivery Branch was set incorrectly | Correct the document if still draft; otherwise reverse and recreate |
 | **Invoice does not match GRN** | Receipt quantity differs from billing quantity | Finance should investigate the variance before payment |
+| **PO not found in KO For (search returns nothing)** | PO not eligible for knock-off, or GRN header does not match | Check in order: (1) PO is **FINAL** and **ACTIVE**, (2) PO has **open receive qty** (not fully received), (3) GRN **supplier** matches PO supplier, (4) GRN **branch** matches PO branch, (5) you have branch read permission. If all pass, ask your administrator to confirm KO flow is enabled for PO → GRN Stock In. |
 
 ---
 
@@ -402,13 +405,19 @@ A: Identify the linked document first. If an invoice or other dependent document
 
 **Q: What is the minimum I must complete before CREATE is enabled?**
 
-A: You must select at least a Company and Branch. Until these organizational ownership fields are set, you cannot create or save a document.
+A: You must select at least a **Company** and **Branch**. For knock-off from a PO, you also need **Location** and **Supplier** set before the KO For tab will work.
 
 ---
 
 **Q: Can I receive against a Purchase Order automatically, or do I have to type everything manually?**
 
-A: You can receive automatically. Use the **KO For Purchase Order** tab in the Line Items workspace to pull the ordered items and quantities directly into your GRN, then adjust the quantities down if you only received a partial delivery.
+A: Yes — use the **KO For** → **Purchase Order** tab. First set **Company**, **Branch**, **Location**, and **Supplier** on the GRN so they match the PO. The PO must be **FINAL** and have **remaining open quantity**. Then search, select lines, and knock off. Adjust quantities down for partial deliveries.
+
+---
+
+**Q: Why can't I see my PO in KO For Purchase Order?**
+
+A: The list only shows POs that are **FINAL**, still have **open receive quantity**, and match the GRN **supplier** and **branch**. A PO that is still in draft, already fully received, or on a different supplier/branch will not appear — even if you search by PO number. Check the PO in the [Internal Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet/) first.
 
 ---
 
@@ -420,3 +429,38 @@ A: You can receive automatically. Use the **KO For Purchase Order** tab in the L
 - **[Internal Purchase Debit Note Applet](/en/applets/purchase-workflow/internal-purchase-debit-note-applet/)** - Adjustment path for supplier-side claim/financial correction scenarios.
 - **[Internal Purchase Return Applet](/en/applets/purchase-workflow/internal-purchase-return-applet/)** - Return workflow when received goods are rejected or sent back.
 - **[Purchase GIN (Internal) Applet](/en/applets/purchase-workflow/internal-purchase-gin-applet/)** - Purchase-side goods issue companion flow.
+
+---
+
+## System Configuration & Personalization
+
+Administrators configure the applet under **Settings** in the left-hand menu. End users can adjust personal defaults under **Personalization**.
+
+### Settings (Administrators)
+
+| Setting | What it changes | Who should manage it |
+|---------|-----------------|----------------------|
+| **Application / Field Settings** | Tab visibility (KO For, Delivery Details, Attachments, etc.), field show/hide/require, vertical UI layout, and action buttons (FINAL, VOID, SAVE) | Administrator / applet owner |
+| **Default Selection** | Company-wide defaults pre-filled on new GRNs (company, branch, location) | Administrator or power user |
+| **Printable Format Settings** | GRN print layout and PDF/report format | Administrator / reporting owner |
+| **Branch Settings** | Branch-specific receiving behavior and defaults | Administrator / operations lead |
+| **Custom Status** | Extra workflow statuses for receiving stages (header and line level) | Administrator / process owner |
+
+**Common field settings for this applet:**
+
+| Toggle | What it does |
+|--------|----------------|
+| **Hide KO For Tab** (`HIDE_KO_FOR_TAB`) | Hides the entire **KO For** tab — use when all receipts are manual entry |
+| **Enable Multiple KO** (`ENABLE_MULTIPLE_KO`) | Allows selecting multiple PO/DO lines in one knock-off action |
+| **Hide Delivery Branch / Delivery Location** | Simplifies the screen when delivery site always matches branch |
+| **Vertical UI** (`VERTICAL_ORIENTATION`) | Switches from horizontal tabs to a scrolling vertical layout |
+
+To customize the screen:
+
+1. Go to **Settings > Application Settings** (Field Settings).
+2. Use **Feature Visibility** toggles to hide unused tabs or fields.
+3. Save so your team sees a cleaner receiving workflow.
+
+### Personalization
+
+Under **Personalization > Default Selection**, individual users can set their own default **branch** and **location** so new GRNs open with the correct receiving site pre-filled. This speeds up repeated dock work without changing company-wide defaults.
