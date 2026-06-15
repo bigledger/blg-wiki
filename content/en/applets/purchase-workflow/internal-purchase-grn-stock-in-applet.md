@@ -61,6 +61,15 @@ A GRN (Goods Received Note) is not just a receipt log. It is the operational doc
 
 ## Key Features Overview
 
+{{< cards >}}
+  {{< card title="Manual GRN Entry" subtitle="Receive goods without a linked Purchase Order" link="#path-a-manual-entry" >}}
+  {{< card title="Receive from PO" subtitle="Knock-off from a FINAL PO with open quantity" link="#path-b-knock-off-from-po" >}}
+  {{< card title="Line Items Workspace" subtitle="Filter receipt lines across all GRNs by item or date" link="#line-items-workspace" >}}
+  {{< card title="Finalize & Posting" subtitle="Post stock into delivery location on FINAL" link="#finalize--save--reset" >}}
+  {{< card title="Three-Way Matching" subtitle="GRN role in PO → GRN → Invoice control" link="#three-way-matching-role" >}}
+  {{< card title="Settings & Personalization" subtitle="Configure tabs, defaults, and KO visibility" link="#system-configuration--personalization" >}}
+{{< /cards >}}
+
 ### Who Benefits from This Applet?
 
 **Warehouse / receiving teams:**
@@ -154,7 +163,8 @@ In this example, the warehouse clerk opens the GRN, confirms the delivery site, 
 
 There are two ways to create a GRN depending on your workflow:
 
-**Path A: Manual Entry (No Upstream Reference)**
+#### Path A: Manual Entry (No Upstream Reference) {#path-a-manual-entry}
+
 Use this when you are receiving goods without a linked Purchase Order in the system.
 
 ![Path A: Manual Entry](/images/internal-purchase-grn-stock-in-applet/path-a.png)
@@ -165,7 +175,8 @@ Use this when you are receiving goods without a linked Purchase Order in the sys
 4. **Confirm delivery site**: Set **Delivery Branch** and **Delivery Location** so stock posts correctly.
 5. **Add lines manually**: Go to the Line Items workspace and use the Search Item tab to add each received item and its actual quantity.
 
-**Path B: Knock-Off from Purchase Order (Auto-fill)**
+#### Path B: Knock-Off from Purchase Order (Auto-fill) {#path-b-knock-off-from-po}
+
 Use this when you have a PO number and want to auto-fill the receipt lines.
 
 ![Path B: Knock-Off from Purchase Order](/images/internal-purchase-grn-stock-in-applet/path-b.png)
