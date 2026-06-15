@@ -1,13 +1,13 @@
-﻿---
+---
 title: "Stock Requisition (Internal) Applet"
 description: "Create and manage internal outbound stock requisitions between locations, including line item tracking, knock-off (KO) import from Purchase GRN, attachments, printing, and stock transfer creation."
 weight: 10
 tags:
-- inventory-workflow
-- stock-requisition
-- internal-stock-transfer
-- outbound-requisition
-- file-import
+  - inventory-workflow
+  - stock-requisition
+  - internal-stock-transfer
+  - outbound-requisition
+  - file-import
 ---
 
 ## Purpose and Overview
@@ -15,6 +15,7 @@ tags:
 The **Stock Requisition (Internal) Applet** supports internal stock movements by letting teams create an **Internal Outbound Stock Requisition** (often shown as **Requisition Out**) from one location to another.
 
 It is designed to:
+
 - Capture the intent to move stock (**what** items, **how many**, **from** which location, **to** which location)
 - Track line-level progress (ordered / received / outstanding)
 - Convert approved requisitions into an operational **Stock Transfer** (via **CREATE ST**)
@@ -30,22 +31,26 @@ It is designed to:
 ### Who Benefits from This Applet?
 
 **Warehouse / Storekeepers**
+
 - Create requisitions for inter-location stock movement
 - Add and adjust requested quantities by item
 - Print requisitions for picking/dispatch
 
 **Inventory Controllers**
+
 - Monitor outstanding quantities by requisition and by line item
-- Identify bottlenecks (unfulfilled requests, partial receipts)
+- Identify bottlenecks (unfulfilled requests, partial receive)
 - Use KO (knock-off) to link and reconcile against upstream documents
 
 **Branch Operations / Managers**
+
 - Ensure transfers are finalized before processing
 - Maintain traceability with reference numbers, tracking IDs, and attachments
 
 ### What Problems Does This Solve?
 
 Without a requisition workflow, internal stock movement is often tracked via spreadsheets or informal messaging, causing:
+
 - Missing audit trail for “who requested what”
 - Difficulty tracking partial fulfillment
 - Inconsistent documentation across locations
@@ -59,10 +64,10 @@ This applet provides a structured flow with clear **posting status** (Draft/Fina
 The main left menu entries in the applet are:
 
 {{< cards >}}
-  {{< card title="Requisition Out" subtitle="Create, finalize, void, print, and create Stock Transfer (ST)" link="#requisition-out-internal-outbound-stock-requisition" >}}
-  {{< card title="Line Items" subtitle="Line-level listing for analysis (qty ordered/received/outstanding)" link="#line-items" >}}
-  {{< card title="File Import" subtitle="Bulk import interface and processing status" link="#file-import" >}}
-  {{< card title="Settings" subtitle="Default selection, field settings, printable formats" link="#settings" >}}
+{{< card title="Requisition Out" subtitle="Create, finalize, void, print, and create Stock Transfer (ST)" link="#requisition-out-internal-outbound-stock-requisition" >}}
+{{< card title="Line Items" subtitle="Line-level listing for analysis (qty ordered/received/outstanding)" link="#line-items" >}}
+{{< card title="File Import" subtitle="Bulk import interface and processing status" link="#file-import" >}}
+{{< card title="Settings" subtitle="Default selection, field settings, printable formats" link="#settings" >}}
 {{< /cards >}}
 
 ---
@@ -73,10 +78,10 @@ The main left menu entries in the applet are:
 
 Every requisition is defined by two required locations:
 
-| Field | Meaning |
-| --- | --- |
-| **Location (Sending)** | Where stock will be issued from |
-| **Location (Receiving)** | Where stock is requested to |
+| Field                    | Meaning                         |
+| ------------------------ | ------------------------------- |
+| **Location (Sending)**   | Where stock will be issued from |
+| **Location (Receiving)** | Where stock is requested to     |
 
 Access to available locations may be constrained by tenant permission targets (for example, some users may only be allowed to create/see documents for specific locations).
 
@@ -84,19 +89,22 @@ Access to available locations may be constrained by tenant permission targets (f
 
 The listing and view screens use posting status as a control mechanism:
 
-| Status | Typical meaning |
-| --- | --- |
-| **DRAFT** | Editable working state |
+| Status    | Typical meaning                                |
+| --------- | ---------------------------------------------- |
+| **DRAFT** | Editable working state                         |
 | **FINAL** | Confirmed state used for downstream processing |
-| **VOID** | Cancelled / invalidated document |
+| **VOID**  | Cancelled / invalidated document               |
 
 {{< callout type="warning" >}}
 Most action buttons (for example **FINAL**, **VOID**, **DISCARD**, **DRAFT**) appear or are enabled based on status and tenant settings.
+
+**Reverting FINAL to DRAFT**: If the applet setting `SHOW_DRAFT_BUTTON` is enabled, users can revert a **FINAL** document back to **DRAFT** (provided its status is **ACTIVE**). However, this action will fail if downstream documents (such as a Stock Transfer) have already been created/linked from the requisition.
 {{< /callout >}}
 
 ### 3. Line-level fulfillment
 
 The applet provides a dedicated **Line Items** view with operational quantities:
+
 - **Qty Ordered**
 - **Qty Received**
 - **Qty Outstanding**
@@ -118,14 +126,14 @@ During creation, there is a **KO For** tab that supports importing/knocking-off 
 1. Open **Requisition Out**.
 2. Click **Create** ("+").
 3. In **Details**:
-	- Select **Location (Sending)**.
-	- Select **Location (Receiving)**.
-	- (Optional) Fill **Driver Code**, **Tracking ID**, **Reference #**, **Doc Description**, **Remarks** (visibility may depend on settings).
+   - Select **Location (Sending)**.
+   - Select **Location (Receiving)**.
+   - (Optional) Fill **Driver Code**, **Tracking ID**, **Reference #**, **Doc Description**, **Remarks** (visibility may depend on settings).
 4. In **Line**:
-	- Add items and quantities.
-	- Use the quick search and line selection to review line details.
+   - Add items and quantities.
+   - Use the quick search and line selection to review line details.
 5. (Optional) In **KO For**:
-	- Open **Purchase GRN** and select items/documents to import/knock-off.
+   - Open **Purchase GRN** and select items/documents to import/knock-off.
 6. Click **CREATE**.
 
 ### Finalize and Print
@@ -141,8 +149,15 @@ During creation, there is a **KO For** tab that supports importing/knocking-off 
 
 If enabled for your tenant and the document status allows it, you can select requisitions and click **CREATE ST** to generate a Stock Transfer downstream document.
 
+When you click **CREATE ST**:
+1. A new temporary (draft) **Stock Transfer (Internal)** document is created in the database.
+2. A knock-off link is established connecting the source Stock Requisition to the target Stock Transfer.
+3. The details of the requisition (such as sending/receiving locations, line items, and quantities) are copied into the new draft Stock Transfer.
+4. The draft Stock Transfer will then become available in the **Stock Transfer (Internal) Applet** for users to view, edit, or finalize.
+
 {{< callout type="tip" >}}
-If **CREATE ST** is disabled, it is commonly due to status (not finalized), permissions, or applet settings that hide/disable the action.
+- If **CREATE ST** is disabled, it is commonly because the selected documents are not finalized, have already been knocked off/linked to a Stock Transfer, or the tenant permissions/settings disable the action.
+- Once a requisition is linked to a Stock Transfer, it cannot be reverted to **DRAFT** status unless the link is removed.
 {{< /callout >}}
 
 ---
@@ -154,6 +169,7 @@ This workspace is the main operational area of the applet.
 ### Listing
 
 From **Internal Outbound Requisition Listing**, common actions include:
+
 - **Create** ("+") — start a new requisition
 - **FINAL** — finalize selected draft documents
 - **DISCARD** — discard selected draft documents
@@ -165,15 +181,17 @@ From **Internal Outbound Requisition Listing**, common actions include:
 ### Create / View screen layout
 
 Create and view screens support two layouts depending on tenant settings:
+
 - **Tabbed layout** (horizontal tabs)
 - **Panel layout** (vertical expansion panels)
 
 In **Create**, the main sections are:
+
 - **Details** — locations and document header fields
 - **Line** — line item entry and review
-- **KO For** — KO import from **Purchase GRN**
 
 In **View**, additional sections are commonly available:
+
 - **Doc Link** — document link visibility
 - **Attachment** — attachment management
 - **Export** — export-related tools (when enabled)
@@ -185,6 +203,7 @@ In **View**, additional sections are commonly available:
 Use **Line Items** when you need a line-level operational view across documents.
 
 Typical use cases:
+
 - Find items with high **Qty Outstanding**
 - Filter by transaction date and locations
 - Export grids for analysis (Ag-Grid export features may be available depending on tenant configuration)
@@ -196,6 +215,7 @@ Typical use cases:
 Use **File Import** to manage bulk import jobs.
 
 The listing includes operational fields such as:
+
 - **File Name / Size**
 - **Format**
 - **Status / Process Status**
@@ -210,14 +230,14 @@ This is typically used for high-volume initialization or corrections where manua
 
 The applet exposes standard configuration areas (availability depends on tenant policy):
 
-| Area | What it controls |
-| --- | --- |
-| **Application Settings** | Field configuration / field visibility rules |
-| **Default Selection** | Default company/branch/location selections |
-| **Printable Format Settings** | Printing layout selection and configuration |
-| **Webhook / Feature Visibility** | System integration and feature toggles |
-| **Permissions** | Permission wizard, permission sets, user/team/role permissions |
-| **Release Notes / Applet Log** | Change history and operational logs |
+| Area                             | What it controls                                               |
+| -------------------------------- | -------------------------------------------------------------- |
+| **Application Settings**         | Field configuration / field visibility rules                   |
+| **Default Selection**            | Default company/branch/location selections                     |
+| **Printable Format Settings**    | Printing layout selection and configuration                    |
+| **Webhook / Feature Visibility** | System integration and feature toggles                         |
+| **Permissions**                  | Permission wizard, permission sets, user/team/role permissions |
+| **Release Notes / Applet Log**   | Change history and operational logs                            |
 
 ---
 
@@ -234,6 +254,15 @@ A: Location lists can be restricted by permission targets. Tenant Admin/Owner us
 
 **Q: What’s the recommended workflow: Draft or Final?**  
 A: Use **DRAFT** while preparing and checking items. Use **FINAL** when the requisition is confirmed and ready for downstream processing (printing and stock transfer creation).
+
+**Q: Under what conditions can a FINAL requisition be changed back to DRAFT?**  
+A: A **FINAL** requisition can be returned to **DRAFT** status (by selecting the document and clicking the **DRAFT** button) only if:
+1. The **Show Draft Button** setting (`SHOW_DRAFT_BUTTON`) is enabled in the Applet Settings.
+2. The document is **ACTIVE** (not voided or discarded).
+3. The document does **not** have downstream target links (e.g., no Stock Transfer has been created/linked from it yet).
+
+**Q: When the "CREATE ST" action is triggered, what happens in the Stock Transfer applet?**  
+A: Triggering **CREATE ST** automatically generates a temporary (draft) **Stock Transfer** document in the **Stock Transfer (Internal) Applet**. This new document is linked (knocked-off) from the source Stock Requisition, inheriting its sending/receiving locations, line items, and quantities. Warehouse and operations personnel can then locate, review, edit, or finalize this draft within the Stock Transfer applet.
 
 **Q: Why is the “KO For” tab only showing Purchase GRN?**  
 A: In the current applet implementation, the KO import tab is configured for **Purchase GRN**.
