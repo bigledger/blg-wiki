@@ -227,7 +227,7 @@ Documents that fail transmission or validation during outgoing Peppol processing
 
 **Actions Available:**
 - **Submit**: Resubmit a selected stuck document. Only one document can be submitted at a time.
-- **View Details**: Click a row to inspect exact validation errors.
+- **View Details**: Can refer to `Status` column to check the error of stuck document.
 
 {{< figure src="/images/my-peppol-admin-applet/internal-submission-queue-details.png" alt="Internal Submission Queue Edit view showing document details with Delete and Submit action buttons" caption="Queue Action Panel: Review details for a stuck document and click Submit to manually retry transmission." >}}
 
