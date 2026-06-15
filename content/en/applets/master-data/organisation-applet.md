@@ -466,7 +466,7 @@ Manage location master records and location-level linking or configuration.
 
 | Tab | What users do there |
 |-----|---------------------|
-| **Details** | Enter location code, location name, company, branch, company registration number, commencement date, **Mobile Number**, **Phone Number**, **Fax Number**, **Email**, description, and **Location Class**. |
+| **Details** | Enter location code, location name, company, branch, company registration number, commencement date, **Location Phone Number**, description, and **Location Class**. |
 | **Address** | Maintain address lines (up to 5), postal code, city, country, and state. |
 
 **Edit View Tabs:**
@@ -710,7 +710,6 @@ The visible settings menu in the current sidebar includes **Field Settings** and
 | **Company -> Main Details** | `HIDE_SIC_CODE_AND_BUSINESS_ACTIVITY_DESCRIPTION` |
 | **Branch -> Main Details** | `XTN_MAPPING_01`, `XTN_MAPPING_02`, `XTN_MAPPING_03`, `XTN_MAPPING_04`, `XTN_MAPPING_05`, `SHOW_PARENT_BRANCH` |
 
-The **Address** tabs exist in the field-settings layout, but they are currently empty in this build.
 
 **What Field Settings affects**
 - It controls whether specific optional fields appear in the applet screens.
@@ -742,10 +741,6 @@ The applet route tree also includes admin pages such as:
 - **Release Notes**
 
 These are route-defined, but they are not part of the basic sidebar settings menu for every user.
-
-**Release Notes:**
-- **Version 1.49 (2025-09-26)**: Improved search stability in Company, Branch, and Location listings. Advanced search now uses structured filter dropdowns only — date and status filter fields have been removed from the advanced search panel.
-- **Version 1.02 (2025-09-23)**: Updated Company, Branch, and Location listing grids to use the enhanced grid component for improved performance and consistency.
 
 ---
 
