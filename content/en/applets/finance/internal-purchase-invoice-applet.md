@@ -127,7 +127,7 @@ Use this method if you are creating an invoice that does not have an existing pu
    - Choose the Currency (changing to a foreign currency will automatically fetch the latest exchange rate).
 3. **Select Supplier**: Go to the **Account** tab and select the supplier from the list. (If they don't exist, use the toggle switch to easily create a new supplier profile directly from this screen).
 4. **Add Lines**: Move to the **Line Items** tab. Click **"+"** to add the products or services you are being billed for. You can adjust the quantity, unit price, and apply relevant taxes in this grid.
-5. **Save & Finalize**: Click **Create** to save the document. Once verified, click **FINAL** to lock it for payment processing.
+5. **Save & Finalize**: Click **Create** to save the document in draft — **SAVE** does not post to journal or inventory. Once verified, click **FINAL** to post the invoice (journal entries and line quantities into stock) and lock it for payment processing.
 
 {{< figure src="/images/internal-purchase-invoice-applet/create-purchase-invoice.png" alt="Create Purchase Invoice screen showing the initial data entry form" caption="Create Purchase Invoice: Enter document details before adding supplier and line items." >}}
 {{< figure src="/images/internal-purchase-invoice-applet/account-tab-select-supplier.png" alt="Account tab with supplier selection in purchase invoice" caption="Account Tab - Select Supplier: Link the invoice to the correct supplier profile before posting." >}}
@@ -146,6 +146,7 @@ This is the recommended method. Instead of typing everything from scratch, you "
    {{< /callout >}}
 4. **Auto-Populate**: Click **Knock-off**. The system will automatically construct the entire invoice using the data from the GRN.
 5. **Review & Create**: Check the items to ensure they match the physical bill from the supplier, then click **Create**.
+6. **Finalize**: Click **FINAL** to post the supplier bill to journal and commit the knocked-off quantities against the GRN. Stock was already posted when the GRN was finalized, so the invoice does not move stock again.
 
 {{< figure src="/images/internal-purchase-invoice-applet/ko-for-purhcase-order.png" alt="KO For tab showing source document selection using Purchase Order" caption="KO For Tab: Select an eligible source document to auto-populate invoice data." >}}
 
@@ -251,7 +252,7 @@ Add or view cash and bank transfers made against this invoice.
 Tag the invoice with a Dimension, Profit Center, or Project for management reporting.
 
 ### **Posting**
-View exactly which internal ledgers this invoice has updated. It shows status indicators for **Journal Posting**, **Inventory Posting**, **Membership Points Posting**, **Cashbook Posting**, and **Tax Posting**.
+View posting status after **FINAL** — whether journal, inventory, tax, and other entries completed successfully. It shows status indicators for **Journal Posting**, **Inventory Posting**, **Membership Points Posting**, **Cashbook Posting**, and **Tax Posting**. For the actual debit/credit and quantity rows, use the **Trace Document** tab (Journal Txn / Inv Txn).
 
 ### **Contra**
 Use this tab if your company has an existing prepayment or deposit from this supplier. Instead of making a fresh bank payment, you can deduct the invoice amount from that deposit here.
@@ -271,7 +272,8 @@ Export the invoice to a predefined printable format.
 
 Once an invoice is created, you will notice a row of action buttons along the top of the document. Here is what they do:
 
-- **FINAL:** Locks the document. Once an invoice is finalized, it cannot be edited. It updates your accounting ledgers and makes the invoice ready for payment or E-Invoice submission.
+- **SAVE:** Saves draft changes only. Does not post to journal or inventory.
+- **FINAL:** Posts and locks the document. Creates **journal entries** (supplier payable, purchase, tax). If created from a **GRN knock-off**, it also commits billed quantities and clears the GRN accrual — stock was already received on the GRN. If created **directly without a GRN**, it also posts **inventory quantities**. Verify on the **Posting** and **Trace Document** tabs. Once finalized, the invoice cannot be edited and is ready for payment or E-Invoice submission.
 - **VOID:** Cancels a document that has already been finalized. Only users with specific permissions can do this.
 - **DISCARD:** Deletes a draft document (a document in `TEMP` status) permanently before it affects your accounting or inventory.
 - **SELF-BILLED:** Directly triggers this invoice to be submitted to the MyInvois tax portal as a Self-Billed invoice. Useful if the supplier does not automatically default to self-billing.
@@ -326,4 +328,7 @@ If the **FINAL** button fails or is preventing you from completing the invoice, 
 1. **Missing Information:** Mandatory fields, like the **Supplier Invoice No** or dates, are blank.
 2. **Amounts Don't Balance:** The total invoice amount you entered does not match the sum of the individual line items.
 3. **Knock-Off Mismatch:** The invoice is tied to a source document (like a GRN) and the quantities or knocking amounts do not equal what was received.
-4. **Tax Discrepancies:** The tax calculations or rounding adjustments are inaccurate. Ensure all red error indicators on the screen are resolved.  
+4. **Tax Discrepancies:** The tax calculations or rounding adjustments are inaccurate. Ensure all red error indicators on the screen are resolved.
+
+**What does FINAL post?**  
+Journal entries always. Inventory quantities only if the invoice was created directly (no GRN). GRN-based invoices commit knock-off qty and clear the GRN accrual without moving stock again.
