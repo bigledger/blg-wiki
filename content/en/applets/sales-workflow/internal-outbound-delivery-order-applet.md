@@ -241,10 +241,10 @@ The main listing gives centralized control over outbound documents with advanced
 
 {{< figure src="/images/internal-outbound-delivery-order-applet/main-listing-page.png" alt="Internal Delivery Order listing page with search tools, action buttons, and delivery order grid" caption="Main Listing: Manage outbound delivery orders with search, status actions, export, and email controls." >}}
 
-**Edit workspace capabilities:**
+**Edit Workspace Capabilities:**
 - Configurable section visibility and ordering
 - Save + Final + Void + Close control flow
-- Status gating (for example, certain actions only appear for specific posting states)
+- Status-based action control (for example, certain actions only appear for specific posting states)
 - Read-only lock behavior when another user is editing the same document
 
 {{< figure src="/images/internal-outbound-delivery-order-applet/create-form.png" alt="Create Internal Delivery Order form with main details, account, lines, and delivery tabs" caption="Create Form: Start a new internal outbound delivery order and prepare header plus line details." >}}
@@ -273,6 +273,25 @@ KO tabs are dynamically enabled by company flow configuration for line-level con
 In this applet, **KO** refers to **Knock-Off linkage**, where source document quantities are linked and consumed against outbound delivery lines.
 
 This allows your team to reuse upstream document context instead of re-entering line details.
+
+**Simple KO example:**
+
+Example situation:
+- You already have a **Sales Order** approved.
+- You want to create an **Internal Outbound Delivery Order** for the items in that Sales Order.
+- Instead of typing the item lines again, you use **KO For** to pull and link them.
+
+Steps:
+1. Create a new delivery order and save the basic header details first.
+2. Open the **KO For** section.
+3. Choose the correct source tab, for example **Sales Order**.
+4. Use the search bar to find the source document you want to use.
+5. Tick the required row or line from the result list.
+6. Click **KNOCK OFF**.
+7. Check the **Lines** section and confirm the linked items are now added into the delivery order.
+8. If you selected the wrong row, use **DELETE** in the KO screen and repeat the selection.
+
+**What the user should understand:** KO is the step that connects this delivery order back to the original source document so quantities remain traceable.
 
 ## Line Items Overview
 
@@ -305,6 +324,25 @@ The queue is purpose-built for dispatch execution.
 - Enforces delivery type consistency
 - Enforces delivery branch/location consistency before job creation
 
+**Simple Pick Pack example:**
+
+Example situation:
+- The delivery order is already prepared.
+- Warehouse staff need to turn the pending items into an actual delivery job.
+
+Steps:
+1. Open **Pick Pack Queue**.
+2. Search for the delivery order or item lines that are ready to be sent out.
+3. Select the required queue rows.
+4. Choose the **Delivery Type**.
+5. Confirm or change the **Delivery Branch** and **Delivery Location**.
+6. Fill in **Qty To Deliver** based on the quantity that is actually going out now.
+7. If needed, add shipment details such as **Width**, **Length**, **Height**, **Weight**, **Remarks**, or **Content**.
+8. Click **Create Delivery Job**.
+9. Review the result and confirm the processed rows no longer remain as pending queue items.
+
+**What the user should understand:** Pick Pack Queue is the warehouse action area. It is where pending delivery lines are confirmed and converted into a delivery job for dispatch.
+
 {{< figure src="/images/internal-outbound-delivery-order-applet/pick-pack-queue-page.png" alt="Pick Pack Queue listing with line selection, quantity fields, and delivery job execution controls" caption="Pick Pack Queue: Convert queued lines to delivery jobs with quantity validation and dispatch controls." >}}
 
 ## Intercompany Transaction Tracking
@@ -314,6 +352,22 @@ The **Intercompany** menu provides two streams:
 - **Outbound** (`UNPROCESSED`, `PROCESSED`)
 
 This structure helps operations separate items requiring action from completed intercompany links.
+
+**Simple intercompany example:**
+
+Example situation:
+- One company side has already created the outbound transaction.
+- The receiving or monitoring team needs to confirm and track whether that intercompany record has been processed.
+
+Steps:
+1. Open **Intercompany**.
+2. Choose either **Inbound** or **Outbound**, depending on which side you want to monitor.
+3. Start with **UNPROCESSED** to see transactions that still need action.
+4. Select the relevant row.
+5. Click **CONFIRM INTERCOMPANY TRANSACTION** if the transaction is ready to be processed.
+6. Recheck the **PROCESSED** tab to confirm the record has moved over successfully.
+
+**What the user should understand:** the **UNPROCESSED** tab is the work queue, and the **PROCESSED** tab is the confirmation view for completed intercompany actions.
 
 {{< figure src="/images/internal-outbound-delivery-order-applet/intercompany-transaction-page.png" alt="Intercompany Transaction listing with inbound and outbound processing tabs" caption="Intercompany Tracking: Monitor inbound and outbound transaction queues by processing state." >}}
 
