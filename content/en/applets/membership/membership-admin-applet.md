@@ -426,14 +426,14 @@ The system allows for complex point interactions:
 - [ ] Set Excel columns to "Text" format
 - [ ] Verify dates are YYYY-MM-DD format
 - [ ] Check phone numbers have country codes
-- [ ] Remove duplicate Member IDs
+- [ ] Check for duplicate name + phone combinations
 - [ ] Save as UTF-8 encoded CSV
 
 **Common Errors:**
-- Duplicate Member ID -> Use unique IDs
+- Duplicate member -> Same name and phone updates the existing record
 - Invalid email -> Check for @ and .com
 - Wrong date format -> Use YYYY-MM-DD
-- Missing required field -> Fill all asterisk columns
+- Missing required field -> Fill Member Name, Mobile No., IC/Passport, and End Date
 
 ---
 
@@ -442,8 +442,8 @@ The system allows for complex point interactions:
 | Role | View Members | Adjust Points | Delete Members | Configure System |
 |------|-------------|---------------|----------------|------------------|
 | **Cashier** | Yes | No | No | No |
-| **Support Agent** | Yes | Yes (up to 500) | No | No |
-| **Supervisor** | Yes | Yes (up to 5,000) | No | No |
+| **Support Agent** | Yes | Yes | No | No |
+| **Supervisor** | Yes | Yes | No | No |
 | **Marketing Manager** | Yes | No | No | Limited (labels only) |
 | **Tenant Admin** | Yes | Yes (unlimited) | Yes | Yes |
 
@@ -1251,6 +1251,43 @@ Member automatically gets VIP newsletters
 4. Open the file in Excel or Google Sheets. Each row is one member — fill in the columns shown in the template header row.
 5. Save the file as `.csv`.
 
+**Required fields:**
+
+| Column | Required? | What to enter |
+|--------|-----------|---------------|
+| Member Name | Yes | Full name |
+| Mobile No. | Yes | Phone number (include country code, e.g. 60…) |
+| IC/Passport | Yes | ID or passport number |
+| End Date | Yes | Membership end date (YYYY-MM-DD) |
+
+All other columns are optional. If you use **Member Class** or **Label 1–3**, enter codes that already exist in the applet (not display names).
+
+**Example:**
+
+| Column | Example value |
+|--------|---------------|
+| Member Name | Sarah Chen |
+| Gender | Female |
+| Date of Birth | 1990-03-15 |
+| Country Code | 60 |
+| Mobile No. | 0123456789 |
+| IC/Passport | A12345678 |
+| Email | sarah@example.com |
+| Member Class | GOLD |
+| Join Date | 2024-01-01 |
+| Start Date | 2024-01-01 |
+| End Date | 2099-12-31 |
+| Member Status | Active |
+| Remarks | Leave blank |
+| Label 1 | VIP |
+| Label 2 | Leave blank |
+| Label 3 | Leave blank |
+
+**Tips:**
+- Do not change column order or header names
+- Use YYYY-MM-DD for dates
+- Test with about 10 rows before uploading a large file
+
 **Upload the file:**
 
 1. On **Upload Master Data**, drag and drop your `.csv` file or click **Upload File**.
@@ -1280,6 +1317,36 @@ Uploaded files appear in **Member Master Data Listing** with **File Name**, **Si
 3. Under **Sample Format**, click **Member Point Txn** to download the CSV template.
 4. Open the file in Excel or Google Sheets. Each row is one transaction — fill in the columns shown in the template header row.
 5. Save the file as `.csv`.
+
+**Required fields:**
+
+| Column | Required? | What to enter |
+|--------|-----------|---------------|
+| Member Card No. | Yes | Member's card number from **Member Listing** |
+| Branch Code | Yes | Branch code from your setup |
+| Point Value | Yes | Points to add or deduct |
+| Point Balance | Yes | Resulting balance after the transaction |
+
+Other columns (Company Code, Point Currency, Transaction Type, dates, description, document fields) are optional — use the template or leave blank where not needed.
+
+**Example:**
+
+| Column | Example value |
+|--------|---------------|
+| Member Card No. | MC-000123 |
+| Company Code | COMP01 |
+| Branch Code | HQ01 |
+| Point Currency | REWARDS |
+| Point Value | 500 |
+| Point Balance | 1500 |
+| Transaction Type | BONUS |
+| Date of Transaction | 2024-06-01 |
+| Description | Anniversary bonus |
+| Date Valid From | Leave blank |
+| Date Valid To | Leave blank |
+| Document fields | Leave blank |
+
+If the upload fails, open the file row in the listing and check **Error Message** for details.
 
 **Upload the file:**
 
