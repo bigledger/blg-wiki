@@ -8,25 +8,91 @@ tags:
 - supplier-management
 - stock-replenishment
 weight: 170
+date: 2026-04-06
+lastmod: 2026-06-16
+draft: false
 ---
 
 ## Purpose and Overview
 
-The **Purchase Order (Internal) Applet** is designed to streamline the full purchase order lifecycle within your organization. It supports creating and editing purchase orders, managing suppliers and line items, approval workflows, stock replenishment, file import/export, and reporting—all in one place. It is used by procurement and purchasing staff, approvers and managers, finance and operations, and system administrators.
+The **Purchase Order (Internal) Applet** is where your organisation **commits to buy** from a supplier — items, quantities, prices, and terms — before goods are received or invoiced. Procurement creates and maintains POs; approvers sign off; warehouse and finance use approved POs for receipt and payment control.
 
 {{< callout type="info" >}}
-**Core Concept**: The applet links **who** orders (purchaser/supplier), **what** is ordered (line items), and **how** it is approved (workflow) so procurement and finance stay in control.
+**Core concept:** A purchase order links **who** orders (purchaser / branch), **from whom** (supplier), **what** is ordered (line items), and **how** it is approved (workflow) so procurement and finance stay aligned.
 {{< /callout >}}
+
+### Where PO fits in procurement {#where-po-fits-in-procurement}
+
+| Document | What it represents | Typical timing |
+|----------|-------------------|----------------|
+| **Purchase Requisition (PR)** | Internal request to buy (optional in some tenants) | Before PO |
+| **Purchase Order (PO)** | Formal commitment to the supplier | Before goods arrive |
+| **Supplier Delivery Order (SDO)** | Supplier shipment details (if your process uses it) | When goods ship |
+| **GRN (Goods Received Note)** | Physical receipt and stock-in | After delivery |
+| **Purchase Invoice** | Supplier bill for payment | After receipt (matched to PO and GRN) |
+
+**Procurement flow**
+
+```
+Purchase Requisition (optional)
+        ↓
+Purchase Order (approved)     ← this applet
+        ↓
+Supplier Delivery Order       ← optional, if used
+        ↓
+GRN / Stock In                ← warehouse confirms receipt
+        ↓
+Purchase Invoice              ← finance three-way match
+```
+
+| Step | Who typically acts | Applet |
+|------|---------------------|--------|
+| Request to buy | Department / requester | Purchase Requisition (if required) |
+| Place the order | Buyer / procurement | **Purchase Order (Internal)** |
+| Record shipment | Logistics | [Supplier Delivery Order](/applets/purchase-workflow/supplier-delivery-order-applet/) |
+| Receive goods | Warehouse | [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/) |
+| Match and pay | Finance | Purchase Invoice (your tenant’s purchase invoice applet) |
 
 {{< figure src="/images/internal-purchase-order-applet/internal-purchase-order-overview-infographic.png" alt="Purchase Order (Internal) Applet overview — procurement flow from request through approval" caption="Overview of how purchase orders, suppliers, line items, and approvals fit together in one applet." >}}
 
-### Video overview
+---
 
-Start here for a full pass through the Internal Purchase Order Applet: creating, editing, knock-off, and canceling internal POs; file import and export; GRN flow; status control; and PO reports. The session covers the listing and advanced search, tab layout, knock-off and GRN options, manual creation and KO4 knock-off, status flow, reports, multi-PO creation, intercompany, numbering, status types, and personalization.
+## Before you start {#before-you-start}
 
-{{< youtube MpzkihO4NYQ >}}
+- Confirm the **supplier** exists in master data.
+- Know your **branch**, **billing address**, and **shipping address** (or shipping entity).
+- If your policy requires it, create a **Purchase Requisition** first and knock off lines into the PO.
+- For foreign-currency purchases, confirm **document currency** and exchange-rate rules with finance.
+- Verify create, edit, submit-for-approval, and approve permissions for your role.
+
+---
+
+## Glossary {#glossary}
+
+| Term | Meaning in this guide |
+|------|------------------------|
+| **PO** | Purchase Order — commitment to buy from a supplier. |
+| **PR** | Purchase Requisition — internal request that may convert to a PO. |
+| **BPO / PQ** | Blanket Purchase Order / Purchase Quotation — sources for knock-off lines. |
+| **Knock-off (KO)** | Pull open quantity or lines from another document into the PO or downstream GRN. |
+| **Purchase Order Queue** | Open-queue view linking PO lines to downstream GRN/KO — not the approval workspace. |
+| **Draft / Submitted / Approved** | PO lifecycle before and after approval workflow. |
+| **Three-way matching** | Matching PO, GRN, and invoice before payment. |
+
+---
 
 ## Key Features Overview
+
+{{< cards >}}
+  {{< card title="Procurement flow" subtitle="Where PO fits from PR to invoice" link="#where-po-fits-in-procurement" >}}
+  {{< card title="Create a PO" subtitle="Supplier, lines, and approval" link="#for-procurement-create-your-first-purchase-order" >}}
+  {{< card title="File Import" subtitle="Template, mandatory columns, sample" link="#file-import-and-export" >}}
+  {{< card title="Foreign currency PO" subtitle="Document currency and rates" link="#foreign-currency-purchase-orders" >}}
+  {{< card title="PO Replenishment" subtitle="Template, events, and runs" link="#po-replenishment" >}}
+  {{< card title="Intercompany" subtitle="Cross-branch PO processing" link="#intercompany" >}}
+  {{< card title="Approval Workflow" subtitle="Submit, approve, reject" link="#for-approvers-process-approval-requests" >}}
+  {{< card title="Settings & Configuration" subtitle="Workflow, branches, permissions" link="#configuration--settings" >}}
+{{< /cards >}}
 
 ### Who Benefits from This Applet?
 
@@ -34,7 +100,7 @@ Start here for a full pass through the Internal Purchase Order Applet: creating,
 - Create and edit purchase orders with supplier, billing/shipping address, and line items
 - Add line items from BPO, PQ, PR, or existing PO where applicable
 - Track POs through draft, submitted, and approved states
-- Use file import for bulk creation
+- Use **File Import** for bulk creation
 
 **Approvers & Managers:**
 - Process approval requests in **Approval Request**
@@ -43,52 +109,18 @@ Start here for a full pass through the Internal Purchase Order Applet: creating,
 
 **Finance & Operations:**
 - Link POs to payments and contra documents
-- Run PO Line with GRN KO and Closed Queue KO reports
-- Manage intercompany transactions
+- Run **PO Line with GRN KO** and **Closed Queue KO** reports
+- Process **Intercompany** queue items for cross-branch PO flows
 - Export data for reconciliation
 
 **Administrators:**
-- Configure workflow, default selections, and application settings
+- Configure workflow, default selections, replenishment access, intercompany menus, and currency visibility
 - Manage branch settings, email templates, and printable formats
 - Set up permissions (permission wizard, permission set, user permission, role permission)
-- Use release notes and audit trail for support and audit checks
 
 ### What Problems Does This Solve?
 
-**The Manual Purchase Order Problem:**
-
-Managing POs with spreadsheets and email leads to:
-- Inconsistent formats and missing data
-- Delayed approvals and poor visibility
-- No single place for supplier and line-item details
-- Difficult reporting and audit trails
-
-**The Purchase Order (Internal) Applet Solution:**
-
-- **Structured PO creation** — Header, supplier, addresses, line items, payments, and attachments in one flow
-- **Approval workflow** — Submit for approval, act in Approval Request, and review history
-- **Supplier and item management** — Select supplier, billing/shipping address, and add line items (including from BPO/PQ/PR)
-- **Bulk operations** — File import and file export for many POs
-- **PO replenishment and reporting** — Replenishment runs/templates/events, PO Line with GRN KO, and Closed Queue KO
-- **Configuration** — Workflow, branches, email templates, printable format, and permissions in Settings
-
----
-
-## Feature Navigation
-
-{{< cards >}}
-  {{< card title="Purchase Order" subtitle="Listing, create & edit with supplier and line items" link="#for-procurement-create-your-first-purchase-order" >}}
-
-  {{< card title="Approval Workflow" subtitle="Submit, review, approve/reject, and track history" link="#for-approvers-process-approval-requests" >}}
-
-  {{< card title="File Import & Export" subtitle="Bulk import and export of POs" link="#file-import-and-export" >}}
-
-  {{< card title="PO Replenishment" subtitle="Replenishment runs, events, and templates" link="#po-replenishment" >}}
-
-  {{< card title="Reporting" subtitle="PO Line with GRN KO and Closed Queue KO" link="#reporting" >}}
-
-  {{< card title="Settings & Configuration" subtitle="Workflow, branches, permissions and more" link="#configuration--settings" >}}
-{{< /cards >}}
+Managing POs with spreadsheets and email leads to inconsistent formats, delayed approvals, and weak audit trails. This applet provides structured PO creation, approval workflow, supplier and line-item management, bulk import/export, stock replenishment support, and configurable field and menu visibility.
 
 ---
 
@@ -104,314 +136,332 @@ Managing POs with spreadsheets and email leads to:
 | **How** is it approved? | Approval workflow & queue | Manager → Finance → Approved |
 
 {{< callout type="tip" >}}
-**Real-World Example**: A procurement officer (WHO) creates a PO for office supplies from Vendor ABC (FROM WHOM). They add 5 line items—paper, pens, folders (WHAT). The PO is submitted and routes to their manager, then to finance for approval (HOW). Once approved, the order can proceed to delivery and GRN.
+**Example:** A procurement officer creates a PO for office supplies from Vendor ABC, adds five line items, and submits for approval. After approval, warehouse receives against the PO via GRN; finance matches PO, GRN, and invoice before payment.
 {{< /callout >}}
 
 ### PO Statuses Explained
 
 | Status | What It Means | What You Should Do |
 |--------|---------------|---------------------|
-| **Draft** | PO not yet submitted | Complete details and submit when ready |
+| **Draft** | PO not yet submitted | Complete details; use **SAVE** to keep progress |
 | **Submitted** | Waiting for approver | Wait for approval or rejection |
-| **Approved** | Approver said yes | Proceed to GRN or invoice as per your process |
-| **Rejected** | Approver said no | Read the reason, correct the PO if needed, and resubmit |
-| **Closed** | PO fully processed | Use for reference or reporting only |
+| **Approved** | Approver confirmed | Proceed to GRN or invoice per your process |
+| **Rejected** | Approver declined | Read the reason, correct, and resubmit |
+| **Closed** | PO fully processed | Reference or reporting only |
 
-### Main Views (Routes)
+### Main sidebar views
 
-- **Purchase Order** — Default view: listing, then create or edit
-- **Line Items** — Dedicated line-items management
+- **Purchase Order** — Listing, create, and edit
+- **Line Items** — Line-items workspace across POs
 - **PO Line with GRN KO** — Report linking PO lines to GRN/KO
-- **Closed Queue KO** — Closed queue reporting view
-- **PO Replenishment** — Parent menu for replenishment features
-  - **Replenishment Runs**
-  - **Replenishment Events**
-  - **Replenishment Template**
-- **File Import** — Bulk import POs
-- **File Export** — Export POs
-- **Intercompany** — Manual intercompany transactions
-- **Purchase Order Queue** — PO open-queue tracking (PO to GRN/KO context)
+- **Closed Queue KO** — Closed queue reporting
+- **PO Replenishment** — **Replenishment Runs**, **Replenishment Events**, **Replenishment Template**
+- **File Import** / **File Export** — Bulk import and export
+- **Intercompany** — Manual intercompany transaction queue (see [Intercompany](#intercompany))
+- **Purchase Order Queue** — PO open-queue tracking for downstream GRN/KO
 - **Multi-PO** — Work with multiple POs
-- **Approval Request** — Approval action workspace (Approve/Reject)
-- **Approval History** — View past approvals
-- **PO Free Gift** — Free-gift handling
-- **Settings** — All configuration (see Configuration & Settings)
+- **Approval Request** / **Approval History** — Approve, reject, and audit decisions
+- **Settings** — Configuration (see [Configuration & Settings](#configuration--settings))
+
+### Video overview (optional deep dive)
+
+Extended walkthrough: creating and editing POs, knock-off, GRN linkage, file import/export, intercompany, replenishment, reports, and personalization.
+
+{{< youtube MpzkihO4NYQ >}}
 
 ---
 
 ## Quick Start Guide
 
-Get up and running quickly with these essential workflows.
+### For Procurement: Create Your First Purchase Order {#for-procurement-create-your-first-purchase-order}
 
-### For Procurement: Create Your First Purchase Order
-
-**Goal:** Create a purchase order with supplier, addresses, and line items in a few steps.
-
-This video shows how to create a new internal purchase order, select supplier and item details, manage draft and final statuses, and see how the PO connects to the Internal Purchase GRN Applet—including the **Account** and **Lines** tabs, printable formats and status flow, cancel or revert of a final PO, the line item report, **Purchase Order Queue**, knock-off from PO to GRN, and GRN details from the linked PO.
+**Goal:** Create a purchase order with supplier, addresses, and line items.
 
 {{< youtube n36EtVIclmE >}}
 
-1. **Navigate**: Go to **Purchase Order** from the sidebar (default view when you open the applet).
-2. **Create header**: Click **"+"** (Create) → **Create Purchase Order** opens.
+1. **Navigate**: Go to **Purchase Order** from the sidebar.
+2. **Create header**: Click **+** (Create) → **Create Purchase Order**.
 3. **Enter main details**:
-   - Select **Purchaser** (if your setup requires it).
-   - Select **Supplier** (or create a new one from the list).
-   - Set **Billing Address** and **Shipping Address** (or select shipping entity).
+   - Select **Purchaser** (if required).
+   - Select **Supplier**.
+   - Set **Billing Address** and **Shipping Address** (or shipping entity).
+   - Set **Document currency** if your tenant uses foreign-currency POs.
 4. **Add line items**:
-   - Open the **Lines** tab.
-   - Click **"+"** (tooltip: **Create**) to open **Add Item**.
-   - Enter or select **Item**, **Quantity**, **Price**, and any other required fields, then click **ADD**.
-   - If your flow uses document-based sourcing, use **Search Document** and its tabs: **Search Blanket Purchase Order**, **Search Purchase Quotation**, **Search Purchase Requisition**, or **Search Purchase Order**.
-5. **Optional**: Add **Payment** terms, **Contra** documents, or **Attachments** as needed.
-6. **Review**: Check all details are correct.
-7. **Submit**: In the PO (edit) screen, open the **Submit Approval** section and click **Submit For Approval**.
-8. **Confirm next state**: Open **Approval Request** to confirm the document is ready for approver action.
-9. **Save strategy (optional but recommended)**: If the PO is not ready for approval, use **SAVE** in edit mode to keep progress and continue later.
+   - Open the **Lines** tab → **+** (Create) → **Add Item**.
+   - Enter **Item**, **Quantity**, **Price**, and other required fields → **ADD**.
+   - Or use **Search Document**: **Blanket Purchase Order**, **Purchase Quotation**, **Purchase Requisition**, or **Purchase Order**.
+5. **Optional**: **Payment**, **Contra**, **Attachments**.
+6. **Review** header, supplier, lines, and currency.
+7. **Submit**: **Submit Approval** → **Submit For Approval**.
+8. **Save if not ready**: Use **SAVE** in edit mode to keep a draft.
 
-**What happens next?** Approvers act in **Approval Request** (Approve/Reject). **Purchase Order Queue** is typically used to track PO open-queue linkage (for downstream GRN/KO flow).
-
-**Pro Tip:** Use **File Import** for many similar POs. If certain menus are hidden, ask your admin to review your permission and menu visibility setup.
+**What happens next?** Approvers use **Approval Request**. After approval, warehouse receives via GRN; finance matches documents for payment.
 
 ---
 
-### For Approvers: Process Approval Requests
+### For Approvers: Process Approval Requests {#for-approvers-process-approval-requests}
 
-**Goal:** Review and approve (or reject) purchase orders in 4 steps.
+**Goal:** Review and approve or reject purchase orders.
 
-1. **Check pending**: Go to **Approval Request** from the sidebar. Open a pending request to view details.
-2. **Review details**:
-   - Check header, supplier, line items, amounts, and any attachments.
-   - Confirm the request matches your organization’s policy.
-3. **Decide**: Use the **Approve** or **Reject** button at the top of the screen.
-   - **Approve**: Click **Approve** → the PO moves to the next step; requester may be notified.
-   - **Reject**: Click **Reject** → enter approval remarks when prompted → requester is notified and can correct and resubmit.
-4. **Track decisions**: Use **Approval History** to review previous actions and remarks.
-
-**Need handover coverage?** Ask your administrator to review **Approval Settings**, **Approval Monitor**, and **Branch Designation** so approval routing stays correct during leave periods.
-
----
-
-### Core Feature Walkthrough (Client Onboarding)
-
-**Goal:** Validate the applet’s core capabilities in one guided pass after initial setup.
-
-This extended session walks through GRN receiving and serialized items, knock-off from requisition, confirming and finalizing a PO from knock-off, viewing and tracing linked documents, attachments and export, bulk export and email, hiding menus and button permissions, listing filters and search, field visibility and print pop-ups, external documents and branch filters, pricing and GL segments, line item controls and permissions, printable formats (including no-price and branch-based options), workflow, email templates, app and row-level permissions, and ends with Q&A.
-
-{{< youtube 00GJ3yJsVrY >}}
-
-1. **Queue visibility check**: Open **Purchase Order Queue** and confirm users can see the expected open-queue records.
-2. **Bulk import check**: Open **File Import**, upload a small test file, and verify records are created/updated as expected.
-3. **Bulk export check**: Open **File Export**, apply filters (for example date range and branch), and export for reconciliation.
-4. **Replenishment check**: Open **PO Replenishment** and verify access to **Replenishment Runs**, **Replenishment Events**, and **Replenishment Template**.
-5. **Reporting check**: Open **PO Line with GRN KO** and **Closed Queue KO**, then confirm filters and result rows load correctly.
-6. **Operational check**: Open **Intercompany** and **Multi-PO** to confirm your team can access the operational views required by your process.
-7. **Role check**: Validate menu visibility and actions for at least three roles:
-   - Procurement user: create/edit flow
-   - Approver: **Approval Request** with **Approve**/**Reject** actions
-   - Admin: Settings, permissions, and branch/approval controls
-
-{{< callout type="tip" >}}
-For production rollout, run this walkthrough with real branch/supplier data in a staging tenant first, then repeat once in production with a limited pilot user group.
-{{< /callout >}}
+1. Go to **Approval Request** and open a pending request.
+2. Review header, supplier, line items, amounts, currency, and attachments.
+3. Click **Approve** or **Reject** (enter remarks if rejecting).
+4. Use **Approval History** for past decisions.
 
 ---
 
 ### For Admins: Initial System Setup
 
-**Goal:** Get the Purchase Order (Internal) Applet ready for your users in a few steps.
+**Goal:** Prepare the applet for your users.
 
-**Step 1: Branch setup** (`Settings > Branch Settings` and `Settings > Branch Designation`)  
-- Configure branches so POs can be assigned to the right locations.
-
-**Step 2: Workflow** (`Settings > Workflow Settings`)  
-- Define who approves POs and in what order (e.g. Manager → Finance).  
-- Set any conditions (e.g. POs above a certain amount need extra approval).
-
-**Step 3: Default selection** (`Settings > Default Selection`)  
-- Set default branch, supplier, or other values so users get sensible defaults when creating POs.
-
-**Step 4: Application settings** (`Settings > Application Settings`)  
-- Control which fields are required or visible on the PO and line item forms.
-
-**Step 5: Printable format** (`Settings > Printable Format Settings`)  
-- Configure how POs look when printed or exported to PDF.
-
-**Step 6: Email templates** (`Settings > Email Template`)  
-- Set up notifications for approval, rejection, and other events.
-
-**Step 7: Approval controls** (`Settings > Approval Settings`, `Settings > Approval Monitor`)  
-- Configure approval levels and document-conversion rules.
-
-**Step 8: Permissions** (`Settings > Permission Wizard`, **Permission Set**, **User Permission**, **Role Permission**)  
-- Assign who can create, edit, or approve POs.
-
-**Step 9: Test**  
-- Create a test PO as a procurement user, approve it as an approver, and confirm the full flow works.
+1. **Branch setup** — `Settings > Branch Settings`, `Settings > Branch Designation`
+2. **Workflow** — `Settings > Workflow Settings` (approval order and conditions)
+3. **Default selection** — `Settings > Default Selection` (default branch, supplier, **default currency**)
+4. **Application settings** — Required/visible fields; hide/show **File Import**, **Replenishment**, **Intercompany** menus; currency and forex options
+5. **Printable format** — `Settings > Printable Format Settings`
+6. **Email templates** — `Settings > Email Template`
+7. **Approval controls** — `Settings > Approval Settings`, `Settings > Approval Monitor` (including PR→PO conversion)
+8. **Permissions** — Permission wizard, permission set, user/role permission
+9. **Test** — Create a PO, approve it, confirm GRN knock-off if applicable
 
 ---
 
-{{< callout type="tip" >}}
-**New to the system?** Start with the basics:
-1. Procurement users: Explore **Purchase Order** and create one PO with a few line items.
-2. Approvers: Use **Approval Request** to practice approve/reject actions.
-3. Admins: Review **Configuration & Settings** below for detailed setup.
+## File Import and Export {#file-import-and-export}
+
+Use **File Import** to create or update many POs from a CSV file. Use **File Export** for reporting and reconciliation.
+
+### Download the import template
+
+1. Open **File Import** from the sidebar.
+2. Click **+** (Create) to open **Upload Master Data**.
+3. Click **\*Sample Format for Purchase Order\*** — a column-picker dialog opens.
+4. Select optional columns you need; **mandatory columns are fixed** and cannot be removed.
+5. Download the header-only CSV: **`MasterData_Upload_InternalPurchaseOrderData.csv`**.
+
+### Upload requirements
+
+| Field | Requirement |
+|-------|-------------|
+| **File type** | **CSV** (`.csv`) only |
+| **Delimiter** | Required — choose **PIPE**, **COMMA**, **SEMICOLON**, or **TAB** to match your file |
+| **ADD** | Enabled only after a file is attached |
+
+After upload, check **File Import** listing columns **Status**, **Process Status**, and **User Error Message** if rows fail.
+
+### Mandatory columns (always required)
+
+| Column | Meaning |
+|--------|---------|
+| `BRANCH_CODE` | Branch code for the PO |
+| `TXN_DATE` | Transaction date |
+| `HDR_REF_NO` | Header reference number |
+| `DOC_CURRENCY` | Document currency code (e.g. `MYR`, `USD`) |
+| `SETTLEMENT_OR_ITEM_CODE` | Item or settlement code |
+| `QTY` | Line quantity |
+| `ENTITY_CODE` | Supplier / entity code |
+
+### Common optional columns
+
+| Column | Meaning |
+|--------|---------|
+| `UOM` | Unit of measure |
+| `UNIT_PRICE_INCL_TAX` / `AMOUNT_INCL_TAX` | Pricing |
+| `TAX_GST_CODE` | Tax code |
+| `BASE_DOC_X_RATE` | Exchange rate (foreign currency) |
+| Billing/shipping address columns | As configured in your template export |
+| `SEGMENT_CODE`, `GL_DIMENSION_CODE`, `PROFIT_CENTRE_CODE`, `PROJECT_CODE` | GL segments |
+| Line remarks | Per-line notes |
+
+### Example import rows
+
+**Single-line PO (MYR):**
+
+| BRANCH_CODE | TXN_DATE | HDR_REF_NO | DOC_CURRENCY | ENTITY_CODE | SETTLEMENT_OR_ITEM_CODE | QTY | UNIT_PRICE_INCL_TAX |
+|-------------|----------|------------|--------------|-------------|-------------------------|-----|---------------------|
+| HQ | 2026-06-01 | PO-IMP-001 | MYR | SUPP001 | ITEM-A4-PAPER | 100 | 25.00 |
+
+**Foreign currency with exchange rate:**
+
+| BRANCH_CODE | TXN_DATE | HDR_REF_NO | DOC_CURRENCY | ENTITY_CODE | SETTLEMENT_OR_ITEM_CODE | QTY | BASE_DOC_X_RATE |
+|-------------|----------|------------|--------------|-------------|-------------------------|-----|-----------------|
+| HQ | 2026-06-01 | PO-IMP-002 | USD | SUPP-US-01 | WIDGET-100 | 50 | 4.45 |
+
+{{< callout type="warning" >}}
+Use the same **delimiter** in the file as you select on the upload screen. Missing mandatory columns or invalid supplier/item codes usually appear in **User Error Message** on the import listing.
 {{< /callout >}}
 
----
+### File Export
 
-## File Import and Export
-
-**File Import** — Open **File Import** from the sidebar when you need to create or update many POs at once. Upload an Excel or CSV file and follow the on-screen steps to map columns to PO fields. Use this when migrating data or entering a large batch of orders.
-
-**File Export** — Open **File Export** to download PO data for reporting, reconciliation, or use in other systems. Apply filters (e.g. date range, supplier, branch) and choose the format your administrator has configured (e.g. Excel, CSV).
+Open **File Export**, apply filters (date range, supplier, branch), and download in the format your administrator configured.
 
 ---
 
-## PO Replenishment
+## Foreign currency purchase orders {#foreign-currency-purchase-orders}
 
-Use **PO Replenishment** to manage stock-driven procurement actions. In this menu:
-- **Replenishment Runs** handles run/listing workflows for replenishment output.
-- **Replenishment Events** handles event-based replenishment tracking.
-- **Replenishment Template** stores reusable replenishment templates.
+Many tenants create POs in a **document currency** different from the organisation **base currency** (for example USD PO with MYR base books).
 
-Typical use: set minimum levels and reorder logic so purchase orders can be created or suggested when stock is low.
+### On the PO screen
+
+- **Document currency** — Currency of the supplier quote or contract.
+- **Base currency / exchange rate** — How the PO converts for reporting and finance (visibility depends on settings).
+- Admins may lock rate editing or show a **forex data source** for the rate.
+
+### Administrator settings (Application Settings / Default Selection)
+
+| Setting | Effect |
+|---------|--------|
+| **Default Currency** | Default document currency for new POs |
+| Hide currency / hide base currency | Hides currency fields on the PO form |
+| Show forex data source | Shows where the exchange rate comes from |
+| Cannot edit currency rate | Users cannot change the rate manually |
+
+### File import
+
+- `DOC_CURRENCY` is **mandatory** on every import row.
+- `BASE_DOC_X_RATE` is **optional** — use when you need to set the document exchange rate on import.
+
+Coordinate with finance on which currency and rate apply before you submit POs for approval.
+
+---
+
+## PO Replenishment {#po-replenishment}
+
+**PO Replenishment** supports **stock-driven procurement** — suggesting or generating purchase activity when inventory falls below rules you define. It is separate from manually creating a single PO.
+
+### How the pieces fit together
+
+```
+Replenishment Template  →  rules (items, suppliers, locations, categories)
+        ↓
+Replenishment Event     →  optional schedule (recurring cycle linked to a template)
+        ↓
+Replenishment Run       →  execution instance → review fulfillments / generated POs
+```
+
+| Menu | Purpose |
+|------|---------|
+| **Replenishment Template** | Reusable rules: template name, item/supplier/location/category filters, item list |
+| **Replenishment Events** | Named schedules (event code, dates, recurring rule) linked to a template |
+| **Replenishment Runs** | Run a replenishment calculation; review **Order Fulfillments** and **Purchase Orders** tabs on the run |
+
+**Typical workflow:** Admin or inventory team maintains **Templates** → optional **Events** for schedules → user creates a **Run** → reviews output and linked POs.
+
+### Configuration and access
+
+| Control | Effect |
+|---------|--------|
+| Hide PO Replenishment menu (Application Settings) | Hides the whole **PO Replenishment** sidebar group |
+| `SHOW_PURCHASE_ORDER_REPLENISHMENT_MENU` permission | Can show the menu when not hidden |
+
+Ask your administrator to enable the menu and assign permissions before users run replenishment.
+
+---
+
+## Intercompany {#intercompany}
+
+**Intercompany** handles **cross-branch purchase order flows** when branch intercompany rules create linked documents that need **manual confirmation**.
+
+This is **not** the same as the **Intercompany sub-tab** on a PO’s **Account** tab (that tab can be hidden separately with **Hide Intercompany tab** in Application Settings).
+
+### When to use it
+
+Use the **Intercompany** sidebar menu when finance or operations must **confirm pending intercompany transactions** queued from approved POs — for example POs that trigger a target document in another branch per intercompany configuration.
+
+### Screen workflow
+
+**Intercompany Transaction Listing** has two tabs:
+
+| Tab | Purpose |
+|-----|---------|
+| **UNPROCESSED** | Queue rows waiting for action — source PO, target doc type, config used, status |
+| **PROCESSED** | Completed intercompany links for audit |
+
+On **UNPROCESSED**, select a row and click **CONFIRM INTERCOMPANY TRANSACTION** to process the link. Review **PROCESSED** for source PO → target document history.
+
+### Configuration and access
+
+| Control | Effect |
+|---------|--------|
+| Hide Intercompany menu (Application Settings) | Hides sidebar **Intercompany** |
+| `SHOW_INTERCOMPANY_MENU` permission | Can show the menu when not hidden |
+| Hide Intercompany tab (Account sub-tabs) | Hides **Intercompany** on the PO **Account** tab only |
+
+Branch intercompany rules themselves are configured outside this applet (branch intercompany settings in your platform). This applet is the **processing queue** for PO-related intercompany items.
 
 ---
 
 ## Reporting
 
-- **PO Line with GRN KO** — See how each PO line links to Goods Received Notes (GRN) and related documents (KO). Use this to track what was ordered vs what was received and to reconcile with suppliers.
-- **Closed Queue KO** — Review closed queue records for operational follow-up and audit checks.
+- **PO Line with GRN KO** — PO lines linked to GRN and knock-off documents; compare ordered vs received.
+- **Closed Queue KO** — Closed queue records for operational follow-up.
 
-Use the filters and columns in each report to narrow by date, supplier, branch, or status.
+Filter by date, supplier, branch, or status as needed.
 
 ---
 
-## Configuration & Settings
+## Configuration & Settings {#configuration--settings}
 
-Access **Settings** from the sidebar to configure how the Purchase Order (Internal) Applet behaves for your organization. The table below summarizes the main options; configure them to match your procurement and approval policies.
-
-This session focuses on setup and behavior in **Settings** and related screens: listing sorting and search, field visibility and pop-ups, vertical UI and line item queue, external documents, branch filtering and supplier setup, line item fields and GL segments, knock-off restrictions, costing and the serial tab, hiding payment and AR tabs, default branch and page view, printable formats (including no-price and branch-based print), workflow, email templates, app permissions and view-only access, and client-side role permissions.
+Access **Settings** from the sidebar. Configure to match procurement, approval, and multi-branch policies.
 
 {{< youtube 5ri6Qjio32Q >}}
 
 | Setting | Purpose |
 |--------|---------|
-| **Default Selection** | Default branch, supplier, or other values for new POs |
-| **Application Settings** | Required and visible fields on PO and line items |
-| **Printable Format Settings** | Layout and content of printed/PDF POs |
+| **Default Selection** | Default branch, supplier, currency, and other values for new POs |
+| **Application Settings** | Required/visible PO and line fields; hide/show sidebar menus (File Import, Replenishment, Intercompany); currency and forex visibility |
+| **Printable Format Settings** | Printed/PDF PO layout |
 | **Workflow Settings** | Approval steps and conditions |
-| **Email Template** | Notifications for approval, rejection, etc. |
-| **Branch Settings** | Branches used for POs and reporting |
-| **Branch Designation** | Branch designation setup and related mappings |
-| **Approval Settings** | Approval rules and levels |
-| **Approval Monitor** | Monitor approval status and conversion rules |
-| **Permission Wizard** | Configure permission templates and targets |
-| **Permission Set** | Create and maintain reusable permission sets |
-| **User Permission** | Assign permissions at user level |
-| **Role Permission** | Assign permissions at role level |
-| **Release Notes** | In-app release notes |
-| **Audit Trail** | Audit log of applet actions |
-
-Configure these according to your organization’s procurement and approval policies.
+| **Email Template** | Approval, rejection, and other notifications |
+| **Branch Settings** / **Branch Designation** | Branches and designation mappings |
+| **Approval Settings** / **Approval Monitor** | Approval rules and PR→PO conversion requirements |
+| **Permission Wizard**, **Permission Set**, **User Permission**, **Role Permission** | Access control |
+| **Release Notes** / **Audit Trail** | Updates and audit log |
 
 ---
 
-## Permissions (Source-Verified)
+## Permissions
 
-The applet behavior is controlled by both **server-side permission inquiry targets** and **client-side menu visibility permissions**.
+Server-side targets control read/create/update on PO documents. Client-side permissions (with Application Settings hide flags) control menu visibility — for example **File Import**, **Replenishment**, **Intercompany**, **Approval Request**.
 
-### Server-side permission targets
+If a user cannot see a menu, review **both** role permissions and Application Settings hide/show toggles.
 
-| Permission Key | What it Controls |
-|--------|---------|
-| `TNT_API_DOC_INTERNAL_PURCHASE_ORDER_READ_TGT_GUID` | Read/listing access to purchase-order data (including branch-targeted access) |
-| `TNT_API_DOC_INTERNAL_PURCHASE_ORDER_CREATE_TGT_GUID` | Ability to create new purchase orders |
-| `TNT_API_DOC_INTERNAL_PURCHASE_ORDER_UPDATE_TGT_GUID` | Ability to update existing purchase orders (for example, save in edit flow) |
-| `TNT_API_DOC_INTERNAL_PURCHASE_ORDER_DELIVERY_BRANCH_READ` | Delivery-branch related read behavior in applicable screens |
-| `TNT_TENANT_ADMIN`, `TNT_TENANT_OWNER` | Admin/owner override for read/create/update checks |
-
-### Client-side menu visibility permissions
-
-These permission codes are evaluated together with applet hide/show settings:
-
-- `SHOW_LINE_ITEMS_MENU`
-- `SHOW_PURCHASE_ORDER_QUEUE_MENU`
-- `SHOW_MULTI_PURCHASE_ORDER_MENU`
-- `SHOW_PURCHASE_ORDER_REPLENISHMENT_MENU`
-- `SHOW_FILE_IMPORT_MENU`
-- `SHOW_INTERCOMPANY_MENU`
-- `SHOW_FILE_EXPORT_MENU`
-- `SHOW_PURCHASE_ORDER_LINE_WITH_GRN_KO_MENU`
-- `SHOW_CLOSED_QUEUE_KO_MENU`
-- `SHOW_APPROVAL_REQUEST_MENU`
-- `SHOW_APPROVAL_HISTORY_MENU`
-
-If a user still cannot see a menu, review both permission assignment and the related applet setting (for example `HIDE_*` menu toggles).
-
----
-
-## Audit
-
-- Use **Settings > Release Notes** to track applet updates relevant to business users.
-- Use **Settings > Audit Trail** to review logged applet actions for support and audit checks.
-
----
-
-## Personalization
-
-If enabled for your tenant, use personalization features to maintain your preferred defaults (for example, personal default selection and sidebar behavior).
+Common server-side keys: read, create, and update targets for internal purchase order; tenant admin/owner overrides apply.
 
 ---
 
 ## FAQ
 
-**Q: Why can’t I see some menus (Line Items, File Import, Approval Request, etc.)?**  
-A: Menu visibility can depend on both permissions and applet settings. Ask your administrator to review your permission assignment and menu visibility configuration.
+**Q: When do I use a PO vs a GRN?**  
+A: **PO** = you are **ordering** from a supplier (commitment to buy). **GRN** = goods **arrived** and you are **receiving into stock**. Create and approve the PO first; warehouse creates GRN when goods arrive. See [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/).
 
-**Q: I see "Purchase Order needs to be converted from Purchase Requisition" when I click + or try to submit for approval. What do I do?**  
-A: Your organization has **document conversion** turned on for this flow: the system expects the PO to have been created **from** a Purchase Requisition (PR) before you can submit for approval. You can fix it in one of two ways:  
-- **Option 1 (recommended if your policy requires PR first):** Create a **Purchase Requisition** first (in the Purchase Requisition applet). In the PO flow, open **Lines** → click **+** (Create) → use **Search Document** / **Search Purchase Requisition** to add PR-based lines. That creates the PR→PO link. Save the PO, then open **Submit Approval** and click **Submit For Approval**.  
-- **Option 2 (if your org allows POs without a PR):** An administrator turns off the requirement in **Approval Monitor**—see **How do I set Option 2 (disable document conversion required)?** below.
+**Q: Where do I download the file import template?**  
+A: **File Import** → **+** Create → **Upload Master Data** → **\*Sample Format for Purchase Order\***. Mandatory columns are fixed in the export dialog.
 
-**Q: Why is the + (Create) button disabled in Submit Approval?**  
-A: This usually happens when document conversion is required but the PO is not linked from Purchase Requisition. Follow the conversion guidance above or ask your admin to review **Approval Monitor**.
+**Q: Which import columns are mandatory?**  
+A: `BRANCH_CODE`, `TXN_DATE`, `HDR_REF_NO`, `DOC_CURRENCY`, `SETTLEMENT_OR_ITEM_CODE`, `QTY`, `ENTITY_CODE`.
 
-**Q: Can I edit a PO after I've submitted it for approval?**  
-A: It depends on your setup. If the PO is still in **Submitted** (pending approval), some tenants allow you to recall or edit it. Once **Approved**, changes may be restricted. Check with your admin or try opening the PO—if **Edit** is available, you can change it.
+**Q: Can I create a PO in USD (or other foreign currency)?**  
+A: Yes, if your tenant enables currency fields. Set **document currency** on the PO (or `DOC_CURRENCY` on import). Admins control defaults, visibility, and whether users can edit exchange rates.
 
-**Q: My PO was rejected. What do I do?**  
-A: Open the PO and read the rejection reason (your approver should have entered it). Correct the details—e.g. wrong supplier, amount, or missing attachment—then resubmit for approval. If the reason is unclear, contact the approver.
+**Q: What is Intercompany used for?**  
+A: Processing **cross-branch PO intercompany queue** items — confirm transactions on the **UNPROCESSED** tab. It is not a substitute for normal PO creation.
 
-**Q: Where do I find POs waiting for my approval action?**  
-A: Use **Approval Request**. That is where **Approve** and **Reject** actions are performed. Use **Approval History** to review completed decisions.
+**Q: How does PO Replenishment relate to creating a PO manually?**  
+A: Replenishment uses **templates and runs** to suggest or generate POs from stock rules. Manual PO creation in **Purchase Order** is for ad-hoc or non-replenishment orders.
 
-**Q: What is Purchase Order Queue used for, then?**  
-A: **Purchase Order Queue** is generally used for PO open-queue tracking context (for downstream GRN/KO linkage), not as the main approve/reject workspace.
+**Q: Why can’t I see File Import, Replenishment, or Intercompany?**  
+A: Menus may be hidden in Application Settings or missing from your role permissions. Ask your administrator.
 
-**Q: How do I add line items from an existing BPO, PQ, PR, or PO?**  
-A: In the PO flow, open **Lines**, click **+** (Create), then use **Search Document** tabs (**Search Blanket Purchase Order**, **Search Purchase Quotation**, **Search Purchase Requisition**, **Search Purchase Order**) to pull lines.
+**Q: I see "Purchase Order needs to be converted from Purchase Requisition" — what do I do?**  
+A: Your tenant requires PR→PO conversion. Add lines via **Search Purchase Requisition**, or ask an admin to adjust **Approval Monitor** (uncheck **Is Document Conversion Required** on the PR→PO rule) if policy allows direct POs.
 
-**Q: Which permissions usually control why I can read but not create/edit (or vice versa)?**  
-A: Commonly: **Read** uses `TNT_API_DOC_INTERNAL_PURCHASE_ORDER_READ_TGT_GUID`, **Create** uses `TNT_API_DOC_INTERNAL_PURCHASE_ORDER_CREATE_TGT_GUID`, and **Edit/Save** uses `TNT_API_DOC_INTERNAL_PURCHASE_ORDER_UPDATE_TGT_GUID`. Tenant admin/owner (`TNT_TENANT_ADMIN`, `TNT_TENANT_OWNER`) can override these checks.
+**Q: Where do I approve POs?**  
+A: **Approval Request** — not **Purchase Order Queue** (queue is for GRN/KO linkage tracking).
 
 **Q: Can I export POs for the whole year?**  
-A: Yes. Open **File Export**, set the date range to cover the full year (and any other filters you need), then run the export. The exact format and filters depend on how your administrator has configured the applet.
+A: Yes — **File Export** with a full-year date range and your usual filters.
 
-**Q: Why are Approve/Reject buttons disabled in Approval Request?**  
-A: Buttons are disabled when no row is selected, or when the selected request status already prevents that action (for example, already approved/rejected).
-
-**Q: How do I set Option 2 (disable "document conversion required") so POs don’t need to be created from a PR?**  
-A: An administrator with access to the Purchase Order (Internal) Applet Settings can do this:
-
-1. Open the applet and go to **Settings** in the sidebar.
-2. Open **Approval Monitor**. You’ll see a list of conversion rules with columns **From**, **To**, and **Remarks**.
-3. Find the row where **From** = `INTERNAL_PURCHASE_REQUISITION` and **To** = `INTERNAL_PURCHASE_ORDER`. Click that row to open **Edit Approval Monitor**.
-4. On the edit screen, **uncheck** the box **"Is Document Conversion Required"**.
-5. If there is an **Update** or **Save** button, click it to save. If the Edit screen has no update action available in your setup, you can instead:
-   - Click **Back**, then use **Delete** from the listing or edit screen to remove the existing rule (only if you’re sure no other process needs it), then
-   - Click **+** (Create) to **Add Approval Monitor** and create a new rule with **From**: `INTERNAL_PURCHASE_REQUISITION`, **To**: `INTERNAL_PURCHASE_ORDER`, **Remarks** as needed, and **leave "Is Document Conversion Required" unchecked**. Click **ADD** to save.
-
-After the rule is updated or recreated with the checkbox off, users can submit POs for approval even when the PO was not created from a Purchase Requisition.
+**Q: How do I disable "document conversion required" for PR→PO?**  
+A: **Settings** → **Approval Monitor** → edit rule **From** `INTERNAL_PURCHASE_REQUISITION` **To** `INTERNAL_PURCHASE_ORDER` → uncheck **Is Document Conversion Required** → save. See detailed steps in your tenant’s admin runbook if the edit screen differs.
 
 ---
