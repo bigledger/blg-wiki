@@ -387,8 +387,48 @@ The system allows for complex point interactions:
 3.  **Expiry**: Points can be set to expire based on rules you define (e.g., "Expires December 31" or "Expires 12 months after earning")
 4.  **Balance Tracking**: Members see their current balance in real-time via mobile app or website
 
+### Where members earn and spend points (POS and Sales Order)
+
+Membership Admin is where you **configure** the program. **POS General Applet** and **Sales Order (Internal)** are where staff **use** it during real sales.
+
+**What you set up here → what happens at checkout**
+
+| You configure in Membership Admin | What staff do in POS / Sales Order | What the member gets |
+|-----------------------------------|------------------------------------|----------------------|
+| **Member Class** and **Labels** | Link the member as **Customer** on the sale | Eligible **member pricing** (if pricebooks are set up) |
+| **PTS CCY Module** + **Member Class** | Complete the sale (**Final** in POS, **FINAL** in Sales Order) | **Points earned** on the paid amount |
+| **PTS to CCY Config** | Apply points at **Settlement** before finishing payment | **Money off the bill** (points deducted from balance) |
+
+**Member pricing vs points — do not mix them up**
+
+- **Member pricing (Pricebook):** Automatic discounts on items for eligible members. This is a **lower price** on the receipt. It does **not** use the member's point balance.
+- **Earn points:** After the sale is finalized and paid, points are added to the member's wallet. Check **Membership Edit → Point Transaction** to confirm.
+- **Redeem points:** Staff apply the member's points as payment using your **PTS to CCY** rate (for example, 100 points = RM1 off). Points are **deducted** from the wallet.
+
+**Typical flow at the counter (POS)**
+
+1. Cashier selects the member as **Customer** (search by phone, name, or card).
+2. Items are rung up — member prices apply automatically if configured.
+3. Customer pays — optionally use points at settlement, then other payment methods for the remainder.
+4. Cashier clicks **Final** — points are earned and the member balance updates.
+
+**Typical flow for internal orders (Sales Order)**
+
+1. Select the member-linked **Customer / Entity** on the order.
+2. Add line items — member pricing applies on eligible products.
+3. Add **Settlement** lines (cash, points, etc.) as needed.
+4. Click **FINAL** — points are earned the same way as POS.
+
+**Before go-live, confirm**
+
+- **PTS to CCY Config** is **ACTIVE** if you allow pay-with-points.
+- Member **Class** and **Labels** match your pricebook rules (for discounts).
+- Test one sale in POS and one in Sales Order; verify **Point Transaction** on the member profile.
+
+For pricebook setup, see [Pricebook Configuration](/modules/membership/configuration/rewards-setup/pricebook-configuration/). For POS earn/redeem detail, see [POS Integration](/modules/membership/integration/pos-integration/).
+
 {{< callout type="info" >}}
-**Behind-the-Scenes Explanation:** When a member makes a purchase, the system checks their **Class** to determine earning rate (e.g., Gold = 2x points), updates their **Points Wallet**, checks if they have enough balance for redemption, and applies any **Label**-based bonus offers.
+**Behind-the-Scenes Explanation:** When a member completes a sale in **POS** or **Sales Order**, the system applies **Class**-based earning rules, updates the **Points Wallet**, and can apply **Label**-based offers. Member **pricebook** discounts and **point redemption** are separate — discounts change the item price; redemption uses the member's point balance at settlement.
 {{< /callout >}}
 
 
