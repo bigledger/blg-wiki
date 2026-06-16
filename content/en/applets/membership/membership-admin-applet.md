@@ -114,17 +114,12 @@ Before diving into the system, take time to make these key business decisions. T
 
 **Tenant Administrators:**
 - Configure system-wide settings and field visibility
-- Manage webhooks for integration with external systems
-- specific permission controls for teams and users
+- Set up permissions for teams and users
 
 **Finance Teams:**
 - Oversee points-to-money conversion rates
 - Audit point transactions and liability
 - Generate membership financial reports
-
-{{< callout type="info" >}}
-**New to loyalty programs?** See the [Glossary](#glossary) at the bottom of this guide for plain-English definitions of technical terms (API, webhook, POS, etc.).
-{{< /callout >}}
 
 ### What Problems Does This Solve?
 
@@ -141,7 +136,7 @@ Managing a membership program often involves scattered spreadsheets, disconnecte
 - **Centralized Profile Management** - A single source of truth for all member data, accessible via mobile and web.
 - **Flexible Currency Logic** - Support for multiple point currencies and conversion rates.
 - **Dynamic Tiering** - Automated or manual management of Member Classes and Privileges.
-- **Integration Ready** - Webhooks and API support for connecting to POS and eCommerce.
+- **Connected to checkout** - Works with POS and Sales Order so members can earn and use points when they shop.
 - **Audit capabilities** - Full visibility into point adjustments and member changes.
 
 ## Key Features Overview
@@ -387,48 +382,48 @@ The system allows for complex point interactions:
 3.  **Expiry**: Points can be set to expire based on rules you define (e.g., "Expires December 31" or "Expires 12 months after earning")
 4.  **Balance Tracking**: Members see their current balance in real-time via mobile app or website
 
-### Where members earn and spend points (POS and Sales Order)
+### Where members earn and spend points (POS and Sales Order) {#where-members-earn-and-spend-points-pos-and-sales-order}
 
-Membership Admin is where you **configure** the program. **POS General Applet** and **Sales Order (Internal)** are where staff **use** it during real sales.
+Membership Admin is where you **configure** the program. When a **member** shops through **POS General Applet** or **Sales Order (Internal)**, they can **earn points** and **use their point balance** based on your settings.
 
-**What you set up here → what happens at checkout**
+**What you set up here → what the member gets at checkout**
 
-| You configure in Membership Admin | What staff do in POS / Sales Order | What the member gets |
-|-----------------------------------|------------------------------------|----------------------|
-| **Member Class** and **Labels** | Link the member as **Customer** on the sale | Eligible **member pricing** (if pricebooks are set up) |
-| **PTS CCY Module** + **Member Class** | Complete the sale (**Final** in POS, **FINAL** in Sales Order) | **Points earned** on the paid amount |
-| **PTS to CCY Config** | Apply points at **Settlement** before finishing payment | **Money off the bill** (points deducted from balance) |
+| You configure in Membership Admin | What the member gets |
+|-----------------------------------|----------------------|
+| **Member Class** and **Labels** | Eligible **member pricing** (automatic discounts when they are linked to the sale) |
+| **PTS CCY Module** + **Member Class** | **Points earned** on the purchase when the sale is completed |
+| **PTS to CCY Config** | Option to **pay with their points** (money off the bill) |
 
 **Member pricing vs points — do not mix them up**
 
 - **Member pricing (Pricebook):** Automatic discounts on items for eligible members. This is a **lower price** on the receipt. It does **not** use the member's point balance.
-- **Earn points:** After the sale is finalized and paid, points are added to the member's wallet. Check **Membership Edit → Point Transaction** to confirm.
-- **Redeem points:** Staff apply the member's points as payment using your **PTS to CCY** rate (for example, 100 points = RM1 off). Points are **deducted** from the wallet.
+- **Earn points:** After the member pays and the sale is finalized, points are added to **their wallet**. You can confirm in **Membership Edit → Point Transaction**.
+- **Use points:** The member applies **their own** point balance toward payment using your **PTS to CCY** rate (for example, 100 points = RM1 off). Points are **deducted** from the member's wallet.
 
-**Typical flow at the counter (POS)**
+**Typical member experience at the counter (POS)**
 
-1. Cashier selects the member as **Customer** (search by phone, name, or card).
+1. The member identifies themselves at checkout (membership card, phone number, or app).
 2. Items are rung up — member prices apply automatically if configured.
-3. Customer pays — optionally use points at settlement, then other payment methods for the remainder.
-4. Cashier clicks **Final** — points are earned and the member balance updates.
+3. The member may choose to **use points** toward payment; any remainder is paid by cash, card, or other methods.
+4. When the sale is **Final**, new points are **earned** and the member's balance updates.
 
-**Typical flow for internal orders (Sales Order)**
+**Typical member experience (Sales Order)**
 
-1. Select the member-linked **Customer / Entity** on the order.
-2. Add line items — member pricing applies on eligible products.
-3. Add **Settlement** lines (cash, points, etc.) as needed.
-4. Click **FINAL** — points are earned the same way as POS.
+1. The member is linked as the **Customer / Entity** on the order.
+2. Line items show member pricing where configured.
+3. The member may **use points** as part of **Settlement** if your program allows it.
+4. When the order is **FINAL**, points are **earned** the same way as POS.
 
 **Before go-live, confirm**
 
-- **PTS to CCY Config** is **ACTIVE** if you allow pay-with-points.
+- **PTS to CCY Config** is **ACTIVE** if members can pay with points.
 - Member **Class** and **Labels** match your pricebook rules (for discounts).
-- Test one sale in POS and one in Sales Order; verify **Point Transaction** on the member profile.
+- Run a test purchase as a member in POS and Sales Order; verify **Point Transaction** on the member profile.
 
-For pricebook setup, see [Pricebook Configuration](/modules/membership/configuration/rewards-setup/pricebook-configuration/). For POS earn/redeem detail, see [POS Integration](/modules/membership/integration/pos-integration/).
+For pricebook setup, see [Pricebook Configuration](/modules/membership/configuration/rewards-setup/pricebook-configuration/). For POS earn and redeem detail, see [POS Integration](/modules/membership/integration/pos-integration/).
 
 {{< callout type="info" >}}
-**Behind-the-Scenes Explanation:** When a member completes a sale in **POS** or **Sales Order**, the system applies **Class**-based earning rules, updates the **Points Wallet**, and can apply **Label**-based offers. Member **pricebook** discounts and **point redemption** are separate — discounts change the item price; redemption uses the member's point balance at settlement.
+When a member completes a purchase in **POS** or **Sales Order**, the system applies **Class**-based earning rules and updates their **Points Wallet**. Member **pricebook** discounts and **using points to pay** are separate — discounts change the item price; paying with points uses the member's own balance.
 {{< /callout >}}
 
 
@@ -467,7 +462,7 @@ For pricebook setup, see [Pricebook Configuration](/modules/membership/configura
 - [ ] Verify dates are YYYY-MM-DD format
 - [ ] Check phone numbers have country codes
 - [ ] Check for duplicate name + phone combinations
-- [ ] Save as UTF-8 encoded CSV
+- [ ] Save as CSV
 
 **Common Errors:**
 - Duplicate member -> Same name and phone updates the existing record
@@ -479,13 +474,13 @@ For pricebook setup, see [Pricebook Configuration](/modules/membership/configura
 
 ### Permission Matrix Quick Guide
 
-| Role | View Members | Adjust Points | Delete Members | Configure System |
-|------|-------------|---------------|----------------|------------------|
-| **Cashier** | Yes | No | No | No |
-| **Support Agent** | Yes | Yes | No | No |
-| **Supervisor** | Yes | Yes | No | No |
-| **Marketing Manager** | Yes | No | No | Limited (labels only) |
-| **Tenant Admin** | Yes | Yes (unlimited) | Yes | Yes |
+| Role | View Members | Delete Members | Configure System |
+|------|-------------|----------------|------------------|
+| **Cashier** | Yes | No | No |
+| **Support Agent** | Yes | No | No |
+| **Supervisor** | Yes | No | No |
+| **Marketing Manager** | Yes | No | Limited (labels only) |
+| **Tenant Admin** | Yes | Yes | Yes |
 
 ---
 
@@ -1132,77 +1127,6 @@ Optional: Gender, Address
 
 ---
 
-### Webhooks (For Technical Integrations)
-
-**What it is (Simple Explanation):** An automatic notification your system sends to other systems when something important happens.
-
-**Real-World Analogy:** Like setting up your door to automatically send a text message to your phone every time someone rings the bell. You don't have to constantly check - you get notified when it happens.
-
-**Common Use Cases:**
-
-**Example 1: Notify POS When Member Upgrades**
-```
-Trigger: Member upgraded from Silver to Gold
-Webhook sends message to POS: "Update member #12345 to Gold discount"
-POS automatically applies new discount rate at checkout
-```
-
-**Example 2: Update Mobile App When Points Change**
-```
-Trigger: Member earned/redeemed points
-Webhook sends message to app backend
-App shows updated balance without member needing to refresh
-```
-
-**Example 3: Sync with Email Marketing System**
-```
-Trigger: Member assigned "VIP" label
-Webhook notifies email system: "Add to VIP campaign list"
-Member automatically gets VIP newsletters
-```
-
----
-
-**How to Set Up a Webhook (For Admins with IT Support):**
-
-{{< callout type="warning" >}}
-**Technical Note:** Setting up webhooks usually requires coordination with your IT team or software vendor. Don't attempt this alone if you're not technical.
-{{< /callout >}}
-
-1. Go to `Settings > Webhooks`
-2. Click **Create New Webhook**
-3. Fill in:
-   - **Webhook Name**: Internal label (e.g., "POS Tier Sync")
-   - **Trigger Event**: What activates this (e.g., "On Member Tier Change")
-   - **Endpoint URL**: The web address to send data to (provided by receiving system's IT team)
-   - **Authentication**: Security credentials (if required)
-   - **Payload Format**: What data to send (usually JSON - your IT team will define this)
-4. **Test**: Click "Send Test" to verify it works
-5. **Save & Enable**
-
-**Available Trigger Events:**
-- On Member Registration
-- On Points Earned
-- On Points Redeemed
-- On Points Expired
-- On Member Tier Change
-- On Label Assigned/Removed
-- On Profile Update
-
-**What the receiving system gets:**
-```json
-{
-  "event": "tier_upgrade",
-  "member_id": "12345",
-  "member_name": "Sarah Chen",
-  "old_tier": "Silver",
-  "new_tier": "Gold",
-  "timestamp": "2025-12-15T10:30:00Z"
-}
-```
-
----
-
 ### Permission Setup Playbook
 
 **What this section covers:** How to configure access using the permission screens that are actually wired in this applet source.
@@ -1213,15 +1137,15 @@ Member automatically gets VIP newsletters
 
 **Permission and visibility screens available in this applet:**
 
-- `Settings > Permission Wizard` (`settings/permission-wizard-listing`)
-- `Settings > Permission Set` (`settings/permission-set-listing`)
-- `Settings > User Permission` (`settings/user-permission-listing`)
-- `Settings > Team Permission` (`settings/team-permission-listing`)
-- `Settings > Role Permission` (`settings/role-permission-listing`)
-- `Settings > Client-Side Permission` (`settings/client-side-permission-listing`)
-- `Settings > Feature Visibility` (`settings/feature-visibility`)
+- **Settings > Permission Wizard**
+- **Settings > Permission Set**
+- **Settings > User Permission**
+- **Settings > Team Permission**
+- **Settings > Role Permission**
+- **Settings > Client-Side Permission**
+- **Settings > Feature Visibility**
 
-**Step-by-step setup flow (button-accurate):**
+**Step-by-step setup flow:**
 
 1. Go to **Settings > Permission Wizard**.
 2. Open the required template, then go to the **Targets** tab:
@@ -1244,26 +1168,24 @@ Member automatically gets VIP newsletters
 6. Configure **Settings > Feature Visibility** so users only see allowed menu modules.
 7. Validate using a test login from the target group before assigning to production users.
 
-**Permission keys observed in source and what they affect:**
+**Common permission effects:**
 
-| Permission Key | Observed Usage | Practical Impact |
-|---|---|---|
-| `API_TNT_DM_CRM_MEMBERSHIP_CARD_HDR_READ` | Permission inquiry on app init; used for branch target filtering in member listing/create/edit | Controls read scope and which branch targets are available for membership card data |
-| `API_TNT_DM_CRM_MEMBERSHIP_CARD_HDR_CREATE` | Permission inquiry on app init | Required for create flows tied to membership card header domain |
-| `API_TNT_DM_CRM_MEMBERSHIP_CARD_HDR_UPDATE` | Permission inquiry on app init | Required for update flows tied to membership card header domain |
-| `TNT_TENANT_ADMIN` | Permission inquiry on app init | Tenant-level admin capability check |
-| `TNT_TENANT_OWNER` | Permission inquiry on app init | Tenant owner-level capability check |
-| `EDIT_MEMBERSHIP_END_DATE` | `*appPermission` gate in member create/edit screens | Controls whether Membership End Date field is shown/editable |
+| Setting | What it controls |
+|---------|------------------|
+| Read access | Which members and branches a user can view in **Member Listing** |
+| Create / update access | Whether a user can register members or edit profiles |
+| Client-side permissions | Specific buttons and fields (for example, editing **Membership End Date**) |
+| Feature visibility | Which sidebar menus appear for each role |
 
 ---
 
 **Troubleshooting: "I still can't see or do X"**
 
-1. **Menu item missing** -> check `Feature Visibility` first.
-2. **Page opens but button/field missing** -> verify Client-Side Permission and app permission assignment (example: `EDIT_MEMBERSHIP_END_DATE`).
-3. **Can open page but data scope is too narrow** -> verify target assignment and branch scope for read permission (`API_TNT_DM_CRM_MEMBERSHIP_CARD_HDR_READ`).
-4. **Permission pages missing in Settings** -> confirm your shared settings menu deployment exposes permission routes.
-5. **Changes not reflected** -> log out/in and retest with a clean user session.
+1. **Menu item missing** → check **Feature Visibility** first.
+2. **Page opens but button or field missing** → verify **Client-Side Permission** and role assignment.
+3. **Can open page but data scope is too narrow** → verify branch or target assignment with your administrator.
+4. **Permission pages missing in Settings** → confirm your tenant exposes the permission menus.
+5. **Changes not reflected** → log out and in, then retest with a clean user session.
 
 ---
 
@@ -1530,14 +1452,14 @@ A: They refer to the same feature. The menu label is **Member Privilege**, while
 
 **Q: How does this integrate with POS?**
 
-A: Typical flow:
-1. POS identifies member
-2. Membership applet returns profile/tier/balance
-3. POS completes sale
-4. POS sends earn/redeem transaction to membership applet
-5. Membership applet updates wallet and history
+A: You configure points and conversion rates in this applet. When a **member** shops at POS:
+1. The member identifies at checkout (card, phone, or app).
+2. Member pricing applies if configured.
+3. The member may **use their points** toward payment.
+4. When the sale is completed, the member **earns new points** on the purchase.
+5. The updated balance appears in **Membership Edit → Point Transaction** (and in the member app if enabled).
 
-Webhooks can then notify downstream systems (e.g., CRM, mobile app, marketing tools).
+See [Where members earn and spend points (POS and Sales Order)](#where-members-earn-and-spend-points-pos-and-sales-order) for the full flow.
 
 ---
 
@@ -1574,115 +1496,3 @@ A: Only if transferability is enabled on that currency. Most organizations keep 
 A: Filter transaction history by type = **Adjusted** and export with fields for user, timestamp, reason, and reference number.
 
 ---
-
-## Glossary
-
-**Simple definitions for technical terms used in this system**
-
-{{< figure src="/images/membership-admin-applet/system-glossary.png" alt="System Glossary infographic showing definitions for Webhook (The 'Doorbell' - notifies external systems), API (The 'Connector' - allows systems to talk), Rolling Expiry (The '12-Month Clock' - points expire after one year), Liability (The 'Debt' - value of unspent points), and Backend (The 'Engine' - applet running behind scenes)" caption="System Glossary: Visual guide to key technical terms used in the Membership Admin Applet." >}}
-
-**API (Application Programming Interface)**
-A way for two software systems to talk to each other automatically (like your POS system talking to this membership system).
-
----
-
-**Backend**
-The behind-the-scenes system that customers don't see but that stores all the data and rules (this applet is the backend for your loyalty program).
-
----
-
-**Bulk Operations**
-Doing many things at once instead of one-by-one (e.g., uploading 1,000 members from a file instead of typing them individually).
-
----
-
-**CSV File**
-A simple spreadsheet file format (Comma-Separated Values) that most programs can read, often used for importing/exporting data.
-
----
-
-**Currency (in Points Context)**
-A type of point in your loyalty program (like "Reward Points" or "Status Miles" - not actual money, but a unit of value your program uses).
-
----
-
-**Expiry Policy**
-The rule that says when points become invalid and get removed (e.g., "Points expire December 31st each year").
-
----
-
-**Integration**
-Connecting your membership system to other systems (like your POS, website, or mobile app) so they can share data automatically.
-
----
-
-**Label (Member Label)**
-A flexible tag you put on members to group them for marketing (like tagging all "Vegetarian" members so you can send them veggie promotions).
-
----
-
-**Liability (Points Liability)**
-The total value of all outstanding points across all members - money your business owes if everyone redeemed at once (important for accounting).
-
----
-
-**Member Class (also called Member Privilege)**
-A membership tier like Bronze, Silver, or Gold that gives different benefits at each level.
-
----
-
-**PII (Personally Identifiable Information)**
-Sensitive personal data like ID numbers, birth dates, or addresses that need privacy protection under data laws.
-
----
-
-**POS (Point of Sale)**
-Your store's cash register or checkout system where customers pay for purchases.
-
----
-
-**Real-Time**
-Happens instantly without delay (e.g., when you add points to a member, they see it immediately in their app).
-
----
-
-**Redemption**
-When a member uses (spends) their points to get something (like a discount or free item).
-
----
-
-**Segmentation**
-Dividing your members into groups based on shared traits (like age, spending habits, or interests) for targeted marketing.
-
----
-
-**Tier Upgrade/Downgrade**
-Moving a member from one class to another (e.g., promoting from Silver to Gold when they hit spending targets).
-
----
-
-**Transferability**
-Whether members are allowed to gift or send their points to other members.
-
----
-
-**Transaction History**
-A complete record of every point a member has earned, spent, adjusted, or lost to expiry.
-
----
-
-**Webhook**
-An automatic notification sent from one system to another when something happens (e.g., "Send a message to the POS system when a member upgrades to Gold").
-
----
-
-**White-Glove Treatment**
-Extra-special customer service given to VIP members (like dedicated support, priority handling, etc.).
-
----
-
-{{< callout type="info" >}}
-**Still confused by a term?** Contact your tenant administrator or technical support team. They can explain it in the context of how your specific business uses the system.
-{{< /callout >}}
-
-
