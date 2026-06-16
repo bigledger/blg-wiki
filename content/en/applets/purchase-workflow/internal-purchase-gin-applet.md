@@ -8,15 +8,100 @@ tags:
 - warehouse-operations
 - procurement-management
 weight: 170
+date: 2026-04-06
+lastmod: 2026-06-16
+draft: false
 ---
 
 ## Purpose and Overview
 
-The **Purchase GIN (Internal) Applet** is a powerful tool designed to streamline the management of Goods Issue Notes (GIN) for purchase-related transactions. It enables warehouse and purchasing teams to document and track the release of goods from inventory, whether for supplier returns, transfers, or other purchase-related dispatches.
+The **Purchase GIN (Internal) Applet** manages **Goods Issue Notes (GIN)** for purchase-related stock movements. Use it when goods **leave your warehouse toward a supplier** — for example returns of defective items, warranty send-backs, or sample dispatch.
 
 {{< callout type="info" >}}
-**Core Concept**: The system links **what** is being issued (Items) to **where** it's going (Supplier/Account) and **how** it's tracked (Inventory, Payment & Settlement).
+**Core Concept**: GIN links **what** is leaving (items and quantity), **who** receives it (supplier), and **how** it is tracked (inventory, serial/batch/bin, and settlement).
 {{< /callout >}}
+
+### When to use GIN vs GRN {#when-to-use-gin-vs-grn}
+
+These are **different documents for opposite stock movements**. Do not use them interchangeably.
+
+| Document | Full name | Stock direction | When to use it |
+|----------|-----------|-----------------|----------------|
+| **GRN** | Goods Received Note | **Into** your warehouse | Supplier goods **arrive** — you confirm receipt and **post stock in** |
+| **GIN** | Goods Issue Note | **Out of** your warehouse | Goods **leave** to a supplier — returns, warranty claims, samples, or other purchase-side dispatch |
+
+**Simple rule:** **GRN increases stock. GIN reduces stock.**
+
+| Situation | Use this document |
+|-----------|-------------------|
+| Delivery arrived at your dock; you are receiving into inventory | [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/) |
+| You are sending goods back to the supplier (defective, warranty, samples) | **Purchase GIN (Internal)** — this applet |
+| You need to match PO receipt with invoice for payment | **GRN** (receipt leg of three-way matching) |
+| You need a dispatch record and stock reduction for a supplier return | **GIN** |
+
+### Where GIN fits in the purchase flow
+
+```
+Purchase Order (FINAL)
+        ↓
+GRN / Stock In              ← receive goods INTO inventory
+        ↓
+Purchase Invoice            ← finance matches PO + GRN + invoice
+        ↓
+[If goods must go back to supplier]
+        ↓
+Purchase GIN (FINAL)        ← send goods OUT to supplier
+        ↓
+Supplier credit note / contra
+```
+
+| Step | Who typically acts | Applet |
+|------|-------------------|--------|
+| Order from supplier | Purchasing | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) |
+| Receive goods | Warehouse | [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/) |
+| Return goods to supplier | Warehouse / purchasing | **Purchase GIN (Internal)** |
+| Settle with supplier | Finance | Purchase invoice / credit note process |
+
+If samples or rejected returns **come back** to you later, receiving may use a **GRN** again — reference the original GIN in **Reference** or **Remarks** for traceability.
+
+---
+
+### What happens when you create a GIN {#what-happens-when-gin-is-created}
+
+**Two stages matter:** saving a **draft** vs **finalizing** the document.
+
+#### When you create and SAVE (draft)
+
+1. A new GIN appears in **Purchase GIN (Internal)** listing with **DRAFT** posting status.
+2. You fill **Main Details**, **Account** (supplier), and **Lines**.
+3. **No inventory change yet** — stock stays the same while the document is a draft.
+4. You can return later to edit, add lines, or discard the draft.
+
+Use **SAVE** when you still need supplier return authorization (RA), photos, or final quantities.
+
+#### When you FINAL (post the GIN)
+
+1. **Inventory is reduced** — issued quantities are deducted from warehouse stock.
+2. **Serial, batch, and bin records update** — tracked units are marked as issued from those locations.
+3. Posting status becomes **FINAL** — the document is treated as posted for audit and reporting.
+4. **Normal editing is restricted** — corrections usually require void/reversal per your company policy.
+5. **Print and dispatch** — print the GIN for the courier or supplier; add **Tracking ID** when shipped.
+6. **Finance follow-up** — optional **Contra** on the **Payment** tab offsets an unpaid purchase invoice; otherwise finance waits for the supplier **credit note** and matches it to this GIN.
+
+**Nothing moves in stock until you FINAL.** Draft saves are for preparation only.
+
+| Action | Posting status | Inventory impact | Can you edit? |
+|--------|----------------|------------------|---------------|
+| **SAVE** | DRAFT | None | Yes |
+| **FINAL** | FINAL | Stock **reduced** | Mostly locked |
+| **VOID** | VOID | Reversed when permitted | No — correction document |
+| **DISCARD** | Draft removed | None | Draft cancelled |
+
+{{< callout type="warning" >}}
+**Before you FINAL:** Confirm supplier, quantities, serial/batch numbers, and return authorization. After **FINAL**, stock has already left your books — reversing requires a controlled void or reversal process.
+{{< /callout >}}
+
+---
 
 ## Key Features Overview
 
@@ -90,6 +175,8 @@ Traditional goods issue management relies on paper forms and disconnected system
 ## Key Features Overview
 
 {{< cards >}}
+  {{< card title="GIN vs GRN" subtitle="When to use each document" link="#when-to-use-gin-vs-grn" >}}
+  {{< card title="What happens on FINAL" subtitle="Draft vs posted GIN" link="#what-happens-when-gin-is-created" >}}
   {{< card title="GIN Document Management" subtitle="Create and manage purchase GINs with ease" link="#for-warehouse-staff-create-your-first-gin" >}}
   {{< card title="Line Item Tracking" subtitle="Detailed tracking with serial/batch/bin numbers" link="#line-items-tracking-what-was-issued" >}}
   {{< card title="Supplier Management" subtitle="Complete supplier account integration" link="#supplier--account-management" >}}
@@ -374,7 +461,7 @@ A **Goods Issue Note (GIN)** for purchases documents the release of goods from y
 | **Bin Location** | Physical warehouse location | Shelf A3, Row 5 |
 
 {{< callout type="tip" >}}
-**Real-World Example**: A warehouse receives defective electronic components. The purchasing team creates a Purchase GIN to document returning 10 units to Supplier XYZ. The system records serial numbers, updates inventory (adds stock back as "available to return"), and creates a record for the finance team to process the supplier credit.
+**Real-World Example**: A warehouse finds 10 defective monitors from a recent GRN receipt. Purchasing obtains a return authorization from the supplier. Warehouse creates a Purchase GIN, lists all 10 serial numbers, and **FINAL** when goods ship. Stock drops by 10 units. Finance matches the supplier credit note to the GIN record.
 {{< /callout >}}
 
 ---
@@ -1924,6 +2011,12 @@ If using issue tracking integration:
 ---
 
 ## FAQ
+
+**Q: When should I use GIN instead of GRN?**  
+A: Use **GRN** when goods **arrive** from a supplier and you need to **receive stock in**. Use **GIN** when goods **leave** your warehouse **to** a supplier (returns, warranty send-back, samples). GRN increases inventory; GIN decreases it. See [When to use GIN vs GRN](#when-to-use-gin-vs-grn).
+
+**Q: What happens when I create a GIN?**  
+A: Creating and **SAVE** gives you a **DRAFT** — no stock change, fully editable. **FINAL** posts the document, **reduces inventory**, locks the GIN, and triggers finance follow-up (contra or supplier credit note). See [What happens when you create a GIN](#what-happens-when-gin-is-created).
 
 **Q: Where do I find the Purchase GIN (Internal) Applet?**  
 A: Go to **Purchase GIN (Internal)** in the sidebar (typically under Purchasing or Warehouse Management, depending on your tenant setup). If you don't see it, your role may not have access—contact your administrator.
