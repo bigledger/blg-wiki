@@ -1,6 +1,6 @@
 ---
 title: "Supplier Delivery Order Applet"
-description: "Create and manage supplier delivery orders in BigLedger: listing, document workspace, driver listing, and standard settings."
+description: "Record supplier shipments and delivery details between purchase ordering and goods receipt in BigLedger."
 tags:
   - purchase-workflow
   - supplier-delivery-order
@@ -9,67 +9,117 @@ tags:
   - delivery-management
 weight: 265
 date: 2026-04-06
-lastmod: 2026-04-25
+lastmod: 2026-06-16
 draft: false
 ---
 
 ## Purpose and Overview {#purpose-and-overview}
 
-The **Supplier Delivery Order Applet** is where your organisation records **supplier delivery orders** in one place: search and open documents from a central listing, capture **main** and **account** (supplier) details, maintain **lines** after the document exists, and—when your project enables it—use **Driver Listing** for driver-related access. Behaviour follows the same configurable document pattern as other BigLedger procurement applets (field settings, printable formats, feature visibility, permissions, webhooks).
+The **Supplier Delivery Order Applet** is where your organisation records a **supplier delivery order (SDO)** — what a supplier is shipping, to whom, and in what quantity — before or while goods are in transit. It gives procurement and logistics a structured hand-off to warehouse receiving.
 
 {{< callout type="info" >}}
-**In plain English:** A supplier delivery order is a structured record of what is being delivered and **who** it is for (supplier and delivery context). Your tenant controls which tabs, fields, and actions appear through **Settings** and permissions.
+**Core concept:** A supplier delivery order sits **between ordering and receiving**. You use the **Purchase Order** to commit to a buy, this applet to capture **shipment / delivery details**, and the **GRN (Goods Received Note)** to confirm what physically arrived and post stock.
 {{< /callout >}}
+
+### Where this fits in procurement
+
+| Document | What it represents | Typical timing |
+|----------|-------------------|----------------|
+| **Purchase Order (PO)** | What you ordered (items, qty, price, terms) | Before goods arrive |
+| **Supplier Delivery Order (SDO)** | What the supplier is delivering / shipping | When goods are shipped or about to arrive |
+| **GRN (Goods Received Note)** | What you physically received into stock | After delivery at the warehouse |
+| **Purchase Invoice** | What you pay the supplier | After receipt (matched to PO and GRN) |
+
+**Internal Delivery Order** is a **different document type** used for internal outbound delivery flows. It is not the same as a **supplier delivery order**, even though some shared screens in BigLedger reuse similar layouts.
+
+### Procurement flow
+
+```
+Purchase Order (FINAL)
+        ↓
+Supplier Delivery Order   ← this applet
+        ↓
+GRN / Stock In            ← warehouse confirms receipt
+        ↓
+Purchase Invoice          ← finance three-way match
+```
+
+| Step | Who typically acts | Applet |
+|------|---------------------|--------|
+| Place the order | Buyer / procurement | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) |
+| Record shipment details | Buyer / logistics | **Supplier Delivery Order** |
+| Receive goods | Warehouse | [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/) |
+| Match and pay | Finance | Purchase Invoice (your tenant’s purchase invoice applet) |
 
 ### Who uses this applet?
 
-**Procurement and buyers**
+**Procurement and buyers** — Create SDOs and link the correct supplier and header details.
 
-- Create delivery orders and keep supplier and header information accurate.
+**Warehouse and logistics** — Review expected delivery lines before or during receipt.
 
-**Warehouse and logistics**
+**Administrators** — Configure **Application Settings**, defaults, printable formats, feature visibility, and permissions.
 
-- Confirm delivery-related data and line detail on existing documents.
-
-**Drivers or logistics coordinators**
-
-- Use **Driver Listing** when that menu is enabled for your role.
-
-**Administrators**
-
-- Tune **Application Settings** (field configuration), defaults, printable formats, custom status, email templates, webhooks, feature visibility, and access through the standard **Settings** tools.
+**Driver coordinators** — Manage **Driver Listing** (supplier-linked driver login accounts) when that menu is enabled.
 
 ---
 
-### What problems does this solve? {#what-problems-does-this-solve}
+## Before you start {#before-you-start}
 
-**Without a dedicated applet**, delivery instructions and supplier delivery context are often scattered across email and spreadsheets, which weakens traceability and makes hand-offs to receiving harder.
+- Confirm the **supplier** exists in master data ([Supplier Applet](/applets/master-data/supplier-applet-1/)).
+- Know your **Company**, **Branch**, and **Location** for the delivery context.
+- If your process ties SDOs to a PO, confirm the PO is **FINAL** and open quantities still apply (follow your tenant’s knock-off rules).
+- Prepare shipment evidence: supplier reference, expected delivery date, and line quantities.
+- Confirm you have create, update, and (if required) delete permission on this applet.
 
-**With this applet**, you get:
+---
 
-- A single **Supplier Delivery Order Listing** with search and grid tools.
-- A consistent document workspace for **main details**, **account**, and **lines** (lines are maintained on the edit screen in the current build).
-- Optional **Driver Listing** for workflows your organisation turns on.
-- **Settings** and **Personalization** aligned with other BigLedger applets.
+## Glossary {#glossary}
 
-{{< callout type="info" >}}
-**Missing a menu, tab, or button?** Your administrator controls **feature visibility**, **field settings**, and **permissions**. Ask your admin if something you expect is hidden by design.
-{{< /callout >}}
+| Term | Meaning in this guide |
+|------|------------------------|
+| **SDO** | Supplier Delivery Order — shipment / delivery record for incoming supplier goods. |
+| **PO** | Purchase Order — your commitment to buy from a supplier. |
+| **GRN** | Goods Received Note — warehouse receipt and stock-in document. |
+| **Entity Id** | Supplier account on the **Account** tab (opens **Select Supplier**). |
+| **DRAFT** | Editable document state before posting is complete. |
+| **FINAL** | Posted state; structural changes are restricted. |
+| **VOID** | Cancelled posted document (when your process allows void). |
+| **DISCARDED** | Abandoned draft that was not posted. |
+
+---
+
+## Document statuses {#document-statuses}
+
+| Status | Meaning | Can you edit? | Typical next step |
+|--------|---------|---------------|-------------------|
+| **DRAFT** | Document is being prepared | Yes — header, supplier, and lines (on edit) | Add lines, then **SAVE** |
+| **FINAL** | Document is posted / confirmed | No — add line, change supplier, and **DELETE** are blocked | Warehouse receives against it; create **GRN** per your process |
+| **VOID** | Posted document was cancelled | No | Create a replacement SDO if needed; check downstream knock-offs |
+| **DISCARDED** | Draft was abandoned | No | Start a new SDO from **+** Create |
+
+**Actions on the edit screen**
+
+- **SAVE** — Saves changes while the document is still editable. Hidden if your administrator enabled **Hide generic save button** in Application Settings.
+- **DELETE** — Removes a draft document (double-click to confirm). Hidden when posting status is **FINAL**.
+- **FINAL**, **VOID**, and **DISCARD** may exist in your tenant’s workflow but are not shown on the standard edit header in the current applet build. If your process requires posting or void from the listing, ask your administrator which controls are enabled for your role.
+
+**Who can perform actions?** Create, save, delete, and posting actions depend on **permission sets** and **feature visibility**. Your administrator assigns these.
 
 ---
 
 ## Key Features Overview {#key-features-overview}
 
 {{< cards >}}
-{{< card title="Quick Start" subtitle="Create, edit, driver listing" link="#quick-start-guide" >}}
-{{< card title="User interface" subtitle="Listing, create, edit, drivers" link="#user-interface" >}}
+{{< card title="Quick Start" subtitle="Create, add lines, save" link="#quick-start-guide" >}}
+{{< card title="Procurement flow" subtitle="PO → SDO → GRN" link="#where-this-fits-in-procurement" >}}
+{{< card title="User interface" subtitle="Listing, create, edit" link="#user-interface" >}}
 {{< card title="Configuration & Settings" subtitle="Defaults, formats, access" link="#configuration--settings" >}}
-{{< card title="Integration" subtitle="Related purchase flow" link="#integration" >}}
+{{< card title="Integration" subtitle="Related purchase documents" link="#integration" >}}
 {{< card title="FAQ" subtitle="Common questions" link="#faq" >}}
 {{< card title="Troubleshooting" subtitle="Quick fixes" link="#troubleshooting" >}}
 {{< /cards >}}
 
-{{< figure src="/images/supplier-delivery-order-applet/supplier-delivery-order-applet-overview-infographic.png" alt="Supplier Delivery Order Applet overview: from fragmented delivery communication to structured supplier delivery orders in BigLedger" caption="Supplier Delivery Order Applet: structured delivery orders, delivery context, and driver listing alongside standard BigLedger settings." >}}
+{{< figure src="/images/supplier-delivery-order-applet/supplier-delivery-order-applet-overview-infographic.png" alt="Supplier Delivery Order Applet overview: from fragmented delivery communication to structured supplier delivery orders in BigLedger" caption="Supplier Delivery Order Applet: structured delivery orders between purchase ordering and warehouse receipt." >}}
 
 ---
 
@@ -77,12 +127,18 @@ The **Supplier Delivery Order Applet** is where your organisation records **supp
 
 ### For procurement: create a supplier delivery order
 
-**Goal:** Start a new document from the listing.
+**Goal:** Start a new SDO from the listing.
 
 1. Click **Supplier Delivery Order** in the sidebar (opens **Supplier Delivery Order Listing**).
-2. Click **+** (tooltip **Create**) when it is enabled for your role.
-3. The header shows **Create Internal Delivery Order** (shared create component—the document type is still a supplier delivery order for this applet). Complete **Main Details** and **Account** on the tabs shown.
-4. Click **CREATE** to save (use **RESET** only if you intend to clear the draft). Follow your process for any further steps (for example opening the document again in **Edit Supplier Delivery Order** to add **Lines**).
+2. Click **+** (tooltip **Create**).
+3. On **Main Details**, complete **Company**, **Branch**, and **Location** (all required).
+4. Open **Account** → **Entity Details** and select the supplier (**Entity Id** opens **Select Supplier**).
+5. Click **CREATE**. A success message confirms the delivery order was created.
+6. Open the new row from the listing as **Edit Supplier Delivery Order**, go to **Lines**, add items, then click **SAVE**.
+
+{{< callout type="tip" >}}
+**Lines are added on edit, not on create.** The create screen only shows **Main Details** and **Account**. After **CREATE**, always reopen the document to add line items.
+{{< /callout >}}
 
 ---
 
@@ -91,29 +147,28 @@ The **Supplier Delivery Order Applet** is where your organisation records **supp
 **Goal:** Update an existing supplier delivery order.
 
 1. On **Supplier Delivery Order Listing**, click the row to open **Edit Supplier Delivery Order**.
-2. Review **Main Details** and **Account** (supplier, billing or shipping pickers, and related sub-screens your training covers).
-3. Open the **Lines** tab to add or change line items (**Add Line Item** / **Edit Line Item** flows open auxiliary screens such as **Select Customer** listings—labels follow shared components).
-4. Click **SAVE** when the header allows it. A **DELETE** control may appear at the bottom; use it only when policy and document state allow (confirm when the button asks to click again).
+2. Review **Main Details** and **Account** (supplier, **Bill To**, **Ship To** as your process requires).
+3. Open **Lines** → **Add Line Item** (opens **Select Item**). Add or edit lines as allowed by posting status.
+4. Click **SAVE**. At least one line is required before save is enabled.
+5. Use **DELETE** at the bottom only on drafts when policy allows (double-click to confirm).
 
 ---
 
-### For drivers or coordinators: use Driver Listing
+### For driver coordinators: Driver Listing
 
-**Goal:** Work in the driver workspace when it is visible.
+**Goal:** Manage supplier-linked driver login accounts (not delivery order documents).
 
 1. Click **Driver Listing** in the sidebar.
-2. The screen title is **Driver Listing**. Use **+** (tooltip **Create**) or **Search** as your administrator trained you.
-3. Use the grid and row actions your build provides.
+2. Use **+** (tooltip **Create**) to open **Driver Login Create**.
+3. Select **Supplier**, enter the driver’s **email or phone**, and complete verification steps your administrator configured.
 
 ---
 
 ### For administrators: first-time orientation
 
-**Goal:** Point the applet at your organisation’s defaults and access rules.
-
-1. Open **Settings** from the sidebar (owner or admin roles often see this entry; exact layout depends on your shell).
-2. Walk through **Application Settings**, **Default Selection**, **Printable Format Settings**, **Custom Status**, and **Email Template** as needed, then **Feature visibility** and permission tools your governance requires.
-3. See [Configuration & Settings](#configuration--settings) for a compact menu summary. Delegate detailed permission matrix work to **IT or tenant administrators**.
+1. Open **Settings** from the sidebar.
+2. Walk through **Application Settings**, **Default Selection**, **Printable Format Settings**, **Custom Status**, and **Email Template** as needed.
+3. Configure **Feature visibility** and permissions. See [Configuration & Settings](#configuration--settings).
 
 ---
 
@@ -121,132 +176,144 @@ The **Supplier Delivery Order Applet** is where your organisation records **supp
 
 ### Sidebar (typical)
 
-- **Supplier Delivery Order** — main listing and document entry.
-- **Driver Listing** — driver workspace when enabled.
-- **Settings** — company configuration (when your role may access it).
-- **Personalization** — personal defaults and sidebar order (when enabled).
+- **Supplier Delivery Order** — listing and documents.
+- **Driver Listing** — driver login accounts linked to suppliers.
+- **Settings** — company configuration (when permitted).
+- **Personalization** — personal defaults (when enabled).
 
 ### Supplier Delivery Order Listing
 
-{{< figure src="/images/supplier-delivery-order-applet/main-listing-page.png" alt="Supplier Delivery Order Listing grid with Create control, search, and column tools" caption="Supplier Delivery Order Listing: use the Create (+) control, search, and the grid to open or start supplier delivery orders." >}}
+{{< figure src="/images/supplier-delivery-order-applet/main-listing-page.png" alt="Supplier Delivery Order Listing grid with Create control, search, and column tools" caption="Supplier Delivery Order Listing: use Create (+), search, and the grid to open or start supplier delivery orders." >}}
 
 - Screen title: **Supplier Delivery Order Listing**.
-- Toolbar: **+** with tooltip **Create**, advanced search, and column toggle (exact controls match your theme).
-- Click a row to open **Edit Supplier Delivery Order** for an existing document.
+- Toolbar: **+** (tooltip **Create**), advanced search, column tools.
+- Click a row to open **Edit Supplier Delivery Order**.
 
-### Create Internal Delivery Order (new document)
+### Create (new document)
 
-{{< callout type="info" >}}
-The create header reads **Create Internal Delivery Order** while the applet and listing are named for **supplier delivery orders**. Treat this as the same create flow for this applet; if your training materials use different wording, follow your tenant’s standard.
-{{< /callout >}}
-
-- **Back** (arrow, tooltip **Back**) returns toward the listing when enabled.
-- Tabs on create: **Main Details**, **Account** (other tabs such as **Lines** may appear only after save or only on edit, depending on build and **Application Settings**).
+- Tabs: **Main Details**, **Account** only.
+- **Account** sub-tabs: **Entity Details**, **Bill To**, **Ship To**.
 - Actions: **RESET**, **CREATE**.
+
+**Required fields to enable CREATE**
+
+| Tab | Required fields |
+|-----|-----------------|
+| Main Details | Company, Branch, Location |
+| Account → Entity Details | Entity Id (supplier via **Select Supplier**) |
 
 ### Edit Supplier Delivery Order (existing document)
 
-- Header title: **Edit Supplier Delivery Order**.
 - Tabs: **Main Details**, **Account**, **Lines**.
-- Actions: **SAVE** (hidden when **Application Settings** hide the generic save control). **FINAL**, **VOID**, **DISCARD**, and similar actions may be available in your build; in the stock template some of those buttons are commented out—rely on what your screen shows.
-- **DELETE** at the bottom may require a second click to confirm.
+- Actions: **SAVE**; **DELETE** on drafts when permitted.
+- Invalid tabs show in **red** until validation passes.
 
-### Driver Listing
+**Required fields to enable SAVE**
 
-- Screen title: **Driver Listing**.
-- Toolbar includes **+** (tooltip **Create**) and a **Search** field.
-- Grid uses server-side paging; columns follow your configuration.
+| Requirement | Details |
+|-------------|---------|
+| Main Details | Company, Branch, Location |
+| Account | Supplier (**Entity Id**) selected |
+| Lines | At least **one line item** |
+
+After **FINAL**, you cannot add lines, change the supplier, or delete the document. Line edit and delete controls are also restricted.
 
 ---
 
 ## Configuration & Settings {#configuration--settings}
 
-Most detailed **permission and role** work belongs with your **IT or tenant administrators**. Below is the menu layout used by this applet so you know where to look.
+Most permission work belongs with **IT or tenant administrators**.
 
 ### Under Settings
 
-| Menu label (as in applet) | Purpose (plain language) |
-|---------------------------|---------------------------|
-| **Application Settings** | Field configuration: required, hidden, and visible fields and related behaviour flags. |
-| **Default Selection** | Company-wide defaults such as branch, location, and layout options your form exposes. |
-| **Printable Format Settings** | Print and PDF templates for documents. |
-| **Custom Status** | Status values used in the document lifecycle. |
-| **Email Template** | Outbound email layouts where used. |
+| Menu label | Purpose |
+|------------|---------|
+| **Application Settings** | Required, hidden, and visible fields; flags such as hide save button or disable add line when knocked off. |
+| **Default Selection** | Company-wide defaults (branch, location, layout). |
+| **Printable Format Settings** | Print and PDF templates. |
+| **Custom Status** | Custom status values for the document lifecycle. |
+| **Email Template** | Outbound email layouts. |
 
-Your routing also includes **Webhook** and **Feature visibility**, plus the usual BigLedger permission screens (permission wizard, permission sets, user, team, role, and client-side permission listings). Exact labels in the sidebar can match your shell theme.
+Also available: **Webhook**, **Feature visibility**, and standard BigLedger permission screens.
 
 ### Under Personalization
 
 | Menu label | Purpose |
 |------------|---------|
-| **Default Selection** | Personal defaults (for example branch or location) where enabled. |
-| **Sidebar** | Reorder frequent entries when your shell exposes it. |
+| **Default Selection** | Personal branch/location defaults. |
+| **Sidebar** | Reorder menu entries when enabled. |
 
 ---
 
 ## Integration {#integration}
 
-Supplier delivery orders sit in the purchase and logistics footprint:
+**Supplier master data** — SDOs resolve to supplier entities from the [Supplier Applet](/applets/master-data/supplier-applet-1/).
 
-- **Supplier master data** — documents resolve to supplier entities; listing and search depend on maintained suppliers.
-- **Branches and locations** — used when your **Main Details** or **Account** flows capture them.
+**Branches and locations** — Captured on **Main Details** for organisational and delivery context.
+
+**Line knock-off (when enabled)** — Depending on company document flow settings, line items may support knock-off from other document types (for example internal sales orders or invoices). Purchase Order and GRN knock-off tabs are not exposed on the standard line-add screen in this applet. Follow your administrator’s configured flow.
+
+**What happens after you save an SDO?**
+
+1. Warehouse or receiving uses the SDO as expected delivery reference.
+2. Goods are received in [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/) per your process.
+3. Finance matches PO, GRN, and purchase invoice for payment.
 
 **Related guides**
 
-- [Internal Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet/)
-- [Internal Purchase GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/)
-- [Internal Purchase Order Supplier Access Applet](/applets/purchase-workflow/internal-purchase-order-supplier-access-applet/)
-- [Supplier Applet (master data)](/applets/master-data/supplier-applet-1/)
+- [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/)
+- [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/)
+- [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/)
+- [Internal Purchase Order Supplier Access](/applets/purchase-workflow/internal-purchase-order-supplier-access-applet/)
+- [Supplier Applet](/applets/master-data/supplier-applet-1/)
 
 ---
 
 ## FAQ {#faq}
 
-### 1. Why does the create screen say “Create Internal Delivery Order”?
+### Where are Lines when I create a document?
 
-That header comes from a shared create layout. In this applet you are still creating a **supplier delivery order**; use **Supplier Delivery Order Listing** and your trained save path to confirm the record type your tenant stores.
+**Lines** appears only on **Edit Supplier Delivery Order**, not on the create screen. After **CREATE**, reopen the document from the listing, add lines, then **SAVE**.
 
----
+### CREATE is disabled — what should I check?
 
-### 2. I only see Main Details and Account when creating—where are Lines?
+Complete **Company**, **Branch**, **Location**, and **Entity Id** (supplier). Red tabs indicate missing required fields.
 
-In the current create template, **Lines** is not a tab on the create screen; after **CREATE**, open the document from the listing as **Edit Supplier Delivery Order** and use the **Lines** tab. Your administrator may change tab visibility through **Application Settings** or tab ordering.
+### SAVE is disabled on edit — what should I check?
 
----
+Confirm header and supplier fields are valid and you have **at least one line item**. If currencies differ, ensure the forex rate is valid.
 
-### 3. CREATE is disabled on the create screen—what should I check?
+### Can I create duplicate supplier delivery orders?
 
-Complete required fields on **Main Details** and **Account** until validation passes (invalid tabs may show in red). If **CREATE** stays disabled, ask your admin whether additional mandatory fields or permissions block submission.
+The applet has no built-in **duplicate document** action. Your team may create multiple SDOs for separate shipments; follow internal policy so references stay traceable.
 
----
+### Can I edit a finalized (FINAL) document?
 
-### 4. I cannot see Driver Listing in the sidebar
+No for practical purposes. **FINAL** locks supplier selection, blocks adding or deleting lines, and hides **DELETE**. To correct a posted SDO, follow your void-and-recreate policy or ask your administrator.
 
-**Driver Listing** is controlled by **feature visibility** and your role. Ask your administrator to enable the menu entry and confirm your user is allowed to open that route.
+### What happens after VOID?
 
----
+The document posting status becomes **VOID**. If the SDO was knocked off to another document, void may be blocked until knock-off links are resolved. Create a new SDO if the shipment still applies.
 
-### 5. The + (Create) control on the listing is disabled
+### Are lines editable after FINAL?
 
-You need create permission on this applet. Your administrator should check permission sets or user permissions and **feature visibility** for **Supplier Delivery Order**.
+Adding, deleting, and most line changes are blocked when posting status is **FINAL**, **VOID**, or **DISCARDED**.
 
----
+### I cannot see Driver Listing
 
-### 6. Why do pickers say “Customer” when this is a supplier delivery order?
+**Driver Listing** is controlled by **feature visibility** and your role. Ask your administrator to enable the menu entry.
 
-Some shared account components reuse **customer** wording in titles (for example **Select Customer Listing**). In context, pick the entity your implementation uses for the supplier or account link—follow internal training or ask your admin.
+### The + (Create) control is disabled
 
----
+You need create permission. Ask your administrator to check permission sets and **feature visibility** for **Supplier Delivery Order**.
 
-### 7. I expected a VOID or FINAL button on edit but only see SAVE
+### I expected FINAL or VOID on the edit screen but only see SAVE
 
-Those actions can be hidden or disabled by **posting status**, **Application Settings**, or commented-out UI in a given build. Use **SAVE** as shown; if your business process requires void or final, ask your administrator whether another screen or workflow step applies.
+In the current applet build, posting buttons on the edit header are not shown by default. Use **SAVE** for day-to-day edits. Ask your administrator if listing-level or workflow posting actions are enabled for your tenant.
 
----
+### Who configures webhooks, email templates, and permissions?
 
-### 8. Who configures webhooks, email templates, and permissions?
-
-Use **Settings** for **Webhook**, **Email Template**, and the permission and **Feature visibility** screens, or hand off to **IT / tenant administrators** so day-to-day users do not change access by mistake.
+Use **Settings**, or delegate to **IT / tenant administrators**.
 
 ---
 
@@ -254,19 +321,21 @@ Use **Settings** for **Webhook**, **Email Template**, and the permission and **F
 
 | Symptom | What to try |
 |---------|-------------|
-| Listing is empty | Widen search filters; confirm you have read access and that suppliers exist for your branch or company scope. |
-| Cannot create | Confirm **+** is not disabled; check create permission and **feature visibility**. |
-| Cannot save on edit | Resolve red tab validation; confirm **SAVE** is not hidden by settings and you have update permission. |
-| Driver Listing missing | Ask admin to enable the sidebar entry and your role. |
-| Wrong branch or location on new documents | Ask admin to adjust **Default Selection** (company) or your **Personalization → Default Selection** (personal). |
+| Listing is empty | Widen search filters; confirm read access and supplier scope. |
+| Cannot create | Confirm **+** is enabled; check create permission and required header/supplier fields. |
+| Cannot save on edit | Fix red tabs; add at least one line; check forex rate if applicable. |
+| Cannot add lines | Confirm posting status is not **FINAL** / **VOID** / **DISCARDED**; check knock-off settings. |
+| Driver Listing missing | Ask admin to enable sidebar entry and role access. |
+| Wrong branch or location on new documents | Adjust **Default Selection** (company or personal). |
 
-Still stuck? Capture the **document reference** (if any), **screen name**, and **time**, then contact your **BigLedger administrator** or internal help desk.
+Still stuck? Capture the **document reference**, **screen name**, and **time**, then contact your **BigLedger administrator**.
 
 ---
 
 ## Related Documentation Links
 
-- [Internal Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet/)
-- [Internal Purchase GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/)
-- [Internal Purchase Order Supplier Access Applet](/applets/purchase-workflow/internal-purchase-order-supplier-access-applet/)
-- [Supplier Applet (master data)](/applets/master-data/supplier-applet-1/)
+- [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/)
+- [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/)
+- [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/)
+- [Internal Purchase Order Supplier Access](/applets/purchase-workflow/internal-purchase-order-supplier-access-applet/)
+- [Supplier Applet](/applets/master-data/supplier-applet-1/)
