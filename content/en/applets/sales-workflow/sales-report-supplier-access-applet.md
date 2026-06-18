@@ -59,8 +59,6 @@ Traditionally, suppliers rely on delayed, manual reports sent via email or sprea
 - **Self-Service Reporting**: Suppliers can filter, search, and export data themselves.
 - **Granular Insights**: Sales performance is broken down by item code and branch.
 
-## Key Features Overview
-
 {{< cards >}}
 {{< card title="Sales Report" subtitle="Real-time sales performance by item code" link="#sales-report-by-item-code" >}}
 
@@ -188,7 +186,7 @@ Get your team up and running quickly with these essential workflows.
 
 ### Sales Report by Item Code
 
-The heart of the applet is the high-performance data grid. It provides an item-ized view of sales performance.
+The heart of the applet is the high-performance data grid. It provides an itemized view of sales performance.
 
 **Key Columns include:**
 
@@ -207,23 +205,30 @@ Refine your data to find exactly what you need:
 - **Keyword Search**: Quickly find items by name or code.
 - **Cost calculation**: Toggle between different cost bases like replacement cost.
 
+### Data Export
+
+The applet allows users to export report views for offline analysis and planning.
+
+- **Excel Format**: Download reports directly to Excel (.xlsx) format.
+- **Customized Columns**: The exported sheet respects the active field configurations (e.g. hiding cost columns if configured).
+- **Persistent Filters**: Any branch, date range, or keyword filter applied in the UI is carried over to the exported file.
+
 ---
 
 ## Configuration & Settings
 
-Admins have full control over the supplier experience:
-
-- **Supplier Settings**: Manage the core linkage between users and their data.
-- **Field Configuration**: A flexible UI to toggle column visibility on and off.
-- **Webhooks**: Configure outgoing data notifications for integration with supplier systems.
-- **Permissions**: Detailed modules for:
-  - User-level permissions.
-  - Team/Role-level permissions.
-  - Client-side permission sets.
+Admins have full control over the supplier experience.
 
 {{< figure src="/images/sales-report-supplier-access-applet/sales-report-settings.png" alt="Sales Report Supplier Access Settings - showing application and supplier configuration options" caption="Configuration & Settings: Admins can easily toggle feature visibility and manage supplier-specific access." >}}
 
-#### Field Configuration Settings
+### Supplier Settings
+
+Manage the core linkage between users and their data:
+
+- **Supplier Entity Mapping**: Map specific supplier accounts to their respective ERP codes.
+- **Data Filtering**: Ensures that upon logging in, the system automatically isolates items belonging only to the mapped supplier.
+
+### Field Configuration
 
 The **Field Configuration** menu allows retailers to control exactly which sensitive data points are shared with external suppliers.
 
@@ -234,6 +239,15 @@ The **Field Configuration** menu allows retailers to control exactly which sensi
 | **HIDE_GP_PERCENTAGE** | Hides the Margin % column.                            | **Enable** for basic trade-level transparency only.                                |
 
 **Pro Tip:** Test different permission levels to ensure that "Power Users" (Admins) can see full data while "Standard Suppliers" only see restricted fields.
+
+### Permissions & Access
+
+Define access controls for different user roles and teams:
+
+- **User-level Permissions**: Restrict actions and views for specific individual users.
+- **Team/Role-level Permissions**: Assign pre-defined roles to manage permissions in groups.
+- **Client-side Permission Sets**: Control button/feature visibility (such as exporting or advanced filter access) dynamically.
+- **Webhooks**: Configure outgoing data notifications for automated integrations with external supplier systems.
 
 ---
 
