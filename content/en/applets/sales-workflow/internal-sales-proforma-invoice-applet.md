@@ -18,6 +18,10 @@ The **Sales Proforma Invoice (Internal) Applet** is designed to streamline the p
 **Core Concept**: The applet manages the lifecycle of an **Internal Job Sheet**, linking client details, project dimensions, and itemized costs into a unified document for internal review and approval.
 {{< /callout >}}
 
+{{< callout type="warning" >}}
+**Inventory and Accounting Impact**: A Sales Proforma Invoice (Internal Job Sheet) is a preliminary estimation document. It **does not deduct any inventory stock** and **does not perform any financial postings** to the general ledger. It acts purely as a draft reference for costing, pricing, and project allocation.
+{{< /callout >}}
+
 {{< figure src="/images/internal-sales-proforma-invoice-applet/main-listing.png" alt="Sales Proforma Invoice (Internal) Main Listing" caption="Main Listing: Overview of all Internal Job Sheets with search and filtering options." >}}
 
 ## Key Features Overview
@@ -109,7 +113,7 @@ To effectively manage the billing flow, it is crucial to understand how **Client
 
 **How they link:**
 
-1. You identify the **Client** from the CRM.
+1. You identify the **Client** from the Entity or Customer.
 2. You add **Sales Items** to the document, drawing from the master inventory or service list.
 3. You allocate each item (or the whole header) to a **Dimension** (Project/Segment).
 4. The resulting **Internal Job Sheet** provides a complete picture for both the client and internal accounting.
@@ -173,6 +177,20 @@ Get up and running quickly with these essential workflows.
 4. **Finalize**: Click **Finalize** or **Final** to signal that the document is ready for conversion to a permanent invoice.
 
 **What happens next?** Once finalized, the document can be processed by the finance team into a VAT/GST invoice or a Commercial Invoice.
+
+### Knock-Off (KO) to Downstream Documents
+
+Finalized proforma invoices can be converted or knocked-off (KO) into downstream operational and financial documents like **Sales Orders** or **Sales Invoices**.
+
+This is performed from the **target applet** (e.g., Sales Order Applet or Sales Invoice Applet):
+1. Open the target applet and click **Create** ("+").
+2. Select the client and details, then navigate to the **KO For / Doc Link** tab or select the import source.
+3. Search for the finalized proforma invoice (Internal Job Sheet) using its document number.
+4. Select the line items and quantities you wish to import/knock-off, then save/finalize the document.
+
+{{< callout type="info" >}}
+Only proforma invoices in **FINAL** posting status can be knocked-off into downstream documents. Once a proforma invoice has been knocked-off, its linked quantities are tracked to prevent duplicate invoicing.
+{{< /callout >}}
 
 ---
 
@@ -257,7 +275,18 @@ A: Technically, they are the same in this applet. "Internal Job Sheet" is the te
 A: Yes. Using the **Field Configuration** settings, admins can hide costing tabs and net price fields for specific user roles.
 
 **Q: What happens to a proforma invoice after it's finalized?**  
-A: It serves as the "source of truth" for the final Sales Invoice. Finalizing locks the document to prevent further changes before the accounting department takes over.
+A: It serves as the "source of truth" for downstream documents. Finalizing locks the document to prevent further changes, making it ready to be linked/knocked-off.
+
+**Q: How can we change the customer name or modify items after a proforma invoice is finalized?**  
+A: Once a proforma invoice is in **FINAL** posting status, it is locked for modification, and all fields are disabled. Because this applet does not feature a "Revert to Draft" function, if you need to make corrections, you must:
+1. Select the finalized proforma invoice and click the **VOID** button to invalidate it.
+2. Create a **new** proforma invoice with the corrected customer name, details, or items.
+
+**Q: Does a proforma invoice deduct stock or post general ledger entries?**  
+A: No. A proforma invoice (Internal Job Sheet) is a draft estimate document. It **does not deduct inventory stock** and **does not generate general ledger financial postings**.
+
+**Q: How do I link/knock-off (KO) a proforma invoice to a Sales Order or Sales Invoice?**  
+A: The knock-off is performed from the **target applet** (e.g., Sales Order or Sales Invoice Applet). While creating the Sales Order or Sales Invoice, go to the **KO For** / **Doc Link** tab, search for the finalized proforma invoice document number, and import the desired items and quantities.
 
 **Q: How do I handle tax-exempt clients?**  
 A: You can disable SST/WHT selection at the header or line level, or select a tax-exempt configuration from the dropdown if the client's CRM profile permits.
