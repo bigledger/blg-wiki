@@ -7,6 +7,8 @@ title: Modules Overview
 weight: 7
 ---
 
+<script>window.location.href = "/modules-v2/";</script>
+
 # BigLedger Modules
 
 Our comprehensive suite of business modules provides end-to-end coverage for your enterprise operations. Each module seamlessly integrates with our central data hub, ensuring consistent data flow and operational efficiency.

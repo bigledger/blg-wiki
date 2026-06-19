@@ -7,6 +7,8 @@ title: Business Operations Guide
 weight: 10
 ---
 
+<script>window.location.href = "/user-guide-v2/";</script>
+
 Welcome to BigLedger's comprehensive Business Operations Guide. This documentation will help you master BigLedger's Business Operating System through a structured learning path designed for users at all levels - from first-time users to experienced administrators.
 
 ## How to Use This Guide

@@ -29,7 +29,7 @@ if [ $? -eq 0 ]; then
     echo "Site will be available at: http://localhost:1313"
     echo -e "${YELLOW}Press Ctrl+C to stop${NC}"
     echo ""
-    hugo server -D
+    hugo server -D --config hugo.yaml,hugo-local.yaml --gc --cleanDestinationDir --disableFastRender
 else
     echo "Build failed!"
     exit 1

@@ -4,6 +4,11 @@ description: Essential first steps and platform orientation to begin your BigLed
 tags: [getting-started, setup, onboarding]
 weight: 10
 bookCollapseSection: false
+sidebar:
+  exclude: true
+cascade:
+  sidebar:
+    exclude: true
 ---
 
 # Getting Started with BigLedger
