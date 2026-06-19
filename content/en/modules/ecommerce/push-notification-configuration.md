@@ -39,7 +39,7 @@ The application uses Firebase Cloud Messaging for push notifications. The Fireba
 - **Project ID:** cp-commerce-datai
 - **Project Number:** 619749139226
 - **Storage Bucket:** cp-commerce-datai.appspot.com
-- **API Key (iOS):** AIzaSyDwGVK90AlLcDAR8Xodd8sfzw8s7zZRpxg
+- **API Key (iOS):** AIzaSyFakeKeyForSecurityPurposesOnly_12345
 - **GCM Sender ID:** 619749139226
 {{< /callout >}}
 
@@ -101,7 +101,7 @@ The `google-services.json` file must be placed in the Android project root direc
       },
       "api_key": [
         {
-          "current_key": "AIzaSyDd0RqOu6lvpUVPkA0KilrAGoEZIS9Ok28"
+          "current_key": "AIzaSyFakeKeyForSecurityPurposesOnly_67890"
         }
       ],
       "services": {
@@ -229,7 +229,7 @@ The `GoogleService-Info.plist` file must be added to the iOS project in Xcode.
     <key>ANDROID_CLIENT_ID</key>
     <string>619749139226-rv05ctg9tpjsfjbku009gb6i3va4355l.apps.googleusercontent.com</string>
     <key>API_KEY</key>
-    <string>AIzaSyDwGVK90AlLcDAR8Xodd8sfzw8s7zZRpxg</string>
+    <string>AIzaSyFakeKeyForSecurityPurposesOnly_12345</string>
     <key>GCM_SENDER_ID</key>
     <string>619749139226</string>
     <key>PLIST_VERSION</key>
@@ -629,7 +629,7 @@ Example structure:
     "serverKey": "YOUR_SERVER_KEY",
     "senderId": "619749139226",
     "projectId": "cp-commerce-datai",
-    "apiKey": "AIzaSyDwGVK90AlLcDAR8Xodd8sfzw8s7zZRpxg"
+    "apiKey": "AIzaSyFakeKeyForSecurityPurposesOnly_12345"
   }
 }
 ```
