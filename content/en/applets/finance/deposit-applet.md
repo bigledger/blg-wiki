@@ -37,7 +37,8 @@ When a company has idle cash sitting in a current account earning nothing, the t
 **Step 5 — At maturity, bank returns the money** ⚠️ *cash receipt is external — bank transfers back to your account*
 > When the deposit matures, the bank transfers the principal + interest back to your company's bank account. This happens outside the applet. The finance team then records the receipt in the **Payment/Receipt tab**, or triggers a **Rollover** to place the money again automatically.
 
-```
+{{< figure src="/images/deposit-applet/deposit-lifecycle-infographic.png" alt="MM Deposit five-step lifecycle - Finance creates Requisition, system emails banks for quotes via the Invitee tab, finance selects the best offer, cash transfer happens externally via internet banking, the bank's confirmation is recorded in the MM Deposit Register, and at maturity the bank returns principal plus interest" caption="MM Deposit Lifecycle: which steps happen inside this applet and which happen externally through your banking system." >}}
+<!-- ```
 [THIS APPLET]  Finance team creates Requisition — defines amount, rate, duration
                     ↓
 [THIS APPLET]  Invitee tab — system emails banks, banks submit quotes via link
@@ -57,7 +58,7 @@ When a company has idle cash sitting in a current account earning nothing, the t
 [THIS APPLET]  Finance team records receipt (Payment/Receipt tab) or triggers Rollover
                     ↓
 [OTHER APPLETS]  General Ledger + Financial Reports reflect updated cash position
-```
+``` -->
 
 **Related applets involved in this flow:**
 
