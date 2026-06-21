@@ -14,10 +14,34 @@ weight: 10
 
 The **Tenant Admin Applet** is the central nervous system of your BigLedger environment. It provides organizational administrators with the master controls required to govern user access, subscribe to business modules, and maintain a secure, audit-ready platform. It is the single source of truth for "who can do what" within your digital workspace.
 
-A short introduction to the Tenant Admin Applet:
+<!-- A short introduction to the Tenant Admin Applet:
 
-{{< youtube Sqj-JtFKzgQ >}}
+{{< youtube Sqj-JtFKzgQ >}} -->
 
+{{% details title="A short introduction to the Tenant Admin Applet" closed="true" %}}
+
+Updated walkthroughs covering the latest menus and features. Click any video to play.
+
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+  <div>
+    <iframe src="https://www.youtube.com/embed/6xhVCsFaGzA" title="Catalogue Management Menu" allowfullscreen style="aspect-ratio: 16 / 9; width: 100%; height: auto; border: 0;"></iframe>
+    <p style="margin-top: 0.5rem;"><strong>Catalogue Management Menu</strong> — Browse and activate business modules from the platform marketplace.</p>
+  </div>
+  <div>
+    <iframe src="https://www.youtube.com/embed/U6LgVWlGJy4" title="Permissions and Role Management" allowfullscreen style="aspect-ratio: 16 / 9; width: 100%; height: auto; border: 0;"></iframe>
+    <p style="margin-top: 0.5rem;"><strong>Permissions and Role Management</strong> — Build role hierarchies and assign permission sets.</p>
+  </div>
+  <div>
+    <iframe src="https://www.youtube.com/embed/pjhUMxrShpo" title="Applet User Management" allowfullscreen style="aspect-ratio: 16 / 9; width: 100%; height: auto; border: 0;"></iframe>
+    <p style="margin-top: 0.5rem;"><strong>Applet User Management</strong> — Onboard users and assign them to applets.</p>
+  </div>
+  <div>
+    <iframe src="https://www.youtube.com/embed/5dERgcGhaI8" title="Admin vs Member: Key Differences" allowfullscreen style="aspect-ratio: 16 / 9; width: 100%; height: auto; border: 0;"></iframe>
+    <p style="margin-top: 0.5rem;"><strong>Admin vs Member: Key Differences</strong> — Understand the privilege boundary between tenant admins and standard members.</p>
+  </div>
+</div>
+
+{{% /details %}}
 
 ### TL;DR: The Administrative Cockpit
 
