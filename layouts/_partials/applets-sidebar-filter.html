@@ -1,0 +1,125 @@
+<style>
+.applet-sidebar-filter {
+  list-style: none;
+  position: sticky;
+  top: -1rem;
+  z-index: 5;
+  margin: -1rem -1rem 0.5rem;
+  padding: 0.75rem 1rem 0.6rem;
+  background: #ffffff;
+  border-bottom: 1px solid rgba(120, 120, 120, 0.18);
+}
+html.dark .applet-sidebar-filter {
+  background: #111;
+}
+.applet-sidebar-filter input {
+  width: 100%;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.85rem;
+  border: 1px solid rgba(120, 120, 120, 0.35);
+  border-radius: 0.375rem;
+  background: rgba(255, 255, 255, 0.04);
+  color: inherit;
+  box-sizing: border-box;
+}
+.applet-sidebar-filter input:focus {
+  outline: none;
+  border-color: #00A8CC;
+  box-shadow: 0 0 0 2px rgba(0, 168, 204, 0.25);
+}
+</style>
+<script>
+(function () {
+  var STORAGE_KEY = 'applet-sidebar-filter:q';
+
+  function init() {
+    var sidebar = document.querySelector('aside.hextra-sidebar-container ul[class*="max-md:hidden"]');
+    if (!sidebar || sidebar.querySelector('.applet-sidebar-filter')) return;
+
+    var li = document.createElement('li');
+    li.className = 'applet-sidebar-filter';
+    var input = document.createElement('input');
+    input.type = 'search';
+    input.placeholder = 'Filter applets...';
+    input.setAttribute('aria-label', 'Filter applets');
+    li.appendChild(input);
+    sidebar.insertBefore(li, sidebar.firstChild);
+
+    var originalOpen = new WeakMap();
+    sidebar.querySelectorAll('li').forEach(function (n) {
+      originalOpen.set(n, n.classList.contains('open'));
+    });
+
+    function reset() {
+      sidebar.querySelectorAll('li').forEach(function (n) {
+        if (n === li) return;
+        n.style.display = '';
+        if (originalOpen.get(n)) {
+          n.classList.add('open');
+        } else {
+          n.classList.remove('open');
+        }
+      });
+    }
+
+    function filterNode(node, q) {
+      var link = node.querySelector(':scope > div > a, :scope > a');
+      var selfText = link ? (link.textContent || '').toLowerCase() : '';
+      var selfMatch = selfText.indexOf(q) !== -1;
+      var anyChildMatch = false;
+      var childUL = node.querySelector(':scope > div.hextra-sidebar-children > ul, :scope > ul');
+      if (childUL) {
+        childUL.querySelectorAll(':scope > li').forEach(function (child) {
+          if (filterNode(child, q)) anyChildMatch = true;
+        });
+      }
+      var visible = selfMatch || anyChildMatch;
+      node.style.display = visible ? '' : 'none';
+      if (visible && anyChildMatch) node.classList.add('open');
+      return visible;
+    }
+
+    function apply(q) {
+      if (!q) { reset(); return; }
+      sidebar.querySelectorAll(':scope > li').forEach(function (top) {
+        if (top === li) return;
+        filterNode(top, q);
+      });
+    }
+
+    function persist(q) {
+      try {
+        if (q) sessionStorage.setItem(STORAGE_KEY, q);
+        else sessionStorage.removeItem(STORAGE_KEY);
+      } catch (e) {}
+    }
+
+    input.addEventListener('input', function () {
+      var q = input.value.trim().toLowerCase();
+      apply(q);
+      persist(q);
+    });
+
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        input.value = '';
+        reset();
+        persist('');
+      }
+    });
+
+    var saved = '';
+    try { saved = sessionStorage.getItem(STORAGE_KEY) || ''; } catch (e) {}
+    if (saved) {
+      input.value = saved;
+      apply(saved.trim().toLowerCase());
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
