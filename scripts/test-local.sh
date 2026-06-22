@@ -25,6 +25,8 @@ if [ $? -eq 0 ]; then
     find public -name "*.html" | wc -l | xargs echo "HTML pages:"
     du -sh public | cut -f1 | xargs echo "Total size:"
     echo ""
+    # Clear public folder before starting server to prevent production build files on disk from overriding local in-memory files and breaking styles
+    rm -rf public/
     echo -e "${GREEN}Starting local server...${NC}"
     echo "Site will be available at: http://localhost:1313"
     echo -e "${YELLOW}Press Ctrl+C to stop${NC}"

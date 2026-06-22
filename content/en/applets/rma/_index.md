@@ -1,7 +1,7 @@
 ---
 title: RMA
 description: Return Merchandise Authorization applets for managing product returns and exchanges
-weight: 90
+weight: 130
 bookCollapseSection: true
 ---
 

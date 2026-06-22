@@ -1,7 +1,7 @@
 ---
 title: E-Invoice
 description: Electronic invoicing administration and compliance applets
-weight: 70
+weight: 60
 bookCollapseSection: true
 ---
 

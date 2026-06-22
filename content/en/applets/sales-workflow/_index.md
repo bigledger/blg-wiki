@@ -1,7 +1,7 @@
 ---
 title: Sales Workflow
 description: Complete sales workflow applets from POS and orders to invoicing, returns, and reporting
-weight: 50
+weight: 40
 bookCollapseSection: true
 ---
 

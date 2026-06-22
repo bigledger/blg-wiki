@@ -2,7 +2,7 @@
 title: Troubleshooting
 description: Common issues, solutions, and problem-solving techniques for BigLedger users
 tags: [troubleshooting, support, problems, solutions]
-weight: 60
+weight: 90
 bookCollapseSection: false
 ---
 

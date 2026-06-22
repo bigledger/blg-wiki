@@ -1,7 +1,7 @@
 ---
 title: Finance
 description: Financial accounting applets for vouchers, ledgers, reports, reconciliation, and budgeting
-weight: 60
+weight: 50
 bookCollapseSection: true
 ---
 

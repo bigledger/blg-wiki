@@ -2,7 +2,7 @@
 title: Administration
 description: System administration, user management, and advanced configuration for BigLedger administrators
 tags: [administration, system-admin, user-management, configuration]
-weight: 40
+weight: 20
 bookCollapseSection: false
 ---
 

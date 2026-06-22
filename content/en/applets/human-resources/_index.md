@@ -1,7 +1,7 @@
 ---
 title: Human Resources
 description: Applets for managing employee attendance, time tracking, and HR administrative tasks
-weight: 60
+weight: 120
 bookCollapseSection: true
 ---
 

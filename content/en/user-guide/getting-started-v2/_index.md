@@ -1,7 +1,7 @@
 ---
 title: "Getting Started with BigLedger"
 description: "Step-by-step video guides to get up and running with BigLedger quickly."
-weight: 9
+weight: 10
 ---
 
 <style>

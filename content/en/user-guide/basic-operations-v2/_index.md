@@ -1,7 +1,7 @@
 ---
 title: "Basic Operations"
 description: "Step-by-step video guides to configure master data, customer/supplier records, catalogue items, and financial defaults."
-weight: 20
+weight: 30
 ---
 
 <style>

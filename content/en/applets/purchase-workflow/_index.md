@@ -1,7 +1,7 @@
 ---
 title: Purchase Workflow
 description: End-to-end purchasing workflow applets from requisition to invoice
-weight: 30
+weight: 20
 bookCollapseSection: true
 ---
 

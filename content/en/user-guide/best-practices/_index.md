@@ -2,7 +2,7 @@
 title: Best Practices
 description: Expert tips, optimization strategies, and proven methodologies for maximizing BigLedger effectiveness
 tags: [best-practices, optimization, efficiency, expert-tips]
-weight: 70
+weight: 80
 bookCollapseSection: false
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: External Tenant Admin
 description: Tenant administration and system configuration applets
-weight: 20
+weight: 190
 bookCollapseSection: true
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Daily Tasks"
 description: "Master everyday transactional workflows, document generation, and applet processes in BigLedger."
-weight: 30
+weight: 40
 ---
 
 <style>
