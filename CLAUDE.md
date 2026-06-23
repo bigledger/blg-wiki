@@ -71,11 +71,13 @@ User guides in this repo use a warm, hand-holding tone aimed at a small-business
 
 Every user guide in this repo uses the SAME synthetic Malaysian business as the running example, so a reader who follows multiple guides meets the same characters and the same shape. The example was chosen to sit at the median of the **actual** BigLedger customer base, which we verified by querying live production tenants.
 
-### Who BigLedger actually sells to (verified from live tenant data)
+### Who BigLedger actually sells to (verified from live tenant data — no specifics published here)
 
-The dominant customer is a **multi-branch Malaysian consumer electronics / mobile / IT retailer** with **2+ legal entities** and **5–200+ branches**. Examples in the live customer base include the largest Malaysian tech retail chain (~217 branches across 2 companies), the largest Malaysian computer retail group (~115 branches across 8 companies), the largest Malaysian mobile-phone retailer (~78 branches across 7 companies), and several mid-size IT / mobile chains. Secondary segments: pharmacy chains (~50 branches), automotive service groups, precision manufacturers, and franchise-model F&B.
+The dominant customer is a **multi-branch Malaysian consumer electronics / mobile / IT retailer** with **2+ legal entities** and **multiple branches**. Secondary segments include pharmacy chains, automotive service groups, precision manufacturers, and franchise-model F&B.
 
 **The customer is NOT a small single-owner F&B outlet.** Do not write guides as if they were.
+
+Specific industry-leader names, branch counts, and other identifying details are kept ONLY in private scratchpad notes (gitignored, never published). They inform the synthetic example but never appear in the wiki.
 
 ### The synthetic running example — GadgetSphere Sdn Bhd
 
@@ -86,40 +88,38 @@ A fictional Malaysian multi-branch consumer electronics retailer chosen to be **
 - **GadgetSphere Online Sdn Bhd** (code `GSO`) — the e-commerce arm + fulfilment centre.
 - **GadgetSphere Distribution Sdn Bhd** (code `GSD`) — wholesale + authorised distribution to corporate clients.
 
-**Scale:**
-- 22 retail branches across Klang Valley (12 incl. Pavilion KL, Mid Valley, Sunway Pyramid, IOI City Mall), Penang (4 incl. Gurney Plaza), Johor Bahru (3 incl. KSL City), Kota Kinabalu (2), Kuching (1)
-- ~5,200 active SKUs across 30+ brands (Apple, Samsung, Asus, Lenovo, HP, Dell, Microsoft, Honor, Oppo, Vivo, Xiaomi, Logitech, Razer, etc.)
-- 28 cashbooks (one per Maybank / Public Bank / CIMB account, plus group-level accounts)
+**Scale (synthetic, do not map to a real customer):**
+- 22 retail branches across Klang Valley (12), Penang (4), Johor Bahru (3), Kota Kinabalu (2), Kuching (1). When naming branches, use **generic, fictional location codes** like `GS-KV-01`, `GS-KV-02`, `GS-PEN-01`, `GS-JB-01`, etc. **Do not** name real shopping malls.
+- ~5,200 active SKUs across major smartphone, computing, gaming, and accessory categories. **Use category words ("flagship smartphones", "ultraportable laptops", "wireless audio") rather than specific brand names.**
+- 28 cashbooks across two or three major Malaysian banks (refer generically as "primary bank", "secondary bank", "card-acquiring bank" — do not single out one bank by name)
 - ~85,000 customer entities (mostly walk-in retail, some B2B)
-- ~1,200 supplier entities (authorised distributors, accessory wholesalers, brand principals)
+- ~1,200 supplier entities (authorised distributors, accessory wholesalers, brand principals — described generically)
 - SST-registered (6% service tax)
 - Multi-currency: mostly MYR, some USD purchases from regional distributors in Singapore and Hong Kong
 
-**The finance team (the people who read these guides):**
-- **Pn. Aishah Rahman, CFO / Head of Finance** — chartered accountant, decides chart structure, reviews month-end reports.
-- **En. Daniel Tan, Senior Accounts Executive** — chart of accounts day-to-day, journal entries, month-end close, financial reporting.
-- **Cik Farah Hashim, Accounts Clerk** — daily AR/AP, bank reconciliation, invoice processing.
-- **En. Hadi Razak, IT/Finance Sysadmin** — initial migration, integrations, applet settings, permissions.
+**Reader voice — direct "you", not a character cast**
 
-**Which character is the reader of each guide:**
-- **Chart of Accounts Setup** → En. Hadi (doing the initial setup) working with Pn. Aishah (deciding the chart structure)
-- **Journal Entries** → En. Daniel (posting monthly accruals, depreciation, opening balances)
-- **Bank Reconciliation** → Cik Farah (monthly cashbook reconciliation)
-- **Financial Reporting** → En. Daniel (running the close), reporting to Pn. Aishah
+Xero and QuickBooks user guides do not name a cast of bookkeepers across every example. Neither do ours. The reader is **you** — the finance / accounts person doing the task right now. GadgetSphere is the backdrop business that the example numbers come from, nothing more.
 
-**GL Code style:** mnemonic alphabetic (verified standard in live customers). Examples for GadgetSphere:
-- `CASH-MBB-PAV` (cash, Maybank, Pavilion branch), `CASH-PBB-MID` (Public Bank, Mid Valley)
-- `DEBTOR-TRADE-RETAIL`, `DEBTOR-CC-VISA`, `DEBTOR-CC-AMEX`
-- `INV-MOBILE`, `INV-LAPTOP`, `INV-ACCESSORY`
-- `SALES-MOBILE-PAV`, `SALES-LAPTOP-MID`, `SALES-ONLINE`
-- `COST-MOBILE`, `COST-LAPTOP`, `COST-ACCESSORY`
+❌ Do not write: *"Cik Farah opens the cashbook applet and Pn. Aishah reviews her work."*
+✅ Do write: *"Open the cashbook applet. The March statement from your primary bank shows a closing balance of RM 47,200, but BigLedger says RM 47,650 — you have RM 450 to find."*
+
+The example numbers — RM amounts, dates, branch counts, transaction patterns — come from GadgetSphere's scale and shape. The reader-facing voice is direct second person.
+
+**GL Code style:** mnemonic alphabetic (verified standard in live customers). Use generic branch/bank suffixes — do not pin to a real location or bank.
+
+- `CASH-PRI-KV01` (cash, primary bank, Klang Valley branch 01), `CASH-SEC-PEN01` (secondary bank, Penang branch 01)
+- `DEBTOR-TRADE-RETAIL`, `DEBTOR-CC-RETAIL` (credit-card receivables from card acquirer)
+- `INV-SMARTPHONE`, `INV-LAPTOP`, `INV-ACCESSORY`
+- `SALES-SMARTPHONE-KV01`, `SALES-LAPTOP-KV03`, `SALES-ONLINE-GSO`
+- `COST-SMARTPHONE`, `COST-LAPTOP`, `COST-ACCESSORY`
 - `EXPENSE-RENTAL`, `EXPENSE-WAGES`, `EXPENSE-MARKETING`
 - `LIAB-SST-OUTPUT`, `LIAB-SUPPLIER-TRADE`
 - `EQUITY-CAPITAL`, `EQUITY-RETAINED`
 
 Numeric coding is mentioned as a secondary option for accountants who prefer it. The default in our guides is mnemonic.
 
-**Use these names, codes, and scale numbers consistently across all four accounting guides.** If a new guide for another module is written later, extend GadgetSphere — don't invent a new business.
+**Use these codes, scale numbers, and the GadgetSphere business backdrop consistently across all four accounting guides.** Do not introduce named staff members. Do not name real banks, malls, or brands.
 
 ## 🔬 You MUST study the live tenant data before writing
 
