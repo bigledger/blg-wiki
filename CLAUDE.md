@@ -1,6 +1,117 @@
 # BigLedger Documentation - Development Guidelines
 
-## Language Strategy
+---
+
+# 🚨🚨🚨 READ THIS FIRST — WE WRITE USER GUIDES, NOT REFERENCE CARDS 🚨🚨🚨
+
+> The single most important rule in this repository. **Read it. Apply it. Do not skip it.**
+
+## The two types of documentation in this repo
+
+| Type | Location | Audience | Voice |
+|---|---|---|---|
+| **User guide** (a.k.a. **user manual**) | `/content/en/guides/`, `/content/en/user-guide/`, `/content/en/tutorials/` | A real human reader trying to accomplish a business task | Warm, hand-holding, second-person, examples-first |
+| **Reference doc** | `/content/en/applets/`, `/content/en/api-reference/`, `/content/en/developer-docs/` | An operator who already knows the workflow and needs to look up a field | Dense, precise, exhaustive, table-heavy |
+
+**These are NOT the same artifact.** Do not confuse them. Do not let one bleed into the other.
+
+## A user guide tells a story
+
+A user guide:
+- Is written FOR a person, not about a system. There is a named reader in the writer's head.
+- **Opens with the outcome**, not the menu path. "By the end of this guide, your first invoice will post correctly." Menu paths come *after* the framing.
+- **Uses a running example** — a fictional Malaysian SME (something like *Restoran Kopi Pagi Sdn Bhd*, 8 staff, sells F&B + retail, takes credit-card payments, holds some stock) and threads it through every step.
+- **Translates every internal system identifier into plain English.** When the engine calls something `DEBTOR_NON_TRADE_NOT_INVOICED`, the guide says "accrued non-trade receivables — money owed to you that you haven't invoiced yet". The uppercase identifier goes in a footnote or aside, never as the primary label.
+- **Embeds screenshots** from the applet doc at the moments the reader is staring at a confusing screen.
+- **Anticipates "what happens if I get this wrong"** and answers it concretely. ("If you skip Step 6, every sales invoice will fail to post with the message *Default GL Code not configured for SALES*. You'll find out the first time someone in Sales hits Save.")
+- **Closes the loop** at the end of every guide with a *"What success looks like"* check the reader can run in 30 seconds to confirm they're done.
+
+## A reference card lists fields
+
+A reference card:
+- Has tables of every field, type, default, validator.
+- Uses internal system identifiers as primary labels.
+- Says "Required. Immutable after save. Max 255 chars."
+- Lives in the applet doc. **It does not belong in a guide.**
+
+If the first 30 seconds of your draft reads like a database schema, **you have written a reference card. Stop. Throw it away. Restart.**
+
+## Voice and tone — Xero / QuickBooks-style
+
+User guides in this repo use a warm, hand-holding tone aimed at a small-business owner or accounts clerk who may not be a trained accountant. Reference: how Xero and QuickBooks write their support docs.
+
+- **"You" not "the user"**. Speak to the reader, not about them.
+- **Plain English over jargon.** "Customers who owe you money" beats "Trade Debtors" on first mention. Then introduce the technical term in parentheses.
+- **Reassuring, not condescending.** "Don't worry, this only takes about 10 minutes" — not "It is recommended that the administrator allocate sufficient time to complete this procedure."
+- **Concrete numbers and examples.** RM 100. 6% SST. 8 staff. *Restoran Kopi Pagi*. Not "an entity".
+- **Active voice, present tense.** "BigLedger posts the journal" — not "The journal will be posted by the system."
+- **Acronyms get expanded the first time, every time.** GR/IR (Goods Received / Invoice Received). WIP (Work in Progress). MA (Moving Average).
+
+## Required structure for every user guide
+
+```
+1. Front matter (title, description, tags, weight) — no duplicate H1
+2. Opening paragraph (2-3 sentences) — name the reader, name the outcome, set time expectation
+3. "Meet [the example business]" — one short paragraph introducing the running example
+4. Concepts (only if 2-5 BigLedger-specific terms are essential) — plain-English first, identifier second
+5. Prerequisites — concrete, checkable, no chicken-and-egg references to later steps
+6. Numbered "Step N: [Outcome verb + object]" sections. Each step:
+   - Opens with the outcome (1 sentence)
+   - Shows the menu path (1 line, italics)
+   - Walks the user through with the running example
+   - Translates any system identifiers it touches
+   - Embeds a screenshot if the screen is non-obvious
+   - Names the most common failure and how to spot it
+7. "What success looks like" — a 30-second test the reader runs to confirm they're done
+8. "Common mistakes" — the top 5 ways this goes wrong, with symptoms and fixes
+9. Related documentation — links to the applet doc (reference) and adjacent guides
+```
+
+## 🔬 You MUST study the live tenant data before writing
+
+This repo sits on a server with read-only access to all production BigLedger tenants. **Use it.**
+
+Before writing or rewriting any user guide, study real tenant data to understand how customers actually configure and use the system. The fictional running example in the guide must be **inspired by patterns observed in real tenants** — not invented from accounting textbook abstractions.
+
+### How to access
+
+- **Schema dumps** (DDL only, world-readable via sudo):
+  `sudo cat /home/vincent/projects/sysadmin/aws-akaun/tenant-schemas/pcimage/tables/bl_fi/<table>.sql`
+- **Live DB** (read-only queries via SSH tunnel to the bastion):
+  `sudo -u vincent /home/vincent/projects/sysadmin/bin/psql-akaun-master -c "SELECT ..."`
+- **Tenant list**: 83 active tenants in `app_tenant_hdr` (akaun_master). Per-tenant DB connection JSON is in `app_generic_resources_hdr`.
+- **Source code**: `/home/marketing/repos/refs/` holds clones of every applet UI repo and the Java backend (`blg-akaun-platform-java`). Run `git -C <repo> pull --ff-only` before reading.
+
+### What to look at before writing a guide
+
+For the Chart of Accounts guide, look at: what real charts look like — common section names, common code ranges, typical category groupings. For Journal Entries: what real manual journals say in `descr`, what common reference number patterns are. For Bank Reconciliation: what real `bl_fi_cashbook_txn_stmt_recon_link` records look like in practice. For Financial Reports: what real Set of Books configurations look like.
+
+### Privacy rules — non-negotiable
+
+- ✅ **DO** use patterns and shapes you observe (e.g. "a common pattern is to number current assets 1000-1499 and fixed assets 1500-1999").
+- ✅ **DO** anonymise any example you use ("a F&B chain with 12 outlets" not the tenant's real name).
+- ❌ **DO NOT** copy any tenant's real name, real account names, real reference numbers, real amounts, real customer names, real GL Code descriptions, real branch names, or anything else that could identify a specific customer.
+- ❌ **DO NOT** include real tenant data in any markdown file, screenshot, commit message, or PR.
+
+The fictional running example (e.g. *Restoran Kopi Pagi Sdn Bhd*) is **synthetic, inspired by real shapes**. Never the other way around.
+
+## How to know you've slipped back into reference-card writing
+
+Self-check before every commit. If any of these are true, you've written a reference card, not a guide:
+
+- ❌ More than 3 tables of fields in the body.
+- ❌ Uppercase system identifiers (`DEBTOR`, `OUTPUT_TAX`, `STOCK_BALANCE_WIP`) appearing as headings or primary bullet labels.
+- ❌ The word "Immutable" or "Required" appearing more than 5 times.
+- ❌ No fictional business or worked example anywhere.
+- ❌ No screenshots and the workflow involves looking at a screen.
+- ❌ No "what happens if I skip this" or "what success looks like" sections.
+- ❌ The reader could not tell from the first paragraph who this guide is for.
+
+If you spot any of these, rewrite. The applet doc absorbs the reference content — keep it there.
+
+---
+
+
 
 ### Primary Language: English (en)
 - **All new content should be authored in English first**
