@@ -258,9 +258,8 @@ Purchase Order → Goods Receipt → Invoice Processing → Payment → Vendor U
 ## Related Documentation
 
 ### Setup Guides
-- [Financial Module Implementation Guide](/guides/financial-guides/)
-- [Chart of Accounts Best Practices](/guides/financial-guides/chart-of-accounts-setup/)
-- [Multi-Currency Setup Guide](/guides/financial-guides/multi-currency-setup/)
+- [Accounting Guides](/guides/accounting-guides/)
+- [Chart of Accounts Best Practices](/guides/accounting-guides/chart-of-accounts-setup/)
 
 ### User Guides
 - [Daily Financial Operations](/user-guide/daily-tasks/financial-operations/)
