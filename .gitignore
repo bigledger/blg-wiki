@@ -27,3 +27,9 @@ tmp/
 
 # Claude temporary files
 .claude/
+
+# Playwright artifacts
+playwright-report/
+test-results/
+tests/playwright/playwright-report/
+tests/playwright/test-results/

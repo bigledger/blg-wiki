@@ -1,0 +1,16 @@
+{
+  "name": "blg-wiki-tests",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Playwright smoke & broken-link tests for wiki.bigledger.com",
+  "scripts": {
+    "test": "playwright test",
+    "test:live": "BASE_URL=https://wiki.bigledger.com playwright test",
+    "test:local": "BASE_URL=http://localhost:1313 playwright test",
+    "test:headed": "playwright test --headed",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.61.0"
+  }
+}
