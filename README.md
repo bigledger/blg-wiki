@@ -16,7 +16,7 @@ The most common failure in this repo is writing dense reference cards full of fi
 These are **different artifacts**. Do not confuse them. Do not let one bleed into the other.
 
 Every guide must:
-- Use a **fictional Malaysian SME running example** (canonically *Restoran Kopi Pagi Sdn Bhd* — F&B + retail, 8 staff). Continuity makes it stick.
+- Use a **canonical fictional running example** (*GadgetSphere Sdn Bhd* — Malaysian multi-branch consumer electronics retailer, 3 companies, 22 branches; matches the median actual BigLedger customer shape — NOT a small F&B SME). Continuity makes it stick.
 - **Translate every internal system identifier into plain English** on first mention. `DEBTOR` → "customers who owe you money (Trade Debtors)".
 - **Embed screenshots** from `/static/images/<applet-name>/` at high-friction steps.
 - **Anticipate failure modes** — "if you skip this, here's the symptom you'll see".

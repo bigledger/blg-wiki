@@ -20,7 +20,7 @@
 A user guide:
 - Is written FOR a person, not about a system. There is a named reader in the writer's head.
 - **Opens with the outcome**, not the menu path. "By the end of this guide, your first invoice will post correctly." Menu paths come *after* the framing.
-- **Uses a running example** — a fictional Malaysian SME (something like *Restoran Kopi Pagi Sdn Bhd*, 8 staff, sells F&B + retail, takes credit-card payments, holds some stock) and threads it through every step.
+- **Uses a running example** — the canonical fictional running example — **GadgetSphere Sdn Bhd**, a Malaysian multi-branch consumer electronics retail group (see "The running example" below) and threads it through every step.
 - **Translates every internal system identifier into plain English.** When the engine calls something `DEBTOR_NON_TRADE_NOT_INVOICED`, the guide says "accrued non-trade receivables — money owed to you that you haven't invoiced yet". The uppercase identifier goes in a footnote or aside, never as the primary label.
 - **Embeds screenshots** from the applet doc at the moments the reader is staring at a confusing screen.
 - **Anticipates "what happens if I get this wrong"** and answers it concretely. ("If you skip Step 6, every sales invoice will fail to post with the message *Default GL Code not configured for SALES*. You'll find out the first time someone in Sales hits Save.")
@@ -66,6 +66,60 @@ User guides in this repo use a warm, hand-holding tone aimed at a small-business
 8. "Common mistakes" — the top 5 ways this goes wrong, with symptoms and fixes
 9. Related documentation — links to the applet doc (reference) and adjacent guides
 ```
+
+## The running example — GadgetSphere Sdn Bhd
+
+Every user guide in this repo uses the SAME synthetic Malaysian business as the running example, so a reader who follows multiple guides meets the same characters and the same shape. The example was chosen to sit at the median of the **actual** BigLedger customer base, which we verified by querying live production tenants.
+
+### Who BigLedger actually sells to (verified from live tenant data)
+
+The dominant customer is a **multi-branch Malaysian consumer electronics / mobile / IT retailer** with **2+ legal entities** and **5–200+ branches**. Examples in the live customer base include the largest Malaysian tech retail chain (~217 branches across 2 companies), the largest Malaysian computer retail group (~115 branches across 8 companies), the largest Malaysian mobile-phone retailer (~78 branches across 7 companies), and several mid-size IT / mobile chains. Secondary segments: pharmacy chains (~50 branches), automotive service groups, precision manufacturers, and franchise-model F&B.
+
+**The customer is NOT a small single-owner F&B outlet.** Do not write guides as if they were.
+
+### The synthetic running example — GadgetSphere Sdn Bhd
+
+A fictional Malaysian multi-branch consumer electronics retailer chosen to be **representative of the median customer** — big enough to feel real, small enough to walk through in a guide.
+
+**Group structure (3 companies):**
+- **GadgetSphere Sdn Bhd** (code `GS`) — main operating retail company. Multi-brand consumer electronics: smartphones, laptops, tablets, gaming, accessories.
+- **GadgetSphere Online Sdn Bhd** (code `GSO`) — the e-commerce arm + fulfilment centre.
+- **GadgetSphere Distribution Sdn Bhd** (code `GSD`) — wholesale + authorised distribution to corporate clients.
+
+**Scale:**
+- 22 retail branches across Klang Valley (12 incl. Pavilion KL, Mid Valley, Sunway Pyramid, IOI City Mall), Penang (4 incl. Gurney Plaza), Johor Bahru (3 incl. KSL City), Kota Kinabalu (2), Kuching (1)
+- ~5,200 active SKUs across 30+ brands (Apple, Samsung, Asus, Lenovo, HP, Dell, Microsoft, Honor, Oppo, Vivo, Xiaomi, Logitech, Razer, etc.)
+- 28 cashbooks (one per Maybank / Public Bank / CIMB account, plus group-level accounts)
+- ~85,000 customer entities (mostly walk-in retail, some B2B)
+- ~1,200 supplier entities (authorised distributors, accessory wholesalers, brand principals)
+- SST-registered (6% service tax)
+- Multi-currency: mostly MYR, some USD purchases from regional distributors in Singapore and Hong Kong
+
+**The finance team (the people who read these guides):**
+- **Pn. Aishah Rahman, CFO / Head of Finance** — chartered accountant, decides chart structure, reviews month-end reports.
+- **En. Daniel Tan, Senior Accounts Executive** — chart of accounts day-to-day, journal entries, month-end close, financial reporting.
+- **Cik Farah Hashim, Accounts Clerk** — daily AR/AP, bank reconciliation, invoice processing.
+- **En. Hadi Razak, IT/Finance Sysadmin** — initial migration, integrations, applet settings, permissions.
+
+**Which character is the reader of each guide:**
+- **Chart of Accounts Setup** → En. Hadi (doing the initial setup) working with Pn. Aishah (deciding the chart structure)
+- **Journal Entries** → En. Daniel (posting monthly accruals, depreciation, opening balances)
+- **Bank Reconciliation** → Cik Farah (monthly cashbook reconciliation)
+- **Financial Reporting** → En. Daniel (running the close), reporting to Pn. Aishah
+
+**GL Code style:** mnemonic alphabetic (verified standard in live customers). Examples for GadgetSphere:
+- `CASH-MBB-PAV` (cash, Maybank, Pavilion branch), `CASH-PBB-MID` (Public Bank, Mid Valley)
+- `DEBTOR-TRADE-RETAIL`, `DEBTOR-CC-VISA`, `DEBTOR-CC-AMEX`
+- `INV-MOBILE`, `INV-LAPTOP`, `INV-ACCESSORY`
+- `SALES-MOBILE-PAV`, `SALES-LAPTOP-MID`, `SALES-ONLINE`
+- `COST-MOBILE`, `COST-LAPTOP`, `COST-ACCESSORY`
+- `EXPENSE-RENTAL`, `EXPENSE-WAGES`, `EXPENSE-MARKETING`
+- `LIAB-SST-OUTPUT`, `LIAB-SUPPLIER-TRADE`
+- `EQUITY-CAPITAL`, `EQUITY-RETAINED`
+
+Numeric coding is mentioned as a secondary option for accountants who prefer it. The default in our guides is mnemonic.
+
+**Use these names, codes, and scale numbers consistently across all four accounting guides.** If a new guide for another module is written later, extend GadgetSphere — don't invent a new business.
 
 ## 🔬 You MUST study the live tenant data before writing
 

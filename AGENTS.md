@@ -66,7 +66,9 @@ Every step opens with the outcome, shows the menu path *italic on its own line*,
 
 Every user guide in the `accounting-guides` set (and ideally every guide in the wiki) uses the **same fictional Malaysian SME** as its worked example. Continuity makes it stick — the reader meets the same business in every guide.
 
-The canonical running example: **Restoran Kopi Pagi Sdn Bhd** — a small F&B + retail business, 8 staff, two outlets, takes credit-card payments through Maybank, holds some packaged-food stock, registered for SST. Adjust the parameters per guide if needed (the journal-entries guide might use them as a services company variant for a particular example), but keep the business name and core shape consistent.
+The canonical running example: **GadgetSphere Sdn Bhd** — a Malaysian multi-branch consumer electronics retailer chosen to sit at the **median of the actual BigLedger customer base** (verified from live tenant data). 3 group companies (`GS` retail, `GSO` e-commerce, `GSD` distribution), 22 retail branches across Klang Valley + Penang + JB + Sabah + Sarawak, ~5,200 SKUs across 30+ brands (Apple, Samsung, Asus, Lenovo, HP, Honor, Oppo, Xiaomi, etc.), 28 cashbooks, ~85K customer entities, SST-registered, multi-currency (mostly MYR, some USD for regional distributor purchases). Finance team: Pn. Aishah Rahman (CFO/Head of Finance, chartered accountant), En. Daniel Tan (Senior Accounts Executive), Cik Farah Hashim (Accounts Clerk), En. Hadi Razak (IT/Finance Sysadmin). See CLAUDE.md "The running example" section for the full canonical profile, including the GL Code mnemonic style (`CASH-MBB-PAV`, `SALES-MOBILE-PAV`, `COST-LAPTOP`, etc.).
+
+**This is NOT a small F&B SME. BigLedger does not sell to small F&B owners.** The customer base is verified multi-branch retail at meaningful scale.
 
 The running example must reflect **patterns observed in real tenants** — see "Study real tenants" below.
 
