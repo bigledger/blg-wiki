@@ -247,6 +247,8 @@ Your organisation defines how you obtain opening, net purchase, and closing figu
 
 **When to use it:** After the billing exists in the listing. Open **Edit Consignor Purchase Billing**, go to **Payment**, then add lines and click **SAVE** on the document.
 
+{{< figure src="/images/internal-consignor-purchase-billling-applet/settlement-tab.png" alt="Payment tab on Edit Consignor Purchase Billing showing Total and Outstanding, with Add Payment and settlement method selector" caption="**Payment** tab: review **Total** and **Outstanding**, add a payment with **+**, then choose **Settlement Method** and complete the fields on **Add Payment**." >}}
+
 1. On **Payment**, click **Add** (`+`) to open **Add Payment**.
 2. Choose a **settlement method**. Fields shown depend on the method:
    - **CASH** — **Date**, **Amount**, **Remarks**.
@@ -295,7 +297,7 @@ Day-to-day actions here are **CREATE** (first save), **SAVE** (updates), and **R
 | **ACTIVE** | Billing header is live for processing. | Normal documents. |
 | **INACTIVE** | Billing header marked inactive. | Retired or superseded cycles—confirm meaning with finance. |
 
-### Listing **Status** column
+### Listing Status column
 
 The listing shows status from the billing header (same **ACTIVE** / **INACTIVE** family as above). Sort and filter using the grid as needed.
 
