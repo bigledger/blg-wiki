@@ -12,7 +12,7 @@ tags:
 - warehouse-operations
 weight: 125
 date: 2026-04-06
-lastmod: 2026-06-16
+lastmod: 2026-06-24
 draft: false
 ---
 
@@ -159,13 +159,13 @@ To effectively manage returns in the system, it is crucial to understand how **L
 4. You add a **Contra** link (which original document this return offsets).
 5. When finalized, the system updates stock and posts the financial entries.
 
-For field-by-field meanings and each screen tab, see [Field reference](#field-reference) and [Create and edit tabs](#create-and-edit-tabs) below. The rest of this guide keeps the existing warehouse, finance, and scenario walkthroughs unchanged.
+For field-by-field meanings and each screen tab, see [Field reference](#field-reference) and [Create and edit tabs](#create-and-edit-tabs) below.
 
 ---
 
 ## Field reference {#field-reference}
 
-This section explains what each part of the form is for. **Which fields are required** depends on your administrator’s **Application Settings**—the table describes purpose, not whether every tenant marks a field mandatory.
+This section explains what each part of the form is for. **Which fields are required** depends on your administrator’s **Application Settings**—the table describes what each field is for, not whether your organization marks it as mandatory.
 
 ### Main Details (document header)
 
@@ -186,6 +186,8 @@ This section explains what each part of the form is for. **Which fields are requ
 | **Customer** | Customer name (populated from Account). |
 | **Tracking ID** | Logistics or return tracking reference. |
 
+{{< figure src="/images/internal-sales-grn-applet/main-details.png" alt="Main Details tab on Create Internal Sales GRN showing branch, location, sales agent, dates, and reference fields" caption="Main Details: set branch, location, sales agent, transaction date, and reference before you add the customer and lines." >}}
+
 ### Account (customer)
 
 Subtabs: **Entity Details**, **Bill To**, **Ship To**.
@@ -197,6 +199,8 @@ Subtabs: **Entity Details**, **Bill To**, **Ship To**.
 | **GL Code, Currency, Email, Phone Number, Description** | Account context for finance and contact. |
 | **Bill To** | Billing name, phone, email, and billing address lines. |
 | **Ship To** | Recipient name, phone, email, and shipping address lines. |
+
+{{< figure src="/images/internal-sales-grn-applet/tab-account.png" alt="Account tab on Create Internal Sales GRN showing Entity Details with a customer selected" caption="Account: select the returning customer on Entity Details and confirm Bill To and Ship To when your process requires them." >}}
 
 ### Lines (returned items)
 
@@ -218,6 +222,8 @@ Subtabs: **Entity Details**, **Bill To**, **Ship To**.
 | **Costing Details** | MAUC, FIFO, manual cost (finance review). |
 | **Pricing Details** | Pricing schema, discounts, tax breakdown. |
 | **Issue Link** | Link to quality or after-sales issue records. |
+
+{{< figure src="/images/internal-sales-grn-applet/tab-lines.png" alt="Lines tab on Create Internal Sales GRN with Select Item panel open to add returned products" caption="Lines: use Add (+) to open Select Item, pick each returned product, then complete quantity and tracking on the line." >}}
 
 ### Department Hdr (header GL allocation)
 
@@ -246,6 +252,8 @@ Screens may show **tabs across the top** or **expansion panels** (same data)—u
 
 **Typical scenario:** Warehouse records the return date and RMA reference the day goods arrive.
 
+{{< figure src="/images/internal-sales-grn-applet/main-details.png" alt="Main Details tab on Create Internal Sales GRN showing header fields for branch, location, and dates" caption="Main Details on create: complete branch, location, dates, and reference before Account and Lines." >}}
+
 ### Account
 
 **When to use:** Always—who is returning goods.
@@ -253,6 +261,8 @@ Screens may show **tabs across the top** or **expansion panels** (same data)—u
 **What you do here:** Select **Entity ID**, verify **Bill To** and **Ship To**. Credit terms on Main Details often depend on the customer selected here.
 
 **Typical scenario:** Retailer return—confirm ship-to is the supplier’s return warehouse address.
+
+{{< figure src="/images/internal-sales-grn-applet/tab-account.png" alt="Account tab Entity Details with customer entity ID, name, and contact fields populated" caption="Account on create: pick Entity ID and verify customer details before adding lines." >}}
 
 ### Lines
 
@@ -262,6 +272,8 @@ Screens may show **tabs across the top** or **expansion panels** (same data)—u
 
 **Typical scenario:** Partial return—only the three mismatched units from a ten-unit order.
 
+{{< figure src="/images/internal-sales-grn-applet/tab-lines.png" alt="Lines tab with empty grid and Select Item panel for choosing returned items" caption="Lines on create: add each returned item from Select Item, then enter quantity and serial, batch, or bin detail when required." >}}
+
 ### Settlement
 
 **When to use:** On create (and on edit when visible)—how the customer is compensated.
@@ -269,6 +281,8 @@ Screens may show **tabs across the top** or **expansion panels** (same data)—u
 **What you do here:** Add settlement lines: cash back, voucher, card, cheque, bank transfer, membership points, etc. Review **Total** vs **Outstanding** on the tab.
 
 **Typical scenario:** Cash refund matching the returned line total. See [Settlement — Your Financial Resolution Tool](#settlement---your-financial-resolution-tool) for method details.
+
+{{< figure src="/images/internal-sales-grn-applet/tab-settlement.png" alt="Settlement tab showing Total and Outstanding amounts with Add Settlement panel for settlement method" caption="Settlement: review Total and Outstanding, then Add (+) to choose a settlement method and amount." >}}
 
 ### Department Hdr
 
@@ -834,7 +848,7 @@ Open **Settings → Application Settings** to control field visibility, tab visi
 | **Line item sub-tabs** | Item Details, Serial/Batch/Bin, Costing, Pricing, Issue Link |
 | **Line pricing fields** | Unit price, discount, quantity, tax, transaction amount visibility |
 | **Layout** | Default horizontal tabs vs vertical panels; single vs double column on listings |
-| **Listing** | Branch filter, item name limits, gen-doc listing options |
+| **Listing** | Branch filter, item name limits, GRN listing display options |
 
 **Feature visibility** (separate **Feature Visibility** screen under Settings) toggles applet menus and features not covered above.
 
@@ -842,7 +856,7 @@ Open **Settings → Application Settings** to control field visibility, tab visi
 
 ### Change View
 
-On create, edit, and many settings screens, **CHANGE VIEW** (top right) switches between **horizontal tabs** and **vertical expansion panels**. Same fields and data—layout only. Train users on whichever mode your tenant sets as default.
+On create, edit, and many settings screens, **CHANGE VIEW** (top right) switches between **horizontal tabs** and **vertical expansion panels**. Same fields and data—layout only. Use whichever layout mode your organization sets as the default.
 
 ---
 
@@ -932,7 +946,7 @@ The Personalization section lets individual users set preferences that override 
 
 ### Personal Default Selection
 
-Set your personal default **Branch**, **Location**, and **Language**. When you create a new GRN, these values pre-fill instead of the tenant defaults from **Settings → Default Selection**.
+Set your personal default **Branch**, **Location**, and **Language**. When you create a new GRN, these values pre-fill instead of the company-wide defaults from **Settings → Default Selection**.
 
 **How to set personal defaults:**
 1. Go to **Personalization** from the sidebar
