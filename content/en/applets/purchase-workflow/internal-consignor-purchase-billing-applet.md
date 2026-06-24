@@ -1,6 +1,6 @@
 ---
 title: "Internal Consignor Purchase Billing Applet"
-description: "User guide for consignor-side purchase billing: prerequisites, create and edit with Main Details, Account, line items, payments, money and tax on lines, status, and settings—grounded in the Consignor Purchase Billing Applet UI."
+description: "User guide for consignor purchase billing: why it exists in consignment, how billable quantity is calculated, create and edit with lines and payments, and settings."
 tags:
   - purchase-workflow
   - consignment
@@ -9,42 +9,54 @@ tags:
   - accounts-payable
 weight: 62
 draft: false
+lastmod: 2026-06-24
 ---
 
 ## Purpose and overview
 
 ### What this applet is for
 
-**Internal Consignor Purchase Billing** is where you build and maintain **consignor purchase billing** documents: a header (company, branch, location, dates, purchaser, status, references) plus a **consignor (supplier) account**, **line items** with quantities and money/tax, and optional **payment** lines that describe how settlement is recorded. The applet window title is **Consignor Purchase Billing Applet**; the sidebar entry is **Internal Consignor Purchase Billing**.
+**Internal Consignor Purchase Billing** records the **financial billing** between your organisation and a **consignor** (supplier) after consignment activity has occurred. Each document has a header (company, branch, location, billing period, purchaser, status, references), the **consignor account**, **line items** with billable quantities and amounts, and optional **payment** lines for settlement.
 
-It is **not** the same as [Consignment Billing (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) (sales-side billing to your customer for consigned stock used). It is **not** a [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/)—those are standard PO documents in a different flow.
+The window title is **Consignor Purchase Billing Applet**; the sidebar entry is **Internal Consignor Purchase Billing**.
+
+In a **consignment** model, ownership of stock usually stays with the consignor until agreed events occur (for example sales, consumption, transfer, or a settlement trigger agreed with the consignor). This applet is where you **record what to bill the consignor** for a period—not where you receive goods or place a standard purchase order.
+
+### How this document type compares to others
+
+| Document | What it is for | When you use it |
+|----------|----------------|-----------------|
+| [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) | Creates a **commitment to buy** from a supplier | Before goods or services are confirmed |
+| [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) | Records a **supplier invoice** in the standard purchase flow | When you receive and post a supplier invoice |
+| **Consignor Purchase Billing (this applet)** | Records **billing and settlement** for consigned stock with the consignor | After consignment activity in the billing period |
+| [Consignment Billing (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) | Bills your **customer** for consigned stock used | Sales-side billing to the consignee |
 
 {{< callout type="info" >}}
-**“PO” vs this applet:** In everyday language, **PO** means **purchase order**. This applet is **purchase billing** for the consignor. The **Account** tab reuses a shared account component from purchase-order screens; the business object here is still **consignor purchase billing**, not a PO.
+**Not the same as sales-side billing:** [Consignment Billing (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) bills your customer. This applet handles **consignor-side purchase billing** with the supplier who owns the consigned stock.
 {{< /callout >}}
 
 ### Problems this applet helps solve
 
-- **One official billing record** instead of spreadsheets or email for consignor-side purchase billing.
-- **Lines with amounts and tax** visible on the **Line Item** tab (totals and tax roll up above the grid).
-- **Optional payment lines** when finance records settlement method, amount, and supporting details on the same document.
+- **One official billing record** for each consignor billing cycle instead of spreadsheets or email.
+- **Clear billable quantities** on each line, with **Total** and **Tax** summarised on the **Line Item** tab.
+- **Settlement lines** on the same document when finance records how payment was made.
 
 ### Where to work in the menu
 
-- **Internal Consignor Purchase Billing** — listing, create, edit (**CREATE** / **SAVE**), line and payment subflows.
-- **Settings** and **Personalization** (when your shell shows them for this applet) — defaults, fields, formats, webhooks, visibility, permissions, sidebar.
+- **Internal Consignor Purchase Billing** — listing, create, edit (**CREATE** / **SAVE**), lines, and payments.
+- **Settings** and **Personalization** — defaults, fields, print formats, permissions, and sidebar layout (when your administrator enables them).
 
 ### Where this applet fits (consignment context)
 
-| Stage | What happens | Where to read more |
-|--------|----------------|-------------------|
-| Goods in / consignment receipts | Record receipt of consigned goods | [Internal Consignment GRN](/applets/inventory-workflow/internal-consignment-grn-applet/) |
-| Stock with consignee | Track or move stock at the consignee | [Customer Consignment](/applets/sales-workflow/customer-consignment-applet/) |
-| **Consignor purchase billing (this applet)** | Record billing for the consignor purchase side with lines and money | **This guide** |
-| Bill the consignee for usage | Sales-side consignment invoice/billing | [Consignment Billing (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) |
-| Standard purchase orders | PO lifecycle | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) |
+| Stage | Purpose | Where to read more |
+|--------|---------|-------------------|
+| Consignment GRN | Receive consigned goods into stock | [Internal Consignment GRN](/applets/inventory-workflow/internal-consignment-grn-applet/) |
+| Consignment usage / movement | Track sold, consumed, or moved quantity | [Customer Consignment](/applets/sales-workflow/customer-consignment-applet/) |
+| **Consignor purchase billing (this applet)** | Calculate and record **billable quantity** and amounts for the consignor | **This guide** |
+| Bill the consignee | Invoice the customer for consignment usage | [Consignment Billing (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) |
+| Standard purchase order | Commit to buy outside consignment billing | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) |
 
-How this billing ties to GRNs or other documents in your organisation is a **business rule**; use the table above plus your finance and operations policy.
+**What triggers billing?** Your finance and operations team define this—for example a **monthly billing cycle** (**Start Date** / **End Date** on the document), quantity sold or consumed in that period, or quantities approved for billing. Use the table above and your internal policy together.
 
 ---
 
@@ -54,11 +66,11 @@ How this billing ties to GRNs or other documents in your organisation is a **bus
 - **Company**, **branch**, and **location (store)** must be valid in master data. **Branch** and **location** are **required** on the document before you can save a new record.
 - You must complete **Account** (consignor / supplier entity) so the account form is valid—**CREATE** and **SAVE** stay disabled until this is true.
 - You must add **at least one line item** before **CREATE** or **SAVE**—the applet enforces a non-empty **Line Item** grid.
-- **Items** you add on lines must exist and be selectable from **Search Item** (and your pricing/UOM rules must allow the line to be completed).
-- Optional: agree who enters **payment** lines (often finance) and whether they are required before or after first save—payment is **not** part of the CREATE enable rule; lines and account are.
+- **Items** you add on lines must be consignment items available in **Search Item**, and your pricing rules must allow the line to be completed.
+- **Payment lines** are normally added **after** the billing document exists (open from the listing, then **SAVE**). Finance should agree when settlement is recorded.
 
 {{< callout type="info" >}}
-Field labels, mandatory markers, and hidden tabs follow **Field settings** and **Feature visibility** for your tenant. If a field this guide lists is missing, ask an administrator rather than assuming you are on the wrong screen.
+Field labels, mandatory markers, and hidden tabs follow **Field Settings** and **Feature Visibility** set by your administrator. If a field this guide lists is missing, ask an administrator rather than assuming you are on the wrong screen.
 {{< /callout >}}
 
 ---
@@ -67,10 +79,10 @@ Field labels, mandatory markers, and hidden tabs follow **Field settings** and *
 
 | Role | Main responsibility |
 |------|---------------------|
-| Procurement / buying | Create billing records, choose purchaser and consignor, add lines with correct quantities and prices. |
-| Finance / AP | Review **Txn Amount**, tax, and **Payment** lines; add or correct settlement lines when your policy requires. |
-| Inventory / operations | Support correct item and quantity context on lines; may own **Reference** / **Remarks** for traceability. |
-| Admin | **Settings** / **Personalization**: defaults, printable formats, field visibility, webhooks, permissions. |
+| Finance / Accounts Payable / Consignment operations | Create billing records, verify amounts and tax, add **Payment** lines, coordinate settlement |
+| Inventory / operations | Supply correct stock figures and item context for lines; may own **Reference** / **Remarks** |
+| Procurement / buying | Support purchaser and consignor selection when your process assigns that to buying |
+| Administrator | **Settings** / **Personalization**: defaults, printable formats, field visibility, permissions |
 
 ---
 
@@ -78,10 +90,11 @@ Field labels, mandatory markers, and hidden tabs follow **Field settings** and *
 
 {{< cards >}}
 {{< card title="Listing" subtitle="Search, open a row, start Create" link="#consignor-purchase-billing-listing" >}}
-{{< card title="Create a new billing" subtitle="Minimum fields, lines, then CREATE" link="#quick-start-procurement--buying" >}}
+{{< card title="Create a new billing" subtitle="Header, consignor, lines, then CREATE" link="#quick-start-billing-operations" >}}
 {{< card title="Main Details" subtitle="Dates, org, purchaser, status, references" link="#main-details-what-each-field-is-for" >}}
 {{< card title="Account and consignor" subtitle="Select the consignor (supplier) entity" link="#account-select-the-consignor" >}}
-{{< card title="Line items and money" subtitle="Search item, item details, amounts and tax" link="#line-items-search-item-and-add-item" >}}
+{{< card title="Line items" subtitle="Search item, pricing, and tax" link="#line-items-search-item-and-add-item" >}}
+{{< card title="Billable quantity" subtitle="Calculations and Quantity To Bill" link="#calculations-and-quantity-to-bill" >}}
 {{< card title="Payment lines" subtitle="Settlement method and amount" link="#payment-tab-settlement-and-fields" >}}
 {{< card title="Edit, totals, Export" subtitle="SAVE, line totals, export when enabled" link="#edit-consignor-purchase-billing" >}}
 {{< card title="Status and posting" subtitle="ACTIVE/INACTIVE and no FINAL button here" link="#posting-and-final-in-this-applet" >}}
@@ -93,33 +106,37 @@ Field labels, mandatory markers, and hidden tabs follow **Field settings** and *
 
 ---
 
-## Quick start: procurement / buying {#quick-start-procurement--buying}
+## Quick start: billing operations {#quick-start-billing-operations}
 
-**Goal:** Create a first **consignor purchase billing** that the system will accept when you click **CREATE**.
+**Goal:** Create a **consignor purchase billing** the system accepts when you click **CREATE**.
 
 1. Open **Internal Consignor Purchase Billing** (title **Consignor Purchase Billing Applet**).
 2. On **Consignor Purchase Billing Listing**, click **Create** (`+`).
-3. **Main details** — Set **Start Date** and **End Date** to the **billing period** you are recording (for example the month or range you are charging for). Choose **Company**, **Branch**, and **Location**; set **Status** to **ACTIVE** unless you are intentionally creating an inactive record. Set **Reference** / **Remarks** if your team uses them for case numbers or audit text. Click the **Purchaser Agent** field to open **Main Select Purchaser Listing** and pick the internal **purchaser** who owns this billing case.
-4. **Account** — Open the **Account** tab and select the **consignor (supplier) entity** for this billing. Use the consignor / supplier pickers and maintenance screens if you must create or fix master data (addresses, tax, and so on).
-5. **Line Item** — Click **Create** (`+`) on the line grid. In **Select Line Item**, use the **Search Item** tab, find the product, then complete **Add Item** — **Item Details** (quantities, UOM, unit and net amounts, tax) and use **ADD** to attach the line. Repeat if you need more than one item. The line grid shows **Total** and **Tax** for line **Txn Amount** in the document currency shown on the tab.
-6. **Payment** (optional before first save) — If finance needs a payment line on create, open **Payment**, add a line, choose **settlement method**, and complete the fields; click **ADD** to attach.
-7. Click **CREATE** when it is enabled.
+3. **Main Details** — Set **Start Date** and **End Date** to the **billing period** you are recording (for example the month you are settling with the consignor). Choose **Company**, **Branch**, and **Location**; set **Status** to **ACTIVE** for normal work. Add **Reference** / **Remarks** if your team uses them. Click **Purchaser Agent** to open **Main Select Purchaser Listing** and pick the internal person responsible for this billing case.
+4. **Account** — Select the **consignor (supplier)** for this billing using **Select Consignor Listing**.
+5. **Line Item** — Click **Create** (`+`) on the line grid. In **Select Line Item**, use **Search Item**, pick the product, then on **Add Item** complete **Calculations** (opening stock, net purchase, closing stock—see [Calculations and Quantity To Bill](#calculations-and-quantity-to-bill)) and **Item Details** (pricing and tax). Click **ADD** to attach each line. Check **Total** and **Tax** above the grid.
+6. Click **CREATE** when it is enabled.
 
 **What happens next**
 
-- A **success** notification is shown and the UI **returns to the listing** so you can see the new row (or refresh search).
-- The new document appears in **Consignor Purchase Billing Listing** with columns such as **Company Name**, **Branch**, **Consignor**, **Consignor Name**, **Start Date**, **End Date**, **Status**.
+- A success message appears and you return to the **listing**.
+- Open the new row to add or change lines, record **Payment** lines (finance), or **Export** a PDF when needed.
+
+{{< callout type="tip" >}}
+**Payment comes after CREATE:** **CREATE** saves the header and line items only. Finance normally adds **Payment** lines after opening the saved billing from the listing—see [Quick start: finance / AP](#quick-start-finance--ap).
+{{< /callout >}}
 
 ---
 
 ## Quick start: finance / AP {#quick-start-finance--ap}
 
-**Goal:** Review money on an existing billing or add **payment** lines.
+**Goal:** Review amounts on an existing billing and record **payment** / settlement.
 
 1. Open a row from **Consignor Purchase Billing Listing** (**Edit Consignor Purchase Billing**).
-2. Check **Line Item** totals (**Total**, **Tax**) against **Txn Amount** and tax columns on lines (**SST/VAT/GST**, **Txn Amount**).
-3. Open **Payment**. Choose **settlement method** (for example **CASH**, **BANK_TRANSFER**, **CHEQUE**, **CREDIT_CARD**, **VOUCHER**, **CASH_BACK**, **MEMBERSHIP_POINT_CURRENCY**—whatever your master lists). Complete **Date**, **Amount**, and method-specific fields (**Transaction No**, **Cheque No**, card fields, and so on). Use **ADD** to save that payment line.
+2. On **Line Item**, check **Quantity To Bill**, **Txn Amount**, and tax columns against your consignment records. Confirm **Total** and **Tax** above the grid.
+3. Open **Payment**. Click **Add** (`+`), choose **settlement method** (**CASH**, **BANK_TRANSFER**, **CHEQUE**, **CREDIT_CARD**, **VOUCHER**, **CASH_BACK**, **MEMBERSHIP_POINT_CURRENCY**, or others your organisation lists). Complete **Date**, **Amount**, and any method-specific fields (**Transaction No**, **Cheque No**, card details, and so on). Click **ADD** on the payment form.
 4. Click **SAVE** when enabled.
+5. Optional: open **Export**, choose a **Printable Format**, and use **EXPORT AS PDF** for a copy for the consignor or your files.
 
 ---
 
@@ -130,7 +147,7 @@ Field labels, mandatory markers, and hidden tabs follow **Field settings** and *
 Use **Consignor Purchase Billing Listing** to:
 
 - Start **Create** (`+`).
-- Use **advanced search** (purchase-style search model) to narrow rows.
+- Use **advanced search** to narrow rows.
 - Click a row to open **Edit Consignor Purchase Billing**.
 - Work with the grid (pagination, columns, filters): columns include **Company Name**, **Branch**, **Consignor**, **Consignor Name**, **Start Date**, **End Date**, **Status**.
 
@@ -144,7 +161,7 @@ Screen title: **Create Consignor Purchase Billing**.
 
 **Buttons**
 
-- **CREATE** — First save of a **new** billing. Enabled only when **Main Details** is valid, **Account** entity form is valid, and there is **at least one line** on the **Line Item** tab.
+- **CREATE** — Saves a new billing. Enabled when **Main Details** is complete, a consignor is selected on **Account**, and there is **at least one line** on **Line Item**.
 
 **Tabs:** **Main Details**, **Account**, **Line Item**, **Payment**.
 
@@ -156,11 +173,11 @@ Screen title: **Create Consignor Purchase Billing**.
 
 | Field | Purpose (why it matters) | How to fill |
 |--------|---------------------------|-------------|
-| **Start Date** / **End Date** | Defines the **billing period** or reporting window for this record—not arbitrary decoration. | Pick dates that match the cycle your finance team bills on. |
-| **Company** | Which legal entity owns this billing. | Select from the company control. |
+| **Start Date** / **End Date** | Define the **billing cycle and reporting period** for this record. | Pick dates that match the cycle your finance team uses with the consignor. |
+| **Company** | Which legal entity owns this billing. | Select from the company list. |
 | **Branch** | Which branch owns or processes this billing. **Required.** | Select branch after company as needed. |
-| **Location** | Store / location context for the billing. **Required.** | Select location for the chosen branch. |
-| **Purchaser Agent*** | Which internal **purchaser** is accountable for this billing case (ownership and follow-up). | **Create:** click the field to open **Main Select Purchaser Listing**. **Edit:** the field uses the same Main Details form but **picker navigation is not wired on the edit screen**—use policy or admin guidance if purchaser must change after save. |
+| **Location** | Store or location context for the billing. **Required.** | Select location for the chosen branch. |
+| **Purchaser Agent*** | Internal person **responsible for this billing case** (tracking and coordination). | **Create:** click the field to open **Main Select Purchaser Listing**. **Edit:** the field shows the saved name; if you must change it after save, follow your administrator’s correction process. |
 | **Status** | **ACTIVE** or **INACTIVE** for whether this billing header is treated as live or inactive in your workflow. **Required.** | Choose **ACTIVE** for normal work. |
 | **Reference** | Your **external or internal reference** (supplier memo, case ID, cycle id)—whatever your team agreed for tracing this billing. | Free text. |
 | **Remarks** | Longer narrative (negotiations, exclusions, footnotes for auditors). | Optional; character count shown in the UI. |
@@ -177,31 +194,61 @@ Open **Account**. Use **select entity / consignor** actions to open **Select Con
 
 ## Line items — Search Item and Add Item {#line-items-search-item-and-add-item}
 
-**Purpose:** Lines carry **items**, **quantities**, **discounts**, **tax**, and **Txn Amount**—that is how **money** enters this document.
+**Purpose:** Line items determine **billing values, taxes, and totals** for the document.
 
-{{< figure src="/images/internal-consignor-purchase-billling-applet/add-line-items.png" alt="Line Item tab showing Add Item flow, item details, totals and tax summary above the line grid" caption="**Line Item** tab: **Add Item** with **Item Details** (quantities, pricing, tax), and **Total** / **Tax** above the grid." >}}
+{{< figure src="/images/internal-consignor-purchase-billling-applet/add-line-items.png" alt="Line Item tab showing Add Item flow, item details, totals and tax summary above the line grid" caption="**Line Item** tab: add items, then review **Total** and **Tax** above the grid." >}}
 
 ### Path from the document
 
-1. On **Create** / **Edit**, open the **Line Item** tab.
+1. On **Create** or **Edit**, open the **Line Item** tab.
 2. Click **Create** (`+`) on the line toolbar — opens **Select Line Item**.
-3. Use the **Search Item** tab to find the stock item.
-4. Open **Add Item** — title **Add Item** — with tabs **Item Details** and **Calculations**.
-5. Complete **Item Details** (item code/name from selection, **pricing scheme / UOM**, unit prices, **Quantity Base** / **Quantity by UOM**, discounts, **Amount Net**, SST/GST/VAT, WHT, **Txn Amount**, **Remarks**, and related calculated fields).
-6. Click **ADD** on **Add Item** to attach the line to the draft.
+3. Use **Search Item** to find a consignment item.
+4. Open **Add Item** with tabs **Calculations** and **Item Details**.
+5. On **Calculations**, enter **Opening Stock**, **Net Purchase**, and **Closing Stock**; the screen calculates **Quantity To Bill** (see below).
+6. On **Item Details**, enter pricing, quantity, discounts, and tax until **Txn Amount** is correct.
+7. Click **ADD** to attach the line.
 
-### What you see back on the Line Item tab
+### What you see on the Line Item tab
 
-The grid lists lines (ACTIVE lines only in the draft store) with columns including **Item Code**, **Opening Stock**, **Net Purchase**, **Closing Stock**, **Quantity To Bill**, **SST/VAT/GST**, and **Txn Amount**. Above the grid, **Total** and **Tax** summarise line **Txn Amount** and tax in the document currency.
+The grid shows each line with **Item Code**, **Opening Stock**, **Net Purchase**, **Closing Stock**, **Quantity To Bill**, **SST/VAT/GST**, and **Txn Amount**. **Total** and **Tax** above the grid summarise all lines.
+
+**Opening Stock**, **Net Purchase**, and **Closing Stock** are **inventory reference figures** that support the billing calculation—they are not the payment amount by themselves. The amount you bill is reflected in **Quantity To Bill** and **Txn Amount** on each line.
+
+---
+
+## Calculations and Quantity To Bill {#calculations-and-quantity-to-bill}
+
+When you add or edit a line, open **Add Item** → **Calculations**.
+
+| Field | What it means |
+|-------|----------------|
+| **Opening Stock** | Stock on hand at the **start** of the billing period (for this item). |
+| **Net Purchase** | Net consignment movement **into** stock during the period (purchases or receipts your process counts). |
+| **Closing Stock** | Stock on hand at the **end** of the period. |
+| **Quantity To Bill** | Billable quantity for this line—calculated as **Opening Stock + Net Purchase − Closing Stock**. |
+
+**Quantity To Bill** is the quantity of consigned inventory that has become **billable** for this billing cycle. It is **not** the same as:
+
+- Quantity on a [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/)
+- Quantity received on a consignment GRN alone
+- Total warehouse on-hand stock unrelated to the billing period
+
+Your organisation defines how you obtain opening, net purchase, and closing figures (for example from consignment reports or operations). Enter the values agreed with finance, then complete **Item Details** so **Txn Amount** reflects price and tax for that billable quantity.
+
+{{< callout type="tip" >}}
+**Example:** Opening 100, Net Purchase 50, Closing 40 → **Quantity To Bill** = 110 (100 + 50 − 40). Apply your unit price and tax on **Item Details** to get **Txn Amount**.
+{{< /callout >}}
 
 ---
 
 ## Payment tab — settlement and fields {#payment-tab-settlement-and-fields}
 
-**Purpose:** Record **how** payment or settlement is represented (**settlement method**, amount, dates, references)—not to replace your general ledger training, but to capture the structured payment lines your tenant expects on this billing.
+**Purpose:** Record **how** settlement was made—method, amount, date, and reference numbers—on the saved billing document.
 
-1. Open **Payment** and start **Add Payment** (**Add Payment** screen).
-2. Choose a **settlement method** from the settlement selector at the top of **Add Payment**. The form then shows fields depending on type, including:
+**When to use it:** After the billing exists in the listing. Open **Edit Consignor Purchase Billing**, go to **Payment**, then add lines and click **SAVE** on the document.
+
+1. On **Payment**, click **Add** (`+`) to open **Add Payment**.
+2. Choose a **settlement method**. Fields shown depend on the method:
    - **CASH** — **Date**, **Amount**, **Remarks**.
    - **CASH_BACK** — **Date**, **Cash Back**, **Amount**, **Cash Back for Settlement** (read-only), **Remarks**.
    - **CREDIT_CARD** — **Date**, **Amount**, **Remarks**, **Card No**, **Name on Card**, **Card Issuer**, **Type**, **Card Expiry**, **CVV**.
@@ -209,9 +256,11 @@ The grid lists lines (ACTIVE lines only in the draft store) with columns includi
    - **BANK_TRANSFER** — **Date**, **Amount**, **Transaction No**, **Remarks**.
    - **MEMBERSHIP_POINT_CURRENCY** — **Date**, **Point CCY**, **Amount**, **Point Currency for Settlement**, **Remarks**.
    - **CHEQUE** — **Date**, **Amount**, **Cheque No**, **Remarks**.
-3. Click **ADD** when the form validates (amount and required fields for the chosen method).
+3. Click **ADD** when the form is complete.
 
-**CREATE does not require payment lines**—only header validity, account validity, and at least one **line item**. Add payments when your **finance process** says they belong on this document.
+**CREATE does not require payment lines**—only a valid header, consignor on **Account**, and at least one line item. The **Payment** tab is visible on create, but finance should normally add payments **after** **CREATE**, on the edit screen.
+
+The **Payment** tab also shows **Total** (payments recorded) and **Outstanding** (line total minus payments) when amounts are entered.
 
 ---
 
@@ -219,17 +268,21 @@ The grid lists lines (ACTIVE lines only in the draft store) with columns includi
 
 Screen title: **Edit Consignor Purchase Billing**.
 
-- **SAVE** — Same enable rule as **CREATE**: valid **Main Details**, valid **Account**, at least one line.
-- **RESET** — Reloads draft state for the edit session (discard unsaved changes on the current flow).
-- **Tabs:** **Main Details**, **Account**, **Line Item**, **Payment**, **Export** (export exists on edit only—use when your tenant exposes export actions here).
+- **SAVE** — Same rule as **CREATE**: complete **Main Details**, consignor on **Account**, at least one line.
+- **RESET** — Discards unsaved changes on the current edit session and reloads the last saved state.
+- **Tabs:** **Main Details**, **Account**, **Line Item**, **Payment**, **Export**.
+
+### Export (edit only)
+
+Open **Export**, choose a **Printable Format** configured under **Settings → Printable Format Settings**, then click **EXPORT AS PDF** for a printable copy. Formats are set up by your administrator.
 
 ---
 
 ## Posting and FINAL in this applet {#posting-and-final-in-this-applet}
 
-Unlike [Consignment GRN (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/), this applet’s **create/edit screens do not show a FINAL or VOID button** in the client code reviewed for this guide. Day-to-day actions are **CREATE** (first save), **SAVE** (updates), and **RESET**.
+Unlike [Consignment GRN (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) or [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), this applet uses **operational status** on the header (**ACTIVE** / **INACTIVE**) rather than posting buttons such as **FINAL** or **VOID** on the create and edit screens.
 
-Do **not** assume the same **DRAFT / FINAL / VOID posting lifecycle** as GRN unless your administrator confirms extra steps elsewhere (another menu, batch job, or server-side posting).
+Day-to-day actions here are **CREATE** (first save), **SAVE** (updates), and **RESET** (on edit). Do not assume the same **DRAFT / FINAL / VOID** lifecycle as other purchase documents unless your administrator describes extra steps outside this applet.
 
 ---
 
@@ -252,10 +305,11 @@ The listing shows status from the billing header (same **ACTIVE** / **INACTIVE**
 
 Your codes will differ; this shows **order of operations** only.
 
-1. **Create** — Company **HQ**, Branch **KL**, Location **Main DC**. Period **2026-04-01** to **2026-04-30**. **Reference** `CSG-PB-2026-04`. **Purchaser Agent** = buyer **Jane**. **Status** **ACTIVE**.
+1. **Create** — Company **HQ**, Branch **KL**, Location **Main DC**. Period **2026-04-01** to **2026-04-30**. **Reference** `CSG-PB-2026-04`. **Purchaser Agent** = **Jane**. **Status** **ACTIVE**.
 2. **Account** — Consignor **SUP-001 / Vendor Alpha**.
-3. **Line Item** — **Search Item** → finish **Add Item** with **Quantity Base** `24`, pricing until **Txn Amount** shows **MYR 1,200.00** (and tax as applicable). **ADD**.
-4. **CREATE** — Listing refreshes; you see a new row with **Consignor** **SUP-001**, dates April, **Status** **ACTIVE**.
+3. **Line Item** — **Search Item** → **Calculations**: Opening **100**, Net Purchase **50**, Closing **40** → **Quantity To Bill** **110**. **Item Details**: price and tax until **Txn Amount** shows **MYR 1,200.00**. **ADD**.
+4. **CREATE** — New row appears with **Consignor** **SUP-001**, April dates, **Status** **ACTIVE**.
+5. **Edit** (finance) — Add **Payment** (for example **BANK_TRANSFER**) for **MYR 1,200.00**, **SAVE**.
 
 ---
 
@@ -263,39 +317,44 @@ Your codes will differ; this shows **order of operations** only.
 
 | Symptom | Likely cause | What to do |
 |---------|----------------|------------|
-| **CREATE** stays disabled | Missing **branch** / **location**, invalid **Account**, or **no lines**. | Complete required Main Details, fix Account selection, add at least one line on **Line Item**. |
-| **SAVE** stays disabled on edit | Same as CREATE rule. | Complete required fields and keep at least one line. |
-| Success message appears but wording looks generic | Known toast copy in some builds may reuse generic purchase wording. | Confirm in listing that the row exists; report misleading toast to support if needed. |
-| Cannot find item in **Search Item** | Item inactive or not visible to your role. | Ask admin to check item master and visibility. |
-| Payment **ADD** disabled | Settlement method not chosen or invalid amount/mandatory fields. | Pick method first; ensure **Amount** ≥ minimum and required fields for that method. |
-| **Purchaser Agent** cannot be changed on edit | Edit template does not wire the purchaser picker. | Align with policy or admin for corrections. |
+| **CREATE** stays disabled | Missing **branch** or **location**, consignor not selected on **Account**, or no lines on **Line Item**. | Complete required **Main Details**, select consignor on **Account**, add at least one line. |
+| **SAVE** stays disabled on edit | Same as **CREATE**. | Keep required fields complete and at least one line on the document. |
+| Success message mentions "purchase order" | Message text may not match this document type. | If the new row appears in the listing, the billing was saved—use the listing as confirmation. |
+| Cannot find item in **Search Item** | Item not set up for consignment or not visible to your role. | Ask your administrator to check the item master. |
+| Payment **ADD** disabled | Settlement method not chosen or required fields missing. | Select a method first; enter **Amount** and other required fields for that method. |
+| **Purchaser Agent** cannot be changed on edit | Purchaser is chosen on create; edit screen may not offer the picker again. | Follow your administrator’s process to correct purchaser after save. |
+| **Quantity To Bill** looks wrong | Opening, Net Purchase, or Closing entered incorrectly. | Recheck figures on **Calculations**; formula is Opening + Net Purchase − Closing. |
 
 ---
 
 ## Configuration and settings {#configuration-and-settings}
 
-Use the shell to open applet **Settings** and **Personalization** (labels may vary slightly).
+Administrators configure the applet under **Settings** and **Personalization** in the sidebar.
 
-**Settings (typical)**
+### Settings
 
-- **Default Selection** — Defaults for new documents.
-- **Printable Format Settings** — Print layouts.
-- **Field Settings** — Which fields appear and whether they are mandatory.
-- **Webhook** — Integrations.
-- **Feature Visibility** — Which features users see.
-- **Permission Set**, **User**, **Team**, **Role** listings — Who can create, edit, or see pricing.
+| Area | What it controls |
+|------|------------------|
+| **Feature Visibility** | Which menus and features users see |
+| **Default Selection** | Default branch and location on new billings |
+| **Printable Format Settings** | PDF layouts for **Export** |
+| **Field Settings** | Which fields appear and which are mandatory |
+| **Webhook** | Notifications to external systems when documents change |
+| **Permission Set / User / Team / Role** | Who can create, edit, or view billing and pricing |
 
-**Personalization (typical)**
+### Personalization
 
-- **Field Settings**, **Default Selection** under system configuration.
-- **Sidebar** — Sidebar layout when available.
+| Area | What it controls |
+|------|------------------|
+| **Personal Default Selection** | Your own default branch and location (overrides organisation defaults) |
+| **Sidebar** | Layout of your sidebar menu |
 
 ---
 
 ## Permissions
 
-- If **Create** is missing or **CREATE** / **SAVE** never enables, your role may lack permission or **Feature visibility** may hide functions.
-- Administrators adjust **Permission** listings and **Field settings** for your tenant.
+- If **Create** is missing or **CREATE** / **SAVE** never enables, your role may lack permission or **Feature Visibility** may hide functions.
+- Administrators adjust permission listings and **Field Settings** for your organisation.
 
 ---
 
@@ -305,6 +364,7 @@ Use the shell to open applet **Settings** and **Personalization** (labels may va
 - [Customer Consignment](/applets/sales-workflow/customer-consignment-applet/)
 - [Consignment Billing (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/)
 - [Consignment Return (Internal)](/applets/purchase-workflow/internal-consignment-return-applet/)
+- [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/)
 - [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/)
 
 ---
@@ -313,42 +373,51 @@ Use the shell to open applet **Settings** and **Personalization** (labels may va
 
 ### What is the minimum I must complete before CREATE?
 
-Valid **Main Details** (including required **branch**, **location**, and **status**), a valid **Account** (consignor) selection, and **at least one line item**. Payment lines are optional for enabling **CREATE**.
+Valid **Main Details** (including **branch**, **location**, and **status**), a consignor selected on **Account**, and **at least one line item**. Payment lines are **not** required for **CREATE**.
 
 ### What happens after I click CREATE?
 
-The applet saves the billing to the server, shows a **success** notification, and **returns you to the listing** so you can open the record again for **SAVE** or further lines/payments.
+The billing is saved, a success message appears, and you return to the **listing**. Open the row again to add **Payment** lines, change lines, or **Export** a PDF.
+
+### How is billable quantity determined?
+
+On **Add Item** → **Calculations**, enter **Opening Stock**, **Net Purchase**, and **Closing Stock**. The screen calculates **Quantity To Bill** as **Opening + Net Purchase − Closing**. What those three numbers represent depends on your organisation’s consignment policy (for example sold quantity, consumed quantity, or figures from operations reports). See [Calculations and Quantity To Bill](#calculations-and-quantity-to-bill).
 
 ### How is this different from Consignment Billing (Internal)?
 
-[Consignment Billing (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) bills your **customer** for consignment consumption (sales). This applet records **consignor purchase billing** with supplier/consignor context and purchase-style lines.
+[Consignment Billing (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) bills your **customer** for consignment usage. This applet records **consignor purchase billing**—amounts owed to or settled with the **consignor (supplier)**.
+
+### How is this different from a Purchase Order or Purchase Invoice?
+
+A [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) is a **commitment to buy**. A [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) records a **standard supplier invoice**. **Consignor Purchase Billing** records **billing for consigned stock** with the consignor after activity in the billing period—it does not replace either of those documents.
 
 ### Is this a purchase order?
 
-No. Use [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) for POs. This applet is **Consignor Purchase Billing**.
+No. This is **Consignor Purchase Billing**, not a purchase order. See the comparison table in [Purpose and overview](#purpose-and-overview).
 
 ### Where is FINAL?
 
-There is **no FINAL action** on these screens in the applet code underlying this guide. Use **CREATE** and **SAVE** as described in [Posting and FINAL in this applet](#posting-and-final-in-this-applet).
+There is **no FINAL** button on create or edit screens. Use **CREATE** and **SAVE**, and header **Status** **ACTIVE** / **INACTIVE**. See [Posting and FINAL in this applet](#posting-and-final-in-this-applet).
 
 ### Do I need a payment line before CREATE?
 
-**No**—payment is optional for the CREATE button. Add payments when your finance policy requires them on the document.
+**No.** Add **Payment** lines **after** the billing is created—open it from the listing, add payments on **Payment**, then **SAVE**.
 
 ### How do lines get money and tax?
 
-On **Add Item** → **Item Details**, enter quantities and pricing; the form calculates **Amount Net**, **Tax Amount**, **Txn Amount**, and related fields. The **Line Item** tab shows **Txn Amount** and tax per line and **Total** / **Tax** summaries.
+Complete **Calculations** for **Quantity To Bill**, then on **Item Details** enter pricing and tax. The line **Txn Amount** and tax columns update; **Total** and **Tax** on the **Line Item** tab summarise all lines.
 
 ### Why can’t I change Purchaser Agent on edit?
 
-The **create** screen wires the purchaser picker; the **edit** screen uses the same Main Details component **without** that picker hook—if you must change purchaser after save, ask your administrator for the approved correction path.
+Purchaser is normally selected when you **create** the billing. If you must change it after save, use the correction process your administrator provides.
 
 ---
 
 ## Glossary {#glossary}
 
-- **Consignor purchase billing** — The document type handled in this applet (consignor-side billing with lines and optional payments).
-- **Consignor** — Supplier-side entity selected on **Account** for this billing.
-- **Purchaser Agent** — Internal buyer or owner of the billing case on the header.
-- **Txn Amount** — Transaction amount on a line (and payment), in document currency context on listings.
-- **Search Item** — Tab used to pick stock items before **Add Item**.
+- **Consignor purchase billing** — Billing document for amounts due to or settled with a consignor for a period.
+- **Consignor** — Supplier who owns consigned stock; selected on **Account**.
+- **Quantity To Bill** — Billable quantity on a line (Opening Stock + Net Purchase − Closing Stock on **Calculations**).
+- **Purchaser Agent** — Internal person responsible for the billing case on the header.
+- **Txn Amount** — Transaction amount on a line or payment.
+- **Search Item** — Screen to pick a consignment item before **Add Item**.
