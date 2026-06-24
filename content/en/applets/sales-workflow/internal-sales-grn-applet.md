@@ -11,6 +11,9 @@ tags:
 - customer-returns
 - warehouse-operations
 weight: 125
+date: 2026-04-06
+lastmod: 2026-06-16
+draft: false
 ---
 
 ## Purpose and Overview
@@ -73,11 +76,14 @@ Traditional goods return management relies on ad hoc paperwork and fragmented co
 - **Printable formats** — Professional GRN documents for warehouse receiving and customer acknowledgement
 
 {{< cards >}}
+  {{< card title="Field reference" subtitle="Header, customer, and line fields explained" link="#field-reference" >}}
+  {{< card title="Create & edit tabs" subtitle="Each tab and when to use it" link="#create-and-edit-tabs" >}}
   {{< card title="GRN Listing" subtitle="View and manage all Goods Return Notes in one place" link="#internal-sales-grn-listing---your-returns-dashboard" >}}
   {{< card title="Line Items" subtitle="Cross-transaction view of every returned item" link="#line-items---cross-transaction-view" >}}
   {{< card title="Settlement" subtitle="Process refunds, vouchers, and credits for returns" link="#settlement---your-financial-resolution-tool" >}}
   {{< card title="Contra" subtitle="Link returns to original sales documents" link="#contra-linking---your-reconciliation-tool" >}}
   {{< card title="Return Tracking" subtitle="Monitor returns from receipt to resolution" link="#return-tracking" >}}
+  {{< card title="Personalization" subtitle="Your own defaults and layout" link="#personalization" >}}
   {{< card title="Settings" subtitle="Configure defaults, print formats, and permissions" link="#configuration--settings" >}}
 {{< /cards >}}
 
@@ -153,6 +159,149 @@ To effectively manage returns in the system, it is crucial to understand how **L
 4. You add a **Contra** link (which original document this return offsets).
 5. When finalized, the system updates stock and posts the financial entries.
 
+For field-by-field meanings and each screen tab, see [Field reference](#field-reference) and [Create and edit tabs](#create-and-edit-tabs) below. The rest of this guide keeps the existing warehouse, finance, and scenario walkthroughs unchanged.
+
+---
+
+## Field reference {#field-reference}
+
+This section explains what each part of the form is for. **Which fields are required** depends on your administrator’s **Application Settings**—the table describes purpose, not whether every tenant marks a field mandatory.
+
+### Main Details (document header)
+
+| Field | What it is for |
+|-------|----------------|
+| **Document Type / Doc No (Tenant, Company, Branch)** | System document identity (shown on saved documents; read-only). |
+| **Branch** | Branch receiving the returned goods. |
+| **Location** | Warehouse or store location where stock will be reinstated. |
+| **Sales Agent** | Sales representative for this customer account. |
+| **Member Card** | Loyalty member linked to the return (opens **Select Member** when used). |
+| **Transaction Date** | Date of the return for posting and reporting. |
+| **Credit Terms** | Payment terms (often requires **Entity ID** on Account first). |
+| **Due Date** | Due date derived from credit terms when applicable. |
+| **Reference** | Original invoice, RMA, or sales order reference for traceability. |
+| **Remarks** | Free-text notes (condition, reason, internal case ID). |
+| **Permit No** | Import or permit reference when your process requires it. |
+| **Currency** | Document currency for line amounts. |
+| **Customer** | Customer name (populated from Account). |
+| **Tracking ID** | Logistics or return tracking reference. |
+
+### Account (customer)
+
+Subtabs: **Entity Details**, **Bill To**, **Ship To**.
+
+| Field / area | What it is for |
+|--------------|----------------|
+| **Entity ID** | Returning customer—open **Select Customer Listing** to pick the account. |
+| **Entity Name, Type, Status, ID Number, Identity Type** | Customer master data for identification. |
+| **GL Code, Currency, Email, Phone Number, Description** | Account context for finance and contact. |
+| **Bill To** | Billing name, phone, email, and billing address lines. |
+| **Ship To** | Recipient name, phone, email, and shipping address lines. |
+
+### Lines (returned items)
+
+| Field / column | What it is for |
+|----------------|----------------|
+| **Item Code / Item Name / UOM** | What product is being returned. |
+| **Qty** | Quantity physically received back. |
+| **Unit Price (Inclusive of Tax)** | Return value per unit (hidden if pricing display is off for your role). |
+| **SST / VAT / GST, Txn Amount** | Tax and line total when pricing columns are visible. |
+
+**Add Line Item** sub-tabs (when item setup requires them):
+
+| Sub-tab | What it is for |
+|---------|----------------|
+| **Item Details** | Core line fields, quantity, pricing, tax, remarks. |
+| **Serial Number** | Track individual serialized units. |
+| **Batch Number** | Lot, issue date, expiry for batch-controlled items. |
+| **Bin Number** | Warehouse bin where goods are placed. |
+| **Costing Details** | MAUC, FIFO, manual cost (finance review). |
+| **Pricing Details** | Pricing schema, discounts, tax breakdown. |
+| **Issue Link** | Link to quality or after-sales issue records. |
+
+### Department Hdr (header GL allocation)
+
+| Field | What it is for |
+|-------|----------------|
+| **Segment** | Business segment for GL reporting. |
+| **G/L Dimension** | GL dimension code. |
+| **Profit Centre** | Profit centre allocation. |
+| **Project** | Project code when returns must be charged to a project. |
+
+---
+
+## Create and edit tabs {#create-and-edit-tabs}
+
+Screens may show **tabs across the top** or **expansion panels** (same data)—use **CHANGE VIEW** on the screen or ask your admin about the default layout under [Configuration & Settings](#configuration--settings).
+
+**Create Internal Sales GRN** header buttons: **RESET**, **CREATE** (requires valid Main Details, Account, and at least one line).
+
+**Edit Internal Sales GRN** header buttons: **RESET**, **FINAL**, **SAVE**, and **DELETE** when your administrator enables it and the document is not yet finalized.
+
+### Main Details
+
+**When to use:** Always—the document header.
+
+**What you do here:** Branch, location, sales agent, member card, dates, reference, currency, and remarks. On edit, confirm **Posting Status** before assuming stock or finance is complete.
+
+**Typical scenario:** Warehouse records the return date and RMA reference the day goods arrive.
+
+### Account
+
+**When to use:** Always—who is returning goods.
+
+**What you do here:** Select **Entity ID**, verify **Bill To** and **Ship To**. Credit terms on Main Details often depend on the customer selected here.
+
+**Typical scenario:** Retailer return—confirm ship-to is the supplier’s return warehouse address.
+
+### Lines
+
+**When to use:** Always—what is being returned.
+
+**What you do here:** Add or edit returned items, quantities, pricing, and serial/batch/bin detail. See also [For Warehouse Staff (Recording Returned Goods)](#for-warehouse-staff-recording-returned-goods) for step-by-step receiving.
+
+**Typical scenario:** Partial return—only the three mismatched units from a ten-unit order.
+
+### Settlement
+
+**When to use:** On create (and on edit when visible)—how the customer is compensated.
+
+**What you do here:** Add settlement lines: cash back, voucher, card, cheque, bank transfer, membership points, etc. Review **Total** vs **Outstanding** on the tab.
+
+**Typical scenario:** Cash refund matching the returned line total. See [Settlement — Your Financial Resolution Tool](#settlement---your-financial-resolution-tool) for method details.
+
+### Department Hdr
+
+**When to use:** When your company allocates return costs by segment, dimension, profit centre, or project.
+
+**What you do here:** Set header-level GL codes before finalize. See [Scenario 4: B2B Return with GL Dimension Allocation](#scenario-4-b2b-return-with-gl-dimension-allocation).
+
+### Contra (edit only)
+
+**When to use:** After the document exists—link the return to the original sales document.
+
+**What you do here:** **Contra Select Document** → pick invoice, delivery order, or other source → enter **Contra Amount**. Multiple contra rows are allowed.
+
+**Typical scenario:** Offset Invoice INV-2024-0550 by the return value. See [Contra Linking — Your Reconciliation Tool](#contra-linking---your-reconciliation-tool).
+
+### Doc Link (edit only)
+
+**When to use:** When you need explicit copy/link traceability between documents.
+
+**What you do here:** Review **Copied From** and **Copied To** subtabs for document relationships.
+
+### Attachments (edit only)
+
+**When to use:** When you need evidence on file.
+
+**What you do here:** Upload photos, supplier or customer authorizations, or inspection reports.
+
+### Export (edit only)
+
+**When to use:** When you need a printable PDF or export for the customer or audit.
+
+**What you do here:** Choose a **Printable Format** configured under Settings and export. See [Printable Format Settings](#printable-format-settings).
+
 ---
 
 ## Quick Start Guide
@@ -176,7 +325,7 @@ Get up and running quickly with these role-specific workflows.
    - Enter quantity returned
    - Add serial/batch/bin numbers if required
 6. **Attach Evidence**: Go to **Attachments** tab → Upload inspection photos
-7. **Finalize**: Click **Final** → Stock is reinstated, document is locked
+7. **Finalize**: Click **FINAL** → Stock is reinstated, document is locked
 
 {{< figure src="/images/internal-sales-grn-applet/grn-listing.png" alt="Sales GRN (Internal) Listing showing GRN summary with Sales GRN No, Posting Status, Customer Name and Transaction Date columns" caption="GRN Listing: View all return records with posting status and customer details at a glance" >}}
 
@@ -676,18 +825,24 @@ The Settings page provides access to system-wide configuration for the Sales GRN
 
 ### Application Settings
 
-**Feature Visibility:**
+Open **Settings → Application Settings** to control field visibility, tab visibility, and form layout. Common areas administrators configure:
 
-Toggle which features and menu items are visible within the applet. Useful for hiding functionality that is not part of your current business workflow (e.g., hide the Issue Link sub-tab if you don't use issue tracking).
+| Area | What administrators configure |
+|------|------------------------------|
+| **Document tabs** | Show or hide **Settlement**, **Department Hdr**, **Contra**, **Doc Link**, **Attachments**, **Export** |
+| **Tab expand defaults** | Which panels open first in vertical layout (Main Details, Account, Lines, etc.) |
+| **Line item sub-tabs** | Item Details, Serial/Batch/Bin, Costing, Pricing, Issue Link |
+| **Line pricing fields** | Unit price, discount, quantity, tax, transaction amount visibility |
+| **Layout** | Default horizontal tabs vs vertical panels; single vs double column on listings |
+| **Listing** | Branch filter, item name limits, gen-doc listing options |
 
-**Field Configuration:**
+**Feature visibility** (separate **Feature Visibility** screen under Settings) toggles applet menus and features not covered above.
 
-Control field-level behaviour on GRN create and edit forms:
-- Set fields as **Required** — users cannot save without completing them
-- Set fields as **Optional** — shown but not mandatory
-- Set fields as **Hidden** — removed from view entirely
+**Field configuration** (within Application Settings): mark header and line fields as required, optional, or hidden so the GRN form matches your returns workflow.
 
-Tailoring the form to your process reduces errors and speeds up data entry.
+### Change View
+
+On create, edit, and many settings screens, **CHANGE VIEW** (top right) switches between **horizontal tabs** and **vertical expansion panels**. Same fields and data—layout only. Train users on whichever mode your tenant sets as default.
 
 ---
 
@@ -771,19 +926,19 @@ Control who can access and perform actions within the Sales GRN (Internal) Apple
 
 ---
 
-## Personalization
+## Personalization {#personalization}
 
-The Personalization section lets individual users set their own preferences that override system-wide defaults.
+The Personalization section lets individual users set preferences that override company-wide defaults for their account only.
 
 ### Personal Default Selection
 
-Set your personal default **Branch** and **Location**. When you create a new GRN, these values will be pre-filled instead of the system defaults.
+Set your personal default **Branch**, **Location**, and **Language**. When you create a new GRN, these values pre-fill instead of the tenant defaults from **Settings → Default Selection**.
 
-**How to Set Personal Defaults:**
+**How to set personal defaults:**
 1. Go to **Personalization** from the sidebar
-2. Click **Personal Default Selection**
-3. Select your preferred **Branch**
-4. Select your preferred **Location**
+2. Click **Default Selection** (or **Personal Default Selection**)
+3. Select your preferred **Branch** and **Location**
+4. Select **Default Language** if shown
 5. Click **Save**
 
 **Who Should Use This?**
@@ -885,7 +1040,7 @@ A: Yes. The **Contra** tab supports multiple contra entries. You can link a sing
 A: The system validates serial numbers in real time. An invalid serial number will trigger a "The serial number is invalid" error immediately. Correct the entry before saving the line item.
 
 **Q: Can I create a GRN for a customer without a Member Card?**
-A: Yes. The **Member Card** field is optional. It is only required when the return involves a loyalty program member whose points or balance may be affected.
+A: **Member Card** is used for loyalty-linked returns. Whether it is optional or required depends on your **Application Settings** and business rules—if the form blocks **CREATE** until a member is selected, pick the member from **Select Member**; otherwise leave it blank when the return is not membership-related.
 
 **Q: How do I print a GRN document to give to the customer as a return acknowledgement?**
 A: Open the GRN, go to the **Export** tab, and select the appropriate **Printable Format**. Click **Export as PDF** to generate the document. Ensure that at least one Printable Format has been configured under Settings first.
@@ -908,8 +1063,8 @@ A: Yes. Use the **Permission** settings under **Configuration & Settings** to as
 **Q: What's the difference between a GRN and a regular stock adjustment?**
 A: A GRN specifically tracks returns from customers with full traceability back to the original sale, including financial settlement and contra entries. A stock adjustment is a general inventory correction that doesn't link to customer transactions or require financial reconciliation.
 
-**Q: Can I bulk import GRNs from Excel?**
-A: This depends on your system configuration. Contact your administrator to check if bulk import functionality is enabled. Generally, GRNs are created individually to ensure proper receipt verification and documentation.
+**Q: Can I bulk import GRNs from Excel or CSV?**
+A: **No.** This applet does not include a **File Import** menu. GRNs are created individually in **Internal Sales GRN** so receipt, line detail, and evidence can be verified per return.
 
 **Q: How long should we keep GRN records?**
 A: Follow your company's document retention policy, typically 7 years for financial and tax compliance. Finalized GRNs are locked and cannot be deleted, ensuring a complete audit trail.
