@@ -1,7 +1,7 @@
 ---
 title: Membership
 description: Membership management, commission schemes, and voucher applets
-weight: 80
+weight: 90
 bookCollapseSection: true
 ---
 

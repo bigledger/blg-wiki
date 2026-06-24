@@ -7,7 +7,7 @@ tags:
 - fpx
 - recurring-payments
 - financial-automation
-weight: 170
+weight: 220
 ---
 
 ## Purpose and Overview

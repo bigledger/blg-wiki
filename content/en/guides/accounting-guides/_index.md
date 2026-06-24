@@ -93,7 +93,10 @@ Generate and analyze your financial statements.
 ## Related Resources
 
 - **[Financial Accounting Module](/modules/financial-accounting/)** — Module overview and capabilities
-- **[Chart of Account Applet](/applets/chart-of-account-applet/)** — Applet reference documentation
-- **[General Ledger Applet](/applets/general-ledger-applet/)** — Transaction ledger reference
-- **[Advanced Financial Reporting](/guides/advanced/financial-reporting/)** — Power-user analytics and custom reports
+- **[Chart of Account Applet](/applets/master-data/chart-of-account-applet/)** — Applet reference documentation
+- **[General Ledger Applet](/applets/finance/general-ledger-applet/)** — Transaction ledger reference
+- **[Ledger and Journal Applet](/applets/finance/ledger-and-journal-applet/)** — Journal entry applet reference
+- **[Bank Reconciliation Applet](/applets/finance/bank-reconciliation-applet/)** — Bank recon applet reference
+- **[Financial Report Applet](/applets/finance/financial-report-applet/)** — Reporting applet reference
+- **[Advanced Financial Reporting](/guides/advanced/financial-reporting-excellence/)** — Power-user analytics and custom reports
 - **[Compliance & Audit](/guides/advanced/compliance-audit/)** — Regulatory compliance and audit preparation

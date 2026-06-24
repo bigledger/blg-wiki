@@ -4,6 +4,11 @@ description: Common business operations and routine tasks performed regularly in
 tags: [daily-tasks, operations, pricing, transactions]
 weight: 30
 bookCollapseSection: false
+sidebar:
+  exclude: true
+cascade:
+  sidebar:
+    exclude: true
 ---
 
 Master the routine business operations that keep your organization running smoothly. This section covers the most common tasks you'll perform regularly in BigLedger.

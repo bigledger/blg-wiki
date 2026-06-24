@@ -1,0 +1,40 @@
+# Lychee link checker config for the BigLedger wiki.
+# Usage:
+#   lychee --config tests/lychee.toml public/                    # check built site (after `hugo --gc --minify`)
+#   lychee --config tests/lychee.toml https://wiki.bigledger.com # crawl live site
+
+max_concurrency = 8
+max_redirects = 5
+timeout = 20
+retry_wait_time = 2
+accept = ["200", "204", "206", "301", "302", "308"]
+
+# Skip noisy / rate-limited / known-fragile externals
+exclude = [
+  # Local dev only
+  "^http://localhost",
+  "^http://127\\.0\\.0\\.1",
+  # Mailto / tel
+  "^mailto:",
+  "^tel:",
+  # GitHub edit URLs are auth-gated and 200 only when logged in for private repos
+  "^https://github.com/bigledger/blg-wiki/edit/",
+  # YouTube embed URLs sometimes throttle automated checks
+  "youtube\\.com",
+  "youtu\\.be",
+  # Twitter/X often blocks bots
+  "twitter\\.com",
+  "x\\.com",
+  # LinkedIn similar
+  "linkedin\\.com",
+]
+
+# Don't fail on links that match these (warn only)
+exclude_loopback = true
+exclude_link_local = true
+exclude_private = false
+
+# Show all errors, not just first
+verbose = "info"
+no_progress = false
+format = "compact"

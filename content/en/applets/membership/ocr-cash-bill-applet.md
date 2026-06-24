@@ -10,10 +10,6 @@ tags:
 weight: 170
 ---
 
-{{< callout type="warning" >}}
-**Work in progress**: This applet documentation needs changes and more explaination.
-{{< /callout >}}
-
 ## Purpose and Overview
 
 The **OCR Cash Bill Applet** helps teams convert receipt images into structured financial records with a controlled review workflow. Instead of manual key-in, users upload receipts, review OCR output, map line items, apply process decisions, and finalize documents for downstream processing.
@@ -82,7 +78,7 @@ Traditional cash bill handling is often fragmented and error-prone:
 
   {{< card title="OCR Report Export" subtitle="Generate and download scanned document CSV reports" link="#reporting" >}}
 
-  {{< card title="Configuration & Settings" subtitle="Manage defaults, field settings, and permissions" link="#configuration--settings" >}}
+  {{< card title="Configuration & Settings" subtitle="Manage defaults, field settings, and permissions" link="#configuration-and-settings" >}}
 
   {{< card title="FAQ" subtitle="Common processing and status handling questions" link="#faq" >}}
 {{< /cards >}}
@@ -106,26 +102,33 @@ Traditional cash bill handling is often fragmented and error-prone:
 
 ### OCR Hierarchy Structure
 
-Think of OCR cash bill processing as a structured flow:
+Here is a visual flowchart of the OCR cash bill processing and membership reward lifecycle:
 
-```
-Receipt Upload
-  -> Scanned Receipt
-  -> OCR Generic Doc (Header Review)
-  -> OCR Generic Doc Line Item (Line Review)
-  -> Company/Item Mapping + Process Decision
-  -> FINAL Posting Status (Lock)
-  -> OCR Scanned Doc Report Export
+```mermaid
+flowchart TD
+    A["Receipt Upload (Operations or Member)"] -->|Image Ingestion| B["Scanned Receipt (Intake Record)"]
+    B -->|OCR Extraction| C["OCR Generic Doc (Header Data)"]
+    B -->|OCR Extraction| D["OCR Generic Doc Line Items (Item Details)"]
+    
+    C -->|Reviewer Validation| E["Verify Merchant and Receipt Date"]
+    D -->|Line Mapping| F["Map OCR Lines to Financial Items"]
+    F -->|Accumulates| G["Calculate Line Points"]
+    
+    E --> H["Click FINAL (Posting Control)"]
+    G --> H
+    H -->|System Check| I["Resolve Member Profile (User to Active Card)"]
+    I -->|Successful Link| J["Lock Document (Posting Status: FINAL)"]
+    J -->|Post Rewards| K["Award Total Points to Loyalty Account"]
 ```
 
 **Flow Through the Hierarchy:**
 
-1. **Scanned Receipt**: Upload and process image
-2. **OCR Generic Doc**: Validate extracted header data
-3. **OCR Generic Doc Line Item**: Validate and map extracted lines
-4. **Process Status**: Set review decision (`PENDING_REVIEW`, `DUPLICATE`, `REJECTED`)
-5. **Finalization**: Set posting lock as `FINAL`
-6. **Reporting**: Generate CSV for tracking and audit
+1. **Scanned Receipt**: Upload and process the receipt image.
+2. **OCR Generic Doc**: Validate the extracted header details.
+3. **OCR Generic Doc Line Item**: Validate and map individual extracted lines.
+4. **Process Status**: Set the operational review decision (`PENDING_REVIEW`, `DUPLICATE`, or `REJECTED`).
+5. **Finalization**: Confirm the review is complete to lock the document as `FINAL` and link member details.
+6. **Reporting**: Generate a CSV output for tracking and audit reconciliation.
 
 ### The "Golden Triangle" of OCR Processing
 
@@ -307,33 +310,46 @@ Outcome: Record is locked and ready for reporting/reconciliation
 
 {{< figure src="/images/ocr-cash-bill-applet/scanned-receipt-edit.png" alt="Scanned Receipt Edit page showing uploaded image preview and OCR output JSON" caption="Scanned Receipt Edit: Inspect uploaded images and OCR output during receipt review." >}}
 
-**What You Can Do:**
-- Upload receipt files and preview images
-- Set execution strategy (`RUN_NOW` or `INSERT_TO_QUEUE`)
-- Track process status from listing
-- View OCR output JSON during review
-- Rotate and zoom image previews
+| Feature or Action | Operational Purpose | Description | Interface Element |
+| :--- | :--- | :--- | :--- |
+| **Upload Receipts** | Ingest cash bills or retail receipts. | Supports batch uploads of image files (PNG, JPG) or PDF documents for automated OCR extraction. | **Upload File** button or drag-and-drop zone |
+| **Set Execution Strategy** | Determine OCR processing timeline. | Choose `RUN_NOW` to process the receipt immediately, or `INSERT_TO_QUEUE` to process it asynchronously in the background. | **Execution Strategy** dropdown (defaults to `RUN_NOW`) |
+| **Track Process Status** | Monitor parsing lifecycle. | Track whether the document is pending, processing, completed, or failed. | **Process Status** badge in the list view |
+| **View OCR Output JSON** | Inspect raw text extraction. | Review the coordinates and text data extracted by the OCR engine for troubleshooting. | **OCR Output** JSON panel in edit mode |
+| **Rotate and Zoom Preview** | Adjust image orientation. | Rotate clockwise/counter-clockwise or zoom in/out on the uploaded receipt image. | Image toolbar overlay (Rotate/Zoom icons) |
 
-**Listing Highlights:**
-- Scanned Doc No.
-- Process Status
-- Creation Date
-- Modified Date
-- Created By
+#### Listing Highlights
 
-**Edit Behavior:**
-- Process status can be updated during review
-- Approved records are treated as locked for process-status edits
-- OCR output remains read-only for traceability
+| Field | Purpose | Data Type | Example Value |
+| :--- | :--- | :--- | :--- |
+| **Scanned Doc No.** | Unique identifier generated for the uploaded receipt. | Auto-generated String | `OCR-2026-00041` |
+| **Process Status** | Current stage of OCR ingestion and parsing. | Enum / Status Badge | `COMPLETED` or `PENDING_REVIEW` |
+| **Creation Date** | Timestamp when the receipt was uploaded. | DateTime | `2026-06-22 10:30` |
+| **Modified Date** | Timestamp when the document was last updated. | DateTime | `2026-06-22 10:42` |
+| **Created By** | Username of the operator or customer who uploaded the receipt. | String / Email | `operator@company.com` |
 
-### Automated Intake with CP-COM Widget (If Enabled)
+> [!NOTE]
+> **Edit Behavior and Locking Rules:**
+> - The process status can be freely updated during the active review stage.
+> - Once a record is marked as approved, it is locked against further process-status modifications.
+> - The extracted OCR JSON output remains read-only at all times to maintain a reliable audit trail.
 
-In CP-COM-enabled deployments:
-- Use the CP-COM **REQUEST_REFUND** widget as the primary intake widget for receipt submission
-- For widget setup, go to CP-COM **Website > Website Edit > Layout Instance > Layout Instance Edit > Nodes > Nodes Edit > Widget ID: Request Refund (REQUEST_REFUND)**
-- After CP-COM submission, continue review in this applet through the same OCR processing pipeline
+### CP-Commerce (CP-COM) Website or App and Membership Applet Integration
 
-If CP-COM integration is not enabled, use manual upload in **Scanned Receipt Create**.
+When you utilize the **Akaun** platform, the **CP-Commerce (CP-COM)** website or app, and the **Membership** module together, these systems integrate to allow customers to submit receipts and track their loyalty points directly from the customer-facing website or app.
+
+#### CP-Commerce (CP-COM) Website or App Features
+- **Receipt Upload**: Customers can upload photo/scanned images of cash bills and retail receipts directly on the customer-facing website or app to submit them for automated OCR ingestion and review.
+- **Points Balance and History**: Customers can view their earned loyalty point balances and historical ledger using the **Point History Widget** on the website or app.
+
+For detailed instructions on setting up layout templates and configuring widgets on the website or app, refer to the [CP-Commerce Admin Applet](/applets/ecommerce/cp-commerce-admin-applet/) documentation.
+
+#### Membership Applet Connection
+- The OCR Cash Bill Applet processes the receipt to determine point eligibility and totals.
+- Once finalized, the points are posted to the user's loyalty account in the [Membership Admin Applet](/applets/membership/membership-admin-applet/).
+- Loyalty programs, point conversion rates, tier settings, and member listings are configured and managed directly in the Membership Admin Applet.
+
+For more details on managing loyalty programs and card settings, refer to the [Membership Admin Applet](/applets/membership/membership-admin-applet/) documentation.
 
 ---
 
@@ -343,19 +359,32 @@ If CP-COM integration is not enabled, use manual upload in **Scanned Receipt Cre
 
 {{< figure src="/images/ocr-cash-bill-applet/ocr-generic-doc-main-details.png" alt="OCR Generic Doc Main Details tab with doc number, amount, company, and statuses" caption="OCR Generic Doc Main Details: Central workspace for header validation and process control." >}}
 
-**Main Details Tab includes:**
-- Doc No
-- Amount (calculated from line totals)
-- Receipt Date
-- Created Date
-- Company
-- Verification Status
-- Process Status
-- Reason to Reject (when rejected)
-- Updated By
+When you edit an OCR Generic Doc, the workspace is split into **two tabs**:
 
-**Line Items Tab:**
-- Opens line-level records for mapping and value refinement
+| Tab | Purpose | What You Can Do |
+| :--- | :--- | :--- |
+| **Main Details** | Displays extracted header metadata and operational status controls. | Update receipt date, change linked merchant, update process decision, or finalize. |
+| **Line Items** | Lists the individual lines extracted from the receipt. | View line item breakdown and drill into individual lines to map products. |
+
+---
+
+#### Main Details Tab Field Guide
+
+| Field | Purpose | Required | Example |
+| :--- | :--- | :---: | :--- |
+| **Doc No** | *Read-only* - Unique document number extracted by OCR. | Yes | `DOC-0021` |
+| **Amount** | *Read-only* - Transaction total, automatically aggregated from line totals. | Yes | `250.50` |
+| **Receipt Date** | Date the transaction took place (clickable calendar). | Yes | `2026-06-22` |
+| **Created Date** | *Read-only* - The timestamp when the receipt was ingested. | Yes | `2026-06-22 09:30:15` |
+| **Membership Points** | *Read-only (Finalized)* - Total loyalty points awarded. | Yes | `25.00` |
+| **Points Currency** | *Read-only (Finalized)* - Point currency type. | Yes | `POINTS` |
+| **Points Type** | *Read-only (Finalized)* - Point reward classification. | Yes | `STANDARD` |
+| **Company** | Click to select the correct retailer/company from the master list. | Yes | `Giant Supermarket` |
+| **Verification Status** | *Read-only* - System OCR quality check (`PASS`, `FAIL`, or `FLAGGED`). | Yes | `FLAGGED` |
+| **Process Status** | Operational state of review (`PENDING_REVIEW`, `DUPLICATE`, or `REJECTED`). | Yes | `PENDING_REVIEW` |
+| **Reason to Reject** | *Conditional* - Reason for rejection. | Conditional | Only visible if Process Status is set to `REJECTED`. |
+| **Status** | General active status of the document record (`ACTIVE` or `CLOSE`). | Yes | `ACTIVE` |
+| **Updated By** | *Read-only* - The last user profile that saved changes to this document. | No | `Jane Smith` |
 
 {{< figure src="/images/ocr-cash-bill-applet/ocr-generic-doc-line-items-tab.png" alt="OCR Generic Doc Line Items tab listing extracted OCR lines" caption="OCR Generic Doc Line Items: Review and drill into extracted line-level details." >}}
 
@@ -386,20 +415,24 @@ If CP-COM integration is not enabled, use manual upload in **Scanned Receipt Cre
 
 {{< figure src="/images/ocr-cash-bill-applet/ocr-line-item-edit.png" alt="OCR Generic Doc Line Item Edit page with financial item mapping and quantity price fields" caption="OCR Line Item Edit: Map OCR lines to financial items and adjust key values before finalization." >}}
 
-**Editable Fields:**
-- Financial Item
-- Item Name
-- Remarks
-- Quantity
-- Unit Price
-- Status
+**Line Item Fields Guide:**
 
-**Read-Only Context Fields:**
-- OCR Generic Doc No
-- OCR Item Code
-- Description
-- Company
-- Updated By
+| Field | Purpose | Required | Example |
+| :--- | :--- | :---: | :--- |
+| **OCR Generic Doc No** | *Read-only* - The parent document number. | Yes | `DOC-0021` |
+| **Financial Item** | Link to the target ledger account for financial posting. | Yes | `6100-001 - Office Stationery` |
+| **Item Code** | *Read-only* - The mapped merchant's product code. | Yes | `ITM-9982` |
+| **Item Name** | The name of the product or service. | Yes | `Mineral Water 500ml` |
+| **Description** | *Read-only* - The raw text extracted by OCR for this line. | No | `MINERAL WATER 500ML` |
+| **Company** | *Read-only* - The merchant company name. | Yes | `Giant Supermarket` |
+| **Membership Points** | *Read-only (Finalized)* - The loyalty points earned on this line. | Yes | `10.00` |
+| **Points Currency** | *Read-only (Finalized)* - The unit type of points. | Yes | `POINTS` |
+| **Points Type** | *Read-only (Finalized)* - The point reward category. | Yes | `STANDARD` |
+| **Remarks** | Custom user remarks for this specific line. | No | `Staff pantry supply` |
+| **Quantity** | The quantity of the item. | Yes | `5.00` |
+| **Unit Price** | The price per unit. | Yes | `1.20` |
+| **Updated By** | *Read-only* - The last user who updated the line details. | No | `John Doe` |
+| **Status** | The active status of the record (`ACTIVE` or `CLOSE`). | Yes | `ACTIVE` |
 
 **Mapping Workflow:**
 1. Open a line-item record.
@@ -417,35 +450,53 @@ If posting status is `FINAL`, line-item updates are disabled.
 
 ## Master Data Setup
 
-### OCR Company
+Master data setup is required to establish clean merchant and product mappings for receipt ingestion. Before processing receipts, ensure you have set up the relevant merchant companies and item codes.
 
-Maintain company/merchant references used by OCR documents.
+### OCR Company (`Master Data > OCR Company`)
 
-**Typical fields:**
-- Company Code
-- Company Name
-- Description
-- Country
-- Address
-- Postal Code
-- City
-- State
-- Contact No.
-- Status
+**What is OCR Company?**
+This module maintains merchant and retailer profiles. When receipts are ingested, their header data is associated with these company records.
+
+---
+
+**Creating an OCR Company - Field-by-Field Guide:**
+
+| Field | Purpose | Required | Example |
+| :--- | :--- | :---: | :--- |
+| **Company Code** | Unique identifier code for the merchant/company. | Yes | `MCH-0012` |
+| **Company Name** | The official name of the retailer or supplier. | Yes | `Giant Supermarket` |
+| **Description** | Brief note or detail about the company. | No | `Retail Groceries Merchant` |
+| **Country** | The country where the merchant is registered. | Yes | `Malaysia` |
+| **Address** | Physical street address of the company. | No | `No. 12, Jalan Sultan Ismail` |
+| **Postal Code** | Postcode of the company's location. | No | `50250` |
+| **City** | City name. | No | `Kuala Lumpur` |
+| **State** | State name. | No | `Wilayah Persekutuan` |
+| **Contact No.** | The company's telephone number. | No | `+603-12345678` |
+| **Status** | Active status of the company record (e.g., `ACTIVE` or `CLOSE`). | Yes | `ACTIVE` |
+
+---
 
 {{< figure src="/images/ocr-cash-bill-applet/ocr-company-listing.png" alt="OCR Company Listing showing company code name country and status" caption="OCR Company Listing: Maintain retailer/company references used during OCR review." >}}
 
-### OCR Item
+### OCR Item (`Master Data > OCR Item`)
 
-Maintain OCR item references linked to OCR Company records.
+**What is OCR Item?**
+This module maintains the specific items or products sold by OCR Companies. Linking OCR lines to these item definitions ensures consistent financial categorization.
 
-**Typical fields:**
-- Item Code
-- Item Name
-- Description
-- Company
-- Remarks
-- Status
+---
+
+**Creating an OCR Item - Field-by-Field Guide:**
+
+| Field | Purpose | Required | Example |
+| :--- | :--- | :---: | :--- |
+| **Item Code** | Unique identifier code for the merchant's item. | Yes | `ITM-9982` |
+| **Item Name** | Name of the product or service as it appears on receipts. | Yes | `Mineral Water 500ml` |
+| **Description** | Detailed description of the item. | No | `Drinking water bottle` |
+| **Company** | The OCR Company/merchant this item belongs to. | Yes | `Giant Supermarket` |
+| **Remarks** | Additional notes about the item. | No | `Promotion stock item` |
+| **Status** | Active status of the item record (`ACTIVE` or `CLOSE`). | Yes | `ACTIVE` |
+
+---
 
 {{< figure src="/images/ocr-cash-bill-applet/ocr-item-listing.png" alt="OCR Item Listing showing item code name linked company and status" caption="OCR Item Listing: Keep item references clean for reliable line-item mapping." >}}
 
@@ -486,54 +537,92 @@ If generation is delayed, check row status and error message before regenerating
 
 ---
 
-## Finalization Control
+## Finalization Control and Membership Point Integration
 
-Finalization is a critical safeguard for downstream accounting quality.
+Finalization is the final step in the review process. It locks the document to prevent accidental changes and triggers the reward points settlement.
 
-### What Happens When You Click FINAL (From Source Code)
+### What is Finalization?
 
-1. Clicking **FINAL** triggers `checkMembershipHdrStatusOnFinal`.
-2. If `membership_hdr_guid` is missing, the applet looks up membership by `login_subject_guid` and `entity_hdr_guid`.
-3. The resolved membership GUID is saved to both OCR Generic Doc and Scanned Receipt.
-4. `rejection_reason` is cleared before posting.
-5. The applet calls `updatePostingStatus(..., FINAL)` to post/finalize.
-6. On success, the listing refreshes and the record is returned in final state.
+When a reviewer finalizes an OCR Generic Doc, the system performs a validation check to link the document to the submitter's membership card and locks the record for accounting and audit integrity. 
 
-### Scenario-Based Examples
+{{< callout type="info" >}}
+**Why Finalize?**: Finalization locks the receipt data so it cannot be modified, resolves the submitting user's membership account, and officially issues the loyalty points earned from the transaction.
+{{< /callout >}}
 
-1. Missing membership header scenario:
-User clicks **FINAL**, system auto-resolves and writes `membership_hdr_guid`, then continues posting to `FINAL`.
-2. Reward settlement scenario (pricebook/config-based):
-During `updatePostingStatus(..., FINAL)`, reward logic is handled by backend configuration. After successful finalization, points data (`Membership Points`, `Points Currency`, `Points Type`) is shown as read-only in final views.
-3. Posting blocked scenario:
-If backend validation fails (for example fiscal period locked or stock/serial mismatch), finalization is rejected and an error message is shown; posting status does not move to `FINAL`.
+### How the Membership Rewards System Connects
 
-### What Changes After FINAL
+Each uploaded cash bill/receipt contains line items that carry reward values. Here is how the system processes and connects these transactions to the membership program:
 
-- Posting status is `FINAL`.
-- `Reason to Reject` is locked in OCR Generic Doc edit.
-- Line-item update action is blocked when posting status is `FINAL`.
-- Points fields are displayed as read-only in final mode.
+1. **Member Account Identification**:
+   When you click **FINAL**, the system automatically identifies the submitting member. It matches the user account that uploaded the receipt with their active membership card registered in the organization.
+   
+2. **Document Linkage**:
+   The resolved membership account is linked to both the OCR Generic Doc and the Scanned Receipt records. Any previously recorded rejection reason is cleared.
 
-### When to Use FINAL
+3. **Points Aggregation**:
+   The system calculates the total points by summing the reward point values of all mapped line items. 
 
-Use `FINAL` only after:
-- Process status and rejection logic are complete.
-- Company and item mapping is validated.
-- Quantity and unit price checks are complete.
-- Reviewer confirms no further corrections are needed.
-
-### What to Follow Up After FINAL
-
-1. Confirm the document appears as `FINAL` in listing/search view.
-2. Verify line-item edits are no longer allowed.
-3. Check membership points fields if reward settlement is expected.
-4. Generate/download report output if reconciliation is required.
-5. Escalate corrections through admin/support flow instead of in-place edits.
+4. **Reward Display**:
+   Once posting status moves to `FINAL`, the Main Details tab displays three new read-only fields:
+   - **Membership Points**: The total loyalty points awarded.
+   - **Points Currency**: The unit type used for rewards (e.g., points, credits).
+   - **Points Type**: The specific reward tier or category.
 
 ---
 
-## Configuration & Settings
+### Scenario-Based Examples
+
+#### Scenario 1: Automatic Membership Account Resolution
+*Context*: An operations user uploads a receipt for a member who did not manually input their member card ID.
+1. The reviewer verifies the receipt details and clicks **FINAL**.
+2. The system automatically searches for the active membership card associated with the member's profile and company.
+3. The card details are linked to the receipt, and the status moves to `FINAL` successfully.
+
+#### Scenario 2: Successful Reward Settlement
+*Context*: A receipt with three items eligible for membership points is finalized.
+1. The reviewer clicks **FINAL**.
+2. The system successfully posts the document.
+3. The reviewer opens the document and views the **Membership Points**, **Points Currency**, and **Points Type** fields, which are now visible and read-only.
+4. The member receives the points in their loyalty wallet.
+
+#### Scenario 3: Finalization Blocked
+*Context*: An error occurs because the transaction date falls in a closed accounting period, or there is an inventory/serial mismatch on a mapped line.
+1. The reviewer clicks **FINAL**.
+2. The system rejects the request and displays a descriptive error message (e.g., "Fiscal Period is Locked").
+3. The posting status remains active/pending review. The reviewer must resolve the validation issue before finalizing again.
+
+---
+
+### What Changes After Finalization
+
+Once a document is finalized:
+- The **Posting Status** is permanently set to `FINAL`.
+- All fields on the OCR Generic Doc, including the **Reason to Reject**, are locked and cannot be edited.
+- The **Line Items** tab blocks any further item mapping or quantity/price adjustments.
+- **Membership Points** details become visible as read-only fields on the Main Details tab.
+
+---
+
+### When to Finalize
+
+Only finalize a document after:
+- The **Process Status** has been reviewed and verified.
+- The company and retailer details are correctly selected.
+- All line items have been correctly mapped to financial items.
+- Line quantities and unit prices are checked for accuracy.
+
+---
+
+### What to Follow Up After Finalizing
+
+1. Confirm that the document's posting status appears as `FINAL` in the search filters.
+2. Verify that the edit buttons and inputs are disabled.
+3. Review the **Membership Points** fields to ensure rewards were populated as expected.
+4. Export the data using the **OCR Scanned Doc Report** if reconciliation or audit follow-ups are needed.
+
+---
+
+## Configuration and Settings
 
 Use the applet left sidebar to open **Settings** and **Personalization** pages.
 
@@ -541,26 +630,39 @@ Use the applet left sidebar to open **Settings** and **Personalization** pages.
 
 ### Field Settings (`Settings > Field Settings`)
 
-Control advanced search behavior for OCR listing. Current UI includes:
-- `HIDE_CUSTOMER_ADVANCED_SEARCH`
-- `ENABLE_MEMBER_ADVANCED_SEARCH`
+Control advanced search behavior for the OCR Generic Doc listing.
+
+| Setting | Purpose | Default | Description |
+| :--- | :--- | :---: | :--- |
+| **HIDE_CUSTOMER_ADVANCED_SEARCH** | Controls visibility of customer search options. | Checked | If enabled, hides customer-specific search fields on listing pages. |
+| **ENABLE_MEMBER_ADVANCED_SEARCH** | Controls visibility of member search options. | Checked | If enabled, shows membership card search fields on listing pages. |
+
+---
 
 ### Default Selection (`Settings > Default Selection`)
 
-Set applet-wide defaults for:
-- `DEFAULT_BRANCH`
-- `DEFAULT_LOCATION`
-- `DEFAULT_TIMEZONE`
+Set applet-wide defaults to reduce repetitive user input during manual data updates.
 
-`DEFAULT_COMPANY` can be tenant-dependent and may be auto-derived from branch.
+| Default Setting | Purpose | Required | Description |
+| :--- | :--- | :---: | :--- |
+| **DEFAULT_BRANCH** | The default branch linked to new documents. | Yes | Select a default company branch. |
+| **DEFAULT_LOCATION** | The default stock/warehouse location. | Yes | Used for line mapping location contexts. |
+| **DEFAULT_TIMEZONE** | The default operational timezone. | Yes | Used to format date/time entries accurately. |
+
+*Note: `DEFAULT_COMPANY` is tenant-dependent and is automatically derived based on the selected branch.*
+
+---
 
 {{< figure src="/images/ocr-cash-bill-applet/settings-default-selection.png" alt="Default Selection settings page for branch location company and timezone" caption="Default Selection: Set applet-wide defaults to reduce repetitive user input." >}}
 
 ### Personalization > Default Selection
 
-Users can set personal overrides for:
-- Default Branch
-- Default Location
+Users can set personal overrides that take precedence over the applet-wide settings.
+
+| Personal Override | Purpose | Required | Description |
+| :--- | :--- | :---: | :--- |
+| **Default Branch** | User-level default branch override. | No | Overrides the applet-wide `DEFAULT_BRANCH` for the current user. |
+| **Default Location** | User-level default location override. | No | Overrides the applet-wide `DEFAULT_LOCATION` for the current user. |
 
 These personal values override applet-level defaults for the user.
 
@@ -630,3 +732,9 @@ A: Open the document, choose the correct company, then recheck line mapping befo
 
 **Q: A receipt looks duplicated. What is the correct handling flow?**
 A: Set process status to `DUPLICATE`, provide a clear remark or rejection context if required, then save for audit traceability.
+
+**Q: How does the system calculate Membership Points for a receipt?**
+A: The system aggregates points from individual line items. Each line item has its own point value calculated on the backend during OCR processing and item mapping. The total sum is displayed as **Membership Points** on the main document once finalized.
+
+**Q: What happens if a user doesn't have an active membership card when the receipt is finalized?**
+A: The system automatically looks up the active membership card associated with the user's account and organization. If no card is found, the finalization cannot complete, and you must link or register a membership card first.

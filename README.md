@@ -2,6 +2,31 @@
 
 This repository contains the source for BigLedger's documentation website, built with Hugo and hosted at https://wiki.bigledger.com
 
+---
+
+## 🚨 BEFORE YOU EDIT — READ THIS
+
+**We write USER MANUALS, not reference cards.**
+
+The most common failure in this repo is writing dense reference cards full of field tables and uppercase system identifiers, then calling them user guides. **Stop.**
+
+- **User guides** (`/content/en/guides/`, `/content/en/user-guide/`, `/content/en/tutorials/`) tell a story to a real reader. Warm, hand-holding, second-person, examples-first. Voice and tone reference: Xero / QuickBooks support docs.
+- **Reference docs** (`/content/en/applets/`, `/content/en/api-reference/`, `/content/en/developer-docs/`) list fields, types, validators. Dense, precise, exhaustive.
+
+These are **different artifacts**. Do not confuse them. Do not let one bleed into the other.
+
+Every guide must:
+- Use a **canonical fictional running example** (*GadgetSphere Sdn Bhd* — Malaysian multi-branch consumer electronics retailer, 3 companies, 22 branches; matches the median actual BigLedger customer shape — NOT a small F&B SME). Continuity makes it stick.
+- **Translate every internal system identifier into plain English** on first mention. `DEBTOR` → "customers who owe you money (Trade Debtors)".
+- **Embed screenshots** from `/static/images/<applet-name>/` at high-friction steps.
+- **Anticipate failure modes** — "if you skip this, here's the symptom you'll see".
+- **Close with "What success looks like"** — a 30-second concrete check the reader runs.
+- Be informed by **patterns observed in real tenant data** (read-only access available via `sudo -u vincent /home/vincent/projects/sysadmin/bin/psql-akaun-master`). Anonymise everything — no real customer names, accounts, or numbers in the markdown.
+
+**Read [`CLAUDE.md`](CLAUDE.md) and [`AGENTS.md`](AGENTS.md) for the full charter before writing or editing.**
+
+---
+
 ## ⚠️ CRITICAL: GitHub File Paths
 
 ### **ALL documentation files are located under `content/en/` NOT just `en/`**

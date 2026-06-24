@@ -4,6 +4,11 @@ description: Master the fundamental daily tasks that form the backbone of your b
 tags: [basic-operations, fundamentals, data-management]
 weight: 20
 bookCollapseSection: false
+sidebar:
+  exclude: true
+cascade:
+  sidebar:
+    exclude: true
 ---
 
 Master the fundamental daily tasks that form the backbone of your business operations in BigLedger. This section covers essential data management, item handling, and document processing tasks.

@@ -1,5 +1,5 @@
 ---
-title: "Shopping Cart Applet"
+title: "Shopping Cart (Internal) Applet"
 description: "Reconcile, validate, and settle transaction carts created by cashiers or submitted by customers via the CP-Commerce e-commerce portal"
 tags:
 - shopping-cart
@@ -19,6 +19,8 @@ Rather than acting as a standalone checkout terminal, the applet bridges custome
 {{< callout type="info" >}}
 **Core Integration**: The applet links **storefront customer activity** (items added via the CP-Commerce website widget) with **back-office verification** (real-time credit checks, address picker resolution, and payment ledger entries) to successfully process and finalize sales.
 {{< /callout >}}
+
+{{< figure src="/images/shopping-cart-applet/shopping-cart-applet-overview.png" alt="BigLedger Shopping Cart Applet: The Omnichannel Settlement Hub — Online Storefront generates DRAFT documents via Real-Time Storefront Synchronization; Abandoned Cart Recovery lets agents view pending carts; Omnichannel Sales Support assists customers with checkout errors; Integrated CRM and Credit Verification checks limits before release; Multi-Method Split Payments supports Cash, Card, Vouchers, Points, and Bank Transfers; FINAL creates a Sales Order (locks document for fulfillment); CONVERT creates an Internal Receipt Voucher (posts payment to ledger and deletes the draft cart)." caption="BigLedger Shopping Cart Applet: The Omnichannel Settlement Hub — from online storefront draft generation through CRM checks, split-payment settlement, and final conversion to a Sales Order or Receipt Voucher." >}}
 
 ### Who Benefits from This Applet?
 
@@ -82,22 +84,26 @@ When customers add items to shopping carts on an e-commerce website, operations 
 
 ### CP-Commerce Storefront Integration
 
-The Shopping Cart Applet acts as the administrative back-office companion to the customer-facing e-commerce storefront website. The relationship between the customer storefront activity and back-office settlement flows is visualized below:
+The Shopping Cart Applet acts as the administrative back-office companion to the customer-facing CP-Commerce storefront website or app. The relationship between customer storefront activity and back-office settlement workflows is visualized below:
 
 ```mermaid
-flowchart LR
-    subgraph Storefront ["CP-Commerce Storefront Website"]
-        W["Shopping Cart Widget"] -->|"Customer adds items and checks out"| P["Submit Order Draft"]
+flowchart TD
+    subgraph Storefront ["CP-Commerce Storefront Website or App"]
+        W["Shopping Cart Widget"] -->|"Customer checks out"| P["Submit Draft Cart"]
     end
-    subgraph BackOffice ["Back-Office Management"]
-        A["Shopping Cart Applet"] -->|"Pulls and reviews draft"| S["Validate Credit Limit and Terms"]
-        S -->|"Record split payments"| F["Finalise and Reconcile"]
+    subgraph BackOffice ["Back-Office Management (Shopping Cart Applet)"]
+        A["Load Sync'd Draft Cart"] -->|"Verify details & limits"| V["Verify CRM, Address, and Credit"]
+        V -->|"Record payments"| S["Add Split Payments"]
+        S -->|"Option A: Finalise Cart"| F["Set posting_status to FINAL"]
+        F -->|"Generates"| SO["Posted Sales Order (SO)"]
+        S -->|"Option B: Convert Cart"| C["Generate INTERNAL_RECEIPT_VOUCHER"]
+        C -->|"Removes source"| D["Delete Draft Cart"]
     end
-    P -->|"Syncs draft cart"| A
+    P -->|"Syncs draft data"| A
 ```
 
-- **Draft Synchronization**: When a storefront user interacts with the **CP-Commerce Shopping Cart Widget** (e.g. adding products, editing quantities, or selecting shipping options), the website synchronizes this data in real time, creating or updating a corresponding cart record with a `DRAFT` posting status in the Shopping Cart Applet database.
-- **Review and Settlement**: The cashier or sales lead opens the pending storefront cart, verifies customer-specific parameters (such as outstanding balance, credit terms, and addresses), modifies line items if necessary, and records the settlement transactions (split payment ledger) to post the cart as `FINAL`.
+- **Draft Synchronization**: When a storefront user interacts with the customer-facing website or app (e.g. adding products, editing quantities, or selecting shipping options), the system synchronizes this data in real time, creating or updating a corresponding cart record with a `DRAFT` posting status in the Shopping Cart Applet database.
+- **Review and Settlement**: The cashier or sales lead opens the pending storefront cart, verifies customer-specific parameters (such as outstanding balance, credit terms, and addresses), modifies line items if necessary, records the settlement transactions (split payment ledger), and either clicks **FINAL** to lock the document (generating a Sales Order) or converts the settled cart into a posted sales record (deleting the draft cart).
 
 ---
 
@@ -138,15 +144,15 @@ Get up and running quickly with these essential workflows.
 
 ### For Sales Agents: Settle an Order
 
-**Goal:** Create a cart or open a storefront draft, verify credit, record payment, and finalise the order.
+**Goal:** Create a cart or open a storefront draft, verify credit, record payment, and finalize the order.
 
 1. **Locate or Start Cart**: 
    - **Manual**: Click the **"+"** button on the listing.
-   - **Storefront**: Find the draft cart synced from the **CP-Commerce storefront** in the list and click it.
+   - **Storefront**: Find the draft cart synced from the customer-facing website or app in the list and click it.
 2. **Assign Customer**: Go to **Account > Entity Details**, select the customer's **Entity ID** (if not already synced from the storefront).
 3. **Set Branch**: In **Main Details**, select the **Branch** and **Location** (Credit Terms and Limits will auto-populate).
 4. **Configure Items**: Go to **Line Items**, adjust quantities/UOM, select the tax code, or click **"+"** to add new items.
-5. **Record Payment and Finalise**: Go to **Payment**, click **"+"**, select your payment method, enter the amount, and click **FINALISE** to post the order.
+5. **Record Payment and Settle**: Go to **Payment**, click **"+"**, select your payment method, enter the amount, and either click **FINAL** to lock the document or navigate to **Convert** to post a receipt voucher (which deletes the draft cart).
 
 ---
 
@@ -156,7 +162,7 @@ Get up and running quickly with these essential workflows.
 
 1. **Open Queue**: Open the **Shopping Cart** listing.
 2. **Identify Storefront Drafts**: Filter the listing grid to display draft carts.
-3. **Bulk Finalise**: Select multiple check-boxes on the draft carts in the grid, then click **FINALISE** at the top.
+3. **Bulk Finalise**: Select multiple check-boxes on the draft carts in the grid, then click **FINAL** at the top.
 4. **Delete Draft**: Open an individual draft, click **DELETE** at the bottom, and click **CLICK AGAIN TO CONFIRM**.
 
 ---
@@ -169,6 +175,48 @@ Get up and running quickly with these essential workflows.
 2. **Set Visibility Rules**: Go to `Settings > Feature Visibility` to hide unnecessary fields or enable delete buttons.
 3. **Add Webhooks**: Go to `Settings > Webhook` to configure server payloads for automatic system integrations.
 4. **Establish Permissions**: Go to `Settings > Permission Set Listing` to define security clearance levels.
+
+---
+
+## Real-world operational scenarios
+
+The Shopping Cart Applet is not just a passive ledger; it is an active sales enablement and customer engagement tool. Below are common real-world scenarios showing how sales agents and managers can leverage synced draft data to capture lost sales, resolve checkout issues, and handle corporate negotiations.
+
+### Scenario 1: Proactive Sales and Cart Recovery (The Abandoned Cart USP)
+
+*   **Context**: A registered wholesale customer adds high-value engine parts to their online shopping cart on your CP-Commerce e-commerce website but closes the tab without checking out.
+*   **Operational Challenge**: Traditional systems treat this as lost, invisible traffic until the customer chooses to complete the checkout.
+*   **The BigLedger Solution**:
+    1.  The cart immediately synchronizes to the **Shopping Cart Applet** as a `DRAFT` document containing the customer's **Entity ID** and selected **Line Items**.
+    2.  A sales agent monitors the **Cart Listing** queue, filters by `DRAFT` status, and notices the customer has had items pending for 24 hours.
+    3.  The agent opens the draft, reviews the items, and contacts the customer directly (using contact details retrieved from the linked customer profile).
+    4.  The customer explains they abandoned the cart because they had questions about bulk shipping rates and item compatibility.
+    5.  The agent clarifies the technical details, offers a shipping discount by adjusting the pricing inline in the draft cart, and saves the changes.
+    6.  The customer approves, and the agent converts the cart to secure the sale.
+
+### Scenario 2: Assisted Storefront Checkout (Omnichannel Sales Support)
+
+*   **Context**: A customer is attempting to complete a purchase on your storefront app but encounters a card payment gateway error or cannot navigate the checkout screen.
+*   **Operational Challenge**: The customer is frustrated and may walk away from the purchase entirely.
+*   **The BigLedger Solution**:
+    1.  The customer calls the customer support hotline.
+    2.  The support agent asks for the customer's name, searches the **Cart Listing** in real time, and immediately locates the active storefront draft cart session.
+    3.  The agent confirms the items in the cart over the phone, verifying the customer's intent.
+    4.  To bypass the online payment issue, the customer asks to pay using a physical gift voucher they possess and pay the remainder in cash at the store.
+    5.  The agent enters the **VOUCHER** details under the **Payment** tab, reducing the outstanding balance, and clicks **SAVE**.
+    6.  When the customer visits the physical outlet, the cashier pulls up the saved draft cart, collects the cash, records the **CASH** payment, and clicks **Convert** to post the sale as an **Internal Receipt Voucher**.
+
+### Scenario 3: B2B Credit Verification and Custom Negotiation
+
+*   **Context**: A retail partner builds a large stock-replenishment order on the CP-Commerce website. The total order value exceeds their default checkout limits.
+*   **Operational Challenge**: The order is stalled, and the client wants to negotiate terms rather than reducing their order size.
+*   **The BigLedger Solution**:
+    1.  The draft cart is synced to the back-office queue.
+    2.  The credit controller opens the cart and goes to **Account Details > Entity Details** to review the customer's outstanding balance and credit parameters.
+    3.  The controller notices the customer's credit limit is indeed exceeded.
+    4.  The controller contacts the client and negotiates a partial advance: the client will transfer $2,000 immediately, and the remaining $3,000 will be charged to their account on 30-day terms.
+    5.  Once the client sends the $2,000 bank wire, the cashier adds a **BANK_TRANSFER** line for $2,000 under the **Payment** tab.
+    6.  The cashier clicks **FINAL** to lock the cart, which automatically posts a **Sales Order (SO)** for the remaining $3,000 balance in the system, routing it to the warehouse for fulfillment.
 
 ---
 
@@ -196,6 +244,19 @@ This is your main dashboard showing all pending and completed transactions. It d
 Opening a cart loads the main transaction workspace. The sections are organized as tabs (horizontal) or expansion panels (vertical).
 
 {{< figure src="/images/shopping-cart-applet/shopping-cart-create-main.png" alt="Shopping Cart Creation Main Details form layout" caption="Main Details: Configure transaction properties including branch, location, and sales agent." >}}
+
+### Workspace Control Buttons
+
+The top header bar contains operational actions to control the document state:
+
+| Button | Operational Action | Database and System Impact | Usage Rule |
+| :--- | :--- | :--- | :--- |
+| **RESET** | Discard current unsaved edits. | Reverts the form fields to the last saved database state. | Use when you want to clear unsaved modifications in the active session. |
+| **SAVE** | Commit changes as a draft. | Saves current header, account, line item, and payment data. The cart remains in `DRAFT` status (fully editable). | Use regularly while working on a cart to save progress. |
+| **FINAL** | Lock and post the cart. | Sets the posting status to `FINAL`. Automatically locks all edit capabilities and generates a **Sales Order (SO)** in the system. | Click only when the order is verified, fully paid, and ready to generate the Sales Order. |
+| **DELETE** | Permanently remove the cart. | Deletes the shopping cart from the database. (Requires clicking a second time to confirm: `CLICK AGAIN TO CONFIRM`). | Only available for `DRAFT` carts, and requires `SHOW_DOCUMENT_DELETE_BUTTON` to be active. |
+
+---
 
 #### Main Details Tab/Panel
 
@@ -280,6 +341,28 @@ Tracks payment settlements recorded against the cart.
   - **Details**: Payment details (e.g. Credit Card brand, Cash account).
   - **Remarks**: Payment remarks.
 - **Add Payment Action**: Clicking the **"+"** button opens the Add Payment Dialog (disabled once the Outstanding balance is `0.00`).
+
+---
+
+### Converting Settled Carts to Receipt Vouchers
+
+When a customer settles their shopping cart, the system can convert the draft cart directly into a posted financial receipt. This is executed using the **Convert to Receipt Voucher** action in the workspace.
+
+#### How the Conversion Works
+
+Rather than keeping the shopping cart as a static document, the conversion flow moves the transaction directly into your financial ledger:
+
+1. **Extraction**: The system reads the header metadata and the payment lines recorded under the **Payment** tab.
+2. **Posting**: It generates a new, posted **Internal Receipt Voucher (IRV)**. This document contains all the payment settlement lines and represents the finalized sale in your accounts receivable/general ledger.
+3. **Deletion**: Upon successful creation of the Receipt Voucher, the system automatically deletes the original draft shopping cart to keep your intake queue clean and prevent double counting of inventory or revenue.
+
+#### Cashier Walkthrough: Convert a Cart
+
+1. Open the draft shopping cart.
+2. Go to the **Payment** tab and record the payment details (Cash, Card, Voucher, or Points) until the **Outstanding** balance displays as `0.00`.
+3. Select the **Convert** action tab or button in the workspace.
+4. Click **CONVERT**.
+5. The system will display a success toast `Shopping Cart Converted Successfully` and return you to the main listing. The original cart is now cleared from the listing, and the sale is recorded under the Receipt Voucher ledger.
 
 ---
 
@@ -441,7 +524,7 @@ Allows adjusting quantities, UOMs, and pricing schemes.
 
 ---
 
-## Add Payment / Settlement Methods
+## Add Payment and Settlement Methods
 
 Clicking the **"+"** button on the Payment tab opens the settlement dialog. You can select a payment method and fill in the corresponding fields:
 
@@ -461,32 +544,49 @@ Clicking the **"+"** button on the Payment tab opens the settlement dialog. You 
 
 Admin configurations are accessible under settings paths:
 
-#### Default Selection (`Settings > Default Selection`)
-- **Default Branch**: Fallback branch for new transactions.
-- **Default Location**: Fallback store or warehouse location.
+#### Default Selection
 
-#### Field Settings (`Settings > Field Settings`)
-Allows overriding field validation rules, default formatting, or making fields mandatory (e.g. `MANDATORY_REASON_FIELD`).
+| Parameter | Purpose | Configuration Path | Default Behavior |
+| :--- | :--- | :--- | :--- |
+| **Default Branch** | Sets the fallback operating branch for all new carts. | `Settings > Default Selection` | Auto-fills branch-specific company codes, currency, and tax rules. |
+| **Default Location** | Sets the fallback stock store or warehouse location. | `Settings > Default Selection` | Auto-populates the Location selector for lines and inventory. |
 
-#### Printables (`Settings > Printables`)
-Configure PDF formats, layout codes, and printable templates for receipts and invoices.
+#### Field Settings
 
-#### Webhook (`Settings > Webhook`)
-Define HTTP post target URLs to trigger integrations when shopping carts are created, saved, or finalized.
+| Parameter | Purpose | Configuration Path | Default/Conditional Behavior |
+| :--- | :--- | :--- | :--- |
+| **Mandatory Reason Field** | Enforce input for document void/rejection actions. | `Settings > Field Settings` | Restricts cashiers from voiding or discarding carts without entering a reason. |
 
-#### Feature Visibility (`Settings > Feature Visibility`)
-A collection of toggles to control UI features:
-- `SHOW_DOCUMENT_DELETE_BUTTON`: Displays the Delete button.
-- `HIDE_DOC_NO_TENANT` / `HIDE_DOC_NO_COMPANY` / `HIDE_DOC_NO_BRANCH`: Hides document numbers.
-- `HIDE_QTY_BASE` / `HIDE_QTY_UOM`: Hides quantity inputs in line items.
-- `HIDE_UNIT_DISCOUNT`: Hides unit discount fields.
-- `HIDE_TAX_CONFIG_SELECTION`: Hides tax code selectors.
-- `DISALLOW_SELL_BELOW_MIN_PRICE`: Enforces strict pricing floor rules.
-- `LOCK_PURCHASER_TO_CURRENT_USER`: Locks the sales agent selector to the logged-in cashier.
+#### Printables
+
+| Parameter | Purpose | Configuration Path | Default Behavior |
+| :--- | :--- | :--- | :--- |
+| **Layout Templates** | Manage printable templates (PDF) for cash bills and receipts. | `Settings > Printables` | Sets the default layout and formatting used when printing documents. |
+
+#### Webhooks
+
+| Parameter | Purpose | Configuration Path | Default Behavior |
+| :--- | :--- | :--- | :--- |
+| **Integration Webhooks** | Define URL endpoints to receive JSON transaction payloads. | `Settings > Webhook` | Triggers HTTP POST requests when shopping carts are created, saved, or finalized. |
+
+#### Feature Visibility
+
+| Toggle Parameter | Purpose | Configuration Path | Default/Conditional Behavior |
+| :--- | :--- | :--- | :--- |
+| **SHOW_DOCUMENT_DELETE_BUTTON** | Exposes the delete action for cart drafts. | `Settings > Feature Visibility` | Displays the **Delete** button at the bottom of active drafts. |
+| **HIDE_DOC_NO_TENANT** / **HIDE_DOC_NO_COMPANY** / **HIDE_DOC_NO_BRANCH** | Suppress system-level document number fields. | `Settings > Feature Visibility` | Hides specific internal tracking numbers from the header. |
+| **HIDE_QTY_BASE** / **HIDE_QTY_UOM** | Simplify quantity inputs in line items. | `Settings > Feature Visibility` | Hides base unit or UOM-specific quantity inputs in item configuration. |
+| **HIDE_UNIT_DISCOUNT** | Suppress discount inputs. | `Settings > Feature Visibility` | Hides the Unit Discount input in item settings and grids. |
+| **HIDE_TAX_CONFIG_SELECTION** | Prevent manual tax code overrides. | `Settings > Feature Visibility` | Hides the tax code dropdown, applying default tax rules automatically. |
+| **DISALLOW_SELL_BELOW_MIN_PRICE** | Enforce pricing floor controls. | `Settings > Feature Visibility` | Blocks saving or finalizing if a line item's price is set below the allowed minimum. |
+| **LOCK_PURCHASER_TO_CURRENT_USER** | Lock the responsible sales agent. | `Settings > Feature Visibility` | Disables the Sales Agent dropdown, locking it to the logged-in cashier. |
 
 #### Permissions Settings
-- **Permission Set Listing**: Manage permission matrices.
-- **User / Team / Role Permissions**: Maps permission sets to specific users, departments, or roles.
+
+| Security Config | Purpose | Configuration Path | Default/Conditional Behavior |
+| :--- | :--- | :--- | :--- |
+| **Permission Set Listing** | Define and manage security permission sets. | `Settings > Permission Set Listing` | Enforces permissions rules for user groups. |
+| **User / Role Permissions** | Map security sets to specific personnel or roles. | `Settings > User/Team/Role Permissions` | Controls which departments can create, edit, finalize, or delete carts. |
 
 ---
 
@@ -494,13 +594,12 @@ A collection of toggles to control UI features:
 
 Personal configurations reside under personalization paths:
 
-#### Personal Default Selection (`Personalization > Personal Default Selection`)
-- **Default Branch / Location**: Overrides Applet default settings.
-- **Default Toggle Column**: Toggles between single-column (`SINGLE`) or double-column (`DOUBLE`) grid list layout.
-- **Default Tab Orientation**: Configures the default tab orientation (`HORIZONTAL` for tabs, `VERTICAL` for expansion panels).
-
-#### Sidebar Configuration (`Personalization > Sidebar`)
-Allows customizing the user's sidebar layout.
+| Configuration Parameter | Purpose | Personalization Path | System Impact |
+| :--- | :--- | :--- | :--- |
+| **Default Branch / Location** | Set user-level branch and warehouse overrides. | `Personalization > Personal Default Selection` | Pre-populates fields on new carts, overriding the global applet defaults. |
+| **Default Toggle Column** | Choose layout width for listing grids. | `Personalization > Personal Default Selection` | Sets the grid list layout to single-column (`SINGLE`) or double-column (`DOUBLE`). |
+| **Default Tab Orientation** | Choose form navigation layout. | `Personalization > Personal Default Selection` | Toggles between horizontal tabs (`HORIZONTAL`) or vertical expansion panels (`VERTICAL`). |
+| **Sidebar Layout** | Customize user-specific sidebar links. | `Personalization > Sidebar` | Toggles showing or hiding menu links in the personal sidebar navigation. |
 
 ---
 
@@ -521,7 +620,13 @@ A comprehensive log of every action taken within the Shopping Cart Applet.
 ## FAQ
 
 **Q: Can I edit a shopping cart once it is finalized?**  
-A: No. Clicking **FINALISE** sets the posting status to `FINAL`, locking the document from further edits, line additions, or deletions to ensure compliance with financial accounting standards.
+A: No. Clicking **FINAL** sets the posting status to `FINAL` and generates a **Sales Order (SO)**, locking the document from further edits, line additions, or deletions.
+
+**Q: What is the difference between finalizing a cart and converting it?**  
+A: Finalizing a cart (clicking **FINAL**) sets its status to `FINAL`, locks it as a read-only document, and generates a **Sales Order (SO)**. Converting a cart (under the **Convert** tab) creates a separate, posted **Internal Receipt Voucher (IRV)** to record the cash sale, and automatically deletes the original draft shopping cart to keep the active queue clean and prevent duplicate records.
+
+**Q: Can I delete a shopping cart?**  
+A: Yes, draft shopping carts can be deleted by clicking the **DELETE** button at the bottom of the workspace and then clicking **CLICK AGAIN TO CONFIRM** to prevent accidental loss. Note that this action is only available for drafts and requires the **SHOW_DOCUMENT_DELETE_BUTTON** parameter to be enabled in settings.
 
 **Q: Why are the Billing and Shipping address picker buttons disabled?**  
 A: Address pickers are disabled until you select an **Entity ID** in the Entity Details sub-tab. Addresses must be linked to a valid customer profile.

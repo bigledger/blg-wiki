@@ -1,7 +1,7 @@
 ---
 title: Inventory Workflow
 description: Inventory management applets for stock tracking, transfers, adjustments, and reporting
-weight: 40
+weight: 30
 bookCollapseSection: true
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: "Interactive Demo Platform"
 description: "Experience BigLedger's capabilities through hands-on guided workflows tailored to your industry"
-weight: 25
+weight: 70
 bookCollapseSection: false
 ---
 

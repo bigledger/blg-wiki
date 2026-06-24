@@ -7,7 +7,7 @@ tags:
 - customer-supplier
 - credit-control
 - configuration
-weight: 171
+weight: 200
 ---
 {{< callout type="warning" >}}
 **Warning**: this documentation is still in review

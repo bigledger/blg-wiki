@@ -10,10 +10,6 @@ tags:
 weight: 200
 ---
 
-{{< callout type="warning" >}}
-**Work in Progress: This documentation is currently pending review**
-{{< /callout >}}
-
 ### 🚀 TL;DR: What Is This Applet For?
 
 **This applet is a worklog with billing context.** You use it to record what service work was done, for which customer, using what parts or labour — so that the finance team can turn it into an invoice without asking follow-up questions.
@@ -69,7 +65,44 @@ If you have ever taken a car to a mechanic, you already understand what a Jobshe
 
 ---
 
-## Key Features Overview
+## Before You Begin
+
+Before creating your first Jobsheet, confirm the following are in place. Skipping any of these is the most common reason a new user gets stuck on the Create screen.
+
+### Required master data
+- **Customer master records** — at least one Customer, Employee, or CRM Contact must exist for the Account → Entity Details step.
+- **Branch and Location records** — both are mandatory on every Jobsheet. If your company only operates from one branch, set it as the default in Personalization → Default Selection so you don't have to choose it every time.
+- **Item / service catalogue** — at least one item, part, or service must exist before you can add anything to the Lines tab.
+
+### Required upstream documents (typical, not strictly required)
+- **Service Note** — if your workflow begins with a customer complaint, the Service Note is normally created first in the Internal RMA Applet. You can then link it from the Search tab when opening the Jobsheet.
+
+### Required permissions
+- **Read access to Internal Jobsheets** — controlled by the `TNT_API_DOC_INTERNAL_JOBSHEETS_READ_TGT_GUID` permission. Without it, the applet does not appear in the menu.
+- **Tenant Admin / Tenant Owner** roles unlock cross-branch visibility. Without these, you only see Jobsheets for your assigned branch.
+- **Show Transaction Date** permission — controls whether the Transaction Date field is visible on Main Details.
+
+### Configuration to confirm before first use
+- **Default Branch and Location** — set in Personalization so they pre-fill on every new Jobsheet.
+- **Application Settings** — confirm which tabs your workflow uses. Search, Payment, Department Hdr, Contra, Delivery Details, Attachments, Doc Link, Export, and Convert can each be hidden if not needed.
+- **Workflow Settings** — if you use an approval flow, configure the workflow stages first so the Workflow Status field has meaningful values to choose from.
+- **Printable Format** — if you plan to use the Export tab to print Jobsheets as PDF, set up at least one Printable Format template.
+
+---
+
+## Who Uses This Applet
+
+| Role | Main Responsibility |
+|------|--------------------|
+| **Service Technician / Field Worker** | Open a new Jobsheet at the start of a job; record what was done, parts used, hours billed, and any payment collected on-site. |
+| **Service Manager / Operations Manager** | Review draft Jobsheets, correct line items, tag the job to the right department, and finalise records so finance can bill. |
+| **Finance / Billing Team** | Apply payments, post contras against existing customer credits, and convert finalised Jobsheets into Sales Invoices or Receipt Vouchers. |
+| **Warehouse / Dispatch Team** | Use the Delivery Details tab to confirm that physical parts on the Jobsheet have been dispatched against a Delivery Order or Packing Order. |
+| **Admin** | Configure Application Settings, tab visibility, default Branch/Location selections, printable formats, and workflow rules. |
+
+---
+
+## Who Benefits and What This Solves
 
 ### Who Benefits from This Applet?
 
@@ -112,20 +145,20 @@ Traditional service tracking often relies on loose papers, manual logs, or separ
 
 ---
 
-## Key Features Overview
+## Key Features at a Glance
 
 {{< cards >}}
-  {{< card title="Jobsheet Management" subtitle="Create, edit, and track comprehensive service records" link="#jobsheet-creation--management" >}}
+  {{< card title="Main Details & Job Header" subtitle="Set branch, location, technician, dates, and workflow status" link="#2-main-details-tab" >}}
 
-  {{< card title="Account & Entity Detail" subtitle="Manage billing, shipping, and customer relationships" link="#account-tab" >}}
+  {{< card title="Account & Entity Details" subtitle="Manage the customer, Bill To, and Ship To addresses" link="#3-account-tab" >}}
 
-  {{< card title="Line Item Tracking" subtitle="Detailed recording of services, parts, and labor" link="#lines-tab" >}}
+  {{< card title="Line Items (Parts & Labour)" subtitle="Detailed recording of services, parts, and labour" link="#4-lines-tab" >}}
 
-  {{< card title="Payment & Contra" subtitle="Integrated financial processing and settlements" link="#payment-tab" >}}
+  {{< card title="Payment & Contra" subtitle="Record deposits and offset against existing credits" link="#6-payment-tab" >}}
 
-  {{< card title="Departmental Reporting" subtitle="Allocate and track jobs by internal cost centers" link="#department-hdr-tab" >}}
+  {{< card title="Departmental Reporting" subtitle="Allocate jobs to segment, profit centre, dimension, or project" link="#7-department-hdr-tab" >}}
 
-  {{< card title="Draft & History" subtitle="Save progress and maintain a full audit trail" link="#draft-management--audit" >}}
+  {{< card title="Audit Chain (Doc Link)" subtitle="See the upstream source and downstream invoice for every job" link="#10-doc-link-tab" >}}
 {{< /cards >}}
 
 {{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-overview-infographic.png" alt="Internal Jobsheet Applet Overview - Challenges (lost paperwork, billing delays, inaccurate tracking), Solution (digital worklog, seamless invoicing, real-time parts tracking), and User Roles (Technicians, Operations Managers, Finance Teams)" caption="Service-to-Cash Workflow: Eliminating disconnected service bottlenecks by centralizing digital job recordings, integrated parts tracking, and automated financial settlements." >}}
@@ -254,6 +287,25 @@ The Account tab has three sub-tabs that together define **who** this job is for 
 
 > The **Line Items** sidebar menu provides a separate master listing of all line items across all Jobsheets — useful for managers who need a cross-job view of parts consumption.
 
+#### When the ADD button is disabled
+
+If the **ADD** button at the bottom of the Add Line Item screen is greyed out, one of the following is missing. The system will not let you add the line until every condition is satisfied:
+
+| What's missing | Why the system blocks ADD | Fix |
+|---|---|---|
+| **Quantity, Net Amount, Net Amount with Tax, or Transaction Amount** is empty or zero on Item Details → Main | Every line must have a positive quantity and a calculated amount before it can be saved | Enter a quantity of 1 or more. The amount fields auto-calculate from the item's unit price — if they stay at 0.00, check that the item's price exists in the master pricing record. |
+| **Serial Number required but none added** (the Serial Number tab shows a counter of `0`) | The item is configured in the master as serial-tracked, and the system requires at least one serial number per unit before the line is valid | Open the **Serial Number** tab inside Add Line Item and add as many serial numbers as the quantity. If the customer doesn't have the serials yet, reduce the quantity to 0 or remove the line. |
+| **Department form on the line is invalid** | A line-level Department / Profit Centre dropdown has been left empty when one is required by your applet settings | Open the per-line Department section and pick a value, or ask the admin to make the field optional. |
+
+Master-data prerequisites that determine which conditions apply:
+
+- **Item flagged as serial-tracked in the Item Master** → Serial Number tab becomes mandatory.
+- **Item flagged as batch-tracked** → Batch Number tab requires `batch_no`, `qty`, `issue_date`, and `expiry_date` before save.
+- **Item flagged as bin-tracked** → Bin Number tab requires `bin_code`, `container_measure`, `container_qty`, `container_uom`, and `qty`.
+- **Item has no sales price defined in the master** → the amount fields stay at 0.00, which fails the `min(0)` validator on totals.
+
+If you've checked all of the above and the button is still disabled, look for red underlines on any field inside the Item Details, Serial, Batch, Bin, or Department sub-tabs — Angular hides invalid fields until you visit them.
+
 ---
 
 ### 5. Contra Tab
@@ -370,6 +422,20 @@ The following tabs only appear when **editing** an existing Jobsheet (not during
 *   **Important**: This action **cancels the current Jobsheet** and creates a Receipt Voucher in its place.
 *   **The Analogy**: Tearing up the Job Card and replacing it with a Receipt — used when the job was simple enough that a full invoice isn't needed, just a proof of payment.
 *   **Accounting Importance**: A Receipt Voucher is a simpler financial document than an Invoice. Converting to one is appropriate for cash-on-the-spot jobs where no credit terms or formal billing cycle is needed. It closes the job financially in one step.
+
+---
+
+## Status Reference
+
+A Jobsheet has **three status fields running at the same time**, which is the single thing most likely to confuse a new user. They each answer a different question.
+
+| Field | Question it answers | Typical values |
+|---|---|---|
+| **Record Status** | Is the record itself in use? | ACTIVE, INACTIVE, TEMP |
+| **Posting Status** | Has the document been committed to the books? | (blank / Draft), FINAL, VOID, DISCARDED |
+| **Workflow Status** | Where does the work physically stand? | CREATED, IN-PROGRESS, COMPLETED, ON-HOLD |
+
+For everyday work you mostly care about **Posting Status**. A normal lifecycle reads: **Draft → FINAL → (VOID if reversed)**. **DISCARD** applies to drafts only; **VOID** applies to FINAL only — the two buttons never appear at the same time. See the FAQ and Troubleshooting sections for what each action does and when buttons are hidden.
 
 ---
 
@@ -494,6 +560,30 @@ To tailor the applet to your specific business needs, use the **Settings** secti
 
 ---
 
+## If Something Is Wrong
+
+Use this table when a button doesn't appear, a field is missing, or an action doesn't behave as you expected. Every entry gives you something to try before you contact your administrator.
+
+| Symptom | Likely Cause | What To Do |
+|---|---|---|
+| **CREATE or SAVE button is greyed out** | The Main Details form or the Account form has a validation error | Check that **Branch** and **Location** are selected on Main Details, and that an **Entity** (customer / employee / CRM Contact) is chosen on the Account tab. Required fields show in red. |
+| **FINAL button does not appear** | Posting Status is already FINAL/VOID/DISCARDED, OR the admin has enabled `HIDE_GENDOC_FINAL_BUTTON` in Application Settings | Open the Jobsheet and check its Posting Status in the header. If it's still a Draft, ask your administrator to confirm the Hide FINAL Button setting is OFF. |
+| **VOID button does not appear** | The Jobsheet is not yet FINAL — VOID only shows on posted documents | If you want to cancel a draft instead, use **DISCARD**. VOID is reserved for reversing FINAL Jobsheets. |
+| **DISCARD button does not appear** | The Jobsheet is already FINAL/VOID/DISCARDED, OR the admin has enabled `HIDE_GENDOC_DISCARD_BUTTON` | A FINAL Jobsheet cannot be DISCARDed — use **VOID** instead. For drafts, ask admin to confirm the Hide DISCARD setting. |
+| **Search, Payment, Department Hdr, or Contra tab is missing** | The tab has been hidden in Application Settings (`HIDE_SEARCH_TAB`, `HIDE_MAIN_PAYMENT_TAB`, `HIDE_DEPARTMENT_HDR_TAB`, `HIDE_MAIN_CONTRA_TAB`) | Ask your administrator to toggle the relevant Hide setting OFF. |
+| **Delivery Details, Attachments, Doc Link, Export, or Convert tab is missing** | These tabs appear in Edit mode only — never on the initial Create screen | Click **Save** first to create the draft, then reopen it from the Listing. If still missing, the corresponding HIDE setting may be on. |
+| **Search returns no results for a customer or service note** | The record is INACTIVE, or the search term doesn't match the code / name | Try a partial code. If nothing matches, ask your administrator to confirm the record is Active. |
+| **Pricing or sales-agent columns hidden on the Lines tab** | Visibility is gated by permission or by `HIDE_SALES_AGENT` setting | Ask your administrator to grant the pricing-visibility permission or toggle the setting OFF. |
+| **Bulk FINAL from the Listing skipped some rows** | Some selected rows were already FINAL/VOID/DISCARDED, or had validation errors | Open each unprocessed row individually to see which validation failed. |
+| **The Transaction Date field is missing** | Permission `SHOW_TRANSACTION_DATE` is not granted | Ask your administrator to grant the Show Transaction Date permission. |
+| **ADD button on the line item screen is greyed out** | Missing quantity/amount, OR serial-tracked item with no serial numbers entered, OR an invalid per-line Department field | See [When the ADD button is disabled](#when-the-add-button-is-disabled) under the Lines tab for the full checklist. |
+
+{{< callout type="warning" >}}
+**Bulk FINAL warning**: Selecting multiple rows on the Jobsheet Listing and clicking FINAL posts every eligible draft simultaneously. Posting cannot be undone — each Jobsheet would have to be VOIDed individually. Verify your selection carefully before confirming.
+{{< /callout >}}
+
+---
+
 ## Related Applets
 
 The Jobsheet sits in the middle of a wider service-to-cash workflow. Here is every applet that connects to it and what role it plays:
@@ -531,7 +621,9 @@ The Jobsheet sits in the middle of a wider service-to-cash workflow. Here is eve
 
 ### The Full Picture
 
-```
+{{< figure src="/images/internal-jobsheet-applet/internal-jobsheet-full-lifecycle-infographic.png" alt="Internal Jobsheet full service lifecycle - Service Note / RMA at the top, flowing down through Sales Order, Jobsheet (this applet), Sales Invoice, Delivery Order, and Credit / Debit Note at the bottom" caption="Service-to-Cash Lifecycle: how the Jobsheet connects the upstream customer request to downstream billing, dispatch, and post-invoice adjustments." >}}
+
+<!-- ```
 [Service Note / RMA]  ←  Customer reports a problem
         ↓
 [Sales Order]         ←  Company commits to doing the work
@@ -543,7 +635,7 @@ The Jobsheet sits in the middle of a wider service-to-cash workflow. Here is eve
 [Delivery Order]      ←  Ship any parts (if needed)
         ↓
 [Credit / Debit Note] ←  Correct the bill if needed
-```
+``` -->
 
 ---
 
@@ -570,4 +662,57 @@ A: Yes. The **Line Items** section in the sidebar provides a master listing of a
 **Q: What happens to the Department Hdr tab if my company doesn't use cost centers?**
 A: You can hide the **Department Hdr** tab entirely via **Application Settings** so it does not appear in the Jobsheet form.
 
+**Q: What is the minimum I must complete before SAVE / CREATE?**
+A: Three things: **Branch**, **Location**, and a **Status** on the Main Details tab, plus an **Entity** (Customer, Employee, or CRM Contact) on the Account → Entity Details tab. Without these the SAVE / CREATE button stays disabled.
+
+**Q: What happens after I click FINAL?**
+A: The Posting Status changes from Draft to **FINAL**. The form becomes read-only, the FINAL and DISCARD buttons are replaced by a **VOID** button, and the Jobsheet becomes available as a source document for the Sales Invoice and Receipt Voucher applets. Any stock-tracked line items are deducted from inventory at this point.
+
+**Q: What is the difference between DISCARD and VOID?**
+A: **DISCARD** abandons a draft that has never been FINAL. **VOID** reverses a Jobsheet that has already been FINAL. The two buttons never appear at the same time — the system shows the one that applies to the current state.
+
+**Q: Can I edit a Jobsheet after FINAL?**
+A: No. Once FINAL, the form is read-only. If you need to change something, VOID the Jobsheet and create a new one, or — if an invoice has already been raised — issue a Credit Note or Debit Note against that invoice instead.
+
+**Q: Why is the CREATE button disabled?**
+A: The most common cause is a missing **Branch**, **Location**, or **Entity**. Open Main Details and the Account tab and look for red underlines. If everything looks filled, your administrator may have hidden the SAVE button via the `HIDE_GENDOC_SAVE_BUTTON` setting.
+
+**Q: Why can't I see the Delivery Details / Convert / Attachments tab?**
+A: These tabs appear in Edit mode only. Click **Save** to create the Jobsheet, reopen it from the Listing, and the additional tabs will appear. If they still don't appear, your administrator may have hidden them via Application Settings.
+
+**Q: Can I bulk-finalize Jobsheets from the Listing?**
+A: Yes. Select multiple rows and click **FINAL** on the Listing toolbar. Only eligible drafts will be finalised — rows already FINAL/VOID/DISCARDED, or rows with validation errors, are skipped. A **Bulk VOID** option is available on the same toolbar for posted Jobsheets.
+
+**Q: What happens to inventory when I FINAL a Jobsheet with stock parts on the Lines tab?**
+A: Stock-tracked line items are deducted from inventory at the Location selected on Main Details. Service-only or labour-only lines have no inventory impact. If the downstream document is a **Sales Invoice No Stock-Out**, no further stock movement happens at invoicing.
+
+**Q: I clicked Convert — what just happened to my Jobsheet?**
+A: Convert turns the Jobsheet into an **Internal Receipt Voucher** and cancels the original Jobsheet in one step. Use it only when the job was simple enough to settle in one payment, with no formal invoice needed. If you also need a Sales Invoice, do **not** use Convert — raise the invoice from the Sales Invoice applet instead.
+
 ---
+
+## Glossary
+
+| Term | Plain-English Definition |
+|---|---|
+| **Jobsheet** | A worklog that records what service work was done, for whom, using what parts or labour. The source document the finance team uses to bill the customer. |
+| **Posting Status** | Whether the document has been committed to the accounting books. Blank/Draft = editable; FINAL = posted; VOID = reversed; DISCARDED = abandoned draft. |
+| **Record Status** | The lifecycle state of the record itself, separate from accounting impact. ACTIVE = in use; INACTIVE = retired; TEMP = placeholder during creation. |
+| **DRAFT** | A Jobsheet that has been saved but not yet FINAL. Still fully editable. |
+| **FINAL** | The action of posting a Jobsheet. After FINAL the form is read-only and the Jobsheet becomes a source for billing. |
+| **VOID** | The action of reversing a FINAL Jobsheet. The Jobsheet stays visible for audit; it cannot be edited. |
+| **DISCARD** | The action of abandoning a draft that was never FINAL. Different from VOID, which applies after FINAL. |
+| **Workflow Status** | The operational stage of the job (CREATED, IN-PROGRESS, COMPLETED, ON-HOLD). Tracks where the work physically stands, independent of whether the document has been posted. |
+| **KO / Knock-off** | Pulling line items from a source document into a new document instead of re-typing them — for example, pulling Service Note lines into a Jobsheet. |
+| **Contra** | When two parties owe each other money, contra offsets the amounts so only the net difference is settled. No actual cash moves. |
+| **Credit Note** | A document that reduces what a customer owes — used when they were overcharged or returned goods. |
+| **Debit Note** | A document that increases what a customer owes — used when extra charges are discovered after the invoice was issued. |
+| **Receipt Voucher** | A simpler financial document than an invoice, used for on-the-spot cash payments where no credit terms or formal billing cycle is needed. |
+| **Service Note** | An upstream document recording a customer's complaint or service request. Often the trigger for opening a Jobsheet. Lives in the Internal RMA Applet. |
+| **Entity** | The Customer, Employee, or CRM Contact the Jobsheet is for. In accounting terms, the "Debtor Record" — who will eventually be billed. |
+| **Bill To** | The legal billing address — where the invoice is sent. Determines the tax jurisdiction. |
+| **Ship To** | The physical service or delivery address — where the work was actually performed. |
+| **Profit Centre** | An internal team or branch that "owns" the Jobsheet for reporting. Lets finance answer "how much did the Service team earn this month?" without manually sorting every record. |
+| **Segment** | The broadest internal grouping for reporting — e.g. Retail vs Corporate vs Government. Used on the Department Hdr tab. |
+| **G/L Dimension** | A custom internal tag defined by your finance team for their own reporting needs (e.g. North Region, Product Line A). Used on the Department Hdr tab. |
+| **Tenant Admin / Tenant Owner** | High-privilege roles that unlock cross-branch visibility. Without these, a user can only see Jobsheets for their assigned branch. |

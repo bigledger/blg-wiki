@@ -1,5 +1,5 @@
 ---
 title: Claims
 description: Claim processing applets
-weight: 14
+weight: 100
 ---
