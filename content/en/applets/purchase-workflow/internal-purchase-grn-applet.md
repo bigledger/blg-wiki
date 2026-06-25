@@ -166,7 +166,10 @@ To effectively manage the system, it is crucial to understand how **Purchase Ord
 1. You create a **Purchase Order** (e.g., 100 laptops from Tech Supplier).
 2. You receive goods and create a **GRN Record** (e.g., 95 laptops actually received).
 3. The system processes an **Inventory Update** (e.g., +95 laptops to stock).
-4. Any discrepancies (5 missing laptops) are flagged for follow-up.
+4. Any discrepancies (e.g., 5 missing laptops, price/quantity variances) are flagged for follow-up:
+   - **Over-receipts** are flagged as a **"Quantity Over-receipt"** in the approval workflow, requiring manager sign-off.
+   - **Price changes** are flagged as a **"Price Variance"** for Finance team review.
+   - **Shortages/Damaged goods** are visible in the **Line Items** status and sent to the **Quality Hold** queue.
 
 ---
 
@@ -209,14 +212,17 @@ graph TD
 
 1.  **Navigate**: Go to **Purchase GRN (Internal)** from the sidebar
 2.  **Create Header**: Click **"+"** → Enter GRN details (Supplier, Date, Reference) → **Create**
-3.  **Link Purchase Order**:
-    - Click **"Link PO"**
-    - Search and select the relevant **Purchase Order**
-    - System auto-populates expected items
+3.  **Link Purchase Order (Optional but Recommended)**:
+    - You do **not** need a PO to be linked beforehand; you can create a standalone manual GRN by adding lines manually under the **Lines** tab.
+    - To link a Purchase Order, navigate to the **KO For** tab:
+      - Go to the **Purchase Order** sub-tab.
+      - **Search**: Use the search bar to locate the PO document number.
+      - **Select**: Check the box next to the relevant PO number.
+      - **Knock Off**: Click the **KNOCK OFF** button to import all expected line items and quantities into your GRN and link the documents.
 4.  **Record Actual Receipt**:
-    - For each line item, enter **Actual Quantity Received**
-    - Note any **Quality Issues** or **Damage**
-    - Upload **Delivery Note** photos
+    - On the **Lines** tab, enter the **Actual Quantity Received** for each item.
+    - **Note Quality Issues or Damage**: Go to the **Item Details** tab of the selected line item and enter notes/damage details in the line-level **Remarks** field. (Alternatively, enter header-level notes in **Remarks** under the **Main Details** tab).
+    - **Upload Delivery Note Photos**: Go to the **Attachment** tab within the GRN form to upload photos or scanned documents of the supplier's Delivery Note.
 5.  **Finalize**: Click **Submit** → GRN goes for approval → Inventory updates automatically
 
 {{< figure src="/images/internal-purchase-grn-applet/main-listing.png" alt="Purchase GRN (Internal) Main Listing showing document summary and status tabs" caption="GRN Listing: View and manage all your internal purchase goods receipt notes." >}}
@@ -253,7 +259,7 @@ graph TD
 
 **Goal:** Review and approve goods receipts in 3 steps.
 
-1.  **Check Pending**: Go to **Pending GRN Approvals** (you'll see a notification badge)
+1.  **Check Pending**: Go to the **Purchase GRN (Internal)** listing and select the **Submitted** tab to view GRNs awaiting approval.
 2.  **Review Details**:
     - Click on the GRN to open
     - Check: Quantities received vs ordered, supplier delivery note
@@ -271,10 +277,6 @@ The system ensures every GRN is accounted for within the company's financial fra
 - **Departmental Allocation**: Assign receipts to specific Profit Centers, Segments, or Projects.
 - **Budget Register**: Track utilization against Fiscal Periods and specific Budget Items.
 - **Foreign Exchange History**: Maintain a history of currency rates (Forex Source) used at the time of receipt.
-
----
-
-**Going on Leave?** Set up delegation: `Settings > GRN Approval Delegation` → Select someone to approve on your behalf.
 
 ---
 
@@ -302,22 +304,27 @@ Track warehouse efficiency and supplier performance.
 
 ---
 
-### Detailed Line Items Management
+### Detailed Line Items Management (Lines Tab)
 
-{{< figure src="/images/internal-purchase-grn-applet/line-items-listing.png" alt="Purchase GRN (Internal) Line Items Listing showing detailed item-level receipt data" caption="Line Items Listing: Track quantities, quality status, and PO links for individual items." >}}
-
-Line Items Management allows warehouse staff and purchase teams to record and track the receipt of individual items within a GRN. Each line represents a specific product with its own quantity, condition, and quality status.
+To record or edit items within a specific GRN document, you use the **Lines** tab inside the GRN creation/editing form.
 
 **How to Record Line Items:**
 
-1.  Open a **GRN** from the listing
-2.  Go to **Line Items** tab
+1.  Open a **GRN** from the listing (or create a new one).
+2.  Go to the **Lines** tab.
 3.  For each item received:
-    - **Expected Quantity**: Auto-populated from PO
-    - **Received Quantity**: Enter actual amount received
-    - **Quality Status**: Good, Damaged, Rejected
-    - **Notes**: Any special observations
-    - **Serial/Batch**: If applicable
+    - **Expected Quantity**: Auto-populated from PO (if knocked off).
+    - **Received Quantity**: Enter actual amount received.
+    - **Remarks**: Any special observations or notes on the item.
+    - **Serial/Batch**: If applicable.
+
+---
+
+### Global Line Items Listing Workspace
+
+{{< figure src="/images/internal-purchase-grn-applet/line-items-listing.png" alt="Purchase GRN (Internal) Line Items Listing showing detailed item-level receipt data" caption="Line Items Workspace: View and filter all receipt lines across multiple GRN documents in one place." >}}
+
+Apart from editing individual GRN documents, the applet provides a global **Line Items** listing accessed from the sidebar. This workspace compiles all line items from all GRN documents, allowing purchase and inventory teams to search, filter, and track received items globally without opening each GRN document individually.
 
 **Visual Example:**
 
@@ -347,10 +354,17 @@ Missing: 5 units        Reason: Short delivery by supplier
 
 PO Matching is the process of linking received goods to their originating purchase orders. This ensures that what you receive matches what you ordered and enables automated processing workflows.
 
+#### Knock-Off (KO For Tab) vs. Manual Entry (Search Items)
+
+While linking a PO is a best practice, a GRN **does not strictly require a pre-existing Purchase Order**. Depending on your operational flow, you can choose between two methods:
+
+*   **Knock-Off (KO For Tab) — Linked Entry**: Use this when receiving goods against an existing Purchase Order. Under the **KO For** tab, search for the PO, select it, and click **KNOCK OFF**. This automatically imports the lines and deducts the remaining open balance from the PO upon finalization. This is required for **three-way matching** (PO vs. GRN vs. Invoice).
+*   **Manual Entry (Lines Tab Search) — Standalone Entry**: Use this when goods arrive without a pre-existing PO in the system. Go directly to the **Lines** tab and search for individual items to add them one by one. No PO balance is updated since no document is linked.
+
 **Matching Process Steps:**
 
-1.  **PO Selection**: Search by PO number or supplier.
-2.  **Line Item Population**: System creates GRN lines for all open PO lines.
+1.  **PO Selection**: Search by PO number or supplier under the **KO For** tab.
+2.  **Line Item Population**: Check the PO checkbox and click **KNOCK OFF** to import GRN lines for the selected PO.
 3.  **Receipt Recording**: Enter actual quantities received.
 4.  **Validation**: System checks for over-receipts or quality flags.
 
@@ -377,7 +391,6 @@ Quality Control Workflows ensure that received goods meet your organization's st
 - ✓ **Fast-Track Routine Receipts**: Bulk approve small, routine GRNs with clear receipts.
 - ✓ **Careful Review for High-Value**: Take time with GRNs > RM 5,000.
 - ✓ **Clear Rejection Reasons**: Always explain WHY a receipt was rejected (e.g., "Missing tax invoice").
-- ✓ **Use Delegation**: Set up approval delegation when going on leave.
   {{< /callout >}}
 
 ---
@@ -388,134 +401,24 @@ Quality Control Workflows ensure that received goods meet your organization's st
 
 ## For Administrators (System Setup)
 
-Configure the system to match your organizational workflows and inventory policies.
+Configure the system settings to customize field visibility, default options, and printable formats.
 
 ### Core Configuration & Integration
 
-{{< figure src="/images/internal-purchase-grn-applet/settings-page.png" alt="Purchase GRN (Internal) Settings page showing system configuration and permission options" caption="Applet Settings: Configure approval workflows, numbering, and quality control parameters." >}}
+{{< figure src="/images/internal-purchase-grn-applet/settings-page.png" alt="Purchase GRN (Internal) Settings page showing system configuration and permission options" caption="Applet Settings: Configure field visibilities, default selection and printable formats." >}}
 
-Administrators are responsible for setting up the foundational parameters that govern how receipts are processed, approved, and integrated with inventory.
+Administrators are responsible for setting up the foundational parameters of the applet:
 
-#### Inventory Integration Settings
+*   **Application Settings (Field Settings)**: Toggle tab visibility (e.g., KO For, Lines, Account, Attachments), and make specific fields mandatory or hidden.
+*   **Default Selection**: Pre-fill default values for new GRN documents (e.g., default Company, Branch, and Location) to speed up warehouse receiving operations.
+*   **Printable Format Settings**: Configure the Jasper report templates used when printing GRN receipts.
+*   **Branch Settings**: Adjust receiving behaviors and defaults for specific branches.
 
-Inventory Integration ensures that all goods receipts automatically update your inventory management system in real-time.
 
-- **Update Timing**: Real-time upon approval or batch processing.
-- **Costing Methods**: Weighted Average, FIFO, LIFO, or Standard Cost.
-- **Location Management**: Default receiving bins and quality hold areas.
-
-#### Approval & Quality Settings
-
-- **GRN Approval Settings**: Define multi-level approval chains based on value or quality status.
-- **Quality Control Settings**: Mandatory inspection thresholds and supplier-specific rules.
-
-{{< callout type="tip" >}}
-**Best Practices for Administrators:**
-
-- ✓ **Assign Backup Approvers**: Ensure every level in the approval chain has at least one backup to prevent bottlenecks.
-- ✓ **Monitor Costing Accuracy**: Regularly review unit costs in GRNs to ensure they align with Purchase Orders and supplier invoices.
-- ✓ **Automate Sequential Numbering**: Use a prefix (e.g., GRN-2024-) to make document tracking and auditing easier.
-- ✓ **Review Integration Logs**: Periodically check integration logs to ensure stock-in transactions are reaching the ERP correctly.
-  {{< /callout >}}
 
 ---
 
-## Reporting & Analytics
 
-**Comprehensive receipt and performance analysis tools.**
-
-### GRN Summary Reports
-
-**Overview of all goods receipt activities.**
-
-The GRN Summary Reports provide high-level visibility into receipt operations, helping managers monitor performance and identify trends.
-
-**Key Metrics Displayed:**
-
-**Volume Metrics:**
-
-- Total GRNs processed
-- Total value received
-- Average GRN value
-- Processing time statistics
-
-**Performance Metrics:**
-
-- Receipt accuracy rates
-- Quality acceptance rates
-- Approval cycle times
-- Exception rates
-
-**Trend Analysis:**
-
-- Monthly/quarterly comparisons
-- Seasonal patterns
-- Growth trends
-- Performance improvements
-
----
-
-### Supplier Performance Reports
-
-**Detailed analysis of supplier delivery and quality performance.**
-
-Track and evaluate supplier performance across multiple dimensions to support procurement decisions.
-
-**Performance Categories:**
-
-**Delivery Performance:**
-
-- On-time delivery rates
-- Quantity accuracy
-- Lead time consistency
-- Delivery completeness
-
-**Quality Performance:**
-
-- Quality acceptance rates
-- Defect rates
-- Return percentages
-- Quality improvements
-
-**Service Performance:**
-
-- Documentation accuracy
-- Communication responsiveness
-- Issue resolution time
-- Compliance rates
-
----
-
-### Inventory Impact Reports
-
-**Analysis of how receipts affect inventory levels and costs.**
-
-Understand the financial and operational impact of goods receipts on inventory management.
-
-**Impact Analysis:**
-
-**Inventory Levels:**
-
-- Stock level changes
-- Turnover rates
-- Carrying costs
-- Obsolescence risks
-
-**Cost Analysis:**
-
-- Cost variances
-- Price trends
-- Landed cost analysis
-- Budget vs actual
-
-**Operational Impact:**
-
-- Stockout prevention
-- Service level improvements
-- Working capital effects
-- Space utilization
-
----
 
 ## Configuration & Settings
 
@@ -532,158 +435,16 @@ The applet allows individual users to personalize their interface:
 
 ---
 
-### GRN Approval Settings (`Settings > GRN Approval Settings`)
+### Applet Settings Reference
 
-**Configure approval workflows for goods receipt processing.**
+Administrators configure the applet settings under the **Settings** menu:
 
-The GRN Approval Settings define who needs to approve goods receipts and under what conditions. This ensures proper authorization and control over inventory additions.
-
-**Creating an Approval Rule - Field Guide:**
-
-| Field                  | Purpose                                      | Why It Matters                    | Example                                                  |
-| ---------------------- | -------------------------------------------- | --------------------------------- | -------------------------------------------------------- |
-| **Approval Level**     | Order of approval (1st, 2nd, 3rd)            | Determines approval sequence      | Level 1: Warehouse Supervisor, Level 2: Purchase Manager |
-| **Approval Condition** | When this approval is required               | Controls which GRNs need approval | Value > RM 1,000, Quality Issues, Over-receipts          |
-| **Approver Role**      | Who can approve at this level                | Links to organizational hierarchy | Purchase Manager, Quality Inspector, Finance Director    |
-| **Delegation Rules**   | Backup approvers when primary is unavailable | Ensures no delays during leave    | Deputy Manager, Department Head                          |
-
-**Common Approval Scenarios:**
-
-**Standard Approval:**
-
-```
-All GRNs → Warehouse Supervisor → Inventory Update
-```
-
-**High-Value Approval:**
-
-```
-GRNs > RM 5,000 → Warehouse Supervisor → Purchase Manager → Inventory Update
-```
-
-**Quality Issue Approval:**
-
-```
-GRNs with Quality Issues → Quality Inspector → Purchase Manager → Supplier Notification
-```
-
----
-
-### GRN Number Configuration (`Settings > GRN Numbering`)
-
-**Set up automatic numbering for GRN documents.**
-
-Configure how GRN numbers are generated to ensure unique identification and proper sequencing.
-
-**Numbering Options:**
-
-| Format             | Example                    | Use Case                   |
-| ------------------ | -------------------------- | -------------------------- |
-| **Sequential**     | GRN-000001, GRN-000002     | Simple numbering           |
-| **Date-Based**     | GRN-2024-001, GRN-2024-002 | Year-based tracking        |
-| **Branch-Based**   | KL-GRN-001, JB-GRN-001     | Multi-location operations  |
-| **Supplier-Based** | SUP001-GRN-001             | Supplier-specific tracking |
-
-**Configuration Fields:**
-
-- **Prefix**: Text before the number (e.g., "GRN-")
-- **Number Length**: Minimum digits (e.g., 6 digits = 000001)
-- **Reset Frequency**: Never, Yearly, Monthly
-- **Branch Inclusion**: Include branch code in number
-- **Date Format**: YYYY, YYMM, YYYYMM options
-
----
-
-### Quality Control Settings (`Settings > Quality Control`)
-
-**Configure inspection requirements and quality workflows.**
-
-Define quality control parameters to ensure consistent inspection processes across all receipts.
-
-**Quality Configuration Options:**
-
-**Inspection Requirements:**
-
-- Mandatory inspection for all items
-- Value-based inspection thresholds
-- Supplier-specific inspection rules
-- Item category inspection requirements
-
-**Quality Status Options:**
-
-- Good (immediate acceptance)
-- Hold (pending further review)
-- Rejected (return to supplier)
-- Conditional (accept with conditions)
-
-**Approval Workflows:**
-
-- Quality inspector assignment
-- Management approval thresholds
-- Supplier notification processes
-- Documentation requirements
-
----
-
-### Inventory Integration Settings (`Settings > Inventory Integration`)
-
-**Configure how GRNs update inventory systems.**
-
-Set up the connection between goods receipts and inventory management to ensure accurate stock tracking.
-
-**Integration Parameters:**
-
-**Update Timing:**
-
-- Real-time updates upon approval
-- Batch processing at scheduled times
-- Manual update triggers
-- End-of-day processing
-
-**Costing Methods:**
-
-- Weighted Average Cost
-- FIFO (First In, First Out)
-- LIFO (Last In, First Out)
-- Standard Cost with variances
-
-**Location Management:**
-
-- Default receiving locations
-- Automatic bin assignments
-- Quality hold areas
-- Quarantine locations
-
----
-
-### Supplier Performance Settings (`Settings > Supplier Performance`)
-
-**Configure supplier evaluation and tracking parameters.**
-
-Set up metrics and thresholds for monitoring supplier delivery performance and quality.
-
-**Performance Metrics:**
-
-**Delivery Performance:**
-
-- On-time delivery percentage
-- Quantity accuracy rates
-- Quality acceptance rates
-- Lead time consistency
-
-**Quality Metrics:**
-
-- Defect rates by supplier
-- Return/rejection percentages
-- Quality improvement trends
-- Certification compliance
-
-**Scoring Parameters:**
-
-- Weighting for different metrics
-- Performance thresholds
-- Escalation triggers
-- Improvement targets
+| Setting | Purpose |
+|---------|---------|
+| **Application / Field Settings** | Control visibility of tabs (e.g., KO For, Delivery Details, Attachment) and fields, toggle vertical UI layouts, and set permissions for action buttons. |
+| **Default Selection** | Define company-wide default options pre-filled on new GRNs (Company, Branch, Location). |
+| **Printable Format Settings** | Set the PDF and print layout templates for GRN documents. |
+| **Branch Settings** | Customize default warehouse locations and behavior per organizational branch. |
 
 ---
 
@@ -712,3 +473,24 @@ A: The system flags a "Price Variance". Depending on settings, this may trigger 
 
 **Q: Why is my GRN stuck in "Submitted" status?**
 A: Check the **Approval Queue**. It likely requires a second-level approval from a Department Head or Purchase Manager.
+
+**Q: What is the difference between a GRN and a GRN Stock Report?**
+A: A **GRN (Goods Received Note)** is an individual, operational transaction document that records the physical receipt of specific items and quantities from a supplier, updating stock levels upon finalization. A **GRN Stock Report** (found in reporting applets) is an analytical report aggregating data across many GRNs to show receipt history, trends, costing layers, and supplier performance over a selected timeframe.
+
+**Q: Does a GRN need a Purchase Order (PO) to be linked beforehand?**
+A: **No**, a pre-existing PO is not mandatory. If goods arrive without an order, you can create a standalone manual GRN and add items directly. However, linking a PO is highly recommended to enforce three-way matching controls.
+
+**Q: What is the difference between Search Documents/Items and the KO For tab, and which do I use?**
+A: 
+*   **KO For (Knock-Off For)** is used when creating a GRN from an existing PO. You search for the PO under this tab, check the box, and click **KNOCK OFF**. This imports the line items automatically and links the GRN to that PO, updating the remaining open quantities.
+*   **Search/Item Search** is used for manual entries where you add items one by one on the **Lines** tab without any upstream document link.
+*   To link a PO, you must use **KO For** and click the **KNOCK OFF** button.
+
+**Q: Where are discrepancies and variances flagged in the system?**
+A: Discrepancies between expected and actual received quantities/costs are flagged in several places:
+1.  **Line Items**: Quantities received vs. expected are shown line-by-line.
+2.  **Document Approval Alerts**: Over-receipts trigger a **"Quantity Over-receipt"** flag, routing the document to the Purchase Manager for approval.
+3.  **Financial Warnings**: Unit price differences between the PO and GRN trigger a **"Price Variance"** flag for Finance review.
+
+**Q: Can I export the GRN data to Excel for offline analysis?**
+A: Yes. You can filter and export the main GRN listing or the global Line Items workspace directly to Excel by using the export button on the listings.
