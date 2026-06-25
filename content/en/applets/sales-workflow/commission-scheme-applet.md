@@ -85,8 +85,8 @@ The **Commission Scheme Applet** gives sales administrators and finance teams a 
 1. **Navigate**: Click **Commission Scheme** in the sidebar
 2. **Create**: Click **"+"** → Enter a **Code** and **Name** → Select **Commission Type** (`SALES_AGENT` or `MLM`) → Click **CREATE**
 3. **Add Rules** (on the Edit screen):
-   - Click the **Rules - Doc Hdr** tab → Click **Add Rule** → choose a rule type (e.g. **Branch**, **Company**, **Document Type**) → configure and save
-   - Repeat for **Rules - Multi Line** (item-level conditions) or **Rules - Single Line** if needed
+   - Click the **Rules - Doc Hdr** tab → Click **Add Rule** → choose a document-level rule type (e.g. **Branch**, **Sales Group**, **Document Type**) → configure and save
+   - Click **Rules - Multi Line** or **Rules - Single Line** for item-level rules (e.g. **Item**, **Item Category**) — see [Available Rule Types by Tab](#available-rule-types-by-tab)
 4. **Set Treatment** (on the **Treatment** tab):
    - For **Level 0 (Self)**: choose **Price Source** (e.g. Doc Line Net Amount), **Operator** (e.g. MULTIPLY), and **Value** (e.g. 0.05 for 5%)
    - For MLM schemes: click **Add Downline** to add Level 1 (Parent) with its own rates
@@ -179,10 +179,13 @@ Use the search bar or the advanced filter panel to find schemes by:
 
 ## Rules in Detail
 
-Rules are the conditions that must be met before a scheme applies to a transaction. There are two levels of rules:
+Rules are the conditions that must be met before a scheme applies to a transaction. The applet has three rule tabs on the **Edit Commission Scheme** screen:
 
-- **Rules - Doc Hdr**: conditions evaluated at the document header level (the whole document)
-- **Rules - Multi Line / Single Line**: conditions evaluated at the individual line item level
+| Rules Tab | What it evaluates | When to use it |
+|---|---|---|
+| **Rules - Doc Hdr** | The whole document (header level) | Restrict by branch, company, sales team, document type, date range, or customer type |
+| **Rules - Multi Line** | Individual line items across the document | Pay commission only when matching items appear anywhere on the invoice |
+| **Rules - Single Line** | One matched line at a time | Pay commission per qualifying line individually (useful when each line is judged separately) |
 
 {{< figure src="/images/commission-scheme-applet/rules-doc-hdr-tab.png" alt="Rules Doc Header tab showing rule list including date range, sales group, and document type" caption="Rules - Doc Hdr: configure document-level qualifiers such as document type, period, and sales group." >}}
 
@@ -195,30 +198,69 @@ Each rule has:
 - **Negation Logic**: `ENABLED` means the condition is inverted ("must NOT match this branch")
 - **Rules Logic** (within a rule group): `AND` means all conditions must match; `OR` means any one condition must match
 
-### Available Rule Types
+{{< callout type="info" >}}
+**Where to add each rule type:** When you click **Add Rule**, the rule types in the dropdown depend on which tab you are on. Document-level rule types appear only under **Rules - Doc Hdr**. Item-level rule types appear under **Rules - Multi Line** and **Rules - Single Line** (both tabs offer the same rule types, but evaluate lines differently — see the table above).
+{{< /callout >}}
+
+### Available Rule Types by Tab
+
+#### Rules - Doc Hdr
+
+Use this tab for document-wide conditions. Each rule type can only be added once per scheme.
 
 | Rule Type | What it targets | Example use |
 |---|---|---|
-| **Branch** | Specific branches | Only apply scheme to orders from Kuala Lumpur branch |
+| **Valid Date Range** | Date range (absolute or relative period) | Scheme active only during Q4 promotional period |
+| **Entity Type** | All entities, or selected entity types (Customer, Supplier, Employee, Merchant) | Apply scheme to all customer-type entities, or only VIP customers |
+| **Member Class** | Membership class groups | Premium members only |
+| **Member Label** | Membership label tags | Customers tagged "Loyalty" |
 | **Company** | Specific companies in your org structure | Limit scheme to Company A only |
+| **Branch** | Specific branches | Only apply scheme to orders from Kuala Lumpur branch |
+| **Sales Group** | Your configured sales groups | Restrict scheme to the "East Region" sales group |
 | **Document Type** | Document types (Sales Invoice, Sales Order, Receipt Voucher, Sales Contract) | Only pay commission on Sales Invoices |
-| **Entity / Customer** | All customers, or a selected list | Apply scheme only to VIP customer accounts |
-| **Entity Type** | Customer, Supplier, Employee, or Merchant | Apply scheme to all customer-type entities |
+| **Employee Category** | Employee category classification | Limit scheme to "Senior Agent" category |
+
+#### Rules - Multi Line and Rules - Single Line
+
+Both tabs share the same rule types. The difference is how the system evaluates matching lines (document-wide vs. per-line). Each rule type can only be added once per tab.
+
+| Rule Type | What it targets | Example use |
+|---|---|---|
 | **Item** | Specific inventory items (with optional minimum quantity and amount) | Pay higher rate on Product X with min qty 10 |
 | **Item Category** | Item categories (also supports min qty / amount) | Commission only on Electronics category |
 | **Item Code Regex** | Items whose code matches a pattern | All items starting with "PROMO-" |
 | **Item Name Regex** | Items whose name matches a pattern | All items containing "Bundle" in the name |
 | **Item Category Code Regex** | Categories whose code matches a pattern | Regex-based category matching |
 | **Item Category Name Regex** | Categories whose name matches a pattern | Flexible category targeting |
-| **Member Class** | Membership class groups | Premium members only |
-| **Member Label** | Membership label tags | Items tagged "Loyalty" |
-| **Sales Group** | Your configured sales groups | Restrict scheme to the "East Region" sales group |
-| **Employee Category** | Employee category classification | Limit scheme to "Senior Agent" category |
-| **Date Validity** | Date range (absolute or relative period) | Scheme active only in Q4 promotional period |
 
 {{< callout type="tip" >}}
 **Negation Logic** lets you flip a rule. For example, a Branch rule with Negation = ENABLED means "apply this scheme to ALL branches EXCEPT the ones listed."
 {{< /callout >}}
+
+### Real-World Examples: Rules
+
+**Example 1 — East Region sales team, invoices only**
+
+A retail company wants agents in the East Region to earn commission only on posted Sales Invoices during 2026.
+
+1. Open the scheme → **Rules - Doc Hdr** tab
+2. Add **Sales Group** → select "East Region" sales group
+3. Add **Document Type** → select **Sales Invoice**
+4. Add **Valid Date Range** → set 1 Jan 2026 to 31 Dec 2026
+5. Set **Rules Logic** to `AND` so all three conditions must match
+
+Result: Only East Region agents processing Sales Invoices within 2026 trigger this scheme.
+
+**Example 2 — Bonus commission on Electronics category**
+
+A distributor pays an extra commission rate only when Electronics items are sold.
+
+1. Open the scheme → **Rules - Multi Line** tab
+2. Add **Item Category** → select "Electronics"
+3. Optionally set a minimum quantity (e.g. min qty 5) so bulk orders qualify
+4. On the **Treatment** tab, set a higher commission rate for this scheme
+
+Result: The scheme applies when at least one invoice line matches the Electronics category rule. Use **Rules - Single Line** instead if you need each qualifying line evaluated and paid separately.
 
 ---
 
@@ -238,30 +280,134 @@ The **Treatment** tab defines **how much** commission is earned and **how** it i
 
 Click **Add Downline** to add more levels. Remove the last level with the delete button.
 
+### Real-World Examples: Treatment
+
+**Example 1 — 5% commission on net sales (standard agent payout)**
+
+A sales agent earns 5% of the net amount on each qualifying invoice line.
+
+1. Open the scheme → **Treatment** tab → **Level 0 (Self)**
+2. Under **Commission**, set:
+   - **Price Source** = **Doc Line Net Amount**
+   - **Operator** = **MULTIPLY**
+   - **Value** = `0.05`
+3. Click **SAVE**
+
+Result: If a qualifying line has a net amount of RM 1,000, the agent earns RM 50 commission (1,000 × 0.05).
+
+**Example 2 — MLM downline with membership points**
+
+An MLM business pays the selling agent 8% commission and awards loyalty points to the customer.
+
+1. **Level 0 (Self)** — Commission: **Doc Line Transaction Amount** × **MULTIPLY** × `0.08`
+2. **Level 1 (Parent)** — Click **Add Uplines** → Commission: **Doc Line Transaction Amount** × **MULTIPLY** × `0.02`
+3. **Membership Points** (Level 0) — **Doc Line Transaction Amount** × **MULTIPLY** × `0.05`, **Validity Period (Days)** = `30`
+
+Result: On a RM 500 sale, the selling agent earns RM 40, their upline earns RM 10, and the customer receives 25 points valid for 30 days.
+
+### Understanding Price Source
+
+**Price Source** is the starting value the system uses before applying the **Operator** and **Value**. Think of it as answering: *"What number should the commission (or points) be calculated from?"*
+
+The final payout depends on all three fields working together:
+
+```
+Commission = Price Source value [Operator] Value
+```
+
+For example, **Doc Line Net Amount** + **MULTIPLY** + `0.05` means: take the line's net amount and multiply by 5%.
+
+Price Source is configured separately for **Commission** and **Membership Points** on each treatment level.
+
+#### Document Header Price Sources
+
+These use amounts from the **whole document** (invoice header). Use them when commission should be based on the total document value rather than individual lines.
+
+| Price Source | What value is used | Typical use |
+|---|---|---|
+| **Doc Hdr Standard Amount** | The document's standard (list) amount before discounts | Commission on gross sales before promotions |
+| **Doc Hdr Net Amount** | The document's net amount after discounts | Commission on actual revenue collected at header level |
+| **Doc Hdr Transaction Amount** | The document's transaction amount (amount used for posting) | Commission aligned with the posted financial value |
+| **Doc Hdr Open Balance Amount** | The document's remaining unpaid balance | Commission tied to outstanding receivables (e.g. partial payments) |
+
+#### Document Line Price Sources
+
+These use amounts from **individual invoice lines**. This is the most common choice for per-item or per-line commission.
+
+| Price Source | What value is used | Typical use |
+|---|---|---|
+| **Doc Line Standard Amount** | The line's standard (list) price × quantity | Commission on catalogue price before line discounts |
+| **Doc Line Net Amount** | The line's net amount after line-level discounts | Commission on actual line revenue (most common for sales agents) |
+| **Doc Line Transaction Amount** | The line's transaction/posting amount | Commission aligned with the financial posting value per line |
+
+#### Quantity and Cost Price Sources
+
+| Price Source | What value is used | Typical use |
+|---|---|---|
+| **Base Quantity** | The quantity sold on the line | Per-unit commission (e.g. RM 2 per item sold) |
+| **Price Unit Cost** | The unit cost of the item | Margin-based commission (pay on profit above cost) |
+
+#### Pricing Scheme
+
+| Price Source | What value is used | Typical use |
+|---|---|---|
+| **Pricing Scheme** | A value looked up from a linked **Pricing Scheme** table | Complex tiered or weight-based calculations; select the scheme in the **Pricing Scheme** dropdown that appears when this source is chosen |
+
+#### NA (Not Applicable)
+
+| Price Source | What value is used | Typical use |
+|---|---|---|
+| **NA** | No price source — calculation is skipped for this section | Disable commission or points on a level (e.g. points-only scheme with **NA** on Commission) |
+
+#### How Price Source Affects the Final Payout
+
+| If you choose… | And Operator is… | And Value is… | Effect on a RM 1,000 line |
+|---|---|---|---|
+| **Doc Line Net Amount** | MULTIPLY | `0.05` | RM 50 commission (5% of net) |
+| **Doc Line Net Amount** | ABSOLUTE | `100` | RM 100 fixed commission per qualifying line |
+| **Base Quantity** | MULTIPLY | `5` | RM 5 × quantity (e.g. 10 units = RM 50) |
+| **Doc Hdr Net Amount** | MULTIPLY | `0.03` | 3% of the **entire document** net amount (not per line) |
+| **Pricing Scheme** | (scheme lookup) | — | Commission read from the linked pricing scheme table |
+| **NA** | — | — | No commission calculated for this section |
+
+{{< callout type="warning" >}}
+**Header vs. line matters.** **Doc Hdr** sources calculate on the whole document total. **Doc Line** sources calculate per qualifying line. If your rules target specific items (via **Rules - Multi Line**), use a **Doc Line** price source so commission is calculated on each matching line, not the full invoice total.
+{{< /callout >}}
+
+**Real-world walkthrough — choosing the right Price Source**
+
+A furniture store pays agents 3% commission on net sales, but only on items in the "Living Room" category (configured as a **Rules - Multi Line** → **Item Category** rule).
+
+- **Correct setup:** Price Source = **Doc Line Net Amount**, Operator = **MULTIPLY**, Value = `0.03`
+- **Why:** Each qualifying Living Room line is evaluated separately. A RM 2,000 sofa line earns RM 60; a RM 500 accessory line earns RM 15.
+- **Wrong setup:** Price Source = **Doc Hdr Net Amount** — the system would apply 3% to the entire invoice total, including non-Living-Room items that should not earn commission under this scheme.
+
+For **Membership Points**, the same Price Source options apply. Example: set Price Source = **Doc Line Transaction Amount**, Operator = **MULTIPLY**, Value = `0.05`, Validity Period = `30` to award 5% of the transaction amount as points that expire after 30 days.
+
 ### Commission Configuration (per level)
 
 | Field | Options | What it means |
 |---|---|---|
-| **Price Source** | Doc Hdr Standard/Net/Transaction Amount, Doc Hdr Open Balance Amount, Doc Line Standard/Net/Transaction Amount, Base Quantity, Price Unit Cost, Pricing Scheme | Which value the commission is calculated on |
-| **Operator** | MULTIPLY, ABSOLUTE, ADD, SUBTRACT, PRICING MODEL, FORMULA | How the value is applied |
+| **Price Source** | Doc Hdr Standard/Net/Transaction Amount, Doc Hdr Open Balance Amount, Doc Line Standard/Net/Transaction Amount, Base Quantity, Price Unit Cost, Pricing Scheme, NA | Which value the commission is calculated on (see [Understanding Price Source](#understanding-price-source) above) |
+| **Operator** | MULTIPLY, ABSOLUTE, ADD, SUBTRACT, PRICING MODEL, FORMULA, NA | How the value is applied |
 | **Value** | Number | The rate or amount (e.g. 0.05 = 5% for MULTIPLY) |
-| **Pricing Scheme** | Select from configured pricing schemes | Used when Operator = Pricing Scheme |
+| **Pricing Scheme** | Select from configured pricing schemes | Used when Price Source = Pricing Scheme |
 | **Pricing Model** | Select from configured pricing models | Used when Operator = PRICING MODEL (tiered rates) |
 | **Formula** | Custom formula string | Used when Operator = FORMULA (e.g. `{PRICE_SOURCE}*(150-{DAY})/150*0.016`) |
 | **Below Cost** | Checkbox | Allow commission even when the sale is below cost |
 
 ### Membership Points Configuration (per level)
 
-Alongside cash commission, you can award **membership points**:
+Alongside cash commission, you can award **membership points**. The **Price Source** field works the same way as commission — see [Understanding Price Source](#understanding-price-source) for details on each option.
 
 | Field | What it means |
 |---|---|
 | **Price Source** | Which value to base the points calculation on |
 | **Point Currency** | The points currency (e.g. "Points") |
-| **Operator** | MULTIPLY, ABSOLUTE, ADD, SUBTRACT, or PRICING MODEL |
+| **Operator** | MULTIPLY, ABSOLUTE, ADD, SUBTRACT, PRICING MODEL, or NA |
 | **Value** | The points rate or amount |
 | **Validity Period (Days)** | How many days the awarded points remain valid |
-| **Pricing Scheme** | Used when Operator = Pricing Scheme |
+| **Pricing Scheme** | Used when Price Source = Pricing Scheme |
 
 ---
 
@@ -379,7 +525,7 @@ The Commission Scheme Applet connects with these parts of the system:
 | **Treatment** | The commission calculation definition — price source, operator, value — per downline level |
 | **Level 0 (Self)** | The salesman who directly made the sale |
 | **Level 1 (Parent)** | The salesman's direct recruiter/upline in an MLM structure |
-| **Price Source** | The monetary or quantity value the commission is calculated on (e.g. net sales amount) |
+| **Price Source** | The monetary or quantity value the commission is calculated on (e.g. Doc Line Net Amount). See [Understanding Price Source](#understanding-price-source) |
 | **Operator** | How the commission is applied: MULTIPLY (percentage), ABSOLUTE (fixed), ADD, SUBTRACT, PRICING MODEL, or FORMULA |
 | **Pricing Model** | A tiered table mapping sales ranges to commission rates or values |
 | **Pricing Scheme** | An alternative scheme reference used as a price source in treatment calculations |
