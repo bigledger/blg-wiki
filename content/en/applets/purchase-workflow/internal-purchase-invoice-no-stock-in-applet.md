@@ -30,14 +30,14 @@ The **Purchase Invoice No Stock In Applet** enables your finance and procurement
 - Manage multi-currency invoices with built-in exchange rate handling
 
 **Procurement & Operations Teams:**
-- Submit non-inventory purchase invoices for approval
+- Create non-inventory purchase invoices and finalize when ready
 - Link invoices back to purchase orders for 3-way matching on services
 - Track recurring service costs (e.g. monthly retainer, SaaS subscriptions)
 - Attach supporting documents (contracts, statements of work) directly on the invoice
 
-**Management & Approvers:**
+**Management & Finance Leads:**
 - Gain full visibility into non-inventory spend by supplier, department, or cost center
-- Enforce approval workflows before any liability is posted to the books
+- Control document lifecycle with FINAL, VOID, and DISCARD actions
 - Monitor overhead spending against budget in real time
 - Drill into invoice lines for granular cost analysis
 
@@ -62,7 +62,7 @@ Many ERP systems force every purchase invoice through a goods receipt process, c
 - **Flexible cost allocation** — Allocate costs to departments, profit centers, and projects on each line
 - **Tax-ready** — Compute SST, GST, or VAT per line automatically
 - **PO-linked or standalone** — Reference a purchase order or record as a standalone invoice
-- **Full approval workflow** — Route invoices through configurable multi-level approval before posting
+- **Document lifecycle control** — DRAFT → FINAL → VOID/DISCARD with permission-based access
 - **Document attachments** — Store contracts, delivery confirmations, or statements directly on the invoice
 
 ## Key Features Overview
@@ -97,10 +97,10 @@ Every purchase invoice processed through this applet must address three fundamen
 |--------|-----------|-------------------|
 | **Who** is invoicing? | Supplier / Vendor | Acme Consulting (supplier) |
 | **What** is being charged? | Invoice Line Items & Cost Accounts | Professional Services Fee — RM 5,000 |
-| **How** is it processed? | Approval Workflow & GL Posting | HOD approval → Finance posting → AP settled |
+| **How** is it processed? | Document Lifecycle & GL Posting | CREATE (draft) → FINAL (post to AP) → Settlement |
 
 {{< callout type="tip" >}}
-**Real-World Example**: Your IT managed services provider (WHO) sends a monthly invoice for server hosting fees (WHAT) of RM 3,500. Finance raises the invoice in this applet, HOD approves it, and it automatically posts to the correct IT Overhead GL account (HOW)—no stock movement involved, no workarounds needed.
+**Real-World Example**: Your IT managed services provider (WHO) sends a monthly invoice for server hosting fees (WHAT) of RM 3,500. Finance raises the invoice in this applet, clicks FINAL to finalize, and it automatically posts to the correct IT Overhead GL account (HOW)—no stock movement involved, no workarounds needed.
 {{< /callout >}}
 
 ### Invoice Hierarchy Structure
@@ -118,9 +118,9 @@ Organisation
 │           │
 │           └── Cost Allocation ──→ Department, Profit Center, Project
 │
-└── Approval Workflow ──→ HOW it gets authorised and posted
+└── Document Lifecycle ──→ HOW it gets finalized and posted
     │
-    └── GL Posting ──→ AP ledger + Cost account + Tax account
+    └── DRAFT → FINAL → GL Posting ──→ AP ledger + Cost account + Tax account
 ```
 
 ### Key Distinction: With vs. Without Stock In
@@ -131,7 +131,7 @@ Organisation
 | Requires GRN | ✓ Yes | ✗ No |
 | Suitable for | Physical goods, raw materials | Services, overheads, intangibles |
 | Examples | Office furniture, spare parts | IT subscriptions, legal fees, rent |
-| AP posting | After GRN is posted | Direct upon invoice approval |
+| AP posting | After GRN is posted | Direct upon invoice finalization (FINAL) |
 
 ---
 
@@ -169,13 +169,14 @@ Get up and running quickly with these essential workflows.
 
 4. **Attach Supporting Docs**: Upload the supplier's invoice PDF or any contract
 5. **Verify Tax & Totals**: Ensure the calculated tax amount matches the physical supplier invoice.
-6. **Submit / Finalize**: Save the invoice to finalize it and automatically post to the AP ledger.
+6. **Create**: Click **CREATE** to save the invoice as a **DRAFT**.
+7. **Finalize**: When ready, click **FINAL** from the listing or edit screen to finalize the invoice and post to the AP ledger. You can also use **SAVE** to update a draft without finalizing.
 
 {{< callout type="tip" >}}
 **Pro Tip:** Always enter the supplier's own invoice number in the **Reference No** field. This makes reconciliation against supplier statements and payment matching far easier.
 {{< /callout >}}
 
-**What happens next?** Your approver receives a notification. Upon approval, the invoice is posted to the AP ledger and cost accounts automatically.
+**What happens next?** Once finalized (FINAL), the invoice is posted to the AP ledger and cost accounts automatically. Use **VOID** to reverse a finalized invoice, or **DISCARD** to remove a draft.
 
 ---
 
@@ -206,37 +207,38 @@ Get up and running quickly with these essential workflows.
 
 **Goal:** Configure the applet before Finance starts processing invoices.
 
-**Step 1: Knock Off Settings** (`Settings > Knock Off Settings`)
-- Configure auto knock-off preferences for how invoices match and settle against payments or credit notes
-
-**Step 2: Default Selections** (`Settings > Default Selection`)
-- Pre-fill Branch, Location, and Currency to speed up data entry
-
-**Step 3: Field Settings** (`Settings > Field Settings`)
+**Step 1: Application Settings** (`Settings > Application Settings`)
 - Make required fields mandatory (e.g., Reference No, Cost Account)
 - Hide fields irrelevant to your business (e.g., Permit No)
 
-**Step 4: Tax Configuration**
-- Ensure SST/GST/VAT tax codes are set up in master data
-- Map tax codes to the correct tax GL accounts
+**Step 2: Default Selections** (`Settings > Default Selection`)
+- Pre-fill Branch and Location to speed up data entry
+- Set Floating Point Precision (2–4 decimal places)
+- Configure Transaction Date Logic and Details Tab Ordering
 
-**Step 5: Permissions** (`Settings > Permissions`)
-- Assign create/edit rights to Finance team
-- Assign approval rights to managers and HODs
-- Restrict GL account access by role if needed
-
-**Step 6: Printable Format** (`Settings > Printable Format Settings`)
+**Step 3: Printable Format** (`Settings > Printable Format Settings`)
 - Configure the invoice print layout for internal voucher printing
 
+**Step 4: Branch Settings** (`Settings > Branch Settings`)
+- Configure per-branch settings: Item Category Filter, Pricing Scheme, Default Settlement Method
+
+**Step 5: Permissions** (via platform settings)
+- Assign create/edit rights to Finance team
+- Control visibility of FINAL, VOID, DISCARD, CLONE actions per role
+- Configure file import/export menu visibility
+
+**Step 6: Knock Off Settings** (`Settings > Knock Off Settings`, if used)
+- Configure knock-off preferences for how invoices match and settle against payments or credit notes
+
 **Step 7: Test**
-- Create a test invoice, approve it, and verify the GL posting is correct
+- Create a test invoice, finalize it (FINAL), and verify the GL posting is correct
 
 ---
 
 {{< callout type="tip" >}}
 **New to the applet?** Start here:
 1. **Finance** — Create a test invoice using a dummy supplier to get familiar with the line entry
-2. **Approvers** — Open **Pending Approvals** and practice the approve/query/reject actions
+2. **Finance Leads** — Practice the **FINAL**, **VOID**, and **DISCARD** actions on a test document
 3. **Admins** — Review **Configuration & Settings** below before going live
 {{< /callout >}}
 
@@ -252,11 +254,11 @@ The main landing view shows all non-stock purchase invoices your user has access
 - Transaction Date
 - Total Amount
 - Currency
-- Posting Status (Draft / Submitted / Approved / Posted / Void)
+- Document Status (DRAFT / FINAL / VOID / DISCARDED)
 - Created By
 - Updated Date
 
-**Advanced search criteria:** Supplier, Branch, Date range (Transaction Date, Created Date), Posting Status, Reference No, Amount range, GL Dimension, Profit Center, Project.
+**Advanced search criteria:** Supplier, Branch, Date range (Transaction Date, Created Date), Document Status, Reference No, Amount range, GL Dimension, Profit Center, Project.
 
 {{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/invoice-listing.png" alt="Invoice Listing Screen" caption="The Internal Purchase Invoice No Stock In Listing screen showing all invoices with Doc Short Code, E-Invoice Running No, Doc No, Posting Status, Branch Code, and Currency columns." >}}
 
@@ -341,7 +343,7 @@ DR  Tax Account (Input Tax / Claimable SST)     RM 210.00
 
 - **Multi-currency**: Foreign currency invoices are converted using the rate on the transaction date. Exchange gain/loss is posted automatically upon payment.
 - **Tax compliance**: Each tax code maps to a dedicated input tax GL account, ensuring SST/GST returns are accurate.
-- **Posting status**: Invoices remain in **Draft** or **Submitted** until approved. Only approved invoices generate GL entries.
+- **Document status**: Invoices remain in **DRAFT** until finalized. Only **FINAL** invoices generate GL entries.
 
 ---
 
@@ -352,9 +354,11 @@ Access **Settings** from the sidebar to configure applet behaviour.
 #### Default Selection (`Settings > Default Selection`)
 - **Branch**: Default branch pre-filled when creating a new invoice
 - **Location**: Default location
-- **Currency**: Default currency (e.g., MYR)
+- **Floating Point Precision**: Decimal places (2–4)
+- **Transaction Date Logic**: Finalized / Created / Updated / Transaction Date
+- **Details Tab Ordering**: Drag-and-drop reorder of invoice tabs
 
-#### Field Settings (`Settings > Field Settings`)
+#### Application Settings (`Settings > Application Settings`)
 Control which fields are mandatory, optional, or hidden for your users. For example:
 - Make **Reference No** mandatory to ensure supplier invoice numbers are always recorded
 - Hide **Permit No** if not relevant to your business
@@ -368,17 +372,21 @@ Configure how credit matching and settlement occurs when applying payments or cr
 #### Printable Format Settings (`Settings > Printable Format Settings`)
 Define the layout and fields for printed or exported payment vouchers and invoice documents.
 
-#### Feature Visibility (`Settings > Feature Visibility`)
-Control which features are accessible to which user roles. For example, restrict the ability to void posted invoices to Finance Managers only.
+{{< callout type="info" >}}
+**Note**: The settings visible in the sidebar are: Application Settings, Default Selection, Printable Format Settings, and Branch Settings. The following settings are accessible via platform navigation or direct URL, not the applet sidebar menu.
+{{< /callout >}}
 
-#### Permissions (`Settings > Permissions`)
-- **Client-Side Permission Listing** — Configure component-level visibility
+#### Feature Visibility
+Control which features are accessible to which user roles. For example, restrict the ability to void invoices to Finance Managers only.
+
+#### Permissions
+- **Client-Side Permission Listing** — Configure component-level visibility (show/hide FINAL, VOID, DISCARD, CLONE, file import/export menus, ARAP columns, etc.)
 - **Permission Wizard Listing** — Fast role permission assignments
 - **Permission Set Listing** — Define role-based permission sets
 - **User / Team / Role Permission Listing** — Assign permissions at the user, team, or role level
 
-#### Applet Log & Release Notes (`Settings > Applet Log / Release Notes`)
-View system logs of automated actions, application state changes, and version release notes directly from your workspace.
+#### Release Notes
+View version release notes (v1.00–v1.17) for version-specific behaviour changes.
 
 #### Webhook (`Settings > Webhook`)
 Configure outbound webhooks to notify external systems (e.g., ERP, expense management) on invoice events such as creation, approval, or posting.
@@ -388,7 +396,11 @@ Configure outbound webhooks to notify external systems (e.g., ERP, expense manag
 ## Personalization
 
 #### Default Selection (`Personalization > Default Selection`)
-Individual users can set their own preferred Branch, Location, and Currency so they don't need to re-select them on every new invoice.
+Individual users can set their own preferences:
+- **Default Branch / Location** — pre-filled when creating a new invoice
+- **Default Toggle Column** — SINGLE or DOUBLE column layout
+- **Default Item Search Item Type** — pre-select which item types appear in search
+- **Default Tab Orientation** — HORIZONTAL or VERTICAL tab layout
 
 #### Sidebar (`Personalization > Sidebar`)
 Reorder or hide sidebar items to match your preferred workflow.
@@ -397,21 +409,23 @@ Reorder or hide sidebar items to match your preferred workflow.
 
 ## Reporting & Audit
 
-### Invoice Report
-View a summary of all invoices by supplier, date range, status, or cost account — useful for month-end AP reconciliation.
+This applet does not have a dedicated Reports menu. Instead, use the following built-in tools for reporting and analysis:
 
-### Line Report
-Drill into individual invoice lines across all invoices. Filter by:
-- GL Account (e.g., "show all IT expenses")
-- Supplier
-- Date range
-- Department / Profit Center / Project
+### Invoice Listing Export
+Use the main **Invoice Listing** grid to filter invoices by supplier, date range, status, or branch, then export the results to Excel/CSV for AP reconciliation.
 
-**Export to Excel** for further analysis or sharing with management.
+### Line Items Listing
+The **Line Items** sidebar route provides a flat grid of all invoice line items across all invoices. Filter by GL Account, Supplier, Date range, Department, Profit Center, or Project — then export for cost analysis.
+
+### File Export
+Use **File Export** from the sidebar to generate CSV exports by transaction date range. Downloads are processed asynchronously — check the listing for completed files.
+
+### Per-Invoice Export
+On any individual invoice, use the **Export** tab to generate a PDF using your configured printable format.
 
 ### Audit Trail
 Every action on an invoice is logged:
-- Date & time of creation, edit, submission, approval/rejection
+- Date & time of creation, edit, finalization, voiding
 - User who performed each action
 - Before/after values for any field changes
 
@@ -434,13 +448,13 @@ A: Posted invoices cannot be edited directly. You will need to raise a **Purchas
 A: No. Each invoice is in a single currency (set at the header level). If a supplier bills you in multiple currencies in the same invoice, split it into separate invoices per currency.
 
 **Q: How do I handle recurring monthly service invoices (e.g., monthly office rental)?**
-A: You can use the **Copy Invoice** function to duplicate last month's invoice, update the date and reference number, and submit for approval. This avoids re-entering the same line items each month.
+A: You can use the **Clone** function (from the edit screen dropdown menu) to duplicate last month's invoice, update the date and reference number, and finalize. This avoids re-entering the same line items each month.
 
 **Q: Where can I see all invoices pending payment?**
-A: Use the **Invoice Listing** with a filter on Posting Status = **Approved / Posted** and Payment Status = **Unpaid**. This gives you the AP aging view for cash flow planning.
+A: Use the **Invoice Listing** and check the **ARAP columns** (Doc Open Amount, Settlement, Balance). Invoices with a remaining Doc Open Amount are still pending payment. You can sort or filter by these columns for AP aging review.
 
 **Q: Can I attach multiple files to a single invoice?**
 A: Yes. The **Attachments** tab supports multiple file uploads per invoice. There is no strict file count limit, though large files should be compressed before uploading to maintain system performance.
 
-**Q: Who can void a posted invoice?**
-A: Voiding a posted invoice requires permission that is typically restricted to Finance Managers or System Admins. This action is logged in the audit trail with the reason for voiding.
+**Q: Who can void a finalized invoice?**
+A: Voiding a FINAL invoice requires permission that is typically restricted to Finance Managers or System Admins. Note: VOID is blocked if the invoice is linked to a purchase return or if e-invoice is enabled on edit. This action is logged in the audit trail.
