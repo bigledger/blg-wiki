@@ -68,21 +68,23 @@ Many ERP systems force every purchase invoice through a goods receipt process, c
 ## Key Features Overview
 
 {{< cards >}}
+  {{< card title="Document Status & Actions" subtitle="DRAFT → FINAL lifecycle, VOID, DISCARD, CLONE" link="#document-status--actions" >}}
+
   {{< card title="Invoice Listing" subtitle="Browse, search, and filter all non-stock invoices" link="#invoice-listing" >}}
 
   {{< card title="Create & Edit Invoice" subtitle="Header details, supplier, currency, and line items" link="#for-finance-create-your-first-invoice" >}}
+
+  {{< card title="Tab Reference" subtitle="Complete tab listing for create vs edit screens" link="#tab-reference" >}}
 
   {{< card title="Line Item Management" subtitle="Cost allocation, tax, and quantities per line" link="#line-item-management" >}}
 
   {{< card title="File Import & Export" subtitle="Bulk import invoices or export data" link="#file-import--export" >}}
 
-  {{< card title="Document Attachments" subtitle="Link contracts, SOWs, and supporting docs" link="#document-attachments" >}}
-
   {{< card title="GL Posting & Tax" subtitle="Automated posting and tax computation" link="#gl-posting--tax" >}}
 
   {{< card title="Configuration & Settings" subtitle="Defaults, field settings, permissions, and printable formats" link="#configuration--settings" >}}
 
-  {{< card title="Reporting & Audit" subtitle="Line reports, cost analysis, and audit trail" link="#reporting--audit" >}}
+  {{< card title="Reporting & Audit" subtitle="Listing exports, file export, and audit trail" link="#reporting--audit" >}}
 {{< /cards >}}
 
 ![Purchase Invoice No Stock In Overview](/images/Purchase-Invoice-No-Stock%20In-applet/Purchase-Invoice-No-Stock%20In-applet-overview-infographic.png)
@@ -185,13 +187,14 @@ Get up and running quickly with these essential workflows.
 **Goal:** Bulk create multiple invoices without manual entry.
 
 1. **Navigate**: Go to **File Import** from the sidebar
-2. **Download Template**: Click to download the standard import CSV/Excel template
-3. **Prepare Data**:
+2. **Download Template**: Download the sample template (`Purchase_Invoice_Master_Data_Template.csv`)
+3. **Choose Delimiter**: Select **PIPE** or **COMMA** as the CSV delimiter
+4. **Prepare Data**:
    - Fill in Supplier, Date, Reference No, Currency, Branch
    - Add line item details (Description, Amount, Tax, GL Account)
-4. **Upload**: Select your completed file and click **Upload**
-5. **Verify**: The system will validate the file. Check for any errors (e.g., missing mandatory fields or invalid GL accounts).
-6. **Process**: Once validated, click **Process Import** to create the invoices.
+5. **Upload**: Select your completed CSV file and click **Upload**
+6. **Check Validation**: Click the uploaded file → go to the **Checking** tab to review validation results. The **Error** grid shows lines with issues; the **All** grid shows every line and its status
+7. **Process**: Once all lines pass validation, click **Process Import** to create the invoices
 
 {{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/file-import-listing.png" alt="File Import Listing" caption="The File Import Listing showing uploaded CSV files with File Name, File Size, Format, Status, Process Status, Error Message, and Created Date." >}}
 
@@ -199,7 +202,9 @@ Get up and running quickly with these essential workflows.
 
 {{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/file-import-checking.png" alt="File Import - Checking Tab" caption="The File Details Checking tab showing validation errors per line with Line Number, Processed status, Validation Error details, and Branch Code." >}}
 
-**Going on leave?** Ensure another team member has permission to run imports by checking `Settings > Permissions`.
+{{< callout type="info" >}}
+**Note**: The File Import menu is only visible if you have the `SHOW_FILE_IMPORT_MENU` permission. Contact your admin if you cannot see it.
+{{< /callout >}}
 
 ---
 
@@ -244,6 +249,44 @@ Get up and running quickly with these essential workflows.
 
 ---
 
+## Document Status & Actions
+
+Every invoice follows a defined lifecycle. Understanding the status flow and available actions is essential for daily use.
+
+### Status Flow
+
+```
+CREATE → DRAFT (status: TEMP during edit)
+           │
+           ├── SAVE ──→ Update draft (stays DRAFT)
+           ├── FINAL ──→ Finalized (GL posted, AP recorded)
+           │               │
+           │               └── VOID ──→ Reversed (GL entries reversed)
+           │
+           └── DISCARD ──→ Removed (draft deleted)
+```
+
+### Action Reference
+
+| Action | Available On | What It Does |
+|--------|-------------|-------------|
+| **CREATE** | New invoice | Saves a new invoice as DRAFT |
+| **SAVE** | DRAFT invoices | Updates the draft without finalizing |
+| **FINAL** | DRAFT invoices | Finalizes the invoice and posts GL entries to the AP ledger. Available from the listing (bulk) or the edit screen (single) |
+| **VOID** | FINAL invoices | Reverses a finalized invoice and its GL entries. Blocked if the invoice is linked to a purchase return or if e-invoice is enabled on edit |
+| **DISCARD** | DRAFT invoices | Permanently removes a draft invoice. Available from the listing (bulk) or the edit screen (single) |
+| **CLONE** | Edit screen | Duplicates the invoice as a new draft (from the edit screen dropdown menu) |
+
+### Document Locking
+
+When a user opens an invoice for editing, the document is locked. Other users viewing the same invoice will see it as read-only until the editing user saves or exits.
+
+{{< callout type="info" >}}
+**Bulk Actions**: FINAL and DISCARD can be applied to multiple invoices at once from the listing screen. Select the documents using checkboxes and click the corresponding action button.
+{{< /callout >}}
+
+---
+
 ## Invoice Listing
 
 The main landing view shows all non-stock purchase invoices your user has access to, with server-side pagination and advanced search.
@@ -257,6 +300,17 @@ The main landing view shows all non-stock purchase invoices your user has access
 - Document Status (DRAFT / FINAL / VOID / DISCARDED)
 - Created By
 - Updated Date
+
+**Additional listing columns** (visibility controlled by permissions):
+- ARAP columns: ARAP PNS, Settlement, Doc Open, Contra, Balance
+- E-Invoice columns: E-Invoice Running No., E-Invoice Date, Billing Frequency/Period, Self Billed?
+
+**Listing features:**
+- **Fuzzy keyword search** — type 3+ characters to search across document fields
+- **Bulk actions** — select multiple invoices to FINAL, DISCARD, or SELF-BILLED
+- **Printing** — SINGLE or MULTIPLE PRINT from listing (requires printable format configured)
+- **Row grouping** and **column toggle** (SINGLE/DOUBLE layout)
+- **Filter persistence** — filters are retained between sessions
 
 **Advanced search criteria:** Supplier, Branch, Date range (Transaction Date, Created Date), Document Status, Reference No, Amount range, GL Dimension, Profit Center, Project.
 
@@ -281,6 +335,44 @@ Below are screenshots of an existing invoice showing the completed tabs:
 {{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/edit-line-items.png" alt="Edit Invoice - Line Items Tab" caption="The Line Items tab showing item lines with Item Code, Item Name, UOM, and Remarks columns, along with Total Transaction Amount and SST/VAT/GST totals." >}}
 
 {{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/edit-delivery-details.png" alt="Edit Invoice - Delivery Details Tab" caption="The Delivery Details tab with Tracking ID, Delivery Type, Delivery Branch, Delivery Location fields and Apply to Lines buttons for bulk assignment." >}}
+
+---
+
+## Tab Reference
+
+The create and edit screens show different tabs. This reference clarifies which tabs are available in each context.
+
+### Create Screen Tabs
+
+| Tab | Purpose |
+|-----|---------|
+| **Main Details** | Branch, Location, Delivery Branch, Purchaser, Transaction Date, Credit Terms, Reference No |
+| **Account** | Select Supplier — Entity Details, Bill To, Ship To sub-tabs |
+| **Line Items** | Add line items with Search Item and KO For sub-tabs |
+| **Delivery Details** | Tracking ID, Delivery Type, apply-to-lines bulk assignment |
+| **Payment** | Add/edit settlement details, card fields (Card No, Issuer, Expiry, Approval Code) |
+| **KO For** | Knock off against Purchase GRN, Purchase GRN Stock In, or Purchase Order |
+| **Department Hdr** | Header-level Segment, Dimension, Profit Center, Project allocation |
+
+### Edit/View Screen Tabs
+
+All Create tabs plus the following (only visible after the invoice is saved):
+
+| Tab | Purpose |
+|-----|---------|
+| **Search Document** | Search and copy from existing Purchase Invoice, Purchase Order, or Purchase GRN. Only visible when document status is TEMP (during edit) |
+| **E-Invoice** | Self-billed e-invoice details — Submission Type, Document No, UUID, Billing Frequency/Period, validation URL/QR |
+| **ARAP** | Doc Open Amount, Settlement, Contra, Balance — tracks payment status |
+| **Posting** | GL posting trace — view the accounting entries generated |
+| **TraceDocument** | Document trace — full lifecycle audit trail |
+| **Contra** | Offset against other purchase invoices; shows Total Contra, Doc Open Amount, Doc ARAP Balance |
+| **Doc Link** | Copy From / Copy To at header level; shows linked documents |
+| **Attachment** | Upload and view supporting documents (PDFs, contracts, SOWs) |
+| **Export** | Generate PDF using configured printable format |
+
+{{< callout type="info" >}}
+**Search Document Sub-tabs**: When visible (TEMP status only), Search Document contains: Search Purchase Order, Search Purchase GRN, and Search Purchase Invoice.
+{{< /callout >}}
 
 ---
 
@@ -318,22 +410,56 @@ The **Line Items** sidebar route provides a flat grid of all invoice line items 
 
 ---
 
+## File Import & Export
+
+### File Import
+
+Import invoices in bulk using CSV files. Accessible from the **File Import** sidebar menu (requires `SHOW_FILE_IMPORT_MENU` permission).
+
+| Detail | Value |
+|--------|-------|
+| **Supported format** | CSV only |
+| **Delimiter options** | PIPE (`|`) or COMMA (`,`) |
+| **Sample template** | `Purchase_Invoice_Master_Data_Template.csv` |
+
+**Import workflow:**
+1. Upload CSV → file appears in the File Import listing
+2. Click the file → **Details** tab shows file metadata and process status
+3. **Checking** tab shows validation results — **Error** grid for lines with issues, **All** grid for every line
+4. Fix errors in your CSV and re-upload, or proceed if all lines pass
+5. Click **Process Import** to create invoices from valid lines
+
+### File Export
+
+Export invoice data as CSV files for offline analysis. Accessible from the **File Export** sidebar menu (requires `SHOW_FILE_EXPORT_MENU` permission).
+
+1. Set the transaction date range
+2. Click **Generate** — the export job runs asynchronously
+3. Check the File Export listing for completed files
+4. Click **Download** to save the CSV, or **Delete** to remove
+
+{{< callout type="info" >}}
+**Other export options**: You can also export from the invoice listing grid (Excel/CSV), or generate a PDF from an individual invoice's **Export** tab using your configured printable format.
+{{< /callout >}}
+
+---
+
 ## Document Attachments
 
 Supporting documents can be attached directly to each invoice:
 
 - **PDF invoices** from the supplier
 - **Contracts or SOWs** for service-based purchases
-- **Email approvals** or correspondence
+- **Email correspondence**
 - **Delivery confirmations** (proof of service rendered)
 
-Navigate to the **Attachments** tab on any invoice to upload or view files. Each attachment is logged with the uploader's name and timestamp for audit purposes.
+Navigate to the **Attachment** tab on any invoice to upload or view files. Each attachment is logged with the uploader's name and timestamp for audit purposes.
 
 ---
 
 ## GL Posting & Tax
 
-Upon invoice approval, the system automatically generates the following accounting entries:
+Upon invoice finalization (FINAL), the system automatically generates the following accounting entries:
 
 ```
 DR  Cost Account (e.g., IT Expenses)         RM 3,500.00
@@ -364,7 +490,12 @@ Control which fields are mandatory, optional, or hidden for your users. For exam
 - Hide **Permit No** if not relevant to your business
 
 #### Branch Settings (`Settings > Branch Settings`)
-Manage specific branch rules or branch-specific visibility for invoices.
+Per-branch configuration for invoice processing:
+- **Branch Details** — branch-specific metadata
+- **Item Category Filter** — restrict which item categories are available per branch
+- **Pricing Scheme** — create and edit pricing schemes per branch
+- **Printable Format** — branch-specific print layouts
+- **Default Settlement Method** — pre-set the payment method for invoices created under this branch
 
 #### Knock Off Settings (`Settings > Knock Off Settings`)
 Configure how credit matching and settlement occurs when applying payments or credit notes against these invoices.
@@ -389,7 +520,7 @@ Control which features are accessible to which user roles. For example, restrict
 View version release notes (v1.00–v1.17) for version-specific behaviour changes.
 
 #### Webhook (`Settings > Webhook`)
-Configure outbound webhooks to notify external systems (e.g., ERP, expense management) on invoice events such as creation, approval, or posting.
+Configure outbound webhooks to notify external systems (e.g., ERP, expense management) on invoice events such as creation, finalization, or voiding.
 
 ---
 
