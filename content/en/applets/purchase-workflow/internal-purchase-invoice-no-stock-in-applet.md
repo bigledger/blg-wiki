@@ -76,7 +76,15 @@ Many ERP systems force every purchase invoice through a goods receipt process, c
 
   {{< card title="Tab Reference" subtitle="Complete tab listing for create vs edit screens" link="#tab-reference" >}}
 
-  {{< card title="Line Item Management" subtitle="Cost allocation, tax, and quantities per line" link="#line-item-management" >}}
+  {{< card title="Line Item Management" subtitle="Cost allocation, tax, quantities, serial/batch tracking" link="#line-item-management" >}}
+
+  {{< card title="E-Invoice (Self-Billed)" subtitle="LHDN self-billed e-invoice submission workflow" link="#e-invoice-self-billed" >}}
+
+  {{< card title="Knock-Off (KO For)" subtitle="Match invoices to POs, GRNs, and requisitions" link="#knock-off-ko-for" >}}
+
+  {{< card title="ARAP, Payment & Contra" subtitle="Payment tracking, settlements, and contra offsets" link="#arap-payment--contra" >}}
+
+  {{< card title="Forex / Multi-Currency" subtitle="Foreign currency invoices and exchange rates" link="#forex--multi-currency" >}}
 
   {{< card title="File Import & Export" subtitle="Bulk import invoices or export data" link="#file-import--export" >}}
 
@@ -324,7 +332,11 @@ The main landing view shows all non-stock purchase invoices your user has access
 
 ## Viewing & Editing Invoices
 
-Below are screenshots of an existing invoice showing the completed tabs:
+Below are screenshots of an existing invoice showing the completed tabs.
+
+{{< callout type="tip" >}}
+**Supplier Management In-Flow**: You can create or edit a supplier directly from the Account tab without leaving the invoice. This is useful when recording an invoice from a new vendor.
+{{< /callout >}}
 
 {{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/edit-main-details.png" alt="Edit Invoice - Main Details Tab" caption="The Main Details tab of an existing invoice showing Doc Short Code, Branch, Location, Delivery Branch, and Delivery Location fields." >}}
 
@@ -386,6 +398,7 @@ Each invoice can have multiple lines. Each line captures:
 | **GL Account** | Cost account the expense is charged to |
 | **Quantity** | Number of units (often 1 for services) |
 | **Unit Price** | Price per unit |
+| **Unit Price (Inclusive of Tax)** | Price including tax (auto-calculates exclusive price) |
 | **Tax Code** | SST/GST/VAT code (auto-computes tax amount) |
 | **Taxable Amount** | Pre-tax subtotal |
 | **Tax Amount** | Computed tax |
@@ -393,10 +406,33 @@ Each invoice can have multiple lines. Each line captures:
 | **Department** | Cost centre allocation |
 | **Profit Center** | P&L segment |
 | **Project** | Project code for project-based costing |
+| **Segment** | GL dimension for segment reporting |
+| **Rebate Price** | Rebate amount per line (v1.14+) |
 
 {{< callout type="info" >}}
 **Multi-line Invoices**: You can split a single supplier invoice across multiple GL accounts. For example, a managed services invoice covering both IT infrastructure (70%) and telecoms (30%) can be recorded as two lines pointing to different GL accounts—no need to split into separate invoices.
 {{< /callout >}}
+
+### Adding Line Items
+
+When adding a line item, two sub-tabs are available:
+
+- **Search Item** — search and select from your item master by Item Code, Item Name, or Item Type (BASIC_ITEM, MADE_TO_ORDER, BUNDLE, NSTI, VOUCHER, ACCOUNT_CODE)
+- **KO For** — knock off against Purchase GRN, Purchase Order, Purchase Requisition, or Supplier Delivery Order at the line level
+
+### Line Item Sub-Tabs (Edit)
+
+When editing a line item, the following sub-tabs are available:
+
+| Sub-tab | Purpose |
+|---------|---------|
+| **Item Details** | Main item fields — contains further sub-tabs: Main Details, Child Items, Department, Doc Link, Delivery Details |
+| **Grouped Item** | Grouped/bundled item breakdown |
+| **Serial Number** | Serial number tracking — supports Scan and Import |
+| **Batch Number** | Batch number assignment |
+| **Bin Number** | Warehouse bin location assignment |
+| **Costing Details** | Landed costs and costing breakdown |
+| **Issue Link** | Jira-style issue tracking — Details, Planning, Attachment, Comment, Subtasks, Linked Issues, Worklogs, Activity |
 
 ### Line Items Listing
 
@@ -457,6 +493,137 @@ Navigate to the **Attachment** tab on any invoice to upload or view files. Each 
 
 ---
 
+## E-Invoice (Self-Billed)
+
+This applet supports self-billed e-invoice submission to LHDN. The E-Invoice tab (visible on the edit screen) manages the full submission lifecycle.
+
+### Submission Types
+
+| Type | Description |
+|------|-------------|
+| **INDIVIDUAL** | Submit a single invoice as an individual e-invoice |
+| **CONSOLIDATED** | Group multiple invoices into a single consolidated submission |
+| **SINGLE-GENERAL** | Submit as a single general pool e-invoice |
+
+### E-Invoice Fields
+
+The E-Invoice tab captures: Submission Type, Document No, Document Type, E-Invoice Number, UUID, Document Date, Billing Frequency, Billing Period, supplier identity details, validation URL/QR code.
+
+### Submission Progress
+
+```
+Pending In Posting Queue → In Batch Pool → In Internal Submission Queue → Submitted to IRB
+```
+
+### E-Invoice Sub-Sections
+
+| Section | Purpose |
+|---------|---------|
+| **Submission** | Configure and submit e-invoice to LHDN |
+| **Progress** | Track submission status through the pipeline |
+| **Notification** | View notification queue for submission events |
+| **Cancellation** | Request cancellation and track approval status |
+| **Matched History** | View matched e-invoice records |
+
+### Listing Bulk Action
+
+From the invoice listing, select documents and click **SELF-BILLED** to initiate self-billed e-invoice submission for the selected invoices.
+
+---
+
+## Knock-Off (KO For)
+
+Knock-off links invoices to upstream purchase documents for matching and settlement tracking.
+
+### Header-Level KO For
+
+The **KO For** tab on the create/edit screen allows you to pull from:
+- **Purchase GRN** — match against goods received
+- **Purchase GRN Stock In** — match against stock-in receipts
+- **Purchase Order** — match against original purchase orders
+
+The available KO sources depend on your company flow configuration.
+
+### Line-Level KO For
+
+When adding a line item, the **KO For** sub-tab allows per-line knock-off against:
+- Purchase GRN
+- Purchase Order
+- Purchase Requisition
+- Supplier Delivery Order
+
+### Knock Off Settings
+
+Configure KO BY / KO FOR per document type under `Settings > Knock Off Settings`. This controls which document types can be knocked off against each other.
+
+{{< callout type="info" >}}
+**Note**: The Knock Off Settings route exists but may be commented out of the sidebar in some configurations. Contact your admin to access it via direct URL if needed.
+{{< /callout >}}
+
+---
+
+## ARAP, Payment & Contra
+
+### ARAP Tab
+
+The **ARAP** tab (visible on edit screen) tracks the payment lifecycle of a finalized invoice:
+
+| Field | Description |
+|-------|-------------|
+| **Doc Open Amount** | Original invoice amount still outstanding |
+| **Settlement** | Total amount settled via payments |
+| **Contra** | Total amount offset via contra documents |
+| **Balance** | Remaining amount = Doc Open − Settlement − Contra |
+
+### Payment Tab
+
+The **Payment** tab allows adding and editing settlement records:
+- Settlement amount and date
+- Payment method
+- Card details (Card No, Issuer, Expiry Date, Approval Code) for card payments
+- Reference numbers
+
+### Contra Tab
+
+The **Contra** tab offsets this invoice against other purchase invoices:
+- Select documents to contra with from the dialog
+- View: Total Contra, Doc Open Amount, Doc ARAP Balance
+- Contra entries reduce the outstanding amount without a cash payment
+
+### ARAP Listing Columns
+
+The invoice listing includes ARAP columns (visibility controlled by permissions):
+
+| Column | Description |
+|--------|-------------|
+| **ARAP PNS** | Payment & Settlement indicator |
+| **Settlement** | Total settled amount |
+| **Doc Open** | Outstanding amount |
+| **Contra** | Contra offset amount |
+| **Bal** | Remaining balance |
+
+---
+
+## Forex / Multi-Currency
+
+Each invoice supports a single currency set at the header level.
+
+### Key Features
+
+- **Exchange rate** — system applies the rate on the transaction date; can be manually overridden
+- **Reverse currency rate** — toggle to use inverse rate (v1.16+)
+- **Forex button** — on the edit screen for shadow/forex-linked documents
+- **Orange row highlight** — forex-linked documents are highlighted in the listing for easy identification
+- **Exchange gain/loss** — posted automatically upon payment settlement
+
+### Restrictions
+
+- Cannot contra, knock-off, or edit shadow documents created from forex operations
+- Currency rate editing can be restricted via `Cannot Edit Currency Rate` setting
+- Forex Data Source visibility controlled by `Show Forex Data Source` setting
+
+---
+
 ## GL Posting & Tax
 
 Upon invoice finalization (FINAL), the system automatically generates the following accounting entries:
@@ -498,7 +665,7 @@ Per-branch configuration for invoice processing:
 - **Default Settlement Method** — pre-set the payment method for invoices created under this branch
 
 #### Knock Off Settings (`Settings > Knock Off Settings`)
-Configure how credit matching and settlement occurs when applying payments or credit notes against these invoices.
+Configure KO BY / KO FOR rules per document type — controls which upstream documents (Purchase GRN, PO, Requisition) can be knocked off against invoices. See [Knock-Off (KO For)](#knock-off-ko-for) for details.
 
 #### Printable Format Settings (`Settings > Printable Format Settings`)
 Define the layout and fields for printed or exported payment vouchers and invoice documents.
