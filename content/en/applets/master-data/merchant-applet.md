@@ -52,10 +52,6 @@ A short introduction to the Merchant Applet:
 
 {{< youtube c-Yc6bo7_Jw >}}
 
-A a webinar for the Merchant Applet:
-
-{{< youtube bypy25YiVCI >}}
-
 ---
 
 ## Key Features Overview
@@ -133,6 +129,8 @@ Every merchant in the system is built from three layers:
 **Real-World Example**: A new retail partner wants to accept payments through your platform. The platform admin creates a Merchant record with the partner's company registration, assigns a unique PGW Merchant Code so the payment gateway knows where to route funds, and then creates a Contract that locks in their transaction rate (e.g., 1.5% MDR) with a start and end date. The partner can only go live once all three layers are in place.
 {{< /callout >}}
 
+{{< figure src="/images/merchant-applet-applet/merchant-applet-onboarding-infographic.png" alt="Onboarding a New Retail Partner: the three essential layers — Create Merchant, Assign PGW Merchant Code, and Create Contract — that must all be in place before a partner can go live" caption="Onboarding a new retail partner: all three layers — Merchant record, PGW Merchant Code, and Contract — must be in place before the partner can go live." >}}
+
 ### Merchant Lifecycle
 
 ```
@@ -185,13 +183,17 @@ A read-only log of every change made across all merchant records and contracts. 
 ## Merchant Admin
 
 ### Listing
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-listing.png" alt="Merchant Applet Listing - comprehensive view of all registered merchants including Merchant ID, Name, and Status" caption="Merchant Applet Listing: The primary interface for searching, filtering, and managing merchant records." >}}
+
 The listing shows all registered merchant profiles.
 
 ---
 
 ### Create
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-create-form.png" alt="Create Merchant Form - initial registration screen with required identity and credential fields" caption="Create Merchant: The initial onboarding screen for registering a new merchant identity and its technical credentials." >}}
+
 Creates a new merchant profile. Only the core identity and credential fields are available at creation — the deeper configuration tabs (Peppol, Login, Contract, Payment Config, etc.) become available after the record is saved.
 
 **Required fields:** Merchant ID, Merchant Name, Merchant Company, Company Registration No / ID Number, Entity Type, AR/AP Type, PGW Merchant Code, Merchant Key, Status
@@ -224,13 +226,17 @@ The edit form contains all the same fields as create, plus additional configurat
 | **Remove** | Permanently deletes the merchant record. Use with caution — this cannot be undone. |
 
 #### Details Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-details-tab.png" alt="Merchant Details Tab - core profile information and entity classification settings" caption="Details Tab: Managing the primary identity and functional classification of the merchant." >}}
+
 Contains all the core fields from the create form. Every change is logged to the Audit Trail.
 
 ---
 
 #### Peppol Config Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-peppol-config-tab.png" alt="Peppol Config Tab - registration settings for international e-invoicing infrastructure" caption="Peppol Config Tab: Configuring the merchant's identifiers for global e-invoice network participation." >}}
+
 Configures this merchant's participation in the **Peppol network** — the international e-invoicing infrastructure used for government and enterprise B2B electronic invoicing (relevant for e-invoice compliance in Malaysia and other Peppol-participating countries).
 
 {{< callout type="info" >}}
@@ -242,7 +248,9 @@ Configures this merchant's participation in the **Peppol network** — the inter
 Manages the Peppol participant identifiers for this merchant. A Peppol ID is the network address that uniquely identifies a business on the Peppol network — similar to an email address, but for invoices.
 
 **Notification Config sub-tab**
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-notification-config-subtab.png" alt="Notification Config Tab - delivery channel settings for e-invoice alerts" caption="Notification Config: Defining how the merchant receives electronic invoicing notifications." >}}
+
 Controls how this merchant receives e-invoice notifications. Each channel can be toggled independently:
 
 **Channels:** Peppol, Email, Other UCC Channels (Telegram, Facebook, etc.), Through Customer Portals
@@ -252,7 +260,9 @@ The Peppol channel is only available if the merchant has a valid Peppol ID confi
 ---
 
 #### Login Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-login-tab.png" alt="Merchant Login Tab - portal access management for merchant staff" caption="Login Tab: Managing self-service portal credentials and invitations for merchant users." >}}
+
 Manages the merchant's portal login credentials — giving the merchant's own staff access to a self-service portal to view their transaction data, download reports, or check their account status.
 
 **Fields:** User Email, Rank, Status
@@ -267,14 +277,20 @@ Manages the merchant's portal login credentials — giving the merchant's own st
 ---
 
 #### Contract Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-contract-tab.png" alt="Merchant Contract Tab - summary of agreements associated with this merchant" caption="Contract Tab: A centralized view of all commercial agreements linked to the merchant profile." >}}
+
 Lists all contracts associated with this merchant. Contracts are created and managed in the [Contract Container](#contract-container) section of the applet, but this tab gives you a quick view of all agreements for this specific merchant without leaving the merchant profile.
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-rate-card-view.png" alt="Rate Card View - detailed breakdown of fees per payment channel" caption="Rate Card: Defining the commercial MDR and flat fees for different payment methods." >}}
+
 Expanding a contract row reveals its **Rate Card** — the pricing schedule that defines what fee applies per payment channel (e.g., 1.5% MDR for Credit Card, flat RM 0.50 for FPX). This is a read-only summary view; to create or edit rate cards, open the contract in the [Contract Container](#contract-container). For a full breakdown of how the Rate Card works, see the [Rate Card Tab](#rate-card-tab) section below.
 ---
 
 #### Return URL Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-return-url-tab.png" alt="Return URL Tab - configuration for post-payment redirection" caption="Return URL Tab: Setting up success and error redirect paths for payment gateway transactions." >}}
+
 Configures the redirect URLs used after payment gateway transactions — where the payment gateway sends the user after a successful or failed payment attempt.
 
 **Fields:** Return URL Code, Return URL Name, Success Return URL, Error Return URL
@@ -284,13 +300,17 @@ Success and Error Return URLs each have a toggle — the URL field only appears 
 ---
 
 #### Tax & Billing Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-tax-billing-tab.png" alt="Tax and Billing Tab - registration details for financial and tax compliance" caption="Tax & Billing Tab: Configuring tax registration and billing parameters for the merchant." >}}
+
 Manages tax registration details and billing configurations for this merchant. Tax settings here affect how tax entries are generated when financial transactions are processed against this merchant.
 
 ---
 
 #### Payment Config Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-payment-config-tab.png" alt="Payment Config Tab - technical settings for active payment channels" caption="Payment Config Tab: Managing technical integration parameters for enabled payment methods." >}}
+
 Lists all payment channel configurations for this merchant — which payment methods are enabled, their gateway settings, and any channel-level parameters.
 
 **Supported settlement types include:** Bank Transfer, Cash, Cheque, Credit Card, E-Wallet, FPX/eMandate, Payment Gateway, Membership Points, Open Credit, Voucher, and Others.
@@ -298,26 +318,34 @@ Lists all payment channel configurations for this merchant — which payment met
 ---
 
 #### Address Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-address-tab.png" alt="Merchant Address Tab - management of multiple office and billing locations" caption="Address Tab: Maintaining billing, correspondence, and branch addresses for the merchant." >}}
+
 Manages the registered addresses for this merchant — billing address, correspondence address, and any additional branch or site addresses. Multiple addresses can be stored and individually labeled.
 
 Each address has a **Set as Default** toggle. When a merchant has more than one address of the same type, marking one as default tells the system which address to use by default for document generation, invoicing, and correspondence. The address listing shows **(default)** next to the address type label for the designated address. Only one address per type can be set as default at a time — setting a new default automatically clears the previous one.
 ---
 
 #### Contact Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-contact-tab.png" alt="Merchant Contact Tab - directory of key personnel and roles" caption="Contact Tab: Managing the directory of key contact persons for different business functions." >}}
+
 Manages the contact persons for this merchant — names, phone numbers, email addresses, and roles. Multiple contacts can be stored for different purposes (e.g., finance contact, technical contact, account manager).
 
 ---
 
 #### Company Linking Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-company-linking-tab.png" alt="Company Linking Tab - mapping merchant to platform companies for financial posting" caption="Company Linking Tab: Establishing the financial relationship between the merchant and platform companies." >}}
+
 Links this merchant record to one or more companies within your platform. Company linking determines which company's financial accounts and GL structures this merchant's transactions post to — important in multi-company platform environments.
 
 ---
 
 #### Merchant Branch Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-branch-tab.png" alt="Merchant Branch Tab - intercompany branch relationship settings" caption="Merchant Branch Tab: Configuring branch-level mappings for intercompany settlements." >}}
+
 Configures intercompany branch relationships for this merchant. Used when a merchant operates across multiple branches or legal entities that need to be tracked separately within the platform's intercompany settlement framework.
 
 Each branch record is divided into four sections:
@@ -368,11 +396,15 @@ Configures the tax codes applied when this branch transacts. Output tax is appli
 Manages the credit facilities extended to this merchant. Contains two nested sub-tabs:
 
 **Credit Term sub-tab**
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-credit-term-subtab.png" alt="Credit Term Tab - payment deadline configurations" caption="Credit Term: Defining the payment window and aging rules for the merchant." >}}
+
 Defines the payment terms for this merchant — how many days they have to settle outstanding amounts. Credit terms drive AR aging calculations and payment due date computations.
 
 **Credit Limit sub-tab**
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-credit-limit-subtab.png" alt="Credit Limit Tab - maximum exposure settings per currency" caption="Credit Limit: Setting the ceiling for outstanding balances to manage financial risk." >}}
+
 Sets the maximum outstanding balance allowed for this merchant at any point in time. When a transaction would push the merchant over their approved credit limit, the system flags it for review.
 
 You can either:
@@ -384,7 +416,9 @@ You can either:
 ---
 
 #### Logo Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-logo-tab.png" alt="Merchant Logo Tab - brand asset management for documents and portals" caption="Logo Tab: Uploading brand assets for use in merchant-facing documents and portals." >}}
+
 Manages the merchant's logo — uploaded and stored against the merchant profile. The logo is used in merchant-facing documents, portal pages, and any printed output associated with this merchant.
 
 ---
@@ -420,13 +454,17 @@ Contracts are kept separate from the merchant profile because commercial terms c
 ---
 
 ### Listing
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-contract-listing.png" alt="Contract Listing - overview of all commercial agreements across the platform" caption="Contract Listing: A centralized repository of all signed agreements and their current statuses." >}}
+
 Lists all merchant contracts across all merchants.
 
 ---
 
 ### Create
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-contract-create-form.png" alt="Create Contract Form - defining commercial terms for a merchant-company pair" caption="Create Contract: Formally registering a new agreement with its validity period and associated merchant." >}}
+
 Creates a new contract once the commercial agreement with the merchant has been signed.
 
 {{< callout type="info" >}}
@@ -452,13 +490,17 @@ Creates a new contract once the commercial agreement with the merchant has been 
 The edit form contains all the same fields as create, plus tabs for managing the commercial details of the contract.
 
 #### Details Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-contract-details-tab.png" alt="Contract Details Tab - primary agreement parameters and status management" caption="Contract Details Tab: Managing the core identity and lifecycle status of a specific agreement." >}}
+
 Contains the core contract fields — Contract Name, Contract Code, Merchant Contract Key, Contract Company, Merchant Name, Type, and Status. The Contract Code and Merchant Contract Key are system-generated and read-only. Status is the only field that is editable after creation beyond the contract name.
 
 ---
 
 #### Rate Card Tab
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-contract-rate-card-tab.png" alt="Contract Rate Card - pricing schedule for payment channel fees" caption="Rate Card Tab: The live fee schedule used by the payment engine for transaction processing." >}}
+
 {{< callout type="tip" >}}
 **TL;DR** — Fee schedule per payment method. Defines what rate the merchant pays for each payment channel they accept.
 {{< /callout >}}
@@ -488,17 +530,19 @@ Document storage for this contract record. Upload the signed physical contract P
 {{< callout type="tip" >}}
 **TL;DR** — A read-only monthly summary of merchant transaction activity. The system populates it automatically — you just view and export.
 {{< /callout >}}
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-report-summary.png" alt="Monthly Transaction Report - aggregated view of processing activity and charges" caption="Merchant Report: A monthly summary of transaction volumes, values, and processing fees." >}}
+
 The Report menu shows a **Monthly Merchant Transaction Summary** — a pre-aggregated view of transaction activity across all merchants, broken down by merchant and payment channel.
 
-**What it shows per row:** Merchant, Payment Channel, Currency, No. of Transactions, Total Transaction Amount, VAT %, PC Charges, UNIPIN Charges
+**What it shows per row:** Merchant, Payment Channel, Currency, No. of Transactions, Total Transaction Amount, VAT %, PC Charges, Network Charges
 
 **Columns that need context:**
 
 | Column | Notes |
 |--------|-------|
 | **PC Charges** | Payment Channel charges — the fee the platform takes for processing a transaction through that specific payment method. Shown as either a percentage of the transaction amount or a flat fee per transaction. Up to 4 separate charge types can apply per channel. |
-| **UNIPIN Charges** | Additional charges specific to UNIPIN — a payment network used for certain digital payment methods. These sit on top of the PC charges and follow the same percentage-or-flat-fee structure. Up to 4 charge types. |
+| **Network Charges** | Additional charges levied by the external payment network used for certain digital payment methods. These sit on top of the PC charges and follow the same percentage-or-flat-fee structure. Up to 4 charge types. |
 | **VAT %** | The tax rate applied to the transaction fees — not the transaction amount itself. |
 
 **Where the data comes from:** The system aggregates transaction data automatically from payment activity — you do not feed it anything manually. It reads from the same merchant and payment channel records configured in Merchant Admin and Contract Container.
@@ -513,7 +557,9 @@ It does not post to any other applet and has no financial impact — it is purel
 ---
 
 ## Audit Trail
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-audit-trail-listing.png" alt="Merchant Audit Trail - immutable log of administrative changes" caption="Audit Trail: Ensuring full transparency and accountability for every configuration change." >}}
+
 A complete, read-only log of every action taken across all merchant records and contracts. Every create, edit, status change, and deletion is recorded with:
 
 - The exact field that changed and the before/after values
@@ -526,7 +572,9 @@ Use this section to investigate unauthorized changes, trace who approved a merch
 ---
 
 ## Settings
+
 {{< figure src="/images/merchant-applet-applet/merchant-applet-settings-general.png" alt="Applet Settings - system-wide field visibility and permission controls" caption="Settings: Configuring global behavior, permissions, and webhooks for the Merchant Applet." >}}
+
 Accessed via the top navigation. All settings here are system-wide and affect all users of this applet.
 
 ### Field Settings
