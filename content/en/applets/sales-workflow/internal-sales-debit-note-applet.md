@@ -63,9 +63,10 @@ This applet acts as a bridge between several other parts of the system:
 
 **Sales & Operations Teams:**
 - Correct under-billed internal invoices without manual coordination
-- Real-time visibility into document statuses (Draft, Final, Void)
+- Real-time visibility into document statuses (Draft, Final, Void, Discarded)
 - Link debit notes directly to originating internal sales invoices
 - Attach supporting documents for audit readiness
+- Final, discard, void, print, and email selected documents directly from the listing
 
 **Finance & Accounting Teams:**
 - Eliminate manual intercompany reconciliation at month-end
@@ -107,6 +108,10 @@ Traditional intercompany adjustments rely on emails and isolated accounting entr
 
   {{< card title="Approval Workflow" subtitle="Configurable multi-level authorization" link="#for-managers-reviewing-internal-adjustments" >}}
 
+  {{< card title="Bulk Actions" subtitle="Final, discard, void, print, and email from the listing" link="#bulk-actions-on-the-listing" >}}
+
+  {{< card title="Send Email" subtitle="Send PDFs with applet-specific email templates" link="#send-email-form" >}}
+
   {{< card title="File Import" subtitle="Bulk upload debit note entries" link="#file-imports" >}}
 
   {{< card title="Document Tabs" subtitle="Main Details, Account, Lines, Settlement, and more" link="#document-tabs-overview" >}}
@@ -145,26 +150,70 @@ Accounts Receivable ▲                        Accounts Payable ▲
 
 When utilizing this applet, users have access to several key functions to manage their daily workflows:
 
-**1. Create/Edit Document**
+**1. Sales Debit Note Listing**
+- The main workspace for searching, opening, creating, and managing Sales Debit Note documents.
+- Use the checkbox column to select rows for bulk FINAL, DISCARD, VOID, PRINT, or SEND EMAIL actions.
+- Use Advanced Search to filter by document details, dates, status, branch, customer, and posting status.
+
+### Bulk Actions on the Listing
+
+![Sales Debit Note listing bulk action toolbar](/images/internal-sales-debit-note-applet/bulk-actions-toolbar.png)
+
+Select one or more rows in the Listing, then use the action buttons above the grid. The applet checks the selected rows before applying the action, so buttons are disabled when the selection is not eligible.
+
+| Button | What It Does | When It Applies |
+|--------|--------------|-----------------|
+| **FINAL** | Posts selected DRAFT documents, locks them, writes GL entries, and triggers the intercompany Purchase Debit Note sync. | Selected rows must be DRAFT and ACTIVE. |
+| **DISCARD** | Abandons selected DRAFT documents. Posting Status becomes DISCARDED and no GL entries are created. A confirmation dialog asks: "Are you sure you want to DISCARD selected documents?" | Selected rows must be DRAFT and ACTIVE. |
+| **VOID** | Reverses selected FINAL documents. Reversal entries are posted and the linked intercompany document is also reversed/updated. A confirmation dialog asks: "Are you sure you want to VOID selected documents?" | Selected rows must be FINAL and ACTIVE. |
+| **SINGLE/MULTIPLE PRINT** | Generates printable output for selected documents using the configured Printable Format. | The applet setting `PRINTABLE` must be configured. |
+| **SEND EMAIL** | Sends PDFs of selected documents using the selected Email Template, Recipient Email option, and CC List. | Hidden when `HIDE_SEND_EMAIL_BUTTON` is enabled. |
+
+{{< callout type="warning" >}}
+**Bulk FINAL is a posting action.** Once a document is FINAL, users cannot edit it directly; corrections must be handled through VOID/reversal or a follow-up document.
+{{< /callout >}}
+
+#### SEND EMAIL form
+
+![Sales Debit Note SEND EMAIL toolbar controls](/images/internal-sales-debit-note-applet/send-email-toolbar.png)
+
+The **SEND EMAIL** button sits on the same toolbar row as three fields that feed it: **Email Template**, **Recipient Email**, and **CC List**. All four controls are visible from the start; they appear and disappear together based on the `HIDE_SEND_EMAIL_BUTTON` setting. Fill the three fields, select your document rows, then click **SEND EMAIL** to send.
+
+| Field | Purpose | How to fill it in |
+|-------|---------|-------------------|
+| **Email Template** | Picks the template that supplies the email subject and body. The template's code shows in the dropdown. | Type into the search field ("Search name..") to filter, then pick a template. The chosen template's title becomes the email subject and its description becomes the body. |
+| **Recipient Email** | Decides whose email address(es) on each document get the message. | Choose one of: **Billing and Shipping Email** (sends to both), **Billing Email Only**, or **Shipping Email Only**. The system reads the address from each document's Account > Billing/Shipping details. |
+| **CC List** | Optional CC recipients added to every email. | Type comma-separated addresses, e.g. `finance@company.com, manager@company.com`. |
+
+After submit, the system groups selected documents by recipient email, attaches each group's PDFs, and sends the emails. Documents missing the address required by your Recipient Email choice are skipped or reported with an error, so users know which document needs Billing or Shipping email details fixed.
+
+The list in the **Email Template** dropdown is **specific to this applet**. Templates you see here will not appear in any other applet's SEND EMAIL dropdown, and vice versa. To create, edit, or activate a template, go to **Settings > Email Template** in this applet's sidebar. See [Email Template settings](#email-template-settings--email-template) for the full setup notes and gotchas.
+
+**2. Create/Edit Document**
 - Create new additional charges (Debit Notes).
 - Select the destination branch, describe why the charge is occurring, and add specific item codes and amounts.
 - Tag original internal invoices, department codes, and cost centers.
+- Use **SAVE** to keep a draft, **FINAL** to post it, **DISCARD** to abandon an unposted draft, or **VOID** to reverse a finalized document.
 
-**2. File Import**
-- Upload an Excel or CSV file containing hundreds of extra charges at once.
-- A massive time-saver for month-end reconciliation if many small items were under-billed.
+**3. Line Items**
+- View line-level debit note details across documents without opening each header one by one.
+- Useful for analysis, reconciliation, and exporting item-level charge information.
 
-**3. Intercompany Transaction Listing (Manual processing)**
+**4. File Import**
+- Upload a CSV file containing many Sales Debit Note rows at once.
+- Use the sample format, delimiter selector, and Checking view to validate the file before accepting the import. See [File Imports](#file-imports) for the full CSV reference and Error/All checking workflow.
+
+**5. Intercompany Transaction Listing (Manual processing)**
 ![Intercompany Dashboard](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_21c7678b2dd3810c82bbe3f3b68ca14881b930766766b4938dcbb1dd5f0a48f6.png)
 
 - View a dedicated dashboard tracking the status of intercompany syncs.
 - **Inbound vs Outbound:** View transactions originating from your branch (Outbound) and coming to your branch (Inbound).
 - **Unprocessed vs Processed:** Track documents waiting to be automatically synced versus those that have successfully completed the intercompany transfer. 
 
-**4. Applet Settings**
+**6. Applet Settings**
 - Configure branch mappings, default accounts, workflow approval chains, printable formats, and knock-off rules.
 
-**5. Personal Default Settings**
+**7. Personal Default Settings**
 - Save favorite defaults (like preferred branch or currency) to speed up continuous data entry.
 
 ## Quick Start Guide
@@ -219,6 +268,7 @@ You can also **RESET** the form at any time before creating to clear all fields.
 4. **Decide**:
    - **Approve / Finalize**: Click **FINAL** → System posts GL entries and generates the intercompany document
    - **Return for Correction**: Inform the creator of any discrepancies before finalization
+   - **Discard** *(if still a draft and created in error)*: Click **DISCARD** → Document becomes DISCARDED with no GL impact
    - **Void** *(if already finalized in error)*: Click **VOID** → Reversal entries are posted
 
 ---
@@ -230,6 +280,8 @@ You can also **RESET** the form at any time before creating to clear all fields.
 **Step 1: Configure Branch Settings** (`Settings > Branch Settings`)
 - Map internal customers/suppliers for each branch
 - Configure branch-specific default accounts
+- Set branch-level defaults such as settlement method, pricing scheme, printable format, and allowed item categories
+- Use the permission tools to control which users, roles, and teams can create, edit, final, discard, void, print, email, or import documents
 
 **Step 2: Configure Workflow Settings** (`Settings > Workflow Settings`)
 - Define approval routing rules (e.g., debit notes above RM 1,000 require Regional Controller approval)
@@ -247,10 +299,16 @@ You can also **RESET** the form at any time before creating to clear all fields.
 **Step 6: Configure Printable Format** (`Settings > Printable Format Settings`)
 - Customize the PDF export layout, company logo, header/footer text, and included fields
 
-**Step 7: Test the Full Flow**
+**Step 7: Configure Email Templates** (`Settings > Email Template`)
+- Create templates that appear in the listing's **Email Template** dropdown
+- Select the printable format that should be attached when that template is used
+- Write the email subject/code and message body users will send with **SEND EMAIL**
+
+**Step 8: Test the Full Flow**
 - Create a test debit note as an operations user
 - Finalize it and verify the intercompany purchase debit note is generated at the destination branch
 - Verify GL postings on both sides
+- Send a test email from the listing and confirm the selected PDF format is attached
 
 ---
 
@@ -269,9 +327,14 @@ Every Sales Debit Note (Internal) follows a predictable lifecycle:
 
 | Status | What It Means | What Happens Next |
 |--------|---------------|-------------------|
-| **Draft** | Created but not yet finalized | Edit freely, add/remove lines |
-| **Final** | Locked and posted to the GL | Intercompany document generated; no further edits |
-| **Void** | Cancelled after finalization | Reversal GL entries posted; intercompany document also voided |
+| **Draft** | Created but not yet finalized | Edit freely, add/remove lines. From here, users can SAVE, FINAL, or DISCARD. |
+| **Final** | Locked and posted to the GL | Intercompany document generated; no further edits. If it was finalized in error, use VOID. |
+| **Void** | Cancelled after finalization | Reversal GL entries posted; intercompany document also voided or updated. The record remains visible for audit. |
+| **Discarded** | A draft that was abandoned before it was ever finalized | No GL impact and no intercompany posting. Use this when a draft was created in error and should not proceed. |
+
+{{< callout type="info" >}}
+**DISCARD vs VOID**: DISCARD applies to drafts only, before any accounting posting exists. VOID applies to finalized documents and posts reversal entries. They are separate terminal states, not interchangeable names for the same action.
+{{< /callout >}}
 
 ### Document Tabs Overview
 
@@ -423,13 +486,64 @@ Fine-tune the applet behavior to match your organizational processes. Access all
 ### Applet Settings (`Settings > Applet Settings`)
 Admins can choose which tabs to show or hide in the applet interface, helping to streamline the user experience by completely removing unused sections.
 
+Common controls include:
+- Show or hide document tabs and optional sections.
+- Show or hide posting buttons such as FINAL, DISCARD, VOID, and SAVE.
+- Show or hide listing controls such as File Import and SEND EMAIL.
+- Configure default document orientation behavior through settings such as `DEFAULT_ORIENTATION` and `VERTICAL_ORIENTATION`.
+
+### Orientation and Panel Mode
+
+The applet supports two presentation styles for document and file-import detail screens:
+
+![Sales Debit Note horizontal tab mode](/images/internal-sales-debit-note-applet/horizontal-tab-mode.png)
+
+Horizontal mode displays major sections as tabs across the top of the working area.
+
+![Sales Debit Note vertical panel mode](/images/internal-sales-debit-note-applet/vertical-panel-mode.png)
+
+Vertical mode displays the same sections as stacked expansion panels.
+
+| Mode | What Users See | When It Helps |
+|------|----------------|---------------|
+| **Horizontal / Tab mode** | Sections appear as tabs across the top. | Best for wide screens and users who prefer jumping between tabs. |
+| **Vertical / Panel mode** | Sections appear as stacked expansion panels. | Best for long forms, smaller screens, or users who prefer scrolling through sections in order. |
+
+Admins can set the default orientation globally, while user/personal defaults can also control whether the applet opens in a single-column or multi-column working layout. In File Import, the same orientation logic affects the **Main** and **Checking** sections as well as the Checking subviews (**Error** and **All**).
+
 ### Branch Settings (`Settings > Branch Settings`)
 ![Branch Settings](/images/internal-sales-debit-note-applet/Internal_Sales_Debit_Note_Settings_&_Personalization_2c7bc853144ee26223616f3c3f6d45b8c74c44445cfd4fba1129d52cd61049f8.png)
 
 Configure branch-specific behaviors:
 - Map internal customers and suppliers per branch
 - Set default GL accounts for intercompany transactions
-- **Permissions Wizard**: Control user access and permissions within the applet, ensuring that the right people have appropriate levels of document access.
+- Configure default settlement method, item category filters, pricing schemes, default printable format, and branch-specific printable images
+
+### Permission Management
+
+![Sales Debit Note permission management menu](/images/internal-sales-debit-note-applet/permission-management-menu.png)
+
+This applet uses the shared permission management system, not just a single branch setting. Admins can grant access by user, role, team, or predefined permission set.
+
+| Permission Tool | What It Is For |
+|-----------------|----------------|
+| **Permission Wizard** | Guided setup for granting common applet permissions without manually selecting every permission code. |
+| **Permission Sets** | Reusable bundles of permissions, such as "Sales Debit Note Clerk" or "Finance Approver". |
+| **Client-Side Permission Sets** | Controls UI-level visibility such as showing File Import, FINAL, DISCARD, VOID, or other buttons. |
+| **User Permissions** | Grants permissions directly to a specific user. Use this for exceptions or one-off access. |
+| **Role Permissions** | Grants permissions to everyone assigned to a role. Use this for standard operational access. |
+| **Team Permissions** | Grants permissions to members of a team where the tenant uses team-based access control. |
+
+**How admins typically grant access**
+
+1. Create or choose a Permission Set that matches the job function.
+2. Assign that set through Role Permissions for normal users, or User Permissions for exceptions.
+3. Confirm client-side permissions for visible features such as **SHOW_FILE_IMPORT_MENU**, **SHOW_GENDOC_FINAL_BUTTON**, **SHOW_GENDOC_DISCARD_BUTTON**, and **SHOW_GENDOC_VOID_BUTTON**.
+4. Test with a non-admin account to confirm the sidebar menu, listing toolbar, and edit-screen buttons match the intended access.
+
+{{< callout type="info" >}}
+If users cannot see File Import or a posting button, check both the applet setting that hides the feature and the client-side permission that shows it. Both layers can affect what the user sees.
+{{< /callout >}}
 
 ### Workflow Settings (`Settings > Workflow Settings`)
 Control the approval flow:
@@ -462,6 +576,31 @@ Customize PDF exports:
 - Header/footer text
 - Which fields to display on printed output
 - Page size and orientation
+
+### Email Template (`Settings > Email Template`)
+
+Create and manage the email templates that populate the **SEND EMAIL** dropdown on the Listing. Templates here are **applet-local**: a template you create in this applet does not appear in any other applet's SEND EMAIL list, and the Email Template listing in other applets will look empty unless someone has set up templates there separately.
+
+![Sales Debit Note Email Template settings](/images/internal-sales-debit-note-applet/email-template-settings.png)
+
+**How to create a new template**
+
+Open **Settings > Email Template**.
+
+| Field | What it controls | How to fill it in |
+|-------|------------------|-------------------|
+| **Printable Format** | Which Printable Format PDF gets attached to every email that uses this template. | Pick from the dropdown. The entries come from **Settings > Printable Format Settings**. If the dropdown is empty, set up at least one Printable Format first. |
+| **Template Code** | Two things at once: (a) the label that shows in the **SEND EMAIL** dropdown on the Listing, and (b) the subject line of the email. | Use a short, descriptive code such as `Debit Note Notice` or `Monthly Charge Reminder`. |
+| **Template / Description** | The body of the email. | Write the plain text message the recipient will read. |
+
+The template is saved and immediately becomes available in the SEND EMAIL dropdown the next time the Listing is loaded.
+
+**Tips and gotchas**
+
+- The Template Code doubles as the email subject. Do not use internal-only codes like `EMAIL_TPL_01` unless that is what recipients should see.
+- The Printable Format is mandatory for the email to send a usable PDF. Pick one before saving, or the SEND EMAIL action may fail with a missing-format error.
+- A template you create here will not appear in Purchase Debit Note, Sales Invoice, or any other applet. Each applet's SEND EMAIL pulls from its own list.
+- If a template you expect to see is missing from the SEND EMAIL dropdown, check that it has status ACTIVE on this listing.
 
 ---
 
@@ -516,19 +655,77 @@ Access via **Personalization > Personal Default Settings** in the sidebar.
 
 ## File Imports
 
-The **File Import** page is a powerful tool designed to simplify and accelerate the process of entering multiple Sales Debit Notes into the system. Instead of manually inputting each record one by one, users can prepare data in a CSV file and upload it all at once.
+The **File Import** page lets users create many Sales Debit Note rows by uploading a CSV file. It is useful for month-end adjustments, recurring internal charges, or cleanup exercises where entering each debit note manually would be slow and error-prone.
 
 ![File Import Interface](/images/internal-sales-debit-note-applet/File_Import_-_Internal_Sales_Debit_Note.png)
 
-Bulk-create debit note line items by uploading a formatted file:
+### The end-to-end flow
 
-1. Click the **(+)** button to download the standard import CSV template.
-2. Fill in the required line item details (item codes, quantities, amounts).
-3. Click **Choose File** (or drag and drop) to select the completed file.
-4. Click **Apply** to submit the file. The system will process it and display any errors that need correction.
-5. If successful, you will receive a confirmation message.
+1. Open **File Import** from the sidebar.
+2. Choose the **Delimiter** that matches the file: **COMMA** or **PIPE**.
+3. Click **Sample Format for Sales Debit Note**. The applet opens a field picker and exports `MasterData_Upload_SalesDebitNote.csv`.
+4. Keep the required columns and add any optional fields needed for your business scenario.
+5. Fill in the CSV and save it.
+6. Drag the file into the upload area, or click **Upload File** and choose the CSV.
+7. Click **ADD** to upload and process the file.
+8. Open the created import record and review the **Checking** section before relying on the imported data.
 
-This is especially useful when processing a large volume of adjustments at once, reducing manual entry errors drastically during month-end closings.
+### CSV format reference
+
+The sample format is configurable because the applet lets users choose optional columns. The required columns are:
+
+- **BRANCH_CODE**: Branch that owns the document.
+- **LOCATION_CODE**: Location used for the transaction.
+- **DOC_CURRENCY**: Document currency.
+- **TXN_DATE**: Transaction date.
+- **HDR_REF_NO**: Header reference number.
+- **QTY**: Quantity for the line.
+- **SETTLEMENT_OR_ITEM_CODE**: Item or settlement method code used on the line.
+- **AMOUNT_INCL_TAX**: Amount including tax.
+
+Optional columns are grouped by business area:
+
+| Area | Typical Columns |
+|------|-----------------|
+| **Sales and terms** | SALES_AGENT, CREDIT_TERMS, CREDIT_LIMIT, HDR_DESCRIPTION, HDR_REMARKS, TRACKING_ID |
+| **Entity** | ENTITY_CODE, ENTITY_NAME, ENTITY_TYPE, ENTITY_ARAP_TYPE, ENTITY_ID_NO, ENTITY_ID_TYPE, ENTITY_EMAIL, ENTITY_PHONE, ENTITY_UPSERT |
+| **Billing address** | BILLING_NAME, BILLING_EMAIL, BILLING_PHONE, BILLING_ADDRESS_LINE_1 to BILLING_ADDRESS_LINE_5, BILLING_COUNTRY, BILLING_STATE, BILLING_CITY, BILLING_POSTCODE |
+| **Shipping address** | SHIPPING_NAME, SHIPPING_EMAIL, SHIPPING_PHONE, SHIPPING_ADDRESS_LINE_1 to SHIPPING_ADDRESS_LINE_5, SHIPPING_COUNTRY, SHIPPING_STATE, SHIPPING_CITY, SHIPPING_POSTCODE |
+| **Line item** | ITEM_NAME, ITEM_DESCRIPTION, LINE_ITEM_NAME, LINE_ITEM_REMARKS, ITEM_TXN_TYPE, ITEM_TXN_CLASS, ITEM_REF_NO, UOM, UNIT_PRICE_INCL_TAX, DISCOUNT_AMOUNT |
+| **Tax** | TAX_CODE, TAX_AMOUNT, EINVOICE_ITEM_CLASSIFICATION_CODE, EINVOICE_ITEM_TAX_TYPE_CODE, EINVOICE_ITEM_UOM |
+| **Serial / batch tracking** | ITEM_SERIAL_NO, ITEM_BATCH_NO, ITEM_TRACKING_ID |
+| **Posting and GL** | POSTING_STATUS, GL_CODE, SEGMENT_CODE, GL_DIMENSION_CODE, PROFIT_CENTRE_CODE, PROJECT_CODE |
+| **E-Invoice buyer data** | EINVOICE_SUBMISSION_TYPE, EINVOICE_BUYER_TIN_NO, EINVOICE_BUYER_ENTITY_ID_TYPE, EINVOICE_BUYER_ID_NO, EINVOICE_BUYER_SST_NO, EINVOICE_BUYER_NAME, EINVOICE_BUYER_EMAIL, EINVOICE_BUYER_PHONE, EINVOICE_BILLING_FREQUENCY, EINVOICE_BILLING_PERIOD_START, EINVOICE_BILLING_PERIOD_END |
+| **Client references** | CLIENT_DOC_TYPE, CLIENT_DOC_1, CLIENT_DOC_2, CLIENT_DOC_3, CLIENT_DOC_4, CLIENT_DOC_5 |
+
+{{< callout type="info" >}}
+Use `POSTING_STATUS` carefully. For normal imports, use `DRAFT` so users can review before posting. If your workflow allows direct posting, `FINAL` may be used, but that makes the import a posting action.
+{{< /callout >}}
+
+### The Checking section
+
+After upload, open the import record and go to **Checking**. This area has two views:
+
+| View | What It Shows | How To Use It |
+|------|---------------|---------------|
+| **Error** | Rows that failed validation. | Start here. Fix missing masters, invalid values, or malformed data before proceeding. |
+| **All** | Every parsed CSV row, including both valid and invalid rows. | Use this to audit what the importer read from the file and compare it against the source CSV. |
+
+Depending on orientation settings, **Error** and **All** appear either as tabs or as vertical expansion panels.
+
+The Checking grid includes a **Validation Error** column plus field-specific error columns such as **Branch Validation Error**, **Location Validation Error**, **Transaction Date Validation Error**, **Entity Validation Error**, **Quantity Validation Error**, **Posting Status Error**, **Amount Validation Error**, **Txn GST Validation Error**, **Txn WHT Validation Error**, and **Item Serial Number Validation Error**.
+
+Common validation problems include:
+
+- **Branch / Location / Entity / Item code not found**: The code in the CSV does not exist in the relevant master data.
+- **Amount or Unit Price invalid**: The value is blank, non-numeric, or not accepted by the importer.
+- **Posting Status Error**: The value is not a valid status such as `DRAFT`, `FINAL`, `VOID`, or `DISCARDED`.
+- **Tax code not found**: The tax code does not exist in the tax master.
+- **Serial or batch validation error**: Serial, batch, or tracking values do not match the item tracking requirements.
+
+### File Import permissions
+
+The File Import menu can be controlled by both applet settings and client-side permissions. If a user cannot see it, check whether `HIDE_FILE_IMPORT_MENU` is enabled and whether the user has the **SHOW_FILE_IMPORT_MENU** client-side permission.
 
 ---
 
@@ -539,6 +736,9 @@ This is especially useful when processing a large volume of adjustments at once,
 
 **Q: Can I edit a debit note after finalizing it?**  
 **A:** No. Once finalized, the document is locked because GL postings have been made. If you need to make corrections, void the document and create a new one, or issue an Internal Sales Credit Note to offset it.
+
+**Q: What is the difference between DISCARD and VOID?**  
+**A:** **DISCARD** is for drafts that should never be posted. It has no GL impact. **VOID** is for finalized documents and posts reversal entries. Use DISCARD before finalization and VOID after finalization.
 
 **Q: What if I need to void a finalized debit note?**  
 **A:** Click the **VOID** button on the edit screen (if you have permission). The system will post reversal GL entries and void the corresponding intercompany purchase debit note at the destination branch.
@@ -551,6 +751,18 @@ This is especially useful when processing a large volume of adjustments at once,
 
 **Q: Can I link one debit note to multiple original internal invoices?**  
 **A:** Yes. Add multiple line items, each referencing a different original Sales Invoice (Internal). This consolidates adjustments into a single document.
+
+**Q: How do I email selected Sales Debit Notes?**  
+**A:** From the Listing, select one or more rows, choose an **Email Template**, choose **Billing and Shipping Email**, **Billing Email Only**, or **Shipping Email Only**, add optional CC recipients, and click **SEND EMAIL**. The applet validates that the required recipient email exists on each selected document.
+
+**Q: Why can't I see File Import, SEND EMAIL, FINAL, DISCARD, or VOID?**  
+**A:** These features can be hidden by applet settings and by client-side permissions. Ask an admin to check the relevant hide/show setting and your user, role, team, or permission-set assignment.
+
+**Q: How do I bulk-create debit notes or line items?**  
+**A:** Use **File Import**. Download **Sample Format for Sales Debit Note**, choose the correct delimiter, fill in the required columns, upload the CSV, then review the **Checking > Error** and **Checking > All** views before proceeding.
+
+**Q: What does the "KO For" (Knock-Off) tab do?**  
+**A:** It allows you to import and link outstanding documents to be knocked off against this debit note—useful for netting internal balances between branches.
 
 ---
 
@@ -584,9 +796,3 @@ Before you can link an item in the Doc Item Maintenance applet, the underlying G
 3.  **Use the Item** (Sales Debit Note (Internal) Applet)
 
 By ensuring these prerequisites are met, any Sales Debit Note (Internal) transaction you finalize will automatically and cleanly map revenue and expenses to the exact correct accounts.
-
-**Q: How do I bulk-create debit notes or line items?**  
-**A:** Use the **File Import** feature. Download the template, fill in your data, and upload. The system validates and imports all entries at once.
-
-**Q: What does the "KO For" (Knock-Off) tab do?**  
-**A:** It allows you to import and link outstanding documents to be knocked off against this debit note—useful for netting internal balances between branches.
