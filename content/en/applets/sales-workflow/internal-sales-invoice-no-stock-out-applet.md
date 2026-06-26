@@ -16,25 +16,13 @@ weight: 35
 
 ## Purpose and Overview
 
-{{< callout type="tip" >}}
-**TL;DR — Read this first.**
+The **Internal Sales Invoice (No Stock-Out) Applet** is a deliberately restricted version of the standard Sales Invoice. It does everything a sales invoice does financially — posting to Accounts Receivable, the General Ledger, and the tax module on finalization — but it cannot touch inventory under any circumstances. There is no Goods Issue Note (GIN), no stock deduction, and no picking queue. That restriction is intentional, and it is the whole reason this applet exists as a separate tool from the standard sales invoice.
 
-**What is this applet?** A deliberately restricted version of the standard Sales Invoice. It does everything a sales invoice does financially — AR, GL, tax posting — but it cannot touch inventory. Ever. That restriction is intentional.
+The restriction is enforced in two ways. First, the line items you can add are limited to items configured as non-stock (transaction class PNS) in the item master, so a physical stock item cannot accidentally end up on a no stock-out invoice. Second, finalizing the document does not generate a GIN, notify the warehouse, or change stock levels in any way. The warehouse system never sees the transaction. From a financial standpoint the invoice behaves identically to a standard sales invoice — Accounts Receivable is updated, the General Ledger journal is posted, and the tax entry is recorded — but the inventory subsystem is left completely untouched.
 
-**How is it restricted?**
-- Only items configured as non-stock (transaction class PNS) can be added as line items. You cannot accidentally add a physical stock item here.
-- No Goods Issue Note (GIN) is generated on finalization. The warehouse sees nothing. Stock levels are unchanged.
+Use this applet whenever you want a hard guarantee that nothing inventory-related will happen. The most common scenarios are **intercompany charges** — billing between your own entities for management fees, shared services, or cost recharges, where the applet's dedicated Intercompany menu auto-generates the matching purchase document on the receiving entity's side — and **service billing** for consulting fees, maintenance charges, or subscriptions where no warehouse involvement is needed. It is also useful as a **permission boundary**: finance teams can be granted access to this applet alone without opening up the full sales workflow to them. And because the documents it produces are a distinct type, they stay categorically separate from regular sales invoices in reports and GL postings, which gives you **clear audit separation** between financial-only transactions and the physical sales workflow.
 
-**Why use this instead of the standard Sales Invoice?** Precisely because of those restrictions. Use this applet when you want a hard guarantee that nothing inventory-related will happen:
-- **Intercompany charges** — billing between your own entities (management fees, shared services, cost recharges). The applet has a dedicated Intercompany menu that auto-generates the matching purchase document on the receiving entity's side.
-- **Service billing** — consulting fees, maintenance charges, subscriptions. No warehouse involvement needed.
-- **Permission isolation** — give finance teams access to this applet only, without opening up the main sales workflow to them.
-- **Audit clarity** — these transactions are a distinct document type, completely separate from regular sales invoices in reports and GL postings.
-
-**The honest one-liner:** It is a guardrail. You use it because you want the restriction — to keep financial-only transactions categorically separate from the physical sales workflow.
-{{< /callout >}}
-
-The **Internal Sales Invoice (No Stock-Out) Applet** is a financial invoicing tool for scenarios where physical inventory movement is not required. It posts revenue, AR, and tax entries on finalization without triggering any warehouse workflow — no Goods Issue Note (GIN), no stock deduction, no picking queue.
+In short, this applet is a guardrail. You use it because you want the restriction — to keep financial-only transactions cleanly separated from the inventory side of the business.
 
 {{< callout type="info" >}}
 **Core Concept**: A **No Stock-Out Invoice** is purely a financial document. It updates Accounts Receivable and the General Ledger exactly like a standard invoice, but the warehouse and inventory system are not involved.
@@ -85,6 +73,7 @@ Standard invoicing assumes a physical product is being sold. Applying it to serv
 
 ## Standard Invoice vs No Stock-Out Invoice
 
+A standard sales invoice and a no stock-out invoice are functionally identical on the financial side — both post to Accounts Receivable, the General Ledger, and the tax module exactly the same way. The single, deliberate difference is what happens to inventory. A standard invoice automatically generates a Goods Issue Note, deducts stock from the issuing location, and notifies the warehouse via a picking list. A no stock-out invoice does none of those things — the warehouse is never involved and stock levels do not change. So the choice between the two is straightforward: if the line being billed represents a physical item leaving your warehouse, use the standard sales invoice. If it represents a service, a fee, or an intercompany charge where no physical goods move, use this applet.
 
 | | Standard Sales Invoice | No Stock-Out Invoice |
 |---|---|---|
@@ -283,8 +272,6 @@ Each payment entry links to the Cashbook Applet so the cash receipt is recorded 
 
 #### Delivery Details Tab
 
-*(Hidden if disabled in Application Settings)*
-
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-pick-pack-subtab.png" alt="Pick Pack Sub-tab - staging delivery logistics even without inventory movement" caption="Pick Pack Management: Coordinating physical handling and transport logistics for the services or goods invoiced." >}}
 
 Bulk-apply delivery information across all line items at once — Tracking ID, Delivery Branch, Delivery Type (Internal, External, or Pickup), and Delivery Location. More efficient than editing each line individually when all lines share the same delivery details.
@@ -340,8 +327,6 @@ Identical in layout to External and Internal Delivery, but filtered to show only
 
 #### KO For Tab
 
-*(Hidden if disabled in Application Settings)*
-
 {{< callout type="tip" >}}
 **TL;DR** — Links this invoice to the upstream document it was raised against. "KO" = Knock-Off — closing off a previously opened document once this invoice fulfills it.
 {{< /callout >}}
@@ -357,13 +342,9 @@ When a Sales Order, Quotation, or Delivery Order was raised before this invoice,
 | **Sales Quotation** | Invoice raised directly from an approved quotation |
 | **Delivery Order** | Invoice raised against an outbound delivery order |
 
-Each document type is only shown if enabled in Application Settings.
-
 ---
 
 #### Department Hdr Tab
-
-*(Hidden if disabled in Application Settings)*
 
 {{< callout type="tip" >}}
 **TL;DR** — Tags the entire invoice to a specific internal cost center or department for management reporting.
@@ -378,8 +359,6 @@ Fields: Segment, Dimension, Profit Center, Project.
 ---
 
 #### Posting Tab
-
-*(Hidden if disabled in Application Settings)*
 
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-posting-tab.png" alt="Posting Tab - real-time financial synchronization status" caption="Posting Status: Verifying the successful integration of the invoice with the GL, Tax, and Cashbook modules." >}}
 
@@ -413,7 +392,7 @@ The edit form contains all the same tabs as create, plus additional tabs that on
 
 #### Additional Edit-Only Tabs
 
-**ARAP Tab** *(hidden if disabled in Application Settings)*
+**ARAP Tab**
 
 {{< callout type="tip" >}}
 **TL;DR** — Shows the current state of what the customer owes on this invoice. Read-only, auto-computed.
@@ -431,7 +410,7 @@ ARAP = Accounts Receivable / Accounts Payable. Once finalized, the customer owes
 | **Contra** | Credit notes or offsets applied against this invoice. |
 | **Outstanding** | Net amount the customer still owes after all payments and contras. |
 
-**TraceDocument Tab** *(hidden if disabled in Application Settings)*
+**TraceDocument Tab**
 
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-trace-document-tab.png" alt="TraceDocument Tab - detailed GL journal entry audit" caption="Accounting Traceability: Providing a complete audit trail of every General Ledger entry created by the invoice." >}}
 
@@ -447,7 +426,7 @@ Shows the **accounting journal entries** (GL postings) that were created in the 
 - **Doc Link** = *document relationships* — which upstream documents (Sales Orders, Quotations) this invoice was created from, and which downstream documents (Credit Notes, Debit Notes) were later created from it.
 {{< /callout >}}
 
-**Contra Tab** *(hidden if disabled in Application Settings)*
+**Contra Tab**
 
 {{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-contra-tab.png" alt="Contra Tab - offsetting balances against other documents" caption="Contra Offsets: Managing the netting-off of balances against existing customer credits or debit notes." >}}
 
@@ -622,9 +601,21 @@ Accessed via the top navigation. All settings here are system-wide and affect al
 
 ### Application Settings
 
+{{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-application-settings.png" alt="Application Settings - field-level and tab-level visibility toggles" caption="Application Settings: System-wide configuration controlling which document number fields, tabs, buttons, and line item options are visible to all users of this applet." >}}
+
 Field-level visibility and behavior configuration. Controls which tabs, fields, and buttons are shown or hidden. Key configurable areas:
 - Which document number fields are visible (Tenant, Company, Branch, Client Doc 1–5)
-- Which tabs appear on the create/edit form (Delivery Details, KO For, Department Hdr, ARAP, Posting, TraceDocument, Contra, Doc Link, Attachment, Export)
+- Which tabs appear on the create/edit form. The following tabs are individually toggleable and will not appear in the create/edit form unless enabled here:
+  - **Delivery Details** — bulk-apply delivery information across all line items, with Pick Pack / External Delivery / Internal Delivery / Pickup sub-tabs
+  - **KO For** — link this invoice to the upstream document it was raised against. Each supported upstream document type (Sales Order, Jobsheet, Sales Quotation, Delivery Order) is also independently toggleable
+  - **Department Hdr** — tag the entire invoice to an internal cost center or department
+  - **Posting** — read-only system posting status for each financial subsystem after finalization
+  - **ARAP** — read-only view of the customer's outstanding balance on this invoice
+  - **TraceDocument** — read-only view of the GL journal entries posted by the invoice
+  - **Contra** — apply an existing credit or debit document against this invoice
+  - **Doc Link** — upstream and downstream document relationships
+  - **Attachment** — supporting documents stored against the invoice
+  - **Export** — data export options for external accounting systems
 - Which line item price fields are visible (standard, net, UOM, transaction price, discount)
 - Whether currency and foreign exchange fields are shown
 - Whether the FINAL, DISCARD, and VOID buttons appear on the listing
@@ -665,11 +656,9 @@ User-level customization. Unlike Settings (system-wide), Personalization applies
 
 ### Personal Default Selection
 
+{{< figure src="/images/internal-sales-invoice-no-stock-out-applet/invoice-no-stock-out-personal-default-selection.png" alt="Personal Default Selection - per-user defaults for Branch and Location" caption="Personal Default Selection: User-level defaults that override the system-wide Application Settings for this user only." >}}
+
 Personal default values for Branch, Location, and Company — overrides the system-wide defaults from Settings for this user only.
-
-### Sidebar Configuration
-
-Controls which sidebar menu items appear and in what order for this user.
 
 ---
 
