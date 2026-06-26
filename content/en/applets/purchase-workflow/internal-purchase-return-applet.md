@@ -118,14 +118,28 @@ Procurement Lifecycle
 
 Understanding the state transitions is essential for effective management.
 
-| Stage | Status | System Action | Financial Impact |
-|-------|--------|---------------|-----------------|
-| **1. Creation** | **Draft** | Return recorded, not yet posted | **No GL/Stock Impact** |
-| **2. Finalization** | **Final** | Stock deducted, AP credited | **Stock Reduced + AP Credit Posted** |
-| **3. Settlement** | **Settled/Contra** | Financial closure recorded | **Supplier Balance Cleared** |
+| Status | Description | System Action | Financial Impact |
+|--------|-------------|---------------|-----------------|
+| **Draft** | Working document, freely editable. No posting has occurred. | Return recorded, not yet posted | **No GL/Stock Impact** |
+| **Final** | Locked legal document. Stock deducted and AP credited. Cannot be edited — requires a VOID to reverse. | Stock deducted, AP credited | **Stock Reduced + AP Credit Posted** |
+| **Void** | Reversed document. The system preserves the record but nullifies all financial postings and inventory adjustments. | GL entries reversed, stock restored | **All Financial Impact Reversed** |
+| **Discarded** | Permanently removed draft. Only available on Draft documents. The document is deleted from the system. | Document removed | **No Impact (was never posted)** |
+| **Settled/Contra** | Financial closure recorded via Contra offset or cash refund Settlement. | Settlement or contra applied | **Supplier Balance Cleared** |
+
+```
+CREATE → DRAFT
+           │
+           ├── FINAL ──→ Finalized (GL posted, stock deducted)
+           │               │
+           │               ├── VOID ──→ Reversed (GL and stock restored)
+           │               │
+           │               └── Settlement / Contra ──→ Financial closure
+           │
+           └── DISCARD ──→ Removed (draft deleted)
+```
 
 {{< callout type="warning" >}}
-**Draft vs. Final**: Only **Draft** documents can be edited or deleted. Once set to **Final**, the document is locked and requires a reversal or Debit Note to correct.
+**Draft vs. Final**: Only **Draft** documents can be edited or discarded. Once set to **Final**, the document is locked and requires a **VOID** to reverse. Voided documents preserve the audit trail but nullify all financial impact.
 {{< /callout >}}
 
 ---
@@ -137,10 +151,13 @@ Understanding the state transitions is essential for effective management.
 **Goal:** Record a return for damaged goods and update inventory.
 
 1.  **Navigate**: Go to **Purchase Return** > **"+" (Add)**.
-2.  **Link Document**: Click **"Search Existing Document"** and select the original **GRN** or **PI**.
-3.  **Pick Items**: Select the items to return and specify the **Return Quantity**.
-4.  **Review**: Check the **Location** (from where stock will be deducted).
-5.  **Finalize**: Click **Final**. Inventory is now officially reduced.
+2.  **Link Document**: In the **Search Document** tab, click **"Search Existing Document"** and select the original **GRN** or **PI**.
+3.  **Fill Header**: In the **Main Details** tab, set the Branch, Location, and Transaction Date.
+4.  **Select Supplier**: In the **Account** tab, verify or select the supplier entity.
+5.  **Pick Items**: In the **Line Items** tab, select the items to return and specify the **Return Quantity**.
+6.  **Review**: Check the **Delivery Details** tab to confirm the Location (from where stock will be deducted).
+7.  **Save**: Click **CREATE** to save the return as a **Draft**.
+8.  **Finalize**: Click **FINAL** from the listing or edit screen. Inventory is now officially reduced.
 
 {{< figure src="/images/internal-purchase-return-applet/purchase-return-create.png" alt="Purchase Return Creation Form" caption="Creation Form: Add return items manually or link to existing GRN/Purchase Invoices." >}}
 
@@ -149,18 +166,18 @@ Understanding the state transitions is essential for effective management.
 
 **Goal:** Close the return once the supplier provides a refund or credit.
 
-1.  **Open Return**: Locate the finalized PR document.
+1.  **Open Return**: Locate the finalized PR document from the listing and click to edit.
 2.  **Choose Path**:
-    *   **Contra**: Use the return to offset another unpaid invoice from the same supplier.
-    *   **Settlement**: Record a cash refund received via Bank/Cash.
-3.  **Confirm**: Save. The PR status will update to reflect the financial closure.
+    *   **Contra**: Go to the **Contra** tab → Select outstanding invoices from the same supplier → Apply the offset.
+    *   **Settlement**: Go to the **Settlement** tab → Enter the Bank/Cash account → Enter the refund amount → Save.
+3.  **Verify**: Check the **ARAP** tab to confirm the supplier balance has been updated correctly.
 
 ### For Administrators: Initial Setup
 
 **Goal:** Prepare the applet for the procurement team.
 
 1.  **Default Selection**: Set the default "Return Warehouse" in `Settings > Default Selection`.
-2.  **Field Settings**: Enable "Reason Code" as a mandatory field in `Settings > Field Settings`.
+2.  **Application Settings**: Enable "Reason Code" as a mandatory field in `Settings > Application Settings`.
 3.  **Perms**: Assign the "Purchase Return Finalizer" permission set to relevant leads.
 4.  **Print Format**: Upload the company logo to `Settings > Printable Format Settings`.
 5.  **Test**: Perform a test return and verify the GL impact in Document Tracing.
@@ -175,21 +192,20 @@ Understanding the state transitions is essential for effective management.
 Use this when returning goods without a specific source document reference (e.g., for goods received without invoice).
 
 1. Click **"+"** (Add) from the main Purchase Return listing.
-2. Select the **Supplier** (Entity ID).
-3. Choose the **Branch** and **Location** (where the goods are physically stored).
-4. Set the **Transaction Date**.
-5. Click **"Add Item"** to add line items manually, specify Item codes and return quantities.
-6. Add a **Reason Code** or **Remarks** for audit purposes.
-7. Save as **Draft**, then review before finalizing.
+2. **Account tab**: Select the **Supplier** (Entity ID).
+3. **Main Details tab**: Choose the **Branch** and **Location** (where the goods are physically stored). Set the **Transaction Date**.
+4. **Line Items tab**: Click **"Add Item"** to add line items manually, specify Item codes and return quantities.
+5. **Main Details tab**: Add a **Reason Code** or **Remarks** for audit purposes.
+6. Click **CREATE** to save as **Draft**, then review before finalizing.
 
 **Method 2: Create from Existing Document (Recommended)**
 Use this when returning against an original GRN or Purchase Invoice for accurate costing and linkage.
 
-1. Click **"Search Existing Document"** on the create form.
-2. Search by original GRN or PI number.
-3. Select the document — all item, price, and supplier details auto-populate.
-4. Adjust **Return Quantity** per line (cannot exceed original received quantity).
-5. Save as **Draft** → Finalize after verification.
+1. Click **"+"** (Add) from the main Purchase Return listing.
+2. **Search Document tab**: Click **"Search Existing Document"** and search by original GRN or PI number.
+3. Select the document — all item, price, and supplier details auto-populate into the **Account** and **Line Items** tabs.
+4. **Line Items tab**: Adjust **Return Quantity** per line (cannot exceed original received quantity).
+5. Click **CREATE** to save as **Draft** → Click **FINAL** after verification.
 
 {{< callout type="tip" >}}
 **Best Practice**: Always prefer Method 2. It inherits the exact unit cost from the original GRN/Invoice, ensuring your inventory valuation and AP entries are accurate.
@@ -197,16 +213,14 @@ Use this when returning against an original GRN or Purchase Invoice for accurate
 
 ### Management & Control
 
-**1. Status Monitoring**
-*   **Draft**: Working documents. No financial impact. Freely editable.
-*   **Final**: Legal documents. Locked. Requires a reversal to undo.
-*   **Voided/Cancelled**: Reversed document. The system preserves the record but nullifies the financial posting.
-
 {{< figure src="/images/internal-purchase-return-applet/purchase-return-edit.png" alt="Purchase Return Edit Mode" caption="Edit Mode: Modify draft documents, add reason codes, and review details before finalization." >}}
 
-
-**2. Handling Exceptions**
+**Handling Exceptions**
 Sensitive actions (e.g., returning quantities above the original GRN, return date outside the purchase period) may require manager approval based on Workflow Settings.
+
+{{< callout type="info" >}}
+**Status Reference**: See [Document Status Lifecycle](#document-status-lifecycle) above for the complete status flow including Draft, Final, Void, Discarded, and Settled/Contra with their descriptions and financial impact.
+{{< /callout >}}
 
 ---
 
@@ -216,16 +230,20 @@ Sensitive actions (e.g., returning quantities above the original GRN, return dat
 
 This is the most common settlement method. It allows you to "knock off" the value of a return against what you still owe the supplier on other invoices.
 
-- **Workflow**: PR Document > Contra Tab > Select Outstanding Invoices > Apply.
+- **Tab**: Open the finalized PR document → go to the **Contra** tab.
+- **Workflow**: Click **Select Document to Contra With** → choose outstanding invoices from the same supplier → set the contra amount → click **Apply**.
 - **Impact**: Reduces your Accounts Payable (AP) without any bank transaction.
+- **Verification**: Check the **ARAP** tab to confirm the updated Doc Open Amount and Balance.
 - **Use Case**: You returned RM 500 of goods and have a RM 2,000 invoice outstanding. The contra offsets the return against the invoice, leaving only RM 1,500 payable.
 
 ### Settlement (Recording Refunds)
 
 Use this when a supplier physically returns money to you (e.g., a bank transfer).
 
-- **Workflow**: PR Document > Settlement Tab > Enter Bank/Cash Account > Enter Amount > Save.
+- **Tab**: Open the finalized PR document → go to the **Settlement** tab.
+- **Workflow**: Click **Add Settlement** → enter the Bank/Cash account → enter the refund amount and date → click **Save**.
 - **Impact**: Reduces your AP balance and records a receipt in your bank/cash book.
+- **Verification**: Check the **ARAP** tab to confirm the settlement has been recorded.
 - **Use Case**: Supplier agrees to issue a refund and transfers the amount back to your company account.
 
 ### e-Invoice Compliance
@@ -248,20 +266,21 @@ Every finalized Purchase Return creates an automatic accounting entry in the Acc
 
 ### Document Tracing
 
-The **Trace** button provides a complete forensic audit trail.
+Open a finalized PR document → go to the **TraceDocument** tab to access the complete forensic audit trail. You can also use the **Posting** tab to view the GL journal entries directly.
 
-*   **Financials**: Review the exact Journal Entries (e.g., Debit Inventory / Credit AP) generated.
+*   **Financials** (Posting tab): Review the exact Journal Entries (e.g., Debit Inventory / Credit AP) generated.
 *   **Inventory**: Verify which Batch or Serial Number was removed from which Location.
 *   **Upstream**: See the original GRN and PI this return was derived from.
 *   **Downstream**: See any Contra or Settlement documents linked to this return.
 
 ### Attachments
 
-Store documentary evidence directly on the return record.
+Open any PR document → go to the **Attachment** tab to store documentary evidence directly on the return record.
 
 - **Use Case**: Attach supplier damage photos, quality reject certificates, or signed return authorization forms (RMA).
 - **Format**: Supports PDF, JPG, PNG, and other common file types.
 - **Access**: Attachments are visible to all users with read access to the document.
+- **Audit**: Each attachment is logged with the uploader's name and timestamp.
 
 ### Line Reports
 
@@ -302,7 +321,7 @@ Access the **Personalization** menu to adapt the applet to your specific role.
 
 System Administrators can fine-tune behavior via the Settings panel.
 - **Default Selection**: Set default branch, location, and other pre-fill values.
-- **Field Settings**: Toggle visibility of fields like Reason Code, Permit No, etc.
+- **Application Settings**: Toggle visibility of fields like Reason Code, Permit No, etc.
 - **Printable Format Settings**: Customize the Debit Note PDF layout with company branding.
 - **Webhooks**: Set up event-driven notifications to external systems.
 
@@ -331,7 +350,7 @@ This section provides a comprehensive reference of all menu items, settings, per
 | Setting | Description | Route Path |
 |---------|-------------|------------|
 | **Default Selection** | Configure default branch, location, and other selection defaults | `/settings/default-selection` |
-| **Field Settings** | Toggle visibility and behavior of form fields | `/settings/field-settings` |
+| **Application Settings** | Toggle visibility and behavior of form fields | `/settings/application-settings` |
 | **Printable Format Settings** | Customize PDF layouts for Debit Note, etc. | `/settings/printable-format-settings` |
 | **Email Template** | Configure automated email templates for notifications | `/settings/email-template` |
 | **Webhook** | Set up event-driven integrations with external systems | `/settings/webhook` |
@@ -367,7 +386,7 @@ This section provides detailed explanations of each settings option, including t
 
 ---
 
-### Field Settings
+### Application Settings
 
 **Purpose:** Control which fields are visible, required, or hidden based on user roles and business requirements. This enforces data governance and simplifies the user interface.
 
@@ -539,7 +558,7 @@ The applet provides **four layers** of permission control for granular access ma
 **A:** Yes. If you purchased in USD, the system will process the return in USD, maintaining the exchange rate used in the original transaction to avoid currency fluctuation errors in inventory valuation.
 
 **Q5: What if the supplier replaces the item instead of issuing a refund?**
-**A:** Still process the **Purchase Return** to clear the defective stock from your inventory. Then process a new **GRN** or **Purchase Invoice** when the replacement goods arrive. Do not skip the return â€” it ensures your inventory count remains accurate.
+**A:** Still process the **Purchase Return** to clear the defective stock from your inventory. Then process a new **GRN** or **Purchase Invoice** when the replacement goods arrive. Do not skip the return — it ensures your inventory count remains accurate.
 
 **Q6: What is the difference between Contra and Settlement?**
 **A:**
@@ -547,7 +566,7 @@ The applet provides **four layers** of permission control for granular access ma
 - **Settlement** is a cash-based resolution. The supplier physically transfers money back to you, and you record it as a receipt in your bank or cash book.
 
 **Q7: If I finalize a Purchase Return by mistake, can I undo it?**
-**A:** You cannot "un-finalize" directly. You must create a **reversal** or contact an administrator to void the document, depending on your configured workflow settings. Always review the document carefully before clicking **Final**.
+**A:** You cannot "un-finalize" directly. Use the **VOID** action to reverse the document — this nullifies all GL entries and restores stock, while preserving the audit trail. VOID requires appropriate permissions (typically restricted to Finance Managers). Always review the document carefully before clicking **FINAL**.
 
 **Q8: Do I need to create a separate Debit Note for the supplier?**
 **A:** No. The finalized Purchase Return document *is* the Debit Note. You can print it directly using the **Printable Format** configured in Settings, and send it to your supplier as formal documentation.
