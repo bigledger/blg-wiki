@@ -144,6 +144,8 @@ Get up and running quickly with these essential workflows.
 4. **Monitor**: Click [**Batch Pool**](#3-batch-pool) — the status column updates from **Pending** to **Submitted** or **Rejected**
 5. **Confirm**: Click [**Internal Submission → Submission History**](#submission-history) — a **Submitted** status confirms LHDN acceptance
 
+{{< figure src="/images/my-e-invoice-admin-applet/posting-queue-submit.png" alt="Posting Queue listing with a document selected and the Submit button highlighted" caption="Posting Queue: Select documents and click Submit to send them to LHDN for validation." >}}
+
 **What happens next?** Validated documents are available for Peppol distribution via My Peppol Admin Applet.
 
 **Pro Tip:** Verify TIN and BRN are correct before submitting — these are the most common cause of immediate rejection.
@@ -159,6 +161,8 @@ Get up and running quickly with these essential workflows.
 3. **Read Error**: Click the document — read the LHDN error code and error description carefully
 4. **Correct**: Fix the flagged field directly in the Batch Pool interface, or return to the originating Sales/Purchase applet for larger corrections
 5. **Resubmit**: Click **Resubmit** — monitor for the updated LHDN response
+
+{{< figure src="/images/my-e-invoice-admin-applet/batch-pool-validation-error.png" alt="Batch Pool with a document selected showing the Validation Error panel listing missing fields such as Supplier TIN, Supplier ID type, and Supplier address" caption="Batch Pool — Validation Error: Click a document to view detailed error messages. Fix the flagged fields before resubmitting." >}}
 
 {{< callout type="warning" >}}
 **Important**: Do not resubmit without correcting the flagged field. An unchanged rejected document will receive the same rejection from LHDN.
@@ -483,6 +487,8 @@ The sidebar includes **External Reception** and **Reconciliation** sections that
 
 External Reception manages all e-invoices received from the Peppol/LHDN network — these are documents sent to your company by your suppliers or trading partners.
 
+{{< figure src="/images/my-e-invoice-admin-applet/external-reception-queue.png" alt="External Submission Queue Listing showing incoming documents with Buyer Name, Buyer Tax ID, Supplier Name, Supplier Tax ID, Receiver ID, and Receiver Name columns" caption="External Reception — Queue: All incoming e-invoices from suppliers awaiting processing, with buyer and supplier details for verification." >}}
+
 | Sub-menu | Purpose | When to Use |
 |----------|---------|-------------|
 | **Queue** | Incoming e-invoices from LHDN awaiting processing into your system | Check daily for new incoming documents that need to be processed |
@@ -497,6 +503,8 @@ External Reception manages all e-invoices received from the Peppol/LHDN network 
 
 Purchase Reconciliation matches your internal purchase documents against incoming e-invoices from suppliers to ensure both sides agree on amounts and details.
 
+{{< figure src="/images/my-e-invoice-admin-applet/reconciliation-purchase-matching.png" alt="Purchase Doc Matching Queue listing showing documents with Doc Version, Doc No, Doc Short Code, Company, Entity Name, Document Date, Amount, and Status columns, with Auto Match, Export, and Push to Unmatched History action buttons" caption="Purchase Reconciliation — PD Matching Queue: Match purchase documents against incoming supplier e-invoices. Use Auto Match for automatic pairing, or Push to Unmatched History for manual review." >}}
+
 | Sub-menu | Purpose | When to Use |
 |----------|---------|-------------|
 | **PD Matching Q.** | Purchase documents awaiting matching against incoming e-invoices | Review documents waiting to be matched — system auto-matches where possible |
@@ -508,6 +516,8 @@ Purchase Reconciliation matches your internal purchase documents against incomin
 ### Reconciliation (Sales)
 
 Sales Reconciliation matches your internal sales documents against incoming e-commerce platform e-invoices to detect discrepancies.
+
+{{< figure src="/images/my-e-invoice-admin-applet/reconciliation-sales-matching.png" alt="Sales Doc Matching Queue listing showing documents with Doc Version, Doc No, Doc Short Code, Company, Entity Name, Document Date, Amount, and Status columns, with Auto Match, Export, and Push to Unmatched History action buttons" caption="Sales Reconciliation — SD Matching Queue: Match sales documents against incoming e-commerce e-invoices. Same workflow as Purchase Reconciliation." >}}
 
 | Sub-menu | Purpose | When to Use |
 |----------|---------|-------------|
@@ -528,6 +538,10 @@ Sales Reconciliation matches your internal sales documents against incoming e-co
 The Cancellation section has two sub-menus: **Rejection Requests** and **Cancellation Queue**.
 
 {{< figure src="/images/my-e-invoice-admin-applet/cancellation.png" alt="Cancellation listing page showing rejection requests submitted to LHDN with document reference, cancellation reason, request date and LHDN approval status" caption="Cancellation → Rejection Requests: Submit and track LHDN cancellation requests for validated e-invoices." >}}
+
+{{< figure src="/images/my-e-invoice-admin-applet/cancellation-rejection-requests.png" alt="Rejection Requests listing showing documents with System Requestor Status, System Processing Status, System Approval Status, and Request Submission Date columns" caption="Rejection Requests: Track cancellation request statuses — from REQUESTED through IN-PROGRESS to COMPLETED/APPROVED." >}}
+
+{{< figure src="/images/my-e-invoice-admin-applet/cancellation-queue-details.png" alt="Cancellation Queue with detail panel showing Server Doc Type, Currency, Amount, Transaction Date, Request Submission Status, Processing Logic, Cancellation Request Date, and Request Error fields" caption="Cancellation Queue Details: View cancellation details including submission status, processing logic, and any request errors (e.g. 'Passed 72 hours from validation date time')." >}}
 
 | Sub-menu | Purpose |
 |----------|---------|
