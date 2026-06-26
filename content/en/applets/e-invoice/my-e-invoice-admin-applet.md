@@ -139,10 +139,10 @@ Get up and running quickly with these essential workflows.
 **Goal:** Get a document from staging to LHDN-validated in 5 steps.
 
 1. **Open**: Go to **My E-Invoice Admin Applet** from the launchpad
-2. **Check Queue**: Click **Posting Queue** in the left sidebar — find your document
-3. **Submit**: Select the document and click **Submit** — it moves to Batch Pool for processing
-4. **Monitor**: Click **Batch Pool** — the status column updates from **Pending** to **Submitted** or **Rejected**
-5. **Confirm**: Click **Internal Submission → Submission History** — a **Submitted** status confirms LHDN acceptance
+2. **Check Queue**: Click [**Posting Queue**](#2-posting-queue) in the left sidebar — find your document
+3. **Submit**: Select the document and click **Submit** — it moves to [Batch Pool](#3-batch-pool) for processing
+4. **Monitor**: Click [**Batch Pool**](#3-batch-pool) — the status column updates from **Pending** to **Submitted** or **Rejected**
+5. **Confirm**: Click [**Internal Submission → Submission History**](#submission-history) — a **Submitted** status confirms LHDN acceptance
 
 **What happens next?** Validated documents are available for Peppol distribution via My Peppol Admin Applet.
 
@@ -154,7 +154,7 @@ Get up and running quickly with these essential workflows.
 
 **Goal:** Fix a rejected document and resubmit to LHDN.
 
-1. **Open Batch Pool**: Click **Batch Pool** in the left sidebar
+1. **Open Batch Pool**: Click [**Batch Pool**](#3-batch-pool) in the left sidebar
 2. **Find Rejected**: Look for documents with **Rejected** status
 3. **Read Error**: Click the document — read the LHDN error code and error description carefully
 4. **Correct**: Fix the flagged field directly in the Batch Pool interface, or return to the originating Sales/Purchase applet for larger corrections
@@ -184,11 +184,11 @@ Result: LHDN accepts document → Status: Submitted
 
 **Goal:** Submit multiple documents at once using Batch Pool.
 
-1. **Go to Posting Queue**: Click **Posting Queue** in the sidebar
+1. **Go to Posting Queue**: Click [**Posting Queue**](#2-posting-queue) in the sidebar
 2. **Select Documents**: Tick all documents ready for submission
 3. **Submit Batch**: Click **Submit** — all selected documents are sent to LHDN together
-4. **Open Batch Pool**: Click **Batch Pool** to see per-document results
-5. **Resolve Errors**: For any **Rejected** documents, correct and resubmit within Batch Pool
+4. **Open Batch Pool**: Click [**Batch Pool**](#3-batch-pool) to see per-document results
+5. **Resolve Errors**: For any **Rejected** documents, correct and resubmit within [Batch Pool](#3-batch-pool)
 
 **Pro Tip:** Group submissions by document type (all sales invoices together, then credit notes) for easier error tracking.
 
@@ -202,7 +202,7 @@ Result: LHDN accepts document → Status: Submitted
 - Confirm the document is within LHDN's cancellation window
 - Prepare the reason for cancellation
 
-**Step 2: Submit Cancellation** (left sidebar → **Cancellation**)
+**Step 2: Submit Cancellation** (left sidebar → [**Cancellation**](#7-cancellation))
 - Locate the validated invoice in the list
 - Click **Request Cancellation**
 - Enter the cancellation reason (required by LHDN)
@@ -261,6 +261,16 @@ Documents appear in the Posting Queue automatically when:
 - A sales invoice is approved in the Sales Applet
 - A purchase invoice is confirmed in the Purchase Applet
 - A credit note or debit note is finalised
+
+### Action Buttons
+
+| Button | What It Does |
+|--------|-------------|
+| **Submit** | Sends selected documents to LHDN for validation via Batch Pool |
+| **Process** | Triggers processing of selected documents through the submission pipeline |
+| **Consolidate** | Groups multiple related documents into a single consolidated submission |
+| **Export** | Downloads the listed documents as a file for offline review or reporting |
+| **Withdraw** | Removes selected documents from the queue back to Draft status without submitting |
 
 ### Submitting from the Queue
 
@@ -368,6 +378,13 @@ The Internal Submission section provides a full breakdown of all outgoing LHDN s
 
 Shows all documents submitted to LHDN's IRB (Inland Revenue Board) e-invoice portal. This is the primary outgoing submission view for tax invoice compliance.
 
+**To IRB Listing vs To IRB Export:**
+
+| View | Purpose |
+|------|---------|
+| **To IRB Listing** | Interactive on-screen view of all outgoing IRB submissions — search, filter, click into individual documents for details |
+| **To IRB Export** | Download/export the same submission data as a file (CSV/Excel) for offline reporting, auditing, or sharing with external stakeholders |
+
 **Use this to:**
 - Confirm a document was transmitted to LHDN
 - Retrieve the IRB tracking reference number
@@ -464,33 +481,44 @@ The sidebar includes **External Reception** and **Reconciliation** sections that
 
 ### External Reception
 
-| Sub-menu | Purpose |
-|----------|---------|
-| **Queue** | Incoming e-invoices from LHDN awaiting processing |
-| **From IRB E-Invoice** | E-invoices received from the LHDN IRB portal |
+External Reception manages all e-invoices received from the Peppol/LHDN network — these are documents sent to your company by your suppliers or trading partners.
+
+| Sub-menu | Purpose | When to Use |
+|----------|---------|-------------|
+| **Queue** | Incoming e-invoices from LHDN awaiting processing into your system | Check daily for new incoming documents that need to be processed |
+| **From IRB E-Invoice** | E-invoices received from the LHDN IRB portal — the complete list of all received documents | Review received e-invoices, verify supplier details and amounts before processing |
+
+**Workflow:**
+1. Supplier sends e-invoice via Peppol/LHDN → document arrives in **Queue**
+2. System processes the document → moves to **From IRB E-Invoice** upon successful processing
+3. If processing fails → document stays in **Queue** with an error status for resolution
 
 ### Reconciliation (Purchase)
 
-| Sub-menu | Purpose |
-|----------|---------|
-| **PD Matching Q.** | Purchase documents awaiting matching against incoming e-invoices |
-| **Inc. E-Invoice Match Q.** | Incoming e-invoices queued for matching against purchase documents |
-| **Matched History** | Archive of successfully matched purchase document pairs |
-| **Inc. Unmtch. E-Inv. Hist.** | Incoming e-invoices that could not be matched |
-| **Unmatched PD Hist.** | Purchase documents that could not be matched |
+Purchase Reconciliation matches your internal purchase documents against incoming e-invoices from suppliers to ensure both sides agree on amounts and details.
+
+| Sub-menu | Purpose | When to Use |
+|----------|---------|-------------|
+| **PD Matching Q.** | Purchase documents awaiting matching against incoming e-invoices | Review documents waiting to be matched — system auto-matches where possible |
+| **Inc. E-Invoice Match Q.** | Incoming e-invoices queued for matching against your purchase documents | Check for supplier e-invoices that need to be matched to your internal records |
+| **Matched History** | Archive of successfully matched purchase document pairs | Audit and verify that matched pairs have correct amounts |
+| **Inc. Unmtch. E-Inv. Hist.** | Incoming e-invoices that could not be automatically matched | Investigate — may indicate missing purchase orders or supplier discrepancies |
+| **Unmatched PD Hist.** | Purchase documents that could not be matched to any incoming e-invoice | Follow up — the supplier may not have submitted their e-invoice yet |
 
 ### Reconciliation (Sales)
 
-| Sub-menu | Purpose |
-|----------|---------|
-| **SD Matching Q.** | Sales documents awaiting matching |
-| **Inc. Ecom Matcd. Q.** | Incoming e-commerce e-invoices queued for matching |
-| **Matched History** | Archive of successfully matched sales document pairs |
-| **Inc. Ecom Unmatcd. Hist.** | Unmatched incoming e-commerce e-invoices |
-| **SD Unmatcd. Hist.** | Unmatched sales documents |
+Sales Reconciliation matches your internal sales documents against incoming e-commerce platform e-invoices to detect discrepancies.
 
-{{< callout type="info" >}}
-**Note**: Detailed step-by-step documentation for External Reception and Reconciliation workflows is covered separately.
+| Sub-menu | Purpose | When to Use |
+|----------|---------|-------------|
+| **SD Matching Q.** | Sales documents awaiting matching | Review sales documents waiting for matching against e-commerce records |
+| **Inc. Ecom Matcd. Q.** | Incoming e-commerce e-invoices queued for matching | Check e-commerce platform invoices pending matching to your sales records |
+| **Matched History** | Archive of successfully matched sales document pairs | Month-end reconciliation — verify all sales are properly matched |
+| **Inc. Ecom Unmatcd. Hist.** | Unmatched incoming e-commerce e-invoices | Investigate — may indicate missing sales records or platform sync issues |
+| **SD Unmatcd. Hist.** | Unmatched sales documents | Follow up — the e-commerce platform may not have sent the corresponding e-invoice |
+
+{{< callout type="tip" >}}
+**Month-End Reconciliation Tip**: Start with the **Unmatched** queues — these highlight gaps between your records and what LHDN/Peppol has received. Resolve unmatched items before running the Monthly Report for a clean compliance close.
 {{< /callout >}}
 
 ---
