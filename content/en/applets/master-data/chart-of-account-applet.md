@@ -12,7 +12,7 @@ weight: 20
 
 ## Purpose and Overview
 
-The **Chart of Account Applet** is the architectural backbone of your financial system. It provides a centralized interface to define, structure, and control the complete hierarchy of your organization's financial ecosystemâ€”from high-level Companies and Sets of Books down to granular General Ledger (GL) Codes and Categories.
+The **Chart of Account Applet** is the architectural backbone of your financial system. It provides a centralized interface to define, structure, and control the complete hierarchy of your organization's financial ecosystem—from high-level Companies and Sets of Books down to granular General Ledger (GL) Codes and Categories.
 
 {{< callout type="info" >}}
 **Core Concept**: This applet acts as the **architect** of your financial data, ensuring every transaction finds its correct home through a structured hierarchy of **Sections**, **Categories**, and **Codes**.
@@ -59,9 +59,9 @@ Without a centralized and disciplined system, financial accounts can become frag
 
 **The Chart of Account Applet Solution:**
 
-- **Structured Hierarchy** - Enforces a clear `Section â†’ Category â†’ Code` relationship
+- **Structured Hierarchy** - Enforces a clear `Section → Category → Code` relationship
 - **Unified Management** - Manage multiple Companies and Sets of Books in one place
-- **Flexible Maintenance** - Easily merge duplicates with a guided "Source â†’ Target" workflow
+- **Flexible Maintenance** - Easily merge duplicates with a guided "Source → Target" workflow
 - **Fiscal Control** - Precise definition of financial periods with 4-level locking status
 - **Automated Imports** - Bulk upload capabilities to set up or migrate accounts quickly
 - **Multi-Dimensional Analysis** - Segments, Dimensions, Profit Centers, and Projects for granular reporting
@@ -141,22 +141,22 @@ At the heart of the applet is a strict 3-level hierarchy designed to ensure accu
 
 ```
 Organization
-â”‚
-â”œâ”€â”€ GL Section (Level 1) â”€â”€â†’ Assets, Liabilities, Equity, Revenue, Expenses
-â”‚   â”‚
-â”‚   â””â”€â”€ GL Category (Level 2) â”€â”€â†’ Current Assets, Fixed Assets, Trade Debtors
-â”‚       â”‚
-â”‚       â””â”€â”€ GL Code (Level 3) â”€â”€â†’ 1000-01 Petty Cash, 1010-01 Bank ABC
-â”‚
-â”œâ”€â”€ Company â”€â”€â†’ Legal entity with currency and fiscal settings
-â”‚   â”‚
-â”‚   â””â”€â”€ Set of Books â”€â”€â†’ Accounting book container
-â”‚       â”‚
-â”‚       â””â”€â”€ Ledgers & Sub-Ledgers â”€â”€â†’ Detailed transaction tracking
-â”‚
-â””â”€â”€ Fiscal Year â”€â”€â†’ Accounting periods with locking controls
-    â”‚
-    â””â”€â”€ Fiscal Periods â”€â”€â†’ Monthly/custom periods with status controls
+│
+├── GL Section (Level 1) ──→ Assets, Liabilities, Equity, Revenue, Expenses
+│   │
+│   └── GL Category (Level 2) ──→ Current Assets, Fixed Assets, Trade Debtors
+│       │
+│       └── GL Code (Level 3) ──→ 1000-01 Petty Cash, 1010-01 Bank ABC
+│
+├── Company ──→ Legal entity with currency and fiscal settings
+│   │
+│   └── Set of Books ──→ Accounting book container
+│       │
+│       └── Ledgers & Sub-Ledgers ──→ Detailed transaction tracking
+│
+└── Fiscal Year ──→ Accounting periods with locking controls
+    │
+    └── Fiscal Periods ──→ Monthly/custom periods with status controls
 ```
 
 {{< callout type="tip" >}}
@@ -200,7 +200,7 @@ The system uses a 4-tier locking mechanism to protect your financial data integr
 
 Get your financial structure ready with these essential workflows.
 
-<!-- {{< figure src="/images/chart-of-account-applet/quick-start-flow.png" alt="Quick Start Flow" caption="The Setup Journey: Define Organization â†’ Set Fiscal Year â†’ Build Account Hierarchy." >}} -->
+<!-- {{< figure src="/images/chart-of-account-applet/quick-start-flow.png" alt="Quick Start Flow" caption="The Setup Journey: Define Organization → Set Fiscal Year → Build Account Hierarchy." >}} -->
 
 ### For Admins: Initial Organization Setup
 
@@ -269,15 +269,15 @@ Get your financial structure ready with these essential workflows.
 **Example Structure:**
 ```
 1000 - Assets                    (GL Section)
-â”œâ”€â”€ 1100 - Current Assets        (GL Category, linked to Assets via GL Section tab)
-â”‚   â”œâ”€â”€ 1101 - Petty Cash        (GL Code)
-â”‚   â”œâ”€â”€ 1102 - Cash at Bank - ABC
-â”‚   â”œâ”€â”€ 1103 - Cash at Bank - XYZ
-â”‚   â””â”€â”€ 1110 - Trade Debtors
-â”œâ”€â”€ 1500 - Fixed Assets          (GL Category, linked to Assets via GL Section tab)
-â”‚   â”œâ”€â”€ 1501 - Office Equipment
-â”‚   â”œâ”€â”€ 1502 - Motor Vehicles
-â”‚   â””â”€â”€ 1510 - Accumulated Depreciation
+├── 1100 - Current Assets        (GL Category, linked to Assets via GL Section tab)
+│   ├── 1101 - Petty Cash        (GL Code)
+│   ├── 1102 - Cash at Bank - ABC
+│   ├── 1103 - Cash at Bank - XYZ
+│   └── 1110 - Trade Debtors
+├── 1500 - Fixed Assets          (GL Category, linked to Assets via GL Section tab)
+│   ├── 1501 - Office Equipment
+│   ├── 1502 - Motor Vehicles
+│   └── 1510 - Accumulated Depreciation
 ```
 
 {{< callout type="tip" >}}
@@ -309,7 +309,7 @@ Get your financial structure ready with these essential workflows.
    - At month-end, open the Fiscal Year
    - Navigate to the **Fiscal Period** tab
    - **Click on the specific period row** to open **Fiscal Period Details**
-   - Change the **Closing Status** dropdown (`OPEN` â†’ `LOCK_GL`, `LOCK_TXN`, or `LOCK_ALL`)
+   - Change the **Closing Status** dropdown (`OPEN` → `LOCK_GL`, `LOCK_TXN`, or `LOCK_ALL`)
    - Click **SAVE**
 
 ---
@@ -324,11 +324,11 @@ The main hierarchical view showing your complete account structure.
 {{< figure src="/images/chart-of-account-applet/screenshots/coa-listing.png" alt="Chart of Account Listing" caption="Chart of Account listing showing the hierarchical tree view of all accounts." >}}
 
 **What You Can Do:**
-- âœ“ Drill-down from Section â†’ Category â†’ Code
-- âœ“ Quick audit for misclassified accounts
-- âœ“ Search and filter accounts
-- âœ“ Create new Charts of Account
-- âœ“ Delete a Chart of Account (with confirmation)
+- ✓ Drill-down from Section → Category → Code
+- ✓ Quick audit for misclassified accounts
+- ✓ Search and filter accounts
+- ✓ Create new Charts of Account
+- ✓ Delete a Chart of Account (with confirmation)
 
 **Creating a Chart of Account:**
 - **Required Fields**: COA Code (immutable after creation), COA Name
@@ -341,10 +341,10 @@ The main hierarchical view showing your complete account structure.
 | **Details** | COA Code (read-only), COA Name, Description. Also shows audit trail (Created By/Date, Updated By/Date) |
 | **GL Code Link** | Select a GL Code from the dropdown and **Add** or **Delete** the link |
 | **GL Code** | View all GL Codes within this Chart |
-| **Segment Tree** | Manage reporting segments â€” used to tag transactions by business unit (e.g., Retail, Wholesale, Online) |
-| **Dimension Tree** | Manage custom dimensions â€” flexible tags for cost tracking (e.g., Department, Region, Branch) |
-| **Profit Center Tree** | Manage profit centers â€” track revenue and expenses per unit for P&L analysis (e.g., KL Branch, Penang Branch) |
-| **Project Tree** | Manage projects â€” track financial data by project (e.g., "Office Renovation", "System Upgrade") |
+| **Segment Tree** | Manage reporting segments — used to tag transactions by business unit (e.g., Retail, Wholesale, Online) |
+| **Dimension Tree** | Manage custom dimensions — flexible tags for cost tracking (e.g., Department, Region, Branch) |
+| **Profit Center Tree** | Manage profit centers — track revenue and expenses per unit for P&L analysis (e.g., KL Branch, Penang Branch) |
+| **Project Tree** | Manage projects — track financial data by project (e.g., "Office Renovation", "System Upgrade") |
 
 > **Note**: Tab order is configurable via Applet Settings (`CHART_OF_ACCOUNT_DETAILS_TAB_ORDER`).
 
@@ -354,7 +354,7 @@ The main hierarchical view showing your complete account structure.
 
 ### Segments Tab
 
-In accounting, segments classify transactions by distinct operational divisions â€” such as business units, regions, or product lines â€” allowing financial reports to be broken down by each segment independently.
+In accounting, segments classify transactions by distinct operational divisions — such as business units, regions, or product lines — allowing financial reports to be broken down by each segment independently.
 
 Add reporting segments to your COA for multi-dimensional analysis.
 
@@ -377,7 +377,7 @@ Add reporting segments to your COA for multi-dimensional analysis.
 
 ### Dimensions Tab
 
-In accounting, dimensions (also called analysis dimensions) provide a flexible tagging system for transactions. Unlike the fixed GL Code hierarchy, dimensions let you cross-cut financial data by categories like departments, cost centers, or campaigns â€” without duplicating GL Codes.
+In accounting, dimensions (also called analysis dimensions) provide a flexible tagging system for transactions. Unlike the fixed GL Code hierarchy, dimensions let you cross-cut financial data by categories like departments, cost centers, or campaigns — without duplicating GL Codes.
 
 Add custom dimensions for advanced reporting.
 
@@ -419,7 +419,7 @@ Define profit centers for departmental P&L tracking.
 
 ### Project Tab
 
-In accounting, project tracking captures all revenue and expenses tied to a specific initiative â€” such as construction, a client engagement, or an internal upgrade â€” allowing organizations to monitor project-level profitability and budgets separately from day-to-day operations.
+In accounting, project tracking captures all revenue and expenses tied to a specific initiative — such as construction, a client engagement, or an internal upgrade — allowing organizations to monitor project-level profitability and budgets separately from day-to-day operations.
 
 Track financial data by project.
 
@@ -497,10 +497,10 @@ The primary workspace for managing individual accounts.
 
 | Field | Required |
 | :--- | :--- |
-| **GL Code** | âœ“ (cannot be modified after creation) |
-| **GL Name** | âœ“ |
-| **Chart of Account** | âœ“ (Select from the list of COAs) |
-| **GL Category** | âœ“ (Select from GL Categories module) |
+| **GL Code** | ✓ (cannot be modified after creation) |
+| **GL Name** | ✓ |
+| **Chart of Account** | ✓ (Select from the list of COAs) |
+| **GL Category** | ✓ (Select from GL Categories module) |
 | **Description** | Optional |
 | **Account No.** | Optional |
 | **Status** | Editable (dropdown) |
@@ -562,20 +562,20 @@ After creation, click on the Ledger to access:
 
 **Default GL Codes Tab:**
 
-Critical configuration for system automation.
+Critical configuration for system automation. Each field accepts **exactly one** GL Code — you map a single GL Code to a single default field (for example, one GL Code for "Sales", one for "Output Tax"). A field cannot hold more than one GL Code.
 
-| Tab | GL Codes |
-| :--- | :--- |
-| **General** | Retained Earnings, Profit/Loss, NSTI, Fixed Asset Register, Rounding, Settlement Charges |
-| **Entity** | Trade Debtor/Creditor, Non-Trade Debtor/Creditor, Trade Not Invoiced Debtor/Creditor, Non-Trade Not Invoiced Debtor/Creditor, Merchant Receivable/Payable, Employee Other Payable |
-| **Sales** | Sales, Sales Return, Sales Discount, Output Tax |
-| **Purchase** | Purchase, Purchase Return, Purchase Discount, Input Tax |
-| **Stock** | Stock Adjustment, Reset MA, Stock Balance, COGS, Inventory Not Invoiced, Raw Material (Stock Value + COGS), WIP (Closing + COGS), Finished Goods (Closing + COGS), NSTI (Closing + COGS) |
-| **Forex** | Forex Gain, Forex Loss |
-| **Consignment** | Consignment Stock, Consignment Liability |
+| Tab | GL Codes | Screenshot |
+| :--- | :--- | :--- |
+| **General** | Retained Earnings, Profit/Loss, NSTI, Fixed Asset Register, Rounding, Settlement Charges | [View](/images/chart-of-account-applet/screenshots/default-gl-codes-general.png) |
+| **Entity** | Trade Debtor/Creditor, Non-Trade Debtor/Creditor, Trade Not Invoiced Debtor/Creditor, Non-Trade Not Invoiced Debtor/Creditor, Merchant Receivable/Payable, Employee Other Payable | [View](/images/chart-of-account-applet/screenshots/default-gl-codes-entity.png) |
+| **Sales** | Sales, Sales Return, Sales Discount, Output Tax | [View](/images/chart-of-account-applet/screenshots/default-gl-codes-sales.png) |
+| **Purchase** | Purchase, Purchase Return, Purchase Discount, Input Tax | [View](/images/chart-of-account-applet/screenshots/default-gl-codes-purchase.png) |
+| **Stock** | Stock Adjustment, Reset MA, Stock Balance, COGS, Inventory Not Invoiced, Raw Material (Stock Value + COGS), WIP (Closing + COGS), Finished Goods (Closing + COGS), NSTI (Closing + COGS) | [View](/images/chart-of-account-applet/screenshots/default-gl-codes-stock.png) |
+| **Forex** | Forex Gain, Forex Loss | [View](/images/chart-of-account-applet/screenshots/default-gl-codes-forex.png) |
+| **Consignment** | Consignment Stock, Consignment Liability | [View](/images/chart-of-account-applet/screenshots/default-gl-codes-consignment.png) |
 
 {{< callout type="warning" >}}
-**Critical**: You MUST configure the Default GL Codes tab before operational documents can be processed correctly.
+**Critical**: You MUST configure the Default GL Codes tab before operational documents can be processed correctly. **If the relevant default GL Code is not set, no journal posting is created** for that transaction — the document may save, but it will not post to the General Ledger until the mapping is in place.
 {{< /callout >}}
 
 ---
@@ -583,7 +583,7 @@ Critical configuration for system automation.
 ### Set of Books Management
 *Menu: **Set Of Books***
 
-In accounting, a Set of Books is a complete, self-contained accounting record â€” grouping one or more ledgers together for a specific reporting purpose (e.g., statutory reporting, management reporting, or multi-currency consolidation).
+In accounting, a Set of Books is a complete, self-contained accounting record — grouping one or more ledgers together for a specific reporting purpose (e.g., statutory reporting, management reporting, or multi-currency consolidation).
 
 {{< figure src="/images/chart-of-account-applet/screenshots/set-of-books-ledgers.png" alt="Set of Books Ledgers" caption="Linking Ledgers to Set of Books." >}}
 
@@ -717,6 +717,8 @@ If two codes were created for the same purpose (e.g., "Phone Exp" and "Telephone
 
 Bridge the gap between Accounting and Sales/Inventory.
 
+{{< figure src="/images/chart-of-account-applet/screenshots/gl-code-create-item.png" alt="GL Code Create Item screen - select a GL Category, search GL Codes, and generate saleable Items linked to each code" caption="GL Code Create Item: generate saleable Items from GL Codes in a selected category so revenue routes to the correct account." >}}
+
 **Scenario:** You have a GL Account "4000-01 Consulting Income". You want to issue an Invoice for "Consulting".
 
 **How to Use:**
@@ -786,7 +788,7 @@ For Malaysian entities, ensure your **Default GL Codes** are mapped to the follo
 **Structure**: Deep hierarchy for "Cost of Sales" with WIP tracking.
 
 **Key Needs:**
-- **WIP Accounts**: `Raw Materials` â†’ `Work In Progress` â†’ `Finished Goods`
+- **WIP Accounts**: `Raw Materials` → `Work In Progress` → `Finished Goods`
 - **Overhead Allocation**: Specific expense codes for Factory Rent vs Office Rent
 - **Settings**: Enable `SHOW_WIP_STOCK_VALUE` in Admin Settings
 
@@ -818,9 +820,9 @@ For Malaysian entities, ensure your **Default GL Codes** are mapped to the follo
 ```
 Single GL Code: 6000 - Rent Expense
 Tag with Profit Center:
-â”œâ”€â”€ PC-KL (Kuala Lumpur)
-â”œâ”€â”€ PC-JB (Johor Bahru)
-â””â”€â”€ PC-PG (Penang)
+├── PC-KL (Kuala Lumpur)
+├── PC-JB (Johor Bahru)
+└── PC-PG (Penang)
 ```
 
 ---
@@ -895,7 +897,7 @@ Set your preferred working context to avoid repeated selections:
 A: A **GL Section** is the highest level (e.g., Assets). A **GL Category** is a subdivision (e.g., Current Assets). GL Codes sit inside Categories.
 
 **Q: How do I lock a specific month?**  
-A: Go to **Fiscal Year** â†’ select the year â†’ open the **Fiscal Period** tab â†’ click on the specific period row to open **Fiscal Period Details** â†’ change the **Closing Status** dropdown to `LOCK_ALL` â†’ click **SAVE**.
+A: Go to **Fiscal Year** → select the year → open the **Fiscal Period** tab → click on the specific period row to open **Fiscal Period Details** → change the **Closing Status** dropdown to `LOCK_ALL` → click **SAVE**.
 
 **Q: Can I manage multiple companies in this applet?**  
 A: Yes. You can define multiple **Companies** and **Sets of Books**. When working, you can switch between contexts.
@@ -907,7 +909,7 @@ A: The system validates against duplicates. If a match is found, the row may be 
 A: No. To maintain audit integrity, used codes cannot be deleted. Use **GL Code Merge** to consolidate it into another account, or simply **Deactivate** it.
 
 **Q: Where do I set the "Retained Earnings" account?**  
-A: This is configured under **Companies** â†’ **Default GL Codes** â†’ **General** tab. This setting is strictly required for year-end closing processes.
+A: This is configured under **Companies** → **Default GL Codes** → **General** tab. This setting is strictly required for year-end closing processes.
 
 **Q: How do I handle a change in Fiscal Year dates?**  
 A: Create a new **Fiscal Year** record. Ensure there is no gap between the old year end and the new year start. Short "stub" years are supported for transition periods.
@@ -929,7 +931,10 @@ The Chart of Account applet is a foundational module. Its data is used by many o
 | **Sales Cycle** | Sales Order, Sales Invoice, Sales Return, Receipt Voucher, Debit Note, Credit Note |
 | **Purchase Cycle** | Purchase Order (Internal), Purchase Invoice (Internal), Purchase Return (Internal), Payment Voucher |
 
----
+<!--
+INTERNAL / DEVELOPER ONLY — hidden from the public applet reference per review.
+This describes the EMP GL Code sync task-scheduler plugin (implementation detail).
+Keep here, commented out, until it is relocated to an internal developer doc.
 
 ## Technical Integration (Developer)
 
@@ -937,27 +942,28 @@ The Chart of Account applet is a foundational module. Its data is used by many o
 
 For syncing GL Codes from an external EMP system, use the following task scheduler configuration:
 
-**Jar File:** `plugin-wavelet-tasksched-copy-glcode-to-blg.jar`  
-**Main Class:** `taskscheduler.utility.CopyGLCodeToBlg.src.CopyGLCodeToBlg`
+**Jar File:** plugin-wavelet-tasksched-copy-glcode-to-blg.jar
+**Main Class:** taskscheduler.utility.CopyGLCodeToBlg.src.CopyGLCodeToBlg
 
 **Parameters:**
 
 | Parameter | Description |
 | :--- | :--- |
-| `email_error` | Email for error notifications |
-| `tenant_code` | Tenant code |
-| `token` | API authentication token |
-| `api_url` | API endpoint URL |
-| `ledger_guid` | Company primary ledger GUID |
-| `chart_of_account_guid` | COA GUID |
-| `chart_of_account_code` | COA code |
-| `company_guid` | Company GUID |
+| email_error | Email for error notifications |
+| tenant_code | Tenant code |
+| token | API authentication token |
+| api_url | API endpoint URL |
+| ledger_guid | Company primary ledger GUID |
+| chart_of_account_guid | COA GUID |
+| chart_of_account_code | COA code |
+| company_guid | Company GUID |
 
 **Steps:**
-1. Upload Jar file via: `Control Panel > System Admin > File Cabinet > File Manager`
-2. Create Task via: `Control Panel > Developer > Plugins > Task Scheduler > Create Task`
-3. Run Task: `List Task > Click "Run Now" for "CopyGLCodeBlg"`
+1. Upload Jar file via: Control Panel > System Admin > File Cabinet > File Manager
+2. Create Task via: Control Panel > Developer > Plugins > Task Scheduler > Create Task
+3. Run Task: List Task > Click "Run Now" for "CopyGLCodeBlg"
 4. Verify in Akaun: Check GL Section, GL Category, GL Code in Chart of Account applet
 
-{{< figure src="/images/chart-of-account-applet/screenshots/coa-sync-task-scheduler.png" alt="COA Sync Task Scheduler" caption="Task Scheduler configuration for COA sync from EMP." >}}
+Figure (internal): /images/chart-of-account-applet/screenshots/coa-sync-task-scheduler.png
+-->
 
