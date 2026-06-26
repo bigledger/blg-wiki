@@ -14,6 +14,10 @@ weight: 70
 
 The **Financial Report Applet** is a powerful tool designed to transform raw accounting data into actionable financial insights. It moves beyond simple ledger listings by integrating real-time data processing, multi-entity consolidation, and dynamic report customization.
 
+### Video Overview
+
+{{< youtube LbSz4ja-Zos >}}
+
 {{< callout type="info" >}}
 **Core Concept**: The system bridges **Transactional Data** (Journals) with **Strategic Information** (Financial Statements) through flexible **Reporting Dimensions**.
 {{< /callout >}}
@@ -133,7 +137,6 @@ Get up and running quickly with these essential workflows.
 **Notes:**
 Admin need to re-run the "Processor" to reconcile the back dated transactions created by any users
 
-
 {{< figure src="/images/financial-report-applet/report-view.png" alt="Processing Report View with drill-down capabilities" caption="Interactive Processing: Click on any line item to drill down to the transaction level." >}}
 
 ### For Admins: Configure a New Financial Report Line
@@ -149,6 +152,7 @@ Admin need to re-run the "Processor" to reconcile the back dated transactions cr
    - **End Month**: Select the month end of the financial year (e.g., “December")
 3. **Generate**: Click **Create**
 4. **View Results**: Navigate to the financial report in the listing to view the Trial Balance, P&L and Balance Sheet data
+
 
 {{< figure src="/images/financial-report-applet/edit-form.png" alt="Report Template Editor showing row configuration" caption="Report Editor: Easily customize report structures by adding new rows and mapping GL accounts." >}}
 
@@ -223,7 +227,7 @@ Control who sees what data. Financial data is sensitive, so granular permissions
 A: Yes, the "Excel (Analysis)" export option preserves the structure and values, allowing for further modeling, though underlying report logic formulas remain in the system.
 
 **Q: How often is the data updated?**
-A: Data is real-time. As soon as a journal is posted in the General Ledger, it is reflected in the financial reports.
+A: Data is real time posted to Ledger and it is reflected to the financial statement after you run the Month End Processing
 
 
 **Q: Is it possible to drill down to the scanned invoice image?**
