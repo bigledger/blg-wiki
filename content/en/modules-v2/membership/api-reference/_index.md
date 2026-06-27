@@ -1,11 +1,10 @@
 ---
 title: "API Reference"
-description: "API Reference"
-weight: 40
+description: "Direct reference to official developer integration APIs and webhooks."
+weight: 50
 bookCollapseSection: false
 ---
 
-## MemberShip API Documentation 
-1. Creating/Updating/Getting Member Data 
-2. Creating/Getting member point transactions 
-3. Getting member point current balances
+For technical API documentation, authentication tokens, request/response schemas, and webhook event specifications for membership integrations, refer to the official Developer API Reference:
+
+**[Developer Integration & API Reference →](/developers/api-reference/integrations/)**

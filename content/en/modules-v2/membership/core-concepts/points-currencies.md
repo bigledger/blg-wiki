@@ -39,6 +39,10 @@ Multiple points currencies enable business scenarios that would be difficult or 
 
 ## Single Currency vs Multi-Currency Programs
 
+> [!IMPORTANT]
+> **When to use Multiple Currencies?**
+> A single currency is great for simple programs. You should only introduce multiple currencies if you have a distinct business need, such as: separating promotional points (which expire quickly) from core loyalty points, or integrating points from external partners.
+
 ### Single Currency Model
 
 Many traditional programs use one currency for simplicity:
@@ -462,6 +466,10 @@ Match expiry rules to currency purpose:
 **Partner Currency**: Partner-dictated expiry (match partner's policies)
 
 ## Financial Implications
+
+> [!WARNING]
+> **Points are a Financial Liability**
+> Every point issued that can be converted to value is a liability on your balance sheet. The Finance team must be deeply involved in establishing the value of a point and understanding how long they remain a liability before expiry (breakage).
 
 ### Liability Tracking
 

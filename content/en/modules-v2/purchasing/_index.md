@@ -1,192 +1,101 @@
 ---
 title: "Purchasing Module"
-description: "Complete Purchase-to-Pay lifecycle — from requisition and purchase orders to strategic sourcing, supplier onboarding, and performance analytics."
-weight: 35
+description: "Procurement-to-Pay (P2P) engine managing supplier sourcing, purchase orders, 3-way matching, and inventory stock-ins."
+weight: 30
 ---
 
-## 1. Module Overview
+The **Purchasing Module** is BigLedger's Procurement-to-Pay (P2P) engine. It manages supplier relationships, internal departmental requisitions, formal commercial purchase orders, goods receiving, 3-way invoice matching, and Accounts Payable ledger postings.
 
-The **Purchasing Module** manages the entire procurement and sourcing lifecycle. It handles internal purchase requests, Request for Quotation (RFQ) competitive bidding, purchase orders, goods receipt, and supplier invoice verification. Enforcing budget controls and automated workflow routing, the module optimizes corporate spending, ensures strategic vendor compliance, and links directly to Financial Accounting and Inventory.
+## Architecture & Data Flow
 
-**Business Value:**
-- **Controlled Spending**: Enforce strict delegation of authority limits through multi-level approval hierarchies.
-- **Three-Way Matching**: Prevent overpayment by validating that Purchase Orders, GRNs, and Supplier Invoices match in quantities and prices.
-- **Strategic Sourcing**: Compare supplier bids, track vendor performance KPIs, and manage contracts to lower Total Cost of Ownership (TCO).
-- **Reduced Admin Costs**: Streamline recurring purchases through Blanket Purchase Orders and automated replenishment triggers.
+Purchasing operates between your operational procurement requirements and your core vendor financial ledgers. It ensures that every stock-in or service purchase is authorized, priced accurately, and matched before payment disbursement.
 
-### Core Capabilities
+![Procurement-to-Pay ERP Purchasing Architecture](/images/purchasing/purchasing_architecture.png)
 
-- **Purchase-to-Pay Lifecycle**: Full coordination of requisitions, quotations, orders, warehouse receipts, invoice checking, and payment vouchers.
-- **Supplier Relationship Management (SRM)**: Track supplier onboarding checklists, manage certifications, and audit compliance metrics.
-- **Spend & Procurement Analytics**: Aggregate category spending, review pricing history trends, and track cost savings dashboards.
-- **Cost Management & Optimization**: Deploy should-cost modeling, lifecycle cost analysis, and value engineering to optimize vendor pricing.
-
-### Compliance & Governance
-
-- **Delegation of Authority (DoA)**: Lock purchasing limits by role or department to prevent unauthorized buying.
-- **Ethical & Sustainable Sourcing**: Track supplier social, environmental, and anti-corruption compliance records.
-- **Global Trade Compliance**: Verify import/export paperwork and coordinate multi-currency supplier pricebooks.
+| Architecture Layer | System Component | Primary Role in Procurement |
+|-------------------|------------------|-----------------------------|
+| **Procurement Engine** | P2P Contract & Sourcing Engine | Central management of vendor pricebooks, purchase requisitions, approval matrices, and order commitments. |
+| **Warehouse Receiving** | [Goods Received Note GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/) | Physical goods receipt, quality inspection, and automated inventory stock-in. |
+| **Accounts Payable (AP)** | [Purchase Invoice Applet](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/) | Supplier billing verification, 3-way invoice matching (PO vs GRN vs Invoice), and GL liability posting. |
+| **Vendor Management** | Supplier Maintenance Applet (Core) | Central master records for vendor profiles, payment terms, currency settings, and credit ratings. |
 
 ---
 
-## 2. Key Concepts & Terminology
+## Who Uses This Module
 
-| Term | Definition |
-|------|-----------|
-| **Purchase Requisition (PR)** | An internal request to buy goods or services, subject to budget and manager approval before conversion to a PO. |
-| **Purchase Order (PO)** | A legally binding contract sent to a supplier authorizing the purchase of specified items at agreed prices. |
-| **Blanket Purchase Order** | A standing contract for recurring purchases over a defined time, release-managed periodically. |
-| **RFQ (Request for Quotation)** | A request sent to multiple suppliers to submit competitive price proposals. |
-| **GRN (Goods Received Note)** | A document confirming goods have been physically received, checked for quality, and logged into stock. |
-| **Three-Way Matching** | A validation check matching lines across PO, GRN, and Supplier Invoice to confirm payment authorization. |
-| **Total Cost of Ownership (TCO)** | The comprehensive analysis of all costs related to buying and using a product, beyond its purchase price. |
-| **Should-Cost Modeling** | A bottom-up estimation of an item's raw material, manufacturing, and transport costs to evaluate supplier quotes. |
+| Role | Primary Responsibilities | Core Applets Used |
+|------|--------------------------|-------------------|
+| **Department Manager** | Submit internal purchase requisitions for goods or services within operational budgets | [Purchase Requisition Applet](/applets/purchase-workflow/internal-purchase-requisition-applet/) |
+| **Procurement Officer** | Negotiate vendor pricing, issue binding purchase orders, manage supplier contracts | [Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet/) |
+| **Warehouse Receiver** | Inspect incoming supplier shipments, count physical stock, issue Goods Received Notes (GRN) | [Goods Received Note GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/) |
+| **Accounts Payable Clerk** | Verify vendor invoices against POs and GRNs (3-Way Matching), approve supplier payments | [Purchase Invoice Applet](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/) |
+| **Finance Controller** | Review supplier credit balances, monitor departmental budget compliance, approve disbursements | [Purchase Report Applet](/applets/purchase-workflow/purchase-report-applet/) |
 
 ---
 
-## 3. Included Applets
+## Four Procurement Documents Every Team Must Differentiate
 
-### Strategic Sourcing & Supplier Admin
+Confusing procurement document types creates inventory discrepancies and unauthorized vendor payments:
 
-| Applet | Purpose |
-|--------|---------|
-| [Supplier Maintenance Applet](/applets/purchase-workflow/supplier-maintenance-applet/) | Comprehensive vendor directory for payment terms, tax IDs, banking setups, and supplier qualification tracking. |
-| [Internal Purchase Quotation Applet](/applets/purchase-workflow/internal-purchase-quotation-applet/) | Log and compare competitive quotes received from suppliers in response to RFQs. |
-
-### Procurement Lifecycle
-
-| Applet | Purpose |
-|--------|---------|
-| [Internal Purchase Requisition Applet](/applets/purchase-workflow/internal-purchase-requisition-applet/) | Raise internal purchase requests with automatic department budget limit checks. |
-| [Internal Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet/) | Create, approve, and email purchase orders to suppliers. |
-| [Blanket Purchase Order Applet](/applets/purchase-workflow/blanket-purchase-order-applet/) | Maintain long-term supplier pricing contracts and generate periodic release orders. |
-
-### Goods Receipt & Returns
-
-| Applet | Purpose |
-|--------|---------|
-| [Internal Purchase GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/) | Confirm physical receipt of goods, inspect quality, and update stock records. |
-| [Internal Purchase GRN — Stock In Applet](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/) | Link goods receipt notes to inventory stock cards. |
-| [Internal Purchase GRN — Supplier Access Applet](/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet/) | Restricted portal view allowing supplier partners to inspect delivery statuses. |
-| [Internal Purchase GIN Applet](/applets/purchase-workflow/internal-purchase-gin-applet/) | Issue Goods Issue Notes to record inventory exiting the warehouse for supplier returns. |
-| [Internal Purchase Return Applet](/applets/purchase-workflow/internal-purchase-return-applet/) | Coordinate return workflows for defective, incorrect, or surplus supplier goods. |
-
-### Financial Adjustments & Reports
-
-| Applet | Purpose |
-|--------|---------|
-| [Internal Purchase Debit Note Applet](/applets/purchase-workflow/internal-purchase-debit-note-applet/) | Generate debit entries to increase claims against suppliers. |
-| [Internal Purchase Credit Note Applet](/applets/purchase-workflow/internal-purchase-credit-note-applet/) | Log credit adjustments received from suppliers to reduce account balances. |
-| [Internal Purchase Refund Note Applet](/applets/purchase-workflow/internal-purchase-refund-note-applet/) | Record cash or bank refunds from suppliers for returned goods. |
-| [Purchase Report Applet](/applets/purchase-workflow/purchase-report-applet/) | Aggregate procurement performance reporting, spend analytics, and supplier KPIs. |
+| Procurement Document | When it is used | Stock Impact | Financial Accounting Impact |
+|---------------------|-----------------|--------------|-----------------------------|
+| **Purchase Requisition** | Internal departmental request asking procurement to buy goods | None | None |
+| **Purchase Order (PO)** | Legally binding contract sent to vendor specifying items & prices | Stock Expected (Incoming P.O. quantity) | None (Commitment recorded) |
+| **Goods Received Note (GRN)** | Receiving slip issued upon physical arrival of goods | Stock Increased (Physical stock-in) | Goods Received Not Invoiced (GRNI) Accrual |
+| **Purchase Invoice** | Supplier's commercial billing document demanding payment | None (if GRN already executed) | Accounts Payable Credited, GRNI Cleared / Expense Debited |
 
 ---
 
-## 4. Standard Business Workflows
+## Applet Map
 
-### Workflow 1: Purchase-to-Pay (Standard Procurement)
-
-```
-┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
-│  Purchase    │───▶│  Purchase    │───▶│   Goods      │───▶│  Purchase    │───▶│   Payment    │
-│  Requisition │    │   Order      │    │   Receipt    │    │   Invoice    │    │   Voucher    │
-└──────────────┘    └──────────────┘    └──────────────┘    └──────────────┘    └──────────────┘
-```
-
-**Steps:**
-1. **Requester** raises a Purchase Requisition in the **PR Applet** with item details and budget center.
-2. After approval, the PR is converted to a **Purchase Order** and sent to the supplier.
-3. When goods arrive, the warehouse confirms receipt via the **Purchase GRN Applet** (three-way match check).
-4. The supplier invoice is matched against the PO and GRN. Discrepancies are flagged.
-5. Once matched, finance processes the **Payment Voucher** in the Financial Accounting module.
-
-### Workflow 2: Strategic Sourcing (Competitive RFQ Bidding)
-
-```
-Define Requirement ──▶ RFQ Created ──▶ Send to Suppliers ──▶ Compare Quotes ──▶ Select Supplier ──▶ Award PO
-```
-
-**Steps:**
-1. Sourcing team identifies a strategic need or high-value purchase requirement.
-2. Sourcing officer creates an RFQ document outlining specifications and delivery windows.
-3. RFQ is sent to qualified suppliers in **Supplier Maintenance**.
-4. Quotations are received and logged in the **Internal Purchase Quotation Applet**.
-5. System matches and compares unit prices, lead times, and terms.
-6. The winning bid is selected, and a PO is automatically awarded.
-
-### Workflow 3: Supplier Onboarding & Qualification
-
-```
-Discover Supplier ──▶ Send Qualification Check ──▶ Assess Compliance ──▶ Approve ──▶ Setup Master Data
-```
-
-**Steps:**
-1. Procurement identifies a potential supplier.
-2. Compliance checks are sent request certificate uploads (ISO, Tax Registration).
-3. Sourcing officer assesses financial stability, operational capacity, and ethical certifications.
-4. Approval committee reviews the qualification score.
-5. Supplier is added as an active vendor in **Supplier Maintenance Applet** and mapped to relevant categories.
-
-### Workflow 4: Supplier Return & Balance Adjustment
-
-```
-QC Rejection ──▶ Purchase Return ──▶ GIN (Stock Out) ──▶ Supplier Credit Note ──▶ Balance Adjusted
-```
-
-**Steps:**
-1. QC rejects a batch of materials. Warehouse raises a **Purchase Return**.
-2. Goods are packed and sent back to the supplier, accompanied by an **Internal Purchase GIN**.
-3. Sourcing team registers the return and requests a refund or Credit Note.
-4. Supplier's Credit Note is entered via **Purchase Credit Note Applet**, adjusting the accounts payable ledger.
+| Applet | What it does in this module |
+|--------|-----------------------------|
+| [Purchase Requisition Applet](/applets/purchase-workflow/internal-purchase-requisition-applet/) | Internal departmental buying requests, budget checks, and pre-order approval workflows |
+| [Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet/) | Vendor contracting, item price enforcement, delivery scheduling, and formal PO generation |
+| [Goods Received Note GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/) | Physical warehouse stock receiving, batch/serial assignment, inspection logs, and stock-in posting |
+| [Purchase Credit Note Applet](/applets/purchase-workflow/internal-purchase-credit-note-applet/) | Supplier billing adjustments, vendor price corrections, and accounts payable reductions |
+| [Purchase Return Applet](/applets/purchase-workflow/internal-purchase-return-applet/) | Processing rejected goods returned to suppliers, dispatch notes, and vendor debit note requests |
+| [Purchase Report Applet](/applets/purchase-workflow/purchase-report-applet/) | Comprehensive procurement analytics, vendor spend tracking, delivery performance, and AP aging reports |
 
 ---
 
-## 5. Roles & Permissions
+## ERP Dependency Table
 
-| Role | Primary Applets | Key Responsibilities |
-|------|----------------|---------------------|
-| **Requester (Employee)** | Purchase Requisition | Raise purchase requests for department tools, materials, or services |
-| **Purchasing Officer** | Purchase Order, Quotation, Blanket PO | Request quotations, select vendors, issue POs, negotiate contracts |
-| **Warehouse Receiver** | Purchase GRN, GRN Stock In | Receive deliveries, count items, verify quality, document variances |
-| **Accounts Payable** | Purchase Invoice, Payment Voucher | Match supplier invoices against PO/GRN documents, queue payment releases |
-| **Procurement Manager** | Purchase Report, All Purchase Applets | Approve purchase orders exceeding limits, review spend dashboards, audit vendor scorecards |
-
----
-
-## 6. Prerequisites / Initial Setup
-
-Before going live with the Purchasing Module, ensure:
-
-- [x] **Core Module** — Organisation structure, branches, and cost locations are configured
-- [ ] **Supplier Maintenance** — Vendor profiles populated with credit terms and bank accounts
-- [ ] **Chart of Accounts** — Mapped accounts for purchase assets, AP ledger, and tax inputs
-- [ ] **Workflow Design Applet** — Configured authorization routing matrices and budget thresholds
-- [ ] Mapped default JRXML print templates for outgoing RFQs, POs, and Returns
-
-### Implementation Phasing
-
-- **Phase 1: Foundation Setup**: Map buyer roles, define item purchasing classifications (categories), and import supplier listings.
-- **Phase 2: Operational Flow**: Set up requisition workflows, PO generation rules, receiving policies, and three-way match tolerances.
-- **Phase 3: Sourcing & Analytics**: Roll out blanket PO agreements, supplier performance scorecards, and cost savings dashboards.
+| Connected Module | What Purchasing needs from it |
+|------------------|-------------------------------|
+| **Core** | Supplier master profiles, organization branches, chart of accounts, currency exchange rates |
+| **Inventory** | Item SKUs, reorder point thresholds, warehouse stock locations, unit of measure conversions |
+| **Financial Accounting** | Accounts Payable ledgers, GRNI accrual accounts, tax GL mapping (Input SST/VAT) |
+| **Sales & POS** | Sales order back-to-back procurement demands and customer drop-ship requisitions |
 
 ---
 
-## 7. FAQs & Troubleshooting
+## Go-Live Checklist
 
-**Q: The GRN quantity doesn't match the PO. Can I still receive the goods?**
-A: Yes, partial receipts are supported. The system will track the remaining balance on the PO, allowing future GRNs against the same order.
+- [x] Supplier master records and payment terms configured in Core
+- [ ] Item master data and purchasing units of measure (UOM) verified in Inventory
+- [ ] Tax codes for supplier invoices (Input SST/VAT/GST) mapped to GL accounts
+- [ ] Departmental Purchase Requisition approval hierarchies established
+- [ ] Warehouse receiving locations and inspection workflows configured
+- [ ] Accounts Payable 3-way matching tolerance thresholds defined
+- [ ] Finance team aligned on Goods Received Not Invoiced (GRNI) month-end accruals
 
-**Q: How do I handle a supplier price increase after the PO was issued?**
-A: Create a **Purchase Debit Note** to adjust the pricing for already-received goods, or amend the PO (if the workflow allows) for future deliveries.
+---
 
-**Q: Can a Purchase Requisition bypass the approval workflow?**
-A: No. If an approval workflow is configured, all PRs must complete the approval chain before conversion to a PO. This enforces budgetary controls.
+## Module Learning Roadmap
 
-**Q: How do I track spending by supplier over time?**
-A: Use the **Purchase Report Applet** and filter by supplier to view historical spend, order volumes, and trends.
+Follow the documentation in this sequence to master the Purchasing Module:
 
-### Troubleshooting Common Issues
+1. **[Core Concepts](core-concepts/)** *(Next Step)* — Understand the P2P document lifecycle, 3-way matching mechanics, and GRNI accounting.
+2. **[Configuration](configuration/)** — Step-by-step setup guides for vendor pricebooks, approval hierarchies, and receiving rules.
+3. **[Use Cases](use-cases/)**
+4. **[Reports 3. **[Use Cases](use-cases/)** Analytics](reports/)** — Scenario guide for choosing the best procurement and vendor reports. — Real-world reference architectures for raw material procurement, trading stock reordering, and consignment purchases.
+4. **[API Reference](api-reference/)** — Direct reference link to official developer procurement APIs.
+5. **[Related Applets](related-applets/)** — Complete guide to native applet dependencies across the BigLedger ecosystem.
 
-- **Approval Workflow Delays**: Check if the assigned approver is active in Tenant Admin. Review escalation timers and temporary delegate settings if the approver is out of office.
-- **Supplier Performance Shortfalls**: Review the delivery and quality KPIs in the **Purchase Report Applet**. Verify that receipt variances are logged correctly on the GRN to ensure accurate metrics.
-- **Three-Way Match Discrepancies**: Investigate pricing mismatches. If the invoice price differs from the PO price within accepted tolerance limits, process the invoice; otherwise, flag it for buyer review.
+---
+
+{{< callout type="info" >}}
+**Ready to explore procurement architecture?**  
+Proceed to **[Core Concepts →](core-concepts/)** to understand 3-way invoice matching and procurement lifecycles.
+{{< /callout >}}

@@ -287,6 +287,12 @@ Test the site locally:
 # Or manually: hugo server -D
 ```
 
+#### Troubleshooting Local Preview (Unstyled Page / Broken Styles)
+If the local site at `http://localhost:1313` renders as a plain, unstyled HTML list:
+1. **Clear Browser Cache / Hard Reload**: The browser may have cached stale stylesheet links pointing to production. Perform a hard refresh (**Cmd + Shift + R** on Mac, or **Ctrl + F5** on Windows/Linux).
+2. **Check Port Conflict**: Verify that the server is actually running on port `1313`. If port `1313` is in use, another instance might override the assets. The `./scripts/test-local.sh` script automatically detects and kills stale processes on port 1313.
+
+
 Build the site:
 ```bash
 hugo --gc --minify

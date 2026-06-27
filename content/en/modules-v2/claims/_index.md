@@ -1,85 +1,95 @@
 ---
 title: "Claims Management Module"
-description: "Employee expense claims submission, approval workflows, and reimbursement cycle processing."
-weight: 65
+description: "Employee expense reimbursement engine managing digital receipt scanning, multi-tier policy entitlements, approval workflows, and AP disbursements."
+weight: 60
 ---
 
-## 1. Module Overview
+The **Claims Management Module** is BigLedger's employee expense reimbursement and policy entitlement engine. It manages employee business expenses, OCR receipt capture, entitlement caps by job grade, multi-tier managerial approval matrices, and automated Accounts Payable disbursements integrated with Financial Accounting.
 
-The **Claims Management Module** handles the entire employee expense reimbursement lifecycle — from claim submission through multi-level approval to batch payment processing. It eliminates paper-based claims with structured digital workflows.
+## Architecture & Data Flow
 
-**Business Value:**
-- Paperless claim submission with receipt attachments
-- Configurable multi-level approval workflows enforce policy compliance
-- Claim Cycles enable batch processing of approved claims for efficient payroll integration
-- Complete audit trail from submission to reimbursement
+Claims Management operates between employee expense submissions and company financial ledgers. When an employee submits a business receipt, the system validates entitlement limits, routes the request through manager sign-offs, and posts approved expense reimbursements directly to Financial Accounting.
 
----
+![Employee Claims & Expense Management ERP Architecture](/images/claims/claims_architecture.png)
 
-## 2. Key Concepts & Terminology
-
-| Term | Definition |
-|------|-----------|
-| **Claim** | An expense reimbursement request submitted by an employee with supporting documents. |
-| **Claim Type** | A category of expense (e.g., Travel, Meals, Entertainment, Training). |
-| **Claim Cycle** | A defined period (e.g., monthly) during which approved claims are batched for payment processing. |
-| **Approver** | A manager or department head authorized to approve or reject claims based on configured rules. |
+| Architecture Layer | System Component | Primary Role in Claims Operations |
+|-------------------|------------------|-----------------------------------|
+| **Claims Engine** | [Claim Applet](/applets/claims/claim-applet/) | Central management of expense categories, employee entitlement limits, and receipt submissions. |
+| **Cycle & Approvals** | [Claim Cycle Applet](/applets/claims/claim-cycle-applet/) | Defining monthly claim submission windows, approval routing matrices, and verification cycles. |
+| **Human Resources Sync** | HR & Employee Profiles | Synchronization of employee job grades, department managers, and monthly benefit allowances. |
+| **Financial Disbursement**| Accounts Payable (AP) & Banking | Automated GL expense posting, tax deductibility logging, and direct employee bank reimbursements. |
 
 ---
 
-## 3. Included Applets
+## Who Uses This Module
 
-| Applet | Purpose |
-|--------|---------|
-| [Claim Applet](/applets/claims/claim-applet/) | Submit, manage, and track expense claims with receipt attachments and category tagging. |
-| [Claim Cycle Applet](/applets/claims/claim-cycle-applet/) | Group approved claims into payment batches for efficient reimbursement processing. |
-
----
-
-## 4. Standard Business Workflows
-
-### Workflow 1: Claim Submission to Reimbursement
-
-```
-Employee Submits Claim ──▶ Manager Approves ──▶ Finance Reviews ──▶ Claim Cycle Created ──▶ Payment Processed
-```
-
-**Steps:**
-1. **Employee** creates a claim in the **Claim Applet**, selects the claim type, enters amounts, and uploads receipts.
-2. The claim routes to the **Manager** for approval based on the configured workflow.
-3. **Finance** reviews approved claims for policy compliance.
-4. At period end, Finance creates a **Claim Cycle** in the **Claim Cycle Applet** to batch all approved claims.
-5. Payment is processed — either via payroll integration or a dedicated Payment Voucher.
+| Role | Primary Responsibilities | Core Applets Used |
+|------|--------------------------|-------------------|
+| **Employee / Claimant** | Submit out-of-pocket business expenses, scan receipts via OCR, track reimbursement status | [Claim Applet](/applets/claims/claim-applet/) |
+| **Department Manager** | Verify employee expense receipts against business justification, approve claim requests | [Claim Applet](/applets/claims/claim-applet/) |
+| **HR / Claims Administrator** | Configure expense entitlement caps by employee grade, manage claim cycles and policies | [Claim Cycle Applet](/applets/claims/claim-cycle-applet/) |
+| **Finance / AP Officer** | Audit tax deductibility, approve final expense payouts, post GL allocations and bank disbursements | [Claim Applet](/applets/claims/claim-applet/) |
 
 ---
 
-## 5. Roles & Permissions
+## Four Expense Claim Types Every Team Must Differentiate
 
-| Role | Primary Applets | Key Responsibilities |
-|------|----------------|---------------------|
-| **Employee** | Claim Applet | Submit claims, upload receipts, track status |
-| **Department Manager** | Claim Applet | Approve or reject team claims |
-| **Finance Officer** | Claim Applet, Claim Cycle | Review claims, create cycles, process payments |
+Confusing expense claim types leads to policy non-compliance and tax audit disallowances:
 
----
-
-## 6. Prerequisites / Initial Setup
-
-- [x] **Core Module** — Employee records configured
-- [ ] Claim types and categories defined in the **Claim Applet** settings
-- [ ] Approval workflows configured via **Workflow Design Applet**
-- [ ] Budget limits per claim type configured (if applicable)
-- [ ] Payment method for reimbursements set up in **Cashbook**
+| Claim Category | Business Purpose | Entitlement Rule | Financial Accounting Impact |
+|----------------|------------------|------------------|-----------------------------|
+| **Travel & Lodging** | Business travel hotel stay, flights, and public transit | Capped per night based on employee job grade | Debits Travel Expense GL, Credits Employee AP |
+| **Medical & Wellness** | Outpatient clinic visits, dental care, and hospitalization | Annual fixed entitlement balance per employee | Debits Staff Welfare GL, Credits Employee AP |
+| **Entertainment & Meals** | Client entertainment dinners and business networking | Requires client name and business purpose log | Debits Entertainment GL (Tax Deductible / Non-Deductible split) |
+| **Mileage & Mileage Fuel** | Private vehicle usage for company business travel | Calculated via fixed distance rate (e.g., $0.60 per KM) | Debits Transport Expense GL, Credits Employee AP |
 
 ---
 
-## 7. FAQs & Troubleshooting
+## Applet Map
 
-**Q: My claim has been "Pending Approval" for days. Who should I contact?**
-A: Check the approval chain in the Claim Applet to see which approver is next. Contact them directly or escalate to your HR department.
+| Applet | What it does in this module |
+|--------|-----------------------------|
+| [Claim Applet](/applets/claims/claim-applet/) | Employee expense submission portal — OCR receipt scanning, claim entry, and manager approval tracking |
+| [Claim Cycle Applet](/applets/claims/claim-cycle-applet/) | Claims administration — defining monthly cut-off windows, batch disbursement processing, and policy rules |
 
-**Q: Can I edit a claim after submitting it?**
-A: Only if it hasn't been approved yet. Once approved, the claim is locked. You would need to create a new claim for corrections.
+---
 
-**Q: How are claim cycles connected to payroll?**
-A: The Claim Cycle generates a batch of approved amounts that can be exported or linked to the Payment Voucher process in Financial Accounting for reimbursement.
+## ERP Dependency Table
+
+| Connected Module | What Claims needs from it |
+|------------------|---------------------------|
+| **Core** | Employee master profiles, department structures, organization branches, tax codes |
+| **HR & Payroll** | Employee job grades, supervisor reporting hierarchies, monthly payroll integration |
+| **Financial Accounting** | Chart of accounts expense mapping, Accounts Payable clearing, tax GL ledgers |
+
+---
+
+## Go-Live Checklist
+
+- [x] Employee master records and department reporting lines configured in Core / HR
+- [ ] Expense categories (Travel, Medical, Entertainment, Mileage) defined with GL account codes
+- [ ] Employee grade entitlement limits and annual caps established in Claim Cycle Applet
+- [ ] Managerial approval hierarchies and multi-tier sign-off rules mapped
+- [ ] Finance reimbursement payment methods (Bank GIRO / Direct Payroll inclusion) configured
+- [ ] Employees trained on mobile receipt scanning and claim submission
+
+---
+
+## Module Learning Roadmap
+
+Follow the documentation in this sequence to master the Claims Management Module:
+
+1. **[Core Concepts](core-concepts/)** *(Next Step)* — Understand expense entitlement structures, approval lifecycles, and tax deductibility rules.
+2. **[Configuration](configuration/)** — Step-by-step setup guides for expense categories, entitlement caps, and approval matrices.
+3. **[Use Cases](use-cases/)** — Real-world reference architectures for corporate travel reimbursements, medical benefits, and sales mileage.
+4. **[API Reference](api-reference/)** — Direct reference link to official developer claims APIs.
+5. **[Best Practices](best-practices/)** — Operational recommendations for receipt auditing, policy enforcement, and anti-fraud controls.
+6. **[Reports & Analytics](reports/)** — Scenario guide for choosing the best expense analytics and departmental budget reports.
+7. **[Related Applets](related-applets/)** — Complete guide to native applet dependencies across the BigLedger ecosystem.
+
+---
+
+{{< callout type="info" >}}
+**Ready to explore expense management architecture?**  
+Proceed to **[Core Concepts →](core-concepts/)** to understand claim processing lifecycles and entitlement policies.
+{{< /callout >}}

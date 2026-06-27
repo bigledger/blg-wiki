@@ -10,7 +10,7 @@ tags:
 weight: 70
 ---
 
-## Purpose and Overview
+## Purpose and overview
 
 The **Voucher Management Applet** is the control center for creating vouchers, generating and maintaining ticket serial numbers, tracking scanned event usage, running recurring voucher programs, and monitoring import jobs.
 
@@ -24,9 +24,42 @@ Marketing, Sales, Operations, and Customer Service teams use it to create vouche
 - **Recurring Voucher:** A voucher template that repeats on a schedule using a recurrence rule.
 {{< /callout >}}
 
-{{< figure src="/images/voucher-management-applet/voucher-mastery-guide.png" alt="Mastering the Voucher Applet: Types, Benefits, and Solutions" caption="Comprehensive Guide: Explore the distinct voucher models and core business solutions provided by the applet." >}}
+## Key features overview
 
-### Main Work Areas in the Sidebar
+### Who benefits from this applet?
+
+- **Marketing and Campaign Managers:**
+  - Create targeted discount campaigns and rewards to drive customer acquisition.
+  - Run seasonal promotion codes (like `BF2024`) with strict date and category rules.
+  - Automate recurring reward voucher cycles (e.g., birthday or anniversary vouchers) to maintain member engagement.
+- **Sales Agents and Cashiers:**
+  - Verify and redeem customer vouchers instantly at the counter or online checkout.
+  - Eliminate the hassle of manually checking promo eligibility or tracking manual discount paper slips.
+- **Customer Service Teams:**
+  - Instantly issue compensation or settlement vouchers to resolve customer complaints.
+  - Track individual ticket history and status to handle disputed scan events or balance queries.
+- **Accounting and Finance Teams:**
+  - Automate financial liability tracking for unused voucher credit (deferred revenue).
+  - Streamline journal postings for redemptions and unredeemed expired vouchers (breakage income).
+
+### What problems does this solve?
+
+**The Manual Promotion and Fraud Problem:**
+
+Manual voucher handling often leads to coupon abuse, duplicate redemptions, and staff input errors that cause revenue leakage.
+- **Secure validation** - Real-time ticket code validation enforces unique single-use serials, activation PINs, and secure softpins.
+
+**Disconnected Sales Channels:**
+
+Promotions created for physical stores are often unusable online, causing customer frustration and fractured sales operations.
+- **Unified retail experience** - Native integration maps voucher codes directly to CP-Commerce websites and the POS General Applet.
+
+**Inaccurate Accounting and Liabilities:**
+
+Tracking outstanding gift card liabilities or campaign discount expenses on spreadsheets leads to messy monthly closings.
+- **Automated financial posting** - Integration with the Doc Item Maintenance and Ledger and Journal Applets automates liability accounting, redemptions, and breakage recognition.
+
+### Main work areas in the sidebar
 
 | Sidebar Menu | What users do there |
 |:---:|---|
@@ -40,7 +73,7 @@ Marketing, Sales, Operations, and Customer Service teams use it to create vouche
 
 ---
 
-## Strategic Configuration: Building Your Voucher Logic
+## Strategic configuration: building your voucher logic
 
 Creating a standard voucher in this applet uses two work stages, but the first stage depends on the voucher type:
 
@@ -61,7 +94,7 @@ Creating a standard voucher in this applet uses two work stages, but the first s
 - [ ] **Next Step:** Rules, images, ticket operations, website maintenance, and audit review happen after the voucher is saved
 {{< /callout >}}
 
-### Step 1: Create the Voucher Shell (Details Tab)
+### Step 1: create the voucher shell (Details tab)
 
 The initial **Details** tab stores the voucher header and the create-stage settings that users should confirm up front. In this build, `DISCOUNT` and `REWARDS` users can continue into **Treatment Value** before the first save, but rules, images, ticket operations, website maintenance, and audit review still require the saved voucher record.
 
@@ -97,7 +130,7 @@ Before the first **SAVE**, `DISCOUNT` and `REWARDS` vouchers can already use **T
 
 ---
 
-## Understanding Voucher Types: When, How, and Why?
+## Understanding voucher types: when, how, and why?
 
 Not all vouchers use the same redemption logic. The selected type changes which fields matter and what the user will configure next.
 
@@ -129,10 +162,10 @@ The **Field Settings** screen can hide `DISCOUNT` or `REWARDS` from the create f
 
 ---
 
-## Key Features Deep-Dive
+## Key features deep-dive
 
 {{< cards >}}
-  {{< card title="Voucher Setup" subtitle="Create voucher details and type-based treatment logic" link="#step-1-create-the-voucher-shell-details-tab" >}}
+  {{< card title="Voucher Setup" subtitle="Create voucher details & type-based treatment logic" link="#step-1-create-the-voucher-shell-details-tab" >}}
 
   {{< card title="Rule Engine" subtitle="Apply header, multi-line, and single-line rules" link="#apply-rules-the-3-rule-builders" >}}
 
@@ -151,7 +184,106 @@ The **Field Settings** screen can hide `DISCOUNT` or `REWARDS` from the create f
 
 ---
 
-## Quick Start Guide
+## Key concepts and system integrations
+
+The Voucher Management Applet operates as a central engine in the BigLedger ecosystem. It does not run in isolation; it integrates with the **Doc Item Maintenance Applet**, **POS General Applet**, **CP-Commerce (cp-com)**, and **Ledger and Journal Applet (Financial Accounting)** to manage the lifecycle of a voucher from creation to sales, redemption, and financial posting.
+
+```mermaid
+flowchart TD
+    VMA["Voucher Management Applet"] -->|"Defines vouchers and rules"| DIMA["Doc Item Maintenance Applet"]
+    VMA -->|"Maps to online sites"| CPC["CP-Commerce (cp-com)"]
+    DIMA -->|"Represents vouchers as items"| POS["POS General Applet"]
+    POS -->|"Validates and redeems tickets"| VMA
+    CPC -->|"Validates and redeems tickets"| VMA
+    POS -->|"Generates sales invoice"| LJA["Ledger and Journal Applet"]
+    CPC -->|"Generates sales invoice"| LJA
+    LJA -->|"Automates accounting postings"| GL["General Ledger"]
+```
+
+### Doc Item Maintenance Applet integration
+
+To sell vouchers as retail products or track them as catalog items, they must be configured in the [Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet). 
+
+- **Item Type Setup:** Create a new item and select the item type as **Voucher** (to link to a voucher template) or **Coupon** (to track physical voucher serial stock movements).
+- **Voucher Details Tab:** Under the **Voucher Details** tab in the edit item workspace, select and link the matching voucher campaign template from the Voucher Management Applet.
+
+#### User story: selling gift cards
+> *As a Master Data Administrator, I want to sell a "RM100 Store Credit Gift Card" as a product.*
+> 1. I open the **Doc Item Maintenance Applet** and create a new item: `RM100-GIFT` (Item Type: `Voucher`).
+> 2. I open the item details, navigate to the **Voucher Details** tab, and link it to the `GIFT100` voucher template.
+> 3. Now, whenever a customer purchases the `RM100-GIFT` product, the system automatically stocks out the item, generates a unique ticket serial number (e.g., `GFT-89312`), and assigns it to the customer.
+
+---
+
+### POS General Applet integration
+
+During checkout at a physical retail store, cashiers redeem vouchers using the **POS General Applet**.
+
+- **Serial Scanning:** The cashier scans the voucher barcode or QR code.
+- **Real-Time Validation:** The POS terminal calls the Voucher API `/serial-numbers/multi-validation` to verify:
+  - Is the ticket status `Active` and `Redeemable`?
+  - Is the transaction date within the `Redemption Period`?
+  - Do the cart items and total spend meet the `Apply Rules` (e.g., minimum spend of RM150, or category exclusions)?
+- **Redemption and Invoice Reference:** Once validated, the POS applies the voucher value as a payment method or line discount on the Sales Invoice. The ticket status in the Voucher Management Applet is updated to `Redeemed`, referencing the Sales Invoice ID.
+
+#### User story: customer checkout at counter
+> *As a Retail Cashier, I want to accept a customer's RM50 promo voucher for their purchase.*
+> 1. I identify the member and scan the customer's items (subtotal: RM180).
+> 2. I scan the customer's voucher QR code `BF50-93821`.
+> 3. The POS General Applet queries the Voucher Management engine: the voucher is valid (active, BF2024 campaign, meets the RM150 minimum spend rule).
+> 4. The POS automatically applies a RM50 discount, reducing the total payable to RM130.
+> 5. The customer pays RM130, and the system finalizes the Sales Invoice, permanently deactivating voucher `BF50-93821` as `Redeemed`.
+
+---
+
+### CP-Commerce integration
+
+For e-commerce channels, the Voucher Management Applet integrates with **CP-Commerce (cp-com)** to drive online promotions.
+
+- **Website Mapping:** During voucher creation, use the `Add Voucher To CP-Com` website picker or the `Website Link` tab to publish the voucher to your web store.
+- **Online Checkout:** Customers apply voucher codes or select them from their member wallet during cart checkout. CP-Commerce validates and locks the voucher during the payment session and flags it as `Redeemed` upon successful checkout.
+
+#### User story: online checkout
+> *As an Online Shopper, I want to apply my welcome voucher to get free shipping.*
+> 1. I log into my account on the e-commerce website and add items to my cart (subtotal: RM120).
+> 2. At checkout, I select the "Free Shipping welcome voucher" from my online wallet.
+> 3. The CP-Commerce site calls the Voucher API to verify the ticket. The system confirms the order exceeds the RM100 free-shipping rule.
+> 4. The shipping fee is reduced to RM0.
+> 5. Once payment is completed, the voucher is marked as `Redeemed` in my wallet.
+
+---
+
+### Accounting posting flow
+
+Because vouchers represent financial value, their sale, redemption, and expiration trigger double-entry journal postings in **Financial Accounting** via the **Ledger and Journal Applet**.
+
+- **Posting Status:** Posting occurs automatically when Sales Invoices containing voucher items or redemptions are finalized (`POSTING_STATUS: FINAL`).
+- **Journal Postings:**
+  - **Voucher Issuance / Sale (Deferred Revenue):**
+    * **Debit:** `Cash / Bank / Accounts Receivable` (Amount paid by customer)
+    * **Credit:** `Voucher Liability` (Outstanding obligation)
+  - **Voucher Redemption (Liability Settlement):**
+    * **Debit:** `Cash / Payment Method` (Net cash paid by customer)
+    * **Debit:** `Voucher Liability` (Voucher amount redeemed)
+    * **Credit:** `Sales Revenue` (Gross price of products sold)
+  - **Voucher Expiry (Breakage Recognition):** When vouchers expire unredeemed, the deferred liability is recognized as income:
+    * **Debit:** `Voucher Liability`
+    * **Credit:** `Voucher Breakage Income` (Other income or revenue)
+
+#### User story: monthly accounting reconciliation
+> *As a Financial Controller, I want to ensure our voucher liabilities are accurately represented on our balance sheet.*
+> 1. A customer buys a RM100 store credit voucher. The system debit-posts RM100 to Cash and credit-posts RM100 to `Voucher Liability`.
+> 2. The next day, the customer redeems the RM100 voucher to buy a RM150 jacket.
+> 3. The system generates a Sales Invoice. Upon finalization, the automated posting engine posts a journal entry:
+>    - **Debit:** Cash/Bank RM50
+>    - **Debit:** Voucher Liability RM100
+>    - **Credit:** Sales Revenue RM150
+> 4. At the end of the month, any unredeemed vouchers that pass their expiration date are processed: the system debits `Voucher Liability` and credits `Voucher Breakage Income` to clear outstanding liabilities.
+
+---
+
+## Quick start guide
+
 
 ### For Marketing: Create a Promo Code Campaign (Discount Type)
 
@@ -190,9 +322,9 @@ The **Field Settings** screen can hide `DISCOUNT` or `REWARDS` from the create f
 
 ---
 
-## Deep-Dive: Advanced Configurations
+## Deep-dive: advanced configurations
 
-### Security & Privacy Controls
+### Security and privacy controls
 - **Softpin:** Adds a second secret value to the voucher or ticket flow. The UI lets you set the softpin length from `6` to `30`.
 - **Activation Pin:** Requires activation before the ticket becomes usable. The UI also enforces a `6` to `30` character length.
 - **URL Key:** Creates a redeemable URL key and optional **URL Redirection Configuration** value.
@@ -205,7 +337,7 @@ These controls affect how the final ticket or voucher can be activated, redeemed
 When you enable **Prefix**, the form exposes both **Prefix** and **Character length - Serial Number**.
 - **Example:** Set Prefix to `VIP-` and Character Length to `8`. The system can then generate serials such as `VIP-AX72J9K1`.
 
-### The Voucher Edit Workspace
+### The voucher edit workspace
 
 After the first save, the voucher opens into a 7-tab workspace. Admins can reorder these tabs in **Settings > Default Selection**.
 
@@ -219,7 +351,7 @@ After the first save, the voucher opens into a 7-tab workspace. Admins can reord
 | **Website Link** | Add or remove website links and review the linked website code, name, and modified date. | Controls which website records remain linked to the voucher after it has been saved. |
 | **Audit** | Review date, user, action, and event code history for the voucher. | Does not change voucher behavior; it gives traceability for support and review. |
 
-### Treatment Value: `Product` vs `For All`
+### Treatment value: `Product` vs `For All`
 
 | Area | What users can do there | What it affects |
 |:---:|---|---|
@@ -228,7 +360,7 @@ After the first save, the voucher opens into a 7-tab workspace. Admins can reord
 
 `SETTLEMENT` vouchers do not show **Treatment Value**. In the standard voucher create flow, `DISCOUNT` exposes both `Product` and `For All`, while `REWARDS` starts with the main reward setup in `For All`.
 
-### Apply Rules: The 3 Rule Builders
+### Apply rules: the 3 rule builders
 
 | Rule Area | Best used for | Available rule types |
 |:---:|---|---|
@@ -242,7 +374,7 @@ After the first save, the voucher opens into a 7-tab workspace. Admins can reord
 
 {{< figure src="/images/voucher-management-applet/voucher-edit-details.png" alt="Voucher configuration showing the main edit tabs for details, treatment value, rules, images, ticket management, website link, and audit" caption="Voucher Edit Workspace: move from header setup into treatments, rules, images, ticket handling, website mapping, and audit review." >}}
 
-### Ticket Management and Ticket Applet
+### Ticket management and ticket applet
 - Inside a voucher, **Ticket Management** shows summary counts for **Vouchers Generated**, **Vouchers Assigned**, and **Vouchers Redeemed**. This is the main workspace for ticket activity under one selected voucher.
 - The ticket grid under the voucher shows **Serial Number**, **Assignee**, **Assigned To**, **Validity**, **Cancellation**, **Redeemable Status**, **Created Date**, and **Modified Date** so users can review the current state of each serial.
 - The **Create Ticket** flow inside a voucher has three sub-tabs: **Generate Ticket**, **Import Ticket**, and **Ticket Files Listing**.
@@ -259,14 +391,14 @@ After the first save, the voucher opens into a 7-tab workspace. Admins can reord
 If **Field Settings > ENABLE_MULTIPLE_TICKET** is turned off, a `FIXED` voucher may stop showing the add button after the allowed ticket count has been generated.
 {{< /callout >}}
 
-### Scanned Event Monitoring
+### Scanned event monitoring
 - The **Scanned Event** listing shows **Serial Number**, **Item Name**, **Email**, **Phone**, **Scan Date**, **Reward Points**, **User Type**, **Status**, **Remarks**, **Shipping Address**, and **Attachment**.
 - Opening a record shows a **Details** tab plus an **Attchment** tab in the current UI.
 - The **Details** tab is mainly for review. It shows serial, item, contact details, reward points, user type, status, remarks, activation pin, and audit fields.
 - Customer-type records can update **Shipping Address** from the detail view. This is useful when a scanned voucher or event record needs fulfillment follow-up.
 - The **Attchment** tab stores image records with **Created Date** and **Updated Date**. Opening an attachment lets users inspect the linked scan evidence.
 
-### Recurring Voucher Automation
+### Recurring voucher automation
 - The **Recurring Voucher** flow is a scheduled voucher template, not a full copy of the standard voucher workspace.
 - The recurring create form supports `SETTLEMENT`, `DISCOUNT`, and `REWARDS`, but its quantity types are only `FIXED` and `DYNAMIC`.
 - The recurring create form adds **Recurring ?**, **Start Date**, **End Date**, and a recurrence editor so users can define when the recurring voucher should run.
@@ -276,7 +408,7 @@ If **Field Settings > ENABLE_MULTIPLE_TICKET** is turned off, a `FIXED` voucher 
 - In the current recurring workspace there is no **Ticket Management**, **Website Link**, or **Audit** tab.
 - Use this menu when the main requirement is repeated scheduled issuance. If the process depends on manual ticket handling or website-link maintenance, users still need the standard **Voucher** workspace.
 
-### Import Tickets
+### Import tickets
 - The upload screen is labelled **Upload Master Data** in the current UI. Users drag and drop a `.csv` file, preview the selected file, remove it if needed, then click **ADD**.
 - Use the **Sample Format** link in the upload screen before submitting files.
 - After upload, the listing shows file-level results such as **File Name**, **File Size**, **Format**, **Status**, **Process Status**, **User Error Message**, **Created Date**, **Updated Date**, and **Created by**.
@@ -287,31 +419,32 @@ If **Field Settings > ENABLE_MULTIPLE_TICKET** is turned off, a `FIXED` voucher 
 
 ---
 
-## Configuration & Settings
+## Configuration and settings
 
 Navigate to **Settings** in the applet sidebar to configure global behavior, then use **Personalization** for user-level overrides.
 
 {{< figure src="/images/voucher-management-applet/applet-settings.png" alt="Settings menu showing Feature Visibility, Webhooks, and Permission Sets" caption="Settings Menu: customize default behavior, field visibility, and governance controls for the applet." >}}
 
-### Default Selection
+### Default selection
 - Set the applet-wide **Default Branch**, **Default Location**, and **Default Timezone**.
 - These defaults affect what the applet preselects for users and which timezone is used when the create form prepares date-time defaults such as **Event Period** and **Redemption Period**.
 - Reorder the voucher edit tabs: **Details**, **Treatment Value**, **Apply Rules**, **Image**, **Ticket Management**, **Website Link**, and **Audit**.
 - Tab ordering changes the saved voucher edit workspace only; it does not change the create screen.
 
-### Field Settings
+### Field settings
 - **ENABLE_MULTIPLE_TICKET:** Controls whether more than one ticket can be generated where the flow allows it. When disabled, a `FIXED` voucher may stop showing the add button once the allowed ticket record exists.
 - **HIDE_VOUCHER_TYPE_REWARD:** Removes `REWARDS` from the voucher type selector.
 - **HIDE_VOUCHER_TYPE_DISCOUNT:** Removes `DISCOUNT` from the voucher type selector.
 - **ENABLE_EDIT_VOUCHER_CODE:** Allows voucher code editing after create when enabled.
 
-### Feature Visibility, Webhooks, and Permissions
+### Feature visibility, webhooks, and permissions
 - The applet route set includes **Feature Visibility**, **Webhook**, and permission administration pages, but tenant navigation and permissions determine whether users can open them from the current environment.
 - **Feature Visibility** lets admins hide features that are not relevant to the tenant.
 - **Webhook** supports outbound integration behavior from the settings area.
 - Permission administration is available for **Permission Set Listing**, **User Permission Listing**, **Team Permission Listing**, and **Role Permission Listing**.
 
-### Personalization
+## Personalization
+
 - **Personal Default Selection** lets each user override the applet defaults for their own profile.
 - In the current build, the user-level component clearly persists **Default Branch** and **Default Location**.
 - The current UI also shows a **Default Timezone** row, but the component logic only saves branch and location in this build. Users should treat branch and location as the reliable personalization overrides here.
@@ -319,7 +452,7 @@ Navigate to **Settings** in the applet sidebar to configure global behavior, the
 
 ---
 
-## FAQs
+## FAQ
 
 **Q: Why do I see `Treatment Value` during create for some vouchers but not others?**  
 A: `DISCOUNT` and `REWARDS` vouchers expose **Treatment Value** during create. `SETTLEMENT` vouchers do not. Tenant field settings can also hide `DISCOUNT` or `REWARDS` from the selector.
@@ -347,5 +480,14 @@ A: Open the ticket and review **Ticket History** for the serial trace, or use **
 
 **Q: Why does Personalization show `Default Timezone` but not behave like Branch or Location?**  
 A: The current UI shows the row, but the component logic in this build only persists branch and location overrides.
+
+**Q: How is a voucher item created in the Doc Item Maintenance Applet linked to the Voucher Management Applet?**  
+A: Create an item with the type set to `Voucher` in the Doc Item Maintenance Applet. This action unlocks the **Voucher Details** tab in that item's edit workspace, where you can select and link the template from the Voucher Management Applet.
+
+**Q: What happens if a customer redeems a voucher at the POS General Applet?**  
+A: The POS terminal scans the voucher's serial number and validates it against the active rules in the Voucher Management Applet. If validation passes, the discount is applied to the sales invoice, and the ticket status is updated to `Redeemed` to prevent duplicate redemptions.
+
+**Q: How do voucher transactions post to accounting?**  
+A: Ledger entries are automatically posted via the Ledger and Journal Applet upon invoice finalization. The system credits `Voucher Liability` when a voucher is sold (deferred revenue), debits `Voucher Liability` and credits `Sales Revenue` upon redemption, and debits `Voucher Liability` and credits `Voucher Breakage Income` if the voucher expires unredeemed.
 
 ---

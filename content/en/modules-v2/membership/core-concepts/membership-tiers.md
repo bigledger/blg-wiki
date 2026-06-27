@@ -28,6 +28,10 @@ A Member Class represents a tier or level within a membership program. Member Cl
 
 **Tier Maintenance**: Requirements to maintain the tier status
 
+> [!IMPORTANT]
+> **Member Class vs Member Label**
+> It's important to understand the distinction between these two concepts. A Class is a hierarchical tier (like Gold or Silver). A Label is a flexible tag (like "VIP" or "At Risk") used for segmentation.
+
 ### Member Class vs Member Label
 
 It's important to understand the distinction between these two concepts:
@@ -190,6 +194,9 @@ Luxury Card ($495 fee): 3% cash back, airport lounge access, concierge service, 
 ## Tier Progression Mechanics
 
 ### Qualification Criteria Types
+
+> [!TIP]
+> The most successful retail programs start with **Spending-Based Qualification**. It's the easiest to measure, explain to customers, and tie directly to your revenue goals.
 
 **Spending-Based Qualification**:
 - Most common method
@@ -510,6 +517,9 @@ Labels enable sophisticated campaign targeting beyond tier structure:
 ## Implementation Best Practices
 
 ### Setting Tier Thresholds
+
+> [!WARNING]
+> Setting tier thresholds incorrectly can be an expensive mistake. Always calculate the true cost of tier benefits against the required incremental spend before launching.
 
 **Start Conservative**:
 - Initially set achievable thresholds to build member confidence

@@ -12,640 +12,269 @@ weight: 110
 
 ## Purpose and Overview
 
-The **Engagement Applet** is designed for **professional services firms** (audit, accounting, consulting, legal) to manage client engagements and projects. It provides a structured way to track client relationships, assign team members, manage fiscal year cycles, and generate documentation.
+The **Engagement Applet** is a specialized project and portfolio management module designed specifically for professional services firms (such as audit, accounting, legal, consulting, and tax advisory). It transitions client onboarding and project assignment from manual spreadsheets to a central database linked directly to your organization's billing and resource pools.
 
-{{% callout type="info" %}}
-**Core Concept**: An **Engagement** represents a client project or contract with defined scope, timeline, and team assignments. Think of it as a comprehensive project file that links clients, employees, and deliverables.
-{{% /callout %}}
+{{< callout type="info" >}}
+**Core Concept**: An **Engagement** acts as the master record for a client contract or project. It links the client (Entity) with operational branch boundaries, tracks statutory deadlines via fiscal year cycles, and handles detailed staff resource allocations.
+{{< /callout >}}
 
-### What is an Engagement?
+{{< figure src="/images/engagement-applet/engagement-applet-overview.png" alt="Quick-Start Guide: Mastering the Engagement Applet infographic. Details the 3-step onboarding workflow, yearly vs perpetual tracking, specialized staffing tiers, and key leadership roles." caption="Quick-Start Guide: An overview infographic outlining client onboarding steps (create file, allocate teams, automate documents), tracking types, specialized staffing tiers, and key leadership roles." >}}
 
-In professional services, an "engagement" refers to a formal agreement to provide services to a client. This applet helps manage:
 
-- **Audit Engagements** - Annual audits with fiscal year end tracking
-- **Consulting Projects** - Advisory and consulting services
-- **Tax Engagements** - Tax preparation and compliance work
-- **Recurring Services** - Perpetual/ongoing client relationships
+### Who Benefits from This Applet?
 
----
+**Partners and Directors:**
+- **Portfolio Oversight**: Monitor all active engagements and critical status indicators at a glance.
+- **Risk Management**: Track critical compliance dates and assign an Engagement Quality Control Reviewer (EQCR) to high-risk files.
+- **Leadership Assignment**: Maintain sign-off accountability by assigning key leadership roles.
 
-## Who Benefits from This Applet?
+**Engagement Managers:**
+- **Resource Management**: Assign teams and coordinate staff allocations across active client files.
+- **Statutory Tracking**: Manage annual client audits using automated year-end intervals.
+- **Administrative Operations**: Auto-generate client paperwork using standard document templates.
 
-### Partners & Directors
-- **Client Oversight**: View all client engagements at a glance
-- **Quality Control**: Assign EQCR (Engagement Quality Control Reviewer)
-- **Risk Management**: Track engagement status and key dates
+**Finance and Billing Teams:**
+- **Billing Boundaries**: Link engagements directly to specific business branches and job groups.
+- **Revenue Recognition**: Monitor engagement progression statuses to align with progress billings.
 
-### Engagement Managers
-- **Project Management**: Manage engagement details and timelines
-- **Team Assignment**: Assign employees to specific roles
-- **Document Generation**: Create engagement-related documents
+**HR and Resource Managers:**
+- **Capacity Planning**: View employee workloads across different client engagements.
+- **Skills Matching**: Filter and search the employee registry to match project needs.
 
-### Finance Teams
-- **Billing Alignment**: Link engagements to billing branches
-- **Revenue Tracking**: Monitor engagement status for revenue recognition
-- **Entity Management**: Access client entity details
+### What Problems Does This Solve?
 
-### HR & Resource Management
-- **Staff Allocation**: Assign employees to engagements
-- **Workload Planning**: View employee engagement assignments
-- **Skill Matching**: Find suitable team members
-
----
-
-## What Problems Does This Solve?
-
-**Without the Engagement Applet:**
-- Client projects tracked in spreadsheets
-- No central view of who's working on what
-- Manual tracking of fiscal year deadlines
-- Disconnected client and employee information
-
-**With the Engagement Applet:**
-- ✓ **Centralized Management** - All engagements in one place
-- ✓ **Team Visibility** - See who's assigned to which project
-- ✓ **Fiscal Year Tracking** - Manage audit year-ends automatically
-- ✓ **Entity Integration** - Link directly to client master data
-- ✓ **Role-Based Access** - Partners, Managers, Directors properly assigned
+| The Spreadsheet-Based Project Problem | The Engagement Applet Solution |
+| :--- | :--- |
+| **Scattered Client Records**: Project codes, partner sign-offs, and client accounts are stored in siloed files, leading to metadata drift. | **Single Source of Truth**: All engagement data is housed in a central system, directly integrated with client master profiles (Entities). |
+| **Missed Statutory Deadlines**: Annual audit cycles and tax filings depend on manual calendar reminders, leading to compliance slip-ups. | **Fiscal Year End (FYE) Cycles**: Tracks annual timelines dynamically, preserving individual history per fiscal year. |
+| **Resource Double-Booking**: Employees are assigned to overlapping audits without central visibility into their total workload. | **Unified Team Allocations**: Direct query profiles display team allocations and allow filtering by availability and charge rates. |
+| **Manual Form Generation**: Drafting engagement letters and sign-off checklists requires manual data copying, increasing typo risks. | **Gen Doc Automation**: Integrates with document templates to generate and store engagement letters directly within the record. |
 
 ---
 
 ## Key Features Overview
 
 {{< cards >}}
-  {{< card title="Engagement Management" subtitle="Create and manage client engagements" link="#engagement-listing" >}}
+  {{< card title="Engagement Registry" subtitle="Log and track client engagements with status controls" link="#engagement-listing" >}}
 
-  {{< card title="Fiscal Year End" subtitle="Track audit and financial year cycles" link="#fiscal-year-end-tab" >}}
+  {{< card title="Fiscal Year End (FYE) Tracking" subtitle="Manage yearly cycles and compliance deadlines" link="#fiscal-year-end-tab" >}}
 
-  {{< card title="Employee Assignment" subtitle="Assign team members to engagements" link="#employee-management" >}}
+  {{< card title="Role and Team Assignment" subtitle="Assign Partners, Managers, and audit staff" link="#employee-management" >}}
 
-  {{< card title="Engagement Roles" subtitle="Define Partner, Manager, Director roles" link="#engagement-roles" >}}
+  {{< card title="Gen Doc Automation" subtitle="Create engagement letters and project documentation" link="#gen-doc-tab" >}}
 
-  {{< card title="Document Generation" subtitle="Create engagement documents" link="#gen-doc-tab" >}}
+  {{< card title="Categorization Settings" subtitle="Organize engagements by service line (e.g. Audit, Tax)" link="#engagement-category" >}}
 
-  {{< card title="Engagement Categories" subtitle="Organize engagements by type" link="#engagement-category" >}}
-
-  {{< card title="Entity Details" subtitle="Access client information" link="#entity-details" >}}
-
-  {{< card title="Settings & Permissions" subtitle="Configure applet behavior" link="#settings--configuration" >}}
+  {{< card title="Applet Settings" subtitle="Configure branch rules, custom naming, and field settings" link="#configuration-and-settings" >}}
 {{< /cards >}}
-
 
 ---
 
 ## Key Concepts
 
-### FYE Type: Perpetual vs Yearly
+### 1. FYE Type: Perpetual vs. Yearly
 
-The Fiscal Year End (FYE) Type determines how an engagement tracks time:
-
-| FYE Type | Description | Use Case |
-|----------|-------------|----------|
-| **Perpetual** | Ongoing engagement without yearly cycles | Consulting retainers, ongoing advisory |
-| **Yearly** | Engagement tied to specific fiscal year periods | Annual audits, tax engagements |
-
-{{% callout type="tip" %}}
-**Choosing FYE Type:**
-- **Perpetual**: For clients with continuous services (e.g., bookkeeping, advisory)
-- **Yearly**: For clients with distinct annual cycles (e.g., statutory audits)
-{{% /callout %}}
-
-### Engagement Roles
-
-Standard roles in professional services engagements:
-
-| Role | Abbreviation | Responsibility |
-|------|--------------|----------------|
-| **Engagement Partner** | EP | Overall responsibility, signs off |
-| **Engagement Manager** | EM | Day-to-day management |
-| **Engagement Director** | ED | Senior oversight |
-| **Managing Partner** | MP | Firm-level oversight |
-| **Key Audit Partner** | KAP | Public interest entity audits |
-| **EQCR** | EQCR | Quality control review |
-
-### Engagement Hierarchy
+When onboarding an engagement, you must define its time-tracking behavior by selecting a Fiscal Year End (FYE) Type:
 
 ```
-Client (Entity)
+                          ┌── Yearly Type ─────→ Annual Cycles (e.g. Audits, Tax)
+                          │                      Preserves separate team lists per year.
+Engagement FYE Type ──────┤
+                          │
+                          └── Perpetual Type ──→ Ongoing Services (e.g. Monthly Retainers)
+                                                 Single persistent team configuration.
+```
+
+- **Yearly**: Used for projects tied to strict annual accounting or tax periods. It enables the **Fiscal Year End** tab, allowing you to add yearly periods (e.g., Jan 1, 2024 - Dec 31, 2024). Each year maintains its own independent status and staff assignments.
+- **Perpetual**: Used for continuous, ongoing services (e.g. monthly bookkeeping retainers or general advisory contracts). Staff and roles are assigned directly on the Main tab and remain active until manually changed.
+
+### 2. Standardized Service Roles
+
+To ensure clear ownership and audit accountability, the applet enforces structured role categories:
+
+| Role | Abbreviation | Responsibility | Scope |
+| :--- | :--- | :--- | :--- |
+| **Engagement Partner** | EP | Ultimate file sign-off, client billing ownership, and project accountability. | Assignable |
+| **Engagement Manager** | EM | Day-to-day coordination, project milestones, and staff management. | Assignable |
+| **Engagement Director** | ED | High-level quality control, review procedures, and compliance sign-off. | Optional |
+| **Managing Partner** | MP | General firm leadership oversight and executive review. | Optional |
+| **EQCR** | EQCR | Engagement Quality Control Reviewer. Conducts independent file reviews. | High-Risk Files |
+| **Key Audit Partner** | KAP | Specifically required for Public Interest Entity (PIE) statutory audits. | Statutory Audits |
+
+### 3. Engagement Data Hierarchy
+
+The database structures records as a nested hierarchy under the Client account:
+
+```
+Client Profile (Entity)
 │
-└── Engagement
+└── Engagement File (Main Details: Code, Name, Job Group, FYE Type, Status)
     │
-    ├── Main Details ──→ Code, Name, Job Group, Status
+    ├── Perpetual Type ──→ Assigned Roles & Team Members (Persistent)
     │
-    ├── Fiscal Year End(s) ──→ (Yearly type only)
-    │   │
-    │   ├── Engagement Roles ──→ Who's responsible
-    │   │
-    │   └── Employees ──→ Team assignments
+    ├── Yearly Type ─────→ Fiscal Year End periods (e.g. FY2023, FY2024)
+    │                      │
+    │                      ├── Yearly Roles (Partner, Manager per FY)
+    │                      │
+    │                      └── Yearly Employees (Audit Seniors/Associates)
     │
-    └── Gen Docs ──→ Generated documents
+    └── Gen Docs ────────→ Historical archive of generated documents
 ```
 
 ---
 
 ## Quick Start Guide
 
-### Create Your First Engagement
+Set up and coordinate engagements in a few simple steps.
 
-**Goal:** Set up a new client engagement in 5 steps.
+### Step 1: Create the Engagement File
 
-**Step 1: Navigate to Engagements**
-1. Go to **Engagement Listing** from the sidebar
-2. Click **"+" (Add New)**
+**Goal:** Onboard a client engagement file and select its time-tracking behavior.
 
-**Step 2: Select Client**
-1. Click **Customer Name** field
-2. Search for and select your client
-3. Client details auto-populate
-
-**Step 3: Configure Engagement**
-1. **Engagement Code**: Auto-generated (or enter if required)
-2. **Job Group/Branch**: Select the responsible branch
-3. **Engagement Name**: Auto-generated from Client + Code + Branch
-4. **FYE Type**: Choose Perpetual or Yearly
-5. **Description**: Add engagement scope notes
-
-**Step 4: Assign Roles (Perpetual)**
-If FYE Type is Perpetual:
-1. Scroll to **Engagement Roles** section
-2. Add Engagement Partner, Manager, Director as needed
-
-**Step 5: Save**
-1. Click **SAVE** button
-2. Engagement created!
-
-**For Yearly Engagements:**
-After creating, go to **Fiscal Year End** tab to add year-end periods.
+1. Navigate to **Engagement Listing** from the left navigation panel.
+2. Click the **Create ("+")** button in the header.
+3. Click the **Customer Name** field, search for your client in the Entity popup, and select them.
+4. Select the **Job Group** (representing the responsible branch office).
+5. Choose your **FYE Type**:
+   - Select **Perpetual** for ongoing services (e.g. advisory retainers).
+   - Select **Yearly** for cycle-based projects (e.g. statutory audits).
+6. Fill in optional fields like the **Alternate Code** and a detailed scope **Description**.
+7. Click **SAVE** in the header.
 
 ---
 
-### Set Up Fiscal Year End (Yearly Engagements)
+### Step 2: Establish Years & Teams (For Yearly Type)
 
-**Goal:** Add fiscal year periods for an annual audit.
+**Goal:** Create an annual audit period and allocate the audit team.
 
-1. **Open Engagement** → Go to **Fiscal Year End** tab
-2. **Create FYE**:
-   - Click **"+" (Add New)**
-   - Set **Date Start** (e.g., Jan 1, 2024)
-   - Set **Date End** (e.g., Dec 31, 2024)
-   - Set **Status** (Draft, Active, Complete)
-3. **Assign Team**:
-   - Go to **Engagement Role** sub-tab
-   - Add Partner, Manager for this FYE
-   - Go to **Employee** sub-tab
-   - Assign audit team members
-4. **Save**
+1. Open a Yearly engagement from the listing and select the **Fiscal Year End** tab.
+2. Click **Create ("+")** in the FYE grid.
+3. Enter the **Date Start** (e.g. `2024-01-01`) and **Date End** (e.g. `2024-12-31`).
+4. Set the period status to **Draft** or **Active** and click **SAVE**.
+5. Select the newly created year row and double-click to open the FYE Edit workspace:
+   - **Assign Roles**: Select the **Engagement Role** sub-tab and assign the key Partner (EP) and Manager (EM) for this year.
+   - **Assign Staff**: Select the **Employee** sub-tab, click **Add Employee**, search the staff registry, and select your audit associates.
+6. Click **SAVE** in the header.
 
 ---
 
-## Core Features in Detail
+### Step 3: Automate Documentation
 
-### Engagement Listing
+**Goal:** Generate an official engagement letter for the client.
 
-**Your central hub for all client engagements.**
-
-**What You See:**
-- Engagement code and name
-- Client/Customer name
-- Job Group/Branch
-- FYE Type
-- Status
-
-**Actions:**
-- **Create (+)**: New engagement
-- **Edit**: Modify engagement details
-- **Search**: Find engagements by various criteria
-
-**Tips:**
-- Use filters to find engagements by client, status, or branch
-- Toggle between grid and list views
-- Pagination for large datasets
-
-![Engagement Listing Interface](/images/engagement-applet/engagement-listing.png)
-*The Engagement Listing shows all client engagements with Code, Name, Entity, and Created Date columns.*
+1. Open the engagement file and select the **Gen Doc** tab.
+2. Click the **Generate Document** trigger button.
+3. Select your template (e.g., `Audit Engagement Letter V2`).
+4. The system automatically extracts the client legal name, registration number, assigned partner, and fee details to construct the document.
+5. Review the document status and click **Export as PDF** to download it.
 
 ---
 
-### Engagement Edit - Main Tab
+## Create vs. Edit Workspace
 
-**Configure the core details of your engagement.**
+The applet changes its layout and available tabs depending on whether you are editing the parent engagement file or managing an individual yearly period.
 
-#### Fields Explained
+### Parent Engagement Workspace
 
-| Field | Description | Notes |
-|-------|-------------|-------|
-| **Customer Name** | The client/entity | Click to select from entity master |
-| **Engagement Code** | Unique identifier | Auto-generated or manual |
-| **Job Group** | Responsible branch/office | For multi-office firms |
-| **Engagement Name** | Full engagement name | Usually auto-generated |
-| **Alternate Code** | Secondary reference | Optional |
-| **FYE Type** | Perpetual or Yearly | Determines available tabs |
-| **Status** | Current state | Draft, Active, Complete, etc. |
-| **Description** | Scope and notes | Free text |
+Double-clicking an engagement from the listing opens the parent editor:
 
-![Create Engagement Form](/images/engagement-applet/create-engagement-form.png)
-*The Create/Edit Engagement form with Customer, Code, Branch, FYE Type, and role assignment fields.*
+{{< figure src="/images/engagement-applet/engagement-listing.png" alt="Engagement Listing page showing client engagement files" caption="Engagement Listing: The main interface showing the portfolio of client engagements." >}}
 
-#### Engagement Roles (Perpetual Type)
+#### 1. Main Tab
+Captures the core metadata and administrative roles:
+- **Customer Name**: Linked client entity profile.
+- **Engagement Code**: Unique file ID.
+- **Job Group**: The operating branch overseeing the project.
+- **Engagement Name**: Auto-generated naming string combining the client, project, and branch.
+- **Alternate Code**: Optional secondary accounting ref number.
+- **FYE Type**: Sets either Perpetual or Yearly tracking.
+- **Status**: The workflow state of the parent file (e.g., Draft, Active, Complete).
+- **Description**: Scope and contract terms.
+- **Engagement Roles (Perpetual only)**: Assigns the Partner, Manager, and Director directly on this screen when FYE Type is Perpetual.
+- **Entity Details Button**: Launches a lookup window showing address and contact details of the selected client.
 
-For perpetual engagements, assign roles directly on the Main tab:
-- Engagement Partner
-- Engagement Manager
-- Engagement Director
-- Managing Partner
-- EQCR
-- Key Audit Partner
+{{< figure src="/images/engagement-applet/edit-engagement-main.png" alt="Edit Engagement Main tab showing client and role details" caption="Main Tab: Manage engagement codes, customer entity linking, and perpetual role assignments." >}}
 
-#### Entity Details
+#### 2. Fiscal Year End Tab (Yearly only)
+Lists all fiscal cycles configured for the client. Selecting a row and clicking edit opens the [FYE Sub-Workspace](#fye-sub-workspace-yearly-only).
 
-Click **"Entity Details"** button to:
-- View client master data
-- Access contact information
-- See related accounts
+{{< figure src="/images/engagement-applet/fiscal-year-end-tab.png" alt="Fiscal Year End tab showing configured audit periods" caption="Fiscal Year End Tab: Lists annual audit cycles for yearly engagements." >}}
 
-![Edit Engagement - Main Tab](/images/engagement-applet/edit-engagement-main.png)
-*Editing an engagement shows customer details, engagement code, and role assignments.*
+#### 3. Gen Doc Tab
+Lists and generates client documents (Letters of Engagement, planning documentation). The grid displays:
+- **Doc Type**: The document template used.
+- **Doc No**: Generated tracking ID.
+- **Status**: Current document state.
+- **Transaction Date**: Date of creation.
 
----
-
-### Fiscal Year End Tab
-
-**Manage annual periods for yearly engagements.**
-
-{{% callout type="info" %}}
-This tab only appears when FYE Type is set to **YEARLY**.
-{{% /callout %}}
-
-#### FYE Listing
-
-See all fiscal year periods for this engagement:
-- Date range (e.g., Jan 1 - Dec 31, 2024)
-- Status
-- Year indicator
-
-![Fiscal Year End Tab](/images/engagement-applet/fiscal-year-end-tab.png)
-*The Fiscal Year End tab showing Date Start, Date End, and Status columns.*
-
-#### Creating a Fiscal Year End
-
-1. Click **"+" (Add)**
-2. Enter **Date Start** and **Date End**
-3. Select **Status**
-4. Save
-
-#### FYE Edit Sub-tabs
-
-When you edit a Fiscal Year End, you get additional tabs:
-
-**Main Tab:**
-- Date Start/End
-- Status
-- Audit fields (Created By, Modified By, dates)
-- Delete option
-
-**Engagement Role Tab:**
-- Assign partners/managers for this specific FYE
-- Different teams can be assigned per year
-
-**Employee Tab:**
-- Assign audit/engagement team members
-- Specific to this fiscal year period
+{{< figure src="/images/engagement-applet/gen-doc-tab.png" alt="Gen Doc tab showing generated letter templates" caption="Gen Doc Tab: Generate and archive official client letters and memos." >}}
 
 ---
 
-### Employee Management
+### FYE Sub-Workspace (Yearly only)
 
-**Assign team members to engagements.**
+Double-clicking a year row under the Fiscal Year End tab opens the yearly cycle workspace, containing these sub-tabs:
 
-#### Employee Assignment Workflow
+#### 1. Main Sub-tab
+Controls the date boundaries of the annual cycle:
+- **Date Start / Date End**: The fiscal period dates.
+- **Status**: Cycle status (e.g. Draft, Active, Fieldwork, Complete).
+- **Audit Logging**: Read-only tracking showing Created By, Modified By, Created Date, and Modified Date.
+- **DELETE Button**: Trigger to delete the fiscal year. Requires double-clicking (**CLICK AGAIN TO CONFIRM**) to prevent accidental deletions.
 
-1. Navigate to **Employee** tab (within FYE Edit)
-2. Click **Add Employee**
-3. Search for staff by:
-   - Name
-   - Role
-   - Availability
-   - Skills
-4. Select and confirm assignment
+#### 2. Engagement Role Sub-tab
+Assigns the Partner (EP), Manager (EM), Director (ED), EQCR, and Key Audit Partner (KAP) responsible for this specific fiscal year. This allows firms to track partner rotations across different years for the same client.
 
-#### Employee Search Filters
-
-The applet provides advanced search with multiple filter types:
-- Text search (name)
-- Select filters (role, department)
-- Date filters (availability)
-- Number filters (charge rates)
+#### 3. Employee Sub-tab
+Lists all staff assigned to the fieldwork.
+- **Add Employee**: Opens the resource allocation drawer.
+- **Staff Filters**: Search by employee name, filter by department/role, and sort by billing charge rates.
+- **Staff List Grid**: Displays name, role designation, and date assigned.
 
 ---
 
-### Engagement Roles
+## Configuration and Settings
 
-**Define who's responsible for the engagement.**
+Administrators manage applet behaviors under the Settings workspace. They are configured via the following options:
 
-#### Role Assignment
-
-For **Perpetual** engagements:
-- Roles assigned on Main Details tab
-- One set of roles for entire engagement
-
-For **Yearly** engagements:
-- Roles assigned per Fiscal Year End
-- Different team each year if needed
-
-#### Standard Roles
-
-| Role | Responsibility |
-|------|----------------|
-| **Engagement Partner (EP)** | Signs off, ultimate responsibility |
-| **Engagement Manager (EM)** | Day-to-day project management |
-| **Engagement Director (ED)** | Senior oversight |
-| **Managing Partner (MP)** | Firm leadership oversight |
-| **EQCR** | Independent quality review |
-| **Key Audit Partner (KAP)** | For public interest entities |
-
----
-
-### Gen Doc Tab
-
-**Generate and manage engagement documents.**
-
-The Gen Doc (Generated Documents) tab provides:
-- List of generated documents
-- Document type
-- Generation date
-- Status
-
-**Common Documents:**
-- Engagement letters
-- Planning memos
-- Completion checklists
-- Reports
-
-{{% callout type="tip" %}}
-The Gen Doc feature integrates with document generation workflows. Consult your administrator for available document templates.
-{{% /callout %}}
-
-![Gen Doc Tab](/images/engagement-applet/gen-doc-tab.png)
-*The Gen Doc tab showing generated documents with Doc Type, Doc No, Status, and Transaction Date.*
-
----
-
-### Entity Details
-
-**Access client master data from the engagement.**
-
-Click **"Entity Details"** button to view:
-- Client legal name
-- Registration numbers
-- Contact information
-- Addresses
-- Related entities
-
-This provides quick access to the linked Account/Entity record without leaving the engagement.
-
----
-
-## Settings & Configuration
-
-### Engagement Category
-
-**Organize engagements by type.**
-
-`Settings > Engagement Category`
-
-Create categories like:
-- Statutory Audit
-- Tax Compliance
-- Advisory
-- Consulting
-- Special Projects
-
-**Fields:**
-- Category name
-- Category code
-- Description
-
-**Use Case:**
-Filter engagements by category for reporting and workload analysis.
-
----
-
-### Default Settings
-
-**Pre-configure defaults for new engagements.**
-
-`Settings > Default Selection`
-
-| Setting | Purpose |
-|---------|---------|
-| **Default Company** | Pre-select company for new records |
-| **Default Branch** | Pre-select job group |
-| **Default Location** | Pre-select location |
-
----
-
-### Field Configuration
-
-**Customize field visibility and behavior.**
-
-`Settings > Field Settings`
-
-The Engagement Applet supports extensive field configuration:
-
-**Hideable Fields:**
-- Customer Name
-- Engagement Code
-- Job Group
-- Engagement Name
-- Alternate Code
-- FYE Type
-- Status
-- Description
-- Engagement Manager/Director/Partner
-- Managing Partner
-- EQCR
-- Key Audit Partner
-- Entity Details Button
-
-**Other Settings:**
-- Enable/disable custom statuses (HDR 1-5, LINE 1-5)
-- Relabel Company to Entity
-- Relabel Branch to Job Group
-- Disable engagement creation
-- Disable engagement editing
-
----
-
-### Feature Visibility
-
-**Control which features are available.**
-
-`Settings > Feature Visibility`
-
-Toggle visibility of:
-- Gen Doc Listing
-- Create Button
-- Edit capabilities
-- Specific tabs
-
----
-
-### Webhook Configuration
-
-**Integrate with external systems.**
-
-`Settings > Webhook`
-
-Configure webhooks to:
-- Notify external systems on engagement creation
-- Sync with project management tools
-- Trigger billing workflows
-
----
-
-### Permission Management
-
-**Control who can do what.**
-
-`Settings > Permission Wizard / Permission Set / User Permissions`
-
-| Permission Level | Description |
-|------------------|-------------|
-| **Viewer** | Read-only access |
-| **Editor** | Create and modify engagements |
-| **Manager** | Full engagement management |
-| **Admin** | Settings and permissions access |
+| Configuration Area | Setting Key | Parameter Purpose | Path & Default Behavior |
+| :--- | :--- | :--- | :--- |
+| **Default Settings** | `DEFAULT_BRANCH` | Sets the default branch selected when creating a new engagement. | `Settings > Default Selection` <br> Defaults to the user's primary operating branch. |
+| **Default Settings** | `DEFAULT_LOCATION` | Sets the default location. | `Settings > Default Selection` <br> Pre-populates default location for related operations. |
+| **Field Configuration** | `HIDE_CUSTOMER_NAME` | Hides the Customer Name lookup field. | `Settings > Field Settings` <br> Default: `false`. Unhide to link client accounts. |
+| **Field Configuration** | `HIDE_ENGAGEMENT_CODE` | Hides the unique Engagement Code. | `Settings > Field Settings` <br> Set to `true` to let the system auto-generate codes. |
+| **Field Configuration** | `HIDE_MANAGING_PARTNER` | Hides the Managing Partner assignment role. | `Settings > Field Settings` <br> Default: `false`. Hide if leadership sign-off is not tracked. |
+| **Field Configuration** | `HIDE_EQCR` | Hides the EQCR reviewer role. | `Settings > Field Settings` <br> Enable for audit firms; disable for standard consulting firms. |
+| **Field Configuration** | `ENABLE_AUDIT_TRAIL` | Enables deep logging of all data edits. | `Settings > Field Settings` <br> Default: `false`. Toggle to `true` to track all record changes. |
+| **Feature Visibility** | `HIDE_ENGAGEMENT_CREATE_BUTTON` | Prevents users from creating new engagements. | `Settings > Field Settings (Listing)` <br> Restricts creation to partners or admins. |
+| **Feature Visibility** | `DISABLE_EDITING_ENGAGEMENTS` | Locks all existing engagements as read-only. | `Settings > Field Settings (Listing)` <br> Default: `false`. Set to `true` during post-audit reviews. |
+| **Feature Visibility** | `RELABEL_COMPANY_TO_ENTITY` | Renames the 'Company' field to 'Entity'. | `Settings > Field Settings (Listing)` <br> Default: `false`. Toggle to fit professional jargon. |
+| **Feature Visibility** | `RELABEL_BRANCH_TO_JOB_GROUP` | Renames 'Branch' field to 'Job Group'. | `Settings > Field Settings (Listing)` <br> Default: `false`. Toggle to match firm organization. |
+| **Feature Visibility** | `HIDE_TOGGLE_BUTTON` | Hides the grid/list layout switch button. | `Settings > Field Settings (Listing)` <br> Default: `false`. Locks users to the standard grid view. |
+| **Engagement Category**| `ENGAGEMENT_CATEGORIES` | Configures client category presets. | `Settings > Engagement Category` <br> Create categories like Audit, Tax, Advisory, Legal. |
+| **Webhook Config** | `WEBHOOK_INTEGRATIONS` | Sets up automated webhooks. | `Settings > Webhook` <br> Triggers API calls on creation to sync with PM tools. |
+| **Permissions** | `USER_PERMISSIONS_WIZARD` | Assigns User/Team roles. | `Settings > Permissions` <br> Map roles: Viewer (Read-only), Editor, Manager, Admin. |
 
 ---
 
 ## Personalization
 
-### Personal Default Settings
-
-Save your preferences:
-- Preferred company
-- Default branch
-- Saved filters
-
-### Sidebar Customization
-
-Arrange menu items:
-- Show/hide options
-- Reorder sections
-- Pin favorites
-
----
-
-## Common Scenarios
-
-### Scenario 1: Annual Audit Setup
-
-```
-Client: ABC Manufacturing Sdn Bhd
-Engagement Type: Statutory Audit
-FYE: December 31
-
-Setup Steps:
-1. Create Engagement
-   - Customer: ABC Manufacturing
-   - FYE Type: Yearly
-   - Job Group: Audit Division
-
-2. Add Fiscal Year End
-   - Date: Jan 1 - Dec 31, 2024
-   - Status: Active
-
-3. Assign Team
-   - Partner: John Tan
-   - Manager: Sarah Lee
-   - Senior: Ahmad (via Employee tab)
-   - Staff: 3 audit associates
-
-Result: Complete engagement ready for fieldwork
-```
-
-### Scenario 2: Consulting Retainer
-
-```
-Client: XYZ Holdings Berhad
-Engagement Type: Advisory Retainer
-FYE Type: Perpetual (ongoing)
-
-Setup Steps:
-1. Create Engagement
-   - Customer: XYZ Holdings
-   - FYE Type: Perpetual
-   - Job Group: Consulting
-
-2. Assign Roles (on Main tab)
-   - Partner: Lee Wei Ming
-   - Manager: Karen Wong
-
-3. No FYE needed - perpetual engagement
-
-Result: Ongoing consulting engagement tracked
-```
-
-### Scenario 3: Multi-Year Audit Client
-
-```
-Client: Listed Company Berhad
-Annual Audits for 3 years
-
-Setup:
-1. One Engagement record (Yearly type)
-2. Three Fiscal Year Ends:
-   - FYE 2022: Jan-Dec 2022 (Complete)
-   - FYE 2023: Jan-Dec 2023 (Complete)
-   - FYE 2024: Jan-Dec 2024 (Active)
-
-Each FYE has own team assignments
-Historical data preserved
-```
-
----
-
-## Tips & Best Practices
-
-### For Partners
-
-✓ **Review Assignments**: Regularly check engagement roles  
-✓ **Monitor Status**: Ensure engagements move through lifecycle  
-✓ **Use Categories**: Organize for better portfolio view  
-✓ **Delegate Properly**: Assign appropriate managers and directors
-
-### For Managers
-
-✓ **Complete Details**: Fill in all relevant fields  
-✓ **Timely FYE Setup**: Create fiscal year ends early  
-✓ **Team Communication**: Ensure staff know their assignments  
-✓ **Document Generation**: Use Gen Doc for standard documents
-
-### For Administrators
-
-✓ **Configure Categories**: Set up meaningful categories  
-✓ **Customize Fields**: Hide unused fields to simplify UI  
-✓ **Set Permissions**: Control access appropriately  
-✓ **Train Users**: Ensure staff understand FYE Type implications
+Personalization allows users to customize their individual workspace:
+- **Personal Default Settings** (`Personalization > Default Settings`): Set your preferred branch, company, and location. These will auto-populate on your screen when you create records.
+- **Custom Sidebar** (`Personalization > Sidebar`): Rearrange sidebar menus, hide unused tabs, and bookmark your most frequently accessed client files.
 
 ---
 
 ## Frequently Asked Questions
 
-**Q: When should I use Perpetual vs Yearly FYE Type?**  
-A: Use Yearly for engagements with distinct annual cycles (audits, tax). Use Perpetual for ongoing services without year-end cycles (advisory, consulting retainers).
+**Q: Can I change an engagement's FYE Type after creation?**  
+A: No. Changing the FYE Type between Perpetual and Yearly changes how the database structures team assignments and dates. If a change is required, you must create a new engagement file with the correct type.
 
-**Q: Can I change FYE Type after creation?**  
-A: Consult your administrator. Changing FYE Type may affect data structure.
+**Q: How do I assign different staff teams for different years?**  
+A: Ensure the parent engagement is set to **Yearly**. Create a Fiscal Year End record for each year. Double-click the year row to enter its workspace, and use the **Employee** tab to assign staff specifically to that year. 
 
-**Q: How do I assign different teams for different years?**  
-A: For Yearly engagements, each Fiscal Year End has its own Engagement Role and Employee tabs. Assign team per FYE.
+**Q: What is the difference between Engagement Role and Employee tab?**  
+A: The **Engagement Role** sub-tab is reserved for key leadership and compliance personnel (Partners, Managers, EQCR, Directors). The **Employee** sub-tab is for the execution team members (Seniors, Associates, and field staff).
 
-**Q: What's the difference between Engagement Role and Employee?**  
-A: Engagement Role is for key personnel (Partner, Manager). Employee is for all team members (seniors, staff).
-
-**Q: Can I have multiple engagements for the same client?**  
-A: Yes. Common for clients with audit + tax + advisory services. Each engagement is separate.
-
-**Q: How do I find all engagements for a specific partner?**  
-A: Use the search/filter functionality on Engagement Listing to filter by assigned roles.
+**Q: Why can't I see the Fiscal Year End tab in my engagement?**  
+A: This tab is conditional on the **FYE Type** field. If the engagement is set to **Perpetual**, the Fiscal Year End tab will not display. Set the field to **Yearly** during creation to enable it.

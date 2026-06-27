@@ -33,3 +33,13 @@ playwright-report/
 test-results/
 tests/playwright/playwright-report/
 tests/playwright/test-results/
+
+# Local temporary directories and scratch scripts
+graphify-out/
+Inventory
+finance
+stock
+sale
+scratch_generate_all.py
+scratch_generate_crm.py
+scratch_generate_ultra.py

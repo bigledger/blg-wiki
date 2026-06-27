@@ -12,6 +12,15 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
+# Check and terminate any stale processes on port 1313 to prevent conflicts
+echo "Checking for stale processes on port 1313..."
+STALE_PID=$(lsof -t -i :1313 || true)
+if [ ! -z "$STALE_PID" ]; then
+    echo -e "${YELLOW}Warning: Stale process $STALE_PID found on port 1313. Terminating...${NC}"
+    kill -9 $STALE_PID || true
+    sleep 1
+fi
+
 # Clean and build
 echo "Building site..."
 rm -rf public/

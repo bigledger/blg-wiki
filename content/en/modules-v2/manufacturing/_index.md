@@ -1,154 +1,98 @@
 ---
 title: "Manufacturing Module"
-description: "Production planning, shop floor execution, multi-level BOMs, MRP planning, and job order execution for discrete and process manufacturing."
-weight: 55
+description: "Production execution engine managing Work-in-Progress (WIP), Bill of Materials (BOM), shop floor routings, and finished goods costing."
+weight: 50
 ---
 
-## 1. Module Overview
+The **Manufacturing Module** is BigLedger's shop floor execution and cost absorption engine. It manages multi-level Bills of Materials (BOM), production scheduling, work center routing, raw material issuance, Work-in-Progress (WIP) tracking, and finished goods inventory stock-ins integrated with Inventory and Financial Accounting.
 
-The **Manufacturing Module** is a comprehensive manufacturing execution system (MES) managing the complete production lifecycle — from product engineering and recipes through master scheduling, MRP planning, shop floor execution, and quality control. Built around a three-stage framework (Configure → Plan → Execute), it bridges the gap between sales orders and physical factory floor operations.
+## Architecture & Data Flow
 
-**Business Value:**
-- **Flexible Manufacturing Models**: Support Make-to-Order (MTO), Make-to-Stock (MTS), Configure-to-Order (CTO), and mixed-mode production in a single workspace.
-- **Accurate Product Costing**: Capture real-time labor, raw material consumption, and machine overheads to calculate standard vs. actual cost variances.
-- **Granular Inventory Traceability**: End-to-end bin-level material genealogy tracks ingredients or parts from supplier receipt through to the final finished product.
-- **Supervisor Quality Gates**: Built-in quality inspection checkpoints and sign-offs prevent defective goods from moving to packaging or shipping.
+Manufacturing bridges operational production schedules with financial cost accounting. Raw materials issued to production exit inventory asset ledgers and enter Work-in-Progress (WIP). Upon production order completion, direct labor and machine overhead absorb into final finished goods asset valuations.
 
-### Core Capabilities
+![ERP Manufacturing & Production Architecture](/images/manufacturing/manufacturing_architecture.png)
 
-- **Production Planning & MRP**: Master Production Scheduling (MPS) and Material Requirements Planning (MRP) automate component procurement and workload scheduling.
-- **Product Engineering (BOM & Routing)**: Build multi-level bills of materials (BOM), create alternate routings, manage BOM versions, and set up phantom assemblies.
-- **Shop Floor Control**: Dispatch job queues to specific work centers, track machine operator run-times, log scrap rates, and manage equipment capacity.
-- **Specialized Production Support**: Mapped processes for Discrete Manufacturing (machining, assembly) and Process Manufacturing (recipe batching, mixing, continuous flow).
-
----
-
-## 2. Key Concepts & Terminology
-
-| Term | Definition |
-|------|-----------|
-| **Job Order** | A formal manufacturing instruction specifying what to produce, raw material allocations, and due dates. |
-| **BOM (Bill of Materials)** | The structured engineering list of components, raw materials, and sub-assemblies required to build a product. |
-| **Routing** | The sequential list of operational steps (and work centers) required to manufacture an item. |
-| **Work Center / Machine** | A specific physical area or piece of equipment where a production operation is executed. |
-| **Material Requirement Planning (MRP)** | An automated logic calculating raw material orders and job start dates based on inventory levels and order demands. |
-| **Process Template** | An individual manufacturing step defining inputs (materials consumed) and outputs (products created) with ratios. |
-| **Work Log** | A shop floor record capturing operator run-times, material batches consumed, inspection measurements, and output counts. |
-| **Overall Equipment Effectiveness (OEE)** | The core metric evaluating machine availability, performance efficiency, and output quality. |
+| Architecture Layer | System Component | Primary Role in Production Operations |
+|-------------------|------------------|---------------------------------------|
+| **Execution Engine** | [Production Planning and Monitoring Applet](/applets/manufacturing/production-planning-and-monitoring-applet/) | Central production scheduling, master work order release, and batch tracking. |
+| **Process Routing** | [Process Maintenance Applet](/applets/manufacturing/process-maintenance-applet/) | Defining work centers, machine operations, labor rates, and routing sequences. |
+| **Shop Floor Operations** | [Manufacturing Operation Applet](/applets/manufacturing/manufacturing-operation-applet/) | Real-time work center execution, material issuance logging, and quality inspection. |
+| **Packing & Storage** | [Internal Packing Order Applet](/applets/manufacturing/internal-packing-order-applet/) | Finished goods secondary packaging, batch labeling, and warehouse stock-in. |
 
 ---
 
-## 3. Included Applets
+## Who Uses This Module
 
-### Product Engineering & Configuration
-
-| Applet | Purpose |
-|--------|---------|
-| [Process Maintenance Applet](/applets/manufacturing/process-maintenance-applet/) | Define machines, operational routing steps, process templates (BOMs), and master job recipes. |
-| [Inventory Item Maintenance Applet](/applets/inventory-workflow/inv-item-maintenance-applet/) | *(Shared)* Maintain standard unit costs, raw material packaging, and minimum replenishment levels. |
-
-### Production Planning & Control
-
-| Applet | Purpose |
-|--------|---------|
-| [Production Planning & Monitoring Applet](/applets/manufacturing/production-planning-and-monitoring-applet/) | Core planner console to monitor incoming Sales Orders, trigger job orders, schedule work centers, and run MRP cycles. |
-
-### Shop Floor & Quality Execution
-
-| Applet | Purpose |
-|--------|---------|
-| [Manufacturing Operations Applet](/applets/manufacturing/manufacturing-operation-applet/) | Touch-friendly shop floor terminal for operators to view queues, clock into jobs, log raw material batches, and record outputs. |
-| [Internal Stock Adjustment Applet](/applets/inventory-workflow/internal-stock-adjustment-applet/) | *(Shared)* Process scrap sheets, waste logs, and standard inventory balance corrections directly from the production line. |
+| Role | Primary Responsibilities | Core Applets Used |
+|------|--------------------------|-------------------|
+| **Production Planner** | Schedule work orders, analyze material requirements (MRP), monitor batch completion deadlines | [Production Planning and Monitoring Applet](/applets/manufacturing/production-planning-and-monitoring-applet/) |
+| **Process Engineer** | Configure multi-level Bill of Materials (BOM), setup work centers, establish machine cycle times | [Process Maintenance Applet](/applets/manufacturing/process-maintenance-applet/) |
+| **Shop Floor Supervisor** | Log raw material issues to WIP, track machine downtime, record completed stage output | [Manufacturing Operation Applet](/applets/manufacturing/manufacturing-operation-applet/) |
+| **Packaging Coordinator** | Generate internal packing orders, assign finished goods batch numbers, execute stock-in | [Internal Packing Order Applet](/applets/manufacturing/internal-packing-order-applet/) |
 
 ---
 
-## 4. Standard Business Workflows
+## Four Production Milestone Concepts Every Team Must Differentiate
 
-### Workflow 1: Make-to-Order Production (MTO)
+Confusing manufacturing milestones creates inventory valuation inaccuracies and absorption variance errors:
 
-```
-Sales Order ──▶ Production Request ──▶ Job Order ──▶ Shop Floor Execution ──▶ Quality Check ──▶ Stock In
-```
-
-**Steps:**
-1. A confirmed B2B customer **Sales Order** triggers a **Production Request**.
-2. Production planner reviews requests, combines quantities, and generates a **Job Order** referencing the Job Template.
-3. System allocates raw materials from the default staging bins.
-4. Job is dispatched; floor operators clock in, consume batch lot ingredients, and log output via the **Manufacturing Operations Applet**.
-5. Supervisor verifies quality inspection data and signs off on the **Work Log**.
-6. Finished goods are automatically stocked into the warehouse and mapped to the original Sales Order.
-
-### Workflow 2: Bill of Materials (BOM) & Routing Engineering
-
-```
-Define Machine ──▶ Create Routing Steps ──▶ Map Inputs & Outputs ──▶ Roll up Costs ──▶ Approve Recipe
-```
-
-**Steps:**
-1. Engineer defines work centers and machines in **Process Maintenance**.
-2. Define the routing sequence (e.g., Step 10: Machining, Step 20: Polishing, Step 30: Quality Control).
-3. Map material input requirements and product outputs in the **Process Template**.
-4. System executes a cost roll-up calculating standard product cost based on BOM component costs and routing labor rates.
-5. Save and version-lock the template as active.
-
-### Workflow 3: Material Requirements Planning (MRP)
-
-```
-Analyze Sales Demand ──▶ Check Stock Levels ──▶ Run MRP Calculation ──▶ Auto-Generate Purchase Requisitions
-```
-
-**Steps:**
-1. Planner runs the MRP engine to analyze active sales demand and forecast needs.
-2. System subtracts available warehouse stock and transit receipts.
-3. System applies safety stock rules and lead-time configurations to calculate net component shortages.
-4. MRP generates recommended purchase requisitions for short items and schedules production runs for sub-assemblies.
+| Production Concept | Business Purpose | Inventory Impact | Financial Accounting Impact |
+|-------------------|------------------|------------------|-----------------------------|
+| **Bill of Materials (BOM)** | Master recipe defining exact component quantities for 1 finished unit | None | Standard Cost Baseline established |
+| **Material Issue to WIP** | Releasing raw materials from warehouse to the factory floor | Raw Material Inventory Decreases | Work-in-Progress (WIP) Asset Increases |
+| **Overhead Absorption** | Adding direct machine and labor operating costs to active work orders | None | Direct Labor & Overhead Applied to WIP Asset |
+| **Finished Goods Receipt** | Completing production and transferring finished units to warehouse | Finished Goods Inventory Increases | WIP Asset Cleared, Finished Goods Asset Debited |
 
 ---
 
-## 5. Roles & Permissions
+## Applet Map
 
-| Role | Primary Applets | Key Responsibilities |
-|------|----------------|---------------------|
-| **Production Engineer** | Process Maintenance | Maintain multi-level BOM templates, configure routing steps, manage recipe versions and costing roll-ups |
-| **Production Planner** | Production Planning & Monitoring | Run MRP, create job schedules, dispatch work orders, coordinate raw material levels |
-| **Production Supervisor** | Manufacturing Operations | Set work queues, verify operator log entries, approve scrap variances, manage quality gates |
-| **Machine Operator** | Manufacturing Operations | View work assignments, record starting/stopping times, input material batch numbers, log finished output |
-| **QC Inspector** | Manufacturing Operations | Perform in-process and final audits, log measurements, issue certificates of analysis (CoA) |
-
----
-
-## 6. Prerequisites / Initial Setup
-
-Before going live with the Manufacturing Module, ensure:
-
-- [x] **Core Module** — Cost locations, branches, and employee tables exist
-- [x] **Inventory Module** — Raw materials and finished goods warehouses are mapped with staging bins
-- [ ] Production machines and capacity rates are registered in Process Maintenance
-- [ ] Process sequence routings are verified by production engineers
-- [ ] Material consumption ratios and output expectations are configured in Process Templates
-- [ ] Manufacturing variance accounts and WIP ledger accounts are defined in Chart of Accounts
-
-### Implementation Phasing
-
-- **Phase 1: Engineering Setup**: Define work centers, routing codes, build multi-level BOMs, and set standard costs.
-- **Phase 2: Operational Flow**: Launch Job Order dispatching, implement labor log tracking, and connect inventory issues/receipts.
-- **Phase 3: Sourcing & Scheduling**: Connect Sales Order demand to MPS, deploy MRP automatic purchasing, and establish OEE tracking.
+| Applet | What it does in this module |
+|--------|-----------------------------|
+| [Production Planning and Monitoring Applet](/applets/manufacturing/production-planning-and-monitoring-applet/) | Master production scheduling, MRP material availability tracking, and work order release |
+| [Process Maintenance Applet](/applets/manufacturing/process-maintenance-applet/) | Work center definitions, machine operations setup, labor rate matrices, and routing workflows |
+| [Manufacturing Operation Applet](/applets/manufacturing/manufacturing-operation-applet/) | Shop floor execution tracking, raw material issue logging, scrap reporting, and output entry |
+| [Internal Packing Order Applet](/applets/manufacturing/internal-packing-order-applet/) | Secondary packaging execution, finished product batch assignment, and warehouse stock-in |
 
 ---
 
-## 7. FAQs & Troubleshooting
+## ERP Dependency Table
 
-**Q: A Job Order shows "Insufficient Material." Can I still proceed?**
-A: Yes, the system permits job release, but operators will not be able to complete Work Logs if raw material bins are empty. Run MRP or coordinate with Purchasing to resolve component shortages.
+| Connected Module | What Manufacturing needs from it |
+|------------------|----------------------------------|
+| **Core** | Finished goods SKUs, raw material SKUs, units of measure (UOM), branch locations |
+| **Inventory** | Raw material stock availability, warehouse bin locations, finished goods stock-in posting |
+| **Purchasing** | Material Requirements Planning (MRP) triggers to purchase raw material shortages |
+| **Financial Accounting** | WIP asset accounts, Direct Labor absorption GLs, Overhead variance accounts |
 
-**Q: How do we handle batch/lot expiration dates for raw ingredients?**
-A: Ensure batch tracking is active on the inventory item. Operators must scan or select the specific active batch/lot number in the **Manufacturing Operations Applet**, which checks SLED data.
+---
 
-**Q: What is a "Phantom BOM"?**
-A: A phantom BOM is a pass-through assembly. The system will not generate a separate job order or stock card for it; instead, its raw components are pulled directly into the higher-level parent job order.
+## Go-Live Checklist
 
-### Troubleshooting Common Issues
+- [x] Raw material and finished product master SKUs established in Core
+- [ ] Multi-level Bills of Materials (BOM) configured and verified for all manufactured items
+- [ ] Work centers, machine labor rates, and operational routings defined in Process Maintenance
+- [ ] Work-in-Progress (WIP) GL asset accounts mapped in Financial Accounting
+- [ ] Shop floor material issuance and finished goods receiving workflows verified
+- [ ] Production cost absorption and variance analysis rules reconciled with Finance
 
-- **Resource Scheduling Bottlenecks**: Check machine capacity factors. Re-sequence routing steps in the **Production Planning Applet** or re-allocate tasks to alternate machines.
-- **Yield Variance Discrepancies**: If actual outputs are consistently lower than BOM expectations, review raw material quality metrics in the **Purchase Report Applet** or audit work center labor tracking.
-- **Quality Rejection Loops**: If a process step fails quality gates, the supervisor must log a non-conformance ticket. Scrap materials via **Internal Stock Adjustment** and raise a corrective rework order.
+---
+
+## Module Learning Roadmap
+
+Follow the documentation in this sequence to master the Manufacturing Module:
+
+1. **[Core Concepts](core-concepts/)** *(Next Step)* — Understand BOM hierarchies, WIP cost absorption, and shop floor routings.
+2. **[Configuration](configuration/)** — Step-by-step setup guides for work centers, process routings, and BOM recipes.
+3. **[Use Cases](use-cases/)** — Real-world reference architectures for discrete manufacturing, process batching, and custom job shops.
+4. **[API Reference](api-reference/)** — Direct reference link to official developer manufacturing APIs.
+5. **[Best Practices](best-practices/)** — Operational recommendations for scrap reporting, machine utilization, and WIP variance audits.
+6. **[Reports & Analytics](reports/)** — Scenario guide for choosing the best production yield and costing reports.
+7. **[Related Applets](related-applets/)** — Complete guide to native applet dependencies across the BigLedger ecosystem.
+
+---
+
+{{< callout type="info" >}}
+**Ready to explore production execution architecture?**  
+Proceed to **[Core Concepts →](core-concepts/)** to understand work order lifecycles and cost absorption.
+{{< /callout >}}
