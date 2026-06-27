@@ -1,7 +1,7 @@
 ---
 title: "Purchasing Module"
 description: "Procurement-to-Pay (P2P) engine managing supplier sourcing, purchase orders, 3-way matching, and inventory stock-ins."
-weight: 30
+weight: 25
 ---
 
 The **Purchasing Module** is BigLedger's Procurement-to-Pay (P2P) engine. It manages supplier relationships, internal departmental requisitions, formal commercial purchase orders, goods receiving, 3-way invoice matching, and Accounts Payable ledger postings.

@@ -1,7 +1,7 @@
 ---
 title: "Inventory Module"
 description: "Real-time inventory control engine managing multi-warehouse stock balances, lot/batch tracking, stock transfers, and valuation."
-weight: 25
+weight: 30
 ---
 
 The **Inventory Module** is BigLedger's centralized stock control engine. It tracks real-time inventory balances, warehouse bin locations, batch/serial lot numbers, stock transfers, physical stock takes, and cost valuations integrated directly with Purchasing, Sales & POS, and Financial Accounting.
