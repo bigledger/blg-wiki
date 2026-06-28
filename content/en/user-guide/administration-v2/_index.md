@@ -60,7 +60,7 @@ main > .hx\:content { margin-top: 0 !important; }
 <div>
 <div class="tl-player-wrap">
 <div class="tl-player-frame">
-<iframe id="tlIframe" src="https://www.youtube.com/embed/6xhVCsFaGzA?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe id="tlIframe" src="https://www.youtube.com/embed/Sqj-JtFKzgQ?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 </div>
 <div class="tl-player-info">
@@ -140,25 +140,21 @@ main > .hx\:content { margin-top: 0 !important; }
 
 <script>
 var tlVideos=[
-{id:"6xhVCsFaGzA",start:0,title:"Tenant Admin Applet",desc:"Overview of the Tenant Admin Applet. Learn how to manage your tenant catalog, install applets, and configure your business platform settings."},
+{id:"Sqj-JtFKzgQ",start:0,title:"Tenant Admin Applet",desc:"Overview of the Tenant Admin Applet. Learn how to manage your tenant catalog, install applets, and configure your business platform settings."},
 {id:"U6LgVWlGJy4",start:0,title:"Tenant Admin — Permissions & Roles Management",desc:"Build role hierarchies and assign permission sets across your organization. Full guide to the permissions and roles management flow in BigLedger."},
 {id:"pjhUMxrShpo",start:0,title:"Tenant Admin — User & Permission Management",desc:"Onboard users, assign them to applets, and manage their access levels. Full guide to user and permission management in the Tenant Admin Applet."},
-{id:"sLBWusbZspI",start:0,title:"Permission Wizard Menu — Settings",desc:"Deep dive into the Permission Wizard Menu and Settings. Learn how to configure advanced permission rules and system-level access controls."},
+{id:"iitlqsVyH5g",start:0,title:"Permission Wizard Menu — Settings",desc:"Deep dive into the Permission Wizard Menu and Settings. Learn how to configure advanced permission rules and system-level access controls."},
 {id:"5dERgcGhaI8",start:0,title:"Permission Settings — Platform Sysadmin",desc:"Configure permission settings and personalizations for Platform Sysadmin. Understand the key differences between admin and member access levels."},
-{id:"TODO_t2t_admin",start:0,title:"T2T Admin Applet",desc:"Configure Tenant-to-Tenant connections. Learn to map and grant access between host and guest tenants for seamless cross-tenant collaboration."},
+{id:"so5dJkH04y0",start:0,title:"T2T Admin Applet",desc:"Configure Tenant-to-Tenant connections. Learn to map and grant access between host and guest tenants for seamless cross-tenant collaboration."},
 {id:"c-Yc6bo7_Jw",start:0,title:"Merchant Applet",desc:"Manage merchants, contracts, and rate cards in BigLedger. Full guide to setting up and maintaining merchant profiles and billing configurations."},
-{id:"TODO_payment_channels",start:0,title:"Payment Channels & Providers",desc:"Set up and manage payment channels and providers in BigLedger. Configure payment gateways and settlement methods for your business."}
+{id:"iZQIgUEHBeY",start:0,title:"Payment Channels & Providers",desc:"Set up and manage payment channels and providers in BigLedger. Configure payment gateways and settlement methods for your business."}
 ];
 var tlCur=0;
 function tlPlay(i){
 tlCur=i;
 var v=tlVideos[i];
-if(v.id.indexOf('TODO')===0){
-document.getElementById('tlIframe').src='https://www.youtube.com/embed/?list=PLREquI_tRNFA4C_XegZJbHmA_R1jAjCFA';
-} else {
 var s=v.start?'&start='+v.start:'';
 document.getElementById('tlIframe').src='https://www.youtube.com/embed/'+v.id+'?rel=0&modestbranding=1&autoplay=1'+s;
-}
 document.getElementById('tlTitle').textContent=v.title;
 document.getElementById('tlDesc').textContent=v.desc;
 document.querySelectorAll('.tl-pl-item').forEach(function(el,idx){el.classList.toggle('tl-active',idx===i);});

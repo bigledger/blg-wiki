@@ -60,7 +60,7 @@ main > .hx\:content { margin-top: 0 !important; }
 <div>
 <div class="tl-player-wrap">
 <div class="tl-player-frame">
-<iframe id="tlIframe" src="https://www.youtube.com/embed/?list=PLREquI_tRNFA4C_XegZJbHmA_R1jAjCFA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe id="tlIframe" src="https://www.youtube.com/embed/LbSz4ja-Zos?rel=0&modestbranding=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 </div>
 <div class="tl-player-info">
@@ -126,23 +126,19 @@ main > .hx\:content { margin-top: 0 !important; }
 
 <script>
 var tlVideos=[
-{id:"TODO_financial_report",start:0,title:"Financial Report Applet Tutorial: Month-End, P&L, Balance Sheet & Comparisons",desc:"Complete guide to generating financial reports, month-end close procedures, P&L statements, Balance Sheets, and period comparisons."},
-{id:"TODO_credit_report",start:0,title:"Credit Report Applet Guide | Outstanding, Aging & AP Reports Explained",desc:"Learn how to track accounts payable aging, outstanding supplier balances, and creditor management reports."},
-{id:"TODO_debtor_report",start:0,title:"Debtor Report Applet Guide | Customer Outstanding & Aging Reports",desc:"Comprehensive guide to customer aging buckets (30/60/90+ days), managing collection pipelines, and debtor report analysis."},
-{id:"TODO_ledger_journal",start:0,title:"Ledger & Journal Applet Guide | Transactions, Subledger & Error Checking",desc:"Master general ledger inquiry, subledger transaction verification, journal listings, and audit trial error checking."},
-{id:"TODO_soa_applet",start:0,title:"Statement of Account Applet Guide | SOA Email & Template Setup",desc:"How to generate and send customer Statements of Account, configure SOA email templates, and reconcile customer balances."},
-{id:"TODO_pos_settlement",start:0,title:"Where do settlement reports appear in Bigledger POS Module",desc:"Overview of cashier settlement reporting in POS, matching daily payment transactions, and ledger sync points."}
+{id:"LbSz4ja-Zos",start:0,title:"Financial Report Applet Tutorial: Month-End, P&L, Balance Sheet & Comparisons",desc:"Complete guide to generating financial reports, month-end close procedures, P&L statements, Balance Sheets, and period comparisons."},
+{id:"BVuTwlyGJ4Y",start:0,title:"Credit Report Applet Guide | Outstanding, Aging & AP Reports Explained",desc:"Learn how to track accounts payable aging, outstanding supplier balances, and creditor management reports."},
+{id:"AF83XGE3UC8",start:0,title:"Debtor Report Applet Guide | Customer Outstanding & Aging Reports",desc:"Comprehensive guide to customer aging buckets (30/60/90+ days), managing collection pipelines, and debtor report analysis."},
+{id:"gfeKHc7R70w",start:0,title:"Ledger & Journal Applet Guide | Transactions, Subledger & Error Checking",desc:"Master general ledger inquiry, subledger transaction verification, journal listings, and audit trial error checking."},
+{id:"iN3k7e-xzUs",start:0,title:"Statement of Account Applet Guide | SOA Email & Template Setup",desc:"How to generate and send customer Statements of Account, configure SOA email templates, and reconcile customer balances."},
+{id:"_6WRMwSjt1k",start:0,title:"Where do settlement reports appear in Bigledger POS Module",desc:"Overview of cashier settlement reporting in POS, matching daily payment transactions, and ledger sync points."}
 ];
 var tlCur=0;
 function tlPlay(i){
 tlCur=i;
 var v=tlVideos[i];
-if(v.id.indexOf('TODO')===0){
-document.getElementById('tlIframe').src='https://www.youtube.com/embed/?list=PLREquI_tRNFA4C_XegZJbHmA_R1jAjCFA';
-} else {
 var s=v.start?'&start='+v.start:'';
 document.getElementById('tlIframe').src='https://www.youtube.com/embed/'+v.id+'?rel=0&modestbranding=1&autoplay=1'+s;
-}
 document.getElementById('tlTitle').textContent=v.title;
 document.getElementById('tlDesc').textContent=v.desc;
 document.querySelectorAll('.tl-pl-item').forEach(function(el,idx){el.classList.toggle('tl-active',idx===i);});
