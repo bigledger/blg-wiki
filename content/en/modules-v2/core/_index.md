@@ -35,28 +35,9 @@ The **Core Module** is the foundation of the entire BigLedger ecosystem. It cont
 
 ## 3. Applet Dependency Map
 
-Core's applets stack into five layers. Each layer depends on the one above it — configure top-down during implementation.
+Core's applets stack into four layers. Each layer depends on the one above it — configure top-down during implementation.
 
-```
-┌────────────────────────────────────────────────────────────────┐
-│ LAYER 1 — ORGANISATION SHELL                                   │
-│   Organisation Applet  ──▶  Branches & Locations               │
-│   Tenant Admin Applet  ──▶  Users, Roles, Permissions          │
-├────────────────────────────────────────────────────────────────┤
-│ LAYER 2 — FINANCIAL FOUNDATION                                 │
-│   Chart of Accounts ──▶ Cashbook ──▶ Tax Configuration         │
-├────────────────────────────────────────────────────────────────┤
-│ LAYER 3 — MASTER ENTITIES                                      │
-│   Customer Maintenance │ Supplier Maintenance │ Employee Maint.│
-├────────────────────────────────────────────────────────────────┤
-│ LAYER 4 — PRODUCT & PRICING                                    │
-│   Inv Item Maintenance ──▶ Doc Item Maintenance ──▶ Pricebook  │
-│                                                ──▶ Shipping Pricebook │
-├────────────────────────────────────────────────────────────────┤
-│ LAYER 5 — AUTOMATION GLUE                                      │
-│   Workflow Design Applet │ Group Maintenance Applet            │
-└────────────────────────────────────────────────────────────────┘
-```
+![Core Module Applet Dependency Map](/images/core/applet-dependency-map.png)
 
 Data flows downward — every layer below depends on what is configured above.
 
@@ -103,15 +84,6 @@ What you sell and at what price. Items flow from master record to document behav
 | [Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/) | Configure document-level item behavior — tax mapping, UOM, discount rules. |
 | [Pricebook Applet](/applets/master-data/pricebook-applet/) | Create segmented price lists per customer tier or channel. |
 | [Shipping Pricebook Applet](/applets/master-data/shipping-pricebook-applet/) | Define shipping and delivery rate cards. |
-
-### Layer 5 — Automation Glue
-
-System-wide rules and access control that govern every other module.
-
-| Applet | Purpose |
-|--------|---------|
-| [Workflow Design Applet](/applets/master-data/workflow-design-applet/) | Build visual approval workflows and automation rules. |
-| [Group Maintenance Applet](/applets/master-data/group-maintenance-V2-applet/) | Manage user groups and permission sets for role-based access. |
 
 ---
 

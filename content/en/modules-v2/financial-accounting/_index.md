@@ -36,6 +36,12 @@ The **Financial Accounting Module** is the financial backbone of BigLedger. It r
 | **Period Cut-off** | The date after which no transactions can be backdated into a closed period. |
 | **Dr (Debit)** | The accounting side that *receives* value — increases assets and expenses, decreases liabilities, equity, and revenue. Always the left side of a journal entry. |
 | **Cr (Credit)** | The accounting side that *gives* value — increases liabilities, equity, and revenue, decreases assets and expenses. Always the right side of a journal entry. Every entry must have `Total Dr = Total Cr`. |
+| **Reversing Entry** | A journal posted with opposite signs to cancel a previous incorrect or accrual entry. BigLedger requires this approach because posted entries cannot be edited or deleted. |
+| **Accrual** | Revenue or expense recognized in the period it is earned or incurred, regardless of when cash moves. Requires a manual journal at period-end and a reversing entry in the next period. |
+| **Moving Average (MA) Cost** | The weighted average unit cost of an inventory item, recalculated automatically each time stock is received. Used as the COGS value when items are sold. |
+| **Functional Currency** | The primary currency in which the company keeps its books (e.g., MYR). All transactions are converted to functional currency at posting using the exchange rate at that date. |
+| **FX Revaluation** | A period-end journal that restates foreign-currency balances (AR, AP, bank) at the closing exchange rate. The resulting gain or loss posts to an FX Gain/Loss account. |
+| **Opening Balance** | The account balances brought forward from a previous accounting system at go-live. Must be migrated before the first real transaction is posted. See the [Opening Balance Migration Guide →](/modules-v2/financial-accounting/opening-balance/). |
 
 ---
 
@@ -60,30 +66,13 @@ Finance has **no master data of its own**. Every transaction relies on master re
 
 This is the most commonly misunderstood relationship in BigLedger:
 
-```
-Core: [Cashbook Applet]                          Core: [Chart of Accounts Applet]
-   "Maybank Current Account"                          "1010 - Bank: Maybank Current"
-              │                                               │
-              └─────────────── linked via ───────────────────┘
-                              GL account mapping
-
-When you create a Payment Voucher and pick "Maybank Current Account" as the
-payment method, the system automatically posts:
-       Dr  Accounts Payable        (from supplier line)
-       Cr  1010 Bank: Maybank      (from the cashbook's mapped GL account)
-```
+![How a Cashbook becomes a GL Bank Account](/images/user-guide/financial-accounting/cashbook-gl-mapping.png)
 
 > ⚠️ **Common pitfall:** A new bank account requires **two** setup steps in Core: (1) create the GL account in Chart of Accounts, then (2) create the Cashbook and link it to that GL account. Skipping step 2 means transactions cannot be paid through that bank, even though the GL account exists.
 
 ### How a Tax Code becomes a GL Tax Account
 
-```
-Core: [Tax Configuration Applet]                 Core: [Chart of Accounts Applet]
-   "SST-OUT 6%"                                     "2210 - SST Output Payable"
-              │                                               │
-              └─────────────── linked via ───────────────────┘
-                              tax-to-GL mapping
-```
+![How a Tax Code becomes a GL Tax Account](/images/user-guide/financial-accounting/taxcode-gl-mapping.png)
 
 When a Sales Invoice with `SST-OUT` is finalized, the tax portion automatically credits `2210 SST Output Payable` — without anyone keying it in.
 
@@ -93,7 +82,7 @@ When a Sales Invoice with `SST-OUT` is finalized, the tax portion automatically 
 
 Every finance transaction is a story made of six pieces. Knowing them helps you debug any posting issue.
 
-{{< figure src="/images/user-guide/financial-accounting/anatomy-of-transaction.png" alt="The Anatomy of an Accounting Transaction" caption="The Anatomy of an Accounting Transaction: inputs, GL posting, and downstream financial outputs." >}}
+![Anatomy of an Accounting Transaction](/images/user-guide/financial-accounting/anatomy-of-transaction.png)
 
 > 💡 **How to read this:** All six pieces (top row) feed into a single GL posting (middle). That posting then surfaces in every downstream report and reconciliation (bottom row). If any input is wrong or missing, the downstream outputs are wrong — this is your debugging map.
 
@@ -110,11 +99,11 @@ Every finance transaction is a story made of six pieces. Knowing them helps you 
 | WHERE | Branch: HQ | [Organisation Applet](/applets/master-data/organisation-applet/) |
 
 **Resulting GL posting (automatic):**
-```
-Dr  5310 Office Supplies         1,000.00
-Dr  2310 SST Input Receivable       60.00
-   Cr  1010 Bank: Maybank             1,060.00
-```
+{{< gl-journal title="Payment Voucher to Acme Supplies - GL Posting (automatic)" >}}
+Dr  5310 Office Supplies   1000.00 | expense recognized
+Dr  2310 SST Input          60.00 | input tax (6%)
+Cr  1010 Bank: Maybank    1060.00 | via Cashbook mapping
+{{< /gl-journal >}}
 
 That entry then flows into the **P&L** (via 5310), the **Balance Sheet** (via 1010 and 2310), the **SST Return** (via the tax code), and **Bank Reconciliation** (waiting to be matched).
 
@@ -124,7 +113,7 @@ That entry then flows into the **P&L** (via 5310), the **Balance Sheet** (via 10
 
 Finance applets stack into four layers, plus a cross-cutting compliance layer. Data flows downward — from configuration to transactions to verification to reporting.
 
-{{< figure src="/images/user-guide/financial-accounting/applet-dependency-map.jpg" alt="The Finance ERP Ecosystem: Applet Dependency and Data Flow" caption="The Finance ERP Ecosystem: Applet Dependency and Data Flow showing 4 structural layers plus cross-cutting tax compliance." >}}
+![Financial Accounting Module Applet Dependency Map](/images/user-guide/financial-accounting/applet-dependency-map.png)
 
 ---
 
@@ -132,71 +121,95 @@ Finance applets stack into four layers, plus a cross-cutting compliance layer. D
 
 ### Layer 1 — Foundation
 
-Rules and envelopes that govern every transaction posted later.
+Set up the rules *before* any money moves. Budget envelopes, tax rates, and commitment registers are configured here first — every transaction posted in Layer 2 will draw on them automatically.
 
-| Applet | Purpose |
-|--------|---------|
-| [Tax Configuration Applet](/applets/finance/tax-config-applet/) | Advanced tax configuration for multi-jurisdiction compliance. |
-| [Budget Applet](/applets/finance/budget-applet/) | Create, monitor, and control budgets across departments and projects. |
-| [Vote Book Applet](/applets/finance/vote-book-applet/) | Track budgetary commitments and available balances in real time. |
+| Applet | When to Use | Key Output |
+|--------|-------------|------------|
+| [Tax Configuration Applet](/applets/finance/tax-config-applet/) | Before the first taxable transaction | Tax rates, SST treatment, and GL account mappings for every tax code |
+| [Budget Applet](/applets/finance/budget-applet/) | At the start of each financial year or project | Department and cost-centre budgets with monthly or annual targets |
+| [Vote Book Applet](/applets/finance/vote-book-applet/) | Continuously during the year | Live budget-vs-committed view; blocks overspend before a PV is approved |
+
+> 💡 **Why Tax Config sits in Foundation:** Tax codes must exist before you can create a single invoice, PV, or RV. If a tax code is missing, the transaction either cannot be saved or posts to a suspense account — both are painful to clean up after the fact.
 
 ### Layer 2 — Transactional
 
-**Payables**
+The bulk of day-to-day work happens here — every payment out, every receipt in, every manual journal, and every asset movement. Layer 2 is divided into four lanes depending on the nature of the transaction.
 
-| Applet | Purpose |
-|--------|---------|
-| [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/) | Record supplier invoices entering the AP ledger. |
-| [Payment Voucher (Internal) Applet](/applets/finance/internal-payment-voucher-applet/) | Create and approve outgoing payments to suppliers and employees. |
+#### Payables Lane — Money leaving the company
 
-**Receivables**
+Use the Payables lane to record what you owe suppliers and to make payments against those liabilities.
 
-| Applet | Purpose |
-|--------|---------|
-| [Receipt Voucher (Internal) Applet](/applets/finance/internal-receipt-voucher-applet/) | Record incoming customer payments. |
-| [Accounts Receivable Applet](/applets/finance/accounts-receivable-applet/) | Track customer receivables and collection workflow. |
-| [Statement of Account Applet](/applets/finance/statement-of-account-applet/) | Generate and send periodic account statements. |
-| [E-Mandate Applet](/applets/finance/e-mandate-applet/) | Manage recurring direct debit mandates. |
+| Applet | When to Use | What It Posts to GL |
+|--------|-------------|---------------------|
+| [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/) | When a supplier invoice arrives and needs to enter the AP ledger | `Dr Expense/Inventory · Dr SST Input · Cr Accounts Payable` |
+| [Payment Voucher (Internal) Applet](/applets/finance/internal-payment-voucher-applet/) | When you are ready to pay a supplier — references the Purchase Invoice | `Dr Accounts Payable · Cr Bank (via Cashbook)` |
 
-**Core Ledger**
+> ⚠️ **Approval discipline:** Payment Vouchers should always route through a workflow. Anyone who can create *and* approve their own PVs is a segregation-of-duties risk. Configure the PV approval chain in [Workflow Design Applet](/applets/master-data/workflow-design-applet/) before go-live.
 
-| Applet | Purpose |
-|--------|---------|
-| [Ledger & Journal Applet](/applets/finance/ledger-and-journal-applet/) | View the general ledger, create journals, manage posting periods. |
+#### Receivables Lane — Money coming into the company
 
-**Assets & Treasury**
+Use the Receivables lane to capture customer payments, send statements, and manage mandates for recurring billing.
 
-| Applet | Purpose |
-|--------|---------|
-| [Fixed Asset Applet](/applets/finance/fixed-asset-applet/) | Manage fixed assets, depreciation schedules, and disposals. |
-| [Investment Applet](/applets/finance/investment-applet/) | Manage corporate investment holdings. |
-| [MM Deposit Applet](/applets/finance/mm-deposit-applet/) | Manage money market deposits and fixed deposit placements. |
-| [Deposit Applet](/applets/finance/deposit-applet/) | Manage deposit instruments and balances. |
+| Applet | When to Use | What It Posts to GL |
+|--------|-------------|---------------------|
+| [Receipt Voucher (Internal) Applet](/applets/finance/internal-receipt-voucher-applet/) | When a customer payment is received | `Dr Bank (via Cashbook) · Cr Accounts Receivable` |
+| [Accounts Receivable Applet](/applets/finance/accounts-receivable-applet/) | Ongoing — to manage the collection pipeline and overdue accounts | No GL posting; reads existing AR balance |
+| [Statement of Account Applet](/applets/finance/statement-of-account-applet/) | Monthly — send a printed or emailed statement to each customer | No GL posting; generates statement from posted RVs and invoices |
+| [E-Mandate Applet](/applets/finance/e-mandate-applet/) | When a customer has authorized automatic direct debit | Generates RVs automatically on the mandate run date |
 
-**Specialty**
+#### Core Ledger — Manual journals and period control
 
-| Applet | Purpose |
-|--------|---------|
-| [Revenue Management Applet](/applets/finance/revenue-management-applet/) | Define revenue recognition rules and track deferred vs. recognized revenue. |
+The Ledger & Journal Applet is the accountant's workbench. Use it for accruals, reversals, corrections, and to open or close accounting periods.
+
+| Applet | When to Use | What It Posts to GL |
+|--------|-------------|---------------------|
+| [Ledger & Journal Applet](/applets/finance/ledger-and-journal-applet/) | Accruals, reversals, corrections, period open/close | Any Dr/Cr pair the accountant specifies — full manual control |
+
+> 💡 **Period control lives here.** Only users with the *Period Management* permission can open or close a month. Closing a period locks it — no backdating, no edits, and no deletions. Reopening is logged in the audit trail.
+
+#### Assets & Treasury — Long-term holdings and investments
+
+Use these applets for assets that sit on the Balance Sheet over multiple periods, not day-to-day expenses.
+
+| Applet | When to Use | What It Manages |
+|--------|-------------|------------------|
+| [Fixed Asset Applet](/applets/finance/fixed-asset-applet/) | When equipment, vehicles, or property is purchased | Depreciation schedules, disposals, and net book value |
+| [Investment Applet](/applets/finance/investment-applet/) | When the company holds equity or fund investments | Investment cost, market value, and gain/loss tracking |
+| [MM Deposit Applet](/applets/finance/mm-deposit-applet/) | When funds are placed in money market or fixed deposits | Maturity dates, interest accruals, and rollover management |
+| [Deposit Applet](/applets/finance/deposit-applet/) | For other deposit instruments (security deposits, utilities) | Deposit balance and reclaim tracking |
+
+#### Specialty
+
+| Applet | When to Use |
+|--------|-------------|
+| [Revenue Management Applet](/applets/finance/revenue-management-applet/) | When revenue must be deferred and recognized over time (e.g., subscriptions, advance payments). Prevents premature recognition of income. |
 
 ### Layer 3 — Verification & Matching
 
-Confirm that internal records match external reality.
+Transactions are posted in Layer 2 — but posting is not the same as *confirming*. Verification is a separate discipline: you are checking that BigLedger's internal records agree with the outside world (your bank) and with each other (cross-module matching).
 
-| Applet | Purpose |
-|--------|---------|
-| [Bank Reconciliation Applet](/applets/finance/bank-reconciliation-applet/) | Match bank statement entries against internal payment and receipt records. |
-| [Transaction Reconciliation Applet](/applets/finance/txn-recon-applet/) | Cross-reference and reconcile related transactions across modules. |
+Skipping this layer means errors accumulate silently. A payment recorded in BigLedger but rejected by the bank will not surface until reconciliation reveals the mismatch.
+
+| Applet | What It Verifies | How Often |
+|--------|-----------------|----------|
+| [Bank Reconciliation Applet](/applets/finance/bank-reconciliation-applet/) | BigLedger GL bank balance vs. actual bank statement | Monthly (minimum); daily for high-volume accounts |
+| [Transaction Reconciliation Applet](/applets/finance/txn-recon-applet/) | Cross-module matching — e.g., does a Purchase Invoice in Purchasing have a matching PV in Finance? | Monthly close; ad-hoc during investigations |
+
+> 💡 **Why verification is a separate layer:** Posting a Payment Voucher updates the GL immediately. But the bank processes the payment independently — it may be delayed, rejected, or partially processed. Reconciliation is the step that confirms the two records agree. Without it, your GL cash balance is an estimate, not a fact.
 
 ### Layer 4 — Reporting & Output
+
+Reporting reads from the GL — it does not write to it. Everything posted in Layers 1–3 surfaces here as financial statements, aging reports, and drill-down inquiry tools.
 
 See **Section 7 — Reports Catalog** below for a full breakdown of every report, when to run it, and who uses it.
 
 ### Cross-Cutting — Tax Compliance
 
+SST runs across all layers simultaneously — tax codes are configured in Layer 1, tax amounts are calculated and posted in Layer 2, and the SST return is filed using the cumulative tax data.
+
 | Applet | Purpose |
 |--------|---------|
-| [SST Applet](/applets/finance/sst-applet/) | Malaysian Sales and Service Tax reporting, filing, and reconciliation. |
+| [SST Applet](/applets/finance/sst-applet/) | Malaysian Sales and Service Tax reporting, filing, and reconciliation. Aggregates output and input tax from all posted transactions across the period and generates the SST-02 return for submission to RMCD. |
 
 ---
 
@@ -255,12 +268,15 @@ COGS does not have its own applet — it is **calculated automatically** by ever
 
 Every time a Sales Invoice goes `FINAL`, the system posts **two** journals at the same time:
 
-```
-Revenue posting:                            COGS posting (automatic, same instant):
-   Dr  Accounts Receivable                     Dr  5000 Cost of Goods Sold
-      Cr  Sales Revenue                           Cr  Inventory (Stock on Hand)
-      Cr  SST Output Payable                   Amount = Unit Cost (MA) × Qty Sold
-```
+{{< gl-journal title="Sales Invoice - Double Posting (same instant, automatic)" >}}
+-- Revenue posting
+Dr  Accounts Receivable   1060.00 | customer owes full amount
+Cr  Sales Revenue         1000.00 | revenue recognized
+Cr  SST Output Payable      60.00 | tax liability to RMCD
+-- COGS posting (simultaneous)
+Dr  5000 Cost of Goods Sold  [MA cost x qty] | expense = moving average cost
+Cr  Inventory                [MA cost x qty] | stock reduced
+{{< /gl-journal >}}
 
 The COGS amount uses the **Moving Average (MA) unit cost** of the item at the moment of sale. The COGS GL account is the one mapped against the item / inventory category in [Chart of Accounts Applet](/applets/master-data/chart-of-account-applet/) — BigLedger supports multiple COGS variants (Retail COGS, Stock Adjustment COGS, Raw Material COGS, WIP COGS, Finished Goods COGS, NSTI COGS).
 
@@ -300,68 +316,58 @@ The COGS amount uses the **Moving Average (MA) unit cost** of the item at the mo
 
 ### Journey: Accounts Payable Clerk (Daily)
 
-```
-[Purchase Invoice] ──▶ [Payment Voucher] ──▶ Approval ──▶ [Bank Reconciliation]
-                                                            │
-                                                            └──▶ [Creditor Report] (weekly aging)
-```
-
-1. Open [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/) to log the supplier invoice.
-2. Create a Payment Voucher in [Payment Voucher (Internal) Applet](/applets/finance/internal-payment-voucher-applet/) referencing that invoice — pick the correct **Cashbook** (this is what determines which bank account is credited).
-3. Once approved and paid, match the bank movement in [Bank Reconciliation Applet](/applets/finance/bank-reconciliation-applet/).
-4. Weekly: review supplier aging in [Creditor Report Applet](/applets/finance/creditor-report-applet/).
+1. Open [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/) to log the supplier invoice — enter the supplier, invoice date, line items, and tax code.
+2. Create a Payment Voucher in [Payment Voucher (Internal) Applet](/applets/finance/internal-payment-voucher-applet/) referencing that invoice. **Pick the correct Cashbook** — this determines which bank account is credited in the GL.
+3. Submit the PV for approval via the configured workflow. Do not pay until it is approved.
+4. Once approved and payment is made, import the bank statement and match the bank movement in [Bank Reconciliation Applet](/applets/finance/bank-reconciliation-applet/).
+5. **Weekly:** review outstanding supplier balances in [Creditor Report Applet](/applets/finance/creditor-report-applet/) — prioritize by due date to avoid late payment penalties.
 
 ### Journey: Accounts Receivable Clerk (Daily)
 
-```
-[Receipt Voucher] ──▶ [Statement of Account] ──▶ [E-Mandate] ──▶ [Debtor Report]
-```
-
-1. Record the incoming customer payment in [Receipt Voucher (Internal) Applet](/applets/finance/internal-receipt-voucher-applet/) — pick the receiving **Cashbook**.
-2. Send periodic statements via [Statement of Account Applet](/applets/finance/statement-of-account-applet/).
-3. For recurring billing, manage mandates in [E-Mandate Applet](/applets/finance/e-mandate-applet/).
-4. Chase overdue accounts using [Debtor Report Applet](/applets/finance/debtor-report-applet/).
+1. When a customer pays, open [Receipt Voucher (Internal) Applet](/applets/finance/internal-receipt-voucher-applet/) — select the customer, the receiving **Cashbook** (bank account), and the amount received.
+2. If the payment is partial, apply it against the oldest outstanding invoice first to reduce aging.
+3. **Monthly:** generate and send customer statements from [Statement of Account Applet](/applets/finance/statement-of-account-applet/) — customers use these to reconcile their own records and raise disputes.
+4. For recurring direct debit customers, check mandate run status in [E-Mandate Applet](/applets/finance/e-mandate-applet/) — confirm the collection was processed and the resulting RV posted correctly.
+5. **Weekly:** review overdue accounts in [Debtor Report Applet](/applets/finance/debtor-report-applet/) — filter by aging bucket (30/60/90+ days) and escalate accounts exceeding their credit terms.
 
 ### Journey: General Accountant (Daily and Periodic)
 
-```
-[Ledger & Journal] ──▶ [General Ledger] (inquiry) ──▶ [Tax Config] / [SST] ──▶ [Fixed Asset] / [Revenue Mgmt]
-```
+**Daily:**
+1. Post accrual and adjustment journals in [Ledger & Journal Applet](/applets/finance/ledger-and-journal-applet/). For each accrual, note the reversal date — post the reversing entry in the same session to avoid forgetting it next month.
+2. Investigate any GL balance that looks unexpected in [General Ledger Applet](/applets/finance/general-ledger-applet/) — click through any line to reach the originating document.
 
-1. Post manual adjustments and accruals in [Ledger & Journal Applet](/applets/finance/ledger-and-journal-applet/).
-2. Investigate balances and transactions in [General Ledger Applet](/applets/finance/general-ledger-applet/).
-3. File tax returns via [Tax Configuration Applet](/applets/finance/tax-config-applet/) and [SST Applet](/applets/finance/sst-applet/).
-4. Maintain depreciation schedules in [Fixed Asset Applet](/applets/finance/fixed-asset-applet/) and recognition rules in [Revenue Management Applet](/applets/finance/revenue-management-applet/).
+**Monthly (Period Close):**
+3. Review depreciation runs in [Fixed Asset Applet](/applets/finance/fixed-asset-applet/) — confirm depreciation journals are posted before closing the period.
+4. Check deferred revenue recognition schedules in [Revenue Management Applet](/applets/finance/revenue-management-applet/) — release the correct portion to earned revenue.
+5. Run the SST reconciliation in [SST Applet](/applets/finance/sst-applet/) — confirm output tax matches the Sales module and input tax matches Purchasing.
+
+**Bi-Monthly (SST Filing):**
+6. Generate the SST-02 return in [SST Applet](/applets/finance/sst-applet/) and submit to RMCD before the due date.
 
 ### Journey: Budget Controller (Continuous)
 
-```
-[Budget] ──▶ [Vote Book] ──▶ [Investment] / [MM Deposit] / [Deposit]
-```
-
-1. Define budgets per department, project, or cost centre in [Budget Applet](/applets/finance/budget-applet/).
-2. Monitor live commitments and remaining balances in [Vote Book Applet](/applets/finance/vote-book-applet/).
-3. Manage treasury placements in [Investment Applet](/applets/finance/investment-applet/), [MM Deposit Applet](/applets/finance/mm-deposit-applet/), and [Deposit Applet](/applets/finance/deposit-applet/).
+1. At the start of the financial year, define budgets per department, project, or cost centre in [Budget Applet](/applets/finance/budget-applet/). Break annual budgets into monthly targets for meaningful variance tracking.
+2. Before approving any significant spend commitment (purchase orders, service contracts), check available budget in [Vote Book Applet](/applets/finance/vote-book-applet/). The Vote Book shows: budget allocated, committed, spent, and remaining — in real time.
+3. When the Vote Book shows a budget line nearing its limit, escalate to the Finance Manager for a budget revision or reforecast before commitments exceed the envelope.
+4. Manage treasury placements — track maturity dates and interest in [MM Deposit Applet](/applets/finance/mm-deposit-applet/) and [Investment Applet](/applets/finance/investment-applet/) to optimize cash yield without compromising liquidity.
 
 ### Journey: Finance Manager / Controller (Daily approvals + monthly close)
 
-```
-PV / RV Approval Queue ──▶ [Txn Recon] ──▶ [Financial Report Applet]
-```
+**Daily:**
+1. Clear pending PV and RV approvals from the workflow queue. Review each payment against its supporting Purchase Invoice — approve only when the amounts match and the Cashbook selection is correct.
 
-1. Clear pending PV and RV approvals from the workflow queue.
-2. Run cross-module sanity checks in [Transaction Reconciliation Applet](/applets/finance/txn-recon-applet/).
-3. Generate Balance Sheet, P&L, Trial Balance, and Cash Flow in [Financial Report Applet](/applets/finance/financial-report-applet/).
+**Monthly Close:**
+2. Confirm all Purchase Invoices and Receipt Vouchers from the period are in `FINAL` status. Chase AP and AR clerks for any stuck drafts.
+3. Run cross-module sanity checks in [Transaction Reconciliation Applet](/applets/finance/txn-recon-applet/) — confirm every Purchase Invoice has a matching PV and every Sales Invoice has a corresponding AR entry.
+4. Review bank reconciliations — all cashbooks must be reconciled before the period closes.
+5. Generate Balance Sheet, P&L, Trial Balance, and Cash Flow in [Financial Report Applet](/applets/finance/financial-report-applet/). Distribute to directors and stakeholders.
 
 ### Journey: Auditor (Read-Only)
 
-```
-[Financial Report Applet] ──▶ [General Ledger] (drill-down) ──▶ [Bank Reconciliation] (verify)
-```
-
-1. Tie out statutory figures in [Financial Report Applet](/applets/finance/financial-report-applet/).
-2. Drill down on account balances in [General Ledger Applet](/applets/finance/general-ledger-applet/) — every figure traces back to its source document.
-3. Verify cash positions in [Bank Reconciliation Applet](/applets/finance/bank-reconciliation-applet/).
+1. Start with statutory reports in [Financial Report Applet](/applets/finance/financial-report-applet/) — tie out the Balance Sheet totals and P&L gross figures against the prior-year comparatives.
+2. Select any account balance that needs substantiation in [General Ledger Applet](/applets/finance/general-ledger-applet/) — drill from account → period → individual transaction → source document. Every posted entry is traceable.
+3. Verify the cash and bank balances via the completed bank reconciliation in [Bank Reconciliation Applet](/applets/finance/bank-reconciliation-applet/) — confirm outstanding items are reasonable and there are no long-outstanding reconciling items.
+4. For tax queries, use [SST Applet](/applets/finance/sst-applet/) to review filed returns and compare against the SST Output/Input GL accounts.
 
 ---
 
@@ -426,20 +432,22 @@ Periods (months) are opened and closed via the [Ledger & Journal Applet](/applet
 
 Posted entries cannot be edited or deleted (audit trail rule). The correct procedure:
 
-```
-Wrong entry posted ──▶ Create REVERSING journal (same period, opposite signs)
-                                          │
-                                          └──▶ Post the corrected entry
-```
+![Correcting a Posted Entry Procedure](/images/user-guide/financial-accounting/correcting-posted-entry.png)
 
 This preserves the audit trail while still arriving at the right balance.
 
 ### Multi-Currency & Multi-Entity
 
-- Each transaction stores a **document currency** and an **exchange rate** (set at posting).
-- The GL posts in **functional currency** (the company's base currency).
-- Revaluation journals at period-end adjust foreign currency balances to the closing rate.
-- Multi-entity setups consolidate via inter-company eliminations defined in the [Chart of Accounts Applet](/applets/master-data/chart-of-account-applet/).
+#### How a foreign-currency transaction works
+
+{{< fx-calculator >}}
+
+#### Multi-Entity Consolidation
+
+- Each BigLedger company entity maintains its own independent GL.
+- Inter-company transactions (e.g., loans between related entities) must be recorded in *both* entities and eliminated at consolidation.
+- Elimination rules are defined in the [Chart of Accounts Applet](/applets/master-data/chart-of-account-applet/) by mapping inter-company accounts across entities.
+- Consolidated financial reports in [Financial Report Applet](/applets/finance/financial-report-applet/) can span multiple entities when the correct inter-company eliminations are in place.
 
 ---
 
@@ -449,7 +457,7 @@ Financial Accounting requires the [Core Module](/modules-v2/core/) to be live fi
 
 ### Pre-Go-Live Checklist
 
-- [x] **Core Module** configured — Organisation, COA, Cashbook, Tax Codes, Doc Item mappings, Customer & Supplier records
+- [ ] **Core Module** configured — Organisation, COA, Cashbook, Tax Codes, Doc Item mappings, Customer & Supplier records
 - [ ] Every bank account registered as a Cashbook in Core, **linked to a GL account**
 - [ ] Every Tax Code mapped to its GL Output/Input Tax account
 - [ ] Doc Item Maintenance configured with default revenue/expense accounts per item

@@ -1,0 +1,91 @@
+{{/*
+  gl-journal shortcode
+  Usage:
+    {{< gl-journal title="Payment Voucher GL Posting" >}}
+    Dr  Accounts Payable    1060.00 | from supplier line
+    Cr  1010 Bank Maybank   1060.00 | from cashbook mapping
+    {{< /gl-journal >}}
+  Lines: Dr = debit (blue), Cr = credit (teal). Use | to add a note after amount.
+*/}}
+{{ $title := .Get "title" | default "" }}
+
+<div class="glj-wrap" data-glj-title="{{ $title }}">
+  {{ if $title }}<div class="glj-title">{{ $title }}</div>{{ end }}
+  <div class="glj-loading" style="padding:.75rem 1rem;color:#94a3b8;font-size:.85rem;">Loading...</div>
+  <table class="glj-table" style="display:none" aria-label="{{ $title }}">
+    <thead>
+      <tr>
+        <th class="glj-th glj-th-side">Side</th>
+        <th class="glj-th glj-th-acct">Account</th>
+        <th class="glj-th glj-th-amt">Amount</th>
+        <th class="glj-th glj-th-note">Note</th>
+      </tr>
+    </thead>
+    <tbody class="glj-tbody"></tbody>
+  </table>
+  <textarea class="glj-src" style="display:none">{{ .Inner }}</textarea>
+</div>
+
+<style>
+.glj-wrap{margin:1.5rem 0;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);font-family:'Inter','Segoe UI',system-ui,sans-serif}
+.glj-title{background:#1e293b;color:#f8fafc;font-weight:600;font-size:.82rem;letter-spacing:.04em;padding:.55rem 1rem}
+.glj-table{width:100%;border-collapse:collapse;font-size:.875rem}
+.glj-table thead tr{background:#f1f5f9}
+.glj-th{padding:.4rem .9rem;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:#64748b;border-bottom:1px solid #e2e8f0;text-align:left}
+.glj-th-amt{text-align:right;width:130px}
+.glj-table tbody tr{border-bottom:1px solid #f1f5f9;transition:background .12s}
+.glj-table tbody tr:last-child{border-bottom:none}
+.glj-table tbody tr:hover{background:#f8fafc}
+.glj-td-side{padding:.5rem .9rem;width:56px}
+.glj-td-acct-dr{padding:.5rem .9rem;color:#1d4ed8;font-weight:500}
+.glj-td-acct-cr{padding:.5rem .9rem;color:#0f766e;font-weight:500;padding-left:2rem}
+.glj-td-amt{padding:.5rem .9rem;text-align:right;font-weight:600;font-variant-numeric:tabular-nums;color:#111827}
+.glj-td-note{padding:.5rem .9rem;color:#94a3b8;font-size:.78rem;font-style:italic}
+.glj-b-dr{display:inline-block;background:#dbeafe;color:#1d4ed8;font-weight:700;font-size:.7rem;border-radius:4px;padding:2px 7px}
+.glj-b-cr{display:inline-block;background:#ccfbf1;color:#0f766e;font-weight:700;font-size:.7rem;border-radius:4px;padding:2px 7px}
+.glj-cmt-td{background:#fafafa;padding:.32rem .9rem;color:#94a3b8;font-size:.76rem;font-style:italic;border-bottom:1px dashed #e2e8f0}
+.glj-info-td{padding:.42rem .9rem;color:#475569;font-size:.82rem;background:#f8fafc}
+</style>
+
+<script>
+(function(){
+  document.querySelectorAll('.glj-wrap').forEach(function(wrap){
+    if(wrap.dataset.gljReady) return;
+    wrap.dataset.gljReady = '1';
+    var src = wrap.querySelector('.glj-src');
+    var tbody = wrap.querySelector('.glj-tbody');
+    var table = wrap.querySelector('.glj-table');
+    var loading = wrap.querySelector('.glj-loading');
+    if(!src||!tbody) return;
+    var lines = src.value.split('\n');
+    lines.forEach(function(raw){
+      var line = raw.replace(/^\s+|\s+$/g,'');
+      if(!line) return;
+      var tr = document.createElement('tr');
+      if(line.slice(0,2)==='--'){
+        tr.innerHTML='<td colspan="4" class="glj-cmt-td">'+line.slice(2).trimStart()+'</td>';
+      } else if(/^dr\s/i.test(line)||/^cr\s/i.test(line)){
+        var isDr=/^dr\s/i.test(line);
+        var halves=line.split('|'); var left=halves[0].trim(); var note=halves[1]?halves[1].trim():'';
+        var body=left.replace(/^(dr|cr)\s+/i,'');
+        var toks=body.split(/\s+/); var amt=''; var acctToks=[]; var found=false;
+        for(var i=toks.length-1;i>=0;i--){
+          if(!found&&/^[\d,.]+$/.test(toks[i])){ amt=toks[i]; found=true; }
+          else { acctToks.unshift(toks[i]); }
+        }
+        var badge=isDr?'<span class="glj-b-dr">Dr</span>':'<span class="glj-b-cr">Cr</span>';
+        tr.className=isDr?'glj-dr-row':'glj-cr-row';
+        tr.innerHTML='<td class="glj-td-side">'+badge+'</td>'
+          +'<td class="'+(isDr?'glj-td-acct-dr':'glj-td-acct-cr')+'">'+acctToks.join(' ')+'</td>'
+          +'<td class="glj-td-amt">'+amt+'</td>'
+          +'<td class="glj-td-note">'+note+'</td>';
+      } else {
+        tr.innerHTML='<td colspan="4" class="glj-info-td">'+line+'</td>';
+      }
+      tbody.appendChild(tr);
+    });
+    if(loading) loading.style.display='none';
+    if(table) table.style.display='';
+  });
+})();
+</script>

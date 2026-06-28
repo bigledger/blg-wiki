@@ -40,6 +40,7 @@ tests/playwright/test-results/
 /finance
 /stock
 /sale
+/hugo-local.yaml
 /scratch_generate_all.py
 /scratch_generate_crm.py
 /scratch_generate_ultra.py

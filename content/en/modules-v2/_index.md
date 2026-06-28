@@ -17,23 +17,7 @@ BigLedger is organized into functional **modules** — each module is a business
 
 ### Module–Applet Architecture
 
-```
-┌─────────────────────────────────────────────────────┐
-│                    APPLETS                          │
-│  (Reusable components - single source of truth)     │
-└─────────────────────────────────────────────────────┘
-                         ↓ ↑
-     ┌──────────────┬────────────┬──────────────┐
-     │              │            │              │
-┌────▼─────┐  ┌────▼─────┐ ┌───▼──────┐ ┌────▼─────┐
-│   Core   │  │Financial │ │   Sales  │ │Inventory │
-│  Module  │  │Accounting│ │   & CRM  │ │ & Whse   │
-└──────────┘  └──────────┘ └──────────┘ └──────────┘
-```
-
-- **Applets** are the actual functional components (single source of truth)
-- **Modules** are business-focused collections of applets
-- A single applet can belong to multiple modules (many-to-many relationship)
+![BigLedger Module-Applet Architecture](/images/user-guide/modules/module-applet-architecture.png)
 
 ---
 

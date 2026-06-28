@@ -1,0 +1,402 @@
+{{/*
+  fx-calculator shortcode
+  Renders a fully interactive FX transaction calculator.
+  Users can slide the invoice rate and payment rate to see
+  live GL postings and FX gain/loss update in real time.
+
+  Usage: {{< fx-calculator >}}
+*/}}
+
+<div class="fx-calc" id="fx-calc-{{ now.UnixNano }}">
+
+  <div class="fx-calc__header">
+    <span class="fx-calc__icon">💱</span>
+    <div>
+      <div class="fx-calc__title">Foreign Currency Transaction Calculator</div>
+      <div class="fx-calc__subtitle">Adjust the rates to see how the GL entries and FX gain/loss change in real time</div>
+    </div>
+  </div>
+
+  <!-- Inputs -->
+  <div class="fx-calc__controls">
+
+    <div class="fx-ctrl-group">
+      <label class="fx-ctrl-label">Invoice Amount (USD)</label>
+      <div class="fx-ctrl-row">
+        <input type="range" class="fx-slider" id="fc-amount" min="100" max="10000" step="100" value="1000">
+        <span class="fx-ctrl-val">USD <strong id="fc-amount-val">1,000</strong></span>
+      </div>
+    </div>
+
+    <div class="fx-ctrl-group">
+      <label class="fx-ctrl-label">Invoice Rate (USD/MYR) — rate at time of invoice</label>
+      <div class="fx-ctrl-row">
+        <input type="range" class="fx-slider" id="fc-inv-rate" min="4.00" max="5.00" step="0.01" value="4.50">
+        <span class="fx-ctrl-val">1 USD = <strong id="fc-inv-rate-val">4.50</strong> MYR</span>
+      </div>
+    </div>
+
+    <div class="fx-ctrl-group">
+      <label class="fx-ctrl-label">Payment Rate (USD/MYR) — rate when payment is made</label>
+      <div class="fx-ctrl-row">
+        <input type="range" class="fx-slider" id="fc-pay-rate" min="4.00" max="5.00" step="0.01" value="4.55">
+        <span class="fx-ctrl-val">1 USD = <strong id="fc-pay-rate-val">4.55</strong> MYR</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Step 1: Invoice Posting -->
+  <div class="fx-step">
+    <div class="fx-step__label">
+      <span class="fx-step__num">1</span>
+      <span>Supplier Invoice Posted</span>
+      <span class="fx-step__rate">at rate <strong id="s1-rate">4.50</strong></span>
+    </div>
+    <table class="fx-table">
+      <thead><tr><th>Side</th><th>Account</th><th class="num">MYR Amount</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr class="dr"><td><span class="b-dr">Dr</span></td><td>5310 Office Supplies</td><td class="num" id="s1-dr-supplies"></td><td>expense recognized</td></tr>
+        <tr class="cr"><td><span class="b-cr">Cr</span></td><td>Accounts Payable</td><td class="num" id="s1-cr-ap"></td><td>liability at invoice rate</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Step 2: Payment Posting -->
+  <div class="fx-step">
+    <div class="fx-step__label">
+      <span class="fx-step__num">2</span>
+      <span>Payment Voucher Posted</span>
+      <span class="fx-step__rate">at rate <strong id="s2-rate">4.55</strong></span>
+    </div>
+    <table class="fx-table">
+      <thead><tr><th>Side</th><th>Account</th><th class="num">MYR Amount</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr class="dr"><td><span class="b-dr">Dr</span></td><td>Accounts Payable</td><td class="num" id="s2-dr-ap"></td><td>closes the AP balance</td></tr>
+        <tr class="cr"><td><span class="b-cr">Cr</span></td><td>Bank: USD Account</td><td class="num" id="s2-cr-bank"></td><td>cash paid at payment rate</td></tr>
+        <tr id="s2-fx-row">
+          <td></td><td id="s2-fx-acct" class="fx-acct"></td><td class="num" id="s2-fx-amt"></td><td id="s2-fx-note" class="fx-note"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FX Result Banner -->
+  <div class="fx-result" id="fx-result-banner">
+    <span id="fx-result-icon">📉</span>
+    <div>
+      <div class="fx-result__label" id="fx-result-label">FX Loss</div>
+      <div class="fx-result__amount" id="fx-result-amount">RM 50.00</div>
+      <div class="fx-result__desc" id="fx-result-desc">Rate moved against you (4.50 → 4.55). Difference auto-posted to FX Loss account.</div>
+    </div>
+  </div>
+
+  <!-- Period-end Revaluation -->
+  <div class="fx-step">
+    <div class="fx-step__label">
+      <span class="fx-step__num">3</span>
+      <span>Period-End FX Revaluation</span>
+      <span class="fx-step__rate" style="font-size:.8rem; color:#64748b;">If open AP balance remains at month-end</span>
+    </div>
+    <div class="fx-reval-controls">
+      <label class="fx-ctrl-label">Closing Rate (USD/MYR) — month-end rate</label>
+      <div class="fx-ctrl-row">
+        <input type="range" class="fx-slider" id="fc-close-rate" min="4.00" max="5.00" step="0.01" value="4.60">
+        <span class="fx-ctrl-val">1 USD = <strong id="fc-close-rate-val">4.60</strong> MYR</span>
+      </div>
+    </div>
+    <table class="fx-table" style="margin-top:.75rem">
+      <thead><tr><th>Side</th><th>Account</th><th class="num">MYR Amount</th><th>Note</th></tr></thead>
+      <tbody>
+        <tr id="reval-row-1"><td></td><td id="reval-acct-1"></td><td class="num" id="reval-amt-1"></td><td id="reval-note-1"></td></tr>
+        <tr id="reval-row-2"><td></td><td id="reval-acct-2"></td><td class="num" id="reval-amt-2"></td><td id="reval-note-2"></td></tr>
+      </tbody>
+    </table>
+    <p class="fx-reval-note">⟳ This revaluation journal is <strong>reversed at the start of next period</strong> — unrealized until payment clears.</p>
+  </div>
+
+</div>
+
+<style>
+.fx-calc {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin: 2rem 0;
+  font-family: 'Inter','Segoe UI',sans-serif;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+}
+.fx-calc__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #1e293b;
+  padding: 1rem 1.25rem;
+}
+.fx-calc__icon { font-size: 1.6rem; }
+.fx-calc__title { color: #f8fafc; font-weight: 700; font-size: 1rem; }
+.fx-calc__subtitle { color: #94a3b8; font-size: .8rem; margin-top: .15rem; }
+
+.fx-calc__controls {
+  background: #f8fafc;
+  padding: 1.1rem 1.25rem;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+}
+.fx-ctrl-group { display: flex; flex-direction: column; gap: .3rem; }
+.fx-ctrl-label { font-size: .75rem; font-weight: 600; color: #475569; text-transform: uppercase; letter-spacing: .05em; }
+.fx-ctrl-row { display: flex; align-items: center; gap: 1rem; }
+.fx-slider {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 5px;
+  border-radius: 5px;
+  background: #cbd5e1;
+  outline: none;
+  cursor: pointer;
+}
+.fx-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #3b82f6;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+  transition: background .15s;
+}
+.fx-slider::-webkit-slider-thumb:hover { background: #2563eb; }
+.fx-ctrl-val { font-size: .85rem; color: #334155; min-width: 130px; }
+.fx-ctrl-val strong { color: #1d4ed8; }
+
+.fx-step {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+.fx-step:last-child { border-bottom: none; }
+.fx-step__label {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: .75rem;
+  font-weight: 600;
+  font-size: .9rem;
+  color: #1e293b;
+}
+.fx-step__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: #3b82f6;
+  color: white;
+  font-size: .75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.fx-step__rate { margin-left: auto; font-weight: 400; font-size: .8rem; color: #64748b; }
+
+.fx-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: .855rem;
+}
+.fx-table thead th {
+  text-align: left;
+  padding: .35rem .7rem;
+  font-size: .7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #94a3b8;
+  border-bottom: 1px solid #e2e8f0;
+}
+.fx-table th.num, .fx-table td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.fx-table tbody tr { border-bottom: 1px solid #f8fafc; transition: background .12s; }
+.fx-table tbody tr:hover { background: #f8fafc; }
+.fx-table td { padding: .45rem .7rem; }
+
+.b-dr {
+  display: inline-block;
+  background: #dbeafe; color: #1d4ed8;
+  font-weight: 700; font-size: .7rem;
+  border-radius: 4px; padding: 2px 6px;
+}
+.b-cr {
+  display: inline-block;
+  background: #ccfbf1; color: #0f766e;
+  font-weight: 700; font-size: .7rem;
+  border-radius: 4px; padding: 2px 6px;
+}
+.fx-table tr.dr td:nth-child(2) { color: #1d4ed8; font-weight: 500; }
+.fx-table tr.cr td:nth-child(2) { color: #0f766e; font-weight: 500; padding-left: 1.5rem; }
+.fx-table td:nth-child(4) { color: #94a3b8; font-size: .78rem; font-style: italic; }
+
+.fx-acct { font-weight: 600; }
+.fx-note { font-style: italic; font-size: .78rem; color: #94a3b8; }
+
+.fx-result {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 1.25rem 1rem;
+  padding: .85rem 1.1rem;
+  border-radius: 8px;
+  font-size: .875rem;
+  transition: background .3s, border-color .3s;
+}
+.fx-result.loss { background: #fff1f2; border: 1px solid #fecdd3; }
+.fx-result.gain { background: #f0fdf4; border: 1px solid #bbf7d0; }
+.fx-result.zero { background: #f8fafc; border: 1px solid #e2e8f0; }
+.fx-result > span { font-size: 1.6rem; }
+.fx-result__label { font-weight: 700; font-size: .9rem; }
+.fx-result.loss .fx-result__label { color: #be123c; }
+.fx-result.gain .fx-result__label { color: #15803d; }
+.fx-result__amount { font-size: 1.35rem; font-weight: 800; margin: .1rem 0; font-variant-numeric: tabular-nums; }
+.fx-result.loss .fx-result__amount { color: #be123c; }
+.fx-result.gain .fx-result__amount { color: #15803d; }
+.fx-result__desc { font-size: .78rem; color: #64748b; }
+
+.fx-reval-controls { margin-top: .5rem; }
+.fx-reval-note { font-size: .8rem; color: #64748b; margin-top: .7rem; font-style: italic; }
+</style>
+
+<script>
+(function() {
+  function fmt(n) {
+    return 'RM ' + n.toLocaleString('en-MY', {minimumFractionDigits:2, maximumFractionDigits:2});
+  }
+
+  var amountEl    = document.getElementById('fc-amount');
+  var invRateEl   = document.getElementById('fc-inv-rate');
+  var payRateEl   = document.getElementById('fc-pay-rate');
+  var closeRateEl = document.getElementById('fc-close-rate');
+
+  if(!amountEl || !invRateEl || !payRateEl || !closeRateEl) return;
+
+  function update() {
+    var usd       = parseFloat(amountEl.value);
+    var invRate   = parseFloat(invRateEl.value);
+    var payRate   = parseFloat(payRateEl.value);
+    var closeRate = parseFloat(closeRateEl.value);
+
+    // Display input values
+    document.getElementById('fc-amount-val').textContent    = usd.toLocaleString('en-US');
+    document.getElementById('fc-inv-rate-val').textContent  = invRate.toFixed(2);
+    document.getElementById('fc-pay-rate-val').textContent  = payRate.toFixed(2);
+    document.getElementById('fc-close-rate-val').textContent= closeRate.toFixed(2);
+
+    // Step 1 — invoice
+    var invMYR = usd * invRate;
+    document.getElementById('s1-rate').textContent        = invRate.toFixed(2);
+    document.getElementById('s1-dr-supplies').textContent = fmt(invMYR);
+    document.getElementById('s1-cr-ap').textContent       = fmt(invMYR);
+
+    // Step 2 — payment
+    var payMYR = usd * payRate;
+    var fxDiff = payMYR - invMYR;
+    document.getElementById('s2-rate').textContent  = payRate.toFixed(2);
+    document.getElementById('s2-dr-ap').textContent   = fmt(invMYR);
+    document.getElementById('s2-cr-bank').textContent  = fmt(payMYR);
+
+    var fxRow    = document.getElementById('s2-fx-row');
+    var fxAcct   = document.getElementById('s2-fx-acct');
+    var fxAmt    = document.getElementById('s2-fx-amt');
+    var fxNote   = document.getElementById('s2-fx-note');
+    var banner   = document.getElementById('fx-result-banner');
+    var bIcon    = document.getElementById('fx-result-icon');
+    var bLabel   = document.getElementById('fx-result-label');
+    var bAmount  = document.getElementById('fx-result-amount');
+    var bDesc    = document.getElementById('fx-result-desc');
+
+    if (Math.abs(fxDiff) < 0.005) {
+      fxRow.querySelector('td:first-child').innerHTML = '';
+      fxAcct.textContent = '—';
+      fxAmt.textContent  = 'RM 0.00';
+      fxNote.textContent = 'no rate movement';
+      fxAcct.className   = 'fx-acct';
+      banner.className   = 'fx-result zero';
+      bIcon.textContent  = '✅';
+      bLabel.textContent = 'No FX Impact';
+      bAmount.textContent= 'RM 0.00';
+      bDesc.textContent  = 'Invoice rate and payment rate are the same — no FX difference.';
+    } else if (fxDiff > 0) {
+      fxRow.querySelector('td:first-child').innerHTML = '<span class="b-dr">Dr</span>';
+      fxAcct.textContent = 'FX Loss';
+      fxAmt.textContent  = fmt(fxDiff);
+      fxNote.textContent = 'rate moved against you (' + invRate.toFixed(2) + ' → ' + payRate.toFixed(2) + ')';
+      fxAcct.className   = 'fx-acct';
+      fxAcct.style.color = '#be123c';
+      banner.className   = 'fx-result loss';
+      bIcon.textContent  = '📉';
+      bLabel.textContent = 'FX Loss';
+      bAmount.textContent= fmt(fxDiff);
+      bDesc.textContent  = 'Rate moved against you (' + invRate.toFixed(2) + ' → ' + payRate.toFixed(2) + '). You paid ' + fmt(payMYR) + ' to settle a liability booked at ' + fmt(invMYR) + '.';
+    } else {
+      fxRow.querySelector('td:first-child').innerHTML = '<span class="b-cr">Cr</span>';
+      fxAcct.textContent = 'FX Gain';
+      fxAmt.textContent  = fmt(Math.abs(fxDiff));
+      fxNote.textContent = 'rate moved in your favour (' + invRate.toFixed(2) + ' → ' + payRate.toFixed(2) + ')';
+      fxAcct.className   = 'fx-acct';
+      fxAcct.style.color = '#15803d';
+      banner.className   = 'fx-result gain';
+      bIcon.textContent  = '📈';
+      bLabel.textContent = 'FX Gain';
+      bAmount.textContent= fmt(Math.abs(fxDiff));
+      bDesc.textContent  = 'Rate moved in your favour (' + invRate.toFixed(2) + ' → ' + payRate.toFixed(2) + '). You settled ' + fmt(invMYR) + ' in AP for only ' + fmt(payMYR) + '.';
+    }
+
+    var closeMYR    = usd * closeRate;
+    var revalDiff   = closeMYR - invMYR;
+
+    var rAcct1 = document.getElementById('reval-acct-1');
+    var rAmt1  = document.getElementById('reval-amt-1');
+    var rNote1 = document.getElementById('reval-note-1');
+    var rRow1  = document.getElementById('reval-row-1');
+    var rAcct2 = document.getElementById('reval-acct-2');
+    var rAmt2  = document.getElementById('reval-amt-2');
+    var rNote2 = document.getElementById('reval-note-2');
+    var rRow2  = document.getElementById('reval-row-2');
+
+    if (Math.abs(revalDiff) < 0.005) {
+      rRow1.querySelector('td:first-child').innerHTML = '';
+      rAcct1.textContent = '— No revaluation needed';
+      rAmt1.textContent  = '';
+      rNote1.textContent = 'closing rate equals invoice rate';
+      rRow2.style.display = 'none';
+    } else if (revalDiff > 0) {
+      rRow1.querySelector('td:first-child').innerHTML = '<span class="b-dr">Dr</span>';
+      rAcct1.textContent = 'FX Loss (unrealized)';
+      rAmt1.textContent  = fmt(revalDiff);
+      rNote1.textContent = 'AP restated upward at closing rate ' + closeRate.toFixed(2);
+      rAcct1.style.color = '#be123c';
+      rRow2.style.display = '';
+      rRow2.querySelector('td:first-child').innerHTML = '<span class="b-cr">Cr</span>';
+      rAcct2.textContent = 'Accounts Payable';
+      rAmt2.textContent  = fmt(revalDiff);
+      rNote2.textContent = 'balance restated: ' + fmt(invMYR) + ' → ' + fmt(closeMYR);
+      rAcct2.style.color = '#0f766e';
+    } else {
+      rRow1.querySelector('td:first-child').innerHTML = '<span class="b-dr">Dr</span>';
+      rAcct1.textContent = 'Accounts Payable';
+      rAmt1.textContent  = fmt(Math.abs(revalDiff));
+      rNote1.textContent = 'balance restated: ' + fmt(invMYR) + ' → ' + fmt(closeMYR);
+      rAcct1.style.color = '#0f766e';
+      rRow2.style.display = '';
+      rRow2.querySelector('td:first-child').innerHTML = '<span class="b-cr">Cr</span>';
+      rAcct2.textContent = 'FX Gain (unrealized)';
+      rAmt2.textContent  = fmt(Math.abs(revalDiff));
+      rNote2.textContent = 'rate moved in your favour to ' + closeRate.toFixed(2);
+      rAcct2.style.color = '#15803d';
+    }
+  }
+
+  [amountEl, invRateEl, payRateEl, closeRateEl].forEach(function(el) {
+    el.addEventListener('input', update);
+  });
+
+  update();
+})();
+</script>
