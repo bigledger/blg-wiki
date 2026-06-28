@@ -19,7 +19,7 @@ weight: 165
 The **Stock Take Applet** is a practical, operations-ready tool for running accurate inventory counts without relying on spreadsheets and manual reconciliation. It supports session-based counting, device-driven workflows, and fast variance analysis so teams can count faster and close faster.
 
 {{< callout type="info" >}}
-**Core Concept**: The applet links your count process end-to-end: **Session** (when/where you count), **Device** (who counts), **Records** (what was counted), and **Report** (how variance is reconciled).
+**Core Concept**: The applet separates **count capture** from **report reconciliation**: **Session** defines when and where you count, **Device** controls who counts, **Records** store what was counted, and **Report** compares counted results against system balances and reconciliation data.
 {{< /callout >}}
 
 {{< figure src="/images/stock-take-applet/stock-take-main-overview.png" alt="Stock Take Applet landing view showing module navigation for sessions, devices, reports, settings, and personalization." caption="Stock Take Applet Overview: Access all core stock take workflows from a single operational workspace." >}}
@@ -133,6 +133,19 @@ Stock Take Applet
 | **Session Status** | `OPEN`, `CLOSED` | Open sessions allow active counting and edits |
 | **Variance Status** | `YES`, `NO` | Indicates whether a session has variance |
 | **Report Type** | `Scanned Items`, `Active Items`, `All Items` | Controls report scope during analysis/export |
+
+### Quantity Definitions
+
+Use these report terms exactly as the applet uses them:
+
+| Field | Meaning |
+|------|---------|
+| **Total Quantity** | The total counted quantity captured from stock take records for that item |
+| **EMP Quantity** | The system ending balance used for report comparison |
+| **Min Quantity** | The lower calculated comparison bound used by the report |
+| **Max Quantity** | The upper calculated comparison bound used by the report |
+| **Variance** | Difference between counted quantity and the allowed min/max range |
+| **Variance 2** | Direct difference between counted quantity and the system ending balance |
 
 ---
 
@@ -264,6 +277,8 @@ This is the reconciliation workspace:
 - Capture reasons
 - Launch reason upload flow
 
+The session report is where counted records are compared against system balances. The applet documentation and screens shown here do not expose a separate standalone inventory-adjustment posting action.
+
 {{< figure src="/images/stock-take-applet/session-report-tab.png" alt="Session Report tab controls with Generate/Regenerate actions, report listing, and reason update flow." caption="Session Report Tab: Generate variance output and manage reconciliation actions from one tab." >}}
 
 ## Device Management
@@ -318,6 +333,18 @@ Report lines include:
 **Terminology Note**: In report screens, **EMP Quantity** refers to the system ending balance used for variance comparison.
 {{< /callout >}}
 
+### Variance Logic
+
+The applet shows two quantity variance views in the session report:
+
+- **Variance**: compares **Total Quantity** against the report's **Min Quantity** and **Max Quantity** range
+- **Variance 2**: compares **Total Quantity** directly against **EMP Quantity**
+
+In practical terms:
+- A positive **Variance 2** means the counted quantity is higher than the system ending balance
+- A negative **Variance 2** means the counted quantity is lower than the system ending balance
+- A zero **Variance 2** means the counted quantity matches the system ending balance
+
 {{< figure src="/images/stock-take-applet/stock-take-session-report-details.png" alt="Stock Take Session report details showing item-level quantities, variance metrics, and reason fields." caption="Session Report Details Page: Reconcile counted quantities against system balances at item level." >}}
 
 ### Cross-Session Report Listing
@@ -344,6 +371,23 @@ The applet supports reconciliation at scale:
 
 {{< figure src="/images/stock-take-applet/stock-take-upload-reason-1.png" alt="Upload Reason follow-up screen showing selected file state and import action readiness." caption="Upload Reason Confirmation: Validate the prepared file and proceed with bulk reason import." >}}
 
+## Audit & Traceability
+
+The applet supports audit-focused operations through:
+- Session and record timestamps (`created` and `modified`)
+- User attribution on key records (`created by` and `modified by`)
+- Variance reason capture at report line level
+- Controlled finalization using session status (`OPEN` vs `CLOSED`)
+
+**Practical Audit Flow:**
+1. Confirm session status and closure date.
+2. Review report line variances and reason fields.
+3. Validate serial variance for serialized items.
+4. Export final report for audit evidence.
+
+---
+
+
 ## Configuration & Settings
 
 ### `Settings > Field Settings`
@@ -354,7 +398,7 @@ Control runtime behavior through these toggles:
 |---------|--------|
 | `ENABLE_AUTO_SCAN` | Automatically pushes scanned items into listing |
 | `ENABLE_VALIDATE_SERIAL` | Enables serial validation logic |
-| `STOCK_DURING_OPENING_SHOP` | Allows configuration for count timing policy |
+| `STOCK_DURING_OPENING_SHOP` | Allows configuration for count timing policy while the store is operating |
 | `SERIALIZED_ITEM_EXT` | Reads serialized behavior from item extension |
 | `SCAN_CODE_MOBILE_VIEW` | Enables camera/mobile scan view |
 | `HIDE_ADD_BUTTON` | Hides manual add action in scan form |
@@ -374,22 +418,6 @@ The settings route also exposes operational controls such as:
 - Feature visibility
 - Webhook setup
 - Permission wizard, permission sets, and role/user/team permission views
-
-## Audit & Traceability
-
-The applet supports audit-focused operations through:
-- Session and record timestamps (`created` and `modified`)
-- User attribution on key records (`created by` and `modified by`)
-- Variance reason capture at report line level
-- Controlled finalization using session status (`OPEN` vs `CLOSED`)
-
-**Practical Audit Flow:**
-1. Confirm session status and closure date.
-2. Review report line variances and reason fields.
-3. Validate serial variance for serialized items.
-4. Export final report for audit evidence.
-
----
 
 ## Troubleshooting Flow
 
@@ -450,8 +478,14 @@ A: Quantity and serial entries are likely imbalanced, or one/more serial values 
 **Q: What is the difference between Variance and Variance 2?**  
 A: Variance checks counted quantity against min/max calculated range, while Variance 2 compares counted quantity directly against system ending balance.
 
+**Q: Does creating a Stock Take session immediately change inventory balances?**  
+A: No. The applet captures count records and generates reconciliation report lines for comparison. The screens documented here do not show a separate standalone inventory-adjustment posting step.
+
 **Q: Can I reconcile reasons in bulk instead of editing line by line?**  
 A: Yes. Use **Upload Reason** to export report data, fill quantity/reason in Excel, then import.
+
+**Q: What happens if stock movements continue while counting is in progress?**  
+A: Check the `STOCK_DURING_OPENING_SHOP` field setting and follow your operating policy. That setting exists to control count timing while normal store operations are still running.
 
 **Q: Why is the Add button hidden in scan mode?**  
 A: `HIDE_ADD_BUTTON` is likely enabled in Field Settings.
