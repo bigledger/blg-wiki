@@ -4,6 +4,7 @@ description: Common business operations and routine tasks performed regularly in
 tags: [daily-tasks, operations, pricing, transactions]
 weight: 30
 bookCollapseSection: false
+bookHidden: true
 sidebar:
   exclude: true
 cascade:

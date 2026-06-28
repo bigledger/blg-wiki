@@ -4,6 +4,7 @@ description: Master the fundamental daily tasks that form the backbone of your b
 tags: [basic-operations, fundamentals, data-management]
 weight: 20
 bookCollapseSection: false
+bookHidden: true
 sidebar:
   exclude: true
 cascade:
