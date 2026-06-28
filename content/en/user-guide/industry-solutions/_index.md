@@ -1,7 +1,7 @@
 ---
 title: "Industry Solutions"
 description: "Industry-specific implementations, pre-configured workflows, and success stories powered by BigLedger."
-weight: 60
+weight: 65
 bookCollapseSection: false
 tags:
 - industry

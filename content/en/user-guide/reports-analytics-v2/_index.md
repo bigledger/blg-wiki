@@ -1,7 +1,7 @@
 ---
 title: "Reports & Analytics"
 description: "Step-by-step video guides for financial statements, debtor/creditor aging, GL transaction inquiry, and settlement reporting."
-weight: 60
+weight: 55
 ---
 
 <style>
