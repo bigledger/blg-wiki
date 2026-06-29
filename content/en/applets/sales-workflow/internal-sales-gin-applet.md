@@ -9,7 +9,7 @@ tags:
 - warehouse-operations
 weight: 57
 date: 2026-04-26
-lastmod: 2026-06-24
+lastmod: 2026-06-29
 draft: false
 ---
 
@@ -84,6 +84,7 @@ The window title is **Internal Sales GIN Applet**. The listing screen is **Inter
   {{< card title="Create and edit GIN" subtitle="RESET, CREATE, SAVE, FINAL" link="#create-and-edit-internal-sales-gin" >}}
   {{< card title="Main Details and Account" subtitle="Branch, member card, customer" link="#main-details-and-account" >}}
   {{< card title="Lines and Select Item" subtitle="Search Item and KO tabs" link="#lines-and-select-item" >}}
+  {{< card title="Line Items workspace" subtitle="Cross-document line listing" link="#line-items-workspace" >}}
   {{< card title="Doc Link" subtitle="Copied From / Copied To trace" link="#doc-link-tab" >}}
   {{< card title="Settlement and department" subtitle="Payments and allocations" link="#settlement-and-department-hdr" >}}
   {{< card title="Settings (admin)" subtitle="Defaults, fields, permissions" link="#configuration-and-settings" >}}
@@ -108,7 +109,7 @@ The window title is **Internal Sales GIN Applet**. The listing screen is **Inter
 
 If **CREATE** or **SAVE** stays disabled, complete **Main Details**, valid **Entity Details**, and keep **at least one line** on **Lines**.
 
-![Create Internal Sales GIN screen](/images/internal-sales-gin-applet/create-sales-gin.png)
+{{< figure src="/images/internal-sales-gin-applet/main-details.png" alt="Create Internal Sales GIN with Main Details tab showing branch, location, member card, and header fields" caption="Create Internal Sales GIN: complete **Main Details** after clicking **+** from the listing." >}}
 
 ### Two ways to add lines {#two-ways-to-add-lines}
 
@@ -193,7 +194,13 @@ Administrators can change tab order (**Details Tab Ordering** in **Settings**).
 
 ### Main Details and Account {#main-details-and-account}
 
-**Main Details** (common fields)
+#### Main Details tab
+
+On **Create Internal Sales GIN**, open **Main Details** first.
+
+{{< figure src="/images/internal-sales-gin-applet/main-details.png" alt="Main Details tab on Create Internal Sales GIN" caption="Main Details: **Branch**, **Location**, **Member Card**, dates, **Reference**, and **Remarks** on the create screen." >}}
+
+**Fields to complete:**
 
 - **Branch** and **Location** — Where stock issues from (**warehouse:** verify before **FINAL**).
 - **Sales Agent**
@@ -201,17 +208,25 @@ Administrators can change tab order (**Details Tab Ordering** in **Settings**).
 - **Transaction Date**, **Credit Terms**, **Due Date**, **Reference**, **Remarks**, **Currency**, document numbers when shown.
 - **Permit No** — Optional permit or customs reference when your process requires it.
 
-**Account** subtabs: **Entity Details**, **Bill To**, **Ship To**. **Entity Details** selects the **customer** (required for save).
+**Credit Terms** and **Due Date** may stay disabled until you select **Entity ID** on **Account** → **Entity Details**.
+
+#### Account tab
+
+Open **Account** → **Entity Details** and select the **customer** (**Entity ID** is required for **CREATE** / **SAVE**). Confirm **Bill To** and **Ship To** when your process uses them.
+
+{{< figure src="/images/internal-sales-gin-applet/account-tab.png" alt="Account tab Entity Details on Create Internal Sales GIN" caption="Account → **Entity Details**: select the customer before you add lines or click **CREATE**." >}}
 
 ### Lines and Select Item {#lines-and-select-item}
 
-**Lines** tab
+#### Lines tab
 
 - **+** adds a line while the document is not **FINAL**.
 - Columns include **Item Code**, **Item Name**, **UOM**, **Qty**, and price or tax columns when your role may see pricing.
 - Footer: **Total** and **Tax**.
 
-**Select Item** screen
+{{< figure src="/images/internal-sales-gin-applet/lines-tab.png" alt="Lines tab on Create Internal Sales GIN with Select Item side panel" caption="Lines: click **+** to open **Select Item** (**Search Item** or **KO …** tabs) and add rows to the grid." >}}
+
+#### Select Item screen
 
 - **Search Item** plus **KO …** tabs, including when enabled:
   - **KO by Sales Order Item** / **KO for Sales Order Item**
@@ -226,17 +241,25 @@ Administrators can change tab order (**Details Tab Ordering** in **Settings**).
 
 ### Settlement and Department Hdr {#settlement-and-department-hdr}
 
-**Settlement** — Payment or allocation lines on this GIN (**Date**, **Amount**, **Details**, **Remarks**); **Outstanding** and totals when shown. **+** for new rows until **FINAL**.
+#### Settlement tab
 
-**Department Hdr** — Department header dimensions when your configuration exposes them.
+On **Create Internal Sales GIN** (or **Edit** when amending a draft), **Settlement** records payment or allocation lines (**Date**, **Amount**, **Details**, **Remarks**). The screen shows **Total** and **Outstanding** when configured. Click **+** to open **Add Settlement**, choose **Settlement Method**, then **ADD**. **+** is not available after **FINAL**.
 
-![Settlement and Department Hdr section](/images/internal-sales-gin-applet/settlement-departmnet-hdr.png)
+{{< figure src="/images/internal-sales-gin-applet/settlement-tab.png" alt="Settlement tab on Create Internal Sales GIN with Add Settlement panel" caption="Settlement: add settlement lines with **Settlement Method**; review **Total** and **Outstanding** above the grid." >}}
+
+#### Department Hdr tab
+
+On **Edit Internal Sales GIN** (after **CREATE**), **Department Hdr** holds cost dimensions when enabled—for example **Segment**, **G/L Dimension**, **Profit Centre**, and **Project**.
+
+{{< figure src="/images/internal-sales-gin-applet/department_hdr.png" alt="Department Hdr tab on Edit Internal Sales GIN" caption="Department Hdr on **Edit Internal Sales GIN**: department header dimensions when your configuration exposes this tab." >}}
 
 ### Doc Link tab {#doc-link-tab}
 
 Available on **Edit Internal Sales GIN** only (after **CREATE**).
 
 **Purpose:** Show **document traceability**—which upstream or related documents this GIN is linked to after line knock-off or system copying.
+
+{{< figure src="/images/internal-sales-gin-applet/doc-link.png" alt="Doc Link tab on Edit Internal Sales GIN showing Copied From grid" caption="Doc Link → **Copied From**: linked source documents (for example from **KO …** lines). Grid is empty when lines were added only via **Search Item**." >}}
 
 **Sub-tabs**
 
@@ -265,6 +288,16 @@ On **Edit Internal Sales GIN**:
 - **Export** — **EXPORT AS PDF** when printable formats are configured (not on the listing).
 
 **Delete** — In vertical layout, **DELETE** may appear when **SHOW_DOCUMENT_DELETE_BUTTON** is enabled and the document is not **FINAL** (double-click to confirm).
+
+---
+
+## Line Items workspace {#line-items-workspace}
+
+The sidebar entry **Line Items** opens **Line Items Listing**—a cross-document view of GIN lines across many headers. Use it when you need to search or review **Item Code**, quantities, and amounts without opening each **Edit Internal Sales GIN** document.
+
+{{< figure src="/images/internal-sales-gin-applet/line-items-from-sidebar.png" alt="Line Items Listing from the Internal Sales GIN Applet sidebar" caption="Line Items Listing: search and review individual GIN lines (Sales GIN No, item, qty, pricing) from the sidebar." >}}
+
+Typical columns include **Sales GIN No**, **Item Code**, **Item Name**, **Qty**, **Unit Price (Inclusive of Tax)**, **SST/VAT/GST**, and **Txn Amount**. Price columns appear when your role has pricing display permission.
 
 ---
 
@@ -369,4 +402,4 @@ Use **[My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/)
 
 ---
 
-Last updated: June 24, 2026
+Last updated: June 29, 2026
