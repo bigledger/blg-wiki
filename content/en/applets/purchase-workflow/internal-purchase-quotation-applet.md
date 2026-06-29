@@ -12,313 +12,291 @@ tags:
 
 ## Purpose and Overview
 
-The **Purchase Quotation (Internal) Applet** is a core procurement module designed to streamline the sourcing and price negotiation phase of inventory acquisition. Rather than relying on scattered email exchanges and paper quotations, this applet allows procurement teams to log, structure, and finalize vendor quotations in a single, auditable workspace.
+The **Purchase Quotation (Internal) Applet** is a core procurement module designed to streamline the sourcing and price negotiation phase of inventory acquisition. Rather than relying on scattered email exchanges, spreadsheets, and manual quotations, this applet allows procurement teams to log, structure, and finalize vendor quotations in a single, auditable workspace.
 
 {{< callout type="info" >}}
-**Core Concept**: The applet serves as the bridge between the internal request for materials (**Purchase Requisition**) and the final purchasing commitment (**Purchase Order**). It tracks supplier terms, item costs, tax configurations, and billing/shipping logistics.
+**Core Concept**: The applet serves as the "Bridge" in the **Golden Triangle of Procurement** — connecting internal requests for materials (**Purchase Requisitions**) to final legally binding commitments (**Purchase Orders**). It tracks supplier credit terms, negotiated pricing, tax configurations (SST/GST/VAT), Withholding Tax (WHT), and shipping logistics.
 {{< /callout >}}
+
+![The Golden Triangle of Procurement: Streamlining the Purchase Quotation Lifecycle](/images/internal-purchase-quotation-applet/golden-triangle-procurement-lifecycle.png)
+
+---
 
 ### Who Benefits from This Applet?
 
 **Purchasers and Procurement Teams:**
-- Centralized logging of supplier quotation terms, pricing, and validity.
-- Effortless conversion of approved Purchase Requisitions via the **Knock-Off (KO)** flow.
-- Simple comparison of credit terms, delivery schedules, and item-level pricing across draft PQs.
+- **Centralized Vendor Sourcing:** Log supplier quotation terms, item costs, and validity dates in a structured database.
+- **Automated Requisition Import:** Effortlessly pull approved items from internal Purchase Requisitions via the **Knock-Off (KO)** flow.
+- **Supplier Price Comparison:** Evaluate credit terms, delivery schedules, and line-item pricing across multiple draft PQs.
 
 **Finance Teams and Controllers:**
-- Strict verification using the **DRAFT** vs. **FINAL** posting control.
-- Traceability of financial adjustments via the **Contra** ledger matching.
-- Elimination of data entry errors through automatic validation of credit terms and tax rates.
+- **Posting Integrity:** Enforce strict verification using **DRAFT** vs. **FINAL** posting controls to lock documents against post-approval modifications.
+- **Financial Auditability:** Track accounts receivable/payable adjustments through integrated **Contra** balance matching.
+- **Tax & Ledger Precision:** Eliminate manual math errors through automated computation of Net Price, tax rates, and Withholding Tax (WHT).
 
 **Operations and Logistics Teams:**
-- Direct visibility into delivery dates and custom instructions.
-- Instant access to original supplier PDFs via the **Attachments** portal.
-- Multi-dimension tracking (G/L Dimension, Profit Centre, Project) for operational department allocation.
+- **Delivery Coordination:** Direct visibility into scheduled delivery arrival dates and special logistics instructions.
+- **Digital Document Vault:** Instant access to original supplier PDF quotations and agreements via the **Attachments** portal.
+- **Multi-Dimension Allocation:** Track cost allocation across G/L Dimensions, Profit Centres, Projects, and Business Segments.
+
+---
 
 ### What Problems Does This Solve?
 
 | The Manual Procurement Problem | The Purchase Quotation Applet Solution |
 | :--- | :--- |
-| **Scattered Supplier Quotes**: Quotations stored across separate emails, messaging chats, and local desktop folders, leading to lost info. | **Centralized Database**: All supplier quotes logged under a structured listing page, complete with original attachments. |
-| **No Linkage to Requisitions**: Difficulty verifying if a quotation corresponds to an approved internal purchase requisition. | **Direct Knock-Off (KO) Linkage**: Pulls lines directly from active Purchase Requisitions, locking quantities to prevent duplicate orders. |
-| **Incorrect Tax and Math Errors**: Manual calculations of discount margins, currency exchanges, WHT, and tax leading to accounting mismatches. | **Automated Calculation Engine**: Automatic line-level calculation of Net Price, SST/GST/VAT tax amount, and final totals based on central settings. |
-| **Lack of Audit Control**: Draft quotes being treated as official purchasing commitments, causing accounting headaches. | **DRAFT vs. FINAL posting control**: Restricts modifications to documents once they are verified and finalized. |
+| **Scattered Supplier Quotes**: Quotations stored across separate email threads, chat apps, and desktop folders, leading to lost pricing records and delayed approvals. | **Centralized Database**: All supplier quotes logged under a structured, searchable listing page, complete with digital file attachments. |
+| **No Linkage to Requisitions**: Difficulty verifying whether a supplier quotation matches an approved internal material request. | **Direct Knock-Off (KO) Linkage**: Pulls lines directly from active Purchase Requisitions, locking quantities to prevent duplicate ordering. |
+| **Incorrect Tax and Math Errors**: Manual calculations of discount margins, currency exchanges, WHT, and SST/VAT leading to accounting discrepancies. | **Automated Calculation Engine**: Automatic line-level calculation of Net Price, tax amounts, and totals based on central system parameters. |
+| **Lack of Audit Control**: Draft quotes being mistakenly treated as official purchasing commitments, causing accounting headaches. | **DRAFT vs. FINAL posting control**: Restricts modifications to documents once verified and posted to downstream workflows. |
 
 ---
 
 ## Key Features Overview
 
 {{< cards >}}
-  {{< card title="Document Workflow" subtitle="Create, edit, and post PQs with Draft vs. Final controls" link="#purchase-quotation" >}}
+  {{< card title="Document Workflow" subtitle="Create, edit, and post PQs with Draft vs. Final controls" link="#the-internal-quotation-lifecycle" >}}
 
-  {{< card title="Supplier and Account Integration" subtitle="Auto-fill billing details, shipping addresses, and credit terms" link="#account-tab" >}}
+  {{< card title="Supplier Integration" subtitle="Auto-fill billing details, shipping addresses, and credit terms" link="#account-tab" >}}
 
   {{< card title="Knock-Off (KO) Flow" subtitle="Import line items directly from active Purchase Requisitions" link="#ko-for-knock-off-tab" >}}
 
   {{< card title="Cross-Doc Line Analysis" subtitle="Analyze line items across multiple PQs on a single grid" link="#line-items-page" >}}
 
-  {{< card title="Contra and Doc Link" subtitle="Link documents and apply contra adjustments" link="#contra-tab" >}}
+  {{< card title="Contra & Doc Link" subtitle="Link originating documents and apply contra adjustments" link="#contra-tab" >}}
 
   {{< card title="Applet Settings" subtitle="Configure branch defaults, webhooks, and field visibility" link="#configuration-and-settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/internal-purchase-quotation-applet/internal-purchase-quotation-applet-overview.png" alt="Purchase Quotation (Internal) Applet Workflow: From Draft creation, account linking, PR knock-off, to final post." caption="Internal Purchase Quotation Lifecycle: Creating the draft, selecting the supplier, adding line items or knocking off from an active Purchase Requisition, and finalizing to lock the quotation for downstream Purchase Orders." >}}
+---
+
+## Core Concepts
+
+### 1. The Golden Triangle of Procurement
+
+Every procurement transaction follows a structured three-phase lifecycle to ensure financial accountability and prevent duplicate purchasing commitments:
+
+```mermaid
+graph LR
+    P1["Phase 1: Purchase Requisition (PR)<br><i>Internal Material Request</i>"] -->|Direct Knock-Off KO Linkage| P2["Phase 2: Purchase Quotation (PQ)<br><i>Vendor Negotiation & Bridge</i>"]
+    P2 -->|Finalize & Lock| P3["Phase 3: Purchase Order (PO)<br><i>Final Purchasing Commitment</i>"]
+    
+    style P1 fill:#e6f0fa,stroke:#1a5cbf,stroke-width:1.5px
+    style P2 fill:#fff8e6,stroke:#f5a623,stroke-width:2px
+    style P3 fill:#eaf7ed,stroke:#2e7d32,stroke-width:1.5px
+```
+
+1. **Phase 1: Purchase Requisition (PR):** The internal starting point where operational departments request materials and receive budget clearance.
+2. **Phase 2: Purchase Quotation (PQ):** The "Bridge" workspace where procurement teams log supplier terms, negotiate pricing, and structure the purchasing deal.
+3. **Phase 3: Purchase Order (PO):** The final legally binding purchasing commitment generated directly from the finalized and locked quotation.
 
 ---
 
-## Key Concepts
+### 2. The Internal Quotation Lifecycle
 
-### 1. Two-Tiered Document and Posting Status
+To maintain complete audit trails, records are governed by operational status states that control editable permissions and posting authority:
 
-To prevent unauthorized changes and maintain an audit log, the applet manages records using both a **Document Status** and an operational **Posting Status**:
-
-| Status | Posting Status | Operational Meaning | Allowable Actions |
+| Document Status | Posting Status | Operational Meaning | Allowable Actions |
 | :--- | :--- | :--- | :--- |
-| **`TEMP`** | **`DRAFT`** | A temporary draft quotation. | Edit all fields, add/remove lines, link Purchase Requisitions via KO, **SAVE**, **DISCARD**, or **FINAL**. |
-| **`ACTIVE`** | **`DRAFT`** | Saved draft. The quotation is verified but not yet finalized. | Edit fields, **SAVE**, or **FINAL**. |
-| **`ACTIVE`** | **`FINAL`** | Posted and locked. The quotation is officially confirmed. | View, Export to PDF, **VOID** (reverts status if permitted). No edits allowed. |
-| **`VOID`** | **`FINAL`** | Voided quotation. Preserved for audit trail only. | View only. Read-only state. |
+| **`TEMP`** | **`DRAFT`** | **Temporary Draft Workspace**: Initial creation state where purchasers build the quotation. | Edit all fields, add/remove line items, link Purchase Requisitions via KO, **SAVE**, **DISCARD**, or **FINAL**. |
+| **`ACTIVE`** | **`DRAFT`** | **Saved Draft**: Verified draft saved in the database but not yet officially posted. | Edit fields, add attachments, **SAVE**, or **FINAL**. |
+| **`ACTIVE`** | **`FINAL`** | **Posted & Locked**: Officially posted quotation. Fully verified and ready for Purchase Order conversion. | View details, Export PDF, **VOID** (if role permits). All editing controls are locked. |
+| **`VOID`** | **`FINAL`** | **Voided Quotation**: Read-only archived state for finalized records no longer in effect. | View only. Preserved permanently for financial audit compliance. |
 
 {{< callout type="warning" >}}
-Buttons such as **SAVE**, **FINAL**, **VOID**, **DISCARD**, and the **KO For** tab are condition-based (depending on the document's current status and tenant configurations) and can be hidden by admin settings.
+**Posting Lock Security**: Once a quotation is posted to `ACTIVE / FINAL`, all line items and header details are locked. Buttons such as **SAVE**, **FINAL**, **DISCARD**, and the **KO For** tab are automatically hidden or disabled.
 {{< /callout >}}
 
-### 2. The Golden Triangle of Procurement
+---
 
-Every transaction runs through a linear chain to prevent duplicate inventory procurement and ensure budget compliance:
+## Quick Start Guide: The Purchaser's Checklist
 
-```mermaid
-graph TD
-    PR["Purchase Requisition (PR) <br> [Internal Department Request]"] -->|Knock-Off (KO) Flow| PQ["Purchase Quotation (PQ) <br> [Vendor Price Log]"]
-    PQ -->|Convert to Order| PO["Purchase Order (PO) <br> [Supplier Commitment]"]
-    
-    style PR fill:#f9f9f9,stroke:#333,stroke-width:1px
-    style PQ fill:#fff3cd,stroke:#ffc107,stroke-width:2px
-    style PO fill:#f9f9f9,stroke:#333,stroke-width:1px
+Follow this standardized 4-step workflow to log and finalize vendor quotations:
+
+| Step | Action | Key Operational Tasks |
+| :-: | :--- | :--- |
+| **1** | **Initiate & Fill Main Details** | Click **Create ("+")**. Select the operating **Branch**, inventory **Location**, and **Purchaser**. Verify transaction date and target **Currency**. |
+| **2** | **Link Supplier Account** | Open the **Account** tab. Search and select the Supplier entity to auto-populate default **Bill To**, **Ship To**, and **Credit Terms**. |
+| **3** | **Add Lines or KO Import** | In the **Lines** tab, manually add items with unit prices and tax codes. Alternatively, use the **KO For** tab to pull approved lines directly from a Purchase Requisition. |
+| **4** | **Review & Finalize** | Inspect total net amounts, tax values (SST/VAT), WHT, and attachments. Click **FINAL** to post and lock the quotation for Purchase Order generation. |
+
+---
+
+## Detailed Workspace Breakdown
+
+The applet interface adapts dynamically based on whether you are creating a new record or managing an existing document in the edit workspace.
+
+```
+[Main Details] ── [Account] ── [Lines] ── [Delivery Details] ── [Payment]
+      ├── [KO For]          <-- Visible only in TEMP status (Import Requisitions)
+      ├── [Department Hdr]  <-- Multi-dimension budget allocation
+      ├── [Contra]          <-- Ledger balance matching
+      ├── [Doc Link]        <-- Audit trail cross-doc references
+      ├── [Attachments]     <-- Upload digital supplier PDFs
+      └── [Export]          <-- Generate official PDF prints
 ```
 
 ---
 
-## Quick Start Guide
-
-Get up and running with the essential workflows for each role.
-
-### For Purchasers: Create and Finalize a PQ
-
-**Goal:** Create a supplier quotation, add items, and lock it to prepare for a Purchase Order.
-
-1. **Navigate**: Go to **Purchase Quotation** from the left sidebar.
-2. **Initiate**: Click the **Create ("+")** button in the top-right corner.
-3. **Fill Main Details**:
-   - Select the **Branch** and operational **Location**.
-   - Select the **Purchaser** (procurement agent).
-   - Verify the **Transaction Date** and **Currency**.
-4. **Link Supplier**: Select the **Account** tab, search for the supplier, and confirm their billing and shipping details.
-5. **Add Lines**: 
-   - Select the **Lines** tab and click **Add Line**.
-   - Choose the item, specify the **Quantity**, and input the negotiated **Unit Price**.
-   - Verify the **Tax Code** and click **ADD**.
-6. **Submit Draft**: Click **CREATE** in the top-right corner. The document status is saved as `TEMP` / `DRAFT`.
-7. **Finalize**: Review the created document and click **FINAL** to lock it.
-
----
-
-### For Managers: Review and Manage Quotes
-
-**Goal:** Inspect incoming quotations, verify pricing, and approve or void documents.
-
-1. **Open Listing**: Go to **Purchase Quotation** to view all active quotes.
-2. **Review Details**: Double-click a row to open the edit workspace. Inspect:
-   - Total amount and tax values.
-   - The **Attachments** tab to inspect original supplier price files.
-   - The **Doc Link** tab to verify originating Purchase Requisitions.
-3. **Approve (Post)**: Click **FINAL** in the header to post the quotation.
-4. **Discard or Void**: If a quote is rejected or has expired, click **DISCARD** (for draft/temp documents) or **VOID** (for finalized documents) to remove them from active operations.
-
----
-
-### For Admins: Initial Setup
-
-**Goal:** Configure defaults and field visibility rules before launching the applet.
-
-1. **Set Defaults** (`Settings > Default Selection`): Configure default Branch, Location, and Currency to save purchasers time.
-2. **Setup Fields** (`Settings > Field Configuration`): Decide if fields like `Tracking ID` or `Permit No` are required or should be hidden.
-3. **Configure Prints** (`Settings > Printable Format Settings`): Assign default PDF templates for printing or exporting.
-4. **Assign Permissions** (`Settings > Permissions`): Configure roles allowing specific users to edit, finalize, void, or view quotations.
-
----
-
-## Create vs. Edit Workspace
-
-The applet uses a structured workspace that adapts depending on whether you are creating a new record or editing an existing one.
-
 ### Create View Tabs
 
-When creating a new quotation, the following tabs are available:
+When creating a new quotation, configure the following core parameters:
 
-#### 1. Main Details
-This tab captures the core transaction metadata:
-- **Branch**: The operating company branch associated with the purchase.
-- **Location**: The inventory store or warehouse where items will be delivered.
-- **Purchaser**: The employee responsible for sourcing the quote.
-- **Transaction Date**: The date the quotation was logged.
-- **Credit Terms**: Payment terms (e.g., Net 30). This field is unlocked only after a Supplier is selected in the Account tab.
-- **Reference**: Internal reference number (e.g., supplier's quotation reference).
-- **Remarks**: General text remarks for notes.
-- **Permit No**: Custom import/customs permit number (hidden if `HIDE_PERMIT_NO` is enabled).
-- **Currency**: Transaction currency (e.g., MYR, USD, SGD).
-- **Tracking ID**: Courier or consignment tracking number (hidden if `HIDE_TRACKING_ID` is enabled).
+#### 1. Main Details Tab
+Captures essential transaction metadata:
+- **Branch**: The operating company entity issuing the quotation request.
+- **Location**: The specific inventory store or warehouse designated for receiving goods.
+- **Purchaser**: The assigned procurement officer handling vendor negotiations.
+- **Transaction Date**: Official logging date of the quotation.
+- **Credit Terms**: Payment terms (e.g., Net 30, COD). Automatically unlocked and populated after selecting a supplier.
+- **Reference**: External supplier quotation reference number (e.g., vendor proposal ID).
+- **Remarks**: Internal operational notes and comments.
+- **Permit No**: Custom import/customs permit tracking number (hidden if `HIDE_PERMIT_NO` is enabled).
+- **Currency**: Transaction currency (e.g., MYR, USD, SGD, EUR).
+- **Tracking ID**: Logistics consignment or courier tracking ID (hidden if `HIDE_TRACKING_ID` is enabled).
 
 #### 2. Account Tab
-Dedicated to supplier information:
-- **Entity Details**: Search and select the Supplier Account (Entity ID/Name).
-- **Bill To**: The billing address associated with the branch (editable or selected from presets).
-- **Ship To**: The physical delivery address associated with the location.
+Dedicated to vendor master data mapping:
+- **Entity Details**: Search and link the Supplier Account (Entity ID and Name).
+- **Bill To**: The company billing address associated with the selected branch.
+- **Ship To**: The physical warehouse receiving address tied to the selected location.
 
 #### 3. Lines Tab
-The itemized procurement list:
-- **Item Details**: Code and Name of the materials.
-- **Quantity**: The volume to procure.
-- **Unit Price (Inclusive/Exclusive of Tax)**: Negotiated price.
-- **Unit Discount**: Margin discount deducted from the line.
-- **Tax Code & Tax Rate**: Applies appropriate SST/VAT/GST rates.
-- **WHT (Withholding Tax)**: Apply withholding tax if applicable.
+The itemized material and service procurement list:
+- **Item Details**: Material Code and Description selected from item master data.
+- **Quantity**: The requested volume to purchase.
+- **Unit Price**: Negotiated vendor price per unit (configurable as inclusive or exclusive of tax).
+- **Unit Discount**: Line-level margin discounts or volume rebates.
+- **Tax Code & Tax Rate**: Applies appropriate SST, GST, or VAT rates automatically.
+- **WHT (Withholding Tax)**: Applies withholding tax rates for cross-border or service quotes where applicable.
 
-#### 4. Delivery Details
-Logistical information:
-- **Delivery Instruction**: General instructions for the supplier's driver.
-- **Delivery Date**: Scheduled delivery arrival date.
-- **Delivery Message Card**: Custom message card parameters.
+#### 4. Delivery Details Tab
+Logistics management controls:
+- **Delivery Instruction**: Transport notes and special handling requirements for the carrier.
+- **Delivery Date**: Promised vendor arrival date at the destination warehouse.
+- **Delivery Message Card**: Parameter inputs for custom delivery notes.
 
 #### 5. Payment Tab
-Defines the settlement terms:
-- **Settlement Method**: Cash, Cheque, Bank Transfer, Card, or Voucher.
-- **Cash Back for Settlement**: Records cash adjustments.
-- **Card No / Card Issuer / Expiry / CVV**: Credit card payment details.
-- **Cheque No / Transaction No**: Bank details for auditing.
+Defines proposed settlement structures:
+- **Settlement Method**: Cash, Cheque, Bank Transfer, Credit Card, or Voucher.
+- **Cash Back for Settlement**: Records cash adjustment entries.
+- **Card Details / Cheque No / Txn No**: Reference fields for recording payment credentials and banking transaction numbers.
 
-#### 6. Department Hdr
-Allocation parameters for downstream accounting:
-- **G/L Dimension / Profit Centre / Project / Segment**: Assigns the quotation's expense lines to a specific company project or internal department budget.
+#### 6. Department Hdr Tab
+Financial dimension allocation for multi-department organizations:
+- **G/L Dimension / Profit Centre / Project / Segment**: Maps expense commitments directly to specific internal department budgets or capital project codes.
 
 ---
 
 ### Edit View Tabs
 
-Once a quotation is created, double-clicking the record from the listing page opens the Edit workspace, which adds the following advanced tabs:
+Editing an active or saved quotation opens additional administrative and analytical tabs:
 
-```
-[Main Details] ── [Account] ── [Lines] ── [Delivery Details] ── [Payment]
-      ├── [KO For]      <-- Only shown for TEMP status (Import Requisitions)
-      ├── [Department Hdr]
-      ├── [Contra]      <-- Match AR/AP balances
-      ├── [Doc Link]    <-- Cross-document links
-      ├── [Attachments] <-- Upload files / invoices
-      └── [Export]      <-- Generate PDF
-```
-
-#### 1. KO For (Knock-Off)
-Allows importing lines directly from an active **Purchase Requisition (PR)**. This ensures that quoted quantities align with internal approvals. See the [Knock-Off Flow](#ko-for-knock-off-tab) section below.
+#### 1. KO For (Knock-Off) Tab
+Enables seamless material tracking by importing lines directly from active **Purchase Requisitions (PR)**. See the [Knock-Off Flow](#ko-for-knock-off-tab) detailed section below.
 
 #### 2. Contra Tab
-Used to apply contra adjustments between accounts.
-- Displays **AR/AP Balance** and allows adding a **Contra Amount**.
-- Links matching documents to offset balances before final posting.
+Facilitates ledger offsetting between vendor receivable and payable accounts:
+- Displays live **AR/AP Balances**.
+- Allows users to specify a **Contra Amount** to offset outstanding balances prior to final posting.
 
-#### 3. Doc Link
-Tracks automatic and manual linkages between documents. It displays:
-- **Copied From**: Originating documents (e.g., Purchase Requisition ID).
-- **Copied To**: Downstream documents (e.g., Purchase Order ID).
+#### 3. Doc Link Tab
+Maintains a full audit history of linked procurement records:
+- **Copied From**: Traces originating upstream records (e.g., Purchase Requisition ID).
+- **Copied To**: Tracks downstream generated records (e.g., Purchase Order ID).
 
-#### 4. Attachments
-The document management portal:
-- Supports drag-and-drop or manual uploads.
-- Stores digital files (e.g., supplier PDFs, scan receipts, email agreements) tied permanently to the PQ.
-- Displays: File Name, Size, Uploaded Date, and Uploaded By.
+#### 4. Attachments Tab
+Centralized digital file repository:
+- Drag-and-drop support for supplier quotation PDFs, technical spec sheets, and email correspondence.
+- Records File Name, File Size, Upload Timestamp, and Uploaded By user ID.
 
 #### 5. Export Tab
-Provides tools to generate official print documents:
-- **Export as PDF**: Renders the quotation using the configured print format template.
+Document distribution tools:
+- **Export as PDF**: Renders the quotation into an official branded printable document based on configured system templates.
 
 ---
 
-## KO For (Knock-Off) Tab
+## KO For (Knock-Off) Flow
 
-The **KO For** tab allows purchasers to import approved lines from one or more **Purchase Requisitions (PR)**.
+The **Knock-Off (KO)** engine forms the cornerstone of controlled procurement by linking quotations directly to approved requisitions.
 
 ```mermaid
 sequenceDiagram
-    participant P as Purchaser
+    autonumber
+    actor P as Purchaser
     participant PQ as Purchase Quotation (TEMP)
     participant PR as Purchase Requisitions (Active)
     
-    P->>PQ: Open "KO For" Tab
-    PQ->>PR: Fetch pending Requisition lines
-    PR-->>PQ: Return list of items and remaining quantities
-    P->>PQ: Select lines & click import
-    PQ->>PQ: Copy items, quantities, and map Doc Links
-    Note right of PQ: Requisition quantities are marked <br> as knocked-off (allocated)
+    P->>PQ: Open "KO For" Tab in Edit Workspace
+    PQ->>PR: Query available active Requisition lines
+    PR-->>PQ: Return unfulfilled items & remaining quantities
+    P->>PQ: Select target PR lines and click Import
+    PQ->>PQ: Auto-populate items, quantities, and map Doc Links
+    Note over PR,PQ: Requisition quantities are reserved<br>to prevent duplicate sourcing
 ```
 
-### Key Behaviors:
-- **Document Restrictions**: The KO tab is visible **only** when the Purchase Quotation has a status of `TEMP` and the setting `HIDE_KO_FOR_TAB` is disabled.
-- **Quantity Tracking**: Once lines from a PR are knocked off, the corresponding quantities in the PR are locked/reserved. This prevents multiple quotations from claiming the same requisition lines.
-- **Single vs. Multiple KO**: Depending on the setting `ENABLE_MULTIPLE_KO`, the user can select multiple PR documents at once or is restricted to importing from a single requisition per quotation.
+### Key Operational Rules:
+- **Visibility Conditions**: The KO tab renders **only** when the quotation status is `TEMP` and `HIDE_KO_FOR_TAB` is set to `false`.
+- **Quantity Lock**: Knocked-off quantities are locked in the source PR. This guarantees that multiple purchasers cannot quote or order against the same requisition lines.
+- **Single vs. Multi-KO**: Admin settings (`ENABLE_MULTIPLE_KO`) control whether a quotation can pull lines from multiple PRs or is restricted to one source PR per quotation.
 
 ---
 
-## Line Items Page
+## Line Items Page (Cross-Document Grid)
 
-The **Line Items** menu entry (accessible from the left navigation pane) is a cross-document analysis tool. Unlike the tab within a single quotation, this page lists every line item across all quotations in the system.
+Located on the main left navigation menu, the **Line Items** workspace acts as an enterprise-wide procurement analysis tool.
 
-### Key Capabilities:
-- **Column Customization**: Toggle columns including PQ Number, Transaction Date, Supplier Name, Item Code, Quantity, UOM, and Net Amount.
-- **Ag-Grid Controls**: Filter by supplier, date range, or item category. Group rows to compare pricing from different vendors for the same raw material.
-- **Data Export**: Export the filtered line list to CSV or Excel for external analysis.
+### Key Analytical Capabilities:
+- **Global Item Visibility**: Displays line items across all quotations in the system on a single grid.
+- **Vendor Price Comparison**: Filter by Item Code to compare quoted unit prices, lead times, and credit terms across different suppliers.
+- **Ag-Grid Data Operations**: Group, sort, and filter lines by date range, branch, or material category.
+- **Export Capabilities**: Export structured line data to CSV or Excel for executive reporting and sourcing audits.
 
 ---
 
 ## Configuration and Settings
 
-Admin parameters are managed under the applet's Settings workspace. They are configured via the following options:
+System administrators can customize applet behavior using tenant-level configuration parameters:
 
-| Configuration Area | Setting Key | Parameter Purpose | Path & Default Behavior |
+| Configuration Area | Setting Key | Purpose & Description | Default & Options |
 | :--- | :--- | :--- | :--- |
-| **Branch Settings** | `DEFAULT_BRANCH_GUID` | Sets the default branch selected when creating a new PQ. | `Settings > Branch Settings` <br> Defaults to the user's primary operating branch. |
-| **Default Selection** | `DEFAULT_LOCATION_GUID` | Sets the default inventory location. | `Settings > Default Selection` <br> Must be configured per branch to auto-fill the Location dropdown. |
-| **Field Configuration** | `HIDE_PERMIT_NO` | Toggles visibility of the Permit No input field. | `Settings > Application Settings` <br> Default: `false` (Permit No field is visible). |
-| **Field Configuration** | `HIDE_TRACKING_ID` | Toggles visibility of the Tracking ID input field. | `Settings > Application Settings` <br> Default: `false` (Tracking ID field is visible). |
-| **Feature Visibility** | `HIDE_KO_FOR_TAB` | Completely hides the KO For tab. | `Settings > Application Settings` <br> Set to `true` if your organization does not use Purchase Requisitions. |
-| **Feature Visibility** | `ENABLE_MULTIPLE_KO` | Allows pulling lines from multiple Purchase Requisitions. | `Settings > Application Settings` <br> Default: `false` (restricted to one PR source document). |
-| **Feature Visibility** | `HIDE_GENDOC_SAVE_BUTTON` | Hides the Save button in the Edit workspace. | `Settings > Application Settings` <br> If enabled, users must immediately Finalize or Discard. |
-| **Printable Format Settings**| `DEFAULT_PRINT_FORMAT` | Assigns the default PDF template layout. | `Settings > Printable Format Settings` <br> Controls the layout of the Export PDF option. |
-| **Permissions** | `ALLOW_DOCUMENT_VOID` | Restricts Voiding capability to specific user roles. | `Settings > Permissions` <br> Restricted to supervisors and finance roles by default. |
+| **Branch Defaults** | `DEFAULT_BRANCH_GUID` | Pre-selects the operating branch when creating a new quotation. | Defaults to user's logged-in branch. |
+| **Location Defaults** | `DEFAULT_LOCATION_GUID` | Pre-selects the inventory warehouse location. | Must be configured per branch. |
+| **Field Control** | `HIDE_PERMIT_NO` | Toggles visibility of the customs Permit No field. | `false` (Visible). Set `true` to hide. |
+| **Field Control** | `HIDE_TRACKING_ID` | Toggles visibility of the consignment Tracking ID field. | `false` (Visible). Set `true` to hide. |
+| **Feature Control** | `HIDE_KO_FOR_TAB` | Disables the Requisition Knock-Off import tab. | `false` (Visible). Set `true` if PRs are not used. |
+| **Feature Control** | `ENABLE_MULTIPLE_KO` | Permits importing lines from multiple PRs into a single PQ. | `false` (Restricted to single PR source). |
+| **Feature Control** | `HIDE_GENDOC_SAVE_BUTTON` | Removes the Save Draft button in edit mode. | `false` (Save button visible). |
+| **Print Formats** | `DEFAULT_PRINT_FORMAT` | Sets the default layout template for PDF exports. | Assigned via `Settings > Printable Formats`. |
+| **Permissions** | `ALLOW_DOCUMENT_VOID` | Restricts document voiding authority to designated roles. | Restricted to Finance/Admin roles. |
 
 ---
 
-## Personalization
+## Personalization Options
 
-Personalization settings allow individual purchasers to configure defaults without affecting tenant-wide operations:
-- **Personal Default Selection** (`Personalization > Default Selection`): Set your personal default Branch, Location, and Purchaser. The system will auto-fill these fields when you click Create.
-- **Grid Layout**: Rearrange listing columns and save the view state. The layout will persist for subsequent logins.
+Individual purchasers can set personal preferences under `Personalization > Default Selection`:
+- **Personal Defaults**: Set personal default Branch, Location, and Purchaser fields to auto-fill every time a new quotation is initiated.
+- **Grid View Persistence**: Custom column arrangements, widths, and sort orders saved on the listing grid persist across user sessions.
 
 ---
 
-## FAQ
+## FAQ & Troubleshooting
 
 **Q: Why is the CREATE or SAVE button disabled?**  
-A: The system blocks creation if mandatory validations fail:
-1. No branch or location selected in Main Details.
-2. No Supplier selected in the Account tab.
-3. The Lines list is empty. Verify that at least one item has been added to the Lines tab.
+A: Creation is blocked if mandatory fields are missing. Ensure that:
+1. **Branch** and **Location** are selected in Main Details.
+2. A valid **Supplier Account** is selected in the Account tab.
+3. At least one valid item line exists in the **Lines** tab.
 
-**Q: Why can't I see the KO For tab in my edit view?**  
-A: The KO For tab has two strict requirements:
-1. The quotation must have a status of `TEMP`. If the quotation has been finalized or saved as `ACTIVE`, the KO tab will not render.
-2. The setting `HIDE_KO_FOR_TAB` must be set to `false`.
+**Q: Why is the KO For tab missing in the Edit workspace?**  
+A: The KO For tab will not appear if:
+1. The document has already been posted to `FINAL` or saved as `ACTIVE`. (KO import is strictly allowed only in `TEMP` status).
+2. The system administrator has enabled the `HIDE_KO_FOR_TAB` setting.
 
-**Q: What is the difference between VOID and DISCARD?**  
-A: **DISCARD** is used to delete `TEMP` drafts. It removes the draft permanently from the database. **VOID** is used for posted, finalized (`ACTIVE` / `FINAL`) documents. It marks the record as inactive but retains it in the database for financial audit trails.
+**Q: What is the difference between DISCARD and VOID?**  
+A: 
+- **DISCARD**: Used for `TEMP` draft records. Permanently deletes unposted drafts from the database.
+- **VOID**: Used for posted `ACTIVE / FINAL` records. Marks the transaction as inactive while preserving the record permanently for financial audit compliance.
 
-**Q: How do credit terms load?**  
-A: Credit terms are fetched directly from the Supplier's account configuration. You must select a Supplier under the Account tab first before credit terms can be populated in Main Details.
+**Q: How do credit terms populate automatically?**  
+A: Credit terms are linked to vendor master records. Select a Supplier under the **Account** tab first; the system will automatically fetch and populate their default credit terms into the **Main Details** tab.
