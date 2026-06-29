@@ -18,7 +18,7 @@ The **Purchase Quotation (Internal) Applet** is a core procurement module design
 **Core Concept**: The applet serves as the "Bridge" in the **Golden Triangle of Procurement** — connecting internal requests for materials (**Purchase Requisitions**) to final legally binding commitments (**Purchase Orders**). It tracks supplier credit terms, negotiated pricing, tax configurations (SST/GST/VAT), Withholding Tax (WHT), and shipping logistics.
 {{< /callout >}}
 
-![The Golden Triangle of Procurement: Streamlining the Purchase Quotation Lifecycle](/images/internal-purchase-quotation-applet/golden-triangle-procurement-lifecycle.png)
+![BigLedger Purchase Quotation (Internal) Applet Operational Overview](/images/internal-purchase-quotation-applet/purpose-and-overview-infographic.png)
 
 ---
 
@@ -76,35 +76,22 @@ The **Purchase Quotation (Internal) Applet** is a core procurement module design
 
 Every procurement transaction follows a structured three-phase lifecycle to ensure financial accountability and prevent duplicate purchasing commitments:
 
-```mermaid
-graph LR
-    P1["Phase 1: Purchase Requisition (PR)<br><i>Internal Material Request</i>"] -->|Direct Knock-Off KO Linkage| P2["Phase 2: Purchase Quotation (PQ)<br><i>Vendor Negotiation & Bridge</i>"]
-    P2 -->|Finalize & Lock| P3["Phase 3: Purchase Order (PO)<br><i>Final Purchasing Commitment</i>"]
-    
-    style P1 fill:#e6f0fa,stroke:#1a5cbf,stroke-width:1.5px
-    style P2 fill:#fff8e6,stroke:#f5a623,stroke-width:2px
-    style P3 fill:#eaf7ed,stroke:#2e7d32,stroke-width:1.5px
-```
-
-1. **Phase 1: Purchase Requisition (PR):** The internal starting point where operational departments request materials and receive budget clearance.
-2. **Phase 2: Purchase Quotation (PQ):** The "Bridge" workspace where procurement teams log supplier terms, negotiate pricing, and structure the purchasing deal.
-3. **Phase 3: Purchase Order (PO):** The final legally binding purchasing commitment generated directly from the finalized and locked quotation.
+![The Golden Triangle of Procurement](/images/internal-purchase-quotation-applet/key-features-overview.png)
 
 ---
 
 ### 2. The Internal Quotation Lifecycle
 
-To maintain complete audit trails, records are governed by operational status states that control editable permissions and posting authority:
+To maintain complete audit trails, records are governed by operational posting states that control editable permissions and posting authority:
 
-| Document Status | Posting Status | Operational Meaning | Allowable Actions |
-| :--- | :--- | :--- | :--- |
-| **`TEMP`** | **`DRAFT`** | **Temporary Draft Workspace**: Initial creation state where purchasers build the quotation. | Edit all fields, add/remove line items, link Purchase Requisitions via KO, **SAVE**, **DISCARD**, or **FINAL**. |
-| **`ACTIVE`** | **`DRAFT`** | **Saved Draft**: Verified draft saved in the database but not yet officially posted. | Edit fields, add attachments, **SAVE**, or **FINAL**. |
-| **`ACTIVE`** | **`FINAL`** | **Posted & Locked**: Officially posted quotation. Fully verified and ready for Purchase Order conversion. | View details, Export PDF, **VOID** (if role permits). All editing controls are locked. |
-| **`VOID`** | **`FINAL`** | **Voided Quotation**: Read-only archived state for finalized records no longer in effect. | View only. Preserved permanently for financial audit compliance. |
+| Posting Status | Operational Meaning | Allowable Actions |
+| :--- | :--- | :--- |
+| **`DRAFT`** | **Draft Workspace**: Initial creation state where purchasers build and edit the quotation. | Edit all fields, add/remove line items, link Purchase Requisitions via KO, **SAVE**, **DISCARD**, or **FINAL**. |
+| **`FINAL`** | **Posted & Locked**: Officially posted quotation. Fully verified and ready for Purchase Order conversion. | View details, Export PDF, **VOID** (if role permits). All editing controls are locked. |
+| **`VOID`** | **Voided Quotation**: Read-only archived state for finalized records no longer in effect. | View only. Preserved permanently for financial audit compliance. |
 
 {{< callout type="warning" >}}
-**Posting Lock Security**: Once a quotation is posted to `ACTIVE / FINAL`, all line items and header details are locked. Buttons such as **SAVE**, **FINAL**, **DISCARD**, and the **KO For** tab are automatically hidden or disabled.
+**Posting Lock Security**: Once a quotation is posted to **`FINAL`**, all line items and header details are locked. Buttons such as **SAVE**, **FINAL**, **DISCARD**, and the **KO For** tab are automatically hidden or disabled.
 {{< /callout >}}
 
 ---
@@ -126,15 +113,7 @@ Follow this standardized 4-step workflow to log and finalize vendor quotations:
 
 The applet interface adapts dynamically based on whether you are creating a new record or managing an existing document in the edit workspace.
 
-```
-[Main Details] ── [Account] ── [Lines] ── [Delivery Details] ── [Payment]
-      ├── [KO For]          <-- Visible only in TEMP status (Import Requisitions)
-      ├── [Department Hdr]  <-- Multi-dimension budget allocation
-      ├── [Contra]          <-- Ledger balance matching
-      ├── [Doc Link]        <-- Audit trail cross-doc references
-      ├── [Attachments]     <-- Upload digital supplier PDFs
-      └── [Export]          <-- Generate official PDF prints
-```
+{{< figure src="/images/internal-purchase-quotation-applet/listing-and-main-details-view.png" alt="Internal Purchase Quotation Applet Workspace Interface - showing the Purchase Quotation Listing grid and the Edit Purchase Quotation Main Details view" caption="Purchase Quotation Listing & Main Details Workspace. The side-by-side interface featuring the document listing grid on the left and the Main Details editing panel on the right." >}}
 
 ---
 
@@ -224,7 +203,7 @@ The **Knock-Off (KO)** engine forms the cornerstone of controlled procurement by
 sequenceDiagram
     autonumber
     actor P as Purchaser
-    participant PQ as Purchase Quotation (TEMP)
+    participant PQ as Purchase Quotation (DRAFT)
     participant PR as Purchase Requisitions (Active)
     
     P->>PQ: Open "KO For" Tab in Edit Workspace
@@ -236,7 +215,7 @@ sequenceDiagram
 ```
 
 ### Key Operational Rules:
-- **Visibility Conditions**: The KO tab renders **only** when the quotation status is `TEMP` and `HIDE_KO_FOR_TAB` is set to `false`.
+- **Visibility Conditions**: The KO tab renders **only** when the quotation status is `DRAFT` and `HIDE_KO_FOR_TAB` is set to `false`.
 - **Quantity Lock**: Knocked-off quantities are locked in the source PR. This guarantees that multiple purchasers cannot quote or order against the same requisition lines.
 - **Single vs. Multi-KO**: Admin settings (`ENABLE_MULTIPLE_KO`) control whether a quotation can pull lines from multiple PRs or is restricted to one source PR per quotation.
 
@@ -245,6 +224,8 @@ sequenceDiagram
 ## Line Items Page (Cross-Document Grid)
 
 Located on the main left navigation menu, the **Line Items** workspace acts as an enterprise-wide procurement analysis tool.
+
+{{< figure src="/images/internal-purchase-quotation-applet/line-items-page-view.png" alt="Line Items Page Interface - showing cross-document line listing grid on the left and the Edit Line Item detail panel on the right" caption="Line Items Listing & Edit Line Item Workspace. Enterprise-wide grid allowing procurement teams to inspect and analyze material lines across multiple purchase quotations." >}}
 
 ### Key Analytical Capabilities:
 - **Global Item Visibility**: Displays line items across all quotations in the system on a single grid.
@@ -290,13 +271,13 @@ A: Creation is blocked if mandatory fields are missing. Ensure that:
 
 **Q: Why is the KO For tab missing in the Edit workspace?**  
 A: The KO For tab will not appear if:
-1. The document has already been posted to `FINAL` or saved as `ACTIVE`. (KO import is strictly allowed only in `TEMP` status).
+1. The document has already been posted to `FINAL`. (KO import is strictly allowed only in `DRAFT` status).
 2. The system administrator has enabled the `HIDE_KO_FOR_TAB` setting.
 
 **Q: What is the difference between DISCARD and VOID?**  
 A: 
-- **DISCARD**: Used for `TEMP` draft records. Permanently deletes unposted drafts from the database.
-- **VOID**: Used for posted `ACTIVE / FINAL` records. Marks the transaction as inactive while preserving the record permanently for financial audit compliance.
+- **DISCARD**: Used for `DRAFT` records. Permanently deletes unposted drafts from the database.
+- **VOID**: Used for posted `FINAL` records. Marks the transaction as inactive while preserving the record permanently for financial audit compliance.
 
 **Q: How do credit terms populate automatically?**  
 A: Credit terms are linked to vendor master records. Select a Supplier under the **Account** tab first; the system will automatically fetch and populate their default credit terms into the **Main Details** tab.
