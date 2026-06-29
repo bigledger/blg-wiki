@@ -31,7 +31,7 @@ The **Fixed Asset Applet** is a powerful tool designed to manage the complete li
 **Asset Custodians & Facility Managers:**
 - Clear visibility into asset locations and assignments
 - Easy updates when assets move between branches or locations
-- Serial number tracking with barcode scanning support
+- Serial number tracking for individual asset identification
 - Attachment and related document management
 
 **Internal & External Auditors:**
@@ -43,7 +43,6 @@ The **Fixed Asset Applet** is a powerful tool designed to manage the complete li
 **IT & Operations Teams:**
 - Track technical equipment (laptops, servers) with serial numbers
 - Manage warranty expiry dates per asset
-- Barcode scanning for quick serial number capture
 - Bulk import of existing asset registries via Excel
 
 ### What Problems Does This Solve?
@@ -60,7 +59,6 @@ Traditional asset management relies on spreadsheets and paper forms. Common issu
 
 - **Digital registration** - Create asset records with auto-generated codes or manual entry
 - **Structured statuses** - Assets move from DRAFT → REGISTERED → DISPOSED through proper workflows
-- **Barcode scanning** - Scan serial numbers directly using your device camera
 - **Multi-branch tracking** - Assign assets to specific companies, branches, and locations
 - **Attachment support** - Upload photos, invoices, and related documents per asset
 - **Bulk import** - Migrate existing registries via Excel file upload
@@ -80,7 +78,7 @@ Calculating depreciation for hundreds or thousands of assets manually is error-p
 - **Configurable per asset** - Each asset can have its own depreciation rate, useful life, and residual value
 - **GL integration** - Depreciation expense and accumulated depreciation GL codes are set per asset
 
-## Key Features Overview
+## Key Features Inventory
 
 {{< cards >}}
   {{< card title="Asset Register" subtitle="Centralized listing with create, edit, and search" link="#asset-register" >}}
@@ -89,7 +87,7 @@ Calculating depreciation for hundreds or thousands of assets manually is error-p
 
   {{< card title="Depreciation Run" subtitle="Batch depreciation processing by period" link="#depreciation-run" >}}
 
-  {{< card title="File Import" subtitle="Bulk upload existing registries via Excel" link="#file-import" >}}
+  {{< card title="Import Fixed Asset" subtitle="Bulk upload existing registries via Excel" link="#import-fixed-asset" >}}
 
   {{< card title="Reports" subtitle="Filtered asset reports by company, branch, and more" link="#reports" >}}
 
@@ -176,8 +174,8 @@ Get up and running quickly with these essential workflows.
 - Define permission sets for different user roles
 - Assign user, team, and role-based permissions
 
-**Step 4: Configure Feature Visibility** (`Settings > Feature Visibility`)
-- Show or hide specific features based on your organisation's needs
+**Step 4: Configure Field Settings** (`Settings > Field Settings`)
+- Enable or disable specific fields and set mandatory fields based on your organisation's needs
 
 ---
 
@@ -194,7 +192,7 @@ Get up and running quickly with these essential workflows.
    - **Category**: Select the appropriate category (e.g., "IT Equipment")
    - **Company**, **Branch**, **Location**: Assign where the asset belongs
    - **Currency**: Select the document currency
-3. **Optional Fields**: Add Serial Number (use the **barcode scanner** button to scan), Warranty Expiry, Employee/PIC, GL Code, Description
+3. **Optional Fields**: Add Serial Number, Warranty Expiry, Employee/PIC, GL Code, Description
 4. **Save**: Click **CREATE** → A unique Asset Code is auto-generated (or enter one manually)
 
 **What happens next?** The asset is created in **DRAFT** status. Open it to add transactions, configure depreciation, and upload attachments.
@@ -242,7 +240,9 @@ Get up and running quickly with these essential workflows.
 
 ## Sidebar Menu Reference
 
-{{< figure src="/images/fixed-asset-applet/side_menu.png" title="Applet Navigation Menu" alt="The Sidebar Navigation Menu showing all modules available in the Fixed Asset Applet" >}}
+The applet sidebar contains four main menu items: **Asset Register**, **Asset Category**, **Depreciation Run**, and **Reports**.
+
+{{< figure src="/images/fixed-asset-applet/side_menu.png" title="Applet Navigation Menu" alt="The Sidebar Navigation Menu showing Asset Register, Asset Category, Depreciation Run, and Reports" >}}
 
 ### Asset Register
 
@@ -313,10 +313,14 @@ Asset transactions create journal entries that affect the General Ledger. Each t
 |-------|---------|----------|
 | **Type** | Transaction category | Yes |
 | **Date** | Transaction date | Yes |
-| **GL Code** | Offsetting GL account | Conditional |
+| **GL Code** | Offsetting GL account | Yes |
 | **GL Code (Gain/Loss)** | For disposal/held-for-sale gain or loss | Conditional |
 | **Purchase Price / Disposal Price / Asset Value** | Monetary amount | Yes |
 | **Description** | Notes about the transaction | No |
+
+{{< callout type="warning" >}}
+**GL Code is mandatory** when adding a transaction. If the GL Code is not set on the asset record, the system will return an error when attempting to save the transaction. Ensure the asset's GL Code is configured in the **Details** tab before adding any transactions.
+{{< /callout >}}
 
 {{< callout type="info" >}}
 **Important**: Before Acquisition, only the **Acquisition** transaction type is available. After an Acquisition is recorded, **Adjustment**, **Asset Held for Sale**, and **Disposal** become available. A Disposal transaction automatically changes the asset status to **DISPOSED**.
@@ -418,14 +422,14 @@ The Depreciation Run listing shows all previous runs with their details, and you
 
 ---
 
-### File Import
+### Import Fixed Asset
 
-{{< figure src="/images/fixed-asset-applet/file_import_screen.png" title="File Import Screen" alt="File Import Screen for bulk updating or uploading assets" >}}
+{{< figure src="/images/fixed-asset-applet/file_import_screen.png" title="Fixed Asset Register File Import Listing" alt="Import Fixed Asset screen for bulk uploading asset registries" >}}
 
 Bulk upload existing asset registries from Excel spreadsheets.
 
 **How to Use:**
-1. Navigate to **File Import**
+1. Navigate to **Import Fixed Asset**
 2. Create a new import → Download the Excel template
 3. Fill in asset data (codes, names, categories, purchase costs, etc.)
 4. Upload the completed file
@@ -462,9 +466,11 @@ Generate filtered asset reports for financial statements, audits, and management
 
 {{< figure src="/images/fixed-asset-applet/settings_page.png" title="Settings Page" alt="Settings Page showing the applet level configuration" >}}
 
-### Feature Visibility (`Settings → Feature Visibility`)
+### Field Settings (`Settings → Field Settings`)
 
-Control which features and sidebar menu items are visible to users. This is the default landing page for Settings.
+Customise the asset registration form:
+- Enable or disable specific fields
+- Set mandatory fields for data entry
 
 ### Default Selection (`Settings → Default Selection`)
 
@@ -473,26 +479,37 @@ Pre-set common values to speed up data entry and customise the interface:
 - **Default Location**: Auto-selected when creating new assets
 - **Details Tab Order**: Drag-and-drop to reorder the tabs in the asset edit view (Details, Transactions, Depreciation, Attachment, Related Doc, Other Journal)
 
-### Field Settings (`Settings → Field Settings`)
+### Applet Access (`Settings → Applet Access`)
 
-Customise the asset registration form:
-- Enable or disable specific fields
-- Set mandatory fields for data entry
+Control which users can access this applet from the applet store.
 
-### Webhook (`Settings → Webhook`)
+### Role Pricing Scheme Linking (`Settings → Role Pricing Scheme Linking`)
 
-Configure automated notifications to external systems based on asset events (e.g., notify an ERP system when an asset is disposed).
+Link pricing schemes to specific roles for asset-related pricing configurations.
 
 ### Permissions
 
-Fine-grained access control with four levels:
+The applet provides granular access control through multiple permission layers:
 
-| Permission Type | Purpose |
-|-----------------|---------|
-| **Permission Set** | Define named sets of permissions |
-| **User Permission** | Assign permissions to individual users |
-| **Team Permission** | Assign permissions to entire teams |
-| **Role Permission** | Assign permissions by organisational role |
+| Setting | Location | Purpose |
+|---------|----------|---------|
+| **Permission Wizard** | `Settings → Permission Wizard` | Guided setup for configuring permissions quickly |
+| **Permission Set** | `Settings → Permission Set` | Define named sets of permissions (Client Side and Server Side) |
+| **User Permission** | `Settings → User Permission` | Assign permissions to individual users |
+| **Team Permission** | `Settings → Team Permission` | Assign permissions to entire teams |
+| **Role Permission** | `Settings → Role Permission` | Assign permissions by organisational role |
+
+### Triggers (`Settings → Triggers`)
+
+Configure automated triggers based on asset events (e.g., notify external systems when an asset status changes or a depreciation run completes).
+
+### Other Settings
+
+| Setting | Location | Purpose |
+|---------|----------|---------|
+| **Release Notes** | `Settings → Release Notes` | View applet version history and updates |
+| **Applet Log** | `Settings → Applet Log` | View audit logs of applet-level actions |
+| **Reset Applet State** | `Settings → Reset Applet State` | Reset applet configuration to defaults |
 
 ---
 
@@ -503,21 +520,6 @@ Set your own default Branch and Location that pre-fill when you create new asset
 
 ### Sidebar Customization
 Rearrange or hide sidebar menu items to match your daily workflow.
-
----
-
-## Barcode Scanning
-
-The Fixed Asset Applet includes built-in barcode scanning for capturing serial numbers.
-
-**How to Use:**
-1. When creating or editing an asset, find the **Serial Number** field
-2. Select a **Barcode Reader Format** from the dropdown
-3. Click **Scan** to activate your device's camera
-4. Point the camera at the barcode — the system auto-detects and fills in the serial number
-5. Click **Stop** to turn off the camera
-
-This feature uses the device camera directly in the browser — no additional app installation required.
 
 ---
 
@@ -538,11 +540,8 @@ This feature uses the device camera directly in the browser — no additional ap
 **Q: Can I change the tab order in the asset edit view?**
 **A:** Yes. Go to `Settings > Default Selection` and drag-and-drop the tabs (Details, Transactions, Depreciation, Attachment, Related Doc, Other Journal) into your preferred order. This applies to all users.
 
-**Q: What barcode formats does the scanner support?**
-**A:** The scanner supports multiple formats. Select the appropriate reader format from the dropdown before scanning. The camera-based scanner works directly in the browser without requiring additional software.
-
 **Q: How do I bulk import existing assets?**
-**A:** Navigate to **File Import**, download the Excel template, fill in your asset data, upload the file, review any validation errors, and confirm the import. This is ideal for initial migration from spreadsheets.
+**A:** Navigate to **Import Fixed Asset**, download the Excel template, fill in your asset data, upload the file, review any validation errors, and confirm the import. This is ideal for initial migration from spreadsheets.
 
 **Q: Can I filter reports by depreciation period?**
 **A:** Yes. The Reports module allows filtering by Depreciation Date Month/Year range, in addition to Company, Branch, Purchase Date Range, Disposal Date Range, Category, Depreciation Method, and Asset Status.
