@@ -60,13 +60,13 @@ Without a centralized tax configuration tool, organizations face:
 ## Key Features Inventory
 
 {{< cards >}}
-  {{< card title="Tax Code Management" subtitle="Create, edit, and manage tax codes with unique identifiers and descriptive names" link="#quick-start-guide" >}}
+  {{< card title="Tax Code Creation" subtitle="Create, edit, and manage tax codes with unique identifiers and descriptive names" link="#tax-code-creation" >}}
 
-  {{< card title="Multi-Type Support" subtitle="Configure GST, SST, Sales Tax, Service Charge, and Withholding Tax types" link="#understanding-tax-types" >}}
+  {{< card title="Understanding Tax Types" subtitle="Configure GST, SST, Sales Tax, Service Charge, and Withholding Tax types" link="#understanding-tax-types" >}}
 
   {{< card title="Rate Configuration" subtitle="Set and update tax rates with system-wide propagation" link="#rate-configuration" >}}
 
-  {{< card title="Lifecycle Control" subtitle="Manage Active/Inactive status to retire codes without data loss" link="#lifecycle-management" >}}
+  {{< card title="Lifecycle Management" subtitle="Manage Active/Inactive status to retire codes without data loss" link="#lifecycle-management" >}}
 {{< /cards >}}
 
 {{< figure src="/images/tax-config-applet/tax-config-overview-infographic.png" alt="Tax Configuration Applet Overview Infographic" caption="At a Glance: The Challenges, Solutions, Supported Tax Types, and System-Wide Integration of the Tax Configuration Applet." >}}
@@ -212,40 +212,37 @@ To deactivate a tax code:
 
 ## Configuration & Settings
 
-### App Settings
+### Application Settings (`Settings > Application Settings`)
 
 | Setting | Description |
 |---------|-------------|
-| Tax Code Fields | Configure which fields are visible during creation and editing |
-| Default Country | Set a default country for new tax code creation |
+| **Field Visibility** | Configure which fields are visible and mandatory during tax code creation and editing |
+| **Default Country** | Set a default country pre-filled when creating new tax codes |
+| **Tax Code Format** | Define naming conventions or format rules for tax code identifiers |
 
-### Personalization
+### Personalization (`Personalization > Default Selection`)
 
 | Setting | Description |
 |---------|-------------|
-| Default View | Configure the default listing view and sort order |
+| **Default View** | Configure the default listing view and sort order |
+| **Default Country** | Set your personal default country selection |
 
 ## FAQ
 
-{{< callout type="info" title="Can I delete a tax code that is no longer needed?" >}}
-No. Instead of deleting, change the tax code status to **Inactive**. This preserves historical transaction data while preventing the code from being selected in new transactions. Deleting tax codes could break references in existing documents.
-{{< /callout >}}
+**Q: Can I delete a tax code that is no longer needed?**
+A: No. Instead of deleting, change the tax code status to **Inactive**. This preserves historical transaction data while preventing the code from being selected in new transactions. Deleting tax codes could break references in existing documents.
 
-{{< callout type="info" title="If I update a tax rate, does it affect existing transactions?" >}}
-No. Existing transactions retain the rate that was applied at the time of creation. The updated rate will only apply to **new transactions** going forward.
-{{< /callout >}}
+**Q: If I update a tax rate, does it affect existing transactions?**
+A: No. Existing transactions retain the rate that was applied at the time of creation. The updated rate will only apply to **new transactions** going forward.
 
-{{< callout type="info" title="Can I have multiple tax codes for the same tax type?" >}}
-Yes. You can create multiple tax codes under the same type with different rates. For example, you might have "Service Tax 6%" and "Service Tax 8%" both under the SST type for different effective periods.
-{{< /callout >}}
+**Q: Can I have multiple tax codes for the same tax type?**
+A: Yes. You can create multiple tax codes under the same type with different rates. For example, you might have "Service Tax 6%" and "Service Tax 8%" both under the SST type for different effective periods.
 
-{{< callout type="info" title="How do I know which tax type to select?" >}}
-Select **Input** types (GST Input, Withholding Tax Input) for purchase/inbound transactions and **Output** types (GST Output, Withholding Tax Output) for sales/outbound transactions. Use SST, SLS, or SVC based on your country's tax regulations.
-{{< /callout >}}
+**Q: How do I know which tax type to select?**
+A: Select **Input** types (GST Input, Withholding Tax Input) for purchase/inbound transactions and **Output** types (GST Output, Withholding Tax Output) for sales/outbound transactions. Use SST, SLS, or SVC based on your country's tax regulations.
 
-{{< callout type="info" title="Will a new tax code automatically appear in all modules?" >}}
-Yes. Once created and saved with **Active** status, the tax code immediately appears in Tax Selection dropdowns and Tax Tabs across all relevant applets system-wide.
-{{< /callout >}}
+**Q: Will a new tax code automatically appear in all modules?**
+A: Yes. Once created and saved with **Active** status, the tax code immediately appears in Tax Selection dropdowns and Tax Tabs across all relevant applets system-wide.
 
 ## Applet Reference
 
@@ -259,16 +256,17 @@ Yes. Once created and saved with **Active** status, the tax code immediately app
 
 ### Settings
 
-| Setting | Description |
-|---------|-------------|
-| Field Visibility | Configure visible fields on creation/edit forms |
-| Default Country | Set the default country selection |
+| Setting | Location | Description |
+|---------|----------|-------------|
+| **Application Settings** | `Settings > Application Settings` | Configure field visibility and mandatory fields on creation/edit forms |
+| **Default Country** | `Settings > Application Settings` | Set the default country selection |
 
 ### Personalization
 
-| Setting | Description |
-|---------|-------------|
-| Default View | Configure listing view preferences |
+| Setting | Location | Description |
+|---------|----------|-------------|
+| **Default View** | `Personalization > Default Selection` | Configure listing view and sort preferences |
+| **Default Country** | `Personalization > Default Selection` | Personal default country selection |
 
 ## Summary
 
