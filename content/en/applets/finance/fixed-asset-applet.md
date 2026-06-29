@@ -296,6 +296,8 @@ The tab order can be customized by admins via `Settings > Default Selection`.
 
 ### Transactions
 
+{{< figure src="/images/fixed-asset-applet/transactions-tab.png" alt="Transactions Tab showing the Add Transaction panel with Acquisition type, Purchase Date, Purchase Price, GL Code, and Description fields" caption="The Transactions tab with the Add Transaction form — select a transaction type (Acquisition, Adjustment, Asset Held for Sale, Disposal) and fill in the required fields." >}}
+
 Asset transactions create journal entries that affect the General Ledger. Each transaction type serves a specific purpose in the asset lifecycle.
 
 **Transaction Types:**
@@ -342,6 +344,8 @@ Asset transactions create journal entries that affect the General Ledger. Each t
 
 ### Depreciation Configuration
 
+{{< figure src="/images/fixed-asset-applet/depreciation-tab-configuration.png" alt="Depreciation Tab Configuration showing Depreciation Start Date, Method dropdown (No Depreciation, Straight Line, Declining Balance, Double Declining Balance), Residual Value, Rate, Useful Life, and GL Code fields" caption="The Depreciation tab — Configuration sub-tab showing the depreciation method dropdown and GL code assignment fields." >}}
+
 Each REGISTERED asset can have its own depreciation settings, configured in the **Depreciation** tab under **Configuration**.
 
 **Configuration Fields:**
@@ -368,9 +372,49 @@ Each REGISTERED asset can have its own depreciation settings, configured in the 
 
 The **Schedule** sub-tab shows the calculated depreciation schedule for the asset.
 
+{{< figure src="/images/fixed-asset-applet/depreciation-tab-schedule.png" alt="Depreciation Tab Schedule showing From/To period fields and a listing with Depreciation Expense, Accumulated Depreciation, and Net Book Value columns" caption="The Depreciation tab — Schedule sub-tab showing the depreciation schedule with period range, expense, accumulated depreciation, and net book value." >}}
+
 {{< callout type="info" >}}
 **Validation Rule**: When an asset is in REGISTERED status, both the Details form AND the Depreciation Configuration must be valid (plus at least one Acquisition transaction) before the record can be saved.
 {{< /callout >}}
+
+---
+
+### Attachment
+
+{{< figure src="/images/fixed-asset-applet/attachment-tab.png" alt="Attachment Tab showing the Add Attachment panel with Attachment Name field, Details field, and drag-and-drop file upload area" caption="The Attachment tab — upload photos, invoices, warranty documents, and other supporting files for each asset." >}}
+
+Upload and manage files associated with an asset record. Each attachment requires a name and supports drag-and-drop or click-to-upload.
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Attachment Name** | Descriptive name for the file | Yes |
+| **Details** | Additional notes about the attachment | No |
+| **File Upload** | Drag and drop or click to upload files | Yes |
+
+---
+
+### Related Doc
+
+{{< figure src="/images/fixed-asset-applet/related-doc-tab.png" alt="Related Doc Tab showing the Add Related Doc panel with a searchable list of system documents including Internal Receipt Vouchers and Internal Sales Invoices" caption="The Related Doc tab — link existing system documents (invoices, vouchers, contracts) to the asset record for cross-referencing." >}}
+
+Associate existing system documents with an asset. The panel displays a searchable list of available documents across the system, including Internal Sales Invoices, Internal Receipt Vouchers, and other document types.
+
+---
+
+### Other Journal
+
+{{< figure src="/images/fixed-asset-applet/other-journal-tab.png" alt="Other Journal Tab showing the Add Other Journal panel with Date, Description, Amount Paid, GL Code fields and Payment Breakdown section" caption="The Other Journal tab — record manual journal adjustments with payment breakdown rows for the asset." >}}
+
+Record additional manual journal entries not covered by standard transaction types (Acquisition, Adjustment, Disposal).
+
+| Field | Purpose | Required |
+|-------|---------|----------|
+| **Date** | Journal entry date | Yes |
+| **Description** | Notes about the journal entry | Yes |
+| **Amount Paid** | Total amount | No |
+| **GL Code** | General Ledger account | Yes |
+| **Payment Breakdown** | Add multiple rows for detailed breakdown | No |
 
 ---
 
