@@ -31,7 +31,7 @@ The **Stock Adjustment Applet** is your tool for correcting inventory discrepanc
 - Reset moving average costs when needed
 
 **Finance Teams:**
-- Review and approve stock adjustments
+- Review stock adjustment impact on inventory valuation
 - Track inventory value changes
 - Audit adjustment history
 
@@ -49,99 +49,151 @@ The **Stock Adjustment Applet** is your tool for correcting inventory discrepanc
 - Complex moving average recalculations
 
 **The Stock Adjustment Solution:**
-- **Easy quantity adjustments** - Increase or decrease stock with reasons
-- **Serial/Batch adjustments** - Correct tracked item records
-- **Bulk import** - Process multiple adjustments from files
-- **Moving average reset** - Recalculate item costs accurately
-- **Complete audit trail** - Track all adjustment history
+- **Easy quantity adjustments** — Adjust-In to add stock or Adjust-Out to remove stock with remarks
+- **Serial/Batch adjustments** — Correct tracked item records
+- **Bulk import** — Process multiple adjustments from files
+- **Moving average reset** — Recalculate item costs accurately
+- **Complete audit trail** — Track all adjustment history
 
-## Key Features Overview
+## Key Features Inventory
 
 {{< cards >}}
-  {{< card title="Stock Adjustment" subtitle="Adjust inventory quantities" link="#stock-adjustment" >}}
+  {{< card title="Stock Adjustment" subtitle="Standard multi-line quantity adjustments" link="#stock-adjustment" >}}
+
+  {{< card title="Stock Adjustment By Batch Item" subtitle="Adjust batch-tracked items" link="#stock-adjustment-by-batch-item" >}}
+
+  {{< card title="Serial Number Adjustment" subtitle="Adjust-In/Out for serialized items" link="#serial-number-adjustment" >}}
 
   {{< card title="File Import" subtitle="Bulk adjustments from files" link="#file-import" >}}
-  
-  {{< card title="Serial Adjustment" subtitle="Adjust serialized items" link="#serial-adjustment" >}}
 
-  {{< card title="Batch Adjustment" subtitle="Adjust batch quantities" link="#batch-adjustment" >}}
+  {{< card title="Reset Moving Average" subtitle="Recalculate item costs" link="#reset-moving-average-ma" >}}
 
-  {{< card title="Reset Moving Average" subtitle="Recalculate item costs" link="#reset-moving-average" >}}
-
-  {{< card title="Serial Data Fix" subtitle="Correct serial data issues" link="#serial-data-fix" >}}
+  {{< card title="Reset MA By Location" subtitle="Location-level cost reset" link="#reset-ma-by-location" >}}
 {{< /cards >}}
 
-{{< figure src="/images/stock-adjustment-applet/stock-adjustment-overview-infographic.png" alt="Mastering Inventory: The Streamlined Stock Adjustment Workflow - showing adjustment lifecycle, specialized correction tools including bulk file import, serial & batch precision, and moving average reset" caption="Mastering Inventory: The complete stock adjustment workflow from identifying discrepancies through approval to posting, with specialized tools for bulk imports, serial/batch adjustments, and moving average recalculation." >}}
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-overview-infographic.png" alt="Mastering Inventory: The Streamlined Stock Adjustment Workflow - showing adjustment lifecycle, specialized correction tools including bulk file import, serial & batch precision, and moving average reset" caption="Mastering Inventory: The complete stock adjustment workflow from identifying discrepancies through posting, with specialized tools for bulk imports, serial/batch adjustments, and moving average recalculation." >}}
+
+---
+
+## Prerequisites
+
+Before using the Stock Adjustment Applet, ensure the following are set up:
+
+| Prerequisite | Where to Configure |
+|-------------|-------------------|
+| **Branches and Locations** | Configured in the system administration module |
+| **Items** | Created in the Item Maintenance Applet with correct tracking types (standard, serial, batch) |
+| **GL Codes** | Chart of Account Applet — required for financial posting of adjustments |
+| **User Permissions** | `Settings > Permission Set` — users need CREATE, READ, UPDATE permissions |
+| **Menu Visibility** | `Settings > Application Settings` — ensure relevant sidebar menus are visible for the user's role |
 
 ---
 
 ## Key Concepts
 
-### Adjustment Types
+### Adjustment Methods
 
-| Type | Description | Use Case |
-|------|-------------|----------|
-| **Increase** | Add stock to inventory | Found items, returns, gifts |
-| **Decrease** | Remove stock from inventory | Damage, theft, write-off |
-| **Transfer** | Move between locations | Reorganization |
-| **Correction** | Fix data errors | Reconciliation |
+Line items in a stock adjustment use one of two methods:
 
-### Adjustment Workflow
+| Method | Description | Use Case |
+|--------|-------------|----------|
+| **Adjust-In** | Add stock quantity into inventory | Found items during count, returns, received gifts, corrections |
+| **Adjust-Out** | Remove stock quantity from inventory | Damaged goods, theft, write-offs, expired items |
 
-```
-Count Discrepancy → Create Adjustment → Approval (if required) → Posted
-        │                  │                    │                   │
-        │                  │                    │                   └── Stock updated
-        │                  │                    └── Manager reviews
-        │                  └── Enter quantities and reasons
-        └── Physical count differs from system
-```
+{{< callout type="warning" >}}
+The documentation previously referenced "Increase/Decrease/Transfer/Correction" types. The actual applet UI uses **Adjust-In** and **Adjust-Out** on each line item.
+{{< /callout >}}
+
+### Document Lifecycle
+
+Stock adjustment documents follow the standard DRAFT → FINAL lifecycle:
+
+| Status | Description | What You Can Do |
+|--------|-------------|----------------|
+| **DRAFT** | Document created but not yet posted | Edit all fields, add/remove line items, delete the document |
+| **FINAL** | Document posted — stock quantities and GL updated | Cannot edit; create a counter-adjustment to correct |
+| **VOID** | Document voided — reverses the stock and GL impact | Used to cancel a posted adjustment |
+| **DISCARDED** | Document discarded before posting | Used to abandon a draft without posting |
+
+{{< callout type="info" >}}
+**Key Actions:**
+- **SAVE** = keeps the document in DRAFT status for further editing
+- **FINAL** = posts the adjustment, updates stock quantities and generates GL journal entries
+- **CLONE** = duplicates an existing adjustment document as a new DRAFT
+- You **cannot delete** a FINAL document. To correct a mistake, create a counter-adjustment with the opposite Adjust-In/Adjust-Out quantities.
+{{< /callout >}}
+
+### Costing Methods (Base On)
+
+When adding a line item, you select a **Base On** value that determines how the unit price is calculated:
+
+| Base On | Description |
+|---------|-------------|
+| **cost_ma_price** | Moving Average unit cost (most common) |
+| **cost_fifo_price** | First-In-First-Out cost |
+| **cost_lifo_price** | Last-In-First-Out cost |
+
+---
+
+## Sidebar Menu Reference
+
+The applet sidebar contains the following menu items (some may be hidden via Application Settings):
+
+| Sidebar Menu | Purpose | When to Use |
+|-------------|---------|-------------|
+| **Stock Adjustment** | Standard multi-line quantity adjustments | General stock count corrections, write-offs, write-ons |
+| **Stock Adjustment By Batch Item** | Batch-tracked item adjustments | Correcting batch quantities, expiry-tracked items |
+| **Serial Number Adjustment** | Serial adjust-in/adjust-out | Adding or removing specific serial numbers |
+| **File Import** | Bulk quantity adjustments from spreadsheet | Large-scale corrections (e.g., annual stock take) |
+| **Reset MA** | Global moving average cost reset | Correcting item cost across all locations |
+| **Reset MA By Location** | Location-level moving average reset | Correcting item cost at a specific warehouse |
+| **File Import Reset MA** | Bulk MA reset from spreadsheet | Mass cost corrections during system go-live |
+| **Stock Adjustment by Reset MA** | Combined quantity + MA cost reset | Adjusting both quantity and cost in one step |
 
 ---
 
 ## Quick Start Guide
 
-### For Warehouse: Adjust Stock After Count
+### Step 1: Create a Stock Adjustment
 
-**Goal:** Correct stock quantity after physical inventory count
+1. Go to **Stock Adjustment** from the sidebar
+2. Click **"+"** to create a new adjustment document
+3. On the **Main Details** tab, set:
+   - **Location** — the warehouse or store location
+   - **Transaction Date** — the date of the adjustment
 
-1. **Navigate**: Go to **Stock Adjustment** from the sidebar
-2. **Create New**: Click **"+"** to create adjustment
-3. **Configure**: Select item, enter adjustment details as shown below:
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-edit-details.png" alt="Stock Adjustment Details Tab" caption="Main Details tab: Set the location, transaction date, and other header-level information." >}}
 
-{{< figure src="/images/stock-adjustment-applet/stock-adjustment-edit-details.png" alt="Stock Adjustment Edit Form" caption="Configure adjustment: select location, item, adjustment type, quantity, reason code, and remarks." >}}
+### Step 2: Add Line Items
 
-4. **Add Line Items**: Click the Lines tab to add items:
+1. Click the **Line Items** tab
+2. Click **"+"** to add an item
+3. For each line item, configure:
+   - **Item** — select the product to adjust
+   - **Adjust-In** or **Adjust-Out** — choose the adjustment direction
+   - **Quantity** — the number of units to adjust
+   - **Base On** — the costing method (e.g., `cost_ma_price`)
+   - **Unit Price** — auto-populated based on Base On, or enter manually
+   - **Remarks** — reason for the adjustment (e.g., "Damaged during transit")
+4. The **Current Location Stock Balance** and **Current Moving Average Unit Cost** fields display the current values for reference
 
-{{< figure src="/images/stock-adjustment-applet/stock-adjustment-edit-lines.png" alt="Stock Adjustment Lines Tab" caption="Add line items with quantities and reason codes for the adjustment." >}}
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-edit-lines.png" alt="Stock Adjustment Lines Tab" caption="Line Items tab: Add items with Adjust-In/Adjust-Out, quantity, base on, unit price, and remarks." >}}
 
-5. **Submit**: Post or send for approval
+### Step 3: Handle Tracked Items (if applicable)
 
-### For Controllers: Bulk Adjust via File
+For items with tracking enabled, additional tabs appear on the line item:
 
-**Goal:** Process multiple adjustments from a spreadsheet
+| Tracking Type | Tab | What to Do |
+|--------------|-----|-----------|
+| **Serial Number** | Serial Number tab | Enter or scan individual serial numbers |
+| **Batch Number** | Batch Number tab | Select batch and enter quantity per batch |
+| **Bin Number** | Bin Number tab | Specify bin locations for the adjustment |
 
-1. **Navigate**: Go to **File Import**
+### Step 4: Save and Finalize
 
-{{< figure src="/images/stock-adjustment-applet/stock-adjustment-file-import.png" alt="Stock Adjustment File Import" caption="Use File Import for bulk adjustments from spreadsheets." >}}
-
-2. **Download Template**: Get the adjustment template
-3. **Prepare Data**: Fill in items, quantities, and reasons
-4. **Upload**: Import the completed file
-5. **Validate**: Review detected adjustments
-6. **Process**: Confirm and post all adjustments
-
-### For Operations: Adjust Serial Numbers
-
-**Goal:** Correct a serial number record
-
-1. **Navigate**: Go to **Serial Number Adjustment**
-
-{{< figure src="/images/stock-adjustment-applet/stock-adjustment-serial-number.png" alt="Serial Number Adjustment" caption="Adjust serialized items: write-off, transfer, or correct data." >}}
-
-2. **Find Serial**: Search for the serial number
-3. **Select Action**: Write-off, Transfer, or Correct
-4. **Complete**: Add reason and submit
+1. Click **SAVE** to keep the document as DRAFT
+2. Review all line items and remarks
+3. Click **FINAL** to post the adjustment — this updates stock quantities and generates GL journal entries
 
 ---
 
@@ -151,38 +203,65 @@ Count Discrepancy → Create Adjustment → Approval (if required) → Posted
 
 {{< figure src="/images/stock-adjustment-applet/stock-adjustment-listing.png" alt="Stock Adjustment Listing" caption="Main Stock Adjustment listing showing all adjustment records with status, location, and transaction details." >}}
 
-Main adjustment features:
-- **Single Item Adjustment** - Adjust one item at a time
-- **Multi-Item Adjustment** - Adjust multiple items in one document
-- **Reason Codes** - Categorize why adjustment was made
-- **Approval Workflow** - Route for approval if required
+The main Stock Adjustment screen is a multi-line adjustment document. Each document can contain multiple line items for different products, all posted together as a single transaction.
 
-### Stock Adjustment Edit Tabs
+### Edit Tabs
 
-When editing a stock adjustment, click on a row to open the edit panel:
+When editing a stock adjustment, the following tabs are available:
 
-#### Main Details Tab
+| Tab | Purpose |
+|-----|---------|
+| **Main Details** | Location, transaction date, and header-level fields |
+| **Line Items** | Add items with Adjust-In/Out, quantity, unit price, and remarks |
+| **Attachment** | Upload supporting documents (count sheets, photos) |
+| **Export** | Export the adjustment data |
 
-{{< figure src="/images/stock-adjustment-applet/stock-adjustment-edit-details.png" alt="Stock Adjustment Details Tab" caption="Details Tab: Set location, date, status, and header-level information." >}}
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-edit-attachment.png" alt="Stock Adjustment Attachment Tab" caption="Attachment tab: Upload supporting documents such as count sheets and photos." >}}
 
-#### Lines Tab
+### Line Item Fields
 
-{{< figure src="/images/stock-adjustment-applet/stock-adjustment-edit-lines.png" alt="Stock Adjustment Lines Tab" caption="Lines Tab: Add items with quantities, adjustment types, and reason codes." >}}
+| Field | Description | Required |
+|-------|-------------|----------|
+| **Item** | Product to adjust | Yes |
+| **Adjust-In / Adjust-Out** | Direction of the adjustment | Yes |
+| **Current Location Stock Balance** | Current stock quantity at the location (read-only) | — |
+| **Current Moving Average Unit Cost** | Current MA cost per unit (read-only) | — |
+| **Quantity** | Number of units to adjust | Yes |
+| **Base On** | Costing method (`cost_ma_price`, `cost_fifo_price`, `cost_lifo_price`) | Yes |
+| **Unit Price** | Cost per unit (auto-populated or manual) | Yes |
+| **Remarks** | Reason for the adjustment | No |
 
-#### Attachment Tab
+---
 
-{{< figure src="/images/stock-adjustment-applet/stock-adjustment-edit-attachment.png" alt="Stock Adjustment Attachment Tab" caption="Attachment Tab: Upload supporting documents for the adjustment." >}}
+## Stock Adjustment By Batch Item
 
-### Key Fields
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-batch-item.png" alt="Stock Adjustment By Batch Item" caption="Stock Adjustment By Batch Item: Adjust batch-tracked inventory." >}}
 
-| Field | Description | Example |
-|-------|-------------|---------|
-| Item | Product to adjust | SKU-001 |
-| Location | Warehouse/store | Main Warehouse |
-| Adjustment Type | Increase or Decrease | Decrease |
-| Quantity | Amount to adjust | 5 |
-| Reason Code | Why adjusting | Damaged |
-| Remarks | Additional notes | Found during cycle count |
+Items tracked by batch (e.g., food, pharmaceuticals, chemicals) require adjustments at the batch level to maintain traceability and expiry compliance.
+
+**How to Use:**
+1. Go to **Stock Adjustment By Batch Item** from the sidebar
+2. Click **"+"** to create a new batch adjustment
+3. Select the item and batch number
+4. Choose **Adjust-In** or **Adjust-Out**
+5. Enter the quantity and remarks
+6. **SAVE**, then **FINAL** to post
+
+---
+
+## Serial Number Adjustment
+
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-serial-item.png" alt="Serial Number Adjustment" caption="Serial Number Adjustment: Adjust-In or Adjust-Out for serialized inventory items." >}}
+
+The **Serial Number Adjustment** sidebar menu opens the serial adjust-in/adjust-out screen for items tracked by serial number.
+
+**How to Use:**
+1. Go to **Serial Number Adjustment** from the sidebar
+2. Click **"+"** to create a new serial adjustment
+3. Select the item and enter/scan the serial number
+4. Choose **Adjust-In** (to add the serial to inventory) or **Adjust-Out** (to remove it)
+5. Enter remarks
+6. **SAVE**, then **FINAL** to post
 
 ---
 
@@ -190,46 +269,35 @@ When editing a stock adjustment, click on a row to open the edit panel:
 
 ### Bulk Adjustment Import
 
-Process adjustments in bulk:
-- **Download Template** - Get properly formatted file
-- **Enter Data** - Fill in adjustment details
-- **Upload & Validate** - System checks for errors
-- **Review** - Confirm before posting
-- **Post All** - Apply all adjustments
+{{< figure src="/images/stock-adjustment-applet/stock-adjustment-file-import.png" alt="Stock Adjustment File Import" caption="File Import: Bulk adjustments from spreadsheets." >}}
+
+Process large numbers of adjustments from a spreadsheet — ideal for annual stock takes or data migrations.
+
+**How to Use:**
+1. Go to **File Import** from the sidebar
+2. Click **"+"** to create a new import
+3. **Download Template** — get the correctly formatted Excel template
+4. **Fill in Data** — populate the template with adjustment details:
+
+| Template Column | Description |
+|----------------|-------------|
+| **Branch Code** | The branch identifier |
+| **Location Code** | The warehouse/store location |
+| **Item Code** | The product SKU/code |
+| **GL Code** | General Ledger account for the adjustment |
+| **Quantity** | Positive for Adjust-In, negative for Adjust-Out |
+| **Serial Number** | For serial-tracked items |
+| **Batch Number** | For batch-tracked items |
+| **Remarks** | Reason for the adjustment |
+
+5. **Upload** the completed file
+6. **Review** — the system validates all rows and flags errors
+7. **Fix Errors** — correct any validation failures and re-upload if needed
+8. **Process** — confirm and post all valid adjustments
 
 ### Supported Formats
-- CSV files
 - Excel files (.xlsx)
-
----
-
-## Serial Adjustment
-
-### Serialized Item Corrections
-
-{{< figure src="/images/stock-adjustment-applet/stock-adjustment-serial-item.png" alt="Stock Adjustment By Serial Item" caption="Stock Adjustment By Serial Item: View and adjust serialized inventory items." >}}
-
-Adjust items tracked by serial number:
-- **Write-off Serial** - Remove from inventory
-- **Write-on Serial** - Add to inventory
-- **Transfer Serial** - Move to different location
-- **Change Status** - Update serial status
-
----
-
-## Batch Adjustment
-
-### Correcting Tracked Inventory
-
-{{< figure src="/images/stock-adjustment-applet/stock-adjustment-batch-item.png" alt="Stock Adjustment By Batch Item" caption="Stock Adjustment By Batch Item: Adjust batch-tracked inventory with expiry dates." >}}
-
-Items tracked by batch (like food, pharmaceuticals, or chemicals) require specialized adjustments to maintain traceability and expiry compliance. The **Batch Adjustment** tool allows you to manipulate specific batch pools without affecting the overall item ledger.
-
-**Key Workflows:**
-- **Adjust Batch Quantity:** Correct discrepancies found during cycle counts for a specific batch.
-- **Split Batch:** Break a large received batch into smaller, manageable sub-batches for different storage locations or tracking purposes.
-- **Merge Batch:** Combine identical items from the same production run into a single batch to simplify tracking.
-- **Update Expiry:** Correct data entry errors on expiration dates to prevent early system write-offs.
+- CSV files
 
 ---
 
@@ -241,28 +309,30 @@ Items tracked by batch (like food, pharmaceuticals, or chemicals) require specia
 
 The Moving Average (MA) is the weighted average cost of your inventory. System adjustments, incorrect purchase receipts, or data migrations can sometimes skew this valuation. The **Reset MA** tools allow finance teams to manually correct the item cost to reflect reality.
 
-{{< callout type="info" >}}
-**Accounting Impact**: Resetting the Moving Average directly impacts your Inventory Valuation on the Balance Sheet and Cost of Goods Sold (COGS) on your Income Statement. This should only be performed by authorized finance personnel.
+{{< callout type="warning" >}}
+**Accounting Impact**: Resetting the Moving Average directly impacts your **Inventory Valuation** on the Balance Sheet and **Cost of Goods Sold (COGS)** on your Income Statement. This should only be performed by authorized finance personnel.
 {{< /callout >}}
 
-**The Reset MA Tools:**
-- **Reset MA:** Resets the cost across the *entire* inventory of an item globally.
-- **Reset MA By Location:** Resets the cost for an item *only* within a specific warehouse or branch.
-- **File Import Reset MA:** Bulk recalculate costs for hundreds of items at once (typically used during initial system go-live).
-- **Stock Adjustment Reset MA:** Perform a quantity adjustment and force a new cost valuation in a single combined step.
+**How to Use:**
+1. Go to **Reset MA** from the sidebar
+2. Click **"+"** to create a new reset
+3. Select the **Company** and **Item**
+4. Enter the **Date**, **Quantity**, **Old MA Cost**, and **New MA Cost**
+5. **SAVE**, then **FINAL** to post the cost correction
 
----
+### Reset MA By Location
 
-## Serial Data Fix
+Same as Reset MA, but resets the cost for an item **only within a specific warehouse or location** rather than globally.
 
-### Correcting System Anomalies
+**When to Use:** When the cost discrepancy is isolated to a single location (e.g., a branch received goods at the wrong price).
 
-While the regular `Serial Adjustment` tool is for physical inventory changes (like writing off a broken item), the **Serial Data Fix** tool is an administrative feature designed to correct database anomalies that block normal operations.
+### File Import Reset MA
 
-**Common Scenarios:**
-- **Orphaned Serials:** A serial number exists in the system but isn't linked to any physical location.
-- **Status Mismatches:** A serial is marked as "Sold" but is physically sitting in the warehouse.
-- **Missing Associations:** A serial number lost its link to its parent Product ID during a failed integration sync.
+Bulk reset moving average costs for many items at once from a spreadsheet. Typically used during initial system go-live or after a major data migration.
+
+### Stock Adjustment by Reset MA
+
+Perform a **quantity adjustment and cost reset in a single combined step**. Use this when both the quantity and the moving average cost need correction simultaneously.
 
 ---
 
@@ -273,99 +343,146 @@ While the regular `Serial Adjustment` tool is for physical inventory changes (li
 **Situation:** The warehouse conducts its annual physical count. The results show 450 discrepancies across 12,000 SKUs. Manually entering 450 adjustments is too slow.
 
 **The Workflow:**
-1. The inventory controller downloads the template from **File Import**.
-2. They populate the spreadsheet with the 450 SKUs, entering the delta (e.g., -2 for missing, +1 for found) and using the Reason Code "EOY-COUNT-2024".
-3. They upload the file. The system validates all 450 lines instantly.
-4. The controller clicks "Post All", updating the physical ledger and generating the corresponding financial journal entries in seconds.
+1. The inventory controller downloads the template from **File Import**
+2. They populate the spreadsheet with the 450 SKUs, entering positive quantities for found items (Adjust-In) and negative quantities for missing items (Adjust-Out), with remarks like "EOY-COUNT-2026"
+3. They upload the file — the system validates all 450 lines instantly
+4. After reviewing and fixing any validation errors, they click **FINAL** to post all adjustments, updating the stock ledger and generating corresponding GL journal entries
 
-### Scenario 2: Writing Off Damaged High-Value Goods
+### Scenario 2: Writing Off Damaged Serialized Goods
 
 **Situation:** A forklift operator accidentally damages a pallet containing 5 serialized laptops.
 
 **The Workflow:**
-1. The warehouse manager opens **Stock Adjustment By Serial Item**.
-2. They scan the 5 damaged laptops.
-3. They select the "Write-Off" action and choose the Reason Code "DAMAGED-IN-TRANSIT".
-4. Because the total value exceeds RM 10,000, the system automatically routes the adjustment document to the Finance Director for approval before posting.
+1. The warehouse manager opens **Serial Number Adjustment**
+2. They create a new adjustment and select the item
+3. They enter each damaged laptop's serial number with **Adjust-Out**
+4. They add remarks: "Damaged during warehouse handling"
+5. They click **SAVE**, review, then **FINAL** to post the write-off
 
 ---
 
 ## Configuration & Settings
 
-The Stock Adjustment applet is highly configurable. Administrators can tailor the workspace to hide unnecessary complexity from warehouse staff while enabling deep financial tracking for controllers.
+### Application Settings (`Settings > Application Settings`)
 
-### 1. Application Settings (System-Wide)
+System-wide settings that affect all users.
 
-Accessed via `Settings > Application Settings`, these toggles change how the applet looks and functions for all users.
-
-**A. Tailoring the Sidebar (Menu Visibility)**
-To prevent mistakes, administrators can hide sidebar menus that their layout doesn't use. 
+**Menu Visibility:**
 
 | Setting | What It Does |
 |---------|--------------|
-| `Hide Serial Menu` | Removes "Stock Adjustment By Serial Item". Turn on if you don't sell electronics/serialized goods. |
-| `Hide Batch Menu` | Removes "Batch Adjustment". Turn on if you don't track expiry dates. |
-| `Hide Reset MA Menu` | Removes moving average reset tools from non-finance staff. |
-| `Hide File Import` | Disables bulk uploads to prevent massive accidental adjustments. |
+| `HIDE_SERIAL_DATA_FIX_MENU` | Hides the Serial Number Adjustment menu |
+| `HIDE_FILE_IMPORT_RESET_MA_MENU` | Hides the File Import Reset MA menu |
+| `HIDE_STOCK_ADJUSTMENT_RESET_MA_MENU` | Hides the Stock Adjustment by Reset MA menu |
+| `HIDE_CLONE_BUTTON` | Removes the Clone button from adjustment documents |
+| `HIDE_GENDOC_FINAL_BUTTON` | Hides the FINAL button (prevents direct posting) |
 
-**B. Tailoring the Form (Field Visibility)**
-If you need to track adjustments to specific cost centers or projects, you can enable these fields on the adjustment form:
+**Field Visibility:**
 
 | Setting | What It Does |
 |---------|--------------|
-| `Include Dimension/Project`| Shows the Project/Dimension dropdowns. Useful for adjusting stock assigned to a specific construction site. |
-| `Include Profit Center` | Shows the Profit Center dropdown. Required if warehouse P&L is tracked separately. |
-| `Hide Amount / Unit Price` | Hides financial values on the transaction grid. Enable this to keep warehouse staff focused on quantities, not financial costs. |
+| `INCLUDE_SEGMENT` | Shows the Segment/Dimension dropdown on the form |
+| `INCLUDE_SST` | Shows SST-related fields |
+| `INCLUDE_WHT` | Shows Withholding Tax fields |
+| `DEFAULT_ADJUSTMENT_METHOD` | Sets the default Adjust-In/Adjust-Out method |
+| `RESET_MA_DATE_NOT_EDITABLE` | Locks the date field on Reset MA forms |
+| `Hide Amount / Unit Price` | Hides financial values — keeps warehouse staff focused on quantities |
 
-**C. Tailoring the Layout & Workflow**
+**Layout:**
+
 | Setting | What It Does |
 |---------|--------------|
-| `Default Toggle Column` | Changes the form layout. `DOUBLE` creates a compact two-column grid (best for large desktop monitors). |
-| `Hide Save Button` | Forces users to use "Finalize/Post" immediately, preventing documents from piling up in Draft status. |
+| `Default Toggle Column` | `DOUBLE` for two-column layout (large monitors), `SINGLE` for standard |
+| `Hide Save Button` | Forces users to use FINAL immediately, preventing DRAFT pile-up |
 
-### 2. Permissions Governance
+### Field Settings (`Settings > Field Settings`)
 
-Because stock adjustments instantly alter the balance sheet, controlling who can perform them is critical. Access is managed through a layered permission system in the Settings menu:
+Configure which fields are visible and mandatory on the adjustment form.
 
-- **Permission Wizard:** A guided tool to set up basic access.
-- **Role Permission:** Grant access by job title (e.g., "All Warehouse Managers can Create, but only Finance Controllers can Post").
-- **User/Team Permission:** Grant granular exceptions to specific individuals or squads.
+### Permissions
 
-### 3. Print Templates
+Access is managed through a layered permission system:
 
-Under `Settings > Printable Format Settings`, administrators can design custom PDF templates. For instance, you can create a "Write-Off Certificate" template that prints automatically when an adjustment is posted, complete with signature lines for the warehouse manager.
+| Permission Type | Location | Purpose |
+|----------------|----------|---------|
+| **Applet Access** | `Settings > Applet Access` | Control who can access the applet |
+| **Permission Wizard** | `Settings > Permission Wizard` | Guided setup for basic access |
+| **Permission Set** | `Settings > Permission Set` | Define named permission sets (Client Side and Server Side) |
+| **User Permission** | `Settings > User Permission` | Assign permissions to individual users |
+| **Team Permission** | `Settings > Team Permission` | Assign permissions to entire teams |
+| **Role Permission** | `Settings > Role Permission` | Assign permissions by organisational role |
+
+### Other Settings
+
+| Setting | Location | Purpose |
+|---------|----------|---------|
+| **Triggers** | `Settings > Triggers` | Configure automated triggers based on adjustment events |
+| **Printable Format Settings** | `Settings > Printable Format Settings` | Design custom PDF templates for printed adjustment reports |
+| **Release Notes** | `Settings > Release Notes` | View applet version history |
+| **Applet Log** | `Settings > Applet Log` | View audit trail of all adjustment actions |
+| **Reset Applet State** | `Settings > Reset Applet State` | Reset applet configuration to defaults |
 
 ---
 
 ## Personalization
 
-Individual users can override certain system defaults to speed up their daily workflow via the **Personalization** sidebar menu.
+Individual users can override certain system defaults via the **Personalization** sidebar menu.
 
-### Personal Default Settings
-
-To save clicks on every single adjustment, users should set their defaults:
-
-| Setting | Why use it? |
-|---------|-------------|
-| **Default Branch** | If you only work at the "Penang Hub", set this so you never have to select it from the dropdown again. |
-| **Default Location** | If you only manage "Aisle B", set this as your default location. |
-| **Default Toggle Column** | Set your personal preference for reading forms in a `SINGLE` (narrow) or `DOUBLE` (wide) column layout based on your monitor size. |
+| Setting | Purpose |
+|---------|---------|
+| **Default Branch** | Pre-fills branch selection when creating new adjustments |
+| **Default Location** | Pre-fills location selection when creating new adjustments |
+| **Default Toggle Column** | Personal preference for `SINGLE` or `DOUBLE` column layout |
 
 ---
 
 ## FAQ
 
-**Q: Do I need approval for stock adjustments?**
-A: This depends on your organization's settings. High-value quantity adjustments or Moving Average resets typically require Finance manager approval via the workflow engine.
+**Q: What is the difference between DRAFT and FINAL?**
+A: **DRAFT** is a saved document that can still be edited. **FINAL** posts the adjustment — stock quantities are updated, GL journal entries are generated, and the document becomes read-only.
 
 **Q: How do I adjust multiple items at once?**
-A: Use the **File Import** feature to upload multiple adjustments from an Excel (.xlsx) or CSV template.
+A: Use the **File Import** feature to upload multiple adjustments from an Excel (.xlsx) or CSV template. Alternatively, add multiple line items within a single Stock Adjustment document.
 
 **Q: What happens to the cost when I adjust stock?**
 A: The moving average cost is recalculated based on the adjustment quantity and current value. Use the **Reset MA** tools for precise, manual control over this valuation.
 
 **Q: Can I reverse an adjustment?**
-A: You cannot delete a posted adjustment because it is a fixed financial ledger entry. To correct a mistake, you must post a counter-adjustment with the opposite quantity. The original adjustment remains for audit.
+A: You cannot delete a FINAL adjustment because it is a fixed financial ledger entry. To correct a mistake, create a counter-adjustment with the opposite Adjust-In/Adjust-Out direction. The original adjustment remains in the audit trail.
 
 **Q: Where can I see who made an adjustment?**
-A: The **Applet Log** (found in Settings) provides a complete, immutable audit trail of every adjustment created, edited, approved, or deleted in the system.
+A: The **Applet Log** (found in Settings) provides a complete, immutable audit trail of every adjustment created, edited, or finalized in the system.
+
+**Q: What is the difference between Reset MA and Reset MA By Location?**
+A: **Reset MA** corrects the moving average cost for an item across all locations globally. **Reset MA By Location** corrects the cost only at a specific warehouse or branch — use this when the cost discrepancy is isolated to one location.
+
+---
+
+## Glossary
+
+| Term | Definition |
+|------|-----------|
+| **Adjust-In** | Adding stock quantity into inventory (e.g., found items, returns) |
+| **Adjust-Out** | Removing stock quantity from inventory (e.g., damaged, stolen, written off) |
+| **Moving Average (MA)** | The weighted average cost of inventory, recalculated with each stock movement |
+| **DRAFT** | A saved adjustment document that has not yet been posted |
+| **FINAL** | A posted adjustment — stock and GL are updated, document is locked |
+| **VOID** | A cancelled posted adjustment — reverses stock and GL impact |
+| **Base On** | The costing method used to determine unit price (MA, FIFO, LIFO) |
+| **Serial Tracking** | Items tracked by unique serial number (e.g., electronics, equipment) |
+| **Batch Tracking** | Items tracked by batch/lot number with expiry dates (e.g., food, pharmaceuticals) |
+| **Bin Tracking** | Items tracked by physical bin location within a warehouse |
+| **Counter-Adjustment** | A new adjustment with opposite direction to correct a previously posted adjustment |
+
+---
+
+## Related Modules
+
+| Module / Applet | Relationship |
+|----------------|-------------|
+| **Item Maintenance Applet** | Items must be created here before they can be adjusted. Item tracking type (standard, serial, batch) determines which adjustment tools are available |
+| **Stock Take Applet** | Conduct physical counts that identify discrepancies to be corrected via Stock Adjustment |
+| **GRN / Stock In Applets** | Stock received via GRN increases inventory; adjustments correct discrepancies after receipt |
+| **GIN / Stock Out Applets** | Stock issued via GIN decreases inventory; adjustments correct discrepancies after issuance |
+| **Chart of Account Applet** | GL codes referenced in adjustments must exist here |
+| **General Ledger** | FINAL adjustments generate journal entries that post to the GL |
