@@ -161,6 +161,19 @@ CREATE → DRAFT
 
 {{< figure src="/images/internal-purchase-return-applet/purchase-return-create.png" alt="Purchase Return Creation Form" caption="Creation Form: Add return items manually or link to existing GRN/Purchase Invoices." >}}
 
+{{< figure src="/images/internal-purchase-return-applet/search-by-supplier.png" alt="Search Tab — Search By Supplier" caption="Search By Supplier: Browse available suppliers and their associated purchase documents." >}}
+
+{{< figure src="/images/internal-purchase-return-applet/search-by-invoice.png" alt="Search Tab — Search By Invoice" caption="Search By Invoice: Find and select the original purchase invoice to create a return against." >}}
+
+{{< figure src="/images/internal-purchase-return-applet/search-invoice-selected.png" alt="Search Tab — Invoice Selected" caption="Invoice Selected: The selected invoice is highlighted, ready for return creation." >}}
+
+{{< figure src="/images/internal-purchase-return-applet/main-details-tab.png" alt="Main Details Tab" caption="Main Details Tab: Configure Branch, Location, Purchaser, Credit Terms, Reason, Reference, and Remarks." >}}
+
+{{< figure src="/images/internal-purchase-return-applet/e-invoice-tab.png" alt="E-Invoice Tab" caption="E-Invoice Tab: Configure Submission Type, Document Number, and Supplier e-Invoice details for LHDN compliance." >}}
+
+{{< figure src="/images/internal-purchase-return-applet/account-tab.png" alt="Account Tab — Entity Details" caption="Account Tab: View and select the supplier entity with details including Entity ID, Name, Status, Currency, and Contact Information." >}}
+
+{{< figure src="/images/internal-purchase-return-applet/line-items-tab.png" alt="Line Items Tab — Select Item" caption="Line Items Tab: Select items to return from the available item list with quantities and pricing." >}}
 
 ### For Finance: Process a Settlement
 
@@ -246,6 +259,8 @@ Use this when a supplier physically returns money to you (e.g., a bank transfer)
 - **Verification**: Check the **ARAP** tab to confirm the settlement has been recorded.
 - **Use Case**: Supplier agrees to issue a refund and transfers the amount back to your company account.
 
+{{< figure src="/images/internal-purchase-return-applet/settlement-tab.png" alt="Settlement Tab" caption="Settlement Tab: View Total Settlement amount, Doc Open Amount, and Doc ARAP Balance for the purchase return." >}}
+
 ### e-Invoice Compliance
 
 Automatically handles LHDN self-billed requirements for purchase returns.
@@ -255,6 +270,8 @@ Automatically handles LHDN self-billed requirements for purchase returns.
 - **Applicability**: Relevant for suppliers who are not registered for e-Invoicing, where you as the buyer are required to self-bill.
 
 ### ARAP Impact
+
+{{< figure src="/images/internal-purchase-return-applet/arap-tab.png" alt="ARAP Tab" caption="ARAP Tab: View Contra and Outstanding amounts for the finalized purchase return document." >}}
 
 Every finalized Purchase Return creates an automatic accounting entry in the Accounts Payable (AP) ledger.
 
@@ -277,6 +294,8 @@ Open a finalized PR document → go to the **TraceDocument** tab to access the c
 
 Open any PR document → go to the **Attachment** tab to store documentary evidence directly on the return record.
 
+{{< figure src="/images/internal-purchase-return-applet/attachments-tab.png" alt="Attachments Tab" caption="Attachments Tab: Drag and drop files to attach supporting documents such as damage photos or return authorization forms." >}}
+
 - **Use Case**: Attach supplier damage photos, quality reject certificates, or signed return authorization forms (RMA).
 - **Format**: Supports PDF, JPG, PNG, and other common file types.
 - **Access**: Attachments are visible to all users with read access to the document.
@@ -298,6 +317,8 @@ For deep analysis, the Line Reports view breaks down all purchase returns into i
 
 When finalizing a Purchase Return, the system can generate a **Debit Note** — a formal notice to the supplier that their account has been debited.
 
+{{< figure src="/images/internal-purchase-return-applet/export-tab.png" alt="Export Tab" caption="Export Tab: Select a Printable Format template and export the purchase return as PDF." >}}
+
 - **Configuration**: Customize the Debit Note layout in `Settings > Printable Format Settings`.
 - **Options**: Add company logo, business registration numbers, custom footers.
 - **Use**: Send directly to the supplier as formal documentation of the return.
@@ -309,6 +330,8 @@ When finalizing a Purchase Return, the system can generate a **Debit Note** — 
 **Customize the interface to match your workflow.**
 
 {{< figure src="/images/internal-purchase-return-applet/purchase-return-settings.png" alt="Applet Settings Dashboard" caption="Settings: Configure defaults, field visibility, and workflow rules." >}}
+
+{{< figure src="/images/internal-purchase-return-applet/settings-default-selection.png" alt="Default Selection Settings" caption="Default Selection: Set default Branch, Location, Currency, Pricing Option, and Transaction Date Logic." >}}
 
 
 ### Personalization Menu
@@ -390,11 +413,20 @@ This section provides detailed explanations of each settings option, including t
 
 **Purpose:** Control which fields are visible, required, or hidden based on user roles and business requirements. This enforces data governance and simplifies the user interface.
 
+{{< figure src="/images/internal-purchase-return-applet/settings-application-gen-doc.png" alt="Application Settings — Gen Doc Listing" caption="Application Settings — Gen Doc Listing: Toggle field visibility for the main document listing view." >}}
+
+{{< figure src="/images/internal-purchase-return-applet/settings-application-search-invoices.png" alt="Application Settings — Search Invoices" caption="Application Settings — Search Invoices: Configure search selection settings and panel visibility options." >}}
+
+{{< figure src="/images/internal-purchase-return-applet/settings-application-main-details.png" alt="Application Settings — Main Details" caption="Application Settings — Main Details: Control visibility of document fields like Tracking ID, Permit No, Reason, and Delivery details." >}}
+
 **Key Use Cases:**
 
 **Enforcing Return Reasons**
 - Make **Reason Code** mandatory to ensure every return has a documented reason.
 - **Benefit**: Enables downstream reporting on return reasons (e.g., "Defective Goods" vs "Over-Delivery") for supplier performance reviews.
+- **Configuration**: Define return reason codes in `Settings > Return Reasons Settings`.
+
+{{< figure src="/images/internal-purchase-return-applet/settings-return-reasons.png" alt="Return Reasons Settings" caption="Return Reasons Settings: Define and manage return reason codes (e.g., BRK — Broken) used across purchase return documents." >}}
 
 **Compliance Fields**
 - Show/hide **Permit No** for businesses with regulatory goods (e.g., controlled chemicals, pharmaceuticals).
@@ -408,6 +440,8 @@ This section provides detailed explanations of each settings option, including t
 ---
 
 ### Printable Format Settings
+
+{{< figure src="/images/internal-purchase-return-applet/settings-printable-format.png" alt="Printable Format Settings" caption="Printable Format Settings: Manage Jasper report templates for purchase return PDF generation." >}}
 
 **Purpose:** Customize the appearance and content of the Debit Note PDF to match company branding and meet supplier/legal requirements.
 
@@ -475,6 +509,8 @@ This section provides detailed explanations of each settings option, including t
 ---
 
 ### Workflow Settings
+
+{{< figure src="/images/internal-purchase-return-applet/settings-workflow.png" alt="Workflow Settings" caption="Workflow Settings: Configure company workflow links with process codes and server document types." >}}
 
 **Purpose:** Define business rules and approval workflows to enforce governance.
 
