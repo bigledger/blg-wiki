@@ -161,4 +161,5 @@ Open Journal Transaction, filter the listing to Date in March 2026 and Auto Flag
   {{< card link="/guides/accounting-guides/chart-of-accounts-setup/" title="Chart of Accounts Setup Guide" subtitle="Build the accounts your journals will debit and credit" >}}
   {{< card link="/guides/accounting-guides/bank-reconciliation-guide/" title="Bank Reconciliation Guide" subtitle="Reconcile the cashbook against the bank statement" >}}
   {{< card link="/guides/accounting-guides/financial-reporting/" title="Financial Reporting Guide" subtitle="Run the month-end profit and loss and balance sheet" >}}
+  {{< card link="/guides/accounting-guides/document-posting-status/" title="Posting Status Explained" subtitle="Why a Final document may not be in the ledger yet, and how to recover it" >}}
 {{< /cards >}}

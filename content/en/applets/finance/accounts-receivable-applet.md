@@ -34,6 +34,15 @@ The Accounts Receivable Applet manages all customer billing, payment processing,
 - Credit limit monitoring
 - Collection workflow automation
 
+## How Customer Balances Update
+
+When you record a customer payment, apply a credit note, or knock off an invoice against a payment (contra), the affected documents' outstanding balances are recalculated **in the background** — usually within seconds, occasionally a few minutes during peak load. What this means in practice:
+
+- A balance that has not moved immediately after you apply or void a knock-off is **not an error** — refresh the screen after a moment.
+- Do **not** re-enter a payment because the balance "didn't update"; re-entering creates a duplicate settlement. Refresh first.
+- If an outstanding balance is still stale **15 minutes** after the settlement, report it to support with the document numbers involved — that is a fault to investigate, not a step you missed.
+- Finalising an invoice and seeing it in the General Ledger are two steps: the invoice's journal is generated in the background moments after Final. See the [Posting Status Explained guide](/guides/accounting-guides/document-posting-status/) if a finalised document seems to be missing from the ledger.
+
 ## Integration Points
 
 ### Core Module Dependencies

@@ -115,6 +115,10 @@ Every e-invoice submission moves through a defined lifecycle. Understanding this
 | **Cancelled** | LHDN-approved cancellation | Document is void — reissue if needed |
 | **Error** | Submission failed before reaching LHDN | Check system connectivity and retry |
 
+{{< callout type="info" >}}
+**The MyInvois portal uses different words for the same states**: portal *Submitted* = BigLedger *Pending*, portal *Valid* = BigLedger *Submitted*, portal *Invalid* = BigLedger *Rejected*. When comparing the two screens, translate first — see [Understanding E-Invoice Statuses](/guides/einvoice-guides/understanding-e-invoice-statuses/) for the full mapping, the reject-and-resubmit lifecycle, and when a status genuinely needs support's attention.
+{{< /callout >}}
+
 ### What LHDN Validates
 
 LHDN checks every document against MyInvois compliance rules before issuing a result:
