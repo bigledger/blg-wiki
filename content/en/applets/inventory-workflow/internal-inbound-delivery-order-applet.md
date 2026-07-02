@@ -63,20 +63,20 @@ Traditional internal stock transfers often suffer from a lack of visibility and 
 - **Flexible Searching** - Quickly find documents by branch, supplier, or tracking ID.
 - **Customizable Workflow** - Support for custom clearance statuses and field-level permissions.
 
-## Key Features Overview
+## Feature Cards
 
 {{< cards >}}
-{{< card title="Document Listing" subtitle="View and manage all incoming delivery orders" link="#internal-inbound-do-listing" >}}
+  {{< card title="Document Listing" subtitle="View and manage all incoming delivery orders" link="#internal-inbound-do-listing" >}}
 
-{{< card title="Intercompany Integration" subtitle="Create Inbound DOs directly from Sales Invoices" link="#create-from-intercompany-si" >}}
+  {{< card title="Intercompany Integration" subtitle="Create Inbound DOs directly from Sales Invoices" link="#create-from-intercompany-si" >}}
 
-{{< card title="Serial Number Tracking" subtitle="Mandatory validation for serialized items" link="#serialized-item-management" >}}
+  {{< card title="Serial Number Tracking" subtitle="Mandatory validation for serialized items" link="#serialized-item-management" >}}
 
-{{< card title="Line Item Management" subtitle="Detailed control over quantities and descriptions" link="#line-item-editing" >}}
+  {{< card title="Line Item Management" subtitle="Detailed control over quantities and descriptions" link="#line-item-editing" >}}
 
-{{< card title="Custom Statuses" subtitle="Tailor the workflow to your logistics process" link="#custom-clearance-statuses" >}}
+  {{< card title="Custom Statuses" subtitle="Tailor the workflow to your logistics process" link="#custom-clearance-statuses" >}}
 
-{{< card title="Mobile-Ready Scanning" subtitle="Support for warehouse barcode scanners" link="#scanning-serial-numbers" >}}
+  {{< card title="Mobile-Ready Scanning" subtitle="Support for warehouse barcode scanners" link="#scanning-serial-numbers" >}}
 {{< /cards >}}
 
 {{< figure src="/images/internal-inbound-delivery-order-applet/internal-inbound-delivery-order-overview-infographic.png" alt="From Logistics Chaos to Streamlined Receiving: Your Guide to the Internal Inbound DO Applet" caption="Internal Inbound DO Overview: Comparing traditional manual receiving (errors, lost tracking) with the digital solution (real-time validation, serial tracking, automated reconciliation)." >}}
@@ -148,7 +148,7 @@ Get your receiving process running efficiently with these essential workflows.
 2. **Load Header**: Select the correct document to populate the header (Branch, Supplier, etc.).
 3. **Verify Lines**:
    - Navigate to the **Lines** tab.
-   - For each item, verify the **Received Quantity**.
+   - For each item, verify the **Received Quantity** column — this is the quantity your team physically counted when the goods arrived.
    - If the item is serialized, click **Edit Line** to enter/scan serial numbers.
 4. **Check Accuracy**: Ensure the total Quantities match the physical shipment.
 5. **Submit/Final**: Click **Create** (Draft) or **Final** (if authorized) to record the receipt.
@@ -177,7 +177,7 @@ Get your receiving process running efficiently with these essential workflows.
 
 1. **Set Up Permissions** (`Settings > Client Side Permission`):
    - Define who can create Drafts vs who can post to FINAL.
-2. **Configure Fields** (`Settings > Field Settings`):
+2. **Configure Fields** (`Settings > Application Settings`):
    - Make `Tracking ID` or `Doc Reference` mandatory if required by policy.
 3. **Define Custom Statuses** (`Settings > Custom Status`):
    - Add labels for internal logistics steps (e.g., "Quality Inspected").
