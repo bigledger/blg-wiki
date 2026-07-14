@@ -21,7 +21,7 @@ The E-Invoice & PEPPOL Module flexibly supports diverse compliance workflows acr
 **Business Scenario:** A retail store network processes 50,000 counter checkout receipts daily to end-consumers who do not request individual tax invoices.
 
 - **Primary Applets:** [MY E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/), [POS General Applet](/applets/sales-workflow/pos-general-applet/)
-- **Operational Flow:** Retail sales executed at POS counters → system aggregates B2C receipts into monthly summary batches → consolidated e-invoice submitted to tax authority within 7 days of month-end.
+- **Operational Flow:** Retail sales executed at POS counters → system aggregates B2C receipts into monthly summary batches → consolidated e-invoice submitted to the tax authority by the 7th of the following month (LHDN deadline).
 
 ---
 

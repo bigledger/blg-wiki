@@ -56,7 +56,8 @@ Once configured, e-invoicing integrates into your normal sales and purchasing wo
 ## ⚠️ Common Scenarios / Pitfalls
 
 {{< cards >}}
-  {{< card link="einvoice-validation" title="✅ E-Invoice Validation Rules" subtitle="Understand validation requirements and fix common rejection errors" >}}
+  {{< card link="einvoice-pools-and-routing" title="🗂️ Pools & Submission Routing" subtitle="Individual vs consolidated submission, the RM 10,000 rule, and the Batch / Individual / Single General pools" >}}
+  {{< card link="einvoice-validation" title="✅ Validation Rules & Troubleshooting" subtitle="Mandatory fields, General TINs, and fixes for the most common LHDN rejection errors" >}}
 {{< /cards >}}
 
 Watch out for these frequent e-invoice issues:

@@ -182,7 +182,7 @@ To effectively manage the system, it is crucial to understand these three pillar
 **A:** `Accepted` means LHDN has received it but hasn't finished the full validation. The system will auto-poll LHDN every 15-20 minutes until it moves to `Valid` or `Failed`.
 
 **Q2: How do I handle a customer who doesn't have a TIN number?**
-**A:** Use the "General TIN" code (`EI00000000020`) as per LHDN guidelines. The portal will flag this as a "Non-Individual" submission automatically.
+**A:** Use the appropriate LHDN "General TIN": `EI00000000010` for local buyers / general public (requires ID type NRIC with a valid NRIC number on individual e-invoices), or `EI00000000020` for foreign buyers. For B2C retail volumes, the usual answer is a consolidated e-invoice instead. See the [General TINs guide](/guides/einvoice-guides/einvoice-validation/#general-tins--when-you-dont-have-the-buyers-tin).
 
 **Q3: Can I withdraw a submission after clicking 'Submit to LHDN'?**
 **A:** No. Once the request hits the LHDN gateway, it must complete the validation cycle. If there is an error, wait for it to return as `Failed` or use the `Rejection` module if it returns as `Valid`.
