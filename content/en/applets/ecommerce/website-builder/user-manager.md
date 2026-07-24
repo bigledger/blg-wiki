@@ -36,7 +36,7 @@ Navigate to your website builder dashboard and access the User Permission Manage
 2. Enter the email address of the user you want to add as an admin
 3. The email must be valid (e.g., `user@example.com`)
 
-![User Permission Manager Interface](user-manager-guide1)
+{{< figure src="/images/website-builder/user-permission-manager/send-invitee.png" alt="User Permission Manager Interface - Add New Admin User" caption="The Add New Admin User section where administrators can enter an email address and verify if the user exists in the system." >}}
 
 ### Step 2: Verify User
 
@@ -73,6 +73,8 @@ The invited user will receive an email containing:
 - A welcome message
 - An invitation link to join the system
 - Instructions for completing registration
+
+{{< figure src="/images/website-builder/user-permission-manager/invitation_email.png" alt="Invitation Email Example" caption="The invitation email that users receive with a link to complete their registration on akaun.com." >}}
 
 **Important:** The invitation link expires after a certain period. Users should complete registration promptly.
 
@@ -118,7 +120,7 @@ Once the invited user has completed their registration on akaun.com, you can ver
 
 ### Step 4: Grant Admin Access
 
-![User Verified Successfully](user-manager-guide1)
+{{< figure src="/images/website-builder/user-permission-manager/make-admin.png" alt="User Verified Successfully - Make Admin" caption="After successful user verification, click the 'Make Admin' button to grant admin privileges to the user." >}}
 
 1. After successful verification, you'll see:
    - ✅ Green success alert: **"User Verified Successfully!"**
@@ -141,6 +143,8 @@ Once the invited user has completed their registration on akaun.com, you can ver
 ### Admin Users List
 
 The **"Admin Users"** section displays all users with admin privileges.
+
+{{< figure src="/images/website-builder/user-permission-manager/listing.png" alt="Admin Users List" caption="The Admin Users listing table showing all users with admin privileges, their status, and available actions." >}}
 
 #### Table Columns:
 
@@ -187,6 +191,8 @@ The confirmation dialog displays:
 - **Title:** "Remove Admin Access"
 - **Message:** Shows the user's name and email
 - **Warning:** "This action cannot be undone"
+
+{{< figure src="/images/website-builder/user-permission-manager/remove-perm.png" alt="Remove Admin Access Confirmation" caption="The confirmation dialog that appears before removing admin access from a user." >}}
 
 ### Step 3: Complete Removal
 
