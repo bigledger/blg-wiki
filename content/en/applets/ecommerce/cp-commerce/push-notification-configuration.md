@@ -1,5 +1,7 @@
 ---
-description: Comprehensive configuration guide for implementing push notifications in the Wavelet CP Commerce application (The Datai).
+title: Push Notification Configuration
+description: Comprehensive configuration guide for implementing push notifications in the Wavelet CP Commerce application (The Datai)
+weight: 10
 tags:
 - push-notifications
 - firebase
@@ -7,8 +9,7 @@ tags:
 - android
 - ios
 - configuration
-title: Push Notification Configuration Guide
-weight: 100
+- cp-commerce
 ---
 
 **Last Updated**: 2026-02-16
