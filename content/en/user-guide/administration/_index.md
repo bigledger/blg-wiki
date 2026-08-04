@@ -20,7 +20,7 @@ Manage your organization's users and team structure:
 
 {{< cards >}}
 {{< card link="/user-guide/administration/member-listing" title="User Management" subtitle="Adding, editing, and managing user accounts and permissions" >}}
-{{< card link="/user-guide/administration/team" title="Team Configuration" subtitle="Setting up departments, roles, and organizational structure" >}}
+{{< card link="/user-guide/administration/team" title="Teams and Permissions" subtitle="Controlling who can view, edit and export customer and membership data (PDPA)" >}}
 {{< card link="/user-guide/administration/member-class" title="Member Classifications" subtitle="User roles, permissions, and access control systems" >}}
 {{< /cards >}}
 
