@@ -279,7 +279,7 @@ Settlement Tracking shows how much of a voucher is already settled, what remains
 
 ### Key Features
 
-- Real-time recalculation after payment and expense edits
+- Automatic recalculation after payment and expense edits — outstanding and settled amounts refresh in the background (usually within seconds; allow a moment and refresh the screen before reading the updated settlement position after applying or voiding a contra)
 - Correction flow through Settlement Adjustment
 - Contra support for document-to-document offsets
 - AR/AP visibility for pre-final verification

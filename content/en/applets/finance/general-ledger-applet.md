@@ -25,13 +25,30 @@ The General Ledger Applet is the core accounting engine of BigLedger's Accountin
 - **Period Management** - Accounting period control and closing procedures
 - **Audit Trail** - Complete transaction audit and history
 
+## How Transactions Reach the General Ledger
+
+Every ledger entry arrives through one of two doors:
+
+| Source | Auto Flag | How it posts |
+|---|---|---|
+| **Finalised documents** (sales invoices, purchase invoices, payment vouchers, credit notes, cash bills…) | Auto | When a document is finalised, BigLedger generates its journal **in the background**, normally within moments of the save |
+| **Manual journals** (Journal Transaction in the Ledger and Journal Applet) | Manual | Posted directly by the user — accruals, depreciation, reclassifications, opening balances |
+
+### Posting lifecycle for document-generated journals
+
+1. A document is saved as **Final** — it is locked and receives its running number immediately.
+2. Its journal is generated in the background and appears in Journal Transaction (Auto Flag "Auto").
+3. **Void** never deletes: it posts a mirror-image journal that reverses the original. Both stay visible in the audit trail.
+
+Because step 2 runs in the background, "Final" means *saved and locked*, not yet *in the ledger* — the journal follows moments later. On rare occasions a journal is not generated (for example, a referenced GL account was deactivated after the document was created, or a default GL code was never configured). The **Missing Journal** screen in the Ledger and Journal Applet finds such documents and re-runs the posting, reporting the blocking reason if one exists. See the [Posting Status Explained guide](/guides/accounting-guides/document-posting-status/) for the recovery walkthrough, and the **Error Checking > Journal Not Balance** screen for detecting unbalanced manual journals.
+
 ## Key Features
 
-### TODO: Expand Key Features Section
-- Transaction posting and reversals
+- Transaction posting and reversals (void = mirror entry, full audit trail)
+- Automatic journal generation from finalised documents (Auto Flag) alongside manual journals
+- Missing Journal detection and re-posting for finalised documents whose journal was not generated
+- Error Checking, including the Journal Not Balance screen for unbalanced journals
 - Multi-currency transaction handling
-- Automated recurring entries
-- Budget vs. actual reporting
 - Financial statement generation
 
 ## Technical Specifications
