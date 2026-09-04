@@ -1,0 +1,77 @@
+{{- /* SEO / GEO head additions (ADR: planning/discussions/2026-09-05-seo-and-geo.md).
+       1. hreflang alternates for every translation + x-default (English).
+       2. JSON-LD: Organization + WebSite on the home page; TechArticle + BreadcrumbList on every
+          other page. Brand entity: "akaun.com by BigLedger". */ -}}
+{{- $org := "https://www.bigledger.com/#organization" -}}
+{{- $site := printf "%s#website" site.BaseURL -}}
+{{- $product := "https://www.bigledger.com/#software" -}}
+
+{{- /* 1. hreflang */ -}}
+{{- if .IsTranslated -}}
+{{- range .AllTranslations }}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+{{- end }}
+{{- with index (where .AllTranslations "Language.Lang" "en") 0 }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+{{- end }}
+{{- else }}
+<link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}">
+{{- if eq .Language.Lang "en" }}
+<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">
+{{- end }}
+{{- end }}
+
+{{- /* 2. JSON-LD */ -}}
+{{- $orgNode := dict
+  "@type" "Organization" "@id" $org
+  "name" "BigLedger"
+  "alternateName" (slice "Akaun" "akaun.com")
+  "url" "https://www.bigledger.com/"
+  "logo" (absURL "images/bigledger-logo-cropped.png")
+  "sameAs" (slice "https://akaun.com/" "https://github.com/bigledger")
+-}}
+{{- $productNode := dict
+  "@type" "SoftwareApplication" "@id" $product
+  "name" "BigLedger"
+  "alternateName" "akaun.com"
+  "applicationCategory" "BusinessApplication"
+  "operatingSystem" "Web"
+  "url" "https://www.bigledger.com/"
+  "description" "A web-based, cloud-native business operating system: accounting, inventory, sales, purchasing, POS, e-commerce and Malaysian e-Invoice. The backbone for AI agents via API, MCP and SDK."
+  "publisher" (dict "@id" $org)
+-}}
+{{- $siteNode := dict
+  "@type" "WebSite" "@id" $site
+  "name" "akaun.com by BigLedger"
+  "alternateName" "BigLedger Documentation"
+  "url" site.BaseURL
+  "inLanguage" .Language.Lang
+  "publisher" (dict "@id" $org)
+  "about" (dict "@id" $product)
+-}}
+{{- if .IsHome -}}
+<script type="application/ld+json">{{ (dict "@context" "https://schema.org" "@graph" (slice $orgNode $productNode $siteNode)) | jsonify | safeJS }}</script>
+{{- else -}}
+{{- $crumbs := slice -}}
+{{- $pos := 1 -}}
+{{- range .Ancestors.Reverse -}}
+  {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" $pos "name" (.Title | default "Home") "item" .Permalink) -}}
+  {{- $pos = add $pos 1 -}}
+{{- end -}}
+{{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" $pos "name" .Title "item" .Permalink) -}}
+{{- $article := dict
+  "@type" "TechArticle"
+  "@id" (printf "%s#article" .Permalink)
+  "headline" .Title
+  "description" (partial "utils/page-description.html" . | plainify | truncate 300)
+  "url" .Permalink
+  "inLanguage" .Language.Lang
+  "isPartOf" (dict "@id" $site)
+  "about" (dict "@id" $product)
+  "author" (dict "@id" $org)
+  "publisher" (dict "@id" $org)
+  "dateModified" (.Lastmod.Format "2006-01-02")
+-}}
+{{- if not .Date.IsZero -}}{{- $article = merge $article (dict "datePublished" (.Date.Format "2006-01-02")) -}}{{- end -}}
+<script type="application/ld+json">{{ (dict "@context" "https://schema.org" "@graph" (slice $orgNode $productNode $siteNode $article (dict "@type" "BreadcrumbList" "itemListElement" $crumbs))) | jsonify | safeJS }}</script>
+{{- end }}

@@ -1,5 +1,5 @@
 baseURL: https://wiki.bigledger.com/
-title: BigLedger Documentation
+title: akaun.com by BigLedger
 defaultContentLanguage: en
 defaultContentLanguageInSubdir: false
 theme: hextra
@@ -8,9 +8,15 @@ enableRobotsTXT: true
 
 outputFormats:
   llms:
-    baseName: "index"
+    baseName: "llms"
     isPlainText: true
     mediaType: "text/plain"
+    notAlternative: true
+  llmsfull:
+    baseName: "llms-full"
+    isPlainText: true
+    mediaType: "text/plain"
+    notAlternative: true
 
 markup:
   goldmark:
@@ -22,40 +28,43 @@ languages:
     languageName: English
     languageCode: en
     contentDir: content/en
-    title: BigLedger Documentation
+    title: akaun.com by BigLedger
     weight: 1
     params:
-      description: "BigLedger (akaun.com) — a web-based, cloud-native business operating system: accounting, inventory, sales, purchasing, POS, e-commerce and Malaysian e-Invoice. The backbone for AI agents via API, MCP and SDK."
+      description: "akaun.com by BigLedger — a web-based, cloud-native business operating system: accounting, inventory, sales, purchasing, POS, e-commerce and Malaysian e-Invoice. The backbone for AI agents via API, MCP and SDK."
   
   zh:
     languageName: 中文
     languageCode: zh-CN
     contentDir: content/zh
-    title: BigLedger 文档
+    title: akaun.com by BigLedger
     weight: 2
     params:
-      description: "BigLedger（akaun.com）— 基于网页的云原生业务运营系统：会计、库存、销售、采购、POS、电子商务与马来西亚电子发票。通过 API、MCP 与 SDK 成为 AI 智能体的业务骨干。"
+      description: "akaun.com by BigLedger — 基于网页的云原生业务运营系统：会计、库存、销售、采购、POS、电子商务与马来西亚电子发票。通过 API、MCP 与 SDK 成为 AI 智能体的业务骨干。"
   
   ms:
     languageName: Bahasa Melayu
     languageCode: ms
     contentDir: content/ms
-    title: Dokumentasi BigLedger
+    title: akaun.com by BigLedger
     weight: 3
     params:
-      description: "BigLedger (akaun.com) — sistem operasi perniagaan berasaskan web dan awan: perakaunan, inventori, jualan, pembelian, POS, e-dagang dan e-Invois Malaysia. Tulang belakang untuk ejen AI melalui API, MCP dan SDK."
+      description: "akaun.com by BigLedger — sistem operasi perniagaan berasaskan web dan awan: perakaunan, inventori, jualan, pembelian, POS, e-dagang dan e-Invois Malaysia. Tulang belakang untuk ejen AI melalui API, MCP dan SDK."
   
   ar:
     languageName: العربية
     languageCode: ar
     contentDir: content/ar
-    title: وثائق BigLedger
+    title: akaun.com by BigLedger
     weight: 4
     languageDirection: rtl
     params:
-      description: "BigLedger (akaun.com) — نظام تشغيل للأعمال قائم على الويب وسحابي المنشأ: المحاسبة والمخزون والمبيعات والمشتريات ونقاط البيع والتجارة الإلكترونية والفوترة الإلكترونية الماليزية. العمود الفقري لوكلاء الذكاء الاصطناعي عبر API وMCP وSDK."
+      description: "akaun.com by BigLedger — نظام تشغيل للأعمال قائم على الويب وسحابي المنشأ: المحاسبة والمخزون والمبيعات والمشتريات ونقاط البيع والتجارة الإلكترونية والفوترة الإلكترونية الماليزية. العمود الفقري لوكلاء الذكاء الاصطناعي عبر API وMCP وSDK."
 
 params:
+  title: akaun.com by BigLedger
+  displayUpdatedDate: true
+  displayUpdatedAuthor: false
   # Theme settings
   theme:
     default: light
@@ -293,7 +302,8 @@ outputs:
   home:
     - HTML
     - RSS
-    - llms  # For search functionality
+    - llms       # /llms.txt  — index for AI crawlers (llmstxt.org)
+    - llmsfull   # /llms-full.txt — full text, brand-attributed
 
 deployment:
   targets:

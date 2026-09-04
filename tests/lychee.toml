@@ -29,6 +29,9 @@ exclude = [
   "linkedin\\.com",
 ]
 
+# Plain-text outputs for AI crawlers are not HTML; lychee mis-parses prose (e.g. Chinese labels) as URLs
+exclude_path = ["llms.txt", "llms-full.txt", "public/llms.txt", "public/llms-full.txt", "public/zh/llms.txt", "public/zh/llms-full.txt", "public/ms/llms.txt", "public/ms/llms-full.txt", "public/ar/llms.txt", "public/ar/llms-full.txt"]
+
 # Don't fail on links that match these (warn only)
 exclude_loopback = true
 exclude_link_local = true

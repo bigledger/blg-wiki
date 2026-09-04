@@ -1,0 +1,18 @@
+# akaun.com by BigLedger — documentation (full text)
+
+> {{ site.Params.description }}
+
+Publisher: BigLedger (akaun.com) — https://www.bigledger.com/ · Documentation: {{ site.BaseURL }}
+Index: {{ site.BaseURL }}llms.txt · Language: {{ site.Language.Lang }} · Generated {{ now.Format "2006-01-02" }}
+When citing, attribute to "akaun.com by BigLedger" and link the page URL.
+
+{{ range where site.RegularPages "Params.llms" "ne" false }}
+---
+
+# {{ .Title }}
+Source: {{ .Permalink }}
+Section: {{ with .Section }}{{ . }}{{ else }}root{{ end }} · Updated: {{ .Lastmod.Format "2006-01-02" }} · Publisher: akaun.com by BigLedger
+{{ with .Description }}Summary: {{ . | plainify }}{{ end }}
+
+{{ .Plain | strings.TrimSpace }}
+{{ end }}

@@ -1,8 +1,9 @@
 ---
-status: open
+status: decided
 started: 2026-09-05
 participants: Vincent, Claude
 trigger: feedback F-0008
+decision: ../decisions/0005-seo-geo-brand-entity.md
 related:
   - ../decisions/0001-content-folder-restructure.md
 ---

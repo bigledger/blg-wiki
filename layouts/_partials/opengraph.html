@@ -1,0 +1,20 @@
+{{- /* Override of Hextra's opengraph partial: same tags, no whitespace padding, plus site_name,
+       locale and a default image. */ -}}
+{{- $desc := partial "utils/page-description.html" . | plainify | truncate 300 -}}
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:site_name" content="akaun.com by BigLedger">
+<meta property="og:locale" content="{{ .Language.Lang | replaceRE "^zh$" "zh_CN" | replaceRE "^en$" "en_MY" | replaceRE "^ms$" "ms_MY" | replaceRE "^ar$" "ar_AE" }}">
+{{- $img := "" -}}
+{{- with .Params.images }}{{ $img = index . 0 }}{{ end -}}
+{{- with .Params.image }}{{ $img = . }}{{ end -}}
+{{- if not $img }}{{ $img = "images/bigledger-logo-cropped.png" }}{{ end }}
+<meta property="og:image" content="{{ $img | absURL }}">
+{{- if .IsPage }}
+{{- if not .Date.IsZero }}
+<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- end }}
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+{{- end }}

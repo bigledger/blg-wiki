@@ -11,6 +11,10 @@
         <div class='content hx:mt-6'>
           {{ .Content }}
         </div>
+        {{ partial "components/last-updated.html" . }}
+        {{- if (site.Params.page.displayPagination | default true) -}}
+          {{- partial "components/pager.html" . -}}
+        {{- end -}}
       </main>
     </article>
   </div>
