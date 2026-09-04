@@ -65,7 +65,7 @@ the question "what does this change for the neighbour?" gets answered in the not
 | Pages with WIP banners | 54 | 0 |
 | Pages without `description:` | 57 | 0 |
 | Sources with a live cursor | 2 / 5 | 5 / 5, each < 7 days behind |
-| Deploy gated by tests | no | yes |
+| Deploy gated by tests | **yes** (unit 1) | yes |
 
 When every row is converged, the loop drops to **maintenance cadence**: one `ingest` per source
 per day, `measure` weekly, batches as the inbox fills. It never ends; it slows down.
@@ -97,3 +97,5 @@ per day, `measure` weekly, batches as the inbox fills. It never ends; it slows d
 
 | # | Date | Kind | Unit | Result |
 |---|---|---|---|---|
+| 1 | 2026-09-05 | batch | F-0017 quality gate on deploy (+ F-0035 mojibake ×94 in 7 pages, one duplicate H1) | Shipped 54caf966→4be6bca2. CI quality job green (lints, lychee-gated 383, Playwright 42/42); deploy needs it. First CI run failed twice on install steps (repo has hugo/ dir; lychee archive nests binary) — fixed. Lints surfaced F-0036 (56 title-less pages) and F-0037; allowlisted. |
+
