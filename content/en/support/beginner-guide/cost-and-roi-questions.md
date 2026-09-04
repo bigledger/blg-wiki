@@ -537,7 +537,3 @@ weight: 70
 ---
 
 *This FAQ helps business owners understand not just the cost of BigLedger, but the total value proposition and long-term return on investment. The key is viewing BigLedger as a business investment rather than just a software expense.*
-
-<function_calls>
-<invoke name="TodoWrite">
-<parameter name="todos">[{"id": "1", "content": "Review existing BigLedger documentation to understand current content", "status": "completed"}, {"id": "2", "content": "Create comprehensive FAQ: Getting Started Questions", "status": "completed"}, {"id": "3", "content": "Create comprehensive FAQ: Basic Business Operations", "status": "completed"}, {"id": "4", "content": "Create comprehensive FAQ: Day-to-Day Usage", "status": "completed"}, {"id": "5", "content": "Create comprehensive FAQ: Malaysian Specific Questions", "status": "completed"}, {"id": "6", "content": "Create comprehensive FAQ: Growth and Scaling", "status": "completed"}, {"id": "7", "content": "Create comprehensive FAQ: Technical Concerns", "status": "completed"}, {"id": "8", "content": "Create comprehensive FAQ: Cost and ROI Questions", "status": "completed"}]

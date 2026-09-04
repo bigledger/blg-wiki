@@ -11,7 +11,7 @@ aliases:
 
 The Cashbook Applet is a fundamental Core Module component that manages all cash and bank account operations in BigLedger. This applet provides comprehensive cash management, bank account configuration, payment method setup, and cash flow tracking that supports all financial transactions across every BigLedger module.
 
-Note: Core Module Applet â€” One of the 13 essential Core Module applets, critical for businesses handling cash transactions, bank payments, or financial operations.
+Note: Core Module Applet — One of the 13 essential Core Module applets, critical for businesses handling cash transactions, bank payments, or financial operations.
 
 ## Primary Functions
 - **Cash Account Management** - Physical cash handling and control
@@ -34,34 +34,19 @@ Ensure all bank accounts and cash movements are correctly linked to their respec
 Provide clear, auditable guidelines for managing accounts, settlement configurations, and inter-account transfers.
 
 ## Key Features and Steps
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-- **There are few steps that need to be done
-{{< tabs items="1. Create New Cashbook,2. Create Settlement Method,3. Choose the Payment Type,4. Link the Payment Method with Branch" >}}
-
-{{< tab >}}
-### Creating a New Bank Account (Cashbook)
-
-=======
-=======
->>>>>>> Stashed changes
 
 **There are few steps that need to be done:**
 
 ### 1. Creating a New Bank Account (Cashbook)
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 Proper setup of a new bank account ensures that all financial activity is traceable, accurate, and reflected in the general ledger.
 
 Before a bank account can be used in BigLedger, it must be created as a Cashbook and linked to a valid GL (General Ledger) Code.  
-**Documentation**: [TODO: Chart Of Account Applet](/applets/chart-of-account-applet/) â€” Documentation pending.
+**Documentation**: [TODO: Chart Of Account Applet](/applets/chart-of-account-applet/) — Documentation pending.
 
 After the GL code is prepared:
 - Open the Cashbook menu in the Cashbook applet.
 - Enter key details:
-  1. Name (e.g., â€œRHB Accountâ€)
+  1. Name (e.g., “RHB Account”)
   2. Account Number
   3. Select the Company that owns the account
   4. Assign the Currency (USD, SGD, MYR, etc.)
@@ -69,37 +54,6 @@ After the GL code is prepared:
   6. Create
 
 Once saved, proceed to the mandatory configuration of the settlement method.
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-{{< /tab >}}
-
-{{< tab >}}
-### Payment Method Setup (Settlement Method)
-
-A Settlement Method defines how a bank account is used in payment or receipt transactions.  
-It is required for:
-- Receipt Voucher  
-- Payment Voucher  
-- Cash Transfer  
-- POS payments (where applicable)
-
-### Steps
-- Navigate to Settlement Method
-- Fill in:
-  1. Code  
-  2. Name  
-  3. Description  
-  4. Select the corresponding Cashbook
-{{< /tab >}}
-
-{{< tab >}}
-### Payment Type
-
-The settlement type determines how the method is used in transactions.  
-If not assigned, it will not appear as an option.
-=======
-=======
->>>>>>> Stashed changes
 
 ### 2. Payment Method Setup (Settlement Method)
 A Settlement Method defines how a bank account is used in payment or receipt transactions.
@@ -123,7 +77,6 @@ This setup is required to use the Cashbook in modules such as:
 ### 3. Payment Type
 The settlement type determines how the method is used in transactions.
 Failure to assign a type will prevent it from appearing as a selectable option.
->>>>>>> Stashed changes
 
 Valid settlement types:
 - Bank Transfer
@@ -133,52 +86,20 @@ Valid settlement types:
 - Debit Card
 - E-wallet
 
-<<<<<<< Updated upstream
-### Configure Automatic Bank Charges (Optional)
-1. Go to the Charges section  
-2. Select the Ratio option  
-3. Enter the fee percentage (e.g., 5%)  
-4. System auto-posts the fee to the Bank Charges GL account
-{{< /tab >}}
+### 4. Configure Automatic Bank Charges (Optional)
 
-{{< tab >}}
-### Branch Linking 
-To restrict unauthorized access: Assign the settlement method only to specific branches.
-Example: Enable for HQ and Disable for KB Branch
-{{< /tab >}}
-=======
-Bank Transfer
-
-Cash
-
-Check
-
-Credit Card
-
-Debit Card
-
-E-wallet
-
-**Configure Automatic Bank Charges (Optional)**
 This feature automates the posting of bank or transaction fees (e.g., credit card charges).
 
-Go to the Charges section.
+1. Go to the Charges section.
+2. Select the Ratio option.
+3. Enter the fee percentage (e.g., 5%).
 
-Select the Ratio option.
+When the settlement method is used in a transaction, BigLedger calculates the fee and posts it to the Bank Charges GL account automatically.
 
-Enter the fee percentage (e.g., 5%).
+### 5. Branch Linking
 
-When used in a transaction, the system automatically:
+To restrict unauthorised access, assign the settlement method only to the branches that should use that account — for example, enable it for HQ and disable it for a branch that must not use it.
 
-Calculates the fee
-
-Posts it to the Bank Charges GL account
-
-### 4. Branch Linking 
-To restrict unauthorized access:
->>>>>>> Stashed changes
-
-{{< /tabs >}}
 
 #### **Inter-Account Transfers**
 
@@ -205,7 +126,7 @@ Amount: Enter the transfer value
 
 Date: Posting date
 
-Remarks: Add a clear description (e.g., â€œMonthly transfer to salary accountâ€)
+Remarks: Add a clear description (e.g., “Monthly transfer to salary account”)
 
 Click Add.
 
@@ -251,7 +172,7 @@ Example of a transfer of 10,000 from CIMB to Hong Leong:
 | Cashbook        | Balance Change |
 | --------------- | -------------- |
 | Hong Leong Bank | +10,000        |
-| CIMB Bank       | â€“10,000        |
+| CIMB Bank       | –10,000        |
 
 
 6. Summary

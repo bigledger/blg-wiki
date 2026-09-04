@@ -90,3 +90,26 @@ with the analysis, the changes made, and the commit hash.
       → source: list in planning/research/2026-09-05-broken-internal-links.md
       → note: fix as one batch: rewrite to root-relative `/path/` links. Many will be superseded by the ADR-0001 restructure, so sequence after the spec or fix only the ones that survive.
 
+### /applets/master-data/cashbook-applet/
+- [x] F-0014 (2026-09-05) LIVE: unresolved Git conflict markers (`<<<<<<< Updated upstream` … `>>>>>>> Stashed changes`, lines 37–47) plus 5 lines of mojibake, rendered on the public page.
+      → source: content/en/applets/master-data/cashbook-applet.md
+      → note: found by GPT-5.6-sol review, verified. Severity: customer-visible. Recommend immediate hygiene batch with F-0015/F-0016.
+      → batch: batches/2026-09-05-production-hygiene.md
+
+### /support/beginner-guide/cost-and-roi-questions/
+- [x] F-0015 (2026-09-05) LIVE: a raw AI tool-call transcript (`<function_calls><invoke name="TodoWrite">…`) is published at the end of the page (line ~541).
+      → source: content/en/support/beginner-guide/cost-and-roi-questions.md
+      → note: found by GPT-5.6-sol review, verified. Only occurrence repo-wide. Severity: customer-visible.
+      → batch: batches/2026-09-05-production-hygiene.md
+
+### / (home page) + footer
+- [x] F-0016 (2026-09-05) 9 dead links on the home page and site footer, verified live 404: /ecommerce/, /partners/, /partners/resources/, /partners/training/, /privacy, /security, /terms, /user-guide/introduction/ (the "Start Free Trial" button), /user-guide/industry-solutions/automotive-and-workshop-industry.
+      → source: content/en/_index.md, layouts/partials/custom/footer.html
+      → note: found by GPT-5.6-sol review, verified. /privacy /terms /security need real pages or removal — a docs site without a privacy page is also an SEO/trust signal (F-0008).
+      → batch: batches/2026-09-05-production-hygiene.md
+
+### site-wide
+- [ ] F-0017 (2026-09-05) deploy.yml runs only `hugo --minify`; the lychee + Playwright suite never gates a deploy. A conflict-marker page (F-0014) reached production because nothing checks.
+      → source: .github/workflows/deploy.yml, tests/run-all.sh
+      → note: GPT roadmap item #2. Add a quality job (build + lychee offline + Playwright + front-matter/marker/artefact lints) that deploy needs.
+

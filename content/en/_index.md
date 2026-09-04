@@ -17,7 +17,7 @@ layout: hextra-home
   **Trusted by 1 Million Users** • 100+ Integrated Modules • Malaysian Compliance Built-in
 {{< /hextra/hero-subtitle >}}
 
-{{< hextra/hero-button text="Start Free Trial" link="/user-guide/introduction/" >}}
+{{< hextra/hero-button text="Start Free Trial" link="/user-guide/getting-started/introduction/" >}}
 {{< hextra/hero-button text="Watch Demo" link="/demos-resources/" style="secondary" >}}
 
 ---
@@ -43,7 +43,7 @@ BigLedger ERP unifies all your business operations in one powerful platform. Fro
   {{< card link="/modules/crm" title="Sales & CRM" subtitle="Customers, quotes, orders, invoicing" >}}
 {{< /cards >}}
 
-**Quick Links:** [Getting Started](/user-guide/introduction/) • [Video Tutorials](/demos-resources/) • [User Guide](/user-guide/)
+**Quick Links:** [Getting Started](/user-guide/getting-started/introduction/) • [Video Tutorials](/demos-resources/) • [User Guide](/user-guide/)
 {{< /tab >}}
 
 {{< tab >}}
@@ -58,9 +58,7 @@ Join our thriving partner ecosystem and help businesses transform digitally.
 - 📈 Co-marketing opportunities
 
 {{< cards >}}
-  {{< card link="/partners/" title="Partner Program" subtitle="Learn about partnership opportunities" >}}
-  {{< card link="/partners/training/" title="Get Certified" subtitle="Technical and sales certification" >}}
-  {{< card link="/partners/resources/" title="Partner Resources" subtitle="Marketing materials and tools" >}}
+  {{< card link="https://www.bigledger.com/partners" title="Partner Program" subtitle="Learn about partnership opportunities" >}}
 {{< /cards >}}
 
 [**Apply to Become a Partner →**](https://bigledger.com/partners)
@@ -94,7 +92,7 @@ Modern REST APIs and comprehensive documentation for developers.
   {{< card link="/modules/pos" title="Point of Sale" subtitle="Retail, restaurant, multi-outlet" >}}
   {{< card link="/modules/hr" title="Human Resources" subtitle="Payroll, leave, claims, attendance" >}}
   {{< card link="/modules/projects" title="Project Management" subtitle="Tasks, milestones, time tracking" >}}
-  {{< card link="/ecommerce/" title="E-Commerce" subtitle="Shopify, Lazada, Shopee sync" >}}
+  {{< card link="/modules-v2/ecommerce/" title="E-Commerce" subtitle="Shopify, Lazada, Shopee sync" >}}
 {{< /cards >}}
 
 ---
@@ -120,7 +118,7 @@ Pre-configured templates and best practices for your specific business needs
   {{< card link="/user-guide/industry-solutions/" title="Retail & F&B" subtitle="Multi-store, loyalty, kitchen display" >}}
   {{< card link="/user-guide/industry-solutions/" title="Wholesale & Distribution" subtitle="B2B portal, route sales, van sales" >}}
   {{< card link="/user-guide/industry-solutions/" title="Manufacturing" subtitle="Discrete, process, job shop" >}}
-  {{< card link="/user-guide/industry-solutions/automotive-and-workshop-industry" title="Automotive" subtitle="Dealership, workshop, spare parts" >}}
+  {{< card link="/user-guide/industry-solutions/automotive-and-workshop/" title="Automotive" subtitle="Dealership, workshop, spare parts" >}}
   {{< card link="/user-guide/industry-solutions/" title="Professional Services" subtitle="Time billing, project tracking" >}}
   {{< card link="/user-guide/industry-solutions/" title="Healthcare" subtitle="Clinic, pharmacy, medical supplies" >}}
 {{< /cards >}}
@@ -135,7 +133,7 @@ Join thousands of Malaysian businesses already using BigLedger to streamline ope
 
 {{< cards >}}
   {{< card link="https://demo.bigledger.com" title="🖥️ Live Demo" subtitle="Try BigLedger with sample data" >}}
-  {{< card link="/user-guide/introduction/" title="📚 Quick Start Guide" subtitle="Get started in 30 minutes" >}}
+  {{< card link="/user-guide/getting-started/introduction/" title="📚 Quick Start Guide" subtitle="Get started in 30 minutes" >}}
   {{< card link="https://bigledger.com/pricing" title="💰 Pricing Plans" subtitle="Transparent, affordable pricing" >}}
 {{< /cards >}}
 
@@ -157,5 +155,5 @@ Join thousands of Malaysian businesses already using BigLedger to streamline ope
 {{< cards >}}
   {{< card link="https://bigledger.com/contact" title="📞 Contact Sales" subtitle="Get personalized demo and pricing" >}}
   {{< card link="/support/" title="💬 Get Support" subtitle="Access documentation and help" >}}
-  {{< card link="/partners/" title="🤝 Partner With Us" subtitle="Join our growing ecosystem" >}}
+  {{< card link="https://www.bigledger.com/partners" title="🤝 Partner With Us" subtitle="Join our growing ecosystem" >}}
 {{< /cards >}}
