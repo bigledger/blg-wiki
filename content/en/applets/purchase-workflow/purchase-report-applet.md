@@ -1,6 +1,37 @@
 ---
-title: "Purchase Report Applet"
-description: "Consolidated purchase analysis, supplier performance tracking, and procurement reporting for AP teams, finance managers, and purchasing administrators"
+title: "Purchase Report"
+description: "Reference for the Purchase Report applet: line-level and item-level analysis of finalised purchase invoices, purchase returns and no-stock-in invoices, its two reports, filters, every column-visibility switch, and known failure modes."
+applet_code: "purchaseReport"
+applet_repo: "blg-applet-wavelet-purchase-report-applet"
+modules: [purchasing, inventory]
+related_applets:
+  - internal-purchase-invoice-applet
+  - internal-purchase-invoice-no-stock-in-applet
+  - internal-purchase-return-applet
+  - internal-purchase-grn-applet
+  - internal-purchase-order-applet
+  - internal-payment-voucher-applet
+  - internal-purchase-debit-note-applet
+  - creditor-report-applet
+  - stock-balance-applet
+  - supplier-applet-1
+  - organisation-applet
+  - doc-item-maintenance-applet
+  - inv-item-maintenance-applet
+guides:
+  - /guides/purchasing-guides/standard-procurement-workflow/
+sources:
+  - blg-applet-wavelet-purchase-report-applet/micro-fe/projects/wavelet-erp/applets/purchase-report-applet/src/app/models/menu-items.ts
+  - blg-applet-wavelet-purchase-report-applet/micro-fe/projects/wavelet-erp/applets/purchase-report-applet/src/app/app.routing.ts
+  - blg-applet-wavelet-purchase-report-applet/micro-fe/projects/wavelet-erp/applets/purchase-report-applet/src/app/app.component.ts
+  - blg-applet-wavelet-purchase-report-applet/micro-fe/projects/wavelet-erp/applets/purchase-report-applet/src/app/models/applet-settings.model.ts
+  - blg-applet-wavelet-purchase-report-applet/micro-fe/projects/wavelet-erp/applets/purchase-report-applet/src/app/components/purchase-report-by-document-container/purchase-report-by-document/purchase-report-by-document.component.ts
+  - blg-applet-wavelet-purchase-report-applet/micro-fe/projects/wavelet-erp/applets/purchase-report-applet/src/app/components/purchase-report-by-item-code-container/purchase-report-by-item-code/
+  - blg-applet-wavelet-purchase-report-applet/micro-fe/projects/wavelet-erp/applets/purchase-report-applet/src/app/components/settings-container/
+  - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/erp/reports/purchase/PurchaseReportUow.java
+  - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/reports/purchase/PurchaseReportController.java
+  - akaun_master.bl_applet_client_side_perm_dfn (applet code purchaseReport — no rows)
 tags:
 - purchase-report
 - procurement
@@ -8,341 +39,127 @@ tags:
 - supplier-performance
 - financial-reporting
 weight: 180
+lastmod: 2026-09-05
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Purchase Report Applet** is the consolidated reporting workspace for your organization's procurement spend. It answers the most critical procurement question: **"What did we buy, from whom, and at what cost?"**
+The **Purchase Report** applet answers "what did we buy, from whom, at what cost?" from the purchase documents that actually post: finalised **Purchase Invoices**, **Purchase Returns** and **Purchase Invoices (No Stock In)**. Accounts-payable staff, buyers and finance managers open it to see purchase lines with their linked GRN and purchase order numbers, or the same data rolled up per item with quantity, cost and closing stock balance, and to export either grid.
 
-{{< figure src="/images/purchase-report-applet/purchase-report-infographic.jpg" alt="Mastering the Purchase Report Applet: A User's Guide to Procurement Insights" caption="Mastering the Purchase Report Applet: A comprehensive guide to procurement insights, covering report selection, role-based workflows, and real-world reconciliation scenarios." >}}
+It is read-only. Purchase orders, GRNs and draft invoices do not appear in it — a purchase shows up only once its invoice (or return) is FINAL.
 
-Instead of manually reconciling purchase orders, invoices, and GRNs across multiple screens, this applet brings together purchase document data into structured report views — giving AP teams, finance managers, and purchasing administrators a single place to review purchase activity, analyze supplier spend, and export data for audit or planning purposes.
+## Where it fits
 
-{{< callout type="info" >}}
-**Core Concept: Choose the report by your procurement question**
-- Use **Purchase Report** (by document) when the question is: "What specific transactions make up this spend?"
-- Use **Purchase Report By Item Code** when the question is: "How much did we spend on each item across all suppliers?"
-{{< /callout >}}
+| Position | Document / applet | Why |
+|---|---|---|
+| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/) | Purchase analysis; stock balance per location is joined in. |
+| Source documents | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Purchase Invoice No Stock In (Internal)](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/), [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) | The only document types the queries read (`posting_status = FINAL`, base-currency shadows excluded). Returns carry a negative quantity signum and reduce the totals. |
+| Linked references | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/), [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) | The *GRN No* column comes from the invoice's document links to GRNs; *PO No* from the GRN's links to purchase orders. |
+| Settlement | [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/), [Purchase Debit Note (Internal)](/applets/purchase-workflow/internal-purchase-debit-note-applet/) | The backend's purchase-report service also serves invoice settlement detail (payment vouchers and debit notes against an invoice) used by the payables reports. |
+| Related reports | [Creditor Report](/applets/finance/creditor-report-applet/), [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) | Supplier balances and stock positions. |
 
-### Which Report Should I Use First?
+## Screens and menus
 
-| If the user needs to know... | Start here | Why this is the right report |
-|------|-----------------|------------------------------|
-| Line-item details behind a purchase figure | **Purchase Report** (by document) | It shows the individual transactions that make up the total. |
-| Total spend or quantity by item code | **Purchase Report By Item Code** | It aggregates purchase data at the item level across all suppliers. |
-| Who approved the spend | Any report filtered by **Company** or **Branch** | Filter the relevant report to focus on the approval context. |
+| Menu | Route | What it is | Hidden by |
+|---|---|---|---|
+| **Purchase Report** | `purchase-report-by-document` | One row per purchase line, grouped by document. | `HIDE_PURCHASE_REPORT_BY_DOCUMENT_MENU` unless `SHOW_PURCHASE_REPORT_BY_DOCUMENT_MENU` |
+| **Purchase Report By Item Code** | `purchase-report-by-item-code` | One row per item (and branch / location / pricing scheme) with totals. | `HIDE_PURCHASE_REPORT_BY_ITEM_CODE_MENU` unless `SHOW_PURCHASE_REPORT_BY_ITEM_CODE_MENU` |
+| **Settings** | `settings/…` | Application Settings, Default Selection; also Webhook, Client Side Permission, Permission Wizard / Set / User / Team / Role Permission, Release Notes. | — |
+| **Personalization** | `personalization/…` | Personal Default Selection, Sidebar. | — |
 
-### Who Benefits from This Applet?
+### Purchase Report (by document)
 
-| Role | How they use it |
-|------|-----------------|
-| **AP Officers** | Review purchase invoices and supplier spend, verify amounts before payment processing. |
-| **Purchasing Managers** | Monitor purchase activity, review item-level spend, and compare quantities across branches. |
-| **Finance Managers** | Run period-end purchase summaries for cost-of-goods calculations and budget reviews. |
-| **Finance Admins** | Set default branch and location values and configure printable formats for exported reports. |
-| **Auditors and Reviewers** | Open purchase document details, drill into line items, and trace document links for traceability. |
+{{< figure src="/images/purchase-report-applet/purchase-report-by-document.png" alt="Purchase Report By Document view showing a grid of purchase lines with supplier and item details" caption="Purchase Report: purchase lines from finalised invoices and returns, with linked GRN and PO numbers." >}}
 
----
+**Advanced Search** (the shared general search panel; a period is mandatory): keyword (item code, name, description, scan code, alternate codes, remarks — at least three characters), **Period** (date from / to), **Date Type** (which header date the period applies to — transaction date by default, or finalised / created / updated / due date), **Supplier**, **Salesman** (the purchaser recorded on the document), **Item Type**, **Item Status**, **Item Code**, **Calculate Base On**, branch, company, location and up to twenty item-category groups. Each search field can be hidden with its `HIDE_SEARCH_*` key.
 
-## What Problems Does This Solve?
+**Calculate Base On** picks which item price or cost is multiplied by quantity to fill *Unit Cost* / *Cost Amt* (and *Purchase Cost* on the item-code report): moving-average cost (`cost_ma`, the default), replacement cost, reference price 1–3, delta price 1–3, rebate price 1–3, sales minimum / maximum price or purchase minimum / maximum price. Only the options enabled by `ADVANCED_SEARCH_SHOW_<OPTION>` (or the matching `SHOW_ADVANCED_SEARCH_<OPTION>` permission) are offered.
 
-**Without This Applet:**
-- Procurement teams pull data from purchase documents separately and reconcile manually in spreadsheets.
-- Finance cannot quickly answer "How much did we spend with Supplier X this quarter?" without running multiple reports.
-- AP teams struggle to see item-level totals without manually aggregating across documents.
-- Period-end purchase reviews require effort from multiple teams to compile reliable numbers.
+**Columns:** Doc No, Date, Doc Type, Doc Reference Date, Ref. No, Company, Branch, Location, Supplier, Item Code, Item Name, Type, Sub Type, UOM, Serial #, Qty, Unit Price, Unit Cost, Cost Amt, Gross Amount, Amount Disc, Amount Net, Amount Tax, Amount Txn, GRN No, PO No, and the five external references (Quotation, Order, Delivery Order, Invoice, Others). Rows are grouped by document with group totals; the grid's status bar exports the current result to Excel/CSV; the column toggle lets each user show or hide columns.
 
-**With the Purchase Report Applet:**
-- You get a **shared purchase reporting workspace** with filters for **Supplier**, **Company**, **Branch**, and **Date Range**.
-- You can move from **document-level detail** to **item-level summaries** without leaving the applet.
-- The report views support **Export** actions for Excel-compatible outputs at every level.
+### Purchase Report By Item Code
 
-{{< callout type="warning" >}}
-**Best used for operational review and period reporting**
-This applet is designed for review, export, and analysis of completed or finalized purchase transactions. It does not expose edit or posting actions on source purchase documents.
-{{< /callout >}}
+{{< figure src="/images/purchase-report-applet/purchase-report-by-item-code.png" alt="Purchase Report By Item Code view showing aggregated purchase totals grouped by item code" caption="Purchase Report By Item Code: quantity, amount, cost and stock balance per item." >}}
 
----
+Same search panel. **Columns:** Item Code, Item Name, Type, UOM, Branch, Location, Category 1–20, Qty, Purchase Amount, Purchase Cost (per *Calculate Base On*), Stock Balance (the location's balance as at the end of the period). Rows are per item per branch, location and pricing scheme.
 
-## The Reporting Framework: Understanding the Screens
+### Settings
 
-Before jumping into each report, it helps to understand what filters and behaviors are shared across the applet.
+{{< figure src="/images/purchase-report-applet/purchase-applet-settings.png" alt="Purchase Report Application Settings with tabs for the two reports and item category groups" caption="Application Settings: sidebar menus, report columns, search fields and item-category groups." >}}
 
-### Common Filters Across the Listings
+## Configuration
 
-All main report listings use a shared advanced-search model.
+### Before you can use it
 
-| Filter / Search | What it does |
-|--------|---------|
-| **Keyword Search** | Searches the listing. Keyword must be at least 3 characters to be effective. |
-| **Supplier** | Limits results to selected supplier entities. |
-| **Company** | Limits results to selected companies. |
-| **Branch** | Narrows results to one or more branches. |
-| **Date Range** | Sets the start and end date for the report period. |
-| **Document Type** | Switches the view between purchase order, purchase invoice, GRN, and related document types where applicable. |
+| Prerequisite | Where | Why |
+|---|---|---|
+| Finalised purchase invoices / returns | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) | Only `FINAL` documents of the three types are read. |
+| Document links GRN → invoice and PO → GRN | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/), [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) | *GRN No* and *PO No* are empty for invoices keyed without knock-off. |
+| Item master with categories and prices | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) | Category 1–20 columns and the *Calculate Base On* prices come from the item and its line snapshot. |
+| Branches, locations, suppliers | [Organisation](/applets/master-data/organisation-applet/), [Supplier](/applets/master-data/supplier-applet-1/) | Filters and defaults. |
+| Read permission on the source documents | *Permission Wizard / Set* | The grids are gated by the read permission on `INTERNAL_PURCHASE_INVOICE` and related types. |
 
-{{< callout type="warning" >}}
-**Important:** Always set the **Date Range** before running any purchase report. The listing defaults may show a narrow current-period slice. Use a full month or quarter range for period reviews.
-{{< /callout >}}
+### Applet settings
 
-### What Users Can and Cannot Do Here
+**Settings → Default Selection** (tenant-wide; *Personalization → Default Selection* overrides per user):
 
-| This applet is good for... | This applet is not for... |
-|--------|---------|
-| Reviewing supplier spend by document type, date, or amount | Editing source purchase transactions |
-| Drilling into line items and document detail for specific purchases | Posting payments, creating GRNs, or approving purchase orders |
-| Exporting purchase data for audit, reconciliation, or planning | Replacing the source purchase order or invoice applets |
-| Viewing the complete PO to Invoice audit trail | Changing purchase document status or finalizing documents |
+| Setting | What it controls | Default | Effect when changed | Who can change it |
+|---|---|---|---|---|
+| `DEFAULT_BRANCH` | Branch pre-selected in the search panel. | none | Reports open filtered to it. | Tenant admin with the Settings menu |
+| `DEFAULT_LOCATION` | Location pre-selected in the search panel. | none | Same. | Same |
 
----
+**Settings → Application Settings** — this applet keeps its own field-configuration screen (tabs *By Document*, *By Item Code*, *Item Category Group*, plus the sidebar toggles) and reads these keys; the shared screen's generic document toggles do not apply:
 
-## Role-Based Quick Start Guides
+| Group | Keys | What they control |
+|---|---|---|
+| Sidebar | `HIDE_PURCHASE_REPORT_BY_DOCUMENT_MENU`, `HIDE_PURCHASE_REPORT_BY_ITEM_CODE_MENU` | Hide either report for everyone; a `SHOW_…_MENU` client-side permission reopens it per user. |
+| By Document columns | `HIDE_DOC_NO`, `HIDE_DATE`, `HIDE_DOC_TYPE`, `HIDE_DOC_REFERENCE_DATE`, `HIDE_REF_NO`, `HIDE_COMPANY`, `HIDE_BRANCH`, `HIDE_LOCATION`, `HIDE_SUPPLIER`, `HIDE_ITEM_CODE`, `HIDE_ITEM_NAME`, `HIDE_TYPE`, `HIDE_SUB_TYPE`, `HIDE_UOM`, `HIDE_SERIAL_NUMBER`, `HIDE_QTY`, `HIDE_UNIT_PRICE`, `HIDE_MA_COST`, `HIDE_GROSS_AMOUNT`, `HIDE_AMOUNT_DISC`, `HIDE_AMOUNT_NET`, `HIDE_AMOUNT_TAX`, `HIDE_AMOUNT_TXN`, `HIDE_GRN_NO`, `HIDE_PO_NO`, `HIDE_QUOTATION`, `HIDE_ORDER`, `HIDE_DELIVERY_ORDER`, `HIDE_INVOICE`, `HIDE_OTHERS`, `HIDE_GL_CODE_TYPE` | Column visibility. `HIDE_MA_COST` hides *Unit Cost* / *Cost Amt* (the `SHOW_MA_COST` permission restores them); the external-reference columns have matching `SHOW_QUOTATION` … `SHOW_OTHERS` permissions. |
+| By Item Code columns | `HIDE_ITEM_CODE`, `HIDE_ITEM_NAME`, `HIDE_TYPE`, `HIDE_UOM`, `HIDE_BRANCH`, `HIDE_LOCATION`, `HIDE_QTY`, `HIDE_PURCHASE_AMOUNT`, `HIDE_MA_COST`, `HIDE_STOCK_BALANCE` | Column visibility. |
+| Item category groups | `HIDE_ITEM_CATEGORY_GROUP_1` … `HIDE_ITEM_CATEGORY_GROUP_20` | Hide a category column and its search filter. |
+| Search fields | `HIDE_SEARCH_ITEM_CODE`, `HIDE_SEARCH_PERIOD`, `HIDE_SEARCH_DATE_TYPE`, `HIDE_SEARCH_SUPPLIER`, `HIDE_SEARCH_SALESMAN`, `HIDE_SEARCH_ITEM_TYPE`, `HIDE_SEARCH_ITEM_STATUS`, `HIDE_SEARCH_CALCULATE_BASE_ON`, `HIDE_SEARCH_OPTIONAL` | Remove fields from the Advanced Search panel (added 2026 with the inline configuration gear). |
+| Calculate Base On | `ADVANCED_SEARCH_SHOW_COST_MA`, `ADVANCED_SEARCH_SHOW_COST_REPLACEMENT`, `ADVANCED_SEARCH_SHOW_REF_PRICE1..3`, `ADVANCED_SEARCH_SHOW_DELTA_PRICE1..3`, `ADVANCED_SEARCH_SHOW_REBATE_PRICE1..3`, `ADVANCED_SEARCH_SHOW_SALES_MIN_PRICE`, `ADVANCED_SEARCH_SHOW_SALES_MAX_PRICE`, `ADVANCED_SEARCH_SHOW_PURCHASE_MIN_PRICE`, `ADVANCED_SEARCH_SHOW_PURCHASE_MAX_PRICE` | Which cost bases are offered. |
+| Layout | `ENABLE_INLINE_APPLET_CONFIG` | Shows the inline configuration gear on the search panel and grids. |
 
-### For AP Officers: Review Purchase Transactions by Period
+Keys declared in the settings model but not used by these screens (custom statuses, `ENABLE_SST` / `ENABLE_WHT`, dimension include flags, `PRINTABLE`) have no effect.
 
-Your goal is to review finalized purchase invoices and supplier amounts for a given period.
+### Document behaviour settings
 
-1. Open **Purchase Detail Report** from the sidebar.
-2. Set **Supplier**, **Company**, and **Date Range** to narrow the results.
-3. If you use keyword search, enter at least 3 characters.
-4. Run the search and review the listing columns: **Document**, **Txn Date**, **Supplier**, **Amount**, and **Status**.
-5. Click a document row to open the detail view.
-6. Review the tabs: **Details**, **Line Items**, **Account**, **Settlement**, and **Doc Link**.
-7. Use the listing-level **Export** button to export the current result set if needed.
+Not applicable — the applet creates no documents and has no printable formats; export is the grid's Excel/CSV export.
 
-### For Purchasing Managers: Review Item-Level Spend
+### Feature visibility / permissions
 
-Your goal is to identify high-volume or high-spend items across all suppliers.
+- Server-side: the grids pass the read-permission definition of the purchase document types; users without read access to purchase invoices see nothing.
+- Client-side permissions checked in code: `SHOW_PURCHASE_REPORT_BY_DOCUMENT_MENU`, `SHOW_PURCHASE_REPORT_BY_ITEM_CODE_MENU`, `SHOW_MA_COST`, `SHOW_QUOTATION`, `SHOW_ORDER`, `SHOW_DELIVERY_ORDER`, `SHOW_INVOICE`, `SHOW_OTHERS`, and `SHOW_ADVANCED_SEARCH_<OPTION>` for each cost base. **None are seeded** in the registry for `purchaseReport` — create them under *Settings → Client Side Permission* before assigning.
+- *Personalization → Sidebar* hides menus per user.
 
-1. Open **Purchase Report By Item Code** from the sidebar.
-2. Filter by **Company**, **Branch**, and **Date Range**.
-3. Review the grouped totals by item code, including **Qty** and **Purchase Amount**.
-4. Expand any item group row to see the individual transactions that make up the total.
-5. Export the result set to Excel for further analysis if needed.
+## Fields
 
-### For Finance Managers: Period-End Purchase Review
+The applet has no create or edit forms. The search fields and the columns of both grids are listed under *Screens and menus*; the only validations are **Please enter both Date From and Date To before searching** and **Search keyword must more than 2 characters**.
 
-Your goal is to produce a purchase document review for cost-of-goods or budget review.
+## Related applets
 
-1. Open **Purchase Report** from the sidebar.
-2. Set **Company**, **Branch**, and **Date Range** to cover the full review period.
-3. Review the listing columns: **Document**, **Supplier**, **Amount**, and **Doc Type**.
-4. Click a document row to open the detail view and review the tabs.
-5. Use **Export** to download the result set as an Excel file.
-
----
-
-## Deep-Dive: The Report Workspaces
-
-### 1. Purchase Detail Report (The Transaction-Level Workspace)
-
-{{< figure src="/images/purchase-report-applet/purchase-report-by-document.png" alt="Purchase Report By Document view showing a grid of purchase transactions with supplier and item details." caption="Purchase Report By Document: Drill into transaction-level procurement data across all companies and branches." >}}
-
-This is the default landing view for document-level purchase investigation.
-
-**Use this report when:**
-- AP needs to verify one specific invoice or credit note
-- Finance needs to see the exact line items and amounts behind a purchase total
-- An auditor requests the supporting documents for a purchase transaction
-- A reviewer needs a comprehensive audit trail of a transaction
-
-**Report Columns:**
-
-| Column | What it shows |
-|--------|---------------|
-| **Document** | The purchase document identifier (invoice number, PO number, etc.). |
-| **Txn Date** | The transaction date for the document. |
-| **Supplier Code** | The entity code of the supplier. |
-| **Supplier Name** | The supplier or vendor name. |
-| **Company Name** | Company code and company name combined in one column. |
-| **Branch** | The branch associated with the document. |
-| **Currency** | Transaction currency. |
-| **Amount** | Document total amount. |
-| **Status** | Current document status (e.g., Finalized, Draft, Cancelled). |
-
-**Document Detail Tabs:**
-
-{{< figure src="/images/purchase-report-applet/purchase-document-details.png" alt="Purchase Document Details view showing header information and multiple tabs including Lines, Settlement, and Doc Link." caption="Document Details: Review comprehensive document data including line items, GL accounts, and linked documents." >}}
-
-| Tab | Purpose |
-|-----|---------|
-| **Details** | Main document-level header information. |
-| **Account** | GL account breakdown and accounting entries for the document. |
-| **Line Items** | Individual line items on the purchase document. Users can drill into **View Item** for item-level detail. |
-| **Delivery Details** | Delivery-related information when present. |
-| **Settlement** | Settlement records linked to the document. |
-| **Department** | Department and cost-center allocation. |
-| **Contra** | Contra entries or offsetting records. |
-| **Doc Link** | Linked documents and document relationships, tracing the PO → GRN → Invoice chain. |
-
-{{< callout type="tip" >}}
-**Best use case:** Start in **Purchase Detail Report** when the question is "What exactly is behind this purchase amount?" rather than "How much did we spend in total?"
-{{< /callout >}}
-
-
-### 2. Purchase Report By Item Code (The Item-Level Summary)
-
-This screen provides an aggregated view of purchase activity grouped by item code, allowing for quick analysis of item-level spend and volume.
-
-{{< figure src="/images/purchase-report-applet/purchase-report-by-item-code.png" alt="Purchase Report By Item Code view showing aggregated purchase totals grouped by individual item codes." caption="Purchase Report By Item Code: Analyze procurement spend and quantities at the individual item level." >}}
-
-**Use this report when:**
-- Purchasing needs to review the total quantity of a specific item purchased across all suppliers
-- Management wants to identify high-volume or high-spend items for contract negotiations
-- Inventory managers want to compare purchase totals against stock availability or demand
-
-**Report Columns:**
-- **Item Code**: The primary grouping for the report.
-- **Item Name**: The descriptive name of the item.
-- **Type**: Item classification (e.g., BASIC_ITEM).
-- **UOM**: Unit of Measure.
-- **Branch**: The branch where the item was purchased.
-- **Qty**: Total quantity purchased for the period and filters.
-- **Purchase Amount**: Total spend for the item.
-
----
-
-## Configuration & Settings
-
-The Purchase Report applet is highly configurable. Administrators can tailor the workspace to hide unnecessary complexity or sensitive financial information from general staff, while enabling deep spend tracking for controllers.
-
-### 1. Application Settings (System-Wide)
-
-Accessed via `Settings > Application Settings`, these toggles change how the applet looks and functions for all users.
-
-{{< figure src="/images/purchase-report-applet/purchase-applet-settings.png" alt="Purchase Applet Application Settings view showing tabs for Sidebar Menu, Purchase Report Listing, and Item Category Group." caption="Application Settings: Control menu visibility, report columns, and category groupings." >}}
-
-**A. Tailoring the Sidebar (Menu Visibility)**
-Administrators can hide sidebar menus that their layout doesn't use. 
-
-| Setting | What It Does |
-|---------|--------------|
-| `Sidebar Menu` | Use these toggles to hide or show the **Purchase Report** and **Purchase Report By Item Code** menu items for all users. |
-
-**B. Tailoring the Report Listing (Field Visibility)**
-If you need to protect sensitive financial data (like cost and margins) from general staff, or simplify the grid, you can toggle the visibility of specific columns on the report listing:
-
-| Setting | What It Does |
-|---------|--------------|
-| `Hide MA Cost` | Hides the moving average cost column. Turn on if you only want users to see purchase amounts, not internal costs. |
-| `Hide Quotation` | Hides quotation reference columns. |
-| `Hide GP` | Hides the Gross Profit column, keeping margin data confidential. |
-| `Hide Order` | Hides the linked Purchase Order column. |
-| `Hide Delivery Order` | Hides the linked Delivery Order column. |
-| `Hide Invoice` | Hides the linked Invoice column. |
-| `Hide Others` | Hides generic reference columns to save screen space. |
-
-**C. Item Category Group Mapping**
-| Setting | What It Does |
-|---------|--------------|
-| `Item Category Group (1-20)` | Allows administrators to map up to 20 different item category groups for filtering. Use the eye icon to toggle visibility of these filters on the report listings. |
-
-### 2. Default Selection
-
-This screen provides applet-wide default values to speed up user workflows.
-
-| Setting | Purpose |
-|---------|---------|
-| **Default Branch** | Preselects a specific branch automatically when opening the applet. |
-| **Default Location** | Preselects a specific location automatically when opening the applet. |
-
-### 3. Permissions Governance
-
-Because this applet exposes complete procurement spend data, access is managed through a layered permission system in the Settings menu:
-
-- **Permission Wizard:** A guided tool to set up basic view access.
-- **Role Permission:** Grant access by job title.
-- **User/Team Permission:** Grant granular exceptions to specific individuals or squads.
-
----
-
-## Personalization
-
-Individual users can override certain system defaults to speed up their daily workflow via the **Personalization** sidebar menu.
-
-### Personal Default Settings
-
-To save clicks when running reports daily, users should set their own defaults:
-
-| Setting | Why use it? |
-|---------|-------------|
-| **Default Branch** | If you only review purchases for the "Penang Hub", set this so you never have to select it from the filter dropdown again. |
-| **Default Location** | If you only verify invoices for "Warehouse A", set this as your default location. |
-
-{{< callout type="info" >}}
-Depending on deployment and permissions, administrators may also have access to additional routes such as **Webhook**, permission pages, and **Release Notes**. These are part of the applet routing but may not appear for every user in the standard menu.
-{{< /callout >}}
-
----
-
-## Common Real-World Scenarios
-
-### Scenario 1: Month-End Purchase Spend by Item
-
-**The Situation:** Finance needs total procurement spend per item for the month to support cost-of-goods calculations.
-**The Workflow:**
-1. Open **Purchase Report By Item Code**.
-2. Set **Company** and **Date Range** to cover the full month.
-3. Review the aggregated spend totals by item code.
-4. Export to Excel for further analysis or upload to the finance reporting tool.
-
-**Why this report fits the scenario:** Item-level aggregation is faster than totaling individual documents, and the export supports downstream reconciliation.
-
-### Scenario 2: Investigate a Specific Purchase Document
-
-**The Situation:** AP discovers a discrepancy in a specific purchase invoice and the team needs to review the full document details.
-**The Workflow:**
-1. Open **Purchase Report** (by document).
-2. Filter by the specific **Supplier** and the relevant **Date Range**.
-3. Click the document row to open the detail view.
-4. Review the tabs: **Details**, **Lines**, **Settlement**, and **Doc Link**.
-5. Escalate to the relevant team to resolve any discrepancies.
-
-**Why this report fits the scenario:** This is the document investigation workspace. It provides the complete view of a single purchase transaction.
-
-### Scenario 3: Audit Trail for a Specific Purchase Document
-
-**The Situation:** An external auditor requests the full supporting documentation for a large purchase invoice — including the original PO, the GRN receipt, and the invoice.
-**The Workflow:**
-1. Open **Purchase Detail Report**.
-2. Search for the invoice document number or filter by supplier and date.
-3. Open the document row in the detail view.
-4. Use **Doc Link** to show the full PO → GRN → Invoice trail.
-5. Export the detailed view or refer to the specific source document if necessary.
-
-**Why this report fits the scenario:** This is the document investigation workspace. It provides the complete audit trail without leaving the applet.
-
----
-
-## FAQs
-
-**Q: Which report should I open first?**
-
-Start with the question you need to answer. Use **Purchase Report** (by document) for investigating specific transactions, and **Purchase Report By Item Code** for aggregated item-level spend totals.
-
-**Q: What filters are available on the listing pages?**
-
-The shared listing filters are **Supplier**, **Company**, **Branch**, **Date Range**, and **Document Type**, plus keyword search. Keyword searches must be at least 3 characters long.
-
-**Q: Why does my purchase total not match the GL balance?**
-
-Check three things:
-1. Ensure you are using the exact same date range in both the purchase report and the GL.
-2. Ensure you are filtering by the same **Company** and **Currency**.
-3. Verify that all relevant invoices have been **Finalized/Posted**. Draft or unposted documents may not appear in purchase reports but may exist in the GL.
-
-**Q: Can I edit or post documents from this applet?**
-
-No. This applet is for review, drill-down, export, and print. It does not expose posting or edit actions on source purchase documents. Use the relevant purchase order, GRN, or invoice applet for those actions.
-
-**Q: What is the difference between Purchase Report and Purchase Report By Item Code?**
-
-**Purchase Report** (by document) is document-level and used for transaction investigation and audit. **Purchase Report By Item Code** is aggregated by item and used for spend analysis and volume reviews.
-
-**Q: Can I export the report results?**
-
-Yes. Each main listing screen includes an **Export** button for the current grid results.
-
-**Q: Why are some purchase documents not showing in the report?**
-
-Check the **Date Range**, **Company**, and **Document Type** filters. Draft or unposted documents may be excluded from finalized report views. If records are still missing, ask your administrator to review the applet's data scope configuration.
+- [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Purchase Invoice No Stock In (Internal)](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/), [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) — the documents reported.
+- [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/), [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) — sources of the GRN No and PO No columns.
+- [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/), [Purchase Debit Note (Internal)](/applets/purchase-workflow/internal-purchase-debit-note-applet/) — settlement documents the same backend service reports against invoices.
+- [Creditor Report](/applets/finance/creditor-report-applet/) — supplier balances; [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) — the balance the *Stock Balance* column is taken from.
+- [Supplier](/applets/master-data/supplier-applet-1/), [Organisation](/applets/master-data/organisation-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) — master data behind the filters and columns.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| *Please enter both Date From and Date To before searching* | The period is mandatory (message reworded in 2026). | Set both dates. |
+| *Search keyword must more than 2 characters* | Keyword shorter than three characters. | Type at least three characters or clear the keyword. |
+| A purchase order or GRN is missing from the report | Only FINAL purchase invoices, no-stock-in invoices and purchase returns are read. | Finalise the invoice; use the PO applet's *PO Line with GRN KO* report for ordered-versus-received. |
+| Totals do not match the General Ledger | Different date type or period, draft invoices, or the report's base-currency shadows are excluded while the GL shows base amounts. | Use *Date Type* = finalised date and the same period; compare in document currency. |
+| *GRN No* / *PO No* blank | The invoice was keyed directly (no GRN link) or the GRN was not knocked off from a PO. | Expected; check Doc Link on the invoice. |
+| *Unit Cost* / *Cost Amt* show zero or an unexpected figure | *Calculate Base On* points at a price the item lines do not carry (e.g. rebate price 3). | Choose moving-average cost or a price the item has. |
+| Cost columns missing for some users | `HIDE_MA_COST` on and the user lacks `SHOW_MA_COST`. | Grant the permission (create it first — it is not seeded). |
+| A report menu is missing | `HIDE_PURCHASE_REPORT_BY_*_MENU` on, or hidden under Personalization → Sidebar. | Turn off the setting, grant the `SHOW_…_MENU` permission, or unhide in Sidebar. |
+| Stock Balance looks wrong | It is the location balance at the end of the selected period, not today's balance. | Adjust the period or use the Stock Balance applet. |
+| Returns make quantities negative | Purchase returns carry a negative signum and net against invoices. | Expected. |
+
+## Related documentation
+
+- [Purchasing module](/modules-v2/purchasing/) and its [related applets](/modules-v2/purchasing/related-applets/)
+- [Standard procurement workflow](/guides/purchasing-guides/standard-procurement-workflow/)

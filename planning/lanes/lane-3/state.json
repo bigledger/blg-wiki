@@ -8,7 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/purchase-workflow/purchase-report-applet.md",
   "content/en/applets/purchase-workflow/blanket-purchase-order-applet.md",
   "content/en/applets/delivery-installation/delivery-installation-applet.md",
   "content/en/applets/delivery-installation/delivery-installation-driver-applet.md",
@@ -66,6 +65,10 @@
   },
   {
    "page": "content/en/applets/ecommerce/cp-commerce-admin-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/purchase-report-applet.md",
    "date": "2026-09-05"
   }
  ],

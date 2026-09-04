@@ -1,6 +1,40 @@
 ---
-title: "CP Commerce Admin Applet"
-description: "The complete administrative console for managing Customer Portal websites, mobile apps, dynamic forms, shipping, events, bookings, and B2B commerce controls."
+title: "CP Commerce Admin"
+description: "Reference for the CP Commerce Admin applet: the tenant-side console that configures Customer Portal websites and mobile apps — pricing, menus, layouts, sign-in providers, forms, notifications, spending limits, facilities and events — its menus, every configuration screen, fields and known failure modes."
+applet_code: "cp_commerce_admin_console_v1"
+applet_repo: "blg-applets-wavelet-cp-commerce"
+modules: [ecommerce, membership]
+related_applets:
+  - shopping-cart-applet
+  - internal-shopping-cart-customer-access-applet
+  - ecommerce-catalog-applet
+  - seller-admin-applet
+  - pdg-applet
+  - membership-admin-applet
+  - voucher-management-applet
+  - commission-scheme-applet
+  - events-management-applet
+  - customer-applet
+  - organisation-applet
+  - doc-item-maintenance-applet
+  - pricebook-applet
+  - shipping-pricebook-applet
+  - cashbook-applet
+guides: []
+sources:
+  - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/models/menu-items.ts
+  - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/app.routing.ts
+  - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/components/settings-container/default-settings/
+  - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/components/website-container/website-edit/website-edit.component.html
+  - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/components/website-container/website-edit/website-edit.component.ts
+  - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/components/website-container/website-edit/post-registration-config/
+  - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/components/website-container/website-edit/third-party-config/
+  - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/components/website-container/website-edit/app-version/
+  - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/components/spending-limit-container/
+  - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/components/shipping-provider-container/
+  - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/components/dynamic-form-container/
+  - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+  - akaun_master.bl_applet_client_side_perm_dfn (applet code cp_commerce_admin_console_v1 — no rows)
 tags:
 - ecommerce
 - customer-portal
@@ -11,226 +45,52 @@ tags:
 - shipping-provider
 - mobile-app-management
 weight: 10
+lastmod: 2026-09-05
 ---
 
-{{< callout type="warning" >}}
-**Work in Progress**: This documentation is currently being updated to include high-fidelity visual previews and role-specific workflows. Some sections may be subject to final verification against the latest applet build.
-{{< /callout >}}
+## Overview
 
-## Purpose and Overview
+The **CP Commerce Admin** applet is the tenant-side console behind every Customer Portal (CP) storefront — the website and mobile app where customers browse, register, order, book activities and read your content. Marketing, e-commerce and operations staff open it to configure a **Website** (pricing model, menus, layouts, sign-in providers, shipping, legal agreements, linked accounts), and to run the surrounding services: rating configuration, newsletter topics, push notifications, template and dynamic forms, B2B spending limits, blocked customers, and the facilities / activities / events / calendar booking engine.
 
-The **CP Commerce Admin Applet** is the central backend for your entire Customer Portal (CP) — the front-facing website and mobile app where your end-customers browse products, place orders, book events, and interact with your brand.
+It is a configuration applet, not a document applet: nothing here posts to stock or the General Ledger. The orders that customers place arrive as sales documents through the [Shopping Cart](/applets/ecommerce/shopping-cart-applet/) and the portal's checkout, and the products they see come from the item master and the pricing scheme or price book you assign to the website.
 
-Instead of relying on developers to push website changes, this applet gives Marketing, E-Commerce, and Operations teams direct control over what customers see, how they interact, and what they can do — all from a single administrative console.
+{{< figure src="/images/cp-commerce/cp-commerce-overview-infographic.jpg" alt="CP Commerce Admin Applet Overview" caption="The admin console configures the Website Builder and the external Customer Portal front end." >}}
 
-{{< callout type="info" >}}
-**Core Concept**: This applet manages the *admin side* of the Customer Portal. It controls **Websites**, **Forms**, **Events**, **Shipping**, **Notifications**, and **Customer Access** — everything the customer experiences on the storefront is configured here.
-{{< /callout >}}
+## Where it fits
 
-{{< figure src="/images/cp-commerce/cp-commerce-overview-infographic.jpg" alt="CP Commerce Admin Applet Overview" caption="A high-level view of the CP Commerce Admin Applet, illustrating how the backend configuration console controls the Website Builder and the external Customer Portal frontend." >}}
+| Position | Applet / system | Why |
+|---|---|---|
+| Module | [E-Commerce](/modules-v2/ecommerce/), [Membership](/modules-v2/membership/) | Storefront configuration; post-registration can create members and customers. |
+| Front end | Customer Portal web and mobile app (the `wavelet-cp-commerce` cross-platform app); the **Website Builder** dashboard the applet opens | Reads the website's layouts, menus, images, agreements and auth configuration configured here. |
+| Master data | [Organisation](/applets/master-data/organisation-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Pricebook](/applets/master-data/pricebook-applet/), [Shipping Pricebook](/applets/master-data/shipping-pricebook-applet/), [Cashbook](/applets/master-data/cashbook-applet/) | Branch and merchant, items, pricing schemes / price books, shipping price books, settlement methods. |
+| Customers and members | [Customer](/applets/master-data/customer-applet/), [Membership Admin](/applets/membership/membership-admin-applet/) | Post Registration Config creates the customer and/or membership; the Account tab links entities to a gated website; Spending Limit applies per member class. |
+| Promotions | [Voucher Management](/applets/membership/voucher-management-applet/), [Commission Scheme](/applets/sales-workflow/commission-scheme-applet/) | Linked to a website on their own tabs. |
+| Orders | [Shopping Cart](/applets/ecommerce/shopping-cart-applet/), [Shopping Cart Customer Access](/applets/ecommerce/internal-shopping-cart-customer-access-applet/) | Checkout produces the sales order; the website's *Sales Order Printable Format* is used for the customer's order document. |
+| Catalogue | [E-Commerce Catalog](/applets/ecommerce/ecommerce-catalog-applet/), [PDG](/applets/ecommerce/pdg-applet/), [Seller Admin](/applets/ecommerce/seller-admin-applet/) | Product data shown on the storefront. |
+| Events | [Events Management](/applets/crm/events-management-applet/) | Fuller event workflow; this applet's Activities group covers facilities, activities, calendars and scheduling for the portal. |
 
-## Key Features Overview
+## Screens and menus
 
-### Who Benefits from This Applet?
+Sidebar menus as defined in the applet (the *Review*, *Shipping Provider* and *Users* entries are commented out in the current build — their screens still exist and open from the routes `review`, `shipping-provider` and `users`, but they are not in the sidebar):
 
-**E-Commerce & Marketing Teams:**
-- Build and manage website layouts, banners, and menus without developer support
-- Create dynamic forms and surveys for customer feedback
-- Set up events, activities, and bookable facilities
-- Launch targeted newsletter campaigns and push notifications
+| Menu | Route | What it is |
+|---|---|---|
+| **Website** | `website` | Listing, create and the 21-tab edit screen for each storefront — the core of the applet. |
+| **Rating Configuration** | `rating` | Star-rating records and their configuration. |
+| **Topics** | `newsletter-topic` | Newsletter topics with subscribers and member-label links. |
+| **Notification** | `notification` | Push notifications with scheduling and posts. |
+| **Forms → Template Forms, Submitted Forms** | `template-form`, `submitted-form` | Reusable form templates and the inbox of submitted responses. |
+| **Dynamic Forms** | `dynamic-form` | Questionnaire builder with Question and Response tabs. |
+| **Spending Limit** | `spending-limit` | B2B spending caps per member class. |
+| **Blocked Customers** | `blocked-customers` | Portal blacklist. |
+| **Facilities** | `facilities` | Bookable spaces with activities, events and a media library. |
+| **Audit Trail** | `audit-trail` | Change log (added August 2026). |
+| **Activities → Activity, Activity Category, Calendars, Events, Scheduler** | `activity`, `activity-category`, `calendars`, `events`, `schedule` | The booking engine. |
+| *(not in sidebar)* Review, Shipping Provider, Users | `review`, `shipping-provider`, `users` | Review moderation, 3PL shipping methods, portal user listing. |
+| **Settings** | `settings/…` | Field Settings, Default Selection; also Webhook, Feature Visibility, Permission Set / User / Team / Role Permission listings. |
+| **Personalization** | `personalization/…` | Field Settings, Default Selection, Sidebar. |
 
-**B2B Account Managers:**
-- Enforce corporate spending limits on wholesale customer accounts
-- Control which portal content is visible to specific customer groups
-- Manage user registrations and block problematic accounts
-
-**Operations & IT Admins:**
-- Configure shipping providers and delivery fee logic
-- Manage iOS and Android app version requirements
-- Set up third-party integrations (Google Analytics, reCAPTCHA, social logins)
-- Generate digital signature key pairs for API security
-
-**Customer Support:**
-- Moderate product reviews and ratings before they go public
-- View and manage submitted customer forms
-- Block abusive or defaulting users from the portal
-
-### What Problems Does This Solve?
-
-**The Fragmented Portal Management Problem:**
-
-Managing an e-commerce customer portal traditionally requires:
-- Developer involvement for every website layout change
-- Separate tools for forms, surveys, and event bookings
-- No centralized control over mobile app versioning
-- Manual tracking of B2B spending limits
-- Disconnected review moderation processes
-
-**The CP Commerce Admin Solution:**
-
-- **Visual website management** — Configure layouts, menus, and banners from one console
-- **Built-in form builder** — Template and dynamic forms with submission tracking
-- **Integrated event engine** — Calendar, facility, and activity booking all in one place
-- **Automated B2B controls** — Spending limits auto-enforced at checkout
-- **Review moderation** — Approve or reject customer reviews before they go live
-- **Mobile app governance** — Force mandatory updates for outdated app versions
-- **One applet, complete control** — No more switching between disconnected tools
-
-## Key Features Overview
-
-{{< figure src="/images/cp-commerce/cp-commerce-features.jpg" alt="CP Commerce Admin: One Applet, Complete Control" caption="A visualization of the fragmented management problem and how the centralized CP Commerce Admin applet solves it." >}}
-
-{{< cards >}}
-  {{< card title="Website Management" subtitle="Configure layouts, menus, and website settings" link="#website-management-website-route" >}}
-
-  {{< card title="Shipping Providers" subtitle="Set up 3PL delivery options for checkout" link="#shipping-providers-shipping-provider-route" >}}
-
-  {{< card title="Dynamic & Template Forms" subtitle="Build surveys and manage submissions" link="#dynamic-forms-dynamic-form-route" >}}
-
-  {{< card title="Event & Facility Booking" subtitle="Create events, manage calendars and bookable spaces" link="#events--facilities-booking-engine" >}}
-
-  {{< card title="Spending Limits" subtitle="B2B corporate spending controls" link="#spending-limits-spending-limit-route" >}}
-
-  {{< card title="Notifications" subtitle="Push notifications with scheduled delivery" link="#notifications-notification-route" >}}
-
-  {{< card title="Ratings & Reviews" subtitle="Moderate customer feedback" link="#ratings--reviews" >}}
-
-  {{< card title="Settings & Permissions" subtitle="Admin configuration and access control" link="#configuration--settings" >}}
-{{< /cards >}}
-
-## Key Concepts
-
-### Understanding the CP Commerce Framework
-
-{{< figure src="/images/cp-commerce/cp-commerce-framework.png" alt="CP Commerce Admin: Your Unified Storefront Command Center" caption="A visual guide to the 'Golden Chain' of website setup and key concepts within the CP Commerce Admin framework." >}}
-
-The CP Commerce Admin controls the **admin-side configuration** that drives what customers see on the **Customer Portal** (the front-end).
-
-| Concept | What It Is | Example |
-|---------|-----------|---------|
-| **Website** | A configured storefront entity tied to a branch, merchant, and pricing model. | "MY Online Store" linked to KL Branch |
-| **Layout Instance** | A visual page template built in the Website Builder. | "Homepage Layout v2" with hero banner and product grid |
-| **Dynamic Form** | A custom questionnaire built inside the applet. Has Questions and collects Responses. | "Customer Satisfaction Survey Q1 2026" |
-| **Template Form** | A reusable form template with image management capabilities. | "Event Registration Form" |
-| **Facility** | A bookable physical space or asset. | "Meeting Room A — Capacity 20" |
-| **Activity** | A specific program or class offered within a facility. | "Saturday Yoga — 10:00 AM" |
-| **Spending Limit** | A financial cap assigned to a B2B customer account. | "XYZ Corp — RM 5,000/month maximum" |
-
-### The CP Commerce Hierarchy
-
-```
-CP Commerce Admin Applet
-│
-├── Website (Core entity)
-│   ├── Details (branch, pricing, merchant, menus, shipping config)
-│   ├── App Version (iOS / Android)
-│   ├── Manage Image (website image library)
-│   ├── Digital Signature (API key pairs)
-│   ├── Post Registration Config
-│   ├── 3rd Party Auth Config (Google, Facebook, Apple, etc.)
-│   ├── Layout Instance (website page builder)
-│   ├── Reviews (Review Settings + Review Votes)
-│   ├── Menu List (navigation menu builder)
-│   ├── Country Config (locale, language, settlement methods)
-│   ├── Label List (content classification tags)
-│   └── Content Category
-│
-├── Shipping Provider (3PL integration)
-├── Rating (star ratings management)
-├── Review (review moderation)
-├── Users (portal user management)
-├── Newsletter Topic (email campaign topics)
-├── Notification (push notifications)
-├── Template Form (reusable form templates)
-├── Dynamic Form (survey/questionnaire builder)
-├── Submitted Form (form response inbox)
-├── Spending Limit (B2B budget controls)
-├── Blocked Customers (blacklist management)
-├── Facilities (bookable spaces)
-├── Activity (programs/classes within facilities)
-├── Activity Category (grouping for activities)
-├── Calendar (admin calendar view)
-├── Events (event management)
-└── Schedule (scheduler view)
-```
-
-### The "Golden Chain" of Website Setup
-
-Before a customer can use your portal, three things must be linked correctly:
-
-1. **Website → Branch → Merchant** — The storefront must know which branch and merchant entity it belongs to.
-2. **Website → Pricing → Pricebook** — The system must know *how to price* items (Pricing Scheme, Entity Pricing, or Ecomsync by Branch).
-3. **Website → Layout → Menu** — The visual structure (which pages to show, which navigation menus to use) must be configured.
-
-{{< callout type="tip" >}}
-**Real-World Example**: You create a Website called "MY Store" → assign it to "KL HQ Branch" → set pricing to "Entity Pricing" with Pricing Scheme "Retail" → assign Top Menu "Main Nav" and Left-side Menu "Category Nav" → build a Layout Instance for the homepage → publish. Customers can now access the storefront.
-{{< /callout >}}
-
----
-
-## Quick Start Guide
-
-Get up and running quickly with these essential workflows.
-
-### For E-Commerce Admins: Launch Your First Website
-
-**Goal:** Create and publish a basic Customer Portal website.
-
-{{< figure src="/images/cp-commerce/launch-website.png" alt="Website Creation Interface" caption="The split-view Website Creator: Website Listing view on the left, and the creation form on the right displaying required fields like Website Code, Branch, and Pricing Model." >}}
-
-1. **Navigate** to the **Website** section from the sidebar (default landing page)
-2. **Create Website**: Click **"+"** → Enter Website Title (e.g., "My Brand Store") → Select Branch → Choose Pricing Model → Select Membership Class → Click **Create**
-3. **Configure Details**: In the edit view, assign:
-   - Top Menu, User Menu, Left-side Menu, Bottom Menu
-   - Default Layout Routing (the homepage layout)
-   - Default Authentication Portal
-   - Content Category
-   - Sales Order Printable Format
-4. **Build Layout**: Go to the **Layout Instance** tab → Click **"+"** to create your first page layout → Use the **Website Builder** button to visually design the page
-5. **Set Up App Versions** (if mobile): Go to **App Version** tab → Add iOS and Android version entries
-6. **Publish**: Set Status to **Active** → Click **Save**
-
-**What happens next?** Your Customer Portal is now live and accessible to customers. They can browse, register, and place orders based on your layout and pricing configuration.
-
-**Pro Tip:** Enable "App Version Update Check" checkbox and set the App Store URLs to auto-prompt users with outdated mobile apps to update.
-
----
-
-### For Marketing Teams: Create a Customer Survey
-
-**Goal:** Build a dynamic form, publish it to the portal, and review submissions.
-
-{{< figure src="/images/cp-commerce/cp-commerce-create-form.png" alt="Create Dynamic Form" caption="The Dynamic Form Creator: Configure the form's name, status, and link it to a specific Website entity." >}}
-
-{{< figure src="/images/cp-commerce/cp-commerce-form-questions.png" alt="Dynamic Form Questions" caption="The Question Builder Tab: Define form fields like text inputs, checkboxes, or dropdowns, mark them as required, and set their sorting order." >}}
-
-1. **Navigate** to **Dynamic Form** from the sidebar
-2. **Create**: Click **"+"** → Enter form title (e.g., "Customer Satisfaction Q1")
-3. **Add Questions**: Open the form → Go to the **Question** tab → Add questions (text, multiple choice, dropdown, file upload)
-4. **Review Responses**: When customers submit, their answers appear in the **Response** tab
-5. **Or use Template Forms**: Navigate to **Template Form** to create reusable form templates with managed images
-
-**What happens next?** The form is available on the Customer Portal. As customers submit, you can view, filter, and export their responses from either the **Response** tab within the Dynamic Form or from the **Submitted Form** section in the sidebar.
-
----
-
-### For Operations: Set Up a Shipping Provider
-
-**Goal:** Connect a delivery service so customers see shipping options at checkout.
-
-1. **Navigate** to **Shipping Provider** from the sidebar
-2. **Create**: Click **"+"** → Enter provider name (e.g., "J&T Express")
-3. **Configure Edit View**:
-   - **Main Details** tab: Set provider type (Flat Rate or Table Rate)
-   - **Table Rate** tab (if applicable): Define rates by weight, destination, or order value
-   - **API Details** tab: Enter the provider's API credentials for real-time rate calculation
-4. **Link to Website**: Go back to the Website Edit → Check **"Enable Shipping Fee Process"** → Select the Shipping Fee Option → Choose Shipping Price Book or set a delivery charges item code
-
-**What happens next?** Customers see delivery options and rates at checkout. The system calculates costs based on your configured rules.
-
----
-
-## The Webstore Management Dashboard
+### The Webstore Management Dashboard (Website Builder button)
 
 **Goal:** Provide Store Managers a unified, simplified front-end console to configure their website without needing to navigate the complex backend ERP menus.
 
@@ -240,7 +100,7 @@ This dashboard acts as an aggregated shortcut center, presenting the most critic
 
 ![Webstore Dashboard Interface](/images/cp-commerce/webstore-dashboard.png)
 
-### The 10 Dashboard Tiles
+#### The 10 Dashboard Tiles
 
 | Dashboard Tile | Purpose & Benefit | Corresponding Backend Module |
 |----------------|-------------------|------------------------------|
@@ -257,7 +117,7 @@ This dashboard acts as an aggregated shortcut center, presenting the most critic
 
 ---
 
-### Dashboard Access Controls & Visibility
+#### Dashboard Access Controls & Visibility
 
 Not every store employee should have access to the entire Webstore Dashboard. 
 
@@ -271,10 +131,9 @@ To hide a tile:
 
 ---
 
-## Website Management (`website` route)
+### Website Management (`website` route)
 
-
-### Website Listing
+#### Website Listing
 
 The default landing page of the applet. Shows all configured website/storefront entities.
 
@@ -283,7 +142,7 @@ The default landing page of the applet. Shows all configured website/storefront 
 - Key columns: Website Code, Website Title, Status
 - Click any row to open the edit view
 
-### Website Create
+#### Website Create
 
 **Creating a new website — Field-by-Field Guide:**
 
@@ -294,7 +153,7 @@ The default landing page of the applet. Shows all configured website/storefront 
 
 After clicking **Create**, you are taken to the full edit view with many more fields and tabs.
 
-### Website Edit — Tabs Overview
+#### Website Edit — Tabs Overview
 
 {{< figure src="/images/cp-commerce/website-edit-tabs.png" alt="Website Edit Content Tabs" caption="The complete Website Edit configuration panel, displaying the multiple tabs (Details, App Version, Manage Image, etc.) used to govern different aspects of the Customer Portal." >}}
 
@@ -327,7 +186,7 @@ When you select a website to edit, you'll see the **full configuration panel** w
 ---
 
 <a id="details-tab-deep-dive"></a>
-#### Details Tab (Deep Dive)
+##### Details Tab (Deep Dive)
 
 This is the most field-heavy tab. Here's the full configuration:
 
@@ -336,13 +195,13 @@ This is the most field-heavy tab. Here's the full configuration:
 | **Website Code** | Auto-generated unique ID | Read-only | — |
 | **Website Title** | Display name of the storefront | Yes | — |
 | **Branch** | Linked branch entity | Yes | — |
-| **Pricing** | How prices are determined for this store | Yes | — |
+| **Pricing** | How prices are determined for this store: `PRICING_SCHEME`, `ENTITY_PRICING` or `ECOMSYNC_BY_BRANCH` | Yes | — |
 | **Pricing Scheme** | Select the pricing scheme | *Conditional* | Shows when Pricing = "Pricing Scheme" or "Entity Pricing" |
 | **Pricing Scheme 2** | Optional secondary pricing scheme | *Conditional* | Shows when Pricing = "Pricing Scheme" or "Entity Pricing" |
 | **Price Book** | Select price book directly | *Conditional* | Shows when Pricing = "Ecomsync by Branch" |
 | **Merchant** | Which merchant entity this store represents | No | — |
 | **Enable Shipping Fee Process** | Checkbox to activate shipping at checkout | No | — |
-| **Shipping Fee Options** | Select how shipping fees are calculated | *Conditional* | Shows when "Enable Shipping Fee Process" is checked |
+| **Shipping Fee Options** | How the fee is calculated: *Shipping Pricebook*, *Delivery Charges*, *Delivery Charges by Country* or *Delivery Charges by Region* | *Conditional* | Shows when "Enable Shipping Fee Process" is checked |
 | **Item Code for Delivery Charges** | Doc item used for delivery charge line items | *Conditional* | Shows when shipping fee option = Delivery Charges |
 | **Default Shipping Price Book Code** | Shipping pricebook for rate calculation | *Conditional* | Shows when shipping fee option = Shipping Price Book |
 | **Item Code for Shipping Fee** | Doc item used for shipping fee line items | *Conditional* | Shows when shipping fee option = Shipping Price Book |
@@ -351,7 +210,7 @@ This is the most field-heavy tab. Here's the full configuration:
 | **Default Discount Price Book** | Default pricebook for promotional discounts | No | — |
 | **Top Menu** | Navigation menu shown at the top of the website | No | — |
 | **User Menu** | Navigation menu for logged-in user options | No | — |
-| **Left-side Menu** | Sidebar navigation menu | No | — |
+| **Left-side Menu** (labelled "Lift-side Menu" on screen) | Sidebar navigation menu | No | — |
 | **Bottom Menu** | Footer navigation menu | No | — |
 | **Content Category** | Label list used for categorizing content | No | — |
 | **Sales Order Printable Format** | Printable format for customer order confirmations | No | — |
@@ -374,13 +233,13 @@ This is the most field-heavy tab. Here's the full configuration:
 | **Reseller Banner fields** | Free Delivery Text, Middle Text, Background Color, Color, Font | *Conditional* | Shows when "Enable Reseller Website" is checked |
 | **Enable App Version Update Check** | Force mobile users to update outdated apps | No | — |
 | **Google Store URL / Apple Store URL** | App store links for update prompts | *Conditional* | Shows when "Enable App Version Update Check" is checked |
-| **Hide Website Builder Elements** | Checkboxes to hide: Banners, Menu Manager, Layout Manager, Image Manager, Product Management, Voucher Management, Event Manager, Notification, Shipping, QR Code Manager, Activity Manager | No | — |
+| **Hide Website Builder Elements** | Checkboxes `hideBanners`, `hideMenuManager`, `hideLayoutManager`, `hideImageManager`, `hideProductManagement`, `hideVoucherManagement`, `hideEventManager`, `hideNotification`, `hideShipping`, `hideQrCodeManager`, `hideActivityManager` — each removes one tile from the Webstore dashboard | No | — |
 | **Created By / Created Date / Modified By / Modified Date** | Audit fields | Read-only | — |
 
 ---
 
 <a id="app-version-tab-deep-dive"></a>
-#### App Version Tab (Deep Dive)
+##### App Version Tab (Deep Dive)
 
 Manages iOS and Android mobile app version tracking with two sub-tabs:
 
@@ -404,7 +263,7 @@ Manages iOS and Android mobile app version tracking with two sub-tabs:
 ---
 
 <a id="manage-image-tab-deep-dive"></a>
-#### Manage Image Tab (Deep Dive)
+##### Manage Image Tab (Deep Dive)
 
 The **Manage Image** tab serves as the central asset library for your storefront. Here, you upload and organize specifically formatted images that are later referenced in branding, layout banners, and product displays.
 
@@ -426,7 +285,7 @@ The **Manage Image** tab serves as the central asset library for your storefront
 ---
 
 <a id="digital-signature-tab-deep-dive"></a>
-#### Digital Signature Tab
+##### Digital Signature Tab
 
 Generate and manage cryptographic key pairs (RSA/DSA) used to digitally sign API requests between the Customer Portal and external ERP systems. This ensures data integrity and authenticity.
 
@@ -439,7 +298,7 @@ Generate and manage cryptographic key pairs (RSA/DSA) used to digitally sign API
 | **Public Key** | The generated public key shared with external systems for verification. | Read-only |
 
 <a id="post-registration-config-tab-deep-dive"></a>
-#### Post Registration Config Tab
+##### Post Registration Config Tab
 
 **What is Post Registration Config?**
 
@@ -464,7 +323,7 @@ This tab controls **what happens automatically** the moment a new customer compl
 {{< /callout >}}
 
 <a id="third-party-auth-config-tab-deep-dive"></a>
-#### 3rd Party Auth Config Tab
+##### 3rd Party Auth Config Tab
 
 Centralize all external API integrations for authentication, security (reCAPTCHA), and analytics. Each provider has its own sub-tab:
 
@@ -476,12 +335,12 @@ Centralize all external API integrations for authentication, security (reCAPTCHA
 | **Apple Login** | Enables "Sign in with Apple" (required for most iOS apps). | Client ID, Team ID |
 | **Mini-Orange** | Enterprise SSO integration via the Mini-Orange platform. | API Key, Customer Key |
 | **Google Analytics** | Tracks portal traffic and customer conversion behavior. | Measurement ID (G-XXXX) |
-| **Zendesk** | Embeds a live chat bubble on the storefront for support. | Widget Snippet / Key |
+| **Zendesk Live Chat** | Embeds a live chat bubble on the storefront for support. | Widget Snippet / Key |
 
 ---
 
 <a id="layout-instance-tab-deep-dive"></a>
-#### Layout Instance Tab
+##### Layout Instance Tab
 
 The **Layout Instance** tab is the control center for your site's pages. A "Layout Instance" represents a specific page (e.g., Homepage, About Us, Landing Page).
 
@@ -504,7 +363,7 @@ When you open a layout instance, you'll see **4 tabs**:
 | **Name** | Friendly name for internal organization | Yes |
 | **Description** | Admin notes about the page's purpose | No |
 
-##### How the Visual Website Builder Works
+###### How the Visual Website Builder Works
 
 Accessible via the **Website Builder** button in the header, this drag-and-drop environment allows you to design your pages using a hierarchical node system:
 
@@ -517,13 +376,13 @@ Accessible via the **Website Builder** button in the header, this drag-and-drop 
 - **Interactive Canvas (Center)**: Rearrange elements visually.
 - **Properties Panel (Right)**: Configure the specific settings for the selected element.
 
-##### Widget Reference Guide
+###### Widget Reference Guide
 
 Below is the complete catalog of all available widgets, organized by category. When configuring a node as a **Widget**, select the appropriate Widget ID from the dropdown and configure its parameters.
 
 ---
 
-###### 🏗️ Structure & Header Widgets
+**Structure & Header Widgets**
 
 | Widget ID | Widget Name | What It Does | Key Configurable Parameters |
 |-----------|------------|-------------|----------------------------|
@@ -532,7 +391,7 @@ Below is the complete catalog of all available widgets, organized by category. W
 | `FOOTER` | Footer | Website footer with contact info and links. | Mobile mode, header size, mobile footer field, email, Facebook URL, Instagram URL, display logo |
 | `BIO_FOOTER` | Bio Footer | Footer with company bio, address, and social links. | Footer line 1/2/3, postal code, city, state, email, phone, social links (FB/IG/TikTok/YT) |
 
-###### 🛍️ Product Display Widgets
+**Product Display Widgets**
 
 | Widget ID | Widget Name | What It Does | Key Configurable Parameters |
 |-----------|------------|-------------|----------------------------|
@@ -544,7 +403,7 @@ Below is the complete catalog of all available widgets, organized by category. W
 | `CATEGORY_FILTER_PRODUCT_LIST` | Category Filter Product List | Product list with a category filter bar on top. | Background/text/active colors, infinite scrolling toggle, column count |
 | `POWER_SEARCH_FILTER` | Power Search Filter | Advanced search with sorting and filtering controls. | Sorting functions (Latest/Popular/Top Sales/Price), display attribute icons |
 
-###### 🧭 Navigation & Menu Widgets
+**Navigation & Menu Widgets**
 
 | Widget ID | Widget Name | What It Does | Key Configurable Parameters |
 |-----------|------------|-------------|----------------------------|
@@ -553,7 +412,7 @@ Below is the complete catalog of all available widgets, organized by category. W
 | `TAB_MENU` | Tab Menu | Tab-style navigation for sub-sections. | Menu list selection |
 | `MOBILE_TAB_MENU` | Mobile Tab Menu | Bottom tab bar for mobile app navigation. | Menu list selection |
 
-###### 🛒 E-Commerce Workflow Widgets
+**E-Commerce Workflow Widgets**
 
 | Widget ID | Widget Name | What It Does | Key Configurable Parameters |
 |-----------|------------|-------------|----------------------------|
@@ -563,7 +422,7 @@ Below is the complete catalog of all available widgets, organized by category. W
 | `MY_INVOICE` | My Invoice | List of customer's invoices. | Invoice detail layout URL |
 | `REQUEST_REFUND` | Request Refund | Refund request form. | Reasons array, email recipient for notifications |
 
-###### 👤 User Account & Membership Widgets
+**User Account & Membership Widgets**
 
 | Widget ID | Widget Name | What It Does | Key Configurable Parameters |
 |-----------|------------|-------------|----------------------------|
@@ -571,7 +430,7 @@ Below is the complete catalog of all available widgets, organized by category. W
 | `MEMBERSHIP` | Membership | Display membership tier cards. | Membership class array, icon color, background color |
 | `MEMBER_POINTS_COUNTER` | Membership Points Counter | Display member's loyalty points balance. | Point color, line color |
 
-###### 📋 Form & Interaction Widgets
+**Form & Interaction Widgets**
 
 | Widget ID | Widget Name | What It Does | Key Configurable Parameters |
 |-----------|------------|-------------|----------------------------|
@@ -582,7 +441,7 @@ Below is the complete catalog of all available widgets, organized by category. W
 ---
 
 <a id="menu-list-tab-deep-dive"></a>
-#### Menu List Tab
+##### Menu List Tab
 
 **What is the Menu List Tab?**
 
@@ -605,7 +464,7 @@ Each individual menu item (link) within a menu has its own edit view with **2 ta
 | **Manage Image** | Upload an icon or thumbnail image for this menu item |
 
 <a id="posts-tab-deep-dive"></a>
-#### Posts Tab
+##### Posts Tab
 
 **What is the Posts Tab?**
 
@@ -632,7 +491,7 @@ Posts are your website's content entries — blog articles, news items, brand st
 ---
 
 <a id="user-agreement-tab-deep-dive"></a>
-#### User Agreement Tab
+##### User Agreement Tab
 
 **What is the User Agreement Tab?**
 
@@ -661,7 +520,7 @@ When you open an existing agreement document, you'll see **2 tabs**:
 | **Main** | Edit the document details and replace the uploaded PDF | Update title, document code, expiry date, status, or upload a new PDF version. You can also delete the agreement from here. |
 | **Agreed Users** | View a complete audit trail of every user who agreed to this document | Search and browse all users who consented — see their name, email, phone, member ID, IP address, consent method, and agreement date |
 
-##### Agreed Users Tab
+###### Agreed Users Tab
 
 This tab provides the compliance proof you need. It shows a searchable grid of every portal user who has accepted this specific agreement document:
 
@@ -681,7 +540,7 @@ This tab provides the compliance proof you need. It shows a searchable grid of e
 {{< /callout >}}
 
 <a id="reviews-tab-deep-dive"></a>
-#### Reviews Tab
+##### Reviews Tab
 
 **What is the Reviews Tab?**
 
@@ -693,7 +552,7 @@ This tab configures the **rules and settings** for how the product review system
 | **Review Votes** | Configure the "Helpful/Not Helpful" voting buttons on customer reviews | Voting labels, display settings, and the raw JSON configuration (editable in the **JSON** sub-tab within the vote edit view) |
 
 <a id="label-list-tab-deep-dive"></a>
-#### Label List Tab
+##### Label List Tab
 
 **What is the Label List Tab?**
 
@@ -715,7 +574,7 @@ Labels are **classification tags** used to organize and filter content across yo
 | **Child Label** | Create and manage sub-labels under this parent label — useful for multi-level categorization (e.g., Parent: "Apparel" → Children: "T-Shirts", "Jeans", "Accessories") |
 
 <a id="content-category-tab-deep-dive"></a>
-#### Content Category Tab
+##### Content Category Tab
 
 Define logical groupings for products and posts to enable organized browsing.
 
@@ -728,7 +587,7 @@ Define logical groupings for products and posts to enable organized browsing.
 ---
 
 <a id="account-tab-deep-dive"></a>
-#### Account Tab
+##### Account Tab
 
 **What is the Account Tab?**
 
@@ -782,7 +641,7 @@ Click the **Delete** button in the account detail view to **unlink** (remove) th
 {{< /callout >}}
 
 <a id="branch-tab-deep-dive"></a>
-#### Branch Tab
+##### Branch Tab
 
 Manage the physical branch locations or pickup points linked to this specific digital storefront. Branches are created and managed in the [Organisation Applet](/applets/master-data/organisation-applet/).
 
@@ -792,7 +651,7 @@ Manage the physical branch locations or pickup points linked to this specific di
 | **Branch Name** | Friendly name displayed to customers in pickup options | Yes |
 
 <a id="region-tab-deep-dive"></a>
-#### Region Tab
+##### Region Tab
 
 Define the geographical regions used for shipping calculation and content localization.
 
@@ -803,7 +662,7 @@ Define the geographical regions used for shipping calculation and content locali
 | **Status** | Toggle availability for shipping rules | Yes |
 
 <a id="country-tab-deep-dive"></a>
-#### Country Tab
+##### Country Tab
 
 **What is the Country Tab?**
 
@@ -824,7 +683,7 @@ When you open a country record, you'll see **5 tabs**:
 ---
 
 <a id="voucher-management-tab-deep-dive"></a>
-#### Voucher Management Tab
+##### Voucher Management Tab
 
 Link and manage discount vouchers and promotional coupons that customers can use during checkout. For full voucher configuration details, see the [Voucher Management Applet](/applets/membership/voucher-management-applet/).
 
@@ -836,7 +695,7 @@ Link and manage discount vouchers and promotional coupons that customers can use
 | **Status** | Toggle to activate/deactivate the coupon instantly | Yes |
 
 <a id="commission-scheme-tab-deep-dive"></a>
-#### Commission Scheme Tab
+##### Commission Scheme Tab
 
 Define how sales commissions are calculated for agents or affiliates linked to this website. For full commission configuration details, see the [Commission Scheme Applet](/applets/sales-workflow/commission-scheme-applet/).
 
@@ -846,7 +705,7 @@ Define how sales commissions are calculated for agents or affiliates linked to t
 | **Commission Name** | Descriptive name for the scheme | Yes |
 
 <a id="language-tab-deep-dive"></a>
-#### Language Tab
+##### Language Tab
 
 Configure the multi-language support settings for the storefront Frontend.
 
@@ -857,7 +716,7 @@ Configure the multi-language support settings for the storefront Frontend.
 | **Status** | Enable/Disable the language option on the site | Yes |
 
 <a id="settlement-method-tab-deep-dive"></a>
-#### Settlement Method Tab
+##### Settlement Method Tab
 
 Link the payment settlement gateways (Stripe, Bank Transfer, Card, etc.) available for this website's checkout process. Settlement methods are configured in the [Cashbook Applet](/applets/master-data/cashbook-applet/).
 
@@ -867,9 +726,7 @@ Link the payment settlement gateways (Stripe, Bank Transfer, Card, etc.) availab
 | **Settlement Name** | The name shown to customers (e.g., "Pay with Credit Card") | Yes |
 | **Status** | Toggle to enable/disable the payment method | Yes |
 
----
-
-## Shipping Providers (`shipping-provider` route)
+### Shipping Providers (`shipping-provider` route — not in the sidebar)
 
 **What are Shipping Providers?**
 
@@ -909,7 +766,7 @@ Variable delivery fees based on weight, destination zone, or order value. Has **
 
 **Type 3 — Integration (API-driven):**
 
-Real-time rate calculation via a third-party logistics API (e.g., J&T Express, DHL). Has **2 tabs**:
+Real-time rate calculation via a third-party logistics API. Has **2 tabs**:
 
 | Tab | Purpose |
 |-----|---------|
@@ -918,7 +775,7 @@ Real-time rate calculation via a third-party logistics API (e.g., J&T Express, D
 
 ---
 
-## Dynamic Forms (`dynamic-form` route)
+### Dynamic Forms (`dynamic-form` route)
 
 **What are Dynamic Forms?**
 
@@ -934,7 +791,7 @@ A built-in survey and questionnaire builder. You design questions, and customers
 
 ---
 
-## Template Forms (`template-form` route)
+### Template Forms (`template-form` route)
 
 Reusable form templates with built-in image management. Useful for creating standardized registration or feedback forms.
 
@@ -947,17 +804,17 @@ Reusable form templates with built-in image management. Useful for creating stan
 
 ---
 
-## Submitted Forms (`submitted-form` route)
+### Submitted Forms (`submitted-form` route)
 
 The central inbox for all customer form submissions across both Dynamic Forms and Template Forms. Admins can view, filter, export, and take action on submitted responses.
 
 ---
 
-## Events & Facilities Booking Engine
+### Activities and Facilities (booking engine)
 
 Manage events, facilities, activities, and calendar bookings directly within the CP Commerce Admin. For a dedicated events workflow with expenses, guest management, and advanced scheduling, see the [Events Management Applet](/applets/crm/events-management-applet/).
 
-### Facilities (`facilities` route)
+#### Facilities (`facilities` route)
 
 Define bookable physical spaces or assets.
 
@@ -970,7 +827,7 @@ Define bookable physical spaces or assets.
 | **Event** | View events associated with this facility |
 | **Media Library** | Upload images and media for this facility's portal listing |
 
-### Activities (`activity` route)
+#### Activities (`activity` route)
 
 Programs, classes, or services offered within a facility.
 
@@ -982,11 +839,11 @@ Programs, classes, or services offered within a facility.
 | **Manage Images** | Upload promotional images for this activity |
 | **Events** | View events that include this activity |
 
-### Activity Categories (`activity-category` route)
+#### Activity Categories (`activity-category` route)
 
 Group activities into logical categories (e.g., "Fitness", "Workshops", "Consultation"). Helps customers filter and browse available programs.
 
-### Events (`events` route)
+#### Events (`events` route)
 
 Create specific occurrences (e.g., "Summer Mega Sale Launch — July 15").
 
@@ -1001,7 +858,7 @@ Create specific occurrences (e.g., "Summer Mega Sale Launch — July 15").
 | **Linked Events** | Associate related events together |
 | **Posts** | Create announcement posts tied to this event |
 
-### Calendars (`calendars` route)
+#### Calendars (`calendars` route)
 
 Admin calendar view for managing scheduled events and bookings.
 
@@ -1012,13 +869,13 @@ Admin calendar view for managing scheduled events and bookings.
 | **Main** | Calendar name, description, and settings |
 | **Members** | Assign team members who manage this calendar |
 
-### Schedule (`schedule` route)
+#### Schedule (`schedule` route)
 
 Scheduler view for visualizing bookings across facilities and time slots.
 
 ---
 
-## Spending Limits (`spending-limit` route)
+### Spending Limits (`spending-limit` route)
 
 **What are Spending Limits?**
 
@@ -1031,14 +888,14 @@ Spending Limits are **automated financial controls** designed for **B2B customer
 **Real-World Scenario:**
 ```
 Company: XYZ Corp
-Purchasing Manager: Ahmad
+Purchasing manager: (B2B account user)
 Spending Limit: RM 5,000 / 30 days
 
-Scenario: Ahmad's cart totals RM 6,200
+Scenario: the cart totals RM 6,200
 Result: Checkout is BLOCKED — exceeds the 30-day spending limit
-Action: Finance approves an exception, or Ahmad splits the order
+Action: Finance approves an exception, or the order is split
 
-If Ahmad exceeds the limit 3 times: His account is banned for the configured Ban Period
+If the limit is exceeded repeatedly: the account is banned for the configured Ban Period
 ```
 
 **Spending Limit Edit — Fields:**
@@ -1060,9 +917,9 @@ If Ahmad exceeds the limit 3 times: His account is banned for the configured Ban
 
 ---
 
-## Ratings & Reviews
+### Ratings and Reviews
 
-### Ratings (`rating` route)
+#### Rating Configuration (`rating` route)
 
 Manage product/service star ratings submitted by customers.
 
@@ -1072,7 +929,7 @@ Manage product/service star ratings submitted by customers.
 |-----|---------|
 | **Details** | View rating details — product, customer, score, date |
 
-### Reviews (`review` route)
+#### Reviews (`review` route — not in the sidebar)
 
 **What is the Review section?**
 
@@ -1086,7 +943,7 @@ Admins can manually create reviews on behalf of customers — useful for importi
 |-------|---------|----------|---------|
 | **Product** | Select which product this review is for (opens a product picker) | Yes | "Organic Premium Coffee Beans" |
 | **Product Rating** | Click stars (1–5) to set the rating score | Yes | ★★★★☆ (4 stars) |
-| **Customer Name** | Select which customer authored this review (opens a customer picker) | Yes | "Ahmad bin Ibrahim" |
+| **Customer Name** | Select which customer authored this review (opens a customer picker) | Yes | the customer record |
 | **Review Summary** | The review body text | No | "Great quality, fast delivery" |
 | **Review Title** | Headline for the review | Yes | "Excellent product!" |
 | **Status** | Approval status — controls whether the review appears on the portal | Yes | Approved / Pending / Rejected |
@@ -1099,7 +956,7 @@ Admins can manually create reviews on behalf of customers — useful for importi
 
 ---
 
-## Users (`users` route)
+### Users (`users` route — not in the sidebar)
 
 Portal user management — view all registered Customer Portal users.
 
@@ -1111,13 +968,13 @@ Portal user management — view all registered Customer Portal users.
 
 ---
 
-## Blocked Customers (`blocked-customers` route)
+### Blocked Customers (`blocked-customers` route)
 
 Blacklist management — block abusive, fraudulent, or defaulting users from accessing the Customer Portal entirely.
 
 ---
 
-## Newsletter Topics (`newsletter-topic` route)
+### Topics (`newsletter-topic` route)
 
 **What are Newsletter Topics?**
 
@@ -1134,7 +991,7 @@ Newsletter Topics let you create **topic-based mailing lists** for your Customer
 
 ---
 
-## Notifications (`notification` route)
+### Notifications (`notification` route)
 
 **What is the Notification section?**
 
@@ -1156,73 +1013,79 @@ Each notification can have **Posts** (sub-items) with their own tabs:
 
 ---
 
-## Configuration & Settings
+## Configuration
 
-Access via the **Settings** sidebar menu item.
+### Before you can use it
 
-### Feature Visibility (`Settings > Feature Visibility`)
+| Prerequisite | Where | Why |
+|---|---|---|
+| Branch (and merchant entity) | [Organisation](/applets/master-data/organisation-applet/) | *Branch* is required on Website create; *Merchant* on the Details tab. |
+| Items with prices in a pricing scheme or price book | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Pricebook](/applets/master-data/pricebook-applet/) | The website's *Pricing* model (`PRICING_SCHEME`, `ENTITY_PRICING`, `ECOMSYNC_BY_BRANCH`) decides which price the storefront shows; an item without a price in that scheme shows without a price or not at all. |
+| Membership class | [Membership Admin](/applets/membership/membership-admin-applet/) | *Membership Class* is required on Website create; Spending Limit rules are per member class. |
+| Shipping price book or a delivery-charge item | [Shipping Pricebook](/applets/master-data/shipping-pricebook-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Needed once *Enable Shipping Fee Process* is on, depending on the *Shipping Fee Option*. |
+| Settlement methods | [Cashbook](/applets/master-data/cashbook-applet/) | Linked per website (Settlement Method tab) and per country. |
+| Sales order printable format | Sales Order applet's Printable Format Settings | *Sales Order Printable Format* on the Details tab. |
+| Third-party credentials | Google reCAPTCHA / Login / Analytics, Facebook, Apple, Mini-Orange, Zendesk consoles | Entered on the 3rd Party Auth Config tab. |
+| Legal documents as PDF | — | Uploaded on the User Agreement tab and selected as *Privacy Agreement* / *Terms & Conditions Agreement*. |
 
-Toggle which features are visible/accessible in the applet. This is the default settings landing page.
+Typical order for a new storefront: create the Website (title, branch, pricing, membership class) → Details tab (menus, default layout routing, authentication portal, content category, printable format) → Layout Instance (build pages in the Website Builder) → App Version (mobile) → set *Status* to Active.
 
-### Default Settings (`Settings > Default Selection`)
+### Applet settings
 
-Set system-wide default values that auto-populate when creating new records.
+**Settings → Default Selection** (tenant-wide; *Personalization → Default Selection* overrides per user):
 
-### Field Configuration (`Settings > Field Settings`)
+| Setting | What it controls | Default | Effect when changed | Who can change it |
+|---|---|---|---|---|
+| `DEFAULT_BRANCH`, `DEFAULT_LOCATION` | Branch and location pre-selected on new records. | none | New websites and records open with them. | Tenant admin with the Settings menu |
+| `DEFAULT_TIMEZONE` | Time zone used for scheduled notifications and event times. | none | Scheduled times are interpreted in this zone. | Same |
 
-Configure which fields are visible, required, or hidden across different forms in the applet.
+**Settings → Field Settings** opens the shared field-configuration screen, but this applet has no settings model and reads none of its keys — the toggles shown there have no effect on CP Commerce Admin. All behaviour is configured per website on the Website edit tabs.
 
-### Webhook (`Settings > Webhook`)
+### Document behaviour settings
 
-Configure outbound webhooks to notify external systems when events occur (e.g., new form submission, new review, new user registration).
+Not applicable — CP Commerce Admin is not a document applet. Order posting is governed by the sales documents the checkout creates.
 
-### Permission Management
+### Feature visibility / permissions
 
-| Setting | Purpose |
-|---------|---------|
-| **Permission Set Listing** | Define named permission sets (e.g., "Marketing Admin", "Event Manager") |
-| **User Permission Listing** | Assign permission sets to individual users |
-| **Team Permission Listing** | Assign permission sets to teams |
-| **Role Permission Listing** | Assign permission sets to roles |
+- *Settings → Feature Visibility* hides sidebar menus per team; *Personalization → Sidebar* hides them per user.
+- *Settings → Permission Set / User / Team / Role Permission* assign server-side permissions on the CMS entities (websites, forms, notifications, events) with targets.
+- **Client-side permissions:** none are seeded in the registry for `cp_commerce_admin_console_v1` and the applet code checks none. There is no per-user field or button gating inside the applet.
+- Storefront-side access is configured per website: *Restrict View/Access by Entity* (with the Account tab), *Restrict Notification by Member*, *Enable Public Cart*, and the *Hide Website Builder Elements* checkboxes that remove dashboard tiles for store managers.
 
----
+## Fields
 
-## Personalization
+The create and edit forms are documented tab by tab above under *Screens and menus*: the Website [Details tab](#details-tab-deep-dive) (the largest form), [App Version](#app-version-tab-deep-dive), [Post Registration Config](#post-registration-config-tab-deep-dive), [3rd Party Auth Config](#third-party-auth-config-tab-deep-dive), [Layout Instance](#layout-instance-tab-deep-dive), [Menu List](#menu-list-tab-deep-dive), [User Agreement](#user-agreement-tab-deep-dive), [Account](#account-tab-deep-dive), [Country](#country-tab-deep-dive), the Shipping Provider types, Dynamic Forms and Spending Limits. Required fields, from the form validators: Website *Title*, *Branch*, *Membership Class*, *Status*; Dynamic Form *name*, *status*, *website* (create) and *code* (edit); Question *name*, *type*, *required*, *status*; Activity and Activity Category *code*, *name*; Event *title*, *start date*; Calendar *name*; Calendar member *user email*; Facility event *end date*, *location*.
 
-Access via the **Personalization** sidebar menu item.
+## Related applets
 
-### Personal Default Settings (`Personalization > Personal Default Selection`)
+- [Shopping Cart](/applets/ecommerce/shopping-cart-applet/) and [Shopping Cart Customer Access](/applets/ecommerce/internal-shopping-cart-customer-access-applet/) — the checkout that the storefront drives.
+- [E-Commerce Catalog](/applets/ecommerce/ecommerce-catalog-applet/), [PDG](/applets/ecommerce/pdg-applet/), [Seller Admin](/applets/ecommerce/seller-admin-applet/) — catalogue and seller data behind the products.
+- [Membership Admin](/applets/membership/membership-admin-applet/) — membership classes, points and member labels used by Post Registration Config, Spending Limit and Topics.
+- [Voucher Management](/applets/membership/voucher-management-applet/), [Commission Scheme](/applets/sales-workflow/commission-scheme-applet/) — linked on their website tabs.
+- [Events Management](/applets/crm/events-management-applet/) — the fuller event workflow.
+- [Customer](/applets/master-data/customer-applet/), [Organisation](/applets/master-data/organisation-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Pricebook](/applets/master-data/pricebook-applet/), [Shipping Pricebook](/applets/master-data/shipping-pricebook-applet/), [Cashbook](/applets/master-data/cashbook-applet/) — master data the website references.
 
-Set your own personal default values. These only affect your account and override system defaults where applicable.
+## Troubleshooting
 
-### Sidebar (`Personalization > Sidebar`)
+| Symptom | Cause | Fix |
+|---|---|---|
+| Website created but customers cannot see it | *Status* not Active, no *Default Layout Routing*, or branch / merchant not linked. | Set the three on the Details tab. |
+| Need to take a storefront offline | — | Set the website *Status* to Inactive; the portal stops serving it. |
+| An item appears on the storefront without a price (or with the wrong one) | The website's *Pricing* model points at a scheme or price book in which the item has no price, or the second pricing scheme wins. | Check *Pricing*, *Pricing Scheme* / *Pricing Scheme 2* / *Price Book* on the Details tab against the item's prices; for `ECOMSYNC_BY_BRANCH` check the branch price book. |
+| Mobile app shows "Update Required" although users have the latest version | *Version Number* on App Version does not match the store version string exactly, or the update-check pop-up misfired in older builds (fixed 2025). | Enter the exact semantic version; update the app. |
+| Customers cannot sign in with Google / Facebook / Apple | Wrong or expired client ID / secret on 3rd Party Auth Config, or a redirect URI that does not match the portal domain. | Re-enter the credentials; check the provider console. |
+| Sidebar items missing that colleagues can see | Feature Visibility (team) or Personalization → Sidebar (user). | Adjust either. |
+| Review, Shipping Provider or Users not in the sidebar | These menu entries are commented out in the current build. | Open the route directly (`…/review`, `…/shipping-provider`, `…/users`). |
+| Account tab shows the wrong rows or does not page | Pagination bug fixed July 2026 (Account tab also moved next to Details). | Update the applet. |
+| Listing search returns *NO MATCHING RECORD FOUND* for a name typed in capitals | Case-sensitive search in older builds (fixed 2025). | Update the applet. |
+| A menu item's parent menu is not saved | Fixed 2025 (parent menu and menu level now shown and saved). | Update the applet. |
+| Deep links from the app open the wrong page | Fixed September 2025. | Update the app and applet. |
+| Email confirmation on the portal fails silently (wrong TAC) | Older portal builds did not surface the error; a toaster message was added in September 2026. | Update the portal app. |
+| Shipping options do not appear at checkout | *Enable Shipping Fee Process* off, no *Shipping Fee Option*, or the shipping provider is not Active. | Tick the checkbox, choose the option and its price book / item, set the provider Active. |
+| Spending limit not enforced | Rule Inactive, wrong *Member Class*, or the customer is B2C. | Check the rule; limits apply per member class. |
 
-Customize which sidebar menu items you see. Hide sections you don't use to declutter your workspace.
+## Related documentation
 
----
-
-## FAQ
-
-**Q: I created a website but customers can't see it. What's wrong?**
-A: Check three things: (1) Status must be set to **Active**. (2) A **Default Layout Routing** must be assigned so the homepage has content. (3) The **Branch** and **Merchant** must be correctly linked.
-
-**Q: Can I have multiple websites for different countries or brands?**
-A: Yes. Each website entity can be linked to a different branch, pricing scheme, and country configuration. Use the **Country Config** tab within each website to manage locale-specific settings.
-
-**Q: The mobile app is showing "Update Required" but my users already have the latest version.**
-A: Go to `Website Edit > App Version > iOS/Android`. Ensure the **Version Number** exactly matches the semantic version submitted to the App Store / Play Store (e.g., "3.5.2" not "v3.5.2"). A mismatch triggers a false mandatory update prompt.
-
-**Q: How do Spending Limits affect regular B2C customers?**
-A: They don't. Spending Limits are designed for B2B Corporate customer groups only. B2C retail customers have no spending cap — their purchases are limited only by their payment method at checkout.
-
-**Q: I can't see some sidebar menu items that other team members can see.**
-A: Check two things: (1) Your **Permission Set** in Settings may not include access to those features. Ask your admin to verify. (2) Your **Personalization > Sidebar** settings may have those items hidden.
-
-**Q: How do I make a form available on the Customer Portal?**
-A: Create the form in **Dynamic Form** or **Template Form**, add your questions, and the form automatically becomes accessible on the portal. The **Submitted Form** section in the sidebar collects all responses.
-
-**Q: What's the difference between "Review" in the sidebar and "Reviews" tab inside website edit?**
-A: The **Review** sidebar item is a global moderation queue for all product reviews across all websites. The **Reviews** tab inside Website Edit is for configuring review *settings* (rules, vote options) specific to that website.
-
-**Q: Customers report they can't log in with Google on the portal.**
-A: Go to `Website Edit > 3rd Party Auth Config > Google Login` and verify the OAuth Client ID and Secret are correctly configured and not expired. Also check that the redirect URI matches your portal domain.
+- [E-Commerce module](/modules-v2/ecommerce/)
+- [Push Notification Configuration](/applets/ecommerce/cp-commerce/push-notification-configuration/) — Firebase setup for the mobile app
+- [Website Builder — User Manager](/applets/ecommerce/website-builder/user-manager/) — admin users and permissions for the webstore dashboard
