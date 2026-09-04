@@ -20,8 +20,8 @@ jobs:
       - name: Setup Hugo
         run: |
           wget -q https://github.com/gohugoio/hugo/releases/download/v0.147.9/hugo_extended_withdeploy_0.147.9_linux-amd64.tar.gz
-          tar -xzf hugo_extended_withdeploy_0.147.9_linux-amd64.tar.gz hugo
-          sudo mv hugo /usr/local/bin/
+          mkdir -p /tmp/hugo-bin && tar -xzf hugo_extended_withdeploy_0.147.9_linux-amd64.tar.gz -C /tmp/hugo-bin hugo
+          sudo mv /tmp/hugo-bin/hugo /usr/local/bin/hugo   # the repo has a hugo/ directory at its root; never extract there
           hugo version
 
       - name: Build
