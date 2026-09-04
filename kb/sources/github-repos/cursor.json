@@ -9,5 +9,5 @@
   }
  },
  "updated": "2026-09-05",
- "note": "inventory of the org lives in kb/private/github-repos-inventory-<date>.tsv (gitignored). Clones under /home/marketing/repos/refs/<repo>. Per-repo cursor = last commit SHA ingested; empty until the first pass."
+ "note": "inventory of the org lives in kb/private/github-repos-inventory-<date>.tsv (gitignored). Clones under /home/marketing/repos/refs/<repo>. Per-repo cursor = last commit SHA ingested; empty until the first pass. Org clone completed 2026-09-05: all active repos \u2264500 MB present under refs/ (see kb/private/github-repos-inventory-2026-09-05.tsv)."
 }

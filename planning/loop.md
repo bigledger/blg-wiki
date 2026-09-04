@@ -41,8 +41,10 @@ Never two kinds in one wake-up. Never more than ~90 minutes of work per wake-up.
 5. **Order-to-cash core** (Sales Invoice, Sales Order, Sales Return, Receipt Voucher) and
    **procure-to-pay core** — the 7 + 5 workflow guides rewritten to the voice bar.
 6. **ADR-0002 applet batches** (merge, archive, retitle + `applet_code:`); F-0011 roadmaps; F-0013 links.
-7. **Ingestion breadth**: applet repos ↔ pages; backend issues; Jira/Confluence (40 registry doc
-   links still point there); email; Drive — in that order, one scope per wake-up.
+7. **Ingestion breadth**: applet repos ↔ pages (lanes); **blg-intranet** (content sections +
+   ~560 e-invoice issues, then per module); backend issues; Jira/Confluence (40 registry doc
+   links still point there); email and Drive via the claude.ai connectors once Vincent
+   authenticates them (/mcp) — one scope per wake-up.
 8. **Structural**: v1-vs-v2 comparison → restructure spec (ADR-0001) → implementation, one
    section per wake-up. Needs Vincent's per-section approval: ask, don't block.
 9. **Translations** (ADR-0003 order: manuals first; zh, ms, ar).
@@ -107,6 +109,8 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 `planning/lanes/PROMPT.md` with {N} substituted) until its queue is empty.
 
 ## Waiting on Vincent
+
+- **Authenticate Gmail and Google Drive**: run `/mcp` in this session and select "claude.ai Gmail" and "claude.ai Google Drive". Until then email/Drive ingestion falls back to the service-account scripts in `vince-pa` (see `kb/sources/email/ACCESS.md`).
 
 - ADR-0002: is `accounts-receivable-applet` real (wiki issue #20) or was the issue mistaken?
 - ADR-0001: per-section v1-vs-v2 winners (comparison table to be produced by a `decide` unit).
