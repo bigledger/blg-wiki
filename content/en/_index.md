@@ -1,159 +1,85 @@
 ---
-title: BigLedger ERP - Complete Business Management Platform
-description: Malaysia's leading cloud ERP platform trusted by 1 million users
-toc: false
+title: BigLedger Documentation
+description: "Guides and reference for BigLedger (akaun.com) — the web-based, cloud-native business operating system for accounting, inventory, sales, purchasing, POS, e-commerce and Malaysian e-Invoice, and the backbone for AI agents via API, MCP and SDK."
 layout: hextra-home
+toc: false
 ---
 
-{{< hextra/hero-badge >}}
-  MDEC PEPPOL Accredited • E-Invoice Ready
+{{< hero-split >}}
+<div class="hx:mb-4">
+{{< hextra/hero-badge link="/guides/einvoice-guides/" >}}
+  MDEC PEPPOL accredited · LHDN e-Invoice ready
+  {{< icon name="arrow-circle-right" attributes="height=14" >}}
 {{< /hextra/hero-badge >}}
-
+</div>
+<div class="hx:mb-4">
 {{< hextra/hero-headline >}}
-  Transform Your Business with BigLedger ERP
+  BigLedger documentation
 {{< /hextra/hero-headline >}}
-
+</div>
+<div class="hx:mb-6">
 {{< hextra/hero-subtitle >}}
-  **Trusted by 1 Million Users** • 100+ Integrated Modules • Malaysian Compliance Built-in
+  How to run your business on BigLedger — the cloud-native business operating system for accounting, inventory, sales, purchasing, POS, e-commerce and Malaysian e-Invoice, and the backbone for AI agents through its API, MCP and SDK.
 {{< /hextra/hero-subtitle >}}
+</div>
+<div class="hx:flex hx:flex-wrap hx:gap-3">
+{{< hextra/hero-button text="Get started" link="/user-guide/getting-started/introduction/" >}}
+{{< hextra/hero-button text="Browse applets" link="/applets/" style="secondary" >}}
+</div>
+{{< /hero-split >}}
 
-{{< hextra/hero-button text="Start Free Trial" link="/user-guide/getting-started/introduction/" >}}
-{{< hextra/hero-button text="Watch Demo" link="/demos-resources/" style="secondary" >}}
+<div class="hx:w-full hx:mb-10 hx:max-w-3xl">
+{{< search >}}
+</div>
 
----
+## What do you want to do?
 
-## 🎯 **Your Complete Business Solution**
+{{< hextra/feature-grid >}}
+  {{< hextra/feature-card title="Get started" subtitle="First login, how the platform is organised, and your first transaction." link="/user-guide/getting-started/" icon="play" >}}
+  {{< hextra/feature-card title="Set up your company" subtitle="Chart of accounts, companies and branches, tax codes and cashbooks — done once, at go-live." link="/guides/accounting-guides/chart-of-accounts-setup/" icon="cog" >}}
+  {{< hextra/feature-card title="Sell and get paid" subtitle="From quotation to sales order, delivery, invoice and receipt — including cash, credit and instalment sales." link="/guides/sales-guides/" icon="shopping-cart" >}}
+  {{< hextra/feature-card title="Buy and pay suppliers" subtitle="Purchase orders, goods received, supplier invoices and payments — standard, direct GRN and consignment." link="/guides/purchasing-guides/" icon="truck" >}}
+  {{< hextra/feature-card title="Close the books" subtitle="Journals, bank reconciliation, month-end and financial reports." link="/guides/accounting-guides/" icon="book-open" >}}
+  {{< hextra/feature-card title="Submit e-Invoices" subtitle="LHDN MyInvois and PEPPOL: setup, submission, validation errors and fixes." link="/guides/einvoice-guides/" icon="document-text" >}}
+  {{< hextra/feature-card title="Manage stock" subtitle="Stock balance, transfers between branches, stock take and adjustments." link="/guides/inventory-guides/" icon="cube" >}}
+  {{< hextra/feature-card title="Run the point of sale" subtitle="Terminals, cashier reports, settlement and end-of-day." link="/modules-v2/pos/" icon="cash" >}}
+{{< /hextra/feature-grid >}}
 
-{{< callout type="info" >}}
-BigLedger ERP unifies all your business operations in one powerful platform. From accounting to inventory, sales to manufacturing - manage everything seamlessly with intelligent automation and real-time insights.
-{{< /callout >}}
+## Guides by role
 
----
-
-## **Choose Your Journey**
-
-{{< tabs items="🏢 For Businesses,🤝 For Partners,👩‍💻 For Developers" >}}
-
-{{< tab >}}
-### **Everything You Need to Run Your Business**
-
-{{< cards >}}
-  {{< card link="/modules/financial-accounting" title="Financial Management" subtitle="Complete accounting, GST/SST, financial reporting" >}}
-  {{< card link="/modules/inventory" title="Inventory & Warehouse" subtitle="Multi-location, barcode, serial/batch tracking" >}}
-  {{< card link="/modules/crm" title="Sales & CRM" subtitle="Customers, quotes, orders, invoicing" >}}
+<div class="hx:w-full">
+{{< cards cols="4" >}}
+  {{< card link="/guides/roles/finance-manager/" title="Finance manager" icon="chart-bar" >}}
+  {{< card link="/guides/roles/cashier/" title="Cashier" icon="cash" >}}
+  {{< card link="/guides/roles/warehouse-manager/" title="Warehouse manager" icon="cube" >}}
+  {{< card link="/guides/roles/procurement-manager/" title="Procurement manager" icon="truck" >}}
+  {{< card link="/guides/roles/branch-manager/" title="Branch manager" icon="office-building" >}}
+  {{< card link="/guides/roles/ecommerce-specialist/" title="E-commerce specialist" icon="globe" >}}
+  {{< card link="/guides/roles/merchandising-manager/" title="Merchandising manager" icon="tag" >}}
+  {{< card link="/guides/roles/internal-audit/" title="Internal auditor" icon="search" >}}
 {{< /cards >}}
+</div>
 
-**Quick Links:** [Getting Started](/user-guide/getting-started/introduction/) • [Video Tutorials](/demos-resources/) • [User Guide](/user-guide/)
-{{< /tab >}}
+## Reference
 
-{{< tab >}}
-### **Grow Your Business with BigLedger**
-
-Join our thriving partner ecosystem and help businesses transform digitally.
-
-**Partner Benefits:**
-- 💰 Attractive revenue sharing model
-- 🎓 Comprehensive training & certification
-- 🛠️ Implementation support & resources
-- 📈 Co-marketing opportunities
-
-{{< cards >}}
-  {{< card link="https://www.bigledger.com/partners" title="Partner Program" subtitle="Learn about partnership opportunities" >}}
+<div class="hx:w-full">
+{{< cards cols="3" >}}
+  {{< card link="/modules-v2/" title="Modules" subtitle="What each module does and which applets it groups — Financial Accounting, Purchasing, POS, E-Invoice and more." icon="view-grid" >}}
+  {{< card link="/applets/" title="Applets" subtitle="Field-by-field reference for every applet: screens, settings, permissions and GL postings." icon="puzzle" >}}
+  {{< card link="/developers/" title="Developers" subtitle="REST API, SDKs, webhooks and MCP — connect systems and AI agents to BigLedger." icon="code" >}}
 {{< /cards >}}
+</div>
 
-[**Apply to Become a Partner →**](https://bigledger.com/partners)
-{{< /tab >}}
+<div class="hx:w-full hx:mt-8">
 
-{{< tab >}}
-### **Build Powerful Integrations**
+## Popular right now
 
-Modern REST APIs and comprehensive documentation for developers.
+- [Bank reconciliation, step by step](/guides/accounting-guides/bank-reconciliation-guide/)
+- [Fixing e-Invoice validation errors](/guides/einvoice-guides/einvoice-validation/)
+- [Running a stock take](/applets/inventory-workflow/stock-take-applet/)
+- [Sales Invoice (Internal) applet](/applets/sales-workflow/internal-sales-invoice-applet/)
+- [Chart of accounts setup](/guides/accounting-guides/chart-of-accounts-setup/)
 
-{{< cards >}}
-  {{< card link="/developers/api-reference/" title="API Documentation" subtitle="Complete REST API reference" >}}
-  {{< card link="/developers/getting-started/" title="Quick Start Guide" subtitle="Get up and running in minutes" >}}
-  {{< card link="/developers/sdks/" title="SDKs & Libraries" subtitle="Client libraries for popular languages" >}}
-{{< /cards >}}
+Need help? [Support and FAQ](/support/) · [Video training](/demos-resources/) · [Product site and pricing](https://www.bigledger.com/)
 
-**Developer Resources:** [Postman Collection](/developers/postman/) • [Webhooks](/developers/webhooks/) • [Sample Code](https://github.com/bigledger)
-{{< /tab >}}
-
-{{< /tabs >}}
-
----
-
-## **🚀 Platform Highlights**
-
-### **Core Business Applications**
-
-{{< cards >}}
-  {{< card link="/modules/procurement" title="Purchasing" subtitle="PO, vendor management, approvals" >}}
-  {{< card link="/modules/manufacturing" title="Manufacturing" subtitle="BOM, production, quality control" >}}
-  {{< card link="/modules/pos" title="Point of Sale" subtitle="Retail, restaurant, multi-outlet" >}}
-  {{< card link="/modules/hr" title="Human Resources" subtitle="Payroll, leave, claims, attendance" >}}
-  {{< card link="/modules/projects" title="Project Management" subtitle="Tasks, milestones, time tracking" >}}
-  {{< card link="/modules-v2/ecommerce/" title="E-Commerce" subtitle="Shopify, Lazada, Shopee sync" >}}
-{{< /cards >}}
-
----
-
-## **✨ What Makes BigLedger Different**
-
-{{< cards >}}
-  {{< card link="/e-invoice-peppol/" title="🧾 E-Invoice Ready" subtitle="MDEC PEPPOL accredited provider. Fully integrated with LHDN MyInvois for seamless compliance." >}}
-  {{< card link="/ai-intelligence/" title="🤖 AI-Powered" subtitle="Smart automation, OCR for documents, predictive analytics, and intelligent recommendations." >}}
-  {{< card link="/applets/" title="🧩 100+ Applets" subtitle="Extend functionality with ready-made business applets for every industry need." >}}
-{{< /cards >}}
-
----
-
-## **🏭 Industry Solutions**
-
-{{< callout >}}
-**Tailored for Your Industry**  
-Pre-configured templates and best practices for your specific business needs
-{{< /callout >}}
-
-{{< cards >}}
-  {{< card link="/user-guide/industry-solutions/" title="Retail & F&B" subtitle="Multi-store, loyalty, kitchen display" >}}
-  {{< card link="/user-guide/industry-solutions/" title="Wholesale & Distribution" subtitle="B2B portal, route sales, van sales" >}}
-  {{< card link="/user-guide/industry-solutions/" title="Manufacturing" subtitle="Discrete, process, job shop" >}}
-  {{< card link="/user-guide/industry-solutions/automotive-and-workshop/" title="Automotive" subtitle="Dealership, workshop, spare parts" >}}
-  {{< card link="/user-guide/industry-solutions/" title="Professional Services" subtitle="Time billing, project tracking" >}}
-  {{< card link="/user-guide/industry-solutions/" title="Healthcare" subtitle="Clinic, pharmacy, medical supplies" >}}
-{{< /cards >}}
-
----
-
-## **📊 See BigLedger in Action**
-
-## Ready to Transform Your Business?
-
-Join thousands of Malaysian businesses already using BigLedger to streamline operations and boost growth.
-
-{{< cards >}}
-  {{< card link="https://demo.bigledger.com" title="🖥️ Live Demo" subtitle="Try BigLedger with sample data" >}}
-  {{< card link="/user-guide/getting-started/introduction/" title="📚 Quick Start Guide" subtitle="Get started in 30 minutes" >}}
-  {{< card link="https://bigledger.com/pricing" title="💰 Pricing Plans" subtitle="Transparent, affordable pricing" >}}
-{{< /cards >}}
-
----
-
-## **🌟 Trusted by Leading Malaysian Businesses**
-
-## Key Statistics
-
-- **1M+** Active Users across Malaysia and Southeast Asia
-- **99.9%** Uptime SLA guarantee for reliable business operations
-- **100+** Integrated Business Modules for comprehensive management
-- **24/7** Local Support in multiple languages
-
----
-
-## **Get Started Today**
-
-{{< cards >}}
-  {{< card link="https://bigledger.com/contact" title="📞 Contact Sales" subtitle="Get personalized demo and pricing" >}}
-  {{< card link="/support/" title="💬 Get Support" subtitle="Access documentation and help" >}}
-  {{< card link="https://www.bigledger.com/partners" title="🤝 Partner With Us" subtitle="Join our growing ecosystem" >}}
-{{< /cards >}}
+</div>

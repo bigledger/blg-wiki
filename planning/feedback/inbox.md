@@ -53,9 +53,10 @@ with the analysis, the changes made, and the commit hash.
       → note: analysis task, not a single-page fix. DONE 2026-09-05 → discussions/2026-09-05-applet-existence-audit.md (12 phantom candidates, 3 pages on a DELETED applet, 33 broken product→wiki doc links, ~12 title mismatches, 80 undocumented). Decisions taken 2026-09-05 → ADR-0002. Alias batch DONE: batches/2026-09-05-product-doc-link-aliases.md. Remaining batches (archive phantoms, merge renamed page, retitle + applet_code) pending.
 
 ### / (home page)
-- [ ] F-0006 (2026-09-05) "The home page https://wiki.bigledger.com/ is quite ugly too, need redesign"
+- [x] F-0006 (2026-09-05) "The home page https://wiki.bigledger.com/ is quite ugly too, need redesign"
       → source: content/en/_index.md (160 lines) + layouts/ (custom index templates, if any)
       → note: design/structure item, not a fix → discussion opened: discussions/2026-09-05-home-page-redesign.md. Depends on ADR-0001 (the home page must point at the new tree, so redesign after or alongside the restructure).
+      → batch: batches/2026-09-05-home-page-redesign.md
 
 ### /applets/master-data/inv-item-maintenance-applet/ (duplicate page)
 - [ ] F-0007 (2026-09-05) Same applet documented twice: master-data/inv-item-maintenance-applet.md (313 lines, 2026-05-12) and inventory-workflow/inv-item-maintenance-applet.md (301 lines, 2026-03-15)
@@ -81,9 +82,10 @@ with the analysis, the changes made, and the commit hash.
       → note: one batch — delete every such section outright. A docs site documents what exists; roadmap belongs to product marketing, and these were never real.
 
 ### / (home page)
-- [ ] F-0012 (2026-09-05) Home page description/hero claims "Trusted by 1 Million Users" and "100+ Integrated Modules". Unverified marketing numbers on a docs site; also the page-level description that overrides the new site description in <head>.
+- [x] F-0012 (2026-09-05) Home page description/hero claims "Trusted by 1 Million Users" and "100+ Integrated Modules". Unverified marketing numbers on a docs site; also the page-level description that overrides the new site description in <head>.
       → source: content/en/_index.md (description: + hero-subtitle)
       → note: Vincent to confirm or replace. Fold into the home-page redesign (F-0006).
+      → batch: batches/2026-09-05-home-page-redesign.md
 
 ### site-wide
 - [ ] F-0013 (2026-09-05) 383 broken internal links (196 distinct targets) in the production build — relative hrefs like `core-concepts`, `use-cases`, `../../guides/sales-guides/standard-sales-workflow` resolved from the wrong depth. Pre-existing; the test runner had never actually run lychee (two harness bugs fixed today).
@@ -112,4 +114,9 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0017 (2026-09-05) deploy.yml runs only `hugo --minify`; the lychee + Playwright suite never gates a deploy. A conflict-marker page (F-0014) reached production because nothing checks.
       → source: .github/workflows/deploy.yml, tests/run-all.sh
       → note: GPT roadmap item #2. Add a quality job (build + lychee offline + Playwright + front-matter/marker/artefact lints) that deploy needs.
+
+### /zh/ /ms/ /ar/ (home pages)
+- [ ] F-0018 (2026-09-05) The Chinese, Malay and Arabic home pages still use the old marketing hero and hit the same hextra-home layout bug (single narrow column). Port the new English home (ADR-0004) to all three — translated, same shortcodes; Malay in Bahasa Melayu.
+      → source: content/zh/_index.md, content/ms/_index.md, content/ar/_index.md
+      → note: found while shipping F-0006. Translation batch per ADR-0003.
 

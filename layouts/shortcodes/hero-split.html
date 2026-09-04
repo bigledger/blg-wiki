@@ -1,0 +1,7 @@
+{{- /* Two-column hero: text (Inner) on the left, the platform map on the right.
+       Uses only the grid classes Hextra ships for hero-container, so it collapses to one
+       column below the sm breakpoint. */ -}}
+<div class="hextra-feature-grid hx:grid hx:sm:max-lg:grid-cols-2 hx:max-sm:grid-cols-1 hx:gap-8 hx:w-full hx:items-center hx:mb-10 not-prose" style="--hextra-feature-grid-cols: 2">
+  <div class="hx:w-full hx:min-w-0">{{ .Inner }}</div>
+  <div class="hx:w-full hx:min-w-0 hx:mx-auto">{{ partial "shortcodes/platform-map-inline.html" . }}</div>
+</div>
