@@ -5,7 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/inventory-workflow/consignee-stock-transfer-applet.md",
   "content/en/applets/inventory-workflow/delivery-installation-applet-V2-applet.md",
   "content/en/applets/inventory-workflow/driver-delivery-order-applet.md",
   "content/en/applets/master-data/employee-applet.md",
@@ -69,6 +68,10 @@
   },
   {
    "page": "content/en/applets/inventory-workflow/stock-report-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/consignee-stock-transfer-applet.md",
    "date": "2026-09-05"
   }
  ],

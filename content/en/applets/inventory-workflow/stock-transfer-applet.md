@@ -1,6 +1,33 @@
 ﻿---
-title: "Stock Transfer Applet"
-description: "Internal and outbound stock transfers between locations and warehouses with approval workflows"
+title: "Stock Transfer"
+description: "Reference for the Stock Transfer applet — outbound and inbound stock transfer documents that move stock between locations of the same company, the transfer queue, transfer details, outbound file import and error checking."
+applet_code: "stockTransferApplet"
+applet_repo: "blg-applet-wavelet-stock-transfer-applet"
+modules: [inventory]
+related_applets: [internal-stock-requisition-applet, stock-balance-applet, stock-availability-applet, stock-report-applet, consignee-stock-transfer-applet, stock-replenishment-applet, warehouse-management-applet, inv-item-maintenance-applet, doc-item-maintenance-applet, organisation-applet, internal-purchase-grn-applet]
+guides: []
+sources:
+  - blg-applet-wavelet-stock-transfer-applet/micro-fe/projects/wavelet-erp/applets/stock-transfer-applet/src/app/models/menu-items.ts
+  - blg-applet-wavelet-stock-transfer-applet/micro-fe/projects/wavelet-erp/applets/stock-transfer-applet/src/app/models/applet-settings.model.ts
+  - blg-applet-wavelet-stock-transfer-applet/micro-fe/projects/wavelet-erp/applets/stock-transfer-applet/src/app/app.component.ts
+  - blg-applet-wavelet-stock-transfer-applet/micro-fe/projects/wavelet-erp/applets/stock-transfer-applet/src/app/app.routing.ts
+  - blg-applet-wavelet-stock-transfer-applet/micro-fe/projects/wavelet-erp/applets/stock-transfer-applet/src/app/components/settings-container/
+  - blg-applet-wavelet-stock-transfer-applet/micro-fe/projects/wavelet-erp/applets/stock-transfer-applet/src/app/components/internal-outbound-stock-transfer-container/
+  - blg-applet-wavelet-stock-transfer-applet/micro-fe/projects/wavelet-erp/applets/stock-transfer-applet/src/app/components/internal-inbound-stock-transfer-container/
+  - blg-applet-wavelet-stock-transfer-applet/micro-fe/projects/wavelet-erp/applets/stock-transfer-applet/src/app/components/internal-stock-queue-container/
+  - blg-applet-wavelet-stock-transfer-applet/micro-fe/projects/wavelet-erp/applets/stock-transfer-applet/src/app/components/stock-transfer-details-container/
+  - blg-applet-wavelet-stock-transfer-applet/micro-fe/projects/wavelet-erp/applets/stock-transfer-applet/src/app/components/error-checking-container/
+  - blg-applet-wavelet-stock-transfer-applet/micro-fe/projects/wavelet-erp/applets/stock-transfer-applet/src/app/components/utilities/select-location-drop-down-stock-to/
+  - blg-shared-utilities/utilities/select-location-drop-down-stock/select-location-drop-down-stock.component.ts
+  - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalOutboundStockTransferDataConsistencyObject.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalInboundStockTransferDataConsistencyObject.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/erp/StockTransferQueueReportUow.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/ServerDocShortCodes.java
+  - akaun_master.bl_applet_client_side_perm_dfn (applet stockTransferApplet)
 tags:
 - stock-transfer
 - inventory-management
@@ -9,509 +36,239 @@ tags:
 - stock-movement
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Stock Transfer Applet** enables seamless movement of inventory between locations, warehouses, and bins within your organization. It provides complete visibility and control over internal stock transfers with approval workflows.
+The Stock Transfer applet moves stock between two locations of the same company in two steps. The sending location raises an **Outbound Stock Transfer** (document type `INTERNAL_OUTBOUND_STOCK_TRANSFER`, short code `OBDSTF`); finalising it takes the quantity out of the sending location and places every line in a **transfer queue**. The receiving location then raises an **Inbound Stock Transfer** (`INTERNAL_INBOUND_STOCK_TRANSFER`, `IBNSTF`) by knocking off the queue; finalising it puts the quantity into the receiving location. Until the inbound is finalised the goods are counted at neither location, which is what makes the queue the in-transit record.
 
-{{< callout type="info" >}}
-**Core Concept**: Stock transfers move inventory from a **Source Location** to a **Destination Location**, maintaining complete traceability of all stock movements.
-{{< /callout >}}
+Warehouse and branch staff use it for branch-to-warehouse and branch-to-branch movements; supervisors use the **Queue** and **Details** listings to see what has been sent but not yet received. Stock transfers move quantity only — they carry no value and post nothing to the General Ledger.
 
-![Stock Transfer Applet Overview](/images/stock-transfer/stock-transfer-overview.jpg)
+{{< figure src="/images/stock-transfer/stock-transfer-overview.jpg" alt="Stock Transfer applet overview" caption="Outbound at the sending location, queue in between, inbound at the receiving location." >}}
 
-## Key Features Overview
+## Where it fits
 
-### Who Benefits from This Applet?
+| Direction | Applet / document | Why |
+|---|---|---|
+| Upstream | [Stock Requisition](/applets/inventory-workflow/internal-stock-requisition-applet/) | A branch's request for stock; an outbound transfer can knock it off |
+| Upstream | [Purchase GRN](/applets/purchase-workflow/internal-purchase-grn-applet/) | Goods received centrally can be knocked off into an outbound transfer to the branches |
+| Upstream | [Stock Replenishment](/applets/inventory-workflow/stock-replenishment-applet/) | Replenishment runs generate outbound transfers |
+| Upstream | [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) / [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Items and their tracking type (serial, batch, bin) |
+| Upstream | [Organisation](/applets/master-data/organisation-applet/) | Branches and locations; locations must be `ACTIVE` to be selectable |
+| Downstream | [Stock Balance](/applets/inventory-workflow/stock-balance-applet/), [Stock Availability](/applets/inventory-workflow/stock-availability-applet/), [Stock Report](/applets/inventory-workflow/stock-report-applet/) | Show the quantity leaving one location and arriving at the other |
+| Sibling | [Consignee Stock Transfer](/applets/inventory-workflow/consignee-stock-transfer-applet/) | The same pattern between a consignor company and its consignee locations |
 
-**Warehouse Staff:**
-- Create and process stock transfers
-- Track items being transferred
-- Receive incoming transfers
-- Manage bin-level movements
+Modules: Inventory.
 
-**Inventory Managers:**
-- Monitor inter-location stock movements
-- Approve transfer requests
-- Ensure inventory accuracy across locations
-- Track transfer performance metrics
+## Screens and menus
 
-**Operations Teams:**
-- Coordinate stock balancing between locations
-- Manage seasonal inventory distribution
-- Handle urgent stock replenishment
-- Monitor transfer lead times
+| Menu | Purpose |
+|---|---|
+| **Outbound** | Listing and create/edit of outbound stock transfers (goods issued from the sending location) |
+| **Queue** | Every finalised outbound line that has not been fully received — the in-transit list |
+| **Details** | One row per outbound line with the inbound document that received it: qty sent, received and outstanding |
+| **Inbound** | Listing and create/edit of inbound stock transfers (goods received at the destination) |
+| **Outbound File Import** | Create outbound transfers in bulk from a delimited file |
+| **Error Checking** | Documents whose posting or knock-off status is inconsistent, by server document type and date range |
 
-**Finance Teams:**
-- Track inventory valuation across locations
-- Ensure accurate stock costing
-- Monitor high-value transfers
-- Generate transfer reports
+Gear (Settings) menu: **Application Settings**, **Default Selection**, **Outbound Printable Format**, **Inbound Printable Format**, **Custom Status**, **Custom Field Placement**, **Custom Resource Bundle Configuration** (relabelling), **Spreadsheet View configuration**, plus the platform pages (Webhook, Feature Visibility, permission listings, Release Notes, Applet Log). Personalisation: per-user **Default Selection**.
 
-### What Problems Does This Solve?
+Routes for a *Multi-Stock Transfer / Replenishment* menu (templates, events, runs) still exist in the applet but the menu entries are commented out; replenishment is documented under [Stock Replenishment](/applets/inventory-workflow/stock-replenishment-applet/).
 
-**Traditional Stock Transfer Challenges:**
-- Manual transfer tracking prone to errors
-- No visibility into stock in transit
-- Difficult to trace movement history
-- Delayed receiving and posting
-- Inconsistent transfer procedures
+### Outbound
 
-**The Stock Transfer Solution:**
-- **Digital workflows** - Create and approve transfers electronically
-- **Real-time tracking** - See transfer status at every stage
-- **Complete traceability** - Full audit trail of all movements
-- **Approval controls** - Multi-level approval for transfers
-- **Integration ready** - Links to inventory and accounting systems
+{{< figure src="/images/stock-transfer-applet/outbound-listing.png" alt="Outbound Stock Transfer listing" caption="Outbound listing." >}}
 
-## Key Features Overview
+Create with **+**. The **Main Details** tab takes Location From (defaults from the tenant or personal Default Selection), Location To, the transfer date, Reference #, Remarks, Tracking ID and, if enabled, Driver Code. The **Line Items** tab is available in a **Standard View** (one line at a time, with Item Details, Serial Number / Batch Number / Bin Number and Grouped Item sub-tabs) and a **Spreadsheet View** (grid entry, configurable under Settings > Spreadsheet View configuration); a setting chooses which of the two is shown. A **Scan Serial No or Item Code** box adds lines by scanner.
 
-{{< cards >}}
-  {{< card title="Inbound Transfers" subtitle="Receive stock from other locations" link="#inbound-stock-transfer" >}}
+{{< figure src="/images/stock-transfer-applet/outbound-edit.png" alt="Outbound Stock Transfer edit" caption="Outbound document: main details and line items." >}}
 
-  {{< card title="Outbound Transfers" subtitle="Send stock to other locations" link="#outbound-stock-transfer" >}}
+While the document is still new, a **Search Document** (KO For) tab lets you pull lines from a **Stock Requisition**, a **GRN**, a **Purchase Invoice** or an **ST-GRN**. Other tabs: **Delivery Details** (shown by `SHOW_DELIVERY_DETAILS`), **Doc Link**, **Service Note Link**, **Attachments**, **Export**.
 
-  {{< card title="Multi-Location Transfer" subtitle="Transfer to multiple destinations at once" link="#multi-location-transfer" >}}
+{{< figure src="/images/stock-transfer-applet/outbound-view.png" alt="Outbound Stock Transfer view" caption="Viewing a finalised outbound transfer." >}}
 
-  {{< card title="Stock Replenishment" subtitle="Automated replenishment with templates, events, and runs" link="#stock-replenishment-system" >}}
+Buttons: **SAVE** (draft), **FINAL**, **DISCARD** (draft only), **VOID** (final only), **CLONE**, and **DELETE** when `SHOW_DOCUMENT_DELETE_BUTTON` is on and the document is not final.
 
-  {{< card title="Settings" subtitle="Configure transfer options and custom statuses" link="#configuration--settings" >}}
+### Queue
 
-  {{< card title="Personalization" subtitle="Customize your experience" link="#personalization" >}}
-{{< /cards >}}
+{{< figure src="/images/stock-transfer-applet/queue.png" alt="Stock transfer queue" caption="Queue: every outbound line awaiting receipt." >}}
 
----
+Columns: Stock Transfer ID, Doc No (Company), Item Code / Name, Serial, Location From / To, Date Send, Sender, Sender Remarks, Transporter, Tracking ID, Reference #, Amount Txn, Status, Posting Status, State, created / updated by and date. Rows come from the open-queue table (`bl_fi_generic_doc_line_open_queue`); `DELETED` documents are filtered out. Read access to the queue is limited by the user's location permissions on Location To.
 
-## Key Concepts
+### Details
 
-### Stock Transfer Types
+{{< figure src="/images/stock-transfer-applet/details.png" alt="Stock transfer details" caption="Details: outbound and inbound side by side." >}}
 
-| Type | Description | Example |
-|------|-------------|---------|
-| **Internal Transfer** | Between locations within same company | Main Warehouse â†’ Branch Store |
-| **Outbound Transfer** | From your location to another | HQ Warehouse â†’ Regional DC |
-| **Inbound Transfer** | Receiving from another location | Receiving from HQ |
+Adds Outbound Doc, Inbound Doc, Qty Sent, Qty Received, Qty Outstanding, Date Received, Recipient Remarks and Serial List to the queue columns, so a supervisor can see partial receipts.
 
-![Inbound Stock Transfer Listing](/images/stock-transfer-applet/inbound-listing.png)
+### Inbound
 
-### Transfer Status Flow
+{{< figure src="/images/stock-transfer-applet/inbound-listing.png" alt="Inbound Stock Transfer listing" caption="Inbound listing." >}}
 
-```
-Draft â†’ Submitted â†’ In Transit â†’ Received â†’ Completed
-                 â†“
-              Rejected (if failed approval)
-```
+Create with **+**, choose Location To (your location) and Location From, then open **Search Document** > **ST-GIN**: the grid lists queue lines whose Location To you may read; select one or more and knock them off. Each knocked-off line is created with its open quantity (`qty_open`), which you can reduce for a partial receipt — the remainder stays in the queue. Inbound tabs: Main Details, Line Items, Delivery Details, Search Document, **Status** (custom statuses), Doc Link, Attachments, Export. Buttons: SAVE, FINAL, DISCARD; there is no VOID button on the inbound side in the current build.
 
-**Status Definitions:**
-- **Draft**: Transfer created but not yet submitted
-- **Submitted**: Awaiting approval or processing
-- **In Transit**: Goods have left source location
-- **Received**: Destination has acknowledged receipt
-- **Completed**: Transfer fully processed and posted
-- **Rejected**: Transfer was rejected by approver
+### Outbound File Import
 
----
+Upload a delimited file (the delimiter is chosen on the form) and follow **Process Status** and **Error Message** per file. Each processed file creates outbound transfer documents; item codes that cannot be resolved are flagged per row.
 
-## Quick Start Guide
+### Error Checking
 
-### For Warehouse Staff: Create a Stock Transfer
+{{< figure src="/images/stock-transfer-applet/error-checking.png" alt="Error checking" caption="Error Checking: documents whose posting or knock-off is inconsistent." >}}
 
-**Goal:** Transfer stock from your location to another in 5 steps.
+Filter by Server Doc Type and date range; the grid shows Doc No, Branch, Date Txn, Amount, Posting Status, Posting KO and Remarks, with a **Missing Queue** view for finalised outbound lines that never reached the queue.
 
-1. **Navigate**: Go to **Stock Transfer Listing** from the sidebar
-2. **Create Header**: Click **"+"** â†’ Enter transfer details:
-   - **Source Location**: Your warehouse/location
-   - **Destination Location**: Where items are going
-   - **Transfer Date**: Date of transfer
-   - **Reference**: Transfer reference number
-3. **Add Items**:
-   - Click **"Add Line"**
-   - Select **Item Code** from dropdown
-   - Enter **Quantity** to transfer
-   - Select **Bin** (if applicable)
-   - Repeat for all items
-4. **Review**: Verify all items and quantities
-5. **Submit**: Click **Submit** â†’ Transfer goes for approval/processing
+## Configuration
 
-**What happens next?** Transfer is processed and items move to destination.
+### Before you can use it
 
----
+| Prerequisite | Where | Why |
+|---|---|---|
+| Company, branches and `ACTIVE` locations | [Organisation](/applets/master-data/organisation-applet/) | Both dropdowns list only active locations; locations whose code starts with `L-STOCK-IN-TRANSIT` are excluded from Location To (and from Location From when the dropdown opts in) |
+| Items with the right tracking type | [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) | Serial / batch / bin sub-tabs appear only for tracked items |
+| Location read permissions | Applet permission assignment | The queue and the ST-GIN knock-off grid show only lines whose Location To the user may read |
+| Document numbering for `OBDSTF` / `IBNSTF` | Organisation > document numbering | Branch / company / tenant document numbers |
+| Printable formats (optional) | Settings > Outbound / Inbound Printable Format | Needed for `ENABLE_AUTO_POPUP` |
 
-### For Managers: Approve Transfers
+No GL codes, tax codes or cashbooks are needed — the documents do not post to the ledger.
 
-**Goal:** Review and approve pending stock transfers.
+### Applet settings
 
-1. **Check Pending**: Go to **Pending Approvals** (notification badge shows count)
-2. **Review Details**:
-   - Source and destination locations
-   - Items and quantities being transferred
-   - Transfer justification/notes
-3. **Decide**:
-   - **Approve**: Click âœ“ **Approve** â†’ Transfer proceeds
-   - **Reject**: Click âœ— **Reject** â†’ Add reason â†’ Transfer cancelled
-   - **Query**: Request more information from requestor
+**Settings > Application Settings** opens the shared field-configuration screen, which shows the keys below for this applet. All are tenant-wide and default to off unless stated.
 
----
-
-### For Admins: Configure Transfer Settings
-
-**Goal:** Set up stock transfer options and workflows.
-
-1. **Approval Settings**: Define who can approve transfers
-2. **Location Mapping**: Configure allowed transfer routes
-3. **Default Settings**: Set up default values for new transfers
-4. **Permissions**: Control who can create/edit/delete transfers
-
----
-
-## Stock Transfer Listing
-
-### Main Transfer Listing
-
-![Outbound Stock Transfer Listing](/images/stock-transfer-applet/outbound-listing.png)
-
-View all stock transfers with filters for:
-- **Status** - Draft, Submitted, In Transit, Completed
-- **Date Range** - Filter by transfer date
-- **Source Location** - Where transfers originate
-- **Destination Location** - Where transfers go
-
-### Key Columns
-
-| Column | Description |
-|--------|-------------|
-| Transfer No | Unique transfer identifier |
-| Date | Transfer date |
-| Source | Origin location/warehouse |
-| Destination | Receiving location/warehouse |
-| Status | Current transfer status |
-| Items | Number of line items |
-| Total Qty | Total quantity being transferred |
-
----
-
-## Create Stock Transfer
-
-![View Internal Outbound Stock Transfer](/images/stock-transfer-applet/outbound-view.png)
-
-### Transfer Header
-
-Enter the following information when creating a new transfer:
-
-| Field | Description | Required |
-|-------|-------------|----------|
-| Source Location | Where items are coming from | Yes |
-| Destination Location | Where items are going | Yes |
-| Transfer Date | Date of the transfer | Yes |
-| Reference | External reference number | No |
-| Notes | Additional information | No |
-
-### Adding Line Items
-
-For each item to transfer:
-
-1. **Select Item**: Choose from item master
-2. **Enter Quantity**: How many units to transfer
-3. **Select Bin** (if using bin management): Source bin location
-4. **Add Notes**: Item-specific notes if needed
-
-### Serial/Batch Items
-
-For items with tracking:
-- **Serial Numbers**: Select specific serial numbers to transfer
-- **Batch Numbers**: Select batches and quantities
-
----
-
-## Transfer Details
-
-### Viewing a Transfer
-
-Open any transfer to see:
-- **Header Information**: Source, destination, dates
-- **Line Items**: Items being transferred with quantities
-- **Status History**: Complete audit trail
-- **Attachments**: Supporting documents
-
-### Editing a Transfer
-
-Only **Draft** status transfers can be edited:
-- Modify quantities
-- Add/remove items
-- Update notes
-- Change dates
-
----
-
-## Approval Workflow
-
-### Approval Process
-
-Depending on your organization's settings:
-
-1. **Automatic Approval**: Low-value transfers may proceed without approval
-2. **Single Approval**: One approver reviews and decides
-3. **Multi-Level Approval**: Multiple approvers based on value or type
-
-### Approval Actions
-
-| Action | Effect |
-|--------|--------|
-| **Approve** | Transfer proceeds to next stage |
-| **Reject** | Transfer cancelled with reason |
-| **Query** | Request more information |
-| **Delegate** | Assign to another approver |
-
----
-
-## Stock Replenishment System
-
-The **Stock Replenishment System** automates the process of identifying and replenishing low stock items. It uses a **Template â†’ Events â†’ Runs** pattern for flexible, automated stock management.
-
-{{< callout type="important" >}}
-**Understanding the Relationship**: These three settings work together:
-- **Template** â†’ Defines WHAT to replenish (item filters, supplier filters, location filters)
-- **Events** â†’ Defines WHEN to replenish (schedule, recurring rules)
-- **Runs** â†’ Executes the replenishment (manual or automated processing)
-{{< /callout >}}
-
-```mermaid
-flowchart TD
-    A[Replenishment Template] -->|Defines filters| B[Items to Monitor]
-    A -->|Used by| C[Replenishment Event]
-    A -->|Used by| D[Replenishment Run]
-    C -->|Recurring Schedule| E[Automatic Processing]
-    D -->|Manual Execution| F[One-time Processing]
-    E --> G[Generate Transfer/PO Suggestions]
-    F --> G
-```
-
----
-
-### Replenishment Template (`Stock Replenishment Template`)
-
-Templates define **which items** to monitor for replenishment and **from whom** to replenish.
-
-**Creating a Template - Field-by-Field Guide:**
-
-| Field | Purpose | Required |
-|-------|---------|----------|
-| **Template Name** | Identifies this template | Yes |
-| **Description** | Explain the template's purpose | No |
-| **Status** | Active/Inactive | Yes |
-
-**Editing a Template - 6 Tabs:**
-
-When you select a template to edit, you'll see:
-
-| Tab | Purpose |
-|-----|---------|
-| **Details** | Basic info + audit fields (Created By, Modified By, etc.) |
-| **Items Filter** | Select which items to include/exclude from replenishment |
-| **Suppliers Filter** | Filter by preferred suppliers |
-| **Locations Filter** | Which locations to monitor for low stock |
-| **Category Filter** | Filter by item categories |
-| **Items List** | View the resulting list of items to monitor |
-
-**Real-World Scenario - Setting Up a Template:**
-
-*Goal*: Monitor all electronics in the Main Warehouse from approved suppliers.
-
-1. Create Template: "Electronics Replenishment"
-2. In **Items Filter** tab: Select electronics item codes
-3. In **Suppliers Filter** tab: Add approved electronics vendors
-4. In **Locations Filter** tab: Select "Main Warehouse"
-5. In **Category Filter** tab: Select "Electronics" category
-6. Save â†’ Check **Items List** tab to verify the items included
-
----
-
-### Replenishment Events (`Stock Replenishment Events`)
-
-Events define **when** replenishment checks should occur—either one-time or on a recurring schedule.
-
-**Creating an Event - Field-by-Field Guide:**
-
-| Field | Purpose | Required |
-|-------|---------|----------|
-| **Replenishment Template** | Which template to use | Yes |
-| **Event Code** | Unique identifier for this event | Yes |
-| **Event Name** | Descriptive name | Yes |
-| **Cycle Start Date** | When to start checking | No |
-| **Cycle End Date** | When to stop (for one-time events) | No |
-| **Recurring** | Enable recurring schedule | No |
-| **Recurrence Editor** | Define frequency (daily, weekly, monthly) | Conditional - shows when Recurring is checked |
-| **Description** | Additional notes | No |
-| **Status** | Active/Inactive | Yes |
-
-**Real-World Scenario - Monthly Replenishment Check:**
-
-*Goal*: Check electronics stock every 1st of the month.
-
-1. Create Event: "Monthly Electronics Check"
-2. Select Template: "Electronics Replenishment"
-3. Check **Recurring** checkbox
-4. In Recurrence Editor: Set to "Monthly" on day 1
-5. Set Status: Active
-6. Save â†’ System will automatically run on the 1st of each month
-
----
-
-### Replenishment Runs (`Stock Replenishment`)
-
-Runs are **manual executions** of replenishment checks. Use these for ad-hoc or one-time replenishment processing.
-
-**Creating a Run - Field-by-Field Guide:**
-
-| Field | Purpose | Required |
-|-------|---------|----------|
-| **Replenishment Template** | Which template to use | No |
-| **Run Name** | Identify this run | Yes |
-| **Current Run Start Date** | Date range for this run | No |
-| **Current Run End Date** | End of date range | No |
-| **Previous Run Name** | Reference to last run (read-only) | No |
-| **Previous Run Start Date** | Last run's start date | No |
-| **Previous Run End Date** | Last run's end date | No |
-| **Description** | Notes for this run | No |
-| **Status** | Status of the run | Yes |
-
-**Real-World Scenario - Emergency Stock Check:**
-
-*Goal*: Run an urgent replenishment check after a large order depleted stock.
-
-1. Go to Stock Replenishment â†’ Create Run
-2. Select Template: "Electronics Replenishment"
-3. Set Run Name: "Emergency Check - March 2024"
-4. Set dates for the period to analyze
-5. Save â†’ Review the items list generated
-6. Create transfer requests or POs based on results
-
----
-
-### Best Practices for Stock Replenishment
-
-âœ“ **Start with Templates**: Set up comprehensive templates with all filters before creating events
-
-âœ“ **Use Recurring Events for Regular Checks**: Weekly or monthly schedules reduce manual work
-
-âœ“ **Manual Runs for Ad-hoc Needs**: Use runs for urgent or one-off replenishment checks
-
-âœ“ **Review Items List**: Always check the Items List tab after editing filters to verify coverage
-
-âœ— **Avoid Too Many Overlapping Events**: Multiple events on the same template can create duplicate suggestions
-
----
-
-## Configuration & Settings
-
-![Applet Settings](/images/stock-transfer-applet/settings.png)
-
-### Custom Status (`Settings > Custom Status`)
-
-Define custom transfer statuses beyond the default ones to match your workflow.
-
-| Field | Purpose | Example |
-|-------|---------|---------|
-| **Status Name** | Display name | "Pending Inspection" |
-| **Status Code** | Internal code | "PENDING_INSPECT" |
-| **Description** | Explain when to use | "Waiting for quality check" |
-
-**Use Case**: Add "Quality Check" status for transfers that need inspection before receiving.
-
----
-
-### Default Settings (`Settings > Default Settings`)
-
-Configure default values that auto-populate when creating new transfers.
-
-| Setting | What It Does |
-|---------|--------------|
-| **Default Source Location** | Pre-selects your usual source warehouse |
-| **Default Destination** | Pre-selects common destination |
-| **Default Transfer Type** | Internal, Inbound, or Outbound |
-
----
-
-### Field Configuration (`Settings > Field Configuration`)
-
-Customize which columns appear in listing views and their order.
-
-- Add/remove columns from listings
-- Reorder columns by drag-and-drop
-- Save configurations per user
-
----
-
-### Printable Format Settings
-
-The applet has **two separate printable format settings** for inbound and outbound transfers:
-
-#### Inbound Printable Format (`Settings > Inbound Printable Format Settings`)
-
-Configure print templates for receiving documents.
-
-**Edit View Tabs:**
-| Tab | Purpose |
-|-----|---------|
-| **Details** | Template name, format settings |
-| **Line** | Line item layout configuration |
-
-#### Outbound Printable Format (`Settings > Outbound Printable Format Settings`)
-
-Configure print templates for shipping documents.
-
-**Edit View Tabs:**
-| Tab | Purpose |
-|-----|---------|
-| **Details** | Template name, format settings |
-| **Line** | Line item layout configuration |
-
----
-
-### Applet Log (`Settings > Applet Log`)
-
-Audit trail showing all user actions within the applet.
-
-| Column | Description |
-|--------|-------------|
-| **Table Name** | Which data was affected |
-| **Action** | CREATE, UPDATE, DELETE |
-| **Action Date** | When it happened |
-| **Description** | Details of the change |
-
----
-
-### Release Notes (`Settings > Release Notes`)
-
-View applet version history and feature updates.
-
----
-
-## Personalization
-
-![Personalization](/images/stock-transfer-applet/personalization.png)
-
-### Personal Default Settings
-Save your preferred source location and filters.
-
-### Sidebar Customization
-Arrange menu items to match your workflow.
-
----
-
-## FAQ
-
-**Q: Can I transfer items between different companies?**
-A: No, stock transfers are within the same company. For cross-company movements, use Inter-Company Stock Transfer or Sales/Purchase documents.
-
-**Q: What happens if destination rejects the transfer?**
-A: The items remain at the source location. Review the rejection reason and create a new transfer if needed.
-
-**Q: Can I track partial receipts?**
-A: Yes, destination can receive partial quantities. The transfer shows partial receipt status until fully received.
-
-**Q: How do I cancel a transfer in transit?**
-A: Transfers in transit cannot be cancelled. Destination must receive and then create a return transfer.
-
-**Q: Can I transfer items with serial numbers?**
-A: Yes, you must select specific serial numbers during transfer creation. They will be moved to the destination.
-
+| Setting | What it controls | Effect when changed |
+|---|---|---|
+| `HIDE_QUEUE_MENU`, `HIDE_STOCK_TRANSFER_DETAILS_MENU`, `HIDE_OUTBOUND_FILE_IMPORT_MENU`, `HIDE_ERROR_CHECKING_MENU` | Left-menu entries | Hidden unless the user holds the matching `SHOW_*` permission |
+| `HIDE_GENDOC_SAVE_BUTTON`, `HIDE_GENDOC_FINAL_BUTTON`, `HIDE_GENDOC_DISCARD_BUTTON`, `HIDE_GENDOC_VOID_BUTTON`, `HIDE_CLONE_BUTTON` | Document buttons | FINAL / DISCARD / VOID / CLONE reappear for holders of `SHOW_GENDOC_*` / `SHOW_CLONE_BUTTON` |
+| `SHOW_DOCUMENT_DELETE_BUTTON` | Adds DELETE on non-final documents | — |
+| `DISABLE_GEN_DOC_LISTING`, `DISABLE_ITEM_LISTING`, `HIDE_ITEM_SEARCH` | Turn off the document listing / item listing / item search box | — |
+| `DEFAULT_TRANSACTION_DATE`, `SORT_ORDER` | Listing default date range and sort | — |
+| `SHOW_ITEM_STOCK_BALANCE` | Labelled *Disallow negative stock for basic item (validate stock balance)*: shows the item's balance and blocks an outbound line beyond it | Prevents sending what the location does not have |
+| `HIDE_MAIN_DETAILS_DOC_NO_TENANT` / `_COMPANY` / `_BRANCH` | Hide the three document-number fields | — |
+| `HIDE_REFERENCE`, `HIDE_REMARKS`, `HIDE_MAIN_DESCRIPTION`, `HIDE_TRACKING_ID`, `SHOW_DELIVERY_DRIVER_CODE`, `HIDE_CREATED_BY_DETAILS` | Header fields | `SHOW_DELIVERY_DRIVER_CODE` adds the Driver Code field |
+| `HIDE_CREATED_BY_OUTBOUND` / `_INBOUND`, `HIDE_MODIFIED_BY_*`, `HIDE_CREATED_DATE_TIME_*`, `HIDE_MODIFIED_DATE_TIME_*`, `ENABLE_CREATED_DATE_TIME_SPLIT_*`, `ENABLE_MODIFIED_DATE_TIME_SPLIT_*` | Audit fields, separately for outbound and inbound; the SPLIT keys show date and time as two fields | — |
+| `HIDE_LINE_ITEM_LISTING_UOM`, `HIDE_LINE_ITEM_DETAILS_REMARKS`, `SHOW_LINE_ITEM_BRANCH_COLUMNS` | Line grid columns | — |
+| `HIDE_UNIT_PRICE_STD_PRICING_SCHEME` | Hides unit price on lines | Reopened per user by `SHOW_UNIT_PRICE_STD_PRICING_SCHEME` |
+| `HIDE_GRN_TAB`, `HIDE_ST_GRN_TAB`, `HIDE_PURCHACE_INVOICE_TAB` | Outbound Search Document tabs (GRN, ST-GRN, Purchase Invoice) | Reopened by `SHOW_GRN_TAB`, `SHOW_ST_GRN_TAB`, `SHOW_PURCHASE_INVOICE_TAB` |
+| `SHOW_STOCK_REQUISITION_LOCATION_FROM_AND_TO`, `HIDE_STOCK_REQUISITION_SUPPLIER`, `HIDE_STOCK_REQUISITION_BRANCH`, `HIDE_STOCK_REQUISITION_LOCATION` | Columns on the Stock Requisition knock-off grid | — |
+| `SHOW_DELIVERY_DETAILS` | Shows the Delivery Details tab | — |
+| `HIDE_DOCUMENT_LINKS`, `HIDE_STATUS_GEN_DOC` | Doc Link tab and status field | — |
+| `SIMPLIFIED_UI` | Compact header layout with custom fields | — |
+| `VERTICAL_ORIENTATION`, `DEFAULT_ORIENTATION`, `DEFAULT_TOGGLE_COLUMN`, `EXPAND_*` | Vertical (accordion) layout and which panels open expanded | Presentation only |
+| `OUTBOUND_DETAILS_TAB_ORDER`, `INBOUND_DETAILS_TAB_ORDER` | Tab order and which tabs are hidden (`INTERNAL_OUTBOUND_HIDE_*`, `INTERNAL_INBOUND_HIDE_*`) | Edited under Custom Field Placement |
+| `PRINTABLE`, `PRINTABLE_INBOUND`, `ENABLE_AUTO_POPUP` | Outbound / inbound printable format; open the print dialog automatically on FINAL | FINAL shows *Printable not configured* if `ENABLE_AUTO_POPUP` is on without a format |
+| `DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `DEFAULT_LANGUAGE_CODE` | Defaults for new documents (Settings > Default Selection; personal values override) | — |
+| `INCLUDE_*` / `ENABLE_*` for segment, dimension, profit centre, project, SST, WHT | Declared in the settings model but not bound to any transfer field | No effect |
+
+**Settings > Custom Status** — up to five client document statuses, each switched on for the header and/or the line and given a list of named values; enabled header statuses appear as columns on the inbound listing and on the inbound **Status** tab.
+
+**Settings > Spreadsheet View configuration** — column labels and the **Line View Mode** (standard, spreadsheet, or both) used on the Line Items tab.
+
+**Settings > Custom Resource Bundle Configuration** — relabel fields such as Doc No, Location From / To and the transaction date, separately for inbound and outbound.
+
+### Document behaviour settings
+
+| Setting | Effect |
+|---|---|
+| `HIDE_GENDOC_SAVE_BUTTON` / `HIDE_GENDOC_FINAL_BUTTON` | Force immediate finalising, or separate drafting from finalising |
+| `HIDE_GENDOC_VOID_BUTTON` | Stop users reversing a finalised outbound |
+| `SHOW_ITEM_STOCK_BALANCE` | Validate the sending location's balance before FINAL |
+| `PRINTABLE`, `PRINTABLE_INBOUND`, `ENABLE_AUTO_POPUP` | Print on FINAL |
+
+There is no approval workflow, no posting configuration and no e-Invoice submission for stock transfers.
+
+### Feature visibility / permissions
+
+Registered client-side permissions for `stockTransferApplet`:
+
+| Permission | Unlocks |
+|---|---|
+| `SHOW_QUEUE_MENU`, `SHOW_OUTBOUND_FILE_IMPORT_MENU` | The menu when hidden tenant-wide |
+| `SHOW_GENDOC_FINAL_BUTTON`, `SHOW_GENDOC_DISCARD_BUTTON`, `SHOW_GENDOC_VOID_BUTTON`, `SHOW_CLONE_BUTTON` | The button when hidden tenant-wide |
+| `SHOW_GRN_TAB`, `SHOW_ST_GRN_TAB`, `SHOW_PURCHASE_INVOICE_TAB` | The outbound knock-off tabs when hidden |
+| `SHOW_TRANSACTION_DATE` | Edit the transfer date on an inbound document (otherwise read-only) |
+| `SHOW_UNIT_PRICE_STD_PRICING_SCHEME` | Unit price on lines when hidden |
+
+`SHOW_STOCK_TRANSFER_DETAILS_MENU` and `SHOW_ERROR_CHECKING_MENU` are checked in code but not seeded in the registry, so those two menus can only be hidden for everyone. Server-side, create / read / update / delete are governed by the `TNT_API_DOC_INTERNAL_OUTBOUND_STOCK_TRANSFER_*` and `TNT_API_DOC_INTERNAL_INBOUND_STOCK_TRANSFER_*` API permissions, and location read permissions filter the queue.
+
+## Fields
+
+### Main Details (outbound and inbound)
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Location From (`locationSending` / `locationFrom`) | Sending location | Yes | Active locations only; outbound defaults from Default Selection |
+| Location To (`locationReceiving` / `locationTo`) | Receiving location | Yes | Active, non-in-transit locations only; must differ from Location From |
+| Transfer date (`stockTransferServiceDate`) | Date of issue / receipt | Yes | On inbound, editable only with `SHOW_TRANSACTION_DATE` |
+| Doc No (Tenant / Company / Branch) | Running numbers | generated | Hide with `HIDE_MAIN_DETAILS_DOC_NO_*` |
+| Doc Short Code | `OBDSTF` / `IBNSTF` | — | Fixed |
+| Reference #, Remarks, Tracking ID, Driver Code | Free text | No | Hidden by the corresponding settings |
+| Custom fields | Tenant-defined | per field | Custom Field Placement; a custom-field validation error is shown on FINAL |
+| Created / modified by, date, time | Audit | — | — |
+
+### Line item
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Item Code / Name | The item | Yes | Active items only |
+| Quantity | Units to send / receive | Yes | Base UOM; with `SHOW_ITEM_STOCK_BALANCE` an outbound line cannot exceed the location balance |
+| UOM | Unit | — | Hidden on the grid by `HIDE_LINE_ITEM_LISTING_UOM` |
+| Location From / To | Per line, defaulted from the header | — | Shown by `SHOW_LINE_ITEM_BRANCH_COLUMNS` |
+| GRN No., ST-GRN ID, Tracking ID | References carried from the knocked-off document | No | — |
+| Remarks | Free text | No | `HIDE_LINE_ITEM_DETAILS_REMARKS` |
+| Serial Number tab | Serials leaving / arriving | For serial items | Outbound: serials must exist at Location From; inbound: the "already exists in company" check is skipped because the serial is already the company's |
+| Batch Number tab | `batch_no`, `issue_date`, `expiry_date`, quantity | For batch items | — |
+| Bin Number tab | `bin_code`, `container_measure`, `container_qty` | For bin items | Bin line must exist at the location (`Bin Line Guid Does Not Exist for STOCK_TRANSFER`) |
+| Grouped Item tab | Components of a grouped item | — | Shown for `GROUPED_ITEM` |
+
+## Lifecycle and posting
+
+| Status (`posting_status`) | Meaning | Allowed next |
+|---|---|---|
+| `DRAFT` | Saved; editable; can be deleted when `SHOW_DOCUMENT_DELETE_BUTTON` is on | `FINAL`, `DISCARDED` |
+| `FINAL` | Posted to stock; not editable | `VOID` (outbound only) |
+| `VOID` | Reversed | — |
+| `DISCARDED` | Abandoned draft | — |
+
+What FINAL does:
+
+| Document | Stock at Location From | Stock at Location To | Queue | Ledger |
+|---|---|---|---|---|
+| Outbound (`quantity_signum` −1) | − quantity | — | One open-queue row per line with `qty_open` = quantity | none (`amount_signum` 0) |
+| Inbound (`quantity_signum` +1) | — | + quantity | Knocked-off `qty_open` reduced; line closes at 0 | none |
+
+Neither document type is in the journal-posting handler, so no journal is created and no default GL code is needed. Discarding an inbound draft releases the queue quantity it had knocked off (`updateKO` with `DISCARDED`). Voiding a finalised outbound reverses the stock movement; if any of its lines have already been received, receive the goods back with a reverse transfer instead.
+
+Stock transfers are **exempt from the fiscal-period lock**: `LOCK_TXN` / `LOCK_ALL` periods reject other documents but the backend explicitly allows outbound and inbound stock transfers, so period closing does not stop branch movements.
+
+Costing: the receiving location takes the item's cost from the company-level moving average / FIFO / LIFO layers; a transfer never changes the company's unit cost.
+
+## Related applets
+
+- [Stock Requisition](/applets/inventory-workflow/internal-stock-requisition-applet/) — the request that an outbound transfer fulfils via Search Document > Stock Requisition.
+- [Stock Replenishment](/applets/inventory-workflow/stock-replenishment-applet/) — replenishment runs generate outbound transfers automatically.
+- [Consignee Stock Transfer](/applets/inventory-workflow/consignee-stock-transfer-applet/) — the same outbound / queue / inbound pattern for consignment stock.
+- [Purchase GRN](/applets/purchase-workflow/internal-purchase-grn-applet/) — received goods can be pushed to branches by knocking the GRN off into an outbound transfer.
+- [Stock Balance](/applets/inventory-workflow/stock-balance-applet/), [Stock Availability](/applets/inventory-workflow/stock-availability-applet/), [Stock Report](/applets/inventory-workflow/stock-report-applet/) — where the movement shows; the queue quantity sits in neither location until received.
+- [Warehouse Management](/applets/inventory-workflow/warehouse-management-applet/) — packing lists reference outbound transfers.
+- [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — item tracking type.
+- [Organisation](/applets/master-data/organisation-applet/) — locations, in-transit locations, document numbering.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Inbound Search Document > ST-GIN shows nothing | The user has no read permission on the outbound's Location To, or the outbound is not `FINAL` | Grant the location permission; finalise the outbound |
+| Queue shows lines already received | The inbound was saved but not finalised (`qty_open` is only reduced on FINAL), or the receiving inbound was deleted | Finalise or re-create the inbound; use **Details** to compare Qty Sent / Received |
+| Deleted transfers appeared in the queue | Fixed in 2026 — the queue listing now filters `DELETED` documents | Update the applet |
+| Inactive location still selectable in Location From | Fixed in 2026 — both dropdowns now show `ACTIVE` locations only | Update the applet; deactivate rather than delete old locations |
+| Location To dropdown is missing the in-transit location | By design: codes starting `L-STOCK-IN-TRANSIT` are excluded | Transfer to the real destination; the queue is the in-transit record |
+| FINAL shows an error message but the document still finalises | A custom-field validation failed; the document is posted anyway (open issue, 2026) | Fix the custom field value; check Custom Field Placement |
+| FINAL shows *Printable not configured* | `ENABLE_AUTO_POPUP` is on but `PRINTABLE` / `PRINTABLE_INBOUND` is empty | Set the printable format or turn off auto pop-up |
+| Outbound line rejected for quantity | `SHOW_ITEM_STOCK_BALANCE` validation — the sending location has less than the line quantity | Check Stock Availability at Location From; adjust or receive stock first |
+| Serial number rejected on outbound | The serial is not at Location From (`SERIAL_NUMBER_DOES_NOT_EXIST_AT_LOCATION`) | Trace the serial in Stock Availability and transfer it from where it is |
+| `Bin Line Guid Does Not Exist for STOCK_TRANSFER` | The bin code on the line is not set up at the location | Create the bin in Warehouse Management |
+| Total quantity shows 0 or a previous document's value when creating from a GRN | Fixed in 2026 | Update the applet |
+| Menu missing for some users | `HIDE_*_MENU` set tenant-wide | Grant `SHOW_QUEUE_MENU` / `SHOW_OUTBOUND_FILE_IMPORT_MENU`; Details and Error Checking have no permission and must be unhidden for all |
+
+## Related documentation
+
+- [Inventory module](/modules-v2/inventory/) — [core concepts](/modules-v2/inventory/core-concepts/), [configuration](/modules-v2/inventory/configuration/), [related applets](/modules-v2/inventory/related-applets/).
+- [Inventory guides](/guides/inventory-guides/).

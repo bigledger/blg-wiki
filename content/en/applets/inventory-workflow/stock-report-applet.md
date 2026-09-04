@@ -1,6 +1,24 @@
 ---
-title: "Stock Report Applet"
-description: "Comprehensive stock and inventory reporting with movement analysis, aging reports, balance tracking, and sales/purchase insights"
+title: "Stock Report"
+description: "Reference for the Stock Report applet — thirteen read-only inventory reports (movement, aging, summary by location, historical balance, sales and purchase by item, value by level, batch expiry, and five stock balance variants) with cost and price columns gated by settings and permissions."
+applet_code: "stockReport"
+applet_repo: "blg-applet-wavelet-stock-report-applet"
+modules: [inventory, financial-accounting]
+related_applets: [stock-balance-applet, stock-availability-applet, stock-transfer-applet, stock-adjustment-applet, stock-take-applet, inv-item-maintenance-applet, doc-item-maintenance-applet, pricebook-applet, organisation-applet, financial-report-applet]
+guides: []
+sources:
+  - blg-applet-wavelet-stock-report-applet/micro-fe/projects/wavelet-erp/applets/stock-report-applet/src/app/models/menu-items.ts
+  - blg-applet-wavelet-stock-report-applet/micro-fe/projects/wavelet-erp/applets/stock-report-applet/src/app/models/applet-settings.model.ts
+  - blg-applet-wavelet-stock-report-applet/micro-fe/projects/wavelet-erp/applets/stock-report-applet/src/app/app.component.ts
+  - blg-applet-wavelet-stock-report-applet/micro-fe/projects/wavelet-erp/applets/stock-report-applet/src/app/components/settings-container/field-configuration/field-configuration.component.ts
+  - blg-applet-wavelet-stock-report-applet/micro-fe/projects/wavelet-erp/applets/stock-report-applet/src/app/components/settings-container/default-settings/
+  - blg-applet-wavelet-stock-report-applet/micro-fe/projects/wavelet-erp/applets/stock-report-applet/src/app/components/stock-movement-report-container/
+  - blg-applet-wavelet-stock-report-applet/micro-fe/projects/wavelet-erp/applets/stock-report-applet/src/app/components/stock-summary-report-by-location-container/
+  - blg-applet-wavelet-stock-report-applet/micro-fe/projects/wavelet-erp/applets/stock-report-applet/src/app/components/historical-stock-balance-container/
+  - blg-applet-wavelet-stock-report-applet/micro-fe/projects/wavelet-erp/applets/stock-report-applet/src/app/components/stock-balance-report-container/
+  - blg-applet-wavelet-stock-report-applet/micro-fe/projects/wavelet-erp/applets/stock-report-applet/src/app/components/stock-balance-report-new-container/
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/erp/reports/stock/StockReportUow.java
+  - akaun_master.bl_applet_client_side_perm_dfn (applet stockReport)
 tags:
 - stock-report
 - inventory-management
@@ -9,645 +27,204 @@ tags:
 - stock-balance
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Stock Report Applet** provides a comprehensive suite of inventory reports to help you monitor and analyze stock across your organization. From tracking daily stock movements to analyzing aging inventory and evaluating sales vs. purchase trends, this applet consolidates all your stock reporting needs into a single, powerful interface.
+The Stock Report applet is the read-only reporting front end for inventory. It reads the stock transaction ledger (`bl_inv_txn_line`), the item-location balances and the item master, and presents thirteen reports: where stock moved, how old it is, what each location holds, what the balance was on a past date, what was bought and sold per item, and the stock value by category level. Nothing in it creates, edits or posts a document.
 
-{{< callout type="info" >}}
-**This is a read-only reporting applet.** It does not create, edit, or delete any stock or inventory data. All reports pull live data from your inventory system and display it for analysis and export. The only configurable items are applet settings (defaults, field visibility, permissions) and personal preferences.
-{{< /callout >}}
+Warehouse managers open it to trace movements and count discrepancies; finance opens it for closing-stock values and gross profit; purchasing for sales-versus-purchase and last-purchase-price checks. Every report shares the same layout — an **Advanced Search** panel, a column toggle, an interactive grid with grouping and totals, and Excel / PDF export from the status bar.
 
-{{< callout type="info" >}}
-**Core Concept**: Each report pulls live data from your inventory system and displays it in an interactive AG Grid. Use **Advanced Search** to filter data, **Column Toggle** to customize visible columns, and **Export** to download reports to Excel or PDF.
-{{< /callout >}}
+{{< figure src="/images/stock-report-applet/stock-report-applet-overview-infographic.png" alt="Stock Report applet overview" caption="One applet, thirteen reports over the same stock ledger." >}}
 
-## Key Features Overview
+## Where it fits
 
-### Who Benefits from This Applet?
+| Direction | Applet / document | Why |
+|---|---|---|
+| Upstream | Every stock-moving document — sales invoice / cash bill / return, purchase invoice / GRN / return, [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/), [Stock Adjustment](/applets/inventory-workflow/stock-adjustment-applet/), consignment, RTV | Each writes one signed line to the stock ledger the reports read |
+| Upstream | [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) / [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Item type, sub-type, category levels 1–10, EAN, UOM |
+| Upstream | [Pricebook](/applets/master-data/pricebook-applet/) | Pricing schemes shown on the Stock Balance Pricing Report |
+| Upstream | [Organisation](/applets/master-data/organisation-applet/) | Companies, branches, locations and location labels used as filters |
+| Sibling | [Stock Balance](/applets/inventory-workflow/stock-balance-applet/), [Stock Availability](/applets/inventory-workflow/stock-availability-applet/) | Live per-location balance and availability; this applet is the historical and analytical view |
+| Downstream | [Financial Report](/applets/finance/financial-report-applet/) | Closing stock value in the ledger should agree with the Stock Balance / Summary by Location closing values |
 
-**Warehouse Managers:**
-- Monitor stock movements in and out of locations
-- Identify aging or slow-moving inventory
-- Track stock balances across all locations
-- Ensure optimal stock levels
+Modules: Inventory, Financial Accounting.
 
-**Inventory Controllers:**
-- Analyze historical stock balance trends
-- Review batch expiry dates to prevent write-offs
-- Audit stock values by item category levels
-- Verify stock balance accuracy
+## Screens and menus
 
-**Finance Teams:**
-- Evaluate inventory valuation (MA Cost, Last Purchase Cost)
-- Compare sales vs. purchase quantities by item
-- Track Gross Profit by item code
-- Export data for financial reporting and audits
+| Menu | Route | What it shows |
+|---|---|---|
+| Stock Movement Report | `stock-movement-report` | Every stock ledger line, grouped by item, with running balance |
+| Stock Aging Report | `stock-aging-report` | Remaining quantity and value by age bucket |
+| Stock Summary Report By Location | `stock-summary-report-by-location` | Opening, purchase, sold, adjustment, others, in-transit, closing per item and location |
+| Historical Stock Balance | `historical-stock-balance` | Balance and MA value as at a past date |
+| Stock Sales And Purchase By Item Code | `stock-sales-purchase-by-item-code` | Sales vs purchase quantity and amount, GP, stock-turn ratio |
+| Stock Value By Level Report | `stock-value-by-level` | Quantity and value pivoted by category level and location |
+| Batch and Expiry Date Report | `batch-expiry-date` | Batch quantities in expiry buckets |
+| Stock Balance Report | `stock-balance-report-new` | Current balance with MA and last cost per company |
+| Stock Balance by Item, Supplier and Batch Expiry Report | `stock-balance-supplier-serial-batch` | Balance per item, supplier entity and batch with MA value |
+| Stock Balance Pricing Report | `stock-balance-report` | Current balance with the item's price-book prices, tax codes and costs |
+| Stock Balance Report With Serial | `stock-balance-report-with-serial` | Balance per location with serial list, add / subtract and stock count |
+| Stock Balance Report by Supplier with Serial | `stock-balance-report-supplier-serial` | Balance traced to the purchase document, supplier and serials |
 
-**Purchasing Teams:**
-- Review stock sales vs. purchase activity by item
-- Identify items needing reorder based on balance reports
-- Analyze supplier-linked stock balances
+An *Item Price Change Report* route exists but its menu entry has been removed. Gear (Settings) menu: **Application Settings**, **Default Selection**, **Aging Period Settings**, **Custom Resource Bundle Configuration**, plus Webhook, permission listings, Release Notes and Applet Log. Personalisation: per-user **Default Selection**.
 
-### What Problems Does This Solve?
+### Common controls
 
-**Traditional Inventory Reporting Challenges:**
-- Scattered data across spreadsheets and systems
-- No consolidated view of stock health
-- Difficulty identifying slow-moving or expiring stock
-- Manual, time-consuming report generation
-- Limited drill-down and filtering capabilities
+Every report opens with **Advanced Search**: location (multi-select; non-administrators must pick at least one location they may read), item code keyword (three characters or more), item code range, item type, item status, item category levels, date range, and location labels. Each report adds its own options — *Hide Voided Documents* and *Include SN Adjustment* on the Movement report, *Show Zero Balance* and *Show Serial Numbers* on Historical Stock Balance, *Show Zero Balance* on Stock Balance, *Hide Zero Quantity* on Stock Balance With Serial.
 
-**The Stock Report Applet Solution:**
-- **Centralized reports** — All stock reports accessible from a single sidebar menu
-- **Advanced filtering** — Filter by location, date range, item code, item categories, and more
-- **Real-time data** — Reports pull live inventory data
-- **Flexible views** — Toggle columns on/off, group by categories, and pivot data
-- **Export capabilities** — Export any report to Excel or PDF via the status bar
+### Stock Movement Report
 
-## Key Features Overview
+{{< figure src="/images/stock-report-applet/stock-movement-report.png" alt="Stock Movement Report" caption="Every stock ledger line grouped by item code, with running balance." >}}
 
-{{< cards >}}
-  {{< card title="Stock Movement Report" subtitle="Track all stock in/out transactions with full document traceability" link="#stock-movement-report" >}}
+Columns: Txn Date, Created Date, Location, Doc Short Code, Doc No, Ref No, Entity, Ext Invoice Date, Serial, Remarks, Unit Price, Unit Cost, Qty In, Qty Out, Balance Qty, Amount (std / disc / net / tax / txn) and Total Inventory Value. For stock transfers the report shows both locations of the pair. The source is the stock ledger, so a serial number changed by a serial adjustment appears as its own `SN_ADJ` row (included with *Include SN Adjustment*), and voided documents can be dropped with *Hide Voided Documents* (`posting_status = VOID`).
 
-  {{< card title="Stock Aging Report" subtitle="Analyze inventory age by configurable day or month periods" link="#stock-aging-report" >}}
+### Stock Aging Report
 
-  {{< card title="Stock Summary by Location" subtitle="View stock quantities and values grouped by location" link="#stock-summary-report-by-location" >}}
+{{< figure src="/images/stock-report-applet/stock-aging-report.png" alt="Stock Aging Report" caption="Remaining quantity and MA value by age bucket." >}}
 
-  {{< card title="Historical Stock Balance" subtitle="Review stock balance snapshots over a period of time" link="#historical-stock-balance" >}}
+Columns: Company, Location, Item, Inventory Item Code, EAN, Type, Sub Type, UOM, Aging, Qty, Amount, plus one bucket column per period. Age is measured from the ledger line's transaction date within the searched range; the bucket size is **Aging Period Settings** (month, the default, or day).
 
-  {{< card title="Stock Balance Report" subtitle="Current stock balances with unit cost and total cost" link="#stock-balance-report" >}}
+{{< figure src="/images/stock-report-applet/aging-period-configuration.png" alt="Aging Period Settings" caption="Aging Period Settings: month or day buckets." >}}
 
-  {{< card title="Stock Sales & Purchase by Item" subtitle="Compare sales vs. purchase activity with GP analysis" link="#stock-sales--purchase-by-item-code" >}}
+### Stock Summary Report By Location
 
-  {{< card title="Stock Value by Level" subtitle="Aggregate stock values grouped by item categories and locations" link="#stock-value-by-level" >}}
+{{< figure src="/images/stock-report-applet/stock-summary-report-by-location.png" alt="Stock Summary Report by Location" caption="Opening to closing per item and location." >}}
 
-  {{< card title="Batch & Expiry Date Report" subtitle="Track items approaching or past their expiry dates" link="#batch--expiry-date-report" >}}
+Per item and location: Open Balance, Purchase, Sold, Adj, Others, Stock In Transit, Last Purchase Date, Closing Balance, Closing Balance (include non-movement) and Closing Inventory Value. The backend classifies ledger lines by document type: **Purchase** = purchase invoice, purchase GRN (stock-in), purchase return; **Sold** = sales invoice, cash bill, sales return; **Adj** = stock adjustment; **Others** = everything else (transfers, consignment, RTV…); **Stock In Transit** = outbound stock transfer queue quantity still open plus draft inbound transfer lines. Closing = opening + purchase + sold + adj; the *include non-movement* column adds Others.
 
-  {{< card title="Stock Balance (Supplier & Serial)" subtitle="View stock balances grouped by supplier with serial number details" link="#stock-balance-supplier--serial" >}}
+### Historical Stock Balance
 
-  {{< card title="Stock Balance (Item, Supplier & Batch)" subtitle="Cross-reference stock by item, supplier, and batch number" link="#stock-balance-by-item-supplier--batch" >}}
+{{< figure src="/images/stock-report-applet/historical-stock-balance.png" alt="Historical Stock Balance" caption="Balance as at a date, with historical and current MA cost." >}}
 
-  {{< card title="Settings" subtitle="Configure default selections, field visibility, aging periods, and permissions" link="#configuration--settings" >}}
+Columns: Item, Type, Sub Type, UOM, Qty (as at date), Historical MA cost and value, Current MA cost and value, Serial Numbers (optional). Quantity sums every non-deleted ledger line dated before the balance date; the historical MA cost is taken from the last purchase-and-sales or Reset MA ledger line before that date. Trade-in stock is not included (open request).
 
-  {{< card title="Personalization" subtitle="Set personal defaults and customize your sidebar" link="#personalization" >}}
-{{< /cards >}}
+### Stock Sales And Purchase By Item Code
 
-{{< figure src="/images/stock-report-applet/stock-report-applet-overview-infographic.png" alt="Stock Report Applet Overview Infographic">}}
+{{< figure src="/images/stock-report-applet/stock-sales-and-purchase-by-item-code.png" alt="Stock Sales and Purchase by Item Code" caption="Sales against purchases per item, with GP." >}}
 
-## Key Concepts
+Columns: Item, Description, Location, Balance Qty, Purchase Qty / Amount, Qty Sold, Sales Amount, Cost, GP, Last Purchase, Stock Turn Ratio. Purchases are purchase invoice, GRN (stock-in) and purchase return lines; sales are sales invoice, cash bill and sales return lines, within the date range. GP = Sales Amount − Cost; the GP columns are gated (see Configuration).
 
-### Report Structure
+### Stock Value By Level Report
 
-All reports in this applet share a consistent layout:
+{{< figure src="/images/stock-report-applet/stock-value-by-level-report.png" alt="Stock Value by Level" caption="Quantity and value pivoted by category level and location." >}}
 
-| Element | Description |
-|---------|-------------|
-| **Title Bar** | Displays the report name |
-| **Advanced Search** | Expandable panel with filters specific to each report (location, date range, item code, categories, etc.) |
-| **Column Toggle** | Show/hide columns to customize your view |
-| **AG Grid** | Interactive data grid with sorting, grouping, and totals |
-| **Status Bar** | Shows record count, export options (Excel/PDF), and report subtitle |
+Groups stock by category levels 1–10 (level 0 is also supported) with a Qty and Amount pair per location and totals.
 
-### Common Search Filters
+### Batch and Expiry Date Report
 
-Most reports support the following filters in the Advanced Search panel:
+{{< figure src="/images/stock-report-applet/batch-and-expiry-date-report.png" alt="Batch and Expiry Date Report" caption="Batch quantities in expiry buckets." >}}
 
-| Filter | Description |
-|--------|-------------|
-| **Location** | Filter by warehouse/storage location |
-| **Item Code** | Search by specific item code or keyword |
-| **Item Range** | Filter items within a code range (From → To) |
-| **Item Type** | Filter by item transaction type |
-| **Item Status** | Filter by item status (Active, Inactive) |
-| **Item Category Levels** | Filter by up to 20 item category levels |
-| **Date Range** | Filter by transaction date (From → To) |
-| **Location Labels** | Filter by location label groups |
+Columns: Item, Expiry Date, Qty, Amount and buckets 0 Month, 1 Month, 2 Months, 3 Months, 4–6 Months, 7–12 Months, 13–24 Months, >24 Months, relative to today.
 
-### Permission-Controlled Columns
+### Stock Balance Report
 
-Some columns are only visible based on your permissions and admin settings:
+{{< figure src="/images/stock-report-applet/stock-balance-report.png" alt="Stock Balance Report" caption="Current balance with MA and last cost." >}}
 
-| Column Group | Setting | Permission |
-|-------------|---------|------------|
-| **MA Cost** (Unit Cost, Total Cost) | `HIDE_MA_COST` | `SHOW_MA_COST` |
-| **Gross Profit (GP)** | `HIDE_GP` | `SHOW_GP` |
-| **GP Percentage** | `HIDE_GP_PERCENTAGE` | — |
+Columns: Company, Item, Type, Sub Type, UOM, Balance Qty, Unit Cost (MA), Total Cost, Unit Last Cost, Total Last Cost, category levels. *Show Zero Balance* includes items with no stock.
 
-Admins can toggle these in **Settings > Application Settings** under the "Stock Report Listing" tab.
+### Stock Balance Pricing Report
 
----
+{{< figure src="/images/stock-report-applet/stock-balance-pricing-report.png" alt="Stock Balance Pricing Report" caption="Balance with price-book prices and tax codes." >}}
 
-## Quick Start Guide
+Adds the item's Pricing Scheme, Sales / Purchase Unit Price, Sales Min / Max, Ref Price 1–3, Delta Price 1–3, Rebate Price 1–3, Replacement Price, Input / Output tax code, rate and type, and Unit / Total Cost. Which pricing schemes are included is set by `PRICING_SCHEMES` in Application Settings.
 
-### For All Users: Running a Report
+### Stock Balance Report With Serial, by Supplier with Serial, and by Item / Supplier / Batch
 
-**Goal:** Generate any stock report in 3 steps.
+{{< figure src="/images/stock-report-applet/stock-balance-report-with-serial.png" alt="Stock Balance Report With Serial" caption="Balance per location with serial numbers." >}}
 
-1. **Select Report**: Click the desired report from the sidebar (e.g., **Stock Movement Report**)
-2. **Apply Filters**: Click the **Advanced Search** panel → Set your filters (location, date range, item code, etc.) → Click **Search**
-3. **View & Export**: Data loads in the grid. Use the **Column Toggle** to show/hide columns. Use the **Status Bar** to export to Excel or PDF.
+**With Serial**: Location, Item, EAN, UOM, Qty, Serial Numbers, Add, Subtract, Stock Count — a count sheet with serials. **By Supplier with Serial**: Doc Short Code, Doc No, Txn Date, Supplier, Item, Serial Numbers, Balance Qty, Unit / Total Cost — each unit traced to the purchase document that brought it in. **By Item, Supplier and Batch Expiry**: Entity, Item, Batch Number, Qty, MA Price, MA Amount.
 
----
+{{< figure src="/images/stock-report-applet/stock-balance-report-by-supplier-with-serial.png" alt="Stock Balance Report by Supplier with Serial" caption="Stock traced to the supplier and purchase document." >}}
 
-### For Inventory Managers: Analyzing Stock Health
+{{< figure src="/images/stock-report-applet/stock-balance-by-item-supplier-and-batch-expiry-report.png" alt="Stock Balance by Item, Supplier and Batch Expiry" caption="Item, supplier and batch cross-reference." >}}
 
-**Goal:** Identify slow-moving or expiring inventory.
+## Configuration
 
-1. **Open Stock Aging Report** → Filter by location → Search
-2. Review aging columns to identify stock sitting too long
-3. **Open Batch & Expiry Date Report** → Filter by date range → Search
-4. Review items approaching expiry and plan accordingly
+### Before you can use it
 
----
+| Prerequisite | Where | Why |
+|---|---|---|
+| Report read permissions | Applet permission assignment | Each report calls its own API permission (`API_TNT_DM_ERP_STOCK_REPORT_READ`, `…STOCK_AGING_REPORT_READ`, `…STOCK_SUMMARY_REPORT_BY_LOCATION_READ`, `…STOCK_SALES_PURCHASE_BY_ITEM_CODE_READ`, `…STOCK_VALUE_BY_LEVEL_READ`, `…BATCH_AND_EXPIRY_DATE_READ`, `…STOCK_BALANCE_REPORT_READ`, `…STOCK_BALANCE_REPORT_BY_BATCH_NUMBER_READ`, `…STOCK_BALANCE_WITH_SERIAL_NUMBERS_READ`), targetable to locations and branches |
+| Location read permissions | Applet permission assignment | Non-administrators see only locations they may read and must select at least one |
+| Items with categories, EAN, type / sub-type | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Category filters and grouping |
+| Pricing schemes | [Pricebook](/applets/master-data/pricebook-applet/) | Stock Balance Pricing Report |
+| Batch / serial tracking on items | [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) | Batch expiry and serial reports are empty otherwise |
 
-### For Admins: Configuring the Applet
+No GL codes, numbering or document settings are needed; the applet writes nothing.
 
-**Goal:** Set up defaults, toggle menu items, and configure aging periods.
+### Applet settings
 
-1. **Set Defaults**: Go to **Settings > Default Selection** → Set default branch, location, and language
-2. **Configure Fields**: Go to **Settings > Application Settings** → Toggle sidebar menu items and report columns on/off
-3. **Set Aging Periods**: In **Application Settings** → Select aging period type (Day or Month)
-4. **Manage Permissions**: Go to **Settings > Permissions** → Assign read/create/update/delete permissions
+**Settings > Application Settings** is the applet's own screen with three tabs; the shared platform field-configuration template has no entries for this applet.
 
----
+| Tab | Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|---|
+| Sidebar Menu | `HIDE_<REPORT>_MENU` — one per report, e.g. `HIDE_STOCK_MOVEMENT_REPORT_MENU`, `HIDE_STOCK_AGING_REPORT_MENU`, `HIDE_HISTORICAL_STOCK_BALANCE_MENU`, `HIDE_STOCK_BALANCE_REPORT_NEW_MENU`, `HIDE_STOCK_BALANCE_REPORT_MENU` (Pricing), `HIDE_STOCK_BALANCE_REPORT_WITH_SERIAL_MENU` … (key = route in upper case) | Removes the report from the sidebar | off | Hidden unless the user holds the matching `SHOW_<REPORT>_MENU` permission |
+| Stock Report Listing | `HIDE_MA_COST` | Unit Cost / Total Cost / MA value columns on every report | off | Reopened per user by `SHOW_MA_COST` |
+| Stock Report Listing | `HIDE_GP`, `HIDE_GP_PERCENTAGE` | Gross profit and GP % columns (Movement, Summary by Location, Sales and Purchase) | off | Reopened by `SHOW_GP` / `SHOW_GP_PERCENTAGE` if granted (not seeded in the registry) |
+| Stock Report Listing | `ADVANCED_SEARCH_SHOW_COST_MA`, `…COST_WA`, `…COST_FIFO`, `…COST_LIFO`, `…COST_REPLACEMENT`, `…COST_MANUAL`, `…REF_PRICE1–3`, `…DELTA_PRICE1–3`, `…REBATE_PRICE1–3`, `…SALES_MIN_PRICE`, `…SALES_MAX_PRICE`, `…PURCHASE_MIN_PRICE`, `…PURCHASE_MAX_PRICE`, `…REPORT_UNIT_REPLACEMENT_COST`, `…REPORT_UNIT_MANUAL_COST`, `…REPORT_UNIT_COMMISSION`, `…REPORT_UNIT_REBATE` | Which cost / price bases can be chosen in Advanced Search and appear as columns | off | Each pairs with a `SHOW_ADVANCED_SEARCH_<BASIS>` permission |
+| Stock Report Listing | `AGING_PERIOD_TYPE` | Month (default) or day buckets on the Aging report | Month | — |
+| Stock Report Listing | `PRICING_SCHEMES` | Pricing schemes listed on the Stock Balance Pricing Report | none | — |
+| Item Category Group | Category groups 0–20 | Which item category levels are offered as filters, each with its label list and a visibility toggle | — | — |
 
-## Stock Movement Report
-{{< figure src="/images/stock-report-applet/stock-movement-report.png" alt="Stock Movement Report" caption="Detailed transaction log of all stock movements grouped by item code." >}}
+**Settings > Default Selection** — `DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `DEFAULT_LANGUAGE_CODE` pre-fill the search panel; personal Default Selection overrides them. **Settings > Aging Period Settings** — the same month / day choice as `AGING_PERIOD_TYPE`. **Settings > Custom Resource Bundle Configuration** — relabel menu names and column headers.
 
-The **Stock Movement Report** provides a detailed transaction log of all stock movements—goods received, goods issued, transfers, adjustments, and more—grouped by item code.
+The Stock Balance Pricing Report has its own column keys `HIDE_LISTING_SALES_PRICE`, `HIDE_LISTING_PURCHASE_PRICE`, `HIDE_LISTING_SALES_MIN_PRICE`, `HIDE_LISTING_SALES_MAX_PRICE`, `HIDE_LISTING_REF_PRICE_1–3`, `HIDE_LISTING_DELTA_PRICE_1–3`, `HIDE_LISTING_REBATE_PRICE_1–3`, `HIDE_LISTING_REPLACEMENT_PRICE`, read from the same settings record; they are not on the settings screen and their `SHOW_LISTING_*` counterparts are not registered.
 
-**Key Columns:**
+`INCLUDE_*` / `ENABLE_*` dimension and tax keys and `PRINTABLE` are declared in the settings model but unused.
 
-| Column | Description |
-|--------|-------------|
-| **Item Code** | Item identifier (used as row group header) |
-| **Txn Date** | Transaction date |
-| **Location** | Warehouse/location where the transaction occurred |
-| **Doc Short Code** | Document type abbreviation |
-| **Doc No** | Document number |
-| **Serial** | Serial number (if applicable) |
-| **Unit Price** | Price per unit for the transaction |
-| **Qty In** | Quantity received/added |
-| **Qty Out** | Quantity issued/removed |
-| **Bal Qty** | Running balance quantity after the transaction |
+### Document behaviour settings
 
-**Use Cases:**
-- Trace where specific items have moved over a period
-- Audit individual transactions by document number
-- Identify unusual movement patterns (e.g., spikes in qty out)
-- Reconcile physical stock counts against system records
+Not applicable — the applet has no documents, statuses or printables.
 
-#### Business Context
-- **Inventory Management**: Used to investigate stock discrepancies (e.g., "Why is our count short by 5 units?").
-- **Audit & Compliance**: Provides a complete audit trail of every stock movement for internal controls.
+### Feature visibility / permissions
 
-#### Data Source & Logic
-- **Source**: Fetches raw transaction records from the **Stock Transaction Ledger**.
-- **Logic**: Every single inventory event (Purchase, Sale, Transfer, Adjustment) creates a strict debit/credit entry here. This is the "source of truth" for all stock movements.
+Registered client-side permissions for `stockReport` (all `ACTIVE`):
 
+| Permission | Unlocks |
+|---|---|
+| `SHOW_STOCK_MOVEMENT_REPORT_MENU`, `SHOW_STOCK_AGING_REPORT_MENU`, `SHOW_STOCK_SUMMARY_REPORT_BY_LOCATION_MENU`, `SHOW_HISTORICAL_STOCK_BALANCE_MENU`, `SHOW_STOCK_SALES_PURCHASE_BY_ITEM_CODE_MENU`, `SHOW_STOCK_VALUE_BY_LEVEL_MENU`, `SHOW_BATCH_EXPIRY_DATE_MENU`, `SHOW_STOCK_BALANCE_REPORT_NEW_MENU`, `SHOW_STOCK_BALANCE_SUPPLIER_SERIAL_BATCH_MENU`, `SHOW_STOCK_BALANCE_REPORT_MENU`, `SHOW_STOCK_BALANCE_REPORT_WITH_SERIAL_MENU`, `SHOW_STOCK_BALANCE_REPORT_SUPPLIER_SERIAL_MENU`, `SHOW_ITEM_PRICE_CHANGE_MENU` | The report when its menu is hidden tenant-wide |
+| `SHOW_MA_COST`, `SHOW_UNIT_COST`, `SHOW_TOTAL_COST` | Cost columns when `HIDE_MA_COST` is on |
+| `SHOW_OPEN_INVENTORY_VALUE`, `SHOW_CLOSING_INVENTORY_VALUE`, `SHOW_OPEN_BALANCE_VALUE`, `SHOW_CLOSING_BALANCE_VALUE` | Value columns on Summary by Location (their `HIDE_*` toggles are commented out of the settings screen) |
+| `SHOW_ADVANCED_SEARCH_COST_MA` … `SHOW_ADVANCED_SEARCH_REPORT_UNIT_REBATE` (23) | The matching cost / price basis in Advanced Search |
+| `SHOW_STOCK_MOVEMENT_REPORT`, `SHOW_STOCK_AGING_REPORT`, `SHOW_STOCK_BALANCE_REPORT`, `SHOW_HISTORICAL_STOCK_BALANCE`, `SHOW_STOCK_SUMMARY_REPORT_BY_LOCATION`, `SHOW_STOCK_SALES_AND_PURCHASE_BY_ITEM_CODE`, `SHOW_STOCK_VALUE_BY_LEVEL_REPORT`, `SHOW_BATCH_AND_EXPIRY_DATE_REPORT`, `SHOW_STOCK_BALANCE_REPORT_WITH_SERIAL`, `SHOW_STOCK_BALANCE_BY_ITEM_SUPPLIER_BATCH_EXPIRY_REPORT`, `SHOW_ITEM_PRICE_CHANGE_REPORT` | Legacy per-report codes kept for older permission sets |
 
+Cost and profit visibility is therefore two-layered: the tenant hides with `HIDE_MA_COST` / `HIDE_GP`, and finance users get the columns back through `SHOW_MA_COST` (and `SHOW_GP` where seeded). Server-side, each report's data call is refused without the corresponding `API_TNT_DM_ERP_*_READ` permission.
 
----
+## Fields
 
-## Stock Aging Report
-{{< figure src="/images/stock-report-applet/stock-aging-report.png" alt="Stock Aging Report" caption="Analyze inventory age with configurable aging buckets." >}}
+The applet has no create or edit forms. The search panel fields are listed under *Common controls*; the per-report column sets are listed with each report above.
 
-The **Stock Aging Report** breaks down your inventory by how long items have been in stock. Aging periods are dynamically configurable—you can choose between **day-based** or **month-based** aging buckets.
+## Lifecycle and posting
 
-**Key Columns:**
+Not applicable — read-only reports. Values are computed at run time from the stock ledger; the Stock Balance reports show the position at the moment they are run, the Historical and Summary reports the position at the chosen dates.
 
-| Column | Description |
-|--------|-------------|
-| **Category 1–10** | Item category levels (hidden by default, reveal as needed) |
-| **Item Code** | Item identifier |
-| **Item Name** | Item description |
-| **Dynamic Aging Columns** | Generated based on your aging period settings (e.g., 0–30 days, 31–60 days, etc.) |
+## Related applets
 
-**Aging Period Configuration:**
-{{< figure src="/images/stock-report-applet/aging-period-configuration.png" alt="Aging Period Configuration" >}}
-The aging report uses the **Aging Period Settings** configured in Application Settings. You can set the period type to:
-- **Day** — Buckets in day ranges (e.g., 0–30, 31–60, 61–90, etc.)
-- **Month** (Default) — Buckets by month count
+- [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) and [Stock Availability](/applets/inventory-workflow/stock-availability-applet/) — the live per-location figures; use them to confirm a balance this report questions.
+- [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/) — open transfer queue quantity is the *Stock In Transit* column.
+- [Stock Adjustment](/applets/inventory-workflow/stock-adjustment-applet/) — adjustments are the *Adj* column; serial adjustments appear as `SN_ADJ` movement rows; Reset MA appears as `RSTMVA`.
+- [Stock Take](/applets/inventory-workflow/stock-take-applet/) — the Stock Balance With Serial report doubles as a count sheet.
+- [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — item type, sub-type, categories.
+- [Pricebook](/applets/master-data/pricebook-applet/) — pricing schemes on the Pricing report.
+- [Financial Report](/applets/finance/financial-report-applet/) — closing stock in the ledger.
+- [Organisation](/applets/master-data/organisation-applet/) — locations and labels.
 
-**Use Cases:**
-- Identify slow-moving or dead stock that needs discounting or disposal
-- Support warehouse optimization by highlighting old inventory
-- Provide data for inventory write-down decisions
+## Troubleshooting
 
-#### Business Context
-- **Accounting**: Used to calculate **Inventory Obsolescence Provision** (write-downs) for financial statements.
-- **Warehouse Management**: Identifies "dead stock" taking up valuable space that should be cleared or discounted.
+| Symptom | Cause | Fix |
+|---|---|---|
+| "Please select at least one location" | Non-administrator with no location chosen, or no location read permission | Select a location; grant location read permissions |
+| Search returns nothing | Keyword shorter than three characters, or filters too narrow | Use three or more characters; widen date range and location |
+| Cost, value or GP columns missing | `HIDE_MA_COST` / `HIDE_GP` on and the user lacks `SHOW_MA_COST` / `SHOW_GP` | Grant the permission or turn the setting off |
+| A cost basis is missing from Advanced Search | `ADVANCED_SEARCH_SHOW_<BASIS>` off and no `SHOW_ADVANCED_SEARCH_<BASIS>` permission | Enable it in Application Settings > Stock Report Listing |
+| Report missing from the sidebar | `HIDE_<REPORT>_MENU` set | Grant `SHOW_<REPORT>_MENU` or clear the setting |
+| Historical Stock Balance closing differs from Summary by Location closing | Different bases: Historical sums all ledger lines before the date; Summary classifies by document type and excludes *Others* unless the include-non-movement column is used; in-transit quantity sits in neither location | Compare the *Closing Balance (include non-movement)* column; check the Stock In Transit column |
+| Corrected serial number shows in Stock Balance With Serial but the Movement report still shows the old one | Fixed in 2026 — the movement query now includes `SN_ADJ` rows | Update the backend; tick *Include SN Adjustment* |
+| Trade-in stock missing from Historical Stock Balance | Trade-in (non-stock trade-in) stock is not yet included | Open enhancement; use the Non-Stock and Trade-In applet's own listing |
+| Aging report shows negative quantities or wrong amounts | Fixed in 2026 (returns and adjustments were mis-signed) | Update the backend |
+| Wrong amount for foreign-currency documents on the Movement report | Fixed in 2026 — transaction currency amount was shown instead of the company amount | Update the backend |
+| Grid filter not reset after a new search | Known grid behaviour | Clear the column filter before searching again |
 
-#### Key Calculations
-- **Aging Buckets**: Items are categorized into buckets (e.g., 0-30 days, 31-60 days) based on the time elapsed since they were received or last moved.
-- **Value**: The report calculates total value in each bucket using the item's **Moving Average (MA) Cost**.
+## Related documentation
 
-#### Data Source & Logic
-The report queries the **historical stock transaction ledger**. It looks at the *remaining quantity* of each inbound shipment (GRN, Adjustment In) and calculates its age:
-`Age = Current Date - Transaction Date`
-It then sums up the value of these specific aged quantities to give you the total aging value.
-
-
-
----
-
-## Stock Summary Report by Location
-{{< figure src="/images/stock-report-applet/stock-summary-report-by-location.png" alt="Stock Summary Report by Location" caption="High-level summary of stock quantities and values per location." >}}
-
-A high-level summary of stock quantities and values grouped by location. Use this to quickly compare inventory distribution across your warehouses.
-
-**Key Columns:**
-
-| Column | Description |
-|--------|-------------|
-| **Item Code / Item Name** | Item identification |
-| **Category 1–10** | Item category classifications |
-| **Location-based data** | Quantities and values per location |
-
-#### Business Context
-- **Executive Overview**: Used by management to quickly see how much stock value is sitting in each warehouse branch.
-- **Logistics**: Helps decide if stock needs to be transferred from a surplus location to a deficit location.
-
-#### Data Source & Logic
-- **Source**: Aggregates data from the **Item Location Balance** table.
-- **Logic**: Sums up the `Quantity` and `Value` (Qty × Cost) for all items, grouped strictly by **Location ID**.
-
----
-
-## Historical Stock Balance
-{{< figure src="/images/stock-report-applet/historical-stock-balance.png" alt="Historical Stock Balance" caption="Stock balance snapshots over a selected date range." >}}
-
-The **Historical Stock Balance** report shows stock balance snapshots over a selected date range. This lets you track how stock levels changed over time.
-
-**Use Cases:**
-- Compare stock levels at different points in time
-- Identify seasonal demand patterns
-- Support inventory forecasting and planning
-- Audit historical inventory records
-
-#### Business Context
-- **Supply Chain Planning**: Analyzing historical trends helps predict future stock needs based on past consumption patterns.
-- **Accounting**: Used to reconstruct inventory value at a specific past date (e.g., for month-end or year-end closing verification).
-
-#### Data Source & Logic
-- **Source**: **Transaction History** + **Current Balance**.
-- **Calculation**: It starts with the *current* stock balance and "rolls back" transactions (reversing In/Out movements) to calculate what the balance *must have been* on the selected date.
-
-
-
----
-
-## Stock Balance Report
-{{< figure src="/images/stock-report-applet/stock-balance-report.png" alt="Stock Balance Report" caption="Current stock balance overview with valuation metrics." >}}
-
-The **Stock Balance Report** shows the current stock balance for each item across your company, with cost valuations.
-
-**Key Columns:**
-
-| Column | Description |
-|--------|-------------|
-| **Company** | Company name |
-| **Category 1–10** | Item category levels (hidden by default) |
-| **Item Code** | Item identifier |
-| **Item Name** | Item description |
-| **Type / Sub Type** | Item transaction type and sub-type (hidden by default) |
-| **UOM** | Unit of measurement (hidden by default) |
-| **Bal Qty** | Current ledger balance quantity |
-| **Unit Cost** | Moving Average (MA) cost per unit |
-| **Total Cost** | MA cost × balance quantity |
-| **Unit Last Cost** | Last purchase cost per unit |
-| **Total Last Cost** | Last purchase cost × balance quantity |
-
-**Search Options:**
-- Filter by **Company**, **Item Type**, **Item Status**, **Item Range**, and **Item Category Levels 1–20**
-- Optionally **Show Zero Balance** items via the optional filters
-
-**Use Cases:**
-- Get a snapshot of current inventory and its valuation
-- Compare MA cost vs. last purchase cost for pricing decisions
-- Identify items with zero balance that may need reordering
-- Export for accounting reconciliation
-
-#### Business Context
-- **Finance**: Provides the **data source for the Balance Sheet** "Inventory" asset line item.
-- **Purchasing**: Used to verify current stock-on-hand before placing new supplier orders to avoid overstocking.
-
-#### Data Source & Calculation
-- **Quantity**: Pulled directly from the live **Item Stock Ledger**. It represents the real-time physical quantity available in the system.
-- **Value**: Calculated using the **Weighted Moving Average (MA) Cost**.
-`Total Cost = Quantity × Current MA Unit Cost`
-*Note: This report reflects the status at the exact moment the report is run.*
-
-
-
----
-
-## Stock Sales & Purchase by Item Code
-{{< figure src="/images/stock-report-applet/stock-sales-and-purchase-by-item-code.png" alt="Stock Sales & Purchase by Item Code" caption="Comparison of sales vs. purchase activity with Gross Profit analysis." >}}
-
-This report provides a side-by-side comparison of **sales** and **purchase** activity for each item within a date range. It also calculates **Gross Profit (GP)**.
-
-**Key Columns:**
-
-| Column | Description |
-|--------|-------------|
-| **Category 1–10** | Item category classifications (hidden by default) |
-| **Location** | Formatted as `Location Code | Location Name` |
-| **Item Code / Item Name** | Item identification |
-| **Item Description** | Additional description (hidden by default) |
-| **Qty Sold** | Total units sold in the period |
-| **Sales Amount** | Total revenue from sales |
-| **Cost** | Cost of goods sold (permission-controlled) |
-| **GP** | Gross Profit = Sales Amount − Cost (permission-controlled) |
-| **Purchase Qty** | Total units purchased in the period |
-| **Purchase Amount** | Total purchase spending |
-| **Bal Qty** | Closing balance quantity |
-| **Stock Turn Ratio** | Inventory turnover indicator |
-| **Last Purchase** | Date of the most recent purchase |
-
-**Use Cases:**
-- Evaluate product profitability (GP analysis)
-- Compare sales vs. purchasing volumes per item
-- Identify items with declining sales or increasing costs
-- Support pricing strategy decisions
-
-#### Business Context
-- **Sales & Marketing**: Identifies high-performing items (high sales, high GP) versus loss-leaders.
-- **Purchasing**: Helps negotiators compare **Last Purchase Price** trends against sales performance.
-
-#### Data Source & Logic
-- **Sales Data**: Aggregated from **Posted Sales Invoices** and **Cash Sales** within the date range.
-- **Purchase Data**: Aggregated from **Posted Supplier Invoices** and **GRNs**.
-- **Logic**: Matches total sales quantity vs. total purchase quantity for the *same item code* to allow side-by-side comparison.
-
-
-#### Key Calculations
-Assuming permission to view costs:
-- **Sales Amount**: `Unit Price × Qty Sold`
-- **Cost (COGS)**: `Unit Cost (MA) × Qty Sold`
-- **Gross Profit (GP)**: `Sales Amount - Cost`
-- **Stock Turn Ratio**: Indicates how many times inventory is sold and replaced over a period (Higher = Better efficiency).
-
-
----
-
-## Stock Value by Level
-{{< figure src="/images/stock-report-applet/stock-value-by-level-report.png" alt="Stock Value by Level" caption="Aggregated stock values grouped by item category levels and location." >}}
-
-The **Stock Value by Level** report aggregates stock quantity and value data grouped by **item categories** and broken down by **location**. It uses pivot-style columns to show per-location quantities and amounts.
-
-**Key Columns:**
-
-| Column | Description |
-|--------|-------------|
-| **Category 1–10** | Item category levels (Category 1 and 2 used as row groups) |
-| **Total Qty** | Aggregated quantity across all locations |
-| **Total Amount** | Aggregated MA amount across all locations |
-| **Location Columns** | Dynamically generated per-location columns showing Qty and Amount |
-
-**Use Cases:**
-- Understand inventory distribution by category and location
-- Support category-level inventory valuation
-- Compare stock allocation across warehouses
-
-#### Business Context
-- **Category Management**: Used by merchandisers to analyze stock investment across different product families (e.g., "Do we have too much value tied up in Accessories vs. Main Units?").
-
-#### Data Source & Logic
-- **Source**: **Item Master** (Category Links) + **Stock Balance**.
-- **Logic**: Groups all items by their assigned **Category Hierarchy** (Level 1–10) and sums their total stock value. Useful for high-level financial reporting rather than item-level checking.
-
-
-
----
-
-## Batch & Expiry Date Report
-{{< figure src="/images/stock-report-applet/batch-and-expiry-date-report.png" alt="Batch & Expiry Date Report" caption="Track items approaching expiry with month-based buckets." >}}
-
-Track items with **batch numbers** and **expiry dates**. The report categorizes items into month-based expiry buckets to help you manage perishable or time-sensitive inventory.
-
-**Key Columns:**
-
-| Column | Description |
-|--------|-------------|
-| **Category 1–10** | Item category classifications (hidden by default) |
-| **Item Code / Item Name** | Item identification |
-| **Qty** | Current quantity |
-| **Amount** | MA price (permission-controlled) |
-| **Expiry Date** | The item's expiry date |
-| **Dynamic Month Columns** | Items categorized into: 0 Month, 1 Month, 2 Months, 3 Months, 4–6 Months, 7–12 Months, 13–24 Months, >24 Months |
-
-**Use Cases:**
-- Identify items nearing expiry for clearance or disposal
-- Monitor batch-tracked inventory health
-- Support FIFO/FEFO picking strategies
-- Generate reports for regulatory compliance
-
-#### Business Context
-- **Quality Control**: Critical for FIFO (First-In-First-Out) and FEFO (First-Expired-First-Out) inventory management to prevent spoilage.
-- **Compliance**: Required for regulated industries (food, pharma) to trace batch history and expiry.
-
-#### Data Source & Logic
-- **Source**: **Batch Master Table**.
-- **Logic**: Filters batch records where `Expiry Date` is approaching. It groups items into month-based buckets (e.g., "Expiring in 0 Months", "1 Month", etc.) relative to the **Current Date**.
-
-
-
----
-
-## Stock Balance (Supplier & Serial)
-{{< figure src="/images/stock-report-applet/stock-balance-report-by-supplier-with-serial.png" alt="Stock Balance (Supplier & Serial)" caption="Stock balances grouped by supplier with serial number details." >}}
-
-This report shows stock balances **grouped by supplier**, with links to the original purchase documents and **serial number** details for tracked items.
-
-**Key Columns:**
-
-| Column | Description |
-|--------|-------------|
-| **Supplier** | Supplier name and code (used as row group header) |
-| **Txn Date** | Transaction date from the purchase document |
-| **Doc Short Code / Doc No** | Document type abbreviation and document number |
-| **Category 1–10** | Item categories (hidden by default) |
-| **Item Code / Item Name** | Item identification |
-| **Bal Qty** | Current stock balance |
-| **Unit Cost / Total Cost** | MA cost values (permission-controlled) |
-| **Serial Numbers** | List of serial numbers for the item (multi-line display) |
-
-**Use Cases:**
-- Track which supplier provided which stock
-- Manage warranty or after-sales by linking serial numbers back to suppliers
-- Audit purchase transactions linked to current inventory
-
-#### Business Context
-- **Vendor Management**: Used to evaluate supplier performance and track defective items back to their source.
-- **Warranty Claims**: Essential for verifying if a returned item with a specific serial number was indeed purchased from a specific supplier.
-
-#### Data Source & Logic
-- **Source**: **Purchase History** linked to **Serial Number Registry**.
-- **Logic**: Instead of just showing "Item A: 10 units", it traces each unit back to its original **Purchase Invoice** or **Purchase Goods Received Note (GRN)** to display the *Supplier* who delivered it.
-
-
-
----
-
-## Stock Balance by Item, Supplier & Batch
-{{< figure src="/images/stock-report-applet/stock-balance-by-item-supplier-and-batch-expiry-report.png" alt="Stock Balance by Item, Supplier & Batch" caption="Cross-referenced view of items, suppliers, and batch numbers." >}}
-
-A cross-referenced report combining **item**, **supplier**, and **batch** data in one view.
-
-**Key Columns:**
-
-| Column | Description |
-|--------|-------------|
-| **Item Code / Item Name** | Item identification |
-| **Qty** | Current balance |
-| **MA Price / MA Amount** | Moving Average cost values (permission-controlled) |
-| **Batch Number** | Batch tracking reference |
-| **Entity** | Supplier/entity name |
-
-**Use Cases:**
-- Comprehensive supplier-batch-item cross-referencing
-- Support traceability requirements
-- Batch-level valuation analysis
-
----
-
-## Configuration & Settings
-
-Access settings from the **Settings** menu item in the sidebar. The settings are organized into sections:
-
-### Application Settings (`Settings > Application Settings`)
-
-The Application Settings page has **three tabs**:
-
-**Tab 1: Sidebar Menu**
-
-Toggle which reports appear in the sidebar. Each report can be individually hidden or shown using slide toggles. This is useful for simplifying the interface for users who only need specific reports.
-
-**Tab 2: Stock Report Listing**
-
-Configure report-level settings:
-
-| Setting | Description |
-|---------|-------------|
-| **HIDE_MA_COST** | Toggle visibility of MA Cost columns across all reports |
-| **HIDE_GP** | Toggle visibility of Gross Profit columns |
-| **HIDE_GP_PERCENTAGE** | Toggle visibility of GP Percentage columns |
-| **Aging Period** | Select between **Month** (default) and **Day** for the Stock Aging Report |
-| **Pricing Schemes** | Select which pricing schemes to include in reports |
-
-**Tab 3: Item Category Group**
-
-Configure up to **20 item category groups** used for filtering. Each group links to a label list and can be individually shown or hidden using the visibility toggle.
-
----
-
-### Default Selection (`Settings > Default Selection`)
-
-Set applet-wide defaults that auto-populate when the applet loads:
-
-| Setting | Description |
-|---------|-------------|
-| **Default Branch** | Pre-selects the branch for reports |
-| **Default Location** | Pre-selects the location for reports |
-| **Default Language** | Sets the applet UI language |
-
-A **Reset** button is available to clear all defaults.
-
----
-
-### Webhook (`Settings > Webhook`)
-
-Configure webhook integrations for automated notifications or data sync with external systems.
-
----
-
-### Permissions
-
-Permission settings control who can access reports and modify applet settings. Since this is a read-only reporting applet, these permissions do **not** affect stock or inventory data—they only control access to the reports themselves and the applet's configuration.
-
-| Permission Setting | Description |
-|-------------------|-------------|
-| **Read Permission** | Controls who can view reports — permissions can be targeted to specific locations and branches |
-| **Create Permission** | Controls who can create applet setting configurations |
-| **Update Permission** | Controls who can update applet settings |
-| **Delete Permission** | Controls who can delete applet setting configurations |
-
----
-
-### Release Notes (`Settings > Release Notes`)
-
-View applet version history and feature updates.
-
----
-
-### Applet Log (`Settings > Applet Log`)
-
-Audit trail showing configuration changes made within the applet (e.g., changes to default settings, field visibility toggles, permission updates):
-
-| Column | Description |
-|--------|-------------|
-| **Table Name** | Which setting/configuration was affected |
-| **Action** | CREATE, UPDATE, DELETE |
-| **Action Date** | When it happened |
-| **Description** | Details of the change |
-
----
-
-## Personalization
-
-Personalization settings allow individual users to override applet-wide defaults for their own experience.
-
-### Personal Default Settings
-
-Set your personal defaults that override the applet-level defaults:
-
-| Setting | Description |
-|---------|-------------|
-| **Default Branch** | Your preferred branch (overrides applet default) |
-| **Default Location** | Your preferred location (overrides applet default) |
-| **Default Language** | Your preferred UI language (overrides applet default) |
-
-{{< callout type="info" >}}
-**Note**: Personal settings take priority over the applet-level default settings configured by admins.
-{{< /callout >}}
-
-### Sidebar Customization
-
-Arrange and customize sidebar menu items to match your preferred workflow.
-
----
-
-## FAQ
-
-**Q: Why are some columns missing from my report?**
-A: Column visibility is controlled by two things: (1) **Application Settings** toggles (e.g., `HIDE_MA_COST`), and (2) **User Permissions** (e.g., `SHOW_MA_COST`). Contact your admin if you need access to hidden columns.
-
-**Q: How do I change the aging period in the Stock Aging Report?**
-{{< figure src="/images/stock-report-applet/faq-aging-period-setting.png" alt="Aging Period Settings in Application Settings" >}}
-A: Go to **Settings > Application Settings** → change the **Aging Period Settings** tick row Month or Day.
-
-**Q: Why does my search return no results?**
-A: Ensure your search keyword is at least 3 characters long. Also check that your location, date range, and other filters are not too restrictive.
-
-**Q: Can I export reports?**
-{{< figure src="/images/stock-report-applet/faq-export-reports.png" alt="Export Report Options" >}}
-A: Yes. All reports support export via the **Status Bar** at the Top Right of the grid. You can export to Excel or PDF.
-
-**Q: Why can't I see certain reports in the sidebar?**
-A: Some reports may be hidden via **Settings > Application Settings** (Sidebar Menu tab). Ask your admin to enable the reports you need.
-
-**Q: What is the difference between the various Stock Balance reports?**
-A: The applet offers multiple stock balance views for different needs:
-- **Stock Balance Report** — Basic balance with MA and last purchase cost
-- **Stock Balance (Supplier & Serial)** — Balance grouped by supplier with serial number tracking
-- **Stock Balance (Item, Supplier & Batch)** — Balance cross-referenced by item, supplier, and batch number
-
-Choose the one that matches your analysis needs.
-
-**Q: How do item category levels work in the reports?**
-A: Item categories (Category 1–10) are additional classification fields on your items. They are hidden by default in most reports but can be revealed using the **Column Toggle**. Use them in the **Advanced Search** filters to narrow results to specific item groups.
-
-**Q: What does "Show Zero Balance" do?**
-A: By default, the Stock Balance Report excludes items with zero quantity. Enabling "Show Zero Balance" in the search options includes all items, even those with no current stock.
-
+- [Inventory module](/modules-v2/inventory/) — [reports](/modules-v2/inventory/reports/), [core concepts](/modules-v2/inventory/core-concepts/).
+- [Inventory guides](/guides/inventory-guides/).
