@@ -14,11 +14,12 @@ with the analysis, the changes made, and the commit hash.
 
 ```
 ### /user-guide/some-page/                      ← live URL path, one H3 per page
-- [ ] F-0001 (2026-09-05) "verbatim or near-verbatim of what Vincent said"
+- [x] F-0001 (2026-09-05) "verbatim or near-verbatim of what Vincent said"
       → source: content/en/user-guide/some-page.md
       → note: anything Claude noticed while recording (optional)
 ```
       → lint: allowlisted in tests/lint-allowlist.tsv (key malay) until fixed; remove the line when done
+      → batch: batches/2026-09-05-malay-pages.md — archived to planning/archive/ (Indonesian throughout; English page is canonical until a proper BM translation exists)
 
 - IDs are sequential across the whole inbox, never reused.
 - Keep Vincent's words. Do not paraphrase the complaint into something tidier.
@@ -34,16 +35,18 @@ with the analysis, the changes made, and the commit hash.
       → note: found by Claude during the translation survey, not reported by Vincent. Malay: inventori, perniagaan, menjejak, boleh, ciri, mengurus
 
 ### /ms/applets/driver-delivery-order-applet/
-- [ ] F-0002 (2026-09-05) Indonesian vocabulary: pengiriman, mengelola
+- [x] F-0002 (2026-09-05) Indonesian vocabulary: pengiriman, mengelola
       → source: content/ms/applets/driver-delivery-order-applet.md
       → note: Malay: penghantaran, mengurus
       → lint: allowlisted in tests/lint-allowlist.tsv (key malay) until fixed; remove the line when done
+      → batch: batches/2026-09-05-malay-pages.md — fixed: pengiriman→penghantaran, kelola→urusan, mengelola→mengurus
 
 ### /ms/applets/internal-sales-order-applet/
-- [ ] F-0003 (2026-09-05) Indonesian vocabulary: fitur
+- [x] F-0003 (2026-09-05) Indonesian vocabulary: fitur
       → source: content/ms/applets/internal-sales-order-applet.md
       → note: Malay: ciri
       → lint: allowlisted in tests/lint-allowlist.tsv (key malay) until fixed; remove the line when done
+      → batch: batches/2026-09-05-malay-pages.md — fixed: fitur→ciri
 
 ### /applets/e-invoice/my-einvoice-for-customer-and-supplier-applet/
 - [ ] F-0004 (2026-09-05) "we actually DO NOT HAVE this applet 'MY E-Invoice for Customer & Supplier Applet', i do not know why you included this ... This is a non-existence applet"
@@ -215,7 +218,8 @@ with the analysis, the changes made, and the commit hash.
       → note: allowlisted in tests/lint-allowlist.tsv (key title) so the gate can ship; one batch to add titles (and rename the 12 space-containing filenames with aliases).
 
 ### /ms/applets/internal-sales-order-applet/
-- [ ] F-0037 (2026-09-05) Indonesian "fitur" ×3 in a Malay page (Malay: ciri). Found by the content lint; joins F-0001..F-0003.
+- [x] F-0037 (2026-09-05) Indonesian "fitur" ×3 in a Malay page (Malay: ciri). Found by the content lint; joins F-0001..F-0003.
       → source: content/ms/applets/internal-sales-order-applet.md
       → lint: allowlisted (key malay) until fixed
+      → batch: batches/2026-09-05-malay-pages.md — fixed: fitur→ciri ×3
 

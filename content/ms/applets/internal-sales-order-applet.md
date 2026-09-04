@@ -421,7 +421,7 @@ Line items ialah nadi sales order. Gunakannya untuk mengawal harga, peraturan pe
 Applet Pesanan Jualan Dalaman sangat boleh dikonfigurasi. Tetapan diakses di:
 `Settings`
 
-{{< figure src="/images/internal-sales-order-applet/so-setting-page.png" alt="Settings page for Internal Sales Order Applet showing configuration modules" caption="Settings: Konfigurasi default, workflow, printables, dan keterlihatan fitur." >}}
+{{< figure src="/images/internal-sales-order-applet/so-setting-page.png" alt="Settings page for Internal Sales Order Applet showing configuration modules" caption="Settings: Konfigurasi default, workflow, printables, dan keterlihatan ciri." >}}
 
 ### Application Settings
 
@@ -429,7 +429,7 @@ Togol dan default umum:
 - Default branch dan location
 {{< figure src="/images/internal-sales-order-applet/so-def-branch.png" alt="Settings for default branch and location" caption="Settings: Konfigurasi default branch dan location untuk applet." >}}
 - Keterlihatan kolum dan kawalan carian lanjutan
-{{< figure src="/images/internal-sales-order-applet/so-set-vis.png" alt="Applet sub menu setting" caption="Settings: Konfigurasi keterlihatan fitur." >}}
+{{< figure src="/images/internal-sales-order-applet/so-set-vis.png" alt="Applet sub menu setting" caption="Settings: Konfigurasi keterlihatan ciri." >}}
 
 ### Printable Format Settings
 
@@ -463,7 +463,7 @@ Togol dan default umum:
 
 ### Feature Visibility and Permissions
 
-- Konfigurasi keterlihatan fitur
+- Konfigurasi keterlihatan ciri
 - Set kebenaran peranan dan pasukan
 - Kawalan kebenaran di pihak klien
 

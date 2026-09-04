@@ -1,8 +1,5 @@
 # Files temporarily exempt from a content lint. Format: <lint-key><TAB><path>. Remove lines as batches fix them.
 # lint keys: malay (F-0001..F-0003), title (F-0036)
-malay	content/ms/applets/customer-consignment-applet.md
-malay	content/ms/applets/driver-delivery-order-applet.md
-malay	content/ms/applets/internal-sales-order-applet.md
 title	content/zh/applets/einvoice-generation-applet.md
 title	content/en/developers/api-reference/ucc/TelegramMessageController.md
 title	content/en/developers/api-reference/ucc/PredefinedMessageLineResourceController.md

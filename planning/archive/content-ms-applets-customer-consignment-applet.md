@@ -1,3 +1,4 @@
+<!-- ARCHIVED 2026-09-05 (F-0001): this file is an Indonesian translation, not Bahasa Melayu (inventaris, Anda, pengaturan, manajer…). Unpublished until a proper Malay translation exists; the English page /applets/sales-workflow/customer-consignment-applet/ is canonical. Original path: content/ms/applets/customer-consignment-applet.md -->
 ---
 title: "Aplikasi Konsainan Pelanggan"
 description: "Kelola dan jejak inventaris konsainan yang ditempatkan di lokasi pelanggan, memfasilitasi transfer inventaris internal dan koordinasi inventaris luar lokasi."

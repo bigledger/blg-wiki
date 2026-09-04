@@ -131,7 +131,7 @@ Mulakan perjalanan aplikasi secara pantas menggunakan contoh-contoh aliran kerja
 Aplikasi memberikan kelegaan terhadap modul berpiawan memelihara sistem kebenaran (Permission modules). Peraturan yang digariskan sama ada melalui hierarki level peranan / pasukan bakal sentiasa menyaring lalu menentukan hak pengguna. Contoh aplikasinya meliputi menghad kebenaran setiap operator pemanduan cuma setakat rujukan lokal operasi mereka dan sekadar menyerah pemerhatian log skop besar pada level pemantauan penyelarasan.
 
 **Langkah 4: Tentukan Format Custom Statuses** (`Settings > Custom Status`)
-- Wujudkan tetapan penalaan status mengikut terminologi piawai tugasan seharian logistik anda (Erti umum , "Sedia Diambil" , "Dalam Pengiriman", "Berjaya Dihantar", atau "Gagal Dikirim").
+- Wujudkan tetapan penalaan status mengikut terminologi piawai tugasan seharian logistik anda (Erti umum , "Sedia Diambil" , "Dalam Penghantaran", "Berjaya Dihantar", atau "Gagal Dikirim").
 
 **Langkah 5: Tatacara Percubaan (Test flow)**
 - Mulai membina corak borang Pesanan Keluar Outbound Delivery Order ringkas di ruangan pusat utama ERP pelayan web .
@@ -155,14 +155,14 @@ Aplikasi memberikan kelegaan terhadap modul berpiawan memelihara sistem kebenara
 
 ## Konfigurasi Utama & Pilihan Menu Seting Tetapan (Configuration & Settings)
 
-Applet  Driver Delivery Order merintis pada kuasa menyeluruh dari kawalan laluan **Settings menu**. Paparan menu kelola ini dicerakinkan perkelompok mengikut kemunasaban kriteria dan corak pengguna dengan mudah memperkasa suai suana digital staf kerja tersebut .
+Applet  Driver Delivery Order merintis pada kuasa menyeluruh dari kawalan laluan **Settings menu**. Paparan menu urusan ini dicerakinkan perkelompok mengikut kemunasaban kriteria dan corak pengguna dengan mudah memperkasa suai suana digital staf kerja tersebut .
 
 {{< figure src="/images/driver-delivery-applet/setting-page.png" alt="Driver Delivery Order Settings Page" caption="Tetapan Applet: Kategorisasi penuh kesemua ciri pilihan boleh dikonfigurasi dalam menu paparan navigasi Applet." >}}
 
 ### System Configuration
 Simbiosis penyatuan dan perubahan kepada perlakuan pada struktur fail.
 
-*   **Application Settings:** Mod kebenaran suis toggle mengelola dasar polisi pembenaran Applet secara sedunia 
+*   **Application Settings:** Mod kebenaran suis toggle mengurus dasar polisi pembenaran Applet secara sedunia 
 
 {{< figure src="/images/driver-delivery-applet/application-setting-driver-do.png" alt="Application setting for driver delivery order applet" caption="Tetapan Applet : tetapkan kesesuaian ruang pilihan antaramuka bagi melekasi kemudahan menelusuri susur galur applet . " >}}
 
