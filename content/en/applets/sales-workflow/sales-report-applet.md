@@ -16,10 +16,10 @@ weight: 120
 
 ## Purpose and Overview
 
-The **Sales Report Applet** is a powerful tool designed to analyze sales records and performance. It helps teams track revenue, monitor trends, and spot opportunities or issues over time. The applet lets users review, compare figures and periods; and assess team or product performanceâ€”providing the data and views needed to support data-driven decisions.
+The **Sales Report Applet** is a powerful tool designed to analyze sales records and performance. It helps teams track revenue, monitor trends, and spot opportunities or issues over time. The applet lets users review, compare figures and periods; and assess team or product performance—providing the data and views needed to support data-driven decisions.
 
 {{< callout type="info" >}}
-**Core Concept**: The applet links **what** you sold (transactions and items) to **who** sold it (salesperson or team), **where** (branch or channel), and **when** (daily, monthly, yearly)â€”so you can slice and analyze performance from every angle.
+**Core Concept**: The applet links **what** you sold (transactions and items) to **who** sold it (salesperson or team), **where** (branch or channel), and **when** (daily, monthly, yearly)—so you can slice and analyze performance from every angle.
 {{< /callout >}}
 
 ## Key Features Overview
@@ -112,7 +112,7 @@ The Sales Report Applet organizes data so you can answer the right business ques
 A **calculation set** is the rule that defines *how* your figures are produced (e.g., by invoice date vs delivery date, and which document types count). Picking the same calculation set as your team or finance ensures you are all looking at the same definition of "sales."
 
 {{< callout type="tip" >}}
-**Real-World Example**: A sales manager (WHO) checks October sales (WHEN) for the Northern branch (WHERE). The report shows product X (WHAT) contributed 30% of revenue with strong margin (HOW MUCH)â€”enabling a decision to increase stock and set higher targets for Q4.
+**Real-World Example**: A sales manager (WHO) checks October sales (WHEN) for the Northern branch (WHERE). The report shows product X (WHAT) contributed 30% of revenue with strong margin (HOW MUCH)—enabling a decision to increase stock and set higher targets for Q4.
 {{< /callout >}}
 
 ### Report Hierarchy at a Glance
@@ -133,7 +133,7 @@ Organization
 
 1. **Period** - Choose the time slice (daily, monthly, yearly)
 2. **Dimension** - Slice by salesman, branch, product, or document
-3. **Figures** - Revenue, quantity, marginâ€”calculated from your chosen basis
+3. **Figures** - Revenue, quantity, margin—calculated from your chosen basis
 4. **Calculation Set** - Defines *how* figures are derived (e.g., invoiced vs delivered sales)
 
 This structure enables:
@@ -202,7 +202,7 @@ Get up and running quickly with these essential workflows.
 2. **Verify totals**: Cross-check revenue and figures with source documents or the general ledger
 3. **Select calculation set**: Choose the correct calculation set (e.g., invoiced sales, delivered sales) so the basis matches finance
 4. **Export**: Click **Export** and select format (e.g., Excel, PDF) for accounting, audit, or tax
-5. **Share**: Send the exported file to finance or operations using your organizationâ€™s process
+5. **Share**: Send the exported file to finance or operations using your organization’s process
 
 **Pro Tip:** Use the same calculation set and date range as your accounting period for consistent reconciliation.
 
@@ -297,7 +297,7 @@ Slice sales data the way your business runs:
 | **By Item Code** | Product performance, fast/slow movers |
 | **By Serial Number** | Traceability, warranty or service follow-up |
 
-Choose the dimension that answers your questionâ€”whether for sales meetings, inventory planning, or finance reconciliation.
+Choose the dimension that answers your question—whether for sales meetings, inventory planning, or finance reconciliation.
 
 ---
 
@@ -316,7 +316,7 @@ Under the hood, the Sales Report Applet exposes several focused views (routes) t
 | **Daily GP by Salesman** | `daily-gp-by-salesman` | Gross profit and GP% by salesperson on a daily basis | Which days and which salespeople are driving (or dragging) profitability? |
 | **Multi-Branch Sales, Purchase & Collection** | `multi-branch-sales-purchase-collection` | Consolidated view across branches for sales, purchases, and collections | How is each branch performing, and where are collections lagging? |
 | **Daily Collection Summary & Collection with Invoice Detail** | `daily-collection-summary`, `collection-with-invoice-detail` | Collections by day, with drill-down to invoice-level detail | How much was collected today and which invoices were settled? |
-| **Receipt with Credit Card & Sales Item Collection Invoice** | `receipt-with-credit-card`, `sales-item-collection-invoice` | Card-based receipts and item-level collection details | How much of todayâ€™s sales were paid by card? Which items are tied to each collection invoice? |
+| **Receipt with Credit Card & Sales Item Collection Invoice** | `receipt-with-credit-card`, `sales-item-collection-invoice` | Card-based receipts and item-level collection details | How much of today’s sales were paid by card? Which items are tied to each collection invoice? |
 
 These views all share a common pattern: advanced search at the top, a configurable ag-grid listing, and optional column visibility based on permissions.
 
@@ -418,10 +418,10 @@ Use **Multi-Branch Sales, Purchase & Collection** to see the bigger picture acro
 
 Narrow down reports so you see only what matters:
 
-- **By calculation set** â€“ Use the correct basis (e.g., invoiced sales, delivered sales) as configured in the applet
-- **By type** â€“ Filter by document type, transaction type, or category
-- **By date range** â€“ Daily, weekly, monthly, custom range
-- **By branch, team, product, or customer** â€“ Focus on a specific segment
+- **By calculation set** – Use the correct basis (e.g., invoiced sales, delivered sales) as configured in the applet
+- **By type** – Filter by document type, transaction type, or category
+- **By date range** – Daily, weekly, monthly, custom range
+- **By branch, team, product, or customer** – Focus on a specific segment
 
 Consistent use of filters ensures that comparisons and exports are accurate and aligned across teams.
 
@@ -437,9 +437,9 @@ Configure how sales data is aggregated, who can see what, and how reports behave
 
 #### Report Definitions & Calculation Sets (`Settings > Sales Report`)
 
-**Where:** `Settings > Sales Report` (or equivalent) â€” **Calculation Sets** / **Report Definitions**
+**Where:** `Settings > Sales Report` (or equivalent) — **Calculation Sets** / **Report Definitions**
 
-**What:** A **calculation set** defines how sales figures are calculatedâ€”for example, by invoice date, delivery date, or document typeâ€”and which source documents feed the report. This ensures that "sales" means the same thing across the organization (e.g., invoiced vs delivered). Everyone using the same set gets comparable numbers.
+**What:** A **calculation set** defines how sales figures are calculated—for example, by invoice date, delivery date, or document type—and which source documents feed the report. This ensures that "sales" means the same thing across the organization (e.g., invoiced vs delivered). Everyone using the same set gets comparable numbers.
 
 **Typical options:**
 - Calculation set name and description
@@ -451,7 +451,7 @@ Configure how sales data is aggregated, who can see what, and how reports behave
 
 #### Report Types & Dimensions (`Settings > Sales Report`)
 
-**Where:** `Settings > Sales Report` â€” **Report Types** / **Dimensions**
+**Where:** `Settings > Sales Report` — **Report Types** / **Dimensions**
 
 **What:** Configure which dimensions are available (by salesman, by document, by item code, by serial number) and any report templates or default views. Controls what appears in multi-dimensional reporting and dropdowns.
 
@@ -470,7 +470,7 @@ Configure how sales data is aggregated, who can see what, and how reports behave
 
 #### Default Periods & Favorites (`Settings > Sales Report`)
 
-**Where:** `Settings > Sales Report` â€” **Default Settings** or **User Preferences**
+**Where:** `Settings > Sales Report` — **Default Settings** or **User Preferences**
 
 **What:** Set default date range (e.g., current month), default calculation set, and optional favorite views so users land on the right report quickly.
 
@@ -478,7 +478,7 @@ Configure how sales data is aggregated, who can see what, and how reports behave
 
 #### Export & Integration (`Settings > Sales Report`)
 
-**Where:** `Settings > Sales Report` â€” **Export Formats** / **Integration**
+**Where:** `Settings > Sales Report` — **Export Formats** / **Integration**
 
 **What:** Configure export formats (e.g., PDF, Excel) and any integration with accounting, inventory, or BI tools so that reports are export-ready and consistent with downstream systems.
 
@@ -486,11 +486,11 @@ Configure how sales data is aggregated, who can see what, and how reports behave
 
 ## FAQ
 
-**Q: Why do my sales figures differ from the finance teamâ€™s numbers?**  
+**Q: Why do my sales figures differ from the finance team’s numbers?**  
 A: You are likely using a different **calculation set** or date range. Finance often uses a set based on invoice date or posting date. In Sales Report, select the same calculation set and period that finance uses for reconciliation, and ensure filters (branch, document type) match. If numbers still differ, compare source documents or check with your admin.
 
 **Q: How do I run a report for one branch only?**  
-A: Use the **Branch** (or **Location**) filter on the main Sales Report screen. Select the branch you want before applying the date range and calculation set. The listing and totals will then show only that branchâ€™s sales.
+A: Use the **Branch** (or **Location**) filter on the main Sales Report screen. Select the branch you want before applying the date range and calculation set. The listing and totals will then show only that branch’s sales.
 
 **Q: How do I compare this month to last month (or this year to last year)?**  
 A: Use the period selector and any **comparison** or **variance** option in the Sales Report. Select the two periods (e.g., This Month vs Last Month); the report will show both figures and variance where the applet supports it. If there is no comparison view, run two reports (one per period) and compare the exported totals.
@@ -499,5 +499,5 @@ A: Use the period selector and any **comparison** or **variance** option in the 
 A: Yes. Open Sales Report, set the calculation set and date range to match your closing period, apply any filters (e.g., branch), then click **Export** and choose Excel (or the format your finance team uses). Use the same settings every month for consistent month-end reports.
 
 **Q: How do I see only my own sales as a salesperson?**  
-A: If your organization uses **My Sales**, open that from the sidebarâ€”it shows only your transactions. Otherwise, open **Sales Report**, use the **By Salesperson** (or similar) filter, and select your name. If your role is restricted to â€œownâ€ data, you may already see only your sales by default.
+A: If your organization uses **My Sales**, open that from the sidebar—it shows only your transactions. Otherwise, open **Sales Report**, use the **By Salesperson** (or similar) filter, and select your name. If your role is restricted to “own” data, you may already see only your sales by default.
 

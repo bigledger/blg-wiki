@@ -143,7 +143,7 @@ You define the labels your team uses.
 6. Finance tells Ben: "Tell the customer they must pay last month's bill before we ship these new laptops." The system protected the company from bad debt.
 
 ### Scenario 2: The Multi-Branch Retail Chain
-**The Situation:** You just signed a deal to supply coffee beans to a cafÃ© chain that has 1 HQ and 4 separate coffee shop locations.
+**The Situation:** You just signed a deal to supply coffee beans to a café chain that has 1 HQ and 4 separate coffee shop locations.
 **The Workflow:**
 1. You create ONE Customer Profile for the parent company.
 2. In the **Addresses** tab, you add 5 entries.

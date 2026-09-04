@@ -4,8 +4,6 @@ description: Complete guide to managing admin access for your webstore
 weight: 10
 ---
 
-# User Permission Manager
-
 ## Overview
 The User Permission Manager is a comprehensive tool that allows administrators to manage admin access for their webstore. This guide covers the complete workflow from inviting users to granting admin privileges.
 

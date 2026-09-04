@@ -22,13 +22,15 @@ run_local() {
   if ! hugo --gc --minify; then red 'Hugo build FAILED'; return 1; fi
   green 'Hugo build OK'
 
-  blue '== Tier 2: lychee against built site =='
-  # lychee needs an absolute --base (a bare "public" is rejected as an invalid base)
-  if ! lychee --config tests/lychee.toml --offline --base "$REPO_ROOT/public" public/; then
-    red 'lychee found broken local links'
+  blue '== Tier 1b: content lints =='
+  if ! tests/content-lint.sh; then red 'Content lint FAILED'; FAIL=1; else green 'Content lints OK'; fi
+
+  blue '== Tier 2: lychee against built site (gated on tests/lychee-baseline.txt) =='
+  if ! tests/lychee-gate.sh; then
+    red 'lychee: new broken links'
     FAIL=1
   else
-    green 'No broken local links'
+    green 'No new broken links'
   fi
 
   blue '== Tier 3: Playwright against local Hugo server =='

@@ -90,7 +90,7 @@ Request Created â†’ Pending Approval â†’ Approved â†’ Item Receiv
 | **Return Reason** | Why item is being returned | Defective, Wrong item, Changed mind |
 | **Disposition** | What happens after return | Refund, Replace, Restock, Dispose |
 | **Credit Note** | Financial document for refund | CN-2024-00456 |
-| **RTV** | Return to Vendor â€” sending items back to supplier | Supplier defect claim |
+| **RTV** | Return to Vendor — sending items back to supplier | Supplier defect claim |
 
 ---
 
@@ -173,7 +173,7 @@ The Customer RMA Line listing provides a flattened view of all individual line i
 
 ## Supplier RTV
 
-Supplier RTV (Return to Vendor) manages returns directed back to your suppliers â€” for defective goods, warranty claims, or over-supplied items.
+Supplier RTV (Return to Vendor) manages returns directed back to your suppliers — for defective goods, warranty claims, or over-supplied items.
 
 {{< figure src="/images/internal-rma-applet/supplier-rtv-listing.png" alt="Supplier RTV Listing showing all supplier return to vendor records" caption="Supplier RTV Listing: All active and historical return-to-vendor requests for supplier-originated issues." >}}
 
@@ -273,13 +273,13 @@ Set your personal default Branch and Location, which will override the system de
 A: Yes, select multiple RMAs from the listing and apply batch actions.
 
 **Q: How do I track partial returns?**
-A: Create line items for each product being returned â€” you can receive them individually.
+A: Create line items for each product being returned — you can receive them individually.
 
 **Q: What is the difference between Customer RMA and Service Note?**
 A: A **Service Note** is the initial logging of a customer service request (often before the physical item is returned). A **Customer RMA** is a formal return authorization with tracking for the returned goods and their disposition.
 
 **Q: What is Supplier RTV vs Customer RMA?**
-A: **Customer RMA** manages returns FROM customers TO your company. **Supplier RTV** (Return to Vendor) manages returns FROM your company BACK TO the supplier â€” for defective goods or warranty claims.
+A: **Customer RMA** manages returns FROM customers TO your company. **Supplier RTV** (Return to Vendor) manages returns FROM your company BACK TO the supplier — for defective goods or warranty claims.
 
 **Q: How are refunds processed?**
 A: After RMA resolution with a refund disposition, a credit note is generated for finance to process the refund.

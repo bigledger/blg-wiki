@@ -327,7 +327,7 @@ When you select a template to edit, you'll see:
 
 ### Replenishment Events (`Stock Replenishment Events`)
 
-Events define **when** replenishment checks should occurâ€”either one-time or on a recurring schedule.
+Events define **when** replenishment checks should occur—either one-time or on a recurring schedule.
 
 **Creating an Event - Field-by-Field Guide:**
 

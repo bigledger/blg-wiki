@@ -1,0 +1,99 @@
+---
+status: running
+started: 2026-09-05
+owner: Vincent (decides); Claude (drives); GPT via codex exec (attacks)
+---
+
+# The improvement loop — how the wiki gets iterated until it converges
+
+Vincent (2026-09-05): *"set up loop or goal, and iterate this wiki website, together with
+codex exec, until things converge … lateral thinking … source code, databases, emails, jira and
+github issues, google drive … keep going for a very long time, pace yourself properly."*
+
+## Objective
+
+wiki.bigledger.com is comprehensive, professional, well organised, easy to navigate, SEO/GEO
+optimised, and accurate to the product as it actually is — for **akaun.com by BigLedger**.
+
+## One iteration = one bounded unit of work
+
+Each wake-up does exactly one of these, then records state and schedules the next wake-up:
+
+| Kind | What | Ships? |
+|---|---|---|
+| **batch** | `process-batch`: all open inbox items for one page or one theme | yes, via `ship` |
+| **ingest** | `ingest`: one source, one scope, from its cursor → ledger + topics + questions | commits kb/ only |
+| **write** | rewrite or write one guide/page from its topic notes (CLAUDE.md voice; GadgetSphere) | yes, after a codex review |
+| **review** | `second-opinion`: codex attacks last N changes or the plan; findings → inbox/discussions | no |
+| **decide** | `decide`: a discussion/ADR/spec that unblocks structural work; questions queued for Vincent | no |
+| **measure** | re-run the health metrics below; update this file | commits planning/ only |
+
+Never two kinds in one wake-up. Never more than ~90 minutes of work per wake-up.
+
+## Priority (top first) — re-derived at every `measure`
+
+1. **Customer-visible defects** in the inbox (broken, wrong, leaked, dead).
+2. **Quality gate on deploy** (F-0017) — until it exists, every batch risks regressions.
+3. **Setup section content** — the master-data applets are in 100+ tenants each
+   (`kb/research/2026-09-05-applet-adoption.md`): Organization, Doc Item, Customer, Chart of
+   Account, Supplier, Cashbook. Reference pages exist; **how-to/setup guides mostly do not**.
+4. **E-Invoice guides** vs the backend's last 90 days (`kb/topics/e-invoice.md`) — 70 tenants.
+5. **Order-to-cash core** (Sales Invoice, Sales Order, Sales Return, Receipt Voucher) and
+   **procure-to-pay core** — the 7 + 5 workflow guides rewritten to the voice bar.
+6. **ADR-0002 applet batches** (merge, archive, retitle + `applet_code:`); F-0011 roadmaps; F-0013 links.
+7. **Ingestion breadth**: applet repos ↔ pages; backend issues; Jira/Confluence (40 registry doc
+   links still point there); email; Drive — in that order, one scope per wake-up.
+8. **Structural**: v1-vs-v2 comparison → restructure spec (ADR-0001) → implementation, one
+   section per wake-up. Needs Vincent's per-section approval: ask, don't block.
+9. **Translations** (ADR-0003 order: manuals first; zh, ms, ar).
+
+## Lateral rule
+
+Every ingest or write touches a topic; every touched topic's `related:` edges get walked and
+the question "what does this change for the neighbour?" gets answered in the note or logged in
+`kb/questions/`. That is the mechanism — not optional.
+
+## Convergence test (measured at `measure` wake-ups)
+
+| Metric | Now (2026-09-05) | Converged when |
+|---|---|---|
+| Open inbox items not waiting on Vincent | 22 | 0 |
+| ACTIVE general-purpose applets without a page | ~40 | 0 |
+| Applet pages with `applet_code:` matching the registry | 0 / 168 | all |
+| Guides meeting the CLAUDE.md voice checklist (codex-judged) | 4 / 47 | all |
+| lychee errors (offline) | 383 | 0 new; baseline retired by F-0013 |
+| Pages with WIP banners | 54 | 0 |
+| Pages without `description:` | 57 | 0 |
+| Sources with a live cursor | 2 / 5 | 5 / 5, each < 7 days behind |
+| Deploy gated by tests | no | yes |
+
+When every row is converged, the loop drops to **maintenance cadence**: one `ingest` per source
+per day, `measure` weekly, batches as the inbox fills. It never ends; it slows down.
+
+## Pacing
+
+- Wake-ups are self-scheduled (`/loop` dynamic). Default gap 20–45 min after a shipping unit,
+  up to 60 min after a quiet one. Codex reviews run in the background across a gap.
+- Every 4th wake-up is a `review`; every 8th is a `measure`. Vincent's messages pre-empt the
+  queue: `record-feedback` first, then resume.
+- Budget: one unit per wake-up keeps context small. Don't re-read whole trees; use cursors,
+  the inbox, and this file.
+
+## Guardrails (non-negotiable)
+
+- Privacy sweep before every commit of `kb/` or `planning/`. Raw material stays in `*/private/`.
+- No push without the local suite (build, lychee ≤ baseline, Playwright green). Live verify after.
+- No structural move without an approved spec. No new pages for applets not in the registry.
+- Never reintroduce marketing claims, invented roadmaps, or "blockchain".
+- Decisions that are Vincent's are queued in `## Waiting on Vincent` below and asked at the next
+  opportunity; work continues on everything else.
+
+## Waiting on Vincent
+
+- ADR-0002: is `accounts-receivable-applet` real (wiki issue #20) or was the issue mistaken?
+- ADR-0001: per-section v1-vs-v2 winners (comparison table to be produced by a `decide` unit).
+
+## Log
+
+| # | Date | Kind | Unit | Result |
+|---|---|---|---|---|

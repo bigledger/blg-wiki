@@ -18,6 +18,7 @@ with the analysis, the changes made, and the commit hash.
       → source: content/en/user-guide/some-page.md
       → note: anything Claude noticed while recording (optional)
 ```
+      → lint: allowlisted in tests/lint-allowlist.tsv (key malay) until fixed; remove the line when done
 
 - IDs are sequential across the whole inbox, never reused.
 - Keep Vincent's words. Do not paraphrase the complaint into something tidier.
@@ -36,11 +37,13 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0002 (2026-09-05) Indonesian vocabulary: pengiriman, mengelola
       → source: content/ms/applets/driver-delivery-order-applet.md
       → note: Malay: penghantaran, mengurus
+      → lint: allowlisted in tests/lint-allowlist.tsv (key malay) until fixed; remove the line when done
 
 ### /ms/applets/internal-sales-order-applet/
 - [ ] F-0003 (2026-09-05) Indonesian vocabulary: fitur
       → source: content/ms/applets/internal-sales-order-applet.md
       → note: Malay: ciri
+      → lint: allowlisted in tests/lint-allowlist.tsv (key malay) until fixed; remove the line when done
 
 ### /applets/e-invoice/my-einvoice-for-customer-and-supplier-applet/
 - [ ] F-0004 (2026-09-05) "we actually DO NOT HAVE this applet 'MY E-Invoice for Customer & Supplier Applet', i do not know why you included this ... This is a non-existence applet"
@@ -112,9 +115,10 @@ with the analysis, the changes made, and the commit hash.
       → batch: batches/2026-09-05-production-hygiene.md
 
 ### site-wide
-- [ ] F-0017 (2026-09-05) deploy.yml runs only `hugo --minify`; the lychee + Playwright suite never gates a deploy. A conflict-marker page (F-0014) reached production because nothing checks.
+- [x] F-0017 (2026-09-05) deploy.yml runs only `hugo --minify`; the lychee + Playwright suite never gates a deploy. A conflict-marker page (F-0014) reached production because nothing checks.
       → source: .github/workflows/deploy.yml, tests/run-all.sh
       → note: GPT roadmap item #2. Add a quality job (build + lychee offline + Playwright + front-matter/marker/artefact lints) that deploy needs.
+      → batch: batches/2026-09-05-quality-gate.md
 
 ### /zh/ /ms/ /ar/ (home pages)
 - [ ] F-0018 (2026-09-05) The Chinese, Malay and Arabic home pages still use the old marketing hero and hit the same hextra-home layout bug (single narrow column). Port the new English home (ADR-0004) to all three — translated, same shortcodes; Malay in Bahasa Melayu.
@@ -200,4 +204,18 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0034 (2026-09-05) GitHub issue #200: "[internal-sales-order-applet-v2] User Guide Documentation" — open since/updated 2026-05-04, 3 comments, 1707 chars of body
       → source: (no matching applet page — check registry / slug)
       → src: gh:bigledger/blg-wiki#200
+
+### /applets/finance/mm-deposit-applet/
+- [x] F-0035 (2026-09-05) 57 mojibake sequences (â€‘ for non-breaking hyphens, â€” for em dashes, â€œ/â€ for quotes) across the page. Found by the new content lint; fixed mechanically in the quality-gate batch.
+      → source: content/en/applets/finance/mm-deposit-applet.md
+      → batch: batches/2026-09-05-quality-gate.md
+
+### site-wide
+- [ ] F-0036 (2026-09-05) 56 pages have no `title:` front matter — 35 under developers/api-reference (UCC controllers, some with spaces in filenames), 20 under modules/membership + modules-v2/membership, 1 zh applet. They render with filename titles and ugly URLs.
+      → note: allowlisted in tests/lint-allowlist.tsv (key title) so the gate can ship; one batch to add titles (and rename the 12 space-containing filenames with aliases).
+
+### /ms/applets/internal-sales-order-applet/
+- [ ] F-0037 (2026-09-05) Indonesian "fitur" ×3 in a Malay page (Malay: ciri). Found by the content lint; joins F-0001..F-0003.
+      → source: content/ms/applets/internal-sales-order-applet.md
+      → lint: allowlisted (key malay) until fixed
 

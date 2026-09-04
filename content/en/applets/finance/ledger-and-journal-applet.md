@@ -84,7 +84,7 @@ The applet is designed to serve multiple types of users:
 
 The applet follows standard double-entry bookkeeping principles:
 
-1. **Transaction Recording**: Every financial event (sale, purchase, payment, receipt) is first recorded in the journal with complete details including date, description, and amounts. Each transaction must balanceâ€”every debit must equal corresponding credits.
+1. **Transaction Recording**: Every financial event (sale, purchase, payment, receipt) is first recorded in the journal with complete details including date, description, and amounts. Each transaction must balance—every debit must equal corresponding credits.
 
 2. **Account Categorization**: Each journal entry specifies which accounts are affected (e.g., Cash, Accounts Receivable, Sales Revenue, Rent Expense). This categorization ensures transactions are properly classified.
 
@@ -112,7 +112,7 @@ The Ledger and Journal Applet consists of several interconnected modules accessi
 
 ## 1.0 Journal Transaction
 
-The Journal Transaction module is the heart of the appletâ€”it's where all financial activities are initially recorded. This module maintains a complete, chronological history of every financial event in your business, creating an audit trail that can be reviewed, searched, and analyzed.
+The Journal Transaction module is the heart of the applet—it's where all financial activities are initially recorded. This module maintains a complete, chronological history of every financial event in your business, creating an audit trail that can be reviewed, searched, and analyzed.
 
 ### 1.1 Journal Transaction Listing
 
@@ -151,7 +151,7 @@ Creating a journal transaction is a two-step process: first entering the main tr
 
 {{< figure src="/images/lnj-applet/16e77d8a-d199-4f75-a4d6-4201c0b24dcb.png" caption="Fig 3: Main Tab" >}}
 
-The Main tab captures the overall transaction informationâ€”the "who, what, when, and where" of the financial event.
+The Main tab captures the overall transaction information—the "who, what, when, and where" of the financial event.
 
 **Fields:**
 
@@ -166,7 +166,7 @@ The Main tab captures the overall transaction informationâ€”the "who, what,
 
 #### 1.2.2 Lines Tab
 
-The Lines tab is where you specify the actual accounting impact of the transaction. This is where double-entry bookkeeping comes into playâ€”you'll enter the specific accounts affected and the debit and credit amounts.
+The Lines tab is where you specify the actual accounting impact of the transaction. This is where double-entry bookkeeping comes into play—you'll enter the specific accounts affected and the debit and credit amounts.
 
 {{< figure src="/images/lnj-applet/b04e1f29-f1f5-444e-a673-5a7e346c7f04.png" caption="Fig 4: Lines Tab" >}}
 
@@ -214,7 +214,7 @@ Categories provide additional dimensions for analyzing your financial data beyon
 
 - **Profit Center**: The part of the organization responsible for generating profit (e.g., "North Region," "Enterprise Sales Team"). This helps attribute financial results to specific organizational units for performance evaluation.
 
-**Usage**: Navigate to the Categories tab after entering the main line item details, fill in the relevant category fields, and click **Add** (top left). Not all categories need to be filledâ€”only use those relevant to your organization's reporting needs.
+**Usage**: Navigate to the Categories tab after entering the main line item details, fill in the relevant category fields, and click **Add** (top left). Not all categories need to be filled—only use those relevant to your organization's reporting needs.
 
 ### 1.3 Workflow Actions
 
@@ -377,7 +377,7 @@ When you click on a ledger row, the system displays all current account informat
 
 **Editable Fields:**
 
-- **Ledger Type**: You can change the account classification if needed. For example, you might reclassify an account if you initially set it up incorrectly or if accounting standards change. However, be cautious with thisâ€”changing the type affects how the account appears on financial statements and how transactions are interpreted.
+- **Ledger Type**: You can change the account classification if needed. For example, you might reclassify an account if you initially set it up incorrectly or if accounting standards change. However, be cautious with this—changing the type affects how the account appears on financial statements and how transactions are interpreted.
 
 
 ## 4.0 Import Journal
@@ -470,7 +470,7 @@ The data recorded in the Ledger and Journal applet is used by financial report a
 - Transactional applets (Sales Invoice, POS/Cashbill, Sales Return, Credit/Debit Notes, Purchase Invoice, Purchase Return, etc.) create **Journal Header + Journal Lines** here when a document reaches FINAL/POSTED status.
 
 #### 2. Month-end processing (accounting engine)
-Month-end is not just a â€œclose periodâ€ button; it is a full accounting engine.  
+Month-end is not just a “close period” button; it is a full accounting engine.  
 It performs multiple calculations and adjustments, including but not limited to:
 - Depreciation  
 - Stock valuation and cost adjustments  

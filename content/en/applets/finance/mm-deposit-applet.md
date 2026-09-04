@@ -1,6 +1,6 @@
 ﻿---
 title: "Money Market Deposit Applet"
-description: "Integrated lifecycle management for moneyâ€‘market deposit requisitions, live registers, and categories with controlled approvals and consistent formatting"
+description: "Integrated lifecycle management for money‑market deposit requisitions, live registers, and categories with controlled approvals and consistent formatting"
 tags:
 - treasury-operations
 - deposit-management
@@ -14,7 +14,7 @@ aliases:
 
 ## Purpose and Overview
 
-The Deposit Applet centralizes shortâ€‘term cash placement activities: raising MM deposit requisitions, managing approved placements, and maintaining category metadata. It enforces form validation, rate logic, and permissioned state changes (SAVE vs FINAL), while keeping listings consistent and exportâ€‘ready.
+The Deposit Applet centralizes short‑term cash placement activities: raising MM deposit requisitions, managing approved placements, and maintaining category metadata. It enforces form validation, rate logic, and permissioned state changes (SAVE vs FINAL), while keeping listings consistent and export‑ready.
 
 {{< callout type="info" >}}
 This applet exposes three menus: MM Deposit Requisition, MM Deposit Register, and MM Deposit Category. Together they cover requestâ†’approvalâ†’lifecycle management.
@@ -43,26 +43,26 @@ Menu source: app/models/menu-items.ts.
 
 1) Validation and Permissions
 - Required fields drive SAVE availability; FINAL is disabled whenever SAVE is disabled (same condition).
-- Readâ€‘only audit fields (Created/Updated by and dates) remain locked.
+- Read‑only audit fields (Created/Updated by and dates) remain locked.
 
 2) Interest Logic (Mutual Exclusivity)
 - FIXED: user edits Interest Rate (%); Interest Rate Effective is cleared (null).
 - FLOATING: user edits Reference Value and Delta; system disables Interest Rate and recomputes Effective; Interest Rate stays null.
-- Programmatic patches round to two decimals to prevent floatingâ€‘point artifacts.
+- Programmatic patches round to two decimals to prevent floating‑point artifacts.
 
 3) GL Code and Currency Consistency
 - Currency list preloads; GL Code list loads by Company.
-- GL Code remains selected when navigating between Details and Invitee tabs (persisted and reâ€‘patched safely).
+- GL Code remains selected when navigating between Details and Invitee tabs (persisted and re‑patched safely).
 
 4) Invitee Entry Constraints
 - Only three controls are editable: Entity Name (required), Email Address (required), Winner (optional).
-- All other fieldsâ€”including Term (Days)â€”are disabled to ensure data parity with the requisition.
+- All other fields—including Term (Days)—are disabled to ensure data parity with the requisition.
 
 5) Unified Formatting
 - Amounts: thousands separators with 2 decimals.
 - Interest rates: always 2 decimals.
-- Rightâ€‘aligned numeric columns across all listings.
-- Dates: YYYYâ€‘MMâ€‘DD.
+- Right‑aligned numeric columns across all listings.
+- Dates: YYYY‑MM‑DD.
 
 ## Screens and Workflows
 
@@ -71,15 +71,15 @@ Menu source: app/models/menu-items.ts.
 - Header fields: Deposit Name, Deposit Code, Company, GL Code, Currency, Amount Initial Deposit, Amount Upon Maturity, Interest Type, Interest Payout Frequency, Interest Calculation, Interest Convert to Principal, Start/End dates.
 - Interest rules:
   - FIXED: Interest Rate is required, Interest Rate Effective = null.
-  - FLOATING: provide Ref Value + Ref Delta; Interest Rate = null and disabled; Effective autoâ€‘computed.
+  - FLOATING: provide Ref Value + Ref Delta; Interest Rate = null and disabled; Effective auto‑computed.
 - Navigation:
   - Details tab (main form) â†” Invitee tab (counterparty offers).
-  - On return to Details, GL Code is reâ€‘applied even if control was previously disabled.
+  - On return to Details, GL Code is re‑applied even if control was previously disabled.
 - Actions:
   - SAVE: available when the form is valid and user has permission.
   - FINAL: uses the exact same disable rule as SAVE.
 
-{{< figure src="/screenshots/deposit-applet/mm-deposit-requisition-listing.png" alt="MM Deposit Requisition listing with formatted numeric columns and filters" caption="MM Deposit Requisition listing: rightâ€‘aligned numeric columns with thousands separators and twoâ€‘decimal precision." >}}
+{{< figure src="/screenshots/deposit-applet/mm-deposit-requisition-listing.png" alt="MM Deposit Requisition listing with formatted numeric columns and filters" caption="MM Deposit Requisition listing: right‑aligned numeric columns with thousands separators and two‑decimal precision." >}}
 
 {{< figure src="/screenshots/deposit-applet/mm-deposit-requisition-edit.png" alt="Edit MM Deposit Requisition form with required fields and interest logic controls" caption="Edit MM Deposit Requisition: required fields, GL/Currency consistency, and interest logic (fixed vs floating)." >}}
 
@@ -88,7 +88,7 @@ Menu source: app/models/menu-items.ts.
 - Select existing customer from the left panel with search, column filters, and column chooser.
 - Create/Edit mode opens on the right panel:
   - Core fields: Customer Name, Customer Code, Entity Type, Status, Company Registration, Date of Incorporation, Tax Category, Country, Currency, AR/AP Type, Email, Phone Number.
-  - Required fields are marked with â€œ*â€.
+  - Required fields are marked with “*”.
   - Save creates a new customer or updates the selected one and keeps the selection bound to the requisition.
 - The selector supports quick switching between records; grid shows 10+ rows with pagination.
 
@@ -96,13 +96,13 @@ Menu source: app/models/menu-items.ts.
 
 {{< figure src="/screenshots/deposit-applet/customer-edit.png" alt="Customer Edit form showing core attributes like Entity Type, Status, Currency" caption="Customer Edit: update core attributes; Save keeps the selection associated with the current requisition." >}}
 
-{{< figure src="/screenshots/deposit-applet/select-customer.png" alt="Selector grid demonstrating search and filtering behavior consistent with app listings" caption="Selector grid example: search, filters, and column chooser consistent with appâ€‘wide listing UX." >}}
+{{< figure src="/screenshots/deposit-applet/select-customer.png" alt="Selector grid demonstrating search and filtering behavior consistent with app listings" caption="Selector grid example: search, filters, and column chooser consistent with app‑wide listing UX." >}}
 
 ### Invitee Flow (within Requisition)
 
 - Add Invitee form: only Entity Name, Email Address, Winner enabled; all others disabled including Term (Days).
 - Listing columns (aligned with requisition listing) show: Deposit Name/Code, Currency, Interest Type, Interest Rate, Interest Rate Effective, Amount Initial Deposit, Amount Upon Maturity, Start/End dates, and Actions.
-- Numeric fields display two decimals; dates show in YYYYâ€‘MMâ€‘DD.
+- Numeric fields display two decimals; dates show in YYYY‑MM‑DD.
 
 {{< callout type="info" >}}
 When a requisition is finalized (FINAL), the system automatically emails all invitees with a secure link to submit their offers. This ensures a consistent, auditable collection of quotations tied to the finalized requisition.
@@ -116,25 +116,25 @@ When a requisition is finalized (FINAL), the system automatically emails all inv
 
 ### MM Deposit Register
 
-- Listing mirrors requisition formatting: thousands separators, two decimals, rightâ€‘aligned numeric columns.
+- Listing mirrors requisition formatting: thousands separators, two decimals, right‑aligned numeric columns.
 - Edit form inherits the same interest rules and rounding/formatting:
   - Switching to FLOATING nulls and disables Interest Rate; Effective recomputed from Ref Value + Delta.
   - Switching to FIXED clears Effective and enables Interest Rate.
 - SAVE/FINAL parity maintained.
 
 {{< callout type="info" >}}
-Select Requisition lets you pick a previously APPROVED/FINAL requisition and bring its details into the Register. When a Register entry is finalized (FINAL), the system autoâ€‘creates the relevant transactions (e.g., Placement, periodic Interest, Inflation adjustments, Compounds). You can perform manual Rollovers and immediately see the rolledâ€‘over status; Auto Rollover can be enabled to keep rolling on schedule until explicitly stopped.
+Select Requisition lets you pick a previously APPROVED/FINAL requisition and bring its details into the Register. When a Register entry is finalized (FINAL), the system auto‑creates the relevant transactions (e.g., Placement, periodic Interest, Inflation adjustments, Compounds). You can perform manual Rollovers and immediately see the rolled‑over status; Auto Rollover can be enabled to keep rolling on schedule until explicitly stopped.
 {{< /callout >}}
 
-{{< figure src="/screenshots/deposit-applet/mm-deposit-register-listing.png" alt="MM Deposit Register listing with principal, rates and effective rates columns" caption="MM Deposit Register listing: posting status, dates, principal, Interest Rate and Effective Rate columns with twoâ€‘decimal formatting." >}} 
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-listing.png" alt="MM Deposit Register listing with principal, rates and effective rates columns" caption="MM Deposit Register listing: posting status, dates, principal, Interest Rate and Effective Rate columns with two‑decimal formatting." >}} 
 
 {{< figure src="/screenshots/deposit-applet/mm-deposit-register-details.png" alt="Edit MM Deposit Register details screen with Select Requisition button" caption="Register Details: includes Select Requisition to import an approved requisition; fields follow the same validation and formatting rules as Requisition." >}}
 
-{{< figure src="/screenshots/deposit-applet/mm-deposit-register-transactions.png" alt="Transactions tab showing Placement, Interest, Inflation, and Compound entries" caption="Transactions: after FINAL, the system autoâ€‘creates Placement and periodic transactions (Interest, Inflation, Compound)." >}}
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-transactions.png" alt="Transactions tab showing Placement, Interest, Inflation, and Compound entries" caption="Transactions: after FINAL, the system auto‑creates Placement and periodic transactions (Interest, Inflation, Compound)." >}}
 
-{{< figure src="/screenshots/deposit-applet/mm-deposit-register-listing-transactions.png" alt="Sideâ€‘byâ€‘side listing and transactions view" caption="Listing + Transactions sideâ€‘byâ€‘side for quick verification after posting." >}}
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-listing-transactions.png" alt="Side‑by‑side listing and transactions view" caption="Listing + Transactions side‑by‑side for quick verification after posting." >}}
 
-{{< figure src="/screenshots/deposit-applet/mm-deposit-register-rollover.png" alt="Rollover tab showing rolledâ€‘over entries" caption="Rollover: perform manual rollover and see rolledâ€‘over status; Auto Rollover can be enabled to repeat until stopped." >}}
+{{< figure src="/screenshots/deposit-applet/mm-deposit-register-rollover.png" alt="Rollover tab showing rolled‑over entries" caption="Rollover: perform manual rollover and see rolled‑over status; Auto Rollover can be enabled to repeat until stopped." >}}
 
 {{< figure src="/screenshots/deposit-applet/mm-deposit-register-details-modal.png" alt="Deposit Register Details modal with computed maturity and transaction list" caption="Register Details modal: summary of key fields and a paginated list of generated transactions." >}}
 
@@ -169,7 +169,7 @@ Invitee Row (common columns)
 Register Row (live placement)
 - company, currency, gl_code, deposit_amount, maturity_amount
 - interest calculation fields (respecting exclusivity)
-- start/end dates, autoâ€‘rollover logic (if used)
+- start/end dates, auto‑rollover logic (if used)
 - audit fields
 
 ## Listings
@@ -179,8 +179,8 @@ Shared behaviors
 - Numeric formatters:
   - Amounts: toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
   - Rates: number â†’ fixed(2)
-- Date renderers: YYYYâ€‘MMâ€‘DD.
-- Rightâ€‘aligned styles for numeric columns.
+- Date renderers: YYYY‑MM‑DD.
+- Right‑aligned styles for numeric columns.
 
 Locations (selected)
 - Requisition listing: components/sales-invoice-container/sales-invoice-listing/
@@ -192,7 +192,7 @@ Locations (selected)
 - Angular Reactive Forms with FormGroup controls.
 - Required validators on core fields (e.g., depName, compContainer, glCodeContainer, currencyContainer, amounts, dates).
 - Control enable/disable toggled by interest logic and invitee restrictions.
-- Immediate twoâ€‘decimal rounding when patching Interest Rate and Effective Rate to avoid â€œ5.0000000000â€¦â€ artifacts.
+- Immediate two‑decimal rounding when patching Interest Rate and Effective Rate to avoid “5.0000000000”¦” artifacts.
 
 ## State & Services
 
@@ -207,24 +207,24 @@ Locations (selected)
 
 ## SAVE/FINAL Governance
 
-- FINAL button is hardâ€‘linked to SAVEâ€™s disabled state; if the form is invalid or user lacks permission, both are disabled.
-- Longâ€‘running calculations or unresolved dependencies can also disable actions where implemented.
+- FINAL button is hard‑linked to SAVE”™s disabled state; if the form is invalid or user lacks permission, both are disabled.
+- Long‑running calculations or unresolved dependencies can also disable actions where implemented.
 
 ## Demo Script
 
 1) Create Requisition
-- Go to MM Deposit Requisition â†’ â€œ+â€.
+- Go to MM Deposit Requisition â†’ “+”.
 - Fill required fields; choose Company to load GL Codes; pick Currency.
 - Customer: use the left panel to search and select an existing customer, or switch to Create/Edit mode to add a new one; Save to bind selection to the requisition.
 - Select Interest Calculation:
   - FIXED: set Interest Rate; Effective clears to null.
-  - FLOATING: set Ref Value and Delta; Interest Rate disables and nulls; Effective autoâ€‘fills with 2 decimals.
+  - FLOATING: set Ref Value and Delta; Interest Rate disables and nulls; Effective auto‑fills with 2 decimals.
 - Observe SAVE disabled until all required fields are valid; FINAL mirrors SAVE.
 
 2) Add Invitee
 - Switch to Invitee tab â†’ Add Invitee.
 - Only enter Entity Name, Email Address, and optionally Winner; other fields are disabled.
-- Save and confirm listing shows amounts/rates with commas and two decimals; dates in YYYYâ€‘MMâ€‘DD.
+- Save and confirm listing shows amounts/rates with commas and two decimals; dates in YYYY‑MM‑DD.
 
 3) Return to Details
 - Navigate back; confirm GL Code remains selected and Interest fields retain proper state and rounding.
@@ -232,7 +232,7 @@ Locations (selected)
 
 4) Register Review
 - Open MM Deposit Register; view formatted listing.
-- Edit an item: flip between FIXED/FLOATING to see exclusivity and 2â€‘decimal formatting; SAVE/FINAL parity persists.
+- Edit an item: flip between FIXED/FLOATING to see exclusivity and 2‑decimal formatting; SAVE/FINAL parity persists.
 
 5) Category Maintenance
 - Open MM Deposit Category; add/edit a category; set status Active; verify availability in requisition.
@@ -240,9 +240,9 @@ Locations (selected)
 ## Troubleshooting
 
 - GL Code lost after tab switch:
-  - Ensured control is enabled before patch; selection persisted and reâ€‘applied on return from Invitee.
+  - Ensured control is enabled before patch; selection persisted and re‑applied on return from Invitee.
 - Interest Rate shows many decimals:
-  - Patchâ€‘time rounding to two decimals enforced on Interest Rate and Effective.
+  - Patch‑time rounding to two decimals enforced on Interest Rate and Effective.
 - FINAL enabled while SAVE disabled:
   - FINAL now uses the exact same condition as SAVE.
 
@@ -255,18 +255,18 @@ Locations (selected)
 - Requisition Listing: components/sales-invoice-container/sales-invoice-listing/
 - Register Edit: components/line-items-container/edit-deposit-register/edit-deposit-register-main-details/
 - Register Listing: components/line-items-container/deposit-register-listing/
-- Controllers: app/state-controllers/â€¦
-- Services: app/services/â€¦
+- Controllers: app/state-controllers/”¦
+- Services: app/services/”¦
 
 ## Summary
 
-The Deposit Applet provides an endâ€‘toâ€‘end workflow for MM deposits with:
+The Deposit Applet provides an end‑to‑end workflow for MM deposits with:
 - Strict form validation and SAVE/FINAL synchronization
 - Accurate interest handling (fixed vs floating) with enforced exclusivity
 - Robust GL/Currency handling across tab navigation
-- Consistent, exportâ€‘ready listings with twoâ€‘decimal formatting
+- Consistent, export‑ready listings with two‑decimal formatting
 - Clear invitee constraints to preserve data integrity
 - Category administration for standardized reporting
 {{< callout type="success" >}}
-Use this applet to move from adâ€‘hoc spreadsheets to a controlled, auditable treasury process with clean data and reliable approvals.
+Use this applet to move from ad‑hoc spreadsheets to a controlled, auditable treasury process with clean data and reliable approvals.
 {{< /callout >}}

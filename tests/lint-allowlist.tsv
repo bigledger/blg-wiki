@@ -1,0 +1,61 @@
+# Files temporarily exempt from a content lint. Format: <lint-key><TAB><path>. Remove lines as batches fix them.
+# lint keys: malay (F-0001..F-0003), title (F-0036)
+malay	content/ms/applets/customer-consignment-applet.md
+malay	content/ms/applets/driver-delivery-order-applet.md
+malay	content/ms/applets/internal-sales-order-applet.md
+title	content/zh/applets/einvoice-generation-applet.md
+title	content/en/developers/api-reference/ucc/TelegramMessageController.md
+title	content/en/developers/api-reference/ucc/PredefinedMessageLineResourceController.md
+title	content/en/developers/api-reference/ucc/ConversationEventController.md
+title	content/en/developers/api-reference/ucc/EndpointBotLinkResourceController.md
+title	content/en/developers/api-reference/ucc/EndpointResource.md
+title	content/en/developers/api-reference/ucc/AgentVirtualContactSquadContactController.md
+title	content/en/developers/api-reference/ucc/ConversationTagResourceController.md
+title	content/en/developers/api-reference/ucc/EndpointHdrController.md
+title	content/en/developers/api-reference/ucc/AiLedgerAuthenticationController.md
+title	content/en/developers/api-reference/ucc/EmailThreadResourceController.md
+title	content/en/developers/api-reference/ucc/ChannelController.md
+title	content/en/developers/api-reference/ucc/EndpointPredefinedMessageLinkResource.md
+title	content/en/developers/api-reference/ucc/PredefinedMessageResourceController.md
+title	content/en/developers/api-reference/ucc/PostLineResourceController.md
+title	content/en/developers/api-reference/ucc/ReactionByUserResourceController.md
+title	content/en/developers/api-reference/ucc/agent-controller.md
+title	content/en/developers/api-reference/ucc/ConversationController.md
+title	content/en/developers/api-reference/ucc/MessageResourceController.md
+title	content/en/developers/api-reference/ucc/ProjectDriveController.md
+title	content/en/developers/api-reference/ucc/EmailThreadEventResourceController.md
+title	content/en/developers/api-reference/ucc/ConversationResourceController.md
+title	content/en/developers/api-reference/ucc/CommentResource.md
+title	content/en/developers/api-reference/ucc/action-controller.md
+title	content/en/developers/api-reference/ucc/MessageEndpointLinkResourceController.md
+title	content/en/developers/api-reference/ucc/ConversationEventResourceController.md
+title	content/en/developers/api-reference/ucc/LoginSubjectLinkController.md
+title	content/en/developers/api-reference/ucc/PredefinedMessagePlaceholderResourceController.md
+title	content/en/developers/api-reference/ucc/PostResourceController.md
+title	content/en/developers/api-reference/ucc/ConversationStateResourceController.md
+title	content/en/developers/api-reference/ucc/ContextMsgLinkResourceController.md
+title	content/en/developers/api-reference/ucc/AgentVirtualContactSquadQrController.md
+title	content/en/developers/api-reference/ucc/WhatsappBusinessController.md
+title	content/en/developers/api-reference/ucc/LazadaMessageController.md
+title	content/en/developers/api-reference/ucc/PreferredAgentAssignmentController.md
+title	content/en/developers/api-reference/ucc/EmailResourceController.md
+title	content/en/modules-v2/membership/api-reference/GET Members by Criteria.md
+title	content/en/modules-v2/membership/api-reference/PUT Update Member.md
+title	content/en/modules-v2/membership/api-reference/POST Create Member.md
+title	content/en/modules-v2/membership/api-reference/GET Membership Points Transactions by Criteria.md
+title	content/en/modules-v2/membership/api-reference/GET Membership Points Current Balance.md
+title	content/en/modules-v2/membership/api-reference/POST Create Member Point Transaction.md
+title	content/en/modules-v2/membership/best-practices/_index.md
+title	content/en/modules/membership/integration/_index.md
+title	content/en/modules/membership/use-cases/_index.md
+title	content/en/modules/membership/configuration/_index.md
+title	content/en/modules/membership/api-reference/GET Members by Criteria.md
+title	content/en/modules/membership/api-reference/PUT Update Member.md
+title	content/en/modules/membership/api-reference/POST Create Member.md
+title	content/en/modules/membership/api-reference/GET Membership Points Transactions by Criteria.md
+title	content/en/modules/membership/api-reference/GET Membership Points Current Balance.md
+title	content/en/modules/membership/api-reference/POST Create Member Point Transaction.md
+title	content/en/modules/membership/core-concepts/_index.md
+title	content/en/modules/membership/best-practices/_index.md
+title	content/en/modules/membership/related-applets/_index.md
+title	content/en/modules/membership/getting-started/_index.md

@@ -184,7 +184,7 @@ Once the user creates an Item, it will appear in the listing. When the user want
 **Quick Reference - Key Tabs within an Item**:
 - **Main Detail**: Includes description, barcode/EAN, and UOM.
 - **E-Invoice**: Specific fields for MSIC codes, tax types, and classification codes required for electronic invoicing.
-- **Item Category (0â€“20)**: Standard flat categories for organizing items.
+- **Item Category (0–20)**: Standard flat categories for organizing items.
 - **Pricing Scheme**: Allows you to input specific prices (min, max, promotion, before/after tax) for the schemes set up in the main menu.
 - **Branch/Company Linking**: Used to restrict an item to a specific branch or company; if not linked, the item cannot be used for transactions in that branch.
 - **Manage Image**: A tab to upload product images.
