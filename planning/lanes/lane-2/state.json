@@ -8,7 +8,6 @@
   "human-resources"
  ],
  "queue": [
-  "content/en/applets/finance/financial-report-applet.md",
   "content/en/applets/finance/bank-reconciliation-applet.md",
   "content/en/applets/integrations/90-ecomsync-related-applets.md",
   "content/en/applets/finance/accounts-receivable-applet.md",
@@ -61,6 +60,10 @@
   },
   {
    "page": "content/en/applets/finance/ledger-and-journal-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/finance/financial-report-applet.md",
    "date": "2026-09-05"
   }
  ],

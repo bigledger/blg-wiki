@@ -236,7 +236,7 @@ Journals are not documents with a DRAFT/FINAL flow. What happens is:
 | **Document FINAL** elsewhere | `JournalPostingService` builds the lines from the document's type handler (for example a purchase invoice: Dr `PURCHASE` / `INPUT_TAX`, Cr `CREDITOR`) and creates an `AUTO` journal; `VOID` of the document creates the reversing journal |
 | **Re-post** (Missing Journal tab) | Deletes any existing journal for the document and rebuilds it from the document as it stands |
 
-Balances shown in the Ledger, Sub Ledger and Financial Report applets are derived from `ACTIVE` journal lines; month-end processing adds depreciation, stock valuation, retained-earnings and reversal entries on top before the Financial Report reads them.
+Balances shown in the Ledger, Sub Ledger and Financial Report applets are derived from `ACTIVE` journal lines; month-end processing adds a closing-day (`CD`) and an opening-day (`BD`) journal per ledger — and, when its processors are run, `COGS` and `RETAINED_EARNINGS` journals — and writes the monthly per-account summaries the Financial Report reads.
 
 ## Related applets
 
