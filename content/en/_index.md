@@ -32,7 +32,7 @@ toc: false
 {{< search >}}
 </div>
 
-## What do you want to do?
+{{< section-title >}}What do you want to do?{{< /section-title >}}
 
 {{< hextra/feature-grid >}}
   {{< hextra/feature-card title="Get started" subtitle="First login, how the platform is organised, and your first transaction." link="/user-guide/getting-started/" icon="play" >}}
@@ -45,7 +45,7 @@ toc: false
   {{< hextra/feature-card title="Run the point of sale" subtitle="Terminals, cashier reports, settlement and end-of-day." link="/modules-v2/pos/" icon="cash" >}}
 {{< /hextra/feature-grid >}}
 
-## Guides by role
+{{< section-title >}}Guides by role{{< /section-title >}}
 
 <div class="hx:w-full">
 {{< cards cols="4" >}}
@@ -60,7 +60,7 @@ toc: false
 {{< /cards >}}
 </div>
 
-## Reference
+{{< section-title >}}Reference{{< /section-title >}}
 
 <div class="hx:w-full">
 {{< cards cols="3" >}}
@@ -72,7 +72,7 @@ toc: false
 
 <div class="hx:w-full hx:mt-8">
 
-## Popular right now
+{{< section-title >}}Popular right now{{< /section-title >}}
 
 - [Bank reconciliation, step by step](/guides/accounting-guides/bank-reconciliation-guide/)
 - [Fixing e-Invoice validation errors](/guides/einvoice-guides/einvoice-validation/)

@@ -57,7 +57,7 @@ Hextra's native components:
 7. One line: Support · Video training · Product site.
 
 Measured on the draft: desktop 2.3 screens (was 4.0), first grid 1,392 px wide (was 483),
-H2 22 px (was 16), 19 cards (was 28), mobile 4.6 screens (was 5.2).
+H2 still 16 px — hextra-home applies no heading styles; fixed in a follow-up with Hextra-shipped text classes, 19 cards (was 28), mobile 4.6 screens (was 5.2).
 
 **Welcoming visual (Vincent asked, 2026-09-05):** added a **platform map** — an inline SVG
 in the hero's right column: ten modules around the ledger core, applet dots inside each,
