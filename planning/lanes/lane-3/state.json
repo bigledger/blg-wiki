@@ -8,10 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/purchase-workflow/internal-purchase-debit-note-applet.md",
-  "content/en/applets/purchase-workflow/internal-purchase-credit-note-applet.md",
-  "content/en/applets/purchase-workflow/internal-purchase-order-applet.md",
-  "content/en/applets/purchase-workflow/internal-purchase-return-applet.md",
   "content/en/applets/purchase-workflow/internal-purchase-grn-applet.md",
   "content/en/applets/ecommerce/cp-commerce-admin-applet.md",
   "content/en/applets/purchase-workflow/purchase-report-applet.md",
@@ -49,12 +45,32 @@
   "content/en/applets/purchase-workflow/internal-purchase-return-supplier-access-applet.md",
   "content/en/applets/ecommerce/internal-shopping-cart-customer-access-applet.md"
  ],
- "done": [],
+ "done": [
+  {
+   "page": "content/en/applets/purchase-workflow/internal-purchase-debit-note-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/internal-purchase-credit-note-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/internal-purchase-order-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/internal-purchase-return-applet.md",
+   "date": "2026-09-05"
+  }
+ ],
  "skipped": [
   {
    "page": "content/en/applets/e-invoice/my-einvoice-for-customer-and-supplier-applet.md",
    "reason": "ADR-0002: renamed applet; page to be merged into my-e-invoice-portal-applet by the loop, not enhanced"
   }
  ],
- "updated": "2026-09-05"
+ "updated": "2026-09-05",
+ "notes": [
+  "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) \u2014 INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/\u2026] and [src:gh:bigledger/blg-intranet#n]."
+ ]
 }

@@ -1,6 +1,50 @@
 ﻿---
-title: "Purchase Credit Note (Internal) Applet"
-description: "User guide for the Internal Purchase Credit Note applet: supplier credits, lines, file import, and links to related purchase and e-invoice guides."
+title: "Purchase Credit Note (Internal)"
+description: "Reference for the Purchase Credit Note (Internal) applet: the purchase-side note that credits a supplier's account (amount signum −1, same posting side as a purchase invoice), its screens, every configuration switch, fields, posting rules and known failure modes."
+applet_code: "internal_purchase_credit_note_applet"
+applet_repo: "blg-applet-wavelet-internal-purchase-credit-note-applet"
+modules: [purchasing, financial-accounting, e-invoice]
+related_applets:
+  - internal-purchase-invoice-applet
+  - internal-purchase-debit-note-applet
+  - internal-purchase-return-applet
+  - internal-purchase-refund-note-applet
+  - internal-purchase-order-applet
+  - internal-purchase-grn-applet
+  - supplier-delivery-order-applet
+  - internal-payment-voucher-applet
+  - internal-sales-credit-note-applet
+  - internal-purchase-credit-note-supplier-access-applet
+  - creditor-report-applet
+  - chart-of-account-applet
+  - doc-item-maintenance-applet
+  - tax-configuration-applet
+  - supplier-applet-1
+  - organisation-applet
+  - my-e-invoice-admin-applet
+guides:
+  - /guides/einvoice-guides/myinvois-setup/
+  - /guides/einvoice-guides/einvoice-validation/
+sources:
+  - blg-applet-wavelet-internal-purchase-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-applet/src/app/app.routing.ts
+  - blg-applet-wavelet-internal-purchase-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-applet/src/app/models/menu-items.ts
+  - blg-applet-wavelet-internal-purchase-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-applet/src/app/models/applet-settings.model.ts
+  - blg-applet-wavelet-internal-purchase-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-applet/src/app/models/constants/applet-constants.ts
+  - blg-applet-wavelet-internal-purchase-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+  - blg-applet-wavelet-internal-purchase-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-applet/src/app/components/settings-container/branch-settings/branch/branch.component.html
+  - blg-applet-wavelet-internal-purchase-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-applet/src/app/components/purchase-credit-note-container/purchase-credit-note-listing/purchase-credit-note-listing.component.ts
+  - blg-applet-wavelet-internal-purchase-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-applet/src/app/components/purchase-credit-note-container/purchase-credit-note-edit/purchase-credit-note-edit.component.ts
+  - blg-applet-wavelet-internal-purchase-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-applet/src/app/components/purchase-credit-note-container/purchase-credit-note-create/main-details/main-details.component.ts
+  - blg-applet-wavelet-internal-purchase-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-applet/src/app/components/purchase-credit-note-container/purchase-credit-note-create/import-knock-off/
+  - blg-applet-wavelet-internal-purchase-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-applet/src/app/app.component.ts
+  - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalPurchaseCreditNoteDataConsistencyObject.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingService.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/intercompany/IntercompanyProcessingService.java
+  - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dto/erp/eInvoice/EInvoiceConstants.java
+  - akaun_master.bl_applet_client_side_perm_dfn (applet code internal_purchase_credit_note_applet)
 tags:
   - purchase-workflow
   - purchase-credit-note
@@ -10,754 +54,353 @@ tags:
   - file-import
 weight: 80
 date: 2026-04-06
-lastmod: 2026-06-16
+lastmod: 2026-09-05
 draft: false
 ---
 
-## Purpose and overview {#what-is-a-purchase-credit-note}
+## Overview
 
-In purchasing, a credit note (also called a supplier credit or purchase credit note) is a formal record that reduces what your company owes a supplier, or corrects what you already recorded, when something changes after a purchase or invoice. Typical reasons include returned goods, wrong quantities or prices, agreed rebates, or duplicate billing. In plain terms: a supplier invoice says you should pay more; a purchase credit note says you should pay less or take an amount off the account.
+The **Purchase Credit Note (Internal)** applet records a credit note on the purchase side: a document that **credits the supplier's account** in your books. Its engine document type is `INTERNAL_PURCHASE_CREDIT_NOTE` with amount signum **−1** — the same sign as a purchase invoice — so finalising one posts **Dr Purchase / Cr Creditor** and increases the supplier's outstanding balance. Accounts-payable staff use it for a supplier's additional charge that arrives after the invoice, or wherever a posted purchase invoice must be topped up without raising a second invoice.
 
-In BigLedger, the **Purchase Credit Note (Internal) Applet** is where you create and maintain that record inside the ERP, with the same overall shape as other purchase documents: header details, supplier account, and lines so procurement and finance stay aligned.
+The document carries amounts only; quantity signum is 0, so stock never moves. It can be keyed manually, built from open lines on a purchase order, purchase GRN or supplier delivery order (**KO For**), uploaded from a CSV (**File Import**), or generated by intercompany processing when a related company in the tenant finalises a **Sales Credit Note (Internal)** against your company.
 
-{{< callout type="info" >}}
-Cannot see a menu item or button? Administrators control feature visibility, field settings, and permissions. If something you were trained on is missing, ask your admin—it may be turned off for your role or company policy.
+{{< callout type="warning" >}}
+**Direction of the posting.** In this platform the *Purchase* Credit Note sits on the **same side as a purchase invoice** (Cr Creditor — you owe more). To record a reduction of what you owe a supplier — a return credit, an overcharge, a rebate — use the [Purchase Debit Note (Internal)](/applets/purchase-workflow/internal-purchase-debit-note-applet/) (amount signum +1, Dr Creditor), or a [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) when goods go back. Check the Dr/Cr table under *Lifecycle and posting* before choosing.
 {{< /callout >}}
 
-Every credit note ties together **who** you are crediting (supplier on **Account**), **which document** you are editing (header on **Main Details**), and **what** is credited on each line (**Line Items** on create, **Lines** on edit). Optional tabs add payment, department, knock-off from GRN/PO/supplier DO (**KO For**), e-invoice, settlement, and evidence when your tenant shows them.
+## Where it fits
 
----
+| Position | Document / applet | Why |
+|---|---|---|
+| Module | [Purchasing](/modules-v2/purchasing/), [Financial Accounting](/modules-v2/financial-accounting/), [E-Invoice](/modules-v2/e-invoice/) | Posts to the General Ledger; `INTERNAL_PURCHASE_CREDIT_NOTE` is in the platform's e-Invoice purchase-document set. |
+| Upstream (knock-off) | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/), [Supplier Delivery Order](/applets/purchase-workflow/supplier-delivery-order-applet/) | The create screen's **KO For** tab imports open lines from these three document types (`INTERNAL_PURCHASE_ORDER`, `INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE`, `INTERNAL_OUTBOUND_DELIVERY_ORDER`). |
+| Upstream (reference) | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) | The invoice the credit note relates to; link it on **Doc Link**. There is no *Search Document* tab in this applet. |
+| Upstream (intercompany) | [Sales Credit Note (Internal)](/applets/sales-workflow/internal-sales-credit-note-applet/) | Intercompany processing pairs the seller's Sales Credit Note with a Purchase Credit Note in the buying company (amount signum −1, quantity signum 0). |
+| Downstream | [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) | A FINAL credit note has a negative ARAP balance, like an invoice, and is settled or contra'd by payment vouchers and purchase debit notes. |
+| Downstream | [Creditor Report](/applets/finance/creditor-report-applet/) | Shows the credit note's outstanding balance against the supplier. |
+| Downstream | [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) | Submission queue and portal status. |
+| External | [Purchase Credit Note Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-supplier-access-applet/) | The supplier-facing view of the same document type. |
+| Siblings | [Purchase Debit Note (Internal)](/applets/purchase-workflow/internal-purchase-debit-note-applet/), [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/), [Purchase Refund Note (Internal)](/applets/purchase-workflow/internal-purchase-refund-note-applet/) | The other purchase adjustment documents. |
 
-## Before you begin
+## Screens and menus
 
-- Agree internally who proposes credit amounts (procurement) and who approves them for posting (finance), so totals and reasons are clear before you use **FINAL**.
-- The supplier must exist in master data before you can complete the **Account** tab on a new credit note.
-- Whether you must tie a credit to an existing posted invoice depends on your process. When **KO For** is visible on create, it is for knock-off from **Purchase GRN**, **Purchase Order**, or **Supplier Delivery Order** (see [KO For tab](#ko-for-tab-create)); linking or settlement against a **posted purchase invoice** may use **Doc Link**, **ARAP**, or other steps your finance team defines.
-- For statutory e-invoice steps after posting, your organisation may also use [My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/)—see that guide for queues and status, not this page.
+| Menu | Route | What it is |
+|---|---|---|
+| **Internal Purchase Credit Note** | `internal-purchase-credit-note` | The listing with create / edit and the FINAL, DISCARD, VOID bulk actions. |
+| **Line Items** | `line-items` | A cross-document grid of every credit-note line; opens **Edit Item** with Item Details, Costing Details, Issue Link and (when the item needs them) serial, batch and bin sub-tabs. |
+| **File Import** | `file-import` | CSV upload. Hidden when the `HIDE_FILE_IMPORT_MENU` setting is on and the user lacks the `SHOW_FILE_IMPORT_MENU` client-side permission. |
+| **Audit Trail** | `audit-trail` | Change log of documents in this applet. |
+| **Settings** | `settings/…` | Application Settings, Default Selection, Printable Format Settings, Branch Settings, Webhook, Feature Visibility, Client Side Permission, Role Pricing Scheme Link, Permission Wizard / Permission Set / User / Team / Role Permission, Release Notes, Applet Log. |
+| **Personalization** | `personalization/personal-default-selection` | Per-user Default Selection. |
 
----
+{{< figure src="/images/internal-purchase-credit-note-applet/internal-purchase-credit-note-applet-overview-infographic.png" alt="Overview of the Purchase Credit Note (Internal) Applet: documents, line items, and import" caption="Documents, the Line Items workspace and File Import in one applet." >}}
 
-## Who benefits and problems solved {#what-problems-does-this-solve}
+### Listing
 
-| Who | Typical use |
-|-----|-------------|
-| Procurement | Create and update credit notes, supplier and addresses, and lines; use bulk tools when many lines change. |
-| Finance | Review totals, use **FINAL** when the credit is ready for downstream posting, use **DISCARD** or **VOID** when policy allows; work in **E-Invoice**, **ARAP**, or **Contra** when enabled and trained. |
-| Operations | Run file imports, attachments, or exports when your company uses them for evidence or hand-off. |
+{{< figure src="/images/internal-purchase-credit-note-applet/1.png" alt="Purchase Credit Note (Internal) listing with search and Create control" caption="Listing: search, filter, open a row, or start a new document." >}}
 
-Without a structured credit-note process, teams often rely on email and spreadsheets, which makes it hard to prove what was agreed, match credits to invoices or receipts, and keep procurement and finance on the same numbers. This applet gives one official list, header plus supplier plus lines in one place, optional links to e-invoice and settlement when your tenant enables them, and bulk paths through the **Line Items** workspace and **File Import**.
+Columns include the three document numbers, external references, custom document number, posting status, branch, currency, **Self Billed ?**, supplier code and name, purchaser, reference, amount, the five ARAP figures, dates, e-Invoice billing period, client documents and the four accounting dimensions. The search box also scans line item code and item name (fixed in a 2026 change after the listing query moved lines into a sub-query). Bulk **FINAL**, **DISCARD** and **VOID** apply to the selected rows and are disabled when the selection contains a row in the wrong status. There is no bulk print, self-billed or send-email action in this applet.
 
----
-
-## Key features overview
-
-{{< cards >}}
-{{< card title="Quick start" subtitle="Minimum paths by role" link="#quick-start-guide" >}}
-{{< card title="Field reference" subtitle="Header, account, and line fields explained" link="#field-reference" >}}
-{{< card title="Edit screen tabs" subtitle="Each tab and when to use it" link="#edit-screen-tabs" >}}
-{{< card title="Record a supplier credit" subtitle="Create and edit a credit note" link="#record-a-supplier-credit" >}}
-{{< card title="Line Items workspace" subtitle="Search and edit lines across documents" link="#line-items-workspace" >}}
-{{< card title="File Import" subtitle="CSV template, columns, and troubleshooting" link="#file-import" >}}
-{{< card title="Personalization" subtitle="Your own defaults and layout" link="#personalization" >}}
-{{< card title="E-invoice and related" subtitle="What opens on the document" link="#e-invoice-and-related-flows" >}}
-{{< card title="Settings" subtitle="For administrators" link="#settings-for-administrators" >}}
-{{< card title="If something is wrong" subtitle="Common fixes" link="#if-something-is-wrong" >}}
-{{< card title="FAQ" subtitle="Common questions" link="#frequently-asked-questions" >}}
-{{< card title="Glossary" subtitle="Terms used in this guide" link="#glossary" >}}
-{{< /cards >}}
-
-{{< figure src="/images/internal-purchase-credit-note-applet/internal-purchase-credit-note-applet-overview-infographic.png" alt="Overview of the Purchase Credit Note (Internal) Applet: documents, line items, and import" caption="Purchase credit notes, the Line Items workspace, and file import in one applet." >}}
-
----
-
-## Quick start {#quick-start-guide}
-
-The layout may show the same areas as **tabs across the top** or as **expansion panels** you open one at a time—that is a display choice only; the underlying data and steps are the same. Users can switch layout with **CHANGE VIEW** (see [Settings](#settings-for-administrators)).
-
-### For procurement: record a credit and get it ready for finance
-
-1. Open **Purchase Credit Note (Internal)** from the sidebar and use the list search or filters to find an existing document, or start **Create** / **+** for a new one.
-2. On **Create Purchase Credit Note**, work through **Main Details**, then **Account**, then **Line Items**. Treat optional tabs only when your process requires them (**Payment**, **Department Hdr**, **KO For**—see below).
-
-**Main Details — what to fill in**
-
-- Required vs optional fields are controlled by **Field settings** for your tenant. On the form, anything your company marks as mandatory usually shows as required (for example asterisk or red highlight when empty). If you are unsure about a blank field, ask procurement lead or admin rather than guessing.
-- **Reference numbers:** Use the field your policy names for each purpose. A practical pattern many teams use: put the **supplier’s own credit note reference** (if they issued one) in the supplier or external reference field your form exposes; put **your internal case or return ID** in an internal reference; put the **original purchase invoice or PO number** wherever finance asked you to trace the credit (sometimes a dedicated reference, sometimes remarks). If your form only has one reference line, agree one convention with finance and stick to it.
-- **Dates:** Use the document date and any due/posting-related dates your form shows the way finance trained you (often “today” for the credit note date unless policy says otherwise).
-
-**Account**
-
-- Pick the **same supplier** the credit is for, and bill-to / ship-to that match the agreement or the original transaction.
-
-**Line Items — quantities and prices**
-
-- Enter the **credit** you are recording now: item, **quantity being credited**, and **unit price for this credit** (the amount that should reduce payables after posting—not “extra” fields for history unless your form has them).
-- **Price to use:** If finance agreed to credit at the **same unit price as the original invoice**, use that price on the line. If they agreed a **different** credit price (promotional credit, partial write-down, negotiated return value), enter that agreed price—not the old invoice price. When in doubt, confirm with finance before posting.
-- **Example (returned goods):** Finance agrees to credit 10 returned units at MYR 50.00 each. On **Line Items**, choose the **same item code** as the original purchase (or the return line item your policy uses), enter **Qty 10**, **Unit price 50.00** (or your form’s equivalent labels), and a clear line remark such as “Return RMA-123”. Totals on the header should match what was approved.
-
-Optional tabs when visible:
-
-- **Payment** — only if your process records payment lines on the credit note.
-- **Department Hdr** — department or segment on the header when your company allocates credits that way.
-- **KO For** — see [KO For tab](#ko-for-tab-create); use it when you should build lines from open quantities on a **Purchase GRN**, **Purchase Order**, or **Supplier Delivery Order** instead of typing every line by hand.
-
-3. Click **CREATE** to save a new document (use **RESET** only if you intend to clear the draft form). After the document exists, continue editing with **SAVE**; optional tabs on the saved document are described under [Edit screen tabs](#edit-screen-tabs).
-
-### For finance: approve posting and follow your close-out steps {#finalize-void-or-discard-finance}
-
-1. Open the document from the list and confirm supplier, totals, and lines against your approval rules.
-2. Use **SAVE** while changes are still in progress. When the credit is ready for generic document posting, use **FINAL** (header button on the edit screen).
-3. On **Main Details**, **DISCARD** removes a draft (no posting status yet, or status **DRAFT**). **VOID** appears after the document is **FINAL** (posted), when your settings and permissions allow. Either action can be hidden or blocked while the document is locked—ask finance or admin if a button is missing.
-4. Complete **E-Invoice**, **ARAP**, **Contra**, **Doc Link**, or other tabs only as your training describes. Deep e-invoice submission and My E-Invoice workflows are covered in [My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) and, where relevant, [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/).
-
-### For operations: bulk lines and evidence
-
-1. Use [File Import](#file-import) for CSV uploads; fix errors shown on **Checking**, then re-import or continue per your admin’s procedure.
-2. Use [Line Items workspace](#line-items-workspace) to find and correct specific lines after import or when working across many documents.
-3. On an open document, use **Attachment** or **Export** when those tabs are visible and your process requires files or extracts.
-
-{{< callout type="tip" >}}
-After you **FINAL**, the document is treated as posted for your process: follow-up (payables effect, e-invoice, settlement) depends on tenant configuration. Confirm with finance whether a settlement run, e-invoice check, or other step is required—see [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/) for ARAP and invoice-side context where credits mirror invoices.
-{{< /callout >}}
-
----
-
-## Field reference {#field-reference}
-
-This section explains what each part of the credit note form is for. **Which fields are required** depends on your company’s **Field settings**—the tables below describe purpose, not whether every tenant marks them mandatory.
-
-For shared concepts (currency, GL segments, e-invoice supplier fields), see also [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/) where similar fields are documented for invoices.
-
-### Main Details (document header)
-
-| Field | What it is for |
-|-------|----------------|
-| **Doc Short Code** | System document type code (read-only after creation). |
-| **Doc No (Tenant)** | Document number at tenant level. |
-| **Document No (Company)** | Document number at company level (when shown). |
-| **Document No (Branch)** | Document number at branch level (when shown). |
-| **Custom Document Number** | Optional custom numbering when your admin enables it. |
-| **Client Doc Short Code** | Short code for your external document classification. |
-| **Client Doc 1 No – 5 No** | Up to five external reference numbers (supplier CN, PO, invoice, case ID—agree usage with finance). |
-| **Branch** | Branch that owns this credit note. |
-| **Location** | Store or location within the branch. |
-| **Purchaser** | Person responsible for this credit (buyer or procurement contact). |
-| **Transaction Date** | Date of the credit note for posting and reporting. |
-| **Credit Terms** | Payment or credit terms applied to this document. |
-| **Reference** | Primary header reference (often supplier credit note number or internal trace ID). |
-| **Remarks** | Free-text notes visible on the document. |
-| **Permit No** | Import or permit reference when your process requires it. |
-| **Currency** | Document currency (amounts on lines are in this currency). |
-| **Base Currency** | Your organisation’s reporting currency (when shown). |
-| **Currency Rate** | Exchange rate between document currency and base currency. |
-| **Tracking ID** | Shipment, RMA, or logistics tracking reference. |
-| **External Quotation / Order / Delivery Order / Invoice / Others** (+ dates) | Cross-reference to supplier documents outside BigLedger. |
-| **Posting Status** | **DRAFT**, **FINAL**, or **VOID**—whether the credit is still editable, posted, or cancelled. |
-| **Status** | Active/inactive document status (for example **ACTIVE**). |
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-main-details.png" alt="Main Details tab on an open purchase credit note showing header fields, branch, dates, and references" caption="Main Details: header fields including branch, location, dates, references, currency, and posting status." >}}
-
-### Account (supplier)
-
-The **Account** tab has subtabs **Entity Details**, **Bill To**, and **Ship To** when your admin shows them.
-
-| Field / area | What it is for |
-|--------------|----------------|
-| **Entity Id / supplier picker** | The supplier receiving the credit—must match the party on the original transaction. |
-| **Entity Name, Type, Status** | Supplier master data for identification and compliance. |
-| **ID Number, Identity Type, Email, Phone** | Supplier identity and contact (used for reporting and e-invoice when enabled). |
-| **Currency** | Supplier account currency context when shown. |
-| **Bill To** | Billing name and address on the credit. |
-| **Ship To** | Shipping or return address when relevant to the credit. |
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-account.png" alt="Account tab showing supplier entity details and bill-to or ship-to addresses" caption="Account: select the supplier and confirm Bill To and Ship To match the credit agreement." >}}
-
-Video walkthrough: selecting the supplier and updating billing details on a purchase credit note.
-
-{{< youtube 5GJvJrqqheA >}}
-
-### Line Items / Lines (credit lines)
-
-On **Create Purchase Credit Note** the tab is **Line Items**; on an open document it is **Lines**—same data, different screen title.
-
-| Field | What it is for |
-|-------|----------------|
-| **Item Code** | Product or service being credited. |
-| **Item Name** | Description from item master. |
-| **UOM** | Unit of measure (each, box, kg, etc.). |
-| **Qty** | Quantity being credited (reduces payables by this amount × unit price). |
-| **Unit Price (Inclusive of Tax)** | Agreed credit price per unit—not necessarily the original invoice price unless finance confirmed that. |
-| **SST / VAT / GST** | Tax amount on the line when applicable. |
-| **Txn Amount** | Line total in document currency. |
-| **Remarks** | Line-level reason (for example “Return RMA-123”, “Price correction”). |
-| **Serial #** | Serial-tracked items—enter when your item setup requires it. |
-| **Segment Code, Dimension Code, Profit Centre Code, Project Code** | GL allocation when your finance policy splits credits by department or project. |
-| **Landed Costs** | Additional cost components when costing is enabled. |
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-lines.png" alt="Lines tab showing credit line items with item code, quantity, unit price, and amounts" caption="Lines (Line Items on create): each row records what is being credited—item, quantity, and unit price." >}}
-
----
-
-## Record a supplier credit {#record-a-supplier-credit}
-
-This is the day-to-day workflow inside the applet: one list, one document, supplier account, and credit lines.
-
-### Main list: Purchase Credit Note (Internal)
-
-From the sidebar, open the main list to search, filter, and open documents. **Create** / **+** starts a new credit note when you have permission. Columns may include document number, dates, amounts, **Self Billed ?** (reflects the header/supplier self-billed flag when present), and status—exact columns depend on configuration.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/1.png" alt="Purchase Credit Note (Internal) listing with search and Create control" caption="Main list: search and filter credit notes, open a row, or start a new document with Create / +." >}}
-
-### Create a new credit note {#create-a-purchase-credit-note}
-
-Video walkthrough: creating a purchase credit note from the listing through **Main Details**, **Account**, **Line Items**, and **CREATE**.
+### Create screen
 
 {{< youtube dkRuP79Xa9E >}}
 
-1. From the list, click **Create** / **+**. The screen title is **Create Purchase Credit Note**.
-2. **Main Details** — dates, references, and other header fields your company requires (see [Field reference](#field-reference)).
-3. **Account** — select the supplier and billing/shipping details as required.
+{{< figure src="/images/internal-purchase-credit-note-applet/2.png" alt="Create Purchase Credit Note screen showing Main Details or Account tab with header and supplier fields" caption="Create: Main Details and Account, then Line Items." >}}
 
-{{< figure src="/images/internal-purchase-credit-note-applet/2.png" alt="Create Purchase Credit Note screen showing Main Details or Account tab with header and supplier fields" caption="Create a credit note: complete Main Details and Account before moving to lines." >}}
+{{< figure src="/images/internal-purchase-credit-note-applet/3.png" alt="Create Purchase Credit Note Line Items tab with credit lines in the grid" caption="Line Items on create." >}}
 
-4. **Line Items** — add lines (items, quantities, amounts) for what is being credited.
+Create tabs: **Main Details**, **Account**, **Line Items**, **Payment**, **Department Hdr**, **Contra** and **KO For** (hidden by `HIDE_KO_FOR_TAB`). **KO For** has three sub-tabs — KO For Purchase GRN, KO For Purchase Order, KO For Supplier Delivery Order — each searching that document type and importing its open lines. **CREATE** saves a DRAFT; **RESET** clears the form.
 
-{{< figure src="/images/internal-purchase-credit-note-applet/3.png" alt="Create Purchase Credit Note Line Items tab with credit lines in the grid" caption="Line Items: enter each credited item, quantity, and unit price (or use KO For when your process starts from another document)." >}}
+### Edit screen
 
-5. Optional tabs (only if shown): **Payment**, **Department Hdr**, **KO For** — complete when your process says so. See [KO For tab](#ko-for-tab-create).
-6. Click **CREATE** to persist the document. Use **RESET** to clear the unsaved create form.
+{{< figure src="/images/internal-purchase-credit-note-applet/4.png" alt="Open purchase credit note in edit mode with SAVE and FINAL in the header" caption="Edit: SAVE while drafting; FINAL posts." >}}
 
-### KO For tab (create) {#ko-for-tab-create}
-
-The **KO For** tab is optional and only appears when your administrator enables it. It exists so you can **import knock-off lines from an existing purchase document** instead of re-typing item codes, quantities, and baseline amounts.
-
-Inside the tab you get subtabs such as **KO For Purchase GRN**, **KO For Purchase Order**, and **KO For Supplier Delivery Order** (exact titles match your screen). Typical flow: open the subtab that matches the document you are crediting against, **search and select** that document, then use the knock-off action your training describes. The system brings **open quantities and linked line data** from that document into this credit note so you start from what was already received or ordered. **Review and adjust** lines afterward if the credit quantity or price differs from what was pulled (for example partial return or negotiated credit).
-
-If you **skip KO For**, you can still enter lines manually on **Line Items**; finance may later match the credit to invoices or payables using **Doc Link**, **ARAP**, or other tools on the saved document. Whether knock-off is required is a **company rule**, not something the applet decides for you.
-
-For invoice-centric knock-off, settlement, and ARAP behaviour, continue with [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/) after the credit note exists if that is how your tenant is set up.
-
-### Edit an existing credit note
-
-Open a row from the list. The header shows **SAVE** and, when allowed, **FINAL**.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/4.png" alt="Open purchase credit note in edit mode with SAVE and FINAL in the header" caption="After the document exists: use SAVE while editing; use FINAL when finance is ready to post the credit note." >}}
-
-For tab-by-tab guidance on the saved document, see [Edit screen tabs](#edit-screen-tabs).
-
----
-
-## Edit screen tabs {#edit-screen-tabs}
-
-After you **CREATE** a credit note, the edit screen shows a set of tabs (or vertical panels if **CHANGE VIEW** is set that way). Tabs appear only when your administrator has not hidden them. Work through them in the order below when your process requires each step.
-
-### Main Details
-
-**When to use:** Always—the document header.
-
-**What you do here:** Review or update branch, location, dates, references, currency, and remarks. **DISCARD** (draft) and **VOID** (posted) appear here when permitted. Confirm **Posting Status** before you assume the credit is live in payables.
-
-**Typical scenario:** Procurement corrects the supplier reference number before finance runs **FINAL**.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-main-details.png" alt="Main Details tab on edit purchase credit note" caption="Main Details on edit: update header fields; DISCARD and VOID appear here when permitted." >}}
-
-### E-Invoice
-
-**When to use:** When e-invoice is enabled for your tenant—usually after **FINAL**.
-
-**What you do here:** View or trigger e-invoice actions (submission, cancellation) per country rules. **Self-billed** suppliers may see different subtabs than standard suppliers.
-
-**Typical scenario:** Finance posts the credit, then completes e-invoice submission from this tab or follows up in [My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/).
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-e-invoice.png" alt="E-Invoice tab on purchase credit note after posting" caption="E-Invoice: submission and cancellation panels after FINAL when e-invoice is enabled." >}}
-
-### Account
-
-**When to use:** Always—supplier identity and addresses.
-
-**What you do here:** Confirm **Entity Details**, **Bill To**, and **Ship To** match the supplier and addresses on the original purchase or return agreement.
-
-**Typical scenario:** Credit for a return—the ship-to address is the supplier’s return warehouse.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-account.png" alt="Account tab on edit purchase credit note" caption="Account on edit: confirm supplier entity and addresses." >}}
-
-### Lines
-
-**When to use:** Always—what is being credited.
-
-**What you do here:** Add, edit, or remove credit lines (item, qty, unit price, tax, remarks). Same grid as **Line Items** on create.
-
-**Typical scenario:** Partial return—reduce qty on one line and add a remark with the RMA number.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-lines.png" alt="Lines tab on edit purchase credit note" caption="Lines on edit: add or adjust credited items, quantities, and prices." >}}
-
-### ARAP
-
-**When to use:** When the tab is visible and finance uses payables settlement on the document.
-
-**What you do here:** View or manage accounts receivable/payable settlement—offset this credit against open supplier invoices or balances.
-
-**Typical scenario:** Posted credit note reduces amount owed on a specific purchase invoice.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-arap.png" alt="ARAP tab on purchase credit note for payables settlement" caption="ARAP: offset this credit against open supplier invoices or balances." >}}
-
-### Payment
-
-**When to use:** When your process records payment lines directly on the credit document (uncommon for standard supplier credits—confirm with finance).
-
-**What you do here:** Enter or review payment allocation lines tied to this document.
-
-**Typical scenario:** Refund or settlement recorded on the same document per company policy.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-payment.png" alt="Payment tab on purchase credit note" caption="Payment: payment lines when your process records them on the credit document." >}}
-
-### Department Hdr
-
-**When to use:** When your company allocates credits by department, segment, or project at header level.
-
-**What you do here:** Set segment, dimension, profit centre, or project on the document header for GL reporting.
-
-**Typical scenario:** Credit for a department’s mistaken order—segment code routes the credit to the correct cost centre.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-department-hdr.png" alt="Department Hdr tab on purchase credit note" caption="Department Hdr: segment, dimension, profit centre, or project on the header." >}}
-
-### Trace Document
-
-**When to use:** When audit or finance needs posting trace on the generic document.
-
-**What you do here:** Review system posting trace and linked posting events (read-only for most users).
-
-**Typical scenario:** Support investigates why a credit did not appear in a report—trace shows posting history.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-trace-document.png" alt="Trace Document tab showing posting trace on purchase credit note" caption="Trace Document: read-only posting trace for audit and support." >}}
-
-### Contra
-
-**When to use:** When finance offsets this credit against another payable or document.
-
-**What you do here:** Create or review contra entries that net this credit against an invoice, debit note, or other balance.
-
-**Typical scenario:** Supplier sends a credit note that nets against an unpaid invoice—finance records contra here.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-contra.png" alt="Contra tab on purchase credit note" caption="Contra: net this credit against another payable or document." >}}
-
-### Doc Link
-
-**When to use:** When you must formally link this credit to related documents (PO, GRN, invoice, etc.).
-
-**What you do here:** Add or view document links for traceability and matching—not the same as **KO For** on create, which pulls lines from GRN/PO/SDO.
-
-**Typical scenario:** Link posted credit to the original purchase invoice number for three-way matching audit.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-doc-link.png" alt="Doc Link tab on purchase credit note for linking related documents" caption="Doc Link: formally link this credit to PO, GRN, invoice, or other related documents." >}}
-
-### Attachment
-
-**When to use:** When you need evidence on file (supplier PDF credit note, email approval, photos of returned goods).
-
-**What you do here:** Upload, view, or download attachments stored against this document.
-
-**Typical scenario:** Attach the supplier’s signed credit note PDF before **FINAL**.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-attachment.png" alt="Attachment tab on purchase credit note for uploading evidence files" caption="Attachment: upload supplier credit note PDFs, email approvals, or other evidence." >}}
-
-### Export
-
-**When to use:** When you need a data extract of this document for hand-off or external review.
-
-**What you do here:** Run export in the format your administrator configured.
-
-**Typical scenario:** Export credit note details for a supplier dispute file.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/tab-export.png" alt="Export tab on purchase credit note for data extracts" caption="Export: run configured data extracts of this document for external review." >}}
-
----
-
-## Line Items workspace {#line-items-workspace}
-
-The **Line Items** item in the left menu is not the same as the **Line Items** tab on **Create Purchase Credit Note** or the **Lines** tab on an open document. The menu opens a separate search grid so you can work across many documents and jump straight into editing one line.
-
-1. Open **Line Items** from the sidebar.
-2. Use search and filters to narrow the list.
-3. Open a row to edit (screen title **Edit Item**).
-4. Use the subtabs as shown—for example **Item Details**, **Costing Details**, and **Issue Link**; serial, batch, or bin subtabs appear when your item setup requires them. Click **SAVE** on the line editor when done.
-5. Use **Delete** on a line when available and your policy allows it (confirm prompts if shown).
-
----
-
-## File Import {#file-import}
-
-Use **File Import** when your company loads credit note data from CSV instead of typing each document or line manually.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/file-import.png" alt="File Import upload screen titled Upload The Data with Delimeter, file upload area, Sample Format, and SUBMIT" caption="File Import: choose Delimeter, attach a CSV, use Sample Format for the template, then SUBMIT. Review results on the import record under Details and Checking." >}}
-
-### Step-by-step upload
-
-1. Open **File Import** from the sidebar and start a new import with **Create** / **+**.
-2. The upload screen title is **Upload The Data**. Set **Delimeter** (the on-screen spelling) to match your CSV:
-   - **COMMA** — fields separated by `,` (most common)
-   - **PIPE** — fields separated by `|`
-3. Add a `.csv` file with **Upload File** or drag and drop into the drop zone.
-4. Open **Sample Format** to open the column-picker dialog and download the template CSV (`Purchase_Credit_Note_Master_Data_Template.csv`). **Target fields** (mandatory) are always included; you can add **source fields** (optional) from the left list.
-
-{{< figure src="/images/internal-purchase-credit-note-applet/file-import-sample-format-dialog.png" alt="Sample Format dialog showing source fields and target fields for CSV import" caption="Sample Format: target fields (right) are mandatory; add optional source fields (left) before downloading the template CSV." >}}
-
-5. Click **SUBMIT** to run the import.
-6. Open the import record (**File Details**). Review **Details** for file-level status, and **Checking** for row-level validation.
-
-### Sample Format: target fields (mandatory)
-
-These columns are **always required** in your CSV header and must be **populated on every data row** you expect to import. They cannot be removed from the Sample Format download.
-
-| Column | Purpose |
-|--------|---------|
-| `BRANCH_CODE` | Branch code where the credit note belongs. |
-| `LOCATION_CODE` | Location or store code within the branch. |
-| `DOC_CURRENCY` | Document currency code (for example `MYR`, `USD`). |
-| `TXN_DATE` | Transaction date (match the date format in the sample template). |
-| `HDR_REF_NO` | Header reference number for the credit note. |
-| `QTY` | Line quantity being credited. |
-| `SETTLEMENT_OR_ITEM_CODE` | Item code or settlement code for the line. |
-| `AMOUNT_INCL_TAX` | Line amount including tax in document currency. |
-
-### Sample Format: source fields (optional)
-
-Select these in the **Sample Format** dialog when your CSV needs extra header, supplier, line, tax, GL, or e-invoice data. Add only the columns you will populate—empty optional columns are usually fine.
-
-#### Header and document
-
-| Column | Purpose |
-|--------|---------|
-| `PURCHASE_AGENT` | Purchaser or buyer code on the header. |
-| `CREDIT_TERMS` | Credit terms code or name. |
-| `CREDIT_LIMIT` | Credit limit reference when used. |
-| `HDR_DESCRIPTION` | Header description text. |
-| `HDR_REMARKS` | Header remarks. |
-| `TRACKING_ID` | Tracking or RMA reference. |
-| `Client Doc Type` | Client document type short code. |
-| `Client Doc 1` – `Client Doc 5` | External reference numbers 1–5. |
-| `BASE_DOC_X_RATE` | Exchange rate for foreign-currency documents. |
-| `POSTING_STATUS` | Posting status when importing as draft or final per your process. |
-
-#### Supplier (entity)
-
-| Column | Purpose |
-|--------|---------|
-| `ENTITY_CODE` | Supplier code. |
-| `ENTITY_NAME` | Supplier name. |
-| `ENTITY_TYPE` | Entity type classification. |
-| `ENTITY_ARAP_TYPE` | AR/AP type for the entity. |
-| `ENTITY_ID_NO` | Supplier ID number. |
-| `ENTITY_ID_TYPE` | ID type (for example NRIC, BRN). |
-| `ENTITY_ID_NO_OLD` | Previous ID number when applicable. |
-| `ENTITY_TOURISM_TAX_ID_NO` | Tourism tax ID. |
-| `ENTITY_EINVOICE_TAX_ID_NO` | E-invoice tax ID. |
-| `ENTITY_EINVOICE_ID_TYPE` | E-invoice ID type. |
-| `ENTITY_EINVOICE_ID_VALUE` | E-invoice ID value. |
-| `ENTITY_TAX_REG_NUMBER` | Tax registration number. |
-| `ENTITY_SST_NO` | SST registration number. |
-| `ENTITY_PHONE` | Supplier phone. |
-| `ENTITY_EMAIL` | Supplier email. |
-| `ENTITY_SKIP_EINVOICE` | Skip e-invoice flag when applicable. |
-| `ENTITY_UPSERT` | Create or update supplier on import when enabled. |
-| `ENTITY_BRANCH_CODE` | Supplier branch code. |
-| `ENTITY_BRANCH_CODE_XTN_MAPPING_VALUE_01` – `05` | External mapping values for supplier branch. |
-
-#### Billing and shipping address
-
-| Column | Purpose |
-|--------|---------|
-| `BILLING_NAME`, `BILLING_EMAIL`, `BILLING_PHONE` | Bill-to contact. |
-| `BILLING_ADDRESS_LINE_1` – `5`, `BILLING_COUNTRY`, `BILLING_STATE`, `BILLING_CITY`, `BILLING_POSTCODE` | Bill-to address. |
-| `SHIPPING_NAME`, `SHIPPING_EMAIL`, `SHIPPING_PHONE` | Ship-to contact. |
-| `SHIPPING_ADDRESS_LINE_1` – `5`, `SHIPPING_COUNTRY`, `SHIPPING_STATE`, `SHIPPING_CITY`, `SHIPPING_POSTCODE` | Ship-to address. |
-
-#### Line item detail
-
-| Column | Purpose |
-|--------|---------|
-| `ITEM_NAME` | Item description. |
-| `ITEM_DESCRIPTION` | Extended item description. |
-| `LINE_ITEM_NAME` | Line display name. |
-| `LINE_ITEM_REMARKS` | Line remarks. |
-| `LINE_BRANCH_CODE` | Branch on the line when different from header. |
-| `ITEM_TXN_TYPE`, `ITEM_TXN_CLASS`, `ITEM_SUB_ITEM_TYPE` | Item transaction classification. |
-| `ITEM_CCY_CODE` | Line item currency when used. |
-| `UOM` | Unit of measure. |
-| `UNIT_PRICE_INCL_TAX` | Unit price including tax. |
-| `DISCOUNT_AMOUNT` | Discount on the line. |
-| `TAX_CODE` | Tax code. |
-| `TAX_AMOUNT` | Tax amount. |
-| `ITEM_SERIAL_NO`, `ITEM_BATCH_NO`, `ITEM_TRACKING_ID` | Serial, batch, or tracking ID. |
-| `GL_CODE` | GL account code. |
-| `SEGMENT_CODE`, `GL_DIMENSION_CODE`, `PROFIT_CENTRE_CODE`, `PROJECT_CODE` | GL segments and dimensions. |
-| `LINE_TXN_DATE` | Line transaction date when different from header. |
-| `SORT_CODE` | Sort or display order. |
-| `ITEM_REF_NO` | Item reference number. |
-| `TXN_TYPE_PNS_STL_MTHD`, `STL_AMOUNT`, `TRANSACTION_NO`, `STL_REMARKS` | Settlement-related line fields when used. |
-
-#### E-invoice (when applicable)
-
-| Column | Purpose |
-|--------|---------|
-| `EINVOICE_ITEM_CLASSIFICATION_CODE`, `EINVOICE_ITEM_TAX_TYPE_CODE`, `EINVOICE_ITEM_UOM` | E-invoice line classification. |
-| `EINVOICE_SUBMISSION_TYPE` | Submission type. |
-| `EINVOICE_SUPPLIER_TIN_NO`, `EINVOICE_SUPPLIER_ENTITY_ID_TYPE`, `EINVOICE_SUPPLIER_ID_NO`, `EINVOICE_SUPPLIER_SST_NO` | Supplier e-invoice identity. |
-| `EINVOICE_SUPPLIER_NAME`, `EINVOICE_SUPPLIER_EMAIL`, `EINVOICE_SUPPLIER_PHONE` | Supplier e-invoice contact. |
-| `EINVOICE_SUPPLIER_ADDRESS_NAME`, `EINVOICE_SUPPLIER_ADDRESS_LINE_1` – `5`, `EINVOICE_SUPPLIER_ADDRESS_CITY`, `EINVOICE_SUPPLIER_ADDRESS_POSTCODE`, `EINVOICE_SUPPLIER_ADDRESS_STATE`, `EINVOICE_SUPPLIER_ADDRESS_COUNTRY` | Supplier e-invoice address. |
-| `EINVOICE_SELF_BILLED` | Self-billed flag. |
-| `EINVOICE_BILLING_FREQUENCY`, `EINVOICE_BILLING_PERIOD_START`, `EINVOICE_BILLING_PERIOD_END` | Billing period for e-invoice. |
-| `ORIGINAL_EINVOICE_REF_UUID` | Reference to original e-invoice UUID when correcting. |
-
-### Example CSV rows
-
-**Minimal row (mandatory columns only):**
-
-| BRANCH_CODE | LOCATION_CODE | DOC_CURRENCY | TXN_DATE | HDR_REF_NO | SETTLEMENT_OR_ITEM_CODE | QTY | AMOUNT_INCL_TAX |
-|-------------|---------------|--------------|----------|------------|-------------------------|-----|-----------------|
-| HQ | WH01 | MYR | 2026-06-01 | CN-2026-001 | ITEM-A001 | 10 | 500.00 |
-
-**Row with supplier and reference (optional columns added):**
-
-| BRANCH_CODE | LOCATION_CODE | DOC_CURRENCY | TXN_DATE | HDR_REF_NO | ENTITY_CODE | SETTLEMENT_OR_ITEM_CODE | QTY | AMOUNT_INCL_TAX | HDR_REMARKS |
-|-------------|---------------|--------------|----------|------------|-------------|-------------------------|-----|-----------------|-------------|
-| HQ | WH01 | MYR | 2026-06-01 | CN-2026-002 | SUPP001 | ITEM-B002 | 5 | 250.00 | Return RMA-456 |
-
-### Import rules (read before SUBMIT)
-
-- **Mandatory columns:** All eight target columns must appear in the header row and be filled on each data row; empty required cells produce errors on **Checking**.
-- **Column names:** Match the Sample Format spelling and case exactly.
-- **Delimiter:** Must match the **Delimeter** you select on **Upload The Data**—a comma file with **PIPE** selected (or vice versa) will fail or mis-parse rows.
-- **Failed rows:** Treat **Checking** as the **source of truth** after each run. Fix the CSV and start a new import (or follow your admin’s recycle procedure).
-
-### Import listing and File Details
-
-After **SUBMIT**, the **File Import Listing** shows each upload:
-
-| Column | Meaning |
-|--------|---------|
-| **File Name** | Uploaded file name. |
-| **File Size** | Size of the upload. |
-| **Format** | Usually **CSV**. |
-| **Status** | Record status (for example **ACTIVE**). |
-| **Process Status** | Overall import result—commonly **DONE** (completed) or **FAILED** (file-level failure). |
-| **Error Message** | Summary when the whole file failed (wrong format, delimiter mismatch, etc.). |
-| **Created Date / Created by** | Audit of who uploaded and when. |
-
-{{< figure src="/images/internal-purchase-credit-note-applet/file-import-listing-status.png" alt="File Import listing showing Process Status and Error Message columns" caption="File Import listing: check Process Status and Error Message for file-level results." >}}
-
-Open a row to see **File Details** with two tabs:
+The tabs (or stacked panels when `VERTICAL_ORIENTATION` is on; **CHANGE VIEW** toggles per user) are ordered by *Settings → Default Selection → Details Tab Ordering*:
 
 | Tab | Purpose |
-|-----|---------|
-| **Details** | File metadata and process status. |
-| **Checking** | Row-by-row validation grid (helper table)—use this to fix data and re-import. |
+|---|---|
+| **Main Details** | Header, with DISCARD (draft) and VOID (FINAL) buttons. |
+| **E-Invoice** | Sub-tabs Submission (with the **Skip E-Invoice** switch), Progress, Notification, Cancellation, Matched History and, when `ENABLE_IMPORT_EXPORT` is on, Import/Export. |
+| **Account** | Supplier entity, Bill To, Ship To. |
+| **Lines** | Same grid as Line Items on create. |
+| **ARAP** | PNS, settlement, document-open, contra and balance figures. |
+| **Payment** | Settlement lines. |
+| **Department Hdr** | Header segment, dimension, profit centre, project. |
+| **Trace Document** | Journal, cashbook, tax and inventory transactions behind a FINAL document. |
+| **Contra** | Offset against the supplier's other open documents. |
+| **Doc Link** | Links to and from other documents (the way to tie the note to its purchase invoice). |
+| **Attachment** | Supporting files. |
+| **Export** | Print with a printable format. |
 
-### Checking tab (helper table) {#checking-tab}
+{{< figure src="/images/internal-purchase-credit-note-applet/tab-main-details.png" alt="Main Details tab on an open purchase credit note showing header fields, branch, dates, and references" caption="Main Details." >}}
 
-The **Checking** tab is your main tool for troubleshooting CSV uploads.
+{{< figure src="/images/internal-purchase-credit-note-applet/tab-e-invoice.png" alt="E-Invoice tab on purchase credit note after posting" caption="E-Invoice tab after FINAL." >}}
 
-{{< figure src="/images/internal-purchase-credit-note-applet/file-import-checking-tab.png" alt="File Details Checking tab with Processed and Validation Error columns" caption="Checking tab: row-level Processed status and Validation Error messages for self-service CSV fixes." >}}
+{{< figure src="/images/internal-purchase-credit-note-applet/tab-account.png" alt="Account tab showing supplier entity details and bill-to or ship-to addresses" caption="Account — supplier, Bill To, Ship To." >}}
 
-| Column | Meaning |
-|--------|---------|
-| **Line Number** | Row number in your CSV (excluding header). |
-| **Processed** | Whether this row was accepted (**true**) or rejected (**false**). |
-| **Validation Error** | Plain-language reason the row failed (missing branch, invalid item, bad date, etc.). |
-| **Branch Code, Location Code, Settlement/Item Code, …** | Values the system parsed from your file—compare with your CSV to find typos. |
-| **Error Message / Short Error Message** | Technical detail for support when validation text is not enough. |
+{{< youtube 5GJvJrqqheA >}}
 
-**Self-service correction workflow**
+{{< figure src="/images/internal-purchase-credit-note-applet/tab-lines.png" alt="Lines tab showing credit line items with item code, quantity, unit price, and amounts" caption="Lines." >}}
 
-1. **SUBMIT** the file.
-2. Open the import record → **Checking** tab.
-3. Filter or scan for **Processed = false** and read **Validation Error** on each failed row.
-4. Fix those rows in your CSV (delimiter, mandatory columns, valid codes, date format).
-5. Upload again with **Create** / **+** and **SUBMIT** a corrected file.
+{{< figure src="/images/internal-purchase-credit-note-applet/tab-arap.png" alt="ARAP tab on purchase credit note for payables settlement" caption="ARAP." >}}
 
-{{< callout type="warning" >}}
-If **Process Status** is **FAILED** with an **Error Message** on the listing but **Checking** is empty, the problem is usually file-level (delimiter, encoding, or no valid rows)—fix the file structure before row-level fixes.
-{{< /callout >}}
+{{< figure src="/images/internal-purchase-credit-note-applet/tab-payment.png" alt="Payment tab on purchase credit note" caption="Payment." >}}
 
-If **File Import** is missing from the menu, feature visibility or role permissions may hide it.
+{{< figure src="/images/internal-purchase-credit-note-applet/tab-department-hdr.png" alt="Department Hdr tab on purchase credit note" caption="Department Hdr." >}}
 
----
+{{< figure src="/images/internal-purchase-credit-note-applet/tab-trace-document.png" alt="Trace Document tab showing posting trace on purchase credit note" caption="Trace Document." >}}
 
-## Personalization {#personalization}
+{{< figure src="/images/internal-purchase-credit-note-applet/tab-contra.png" alt="Contra tab on purchase credit note" caption="Contra." >}}
 
-**Personalization** is a separate menu (footer or sidebar link) for **individual user preferences**—it does not change company-wide settings in **Settings**.
+{{< figure src="/images/internal-purchase-credit-note-applet/tab-doc-link.png" alt="Doc Link tab on purchase credit note for linking related documents" caption="Doc Link." >}}
 
-| Feature | What you can set |
-|---------|------------------|
-| **Default Selection** | Your personal default **branch** and **location** when creating documents (within branches you are allowed to access). |
-| **Single / double column layout** | **DEFAULT_TOGGLE_COLUMN** — prefer single- or dual-column form layout where supported. |
+{{< figure src="/images/internal-purchase-credit-note-applet/tab-attachment.png" alt="Attachment tab on purchase credit note for uploading evidence files" caption="Attachment." >}}
 
-Use Personalization when you always work from the same branch or warehouse and want faster document creation without asking an admin to change tenant defaults.
+{{< figure src="/images/internal-purchase-credit-note-applet/tab-export.png" alt="Export tab on purchase credit note for data extracts" caption="Export." >}}
 
-Company-wide defaults remain under **Settings → Default Selection** (administrators only).
+### File Import
 
-{{< figure src="/images/internal-purchase-credit-note-applet/personalization-default-selection.png" alt="Personalization Default Selection screen" caption="Personalization: set your own default branch and location without changing company-wide settings." >}}
+{{< figure src="/images/internal-purchase-credit-note-applet/file-import.png" alt="File Import upload screen titled Upload The Data with Delimeter, file upload area, Sample Format, and SUBMIT" caption="File Import: choose the delimiter (COMMA or PIPE), attach the CSV, download Sample Format, SUBMIT." >}}
 
----
+**Sample Format** opens a column picker: the **target fields** are always in the template and must be filled on every row; **source fields** are optional.
 
-## E-invoice and related flows {#e-invoice-and-related-flows}
+{{< figure src="/images/internal-purchase-credit-note-applet/file-import-sample-format-dialog.png" alt="Sample Format dialog showing source fields and target fields for CSV import" caption="Sample Format: target fields (right) are mandatory; source fields (left) are optional." >}}
 
-On an open document, the **E-Invoice** tab appears when e-invoice is enabled for your tenant. After **FINAL**, panels such as submission or cancellation follow your country and company rules. The document and supplier self-billed flag drives self-billed behaviour in the UI (for example, which e-invoice subtabs show after posting). Configure or interpret self-billed with your finance team and with [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/) where supplier e-invoice settings are documented.
+| Mandatory column | Purpose |
+|---|---|
+| `BRANCH_CODE`, `LOCATION_CODE` | Owning branch and location. |
+| `DOC_CURRENCY` | Document currency. |
+| `TXN_DATE` | Transaction date, in the template's format. |
+| `HDR_REF_NO` | Header reference. |
+| `SETTLEMENT_OR_ITEM_CODE` | Item code (or settlement-method code for a settlement line). |
+| `QTY` | Line quantity. |
+| `AMOUNT_INCL_TAX` | Line amount including tax. |
 
-Day-to-day monitoring of submissions, failures, and cancellations belongs in [My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/)—use that user guide for queue-based work, not a second copy of those steps here.
+Optional column groups: header (`PURCHASE_AGENT`, `CREDIT_TERMS`, `CREDIT_LIMIT`, `HDR_DESCRIPTION`, `HDR_REMARKS`, `TRACKING_ID`, `Client Doc Type`, `Client Doc 1`–`5`, `BASE_DOC_X_RATE`, `POSTING_STATUS`); supplier (`ENTITY_CODE`, `ENTITY_NAME`, `ENTITY_TYPE`, `ENTITY_ARAP_TYPE`, identity and tax numbers, `ENTITY_SKIP_EINVOICE`, `ENTITY_UPSERT`, `ENTITY_BRANCH_CODE` and its five external mapping values); billing and shipping name/email/phone/address; line detail (`ITEM_NAME`, `ITEM_DESCRIPTION`, `LINE_ITEM_NAME`, `LINE_ITEM_REMARKS`, `LINE_BRANCH_CODE`, `ITEM_TXN_TYPE`, `ITEM_TXN_CLASS`, `ITEM_SUB_ITEM_TYPE`, `ITEM_CCY_CODE`, `UOM`, `UNIT_PRICE_INCL_TAX`, `DISCOUNT_AMOUNT`, `TAX_CODE`, `TAX_AMOUNT`, `AMOUNT_TAX_GST`, serial / batch / tracking, `GL_CODE`, the four dimension codes, `LINE_TXN_DATE`, `SORT_CODE`, `ITEM_REF_NO`, `TXN_TYPE_PNS_STL_MTHD`, `STL_AMOUNT`, `TRANSACTION_NO`, `STL_REMARKS`); e-Invoice (item classification, tax type and UOM codes, `EINVOICE_SUBMISSION_TYPE`, supplier TIN / ID / SST / name / contact / address, `EINVOICE_SELF_BILLED`, billing frequency and period, `ORIGINAL_EINVOICE_REF_UUID`, and the header/line tax-exemption details and amounts added in 2026).
 
----
+After **SUBMIT**, the import listing shows File Name, File Size, Format, Status, **Process Status** (DONE / FAILED), Error Message and audit columns. Open the record: **Details** has file metadata; **Checking** has one row per CSV line with **Processed** (true/false), **Validation Error** and the parsed values.
 
-## Choosing other purchase documents {#when-to-use-which-purchase-document}
+{{< figure src="/images/internal-purchase-credit-note-applet/file-import-listing-status.png" alt="File Import listing showing Process Status and Error Message columns" caption="Import listing — Process Status and Error Message." >}}
 
-| Situation | Where to read more |
-|-----------|---------------------|
-| Supplier should charge you less (return, error, rebate, duplicate bill) | This applet — purchase credit note. |
-| You need to charge the supplier more (under-billing, extra cost to supplier) | [Purchase Debit Note (Internal) Applet](/applets/purchase-workflow/internal-purchase-debit-note-applet/) |
-| Physical return of goods with a dedicated return process | [Purchase Return (Internal) Applet](/applets/purchase-workflow/internal-purchase-return-applet/) |
-| Refund flows your company separates from standard credits | [Purchase Refund Note (Internal) Applet](/applets/purchase-workflow/internal-purchase-refund-note-applet/) |
+{{< figure src="/images/internal-purchase-credit-note-applet/file-import-checking-tab.png" alt="File Details Checking tab with Processed and Validation Error columns" caption="Checking tab — row-level result." >}}
 
-Related purchase flow guides:
+## Configuration
 
-- [Purchase Order (Internal) Applet](/applets/purchase-workflow/internal-purchase-order-applet/)
-- [Purchase GRN Stock In (Internal) Applet](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/)
-- [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/)
-- [Supplier Delivery Order Applet](/applets/purchase-workflow/supplier-delivery-order-applet/)
+### Before you can use it
 
----
+| Prerequisite | Where | Why |
+|---|---|---|
+| Company, branch, location | [Organisation](/applets/master-data/organisation-applet/) | Three required header fields; the branch's `MAIN_LOCATION` fills the default location. |
+| Supplier entity | [Supplier](/applets/master-data/supplier-applet-1/) | Account tab; the entity's AR/AP object type selects `CREDITOR` or `CREDITOR_NON_TRADE`. Selecting a supplier copies its currency to the header and (since mid-2026) fetches the rate. |
+| Company default GL codes | [Chart of Account](/applets/master-data/chart-of-account-applet/) → company GL-code links | `CREDITOR` / `CREDITOR_NON_TRADE` mandatory; `PURCHASE` for lines without their own GL code; `INPUT_TAX` for tax lines. Missing creditor mapping → `MISSING_DEFAULT_GL_CODE`. |
+| Items with a purchase GL code | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Line GL code: header GL code → item-company `PURCHASE` link → company default. |
+| Tax codes | [Tax Configuration](/applets/master-data/tax-configuration-applet/) | GST/SST and WHT on lines. |
+| Cashbook / settlement methods | [Cashbook](/applets/master-data/cashbook-applet/) | Only for Payment-tab settlements; a settlement item without a cashbook GL fails FINAL with `MISSING_CASHBOOK` / `MISSING_GL_CODE`. |
+| Fiscal period open | [General Ledger](/applets/finance/general-ledger-applet/) | FINAL refused in a `LOCK_ALL` / `LOCK_TXN` period. |
+| Forex rates | [Forex](/applets/master-data/forex-applet/) | A foreign-currency document must carry a non-zero rate; SAVE is blocked at rate 0 and FINAL validates the rate against the source. |
+| e-Invoice setup | [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) | Only when the document must be submitted; skip flags on document, branch or supplier bypass it. |
+| Permissions | This applet → Settings → Permission Wizard / Client Side Permission | Server-side create/read/update/delete on `INTERNAL_PURCHASE_CREDIT_NOTE`; client-side switches below. |
 
-## Settings (for administrators) {#settings-for-administrators}
+### Applet settings
 
-These live under **Settings** in the applet. Names match what users usually see in the sidebar.
+**Settings → Default Selection** (`default-selection`):
 
-### System configuration
+| Setting | What it controls | Default | Effect when changed | Who can change it |
+|---|---|---|---|---|
+| `DEFAULT_BRANCH` | Branch pre-selected on new documents; also stores `DEFAULT_COMPANY` and `DEFAULT_LOCATION` (branch `MAIN_LOCATION`). | none | New documents open with it; personal defaults override. | Tenant admin with the applet's Settings menu |
+| `DEFAULT_LOCATION` | Location pre-selected on new documents. | none | As above. | Same |
+| `PURCHASE_CREDIT_NOTE_DETAILS_TAB_ORDER` | Drag-and-drop order of the edit tabs (added in 2026, mirroring the debit-note applet). | code order | Re-orders tabs for everyone; new tabs append. | Same |
 
-| Area | What it is for |
-|------|----------------|
-| **Application Settings** | Hide/show fields, tabs, listing columns, and sidebar menus—see [Application Settings tabs](#application-settings-tabs) below. |
-| **Default Selection** | Tenant-wide default **company**, **branch**, and **location** for new documents. |
-| **Printable Format Settings** | Layout and content of printed or PDF credit notes (logo, columns, no-price variants, branch-specific formats). |
-| **Branch Settings** | Branch-specific defaults such as print format per branch. |
+**Settings → Application Settings** (`field-settings`) is the shared field-configuration screen; toggles are labelled by key and default to *off*. Keys this applet reads:
 
-{{< figure src="/images/internal-purchase-credit-note-applet/settings-printable-format.png" alt="Printable Format Settings for purchase credit note layout" caption="Printable Format Settings: configure logo, columns, and branch-specific print layouts for credit notes." >}}
+| Group | Keys | What they control |
+|---|---|---|
+| Listing defaults | `DEFAULT_POSTING_STATUS`, `DEFAULT_STATUS`, `DEFAULT_TRANSACTION_DATE` (`1_day` / `1_week`), `SORT_ORDER`, `FUZZY_SEARCH_COLUMNS`, `DISABLE_GEN_DOC_LISTING` | Which documents load by default, sort column, fuzzy-search columns; `DISABLE_GEN_DOC_LISTING` stops the auto-load. |
+| Menus and buttons | `HIDE_FILE_IMPORT_MENU`, `HIDE_CLONE_BUTTON`, `HIDE_GENDOC_FINAL_BUTTON`, `HIDE_GENDOC_VOID_BUTTON`, `HIDE_GENDOC_DISCARD_BUTTON`, `HIDE_GENDOC_SAVE_BUTTON`, `ENABLE_AUTO_POPUP`, `PRINTABLE` | Hide a menu or button unless a `SHOW_…` client-side permission restores it. `ENABLE_AUTO_POPUP` opens the printable PDF after FINAL and needs `PRINTABLE` (default printable-format GUID). |
+| Header fields | `HIDE_TRACKING_ID`, `HIDE_PERMIT_NO`, `HIDE_CURRENCY`, `HIDE_BASE_CURRENCY`, `HIDE_CREDIT_TERMS`, `HIDE_REMARKS`, `HIDE_REFERENCE`, `HIDE_SERVER_DOC_2`, `HIDE_SERVER_DOC_3`, `HIDE_CLIENT_DOC_TYPE`, `HIDE_CLIENT_DOC_1..5`, `HIDE_EXTERNAL_QUOTATION`, `HIDE_EXTERNAL_ORDER`, `HIDE_EXTERNAL_DELIVERY_ORDER`, `HIDE_EXTERNAL_INVOICE`, `HIDE_EXTERNAL_OTHERS`, `SHOW_CUSTOM_DOC_NO`, `SHOW_FOREX_DATA_SOURCE`, `CANNOT_EDIT_CURRENCY_RATE`, `ENABLE_DUPLICATE_REFERENCE_CHECK`, `ENABLE_EMPLOYEE_LOGIN_AUTO_DETECTION`, `DEFAULT_DECIMAL_PRECISION` | Main Details visibility and behaviour: forex-source selector instead of free rate, locked rate, duplicate-reference warning, purchaser auto-fill, amount precision. The external document references are hide-only here (no mandatory flags in this applet). |
+| Account tab | `HIDE_ACCOUNT_BILLING_CONTACT`, `HIDE_ACCOUNT_SHIPPING_CONTACT`, `HIDE_SUPPLIER_CODE`, `HIDE_PHONE_NUMBER`, `HIDE_EMAIL`, `HIDE_SIC_CODE_AND_BUSINESS_ACTIVITY_DESCRIPTION`, `HIDE_E_INVOICE_TAB`, `DEFAULT_CURRENCY` | Supplier picker and inline supplier edit. |
+| Line fields | `HIDE_QTY_BASE`, `HIDE_QTY_UOM`, `HIDE_UOM_TO_BASE_RATIO`, `HIDE_UNIT_PRICE_STD_*`, `HIDE_UNIT_PRICE_NET_*`, `HIDE_UNIT_PRICE_TXN`, `HIDE_UNIT_PRICE_TXN_UOM_INCL_TAX`, `HIDE_UNIT_DISCOUNT`, `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX`, `HIDE_MULTI_DISCOUNT`, `HIDE_AMOUNT_STD_EXCL_TAX`, `HIDE_DISCOUNT_AMOUNT_EXCL_TAX`, `HIDE_AMOUNT_NET_EXCL_TAX`, `HIDE_AMOUNT_TXN`, `HIDE_LAST_PURCHASE_PRICE`, `HIDE_TAX_CONFIG_SELECTION`, `HIDE_WHT_CONFIG_SELECTION`, `HIDE_LINE_ITEMS_GL_CODE`, `HIDE_COSTING_DETAILS`, `HIDE_PRICING_DETAILS`, `HIDE_DELIVERY_DETAILS`, `HIDE_DELIVERY_INSTRUCTION`, `HIDE_ISSUE_LINK`, `HIDE_DOC_LINK`, `HIDE_BATCH_NUMBER`, `HIDE_BIN_NUMBER`, `HIDE_SERIAL_NUMBER`, `HIDE_DEPARTMENT`, `ENABLE_EDITING_UNIT_PRICE_STD`, `DISABLE_EDITING_AMOUNT_TXN`, `ENABLE_ITEM_NAME_MAX_LIMIT` + `ITEM_NAME_MAX_LIMIT`, `DISABLE_ITEM_LISTING` | Which price, quantity, tax and sub-panel controls appear on a line; editable standard price; locked transaction amount; item-name length cap; no auto-load of the item picker. |
+| Knock-off | `HIDE_KO_FOR_TAB` | Removes the KO For tab from the create screen. |
+| Department tags | `HIDE_SEGMENT`, `HIDE_DIMENSION`, `HIDE_PROFIT_CENTER`, `HIDE_PROJECT`, `MANDATORY_SEGMENT`, `MANDATORY_DIMENSION`, `MANDATORY_PROFIT_CENTER`, `MANDATORY_PROJECT` | Show or require each accounting dimension. |
+| Tabs | `HIDE_DELIVERY_DETAILS_TAB`, `HIDE_MAIN_PAYMENT_TAB`, `HIDE_DEPARTMENT_HDR_TAB`, `HIDE_SETTLEMENT_TAB`, `HIDE_ARAP_PNS`, `HIDE_ARAP_SETTLEMENT`, `HIDE_ARAP_DOC_OPEN`, `HIDE_ARAP_CONTRA`, `HIDE_ARAP_BAL` | Remove tabs or individual ARAP figures. |
+| Layout | `VERTICAL_ORIENTATION`, `DEFAULT_ORIENTATION`, `EXPAND_DELIVERY_DETAILS` | Tabs versus stacked panels and which panel opens expanded. |
+| Payment | `ENABLE_EDIT_PAYMENT_DATE` | Settlement date may differ from the document date. |
+| e-Invoice | `ENABLE_IMPORT_EXPORT` | Adds the Import/Export sub-tab to the E-Invoice tab. |
 
-### Application Settings tabs {#application-settings-tabs}
+The settings interface in the applet also declares keys that the current code never reads (for example `ENABLE_PRINT_FINAL_GEN_DOC_ONLY`, `LOCK_PURCHASER_TO_CURRENT_USER`, `DISALLOW_LINE_ITEM_EDIT`, `SHOW_ITEM_STOCK_BALANCE`, `MANDATORY_REMARKS_FIELD`, `REQUIRE_VALIDITY_DATE`, `SHOW_BUDGET`); switching them has no effect in this applet.
 
-Open **Settings → Application Settings**. Use the top tabs to configure behaviour by screen area:
+{{< figure src="/images/internal-purchase-credit-note-applet/settings-application-gen-doc-listing.png" alt="Application Settings Gen Doc Listing tab" caption="Application Settings — Gen Doc Listing group." >}}
 
-| Tab | What administrators configure |
-|-----|------------------------------|
-| **Sidebar Menu** | Show or hide **File Import**, **Line Items**, and other sidebar entries. |
-| **Advanced Search Filter** | Hide date filters on listings. |
-| **Gen Doc Listing** | Listing columns, sort order, **FINAL** / **DISCARD** / **VOID** button visibility, vertical vs horizontal layout defaults. |
-| **Main Details** | Required or hidden header fields, external document references, currency and forex display, purchaser autofill. |
-| **E-Invoice** | E-invoice tab and field visibility. |
-| **Account** | **Entity Details**, **Bill To**, **Ship To** sub-tab visibility. |
-| **Line Items** | Line grid columns, pricing, tax, serial/batch, costing toggles. |
-| **KO For** | Knock-off tab on create (GRN / PO / supplier DO). |
-| **Miscellaneous** | Hide **Payment**, **Contra**, **Doc Link**, **Attachment**, **Export**, **Department Hdr**, **Trace Document**, **ARAP** tabs. |
+{{< figure src="/images/internal-purchase-credit-note-applet/settings-application-main-details.png" alt="Application Settings Main Details tab" caption="Application Settings — Main Details group." >}}
 
-{{< figure src="/images/internal-purchase-credit-note-applet/settings-application-gen-doc-listing.png" alt="Application Settings Gen Doc Listing tab" caption="Gen Doc Listing: configure listing columns, sort order, and FINAL / DISCARD / VOID button visibility." >}}
+{{< figure src="/images/internal-purchase-credit-note-applet/change-view-toggle.png" alt="CHANGE VIEW toggle between horizontal tabs and vertical expansion panels" caption="CHANGE VIEW — per-user switch between tabs and expansion panels." >}}
 
-{{< figure src="/images/internal-purchase-credit-note-applet/settings-application-main-details.png" alt="Application Settings Main Details tab" caption="Main Details: set required or hidden header fields and currency display options." >}}
+### Document behaviour settings
 
-### Change View
+| Behaviour | Where it is set | Notes |
+|---|---|---|
+| Posting status on create | Not configurable — new documents are DRAFT. | `DEFAULT_POSTING_STATUS` only filters the listing. |
+| Transaction date on FINAL | The FINAL request's `date_txn_logic` (`USE_FINAL` / `USE_CREATED` / `USE_UPDATED`) applies when the header's *use transaction date* flag is off. | Backend rule. |
+| Printable formats | *Settings → Printable Format Settings* — Format Code, Format Name, uploaded template; one marked default becomes `PRINTABLE`. *Branch Settings → Printable Format* overrides per branch. | Needed for Export and `ENABLE_AUTO_POPUP`. |
+| Email templates | Not available — this applet has no Email Template settings page or SEND EMAIL action. | |
+| Approval workflow | Not configurable in this applet. | |
+| e-Invoice submission | E-Invoice → Submission tab; **Skip E-Invoice** switch on the document; `skip_einvoice` on branch or supplier. | Skip switch added mid-2026. |
+| Webhooks | *Settings → Webhook* (shared). | |
 
-On many settings and document screens, **CHANGE VIEW** (top right) toggles between **horizontal tabs** and **vertical expansion panels**. Same fields and data—only layout changes. Train users on whichever mode your tenant sets as default under **Gen Doc Listing**.
+{{< figure src="/images/internal-purchase-credit-note-applet/settings-printable-format.png" alt="Printable Format Settings for purchase credit note layout" caption="Settings → Printable Format Settings." >}}
 
-{{< figure src="/images/internal-purchase-credit-note-applet/change-view-toggle.png" alt="CHANGE VIEW toggle between horizontal tabs and vertical expansion panels" caption="CHANGE VIEW: switch between horizontal tabs and vertical expansion panels without changing data." >}}
+### Branch settings
 
-### Server-side permissions
+| Sub-tab | What it controls |
+|---|---|
+| **Branch Details** | Read-only Branch Name, Branch Code, Company; **Sales Agent** (default purchaser); **Rounding Five Cent** with rounding item; **Group Discount Item**. |
+| **Default Settlement Method** | Settlement method pre-selected on the Payment tab. |
+| **Item Category Filter** | Item categories the line picker offers at this branch. |
+| **Menu List** | Sidebar menus shown to users at this branch. |
+| **Pricing Scheme** | Pricing schemes used to derive line prices at this branch. |
+| **Printable Format** | Branch default printable format. |
 
-| Area | What it is for |
-|------|----------------|
-| **Permission Wizard** | Map roles to applet functions step by step. |
-| **Permission Set** | Reusable permission packages. |
-| **User Permission** | Assign permissions to individual users. |
-| **Role Permission** | Assign permissions by role. |
+### Feature visibility / permissions
 
-Video walkthrough for permission setup:
+Server-side: `INTERNAL_PURCHASE_CREDIT_NOTE` create / read / update / delete with a target, assigned through *Permission Wizard* or *Permission Set*.
 
 {{< youtube iitlqsVyH5g >}}
 
-### Other settings areas
+Client-side permissions defined for this applet in the platform registry:
 
-| Area | What it is for |
-|------|----------------|
-| **Client-side permission listing** | Fine control over buttons such as **FINAL**, **SAVE**, **DISCARD**, **VOID**. |
-| **Webhook** | Events to other systems when data changes. |
-| **Feature visibility** | Which menus and features appear. |
-| **Role pricing scheme link** | Links roles to pricing where used. |
-| **Release notes** | What changed in the applet. |
-| **Applet log / Audit Trail** | Operational log for support and audit. |
+| Permission code | Effect |
+|---|---|
+| `SHOW_DOC_NO_TENANT`, `SHOW_DOC_NO_COMPANY`, `SHOW_DOC_NO_BRANCH` | Show the three document numbers. |
+| `SHOW_TRANSACTION_DATE` | Show the transaction date. |
+| `SHOW_CLIENT_DOC_TYPE`, `SHOW_CLIENT_DOC_1..5` | Client document type and references. |
+| `IPCN_HIDE_TRACKING_ID_AND_PERMIT_NO` | Hide Tracking ID and Permit No for the holder. |
+| `INTERNAL_PURCHASE_CREDIT_NOTE_DISPLAY_PRICING` | Show pricing details on lines. |
+| `SHOW_QTY_BASE`, `SHOW_QTY_UOM`, `SHOW_UOM_TO_BASE_RATIO` | Quantity columns. |
+| `SHOW_UNIT_PRICE_STD_PRICING_SCHEME`, `SHOW_UNIT_PRICE_STD_INCL_TAX`, `SHOW_UNIT_PRICE_STD_EXCL_TAX`, `SHOW_UNIT_PRICE_STD_UOM_INCL_TAX`, `SHOW_UNIT_PRICE_STD_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_NET_EXCL_TAX`, `SHOW_UNIT_PRICE_NET_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_TXN`, `SHOW_UNIT_PRICE_TXN_UOM_INCL_TAX` | Unit-price columns. |
+| `SHOW_UNIT_DISCOUNT`, `SHOW_UNIT_DISCOUNT_UOM_EXCL_TAX`, `SHOW_DISCOUNT_AMOUNT_EXCL_TAX` | Discount columns. |
+| `SHOW_AMOUNT_STD_EXCL_TAX`, `SHOW_AMOUNT_NET_EXCL_TAX`, `SHOW_AMOUNT_TXN` | Amount columns. |
+| `SHOW_TAX_CONFIG_SELECTION`, `SHOW_WHT_CONFIG_SELECTION` | Tax and WHT selectors. |
+| `SHOW_COSTING_DETAILS` | Costing sub-panel. |
+| `SHOW_DISABLE_EDITING_AMOUNT_TXN_SETTING` | Lets the holder see the *Disable editing amount* switch. |
 
-Configure these according to your organisation’s procurement, finance, and approval policies.
+The code additionally checks `SHOW_GENDOC_FINAL_BUTTON`, `SHOW_GENDOC_DISCARD_BUTTON`, `SHOW_GENDOC_VOID_BUTTON`, `SHOW_CLONE_BUTTON`, `SHOW_FILE_IMPORT_MENU`, `SHOW_LAST_PURCHASE_PRICE` and `SHOW_ARAP_PNS` / `SHOW_ARAP_SETTLEMENT` / `SHOW_ARAP_DOC_OPEN` / `SHOW_ARAP_CONTRA` / `SHOW_ARAP_BAL` — each restores something a `HIDE_…` setting removed. These are not seeded in the registry for this applet; create them under *Client Side Permission* before assigning.
 
----
+### Personalization
 
-## If something is wrong {#if-something-is-wrong}
+*Personalization → Default Selection* stores a per-user default branch and location (within the user's permitted branches) and the single/double column preference (`DEFAULT_TOGGLE_COLUMN`); it overrides the tenant defaults for that user only.
 
-| Problem | What to try |
-|---------|-------------|
-| Cannot create a document | Ask admin to check create permission and **Default Selection** (company/branch). |
-| **FINAL**, **SAVE**, **DISCARD**, or **VOID** missing | Permissions, client-side permission listing, or Application Settings; finance or admin can adjust. |
-| A trained tab disappeared | Application Settings **Miscellaneous** or field settings may hide it—admin review. |
-| **File Import** not in the menu | May be off for your role or hidden under **Sidebar Menu** in Application Settings. |
-| Tabs vs panels | Same data; use **CHANGE VIEW** or admin default in **Gen Doc Listing**. |
-| CSV import rows fail | Open **Checking** tab; match **Delimeter** and mandatory columns to [File Import](#file-import). |
+{{< figure src="/images/internal-purchase-credit-note-applet/personalization-default-selection.png" alt="Personalization Default Selection screen" caption="Personalization → Default Selection." >}}
 
-Still stuck? Note your user name, document number (if any), and what you clicked, then contact your BigLedger administrator or internal help desk.
+## Fields
 
----
+### Main Details
 
-## Frequently asked questions {#frequently-asked-questions}
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Company, Branch, Location | Owning entity, branch and location. | Yes | Location defaults to the branch's `MAIN_LOCATION`. No stock is posted. |
+| Purchaser | Responsible employee. | No | Auto-filled with `ENABLE_EMPLOYEE_LOGIN_AUTO_DETECTION`; branch default from *Sales Agent*. |
+| Doc Short Code, Doc No (Tenant / Company / Branch) | Document type and running numbers. | System | Assigned on save; shown per `SHOW_DOC_NO_*`. `SHOW_CUSTOM_DOC_NO` adds a custom number. |
+| Transaction Date | Accounting date. | Yes | Open fiscal period at FINAL. |
+| Credit Terms | Supplier terms in days. | No | |
+| Reference, Remarks | Free text. | No | Duplicate-reference warning with `ENABLE_DUPLICATE_REFERENCE_CHECK`. |
+| Permit No, Tracking ID | References. | No | Hidden by settings or `IPCN_HIDE_TRACKING_ID_AND_PERMIT_NO`. |
+| Currency, Base Currency, Currency Rate, Forex Source | Document currency and rate. | Currency yes | Currency copied from the supplier; rate fetched from the forex source on selection and locked by `CANNOT_EDIT_CURRENCY_RATE`; a live/custom-rate warning is shown; SAVE is blocked when a foreign-currency rate is 0. |
+| Client Doc Type, Client Doc 1–5 | Supplier's document references. | No | Per `SHOW_CLIENT_DOC_*`. |
+| External Quotation / Order / Delivery Order / Invoice / Others (+ dates) | Cross-references. | No | Hide-only via `HIDE_EXTERNAL_*`. |
+| Posting Status, Status | DRAFT / FINAL / VOID / DISCARDED; ACTIVE. | System | |
 
-What is the difference between a purchase credit note and a supplier invoice?  
-An invoice from the supplier normally increases what you owe. A purchase credit note reduces that balance or corrects an earlier posting—see [Purpose and overview](#what-is-a-purchase-credit-note).
+### Account
 
-When should I use a credit note instead of a debit note?  
-Use a credit note when the outcome is “we pay less” or “take this off our account.” Use a debit note when policy says you must charge the supplier more. See [Choosing other purchase documents](#when-to-use-which-purchase-document).
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Entity (Supplier) | Supplier whose account is credited. | Yes at FINAL | Must be flagged `is_supplier`; AR/AP type selects the creditor GL. Entity `skip_einvoice` bypasses submission. |
+| Entity name, type, status, ID number, identity type, email, phone, currency | Supplier master data. | No | Editable inline; `HIDE_SUPPLIER_CODE`, `HIDE_PHONE_NUMBER`, `HIDE_EMAIL` hide individual fields. |
+| Bill To / Ship To | Name, email, phone, address, country, state, city, postcode. | No | |
 
-How do I link a credit note to an existing purchase invoice?  
-On create, **KO For** pulls from **Purchase GRN**, **Purchase Order**, or **Supplier Delivery Order**, not directly from a purchase invoice screen—see [KO For tab](#ko-for-tab-create). For **invoice**-level linking or settlement, use **Doc Link** or **ARAP** when visible, or follow [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/).
+### Lines
 
-File import failed—what should I check first?  
-Open the import record and read the **Checking** tab; fix **Delimeter** and column layout to match **Sample Format**. See [Checking tab](#checking-tab).
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Item | Item or GL-code item. | Yes | GL-code items skip the numeric validators. |
+| Quantity | Units. | Yes | Minimum 1; quantity signum 0 — no stock movement. |
+| UOM, UOM ratio | Unit of measure. | No | |
+| Unit price (std / txn / net, incl. and excl. tax) | Pricing. | Net and transaction amounts required for non-GL items | Minimum 0; standard price editable only with `ENABLE_EDITING_UNIT_PRICE_STD`; transaction amount locked by `DISABLE_EDITING_AMOUNT_TXN`. |
+| Unit discount, discount amount, multi-discount | Line discounts. | No | |
+| Tax code, %, amount; WHT code, %, amount | Taxes. | No | Percentages ≥ 0; tax posts to `INPUT_TAX`. |
+| Branch (line) | Journal-line branch. | Yes | Defaults to header. |
+| Segment, Dimension, Profit Centre, Project | Accounting tags. | Per `MANDATORY_…` | Fall back to header values. |
+| GL code (line) | Overrides the purchase GL code. | No | |
+| Serial, batch, bin, tracking ID | Stock references. | No | Quantity consistency validated at FINAL. |
+| e-Invoice classification, tax type, UOM, tariff code, country of origin | e-Invoice line data. | For e-Invoice | |
+| Remarks | Line text. | No | Journal-line description. |
 
-What is the Line Items menu versus the Line Items tab or Lines tab?  
-The **Line Items** menu searches across documents. On **Create Purchase Credit Note** the tab is **Line Items**; on an existing document the tab is **Lines**—same line list, different screen.
+### Payment, Department Hdr, Contra
 
-What does Self Billed mean on the list?  
-The list column **Self Billed ?** reflects the document/supplier self-billed flag used for e-invoice. Supplier-side setup is described with purchase invoice and e-invoice training.
+| Tab | Fields | Notes |
+|---|---|---|
+| Payment | Settlement method, amount, date, remarks. | Date editable only with `ENABLE_EDIT_PAYMENT_DATE`. |
+| Department Hdr | Segment, Dimension, Profit Centre, Project. | Header defaults for every journal line. |
+| Contra | Target document, contra amount, date. | Offsets against the supplier's open documents of the opposite sign. |
 
-What is Personalization versus Default Selection in Settings?  
-**Personalization** sets **your** default branch/location and layout. **Settings → Default Selection** sets **company-wide** defaults for all users (admin only).
+## Lifecycle and posting
 
----
+| Status | Meaning | Allowed next |
+|---|---|---|
+| **DRAFT** | Editable; no journal, no ARAP. | FINAL, DISCARDED |
+| **FINAL** | Posted; header locked. | VOID |
+| **VOID** | Reversed; `void_reason` stored. | none |
+| **DISCARDED** | Abandoned draft. | none |
 
-## Related documentation {#related-documentation}
+**On FINAL** the backend refuses an already-FINAL document, validates the forex rate, serial / batch / bin quantities and the fiscal period (`FISCAL_PERIOD_LOCKED`), creates a base-currency **shadow** document for foreign-currency notes, fills ARAP (`arap_pns_amount = −amount` per `PNS` line — the payable side), posts the journal and queues the generic-document, message-template and (unless skipped) e-Invoice processors.
 
-- [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/) — invoice, knock-off, ARAP, file import templates, self-billed context.
-- [My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) — submission status and operational follow-up.
-- [Purchase Order (Internal) Applet](/applets/purchase-workflow/internal-purchase-order-applet/)
-- [Purchase GRN Stock In (Internal) Applet](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/)
-- [Purchase Debit Note (Internal) Applet](/applets/purchase-workflow/internal-purchase-debit-note-applet/)
-- [Purchase Return (Internal) Applet](/applets/purchase-workflow/internal-purchase-return-applet/)
-- [Purchase Refund Note (Internal) Applet](/applets/purchase-workflow/internal-purchase-refund-note-applet/)
-- [Supplier Delivery Order Applet](/applets/purchase-workflow/supplier-delivery-order-applet/)
+Journal per line (amount signum **−1**, `PURCHASE` handler):
 
----
+| Account | Dr | Cr | Source of GL code |
+|---|---|---|---|
+| Purchase / expense (`PURCHASE`) | Line net amount | | Header GL code → item-company `PURCHASE` link → company default `PURCHASE`. |
+| Input tax (`INPUT_TAX`) | Line tax amount | | Company default `INPUT_TAX`. |
+| Creditor (`CREDITOR` or `CREDITOR_NON_TRADE`) | | Net of all lines | Company default for the supplier's AR/AP type — mandatory. |
+| Settlement method (cashbook GL) | Payment amount | | Cashbook of the settlement item (Payment tab only). |
 
-## Glossary {#glossary}
+Stock: none (quantity signum 0).
 
-| Term | Meaning |
-|------|---------|
-| ARAP | Accounts receivable/payable area on the document for settlement when enabled. |
-| Contra | Contra entries when the tab is visible—your finance team defines use. |
-| Delimeter | On-screen label for the CSV field separator on file import (match your file; the usual English spelling is “delimiter”). |
-| DISCARD | Removes a draft credit note when shown (draft or no posting status yet), subject to lock and settings. |
-| Doc Link | Tab for linking related documents when visible. |
-| FINAL | Header action to post/finalize the document when permitted. |
-| KO / knock-off | Matching this credit to other purchase documents. **KO For** on create imports lines from **Purchase GRN**, **Purchase Order**, or **Supplier Delivery Order**. |
-| Self-billed | E-invoice mode for self-billed suppliers; changes which e-invoice panels apply. |
-| VOID | Cancels a posted (**FINAL**) document when shown, subject to lock and settings. |
+**On VOID** the void processor posts the reverse journal (shadow included), removes the document from the e-Invoice queue and from historical aging, and stores the reason. A FINAL document that other documents link *from* is not convertible to VOID; void the downstream document first.
+
+## Related applets
+
+- [Purchase Debit Note (Internal)](/applets/purchase-workflow/internal-purchase-debit-note-applet/) — the opposite-sign note (+1, Dr Creditor); use it to reduce a supplier balance.
+- [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) — same posting side; link the two on Doc Link.
+- [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) and [Purchase Refund Note (Internal)](/applets/purchase-workflow/internal-purchase-refund-note-applet/) — the stock-moving and cash-refund adjustments.
+- [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/), [Supplier Delivery Order](/applets/purchase-workflow/supplier-delivery-order-applet/) — KO For sources.
+- [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) — settles or contras the balance.
+- [Sales Credit Note (Internal)](/applets/sales-workflow/internal-sales-credit-note-applet/) — intercompany source.
+- [Purchase Credit Note Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-supplier-access-applet/) — supplier-facing counterpart.
+- [Creditor Report](/applets/finance/creditor-report-applet/) — balances.
+- [Chart of Account](/applets/master-data/chart-of-account-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/), [Supplier](/applets/master-data/supplier-applet-1/), [Organisation](/applets/master-data/organisation-applet/) — master data.
+- [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) — e-Invoice queue.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| FINAL fails with `MISSING_DEFAULT_GL_CODE: CREDITOR` (or `CREDITOR_NON_TRADE`) | No company default GL-code link for the supplier's AR/AP type. | Add the link in Chart of Account, then FINAL again. |
+| FINAL fails with `MISSING_CASHBOOK` / `MISSING_GL_CODE: STL_MTHD [code]` | A Payment line uses a settlement item with no cashbook or GL. | Map the settlement item, or remove the line. |
+| *The selected date falls within a locked fiscal period* | Date in a locked period. | Change the date or reopen the period. |
+| SAVE blocked on a foreign-currency document | Currency rate is 0. | Refresh the rate from the forex source or key a rate; the header shows whether a live or custom rate is in use. |
+| Currency changed after picking the supplier but the rate did not | Older builds required a manual refresh. | Update the applet (auto-fetch on supplier selection added 2026) or click the refresh icon. |
+| Line total shows a negative amount | The listing and grids display amounts multiplied by the −1 signum. | Display-only; a 2026 fix removed the sign from the Lines total. |
+| Supplier balance went **up** after FINAL | Expected — amount signum −1 (Cr Creditor). | For a reduction, use a Purchase Debit Note (Internal) or a Purchase Return. |
+| FINAL from the edit screen posted stale values | Older builds did not save before FINAL. | Update the applet; on old builds SAVE then FINAL. |
+| No PDF after FINAL with `ENABLE_AUTO_POPUP` on | No default printable format — *No Default Printable Selected*. | Mark a format default in Printable Format Settings. |
+| Listing search cannot find a document by item code or GL code | Fixed in 2026 when the line sub-query was made searchable. | Update the backend; search by header fields meanwhile. |
+| File Import menu missing | `HIDE_FILE_IMPORT_MENU` on and no `SHOW_FILE_IMPORT_MENU` permission. | Turn the setting off or grant the permission. |
+| Export from the import menu was named like a sales invoice | Naming bug in an older build. | Fixed in a 2025 release; rename the file meanwhile. |
+| Import rows rejected on `AMOUNT_TAX_GST` or the tax-exemption columns; whole file rejected for an unknown column | Template changed in 2026; wrong-column check added. | Download the current Sample Format and re-map. |
+| Document submitted to the tax authority although it should not be | No skip flag. | Switch **Skip E-Invoice** on the Submission tab, or set `skip_einvoice` on branch or supplier. |
+| KO For tab missing on create | `HIDE_KO_FOR_TAB` on. | Turn it off in Application Settings. |
+
+## Related documentation
+
+- [Purchasing module](/modules-v2/purchasing/) and its [related applets](/modules-v2/purchasing/related-applets/)
+- [MyInvois setup](/guides/einvoice-guides/myinvois-setup/) and [e-Invoice validation](/guides/einvoice-guides/einvoice-validation/)
+- [Purchase Debit Note (Internal)](/applets/purchase-workflow/internal-purchase-debit-note-applet/) — the companion reference page

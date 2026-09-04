@@ -1,6 +1,50 @@
 ---
-title: "Purchase Debit Note (Internal) Applet"
-description: "Manage incoming intercompany debit adjustments, verify additional charges from internal suppliers, and maintain synchronized payable records across branches."
+title: "Purchase Debit Note (Internal)"
+description: "Reference for the Purchase Debit Note (Internal) applet: the document you raise against a supplier to reduce what you owe them, its screens, every configuration switch, fields, posting rules and known failure modes."
+applet_code: "internal_purchase_debit_note_applet"
+applet_repo: "blg-applet-wavelet-internal-purchase-debit-note-applet"
+modules: [purchasing, financial-accounting, e-invoice]
+related_applets:
+  - internal-purchase-invoice-applet
+  - internal-purchase-credit-note-applet
+  - internal-purchase-order-applet
+  - internal-purchase-grn-applet
+  - internal-purchase-return-applet
+  - internal-payment-voucher-applet
+  - internal-sales-debit-note-applet
+  - creditor-report-applet
+  - purchase-report-applet
+  - chart-of-account-applet
+  - doc-item-maintenance-applet
+  - tax-configuration-applet
+  - supplier-applet-1
+  - organisation-applet
+  - my-e-invoice-admin-applet
+guides:
+  - /guides/einvoice-guides/myinvois-setup/
+  - /guides/einvoice-guides/einvoice-validation/
+sources:
+  - blg-applet-wavelet-internal-purchase-debit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-debit-note-applet/src/app/app.routing.ts
+  - blg-applet-wavelet-internal-purchase-debit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-debit-note-applet/src/app/models/menu-items.ts
+  - blg-applet-wavelet-internal-purchase-debit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-debit-note-applet/src/app/ui-navigation/applet-settings/applet-settings-navigation.config.ts
+  - blg-applet-wavelet-internal-purchase-debit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-debit-note-applet/src/app/models/applet-settings.model.ts
+  - blg-applet-wavelet-internal-purchase-debit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-debit-note-applet/src/app/models/constants/applet-constants.ts
+  - blg-applet-wavelet-internal-purchase-debit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-debit-note-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+  - blg-applet-wavelet-internal-purchase-debit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-debit-note-applet/src/app/components/settings-container/branch-settings/branch/branch.component.html
+  - blg-applet-wavelet-internal-purchase-debit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-debit-note-applet/src/app/components/purchase-debit-note-container/purchase-debit-note-listing/purchase-debit-note-listing.component.ts
+  - blg-applet-wavelet-internal-purchase-debit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-debit-note-applet/src/app/components/purchase-debit-note-container/purchase-debit-note-edit/purchase-debit-note-edit.component.ts
+  - blg-applet-wavelet-internal-purchase-debit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-debit-note-applet/src/app/components/purchase-debit-note-container/purchase-debit-note-create/main-details/main-details.component.ts
+  - blg-applet-wavelet-internal-purchase-debit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-debit-note-applet/src/app/components/purchase-debit-note-container/purchase-debit-note-create/line-item-add/item-details/main-details/main-details.component.ts
+  - blg-applet-wavelet-internal-purchase-debit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-debit-note-applet/src/app/app.component.ts
+  - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalPurchaseDebitNoteDataConsistencyObject.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingService.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/intercompany/IntercompanyProcessingService.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/erp/reports/purchase/PurchaseReportUow.java
+  - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dto/erp/eInvoice/EInvoiceConstants.java
+  - akaun_master.bl_applet_client_side_perm_dfn (applet code internal_purchase_debit_note_applet)
 tags:
 - purchase-management
 - intercompany
@@ -10,683 +54,335 @@ tags:
 weight: 70
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Purchase Debit Note (Internal) Applet** is your branch's gateway for managing incoming intercompany adjustments. While a standard invoice records the initial purchase, a **Purchase Debit Note** is used to accurately record an **increase** in what you owe an internal supplier after the original transaction has been posted.
+The **Purchase Debit Note (Internal)** applet records a debit note that your company raises against a supplier. Finalising one **reduces the amount you owe that supplier**: the engine posts a debit to the supplier's payable account and a credit to the purchase (or the GL code chosen on each line), and the document then sits alongside payment vouchers as something that knocks off outstanding purchase invoices. Accounts-payable clerks open it after a purchase invoice has been posted and the supplier's balance needs to come down — an overcharge, a price correction, a short delivery, a rebate.
 
-A short introduction to the Purchase Debit Note (Internal) Applet:
+A short introduction to the applet:
 
 {{< youtube lsNRnSRHHT8 >}}
 
-
-### TL;DR: The Mirror Relationship
-
-This applet is just the "other side" of a **Sales Debit Note**.
-
-*   **Branch A (Supplier)** forgot to charge you for something (like a delivery fee).
-*   **Branch A** issues an **Sales Debit Note (Internal)** to say: *"I'm charging you extra."*
-*   **You (Branch B)** receive an **Purchase Debit Note (Internal)** to say: *"I owe you extra."*
-
-They are mirror images. One branch issues the charge (Sales), and your branch accepts the liability (Purchase).
-
-### When is this Applet used?
-
-You will find a record in this applet (or create one manually) in the following common business scenarios:
-
-*   **Price Under-billing Corrections**: If a supplier branch accidentally billed you at RM 10.00 per unit instead of the agreed RM 12.00, this applet records the additional RM 2.00 per unit to correct the record.
-*   **Omitted Surcharges**: When tertiary costs—such as urgent freight, specialized handling, or insurance fees—were discovered or calculated *after* the original Purchase Invoice was finalized.
-*   **Internal Service Recognition**: For recording monthly management fees, IT support costs, or shared-service allocations issued by HQ to your branch.
-*   **Audit & Year-End Adjustments**: To reflect valuation corrections requested by auditors to ensure that inter-branch payables and receivables are perfectly balanced before closing the books.
-
-{{< callout type="info" >}}
-**Core Concept**: This applet represents an **Incoming Additional Charge**. When finalized, it increases your branch's **Accounts Payable** and recognizes an additional expense in your Profit & Loss statement. In most cases, these documents arrive **automatically** when the supplier branch finalizes their Sales Debit Note.
-{{< /callout >}}
-
-### Why is this Important in Accounting?
-
-Maintaining a disciplined Purchase Debit Note (Internal) process is critical for several key accounting objectives:
-
-*   **Intercompany Elimination & Consolidation**: For a group of companies to produce accurate consolidated financial statements, intercompany receivables must perfectly offset intercompany payables. This applet ensures that when your supplier branch records an asset, you record an identical liability, preventing month-end "out-of-balance" discrepancies during group consolidation.
-*   **Completeness & Accuracy Assertions**: Financial audits require that all liabilities belonging to a period are recorded (**Completeness**) and stated at the correct value (**Accuracy**). This applet allows you to book corrections even after an original invoice is closed, ensuring your Balance Sheet truthfully reflects your obligations.
-*   **Expense Matching (Accrual Principle)**: Accounting standards require expenses to be recognized in the same period as the related business activity. By using a Debit Note to correct under-billing, you ensure the additional cost hits the Profit & Loss statement in the correct fiscal period, maintaining the integrity of your performance reporting.
-*   **Input Tax Integrity**: When a supplier branch issues an additional charge, it often includes a tax portion (SST/GST/VAT). This applet ensures you accurately capture and claim the **Input Tax** on these adjustments, preventing your branch from overpaying its net tax liability to the government.
-
-### What is the Purchase Debit Note (Internal) Applet? (Explained Simply)
-
-Imagine your company has two branches: **HQ (in Kuala Lumpur)** and **Branch A (in Penang)**.
-
-1. HQ ships laptops to Branch A and originally bills them **RM 5,000**.
-2. Later, HQ discovers they forgot to include a **RM 200 delivery fee**.
-3. HQ creates an Sales Debit Note (Internal) for the extra RM 200 and clicks **FINAL**.
-
-**What happens on Branch A's side?**
-
-The system automatically creates an **Purchase Debit Note (Internal)** worth RM 200 in Branch A's applet. Branch A's finance team can now see:
-- *"We owe HQ an extra RM 200 for delivery charges."*
-- The document is already linked to HQ's original debit note.
-- Branch A's Accounts Payable is updated automatically.
-
-A "Purchase Debit Note" in this context means an **"Incoming Additional Charge"** — your branch is on the receiving end of an upward revision from an internal supplier.
-
-### Relationship to Other Applets
-
-This applet sits at the receiving end of the intercompany debit note workflow:
-- **Sales Debit Note (Internal) Applet (The Origin):** When a supplier branch finalizes a Sales Debit Note targeting your branch, this applet automatically receives the corresponding Purchase Debit Note. They are mirror documents.
-- **Purchase Invoice (Internal) Applet (The Original Transaction):** The debit note typically adjusts a previous Purchase Invoice (Internal). You can trace back to see the original transaction that was under-billed.
-- **General Ledger (Accounting Core):** Once finalized, the applet posts financial entries to the core accounting system — increasing your branch's expense accounts and payable balances.
-- **Approval Workflow Applets:** If the additional charge exceeds certain thresholds, the system uses workflow rules to pause the document and route it to a manager or director for approval before finalization.
-
-## Key Features Overview
-
-### Who Benefits from This Applet?
-
-**Procurement & Operations Teams:**
-- Receive and review additional charges from internal supplier branches
-- Real-time visibility into document statuses (Draft, Final, Void, Discarded)
-- Verify incoming debit notes against original purchase invoices
-- Attach supporting documents and correspondence for audit readiness
-
-**Finance & Accounting Teams:**
-- Maintain accurate Accounts Payable balances with auto-synced intercompany entries
-- Eliminate manual double-entry — the document arrives pre-populated
-- Complete audit trail from auto-creation through finalization
-- Accurate cost-center and profit-center tagging via Department Header
-
-**Management & Branch Directors:**
-- Oversight of all incoming intercompany adjustments
-- Control over spend compliance via approval workflows
-- Consolidated view of all additional charges received from internal suppliers
-- Data-driven analysis of inter-branch cost patterns
-
-### What Problems Does This Solve?
-
-**The Manual Intercompany Receiving Problem:**
-
-Traditional intercompany adjustment workflows require the receiving branch to manually re-enter charges. Common issues include:
-- Forgetting to book the corresponding payable when the supplier branch issues a debit note
-- No traceable link between the supplier's debit note and your branch's payable
-- Out-of-sync books at month-end — the supplier says you owe RM 500, your records show RM 0
-- Missing approval trails for large incoming adjustments
-- Delayed month-end closings due to intercompany reconciliation gaps
-
-**The Purchase Debit Note (Internal) Applet Solution:**
-
-- **Auto-receipt of charges** — When the supplier branch finalizes their Sales Debit Note, your Purchase Debit Note appears automatically
-- **Pre-populated data** — No manual re-entry; all line items, amounts, and references arrive intact
-- **Intercompany sync** — Both branches stay on the same page in real-time
-- **Complete traceability** — Every adjustment links back to the originating supplier branch document
-- **Approval workflows** — Configurable routing ensures the right people review incoming charges
-- **Error elimination** — No more out-of-balance intercompany accounts at month-end
-
-## Key Features Overview
-
-{{< cards >}}
-  {{< card title="Auto-Received Debit Notes" subtitle="Incoming charges arrive pre-populated from internal suppliers" link="#for-procurement--operations-reviewing-incoming-debit-notes" >}}
-
-  {{< card title="Intercompany Sync" subtitle="Mirror documents keep both branches perfectly balanced" link="#intercompany-transaction-flow" >}}
-
-  {{< card title="Approval Workflow" subtitle="Configurable multi-level authorization for incoming charges" link="#for-managers-authorizing-incoming-charges" >}}
-
-  {{< card title="File Import" subtitle="Bulk upload purchase debit note entries" link="#file-imports" >}}
-
-  {{< card title="Document Tabs" subtitle="Main Details, Account, Lines, Payment, and more" link="#document-tabs-overview" >}}
-
-  {{< card title="Audit Trail" subtitle="Full activity log of every document action" link="#audit-trail" >}}
-
-  {{< card title="Export & Print" subtitle="PDF export and configurable print formats" link="#export--print" >}}
-
-  {{< card title="Personalization" subtitle="Save default settings for faster data entry" link="#personalization" >}}
-{{< /cards >}}
-
-{{< figure src="/images/internal-purchase-debit-note-applet/purchase debit note applet-overview-infographic.png" alt="Purchase Debit Note (Internal) Applet Overview: Problems, Solution, and Benefits" caption="Purchase Debit Note (Internal) Overview: Moving from disjointed intercompany adjustments (The Problems) to automated, synchronized, and traceable financial control (The Solution) for Procurement, Finance, and Management (Who Benefits)." >}}
-
-## Key Concepts
-
-### Intercompany Transaction Flow
-
-When the supplier branch finalizes an Sales Debit Note (Internal), the system executes an automated two-sided posting:
-
-```
-Supplier Branch (HQ)                         Your Branch (Branch A)
-─────────────────────                        ───────────────────────────
-Creates & Finalizes Internal                 System AUTO-CREATES Internal
-Sales Debit Note (+RM 500)                   Purchase Debit Note (+RM 500)
-     │                                            │
-     ▼                                            ▼
-Accounts Receivable ▲                        Accounts Payable ▲
-(HQ is owed +RM 500)                        (Branch A owes +RM 500)
-```
-
-{{< callout type="tip" >}}
-**Real-World Example**: HQ realizes they under-billed Branch A for inventory by RM 500. HQ issues an Sales Debit Note (Internal). Your branch (Branch A) automatically receives an Purchase Debit Note (Internal) for RM 500 — your payables increase, HQ's receivables increase, and everything stays in sync without double entry.
-{{< /callout >}}
-
-### Document Lifecycle
-
-Every Purchase Debit Note (Internal) follows a predictable lifecycle:
-
-| Status | What It Means | What Happens Next |
-|--------|---------------|-------------------|
-| **Draft** | Created (manually or auto-generated) but not yet finalized | Edit freely, verify details, add/remove lines. From here you can either FINAL or DISCARD. |
-| **Final** | Locked and posted to the GL | No further edits; payable is officially recorded. The only way out is VOID. |
-| **Void** | Cancelled after finalization | Reversal GL entries are posted; corresponding documents at the supplier branch are also updated. The document stays visible for audit. |
-| **Discarded** | A draft that was abandoned before it was ever finalized | No GL impact. The document is excluded from the default listing and from any reporting that filters on Active records. Use the Advanced Search **Posting Status** filter to bring DISCARDED documents back into view. |
-
-{{< callout type="info" >}}
-**DISCARD vs VOID** — DISCARD applies to drafts only (no GL entries ever existed). VOID applies to finalised documents only (the system posts reversal entries). The two buttons never appear at the same time — the system shows whichever applies to the document's current Posting Status.
-{{< /callout >}}
-
-## Key Menu Functions
-
-When utilizing this applet, users have access to several key functions to manage their daily workflows:
-
-**1. Purchase Debit Note (Main Listing)**
-- The primary workspace. View, create, edit, and manage all purchase debit notes.
-- Filter and search by document number, date, status, supplier branch, or amount.
-- Create new manual debit notes or review auto-generated ones from intercompany sync.
-
-{{< figure src="/images/internal-purchase-debit-note-applet/advanced-search-trigger.png" alt="Listing toolbar with the hamburger icon highlighted - clicking it opens the Advanced Search panel" caption="Advanced Search trigger — click the hamburger icon on the Listing toolbar to expand the filter panel." >}}
-
-{{< figure src="/images/internal-purchase-debit-note-applet/advanced-search-posting-status-filter.png" alt="Advanced Search panel scrolled to the Posting Status multi-select filter showing DRAFT, FINAL, VOID, and DISCARDED options" caption="Advanced Search — Posting Status filter. Tick DISCARDED to surface drafts that are hidden from the default listing view." >}}
-
-- The Advanced Search panel includes a multi-select **Posting Status** filter with the values DRAFT, FINAL, VOID, and DISCARDED — use it to surface DISCARDED drafts that are hidden from the default view.
-- The toolbar above the listing carries the **bulk action** buttons described in the next section.
-
-### Bulk Actions on the Listing
-
-{{< figure src="/images/internal-purchase-debit-note-applet/bulk-actions-toolbar.png" alt="Listing page bulk action toolbar showing the FINAL, DISCARD, VOID, SINGLE/MULTIPLE PRINT, SELF-BILLED, and SEND EMAIL buttons above the document grid" caption="Bulk actions toolbar — appears above the Listing grid. Select one or more rows first, then click any button to apply that action to the eligible rows in your selection." >}}
-
-Select one or more rows on the Listing using the checkbox column, then click any of the buttons in the toolbar above the grid. The system only applies the action to rows where it makes sense — eligible rows are processed, ineligible rows are skipped, and each button is disabled if the selection contains nothing it can act on.
-
-| Button | What It Does | When It's Disabled |
-|--------|-------------|---------------------|
-| **FINAL** | Posts every selected DRAFT document — GL entries are written and Posting Status flips to FINAL. | No row selected, or any selected row is not DRAFT. |
-| **DISCARD** | Abandons every selected DRAFT. Posting Status flips to DISCARDED. No GL impact. A confirmation dialog asks "Are you sure you want to DISCARD selected documents?" | No row selected, or any selected row is not DRAFT. |
-| **VOID** | Reverses every selected FINAL document — reversal GL entries are posted. A confirmation dialog asks "Are you sure you want to VOID selected documents?" | No row selected, or any selected row is not FINAL. |
-| **SINGLE/MULTIPLE PRINT** | Generates printable PDFs for every selected document using the default Printable Format. | The applet setting `PRINTABLE` is off. |
-| **SELF-BILLED** | Marks every selected document as **self-billed** for e-invoicing (sets `einvoice_self_billed = true`). Use this for documents you are issuing on the supplier's behalf under a self-billing arrangement. | No row selected. |
-| **SEND EMAIL** | Mails PDFs of the selected documents to the customer / supplier using the Email Template, Recipient Email, and CC List values from the fields on the same row — see the next subsection. | The applet setting `HIDE_SEND_EMAIL_BUTTON` is on. When that setting is on, the button **and** the three accompanying fields are all hidden. |
-
+It is one of the four purchase-side adjustment documents in the platform (`INTERNAL_PURCHASE_DEBIT_NOTE`, short code `PURDBN`). It carries amounts but never moves stock. It can be keyed manually, pulled from an existing purchase invoice through the **Search Document** tab, uploaded from a CSV through **File Import**, or created automatically by intercompany processing when a related company finalises a **Sales Debit Note (Internal)** against your company.
 
 {{< callout type="warning" >}}
-**Bulk FINAL is irreversible** — once posted, the only way back is to VOID each document individually. Verify your selection before clicking FINAL.
+**Direction of the posting.** In BigLedger a *Purchase* Debit Note always posts **Dr Creditor / Cr Purchase** — it lowers the supplier's balance. If you need to record an *extra* charge from a supplier (their debit note to you, which raises what you owe), that is the [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/) in this platform's naming, or a further purchase invoice. Check the Dr/Cr table under *Lifecycle and posting* before you choose.
 {{< /callout >}}
 
-#### SEND EMAIL form
+## Where it fits
 
-{{< figure src="/images/internal-purchase-debit-note-applet/send-email-dropdown.png" alt="SEND EMAIL inline row showing the SEND EMAIL button, Email Template dropdown opened with a searchable template list, Recipient Email dropdown, and CC List text field - all on a single toolbar row" caption="SEND EMAIL row — all four controls sit on one line: SEND EMAIL button, Email Template (dropdown shown opened), Recipient Email (dropdown), and CC List (text field)." >}}
+| Position | Document / applet | Why |
+|---|---|---|
+| Module | [Purchasing](/modules-v2/purchasing/), [Financial Accounting](/modules-v2/financial-accounting/), [E-Invoice](/modules-v2/e-invoice/) | Purchase-side adjustment that posts to the General Ledger and is an e-Invoice purchase document type. |
+| Upstream | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) | The invoice whose value is being reduced. The **Search Document → Purchase Invoice** tab copies its lines into the debit note and links the two. |
+| Upstream (knock-off) | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) | The create screen's **Import Knock-Off** panel lets a debit-note line knock off an open purchase-order or GRN line. |
+| Upstream (intercompany) | [Sales Debit Note (Internal)](/applets/sales-workflow/internal-sales-debit-note-applet/) | When intercompany processing is set up between two companies in the tenant, finalising the seller's Sales Debit Note queues a Purchase Debit Note in the buyer's company (amount signum +1, quantity signum 0). |
+| Downstream | [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/), the **Contra** tab | The debit note's open balance is consumed by contra against purchase invoices. The [Purchase Report](/applets/purchase-workflow/purchase-report-applet/) treats `INTERNAL_PURCHASE_DEBIT_NOTE` and `INTERNAL_PAYMENT_VOUCHER` as the two settlement document types against purchase invoices. |
+| Downstream | [Creditor Report](/applets/finance/creditor-report-applet/) | Shows the debit note's ARAP balance against the supplier. |
+| Downstream | [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) | `INTERNAL_PURCHASE_DEBIT_NOTE` is in the platform's e-Invoice purchase-document set; the E-Invoice tab submits, cancels and tracks it. |
+| Sibling | [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/), [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) | The other purchase adjustment documents. Purchase Return also has amount signum +1 but moves stock; Purchase Credit Note has amount signum −1 (same side as an invoice). |
 
-The **SEND EMAIL** button sits on the same toolbar row as three fields that feed it: **Email Template**, **Recipient Email**, and **CC List**. All four controls are visible from the start (they appear and disappear together based on the `HIDE_SEND_EMAIL_BUTTON` setting). Fill the three fields, select your document rows, then click **SEND EMAIL** to send.
+## Screens and menus
 
-| Field | Purpose | How to fill it in |
-|-------|---------|-------------------|
-| **Email Template** | Picks the template that supplies the email subject and body. The template's code shows in the dropdown. | Type into the search field ("Search name..") to filter, then pick a template. The chosen template's title becomes the email subject and its description becomes the body. |
-| **Recipient Email** | Decides whose email address(es) on each document get the message. | Choose one of: **Billing and Shipping Email** (sends to both), **Billing Email Only**, or **Shipping Email Only**. The system reads the address from each document's Account → Billing/Shipping tab. |
-| **CC List** | Optional CC recipients added to every email. | Type comma-separated addresses, e.g. `a@a.com, b@b.com`. |
+The applet's sidebar has three working menus plus **Settings** and **Personalization**:
 
-After submit, the system groups selected documents by recipient email, attaches each group's PDFs, and sends the emails. Documents missing the address required by your Recipient Email choice are skipped — a notice tells you which ones.
+| Menu | Route | What it is |
+|---|---|---|
+| **Purchase Debit Note** | `internal-purchase-debit-note` | The listing, with create / edit / bulk actions. |
+| **Line Items** | `line-items` | A cross-document grid of every debit-note line, for analysis and line-level edits. |
+| **File Import** | `debit-note-file-listing` | CSV upload that creates many debit notes at once. Hidden when the `HIDE_FILE_IMPORT_MENU` setting is on and the user lacks the `SHOW_FILE_IMPORT_MENU` client-side permission. |
+| **Settings** | `settings/…` | Application Settings, Default Selection, Printable Format Settings, Branch Settings, Email Template, Webhook, Feature Visibility, Client Side Permission, Role Pricing Scheme Link, Permission Wizard / Permission Set / User / Team / Role Permission, Release Notes, Applet Log. |
+| **Personalization** | `personalization/personal-default-selection` | Per-user Default Selection. |
 
-The list in the **Email Template** dropdown is **specific to this applet** — templates you see here will not appear in any other applet's SEND EMAIL dropdown, and vice versa. To create, edit, or activate a template, go to **Settings → Email Template** in this applet's sidebar. See [Email Template settings](#email-template-settings--email-template) for the full step-by-step walkthrough, screenshot, and gotchas.
+### Listing
 
-**2. Line Items**
-- A dedicated cross-document view of all individual line items across every purchase debit note.
-- Useful for analysis: "How much have we been charged for delivery fees across all debit notes this quarter?"
-- Powerful filtering and export capabilities.
+The listing shows documents filtered by the applet's default posting status and date window (see *Applet settings*). Open the hamburger icon for **Advanced Search**; its **Posting Status** multi-select is the only way to see DISCARDED drafts.
 
-**3. File Import**
-- Upload a CSV file to bulk-create many Purchase Debit Notes in one shot — the fastest way to handle month-end batches. See the [File Imports](#file-imports) section below for the full walkthrough, CSV column reference, Checking tab, and validation rules.
+{{< figure src="/images/internal-purchase-debit-note-applet/advanced-search-trigger.png" alt="Listing toolbar with the hamburger icon highlighted - clicking it opens the Advanced Search panel" caption="Advanced Search trigger on the listing toolbar." >}}
 
-**4. Applet Settings**
-- Configure branch mappings, default accounts, workflow approval chains, printable formats, and field visibility rules.
+{{< figure src="/images/internal-purchase-debit-note-applet/advanced-search-posting-status-filter.png" alt="Advanced Search panel scrolled to the Posting Status multi-select filter showing DRAFT, FINAL, VOID, and DISCARDED options" caption="Advanced Search — Posting Status filter. Tick DISCARDED to surface abandoned drafts." >}}
 
-**5. Personal Default Settings**
-- Save favorite defaults (like preferred branch or currency) to speed up continuous data entry.
+### Bulk actions on the listing
 
-## Quick Start Guide
+{{< figure src="/images/internal-purchase-debit-note-applet/bulk-actions-toolbar.png" alt="Listing page bulk action toolbar showing the FINAL, DISCARD, VOID, SINGLE/MULTIPLE PRINT, SELF-BILLED, and SEND EMAIL buttons above the document grid" caption="Bulk actions toolbar above the listing grid. Select rows first." >}}
 
-Get up and running quickly with these essential workflows.
+| Button | What it does | When it is disabled |
+|---|---|---|
+| **FINAL** | Posts every selected DRAFT (journal, ARAP, queues). | No row selected, or a selected row is not DRAFT. |
+| **DISCARD** | Sets every selected DRAFT to DISCARDED. No GL impact. Confirmation dialog. | No row selected, or a selected row is not DRAFT. |
+| **VOID** | Reverses every selected FINAL document. Confirmation dialog. | No row selected, or a selected row is not FINAL. |
+| **SINGLE/MULTIPLE PRINT** | Generates PDFs of the selection with the default printable format. | The applet setting `PRINTABLE` (default printable format) is not set. |
+| **SELF-BILLED** | Sets `einvoice_self_billed = true` on the selection so the e-Invoice is submitted as a self-billed document. | No row selected. |
+| **SEND EMAIL** | Emails PDFs of the selection using the Email Template, Recipient Email and CC List fields on the same row. | The applet setting `HIDE_SEND_EMAIL_BUTTON` is on (hides the button and its three fields). |
 
-### For Procurement & Operations: Reviewing Incoming Debit Notes
+{{< figure src="/images/internal-purchase-debit-note-applet/send-email-dropdown.png" alt="SEND EMAIL inline row showing the SEND EMAIL button, Email Template dropdown opened with a searchable template list, Recipient Email dropdown, and CC List text field - all on a single toolbar row" caption="SEND EMAIL row — Email Template, Recipient Email (Billing and Shipping / Billing only / Shipping only) and CC List." >}}
 
-**Goal:** Review an auto-generated purchase debit note and verify all details.
+Documents are grouped by recipient address; a document with no address for the chosen recipient type is skipped and reported. The template list is **applet-local** — it comes from this applet's *Settings → Email Template*.
 
-1. **Navigate**: Go to **Purchase Debit Note** from the sidebar
-2. **Find the Document**: Look for new entries in the listing (auto-generated from supplier branch activity)
-3. **Open and Verify**: Click on the document to open the edit screen
-   - **Main Details**: Confirm the supplier branch, document date, currency, and description
-   - **Account**: Verify the supplier entity and billing/shipping addresses
-   - **Lines**: Check that item codes, quantities, and amounts match your expectations
-   - **Attachments**: Review any supporting documentation uploaded by the supplier branch
-4. **Cross-Reference**: Check the **Trace Document** tab to see the originating Sales Debit Note (Internal)
-5. **Finalize or Escalate**:
-   - If everything looks correct → Click **FINAL** (or route to manager for approval)
-   - If discrepancies exist → Contact the supplier branch for clarification before finalizing
+### Create / edit form
 
-**What happens after finalization?**
+The form is a set of tabs (or stacked panels when `VERTICAL_ORIENTATION` is on). Their order is set in *Settings → Default Selection → Details Tab Ordering*.
 
-```
-Draft → Click FINAL → GL entries posted
-                     → Accounts Payable updated
-                     → Intercompany ledgers balanced
-```
-
-You can also **SAVE** changes before finalizing, or **DISCARD** the document if it was created in error.
-
----
-
-### For Managers: Authorizing Incoming Charges
-
-**Goal:** Review and authorize purchase debit notes before finalization.
-
-1. **Open the Document**: Navigate to the debit note listing and select the document to review
-2. **Verify Details**:
-   - **Main Details**: Confirm the supplier branch and document description match known business activity
-   - **Account**: Check that the correct billing entity is selected
-   - **Lines**: Verify item codes, quantities, and amounts are accurate and justified
-   - **Attachments**: Review supporting documentation (emails, purchase orders, delivery receipts)
-3. **Check Trace Document** *(if visible)*: Confirm the debit note links to the correct upstream Sales Debit Note (Internal)
-4. **Decide**:
-   - **Approve / Finalize**: Click **FINAL** → System posts GL entries and updates intercompany balances
-   - **Return for Correction**: Inform the team of any discrepancies before finalization
-   - **Void** *(if already finalized in error)*: Click **VOID** → Reversal entries are posted
-
----
-
-### For Admins: Initial System Setup
-
-**Goal:** Configure the applet so your teams can manage incoming internal debit notes.
-
-**Step 1: Configure Branch Settings** (`Settings > Branch Settings`)
-- Map internal suppliers for each branch
-- Configure branch-specific default accounts
-- **Permissions Wizard**: Control user access and permissions within the applet
-
-**Step 2: Configure Default Settings** (`Settings > Default Selection`)
-- Set default currency for new documents
-- Configure running number format and sequence
-- Set default document date behavior
-
-**Step 3: Configure Field Configuration** (`Settings > Application Settings`)
-- Control which fields are mandatory, optional, or hidden during document creation
-- Configure field-level validation rules
-
-**Step 4: Configure Printable Format** (`Settings > Printable Format Settings`)
-- Customize the PDF export layout, company logo, header/footer text, and included fields
-
-**Step 5: Test the Full Flow**
-- Have the supplier branch create and finalize an Sales Debit Note (Internal) targeting your branch
-- Verify the corresponding Purchase Debit Note (Internal) appears automatically in your applet
-- Finalize it and verify GL postings are correct on both sides
-
----
-
-{{< callout type="tip" >}}
-**New to the system?** Start with the basics:
-1. Operations staff: Open an existing Purchase Debit Note (Internal) and explore each tab
-2. Managers: Practice reviewing and finalizing a test document
-3. Admins: Review **Configuration & Settings** below for detailed setup guides
-{{< /callout >}}
-
----
-
-### Document Tabs Overview
-
-When creating or editing a purchase debit note, the screen is organized into tabs (or expandable panels, depending on your display settings). Here is a breakdown of what you do in each tab:
-
-| Tab | What It Is For (In Simple Terms) |
-|-----|--------------------------------|
-| **Main Details** | The header. You see the supplier branch, document date, currency, debit terms, and description. This is where you record the basic "who, what, when" of the incoming charge. |
-| **Account** | Where the bill comes from. It has sub-tabs for Entity Details, Billing Address, Shipping Address, and the Intercompany Sync status. |
-| **Lines** | The core of the debit note. This lists the "stuff" you are being charged for (e.g., "Delivery Fee", Qty: 1, Price: RM 200). It contains its own detailed sub-menus for things like Costing Details and Serial Numbers. |
-| **Payment** | How it's being paid. For internal transactions, this is often left blank as it's settled via contra, but if a specific intercompany payment method is used, it's recorded here. |
-| **Department Hdr** | The accounting tags. Specify which internal department or cost center should bear this expense (e.g., tagging the "IT Support" cost center for a software license charge). |
-| **ARAP** | A dashboard showing the current Accounts Receivable / Accounts Payable balances between the branches. A snapshot of "Who owes Who" for this specific document. |
-| **Contra** | Offsetting balances. If you owe the supplier branch RM 1,000 from invoices and they owe you RM 500 from another transaction, you can "Contra" (cancel out) debts so no actual cash needs to transfer. |
-| **Trace Document** | A visual map showing how this document is connected to others — the originating Sales Debit Note (Internal), the GL postings, and any downstream documents. |
-| **Doc Link** | Link this purchase debit note to related documents such as delivery orders, job sheets, or purchase orders for complete traceability. |
-| **E-Invoice** | For tax compliance (if enabled for your region). Tracks the status of submitting the document to the government tax authority (e.g., LHDN in Malaysia). |
-| **Attachments** | Upload supporting proof (PDFs, images) like the original purchase order, email correspondence, or delivery receipts. |
-| **Export** | Generate a printable PDF of the Purchase Debit Note. |
-
-#### Deep Dive: Main Details Tab
-{{< figure src="/images/internal-purchase-debit-note-applet/main-details.png" alt="Purchase Debit Note Main Details" caption="Main Details: Capture the document's legal and financial header data." >}}
-This tab captures the header-level data that defines the transaction's legal and financial identity. It ensures **Internal Control & Auditability** across your entire organization.
-
-*   **Tenant, Company, & Branch Document IDs**: These are the three levels of system-generated numbers displayed at the top. In a decentralized ERP, they provide **Internal Control**. The Tenant ID offers a globally unique reference for HQ audits, while the Branch ID maintains local sequence integrity for tax compliance, preventing "missing document" gaps in your records.
-*   **Branch & Location**: The specific physical and legal units where the transaction is recorded. This defines the **Accounting Unit**, ensuring the liability is recognized in the correct sub-ledger and that the expense hits the specific branch's Profit & Loss statement rather than being misallocated.
-*   **Transaction Date**: Determines the **Reporting Period**. In accrual accounting, this date dictates which fiscal month or quarter the document will impact, ensuring expenses are matched to the period in which they occurred.
-*   **Tracking ID**: A unique identifier linking the financial entry to its physical source (e.g., a shipment number). This ensures the **"Occurrence" assertion** during an audit—proving that the charge is tied to a verifiable business event.
-*   **Client Documents (1-5)**: Reference fields for the supplier's original document numbers. This is your primary tool for **Intercompany Reconciliation**. Recording the supplier's original Sales Debit Note or Invoice number here enables the system to "match" records between branches, which is critical for month-end consolidation.
-*   **Currency, Forex Source, & Rate**: Fields managing exchange rate governance. By enforcing a standardized **Forex Source**, the system ensures both branches use the same rate, eliminating "unrealized exchange gain/loss" discrepancies that often plague group consolidation.
-*   **Debit Terms & Due Date**: The credit period (e.g., Net 30) and the automatically calculated payment date. These drive **Liquidity Management** by feeding directly into your **Accounts Payable Aging** reports, allowing you to forecast cash outflows accurately.
-
-#### Deep Dive: Account Tab
-{{< figure src="/images/internal-purchase-debit-note-applet/account-tab.png" alt="Purchase Debit Note Account Tab" caption="Account Tab: Identify the internal supplier and counterparty branch." >}}
-**Concept: Identifying your Internal Supplier.**
-In this tab, you are selecting the **"Counterparty"**—the specific branch that is issuing the charge to you. Precise selection here ensures that your branch’s liability perfectly offsets their receivable during consolidation.
-
-*   **Entity ID & Entity Branch**: The core identifiers for the internal supplier. This is critical for **Intercompany Eliminations**. Under standard consolidation rules, revenues and expenses between branches must net to zero. Selecting the exact issuing branch ensures your branch's **Accounts Payable** perfectly matches their **Accounts Receivable**, preventing imbalances in the consolidated financial statements.
-
-{{< figure src="/images/internal-purchase-debit-note-applet/bill-to-address.png" alt="Bill To Address" caption="Bill To Address: Legal billing information for tax compliance." >}}
-*   **Bill To Address**: Captures the legal billing name and statutory **Tax ID**. This defines the **Legal Debtor**, ensuring the debt is attributed to the correct legal entity and that tax records are compliant with regional regulations.
-
-{{< figure src="/images/internal-purchase-debit-note-applet/ship-to-address.png" alt="Ship To Address" caption="Ship To Address: Physical delivery destination for inventory valuation." >}}
-*   **Ship To Address**: Captures the physical delivery destination. This follows the principle of **Substance Over Form**. While the "Bill To" establishes the legal liability, the "Ship To" identifies where the physical risk and rewards of ownership (Inventory) are transferred, which impacts **Inventory Valuation** and **Tax Jurisdiction**.
-*   **Intercompany Sub-Tab**: A live monitor for sync status. This ensures **Data Integrity** by confirming that the document remains electronically linked to the originating branch's records, guaranteeing that any updates are reflected on both sides of the transaction.
-
-#### Deep Dive: Lines Tab
-
-{{< figure src="/images/internal-purchase-debit-note-applet/lines-tab.png" alt="Purchase Debit Note Lines Tab" caption="Lines Tab: Specify the economic substance and cost allocation of the charge." >}}
-**Concept: Selecting the Economic Substance.**
-This is where you select **"What"** you are being charged for. Each line defines a specific commitment of value and where that cost should be allocated.
-
-*   **Item Code & Name**: These identify the specific goods or services being charged. In accounting, this ensures **Measurement & Recognition** accuracy—linking the expenditure to the correct inventory category or expense account.
-*   **Quantity & Unit Price**: These fields define the **Basis of Valuation**. The system uses these to calculate the total transaction value. Accurate entry is critical for ensuring that the legal debt recorded matches the physical quantity of goods or services received.
-*   **SST/GST/VAT**: The tax configuration applied to the line. This ensures **Tax Ledger Separation**, automatically calculating the tax liability or claimable amount to be posted to the government's respective tax accounts.
-*   **Unit Discount**: Records deductions directly at the line level. This ensures that the net expenditure recognized in your P&L is accurate and follows the principle of **Accrual-Basis Accounting** (recording the expense net of trade discounts).
-*   **Department (Segment, Profit Center, Project)**: These are "tags" for **Responsibility Accounting**. By assigning a cost center or project code here, you ensure that the expense is segmentally reported, allowing management to track the performance and budget consumption of specific departments or initiatives.
-*   **Landed Costing (Moving/Weighted Average)**: Found in the costing sub-tab, these fields track the total cost of acquisition. Following **IAS 2 (Inventories)**, these costs are capitalized, ensuring that the inventory on your balance sheet is valued correctly, including all costs required to bring the goods to their current location.
-
-#### Deep Dive: Payment Tab
-
-This tab manages how the liability is settled or funded.
-
-*   **Settlement Method**: Defines the portal of payment (e.g., Cash, Card, or Points). This determines the **Cash Flow Impact**. In accounting terms, selecting "Cash" indicates an immediate reduction in liquidity, while "Card" or deferred methods might impact different liability accounts.
-*   **Points (Gold/Silver/Rebate)**: A specialized settlement type for internal loyalty or reward schemes. This manages **Deferred Revenue & Loyalty Liability** impacts within the branch network.
-*   **Payment Amount & Date**: The specific value and timing of the settlement. This is vital for **Bank/Cash Reconciliation**, ensuring that the system's ledger matches your physical bank statements or cash-on-hand.
-
-#### Deep Dive: Department Hdr Tab
-
-**Concept: Organizational Responsibility.**
-While the *Lines Tab* lets you split costs between teams, the **Department Hdr** assigns the **entire document** to a high-level Business Unit. This ensures the debit note appears on the correct department's Profit & Loss statement during financial consolidation.
-
-*   **Segment & G/L Dimension**: Defines the highest level of **Segmented Reporting**. This ensures that the debit note is recognized in the correct business unit's financial statements during consolidation.
-*   **Profit Centre & Project**: These act as the final destinations for **Budget Allocation**. By tagging the document header here, you ensure that the charge hits the correct internal budget, supporting **Responsibility Accounting** and departmental cost tracking.
-
-#### Deep Dive: Contra Tab
-
-This tab facilitates the **"Right of Offset" (IAS 32)**, allowing you to net debts without physical cash transfer.
-
-*   **Document Linkage**: Connects this Purchase Debit Note directly to an outstanding Sales Invoice or Credit Note from the same branch.
-*   **Contra Amount**: The specific value being "netted off." This ensures **Settlement Accuracy**, reducing the outstanding balance on both sides of the intercompany ledger simultaneously.
-*   **Transaction Date**: The date the offset is legally recognized, ensuring that your **Aging Reports** and **Working Capital** calculations are updated in the correct reporting period.
-
-#### Deep Dive: ARAP Tab
-
-{{< figure src="/images/internal-purchase-debit-note-applet/arap-tab.png" alt="Purchase Debit Note ARAP Tab" caption="ARAP Tab: Real-time reconciliation of charges, offsets, and balances." >}}
-**Concept: Reconciliation Dashboard.**
-**ARAP** (Accounts Receivable / Accounts Payable) is a real-time monitor of the document’s financial equation:
-> **Gross Charges (Lines)** - **Offsets (Contra)** - **Cash Payments** = **Outstanding Balance.**
-
-*   **Product & Services**: The gross liability recognized from the line items.
-*   **Settlement & Contra**: Tracks the total reductions in liability from payments or offsets.
-*   **Outstanding Balance**: The remaining net liability. This ensures that the **Accounting Equation (A = L + E)** is maintained for this specific document and that your AP sub-ledger remains in balance with the General Ledger.
-
-#### Deep Dive: Trace Document Tab
-
-{{< figure src="/images/internal-purchase-debit-note-applet/trace-document-tab.png" alt="Purchase Debit Note Trace Document Tab" caption="Trace Document: Visual map of intercompany links and GL entries." >}}
-**Concept: Double-Entry Transparency.**
-This tab allows you to lookup exactly how the system updated your financial records. It "traces" the digital record into the actual **General Ledger (GL)** notebooks of the branch.
-
-*   **Journal Txn**: Displays the entries in the **General Ledger**, ensuring that every debit has an offsetting credit.
-*   **Cashbook & Tax Txn**: Shows the impact on your cash position and tax liability, verifying that **Tax Reporting** and **Cash Controls** are functioning as intended.
-*   **Inventory Txn**: Tracks the movement and valuation changes in your stock, providing an audit trail for **Stock Valuation** and physical inventory control.
-
-#### Deep Dive: E-Invoice Tab
-
-{{< figure src="/images/internal-purchase-debit-note-applet/einvoice-attachments-export.png" alt="E-Invoice tab showing the submission status of this Purchase Debit Note to the government tax portal" caption="E-Invoice tab — tracks the submission status of this document to government tax portals (e.g., LHDN), including the assigned UUID and digital signature." >}}
-
-**Concept: Statutory Digital Records.**
-The **E-Invoice** tab manages the legal submission of this adjustment to government tax portals (like LHDN). It ensures your debit note is an officially recognized tax document, complete with the required UUID and digital signatures.
-
-*   **E-Invoice Tab**: Manages the legal "digital record" status of the document. This is vital for **Statutory Compliance** in jurisdictions requiring electronic tax reporting, ensuring the document is officially recognized by the government portal.
-
----
-
-#### Deep Dive: Attachments Tab
-
-{{< figure src="/images/internal-purchase-debit-note-applet/attachments-tab.png" alt="Attachments tab listing supporting files uploaded against this Purchase Debit Note - PDFs, images, and supplier correspondence" caption="Attachments tab — upload supporting evidence such as PDFs, images, or supplier correspondence. Each attached file becomes part of the document's audit trail." >}}
-
-**Concept: Audit-Ready Evidence.**
-The **Attachments** tab is unrelated to E-Invoicing — it is your branch's digital evidence locker for this document. Use it to attach the source paperwork that justifies why this debit note exists.
-
-*   **Attachments Tab**: Stores digital "proof of delivery," supplier invoices, or email correspondence. This satisfies the **"Audit Trail" requirement**, providing the physical evidence needed to support the digital record during year-end audits.
-
----
-
-#### Deep Dive: Export Tab
-
-**Concept: Data Portability.**
-The **Export** tab is unrelated to E-Invoicing and Attachments — it generates a printable PDF of this Purchase Debit Note using one of the configured Printable Format templates.
-
-*   **Export Tab**: Allows you to extract data for external audit or analysis. This facilitates **Data Portability**, ensuring that your financial records are accessible for reporting outside the ERP system.
-
----
-
-## File Imports
-
-The **File Import** page lets you create many Purchase Debit Notes in one shot by uploading a CSV file. It is the fastest way to handle month-end batches where you would otherwise key in dozens of small adjustments by hand.
-
-### The end-to-end flow
-
-{{< figure src="/images/internal-purchase-debit-note-applet/file-import-upload-screen.png" alt="File Import upload screen showing the Sample Format for Purchase Debit Note download link, the Delimiter selector, and the file drag-and-drop area" caption="File Import — Upload screen. Click Sample Format for Purchase Debit Note to download the CSV template, choose your Delimiter, then drop the completed CSV file into the upload area." >}}
-
-1. Open **File Import** from the sidebar.
-2. Click **Sample Format for Purchase Debit Note** to download a CSV template containing every column the importer accepts (see the column reference below).
-3. Fill in the template using the column order from the sample. Save the file as CSV.
-4. On the Upload screen, choose your file's **Delimiter** (Comma, Semicolon, Pipe, etc.) so the importer parses your columns correctly.
-5. Drag the file into the upload area (or click to browse). Click **ADD** to process it.
-6. Open the new import record from the Listing and switch to the **Checking** tab to see what the importer parsed and which rows failed validation.
-7. Fix any error rows (either in the source CSV and re-upload, or by editing rows directly if your workflow allows it). Once the Checking tab is clean, the rows are ready to be imported into the database with their Posting Status set from the CSV (default: DRAFT).
-
-### CSV format reference
-
-The CSV that the **Sample Format** button downloads has two sets of columns — one set repeats on every line (header-level data) and one set is per line item. The full list:
-
-**Header columns (transaction-level — same value repeated on every line of the same document):**
-- **Document identity**: Branch Code, Location Code, Settlement/Item Code, Purchase Agent, Transaction Number, Transaction Date, Validity Days
-- **Reference and terms**: Header Ref No, Credit Terms, Credit Limit, Header Description, Header Remarks, Currency, Tracking ID
-- **Entity / Bill To**: Entity Code, Billing Name, Billing Email, Billing Phone, Billing Address Lines 1–5, Billing Country, Billing State, Billing City, Billing Postcode
-- **Ship To**: Shipping Name, Shipping Email, Shipping Phone, Shipping Address Lines 1–5, Shipping Country, Shipping State, Shipping City, Shipping Postcode
-- **E-Invoice**: Supplier TIN, Entity ID Type, Entity ID Number, SST Number, E-Invoice Name, Email, Phone, Address Lines, Country, State, City, Postcode, Submission Type, Billing Frequency, Period Start, Period End
-- **Cost-centre tagging**: Segment Code, GL Dimension, Profit Centre, Project Code, Entity Branch, GL Code
-- **Settlement**: STL Amount, STL Remarks
-
-**Line-item columns (one row per item per document):**
-- Item Ref No, Txn Type, Quantity, UOM
-- Amount Including Tax, Unit Price Including Tax
-- Tax GST Code, Tax GST %, Tax WHT Code, Tax WHT %
-- Item Batch Number, Item Bin Number, Item Tracking ID, Item Serial Number
-- Posting Status (use `DRAFT` for a normal import; you can set `FINAL` here if your workflow allows direct posting)
-
-{{< callout type="info" >}}
-Every column has a paired **validation error** column in the Checking tab grid (e.g. "Branch Validation Error", "Amount Validation Error", "Posting Status Error"). When a cell fails validation, the error message lands in that column.
-{{< /callout >}}
-
-### The Checking tab
-
-{{< figure src="/images/internal-purchase-debit-note-applet/file-import-checking-tab.png" alt="File Import Checking tab grid showing one imported row per CSV row, with error rows highlighted in red and a Validation Error column on the left" caption="File Import — Checking tab. Each CSV row becomes a grid row. Rows with validation errors are highlighted red with a warning icon; click the filter icon on the **Validation Error** column to see error rows only." >}}
-
-After you upload, open the import record from the Listing and click the **Checking** tab. You'll see one row per CSV row, with every column the importer parsed plus a **Validation Error** column on the far left.
-
-| What you see | What it means |
+| Tab | Purpose |
 |---|---|
-| Row displayed normally | The row passed all validations and is ready to be imported. |
-| Row highlighted **red** with a ⚠ icon and text in the Validation Error column | The row has one or more validation errors. The error column tells you which fields failed. |
+| **Search Document** | Find a FINAL purchase invoice for the same supplier and pull its lines in. Creates a document link (`INTERNAL_PURCHASE_INVOICE` → `INTERNAL_PURCHASE_DEBIT_NOTE`). Hidden by `HIDE_SEARCH_BY_DOCUMENT_BUTTON`. |
+| **Main Details** | Company, branch, location, purchaser, dates, currency and rate, references, external document references. |
+| **E-Invoice** | Sub-tabs Submission, Progress, Notification, Cancellation, Matched History and (when `ENABLE_IMPORT_EXPORT` is on) Import/Export. Buttons: Submit, Send, Request for Rejection, Pushback to Queues, Export, Select From Another Supplier. |
+| **Account** | Supplier (entity), entity branch, Bill To and Ship To addresses, contacts. |
+| **Lines** | Line items with pricing, tax, WHT, department tags, costing details; **Import Knock-Off** against Purchase Order or Purchase GRN lines. |
+| **ARAP** | Product-and-services amount, settlement, contra, document open and balance for this document. |
+| **Payment** | Settlement lines (settlement method, amount, date). |
+| **Department Hdr** | Header-level segment, dimension, profit centre, project. |
+| **Trace Document** | Journal, cashbook, tax and inventory transactions the posting created. |
+| **Contra** | Offset this debit note against the supplier's outstanding purchase invoices. |
+| **Doc Link** | Links to and from other documents. |
+| **Attachment** | Uploaded supporting files. |
+| **Export** | Print the document with a printable format. |
 
-To narrow the view to error rows only, click the **filter icon** on the **Validation Error** column header and uncheck "(Blanks)" — the grid will hide every row that has no error, leaving just the ones you need to fix. (The reviewer's note about "Error / All tabs" refers to this column filter — there isn't a separate sub-tab, the same grid switches between Error-only and All views via the column filter.)
+{{< figure src="/images/internal-purchase-debit-note-applet/main-details.png" alt="Purchase Debit Note Main Details" caption="Main Details tab." >}}
 
-Common validation errors you'll see:
+{{< figure src="/images/internal-purchase-debit-note-applet/account-tab.png" alt="Purchase Debit Note Account Tab" caption="Account tab — supplier and entity branch." >}}
 
-- **Branch / Location / Entity / Item code not found** — the code in the CSV doesn't exist in your masters. Fix the code or create the master record first.
-- **Amount Including Tax / Unit Price Including Tax invalid** — the cell is blank, non-numeric, or negative.
-- **Posting Status Error** — the value in the Posting Status column isn't one of `DRAFT`, `FINAL`, `VOID`, `DISCARDED`.
-- **Tax code not found** — the GST or WHT code doesn't exist in the Tax master.
+{{< figure src="/images/internal-purchase-debit-note-applet/bill-to-address.png" alt="Bill To Address" caption="Account → Bill To address." >}}
 
-### The Main tab (file metadata)
+{{< figure src="/images/internal-purchase-debit-note-applet/ship-to-address.png" alt="Ship To Address" caption="Account → Ship To address." >}}
 
-The import record also has a **Main** tab showing the file's metadata — File Name, Size, Format, Process Status, Status, and any top-level Error Message returned by the importer. Use it to confirm the file was received and to see at-a-glance whether processing succeeded.
+{{< figure src="/images/internal-purchase-debit-note-applet/lines-tab.png" alt="Purchase Debit Note Lines Tab" caption="Lines tab." >}}
 
-{{< callout type="info" >}}
-**Permission Required**: The File Import menu is only visible if the **SHOW_FILE_IMPORT_MENU** client-side permission is granted, or if the **HIDE_FILE_IMPORT_MENU** setting is not enabled. Contact your administrator if you cannot see this menu.
-{{< /callout >}}
+{{< figure src="/images/internal-purchase-debit-note-applet/arap-tab.png" alt="Purchase Debit Note ARAP Tab" caption="ARAP tab — amounts, settlement, contra and balance for this document." >}}
 
----
+{{< figure src="/images/internal-purchase-debit-note-applet/trace-document-tab.png" alt="Purchase Debit Note Trace Document Tab" caption="Trace Document tab — the journal and sub-ledger transactions behind a FINAL document." >}}
 
-## Configuration & Settings
+{{< figure src="/images/internal-purchase-debit-note-applet/einvoice-attachments-export.png" alt="E-Invoice tab showing the submission status of this Purchase Debit Note to the government tax portal" caption="E-Invoice tab — submission status, UUID and validation results from the tax authority." >}}
 
-Fine-tune the applet behavior to match your organizational processes. Access all settings from the **Settings** menu in the sidebar. These application-wide options are controlled by admins and affect all users.
+{{< figure src="/images/internal-purchase-debit-note-applet/attachments-tab.png" alt="Attachments tab listing supporting files uploaded against this Purchase Debit Note" caption="Attachment tab." >}}
 
-### Application Settings (`Settings > Application Settings`)
+### File Import
 
-Control field visibility and validation:
-- Make specific fields mandatory or optional
-- Hide unused fields to simplify the creation form
-- Configure which tabs are visible or hidden in the document interface
-- Control button visibility (Final, Void, Discard, Save)
+**File Import** creates many debit notes from one CSV. Download **Sample Format for Purchase Debit Note**, fill it, choose the delimiter, drop the file and click **ADD**. Open the import record and use the **Checking** tab to see one grid row per CSV row; rows with a validation error are highlighted and the message lands in the paired *… Validation Error* column. Filter that column to see errors only. The **Main** tab shows file name, size, format, process status and any top-level error.
 
-### Default Selection (`Settings > Default Selection`)
+{{< figure src="/images/internal-purchase-debit-note-applet/file-import-upload-screen.png" alt="File Import upload screen showing the Sample Format for Purchase Debit Note download link, the Delimiter selector, and the file drag-and-drop area" caption="File Import — upload screen." >}}
 
-Set system-wide defaults:
-- Default currency for new documents
-- Running number format and sequence (e.g., `IPDN-2024-00100`)
-- Default document date behavior
+{{< figure src="/images/internal-purchase-debit-note-applet/file-import-checking-tab.png" alt="File Import Checking tab grid showing one imported row per CSV row, with error rows highlighted in red and a Validation Error column on the left" caption="File Import — Checking tab." >}}
 
-### Printable Format Settings (`Settings > Printable Format Settings`)
+The CSV carries header columns repeated on every line of the same document (branch, location, purchaser, transaction number and date, reference, credit terms, description, remarks, currency, tracking ID, entity code, billing and shipping name/email/phone/address, supplier TIN and e-Invoice identity fields, segment / dimension / profit centre / project, GL code, settlement amount and remarks) and line columns (item reference number, transaction type, quantity, UOM, amount and unit price including tax, GST and WHT code and %, batch, bin, tracking ID, serial number, posting status). Common rejections: an unknown branch, location, entity, item or tax code; a blank or non-numeric amount; a posting status that is not `DRAFT`, `FINAL`, `VOID` or `DISCARDED`; and — since the wrong-column check was added to the importer — a column header that does not match the sample.
 
-Customize PDF exports:
-- Company logo and branding
-- Header/footer text
-- Which fields to display on printed output
-- Page size and orientation
+## Configuration
 
-### Email Template (`Settings > Email Template`)
+### Before you can use it
 
-Create and manage the email templates that populate the **SEND EMAIL** dropdown on the Listing. Templates here are **applet-local** — a template you create in this applet does not appear in any other applet's SEND EMAIL list, and the Email Template listing in other applets will look empty unless someone has set up templates there separately.
+| Prerequisite | Where | Why |
+|---|---|---|
+| Company, branch, location | [Organisation](/applets/master-data/organisation-applet/) | Company, branch and location are the three required header fields. Branch `MAIN_LOCATION` fills the default location. |
+| Supplier entity | [Supplier](/applets/master-data/supplier-applet-1/) | The Account tab selects an entity flagged as supplier; its AR/AP object type decides whether the posting goes to `CREDITOR` (trade) or `CREDITOR_NON_TRADE`. |
+| Company default GL codes | [Chart of Account](/applets/master-data/chart-of-account-applet/) → company GL-code links | Posting needs `CREDITOR` (or `CREDITOR_NON_TRADE`) and, for lines without their own GL code, `PURCHASE`; tax lines need `INPUT_TAX`. A missing creditor mapping aborts FINAL with `MISSING_DEFAULT_GL_CODE`. |
+| Items with a purchase GL code | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Each line is an item. A `PNS` line takes its GL code from the header GL code, else the item-company link for `PURCHASE`, else the company default. |
+| Tax codes | [Tax Configuration](/applets/master-data/tax-configuration-applet/) | GST/SST and WHT codes on lines. Hidden when `HIDE_TAX_CONFIG_SELECTION` / `HIDE_WHT_CONFIG_SELECTION` are on. |
+| Cashbook / settlement methods | [Cashbook](/applets/master-data/cashbook-applet/) | Only if you record a settlement on the Payment tab: a settlement-method item must map to a cashbook with a GL code, else FINAL fails with `MISSING_CASHBOOK` / `MISSING_GL_CODE`. |
+| Fiscal period open | [General Ledger](/applets/finance/general-ledger-applet/) | FINAL is refused with *The selected date falls within a locked fiscal period* when the transaction date is in a `LOCK_ALL` / `LOCK_TXN` period. |
+| e-Invoice setup | [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) | Needed only if the document must be submitted to the tax authority. Skip flags on the document, branch or supplier bypass submission. |
+| Permissions | This applet → Settings → Permission Wizard / Client Side Permission | Server-side create/read/update/delete on `INTERNAL_PURCHASE_DEBIT_NOTE`; client-side switches listed below. |
 
-{{< figure src="/images/internal-purchase-debit-note-applet/email-template-settings.png" alt="Email Template settings screen showing the list of templates that are available in this applet's SEND EMAIL dropdown, with options to create, edit, or activate templates" caption="Settings → Email Template — the applet-local template list that feeds the SEND EMAIL dropdown. Templates created here only apply to Purchase Debit Note (Internal); other applets keep their own lists." >}}
+### Applet settings
 
-**How to create a new template**
+**Settings → Default Selection** (`default-selection`) has two panels:
 
-Open **Settings → Email Template**
+| Setting | What it controls | Default | Effect when changed | Who can change it |
+|---|---|---|---|---|
+| `DEFAULT_BRANCH` | Branch pre-selected on new documents. Selecting it also stores `DEFAULT_COMPANY` (the branch's company) and `DEFAULT_LOCATION` (the branch's `MAIN_LOCATION`). | none | New documents open with these values; users with a personal default override it. | Tenant admin with access to the applet's Settings menu |
+| `DEFAULT_LOCATION` | Location pre-selected on new documents. | none | As above. | Same |
+| `PURCHASE_DEBIT_NOTE_DETAILS_TAB_ORDER` | Drag-and-drop order of the form tabs (Search Document, Main Details, E-Invoice, Account, Lines, ARAP, Payment, Department Hdr, Trace Document, Contra, Doc Link, Attachment, Export). | code order | Tabs re-order for everyone; tabs added by a later release are appended. | Same |
 
-| Field | What it controls | How to fill it in |
-|-------|------------------|-------------------|
-| **Printable Format** | Which Printable Format PDF gets attached to every email that uses this template. | Pick from the dropdown — the entries come from **Settings → Printable Format Settings**. If the dropdown is empty, set up at least one Printable Format first. |
-| **Template Code** | Two things at once: (a) the **label that shows in the SEND EMAIL dropdown** on the Listing, and (b) the **subject line of the email**. So whatever you type here is what the recipient sees as the email subject. | Use a short, descriptive code such as `Debit Note Notice` or `Monthly Charge Reminder`. |
-| **Template** | The **body of the email**. A 10-row textarea with a character counter. | Write the body text the recipient will read. Plain text — keep it self-contained, no merge tags or HTML substitutions. |
+**Settings → Application Settings** (`field-settings`) is the shared field-configuration screen. Its toggles are labelled by their key. Every toggle defaults to *off* (unset). The keys the applet reads, by group:
 
-The template is saved and immediately becomes available in the SEND EMAIL dropdown the next time the Listing is loaded.
+| Group | Keys | What they control |
+|---|---|---|
+| Listing defaults | `DEFAULT_POSTING_STATUS` (DRAFT / FINAL / VOID / DISCARDED / ALL), `DEFAULT_STATUS`, `DEFAULT_TRANSACTION_DATE` (`1_day` / `1_week` / none), `SORT_ORDER` (defaults to `updated_date`), `FUZZY_SEARCH_COLUMNS`, `SHOW_REMARKS_MAIN_LISTING`, `SHOW_REFERENCE_MAIN_LISTING`, `HIDE_REMARKS_MAIN_LISTING`, `HIDE_REFERENCE_MAIN_LISTING`, `DISABLE_GEN_DOC_LISTING`, `ENABLE_FILTER_BY_TODAYS_TXN` | Which documents the listing loads by default, how it sorts and which columns the fuzzy search box scans. `DISABLE_GEN_DOC_LISTING` stops the initial auto-load so users must search. |
+| Menus and buttons | `HIDE_FILE_IMPORT_MENU`, `HIDE_SEND_EMAIL_BUTTON`, `HIDE_SEARCH_BY_DOCUMENT_BUTTON`, `HIDE_CLONE_BUTTON`, `HIDE_GENDOC_FINAL_BUTTON`, `HIDE_GENDOC_VOID_BUTTON`, `HIDE_GENDOC_DISCARD_BUTTON`, `HIDE_GENDOC_SAVE_BUTTON`, `ENABLE_AUTO_POPUP`, `PRINTABLE` | Hide a menu or button for everyone unless a matching `SHOW_…` client-side permission gives it back to a user. `ENABLE_AUTO_POPUP` opens the printable PDF in a new tab after FINAL (needs `PRINTABLE`). `PRINTABLE` is the default printable-format GUID, set from Printable Format Settings. |
+| Header fields | `HIDE_TRACKING_ID`, `HIDE_PERMIT_NO`, `HIDE_CURRENCY`, `HIDE_BASE_CURRENCY`, `HIDE_CREDIT_TERMS`, `HIDE_REMARKS`, `HIDE_REFERENCE`, `HIDE_DESCRIPTION`, `HIDE_SERVER_DOC_1..3`, `HIDE_CLIENT_DOC_TYPE`, `HIDE_CLIENT_DOC_1..5`, `SHOW_CUSTOM_DOC_NO`, `SHOW_FOREX_DATA_SOURCE`, `CANNOT_EDIT_CURRENCY_RATE`, `ENABLE_DUPLICATE_REFERENCE_CHECK`, `ENABLE_EMPLOYEE_LOGIN_AUTO_DETECTION` | Field visibility on Main Details. `SHOW_FOREX_DATA_SOURCE` swaps the free currency/rate pair for a forex-source selector; `CANNOT_EDIT_CURRENCY_RATE` locks the rate; `ENABLE_DUPLICATE_REFERENCE_CHECK` warns when the reference already exists on another debit note; `ENABLE_EMPLOYEE_LOGIN_AUTO_DETECTION` fills Purchaser from the logged-in employee. |
+| External Documents (panel shown only for this applet) | `HIDE_QUOTATION`, `HIDE_ORDER`, `HIDE_DELIVERY_ORDER`, `HIDE_INVOICE`, `HIDE_OTHERS` and their `MANDATORY_…` / `MANDATORY_…_DATE` pairs | The five external reference number + date pairs on Main Details (`xtn_doc_ref_1..5`). Mandatory flags add a required validator. |
+| Account tab | `HIDE_ACCOUNT_BILLING_CONTACT`, `HIDE_ACCOUNT_SHIPPING_CONTACT`, `HIDE_SUPPLIER_CODE`, `HIDE_PHONE_NUMBER`, `HIDE_EMAIL`, `HIDE_SIC_CODE_AND_BUSINESS_ACTIVITY_DESCRIPTION`, `HIDE_E_INVOICE_TAB`, `DEFAULT_CURRENCY` | Fields shown in the supplier picker and inline supplier edit. |
+| Line fields | `HIDE_QTY_BASE`, `HIDE_QTY_UOM`, `HIDE_UOM_TO_BASE_RATIO`, `HIDE_UNIT_PRICE_STD_*`, `HIDE_UNIT_PRICE_NET_*`, `HIDE_UNIT_PRICE_TXN`, `HIDE_UNIT_PRICE_TXN_UOM_INCL_TAX`, `HIDE_UNIT_DISCOUNT`, `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX`, `HIDE_AMOUNT_STD_EXCL_TAX`, `HIDE_DISCOUNT_AMOUNT_EXCL_TAX`, `HIDE_AMOUNT_NET_EXCL_TAX`, `HIDE_AMOUNT_TXN`, `HIDE_LAST_PURCHASE_PRICE`, `HIDE_TAX_CONFIG_SELECTION`, `HIDE_WHT_CONFIG_SELECTION`, `HIDE_LINE_ITEMS_GL_CODE`, `HIDE_COSTING_DETAILS`, `HIDE_PRICING_DETAILS`, `HIDE_DELIVERY_DETAILS`, `HIDE_DELIVERY_INSTRUCTION`, `HIDE_ISSUE_LINK`, `HIDE_DOC_LINK`, `HIDE_BATCH_NUMBER`, `HIDE_BIN_NUMBER`, `HIDE_SERIAL_NUMBER`, `HIDE_DEPARTMENT`, `ENABLE_EDITING_UNIT_PRICE_STD`, `DISABLE_EDITING_AMOUNT_TXN`, `ENABLE_ITEM_NAME_MAX_LIMIT` + `ITEM_NAME_MAX_LIMIT`, `DISABLE_ITEM_LISTING` | Which price, quantity, tax and sub-panel controls appear on a line. `ENABLE_EDITING_UNIT_PRICE_STD` makes the standard unit price editable; `DISABLE_EDITING_AMOUNT_TXN` locks the transaction amount; `DISABLE_ITEM_LISTING` stops the item picker auto-loading. |
+| Knock-off | `HIDE_KO_FOR_TAB`, `HIDE_KO_BY_PURCHASE_ORDER`, `HIDE_KO_FOR_PURCHASE_ORDER`, `HIDE_KO_BY_GRN`, `HIDE_KO_FOR_GRN` | Whether lines can knock off purchase-order and GRN lines, and which direction is offered. |
+| Department tags | `ENABLE_SEGMENT` / `ENABLE_DIMENSION` / `ENABLE_PROFIT_CENTER` / `ENABLE_PROJECT`, `INCLUDE_…`, `HIDE_…`, `MANDATORY_…` for segment, dimension, profit centre, project; `ENABLE_SST`, `ENABLE_WHT`, `INCLUDE_SST`, `INCLUDE_WHT` | Show, require or hide each accounting dimension on header and lines. |
+| Tabs | `HIDE_DELIVERY_DETAILS_TAB`, `HIDE_MAIN_PAYMENT_TAB`, `HIDE_DEPARTMENT_HDR_TAB`, `HIDE_MAIN_ARAP_TAB`, `HIDE_TRACE_DOCUMENT_TAB`, `HIDE_MAIN_CONTRA_TAB`, `HIDE_DOC_LINK_TAB`, `HIDE_ATTACHMENT_TAB`, `HIDE_EXPORT_TAB`, `HIDE_SETTLEMENT_TAB`, `HIDE_ARAP_PNS`, `HIDE_ARAP_SETTLEMENT`, `HIDE_ARAP_DOC_OPEN`, `HIDE_ARAP_CONTRA`, `HIDE_ARAP_BAL` | Remove whole tabs, or individual ARAP figures. |
+| Layout | `VERTICAL_ORIENTATION`, `DEFAULT_ORIENTATION`, `DEFAULT_TOGGLE_COLUMN`, `EXPAND_MAIN_DETAILS`, `EXPAND_E_INVOICE`, `EXPAND_ACCOUNT`, `EXPAND_LINE_ITEMS`, `EXPAND_KO_FOR`, `EXPAND_DELIVERY_DETAILS`, `EXPAND_MAIN_ARAP`, `EXPAND_DEPARTMENT_HDR`, `EXPAND_TRACE_DOCUMENT`, `EXPAND_DOC_LINK`, `EXPAND_ATTACHMENT`, `EXPAND_EXPORT`, `EXPAND_MAIN_CONTRA`, `EXPAND_SETTLEMENT`, `EXPAND_POSTING`, `EXPAND_DELIVERY_TRIPS` | Tabs versus stacked expansion panels, and which panels open expanded. |
+| Payment / contra | `ENABLE_EDIT_PAYMENT_DATE`, `EDIT_CONTRA_TXN_DATE` | Allow the settlement date or contra date to differ from the document date. |
+| Custom status | `ENABLE_CUSTOM_STATUS_1..5`, `ENABLE_CUSTOM_STATUS_HDR_1..5`, `ENABLE_CUSTOM_STATUS_LINE_1..5` | Expose the five free custom-status fields at header and line level. |
+| e-Invoice | `ENABLE_IMPORT_EXPORT` | Adds the Import/Export sub-tab to the E-Invoice tab. |
 
-**Tips and gotchas**
+### Document behaviour settings
 
-- The Template Code doubles as the email subject. Don't put internal codes like `EMAIL_TPL_01` here — the customer or supplier will see exactly that as the subject line.
-- The Printable Format is mandatory for the email to send a usable PDF — pick one before you save, or the SEND EMAIL action will fail with a missing-format error.
-- A template you create here **will not appear** in Sales Debit Note, Sales Invoice, or any other applet. Each applet's SEND EMAIL pulls from its own list.
-- If a template you expect to see is missing from the SEND EMAIL dropdown, check that it has status ACTIVE on this listing.
+| Behaviour | Where it is set | Notes |
+|---|---|---|
+| Posting status on create | Not configurable — new documents are DRAFT. `DEFAULT_POSTING_STATUS` only filters the listing. | |
+| Transaction date on FINAL | The FINAL request's `date_txn_logic` (`USE_FINAL`, `USE_CREATED`, `USE_UPDATED`) applies only when the header's *use transaction date* flag is off. | Backend rule, no applet toggle. |
+| Printable formats | *Settings → Printable Format Settings* (Format Code, Format Name, uploaded Jasper template). One is marked default and stored as `PRINTABLE`. *Branch Settings → Printable Format* overrides it per branch. | Required for SINGLE/MULTIPLE PRINT, SEND EMAIL and `ENABLE_AUTO_POPUP`. |
+| Email templates | *Settings → Email Template* — Printable Format, Template Code (dropdown label **and** email subject), Template (body). | Applet-local. |
+| Approval workflow | Not configurable in this applet. | The workflow fields on the document (`xtn_process_*`) are validated by the backend but the applet has no approval screen. |
+| e-Invoice submission | E-Invoice tab → Submission; `skip_einvoice` on the document, on the branch or on the supplier bypasses the queue; SELF-BILLED on the listing sets `einvoice_self_billed`. | Purchase documents are submitted with the supplier as issuer; use *Select From Another Supplier* to correct issuer details. |
+| Webhooks | *Settings → Webhook* (shared component). | Fires on document events. |
 
-### Branch Settings (`Settings > Branch Settings`)
+{{< figure src="/images/internal-purchase-debit-note-applet/email-template-settings.png" alt="Email Template settings screen showing the list of templates that are available in this applet's SEND EMAIL dropdown" caption="Settings → Email Template." >}}
 
-{{< figure src="/images/internal-purchase-debit-note-applet/branch-settings.png" alt="Branch Settings screen showing the listing of branches and the per-branch configuration panel with operational defaults, allowed employees, item categories, pricing scheme, and printable format" caption="Settings → Branch Settings — pick a branch from the list on the left to edit that branch's operational defaults on the right." >}}
+### Branch settings
 
-Branch Settings lets an admin configure how the Purchase Debit Note applet behaves **per branch**. Pick a branch from the listing on the left and a settings panel opens on the right. The values you set apply only to that branch — different branches can run different defaults.
+{{< figure src="/images/internal-purchase-debit-note-applet/branch-settings.png" alt="Branch Settings screen showing the listing of branches and the per-branch configuration panel" caption="Settings → Branch Settings — pick a branch on the left." >}}
 
-**Branch-level fields**
-
-The main Branch Details form covers the read-only identifiers of the branch (**Branch Name**, **Branch Code**, **Company**) plus the per-branch operational defaults you can change:
-
-| Field | What it does |
+| Sub-tab | What it controls |
 |---|---|
-| **Sales Agent** (Employee selector) | The default sales agent attached to documents created at this branch — saves having to pick one on every Purchase Debit Note. |
-| **Rounding Five Cent** (checkbox) + **Rounding Item** | Enables five-cent rounding for this branch and lets you pick the item code that absorbs the rounding adjustment. Useful where regulators no longer mint one-cent coins. |
-| **Group Discount Item** | The item used to represent a header-level discount on documents from this branch. |
+| **Branch Details** | Read-only Branch Name, Branch Code, Company; **Sales Agent** (default purchaser for the branch); **Rounding Five Cent** with a rounding item; **Group Discount Item** used for header-level discounts. |
+| **Default Settlement Method** | Settlement method pre-selected on the Payment tab for this branch. |
+| **Item Category Filter** | Item categories the line picker offers at this branch. |
+| **Menu List** | Sidebar menus shown to users at this branch. |
+| **Pricing Scheme** | Pricing schemes used to derive line prices at this branch (also linkable to roles under *Role Pricing Scheme Link*). |
+| **Printable Format** | Branch default printable format, overriding `PRINTABLE`. |
 
-Click **SAVE** to apply, or **RESET** to revert unsaved changes.
+### Feature visibility / permissions
 
-**Per-branch sub-panels**
+Server-side, every call is gated by the `INTERNAL_PURCHASE_DEBIT_NOTE` create / read / update / delete permissions with a target (company, branch, location, supplier …) assigned through *Permission Wizard* or *Permission Set*.
 
-In addition to the main fields above, Branch Settings exposes several sub-sections that let admins lock down what this branch can do:
+Client-side permissions defined for this applet in the platform registry (assign under *Settings → Client Side Permission*):
 
-| Sub-panel | What it controls |
+| Permission code | Effect |
 |---|---|
-| **Default Settlement Method** | Pre-selects which payment / settlement method is used by default on documents created at this branch (e.g. Cash, Bank Transfer). |
-| **Employee** | Limits which employees can transact under this branch — anyone not on the list cannot create or finalise documents for this branch. |
-| **Item Category Filter** | Restricts which item categories from the global Item Master are pickable on documents created at this branch — useful for keeping branch-specific catalogues clean. |
-| **Menu List** | Controls which menu items appear in the sidebar for users assigned to this branch — admins can hide unused applets per branch. |
-| **Pricing Scheme** | Picks which pricing scheme(s) apply to this branch, used when the line item's price needs to be derived from a scheme rather than typed manually. |
-| **Printable Format** | Sets the default Printable Format template used when printing documents from this branch (overrides the global default in Printable Format Settings). |
-| **Printable Image** | Lets you upload branch-specific logos or letterhead images that appear on printed documents from this branch. |
+| `SHOW_DOC_NO_TENANT`, `SHOW_DOC_NO_COMPANY`, `SHOW_DOC_NO_BRANCH` | Show the tenant-, company- and branch-level document numbers on Main Details. |
+| `SHOW_TRANSACTION_DATE` | Show the transaction date. |
+| `SHOW_CLIENT_DOC_TYPE`, `SHOW_CLIENT_DOC_1..5` | Show the client document type and reference fields. |
+| `IPDN_HIDE_TRACKING_ID_AND_PERMIT_NO` | Hide Tracking ID and Permit No for the holder. |
+| `INTERNAL_PURCHASE_DEBIT_NOTE_DISPLAY_PRICING` | Show pricing details on lines. |
+| `SHOW_QTY_BASE`, `SHOW_QTY_UOM`, `SHOW_UOM_TO_BASE_RATIO` | Quantity columns on lines. |
+| `SHOW_UNIT_PRICE_STD_PRICING_SCHEME`, `SHOW_UNIT_PRICE_STD_INCL_TAX`, `SHOW_UNIT_PRICE_STD_EXCL_TAX`, `SHOW_UNIT_PRICE_STD_UOM_INCL_TAX`, `SHOW_UNIT_PRICE_STD_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_NET_EXCL_TAX`, `SHOW_UNIT_PRICE_NET_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_TXN`, `SHOW_UNIT_PRICE_TXN_UOM_INCL_TAX` | Unit-price columns on lines. |
+| `SHOW_UNIT_DISCOUNT`, `SHOW_UNIT_DISCOUNT_UOM_EXCL_TAX`, `SHOW_DISCOUNT_AMOUNT_EXCL_TAX` | Discount columns. |
+| `SHOW_AMOUNT_STD_EXCL_TAX`, `SHOW_AMOUNT_NET_EXCL_TAX`, `SHOW_AMOUNT_TXN` | Amount columns. |
+| `SHOW_TAX_CONFIG_SELECTION`, `SHOW_WHT_CONFIG_SELECTION` | Tax and WHT selectors. |
+| `SHOW_COSTING_DETAILS` | Costing sub-panel on lines. |
+| `SHOW_DISABLE_EDITING_AMOUNT_TXN_SETTING` | Lets the holder see the *Disable editing amount* switch. |
 
-{{< callout type="info" >}}
-**Why per-branch?** A multi-branch company often has different operational habits per location — different default agents, different pricing schemes, different allowed item categories, even different printed letterhead. Branch Settings is the single place an admin captures those differences without modifying any document forms.
-{{< /callout >}}
+The applet code also checks `SHOW_GENDOC_FINAL_BUTTON`, `SHOW_GENDOC_DISCARD_BUTTON`, `SHOW_GENDOC_VOID_BUTTON`, `SHOW_CLONE_BUTTON` and `SHOW_FILE_IMPORT_MENU` — each re-enables a button or menu that the matching `HIDE_…` applet setting removed. These five are not seeded in the registry for this applet; create them under *Client Side Permission* before assigning.
 
----
+*Settings → Feature Visibility* (shared) can hide menus per team.
 
-## Personalization
+## Fields
 
-Personalization allows individual users to customize certain settings to fit their personal preferences, **overriding the default application-wide configurations** set by admins. For example, User A might set Branch A as their personal default location, while User B selects Branch B, tailoring the application to their individual role.
+### Main Details
 
-#### Personal Default Settings
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Company | Legal entity that owns the document. | Yes | Filled from the branch. Drives GL-code lookup and fiscal-period lock. |
+| Branch | Branch recording the liability reduction. | Yes | Default from `DEFAULT_BRANCH` or personal default. |
+| Location | Stock location on the header. | Yes | Default from the branch's `MAIN_LOCATION`. No stock movement is posted. |
+| Purchaser | Employee responsible. | No | Auto-filled when `ENABLE_EMPLOYEE_LOGIN_AUTO_DETECTION` is on; branch default from *Branch Settings → Sales Agent*. |
+| Tenant / Company / Branch Doc No | Three running numbers. | System | Assigned on save/FINAL; shown per `SHOW_DOC_NO_*` permission. `SHOW_CUSTOM_DOC_NO` exposes a custom number field. |
+| Transaction Date | Accounting date. | Yes | Must be in an open fiscal period at FINAL. |
+| Credit Terms | Supplier terms in days. | No | Hidden by `HIDE_CREDIT_TERMS`. |
+| Reference, Remarks, Description | Free text. | No | Duplicate reference warning when `ENABLE_DUPLICATE_REFERENCE_CHECK` is on. |
+| Permit No, Tracking ID | Statutory / logistics references. | No | Hidden by settings or `IPDN_HIDE_TRACKING_ID_AND_PERMIT_NO`. |
+| Currency, Base Currency, Currency Rate, Forex Source | Document currency and rate. | Currency yes | Rate locked by `CANNOT_EDIT_CURRENCY_RATE` and after FINAL. A rate that does not match the forex source is rejected at FINAL. |
+| Server Doc 1–3 | Platform document numbers. | System | Hidden by `HIDE_SERVER_DOC_*`. |
+| Client Doc Type, Client Doc 1–5 | Supplier's own document references. | No | Shown per `SHOW_CLIENT_DOC_*` permission. |
+| External Documents (Quotation, Order, Delivery Order, Invoice, Others) + dates | Five reference/date pairs. | Per `MANDATORY_…` settings | Panel shown only for this applet in Application Settings. |
 
-Save your frequently used defaults to speed up document creation:
-- Default branch and currency
-- Default cost center and department
-- Preferred listing filters and sort order
+### Account
 
-Access via **Personalization > Default Selection** in the sidebar.
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Entity (Supplier) | Supplier being debited. | Yes at FINAL | Must be an entity with `is_supplier`; its AR/AP object type selects `CREDITOR` vs `CREDITOR_NON_TRADE`. Entity `skip_einvoice` bypasses e-Invoice. |
+| Entity Branch | Supplier branch. | No | Validated against the entity. |
+| Bill To / Ship To | Name, email, phone, address lines, country, state, city, postcode. | No | Billing / shipping email feed SEND EMAIL. |
+| E-Invoice identity | TIN, ID type, ID number, SST number. | For e-Invoice only | Editable inline; *Select From Another Supplier* copies from another entity. |
 
----
+### Lines
 
-## FAQ
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Item | Item or GL-code item. | Yes | `GL_CODE` items skip the numeric validators below. |
+| Quantity | Units. | Yes | Minimum 1. Quantity signum is 0 — no stock movement. |
+| UOM, UOM ratio | Unit of measure. | No | |
+| Unit price (std / txn / net, incl. and excl. tax, per UOM) | Pricing. | Net and transaction amounts required for non-GL items | Minimum 0. Standard price editable only with `ENABLE_EDITING_UNIT_PRICE_STD`; transaction amount locked by `DISABLE_EDITING_AMOUNT_TXN`. |
+| Unit discount, discount amount | Line discount. | No | |
+| Tax code, tax %, tax amount | GST/SST. | No | Tax % ≥ 0. Posts to `INPUT_TAX`. |
+| WHT code, WHT %, WHT amount | Withholding tax. | No | WHT % ≥ 0. |
+| Branch (line) | Branch for the journal line. | Yes | Defaults to header branch. |
+| Segment, Dimension, Profit Centre, Project | Accounting tags. | Per `MANDATORY_…` | Fall back to header values on the journal. |
+| GL code (line) | Overrides the purchase GL code. | No | Hidden by `HIDE_LINE_ITEMS_GL_CODE`. |
+| Batch, Bin, Serial, Tracking ID | Stock references. | No | Validated for quantity consistency at FINAL. |
+| e-Invoice classification, tax type, UOM, tariff code, country of origin | e-Invoice line data. | For e-Invoice only | |
+| Remarks | Line text. | No | Becomes the journal line description. |
 
-**Q: How does an Purchase Debit Note (Internal) get created?**  
-**A:** In most cases, it is **automatically generated** when an internal supplier branch finalizes an Sales Debit Note (Internal) targeting your branch. However, you can also **manually create** one if needed.
+### Payment, Department Hdr, Contra
 
-**Q: Does finalizing an Purchase Debit Note (Internal) affect the General Ledger?**  
-**A:** Yes. When you click **FINAL**, GL entries are posted immediately — increasing your branch's payable and recording the expense in the appropriate accounts.
+| Tab | Fields | Notes |
+|---|---|---|
+| Payment | Settlement method, amount, date, remarks. | Date editable only with `ENABLE_EDIT_PAYMENT_DATE`. Amount above the outstanding balance is rejected (*Payment Exceeds Outstanding*). |
+| Department Hdr | Segment, Dimension, Profit Centre, Project. | Header defaults for every journal line. |
+| Contra | Target purchase invoice, contra amount, date. | Date editable only with `EDIT_CONTRA_TXN_DATE`. |
 
-**Q: Can I edit a purchase debit note after finalizing it?**  
-**A:** No. Once finalized, the document is locked because GL postings have been made. If you need to make corrections, void the document and create a new one.
+## Lifecycle and posting
 
-**Q: What if I need to void a finalized purchase debit note?**  
-**A:** Click the **VOID** button on the edit screen (if you have permission). The system will post reversal GL entries and update the intercompany balances accordingly.
+| Status | Meaning | Allowed next |
+|---|---|---|
+| **DRAFT** | Editable. No journal, no ARAP. | FINAL, DISCARDED |
+| **FINAL** | Posted. Header locked. | VOID |
+| **VOID** | Reversed. Reason stored in `void_reason`. | none |
+| **DISCARDED** | Abandoned draft. Hidden from the default listing. | none |
 
-**Q: Where can I see the originating Sales Debit Note (Internal) from the supplier branch?**  
-**A:** Open your Purchase Debit Note (Internal) and check the **Trace Document** tab. It shows all linked upstream and downstream documents, including the originating Sales Debit Note.
+**On FINAL** the backend validates, then queues the posting:
 
-**Q: Can I use Contra to settle this debit note against other intercompany documents?**  
-**A:** Yes. Use the **Contra** tab to offset this debit note against outstanding receivables or other intercompany balances, eliminating the need for actual cash transfers between branches.
+1. Rejects if already FINAL (*Generic Document has already been posted to FINAL*).
+2. Validates the forex rate, serial/batch/bin quantities, and the fiscal period (`FISCAL_PERIOD_LOCKED`).
+3. If the document currency differs from the base currency, creates a **shadow** base-currency document and posts that (no separate job for the original).
+4. Writes the journal below, fills ARAP amounts (`arap_pns_amount = +amount` on each `PNS` line), and drops the document into the generic-document queue, the message-template (email/notification) queue and, when not skipped, the e-Invoice queue.
+5. If the document was created by intercompany processing, the link to the source Sales Debit Note is kept.
 
-**Q: What is the difference between the "Save" and "Final" buttons?**  
-**A:** **Save** updates the document in its current status (Draft) without posting to the GL. **Final** locks the document, posts GL entries, and makes it uneditable. Always verify all details before clicking Final.
+Journal per line (amount signum **+1**, `PURCHASE` handler):
 
-**Q: Why can't I see the File Import menu?**  
-**A:** The File Import feature requires the **SHOW_FILE_IMPORT_MENU** client-side permission. Contact your administrator to enable it.
+| Account | Dr | Cr | Source of GL code |
+|---|---|---|---|
+| Creditor (`CREDITOR` or `CREDITOR_NON_TRADE`) | Net of all lines | | Company default GL-code link for the supplier's AR/AP type — mandatory. |
+| Purchase / expense (`PURCHASE`) | | Line net amount | Header GL code → item-company `PURCHASE` link → company default `PURCHASE`. |
+| Input tax (`INPUT_TAX`) | | Line tax amount | Company default `INPUT_TAX`. |
+| Settlement method (cashbook GL) | | Payment amount | Cashbook of the settlement item (Payment tab only). |
 
----
+Stock: none (quantity signum 0).
 
-## Related Applets to Purchase Debit Note (Internal)
+**On VOID** the void processor posts the reverse journal (a shadow document is voided with its original), the document is removed from the e-Invoice queue and from historical aging, and the reason is stored. A FINAL document that other documents link *from* (for example a payment voucher that already contra'd it) is not convertible to VOID (`checkIsGenDocConvertibletoVoid`); void the downstream document first.
 
-The Purchase Debit Note (Internal) Applet does not work in isolation; it operates within a broader system ecosystem.
+**Contra and settlement** — the purchase report and the payment voucher treat a FINAL debit note like a payment: its positive ARAP balance is consumed by contra against purchase invoices of the same supplier and currency.
 
-### [Sales Debit Note (Internal) Applet](/applets/sales-workflow/internal-sales-debit-note-applet/)
-**Purpose:** Manages outgoing debit notes issued by your branch to charge other internal branches.
+## Related applets
 
-**Relation to Purchase Debit Note:**  
-These are mirror documents. When the supplier branch finalizes a [Sales Debit Note (Internal)](/applets/sales-workflow/internal-sales-debit-note-applet/), the system automatically generates the corresponding Purchase Debit Note (Internal) in your applet. Changes on one side (e.g., voiding) are reflected on the other.
+- [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) — the document being reduced; Search Document pulls its lines in.
+- [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/) — the opposite-sign adjustment (amount signum −1, increases the supplier balance).
+- [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) — same sign as this document but moves stock out.
+- [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) and [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) — knock-off targets on the create screen.
+- [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) — the other settlement document against purchase invoices.
+- [Sales Debit Note (Internal)](/applets/sales-workflow/internal-sales-debit-note-applet/) — intercompany source that auto-creates this document in the buying company.
+- [Creditor Report](/applets/finance/creditor-report-applet/) and [Purchase Report](/applets/purchase-workflow/purchase-report-applet/) — where the balance and settlement show up.
+- [Chart of Account](/applets/master-data/chart-of-account-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/), [Supplier](/applets/master-data/supplier-applet-1/), [Organisation](/applets/master-data/organisation-applet/) — master data it depends on.
+- [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) — e-Invoice queue and portal status for purchase documents.
 
-### [Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/)
-**Purpose:** Manages the creation and editing of item codes used in various transactions.
+## Troubleshooting
 
-**Relation to Purchase Debit Note:**  
-The items that appear in your purchase debit note line items must be pre-configured in [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/). The item's **Type** must be set to "Account Type" for non-inventory charges, linking it to a General Ledger (GL) code.
+| Symptom | Cause | Fix |
+|---|---|---|
+| FINAL fails with `MISSING_DEFAULT_GL_CODE: CREDITOR` (or `CREDITOR_NON_TRADE`) | The company has no default GL-code link for the supplier's AR/AP type. | Add the link in Chart of Account → company default GL codes, then FINAL again. |
+| FINAL fails with `MISSING_CASHBOOK` / `MISSING_GL_CODE: STL_MTHD [code]` | A settlement line uses a settlement-method item with no cashbook or a cashbook without a GL code. | Map the settlement item to a cashbook with a GL code, or remove the Payment line. |
+| *The selected date falls within a locked fiscal period* | Transaction date is in a `LOCK_ALL` / `LOCK_TXN` period. | Change the date or reopen the period. |
+| *Generic Document has already been posted to FINAL* | Two users (or bulk FINAL plus the edit screen) posted the same draft. | Refresh; no action needed. |
+| FINAL from the edit screen posts stale values | Until the fix tracked as "FINAL button to check before SAVE", unsaved edits could be dropped when FINAL was clicked. | Update the applet; on older builds click SAVE before FINAL. |
+| No PDF opens after FINAL although `ENABLE_AUTO_POPUP` is on | No default printable format (`PRINTABLE`) — toast *No Default Printable Selected*. | Mark a format as default in Printable Format Settings. |
+| SINGLE/MULTIPLE PRINT greyed out | Same cause — `PRINTABLE` unset. | Same fix. |
+| SEND EMAIL missing | `HIDE_SEND_EMAIL_BUTTON` is on. | Turn it off in Application Settings. |
+| File Import menu missing | `HIDE_FILE_IMPORT_MENU` is on and the user lacks `SHOW_FILE_IMPORT_MENU`. | Turn the setting off or grant the permission. |
+| Import rows rejected for `AMOUNT_TAX_GST` or the e-Invoice tax-exemption columns | Older sample files predate the columns added for purchase uploads (tax amount, `HDR_/LINE_EINVOICE_TAX_EXEMPTION_DETAILS/AMOUNT`). | Download the current Sample Format and re-map. |
+| Document submitted to the tax authority although it should not be | No skip flag. | Tick Skip E-Invoice on the document, or set `skip_einvoice` on the branch or the supplier. |
+| The supplier's balance went **down**, not up | Expected — this document has amount signum +1 (Dr Creditor). | Use a Purchase Credit Note (Internal) or a purchase invoice for a supplier's extra charge. |
+| Debit note not offered in the Payment Voucher contra picker | Different currency, non-FINAL status, or zero ARAP balance. | Check `doc_ccy`, posting status and the ARAP tab. |
+| A DRAFT created by intercompany shows lines you did not key | It was generated from a related company's Sales Debit Note. | Review, then FINAL or DISCARD; the source is on Trace Document / Doc Link. |
+| Clone does nothing | Clone runs as a background job and polls up to three times. | Wait for *Cloned Document Ready*; if *Cloned document not found*, reload the listing or clone again. |
 
-### [Chart of Account Applet](/applets/master-data/chart-of-account-applet/)
-**Purpose:** The central applet for managing your organization's financial accounts and GL codes.
+## Related documentation
 
-**Relation to Purchase Debit Note:**  
-Before items can be used in debit notes, the underlying GL Codes must exist in the [Chart of Account](/applets/master-data/chart-of-account-applet/). The prerequisite workflow is:
-1. **Create the GL Code** in the [Chart of Account Applet](/applets/master-data/chart-of-account-applet/)
-2. **Create the Item & Link the GL Code** in the [Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/)
-3. **Use the Item** in this Purchase Debit Note (Internal) Applet
+- [Purchasing module](/modules-v2/purchasing/) and its [related applets](/modules-v2/purchasing/related-applets/)
+- [MyInvois setup](/guides/einvoice-guides/myinvois-setup/) and [e-Invoice validation](/guides/einvoice-guides/einvoice-validation/) — the guides that cover submitting purchase-side documents
+- [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/) — the companion reference page
