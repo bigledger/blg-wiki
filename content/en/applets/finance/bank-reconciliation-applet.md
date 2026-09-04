@@ -1,6 +1,101 @@
 ﻿---
-title: "Bank Reconciliation Applet"
-description: "Reconcile cashbook transactions with bank statements using structured periods, matching tools, and audit-ready reports."
+title: "Bank Reconciliation"
+description: "Match a cashbook's FINAL transaction lines against imported bank statement lines for a period — by hand or with the weighted auto-matcher — and produce Report 1, 2 and 3 as the close evidence."
+applet_code: "bankReconApplet"
+applet_repo: "blg-applet-wavelet-bank-recon-applet"
+modules: [financial-accounting]
+related_applets:
+  - cashbook-applet
+  - internal-receipt-voucher-applet
+  - internal-payment-voucher-applet
+  - pos-general-applet
+  - ledger-and-journal-applet
+  - organisation-applet
+guides:
+  - /guides/accounting-guides/bank-reconciliation-guide/
+sources:
+  configuration:
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/settings-container/field-configuration/field-configuration.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-listing/bank-recon-listing.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-create/bank-recon-create.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/bank-recon-edit.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/bank-recon-edit.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/cashbook-txn-lines/cashbook-txn-lines.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/manual-matching-listing/manual-matching-listing.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/report-version-3/report-version-3.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/resolver/permission.resolver.ts
+    - blg-applet-wavelet-cashbook-v3-applet/micro-fe/projects/wavelet-erp/applets/cashbook-v3-applet/src/app/components/cashbook-container/edit-weightage-config/edit-weightage-config.component.ts
+    - blg-applet-wavelet-cashbook-v3-applet/micro-fe/projects/wavelet-erp/applets/cashbook-v3-applet/src/app/components/cashbook-container/edit-weightage-config/edit-weightage-config.component.html
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/bankRecon/BankReconciliationController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/financialConfig/CashbookReconConfigController.java
+  fields:
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-create/bank-recon-create.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-create/bank-recon-create.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-create/cashbook-listing/cashbook-listing.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/bank-recon-edit.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/bank-recon-edit.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/upload-statement-edit/upload-statement-edit.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/upload-statement-edit/upload-statement-edit.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/upload-statement-listing/upload-statement-listing.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/upload-default-statement/upload-default-statement-edit/upload-default-statement-edit.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/upload-default-statement/upload-default-statement-edit/helper-checking-listing/helper-checking-listing.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/bank-statement-edit/bank-statement-edit.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/bank-statement-edit/bank-statement-edit.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/cash-statment-lines/cash-statment-lines.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/glt-payment-matching-listing/glt-payment-matching-listing.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/bt-payment-matching-listing/bt-payment-matching-listing.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/auto-matching-listing/auto-matching-listing.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/report/report.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/external-gl-container/external-gl-create/external-gl-create.component.html
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/external-gl-container/external-gl-edit/external-gl-edit.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/models/bank-recon-constants.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/bank-statement-services/bank-statement-upload.service.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/bankRecon/BankStatementController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/bankRecon/DefaultBankStatementController.java
+    - blg-akaun-platform-java/javasdk/src/main/resources/masterDataTemplates/MasterData_Upload_DefaultBankStatement.csv
+  lifecycle:
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/auto-matching-listing/auto-matching-listing.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/auto-glt-payment-matching-listing/auto-glt-bank-transaction-listing/auto-glt-bank-transaction-listing.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/manual-matching-listing/manual-matching-listing.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/glt-payment-matching-listing/bank-transaction-adj-edit/bank-transaction-adj-edit.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/new-report-version-one/new-report-version-one.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/report-version-2/report-version-2.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/report-version-3/report-version-3.component.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/bankrecon-services/cashbook-txn-stmt-recon-possible-links.service.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/BankReconAutoMatchingProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/bankRecon/CashbookTxnLineController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/bankRecon/BankReconciliationService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/bankRecon/CashbookTxnStmtReconPossibleLinkService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/bankRecon/CashbookTxnBankStmtLinkService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/bankRecon/CashbookTxnBankStmtLinkUow.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/CashbookTxnBankStmtLinkDataConsistencyObjects/CashbookTxnBankStmtLinkDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/bankRecon/CashbookTxnLinePostingService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/bankRecon/CashbookTxnLineBankReconGuard.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/errorCodesConstants/CashDocumentErrorCodesConstants.java
+  troubleshooting:
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/bankRecon/CashbookTxnBankStmtLinkUow.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/errorCodesConstants/CashDocumentErrorCodesConstants.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/bankRecon/BankStatementController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/bankRecon/CashbookTxnStmtReconPossibleLinkService.java
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-create/bank-recon-create.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/bank-statement-container/bank-recon-edit/auto-matching-listing/auto-matching-listing.component.ts
+    - blg-applet-wavelet-bank-recon-applet/micro-fe/projects/wavelet-erp/applets/bank-recon-applet/src/app/components/settings-container/field-configuration/field-configuration.component.ts
+    - gh:bigledger/blg-applet-wavelet-bank-recon-applet#6
+    - gh:bigledger/blg-applet-wavelet-bank-recon-applet#9
+    - gh:bigledger/blg-applet-wavelet-bank-recon-applet#14
+    - gh:bigledger/blg-applet-wavelet-bank-recon-applet#36
+    - gh:bigledger/blg-applet-wavelet-bank-recon-applet#44
+    - gh:bigledger/blg-applet-wavelet-bank-recon-applet#53
+    - gh:bigledger/blg-applet-wavelet-bank-recon-applet#55
+    - gh:bigledger/blg-applet-wavelet-bank-recon-applet#57
 tags:
 - bank-reconciliation
 - cashbook
@@ -12,312 +107,308 @@ tags:
 weight: 80
 ---
 
-## Purpose and Overview
+## Overview
 
+The **Bank Reconciliation** applet proves that a cashbook in BigLedger agrees with the bank. You open one *reconciliation session* per cashbook and period, import the bank's statement for that period, and link each bank statement line to the cashbook transaction line (or lines) it settles — either by hand on the Manual Matching tab or by running the weighted auto-matcher. Three reports then show the closing positions, the matched and unmatched balances on each side, and the variance.
 
-The **Bank Reconciliation Applet** is the month-end and period-end control center that validates whether your **cashbook-ledger transactions** match your **actual bank statement movements**.
+The applet does not post to the General Ledger. It reads cashbook transaction lines that were created when Receipt Vouchers, Payment Vouchers, POS settlements and cash transfers reached FINAL, and it writes *reconciliation links* that reduce the open amount on both the cashbook line and the bank statement line.
 
 {{< figure src="/screenshots/bank-recon/infograhic.png" alt="Master Your Month-End: The BigLedger Bank Reconciliation Applet - infographic showing challenges of manual reconciliation, key features, and who benefits" caption="Master Your Month-End: The BigLedger Bank Reconciliation Applet — Infographic overview of manual reconciliation challenges, solution features, and key beneficiaries." >}}
 
-It is not a standalone process. Reconciliation quality depends on how well upstream applets are configured:
+## Where it fits
 
-- **[Cashbook Applet](/applets/master-data/cashbook-applet/)** creates the cashbook accounts used by finance operations.
-- **Settlement methods** are linked to specific cashbooks.
-- **[Receipt Voucher (Internal) Applet](/applets/finance/internal-receipt-voucher-applet/)** and **[Payment Voucher (Internal) Applet](/applets/finance/internal-payment-voucher-applet/)** post settlements through those methods.
-- **[POS General Applet](/applets/sales-workflow/pos-general-applet/)** cash and card settlements also flow into linked cashbooks.
-- **Bank Reconciliation** then compares all those ledger movements against imported bank statement lines.
+| Direction | Applet / document | Why it matters here |
+|---|---|---|
+| Upstream | [Cashbook](/applets/master-data/cashbook-applet/) | Defines the cashbook being reconciled, its bank account number, its members, and the **Weightage Configuration** the auto-matcher uses |
+| Upstream | [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/), [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) | Their FINAL settlement lines (`STL_MTHD`) become cashbook transaction lines on the cashbook their settlement method points to |
+| Upstream | [POS General](/applets/sales-workflow/pos-general-applet/) | Cash, card and e-wallet settlements post the same way, through the settlement method's cashbook |
+| Upstream | Cash Transfer (cash document, FINAL) | FINAL cash transfers also post cashbook transaction lines |
+| Alongside | [Ledger and Journal](/applets/finance/ledger-and-journal-applet/) | Manual journals against the bank GL code do **not** create cashbook transaction lines; bank charges and interest must be entered as vouchers or cash transfers to become reconcilable |
+| Downstream | Report 1 / 2 / 3 (inside this applet) | The audit pack for the period |
 
 {{< callout type="info" >}}
-**Core Concept**: If a settlement method points to a cashbook, that transaction eventually shows up in Bank Reconciliation for that cashbook and period.
+**Core concept.** A transaction reaches this applet only if its settlement method (or cash transfer) points at a cashbook, and only once the document is FINAL. If a line is missing on the Reconcile tab, check the settlement method mapping and the document's posting status before you look anywhere else.
 {{< /callout >}}
 
-## Key Features Overview
+## Screens and menus
 
-### Who Benefits from This Applet?
+| Menu item | What it holds |
+|---|---|
+| **Bank Reconciliation** | Listing of reconciliation sessions; create and edit. The edit screen has five tabs: **Details**, **Upload Statement**, **Manual Matching**, **Auto Matching**, **Report** (tab order is configurable — see Default Selection) |
+| **Imported External Cashbook** | Upload a CSV of external cashbook movements and generate cashbook transaction lines from it — for cashbooks whose transactions are not produced by BigLedger documents |
+| **Settings** → **Application Settings** | The applet's own hide/show switches (a local form, not the shared field-configuration screen) |
+| **Settings** → **Default Selection** | Default branch and location; drag-and-drop ordering of the five edit tabs |
+| **Personalization** → **Default Selection** | Per-user default branch and location |
 
-**Finance Executives and Accountants:**
-- Run period-by-period reconciliation with clear status and matching controls
-- Investigate variances quickly using manual and auto matching tools
-- Maintain traceable records for every reconcile and unreconcile decision
+The Settings menu also carries the standard permission screens (Client Side Permission, Permission Wizard, Permission Set, User Permission, Role Permission), Webhook and Release Notes.
 
-**Finance Managers and Controllers:**
-- Verify cashbook integrity before close
-- Monitor unresolved items across matched and unmatched sets
-- Strengthen close governance with standardized process steps
+### Listing
 
-**Auditors and Compliance Teams:**
-- Review evidence-backed reconciliations with clear period boundaries
-- Inspect adjustment logic and report outputs for financial assurance
-- Confirm completeness of bank-to-ledger alignment
+Columns: Company, Branch, Cashbook, Name, Opening Date, Closing Date, Cash Book Txn Open Bal., Cash Book Txn Close Bal., Cash Statement Opening Bal., Cash Statement Closing Bal., **Processing Auto Matching**, Status, Created/Updated Date and By. The listing can be grouped by cashbook.
 
-### What Problems Does This Solve?
+{{< figure src="/screenshots/bank-recon/bank_recon_listing.png" alt="Bank Reconciliation listing screen showing reconciliation sessions and status summary" caption="Bank Reconciliation listing: one row per cashbook and period." >}}
+{{< figure src="/screenshots/bank-recon/bank_recon_listing_with_cashbook_group_by.png" alt="Bank reconciliation listing grouped by cashbook for easier period review" caption="Listing grouped by cashbook." >}}
 
-**The Manual Reconciliation Problem:**
+### Details tab
 
-Traditional bank reconciliation often relies on spreadsheets and ad hoc checks. Common issues include:
+Company, Branch, Cashbook, Name, Opening Date, Closing Date, the two cashbook balances (read-only, calculated) and the two bank statement balances (entered). Status is **ACTIVE** or **CLOSE**. A **Refresh calculated balance** button recomputes the cashbook side.
 
-- Cashbook balances that do not match bank balances at period close
-- Missing links between settlements and bank entries
-- Slow, error-prone manual matching with weak audit trails
-- Corrections that are hard to explain or reproduce
+{{< figure src="/screenshots/bank-recon/details_tab.png" alt="Bank reconciliation details tab with required fields and balances" caption="Details tab: cashbook, period and the four balances." >}}
 
-**The Bank Reconciliation Applet Solution:**
+### Upload Statement tab
 
-- **Structured recon session** by cashbook and date range
-- **Statement import workflow** with bank format or default helper support
-- **Manual matching controls** (reconcile and unreconcile)
-- **Auto matching** for high-volume acceleration
-- **Report suite** (Report 1, Report 2, Report 3) for variance explanation and audit evidence
+Two sub-tabs. **Upload Statement** lists the files already imported for this session (File Name, Import Format, Upload Date/By, Modified Date/By) and opens the upload form (Bank, Bank Statement Name, file). Each imported file becomes a *Cash Statement* record with its own **Details** (Company, Branch, Cashbook, Name, Opening/Closing Date and Balance, Status ACTIVE/CLOSE) and **View Statement** tab listing the parsed lines. **Default Statement Helper** lists files imported with the *Default Format* and shows, per file, a **Checking** tab with each row's validation result.
 
-## Key Features Overview
+{{< figure src="/screenshots/bank-recon/bank_statement_upload.png" alt="Upload statement screen in bank reconciliation applet" caption="Upload Statement: choose the bank format, name the statement, attach the file." >}}
+{{< figure src="/screenshots/bank-recon/upload_statement_cash_statement_tab.png" alt="Cash statement tab under upload statement with imported file listing" caption="Cash Statement: the parsed lines of one imported file." >}}
 
-{{< cards >}}
-  {{< card title="Recon Session Setup" subtitle="Cashbook, period, and opening balances with guided hints" link="#quick-start-guide" >}}
-  {{< card title="Statement Import" subtitle="Upload bank statements and review cash statement lines" link="#sidebar-menu-reference" >}}
-  {{< card title="Manual Matching" subtitle="Reconcile, unreconcile, and inspect statement lines" link="#manual-matching" >}}
-  {{< card title="Auto Matching" subtitle="Run automation and monitor processing status" link="#auto-matching" >}}
-  {{< card title="Reporting and Audit" subtitle="Report 1, 2, and 3 for close evidence" link="#reporting--audit" >}}
-  {{< card title="Cross-Applet Flow" subtitle="Cashbook, vouchers, and POS into recon" link="#how-bank-recon-connects-to-cashbook-vouchers-and-pos" >}}
-{{< /cards >}}
+### Manual Matching tab
 
-{{< figure src="/screenshots/bank-recon/bank_recon_listing.png" alt="Bank Reconciliation listing screen showing reconciliation sessions and status summary" caption="Bank Reconciliation Overview: Central listing to manage recon sessions by cashbook and period." >}}
+Three sub-tabs, all filtered to the session's cashbook and to dates on or before the session's Closing Date:
 
-## Key Concepts
+- **Reconcile** — cashbook transaction lines with an open (unmatched) amount, FINAL documents only. Clicking a line opens its matching screen (Detail, **Matched Bank Statement Lines**, **Unmatched Adjustment**), from which **Reconcile** picks one or more bank statement lines, **Undo Reconcile** removes a link, and the adjustment screen books an unmatched residue against the line.
+- **Unreconcile** — cashbook lines whose open amount is already zero, so a wrong match can be undone from the same screen.
+- **Bank Statement Lines** — every imported statement line (Date, Payor, Reference 1–3, Acc. Num., Description, Dr(-)/Cr, Balance, Txn Type, Remarks). Clicking a line opens the mirror screen (Bank Transactions, **Matched GL Transactions**, Unmatched Adjustment) so you can match from the bank side.
 
-### Understanding the Bank Reconciliation Framework {#understanding-the-bank-reconciliation-framework}
+Columns on the Reconcile and Unreconcile grids: Date, Document (with a pop-up of the source document), Payee, Balance, Debit, Credit, Forex Amount, Forex Balance, Forex Exchange Rate, Ref No, Ref 1–6, Doc Reference, Doc Remarks.
 
-Every reconciliation process must align three perspectives. This applet keeps them explicit:
+{{< figure src="/screenshots/bank-recon/manual_matching_reconcile_tab.png" alt="Manual matching reconcile tab with transaction matching options" caption="Manual Matching — Reconcile: open cashbook lines for the period." >}}
+{{< figure src="/screenshots/bank-recon/unreconcile_tab.png" alt="Unreconcile tab for reversing previous match links" caption="Manual Matching — Unreconcile: fully matched lines, ready to be undone if wrong." >}}
+{{< figure src="/screenshots/bank-recon/manual_match_bank_stmt_lines.png" alt="Bank statement lines tab used in manual matching" caption="Manual Matching — Bank Statement Lines." >}}
+{{< figure src="/screenshots/bank-recon/reconcile_clicking_detail.png" alt="Detail view after selecting reconcile action" caption="Cashbook line detail with its matched statement lines." >}}
+{{< figure src="/screenshots/bank-recon/pop_up_page_of_document.png" alt="Document pop-up page showing linked transaction context" caption="Document pop-up from the Document column." >}}
+{{< figure src="/screenshots/bank-recon/matching_reconcile_with_bank_stmt_lines_manually.png" alt="Manual reconciliation with selected bank statement lines and journal lines" caption="Selecting bank statement lines to reconcile against a cashbook line." >}}
+{{< figure src="/screenshots/bank-recon/umatch_adjustment_to_reocncile_transactiosn.png" alt="Unmatched adjustment screen for reconciling residual differences" caption="Unmatched Adjustment: book the residue that no statement line explains." >}}
+{{< figure src="/screenshots/bank-recon/bank_stmt_line_detail_on_clicking.png" alt="Detailed statement line view opened from bank statement lines listing" caption="Bank statement line detail." >}}
+{{< figure src="/screenshots/bank-recon/bank_stmt_line_matching_with_jrn_line.png" alt="Bank statement line matched to journal line detail" caption="Matching from the bank side: statement line to cashbook line." >}}
+{{< figure src="/screenshots/bank-recon/bank_stmT_line_with_adjistment.png" alt="Bank statement line with adjustment applied in matching workflow" caption="Statement line with an adjustment link." >}}
 
-| Aspect | Component | Practical Example |
-|--------|-----------|-------------------|
-| **What** are you reconciling? | Cashbook (ledger) | Operating account at Bank ABC |
-| **Against what**? | Bank statement lines | CSV import for the same month |
-| **How** do you close the gap? | Manual match, auto match, adjustments, reports | Match RCT lines to statement rows, then run Report 3 |
+### Auto Matching tab
 
-{{< callout type="tip" >}}
-**Real-World Example**: Your settlement method for card sales points to **Cashbook A**. POS settlements for the month post to **Cashbook A**. You import the bank CSV for **Cashbook A**, match lines, then use **Report 1** to show journal and statement alignment before sign-off.
-{{< /callout >}}
+**Run Automatching** queues the background job. The buttons **Matched Cash Stmt Lines**, **Matched Txn Lines**, **Unmatched Cash Stmt Lines** and **Unmatched Txn Lines** open the four result listings; all five buttons are disabled while `Processing Auto Matching` is true. Possible matches that the job did not auto-link appear as candidate rows with a **Reconcile** (bank side) or **Add** (cashbook side) button that confirms the pair. A Summary / Matched / Open panel with a **Refresh** button shows the counts.
 
-### How Bank Recon Connects to Cashbook, Vouchers, and POS {#how-bank-recon-connects-to-cashbook-vouchers-and-pos}
+{{< figure src="/screenshots/bank-recon/auto_matching_processor_page.png" alt="Auto matching processor page with run action and processing status" caption="Auto Matching: run the job, then review matched and unmatched sets." >}}
 
-Bank reconciliation works best when upstream configuration is done in the right order:
+### Report tab
 
-1. **Create the cashbook** in the [Cashbook Applet](/applets/master-data/cashbook-applet/).
-2. **Link settlement methods** to that cashbook (and branch where required).
-3. Process transactions that use those methods in:
-   - [Receipt Voucher (Internal) Applet](/applets/finance/internal-receipt-voucher-applet/)
-   - [Payment Voucher (Internal) Applet](/applets/finance/internal-payment-voucher-applet/)
-   - [POS General Applet](/applets/sales-workflow/pos-general-applet/)
-4. Confirmed movements appear on the **cashbook transaction** side for the period.
-5. **Bank Reconciliation** compares those lines to **imported bank statement** lines.
+**Report 1**, **Report 2** and **Report 3**, each with a **Generate Report** button and an export-capable grid. Their content is described under *Lifecycle and effects*.
 
-{{< callout type="tip" >}}
-If settlement methods are mapped to the wrong cashbook, variances appear in the wrong account and period. Fix master data before spending time on matching.
-{{< /callout >}}
+{{< figure src="/screenshots/bank-recon/report1_which_is_jrnl_with_bank_stmt_line.png" alt="Report 1 output showing journal lines matched with bank statement lines" caption="Report 1: expected cashbook closing vs bank statement closing, with the matched-outside-period sections." >}}
+{{< figure src="/screenshots/bank-recon/report2_with_bank_stmt_lines_with_journal.png" alt="Report 2 output with statement lines and journal mapping details" caption="Report 2: balance as per cash book, balance as per bank statement, discrepancy." >}}
+{{< figure src="/screenshots/bank-recon/report3_overview_of_bank_recon.png" alt="Report 3 overview of bank reconciliation outcomes and balances" caption="Report 3: the sectioned overview whose sections can be hidden from Application Settings." >}}
 
-### Reconciliation Lifecycle
+### Imported External Cashbook
 
-| Stage | What You Do | Why It Matters |
-|-------|---------------|----------------|
-| **Setup** | Create recon session with cashbook, dates, opening balances | Defines reconciliation scope and controls |
-| **Ingest** | Upload statement files (bank format or default helper) | Brings external bank data into the session |
-| **Match** | Manual reconcile or unreconcile; run auto matching | Links ledger activity to bank lines |
-| **Review** | Inspect unmatched lines and adjustments | Explains variances before close |
-| **Report** | Generate Report 1, Report 2, or Report 3 | Produces audit-ready documentation |
+Create: choose a Cashbook, set the Delimiter and Text Qualifier, attach the CSV (a sample block explains that the header row is required and column headers are customisable). Edit: Details (Cashbook, File Name, created/modified) and a **Cashbook Txn Lines** tab (Document, Payee, Reference, Description, Dt/Ct(-), Date Txn, Entry Date) with a **Generate transaction lines** action and DELETE.
 
-{{< figure src="/screenshots/bank-recon/bank_recon_listing_with_cashbook_group_by.png" alt="Bank reconciliation listing grouped by cashbook for easier period review" caption="Cashbook Grouping: Review recon sessions grouped by cashbook for operational clarity." >}}
+## Configuration
 
-### Core Data You Reconcile
+### Before you can use it
 
-| Source | Typical Content |
-|--------|-----------------|
-| **Cashbook transactions** | Voucher settlements, POS settlements, cash transfers, adjustments |
-| **Bank statement lines** | Imported debits, credits, descriptions, references |
-| **Recon header** | Cashbook, period, opening and closing balances, status |
-| **Match links** | Manual or automatic links between internal and bank-side lines |
+| Prerequisite | Where | Why |
+|---|---|---|
+| A cashbook for the bank account, with the user as a **member** | [Cashbook](/applets/master-data/cashbook-applet/) → Details, Members | The create screen only lists cashbooks the user can access (`cashbook-get-by-user`) |
+| Settlement methods mapped to that cashbook (and branch where required) | [Cashbook](/applets/master-data/cashbook-applet/) / [POS General](/applets/sales-workflow/pos-general-applet/) | This is what routes voucher and POS settlements into the cashbook's transaction lines |
+| Company timezone | [Organisation](/applets/master-data/organisation-applet/) → Company | Every date filter, balance calculation and report uses the company's `default_timezone` (fallback `Asia/Kuala_Lumpur`) |
+| An ACTIVE **Weightage Configuration** on the cashbook (optional) | [Cashbook](/applets/master-data/cashbook-applet/) → Weightage Configuration | Without it the auto-matcher uses the built-in defaults described below |
+| Source documents at FINAL | Receipt / Payment Voucher, POS, Cash Transfer | Only FINAL documents create cashbook transaction lines; DRAFT lines never appear here |
 
----
+{{< figure src="/screenshots/bank-recon/weightage_setup_in_cashbook.png" alt="Cashbook setup page showing weightage and reconciliation related settings" caption="Cashbook applet: the Weightage Configuration tab on a cashbook." >}}
+{{< figure src="/screenshots/bank-recon/automatching_weightage_configuration_in_cashbook_applet.png" alt="Cashbook applet automatching weightage configuration screen" caption="Weightage Configuration: tick the dimensions to score, give each a weightage (total ≤ 100), set the auto-link threshold (70–100) and, optionally, restrict to one-to-one matching." >}}
 
-## Quick Start Guide
+The weightage configuration is stored on the cashbook (`bl_fi_mst_cashbook_recon_config.config_json`) and read by the auto-matcher at run time:
 
-Get up and running quickly with these essential workflows.
+| Config key | Screen label | Effect |
+|---|---|---|
+| `matching_by_amount` `{is_checked, weightage}` | Amount | Weight of the amount score (0–100). Unticked dimensions carry weight 0 |
+| `matching_by_date` | Date | Weight of the date-proximity score |
+| `matching_by_reference` | Reference | Weight of the best reference-field similarity (Levenshtein) |
+| `matching_by_payee` | Payee | Weight of the payee / payor name similarity (Levenshtein) |
+| `auto_link_threshold` | Threshold (70 - 100) | Net score (÷100) at or above which a pair is linked automatically; values outside 70–100 fall back to 0.85 |
+| `match_one_to_one` | one-to-one checkbox | When true the one-to-many pass (several cashbook lines summing to one bank line) is skipped |
 
-{{< figure src="/screenshots/bank-recon/report3_overview_of_bank_recon.png" alt="Report 3 overview of bank reconciliation outcomes and balances" caption="At-a-Glance: Use reports together with matching to close the period with clear evidence." >}}
+The Cashbook applet's form disables Save when the ticked weightages total more than 100 or the threshold is outside 70–100 (a client-side check); the auto-matcher only reads a configuration whose status is ACTIVE.
 
-### For Admins: Prerequisite Setup
+### Applet settings
 
-**Goal:** Ensure cashbooks and settlement paths are correct before users create recon sessions.
+Where the settings live (from `app.routing.ts` and the settings container): the applet routes **Settings → Application Settings** (`field-settings`) to its **own** `FieldConfigurationComponent` — a local form of slide toggles, not the shared field-configuration screen in blg-shared-utilities. **Settings → Default Selection** and **Personalization → Default Selection** are the applet's default-settings and personal-default-settings components. There are no branch-level settings.
 
-1. Complete **cashbook** setup in the [Cashbook Applet](/applets/master-data/cashbook-applet/) (including GL link where required).
-2. Define **settlement methods** and map them to the correct **cashbook** and **branches** (see [POS General Applet](/applets/sales-workflow/pos-general-applet/) for retail settlement linking).
-3. Confirm [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) and [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) settlement lines use those methods.
-4. Optionally configure **automatching weightage** in Cashbook to improve auto-match quality.
+Any user who can open the Settings menu can change these; there is no separate permission on the form. Every toggle is created as an empty form control and patched from the saved master settings, so the default for all of them is *not set* (off — nothing hidden). Saving dispatches the applet master settings, and every component below reads them from the session store; a change applies to all users of the tenant the next time the screen loads.
 
-{{< figure src="/screenshots/bank-recon/weightage_setup_in_cashbook.png" alt="Cashbook setup page showing weightage and reconciliation related settings" caption="Cashbook Prerequisite: Configure cashbook and weightage-related settings used by reconciliation." >}}
-{{< figure src="/screenshots/bank-recon/automatching_weightage_configuration_in_cashbook_applet.png" alt="Cashbook applet automatching weightage configuration screen" caption="Automatching Weightage: Tune matching behavior from Cashbook configuration." >}}
-{{< figure src="/screenshots/bank-recon/application-settings.png" alt="Bank Reconciliation Applet Application Settings screen" caption="Application Settings: Control field visibility (e.g., branch, delete button, cashbook balances) for the Bank Reconciliation applet. These settings help tailor the reconciliation interface to your internal control policies and user needs." >}}
+{{< figure src="/screenshots/bank-recon/application-settings.png" alt="Bank Reconciliation Applet Application Settings screen" caption="Application Settings: the hide switches for the listing, the edit tabs, the reference columns and Report 3." >}}
 
----
+Settings that are declared in the applet's settings model, rendered on the form, saved and read by the code:
 
-### For Accountants: Run Your First Reconciliation
+| Section | Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|---|
+| Bank Recon Details | `HIDE_BRANCH` | Branch field on the create and edit Details forms | off | Field disappears; the session is saved without a branch |
+| Bank Recon Edit | `HIDE_UPLOAD_STATEMENT` | The Upload Statement tab of the edit screen | off | Tab is removed from the tab strip (statements must then be imported some other way) |
+| Bank Recon Edit | `HIDE_AUTO_MATCHING` | The Auto Matching tab | off | Tab is removed; matching is manual only |
 
-**Goal:** Complete one full reconciliation cycle for a cashbook period.
+Settings that are rendered on the form, saved and read by the code, but **not declared** in `applet-settings.model.ts`:
 
-1. Open **Bank Reconciliation** from the sidebar and create a new session.
-2. On **Details**, set **Cashbook**, **Opening Date**, **Closing Date**, **Cash Book Transaction Opening Balance**, and **Cash Statement Opening Balance** (use suggested hints where shown).
-3. Save the session.
-4. Open **Upload Statement** and import your bank file; review the **Cash Statement** tab listing.
-5. Open **Manual Matching**:
-   - **Reconcile** tab to link cashbook and statement lines
-   - **Unreconcile** tab to reverse incorrect matches
-   - **Bank Statement Lines** tab to investigate outliers
-6. Open **Auto Matching**, run the processor, and wait for status to refresh; review unmatched sets.
-7. Open **Report**, generate **Report 1**, **Report 2**, and **Report 3** as needed for sign-off.
+| Section | Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|---|
+| Bank Recon Details | `HIDE_CASH_BOOK_TXN_OPEN_BAL_COLUMN`, `HIDE_CASH_BOOK_TXN_CLOSE_BAL_COLUMN` | The two *Cash Book Txn* balance columns on the listing | off | Column hidden and removed from the column chooser |
+| Bank Recon Details | `HIDE_CASH_BOOK_OPEN_BAL_COLUMN`, `HIDE_CASH_BOOK_CLOSE_BAL_COLUMN` | The two *Cash Statement* balance columns on the listing (the labels say "Cash Book") | off | As above |
+| Cashbook Transaction Lines | `HIDE_REFERENCE1_COLUMN` … `HIDE_REFERENCE6_COLUMN` | Ref 1–6 on the Reconcile, Unreconcile and matching grids | off | Column hidden unless the user holds the matching `SHOW_REFERENCEn_COLUMN` permission |
+| Report → Report 3 | `REPORT3_HIDE_CASHBOOK_OPENING_BALANCE`, `REPORT3_HIDE_CASHBOOK_CLOSING_BALANCE`, `REPORT3_HIDE_BANK_OPENING_BALANCE`, `REPORT3_HIDE_BANK_CLOSING_BALANCE` | The four balance rows of Report 3 | off | Row omitted from the generated report |
+| Report → Report 3 | `REPORT3_HIDE_CURRENT_UNMATCHED_CASHBOOK`, `REPORT3_HIDE_MATCHED_CASHBOOK` | The two cashbook sections of Report 3 | off | Section omitted |
+| Report → Report 3 | `REPORT3_HIDE_BANK_UNMATCHED`, `REPORT3_HIDE_BANK_MATCHED` | The two bank sections of Report 3 | off | Section omitted |
+| Report → Report 3 | `REPORT3_HIDE_CB_MATCHED_PREV_BANK`, `REPORT3_HIDE_BANK_MATCHED_PREV_CB`, `REPORT3_HIDE_CB_MATCHED_FUTURE_BANK`, `REPORT3_HIDE_BANK_MATCHED_FUTURE_CB` | The four cross-period sections of Report 3 | off | Section omitted |
+| Report → Report 3 | `REPORT3_HIDE_VARIANCE_OPENING_DIFF` | The *difference in opening balance* row of Report 3 | off | Row omitted |
 
-{{< figure src="/screenshots/bank-recon/details_tab.png" alt="Bank reconciliation details tab with required fields and balances" caption="Details Tab: Define cashbook, period, and balances before statement work." >}}
-{{< figure src="/screenshots/bank-recon/bank_statement_upload.png" alt="Upload statement screen in bank reconciliation applet" caption="Statement Upload: Import bank statement files for the active session." >}}
-{{< figure src="/screenshots/bank-recon/upload_statement_cash_statement_tab.png" alt="Cash statement tab under upload statement with imported file listing" caption="Cash Statement Tab: Review uploaded files and parsed statement context." >}}
+Rendered on the form but **read by nothing** (switching them has no effect): `HIDE_DELETE_BUTTON` under Bank Recon Details, and the four *Department Settings* toggles labelled Segment, G/L Dimension, Profit Center and Project (`HIDE_SEGMENT`, `HIDE_GL_DIMENSION`, `HIDE_PROFIT_CENTER`, `HIDE_PROJECT`) — the applet has no dimension fields. The settings model also declares dimension, tax, custom-status and `PRINTABLE` keys that have no control and no reader; they are not documented here.
 
----
+**Settings → Default Selection** holds `DEFAULT_BRANCH` and `DEFAULT_LOCATION` (branch and location drop-downs; read by the create form as the initial branch) and **Details Tab Ordering** (`BANK_RECON_DETAILS_TAB_ORDER`): drag the five tabs — Details, Upload Statement, Manual Matching, Auto Matching, Report — into the order your team prefers; the edit screen rebuilds its tab strip from the saved order. **Personalization → Default Selection** lets each user override the default branch and location for themselves.
 
-### For Controllers: Validate Before Close
+### Document behaviour settings
 
-**Goal:** Confirm the recon is defensible for period close.
+A reconciliation session is not a posted document: no numbering set, no printable, no approval workflow, no e-Invoice flag. No exposed control found beyond the tab switches and tab order above (routes and settings components checked at commit 4f1bb1fb).
 
-1. Verify **dates** and **opening balances** match the prior period close and bank records.
-2. After matching, review **unmatched** cashbook and statement lines.
-3. Confirm material **Receipt Voucher**, **Payment Voucher**, and **POS** settlements appear on the expected cashbook for the period.
-4. Retain **Report 1 / 2 / 3** outputs with the recon session for audit file.
+### Feature visibility / permissions
 
-{{< figure src="/screenshots/bank-recon/report1_which_is_jrnl_with_bank_stmt_line.png" alt="Report 1 output showing journal lines matched with bank statement lines" caption="Report 1: Evidence of journal and bank statement alignment." >}}
+Three client-side permission codes are seeded for this applet in the registry: `DELETE_BUTTON_FOR_BANK_RECON`, `DELETE_BUTTON_FOR_BANK_STATEMENT_TXN`, `DELETE_BUTTON_FOR_MATCHING`. **The applet's code does not read any of them** — the Delete buttons are always shown to anyone who can open the screen.
 
----
+The code does check `SHOW_REFERENCE1_COLUMN` … `SHOW_REFERENCE6_COLUMN`: a role holding one of these sees the corresponding Ref column even when the tenant-wide `HIDE_REFERENCEn_COLUMN` switch is on. These `SHOW_*` codes are checked in code but **not seeded in the registry**, so they must be created on the Client Side Permission screen before they can be granted.
 
-{{< callout type="tip" >}}
-**New to bank recon?** Start in this order: **Prerequisite Setup** (cashbook and settlements) → **Details** session → **Upload Statement** → **Manual Matching** → **Auto Matching** → **Report**.
-{{< /callout >}}
+Server-side, every call is gated by the tenant permissions on the *Bank Reconciliation*, *Cash Statement*, *Bank Statement Line*, *Cashbook Transaction Line*, *Cashbook Txn Bank Statement Link* and *Cashbook Txn Statement Recon Possible Link* targets (OWNER / ADMIN / READ / WRITE), assigned through the Permission Wizard.
 
----
+## Fields
 
-## Sidebar Menu Reference
+### Details (create and edit)
 
-| Menu Item | Description |
-| :--- | :--- |
-| **Bank Reconciliation** | Listing, create, and edit recon sessions. Tabs include **Details**, **Upload Statement**, **Manual Matching**, **Auto Matching**, and **Report**. |
-| **Imported External Cashbook** | Manage imported external cashbook or GL movements that support reconciliation. |
-| **Settings** | **Application Settings** and **Default Selection** for applet behavior and field visibility. |
-| **Personalization** | **Personal Default Selection** for user-specific defaults. |
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Company | Legal entity that owns the cashbook | Yes | Max 255 |
+| Branch | Branch for the session | No | Hidden by `HIDE_BRANCH`; defaults from Default Selection |
+| Cashbook | The cashbook being reconciled | Yes | Chosen from the cashbooks the user is a member of. Immutable after create |
+| Name | Session name | Yes | Auto-filled with the month of the Opening Date (e.g. *March 2026*); editable. Max 255 |
+| Opening Date | First day of the period | Yes | Client-side check on the create form: must be later than the Closing Date of the cashbook's most recent ACTIVE session, otherwise *Opening date should be later than … based on the cashbook selected* and Create stays disabled. The backend does not re-check overlap |
+| Closing Date | Last day of the period | Yes | Client-side check: later than Opening Date (*Closing date should be later than opening date*). Matching grids and the auto-matcher only consider lines dated on or before it |
+| Cash Book Transaction Opening Balance | Cashbook balance brought forward | — | Read-only. Pre-filled with the previous session's cashbook closing balance |
+| Cash Book Transaction Closing Balance | Cashbook balance at Closing Date | — | Read-only. Calculated: opening + sum of ACTIVE, non-VOID cashbook lines dated within the period (company timezone). **Refresh calculated balance** recomputes it |
+| Cash Statement Opening Balance | Bank's opening balance | Yes | A **Prev Cash Stmt Closing Bal** hint button copies the previous session's bank closing balance |
+| Cash Statement Closing Balance | Bank's closing balance | Yes | Entered from the statement |
+| Status | ACTIVE or CLOSE | Yes | Stored as the session's `BANK_RECON_STATUS` extension value; a new session is created with the value *Processing* |
 
----
+### Upload Statement
 
-## Manual Matching {#manual-matching}
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Bank (Import Format) | Parser to use | Yes | See the format list below. Form hint *Please choose type of bank import format* |
+| Bank Statement Name | Name of the Cash Statement record | No | Defaults from the file name |
+| File | The statement file | Yes | CSV for the CSV formats, PDF for the *Pdf* formats |
+| Start Date / End Date | Period covered | Only for **Default Format** | End Date defaults to today |
 
-Manual matching gives exact control when references are non-standard or amounts need judgment.
+Import formats offered on the screen: Standard Chartered Bank, HSBC Bank, AMBANK-01, AMBANK-02, ABMB-Pdf, Hong Leong Bank-01, -02, -03, Hong Leong Bank Pdf, Maybank, Maybank Pdf, Public Bank-01, -02, Public Bank Pdf, RHB Bank, Citi Bank, CIMB-01, CIMB-02, CIMB Pdf, OCBC Pdf, Bank Islam, **Default Format**. The numbered variants are different export layouts of the same bank's internet banking; each maps to its own backend parser that checks the column headers and rejects the file if they differ (*The Headers Order Does Not Match The Expected Order*, *… Headers Are Not As Excepted*). PDF formats are parsed by text extraction and fail with *No transactions found in … PDF* when the layout is not recognised.
 
-- **Reconcile**: Link selected cashbook transactions to bank statement lines.
-- **Unreconcile**: Reverse a prior match safely when you identify an error.
-- **Bank Statement Lines**: Inspect every imported line (date, description, references, amounts).
+**Default Format** is a generic CSV. Download the template (*MasterData_Default_Bank_Statement_Template.csv*) from the upload form; its columns are `PAYEE_OR_PAYOR_NAME, RECIPIENT_REFERENCE, TRANSACTION_DATE, AMOUNT, DESCRIPTION, REMARKS, BIC_OR_SWIFT_CODE, IBAN, BANK_ACCOUNT_NUMBER, BANK_REFERENCE_NUMBER, REFERENCE_NUMBER, REFERENCE_NUMBER2, REFERENCE_NUMBER3, REFERENCE_NUMBER4`. Rows are loaded into a helper table and validated row by row; the **Checking** tab shows Transaction Date / Amount / Payee-Payor Name validation errors, a short error message, and whether each row was *Validated* and *Processed*. Rows with errors are not promoted into the Cash Statement.
 
-Use manual matching for partial matches, one-to-many relationships, and investigation before you rely on automation.
+### Cash Statement (one per imported file)
 
-{{< figure src="/screenshots/bank-recon/manual_matching_reconcile_tab.png" alt="Manual matching reconcile tab with transaction matching options" caption="Manual Matching - Reconcile: Select internal and bank lines to match." >}}
-{{< figure src="/screenshots/bank-recon/unreconcile_tab.png" alt="Unreconcile tab for reversing previous match links" caption="Manual Matching - Unreconcile: Undo incorrect matches while preserving history." >}}
-{{< figure src="/screenshots/bank-recon/manual_match_bank_stmt_lines.png" alt="Bank statement lines tab used in manual matching" caption="Bank Statement Lines: Browse and filter imported statement rows." >}}
-{{< figure src="/screenshots/bank-recon/reconcile_clicking_detail.png" alt="Detail view after selecting reconcile action" caption="Reconcile Detail: Review match context before confirming." >}}
-{{< figure src="/screenshots/bank-recon/pop_up_page_of_document.png" alt="Document pop-up page showing linked transaction context" caption="Document Pop-up: Open linked document context from a line." >}}
-{{< figure src="/screenshots/bank-recon/matching_reconcile_with_bank_stmt_lines_manually.png" alt="Manual reconciliation with selected bank statement lines and journal lines" caption="Manual Line Selection: Align journal and bank statement lines explicitly." >}}
-{{< figure src="/screenshots/bank-recon/umatch_adjustment_to_reocncile_transactiosn.png" alt="Unmatched adjustment screen for reconciling residual differences" caption="Unmatched Adjustment: Handle residual differences with controlled adjustments." >}}
-{{< figure src="/screenshots/bank-recon/bank_stmt_line_detail_on_clicking.png" alt="Detailed statement line view opened from bank statement lines listing" caption="Statement Line Detail: Validate payor, references, and amounts." >}}
-{{< figure src="/screenshots/bank-recon/bank_stmt_line_matching_with_jrn_line.png" alt="Bank statement line matched to journal line detail" caption="Line-Level Match: Confirm statement line to journal mapping." >}}
-{{< figure src="/screenshots/bank-recon/bank_stmT_line_with_adjistment.png" alt="Bank statement line with adjustment applied in matching workflow" caption="Statement Line with Adjustment: Review adjustment impact on the line." >}}
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Company, Branch, Cashbook | Inherited from the session | Cashbook yes | |
+| Name | Statement name | Yes | |
+| Opening Date, Closing Date, Opening Balance, Closing Balance | Header values of the statement | No | Set by the parser where the format carries them |
+| Status | ACTIVE / CLOSE | — | `BANK_STMT_STATUS` extension value |
 
----
+### Imported External Cashbook
 
-## Auto Matching {#auto-matching}
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Cashbook | Target cashbook | Yes | |
+| Delimiter, Text Qualifier | CSV dialect | No | |
+| File | CSV with a header row | Yes | Generated lines carry Document, Payee, Reference, Description, amount (Dt/Ct(-)), Date Txn and Entry Date |
 
-Auto matching accelerates high-volume periods:
+## Lifecycle and effects
 
-- Run the **Auto Matching** processor from the **Auto Matching** tab.
-- The system updates **matched** and **unmatched** sets based on rules and configured weightage.
-- **Processing** status is polled; wait for completion before you sign off.
-- Always perform a **manual review** of unmatched lines after a run.
+### The session
 
-{{< figure src="/screenshots/bank-recon/auto_matching_processor_page.png" alt="Auto matching processor page with run action and processing status" caption="Auto Matching Processor: Execute automation and monitor processing status." >}}
+1. **Create** — the header is written with status ACTIVE and the `BANK_RECON_STATUS` value *Processing*. Opening balances are suggested from the cashbook's most recent ACTIVE session (its cashbook closing balance and bank closing balance).
+2. **Work** — statements are imported, links are made. The header's `processing_auto_matching` flag is set to true when the auto-matcher is queued and cleared by the job when it finishes.
+3. **Close** — set Status to CLOSE on the Details tab. Nothing is locked by this: links can still be undone, and the next session's Opening Date is validated against this session's Closing Date whichever status it has.
+4. **Delete** — deleting a session is a cascade, not a soft delete: every reconciliation link and possible link of the session is removed and the open amount of each affected cashbook line and statement line is **restored**; every Cash Statement (header, lines, attachment record) imported into the session is deleted; then the session header, its extensions and its events are deleted.
 
----
+### What a reconciliation link does
 
-## Reporting & Audit {#reporting--audit}
+A link (`bl_fi_cashbook_txn_stmt_recon_link`) joins one cashbook transaction line to one bank statement line for an `amount_contra`, and is tagged `DBLSIDED` (matched on both sides), `BANK-STMT` (an adjustment booked against a bank line) or `CASH-BOOK` (an adjustment against a cashbook line). On create the backend (`CashbookTxnBankStmtLinkService.createCashbookTxnBankStmtLink` → `CashbookTxnBankStmtLinkUow`):
 
-The **Report** tab hosts three report views:
+- aligns the sign of `amount_contra` with the line's open amount and snaps float noise so a full match leaves exactly 0;
+- throws — the link is not written — if the open amount is already 0 (`…_OPEN_AMOUNT_ALREADY_ZERO_CANNOT_OVERFILL`), if the contra exceeds the remaining open amount (`…_AMOUNT_CONTRA_EXCEEDS_REMAINING_OPEN_AMOUNT`), if the signs differ (`…_OPEN_AMOUNT_AND_AMOUNT_CONTRA_SIGN_MISMATCH`) or if the contra is zero (`AMOUNT_CONTRA_MUST_BE_NON_ZERO`), the prefix being `CASHBOOK_TXN_LINE` or `CASH_STMT_LINE`;
+- applies `open_amount = open_amount − amount_contra` on **both** the cashbook line and the statement line.
 
-- **Report 1**: Journal-oriented view with bank statement line alignment.
-- **Report 2**: Detailed schedule-style output for follow-up and evidence.
-- **Report 3**: High-level overview of reconciliation outcomes and balances.
+Undo Reconcile deletes the link and adds the contra back to both open amounts. Partial matches are allowed: a RM 1,000 statement line can be linked to three cashbook lines, and a cashbook line can stay partly open across sessions.
 
-Use these together as your **month-end reconciliation pack** for reviewers and auditors.
+**Unmatched Adjustment** creates a one-sided link (txn type `BANK-STMT`, description *Adjustment*) that sets the cashbook line's open amount to zero and flags it `manual_adjustment_action = YES`, so an item the bank will never show (a write-off, a rounding residue) leaves the unmatched list; **Undo** removes the link and clears the flag. It does not post a journal — the accounting correction still has to be made with a voucher.
 
-{{< figure src="/screenshots/bank-recon/report2_with_bank_stmt_lines_with_journal.png" alt="Report 2 output with statement lines and journal mapping details" caption="Report 2: Detailed schedule for reconciliation evidence and follow-up." >}}
+### Effect on other documents
 
----
+While a cashbook line is linked to a session, the source document is protected on the server (`CashbookTxnLineBankReconGuard`, raised from `GenericDocumentService` and `CashbookTxnLinePostingService` as `CASH_DOCUMENT_RECONCILED_TXN_LINES_BLOCK_EDIT`): changing the settlement amount or transfer details of a FINAL Receipt Voucher, Payment Voucher or Cash Transfer whose lines are still reconciled is rejected with *Cashbook txn lines are bank-reconciled. Unreconcile them from the bank recon (name and month) before changing amounts or transfer details.* Voiding the document, however, voids its cashbook lines; the balance calculation excludes VOID lines, so a voided receipt disappears from the cashbook side after the fact.
 
-## Configuration & Settings
+**What this applet writes and reads.** It writes `bl_fi_bank_recon_hdr` (+ ext, event), `bl_fi_cash_stmt_hdr` / `_line` (imported statements), `bl_fi_cashbook_txn_stmt_recon_link` and `_possible_link`, and it updates `open_amount` and `manual_adjustment_action` on `bl_fi_cashbook_txn_line` and `open_amount` on `bl_fi_cash_stmt_line`. It only reads the cashbook, company and generic / cash document headers. There is no server document type, no amount or quantity signum, no journal and no stock processor: nothing here reaches the General Ledger, and nothing here is reversed by a VOID — voiding a source document voids its cashbook lines through the document's own posting service.
 
-**Application Settings** control field visibility and behavior on recon screens (for example branch visibility and delete controls). Align these with your internal control policy.
+### Auto matching
 
-**Default Selection** reduces repeated entry for users who perform reconciliation frequently.
+**Run Automatching** posts the session to the `BANK_RECON_AUTO_MATCHING_PROCESSOR` queue. The job:
 
-For automatching weightage, configure the related options in the **Cashbook** applet (see **Prerequisite Setup** screenshots above).
+1. Deletes all *possible links* of the session (a rerun starts from scratch; confirmed links are kept).
+2. Loads the outstanding lines: statement lines of the cashbook with `open_amount ≠ 0` and txn type `TXN`; cashbook lines with `open_amount ≠ 0`, txn type `TXN`, not DELETED, dated from 90 days before the Opening Date to 90 days after the Closing Date (company timezone).
+3. Loads the cashbook's ACTIVE Weightage Configuration, or the defaults (amount 0.25, date 0.25, reference 0.25, payee 0.25).
+4. Scores every cashbook × statement pair: amount (1.0 when equal to the cent, linear decay, 0 when signs differ), date (1 − days apart ÷ 90, 0 beyond 90 days), reference (best Levenshtein similarity across the reference fields) and payee (Levenshtein). Pairs whose amount score is below 0.1 or whose weighted net score is below 0.40 are dropped. Weights of dimensions with no data on either side are redistributed.
+5. Picks the best one-to-one pairs greedily. Net score ≥ the threshold creates a **confirmed link** immediately; with no configuration the rule is stricter — amount must be exact and payee similarity ≥ 0.85. Net score ≥ 0.55 but below the threshold creates a **possible link** for review.
+6. Unless `match_one_to_one` is set, looks for up to five still-open cashbook lines that sum to one open statement line (±0.01). Groups scoring ≥ 0.98 are auto-linked with the bank amount split equally; groups above the threshold become possible links.
+7. Clears `processing_auto_matching`.
 
----
+The screen disables its buttons the moment you click Run, re-checks the flag after one minute and every 30 seconds while the tab is open. Confirming a possible link (Reconcile / Add on the Auto Matching result screens) creates the real link and deletes the possible one.
 
-## Personalization
+### The reports
 
-Use **Personalization → Default Selection** so each user can keep preferred defaults without changing tenant-wide configuration.
+| Report | What it shows |
+|---|---|
+| **Report 1** | Bank statement closing balance → adds/removes the cashbook lines unmatched this period, the cashbook lines matched with a previous or future period's statement, and the bank lines unmatched or matched with previous/future cashbook lines → **Expected closing balance of the cashbook** → **Variance / discrepancy** against the calculated cashbook closing. Lines carry Document Type, Document No, Ref No, Ref 1–6, Doc Remarks, Forex Amount / Balance / Rate |
+| **Report 2** | *Balance as per Cash Book* and *Balance as per Bank Statement*, the reconciling items between them, *Expected Closing Bank Statement* and *Discrepancy*, with Date, Payee, Cheque No and the same reference columns |
+| **Report 3** | Sectioned overview: cashbook opening/closing and bank opening/closing balances; *Cashbook transactions unmatched balance*, *matched balance*, *matched with previous / future period of bank statement*; *Bank transactions unmatched / matched balance*, *matched with previous / future cashbook transactions*; *Difference in opening of cashbook opening balance vs bank statement opening balance*. Each section can be hidden from Application Settings |
 
----
+All three read the links as they stand when you click Generate Report. Report 3 is the one to keep as the period's evidence; Report 1 is the one that tells you which side the variance sits on.
 
-## Audit
+## Related applets
 
-Bank reconciliation is audit-sensitive:
+- **[Cashbook](/applets/master-data/cashbook-applet/)** — defines the cashbook, its members and the Weightage Configuration the auto-matcher reads.
+- **[Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/)** and **[Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/)** — the FINAL settlement lines that become the cashbook side of the reconciliation; both are locked against amount changes while reconciled.
+- **[POS General](/applets/sales-workflow/pos-general-applet/)** — POS settlements reach the same cashbooks through their settlement methods.
+- **[Ledger and Journal](/applets/finance/ledger-and-journal-applet/)** — for the GL side of a bank charge or interest entry; the cashbook line itself must come from a voucher or cash transfer.
+- **[Organisation](/applets/master-data/organisation-applet/)** — the company timezone that every date window in this applet uses.
 
-- **Reconcile** and **Unreconcile** actions should be restricted by role.
-- Keep the final **Report 1**, **Report 2**, and **Report 3** outputs with the recon session and bank file archive.
-- Document **adjustment** reasons when you use unmatched adjustment workflows.
+## Troubleshooting
 
----
+| Symptom | Cause | Fix |
+|---|---|---|
+| *Opening date should be later than YYYY-MM-DD based on the cashbook selected* when creating a session | The cashbook already has an ACTIVE session ending on or after that date | Start the new period the day after the last session's Closing Date, or delete the overlapping session |
+| A voucher is missing from the Reconcile tab | The document is not FINAL, its settlement method points to another cashbook, or its date is after the session's Closing Date | Check posting status and the settlement method's cashbook; the Reconcile grid is capped at the Closing Date |
+| Cannot change the amount on a Receipt / Payment Voucher: *Cashbook txn lines are bank-reconciled…* | The line is linked in a session | Undo the link on the Unreconcile tab (or the matching screen) of the session named in the message, then edit |
+| Upload fails with *The Headers Order Does Not Match The Expected Order* or *… Headers Are Not As Excepted* | The file was exported in a different layout from the format chosen | Try the other numbered variant of the same bank (e.g. -01 / -02), or convert the file to the Default Format template |
+| *No transactions found in … PDF* | The PDF layout differs from the one the parser expects (scanned image, different statement type) | Export a CSV from internet banking instead, or use Default Format |
+| Default Format rows stay unprocessed | Validation errors on Transaction Date, Amount or Payee/Payor Name | Open Default Statement Helper → the file → Checking; fix the rows in the CSV and upload again |
+| Auto Matching buttons stay greyed out | `processing_auto_matching` is still true — the job is queued, still running, or failed before clearing the flag | Wait; the screen re-checks every 30 seconds. If it never clears, the job failed — check the job queue log with the administrator |
+| Auto Matching creates almost only possible links | No ACTIVE Weightage Configuration on the cashbook, so the strict default (exact amount + payee ≥ 0.85) applies; or the threshold is set to 100 | Create a configuration with the dimensions that your bank statement actually carries (reference and payee are often blank on card-acquirer statements) and a threshold around 85 |
+| Auto Matching pairs the wrong lines with identical amounts | Amount is the only dimension with data (no reference / payee on the statement) | Lower the amount weightage and raise date; review the possible links instead of relying on auto-links |
+| Reconcile fails with *…_AMOUNT_CONTRA_EXCEEDS_REMAINING_OPEN_AMOUNT* or *…_OPEN_AMOUNT_ALREADY_ZERO_CANNOT_OVERFILL* | The line was matched in another session, or partly matched already | Look at Matched Bank Statement Lines / Matched GL Transactions for the line — the **Matched Recon** column names the session |
+| Duplicate rows on Matched Bank Statement Lines | A line linked from more than one session (older data) | Undo the links in the wrong session; the listing now groups by link |
+| A matched line vanished and the cashbook closing balance moved | The source voucher was voided after matching | Void lines are excluded from the balance; undo or re-enter the transaction and re-run the reports |
+| Report figures differ from the screen | Reports were generated while Auto Matching was still running, or after links changed | Regenerate the report once `Processing Auto Matching` is false |
+| Bank charges / interest you journalled do not appear as cashbook lines | Manual journals do not create cashbook transaction lines | Enter them as a Payment Voucher / Receipt Voucher or a Cash Transfer on the cashbook |
+| Deleting a session removed the uploaded statements | Delete cascades to every statement imported into the session and restores all open amounts | Expected; re-upload into the new session |
+| Application Settings hide/show switches "do not work" | `HIDE_DELETE_BUTTON` and the four Department Settings switches are rendered but read by nothing | Nothing to configure — they are inert (see Applet settings); the Delete button cannot be hidden |
 
-## FAQ
+## Related documentation
 
-**Q: Why do my cashbook lines not match the bank file?**
+- [Bank reconciliation guide](/guides/accounting-guides/bank-reconciliation-guide/) — the month-end procedure, step by step.
+- [Financial Accounting module](/modules-v2/financial-accounting/) — where reconciliation sits in the close.
+- [Cashbook applet](/applets/master-data/cashbook-applet/) — reference for the cashbook and its Weightage Configuration.
 
-A: Check that **settlement methods** point to the correct **cashbook**, that **dates** fall inside the recon period, and that upstream **Receipt Voucher**, **Payment Voucher**, and **POS** documents are posted.
-
-**Q: Auto matching ran but many lines remain unmatched.**
-
-A: Review **weightage** configuration in Cashbook, verify **bank import format**, then use **Manual Matching** for exceptions.
-
-**Q: Where do I start if I am new to the applet?**
-
-A: Follow **Quick Start Guide** in order: prerequisites, session **Details**, **Upload Statement**, matching, then **Report**.
-
----
-
-## Related Applets
-
-- **[Cashbook Applet](/applets/master-data/cashbook-applet/)**: Cashbook accounts and automatching weightage
-- **[Receipt Voucher (Internal) Applet](/applets/finance/internal-receipt-voucher-applet/)**: Receipt settlement into cashbook
-- **[Payment Voucher (Internal) Applet](/applets/finance/internal-payment-voucher-applet/)**: Payment settlement into cashbook
-- **[POS General Applet](/applets/sales-workflow/pos-general-applet/)**: POS settlement methods and branch mapping
-
----
-
-## Summary
-
-The Bank Reconciliation Applet is the control layer that proves **settlement-driven cashbook activity** matches **bank reality** for a defined period. When cashbooks and settlement mappings are correct, reconciliation is faster, clearer, and easier to defend in audit.
-
-## Video Walkthrough
-
-Watch this video to see the Bank Reconciliation flow in action:
+### Video walkthrough
 
 {{< youtube D0Pw7ytJ_JA >}}
 
@@ -325,16 +416,4 @@ Watch this video to see the Bank Reconciliation flow in action:
 If video playback is blocked by browser or network policy, open directly: [Bank Reconciliation Walkthrough](https://www.youtube.com/watch?v=D0Pw7ytJ_JA).
 {{< /callout >}}
 
-### What the Video Demonstrates
-
-Based on the walkthrough, the video typically covers:
-
-- **Creating a recon session** and entering opening balances on **Details**
-- **Uploading a bank statement** and reviewing the **Cash Statement** tab
-- **Manual matching** using Reconcile, Unreconcile, and Bank Statement Lines
-- **Running auto matching** and interpreting processing status
-- **Generating reports** (Report 1, Report 2, Report 3) for close evidence
-
-{{< callout type="warning" >}}
-Always reconcile **unmatched** and **adjustment** items to a clear resolution before you treat the period as closed. Unexplained variance should not roll forward silently.
-{{< /callout >}}
+The video covers creating a session and entering opening balances, uploading a statement, manual matching (Reconcile, Unreconcile, Bank Statement Lines), running Auto Matching and reading its status, and generating Report 1, 2 and 3.
