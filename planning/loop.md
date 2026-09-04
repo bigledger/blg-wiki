@@ -117,6 +117,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 - **F-0044** — are the unseeded `SHOW_*` client-side permission codes a registry omission or per-tenant seeding?
 - **F-0046** — confirm removing the sales-order "Under Review" banner; marketplace image filenames keep/rename.
 - **F-0050** merge customer-applet.md into customer-maintenance? **F-0051** does a credit limit hard-stop a sale (kb/questions)? **F-0053** keep the Doc Item video?
+- **F-0055** are the hidden COGS / Retained-Earnings month-end processors intentional? (guide correction waits) · **F-0056** month-end-processing applet repo: unreleased or dead?
 - **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
   Voucher applet?; **F-0042** merge the Creditor Report page into the combined report page?
 

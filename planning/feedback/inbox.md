@@ -279,3 +279,14 @@ with the analysis, the changes made, and the commit hash.
 ### site-wide (cross-link batch, joins F-0043/F-0049)
 - [ ] F-0054 (2026-09-05) 17 back-link entries from lane 4, each with the exact sentence and Java source line the neighbouring page should state (t2t-admin, pos-general, cp-commerce-admin, voucher-management, my-e-invoice-portal, sales order/invoice, accounts-receivable, statement-of-account, general-ledger, ledger-and-journal, financial-report, bank-reconciliation, receipt/payment voucher, purchase order/grn).
 
+## From Lane 2 run 2 (2026-09-05)
+
+### /guides/accounting-guides/financial-reporting/ + /modules-v2/financial-accounting/
+- [ ] F-0055 (2026-09-05) The financial-reporting guide documents a three-button Month End Processing flow (closing, COGS, retained earnings); the UI has ONE button — the COGS and Retained-Earnings processor buttons are commented out (backend endpoints exist). Also: a Financial Report snapshot reads only the monthly summaries Month End writes, so an empty Trial Balance = months never closed for that Set of Books — the guide should say so as the first troubleshooting item.
+      → source: content/en/guides/accounting-guides/financial-reporting.md
+      → src: see kb/topics/financial-report-applet.md and lane-2/findings.md
+      → note: WAITING ON VINCENT: are the hidden processors intentional or a regression? The guide correction depends on it.
+
+### site-wide (registry)
+- [ ] F-0056 (2026-09-05) Active repos with no ACTIVE registry row: blg-applet-wavelet-month-end-processing-applet (updated 2026-08 — unreleased split or dead?), blg-applet-MITRS-applet. Decision for Vincent.
+

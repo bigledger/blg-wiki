@@ -5,10 +5,7 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/inventory-workflow/stock-transfer-applet.md",
-  "content/en/applets/inventory-workflow/stock-report-applet.md",
   "content/en/applets/inventory-workflow/consignee-stock-transfer-applet.md",
-  "content/en/applets/master-data/customer-applet.md",
   "content/en/applets/inventory-workflow/delivery-installation-applet-V2-applet.md",
   "content/en/applets/inventory-workflow/driver-delivery-order-applet.md",
   "content/en/applets/master-data/employee-applet.md",
@@ -65,8 +62,21 @@
   {
    "page": "content/en/applets/inventory-workflow/stock-adjustment-applet.md",
    "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/stock-transfer-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/stock-report-applet.md",
+   "date": "2026-09-05"
   }
  ],
- "skipped": [],
+ "skipped": [
+  {
+   "page": "content/en/applets/master-data/customer-applet.md",
+   "reason": "Duplicate of master-data/customer-maintenance-applet.md (same registry row customer_applet_v1); awaiting Vincent's merge decision (F-0050). Not rewritten."
+  }
+ ],
  "updated": "2026-09-05"
 }

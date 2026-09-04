@@ -4,6 +4,9 @@ Folders: sales-workflow, membership, manufacturing, claims
 
 ## Cross-lane link requests
 
+
+- From `sales-workflow/pos-general-applet` (done 2026-09-05, run 2): add `pos-general-applet` to `related_applets` of `master-data/organisation-applet` (and state that the branch **default location** is enforced at cash-bill FINAL — `GENERIC_DOC_BRANCH_DEFAULT_LOCATION_DOES_NOT_MATCH`), `master-data/customer-applet` (credit-limit / credit-term blacklist blocks FINAL of cash bill, invoice, order and outbound DO — `ENTITY_BLACKLISTED`; spending-limit lines apply to cash bills), `master-data/cashbook-applet`, `master-data/chart-of-account-applet`, `master-data/tax-configuration-applet`, `master-data/pricebook-applet` (free-gift rules are a pricebook of type `POS_FREE_GIFT`; role ↔ pricing-scheme link), `master-data/inv-item-maintenance-applet`, `master-data/doc-item-maintenance-applet` (adjustment items of txn type `DOC_HEADER_ADJUSTMENT`, `GROUP_DISCOUNT`, `MEMBER_POINT_DISCOUNT` are required by POS), `inventory-workflow/stock-balance-applet`, `inventory-workflow/non-stock-and-trade-in-applet` (trade-in lines from POS carry `INTERNAL_PURCHASE_TRADE_IN`), `finance/bank-reconciliation-applet` (updating / finalising a bill whose settlement line is reconciled returns an unreconcile error), `finance/internal-receipt-voucher-applet`, `e-invoice/my-e-invoice-portal-applet` (cash bill = e-Invoice type 01; consolidated by branch), `membership/membership-admin-applet`, `membership/membership-points-currency`, `membership/voucher-management-applet` (all lane 1 — will be done when reached).
+
 - From `sales-workflow/internal-sales-debit-note-applet` (done 2026-09-05): add `internal-sales-debit-note-applet` to `related_applets` of `purchase-workflow/internal-purchase-debit-note-applet` (intercompany mirror), `finance/internal-receipt-voucher-applet`, `e-invoice/my-e-invoice-portal-applet`, `master-data/doc-item-maintenance-applet` (account-code items for charges), `master-data/customer-applet`, `master-data/chart-of-account-applet`, `master-data/cashbook-applet`, `master-data/tax-configuration-applet`.
 
 - From `sales-workflow/internal-sales-return-applet` (done 2026-09-05): add `internal-sales-return-applet` to `related_applets` of `purchase-workflow/internal-purchase-return-applet` (intercompany mirror), `e-invoice/my-e-invoice-admin-applet` and `e-invoice/my-e-invoice-portal-applet` (return references the original e-invoice; void blocked after submission), `finance/internal-receipt-voucher-applet`, `inventory-workflow/stock-balance-applet`, `master-data/customer-applet`, `master-data/chart-of-account-applet` (SALES_RETURN default GL), `master-data/cashbook-applet`.
@@ -19,6 +22,9 @@ Folders: sales-workflow, membership, manufacturing, claims
 
 ## Registry / naming mismatches
 
+
+- `posGeneral` (POS General): page title was "POS General Applet"; set to registry name "POS General". App reads client-side codes `POS_SHOW_Z_REPORT`, `POS_SHOW_CASHIER_COLECTION_REPORT`, `EXCLUDE_ACCOUNT_CODE_ITEM_TYPE_AT_ITEM_SEARCH` and the `ALLOW_<TYPE>_ITEM_PRICE_EDIT` family — none among its 31 ACTIVE defs (while `POS_SHOW_AUDIT_TRAIL_REPORT` *is* registered). Conversely `POS_CLOSE_SESSION`, `POS_FLOAT_CASH_IN_OUT`, `POS_ATTACH_DRAWER` are registered but never read by the UI code. Two DELETED defs (`ALLOW_SELL_BELOW_UNIT_PRICE_STD_INCL_TAX`, `POS_REMOVE_ROUNDING`).
+
 - `InternalSalesDebitNote`: two registry rows share this code — ACTIVE "Sales Debit Note (Internal)" and DELETED "Internal Sales Debit Note". Page uses the ACTIVE name. The parity check should key on (code, status).
 - `InternalSalesDebitNote`: `SHOW_FILE_IMPORT_MENU`, `SHOW_INTERCOMPANY_MENU`, `SHOW_DRAFT_BUTTON` and the clone-button permission are read by the app but absent from its 35 client-side perm defs.
 
@@ -31,10 +37,17 @@ Folders: sales-workflow, membership, manufacturing, claims
 
 ## Undocumented applets encountered
 
+
+- `posCustomerDisplay` — "POS Customer Display" (TNT-USER, ACTIVE, doc URL on Confluence). Repo `blg-applet-wavelet-pos-customer-display-applet` exists. No wiki page (blg-wiki#126 asked for one); POS General's `CUSTOMER_DISPLAY` / `DISPLAY_POLE_URL` settings depend on it. Not in the lane-1 queue — needs a folder decision (sales-workflow?).
+
 - `SFA` — "Sales Force Automation" (TNT-USER, ACTIVE, doc URL points at Confluence). No wiki page under sales-workflow. Not in lane-1 queue.
 - `shopee_sales_order_applet` — registry name "Tiktok Sales Order Applet" (TNT-ADMIN, ACTIVE, 2024-11-20). No wiki page; the code/name mismatch itself needs a decision (marketplace integration applets may fall under the customer-specific/integration exclusion policy).
 
 ## Questions for Vincent
+
+
+5. **POS page video.** The old page embedded YouTube with an inline-styled `<div>/<iframe>` (against the Hextra rule). I replaced it with Hugo's `{{< youtube Gf6gXUfHebE >}}` shortcode (already used on three finance pages). `daily-cashier-report-applet` has the same raw iframe — I will convert it when I reach that page unless you prefer the raw embed.
+6. **Tenant-specific branches in POS code.** The offline-settings component has `*ngIf="tenantCode==='<tenant>'"` branches for one customer's offline-print / sync variant. I documented only the generic path. Fine?
 
 1. **Client-side permission registry gap (systemic).** All five applets read `SHOW_*_MENU` (and in places `SHOW_DRAFT_BUTTON`, `SHOW_GENDOC_CLONE_BUTTON`, `ALLOW_APPROVE_SELL_BELOW_PRICE`, `ALLOW_<TYPE>_ITEM_PRICE_EDIT`) from client-side permissions, but `bl_applet_client_side_perm_dfn` in akaun_master does not define them for those applet codes. Either the master registry is incomplete (documented as "request the code" in each page's Troubleshooting) or they are seeded per tenant. Which is it, and should the pages say so differently?
 2. **Registry hygiene.** Trailing spaces in `name` for `internalSalesReturnApplet` and `salesContractApplet`; a DELETED duplicate row for code `InternalSalesDebitNote`. Should the parity check trim names and key on (code, status)?
@@ -52,3 +65,7 @@ Folders: sales-workflow, membership, manufacturing, claims
 
 - 2026-09-05 — Applet UI repos are Angular workspaces under `micro-fe/projects/wavelet-erp/applets/<slug>/`; the Settings → *Application Settings* screen is the **shared** `FieldConfigurationComponent` from `blg-shared-utilities` (8,300-line template, gated by `sessionStorage.appletCode`). Per-applet settings therefore = intersection of the applet's `AppletSettings` interface with that template. Reusable extraction script kept in the lane scratchpad.
 - 2026-09-05 — The applet repo has only 2 GitHub issues; real failure modes come from the commit log, whose subjects reference customer support repos (`blg-sd-<customer>`). All anonymised.
+
+- 2026-09-05 (run 2) — **POS General is the exception to the "applet-settings.model.ts is the key set" rule.** Its model declares 38 keys but the code reads ~200 via `master?.X`; `applet-scan.sh` therefore reports only 11 shared toggles. The true intersection (grep every `master|settings|personal|resolve.X` read in the applet ∩ shared-template controls) is **155**, ~70 of them in the posGeneral-only "POS Settings" panel (`field-configuration.component.html` L4932–5302) plus an "Auto UI" panel and a "Cashier Collection Report" tab. Consider adding that second strategy to `applet-scan.sh` as a fallback when the model is thin.
+- 2026-09-05 (run 2) — POS behaviour that is **backend-fixed**, not a setting: sum(PNS) must equal sum(STL_MTHD)+contra at FINAL; location must equal the branch default location; blacklist check; zero-amount bill gets an auto zero settlement line; reward/redeem points generated on save for member bills (using `posGeneral` settings even when the document is an invoice from `salesInvoiceApplet`).
+- 2026-09-05 (run 2) — POS menu items are gated by **setting AND permission pairs** (Approval, Settlement Adjustment, Swap Serial) or **setting unless permission** (Z Report, Cashier Collection, Audit Trail) — a cleaner version of the HIDE_/SHOW_ pattern noted in run 1.
