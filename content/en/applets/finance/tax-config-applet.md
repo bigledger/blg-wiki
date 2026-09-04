@@ -7,6 +7,8 @@ tags:
 - tax-management
 - gst
 - sst
+aliases:
+- /applets/tax-config-applet/
 ---
 
 ## Purpose and Overview

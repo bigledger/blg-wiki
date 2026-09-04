@@ -8,6 +8,8 @@ tags:
 - batch-adjustment
 - inventory-correction
 - stock-reconciliation
+aliases:
+- /applets/inventory-workflow/internal-stock-adjustment-applet/
 ---
 
 ## Purpose and Overview

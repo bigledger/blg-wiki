@@ -8,6 +8,8 @@ tags:
 - consolidation
 - analytics
 weight: 70
+aliases:
+- /applets/financial-report-applet/
 ---
 
 ## Purpose and Overview

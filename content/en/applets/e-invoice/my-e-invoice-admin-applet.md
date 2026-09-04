@@ -11,6 +11,8 @@ tags:
 - submission
 - batch-processing
 weight: 165
+aliases:
+- /applets/e-invoice/einvoice-generation-applet/
 ---
 
 ## Purpose and Overview

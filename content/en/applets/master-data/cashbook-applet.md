@@ -3,6 +3,8 @@ title: "Cashbook Applet"
 description: "Cash and bank account management for BigLedger financial operations and cash flow tracking"
 tags: core-module, cash-management, bank-accounts, financial-accounting, cash-flow
 weight: 30
+aliases:
+- /applets/cashbook-applet/
 ---
 
 ## Overview

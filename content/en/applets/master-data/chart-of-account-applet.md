@@ -8,6 +8,8 @@ tags:
 - fiscal-year
 - accounting-setup
 weight: 20
+aliases:
+- /applets/chart-of-account-applet/
 ---
 
 ## Purpose and Overview

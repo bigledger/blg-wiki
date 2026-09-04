@@ -8,6 +8,8 @@ tags:
 - entitlement-tracking
 - financial-control
 weight: 160
+aliases:
+- /applets/claim-applet/
 ---
 
 ## Purpose and Overview

@@ -11,6 +11,8 @@ weight: 200
 date: 2026-04-08
 lastmod: 2026-04-24
 draft: false
+aliases:
+- /applets/blanket-purchase-order-applet/
 ---
 
 ## Purpose and Overview

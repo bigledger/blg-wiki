@@ -9,6 +9,8 @@ tags:
 - aging-analysis
 - financial-reports
 weight: 70
+aliases:
+- /applets/debtor-and-creditor-report-applet/
 ---
 
 ## Purpose and Overview

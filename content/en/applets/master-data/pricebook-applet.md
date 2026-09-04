@@ -7,6 +7,8 @@ tags:
 - pricing
 - promotions
 - sales
+aliases:
+- /applets/pricebook-applet/
 ---
 
 ## Purpose and Overview

@@ -8,6 +8,8 @@ tags:
 - branch-management
 - location-management
 weight: 30
+aliases:
+- /applets/organization-applet/
 ---
 
 ## Purpose and Overview

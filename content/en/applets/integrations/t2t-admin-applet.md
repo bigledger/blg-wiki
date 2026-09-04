@@ -8,6 +8,8 @@ tags:
 - enterprise-administration
 - t2t-integration
 weight: 112
+aliases:
+- /applets/t2t-admin-applet/
 ---
 
 ## Purpose and Overview

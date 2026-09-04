@@ -8,6 +8,8 @@ tags:
 - payroll-setup
 - access-control
 weight: 61
+aliases:
+- /applets/employee-maintenance-applet/
 ---
 
 {{< callout type="warning" >}}

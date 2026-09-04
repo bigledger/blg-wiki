@@ -8,6 +8,8 @@ tags:
 - cycle-count
 - warehouse-operations
 weight: 165
+aliases:
+- /applets/stock-take-applet/
 ---
 
 {{< callout type="warning" >}}

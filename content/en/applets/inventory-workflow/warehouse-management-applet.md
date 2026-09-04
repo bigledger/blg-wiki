@@ -9,6 +9,8 @@ tags:
 - space-allocation
 - putaway
 weight: 170
+aliases:
+- /applets/warehouse-management-system-applet/
 ---
 
 ## Purpose and Overview

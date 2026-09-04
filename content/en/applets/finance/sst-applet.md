@@ -10,6 +10,8 @@ tags:
 - tariff-code
 - tax-filing
 weight: 20
+aliases:
+- /applets/sst/mysst/
 ---
 
 ## Purpose and Overview

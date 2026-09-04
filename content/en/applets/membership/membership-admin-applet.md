@@ -8,6 +8,8 @@ tags:
 - member-privileges
 - customer-retention
 weight: 10
+aliases:
+- /applets/membership-admin-applet/
 ---
 
 ## Purpose and Overview

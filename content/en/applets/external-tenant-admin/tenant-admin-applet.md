@@ -8,6 +8,8 @@ tags:
 - security
 - system-configuration
 weight: 10
+aliases:
+- /applets/tenant-admin-applet/
 ---
 
 ## Purpose and Overview

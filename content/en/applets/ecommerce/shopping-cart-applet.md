@@ -8,6 +8,8 @@ tags:
 - settlement-methods
 - customer-management
 weight: 170
+aliases:
+- /applets/shopping-cart-applet/
 ---
 
 ## Purpose and Overview

@@ -8,6 +8,8 @@ tags:
 - goods-received-note
 - purchase-order
 weight: 161
+aliases:
+- /applets/internal-purchase-grn-supplier-access-applet/
 ---
 
 ## Purpose and Overview

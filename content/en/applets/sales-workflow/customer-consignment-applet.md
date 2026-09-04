@@ -7,6 +7,8 @@ tags:
 - inventory-tracking
 - off-site-stock
 weight: 170
+aliases:
+- /applets/customer-consignment-applet/
 ---
 
 ## Purpose and Overview

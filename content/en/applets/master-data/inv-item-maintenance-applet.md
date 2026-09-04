@@ -8,6 +8,8 @@ tags:
 - master-data
 - stock-control
 weight: 104
+aliases:
+- /applets/inv-item-maintenance-applet/
 ---
 
 ## Purpose and Overview

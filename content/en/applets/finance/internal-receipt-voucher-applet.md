@@ -10,6 +10,8 @@ tags:
 - contra
 - import
 weight: 10
+aliases:
+- /applets/internal-receipt-voucher-applet/
 ---
 
 

@@ -8,6 +8,8 @@ tags:
   - quality-assurance
   - post-sales-support
 weight: 170
+aliases:
+- /applets/warranty-admin-applet/
 ---
 
 ## Purpose and Overview

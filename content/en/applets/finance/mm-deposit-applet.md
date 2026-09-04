@@ -8,6 +8,8 @@ tags:
 - approval-workflow
 - financial-controls
 weight: 100
+aliases:
+- /applets/mm-deposit-applet/
 ---
 
 ## Purpose and Overview

@@ -7,6 +7,8 @@ tags:
 - microsoft
 - esd-orders
 - api-integration
+aliases:
+- /applets/vstecs-ms-esd-order-applet/
 ---
 Attached User guide for MS ESD Order and Work Breakdown for implementation.
 This Applet required integration from BLG to EMP & BLG to Distributor's system to function correctly.

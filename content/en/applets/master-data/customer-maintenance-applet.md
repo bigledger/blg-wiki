@@ -7,6 +7,8 @@ tags:
 - master-data
 - credit-control
 - b2b-sales
+aliases:
+- /applets/customer-maintenance-applet/
 ---
 
 ## Purpose and Overview

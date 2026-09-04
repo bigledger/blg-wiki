@@ -10,6 +10,8 @@ tags:
 weight: 30
 date: 2026-02-06
 draft: false
+aliases:
+- /applets/internal-sales-invoice-applet/
 ---
 
 ## Purpose and Overview

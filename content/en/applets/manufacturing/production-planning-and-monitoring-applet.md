@@ -10,6 +10,8 @@ tags:
   - make-to-order
   - make-to-stock
 weight: 170
+aliases:
+- /applets/production-planning-and-monitoring-applet/
 ---
 
 ## Purpose and Overview

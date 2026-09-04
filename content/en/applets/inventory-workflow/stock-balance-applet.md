@@ -8,6 +8,8 @@ tags:
 - stock-visibility
 - inventory-control
 weight: 185
+aliases:
+- /applets/stock-balance-applet/
 ---
 
 {{< callout type="warning" >}}
