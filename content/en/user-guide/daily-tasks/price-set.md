@@ -713,7 +713,6 @@ Large-scale pricing operations require careful attention to system performance, 
 
 **Advanced Integration**:
 - **IoT Integration**: Integration with Internet of Things for real-time pricing data
-- **Blockchain**: Blockchain integration for pricing transparency and audit trails
 - **API Enhancement**: Enhanced API capabilities for external system integration
 - **Cloud Scalability**: Enhanced cloud scalability for global operations
 

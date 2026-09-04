@@ -497,7 +497,6 @@ Available webhook events:
 - 🔄 Self-checkout support
 - 🔄 Augmented reality product preview
 - 🔄 Voice-activated commands
-- 🔄 Blockchain-based loyalty points
 
 ## Support Resources
 

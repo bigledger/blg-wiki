@@ -4,14 +4,14 @@ toc: false
 ---
 
 {{< hextra/hero-badge >}}
-  <span>Selamat Datang ke Masa Depan Blockchain</span>
+  <span>Diiktiraf MDEC PEPPOL • Sedia e-Invois</span>
   {{< icon name="arrow-circle-right" attributes="height=14" >}}
 {{< /hextra/hero-badge >}}
 
 <div class="mt-6 mb-6">
 {{< hextra/hero-headline >}}
-  Bina dengan BigLedger&nbsp;<br class="sm:block hidden" />
-  Platform Blockchain Generasi Baharu
+  Transformasikan Perniagaan Anda&nbsp;<br class="sm:block hidden" />
+  dengan BigLedger ERP
 {{< /hextra/hero-headline >}}
 </div>
 

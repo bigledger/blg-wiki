@@ -634,12 +634,6 @@ BigLedger's document maintenance system manages documents through distinct lifec
 
 #### Emerging Technologies
 
-**Blockchain Integration**:
-- **Document Verification**: Blockchain-based document authenticity verification
-- **Smart Contracts**: Automated contract execution and compliance
-- **Audit Trail**: Immutable audit trail for critical documents
-- **Digital Identity**: Blockchain-based identity verification for document access
-
 **Internet of Things (IoT)**:
 - **Sensor Integration**: Automatic document creation from IoT sensor data
 - **Real-Time Monitoring**: Integration of real-time data from connected devices

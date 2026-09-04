@@ -4,14 +4,14 @@ toc: false
 ---
 
 {{< hextra/hero-badge >}}
-  <span>مرحباً بكم في مستقبل البلوك تشين</span>
+  <span>معتمد من MDEC PEPPOL • جاهز للفوترة الإلكترونية</span>
   {{< icon name="arrow-circle-right" attributes="height=14" >}}
 {{< /hextra/hero-badge >}}
 
 <div class="mt-6 mb-6">
 {{< hextra/hero-headline >}}
-  ابني مع BigLedger&nbsp;<br class="sm:block hidden" />
-  منصة البلوك تشين من الجيل القادم
+  حوّل أعمالك&nbsp;<br class="sm:block hidden" />
+  مع BigLedger ERP
 {{< /hextra/hero-headline >}}
 </div>
 

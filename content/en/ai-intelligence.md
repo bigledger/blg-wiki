@@ -424,7 +424,6 @@ AIMatrix serves as the intelligent orchestration layer that amplifies BigLedger'
 #### Q2 2025
 - Autonomous agents
 - Predictive analytics 2.0
-- Blockchain integration
 - Quantum-ready algorithms
 
 #### Q3 2025

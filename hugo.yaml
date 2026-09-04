@@ -25,7 +25,7 @@ languages:
     title: BigLedger Documentation
     weight: 1
     params:
-      description: BigLedger Documentation - Next-Generation Blockchain Platform
+      description: "BigLedger (akaun.com) — a web-based, cloud-native business operating system: accounting, inventory, sales, purchasing, POS, e-commerce and Malaysian e-Invoice. The backbone for AI agents via API, MCP and SDK."
   
   zh:
     languageName: 中文
@@ -34,7 +34,7 @@ languages:
     title: BigLedger 文档
     weight: 2
     params:
-      description: BigLedger 文档 - 下一代区块链平台
+      description: "BigLedger（akaun.com）— 基于网页的云原生业务运营系统：会计、库存、销售、采购、POS、电子商务与马来西亚电子发票。通过 API、MCP 与 SDK 成为 AI 智能体的业务骨干。"
   
   ms:
     languageName: Bahasa Melayu
@@ -43,7 +43,7 @@ languages:
     title: Dokumentasi BigLedger
     weight: 3
     params:
-      description: Dokumentasi BigLedger - Platform Blockchain Generasi Seterusnya
+      description: "BigLedger (akaun.com) — sistem operasi perniagaan berasaskan web dan awan: perakaunan, inventori, jualan, pembelian, POS, e-dagang dan e-Invois Malaysia. Tulang belakang untuk ejen AI melalui API, MCP dan SDK."
   
   ar:
     languageName: العربية
@@ -53,7 +53,7 @@ languages:
     weight: 4
     languageDirection: rtl
     params:
-      description: وثائق BigLedger - منصة البلوك تشين من الجيل التالي
+      description: "BigLedger (akaun.com) — نظام تشغيل للأعمال قائم على الويب وسحابي المنشأ: المحاسبة والمخزون والمبيعات والمشتريات ونقاط البيع والتجارة الإلكترونية والفوترة الإلكترونية الماليزية. العمود الفقري لوكلاء الذكاء الاصطناعي عبر API وMCP وSDK."
 
 params:
   # Theme settings
