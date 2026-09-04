@@ -1,6 +1,27 @@
 ﻿---
-title: "Sales Report Applet"
-description: "Comprehensive sales analytics and reporting for revenue tracking, performance monitoring, and data-driven decision-making"
+title: "Sales Report"
+description: "Reference for the Sales Report applet: sixteen grid reports over FINAL sales, return, trade-in, receipt and payment documents — by item, document, salesman, hour, day/week/month, branch, collection, card receipt, serial number and voucher — with cost basis, gross profit and delta columns gated by settings and permissions."
+applet_code: "salesReport"
+applet_repo: "blg-applet-wavelet-sales-report-applet"
+modules: [pos, financial-accounting, inventory, membership]
+related_applets: [pos-general-applet, internal-sales-invoice-applet, internal-sales-return-applet, internal-sales-credit-note-applet, internal-sales-debit-note-applet, internal-receipt-voucher-applet, internal-payment-voucher-applet, daily-cashier-report-applet, sales-report-supplier-access-applet, non-stock-and-trade-in-applet, voucher-management-applet, membership-admin-applet, inv-item-maintenance-applet, pricebook-applet, customer-applet, cashbook-applet, organisation-applet]
+guides: []
+sources:
+  - blg-applet-wavelet-sales-report-applet/micro-fe/projects/wavelet-erp/applets/sales-report-applet/src/app/app.routing.ts
+  - blg-applet-wavelet-sales-report-applet/micro-fe/projects/wavelet-erp/applets/sales-report-applet/src/app/app.component.ts
+  - blg-applet-wavelet-sales-report-applet/micro-fe/projects/wavelet-erp/applets/sales-report-applet/src/app/models/menu-items.ts
+  - blg-applet-wavelet-sales-report-applet/micro-fe/projects/wavelet-erp/applets/sales-report-applet/src/app/models/applet-settings.model.ts
+  - blg-applet-wavelet-sales-report-applet/micro-fe/projects/wavelet-erp/applets/sales-report-applet/src/app/models/advanced-search-models/ (one search model per report)
+  - blg-applet-wavelet-sales-report-applet/micro-fe/projects/wavelet-erp/applets/sales-report-applet/src/app/components/settings-container/field-configuration/field-configuration.component.{ts,html} (applet-own Application Settings screen)
+  - blg-applet-wavelet-sales-report-applet/micro-fe/projects/wavelet-erp/applets/sales-report-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+  - blg-applet-wavelet-sales-report-applet/micro-fe/projects/wavelet-erp/applets/sales-report-applet/src/app/components/settings-container/release-notes/release-notes.component.html
+  - blg-applet-wavelet-sales-report-applet/micro-fe/projects/wavelet-erp/applets/sales-report-applet/src/app/components/*-container/ (grid column definitions, showColumns setting/permission pairs, branch targets)
+  - blg-shared-utilities/utilities/advanced-search-general/advanced-search-general.component.ts (Calculate Base On gating)
+  - blg-shared-utilities/utilities/ag-grid-custom/ag-grid-custom.component.ts (grid status bar export)
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/reports/sales/SalesReportService.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/erp/reports/sales/SalesReportUow.java (document types and posting status per report)
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/TntErpPermissions.java
+  - akaun_master.bl_applet_client_side_perm_dfn (applet code salesReport)
 tags:
 - sales-reporting
 - revenue-tracking
@@ -10,494 +31,187 @@ tags:
 weight: 120
 ---
 
-{{< callout type="warning" >}}
-**Under Review**: This applet is still under review.
-{{< /callout >}}
+## Overview
 
-## Purpose and Overview
+The **Sales Report** applet is a set of read-only grid reports over finalised sales documents — cash bills, sales invoices, sales returns, trade-ins and (for the collection reports) receipt and payment vouchers. Sales managers use it to see sales, cost, gross profit and delta margins by item, document, salesman, hour, day / week / month, branch or customer category; finance uses the collection, credit-card receipt and cashflow views to tie sales to money received. Every report has the same shape: an advanced search on top, an ag-grid listing with totals, and export from the grid's status bar. Which reports, which cost columns and which cost basis a user sees is decided by applet settings paired with client-side permissions.
 
-The **Sales Report Applet** is a powerful tool designed to analyze sales records and performance. It helps teams track revenue, monitor trends, and spot opportunities or issues over time. The applet lets users review, compare figures and periods; and assess team or product performance—providing the data and views needed to support data-driven decisions.
+{{< figure src="/images/sales-report-applet/sales-report-overview-infographic.png" alt="Before and after view of manual sales reporting versus the Sales Report applet" caption="From manual spreadsheets to grid reports over the same FINAL documents finance posts." >}}
 
-{{< callout type="info" >}}
-**Core Concept**: The applet links **what** you sold (transactions and items) to **who** sold it (salesperson or team), **where** (branch or channel), and **when** (daily, monthly, yearly)—so you can slice and analyze performance from every angle.
-{{< /callout >}}
+## Where it fits
 
-## Key Features Overview
+| Direction | Document / applet | How it connects |
+|---|---|---|
+| Upstream | [POS General](/applets/sales-workflow/pos-general-applet/), [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [Sales Return (Internal)](/applets/sales-workflow/internal-sales-return-applet/) | `INTERNAL_SALES_CASHBILL`, `INTERNAL_SALES_INVOICE`, `INTERNAL_SALES_RETURN` in FINAL are the rows of most reports |
+| Upstream | [Sales Credit Note (Internal)](/applets/sales-workflow/internal-sales-credit-note-applet/), [Sales Debit Note (Internal)](/applets/sales-workflow/internal-sales-debit-note-applet/) | Included in SR By Salesman (the CM column) |
+| Upstream | [Non Stock and Trade In](/applets/inventory-workflow/non-stock-and-trade-in-applet/) | `INTERNAL_SALES_TRADE_IN` / `INTERNAL_PURCHASE_TRADE_IN` lines in item, salesman, GP and multi-branch reports |
+| Upstream | [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/), [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) | Daily Cashflow Analysis, Daily Summary, Receipt with Credit Card, Collection Invoice Detail, Multi Branch Sales |
+| Upstream | [Inv Item Maintenance](/applets/master-data/inv-item-maintenance-applet/), [Pricebook](/applets/master-data/pricebook-applet/), [Customer](/applets/master-data/customer-applet/), [Cashbook](/applets/master-data/cashbook-applet/), [Organisation](/applets/master-data/organisation-applet/) | Item categories 1–20, item types, cost and reference prices; pricing scheme; customer category and state; cashbook; branch / company |
+| Upstream | [Voucher Management](/applets/membership/voucher-management-applet/), [Membership Admin](/applets/membership/membership-admin-applet/) | Voucher Redemption report; member points (reward redemption route) |
+| Sibling | [Daily Cashier Report](/applets/sales-workflow/daily-cashier-report-applet/) | Z Report and Cashier Collection (same backend service family) |
+| Sibling | [Sales Report Supplier Access](/applets/sales-workflow/sales-report-supplier-access-applet/) | The supplier-facing subset of SR By Item Code |
 
-### Who Benefits from This Applet?
+## Screens and menus
 
-**Business Owners & Directors:**
-- Real-time visibility into overall sales performance
-- Clear revenue tracking across periods (daily, monthly, yearly)
-- Identification of top-performing products, branches, or sales teams
-- Data-driven strategic decision-making
-- Improved financial control and business growth planning
+Route root: `applet/tnt/wavelet/erp/sales-report-applet/`. Each menu item can be removed with its `HIDE_<MENU>_MENU` setting unless the user holds the matching `SHOW_<MENU>_MENU` permission (see Configuration). All reports read FINAL documents only unless stated.
 
-**Sales Managers:**
-- Monitor team sales performance efficiently
-- Track achievement against sales targets
-- Analyze sales trends and product performance
-- Identify underperforming areas and take corrective action
-- Generate performance reports for review meetings
-
-**Sales Executives / Sales Staff:**
-- View personal sales performance and transaction history
-- Track progress toward assigned sales targets
-- Improve accountability and performance transparency
-- Access historical sales data for customer follow-up
+| Menu item | Route | Documents | Main columns |
+|---|---|---|---|
+| **SR By Item Code** | `sales-report-by-item-code` | Cash bill, invoice, return, sales trade-in | Item, type, UOM, branch, location, location / company stock balance, qty sold, sales amount, sales cost, landed cost, GP and GP% (MA cost, MA + landed), categories 1–20 |
+| **SR By Document** | `sales-report-by-document` | Document types you select | Branch, location, delivery location, customer code / name / state, ref 1–2, salesman, created by, shipping entity, pricing scheme, item, date / time, doc type / no, doc and line remarks, qty, unit price, unit cost, delta unit cost, gross amount, discount, net, tax, txn amount, GP |
+| **SR By Finance Charges** | `sales-report-by-finance-charges` | Cash bill, invoice, return | Item, qty sold / returned, standard price, discount, net price, net amount, finance rate and charge, sales cost, GP |
+| **SR By Daily Weekly Monthly** | `sales-report-by-daily-weekly-monthly` | Cash bill, invoice, return | Period, salesman, customer, item, qty, amount, sales cost, GP |
+| **Daily Cashflow Analysis** | `daily-sales-report-cashflow` | Cash bill, invoice, return, refund note, receipt voucher; payment vouchers and returns in a separate section | Section, branch, customer, doc, remarks, client docs 1–5, doc links, payment info, amount, then cash / card / cheque / PD cheque / coupon / bank transfer / e-wallet / other |
+| **Hourly SR** | `hourly-sales-report` | Cash bill, invoice, return | Branch, item, one column per hour, total row |
+| **Daily GP By Salesman** | `daily-gp-by-salesman` | Cash bill, invoice, return, sales trade-in | Salesman, date, sales, return, invoice and return counts, average per invoice, units, net sales, cost, GP, GP%, delta cost / GP / GP% |
+| **SR By Salesman** | `sales-report-by-salesman` | Cash bill, invoice, return, credit note, debit note, sales trade-in | Salesman, sales, returns, CM, net sales, cost, GP, GP%, delta cost / GP / GP%, net margin; optional group by salesman |
+| **Multi Branch Sales** | `multi-branch-sales-purchase-collection` | Cash bill, invoice, return, GRN, purchase trade-in, receipt and payment vouchers | Date, branch, sales before / after tax, returns, GP, GRN before / after tax, trade-in, collection, payment |
+| **Daily Summary** | `daily-collection-summary` | Receipt and payment vouchers | Date, collection, payment voucher, receipts by cash / cheque / PD cheque / card / coupon / e-wallet / other, open balance |
+| **Receipt with Credit Card** | `receipt-with-credit-card` | Receipt vouchers settled by card | Cashbook, payment method, doc, payer, card no / name, approval code, batch, amount, card charges, net |
+| **Collection Invoice Detail** | `collection-with-invoice-detail` | Receipts with the invoices they settle | Receipt doc, amount before / after tax, balance, invoice item, contra doc, settlement method, salesman, customer |
+| **SR By Serial Number** | `sales-report-by-serial-number` | Serialised sales lines | Branch, customer, salesman, item, doc, serial number, qty, prices, discount, apportioned discount, net |
+| **Sales Item and Collection Invoice** | `sales-item-collection-invoice` | Invoices with sales order, receipt and points | Invoice, SO, item, sold / returned, net price, tax, finance cost and rate, MA unit / total cost, margin, item points, receipt and receipt mode |
+| **SR By Item Salesman Customer Category** | `sales-report-by-item-salesman-customer-category` | Cash bill, invoice, return | Two configurable group-by levels (item category level 1–20), salesman, customer, state, total, cost, GP |
+| **Voucher Redemption** | `voucher-redemption` | Redeemed vouchers | Redemption date, voucher code / name / type, serial, amount, validity / assignment / redemption / cancellation status, company, branch, location, doc, entity |
 
-**Finance & Accounts Teams:**
-- Accurate revenue verification and reconciliation
-- Exportable sales reports for accounting and audit purposes
-- Support tax reporting and financial statement preparation
-- Reduced manual compilation of sales data
-- Improved reporting accuracy and consistency
+Two further routes exist but are not in the menu: `general-purchase-sales-inventory` and `member-reward-redemption` (points earned and redeemed by card, item and transaction type).
 
-**Operations & Inventory Teams:**
-- Identify fast-moving and slow-moving products
-- Support demand forecasting and stock planning
-- Monitor the impact of sales on inventory levels
-- Improve replenishment planning
+{{< figure src="/images/sales-report-applet/main-listing.png" alt="Sales Report main listing" caption="A report: advanced search on top, grid with totals below." >}}
 
-### What Problems Does This Solve?
+{{< figure src="/images/sales-report-applet/advanced-search.png" alt="Advanced search panel" caption="Advanced search — branch, date, customer, salesman, item type / status, Calculate Base On, item category levels, Sales Lead." >}}
 
-**The Manual Sales Reporting Problem:**
+{{< figure src="/images/sales-report-applet/sales-report-by-item-code-report.png" alt="Sales Report by Item Code" caption="SR By Item Code." >}}
 
-Traditional sales reporting often relies on spreadsheets and manual compilation. Common issues include:
-- Delayed compilation of daily and monthly sales reports
-- Human errors in manual calculations
-- Limited visibility into real-time sales performance
-- Inconsistent data across branches or departments
-- Difficulty tracking historical sales records
-- Time-consuming reconciliation with finance and inventory teams
-- Lack of centralized reporting for management review
+{{< figure src="/images/sales-report-applet/sales-report-by-document.png" alt="Sales Report by Document" caption="SR By Document." >}}
 
-**The Sales Report Applet Solution:**
+{{< figure src="/images/sales-report-applet/sales-report-by-salesman.png" alt="Sales Report by Salesman" caption="SR By Salesman." >}}
 
-- **Automated calculations** - Accurate totals, summaries, and performance metrics without manual errors
-- **Centralized data management** - All sales records stored securely in one system
-- **Advanced filtering & analysis** - Analyze sales by date, branch, product, salesperson, or customer
-- **Performance visibility** - Monitor individual, team, and company-wide sales performance
-- **Historical tracking** - Access and compare past sales data for trend analysis
-- **Export-ready reports** - Generate reports suitable for finance, audit, and management review
-- **Integration ready** - Seamlessly supports accounting, inventory, and financial modules
+{{< figure src="/images/sales-report-applet/daily-gp-by-salesman.png" alt="Daily GP by Salesman" caption="Daily GP By Salesman." >}}
 
-## Key Features Overview
+{{< figure src="/images/sales-report-applet/daily-sales-report-cashflow.png" alt="Daily Sales Report with Cashflow Analysis" caption="Daily Cashflow Analysis." >}}
 
-{{< cards >}}
-  {{< card title="Reporting & History" subtitle="Daily/weekly/monthly and document-level views of past and current sales" link="#reporting--history" >}}
+{{< figure src="/images/sales-report-applet/sales-report-by-daily-weekly-monthly-1.png" alt="Daily Weekly Monthly summary" caption="SR By Daily Weekly Monthly." >}}
 
-  {{< card title="Cashflow & Profitability Analysis" subtitle="Daily sales with cashflow insight and GP by salesman" link="#cashflow--profitability-analysis" >}}
+{{< figure src="/images/sales-report-applet/multi-branch-sales-purchase-collection.png" alt="Multi-Branch Sales, Purchase and Collection" caption="Multi Branch Sales." >}}
 
-  {{< card title="Multi-Dimensional Reporting" subtitle="Focused views by item code, salesman, document, serial, and branch" link="#multi-dimensional-reporting" >}}
+{{< figure src="/images/sales-report-applet/daily-collection-summary.png" alt="Daily Collection Summary" caption="Daily Summary." >}}
 
-  {{< card title="Advanced Search & Filtering" subtitle="Filter by calculation set, type, and more for precise analysis" link="#advanced-search--filtering" >}}
-{{< /cards >}}
+{{< figure src="/images/sales-report-applet/receipt-with-credit-card.png" alt="Receipt with Credit Card" caption="Receipt with Credit Card." >}}
 
-{{< figure src="/images/sales-report-applet/sales-report-overview-infographic.png" alt="Infographic showing before and after view of manual sales reporting versus using the Sales Report Applet, and the user roles who benefit" caption="From Manual Spreadsheets to Clear Insights: Before (delayed, error-prone reports) vs After (automated calculations, centralized records, advanced analysis) and who benefits from the Sales Report Applet." >}}
+{{< figure src="/images/sales-report-applet/collection-with-invoice-detail.png" alt="Collection with Invoice Detail" caption="Collection Invoice Detail." >}}
 
-## Key Concepts
+{{< figure src="/images/sales-report-applet/sales-report-by-serial-number.png" alt="Sales Report by Serial Number" caption="SR By Serial Number." >}}
 
-### Understanding the Sales Report Framework
+{{< figure src="/images/sales-report-applet/sales-item-collection-invoice.png" alt="Sales Item and Collection Invoice" caption="Sales Item and Collection Invoice." >}}
 
-The Sales Report Applet organizes data so you can answer the right business questions:
+### Advanced search
 
-| Aspect | Component | Practical Example |
-|--------|-----------|-------------------|
-| **Who** sold? | Salesperson / Team / Branch | Top performer this month, branch comparison |
-| **What** was sold? | Product / Item / Document | Best-selling SKU, revenue by item code |
-| **When** did it sell? | Date / Period / Year | Daily figures, month-over-month, YoY |
-| **How much?** | Revenue / Quantity / Margin | Totals, summaries, profitability |
+Fields vary per report; the common ones are Branch (multi-select, grouped by company, limited to the branches the user's API permission targets), Date range (or Date Option for Multi Branch Sales), Customer, Customer Category, Salesman, Shipping Entity, Item Code, Item Type (basic, grouped, NSTI, bundle, coupon, service, warranty, GL code, header adjustment …), Item Status, Item Category Level 1–20, **Calculate Base On** (cost basis, see below), **Sales Lead** (sales-lead type / label), Optional (`HIDE_GL_CODE_TYPE` — leave GL-code lines out), Invoice No (SR By Document), Cashbook and Credit Card item (Receipt with Credit Card), Group By 1 / 2 (SR By Item Salesman Customer Category), Company / Voucher Code / Date Redeem (Voucher Redemption).
 
-A **calculation set** is the rule that defines *how* your figures are produced (e.g., by invoice date vs delivery date, and which document types count). Picking the same calculation set as your team or finance ensures you are all looking at the same definition of "sales."
+**Calculate Base On** chooses the cost or price used for cost, GP and delta columns: `cost_ma` (default), `cost_wa`, `cost_fifo`, `cost_lifo`, `cost_replacement`, `cost_manual`, `ref_price1–3`, `delta_price1–3`, `rebate_price1–3`, `sales_min_price`, `sales_max_price`, `purchase_min_price`, `purchase_max_price`, `report_unit_replacement_cost`, `report_unit_manual_cost`, `report_unit_commission`, `report_unit_rebate`. Replacement cost falls back to MA cost when zero; SR By Document uses delta price and falls back to the delta-price percentage amount when empty.
 
-{{< callout type="tip" >}}
-**Real-World Example**: A sales manager (WHO) checks October sales (WHEN) for the Northern branch (WHERE). The report shows product X (WHAT) contributed 30% of revenue with strong margin (HOW MUCH)—enabling a decision to increase stock and set higher targets for Q4.
-{{< /callout >}}
+### Grid and export
 
-### Report Hierarchy at a Glance
+Each grid supports column grouping, a totals footer row, a document popup from a row (cost amount and GP in the popup are hideable), and export of the current grid — title, filename and date-range subtitle are set per report — from the status bar (PDF and Excel).
 
-```
-Organization
-â”‚
-â”œâ”€â”€ Period (Daily / Monthly / Yearly) â”€â”€â†’ WHEN
-â”‚
-â”œâ”€â”€ Dimension (Branch / Team / Product / Document) â”€â”€â†’ WHO / WHAT
-â”‚   â”‚
-â”‚   â””â”€â”€ Figures (Revenue, Quantity, Margin) â”€â”€â†’ HOW MUCH
-â”‚
-â””â”€â”€ Calculation Set & Type â”€â”€â†’ HOW figures are derived
-```
+{{< figure src="/images/sales-report-applet/export-1.png" alt="Export report" caption="Export from the grid status bar." >}}
 
-**Flow Through the Hierarchy:**
+{{< figure src="/images/sales-report-applet/export-2.png" alt="Exported PDF" caption="Exported report." >}}
 
-1. **Period** - Choose the time slice (daily, monthly, yearly)
-2. **Dimension** - Slice by salesman, branch, product, or document
-3. **Figures** - Revenue, quantity, margin—calculated from your chosen basis
-4. **Calculation Set** - Defines *how* figures are derived (e.g., invoiced vs delivered sales)
+### Settings and Personalization menus
 
-This structure enables:
-- **Accurate comparisons** across periods and dimensions
-- **Flexible reporting** by salesman, document, item code, or serial number
-- **Clear traceability** via audit trail and report history
-- **Consistent metrics** for finance and operations
+| Entry | Route | Purpose |
+|---|---|---|
+| Application Settings | `settings/field-settings` | The applet's **own** settings screen (not the shared Field Configuration): menu visibility, Calculate Base On options, cost / GP column visibility, category-group visibility, own-transactions-only |
+| Default Selection | `settings/default-selection` | Default Branch, Default Location |
+| Webhook, Release Notes, permission listings | `settings/…` | Standard |
+| **Personalization → Default Selection** | `personalization/personal-default-selection` | Per-user Default Branch and Default Location |
 
----
+{{< figure src="/images/sales-report-applet/settings-page.png" alt="Settings page" caption="Settings menu." >}}
 
-## Quick Start Guide
+{{< figure src="/images/sales-report-applet/application-setting.png" alt="Application Settings" caption="Application Settings — hide or show each sidebar report." >}}
 
-Get up and running quickly with these essential workflows.
+{{< figure src="/images/sales-report-applet/set-default.png" alt="Default Selection" caption="Default Selection — branch and location." >}}
 
-{{< figure src="/images/sales-report-applet/main-listing.png" alt="Sales Report Applet main listing page showing report list or summary view with period and filters" caption="Sales Report main listing: View reports, select period, and apply filters from the main screen." >}}
+{{< figure src="/images/sales-report-applet/role-perm.png" alt="Role permission" caption="Role permission listing." >}}
 
-### For Business Owners & Directors: View Overall Performance
+## Configuration
 
-**Goal:** See real-time sales performance and key metrics in a few steps.
+### Before you can use it
 
-1. **Navigate**: Go to **Sales Report** (or **Reports** > **Sales Report**) from the sidebar
-2. **Select period**: Use the period selector to choose date range (e.g., This Month, Last Quarter, YTD)
-3. **View summary**: Review revenue totals, trends, and top performers (branches, products, or teams)
-4. **Drill down**: Click into a row or use filters to compare periods or assess team/product performance
-5. **Export**: Click **Export** (or **Print**) to generate reports for board meetings or strategic planning
+| Prerequisite | Where | Why |
+|---|---|---|
+| FINAL sales documents | [POS General](/applets/sales-workflow/pos-general-applet/), [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [Sales Return (Internal)](/applets/sales-workflow/internal-sales-return-applet/) | Every query filters `posting_status = 'FINAL'`; drafts never appear |
+| Item costs and reference prices maintained | [Inv Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) | MA / WA / FIFO / LIFO cost come from costing; replacement, manual, reference, delta and rebate prices and report unit costs are item fields — an empty basis gives zero cost and 100% GP |
+| Item categories 1–20 | [Inv Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) | Category columns and category-level filters |
+| Customer category and state | [Customer](/applets/master-data/customer-applet/) | Filters and the State column |
+| Cashbooks and settlement methods | [Cashbook](/applets/master-data/cashbook-applet/) | Collection and card-receipt reports group by cashbook / method |
+| API read permission per report, with branch targets | Settings → permission listings | `API_TNT_DM_ERP_SALES_REPORT_BY_ITEM_CODE_READ`, `…_BY_DOCUMENT_READ`, `…_BY_FINANCE_CHARGES_READ`, `…_CASHFLOW_ANALYSIS_READ`, `…_BY_SALESMAN_READ`, `API_TNT_DM_ERP_DAILY_GP_BY_SALESMAN_READ`, `…_HOURLY_SALES_REPORT_READ`, `…_MULTI_BRANCH_DAILY_SALES_PURCHASE_COLLECTION_READ`, `…_DAILY_COLLECTION_SUMMARY_READ`, `…_OFFICIAL_RECEIPT_BY_CREDIT_CARD_READ`, `…_COLLECTION_INVOICE_DETAILS_READ`; the branch picker only offers the targets granted |
 
-**What happens next?** Exported reports can be shared with stakeholders or used for month-end review. Refresh the view to see the latest data.
+### Applet settings
 
-**Pro Tip:** Set default date ranges and favorite views in settings to speed up daily review.
+**Default Selection** (`settings/default-selection`): `DEFAULT_BRANCH`, `DEFAULT_LOCATION`. Personalization → Default Selection holds the same two keys per user.
 
----
+**Application Settings** (`settings/field-settings`) — this applet renders its own screen with four groups:
 
-### For Sales Managers: Monitor Team Performance
+| Group | Keys | Effect when on |
+|---|---|---|
+| Menu | `HIDE_<MENU>_MENU` for every sidebar item, e.g. `HIDE_SALES_REPORT_BY_ITEM_CODE_MENU`, `HIDE_SALES_REPORT_BY_DOCUMENT_MENU`, `HIDE_SALES_REPORT_BY_FINANCE_CHARGES_MENU`, `HIDE_SALES_REPORT_BY_DAILY_WEEKLY_MONTHLY_MENU`, `HIDE_DAILY_SALES_REPORT_CASHFLOW_MENU`, `HIDE_HOURLY_SALES_REPORT_MENU`, `HIDE_DAILY_GP_BY_SALESMAN_MENU`, `HIDE_SALES_REPORT_BY_SALESMAN_MENU`, `HIDE_MULTI_BRANCH_SALES_PURCHASE_COLLECTION_MENU`, `HIDE_DAILY_COLLECTION_SUMMARY_MENU`, `HIDE_RECEIPT_WITH_CREDIT_CARD_MENU`, `HIDE_COLLECTION_WITH_INVOICE_DETAIL_MENU`, `HIDE_SALES_REPORT_BY_SERIAL_NUMBER_MENU`, `HIDE_SALES_ITEM_COLLECTION_INVOICE_MENU`, `HIDE_SALES_REPORT_BY_ITEM_SALESMAN_CUSTOMER_CATEGORY_MENU`, `HIDE_VOUCHER_REDEMPTION_MENU` | Removes the item from the sidebar for everyone except users holding the matching `SHOW_<MENU>_MENU` permission (key = route in upper case with `_`) |
+| Advanced search | `ADVANCED_SEARCH_SHOW_<OPTION>` for each Calculate Base On option: `ADVANCED_SEARCH_SHOW_COST_MA`, `…_COST_WA`, `…_COST_FIFO`, `…_COST_LIFO`, `…_COST_REPLACEMENT`, `…_COST_MANUAL`, `…_REF_PRICE1/2/3`, `…_DELTA_PRICE1/2/3`, `…_REBATE_PRICE1/2/3`, `…_SALES_MIN_PRICE`, `…_SALES_MAX_PRICE`, `…_PURCHASE_MIN_PRICE`, `…_PURCHASE_MAX_PRICE`, `…_REPORT_UNIT_REPLACEMENT_COST`, `…_REPORT_UNIT_MANUAL_COST`, `…_REPORT_UNIT_COMMISSION`, `…_REPORT_UNIT_REBATE` | Only options switched on appear in the Calculate Base On list (all off = empty list) |
+| Columns | `HIDE_COST`, `HIDE_MA_COST`, `HIDE_UNIT_COST`, `HIDE_GP`, `HIDE_GP_PERCENTAGE`, `HIDE_NET_MARGIN`, `HIDE_DELTA_COST`, `HIDE_DELTA_UNIT_COST`, `HIDE_DELTA_GP`, `HIDE_DELTA_GP_PERCENTAGE`, `HIDE_DOC_POPUP_COST_AMOUNT`, `HIDE_DOC_POPUP_GP` | Hides the cost / margin column (or popup value) in every report that has it, unless the user holds the paired `SHOW_*` permission |
+| Columns | `VIEW_OWN_CREATED_TRANSACTIONS_ONLY` (labelled *VIEW_SALESMAN_OWN_TRANSACTION_ONLY*) | Daily Cashflow Analysis is limited to documents the user created; `ALLOW_VIEW_ALL_SALESMAN_TRANSACTION` widens it to all salesmen |
+| Category groups | `HIDE_ITEM_CATEGORY_GROUP_1` … `HIDE_ITEM_CATEGORY_GROUP_20` | Hides that category column in the grids and its level filter in advanced search |
 
-**Goal:** Track team sales, targets, and trends for review meetings.
+Keys in the settings model with no UI: department / tax `ENABLE_*` / `INCLUDE_*`, custom-status `ENABLE_ / NAME_ / LIST_CUSTOM_STATUS_*`, `PRINTABLE`.
 
-1. **Navigate**: Go to **Sales Report** and select **By Salesperson** or **Team** view from the dimension dropdown or sidebar
-2. **Set period**: Select the reporting period (e.g., current month) in the date range filter
-3. **Review performance**: Check the listing or summary for individual and team figures; compare to targets if displayed
-4. **Identify gaps**: Use filters (branch, product, date) to spot underperforming areas or products
-5. **Generate report**: Click **Export** or **Print** to create performance reports for team meetings
+### Document behaviour settings
 
-**Going on Leave?** Ensure your deputy has access to the same report views or use delegation if supported.
+Not applicable — the applet creates no documents. Cost basis defaults to `cost_ma` when nothing is chosen; the document popup opens the source document read-only.
 
----
+### Feature visibility / permissions
 
-### For Sales Executives: Check Personal Performance
+Client-side permissions registered for this applet (49 ACTIVE):
 
-**Goal:** View your own sales figures and progress toward targets.
+| Group | Codes | Pairs with |
+|---|---|---|
+| Menus | `SHOW_SALES_REPORT_BY_ITEM_CODE_MENU`, `SHOW_SALES_REPORT_BY_DOCUMENT_MENU`, `SHOW_SALES_REPORT_BY_FINANCE_CHARGES_MENU`, `SHOW_SALES_REPORT_BY_DAILY_WEEKLY_MONTHLY_MENU`, `SHOW_DAILY_SALES_REPORT_CASHFLOW_MENU`, `SHOW_HOURLY_SALES_REPORT_MENU`, `SHOW_DAILY_GP_BY_SALESMAN_MENU`, `SHOW_SALES_REPORT_BY_SALESMAN_MENU`, `SHOW_MULTI_BRANCH_SALES_MENU`, `SHOW_MULTI_BRANCH_SALES_PURCHASE_COLLECTION_MENU`, `SHOW_DAILY_COLLECTION_SUMMARY_MENU`, `SHOW_RECEIPT_WITH_CREDIT_CARD_MENU`, `SHOW_COLLECTION_WITH_INVOICE_DETAIL_MENU`, `SHOW_SALES_REPORT_BY_SERIAL_NUMBER_MENU`, `SHOW_SALES_ITEM_COLLECTION_INVOICE_MENU`, `SHOW_SALES_REPORT_BY_ITEM_SALESMAN_CUSTOMER_CATEGORY_MENU` | `HIDE_<MENU>_MENU` settings (no `SHOW_VOUCHER_REDEMPTION_MENU` is registered) |
+| Columns | `SHOW_COST`, `SHOW_MA_COST`, `SHOW_UNIT_COST`, `SHOW_GP`, `SHOW_GP_PERCENTAGE`, `SHOW_DOC_POPUP_COST_AMOUNT`, `SHOW_DOC_POPUP_GP` | `HIDE_*` column settings (no `SHOW_NET_MARGIN` / `SHOW_DELTA_*` are registered, so those hides cannot be reopened per role) |
+| Scope | `ALLOW_VIEW_ALL_SALESMAN_TRANSACTION` (read by Daily Cashflow Analysis), `ALLOW_VIEW_TRANSACTION_ALL_USER_CREATE` (registered, not read by the current code) | `VIEW_OWN_CREATED_TRANSACTIONS_ONLY` |
+| Cost basis (legacy) | `SHOW_ADVANCED_SEARCH_COST_MA / _WA / _FIFO / _LIFO / _MANUAL / _REPLACEMENT`, `…_REF_PRICE1–3`, `…_DELTA_PRICE1–3`, `…_REBATE_PRICE1–3`, `…_SALES_MIN/MAX_PRICE`, `…_PURCHASE_MIN/MAX_PRICE`, `…_REPORT_UNIT_*` | Registered but **no longer read**: the shared advanced search gates Calculate Base On on the `ADVANCED_SEARCH_SHOW_*` settings only |
 
-1. **Navigate**: Go to **My Sales** (if available) or **Sales Report** and ensure the view is filtered to your user
-2. **Select period**: Choose daily, weekly, or monthly view from the period selector
-3. **Review figures**: See your transaction history and running totals in the listing or summary
-4. **Track targets**: Compare your numbers to assigned targets if your organization displays them in the applet
-5. **Use history**: Open past periods to pull data for customer follow-up or dispute resolution
+## Fields
 
-**Pro Tip:** Bookmark or add **My Sales** / **Sales Report** to your favorites for quick access.
+Read-only applet; the only inputs are the advanced-search fields above and the two default-selection keys.
 
----
+## Lifecycle and posting
 
-### For Finance & Operations: Verify and Export Data
+Not applicable. Reports never change documents, stock or the ledger. Amounts are multiplied by each line's amount signum, so returns, credit notes and trade-ins reduce sales, and posting status must be FINAL.
 
-**Goal:** Reconcile revenue and export reports for accounting or inventory planning.
+## Related applets
 
-1. **Navigate**: Go to **Sales Report** and apply filters (e.g., by document type, branch) from the filter bar
-2. **Verify totals**: Cross-check revenue and figures with source documents or the general ledger
-3. **Select calculation set**: Choose the correct calculation set (e.g., invoiced sales, delivered sales) so the basis matches finance
-4. **Export**: Click **Export** and select format (e.g., Excel, PDF) for accounting, audit, or tax
-5. **Share**: Send the exported file to finance or operations using your organization’s process
+- [POS General](/applets/sales-workflow/pos-general-applet/), [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [Sales Return (Internal)](/applets/sales-workflow/internal-sales-return-applet/), [Sales Credit Note (Internal)](/applets/sales-workflow/internal-sales-credit-note-applet/), [Sales Debit Note (Internal)](/applets/sales-workflow/internal-sales-debit-note-applet/) — the documents reported.
+- [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/), [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) — collection reports.
+- [Daily Cashier Report](/applets/sales-workflow/daily-cashier-report-applet/) — Z Report and Cashier Collection.
+- [Sales Report Supplier Access](/applets/sales-workflow/sales-report-supplier-access-applet/) — supplier-facing sales by item.
+- [Non Stock and Trade In](/applets/inventory-workflow/non-stock-and-trade-in-applet/), [Voucher Management](/applets/membership/voucher-management-applet/), [Membership Admin](/applets/membership/membership-admin-applet/) — trade-in, voucher and points rows.
+- [Inv Item Maintenance](/applets/master-data/inv-item-maintenance-applet/), [Pricebook](/applets/master-data/pricebook-applet/), [Customer](/applets/master-data/customer-applet/), [Cashbook](/applets/master-data/cashbook-applet/), [Organisation](/applets/master-data/organisation-applet/) — master data the filters and columns come from.
 
-**Pro Tip:** Use the same calculation set and date range as your accounting period for consistent reconciliation.
+## Troubleshooting
 
----
+| Symptom | Cause | Fix |
+|---|---|---|
+| A report is missing from the sidebar for one user | `HIDE_<MENU>_MENU` on and the user lacks `SHOW_<MENU>_MENU` | Turn the hide off or grant the permission |
+| Calculate Base On list is empty or lacks an option | No `ADVANCED_SEARCH_SHOW_<OPTION>` setting switched on | Application Settings → advanced search group |
+| Cost, GP, GP%, delta or net-margin column missing | `HIDE_*` column setting on; user lacks the paired `SHOW_*` (net margin and delta columns have no permission) | Turn the hide off, or grant `SHOW_COST` / `SHOW_GP` / … |
+| Branch picker shows only some branches, or a report is empty for a branch | The report's API read permission is granted without that branch target | Add the branch to the permission target |
+| Daily Cashflow Analysis shows only my own documents | `VIEW_OWN_CREATED_TRANSACTIONS_ONLY` on | Grant `ALLOW_VIEW_ALL_SALESMAN_TRANSACTION` or turn the setting off |
+| GP is 100% or cost is zero | The chosen cost basis is empty on the item (manual / replacement / reference price not maintained) | Maintain the item field or choose `cost_ma` |
+| Filtering SR By Document by Sales Lead returned only cash bills | Older build ignored the selected document types when a sales lead was chosen | Fixed; upgrade |
+| Receipt with Credit Card net amount wrong; wrong settlement total when the header is a receipt voucher; GP / net margin miscalculated; return totals missing in Daily GP By Salesman; hour columns missing in Hourly SR | Older build bugs | Fixed; upgrade |
+| Export fails with more than two group columns | Older build | Fixed; upgrade |
+| Category 1–20 column or filter not shown | `HIDE_ITEM_CATEGORY_GROUP_n` on | Application Settings → category groups |
+| Cannot find a document by its remarks | Remarks filter added recently to SR By Document and SR By Item Code | Upgrade, then use the Remarks field |
 
-### For Admins: Initial System Setup
+## Related documentation
 
-**Goal:** Get the Sales Report applet ready for users in 4 steps.
-
-**Step 1: Configure Report Types & Dimensions** (`Settings > Application Setting` > **Report Types** / **Dimensions**)
-- Enable the dimensions you need: by salesman, by document, by item code, by serial number
-- Set default report type or template if the applet supports it
-
-{{< figure src="/images/sales-report-applet/application-setting.png" alt="Application setting where the user can hide and shown which side bar menu they want to have in the applet" >}}
-
-**Step 2: Set Access & Permissions** (`Settings > Access` or role permission settings)
-- Grant view access by role (e.g., all staff can view; managers see team data)
-- Allow export for users who need to share reports
-
-{{< figure src="/images/sales-report-applet/role-perm.png" alt="Seeting which the admin or other staff can set which user can access and have permission on specific setting" >}}
-
-**Step 3: Set Defaults** (`Settings > Sales Report` > **Default Settings**)
-- Set default date range (e.g., current month) and default calculation set
-- Configure export formats (Excel, PDF) if applicable
-
-{{< figure src="/images/sales-report-applet/set-default.png" alt="Set the default setting on the applet, eg: set default branch and default location on the applet" >}}
-
-**Step 4: Test**
-- Run a report as a business owner, sales manager, and salesperson
-- Export a sample report and confirm figures match expectations
-
-{{< figure src="/images/sales-report-applet/export-1.png" alt="Export reports in pdf" >}}
-
-{{< figure src="/images/sales-report-applet/export-2.png" alt="Export reports in pdf" >}}
-
-**Ongoing:** Review calculation sets when you add new document types or change accounting rules so reports stay aligned with finance.
-
----
-
-{{< callout type="tip" >}}
-**New to the system?** Start with the basics:
-1. Business owners should open **Sales Report** and review the default summary view
-2. Sales managers should run a **By Salesperson** or **By Team** report for the current month
-3. Admins should complete **Initial System Setup** above, then review **Configuration & Settings** for detailed options
-{{< /callout >}}
-
----
-
-## Reporting & History
-
-**Enable accurate review of past and current sales.**
-
-Reporting & History gives you a single place to review and compare sales over time, with full traceability.
-
-**What you get:**
-- Centralized storage of sales records
-- Detailed transactional analytics
-- Historical data comparison across selected periods
-- Built-in audit trail for report traceability
-
-**Typical use:**
-- Review daily or monthly figures before closing the period
-- Compare this month vs last month, or this year vs last year
-- Support audits with a clear report history
-
----
-
-## Cashflow & Profitability Analysis
-
-**Helps management understand revenue flow and product profitability.**
-
-Use the applet to see not just *how much* was sold, but *how* it contributes to cashflow and profit.
-
-**What you get:**
-- Revenue by period (daily, monthly, yearly)
-- Contribution by product, branch, or channel
-- Margin or profitability views where configured
-- Support for cashflow planning and strategic decisions
-
----
-
-## Multi-Dimensional Reporting
-
-**Generate reports across multiple business perspectives.**
-
-Slice sales data the way your business runs:
-
-| Dimension | Use Case |
-|-----------|----------|
-| **By Salesman** | Individual performance, target vs actual |
-| **By Document** | Invoice-level or order-level analysis |
-| **By Item Code** | Product performance, fast/slow movers |
-| **By Serial Number** | Traceability, warranty or service follow-up |
-
-Choose the dimension that answers your question—whether for sales meetings, inventory planning, or finance reconciliation.
-
----
-
-### Core Report Views in This Applet
-
-Under the hood, the Sales Report Applet exposes several focused views (routes) that answer different business questions:
-
-| Report View | Route (for reference) | What It Shows | Typical Questions Answered |
-|-------------|------------------------|---------------|----------------------------|
-| **Sales Report by Item Code** | `sales-report-by-item-code` | Sales and margin by item/SKU, with category breakdowns and optional landed cost | Which products are fast/slow movers? Which SKUs drive the most revenue or margin? |
-| **Sales Report by Salesman** | `sales-report-by-salesman` | Net sales, cost, GP, GP%, and deltas by salesperson | Who are my top performers? Where is margin leaking by salesperson? |
-| **Daily Sales Report with Cashflow Analysis** | `daily-sales-report-cashflow` | Daily sales transactions with cashflow-related fields (payment info, document links) | What was sold today and how did it impact cashflow? Which branches or customers drove collections? |
-| **Sales Report by Document** | `sales-report-by-document` | Sales grouped at document level (invoices, etc.) with document metadata | Which invoices contribute most to revenue? Which documents need follow-up? |
-| **Sales Report by Serial Number** | `sales-report-by-serial-number` | Sales and movement by serialised items | Where is each serialised unit now? Which customer bought a specific serial number? |
-| **Daily/Weekly/Monthly Summary** | `sales-report-by-daily-weekly-monthly` | Aggregated sales by period | How are sales trending day by day, week by week, or month by month? |
-| **Daily GP by Salesman** | `daily-gp-by-salesman` | Gross profit and GP% by salesperson on a daily basis | Which days and which salespeople are driving (or dragging) profitability? |
-| **Multi-Branch Sales, Purchase & Collection** | `multi-branch-sales-purchase-collection` | Consolidated view across branches for sales, purchases, and collections | How is each branch performing, and where are collections lagging? |
-| **Daily Collection Summary & Collection with Invoice Detail** | `daily-collection-summary`, `collection-with-invoice-detail` | Collections by day, with drill-down to invoice-level detail | How much was collected today and which invoices were settled? |
-| **Receipt with Credit Card & Sales Item Collection Invoice** | `receipt-with-credit-card`, `sales-item-collection-invoice` | Card-based receipts and item-level collection details | How much of today’s sales were paid by card? Which items are tied to each collection invoice? |
-
-These views all share a common pattern: advanced search at the top, a configurable ag-grid listing, and optional column visibility based on permissions.
-
----
-
-### Sales Report by Item Code
-
-Use **Sales Report by Item Code** when you want a detailed product lens on performance.
-
-- See sales, returns, net sales, cost, GP, and GP% per SKU, with category breakdowns.
-- Optionally include landed cost and landed GP for a more realistic margin picture.
-- Ideal for product managers and inventory teams deciding which items to promote, phase out, or reprice.
-- Route reference (for admins): `sales-report-by-item-code`.
-
-{{< figure src="/images/sales-report-applet/sales-report-by-item-code-report.png" alt="Sales Report by Item Code view showing product-level sales, returns, net sales, cost and GP in a grid" caption="Sales Report by Item Code: Analyze product-level sales, returns, and margins in a configurable grid view." >}}
-
----
-
-### Sales Report by Salesman
-
-Use **Sales Report by Salesman** to understand how each salesperson or team is performing.
-
-- View net sales, cost, GP, GP%, and delta metrics per salesperson.
-- Combine with **Daily GP by Salesman** to see profitability trends by day and by person.
-- Great for sales managers tracking targets, coaching, and incentive plans.
-- Route references: `sales-report-by-salesman`, `daily-gp-by-salesman`.
-
-{{< figure src="/images/sales-report-applet/sales-report-by-salesman.png" alt="Sales Report by Salesman view showing net sales, cost, GP and GP% per salesperson in a grid" caption="Sales Report by Salesman: View individual and team performance with net sales, cost, and gross profit metrics." >}}
-
----
-
-### Daily GP by Salesman
-
-Use **Daily GP by Salesman** to see gross profit and GP% by salesperson on a daily basis.
-
-- Identify which days and which salespeople drive or drag profitability.
-- Complements the main Sales Report by Salesman with a time-sliced view.
-- Route reference: `daily-gp-by-salesman`.
-
-{{< figure src="/images/sales-report-applet/daily-gp-by-salesman.png" alt="Daily GP by Salesman view showing gross profit and GP% by salesperson per day" caption="Daily GP by Salesman: Track daily profitability by salesperson for coaching and target review." >}}
-
----
-
-### Sales Report by Document
-
-Use **Sales Report by Document** when you need invoice-level or order-level analysis.
-
-- See sales grouped by document (invoices, orders) with document metadata.
-- Identify which invoices or documents contribute most to revenue.
-- Useful for finance reconciliation, follow-up, and audit trails.
-- Route reference: `sales-report-by-document`.
-
-{{< figure src="/images/sales-report-applet/sales-report-by-document.png" alt="Sales Report by Document view showing sales grouped by document with document numbers and details" caption="Sales Report by Document: Analyze sales at document level with invoice and order details." >}}
-
----
-
-### Daily Sales Report with Cashflow Analysis
-
-Use **Daily Sales Report with Cashflow Analysis** when you care about both revenue and cash movement.
-
-- Shows daily sales transactions with rich document metadata and payment information.
-- Helps finance and operations see how sales translate into cash, by branch and customer.
-- Useful for daily cashflow monitoring, reconciliation, and spotting collection issues early.
-- Route reference: `daily-sales-report-cashflow`.
-
-{{< figure src="/images/sales-report-applet/daily-sales-report-cashflow.png" alt="Daily Sales Report with Cashflow Analysis view showing daily sales transactions and payment information" caption="Daily Sales Report with Cashflow Analysis: View daily sales with cashflow and payment details by branch and customer." >}}
-
----
-
-### Daily / Weekly / Monthly Summary
-
-Use the **Daily/Weekly/Monthly** summary view when you want a clean time-based picture.
-
-- Aggregate sales at the day, week, or month level.
-- Quickly compare recent periods without diving into line-level detail.
-- Helpful for management dashboards, performance reviews, and trend spotting.
-- Route reference: `sales-report-by-daily-weekly-monthly`.
-
-{{< figure src="/images/sales-report-applet/sales-report-by-daily-weekly-monthly-1.png" alt="Daily Weekly Monthly summary view showing aggregated sales by day, week or month" caption="Daily/Weekly/Monthly Summary: Compare sales trends across periods in a single view." >}}
-
----
-
-### Multi-Branch Sales, Purchase & Collection
-
-Use **Multi-Branch Sales, Purchase & Collection** to see the bigger picture across locations.
-
-- Consolidates sales, purchases, and collections by branch in a single view.
-- Makes it easy to compare branches, identify underperforming locations, and plan support or investment.
-- Often used by regional managers and finance teams for branch reviews.
-- Route reference: `multi-branch-sales-purchase-collection`.
-
-{{< figure src="/images/sales-report-applet/multi-branch-sales-purchase-collection.png" alt="Multi-Branch Sales Purchase and Collection view showing consolidated sales, purchases and collections by branch" caption="Multi-Branch Sales, Purchase & Collection: Compare branch performance and collections in one consolidated view." >}}
-
----
-
-## Advanced Search & Filtering
-
-**Improves efficiency and enables precise data analysis.**
-
-Narrow down reports so you see only what matters:
-
-- **By calculation set** – Use the correct basis (e.g., invoiced sales, delivered sales) as configured in the applet
-- **By type** – Filter by document type, transaction type, or category
-- **By date range** – Daily, weekly, monthly, custom range
-- **By branch, team, product, or customer** – Focus on a specific segment
-
-Consistent use of filters ensures that comparisons and exports are accurate and aligned across teams.
-
-{{< figure src="/images/sales-report-applet/advanced-search.png" alt="Advanced Search and Filtering panel showing filters for calculation set, date range, branch and other criteria" caption="Advanced Search & Filtering: Refine report results using calculation set, date range, branch, and other filters." >}}
-
----
-
-## Configuration & Settings
-
-Configure how sales data is aggregated, who can see what, and how reports behave.
-
-{{< figure src="/images/sales-report-applet/settings-page.png" alt="Sales Report Applet Settings page showing configuration options such as Calculation Sets and Report Types" caption="Settings page: Access calculation sets, report types, and other Sales Report configuration options." >}}
-
-#### Report Definitions & Calculation Sets (`Settings > Sales Report`)
-
-**Where:** `Settings > Sales Report` (or equivalent) — **Calculation Sets** / **Report Definitions**
-
-**What:** A **calculation set** defines how sales figures are calculated—for example, by invoice date, delivery date, or document type—and which source documents feed the report. This ensures that "sales" means the same thing across the organization (e.g., invoiced vs delivered). Everyone using the same set gets comparable numbers.
-
-**Typical options:**
-- Calculation set name and description
-- Source (e.g., invoiced sales, delivery orders)
-- Date basis (document date, posting date, etc.)
-- Inclusion/exclusion of certain document types
-
----
-
-#### Report Types & Dimensions (`Settings > Sales Report`)
-
-**Where:** `Settings > Sales Report` — **Report Types** / **Dimensions**
-
-**What:** Configure which dimensions are available (by salesman, by document, by item code, by serial number) and any report templates or default views. Controls what appears in multi-dimensional reporting and dropdowns.
-
----
-
-#### Access & Permissions (`Settings > Access` or role/permission settings)
-
-**Where:** `Settings > Access` or **Role / Permission** settings for the Sales Report Applet
-
-**What:** Define who can:
-- View sales reports (all branches vs own branch, all team vs own)
-- Export reports
-- Change calculation set or sensitive filters
-
----
-
-#### Default Periods & Favorites (`Settings > Sales Report`)
-
-**Where:** `Settings > Sales Report` — **Default Settings** or **User Preferences**
-
-**What:** Set default date range (e.g., current month), default calculation set, and optional favorite views so users land on the right report quickly.
-
----
-
-#### Export & Integration (`Settings > Sales Report`)
-
-**Where:** `Settings > Sales Report` — **Export Formats** / **Integration**
-
-**What:** Configure export formats (e.g., PDF, Excel) and any integration with accounting, inventory, or BI tools so that reports are export-ready and consistent with downstream systems.
-
----
-
-## FAQ
-
-**Q: Why do my sales figures differ from the finance team’s numbers?**  
-A: You are likely using a different **calculation set** or date range. Finance often uses a set based on invoice date or posting date. In Sales Report, select the same calculation set and period that finance uses for reconciliation, and ensure filters (branch, document type) match. If numbers still differ, compare source documents or check with your admin.
-
-**Q: How do I run a report for one branch only?**  
-A: Use the **Branch** (or **Location**) filter on the main Sales Report screen. Select the branch you want before applying the date range and calculation set. The listing and totals will then show only that branch’s sales.
-
-**Q: How do I compare this month to last month (or this year to last year)?**  
-A: Use the period selector and any **comparison** or **variance** option in the Sales Report. Select the two periods (e.g., This Month vs Last Month); the report will show both figures and variance where the applet supports it. If there is no comparison view, run two reports (one per period) and compare the exported totals.
-
-**Q: Can I export to Excel for month-end close?**  
-A: Yes. Open Sales Report, set the calculation set and date range to match your closing period, apply any filters (e.g., branch), then click **Export** and choose Excel (or the format your finance team uses). Use the same settings every month for consistent month-end reports.
-
-**Q: How do I see only my own sales as a salesperson?**  
-A: If your organization uses **My Sales**, open that from the sidebar—it shows only your transactions. Otherwise, open **Sales Report**, use the **By Salesperson** (or similar) filter, and select your name. If your role is restricted to “own” data, you may already see only your sales by default.
-
+- [Sales & POS module](/modules-v2/pos/)
+- [Sales Workflow applets](/applets/sales-workflow/)
