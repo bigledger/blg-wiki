@@ -3,7 +3,8 @@ You are Lane {N} of a four-lane programme that upgrades every applet reference p
 ## Read these first (in this order)
 1. /home/marketing/repos/blg-wiki/planning/specs/applet-page-standard.md — the standard you are applying. Follow it exactly.
 2. /home/marketing/repos/blg-wiki/CLAUDE.md — read "What BigLedger is", the privacy rules, and the Hextra theme limitations. The applet pages are REFERENCE docs (tables and identifiers allowed); do not switch them to the user-guide voice.
-3. /home/marketing/repos/blg-wiki/planning/lanes/README.md and your state file /home/marketing/repos/blg-wiki/planning/lanes/lane-{N}/state.json (queue = ordered list of pages; do them in order).
+3. /home/marketing/repos/blg-wiki/planning/lanes/METHOD.md — what the first runs learned (shared FieldConfigurationComponent in refs/blg-shared-utilities; HIDE_*/SHOW_* pairs; posting fixed by backend signums; `kb/tools/applet-scan.sh <repo> <appletCode>` computes the applicable settings). Use it; do not rediscover.
+4. /home/marketing/repos/blg-wiki/planning/lanes/README.md and your state file /home/marketing/repos/blg-wiki/planning/lanes/lane-{N}/state.json (queue = ordered list of pages; do them in order).
 
 ## Sources of truth
 - **Applet registry** (product truth): /home/marketing/repos/blg-wiki/planning/private/registry-applets-2026-09-05.tsv — columns: code, name, applet_type, status, documentation_url, created, vrsn, revision. The page's `title:` must equal the registry `name`; `applet_code:` = `code`. If a page has no ACTIVE registry row under any plausible name, do NOT enhance it — record it under "Registry / naming mismatches" in findings.md and mark it skipped in state.json.
@@ -26,7 +27,7 @@ You are Lane {N} of a four-lane programme that upgrades every applet reference p
 8. Update state.json: move the page from `queue` to `done` (with the date). Save after every page so a crash loses nothing.
 
 ## Pace and stopping
-Quality over count. Aim for 6–10 pages this run; stop cleanly when you judge the next page would get less care, or after about 90 minutes of work. Before stopping: run `/home/marketing/repos/blg-wiki/tests/content-lint.sh` (repo-wide, read-only — it must pass for your files; fix anything of yours it flags), make sure state.json and the ledger shard are saved, and finish findings.md.
+Quality over count. Realistic pace is 4–6 large document applets or 6–10 small master-data/report applets per run; stop cleanly when you judge the next page would get less care, or after about 90 minutes of work. Before stopping: run `/home/marketing/repos/blg-wiki/tests/content-lint.sh` (repo-wide, read-only — it must pass for your files; fix anything of yours it flags), make sure state.json and the ledger shard are saved, and finish findings.md.
 
 ## Hard rules
 - Edit only files under the folders listed in your state.json, plus your lane's files under planning/lanes/lane-{N}/, your ledger shard, and kb/topics/. Nothing else.
