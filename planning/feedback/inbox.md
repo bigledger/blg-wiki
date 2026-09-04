@@ -324,3 +324,14 @@ with the analysis, the changes made, and the commit hash.
 ### confirmations for Vincent
 - [ ] F-0066 (2026-09-05) Lane 1 replaced Sales Report / Membership Admin content describing settings and menus that do not exist in code (calculation sets, "My Sales", physical/virtual card types, custom-status earn/redeem flags) — confirm these were not from a product brief. daily-cashier-report raw iframe → youtube shortcode when reached.
 
+## From Lane 2 run 3 (2026-09-05)
+
+### /guides/accounting-guides/bank-reconciliation-guide/
+- [ ] F-0067 (2026-09-05) Four factual corrections from the applet source (lane-2/findings.md): the button label; where possible matches are reviewed; journals never create cashbook lines (so the guide's "post an adjustment journal to fix the variance" step cannot work as written); reconciliation status is ACTIVE/CLOSE. Also document the real auto-match rule: 90-day window either side, four weighted dimensions from the cashbook config_json (defaults 0.25 each), auto-link when exact amount AND payee ≥ 0.85, possible link ≥ 0.55, groups of 2–5 lines summing to one bank line.
+      → source: content/en/guides/accounting-guides/bank-reconciliation-guide.md
+      → src: kb/topics/bank-reconciliation.md (20 cited facts)
+      → note: guide rewrite unit for the loop (not lane territory). High priority — this is the exemplar guide.
+
+### /applets/finance/bank-reconciliation-applet/
+- [ ] F-0068 (2026-09-05) Vincent decisions: keep the verbatim Import Format list (real bank names as product labels) or genericise (Q7)? document the 5 inert toggles + 3 unread permissions or file as bugs (Q8)? auto-matcher looks 90 days AFTER the closing date while the grid stops at it — intended (Q9)? permission facts cited from a read-only akaun_master query in findings/ledger rather than a file — acceptable?
+
