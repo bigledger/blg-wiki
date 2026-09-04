@@ -110,6 +110,15 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 
 ## Waiting on Vincent
 
+- **F-0038 — confirm stock behaviour of the standard purchase pair** before the GRN page and the
+  procurement guide are corrected: code says Purchase Invoice (Internal) = stock in (+1), Purchase
+  Invoice No Stock In = 0, Purchase GRN Stock In = +1. The wiki currently says the reverse.
+- **F-0045 — confirm posting direction of Purchase Debit/Credit Note** (code: PDN reduces supplier balance, PCN increases it — old pages said the reverse) and whether the intercompany SDN→PDN pairing is a bug.
+- **F-0044** — are the unseeded `SHOW_*` client-side permission codes a registry omission or per-tenant seeding?
+- **F-0046** — confirm removing the sales-order "Under Review" banner; marketplace image filenames keep/rename.
+- **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
+  Voucher applet?; **F-0042** merge the Creditor Report page into the combined report page?
+
 - **Authenticate Gmail and Google Drive**: run `/mcp` in this session and select "claude.ai Gmail" and "claude.ai Google Drive". Until then email/Drive ingestion falls back to the service-account scripts in `vince-pa` (see `kb/sources/email/ACCESS.md`).
 
 - ADR-0002: is `accounts-receivable-applet` real (wiki issue #20) or was the issue mistaken?
@@ -121,4 +130,5 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 |---|---|---|---|---|
 | 1 | 2026-09-05 | batch | F-0017 quality gate on deploy (+ F-0035 mojibake ×94 in 7 pages, one duplicate H1) | Shipped 54caf966→4be6bca2. CI quality job green (lints, lychee-gated 383, Playwright 42/42); deploy needs it. First CI run failed twice on install steps (repo has hugo/ dir; lychee archive nests binary) — fixed. Lints surfaced F-0036 (56 title-less pages) and F-0037; allowlisted. |
 | 2 | 2026-09-05 | batch | F-0001..03, F-0037 Indonesian text in Malay pages | Shipped d5858dbf. Two pages fixed in place; the consignment page (Indonesian end to end) archived under planning/ — English is canonical until a real BM translation. Malay lint now has zero exemptions. Follow-up: alias /ms/applets/customer-consignment-applet/ → English page in the next shipping unit (bookmarks currently 404). |
+| 3 | 2026-09-05 | lanes | Lanes 1–4 launched (applet standard); lanes 1, 2, 3 run 1 merged: 5 + 4 + 4 pages | Commits 82a38ef5, ccdf5f28, bfcc1a51 via kb/tools/merge-lane.sh (isolated worktree gate). Findings → F-0038..F-0049; METHOD.md written from the three convergent discoveries (shared FieldConfigurationComponent; HIDE/SHOW pairs; posting fixed by backend signums). Lane 4 still running. |
 

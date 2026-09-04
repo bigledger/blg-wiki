@@ -5,11 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/master-data/doc-item-maintenance-applet.md",
-  "content/en/applets/master-data/customer-maintenance-applet.md",
-  "content/en/applets/master-data/chart-of-account-applet.md",
-  "content/en/applets/master-data/cashbook-applet.md",
-  "content/en/applets/inventory-workflow/stock-availability-applet.md",
   "content/en/applets/inventory-workflow/stock-adjustment-applet.md",
   "content/en/applets/inventory-workflow/stock-transfer-applet.md",
   "content/en/applets/inventory-workflow/stock-report-applet.md",
@@ -47,7 +42,28 @@
   "content/en/applets/inventory-workflow/warehouse-management-applet.md",
   "content/en/applets/master-data/workflow-design-applet.md"
  ],
- "done": [],
+ "done": [
+  {
+   "page": "content/en/applets/master-data/doc-item-maintenance-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/master-data/customer-maintenance-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/master-data/chart-of-account-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/master-data/cashbook-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/stock-availability-applet.md",
+   "date": "2026-09-05"
+  }
+ ],
  "skipped": [],
  "updated": "2026-09-05"
 }
