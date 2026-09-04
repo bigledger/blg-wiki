@@ -8,10 +8,6 @@
   "human-resources"
  ],
  "queue": [
-  "content/en/applets/finance/internal-purchase-invoice-applet.md",
-  "content/en/applets/finance/internal-receipt-voucher-applet.md",
-  "content/en/applets/finance/internal-payment-voucher-applet.md",
-  "content/en/applets/finance/ledger-and-journal-applet.md",
   "content/en/applets/finance/financial-report-applet.md",
   "content/en/applets/finance/bank-reconciliation-applet.md",
   "content/en/applets/integrations/90-ecomsync-related-applets.md",
@@ -50,7 +46,24 @@
   "content/en/applets/rma/warranty-admin-applet.md",
   "content/en/applets/integrations/webhook-applet.md"
  ],
- "done": [],
+ "done": [
+  {
+   "page": "content/en/applets/finance/internal-purchase-invoice-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/finance/internal-receipt-voucher-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/finance/internal-payment-voucher-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/finance/ledger-and-journal-applet.md",
+   "date": "2026-09-05"
+  }
+ ],
  "skipped": [],
  "updated": "2026-09-05"
 }
