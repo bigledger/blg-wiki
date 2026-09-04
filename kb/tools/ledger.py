@@ -36,6 +36,7 @@ def add(src, rec):
     if missing: sys.exit(f"missing fields: {sorted(missing)}")
     if rec["state"] not in STATES: sys.exit(f"bad state {rec['state']}")
     if not rec["content_hash"].startswith("sha256:"): sys.exit("content_hash must be sha256:…")
+    if rec["state"] == "ignored": rec.pop("title", None)   # ignored items carry no title: titles can leak customer names
     prev = latest(src, rec["id"])
     if prev and prev["content_hash"] != rec["content_hash"]:
         rec.setdefault("supersedes", prev["content_hash"])

@@ -144,6 +144,19 @@ Stock Take HQ / Staff · Transporter Outbound Delivery Order · the Buyer-/Suppl
 set (Orders, Invoices, Goods Receipt, Delivery Order, Payment Match) · accounting connectors
 (two Malaysian desktop accounting packages).
 
+## Lateral findings from the first GitHub-issues ingest (2026-09-05)
+
+- **`inventory-workflow/internal-goods-dispatch-note-applet.md`** (listed in §2 as no registry row)
+  is almost certainly a misnaming of the registry's ACTIVE, undocumented **"Goods Delivery Note
+  (Internal)"** — open wiki issue #69 asks for `[internal-goods-delivery-note-applet]` docs.
+  Treat as a rename + retitle, not a phantom. → remove from the archive list.
+- **`finance/accounts-receivable-applet.md`** (§2) exists because wiki issue #20 asked for an
+  "accounts-receivable-applet User Guide" — but there is still no registry row under any name.
+  The issue may itself be mistaken (a report or a module, not an applet). Ask Vincent before archiving.
+- Wiki issue #200 asks for `internal-sales-order-applet-v2`; the registry code is
+  `blg-applet-wavelet-internal-sales-order-applet-v2` (repo) / Sales Order (Internal). The
+  existing page is `sales-workflow/internal-sales-order-applet.md` — one page, not two.
+
 ## Decisions for Vincent
 
 1. **The flagged applet.** What is the registry row — stub, superseded by Portal, or a

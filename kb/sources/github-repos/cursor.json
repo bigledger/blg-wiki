@@ -1,1 +1,13 @@
-{"source":"github-repos","cursor":null,"updated":null}
+{
+ "source": "github-repos",
+ "cursor": {
+  "blg-akaun-platform-java": {
+   "last_commit": "871dbf5c96e550f602b0488964d4a710b5579602",
+   "window_start": "2026-06-07",
+   "commits_in_window": 406,
+   "ledgered": 37
+  }
+ },
+ "updated": "2026-09-05",
+ "note": "inventory of the org lives in kb/private/github-repos-inventory-<date>.tsv (gitignored). Clones under /home/marketing/repos/refs/<repo>. Per-repo cursor = last commit SHA ingested; empty until the first pass."
+}

@@ -1,1 +1,13 @@
-{"source":"github-issues","cursor":null,"updated":null}
+{
+ "source": "github-issues",
+ "cursor": {
+  "bigledger/blg-wiki": {
+   "last_number": 393,
+   "last_updated_at": "2026-09-02T03:27:14Z",
+   "open_ingested": 14,
+   "closed_ingested_as_ignored": 295
+  }
+ },
+ "updated": "2026-09-05",
+ "note": "scope key = owner/repo; cursor = {last_updated_at ISO, last_number}. blg-wiki issues are documentation feedback and go to planning/feedback/inbox.md as well as the ledger."
+}

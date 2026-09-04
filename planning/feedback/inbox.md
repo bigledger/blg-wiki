@@ -129,3 +129,75 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0020 (2026-09-05) 54 pages carry "Work in Progress / under development / coming soon" banners in production. Credibility problem for readers and a quality signal for crawlers. Policy needed: finish, unpublish (draft: true), or a single honest "in review" note.
       → note: split from F-0008 and GPT review roadmap #1. List: `grep -rliE "work in progress|under progress|under development|coming soon" content/en`.
 
+## From GitHub issues (bigledger/blg-wiki, ingested 2026-09-05 — source ids in kb/sources/github-issues/ledger.jsonl)
+
+### site-wide
+- [ ] F-0021 (2026-09-05) GitHub issue #1: "Create documentation for UTM project" — open since/updated 2026-03-05, 0 comments, 478 chars of body
+      → source: (no matching applet page — check registry / slug)
+      → src: gh:bigledger/blg-wiki#1
+
+### site-wide
+- [ ] F-0022 (2026-09-05) GitHub issue #2: "Request: CMS Testing - Identify Broken Links" — open since/updated 2026-01-22, 0 comments, 805 chars of body
+      → source: (no matching applet page — check registry / slug)
+      → src: gh:bigledger/blg-wiki#2
+
+### site-wide
+- [ ] F-0023 (2026-09-05) GitHub issue #3: "Review Request: Demo Guide Introduction and Role-Based Journeys" — open since/updated 2026-01-22, 0 comments, 2141 chars of body
+      → source: (no matching applet page — check registry / slug)
+      → src: gh:bigledger/blg-wiki#3
+
+### site-wide
+- [ ] F-0024 (2026-09-05) GitHub issue #20: "accounts-receivable-applet User Guide" — open since/updated 2026-03-02, 1 comments, 10 chars of body
+      → source: (no matching applet page — check registry / slug)
+      → src: gh:bigledger/blg-wiki#20
+
+### site-wide
+- [ ] F-0025 (2026-09-05) GitHub issue #27: "cashbook-applet User Guide" — open since/updated 2026-01-09, 0 comments, 0 chars of body
+      → source: (no matching applet page — check registry / slug)
+      → src: gh:bigledger/blg-wiki#27
+
+### /applets/finance/deposit-applet/
+- [ ] F-0026 (2026-09-05) GitHub issue #56: "[deposit-applet] User Guide Documentation" — open since/updated 2026-06-21, 6 comments, 1967 chars of body
+      → source: content/en/applets/finance/deposit-applet.md
+      → src: gh:bigledger/blg-wiki#56
+
+### /applets/master-data/forex-applet/
+- [ ] F-0027 (2026-09-05) GitHub issue #62: "[forex-applet] User Guide Documentation" — open since/updated 2026-01-19, 0 comments, 309 chars of body
+      → source: content/en/applets/master-data/forex-applet.md
+      → src: gh:bigledger/blg-wiki#62
+
+### site-wide
+- [ ] F-0028 (2026-09-05) GitHub issue #69: "[internal-goods-delivery-note-applet] User Guide Documentation" — open since/updated 2026-01-09, 0 comments, 332 chars of body
+      → source: (no matching applet page — check registry / slug)
+      → src: gh:bigledger/blg-wiki#69
+
+### /applets/purchase-workflow/internal-purchase-return-applet/
+- [ ] F-0029 (2026-09-05) GitHub issue #90: "[internal-purchase-return-applet] User Guide Documentation" — open since/updated 2026-06-29, 6 comments, 9268 chars of body
+      → source: content/en/applets/purchase-workflow/internal-purchase-return-applet.md
+      → src: gh:bigledger/blg-wiki#90
+
+### /applets/sales-workflow/internal-sales-invoice-applet/
+- [ ] F-0030 (2026-09-05) GitHub issue #104: "[internal-sales-invoice-applet] User Guide Documentation" — open since/updated 2026-06-11, 6 comments, 4692 chars of body
+      → source: content/en/applets/sales-workflow/internal-sales-invoice-applet.md
+      → src: gh:bigledger/blg-wiki#104
+
+### /applets/sales-workflow/internal-sales-quotation-applet/
+- [ ] F-0031 (2026-09-05) GitHub issue #107: "[internal-sales-quotation-applet] User Guide Documentation" — open since/updated 2026-01-09, 0 comments, 328 chars of body
+      → source: content/en/applets/sales-workflow/internal-sales-quotation-applet.md
+      → src: gh:bigledger/blg-wiki#107
+
+### /applets/master-data/pricebook-applet/
+- [ ] F-0032 (2026-09-05) GitHub issue #128: "[pricebook-applet] User Guide Documentation" — open since/updated 2026-03-02, 1 comments, 379 chars of body
+      → source: content/en/applets/master-data/pricebook-applet.md
+      → src: gh:bigledger/blg-wiki#128
+
+### /applets/finance/statement-of-account-applet/
+- [ ] F-0033 (2026-09-05) GitHub issue #141: "[statement-of-account-applet] User Guide Documentation" — open since/updated 2026-02-13, 0 comments, 324 chars of body
+      → source: content/en/applets/finance/statement-of-account-applet.md
+      → src: gh:bigledger/blg-wiki#141
+
+### site-wide
+- [ ] F-0034 (2026-09-05) GitHub issue #200: "[internal-sales-order-applet-v2] User Guide Documentation" — open since/updated 2026-05-04, 3 comments, 1707 chars of body
+      → source: (no matching applet page — check registry / slug)
+      → src: gh:bigledger/blg-wiki#200
+
