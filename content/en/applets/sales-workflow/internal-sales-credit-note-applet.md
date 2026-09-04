@@ -1,6 +1,34 @@
 ---
-title: "Sales Credit Note (Internal) Applet"
-description: "Correct, adjust, or reverse previously issued sales invoices using account code items, with contra and settlement support"
+title: "Sales Credit Note (Internal)"
+description: "Reference for the Sales Credit Note (Internal) applet: reduce what a customer owes after invoicing, with contra and settlement, without touching stock."
+applet_code: "InternalSalesCreditNote"
+applet_repo: "blg-applet-wavelet-internal-sales-credit-note-applet"
+modules: [financial-accounting, e-invoice]
+related_applets: [internal-sales-invoice-applet, internal-sales-return-applet, internal-sales-debit-note-applet, internal-sales-refund-note-applet, internal-receipt-voucher-applet, internal-purchase-credit-note-applet, my-e-invoice-portal-applet, customer-applet, chart-of-account-applet, cashbook-applet, tax-configuration-applet, workflow-design-applet]
+guides: [/guides/sales-guides/returns-exchanges-workflow/, /guides/sales-guides/credit-sales-workflow/]
+sources:
+  - blg-applet-wavelet-internal-sales-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-credit-note-applet/src/app/app.routing.ts
+  - blg-applet-wavelet-internal-sales-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-credit-note-applet/src/app/app.component.ts
+  - blg-applet-wavelet-internal-sales-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-credit-note-applet/src/app/models/menu-items.ts
+  - blg-applet-wavelet-internal-sales-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-credit-note-applet/src/app/models/applet-settings.model.ts
+  - blg-applet-wavelet-internal-sales-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-credit-note-applet/src/app/models/constants/applet-constants.ts
+  - blg-applet-wavelet-internal-sales-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-credit-note-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+  - blg-applet-wavelet-internal-sales-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-credit-note-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+  - blg-applet-wavelet-internal-sales-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-credit-note-applet/src/app/components/sales-credit-note-container/sales-credit-note-create/add-line-item/add-line-item.component.ts
+  - blg-applet-wavelet-internal-sales-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-credit-note-applet/src/app/components/sales-credit-note-container/sales-credit-note-create/add-line-item/item-details/main-details/main-details.component.ts
+  - blg-applet-wavelet-internal-sales-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-credit-note-applet/src/app/components/sales-credit-note-container/sales-credit-note-create/line-item/line-item-create/search-item/line-search-item-listing.component.ts
+  - blg-applet-wavelet-internal-sales-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-credit-note-applet/src/app/components/sales-credit-note-container/sales-credit-note-create/search-documents/
+  - blg-applet-wavelet-internal-sales-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-credit-note-applet/src/app/components/sales-credit-note-container/sales-credit-note-create/settlement/
+  - blg-applet-wavelet-internal-sales-credit-note-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-credit-note-applet/src/app/components/sales-credit-note-container/sales-credit-note-edit/ (original_invoice_ref_no handling)
+  - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+  - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalSalesCreditNoteDataConsistencyObject.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingService.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/intercompany/IntercompanyProcessingService.java
+  - akaun_master.bl_applet_client_side_perm_dfn (applet code InternalSalesCreditNote)
 tags:
 - sales-workflow
 - credit-note
@@ -9,393 +37,296 @@ tags:
 - contra-settlement
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Internal Sales Credit Note Applet** is used to **correct, adjust, or reverse previously issued sales invoices**. It provides a controlled and auditable way to manage sales corrections and receivable adjustments, ensuring accurate financial reporting and clean audit trails.
-
-Common use cases include:
-
-- Incorrect pricing or billing amounts
-- Returned goods or service reversals
-- Sales discounts issued after invoicing
-- Marketplace fees or post-sales adjustments (e.g. Shopee, Lazada)
+The **Sales Credit Note (Internal)** applet reduces what a customer owes after an invoice has been finalised — an overbilling, a post-sale discount, a marketplace fee, a service reversal. It is used by accounts-receivable staff. The credit sits on the customer's account until it is contra'd against an invoice or refunded through a settlement line or a Sales Refund Note. It never moves stock: for returned goods that must come back into inventory, use [Sales Return (Internal)](/applets/sales-workflow/internal-sales-return-applet/).
 
 {{< callout type="info" >}}
-**Core Concept**: A Sales Credit Note **reduces the customer's outstanding balance** either by **Contra** (offsetting against existing or future invoices) or **Settlement** (where actual cash movement occurs). Credit Notes do **not** affect inventory quantities — they are purely accounting adjustments posted to the General Ledger (GL).
+Server document type `INTERNAL_SALES_CREDIT_NOTE`. Amount signum **−1**, quantity signum **0** — the backend forces every line's quantity signum to zero, which is why a credit note can carry any item type without an inventory transaction.
 {{< /callout >}}
 
-## Key Features Overview
+{{< figure src="/images/internal-sales-credit-note-applet/sales-credit-note-overview-infographic.png" alt="Sales Credit Note Applet Overview Infographic" caption="At a glance: what the credit note corrects and who uses it." >}}
 
-### Who Benefits from This Applet?
+## Where it fits
 
-**Finance & Accounts Receivable Teams:**
-- **Accurate Adjustments**: Post credit notes directly to GL accounts with full traceability
-- **Contra Management**: Offset credit notes against open invoices without cash movement
-- **Settlement Tracking**: Record actual refunds and cash movements linked to credit notes
-- **Audit Trail**: Maintain complete history of all credit adjustments for compliance
+| Direction | Document / applet | How it connects |
+|---|---|---|
+| Upstream | [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/), [Delivery Order (Internal)](/applets/sales-workflow/internal-delivery-order-applet/), [Jobsheet (Internal)](/applets/sales-workflow/internal-jobsheet-applet/) | Searched in the **Search Document** tab to copy lines and the customer into the credit note |
+| Upstream | [Customer](/applets/master-data/customer-applet/), [Chart of Account](/applets/master-data/chart-of-account-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/) | Customer AR type, default GL codes, tax codes |
+| Downstream | Contra tab | Offsets the credit against the customer's open sales invoices |
+| Downstream | Settlement tab, [Sales Refund Note (Internal)](/applets/sales-workflow/internal-sales-refund-note-applet/) | Pays the credit out in cash, bank, card, cheque, voucher, points or TT |
+| Downstream | [My E-Invoice Portal](/applets/e-invoice/my-e-invoice-portal-applet/) | Credit notes are an e-Invoice document type and reference the original invoice |
+| Sibling | [Sales Debit Note (Internal)](/applets/sales-workflow/internal-sales-debit-note-applet/) | The opposite adjustment (increases what the customer owes) |
+| Sibling | [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/) | Mirror document created in the buying company for intercompany credit notes |
 
-**Sales & Customer Service Teams:**
-- **Quick Corrections**: Issue credit notes for pricing errors or post-invoice discounts
-- **Customer Satisfaction**: Process returns and service reversals efficiently
-- **Marketplace Reconciliation**: Handle platform fees and adjustments (Shopee, Lazada, etc.)
-
-**Operations & Management:**
-- **Bulk Processing**: Import credit notes in bulk for high-volume adjustments
-- **Status Control**: Manage document lifecycle from Draft to Final with proper approval workflows
-- **Financial Reporting**: Ensure credit adjustments are accurately reflected in financial statements
-
-### What Problems Does This Solve?
-
-**The Post-Invoice Adjustment Challenge:**
-
-After an invoice is finalized, corrections cannot be made directly to the original document. Common scenarios include:
-
-- Customer was overbilled due to pricing errors
-- Goods were returned after invoicing
-- Marketplace deducted commission fees not reflected in the original invoice
-- Contractual discounts need to be applied retroactively
-
-**The Internal Sales Credit Note Solution:**
-
-- **GL-Direct Posting** — Credit notes use Account Code Type items that post directly to General Ledger accounts
-- **Contra & Settlement** — Two distinct methods to handle credit: bookkeeping offset or actual cash refund
-- **Non-Inventory** — Purely financial adjustments that do not affect stock quantities
-- **Full Lifecycle** — Draft, Final, Void, and Discard statuses with proper accounting controls
-- **Bulk Import** — Template-based import for high-volume credit processing
-
-## Key Features Inventory
-
-{{< cards >}}
-  {{< card title="Credit Note Creation" subtitle="Create credit notes with account code items for GL-direct posting" link="#quick-start-guide" >}}
-
-  {{< card title="Contra Handling" subtitle="Offset credit notes against existing or future customer invoices" link="#contra-handling" >}}
-
-  {{< card title="Settlement Processing" subtitle="Record actual cash refunds linked to bank and cashbook modules" link="#settlement-processing" >}}
-
-  {{< card title="Bulk Import" subtitle="Import credit notes in bulk using downloadable templates" link="#importing-sales-credit-notes" >}}
-{{< /cards >}}
-
-{{< figure src="/images/internal-sales-credit-note-applet/sales-credit-note-overview-infographic.png" alt="Sales Credit Note Applet Overview Infographic" caption="At a Glance: The Challenges, Solutions, and Beneficiaries of the Internal Sales Credit Note Applet." >}}
-
-## Key Concepts
-
-### Contra vs Settlement
-
-Understanding the difference between Contra and Settlement is essential for correct accounting treatment.
+### Contra vs settlement
 
 | Aspect | Contra | Settlement |
-|--------|--------|------------|
-| **Purpose** | Offset against existing/future invoices | Record actual cash movement |
-| **Cash Movement** | No | Yes |
-| **Use Case** | Overbilling corrections, credits applied to next invoice | Cash/bank refund, credit card refund, marketplace payout |
-| **Integration** | Internal document linking | Cashbook / Bank modules |
-| **When to Use** | Non-cash adjustments | When real financial transactions occur |
+|---|---|---|
+| Purpose | Offset against the customer's open invoices | Record money actually paid back |
+| Cash movement | No | Yes — posts to the settlement method's cashbook |
+| Typical use | Overbilling correction, credit applied to the next invoice | Bank or cash refund, card reversal, marketplace payout |
+| Posting date | The latest transaction date among the documents involved | The settlement line date |
 
-### Account Code Items
+## Screens and menus
 
-Credit Notes use **Account Code Type** items rather than inventory items. These items:
+Route root: `applets/tnt/wavelet/erp/internal-sales-credit-note-applet/`.
 
-- Post **directly to GL accounts** (e.g. Sales Revenue Adjustment, Discount Given)
-- Are **non-inventory** — they do not affect stock quantities
-- Must be created and linked to the correct GL code before use
+| Menu item | Route | What it shows |
+|---|---|---|
+| **Credit Note** | `internal-sales-credit-note` | Listing with advanced search; create, edit, print, email, clone |
+| **Line Items** | `line-items` | One row per credit-note line, with customer columns, for reporting |
+| **File Import** | `file-import` | Bulk create credit notes from a delimited file (comma or pipe) with an error-checking listing |
+| **Intercompany** | `intercompany` | Queue that mirrors a FINAL credit note as a Purchase Credit Note in another company |
+| **Settings** / **Personalization** | `settings/…`, `personalization/…` | Administrator and per-user configuration |
 
-Common Account Code Items include:
-- Sales Discount
-- Marketplace Commission Fee
-- Service Reversal
-- Administrative Charge
+{{< figure src="/images/internal-sales-credit-note-applet/credit-note-listing.png" alt="Sales Credit Note Listing Screen" caption="Listing: status, branch, amounts, with an AG Grid status bar and an Action column for printing." >}}
 
-### Document Statuses
+{{< figure src="/images/internal-sales-credit-note-applet/listing-search-filter.png" alt="Listing Search and Filter Panel" caption="Advanced search: customer, company, branch, sales agent, posting status, date ranges, tenant/company/branch document numbers." >}}
 
-Each Sales Credit Note follows a defined lifecycle:
+{{< figure src="/images/internal-sales-credit-note-applet/listing-email-options.png" alt="Listing Email Options" caption="Email from the listing: billing and shipping email, billing only, or shipping only (a CC field is available)." >}}
 
-| Status | Description | Accounting Impact |
-|--------|-------------|-------------------|
-| **Draft** | Editable, work in progress | None |
-| **Final** | Posted to GL, locked for editing | Debits GL account, Credits Trade Debtors |
-| **Void** | Reverses a finalized document | Reverses original posting |
-| **Discard** | Cancelled before posting | None |
+### The create / edit form
 
-{{< callout type="warning" >}}
-Only **Final** documents affect financial reports. Ensure GL mappings are verified before finalizing.
-{{< /callout >}}
+Tabs, in the default order (re-orderable under Settings → Default Selection): **Search Document**, **Main Details**, **E-Invoice**, **Account**, **Lines**, **ARAP**, **Settlement**, **Department Hdr**, **TraceDocument**, **Contra**, **Attachments**, **Export**.
 
-### Accounting Logic (Debit / Credit)
+{{< figure src="/images/internal-sales-credit-note-applet/create-search-document.png" alt="Create Credit Note - Search Document Tab" caption="Search Document: pick the Sales Invoice, Sales Order, Delivery Order or Jobsheet the credit relates to." >}}
 
-When a Sales Credit Note is **Finalized**, the system posts:
+{{< figure src="/images/internal-sales-credit-note-applet/create-main-details.png" alt="Create Credit Note - Main Details Tab" caption="Main Details: branch, location, sales agent, transaction date, currency, credit terms, reference." >}}
 
-| Entry | Account |
-|-------|---------|
-| **Debit** | GL account linked to the Account Code Item |
-| **Credit** | Trade Debtors (Customer Account) |
+{{< figure src="/images/internal-sales-credit-note-applet/create-account-tab.png" alt="Create Credit Note - Account Tab" caption="Account: Entity Details, Bill To, Ship To and Intercompany sub-tabs." >}}
 
-This reduces customer receivables and adjusts the corresponding revenue or expense accounts. All entries are fully traceable for audit and reporting.
+{{< figure src="/images/internal-sales-credit-note-applet/create-select-item.png" alt="Select Item Dialog" caption="Lines: the item search is not filtered by item type; account-code (GL_CODE) items post straight to their linked GL account." >}}
 
-## Quick Start Guide
+{{< figure src="/images/internal-sales-credit-note-applet/create-contra-tab.png" alt="Contra Tab" caption="Contra: search the customer's open invoices for the same branch and knock the credit off against them." >}}
 
-### Step 1: Ensure Account Code Items Exist
+{{< figure src="/images/internal-sales-credit-note-applet/edit-main-details.png" alt="Edit Credit Note - Main Details" caption="A FINAL credit note: header locked, running numbers assigned." >}}
 
-Before creating a Credit Note, ensure the required **Account Code Type items** are set up. You can create them via:
+{{< figure src="/images/internal-sales-credit-note-applet/edit-account-tab.png" alt="Edit Credit Note - Account Tab" caption="A FINAL credit note: the customer entity as posted." >}}
 
-**Option A — Doc Item Maintenance Applet:**
-1. Click **Plus (+)** to create a new item
-2. Enter **Item Code** and **Item Name** (e.g. Sales Discount, Marketplace Fee)
-3. Set **Item Type** = **Account Code Type**
-4. Go to the **Company Linking** tab — select the company and assign the **Default GL Code**
-5. Save the item
+{{< figure src="/images/internal-sales-credit-note-applet/edit-lines-tab.png" alt="Edit Credit Note - Lines Tab" caption="A FINAL credit note: the posted account-code line and transaction amount." >}}
 
-**Option B — Chart of Account Applet (Recommended):**
-1. Open the **Chart of Account Applet**
-2. Navigate to **GL Code Create Item**
-3. Search for the relevant **GL Category** and select the required **GL Code**
-4. Click **Create Item** — the system automatically creates and links the item as an Account Code Type
+### File import
 
-{{< callout type="tip" >}}
-**Best Practice**: Use the Chart of Account Applet method to ensure accurate GL-Item mapping.
-{{< /callout >}}
+{{< figure src="/images/internal-sales-credit-note-applet/file-import-listing.png" alt="File Import Listing" caption="File Import: uploaded files with process status; search by created-date range." >}}
 
-### Step 2: Create a New Credit Note
+{{< figure src="/images/internal-sales-credit-note-applet/file-import-upload.png" alt="File Import Upload Dialog" caption="Upload dialog with a downloadable sample; the delimiter is mandatory." >}}
 
-1. Open the **Internal Sales Credit Note Applet**
-2. Click the **Plus (+)** button on the listing screen
-3. Fill in the **Main Details Tab** — Branch, Location, Sales Agent, Transaction Date
-4. Go to the **Account Tab** — select an existing Customer or create a new one
-5. Go to the **Line Tab** — select the Account Code Item and enter the amount
+{{< figure src="/images/internal-sales-credit-note-applet/file-import-details.png" alt="File Import Details" caption="Import detail: file format, process status and the per-row error messages." >}}
 
-### Step 3: Finalize the Document
+### Settings menu
 
-1. Review all details for accuracy
-2. Change the status from **Draft** to **Final**
-3. The system posts the debit/credit entries to the GL
+| Settings entry | Route | Purpose |
+|---|---|---|
+| Application Settings | `settings/field-settings` | Shared Field Configuration screen — all hide/show and behaviour toggles |
+| Default Selection | `settings/default-selection` | Default branch, default location, default language, tab order |
+| Printable Format Settings | `settings/printable-format-settings` | Printable formats for `INTERNAL_SALES_CREDIT_NOTE` |
+| Branch Settings | `settings/branch-settings` | Per-branch header/footer, images and PIN |
+| Workflow Settings | `settings/workflow-settings` | Company ↔ workflow process link for this document type |
+| Email Template | `settings/email-template` | Template code used when emailing |
+| Custom Resource Bundle Configuration | `settings/translation-settings` | Relabel fields and menus (full multi-language support was added in 2026) |
+| Webhook, Feature Visibility | `settings/webhook`, `settings/feature-visibility` | Event subscriptions; team access |
+| Permission Set / User / Team / Role / Client-Side Permission / Permission Wizard | `settings/*-listing` | Access control |
+| Release Notes, Applet Log | `settings/release-notes`, `settings/applet-log` | Version history; audit of settings changes |
 
-### Step 4: Apply Contra or Settlement (if applicable)
+{{< figure src="/images/internal-sales-credit-note-applet/settings-gen-doc-listing.png" alt="App Settings - Gen Doc Listing" caption="Application Settings → Gen Doc Listing." >}}
 
-- **Contra**: Go to the Contra Tab to offset against open invoices
-- **Settlement**: Record actual cash refunds through the Settlement process
+{{< figure src="/images/internal-sales-credit-note-applet/settings-e-invoice.png" alt="App Settings - E-Invoice" caption="Application Settings → E-Invoice: import/export tabs and the original-invoice reference field." >}}
 
-## Feature Deep Dive
+## Configuration
 
-### Listing Screen Navigation
+### Before you can use it
 
-The **Listing Screen** provides a centralized view of all Sales Credit Notes with powerful search and filter capabilities.
+| Prerequisite | Where | Why |
+|---|---|---|
+| Company, branch, location | [Organisation](/applets/master-data/organisation-applet/) | Header requires branch and location; set defaults under Default Selection |
+| Company default GL codes `DEBTOR` / `DEBTOR_NON_TRADE`, `SALES`, `SALES_DISCOUNT`, `OUTPUT_TAX`, `FOREX_GAIN`, `FOREX_LOSS` | [Chart of Account](/applets/master-data/chart-of-account-applet/) | The credit note uses the same `SALES` posting handler as the invoice, with the signs reversed; a missing code stops posting with `MISSING_DEFAULT_GL_CODE: <code>` |
+| Items to credit — either the original inventory/service items or account-code items (`txn_type = GL_CODE`) linked to the GL account you want to hit (sales discount, marketplace fee, service reversal) | [Inventory Item Maintenance](/applets/inventory-workflow/inv-item-maintenance-applet/) | An account-code item's `glcode_guid` is copied onto the line and overrides the company `SALES` default |
+| Customer with AR type and open invoices | [Customer](/applets/master-data/customer-applet/) | AR type decides `DEBTOR` vs `DEBTOR_NON_TRADE`; Contra only finds invoices of the same customer |
+| Settlement methods with cashbook and GL code (only if you refund from the Settlement tab) | [Cashbook](/applets/master-data/cashbook-applet/) | Otherwise `MISSING_CASHBOOK` / `MISSING_GL_CODE: STL_MTHD [code]` |
+| API permissions `TNT_API_DOC_INTERNAL_SALES_CREDIT_NOTE_{CREATE,READ,UPDATE,DELETE}_TGT_GUID` | Settings → permission listings | Branch/company targets scope what a user sees |
+| Workflow process (optional) | [Workflow Design](/applets/master-data/workflow-design-applet/) | Needed before *Final Button Status* means anything |
 
-{{< figure src="/images/internal-sales-credit-note-applet/credit-note-listing.png" alt="Sales Credit Note Listing Screen" caption="The Sales Credit Note Listing screen showing all credit notes with their statuses, branch codes, and amounts." >}}
+### Applet settings
 
-**Search By:**
-- Customer
-- Branch
-- Sales Agent
+**Default Selection** (`settings/default-selection`)
 
-**Filter By:**
-- Creation Date
-- Transaction Date Range
-- Posting Status: Draft, Final, Void, Discard
+| Setting | Key | What it controls | Default |
+|---|---|---|---|
+| Default Branch | `DEFAULT_BRANCH` | Pre-fills branch (and company) | none |
+| Default Location | `DEFAULT_LOCATION` | Pre-fills location | none |
+| Default Language | `DEFAULT_LANGUAGE_CODE` | Language the applet opens in | tenant default |
+| Details tab ordering | `SALES_CREDIT_NOTE_DETAILS_TAB_ORDER` | Drag-and-drop order of the form tabs | order listed above |
 
-{{< figure src="/images/internal-sales-credit-note-applet/listing-search-filter.png" alt="Listing Search and Filter Panel" caption="The expanded search and filter panel with options to filter by Customer, Company, Branch, Sales Agent, Posting Status, and date ranges." >}}
+**Application Settings** (`settings/field-settings`, shared Field Configuration screen). 194 toggles from this applet's settings model appear on the screen. Off unless stated.
 
-**Common Actions:**
-- View transaction details
-- Edit Draft documents
-- Track posting, contra, and settlement status
-- Audit historical credit adjustments
+*Behaviour toggles*
 
-{{< figure src="/images/internal-sales-credit-note-applet/listing-email-options.png" alt="Listing Email Options" caption="Email options available from the listing screen — Billing and Shipping Email, Billing Email Only, or Shipping Email Only." >}}
+| Section | Setting | Effect when on |
+|---|---|---|
+| Gen Doc Listing | `DISABLE_GEN_DOC_LISTING`, `DEFAULT_TRANSACTION_DATE`, `DEFAULT_POSTING_STATUS`, `SORT_ORDER` | Listing loads only on search; default date range, status filter and sort |
+| Gen Doc Listing | `SEND_EMAIL_TO_FINAL_GEN_DOCS_ONLY` | Email button refuses drafts |
+| Gen Doc Listing | `ENABLE_CREDIT_LIMIT_FILTER` | Shows the customer's available credit |
+| Gen Doc Listing | `HIDE_CLONE_BUTTON` | Clone button hidden unless the user has `SHOW_GENDOC_CLONE_BUTTON` |
+| Create & Print | `ENABLE_AUTO_POPUP` | Opens the printable after save |
+| Doc Settings | `ENABLE_DUPLICATE_REFERENCE_CHECK` | Rejects a second credit note with the same Reference |
+| Doc Settings | `ENABLE_SALES_AGENT_AUTOFILL` | Sales agent filled from the customer's default agent when the entity is selected |
+| Doc Settings | `ENABLE_EMPLOYEE_LOGIN_AUTO_DETECTION` | Employee resolved from the login |
+| Doc Settings | `DISABLE_LINES_FOLLOWING_HDR_SALES_AGENT` / `…_BUDGET` | Lines stop inheriting header sales agent / budget |
+| Doc Settings | `CANNOT_EDIT_CURRENCY_RATE`, `SHOW_FOREX_DATA_SOURCE` | Lock the rate; show its source |
+| Doc Settings | `SHOW_CUSTOM_DOC_NO` | Custom document number field |
+| Workflow Selection | `FINAL_STATUS_GUID` | Workflow status applied by the Final button |
+| Workflow Selection | `ENABLE_IMPORT_EXPORT` | Import and Export tabs on the form |
+| Workflow Selection (E-Invoice) | `ENABLE_ORIGINAL_INVOICE_REF_FIELDS` + `ORIGINAL_INVOICE_REFERENCE_FIELD` | Shows *Original Invoice Ref No* and its column name on the E-Invoice tab and picks which invoice field is quoted: `server_doc_1` … `server_doc_5` (tenant/company/branch numbers) or `doc_reference` |
+| E-Invoice | `SHOW_EMP_REF_NO`, `SHOW_API_UPLOAD` | Extra e-Invoice fields / API upload tab |
+| Entity Details | `ENABLE_BRANCH_FILTER`, `ENABLE_VEHICLE_TAB` | Customer search by branch; vehicle number |
+| Shipping | `SELECT_SHIPPING_ENTITY` | Ship-to may differ from bill-to |
+| Lines | `SHOW_ITEM_STOCK_BALANCE` | Stock column in item search (informational — quantity signum is 0) |
+| Lines | `ENABLE_EDITING_UNIT_PRICE_STD`, `DISABLE_LINE_ITEM_NAME_EDIT`, `ENABLE_ITEM_NAME_MAX_LIMIT` + `ITEM_NAME_MAX_LIMIT`, `SHOW_PACKING_DIMENSIONS`, `SHOW_BUDGET` | Line editing rules |
+| Line Permission | `DISALLOW_SELL_BELOW_MIN_PRICE` / `…_REPLACEMENT_PRICE` / `…_MA_COST`, `DISALLOW_SELL_ABOVE_UNIT_PRICE_STD_INCL_TAX` | Price-floor checks (relevant when crediting inventory items at a price) |
+| Line Permission | `DISABLE_EDITING_AMOUNT_TXN` | Transaction amount locked to price × quantity |
+| Line Permission | `RESTRICT_ITEM_PRICE_EDIT_BY_TYPE` | Price editable only with the per-type `ALLOW_<TYPE>_ITEM_PRICE_EDIT` permission (the permission codes are not defined for this applet in the registry — see Troubleshooting) |
+| KO For | `ENABLE_MULTIPLE_KO`, `FILTER_ITEMS_BY_REQUIRED_DELIVERY`, `ENABLE_AUTO_FINAL` | Multiple source documents; only undelivered lines; finalise immediately after knock-off |
+| KO For | `ENABLE_EDIT_PAYMENT_DATE`, `ENABLE_EDIT_SETTLEMENT_FINAL`, `ENABLE_EDIT_SETTLEMENT_DATE` | Settlement lines editable, including on FINAL documents (total unchanged) |
+| Credit Card | `MANDATORY_CARD_NO`, `MANDATORY_NAME`, `MANDATORY_CARD_ISSUER`, `MANDATORY_CARD_EXPIRY`, `MANDATORY_APPROVAL_CODE`, `MANDATORY_BATCH`, `MANDATORY_CARD_TYPE`, `MANDATORY_CVV` | Card fields required on a card settlement line |
+| Contra | `EDIT_CONTRA_TXN_DATE`, `HIDE_DELETE_CONTRA` | Contra date editable; delete-contra hidden |
+| Menus | `HIDE_FILE_IMPORT_MENU`, `HIDE_INTERCOMPANY_MENU` | Removes the sidebar item unless the user holds `SHOW_FILE_IMPORT_MENU` / `SHOW_INTERCOMPANY_MENU` (the `HIDE_PICK_PACK_QUEUE_MENU`, `HIDE_SALES_INVOICE_TEMPLATE_MENU` and `HIDE_FILE_EXPORT_MENU` toggles are shown but this applet has no such menus) |
 
-### Credit Note Creation Details
+*Hide / show and expand toggles* (cosmetic)
 
-#### Search Document Tab
-
-When creating a new credit note, you can optionally link it to an existing Sales Invoice via the **Search Document** tab.
-
-{{< figure src="/images/internal-sales-credit-note-applet/create-search-document.png" alt="Create Credit Note - Search Document Tab" caption="The Search Document tab allows you to link the credit note to an existing Internal Sales Invoice." >}}
-
-#### Main Details Tab
-
-Configure the transaction header information:
-
-| Field | Description |
-|-------|-------------|
-| **Branch** | The branch issuing the credit note |
-| **Location** | Storage/operational location |
-| **Sales Agent** | Agent responsible for the transaction |
-| **Transaction Date** | Date of the credit note |
-| **Reference Number** | Optional external reference |
-| **Remarks / Notes** | Additional notes or justification |
-| **Currency** | Transaction currency (Forex supported) |
-
-{{< callout type="info" >}}
-Default values may auto-populate based on user personalization settings.
-{{< /callout >}}
-
-{{< figure src="/images/internal-sales-credit-note-applet/create-main-details.png" alt="Create Credit Note - Main Details Tab" caption="The Main Details tab with Branch, Location, Sales Agent, Transaction Date, and other header fields." >}}
-
-#### Account Tab
-
-- Select an existing **Customer**, or click **Plus (+)** to create a new customer on the fly
-- The selected customer controls available Contra and Settlement options
-
-{{< figure src="/images/internal-sales-credit-note-applet/create-account-tab.png" alt="Create Credit Note - Account Tab" caption="The Account tab with Entity Details, Bill To, Ship To, and Intercompany sub-tabs for customer selection." >}}
-
-#### Line Tab
-
-1. Select the **Account Code Item** (must be Account Code Type)
-2. Enter the **Amount**
-3. Add optional **Line Remarks**
-
-Examples of line items:
-- Marketplace commission fee
-- Post-invoice discount
-- Service or billing adjustment
-
-{{< figure src="/images/internal-sales-credit-note-applet/create-select-item.png" alt="Select Item Dialog" caption="The Select Item dialog for choosing Account Code Type items to add to the credit note lines." >}}
-
-### Contra Handling
-
-Contra is used to offset the credit note against **existing or future invoices** without any cash movement.
-
-**Steps:**
-1. Go to the **Contra Tab**
-2. Click **Plus (+)**
-3. The system displays open invoices for the **same customer and branch**
-4. Enter the contra amount
-5. Click **Add**
-
-**Typical Use Cases:**
-- Overbilling corrections
-- Credit applied to next invoice
-- Internal accounting adjustments
-
-{{< figure src="/images/internal-sales-credit-note-applet/create-contra-tab.png" alt="Contra Tab" caption="The Contra tab with search filters to find open invoices for the same customer and branch." >}}
-
-### Settlement Processing
-
-Settlement is used when **actual money is exchanged** as part of the credit note.
-
-**Examples:**
-- Cash or bank refund
-- Credit card refund
-- Marketplace payout after deducting fees
-
-**Behavior:**
-- Integrated with **Cashbook / Bank modules**
-- Updates payment and reconciliation records
-- Creates corresponding bank transaction entries
+| Section | Toggles (`HIDE_…` unless stated) |
+|---|---|
+| Gen Doc Listing | `SERIAL_NUMBER`, `GENDOC_FINAL_BUTTON`, `GENDOC_DISCARD_BUTTON`, `GENDOC_VOID_BUTTON`, `GENDOC_SAVE_BUTTON`, `SEND_EMAIL_BUTTON` |
+| Gen Doc Fields | `SERVER_DOC_1/2/3`, `CLIENT_DOC_TYPE`, `CLIENT_DOC_1…5`, `DESCRIPTION`, `ARAP_PNS`, `ARAP_SETTLEMENT`, `ARAP_DOC_OPEN`, `ARAP_CONTRA`, `ARAP_BAL`, `MARKETPLACE_ORDER_NO` |
+| Vertical UI | `VERTICAL_ORIENTATION`, `EXPAND_*` per tab |
+| Doc Settings | `PREFIX`, `GENERATE_BUTTON`, `TRACKING_ID`, `PERMIT_NO`, `CREATED_BY_DETAILS`, `SOURCE_DOC_NO`, `LOCATION`, `DELIVERY_BRANCH`, `DELIVERY_LOCATION`, `MAIN_DETAILS_SALES_AGENT`, `CRM_CONTACT`, `BASE_CURRENCY`, `CURRENCY`, `CREDIT_TERMS`, `CREDIT_LIMIT`, `DUE_DATE`, `REMARKS`, `EXTERNAL_REMARKS`, `REFERENCE`, `FOREX_HISTORY`, `MEMBER_CARD`, `SALES_LEAD` |
+| E-Invoice | one `HIDE_E_INVOICE_*` per field (submission type, number, UUID, document no/type/date, billing frequency and period, tax exemption, buyer identity and address) |
+| Account | `ACCOUNT_BILLING_CONTACT`, `ACCOUNT_SHIPPING_CONTACT` |
+| Lines | `SALES_AGENT`, `LINE_ITEM_CLIENT_DOC_1`, all `UNIT_PRICE_*`, `UNIT_DISCOUNT*`, `QTY_BASE`, `QTY_UOM`, `UOM_TO_BASE_RATIO`, `AMOUNT_STD_EXCL_TAX`, `DISCOUNT_AMOUNT_EXCL_TAX`, `AMOUNT_NET_EXCL_TAX`, `AMOUNT_TXN`, `TAX_CONFIG_SELECTION`, `WHT_CONFIG_SELECTION`, `GROUP_DISCOUNT_PERCENTAGE`, `TOTAL_DISCOUNT_AMOUNT`, `LINE_ITEMS_GL_CODE`, `LINE_ITEMS_BRANCH`, `LINE_LISTING_TOTAL_AMOUNT`, `LINE_LISTING_TOTAL_QTY`, `LINE_LISTING_TAX_AMOUNT` |
+| Department | `SEGMENT`, `DIMENSION`, `PROFIT_CENTER`, `PROJECT` |
+| Line item tabs | `BIN_NUMBER`, `BATCH_NUMBER`, `COSTING_DETAILS`, `PRICING_DETAILS`, `ISSUE_LINK`, `SALES_HISTORY`, `SWAP_SERIAL_NUMBER`, `MULTI_DISCOUNT`, `DELIVERY_INSTRUCTION`, `DEPARTMENT`, `DOC_LINK`, `RELATED_DOCUMENTS`, `DELIVERY_DETAILS`, `DELIVERY_TRIPS`, `ATTACHMENT_TAB` |
+| Header tabs | `SERVER_DOC_TYPE`, `DOC_SHORT_CODE_PREFIX`, `SEARCH_BY_DOCUMENT_BUTTON`, `DELIVERY_DETAILS_TAB`, `TRACE_DOCUMENT_TAB`, `DOC_LINK_TAB`, `EXPORT_TAB`, `SETTLEMENT_TAB`, `POSTING_TAB`, `DELIVERY_TRIPS_TAB`, `GROSS_PROFIT_TAB`, `SEARCH_TAB`, `COLLECTION_TAB`, `STATUS_TAB`, `EXPENSES_TAB`, `SALES_COMMISSION_TAB`, `CONVERT_TAB` |
+| Credit Card | `CARD_NO`, `NAME`, `CARD_ISSUER`, `CARD_EXPIRY`, `APPROVAL_CODE`, `BATCH`, `CARD_TYPE`, `CVV` |
 
 {{< callout type="warning" >}}
-Use Settlement **only** when real financial transactions occur. For bookkeeping offsets, use Contra instead.
+As with the Sales Invoice applet, the shared screen defaults the detailed pricing columns, tax/WHT code selection, line GL code and the four department fields to **hidden** for this applet until saved otherwise.
 {{< /callout >}}
 
-### Importing Sales Credit Notes
+Keys in the settings model with **no UI** (ignore them): `ENABLE_CUSTOM_STATUS_*`, `INCLUDE_*` / `ENABLE_*` department and tax flags, `MANDATORY_*` department flags, `HIDE_KO_BY_*` / `HIDE_KO_FOR_*`, `SHOW_REFERENCE_MAIN_LISTING`, `SHOW_REMARKS_MAIN_LISTING`, `WORKFLOW_PROCESS_GUID`, `PRINTABLE`.
 
-For high-volume credit processing, the applet supports bulk import:
+### Document behaviour settings
 
-1. Download the **Sales Credit Note Import Template**
-2. Fill in required fields offline
-3. Upload the completed file to create records in bulk
+| Area | How it is configured |
+|---|---|
+| Status flow | Fixed DRAFT → FINAL → VOID; Discard deletes a draft. No custom statuses. |
+| Posting at FINAL | Company `posting_final_json` include/exclude list, via the Generic Document Primary Processor — not an applet setting. |
+| Workflow | Settings → Workflow Settings (Company, Process, Description) for `INTERNAL_SALES_CREDIT_NOTE`. |
+| Printables | Settings → Printable Format Settings; the listing's Action column prints with the format resolved per company/branch. |
+| Email | Settings → Email Template; `SEND_EMAIL_TO_FINAL_GEN_DOCS_ONLY` blocks drafts; CC supported. |
+| e-Invoice | `INTERNAL_SALES_CREDIT_NOTE` is an e-Invoice document type; `skip_einvoice` follows the customer entity at FINAL; the original invoice reference is carried in `original_invoice_ref_no` / `original_invoice_ref_no_column_name` (see `ENABLE_ORIGINAL_INVOICE_REF_FIELDS`). |
+| Intercompany | Intercompany menu; the processor maps `INTERNAL_SALES_CREDIT_NOTE` → `INTERNAL_PURCHASE_CREDIT_NOTE` in the target company. |
 
-**Recommended For:**
-- Marketplace adjustments (monthly reconciliation)
-- Bulk discount processing
-- High-volume credit operations
+### Feature visibility / permissions
 
-{{< figure src="/images/internal-sales-credit-note-applet/file-import-listing.png" alt="File Import Listing" caption="The File Import listing screen showing uploaded CSV files with their process status." >}}
+API: `TNT_API_DOC_INTERNAL_SALES_CREDIT_NOTE_{CREATE,READ,UPDATE,DELETE}_TGT_GUID`.
 
-{{< figure src="/images/internal-sales-credit-note-applet/file-import-upload.png" alt="File Import Upload Dialog" caption="The Upload Master Data dialog for importing credit notes via CSV file with a downloadable sample format." >}}
+Client-side permissions defined for this applet (38, all `CLIENT_SIDE_PERM`):
 
-{{< figure src="/images/internal-sales-credit-note-applet/file-import-details.png" alt="File Import Details" caption="The File Import Edit screen showing import details, file format, process status, and error messages." >}}
+| Group | Codes |
+|---|---|
+| Buttons | `SHOW_GENDOC_FINAL_BUTTON`, `SHOW_GENDOC_VOID_BUTTON`, `SHOW_GENDOC_DISCARD_BUTTON`, `SHOW_CONTRA_ADD_BUTTON` |
+| Pricing and amounts | `SHOW_UNIT_PRICE_STD_PRICING_SCHEME`, `SHOW_UNIT_PRICE_STD_INCL_TAX`, `SHOW_UNIT_PRICE_STD_EXCL_TAX`, `SHOW_UNIT_PRICE_STD_UOM_INCL_TAX`, `SHOW_UNIT_PRICE_STD_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_NET_EXCL_TAX`, `SHOW_UNIT_PRICE_NET_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_TXN`, `SHOW_UNIT_PRICE_TXN_UOM_INCL_TAX`, `SHOW_UNIT_DISCOUNT`, `SHOW_UNIT_DISCOUNT_UOM_EXCL_TAX`, `SHOW_AMOUNT_STD_EXCL_TAX`, `SHOW_DISCOUNT_AMOUNT_EXCL_TAX`, `SHOW_AMOUNT_NET_EXCL_TAX`, `SHOW_AMOUNT_TXN`, `SHOW_QTY_BASE`, `SHOW_QTY_UOM`, `SHOW_UOM_TO_BASE_RATIO`, `SHOW_TAX_CONFIG_SELECTION`, `SHOW_WHT_CONFIG_SELECTION`, `SHOW_COSTING_DETAILS`, `HIDE_PRICE`, `SALES_CREDIT_NOTE_DISPLAY_PRICING`, `SHOW_DISABLE_EDITING_AMOUNT_TXN_SETTING` |
+| Document numbers | `SHOW_DOC_NO_TENANT`, `SHOW_DOC_NO_COMPANY`, `SHOW_DOC_NO_BRANCH`, `SHOW_CLIENT_DOC_TYPE`, `SHOW_CLIENT_DOC_1…5`, `SHOW_TRANSACTION_DATE` |
 
-## Configuration & Settings
+The app also looks for `SHOW_FILE_IMPORT_MENU`, `SHOW_INTERCOMPANY_MENU` and `SHOW_GENDOC_CLONE_BUTTON` to re-enable hidden menus and the clone button; these codes are read by the code but are **not** in the registry for this applet — see Troubleshooting.
 
-### App Settings
+## Fields
 
-Administrators can configure the following options:
+**Main Details**
 
-| Setting | Description |
-|---------|-------------|
-| Field Visibility | Show or hide specific fields (e.g. Settlement Date) |
-| User Permissions | Control who can edit settlement details |
-| Posting Restrictions | Define workflow rules for posting and approval |
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Company, Branch, Location | Issuing company/branch and location | Yes | Location is carried even though no stock moves |
+| Transaction Date | Accounting date | Yes | Must be outside locked fiscal periods; PDF dates are normalised to noon UTC to avoid day shifts |
+| Currency, Currency Rate | Document currency | Currency yes | Rate required and non-zero when it differs from base |
+| Sales Agent | Employee credited | No | Autofill from customer with `ENABLE_SALES_AGENT_AUTOFILL` |
+| Credit Terms, Credit Limit, Due Date, Reference, Remarks, External Remarks | Header attributes | No | Reference can be forced unique |
+| Tenant / Company / Branch Doc No, Custom Document Number, Client Doc Type, Client Doc 1–5 | Numbering and customer references | Generated at FINAL | |
 
-### Personalization
+**Account**: Entity ID (required); billing and shipping contacts and addresses; Intercompany sub-tab (target company); Vehicle when enabled.
 
-Users can define personal defaults to reduce manual input:
+**Lines** (`txn_type = PNS`)
 
-| Setting | Description |
-|---------|-------------|
-| Default Branch | Pre-fill the branch field on new credit notes |
-| Default Location | Pre-fill the location field on new credit notes |
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Item | Any item; account-code (`GL_CODE`) items post to their linked GL account | Yes | Item search is not filtered by type |
+| Quantity | Quantity credited | Yes | For `GL_CODE` items no minimum applies; other items require ≥ 0 |
+| Unit price / discount / net / transaction amount, Net Amount, Net Amount with Tax | Value credited | Net and transaction amounts required | Quantity signum is forced to 0 on save |
+| Tax Code, Tax Amount, WHT | Tax reversal | From item or scheme | Posts to `OUTPUT_TAX` |
+| GL Code | Overrides the `SALES` default for this line | No | Filled automatically from a `GL_CODE` item |
+| Batch / Bin sub-tabs | Present for parity with other documents | Batch: batch no, qty, issue and expiry date; Bin: bin code, container measure/qty, qty | No inventory effect |
+| Segment, Dimension, Profit Center, Project | Department analysis | No | Hidden by default |
 
-{{< figure src="/images/internal-sales-credit-note-applet/settings-gen-doc-listing.png" alt="App Settings - Gen Doc Listing" caption="Application Settings showing the Gen Doc Listing tab with field visibility toggles and configuration options." >}}
+**E-Invoice**: as the Sales Invoice, plus **Original Invoice Ref No** and **Original Invoice Ref No Col Name** when `ENABLE_ORIGINAL_INVOICE_REF_FIELDS` is on.
 
-{{< figure src="/images/internal-sales-credit-note-applet/settings-e-invoice.png" alt="App Settings - E-Invoice" caption="Application Settings showing the E-Invoice tab with import/export and original invoice reference configuration." >}}
+**Settlement**: one line per refund — Bank Transfer, Cash, Cheque, Credit Card, Membership Point Currency, Voucher, TT Payment; date and amount (≥ 0.01) always required, plus the type-specific reference and any card fields marked mandatory.
 
-Below are screenshots of a finalized credit note showing the completed Main Details, Account, and Lines tabs:
+**Contra**: select open sales invoices of the same customer and branch; the total contra is read from the header (`bl_fi_generic_doc_hdr`) rather than recomputed.
 
-{{< figure src="/images/internal-sales-credit-note-applet/edit-main-details.png" alt="Edit Credit Note - Main Details" caption="A finalized credit note showing the Main Details tab with branch, transaction date, and credit terms." >}}
+## Lifecycle and posting
 
-{{< figure src="/images/internal-sales-credit-note-applet/edit-account-tab.png" alt="Edit Credit Note - Account Tab" caption="A finalized credit note showing the Account tab with the selected customer entity details." >}}
+| Status | Meaning | Allowed next |
+|---|---|---|
+| **DRAFT** | Editable, no posting | FINAL, Discard |
+| **FINAL** | Numbered, posted to GL and AR; settlement editable only if the total is unchanged | VOID |
+| **VOID** | Reversed with a void reason | none |
 
-{{< figure src="/images/internal-sales-credit-note-applet/edit-lines-tab.png" alt="Edit Credit Note - Lines Tab" caption="A finalized credit note showing the Lines tab with the posted account code item and transaction amount." >}}
+**FINAL validation** (backend, same routine as the invoice): exchange rate present when currencies differ; serial/bin/batch quantities consistent (no-ops when quantity signum is 0); transaction date and company present; date not in a locked fiscal period. Blacklist and stock-balance checks do **not** run for credit notes.
 
-## FAQ
+**Journal** — `SALES` posting handler with amount signum −1, so every invoice entry is reversed:
 
-{{< callout type="info" title="Can I use inventory items in a Sales Credit Note?" >}}
-No. Sales Credit Notes use **Account Code Type** items only. These post directly to GL accounts and do not affect stock quantities. If you need to adjust inventory, use the appropriate inventory adjustment applet instead.
-{{< /callout >}}
+| Dr | Cr | Amount | GL code source |
+|---|---|---|---|
+| Sales, or the line's own GL code (account-code item) | | Net amount per line | Line `glcode_guid` → item-company GL link → company default `SALES` |
+| Output tax (`OUTPUT_TAX`) | | Tax amount | Company default GL |
+| | Debtor (`DEBTOR` / `DEBTOR_NON_TRADE`) | Total including tax | Company default GL, chosen by the customer's AR type |
+| | Sales discount (`SALES_DISCOUNT`) | Discount lines | Company default GL |
+| Debtor | Cashbook GL | Each settlement line (refund paid out) | Settlement method |
 
-{{< callout type="info" title="When should I use Contra vs Settlement?" >}}
-Use **Contra** for non-cash adjustments where you want to offset the credit against existing or future invoices. Use **Settlement** only when actual money changes hands (e.g. bank refund, credit card refund). Most internal adjustments should use Contra.
-{{< /callout >}}
+No inventory transaction is written (quantity signum 0) and no COGS entry is made.
 
-{{< callout type="info" title="Can I void a finalized Credit Note?" >}}
-Yes. Changing the status to **Void** reverses the accounting entries posted during finalization. The original document remains in the system for audit purposes.
-{{< /callout >}}
+**VOID** sets the status and reason, queues the void primary processor (reverses journal and AR), and removes the document from the e-Invoice queue.
 
-{{< callout type="info" title="Does a Credit Note affect inventory?" >}}
-No. Sales Credit Notes are purely accounting adjustments. They reduce customer receivables and adjust GL accounts but do not change stock quantities.
-{{< /callout >}}
+## Related applets
 
-{{< callout type="info" title="Can I create Credit Notes in foreign currency?" >}}
-Yes. Forex transactions are supported, subject to system configuration. The currency can be set in the Main Details Tab during creation.
-{{< /callout >}}
+- [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/) — the document being corrected; searched in Search Document and offset in Contra.
+- [Sales Return (Internal)](/applets/sales-workflow/internal-sales-return-applet/) — use instead when goods physically come back.
+- [Sales Debit Note (Internal)](/applets/sales-workflow/internal-sales-debit-note-applet/) — the opposite adjustment.
+- [Sales Refund Note (Internal)](/applets/sales-workflow/internal-sales-refund-note-applet/) — pays out a credit balance as a separate document.
+- [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) — credit notes appear as settlement candidates when receipting.
+- [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/) — intercompany mirror.
+- [My E-Invoice Portal](/applets/e-invoice/my-e-invoice-portal-applet/) — submission of the credit note with its original-invoice reference.
+- [Customer](/applets/master-data/customer-applet/), [Chart of Account](/applets/master-data/chart-of-account-applet/), [Cashbook](/applets/master-data/cashbook-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/) — master data.
 
-## Applet Reference
+## Troubleshooting
 
-### Menu Items
+| Symptom | Cause | Fix |
+|---|---|---|
+| Final fails with `MISSING_DEFAULT_GL_CODE: DEBTOR` (or `SALES`, `OUTPUT_TAX`) | Company default GL codes missing | Set them in [Chart of Account](/applets/master-data/chart-of-account-applet/) |
+| Credit posted to the generic Sales account instead of a discount/fee account | Line used an ordinary item without a GL override | Use an account-code item linked to the right GL, or set the line GL Code (unhide `HIDE_LINE_ITEMS_GL_CODE`) |
+| "The selected date falls within a locked fiscal period." | Transaction date in a closed period | Change the date or reopen the period (message text was aligned with the Sales Invoice applet) |
+| Contra date resets to today after saving | Older build bug | Fixed; `EDIT_CONTRA_TXN_DATE` allows a deliberate change; the date picker enforces a configurable minimum date |
+| Contra tab shows a wrong total | Older build recomputed it | Fixed: Total Contra is read from the document header |
+| Line-item edit form opens empty | Race condition in price rounding on older builds | Fixed; upgrade |
+| Refund line rejected with `MISSING_CASHBOOK` / `MISSING_GL_CODE: STL_MTHD [code]` | Settlement method lacks cashbook or GL | Complete it in [Cashbook](/applets/master-data/cashbook-applet/) |
+| Import rows fail with a sales-agent error | Agent column value does not match an employee code | Check the sample file's column names; the error-checking listing names the offending column |
+| File Import / Intercompany menu missing for one user | `HIDE_FILE_IMPORT_MENU` / `HIDE_INTERCOMPANY_MENU` on, and the `SHOW_*_MENU` client-side codes are not defined for this applet in the registry | Turn the hide setting off, or ask BigLedger to register `SHOW_FILE_IMPORT_MENU`, `SHOW_INTERCOMPANY_MENU` and `SHOW_GENDOC_CLONE_BUTTON` for `InternalSalesCreditNote` |
+| `RESTRICT_ITEM_PRICE_EDIT_BY_TYPE` locks every price | The per-type `ALLOW_<TYPE>_ITEM_PRICE_EDIT` codes are not registered for this applet | Leave the toggle off, or request the codes |
+| Second credit note with the same Reference rejected | `ENABLE_DUPLICATE_REFERENCE_CHECK` | Use a unique reference or turn the check off |
+| PDF shows the previous day's date | Older builds converted dates at midnight | Fixed: transaction dates are forced to noon UTC for printing |
 
-| Action | Description |
-|--------|-------------|
-| **Create (+)** | Create a new Sales Credit Note |
-| **Search** | Search by Customer, Branch, or Sales Agent |
-| **Filter** | Filter by date range and posting status |
-| **Import** | Bulk import credit notes via template |
-| **Export** | Export credit note data |
+## Related documentation
 
-### Settings
-
-| Setting | Description |
-|---------|-------------|
-| Field Visibility | Configure visible fields on forms |
-| User Permissions | Control access to settlement editing |
-| Posting Restrictions | Define approval and posting workflows |
-
-### Personalization
-
-| Setting | Description |
-|---------|-------------|
-| Default Branch | Auto-fill branch on new documents |
-| Default Location | Auto-fill location on new documents |
-
-## Summary
-
-The **Internal Sales Credit Note Applet** provides a controlled and auditable way to manage sales corrections and receivable adjustments. Key takeaways:
-
-- **Account Code Items** are required — credit notes post directly to GL, not inventory
-- **Contra** for non-cash offsets, **Settlement** for actual refunds
-- **Draft to Final** lifecycle ensures proper review before GL posting
-- **Bulk Import** available for high-volume processing
-- **Full audit trail** for compliance and financial reporting
-
-{{< callout type="tip" >}}
-**Best Practice**: Always verify GL mappings before finalizing. Prefer Contra for non-cash adjustments and reserve Settlement for actual money movements.
-{{< /callout >}}
+- [Returns and Exchanges Workflow](/guides/sales-guides/returns-exchanges-workflow/), [Credit Sales Workflow](/guides/sales-guides/credit-sales-workflow/)
+- [Financial Accounting module](/modules-v2/financial-accounting/), [E-Invoice module](/modules-v2/e-invoice/)
+- [Sales Workflow applets](/applets/sales-workflow/)

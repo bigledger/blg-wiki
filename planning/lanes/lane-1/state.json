@@ -7,11 +7,6 @@
   "claims"
  ],
  "queue": [
-  "content/en/applets/sales-workflow/internal-sales-invoice-applet.md",
-  "content/en/applets/sales-workflow/internal-sales-credit-note-applet.md",
-  "content/en/applets/sales-workflow/internal-sales-order-applet.md",
-  "content/en/applets/sales-workflow/internal-sales-return-applet.md",
-  "content/en/applets/sales-workflow/internal-sales-debit-note-applet.md",
   "content/en/applets/sales-workflow/pos-general-applet.md",
   "content/en/applets/sales-workflow/sales-report-applet.md",
   "content/en/applets/membership/membership-admin-applet.md",
@@ -50,7 +45,28 @@
   "content/en/applets/membership/voucher-management-applet.md",
   "content/en/applets/sales-workflow/sales-report-supplier-access-applet.md"
  ],
- "done": [],
+ "done": [
+  {
+   "page": "content/en/applets/sales-workflow/internal-sales-invoice-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/sales-workflow/internal-sales-credit-note-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/sales-workflow/internal-sales-order-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/sales-workflow/internal-sales-return-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/sales-workflow/internal-sales-debit-note-applet.md",
+   "date": "2026-09-05"
+  }
+ ],
  "skipped": [],
  "updated": "2026-09-05"
 }

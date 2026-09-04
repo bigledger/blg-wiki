@@ -1,6 +1,31 @@
 ﻿---
-title: "Sales Return (Internal) Applet"
-description: "Record customer returns after sales, keep stock and balances accurate, and align warehouse and finance on one return document."
+title: "Sales Return (Internal)"
+description: "Reference for the Sales Return (Internal) applet: bring goods back into stock, reverse the sale and the receivable, refund or contra, and link the return to the original e-Invoice."
+applet_code: "internalSalesReturnApplet"
+applet_repo: "blg-applet-wavelet-internal-sales-return-applet"
+modules: [inventory, financial-accounting, e-invoice, pos]
+related_applets: [internal-sales-invoice-applet, pos-general-applet, internal-sales-credit-note-applet, internal-sales-refund-note-applet, internal-receipt-voucher-applet, internal-purchase-return-applet, my-e-invoice-portal-applet, my-e-invoice-admin-applet, customer-applet, chart-of-account-applet, cashbook-applet, stock-balance-applet, workflow-design-applet]
+guides: [/guides/sales-guides/returns-exchanges-workflow/]
+sources:
+  - blg-applet-wavelet-internal-sales-return-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-return-applet/src/app/app.routing.ts
+  - blg-applet-wavelet-internal-sales-return-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-return-applet/src/app/app.component.ts
+  - blg-applet-wavelet-internal-sales-return-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-return-applet/src/app/models/menu-items.ts
+  - blg-applet-wavelet-internal-sales-return-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-return-applet/src/app/models/applet-settings.model.ts
+  - blg-applet-wavelet-internal-sales-return-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-return-applet/src/app/models/constants/applet-constants.ts
+  - blg-applet-wavelet-internal-sales-return-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-return-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+  - blg-applet-wavelet-internal-sales-return-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-return-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+  - blg-applet-wavelet-internal-sales-return-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-return-applet/src/app/components/settings-container/reason-settings-container/
+  - blg-applet-wavelet-internal-sales-return-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-return-applet/src/app/components/sales-return-container/sales-return-create/ (account, line-item validators, search tabs)
+  - blg-applet-wavelet-internal-sales-return-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-return-applet/src/app/components/line-items-container/line-items-edit/ (batch, bin, main-details validators)
+  - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+  - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalSalesReturnDataConsistencyObject.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingService.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/intercompany/IntercompanyProcessingService.java
+  - akaun_master.bl_applet_client_side_perm_dfn (applet code internalSalesReturnApplet)
 tags:
 - sales-return
 - customer-returns
@@ -9,433 +34,264 @@ tags:
 - workflow-approval
 weight: 60
 date: 2026-04-06
-lastmod: 2026-04-20
+lastmod: 2026-09-05
 draft: false
 ---
 
-## Purpose and Overview
+## Overview
 
-Use this applet when a **customer returns goods or needs a credit** after a sale has already been recorded. You record the return here, keep **inventory** and **customer balance** aligned with what your company approved, and hand the same document to **warehouse** (physical goods) and **finance** (refund, settlement, or e-invoice steps where applicable).
-
-### Video Overview
-
-{{< youtube WxLCxGMR6Ls >}}
-
-The video follows the same flow as this guide: the **Sales Return (Internal)** list, **Create Internal Sales Return**, **Main Details**, **Account**, **Lines**, and **SAVE** / **FINAL** with the posting statuses in [Document status reference](#document-status-reference).
-
-![Sales Return (Internal) Applet Overview - Manual Chaos vs Integrated Workflow](/images/internal-sales-return-applet/internal-sales-return-overview-infographic.png)
-
-**Who uses this**
-
-| Role | Role in this applet |
-|------|---------------------|
-| Sales | Create and update return documents, choose the customer, add lines, move the document to **FINAL** when policy allows. |
-| Warehouse | Receive and check physical goods against **FINAL** returns. |
-| Finance | Add **Payment** settlement lines before **FINAL** where required, use **Contra** for offsets, complete **E-Invoice** linking when your organisation uses e-invoice. |
-
----
-
-## Document status reference {#document-status-reference}
-
-| Posting status | Meaning | What you can do |
-|----------------|---------|------------------|
-| **DRAFT** | Work in progress | **SAVE**, **FINAL**, edit fields your permissions allow |
-| **FINAL** | Posted / locked | **VOID**, view, receive goods, review **Payment** lines (new lines use **Create** only before **FINAL**—see [Payment tab and FINAL](#payment-tab-and-final)) |
-| **VOID** | Cancelled | View only |
-| **DISCARDED** | Draft discarded | View only |
-
-{{< callout type="warning" >}}
-After **FINAL**, you cannot treat the document as a normal editable draft. Use **VOID** and recreate, or your company’s adjustment process, if something must change.
-{{< /callout >}}
-
----
-
-## Before you start
-
-- You need a **customer** that exists in master data (**Account** tab, **Entity ID** / **Entity Name**). If the customer is missing, fix master data or ask your administrator.
-- Decide how you will **trace the original sale**: either use the **Search** tab (when it appears) or type the original invoice reference on **Main Details**—see [Two ways to create a return](#two-ways-to-create-a-return).
-- **Return reasons** on **Main Details** come from configuration. If the list is wrong, ask your administrator to update master data.
-- **Who may create** a return is controlled by permissions; your internal policy may still say which team creates the document.
-
-If you are unsure whether **Search**, **Payment**, **E-Invoice**, or **Contra** applies to your login, ask your **administrator** or **finance**.
-
----
-
-## Glossary
-
-| Term | Meaning in this guide |
-|------|------------------------|
-| **Invoice (internal sales invoice)** | In **Search**, **Search By Invoice** finds prior **internal sales invoices** (“bill later” sales posted to receivables). |
-| **Cashbill (internal sales cashbill)** | In **Search**, **Search By Cashbill** finds **internal sales cashbills** (often immediate-payment / counter sales). |
-| **UOM** | Unit of measure on a line (for example **EA**, **BOX**). |
-| **Tariff Code** | Classification on a line when your tenant requires it. |
-| **Contra / offset** | Matching this return’s credit against **other open receivable documents** using the **Contra** flow (see [Contra tab (finance)](#contra-tab-finance)). |
-| **Credit note** | A financial document that reduces what the customer owes; may be combined with or separate from a stock return depending on policy. |
-| **UUID (Original E-invoice Ref UUID)** | Identifier next to **Original E-invoice Ref No** on **E-Invoice**; often filled when you pick the main document reference. |
-| **My Invoice Admin queues** | After **FINAL**, e-invoice submission and queue work happen in **[My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/)**—use that guide for posting queue, batch pool, submission, and validation—not this page. |
-
----
-
-## Quick Start Guide {#quick-start-guide}
+The **Sales Return (Internal)** applet records goods a customer brings back after a Sales Invoice or POS cash bill. Sales or customer-service staff create it, the warehouse receives the goods against it, and finance settles it — by refund on the Payment tab, by contra against the customer's open invoices, or by a separate Sales Refund Note. On FINAL the return puts the quantity back into stock at moving-average cost, reverses the sale to the *Sales Return* account and reduces what the customer owes. If nothing physical comes back, use [Sales Credit Note (Internal)](/applets/sales-workflow/internal-sales-credit-note-applet/) instead.
 
 {{< callout type="info" >}}
-**Sales and warehouse:** Start with the eight steps and [Detailed walkthrough (sales)](#detailed-walkthrough-sales) for screen-by-screen help. Skip **[E-invoice (finance)](#e-invoice-finance)** unless your role includes e-invoice. **Finance:** Read **[Payment tab and FINAL](#payment-tab-and-final)**, **[Contra tab (finance)](#contra-tab-finance)**, and **[E-invoice (finance)](#e-invoice-finance)** when your company uses those features.
+Server document type `INTERNAL_SALES_RETURN`. Amount signum **−1**, quantity signum **+1** (stock *in*). The backend names it as the return document for both `INTERNAL_SALES_INVOICE` and `INTERNAL_SALES_CASHBILL`.
 {{< /callout >}}
 
-### Eight steps to your first saved return
+{{< figure src="/images/internal-sales-return-applet/internal-sales-return-overview-infographic.png" alt="Sales Return (Internal) overview infographic" caption="One return document shared by sales, warehouse and finance." >}}
 
-1. Open **Sales Return (Internal)** in the sidebar.
-2. Click **+** on the list. The **Create Internal Sales Return** screen opens.
-3. Choose [Path 1 (Search) or Path 2 (manual)](#two-ways-to-create-a-return).
-4. Click the **Main Details** tab. Set **Branch**, **Location**, **Transaction Date**, **Reason**, and **Reference** as your policy requires.
-5. Click the **Account** tab. Open **Entity Details**, click **Entity ID** or **Entity Name**, and select the **customer**.
-6. Click the **Lines** tab. Add each returned line (**Create** / **+** on the line list), complete **Item Details**, then click **ADD** on the line editor.
-7. Click **CREATE** (first save). Continue on the saved return: add lines or **Payment** lines as needed, then click **SAVE** until the document is correct.
-8. Click **FINAL** only when **sales, warehouse, and finance** agree the return is complete—including **Payment** lines if finance must add them before posting.
+{{< figure src="/images/internal-sales-return-applet/the-return-journey.png" alt="The return journey from invoice to settlement" caption="The return journey." >}}
 
-If any tab named in these steps is missing, your tenant may hide it. Ask your administrator.
+## Where it fits
 
-### Two ways to create a return {#two-ways-to-create-a-return}
+| Direction | Document / applet | How it connects |
+|---|---|---|
+| Upstream | [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [POS General](/applets/sales-workflow/pos-general-applet/) cash bills | Searched in the **Search** tab (by customer, invoice, cash bill or serial number); lines and customer copied in; the entity is then locked |
+| Upstream | [Customer](/applets/master-data/customer-applet/), [Chart of Account](/applets/master-data/chart-of-account-applet/), [Cashbook](/applets/master-data/cashbook-applet/) | Customer AR type, `SALES_RETURN` / `DEBTOR` / `OUTPUT_TAX` / `COGS` default GL codes, settlement methods |
+| Downstream | Payment tab, Contra tab, [Sales Refund Note (Internal)](/applets/sales-workflow/internal-sales-refund-note-applet/), [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) | Refund, offset or later settlement of the credit balance |
+| Downstream | [My E-Invoice Portal](/applets/e-invoice/my-e-invoice-portal-applet/), [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) | Submission of the return against the original e-Invoice |
+| Downstream | [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) | Returned quantity is back at the location |
+| Sibling | [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) | Intercompany mirror in the buying company |
 
-**Path 1 — From Search (when the Search tab is visible)**
+## Screens and menus
 
-1. Click the **Search** tab on **Create Internal Sales Return**.
-2. Open **Search By Customer**, **Search By Invoice**, or **Search By Cashbill** (subtab labels match the screen).
-3. Run the search, select the prior **internal sales invoice** or **internal sales cashbill** you are returning against.
-4. Continue on **Main Details**, **Account**, and **Lines** to adjust header and lines for what is actually returned.
+Route root: `applets/tnt/wavelet/erp/internal-sales-return-applet/`.
 
-**Path 2 — Manual (no Search)**
+| Menu item | Route | What it shows |
+|---|---|---|
+| **Internal Sales Return** | `internal-sales-return` | Listing; create, edit, print, email, void |
+| **Line Items** | `line-items` | One row per return line, with footer totals that follow the filter |
+| **Intercompany** | `intercompany` | Intercompany queue (return → purchase return in another company) |
+| **File Export** | `file-export` | Field-mapped exports |
+| **File Import** | `file-import` | Bulk create returns from a delimited file |
+| **Swap Serial Number** | `swap-serial` | Replace a serial number on a FINAL return without voiding |
+| **Settings** / **Personalization** | `settings/…`, `personalization/…` | Configuration |
 
-1. Skip **Search** (or ignore it if your administrator hid the tab).
-2. On **Main Details**, type the original **invoice or reference** in **Reference** so finance can trace the sale.
-3. On **Account**, select the **customer** as in step 5 above.
-4. On **Lines**, add returned items and quantities.
+### The create / edit form
 
-More field-level detail: [Detailed walkthrough (sales)](#detailed-walkthrough-sales) and [Screen and tab reference](#screen-and-tab-reference).
+Tabs, in the default order (re-orderable under Default Selection): **Search**, **Main Details**, **E-Invoice**, **Account**, **Lines**, **ARAP**, **Delivery Details**, **Payment**, **Payment Adjustment**, **Department Hdr**, **TraceDocument**, **Contra**, **Doc Link**, **Attachments**, **Export**. Search is available on create; E-Invoice, ARAP, Payment Adjustment, TraceDocument, Contra and Doc Link appear once the document is saved.
 
----
+| Tab | Purpose |
+|---|---|
+| Search | **Search By Customer**, **Search By Invoice**, **Search By Cashbill**, **Search By Serial Number**, **Search Item**. *Add Selected* / *Add All* copy the invoice lines with amounts apportioned to the returned quantity |
+| Main Details | Branch, location, delivery branch/location (warns when they differ from the header), transaction date, **Reason** (from Return Reasons settings), reference, remarks, currency and rate (an inverse-rate field is shown for foreign currency) |
+| Account | Entity Details, Bill To, Ship To, Intercompany; the entity is locked once lines are linked to a sales invoice |
+| Lines | Returned items, quantities, prices, tax, serial / batch / bin, costing, swap serial |
+| Payment | Settlement lines (refund). *Create* is available only while the document is not FINAL, VOID or DISCARDED and not locked; `ENABLE_EDIT_SETTLEMENT_FINAL` plus the `SHOW_EDIT_SETTLEMENT_FINAL` permission allow edits after FINAL |
+| Contra | Select open receivable documents to offset, with totals and optional auto-settle |
+| E-Invoice | Submission, Progress, Notification, Cancellation; original e-Invoice reference and UUID picker; Skip E-Invoice |
 
-## Detailed walkthrough (sales) {#detailed-walkthrough-sales}
+{{< figure src="/images/internal-sales-return-applet/sales-main-details-tab.png" alt="Main Details Tab - showing Branch, Location, Transaction Date, and other header fields" caption="Main Details." >}}
 
-**Goal:** Create a sales return with full tab-by-tab detail.
+{{< figure src="/images/internal-sales-return-applet/sales-account-tab.png" alt="Account Tab - Entity Details showing Entity ID, Status, Entity Type, Currency, and other customer fields" caption="Account: entity details." >}}
 
-Open **Sales Return (Internal)** → click **+**. The title is **Create Internal Sales Return**.
+{{< figure src="/images/internal-sales-return-applet/sales-lines-iteam-add-1.png" alt="Lines Tab - showing plus button to add line items and existing items list" caption="Lines: Create (+) to add a returned item." >}}
 
-**Search** (only if your administrator enables the **Search** tab on create):
+{{< figure src="/images/internal-sales-return-applet/sales-lines-iteam-add-2.png" alt="Select Item dialog - showing searchable list of items with Item Code, Item Name, and UOM columns" caption="Select Item." >}}
 
-- Click **Search**.
-- Use **Search By Customer**, **Search By Invoice**, or **Search By Cashbill** to find the prior invoice or cashbill. Or skip this tab and use **Reference** on **Main Details** instead ([Two ways to create a return](#two-ways-to-create-a-return)).
+{{< figure src="/images/internal-sales-return-applet/sales-lines-iteam-add-3.png" alt="Add Item screen - Item Details showing Item Code, Item Name, Sales Agent, UOM, Pricing Scheme, Unit Price" caption="Add Item: item details, quantity, pricing and tax." >}}
+
+{{< figure src="/images/internal-sales-return-applet/warehouse-access-finalized-returns.png" alt="Listing filtered to FINAL returns for warehouse receiving" caption="Warehouse: filter the listing to FINAL to receive goods." >}}
+
+{{< figure src="/images/internal-sales-return-applet/finance-process-settlement-1.png" alt="Payment tab with Create button" caption="Payment tab: add a settlement line before FINAL." >}}
+
+{{< figure src="/images/internal-sales-return-applet/finance-process-settlement-2-settelment-methods.png" alt="Add Payment dialog showing settlement groups and methods" caption="Settlement groups and methods come from the Cashbook applet." >}}
+
+### Settings menu
+
+| Settings entry | Route | Purpose |
+|---|---|---|
+| Application Settings | `settings/field-settings` | Shared Field Configuration screen (134 toggles apply) |
+| Default Selection | `settings/default-selection` | Default branch, default location, tab order |
+| Return Reasons | `settings/return-reasons-settings` | The **Reason** list on Main Details (Reason Code, Reason Name) |
+| Printable Format Settings | `settings/printable-format-settings` | Printable formats for `INTERNAL_SALES_RETURN` |
+| Branch Settings | `settings/branch-settings` | Per-branch header/footer, images, PIN |
+| Workflow Settings | `settings/workflow-settings` | Company ↔ workflow process |
+| Email Template | `settings/email-template` | Template used when emailing |
+| Custom Resource Bundle Configuration, Custom Field Placement | `settings/translation-settings`, `settings/custom-field-placement` | Relabel; place tenant custom fields |
+| Webhook, Feature Visibility | `settings/webhook`, `settings/feature-visibility` | Event subscriptions; team access |
+| Permission listings, Client-Side Permission, Permission Wizard | `settings/*-listing` | Access control |
+| Release Notes, Applet Log | `settings/release-notes`, `settings/applet-log` | History |
+
+## Configuration
+
+### Before you can use it
+
+| Prerequisite | Where | Why |
+|---|---|---|
+| Company, branch, location | [Organisation](/applets/master-data/organisation-applet/) | Header requires branch and location; goods go back to the header (or delivery) location |
+| Company default GL codes `SALES_RETURN`, `DEBTOR` / `DEBTOR_NON_TRADE`, `OUTPUT_TAX`, `SALES_DISCOUNT`, `COGS`, `FOREX_GAIN`, `FOREX_LOSS` | [Chart of Account](/applets/master-data/chart-of-account-applet/) | The return uses the `SALES` posting handler but its PNS lines are mapped to `SALES_RETURN`; a missing code stops posting with `MISSING_DEFAULT_GL_CODE: <code>` |
+| Return reasons | Settings → Return Reasons | The Reason dropdown is empty until you add codes |
+| Customer with AR type | [Customer](/applets/master-data/customer-applet/) | Decides `DEBTOR` vs `DEBTOR_NON_TRADE` |
+| Settlement methods with cashbook and GL (for refunds on the Payment tab) | [Cashbook](/applets/master-data/cashbook-applet/) | Otherwise `MISSING_CASHBOOK` / `MISSING_GL_CODE: STL_MTHD [code]` |
+| Serial / batch / bin tracking on the items being returned | [Inventory Item Maintenance](/applets/inventory-workflow/inv-item-maintenance-applet/) | Tracked items need matching allocations at FINAL |
+| API permissions `TNT_API_DOC_INTERNAL_SALES_RETURN_{CREATE,READ,UPDATE,DELETE}_TGT_GUID` | Settings → permission listings | Branch targets scope the listing |
+| E-Invoice profile (optional) | [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) | `skip_einvoice` is copied from the customer at FINAL; the return references the original e-Invoice |
+
+### Applet settings
+
+**Default Selection** (`settings/default-selection`)
+
+| Setting | Key | What it controls | Default |
+|---|---|---|---|
+| Default Branch / Default Location | `DEFAULT_BRANCH`, `DEFAULT_LOCATION` | Pre-filled header | none |
+| Details tab ordering | tab-order key | Order of the 15 form tabs | as listed above |
+
+**Application Settings** (`settings/field-settings`) — behaviour toggles this applet reads (off unless stated):
+
+| Section | Setting | Effect when on |
+|---|---|---|
+| Gen Doc Listing | `DISABLE_GEN_DOC_LISTING`, `DEFAULT_TRANSACTION_DATE`, `DEFAULT_POSTING_STATUS`, `SORT_ORDER` | Listing loads on search only; default date range, status filter and sort |
+| Gen Doc Listing | `SEND_EMAIL_TO_FINAL_GEN_DOCS_ONLY` | Email refuses drafts |
+| Gen Doc Listing | `SALES_RETURN_WITH_PAYMENT` | Return is expected to carry a settlement (refund) line; the Payment tab drives the document's open amount |
+| Create & Print | `ENABLE_AUTO_POPUP` | Opens the printable after save |
+| Selection Settings | `WARN_EXCESS_RETURN_QUANTITY` | Warns when the returned quantity exceeds what the source invoice line sold |
+| Selection Settings | `SHOW_INVOICES_FROM` | Default *date from* filter of Search By Invoice / Cashbill |
+| Doc Settings | `ENABLE_SALES_AGENT_AUTOFILL`, `ENABLE_EMPLOYEE_LOGIN_AUTO_DETECTION`, `CANNOT_EDIT_CURRENCY_RATE`, `SHOW_FOREX_DATA_SOURCE` | As in the Sales Invoice applet |
+| Workflow Selection | `FINAL_STATUS_GUID` | Workflow status set by the Final button |
+| Entity Details | `ENABLE_BRANCH_FILTER` | Customer search scoped by branch |
+| Lines | `ENABLE_EDITING_UNIT_PRICE_STD`, `ENABLE_ITEM_NAME_MAX_LIMIT` + `ITEM_NAME_MAX_LIMIT` | Line editing rules |
+| Line Permission | `WARN_ZERO_UNIT_PRICE_BEFORE_ADD`, `DISABLE_EDITING_AMOUNT_TXN` | Zero-price prompt; locked transaction amount |
+| Payment | `ENABLE_EDIT_PAYMENT_DATE`, `ENABLE_EDIT_SETTLEMENT_FINAL`, `ENABLE_EDIT_SETTLEMENT_DATE` | Settlement lines editable, including after FINAL (total unchanged) |
+| Contra | `EDIT_CONTRA_TXN_DATE`, `CONTRA_DATE_SAME_AS_DOC_DATE_TXN` | Contra date editable / forced to the return's transaction date instead of the latest document date |
+| Credit Card | `MANDATORY_CARD_NO`, `MANDATORY_NAME`, `MANDATORY_CARD_ISSUER`, `MANDATORY_CARD_EXPIRY`, `MANDATORY_APPROVAL_CODE`, `MANDATORY_BATCH`, `MANDATORY_CARD_TYPE`, `MANDATORY_CVV` | Card fields required on a card refund line |
+| Menus | `HIDE_INTERCOMPANY_MENU`, `HIDE_FILE_EXPORT_MENU`, `HIDE_SWAP_SERIAL_NUMBER_MENU` | Remove the sidebar item unless the user holds `SHOW_INTERCOMPANY_MENU` / `SHOW_FILE_EXPORT_MENU` / `SHOW_SWAP_SERIAL_NUMBER` |
+
+*Hide / show and expand toggles* (cosmetic; `HIDE_…` unless stated):
+
+| Section | Toggles |
+|---|---|
+| Gen Doc Listing | `GENDOC_FINAL_BUTTON`, `GENDOC_DISCARD_BUTTON`, `GENDOC_VOID_BUTTON`, `GENDOC_SAVE_BUTTON` |
+| Gen Doc Fields | `SERVER_DOC_1/2/3`, `CLIENT_DOC_TYPE`, `CLIENT_DOC_1…5`, `DESCRIPTION`, `ARAP_PNS`, `ARAP_SETTLEMENT`, `ARAP_DOC_OPEN`, `ARAP_CONTRA`, `ARAP_BAL` |
+| Vertical UI | `VERTICAL_ORIENTATION`, `EXPAND_*` per tab |
+| Doc Settings | `TRACKING_ID`, `PERMIT_NO`, `REASON`, `CREATED_BY_DETAILS`, `LOCATION`, `DELIVERY_BRANCH`, `DELIVERY_LOCATION`, `MAIN_DETAILS_SALES_AGENT`, `BASE_CURRENCY`, `CURRENCY`, `CREDIT_TERMS`, `CREDIT_LIMIT`, `DUE_DATE`, `REMARKS`, `REFERENCE`, `MEMBER_CARD` |
+| Search | `SEARCH_TAB`, `SEARCH_BY_CUSTOMER`, `SEARCH_BY_CASHBILL` |
+| Lines | `SALES_AGENT`, all `UNIT_PRICE_*` and `UNIT_DISCOUNT*` columns, `QTY_BASE`, `QTY_UOM`, `UOM_TO_BASE_RATIO`, `AMOUNT_STD_EXCL_TAX`, `DISCOUNT_AMOUNT_EXCL_TAX`, `AMOUNT_NET_EXCL_TAX`, `AMOUNT_TXN`, `TAX_CONFIG_SELECTION`, `WHT_CONFIG_SELECTION`, `TOTAL_DISCOUNT_AMOUNT` |
+| Line item tabs | `BIN_NUMBER`, `BATCH_NUMBER`, `BATCH_ISSUE_DATE`, `BATCH_EXPIRY_DATE`, `COSTING_DETAILS`, `SWAP_SERIAL_NUMBER`, `DOC_LINK`, `RELATED_DOCUMENTS`, `ATTACHMENT_TAB` |
+| Header tabs | `DELIVERY_DETAILS_TAB`, `TRACE_DOCUMENT_TAB`, `DOC_LINK_TAB`, `EXPORT_TAB`, `SETTLEMENT_TAB` |
+| Credit Card | `CARD_NO`, `NAME`, `CARD_ISSUER`, `CARD_EXPIRY`, `APPROVAL_CODE`, `BATCH`, `CARD_TYPE`, `CVV` |
+
+Keys in the model with no UI: `DEFAULT_DELIVERY_BRANCH`, `DEFAULT_DELIVERY_LOCATION`, `DEFAULT_ORIENTATION`, `DEFAULT_TOGGLE_COLUMN`, `ENABLE_CUSTOM_STATUS_*`, department/tax `INCLUDE_*` / `ENABLE_*` flags, `WORKFLOW_PROCESS_GUID`, `PRINTABLE`.
+
+### Document behaviour settings
+
+| Area | How it is configured |
+|---|---|
+| Status flow | DRAFT → FINAL → VOID; Discard on a draft. |
+| Posting at FINAL | Company `posting_final_json` include/exclude list via the Generic Document Primary Processor. |
+| Workflow | Settings → Workflow Settings for `INTERNAL_SALES_RETURN`; `FINAL_STATUS_GUID`. |
+| Printables | Settings → Printable Format Settings. |
+| Email | Settings → Email Template; `SEND_EMAIL_TO_FINAL_GEN_DOCS_ONLY`. For intercompany returns the recipient billing/shipping email is filled from the target company. |
+| e-Invoice | `INTERNAL_SALES_RETURN` is an e-Invoice document type. On the saved return, E-Invoice → Submission holds **Original E-invoice Ref No**, **Original E-invoice Ref UUID** (picker *Select E-invoice Main Doc Ref No*) and **Document Date**; **Skip E-Invoice** is available. TIN validation follows the API response. Queues, validation and cancellation run in My E-Invoice Admin / Portal. |
+| Intercompany | Intercompany menu; mapping `INTERNAL_SALES_RETURN` ↔ `INTERNAL_PURCHASE_RETURN`. |
+
+### Feature visibility / permissions
+
+API: `TNT_API_DOC_INTERNAL_SALES_RETURN_{CREATE,READ,UPDATE,DELETE}_TGT_GUID`.
+
+Client-side permissions registered for this applet (45):
+
+| Group | Codes |
+|---|---|
+| Buttons | `SHOW_GENDOC_FINAL_BUTTON`, `SHOW_GENDOC_VOID_BUTTON`, `SHOW_GENDOC_DISCARD_BUTTON`, `SHOW_EDIT_SETTLEMENT_FINAL` (edit payment after FINAL), `SHOW_SWAP_SERIAL_NUMBER` (Swap Serial tab in the line listing) |
+| Pricing and amounts | `SHOW_UNIT_PRICE_STD_PRICING_SCHEME`, `SHOW_UNIT_PRICE_STD_INCL_TAX`, `SHOW_UNIT_PRICE_STD_EXCL_TAX`, `SHOW_UNIT_PRICE_STD_UOM_INCL_TAX`, `SHOW_UNIT_PRICE_STD_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_NET_EXCL_TAX`, `SHOW_UNIT_PRICE_NET_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_TXN`, `SHOW_UNIT_PRICE_TXN_UOM_INCL_TAX`, `SHOW_UNIT_DISCOUNT`, `SHOW_UNIT_DISCOUNT_UOM_EXCL_TAX`, `SHOW_AMOUNT_STD_EXCL_TAX`, `SHOW_DISCOUNT_AMOUNT_EXCL_TAX`, `SHOW_AMOUNT_NET_EXCL_TAX`, `SHOW_AMOUNT_TXN`, `SHOW_QTY_BASE`, `SHOW_QTY_UOM`, `SHOW_UOM_TO_BASE_RATIO`, `SHOW_TAX_CONFIG_SELECTION`, `SHOW_WHT_CONFIG_SELECTION`, `SHOW_COSTING_DETAILS`, `SALES_RETURN_DISPLAY_PRICING`, `SHOW_DISABLE_EDITING_AMOUNT_TXN_SETTING` |
+| ARAP columns | `SHOW_ARAP_PNS`, `SHOW_ARAP_SETTLEMENT`, `SHOW_ARAP_DOC_OPEN`, `SHOW_ARAP_CONTRA`, `SHOW_ARAP_BAL` |
+| Document numbers | `SHOW_DOC_NO_TENANT`, `SHOW_DOC_NO_COMPANY`, `SHOW_DOC_NO_BRANCH`, `SHOW_CLIENT_DOC_TYPE`, `SHOW_CLIENT_DOC_1…5`, `SHOW_DESCRIPTION`, `SHOW_TRANSACTION_DATE` |
+
+The app also reads `SHOW_INTERCOMPANY_MENU` and `SHOW_FILE_EXPORT_MENU`, which are not registered for this applet (see Troubleshooting).
+
+## Fields
 
 **Main Details**
 
-- Select **Branch** and **Location**.
-- If **Delivery Branch** and **Delivery Location** appear, complete them. The screen warns if they differ from the header branch or location.
-- Set **Transaction Date** with the date picker.
-- Choose **Reason** from the configured list.
-- Add **Remarks** for audit when your process expects notes.
-- Enter **Reference** (for example original invoice number) when you did not use **Search**.
-
-{{< figure src="/images/internal-sales-return-applet/sales-main-details-tab.png" alt="Main Details Tab - showing Branch, Location, Transaction Date, and other header fields" caption="Main Details: Branch, Location, Transaction Date, Reason, Remarks, and Reference." >}}
-
-{{< callout type="info" >}}
-If this return must be reported under **e-invoice**, complete **[Linking this return to the original e-invoice](#linking-this-return-to-the-original-e-invoice)** on the **saved** document ( **E-Invoice** tab on edit) **before** you click **FINAL**.
-{{< /callout >}}
-
-**Account**
-
-1. Click the **Account** tab.
-2. Open **Entity Details** if needed.
-3. Click **Entity ID** or **Entity Name**. Select the customer in the dialog.
-4. Review **Bill To** and **Ship To**.
-
-{{< figure src="/images/internal-sales-return-applet/sales-account-tab.png" alt="Account Tab - Entity Details showing Entity ID, Status, Entity Type, Currency, and other customer fields" caption="Account: select the customer from Entity ID or Entity Name." >}}
-
-**Lines**
-
-1. Click the **Lines** tab.
-2. Click **Create** (**+**) on the line toolbar.
-3. Select the item in the dialog.
-4. On **Add Item**, open **Item Details** → **Main Details**. Confirm **UOM**, **Pricing Scheme**, **Unit Price STD**, **Quantity Base**, and **Quantity by UOM**. Complete **Tariff Code** and tax fields when shown.
-5. Open **Serial Number** (or batch/bin tabs) when the item uses tracking.
-6. Review **Costing Details** when shown.
-7. Click **ADD** to save the line. Repeat for more lines.
-
-{{< figure src="/images/internal-sales-return-applet/sales-lines-iteam-add-1.png" alt="Lines Tab - showing plus button to add line items and existing items list" caption="Lines: use Create (+) to add a line." >}}
-
-{{< figure src="/images/internal-sales-return-applet/sales-lines-iteam-add-2.png" alt="Select Item dialog - showing searchable list of items with Item Code, Item Name, and UOM columns" caption="Select the item being returned." >}}
-
-{{< figure src="/images/internal-sales-return-applet/sales-lines-iteam-add-3.png" alt="Add Item screen - Item Details showing Item Code, Item Name, Sales Agent, UOM, Pricing Scheme, Unit Price, and Quantity fields" caption="Add Item: complete quantities and pricing, then click ADD." >}}
-
-**Totals and status**
-
-- Check totals at the bottom of the screen before you post.
-
-**CREATE**, **SAVE**, **FINAL**
-
-- Click **CREATE** after **Main Details** and **Account** validate. The session continues on the saved **Internal Sales Return**.
-- Click **SAVE** on the edit screen to keep **DRAFT** while you edit.
-- Click **FINAL** only when the return is ready to post. Reversing a mistake after **FINAL** requires **VOID** or a controlled adjustment process.
-
-After **FINAL**, warehouse follows your procedure to receive goods; finance follows **[Payment tab and FINAL](#payment-tab-and-final)** and **[E-invoice (finance)](#e-invoice-finance)** when those apply.
-
----
-
-## For warehouse staff: process returned goods {#for-warehouse-staff-process-returned-goods}
-
-{{< callout type="info" >}}
-**Warehouse:** Use this section for physical receipt. You **do not** need **[E-invoice (finance)](#e-invoice-finance)** unless your role explicitly includes it.
-{{< /callout >}}
-
-**Goal:** Match physical goods to **FINAL** return documents.
-
-1. Open **Sales Return (Internal)**.
-2. Filter the list to **Posting Status: FINAL**.
-3. Open a return. Review **Main Details**, **Account**, and **Lines**.
-
-![Warehouse Access Finalized Returns](/images/internal-sales-return-applet/warehouse-access-finalized-returns.png)
-
-**Physical receipt**
-
-- Count items, check codes and condition, capture serial or batch data when required.
-- Put stock away per your quarantine or restock rules.
-
-**If the shipment does not match the document**
-
-- Tell sales or a supervisor. They can edit only while the document is **DRAFT**. If the document is already **FINAL**, they follow your company’s adjustment or **VOID** process.
-
-### Inventory and stock
-
-Posting at **FINAL** drives inventory and accounting per your tenant rules. The applet records quantities; it does not replace your floor procedure for bins, quarantine, or scrap.
-
-{{< callout type="info" >}}
-If physical counts do not match the document, **escalate** before you assume system stock is correct.
-{{< /callout >}}
-
----
-
-## For finance teams: process refund and settlement {#for-finance-teams-process-refund}
-
-{{< callout type="info" >}}
-**Finance:** Read **[Payment tab and FINAL](#payment-tab-and-final)**, **[Contra tab (finance)](#contra-tab-finance)**, and **[E-invoice (finance)](#e-invoice-finance)**. Share **[Payment tab and FINAL](#payment-tab-and-final)** with sales so both teams expect the same behaviour after **FINAL**.
-{{< /callout >}}
-
-**Goal:** Settle the return and align receivables.
-
-1. Open **Sales Return (Internal)** and find the return (often **FINAL** for review after warehouse work—follow your policy).
-2. Review **Main Details**, **Account**, and **Lines** for amounts and tax.
-
-### Payment tab and FINAL {#payment-tab-and-final}
-
-{{< callout type="warning" >}}
-**Sales and finance:** New settlement lines on **Payment** use the toolbar **Create** (**+**, tooltip **Create**) only while the document is **not** **FINAL**, **VOID**, or **DISCARDED**, and while the document is **not** locked. The applet hides **Create** when any of those apply. After **FINAL**, use the **Payment** grid for **review**; add or change settlement lines **before** **FINAL**, or use your organisation’s posted adjustment process.
-
-If you are unsure whether you may still add a payment line, ask **finance** or your **administrator**.
-{{< /callout >}}
-
-**Add a settlement line (while still editable)**
-
-1. Open the return in **DRAFT** (or any state where **Create** still appears on **Payment**).
-2. Click the **Payment** tab.
-3. Click **Create** (**+**).
-4. On **Add Payment**, choose **Settlement Groups** and **Settlement Method**. Complete the fields your tenant shows.
-5. Click **ADD** to return to the list.
-6. Compare **Total Payment** with **Doc Open Amount** and **Doc ARAP Balance** when the screen shows them.
-
-![Finance Process Settlement - Payment Tab](/images/internal-sales-return-applet/finance-process-settlement-1.png)
-
-Typical methods (labels depend on master data) include customer credit without cash movement, direct refund, or contra-style settlement options in the method list.
-
-![Finance Process Settlement - Settlement Methods](/images/internal-sales-return-applet/finance-process-settlement-2-settelment-methods.png)
-
-{{< callout type="info" >}}
-If **Payment** is missing, your administrator may hide the tab or your role may not include it. Follow your offline settlement procedure.
-{{< /callout >}}
-
-### Contra tab (finance) {#contra-tab-finance}
-
-Use **Contra** on the **edit** screen when your tenant enables it and finance instructs you to **offset** this return against **other open receivable documents** instead of only using cash-style settlement lines.
-
-Typical flow in the applet:
-
-1. Open the **Contra** tab.
-2. Open **Select Document to Contra With**. Use the advanced search to find an eligible open document (the search model is tenant-driven—often includes other **sales invoices** or receivable-related documents with outstanding balance).
-3. Select rows, then click **ADD** where shown to build contra lines. **Total Contra**, **Doc Open Amount**, and **Doc ARAP Balance** on the screen help you check totals. **AUTO SETTLE** and **RESET** appear only when your settings enable them.
-
-**Best practice:** Prefer the **Contra** tab for contra and offset work so links and amounts stay on one audited path. Confirm which document types your organisation may contra (for example open **sales invoice** or **payment voucher**) with **finance**—allowed types follow configuration and search setup, not this guide.
-
----
-
-## Common daily tasks {#common-daily-tasks}
-
-| Task | Steps |
-|------|--------|
-| Create a return | **Sales Return (Internal)** → **+** → [Search or manual path](#two-ways-to-create-a-return) → **Main Details** → **Account** → **Lines** → **CREATE** → **SAVE** → complete **[E-invoice (finance)](#e-invoice-finance)** if required → **FINAL** |
-| Find a return | Filter by status, customer, or date → open the row |
-| Receive goods | Filter **FINAL** → open document → match **Lines** to physical stock |
-| Refund / settle | While **DRAFT**, **Payment** → **Create** → **Add Payment** → **ADD** → **FINAL** when ready; use **Contra** when instructed |
-| Export | Use list filters → **Export** when your tenant shows the action |
-
----
-
-## E-invoice (finance) {#e-invoice-finance}
-
-{{< callout type="warning" >}}
-**Finance and tax roles:** This section covers compliance and linking. **Sales and warehouse** may skip it unless trained.
-{{< /callout >}}
-
-### When to use a return after e-invoiced sales {#when-to-use-a-return-after-e-invoiced-sales}
-
-Use the table when the original **customer sales invoice was already submitted for e-invoice**. Confirm timings and law with **finance or tax**; limits differ by jurisdiction and configuration.
-
-The **Internal Sales Return** applet is one supported way to balance the original invoice. A **[Sales Credit Note (Internal)](/applets/sales-workflow/internal-sales-credit-note-applet/)** may also apply—see **[Related applets](#related-applets)**.
-
-#### Cancel and re-invoice vs sales return (72-hour rule of thumb) {#cancel-and-re-invoice-vs-sales-return-72-hour-rule-of-thumb}
-
-| Situation | What you can do | Typical next document |
-|-----------|------------------|------------------------|
-| Still **within 72 hours** of submission (per your organisation’s rule) | **Cancel** the original sales invoice and issue a **new** sales invoice with corrected details | New customer sales invoice |
-| **More than 72 hours** have passed | You **cannot cancel** the original sales invoice | **Internal Sales Return** or **Sales Credit Note (Internal)** to balance the original invoice |
-
-### Linking this return to the original e-invoice {#linking-this-return-to-the-original-e-invoice}
-
-Linking tells the e-invoice service **which original customer invoice** this return balances, using the list your tenant allows.
-
-1. Click **SAVE** or **CREATE** at least once, then reopen the return from the list. On edit, the header shows **SAVE** and **FINAL**.
-2. Click the **E-Invoice** tab (it appears on the **edit** screen, not on the first **Create Internal Sales Return** screen).
-3. Open **Submission** under **E-Invoice**.
-4. Set **Original E-invoice Ref No**, **Original E-invoice Ref UUID**, and **Document Date**. Use the picker next to **Original E-invoice Ref No** (**Select E-invoice Main Doc Ref No**) to choose an eligible invoice when available.
-5. Choose **Submission Type** and any other required fields. Use **Skip E-Invoice** only when your administrator or finance authorises it.
-6. Complete **Buyer’s Info** fields if shown. **SAVE** until you are ready for **FINAL**.
-
-### After FINAL (e-invoice only) {#after-final-e-invoice-only}
-
-After **FINAL**, any submission, queue, validation, or buyer notification work runs in **[My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/)**. Follow that user guide; this sales return guide does not duplicate queue steps.
-
----
-
-## Best practices {#best-practices}
-
-**Sales**
-
-- Collect proof of purchase before you create the return.
-- Write clear **Remarks** and choose accurate **Reason** codes.
-- Photograph damaged goods when your policy asks for evidence.
-
-**Warehouse**
-
-- Match counts and condition before you put stock away.
-- Use quarantine paths for defective goods.
-- Report mismatches immediately.
-
-**Finance**
-
-- Confirm goods receipt against policy before you release funds.
-- Add **Payment** lines **before** **FINAL** when the process requires it.
-- Keep contra and e-invoice work in the tabs and tools your organisation approved.
-
----
-
-## Screen and tab reference {#screen-and-tab-reference}
-
-Some tabs are hidden by applet settings. If a tab is missing, ask your administrator.
-
-### Create Internal Sales Return (first-time create screen)
-
-| Tab | Purpose |
-|-----|---------|
-| **Search** | **Search By Customer**, **Search By Invoice**, **Search By Cashbill** when your administrator shows the **Search** tab. |
-| **Main Details** | Branch, location, delivery fields when shown, dates, reason, remarks, reference. |
-| **Account** | Customer **Entity Details**, **Bill To**, **Ship To**, **Intercompany**. |
-| **Lines** | Return lines and **Add Item**. |
-| **Delivery Details** | When your tenant enables delivery details on create. |
-| **Payment** | Settlement lines; **Create** follows the same rules as on edit ([Payment tab and FINAL](#payment-tab-and-final)). |
-| **Department Hdr** | Analytical segments when enabled. |
-
-### Edit Internal Sales Return (saved document)
-
-| Tab | Purpose |
-|-----|---------|
-| **E-Invoice** | **Submission**, **Progress**, **Notification**, **Cancellation** when enabled. |
-| **ARAP** | Receivable / payable view when enabled. |
-| **Payment** | Settlement listing; **Create** hidden after **FINAL** / **VOID** / **DISCARDED** or when locked. |
-| **Payment Adjustment** | When enabled for posted adjustments. |
-| **TraceDocument** | Posting trace when enabled. |
-| **Contra** | **Select Document to Contra With**, totals, optional **AUTO SETTLE**—see [Contra tab (finance)](#contra-tab-finance). |
-| **Doc Link** | Cross-document links when enabled. |
-| **Attachments** | Files when enabled. |
-| **Export** | Export actions when enabled. |
-
-### Add Item (line editor)
-
-| Tab / panel | Purpose |
-|-------------|---------|
-| **Item Details** | **Main Details** sub-tab for quantities, pricing, tax. |
-| **Serial Number**, **Batch Number**, **Bin Number** | When the item uses tracking. |
-| **Costing Details** | Costing breakdown when enabled. |
-| **Issue Link** | Issue links when used. |
-
----
-
-## Related applets {#related-applets}
-
-- **[Sales Invoice (Internal) Applet](/applets/sales-workflow/internal-sales-invoice-applet/)** — Original customer invoices you return against (**Search By Invoice**).
-- **[Sales Credit Note (Internal) Applet](/applets/sales-workflow/internal-sales-credit-note-applet/)** — Financial credit when a credit note is the right tool.
-- **[My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/)** — Queues and submission **after** **FINAL** for e-invoice.
-
----
-
-## Frequently asked questions {#frequently-asked-questions}
-
-**Q: What is a cashbill, and how is it different from an invoice?**  
-A: **Search By Invoice** finds **internal sales invoices**. **Search By Cashbill** finds **internal sales cashbills** (often cash or immediate payment). Pick the subtab that matches how the original sale was recorded.
-
-**Q: Can I return only part of an invoice?**  
-A: Yes. Enter only the lines and quantities you are returning. Keep traceability with **Search** or **Reference**.
-
-**Q: What happens to loyalty points or discounts?**  
-A: This applet stores return lines and amounts. Points and promotions depend on other modules. Ask **finance** or your **loyalty/POS administrator**.
-
-**Q: Who gets notified when a return is created?**  
-A: Most tenants rely on the list and status filters. Automated alerts require extra setup. For e-invoice notifications, see **[My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/)**.
-
-**Q: Should I cancel and re-invoice, or create a sales return?**  
-A: See **[Cancel and re-invoice vs sales return (72-hour rule of thumb)](#cancel-and-re-invoice-vs-sales-return-72-hour-rule-of-thumb)**. Always confirm with finance or tax.
-
-**Q: Do I have to use the Search tab?**  
-A: No. Use **Reference** on **Main Details** and pick the customer on **Account** ([Two ways to create a return](#two-ways-to-create-a-return)).
-
-**Q: Where do I set the original e-invoice reference?**  
-A: On the saved return: **E-Invoice** → **Submission**. See **[Linking this return to the original e-invoice](#linking-this-return-to-the-original-e-invoice)**.
-
-**Q: What happens after FINAL for e-invoice?**  
-A: Continue in **[My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/)** for queues and submission. If your company does not use e-invoice, ignore this.
-
-**Q: Can I use a sales credit note instead of a return?**  
-A: Often for **financial** only corrections. Returns usually drive **stock**. Your finance team decides.
-
-**Q: What if I click FINAL by mistake?**  
-A: **FINAL** locks the document. Use **VOID** and recreate, or your adjustment process.
-
-**Q: What is the difference between SAVE and FINAL?**  
-A: **SAVE** keeps **DRAFT**. **FINAL** posts and locks.
-
-**Q: Do I need settlements before FINAL?**  
-A: If finance must record new **Payment** lines, add them **before** **FINAL** while **Create** is still available ([Payment tab and FINAL](#payment-tab-and-final)).
-
-**Q: What if physical goods do not match the document?**  
-A: Tell sales. **DRAFT** returns can be edited; **FINAL** returns need policy steps.
-
-**Q: How do I void a return?**  
-A: Open a **FINAL** document and use **VOID**. Discard **DRAFT** documents per your process.
-
-**Q: Can warehouse staff edit returns?**  
-A: Only if permissions allow; many users are view-only on **FINAL** documents.
-
-**Q: What if Payment is missing?**  
-A: Configuration or role may hide it. Ask finance for the offline process.
-
-**Q: Which status should I filter for day-to-day work?**  
-A: **DRAFT** for in-progress work; **FINAL** for receiving and settlement review.
-
-**Q: How do I pick a return reason?**  
-A: Pick the best code. If the list is wrong, ask your administrator to fix master data.
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Company, Branch, Location | Receiving branch and stock location | Yes | Delivery Branch / Location shown when enabled; a warning appears if they differ from the header |
+| Transaction Date | Return date | Yes | Locked-period check at FINAL |
+| Reason | Return reason code | No | List maintained under Settings → Return Reasons |
+| Currency, Currency Rate, Inverse Rate | Document currency | Currency yes | Rate copied from the source invoice on knock-off; lockable |
+| Sales Agent | Employee credited | No | Autofill from customer |
+| Reference, Remarks, Credit Terms, Credit Limit, Due Date, Tracking ID, Permit No, Member Card | Header attributes | No | Use Reference for the original invoice number when Search is not used |
+
+**Account**: Entity ID (required); billing and shipping contacts and addresses (edits persist on save); Intercompany. The entity cannot be changed once lines are linked to a sales invoice.
+
+**Lines** (`txn_type = PNS`)
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Item | Returned item | Yes | From the source invoice line or item search |
+| Quantity, UOM | Returned quantity | Yes | Quantity signum +1 is filled by the backend; `WARN_EXCESS_RETURN_QUANTITY` compares with the sold quantity |
+| Unit Price STD / Net, discount, Net Amount, Net Amount with Tax, Transaction Amount | Value credited | Net and transaction amounts required | A manually changed price is kept on edit (no longer reset to the pricing scheme) |
+| Tax Code, Tax Amount | Tax reversal | From item or scheme | Posts to `OUTPUT_TAX` |
+| Serial Number, Batch Number (batch no, qty, issue and expiry date), Bin Number (bin code, container measure / qty, qty) | Allocations for tracked items | Match line quantity at FINAL | Swap Serial available on FINAL documents |
+| Costing Details | MA cost used for the stock-in | Read-only | |
+
+**Payment**: settlement group and method, date, amount (≥ 0.01), plus type-specific references and any card fields marked mandatory. **Contra**: select open receivable documents; contra date is the latest document date unless `CONTRA_DATE_SAME_AS_DOC_DATE_TXN` is on.
+
+## Lifecycle and posting
+
+| Status | Meaning | Allowed next |
+|---|---|---|
+| **DRAFT** | Editable; no stock or GL effect | FINAL, Discard |
+| **FINAL** | Numbered; stock received; journal and AR posted; Payment editable only with `ENABLE_EDIT_SETTLEMENT_FINAL` + permission | VOID |
+| **VOID** | Reversed with a void reason | none |
+
+**FINAL validation** (backend): exchange rate when currencies differ; serial, bin and batch quantities match the line quantity; transaction date and company present; date not in a locked fiscal period. (Blacklist and stock-balance checks do not apply — the movement is inbound.)
+
+**What FINAL does**: generates running numbers; copies `skip_einvoice` from the customer; queues the primary processor (inventory, journal, AR, cashbook per company `posting_final_json`); queues the message-template (email) processor.
+
+**Journal** — `SALES` handler, amount signum −1, PNS lines mapped to `SALES_RETURN`:
+
+| Dr | Cr | Amount | GL code source |
+|---|---|---|---|
+| Sales Return (`SALES_RETURN`), or the line's own GL code | | Net amount per line | Line `glcode_guid` → item-company GL link → company default |
+| Output tax (`OUTPUT_TAX`) | | Tax amount | Company default GL |
+| | Debtor (`DEBTOR` / `DEBTOR_NON_TRADE`) | Total including tax | Company default GL by customer AR type |
+| Stock | Cost of goods sold (`COGS`) | Moving-average cost × quantity | Item stock account and company default `COGS` |
+| Debtor | Cashbook GL | Each Payment-tab (refund) line | Settlement method |
+
+**Stock**: each PNS line writes an inventory transaction with quantity × +1 at the return's branch and location; serial numbers and batches are re-activated at that location.
+
+**VOID** sets the status and reason, queues the void primary processor (reverses stock, journal and AR) and removes the return from the e-Invoice queue; the void error message names the e-Invoice state when a submitted return cannot be voided.
+
+## Related applets
+
+- [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [POS General](/applets/sales-workflow/pos-general-applet/) — the documents being returned against.
+- [Sales Credit Note (Internal)](/applets/sales-workflow/internal-sales-credit-note-applet/) — financial-only correction without stock.
+- [Sales Refund Note (Internal)](/applets/sales-workflow/internal-sales-refund-note-applet/), [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) — settle the credit balance later.
+- [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) — intercompany mirror.
+- [My E-Invoice Portal](/applets/e-invoice/my-e-invoice-portal-applet/), [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) — submission against the original e-Invoice; cancellation windows.
+- [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) — where the returned quantity reappears.
+- [Customer](/applets/master-data/customer-applet/), [Chart of Account](/applets/master-data/chart-of-account-applet/), [Cashbook](/applets/master-data/cashbook-applet/), [Workflow Design](/applets/master-data/workflow-design-applet/) — master data and workflow.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Final fails with `MISSING_DEFAULT_GL_CODE: SALES_RETURN` (or `DEBTOR`, `OUTPUT_TAX`, `COGS`) | Company default GL codes missing | Set them in [Chart of Account](/applets/master-data/chart-of-account-applet/) |
+| Reason dropdown is empty | No return reasons configured | Settings → Return Reasons |
+| Lines copied from Search By Invoice show zero amounts | The source invoice line was saved with a zero standard amount, or an older build did not apportion amounts | Fixed: Add Selected / Add All now copy and apportion amounts; check the source invoice line |
+| Cannot select the invoice: entity or branch does not match | Search By Invoice checks that the invoice's customer and branch match the return header | Set the header branch and customer to match, or start from Search |
+| Entity ID cannot be changed | Lines are linked to a sales invoice | Remove the linked lines first, or create a new return |
+| Edit line resets the price you typed | Older build bug | Fixed; upgrade |
+| Customer name blank on the listing | Older build bug | Fixed |
+| Contra date not what you expected | Contra uses the latest document date unless `CONTRA_DATE_SAME_AS_DOC_DATE_TXN` | Set the toggle, or `EDIT_CONTRA_TXN_DATE` |
+| Cannot add a Payment line | Document is FINAL/VOID/DISCARDED or locked | Add settlement before FINAL, or enable `ENABLE_EDIT_SETTLEMENT_FINAL` and grant `SHOW_EDIT_SETTLEMENT_FINAL` |
+| Void refused with an e-Invoice message | The return has already been submitted to LHDN | Cancel through [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) within the allowed window, then void |
+| Intercompany or File Export menu missing for one user | `HIDE_*_MENU` on and the `SHOW_*_MENU` codes are not registered for this applet | Turn the hide off or request the codes |
+| Batch Issue / Expiry date required on the batch tab | Tenant does not track batch dates | Hide them with `HIDE_BATCH_ISSUE_DATE` / `HIDE_BATCH_EXPIRY_DATE` (added for this applet) |
+| Returned quantity larger than sold | `WARN_EXCESS_RETURN_QUANTITY` off | Turn it on; the warning is advisory |
+
+## Related documentation
+
+- [Returns and Exchanges Workflow](/guides/sales-guides/returns-exchanges-workflow/)
+- [Inventory module](/modules-v2/inventory/), [Financial Accounting module](/modules-v2/financial-accounting/), [E-Invoice module](/modules-v2/e-invoice/), [POS module](/modules-v2/pos/)
+- [Sales Workflow applets](/applets/sales-workflow/)
