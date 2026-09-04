@@ -85,8 +85,26 @@ per day, `measure` weekly, batches as the inbox fills. It never ends; it slows d
 - No push without the local suite (build, lychee ≤ baseline, Playwright green). Live verify after.
 - No structural move without an approved spec. No new pages for applets not in the registry.
 - Never reintroduce marketing claims, invented roadmaps, or "blockchain".
-- Decisions that are Vincent's are queued in `## Waiting on Vincent` below and asked at the next
+- Decisions that are Vincent's are queued in `## Lanes (started 2026-09-05, Vincent's instruction)
+
+Four parallel agents upgrade `content/en/applets/**` to `specs/applet-page-standard.md` from
+source code + backend + issues (`planning/lanes/`). **While lanes are running, loop units must not
+edit `content/en/applets/`.** When a lane finishes: merge its ledger shard into
+`kb/sources/applet-repos/ledger.jsonl`, fold `findings.md` into the inbox/discussions, run the gate,
+commit that lane's pages, ship, then re-launch the lane from its `state.json` (prompt:
+`planning/lanes/PROMPT.md` with {N} substituted) until its queue is empty.
+
+## Waiting on Vincent` below and asked at the next
   opportunity; work continues on everything else.
+
+## Lanes (started 2026-09-05, Vincent's instruction)
+
+Four parallel agents upgrade `content/en/applets/**` to `specs/applet-page-standard.md` from
+source code + backend + issues (`planning/lanes/`). **While lanes are running, loop units must not
+edit `content/en/applets/`.** When a lane finishes: merge its ledger shard into
+`kb/sources/applet-repos/ledger.jsonl`, fold `findings.md` into the inbox/discussions, run the gate,
+commit that lane's pages, ship, then re-launch the lane from its `state.json` (prompt:
+`planning/lanes/PROMPT.md` with {N} substituted) until its queue is empty.
 
 ## Waiting on Vincent
 

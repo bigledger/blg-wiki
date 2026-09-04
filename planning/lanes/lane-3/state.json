@@ -1,0 +1,60 @@
+{
+ "lane": 3,
+ "folders": [
+  "purchase-workflow",
+  "ecommerce",
+  "e-invoice",
+  "delivery-installation",
+  "external-tenant-admin"
+ ],
+ "queue": [
+  "content/en/applets/purchase-workflow/internal-purchase-debit-note-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-credit-note-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-order-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-return-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-grn-applet.md",
+  "content/en/applets/ecommerce/cp-commerce-admin-applet.md",
+  "content/en/applets/purchase-workflow/purchase-report-applet.md",
+  "content/en/applets/purchase-workflow/blanket-purchase-order-applet.md",
+  "content/en/applets/delivery-installation/delivery-installation-applet.md",
+  "content/en/applets/delivery-installation/delivery-installation-driver-applet.md",
+  "content/en/applets/ecommerce/ecommerce-catalog-applet.md",
+  "content/en/applets/ecommerce/installation-of-pricebook-applet.md",
+  "content/en/applets/purchase-workflow/internal-consignment-purchase-order-applet.md",
+  "content/en/applets/purchase-workflow/internal-consignment-return-applet.md",
+  "content/en/applets/purchase-workflow/internal-consignor-purchase-billing-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-gin-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-grn-stock-in-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-quotation-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-refund-note-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-requisition-applet.md",
+  "content/en/applets/e-invoice/my-e-invoice-admin-applet.md",
+  "content/en/applets/e-invoice/my-e-invoice-portal-applet.md",
+  "content/en/applets/e-invoice/mypeppol-admin-applet.md",
+  "content/en/applets/ecommerce/pdg-applet.md",
+  "content/en/applets/ecommerce/cp-commerce/push-notification-configuration.md",
+  "content/en/applets/ecommerce/seller-admin-applet.md",
+  "content/en/applets/ecommerce/seller-applet.md",
+  "content/en/applets/ecommerce/shopping-cart-applet.md",
+  "content/en/applets/purchase-workflow/supplier-delivery-order-applet.md",
+  "content/en/applets/external-tenant-admin/tenant-admin-applet.md",
+  "content/en/applets/ecommerce/website-builder/user-manager.md",
+  "content/en/applets/e-invoice/website-builder/user-permission-manager.md",
+  "content/en/applets/purchase-workflow/blanket-purchase-order-applet-supplier-access-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-credit-note-supplier-access-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-order-supplier-access-applet.md",
+  "content/en/applets/purchase-workflow/internal-purchase-return-supplier-access-applet.md",
+  "content/en/applets/ecommerce/internal-shopping-cart-customer-access-applet.md"
+ ],
+ "done": [],
+ "skipped": [
+  {
+   "page": "content/en/applets/e-invoice/my-einvoice-for-customer-and-supplier-applet.md",
+   "reason": "ADR-0002: renamed applet; page to be merged into my-e-invoice-portal-applet by the loop, not enhanced"
+  }
+ ],
+ "updated": "2026-09-05"
+}
