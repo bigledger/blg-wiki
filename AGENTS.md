@@ -29,6 +29,19 @@ If you find yourself listing 30 uppercase identifiers under bullet headings, sto
 
 ---
 
+## Before you edit anything: `planning/`
+
+Read `planning/README.md`. Structural changes to `content/en/` need an approved spec in
+`planning/specs/` citing an ADR in `planning/decisions/`. Draft new guides in
+`planning/drafts/` first.
+
+**Proofreading feedback from Vincent is recorded, not actioned, on arrival.** Append it to
+`planning/feedback/inbox.md` (`F-NNNN`, date, his words, grouped by page URL) and stop.
+Fixes happen in batches — one page, all its open items, one pass, one commit, logged in
+`planning/feedback/batches/`. Do not fix items one at a time as they come in.
+
+---
+
 ## Voice and tone
 
 **Brand reference: Xero / QuickBooks support docs.** Warm, hand-holding, second-person, plain English. Aimed at a Malaysian SME owner or accounts clerk who may not be a trained accountant.

@@ -167,6 +167,89 @@ If you spot any of these, rewrite. The applet doc absorbs the reference content 
 
 
 
+# 🧭 What BigLedger is — say it right, everywhere
+
+**BigLedger (akaun.com) is a web-based, modern, serverless / cloud-native business operating
+system** — the backbone a business needs when it wants to integrate with and be operated by
+AI agents, through APIs, MCP (Model Context Protocol), SDKs and other mechanisms. It covers
+accounting, inventory, sales, purchasing, POS, e-commerce, HR and Malaysian LHDN e-Invoice
+as applets grouped into modules.
+
+- ❌ **It is NOT a blockchain platform.** That phrase appeared in the site description and
+  the Malay/Arabic home pages until 2026-09-05 and was removed. Never reintroduce it.
+- ❌ Do not invent roadmap features (quantum, AR, IoT, voice, drones…). A docs site documents
+  what exists.
+- ✅ When a page needs a one-line description of the product, use: *"BigLedger (akaun.com) —
+  a web-based, cloud-native business operating system … the backbone for AI agents via API,
+  MCP and SDK."* (`hugo.yaml` `params.description` is the canonical wording, in 4 languages.)
+- ✅ The developer-facing story (API, MCP, SDK, agents) is a first-class part of the product,
+  not an appendix — `developers/` deserves the same care as the user manuals.
+
+# 🗂️ The `planning/` folder — think before you edit
+
+`planning/` is the workbench. Nothing in it is published (Hugo only builds `content/`).
+Read `planning/README.md` on every cold start. The short version:
+
+```
+planning/
+  discussions/   one topic per file — options, back-and-forth, what's unresolved
+  decisions/     ADRs, numbered, immutable once accepted — the answer to "why is it like this"
+  specs/         the exact change plan; gates any structural edit to content/en/
+  drafts/        pages written in full here before they move into content/en/
+  reviews/       GPT/codex adversarial passes, panel reviews, reader feedback on pages
+  research/      anonymised tenant patterns only — never real names, amounts, references
+  feedback/      Vincent's proofreading inbox (see below)
+  ideas/  archive/
+```
+
+**Structural changes to `content/en/` (renames, moves, new sections) require an approved
+spec in `planning/specs/` that cites its ADR.** Discuss first, decide, spec, then edit.
+
+## 📝 Proofreading feedback: record first, fix in batches
+
+Vincent proofreads the **live site** and reports mistakes in conversation. The rule:
+
+1. **Record, don't fix.** Append each item to `planning/feedback/inbox.md` under the page's
+   URL heading, with a sequential `F-NNNN` id, the date, and Vincent's words near-verbatim.
+   Then stop. Do not open the page. Do not edit anything.
+2. **Batch by page.** When asked to process (or when a page has accumulated several items),
+   take **all** open items for that page, analyse them together, make one pass over the
+   file, one commit. Record what was done in `planning/feedback/batches/YYYY-MM-DD-<slug>.md`
+   and tick the items in the inbox.
+3. **Why:** a page is read and rewritten once, not once per item — fewer tokens, fewer
+   commits, and patterns across items (the same mistake on five pages) surface before
+   anything changes.
+
+If a reported item is really a structure or design question, record it in the inbox
+**and** open a discussion in `planning/discussions/`.
+
+## 📚 `kb/` — the knowledge base fed by source code, issues, email, Drive
+
+Long-running, resumable ingestion of every source that describes how the product actually
+works. Read `kb/README.md` before touching it. The rules that matter:
+
+- **source → `kb/topics/` → wiki. Never source → wiki.** Topic notes hold cited, anonymised
+  facts and `related:` links; the wiki is written from topics.
+- **Identity = stable source ID** (`gh:…#n`, `jira:KEY-n`, `mail:<msgid>`, `gdrive:<id>`,
+  `git:<repo>@<sha>`). **Change = `content_hash`** (sha256 of normalised text). **Resume =
+  per-source `cursor.json`.** Ledgers are append-only JSONL; `kb/tools/ledger.py` enforces it.
+- **Think laterally.** Adding a fact to a topic means walking its `related:` edges and
+  asking what else this changes — e-invoice, returns, credit limits — and recording
+  connections or open questions (`kb/questions/`).
+- **Raw material is customer data.** It lives in `kb/private/` (gitignored) or outside the
+  repo. Ledgers and topics carry no bodies, no names.
+
+## 🤝 Second opinions: GPT via `codex exec`
+
+`codex exec` is installed and authenticated on this box; default model is set in
+`~/.codex/config.toml` (currently `gpt-5.6-sol`). Use it for adversarial review of IA
+decisions and of guide drafts — the prompt must say **read-only, do not modify files**,
+because the sandbox is bypassed (AppArmor breaks bubblewrap here). File every review
+under `planning/reviews/` with the prompt appended. Verify any factual claim it makes
+about the repo before relaying it. Claude drafts and reconciles; GPT attacks.
+
+---
+
 ### Primary Language: English (en)
 - **All new content should be authored in English first**
 - English content is located in `content/en/`
@@ -175,7 +258,7 @@ If you spot any of these, rewrite. The applet doc absorbs the reference content 
 
 ### Supported Languages
 1. **Chinese (zh)** - `content/zh/`
-2. **Malay (ms)** - `content/ms/`  
+2. **Malay (ms)** - `content/ms/` — **Bahasa Melayu (Malaysia), NOT Bahasa Indonesia.** They are close enough that LLM and MT output drifts into Indonesian. Reject any Malay text containing Indonesian-only words: *bisa* (Malay: boleh), *fitur* (ciri), *bisnis* (perniagaan), *inventaris* (inventori), *mengelola* (mengurus), *pengiriman* (penghantaran), *melacak* (menjejak), *kantor* (pejabat), *uang* (wang), *unduh* (muat turun), *silakan* (sila), *karena* (kerana), *pengaturan* (tetapan).  
 3. **Arabic (ar)** - `content/ar/` (RTL support enabled)
 
 ### Translation Policy
@@ -183,6 +266,7 @@ If you spot any of these, rewrite. The applet doc absorbs the reference content 
 - English content takes priority for new features and updates
 - Translation folders may not always have complete parity with English
 - When creating new content, focus only on the English version
+- **Hugo pairs translations by identical relative path.** If an English file moves, its `zh/`, `ms/`, `ar/` twins must move in the same commit or they become orphans with a broken language switcher (this already happened to 30 files under `zh/applets/`)
 
 ### Content Creation Guidelines for Claude
 

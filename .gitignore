@@ -44,3 +44,9 @@ tests/playwright/test-results/
 /scratch_generate_all.py
 /scratch_generate_crm.py
 /scratch_generate_ultra.py
+
+# Planning notes that may contain customer-identifying data (registry codes, tenant names)
+/planning/private/
+
+# kb raw caches (emails, ticket bodies, drive exports) — customer data, never committed
+/kb/private/

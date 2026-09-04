@@ -23,7 +23,8 @@ run_local() {
   green 'Hugo build OK'
 
   blue '== Tier 2: lychee against built site =='
-  if ! lychee --config tests/lychee.toml --offline --base public public/; then
+  # lychee needs an absolute --base (a bare "public" is rejected as an invalid base)
+  if ! lychee --config tests/lychee.toml --offline --base "$REPO_ROOT/public" public/; then
     red 'lychee found broken local links'
     FAIL=1
   else
@@ -31,7 +32,8 @@ run_local() {
   fi
 
   blue '== Tier 3: Playwright against local Hugo server =='
-  hugo server --port 1313 --bind 127.0.0.1 --logLevel warn >/tmp/hugo-server.log 2>&1 &
+  # baseURL must match what Playwright hits, or Hugo's asset URLs are cross-origin (CORS on flexsearch.js)
+  hugo server --port 1313 --bind 127.0.0.1 --baseURL http://127.0.0.1:1313/ --appendPort=false --logLevel warn >/tmp/hugo-server.log 2>&1 &
   HUGO_PID=$!
   # Wait for hugo to start
   for i in $(seq 1 30); do
