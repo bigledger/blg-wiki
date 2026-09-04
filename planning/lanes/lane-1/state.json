@@ -7,7 +7,6 @@
   "claims"
  ],
  "queue": [
-  "content/en/applets/sales-workflow/sales-report-applet.md",
   "content/en/applets/membership/membership-admin-applet.md",
   "content/en/applets/sales-workflow/internal-sales-quotation-applet.md",
   "content/en/applets/sales-workflow/car-workshop-applet.md",
@@ -67,6 +66,10 @@
   },
   {
    "page": "content/en/applets/sales-workflow/pos-general-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/sales-workflow/sales-report-applet.md",
    "date": "2026-09-05"
   }
  ],
