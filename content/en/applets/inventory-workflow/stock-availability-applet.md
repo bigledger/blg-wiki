@@ -1,6 +1,21 @@
 ---
-title: "Stock Availability Applet"
-description: "Real-time inventory visibility, advanced bin tracking, and serial/batch traceability for warehouse and sales operations"
+title: "Stock Availability"
+description: "Reference for the Stock Availability applet — physical, committed and available quantity by company, location and bin, with document drill-down, stock aging, serial and batch tracing and stock card planning."
+applet_code: "stockAvailability"
+applet_repo: "blg-applet-wavelet-stock-availability-applet"
+modules: [inventory, purchasing, pos]
+related_applets: [stock-balance-applet, inv-item-maintenance-applet, doc-item-maintenance-applet, stock-reservation-applet, stock-take-applet, stock-adjustment-applet, warehouse-management-applet, internal-sales-order-applet, internal-purchase-order-applet, internal-purchase-grn-applet, organisation-applet]
+guides: []
+sources:
+  - blg-applet-wavelet-stock-availability-applet/micro-fe/projects/wavelet-erp/applets/stock-availability-applet/src/app/models/menu-items.ts
+  - blg-applet-wavelet-stock-availability-applet/micro-fe/projects/wavelet-erp/applets/stock-availability-applet/src/app/components/settings-container/application-settings/application-settings.component.ts
+  - blg-applet-wavelet-stock-availability-applet/micro-fe/projects/wavelet-erp/applets/stock-availability-applet/src/app/components/settings-container/application-settings/application-settings.component.html
+  - blg-applet-wavelet-stock-availability-applet/micro-fe/projects/wavelet-erp/applets/stock-availability-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+  - blg-applet-wavelet-stock-availability-applet/micro-fe/projects/wavelet-erp/applets/stock-availability-applet/src/app/components/stock-availability-container/stock-availability-listing/stock-availability-listing.component.ts
+  - blg-applet-wavelet-stock-availability-applet/micro-fe/projects/wavelet-erp/applets/stock-availability-applet/src/app/models/advanced-search-models/stock-availability-details-search.model.ts
+  - blg-applet-wavelet-stock-availability-applet/micro-fe/projects/wavelet-erp/applets/stock-availability-applet/src/app/components/stock-card-planning-container/
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/stock/StockAvailabilityService.java
+  - akaun_master.bl_applet_client_side_perm_dfn (applet stockAvailability)
 tags:
 - inventory-management
 - stock-tracking
@@ -9,270 +24,189 @@ tags:
 - serial-tracing
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Stock Availability Applet** is the central nervous system for your inventory. It sits on top of all other supply chain modules (Purchasing, Sales, Manufacturing, Warehouse) to provide a single, unified view of exactly what you have, where it is, and what its status is. 
+The Stock Availability applet is the read-only window onto inventory: what you physically hold, what open documents have already claimed or promised, and therefore what you can still sell — by company, location and bin, down to individual serial and batch numbers. It sits on top of the stock ledger written by purchasing, sales, transfers, adjustments and stock takes; nothing is created here.
 
-It is a **read-only** applet. You do not *make* changes here (you make changes in Goods Receipt or Delivery applets). You *look* here to make critical business decisions.
+Sales staff open it before promising stock, warehouse staff to find where an item sits, purchasing to see what is on order, and finance for stock aging and valuation columns (which can be hidden from everyone else).
 
-{{< callout type="info" >}}
-**Core Concept: Understanding "Availability"**
-Having 100 laptops in the warehouse does NOT mean you can sell 100 laptops. 
-The Stock Availability Applet exists to calculate your **True Available Stock** by subtracting items promised to customers and adding items promised from suppliers.
-{{< /callout >}}
+{{< figure src="/images/stock-availability-applet/stock-availability-infographic.jpg" alt="Mastering Real-Time Inventory: The Stock Availability Applet - showing the Master Formula (A = P - R), Strategic Visibility, End-to-End Audit Trails, and a Role-Specific Quick Reference Guide" caption="Stock Availability at a glance: physical balance, document adjustments, bin-level precision, aging and role-specific visibility." >}}
 
-### Who Benefits from This Applet?
+### How availability is calculated
 
-| Role | How they use it |
-|------|-----------------|
-| **Sales Reps** | Checking if a product is in stock *before* committing to a customer order. |
-| **Procurement** | Checking running low stock to know what needs to be reordered. |
-| **Quality/Compliance** | Tracing a defective Serial Number back to its original supplier. |
+| Column | Meaning |
+|---|---|
+| **Stock Balance** (physical) | The ledger quantity at that company / location, from finalised stock documents |
+| **Adj Qty** | The signed sum of quantities on *open* documents that affect the item: sales orders and outbound delivery orders reduce it, purchase orders, goods received notes and stock-in drafts add to it. Each document type carries its own sign |
+| **Available Qty** | `Stock Balance + Adj Qty` — what a new order can still take |
+| **Min / Max level** | The item's minimum and maximum stock levels for the location, used for the warning colour and by replenishment |
 
----
+The Details screen shows the documents behind Adj Qty per type (Sales Order, Purchase Order, GRN, GRN draft, GRN stock-in draft, Delivery Order, Sales Invoice draft, Sales Quotation), so "50 physical but 0 available" is always traceable to specific documents.
 
-## What Problems Does This Solve?
+## Where it fits
 
-**Without Stock Availability Tracking:**
-- Sales reps sell items that are already promised to other customers, causing fulfillment failures.
-- Warehouse staff spend hours searching for items because they don't know the specific bin location.
-- Expired medical supplies or food items cannot be easily traced.
-- Recalling a specific defective batch takes days of manual paperwork auditing.
+| Direction | Applet / document | Why |
+|---|---|---|
+| Upstream | [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) | The ledger balances this applet reads |
+| Upstream | [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Item master, category groups, pricing schemes and prices shown as columns |
+| Upstream | [Organisation](/applets/master-data/organisation-applet/) | Companies, branches, locations and bins |
+| Upstream | [Sales Order](/applets/sales-workflow/internal-sales-order-applet/), [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase GRN](/applets/purchase-workflow/internal-purchase-grn-applet/) and other stock documents | Open documents that make up Adj Qty and appear in Details |
+| Sibling | [Stock Reservation](/applets/inventory-workflow/stock-reservation-applet/) | Reserved and locked quantities shown on Stock Card & Planning |
+| Sibling | [Stock Take](/applets/inventory-workflow/stock-take-applet/), [Stock Adjustment](/applets/inventory-workflow/stock-adjustment-applet/) | Correct the balance this applet displays |
+| Sibling | [Warehouse Management](/applets/inventory-workflow/warehouse-management-applet/) | Bins shown in Bin Availability |
 
-**With Stock Availability Applet:**
-- ✓ **Real-time Formulas** - Instantly calculate *Physical - Reserved = Available*
-- ✓ **Bin-Level Precision** - Know exactly which shelf an item is sitting on.
-- ✓ **End-to-End Traceability** - Trace a Serial Number from the Supplier PO all the way to the Customer Invoice.
-- ✓ **Aging Analytics** - Spot dead stock before it loses complete value.
+Modules: Inventory, Purchasing, POS.
 
-{{< figure src="/images/stock-availability-applet/stock-availability-infographic.jpg" alt="Mastering Real-Time Inventory: The Stock Availability Applet - showing the Master Formula (A = P - R), Strategic Visibility, End-to-End Audit Trails, and a Role-Specific Quick Reference Guide" caption="Mastering Real-Time Inventory: The Stock Availability Applet. A visual overview of the Master Formula, Bin-Level Precision, Aging Analytics, and Role-Specific Visibility." >}}
+## Screens and menus
 
----
+| Menu | What it shows |
+|---|---|
+| **Stock Availability** | Item × company × location grid: stock balance, adj qty, available qty, costs (average, last purchase, FIFO, LIFO), prices per pricing scheme, category columns |
+| **Stock Availability Details** | One item at a time with the documents behind each quantity, per location |
+| **Stock Aging Report** | Balance grouped by age bucket |
+| **Stock Availability with SO and PO** | Only the sales-order and purchase-order commitments |
+| **Trace Serial No** | Movement history of one serial number |
+| **Serial Number Balance** | Serial numbers currently in stock, by location |
+| **Trace Batch No** | Movement history of one batch number |
+| **Bin Availability** | Quantity per bin, with bin code and name |
+| **Stock Card & Planning** | Per item: total, reserved (and by whom), locked, packed, ad-hoc and available quantity with bin, UOM, job order and completion date |
+| **Audit Trail** | Change history |
 
-## The Master Inventory Formula
+Gear (Settings) menu: **Application Settings**, **Default Selection**. Personalisation: per-user **Default Selection**.
 
-To use this applet effectively, you must understand the four pillars of inventory calculation:
+### Stock Availability listing
 
-1. **Physical Quantity (`P`)**: The actual, physical number of items sitting in your warehouse right now.
-2. **Reserved Quantity (`R`)**: Items that are physically in the warehouse, but have been booked by confirmed Sales Orders. *You cannot sell these.*
-3. **Incoming Quantity (`I`)**: Items that are not in the warehouse yet, but have been ordered from suppliers via confirmed Purchase Orders.
-4. **Available Quantity (`A`)**: The true amount you can currently sell to a new customer.
+{{< figure src="/images/stock-availability-applet/stock-availability-listing.png" alt="Stock Availability Listing showing company-wide inventory levels with branch filters and color-coded status indicators." caption="Stock Availability listing: total physical and available stock across locations." >}}
 
-**The Formula:**
-`Available (A) = Physical (P) - Reserved (R)`
+Filter by company, branch, location, item, category group and pricing scheme; the same item can be seen company-wide or per location. Rows below the item's minimum level are highlighted. Every column has a tenant-wide hide switch and a matching permission (see Configuration).
 
-*Note: Some businesses configure their setup to include Incoming stock in their Availability calculation (`A = P - R + I`), allowing sales reps to sell stock that is currently in transit.*
+### Stock Availability Details
 
----
+{{< figure src="/images/stock-availability-applet/stock-availability-details.png" alt="Stock Availability Details view highlighting reserved quantities and pending transactions." caption="Stock Availability Details: the documents (Sales Orders, Purchase Orders, GRNs) behind the available quantity." >}}
 
-## Role-Based Quick Start Guides
+The advanced search has an **Optional** multi-select that, by default, hides zero balances and the document-balance sections — `HIDE_ZERO_BALANCE`, `HIDE_GOODS_RECEIVE_NOTE_BALANCE`, `HIDE_PURCHASE_ORDER_BALANCE`, `HIDE_SALES_ORDER_BALANCE`, `HIDE_DELIVERY_ORDER_BALANCE`, `HIDE_SALES_INVOICE_DRAFT_BALANCE`, `HIDE_GOODS_RECEIVE_NOTE_DRAFT_BALANCE`, `HIDE_GRN_STOCK_IN_DRAFT_BALANCE`. Untick one to open that section; `SHOW_MIN_QTY`, `SHOW_MAX_QTY` and `SHOW_OTHER_IMAGES_1..3 / _ALL` add the level columns and item images. Each document tab (GRN, PO, SO, DO, Sales Invoice draft, GRN draft, Sales Quotation) can also be hidden tenant-wide.
 
-### For Sales Reps: The Pre-Sale Check
-Your goal is to ensure you don't sell stock you don't have, and to manage customer expectations. Since you often need to know *why* stock is unavailable or *when* it will arrive, you should primarily use the **Stock Availability Details** listing.
+### Stock Aging Report
 
-1. Go to **Stock Availability Details** listing.
-2. Search for the Item Code (e.g., *LAPTOP-PRO*).
-3. If the **Available** column is 0, check the breakdown rows for that item.
-4. You will see specific **Sales Orders** holding the stock, or **Purchase Orders** that show when the next shipment from the supplier is arriving.
+{{< figure src="/images/stock-availability-applet/stock-aging-report.png" alt="Stock Aging Report showing inventory grouped by time periods." caption="Stock Aging Report: balance by age bucket, to find stock to clear before it is obsolete." >}}
 
-### For Warehouse Pickers: Finding an Item
-Your goal is to find where 5 specific mice are located in a massive warehouse.
+### Stock Availability with SO and PO
 
-1. Go to **Bin Availability Listing**.
-2. Search for the Item Code.
-3. The system will show you the exact breakdown:
-   - *Aisle 2, Bin A: 3 units*
-   - *Aisle 4, Bin C: 2 units*
-4. Use this precise location map to pick the items efficiently.
+{{< figure src="/images/stock-availability-applet/stock-availability-with-so-po.png" alt="Stock Availability with SO and PO view showing specific document links and outstanding quantities." caption="SO and PO tracking: stock committed to, or expected from, open orders." >}}
 
-### For Compliance Officers: Tracing a Defect
-A customer reported a defect with Serial Number `SN-998877`. Your goal is to find out which supplier gave it to you.
+### Trace Serial No, Serial Number Balance, Trace Batch No
 
-1. Go to **Serial / Batch Trace Listing**.
-2. Type in the Serial Number `SN-998877`.
-3. The system maps the entire lifecycle:
-   - *Received from Supplier X on Jan 5th (Goods Receipt #102)*
-   - *Moved from Bin A to Bin B on Jan 10th (Stock Transfer #44)*
-   - *Sold to Customer Y on Jan 15th (Delivery Order #88)*
+{{< figure src="/images/stock-availability-applet/trace-serial-no.png" alt="Trace Serial Number view showing the full stock movement history of a specific serial number." caption="Trace Serial No: every document a serial number has passed through." >}}
+{{< figure src="/images/stock-availability-applet/serial-number-balance.png" alt="Serial Number Balance view showing quantities and specific serial numbers currently in stock." caption="Serial Number Balance: which serial numbers are in which location now." >}}
+{{< figure src="/images/stock-availability-applet/trace-batch-no.png" alt="Trace Batch Number view showing movement history for batch-tracked items." caption="Trace Batch No: movements of one batch, for expiry and recall handling." >}}
 
----
+Search by exact serial or batch number, keyword or date range. Sales invoice lines are shown as negative quantities so the running balance reads correctly. Use serial tracing forwards (which customer received this unit) and backwards (which GRN and supplier it came from, for a warranty claim); use batch tracing to find every customer who received a recalled batch.
 
-## Deep-Dive: The UI Workspaces
+### Bin Availability
 
-### 1. Stock Availability Listing (The Global View)
-This is the highest-level view. It aggregates stock across all your locations.
+{{< figure src="/images/stock-availability-applet/bin-availability.png" alt="Bin Availability Report showing item locations and quantities across different bins." caption="Bin Availability: quantity per bin, for picking." >}}
 
-{{< figure src="/images/stock-availability-applet/stock-availability-listing.png" alt="Stock Availability Listing showing company-wide inventory levels with branch filters and color-coded status indicators." caption="Stock Availability Listing: A global snapshot of total physical and available stock across all locations." >}}
+## Configuration
 
-- **Multi-Branch View:** If you have warehouses in KL, Penang, and Johor, you can see the total company-wide stock, or filter down to a specific branch to see local availability.
-- **Color Indicators:** Configurable warning colors (e.g., Red) highlight items that have fallen below their required Minimum Stock levels.
+### Before you can use it
 
-### 2. Stock Availability Details (The primary operational view)
-While the main listing gives you a simple physical snapshot, the **Details Listing** is the most frequently used workspace because it answers the "Why?". It provides a granular view of exactly which operational documents are affecting your inventory levels.
+| Prerequisite | Where | Why |
+|---|---|---|
+| Items with an inventory record | [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) / [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Only stock-tracked items have balances; category columns need category groups bound to slots |
+| Companies, branches, locations, bins | [Organisation](/applets/master-data/organisation-applet/), [Warehouse Management](/applets/inventory-workflow/warehouse-management-applet/) | The dimensions of every screen |
+| Pricing schemes | Doc Item Maintenance > Pricing Schemes | The `PRICING_SCHEMES` setting picks which schemes become price columns |
+| Finalised stock documents | GRN, sales, transfers, adjustments, stock take | Without them every balance is zero |
+| Permissions | Applet permission assignment | Cost and price columns are hidden by setting and re-enabled per user by permission |
 
-{{< figure src="/images/stock-availability-applet/stock-availability-details.png" alt="Stock Availability Details view highlighting reserved quantities and pending transactions." caption="Stock Availability Details: Deep-dive into the documents (Sales Orders, Purchase Orders) affecting your available stock." >}}
+### Applet settings
 
-**Primary Use Cases:**
-- **Troubleshooting "Missing" Availability:** When a sales rep complains, *"It says we physically have 50 items, but 0 available. Why?"* The details listing shows the exact Sales Orders (SO) that have reserved those 50 items.
-- **Managing Incoming Stock:** If an item is out of stock, this view shows the specific Purchase Orders (PO) or Goods Receive Notes (GRN) incoming, allowing sales reps to tell customers exactly when stock will arrive.
-- **Advanced Search & Filtering ("Optional" Field):** The advanced search includes an **Optional** multi-select dropdown designed to declutter your view. By default, it hides zero balances and pending document balances (`HIDE_ZERO_BALANCE`, `HIDE_GOODS_RECEIVE_NOTE_BALANCE`, `HIDE_PURCHASE_ORDER_BALANCE`, `HIDE_SALES_ORDER_BALANCE`). You can uncheck these to explicitly isolate and view pending documents and balances.
+**Settings > Application Settings** — one tenant-wide form. Every hide switch has a matching `SHOW_*` permission that overrides it for the holder.
 
-### 3. Stock Aging Report
-Identifies "Dead Stock."
-
-{{< figure src="/images/stock-availability-applet/stock-aging-report.png" alt="Stock Aging Report showing inventory grouped by time periods (e.g., February, March, April, May)." caption="Stock Aging Report: Identify items that have been sitting in the warehouse for extended periods to prevent obsolescence." >}}
-
-- Groups inventory by how long it has been sitting in your warehouse (e.g., *0-30 days, 31-60 days, 90+ days*).
-
-- Allows Procurement and Sales to run targeted discounts to clear out 90+ day old stock before it becomes obsolete.
-
-### 4. Stock Availability with SO and PO
-A dedicated consolidated workspace focused purely on stock movement tied explicitly to ongoing Sales and Purchase Orders, providing a streamlined view for fulfillment teams.
-
-{{< figure src="/images/stock-availability-applet/stock-availability-with-so-po.png" alt="Stock Availability with SO and PO view showing specific document links and outstanding quantities." caption="SO & PO Tracking: Monitor inventory specifically committed to or expected from open documents." >}}
-
-### 5. Trace Serial No
-Crucial for electronics, machinery, and high-value items tracked individually.
-
-{{< figure src="/images/stock-availability-applet/trace-serial-no.png" alt="Trace Serial Number view showing the full stock movement history of a specific serial number." caption="Trace Serial No: View the complete lifecycle and transaction history of any serialized item." >}}
-
-- **Dedicated Search:** Search by exact Serial Number, Keyword, or Date Range to find specific item histories.
-
-- **Forward Tracing:** Trace a serial number from the moment it was received from a Supplier PO all the way to the Customer Invoice.
-- **Backward Tracing:** "Customer brought back a broken TV. Which container did this specific TV arrive in, so we can claim warranty from the manufacturer?"
-
-### 6. Serial Number Balance
-- View the exact current physical balance of items tracked by a specific Serial Number within your warehouses.
-
-{{< figure src="/images/stock-availability-applet/serial-number-balance.png" alt="Serial Number Balance view showing quantities and specific serial numbers currently in stock." caption="Serial Number Balance: Instantly verify which serial numbers are physically present in each location." >}}
-
-- Utilizes an Advanced Search grid with column toggling, allowing for highly specific filtering and reporting of serialized inventory.
-
-
-### 7. Trace Batch No
-Crucial for food, pharmaceuticals, and items with expiry dates.
-
-{{< figure src="/images/stock-availability-applet/trace-batch-no.png" alt="Trace Batch Number view showing movement history for batch-tracked items." caption="Trace Batch No: Track stock movements and transactions for specific batch numbers." >}}
-
-- **Dedicated Search:** Search by exact Batch Number, Keyword, or Date Range to trace all related transactions.
-
-- **Recall Management:** "We just realized Batch #XYZ of flour is contaminated. Which customers did we sell bread to using this flour?" Instantly identify all affected parties for a recall.
-
-### 8. Bin Availability Listing (The Micro View)
-While the main listing tells you *if* you have stock, this listing tells you *exactly where* it is.
-
-{{< figure src="/images/stock-availability-applet/bin-availability.png" alt="Bin Availability Report showing item locations and quantities across different bins." caption="Bin Availability: Precise location mapping for every item in your warehouse." >}}
-
-{{< callout type="tip" >}}
-
-**Why Use Bins?** If you have 10,000 screws in a warehouse, knowing you have 10,000 is useless if you don't know which box they are in. Bins represent the physical shelves, racks, or boxes in your facility.
-{{< /callout >}}
-
----
-
-## Configuration & Settings
-
-The Stock Availability applet is highly configurable. Administrators can tailor the workspace to hide unnecessary complexity from warehouse staff while enabling deep financial tracking for controllers.
-
-### 1. Application Settings (System-Wide)
-
-Accessed via `Settings > Application Settings`, these toggles change how the applet looks and functions for all users.
-
-**A. Tailoring the Sidebar (Menu Visibility)**
-To prevent mistakes or clutter, administrators can hide sidebar menus that their layout doesn't use. 
-
-| Setting | What It Does |
-|---------|--------------|
-| `Hide Trace Serial No Menu` | Removes the Serial Trace tracking tools. Turn on if you don't sell serialized goods. |
-| `Hide Trace Batch No Menu` | Removes the Batch tracking tools. Turn on if you don't track expiry dates. |
-| `Hide Stock Aging Report Menu` | Removes the aging report from non-finance staff to simplify their UI. |
-
-**B. Tailoring the Listing (Field Visibility)**
-You can hide sensitive financial information from standard warehouse staff, or declutter the main stock availability listing.
-
-| Setting | What It Does |
-|---------|--------------|
-| `Hide Listing Avg Cost` | Hides the Average Cost column, preventing standard users from seeing your inventory valuation. |
-| `Hide Listing Last Purchase Cost` | Hides the Last Purchase Cost column to protect supplier pricing visibility. |
-| `Hide Listing Sales Price` | Hides the default selling price from the stock listing view. |
-| `Hide Report Inventory Value` | Hides total inventory valuation data from reports. |
-| `Pricing Schemes` & `Price Metrics` | Globally defines which pricing structures and metrics to use when displaying costs/prices in the listings. |
-
-**C. Tailoring Item Categories**
-Administrators can enable up to 20 custom Item Category Groups and toggle their visibility across the application.
-
-| Setting | What It Does |
-|---------|--------------|
-| `Item Category Group 1-20` | Defines multi-level categorization for inventory grouping. |
-| `Hide Item Category Group` | Toggles the visibility of specific category groupings to clean up the UI if they aren't needed. |
-
-### 2. Permissions Governance
-
-Access to inventory data is managed through a layered permission system in the Settings menu:
-
-- **Permission Wizard:** A guided tool to set up basic access levels.
-- **Role Permission:** Grant access by job title (e.g., "Sales Reps can View Availability, but only Finance can View Cost").
-- **User/Team Permission:** Grant granular exceptions to specific individuals or squads.
-
----
-
-## Personalization
-
-Individual users can override certain system defaults to speed up their daily workflow via the **Personalization** sidebar menu.
-
-### Personal Default Settings
-
-To save clicks on every single lookup, users should set their defaults:
-
-| Setting | Why use it? |
-|---------|-------------|
-| **Default Branch** | If you only work at the "Penang Hub", set this so you never have to select it from the dropdown again. |
-| **Default Location** | If you only manage "Aisle B", set this as your default location. |
-| **Default Toggle Column** | Set your personal preference for reading forms in a `SINGLE` (narrow) or `DOUBLE` (wide) column layout based on your monitor size. |
-
----
-
-## Common Real-World Scenarios
-
-### Scenario 1: The Urgent Sales Order Committment
-**The Situation:** A major client wants 50 "Enterprise Servers" delivered tomorrow.
-**The Workflow:**
-1. Sales Rep opens **Stock Availability Listing** and searches for the server.
-2. The UI shows: Physical: 60, Reserved: 20, Available: 40.
-3. The Rep cannot fulfill the order of 50. 
-4. The Rep opens the **Stock Availability Details** menu. 
-5. They see an Incoming PO for 30 servers expected *today* at 3:00 PM.
-6. The Rep confidently tells the client, "Yes, we can deliver tomorrow," knowing the stock will arrive today.
-
-### Scenario 2: The Expiring Medicine (Batch Tracing)
-**The Situation:** A pharmacy warehouse realizes a specific batch of insulin (`BATCH-NOV24`) expires next month.
-**The Workflow:**
-1. Warehouse Manager opens **Trace Batch No**.
-2. Filters by the specific Batch Number.
-3. Identifies that 500 units of `BATCH-NOV24` are currently sitting in Bin `COLD-STORAGE-A`.
-4. Manager immediately issues a priority transfer to move them to the front-of-store shelves with a 50% discount to clear them before expiry.
-
-### Scenario 3: Investigating Missing Stock in Bins
-**The Situation:** The system says there are 5 laptops in Bin `A-1`, but the picker says the shelf is empty.
-**The Workflow:**
-1. Operations opens the **Bin Availability Listing** and clicks on the laptop item in Bin `A-1`.
-2. They view the transaction history for that specific interaction.
-3. The log shows that earlier that morning, a different picker did a *Stock Transfer* from `A-1` to the *QA/Testing* Bin, but the original picker didn't know.
-4. The original picker goes to the QA bin and finds the laptops.
-
----
-
-## FAQs
-
-**Q: Can I manually change the Available quantity here?**
-A: No. The Stock Availability Applet is uniquely a **read-only** module. To change physical stock, you must use operational applets (Goods Receipt, Delivery Order, Stock Adjustment). This strict rule prevents inventory manipulation.
-
-**Q: Why does my Available stock show a negative number?**
-A: This happens if your organization allows "Negative Inventory" in the backend settings. It usually means a Sales Order was fulfilled (deducting stock) *before* the warehouse processed the incoming Goods Receipt for that item. 
-
-**Q: I just created a Sales Order. Why didn't the Physical stock decrease?**
-A: Creating a standard Sales Order only decreases the **Available** stock (by increasing Reserved items). The **Physical** stock is only deducted when the product leaves the building via a **Delivery Order / Goods Issue**. 
-
-**Q: How frequently does the data update?**
-A: In absolute real-time. The moment a warehouse worker clicks "Confirm" on a Goods Receipt on their scanner, the availability numbers update globally for all users.
-
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| `HIDE_<MENU>_MENU` (one per left-menu entry: Stock Availability, Stock Availability Details, Stock Aging Report, Stock Availability with SO and PO, Trace Serial No, Serial Number Balance, Trace Batch No, Bin Availability) | Menu visibility | off | Hidden for everyone without the `SHOW_*_MENU` permission |
+| `PRICING_SCHEMES` | Which pricing schemes appear as price columns in the listing | none | One column per selected scheme |
+| `PRICE_METRICS` | Which price value (selling, purchase, max, min…) fills those columns | — | Single selection; applies to all scheme columns at once |
+| `HIDE_LISTING_AVG_COST`, `HIDE_LISTING_LAST_PURCHASE_COST`, `HIDE_LISTING_FIFO_COST`, `HIDE_LISTING_LIFO_COST`, `HIDE_LISTING_PURCHASE_PRICE`, `HIDE_LISTING_REPLACEMENT_PRICE` | Cost and purchase-price columns | off | Hide valuation from non-finance users |
+| `HIDE_LISTING_SALES_PRICE`, `HIDE_LISTING_SALES_MAX_PRICE`, `HIDE_LISTING_SALES_MIN_PRICE`, `HIDE_LISTING_REF_PRICE_1..3`, `HIDE_LISTING_DELTA_PRICE_1..3`, `HIDE_LISTING_REBATE_PRICE_1..3` | Selling-price and reference-price columns | off | — |
+| `HIDE_LISTING_COMPANY`, `HIDE_LISTING_LOCATION`, `HIDE_LISTING_STOCK_BALANCE`, `HIDE_LISTING_ADJ_QTY`, `HIDE_LISTING_AVAILABLE_QTY` | Structural and quantity columns | off | — |
+| `ITEM_CATEGORY_GROUP_0..19`, `HIDE_ITEM_CATEGORY_GROUP_n` | Which category group feeds each category column, and whether it shows | empty | Category columns mirror the item master's slots |
+| `ENABLE_FILTER_BY_TODAYS_TXN` | Adds a filter for today's transactions | off | — |
+| `INCREASE_ITEM_IMAGE_SIZE` | Larger thumbnails | off | Presentation |
+| `HIDE_STOCK_MOVEMENT`, `HIDE_PURCHASE_DOCUMENTS_IN_STOCK_MOVEMENT`, `HIDE_PURCHASE_DOCUMENTS`, `HIDE_INTERNAL_STOCK_ADJUSTMENT` | Stock-movement pop-up and which document families it lists | off | Hide supplier-side documents from sales users |
+| `HIDE_GOODS_RECEIVED_NOTE_TAB`, `HIDE_PURCHASE_ORDER_TAB`, `HIDE_SALES_ORDER_TAB`, `HIDE_DELIVERY_ORDER_TAB`, `HIDE_SALES_QUOTATION_TAB`, `HIDE_SALES_INVOICE_TAB`, `HIDE_GRN_DRAFT_TAB`, `HIDE_GRN_STOCK_IN_DRAFT_TAB` | Document tabs on the Details screen | off | — |
+| `HIDE_PURCHASE_GRN_PURCHASE_PRICE`, `HIDE_PURCHASE_GRN_SUPPLIER_NAME` | Columns on the GRN tab | off | Hide supplier pricing from sales |
+| `HIDE_UNIT_COST_AMOUNT`, `HIDE_DOC_POPUP_COST_AMOUNT`, `HIDE_DOC_POPUP_GP`, `HIDE_TOOLTIP_PRICING_DETAILS` | Cost, gross profit and pricing tooltip in document pop-ups | off | — |
+| `HIDE_REPORT_DOC_SHORT_CODE`, `HIDE_REPORT_UNIT_PRICE`, `HIDE_REPORT_UNIT_COST`, `HIDE_REPORT_INVENTORY_VALUE`, `HIDE_REPORT_AMOUNT_STD`, `HIDE_REPORT_AMOUNT_DISC`, `HIDE_REPORT_AMOUNT_NET`, `HIDE_REPORT_AMOUNT_TAX`, `HIDE_REPORT_AMOUNT_TXN` | Columns on the trace / aging reports | off | — |
+
+The Listing and Details screens have separate setting lists; a switch under one does not affect the other (they are stored in the same settings record but do not overlap).
+
+**Settings > Default Selection** and **Personalisation > Default Selection** — `DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `DEFAULT_TOGGLE_COLUMN` (`SINGLE` or `DOUBLE` column form layout), tenant-wide and per user.
+
+### Document behaviour settings
+
+Not applicable — the applet creates no documents.
+
+### Feature visibility / permissions
+
+Client-side permissions registered for `stockAvailability` (each overrides the matching `HIDE_*` setting for its holder):
+
+| Permission group | Codes |
+|---|---|
+| Menus | `SHOW_STOCK_AVAILABILITY_MENU`, `SHOW_STOCK_AVAILABILITY_DETAILS_MENU`, `SHOW_STOCK_AGING_REPORT_MENU`, `SHOW_STOCK_AVAILABILITY_SO_PO_MENU`, `SHOW_TRACE_SERIAL_NO_LISTING_MENU`, `SHOW_SERIAL_NUMBER_BALANCE_MENU`, `SHOW_TRACE_BATCH_NO_LISTING_MENU`, `SHOW_BIN_AVAILABILITY_MENU` |
+| Listing columns | `SHOW_LISTING_AVG_COST`, `SHOW_LISTING_LAST_PURCHASE_COST`, `SHOW_LISTING_FIFO_COST`, `SHOW_LISTING_LIFO_COST`, `SHOW_LISTING_PURCHASE_PRICE`, `SHOW_LISTING_REPLACEMENT_PRICE`, `SHOW_LISTING_SALES_PRICE`, `SHOW_LISTING_SALES_MAX_PRICE`, `SHOW_LISTING_SALES_MIN_PRICE`, `SHOW_LISTING_REF_PRICE_1..3`, `SHOW_LISTING_DELTA_PRICE_1..3`, `SHOW_LISTING_REBATE_PRICE_1..3`, `SHOW_LISTING_COMPANY`, `SHOW_LISTING_LOCATION`, `SHOW_LISTING_STOCK_BALANCE`, `SHOW_LISTING_ADJ_QTY`, `SHOW_LISTING_AVAILABLE_QTY` |
+| Costs and margins | `SHOW_AVG_COST`, `SHOW_LAST_PURCHASE_COST`, `SHOW_UNIT_COST_AMOUNT`, `SHOW_DOC_POPUP_COST_AMOUNT`, `SHOW_DOC_POPUP_GP`, `SHOW_TOOLTIP_PRICING_DETAILS` |
+| Documents | `SHOW_PURCHASE_DOCUMENTS`, `SHOW_PURCHASE_DOCUMENTS_IN_STOCK_MOVEMENT`, `SHOW_INTERNAL_STOCK_ADJUSTMENT`, `SHOW_STOCK_MOVEMENT` |
+| Reports | `SHOW_REPORT_DOC_SHORT_CODE`, `SHOW_REPORT_UNIT_PRICE`, `SHOW_REPORT_UNIT_COST`, `SHOW_REPORT_AMOUNT_STD`, `SHOW_REPORT_AMOUNT_DISC`, `SHOW_REPORT_AMOUNT_NET`, `SHOW_REPORT_AMOUNT_TAX`, `SHOW_REPORT_AMOUNT_TXN` |
+
+Typical pattern: hide every cost column tenant-wide and grant `SHOW_LISTING_AVG_COST` / `SHOW_AVG_COST` to the finance role only.
+
+## Fields
+
+The applet has no create or edit forms. Listing columns:
+
+| Column | Meaning |
+|---|---|
+| Item Code, Item Name, EAN Code, Type, Sub Type, UOM / Base UOM | From the item master |
+| Company, Location, Bin Code / Bin Name | Where the balance sits |
+| Stock Balance, Adj Qty, Available Qty | See *How availability is calculated* |
+| Qty, Base Qty, Container Qty / Ctn Qty, Container Measure | Quantity in the item's UOM and base UOM, and per container for batch / bin items |
+| Serial Number, Batch No., Expiry Date | For serialised and batch-tracked items |
+| Company Avg Cost, Location Avg Cost, Last Purchase Cost, FIFO Cost, LIFO Cost, Amount | Valuation columns |
+| Sales Unit Price and one column per selected pricing scheme | Prices, valued by `PRICE_METRICS` |
+| Category Group, Category Code, Category Name, Level | Category slots |
+| NSTI Code / Name | Non-stock trade-in items |
+| Created / Modified / Updated Date | Audit |
+
+Stock Card & Planning columns: Total Qty, Reserved Qty, Reserved By, Locked Qty, Packed Qty, Ad Hoc Qty, Available Qty, Bin Code, UOM, Job Order, Completion Date, Status.
+
+## Lifecycle and posting
+
+Not applicable — read-only. Balances change only when stock documents are finalised elsewhere; the listing recomputes Available Qty on every load from the ledger balance and the open documents returned by the backend.
+
+## Related applets
+
+- [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) — the ledger this applet summarises.
+- [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) and [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — item master, categories, pricing schemes; the item's own Stock Availability and Stock Card tabs show the same data for one item.
+- [Stock Reservation](/applets/inventory-workflow/stock-reservation-applet/) — reserved and locked quantities on Stock Card & Planning.
+- [Stock Take](/applets/inventory-workflow/stock-take-applet/) and [Stock Adjustment](/applets/inventory-workflow/stock-adjustment-applet/) — fix a balance that disagrees with the shelf.
+- [Warehouse Management](/applets/inventory-workflow/warehouse-management-applet/) — bins.
+- [Sales Order](/applets/sales-workflow/internal-sales-order-applet/), [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase GRN](/applets/purchase-workflow/internal-purchase-grn-applet/) — the documents that make up Adj Qty.
+- [Organisation](/applets/master-data/organisation-applet/) — companies, branches, locations.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Physical shows 50, Available shows 0 | Open sales orders (or delivery orders) have committed the stock | Open **Stock Availability Details**, untick `HIDE_SALES_ORDER_BALANCE` to see which orders |
+| Item is out of stock but a colleague says it is on order | Incoming documents are hidden by default | Untick `HIDE_PURCHASE_ORDER_BALANCE` / `HIDE_GOODS_RECEIVE_NOTE_BALANCE` in the Optional filter |
+| Cost columns missing for a user | Hidden by `HIDE_LISTING_*_COST` and the user lacks the `SHOW_*` permission | Grant the permission or clear the setting |
+| Pricing scheme columns show the wrong price type | `PRICE_METRICS` selects one price value for every scheme column; it cannot mix types | Set the metric you need; different metrics side by side are not supported |
+| Category filter returns different items here and in Doc Item Maintenance | The category column here is bound to a different category group (`ITEM_CATEGORY_GROUP_n`) than the item master's slot | Align the group bound to that slot in both applets |
+| Average cost looks wrong in Stock Movement or reports | Costs are recomputed by the moving-average processor; a reset-MA run or an unposted document can leave the displayed value stale (a 2026 enhancement to surface reset-MA state in the UI is open) | Check the item's cost in Inventory Item Maintenance; re-run costing if your tenant uses reset MA |
+| Clicking a document in the Sales Invoice draft section opens the wrong document | Defect in the draft section's drill-down, fixed in 2026 | Update the applet build |
+| Serial trace shows negative quantities | Sales invoice lines are shown negative by design so the running balance is correct | No action |
+
+## Related documentation
+
+- [Inventory module](/modules-v2/inventory/) — [configuration](/modules-v2/inventory/configuration/), [reports](/modules-v2/inventory/reports/) and [use cases](/modules-v2/inventory/use-cases/).

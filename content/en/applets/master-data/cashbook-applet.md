@@ -1,7 +1,26 @@
 ﻿---
-title: "Cashbook Applet"
-description: "Cash and bank account management for BigLedger financial operations and cash flow tracking"
-tags: core-module, cash-management, bank-accounts, financial-accounting, cash-flow
+title: "Cashbook"
+description: "Reference for the Cashbook applet — bank and cash accounts (cashbooks), settlement methods with charges and branch access, cash transfers, cash adjustments, post-dated cheques and cashbook enquiries."
+applet_code: "cashbook-applet"
+applet_repo: "blg-applet-wavelet-cashbook-v3-applet"
+modules: [core, financial-accounting, pos]
+related_applets: [chart-of-account-applet, organisation-applet, bank-reconciliation-applet, internal-receipt-voucher-applet, internal-payment-voucher-applet, pos-general-applet, general-ledger-applet, doc-item-maintenance-applet]
+guides: [/guides/accounting-guides/bank-reconciliation-guide/]
+sources:
+  - blg-applet-wavelet-cashbook-v3-applet/micro-fe/projects/wavelet-erp/applets/cashbook-v3-applet/src/app/models/menu-items.ts
+  - blg-applet-wavelet-cashbook-v3-applet/micro-fe/projects/wavelet-erp/applets/cashbook-v3-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+  - blg-applet-wavelet-cashbook-v3-applet/micro-fe/projects/wavelet-erp/applets/cashbook-v3-applet/src/app/components/settings-container/branch-settings/branch/default-settlement-method/default-settlement-method.component.html
+  - blg-applet-wavelet-cashbook-v3-applet/micro-fe/projects/wavelet-erp/applets/cashbook-v3-applet/src/app/components/cashbook-container/cashbook-create/cashbook-create.component.ts
+  - blg-applet-wavelet-cashbook-v3-applet/micro-fe/projects/wavelet-erp/applets/cashbook-v3-applet/src/app/components/cashbook-container/cashbook-edit/cashbook-edit.component.html
+  - blg-applet-wavelet-cashbook-v3-applet/micro-fe/projects/wavelet-erp/applets/cashbook-v3-applet/src/app/components/settlement-method-container/settlement-method-create/settlement-method-create.component.ts
+  - blg-applet-wavelet-cashbook-v3-applet/micro-fe/projects/wavelet-erp/applets/cashbook-v3-applet/src/app/components/settlement-method-container/settlement-method-edit/settlement-method-edit.component.html
+  - blg-applet-wavelet-cashbook-v3-applet/micro-fe/projects/wavelet-erp/applets/cashbook-v3-applet/src/app/components/cash-transfer-container/cash-transfer-create/cash-transfer-main-details/
+  - blg-applet-wavelet-cashbook-v3-applet/micro-fe/projects/wavelet-erp/applets/cashbook-v3-applet/src/app/components/cash-adjustment-container/cash-adjustment-create/cash-adjustment-main-details/
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/cashTransfer/CashTransferJournalPostingService.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/cashbook/CashbookDataConsistencyObject.java
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/settlementMethod/SettlementMethodDataConsistencyObject.java
+  - akaun_master.bl_applet_client_side_perm_dfn (applet cashbook-applet)
+tags: [core-module, cash-management, bank-accounts, financial-accounting, cash-flow]
 weight: 30
 aliases:
 - /applets/cashbook-applet/
@@ -9,471 +28,230 @@ aliases:
 
 ## Overview
 
-The Cashbook Applet is a fundamental Core Module component that manages all cash and bank account operations in BigLedger. This applet provides comprehensive cash management, bank account configuration, payment method setup, and cash flow tracking that supports all financial transactions across every BigLedger module.
+The Cashbook applet defines every place money is held — bank accounts, cash drawers, card-acquirer and e-wallet accounts — as a **cashbook** tied to a company and a GL code, and every way money moves in or out as a **settlement method** (cash, cheque, bank transfer, card, e-wallet, voucher, points…). Receipt vouchers, payment vouchers, POS and the bank reconciliation all pick from what is set up here.
 
-Note: Core Module Applet — One of the 13 essential Core Module applets, critical for businesses handling cash transactions, bank payments, or financial operations.
+It also records money moving *between* cashbooks (**Cash Transfer**), corrections to a cashbook balance (**Cash Adjustment**), post-dated cheques, and gives the enquiry screens (**Query Cashbook Transaction**, **Cash Level**, **Cashbook Discrepancy Checking**) that finance uses at month-end. It is set up once by the finance administrator and then used daily by the cashier and the accounts clerk.
 
-## Primary Functions
-- **Cash Account Management** - Physical cash handling and control
-- **Bank Account Configuration** - Multiple bank account setup and management
-- **Payment Method Setup** - Various payment method configurations
-- **Cash Flow Tracking** - Real-time cash position monitoring
-- **Bank Reconciliation** - Automated bank statement reconciliation
+## Where it fits
 
-## Purposes
+| Direction | Applet / document | Why |
+|---|---|---|
+| Upstream | [Chart of Account](/applets/master-data/chart-of-account-applet/) | Every cashbook must point at a GL code of its company; cash transfers and adjustments post journals through the company's default GL codes |
+| Upstream | [Organisation](/applets/master-data/organisation-applet/) | Company and branch on the cashbook; branch access on settlement methods |
+| Downstream | [Receipt Voucher](/applets/finance/internal-receipt-voucher-applet/), [Payment Voucher](/applets/finance/internal-payment-voucher-applet/) | Choose a settlement method, which resolves to a cashbook and its GL code |
+| Downstream | [POS General](/applets/sales-workflow/pos-general-applet/) | Tenders are settlement methods; each branch's defaults per tender type are set in Branch Settings here |
+| Downstream | [Bank Reconciliation](/applets/finance/bank-reconciliation-applet/) | Reconciles a cashbook's transactions against the bank statement |
+| Downstream | [General Ledger](/applets/finance/general-ledger-applet/) | Journals created when a cash transfer or adjustment is finalised |
+| Sibling | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | A settlement method is stored as a financial item of type `STL_MTHD`; it can therefore surface in item lists |
 
-This SOP aims to:
+Modules: Core, Financial Accounting, POS.
 
-- **Ensure Procedural Consistency
-Standardize all steps involved in BigLedger cashbook and bank account management.
+## Screens and menus
 
-- **Maintain Financial Accuracy
-Ensure all bank accounts and cash movements are correctly linked to their respective General Ledger (GL) codes for accurate financial reporting.
+| Menu | What it is for |
+|---|---|
+| **Cashbook** | Listing, create and edit of cashbooks |
+| **Settlement Method** | Listing, create and edit of settlement methods |
+| **Import Cashbook**, **Import Settlement Method**, **Import Settlement Method Branch** | CSV uploads |
+| **Cash Transfer** | Move money between two cashbooks (draft → final) |
+| **Cash Transfer By Transaction** | Transfer built from selected cashbook transactions |
+| **Upload Cash Transfer** | CSV upload of transfers |
+| **PD Cheque** → **Queue**, **History** | Post-dated cheques waiting to mature, and those already processed |
+| **Query Cashbook Transaction** | Opening balance, every line, amount in / out, closing balance, drill-down to source documents — the month-end enquiry |
+| **Cash Adjustment** | Correct a cashbook balance with a posted adjustment document |
+| **Cash Level** | Summary of balances across cashbooks, grouped by company or currency |
+| **Cashbook Discrepancy Checking** | Compare cashbook balances against ledger balances |
+| **Audit Trail** | Change history |
 
-- **Streamline Cash Management
-Provide clear, auditable guidelines for managing accounts, settlement configurations, and inter-account transfers.
+Gear (Settings) menu: **Application Settings**, **Default Selection**, **Printable Format Settings**, **Branch Settings**. Personalisation: per-user **Default Selection**.
 
-## Key Features and Steps
+### Cashbook
 
-**There are few steps that need to be done:**
+Create asks for **Cashbook Code**, **Cashbook Name**, **Account Number**, **Company**, **Currency** and **GL Code**. Once saved, the edit screen has four tabs:
 
-### 1. Creating a New Bank Account (Cashbook)
-Proper setup of a new bank account ensures that all financial activity is traceable, accurate, and reflected in the general ledger.
+| Tab | Contents |
+|---|---|
+| **Details** | Code, name, description, account number, bank, branch, status, default settlement method, audit fields |
+| **Triggers & Limits** | Low-level and high-level balance triggers, overdraft limit, facility amount |
+| **Members** | Users (by e-mail) attached to this cashbook, each with a rank and status |
+| **Weightage Configuration** | Named configurations (code, name, object type, status, threshold 70–100) that work with member ranks |
 
-Before a bank account can be used in BigLedger, it must be created as a Cashbook and linked to a valid GL (General Ledger) Code.  
-**Documentation**: [TODO: Chart Of Account Applet](/applets/chart-of-account-applet/) — Documentation pending.
+### Settlement Method
 
-After the GL code is prepared:
-- Open the Cashbook menu in the Cashbook applet.
-- Enter key details:
-  1. Name (e.g., “RHB Account”)
-  2. Account Number
-  3. Select the Company that owns the account
-  4. Assign the Currency (USD, SGD, MYR, etc.)
-  5. Link the GL Code created earlier
-  6. Create
+Create asks for **Code**, **Name**, **Sort Code** (display order) and the **Cashbook** it settles into. The edit screen:
 
-Once saved, proceed to the mandatory configuration of the settlement method.
+| Tab | Contents |
+|---|---|
+| **Details** | Settlement type, cashbook, status, external settlement code, payment provider / gateway, PGW payment ID and type code, installment period, membership point currency, min / max threshold amount, settlement limit (amount or percentage), labels |
+| **Branch** | Which branches may use this method (and which are blocked) |
+| **Charges** | Charges the bank / provider takes from you (mode `NONE` / `RATIO` / `ABSOLUTE`, rate or absolute value, min / max limit, additional surcharge), separate *sending* charges, and a surcharge passed on to the customer (mode, rate or value, rounding precision, the item code it is billed under) |
+| **Tax** | Tax codes applied to the charges |
+| **Payment Provider Error Codes** | Error code, description and remarks mapped from the payment gateway |
+| **FPX e-Mandate** | Biller, exchange and seller IDs — shown only when the settlement type is `FPX_EMANDATE` |
 
-### 2. Payment Method Setup (Settlement Method)
-A Settlement Method defines how a bank account is used in payment or receipt transactions.
-This setup is required to use the Cashbook in modules such as:
+Settlement types: `BANK_TRANSFER`, `CASH`, `CHEQUE`, `CREDIT_CARD`, `DEBIT_CARD`, `E_WALLET`, `FPX_EMANDATE`, `MEMBERSHIP_POINT_CURRENCY`, `OPEN_CREDIT`, `VOUCHER`, `OTHERS`. A method with no type does not appear as a tender option in the transaction applets.
 
-- Receipt Voucher
-- Payment Voucher
-- Cash Transfer
-- POS payments (where applicable)
+{{< callout type="tip" >}}
+**Automatic bank charges.** For a card-acquirer settlement method, set *Charges* mode to `RATIO` and the rate to the acquirer's merchant discount rate (for example 1.5%). Each receipt settled with that method then posts the fee to the bank-charges account automatically, so the cashbook shows the net amount the bank actually credits.
+{{< /callout >}}
 
-### Steps
+### Cash Transfer
 
-1. Navigate to Settlement Method.
-2. Click Create.
-3. Fill in:
-   - Code
-   - Name
-   - Description (You may use the same text for all three fields for consistency.)
-4. Select the corresponding Cashbook.
+A document with a running number (`cashTransferNo`), transaction date, transfer type (**Bank In**, **TT**, **Cash**), reference number, description and status, plus transfer lines: **Transfer From** cashbook (credited), **Transfer To** cashbook (debited), amount, date, remarks. Save as draft, review, then **Finalize**.
 
-### 3. Payment Type
-The settlement type determines how the method is used in transactions.
-Failure to assign a type will prevent it from appearing as a selectable option.
+Use it for the monthly sweep from a branch's card-acquirer cashbook to the primary bank cashbook, or to move cash-on-hand to the bank.
 
-Valid settlement types:
-- Bank Transfer
-- Cash
-- Cheque
-- Credit Card
-- Debit Card
-- E-wallet
+### Cash Adjustment
 
-### 4. Configure Automatic Bank Charges (Optional)
+A document (`cashAdjustmentNo`, cash document type, transaction date, remarks) with adjustment lines against a cashbook. Use it to correct a cashbook balance that cannot be explained by a source document — for example an opening-balance correction — rather than a manual journal, so that the cashbook and the ledger stay in step.
 
-This feature automates the posting of bank or transaction fees (e.g., credit card charges).
+### Enquiries
 
-1. Go to the Charges section.
-2. Select the Ratio option.
-3. Enter the fee percentage (e.g., 5%).
+- **Query Cashbook Transaction** — one cashbook, one period: opening balance, lines with amount in and amount out, closing balance, drill-down to the receipt, payment, transfer or POS document behind each line.
+- **Cash Level** — all cashbooks at once, filtered by company (fixed in 2026 so the cashbook list follows the company filter) and grouped as needed.
+- **Cashbook Discrepancy Checking** — lists cashbooks whose transaction total differs from the ledger.
 
-When the settlement method is used in a transaction, BigLedger calculates the fee and posts it to the Bank Charges GL account automatically.
+## Configuration
 
-### 5. Branch Linking
+### Before you can use it
+
+| Prerequisite | Where | Why |
+|---|---|---|
+| Company with a chart of accounts, and branches | [Organisation](/applets/master-data/organisation-applet/) | Cashbook requires a company; the backend rejects a missing or unknown company (`CASHBOOK_HDR_OBJECT_COMPANY_GUID_IS_NULL_OR_EMPTY`) |
+| A GL code per bank / cash account, in that company's chart | [Chart of Account](/applets/master-data/chart-of-account-applet/) | Required on the cashbook; the backend rejects a GL code that does not belong to the cashbook's company (`CASHBOOK_HDR_OBJECT_COMPANY_AND_GLCODE_GUID_ARE_INCONGRUENT`) |
+| Default GL codes mapped for the company (at least `SETTLEMENT_CHARGES`) | Chart of Account > Companies > Default GL Codes | Charges and transfer journals resolve their accounts through the company GL-code links |
+| A cashbook before its settlement methods | this applet | Settlement method create requires a cashbook |
+| Branches linked on each settlement method | this applet, Settlement Method > Branch | A method with no branch link is not offered at that branch |
+| Bank-charges item, if you surcharge customers | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | `surchargeToCustomerItemCode` bills the surcharge as an item line |
 
-To restrict unauthorised access, assign the settlement method only to the branches that should use that account — for example, enable it for HQ and disable it for a branch that must not use it.
+### Applet settings
 
+**Settings > Application Settings**
 
-#### **Inter-Account Transfers**
-
-After ALL Setup Done, sse Cash Transfer to move funds between bank accounts or from cash-on-hand to a bank account.
-**1. Create a Cash Transfer**
-
-Go to Cash Transfer.
-
-Click Create.
-
-Select a Transfer Type (Bank In, TT, Cash, etc.).
-
-Choose the Company and Branch.
-
-**2. Enter Transfer Details**
-
-In the Transfer Line section:
-
-Transfer From Cashbook: Source account (Debited)
-
-Transfer To Cashbook: Destination account (Credited)
-
-Amount: Enter the transfer value
-
-Date: Posting date
-
-Remarks: Add a clear description (e.g., “Monthly transfer to salary account”)
-
-Click Add.
-
-**3. Finalize the Transfer**
-
-After reviewing: Click Finalize
-
-Once finalized:
-
-- The transaction is permanently posted
-- It cannot be edited or reversed
-- It will appear immediately in GL and Cashbook reports
-- 
-#### **Reports**
-
-**1. Query Cashbook Transaction (Detailed View)**
-
-Use this for detailed reconciliation of one bank account.
-
-Displays:
-
-- Opening Balance
-- Transaction Lines
-- Amount In (Debit)
-- Amount Out (Credit)
-- Closing Balance
-- Drill-Down Links to source documents
-
-This tool is ideal for month-end or audit reviews.
-**2. Cash Level (Summary View)**
-Use this for a high-level overview of all balances across multiple cashbooks.
-
-Features:
-
-Shows final balances for each cashbook
-
-Supports grouping (e.g., by company or currency)
-
-Allows drill-down into transaction details
-
-Example of a transfer of 10,000 from CIMB to Hong Leong:
-
-| Cashbook        | Balance Change |
-| --------------- | -------------- |
-| Hong Leong Bank | +10,000        |
-| CIMB Bank       | –10,000        |
-
-
-6. Summary
-
-This User Guide provides all steps needed to:
-
-Create bank accounts
-
-Configure settlement methods
-
-Execute fund transfers
-
-Review and reconcile bank activity
-
-Following these procedures ensures financial accuracy, compliance, and efficient cash management within BigLedger.
-
-This ensures branch-level segregation of duties and prevents misuse of corporate bank accounts.
-
-## Additional Features
-
-POS payments (where applicable)
-- Multiple cash accounts (registers, petty cash, etc.)
-- Cash denomination tracking and counting
-- Daily cash opening and closing procedures
-- Cash variance reporting and investigation
-- Multi-currency cash handling
-- Cash security and control measures
-
-- Proper setup of a new bank account ensures that all financial activity is traceable, accurate, and reflected in the general ledger.
-
-Payment Method Setup 
-### Bank Account Configuration
-- Multiple bank account setup and management
-- Bank account details and connectivity
-- Online banking integration
-- Bank statement import and processing
-- Multi-currency bank account support
-- Bank fee and charge management
-
-### Payment Method Setup
-- Comprehensive payment method configuration
-- Credit card processing integration
-- Digital payment method support (e-wallets, etc.)
-- Check processing and clearing
-- Wire transfer and bank draft handling
-- Payment gateway integrations
-
-### Transaction Processing
-- Real-time cash and bank transaction recording
-- Automated posting to general ledger
-- Multi-approval workflows for large transactions
-- Transaction categorization and coding
-- Reversal and adjustment capabilities
-- Batch processing for high-volume transactions
-
-### Reporting and Analysis
-- Daily cash position reports
-- Bank account balance monitoring
-- Cash flow forecasting and analysis
-- Payment method performance analysis
-- Bank reconciliation reports
-- Cash variance and exception reports
-
-## Technical Specifications
-
-### System Requirements
-- **Minimum Access Level**: Cash Management Administrator
-- **Database Dependencies**: Financial and cash management tables
-- **Integration Points**: All financial and transaction modules
-- **API Availability**: Real-time transaction processing APIs
-- **Security Features**: Multi-level approval and audit trails
-
-### Cash and Bank Configuration Options
-- **Account Types**: Cash, Current Account, Savings, Time Deposits
-- **Currency Support**: 150+ global currencies
-- **Transaction Limits**: Configurable per account and user
-- **Approval Workflows**: Multi-level approval processes
-- **Integration APIs**: Banking and payment gateway connections
-
-### Performance Parameters
-- **Transaction Volume**: Process thousands of transactions per hour
-- **Real-time Updates**: Instant balance updates across modules
-- **Concurrent Users**: 200+ simultaneous cash operations
-- **Report Generation**: Real-time cash position reports
-- **Bank Integration**: Real-time bank balance synchronization
-
-## Integration Points
-
-### Core Module Dependencies
-- **Chart of Account Applet** - Cash and bank account mapping
-- **Tax Configuration Applet** - Payment-related tax handling
-- **Organization Applet** - Multi-location cash management
-- **Employee Maintenance Applet** - Cash handler authorization
-
-### Module Integration
-| Module | Integration Purpose |
-|--------|-------------------|
-| **Sales & CRM** | Customer payment processing |
-| **Purchasing** | Supplier payment processing |
-| **Financial Accounting** | General ledger integration |
-| **POS** | Point-of-sale cash handling |
-| **E-Commerce** | Online payment processing |
-| **Payroll** | Employee payment processing |
-| **Expense Management** | Expense reimbursements |
-
-### External Integrations
-- **Banking Systems** - Online banking and account connectivity
-- **Payment Gateways** - Credit card and digital payment processing
-- **Cash Management Services** - Armored car and cash services
-- **Accounting Software** - Financial data synchronization
-- **Treasury Systems** - Corporate treasury management
-- **Mobile Banking** - Mobile payment and banking apps
-
-## Configuration Requirements
-
-### Initial Setup Requirements
-1. **Company Banking Details** - Business bank account information
-2. **Cash Account Setup** - Physical cash locations and registers
-3. **Payment Methods** - Configure accepted payment methods
-4. **Chart of Accounts Integration** - Map to appropriate GL accounts
-5. **Security Settings** - Cash handling authorization levels
-
-### Essential Configurations
-- **Bank Accounts**: Primary operating accounts, savings, loan accounts
-- **Cash Registers**: Point-of-sale cash handling locations
-- **Payment Methods**: Cash, Credit Card, Bank Transfer, Check
-- **Currency Settings**: Base currency and foreign exchange handling
-- **Approval Limits**: Transaction approval thresholds
-
-### Advanced Configurations
-- **Multi-Bank Management** - Multiple banking relationships
-- **Treasury Operations** - Investment and funding management
-- **International Payments** - Cross-border payment handling
-- **Automated Clearing** - Electronic payment processing
-- **Risk Management** - Cash security and fraud prevention
-
-## Use Cases
-
-### Retail Store Operations
-**Scenario**: Multi-location retail chain
-- Point-of-sale cash register management
-- Daily cash balancing and deposits
-- Credit card transaction processing
-- Store-to-bank cash transfer tracking
-- Multi-location cash consolidation
-
-**Benefits**: Comprehensive retail cash management
-
-### Service Business
-**Scenario**: Professional services firm
-- Client payment processing
-- Expense reimbursement handling
-- Operating expense payments
-- Bank reconciliation automation
-- Cash flow forecasting
-
-**Benefits**: Streamlined service business cash operations
-
-### Manufacturing Company
-**Scenario**: Production facility with suppliers
-- Supplier payment processing
-- Employee advance management
-- Petty cash for operational expenses
-- Large capital expenditure approvals
-- Multi-currency supplier payments
-
-**Benefits**: Efficient manufacturing cash management
-
-### E-Commerce Business
-**Scenario**: Online retailer with multiple payment methods
-- Online payment gateway integration
-- Refund and return processing
-- Multi-currency customer payments
-- Automated bank reconciliation
-- Real-time payment confirmation
-
-**Benefits**: Seamless e-commerce payment processing
-
-## Related Applets
-
-### Core Module Applets
-- **[Chart of Account Applet](/applets/chart-of-account-applet/)** - Account structure integration
-- **[Tax Configuration Applet](/applets/tax-configuration-applet/)** - Payment tax handling
-- **[Organization Applet](/applets/organization-applet/)** - Multi-location cash management
-
-### Financial Applets
-- **[Accounts Receivable Applet](/applets/accounts-receivable-applet/)** - Customer payment processing
-- **[Accounts Payable Applet](/applets/accounts-payable-applet/)** - Supplier payment processing
-- **[Bank Reconciliation Applet](/applets/bank-reconciliation-applet/)** - Automated reconciliation
-
-### Transaction Processing Applets
-- **[Payment Processing Applet](/applets/payment-processing-applet/)** - Advanced payment handling
-- **[Cash Flow Management Applet](/applets/cash-flow-management-applet/)** - Cash flow analysis
-- **[Treasury Management Applet](/applets/treasury-management-applet/)** - Corporate treasury
-
-## Setup Guide
-
-### Quick Start
-1. **Access Cashbook Configuration** - Navigate to the applet
-2. **Bank Account Setup** - Configure primary bank accounts
-3. **Cash Register Setup** - Set up physical cash locations
-4. **Payment Method Configuration** - Configure accepted payment types
-5. **Test Transaction Processing** - Process sample transactions
-
-### Advanced Setup
-1. **Multi-Bank Integration** - Connect multiple banking relationships
-2. **Payment Gateway Integration** - Set up credit card processing
-3. **Automated Reconciliation** - Configure bank statement import
-4. **Approval Workflow Setup** - Configure transaction approvals
-5. **Reporting Configuration** - Set up cash management reports
-
-## Cash and Bank Account Structure
-
-### Bank Account Configuration
-```yaml
-Account Name: Primary Operating Account
-Bank: Maybank Berhad
-Account Number: 514234567890
-Account Type: Current Account
-Currency: MYR
-Online Banking: Enabled
-Statement Import: Automated Daily
-GL Account: 1001 - Cash at Bank
-Authorization Required: >RM 10,000
-```
-
-### Cash Register Setup
-```yaml
-Register Name: Main Counter Register
-Location: Store Front - Counter 1
-Currency: MYR
-Opening Float: RM 500.00
-Maximum Amount: RM 5,000.00
-GL Account: 1000 - Cash on Hand
-Responsible Person: Cashier-001
-Counting Required: Daily Close
-```
-
-### Payment Method Configuration
-```yaml
-Payment Method: Credit Card
-Type: Electronic Payment
-Processor: iPay88
-Processing Fee: 2.5%
-Settlement Period: T+2 days
-GL Account: 1002 - Credit Card Receivable
-Refund Policy: Same Method
-Daily Limit: RM 50,000
-```
-
-## Best Practices
-
-### Cash Management Best Practices
-- **Segregation of Duties** - Separate cash handling and recording
-- **Regular Reconciliation** - Daily cash and bank reconciliations
-- **Approval Controls** - Multi-level approval for large transactions
-- **Audit Trails** - Complete transaction documentation
-- **Security Measures** - Physical and system security controls
-
-### Bank Account Management Best Practices
-- **Account Monitoring** - Regular bank account balance monitoring
-- **Statement Review** - Daily bank statement review and import
-- **Relationship Management** - Maintain good banking relationships
-- **Backup Banking** - Multiple banking relationships for redundancy
-- **Cost Management** - Monitor and minimize banking fees
-
-### Payment Processing Best Practices
-- **Method Optimization** - Optimize payment method mix for cost
-- **Risk Management** - Monitor and control payment risks
-- **Customer Convenience** - Offer multiple payment options
-- **Processing Efficiency** - Automate payment processing where possible
-- **Compliance Adherence** - Follow payment industry regulations
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| `HIDE_SETTLEMENT_METHOD`, `HIDE_IMPORT_CASHBOOK_MENU`, `HIDE_IMPORT_SETTLEMENT_METHOD_MENU`, `HIDE_IMPORT_SETTLEMENT_METHOD_BRANCH_MENU`, `HIDE_CASH_TRANSFER`, `HIDE_UPLOAD_CASH_TRANSFER_MENU`, `HIDE_PD_CHEQUE_MENU`, `HIDE_QUERY_CASHBOOK_TRANSACTION_MENU`, `HIDE_CASH_TRANSFER_BY_TRANSACTION_MENU`, `HIDE_CASH_ADJUSTMENT_MENU`, `HIDE_CASH_LEVEL_MENU` | Left-menu entries | off (shown) | Hidden for everyone except holders of the matching `SHOW_*` permission |
+| `SORT_BY_COLUMN`, `ORDER_BY` (*Cashbook Listing Sorting Order*) | Default sort of the cashbook listing | — | Presentation |
+| `DISPLAY_CASH_TRANSFER_RUNNING_NUMBER` (*Cashbook Transfer Listing*) | Show the running number column | off | Presentation |
+| `SAVE_CASH_TRANSFER_DETAILS` | Keep unsaved transfer lines in the browser's local storage so they survive leaving the page | off | Lines are restored when you return to the transfer |
+| `VERTICAL_ORIENTATION` (*Vertical UI Settings*) | Vertical tab layout | off | Presentation |
+| `ENABLE_AUTO_POPUP` (*Preview File Before Downloading*) | Open printables in a preview before download | off | — |
+| `HIDE_VOID_TRANSACTIONS` (*Hide Reverse Transactions*) | Hide voided / reversed lines in Query Cashbook Transaction | off | Enquiry shows net lines only |
+| `ENABLE_SETTLEMENT_METHOD` (*Cashbook Settlement Method*) | Show the default settlement method field on the cashbook | off | — |
+| `HIDE_EXTERNAL_SETTLEMENT_CODE`, `HIDE_INSTALLMENT_PERIOD`, `HIDE_THRESHOLD_AMOUNT`, `HIDE_PGW_PAYMENT_ID`, `HIDE_PGW_PAYMENT_TYPE_CODE` (*Settlement Method*) | Hide the payment-gateway and threshold fields on the settlement method form | off | Simplifies the form for tenants without gateway integration |
+
+**Settings > Branch Settings** — per branch, the default settlement method for each tender type: `default_settlement_cash`, `default_settlement_cheque`, `default_settlement_bank_transfer`, `default_settlement_credit_card`, `default_settlement_debit_card`, `default_settlement_ewallet`, `default_settlement_voucher`, `default_settlement_membership_point_currency`, `default_settlement_others`. POS and the voucher applets pre-select these when a cashier picks a tender type at that branch.
+
+**Settings > Default Selection** / **Personalisation** — tenant-wide and per-user default selections (company, branch) for the listing filters.
+
+**Settings > Printable Format Settings** — code and name of printable formats for cash transfer and adjustment documents.
+
+### Document behaviour settings
+
+Cash Transfer and Cash Adjustment are documents with `DRAFT` → `FINAL` → `VOID` statuses, but the applet has no per-document behaviour switches beyond `DISPLAY_CASH_TRANSFER_RUNNING_NUMBER` and `SAVE_CASH_TRANSFER_DETAILS` above. No approval workflow or e-Invoice flags apply.
+
+### Feature visibility / permissions
+
+Registered client-side permissions for `cashbook-applet` — each re-enables, for its holder, a menu the tenant has hidden:
+
+| Permission | Unlocks |
+|---|---|
+| `SHOW_CASH_TRANSFER` | Cash Transfer menu |
+| `SHOW_CASH_ADJUSTMENT_MENU` | Cash Adjustment |
+| `SHOW_CASH_LEVEL_MENU` | Cash Level |
+| `SHOW_PD_CHEQUE_MENU` | PD Cheque queue and history |
+| `SHOW_QUERY_CASHBOOK_TRANSACTION_MENU` | Query Cashbook Transaction |
+| `SHOW_UPLOAD_CASH_TRANSFER_MENU` | Upload Cash Transfer |
+| `SHOW_IMPORT_SETTLEMENT_METHOD_MENU`, `SHOW_IMPORT_SETTLEMENT_METHOD_BRANCH_MENU` | The two settlement-method imports |
+
+Cashbook-level access is additionally controlled by the **Members** tab on each cashbook and by the **Branch** tab on each settlement method.
+
+## Fields
+
+### Cashbook — create / Details
+
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Cashbook Code | Unique code | Yes | Backend enforces uniqueness (`CASHBOOK_HDR_OBJECT_CODE_VIOLATES_UNIQUE_CONSTRAINT`) |
+| Cashbook Name | Display name | Yes | — |
+| Account Number | Bank account number | No | — |
+| Company | Owning company | Yes (backend) | Must exist |
+| Currency | Account currency | No in the form | Set it for foreign-currency accounts |
+| GL Code | Bank / cash account in the ledger | Yes (backend) | Must exist and belong to the company's chart |
+| Bank, Branch | Bank master and owning branch | No | Branch must exist if given |
+| Description, Status | — | No | — |
+| Default settlement method | Pre-selected method for this cashbook | No | Shown when `ENABLE_SETTLEMENT_METHOD` is on |
+
+### Cashbook — Triggers & Limits
+
+| Field | Meaning |
+|---|---|
+| Low level trigger / High level trigger | Balance thresholds for alerts |
+| Overdraft limit | Allowed negative balance |
+| Facility amount | Credit facility attached to the account |
+
+### Settlement Method — create / Details
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Code, Name | Identity | Yes | Max 255; stored as a financial item of type `STL_MTHD`, so the code must also be unique among items (`ITEM_HDR_OBJECT_CODE_ALREADY_EXIST`) |
+| Sort Code | Display order in tender lists | Yes | — |
+| Cashbook | Where settled money lands | Yes | — |
+| Settlement Type | One of the types listed above | Needed to appear as a tender | — |
+| Status | Active / inactive | — | — |
+| External settlement code | Code used by an external system | No | Hideable |
+| Payment provider / gateway, PGW payment ID, PGW payment type code | Gateway integration | No | Hideable |
+| Installment period | For instalment tenders | No | Hideable |
+| Min / max threshold amount, settlement limit type and amount / percentage | Limits on a single settlement | No | Hideable |
+| Membership point currency | For point tenders | No | — |
+| Labels | Grouping labels | No | — |
+
+### Cash Transfer
+
+| Field | Meaning | Required |
+|---|---|---|
+| Transfer No. | Running number | generated |
+| Transaction date | Posting date | Yes |
+| Transfer type | `Bank In`, `TT`, `Cash` | Yes |
+| Reference no., Description | Free text | No |
+| Line: From cashbook, To cashbook, Amount, Date, Remarks | The movement | Yes |
+
+## Lifecycle and posting
+
+| Document | Statuses | On FINAL | On VOID |
+|---|---|---|---|
+| Cash Transfer | `DRAFT` → `FINAL` → `VOID` | One journal per transfer: **Dr** the *To* cashbook's GL code, **Cr** the *From* cashbook's GL code (a negative line amount is written as the credit). GL codes are resolved from company + cashbook / settlement method → sub-ledger → GL code. Only `FINAL` documents post; the posting service refuses anything else (`CASH_DOC_POSTING_STATUS_NOT_FINAL`) | The document is voided; its lines are hidden from Query Cashbook Transaction when `HIDE_VOID_TRANSACTIONS` is on |
+| Cash Adjustment | `DRAFT` → `FINAL` → `VOID` | Posts a journal against the cashbook's GL code through the same cash-document posting service | The document is voided |
+
+A finalised transfer cannot be edited; if a `FINAL` transfer's lines are changed by an administrator, the backend re-resolves the GL codes and rewrites the existing journal rather than creating a second one.
+
+Cashbooks and settlement methods are master records (`ACTIVE` / `INACTIVE`) and do not post by themselves.
+
+## Related applets
+
+- [Chart of Account](/applets/master-data/chart-of-account-applet/) — the GL code behind every cashbook and the default GL codes used for charges and transfers.
+- [Organisation](/applets/master-data/organisation-applet/) — companies and branches.
+- [Bank Reconciliation](/applets/finance/bank-reconciliation-applet/) — matches a cashbook's lines to the bank statement.
+- [Receipt Voucher](/applets/finance/internal-receipt-voucher-applet/) and [Payment Voucher](/applets/finance/internal-payment-voucher-applet/) — money in and out through settlement methods.
+- [POS General](/applets/sales-workflow/pos-general-applet/) — tenders are settlement methods; branch defaults come from Branch Settings here.
+- [General Ledger](/applets/finance/general-ledger-applet/) — where cash transfer and adjustment journals are visible.
+- [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — settlement methods are items of type `STL_MTHD`; the customer surcharge is billed as an item.
 
 ## Troubleshooting
 
-### Common Issues
-**Bank reconciliation discrepancies**
-- Check bank statement import accuracy
-- Verify transaction posting completeness
-- Review timing differences and cutoffs
-- Confirm bank fee and charge recording
+| Symptom | Cause | Fix |
+|---|---|---|
+| Cannot save a cashbook: GL code / company error | GL code is missing, or belongs to a different company's chart than the cashbook's company | Pick a GL code from the same company's chart; create one in Chart of Account if needed |
+| Settlement method not offered in Receipt Voucher / POS at a branch | No settlement type set, or the branch is not linked on the method's Branch tab, or the branch default for that tender type is unset | Set the type; link the branch; set Branch Settings |
+| Cashbook "item" appears in an expense item list (for example the Payment Voucher expense picker) | Settlement methods are stored as financial items of type `STL_MTHD` and some pickers do not filter by type | Filter by item type in that applet; report the picker if it lacks the filter |
+| Finalised cash transfer shows no journal | An earlier journal for the same transfer was deleted and the posting idempotency check counted it; fixed in the backend in 2026 by ignoring `DELETED` journals | Update the backend; re-post the transfer |
+| Cash Level lists cashbooks from every company | Cashbook filter ignored the company filter; fixed in 2026 | Update the applet build |
+| Cash bill / receipt number not shown on the cashbook line | Source document reference missing on the transaction line (defect fixed in 2026) | Update the build; use Query Cashbook Transaction drill-down meanwhile |
+| Bank charges not posted on card receipts | Charges mode is `NONE`, or `SETTLEMENT_CHARGES` default GL code is unmapped | Set mode `RATIO` with the rate; map the default GL code in Chart of Account |
+| Bank reconciliation cannot find a cashbook | Cashbook is inactive or the user is not a member | Reactivate; add the user on the Members tab |
 
-**Cash register variances**
-- Verify cash counting procedures
-- Check transaction recording accuracy
-- Review cash handling processes
-- Investigate unusual cash movements
+## Related documentation
 
-**Payment processing errors**
-- Check payment gateway connectivity
-- Verify merchant account configurations
-- Review payment method settings
-- Confirm network and system connectivity
-
-### Support Resources
-- Cash management setup and procedures guide
-- Bank integration configuration documentation
-- Payment gateway troubleshooting guide
-- Cash reconciliation best practices guide
-
-{{< callout type="warning" >}}
-**Security Critical**: Cash and bank operations require strict security controls. Implement proper segregation of duties, approval workflows, and audit trails to prevent fraud and ensure accuracy.
-{{< /callout >}}
-
+- [Bank reconciliation guide](/guides/accounting-guides/bank-reconciliation-guide/) — the month-end procedure that starts from a cashbook.
+- [Financial Accounting module](/modules-v2/financial-accounting/) and [Opening balances](/modules-v2/financial-accounting/opening-balance/).
+- [Core module](/modules-v2/core/).

@@ -5,7 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/inventory-workflow/stock-adjustment-applet.md",
   "content/en/applets/inventory-workflow/stock-transfer-applet.md",
   "content/en/applets/inventory-workflow/stock-report-applet.md",
   "content/en/applets/inventory-workflow/consignee-stock-transfer-applet.md",
@@ -61,6 +60,10 @@
   },
   {
    "page": "content/en/applets/inventory-workflow/stock-availability-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/stock-adjustment-applet.md",
    "date": "2026-09-05"
   }
  ],
