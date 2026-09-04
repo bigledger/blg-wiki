@@ -15,6 +15,9 @@ You are Lane {N} of a four-lane programme that upgrades every applet reference p
 - **Live DB (read-only), only if needed** for settings names or permission definitions:
   `sudo -u vincent /home/vincent/projects/sysadmin/bin/psql-akaun-master -At -c "SELECT ..."` against akaun_master (e.g. `bl_applet_client_side_perm_dfn` joined on `bl_applet_hdr.code`). Never write; never copy tenant data.
 
+## Rework items
+If your state.json has a `rework` list, those pages are first in your queue: they were rewritten in run 1 and an adversarial code review found specific errors (the `why` field; full detail in the `review` file — read your pages' sections of it). Fix exactly what the review found, re-derive the Configuration and Lifecycle sections under the updated standard (four proofs per setting; posting proof block; client confirm ≠ backend rejection), and keep everything that was right.
+
 ## For each page in your queue
 1. Read the current page. Note what is good (accurate prose, screenshots) — keep it.
 2. Resolve the registry row and the repo. If the repo cannot be found after a genuine search, still enhance from the backend + issues + existing page, and note "repo not found" in front matter `sources:` as a comment-free note in findings.md.

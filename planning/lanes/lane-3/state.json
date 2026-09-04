@@ -8,6 +8,7 @@
   "external-tenant-admin"
  ],
  "queue": [
+  "content/en/applets/purchase-workflow/internal-purchase-debit-note-applet.md",
   "content/en/applets/purchase-workflow/blanket-purchase-order-applet.md",
   "content/en/applets/delivery-installation/delivery-installation-applet.md",
   "content/en/applets/delivery-installation/delivery-installation-driver-applet.md",
@@ -44,10 +45,6 @@
  ],
  "done": [
   {
-   "page": "content/en/applets/purchase-workflow/internal-purchase-debit-note-applet.md",
-   "date": "2026-09-05"
-  },
-  {
    "page": "content/en/applets/purchase-workflow/internal-purchase-credit-note-applet.md",
    "date": "2026-09-05"
   },
@@ -80,6 +77,13 @@
  ],
  "updated": "2026-09-05",
  "notes": [
-  "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) — INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/…] and [src:gh:bigledger/blg-intranet#n]."
+  "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) \u2014 INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/\u2026] and [src:gh:bigledger/blg-intranet#n]."
+ ],
+ "rework": [
+  {
+   "page": "content/en/applets/purchase-workflow/internal-purchase-debit-note-applet.md",
+   "why": "codex review: settings over-declaration; wrong GL precedence (header\u2192item\u2192company); add posting proof block",
+   "review": "planning/reviews/2026-09-05-gpt-5.6-sol-lane-run-1-review.md"
+  }
  ]
 }

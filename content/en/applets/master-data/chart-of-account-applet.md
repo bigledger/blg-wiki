@@ -172,7 +172,7 @@ Select a GL Category, **SEARCH** to list its GL codes, **CREATE** to generate on
 | Company created and assigned a chart of accounts | [Organisation](/applets/master-data/organisation-applet/) | Only then does the company appear under **Companies** here |
 | GL sections, categories and codes | this applet (or CSV import) | Default GL Codes can only be mapped to codes that exist |
 | At least one `PRIMARY` ledger per company | **Companies > Ledgers** | Journals post into the primary ledger; opening balances are entered on it |
-| Default GL Codes mapped | **Companies > Default GL Codes** | Documents that need a mapping that is missing save but do **not** post a journal |
+| Default GL Codes mapped | **Companies > Default GL Codes** | FINAL on a document whose mapping is missing is **rejected by the backend** with `MISSING_DEFAULT_GL_CODE: <code>`; the document stays unposted until the mapping exists |
 | A fiscal year covering today | **Fiscal Year** | Documents and journals are validated against the period of their transaction date |
 | A set of books | **Set Of Books** | Financial reports run against a set of books |
 
@@ -217,7 +217,7 @@ Select a GL Category, **SEARCH** to list its GL codes, **CREATE** to generate on
 Screenshots: [General](/images/chart-of-account-applet/screenshots/default-gl-codes-general.png) · [Entity](/images/chart-of-account-applet/screenshots/default-gl-codes-entity.png) · [Sales](/images/chart-of-account-applet/screenshots/default-gl-codes-sales.png) · [Purchase](/images/chart-of-account-applet/screenshots/default-gl-codes-purchase.png) · [Stock](/images/chart-of-account-applet/screenshots/default-gl-codes-stock.png) · [Forex](/images/chart-of-account-applet/screenshots/default-gl-codes-forex.png) · [Consignment](/images/chart-of-account-applet/screenshots/default-gl-codes-consignment.png)
 
 {{< callout type="warning" >}}
-**If the relevant default GL code is not set, no journal is created** for that transaction — the document saves but does not reach the General Ledger until the mapping exists. Map at least Sales, Sales Return, Output Tax, Purchase, Input Tax, Debtor, Creditor, Stock Balance, COGS, Retained Earning and Rounding before going live. For Malaysian SST tenants, `INPUT_TAX` and `OUTPUT_TAX` are the accounts the SST return is built from.
+**If the relevant default GL code is not set, FINAL fails.** The posting service looks up the company's default GL code for the transaction code it needs (for example `DEBTOR`, `SALES`, `OUTPUT_TAX`) and, if the mapping is absent, rejects the document with `MISSING_DEFAULT_GL_CODE: <transaction code>`. Nothing is saved as FINAL and no journal is created until you add the mapping under **Companies > Default GL Codes** and finalise again. Map the codes for every document type your branches use before go-live.
 {{< /callout >}}
 
 ### Document behaviour settings

@@ -8,6 +8,7 @@
   "human-resources"
  ],
  "queue": [
+  "content/en/applets/finance/internal-purchase-invoice-applet.md",
   "content/en/applets/finance/bank-reconciliation-applet.md",
   "content/en/applets/integrations/90-ecomsync-related-applets.md",
   "content/en/applets/finance/accounts-receivable-applet.md",
@@ -47,10 +48,6 @@
  ],
  "done": [
   {
-   "page": "content/en/applets/finance/internal-purchase-invoice-applet.md",
-   "date": "2026-09-05"
-  },
-  {
    "page": "content/en/applets/finance/internal-receipt-voucher-applet.md",
    "date": "2026-09-05"
   },
@@ -68,5 +65,12 @@
   }
  ],
  "skipped": [],
- "updated": "2026-09-05"
+ "updated": "2026-09-05",
+ "rework": [
+  {
+   "page": "content/en/applets/finance/internal-purchase-invoice-applet.md",
+   "why": "codex review: model-only settings documented; unsupported numbering story; guide/reference mixing; GL precedence must read line\u2192header\u2192item-company\u2192company default",
+   "review": "planning/reviews/2026-09-05-gpt-5.6-sol-lane-run-1-review.md"
+  }
+ ]
 }

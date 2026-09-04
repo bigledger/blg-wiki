@@ -2,14 +2,16 @@
 
 Three lanes independently converged on the same facts on 2026-09-05. Use them; do not rediscover.
 
-1. **Configuration lives in a shared screen, not in the applet.** Every applet routes "Application
-   Settings" to the ~8,300-line `FieldConfigurationComponent` in `refs/blg-shared-utilities`
-   (a submodule that is NOT checked out inside applet clones — read it from
-   `/home/marketing/repos/refs/blg-shared-utilities`). It is gated per applet by
-   `sessionStorage.appletCode`. The toggles that apply to an applet = the intersection of that
-   template with the keys the applet's `applet-settings.model.ts` actually **reads** (models
-   over-declare: e.g. ~220 declared, 105 read). `kb/tools/applet-scan.sh <applet repo>` computes
-   the intersection — run it first, then document only keys the code reads.
+1. **Discover where settings live before counting them — it differs by applet family.**
+   Read `app.routing.ts` and the settings container first and classify: *shared*
+   `FieldConfigurationComponent` in `/home/marketing/repos/refs/blg-shared-utilities` (the big
+   document applets: sales/purchase invoice, order, notes — gated by `sessionStorage.appletCode`),
+   *applet-local* field-configuration components (Chart of Account, Cashbook, Stock Availability,
+   Financial Report, Purchase Report, Sales Report), *no settings model at all* (CP Commerce Admin —
+   per-website tabs), *runtime reads without a model* (POS General reads `master?.X` directly: 155
+   real keys vs 11 the scan reports). `kb/tools/applet-scan.sh` is a starting point for the shared
+   family only; for the others grep every settings read in the applet and intersect with rendered
+   controls. Document a key only if it is declared/rendered/persisted/consumed (standard §4).
 2. **`HIDE_*` settings pair with `SHOW_*` client-side permissions** (`updateMenuItem(state,
    !SHOW && HIDE)`): a tenant-wide hide can be reopened per role — but only if the `SHOW_*` code
    is seeded in `bl_applet_client_side_perm_dfn`, which for most applets it is not. Word the
@@ -22,7 +24,13 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
 4. **Real failure modes are stock-location, rate/rounding and missing default GL codes**
    (`MISSING_DEFAULT_GL_CODE`, `MISSING_CASHBOOK`, `MISSING_GL_CODE: STL_MTHD [code]`) — mine
    issues for these, not for accounting theory.
-5. **Direction claims in old pages are often inverted.** Trust the signum constants over the
+5. **Codex review of run 1 (planning/reviews/2026-09-05-gpt-5.6-sol-lane-run-1-review.md) found
+   two dangerous inversions in our own rewrites**: "missing default GL → saves without journal"
+   (backend actually THROWS `MISSING_DEFAULT_GL_CODE`, JournalPostingService:339,412) and
+   "`VALIDATE_STOCK_ON_FINALIZE` is a backend check" (it is a client-side confirm dialog). Hence
+   standard §6: every must/blocks/rejects claim cites the backend throw; every default cites the UI
+   initial value. GL precedence is line GL → header GL → item-company link → company default.
+6. **Direction claims in old pages are often inverted.** Trust the signum constants over the
    existing prose, and record every reversal in findings.md so the guides get corrected too.
-6. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+7. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.

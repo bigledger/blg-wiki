@@ -194,7 +194,7 @@ The form is a set of tabs whose order is configurable (Settings → Default Sele
 | Entity details | `ENABLE_VEHICLE_TAB` | Vehicle number on the Account tab (workshop use) |
 | Shipping | `SELECT_SHIPPING_ENTITY` | Ship-to can be a different entity from the bill-to |
 | Lines | `SHOW_ITEM_STOCK_BALANCE` | Stock balance column in item search; disallows negative stock for basic items |
-| Lines | `VALIDATE_STOCK_ON_FINALIZE` | Backend stock-balance validation runs at FINAL (see Lifecycle) |
+| Lines | `VALIDATE_STOCK_ON_FINALIZE` | **Client-side** stock check before FINAL: the applet compares line quantities with stock balance and shows a warning dialog the user can confirm past (`services/stock-validation.service.ts`). It is not a backend hard stop; the backend does not reject a FINAL on this setting |
 | Lines | `ALLOW_NEGATIVE_AMOUNT_TXN_IN_LINES` | Negative line amounts accepted |
 | Lines | `ENABLE_EDITING_UNIT_PRICE_STD` | Standard unit price editable in the line |
 | Lines | `DISABLE_LINE_ITEM_NAME_EDIT` | Item name locked to master data |
@@ -374,7 +374,7 @@ Stock: each PNS line writes an inventory transaction with quantity × −1 at th
 
 | Symptom | Cause | Fix |
 |---|---|---|
-| Final fails with "not enough stock" naming an item code | Stock at the line's location is below the quantity and `VALIDATE_STOCK_ON_FINALIZE` is on | Check [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) for that location; receive stock or change location; `ALLOW_NEGATIVE_STOCK_WITH_CONFIRMATION` lets a user confirm through |
+| A "not enough stock" warning appears at FINAL, naming an item code | Stock at the line's location is below the line quantity and `VALIDATE_STOCK_ON_FINALIZE` is on; this is the applet's confirmation dialog, not a backend rejection | Check the location on the line and the stock balance; confirm the dialog to finalise anyway, or correct the quantity/location |
 | Final fails with `MISSING_DEFAULT_GL_CODE: DEBTOR` (or `SALES`, `OUTPUT_TAX`, `COGS`) | Company default GL codes not set | Set them in [Chart of Account](/applets/master-data/chart-of-account-applet/) for the selling company |
 | Posting fails with `MISSING_GL_CODE: STL_MTHD [code]` or `MISSING_CASHBOOK` | A settlement method used on the Payment tab has no GL code or cashbook | Complete the settlement method in [Cashbook](/applets/master-data/cashbook-applet/) |
 | "The selected date falls within a locked fiscal period." | Transaction date inside a closed period | Change the date or reopen the period |
