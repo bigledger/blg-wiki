@@ -199,3 +199,64 @@ Resolved the registry rows for the next pages in the queue before starting them;
 - Triage first, then write: resolving the registry row for the *next five* queue pages took five minutes and removed four dead pages from the queue. Worth doing at the start of every run.
 - **Next: `content/en/applets/finance/budgetary-applet.md`** (registry `budgetaryApplet`), using `budget-applet.md` only as a list of claims to verify against the repo — expect one full run.
 - Repo for the next page: `refs/blg-applet-wavelet-budgetary-applet` (confirmed present 2026-09-05).
+
+## Run 7 — 2026-09-05 — `finance/budgetary-applet.md` (registry `budgetaryApplet` "Budgetary Applet")
+
+Rewritten from the 10-line placeholder under the registry name. `budget-applet.md` was **not** deleted and no alias was added — both await F-0079. Repo `blg-applet-wavelet-budgetary-applet` at `2bd6097` (2026-07-22), backend `871dbf5c96`, shared-utilities `af523eb`. content-lint passes.
+
+### What would be carried over from `budget-applet.md` (for F-0079)
+
+Almost nothing survives the code check; the page is a narrative written before the applet existed in its current shape.
+
+- **Keep (already re-expressed in the new page):** the who / what / how framing (profit centre → votebook → item → category → register); the fact that categories are up to eleven slots bound to category groups in Field Settings; the description of Virement vs Adjustment; the Budget Report vs Txn Line Report split; the July-2026 bug list; the five screenshots it references (see the screenshot section below — only two of them are usable).
+- **Drop (contradicted by code):** "Allocating Initial Budget Amounts — enter the annual amount once and the system distributes it equally across periods, with manual per-period override" (no such screen: the votebook *Budget* tab is commented out, nothing creates an `OPENING` transaction, the initial allocation is an Adjust In per register); "the system checks the register and validates sufficient balance" / "Cannot finalize virement — insufficient source register balance" (no balance check on client or server; the sub-line editor only colours the cell); "Approval Workflows: define approval routing rules" and "Validation Rules: set budget tolerance thresholds" under Field Settings (the screen has category-group slots and a `Mandatory` flag that nothing reads); "Mandatory fields — mark which category groups are required" (flag stored, never enforced); "Category Groups: enable up to 10 category levels" (eleven slots, 0–10); "Amount Reserved" as a live figure (never written); quarterly fiscal structures (periods are always monthly); the "Security & Access Control — user roles" section (no client-side permission definitions exist); the *Integration → External Systems* and *Best Practices* sections (marketing, no code basis).
+- **Redirect:** the page links `/modules/budgetary/#budget-virement-management`, `#budget-reports`, `#budget-utilization-and-validation`, `#troubleshooting` — the module page carries the same "validated at line level / blocks overspend" claims and needs the same correction.
+- **Broken asset:** it references `/images/budgetary-module/budgetary-module-01.png`, which does not exist in `static/`.
+- **Inbound links to re-point when it goes:** `modules-v2/financial-accounting/_index.md` (line 129, also says "Vote Book Applet … blocks overspend before a PV is approved") and `user-guide/industry-solutions/professional-services.md` (line 83, "overspend blocking"). Both should point at `/applets/finance/budgetary-applet/` and drop the blocking claim.
+
+### Screenshots with personal data (`static/images/budgetary-module/`)
+
+Opened all twelve images. Offenders — **not referenced** by the new page:
+
+- `budgetary-module-06.png` — Category Group Edit: *Created By* / *Modified By* show two staff e-mail addresses.
+- `budgetary-module-11.png` — Edit Item: *Created By* / *Modified By* show two staff e-mail addresses.
+- `budgetary-module-04.png` — Edit Item → Votebook tab + Add Votebooks: votebook names are staff first names (three of them).
+- `figure-1-1.png` — Edit Item → Votebook tab: same votebook names.
+
+Borderline, kept: `budgetary-module-03.png`, `-05.png`, `-07.png`, `-08.png` show test category groups named after university faculties in Malay (no company, person or branch name; tenant shown as "TESTING"). Only `-05` and `-08` are embedded. Clean and embedded: `-02.png`, `-10.png`. Clean, not embedded: `-09.png`, `budget-workflow.png` (diagram; its "Budget validated at line or header level" label overstates — the code only warns). `budgetary-module-01.png` is referenced by the old page but missing.
+
+Recommendation: delete `-04`, `-06`, `-11` and `figure-1-1` from `static/` (none is referenced by any page after this rewrite) — outside my edit scope, so left in place.
+
+### Inversions / false claims found in existing wiki text (for the guides and module pages)
+
+1. **"BigLedger blocks overspend" is false everywhere it appears** (`modules/budgetary.md`, `modules-v2/financial-accounting/_index.md` lines 15/32/130, `user-guide/industry-solutions/professional-services.md` lines 73/83, old `budget-applet.md`). Code: no validator on virement amount, `GenericDocumentBudgetSubLineDataConsistencyObject` checks keys/nulls only, the shared sub-line editor colours the cell and shows a tooltip. Registers can go negative.
+2. **Purchase orders do not commit budget.** `FiGenDocBudgetRegisterTxnLineProcessor` filters to `INTERNAL_SALES_INVOICE` and `INTERNAL_PURCHASE_INVOICE`; the PO applet shows the budget fields but nothing is written. Any "commitment register" wording for POs is wrong.
+3. **Initial allocation** is an Adjust In on a zero register, not an "initial amount distributed across periods". `OPENING` is handled by the register-update job but never produced.
+4. **VOID reverses nothing** (only FINAL queues the processor), and there is no VOID button in the applet.
+
+### Cross-lane link requests
+
+- **internal-purchase-invoice-applet (own lane, done in run 5)** — add `budgetary-applet` to `related_applets`; document `SHOW_BUDGET` (Budget Votebook / Fiscal Period / Item / Register on the line, *Budget Sub Line* tab with amount or percentage split) and the FINAL effect (`FI_GEN_DOC_BUDGET_REGISTER_TRANSACTION_LINE_PROCESSOR` → register `actual_used_amt`, header `posting_budget = POSTED`, no balance check). Next pass of my lane.
+- **internal-sales-invoice-applet (lane owning `sales-workflow/`)** — same two additions as above for the sales side.
+- **internal-purchase-order-applet (lane owning `purchase-workflow/`)** — add `budgetary-applet` to `related_applets`; state that the budget fields shown under `SHOW_BUDGET` are informational: the backend processor skips `INTERNAL_PURCHASE_ORDER`, so no register moves.
+- **developer-sysadmin-applet (own lane, in queue)** — when written, name the three budget processors (`BUDGET_GEN_DOC_PRIMARY_PROCESSOR` → `BUDGET_GEN_DOC_TRANSACTION_LINE_PROCESSOR` → `BUDGET_TXN_LINE_UPDATE_REGISTER_PROCESSOR`, plus `FI_GEN_DOC_BUDGET_REGISTER_TRANSACTION_LINE_PROCESSOR` and `BUDGET_FISCAL_YEAR_REGISTER_PROCESSOR`) as subscriptions configured through applet-trigger templates/configuration (`JobProcessorService.getSubscriberJobProcessors`); no seed exists in the backend repo.
+- **organisation-applet (lane owning `master-data/`)** — add `budgetary-applet` to `related_applets` only if that page owns profit centres; the Organisation v3 applet repo has no profit-centre screen (question 16 below).
+
+### Registry / naming mismatches (queue triage, run 7)
+
+- `finance/vote-book-applet.md` — **no registry row** contains "vote" (checked `registry-applets-2026-09-05.tsv`, case-insensitive). The "Vote Book" that `modules-v2/financial-accounting` and `professional-services` describe is the Budgetary Applet's votebook. Expect to skip it (ADR-0002) and to fold its inbound links into `budgetary-applet.md` — flagging now so F-0079 can cover it in the same decision.
+- Next queue pages (`creditor-report-applet`, `debtor-and-creditor-report-applet`, `debtor-report-applet`) have rows (`creditor_report_applet`, `debtor-and-creditor-report-applet`, `debtor_report_applet`) per the run-6 triage.
+
+### Questions for Vincent (run 7)
+
+15. **F-0079 follow-through.** The new `budgetary-applet.md` is live-ready. May I (a) add `aliases: [/applets/finance/budget-applet/]`, (b) delete `budget-applet.md`, (c) re-point the two inbound links, and (d) delete the four screenshots with staff e-mails/names from `static/images/budgetary-module/`? (b)–(d) are outside my edit scope.
+16. **Who owns profit centres?** This applet creates `bl_fi_mst_profit_center` rows (Profit Center menu) and the permission resolver targets them; the Organisation v3 applet repo has no profit-centre screen. Which page should be the reference for profit centres — this one, or a master-data page?
+17. **Vote Book Applet page** (`finance/vote-book-applet.md`): no registry row; the concept is the Budgetary Applet's votebook. Delete/redirect to `budgetary-applet.md`?
+18. **Backend-only budget features.** `bl_fi_budget_register_approval_*` (approval header/request/sequence/setting, e-mail notifications) and `BudgetReservationHdr` / `reserved_amt` exist in the backend but no applet UI references them. Roadmap, dead code, or driven by another (customer-specific) applet? The page currently says `reserved_amt` is never written and omits approvals.
+
+### Notes (run 7)
+
+- Method: for an applet with its own `settings-container`, the four proofs collapse quickly — grep `selectMasterSettings` (consumers) and `saveMasterSettingsInit` (persist) in the applet, then intersect with the one field-configuration template. The other three "settings" screens here (Default Selection ×2, General Settings) fail the persist or consume proof and were documented as such rather than as settings.
+- Method: for register/ledger-style applets with no journal, the "posting proof block" still works — fill amount signum from the txn-line mapper, the Dr/Cr and GL rows with "none", and put the register-update arithmetic in its own row. The processor's `txn_type` switch (`OPENING` / `VIREMENT|ADJUSTMENT|TRANSFER` / else) is the whole lifecycle.
+- Method: the `AG_GRID` report column list is the fastest way to see what a report actually reads (`report-listing.component.ts` — both "Initial" and "Latest" bound to `latest_allocated_amt` was found this way).
+- Pace: one large master-data + document applet in roughly 80 minutes including the backend job chain and twelve screenshots. **Next: `content/en/applets/finance/creditor-report-applet.md`** (registry `creditor_report_applet`); it and the two debtor reports are read-only report applets and should go faster — check whether they share one repo before starting.
