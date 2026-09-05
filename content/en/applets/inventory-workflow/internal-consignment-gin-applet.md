@@ -1,6 +1,81 @@
 ---
-title: "Consignment GIN (Internal) Applet"
-description: "Create and manage consignment Goods Issue Notes with full visibility of items and line-level tracking for sales operations"
+title: "Consignment GIN Applet (Internal)"
+description: "Reference for the Consignment GIN Applet (Internal) — the goods issue note that takes supplier-owned consignment stock out of one of your locations: screens, settings, fields, what FINAL does to stock and to the ledger, and the errors you will meet."
+applet_code: "internalConsignmentGINApplet"
+applet_repo: "blg-applet-wavelet-internal-consignment-gin-applet"
+modules: [purchasing, inventory]
+related_applets: [internal-consignment-grn-applet, internal-consignment-return-applet, internal-consignment-purchase-order-applet, internal-consignment-billing-applet, internal-consignor-purchase-billing-applet, doc-item-maintenance-applet, supplier-applet-1, employee-applet, organisation-applet, tax-configuration-applet, chart-of-account-applet, stock-balance-applet, stock-report-applet, creditor-report-applet, debtor-and-creditor-report-applet]
+guides: [/guides/purchasing-guides/consignment-purchasing/]
+sources:
+  configuration:
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/models/constants/applet-constants.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/settings-container/printable-format-settings-container/printable-format-listing/printable-format-listing.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/state-controllers/printable-format-controller/store/effects/printable-format.effects.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/internal-consignment-gin-create.component.html
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-edit/internal-consignment-gin-edit.component.html
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-edit/internal-consignment-gin-edit.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-edit/export/export.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/add-line-item/add-line-item.component.html
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/add-line-item/item-details/item-details.component.html
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/add-line-item/item-details/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/add-line-item/item-details/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/line-item/line-item-create/search-item/line-search-item-listing.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/main-details/select-purchaser/select-purchaser-listing.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/account/account-entity-details/select-supplier/select-supplier-listing.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/resolver/permission.resolver.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/TntErpPermissions.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/GenericDocumentPrimaryProcessor.java
+    - akaun_master.bl_applet_client_side_perm_dfn (applet internalConsignmentGINApplet, 0 rows on 2026-09-05)
+  fields:
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/account/account-entity-details/account-entity-details.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/line-item/line-item-create/line-item-create.component.html
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/add-line-item/item-details/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/add-line-item/item-details/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/add-line-item/batch-number/batch-number.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/add-line-item/bin-number/bin-number.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/payment/add-payment/add-payment.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/contra/add-contra/add-contra.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-listing/internal-consignment-gin-listing.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/line-items-container/line-items-listing/line-items-listing.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/models/advanced-search-models/internal-consignment-gin.model.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/models/advanced-search-models/line-item.models.ts
+  lifecycle:
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-edit/internal-consignment-gin-edit.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-listing/internal-consignment-gin-listing.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/state-controllers/internal-consignment-gin-controller/store/effects/internal-consignment-gin.effects.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalPurchaseConsignmentGinDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/GenericDocumentDataConsistencyObject.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/ServerDocTypes.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/GenericDocServerDocTypeEnum.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/stock/StockBalanceHelper.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/inventory/BackdatedInvTxnLineService.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/GenericDocumentPrimaryProcessor.java
+    - blg-applet-wavelet-creditor-report-applet-V2/micro-fe/projects/wavelet-erp/applets/creditor-report-applet-V2/src/app/components/outstanding-document-report-container/outstanding-document-report-view/contra-select-document/contra-select-document.component.ts
+    - blg-applet-wavelet-debtor-and-creditor-report-applet/micro-fe/projects/wavelet-erp/applets/debtor-and-creditor-report-applet/src/app/models/constants/server-doc-type.constant.ts
+    - blg-applet-wavelet-stock-report-applet/micro-fe/projects/wavelet-erp/applets/stock-report-applet/src/app/models/advanced-search-models/stock-report-search.model.ts
+  troubleshooting:
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/state-controllers/internal-consignment-gin-controller/store/effects/internal-consignment-gin.effects.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/components/internal-consignment-gin-container/internal-consignment-gin-create/line-item/line-item-create/search-item/line-search-item-listing.component.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/errorCodesConstants/TntErpErrorCodesConstantsV2.java
+    - gh:bigledger/blg-applet-wavelet-internal-consignment-gin-applet#5
+    - gh:bigledger/blg-wiki#64
 tags:
   - applets
   - consignment
@@ -10,477 +85,232 @@ tags:
 weight: 185
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Consignment GIN (Internal) Applet** is designed to streamline the management of consignment stock issues within your organization. It enables the Sales team to create Goods Issue Notes (GIN) for consignment items, track all consignment issues in a centralized listing, and view detailed line-item information for each transaction.
+The Consignment GIN Applet (Internal) raises a **goods issue note for consignment stock** — stock a supplier (the consignor) has placed at one of your locations and still owns. Finalising a consignment GIN takes the quantity out of the location named on the document and, where your company posts journals for it, reduces the amount recorded against that consignor. It is the outbound mirror of the [Consignment GRN](/applets/inventory-workflow/internal-consignment-grn-applet/), which brought the stock in: the GRN's signums are quantity +1 / amount −1, the GIN's are quantity −1 / amount +1.
 
-{{< callout type="info" >}}
-**Core Concept**: A consignment GIN records the issuance of consignment stock—goods you hold but don't own—to internal locations, customers, or for specific sales activities. This creates an audit trail and updates consignment inventory balances.
-{{< /callout >}}
+Server document type `INTERNAL_PURCHASE_CONSIGNMENT_GIN`, short code `CSGGIN`. The applet does not say *why* stock is being issued — return to the consignor, transfer out, write-off — it only records the issue; your consignment process decides which cases use it and which use the [Consignment Return](/applets/purchase-workflow/internal-consignment-return-applet/) document instead.
 
-## Key Features Overview
+The applet is a single-document applet: one listing, a create/edit form, a cross-document line-item listing, and the standard settings pages. Nothing in the consignment family knocks a consignment GIN off into another document.
 
-### Who Benefits from This Applet?
+## Where it fits
 
-**Sales Representatives:**
+| Direction | Applet / document | Why |
+|---|---|---|
+| Upstream | [Consignment GRN Applet (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) | Brings consignment stock into the location; the GIN can only issue what the location holds (the backend checks the balance on FINAL) |
+| Upstream | [Consignment Purchase Order](/applets/purchase-workflow/internal-consignment-purchase-order-applet/) | The agreement under which the stock arrived; not linked to the GIN by the applet |
+| Upstream | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Only items with the **Consignment Item** flag appear in the GIN's item search |
+| Upstream | [Supplier](/applets/master-data/supplier-applet-1/), [Employee Maintenance](/applets/master-data/employee-applet/) | The consignor is a supplier entity; the Purchaser is an employee entity |
+| Upstream | [Organisation](/applets/master-data/organisation-applet/) | Company, branch and location on the header; the company's posting configuration decides whether FINAL creates a journal |
+| Downstream | [Stock Balance](/applets/inventory-workflow/stock-balance-applet/), [Stock Report](/applets/inventory-workflow/stock-report-applet/) | Show the quantity leaving the location; the Stock Report's document-type filter lists `INTERNAL_PURCHASE_CONSIGNMENT_GIN` |
+| Downstream | [Creditor Report](/applets/finance/creditor-report-applet/), [Debtor and Creditor Report](/applets/finance/debtor-and-creditor-report-applet/) | Treat the GIN as a supplier-side (AP) document: it can be selected for contra in the Creditor Report and is excluded from the debtor side |
+| Sibling | [Consignment Return (Internal)](/applets/purchase-workflow/internal-consignment-return-applet/), [Consignment Billing](/applets/sales-workflow/internal-consignment-billing-applet/), [Consignor Purchase Billing](/applets/purchase-workflow/internal-consignor-purchase-billing-applet/) | The other consignment documents; none of them reads the GIN |
 
-- Create consignment GIN items quickly for customer demos or trial placements
-- Track what has been issued to which customer or location
-- View line-level details for accurate follow-up and reconciliation
+Modules: [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/).
 
-**Sales Managers:**
+## Screens and menus
 
-- Monitor all consignment issues across the team
-- Review consignment stock usage patterns
-- Ensure proper documentation of items released from consignment
+| Menu | Purpose |
+|---|---|
+| **Internal Consignment GIN** | Listing of consignment GINs with create, edit and a bulk **FINAL** button for the selected rows |
+| **Line Items** | One row per active line across all consignment GINs; opening a row opens the parent document |
 
-**Warehouse & Inventory Teams:**
+Gear (Settings) menu, group *System Configuration*: **Application Settings**, **Default Selection**, **Printable Format Settings**. The shared settings shell adds the platform pages (Webhook, Feature Visibility, permission listings, Release Notes, Audit Trail). Personalisation: **Default Selection** and **Sidebar**.
 
-- Maintain accurate consignment inventory records
-- Support physical issuance with proper documentation
-- Reconcile consignment stock levels against GIN records
+### Listing
 
-**Finance & Operations:**
+{{< figure src="/images/internal-consignment-gin-applet/main-listing.png" alt="Internal Consignment GIN listing on a staging tenant" caption="Listing: Consignment GIN No, Posting Status, Branch, Supplier Name, Purchaser, Updated / Created / Transaction Date, Created by. The FINAL button posts every selected DRAFT row." >}}
 
-- Audit trail for consignment consumption
-- Support monthly billing and supplier reconciliation
-- Compliance with consignment agreement tracking
+Columns: Consignment GIN No (`server_doc_1`), Posting Status, Branch, Supplier Name, Purchaser, Updated Date, Created Date, Transaction Date, Created by. Advanced search: Consignment GIN No, Branch Name, Supplier Name, Created Date (from/to), Transaction Date (from/to), Created by. The quick search box matches document number, branch name, supplier name and the creator.
 
-### What Problems Does This Solve?
+### Create / edit form
 
-**The Manual Consignment Tracking Problem:**
+{{< figure src="/images/internal-consignment-gin-applet/create-edit-form.png" alt="Create Internal Consignment GIN form with Main Details, Account and Lines tabs" caption="Create form. Credit Terms stays disabled until a supplier is selected on the Account tab." >}}
 
-Managing consignment stock without a dedicated system leads to:
+Tabs on create: **Main Details**, **Account**, **Lines**, **Payment** (unless `HIDE_MAIN_PAYMENT_TAB`), **Department Hdr** (unless `HIDE_DEPARTMENT_HDR_TAB`). Edit adds **Contra**, **Doc Link**, **Attachments** and **Export** (each hideable by the matching `HIDE_*_TAB` setting), plus **SAVE**, **RESET**, **FINAL** and — for non-final documents when `SHOW_DOCUMENT_DELETE_BUTTON` is on — **DELETE** (two clicks: the first arms a confirmation, the second deletes).
 
-- Lost or missing records of what was issued
-- Difficulty reconciling physical stock with supplier billing
-- No visibility into which items went where
-- Manual spreadsheets prone to errors
+The **Lines** tab has one way to add a line: **Search Item**. Knock-off tabs for sales order, jobsheet, delivery order, purchase order, requisition, quotation, invoice and return exist in the source but are commented out, so a consignment GIN is always keyed in from the item master.
 
-**The Consignment GIN (Internal) Applet Solution:**
+### Line Items
 
-- **Digital documentation** - Create GIN records for every consignment issue
-- **Centralized listing** - View all consignment GIN items in one place
-- **Line-item visibility** - See exactly what items and quantities were issued
-- **Audit compliance** - Complete trail for supplier reconciliation and internal audits
-- **Sales-focused workflow** - Designed for Sales team efficiency
+{{< figure src="/images/internal-consignment-gin-applet/line-items.png" alt="Line Items listing across all consignment GINs" caption="Line Items: Consignment GIN No, Item Code, Item Name, Qty, Unit Price (Inclusive of Tax), SST/VAT/GST, Txn Amount." >}}
 
-## Key Features Overview
+Advanced search: Consignment GIN No., Item Code, Item Name, Txn Amt (range). Only `ACTIVE` lines of `INTERNAL_PURCHASE_CONSIGNMENT_GIN` documents are listed.
 
-{{< cards >}}
-{{< card title="Consignment GIN (Internal) Listing" subtitle="View all consignment GIN documents with advanced search" link="#consignment-gin-listing" >}}
+### Settings
 
-{{< card title="Create & Edit Consignment GIN" subtitle="Record consignment stock issues with header, account, and line details" link="#creating-a-consignment-gin" >}}
+{{< figure src="/images/internal-consignment-gin-applet/settings-page.png" alt="Applet Settings page of the Consignment GIN applet" caption="Settings: Application Settings, Default Selection and Printable Format Settings under System Configuration; the permission pages come from the shared settings shell." >}}
 
-{{< card title="Line Items" subtitle="Dedicated view to search and manage line-level details across all GINs" link="#line-item-listing" >}}
+## Configuration
 
-{{< card title="Settings & Configuration" subtitle="Configure field visibility, default selections, and printable formats" link="#configuration--settings" >}}
-{{< /cards >}}
+### Before you can use it
 
-{{< figure src="/images/internal-consignment-gin-applet/internal-consignment-gin-overview-infographic.png" alt="Consignment GIN (Internal) Applet Overview: The challenges of manual consignment tracking vs the applet solution, and who benefits" caption="From Manual Tracking to Digital Control: The Challenges (lost records, reconciliation difficulty, no visibility, spreadsheet errors) vs The Solution (digital documentation, centralized listing, line-item visibility, audit compliance). Who Benefits: Sales Representatives, Sales Managers, Warehouse & Inventory, Finance & Operations." >}}
+| Prerequisite | Where | Why |
+|---|---|---|
+| Items flagged **Consignment Item** | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | The item search on the Lines tab sends `consignment_flg = true`; an unflagged item cannot be added |
+| Consignment stock at the issuing location | [Consignment GRN](/applets/inventory-workflow/internal-consignment-grn-applet/) | FINAL validates the stock balance by default and rejects lines the location cannot cover |
+| The consignor as a supplier entity, with its AR/AP type set | [Supplier](/applets/master-data/supplier-applet-1/) | The Account tab lists suppliers; if a journal is posted, `AP_TRADE` maps to the `CREDITOR` default GL code and `AP_OTHER` to `CREDITOR_NON_TRADE` |
+| Employee entities | [Employee Maintenance](/applets/master-data/employee-applet/) | The Purchaser picker lists employees |
+| Company, branch and location | [Organisation](/applets/master-data/organisation-applet/) | Branch, company and location are required on the header |
+| Document numbering for `CSGGIN` | Organisation > document numbering | The running number shown as Consignment GIN No |
+| Tax codes (optional) | [Tax Configuration](/applets/master-data/tax-configuration-applet/) | The line's SST/GST/VAT and WHT selectors |
+| Default GL codes `CREDITOR` / `CREDITOR_NON_TRADE`, `PURCHASE`, `INPUT_TAX` — only if the company posts journals for this document | [Chart of Accounts](/applets/master-data/chart-of-account-applet/) | See *Lifecycle and posting*; a missing creditor mapping makes FINAL fail with `MISSING_DEFAULT_GL_CODE` |
+| Printable formats (optional) | Settings > Printable Format Settings | Needed for the Export tab |
+| API permissions | Settings > Permission Set / User / Team / Role | `TNT_API_DOC_INTERNAL_PURCHASE_CONSIGNMENT_GIN_CREATE / READ / UPDATE / DELETE` |
 
-## Key Concepts
+### Applet settings
 
-### Understanding Consignment GIN
+**Settings > Application Settings** routes to the shared field-configuration screen from blg-shared-utilities (`app.routing.ts` maps `field-settings` to the shared `FieldConfigurationComponent`; the applet's own `settings-container/field-configuration` folder is an unrouted stub). The shared screen has no branch for the code `internalConsignmentGINApplet`, so it renders every control that is not fenced off to a named applet, and it saves the whole form into the applet's `APPLET_SETTINGS` extension (`onSave()`, shared ts L2686). Of the keys the applet declares in `applet-settings.model.ts`, the following are rendered by the shared screen **and** read by the applet. All are tenant-wide; only a user who can open the applet's Settings can change them. Every key defaults to *off* (the shared screen patches `undefined` as falsy; the seventeen line-price keys go through `shouldHideSetting()`, which returns `false` for this applet code, shared ts L2333–L2358).
 
-A **Goods Issue Note (GIN)** for consignment stock documents the release of items from consignment inventory. Unlike owned stock, consignment items remain supplier property until consumed or sold.
+| Setting | What it controls | Effect when changed |
+|---|---|---|
+| `HIDE_MAIN_PAYMENT_TAB`, `HIDE_DEPARTMENT_HDR_TAB` | Payment and Department Hdr tabs on create and edit | Tab disappears; existing payment lines are untouched |
+| `HIDE_MAIN_CONTRA_TAB`, `HIDE_DOC_LINK_TAB`, `HIDE_ATTACHMENT_TAB`, `HIDE_EXPORT_TAB` | Contra, Doc Link, Attachments and Export tabs on edit | Tab disappears; `HIDE_EXPORT_TAB` removes the only print path |
+| `HIDE_TRACKING_ID`, `HIDE_PERMIT_NO` | Tracking ID and Permit No on Main Details | Field hidden |
+| `HIDE_SERIAL_NUMBER`, `HIDE_BATCH_NUMBER`, `HIDE_BIN_NUMBER` | The tracking sub-tab of a line (shown only for items of that sub-type) | Hiding the tab does not remove the backend's serial / batch / bin quantity checks on FINAL |
+| `HIDE_COSTING_DETAILS`, `HIDE_PRICING_DETAILS`, `HIDE_ISSUE_LINK` | Costing Details, Pricing Details and Issue Link tabs of a line | `HIDE_COSTING_DETAILS` is overridden per user by the `SHOW_COSTING_DETAILS` permission |
+| `HIDE_DELIVERY_INSTRUCTION`, `HIDE_DEPARTMENT`, `HIDE_DOC_LINK`, `HIDE_DELIVERY_DETAILS` | Sub-tabs under a line's Item Details | Doc Link and Delivery Details only exist in edit mode anyway |
+| `HIDE_UNIT_PRICE_STD_PRICING_SCHEME`, `HIDE_UNIT_PRICE_STD_EXCL_TAX`, `HIDE_UNIT_PRICE_STD_INCL_TAX`, `HIDE_UNIT_DISCOUNT`, `HIDE_QTY_BASE`, `HIDE_QTY_UOM`, `HIDE_UOM_TO_BASE_RATIO`, `HIDE_UNIT_PRICE_STD_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_STD_UOM_INCL_TAX`, `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_NET_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_TXN_UOM_INCL_TAX`, `HIDE_UNIT_PRICE_NET_EXCL_TAX`, `HIDE_AMOUNT_STD_EXCL_TAX`, `HIDE_DISCOUNT_AMOUNT_EXCL_TAX`, `HIDE_AMOUNT_NET_EXCL_TAX`, `HIDE_UNIT_PRICE_TXN`, `HIDE_AMOUNT_TXN` | One price, quantity or amount field each on the line's Main Details | Each is reopened per user by the matching `SHOW_*` client-side permission (see below) |
+| `HIDE_TAX_CONFIG_SELECTION`, `HIDE_WHT_CONFIG_SELECTION` | The tax-code selector with its rate and amount; the WHT selector with its rate and amount | Reopened by `SHOW_TAX_CONFIG_SELECTION` / `SHOW_WHT_CONFIG_SELECTION` |
+| `PRINTABLE` | The printable format pre-selected on the Export tab | Set by choosing a default under Settings > Printable Format Settings (saved into `APPLET_SETTINGS.PRINTABLE`, printable-format effects L179) |
 
-| Concept               | Definition                                                  | Example                                    |
-| --------------------- | ----------------------------------------------------------- | ------------------------------------------ |
-| **Consignment Stock** | Goods physically at your location but owned by the supplier | Display products from a distributor        |
-| **Consignment GIN**   | Document recording the issuance of consignment items        | Issuing demo units to a showroom           |
-| **Line Item**         | Individual item and quantity on a GIN                       | 5 units of Product A, 3 units of Product B |
+Keys read by the applet **without a control on the shared screen for this applet code**: `HIDE_CURRENCY` (read on Main Details, but the shared toggle sits inside blocks fenced to other applets at shared html L1775 and L6136 — it can only be set by another route, such as the API). Keys read **without a model declaration**: `SHOW_DOCUMENT_DELETE_BUTTON` (rendered ungated on the shared screen at L1592, persisted, and read straight from the `APPLET_SETTINGS` extension in `internal-consignment-gin-edit.component.ts` L108 to show DELETE on non-final documents).
 
-{{< callout type="tip" >}}
-**Real-World Example**: A sales rep issues 10 demo units of Product XYZ (WHAT) to ABC Store for a 30-day trial (WHY). The system creates a consignment GIN, reduces the consignment inventory balance, and records the transaction for supplier billing when the trial converts to sale.
-{{< /callout >}}
+Declared but not usable: `HIDE_LAST_PURCHASE_PRICE` has a shared control but nothing in this applet reads it; the `INCLUDE_*` / `ENABLE_*` segment, dimension, profit-centre, project, SST and WHT keys, the `ENABLE_CUSTOM_STATUS_*` keys and `DEFAULT_BRANCH` / `DEFAULT_LOCATION` are in the model but no component reads them (repo commit 04acb95).
 
-### GIN Structure
+**Settings > Default Selection** and **Personalisation > Default Selection** show a Default Branch and Default Location, but neither saves: the component's `save` output has no listener, its `appletSettings$` input is never bound, and no form reads `DEFAULT_BRANCH` or `DEFAULT_LOCATION`. Changing either drop-down throws in the console (`appletContainer` is undefined, default-settings ts L31–L67). New documents therefore always start with an empty Branch and Location.
 
-```
-Consignment GIN Header (Main Details)
-│
-├── Consignment GIN No (auto-generated)
-├── Branch
-├── Transaction Date
-├── Currency
-├── Purchaser
-│
-├── Account (Supplier/Entity)
-│   ├── Bill To address
-│   └── Ship To address
-│
-└── Lines (Line Items)
-    ├── Item 1: Product, Quantity, Serial/Batch/Bin (if applicable)
-    ├── Item 2: Product, Quantity, Pricing Details
-    └── Item 3: Product, Quantity, Issue Link
-```
+### Document behaviour settings
 
-**Flow Through the Hierarchy:**
-
-1. **Main Details**: Captures branch, transaction date, currency, and purchaser
-2. **Account**: Supplier (entity) and billing/shipping addresses
-3. **Lines**: Specific products, quantities, pricing, and optional serial/batch/bin tracking
-4. **Optional Tabs**: Payment, Department Hdr, Contra, Doc Link, Attachments, Export (configurable per tenant)
-
-### Consignment vs. Owned Stock
-
-| Aspect         | Consignment Stock                   | Owned Stock             |
-| -------------- | ----------------------------------- | ----------------------- |
-| **Ownership**  | Supplier owns until used/sold       | Your organization owns  |
-| **Payment**    | Pay when consumed                   | Pay on receipt          |
-| **GIN Impact** | Reduces consignment balance         | Reduces owned inventory |
-| **Billing**    | Supplier bills based on consumption | Already paid            |
-
----
-
-## Quick Start Guide
-
-Get up and running quickly with these essential workflows.
-
-### For Users: Create Your First Consignment GIN
-
-**Goal:** Issue consignment stock and create a proper GIN record in 5 steps.
-
-1. **Navigate**: Go to **Consignment GIN (Internal)** from the sidebar (default landing)
-2. **Create New**: Click the **"+"** (Create) button on the listing
-3. **Main Details Tab**:
-   - Select **Branch** and **Transaction Date**
-   - Choose **Currency**
-   - Select **Purchaser**
-4. **Account Tab**: Select **Supplier** (entity), **Bill To**, and **Ship To** addresses
-5. **Lines Tab**: Click **Add Line** → Select **Item**, enter **Quantity** → Optionally add Serial Number, Batch Number, Bin Number, Pricing Details, or Issue Link
-6. **Create**: Click **CREATE** (or **RESET** to clear)
-
-{{< figure src="/images/internal-consignment-gin-applet/create-edit-form.png" alt="Consignment GIN (Internal) Create/Edit form with Main Details, Account, and Lines tabs" caption="Create Form: Enter Main Details, Account (supplier), and Lines (items) for consignment stock issue" >}}
-
-**What happens next?** The GIN is created and you are taken to the Edit view. Use **FINAL** to post the document when ready.
-
-**Pro Tip:** Ensure items are configured as consignment items and linked to the correct supplier before creating GINs.
-
----
-
-### For Managers: Review Consignment GIN Listing
-
-**Goal:** View and monitor all consignment GIN documents created by your team.
-
-1. **Open Listing**: Go to **Consignment GIN (Internal)** from the sidebar → the main listing opens by default
-2. **Advanced Search**: Use filters for **Consignment GIN No**, **Branch Name**, **Supplier Name**, **Created Date**, **Transaction Date**, or **Created by**
-3. **Review Details**: Click on any row to open the Edit view with full header, account, and line items
-4. **Post Documents**: Select records and click **FINAL** to post GINs
-5. **Export** (Edit tab): Use the Export tab when viewing a GIN to generate printable format PDFs
-
-**What you can do:** Use the listing to track activity, identify high-usage suppliers, and prepare for supplier reconciliation.
-
----
-
-### For Warehouse Staff: Fulfill a Consignment GIN
-
-**Goal:** Physically issue consignment stock and ensure documentation matches.
-
-1. **Receive Notification**: GIN created by Sales (or review pending list)
-2. **Pick Items**: Locate consignment stock and pick quantities per line items
-3. **Verify**: Cross-check quantities and serial numbers against GIN
-4. **Issue**: Release items to requester or shipment
-5. **Confirm**: Ensure GIN status reflects completion in system
-
-**Tip:** Keep the GIN printout or screen open while picking—cross-check each line item before releasing stock.
-
----
-
-### For Admins: Initial System Setup
-
-**Goal:** Get the consignment GIN system ready for the Sales team in 5 steps.
-
-**Step 1: Configure Consignment Items** (`Master Data > Items > [Item] > Consignment`)
-
-- Flag items as consignment and link to the correct supplier
-- Set default consignment location for each item
-
-**Step 2: Set Up Warehouses** (`Master Data > Warehouses` or `Inventory > Locations`)
-
-- Define locations that hold consignment stock
-- Ensure consignment items are allocated to the correct storage areas
-
-**Step 3: Assign Permissions** (`Settings > Permissions` or `Tenant Admin > Roles`)
-
-- Grant Sales reps: Create Consignment GIN, View Consignment GIN
-- Grant Warehouse: View Consignment GIN
-- Grant Finance: View Consignment GIN (for reconciliation)
-
-**Step 4: Verify Consignment Receipt** (if applicable)
-
-- Ensure consignment stock has been received via [Consignment GRN](/guides/purchasing-guides/consignment-purchasing/) before issuing
-- Check consignment inventory balances
-
-**Step 5: Test**
-
-- Create a test consignment GIN as a Sales rep
-- Verify it appears in the listing
-- Confirm line items display correctly
-
-**Ongoing:** Monitor consignment usage and reconcile with supplier billing cycles.
-
----
-
-{{< callout type="tip" >}}
-**New to the system?** Start with the basics:
-
-1. Sales reps should create a test consignment GIN for familiarization
-2. Sales managers should review the listing and filters
-3. Warehouse staff should practice fulfilling a GIN from the pending list
-4. Admins should complete the Initial System Setup above, then review **Configuration & Settings** for detailed options
-   {{< /callout >}}
-
----
-
-## Creating a Consignment GIN
-
-This section covers the detailed process for creating consignment Goods Issue Notes.
-
-### Prerequisites
-
-Before creating a consignment GIN, ensure:
-
-- Consignment items are configured in the system
-- Items are linked to consignment suppliers
-- Consignment stock is available at the issuing location
-- Your user has permission to create consignment GINs
-
-### Step-by-Step: Create Consignment GIN
-
-**Step 1: Main Details Tab**
-
-| Field                | Purpose                | Example      |
-| -------------------- | ---------------------- | ------------ |
-| **Branch**           | Issuing branch         | Main Branch  |
-| **Transaction Date** | Business date of issue | Today's date |
-| **Currency**         | Document currency      | MYR          |
-| **Purchaser**        | Person responsible     | John Smith   |
-
-**Step 2: Account Tab**
-
-| Field        | Purpose                           | Example         |
-| ------------ | --------------------------------- | --------------- |
-| **Supplier** | Entity who owns consignment stock | Supplier ABC    |
-| **Bill To**  | Billing address                   | Select or enter |
-| **Ship To**  | Shipping/delivery address         | Select or enter |
-
-**Step 3: Lines Tab**
-
-For each item being issued:
-
-| Field               | Purpose                              | Example       |
-| ------------------- | ------------------------------------ | ------------- |
-| **Item**            | Consignment product                  | Product XYZ   |
-| **Quantity**        | Units issued (Base/UOM)              | 10            |
-| **Serial Number**   | For serialized items (if enabled)    | SN-12345      |
-| **Batch Number**    | For batch-tracked items (if enabled) | BATCH-001     |
-| **Pricing Details** | Unit price, discount, amounts        | As configured |
-
-**Step 4: Optional Tabs**
-
-- **Payment**: Record payment against the GIN (if tab visible)
-- **Department Hdr**: Add department-level details (if tab visible)
-
-**Step 5: Create and Finalize**
-
-- **CREATE**: Saves the GIN in Draft status and opens the Edit view
-- **FINAL** (from listing or Edit view): Posts the document and updates consignment inventory
-
----
-
-### Edit Form Tabs
-
-When editing a consignment GIN, additional tabs appear (if enabled in Application Settings):
-
-| Tab             | Purpose                                            |
-| --------------- | -------------------------------------------------- |
-| **Contra**      | Link contra documents (e.g., related GRN, invoice) |
-| **Doc Link**    | Link to related documents                          |
-| **Attachments** | Attach files (receipts, supporting documents)      |
-| **Export**      | Generate PDF via printable format                  |
-
-Use **SAVE** to persist changes, **RESET** to discard, or **DELETE** (with confirmation) to remove a draft GIN.
-
----
-
-## Consignment GIN Listing
-
-The listing provides a comprehensive view of all consignment GIN items created.
-
-{{< figure src="/images/internal-consignment-gin-applet/main-listing.png" alt="Consignment GIN (Internal) main listing page showing all consignment GIN records in table format" caption="Main Listing: View all consignment GIN items with filters and search" >}}
-
-### What You Can Do
-
-- View all consignment GINs in a table format
-- Filter by date range, status, location, or creator
-- Search by GIN number, reference, or customer
-- Sort by date, GIN number, or other columns
-- Open any GIN to view full details
-
-### Listing Columns
-
-| Column                 | Description                             |
-| ---------------------- | --------------------------------------- |
-| **Consignment GIN No** | Unique document identifier              |
-| **Posting Status**     | DRAFT or posted status                  |
-| **Branch**             | Issuing branch                          |
-| **Supplier Name**      | Supplier (entity) for consignment stock |
-| **Purchaser**          | Person responsible for the GIN          |
-| **Updated Date**       | Last modification date                  |
-| **Created Date**       | When the GIN was created                |
-| **Transaction Date**   | Business transaction date               |
-| **Created by**         | User who created the GIN                |
-
-### Advanced Search Fields
-
-| Field                  | Description               |
-| ---------------------- | ------------------------- |
-| **Consignment GIN No** | Search by document number |
-| **Branch Name**        | Filter by branch          |
-| **Supplier Name**      | Filter by supplier        |
-| **Created Date**       | Date range (from/to)      |
-| **Transaction Date**   | Date range (from/to)      |
-| **Created by**         | Filter by creator         |
-
----
-
-## Line Item Listing
-
-The **Line Items** navigation provides a dedicated view to search and manage consignment GIN line items across all documents. Access it via **Line Items** in the applet sidebar.
-
-{{< figure src="/images/internal-consignment-gin-applet/line-items.png" alt="Line items page showing individual items and quantities on consignment GINs" caption="Line Items: Search and view item details across all consignment GIN documents" >}}
-
-### Line Item Search Fields
-
-| Field                  | Description                        |
-| ---------------------- | ---------------------------------- |
-| **Consignment GIN No** | Filter by parent GIN document      |
-| **Item Code**          | Search by product code             |
-| **Item Name**          | Search by product name             |
-| **Txn Amt**            | Filter by transaction amount range |
-
-### Line Item Details (per line)
-
-| Field               | Description                          |
-| ------------------- | ------------------------------------ |
-| **Item Code**       | Product identifier                   |
-| **Item Name**       | Product description                  |
-| **Quantity**        | Units issued (Base and UOM)          |
-| **Unit of Measure** | UOM (e.g., EA, Box)                  |
-| **Serial Number**   | For serialized items (if enabled)    |
-| **Batch Number**    | For batch-tracked items (if enabled) |
-| **Bin Number**      | Storage location (if enabled)        |
-| **Pricing Details** | Unit price, discount, amounts        |
-| **Issue Link**      | Link to source documents             |
-
-### Viewing Line Items
-
-**Option 1: From a GIN record**
-
-1. Open the **Consignment GIN (Internal)** listing and click on a GIN row
-2. In the Edit view, go to the **Lines** tab
-3. Add, edit, or view line items for that GIN
-
-**Option 2: Dedicated Line Items view**
-
-1. Click **Line Items** in the sidebar
-2. Use Advanced Search to filter by GIN No, Item Code, Item Name, or Txn Amt
-3. Click a row to open the parent GIN in edit mode
-
----
-
-## Configuration & Settings
-
-Administrators configure the Consignment GIN (Internal) Applet via **Settings** in the applet sidebar. The following settings are available:
-
-### Settings Menu Structure
-
-| Setting                                   | Purpose                                     |
-| ----------------------------------------- | ------------------------------------------- |
-| **Application Settings** (Field Settings) | Configure which fields and tabs are visible |
-| **Default Selection**                     | Set default values for new documents        |
-| **Printable Format Settings**             | Configure export/print templates            |
-| **Webhook**                               | Configure webhooks for integrations         |
-| **Feature Visibility**                    | Control feature visibility                  |
-| **Permissions**                           | User, Team, and Role permission listings    |
-| -----------------                         | ------------------------------------------  |
-
-{{< figure src="/images/internal-consignment-gin-applet/settings-page.png" alt="Consignment GIN (Internal) Settings page showing Application Settings, Default Selection, and other configuration options" caption="Configuration & Settings: Access detailed applet configuration via the Settings menu" >}}
-
-### Configurable Tabs (Application Settings)
-
-The following tabs can be shown or hidden per tenant via **Settings > Application Settings**:
-
-| Tab                | Description                      | Default |
-| ------------------ | -------------------------------- | ------- |
-| **Payment**        | Record and manage payments       | Visible |
-| **Department Hdr** | Department-level details         | Visible |
-| **Contra**         | Link contra documents            | Visible |
-| **Doc Link**       | Link related documents           | Visible |
-| **Attachments**    | Attach files                     | Visible |
-| **Export**         | Export to printable format (PDF) | Visible |
-
-### Consignment Item Setup
-
-**Navigation**: `Master Data > Items > [Item] > Consignment`
-
-Before creating consignment GINs, ensure items are properly configured:
-
-| Setting                  | Purpose                         | Example          |
-| ------------------------ | ------------------------------- | ---------------- |
-| **Consignment Item**     | Flag item as consignment        | Checked          |
-| **Consignment Supplier** | Link to supplier who owns stock | Supplier ABC     |
-| **Consignment Location** | Default storage location        | Consignment Area |
-
-### Warehouse/Location Setup
-
-**Navigation**: `Master Data > Warehouses` or `Inventory > Locations`
-
-- Define locations that hold consignment stock
-- Ensure consignment items are allocated to correct locations
-- Set up consignment-specific storage areas if needed
-
-### User Permissions
-
-**Navigation**: `Settings > [Permission Set / User / Team / Role Permission Listing]`
-
-| Permission                 | Description                | Typical Role            |
-| -------------------------- | -------------------------- | ----------------------- |
-| **Create Consignment GIN** | Create new GIN records     | Purchaser, Sales Rep    |
-| **View Consignment GIN**   | Access listing and details | Purchaser, Warehouse    |
-| **Edit Consignment GIN**   | Modify draft GINs          | Purchaser, Manager      |
-| **Delete Consignment GIN** | Delete draft GINs          | Manager (if applicable) |
-
-### Integration with Consignment Purchasing
-
-The Consignment GIN (Internal) Applet integrates with:
-
-- **Consignment Receipt/GRN** - Stock received into consignment
-- **Consignment Inventory** - Current balances
-- **Consignment Reconciliation** - Monthly billing and supplier settlement
-
-Ensure the [Consignment Purchasing](/guides/purchasing-guides/consignment-purchasing/) process is properly configured for end-to-end tracking.
-
----
-
-## FAQ
-
-**Q: Where do I find the Consignment GIN (Internal) Applet?**
-A: Go to **Consignment GIN (Internal)** in the sidebar (typically under Inventory or Purchasing, depending on your tenant setup). If you don't see it, your role may not have access—contact your administrator.
-
-**Q: What is the difference between a consignment GIN and a regular GIN?**
-A: A consignment GIN issues items from consignment inventory (supplier-owned stock at your location). A regular GIN issues your owned inventory. Consignment GINs reduce consignment balances and feed into supplier billing when you're charged for consumed items.
-
-**Q: Can I edit a consignment GIN after submitting it?**
-A: It depends on your system configuration. Draft GINs can usually be edited. Once submitted or completed, changes may be restricted—check with your administrator. If you need to correct a completed GIN, you may need to create a reverse/adjustment entry.
-
-**Q: Can I create a consignment GIN if I don't have consignment stock?**
-A: No. The system validates stock availability at the issuing location. If you get an error, check the consignment inventory balance for that item and location. Stock must be received via a Consignment GRN first.
-
-**Q: How do I find a specific consignment GIN I created?**
-A: Open the Consignment GIN (Internal) Listing and use **Advanced Search**: filter by Consignment GIN No, Branch Name, Supplier Name, Created Date, Transaction Date, or Created by.
-
-**Q: How does a consignment GIN affect supplier billing?**
-A: Each consignment GIN reduces your consignment inventory. When the supplier sends a consumption invoice (typically monthly), it's based on these GIN transactions. Finance uses the GIN records to reconcile and verify the invoice.
+| Setting | Effect |
+|---|---|
+| `SHOW_DOCUMENT_DELETE_BUTTON` | Adds DELETE to the edit form for documents that are not `FINAL` |
+| `HIDE_EXPORT_TAB`, `PRINTABLE` | Whether the Export tab exists and which format it pre-selects |
+| `HIDE_SERIAL_NUMBER`, `HIDE_BATCH_NUMBER`, `HIDE_BIN_NUMBER` | Whether users can enter tracking details; the backend still validates them on FINAL |
+
+There is no setting that hides or forces FINAL, no auto-final, no VOID button, no approval workflow, no stock-validation toggle (the backend validates by default) and no e-Invoice submission for this document (repo commit 04acb95, routes and settings components checked).
+
+### Settings in other applets that control this applet
+
+| Setting | Where it is set | Effect here |
+|---|---|---|
+| **Consignment Item** flag (`consignment_flg`) | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), item header | Only flagged items are listed by the Lines tab's Search Item (`line-search-item-listing.component.ts` L90) |
+| Supplier AR/AP type (`AP_TRADE` / `AP_OTHER`) | [Supplier](/applets/master-data/supplier-applet-1/) | Picks `CREDITOR` or `CREDITOR_NON_TRADE` as the entity side of the journal, when one is posted (`JournalPostingService` L84, L1561–L1575) |
+| Company `posting_final_json` include / exclude list and job-template subscriptions | [Organisation](/applets/master-data/organisation-applet/) / platform | Decide which processors (stock, journal, webhook…) run on FINAL for this company (`GenericDocumentPrimaryProcessor` L71–L112) |
+| Fiscal period status `LOCK_TXN` / `LOCK_ALL` | Organisation > fiscal years | FINAL is rejected with `FISCAL_PERIOD_LOCKED` when the transaction date falls in a locked period; consignment GINs are not exempt (`GenericDocumentService` L1682–L1695) |
+| Company default GL codes | [Chart of Accounts](/applets/master-data/chart-of-account-applet/) | Used by the fallback purchase journal (see below) |
+
+### Feature visibility / permissions
+
+`bl_applet_client_side_perm_dfn` holds **no rows** for `internalConsignmentGINApplet` (checked 2026-09-05), so nothing can be reopened per role from the registry. The code nevertheless checks these client-side codes on the line's Main Details, each overriding the matching `HIDE_*` setting when granted: `SHOW_UNIT_PRICE_STD_PRICING_SCHEME`, `SHOW_UNIT_PRICE_STD_EXCL_TAX`, `SHOW_UNIT_PRICE_STD_INCL_TAX`, `SHOW_UNIT_DISCOUNT`, `SHOW_QTY_BASE`, `SHOW_QTY_UOM`, `SHOW_UOM_TO_BASE_RATIO`, `SHOW_UNIT_PRICE_STD_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_STD_UOM_INCL_TAX`, `SHOW_UNIT_DISCOUNT_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_NET_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_TXN_UOM_INCL_TAX`, `SHOW_UNIT_PRICE_NET_EXCL_TAX`, `SHOW_AMOUNT_STD_EXCL_TAX`, `SHOW_DISCOUNT_AMOUNT_EXCL_TAX`, `SHOW_AMOUNT_NET_EXCL_TAX`, `SHOW_TAX_CONFIG_SELECTION`, `SHOW_WHT_CONFIG_SELECTION`, `SHOW_UNIT_PRICE_TXN`, `SHOW_AMOUNT_TXN`, and `SHOW_COSTING_DETAILS` on the line tabs. They take effect only once seeded for this applet.
+
+Server-side, create / read / update / delete of the document are governed by `TNT_API_DOC_INTERNAL_PURCHASE_CONSIGNMENT_GIN_CREATE_TGT_GUID`, `_READ_TGT_GUID`, `_UPDATE_TGT_GUID` and `_DELETE_TGT_GUID` (`TntErpPermissions` L7335–L7343), assigned through the Permission Set / User / Team / Role pages; the permission resolver offers Company, Branch, Location, Entity, Item and the other standard targets.
+
+## Fields
+
+### Main Details
+
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Branch | Issuing branch | Yes | Sets Company; locked once the document is `FINAL` |
+| Location | Location the stock leaves | Yes | Stock and serial / batch / bin checks run against this location |
+| Purchaser | Employee responsible | No | Picker lists employee entities (Employee ID, name, phone) |
+| Transaction Date | Business date | No (defaults to today) | Checked against the fiscal-period lock on FINAL; locked once `FINAL` |
+| Credit Terms | Terms from the supplier | Yes | Disabled until a supplier is chosen on Account ("Entity ID must be selected first"); drives Due Date |
+| Due Date | Derived from Credit Terms | No | Date picker |
+| Reference, Remarks | Free text | No | Remarks become the journal description of the entity line, if one is posted |
+| Permit No, Tracking ID | Free text | No | Hidden by `HIDE_PERMIT_NO` / `HIDE_TRACKING_ID` |
+| Currency | Document currency | Yes | Defaults to the company base currency; hidden by `HIDE_CURRENCY`; locked once `FINAL` |
+
+### Account
+
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Entity Id | The consignor (supplier entity) | Yes | Picker lists supplier entities; the rest of the tab (Status, Identity Type, Currency, Description, Phone Number, Entity Name, Entity Type, ID Number, GL Code, Email) is read-only from the entity |
+| Bill To, Ship To | Billing and shipping addresses of the supplier | No | Chosen from the entity's address list |
+
+### Lines
+
+Add a line with **Search Item** (consignment items only; the grid shows Item Code, Item Name and a *System Stock Balance* column), then complete the line's tabs.
+
+| Field (Item Details > Main Details) | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Item Code, Item Name | From the item master | — | Read-only |
+| Pricing scheme / UOM | Scheme and unit of measure | No | `HIDE_UNIT_PRICE_STD_PRICING_SCHEME` |
+| Unit Price STD (excl. / incl. tax), by UOM variants | Standard prices | — | Read-only, from the pricing scheme |
+| Unit Discount, Unit Discount by UOM | Discount per unit | No | — |
+| Quantity Base | Quantity issued in base UOM | Yes | Must match the serial / batch / bin quantities entered |
+| Quantity by UOM, UOM to Base Ratio | Quantity in the selected UOM | No | Ratio is read-only |
+| STD Amount, Discount Amount, Amount Net | Computed amounts | Yes (net) | Read-only |
+| SST/GST/VAT code, rate, Tax Amount | Tax on the line | No | `HIDE_TAX_CONFIG_SELECTION`; from [Tax Configuration](/applets/master-data/tax-configuration-applet/) |
+| WHT code, rate, WHT Amount | Withholding tax | No | `HIDE_WHT_CONFIG_SELECTION` |
+| Unit Price Transaction (incl. tax), Txn Amount | Transaction price and amount | Yes (Txn Amount) | The Txn Amount is what leaves the company's cost pool (see *Lifecycle and posting*) |
+| Remarks | Line remarks | No | Becomes the journal line description, if posted |
+
+Other line tabs: **Serial Number** (list, import, scan), **Batch Number** (batch no, quantity ≥ 1, issue date and expiry date all required), **Bin Number** (bin code, container measure, container quantity, quantity ≥ 1 all required) — one of the three appears according to the item's sub-type; **Costing Details**; **Pricing Details** (sales and purchase min / max / unit prices, all required when edited); **Issue Link** (link the line to an Issue Tracker issue). Item Details sub-tabs: **Delivery Instruction**, **Department**, **Doc Link** and **Delivery Details** (the last two in edit mode only).
+
+### Payment, Contra, Department Hdr
+
+**Payment** records settlement lines against the document (date and amount ≥ 0.01 required; card, voucher, transfer, cheque and points methods ask for their reference fields). Settlement lines are saved as lines of the same document. **Contra** (edit only) offsets the document against another `ACTIVE` document of the same entity; the contra amount must not exceed that document's AR/AP balance (`add-contra.component.ts` L83–L84). **Department Hdr** tags the header with a department.
+
+## Lifecycle and posting
+
+| Status (`posting_status`) | Meaning | Allowed next |
+|---|---|---|
+| `DRAFT` | Saved; editable; deletable when `SHOW_DOCUMENT_DELETE_BUTTON` is on | `FINAL` |
+| `FINAL` | Posted; header and lines locked | — (the applet has no VOID button) |
+
+FINAL is sent from the edit form's **FINAL** button or from the listing's bulk **FINAL** (every selected row that is not already `FINAL`), as a posting-status update carrying only `{ posting_status: 'FINAL' }` (`edit` ts L214–L231; `listing` ts L265–L284; effects L519–L536). Because the request carries no `validate_stock_balance` flag, the backend validates stock (`GenericDocumentService` L390–L392 defaults it to `true`). A finalised consignment GIN cannot be reversed from this applet: no VOID action exists in the code, so the only correction path is a compensating [Consignment GRN](/applets/inventory-workflow/internal-consignment-grn-applet/).
+
+Posting proof (backend at commit 871dbf5c96):
+
+| Item | Value | Source |
+|---|---|---|
+| Server document type | `INTERNAL_PURCHASE_CONSIGNMENT_GIN` (short code `CSGGIN`) | `InternalPurchaseConsignmentGinDataConsistencyObject` L15; `GenericDocServerDocTypeEnum` L59 |
+| Amount signum | **+1** | DCO L16; `ServerDocTypes` L40 |
+| Quantity signum | **−1** (stock out) | DCO L17; `ServerDocTypes` L40 |
+| Create / update validation | Server doc type must match (`GENERIC_DOC_HDR_INVALID_SERVERDOCTYPE`) and header amount signum must be +1 (`GENERIC_DOC_INVALID_SIGNUM`); line signums are filled in server-side | DCO L20–L43; `GenericDocumentDataConsistencyObject` L1189–L1213 |
+| FINAL validation | Stock balance at the location for every basic-item line (`STOCK_BALANCE_OBJECT_NO_STOCK_AT_LOCATION`), serial / batch / bin quantities, fiscal-period lock (`FISCAL_PERIOD_LOCKED`, no exemption for this type) | `GenericDocumentService` L1627–L1700, L2062–L2216 |
+| Stock processor | Quantity × −1 posted against the header location; the document type is in `MA_WA_SERVER_DOC_TYPES`, so the line's Txn Amount (× signum) is subtracted from the company's moving-average cost pool and counts in the weighted-average calculation | `StockBalanceHelper` L40–L42, L166–L170, L217–L221; `BackdatedInvTxnLineService` L80 |
+| Journal | Only if the company's job-template subscriptions and `posting_final_json` run the journal processor for this document. The type has **no handler of its own**: `JournalPostingService` falls back to the generic `PURCHASE` handler because the name contains "PURCHASE" | `JournalPostingService` L64–L81; `JournalPostingTypeHandler` L53–L63; `GenericDocumentPrimaryProcessor` L71–L112 |
+| Dr/Cr equation (when posted) | Line amount × amount signum (+1) → **credit** the purchase side (`PURCHASE`; tax lines → `INPUT_TAX`); the balancing entity line is a **debit** to `CREDITOR` (`AP_TRADE`) or `CREDITOR_NON_TRADE` (`AP_OTHER`) — a reduction of what you owe the consignor | `JournalPostingService` L95–L128, L318–L345, L1561–L1575 |
+| GL precedence | line GL → header GL → item-company link → company default; an unmapped creditor default throws `MISSING_DEFAULT_GL_CODE: CREDITOR` | `JournalPostingService` L189–L190, L338–L340 |
+| What VOID reverses | Not reachable from this applet (no VOID action in the code) | repo commit 04acb95 |
+
+Two consequences worth knowing. First, the cost pool moves by the **document's Txn Amount**, not by the running moving-average cost: a consignment GIN keyed at a price other than the current moving-average price shifts the item's moving-average price for everything left in stock. Second, unlike its GRN and Return siblings — which post to `CONSIGNMENT_LIABILITY` / `CONSIGNMENT_STOCK` because they are in the backend's consignment list (`JournalPostingService` L64–L66) — the GIN is **not** in that list, so a posted GIN hits the ordinary creditor and purchase accounts.
+
+## Related applets
+
+- [Consignment GRN Applet (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) — the inbound half; brings the consignment stock the GIN issues.
+- [Consignment Return (Internal)](/applets/purchase-workflow/internal-consignment-return-applet/) — the other outbound consignment document; it posts to the consignment liability and stock accounts, the GIN does not.
+- [Consignment Purchase Order](/applets/purchase-workflow/internal-consignment-purchase-order-applet/) — the agreement the stock arrived under.
+- [Consignment Billing](/applets/sales-workflow/internal-consignment-billing-applet/) and [Consignor Purchase Billing](/applets/purchase-workflow/internal-consignor-purchase-billing-applet/) — the billing documents of the consignment family; neither reads a consignment GIN.
+- [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — the Consignment Item flag that gates the item search.
+- [Supplier](/applets/master-data/supplier-applet-1/) and [Employee Maintenance](/applets/master-data/employee-applet/) — the consignor and the purchaser.
+- [Organisation](/applets/master-data/organisation-applet/) — branch, location, document numbering, fiscal periods and the posting configuration.
+- [Tax Configuration](/applets/master-data/tax-configuration-applet/) and [Chart of Accounts](/applets/master-data/chart-of-account-applet/) — line tax codes and the default GL codes used if a journal is posted.
+- [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) and [Stock Report](/applets/inventory-workflow/stock-report-applet/) — where the issued quantity shows up.
+- [Creditor Report](/applets/finance/creditor-report-applet/) and [Debtor and Creditor Report](/applets/finance/debtor-and-creditor-report-applet/) — list the GIN among supplier-side documents.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| FINAL fails with *Unable to post the document to FINAL: There's not enough stock for item …* | `STOCK_BALANCE_OBJECT_NO_STOCK_AT_LOCATION`: the header Location holds less than the line quantity (`GenericDocumentService` L2213–L2216; message rewritten by effects L553–L555) | Check [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) for that item and location; receive the stock with a Consignment GRN first, or change the Location |
+| FINAL fails with *The selected date falls within a locked fiscal period* | `FISCAL_PERIOD_LOCKED`; consignment GINs are not exempt from `LOCK_TXN` / `LOCK_ALL` | Move the Transaction Date into an open period or reopen the period in Organisation |
+| FINAL fails with a serial-number message | `BL_INV_SERIAL_NUMBER_HDR_OBJECT_SERIAL_NUMBER_DOES_NOT_EXIST_AT_LOCATION`, `GENERIC_DOC_LINE_QTY_BASE_AND_SERIAL_NUMBER_QTY_DOES_NOT_MATCH` or `GENERIC_DOC_LINE_SERIAL_NUMBER_ID_IS_DUPLICATED` (`TntErpErrorCodesConstantsV2`) | Enter exactly as many serial numbers as Quantity Base, each present at the Location and listed once |
+| FINAL fails with `MISSING_DEFAULT_GL_CODE: CREDITOR` (or `CREDITOR_NON_TRADE`) | The company runs the journal processor for this document and has no default GL code mapped for the supplier's AR/AP type (`JournalPostingService` L338–L340) | Map the code in [Chart of Accounts](/applets/master-data/chart-of-account-applet/), or exclude the journal processor for this document type in the company's posting configuration if a consignment GIN should not post |
+| The item you want is not in Search Item | The item search is filtered to `consignment_flg = true` | Tick **Consignment Item** on the item in [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) |
+| Credit Terms is greyed out and CREATE stays disabled | Credit Terms is required and is enabled only after a supplier is selected on the Account tab (`main-details.component.ts` L55, L104–L107) | Select the Entity Id first |
+| No DELETE button on a draft | `SHOW_DOCUMENT_DELETE_BUTTON` is off, or the document is already `FINAL` | Switch the setting on under Application Settings; a `FINAL` document cannot be deleted |
+| No VOID button on a finalised GIN | The applet has no VOID action | Post a compensating Consignment GRN |
+| Default Branch / Location chosen under Settings > Default Selection never appear on new documents | The Default Selection screens do not save (no listener on `save`, `appletContainer` undefined) | Choose Branch and Location on each document; report the screen if you rely on it |
+| Moving-average cost of the item jumped after a GIN | The GIN's Txn Amount, not the running average, left the cost pool (`StockBalanceHelper` L166–L170) | Key consignment GINs at the agreed consignment price consistently; check with Stock Report cost columns before month-end |
+| *This document has been posted* toast on FINAL | The document was already `FINAL` (`edit` ts L226–L229) | Nothing to do; refresh the listing |
+
+Known housekeeping: the applet is still on the pre-Angular-14 toolchain (open migration issue) and its FINAL error handler passes two arguments to `String.includes()` (effects L544), so only `FISCAL_PERIOD_LOCKED` is matched by that clause; the other codes are still matched by the following clauses.
+
+## Related documentation
+
+- [Consignment Purchasing guide](/guides/purchasing-guides/consignment-purchasing/) — the end-to-end process the GIN belongs to.
+- [Purchasing module](/modules-v2/purchasing/) and [Inventory module](/modules-v2/inventory/).

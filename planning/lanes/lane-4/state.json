@@ -5,9 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/master-data/group-maintenance-V2-applet.md",
-  "content/en/applets/master-data/group-maintenance-applet.md",
-  "content/en/applets/master-data/installation-of-group-maintenance-applet.md",
   "content/en/applets/inventory-workflow/internal-consignment-gin-applet.md",
   "content/en/applets/inventory-workflow/internal-consignment-grn-applet.md",
   "content/en/applets/inventory-workflow/internal-goods-dispatch-note-applet.md",
@@ -81,7 +78,19 @@
   },
   {
    "page": "content/en/applets/inventory-workflow/delivery-installation-applet-V2-applet.md",
-   "reason": "Second page for registry row delivery-installation-applet (route applet/wavelet/erp/logistic/delivery-installation-applet); the canonical page delivery-installation/delivery-installation-applet.md is in lane 3's queue. Not rewritten — same situation as F-0050; merge/alias decision for Vincent, facts for lane 3 in findings.md run 5."
+   "reason": "Second page for registry row delivery-installation-applet (route applet/wavelet/erp/logistic/delivery-installation-applet); the canonical page delivery-installation/delivery-installation-applet.md is in lane 3's queue. Not rewritten \u2014 same situation as F-0050; merge/alias decision for Vincent, facts for lane 3 in findings.md run 5."
+  },
+  {
+   "page": "content/en/applets/master-data/group-maintenance-V2-applet.md",
+   "reason": "No ACTIVE registry row for Group Maintenance under any name (registry-applets-2026-09-05.tsv: only GroupApplet 'Groups' ROOT-USER DELETED and newTeamMaintenanceApplet 'Team Maintenance' DELETED). Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 9."
+  },
+  {
+   "page": "content/en/applets/master-data/group-maintenance-applet.md",
+   "reason": "No ACTIVE registry row for Group Maintenance under any name (registry-applets-2026-09-05.tsv: only GroupApplet 'Groups' ROOT-USER DELETED and newTeamMaintenanceApplet 'Team Maintenance' DELETED). Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 9."
+  },
+  {
+   "page": "content/en/applets/master-data/installation-of-group-maintenance-applet.md",
+   "reason": "No ACTIVE registry row for Group Maintenance under any name (registry-applets-2026-09-05.tsv: only GroupApplet 'Groups' ROOT-USER DELETED and newTeamMaintenanceApplet 'Team Maintenance' DELETED). Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 9."
   }
  ],
  "updated": "2026-09-05",
