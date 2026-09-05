@@ -32,5 +32,12 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
    initial value. GL precedence is line GL → header GL → item-company link → company default.
 6. **Direction claims in old pages are often inverted.** Trust the signum constants over the
    existing prose, and record every reversal in findings.md so the guides get corrected too.
-7. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+7. **Four-proof pitfalls found in the PI rework (lane 2, run 5):** (a) checkboxes *nested* inside
+   gated `*ngIf` blocks are rendered even though the nearest-`*ngIf` heuristic says no; (b) keys
+   consumed through indirection (`panel.expandSetting`, key lists) are not found by grepping the
+   key name — grep the accessor; (c) a key can pass all four proofs through *another* listing's
+   Default Selection (e.g. `PRINTABLE`). Also: the shared screen's `shouldHideSetting()` pre-selects
+   per-applet hidden defaults, but the document form reads stored values — a fresh tenant sees
+   everything until the first Save of Application Settings persists them. Document that failure mode.
+8. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.
