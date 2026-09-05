@@ -1,6 +1,106 @@
 ---
-title: "Merchant Applet"
-description: "Comprehensive management system for platform merchant onboarding, administration, and contract lifecycle management"
+title: "Merchant Admin"
+description: "Reference for the Merchant Admin applet — the merchant view of the shared entity master (payment-gateway merchant code and key, Peppol IDs, logins, return URLs, tax, bank details, addresses, contacts, company links, merchant branches, credit terms and limits, logo), merchant contracts with rate cards and charge rates, the monthly merchant transaction summary report, and the entity event audit trail."
+applet_code: "MerchantAdminApplet"
+applet_repo: "blg-applet-akaun-platform-merchant-applet"
+modules: [core, ecommerce, e-invoice]
+related_applets: [entity-applet, customer-maintenance-applet, supplier-applet-1, employee-applet, organisation-applet, tax-configuration-applet, cashbook-applet, chart-of-account-applet, mypeppol-admin-applet, my-e-invoice-admin-applet, seller-admin-applet, tenant-admin-applet]
+guides: []
+sources:
+  configuration:
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/app.routing.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/models/menu-items.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/models/merchant-constant.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/settings-container/settings-container.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/settings-container/field-configuration/field-configuration.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-create/merchant-create.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-create/merchant-create.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/shared-utilities/session-controller/effects/session.effects.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/shared-utilities/modules/settings/settings.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/resolver/permission.resolver.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/entity/EntityController.java
+    - akaun_master.bl_applet_client_side_perm_dfn (applet MerchantAdminApplet — no rows)
+  fields:
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-listing/merchant-listing.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-create/merchant-create.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-create/merchant-create.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-edit.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-edit.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/peppol-config/peppol-id-link/peppol-id-link-details/peppol-id-link-main-details/peppol-id-link-main-details.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/peppol-config/peppol-id-link/peppol-id-link-details/peppol-id-link-main-details/peppol-id-link-main-details.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/peppol-config/notification-config/notification-config.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-login/login-create/login-create.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-login/login-create/login-create.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-contract/create-contract/create-contract.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-returnURL/merchant-create-returnURL/merchant-create-returnURL.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-returnURL/merchant-create-returnURL/merchant-create-returnURL.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-tax-billing/merchant-create-tax/merchant-create-tax.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-tax-billing/merchant-create-tax/merchant-create-tax.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-payment-config/merchant-create-payment/merchant-create-payment.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-payment-config/merchant-create-payment/merchant-create-payment.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-address/merchant-add-address/merchant-add-address.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-contacts/merchant-contacts-add/merchant-contacts-add.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-company/entity-company-listing/merchant-company-create/merchant-company-create.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-company/entity-company-listing/merchant-company-create/merchant-company-create.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-intercompany-branch/intercompany-branch-create/intercompany-branch-create.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-intercompany-branch/intercompany-branch-create/intercompany-branch-create.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/credit-termslimits-main/credit-terms-edit/credit-terms-edit.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/credit-limits-main/credit-limits-edit/credit-limits-edit.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-logo/merchant-add-logo/merchant-add-logo.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/contract-container/contract-listing/contract-listing.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/contract-container/contract-create/contract-create.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/contract-container/contract-create/contract-create.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/contract-container/contract-edit/contract-edit.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/contract-container/contract-edit/contract-edit.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/contract-container/contract-edit/edit-rate-card/create-rate-card/create-rate-card.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/contract-container/contract-edit/edit-rate-card/create-charge-rate/create-charge-rate.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/contract-container/contract-edit/edit-rate-card/create-charge-rate/create-charge-rate.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/contract-container/contract-edit/edit-rate-card/payment-channel-listing/payment-channel-listing.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/report-container/report-listing/report-listing.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/report-container/report-view/report-view.component.html
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/audit-trail-container/contract-listing/audit-trail-listing.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/shared-utilities/models/entity-constant.model.ts
+  lifecycle:
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/state-controllers/merchant-controller/effects/merchant.effects.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/facades/view-column.facade.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/entity-services/merchant.service.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/pgw/merchant-contract.service.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/pgw/ratecard.service.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/pgw/ratecharge.service.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/pgw/merchant-txn-report.service.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/entity/EntityController.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/bl_fi_mst_entity_hdr.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/entitydataconsistencyobjects/EntityDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/EntityUows/EntityUow.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/merchant/PgwMerchantContractHdrController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/pgw/PgwMerchantContractHdrService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/MerchantContractDataConsistencyObjects/PgwMerchantContractHdrDataConsistencyObject.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/merchant/PgwMerchantRateCardController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/merchant/PgwMerchantRateHdrController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/pgw/PgwMerchantMonthlyReportController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/pgw/PgwMerchantMonthlyReportProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/JobProcessorClassName.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/pgw/my/IPay88Controller.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/pgw/PgwBackendController.java
+  troubleshooting:
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-create/merchant-create.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-edit.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/merchant-admin-container/merchant-edit/merchant-login/login-create/login-create.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/contract-container/contract-create/contract-create.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/contract-container/contract-edit/contract-edit.component.ts
+    - blg-applet-akaun-platform-merchant-applet/micro-fe/projects/akaun-platform/applets/merchant-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/entitydataconsistencyobjects/EntityDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/MerchantContractDataConsistencyObjects/PgwMerchantContractHdrDataConsistencyObject.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/pgw/PgwMerchantMonthlyReportProcessor.java
+    - gh:bigledger/blg-applet-akaun-platform-merchant-applet#1
+    - gh:bigledger/blg-applet-akaun-platform-merchant-applet#2
+    - gh:bigledger/blg-int-marketing#710
+    - gh:bigledger/blg-int-marketing#601
+    - gh:bigledger/blg-wiki#168
 tags:
 - master-data
 - merchant-management
@@ -10,709 +110,287 @@ tags:
 weight: 150
 ---
 
-{{< callout type="warning" >}}
-**Work in Progress: This documentation is currently pending review**
-{{< /callout >}}
+## Overview
 
-## Purpose and Overview
+Merchant Admin is the **merchant view of BigLedger's shared entity master**. A merchant is a row in the same `bl_fi_mst_entity_hdr` table that holds customers, suppliers and employees, with the `is_merchant` flag set and two payment-gateway credentials of its own — a **PGW Merchant Code** and a **Merchant Key**. This applet is where you create that row, attach everything the platform needs to deal with the merchant (Peppol participant IDs, portal logins, checkout return URLs, tax codes, bank accounts, addresses, contacts, company links, merchant branches, credit terms and limits, a logo) and then write the commercial side as **merchant contracts**, each with rate cards, payment channels and charge rates.
 
-{{< callout type="tip" >}}
-**TL;DR — Read this first.**
-
-**What is a Merchant?** Think of a **merchant** like a **shop registered inside a shopping mall**. The mall (your platform) needs to know who each shop is, what their terms are, and how money flows to them. You can't just let anyone sell without a signed agreement and a way to route their payments.
-
-That is what this applet manages. Every business or partner that operates on your platform is a **Merchant**. Before they can transact, you need to:
-1. Register their identity (who they are, what company they belong to)
-2. Set up their payment gateway credentials (so money gets routed correctly)
-3. Formalize the relationship with a **Contract** (what rates apply, how long the agreement lasts)
-
-Without this applet, onboarding a new merchant would mean emails, spreadsheets, and manually configuring payment systems — with no audit trail of who approved what or when.
-
-This applet is the single place where platform administrators register merchants, configure their technical credentials, and track the formal contracts that govern those relationships.
-
-Once a merchant is registered here, that record does not stay isolated — it flows into several downstream applets automatically. The Peppol ID you configure here is what the E-Invoice applets use to send documents through the government network. The credit limits you set here are what the AR applet enforces when the merchant owes money. The GL codes and tax codes attached to the merchant's branch are what the General Ledger and Tax applets post against. You set it up once here; everywhere else just reads it.
-
-**Is this the same as the Organization Applet?** No — and this is a common point of confusion:
-
-| Applet | POV | Who it manages |
-|--------|-----|---------------|
-| **Organization Applet** | Internal | Your own company's structure — your branches, departments, staff |
-| **Merchant Applet** | External-facing | Outside businesses that use your platform to accept payments |
-
-You are the mall. The Organization Applet manages your own mall offices and departments. The Merchant Applet manages the shops that rent space and plug into your payment infrastructure. A merchant is never your own branch — they are an external partner with their own bank account, their own payment gateway credentials, and a signed contract with you.
-{{< /callout >}}
-
-The **Merchant Applet** is the administrative hub for onboarding and managing every merchant on the platform. It handles the full lifecycle — from creating a merchant identity and configuring payment gateway credentials, through to managing contracts and auditing every change made to a merchant record.
+It is opened by the platform or finance administrator who onboards partner businesses that sell or collect payments through the tenant — an e-commerce arm running third-party sellers, or a group company that operates its own payment gateway. Upstream it needs companies, tax codes and settlement methods; downstream the payment-gateway callbacks, the Peppol / e-Invoice applets and the monthly merchant transaction report read what is saved here.
 
 {{< callout type="info" >}}
-**Core Concept**: A **Merchant** represents a distinct partner entity identified by a unique **Merchant ID**, secured by **Merchant Keys** and **PGW Merchant Codes** for technical integration, and governed by a formal **Contract** that defines the commercial terms of the relationship.
+**Merchant Admin is not the [Organisation applet](/applets/master-data/organisation-applet/).** Organisation maintains *your own* companies, branches and locations. Merchant Admin maintains *external* businesses that transact on your platform: they have their own gateway credentials, contracts and rate cards. A merchant can also be a customer, supplier or employee at the same time — it is the same entity row, just with more flags (see [Entity Maintenance](/applets/master-data/entity-applet/)).
 {{< /callout >}}
 
-A short introduction to the Merchant Applet:
+A recorded walkthrough of the applet (merchant setup, contracts and rate cards, payment configuration, tax and billing, reports, audit trail):
 
 {{< youtube c-Yc6bo7_Jw >}}
 
----
+## Where it fits
 
-## Key Features Overview
+| Direction | Applet / document | Why |
+|---|---|---|
+| Upstream | [Organisation](/applets/master-data/organisation-applet/) | Companies for the *Contract Company* picker and the Company Linking tab; branches for the Merchant Branch tab |
+| Upstream | [Tax Configuration](/applets/master-data/tax-configuration-applet/) | Tax codes offered on the Tax & Billing tab and the Merchant Branch control-account section |
+| Upstream | [Chart of Account](/applets/master-data/chart-of-account-applet/) | GL codes and subledgers for the Merchant Branch control account |
+| Upstream | [Cashbook](/applets/master-data/cashbook-applet/) | Settlement methods read by the Payment Config tab |
+| Upstream | [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) | Confirmed tenant logins that the Login tab verifies and invites |
+| Sibling | [Entity Maintenance](/applets/master-data/entity-applet/), [Customer Maintenance](/applets/master-data/customer-maintenance-applet/), [Supplier](/applets/master-data/supplier-applet-1/), [Employee Maintenance](/applets/master-data/employee-applet/) | Same table, same rows; each sibling edits its own entity type |
+| Downstream | Payment-gateway callbacks (`PgwBackendController`, `IPay88Controller`) | Verify callback signatures with the merchant key copied onto the payment transaction header |
+| Downstream | [My Peppol Admin](/applets/e-invoice/mypeppol-admin-applet/), [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) | Peppol participant IDs and the e-Invoice notification methods saved on the merchant row |
+| Downstream | Merchant monthly report job (`PGW_MERCHANT_MONTHLY_REPORT_PROCESSOR`) | Reads the merchant's rate cards and charge rates to price each payment channel per month; the result is the applet's **Report** menu |
+| Downstream | [Seller Admin](/applets/ecommerce/seller-admin-applet/) | Uses the merchant entity as the seller identity for order and fulfilment work |
 
-### Who Benefits from This Applet?
+Modules: Core, E-Commerce, E-Invoice.
 
-**Platform Administrators:**
-- Centralized creation and management of merchant profiles
-- Secure storage of API keys and payment gateway credentials
-- Real-time status monitoring (Active vs. Deactivated)
-- Configuration of merchant types, entity types, and AR/AP categories
+## Screens and menus
 
-**Merchant Relationship Managers:**
-- Structured onboarding workflow for new partners
-- Full visibility into active, expiring, and historical contracts
-- Ability to update merchant profiles, contact details, and addresses
-- Audit trail of every administrative change made to a merchant record
+Left menu (route `applets/wavelet/erp/entity/merchant-applet/…`; the registry name is *Merchant Admin* and the UI banner still says *Merchant Applet*):
 
-**Finance & Compliance Teams:**
-- Centralized repository of all merchant contracts and rate cards
-- Credit limit and credit term management per merchant
-- Complete audit logs for every modification in the system
-- Verification of merchant status and eligibility before transactions
+| Menu | What it is for |
+|---|---|
+| **Merchant** | Listing, create and edit of merchant entities — the main working area |
+| **Contract** | Listing, create and edit of merchant contracts (`bl_pgw_merchant_contract_hdr`) with their rate cards and charge rates |
+| **Report** | The monthly merchant transaction summary (`bl_pgw_monthly_merchant_txn_summary_report_line`) — read-only |
+| **Audit Trail** | Entity events (`bl_fi_mst_entity_event`) written by this applet: Create Merchant, Edit Merchant, Create Charge Rate, Update Payment Channels… |
 
-### What Problems Does This Solve?
+Gear (Settings) menu: *System Configuration* › **Field Settings**, **Default Selection**; the shared settings frame adds *Server Side Permissions* (Permission Wizard, Permission Set, User / Team / Role Permission), *Integration* › **Triggers** (webhooks) and *Developer Tools* › Audit Trail, Reset Applet State. Only Field Settings, Default Selection, Permission Set, User / Team / Role Permission and Triggers have a route in this applet; Permission Wizard, the developer Audit Trail and Reset Applet State are links without a route and land back on the merchant listing. **Feature Visibility** is routed (it is the default settings page) but has no menu link. **Personalization** lists *Field Settings* (no route under personalization) and *Default Selection*; a *Sidebar* route exists without a menu entry.
 
-**The Partner Management Friction Problem:**
+### Merchant listing
 
-Managing a large ecosystem of merchants through spreadsheets or fragmented systems creates significant operational risk:
-- Scattered merchant profile data across multiple departments
-- Manual handling of sensitive Merchant Keys, creating security exposure
-- Lost or undocumented contractual agreements and rate cards
-- No formal approval process or audit trail for merchant state changes
-- Difficulty verifying compliance for every registered merchant
+Columns: Merchant ID (the `ID_INFO` extension), Merchant Name, Merchant Company (the `COMPANY_INFO` extension), Status, Creation Date, Updated Date. Keyword search plus column filters. **+** opens the create form; clicking a row opens the edit form.
 
-**The Merchant Applet Solution:**
+### Create form
 
-- **Structured Onboarding Workflow** — standardized field-driven creation of merchant identities, credentials, and configurations
-- **Secure Credential Repository** — dedicated storage of Payment Gateway (PGW) codes, merchant keys, and return URLs
-- **Contract Lifecycle Hub** — integrated tracking of formal agreements with rate cards and validity controls
-- **Comprehensive Event Logging** — audit trails for every profile and contract modification
-- **Flexible Segmentation** — define merchants by type (Corporate vs. Individual), entity type, and AR/AP category
+A single panel. **CREATE** is enabled only when every starred field is filled (see [Fields](#fields)). Status defaults to ACTIVE, Merchant Type to CORPORATE and Entity Type to MERCHANT.
 
----
+{{< figure src="/images/merchant-applet-applet/merchant-applet-create-form.png" alt="Create Merchant form with Merchant ID, Merchant Name, Merchant Company, Company Registration No, Merchant Type, AR/AP Type, PGW Merchant Code, Merchant Key, Status and Description" caption="Create Merchant. Entity Type is hidden here because the tenant has HIDE_ENTITY_TYPE switched on in Field Settings." >}}
 
-{{< figure src="/images/merchant-applet-applet/merchant-applet-overview-infographic.png" alt="Merchant Applet Overview: From Manual Friction to Streamlined Partner Success - comparing manual merchant management with the digital solution" caption="Merchant Applet Overview: The Old Way (scattered data, security risks, lost contracts) vs The New Way (unified profiles, secure vault, integrated contracts)." >}}
+### Edit form
 
-## Key Features
+Tabs, in order: **Details**, **Peppol Config** (inner tabs *Peppol Ids*, *Notification Config*), **Login**, **Contract**, **Return URL**, **Tax & Billing**, **Payment Config**, **Address**, **Contact**, **Company Linking**, **Merchant Branch**, **Credit Limit and Terms** (inner tabs *Credit Term*, *Credit Limit*), **Logo**.
 
+How the tabs save differs:
 
-{{< cards >}}
-  {{< card title="Merchant Admin" subtitle="Centralized profile creation, credential management, and lifecycle administration" link="#merchant-admin" >}}
-  {{< card title="Contract Container" subtitle="Manage formal agreements, rate cards, and payment channel configurations" link="#contract-container" >}}
-  {{< card title="Report" subtitle="Analyze merchant distributions and performance data" link="#report" >}}
-  {{< card title="Audit Trail" subtitle="Deep visibility into every configuration change and state transition" link="#audit-trail" >}}
-  {{< card title="Permission Control" subtitle="Role and user-level access management per merchant action" link="#settings" >}}
-  {{< card title="Personalization" subtitle="Customize sidebar layout and personal defaults for your admin role" link="#personalization" >}}
-{{< /cards >}}
+- The header **Save** writes the Details tab, the Notification Config checkboxes and every row staged on **Return URL**, **Tax & Billing**, **Payment Config**, **Address**, **Contact**, **Credit Term** and **Credit Limit** in one `PUT` of the entity container (`merchant-edit.component.ts` `onSave()`, L520-780). Until you press Save those rows exist only in the browser.
+- **Peppol Ids**, **Login**, **Contract**, **Company Linking**, **Merchant Branch** and **Logo** save immediately through their own services when you press Add / Save / Create inside the panel.
+- **Remove** on the Details tab deletes the merchant at once — there is no confirmation dialog (`onRemove()`, L833-851; see [Lifecycle and effects](#lifecycle-and-effects)).
 
----
+{{< figure src="/images/merchant-applet-applet/merchant-applet-peppol-config-tab.png" alt="Peppol Config tab, Peppol Ids listing with Peppol Participant ID and Is Default columns, and the Add Peppol Participant ID panel with Verify Participant ID button and Default toggle" caption="Peppol Config › Peppol Ids. Verify Participant ID calls the Peppol participant lookup before the ID can be added." >}}
 
-## Key Concepts
+{{< figure src="/images/merchant-applet-applet/merchant-applet-notification-config-subtab.png" alt="Notification Config with four checkboxes: peppol (only applicable if valid peppol id), email, other UCC channels, through customer portals" caption="Peppol Config › Notification Config. The four checkboxes are saved as einvoice_notification_methods_json on the merchant row when you press the header Save." >}}
 
-### Understanding the Merchant Framework
+{{< figure src="/images/merchant-applet-applet/merchant-applet-return-url-tab.png" alt="Return URL tab listing URL Code, URL Name, Success Return URL and Error Return URL, with the edit panel showing the two toggles" caption="Return URL. Each toggle reveals its URL field; the rows are stored as URL_INFO extensions." >}}
 
-Every merchant in the system is built from three layers:
+{{< figure src="/images/merchant-applet-applet/merchant-applet-tax-billing-tab.png" alt="Tax & Billing tab listing Country, Tax Code, Tax Type, Tax Rate and Tax Option with the Add Tax panel" caption="Tax & Billing. Country is chosen first; Tax Type and Tax Code are filtered to that country's tax codes." >}}
 
-| Layer | Component | Purpose |
-|-------|-----------|---------|
-| **Identity** | Merchant ID, Merchant Name, Merchant Company | Who they are and how they are uniquely identified in the platform |
-| **Credentials** | PGW Merchant Code, Merchant Key | How their payment transactions are routed and authenticated |
-| **Agreement** | Merchant Contract, Rate Card | What commercial terms apply and for how long |
+{{< figure src="/images/merchant-applet-applet/merchant-applet-payment-config-tab.png" alt="Payment Config tab with Payee Residential Status, Country, Bank, Swift Code, Bank Acc No., Bank Acc Holder Name, IBN Number and Account Expiry" caption="Payment Config. Bank details for paying the merchant out; Payee Residential Status and Country are mandatory." >}}
 
-{{< callout type="tip" >}}
-**Real-World Example**: A new retail partner wants to accept payments through your platform. The platform admin creates a Merchant record with the partner's company registration, assigns a unique PGW Merchant Code so the payment gateway knows where to route funds, and then creates a Contract that locks in their transaction rate (e.g., 1.5% MDR) with a start and end date. The partner can only go live once all three layers are in place.
-{{< /callout >}}
+{{< figure src="/images/merchant-applet-applet/merchant-applet-address-tab.png" alt="Address tab listing and the Add New Address panel with Address Name, Address Type, Address 1-5, Country, State, City, Postal Code and Set as default" caption="Address. Rows are written into the merchant's addresses_json on Save." >}}
 
-{{< figure src="/images/merchant-applet-applet/merchant-applet-onboarding-infographic.png" alt="Onboarding a New Retail Partner: the three essential layers — Create Merchant, Assign PGW Merchant Code, and Create Contract — that must all be in place before a partner can go live" caption="Onboarding a new retail partner: all three layers — Merchant record, PGW Merchant Code, and Contract — must be in place before the partner can go live." >}}
+{{< figure src="/images/merchant-applet-applet/merchant-applet-contact-tab.png" alt="Contact tab listing Contact ID, Contact Name, Mobile Number, Email Address, Contact Tag and the Create Contact panel" caption="Contact. Contacts become CONTACT_INFO entity lines." >}}
 
-### Merchant Lifecycle
+{{< figure src="/images/merchant-applet-applet/merchant-applet-company-linking-tab.png" alt="Company Linking tab with Company Code, Company Name and AR/AP Type columns and the Add Company Linking panel" caption="Company Linking. One link per company; the panel refuses a company that is already linked." >}}
 
-```
-New Partner Request
-│
-├── Merchant Creation ──→ Register ID, Name, Company, Entity Type, Keys
-│   │
-│   └── Credential Setup ──→ PGW Merchant Code, Merchant Key, Return URLs
-│       │
-│       └── Contract Creation ──→ Rate Card, Payment Channels, Validity Period
-│           │
-│           └── Active & Ongoing ──→ Audit Trail logs every change
-```
+{{< figure src="/images/merchant-applet-applet/merchant-applet-credit-limit-subtab.png" alt="Credit Limit sub-tab listing and the Credit Limit Edit panel with Code, Name, Status, Currency, Credit Limit Amount and audit fields" caption="Credit Limit and Terms › Credit Limit. Existing or new limit profiles; the rows are CREDIT_LIMIT extensions saved with the header Save." >}}
 
-### Entity Type vs. Merchant Type
+{{< figure src="/images/merchant-applet-applet/merchant-applet-logo-tab.png" alt="Logo tab with an empty image listing and the Upload Logo drop zone" caption="Logo. The file is attached to the entity as a SYS_MERCHANT_LOGO extension." >}}
 
-These two fields are often confused because they both classify the merchant — but they operate at completely different levels.
+### Contract screens
 
-| Field | Nature | Changes system behavior? |
-|-------|--------|--------------------------|
-| **Entity Type** | Functional | Yes — affects financial posting, applet visibility, AR/AP categorization |
-| **Merchant Type** | Descriptive | No — used for reporting and documentation classification only |
+**Contract listing** columns: Contract Code, Contract Name, Contract Company, Merchant Contract Key, Status, Creation Date, Updated Date. **Create** has Contract Name, Contract Code (computed, read-only), Merchant, Contract Company and Status. **Edit** has tabs **Details**, **Rate Card** and **Annex**; the contract opened from a merchant's own *Contract* tab shows **Details**, **Rate Card** and **Audit Trail** instead. Inside Rate Card: a rate-card listing (Rate Card Code, Rate Card Name, Rate Card Status) → payment-channel listing for the selected card → charge-rate listing per channel, each level with its own create / edit panel.
 
-**Entity Type** is functional — it drives how the system behaves. It controls which applets recognize the record, how financial entries are categorized (AR vs AP), and what workflows the entity participates in. Changing it has downstream consequences across the platform.
-
-**Merchant Type** (CORPORATE vs INDIVIDUAL) is descriptive — it classifies the business structure for reporting and documentation. It tells you *what kind of business* the merchant is, but does not change how the system routes transactions or which applets see the record.
-
-The two are not fully independent. Merchant Type only becomes meaningful on records where Entity Type includes MERCHANT — it would not make sense on a pure SUPPLIER or EMPLOYEE record. Think of it as a sub-classification that sits beneath Entity Type: Entity Type establishes the functional role, Merchant Type describes the business form within that role.
-
----
-
-## Navigation Menu
-
-The applet sidebar contains four main sections, plus Settings and Personalization:
-
-### Merchant Admin
-The primary working area. Lists all registered merchant profiles and is the entry point for creating new merchants. This is where the full create/edit lifecycle happens — from initial registration through credential setup to status management.
-
-### Contract Container
-Lists all merchant contracts. A contract formalizes the commercial relationship between your platform and a merchant — it defines the rate card (what fees apply per payment channel) and the validity period of the agreement.
+{{< figure src="/images/merchant-applet-applet/merchant-applet-contract-create-form.png" alt="Create Contract form with Contract Name, Contract Code C00010 (read-only), Merchant, Contract Company and Status" caption="Create Contract. The code is the highest existing C-number plus one, computed in the browser." >}}
 
 ### Report
-Provides reporting views on merchant data — distributions, status breakdowns, and performance trends across the merchant portfolio.
+
+Listing columns: Merchant ID, Merchant Name, Payment Channel, Currency, PC Charge Name 1-4 and PC Charge 1-4 (%/$), VAT %, Unrecoverable VAT %, network charges per transaction ($ and %), network Charge Name 1-4 and Charge 1-4, # of Txn, Total Amount, Download. Clicking a row opens a read-only view of the same charges. The column group labelled with the payment network's own name in the UI is described generically here.
 
 ### Audit Trail
-A read-only log of every change made across all merchant records and contracts. Used by compliance teams to trace who changed what and when. Every create, edit, and status change is recorded here with a timestamp and the user responsible.
 
----
+Listing columns: Merchant Name, Action, Event Code, User (the subject guid), Date — the `bl_fi_mst_entity_event` rows this applet writes (`entity/events`). It is a log of *actions*, not a before/after field diff.
 
-## Merchant Admin
+## Configuration
 
-### Listing
+### Before you can use it
 
-{{< figure src="/images/merchant-applet-applet/merchant-applet-listing.png" alt="Merchant Applet Listing - comprehensive view of all registered merchants including Merchant ID, Name, and Status" caption="Merchant Applet Listing: The primary interface for searching, filtering, and managing merchant records." >}}
+- **Companies** in the [Organisation applet](/applets/master-data/organisation-applet/) — every contract needs a *Contract Company* (`PgwMerchantContractHdrDataConsistencyObject` `COMP_GUID_IS_NULL` / `GUID_COMP_DOES_NOT_EXIST`, L54-66), and the Company Linking tab picks from the same list. Branches are needed for the Merchant Branch tab.
+- **Tax codes** in [Tax Configuration](/applets/master-data/tax-configuration-applet/) — Tax & Billing filters by the chosen country (`merchant-create-tax.component.ts` L130); the Merchant Branch panel offers SST/GST and WHT codes and the MyInvois tax type codes.
+- **GL codes and subledgers** in [Chart of Account](/applets/master-data/chart-of-account-applet/) for the Merchant Branch control account (`intercompany-branch-create.component.ts` L150-175).
+- **Settlement methods** in the [Cashbook applet](/applets/master-data/cashbook-applet/) — read by Payment Config (`merchant-create-payment.component.ts` L275).
+- **Banks and countries** — the Payment Config *Bank* and *Country* lists come from the shared bank and country services (L198-222).
+- **Merchant code prefix / running number** — the create form never sends `merchant_code`, so the backend generates it from the `MERCHANT_ID` running number plus the tenant's merchant prefix (`EntityDataConsistencyObject` `getNextRunningNumbers` → `buildEntityCode`, L1396-1410). The *Merchant ID* you type is a different thing: an `ID_INFO` extension used for display only.
+- **Server-side permissions** — creating a merchant needs `TNT_API_ERP_MERCHANT_ENTITY_CREATE` (or the merchant-entity owner / admin permission); update and delete need the matching `_UPDATE` / `_DELETE` codes (`EntityController` handler map, L131-139). Contract, rate-card and charge-rate writes need the tenant owner / admin role or the permission list checked in their controllers, with the contract's company as the permission target.
 
-The listing shows all registered merchant profiles.
+### Applet settings
 
----
+Settings are **applet-local**: `settings/field-settings` renders this repo's own `FieldConfigurationComponent`, saved through the shared session effect into the applet's `APPLET_SETTINGS` extension (`session.effects.ts` L115-141). The shared document-applet Field Configuration screen is not used. Anyone with access to the Settings menu can change them; they apply tenant-wide.
 
-### Create
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| `HIDE_E_TYPE` (labelled **HIDE_ENTITY_TYPE**, panel *Main Details*) | Hides the **Entity Type** multi-select on the **create** form (`merchant-create.component.ts` L151, template `[hidden]="form.get('eType').disabled"`) | Off (the toggle is patched from the stored value; a never-saved tenant has no value, so the field shows) | On: the control is disabled and hidden, so the create request carries no entity-type flags; the backend still sets `is_merchant` because the request goes through the `merchants` entity-type handler (`EntityController.createSpecificEntity`, L237-243). CUSTOMER / SUPPLIER / EMPLOYEE cannot be added at creation. The **edit** form ignores this setting — Entity Type is always visible there |
 
-{{< figure src="/images/merchant-applet-applet/merchant-applet-create-form.png" alt="Create Merchant Form - initial registration screen with required identity and credential fields" caption="Create Merchant: The initial onboarding screen for registering a new merchant identity and its technical credentials." >}}
+That is the only key that passes the declared / rendered / persisted / consumed test. Also on the screen but **not saved** (checked at commit cd6ac3e1):
 
-Creates a new merchant profile. Only the core identity and credential fields are available at creation — the deeper configuration tabs (Peppol, Login, Contract, Payment Config, etc.) become available after the record is saved.
+- *Lines Settings* — Unit Discount, SST/VAT/GST, WHT, Blanket Order — and *Department Settings* — Segment, G/L Dimension, Profit Center, Project: eight slide toggles with no form control (`field-configuration.component.html` L20-56). They are a copy of a document-applet panel.
+- **Default Selection** (*Default Branch*, *Default Location*): the pickers write `DEFAULT_BRANCH` / `DEFAULT_LOCATION` into an applet container that is never loaded (`appletSettings$` is an input the route does not bind; `appletContainer` is undefined), so choosing a value fails, and **SAVE** emits an output nobody listens to (`default-settings.component.ts` L30-66). Nothing in the applet reads either key.
+- **Personalization › Default Selection**: same code, same result (`personal-default-settings.component.ts` L31-75).
 
-**Required fields:** Merchant ID, Merchant Name, Merchant Company, Company Registration No / ID Number, Entity Type, AR/AP Type, PGW Merchant Code, Merchant Key, Status
+{{< figure src="/images/merchant-applet-applet/merchant-applet-settings-general.png" alt="Applet Settings with Field Settings selected showing the HIDE_ENTITY_TYPE toggle under Main Details, and collapsed Lines Settings and Department Settings panels" caption="Settings › Field Settings. Only HIDE_ENTITY_TYPE is bound; the two collapsed panels hold unbound toggles." >}}
 
-**Optional fields:** Merchant Type, Description
+### Document behaviour settings
 
-**Fields that need context:**
+Not applicable — master data; no statuses beyond the entity and contract status fields, no posting, no printables.
 
-| Field | Notes |
-|-------|-------|
-| **Merchant ID** | Must be unique across all merchants — used as the primary reference in payment gateway routing and transaction logs. |
-| **Entity Type** | The functional role this merchant plays — CUSTOMER, SUPPLIER, EMPLOYEE, or MERCHANT. A single merchant can hold multiple types simultaneously. Drives financial posting behavior and which applets recognize this record. |
-| **Merchant Type** | Descriptive classification only — CORPORATE or INDIVIDUAL. Used for reporting; does not affect system behavior. |
-| **AR/AP Type** | Determines whether this merchant generates Accounts Receivable (money owed to you) or Accounts Payable (money you owe them). Getting this wrong causes mis-categorization in AR aging reports. |
-| **PGW Merchant Code** | The identifier the payment gateway uses to route transactions to this merchant's account. |
-| **Merchant Key** | Secret key for API authentication. Treat like a password — any rotation must be reflected in connected integrations to avoid transaction failures. |
-| **Status** | DEACTIVATE suspends access while preserving all data and history. |
+### Settings in other applets that control this applet
 
----
+None found: the applet reads no company, branch or other-applet settings (every `selectMasterSettings`, `HIDE_*`, `SHOW_*` and `DEFAULT_*` read in the repo checked at commit cd6ac3e1).
 
-### Edit
+### Feature visibility / permissions
 
-The edit form contains all the same fields as create, plus additional configuration tabs that manage the deeper aspects of the merchant relationship.
+- **Client-side permissions:** `bl_applet_client_side_perm_dfn` holds **no rows** for `MerchantAdminApplet`, and the applet checks no `SHOW_*` codes. Feature Visibility is the shared *Manage Team Access* screen only.
+- **Server-side permissions:** the Permission Set / User / Team / Role routes are the shared containers; this applet's `PermissionResolver` maps permission targets to Company, Branch, Location, Applet, Tenant, Team, Hostname, PGW Merchant Contract Hdr, Merchant Rate Card, PGW Payment Channel, Merchant Rate, Entity Credit Limit, Entity Credit Term, GL Code, Tax Code, Country, Entity (merchant), AppLogin, Currency, PGW Contract Rate and MST Item Header (settlement method) lookups.
 
-**Action buttons on the edit form:**
+## Fields
 
-| Button | Function |
-|--------|----------|
-| **SAVE** | All changes are logged to the Audit Trail. |
-| **Remove** | Permanently deletes the merchant record. Use with caution — this cannot be undone. |
+### Create form
 
-#### Details Tab
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Merchant ID | Display identifier | Yes | Stored as the `ID_INFO` extension (`value_json.id`), not in `merchant_code`; **no uniqueness check** |
+| Merchant Name | `bl_fi_mst_entity_hdr.name` | Yes | |
+| Merchant Company | Free text | Yes | `COMPANY_INFO` extension `company` |
+| Company Registration No / ID Number | Registration or identity number | Yes | `COMPANY_INFO` extension `companyCode`; max 100; label follows Merchant Type (CORPORATE → *Company Registration No*, INDIVIDUAL → *ID Number*) |
+| Entity Type | Multi-select CUSTOMER, SUPPLIER, EMPLOYEE, MERCHANT | Yes (when shown) | Default MERCHANT; hidden by `HIDE_ENTITY_TYPE`; choosing EMPLOYEE forces Merchant Type to INDIVIDUAL. Sets `is_customer` / `is_supplier` / `is_employee` / `is_merchant` |
+| Merchant Type | CORPORATE / INDIVIDUAL | Yes | `txn_type`; default CORPORATE |
+| AR / AP Type | AR_TRADE, AR_OTHER, AR_MERCHANT, AP_TRADE, AP_OTHER, AP_MERCHANT, AP_EMPLOYEE | Yes | `default_arap_type`; if blank the backend defaults to AP_TRADE for suppliers, else AR_TRADE (`EntityDataConsistencyObject` L1118-1122) |
+| PGW Merchant Code | Merchant identifier at the payment gateway | Yes | `pgw_merchant_code`; max 100 on edit |
+| Merchant Key | Gateway signing key | Yes | `merchant_key`; shown in clear text; copied onto each payment transaction header at transaction time |
+| Status | ACTIVE / TEMP / INACTIVE | No | Default ACTIVE; a blank status is set to ACTIVE server-side (L1101-1103) |
+| Description | `descr` | No | |
 
-{{< figure src="/images/merchant-applet-applet/merchant-applet-details-tab.png" alt="Merchant Details Tab - core profile information and entity classification settings" caption="Details Tab: Managing the primary identity and functional classification of the merchant." >}}
+The **Details** tab of the edit form has the same fields (all of Merchant ID, Merchant Name, Merchant Company, registration number, Entity Type, Merchant Type, AR/AP Type, PGW Merchant Code and Merchant Key mandatory, each max 100) plus **Remove**.
 
-Contains all the core fields from the create form. Every change is logged to the Audit Trail.
+### Peppol Config
 
----
+- **Peppol Ids** — *Peppol Participant ID* (with **Verify Participant ID**, which calls the Peppol participant lookup by ISO 6523 scheme and ID), *Default* toggle, *Delete*. Saved immediately as `bl_fi_entity_peppol_id` rows.
+- **Notification Config** — four checkboxes: *peppol (only applicable if valid peppol id)*, *email*, *other UCC channels (through telegram / facebook messengers etc)*, *through customer portals*. Saved by the header Save into `einvoice_notification_methods_json`.
 
-#### Peppol Config Tab
+### Login
 
-{{< figure src="/images/merchant-applet-applet/merchant-applet-peppol-config-tab.png" alt="Peppol Config Tab - registration settings for international e-invoicing infrastructure" caption="Peppol Config Tab: Configuring the merchant's identifiers for global e-invoice network participation." >}}
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| User email | Tenant login to link | Yes | **Verify Email** tries to add the address as a tenant user: `OK` or *already exists* → the confirmed principal's subject guid is fetched (`principal_type = EMAIL_USERNAME`, `status = USER_CONFIRMED`); `USER_NOT_FOUND` → the **Send Invite** button appears (invitation with `create_entity: true`) |
+| Rank | OWNER, ADMIN, MANAGER, MEMBER, GUEST, VISITOR, ANNONYMOUS | Yes | Default MEMBER |
+| Status | ACTIVE / INACTIVE | Yes | Default ACTIVE |
 
-Configures this merchant's participation in the **Peppol network** — the international e-invoicing infrastructure used for government and enterprise B2B electronic invoicing (relevant for e-invoice compliance in Malaysia and other Peppol-participating countries).
+**Add** posts a `bl_fi_mst_entity_login_subject_link` row immediately. Listing columns: User Email, Rank, Status, Modified Date.
 
-{{< callout type="info" >}}
-**What is Peppol?** Peppol is a set of open standards that allows businesses to send electronic invoices and other business documents directly to each other's systems — without PDFs, emails, or manual entry. In Malaysia, this is part of the e-invoicing mandate. If a merchant needs to send or receive e-invoices through the Peppol network, their Peppol IDs must be configured here.
-{{< /callout >}}
+### Return URL
 
-**Peppol IDs sub-tab**
+Return URL Code, Return URL Name, *Success Return URL* toggle + URL, *Error Return URL* toggle + URL. Each row is a `URL_INFO` extension; saved with the header Save.
 
-Manages the Peppol participant identifiers for this merchant. A Peppol ID is the network address that uniquely identifies a business on the Peppol network — similar to an email address, but for invoices.
+### Tax & Billing
 
-**Notification Config sub-tab**
+Country (required), Tax Type, Tax Code, Tax Rate (%) (required), Tax Option (required). Tax types include SST service-tax input / output entries; codes are the tax codes of the chosen country. Rows are `TAX_INFO` extensions; saved with the header Save.
 
-{{< figure src="/images/merchant-applet-applet/merchant-applet-notification-config-subtab.png" alt="Notification Config Tab - delivery channel settings for e-invoice alerts" caption="Notification Config: Defining how the merchant receives electronic invoicing notifications." >}}
+### Payment Config
 
-Controls how this merchant receives e-invoice notifications. Each channel can be toggled independently:
+Payee Residential Status (RESIDENT / NON-RESIDENT, required), Country (required), Bank, Swift Code, Bank Acc No., Bank Acc Holder Name, IBN Number, Account Expiry (date). Rows are `PAYMENT_CONFIG` extensions; saved with the header Save.
 
-**Channels:** Peppol, Email, Other UCC Channels (Telegram, Facebook, etc.), Through Customer Portals
+### Address, Contact
 
-The Peppol channel is only available if the merchant has a valid Peppol ID configured in the Peppol IDs sub-tab.
+- **Address** — Address Name, Address Type (required), Address 1 (required), Address 2-5, Country / State / City / Postal Code (required), *Set as default*. Written into `addresses_json` on Save.
+- **Contact** — Contact Name, Contact ID, Position, Mobile No (required), Office No, Extension No, Fax No, Phone Number, Email, Other No. `CONTACT_INFO` entity lines, saved on Save.
 
----
+### Company Linking, Merchant Branch
 
-#### Login Tab
+- **Company Linking** — Company and AR/AP Type, both required; **Add** posts a `bl_fi_mst_comp_branch_location_entity_link` row at once and is refused if the company is already linked (`checkExistingLink`, `merchant-company-create.component.ts` L204). The edit panel shows Company Code, Company Name, Registration No. and AR/AP Type.
+- **Merchant Branch** (panel title *Create Customer Branch*) — Selected Entity (read-only), Code, Name, Description, Mapping Value 01-05, Address Name, Email, Phone Number, Address Line 1-5, Country, State, City, Postal Code, Control Account Code, Account AR/AP Type, Account GL Code, Account Subledger, Output Tax Type + SST/GST/VAT, Output WHT Type + WHT, Input Tax Type + SST/GST/VAT, Input WHT Type + WHT, Einvoice Tax Type Code. Saved immediately through the intercompany-branch service; the edit panel adds **DELETE**.
 
-{{< figure src="/images/merchant-applet-applet/merchant-applet-login-tab.png" alt="Merchant Login Tab - portal access management for merchant staff" caption="Login Tab: Managing self-service portal credentials and invitations for merchant users." >}}
-
-Manages the merchant's portal login credentials — giving the merchant's own staff access to a self-service portal to view their transaction data, download reports, or check their account status.
-
-**Fields:** User Email, Rank, Status
-
-**Action buttons:**
-
-| Button | Function |
-|--------|----------|
-| **Verify Email** | Confirms the email address is valid and reachable before sending an invite. |
-| **Send Invite** | Sends the merchant a portal invitation with login setup instructions. |
-
----
-
-#### Contract Tab
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-contract-tab.png" alt="Merchant Contract Tab - summary of agreements associated with this merchant" caption="Contract Tab: A centralized view of all commercial agreements linked to the merchant profile." >}}
-
-Lists all contracts associated with this merchant. Contracts are created and managed in the [Contract Container](#contract-container) section of the applet, but this tab gives you a quick view of all agreements for this specific merchant without leaving the merchant profile.
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-rate-card-view.png" alt="Rate Card View - detailed breakdown of fees per payment channel" caption="Rate Card: Defining the commercial MDR and flat fees for different payment methods." >}}
-
-Expanding a contract row reveals its **Rate Card** — the pricing schedule that defines what fee applies per payment channel (e.g., 1.5% MDR for Credit Card, flat RM 0.50 for FPX). This is a read-only summary view; to create or edit rate cards, open the contract in the [Contract Container](#contract-container). For a full breakdown of how the Rate Card works, see the [Rate Card Tab](#rate-card-tab) section below.
----
-
-#### Return URL Tab
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-return-url-tab.png" alt="Return URL Tab - configuration for post-payment redirection" caption="Return URL Tab: Setting up success and error redirect paths for payment gateway transactions." >}}
-
-Configures the redirect URLs used after payment gateway transactions — where the payment gateway sends the user after a successful or failed payment attempt.
-
-**Fields:** Return URL Code, Return URL Name, Success Return URL, Error Return URL
-
-Success and Error Return URLs each have a toggle — the URL field only appears when the toggle is enabled.
-
----
-
-#### Tax & Billing Tab
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-tax-billing-tab.png" alt="Tax and Billing Tab - registration details for financial and tax compliance" caption="Tax & Billing Tab: Configuring tax registration and billing parameters for the merchant." >}}
-
-Manages tax registration details and billing configurations for this merchant. Tax settings here affect how tax entries are generated when financial transactions are processed against this merchant.
-
----
-
-#### Payment Config Tab
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-payment-config-tab.png" alt="Payment Config Tab - technical settings for active payment channels" caption="Payment Config Tab: Managing technical integration parameters for enabled payment methods." >}}
-
-Lists all payment channel configurations for this merchant — which payment methods are enabled, their gateway settings, and any channel-level parameters.
-
-**Supported settlement types include:** Bank Transfer, Cash, Cheque, Credit Card, E-Wallet, FPX/eMandate, Payment Gateway, Membership Points, Open Credit, Voucher, and Others.
-
----
-
-#### Address Tab
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-address-tab.png" alt="Merchant Address Tab - management of multiple office and billing locations" caption="Address Tab: Maintaining billing, correspondence, and branch addresses for the merchant." >}}
-
-Manages the registered addresses for this merchant — billing address, correspondence address, and any additional branch or site addresses. Multiple addresses can be stored and individually labeled.
-
-Each address has a **Set as Default** toggle. When a merchant has more than one address of the same type, marking one as default tells the system which address to use by default for document generation, invoicing, and correspondence. The address listing shows **(default)** next to the address type label for the designated address. Only one address per type can be set as default at a time — setting a new default automatically clears the previous one.
----
-
-#### Contact Tab
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-contact-tab.png" alt="Merchant Contact Tab - directory of key personnel and roles" caption="Contact Tab: Managing the directory of key contact persons for different business functions." >}}
-
-Manages the contact persons for this merchant — names, phone numbers, email addresses, and roles. Multiple contacts can be stored for different purposes (e.g., finance contact, technical contact, account manager).
-
----
-
-#### Company Linking Tab
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-company-linking-tab.png" alt="Company Linking Tab - mapping merchant to platform companies for financial posting" caption="Company Linking Tab: Establishing the financial relationship between the merchant and platform companies." >}}
-
-Links this merchant record to one or more companies within your platform. Company linking determines which company's financial accounts and GL structures this merchant's transactions post to — important in multi-company platform environments.
-
----
-
-#### Merchant Branch Tab
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-branch-tab.png" alt="Merchant Branch Tab - intercompany branch relationship settings" caption="Merchant Branch Tab: Configuring branch-level mappings for intercompany settlements." >}}
-
-Configures intercompany branch relationships for this merchant. Used when a merchant operates across multiple branches or legal entities that need to be tracked separately within the platform's intercompany settlement framework.
-
-Each branch record is divided into four sections:
-
-**Identity & Mapping**
-
-| Field | Notes |
-|-------|-------|
-| **Selected Entity** | Read-only. Auto-filled with the current merchant's name. |
-| **Mapping Value 01–05** | Five free-form extension fields for mapping this branch to external systems — e.g., ERP codes, legacy system references, or intercompany settlement identifiers. The platform does not enforce a format. |
-
-**Branch Address**
-
-Standard contact and location fields: Address Name, Email, Phone Number, Address Lines 1–5, Country, State, City, Postal Code.
-
-**Control Account**
-
-These fields tie this branch's transactions to specific GL accounts — determining where the platform posts financial entries for this branch.
-
-| Field | Notes |
-|-------|-------|
-| **Account AR/AP Type** | Whether this branch's transactions post to Accounts Receivable or Accounts Payable. |
-| **Account GL Code** | The General Ledger account from the [General Ledger Applet](/applets/finance/general-ledger-applet/) that this branch posts to. |
-| **Account Subledger** | The subledger under the GL code for more granular transaction tracking. |
-
-**Output Tax / Input Tax**
-
-Configures the tax codes applied when this branch transacts. Output tax is applied on sales; input tax is applied on purchases. Tax type and rate fields are read-only — they auto-fill when you select a tax code.
-
-| Field | Notes |
-|-------|-------|
-| **SST/GST Tax Code** | Select the applicable tax code from the [Tax Configuration Applet](/applets/master-data/tax-configuration-applet/). |
-| **Tax Type** | Auto-filled from the selected tax code. Indicates the tax category (e.g., SR, ZRL, ES). |
-| **SST/GST/VAT %** | Auto-filled from the selected tax code. Shows the effective tax rate. |
-| **WHT Code** | Withholding Tax code, if applicable to this branch's transactions. |
-| **WHT Type** | Auto-filled from the selected WHT code. |
-| **WHT %** | Auto-filled from the selected WHT code. |
-
-**E-Invoice**
-
-| Field | Notes |
-|-------|-------|
-| **E-Invoice Tax Type Code** | Maps this branch to a MyInvois-compliant tax classification code. Required for LHDN e-invoice submissions involving this branch. Codes are defined in the [Tax Configuration Applet](/applets/master-data/tax-configuration-applet/). |
----
-
-#### Credit Limit and Terms Tab
-
-Manages the credit facilities extended to this merchant. Contains two nested sub-tabs:
-
-**Credit Term sub-tab**
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-credit-term-subtab.png" alt="Credit Term Tab - payment deadline configurations" caption="Credit Term: Defining the payment window and aging rules for the merchant." >}}
-
-Defines the payment terms for this merchant — how many days they have to settle outstanding amounts. Credit terms drive AR aging calculations and payment due date computations.
-
-**Credit Limit sub-tab**
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-credit-limit-subtab.png" alt="Credit Limit Tab - maximum exposure settings per currency" caption="Credit Limit: Setting the ceiling for outstanding balances to manage financial risk." >}}
-
-Sets the maximum outstanding balance allowed for this merchant at any point in time. When a transaction would push the merchant over their approved credit limit, the system flags it for review.
-
-You can either:
-- **Existing Credit Limit** — select a pre-configured credit limit profile from the system
-- **New Credit Limit** — create a new limit with a code, name, status, currency, and limit amount
-
-**Fields:** Credit Limit Code, Credit Limit Name, Status, Currency, Credit Limit Amount
-
----
-
-#### Logo Tab
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-logo-tab.png" alt="Merchant Logo Tab - brand asset management for documents and portals" caption="Logo Tab: Uploading brand assets for use in merchant-facing documents and portals." >}}
-
-Manages the merchant's logo — uploaded and stored against the merchant profile. The logo is used in merchant-facing documents, portal pages, and any printed output associated with this merchant.
-
----
-
-## Contract Container
-
-{{< callout type="tip" >}}
-**TL;DR** — The contract is not just paperwork. It is the live pricing configuration the payment engine reads on every transaction to determine what fee applies. No contract = no transactions.
-{{< /callout >}}
-
-### How Merchant and Contract relate
-
-A merchant record and a contract are created separately, and in that order:
-
-```
-1. Create Merchant     →  registers identity and payment credentials
-2. Sign agreement      →  commercial terms agreed outside the system
-3. Create Contract     →  formalizes terms in the system (rate card, payment channels)
-4. Merchant goes live  →  system can now route payments and apply fees
-```
-
-A merchant can exist without a contract — registered but not yet live. The contract is what activates them. Every time the merchant processes a payment, the system looks up their active contract to answer two questions:
-- Is this payment method allowed? (is it in the rate card?)
-- What fee do we take? (what is the MDR or flat rate for this channel?)
-
-**The relationship is not 1 merchant = 1 contract.** A contract is tied to a specific **merchant + platform company** pair. This means:
-- One company can have contracts with many merchants
-- One merchant can have contracts with multiple companies on your platform (each with their own rate card)
-- A merchant can also have multiple contracts over time as agreements renew or terms change — old contracts remain on record for audit purposes
-
-Contracts are kept separate from the merchant profile because commercial terms change independently — a contract can be renewed or renegotiated without touching the merchant's identity or credentials.
-
----
-
-### Listing
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-contract-listing.png" alt="Contract Listing - overview of all commercial agreements across the platform" caption="Contract Listing: A centralized repository of all signed agreements and their current statuses." >}}
-
-Lists all merchant contracts across all merchants.
-
----
-
-### Create
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-contract-create-form.png" alt="Create Contract Form - defining commercial terms for a merchant-company pair" caption="Create Contract: Formally registering a new agreement with its validity period and associated merchant." >}}
-
-Creates a new contract once the commercial agreement with the merchant has been signed.
-
-{{< callout type="info" >}}
-**What is a Merchant Contract?** A contract formalizes the commercial relationship between your platform and a merchant. It is not just a document — it is the system record that drives what rates are applied to transactions. Without a contract, the platform does not know what fee to charge or apply for a merchant's transactions.
-{{< /callout >}}
-
-**Required fields:** Contract Name, Merchant, Contract Company, Status
-
-**Auto-generated:** Contract Code (system-generated, read-only)
-
-**Fields that need context:**
-
-| Field | Notes |
-|-------|-------|
-| **Contract Name** | Typically includes the merchant name and period, e.g. "RetailCo 2024 MDR Agreement". |
-| **Contract Company** | The platform entity entering the agreement — determines which company's financials the contract terms post against. |
-| **Status** | ACTIVE (in effect) or DEACTIVATE (suspended). |
-
----
-
-### Edit
-
-The edit form contains all the same fields as create, plus tabs for managing the commercial details of the contract.
-
-#### Details Tab
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-contract-details-tab.png" alt="Contract Details Tab - primary agreement parameters and status management" caption="Contract Details Tab: Managing the core identity and lifecycle status of a specific agreement." >}}
-
-Contains the core contract fields — Contract Name, Contract Code, Merchant Contract Key, Contract Company, Merchant Name, Type, and Status. The Contract Code and Merchant Contract Key are system-generated and read-only. Status is the only field that is editable after creation beyond the contract name.
-
----
-
-#### Rate Card Tab
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-contract-rate-card-tab.png" alt="Contract Rate Card - pricing schedule for payment channel fees" caption="Rate Card Tab: The live fee schedule used by the payment engine for transaction processing." >}}
-
-{{< callout type="tip" >}}
-**TL;DR** — Fee schedule per payment method. Defines what rate the merchant pays for each payment channel they accept.
-{{< /callout >}}
-
-The rate card is the pricing schedule inside this contract — it defines what fee the merchant pays per payment method.
-
-Each entry pairs a **Payment Channel** (e.g., Credit Card Visa, FPX, E-Wallet) with a **Charge Rate** — either a percentage of the transaction amount or a flat fee per transaction. The percentage form is called **MDR (Merchant Discount Rate)**: if the rate is 1.8% and the merchant processes RM 100, the platform keeps RM 1.80 and the merchant receives RM 98.20.
-
-A single contract can have multiple payment channels, each with its own rate. This is normal — credit card transactions typically carry a higher MDR than FPX or e-wallet transactions because the underlying processing costs differ.
-
-Without a rate card, the system has no fee to apply when the merchant transacts — so this must be configured before the merchant goes live.
-
----
-
-#### Annex Tab
-
-{{< callout type="tip" >}}
-**TL;DR** — File uploads for this contract. Attach the signed PDF, amendment letters, or any supporting paperwork here.
-{{< /callout >}}
-
-Document storage for this contract record. Upload the signed physical contract PDF, amendment letters, approval emails, or any other supporting paperwork that belongs alongside this agreement. This is not a functional tab — it does not affect system behavior. It exists so the digital contract record and the physical paperwork stay together in one place.
-
----
-
-## Report
-
-{{< callout type="tip" >}}
-**TL;DR** — A read-only monthly summary of merchant transaction activity. The system populates it automatically — you just view and export.
-{{< /callout >}}
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-report-summary.png" alt="Monthly Transaction Report - aggregated view of processing activity and charges" caption="Merchant Report: A monthly summary of transaction volumes, values, and processing fees." >}}
-
-The Report menu shows a **Monthly Merchant Transaction Summary** — a pre-aggregated view of transaction activity across all merchants, broken down by merchant and payment channel.
-
-**What it shows per row:** Merchant, Payment Channel, Currency, No. of Transactions, Total Transaction Amount, VAT %, PC Charges, Network Charges
-
-**Columns that need context:**
-
-| Column | Notes |
-|--------|-------|
-| **PC Charges** | Payment Channel charges — the fee the platform takes for processing a transaction through that specific payment method. Shown as either a percentage of the transaction amount or a flat fee per transaction. Up to 4 separate charge types can apply per channel. |
-| **Network Charges** | Additional charges levied by the external payment network used for certain digital payment methods. These sit on top of the PC charges and follow the same percentage-or-flat-fee structure. Up to 4 charge types. |
-| **VAT %** | The tax rate applied to the transaction fees — not the transaction amount itself. |
-
-**Where the data comes from:** The system aggregates transaction data automatically from payment activity — you do not feed it anything manually. It reads from the same merchant and payment channel records configured in Merchant Admin and Contract Container.
-
-**What you can do with it:**
-- View the monthly summary per merchant and channel
-- Click a row to drill into the detail of that specific entry
-- Export to CSV or Excel for further analysis
-
-It does not post to any other applet and has no financial impact — it is purely a reporting and export tool.
-
----
-
-## Audit Trail
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-audit-trail-listing.png" alt="Merchant Audit Trail - immutable log of administrative changes" caption="Audit Trail: Ensuring full transparency and accountability for every configuration change." >}}
-
-A complete, read-only log of every action taken across all merchant records and contracts. Every create, edit, status change, and deletion is recorded with:
-
-- The exact field that changed and the before/after values
-- The user who made the change
-- The timestamp of the change
-- The merchant or contract record affected
-
-Use this section to investigate unauthorized changes, trace who approved a merchant activation, or verify the history of a specific credential update. The audit trail cannot be edited or deleted.
-
----
-
-## Settings
-
-{{< figure src="/images/merchant-applet-applet/merchant-applet-settings-general.png" alt="Applet Settings - system-wide field visibility and permission controls" caption="Settings: Configuring global behavior, permissions, and webhooks for the Merchant Applet." >}}
-
-Accessed via the top navigation. All settings here are system-wide and affect all users of this applet.
-
-### Field Settings
-
-Controls which fields are shown or hidden across the merchant create and edit forms. For example, the Entity Type field can be hidden if your platform only operates with a single entity type.
-
-### Default Selection
-
-Sets system-wide default values pre-populated when creating a new document:
-
-| Setting | Effect |
-|---------|--------|
-| **Default Branch** | The branch pre-selected on new documents. Reduces data entry time for teams that primarily work from a single branch. |
-| **Default Location** | The inventory location pre-selected within the default branch. |
-
-### Permission Management
-
-Controls who can perform which actions within the applet. Four layers of permission management are available:
-
-| Permission Level | Description |
-|----------------|-------------|
-| **Permission Set** | Named sets of permissions that can be reused across multiple users or teams. Define once, assign many times. |
-| **User Permission** | Permissions assigned directly to individual users — overrides the team or role defaults for specific individuals. |
-| **Team Permission** | Permissions applied to all members of a team. Useful for department-level access control (e.g., "Finance Team can view but not create"). |
-| **Role Permission** | Permissions applied to all users holding a specific role. The broadest level of permission assignment. |
-
-### Webhook Configuration
-
-Configures outgoing webhooks that fire when specific events happen in the merchant applet — for example, notifying an external system when a new merchant is created or a contract status changes. Used for integration with external platforms or notification systems.
-
-### Feature Visibility
-
-Controls which features within the applet are visible to end users. Use this to simplify the interface for specific user groups by hiding features they do not need.
-
----
-
-## Personalization
-
-User-level customization of the applet experience. Unlike Settings (which are system-wide), Personalization settings apply only to the individual user configuring them.
-
-### Personal Default Settings
-
-Sets personal default values for fields on new documents — overrides the system-wide defaults from Settings for this user only.
-
-### Sidebar Configuration
-
-Controls which items appear in the sidebar navigation and in what order. Users can hide menu items they do not use to reduce visual clutter and keep their working area focused.
-
----
-
-## Related Applets
-
-### How This Applet Connects to Others
-
-The Merchant Applet has no direct navigation links to other applets — there are no buttons that take you from here into another applet. Instead, the data you configure here is shared with downstream applets automatically. When you register a merchant, set a Peppol ID, or configure a credit limit, those values are immediately available wherever the platform needs them — you do not need to enter them again elsewhere.
-
----
-
-### [Customer Applet](/applets/master-data/customer-applet/) & [Employee Applet](/applets/master-data/employee-applet/)
-
-Merchants, customers, and employees are all stored as **entity records** under the same unified identity framework. The only difference between a merchant record and a customer record is their classification — the underlying structure is identical.
-
-This has a practical implication: if a partner is both a merchant on your payment platform *and* a customer who buys from you, they do not need two separate records. A single entity can carry both classifications at once, and both applets will recognize them correctly.
-
-Credit limits and credit terms configured here use the same credit management system as the Customer Applet — so a credit profile set up in either applet is visible in both.
-
----
-
-### [My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) & [My Peppol Admin Applet](/applets/e-invoice/mypeppol-admin-applet/)
-
-The **Peppol Config** tab in this applet is the source of truth for a merchant's Peppol network identity. When you register a Peppol ID here, the E-Invoice and Peppol Admin applets read it automatically — they do not have their own place to enter it.
-
-This means the e-invoice workflow depends on this applet being set up correctly first:
-
-```
-Merchant Applet
-└── Peppol Config Tab (register Peppol ID here)
-        │
-        ├── My E-Invoice Admin Applet — uses it for LHDN submission
-        └── My Peppol Admin Applet   — uses it for Peppol network routing
-```
-
-If a merchant's Peppol ID is missing or incorrect here, e-invoice submissions for that merchant will fail downstream. Always configure Peppol IDs in this applet before attempting any e-invoice workflow for a merchant.
-
----
-
-### [General Ledger Applet](/applets/finance/general-ledger-applet/)
-
-GL account codes can be attached to a merchant's intercompany branch to define which ledger accounts the merchant's transactions post to. Those GL codes are maintained in the **General Ledger Applet** — this applet only reads and selects from them.
-
----
-
-### [Seller Admin Applet](/applets/ecommerce/seller-admin-applet/)
-
-The Seller Admin Applet manages the operational side of a merchant's activity — order creation, fulfillment queues, and pick-pack workflows. It uses the merchant identity created here as its foundation.
-
-The division of responsibility is:
-- **Merchant Applet** — register the merchant, set up credentials and contracts (*who they are*)
-- **Seller Admin Applet** — process their orders and fulfillment (*what they are selling and shipping*)
-
----
-
-### Summary
-
-| Applet | What this applet provides to it |
-|--------|--------------------------------|
-| [**Customer Applet**](/applets/master-data/customer-applet/) | Shared entity identity framework; same credit limit and credit term system |
-| [**My E-Invoice Admin Applet**](/applets/e-invoice/my-e-invoice-admin-applet/) | Merchant's Peppol ID for LHDN e-invoice submission |
-| [**My Peppol Admin Applet**](/applets/e-invoice/mypeppol-admin-applet/) | Merchant's Peppol ID for network document routing |
-| [**Tax Configuration Applet**](/applets/master-data/tax-configuration-applet/) | Reads tax codes from it; merchant branch setup depends on it |
-| [**General Ledger Applet**](/applets/finance/general-ledger-applet/) | Reads GL account codes from it for merchant branch configuration |
-| [**Accounts Receivable Applet**](/applets/finance/accounts-receivable-applet/) | AR/AP Type drives how merchant balances are categorized in AR aging |
-| [**Seller Admin Applet**](/applets/ecommerce/seller-admin-applet/) | Merchant identity and account used as the basis for seller operations |
-
----
-
-## FAQ
-
-**Q: Can a merchant have multiple contracts?**
-A: Yes. The Contract Container tracks all contracts for all merchants. A merchant can have successive contracts as agreements renew, giving a full historical record of the commercial relationship over time.
-
-**Q: What is the difference between PGW Merchant Code and Merchant Key?**
-A: The **PGW Merchant Code** is the identifier the payment gateway uses to know which merchant account to route a transaction to — think of it as the merchant's "account number" with the gateway. The **Merchant Key** is the secret credential used for API authentication — think of it as the merchant's "password." Both are required for secure payment routing.
-
-**Q: What happens if I change a Merchant Key?**
-A: The change is logged in the Audit Trail. You must also update the Merchant Key in any connected integration or payment gateway configuration to avoid transaction failures caused by credential mismatch.
-
-**Q: Can I deactivate a merchant without deleting them?**
-A: Yes. Setting the Status to DEACTIVATE disables the merchant's access and transactions on the platform while preserving all their data, contracts, and audit history. This is the preferred approach over deletion, which is permanent.
-
-**Q: What does Entity Type affect downstream?**
-A: Entity Type determines how financial entries are categorized when transactions are posted. A merchant tagged as CUSTOMER generates Accounts Receivable entries. One tagged as SUPPLIER generates Accounts Payable entries. Getting this right at the time of onboarding prevents GL mis-postings later.
-
-**Q: Is there support for multi-currency merchants?**
-A: Yes. Credit limits can be denominated in specific currencies, and merchant-level currency settings drive how financial settlements are calculated and posted. The AR/AP Type field also factors into multi-currency settlement logic.
-
-**Q: What is the Merchant Contract Key?**
-A: The Merchant Contract Key is a system-generated unique identifier for the contract record itself — distinct from the Merchant ID and the Merchant Key. It is used internally for API calls and cross-system references to uniquely identify a specific contract without ambiguity.
-
-**Q: Why would a contract have multiple payment channels with different rates?**
-A: Different payment methods carry different processing costs. Credit card transactions typically carry higher MDR (Merchant Discount Rate) than FPX or e-wallet transactions. The rate card lets you formalize these different rates per channel in a single contract, so the correct fee is applied automatically for each transaction type.
+### Credit Limit and Terms
+
+- **Credit Term** — *Existing Credit Term* or *New Credit Term*: Credit Term Name, Credit Term Code (required), Status, Set Year / Month / Day, Add Year / Month / Day. `CREDIT_TERM` extension, saved with the header Save.
+- **Credit Limit** — Credit Limit Code (required), Credit Limit Name, Status, Currency, Credit Limit Amount. `CREDIT_LIMIT` extension, saved with the header Save.
+
+### Contract
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Contract Name | `bl_pgw_merchant_contract_hdr.name` | Yes | |
+| Contract Code | `code` | Read-only | Browser computes the highest existing numeric part + 1, formatted `C00001`…; no backend uniqueness check on `code` |
+| Merchant | `merchant_guid` | Yes | Backend rejects a missing or unknown merchant (`MERCHANT_GUID_IS_NULL`, `MERCHANT_GUID_DOES_NOT_EXIST`) |
+| Contract Company | `comp_guid` | Yes | Backend rejects a missing or unknown company |
+| Status | ACTIVE / DEACTIVATE | Yes | The only field editable after creation besides the name |
+| Merchant Contract Key | `merchant_contract_key` | Generated | Ten random alphanumerics assigned by `PgwMerchantContractHdrService.generateMerchantContractKey()`; must be unique |
+| Type | Derived | Read-only | *TEMPLATE* when the contract has no merchant, *PERSONAL* otherwise (`contract-edit.component.ts` L211-218) |
+
+### Rate card, payment channel, charge rate
+
+- **Rate Card** — Rate Card Code (generated `RC_nnnn`, read-only), Rate Card Name (required), Status, Description → `bl_pgw_merchant_rate_card`.
+- **Payment channel** — a rate-card line (`bl_pgw_merchant_rate_card_line`) linking the card to a PGW payment channel and payment provider.
+- **Charge Rate** — Charge Rate Name (required), Rate (required), rate logic → `bl_pgw_merchant_rate_hdr` (`rate`, `rate_logic`). Up to four named charge rates per channel are what the monthly report shows as *PC Charge Name 1-4*.
+
+## Lifecycle and effects
+
+This is a master-data applet: no server document type, no amount or quantity signum, no journal, no stock processor and no open-queue rows. It **writes**:
+
+| What | Where | How |
+|---|---|---|
+| Merchant | `bl_fi_mst_entity_hdr` + `bl_fi_mst_entity_ext` (`ID_INFO`, `COMPANY_INFO`, `URL_INFO`, `TAX_INFO`, `PAYMENT_CONFIG`, `CREDIT_TERM`, `CREDIT_LIMIT`, `SYS_MERCHANT_LOGO`) + `bl_fi_mst_entity_line` (`CONTACT_INFO`) | `POST` / `PUT core2/tnt/dm/erp/entity/merchants/backoffice-ep`; validated by `EntityDataConsistencyObject` |
+| Entity event | `bl_fi_mst_entity_event` (`CREATE_MERCHANT`, `EDIT_MERCHANT`, `CREATE_CHARGE_RATE`, `UPDATE_PAYMENT_CHANNELS`, …) | Posted by the applet after each save (`merchant.effects.ts` L340-379) |
+| Peppol ID, login link, company link, merchant branch | `bl_fi_entity_peppol_id`, `bl_fi_mst_entity_login_subject_link`, `bl_fi_mst_comp_branch_location_entity_link`, intercompany branch tables | Immediate `POST` from the panel |
+| Contract, rate card, charge rate | `bl_pgw_merchant_contract_hdr`, `bl_pgw_merchant_rate_card` (+ `_line`), `bl_pgw_merchant_rate_hdr` | `core2/tnt/dm/pgw/merchant-contract-hdr`, `…/pgw/merchant/rate-cards`, `…/pgw/merchant/rate-hdrs` |
+
+It **reads** `bl_pgw_monthly_merchant_txn_summary_report_line` (`…/pgw/merchant-monthly-reports`) for the Report menu. Those rows are produced by the `PGW_MERCHANT_MONTHLY_REPORT_PROCESSOR` job (`PgwMerchantMonthlyReportProcessor`), which takes `months` / `years` properties, groups payment transactions per merchant and payment channel, copies the VAT rate from the merchant's tax extension and fills the charge columns from the merchant's rate headers (`setFixAmountAndPercentage`, L248-297). The applet has no button to run it.
+
+**Backend validation that stops a save (the exact throws):**
+
+- Merchant: status must be present (`ENTITY_HDR_OBJECT_STATUS_IS_NULL_OR_EMPTY`, `EntityDataConsistencyObject` L120-126 / L617-622); a `merchant_code` on a row without `is_merchant` is rejected (`API_TNT_DM_BL_FI_MST_ENTITY_HDR_OBJECT_MERCHANT_CODE_SHOULD_NOT_BE_SET`, L164-168); a duplicate `merchant_code` or `merchant_id` is rejected (`…MERCHANT_CODE_ALREADY_EXISTS` L190-195, `ENTITY_HDR_OBJECT_MERCHANT_ID_ALREADY_EXISTS` L91-97). Codes are upper-cased and stripped of spaces before the check (`sanitiseCode`, L1396).
+- Contract: merchant guid, company guid, contract key, revision, status, dates and created / updated subject are all mandatory and must exist (`PgwMerchantContractHdrDataConsistencyObject` L37-145); a duplicate contract key is rejected (L94).
+- Rate card and charge rate: their own `PgwMerchantRateCardDataConsistencyObject` / `PgwMerchantRateHdrDataConsistencyObject`.
+
+**Status.** Merchant status is ACTIVE / TEMP / INACTIVE; the `merchants` listing and every downstream lookup by entity type filter on the flag, not on status, so an INACTIVE merchant still appears wherever merchants are listed. Contract status is ACTIVE / DEACTIVATE and is not read by the monthly report job.
+
+**Delete.** Remove issues `DELETE …/entity/merchants/{guid}` at once. The backend deletes the header, its extensions, lines and login links physically (`EntityUow.delete`, L184-191) after deleting attached files, and fires the `MERCHANT_DELETED` webhook; it does not check for contracts, payment transactions or documents that reference the entity. Contracts are separate rows and survive with a dangling `merchant_guid`. Contract **Remove** deletes the contract header the same way (`PgwMerchantContractHdrService.deleteMerchantContractHdr`).
+
+**What reads the credentials.** Payment-gateway callbacks verify their signature with `bl_pgw_payment_txn_hdr.merchant_key` — the key copied onto the transaction when it was created (`IPay88Controller` L154, L201; `PgwBackendController` L500-601) — so rotating the Merchant Key affects new transactions only.
+
+## Related applets
+
+- [Entity Maintenance](/applets/master-data/entity-applet/) — the type-agnostic view of the same rows; use it to see a merchant that is also a customer or supplier, or to maintain the category trees.
+- [Customer Maintenance](/applets/master-data/customer-maintenance-applet/), [Supplier](/applets/master-data/supplier-applet-1/), [Employee Maintenance](/applets/master-data/employee-applet/) — the other entity-type views; a merchant with CUSTOMER in its Entity Type appears in Customer Maintenance with the credit terms and limits set here.
+- [Organisation](/applets/master-data/organisation-applet/) — companies for contracts and company linking; branches for merchant branches.
+- [Tax Configuration](/applets/master-data/tax-configuration-applet/) — tax codes for Tax & Billing and the merchant branch control account.
+- [Chart of Account](/applets/master-data/chart-of-account-applet/) — GL codes and subledgers for the merchant branch control account.
+- [Cashbook](/applets/master-data/cashbook-applet/) — settlement methods read by Payment Config.
+- [My Peppol Admin](/applets/e-invoice/mypeppol-admin-applet/), [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) — consume the Peppol participant IDs and notification methods saved on the merchant.
+- [Seller Admin](/applets/ecommerce/seller-admin-applet/) — operates orders and fulfilment for a merchant registered here.
+- [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) — the tenant users that the Login tab verifies and invites.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| **CREATE** stays grey | One of the starred fields is empty — Merchant ID, Name, Company, registration number, Entity Type (when shown), Merchant Type, AR/AP Type, PGW Merchant Code, Merchant Key (`merchant-create.component.html`) | Fill every starred field; Description is the only optional one |
+| Entity Type is missing on the create form but visible on edit | `HIDE_ENTITY_TYPE` is on in Field Settings; the edit form does not honour it | Expected. Turn the setting off to set CUSTOMER / SUPPLIER / EMPLOYEE at creation, or add them afterwards on the Details tab |
+| Merchant saved without the CUSTOMER flag although CUSTOMER was expected | With `HIDE_ENTITY_TYPE` on, the disabled control is excluded from the request, so only `is_merchant` is set (by the backend handler) | Edit the merchant and add the type on the Details tab |
+| Two merchants with the same Merchant ID | Merchant ID is the `ID_INFO` extension and is never checked for uniqueness; the unique key is the generated `merchant_code`, which this applet never displays | Search by name; use [Entity Maintenance](/applets/master-data/entity-applet/) (keyword search matches the merchant code) to tell them apart |
+| `merchant_code already exists` on an import or API call | Another entity already carries that `merchant_code` (`…MERCHANT_CODE_ALREADY_EXISTS`); codes are compared after upper-casing and removing spaces | Leave the code blank so the running number generates it, or pick an unused one |
+| Rows added on Return URL / Tax & Billing / Payment Config / Address / Contact / Credit Term / Credit Limit disappear | They are staged in the browser until the header **Save** is pressed | Press **Save** on the Merchant Edit header, not only the panel's Save / Add |
+| Merchant vanished after clicking **Remove** | Remove deletes immediately, without confirmation, and physically | Recreate the merchant; contracts that pointed at it still exist in the Contract listing but show no merchant |
+| Contract listing shows a contract with an empty Merchant Name / edit shows *Type = TEMPLATE* | `merchant_guid` is null — the merchant was deleted, or the contract was created as a template | Create a new contract for the merchant; templates cannot be re-pointed from the UI |
+| Contract *Merchant Name* shows `[object Object]` | The edit panel patches the name from the merchant lookup response and, on the Contract-menu edit screen, the value it receives is the container, not the string (`contract-edit.component.ts` L153-154) | Cosmetic; the merchant link is intact. Open the same contract from the merchant's own Contract tab to see the name |
+| Two contracts with the same Contract Code | The code is computed in the browser as max + 1; two users creating at the same time get the same number and the backend does not check `code` uniqueness | Rename one; the contract key, not the code, is the unique identifier |
+| **Verify Email** says *User … not found* | The e-mail has no tenant login (`USER_NOT_FOUND`) | Press **Send Invite**; the invitation creates the login and, with `create_entity: true`, an entity for it. Link the login once the user has confirmed |
+| **Verify Email** succeeded but the user now appears in Tenant Admin | Verify works by attempting to add the address as a tenant user; an `OK` response means it was added | Expected side effect (`login-create.component.ts` L117-145) |
+| Report menu is empty | `bl_pgw_monthly_merchant_txn_summary_report_line` is filled only by the `PGW_MERCHANT_MONTHLY_REPORT_PROCESSOR` job with explicit `months` / `years` | Ask the platform team to schedule or run the job for the months needed |
+| Report shows charges of 0 or blank charge names | The job copies charge rates from the merchant's rate headers grouped by name (up to four); the merchant's contract has no rate card lines for that channel | Add the rate card, the payment channel and the charge rates under Contract › Rate Card, then rerun the job |
+| Payment-gateway callback fails with *signature mismatch* after the Merchant Key was changed | Callbacks are verified against the key copied onto the payment transaction header when it was created, not the current entity key (`IPay88Controller` L154) | Transactions started before the change keep the old key; only new transactions use the new one. Do not change the key while transactions are in flight |
+| Default Selection does nothing / console error on choosing a branch | The screen is not wired (undefined container; unbound output) and nothing reads `DEFAULT_BRANCH` / `DEFAULT_LOCATION` | Nothing to configure; see [Applet settings](#applet-settings) |
+| Settings links *Permission Wizard*, *Audit Trail*, *Reset Applet State* return to the merchant listing | The shared settings frame lists them but this applet registers no route for them | Use Permission Set / User / Team / Role Permission; the applet's own Audit Trail is the left-menu item |
+| Personalization › *Field Settings* does nothing | Listed in `personalizationItems` without a personalization route | Use Settings › Field Settings |
+
+## Related documentation
+
+- [Master Data applets](/applets/master-data/)
+- [Entity Maintenance](/applets/master-data/entity-applet/) — the shared entity model this applet edits
+- [E-Commerce module](/modules-v2/ecommerce/) and [E-Invoice module](/modules-v2/e-invoice/)
