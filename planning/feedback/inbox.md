@@ -562,3 +562,12 @@ with the analysis, the changes made, and the commit hash.
 ### product (stock requisition)
 - [ ] F-0143 (2026-09-05) Approval Settings / Branch Designation tables are written but NOT enforced by create/FINAL or the backend generic-document path (approval service reachable only via a controller the applet never calls) — page says "configured but not enforced", citing the open customer request. CREATE ST bypasses the Knock Off Configuration (calls knockOff directly). 14 keys the applet reads have no control for its code on the shared screen (HIDE_FILE_IMPORT_MENU etc.). No screenshots exist for this applet — capture set needed.
 
+## From Lane 3 run 11 (2026-09-05)
+
+### /applets/purchase-workflow/internal-purchase-grn-applet/ + grn-stock-in + /guides/purchasing-guides/ (fact)
+- [ ] F-0144 (2026-09-05) Purchase GIN is a 0/0 document (no stock movement, no journal; absent from MA cost types). GRN pages and the procurement guide say "GIN reduces stock" — wrong; the stock-moving purchase-side out document is Purchase Return. A backend type INTERNAL_PURCHASE_GIN_STOCK_OUT exists with no applet/registry row. Vincent: is 0/0 intended with a Stock Out applet planned?
+
+### product (purchase GIN)
+- [ ] F-0145 (2026-09-05) 47 shared toggles never render (code in no tabMappings list); 31 gear keys neither declared nor read (copied from PO); Default Selection branch/location persisted but never applied; personal Default Selection non-functional; Payment tab writes receipt-voucher lines on a purchase document; DELETE has no backend FINAL check; serial validation skips signum-0 lines. INTERNAL_PURCHASE_GIN_DISPLAY_PRICING and SHOW_GENDOC_FINAL_BUTTON checked but not seeded (non-admins see no prices). Tickets?
+- [x] F-0146 (2026-09-05) Four infographics (24 MB, invented features) and four screenshots (names, a phone number) quarantined.
+

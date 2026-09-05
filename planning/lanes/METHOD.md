@@ -65,5 +65,11 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
     and the backend container first: Consignor Purchase Billing writes its own `bl_fi_csg_billing_*`
     tables — no DCO signums, no journal, no queue. And trace the object actually handed to
     `service.post/put`, not the reducer — two "features" there were dead in the request assembly.
-13. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+13. **Use `kb/tools/gates.py`** (lane 3, run 11) for the "rendered" proof on the shared screen: it walks
+    enclosing `*ngIf` gates, `tabMappings`, `appletCode` comparisons and the orientation guard, replacing
+    the nearest-`*ngIf` heuristic in `applet-scan.sh`. Also check `isShowColumn(hide, show)` in the
+    shared ag-grid base as a consumption path.
+14. **Purchase GIN is 0/0** (no stock, no journal); the stock-moving purchase-side out document is
+    Purchase Return. Any page or guide saying "GIN reduces stock" is wrong.
+15. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.
