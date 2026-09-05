@@ -88,7 +88,7 @@ per day, `measure` weekly, batches as the inbox fills. It never ends; it slows d
 - No push without the local suite (build, lychee ≤ baseline, Playwright green). Live verify after.
 - No structural move without an approved spec. No new pages for applets not in the registry.
 - Never reintroduce marketing claims, invented roadmaps, or "blockchain".
-- Decisions that are Vincent's are queued in `## Lanes (started 2026-09-05, Vincent's instruction) — **run four lanes continuously until Monday 2026-09-07 07:00 Asia/Kuala_Lumpur** (Vincent, 2026-09-05 morning). After that: stop launching lanes, keep the loop at single units, and report.
+- Decisions that are Vincent's are queued in `## Lanes (started 2026-09-05, Vincent's instruction) — **run lanes continuously until Monday 2026-09-07 07:00 Asia/Kuala_Lumpur** (Vincent, 2026-09-05 morning). **Drained to TWO lanes from ~11:30 2026-09-05 (Vincent: stay under the 5-hourly token quota):** lanes 1 and 2 finish their current run and are not relaunched; lanes 3 (e-invoice/purchasing) and 4 (master data/inventory) continue. When 3 or 4 empties its queue, pick up lane 1's or 2's remaining queue. After Monday 07:00: stop launching lanes, keep the loop at single units, and report.
 
 Four parallel agents upgrade `content/en/applets/**` to `specs/applet-page-standard.md` from
 source code + backend + issues (`planning/lanes/`). **While lanes are running, loop units must not
@@ -100,7 +100,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 ## Waiting on Vincent` below and asked at the next
   opportunity; work continues on everything else.
 
-## Lanes (started 2026-09-05, Vincent's instruction) — **run four lanes continuously until Monday 2026-09-07 07:00 Asia/Kuala_Lumpur** (Vincent, 2026-09-05 morning). After that: stop launching lanes, keep the loop at single units, and report.
+## Lanes (started 2026-09-05, Vincent's instruction) — **run lanes continuously until Monday 2026-09-07 07:00 Asia/Kuala_Lumpur** (Vincent, 2026-09-05 morning). **Drained to TWO lanes from ~11:30 2026-09-05 (Vincent: stay under the 5-hourly token quota):** lanes 1 and 2 finish their current run and are not relaunched; lanes 3 (e-invoice/purchasing) and 4 (master data/inventory) continue. When 3 or 4 empties its queue, pick up lane 1's or 2's remaining queue. After Monday 07:00: stop launching lanes, keep the loop at single units, and report.
 
 Four parallel agents upgrade `content/en/applets/**` to `specs/applet-page-standard.md` from
 source code + backend + issues (`planning/lanes/`). **While lanes are running, loop units must not
