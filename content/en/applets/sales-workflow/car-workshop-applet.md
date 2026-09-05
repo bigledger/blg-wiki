@@ -1,6 +1,63 @@
 ---
 title: "Car Workshop Applet"
-description: "End-to-end workshop operations applet for consultation intake, job sheet execution, checklist control, and billing-ready document flow."
+description: "Reference card for service advisors, technicians and administrators who operate the Car Workshop applet: the consultation record, its checklists and vehicle link, the documents it spawns (quotation, jobsheet, invoices, receipt), every exposed setting, and the real failure modes."
+applet_code: "carWorkshopApplet"
+applet_repo: "blg-applet-wavelet-car-workshop-applet"
+modules: [crm-digital, financial-accounting]
+related_applets: [internal-jobsheet-applet, internal-sales-quotation-applet, internal-sales-invoice-applet, internal-purchase-invoice-applet, internal-receipt-voucher-applet, customer-applet, organisation-applet, membership-admin-applet, workflow-design-applet]
+guides: []
+sources:
+  screens:
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/consultation-container/consultation-create-edit/consultation-create-edit.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/consultation-container/consultation-create-edit/consultation-create-edit.component.html
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/consultation-container/consultation-listing/consultation-listing.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/consultation-container/consultation-create-edit/consultation-checklist/consultation-checklist.component.html
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/internal-jobsheet-container/internal-jobsheet-edit/internal-jobsheet-edit.component.html
+  configuration:
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/models/jobsheet-applet-settings.model.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/models/applet-constants.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/settings-container/field-configuration/field-configuration.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/settings-container/consultation-checklist-settings/checklist-create/checklist-create.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/settings-container/consultation-checklist-settings/checklist-edit/checklist-lines-listing/checklist-line-create/checklist-line-create.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/app.component.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+  fields:
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/consultation-container/consultation-create-edit/main-details/main-details.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/consultation-container/consultation-create-edit/main-details/select-vehicle/vehincle-create-edit.component/main-details/main-details.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/consultation-container/consultation-create-edit/main-details/select-vehicle/select-vehicle-listing.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/consultation-container/consultation-create-edit/consultation-requests-listing/consultation-requests-listing.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/consultation-container/consultation-create-edit/consultation-checklist/checklist-details/checklist-details.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/consultation-container/consultation-create-edit/consultation-checklist/checklist-car-condition/image-create/image-create.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/consultation-container/consultation-create-edit/consultation-checklist/checklist-listing/checklist-create/checklist.create.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/consultation-container/consultation-create-edit/consultation-checklist/checklist-quality-control/checklist-quality-control.component.ts
+  lifecycle:
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/AsvConsultationHdrDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/AsvChecklistHdrDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/AsvConsultationHdrService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/AsvConsultationHdrUow.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/AsvConsultationGenDocHdrLinkService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalJobsheetDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/TntAsvPermissions.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/AsvConsultationHdrController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/entity/EntityVehicleController.java
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/state-controllers/consultation-controller/store/effects/consultation.effects.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/state-controllers/internal-jobsheet-controller/store/effects/internal-jobsheet.effects.ts
+  troubleshooting:
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/consultation-container/consultation-create-edit/main-details/main-details.component.ts
+    - blg-applet-wavelet-car-workshop-applet/micro-fe/projects/wavelet-erp/applets/car-workshop-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - gh:bigledger/blg-applet-wavelet-car-workshop-applet#5
+    - gh:bigledger/blg-applet-wavelet-car-workshop-applet#2
+    - gh:bigledger/blg-wiki#321
+  reviewed_at_commit:
+    - blg-applet-wavelet-car-workshop-applet@94224f70
+    - blg-shared-utilities (checked 2026-09-05)
+    - blg-akaun-platform-java@871dbf5c
 tags:
 - automotive
 - workshop-management
@@ -10,458 +67,199 @@ tags:
 weight: 205
 ---
 
-## Purpose and Overview
+## Overview
 
-The Car Workshop Applet helps service centers run workshop operations from intake to execution in one flow. It connects customer and vehicle consultation records with job sheets, checklist control, and downstream financial documents.
+The **Car Workshop Applet** runs a vehicle service case from intake to billing. Its own record is the **consultation** (`bl_asv_consultation_hdr`): one branch, one vehicle, one consultant, an optional member, a list of customer requests and three inspection checklists (pre-inspection, safety, quality control) with photos. From inside a consultation the service advisor raises the financial documents — sales quotation, jobsheet, purchase invoice, sales invoice, receipt voucher — and the applet links each one back to the consultation. It is opened by front-desk advisors and technicians; administrators maintain the predefined checklists and the default branch.
 
 {{< callout type="info" >}}
-**Core Concept**: The applet captures service reality first (consultation and job details), then connects it to finance-ready documents for billing and control.
+The consultation is not a financial document: it has no signums, no posting and no running-number reservation at FINAL. Its **Posting Status** field (OPEN / CLOSE / DRAFT) is a free label saved as-is. Money and stock move only through the documents created from its tabs — each of which is documented on its own page.
 {{< /callout >}}
 
-### Who Benefits from This Applet?
+## Where it fits
 
-**Front Desk and Service Advisors:**
-- Register consultation cases quickly
-- Select or create vehicle and customer records on the spot
-- Capture checklist findings before workshop work starts
+| Direction | Document / applet | How it connects |
+|---|---|---|
+| Upstream (master data) | [Customer](/applets/master-data/customer-applet/), [Organisation](/applets/master-data/organisation-applet/), [Membership Admin](/applets/membership/membership-admin-applet/) | Account tab (entity), branch and consultant (employee), optional member card |
+| Upstream (master data) | Vehicle records (`bl_fi_mst_entity_vehicle_hdr`, API `entity-vehicle-hdrs`) | A vehicle belongs to a customer entity; the consultation stores the vehicle GUID and registration number |
+| Downstream | [Sales Quotation (Internal)](/applets/sales-workflow/internal-sales-quotation-applet/) | Created from the **Quotation** tab; linked through `bl_asv_consultation_gendoc_hdr_link` |
+| Downstream | [Jobsheet (Internal)](/applets/sales-workflow/internal-jobsheet-applet/) | Created from the **JobSheet** tab or the applet's own **Job Sheet** menu (`INTERNAL_JOBSHEET`, both signums 0) |
+| Downstream | [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) | Created from the **Sales Invoice**, **Purchases** and **Receipt** tabs; the invoice bills the customer, the purchase invoice records supplier parts, the receipt voucher collects payment |
 
-**Workshop Supervisors and Technicians:**
-- Convert consultation outcomes into actionable job sheets
-- Track line items, labor, and materials in one job record
-- Maintain consistent inspection and quality control workflow
+## Screens and menus
 
-**Finance and Back Office Teams:**
-- Receive cleaner source data for invoices and vouchers
-- Trace service events to financial documents
-- Reduce billing disputes with checklist and attachment evidence
+Route root: `applet/tnt/wavelet/erp/car-worshop-applet/` (the typo is in the code).
 
-**Management:**
-- Monitor service pipeline and posting progress
-- Improve branch-level service consistency
-- Standardize workshop process across locations
+| Menu item | Route | What it shows |
+|---|---|---|
+| **Consultation** | `consultation` | Consultation listing (Consultation No, Consultation Name, Branch, Consultant, Member, Vehicle Plate, Last Update, Created Date, Status) with create and edit |
+| **Job Sheet** | `internal-jobsheet` | Listing, create and edit of `INTERNAL_JOBSHEET` documents — the same document type as the standalone Jobsheet applet |
+| **Settings** | `settings/…` | Field Settings, Checklist Settings, Default Selection, Webhook, permission listings, Release Notes, Audit Trail |
+| **Personalization** | `personalization/…` | Per-user Default Selection (branch, location) and sidebar |
 
-### What Problems Does This Solve?
+### The consultation form
 
-**The Typical Workshop Operations Problem:**
+Pressing **+** creates a working record with status `TEMP` (`POST consultation-hdrs/backoffice-ep/temp`, `AsvConsultationHdrController.java` L69–L80); the first Save updates it to `ACTIVE` (`consultation-create-edit.component.ts` L342). Tabs, in the default order (re-orderable under Settings → Default Selection): **Details**, **Account**, **Requests**, **Checklist**, **Quotation**, **JobSheet**, **Purchases**, **Sales Invoice**, **Receipt**. A Delete button on Details removes the consultation.
 
-Many workshops use disconnected tools for intake, service execution, and billing. This causes:
-- Incomplete intake information
-- Lost service details between advisor and technician
-- Delayed billing because records are not ready
-- Inconsistent inspection quality between branches
-- Weak traceability when disputes happen
+- **Details** — branch, vehicle plate (opens the *Select Vehicle Listing* side panel: Plate No, Brand, Model, Engine Capacity, Remarks; a new vehicle can be created there with plate, model and engine capacity required), consultation number, consultant, member card, description, posting status.
+- **Account** — the shared entity picker (Entity Details, Bill To, Ship To).
+- **Requests** — a grid of customer-reported issues: No., Description, Remarks, Status (checkbox), Created Date.
+- **Checklist** — three inspection types, **Pre-Inspection**, **Safety** and **QC** (`checklist_type` = `PRE-INSPECTION`, `SAFETY`, `QUALITY-CONTROL`), each with sub-tabs **Details** (date, technician, description, status), **Car Condition** (photos with a position — FRONT / BACK / LEFT / RIGHT — and description) and **Checklist** (tick lines from the predefined checklists).
+- **Quotation, JobSheet, Purchases, Sales Invoice, Receipt** — an embedded listing of the documents already linked to this consultation, with create/edit forms of the respective document type.
 
-**The Car Workshop Applet Solution:**
+### Settings menu
 
-- **Structured consultation intake** with customer, member, and vehicle context
-- **Checklist-driven control** for pre-inspection, condition, safety, and quality
-- **Job sheet lifecycle management** from draft to final and void control
-- **Integrated document handoff** to quotation, invoice, purchase, and receipt flows
-- **Configurable settings** for field visibility and process defaults
+| Settings entry | Route | Purpose |
+|---|---|---|
+| Field Settings | `settings/field-settings` | **Placeholder only** — see Configuration |
+| Checklist Settings | `settings/consultation-checklist-settings` | Predefined checklist headers and their lines |
+| Default Selection | `settings/default-selection` | Default branch and location; consultation tab order |
+| Webhook | `settings/webhook` | Subscribe endpoints to document events |
+| Client-Side Permission / Permission Set / User / Team / Role | `settings/*-listing` | Access control (shared permission module) |
+| Release Notes, Audit Trail | `settings/release-notes`, `settings/applet-log` | Version history and settings audit |
 
-## Key Features Overview
+## Configuration
 
-{{< cards >}}
-  {{< card title="Consultation Intake" subtitle="Capture customer, vehicle, consultant, and workshop context" link="#consultation-workspace" >}}
+### Before you can use it
 
-  {{< card title="Checklist Control" subtitle="Pre-inspection, car condition, safety, and quality checkpoints" link="#consultation-checklist" >}}
+| Prerequisite | Where | Why the consultation needs it |
+|---|---|---|
+| Company and branch | [Organisation](/applets/master-data/organisation-applet/) | Branch is required on Details (`Validators.required`, `main-details.component.ts` L79); picking a branch in Default Selection copies its `MAIN_LOCATION` |
+| Employees (consultants, technicians) | [Organisation](/applets/master-data/organisation-applet/) | Consultant is required on Details (L83); technician is required on every checklist Details tab (`checklist-details.component.ts`) |
+| Customer entities | [Customer](/applets/master-data/customer-applet/) | The Account tab is marked `[required]="true"`; a vehicle belongs to an entity |
+| Members (optional) | [Membership Admin](/applets/membership/membership-admin-applet/) | Member card on Details |
+| Predefined checklists | Settings → Checklist Settings (this applet) | The Checklist sub-tab can only tick lines that exist on a predefined checklist |
+| Running number `CONSULTATION_RUNNING_NO` | Tenant running-number setup | Assigned on creation by the backend (`AsvConsultationHdrDataConsistencyObject.java` L192–L194) |
+| API permissions `API_TNT_DM_ASV_CONSULTATION_HDR_{TEMP_CREATE,CREATE,READ,UPDATE,DELETE}`, `…_ASV_CONSULTATION_GENDOC_HDR_LINK_*`, `…_ASV_CHECKLIST_HDR_*`, `…_ASV_CHECKLIST_LINE_*`, `…_ASV_CONSULTATION_CHECKLIST_LINE_*`, `…_CHECKLIST_IMAGE_LINE_*` | Settings → Permission Set / User / Team / Role | Each ASV table has its own permission family (`TntAsvPermissions.java`); the document tabs additionally need the `TNT_API_DOC_INTERNAL_*` permissions of the document types they create |
+| Everything the spawned documents need (default GL codes, tax codes, settlement methods, pricing) | See [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [Jobsheet (Internal)](/applets/sales-workflow/internal-jobsheet-applet/), [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) | The consultation itself posts nothing |
 
-  {{< card title="Job Sheet Management" subtitle="Create, edit, finalize, and void internal job sheets" link="#job-sheet-workspace" >}}
+### Applet settings
 
-  {{< card title="Document Handoff" subtitle="Connect workshop records to quotation, invoice, purchase, and receipt flows" link="#document-handoff" >}}
+**Where the settings live.** `app.routing.ts` mounts three settings surfaces: the applet-local **Default Selection** (`settings/default-selection`, with a personal copy at `personalization/personal-default-selection`), the applet-local **Checklist Settings** (`settings/consultation-checklist-settings`) and **Field Settings** (`settings/field-settings`). Field Settings is routed to the applet's **own** `FieldConfigurationComponent` (`components/settings-container/field-configuration/`), not the shared one: it is a 50-line template of unbound `<mat-slide-toggle>` controls (Lines Settings: Unit Discount, SST/VAT/GST, WHT, Blanket Order; Department Settings…) with an empty component class and a SAVE button wired to nothing. **No setting can be saved from that screen.** Consequently the only keys that pass all four proofs in this applet are the Default Selection keys below.
 
-  {{< card title="Settings" subtitle="Field settings, checklist settings, and default selection" link="#configuration--settings" >}}
+Who can change them: any user who can open Settings; there is no finer per-setting authority. Personalization → Default Selection lets a user override `DEFAULT_BRANCH` / `DEFAULT_LOCATION` for themselves.
 
-  {{< card title="Personalization" subtitle="Personal defaults and sidebar layout" link="#personalization" >}}
-{{< /cards >}}
+#### Default Selection (applet-local)
 
-{{< figure src="/images/car-workshop-applet/infographics.png" alt="Car Workshop Applet infographic showing intake to invoice flow from consultation to checklist, job sheet, and financial documents" caption="Car Workshop Applet overview: from consultation intake to checklist control, job sheet execution, and financial handoff." >}}
+| Setting | Key | What it controls | Default | Effect when changed |
+|---|---|---|---|---|
+| Default Branch | `DEFAULT_BRANCH` (+ `DEFAULT_COMPANY`) | Pre-fills the branch on a new consultation; picking a branch copies its `MAIN_LOCATION` into Default Location | none (`new UntypedFormControl()`, `default-settings.component.ts` L55; reset to `null`, L106) | New consultations only |
+| Default Location | `DEFAULT_LOCATION` | Default stock location used by the documents created from the consultation | none (L56) | New documents only |
+| Details Tab Ordering | `CONSULTATION_DETAILS_TAB_ORDER` | Drag-and-drop order of the nine consultation tabs; tabs added by an upgrade are appended (L64–L80) | Details, Account, Requests, Checklist, Quotation, JobSheet, Purchases, Sales Invoice, Receipt (L40–L48) | Tab order for all users |
 
-## Key Concepts
+Save writes only these keys (`onSave()`, L94–L100).
 
-### Workshop Flow at a Glance
+#### Checklist Settings (applet-local master data)
 
-```text
-Consultation
-  -> Checklist (pre-inspection, condition, safety, quality)
-  -> Internal Job Sheet
-  -> Downstream documents (as needed)
-       - Internal Sales Quotation
-       - Internal Sales Invoice
-       - Internal Purchase Invoice
-       - Internal Receipt Voucher
-```
+A **checklist header** (`bl_asv_checklist_hdr`) has Name (required, max 255 — `checklist-create.component.ts` L96), Description and Remarks; its **lines** (`bl_asv_checklist_line`) each have Name (required, max 255), Description and Remarks. Headers and lines can be created, edited and deleted from the listing; the consultation's Checklist sub-tab shows every header with its lines as a tree of checkboxes (*Select All Checklists* at the top).
 
-### The Four Core Records
+#### Rendered on Field Settings but not persisted
 
-| Record | Purpose | Typical Owner |
-|--------|---------|---------------|
-| **Consultation** | Intake and service context before execution | Front Desk / Service Advisor |
-| **Checklist** | Structured quality and safety findings | Service Advisor / Technician |
-| **Internal Job Sheet** | Work execution details and costing basis | Workshop Supervisor / Technician |
-| **Financial Documents** | Billing and financial settlement chain | Finance / Back Office |
+The stub screen shows toggles labelled *Unit Discount*, *SST/VAT/GST*, *WHT*, *Blanket Order* and a Department Settings panel. They are not bound to any form control, are not saved, and are not read by any component (`field-configuration.component.ts` is an empty class at commit `94224f70`). Switching them has no effect.
 
-{{< callout type="tip" >}}
-Use Consultation as the service truth source and Job Sheet as the execution truth source. This keeps downstream billing accurate and auditable.
-{{< /callout >}}
+#### Read at runtime without a control in this applet
 
----
+The embedded document forms (jobsheet, quotation, sales and purchase invoice, receipt voucher) are copies of the standalone applets' components and read the same setting keys from the master settings stored under `appletCode = carWorkshopApplet` (`app.component.ts` L67): 240 keys are declared across `applet-settings.model.ts` and `jobsheet-applet-settings.model.ts`, and 146 of them are actually read — the `HIDE_*` / `EXPAND_*` families, `DISABLE_GEN_DOC_LISTING`, `DEFAULT_POSTING_STATUS`, `DEFAULT_STATUS`, `DEFAULT_TRANSACTION_DATE`, `SORT_ORDER`, `FUZZY_SEARCH_COLUMNS`, `ENABLE_SERIAL_NUMBER_VALIDATION_FINAL`, `ENABLE_DRAFT_LOCK_SERIAL_NUMBER_CHECKING`, `DISALLOW_SELL_BELOW_MIN_PRICE` / `…_REPLACEMENT_PRICE` / `…_MA_COST`, `ENABLE_MULTIPLE_KO`, `ENABLE_CREDIT_LIMIT_FILTER`, `ALLOW_TO_CONTRA_MORE_THAN_DOC_OPEN_AMOUNT`, `EDIT_CONTRA_TXN_DATE`, the credit-card `HIDE_*` / `MANDATORY_*` keys, and so on. Because this applet has no working screen for them, they can only be set by an API write to the applet settings (or are simply absent, in which case every toggle behaves as *off / shown* and the documents behave like their standalone applets with default settings). Their meaning is documented on the standalone pages: [Jobsheet (Internal)](/applets/sales-workflow/internal-jobsheet-applet/), [Sales Quotation (Internal)](/applets/sales-workflow/internal-sales-quotation-applet/), [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/).
 
-## Quick Start Guide
+### Document behaviour settings
 
-### For Front Desk: Create a Consultation
+| Area | How it is configured |
+|---|---|
+| Consultation status | Record status `TEMP` → `ACTIVE` on first save (`INACTIVE` exists in `models/options.ts` but is not offered on the form). **Posting Status** is a plain dropdown — `OPEN`, `CLOSE`, `DRAFT` (`main-details.component.ts` L52–L56) — saved verbatim to `posting_status`; the backend attaches no behaviour to it (the DCO validates only guid, name, audit columns, status and revision, `AsvConsultationHdrDataConsistencyObject.java`). |
+| Checklist status | Each checklist Details tab has the same `OPEN` / `CLOSE` / `DRAFT` dropdown (`checklist-details.component.ts` L58), saved to `consultation_status` on `bl_asv_consultation_checklist_detail_line`. |
+| Document creation from tabs | Saving a new document on the Quotation / JobSheet / Purchases / Sales Invoice / Receipt tab creates the document through the normal generic-document API and then posts an `AsvConsultationGenDocHdrLink` (`consultation_guid`, `gen_doc_hdr_guid`, `server_doc_type`) — `internal-jobsheet.effects.ts` L338–L346 and the equivalent effect in each of the other four controllers. The tab listings filter by `consultation_guids` + `server_doc_type` (L42–L46). |
+| Vehicle change propagation | Changing the vehicle on a consultation that already has linked documents rewrites `vehicle_registration_no` and `vehicle_hdr_guid` on every linked document header (`changeGenDocsVehicle$`, `consultation.effects.ts` L114–L175). |
+| Posting of the spawned documents | Fixed by each document's own backend rules (jobsheet: both signums 0 — `InternalJobsheetDataConsistencyObject.java` L15–L17; invoice, purchase invoice, receipt voucher: see their pages). No applet setting here changes it. |
+| Printables, e-Invoice, workflow, intercompany | No controls in this applet. |
+| Webhooks | Settings → Webhook; the spawned documents emit their own `<SERVER_DOC_TYPE>_CREATED` events on creation through the API; the consultation tables have no webhook topic (`AsvConsultationHdrService.java` calls no `WebhookService`). |
 
-**Goal:** Register a new workshop case with vehicle and customer context.
+### Feature visibility / permissions
 
-1. Open **Consultation** from the sidebar.
-2. Click **Add** to start a new consultation draft.
-3. Select branch, consultant, member (if applicable), and vehicle.
-4. If needed, create or update customer and address details during selection.
-5. Save and proceed to checklist capture.
+API permissions (server-side) are per ASV table — `API_TNT_DM_ASV_CONSULTATION_HDR_{TEMP_CREATE,CREATE,READ,UPDATE,DELETE,OWNER,MEMBER,ADMIN}`, the same families for `ASV_CONSULTATION_GENDOC_HDR_LINK`, `ASV_CHECKLIST_HDR`, `ASV_CHECKLIST_LINE`, `ASV_CONSULTATION_CHECKLIST_LINE`, `ASV_CONSULTATION_CHECKLIST_IMAGE_LINE`, `ASV_CONSULTATION_CHECKLIST_DETAIL_LINE` and `ASV_CONSULTATION_REQUEST_LINE` (`TntAsvPermissions.java`) — plus `TNT_API_DOC_INTERNAL_JOBSHEET_*`, `…_INTERNAL_SALES_QUOTATION_*`, `…_INTERNAL_SALES_INVOICE_*`, `…_INTERNAL_PURCHASE_INVOICE_*` and `…_INTERNAL_RECEIPT_VOUCHER_*` for the document tabs, and `entity-vehicle-hdrs` create/update for vehicles.
 
-**What you can track in listing:** Consultation No, Branch, Consultant, Member, Vehicle Plate, Last Update, Created Date, and Status.
-
-{{< figure src="/images/car-workshop-applet/consultation-listing.png" alt="Consultation listing with consultation number, branch, consultant, member, vehicle plate, status, and timestamps" caption="Consultation listing: monitor open and active workshop consultations at a glance." >}}
-
-{{< figure src="/images/car-workshop-applet/consulation-details.png" alt="Create or edit consultation details tab with branch, vehicle plate, consultant, member card, and posting status" caption="Consultation details tab: capture the primary intake context for each workshop case." >}}
-
-{{< figure src="/images/car-workshop-applet/consulation-account.png" alt="Consultation account tab showing linked entity details such as status, type, currency, contact, and phone" caption="Consultation account tab: verify linked customer account information before downstream billing." >}}
-
-{{< figure src="/images/car-workshop-applet/consultation-requests.png" alt="Consultation requests tab showing issue descriptions, remarks, status flags, and created date" caption="Consultation requests tab: track customer-reported issues and request statuses." >}}
-
----
-
-### For Service Team: Build and Progress a Job Sheet
-
-**Goal:** Convert operational details into a complete workshop job sheet.
-
-1. Open **Job Sheet** from the sidebar.
-2. Click **Add** to create a new internal job sheet.
-3. Fill main details, account details, and line items.
-4. Add payment/contra/attachments where required.
-5. Review posting status and mark to **FINAL** when ready.
-6. Use **VOID** only for finalized records that must be reversed by policy.
-
-**Common posting statuses in workshop flows:** DRAFT, FINAL, VOID, DISCARDED.
-
----
-
-### For Admin: Configure Checklist and Defaults
-
-**Goal:** Standardize workshop quality process and data entry behavior.
-
-1. Go to **Settings**.
-2. Configure **Checklist Settings** for workshop inspection templates.
-3. Configure **Field Settings** to show or hide process fields.
-4. Set **Default Selection** for company/branch/location and workflow behavior.
-5. Validate with a test consultation and a test job sheet.
-
-{{< figure src="/images/car-workshop-applet/checklisting-settings-predefined.png" alt="Applet settings checklist screen with checklist listing and editable checklist details" caption="Checklist settings: maintain predefined checklist headers and descriptions for workshop quality control." >}}
-
-{{< figure src="/images/car-workshop-applet/predefined-checklist-lines.png" alt="Checklist settings lines tab showing predefined checklist line items" caption="Checklist lines: standardize line-level checks under each checklist template." >}}
-
-{{< figure src="/images/car-workshop-applet/add-checklist-lines.png" alt="Add checklist line form with name, remarks, and description fields" caption="Add checklist line: define new inspection checks and remarks structure." >}}
-
----
-
-## Consultation Workspace
-
-The Consultation screen is the intake center for workshop operations.
-
-{{< figure src="/images/car-workshop-applet/consultation-listing.png" alt="Consultation listing screen with branch, consultant, member, vehicle plate, status, and update timestamps" caption="Consultation workspace listing: search and open consultation records for execution." >}}
-
-### What You Can Do
-
-- Create consultation drafts for new service visits
-- Search by branch, consultant, customer, vehicle, and date ranges
-- Track posting-related consultation status such as OPEN, CLOSE, and DRAFT
-- Load linked member and vehicle context for downstream processing
-- Trigger related data loading for sales quotation, sales invoice, purchase invoice, and job sheet workflows
-
-### Why It Matters
-
-Consultation quality directly affects job sheet quality and billing quality. Better intake data means fewer rework cycles later.
-
-### Consultation Create/Edit Tabs and Fields
-
-The consultation flow is tab-oriented. Typical tabs and key fields are:
-
-| Tab | Key Fields | Why It Matters |
-|-----|------------|----------------|
-| **Main Details** | Branch, Consultant, Customer/Member, Vehicle, Consultation reference fields | Establishes the operational context for the entire workshop transaction |
-| **Select Vehicle** | Vehicle Plate No, Brand, Model Year, Engine Capacity | Ensures job details are tied to the correct vehicle |
-| **Select Customer** | Customer entity, contact details, billing and shipping addresses | Prevents billing and communication errors |
-| **Select Member** | Membership card/profile (if used) | Applies member-based workshop or pricing logic |
-| **Consultation Checklist** | Pre-inspection, car condition, safety, quality control checklists | Standardizes intake quality and protects service consistency |
-| **Related Docs Panel** | Linked quotation/invoice/job-sheet views (tenant dependent) | Enables quick transition from intake to downstream execution |
-
-### Consultation Listing Fields (Operator View)
-
-| Field | Meaning | Typical Action |
-|-------|---------|----------------|
-| **Consultation No** | System running number for consultation | Use when coordinating with workshop floor |
-| **Branch** | Branch handling the case | Filter workload by branch |
-| **Consultant** | Advisor handling intake | Track assignment quality and speed |
-| **Member** | Membership holder linked to case | Validate entitlement or profile details |
-| **Vehicle Plate** | Vehicle registration number | Match physical vehicle at workshop gate |
-| **Last Update / Created Date** | Timing of last modification and creation | Identify stalled or old drafts |
-| **Status** | Consultation progression status | Move items from open intake to execution |
-
-{{< figure src="/images/car-workshop-applet/vehicle-listing.png" alt="Select vehicle listing with plate number, brand, model year, and engine capacity" caption="Vehicle selection: choose the correct vehicle record during consultation intake." >}}
-
-{{< figure src="/images/car-workshop-applet/create-vehicel.png" alt="Create or edit consultation with side panel vehicle selection and select mode options" caption="Vehicle selection panel: link the intake record to an existing or newly created vehicle." >}}
-
-{{< figure src="/images/car-workshop-applet/vehicle-entity-link.png" alt="View or edit vehicle account tab with entity details and bill-to or ship-to fields" caption="Vehicle-to-entity link: connect vehicle records with customer entity profile details." >}}
-
-## Consultation Checklist
-
-The checklist framework enforces service consistency before and during work.
-
-### Checklist Areas
-
-- **Pre-Inspection**: Baseline checks before work starts
-- **Car Condition**: Vehicle condition observations, including image capture flows
-- **Safety**: Critical safety checks and pass/fail control points
-- **Quality Control**: Verification before release or billing handoff
-
-{{< figure src="/images/car-workshop-applet/consulation-pre-inspect-car-condition.png" alt="Consultation checklist pre-inspection details tab with technician, date, description, and status" caption="Pre-inspection details: record baseline technical findings and intake condition notes." >}}
-
-{{< figure src="/images/car-workshop-applet/car-pre-inspection-details.png" alt="Consultation checklist pre-inspection screen with details tab and technician assignment" caption="Pre-inspection checklist details: capture technician ownership and inspection status." >}}
-
-{{< figure src="/images/car-workshop-applet/checklist-pre-insepect-car-condition.png" alt="Car condition checklist screen with image list and add image panel for position and description" caption="Car condition capture: attach condition photos and labeled positions for service evidence." >}}
-
-{{< figure src="/images/car-workshop-applet/preinspection-checklist-selection.png" alt="Checklist selection panel showing predefined checklist groups and selectable checklist lines" caption="Checklist selection: apply predefined checklist groups and lines to each consultation." >}}
-
-### Checklist Settings
-
-Admins can maintain checklist templates from Settings:
-- Checklist header (name, description, remarks)
-- Checklist lines for each checklist template
-- Ongoing edits for process updates by branch or policy
-
-### Checklist Settings: Tab-by-Tab
-
-| Tab/Screen | Key Fields | Operational Use |
-|------------|------------|-----------------|
-| **Checklist Listing** | Name, Description, Remarks, Updated Date, Updated By | Identify active templates and ownership |
-| **Checklist Create** | Checklist name, description, remarks | Create a new inspection template |
-| **Checklist Edit** | Checklist header updates | Keep templates aligned to workshop policy |
-| **Checklist Line Listing** | Checklist line rows by category | Control inspection granularity |
-| **Checklist Line Create/Edit** | Line label, sequence, expected response setup | Define what technicians must verify |
-
-## Job Sheet Workspace
-
-Internal Job Sheet is the operational execution record for workshop work.
-
-### Listing and Actions
-
-The job sheet listing supports:
-- Search by job sheet number, branch, customer, date range, and creator
-- Visibility of posting status and transaction dates
-- Batch or row-level action flow for **FINAL** and **VOID** processing
-
-### Core Job Sheet Areas
-
-- Main details and transaction context
-- Account, billing, and shipping details
-- Line items with pricing and inventory detail support
-- Payment and contra handling
-- Attachments for evidence and support files
-- Document links for upstream and downstream traceability
-- Export and print paths via printable format setup
-
-### Job Sheet Tabs and Field Explanations
-
-| Tab | Key Fields | Why It Matters |
-|-----|------------|----------------|
-| **Main Details** | Company, Branch, Location, Reference, Transaction Date, Credit Terms, Currency, Sales Agent, CRM Contact, Permit No, Vehicle Plate | Controls accounting and operational header correctness |
-| **Department** | Segment, Dimension, Profit Center, Project | Supports branch-level and management-level cost reporting |
-| **Account** | Customer entity, contact, billing address, shipping address | Ensures customer and address accuracy before billing |
-| **Line Item** | Item/service rows, quantity, unit price, discount, tax/wht controls, bin/batch options | Captures labor and materials precisely for cost and invoice integrity |
-| **Payment** | Settlement method and payment details (tenant configuration dependent) | Captures immediate payment or staged settlement details |
-| **Contra** | Contra source selection and contra line mapping | Supports netting workflows and offset scenarios |
-| **Attachments** | Photos, reports, supporting documents | Provides evidence trail for service and dispute handling |
-| **Doc Link / Trace** | Upstream source and downstream generated docs | Provides full transaction lineage for audit and troubleshooting |
-| **Export** | Printable format selection and PDF output | Generates customer-ready and audit-ready document copies |
-
-### Job Sheet Listing Fields (Manager View)
-
-| Field | Meaning | Typical Decision Use |
-|-------|---------|----------------------|
-| **Doc Short Code** | Document type shorthand | Confirm workflow category at a glance |
-| **Job Sheet No** | Primary document number | Cross-reference with operations and billing |
-| **Posting Status** | DRAFT / FINAL / VOID / DISCARDED | Detect documents ready for billing handoff |
-| **Transaction Date** | Effective business date | Tie job cost and revenue period correctly |
-| **Branch / Customer Name** | Business context | Validate routing and ownership |
-| **Updated Date / Created Date** | Timeline visibility | Escalate overdue or stale records |
-| **Created By** | Record owner | Improve accountability and coaching |
-
-{{< callout type="info" >}}
-In most implementations, job sheets remain editable in draft stage and become controlled records after finalization.
-{{< /callout >}}
-
-## Document Handoff
-
-Workshop operations in this applet connect to additional internal document types.
-
-| Related Document | Typical Purpose |
-|------------------|-----------------|
-| **Internal Sales Quotation** | Prepare customer quote based on workshop findings |
-| **Internal Sales Invoice** | Bill customer for completed work |
-| **Internal Purchase Invoice** | Capture supplier costs related to workshop operations |
-| **Internal Receipt Voucher** | Record receipt/collection scenarios in workshop flow |
-
-This structure supports an operational-to-financial chain without retyping core workshop context.
-
-## Configuration & Settings
-
-### Settings Menu
-
-From **Settings**, administrators can manage:
-
-- **Field Settings**: control field visibility and behavior across pages
-- **Checklist Settings**: maintain checklist templates and lines
-- **Default Selection**: define default branch/location/company behavior
-- Optional shared platform settings such as permissions and webhook configuration (tenant-dependent)
-
-### Field and Process Controls
-
-The applet supports extensive setting-driven visibility and behavior controls, including:
-- Department dimensions (segment, dimension, project, profit center)
-- Payment and settlement field controls
-- Main details visibility controls
-- Tab visibility for line item, account, payment, attachment, and trace sections
-- Default decimal precision and step behavior
-
-Use these controls to simplify UI for frontline users while retaining advanced capability for power users.
-
-### Detailed Field Controls by Functional Area
-
-| Functional Area | Typical Control Flags | Business Impact |
-|-----------------|-----------------------|-----------------|
-| **Main Details** | Hide/show credit terms, permit no, currency, member card, sales lead, CRM contact, tracking ID | Keeps intake form focused for each branch workflow |
-| **Line Item Tabs** | Hide/show costing, pricing, issue link, delivery instruction, department, bin/batch/serial | Limits complexity for non-technical users while preserving advanced flows |
-| **Header Tabs** | Hide/show account, payment, department header, attachment, export, convert, trace, doc link | Controls process governance and user responsibility boundaries |
-| **Settlement Fields** | Mandatory or hidden card/payment fields, editable payment/settlement dates | Enforces compliance for payment capture |
-| **Precision and Order** | Decimal precision, decimal step, detail tab order | Standardizes data entry quality across branches |
-
-## Personalization
-
-From **Personalization**, users can configure:
-
-- **Personal Default Selection** for faster data entry
-- **Sidebar preferences** to match frequent workflow paths
-
-Personalization helps each role reduce repetitive input without changing global policy.
-
-## Reporting and Audit Readiness
-
-The applet supports audit-friendly operations through:
-- Posting status progression records
-- Document linkage between operational and financial records
-- Attachment evidence at transaction level
-- Export/print paths for offline documentation
-
-## Manager Troubleshooting Playbooks
-
-### Playbook 1: Too Many Job Sheets Stuck in Draft
-
-**Symptoms:** High draft count, delayed invoicing, repeated follow-ups from finance.
-
-1. Open **Job Sheet** listing and filter by posting status = DRAFT.
-2. Group by branch and created-by to identify concentration points.
-3. Spot-check missing sections: account details, line items, payment fields, or required attachments.
-4. Review settings to confirm critical tabs are not hidden accidentally.
-5. Set an operational cutoff: all service-complete drafts must be finalized by end of shift/day.
-
-**Expected outcome:** Lower draft backlog and faster invoice readiness.
-
-### Playbook 2: Consultation-to-Execution Delay
-
-**Symptoms:** Consultations stay OPEN/DRAFT while workshop queue is full.
-
-1. Filter consultation listing by status and last update date.
-2. Validate whether checklist completion is blocking handoff.
-3. Confirm vehicle and customer records are complete (especially addresses/contact).
-4. Escalate stale cases to assigned consultant based on listing ownership fields.
-5. Introduce a supervisor checkpoint for consultations older than agreed SLA.
-
-**Expected outcome:** Faster conversion from intake to executable job sheets.
-
-### Playbook 3: Inconsistent Checklist Usage Between Branches
-
-**Symptoms:** Quality discrepancies, repeated post-service issues, weak inspection evidence.
-
-1. Compare checklist templates in **Checklist Settings** across active use cases.
-2. Lock minimum required lines for pre-inspection and safety controls.
-3. Require car-condition image capture where policy demands evidence.
-4. Train branch leads on checklist line intent, not just checkbox completion.
-5. Run monthly review on failed/repeated quality checks.
-
-**Expected outcome:** More consistent service quality and better quality-control traceability.
-
-## Finance Troubleshooting Playbooks
-
-### Playbook 1: Billing Rejection Due to Incomplete Job Data
-
-**Symptoms:** Finance cannot invoice due to missing customer/account/line details.
-
-1. Identify rejected job sheets and inspect missing fields.
-2. Verify account tab completeness: entity, billing address, shipping address if required.
-3. Validate line item pricing and tax configuration fields.
-4. Return records to operations with a fixed correction checklist.
-5. Add mandatory field controls in settings for repeated error patterns.
-
-**Expected outcome:** Higher first-pass billing acceptance.
-
-### Playbook 2: Finalized Record Requires Reversal
-
-**Symptoms:** Pricing or item mistake found after FINAL status.
-
-1. Verify whether policy allows direct reversal only via VOID.
-2. Document reason and approval trail before voiding.
-3. Perform **VOID** action on finalized document as per role authority.
-4. Recreate corrected document with proper references.
-5. Confirm downstream invoice/voucher chain is aligned after correction.
-
-**Expected outcome:** Controlled correction without breaking audit trail.
-
-### Playbook 3: Audit Evidence Gap
-
-**Symptoms:** Missing proof for billed service lines during audit or dispute.
-
-1. Review attachment completeness on affected job sheets.
-2. Check doc-link trace from consultation to final financial document.
-3. Reconcile posting status timeline with created/updated metadata.
-4. Enforce attachment minimums for high-risk service categories.
-5. Add periodic pre-audit sampling by branch.
-
-**Expected outcome:** Stronger audit posture and faster dispute resolution.
-
-## FAQ
-
-**Q: Why do I not see some buttons or tabs?**  
-A: Your tenant may have field/tab visibility controls or permission restrictions enabled. Ask your applet admin.
-
-**Q: Can I use this applet without checklists?**  
-A: Technically possible in some setups, but checklist usage is strongly recommended for quality and safety consistency.
-
-**Q: When should I finalize a Job Sheet?**  
-A: Finalize when work details are complete and approved for financial handoff.
-
-**Q: Can finalized records be changed directly?**  
-A: Most setups control this strictly. Use void/reversal process according to company policy.
-
-**Q: Why is a consultation still in draft/open flow?**  
-A: Usually because checklist or required operational details are not complete, or process steps are still pending.
-
-**Q: Does this applet support multiple branches?**  
-A: Yes, branch is part of both consultation filtering and transaction context.
-
-## Related Documentation
-
-- [Internal Jobsheet Applet](/applets/sales-workflow/internal-jobsheet-applet/)
-- [Internal Sales Quotation Applet](/applets/sales-workflow/internal-sales-quotation-applet/)
-- [Internal Sales Invoice Applet](/applets/sales-workflow/internal-sales-invoice-applet/)
-- [Internal Purchase Invoice Applet](/applets/finance/internal-purchase-invoice-applet/)
-- [Internal Receipt Voucher Applet](/applets/finance/internal-receipt-voucher-applet/)
+Client-side permissions: the registry (`bl_applet_client_side_perm_dfn`) seeds **no** definitions for `carWorkshopApplet`. The embedded document forms check the same `SHOW_*` / `ALLOW_*` codes as their standalone applets; none can be granted here until they are seeded. Settings → Feature Visibility is not routed in this applet.
+
+## Fields
+
+**Consultation — Details** (`bl_asv_consultation_hdr`)
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Branch | Workshop branch (`guid_branch`) | Yes (`Validators.required`, `main-details.component.ts` L79) | Pre-filled from Default Selection |
+| Vehicle Plate | Registration number (`vehicle_registration_no`) and the vehicle GUID behind it | Yes (L80) | Chosen from the Select Vehicle side panel; changing it on a saved consultation updates the linked documents |
+| Consultation No | `consultation_running_no` | Generated | Assigned by the backend on creation from `CONSULTATION_RUNNING_NO` |
+| Consultation Name | `name` | Backend rejects a *null* name (`ASV_CONSULTATION_HDR_OBJECT_NAME_IS_NULL_OR_EMPTY`) | Optional in the form; the applet sends the field as typed (an empty string passes the null check — `consultation-create-edit.component.ts` L335) |
+| Consultant | Employee handling intake (`consultant_guid`) | Yes (L83) | |
+| MemberCard | Linked member (`member_guid`) | No | Select Member panel |
+| Description | Free text | No | |
+| Posting Status | `OPEN` / `CLOSE` / `DRAFT` | No | Label only; see Document behaviour |
+| Created / Modified by and dates | Audit | Read-only | |
+
+**Vehicle** (`bl_fi_mst_entity_vehicle_hdr`, created from the Select Vehicle panel)
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Vehicle Plate No | `regnum` | Yes (`vehiclePlateNo`, `Validators.required`) | |
+| Vehicle Model | `model_name` | Yes | Brand, manufacturer, variant and engine exist as columns and listing columns |
+| Engine Capacity | `capacity` | Yes | |
+| Remarks, Status | Free text, record status | No | The table also carries year, chassis and engine numbers, colour, mileage, last/next repair, road-tax, insurance, permit and inspection dates for other applets; this form does not expose them |
+| Customer (entity), Bill To / Ship To | The vehicle's owner | Entity required on the vehicle's Account tab | |
+
+**Requests** (`bl_asv_consultation_request_line`): Description, Remarks, Status (checkbox → `request_status`); rows are added with **+** and removed with the row action.
+
+**Checklist** (per type `PRE-INSPECTION`, `SAFETY`, `QUALITY-CONTROL`)
+
+| Sub-tab | Table | Fields | Required |
+|---|---|---|---|
+| Details | `bl_asv_consultation_checklist_detail_line` | Date (`txn_date`), Technician (`technician_guid`), Description, Status (`OPEN` / `CLOSE` / `DRAFT` → `consultation_status`) | Date, Technician, Status (`checklist-details.component.ts` — `Validators.required`) |
+| Car Condition | `bl_asv_consultation_checklist_image_line` | Image (uploaded file), Position (`FRONT` / `BACK` / `LEFT` / `RIGHT`), Description | Position (`image-create.component.ts`) |
+| Checklist | `bl_asv_consultation_checklist_line` | Ticked lines from the predefined checklists (`name`, `remarks`, `checklist_status`) | At least one line when saving a selection (`checklistLines`, `Validators.required`) |
+
+**Job Sheet** (own menu and the JobSheet tab) — `INTERNAL_JOBSHEET` with tabs Search, Main Details, Account, Lines, Payment, Department Hdr on create, plus Delivery Details, Contra, Doc Link, Attachments, Export and Convert on edit. Field-level reference: [Jobsheet (Internal)](/applets/sales-workflow/internal-jobsheet-applet/).
+
+## Lifecycle and effects
+
+| Record | Statuses | Effects |
+|---|---|---|
+| Consultation | `TEMP` (created by **+**) → `ACTIVE` (first Save); deleted by the Delete button (`DELETE consultation-hdrs/backoffice-ep/{guid}` → `AsvConsultationHdrUow.delete`, a row delete, `AsvConsultationHdrUow.java` L69–L81) | Creation assigns `consultation_running_no` (`AsvConsultationHdrDataConsistencyObject.java` L192–L194). No journal, stock, ARAP or e-Invoice effect at any status. Posting Status `OPEN` / `CLOSE` / `DRAFT` is informational |
+| Checklist detail / image / line rows | Saved with the consultation; each type has its own `OPEN` / `CLOSE` / `DRAFT` status | Stored only; nothing downstream reads them |
+| Document links | Created when a document is saved from a tab; one row per document in `bl_asv_consultation_gendoc_hdr_link` | Deleting the consultation removes the consultation row; the linked documents remain as ordinary documents in their own applets |
+| Jobsheet (from this applet) | DRAFT → FINAL → VOID, as in the Jobsheet applet | Both signums 0 (`InternalJobsheetDataConsistencyObject.java` L15–L17): FINAL assigns numbers only; see the jobsheet page for its posting proof |
+
+**Posting proof block** (for the applet's own record)
+
+| Item | Value | Source |
+|---|---|---|
+| Server document type | none — `bl_asv_consultation_hdr` is not a generic document; the embedded Job Sheet is `INTERNAL_JOBSHEET` | `AsvConsultationHdrDataConsistencyObject.java`; `models/applet-constants.ts` (`docType = "INTERNAL_JOBSHEET"`, `amount_signum = 0`, `quantity_signum = 0`) |
+| Amount / quantity signum | not applicable (jobsheet: 0 / 0) | `InternalJobsheetDataConsistencyObject.java` L15–L17 |
+| Dr/Cr equation, GL precedence, stock processor | none — nothing is posted by the consultation or by a jobsheet | `JournalPostingService.java` L96 skips zero-signum lines |
+| What VOID reverses | no VOID on a consultation; a voided jobsheet reverses nothing | — |
+| Money and stock | move only through the Sales Invoice, Purchase Invoice and Receipt Voucher created from the tabs | their pages |
+
+## Related applets
+
+- [Jobsheet (Internal)](/applets/sales-workflow/internal-jobsheet-applet/) — the work order; this applet embeds a full copy of it under its **Job Sheet** menu and **JobSheet** tab.
+- [Sales Quotation (Internal)](/applets/sales-workflow/internal-sales-quotation-applet/) — quote raised from the **Quotation** tab.
+- [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/) — customer billing from the **Sales Invoice** tab.
+- [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) — supplier parts from the **Purchases** tab.
+- [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) — collection from the **Receipt** tab.
+- [Customer](/applets/master-data/customer-applet/), [Organisation](/applets/master-data/organisation-applet/), [Membership Admin](/applets/membership/membership-admin-applet/) — entity, branch/employee and member master data.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Toggles on Settings → Field Settings do nothing | The screen is a placeholder with no bound controls and no save (`field-configuration.component.html`) | Expected; the embedded documents use default behaviour unless settings are written through the API |
+| A checklist line or column you expected is hidden on the Lines grid of a jobsheet or invoice created here | Those documents read the `HIDE_*` keys stored under `carWorkshopApplet`, which were set through the API or copied from another tenant | Inspect the applet's master settings through the API; the standalone applet's settings do not apply here |
+| Creating a consultation returned `CLIENT_QUERY_WRONG_FORMAT` / two consultations appeared | Race condition in the create flow (applet issue #5, fixed) | Upgrade the applet |
+| Save disabled on Details | Branch, Vehicle Plate or Consultant empty — all three are required | Fill them; pick the vehicle from the side panel rather than typing a plate |
+| Save disabled on a checklist Details tab | Date, Technician and Status are required | Fill them |
+| Cannot save the Checklist sub-tab selection | No line ticked (`checklistLines` is required) | Tick at least one predefined line, or add lines under Settings → Checklist Settings first |
+| Vehicle side panel shows no vehicles | Vehicles belong to customer entities; none exist yet | Create one from the panel (plate, model, engine capacity required) and link it to the customer |
+| Linked documents still show the old plate after the vehicle was changed | Older build, or the propagation effect failed for one document (`changeGenDocsVehicleFailure`) | Reopen the document and correct the plate, or upgrade |
+| Consultation deleted but its jobsheet / invoice still exist | Expected: the delete removes the consultation row only | Void or discard the documents in their own applets |
+| "Do You Wish To Save Your Changes?" when leaving | Unsaved edits on the consultation (return pop-up) | Save or discard |
+
+## Related documentation
+
+- [CRM & Digital module](/modules-v2/crm-digital/), [Financial Accounting module](/modules-v2/financial-accounting/)
+- [Sales Workflow applets](/applets/sales-workflow/)

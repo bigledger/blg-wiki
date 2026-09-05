@@ -7,9 +7,6 @@
   "claims"
  ],
  "queue": [
-  "content/en/applets/sales-workflow/internal-sales-invoice-applet.md",
-  "content/en/applets/sales-workflow/internal-sales-quotation-applet.md",
-  "content/en/applets/sales-workflow/car-workshop-applet.md",
   "content/en/applets/claims/claim-applet.md",
   "content/en/applets/claims/claim-cycle-applet.md",
   "content/en/applets/membership/commission-scheme-applet.md",
@@ -71,15 +68,22 @@
   {
    "page": "content/en/applets/membership/membership-admin-applet.md",
    "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/sales-workflow/internal-sales-invoice-applet.md",
+   "date": "2026-09-05",
+   "note": "rework after codex review (run 3/4)"
+  },
+  {
+   "page": "content/en/applets/sales-workflow/internal-sales-quotation-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/sales-workflow/car-workshop-applet.md",
+   "date": "2026-09-05"
   }
  ],
  "skipped": [],
  "updated": "2026-09-05",
- "rework": [
-  {
-   "page": "content/en/applets/sales-workflow/internal-sales-invoice-applet.md",
-   "why": "codex review: wrong VALIDATE_STOCK_ON_FINALIZE semantics (hot-fixed) + unsupported bypass claim; guide/reference mixing; re-derive settings with four proofs",
-   "review": "planning/reviews/2026-09-05-gpt-5.6-sol-lane-run-1-review.md"
-  }
- ]
+ "rework": []
 }
