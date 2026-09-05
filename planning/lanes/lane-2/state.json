@@ -8,8 +8,6 @@
   "human-resources"
  ],
  "queue": [
-  "content/en/applets/finance/debtor-and-creditor-report-applet.md",
-  "content/en/applets/finance/debtor-report-applet.md",
   "content/en/applets/finance/deposit-applet.md",
   "content/en/applets/integrations/developer-sysadmin-applet.md",
   "content/en/applets/finance/e-mandate-applet.md",
@@ -75,6 +73,16 @@
    "page": "content/en/applets/finance/creditor-report-applet.md",
    "date": "2026-09-05",
    "note": "rewritten under registry name from creditor-report-applet-V2 repo (run 8); registry documentation_url still points at the combined page (F-0042)"
+  },
+  {
+   "page": "content/en/applets/finance/debtor-and-creditor-report-applet.md",
+   "date": "2026-09-05",
+   "note": "rewritten under registry name 'Debtor and Creditor Report' from the combined repo (run 9); 15 menus; Field Settings and Default Selection screens are dead placeholders, documented as such"
+  },
+  {
+   "page": "content/en/applets/finance/debtor-report-applet.md",
+   "date": "2026-09-05",
+   "note": "rewritten from debtor-report-applet-V2 (run 9); BOM preserved; 6 of 8 screenshots dropped for personal/customer names"
   }
  ],
  "skipped": [

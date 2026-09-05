@@ -336,3 +336,80 @@ static/images/creditor-report-applet/purchase-invoice-with-settlement-details.pn
 ### Registry / naming mismatches (run 8, queue triage)
 
 - `finance/vote-book-applet.md` — marked **skipped** in state.json per the run-8 instruction (F-0089: no registry row; the concept is the Budgetary Applet's votebook). Inbound links from `modules-v2/financial-accounting/_index.md` and `user-guide/industry-solutions/professional-services.md` should be re-pointed to `/applets/finance/budgetary-applet/` when F-0079 is decided.
+
+## Run 9 — 2026-09-05 — `finance/debtor-and-creditor-report-applet.md` (registry `debtor-and-creditor-report-applet` "Debtor and Creditor Report") and `finance/debtor-report-applet.md` (registry `debtor_report_applet` "Debtor Report Applet")
+
+Both rewritten to the standard. Combined applet from `blg-applet-wavelet-debtor-and-creditor-report-applet` (main `0567e78`, 2026-08-26); debtor from `blg-applet-wavelet-debtor-report-applet-V2` (main `8b52c84`, 2026-09-02); backend `871dbf5c96`, shared-utilities `af523eb`. content-lint passes. The debtor page's UTF-8 BOM is preserved. The three report applets remain three distinct pages (run-8 F-0042 resolution stands).
+
+### Combined applet — what the code actually says (all new relative to the old page)
+
+1. **Fifteen menus since 2026-06-14**, not three. The old page ("no As of Date filter", "no separate Debtor/Creditor aging menus", "ARAP Type filter") described the pre-June build. No filter model has an `arapType` key any more; the side is fixed by the menu.
+2. **Field Settings is a placeholder** — eight toggles (Unit Discount, SST/VAT/GST, WHT, Blanket Order, Segment, G/L Dimension, Profit Center, Project) with no form control and a SAVE button with no handler. The old page documented them as real settings.
+3. **Both Default Selection screens (applet-wide and personal) never persist** — the components never receive the applet container (`appletSettings$` never subscribed), selecting a branch throws, SAVE emits to no listener. The old page said "user-level defaults override applet defaults".
+4. **Printable Format Settings is the only live setting** (two keys, merge save). The **Statement / Statement(aging)** header buttons the old page (and its NotebookLM infographics) describe are gone from both entity-view templates; export is via the Statement Of Account tab.
+5. **Excluded document types are hard-coded** (22 purchase types on the debtor side, 25 sales types on the creditor side, `INTERNAL_PURCHASE_GRN_STOCK_IN` on both since June/July 2026). No Aging Period Settings menu; `AGING_PERIOD_*`, `ENABLE_BRANCH_FILTER_PERMISSION`, `USE_SALESMAN_CODE_INSTEAD_OF_NAME`, `ENABLE_PORTRAIT_…`, `ENABLE_DEFAULT_DATE_FROM`, `CREDITOR_EXCLUDE_SERVER_DOC_TYPES` are read but have no control.
+6. **Read-only**: the contra-create endpoint is declared but never called; Contra tabs list only. Creditor Outstanding Document and Creditor Aging containers register only a listing column (row click does nothing visible); the four historical-aging listings have no view either.
+7. **Company scoping on the creditor listings uses the debtor permissions** (`…DEBTOR_OUTSTANDING_DOCUMENT_READ` / `…DEBTOR_OUTSTANDING_ENTITY_READ` targets); an AP-only role gets an empty company dropdown. Both aging listings call the debtor `/outstanding-aging/details` endpoint (`/creditor/details` exists in the backend, unused). Historical reports on both sides need `HISTORICAL_DEBTOR_READ`, which the start-up inquiry does not ask for.
+
+### Debtor applet — corrections to the old page
+
+1. "Printable formats affect PRINT or Export to PDF from any report" — false (same as creditor); three statement types now, incl. `STATEMENT_OF_ACCOUNT_AGING_CONTRA_DETAIL` behind `SHOW_CONTRA_DETAILREPORT_LAYOUT`.
+2. "Aging Period Settings — e.g. 30/60/90/120+ days" — DAY periods are ranges, MONTH periods a count; ticking a period overwrites `AGING_PERIOD_TYPE`.
+3. "Aging Period Type: Month (default)" — control is empty; month is the fallback of `=== 'DAY'`; DAY with no period → no bucket columns.
+4. **Personal Default Selection is live in this applet** (`DEFAULT_COMPANY`, `DEFAULT_BRANCH`, `DEFAULT_ORIENTATION` via `savePersonalSettingsInit`) — the opposite of the creditor applet. Only personal `DEFAULT_BRANCH` is consumed (shared branch dropdown); `DEFAULT_ORIENTATION` has no consumer anywhere; `DEFAULT_COMPANY` only filters the screen's own branch dropdown.
+5. The old page listed only two Field Settings; there are **ten** (added `ENABLE_DEFAULT_DATE_FROM`, `SHOW_CONTRA_DETAILREPORT_LAYOUT`, `USE_SALESMAN_CODE_INSTEAD_OF_NAME`, `ENABLE_BRANCH_FILTER_PERMISSION`, `ENABLE_PORTRAIT_…`, `HIDE_DOC_POPUP_COST_AMOUNT`, `HIDE_DOC_POPUP_GP`). The two popup keys are consumed by the shared `akaun-generic-doc-view-dialog` (with unseeded `SHOW_DOC_POPUP_*` client permissions) — reusable by any applet that embeds the popup.
+6. **Document Types to Exclude offers only purchase types** on the debtor side (and only sales types on the creditor side) — it is for customer-cum-supplier entities, not for hiding AR document classes. The old page did not explain the list.
+7. Aging Report sends `AR_TRADE, AR_OTHER, AR_MERCHANT` only; the other reports include `AR_EMPLOYEE`. The Outstanding Document `arapType` option list contains `AP_EMPLOYEE` (typo for `AR_EMPLOYEE`).
+8. Collection Invoice with Aging is a **dynamic report** (`entity-reports/dynamic-report`, `ARAP_TRANSACTION_READ`) pairing sales invoice / cash bill with receipt / credit note; not in the start-up permission inquiry, nor is `HISTORICAL_DEBTOR_READ`.
+9. The old page's link `/applets/creditor-report-applet/` → `/applets/finance/creditor-report-applet/`; the dead link to `accounts-receivable-applet` (skipped page) was dropped.
+
+### Screenshots with personal data
+
+Opened all fourteen images (6 under `debtor-and-creditor-report-applet/`, 8 under `debtor-report-applet/`). Offenders — **not referenced** by the new pages:
+
+static/images/debtor-and-creditor-report-applet/outstanding-aging-report-listing.png
+static/images/debtor-and-creditor-report-applet/outstanding-entity-report-listing.png
+static/images/debtor-and-creditor-report-applet/entity-report-transactions-drill-down.png
+static/images/debtor-report-applet/Debtor_Outstanding_Document_Report_listing.png
+static/images/debtor-report-applet/debtor-aging-report-listing.png
+static/images/debtor-report-applet/statemet-0f-account-listing.png
+static/images/debtor-report-applet/ar-transaction-report.png
+static/images/debtor-report-applet/collection-with-invoice-aging.png
+
+- `outstanding-aging-report-listing.png` — entity group is a staff first name; Company column shows a real company's abbreviation and name.
+- `outstanding-entity-report-listing.png` / `entity-report-transactions-drill-down.png` — Entity Name column shows several person names and two real company names (one an electronics brand); the drill-down also shows the removed Statement buttons.
+- `Debtor_Outstanding_Document_Report_listing.png` — entity names include person names and a real marketplace brand (also as a branch name); staff first name in Entity Code/Name.
+- `debtor-aging-report-listing.png` — group names include a staff first name and company names that may be real.
+- `statemet-0f-account-listing.png` — Entity Name column shows full person names (two share a surname) and a real company code.
+- `ar-transaction-report.png` — group names include person first names and a real customer's code (matches a customer issue-tracker slug).
+- `collection-with-invoice-aging.png` — salesman group names are staff first names; customer names may be real.
+
+Not personal data but not embedded: `debtor-creditor-infographic.jpg`, `arap-reporting-quick-guide.jpg`, `debtor-report-applet/infograhic.png` (NotebookLM marketing graphics; the first two also describe removed Statement buttons, an "As of Date" filter on the wrong screens and due-date-based aging; the third shows Current/1-30/… buckets the applet does not use). Kept and embedded: `debtor-and-creditor-report-applet/debtor-creditor-printable-format-settings.png` (no data; captioned as pre-June-2026 sidebar), `debtor-report-applet/Historical-Transaction-Aging-Analysis-Report.png` (test company/entity codes only), `debtor-report-applet/historical-debtor-report.png` (empty grid, shows layout). Recommendation as in run 8: retake on the staging tenant with synthetic customers; outside my edit scope.
+
+### Cross-lane link requests
+
+- **internal-receipt-voucher-applet (own lane, done run 1)** — add one sentence that contras can be created from the Debtor Report Applet (Contra tab of View Outstanding Document) and that those contras change the balances the RV settlement picker shows; add `debtor-report-applet` to `related_applets` if missing. Next pass of my lane.
+- **internal-sales-invoice-applet, internal-sales-credit-note-applet, internal-sales-debit-note-applet, internal-sales-return-applet (lane owning `sales-workflow/`)** — add `debtor-report-applet` (and `debtor-and-creditor-report-applet`) to `related_applets`; state that only FINAL documents appear in the debtor reports.
+- **sales-report-applet, commission-scheme-applet (lane owning `sales-workflow/`)** — add `debtor-report-applet` to `related_applets`; the Collection Invoice with Aging report (invoice–receipt pairing by salesman, Payment Days) is the collection-performance view those pages may want to point at.
+- **entity-applet (lane owning `master-data/`)** — in addition to the run-8 request: Credit Term and Credit Limit columns on the debtor listings come from the entity; the `is_customer` flag is required for Outstanding Document Report rows.
+- **Any page that embeds the shared generic-document popup (lane owning `sales-workflow/`, `pos/`)** — `HIDE_DOC_POPUP_COST_AMOUNT` / `HIDE_DOC_POPUP_GP` are honoured by `akaun-generic-doc-view-dialog` from the *host applet's* settings; worth a line wherever the popup is documented.
+- **user-guide/reports-analytics-v2 (lane owning `user-guide/`)** — if it describes the combined applet as configurable or with Statement buttons, correct to "read-only, Printable Format Settings only; use the single-sided applets for aging periods and exclusions".
+
+### Registry / naming mismatches
+
+- None new. `debtor_report_applet` documentation_url is correct; `debtor-and-creditor-report-applet` documentation_url is correct. F-0042 (creditor row pointing at the combined page) still open — question 19.
+
+### Questions for Vincent (run 9)
+
+22. **Combined applet dead screens.** Field Settings (placeholder toggles) and both Default Selection screens in the Debtor and Creditor Report applet do nothing. Document as-is (done) or raise with the applet team to remove/repair? Same for the creditor Outstanding Document / Aging row-clicks that open nothing.
+23. **Creditor listings scoped by debtor permissions** in the combined applet (empty company dropdown for AP-only roles) — product issue to raise, or accepted (tenants grant both sides)?
+24. **Screenshots.** Eight more offenders this run (list above), same test tenant. Confirms question 20 needs a decision before the remaining finance pages: image-less pages, staging retakes, or blur.
+25. **`DEFAULT_ORIENTATION`** (Debtor Report personal setting) has no consumer, and the Aging Report omits `AR_EMPLOYEE` while every other debtor report includes it. Flag both to the applet team?
+
+### Notes (run 9)
+
+- Method: for "copied" applets, **diff the containers, not the listings** — the pages service (`*-pages.service.ts`) and the container's `ViewColumn` registrations reveal which menus have a drill-down; the listing code looks identical whether or not a second column exists.
+- Method: a settings screen can pass "rendered" and still be dead — check that the template's controls are bound (`[formControl]`) and that the SAVE button's handler dispatches something; the combined applet's Field Settings has neither. A `@Output() save` with no parent binding (`<app-settings [routes]>` only) is the tell for the older Default Selection pattern.
+- Method: "exclude" lists are per-side constants or settings that list the *other* side's document types; explain them as the customer-cum-supplier case, not as a way to hide document classes.
+- Method: `resolve?.KEY` assigned into a field that was initialised `true` (e.g. `enable_default_date_from = true`) still yields `undefined` → falsy when unsaved; document the *unsaved* behaviour, not the field initialiser.
+- Pace: two applets in one run (~95 min) was possible only because the creditor structure was reused; fourteen screenshots took a noticeable share. **Next: `content/en/applets/finance/deposit-applet.md`** — check the registry row first (no row under "deposit" was seen in the run-6 triage notes; `mm-deposit-applet.md` is a separate queue item), then `integrations/developer-sysadmin-applet.md` (carry the run-7 budget-processor request into it).
