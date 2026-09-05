@@ -5,8 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/master-data/merchant-applet.md",
-  "content/en/applets/inventory-workflow/non-stock-and-trade-in-applet.md",
   "content/en/applets/master-data/organisation-applet.md",
   "content/en/applets/master-data/pricebook-applet.md",
   "content/en/applets/inventory-workflow/related-applets-stock-balance.md",
@@ -90,6 +88,18 @@
    "date": "2026-09-05",
    "run": 14,
    "note": "Registry InvItemMaintenanceApplet 'Inventory Item Maintenance' (title changed from 'Inventory Item Maintenance Applet'). Canonical page for the applet; the inventory-workflow copy is skipped (F-0007)."
+  },
+  {
+   "page": "content/en/applets/master-data/merchant-applet.md",
+   "date": "2026-09-05",
+   "run": 16,
+   "note": "Written in run 15 (killed before recording), verified and recorded in run 16. Registry MerchantAdminApplet 'Merchant Admin'. Sibling MerchantAccessApplet 'Merchant Access' is ACTIVE with no repo found and no page (findings run 16)."
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/non-stock-and-trade-in-applet.md",
+   "date": "2026-09-05",
+   "run": 16,
+   "note": "Registry nonStockAndTradeInApplet 'Non Stock and Trade In Applet' (title unchanged). Five of seven screenshots dropped (staff first names / a brand as test data); recapture list in findings run 16."
   }
  ],
  "skipped": [

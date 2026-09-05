@@ -724,3 +724,128 @@ Thirteen images exist in `static/images/inv-item-maintenance-applet/`. Kept ten 
 - Master-data lifecycle written as "what it writes / what it only reads" with the DCO throws; no signum, no journal, no queue (METHOD.md item 12 check: ts-lib `endpoint_path` = `erp/inv/inv-items`, own container, own DCO).
 - Issue mining: the applet repo has one issue; the real failure modes came from blg-intranet (14 issues) and the customer repo (7 issues, cited as customer-repo-ce5219). 27 issues read, 27 `lateral` lines.
 - Pace: ~95 minutes for one large master-data applet (9 edit tabs, 4 extra menus, 3 imports/reports, 2 pages to reconcile). Stopping here; next is master-data/merchant-applet.md.
+
+# Runs 15–16 (2026-09-05)
+
+Run 15 wrote content/en/applets/master-data/merchant-applet.md and was killed by a rate limit before recording it (the loop committed the page). Run 16 verified the page against the standard, corrected it, and did the bookkeeping.
+
+## Pages
+
+- content/en/applets/master-data/merchant-applet.md — rewritten to the standard under the registry name **Merchant Admin** (`MerchantAdminApplet`, TNT-USER; title changed from "Merchant Applet"). Repo `blg-applet-akaun-platform-merchant-applet` (commit cd6ac3e1, 2026-08-18; it bundles its **own** copy of shared-utilities under `micro-fe/projects/shared-utilities`, not refs/blg-shared-utilities); ts-lib 7d1616a9e; backend 871dbf5c96. Run 16 verification: all nine H2 sections in order, front matter complete, 13 images present, 15 internal links resolve, no BOM (none before either), lint clean. Spot-checked the strongest claims against source: Remove has no confirmation dialog (`onRemove()` → `delete` directly, template L137), Verify Email really calls `tenantUserService.addUser`, `HIDE_E_TYPE` is the only bound toggle, `EntityController` sets `is_merchant` via the `merchants` handler. **One row removed**: the troubleshooting entry "Contract *Merchant Name* shows `[object Object]`" — all three contract editors patch the field from `resp.data.bl_fi_mst_entity_hdr.name`, a string; the claim had no support. **Added**: a Merchant Access sibling line in *Where it fits* and *Related applets* (no link — no page exists).
+
+## Registry / naming mismatches (runs 15–16)
+
+- **`MerchantAccessApplet` "Merchant Access"** — TNT-USER, ACTIVE, route `applets/wavelet/erp/entity/merchant-access-applet`, build `akaun-platform/merchant-access-applet`, `documentation_url` → Confluence. **No repo** in refs/ (find over all clones) nor in `gh repo list bigledger` (only `blg-applet-akaun-platform-merchant-applet` matches "merchant"); **no wiki page**; no client-side permission rows. How it relates to Merchant Admin: same entity family (a customer enhancement request treats "Employee, Merchant Access & Merchant Admin" as the three entity views that should copy Customer Maintenance's Login-tab catalogue picker — customer-repo-a2de10#76), so it is most plausibly the merchant-side/self-service counterpart of the administrator view; marketing recorded a webinar in 2025 but withheld it because the applet kept crashing and "features will be fully available" later (gh:bigledger/blg-int-marketing#601, #604), while it already has an applet-store logo (#90). Nothing about its behaviour can be documented without source. Question 43.
+- `MerchantAdminApplet.documentation_url` still points at Confluence (`…/3422748683/Merchant+Admin+Applet`); should become `https://wiki.bigledger.com/applets/master-data/merchant-applet/` (applet-audit item).
+- The applet's own banner/route still say "Merchant Applet"; the registry name is "Merchant Admin" (page title follows the registry).
+
+## Direction / fact reversals found (runs 15–16)
+
+Against the old page (git 6dfc7517):
+- **"Default Selection sets Default Branch / Default Location pre-populated on new documents"** — the screen is dead (undefined container, unbound output) and nothing reads the keys; the applet has no documents. Same family as GIN / Entity / Forex / Goods Delivery Note / Stock Take / Inv Item.
+- **"Personal Default Settings override the system-wide defaults for this user"** — same dead code; **"Sidebar Configuration … users can hide menu items"** — a route exists but no menu entry links to it.
+- **"Entity Type … affects financial posting, applet visibility, AR/AP categorization"** and the FAQ **"a merchant tagged CUSTOMER generates AR entries, SUPPLIER generates AP"** — Entity Type sets the `is_customer/is_supplier/is_employee/is_merchant` flags, which decide which sibling applet lists the row; posting direction comes from the document type and its signums, not from the entity flag. `default_arap_type` is a default the documents copy, not a posting rule.
+- **"Setting the Status to DEACTIVATE disables the merchant's access and transactions"** — merchant status values are ACTIVE / TEMP / INACTIVE (DEACTIVATE is the *contract* status); the `merchants` listing and downstream lookups filter on `is_merchant`, not on status, and the monthly report job does not read contract status. Neither status disables anything.
+- **"Changing a Merchant Key … is logged in the Audit Trail"** — the audit trail records the *action* (`EDIT_MERCHANT`), not the field; and the change affects new transactions only (callbacks verify against the key copied onto the transaction header).
+- **"Merchant ID … uniquely identifies the merchant"** — the typed Merchant ID is the `ID_INFO` extension and is never uniqueness-checked; the unique key is the generated `merchant_code`, which the applet never shows.
+- **"Contract … Validity Period"** in the lifecycle diagram — the contract form has no validity dates (backend DCO requires `date_start`/`date_end` presence but the UI sets them silently).
+- **"Multi-currency … merchant-level currency settings drive how settlements are calculated"** — nothing in the applet or job reads a merchant currency; the credit-limit row has a currency field and that is all.
+- Related-applet links to `/applets/finance/general-ledger-applet/` and `/applets/finance/accounts-receivable-applet/` (non-existent pages) replaced by Chart of Account; `/applets/master-data/customer-applet/` replaced by the canonical customer-maintenance page (F-0050).
+
+## Findings for the product team (runs 15–16)
+
+- **Remove deletes physically without confirmation** and without checking contracts, payment transactions or documents (`EntityUow.delete`); contracts survive with a dangling `merchant_guid` and are then shown as TEMPLATE type.
+- **Merchant ID (`ID_INFO`) is not unique-checked**; the real key `merchant_code` is generated and never displayed. Show it in the listing.
+- **Contract Code is computed client-side (max + 1)** with no backend uniqueness check → duplicates under concurrent creation.
+- **Verify Email creates a tenant user as a side effect** (`addUser` with an empty body) and `if (resp.code = 'OK_RESPONSE')` is an assignment (always true).
+- **Field Settings**: 8 unbound Lines/Department toggles (document-applet copy); **Default Selection** (Settings + Personalization) dead; Settings menu lists Permission Wizard / Audit Trail / Reset Applet State without routes; Personalization › Field Settings has no route.
+- **Report menu has no way to run the job**; `PGW_MERCHANT_MONTHLY_REPORT_PROCESSOR` needs explicit `months`/`years` properties from the scheduler.
+- The applet bundles a **private copy of shared-utilities** — fixes to refs/blg-shared-utilities (e.g. the session effects) do not reach it.
+- The published walkthrough video is titled "Tenant-to-Tenant Integration & Data Mapping Management" — no such feature exists in the applet (gh:bigledger/blg-int-marketing#710).
+
+## Cross-lane link requests (runs 15–16)
+
+- content/en/applets/master-data/{entity-applet,customer-maintenance-applet,supplier-applet-1,employee-applet,organisation-applet,tax-configuration-applet,cashbook-applet,chart-of-account-applet}.md (lane 4; done pages get the back-link on the next touch, queued pages when reached) — add `merchant-applet` to `related_applets`.
+- content/en/applets/e-invoice/mypeppol-admin-applet.md, my-e-invoice-admin-applet.md (e-invoice lane) — add `merchant-applet` to `related_applets`; say that a merchant's Peppol participant IDs (`bl_fi_entity_peppol_id`, with *Verify Participant ID*) and `einvoice_notification_methods_json` are maintained on Merchant Admin › Peppol Config as well as on the customer/supplier views.
+- content/en/applets/ecommerce/seller-admin-applet.md (e-commerce lane) — add `merchant-applet` to `related_applets`; the seller identity is the merchant entity row.
+- content/en/applets/external-tenant-admin/tenant-admin-applet.md (admin lane) — add `merchant-applet`; note that the entity Login tabs' *Verify Email* adds the address as a tenant user and *Send Invite* sends an invitation with `create_entity: true`.
+- content/en/applets/master-data/customer-maintenance-applet.md and employee-applet.md (lane 4, done) — on next touch: Customer's Login tab has a "Select catalogs for the applets installation" picker; state whether Employee's has it (a customer asked for it on Employee, Merchant Access and Merchant Admin — customer-repo-a2de10#76; Merchant Admin does not have it at cd6ac3e1).
+- Payment-gateway / e-commerce module pages (modules owner) — the merchant contract → rate card → payment channel → charge rate hierarchy and the monthly merchant transaction summary job are documented on the Merchant Admin page; link there instead of describing MDR handling independently.
+- applet-audit — `MerchantAdminApplet.documentation_url` → wiki URL; `MerchantAccessApplet` is ACTIVE with no page (question 43).
+
+## Screenshots (runs 15–16)
+
+Thirteen existing captures under `static/images/merchant-applet-applet/` kept (create form, Peppol Config, Notification Config, Return URL, Tax & Billing, Payment Config, Address, Contact, Company Linking, Credit Limit, Logo, Contract create, Settings); they show a staging tenant with test data. Dropped from the page: `merchant-applet-onboarding-infographic.png` (marketing infographic, not a screenshot). Files left on disk. Missing captures that would help: Merchant listing, Login tab with Verify Email / Send Invite, Merchant Branch panel, Rate Card › payment channel › charge rate screens, Report listing, Audit Trail listing.
+
+## Questions for Vincent (runs 15–16)
+
+43. **Merchant Access** (`MerchantAccessApplet`, ACTIVE, no repo found, no page, webinar withheld as unstable): add to `applet-exclusions.tsv` as `stub` / not shipped, or locate the source (it is not in the org's GitHub) so a page can be written? Until decided the Merchant Admin page mentions it in one sentence without a link.
+44. The `[object Object]` troubleshooting row was removed as unsupported by source. If it was observed on a live tenant (run 15's transcript is lost), it should come back as a feedback item with a screenshot rather than a code citation.
+
+## Notes (runs 15–16)
+
+- Method: a run killed mid-bookkeeping is cheap to recover when the page carries its `sources:` map — re-derivation took ~25 minutes (re-read the cited files, re-fetch the cited issues, spot-check the five strongest claims). Worth a METHOD.md line: **verify a recovered page by re-checking every "no dialog / side effect / dead code / `[object Object]`" claim against the cited line numbers** — the one unsupported row was exactly such a claim.
+- Registry note for the applet-audit: this applet's repo is an `akaun-platform` (not `wavelet`) applet whose `micro-fe/projects/shared-utilities` copy predates the shared `FieldConfigurationComponent`; `applet-scan.sh` and `gates.py` do not apply — the settings classification was done by reading the local `field-configuration.component.html` (one bound control) and the create form's `disabled:` expression.
+- Lateral pass: 8 issues read (2 applet repo, 4 marketing, 1 wiki, 1 customer repo cited as customer-repo-a2de10 — new pseudonym added to kb/private/repo-pseudonyms.tsv), 8 `lateral` lines in the applied record.
+
+## Pages (run 16, continued)
+
+- content/en/applets/inventory-workflow/non-stock-and-trade-in-applet.md — rewritten to the standard under the registry name **Non Stock and Trade In Applet** (`nonStockAndTradeInApplet`, TNT-APPLET; title unchanged). Repo `blg-applet-wavelet-non-stock-and-trade-in-applet` (monorepo split; commit 209aafd, 2026-08-03); ts-lib 7d1616a9e; backend 871dbf5c96. The old page (git 1bd4ae12) was a marketing guide with invented configuration; everything from "Purpose" to "FAQ" was replaced. Kept: the tags, two screenshots. 26 issues read, 26 `lateral` lines.
+
+## Registry / naming mismatches (run 16, NSTI)
+
+- `documentation_url` still points at Confluence (`…/4588011547/Non-Stock+Trade-In+NSTI+Applet`); should become the wiki URL (applet-audit item). No second ACTIVE row.
+
+## Direction / fact reversals found (run 16, NSTI)
+
+- **"Configuration & Settings: `DEFAULT_NSTI_GL_CODE` and `ALLOW_NESTED_NSTI_CATEGORIES` in the Organization Applet"** — neither key exists anywhere (applet, ts-lib, backend). The real settings are the applet's own Field Settings (27 working keys, see the page); the NSTI GL is the company default GL code `NSTI` in Chart of Account.
+- **"If these mappings are missing, the system will error out during the posting of any invoice containing NSTI items"** — inverted: the backend **creates** the "Non-Stock and Trade-In" GL code, the company link and a subledger when the `NSTI` link is missing or invalid (`createTradeInStock` L108-160, `ensureNSTIGLCode` L298-425).
+- **"Category Hierarchy … Parent Category for nested organization (Electronic → Handheld → Phone)"** — categories are flat; the create form has Code, Name, Description, Status only.
+- **"Import … Upload and click Add to populate your stock list instantly"** — the import writes helper rows only; no code creates `bl_fi_nsti_stock_hdr` rows from them (the open applet issues #8/#10 are this).
+- **"Posting Status: DRAFT, TEMP, or POSTAL"** — values are `DRAFT` / `FINAL` (`TEMP` is the header *status* of an unsaved create). FINAL is a UI lock, not a posting.
+- **"Sales rep … records the serial number … valuation applied as a credit in the sales applet"** — units are created *by* the POS trade-in line, not typed in first; and the FINAL cash bill, not this applet, carries the credit.
+- **"Stock codes must be unique across the system"** — no backend uniqueness check on code, serial or category code; only the browser checks its generated code against loaded rows.
+- **"Track serial numbers … in the Serial Number or Code field"** — the serial is part of the unit's identity (item + serial + location); putting it in Code makes the unit invisible to documents.
+
+## Findings for the product team (run 16, NSTI)
+
+- **Import is a dead end**: `readCSV` stores helper rows and stops; nothing creates units (#8, #10, #11). Issue #11 is closed but `main` shows no backend change to the import since 2024-11-16 — either an unmerged branch or a wrong closure.
+- **Manual transaction lines never update `qty_base`** (only the balance processor does, and only for document-generated lines). Either trigger `processTxnLine` on manual create/update/delete or drop the "Add Transaction" panel.
+- **Financial Item picker is unfiltered** — lets users create units on non-NSTI items that documents will never move.
+- **Header delete leaves txn lines and attachments orphaned** (`NonStockTradeInHdrUow.delete` deletes the header row only).
+- **No uniqueness checks** on unit code, serial number or category code; the browser-side random code is checked against the loaded page only.
+- **Field Settings**: `STOCK_HIDE_COMPANY` rendered but unread; `SHOW_API_UPLOAD` declared and saved with no toggle; six `STOCK_HIDE_*` column keys read but not rendered; `DEFAULT_TOGGLE_COLUMN` / `DEFAULT_ORIENTATION` read but not rendered; Default Selection (Settings and Personalization) dead; Personalization › Field Settings has no route.
+- **Import failure has no user message** (`user_error_message` never written; #9).
+- **Foreign-currency documents are skipped silently** by the NSTI processor (`createAndPostNstiTxnLines` L255-265) — a USD trade-in never creates a unit and nothing tells the user.
+- **`serial-validation/backoffice-ep`** exists twice in the controller (one commented, one live) — fine, but the live one is undocumented; API reference item.
+- Legacy `bl_fi_tradein_stock_hdr` / `TRADE_IN_STOCK_PROCESSOR` still in the backend with `posting_trade_in` shared between the two paths — if both are subscribed, the second is skipped by `checkCanBePosted`.
+
+## Cross-lane link requests (run 16, NSTI)
+
+- content/en/applets/sales-workflow/pos-general-applet.md (lane 1) — add: a trade-in line creates an NSTI unit only when the item is `NSTI`-typed **and the line carries a serial number** (one unit per serial, `quantity_base 1`); selling an NSTI serial is refused with `STOCK_BALANCE_OBJECT_NO_STOCK_AT_LOCATION` when it has no balance at the line's location; forex bills skip NSTI posting. Its `related_applets` already lists this page.
+- content/en/applets/sales-workflow/internal-sales-invoice-applet.md, internal-sales-credit-note-applet.md (lane 1) — add `non-stock-and-trade-in-applet` to `related_applets`; credit note: NSTI lines are forced to quantity signum +1 by `NonStockTradeInTxnLineFactory` L117-118.
+- content/en/applets/master-data/doc-item-maintenance-applet.md (lane 4, done) — on next touch: the `NSTI` transaction type is what the NSTI processors key on; add `non-stock-and-trade-in-applet` to `related_applets`.
+- content/en/applets/inventory-workflow/stock-transfer-applet.md (lane 4, done) — one line: NSTI units move on transfer documents through stock-in-transit counter-lines (`createStockInTransitTxns`); add `non-stock-and-trade-in-applet`.
+- content/en/applets/inventory-workflow/stock-availability-applet.md, stock-balance-applet.md, stock-report-applet.md (lane 4) — Stock Availability: say it unions `bl_fi_nsti_stock_hdr` (cost = purchase price incl. tax); Stock Balance / Stock Report: NSTI excluded (gt#1422 open). Add `non-stock-and-trade-in-applet` to `related_applets`.
+- content/en/applets/master-data/chart-of-account-applet.md (lane 4, reworked) — note that the `NSTI` default GL is auto-created ("Non-Stock and Trade-In") by the first trade-in when absent; add `non-stock-and-trade-in-applet`.
+- content/en/applets/finance/financial-report-applet.md (lane 2) — add `non-stock-and-trade-in-applet` to `related_applets` (NSTI closing-stock journal between `COGS_NSTI` and `STOCK_BALANCE_NSTI`).
+- content/en/applets/master-data/organisation-applet.md, tax-configuration-applet.md, employee-applet.md (lane 4) — add `non-stock-and-trade-in-applet` to `related_applets` when touched.
+- API reference (developer-docs lane) — `POST …/non-stock-trade-in/txn-lines/posting/{docGuid}` (manual re-run), `POST …/stock-hdrs/serial-validation/backoffice-ep`, `GET …/stock-import-file-hdrs/backoffice-ep/download-master-data-template` are undocumented.
+- Modules pages (modules owner) — any "trade-in inventory is tracked in the stock ledger" wording should say NSTI units are a separate table shown only in Stock Availability.
+
+## Screenshots (run 16, NSTI)
+
+Seven images exist in `static/images/non-stock-and-trade-in-applet/`. Kept two: `settings.png` (Settings landing) and `import-add.png` (upload panel; the listing behind it shows file names and statuses only). Dropped five: `stock-listing.png`, `stock-create.png`, `category-listing.png`, `category-create.png` (staff first names as branch / category test data and a real phone brand as a category name — same rule as runs 13/14), `import-listing.png` (a staff member's full name in *Created by*), and the marketing infographic `non-stock-and-trade-in-applet-overview-infographic.png`. Files left on disk. Recapture wanted from a GadgetSphere-seeded tenant: NSTI Stock listing, Create NSTI Stock (with SCAN), Edit › Details / Txn Line / Attachment, Add Transaction, NSTI Category listing + create, Import listing, Field Settings screen.
+
+## Questions for Vincent (run 16, NSTI)
+
+45. **Import**: the page now says plainly that Import NSTI fills a staging table and creates no units (issues #8/#10 open, #11 closed without a visible backend change). Keep that wording, or is a fix deployed from a branch that is not on `main`?
+46. **Manual transaction lines do not move the balance** — documented as a limitation in Fields and Troubleshooting. Confirm this is not a deployed-build difference.
+47. **Screenshots** — five dropped for staff names / brand test data; recapture list above.
+
+## Notes (run 16, NSTI)
+
+- Settings classification: applet-local `FieldConfigurationComponent` (four panels); `applet-scan.sh` picked the repo's `testApplet` directory first (the real applet is under `micro-fe/projects/wavelet-erp/applets/`), so the applet dir must be checked by hand whenever a repo carries a testApplet — worth a METHOD.md line. Plain-grep second pass found the eight read-without-control keys and the two dead ones.
+- Lifecycle: METHOD.md §12 check settled it (ts-lib `endpoint_path = non-stock-trade-in/...`, own tables, own DCOs, no signum) — but this applet has a *document-driven* lifecycle behind it (two queue processors keyed on `txn_type = NSTI` + serial numbers), so "master data: writes / reads" needed a fourth block: "how documents create and move units". Same shape may apply to Fixed Asset Register.
+- New METHOD.md candidates: (a) **queue subscription is tenant configuration** — when a processor is a `TenantQueue.EventHandler` fed by `getSubscriberJobProcessors`, say so in "Before you can use it" and lead the "FINAL left no trace" troubleshooting row with it (this is §11's cousin for non-knock-off processors); (b) **auto-created GL codes** exist (`createDefaultGLCode` for NSTI) — check before writing any "missing default GL → error" claim.
+- Pace: ~80 minutes for the NSTI applet (a 600-line header service, two processors, a factory, an import path and 26 issues). Stopping after this page; next in queue is master-data/organisation-applet.md (large; several cross-lane requests already queued against it in earlier runs).

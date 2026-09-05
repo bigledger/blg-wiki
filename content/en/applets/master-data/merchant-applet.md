@@ -138,6 +138,7 @@ A recorded walkthrough of the applet (merchant setup, contracts and rate cards, 
 | Downstream | [My Peppol Admin](/applets/e-invoice/mypeppol-admin-applet/), [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) | Peppol participant IDs and the e-Invoice notification methods saved on the merchant row |
 | Downstream | Merchant monthly report job (`PGW_MERCHANT_MONTHLY_REPORT_PROCESSOR`) | Reads the merchant's rate cards and charge rates to price each payment channel per month; the result is the applet's **Report** menu |
 | Downstream | [Seller Admin](/applets/ecommerce/seller-admin-applet/) | Uses the merchant entity as the seller identity for order and fulfilment work |
+| Sibling | Merchant Access (`MerchantAccessApplet`, no wiki page) | The merchant-side applet; a separate build, see [Related applets](#related-applets) |
 
 Modules: Core, E-Commerce, E-Invoice.
 
@@ -365,6 +366,7 @@ It **reads** `bl_pgw_monthly_merchant_txn_summary_report_line` (`…/pgw/merchan
 - [My Peppol Admin](/applets/e-invoice/mypeppol-admin-applet/), [My E-Invoice Admin](/applets/e-invoice/my-e-invoice-admin-applet/) — consume the Peppol participant IDs and notification methods saved on the merchant.
 - [Seller Admin](/applets/ecommerce/seller-admin-applet/) — operates orders and fulfilment for a merchant registered here.
 - [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) — the tenant users that the Login tab verifies and invites.
+- **Merchant Access** (registry code `MerchantAccessApplet`) — a separate ACTIVE applet with its own build (`merchant-access-applet`), intended as the merchant-side counterpart of this administrator view. It has no page on this wiki and its source is not in the organisation's applet repositories at the time of writing, so nothing about its behaviour is documented here.
 
 ## Troubleshooting
 
@@ -378,7 +380,6 @@ It **reads** `bl_pgw_monthly_merchant_txn_summary_report_line` (`…/pgw/merchan
 | Rows added on Return URL / Tax & Billing / Payment Config / Address / Contact / Credit Term / Credit Limit disappear | They are staged in the browser until the header **Save** is pressed | Press **Save** on the Merchant Edit header, not only the panel's Save / Add |
 | Merchant vanished after clicking **Remove** | Remove deletes immediately, without confirmation, and physically | Recreate the merchant; contracts that pointed at it still exist in the Contract listing but show no merchant |
 | Contract listing shows a contract with an empty Merchant Name / edit shows *Type = TEMPLATE* | `merchant_guid` is null — the merchant was deleted, or the contract was created as a template | Create a new contract for the merchant; templates cannot be re-pointed from the UI |
-| Contract *Merchant Name* shows `[object Object]` | The edit panel patches the name from the merchant lookup response and, on the Contract-menu edit screen, the value it receives is the container, not the string (`contract-edit.component.ts` L153-154) | Cosmetic; the merchant link is intact. Open the same contract from the merchant's own Contract tab to see the name |
 | Two contracts with the same Contract Code | The code is computed in the browser as max + 1; two users creating at the same time get the same number and the backend does not check `code` uniqueness | Rename one; the contract key, not the code, is the unique identifier |
 | **Verify Email** says *User … not found* | The e-mail has no tenant login (`USER_NOT_FOUND`) | Press **Send Invite**; the invitation creates the login and, with `create_entity: true`, an entity for it. Link the login once the user has confirmed |
 | **Verify Email** succeeded but the user now appears in Tenant Admin | Verify works by attempting to add the address as a tenant user; an `OK` response means it was added | Expected side effect (`login-create.component.ts` L117-145) |
