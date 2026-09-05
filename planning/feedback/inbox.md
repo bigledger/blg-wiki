@@ -671,3 +671,15 @@ with the analysis, the changes made, and the commit hash.
 ### registry
 - [ ] F-0180 (2026-09-05) stockLevelMonitoringApplet (ACTIVE 2026-08, repo exists, reads the balance) has no page — add to lane 4's queue? `page_type: index` added to the standard for hub pages (EcomSync, Stock Balance) so the parity check can allowlist them.
 
+## From Lane 3 run 19 — push notifications (2026-09-05) — SECURITY
+
+### SECURITY INCIDENT — credential exposure on the public wiki (2026-02-16 → 2026-09-05)
+- [x] F-0181 (2026-09-05) Five screenshots under static/images/push-notifications/ (added 2026-02-16, wiki issue #207) exposed a customer's Firebase service-account e-mail, client id, private_key_id and the head of the private key, plus a second customer's bundle IDs, Firebase project id/number, OAuth client id, APNs key IDs, Team ID and App Store ID. The old page text also named the customer with identifiers. Images quarantined and removed from the CDN by the loop (this commit); page rewritten without identifiers.
+      → STILL NEEDED (Vincent, urgent): (1) treat that Firebase service-account key as compromised — rotate it in the customer's Firebase project and update bl_cms_website_hdr.property_json.firebase; (2) decide whether to purge the images and the old page text from git history (3 commits) — the repo is private but the files were public via CloudFront for ~7 months; (3) request a CloudFront invalidation is already done by the deploy; consider checking CDN/S3 access logs for fetches of /images/push-notifications/.
+
+### standard
+- [ ] F-0182 (2026-09-05) `page_type` needs a third value `applet-feature` (parent_page:) for feature sub-pages like push-notification-configuration and website-builder/user-manager — or fold them into the parent. Vincent.
+
+### product (push notifications)
+- [ ] F-0183 (2026-09-05) No admin screen writes the Firebase credential (support edits the DB row); FirebaseApp cached per tenant+website for the API lifetime (rotation needs restart); pushToTopic() swallows FCM errors into a 200; two different "default topic" notions (app: Website Default Topic; backend member-restore: the topic described literally "DEFAULT"). Tickets? wavelet-cp-commerce#245 has an unread "Push Notification Configuration Guide" PDF — ingest with identifiers stripped?
+

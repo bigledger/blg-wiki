@@ -111,6 +111,8 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 
 ## Waiting on Vincent
 
+- **F-0181 SECURITY (urgent):** a customer's Firebase service-account key head was public via the wiki CDN from 2026-02-16 until today — rotate the key; decide on git-history purge; check CDN logs.
+
 - **F-0038 — confirm stock behaviour of the standard purchase pair** before the GRN page and the
   procurement guide are corrected: code says Purchase Invoice (Internal) = stock in (+1), Purchase
   Invoice No Stock In = 0, Purchase GRN Stock In = +1. The wiki currently says the reverse.
