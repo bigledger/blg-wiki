@@ -542,3 +542,9 @@ with the analysis, the changes made, and the commit hash.
 ### /guides/purchasing-guides/consignment-purchasing/ + /applets/master-data/organisation-applet/
 - [ ] F-0137 (2026-09-05) Knock Off Configuration (company gendoc flow config) ownership: it decides whether FINAL opens the queue for EVERY document type; Organisation page should own it (answers F-0080's "who owns the flow-config UI"). Consignment guide must be corrected on return stock behaviour.
 
+## From Lane 4 run 11 (2026-09-05)
+
+### registry / product (goods delivery note)
+- [x] F-0138 (2026-09-05) internal-goods-dispatch-note-applet.md renamed to internal-goods-delivery-note-applet.md under the registry name "Goods Delivery Note (Internal)" with an alias for the old URL (resolves the phantom entry + wiki issue #69). "Goods Dispatch Note" is a real, separate, UNREGISTERED document type (INTERNAL_GOODS_DISPATCH_NOTE, own repo, commits in 2026-07) — Vincent: register or archive that repo?
+- [ ] F-0139 (2026-09-05) The Goods Delivery Note form inherits Member Card + Sales Agent as REQUIRED (clone of Sales Credit Note) and disables CREATE while invalid — a plain delivery to a non-member customer may be blocked. Confirm on a tenant; bug? Also: the akaun_master journal-posting subscriber has no serverDocTypes constraint, so the journal job runs and fails with NO_JOURNAL_CREATED for every FINAL signum-0 document (Sales Order, Quotation, Jobsheet, Outbound DO too) — keep documenting "expected, ignore", or point users at a job-queue screen? Ten tab-hide toggles never render (registry code absent from getTabValue(), third applet in this lane — joins F-0132).
+
