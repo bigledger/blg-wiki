@@ -452,3 +452,14 @@ with the analysis, the changes made, and the commit hash.
 ### product (creditor report)
 - [ ] F-0101 (2026-09-05) Contra tab writes arap-contra pairs with NO server-side over-contra check (client ADD guard only) — product issue? Aging Period Settings silently overwrites AGING_PERIOD_TYPE; DAY with no DAY period yields no bucket columns; Personalization → Default Selection screen dead; Statement of Account / Historical Creditor served by DEBTOR_* permissions (AP-only roles get 403).
 
+## From Lane 4 run 7 (2026-09-05)
+
+### product (entity maintenance)
+- [ ] F-0102 (2026-09-05) Entity Maintenance has no functional configuration (Field Settings unbound; Default Selection/Personalisation write to a container never loaded); four edit tabs are dead UI (Entity Category, Login, Credit Term, Credit Limit — onSave discards input); category label codes are unique tenant-wide across entity AND item categories. Recommended: report for clean-up/retirement; keep the page for category trees and company/intercompany links. Registry documentation_url → Confluence; should be /applets/master-data/entity-applet/.
+
+### static/images/entity-applet — personal data
+- [x] F-0103 (2026-09-05) 10 of 12 show staff names/e-mails/phones and a customer-name fragment; quarantined.
+
+### /modules-v2/claims/ /modules-v2/hr-payroll/ /modules-v2/purchasing/
+- [ ] F-0104 (2026-09-05) These credit Entity Maintenance with employee bank profiles / supplier payment terms that live in Employee Maintenance / Supplier / Customer Maintenance. Module batch.
+

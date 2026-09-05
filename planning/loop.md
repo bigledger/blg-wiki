@@ -132,6 +132,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 - **F-0093/F-0094** delivery-installation and employee defects (guard case mismatch; File Import cross-type matching; dead tabs) — product tickets?
 - **F-0097/F-0098** commission-scheme backend gaps and settings skeleton — tickets? Custom Processor → integrations/?
 - **F-0099** registry: creditor_report_applet.documentation_url → /applets/finance/creditor-report-applet/ (DB) · **F-0101** over-contra check missing server-side — product issue?
+- **F-0102** Entity Maintenance: report for clean-up/retirement? registry doc URL → wiki.
 - **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
   Voucher applet?; **F-0042** resolved (three distinct applets; see F-0099).
 
