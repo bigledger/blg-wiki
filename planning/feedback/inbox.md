@@ -390,3 +390,17 @@ with the analysis, the changes made, and the commit hash.
 ### /applets/inventory-workflow/driver-delivery-order-applet/ (product)
 - [ ] F-0083 (2026-09-05) Driver Delivery Order: drivers can SAVE-edit FINAL delivery orders (no backend block) — intended? ~50 rendered toggles + the Custom Status screen persist keys nothing reads; two settings menu entries route to 404. The old page's "Add" / "custom status" instructions were invented (removed). Open question in kb/topics: where an internal outbound DO gets its driver.
 
+## From Lane 1 run 5 (2026-09-05)
+
+### static/images/claim-applet — PERSONAL DATA
+- [ ] F-0084 (2026-09-05) Lane 1 lists 20 of 36 Claims screenshots showing a real customer group's legal-entity names or real employee names. Loop quarantining the unreferenced ones (see next commit); the 6 embedded on the Claim Applet page were checked safe by the lane. Joins F-0074/F-0075.
+
+### /applets/membership/commission-scheme-applet/ + /applets/sales-workflow/commission-scheme-applet/
+- [ ] F-0085 (2026-09-05) Two pages for one registry code (Commission Scheme). ADR-0002: one applet, one page. Lane 1 to document once in the folder matching the applet's module and mark the other for merge+alias — Vincent to confirm which folder.
+
+### /modules-v2/claims/
+- [ ] F-0086 (2026-09-05) Module index wrongly places approval matrices in the Claim Cycle applet and claims automatic AP disbursement — neither exists (no PV is ever created; money leaves via the cycle's Bank Report / PV Details / salary CSV). Correct in the module batch.
+
+### product (claims)
+- [ ] F-0087 (2026-09-05) Claims module is visibly built for one customer (tenant-code branches in UI and controller; a hard-coded job-title auto-approval) yet is a generic ACTIVE applet. Documented generically. Vincent: confirm policy; product ticket to turn the branches into settings? Also: ENABLE_AUDIT_TRAIL is a no-op; auto_add_approved_claim_to_cycle has no UI control; personal settings DEFAULT_PAYMENT_PROCESSING_OPTION / HIDE_PAYMENT_SALARY_TAB make two users see different cycle totals.
+

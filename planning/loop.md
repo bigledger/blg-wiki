@@ -127,6 +127,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 - **F-0074** confirm deletion of 17 quarantined PII screenshots (or re-capture synthetic). **F-0077** Car Workshop Field Settings stub, always-true template guard, Convert-to-RV on FINAL quotations — intended?
 - **F-0079** phantom/duplicate triage: delete 3 placeholder pages? budget→budgetary merge? Ecom Sync rows live or leftovers? Tiktok Sales Order generic? · **F-0080** blanket-order validity not enforced — intended? who owns the flow-config UI page?
 - **F-0082** merge the delivery-installation V2 duplicate into lane 3's canonical page? · **F-0083** drivers editing FINAL delivery orders — intended?
+- **F-0085** Commission Scheme: which folder is canonical (membership or sales-workflow)? · **F-0087** claims module built for one customer — confirm generic documentation policy.
 - **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
   Voucher applet?; **F-0042** merge the Creditor Report page into the combined report page?
 
