@@ -442,3 +442,59 @@ Kept and referenced (clean; test branch names only): lines, delivery_details, se
 ### Stopping point
 
 Two large document applets this run (both consignment purchase-side documents with backend surprises). Next in queue: `internal-consignor-purchase-billing-applet.md`. Registry title for it is "Consignor Purchase Billing Applet (Internal)".
+
+## Run 10 — 2026-09-05 — internal-consignor-purchase-billing-applet
+
+### Page
+
+- `content/en/applets/purchase-workflow/internal-consignor-purchase-billing-applet.md` rewritten from applet @823e05d, backend @871dbf5, ts-lib, shared-utilities, registry and 10 issues. Title set to the registry name "Consignor Purchase Billing Applet (Internal)"; `applet_code: InternalConsignorPurchaseBillingApplet`.
+
+### What the code says that the old page got wrong
+
+- **Not a generic document.** It writes `bl_fi_csg_billing_hdr` / `bl_fi_csg_billing_line` through its own endpoint. No journal handler, no stock processor, no open-queue rows, no creditor balance. The old page hedged ("uses operational status"); the new page states it. The generic type `INTERNAL_CONSIGNOR_CONSIGNMENT` (CSRCON, 0/0) exists in the backend but is never created by this applet.
+- **The Payment tab cannot record anything.** `payment.effects.ts` compares the amount with the header *object* (`parseFloat(hdr)` = NaN), so "Payment Exceeds Outstanding" fires on every ADD; and neither CREATE nor SAVE includes payment lines in the request. The old page told finance to "add Payment lines after CREATE, then SAVE". The consignment PO page (my lane, run 9) also sends users here for settlement — see cross-lane list.
+- **Line changes on the edit screen are lost on SAVE.** The edit effect never copies draft lines into the request (`genDoc.bl_fi_csg_billing_line = [...pns, ...stl]` is commented out); the edit-line screen dispatches to the generic-line state, not the billing-line state; the single-line PUT has no caller. Only header edits persist.
+- **Consignor is optional** (Account form has no validators; backend checks the entity only if present). Old page: "CREATE stays disabled until Account is valid". Worse: a billing saved without a consignor breaks the listing load (`entity_hdr_guid.toString()` on null per row).
+- **Quantity To Bill is typed, not computed from stock.** Client formula opening + net − closing with `parseInt`; the backend `/item/calc` exists (different formula: opening + net **+** closing, net from *ordinary* purchase GRN/GIN types) and is never called.
+- **Export** calls the Purchase Order Jasper endpoint with a hard-coded template; the chosen format is ignored. Old page presented it as a working PDF export.
+- **Settings**: only `PRINTABLE` passes four proofs. Default Selection has no save handler and its load code is commented out; Field Settings is eight unbound toggles. The old page listed Feature Visibility / Default Selection / Field Settings / Webhook as working admin areas.
+
+### Method findings (add to METHOD.md)
+
+- **Not every "document applet" is a generic document.** Check the ts-lib service's `endpoint_path` and the backend container class before assuming `bl_fi_generic_doc_*`, DCO signums and `JournalPostingTypeHandler` apply. For an own-table applet the posting proof block is a table of "none" with the absence cited (grep of JournalPostingService / StockBalanceHelper for the table name).
+- **Trace the request body, not the reducer.** This applet has a complete draft store for payments and billing lines, but the effect that builds the PUT never reads it. The "persisted" proof for a *field* (not just a setting) = the field is present in the object handed to `service.post/put`. Worth adding as a standard step for document applets: read the create/edit effects end-to-end.
+- **A settings route with no `(save)` binding is not persisted** even if the component emits. Check `app.routing.ts` for how the settings component is mounted; a bare component in a route has no parent to catch its output.
+- **NaN guards.** `parseFloat(object)` comparisons silently make a whole feature unusable; grep `parseFloat(<any>` against `withLatestFrom(selectHdr)` in payment effects of the other consignment-family applets (PO page run 9 reported "Payment totals stay 0.00" — may be the same defect).
+
+### Screenshots
+
+- Excluded (real customer legal name visible in the listing rows): `static/images/internal-consignor-purchase-billling-applet/main-listing.png`, `create-main-details.png`. Both should be re-taken on a clean tenant or deleted.
+- Dropped: `internal-consignor-purchase-billing-applet-overview-infographic.png` — NotebookLM artefact claiming "Flexible Settlement Recording … directly within the same record", which the code cannot do.
+- Kept: `add-line-items.png` (test item codes only; one row shows a sportswear brand as an item name — test data, acceptable), `settlement-tab.png` (empty grid).
+- Note the image folder is misspelt (`billling`); left as is so existing links keep working.
+
+### Cross-lane link requests
+
+- **purchase-workflow/internal-consignment-purchase-order-applet.md** (my lane, run 9): "the consignor is settled through Consignor Purchase Billing" and the Payment-tab troubleshooting row "Record consignor settlement in Consignor Purchase Billing" — change to "record the billable quantity in Consignor Purchase Billing; the creditor balance and payment are a Purchase Invoice and Payment Voucher". Queue a small edit.
+- **inventory-workflow/internal-consignment-grn-applet.md** (other lane): "a GRN that has been knocked off by a later document [Consignment Billing / Consignor Purchase Billing] can no longer be voided" — the consignor billing creates no links and no open-queue rows, so it never knocks off a GRN; reword to name only documents that actually link.
+- **finance/internal-purchase-invoice-applet.md** (lane 2): intranet #4717 asks for an "External Documents Date … like the External Invoice Date in the Purchase Invoice Applet" — make sure the PI page documents that field and its role (supplier's invoice date vs. posting date).
+- **guides/purchasing-guides/consignment-purchasing.md**: remove any step that records consignor payment in this applet; the settlement path is PI + PV.
+- **applets/purchase-workflow/_index.md** (my lane): the family description should say the consignor billing is a quantity record, not a payment document.
+- **planning/lanes/METHOD.md** (coordinator): fold in the four method findings above.
+
+### Registry / naming mismatches
+
+- `InternalConsignorPurchaseBillingApplet` has an empty `documentation_url`; should be `https://wiki.bigledger.com/applets/purchase-workflow/internal-consignor-purchase-billing-applet/`.
+- 0 client-side permission definitions and 0 `checkPermission` calls — a third pattern beside "checked but not seeded" (F-0044): nothing to seed until the applet gates something.
+- Backend permission `API_TNT_DM_ERP_CONSIGNOR_PURCHASE_BILLING_MEMBER` is defined but no endpoint checks it.
+
+### Questions for Vincent
+
+- **Is the Payment tab supposed to work?** The reducer expects `csg_type = STL_MTHD` lines, the guard is broken, and the request assembly is commented out. Either finish it (three small fixes) or hide the tab and say "settle via PI + PV" everywhere. The page currently documents the code as shipped.
+- **Should SAVE persist line changes?** One commented line in the edit effect. Until then the page tells users to create a new billing to fix lines.
+- **Which Quantity To Bill formula is intended** (UI: opening + net − closing; backend calc: opening + net + closing, from ordinary GRN/GIN)? And should the applet call `/item/calc` at all? The page documents the UI behaviour and notes the unused endpoint.
+- Delete or re-take the two excluded listing screenshots.
+
+### Stopping point
+
+One large applet this run — it turned out to be an unfinished template fork with more non-working paths than working ones, and every one needed its own proof. Next in queue: `internal-purchase-gin-applet.md`.

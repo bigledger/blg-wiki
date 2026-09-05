@@ -1,6 +1,111 @@
 ---
-title: "Internal Consignor Purchase Billing Applet"
-description: "User guide for consignor purchase billing: why it exists in consignment, how billable quantity is calculated, create and edit with lines and payments, and settings."
+title: "Consignor Purchase Billing Applet (Internal)"
+description: "Reference for the Consignor Purchase Billing (Internal) applet: the period record of what you owe a consignor for consigned stock, its screens, the one configuration switch that works, its fields, what it writes (its own billing tables, no journal, no stock, no creditor balance) and the failure modes that are in the code."
+applet_code: "InternalConsignorPurchaseBillingApplet"
+applet_repo: "blg-applet-wavelet-internal-consignor-purchase-billing-applet"
+modules: [purchasing, inventory]
+related_applets:
+  - internal-consignment-grn-applet
+  - internal-consignment-gin-applet
+  - internal-consignment-purchase-order-applet
+  - internal-consignment-return-applet
+  - internal-consignment-billing-applet
+  - customer-consignment-applet
+  - internal-purchase-invoice-applet
+  - internal-payment-voucher-applet
+  - supplier-applet-1
+  - employee-applet
+  - organisation-applet
+  - doc-item-maintenance-applet
+  - tax-configuration-applet
+  - pricebook-applet
+  - stock-balance-applet
+guides:
+  - /guides/purchasing-guides/consignment-purchasing/
+sources:
+  screens:
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/app.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/services/consignor-purchase-billing-pages.service.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-listing/consignor-purchase-billing-listing.component.html
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-listing/consignor-purchase-billing-listing.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/consignor-purchase-billing-create.component.html
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-edit/consignor-purchase-billing-edit.component.html
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/line-item/line-item-create/line-item-create.component.html
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/add-line-item/add-line-item.component.html
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/line-item/line-item-listing.component.html
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/payment/payment-listing.component.html
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/export/export.component.html
+    - blg-shared-utilities/modules/settings/settings.component.html
+  configuration:
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/models/constants/applet-constants.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/models/constants/printable-format-constants.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/settings-container/settings-container.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/settings-container/field-configuration/field-configuration.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/settings-container/printable-format-settings-container/printable-format-listing/printable-format-listing.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/state-controllers/printable-format-controller/store/effects/printable-format.effects.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/export/export.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/line-item/line-item-create/search-item/line-search-item-listing.component.ts
+    - blg-shared-utilities/modules/settings/feature-visibility/feature-visibility.component.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/consignor/InternalConsignorPurchaseBillingController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/TntErpPermissions.java
+    - akaun_master.bl_applet_client_side_perm_dfn (applet code InternalConsignorPurchaseBillingApplet, 0 rows on 2026-09-05)
+  fields:
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/main-details/select-purchaser/select-purchaser-listing.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/account2/account-entity-details/account-entity-details.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/add-line-item/item-details/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/add-line-item/item-details/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/add-line-item/calculations/calculations.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/add-line-item/calculations/calculations.component.html
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/add-line-item/add-line-item.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/payment/add-payment/add-payment.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/payment/payment-listing.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/state-controllers/draft-controller/store/reducers/hdr.reducers.ts
+  lifecycle:
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-create/consignor-purchase-billing-create.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-edit/consignor-purchase-billing-edit.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-edit/edit-line-item/edit-line-item.component.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/state-controllers/consignor-purchase-billing-controller/store/effects/consignor-purchase-billing.effects.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/state-controllers/line-item-controller/store/effects/line-item.effects.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/state-controllers/draft-controller/store/effects/payment.effects.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/state-controllers/draft-controller/store/reducers/csgpns.reducers.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/state-controllers/draft-controller/store/reducers/payment.reducers.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/facades/view-column.facade.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-document-services/internal-consignor-purchase-billing.service.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-document-services/internal-purchase-order.service.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/consignor/InternalConsignorPurchaseBillingController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/InternalConsignorPurchaseBillingService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/CompBranchLocationEntityLinkDco/consignor/InternalConsignorPurchaseBillingDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/consignor/InternalConsignorPurchaseBillingUow.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/model/ConsignorContainer/InternalConsignorPurchaseBillingContainer.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/inventory/InventoryTransactionLineService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalConsignorConsignmentDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/stock/StockBalanceHelper.java
+  troubleshooting:
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/state-controllers/draft-controller/store/effects/payment.effects.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/state-controllers/consignor-purchase-billing-controller/store/effects/consignor-purchase-billing.effects.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/models/advanced-search-models/internal-purchase-order.model.ts
+    - blg-applet-wavelet-internal-consignor-purchase-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignor-purchase-billing-applet/src/app/components/consignor-purchase-billing-container/consignor-purchase-billing-listing/consignor-purchase-billing-listing.component.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/errorCodesConstants/TntErpErrorCodesConstants.java
+    - gh:bigledger/blg-applet-wavelet-internal-consignor-purchase-billing-applet#1
+    - gh:bigledger/blg-applet-wavelet-internal-consignor-purchase-billing-applet#2
+    - gh:bigledger/blg-intranet#1084
+    - gh:bigledger/blg-intranet#4717
+    - gh:bigledger/blg-intranet#4788
+    - gh:bigledger/blg-intranet#5054
+    - gh:bigledger/blg-int-general-task#6498
+    - gh:bigledger/blg-wiki#68
 tags:
   - purchase-workflow
   - consignment
@@ -8,418 +113,225 @@ tags:
   - consignor
   - accounts-payable
 weight: 62
-draft: false
-lastmod: 2026-06-24
+lastmod: 2026-09-05
 ---
 
-## Purpose and overview
+## Overview
 
-### What this applet is for
+The **Consignor Purchase Billing Applet (Internal)** records, for one consignor (a supplier who keeps ownership of the stock in your shops) and one billing period, which consigned items became billable and for how much. Each record has a header (period, company, branch, location, purchaser, status), the consignor, and one line per item with an opening quantity, net purchases, closing quantity, the resulting **Quantity To Bill** and its value and tax. The applet stores this in its own billing tables; it is not a generic document, so it has no FINAL step, posts no journal, moves no stock and creates no creditor balance. The amount you actually owe the consignor still has to be recorded as a supplier invoice and paid through a payment voucher.
 
-**Internal Consignor Purchase Billing** records the **financial billing** between your organisation and a **consignor** (supplier) after consignment activity has occurred. Each document has a header (company, branch, location, billing period, purchaser, status, references), the **consignor account**, **line items** with billable quantities and amounts, and optional **payment** lines for settlement.
+The window title is **Consignor Purchase Billing Applet**; the sidebar entry is **Internal Consignor Purchase Billing**. It is the purchase-side counterpart of the [Consignment Billing Applet (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/), which bills your customers for stock you consigned to them.
 
-The window title is **Consignor Purchase Billing Applet**; the sidebar entry is **Internal Consignor Purchase Billing**.
+## Where it fits
 
-In a **consignment** model, ownership of stock usually stays with the consignor until agreed events occur (for example sales, consumption, transfer, or a settlement trigger agreed with the consignor). This applet is where you **record what to bill the consignor** for a period—not where you receive goods or place a standard purchase order.
+| Position | Applet / document | Relationship |
+|---|---|---|
+| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/) | Consignment-purchase family |
+| Upstream (source of the figures) | [Consignment GRN (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/), [Consignment GIN (Internal)](/applets/inventory-workflow/internal-consignment-gin-applet/), [Consignment Return (Internal)](/applets/purchase-workflow/internal-consignment-return-applet/), [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) | The GRN and GIN are the documents that move consigned stock; the opening, net-purchase and closing quantities you type on a billing line come from them. The applet does not read them itself (see *Lifecycle*). |
+| Upstream (commitment) | [Consignment Purchase Order (Internal)](/applets/purchase-workflow/internal-consignment-purchase-order-applet/) | The order that placed the stock with you. Not linked to the billing. |
+| Master data | [Supplier](/applets/master-data/supplier-applet-1/), [Employee](/applets/master-data/employee-applet/), [Organisation](/applets/master-data/organisation-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/) | Consignor entity, purchaser, company/branch/location, consignment-flagged items, SST/WHT codes |
+| Downstream | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) | Nothing in the code links a billing to them; they are where the creditor balance and the payment are recorded. |
+| Sales-side mirror | [Consignment Billing Applet (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/), [Customer Consignment](/applets/sales-workflow/customer-consignment-applet/) | You are the consignor there; here you are the consignee. |
 
-### How this document type compares to others
+## Screens and menus
 
-| Document | What it is for | When you use it |
-|----------|----------------|-----------------|
-| [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) | Creates a **commitment to buy** from a supplier | Before goods or services are confirmed |
-| [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) | Records a **supplier invoice** in the standard purchase flow | When you receive and post a supplier invoice |
-| **Consignor Purchase Billing (this applet)** | Records **billing and settlement** for consigned stock with the consignor | After consignment activity in the billing period |
-| [Consignment Billing (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) | Bills your **customer** for consigned stock used | Sales-side billing to the consignee |
+**Sidebar**: one entry, **Internal Consignor Purchase Billing**, which opens the listing. **Settings** and **Personalization** are the applet-level menus (below).
 
-{{< callout type="info" >}}
-**Not the same as sales-side billing:** [Consignment Billing (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) bills your customer. This applet handles **consignor-side purchase billing** with the supplier who owns the consigned stock.
-{{< /callout >}}
+**Consignor Purchase Billing Listing** — server-side grid with columns *Company Name, Branch, Consignor, Consignor Name, Start Date, End Date, Status*, sorted by last update. **Create** (`+`) starts a new billing; clicking a row opens it for editing. The advanced-search box is the one inherited from the Purchase Order template (see *Troubleshooting* — it does not search billings). There is no FINAL, VOID, DELETE or PRINT button on the listing.
 
-### Problems this applet helps solve
+**Create Consignor Purchase Billing** — tabs **Main Details**, **Account**, **Line Item**, **Payment**; one button, **CREATE**. **Edit Consignor Purchase Billing** adds an **Export** tab and the buttons **RESET** and **SAVE**.
 
-- **One official billing record** for each consignor billing cycle instead of spreadsheets or email.
-- **Clear billable quantities** on each line, with **Total** and **Tax** summarised on the **Line Item** tab.
-- **Settlement lines** on the same document when finance records how payment was made.
+**Select Line Item → Search Item** — the item picker behind `+` on the Line Item tab. It lists only items whose consignment flag is set (columns *Item Code, Item Name, Net Purchase, Closing Stock, Billed Quantity, Quantity To Bill* — the last four are empty placeholders; the picker does not compute them). Choosing an item opens **Add Item** with two tabs, **Item Details** (price, quantity, discount, SST, WHT) and **Calculations** (opening, net purchase, closing, quantity to bill), and an **ADD** button.
 
-### Where to work in the menu
+{{< figure src="/images/internal-consignor-purchase-billling-applet/add-line-items.png" alt="Create Consignor Purchase Billing with the Line Item tab open and the Select Line Item panel listing consignment items" caption="Line Item tab: **+** opens *Select Line Item*, which lists only consignment-flagged items; *Total* and *Tax* above the grid are summed from the lines." >}}
 
-- **Internal Consignor Purchase Billing** — listing, create, edit (**CREATE** / **SAVE**), lines, and payments.
-- **Settings** and **Personalization** — defaults, fields, print formats, permissions, and sidebar layout (when your administrator enables them).
+**Payment tab** — a grid (*Payment Voucher No, Payment Method, Date, Paid Amount, Remarks*) with *Total* and *Outstanding* above it, `+` to open **Add Payment** (settlement-method picker and method-specific fields), and click-through to **Edit Payment** (SAVE / DELETE). Read *Lifecycle* before using it: nothing entered here is saved.
 
-### Where this applet fits (consignment context)
+{{< figure src="/images/internal-consignor-purchase-billling-applet/settlement-tab.png" alt="Edit Consignor Purchase Billing showing the Payment tab with Total and Outstanding and the Edit Payment panel" caption="Payment tab on the edit screen. *Outstanding* is the header's open balance accumulated from the lines; the payment grid stays empty because payment lines are never sent to the server." >}}
 
-| Stage | Purpose | Where to read more |
-|--------|---------|-------------------|
-| Consignment GRN | Receive consigned goods into stock | [Internal Consignment GRN](/applets/inventory-workflow/internal-consignment-grn-applet/) |
-| Consignment usage / movement | Track sold, consumed, or moved quantity | [Customer Consignment](/applets/sales-workflow/customer-consignment-applet/) |
-| **Consignor purchase billing (this applet)** | Calculate and record **billable quantity** and amounts for the consignor | **This guide** |
-| Bill the consignee | Invoice the customer for consignment usage | [Consignment Billing (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) |
-| Standard purchase order | Commit to buy outside consignment billing | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) |
+**Export tab** (edit only) — *Printable Format* drop-down and **EXPORT AS PDF**.
 
-**What triggers billing?** Your finance and operations team define this—for example a **monthly billing cycle** (**Start Date** / **End Date** on the document), quantity sold or consumed in that period, or quantities approved for billing. Use the table above and your internal policy together.
+**Settings menu** (what an administrator sees, in order): *System Configuration* → **Field Settings**, **Default Selection**; *Server Side Permissions* → **Permission Wizard**, **Permission Set**, **User Permission**, **Role Permission**; *Developer Tools* → **Release Notes**. Opening Settings lands on **Feature Visibility**, which is routed but not in the menu; **Printable Format Settings** and **Webhook** are likewise reachable only by URL (`settings/printable-format-settings`, `settings/webhook`). **Permission Wizard** and **Release Notes** have no route in this applet and show the 404 page. **Personalization** lists **Field Settings** (no route — 404), **Default Selection** and **Sidebar**.
 
----
+## Configuration
 
-## Before you begin
+### Before you can use it
 
-- You need permission to use **Internal Consignor Purchase Billing** (create/open/edit as defined for your role).
-- **Company**, **branch**, and **location (store)** must be valid in master data. **Branch** and **location** are **required** on the document before you can save a new record.
-- You must complete **Account** (consignor / supplier entity) so the account form is valid—**CREATE** and **SAVE** stay disabled until this is true.
-- You must add **at least one line item** before **CREATE** or **SAVE**—the applet enforces a non-empty **Line Item** grid.
-- **Items** you add on lines must be consignment items available in **Search Item**, and your pricing rules must allow the line to be completed.
-- **Payment lines** are normally added **after** the billing document exists (open from the listing, then **SAVE**). Finance should agree when settlement is recorded.
+| Prerequisite | Where | Why |
+|---|---|---|
+| Company, branch and location | [Organisation](/applets/master-data/organisation-applet/) | Branch and location are the only header fields the form requires; the company is overwritten on save with the branch's company. The backend rejects a header whose company guid is null or unknown (`…_HDR_OBJECT_GUID_COMP_IS_NULL` / `…_COMP_DOES_NOT_EXIST`) and a branch, location or entity guid that does not exist. |
+| The consignor as a supplier entity | [Supplier](/applets/master-data/supplier-applet-1/) | Picked on the Account tab. Neither the form nor the backend insists on one (the entity check runs only when a guid is present) — see *Troubleshooting* for why you should always pick one. |
+| Employee records | [Employee](/applets/master-data/employee-applet/) | The **Purchaser Agent** picker lists employees. |
+| Items with the consignment flag set | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Search Item filters on `consignment_flg = true`; an ordinary item never appears. The line's default price is the item's base-UOM price. |
+| SST / WHT tax codes | [Tax Configuration](/applets/master-data/tax-configuration-applet/) | The Item Details tab has SST and WHT pickers. |
+| Settlement-method items (`SETTLEMENT_TYPE` extension) | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Populate the Payment tab's *Settlement Method* list. Only needed if you want the tab to render; it cannot save. |
+| Server-side permissions `API_TNT_DM_ERP_CONSIGNOR_PURCHASE_BILLING_*` | Settings → Permission Set / User Permission / Role Permission | See *Feature visibility / permissions*. |
 
-{{< callout type="info" >}}
-Field labels, mandatory markers, and hidden tabs follow **Field Settings** and **Feature Visibility** set by your administrator. If a field this guide lists is missing, ask an administrator rather than assuming you are on the wrong screen.
-{{< /callout >}}
+Not needed: default GL codes, document numbering, cashbooks, e-Invoice settings. The billing posts nothing and has no document number (the header has no number column; the listing has no number column either).
 
----
+### Applet settings
 
-## Who uses this applet
+Settings live in **applet-local** components: `settings/default-selection` renders the applet's own `DefaultSettingsComponent` and `settings/field-settings` renders the applet's own (empty) `FieldConfigurationComponent`. The shared `FieldConfigurationComponent` from blg-shared-utilities is not routed and no screen embeds the inline gear (`app-applet-settings-toggle`). The settings model declares 31 keys; only one passes all four proofs (declared, rendered, persisted, consumed). Any user who can open Settings can change it.
 
-| Role | Main responsibility |
-|------|---------------------|
-| Finance / Accounts Payable / Consignment operations | Create billing records, verify amounts and tax, add **Payment** lines, coordinate settlement |
-| Inventory / operations | Supply correct stock figures and item context for lines; may own **Reference** / **Remarks** |
-| Procurement / buying | Support purchaser and consignor selection when your process assigns that to buying |
-| Administrator | **Settings** / **Personalization**: defaults, printable formats, field visibility, permissions |
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| `PRINTABLE` (Printable Format Settings → *set as default*) | The printable format pre-selected in the Export tab's drop-down. | none — the drop-down is empty until a default is chosen | Persisted into the applet's `APPLET_SETTINGS` extension and read into the Export tab. It has no effect on the PDF itself, because the export effect ignores the selected format (see *Lifecycle*). |
 
----
+Screens that look like settings but change nothing (checked at applet commit 823e05d):
 
-## Key features
+- **Default Selection** (`DEFAULT_BRANCH`, `DEFAULT_LOCATION`): two drop-downs and a SAVE button. The route renders the component with no save handler and the code that loads the stored value is commented out, so the screen always opens blank, SAVE emits nothing, and changing a drop-down dereferences an unset container. Main Details never reads these keys. The same applies to Personalization → Default Selection.
+- **Field Settings**: eight slide-toggles (*Unit Discount, SST/VAT/GST, WHT, Blanket Order; Segment, G/L Dimension, Profit Center, Project*) bound to nothing and a SAVE button with no handler. The corresponding model keys (`INCLUDE_*`, `ENABLE_*`, `ENABLE_CUSTOM_STATUS_*`) are declared only; no component reads them and the document form shows every field regardless.
 
-{{< cards >}}
-{{< card title="Listing" subtitle="Search, open a row, start Create" link="#consignor-purchase-billing-listing" >}}
-{{< card title="Create a new billing" subtitle="Header, consignor, lines, then CREATE" link="#quick-start-billing-operations" >}}
-{{< card title="Main Details" subtitle="Dates, org, purchaser, status, references" link="#main-details-what-each-field-is-for" >}}
-{{< card title="Account and consignor" subtitle="Select the consignor (supplier) entity" link="#account-select-the-consignor" >}}
-{{< card title="Line items" subtitle="Search item, pricing, and tax" link="#line-items-search-item-and-add-item" >}}
-{{< card title="Billable quantity" subtitle="Calculations and Quantity To Bill" link="#calculations-and-quantity-to-bill" >}}
-{{< card title="Payment lines" subtitle="Settlement method and amount" link="#payment-tab-settlement-and-fields" >}}
-{{< card title="Edit, totals, Export" subtitle="SAVE, line totals, export when enabled" link="#edit-consignor-purchase-billing" >}}
-{{< card title="Status and posting" subtitle="ACTIVE/INACTIVE and no FINAL button here" link="#posting-and-final-in-this-applet" >}}
-{{< card title="When something breaks" subtitle="CREATE/SAVE disabled, missing data" link="#if-something-is-wrong" >}}
-{{< card title="Settings (admin)" subtitle="Defaults, formats, permissions" link="#configuration-and-settings" >}}
-{{< /cards >}}
+### Document behaviour settings
 
-{{< figure src="/images/internal-consignor-purchase-billling-applet/internal-consignor-purchase-billing-applet-overview-infographic.png" alt="Overview infographic for Internal Consignor Purchase Billing: listing, document tabs, lines, payments, and related consignment context" caption="High-level view of consignor purchase billing in BigLedger: where this applet sits and how listing, create/edit, lines, and payments fit together." >}}
+No exposed control found (routes and settings components checked at commit 823e05d). There is no FINAL / VOID, no numbering, no approval workflow, no e-Invoice flag and no posting to configure.
 
----
+### Settings in other applets that control this applet
 
-## Quick start: billing operations {#quick-start-billing-operations}
+| Setting | Where it is set | Effect here |
+|---|---|---|
+| Consignment flag on the item | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Only flagged items appear in Search Item. |
+| Base-UOM price on the item (`price_json.item_base_uom_pricing`) | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Pricebook](/applets/master-data/pricebook-applet/) | Default *Unit Price* on Item Details; the applet also loads the pricing-scheme links it finds. |
+| Supplier extensions `GLCODE_INFO`, `ID_NO`, `CURRENCY` | [Supplier](/applets/master-data/supplier-applet-1/) | Copied into the read-only Account card (`entity_hdr_json`) for display only. |
+| `SETTLEMENT_TYPE` on settlement-method items | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Decides which fields Add Payment shows (CASH, CASH_BACK, CREDIT_CARD, VOUCHER, BANK_TRANSFER, MEMBERSHIP_POINT_CURRENCY, CHEQUE). |
 
-**Goal:** Create a **consignor purchase billing** the system accepts when you click **CREATE**.
+### Feature visibility / permissions
 
-1. Open **Internal Consignor Purchase Billing** (title **Consignor Purchase Billing Applet**).
-2. On **Consignor Purchase Billing Listing**, click **Create** (`+`).
-3. **Main Details** — Set **Start Date** and **End Date** to the **billing period** you are recording (for example the month you are settling with the consignor). Choose **Company**, **Branch**, and **Location**; set **Status** to **ACTIVE** for normal work. Add **Reference** / **Remarks** if your team uses them. Click **Purchaser Agent** to open **Main Select Purchaser Listing** and pick the internal person responsible for this billing case.
-4. **Account** — Select the **consignor (supplier)** for this billing using **Select Consignor Listing**.
-5. **Line Item** — Click **Create** (`+`) on the line grid. In **Select Line Item**, use **Search Item**, pick the product, then on **Add Item** complete **Calculations** (opening stock, net purchase, closing stock—see [Calculations and Quantity To Bill](#calculations-and-quantity-to-bill)) and **Item Details** (pricing and tax). Click **ADD** to attach each line. Check **Total** and **Tax** above the grid.
-6. Click **CREATE** when it is enabled.
+**Client-side**: the registry holds **0** client-side permission definitions for `InternalConsignorPurchaseBillingApplet` (checked 2026-09-05) and the applet calls no permission check, so the Feature Visibility screen is empty and nothing in the UI — prices included — is hidden per role.
 
-**What happens next**
+**Server-side** (`TntErpPermissions`, enforced by the controller):
 
-- A success message appears and you return to the **listing**.
-- Open the new row to add or change lines, record **Payment** lines (finance), or **Export** a PDF when needed.
+| Permission | Endpoint it gates |
+|---|---|
+| `API_TNT_DM_ERP_CONSIGNOR_PURCHASE_BILLING_CREATE` | POST (CREATE button) |
+| `…_UPDATE` | PUT (SAVE button); target-scoped to the billing row |
+| `…_DELETE` | DELETE by guid — hard-deletes header and lines; no button calls it |
+| `…_READ` | GET, GET by guid, GET query (listing). A row the user may not read comes back with only its guid and status `PERMISSION_DENIED`. |
+| `…_OWNER`, `…_ADMIN` | Satisfy every check above; tenant owner / admin also bypass |
+| `…_MEMBER` | Defined but not checked by any endpoint |
 
-{{< callout type="tip" >}}
-**Payment comes after CREATE:** **CREATE** saves the header and line items only. Finance normally adds **Payment** lines after opening the saved billing from the listing—see [Quick start: finance / AP](#quick-start-finance--ap).
-{{< /callout >}}
+## Fields
 
----
+### Main Details
 
-## Quick start: finance / AP {#quick-start-finance--ap}
-
-**Goal:** Review amounts on an existing billing and record **payment** / settlement.
-
-1. Open a row from **Consignor Purchase Billing Listing** (**Edit Consignor Purchase Billing**).
-2. On **Line Item**, check **Quantity To Bill**, **Txn Amount**, and tax columns against your consignment records. Confirm **Total** and **Tax** above the grid.
-3. Open **Payment**. Click **Add** (`+`), choose **settlement method** (**CASH**, **BANK_TRANSFER**, **CHEQUE**, **CREDIT_CARD**, **VOUCHER**, **CASH_BACK**, **MEMBERSHIP_POINT_CURRENCY**, or others your organisation lists). Complete **Date**, **Amount**, and any method-specific fields (**Transaction No**, **Cheque No**, card details, and so on). Click **ADD** on the payment form.
-4. Click **SAVE** when enabled.
-5. Optional: open **Export**, choose a **Printable Format**, and use **EXPORT AS PDF** for a copy for the consignor or your files.
-
----
-
-## Consignor Purchase Billing Listing {#consignor-purchase-billing-listing}
-
-**Who:** Anyone working documents day to day.
-
-Use **Consignor Purchase Billing Listing** to:
-
-- Start **Create** (`+`).
-- Use **advanced search** to narrow rows.
-- Click a row to open **Edit Consignor Purchase Billing**.
-- Work with the grid (pagination, columns, filters): columns include **Company Name**, **Branch**, **Consignor**, **Consignor Name**, **Start Date**, **End Date**, **Status**.
-
-{{< figure src="/images/internal-consignor-purchase-billling-applet/main-listing.png" alt="Consignor Purchase Billing Listing with grid columns, search, and Create button" caption="Consignor Purchase Billing Listing: search, columns, and **Create** (`+`) to start a new billing." >}}
-
----
-
-## Create Consignor Purchase Billing {#create-consignor-purchase-billing}
-
-Screen title: **Create Consignor Purchase Billing**.
-
-**Buttons**
-
-- **CREATE** — Saves a new billing. Enabled when **Main Details** is complete, a consignor is selected on **Account**, and there is **at least one line** on **Line Item**.
-
-**Tabs:** **Main Details**, **Account**, **Line Item**, **Payment**.
-
-{{< figure src="/images/internal-consignor-purchase-billling-applet/create-main-details.png" alt="Create Consignor Purchase Billing screen showing Main Details tab, other tabs, and CREATE button" caption="Create Consignor Purchase Billing: **Main Details** tab, **Account**, **Line Item**, **Payment**, and **CREATE** (enabled only when Main Details, Account, and at least one line are valid)." >}}
-
----
-
-## Main Details — what each field is for {#main-details-what-each-field-is-for}
-
-| Field | Purpose (why it matters) | How to fill |
-|--------|---------------------------|-------------|
-| **Start Date** / **End Date** | Define the **billing cycle and reporting period** for this record. | Pick dates that match the cycle your finance team uses with the consignor. |
-| **Company** | Which legal entity owns this billing. | Select from the company list. |
-| **Branch** | Which branch owns or processes this billing. **Required.** | Select branch after company as needed. |
-| **Location** | Store or location context for the billing. **Required.** | Select location for the chosen branch. |
-| **Purchaser Agent*** | Internal person **responsible for this billing case** (tracking and coordination). | **Create:** click the field to open **Main Select Purchaser Listing**. **Edit:** the field shows the saved name; if you must change it after save, follow your administrator’s correction process. |
-| **Status** | **ACTIVE** or **INACTIVE** for whether this billing header is treated as live or inactive in your workflow. **Required.** | Choose **ACTIVE** for normal work. |
-| **Reference** | Your **external or internal reference** (supplier memo, case ID, cycle id)—whatever your team agreed for tracing this billing. | Free text. |
-| **Remarks** | Longer narrative (negotiations, exclusions, footnotes for auditors). | Optional; character count shown in the UI. |
-
----
-
-## Account — select the consignor {#account-select-the-consignor}
-
-**Purpose:** Attach the **consignor (supplier) entity** that this billing is for. Without a valid account selection, **CREATE** / **SAVE** stay disabled.
-
-Open **Account**. Use **select entity / consignor** actions to open **Select Consignor Listing**, choose or create the supplier, and complete entity maintenance (**Supplier Create**, **Supplier Edit**, addresses, tax, contacts, branches, categories, item pricing, companies, and related screens) **when your role allows**.
-
----
-
-## Line items — Search Item and Add Item {#line-items-search-item-and-add-item}
-
-**Purpose:** Line items determine **billing values, taxes, and totals** for the document.
-
-{{< figure src="/images/internal-consignor-purchase-billling-applet/add-line-items.png" alt="Line Item tab showing Add Item flow, item details, totals and tax summary above the line grid" caption="**Line Item** tab: add items, then review **Total** and **Tax** above the grid." >}}
-
-### Path from the document
-
-1. On **Create** or **Edit**, open the **Line Item** tab.
-2. Click **Create** (`+`) on the line toolbar — opens **Select Line Item**.
-3. Use **Search Item** to find a consignment item.
-4. Open **Add Item** with tabs **Calculations** and **Item Details**.
-5. On **Calculations**, enter **Opening Stock**, **Net Purchase**, and **Closing Stock**; the screen calculates **Quantity To Bill** (see below).
-6. On **Item Details**, enter pricing, quantity, discounts, and tax until **Txn Amount** is correct.
-7. Click **ADD** to attach the line.
-
-### What you see on the Line Item tab
-
-The grid shows each line with **Item Code**, **Opening Stock**, **Net Purchase**, **Closing Stock**, **Quantity To Bill**, **SST/VAT/GST**, and **Txn Amount**. **Total** and **Tax** above the grid summarise all lines.
-
-**Opening Stock**, **Net Purchase**, and **Closing Stock** are **inventory reference figures** that support the billing calculation—they are not the payment amount by themselves. The amount you bill is reflected in **Quantity To Bill** and **Txn Amount** on each line.
-
----
-
-## Calculations and Quantity To Bill {#calculations-and-quantity-to-bill}
-
-When you add or edit a line, open **Add Item** → **Calculations**.
-
-| Field | What it means |
-|-------|----------------|
-| **Opening Stock** | Stock on hand at the **start** of the billing period (for this item). |
-| **Net Purchase** | Net consignment movement **into** stock during the period (purchases or receipts your process counts). |
-| **Closing Stock** | Stock on hand at the **end** of the period. |
-| **Quantity To Bill** | Billable quantity for this line—calculated as **Opening Stock + Net Purchase − Closing Stock**. |
-
-**Quantity To Bill** is the quantity of consigned inventory that has become **billable** for this billing cycle. It is **not** the same as:
-
-- Quantity on a [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/)
-- Quantity received on a consignment GRN alone
-- Total warehouse on-hand stock unrelated to the billing period
-
-Your organisation defines how you obtain opening, net purchase, and closing figures (for example from consignment reports or operations). Enter the values agreed with finance, then complete **Item Details** so **Txn Amount** reflects price and tax for that billable quantity.
-
-{{< callout type="tip" >}}
-**Example:** Opening 100, Net Purchase 50, Closing 40 → **Quantity To Bill** = 110 (100 + 50 − 40). Apply your unit price and tax on **Item Details** to get **Txn Amount**.
-{{< /callout >}}
-
----
-
-## Payment tab — settlement and fields {#payment-tab-settlement-and-fields}
-
-**Purpose:** Record **how** settlement was made—method, amount, date, and reference numbers—on the saved billing document.
-
-**When to use it:** After the billing exists in the listing. Open **Edit Consignor Purchase Billing**, go to **Payment**, then add lines and click **SAVE** on the document.
-
-{{< figure src="/images/internal-consignor-purchase-billling-applet/settlement-tab.png" alt="Payment tab on Edit Consignor Purchase Billing showing Total and Outstanding, with Add Payment and settlement method selector" caption="**Payment** tab: review **Total** and **Outstanding**, add a payment with **+**, then choose **Settlement Method** and complete the fields on **Add Payment**." >}}
-
-1. On **Payment**, click **Add** (`+`) to open **Add Payment**.
-2. Choose a **settlement method**. Fields shown depend on the method:
-   - **CASH** — **Date**, **Amount**, **Remarks**.
-   - **CASH_BACK** — **Date**, **Cash Back**, **Amount**, **Cash Back for Settlement** (read-only), **Remarks**.
-   - **CREDIT_CARD** — **Date**, **Amount**, **Remarks**, **Card No**, **Name on Card**, **Card Issuer**, **Type**, **Card Expiry**, **CVV**.
-   - **VOUCHER** — **Voucher #**, **Amount**, **Remarks**.
-   - **BANK_TRANSFER** — **Date**, **Amount**, **Transaction No**, **Remarks**.
-   - **MEMBERSHIP_POINT_CURRENCY** — **Date**, **Point CCY**, **Amount**, **Point Currency for Settlement**, **Remarks**.
-   - **CHEQUE** — **Date**, **Amount**, **Cheque No**, **Remarks**.
-3. Click **ADD** when the form is complete.
-
-**CREATE does not require payment lines**—only a valid header, consignor on **Account**, and at least one line item. The **Payment** tab is visible on create, but finance should normally add payments **after** **CREATE**, on the edit screen.
-
-The **Payment** tab also shows **Total** (payments recorded) and **Outstanding** (line total minus payments) when amounts are entered.
-
----
-
-## Edit Consignor Purchase Billing {#edit-consignor-purchase-billing}
-
-Screen title: **Edit Consignor Purchase Billing**.
-
-- **SAVE** — Same rule as **CREATE**: complete **Main Details**, consignor on **Account**, at least one line.
-- **RESET** — Discards unsaved changes on the current edit session and reloads the last saved state.
-- **Tabs:** **Main Details**, **Account**, **Line Item**, **Payment**, **Export**.
-
-### Export (edit only)
-
-Open **Export**, choose a **Printable Format** configured under **Settings → Printable Format Settings**, then click **EXPORT AS PDF** for a printable copy. Formats are set up by your administrator.
-
----
-
-## Posting and FINAL in this applet {#posting-and-final-in-this-applet}
-
-Unlike [Consignment GRN (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) or [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), this applet uses **operational status** on the header (**ACTIVE** / **INACTIVE**) rather than posting buttons such as **FINAL** or **VOID** on the create and edit screens.
-
-Day-to-day actions here are **CREATE** (first save), **SAVE** (updates), and **RESET** (on edit). Do not assume the same **DRAFT / FINAL / VOID** lifecycle as other purchase documents unless your administrator describes extra steps outside this applet.
-
----
-
-## Status reference {#status-reference}
-
-### Header status (Main Details)
-
-| Value | Meaning | Typical use |
-|--------|---------|-------------|
-| **ACTIVE** | Billing header is live for processing. | Normal documents. |
-| **INACTIVE** | Billing header marked inactive. | Retired or superseded cycles—confirm meaning with finance. |
-
-### Listing Status column
-
-The listing shows status from the billing header (same **ACTIVE** / **INACTIVE** family as above). Sort and filter using the grid as needed.
-
----
-
-## Worked example (illustrative) {#worked-example}
-
-Your codes will differ; this shows **order of operations** only.
-
-1. **Create** — Company **HQ**, Branch **KL**, Location **Main DC**. Period **2026-04-01** to **2026-04-30**. **Reference** `CSG-PB-2026-04`. **Purchaser Agent** = **Jane**. **Status** **ACTIVE**.
-2. **Account** — Consignor **SUP-001 / Vendor Alpha**.
-3. **Line Item** — **Search Item** → **Calculations**: Opening **100**, Net Purchase **50**, Closing **40** → **Quantity To Bill** **110**. **Item Details**: price and tax until **Txn Amount** shows **MYR 1,200.00**. **ADD**.
-4. **CREATE** — New row appears with **Consignor** **SUP-001**, April dates, **Status** **ACTIVE**.
-5. **Edit** (finance) — Add **Payment** (for example **BANK_TRANSFER**) for **MYR 1,200.00**, **SAVE**.
-
----
-
-## If something is wrong {#if-something-is-wrong}
-
-| Symptom | Likely cause | What to do |
-|---------|----------------|------------|
-| **CREATE** stays disabled | Missing **branch** or **location**, consignor not selected on **Account**, or no lines on **Line Item**. | Complete required **Main Details**, select consignor on **Account**, add at least one line. |
-| **SAVE** stays disabled on edit | Same as **CREATE**. | Keep required fields complete and at least one line on the document. |
-| Success message mentions "purchase order" | Message text may not match this document type. | If the new row appears in the listing, the billing was saved—use the listing as confirmation. |
-| Cannot find item in **Search Item** | Item not set up for consignment or not visible to your role. | Ask your administrator to check the item master. |
-| Payment **ADD** disabled | Settlement method not chosen or required fields missing. | Select a method first; enter **Amount** and other required fields for that method. |
-| **Purchaser Agent** cannot be changed on edit | Purchaser is chosen on create; edit screen may not offer the picker again. | Follow your administrator’s process to correct purchaser after save. |
-| **Quantity To Bill** looks wrong | Opening, Net Purchase, or Closing entered incorrectly. | Recheck figures on **Calculations**; formula is Opening + Net Purchase − Closing. |
-
----
-
-## Configuration and settings {#configuration-and-settings}
-
-Administrators configure the applet under **Settings** and **Personalization** in the sidebar.
-
-### Settings
-
-| Area | What it controls |
-|------|------------------|
-| **Feature Visibility** | Which menus and features users see |
-| **Default Selection** | Default branch and location on new billings |
-| **Printable Format Settings** | PDF layouts for **Export** |
-| **Field Settings** | Which fields appear and which are mandatory |
-| **Webhook** | Notifications to external systems when documents change |
-| **Permission Set / User / Team / Role** | Who can create, edit, or view billing and pricing |
-
-### Personalization
-
-| Area | What it controls |
-|------|------------------|
-| **Personal Default Selection** | Your own default branch and location (overrides organisation defaults) |
-| **Sidebar** | Layout of your sidebar menu |
-
----
-
-## Permissions
-
-- If **Create** is missing or **CREATE** / **SAVE** never enables, your role may lack permission or **Feature Visibility** may hide functions.
-- Administrators adjust permission listings and **Field Settings** for your organisation.
-
----
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Start Date / End Date | Billing period | No | Stored as `date_start` / `date_end`; no order check between them. |
+| Company | Owning company | No (form) | Overwritten on CREATE and SAVE with the selected branch's company; the backend requires a valid company guid. |
+| Branch | Owning branch | Yes | Must exist. |
+| Location | Store the consigned stock sits in | Yes | Filtered by branch; must exist. |
+| Purchaser Agent | Employee responsible | No | Label carries an asterisk but there is no validator. Opens **Main Select Purchaser Listing** (employees); stored in `property_json.purchaser`. Read-only on edit — it cannot be changed after save. |
+| Status | ACTIVE / INACTIVE | Yes | Plain status column; INACTIVE rows still list and still open. |
+| Reference, Remarks | Free text | No | Stored in `property_json`; the Remarks field shows a character count. |
+
+### Account
+
+A read-only card (*Entity ID, Entity Name, Status, Email, Phone, GL Code, ID Number, Entity Type, Identity Type, Description, Currency*) filled from the supplier picked in **Select Consignor Listing**. The picker embeds supplier create/edit sub-screens (addresses, contacts, tax, branches, categories, item pricing, companies, logins, payment configuration). No field is validated, so CREATE / SAVE do not wait for a consignor.
+
+### Line Item — Item Details
+
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Item Code / Item Name | From Search Item | Yes (code read-only) | |
+| Unit Price STD (Excl. / Incl. of tax), by UOM variants, Unit Price Net, Unit Price Transaction | Prices | No | Defaults from the item's base-UOM price; ≥ 0. |
+| Unit Discount, Unit Discount by UOM | Per-unit discount | No | ≥ 0 |
+| Quantity Base | Quantity priced | Yes | Whole number ≥ 1. This is a separate figure from *Quantity To Bill* — the two are not tied together. |
+| Quantity by UOM, UOM to Base Ratio | UOM conversion | No | Ratio read-only |
+| STD Amount, Discount Amount, Amount Net | Computed | Net required | STD = price × quantity; Net = STD − discount |
+| SST/GST/VAT code, rate, Tax Amount, Net Amount incl. tax | Tax | No | Code from the SST picker; rate and amount read-only |
+| WHT code, rate, WHT Amount | Withholding tax | No | Code from the WHT picker |
+| Txn Amount | Net + tax − WHT | Yes | ≥ 0 |
+| Remarks | Line remark | No | |
+
+### Line Item — Calculations
+
+| Field (label as shown) | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Openning Quantity | Consigned stock on hand at the start of the period | On the form (≥ 1) — but **ADD** checks only the Item Details form, so it is not enforced | Default 1; a cleared field is reset to 1 |
+| Net Purchaser | Net consigned stock received during the period | No | Default 0.00; cleared → 1 |
+| Closing Stock | Consigned stock on hand at the end | No | Default 0.00; cleared → 1 |
+| Quantity To Bill | **Opening + Net Purchase − Closing**, recalculated on every change | No | Computed with integer parsing — decimals are dropped before the sum. Editable; the last computed value wins if you change an input again. |
+
+The line saved is `bl_fi_csg_billing_line` with `guid_fi_item`, `opening_qty`, `net_purchase_qty`, `closing_qty`, `net_billing_qty`, the six amount columns, `csg_type = PNS`, `status = ACTIVE`. `guid_inv_item` and `net_purchase_grn_qty` are never filled.
+
+### Payment — Add Payment
+
+| Settlement method | Fields shown |
+|---|---|
+| CASH | Date, Amount, Remarks |
+| CASH_BACK | Date, Cash Back, Amount, Cash Back for Settlement (read-only), Remarks |
+| CREDIT_CARD | Date, Amount, Remarks, Card No, Name on Card, Card Issuer, Type, Card Expiry (year, month), CVV |
+| VOUCHER | Voucher #, Amount, Remarks |
+| BANK_TRANSFER | Date, Amount, Transaction No, Remarks |
+| MEMBERSHIP_POINT_CURRENCY | Date, Point CCY, Amount, Point Currency for Settlement, Remarks |
+| CHEQUE | Date, Amount, Cheque No, Remarks |
+
+Amount ≥ 0.01 and every listed field is required before **ADD** enables. Of all of this only *Amount* is copied onto the line (`amount_net`, `amount_txn`); method, date and reference are discarded, and the line is never persisted (next section).
+
+### Export
+
+*Printable Format* — formats whose transaction type is `INTERNAL_CONSIGNOR_CONSIGNMENT`, pre-selected from `PRINTABLE`; **EXPORT AS PDF**.
+
+## Lifecycle and effects
+
+**Statuses.** `ACTIVE` and `INACTIVE`, chosen on the form; the backend fills `ACTIVE` when the value is missing. There are no transitions, no FINAL and no VOID — a billing can be edited at any time in either status. Rows with status `DELETED` are excluded from every query, but nothing in the applet sets that status; the only removal path is the backend DELETE endpoint, which hard-deletes the header and its lines.
+
+**Posting proof block**
+
+| Item | Value |
+|---|---|
+| Server document type | None. The applet writes `bl_fi_csg_billing_hdr` / `bl_fi_csg_billing_line` through `…/erp/internal-consignor-purchase-billings`, not `bl_fi_generic_doc_*`. (`INTERNAL_CONSIGNOR_CONSIGNMENT`, short code `CSRCON`, does exist as a generic type with amount and quantity signum 0, but the applet only uses that name as the printable-format transaction type and never creates such a document.) |
+| Amount signum / quantity signum | Not applicable — no generic lines are sent. |
+| Dr / Cr equation | None. `JournalPostingService` and `JournalPostingTypeHandler` contain no handler for the billing tables. |
+| GL precedence | Not applicable. |
+| Stock processor | None. `StockBalanceHelper` and the inventory transaction tables are never written. |
+| Open-queue rows (Knock Off Configuration) | None created; no downstream document can pick a billing up. |
+| What VOID reverses | There is no VOID. |
+
+**What CREATE sends.** The header from the form (company replaced by the branch's company; `csg_type` left null; the six amount columns and `amount_open_balance` summed client-side from the lines) plus the `PNS` lines. Payment lines are not included. The backend validates existence of the company, branch, location, entity and item guids and fills guid, dates, status and revision; it does not validate any amount or quantity. The success toast reads *"The purchase order has been created successfully"* (inherited text).
+
+**What SAVE sends.** The header from the form, and **the lines exactly as they were loaded from the server**. The edit effect never copies the draft line state into the request (the assignment is commented out), and the line editor on the edit screen writes its changes into the generic-line state rather than the billing-line state. Lines you add, change or delete on the edit screen therefore disappear after SAVE; the PUT that would persist a single line (`editConsignorLineItemInit`) has no caller. Header changes (dates, branch, location, status, reference, remarks, consignor) are saved.
+
+**Payments.** `Add Payment → ADD` runs a guard that compares the amount with the header *object* rather than its open balance; the comparison is never true, so every attempt ends with the snack-bar *"Payment Exceeds Outstanding"* and nothing is added to the draft. Even a line that got past the guard would not be sent (see CREATE / SAVE above) and would lack the `csg_type = STL_MTHD` the Payment grid filters on when it loads a billing. No payment voucher, cashbook entry or creditor knock-off is involved at any point.
+
+**Quantity To Bill.** Computed in the browser as opening + net purchase − closing. The backend has a calculation endpoint (`POST …/item/calc`: opening stock from the inventory transaction lines, net purchase from ordinary purchase GRN + GIN lines, and a quantity-to-bill that *adds* the closing figure) but the applet never calls it; the three quantities are whatever you type.
+
+**Export.** *EXPORT AS PDF* calls the Purchase Order print endpoint (`internal-purchase-orders/print-jasper-pdf/{billing guid}`) with a hard-coded print-service class and template guid; the format chosen in the drop-down is not sent. Expect the error toast unless that template accepts a billing guid; the success toast, if any, reads *"Purchase Order Exported Successfully"*.
+
+## Related applets
+
+- [Consignment GRN (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) and [Consignment GIN (Internal)](/applets/inventory-workflow/internal-consignment-gin-applet/) — the documents that receive and issue consigned stock and therefore the source of the opening, net-purchase and closing quantities; neither is linked to the billing by the code.
+- [Consignment Purchase Order (Internal)](/applets/purchase-workflow/internal-consignment-purchase-order-applet/) — the commitment that placed the stock; its own Payment tab is equally non-functional and its page points here.
+- [Consignment Return (Internal)](/applets/purchase-workflow/internal-consignment-return-applet/) — returns to the consignor that should reduce the net-purchase figure you bill.
+- [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) and [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) — where the amount owed to the consignor becomes a creditor balance and is paid; the billing itself does neither.
+- [Consignment Billing Applet (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) and [Customer Consignment](/applets/sales-workflow/customer-consignment-applet/) — the sales-side mirror, where you are the consignor.
+- [Supplier](/applets/master-data/supplier-applet-1/), [Employee](/applets/master-data/employee-applet/), [Organisation](/applets/master-data/organisation-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Pricebook](/applets/master-data/pricebook-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/) — master data the form reads.
+- [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) — where to look up the opening and closing quantities before typing them.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| **ADD** on Add Payment always shows *Payment Exceeds Outstanding*, whatever the amount | The guard compares the amount with the header object, not its balance (`payment.effects.ts`). | Payments cannot be recorded in this applet as shipped. Pay the consignor through a [Payment Voucher](/applets/finance/internal-payment-voucher-applet/) against a purchase invoice. |
+| Lines added, changed or deleted on the edit screen are gone after SAVE | SAVE sends the lines as loaded from the server; the draft line state is never copied into the request. | Get the lines right on the Create screen. To change a saved billing's lines, create a new billing for the period. |
+| **CREATE** / **SAVE** stays disabled | Branch or Location empty, Status not chosen, or no line on the Line Item tab. Consignor and Purchaser are *not* checked. | Fill Branch, Location and Status; add at least one line. |
+| Success toast says *"purchase order"* | Inherited toast text. | The billing was created; confirm in the listing. |
+| Listing fails to load, or a row shows `CLIENT_VALIDATION_GUID_DOES_NOT_EXIST` in the Consignor columns | The listing looks up each row's branch, company and consignor. A deleted consignor yields the error code in its columns; a billing saved with **no** consignor (allowed by the form and the backend) makes the lookup dereference a null guid and the grid load fails. | Always pick a consignor before CREATE. If a bad row exists, remove it through the DELETE endpoint (needs `…_DELETE` permission; no button exists). |
+| Advanced search never finds anything | The search box is the Purchase Order one: its sub-query runs against `bl_fi_generic_doc_hdr`, whose guids never match a billing. | Use the column filters in the grid instead. |
+| Item is not in Search Item | Its consignment flag is off. | Set the flag in [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/). |
+| Quantity To Bill ignores decimals, or a cleared quantity turns into 1 | Inputs are parsed as integers; an empty opening / net / closing field is reset to 1. | Enter whole units; do not leave a quantity blank — type 0 explicitly for net purchase or closing stock. |
+| Default Selection does not remember the branch / location | The screen has no save handler and never loads the stored value. | Choose branch and location on each billing. Tracked as an open enhancement (intranet #1084). |
+| Export produces an error, or a purchase-order layout | The Export tab calls the Purchase Order print endpoint with a hard-coded template; the chosen format is ignored. | No working export in this applet; report the billing from the database or the Purchase Report. |
+| Settings opens on an empty Feature Visibility page; Permission Wizard, Release Notes or Personalization → Field Settings show 404 | No client-side permissions are seeded for this applet; those three menu entries have no route here. | Use Permission Set / User Permission / Role Permission for access control; ignore the empty screens. |
+| Backend error `API_TNT_DM_ERP_CONSIGNOR_PURCHASE_BILLING_HDR_OBJECT_GUID_COMP_IS_NULL` or `…_COMP_DOES_NOT_EXIST` | The branch's company could not be resolved. | Check the branch's company in [Organisation](/applets/master-data/organisation-applet/). |
+| `…_HDR_OBJECT_GUID_BRANCH_DOES_NOT_EXIST` / `…_STORE_DOES_NOT_EXIST` / `…_ENTITY_HDR_DOES_NOT_EXIST` / `…_LINE_OBJECT_FI_ITEM_GUID_DOES_NOT_EXIST` | A referenced master record was deleted between selection and save. | Re-select the record. |
+| Applet opens on the 404 page | The route table redirects the applet root to a child named `purchase-order`, which does not exist. | Click **Internal Consignor Purchase Billing** in the sidebar; the normal launch URL goes straight to the listing. |
+
+Open work items on the applet (for context, not user action): Angular 14 migration done (repo issue #2); a supplier-access variant is requested (repo issue #1); mobile-responsive UI (intranet #4788), internationalisation (intranet #5054) and sub-query removal (general-task #6498) are open; an *External Documents Date* on Main Details was requested and closed (intranet #4717) but is not in the code at commit 823e05d.
 
 ## Related documentation
 
-- [Internal Consignment GRN](/applets/inventory-workflow/internal-consignment-grn-applet/)
-- [Customer Consignment](/applets/sales-workflow/customer-consignment-applet/)
-- [Consignment Billing (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/)
-- [Consignment Return (Internal)](/applets/purchase-workflow/internal-consignment-return-applet/)
-- [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/)
-- [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/)
-
----
-
-## Frequently asked questions {#frequently-asked-questions}
-
-### What is the minimum I must complete before CREATE?
-
-Valid **Main Details** (including **branch**, **location**, and **status**), a consignor selected on **Account**, and **at least one line item**. Payment lines are **not** required for **CREATE**.
-
-### What happens after I click CREATE?
-
-The billing is saved, a success message appears, and you return to the **listing**. Open the row again to add **Payment** lines, change lines, or **Export** a PDF.
-
-### How is billable quantity determined?
-
-On **Add Item** → **Calculations**, enter **Opening Stock**, **Net Purchase**, and **Closing Stock**. The screen calculates **Quantity To Bill** as **Opening + Net Purchase − Closing**. What those three numbers represent depends on your organisation’s consignment policy (for example sold quantity, consumed quantity, or figures from operations reports). See [Calculations and Quantity To Bill](#calculations-and-quantity-to-bill).
-
-### How is this different from Consignment Billing (Internal)?
-
-[Consignment Billing (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) bills your **customer** for consignment usage. This applet records **consignor purchase billing**—amounts owed to or settled with the **consignor (supplier)**.
-
-### How is this different from a Purchase Order or Purchase Invoice?
-
-A [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) is a **commitment to buy**. A [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) records a **standard supplier invoice**. **Consignor Purchase Billing** records **billing for consigned stock** with the consignor after activity in the billing period—it does not replace either of those documents.
-
-### Is this a purchase order?
-
-No. This is **Consignor Purchase Billing**, not a purchase order. See the comparison table in [Purpose and overview](#purpose-and-overview).
-
-### Where is FINAL?
-
-There is **no FINAL** button on create or edit screens. Use **CREATE** and **SAVE**, and header **Status** **ACTIVE** / **INACTIVE**. See [Posting and FINAL in this applet](#posting-and-final-in-this-applet).
-
-### Do I need a payment line before CREATE?
-
-**No.** Add **Payment** lines **after** the billing is created—open it from the listing, add payments on **Payment**, then **SAVE**.
-
-### How do lines get money and tax?
-
-Complete **Calculations** for **Quantity To Bill**, then on **Item Details** enter pricing and tax. The line **Txn Amount** and tax columns update; **Total** and **Tax** on the **Line Item** tab summarise all lines.
-
-### Why can’t I change Purchaser Agent on edit?
-
-Purchaser is normally selected when you **create** the billing. If you must change it after save, use the correction process your administrator provides.
-
----
-
-## Glossary {#glossary}
-
-- **Consignor purchase billing** — Billing document for amounts due to or settled with a consignor for a period.
-- **Consignor** — Supplier who owns consigned stock; selected on **Account**.
-- **Quantity To Bill** — Billable quantity on a line (Opening Stock + Net Purchase − Closing Stock on **Calculations**).
-- **Purchaser Agent** — Internal person responsible for the billing case on the header.
-- **Txn Amount** — Transaction amount on a line or payment.
-- **Search Item** — Screen to pick a consignment item before **Add Item**.
+- [Consignment purchasing guide](/guides/purchasing-guides/consignment-purchasing/)
+- [Purchasing module](/modules-v2/purchasing/) · [Inventory module](/modules-v2/inventory/)
+- [Consignment GRN (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) · [Consignment GIN (Internal)](/applets/inventory-workflow/internal-consignment-gin-applet/) · [Consignment Purchase Order (Internal)](/applets/purchase-workflow/internal-consignment-purchase-order-applet/) · [Consignment Return (Internal)](/applets/purchase-workflow/internal-consignment-return-applet/)
+- [Consignment Billing Applet (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) — the sales-side counterpart
