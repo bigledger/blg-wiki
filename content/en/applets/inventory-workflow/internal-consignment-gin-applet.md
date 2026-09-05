@@ -32,6 +32,8 @@ sources:
     - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/app/resolver/permission.resolver.ts
     - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
     - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - blg-applet-wavelet-internal-consignment-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-gin-applet/src/main.ts
+    - blg-akaun-mf-app-ng/micro-fe/projects/akaun-platform/shells/akaun-shell/src/app/modules/applet-loader/applet-loader.component.ts
     - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/TntErpPermissions.java
     - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
     - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/GenericDocumentPrimaryProcessor.java
@@ -119,13 +121,9 @@ Gear (Settings) menu, group *System Configuration*: **Application Settings**, **
 
 ### Listing
 
-{{< figure src="/images/internal-consignment-gin-applet/main-listing.png" alt="Internal Consignment GIN listing on a staging tenant" caption="Listing: Consignment GIN No, Posting Status, Branch, Supplier Name, Purchaser, Updated / Created / Transaction Date, Created by. The FINAL button posts every selected DRAFT row." >}}
-
-Columns: Consignment GIN No (`server_doc_1`), Posting Status, Branch, Supplier Name, Purchaser, Updated Date, Created Date, Transaction Date, Created by. Advanced search: Consignment GIN No, Branch Name, Supplier Name, Created Date (from/to), Transaction Date (from/to), Created by. The quick search box matches document number, branch name, supplier name and the creator.
+The listing shows a **FINAL** button that posts every selected DRAFT row. Columns: Consignment GIN No (`server_doc_1`), Posting Status, Branch, Supplier Name, Purchaser, Updated Date, Created Date, Transaction Date, Created by. Advanced search: Consignment GIN No, Branch Name, Supplier Name, Created Date (from/to), Transaction Date (from/to), Created by. The quick search box matches document number, branch name, supplier name and the creator.
 
 ### Create / edit form
-
-{{< figure src="/images/internal-consignment-gin-applet/create-edit-form.png" alt="Create Internal Consignment GIN form with Main Details, Account and Lines tabs" caption="Create form. Credit Terms stays disabled until a supplier is selected on the Account tab." >}}
 
 Tabs on create: **Main Details**, **Account**, **Lines**, **Payment** (unless `HIDE_MAIN_PAYMENT_TAB`), **Department Hdr** (unless `HIDE_DEPARTMENT_HDR_TAB`). Edit adds **Contra**, **Doc Link**, **Attachments** and **Export** (each hideable by the matching `HIDE_*_TAB` setting), plus **SAVE**, **RESET**, **FINAL** and — for non-final documents when `SHOW_DOCUMENT_DELETE_BUTTON` is on — **DELETE** (two clicks: the first arms a confirmation, the second deletes).
 
@@ -160,12 +158,11 @@ Advanced search: Consignment GIN No., Item Code, Item Name, Txn Amt (range). Onl
 
 ### Applet settings
 
-**Settings > Application Settings** routes to the shared field-configuration screen from blg-shared-utilities (`app.routing.ts` maps `field-settings` to the shared `FieldConfigurationComponent`; the applet's own `settings-container/field-configuration` folder is an unrouted stub). The shared screen has no branch for the code `internalConsignmentGINApplet`, so it renders every control that is not fenced off to a named applet, and it saves the whole form into the applet's `APPLET_SETTINGS` extension (`onSave()`, shared ts L2686). Of the keys the applet declares in `applet-settings.model.ts`, the following are rendered by the shared screen **and** read by the applet. All are tenant-wide; only a user who can open the applet's Settings can change them. Every key defaults to *off* (the shared screen patches `undefined` as falsy; the seventeen line-price keys go through `shouldHideSetting()`, which returns `false` for this applet code, shared ts L2333–L2358).
+**Settings > Application Settings** routes to the shared field-configuration screen from blg-shared-utilities (`app.routing.ts` maps `field-settings` to the shared `FieldConfigurationComponent`; the applet's own `settings-container/field-configuration` folder is an unrouted stub). The shared screen keys its per-applet sections by the applet code the platform shell stores at launch — the registry code `internalConsignmentGINApplet` (`applet-loader.component.ts` L195). Its tab map only has an entry for `internal-consignment-gin-applet`, the value the applet's own `main.ts` sets in development builds (L14), so on a live tenant the map never matches: the shared screen renders every control that is not fenced to a named applet, but the **Payment, Department Hdr, Doc Link and Export tab toggles stay hidden** (their sections are gated by `showPaymentTab` etc., which default to false, shared ts L60–L87, L2389–L2436). It saves the whole form into the applet's `APPLET_SETTINGS` extension (`onSave()`, shared ts L2686). Of the keys the applet declares in `applet-settings.model.ts`, the following are rendered by the shared screen **and** read by the applet. All are tenant-wide; only a user who can open the applet's Settings can change them. Every key defaults to *off* (the shared screen patches `undefined` as falsy; the seventeen line-price keys go through `shouldHideSetting()`, which returns `false` for this applet code, shared ts L2333–L2358).
 
 | Setting | What it controls | Effect when changed |
 |---|---|---|
-| `HIDE_MAIN_PAYMENT_TAB`, `HIDE_DEPARTMENT_HDR_TAB` | Payment and Department Hdr tabs on create and edit | Tab disappears; existing payment lines are untouched |
-| `HIDE_MAIN_CONTRA_TAB`, `HIDE_DOC_LINK_TAB`, `HIDE_ATTACHMENT_TAB`, `HIDE_EXPORT_TAB` | Contra, Doc Link, Attachments and Export tabs on edit | Tab disappears; `HIDE_EXPORT_TAB` removes the only print path |
+| `HIDE_MAIN_CONTRA_TAB`, `HIDE_ATTACHMENT_TAB` | Contra and Attachments tabs on edit | Tab disappears (the Contra section is on by default, shared ts L66; the Attachments toggle sits in the ungated *Hide Line Item Sub Tabs* panel, shared html L3481–L3521) |
 | `HIDE_TRACKING_ID`, `HIDE_PERMIT_NO` | Tracking ID and Permit No on Main Details | Field hidden |
 | `HIDE_SERIAL_NUMBER`, `HIDE_BATCH_NUMBER`, `HIDE_BIN_NUMBER` | The tracking sub-tab of a line (shown only for items of that sub-type) | Hiding the tab does not remove the backend's serial / batch / bin quantity checks on FINAL |
 | `HIDE_COSTING_DETAILS`, `HIDE_PRICING_DETAILS`, `HIDE_ISSUE_LINK` | Costing Details, Pricing Details and Issue Link tabs of a line | `HIDE_COSTING_DETAILS` is overridden per user by the `SHOW_COSTING_DETAILS` permission |
@@ -174,7 +171,7 @@ Advanced search: Consignment GIN No., Item Code, Item Name, Txn Amt (range). Onl
 | `HIDE_TAX_CONFIG_SELECTION`, `HIDE_WHT_CONFIG_SELECTION` | The tax-code selector with its rate and amount; the WHT selector with its rate and amount | Reopened by `SHOW_TAX_CONFIG_SELECTION` / `SHOW_WHT_CONFIG_SELECTION` |
 | `PRINTABLE` | The printable format pre-selected on the Export tab | Set by choosing a default under Settings > Printable Format Settings (saved into `APPLET_SETTINGS.PRINTABLE`, printable-format effects L179) |
 
-Keys read by the applet **without a control on the shared screen for this applet code**: `HIDE_CURRENCY` (read on Main Details, but the shared toggle sits inside blocks fenced to other applets at shared html L1775 and L6136 — it can only be set by another route, such as the API). Keys read **without a model declaration**: `SHOW_DOCUMENT_DELETE_BUTTON` (rendered ungated on the shared screen at L1592, persisted, and read straight from the `APPLET_SETTINGS` extension in `internal-consignment-gin-edit.component.ts` L108 to show DELETE on non-final documents).
+Keys read by the applet **without a control on the shared screen for this applet code** (they can only be set by another route, such as the API): `HIDE_MAIN_PAYMENT_TAB` and `HIDE_DEPARTMENT_HDR_TAB` (Payment and Department Hdr tabs on create and edit), `HIDE_DOC_LINK_TAB` and `HIDE_EXPORT_TAB` (Doc Link and Export tabs on edit; `HIDE_EXPORT_TAB` would remove the only print path) — their toggles are inside the `showPaymentTab` / `showDepartmentHdrTab` / `showDocLinkTab` / `showExportTab` sections (shared html L3708, L4238, L4323, L4443) that the tab map never enables for the live applet code; and `HIDE_CURRENCY` (read on Main Details, but the shared toggle sits inside blocks fenced to other applets at shared html L1775 and L6136). Keys read **without a model declaration**: `SHOW_DOCUMENT_DELETE_BUTTON` (rendered ungated on the shared screen at L1592, persisted, and read straight from the `APPLET_SETTINGS` extension in `internal-consignment-gin-edit.component.ts` L108 to show DELETE on non-final documents).
 
 Declared but not usable: `HIDE_LAST_PURCHASE_PRICE` has a shared control but nothing in this applet reads it; the `INCLUDE_*` / `ENABLE_*` segment, dimension, profit-centre, project, SST and WHT keys, the `ENABLE_CUSTOM_STATUS_*` keys and `DEFAULT_BRANCH` / `DEFAULT_LOCATION` are in the model but no component reads them (repo commit 04acb95).
 
@@ -185,7 +182,7 @@ Declared but not usable: `HIDE_LAST_PURCHASE_PRICE` has a shared control but not
 | Setting | Effect |
 |---|---|
 | `SHOW_DOCUMENT_DELETE_BUTTON` | Adds DELETE to the edit form for documents that are not `FINAL` |
-| `HIDE_EXPORT_TAB`, `PRINTABLE` | Whether the Export tab exists and which format it pre-selects |
+| `HIDE_EXPORT_TAB` (no control for this applet, see above), `PRINTABLE` | Whether the Export tab exists and which format it pre-selects |
 | `HIDE_SERIAL_NUMBER`, `HIDE_BATCH_NUMBER`, `HIDE_BIN_NUMBER` | Whether users can enter tracking details; the backend still validates them on FINAL |
 
 There is no setting that hides or forces FINAL, no auto-final, no VOID button, no approval workflow, no stock-validation toggle (the backend validates by default) and no e-Invoice submission for this document (repo commit 04acb95, routes and settings components checked).
@@ -302,6 +299,7 @@ Two consequences worth knowing. First, the cost pool moves by the **document's T
 | FINAL fails with `MISSING_DEFAULT_GL_CODE: CREDITOR` (or `CREDITOR_NON_TRADE`) | The company runs the journal processor for this document and has no default GL code mapped for the supplier's AR/AP type (`JournalPostingService` L338–L340) | Map the code in [Chart of Accounts](/applets/master-data/chart-of-account-applet/), or exclude the journal processor for this document type in the company's posting configuration if a consignment GIN should not post |
 | The item you want is not in Search Item | The item search is filtered to `consignment_flg = true` | Tick **Consignment Item** on the item in [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) |
 | Credit Terms is greyed out and CREATE stays disabled | Credit Terms is required and is enabled only after a supplier is selected on the Account tab (`main-details.component.ts` L55, L104–L107) | Select the Entity Id first |
+| No switch to hide the Payment, Department Hdr, Doc Link or Export tab under Application Settings | The shared settings screen's tab map is keyed `internal-consignment-gin-applet` while the live applet code is `internalConsignmentGINApplet`, so those sections never render for this applet (shared ts L2424) | Set the key through the applet-settings API, or ask for the map entry to be corrected; the Contra and Attachments toggles do work |
 | No DELETE button on a draft | `SHOW_DOCUMENT_DELETE_BUTTON` is off, or the document is already `FINAL` | Switch the setting on under Application Settings; a `FINAL` document cannot be deleted |
 | No VOID button on a finalised GIN | The applet has no VOID action | Post a compensating Consignment GRN |
 | Default Branch / Location chosen under Settings > Default Selection never appear on new documents | The Default Selection screens do not save (no listener on `save`, `appletContainer` undefined) | Choose Branch and Location on each document; report the screen if you rely on it |

@@ -403,3 +403,97 @@ None — the page had no images and `static/images/` has no forex folder.
 - The consumer list was verified per repo (PO, SI, PI, PI-no-stock-in, GRN, GRN stock-in, PCN, RV v2, claims) rather than from a single repo-wide grep, which timed out.
 - Lateral pass: 12 issues read, 12 `lateral` lines in the ledger record.
 - Pace: ~65 minutes for one small master-data applet with a large downstream (nine consumer applets checked, backend delete semantics traced, shared drop-down read). Stopping before group-maintenance-V2-applet rather than starting a second applet with reduced care.
+
+## Pages completed (run 9 → verified and recorded in run 10)
+
+- content/en/applets/inventory-workflow/internal-consignment-gin-applet.md — rewritten to the standard in run 9 (committed by the loop as 9ecab61d before the run was killed; ledger, topic and state were not recorded). Run 10 re-verified every load-bearing claim against backend 871dbf5c96, repo 04acb95 and blg-shared-utilities: signums −1 qty / +1 amt (`InternalPurchaseConsignmentGinDataConsistencyObject` L15–L17, `ServerDocTypes` L40); the GIN is **not** in `isConsignmentStockIn` and falls back to the generic `PURCHASE` handler (`JournalPostingService` L64–L81); `validate_stock_balance` defaults to `true` (`GenericDocumentService` L390–L392); the shared field-configuration screen has no branch for `internalConsignmentGINApplet` (0 hits in html/ts); `SHOW_DOCUMENT_DELETE_BUTTON` read from the extension without a model key (edit ts L104–L112); Default Selection dead (`appletContainer` never bound). Nothing short of the standard; ledger record (8 issues, 8 lateral lines), `kb/topics/internal-consignment-gin-applet.md` and state.json written in run 10. Registry `internalConsignmentGINApplet` "Consignment GIN Applet (Internal)" — title unchanged.
+
+## Screenshots with personal data (run 9/10)
+
+Every file under `static/images/internal-consignment-gin-applet/` was opened. Dropped from the page as a precaution (same rule as run 6): `main-listing.png` and `create-edit-form.png` — staging-tenant listing whose Purchaser / Supplier / Branch cells carry what look like tester first-name fragments and a branch label that may be a real store name. Kept: `line-items.png`, `settings-page.png` (test item codes only). Not referenced: `internal-consignment-gin-overview-infographic.png` (AI infographic).
+
+## Direction / fact reversals found (run 9/10)
+
+- **internal-consignment-gin-applet: the GIN does not post to the consignment accounts.** The old page (and the consignment guide) imply GRN/GIN are symmetric. Backend: GRN and Return are in the consignment list and post `CONSIGNMENT_LIABILITY` / `CONSIGNMENT_STOCK`; the GIN is not, so if the company runs the journal processor for it the journal is Cr Purchase / Dr Creditor via the generic PURCHASE handler. Guide needs the same correction.
+- **No VOID on the GIN.** The old page described VOID; the code has no VOID action — the only reversal is a compensating Consignment GRN.
+- **Knock-off tabs on the GIN are commented out** — a consignment GIN is always keyed from the item master; the old page listed KO paths.
+
+## Findings for the product team (run 9/10)
+
+- `INTERNAL_PURCHASE_CONSIGNMENT_GIN` missing from `isConsignmentStockIn` (`JournalPostingService` L64–L66) while GRN and RETURN are present — likely oversight; a posted GIN credits Purchase and debits Creditor for stock that was never invoiced.
+- FINAL error handler passes two arguments to `String.includes()` (`internal-consignment-gin.effects.ts` L544); harmless today because later clauses catch the serial codes.
+- `HIDE_CURRENCY` is read by the GIN's Main Details but the shared screen's toggle is fenced to other applet codes (shared html L1775, L6136) — matches a customer UAT complaint that Currency (and Credit Terms) cannot be hidden on this applet.
+- Default Selection / Personal Default Selection dead (same pattern as Entity, Forex).
+- 0 rows in `bl_applet_client_side_perm_dfn` for `internalConsignmentGINApplet`; ~21 `SHOW_*` codes checked in code (F-0044 pattern).
+
+## Cross-lane link requests (run 9/10)
+
+- content/en/guides/purchasing-guides/consignment-purchasing.md (guides owner) — say: GIN has no knock-off, no VOID (reverse with a GRN); a posted GIN hits ordinary creditor / purchase accounts, not the consignment accounts; the item must carry the Consignment Item flag.
+- content/en/applets/purchase-workflow/internal-consignment-return-applet.md, internal-consignment-purchase-order-applet.md, internal-consignor-purchase-billing-applet.md (lane 2) and content/en/applets/sales-workflow/internal-consignment-billing-applet.md (lane 1) — add `internal-consignment-gin-applet` to `related_applets`; the Return page should state it posts via `PURCHASE_CONSIGNMENT` (in the consignment list) whereas the GIN does not.
+- content/en/applets/finance/creditor-report-applet.md, debtor-and-creditor-report-applet.md (finance lane) — add `internal-consignment-gin-applet` to `related_applets` (selectable for contra; excluded from the debtor side).
+- content/en/applets/master-data/doc-item-maintenance-applet.md, supplier-applet-1.md, employee-applet.md, organisation-applet.md, tax-configuration-applet.md, chart-of-account-applet.md (lane 4) — add `internal-consignment-gin-applet` to `related_applets` when next touched.
+
+## Registry / naming mismatches (run 9/10)
+
+- **Group Maintenance (three pages: master-data/group-maintenance-applet.md, group-maintenance-V2-applet.md, installation-of-group-maintenance-applet.md)** — no ACTIVE registry row under any plausible name: `GroupApplet` "Groups" (ROOT-USER) and `newTeamMaintenanceApplet` "Team Maintenance" (TNT-APPLET) are both DELETED. Per ADR-0002 the three pages were not rewritten (skipped in state.json, run 9). Decision needed: delete/redirect the pages, or confirm a live applet code that replaced them.
+- `internalConsignmentGINApplet` name matched the page title; no alias needed.
+
+## Notes (run 9/10)
+
+- Run 10 spent its first ~20 minutes re-verifying run 9's page rather than trusting it; every cited line held. Lateral pass: 8 issues, 8 lines (two customer-repo UAT threads read for anonymised patterns — the useful ones are the hide-setting gaps on the GRN and the 'add item does nothing' GRN bug, both to check on the GRN page next).
+
+## Pages completed (run 10)
+
+- content/en/applets/inventory-workflow/internal-consignment-grn-applet.md — rewritten to the standard. Registry `internalconsignmentGRNApplet` "Consignment GRN Applet (Internal)" (title unchanged; note the lower-case `c` in the code). Repo commit 67e355a (2026-08-27, Angular 14); blg-shared-utilities af523eb; backend 871dbf5c96. The old page was a generic user-guide draft (roles, FAQ, glossary) with no settings, no signums and a journal description symmetric with the GIN; replaced with the four-proof Configuration section (67 shared-screen toggles from the scan + 9 tab hides the scan misses + the delete button + applet-local Default Selection / Custom Status / Printable), the posting proof block and a VOID section.
+- content/en/applets/inventory-workflow/internal-consignment-gin-applet.md — **corrected** (see reversals): the Payment / Department Hdr / Doc Link / Export tab toggles are not rendered for the live applet code.
+
+## Screenshots with personal data (run 10)
+
+Every file under `static/images/internal-consignment-grn-applet/` was opened. Dropped from the page as a precaution: `1.png` (branch / location codes that look like a real company abbreviation), `1.3.png` and `3.png` (item names carrying what looks like a tester's first name and a real product brand). Kept: `1.2.png` (Lines tab, no data). Not referenced: `internal-consignment-grn-overview.png` (4.6 MB AI infographic). Replacements should be captured from a GadgetSphere-seeded tenant.
+
+## Direction / fact reversals found (run 10)
+
+- **internal-consignment-gin-applet (our own run-9 page): the shared settings screen's tab map is keyed by the dev-only applet code.** The platform shell stores the registry code (`applet-loader.component.ts` L195: `sessionStorage.setItem('appletCode', applet_code)`); the shared `FieldConfigurationComponent.getTabValue()` map has `'internal-consignment-gin-applet'` (what the GIN's `main.ts` sets in non-production builds) but not `internalConsignmentGINApplet`. Result: on a live tenant the Payment, Department Hdr, Doc Link and Export tab toggles never render for the GIN (their sections are gated by `showPaymentTab` etc., default false). The run-9 page listed them as rendered; fixed in run 10 (moved to "read without control", troubleshooting row added). This is exactly the customer UAT complaint recorded in the lateral pass. The GRN's entry (`internalconsignmentGRNApplet`) matches the registry, so the GRN is unaffected.
+- **internal-consignment-grn-applet: journal is NOT symmetric with the GIN.** GRN → `PURCHASE_CONSIGNMENT` handler (Dr CONSIGNMENT_STOCK / Cr CONSIGNMENT_LIABILITY, supplier AR/AP type ignored, line GL code ignored); GIN → generic PURCHASE handler. The guide must say so.
+- **internal-consignment-grn-applet: VOID exists but only from the listing** — the edit form's VOID button is commented out; the old page implied both.
+- **Stock-balance validation cannot fail for a receipt** — the check only errors when the remaining balance would go negative; the old page's "FINAL validates stock" is meaningless for the GRN.
+
+## Findings for the product team (run 10)
+
+- **Shared settings tab map keyed by dev-only applet codes.** `getTabValue()` in blg-shared-utilities keys `'internal-consignment-gin-applet'`; the registry / shell code is `internalConsignmentGINApplet`. Other entries look suspicious for the same reason (e.g. `'internal-purchase-grn-applet'` vs registry `internalPurchaseGRNApplet` — both exist, so someone already noticed once). Recommend keying the map by registry code only and adding the GIN's.
+- `SORT_ORDER` is rendered as a free-text "Sorting Order" box and used verbatim as the listing's `orderBy` column — a typo silently breaks the listing query.
+- `ENABLE_AUTO_POPUP` prints the GRN through `INTERNAL_PURCHASE_ORDER_PRINT_SERVICE` (edit ts L319).
+- `ENABLE_CUSTOM_STATUS_LINE_n` / `NAME_/LIST_CUSTOM_STATUS_LINE_n` are saved by the Custom Status screen but nothing in the applet reads them.
+- `SHOW_VOID_BUTTON` is declared in the settings model but is used as a client-side permission code (and is not seeded).
+- Only 2 of ~42 client-side permission codes checked by the GRN are seeded (`SHOW_TRANSACTION_DATE`, `HIDE_RETIRE_APPLET`); the seeded `SHOW_TRANSACTION_DATE` means every role without it cannot change the transaction date — worth stating in the consignment guide.
+- Both consignment applets' FINAL error handlers call `String.includes(a, b)` with two arguments (GRN effects L1406, GIN effects L544).
+- A consignment GRN at RM 0 dilutes the item's moving-average cost (MA_WA list includes CSGGRN); product decision whether zero-priced consignment receipts should be excluded from the pool.
+
+## Cross-lane link requests (run 10)
+
+- content/en/guides/purchasing-guides/consignment-purchasing.md (guides owner) — GRN journal = Dr Consignment Stock / Cr Consignment Liability, no creditor; the supplier's AR/AP type does not matter; CONSIGNMENT_STOCK and CONSIGNMENT_LIABILITY default GL codes are the prerequisite; VOID from the listing only and blocked once billed; back-dating needs the `SHOW_TRANSACTION_DATE` permission; KO tabs depend on the company document-flow configuration.
+- content/en/applets/purchase-workflow/internal-consignment-purchase-order-applet.md (lane 2) — add `internal-consignment-grn-applet` to `related_applets`; say its open lines are consumed by the GRN's KO For tab (`line_open_queue` CSGPO → CSGGRN) and reopened when the GRN is voided.
+- content/en/applets/purchase-workflow/internal-consignment-return-applet.md (lane 2) — add `internal-consignment-grn-applet`; it shares the `isConsignmentStockIn` branch (line GL ignored, `PNS_RETURN` → CONSIGNMENT_STOCK).
+- content/en/applets/purchase-workflow/internal-purchase-grn-stock-in-applet.md (lane 2) — its journal also runs through the `isConsignmentStockIn` branch (`JournalPostingService` L64–L66, L139): line GL code ignored, `resolveArap` skipped; check that page's GL-precedence row.
+- content/en/applets/purchase-workflow/internal-purchase-requisition-applet.md and content/en/applets/finance/internal-purchase-invoice-applet.md (lane 2 / finance lane) — add `internal-consignment-grn-applet` as an optional KO target (line-level flow).
+- content/en/applets/sales-workflow/internal-consignment-billing-applet.md (lane 1) and purchase-workflow/internal-consignor-purchase-billing-applet.md (lane 2) — add `internal-consignment-grn-applet`; state that billing knocks off the GRN and thereby blocks its VOID (`GENERIC_DOCUMENT_HAS_TARGET_LINKS`).
+- content/en/applets/finance/creditor-report-applet.md (finance lane) — add `internal-consignment-grn-applet`.
+- content/en/applets/master-data/chart-of-account-applet.md (lane 4, done) — add CONSIGNMENT_STOCK / CONSIGNMENT_LIABILITY to the default-GL-code list and `internal-consignment-grn-applet` to `related_applets` next time it is touched.
+- content/en/applets/master-data/organisation-applet.md (lane 4, queued) — document the document-flow configuration (`bl_fi_comp_gendoc_flow_config`) and the branch `MAIN_LOCATION` extension when reached.
+- content/en/applets/master-data/doc-item-maintenance-applet.md, supplier-applet-1.md, employee-applet.md, tax-configuration-applet.md, inventory-workflow/stock-balance-applet.md, stock-report-applet.md (lane 4) — add `internal-consignment-grn-applet` to `related_applets` when next touched.
+
+## Registry / naming mismatches (run 10)
+
+- **internalconsignmentGRNApplet `documentation_url`** points at a Confluence page (`bigledger.atlassian.net/.../Internal+Consignment+GRN+Applet`), not the wiki; should be updated to `/applets/inventory-workflow/internal-consignment-grn-applet/`.
+- Registry name "Consignment GRN Applet (Internal)" already matched the page title; no alias needed.
+
+## Questions for Vincent (run 10)
+
+26. **Shared tab map keyed by dev-only codes** (GIN affected; other applets may be) — report to the platform team as a bug, or document per applet as we go? Recommended: report; the wiki now states the consequence on the GIN page.
+27. **Screenshot replacements for the consignment pair** — five of the nine images were dropped for privacy; capture new ones from the GadgetSphere staging tenant, or leave the pages with one/two images each? Recommended: capture (listing + create form + Lines tab for each).
+
+## Notes (run 10)
+
+- Settings classification for the GRN: *shared* screen (with a matching tab-map entry — the first applet in this lane where the map matches the live code), *applet-local* Default Selection that actually saves (unlike GIN / Entity / Forex), *applet-local* Custom Status, *personal* defaults. The scan tool's "67 toggles" misses every tab-hide toggle gated by a `show*Tab` flag; for shared-family applets add the tab map entry's sections by hand (METHOD.md item 7/8 should mention `getTabValue()`).
+- Lateral pass: 12 issues, 12 `lateral` lines in the GRN record; the GIN record was amended in place (same run, not yet committed) with the corrected hash and note.
+- Pace: ~80 minutes for the GRN (large document applet: 80-key model, KO, VOID, custom status, intercompany tab) after ~25 minutes verifying and correcting the GIN. Stopping before internal-goods-dispatch-note-applet rather than starting a third document applet with reduced care.
