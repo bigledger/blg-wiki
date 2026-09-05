@@ -705,3 +705,9 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0190 (2026-09-05) Stock Balance: DropDownController location lookup has its permission check commented out; unreachable scaffolding in the applet. Registry: stockReplenishmentApplet documentation_url → Confluence (repoint before its page lands); blg-applet-wavelet-internal-kitting-applet exists with no ACTIVE row and no page.
 - [x] F-0191 (2026-09-05) Three Stock Conversion images (a first name in listing rows, infographic) quarantined.
 
+## From Lane 3 run 22 — Shopping Cart (2026-09-05)
+
+### product (shopping cart)
+- [ ] F-0192 (2026-09-05) Back-office PUT /internal-shopping-carts does not re-stamp the per-website line_integrity_config HMAC, so a staff price edit breaks the customer's checkout when integrity is on. Convert / Print / Export exist as effects with no bound button; Printables targets the Sales Quotation extension code; DEFAULT_BRANCH/LOCATION saved but never read (master screen displays personal values). FINAL only opens the queue when the company's INTERNAL_SHOPPING_CART → INTERNAL_SALES_ORDER row is enabled (old page's "FINAL generates a Sales Order" was wrong). Tickets?
+- [x] F-0193 (2026-09-05) Three images (two showing real people, one marketing graphic) quarantined.
+

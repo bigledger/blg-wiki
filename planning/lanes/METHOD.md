@@ -106,5 +106,8 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
     a required validator → silent hard prerequisite, e.g. DEFAULT_BRANCH).
 25. **Enquiry-applet permissions** hinge on the target-filter branch (companies derived from requested
     locations, intersected), not `hasPermission()` — explains "empty grid vs not authorised".
-26. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+26. **The shared-utilities submodule is pinned per applet** (lane 3, run 22): run gates.py at the applet's
+    pinned commit AND at HEAD; note which rows differ. One document type can have three backends
+    (back-office gen-doc, login-entity/ecom endpoint, storefront conversion) — check all paths.
+27. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.
