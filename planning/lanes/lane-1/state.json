@@ -7,9 +7,6 @@
   "claims"
  ],
  "queue": [
-  "content/en/applets/membership/commission-scheme-applet.md",
-  "content/en/applets/sales-workflow/commission-scheme-applet.md",
-  "content/en/applets/sales-workflow/custom-processor-applet.md",
   "content/en/applets/sales-workflow/customer-consignment-applet.md",
   "content/en/applets/sales-workflow/daily-cashier-report-applet.md",
   "content/en/applets/sales-workflow/external-sales-invoice-applet.md",
@@ -87,9 +84,24 @@
   {
    "page": "content/en/applets/claims/claim-cycle-applet.md",
    "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/membership/commission-scheme-applet.md",
+   "date": "2026-09-05",
+   "note": "registry documentation_url points at membership/; sales-workflow copy skipped (F-0085)"
+  },
+  {
+   "page": "content/en/applets/sales-workflow/custom-processor-applet.md",
+   "date": "2026-09-05"
   }
  ],
- "skipped": [],
+ "skipped": [
+  {
+   "page": "content/en/applets/sales-workflow/commission-scheme-applet.md",
+   "date": "2026-09-05",
+   "reason": "duplicate of content/en/applets/membership/commission-scheme-applet.md, merge+alias awaiting Vincent (F-0085)"
+  }
+ ],
  "updated": "2026-09-05",
  "rework": []
 }

@@ -179,3 +179,73 @@ Folders: sales-workflow, membership, manufacturing, claims
 17. **`auto_add_approved_claim_to_cycle`** exists in the backend and changes when approved lines reach finance, but the Cut-Off Logic form cannot set it. Ticket?
 
 - 2026-09-05 (run 5) — Stopping after the two claims pages (both large: the Claim Applet alone has 17 settings screens and a 660-file backend). Next in queue: `membership/commission-scheme-applet.md` then the duplicate `sales-workflow/commission-scheme-applet.md` — check whether these are two pages for one registry code before enhancing either (ADR-0002: one applet, one page).
+
+## Run 6 (2026-09-05) — `membership/commission-scheme-applet` (done); `sales-workflow/commission-scheme-applet` (skipped, F-0085)
+
+- **Resolution of the duplicate:** registry row `Commission_Scheme` ("Commission Scheme", TNT-USER, ACTIVE) has `documentation_url = /applets/membership/commission-scheme-applet/`, so the membership folder is the registry's module. Rewrote `membership/commission-scheme-applet.md` (was an 11-line placeholder) to the standard; left `sales-workflow/commission-scheme-applet.md` untouched and marked it skipped ("duplicate of content/en/applets/membership/commission-scheme-applet.md, merge+alias awaiting Vincent (F-0085)"). Five pages link to the sales-workflow URL (cp-commerce-admin ×2, modules-v2/membership core-concepts and use-cases, and the duplicate itself) — the alias will carry them.
+- **Settings shape:** applet-local. Only `COMMISSION_SCHEME_DETAILS_TAB_ORDER` (Default Selection drag list) passes four proofs. `DEFAULT_BRANCH` / `DEFAULT_LOCATION` are rendered and saved but nothing reads them (no branch/location on any form). **Settings › Field Settings is a stub** (eight unbound toggles, SAVE wired to nothing — same pattern as Car Workshop, run 4) and **Personalization › Default Selection is broken** (component never loads `appletContainer`; the loading subscription is commented out). The `AppletSettings` model declares ~55 document-applet keys (`INCLUDE_*`, `ENABLE_*`, custom statuses) that no screen writes or reads — model-only, not documented.
+- **Backend gaps that make the old guide wrong** (all in `CommissionSchemeGenericRuleNode` / `CommissionSchemeTreatmentEngine`): `SALES_GROUP` rule has no evaluation (`default -> false`, `// TODO`); `VALID_DATE_RANGE` RELATIVE always false; `MEMBER_LABEL` passes for any labelled member (picked labels ignored); Document Type "Sales Contract" checkbox never evaluated; "Sales Invoice" also matches `INTERNAL_SALES_CASHBILL`; `PRICING_MODEL` operator returns 0 in the document path and is applied only on intermediate txn lines in the Sales Commission full-commission pass; membership points use the first treatment only; pricing-model `membership_point_*` columns are never read; rules with an empty pick list pass unconditionally; the DCO has **no code-uniqueness check** (staging listing shows two schemes coded `test`).
+- **Lifecycle:** master data, no posting. Consumers: `CommissionPostingServices.createTxnLines` (Sales Commission Applet backoffice endpoint / `SALES_COMMISSION_POSTING_JOB_PROCESSOR`; marks `posting_sales_commission_queue = POSTED`, rejects a second run with `GEN_DOC_HAS_BEEN_POSTED`); the crontab membership-points chain (`MEMBERSHIP_POINTS_COMMISSION_QUEUE_PROCESSOR` → GetGenDoc → GenDocToCommissionReport) driven by company `member_point_award_doc_in` / `member_point_in_doc_status`; `bl_cms_website_commission_scheme_link`; Membership Admin MLM program `commission_scheme_guid`.
+- **Issues:** applet repo has only #5 (Angular 14 migration) and #1 (deploy script) — no functional reports; wiki #46 is the doc-tracking ticket. Troubleshooting therefore comes from code.
+- 0 client-side perm defs seeded and none checked in code — consistent.
+
+### Screenshots with personal data (run 6) — do not reference; quarantine
+static/images/commission-scheme-applet/Commission-Scheme-Listing.png
+static/images/commission-scheme-applet/create-commision-scheme.png
+static/images/commission-scheme-applet/create-pricing-model.png
+static/images/commission-scheme-applet/create-sales-group.png
+static/images/commission-scheme-applet/edit-commision-main-details.png
+static/images/commission-scheme-applet/edit-pricing-model.png
+static/images/commission-scheme-applet/pricing-model-listing.png
+static/images/commission-scheme-applet/rule-multi-line-tab.png
+static/images/commission-scheme-applet/rules-doc-hdr-tab.png
+static/images/commission-scheme-applet/rules-single-line-tab.png
+static/images/commission-scheme-applet/sales-group-listing.png
+static/images/commission-scheme-applet/sales-group.png
+static/images/commission-scheme-applet/sales-salesman-listing.png
+static/images/commission-scheme-applet/treatement-tab.png
+
+(Every one shows the staging listing panel whose scheme / group / pricing-model codes are staff first names; `edit-commision-main-details.png` also shows a staff e-mail address in Created By; `sales-salesman-listing.png` shows person names and a real electronics company's legal name in the salesman list.) Safe but not embedded: `infograhic.png` (no personal data; it asserts Sales Group targeting works, which the backend does not implement).
+
+### Cross-lane link requests (run 6)
+- `ecommerce/cp-commerce-admin-applet` (other lane): two links point at `/applets/sales-workflow/commission-scheme-applet/`; switch to `/applets/membership/commission-scheme-applet/` (or rely on the F-0085 alias). State that the Commission Scheme tab writes `bl_cms_website_commission_scheme_link`.
+- `modules-v2/membership/core-concepts/_index.md` and `use-cases/_index.md` (other lane): same link fix; "Commission Scheme engine calculates multi-tier override payouts" should read "the Sales Commission Applet's posting run applies the scheme's Level n treatments to the MLM lineage".
+- `master-data/employee-applet`: add `commission-scheme-applet` to `related_applets`; note that Employee Category labels are the working way to target a set of agents in a commission scheme (Sales Group rule is unimplemented) and that only `is_employee` entities appear in Sales Group › Salesman.
+- `master-data/customer-applet`, `master-data/organisation-applet` (company `member_point_award_doc_in` / `member_point_in_doc_status`; companies/branches for rules), `inventory-workflow/inv-item-maintenance-applet` (item categories for line rules), `finance/internal-receipt-voucher-applet` (RV earns commission only through contra links to invoices; `{DAY}` formula variable = invoice date → contra date): add `commission-scheme-applet` to `related_applets`.
+- `master-data/pricebook-applet` or wherever pricing schemes (`bl_fi_mst_pricing_scheme_hdr/link`) end up documented: the Commission Scheme treatment's *Pricing Scheme* price source reads `sales_unit_price` per item from a pricing scheme. No page covers pricing schemes today.
+- Lane 1 (self): `sales-workflow/sales-commission-applet` (queued) must state the trigger chain (`createTxnLines`, `GEN_DOC_HAS_BEEN_POSTED`, `create-full-commission` = the only place PRICING_MODEL treatments produce a number), and link the membership page; `sales-workflow/pos-general-applet` (done) could note cash bills match the Sales Invoice document-type rule; `membership/membership-admin-applet` (done) should name the MLM program's `commission_scheme_guid`.
+
+### Registry / naming mismatches (run 6)
+- `Commission_Scheme`: page title set to registry name "Commission Scheme" (old sales-workflow page: "Commission Scheme Applet"). Two pages for one code — F-0085 (see above).
+- `mlm-admin-applet` ("MLM Admin Applet", ACTIVE, documentation_url → Confluence): no wiki page exists in any folder; Membership Admin's MLM tab and the Commission Scheme `MLM` type both depend on it. Undocumented applet found (not in lane 1's folders).
+
+### Questions for Vincent (run 6)
+18. **F-0085 folder.** Registry says membership; I rewrote the membership page and left the sales-workflow file untouched. Confirm, then the sales-workflow file should become an alias (`aliases: [/applets/sales-workflow/commission-scheme-applet/]` on the membership page) and be deleted.
+19. **Backend gaps worth product tickets** (repo `blg-akaun-platform-java`, `CommissionSchemeGenericRuleNode`): unimplemented `SALES_GROUP` rule and `RELATIVE` date range, `MEMBER_LABEL` ignoring picked labels, Sales Contract checkbox never evaluated, no scheme-code uniqueness in the DCO. The page documents them as-is; do you want them raised as issues (and the Sales Group menu hidden until the rule works)?
+20. **Non-functional settings screens** (Field Settings stub, personal Default Selection throwing) — ticket on `blg-applet-wavelet-commission-scheme-applet`, or leave?
+21. **Screenshots.** All 14 captures need re-capturing on a tenant with synthetic scheme/group codes and no staff names; the page ships without images until then. `infograhic.png` (5 MB) is unreferenced — delete or keep?
+
+## Run 6 (2026-09-05) — `sales-workflow/custom-processor-applet` (done)
+
+- The old page (384 lines) invented the mechanism: "moves documents from DRAFT to FINAL", "Default Page Count" setting, Field Settings that "increase processing speed", "Company blank = all companies", "processor wakes every 1 hour". None of it is in code. Real mechanism: `GenericDocumentController` (update-posting-status and update-auto-final) calls `GenericDocumentServiceForCustomProcessing` **only when the document has just become FINAL**; the lookup is tenant + server doc type + **document company** + posting status + ACTIVE with `findFirst`; `GenericDocCustomProcessingFilterProcessor` writes one `bl_fi_generic_doc_custom_processing_queue` row and nothing else. Processor code, external process/response status and history rows are written by an **external integration** through the queue/history API (`etl-ep` endpoints, `customUpdateExternalProcessData`). Consequence: a filter with Posting Status DRAFT never fires (documented as troubleshooting item 1).
+- Price Tag Sync History is a separate pipeline: DB trigger `trg_after_insert_update_price_tag_sync` on `bl_fi_mst_pricing_scheme_link` (installed via a backoffice GET) → `bl_fi_mst_price_tag_sync_queue` → scheduled `PRICING_SCHEME_DE_TAG_SYNCING_PROCESSOR` (per-event username/password/company/store/interval) → vendor API; history rows only on `SUCCESS`; queue purged after 3 months. The `nfc_url` written into every history row is a **hard-coded URL of a real telco** in `PricingSchemeDeTagSyncingService` L30 — not named on the page.
+- Settings: no key passes four proofs (Default Branch/Location saved to the applet container, read by nothing; Field Settings stub; personal Default Selection never loads its container — same copy-paste skeleton as Commission Scheme and Car Workshop). Personalization menu lists a Field Settings entry with no route. 0 client-side perm defs, none read.
+- Filter form: no reactive validators at all (labels say required); DCO checks no `filter_code` uniqueness; DDL has no unique index either. Columns `destination_json`, `gendoc_filter_json`, `trigger_type` exist but are neither exposed nor read.
+- Infographic (`custom-processor-applet-overview-infographic.png`): no personal data; not embedded because it illustrates the invented story.
+- Issues: applet repo has none; wiki #49 (tracking), #240/#295 worklogs ("first draft", "added screenshot" — the screenshot is the infographic).
+
+### Cross-lane link requests (run 6, custom processor)
+- `master-data/pricebook-applet` (other lane): add `custom-processor-applet` to `related_applets`; state that inserts/updates of `bl_fi_mst_pricing_scheme_link` fire the price-tag sync trigger (when installed) and that successes appear in Custom Processor › Price Tag Sync History.
+- `master-data/organisation-applet`: add `custom-processor-applet` (filters are per company).
+- Lane 1 self: `internal-sales-order-applet`, `internal-sales-invoice-applet`, `internal-sales-return-applet`, `internal-sales-debit-note-applet`, `internal-sales-credit-note-applet` (all done) should add `custom-processor-applet` to `related_applets` with one sentence: "when this document becomes FINAL and an ACTIVE Processor Filter matches its type and company, a Custom Processing Queue row is created for the external processor".
+- `finance/general-ledger-applet`: the old page claimed GL postings depend on this processor; they do not — no change needed there, noted so nobody re-adds it.
+
+### Registry / naming mismatches (run 6, custom processor)
+- `custom-processor-applet`: registry name "Custom Processor Applet" = page title; `documentation_url` empty — should point at `/applets/sales-workflow/custom-processor-applet/`. 0 client-side perm defs (consistent with code).
+
+### Questions for Vincent (run 6, custom processor)
+22. **Folder.** The applet is an integration hand-off/monitoring tool, not a sales document; it sits in `sales-workflow/` because its filters watch sales documents. Keep, or move to `integrations/` with an alias?
+23. **Hard-coded NFC URL** (`PricingSchemeDeTagSyncingService` L30) points at a real company's website for every tenant — product ticket?
+24. **DRAFT option on Processor Filter** can never fire given the FINAL-only trigger; ticket to remove the option or to trigger on DRAFT saves too?
+
+- 2026-09-05 (run 6) — Stopping after two pages (Commission Scheme incl. the duplicate resolution, Custom Processor). Next in queue: `sales-workflow/customer-consignment-applet.md`, then `daily-cashier-report-applet.md`. Method note: the "settings skeleton" (Default Branch/Location + 8-toggle Field Settings stub + broken personal Default Selection) is a template copied into the small wavelet-erp applets — check for readers before documenting any of its keys; and for queue/monitoring applets, find the *writer* of each column before describing a screen as "the processor does X".
