@@ -1,0 +1,52 @@
+---
+topic: delivery-installation-applet
+aliases: [delivery and installation applet, DI applet, delivery jobs, trips, delivery shipments]
+applets: [delivery-installation-applet, Delivery_Installation_Driver_Applet]
+modules: [inventory]
+related: [delivery-installation-driver-applet, driver-delivery-order-applet, internal-sales-order-applet, internal-sales-invoice-applet, internal-delivery-order-applet, pick-pack-queue, organisation-applet, employee-applet]
+wiki:
+  - content/en/applets/delivery-installation/delivery-installation-applet.md
+  - content/en/applets/inventory-workflow/delivery-installation-applet-V2-applet.md
+status: growing
+updated: 2026-09-05
+---
+
+# Delivery Installation applet
+
+The back-office dispatch console of the delivery module: finalised Sales Orders, Sales Invoices and Delivery Orders (via the pick-pack queue) or Shipments become delivery Jobs; Jobs are grouped on Trips with a driver, vehicle and region; every status change writes a `bl_del_job_event` and is rolled up to the source document and shipment.
+
+## Facts
+
+- 2026-09-05 — Registry row `delivery-installation-applet` "Delivery Installation applet" (routerLink `applet/wavelet/erp/logistic/delivery-installation-applet`); no separate V2 code. The production bundle at the registry's `es_module_url` contains the V2 project's strings (`logistic-hub-network`, `Delivery Job Line Report`, `custom-status-settings`) and none of the V1 project's (`internal-sales-order-create`, `driver-edit-trip`), so the deployed code is project `delivery-installation-applet-V2`; the newest source is repo `blg-applet-wavelet-delivery-installation-applet-V2` @9966d77. [src:planning/private/registry-applets-2026-09-05.tsv] [src:blg-applet-wavelet-delivery-installation-applet-V2/micro-fe/projects/wavelet-erp/applets/delivery-installation-applet-V2/src/app/app.routing.ts]
+- 2026-09-05 — Settings are applet-local. Application Settings declares 70 `FormControl()` keys and saves them with `SessionActions.saveMasterSettingsInit` (master, tenant-wide); 45 have a rendered toggle (Trips 1, Shipment 15, Jobs 29); the 24 advanced-search `JS_/SO_*_FIELD` keys are rendered on the "Menu Containers" screen (`left-menu-items.component.html`), not on Application Settings whose Advance Search tab is commented out (L5–L134). `JS_HIDE_JOB_SUB_PROCESS_STATUS` has its control commented out; `JS_HIDE_JOB_SHIPMENT_NO` is rendered but read by nothing. All defaults are null (nothing hidden). [src:…/settings-container/application-settings/application-settings.component.ts] [src:…/settings-container/application-settings/application-settings.component.html] [src:…/settings-container/left-menu-items/left-menu-items.component.html]
+- 2026-09-05 — `*_HIDE_JOB_STATUS` reduces the status dropdown from [Ready To Ship, Start Job, Complete Job, Cancel Job] to [Ready To Ship, Cancel Job]; the Job Delivery Order listing reads the `SO_` key. `HIDE_BATCH_PRINT` hides the Trips Batch Print button; `JS_SHOW_CUSTOM_DELIVERY_DATE_FIELD` swaps the Delivery Job Batch Print for a custom-date print. [src:…/jobs-shipment-container/listing/listing.component.ts L101–L103,L675] [src:…/job-delivery-order-container/job-delivery-order-listing/job-delivery-order-listing.component.ts L478] [src:…/trip-container/listing/listing.component.html L95] [src:…/jobs-shipment-container/listing/listing.component.html L140–L167]
+- 2026-09-05 — Default Selection (applet and personal) is non-functional at 9966d77: the routed component has no applet container input and its loader is commented out; nothing reads `DEFAULT_BRANCH`/`DEFAULT_LOCATION`. Field Settings is a static placeholder with unbound toggles. [src:…/settings-container/default-settings/default-settings.component.ts L31–L62] [src:…/personalization-container/personal-default-settings/personal-default-settings.component.ts] [src:…/settings-container/field-configuration/field-configuration.component.html]
+- 2026-09-05 — Custom statuses are rows in `bl_del_job_custom_status_hdr` (code, name, descr, optional image) applied through `del/jobs/add-custom-status/backoffice-ep`, which writes a job event with `event_code = DELIVERY_STATUS_CHANGED` and `action = <custom code>` and does not change `delivery_status`. The `ENABLE_/NAME_CUSTOM_STATUS_LINE_1..5` keys are a separate, control-less mechanism that adds `client_doc_status_0n` columns to job-item grids. [src:blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JobsService.java L1258–L1290] [src:…/jobs-sales-invoice-container/listing/listing.component.ts L184–L185]
+- 2026-09-05 — Return reasons live in `bl_applet_config` (`param_code = RETURN_REASON`, `value_json.data[] = {code,name}`); the settings effect appends to `data[0]` and cannot create the row; duplicate code → client error "Reason Code already exists". Job lines read the same row for *Reason for Return*. [src:…/state-controllers/reason-settings-controller/store/effects/reason-settings.effects.ts L18–L45] [src:…/job-items-line-container/edit/edit.component.ts L143–L163]
+- 2026-09-05 — Printable formats: `bl_prt_printable_format_hdr` with `txn_type` ∈ {BL_DEL_TRIP_HDR, BL_DEL_JOB_HDR_INTERNAL_JOB_SHIPMENT, BL_DEL_JOB_HDR_INTERNAL_SALES_ORDER, BL_DEL_JOB_HDR_INTERNAL_SALES_INVOICE}; upload requires the printable format list with code "Jasper JRXML". [src:…/models/constants/printable-format-constants.ts] [src:…/state-controllers/printable-format-controller/store/effects/printable-format.effects.ts L27–L47]
+- 2026-09-05 — Delivery statuses: DELIVERY_ARRANGED, READY_TO_SHIP, OUT_FOR_DELIVERY, COMPLETE, CANCELLED, DELIVERY_REARRANGED, JOB_RE_ARRANGED; PARTIALLY/FULLY DELIVERED only on gen-doc and shipment headers. Add to Trip sets DELIVERY_ARRANGED on trip, jobs and links (the only initial-status writer); trip start/complete cascade to every job on the trip; no transition-order validation. [src:blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/DeliveryStatusConstant.java] [src:blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/JobUows/JobsUow.java L1040–L1093] [src:blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/TripsService.java L140–L165]
+- 2026-09-05 — Two cancel paths: document-sourced jobs → `del/job-docs/cancel-job/` → `JobsService.cancelJobs` (status "Cancelled", `qty_to_deliver` added back to `bl_fi_pick_pack_queue.qty_balance`); shipment-sourced jobs → `delivery-shipment-hdr/backoffice-ep/cancel-jobs-from-shipment` (job and link deleted, qty back to `bl_del_shipment_processing_open_queue`, throws `SHIPMENT LINK TABLE NOT FOUND` for a job without a shipment link). Cancel Trip uses `cancelJobs` for every job. [src:blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JobsService.java L401–L450] [src:blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/DeliveryShipmentHdrService.java L403–L446] [src:blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/job/JobsDocController.java L144–L158]
+- 2026-09-05 — Completion guard compares `delivery_status != 'CANCELLED'` but `cancelJobs` writes title-case "Cancelled", so jobs cancelled from a document listing can still be completed; only trip-cancelled jobs (upper-case) are blocked. [src:blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/JobUows/JobsUow.java L822–L828] [src:blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JobsService.java L413]
+- 2026-09-05 — Event time is a client string `dd MMM, HH:mm` (no year) stored verbatim in the event description; trip actions and custom status accept a back-dated date. [src:…/jobs-shipment-container/listing/listing.component.ts L528–L534] [src:blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/del/DeliveryJobEventUpdateActionService.java L56–L63] [src:gh:bigledger/blg-sd-tnl#97]
+- 2026-09-05 — Permissions: 0 client-side permission definitions seeded for the code; server-side `API_TNT_DM_DEL_*` families; every status endpoint requires `API_TNT_DM_DEL_JOBS_UPDATE` or admin. [src:akaun_master bl_applet_client_side_perm_dfn join bl_applet_hdr] [src:blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/trip/TripsController.java L275–L343]
+- 2026-09-05 — Driver *Verify Email* looks up `app_login_principal` by `principal_type = EMAIL_USERNAME`; if absent the record offers *Send Invite*. [src:…/driver-container/edit/edit.component.ts L253–L300] [src:gh:bigledger/blg-sd-tnl#98]
+- 2026-09-05 — Issues (customer project repo, anonymised): create-jobs-from-shipment failures (#13, #78), vehicle listing capped at 100 rows in an older build (#49, now range-paged), duplicate shipments from an external warehouse's same-millisecond retries (#90), jobs with no shipments (#106). [src:gh:bigledger/blg-sd-tnl#13] [src:gh:bigledger/blg-sd-tnl#49] [src:gh:bigledger/blg-sd-tnl#90] [src:gh:bigledger/blg-sd-tnl#106]
+
+## How it connects
+
+- **delivery-installation-driver-applet** — same backend endpoints under `login-driver-ep`; driver completions appear here as job events and job-line recipient/return data.
+- **pick-pack-queue** — the SO/SI/DO source of jobs; cancelling a document-sourced job restores `qty_balance`.
+- **internal-sales-order-applet / internal-sales-invoice-applet / internal-delivery-order-applet** — their `delivery_status` (PARTIALLY/FULLY DELIVERED) is written by this applet's complete/cancel actions.
+- **driver-delivery-order-applet** — the lightweight alternative (one driver field on the DO).
+- **organisation-applet** — branch/location on shipments, jobs and searches.
+
+## Open questions
+
+- Is the "Cancelled" vs "CANCELLED" case mismatch in the completion guard intended? It defeats the guard for document-sourced jobs.
+- Should Default Selection be wired (no reader of `DEFAULT_BRANCH`) or removed from the menu?
+- Who seeds the `RETURN_REASON` `bl_applet_config` row for a new tenant?
+
+## Wiki impact
+
+- `inventory-workflow/delivery-installation-applet-V2-applet.md` (lane 4) duplicates this registry row; merge into the canonical page with an alias (lane 4 findings run 5, recommendation: merge).
+- `sales-workflow/internal-sales-order-applet.md`, `internal-sales-invoice-applet.md`, `internal-delivery-order-applet.md` should say their `delivery_status` is set by this applet's complete/cancel actions and add `delivery-installation-applet` to `related_applets`.

@@ -170,3 +170,55 @@ The shared `app-applet-settings-toggle` component (`blg-shared-utilities/modules
 
 - Should the validity window (`VALIDITY_DATE_END`) block knock-off from an expired agreement? Nothing enforces it today; the page says so.
 - Which applet page owns the company gendoc flow configuration UI? Three of my pages (GRN, PO, BPO) now depend on it and link only to a table name.
+
+## Run 5 (2026-09-05) — Delivery Installation applet
+
+Rewritten from the **V2 project**. Registry `delivery-installation-applet`, name "Delivery Installation applet" (title set exactly, lower-case *applet* as in the registry). The page previously described the V2 UI in persona / marketing voice with invented specifics (up to five custom status workflows, an "App Left Menu Items" screen that hides menus, per-driver menu trimming); all replaced by code-derived sections.
+
+### Which repo is the product
+
+Two repos exist: `blg-applet-wavelet-delivery-installation-applet` (contains both the old `delivery-installation-applet` project and a 2025-11 copy of `delivery-installation-applet-V2`) and `blg-applet-wavelet-delivery-installation-applet-V2` (V2 project only, commits to 2026-07-26, 90 files newer). The registry has one code and its `es_module_url` bundle (`…/delivery-installation-applet/prod/delivery-installation-applet-elements.js`, 50 MB) was fetched and grepped: it contains only V2 markers (`logistic-hub-network` ×37, `custom-status-settings` ×42) and no V1 route names. So the deployed product = V2 project, documented from the V2 repo @9966d77. The old V1 project (trip-calendar / trip-listing / internal-sales-order-* routes) is dead code. Method note: **when two repos claim the same applet code, curl the registry's `es_module_url` and grep for route names** — 30 seconds, no ambiguity.
+
+### Method findings (add to METHOD.md)
+
+- **Screens can be mislabelled.** The "Menu Containers" menu entry (`app-left-menu-items` route, `LeftMenuItemsComponent`) renders 24 advanced-search field toggles; the Application Settings tab that used to hold them is commented out. Four-proof "rendered" must be checked per template, never inferred from the menu label or component name.
+- **Routed settings components can be dead.** Default Selection is routed directly with no `@Input` provider, so its `appletContainer` is undefined and its Save emits nothing; the personal variant has its loader commented out. Field Settings is an unbound placeholder. Both are documented as "not functional at commit <sha>" rather than as settings.
+- **Backend guards can be case-mismatched.** `JobsUow.getByGuidWithCondition` compares `delivery_status != 'CANCELLED'` while `JobsService.cancelJobs` writes `"Cancelled"`, so the "cancelled job cannot be completed" claim is only true for trip-cancelled jobs. Worth a grep for every "rejects" claim: check what string the writer actually stores.
+
+### Screenshots with personal data (not referenced)
+
+All under `static/images/delivery-installation-applet-V2-applet/` (lane 4 suggested keeping them; I opened all 13):
+
+- `delivery-job-main-listing.png`, `delivery-job-main-action-tab.png`, `delivery-job-create-edit-form.png`, `shipment-listing-listing.png`, `shipment-listing-create-jobs.png` — logistics/tracking references prefixed with a real customer's code, a recipient name, driver names.
+- `trip-listing-execution-view.png` — driver names (real staff first names) in the Driver Name column.
+- `job-sources-so.png`, `job-sources-si.png`, `job-sources-do.png` — "Job Created By" shows full staff names.
+- `delivery-job-line-report.png` — a driver's full name and a real company name in the Customer column.
+- `delivery-installation-overview-infographic.png` (both folders) — AI infographic, no data; not used (marketing artefact).
+- Kept and referenced: `trip-calendar-planning-view.png` (empty calendar) and `settings-configuration-center.png` (settings menu). Both still show the logged-in user's small avatar photo in the top-right corner and the tenant code `STAGING_TENANT`; I judged the avatar too small to identify anyone but flag it for Vincent.
+
+The old page's only image, `static/images/delivery-installation-applet/delivery-installation-overview-infographic.png`, is now unreferenced (the loop may delete it).
+
+### Anonymisation note on issue citations
+
+The applet's real issue history lives in a customer-project repo whose slug contains the customer's abbreviation (110 issues, mostly work logs). I cited its issue ids only in the ledger shard and `kb/topics/delivery-installation-applet.md`, not in the page's public `sources:`; the page cites `gh:bigledger/blg-wiki#54` only. Vincent to decide whether gh ids of customer-named repos may appear in front matter.
+
+### Cross-lane link requests
+
+- **inventory-workflow/delivery-installation-applet-V2-applet.md** (lane 4, skipped as duplicate): merge into `delivery-installation/delivery-installation-applet.md` with `aliases: [/applets/inventory-workflow/delivery-installation-applet-V2-applet/]` added to my page by the loop when the duplicate is removed (adding the alias while the page still exists would collide). Its 13 screenshots: see the personal-data list above — only two are usable.
+- **sales-workflow/internal-sales-order-applet.md** (lane 1), **sales-workflow/internal-sales-invoice-applet.md**, **sales-workflow/internal-delivery-order-applet.md**: add `delivery-installation-applet` to `related_applets`; state that the document's `delivery_status` (PARTIALLY DELIVERED / FULLY DELIVERED) is written by the Delivery Installation applet's Complete / Cancel actions and that cancelling a job returns `qty_to_deliver` to the pick-pack queue (`JobsService.java` L401–L450, L848–L912).
+- **inventory-workflow/driver-delivery-order-applet.md** (lane 4): already links here; no change.
+- **master-data/organisation-applet.md**, **master-data/employee-applet.md** (lane 4): add `delivery-installation-applet` to `related_applets` (branch/location on shipments and jobs; drivers are separate `bl_del_driver` records linked to logins by e-mail, not employees).
+- **guides/sales-guides/installation-scheduling-workflow.md**, **partial-delivery-workflow.md**: they are listed as this applet's guides but never name it; a sentence pointing to the Delivery Installation applet for trip planning would close the loop.
+
+### Registry / naming mismatches
+
+- Registry name "Delivery Installation applet" has a lower-case *applet* and no ampersand; the UI header says "Delivery & Installation Applet" and the app component says "Delivery and Installation Applet". Product-side tidy-up; page follows the registry.
+- `documentation_url` for both delivery codes still points at the Atlassian wiki, not wiki.bigledger.com.
+- No client-side permission definitions are seeded for this code (0 rows), and the code checks none.
+
+### Questions for Vincent
+
+- The completion guard case mismatch (`CANCELLED` vs `Cancelled`) — report as a defect to the backend team? The page states it as-is.
+- Default Selection / Personalization › Default Selection are dead at 9966d77 — keep them on the page as "not functional", or ask product to remove the menu items?
+- Who seeds `bl_applet_config` `RETURN_REASON` for a new tenant? The Return Reasons screen cannot create it, so a fresh tenant cannot add return reasons until it exists.
+- Avatar photo in the two kept screenshots (see above) — acceptable, or should the loop crop/replace them?
