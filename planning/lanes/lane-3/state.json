@@ -8,7 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/ecommerce/shopping-cart-applet.md",
   "content/en/applets/purchase-workflow/supplier-delivery-order-applet.md",
   "content/en/applets/external-tenant-admin/tenant-admin-applet.md",
   "content/en/applets/ecommerce/website-builder/user-manager.md",
@@ -138,6 +137,11 @@
    "page": "content/en/applets/ecommerce/seller-applet.md",
    "date": "2026-09-05",
    "note": "run 20; applet @6988e15 (shared-utilities @a8c38a2) + backend @20fbeede40; registry seller_applet maps to this repo; seller order = mkp-table record (signums 1/1 validation constants, no journal/stock/queue, statuses never written); 1 four-proof key (PRINTABLE), Field Settings + Default Selection dead; 0 seeded perms; seller-order SAVE/FINAL/Delete, PI edit FINAL/SAVE/DISCARD, PV create non-functional in code; 5 of 9 images kept"
+  },
+  {
+   "page": "content/en/applets/ecommerce/shopping-cart-applet.md",
+   "date": "2026-09-05",
+   "note": "run 22; applet @5627dab (shared-utilities pinned @f90a5c7, also @a8c38a2; ts-lib @7d1616a9e) + backend @1ff620ef0e; INTERNAL_SHOPPING_CART 0/0 (no journal: no JournalPostingTypeHandler entry -> NO_JOURNAL_CREATED; no stock); backoffice gen-doc endpoint, not the ecom one-cart-per-entity one; FINAL -> open queue via company KO row -> Sales Order v2 Search/KO Shopping Cart; 28 four-proof keys, DEFAULT_BRANCH/LOCATION saved-not-consumed, EXPAND_PAYMENTS read-without-control; Convert/Print/Export dead in template; Printables target Sales Quotation ext code; 21 seeded perms (20 consumed); line-integrity HMAC not re-stamped on backoffice PUT; 4 of 7 images kept"
   }
  ],
  "skipped": [

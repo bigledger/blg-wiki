@@ -1059,3 +1059,59 @@ One page this run — most of the time went into establishing that the page was 
 ### Stopping point
 
 One page enhanced and one resolved/skipped this run — the registry resolution, the three-processor origin chain and the dead-handler audit across six containers (~73k lines) took the budget. Next in queue: `content/en/applets/ecommerce/shopping-cart-applet.md` (registry `InternalShoppingCart` / "Shopping Cart (Internal)", `documentation_url` points at `/applets/shopping-cart-applet/` — check the alias) — then `purchase-workflow/supplier-delivery-order-applet.md`.
+
+## Run 22 — 2026-09-05 — `content/en/applets/ecommerce/shopping-cart-applet.md`
+
+Registry `InternalShoppingCart` / "Shopping Cart (Internal)"; `documentation_url` already points at `/applets/shopping-cart-applet/`, which the page keeps as its alias. Repo `blg-applet-wavelet-internal-shopping-cart-applet` @5627dab (micro-fe layout, shared-utilities submodule pinned @f90a5c7 — the gates.py pass was run at that commit **and** at HEAD a8c38a2; identical results for every key this applet reads). Backend @1ff620ef0e, ts-lib @7d1616a9e, Sales Order v2 @36f287d.
+
+### What the code says (vs. the old page)
+
+- **A cart is 0/0.** `ShoppingCartDataConsistencyObject` forces amount signum 0 and line signums 0/0; `ServerDocTypes.INTERNAL_SHOPPING_CART(0,0)`; no `JournalPostingTypeHandler` entry, and the fallback maps the name to an empty sub-ledger list, so the journal job ends in `NO_JOURNAL_CREATED`; no stock rows. The old page said FINAL "generates a Sales Order" — it does not. FINAL only (a) runs `validateGenericDocumentOnFinal` (fiscal lock, serial/bin/batch) and (b) lets `GenericDocLineOpenQueueProcessor` write open-queue rows **if** the company has an enabled `INTERNAL_SHOPPING_CART -> INTERNAL_SALES_ORDER` LINE row. The Sales Order **v2** applet then offers "Search Shopping Cart" and a "Shopping Cart" KO panel (panel visible only when that row is enabled; hidden by `HIDE_SEARCH_BY_SHOPPING_CART_TAB` / `HIDE_KO_SHOPPING_CART_TAB`, which the shared screen renders only for `erp_internal_sales_order_applet_v2`).
+- **Two backends for one document type.** This applet uses the generic back-office endpoint `gen-doc/internal-shopping-carts`. The ecom endpoint (`InternalShoppingCartController`, `core2/tnt/dm/ecom/…`) — login must be linked to the entity, one cart per entity (`SHOPPING_CART_ALREADY_EXIST`) — belongs to the Customer Access applet. The CP Commerce controller converts a paid storefront cart to a Sales Order server-side (`CpCommerceShoppingCartService.convertShoppingCartToSalesOrder`).
+- **Convert / Print are dead.** `convertShoppingCart$` (build an `INTERNAL_RECEIPT_VOUCHER` from the payment lines, delete the cart) and `printJasperPdf$` exist but the Convert and Export tabs are commented out of the View template and the print effect is commented out. The Printables settings screen stores its default under the **Sales Quotation** extension code and filters `txn_type = INTERNAL_SALES_QUOTATION` (copy-paste). Old page described Convert as a working cashier flow.
+- **Settings.** 28 four-proof keys: 20 line-detail `HIDE_*` (consumed as `!HIDE_X || SHOW_X` in Add/Edit Line Item), `SHOW_DOCUMENT_DELETE_BUTTON` (read raw from `bl_applet_ext` when View opens), `VERTICAL_ORIENTATION`, `EXPAND_MAIN_DETAILS/ACCOUNT/LINE_ITEMS`, `DEFAULT_LANGUAGE_CODE`, personal `DEFAULT_TOGGLE_COLUMN` / `DEFAULT_ORIENTATION`. `EXPAND_PAYMENTS` is read without a control (the shared screen renders `EXPAND_SETTLEMENT`). `DEFAULT_BRANCH` / `DEFAULT_LOCATION` are rendered and saved (master via `saveMasterSettingsInit`) but **never read by the cart form**; worse, the master Default Selection screen patches its controls from *personal* settings. ~200 other shared toggles render for this applet code and are unread — including every setting the old page listed (`LOCK_PURCHASER_TO_CURRENT_USER`, `DISALLOW_SELL_BELOW_MIN_PRICE`, `HIDE_DOC_NO_*`, "Mandatory Reason", webhooks). No gear. The applet-local `field-configuration.component` is an empty unrouted stub; `settings` with no sub-path redirects to the shared Feature Visibility route which only `console.log`s the permission list; the shared Webhook screen is a sample-data stub.
+- **Permissions.** 21 seeded client-side perms for `InternalShoppingCart` (`planning/lanes/lane-3/perm-dfn/InternalShoppingCart.tsv`): 20 `SHOW_*` line keys — all consumed as the per-role re-enable of the `HIDE_*` settings — plus `SHOW_COSTING_DETAILS`, unread. Server-side `TNT_API_DOC_INTERNAL_SHOPPING_CARTS_{CREATE,READ,UPDATE,DELETE}_TGT_GUID`; FINAL rides on UPDATE.
+- **Line integrity (new backend feature).** `bl_cms_website_hdr.property_json.line_integrity_config` (opt-in per website, no admin screen) stamps HMAC tokens on cart lines created through login-ep / login-entity-ep / ecom / cp-commerce paths and verifies them at storefront checkout (`CLIENT_CART_LINE_INTEGRITY_HASH_MISSING` / `_MISMATCH` / price drift after `day_limit`). The plain back-office `PUT /{docType}` this applet uses does **not** re-stamp — a staff price edit here breaks the customer's checkout. Documented as a troubleshooting row.
+- **Fields.** Branch/Location/Sales Agent/Currency required; Credit Terms/Limit required-but-disabled (display only, from `doc_entity_hdr_json`); Entity ID required; Branch/Location/Member Card/Currency lock only once FINAL; Sales Lead defaults to Corporate; SAVE re-applies the server `date_txn`; Add Payment `+` is **not** disabled at zero outstanding (old page said it was).
+- **Issues.** Nothing user-facing: Angular 14 migration (applet #1), sub-query removal (#6539), node_modules (#3091), empty meeting notes (#7430, #7536, #4383 Figma-only). Wiki tracker #110 closed as "Documentation pending".
+
+### Screenshots with personal data
+
+- `static/images/shopping-cart-applet/shopping-cart-listing.png` — staging listing whose Customer Name and Sales Agent columns are real developer names; reference removed from the page. Quarantine.
+- `static/images/shopping-cart-applet/shopping-cart-personalization.png` — Personalization screen with a real person's name, photo and e-mail address; reference removed. Quarantine.
+- `static/images/shopping-cart-applet/shopping-cart-applet-overview.png` — NotebookLM-generated marketing graphic ("Abandoned Cart Recovery", "Real-Time Storefront Synchronization", "FINAL -> Sales Order", "CONVERT -> Receipt Voucher"); contradicted by the code, no personal data, reference removed. Quarantine (unreferenced).
+- Kept (test data only, no people): `shopping-cart-create-main.png`, `shopping-cart-edit-details.png`, `shopping-cart-edit-lines.png`, `shopping-cart-edit-payment.png`. Recapture wanted: listing with fictional customers; Add Line Item dialog; Add Payment dialog; Application Settings › Line Items section.
+
+### Method findings
+
+- **Pin the shared-utilities submodule.** `.gitmodules` pins `micro-fe/projects/shared-utilities` (empty checkout in refs/); the deployed bundle was built against that commit, not `refs/blg-shared-utilities` HEAD. `git archive <sha>` into scratch + a one-line `SU=` patch of gates.py gives the pinned "rendered" proof; diff the two runs before trusting HEAD. Here 330 gate rows differed between f90a5c7 and a8c38a2, none for keys this applet reads.
+- **"Rendered" includes controls the applet has no model for.** `SHOW_DOCUMENT_DELETE_BUTTON` is absent from `applet-settings.model.ts` but is rendered by the shared screen, persisted by the shared save, and consumed by a raw `bl_applet_ext` read — the four proofs pass with the shared form as the declaration. Conversely `DEFAULT_BRANCH`/`DEFAULT_LOCATION` pass declared/rendered/persisted and fail consumed. Check the consumer, not the model.
+- **Commented-out template = dead button.** Handlers (`onConvert`, `onPrint`) and effects can exist with no binding; grep the HTML for the `(click)` before documenting an action (METHOD §12 restated for templates).
+- **Settings-menu decoys.** Routes registered in `app.routing.ts` (feature-visibility, webhook, team-permission) are not necessarily in `settingItems`; the shared `app-settings` shell renders `routes` + fixed server-side-permission and developer-tools links only.
+
+### Cross-lane link requests
+
+- **sales-workflow/internal-sales-order-applet.md** (other lane): add `shopping-cart-applet` to `related_applets`; document the v2 applet's "Search Shopping Cart" tab (`line_open_queue_server_doc_type_1 = INTERNAL_SHOPPING_CART`, `_2 = INTERNAL_SALES_ORDER`) and the "Shopping Cart" KO panel gated by the company flow row (`koSC`), plus `HIDE_SEARCH_BY_SHOPPING_CART_TAB` / `HIDE_KO_SHOPPING_CART_TAB` (shared screen renders them only for `erp_internal_sales_order_applet_v2`).
+- **master-data/organisation-applet.md** (lane 4): under Knock Off Configuration, list `INTERNAL_SHOPPING_CART -> INTERNAL_SALES_ORDER` (LINE) as the row that connects carts to sales orders; add `shopping-cart-applet`.
+- **master-data/cashbook-applet.md** (lane 4): add `shopping-cart-applet`; note the `SETTLEMENT_TYPE` values the cart's Add Payment dialog switches on (CASH, CASH_BACK, CREDIT_CARD, VOUCHER, BANK_TRANSFER, MEMBERSHIP_POINT_CURRENCY, CHEQUE).
+- **master-data/customer-maintenance-applet.md, master-data/tax-configuration-applet.md, master-data/doc-item-maintenance-applet.md** (lane 4): add `shopping-cart-applet` to `related_applets` (embedded customer editor; SST/WHT selectors; `txn_class = PNS` item search).
+- **finance/internal-receipt-voucher-applet.md** (lane 2): add `shopping-cart-applet`; one line: cart payment lines are stored as `STL_MTHD` lines with `server_doc_type = INTERNAL_RECEIPT_VOUCHER`; the cart-to-RV conversion is unreachable code.
+- **ecommerce/cp-commerce-admin-applet.md** (my lane, done run 1): on next touch add `shopping-cart-applet` and a "Line integrity" feature note (`property_json.line_integrity_config`: `enabled`, `day_limit`, auto-generated `secret`; error codes `CLIENT_CART_LINE_INTEGRITY_HASH_MISSING/MISMATCH`; back-office edits are not re-stamped).
+- **modules-v2/ecommerce/** pages (other lane): they credit the cart applet with "abandoned cart recovery" and "real-time storefront synchronization" (the old page's NotebookLM graphic); neither exists — storefront carts are ordinary generic documents polled by the listing on open.
+- **developer-docs / API reference**: `gen-doc/internal-shopping-carts` (backoffice), `ecom/internal-shopping-carts` (login-entity, one-per-entity), `cp-commerce/internal-shopping-carts` (checkout, payment reference, direct/indirect URL confirmation) and the line-integrity error codes are undocumented.
+- **planning/lanes/METHOD.md** (coordinator): fold in the four method findings above (submodule pin; shared-form declaration; commented-out templates; settings-menu decoys).
+
+### Registry / naming mismatches
+
+- None for this page. Title set to the registry name "Shopping Cart (Internal)" (was "Shopping Cart (Internal) Applet"). `page_type: applet`.
+
+### Questions for Vincent
+
+- Re-enable Convert-to-Receipt-Voucher and Export in the View template, or delete the dead effects and the Printables menu (which targets the Sales Quotation extension code)?
+- Should the back-office `PUT /{docType}` call `validateAndStampUpdates` for `internal-shopping-carts` so staff edits do not break storefront checkout when `line_integrity_config` is enabled? Today only the login-ep/login-entity-ep paths stamp.
+- Default Selection (`DEFAULT_BRANCH`/`DEFAULT_LOCATION`) is inert here and reads personal values into the master screen — fix or remove from the menu?
+- Quarantine the three images above; recapture list above.
+
+### Stopping point
+
+One page this run (the two-endpoint resolution, the pinned-submodule gates pass and the line-integrity trace took the budget). Next in queue: `content/en/applets/purchase-workflow/supplier-delivery-order-applet.md`, then `external-tenant-admin/tenant-admin-applet.md`.

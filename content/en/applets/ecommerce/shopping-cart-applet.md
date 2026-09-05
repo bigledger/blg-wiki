@@ -1,650 +1,306 @@
 ---
-title: "Shopping Cart (Internal) Applet"
-description: "Reconcile, validate, and settle transaction carts created by cashiers or submitted by customers via the CP-Commerce e-commerce portal"
+title: "Shopping Cart (Internal)"
+description: "Back-office listing and editor for INTERNAL_SHOPPING_CART documents — carts raised by staff, by customer logins, or by CP Commerce storefront checkouts — with FINAL and delete, no posting"
+applet_code: "InternalShoppingCart"
+page_type: applet
+applet_repo: "blg-applet-wavelet-internal-shopping-cart-applet"
+modules: [ecommerce]
+related_applets:
+  - internal-shopping-cart-customer-access-applet
+  - cp-commerce-admin-applet
+  - internal-sales-order-applet
+  - internal-receipt-voucher-applet
+  - customer-maintenance-applet
+  - cashbook-applet
+  - organisation-applet
+  - tax-configuration-applet
+  - doc-item-maintenance-applet
+guides: []
+sources:
+  configuration:
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/settings-container/settings-container.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/settings-container/field-configuration/field-configuration.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/settings-container/printables/printable-format-listing/printable-format-listing.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/models/constants/printable-format-constants.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/state-controllers/printable-format-controller/store/effects/printable-format.effects.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.html
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-container.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-view/internal-shopping-cart-view.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-create/internal-shopping-cart-create.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-add-line-item/add-line-item-item-details/add-line-item-item-details.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-add-line-item/add-line-item-item-details/add-line-item-item-details.component.html
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-edit-line-item/edit-line-item-item-details/edit-line-item-item-details.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-edit-line-item/edit-line-item-item-details/edit-line-item-item-details.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - blg-shared-utilities/modules/session/session-controller/effects/session.effects.ts
+    - blg-shared-utilities/modules/settings/settings.component.html
+    - blg-shared-utilities/modules/settings/feature-visibility/feature-visibility.component.ts
+    - blg-shared-utilities/modules/settings/webhook/webhook.component.ts
+    - blg-applet-wavelet-internal-sales-order-applet-v2/micro-fe/projects/wavelet-erp/applets/internal-sales-order-applet-v2/src/app/components/internal-sales-order-container/internal-sales-order-create/import-knock-off/import-knock-off.component.ts
+    - blg-applet-wavelet-internal-sales-order-applet-v2/micro-fe/projects/wavelet-erp/applets/internal-sales-order-applet-v2/src/app/components/internal-sales-order-container/internal-sales-order-view/search-documents/search-sc/search-sc.component.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/cpCommerce/LineIntegrityConfig.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/TntErpPermissions.java
+  fields:
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-create/internal-shopping-cart-create-main/internal-shopping-cart-create-main.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-create/internal-shopping-cart-create-main/internal-shopping-cart-create-main.component.html
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-create/internal-shopping-cart-create-account/account-entity-details/account-entity-details.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-create/internal-shopping-cart-create-account/internal-shopping-cart-create-account.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-create/internal-shopping-cart-create-line-items/internal-shopping-cart-create-line-items.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-create/internal-shopping-cart-create-payment/internal-shopping-cart-create-payment.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-add-payment/internal-shopping-cart-add-payment.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-add-payment/internal-shopping-cart-add-payment.component.html
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-create-line-item/line-search-item/line-search-item.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-listing/internal-shopping-cart-listing.component.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/models/advanced-search-models/internal-shopping-cart.model.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/services/internal-shopping-cart-pages.service.ts
+  lifecycle:
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/state-controllers/internal-shopping-cart-controller/store/effects/internal-shopping-cart.effects.ts
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-view/internal-shopping-cart-view.component.html
+    - blg-applet-wavelet-internal-shopping-cart-applet/micro-fe/projects/wavelet-erp/applets/internal-shopping-cart-applet/src/app/components/internal-shopping-cart-container/internal-shopping-cart-listing/internal-shopping-cart-listing.component.html
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-document-services/internal-shopping-carts.service.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/ShoppingCartDataConsistencyObject.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/ServerDocTypes.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/ServerDocShortCodes.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/GenericDocumentController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/GenericDocLineOpenQueueProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/shoppingCart/InternalShoppingCartController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/InternalShoppingCartService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/cpCommerce/CpCommerceShoppingCartService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/cpCommerce/CartLineIntegrityHashService.java
+  troubleshooting:
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/cpCommerce/CartLineIntegrityHashService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/InternalShoppingCartService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - gh:bigledger/blg-applet-wavelet-internal-shopping-cart-applet#1
+    - gh:bigledger/blg-int-general-task#6539
+    - gh:bigledger/blg-int-general-task#4383
 tags:
-- shopping-cart
-- cp-commerce
-- entity-credit
-- settlement-methods
-- customer-management
+  - shopping-cart
+  - cp-commerce
+  - entity-credit
+  - settlement-methods
+  - customer-management
 weight: 170
 aliases:
-- /applets/shopping-cart-applet/
+  - /applets/shopping-cart-applet/
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Shopping Cart Applet** serves as the central back-office administration and settlement hub for transaction carts in the BigLedger ecosystem. It manages shopping carts initiated by internal agents as well as online checkouts submitted by customers using the **CP-Commerce Shopping Cart Widget** on your e-commerce storefront website. 
+The Shopping Cart (Internal) applet is the back-office window onto `INTERNAL_SHOPPING_CART` documents (short code `SHPCRT`). A cart is a pre-order: a customer, a branch and location, a list of items and, optionally, a list of payments the customer has already made. Carts reach this listing from three places — staff create them here, customer logins create them in the [Shopping Cart Customer Access (Internal)](/applets/ecommerce/internal-shopping-cart-customer-access-applet/) applet, and CP Commerce storefronts create them at checkout or point-purchase. Staff open a cart to correct the customer, addresses, items or payments, then set it to FINAL so a Sales Order can be raised against it, or delete it.
 
-Rather than acting as a standalone checkout terminal, the applet bridges customer-facing online retail activity with back-office operations, allowing sales agents and administrators to review customer cart drafts, validate credit terms, apply customer-specific contract pricing, and process multi-method split settlements.
+A cart is not an accounting document. Its amount and quantity signums are both zero, so FINAL writes no journal and moves no stock. What FINAL does is make the cart lines available to the [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/) applet's "Search Shopping Cart" / "Shopping Cart" knock-off tabs — provided the company's Knock Off Configuration has a Shopping Cart → Sales Order row.
 
-{{< callout type="info" >}}
-**Core Integration**: The applet links **storefront customer activity** (items added via the CP-Commerce website widget) with **back-office verification** (real-time credit checks, address picker resolution, and payment ledger entries) to successfully process and finalize sales.
-{{< /callout >}}
+## Where it fits
 
-{{< figure src="/images/shopping-cart-applet/shopping-cart-applet-overview.png" alt="BigLedger Shopping Cart Applet: The Omnichannel Settlement Hub — Online Storefront generates DRAFT documents via Real-Time Storefront Synchronization; Abandoned Cart Recovery lets agents view pending carts; Omnichannel Sales Support assists customers with checkout errors; Integrated CRM and Credit Verification checks limits before release; Multi-Method Split Payments supports Cash, Card, Vouchers, Points, and Bank Transfers; FINAL creates a Sales Order (locks document for fulfillment); CONVERT creates an Internal Receipt Voucher (posts payment to ledger and deletes the draft cart)." caption="BigLedger Shopping Cart Applet: The Omnichannel Settlement Hub — from online storefront draft generation through CRM checks, split-payment settlement, and final conversion to a Sales Order or Receipt Voucher." >}}
+| Direction | Document / applet | How it connects |
+|---|---|---|
+| Upstream | [Shopping Cart Customer Access (Internal)](/applets/ecommerce/internal-shopping-cart-customer-access-applet/) | Customer logins create and edit their own `INTERNAL_SHOPPING_CART` through `core2/tnt/dm/ecom/internal-shopping-carts` (one cart per customer entity, login must be linked to the entity). The same rows appear in this listing. |
+| Upstream | [CP Commerce Admin](/applets/ecommerce/cp-commerce-admin-applet/) storefronts | Storefront checkout and point purchases create carts through `core2/tnt/dm/cp-commerce/internal-shopping-carts`; `CpCommerceShoppingCartService.convertShoppingCartToSalesOrder` turns a paid cart into an `INTERNAL_SALES_ORDER` without visiting this applet. |
+| Master data | [Customer Maintenance](/applets/master-data/customer-maintenance-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Cashbook](/applets/master-data/cashbook-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/), [Organisation](/applets/master-data/organisation-applet/) | Customer (with addresses, credit terms and limits), items (`txn_class = PNS`), settlement methods (`STL_MTHD` items), SST / WHT codes, branch and location. |
+| Downstream | [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/) (v2 applet) | After FINAL, cart lines enter the generic line open queue (`INTERNAL_SHOPPING_CART` → `INTERNAL_SALES_ORDER`) and are picked up by the Sales Order's "Search Shopping Cart" tab and "Shopping Cart" knock-off panel. |
+| Downstream (not wired) | [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) | The code contains a "convert to receipt voucher" effect (create an `INTERNAL_RECEIPT_VOUCHER` from the payment lines, then delete the cart) but no button calls it — see Lifecycle. |
 
-### Who Benefits from This Applet?
+## Screens and menus
 
-**Sales Agents and Cashiers:**
-- Instantly pull up draft carts submitted by customers online to finalize the transaction.
-- Perform real-time customer credit limit and terms checks before releasing orders.
-- Split payment settlements across multiple methods (Cash, Card, Voucher, Points) based on customer preferences.
+The sidebar has one menu item, **Shopping Cart**. Screens are the usual two-column stack: the listing on the left, the selected screen on the right.
 
-**E-Commerce and Operations Managers:**
-- Reconcile pending storefront cart checkouts and track draft orders at the branch level.
-- Re-assign sales agents or modify quantities and pricing inline before final processing.
-- Perform bulk finalisation of storefront draft carts to close sales periods efficiently.
+- **Internal Shopping Cart Listing** — ag-grid, client-side pagination (first 50 carts by `updated_date` descending). Columns: Doc Short Code (checkbox), Doc No (`server_doc_1`), Branch, Posting Status (blank shown as `DRAFT`), Customer Name, Creation Date, Sales Agent, Amount Txn, Updated Date, Doc Remarks. Branch, sales agent and customer names are resolved row by row with three extra calls per cart. The **FINAL** button above the grid finalises every ticked row that is not already FINAL. Advanced search: free-text keyword (matched against cart search word, branch name and customer name, union of results, 500 each) or the fields Customer Name, Creation Date from/to, Branch.
+- **Internal Shopping Cart Create** — buttons RESET and **Create** (disabled while Main Details is invalid or no customer is selected). Four tabs: Main Details, Account (Entity Details / Bill To / Ship To), Line Items, Payment. In vertical orientation the tabs become expansion panels.
+- **Internal Shopping Cart View** — buttons RESET, **Final**, **SAVE** (disabled while Main Details is invalid), and a **DELETE** button at the bottom that needs a second click (`CLICK AGAIN TO CONFIRM`, 3-second window). Same four tabs. Once the cart is FINAL, Branch, Location, Member Card and Currency are locked.
+- Pickers opened from the form: Select Member, Select Customer, Select Billing Address, Select Shipping Address, Add Payment, Select Line Item (item search with `txn_class = PNS`, columns Item Code, Item Name, UOM, Unit Price, System Stock Balance), Add Line Item, Edit Line Item.
+- **Customer create/edit** — the Select Customer screen has a select/edit toggle; edit mode opens a full customer editor (Main, Category, Login, Payment Config, Tax, Address, Contact, Branch, Item Pricing, Credit Term, Credit Limit) that writes to the same entity tables as the Customer Maintenance applet.
+- **Settings** (gear): System Configuration › Application Settings, Default Selection, Printables; Server Side Permissions › Permission Wizard, Permission Set, User Permission, Role Permission; Developer Tools › Release Notes, Audit Trail. The routes `feature-visibility` and `webhook` also exist (and `settings` with no sub-path redirects to `feature-visibility`) but have no menu link; the shared Feature Visibility screen only logs the permission list and the shared Webhook screen is a sample-data stub.
+- **Personalization**: Default Selection only.
 
-**Administrators and Setup Teams:**
-- Define default branches, store locations, and webhook routing rules for website checkouts.
-- Manage strict field-level visibility constraints and role-based editing permissions.
-- Map settlement accounts for online payment methods.
+{{< figure src="/images/shopping-cart-applet/shopping-cart-create-main.png" alt="Line Items panel of a new shopping cart with an empty grid" caption="Line Items panel on a new cart: the + button opens the item search, totals sit above the grid." >}}
 
----
+{{< figure src="/images/shopping-cart-applet/shopping-cart-edit-details.png" alt="Entity Details panel with Bill To and Ship To sub-panels above the Line Items grid" caption="Account panel in vertical orientation: Entity Details, then Bill To and Ship To, then Line Items." >}}
 
-### What Problems Does This Solve?
+{{< figure src="/images/shopping-cart-applet/shopping-cart-edit-lines.png" alt="Line Items grid showing one test item with the Delivery slider" caption="Line Items grid: Item Code, Item Name, UOM, Delivery slider, Qty, then Unit Price, SST/VAT/GST and Txn Amount to the right." >}}
 
-**The Disconnected Storefront and Back-Office Problem:**
+{{< figure src="/images/shopping-cart-applet/shopping-cart-edit-payment.png" alt="Payment panel with Total and Outstanding and an empty payments grid" caption="Payment panel: Total is the sum of payment lines, Outstanding is the line-item total minus payments." >}}
 
-When customers add items to shopping carts on an e-commerce website, operations teams have no way to verify custom credit limits or record complex split settlements (for example, paying via points plus cash) without manually re-entering the data. Common issues include:
-- Manual transcription of online orders into the back-office system
-- No real-time validation of customer credit before order release
-- Delayed order processing due to disconnected systems
+## Configuration
 
-**The Shopping Cart Applet Solution:**
+### Before you can use it
 
-- **Direct synchronization** - Customer website activity from the CP-Commerce Shopping Cart Widget flows directly into the applet as draft documents for instant validation and settlement
-- **Embedded CRM editor** - Search, register, or edit customer parameters (including credit limits, custom pricing schemes, and contacts) inline during checkout without switching to an external system
-- **Split payment ledger** - An outstanding balance calculation ledger tracks total line-item debt against a collection of separate settlement lines, supporting multi-method payments (Cash, Card, Voucher, Points, Cheque)
+- **Company, branch and location** in the [Organisation applet](/applets/master-data/organisation-applet/). Branch and Location are required on every cart; selecting a branch fills Company and Currency, and the branch's `MAIN_LOCATION` extension fills Location.
+- **Knock Off Configuration** (Organisation › Company): a `LINE` flow row `INTERNAL_SHOPPING_CART` → `INTERNAL_SALES_ORDER`, enabled. Without it, FINAL creates no open-queue rows and the Sales Order applet hides its Shopping Cart knock-off panel (`import-knock-off.component.ts` reads `bl_fi_comp_gendoc_flow_config`).
+- **Customers** in [Customer Maintenance](/applets/master-data/customer-maintenance-applet/) with at least one address; the Bill To / Ship To pickers list only the selected customer's addresses.
+- **Sales agents** — employee entities; Sales Agent is required.
+- **Items** with `txn_class = PNS` in [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/); pricing schemes if the Add Line Item dialog should offer them.
+- **Settlement methods** in the [Cashbook applet](/applets/master-data/cashbook-applet/): `STL_MTHD` items whose `SETTLEMENT_TYPE` extension is one of `CASH`, `CASH_BACK`, `CREDIT_CARD`, `VOUCHER`, `BANK_TRANSFER`, `MEMBERSHIP_POINT_CURRENCY`, `CHEQUE`. The Add Payment dialog switches its fields on this value.
+- **Tax codes** (SST and WHT) in [Tax Configuration](/applets/master-data/tax-configuration-applet/), unless the tax selectors are hidden.
+- **Server-side permissions** `TNT_API_DOC_INTERNAL_SHOPPING_CARTS_CREATE_TGT_GUID`, `…_READ_TGT_GUID`, `…_UPDATE_TGT_GUID`, `…_DELETE_TGT_GUID` assigned through Settings › Permission Set / User Permission / Role Permission. FINAL uses the UPDATE permission; DELETE uses the DELETE permission.
 
----
+### Applet settings
 
-## Key Features Overview
+Settings live in four places: the **shared** `FieldConfigurationComponent` from blg-shared-utilities (Settings › Application Settings, saved into `bl_applet_ext.APPLET_SETTINGS` by `saveMasterSettingsInit`), the **applet-local** Default Selection screen (same `APPLET_SETTINGS` record), the applet-local **Printables** screen, and **Personalization › Default Selection** (per-login `USER_SETTINGS`). There is no inline gear (`app-applet-settings-toggle` is not used), and the applet's own `field-configuration.component` is an empty, unrouted stub. Anyone with access to the applet's Settings menu can change master settings; personal settings are per login and override master values where both exist.
 
-{{< cards >}}
-  {{< card title="Cart Listing" subtitle="View, filter, and bulk-finalise transaction carts" link="#my-carts---the-sales-listing" >}}
+The table lists only keys that are declared in `applet-settings.model.ts`, rendered by a control, persisted, and read by the cart screens (four proofs, checked against the shared component at the submodule commit `f90a5c7` the applet pins and at `a8c38a2`; the results are identical for these keys).
 
-  {{< card title="Main Details" subtitle="Manage header details, sales agents, and credit limits" link="#main-details-tabpanel" >}}
+| Setting | Where | What it controls | Default | Effect when changed |
+|---|---|---|---|---|
+| `HIDE_UNIT_PRICE_STD_PRICING_SCHEME` | Application Settings › Line Items | Pricing-scheme / UOM selector in Add and Edit Line Item | Off (nothing is pre-hidden for this applet code) | Field disappears unless the login holds the matching `SHOW_*` client-side permission |
+| `HIDE_UNIT_PRICE_STD_EXCL_TAX`, `HIDE_UNIT_PRICE_STD_INCL_TAX` | same | Standard unit price excl./incl. tax (read-only) | Off | same |
+| `HIDE_UNIT_DISCOUNT`, `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX`, `HIDE_DISCOUNT_AMOUNT_EXCL_TAX` | same | Unit discount, unit discount by UOM, discount amount | Off | same |
+| `HIDE_QTY_BASE`, `HIDE_QTY_UOM`, `HIDE_UOM_TO_BASE_RATIO` | same | Quantity, quantity by UOM, UOM-to-base ratio | Off | same. Hiding both quantity inputs leaves the line at its default quantity |
+| `HIDE_UNIT_PRICE_STD_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_STD_UOM_INCL_TAX`, `HIDE_UNIT_PRICE_NET_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_TXN_UOM_INCL_TAX`, `HIDE_UNIT_PRICE_NET_EXCL_TAX`, `HIDE_UNIT_PRICE_TXN` | same | The by-UOM and net/transaction unit prices | Off | same |
+| `HIDE_AMOUNT_STD_EXCL_TAX`, `HIDE_AMOUNT_NET_EXCL_TAX`, `HIDE_AMOUNT_TXN` | same | Standard, net and transaction line amounts | Off | same |
+| `HIDE_TAX_CONFIG_SELECTION`, `HIDE_WHT_CONFIG_SELECTION` | same | SST selector + rate + amount; WHT selector + rate + amount | Off | same. With the tax selector hidden the line keeps the item's default tax code |
+| `SHOW_DOCUMENT_DELETE_BUTTON` | Application Settings › Gen Doc Listing | The DELETE button at the bottom of the View screen | Off — no DELETE button | Read directly from `bl_applet_ext.APPLET_SETTINGS` when the View screen opens; never shown on a FINAL cart |
+| `VERTICAL_ORIENTATION` | Application Settings › Gen Doc Listing | Tabs (off) or expansion panels (on) on Create, View and Edit Line Item | Off | Personal `DEFAULT_ORIENTATION` overrides it: `HORIZONTAL` forces tabs, `VERTICAL` forces panels |
+| `EXPAND_MAIN_DETAILS`, `EXPAND_ACCOUNT`, `EXPAND_LINE_ITEMS` | Application Settings › Gen Doc Listing | Which panel opens first in vertical orientation | Off (first panel) | The first key that is on wins; panels marked on stay expanded |
+| `DEFAULT_LANGUAGE_CODE` | Default Selection › Default Language | Applet UI language (`bl_applet_hdr.default_language_code`) | `en` | Personal language (Personalization › Default Selection) takes precedence |
+| `DEFAULT_TOGGLE_COLUMN` (personal) | Personalization › Default Selection | Listing layout `SINGLE` / `DOUBLE` | Unset (double column on desktop) | Evaluated together with `VERTICAL_ORIENTATION` in the container |
+| `DEFAULT_ORIENTATION` (personal) | Personalization › Default Selection | `HORIZONTAL` / `VERTICAL` form layout | Unset (follows master `VERTICAL_ORIENTATION`) | See `VERTICAL_ORIENTATION` |
 
-  {{< card title="Account Addresses" subtitle="Select and configure billing and shipping profiles" link="#account-details-tabpanel" >}}
+Keys the screens read without a control on the shared screen for this applet code: `EXPAND_PAYMENTS` (the Create/View panel list expects it; the shared screen renders `EXPAND_SETTLEMENT` instead, so the Payment panel can never be pre-expanded).
 
-  {{< card title="Line Items Grid" subtitle="Manage quantities, pricing schemes, and tax codes" link="#line-items-tabpanel" >}}
+Keys rendered and saved but never read by the cart form:
 
-  {{< card title="Split Payments" subtitle="Settle balances using multiple payment methods" link="#payment-tabpanel" >}}
+- `DEFAULT_BRANCH`, `DEFAULT_LOCATION` — Default Selection saves them into master settings (and the personal screen into personal settings), but neither the Create form nor the Add Line Item dialog reads them: a new cart always starts with an empty Branch and Location. The master screen also pre-fills its own controls from the *personal* settings, so what it shows after a reload may not be what it saved.
+- Everything else the shared Application Settings screen renders for this applet code (about 200 toggles at commit `f90a5c7`, e.g. `DISALLOW_SELL_BELOW_MIN_PRICE`, `HIDE_PERMIT_NO`, `HIDE_TRACKING_ID`, `HIDE_SALES_AGENT`, `HIDE_SERVER_DOC_1..3`, `DEFAULT_POSTING_STATUS`, `ENABLE_AUTO_PRINT`, `CANNOT_EDIT_CURRENCY_RATE`, `FINAL_STATUS_GUID`). None of them is consumed by this applet's code. In particular `LOCK_PURCHASER_TO_CURRENT_USER`, the `HIDE_DOC_NO_*` keys and a "mandatory reason" setting, listed by an earlier version of this page, do not exist in the applet.
+- **Printables** (Settings › Printables): the screen uploads Jasper formats and stores the default under the extension `INTERNAL_SALES_QUOTATION_APPLET_EXT_CODE_PRINTABLE_FORMAT_GUID_INTERNAL_SALES_QUOTATION`, and its listing is filtered to `txn_type = INTERNAL_SALES_QUOTATION` — constants copied from the Sales Quotation applet. The print effect (`printJasperPdf$`) is commented out and the Export tab is not rendered, so nothing in this applet prints.
 
-  {{< card title="Customer CRM" subtitle="Manage customer details and credit terms inline" link="#customer-selection--crm-management" >}}
+### Document behaviour settings
 
-  {{< card title="Item Selector" subtitle="Configure quantities and discount parameters" link="#line-item-selection--configuration" >}}
+No exposed control found: the applet reads no `FINAL_STATUS_GUID`, workflow, void-reason, auto-print or e-Invoice key (routes and settings components checked at applet commit `5627dab`, shared-utilities `f90a5c7`). FINAL, delete and the missing VOID / DISCARD are fixed in code — see Lifecycle.
 
-  {{< card title="Admin Settings" subtitle="Configure defaults, visible fields, and webhooks" link="#configuration--settings" >}}
-{{< /cards >}}
+### Settings in other applets that control this applet
 
----
+| Setting | Where it is set | Effect here |
+|---|---|---|
+| Knock Off Configuration row `INTERNAL_SHOPPING_CART` → `INTERNAL_SALES_ORDER`, flow type `LINE`, enabled | [Organisation](/applets/master-data/organisation-applet/) › Company | Whether FINAL writes line open-queue rows (`GenericDocLineOpenQueueProcessor`) and whether the Sales Order v2 applet shows its Shopping Cart knock-off panel |
+| `HIDE_SEARCH_BY_SHOPPING_CART_TAB`, `HIDE_KO_SHOPPING_CART_TAB` | [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/) v2 › Application Settings | Hide the tabs through which a FINAL cart is turned into a Sales Order |
+| Settlement method items (`SETTLEMENT_TYPE`) | [Cashbook](/applets/master-data/cashbook-applet/) | Which payment types the Add Payment dialog offers and which fields it asks for |
+| `bl_cms_website_hdr.property_json.line_integrity_config` (`enabled`, `day_limit`, optional `secret`) | Website record of the [CP Commerce Admin](/applets/ecommerce/cp-commerce-admin-applet/) applet (no admin screen; set in the website JSON) | When enabled for any website, storefront and customer-access carts get an HMAC token per line and the storefront checkout verifies it. Edits made from this applet go through the plain back-office `PUT gen-doc/internal-shopping-carts`, which does not re-stamp lines — see Troubleshooting |
 
-## Key Concepts
+### Feature visibility / permissions
 
-### CP-Commerce Storefront Integration
+`bl_applet_client_side_perm_dfn` seeds 21 client-side permissions for `InternalShoppingCart`: the 20 `SHOW_*` counterparts of the line-detail `HIDE_*` settings above, plus `SHOW_COSTING_DETAILS`. The Add and Edit Line Item dialogs show a field when `!HIDE_X || SHOW_X` — so a tenant-wide hide can be reopened for a role or user by granting the `SHOW_X` permission. `SHOW_COSTING_DETAILS` is seeded but not read by this applet. No permission gates Create, FINAL or DELETE on the client; those are enforced by the server-side `TNT_API_DOC_INTERNAL_SHOPPING_CARTS_*` permissions (Settings › Permission Set).
 
-The Shopping Cart Applet acts as the administrative back-office companion to the customer-facing CP-Commerce storefront website or app. The relationship between customer storefront activity and back-office settlement workflows is visualized below:
-
-```mermaid
-flowchart TD
-    subgraph Storefront ["CP-Commerce Storefront Website or App"]
-        W["Shopping Cart Widget"] -->|"Customer checks out"| P["Submit Draft Cart"]
-    end
-    subgraph BackOffice ["Back-Office Management (Shopping Cart Applet)"]
-        A["Load Sync'd Draft Cart"] -->|"Verify details & limits"| V["Verify CRM, Address, and Credit"]
-        V -->|"Record payments"| S["Add Split Payments"]
-        S -->|"Option A: Finalise Cart"| F["Set posting_status to FINAL"]
-        F -->|"Generates"| SO["Posted Sales Order (SO)"]
-        S -->|"Option B: Convert Cart"| C["Generate INTERNAL_RECEIPT_VOUCHER"]
-        C -->|"Removes source"| D["Delete Draft Cart"]
-    end
-    P -->|"Syncs draft data"| A
-```
-
-- **Draft Synchronization**: When a storefront user interacts with the customer-facing website or app (e.g. adding products, editing quantities, or selecting shipping options), the system synchronizes this data in real time, creating or updating a corresponding cart record with a `DRAFT` posting status in the Shopping Cart Applet database.
-- **Review and Settlement**: The cashier or sales lead opens the pending storefront cart, verifies customer-specific parameters (such as outstanding balance, credit terms, and addresses), modifies line items if necessary, records the settlement transactions (split payment ledger), and either clicks **FINAL** to lock the document (generating a Sales Order) or converts the settled cart into a posted sales record (deleting the draft cart).
-
----
-
-### Purchasing Framework
-
-Every transaction processed by the Shopping Cart Applet must address three fundamental aspects. The system provides structured handling for each:
-
-| Aspect | Component | Practical Example |
-|--------|-----------|------------------|
-| **Who** is purchasing? | Customer / Member | Walk-in Customer, Corporate Account, Loyalty Member |
-| **What** is being bought? | Item and Pricing Scheme | Standard Item Code, Retail Price, Wholesaler Discount |
-| **How** is it settled? | Payment Method and Credit | Cash, Credit Card, Voucher, Credit Terms (30 Days) |
-
-
-
-
-### The Customer-Address Relation Chain
-
-To prevent data entry errors and ensure accurate shipping/billing calculations, fields are linked in a strict dependency sequence:
-
-```mermaid
-flowchart TD
-    A["Select Customer Profile (Entity ID)"] -->|Retrieves| B["Credit Limit and Credit Terms"]
-    A -->|Unlocks| C["Address Picker Dialogs"]
-    C -->|Populates| D["Billing and Shipping Details"]
-```
-
-**Flow Details:**
-1. **Customer Selection**: The agent clicks the **Entity ID** picker to select a customer.
-2. **Credit Activation**: The system fetches the customer's credit parameters, enabling and auto-populating the **Credit Limit** and **Credit Terms** dropdowns in the Main Details header.
-3. **Address Pickers**: The billing and shipping address selector buttons are unlocked, ensuring only addresses associated with the selected customer can be chosen.
-
----
-
-## Quick Start Guide
-
-Get up and running quickly with these essential workflows.
-
-### For Sales Agents: Settle an Order
-
-**Goal:** Create a cart or open a storefront draft, verify credit, record payment, and finalize the order.
-
-1. **Locate or Start Cart**: 
-   - **Manual**: Click the **"+"** button on the listing.
-   - **Storefront**: Find the draft cart synced from the customer-facing website or app in the list and click it.
-2. **Assign Customer**: Go to **Account > Entity Details**, select the customer's **Entity ID** (if not already synced from the storefront).
-3. **Set Branch**: In **Main Details**, select the **Branch** and **Location** (Credit Terms and Limits will auto-populate).
-4. **Configure Items**: Go to **Line Items**, adjust quantities/UOM, select the tax code, or click **"+"** to add new items.
-5. **Record Payment and Settle**: Go to **Payment**, click **"+"**, select your payment method, enter the amount, and either click **FINAL** to lock the document or navigate to **Convert** to post a receipt voucher (which deletes the draft cart).
-
----
-
-### For Supervisors: Process Pending Storefront Carts
-
-**Goal:** Review, bulk-finalise, or delete draft sales carts synced from the e-commerce website.
-
-1. **Open Queue**: Open the **Shopping Cart** listing.
-2. **Identify Storefront Drafts**: Filter the listing grid to display draft carts.
-3. **Bulk Finalise**: Select multiple check-boxes on the draft carts in the grid, then click **FINAL** at the top.
-4. **Delete Draft**: Open an individual draft, click **DELETE** at the bottom, and click **CLICK AGAIN TO CONFIRM**.
-
----
-
-### For Admins: Initial System Setup
-
-**Goal:** Configure operating defaults and visibility rules for the team.
-
-1. **Configure Defaults**: Navigate to `Settings > Default Selection` and set the default **Branch** and **Location**.
-2. **Set Visibility Rules**: Go to `Settings > Feature Visibility` to hide unnecessary fields or enable delete buttons.
-3. **Add Webhooks**: Go to `Settings > Webhook` to configure server payloads for automatic system integrations.
-4. **Establish Permissions**: Go to `Settings > Permission Set Listing` to define security clearance levels.
-
----
-
-## Real-world operational scenarios
-
-The Shopping Cart Applet is not just a passive ledger; it is an active sales enablement and customer engagement tool. Below are common real-world scenarios showing how sales agents and managers can leverage synced draft data to capture lost sales, resolve checkout issues, and handle corporate negotiations.
-
-### Scenario 1: Proactive Sales and Cart Recovery (The Abandoned Cart USP)
-
-*   **Context**: A registered wholesale customer adds high-value engine parts to their online shopping cart on your CP-Commerce e-commerce website but closes the tab without checking out.
-*   **Operational Challenge**: Traditional systems treat this as lost, invisible traffic until the customer chooses to complete the checkout.
-*   **The BigLedger Solution**:
-    1.  The cart immediately synchronizes to the **Shopping Cart Applet** as a `DRAFT` document containing the customer's **Entity ID** and selected **Line Items**.
-    2.  A sales agent monitors the **Cart Listing** queue, filters by `DRAFT` status, and notices the customer has had items pending for 24 hours.
-    3.  The agent opens the draft, reviews the items, and contacts the customer directly (using contact details retrieved from the linked customer profile).
-    4.  The customer explains they abandoned the cart because they had questions about bulk shipping rates and item compatibility.
-    5.  The agent clarifies the technical details, offers a shipping discount by adjusting the pricing inline in the draft cart, and saves the changes.
-    6.  The customer approves, and the agent converts the cart to secure the sale.
-
-### Scenario 2: Assisted Storefront Checkout (Omnichannel Sales Support)
-
-*   **Context**: A customer is attempting to complete a purchase on your storefront app but encounters a card payment gateway error or cannot navigate the checkout screen.
-*   **Operational Challenge**: The customer is frustrated and may walk away from the purchase entirely.
-*   **The BigLedger Solution**:
-    1.  The customer calls the customer support hotline.
-    2.  The support agent asks for the customer's name, searches the **Cart Listing** in real time, and immediately locates the active storefront draft cart session.
-    3.  The agent confirms the items in the cart over the phone, verifying the customer's intent.
-    4.  To bypass the online payment issue, the customer asks to pay using a physical gift voucher they possess and pay the remainder in cash at the store.
-    5.  The agent enters the **VOUCHER** details under the **Payment** tab, reducing the outstanding balance, and clicks **SAVE**.
-    6.  When the customer visits the physical outlet, the cashier pulls up the saved draft cart, collects the cash, records the **CASH** payment, and clicks **Convert** to post the sale as an **Internal Receipt Voucher**.
-
-### Scenario 3: B2B Credit Verification and Custom Negotiation
-
-*   **Context**: A retail partner builds a large stock-replenishment order on the CP-Commerce website. The total order value exceeds their default checkout limits.
-*   **Operational Challenge**: The order is stalled, and the client wants to negotiate terms rather than reducing their order size.
-*   **The BigLedger Solution**:
-    1.  The draft cart is synced to the back-office queue.
-    2.  The credit controller opens the cart and goes to **Account Details > Entity Details** to review the customer's outstanding balance and credit parameters.
-    3.  The controller notices the customer's credit limit is indeed exceeded.
-    4.  The controller contacts the client and negotiates a partial advance: the client will transfer $2,000 immediately, and the remaining $3,000 will be charged to their account on 30-day terms.
-    5.  Once the client sends the $2,000 bank wire, the cashier adds a **BANK_TRANSFER** line for $2,000 under the **Payment** tab.
-    6.  The cashier clicks **FINAL** to lock the cart, which automatically posts a **Sales Order (SO)** for the remaining $3,000 balance in the system, routing it to the warehouse for fulfillment.
-
----
-
-## For Sales Agents and Cashiers
-
-This section is your guide to day-to-day transactions and point-of-sale checkout workflows.
-
-### My Carts - The Sales Listing
-
-This is your main dashboard showing all pending and completed transactions. It displays both manual cashier carts and draft orders synced from the **CP-Commerce Storefront**.
-
-{{< figure src="/images/shopping-cart-applet/shopping-cart-listing.png" alt="Shopping Cart Listing grid displaying document details" caption="Shopping Cart Listing: Search, filter, and select transactions from the central grid queue." >}}
-
-**What You Can Do:**
-- **Create a New Cart**: Click the **"+"** button to start a manual transaction.
-- **Search and Filter Carts**: Use the Advanced Search bar to filter by document number, branch, or customer name to locate storefront draft sessions.
-- **View or Edit**: Click on any row to open the details of that shopping cart.
-- **Toggle Column Layout**: Click the Column Toggle button to switch between single-column and double-column grid layouts.
-- **Bulk Finalise**: Select multiple draft carts and click **FINALISE** to lock them in bulk.
-
----
-
-### Creating and Editing Shopping Carts
-
-Opening a cart loads the main transaction workspace. The sections are organized as tabs (horizontal) or expansion panels (vertical).
-
-{{< figure src="/images/shopping-cart-applet/shopping-cart-create-main.png" alt="Shopping Cart Creation Main Details form layout" caption="Main Details: Configure transaction properties including branch, location, and sales agent." >}}
-
-### Workspace Control Buttons
-
-The top header bar contains operational actions to control the document state:
-
-| Button | Operational Action | Database and System Impact | Usage Rule |
-| :--- | :--- | :--- | :--- |
-| **RESET** | Discard current unsaved edits. | Reverts the form fields to the last saved database state. | Use when you want to clear unsaved modifications in the active session. |
-| **SAVE** | Commit changes as a draft. | Saves current header, account, line item, and payment data. The cart remains in `DRAFT` status (fully editable). | Use regularly while working on a cart to save progress. |
-| **FINAL** | Lock and post the cart. | Sets the posting status to `FINAL`. Automatically locks all edit capabilities and generates a **Sales Order (SO)** in the system. | Click only when the order is verified, fully paid, and ready to generate the Sales Order. |
-| **DELETE** | Permanently remove the cart. | Deletes the shopping cart from the database. (Requires clicking a second time to confirm: `CLICK AGAIN TO CONFIRM`). | Only available for `DRAFT` carts, and requires `SHOW_DOCUMENT_DELETE_BUTTON` to be active. |
-
----
-
-#### Main Details Tab/Panel
-
-Defines basic document metadata, responsible agents, and terms.
-
-| Field | Purpose | Required | Example |
-|-------|---------|----------|---------|
-| **Branch** | Select the operating branch. Auto-fills company code and currency. | Yes | `KL HQ Branch` |
-| **Location** | Select store or warehouse location. Auto-fills branch default location if configured. | Yes | `Retail Store A` |
-| **Sales Agent** | Salesperson responsible for the sale. | Yes | `Agent Sarah` |
-| **Currency** | Transaction currency. Auto-populated from the selected Branch settings. | Yes | `MYR`, `USD` |
-| **Credit Terms** | Payment term code. *Conditional* - Enabled and populated after selecting a Customer. | Yes | `30 Days` |
-| **Credit Limit** | Maximum credit allowance. *Conditional* - Enabled and populated after selecting a Customer. | Yes | `Limit USD 10,000` |
-| **Transaction Date** | Date of the transaction. Defaults to current date. | No | `2026-06-15` |
-| **Sales Lead** | Categorizes lead source. Selection: Corporate or Non-Corporate. | No | `Corporate` |
-| **Permit No** | Business permit reference number. | No | `PMT-9099-AA` |
-| **Tracking ID** | Courier or shipment tracking identifier. | No | `TRK-882910` |
-| **CRM Contact** | Secondary contact key for customer correspondence. | No | `Sarah Connor (Manager)` |
-| **Member Card** | Linked customer membership card. Clickable to open selection. | No | `MEM-55102` |
-| **Remarks** | Free-text comments. Includes character counter. | No | `Delivery requested by Friday afternoon.` |
-
-*Edit-Mode Read-Only Fields:*
-When viewing an existing cart, the header exposes read-only audit fields at the top:
-- **Doc Short Code**: The short identifier (e.g. `SC` for Shopping Cart).
-- **Tenant Doc No** (`tenantDocNo`): Primary server document identifier.
-- **Company Doc No** (`companyDocNo`): Company-specific reference.
-- **Branch Doc No** (`branchDocNo`): Branch-specific tracking number.
-
----
-
-#### Account Details Tab/Panel
-
-Holds customer profile selections and associated address details. It is divided into three nested sub-tabs:
-
-##### 1. Entity Details Sub-tab
-- **Entity ID** (Required): Click this field to open the Customer Selector Dialog.
-- **Customer Metadata** (Read-only): Displays the customer's name, type (Individual/Corporate), ID Number, GL Code, Email, Phone, and status once selected.
-
-##### 2. Bill To Sub-tab
-- **Billing Contact Info** (Editable): Enter the Billing Name, Email, and Phone Number.
-- **Billing Address Picker**: Click the address input to open the billing address selection dialog. Disabled until an Entity ID is selected.
-- **Address Details** (Read-only): Displays Address Line 1-5, City, State, Postcode, and Country once selected.
-
-##### 3. Ship To Sub-tab
-- **Recipient Contact Info** (Editable): Enter the Recipient Name, Email, and Phone Number.
-- **Shipping Address Picker**: Click the address input to open the shipping address selection dialog. Disabled until an Entity ID is selected.
-- **Address Details** (Read-only): Displays Address Line 1-5, City, State, Postcode, and Country once selected.
-
----
-
-#### Line Items Tab/Panel
-
-Handles itemized stock listings, quantities, tax computations, and pricing.
-
-{{< figure src="/images/shopping-cart-applet/shopping-cart-edit-lines.png" alt="Shopping Cart Line Items tab showing items grid and totals" caption="Line Items: View added items, check taxes, and adjust quantities using the delivery slider." >}}
-
-- **Totals Section**: Displays the **Total Txn Amount** and **Tax Amount** in the top right.
-- **Add Item Action**: Clicking the **"+"** button opens the Add Line Item Dialog (disabled if document status is `FINAL`).
-- **Grid Columns**:
-  - **Item Code / Item Name**: Stock identifier.
-  - **UOM**: Selected unit of measure.
-  - **Delivery**: Uses a slider component allowing agents to adjust the quantity base visually.
-  - **Qty**: Base numeric quantity.
-  - **Unit Price**: Standard item price (automatically calculated).
-  - **SST/VAT/GST**: Line item tax amount.
-  - **Txn Amount**: Total line item amount including taxes.
-
----
-
-#### Payment Tab/Panel
-
-Tracks payment settlements recorded against the cart.
-
-{{< figure src="/images/shopping-cart-applet/shopping-cart-edit-payment.png" alt="Shopping Cart Payment settlement listing and outstanding calculation" caption="Payment: Review logged settlements and track outstanding balances before finalizing." >}}
-
-- **Summary section**:
-  - **Total**: Displays total cash/payments logged.
-  - **Outstanding**: Calculated as `Total Line Item Debt - Total Payments`. Displays in red if there is a remaining balance.
-- **Grid Columns**:
-  - **Date**: Payment date (YYYY-MM-DD).
-  - **Amount**: Net payment amount.
-  - **Details**: Payment details (e.g. Credit Card brand, Cash account).
-  - **Remarks**: Payment remarks.
-- **Add Payment Action**: Clicking the **"+"** button opens the Add Payment Dialog (disabled once the Outstanding balance is `0.00`).
-
----
-
-### Converting Settled Carts to Receipt Vouchers
-
-When a customer settles their shopping cart, the system can convert the draft cart directly into a posted financial receipt. This is executed using the **Convert to Receipt Voucher** action in the workspace.
-
-#### How the Conversion Works
-
-Rather than keeping the shopping cart as a static document, the conversion flow moves the transaction directly into your financial ledger:
-
-1. **Extraction**: The system reads the header metadata and the payment lines recorded under the **Payment** tab.
-2. **Posting**: It generates a new, posted **Internal Receipt Voucher (IRV)**. This document contains all the payment settlement lines and represents the finalized sale in your accounts receivable/general ledger.
-3. **Deletion**: Upon successful creation of the Receipt Voucher, the system automatically deletes the original draft shopping cart to keep your intake queue clean and prevent double counting of inventory or revenue.
-
-#### Cashier Walkthrough: Convert a Cart
-
-1. Open the draft shopping cart.
-2. Go to the **Payment** tab and record the payment details (Cash, Card, Voucher, or Points) until the **Outstanding** balance displays as `0.00`.
-3. Select the **Convert** action tab or button in the workspace.
-4. Click **CONVERT**.
-5. The system will display a success toast `Shopping Cart Converted Successfully` and return you to the main listing. The original cart is now cleared from the listing, and the sale is recorded under the Receipt Voucher ledger.
-
----
-
-## Customer Selection and CRM Management
-
-When selecting a customer, the Customer Selection screen slides into view:
-
-- **Mode Slider Toggle**:
-  - **Select Mode**: Click any row in the customer list grid to choose that customer for the cart.
-  - **Create/Edit Mode**: Shows the **"+"** add button. Clicking a customer row in this mode opens the Customer Edit View.
-
----
-
-### Editing Customer Profiles
-
-When editing a customer record, a comprehensive multi-tab layout is displayed to configure profiles, categories, logins, payment configs, tax, addresses, contacts, branches, custom pricing, and credit limits.
-
-#### Main Tab
-
-Contains basic identity information.
-
-| Field | Purpose | Required | Example |
-|-------|---------|----------|---------|
-| **Customer Name** | Full name of the customer. | Yes | `Alice Johnson Ltd` |
-| **Customer Code** | Unique identifier for accounting. | Yes | `CUST-99081` |
-| **Status** | Account status. Selection: ACTIVE or INACTIVE. | Yes | `ACTIVE` |
-| **Type** | Account type. Selection: CORPORATE or INDIVIDUAL. | Yes | `CORPORATE` |
-| **Identity Type** | *Conditional* - Type of ID. Shows only if Type is INDIVIDUAL. | No | `IDENTITY CARD (IC)` |
-| **ID Number** | ID Card or Passport number. | No | `920112-14-5567` |
-| **Gender** | *Conditional* - Gender. Shows only if Type is INDIVIDUAL. | No | `FEMALE` |
-| **Tax ID** | Tax registration number. | No | `TX-9901-AA` |
-| **Currency** | Default currency for transactions. | Yes | `MYR` |
-| **Description** | Internal notes. | No | `VIP Wholesaler customer.` |
-| **AR / AP Type** | Accounts Receivable / Payable category. | No | `DEBTOR` |
-| **GL Code** | General Ledger account mapping. | Yes | `3000-Trade Debtors` |
-| **Phone** | Primary contact phone number. | No | `+6012-3456789` |
-| **Email** | Primary email address for notifications and statements. | Yes | `alice@johnsonltd.com` |
-
-*Read-Only Audit Fields:*
-- **Created By** / **Created Date**
-- **Modified By** / **Modified Date**
-
----
-
-#### Customer Category Tab
-
-Assigns custom categories to segment customers for reporting and discount rules.
-
-- **How to Add Category**: Click **"+ Add"**, select the category from the dropdown, and save.
-- **Fields**: Category Code, Category Name, Level Value.
-
----
-
-#### Login Tab
-
-Configures credentials for customer self-service portals.
-
-- **How to Create Login**: Click **"+ Add"**, enter the user's email, check **Verify Email** if required, select the role (OWNER, ADMIN, MANAGER, MEMBER, GUEST), and click **CREATE**.
-
----
-
-#### Payment Config Tab
-
-Maps preferred settlement accounts and payment terms.
-
-- **Fields**: Payment Type, Bank, Bank Identifier Code, Bank Acc. No., Bank Acc. Holder Name.
-
----
-
-#### Tax Tab
-
-Defines customer-specific tax configurations and tax registration numbers.
-
-- **Fields**: Tax Code, Tax Type, Tax Rate, Tax Option (Include Tax, Exclude Tax).
-
----
-
-#### Address Tab
-
-Maintains billing and shipping address databases.
-
-- **How to Create Address**: Click **"+ Add"**, select the country first, fill in Address Line 1-5, City, State, Postcode, and check **Set as default** or **Main Address** if applicable.
-
----
-
-#### Contact Tab
-
-Tracks client-side contact individuals, designations, and telephone extensions.
-
-- **Fields**: Contact Name, Designation/Position, Office No, Extension No, Mobile No, Fax No, User Email.
-
----
-
-#### Branch Tab
-
-Maps customer branch sub-entities to corporate parent accounts.
-
-- **Fields**: Branch Code, Branch Name, Location Name, default currency.
-
----
-
-#### Item Pricing Tab
-
-Overrides standard retail prices with custom contract pricing schemes for specific items.
-
-- **Fields**: Customer Item Code, Customer Item Name, Purchase Price, Sales Price.
-
----
-
-#### Credit Term and Limit Tab
-
-Contains nested sub-tabs to enforce transaction limits:
-
-##### A. Credit Term Sub-tab
-- Configure terms like Cash, 15 Days, 30 Days, 60 Days.
-- **Fields**: Credit Term Code, Credit Term Name, Day count (e.g. 30).
-
-##### B. Credit Limit Sub-tab
-- Set the maximum outstanding balance allowed.
-- **Fields**: Credit Limit Code, Credit Limit Name, Credit Limit Amount.
-
----
-
-## Line Item Selection and Configuration
-
-Clicking the **"+"** button on the Line Items tab opens the item search window.
-
-- **Search Item Tab**: Enter keywords to search the catalog, showing Item Code, Name, Stock Balance, and details. Selecting an item opens the Configuration screen.
-
----
-
-### Item Configuration Form
-
-Allows adjusting quantities, UOMs, and pricing schemes.
-
-> [!WARNING]
-> Many fields in this dialog are conditional and can be toggled on/off under Admin settings.
-
-| Field | Purpose | Required | Example |
-|-------|---------|----------|---------|
-| **Item Code** | Unique item code (Read-only). | Yes | `ITM-0012` |
-| **Item Name** | Display name of the item. | Yes | `Premium Engine Oil` |
-| **UOM** | Unit of measure selection. *Conditional* - Hidden if `HIDE_UNIT_PRICE_STD_PRICING_SCHEME` is enabled. | Yes | `Carton` |
-| **Pricing Scheme** | Custom pricing scheme. *Conditional* - Hidden if `HIDE_UNIT_PRICE_STD_PRICING_SCHEME` is enabled. | Yes | `Standard Wholesaler` |
-| **Quantity Base** | Quantity in base units. *Conditional* - Hidden if `HIDE_QTY_BASE` is enabled. | Yes | `10` |
-| **Quantity by UOM** | Quantity in selected UOM. *Conditional* - Hidden if `HIDE_QTY_UOM` is enabled. | Yes | `1` (1 Carton = 10 Bottles) |
-| **UOM to Base Ratio** | Conversion ratio (Read-only). *Conditional* - Hidden if `HIDE_UOM_TO_BASE_RATIO` is enabled. | Yes | `10.0` |
-| **Unit Price STD (Excl)** | Standard unit price excluding tax (Read-only). *Conditional* - Hidden if `HIDE_UNIT_PRICE_STD_EXCL_TAX` is enabled. | Yes | `120.00` |
-| **Unit Price STD (Incl)** | Standard unit price including tax (Read-only). *Conditional* - Hidden if `HIDE_UNIT_PRICE_STD_INCL_TAX` is enabled. | Yes | `127.20` |
-| **Unit Discount** | Discount per unit. *Conditional* - Hidden if `HIDE_UNIT_DISCOUNT` is enabled. | No | `5.00` |
-| **Tax Code** | Tax selector dropdown (SST/GST/VAT). *Conditional* - Hidden if `HIDE_TAX_CONFIG_SELECTION` is enabled. | Yes | `SST-6%` |
-| **Tax Rate** | Tax percentage (Read-only). | Yes | `6.0` |
-| **Tax Amount** | Calculated tax value (Read-only). | Yes | `6.90` |
-| **WHT Code** | Withholding tax selector dropdown. *Conditional* - Hidden if `HIDE_WHT_CONFIG_SELECTION` is enabled. | No | `WHT-3%` |
-| **WHT Rate** | Withholding tax percentage (Read-only). | Yes | `3.0` |
-| **WHT Amount** | Calculated Withholding tax value (Read-only). | Yes | `3.45` |
-| **Txn Amount** | Final line item transaction amount including taxes. *Conditional* - Hidden if `HIDE_AMOUNT_TXN` is enabled. | Yes | `123.75` |
-| **Remarks** | Remarks specific to this line item. | No | `Fragile packing required.` |
-
----
-
-## Add Payment and Settlement Methods
-
-Clicking the **"+"** button on the Payment tab opens the settlement dialog. You can select a payment method and fill in the corresponding fields:
-
-| Settlement Method | Required Fields | Method-Specific Inputs | Purpose / Notes |
-|-------------------|-----------------|------------------------|-----------------|
-| **CASH** | Date, Amount | None | Standard physical cash collection. |
-| **CASH_BACK** | Date, Amount | Cash Back | Records cash returned to customer; computes Net Paid. |
-| **CREDIT_CARD** | Date, Amount | Card Number, Name, Issuer, Card Type, Expiry, CVV | Standard merchant card processing info. |
-| **VOUCHER** | Amount | Voucher Number | Redeems pre-issued credit or gift vouchers. |
-| **BANK_TRANSFER** | Date, Amount | Transaction Number | Records direct online bank wire references. |
-| **MEMBERSHIP_POINT_CURRENCY** | Date, Amount | Points Select, Point Currency Value | Deducts membership loyalty points to settle balances. |
-| **CHEQUE** | Date, Amount | Cheque Number | Records bank cheque routing numbers. |
-
----
-
-## Configuration and Settings
-
-Admin configurations are accessible under settings paths:
-
-#### Default Selection
-
-| Parameter | Purpose | Configuration Path | Default Behavior |
-| :--- | :--- | :--- | :--- |
-| **Default Branch** | Sets the fallback operating branch for all new carts. | `Settings > Default Selection` | Auto-fills branch-specific company codes, currency, and tax rules. |
-| **Default Location** | Sets the fallback stock store or warehouse location. | `Settings > Default Selection` | Auto-populates the Location selector for lines and inventory. |
-
-#### Field Settings
-
-| Parameter | Purpose | Configuration Path | Default/Conditional Behavior |
-| :--- | :--- | :--- | :--- |
-| **Mandatory Reason Field** | Enforce input for document void/rejection actions. | `Settings > Field Settings` | Restricts cashiers from voiding or discarding carts without entering a reason. |
-
-#### Printables
-
-| Parameter | Purpose | Configuration Path | Default Behavior |
-| :--- | :--- | :--- | :--- |
-| **Layout Templates** | Manage printable templates (PDF) for cash bills and receipts. | `Settings > Printables` | Sets the default layout and formatting used when printing documents. |
-
-#### Webhooks
-
-| Parameter | Purpose | Configuration Path | Default Behavior |
-| :--- | :--- | :--- | :--- |
-| **Integration Webhooks** | Define URL endpoints to receive JSON transaction payloads. | `Settings > Webhook` | Triggers HTTP POST requests when shopping carts are created, saved, or finalized. |
-
-#### Feature Visibility
-
-| Toggle Parameter | Purpose | Configuration Path | Default/Conditional Behavior |
-| :--- | :--- | :--- | :--- |
-| **SHOW_DOCUMENT_DELETE_BUTTON** | Exposes the delete action for cart drafts. | `Settings > Feature Visibility` | Displays the **Delete** button at the bottom of active drafts. |
-| **HIDE_DOC_NO_TENANT** / **HIDE_DOC_NO_COMPANY** / **HIDE_DOC_NO_BRANCH** | Suppress system-level document number fields. | `Settings > Feature Visibility` | Hides specific internal tracking numbers from the header. |
-| **HIDE_QTY_BASE** / **HIDE_QTY_UOM** | Simplify quantity inputs in line items. | `Settings > Feature Visibility` | Hides base unit or UOM-specific quantity inputs in item configuration. |
-| **HIDE_UNIT_DISCOUNT** | Suppress discount inputs. | `Settings > Feature Visibility` | Hides the Unit Discount input in item settings and grids. |
-| **HIDE_TAX_CONFIG_SELECTION** | Prevent manual tax code overrides. | `Settings > Feature Visibility` | Hides the tax code dropdown, applying default tax rules automatically. |
-| **DISALLOW_SELL_BELOW_MIN_PRICE** | Enforce pricing floor controls. | `Settings > Feature Visibility` | Blocks saving or finalizing if a line item's price is set below the allowed minimum. |
-| **LOCK_PURCHASER_TO_CURRENT_USER** | Lock the responsible sales agent. | `Settings > Feature Visibility` | Disables the Sales Agent dropdown, locking it to the logged-in cashier. |
-
-#### Permissions Settings
-
-| Security Config | Purpose | Configuration Path | Default/Conditional Behavior |
-| :--- | :--- | :--- | :--- |
-| **Permission Set Listing** | Define and manage security permission sets. | `Settings > Permission Set Listing` | Enforces permissions rules for user groups. |
-| **User / Role Permissions** | Map security sets to specific personnel or roles. | `Settings > User/Team/Role Permissions` | Controls which departments can create, edit, finalize, or delete carts. |
-
----
-
-## Personalization
-
-Personal configurations reside under personalization paths:
-
-| Configuration Parameter | Purpose | Personalization Path | System Impact |
-| :--- | :--- | :--- | :--- |
-| **Default Branch / Location** | Set user-level branch and warehouse overrides. | `Personalization > Personal Default Selection` | Pre-populates fields on new carts, overriding the global applet defaults. |
-| **Default Toggle Column** | Choose layout width for listing grids. | `Personalization > Personal Default Selection` | Sets the grid list layout to single-column (`SINGLE`) or double-column (`DOUBLE`). |
-| **Default Tab Orientation** | Choose form navigation layout. | `Personalization > Personal Default Selection` | Toggles between horizontal tabs (`HORIZONTAL`) or vertical expansion panels (`VERTICAL`). |
-| **Sidebar Layout** | Customize user-specific sidebar links. | `Personalization > Sidebar` | Toggles showing or hiding menu links in the personal sidebar navigation. |
-
----
-
-## Audit
-
-#### Audit Trail (`Settings > Applet Log`)
-A comprehensive log of every action taken within the Shopping Cart Applet.
-
-**What You Can See:**
-- **Table Name**: Database table affected (e.g., `bl_fi_generic_doc_hdr`).
-- **Action**: CREATE, UPDATE, DELETE, FINALISE, VOID.
-- **Action Date**: Timestamp of the change.
-- **Description**: Detailed before/after values.
-- **Status**: Record status.
-
----
-
-## FAQ
-
-**Q: Can I edit a shopping cart once it is finalized?**  
-A: No. Clicking **FINAL** sets the posting status to `FINAL` and generates a **Sales Order (SO)**, locking the document from further edits, line additions, or deletions.
-
-**Q: What is the difference between finalizing a cart and converting it?**  
-A: Finalizing a cart (clicking **FINAL**) sets its status to `FINAL`, locks it as a read-only document, and generates a **Sales Order (SO)**. Converting a cart (under the **Convert** tab) creates a separate, posted **Internal Receipt Voucher (IRV)** to record the cash sale, and automatically deletes the original draft shopping cart to keep the active queue clean and prevent duplicate records.
-
-**Q: Can I delete a shopping cart?**  
-A: Yes, draft shopping carts can be deleted by clicking the **DELETE** button at the bottom of the workspace and then clicking **CLICK AGAIN TO CONFIRM** to prevent accidental loss. Note that this action is only available for drafts and requires the **SHOW_DOCUMENT_DELETE_BUTTON** parameter to be enabled in settings.
-
-**Q: Why are the Billing and Shipping address picker buttons disabled?**  
-A: Address pickers are disabled until you select an **Entity ID** in the Entity Details sub-tab. Addresses must be linked to a valid customer profile.
-
-**Q: How does the system compute outstanding balances?**  
-A: The outstanding balance is computed in real time as the total line items' net transaction amount minus the sum of all recorded payments under the Payment tab.
-
-**Q: Why does my screen show expansion panels instead of horizontal tabs?**  
-A: The applet uses a responsive design. If your screen width is 768px or smaller (mobile view), it automatically switches to vertical expansion panels. You can override this preference under `Personalization > Personal Default Selection > Default Tab Orientation`.
-
----
-
-## Glossary
-
-- **Entity ID**: The unique record locator for a customer or corporate account in the system.
-- **Posting Status**: The lifecycle state of a cart (`DRAFT` means editable; `FINAL` means committed/locked; `VOID` means canceled).
-- **Split Payment**: Recording multiple separate payments using different settlement methods against a single shopping cart order.
-- **Settlement Method**: The payment medium (Cash, Card, Points, Cheque, Bank Transfer, Voucher) used to resolve transaction debt.
-- **UOM (Unit of Measure)**: The standard unit packaging (e.g. Piece, Box, Carton) assigned to a line item.
+## Fields
+
+### Main Details
+
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Doc Short Code | `SHPCRT` | — | Read-only |
+| Doc No Tenant / Company / Branch | `server_doc_1..3` | — | Edit mode only; editable text inputs |
+| Branch | `guid_branch`; fills Company and Currency | Yes | Locked once FINAL |
+| Location | `guid_store` | Yes | Pre-filled from the branch `MAIN_LOCATION`; locked once FINAL |
+| Sales Agent | Employee entity, stored in `doc_entity_hdr_json.salesAgent` | Yes | Listing shows the agent name |
+| Currency | `doc_ccy` | Yes | From branch; locked once FINAL |
+| Credit Terms, Credit Limit | Copied from `doc_entity_hdr_json` | Marked required but disabled | Disabled controls do not block Save; display only |
+| Transaction Date | `date_txn` | No | Date picker; on SAVE the server's stored date is re-applied |
+| Sales Lead | Corporate / Non-Corporate | No | Defaults to Corporate |
+| Permit No, Tracking ID, CRM Contact | Header extensions | No | Free text |
+| Member Card | `member_guid` via the Select Member screen | No | Locked once FINAL |
+| Remarks | `doc_remarks` | No | Shown in the listing's Doc Remarks column |
+
+### Account
+
+| Sub-tab | Field | Required | Notes |
+|---|---|---|---|
+| Entity Details | Entity ID (opens Select Customer) | Yes | The only required Account field; Create is disabled until it is set |
+| Entity Details | Name, Type, ID Number, GL Code, Email, Phone, Status | — | Read-only, from the customer record |
+| Bill To | Name, Email, Phone; Address (opens Select Billing Address); Address Line 1–5, City, State, Postcode, Country | No | Address fields read-only; picker limited to the customer's addresses |
+| Ship To | Same as Bill To for the recipient | No | |
+
+### Line Items and Add / Edit Line Item
+
+Grid columns: Item Code, Item Name, UOM, Delivery (slider bound to `quantity_base`), Qty, Unit Price, SST/VAT/GST, Txn Amount; Total and Tax above the grid. The + button opens the item search (`txn_class = PNS`).
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Item Code / Item Name | From the selected item | — | Code read-only, name editable |
+| Pricing Scheme / UOM | Pricing-scheme UOM selector | — | Hidden by `HIDE_UNIT_PRICE_STD_PRICING_SCHEME` |
+| Unit Price STD (excl. / incl. tax), by UOM | Standard prices | — | Read-only; hidden by the matching `HIDE_*` |
+| Unit Discount, Unit Discount by UOM, Discount Amount | Discounts | No | Hidden by the matching `HIDE_*` |
+| Quantity, Quantity by UOM, UOM to Base Ratio | Quantities | — | Ratio read-only |
+| Unit Price Net / Txn, Std / Net / Txn Amount | Computed amounts | — | Read-only except where the template leaves them editable |
+| Tax Code, Tax %, Tax Amount | SST selector and computed values | — | Hidden together by `HIDE_TAX_CONFIG_SELECTION` |
+| WHT Code, WHT %, WHT Amount | Withholding tax | — | Hidden together by `HIDE_WHT_CONFIG_SELECTION` |
+| Remarks | `item_remarks` | No | |
+
+### Payment and Add Payment
+
+Grid columns: Date, Amount (`amount_net`), Details (`item_name` of the settlement method), Remarks. Total = sum of payment lines; Outstanding = line-item total − payments. Payment lines are saved as `bl_fi_generic_doc_line` rows with `txn_type = STL_MTHD` and `server_doc_type` `INTERNAL_RECEIPT_VOUCHER` (`INTERNAL_PAYMENT_VOUCHER` for `CASH_BACK`).
+
+| Settlement type | Required fields | Extra fields |
+|---|---|---|
+| `CASH` | Date, Amount (≥ 0.01) | — |
+| `CASH_BACK` | Date, Cash Back, Amount | Cash Back for Settlement (read-only) |
+| `CREDIT_CARD` | Date, Amount, Card No, Name on Card, Card Issuer (VISA / MASTERCARD), Year, Month, CVV | Card Type (Gold / Silver / Rebate Point) |
+| `VOUCHER` | Amount, Voucher No | — |
+| `BANK_TRANSFER` | Date, Amount, Transaction No | — |
+| `MEMBERSHIP_POINT_CURRENCY` | Date, Amount | Points selection, point currency value |
+| `CHEQUE` | Date, Amount | Cheque No |
+
+## Lifecycle and effects
+
+**Endpoints.** The applet uses `InternalShoppingCartsService` from blg-akaun-ts-lib, i.e. the generic document controller at `core2/tnt/dm/erp/gen-doc/internal-shopping-carts`: `POST` (Create), `PUT` (SAVE, after re-reading the server revision), `PUT …/update-posting-status/{guid}` (Final, bulk FINAL) and `DELETE …/{guid}` (DELETE). It does **not** use the ecom endpoint (`core2/tnt/dm/ecom/internal-shopping-carts`, `InternalShoppingCartController`), whose one-cart-per-entity rule (`SHOPPING_CART_ALREADY_EXIST`) and login-entity check apply only to the Customer Access applet.
+
+**Statuses.** `posting_status` empty (shown as `DRAFT`) → `FINAL`. FINAL is one-way; pressing Final on a FINAL cart shows the toast *This document has been posted* without calling the server. There is no VOID or DISCARD button (the backend `…/discard/backoffice-ep/{guid}` endpoint exists but is not called). DELETE is offered only on non-FINAL carts and only when `SHOW_DOCUMENT_DELETE_BUTTON` is on; the backend checks `TNT_API_DOC_INTERNAL_SHOPPING_CARTS_DELETE_TGT_GUID` and removes the header with its lines, links, extensions and events (`GenericDocumentUow.delete`) — it is not a DISCARD and the listing no longer shows the cart.
+
+**Posting proof block.**
+
+- Server document type: `INTERNAL_SHOPPING_CART` (`ServerDocTypes.INTERNAL_SHOPPING_CART(0,0)`, short code `SHPCRT`).
+- Amount signum: **0**; quantity signum: **0** (`ShoppingCartDataConsistencyObject`: `checkAmountSignum(container, ZERO)` on create and update, line signums filled 0/0). A header sent with a non-zero `amount_signum` is rejected by the DCO.
+- Dr/Cr equation: none. `JournalPostingTypeHandler.handlers` has no `INTERNAL_SHOPPING_CART` entry; the fallback in `JournalPostingService` maps the type to an empty sub-ledger list (its name contains neither `SALES` nor `PURCHASE`), and with zero-signum amounts the journal totals are 0/0, which ends the journal job with `NO_JOURNAL_CREATED` (`JournalPostingService`, the `totalDebit.signum() == 0 && totalCredit.signum() == 0` check). No `bl_fi_jrnl_*` rows.
+- GL precedence: not applicable.
+- Stock processor: none — quantity signum 0 means no `bl_inv_txn_line` rows and no cost update.
+- What VOID reverses: nothing; there is no VOID.
+
+**What FINAL does do.** `GenericDocumentService.updatePostingStatus` runs `validateGenericDocumentOnFinal` — no cart-specific rule, but the shared checks apply: serial / bin / batch quantity checks on lines that carry them, and `FISCAL_PERIOD_LOCKED` when `date_txn` falls in a company period locked with `LOCK_ALL` or `LOCK_TXN`. On success the cart is queued to `GenericDocumentPrimaryProcessor`, whose subscribers (filtered by the company's `posting_final_json` include/exclude list) include `GenericDocLineOpenQueueProcessor`: with an enabled `INTERNAL_SHOPPING_CART` → `INTERNAL_SALES_ORDER` line-flow row it writes open-queue rows, which the Sales Order v2 applet queries with `line_open_queue_server_doc_type_1 = INTERNAL_SHOPPING_CART` and `…_2 = INTERNAL_SALES_ORDER`. Webhook `…_CREATED` / `…_MINIMALLY_CREATED` events and message-template events are queued as for every generic document; the custom-processing filter processor runs asynchronously afterwards.
+
+**Convert and Print.** `convertShoppingCart$` builds an `INTERNAL_RECEIPT_VOUCHER` (`amount_signum = -1`) from the cart's payment lines, posts it and then deletes the cart — but the Convert tab and the Export tab are commented out of the View template, and the print effect is commented out, so neither can be triggered from the UI. Storefront carts are converted to Sales Orders by the backend (`CpCommerceShoppingCartService.convertShoppingCartToSalesOrder`, after `verifyCartLineIntegrityAtCheckout`), not by this applet.
+
+## Related applets
+
+- [Shopping Cart Customer Access (Internal)](/applets/ecommerce/internal-shopping-cart-customer-access-applet/) — the customer-facing twin: same document type, ecom endpoint with one cart per customer entity; staff review those carts here.
+- [CP Commerce Admin](/applets/ecommerce/cp-commerce-admin-applet/) — storefront checkouts and point purchases create carts of this type; the website's `line_integrity_config` decides whether lines carry an HMAC token.
+- [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/) — the only document that consumes a FINAL cart (Search Shopping Cart / Shopping Cart knock-off, v2 applet).
+- [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) — the payment lines are shaped as receipt-voucher lines; the cart-to-RV conversion exists in code without a button.
+- [Customer Maintenance](/applets/master-data/customer-maintenance-applet/) — customer, addresses, credit terms and limits; the embedded customer editor here writes the same records.
+- [Cashbook](/applets/master-data/cashbook-applet/) — settlement methods offered by Add Payment.
+- [Organisation](/applets/master-data/organisation-applet/) — branch main location, and the Knock Off Configuration row that connects carts to sales orders.
+- [Tax Configuration](/applets/master-data/tax-configuration-applet/) and [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — tax codes and the `PNS` items offered by the item search.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| The Sales Order applet's "Search Shopping Cart" tab shows nothing, or the "Shopping Cart" knock-off panel is missing | The cart is not FINAL, or the company has no enabled `INTERNAL_SHOPPING_CART` → `INTERNAL_SALES_ORDER` `LINE` row in Knock Off Configuration (the panel is shown only when that row is enabled; open-queue rows are written only through it) | FINAL the cart; add / enable the row in Organisation › Company › Knock Off Configuration, then re-FINAL a fresh cart (existing FINAL carts get no queue rows retroactively) |
+| No DELETE button on a cart | `SHOW_DOCUMENT_DELETE_BUTTON` is off, or the cart is FINAL | Turn the setting on in Application Settings; FINAL carts cannot be deleted from the UI |
+| Final shows *This document has been posted* | The cart is already FINAL; the client refuses a second FINAL | Nothing to do; there is no un-FINAL |
+| Final fails with `FISCAL_PERIOD_LOCKED` | `date_txn` falls in a company fiscal period locked with `LOCK_ALL` / `LOCK_TXN` (`validateGenericDocumentOnFinal`) | Change the transaction date on the Main Details tab and SAVE, or unlock the period |
+| A price, discount or tax field is missing from Add / Edit Line Item | The matching `HIDE_*` setting is on and the login lacks the `SHOW_*` client-side permission | Turn the setting off, or grant the `SHOW_*` permission to the role |
+| Default Branch / Location saved in Default Selection never appear on a new cart | The cart form does not read `DEFAULT_BRANCH` / `DEFAULT_LOCATION`; the Default Selection screen also displays personal values rather than master values | Select Branch and Location on every cart; treat the Default Selection screen as inert |
+| Storefront checkout fails with `CLIENT_CART_LINE_INTEGRITY_HASH_MISMATCH` after a staff edit | Line integrity is enabled for the website; back-office edits from this applet use the plain `PUT gen-doc/internal-shopping-carts`, which does not re-stamp lines, so the storefront's `verifyForCheckout` sees a token that no longer matches the price | Have the customer re-add the line from the storefront (new lines are stamped), or disable `line_integrity_config` for that website |
+| Storefront checkout fails with `CLIENT_CART_LINE_INTEGRITY_HASH_MISSING` | Line integrity was enabled after the cart's lines were created | Same as above |
+| A customer's cart created from the storefront or Customer Access applet fails with `SHOPPING_CART_ALREADY_EXIST` | The ecom endpoint allows one non-deleted cart per customer entity | Delete or FINAL the existing cart here, then retry |
+| Nothing prints; no Convert action | The Export and Convert tabs are commented out and the print effect is disabled; the Printables screen targets the Sales Quotation extension code | Print from the Sales Order once the cart is knocked off; treat Printables as inert |
+| Keyword search returns unrelated carts | The keyword is matched separately against carts, branch names and customer names and the results are unioned | Use the Customer Name / Branch fields of the advanced search instead |
+| Listing is slow with many carts | Each of the first 50 rows triggers three extra reads (branch, agent, customer) | Known cost of the client-side listing; narrow with the advanced search |
+
+The applet repository's only issue is the Angular 14 migration (gh:bigledger/blg-applet-wavelet-internal-shopping-cart-applet#1); the shared task tracker holds repo-hygiene items (sub-query removal, node_modules clean-up) and a meeting note on restricting CP Commerce checkout and payment, none of which describes a user-facing failure.
+
+## Related documentation
+
+- [E-Commerce module](/modules-v2/ecommerce/) — where the cart sits between storefront and sales order.
+- [Shopping Cart Customer Access (Internal)](/applets/ecommerce/internal-shopping-cart-customer-access-applet/) — the customer-side applet.
+- [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/) — knocking a FINAL cart off into an order.
