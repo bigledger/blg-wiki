@@ -75,5 +75,13 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
     is read from `bl_applet_ext` by `StockTakeSessionHdrService` and throws "Applet Settings Not
     Found!" if Field Settings were never saved. The "consumed" proof must include a Java-side grep
     for `getValue_json().containsKey(`.
-16. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+16. **Exceptions to the GL precedence** (lane 3, run 12): `JournalPostingService` treats
+    `INTERNAL_PURCHASE_GRN_STOCK_IN` like the consignment stock-in types (`isConsignmentStockIn`) —
+    the line GL code is ignored (header → item-company link → company default) and the supplier's
+    AR/AP type is overridden. Check which branch a doc type takes before writing precedence.
+17. **Stock location precedence** (every stock-moving page): line `delivery_location_guid` → line
+    `guid_store` → header `guid_store` → branch default (`InventoryTransactionLineFactory`).
+18. **`SHOW_*`-named applet settings are opt-in** (`isShowColumn` shows only if setting OR permission is
+    true) — do not list them as hide toggles.
+19. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.

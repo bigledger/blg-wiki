@@ -142,6 +142,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 - **F-0142** Inbound Delivery Order: register or archive? · **F-0143** stock-requisition approval settings not enforced — keep "not enforced" wording?
 - **F-0144** Purchase GIN 0/0 intended? Stock Out applet planned? · **F-0145** GIN dead settings/perm seeds — tickets?
 - **F-0147** delete the stock-take intro page + alias? · **F-0148** module pages claim stock-take variance posting that does not exist — correct or planned feature?
+- **F-0150** GRN Stock In: intercompany Search creates a non-stock GRN; line GL ignored — intended?
 - **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
   Voucher applet?; **F-0042** resolved (three distinct applets; see F-0099).
 

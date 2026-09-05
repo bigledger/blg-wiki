@@ -582,3 +582,12 @@ with the analysis, the changes made, and the commit hash.
 ### product (stock take)
 - [ ] F-0149 (2026-09-05) Saving a session CLOSED without ever saving Field Settings throws "Applet Settings Not Found!" AFTER the status commits; status_variance at close evaluates only the first row; CLOSED and report generation enforced client-side only; the generate endpoint is anonymous; date_start/date_end stamped by the web applet, not the server. Tickets?
 
+## From Lane 3 run 12 (2026-09-05)
+
+### product / registry (GRN stock in)
+- [ ] F-0150 (2026-09-05) The intercompany "Search" tab in GRN Stock In creates a plain 0/0 GRN (IntercompanyController hard-codes the type) — intercompany receipts through it never move stock. Backend change or hide the tab? Line GL codes are silently ignored on GRN Stock In journals (isConsignmentStockIn branch) — intended? then the Lines tab should not offer a GL code. Shared screen gates the attachment toggle on a misspelt code (internalPurchaseGRNStcokInApplet). documentation_url points at the supplier-access page. 14 checked SHOW_* codes unseeded (joins F-0044 family).
+- [x] F-0151 (2026-09-05) One infographic + one screenshot quarantined.
+
+### /applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/ (next, fact)
+- [ ] F-0152 (2026-09-05) Current page describes PI No Stock In as "non-inventory expenses — services, overheads"; wrong premise — it is the invoice leg of the GRN Stock In pair. Lane 3's next rewrite replaces it; guides that repeat the "services/overheads" framing must be corrected.
+
