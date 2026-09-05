@@ -1027,3 +1027,82 @@ The old page had no images and none were added (the page is an index; the applet
 - Method (METHOD.md candidate): **for "related applets" hubs, the invention-free evidence is (a) the DCO `correctQuantitySignum` / `correctAmountSignum` constants across the whole directory — not the `ServerDocTypes` enum, which lacks a third of the stock-moving types — (b) the queue codes of the job processors that write the table, and (c) a bounded `git grep` per applet repo for the read endpoints.** A page built from those three lists cannot repeat the old page's mistake of listing zero-signum documents as stock movers.
 - kb/topics: created `stock-balance.md` (the topic slug that six existing topics already point to via `related:`), not `related-applets-stock-balance.md`; the stock-balance-applet page (next) extends the same topic.
 - `kb/tools/gates.py` and `applet-scan.sh` were not applicable (no shared FieldConfigurationComponent on an index page; the Stock Balance applet has an empty settings menu) — recorded here rather than as "0 toggles". Plain-grep second pass done for every `qty_*` column and every queue code.
+
+---
+
+# Run 20 — 2026-09-05 — master-data/shipping-pricebook-applet.md
+
+## Pages completed (run 20)
+
+- `content/en/applets/master-data/shipping-pricebook-applet.md` — rewritten to the standard. Registry `ShippingPricebookApplet` "Shipping Pricebook" (TNT-USER, ACTIVE, 2021-07-29; `documentation_url` = this page). Title changed from "Shipping Pricebook Applet" to "Shipping Pricebook"; `page_type: applet`; `applet_code`, `applet_repo`, `modules: [ecommerce, core]`, `related_applets` (8), `guides`, per-section `sources:`; `weight` 150 and tags kept; no BOM (file had none). Old marketing body (Golden Triangle, Quick Start, FAQ, infographic) replaced by Overview · Where it fits · Screens and menus · Configuration · Fields (Pricebook create / edit, Priceset create, Rules tabs, Treatment tab) · Lifecycle and effects (what the applet writes, backend validation, no posting, the six-step storefront evaluation, rule-coverage table) · Related applets · Troubleshooting (12 rows) · Related documentation. Sources: applet 7894b78 (2026-09-02), storefront wavelet-cp-commerce 247243251 (2026-09-03), CP Commerce Admin 813f007c8, backend 20fbeede40, ts-lib 7d1616a9e, shared-utilities a8c38a2. Topic `kb/topics/shipping-pricebook-applet.md` created.
+
+## Registry / naming mismatches (run 20)
+
+- None. One registry row, one repo, one page.
+
+## Direction / fact reversals found (run 20)
+
+- Old page: "Multiple pricebooks can coexist, with the system intelligently selecting the most relevant one" and a Priority explanation where "Priority 1 overrides Priority 100" is presented as a tie-breaker among matching rules. Actual: the shopper picks **one** price book at checkout (or the website default); within it the storefront walks price sets by `priority_line` **ascending** and takes the **first** whose Doc Hdr and Multi Line rules pass. Lower number = evaluated first, which is consistent with the old page's example but not with "the system selects the most relevant pricebook".
+- Old page: Single-Line rules "apply individually to each specific item … a single order can generate multiple fee entries". Actual: `ShippingManager` never calls `evaluateSingleLineHdrRules`; the Single Line tab is stored but ignored, and there is exactly one fee line per cart.
+- Old page: "Valid Date Range: trigger specific rates only during promotional periods". Actual: the storefront maps the rule to a node with null start/end dates — it always passes (Negation Enabled → never passes).
+- Old page: Delivery Region "supports three levels of geographic granularity (State, Postcode, Zone)". Actual: only the shipping address **state** is compared (case-insensitive) with the selected regions' State.
+- Old page: each of the three fees uses its own Price Source; "Pricing Scheme — complex weight-based logic reading from a dynamic Tier Scheme"; "Price Unit Cost — the cost price of the item (what you paid the supplier)". Actual: all three operators are applied to the aggregate of the **Standard Shipping Fee** price source; `pricing_scheme` reads a field that does not exist on the cart line; `price_unit_cost` maps to `unit_price_std` (the selling unit price), not a supplier cost.
+- Old page FAQ: "If two pricesets have the same priority the system selects the first one created". Actual: ties keep API (created-date ascending) order — coincidentally the same outcome, but the mechanism is the mapper's `originalIndex`, not a rule.
+- Old page FAQ: "Shipping fees inherit the tax settings from the G/L Account and Financial Item they are mapped to in the Finance module" — kept in substance: the fee is a line of the website's shipping-fee SERVICE item and posts by that item's configuration; there is no mapping inside this applet.
+- Old page "Applet Integration & Permissions": webhooks "push shipping fee calculations to external 3PL systems in real time", "Field Settings: customise the mandatory/optional status of form fields". Actual: the Webhook screen is the generic shared one (events are applet-level audit rows `PRICE_BOOK_UPDATED` etc.), and Field Settings is an unbound stub. Removed.
+- Old page "Distance-Based Support: calculate fees based on warehouse-to-destination distance" — no such feature anywhere in the applet or storefront. Removed.
+
+## Findings for the product team (run 20)
+
+- **No working applet setting.** `FieldConfigurationComponent` in this applet is a static template (8 `mat-slide-toggle`s without `formControl`, SAVE without a handler). `DefaultSettingsComponent` (Settings) and `PersonalDefaultSettingsComponent` (Personalization) both write into `this.appletContainer`, which is never assigned: no `appletSettings$` subscription, and the shared `<app-settings>` host neither binds the input nor listens to `save` (`SettingsComponent.onSaveDefault` is commented out). Changing Branch/Location throws a TypeError in the console. Compare the Pricebook applet, whose Default Selection subscribes to `SessionSelectors.selectMasterSettings` and works.
+- **Applet Status is an extension, storefront filters the column.** The applet stores Active/Inactive as `bl_fi_mst_shipping_price_book_ext` `PRICE_BOOK_STATUS` and never touches `hdr.status`; the storefront asks the website endpoint for `status = ACTIVE` (header column) and never reads the extension. An Inactive price book is still offered as a shipping method. (Same shape as the Pricebook finding in run 18, different consumer.)
+- **Storefront evaluation diverges from the applet UI in five ways** (wavelet-cp-commerce 247243251): Single Line rules never evaluated; Valid Date Range always true (rule mapped to `RuleRelDateTimeNode` with `start_date`/`end_date` null and an `issue_date` the applet never writes); Delivery Region compares state only; `FIRST_MATCH` / Calculation Logic read but every value behaves as sequential (`calculationLogicAlgorithm` returns `[0]`); Handling Fee and Fuel Surcharge ignore their own `price_source` and reuse the Standard Shipping Fee aggregate. The applet still offers `POINTS_REWARD_*` / `POINTS_REDEEM_*` calculation-logic options that are meaningless for shipping.
+- **`PRICE_BOOK_CREATED` audit event is never written**: `createPricebook$` builds `this.pricebookService.post(...).pipe(map(post event))` inside a `map` and never subscribes; the actual POST is the later `mergeMap`. Update/delete/price set events are written.
+- **No code-uniqueness validation** in `ShippingPriceBookDataConsistencyObject` (the Pricebook DCO has `PRICEBOOK_HDR_OBJECT_CODE_ALREADY_EXIST`); two shipping price books with the same code can coexist.
+- **Dead backend family**: `bl_fi_mst_shipping_price_book_rule_hdr/_line/_ext`, their DCOs, Uows and controllers exist; no applet, storefront or CP Commerce Admin code references them (bounded grep across refs/).
+- **Anonymous read endpoint**: `shipping-pricebooks/website-ep/{websiteHdrGuid}/query` is an `AnonymousTenantEndpoint` that only checks the website guid exists — every price book of the tenant (all rules, all member-class guids) is readable without login given a website guid. Probably intended (the storefront is anonymous before login) but worth a look.
+- **Price Source = Pricing Scheme is unusable at checkout** (`Number(genDoc.pricing_scheme)` on a generic doc line → NaN/0); the Treatment tab still offers it and loads the scheme list.
+- **Second UI for the same data**: the storefront's Website Builder has a Shipping Management screen (gh:bigledger/wavelet-cp-commerce#190) that creates/updates shipping price books through the same service and extension — it sets `PRICE_BOOK_STATUS`, name, icon and description but has no rule/treatment editing. Not documented anywhere on the wiki.
+- **Empty item rule kills the price set**: documented in the storefront mapper as a deliberate known gap ("dropping such rules would re-enable pricesets that are currently dead … going from shipping is free to shipping is charged"). Users must delete empty rules in the applet.
+
+## Cross-lane link requests (run 20)
+
+- `content/en/applets/ecommerce/cp-commerce-admin-applet.md` (lane 2): add `shipping-pricebook-applet` is already in its `related_applets` — fine. Its *Shipping Fee Options* row (L204) should say the *Shipping Pricebook* option is evaluated client-side by the storefront (sequential match on Doc Hdr + Multi Line rules) and link `/applets/master-data/shipping-pricebook-applet/#lifecycle-and-effects`; its Troubleshooting row "Shipping options do not appear at checkout" (L1084) should add "no *Item Code for Shipping Fee* → the storefront adds no line and shows RM 0.00" and "an Inactive shipping price book is still offered (Status is an extension)".
+- `content/en/applets/ecommerce/shopping-cart-applet.md` (lane 2): `related_applets` += `shipping-pricebook-applet`; state that the shipping fee on a DRAFT cart is a quantity-1 line of the website's shipping-fee SERVICE item, computed by the storefront from the selected shipping price book and re-discountable by coupons (free-shipping label).
+- `content/en/applets/ecommerce/website-builder/_index.md` or a new page (lane 2): document the Website Builder → Shipping Management screen (gh:bigledger/wavelet-cp-commerce#190, #148) as a second editor of shipping price books (header fields and status only).
+- `content/en/applets/master-data/doc-item-maintenance-applet.md` (lane 4, own, next touch): `related_applets` += `shipping-pricebook-applet`; note that item weight / width / length / height feed the shipping weight and volumetric bands, and that the shipping-fee item must be `txn_type` SERVICE.
+- `content/en/applets/master-data/organisation-applet.md`, `membership-admin-applet.md` (lane 4 own / membership lane): back-link `shipping-pricebook-applet` in `related_applets` (Company / Branch rules; member class / label rules).
+- `content/en/applets/master-data/customer-maintenance-applet.md` (lane 4, own): back-link; Entity Type rules match the cart entity's types.
+- `content/en/applets/sales-workflow/internal-sales-order-applet.md` (lane 1): back-link; a cart converted from the storefront carries the shipping fee as a service line — nothing in the SO applet recomputes it.
+- `content/en/applets/master-data/pricebook-applet.md` (lane 4, own): already links here; on next touch add one sentence that the Shipping Pricebook's consumer is the storefront only (no POS / SI / SO / OCR evaluation).
+- `content/en/modules-v2/core/_index.md` L86 and `content/en/applets/_index.md` L86 (module owner): link text "Shipping Pricebook Applet" → "Shipping Pricebook"; description "Define shipping and delivery rate cards" is fine, "Automated shipping fee calculations" should say "for the CP Commerce storefront".
+
+## Screenshots with personal data (run 20)
+
+Dropped from the page (references removed; files to quarantine):
+- `static/images/shipping-pricebook-applet/shipping-pricebook-applet-pricebook-listing.png` — sidebar shows a real tenant code (customer staging tenant) and a listing row whose name may be a person's given name.
+- `static/images/shipping-pricebook-applet/shipping-pricebook-applet-pricebook-create.png` — same listing rows visible in the left column.
+- `static/images/shipping-pricebook-applet/shipping-pricebook-applet-pricebook-edit-details.png` — same listing rows visible in the left column.
+- `static/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-listing.png` — sidebar shows the same real tenant code.
+- `static/images/shipping-pricebook-applet/shipping-pricebook-applet-overview-infographic.png` — AI marketing infographic, does not show the product (same decision as the Pricebook page, run 18).
+
+Kept (7): `pricebook-edit-add-priceset`, `priceset-add`, `priceset-edit-details`, `priceset-edit-rules-doc-hdr`, `priceset-edit-rules-multi-line`, `priceset-edit-rules-single-line`, `priceset-edit-treatment` — test data only (TESTING / PRICEBOOK-1 / TESTING-SET-2), no tenant code, Created By / Modified By blank.
+
+"Login e-mail only" captures: none (every Created By / Modified By field in the kept and dropped captures is blank).
+
+Recapture wanted from a GadgetSphere-seeded tenant: Shipping Pricebook Listing, Create Shipping Pricebook, Shipping Pricebook Edit › Details (shows Calculation Logic), Shipping Priceset Listing, one Add Rule form each for Delivery Region (grid Code · Delivery Region · State · Country) and Item (Min Quantity / Min Amount / weight bands), and the storefront checkout "Shipping method" block with the fee line.
+
+## Questions for Vincent (run 20)
+
+1. The five storefront divergences (single-line ignored, date range always true, region = state only, calculation logic ignored, handling/fuel reuse the shipping aggregate) are documented on the page as behaviour. File them as issues against `wavelet-cp-commerce`, or leave as documentation only?
+2. Should the applet's Status also set `hdr.status` (so Inactive books stop appearing at checkout)? If yes this is a one-line applet change plus a storefront-side no-op; if no, the page's advice ("delete instead of deactivate") stands.
+3. The applet's Settings › Field Settings and Default Selection are dead. Hide the Settings menu entries, or fix the wiring (Pricebook applet has the working pattern)?
+4. Website Builder › Shipping Management (storefront repo) is a second editor for this master data — who documents it (lane 2 ecommerce, or a section on this page)?
+
+## Notes (run 20)
+
+- Pace: ~95 minutes. Time went into the consumer trace (three repos: storefront, CP Commerce Admin, backend) because the applet itself has no evaluation logic; the four-proof census was short (no working settings).
+- Method (METHOD.md candidate, extends §21): **when the consumer is a storefront rather than a back-office applet, the "consumed" proof lives in `wavelet-cp-commerce` (`src/app/models/**-manager.ts`, `utils/mappers/**`, `models/rule-conditional-nodes/**`)** — and it is anonymous-endpoint driven (`*/website-ep/{websiteHdrGuid}/*`), so permission sections must say the storefront needs none of the tenant permissions.
+- Method: the Pricebook (run 18) and Shipping Pricebook applets share the copy-pasted settings scaffolding; whether Default Selection works depends only on whether the component subscribes to `selectMasterSettings`. Check that one line before documenting any `DEFAULT_*` key in this applet family.
+- `gates.py` / `applet-scan.sh` not applicable (shared `FieldConfigurationComponent` not routed); plain-grep second pass done for `DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `APPLET_SETTINGS`, `FIRST_MATCH`, `PRICE_BOOK_STATUS`, every treatment key and every rule key.
+- Customer-specific repos that also contain shipping-price-book code (four storefront forks and two platform forks found by the bounded grep) were not opened; the org-wide `wavelet-cp-commerce` is the canonical storefront and is cited by name.

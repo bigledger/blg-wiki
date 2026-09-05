@@ -1,6 +1,87 @@
 ---
-title: "Shipping Pricebook Applet"
-description: "Comprehensive shipping fee engine for managing complex delivery costs, handling charges, and fuel surcharges with granular rule-based logic."
+title: "Shipping Pricebook"
+description: "Reference for the Shipping Pricebook applet, used by e-commerce and logistics administrators to define shipping price books and their price sets (who, where and which items, plus Standard Shipping Fee, Handling Fee and Fuel Surcharge treatments) that the CP Commerce storefront evaluates at checkout."
+applet_code: "ShippingPricebookApplet"
+page_type: applet
+applet_repo: "blg-applet-wavelet-shipping-pricebook-applet"
+modules: [ecommerce, core]
+related_applets: [pricebook-applet, cp-commerce-admin-applet, shopping-cart-applet, doc-item-maintenance-applet, organisation-applet, membership-admin-applet, customer-maintenance-applet, internal-sales-order-applet]
+guides: [/guides/roles/ecommerce-specialist/]
+sources:
+  configuration:
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/models/pricebook-models/pricebook-constants.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/settings-container/settings-container.component.html
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/settings-container/field-configuration/field-configuration.component.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-shared-utilities/modules/settings/settings.component.html
+    - blg-shared-utilities/modules/settings/settings.component.ts
+    - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/components/website-container/website-edit/website-edit.component.html
+    - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/components/website-container/website-edit/website-edit.component.ts
+    - blg-applets-wavelet-cp-commerce/micro-fe/projects/akaun-platform/applets/cp-commerce-admin-applet/src/app/models/shipping-fee-constants.ts
+    - wavelet-cp-commerce/src/app/state-controllers/pricebook-store/selectors/pricebook.selector.ts
+    - wavelet-cp-commerce/src/app/state-controllers/pricebook-store/states/pricebook.state.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/TntErpPermissions.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/shippingPriceBook/ShippingPriceBookPackageController.java
+  fields:
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/models/options.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/pricebook-container/pricebook-create/pricebook-create.component.html
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/pricebook-container/pricebook-create/pricebook-create.component.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/pricebook-container/pricebook-edit/pricebook-edit.component.html
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/pricebook-container/pricebook-edit/pricebook-edit.component.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/pricebook-container/pricebook-listing/pricebook-listing.component.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/pricebook-container/pricebook-create-priceset/pricebook-create-priceset.component.html
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/pricebook-container/pricebook-edit-priceset/pricebook-edit-priceset.component.html
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/priceset-listing/priceset-listing.component.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/priceset-create/priceset-create.component.html
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/priceset-create/priceset-create.component.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/priceset-edit/priceset-edit.component.html
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/priceset-edit/priceset-edit.component.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/rule-add-priceset/rule-add-priceset.component.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/rule-add-priceset/rule-add-priceset.component.html
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/rule-add-priceset/redemption-validity-rule/redemption-validity-add.component.html
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/rule-add-priceset/redemption-validity-rule/redemption-validity-add.component.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/rule-add-priceset/entity-type-rule/entity-type-add.component.html
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/rule-add-priceset/delivery-region-rule/delivery-region-rule-listing/delivery-region-rule-listing.component.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/rule-add-priceset/item-rule/item-rule-listing/item-rule-listing.component.html
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/rule-add-priceset/item-rule/item-rule-listing/item-rule-listing.component.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/components/priceset-container/rule-add-priceset/item-rule/regex-add/regex-add.component.html
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/bl_fi_mst_shipping_price_book_hdr.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/bl_fi_mst_shipping_price_book_line.java
+  lifecycle:
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/state-controllers/pricebook-controller/store/effects/pricebook.effect.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/state-controllers/priceset-controller/store/effects/priceset.effect.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/shipping-price-book-services/shipping-price-book.service.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/shippingPriceBook/ShippingPriceBookPackageController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/shippingPriceBook/ShippingPriceBookPackageService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/ShippingPriceBookDataConsistencyObjects/ShippingPriceBookDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/shippingPriceBooksUow/ShippingPriceBookUow.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/ddd/DbTableDao.java
+    - wavelet-cp-commerce/src/app/state-controllers/pricebook-store/effects/pricebook.effects.ts
+    - wavelet-cp-commerce/src/app/components/checkout-step-v2/checkout-step-shipping/checkout-step-shipping.page.html
+    - wavelet-cp-commerce/src/app/state-controllers/shopping-cart-store/effects/shopping-cart.effects.ts
+    - wavelet-cp-commerce/src/app/models/shipping-models/shipping-manager.ts
+    - wavelet-cp-commerce/src/app/models/shipping-models/shipping-pricebook.model.ts
+    - wavelet-cp-commerce/src/app/utils/mappers/shipping-pricebook-mappers/shipping-pricebook.mappers.ts
+    - wavelet-cp-commerce/src/app/models/pricebook-discount-models/pricebook-discount-priceset.model.ts
+    - wavelet-cp-commerce/src/app/models/rule-conditional-nodes/rule-generic.node.ts
+    - wavelet-cp-commerce/src/app/models/rule-conditional-nodes/rule-delivery-region.node.ts
+    - wavelet-cp-commerce/src/app/models/rule-conditional-nodes/rule-item-dimensions.node.ts
+    - wavelet-cp-commerce/src/app/models/rule-conditional-nodes/rule-abs-datetime.node.ts
+    - wavelet-cp-commerce/src/app/models/rule-conditional-nodes/rule-rel-datetime.node.ts
+  troubleshooting:
+    - wavelet-cp-commerce/src/app/models/shipping-models/shipping-manager.ts
+    - wavelet-cp-commerce/src/app/utils/mappers/shipping-pricebook-mappers/shipping-pricebook.mappers.ts
+    - wavelet-cp-commerce/src/app/models/rule-conditional-nodes/rule-abs-datetime.node.ts
+    - wavelet-cp-commerce/src/app/models/rule-conditional-nodes/rule-delivery-region.node.ts
+    - blg-applet-wavelet-shipping-pricebook-applet/micro-fe/projects/wavelet-erp/applets/shipping-pricebook-applet/src/app/state-controllers/priceset-controller/store/effects/priceset.effect.ts
+    - gh:bigledger/wavelet-cp-commerce#57
+    - gh:bigledger/wavelet-cp-commerce#67
+    - gh:bigledger/blg-applet-wavelet-shipping-pricebook-applet#1
 tags:
 - shipping-management
 - logistics-controls
@@ -10,484 +91,218 @@ tags:
 weight: 150
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Shipping Pricebook Applet** is a sophisticated logistics engine designed to automate and standardize the calculation of shipping-related fees. In a modern trading or e-commerce environment, shipping costs are rarely static; they fluctuate based on delivery regions, item characteristics, customer profiles, and service levels.
+The **Shipping Pricebook** applet is where an e-commerce or logistics administrator defines conditional shipping charges: a **Shipping Pricebook** is a named container, and each **Shipping Priceset** inside it says *who* qualifies (entity type, member class, member label, company, branch, delivery region, date range), *which items* in the cart it looks at (items, categories, code or name patterns, with minimum quantity, minimum amount and weight bands) and *what is charged* (a Standard Shipping Fee, a Handling Fee and a Fuel Surcharge, each with a price source, an operator and a value).
 
-{{< callout type="info" >}}
-**Core Concept**: The system allows you to define a hierarchy of **Pricebooks** and **Pricesets** that use complex **Rules** to trigger specific **Treatments** (Fees) automatically during document creation.
-{{< /callout >}}
+The applet only maintains this master data. The rules are applied by one consumer: the **CP Commerce storefront**. At checkout the shopper picks a shipping price book as the *Shipping method*, the storefront evaluates its price sets in the browser and writes the resulting fee as a line for the website's shipping-fee service item on the shopping cart. Nothing in the ERP back office (POS, sales documents, the Java backend) evaluates shipping price books.
 
-## Key Features Overview
+## Where it fits
 
-### Who Benefits from This Applet?
+| Direction | Applet | Relationship |
+|---|---|---|
+| Upstream | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Items, item categories and pricing schemes referenced by line rules and treatments; item weight and dimensions feed the weight bands; the SERVICE item that carries the fee |
+| Upstream | [Organization](/applets/master-data/organisation-applet/) | Companies and branches for Company / Branch rules |
+| Upstream | [Customer Maintenance](/applets/master-data/customer-maintenance-applet/) | Entity types (customer / supplier / employee) matched by Entity Type rules |
+| Upstream | [Membership Admin](/applets/membership/membership-admin-applet/) | Member classes and member labels for the member rules |
+| Consumer | [CP Commerce Admin](/applets/ecommerce/cp-commerce-admin-applet/) | Website settings that switch the shipping-fee process on, choose the *Shipping Pricebook* option, the default price book and the shipping-fee item |
+| Consumer | [Shopping Cart](/applets/ecommerce/shopping-cart-applet/) | The storefront writes the computed fee as a DRAFT-cart line; the cart converts to a [Sales Order](/applets/sales-workflow/internal-sales-order-applet/) that carries it as a normal service line |
+| Sibling | [Pricebook](/applets/master-data/pricebook-applet/) | Same rule / treatment design applied to discounts and points, on its own tables and with its own consumers |
 
-**Logistics & Operations Managers:**
-- **Automated Precision**: Eliminate manual fee entry errors and ensure consistent application of delivery charges.
-- **Dynamic Surcharges**: Easily manage fluctuating costs like fuel surcharges or peak-season handling fees without changing base prices.
-- **Zonal Control**: Define specific rates for different geographic regions (e.g., local delivery vs. international sea freight).
+## Screens and menus
 
-**Sales & Customer Service Teams:**
-- **Real-time Quotes**: Instantly provide accurate shipping and handling costs to customers during the order process.
-- **Policy Enforcement**: Automatically apply "Free Shipping" or discounted rates for VIP customers or high-value orders based on predefined rules.
-- **Transparency**: Clear visibility into why specific fees were applied, reducing customer disputes.
+The applet has two menu entries, **Shipping Pricebook** and **Shipping Priceset**, plus Settings and Personalization.
 
-**Finance & Accounting Teams:**
-- **Full Cost Recovery**: Ensure that all logistics-related expenses (handling, fuel, transport) are captured and recovered from the customer.
-- **Audit Integrity**: Maintain a complete audit trail of fee calculations for every transaction.
-- **Revenue Protection**: Prevent under-billing caused by missing or outdated shipping rates.
+| Screen | Path | What it shows |
+|---|---|---|
+| Shipping Pricebook listing | `pricebook` | Columns Shipping Pricebook Code, Name, Description, Modified Date (sorted descending), Created Date, Status (read from the `PRICE_BOOK_STATUS` extension); server-side paging through `shipping-pricebooks/query`, deleted books excluded |
+| Shipping Pricebook create | Shipping Pricebook → **+** | Code, Name, Menu Icon, Status, Description |
+| Shipping Pricebook edit | select a row | Tabs **Details** (code, name, menu icon, calculation logic, status, description, audit fields, Delete) and **Pricing Set** (the book's price sets with Priority column, search, create and edit) |
+| Shipping Priceset listing | `priceset` | Every price set of every price book, loaded client-side from `shipping-pricebooks` (no server paging): Code, Name, Description, Modified Date, Created Date, Status |
+| Shipping Priceset create | Shipping Priceset → **+** | Pricebook Name (searchable select), Code, Name, Priority Level, Status, Description |
+| Shipping Priceset edit | select a row | Tabs **Details**, **Rules - Doc Hdr**, **Rules - Multi Line**, **Rules - Single Line**, **Treatment** |
+| Add Rule | **+** on a Rules tab | Rule Type selector, then the type-specific form or selection grid |
+| Settings | gear → Settings | Menu: **Field Settings**, **Default Selection**. Routes that exist without a menu entry: `feature-visibility` (the landing page of Settings), `webhook`, `permission-set-listing`, `user-permission-listing`, `team-permission-listing`, `role-permission-listing` |
+| Personalization | gear → Personalization | **Default Selection** (branch / location; non-functional, see Configuration), Sidebar |
 
-### What Problems Does This Solve?
+There are two editors for a price set. The **Shipping Priceset** menu opens `priceset-edit`; the **Pricing Set** tab of a Shipping Pricebook opens the nested `pricebook-edit-priceset`. Unlike the Pricebook applet, both offer the same rule types and the same three treatments and save the same `bl_fi_mst_shipping_price_book_line` row.
 
-**The "Manual Shipping Guesswork" Problem:**
-Traditional systems often rely on staff to "eye-ball" shipping costs. Common issues include:
-- Inconsistent charging between different sales reps.
-- Forgotten fuel surcharges leading to margin erosion.
-- Difficulties in handling complex "if-this-then-that" shipping logic manually.
+{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-pricebook-edit-add-priceset.png" alt="Shipping Pricebook edit, Pricing Set tab, with the Create Shipping Priceset form open" caption="Shipping Pricebook edit › Pricing Set: the nested Create Shipping Priceset form (Code, Name, Priority Level, Status, Description)." >}}
 
-**The Shipping Pricebook Solution:**
-- **Logic-Driven Fees** - Fees are triggered only when specific conditions (Rules) are met.
-- **Priority Logic** - Multiple pricebooks can coexist, with the system intelligently selecting the most relevant one.
-- **Multi-Layered Calculations** - Combine standard shipping, handling, and fuel surcharges into a single automated workflow.
-- **Granular Control** - Apply rules at the Header (entire order), Multi-Line (item groups), or Single-Line (specific product) level.
+{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-add.png" alt="Shipping Priceset listing with the Create Shipping Priceset form open" caption="Shipping Priceset menu › Create: the same form with a Pricebook Name selector in front." >}}
 
-## Key Features Inventory
+{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-edit-details.png" alt="Edit Shipping Priceset, Details tab" caption="Edit Shipping Priceset › Details: code and price book are read-only, Priority Level and Status are editable, Delete at the bottom." >}}
 
-{{< cards >}}
-  {{< card title="Pricebook Hierarchy" subtitle="Organize rates by customer type or service level" link="#pricebook-hierarchy-structure" >}}
+## Configuration
 
-  {{< card title="Granular Rules" subtitle="Define rules for Header, Multi-Line, and Single-Line items" link="#understanding-the-rules-engine" >}}
+### Before you can use it
 
-  {{< card title="Flexible Treatments" subtitle="Configure Shipping, Handling, and Fuel Fees" link="#understanding-treatment-fees" >}}
+- **A website with the shipping-fee process switched on** in [CP Commerce Admin](/applets/ecommerce/cp-commerce-admin-applet/) → Website Edit → Details: tick *Enable Shipping Fee Process*, choose *Shipping Fee Options = Shipping Pricebook*, pick the *Default Shipping Price Book Code* and the *Item Code for Shipping Fee*. Without the item the storefront computes no line (the fee shows as RM 0.00); without the option the storefront runs the delivery-charge path instead (see *Settings in other applets*).
+- **A SERVICE item for the fee** in [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) (`txn_type` SERVICE). Its GL and tax settings decide how the fee posts once the cart becomes a sales order.
+- **Items and categories** exist in Doc Item Maintenance for item / category rules; **pricing schemes** exist if a treatment uses *Price Source = Pricing Scheme* (the Treatment tab lists the schemes of the `PRICING_SCHEME_ITEM` list).
+- **Companies and branches** exist in [Organization](/applets/master-data/organisation-applet/) for Company / Branch rules; **member classes and labels** exist in [Membership Admin](/applets/membership/membership-admin-applet/) for the member rules.
+- **Delivery regions with a State value** for Delivery Region rules — the storefront matches the shopper's shipping-address *state* against the region's State (see Lifecycle).
+- **Tenant permissions.** Every applet endpoint checks `API_TNT_DM_ERP_SHIPPING_PRICE_BOOK_OWNER` / `ADMIN` or the matching `CREATE` / `UPDATE` / `DELETE` / `READ` code (`TntErpPermissions` L371-383; `ShippingPriceBookPackageController` L56-215). The storefront does not need any of them: it reads through `shipping-pricebooks/website-ep/{websiteHdrGuid}/query`, an anonymous tenant endpoint that only validates the website guid (controller L219-245).
 
-  {{< card title="Priority Logic" subtitle="Manage which pricebook takes precedence" link="#the-golden-triangle-of-shipping-logic" >}}
+### Applet settings
 
-  {{< card title="Regional Zonal Pricing" subtitle="Apply fees based on delivery destination zones" link="#regional-rules-deep-dive" >}}
+Settings are **applet-local** in layout only: `app.routing.ts` routes `settings/field-settings` and `settings/default-selection` to the applet's own components, and the shared `FieldConfigurationComponent` in blg-shared-utilities is not routed (`gates.py` has no controls for `ShippingPricebookApplet`). None of the applet's own screens is functional:
 
-  {{< card title="Distance-Based Support" subtitle="Calculate fees based on warehouse-to-destination distance" link="#step-2-define-logic-context-settings--applet-settings" >}}
-{{< /cards >}}
+- **Field Settings** is a static template — eight slide toggles (*Lines Settings*: Unit Discount, SST/VAT/GST, WHT, Blanket Order; *Department Settings*: Segment, G/L Dimension, Profit Center, Project) with no form binding, a SAVE button with no click handler and a component class with no logic (`field-configuration.component.html`, `.ts`). They are rendered but neither declared, persisted nor consumed.
+- **Default Selection** renders *Default Branch* and *Default Location*. The component writes each change into `this.appletContainer.bl_applet_exts`, but `appletContainer` is never assigned (there is no subscription to `appletSettings$`, and the routed host `<app-settings>` neither binds that input nor listens to `save`; the shared `SettingsComponent.onSaveDefault` is commented out). Changing a value throws in the browser console and nothing is saved; no code in the applet reads `DEFAULT_BRANCH` or `DEFAULT_LOCATION`.
+- **Personalization → Default Selection** has the same defect (`personal-default-settings.component.ts` L31-38 commented out).
 
-{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-overview-infographic.png" alt="Shipping Pricebook Applet Overview: Before and After" caption="From Manual Guesswork to Automated Precision: How the Shipping Pricebook Applet transforms your logistics fee calculations and empowers your Logistics, Sales, and Finance teams." >}}
+No exposed, working control found (routes and settings components checked at commit 7894b78, 2026-09-02).
 
----
+### Settings in other applets that control this applet
 
-## Key Concepts
+| Setting | Where it is set | Effect on shipping price books |
+|---|---|---|
+| **Enable Shipping Fee Process** | [CP Commerce Admin](/applets/ecommerce/cp-commerce-admin-applet/) → Website Edit → Details | Master switch; when off the storefront never calculates a shipping fee |
+| **Shipping Fee Options** (`Shipping Pricebook` / `Delivery Charges` / `Delivery Charges by Country` / `Delivery Charges by Region`) | same screen | Only *Shipping Pricebook* uses this applet. The storefront branches on `useDeliveryChargeItem`: delivery-charge options call the server-side `loginEntityGenerateDeliveryChargesDocLine`, the price book option runs the client-side engine described under Lifecycle |
+| **Default Shipping Price Book Code** (website extension `SYS_AKN_WEB_CP_COMMERCE_SHIPPING_PRICEBOOK`) | same screen, shown for the *Shipping Pricebook* option | The price book pre-selected as *Shipping method* at checkout (`selectActivePricebook`: the shopper's choice, else this default) |
+| **Item Code for Shipping Fee** (`SYS_AKN_WEB_CP_COMMERCE_SHIPPING_SERVICE_ITEM`) | same screen | The SERVICE item the computed fee is written against (quantity 1). With no item the storefront adds no line and shows RM 0.00 |
+| **Pick-up in store** (website content flag `selectPickupStoreEnabled`) | website configuration | Adds a synthetic "PICK UP IN STORE" entry (code `PICKUP_STORE`, guid `DEFAULT_UUID`) to the *Shipping method* list; choosing it skips the shipping address and the fee |
+| Item property `free_shipping` | item master data used by the storefront | Lines whose item carries `item_property_json.free_shipping` are left out of the item / category data fetched for rule evaluation |
 
-### Understanding the Shipping Framework
+### Feature visibility / permissions
 
-Every shipping calculation must address three fundamental aspects. The Shipping Pricebook Applet provides structured handling:
+No client-side permission definitions are seeded for this applet (`bl_applet_client_side_perm_dfn` has no rows for `ShippingPricebookApplet`, checked 2026-09-05), so the Feature Visibility screen and the role / team / user permission listings under Settings have nothing applet-specific to gate. Access is decided by the tenant permissions listed under *Before you can use it*; the API returns *not authorised* when none of them is assigned.
 
-| Aspect | Component | Practical Example |
-|--------|-----------|------------------|
-| **Who** is it for? | Pricebook Group | VIP Customers, Retail Outlets, International Dealers |
-| **What** triggers it? | Rules Logic | If Region is "North America" AND Order Weight > 100kg |
-| **How** is it charged? | Treatment Type | Flat $50 fee OR 5% of Transaction Amount |
+## Fields
 
----
+Code and name inputs on the create forms accept letters, digits, space, hyphen and underscore only (`blockSpecialChar`), are upper-cased and trimmed on save, and are limited to 255 characters.
 
-### Pricebook Hierarchy Structure
+### Shipping Pricebook — create
 
-Think of the shipping fee logic as a structured flow that narrows down from general categories to specific charges:
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Shipping Pricebook Code | Unique identifier of the book | Yes | Immutable after creation (read-only on edit). The backend does **not** check uniqueness (`ShippingPriceBookDataConsistencyObject` validates guid, revision, status and `hdr_guid` links only) |
+| Shipping Pricebook Name | Display name; what the shopper sees as the *Shipping method* | Yes | Stored upper-cased |
+| Menu Icon | Icon shown next to the shipping method in the storefront | No | Ionicon name, stored as `property_json.icon` |
+| Status | Active / Inactive | Yes | Default *Active*. Stored as extension `PRICE_BOOK_STATUS`, not as the header `status` column — see Lifecycle for the consequence |
+| Description | Free text | No | Max 255 characters |
 
-```mermaid
-graph TD
-    PB[Shipping Pricebook] --> PS1[Priceset: Free Shipping]
-    PB --> PS2[Priceset: Heavy Goods Surcharge]
-    PB --> PS3[Priceset: Standard Logistics]
-    
-    PS1 --> R1[Rule: Amount > $1000]
-    PS1 --> T1[Treatment: $0 Fee]
-    
-    PS2 --> R2[Rule: Weight > 50kg]
-    PS2 --> T2[Treatment: $50 Handling]
-    
-    PS3 --> R3[Rule: Default]
-    PS3 --> T3[Treatment: $15 Shipping]
-```
+### Shipping Pricebook — edit › Details
 
-**Flow Through the Hierarchy:**
-
-1.  **Pricebook**: The broad container (e.g., "B2B Standard Rates").
-2.  **Priceset**: A specific scenario (e.g., "West Malaysia Distribution").
-3.  **Rules**: The "If" conditions (e.g., "Must be Branch HQ").
-4.  **Priority**: Lower numerical value = Higher precedence.
-5.  **Treatment**: The final financial calculation logic.
-
----
-
-### Pricebook vs Priceset: What is the Difference?
-
-A common point of confusion is the relationship between a **Pricebook** and a **Priceset**. They serve distinct roles in the pricing hierarchy:
-
-| Aspect | Pricebook | Priceset |
-|--------|-----------|----------|
-| **Role** | The master container or category | A specific rule instance within a Pricebook |
-| **Analogy** | A filing cabinet drawer labelled by topic | An individual policy document inside that drawer |
-| **Quantity** | You create one per shipping strategy | You create many within a single Pricebook |
-| **Contains** | One or more Pricesets | Rules, Treatments, and Priority settings |
-| **Example** | "Domestic Shipping Rates" | "Free Shipping for Orders > RM 500" |
-
-{{< callout type="tip" >}}
-**Think of it this way:** The Pricebook answers *"What category of shipping logic is this?"* while the Priceset answers *"What is the specific rule, when does it apply, and how much does it charge?"*
-{{< /callout >}}
-
-**Scenario: Two Shipping Pricebooks for a Multi-Channel Business**
-
-A company sells both domestically and internationally. They set up two separate Shipping Pricebooks to keep the logic clean and manageable:
-
-```
-Pricebook A: "Domestic Shipping"
-├── Priceset 1: "West Malaysia Standard" (Priority 100)
-│   Rule: Delivery Region = Selangor, KL, Penang
-│   Treatment: Standard Shipping = RM 8 (Absolute)
-│
-├── Priceset 2: "East Malaysia Surcharge" (Priority 50)
-│   Rule: Delivery Region = Sabah, Sarawak
-│   Treatment: Standard Shipping = RM 25 (Absolute) + Handling = RM 10 (Absolute)
-│
-└── Priceset 3: "Free Domestic Shipping" (Priority 1)
-    Rule: Transaction Amount > RM 500
-    Treatment: Standard Shipping = RM 0 (Absolute)
-
-Pricebook B: "International Shipping"
-├── Priceset 1: "ASEAN Countries" (Priority 100)
-│   Rule: Delivery Region = Singapore, Thailand, Indonesia
-│   Treatment: Standard Shipping = RM 45 (Absolute) + Fuel Surcharge = 3% of Transaction Amount
-│
-└── Priceset 2: "Rest of World" (Priority 200)
-    Rule: Default (no region filter)
-    Treatment: Standard Shipping = RM 120 (Absolute) + Fuel Surcharge = 5% of Transaction Amount
-```
-
-In this setup:
-- **Pricebook A** handles all domestic delivery logic. Its three Pricesets cover West Malaysia, East Malaysia, and a free-shipping override. Because "Free Domestic Shipping" has the lowest Priority number (1), it wins whenever a domestic order exceeds RM 500 — regardless of region.
-- **Pricebook B** handles international orders separately. ASEAN countries get a lower base rate and fuel surcharge compared to the rest of the world.
-
-By separating domestic and international into two Pricebooks, the logistics team can manage, audit, and update each strategy independently without affecting the other.
-
----
-
-### The "Golden Triangle" of Shipping Logic
-
-To effectively manage the system, it is crucial to understand how **Rules**, **Priority**, and **Treatments** interact.
-
-| Component | Analogy | Definition | Example |
-|-----------|---------|------------|---------|
-| **Rules** | The "Gatekeeper" | The specific conditions that must be true for a fee to apply. | **Region = "Sabah"** |
-| **Priority** | The "Tie-Breaker" | Decides which rule wins if multiple match an order. | **Priority 1 vs Priority 100** |
-| **Treatment** | The "Bill" | The actual math of the fee calculation. | **5% Fuel Surcharge** |
-
----
-
-## Quick Start Guide
-
-Get up and running quickly with these essential workflows.
-
-### For Sales Team: Check Applied Fees
-
-**Goal:** Understand why a shipping fee was applied to your order in 3 steps.
-
-1.  **Open Document**: Go to your **Sales Order** or **Invoice**.
-2.  **Review Header**: Look for the **Shipping Info** tab.
-3.  **Check Details**: The system displays the active **Pricebook Header** and the breakdown of Shipping, Handling, and Fuel charges.
-
-**Pro Tip:** If fees seem missing, verify that the **Customer Member Class** matches the rules in the active pricebook.
-
----
-
-### For Logistics Managers: Create a Regional Surcharge
-
-**Goal:** Add a $20 handling fee for all deliveries to "East Malaysia" in 5 steps.
-
-1.  **Navigate**: Go to **Shipping Pricebook Listing** and open your primary pricebook.
-    {{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-listing.png" alt="Priceset Listing" caption="Navigate to the Priceset module to manage all your pricing scenarios." >}}
-2.  **Create Priceset**: Click **"+" (Add Priceset)** → Name it "East Malaysia Surcharge" → Set Priority to `50`.
-    {{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-add.png" alt="Add a new Priceset" caption="Configure priority and negate logic for your new handling fee rule." >}}
-3.  **Add Regional Rule**: 
-    - Go to **Rules - Doc Hdr** tab.
-    - Click **"Add Delivery Region Rule"**.
-    - Select "Sabah" and "Sarawak" from the list.
-4.  **Set Treatment**:
-    - Go to **Treatment** tab.
-    - Check **Handling Fee**.
-    - Set Price Source to **Absolute** and Value to `20.00`.
-5.  **Finalize**: Click **Create**.
-
----
-
-### For Admins: Initial System Setup
-
-**Goal:** Configure the foundational settings for the Shipping Pricebook engine.
-
-1.  **Prepare Master Data**: Ensure all **Delivery Regions**, **Zonal Codes**, and **Member Classes** are up to date.
-2.  **Toggle Applet Settings** (`Settings > Applet Settings`):
-    - **Default Branch/Location**: Pre-fills origin data for new pricebooks.
-    - **Visibility Rules**: Hide specific pricing fields if sales reps should only see the final total.
-3.  **Validate Logic**:
-    - Create a "Draft" Priceset with a high priority (e.g., `1`).
-    - Attempt to create a mock Sales Order matching the draft rules.
-    - Verify fees appear correctly before setting the Priceset to `Active`.
-
----
-
-## Understanding the Rules Engine
-
-The Applet provides layers of rules to handle every possible business scenario.
-
-### 1. Header Rules (Doc Hdr)
-Logic that applies to the **entire document as a whole**. When a user selects a Header Rule, the system evaluates the order-level attributes — not individual line items. If the rule matches, the Treatment applies once to the entire order.
-
-**Supported Rule Types:**
-- **Valid Date Range**: Trigger specific rates only during promotional periods.
-- **Delivery Region**: Destination-based pricing (States, Cities, Postcodes).
-- **Entity Rules**: Special rates for specific Member Classes, Member Labels, or Entity Types.
-- **Corporate Rules**: Restrict pricebooks to specific Branches or Companies.
-
-**Effect When Selected:** The system reads the document header fields (delivery address, customer entity, branch, order date) and checks them against the rule conditions. If all conditions pass, the associated Treatment fee is applied once to the entire order total.
-
-{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-edit-rules-doc-hdr.png" alt="Document Header Rules Configuration" caption="Configuring rules that evaluate the entire order, such as Delivery Region or Valid Date Range." >}}
-
-**Scenario: Holiday Surcharge for a Specific Branch**
-```
-Situation: During the year-end holiday season, the KL warehouse has 
-limited staffing, causing higher fulfillment costs.
-
-Rule Setup:
-  - Type: Header Rule (Doc Hdr)
-  - Condition 1 (Valid Date Range): Dec 20 – Jan 5
-  - Condition 2 (Corporate Rule): Branch = "Kuala Lumpur HQ"
-
-Treatment: Handling Fee = RM 15 (Absolute)
-
-How It Works:
-  - A sales order created on Dec 22 from the KL branch → Both conditions 
-    match → RM 15 handling fee is added to the order total.
-  - A sales order created on Dec 22 from the Penang branch → Branch 
-    condition fails → No surcharge applied.
-  - A sales order created on Feb 10 from the KL branch → Date condition 
-    fails → No surcharge applied.
-
-Result: Only KL-originated orders during the holiday window incur the 
-extra handling fee. All other orders are unaffected.
-```
-
-### 2. Multi-Line Rules
-Logic that checks for **combinations of items across the entire cart**. When a user selects a Multi-Line Rule, the system scans all line items in the order, groups them by the matching criteria, and evaluates the aggregated result (e.g., total quantity, total weight). The Treatment is applied once based on the grouped outcome, not per individual line.
-
-**Supported Rule Types:**
-- **Item Matches**: Group by specific Item, Item Category, or use Regex on Item Code/Name.
-
-**Effect When Selected:** The system iterates through every line item in the order, filters those matching the rule criteria, then aggregates their quantities or values. If the aggregated result meets the threshold, the Treatment is triggered once for the entire group.
-
-{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-edit-rules-multi-line.png" alt="Multi-Line Rules Configuration" caption="Setting up rules that group items together across the document to calculate accumulated metrics." >}}
-
-**Scenario: Bulk Office Supplies Handling Fee**
-```
-Situation: Orders containing more than 10 units of office supplies 
-require special palletized packaging, adding to handling costs.
-
-Rule Setup:
-  - Type: Multi-Line Rule
-  - Condition: Item Category = "Office Supplies", Total Quantity > 10
-
-Treatment: Handling Fee = RM 20 (Absolute)
-
-How It Works:
-  - Order with 5x Printer Paper + 8x Ink Cartridges (both "Office 
-    Supplies") → Total = 13 units → Exceeds 10 → RM 20 handling fee 
-    applied once to the order.
-  - Order with 3x Printer Paper + 2x Ink Cartridges → Total = 5 units 
-    → Below threshold → No handling fee.
-  - Order with 15x Laptop Bags (category "Electronics Accessories") → 
-    Does not match "Office Supplies" → No handling fee.
-
-Result: The fee is evaluated across all matching lines combined and 
-charged once — not per line item.
-```
-
-### 3. Single-Line Rules
-Logic that applies **individually to each specific item** within the cart. When a user selects a Single-Line Rule, the system evaluates each line item independently. If a line matches the rule criteria, the Treatment is calculated and applied to that specific line. Multiple matching lines each incur their own fee.
-
-**Supported Rule Types:**
-- **Item & Item Category**: Target explicit products or broad classes.
-- **Regex Matching**: Code/Name matching via Item Code Regex, Item Name Regex, Category Code Regex, or Category Name Regex.
-
-**Effect When Selected:** The system checks each line item one by one. For every line that matches, the Treatment fee is calculated based on that line's own values (its quantity, unit cost, or amount). This means a single order can generate multiple fee entries if multiple lines match.
-
-{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-edit-rules-single-line.png" alt="Single-Line Rules Configuration" caption="Defining rule conditions for individual lines within the order." >}}
-
-**Scenario: Fragile Item Special Handling**
-```
-Situation: Glassware items require individual bubble-wrap packaging, 
-costing RM 3 per unit.
-
-Rule Setup:
-  - Type: Single-Line Rule
-  - Condition: Item Category = "Glassware"
-
-Treatment: Handling Fee = RM 3, Price Source = Base Quantity, 
-           Operator = Multiply
-
-How It Works:
-  - Order contains: 10x Wine Glasses ("Glassware") + 5x Dinner Plates 
-    ("Ceramics") + 2x Crystal Vases ("Glassware")
-  - Line 1: Wine Glasses → Matches → 10 × RM 3 = RM 30 handling fee
-  - Line 2: Dinner Plates → Does not match "Glassware" → No fee
-  - Line 3: Crystal Vases → Matches → 2 × RM 3 = RM 6 handling fee
-  - Total handling fee on this order = RM 36
-
-Result: Each matching line is evaluated and charged independently, 
-based on its own quantity.
-```
-
-### Choosing the Right Rule Type
-
-| Question | Use This Rule Type |
-|----------|-------------------|
-| Does the condition depend on the order as a whole (date, region, customer)? | **Header Rule (Doc Hdr)** |
-| Does the condition depend on the combined total of specific items? | **Multi-Line Rule** |
-| Should the fee be calculated per individual item line? | **Single-Line Rule** |
-
----
-
-## Regional Rules Deep Dive
-
-The regional engine is the most common way to trigger shipping fees. It supports three levels of geographic granularity.
-
-### How Regional Rules Work
-When an order is created, the system checks the **Delivery Address** of the customer and maps it against the Rules in the active Priceset.
-
-**Visual Example:**
-```
-Order Destination: 88000, Kota Kinabalu, Sabah
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Rule A: State = Sabah (Match!)
-Rule B: Postcode = 88xxx (Match!)
-Rule C: Zone = East Malaysia (Match!)
-```
-
-### Real-World Scenarios
-
-**Scenario 1: The "Free Shipping" Threshold**
-```
-Strategy: Give free shipping to Selangor customers for orders > RM 500.
-Rule Logic: 
-  - Rule 1 (Doc Hdr): Delivery Region = "Selangor"
-  - Rule 2 (Doc Hdr): Transaction Amount > 500
-Treatment: 
-  - Standard Shipping = Absolute 0.00
-Result: Orders meeting both criteria get RM 0 shipping fees automatically.
-```
-
-**Scenario 2: The Fuel Surcharge Adjustment**
-```
-Strategy: Apply 5% fuel surcharge to all heavy equipment shipments.
-Rule Logic: 
-  - Rule 1 (Single Line): Item Category = "Heavy Equipment"
-Treatment: 
-  - Fuel Surcharge = Multiply (0.05) against Transaction Amount
-Result: Every heavy item in the cart adds 5% of its value to the Fuel Surcharge line.
-```
-
----
-
-## Configuration & Settings
-
-### Creating a Shipping Pricebook
-
-The pricebook serves as the master container for all subsequent policies.
-
-{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-pricebook-create.png" alt="Create Shipping Pricebook" caption="Creating a new pricebook container to group relevant geographical logic." >}}
-
-{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-pricebook-listing.png" alt="Shipping Pricebook Listing View" caption="The Shipping Pricebook list displays all active and inactive logistics containers." >}}
-
-| Field | Purpose | Example |
-| :--- | :--- | :--- |
-| **Code** | Unique ID for the pricebook | `DOMESTIC_STD_2024` |
-| **Name** | Descriptive name for users | `Standard Domestic Rates` |
-| **Status** | Controls if the engine uses this book | `ACTIVE` |
-| **Icon** | Visual indicator on the dashboard | `airplane-outline` |
-
-{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-pricebook-edit-details.png" alt="Shipping Pricebook Details Editor" caption="Define the core attributes of the Pricebook to manage its visibility and validity." >}}
-
-### Setting up a Priceset
-
-Within each Pricebook, you build nested Pricesets representing unique scenarios.
-
-{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-pricebook-edit-add-priceset.png" alt="Adding a Priceset to the Pricebook" caption="Easily insert new structured scenarios (Pricesets) into a master Pricebook logic tree." >}}
-
-| Field | Purpose | Importance |
-| :--- | :--- | :--- |
-| **Priority Level** | Order of execution | Critical: A Priceset with Priority 1 will override Priority 100. |
-| **Rules Logic** | How rules combine | `AND` (All must match) vs `OR` (Any can match). |
-| **Negation Logic** | Reverse the rule | `Enabled` means "Apply to everything EXCEPT the selected rule". |
-
-{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-edit-details.png" alt="Shipping Priceset Editor" caption="Set Priority Levels to control execution hierarchy within a Pricebook." >}}
-
-### Understanding Treatment Calculations
-After rules are matched, the system applies the configured **Treatments**. You can enable up to three distinct fee types per Priceset: **Standard Shipping Fee**, **Handling Fee**, and **Fuel Surcharge**. 
-
-Each fee is calculated using a combination of **Price Sources** and **Operators**:
-
-{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-edit-treatment.png" alt="Priceset Treatment Setup" caption="Specify the financial action to take (e.g., standard amounts, quantities, percentage operators) once a rule evaluates as true." >}}
-
-| Price Source | Operator Options | Real-Life Example |
-| :--- | :--- | :--- |
-| **Standard Amount** | Multiply, Absolute, Add, Subtract | Fixed $15 Standard Shipping Fee using `Absolute`. |
-| **Base Quantity** | Multiply, Absolute, Add, Subtract | $2 Handling Fee per item, using `Multiply` by Quantity. |
-| **Transaction Amount** | Multiply, Absolute, Add, Subtract | 5% Fuel Surcharge, using `Multiply` against Transaction Amount (*0.05*). |
-| **Pricing Scheme** | N/A (Uses linked scheme table) | Complex weight-based logic reading from a dynamic Tier Scheme. |
-| **Price Unit Cost / Net Amount**| Multiply, Absolute, Add, Subtract | Advanced margin-based freight adjustments. |
-
-### Where Does Each Price Source Come From?
-
-The **Price Source** determines which value the system uses as the base number for the fee calculation. Each source pulls its data from a different part of the ERP ecosystem:
-
-| Price Source | What It Reads | Where It Comes From | Related Applet |
-| :--- | :--- | :--- | :--- |
-| **Standard Amount** | A fixed value you enter directly in the Treatment field | Defined within the **Shipping Pricebook Applet** itself — no external data needed | Shipping Pricebook Applet |
-| **Base Quantity** | The quantity of items on the order line (e.g., 10 units) | Pulled from the line item data on the **Sales Order** or **Invoice** document | Internal Sales Quotation Applet / Sales Order |
-| **Transaction Amount** | The total monetary value of the order or line (e.g., RM 1,500) | Calculated from line item prices and quantities on the active document | Internal Sales Quotation Applet / Sales Order |
-| **Pricing Scheme** | A tiered rate table (e.g., weight bands, distance tiers) | Reads from a pre-configured **Pricing Scheme** table linked to the Priceset | Pricebook Applet (Pricing Scheme module) |
-| **Price Unit Cost** | The cost price of the item (what you paid the supplier) | Pulled from the item's cost record in the **Item Master** | Item Maintenance Applet |
-| **Net Amount** | The net line amount after discounts but before tax | Calculated from the document line after applying any active promotions | Internal Sales Quotation Applet / Pricebook Applet |
-
-{{< callout type="info" >}}
-**How the Operator Works with the Price Source:** The Price Source provides the base value and the Operator determines the math. For example, if Price Source = **Transaction Amount** (RM 1,000) and Operator = **Multiply** with value `0.05`, the resulting fee = RM 1,000 × 0.05 = **RM 50**. If the Operator is **Absolute**, the Price Source is ignored and the fee is the fixed value you entered (e.g., RM 15 regardless of order size).
-{{< /callout >}}
-
-### Applet Integration & Permissions
-The Shipping Pricebook Applet includes built-in settings for deeper system integration:
-- **Webhooks**: Automatically push shipping fee calculations to external 3PL or e-commerce systems in real-time.
-- **Feature Visibility**: Toggle specific pricing fields on/off depending on the user's role to simplify the interface.
-- **Granular Permissions**: Control exactly who can view, create, or modify pricebooks using User, Team, and Role permission sets.
-- **Field Settings**: Customize the mandatory/optional status of form fields to match your organization's workflow.
-
----
-
-## FAQ
-
-**Q1: What happens if two pricesets have the same priority?**
-**A:** The system will select the first one created. It is **Best Practice** to always give unique priority numbers to avoid ambiguity.
-
-**Q2: Can I charge a handling fee ONLY for fragile items?**
-**A:** Yes. Use a **Single-Line Rule** targeting the "Fragile" item category. The handling fee will only be calculated for those specific items in the cart.
-
-**Q3: Does the system support "Weight-Based" shipping?**
-**A:** Yes, via the **Pricing Scheme** integration. You can map weight bands (e.g., $5 per kg) to the Treatment value.
-
-**Q4: Can I test rules without affecting the entire company?**
-**A:** Yes. Create a Priceset and add a **Member Class Rule** where the class is "UAT_TESTING". Only customers assigned that class will trigger the new rates.
-
-**Q5: How are taxes handled on shipping fees?**
-**A:** Shipping fees inherit the tax settings from the **G/L Account** and **Financial Item** they are mapped to in the Finance module.
-
----
-
-## Summary
-
-The **Shipping Pricebook Applet** transforms shipping from a manual guesswork process into a precise, automated financial control. By leveraging a hierarchy of rules and flexible fee treatments, BigLedger ensures your logistics team maintains healthy margins while providing transparent pricing to your customers.
-
-{{< callout type="tip" >}}
-**Implementation Tip**: Combine the Shipping Pricebook with the **Notification Applet** to alert your logistics manager whenever a "High-Priority" surcharge (e.g., Priority <10) is triggered on a large order.
-{{< /callout >}}
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Pricebook Code | As created | — | Read-only |
+| Pricebook Name | Display name | Yes | Save is disabled until the form is touched |
+| Menu Icon | As above | No | |
+| Calculation Logic | How the storefront picks among matching price sets | No | Options *Sequential Match*, *Amount Lowest*, *Amount Highest*, *Points Reward Highest / Lowest*, *Points Redeem Highest / Lowest* (`Options.firstMatchOptions`, stored as extension `FIRST_MATCH`). The storefront treats every value as Sequential Match — see Lifecycle |
+| Status | Active / Inactive | No | Extension `PRICE_BOOK_STATUS` |
+| Description | Free text | No | Character counter, no limit on edit |
+| Created By / Date, Modified By / Date | Audit | — | Read-only; the *By* fields resolve the subject to its e-mail login principal |
+| Delete | Soft-deletes the book | — | Backend sets status DELETED on header, extensions and lines (`ShippingPriceBookUow.delete` → `DbTableDao.delete` with `deletePermanent = false`) |
+
+### Shipping Priceset — create
+
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Pricebook Name | Parent book (menu form only; the nested form shows it read-only) | Yes | Searchable select over all books returned by `shipping-pricebooks` |
+| Shipping Priceset Code | Identifier within the book | Yes | Immutable after creation; not checked for uniqueness |
+| Shipping Priceset Name | Display name | Yes | |
+| Priority Level | Evaluation order at checkout | Yes | Number; **lower value is evaluated first**. Stored as `property_json.priority_line` |
+| Status | Active / Inactive | Yes | Default *Active*; stored as `property_json.status` |
+| Description | Free text | No | Max 255 characters |
+
+Creating a price set appends a line to the book with three empty rule groups (`hdr_doc_filter`, `multi_line_doc_filter`, `single_line_doc_filter`, each `top_level_logic = AND`, `negation_logic = FALSE`, `rules = []`) and an empty `treatment_json.treatment` array, and PUTs the whole book.
+
+### Shipping Priceset — Rules tabs
+
+Each Rules tab has **Rules Logic** (*And* / *Or* → `top_level_logic`) and **Negation Logic** (*Enabled* / *Disabled* → `negation_logic`) for the whole group, a grid of *Rule Name · Rule Type*, and a **+** that opens *Add Rule*. Every rule form has a required **Rule Name** and its own **Negation Logic**. Rules are saved immediately by the rule form (a PUT of the book), independently of the SAVE button of the price set.
+
+{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-edit-rules-doc-hdr.png" alt="Rules - Doc Hdr tab with the Add Rule type list open" caption="Rules - Doc Hdr: group logic on the left, the Rule Type list of the Add Rule column on the right." >}}
+
+| Tab | Rule Type | Form / picker | Stored keys |
+|---|---|---|---|
+| Rules - Doc Hdr | Valid Date Range | *Period Unit* (Day(s) / Month(s) / Year(s)), *Relative Period* (number), *Absolute Period From / To* (date pickers) | `start_date`, `end_date`, `period` |
+| Rules - Doc Hdr | Entity Type | Checkboxes *All Customer*, *All Supplier*, *All Employee* | `rule_filter_values` (entity type codes) |
+| Rules - Doc Hdr | Member Class, Member Label | Selection grid of classes / labels | `rule_filter_values` (guids) |
+| Rules - Doc Hdr | Company, Branch | Selection grid of companies / branches | `rule_filter_values` (guids) |
+| Rules - Doc Hdr | Delivery Region | Selection grid *Code · Delivery Region · State · Country* | `rule_filter_values` (regions with `state`) |
+| Rules - Multi Line, Rules - Single Line | Item, Item Category | *Min Quantity*, *Min Amount* ("measured against the selected items only, after discount"), *Total Weight From / To*, *Total Volumetric Weight From / To*, *Divisor*, then the item / category selection grid | `minQty`, `minAmt`, `totalWeightFrom`, `totalWeightTo`, `totalVolumetricWeightFrom`, `totalVolumetricWeightTo`, `volumetricWeightDivisor`, `rule_filter_values` |
+| Rules - Multi Line, Rules - Single Line | Item Code Regex, Item Name Regex, Category Code Regex, Category Name Regex | *Name* and the regular expression, added to a list | `rule_filter_values` (name / code pairs) |
+
+{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-edit-rules-multi-line.png" alt="Rules - Multi Line tab with the Add Rule type list open" caption="Rules - Multi Line: the six item and pattern rule types." >}}
+
+{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-edit-rules-single-line.png" alt="Rules - Single Line tab with the Add Rule type list open" caption="Rules - Single Line offers the same six types; the storefront does not evaluate this tab (see Lifecycle)." >}}
+
+### Shipping Priceset — Treatment tab
+
+Three independent blocks, each enabled by its checkbox: **Standard Shipping Fee** (`STANDARD_SHIPPING_FEE`), **Handling Fee** (`HANDLING_FEE`) and **Fuel Surcharge** (`FUEL_SURCHARGE`). Unticking a block removes its entry from `treatment_json.treatment` on save.
+
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Price Source | The cart figure the fee is derived from | No | *Base Quantity* (`qty_base`), *Standard Amount* (`amount_std`), *Price Unit Cost* (`price_unit_cost`), *Net Amount* (`amount_net`), *Transaction Amount* (`amount_txn`), *Pricing Scheme* (`pricing_scheme`) |
+| Operator | The arithmetic applied | No | `MULTIPLY`, `ABSOLUTE`, `ADD`, `SUBTRACT` |
+| Value | The number the operator uses | No | Numeric input, no validation |
+| Pricing Scheme | Shown only when Price Source = Pricing Scheme | No | Schemes of the `PRICING_SCHEME_ITEM` list; stored as `pricing_scheme` (guid) |
+| Auto apply to all child items | Standard Shipping Fee block only | No | "When a group item is selected in this priceset's rules, also match every child item of that group in the cart"; stored as `auto_apply_to_all_child_items` and read while evaluating item rules |
+
+{{< figure src="/images/shipping-pricebook-applet/shipping-pricebook-applet-priceset-edit-treatment.png" alt="Treatment tab with the Price Source list open" caption="Treatment: Standard Shipping Fee, Handling Fee and Fuel Surcharge, each with Price Source, Operator and Value." >}}
+
+## Lifecycle and effects
+
+**What the applet writes.** Every action is a full PUT of the price book container (`shipping-pricebooks`, `ShippingPriceBookService.put`): header, extensions and lines together. Price set *Delete* does not remove the line; it sets `status` and `property_json.status` to `DELETED` and PUTs. Price book *Delete* calls DELETE `/{guid}` and the backend soft-deletes header, extensions and lines. Update, delete and price set actions also POST an audit row to `shipping-pricebooks/events` (`bl_fi_mst_shipping_price_book_event`, `txn_type` `SYS_APPLET`, actions `PRICE_BOOK_UPDATED`, `PRICE_BOOK_DELETED`, `PRICING_SET_CREATED`, `PRICE_SET_UPDATED`, `PRICE_SET_DELETED`); the create effect builds its `PRICE_BOOK_CREATED` event inside an inner pipe that is never subscribed, so that event is never written.
+
+**Backend validation.** `ShippingPriceBookPackageService.create/update` run `ShippingPriceBookDataConsistencyObject`: header guid present and (on create) not already existing, revision and status present, every extension and line with a guid, `hdr_guid` equal to the header guid, revision and status. Failures come back as `Core2DataConsistencyException` with codes such as `SHIPPING_PRICEBOOK_HDR_OBJECT_GUID_ALREADY_EXISTS` or `SHIPPING_PRICEBOOK_LINE_OBJECT_HDR_GUID_DIFFERENT_FROM_PRICEBOOK_HDR_OBJECT_GUID`. Nothing validates the rule or treatment JSON and nothing checks code uniqueness. The `bl_fi_mst_shipping_price_book_rule_*` tables, DCOs and controllers exist in the backend but no applet, storefront or admin code references them.
+
+**No posting.** A shipping price book is master data: no server document type, no signums, no journal, no stock processor. The fee reaches the ledger only as an ordinary service-item line on the sales order the cart converts into, and posts by that item's GL and tax configuration.
+
+**How the storefront applies it (the only consumer).** All of this runs in the shopper's browser (`wavelet-cp-commerce`, commit 247243251, 2026-09-03):
+
+1. **Load.** `loadShippingPricebookInit$` calls the anonymous website endpoint asking for header status ACTIVE, ordered by created date. The applet's *Status* field is the extension `PRICE_BOOK_STATUS`, which the storefront never reads, so an *Inactive* price book is still loaded and offered; only a deleted one disappears.
+2. **Choose.** The *Shipping method* block at checkout lists every loaded price book by name and icon (plus *PICK UP IN STORE* when enabled) with the website default pre-selected; `selectActivePricebook` = the shopper's choice, else the website default.
+3. **Qualify.** `ShippingManager` sorts the book's price sets by `priority_line` ascending (missing → last; ties keep API order), drops DELETED ones — *Inactive* price sets are still evaluated — and keeps those whose **Doc Hdr rules and Multi Line rules both pass**. The Single Line tab is never evaluated. Within a group, *Rules Logic* And / Or and *Negation Logic* are honoured.
+4. **Select.** `selectPricesetBasedOnCalculationLogic` always returns the first qualifying set. *Calculation Logic* on the book (`FIRST_MATCH`) is read but every value behaves as *Sequential Match*.
+5. **Compute.** Aggregate = Σ over all cart lines of the **Standard Shipping Fee** price source (`qty_base` → `quantity_base`, `amount_std`, `amount_net`, `amount_txn`, `price_unit_cost` → `unit_price_std`). Each ticked treatment applies its operator to that same aggregate: `MULTIPLY` = aggregate × value, `ABSOLUTE` = value, `ADD` = aggregate + value, `SUBTRACT` = aggregate − value; an unticked treatment contributes 0. Fee = Standard + Handling + Fuel, rounded to two decimals. The Handling Fee and Fuel Surcharge blocks' own *Price Source* is not used; *Pricing Scheme* as a price source reads a field that is not on the cart line and yields no usable number.
+6. **Write.** The fee becomes a quantity-1 line for the website's shipping-fee item (`addShippingDocLine`; the previous shipping line is marked DELETED), the cart revision is checked, and the coupon engine is re-run so a free-shipping voucher can discount the line.
+
+**Rule coverage at checkout.**
+
+| Rule Type | Evaluated as |
+|---|---|
+| Entity Type | Cart entity has any of the selected types (`containsEntity`) |
+| Member Class, Member Label | Cart member's class guid / label guids include any selected |
+| Company, Branch | Cart company / branch guid equals any selected |
+| Delivery Region | Shipping address **state** equals (case-insensitive) the State of any selected region; region code, country and postcode are not compared |
+| Item, Item Category, code / name regexes | Selected items / categories / patterns present in the cart with `minQty`, `minAmt` (after discount, selected items only), total weight and volumetric weight bands; group items expand to child lines when *Auto apply to all child items* is on |
+| Valid Date Range | Mapped to a node with **null start and end dates**, so it always passes; with Negation *Enabled* it never passes. The dates and period entered in the applet are not used |
+| Any item / category rule with nothing selected | Evaluates to false and, with the default *And*, disables the whole price set (a known gap noted in the mapper) |
+
+## Related applets
+
+- [Pricebook](/applets/master-data/pricebook-applet/) — the discount / sales-price / points sibling with the same rule and treatment design; its consumers (POS, sales documents, OCR) never read shipping price books.
+- [CP Commerce Admin](/applets/ecommerce/cp-commerce-admin-applet/) — owns the website switches that decide whether, with which price book and against which item the storefront charges shipping.
+- [Shopping Cart](/applets/ecommerce/shopping-cart-applet/) — the fee is a line of the DRAFT cart; the coupon engine may discount it.
+- [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — the shipping-fee SERVICE item, the items and categories in line rules, the pricing schemes offered in the Treatment tab, and the weight / dimensions used by weight bands.
+- [Organization](/applets/master-data/organisation-applet/) — companies and branches for Company / Branch rules.
+- [Membership Admin](/applets/membership/membership-admin-applet/) — member classes and labels for member rules.
+- [Customer Maintenance](/applets/master-data/customer-maintenance-applet/) — entity types for Entity Type rules.
+- [Sales Order](/applets/sales-workflow/internal-sales-order-applet/) — receives the fee as a service line when the cart converts.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Checkout charges a fixed fee (e.g. RM 20) although the shopper does not match the rules you expected (gh:bigledger/wavelet-cp-commerce#57, #67) | The first price set in `priority_line` order whose Doc Hdr and Multi Line rules pass wins; a price set with no rules always qualifies; Single Line rules are ignored; Inactive price sets are still evaluated | Give every price set a distinct Priority Level, put the most specific sets on the lowest numbers, move item conditions to the Multi Line tab, and delete (not deactivate) sets that must not apply |
+| A price set never applies even though its rules look right | An Item / Item Category / regex rule was saved with nothing selected; it evaluates to false and, under *And*, disables the whole set | Open the rule and delete it, or select items |
+| Valid Date Range has no effect (promotion rate applies outside the dates, or never applies) | The storefront evaluates the rule with null dates: it always passes, and with Negation *Enabled* never passes | Do not rely on date rules for shipping; switch price sets manually, or deactivate the book |
+| Delivery Region rule does not match an address in the right region | Only the address *state* text is compared with the region's State (case-insensitive); postcode, city and country are ignored | Make the region's State exactly the value the storefront stores in the shipping address; create one region per state spelling |
+| Handling Fee or Fuel Surcharge is calculated on the wrong base | Both use the aggregate of the **Standard Shipping Fee** price source; their own Price Source is ignored. With Standard Shipping Fee unticked the aggregate is 0, so `MULTIPLY` gives 0 and `ADD` / `ABSOLUTE` give the bare value | Tick Standard Shipping Fee and set its Price Source to the base you want for all three |
+| *Calculation Logic* = Amount Lowest / Highest makes no difference | The storefront always takes the first qualifying price set in priority order | Order the price sets by Priority Level instead |
+| An Inactive price book still appears as a shipping method | Status is stored as the `PRICE_BOOK_STATUS` extension; the storefront filters on the header status column | Delete the book (soft delete) or remove it as website default and rename it; ask the product team about the extension / column mismatch |
+| No *Shipping method* block, or fee always RM 0.00 | Website has *Enable Shipping Fee Process* off, *Shipping Fee Options* is not *Shipping Pricebook*, no *Default Shipping Price Book Code*, or no *Item Code for Shipping Fee* (no item → no line) | Complete the website Details section in [CP Commerce Admin](/applets/ecommerce/cp-commerce-admin-applet/) |
+| Price Source = Pricing Scheme gives no fee | The storefront reads `pricing_scheme` from the cart line, which carries no such number | Use Base Quantity, Standard / Net / Transaction Amount or Price Unit Cost; model tiers as several price sets |
+| Old price sets carry duplicate treatment entries | An earlier version of the save effect appended a second `STANDARD_SHIPPING_FEE` / `HANDLING_FEE` / `FUEL_SURCHARGE` entry whenever the set had exactly one treatment | Open the price set and Save once: the current effect collapses duplicates, keeping the last entry per type |
+| Default Selection throws or does not keep Branch / Location | The settings component is not wired to the applet store (no container loaded, no save listener) | Nothing to configure here; the applet reads no default branch or location |
+| "Could not calculate the shipping fee because the cart kept changing" | The cart revision changed while the fee was being computed; the storefront retries a bounded number of times and then gives up | Retry checkout once the cart is stable |
+
+## Related documentation
+
+- [CP Commerce Admin](/applets/ecommerce/cp-commerce-admin-applet/) — website *Shipping Fee Options*, default shipping price book, shipping-fee item and shipping providers.
+- [Pricebook](/applets/master-data/pricebook-applet/) — discounts, sales prices and membership points with the same rule engine design.
+- [E-Commerce module](/modules-v2/ecommerce/) and [Core module](/modules-v2/core/).
+- [E-commerce specialist role guide](/guides/roles/ecommerce-specialist/).

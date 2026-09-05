@@ -5,7 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/master-data/shipping-pricebook-applet.md",
   "content/en/applets/inventory-workflow/stock-balance-applet.md",
   "content/en/applets/inventory-workflow/stock-conversion-applet.md",
   "content/en/applets/inventory-workflow/stock-replenishment-applet.md",
@@ -102,7 +101,7 @@
    "page": "content/en/applets/master-data/organisation-applet.md",
    "date": "2026-09-05",
    "run": 17,
-   "note": "Registry Organization_Applet 'Organization ' (trailing space in name; title 'Organization'). Applet-local settings; owner of Knock Off Configuration, company e-Invoice/Peppol/tax/timezone, branch main/delivery location and marketplace. 8 of 12 screenshots dropped (test data with a person's name / brands / possible customer abbreviation) — recapture list in findings run 17."
+   "note": "Registry Organization_Applet 'Organization ' (trailing space in name; title 'Organization'). Applet-local settings; owner of Knock Off Configuration, company e-Invoice/Peppol/tax/timezone, branch main/delivery location and marketplace. 8 of 12 screenshots dropped (test data with a person's name / brands / possible customer abbreviation) \u2014 recapture list in findings run 17."
   },
   {
    "page": "content/en/applets/master-data/pricebook-applet.md",
@@ -115,6 +114,12 @@
    "date": "2026-09-05",
    "run": 19,
    "note": "No registry row (overview of applets around the stock balance, not an applet). Restructured as an index page per the run-19 instruction / lane 2 EcomSync precedent: no applet_code/applet_repo; per-section sources map (where-it-fits, data-model, background-jobs, troubleshooting); title kept. Old 'import lines from ...' lists replaced by the DCO quantity-signum list (25 stock-moving types), the FINAL -> ledger -> balance processor chain, consumers and jobs. Topic: kb/topics/stock-balance.md (new; the stock-balance-applet page should extend it)."
+  },
+  {
+   "page": "content/en/applets/master-data/shipping-pricebook-applet.md",
+   "date": "2026-09-05",
+   "run": 20,
+   "note": "Registry ShippingPricebookApplet 'Shipping Pricebook' (title changed from 'Shipping Pricebook Applet'). No working applet setting (Field Settings is an unbound stub; Default Selection and Personalization are unwired). Only consumer is the CP Commerce storefront's client-side ShippingManager, documented in Lifecycle. 5 of 12 screenshots dropped (tenant code in sidebar / possible person name in listing rows / marketing infographic) - recapture list in findings run 20."
   }
  ],
  "skipped": [
@@ -124,7 +129,7 @@
   },
   {
    "page": "content/en/applets/inventory-workflow/delivery-installation-applet-V2-applet.md",
-   "reason": "Second page for registry row delivery-installation-applet (route applet/wavelet/erp/logistic/delivery-installation-applet); the canonical page delivery-installation/delivery-installation-applet.md is in lane 3's queue. Not rewritten — same situation as F-0050; merge/alias decision for Vincent, facts for lane 3 in findings.md run 5."
+   "reason": "Second page for registry row delivery-installation-applet (route applet/wavelet/erp/logistic/delivery-installation-applet); the canonical page delivery-installation/delivery-installation-applet.md is in lane 3's queue. Not rewritten \u2014 same situation as F-0050; merge/alias decision for Vincent, facts for lane 3 in findings.md run 5."
   },
   {
    "page": "content/en/applets/master-data/group-maintenance-V2-applet.md",
@@ -144,11 +149,11 @@
   },
   {
    "page": "content/en/applets/inventory-workflow/introduction-to-stock-take-applet.md",
-   "reason": "Duplicate second page for registry row StockTakev2 'Stock Take' — merged into inventory-workflow/stock-take-applet.md (run 13). Marketing intro with no facts the canonical page lacks; no inbound links. Not rewritten; recommend delete + alias (Vincent's decision, F-0050 pattern)."
+   "reason": "Duplicate second page for registry row StockTakev2 'Stock Take' \u2014 merged into inventory-workflow/stock-take-applet.md (run 13). Marketing intro with no facts the canonical page lacks; no inbound links. Not rewritten; recommend delete + alias (Vincent's decision, F-0050 pattern)."
   },
   {
    "page": "content/en/applets/inventory-workflow/inv-item-maintenance-applet.md",
-   "reason": "Duplicate second page for registry row InvItemMaintenanceApplet (F-0007) — merged into master-data/inv-item-maintenance-applet.md in run 14 (its screenshots re-used there). Not rewritten; recommend delete + alias /applets/inventory-workflow/inv-item-maintenance-applet/ on the canonical page (Vincent's decision, F-0050 pattern)."
+   "reason": "Duplicate second page for registry row InvItemMaintenanceApplet (F-0007) \u2014 merged into master-data/inv-item-maintenance-applet.md in run 14 (its screenshots re-used there). Not rewritten; recommend delete + alias /applets/inventory-workflow/inv-item-maintenance-applet/ on the canonical page (Vincent's decision, F-0050 pattern)."
   }
  ],
  "updated": "2026-09-05",
