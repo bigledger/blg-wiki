@@ -1106,3 +1106,136 @@ Recapture wanted from a GadgetSphere-seeded tenant: Shipping Pricebook Listing, 
 - Method: the Pricebook (run 18) and Shipping Pricebook applets share the copy-pasted settings scaffolding; whether Default Selection works depends only on whether the component subscribes to `selectMasterSettings`. Check that one line before documenting any `DEFAULT_*` key in this applet family.
 - `gates.py` / `applet-scan.sh` not applicable (shared `FieldConfigurationComponent` not routed); plain-grep second pass done for `DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `APPLET_SETTINGS`, `FIRST_MATCH`, `PRICE_BOOK_STATUS`, every treatment key and every rule key.
 - Customer-specific repos that also contain shipping-price-book code (four storefront forks and two platform forks found by the bounded grep) were not opened; the org-wide `wavelet-cp-commerce` is the canonical storefront and is cited by name.
+
+## Pages completed (runs 21–22, Stock Balance)
+
+- `content/en/applets/inventory-workflow/stock-balance-applet.md` — written in run 21 (the run was killed by a rate limit after the page was committed but before the ledger / topic / state were recorded); run 22 re-verified every cited line against the code and recorded it. Registry `erp_stock_balance_applet` "Stock Balance" (TNT-USER, ACTIVE; `documentation_url` = `/applets/stock-balance-applet/`, kept as alias). Title changed from "Stock Balance Applet" to "Stock Balance"; `page_type: applet`; `applet_code`, `applet_repo`, `modules: [inventory, purchasing, pos, manufacturing]`, `related_applets` (11), per-section `sources:` (screens, configuration, fields, lifecycle, troubleshooting); `weight` 185 and tags kept; no BOM (file had none). Body: Overview · Where it fits · Screens and menus (listing, advanced search, unreachable pages) · Configuration (prerequisites; "No exposed control found (commit `429dba9`)"; keys read without a control; settings in other applets; server-side permission with targets) · Fields (search → DTO table; listing columns → DTO / backend column) · Lifecycle and effects (reads only; query shape; no posting proof block applies) · Related applets · Troubleshooting (11 rows) · Related documentation. Sources: applet 429dba9 (2025-12-02), backend 20fbeede40, shared-utilities a8c38a2. Topic `kb/topics/stock-balance.md` extended (run 19's applet fact corrected: the listing reads `inv/stock-availability`, not `InventoryItemService.getByCriteria`).
+
+## Registry / naming mismatches (runs 21–22)
+
+- None. One registry row, one repo, one page (plus the index page `related-applets-stock-balance.md`, run 19).
+
+## Direction / fact reversals found (runs 21–22, Stock Balance)
+
+- Old page: "drill down into bin and scrap-bin balances" and "view the batch / movement history of an item". Actual: the Stock Balance View (Main / Bin / Scrap Bins) and Batch No History pages are registered but unreachable — nothing navigates to them, the bin grids bind to `[]`, and Batch No History queries the item master. Removed.
+- Old page: the grid "shows available quantity" / "reserved quantity". Actual: the endpoint returns `qty_reserved`, `qty_adjustment`, `qty_available`, FIFO / LIFO cost, but the listing defines columns only for item code, EAN, company, location, `qty_balance` (= `qty_ledger`), `ma_cost`, `company_last_purchase_cost`. Nothing else is reachable through the Columns panel.
+- Old page: the Companies filter "restricts the grid to the selected companies". Actual: the shared search emits `companyGuids` but `onSearch` never reads it (assignment commented out). The Company column filter is the working alternative.
+- Old page: "Item Code — exact match". Actual: Item Code is sent as the fuzzy `keyword` (space-split `ILIKE` over code, name, description, scan code, alternate codes, remarks).
+- Old page: "the applet's Field Settings hide the cost columns". Actual: no settings pages exist (`settingItems = []`); the `HIDE_LISTING_*` keys live in an unused tooltip component and have no effect.
+- Old page: opening-stock upload / import from the applet. Actual: none; opening stock is a Stock Adjustment (already corrected on the index page in run 19; kept consistent here).
+
+## Findings for the product team (runs 21–22, Stock Balance)
+
+- **Dead scaffolding shipped in the build**: `StockBalanceView` (3 tabs) and `BatchNoHistory` pages, `AppletSettings` model with document-applet keys, `CustomTooltip` reading `HIDE_LISTING_{AVG,LAST_PURCHASE,FIFO,LIFO}_COST` — none reachable. Either wire them (the tooltip would be a cheap per-role cost-hiding feature if the `SHOW_LISTING_*` permissions were seeded) or delete them.
+- **Companies filter is a no-op** (`stockBalSearchDto.company_guids` commented out in `onSearch`). With READ targets scoped to companies only, the backend derives companies from the requested locations, so the result is still correct — but the control misleads.
+- **Location drop-down is unpermissioned** (`DropDownController` L153–L156 commented out): any authenticated user of the tenant can list every location code / name via `POST .../drop-down/location`. The stock figures themselves are still gated by the stock-availability READ targets.
+- **No location-status filter** in `StockAvailabilityUow` — a deactivated location with a residual balance keeps appearing (gt#9080 pattern). Consider blocking deactivation while `qty_ledger <> 0`, or filtering `loc.status`.
+- **Item Code filter is fuzzy**: `SM-` matches every code containing `SM-` and also names / remarks. An exact-code option would remove a recurring confusion.
+- **`qty_available` is computed client-side but never shown**; the grid re-implements Stock Availability's merge (`removeDuplicate`) for nothing. Either show it or drop the computation.
+
+## Cross-lane link requests (runs 21–22, Stock Balance)
+
+- `content/en/applets/inventory-workflow/stock-availability-applet.md` (lane 4, own, next touch): state that the Stock Balance applet calls the same `inv/stock-availability` endpoint and that its *Balance* column equals this grid's *Bal*; `related_applets` already contains `stock-balance-applet`? — verify and add.
+- `content/en/applets/inventory-workflow/stock-report-applet.md` (lane 4, own, next touch): Troubleshooting row for "Historical Stock Balance ≠ Stock Balance applet" (nightly HBAL snapshot vs live chain tip; gt#4807) — same request as run 19, not yet applied.
+- `content/en/applets/master-data/organisation-applet.md` (lane 4, own, next touch): Location section — "empty the location (transfer / adjust out) before deactivating; a deactivated location with stock still shows in Stock Balance / Stock Availability" (gt#9080).
+- `content/en/applets/inventory-workflow/non-stock-and-trade-in-applet.md` (lane 4, own, next touch): state which enquiry screens include trade-in stock (Stock Balance and Stock Availability via the NSTI UNION; not Stock Report's historical / summary reports — gt#1422 open).
+- `content/en/applets/inventory-workflow/stock-reservation-applet.md` (lane 4, own, in queue): back-link `stock-balance-applet`; note that `qty_reserved` is returned by the endpoint but not shown in the Stock Balance grid.
+- `content/en/modules-v2/inventory/_index.md` (module owner): "Stock Balance & Valuation Engine" row → link both `/applets/inventory-workflow/stock-balance-applet/` (the applet) and the index page; link text "Stock Balance Applet" → "Stock Balance".
+- `content/en/modules/manufacturing.md`, `content/en/modules/manufacturing/_index.md`, `content/en/modules/inventory/_index.md`, `content/en/modules/inventory-warehouse/_index.md`, `content/en/modules-v2/inventory/reports/_index.md`, `content/en/modules-v2/inventory/use-cases/_index.md`, `content/en/modules-v2/ecommerce/use-cases/_index.md`, `content/en/modules-v2/manufacturing/use-cases/_index.md` (module owners): links to `/applets/stock-balance-applet/` resolve via the alias; link text "Stock Balance Applet" → "Stock Balance" on next touch.
+
+## Screenshots (runs 21–22, Stock Balance)
+
+Kept (3): `sb-setting.png` (Settings page: only the generic `STAGING_TENANT` label and the shared permission menu), `sb-column.png` (Columns tool panel), `sb-search.png` (Advanced Search panel) — no rows, no names, no tenant-identifying data.
+
+Dropped from the page (references removed; files to quarantine, 14):
+- `sb-listing.png`, `sb-listing-1.png`, `sb-wo-pivot.png` — listing rows with test items that include people's first names (e.g. "… TEST 1", "… wavelet"), a consumer-electronics brand in an item name, and company labels of the staging tenant.
+- `sb-chart.png`, `sb-chart-pie.png`, `sb-chart-donut.png`, `sb-export.png`, `sb-export-csv.png`, `sb-export-excel.png`, `sb-export-download.png` — ag-grid chart / export menus captured over the same listing rows (same names visible in the background), and they document ag-grid, not the applet.
+- `sb-role-perm.png`, `sb-user-perm.png` — shared permission screens showing role / user names of the staging tenant.
+- `sb-quick-guide.png`, `stock-balance-overview.png` — AI marketing infographics (2.2 MB and 2.8 MB), do not show the product (same decision as the Pricebook / Shipping Pricebook pages).
+
+Recapture wanted from a GadgetSphere-seeded tenant: the default pivot listing (Item Code rows × `GS-KV-01`, `GS-KV-02`, `GS-PEN-01` … columns with a total footer), the flat listing with Pivot Mode off, and the right-click context menu showing Export → CSV / Excel.
+
+## Questions for Vincent (runs 21–22)
+
+1. The Location drop-down endpoint's permission check is commented out in the backend (`DropDownController` L153–L156). Documented as behaviour on the page; file as an issue against `blg-akaun-platform-java`?
+2. Should the unreachable Stock Balance View / Batch No History pages and the dead `HIDE_LISTING_*` tooltip be filed as a cleanup issue on `blg-applet-wavelet-stock-balance-applet`, or left?
+
+## Notes (runs 21–22)
+
+- Run 21 lost only bookkeeping, not content: the page in commit 78cdaed4 matched the standard (all nine H2s in order, per-section `sources:`, four-proof census, no posting block by design) and passed `tests/content-lint.sh`; run 22 re-verified 12 cited backend / applet line ranges — all correct — and changed nothing on the page.
+- Method (METHOD.md candidate): **for an enquiry applet, the "consumed" proof of a permission is the target-filter branch in the controller, not the `hasPermission()` line** — `_READ` with `getCompanyLocationTargetMap()` behaves differently from `_ADMIN`/`_OWNER` and the "empty result vs not authorised" symptom depends on whether the intersection survives.
+- `gates.py` / `applet-scan.sh` not applicable (no settings routes). Plain-grep second pass done for every key in `applet-settings.model.ts`, `HIDE_LISTING_*`, `SHOW_LISTING_*`, `DEFAULT_*`, `tooltipComponent`, `company_guids`.
+
+## Pages completed (run 22, Stock Conversion)
+
+- `content/en/applets/inventory-workflow/stock-conversion-applet.md` — rewritten to the standard. Registry `stock_conversion_applet` "Stock Conversion" (TNT-USER, ACTIVE, 2024-01-29; `documentation_url` = this page path). Title changed from "Stock Conversion Applet" to "Stock Conversion"; `page_type: applet`; `applet_code`, `applet_repo`, `modules: [inventory, manufacturing]`, `related_applets` (10), `guides`, per-section `sources:` (screens, configuration, fields, lifecycle, troubleshooting); `weight` 170 and tags kept; no BOM (file had none); no aliases (registry URL already equals the page path). Old marketing body (analogies, Quick Start, scenarios, FAQ, invented settings) replaced by Overview · Where it fits · Screens and menus · Configuration (prerequisites; applet-local settings table; stub Field Settings; read-without-control keys; settings elsewhere; server/client permissions) · Fields (Main Details; line panel; Job Order Link) · Lifecycle and effects (transition table with backend throws; full posting proof block; printing) · Related applets · Troubleshooting (10 rows) · Related documentation. Sources: applet 9a9d22f (2026-08-06), backend 1ff620ef0e (2026-09-05), ts-lib 7d1616a9e, shared-utilities a8c38a2. Topic `kb/topics/stock-conversion-applet.md` created; `kb/topics/stock-balance.md` given a stock-conversion edge.
+
+## Registry / naming mismatches (run 22)
+
+- None for this page. Observation: repo `blg-applet-wavelet-internal-kitting-applet` exists (gt#6084, gt#6598) with **no ACTIVE registry row under any kitting name** and no wiki page — not documented per ADR-0002; listed here so nobody creates a page for it by mistake.
+
+## Direction / fact reversals found (run 22, Stock Conversion)
+
+- **Old page: "Upon Finalization, stock is deducted from inputs and added to outputs."** Actual: Input lines are stored `+quantity_base`, Output lines `−quantity_base`, `quantity_signum = 1`, and the balance is `prev + signum × base` — **an Input line increases stock, an Output line decreases it**. Serial-number create/delete and bin create/update follow the same sign. Documented as behaviour; whether the tab names or the constants are wrong is a product question (below).
+- Old page: "The system calculates the total value of inputs and assigns it to the outputs." Actual: `amount_signum = 0`, no price control on the line panel, no value logic anywhere; MA cost is recomputed per ledger line from a line `amount_txn` that the applet never sets.
+- Old page: "Bin: specific location within the warehouse … Strict Bin Validation: prevent finalization if items are not in the selected Bin." Actual: no such setting; bins are a JSON list on the line, validated only by the balance processor after FINAL.
+- Old page: "Insufficient Stock error prevents finalization." Actual: no stock-on-hand check anywhere (DCO is header-only; the ledger allows negatives).
+- Old page: Settings › Application Settings "Enable Auto-Reference", "Strict Bin Validation"; Default Selection "Default Bin". Actual: Application Settings is an unbound stub; Default Selection has Default Branch and Default Location only.
+- Old page: "Batch Actions: select multiple records for finalization or printing"; "Printable Documentation". Actual: batch FINAL exists; no print action exists in the applet (backend endpoint only).
+- Old page: "To correct a mistake you must create a Reverse Conversion." Partly right — there is no VOID button, but the backend VOID endpoint exists and reverses the ledger lines.
+- Old page: Conversion Code "auto-generated". Actual: free text, required, not unique; the backend running number `stock_conversion_no` is generated but never shown.
+
+## Findings for the product team (run 22, Stock Conversion)
+
+- **Tab semantics vs constants** (the reversal above). If Input is meant to be *consumed*, `AppletConstants.amount_signum_input/output` (and the four `quantity_base` assignments in input/output add/edit) are inverted. If Input is meant to be *into stock*, the tab labels and the old documentation misled users. Either way the listing/guides need one sentence saying which.
+- **`DEFAULT_BRANCH` is silently mandatory**: the branch drop-down is commented out of Main Details but the `branch` control keeps `Validators.required`; with no applet-level Default Branch, SAVE can never be enabled and nothing tells the user why.
+- **Personal Default Selection is stored but never applied** (no `selectPersonalSettings` subscriber); **Field Settings is a stub** (unbound toggles, SAVE without handler) — same copy-paste family as Shipping Pricebook (run 20).
+- **Zero-cost stock-in**: Input lines enter the ledger with no `amount_txn`, diluting the location's moving-average cost on every conversion.
+- **No line validation**: no code uniqueness, no quantity/serial-count cross-check, no stock check; lines saved without `guid_comp`.
+- **VOID endpoint has no permission check** (`/backoffice-ep/void/{guid}` checks only authentication); FINAL needs only `_READ`.
+- **Dead surface**: `process_type_code` options, `job_order_hdr_guid` / `process_guid` / `machine_guid` DCO checks, `PRINTABLE` setting and the Jasper print endpoint, `HIDE_*` keys read by templates with no settings control.
+- **Unreachable batch-FINAL error**: the listing filters out FINAL rows client-side, but a stale grid can still send a second FINAL and surface the 403 text as a toast.
+
+## Cross-lane link requests (run 22, Stock Conversion)
+
+- `content/en/applets/inventory-workflow/related-applets-stock-balance.md` (lane 4, own, next touch): the two Stock Conversion rows (L82, L127) — state that the ledger `server_doc_type` is the literal `Stock Conversion Applet` (not a `ServerDocTypes` value, hence outside the 25-type DCO sweep) and that Input adds / Output removes.
+- `content/en/applets/inventory-workflow/stock-report-applet.md` (lane 4, own, next touch): mention that conversion lines appear under document type `Stock Conversion Applet` in movement reports.
+- `content/en/applets/inventory-workflow/stock-adjustment-applet.md` (lane 4, own, next touch): `related_applets` += `stock-conversion-applet`; one sentence "for many-to-one / one-to-many item changes use Stock Conversion (no journal, no reason code)".
+- `content/en/applets/manufacturing/internal-packing-order-applet.md` (lane 3): `related_applets` += `stock-conversion-applet`; say which tool does kitting — Packing Order (packing list, production side) vs Stock Conversion (ad-hoc, no BOM) — and that an internal-kitting applet repo exists without a registry row.
+- `content/en/applets/master-data/inv-item-maintenance-applet.md`, `doc-item-maintenance-applet.md`, `organisation-applet.md` (lane 4, own): back-link `stock-conversion-applet` (inventory link / PACKAGE ratio decide whether a line posts; branch `MAIN_LOCATION` is the fallback store and the Default Selection auto-fill).
+- `content/en/modules-v2/inventory/_index.md` L58, `content/en/modules-v2/inventory/related-applets/_index.md` L22, `content/en/modules-v2/inventory/use-cases/_index.md` L32, `content/en/modules-v2/manufacturing/related-applets/_index.md` L22, `content/en/modules-v2/manufacturing/use-cases/_index.md` L32 (module owners): link text "Stock Conversion Applet" → "Stock Conversion"; add "no bill of materials, no costing".
+
+## Screenshots (run 22, Stock Conversion)
+
+Kept (1): `static/images/stock-conversion-applet/stock-conversion-settings.png` — Settings menu only (generic `STAGING_TENANT` label, no data).
+
+Dropped from the page (references removed; files to quarantine, 3):
+- `stock-conversion-listing.png`, `stock-conversion-create-form.png` — listing rows include a person's first name as test data ("… test 2") and a location label that may be a product/brand name.
+- `stock-conversion-overview-infographic.png` — AI marketing infographic (same decision as Pricebook / Shipping Pricebook / Stock Balance).
+
+"Login e-mail only" captures: none.
+
+Recapture wanted from a GadgetSphere-seeded tenant: the listing with two DRAFT and one FINAL row (codes like `SC-KV01-0001`), the create form on Main Details, the Input tab with one accessory line and the Output tab with one bundle line, and the line panel's Item Details tab showing the five controls.
+
+## Questions for Vincent (run 22)
+
+1. **Input / Output direction.** Code: Input adds stock, Output removes it. Is that the intended meaning of the tabs (into / out of stock), or should the constants be flipped so that Input = consumed? The page documents the code; a one-line product decision would let the guide say it without hedging.
+2. Should the Stock Conversion applet get a VOID button (backend endpoint exists, no UI), or keep "post a reversing conversion" as the documented correction path?
+3. File issues for (a) the silently mandatory `DEFAULT_BRANCH`, (b) the un-permissioned VOID endpoint, (c) dead Field Settings / personal defaults — or leave as documentation?
+
+## Notes (run 22)
+
+- Pace: Stock Balance verification + bookkeeping ~20 min; Stock Conversion ~55 min (own tables and two processor chains, plus the direction proof). Stopped before Stock Replenishment deliberately — see the handover below.
+- Method (METHOD.md candidate, extends §12 and §22): **for a non-generic document, the direction proof is not a DCO signum — it is the applet's own constants × the factory copy × `calculateResultBalance`.** Grep `quantity_base =` in the applet (all four add/edit components), then `setQuantity_signum` / `setQuantity_base` in the factory method for that document, then confirm the arithmetic in `StockBalanceHelper.calculateResultBalance`. The serial create/delete branch (`signum × base > 0`) is an independent second witness.
+- Method: a required form control whose template control is commented out is a hidden prerequisite — grep `Validators.required` and diff against the template's rendered controls before writing "Before you can use it".
+- `gates.py` / `applet-scan.sh` not applicable (settings are applet-local, no shared screen). Plain-grep second pass done for every key in `applet-settings.model.ts`, `HIDE_BIN`, `SHOW_COSTING_DETAILS`, `selectPersonalSettings`, `PRINTABLE`, `print`, `void`, `discard`, `delete`.
+
+## Handover: Stock Replenishment (next in queue, not started — run 23)
+
+Read but not written up (registry `stockReplenishmentApplet` "Stock Replenishment Applet", TNT-ADMIN, ACTIVE; `documentation_url` points at Confluence, so the page will need an alias decision only if Vincent wants the registry updated; repo `blg-applet-wavelet-stock-replenishment-applet` commit 7169e01, 2026-09-02):
+- Menus: Replenishment Runs, Replenishment Events, Replenishment Template, Order Qty Reports, Audit Trail. Settings: Field Settings (**stub** — same unbound template, component has no form at all), Default Selection (`DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `STOCK_REPLENISHMENT_DETAILS_TAB_ORDER` — drag-and-drop tab order over nine Run-view tabs; a Reset that nulls the defaults), Printable Format Settings, **Email Template** (applet-level notification templates with placeholders); Personalization: Field Settings + Default Selection.
+- The applet's `api-service.ts` posts to `inv/stock-availability` (same endpoint as Stock Balance / Availability) for the item list; run/template/event data go through ts-lib `StockReplenishment*` services (`inv-stock-replenishment-algos`, template/event/run fulfillment-strategy and -strategy-location services).
+- **Fulfillment Strategy** component (shared by template / event / run, later level overrides earlier): Fulfillment Type (`PURCHASE_ORDER_ONLY` default, `INTERNAL_STOCK_TRANSFER_ONLY`, `INTER_COMPANY_TRANSFER_ONLY`, …), Stock Control strategy, Document Status for generated POs, *Block existing open PO*, Transfer Scope / Minimum Transfer Qty / Source Priority / Target Scope, surplus handling (`AUTO_LOWEST_STOCK_LOCATION` default, surplus transfer scope, min surplus qty, surplus doc type `INTERNAL_OUTBOUND_STOCK_TRANSFER`), e-mail notification (recipients; on success / failure / partial / blocked). Filters on template / event / run have AND/OR logic and a negation toggle per group (item, location, supplier, category).
+- Backend: 43 repo issues, most July–August 2026 (fulfillment strategies #5–#19, PO fulfillment processor #16, internal stock transfer processor #20, MAX surplus redistribution processor #21, e-mail service #22/#39–#41, rules & negation #29/#36, recurring events #45, inter-company transfer #10/#31/#33/#34 and Organisation intercompany setting #30, supplier priority from Doc Item entity pricing #47, run save error #37). Backend file list is in the run-22 tool output (grep `replenish` under akaun-api / javasdk / client-sdk) — start from the processors and `StockBalanceHelper.generateCurrentLocationStockBalanceContainerFromCustomDto` (min/max seeding, run 19 topic).
+- Screenshots: two AI infographics only (`Stock Replenishment-applet/…-overview-infographic.png`, `stock-replenishment/quick-start-guide.png`) — both to drop; no product captures exist.
+- Estimate: a full run (large document-family applet with four sub-entities and ~10 processors).
