@@ -93,5 +93,12 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
     Pricebook rules are evaluated by the client-side `PricebookCalculator` in blg-shared-utilities
     (POS/SI/SO/SQ) and a separate server engine (OCR points) — and they disagree. Grep the consumer,
     not the applet, and document the divergence.
-22. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+22. **Which documents move stock: only 25 of 137 doc types** (lane 4, run 19) — the truth is the DCO
+    `correctQuantitySignum` constants across the whole `FinancialDocDataConsistencyObject/` directory,
+    not the `ServerDocTypes` enum. All credit/debit notes and plain GRN/GIN are 0. The balance is a
+    chain tip (linked `bl_inv_txn_line`), not a sum; VOID writes negated lines. Ten quantity columns
+    on the balance tables are dead (only `qty_ledger`, `qty_reserved`, `qty_min/max_level`, cost live).
+23. **Hub/index pages** (no registry row): build from the DCO signum sweep, the processors' queue codes,
+    and a bounded `git grep` per applet repo for the read endpoints; gates.py / applet-scan.sh do not apply.
+24. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.

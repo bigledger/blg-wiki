@@ -17,6 +17,7 @@ from imagination. Every configuration claim is traceable to a file in `/home/mar
 title: "<registry name exactly, e.g. Sales Invoice (Internal)>"   # bl_applet_hdr.name
 description: "<one sentence: what it does, for whom>"
 applet_code: "<bl_applet_hdr.code>"          # the machine-checkable link to the registry
+page_type: applet | index                   # index = a hub page with no registry row (EcomSync, Stock Balance); the parity check allowlists these
 applet_repo: "<refs/ repo dir name>"          # e.g. blg-applet-wavelet-internal-sales-invoice-applet
 modules: [financial-accounting, sales-crm]    # module slugs under content/en/modules-v2/
 related_applets: [<slug>, <slug>]             # wiki slugs of applets this one depends on / feeds

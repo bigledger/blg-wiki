@@ -662,3 +662,12 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0176 (2026-09-05) PDG create is async: 200 + PROCESSING, then a job generates combinations; if no location matches, the job throws and sets the header DELETED, which the listing silently hides. OPDG copies created without quantities. Empty location target list = every outlet visible. Delete PDG is a hard delete FK-blocked once an OPDG exists. Effective/End dates and brand-corner rules are client-side only. Tickets?
 - [x] F-0177 (2026-09-05) 26 of 33 screenshots (real tenant/company/mall/distributor names, staff e-mails, developer name, brands, infographics) quarantined.
 
+## From Lane 4 run 19 — Stock Balance hub (2026-09-05)
+
+### site-wide (fact) — stock movement
+- [ ] F-0178 (2026-09-05) Eight pages (all sales/purchase credit & debit notes, plain GRN, plain GIN) must say FINAL does NOT move stock (signum 0); the two return pages need the location-precedence troubleshooting row; Stock Report needs the "HBAL snapshot vs ledger sum" distinction. Cross-link batch.
+- [ ] F-0179 (2026-09-05) INTERNAL_SUPPLIER_RTV has quantity signum +1 — intended (supplier-tenant mirror) or inverted? Vincent.
+
+### registry
+- [ ] F-0180 (2026-09-05) stockLevelMonitoringApplet (ACTIVE 2026-08, repo exists, reads the balance) has no page — add to lane 4's queue? `page_type: index` added to the standard for hub pages (EcomSync, Stock Balance) so the parity check can allowlist them.
+
