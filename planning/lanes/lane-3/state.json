@@ -8,7 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/ecommerce/cp-commerce/push-notification-configuration.md",
   "content/en/applets/ecommerce/seller-admin-applet.md",
   "content/en/applets/ecommerce/seller-applet.md",
   "content/en/applets/ecommerce/shopping-cart-applet.md",
@@ -131,6 +130,11 @@
    "page": "content/en/applets/ecommerce/pdg-applet.md",
    "date": "2026-09-05",
    "note": "run 18; applet @e37bca3 (customer-named repo, pseudonym customer-repo-de2e40; shared-utilities @a8c38a2) + backend @353fa9a; master-data/planning applet, no signums/journal/stock; async PDG/OPDG create (PROCESSING->ACTIVE, failure->DELETED hidden by listing); 3 four-proof keys, 0 seeded perms, single location-target permission (empty list = all outlets); hard delete blocked by opdg_hdr FK; 7 of 33 images kept; customer name removed from page"
+  },
+  {
+   "page": "content/en/applets/ecommerce/cp-commerce/push-notification-configuration.md",
+   "date": "2026-09-05",
+   "note": "run 19; NOT an applet (no registry row) - restructured as feature sub-page of cp_commerce_admin_console_v1 (page_type: applet-feature); backend @353fa9a + admin applet @813f007c8 + base app wavelet-cp-commerce @247243251; credential = service-account JSON in bl_cms_website_hdr.property_json.firebase (11 keys, INCORRECT_CONFIGURATION_WEBSITE_CONFIG_FIREBASE), no admin screen; FCM topic websiteCode.topicGuid.topicCode; two 'default topic' notions; isApp gate; FirebaseApp cached per tenant.website; old page named a customer + leaked identifiers, 0 of 5 images kept (DB capture shows a real service-account e-mail and private-key head - rotate key)"
   }
  ],
  "skipped": [
@@ -153,8 +157,8 @@
  ],
  "updated": "2026-09-05",
  "notes": [
-  "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) \u2014 INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/\u2026] and [src:gh:bigledger/blg-intranet#n].",
-  "2026-09-05: Vincent asked twice that blg-intranet e-invoice knowledge be used \u2014 e-invoice pages moved to the front of the queue."
+  "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) — INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/…] and [src:gh:bigledger/blg-intranet#n].",
+  "2026-09-05: Vincent asked twice that blg-intranet e-invoice knowledge be used — e-invoice pages moved to the front of the queue."
  ],
  "rework": []
 }

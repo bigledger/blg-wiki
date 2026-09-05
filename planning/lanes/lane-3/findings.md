@@ -931,3 +931,66 @@ One large document applet this run — the approval subsystem (submission servic
 ### Stopping point
 
 One applet this run — the template-clone repo (hundreds of unrouted components) had to be separated from the seven routed screens, and the asynchronous create path, the hard delete and 33 screenshots each needed verification. Next in queue: `content/en/applets/ecommerce/cp-commerce/push-notification-configuration.md` — verify against the registry first (likely a CP Commerce feature, not an applet; ADR-0002 skip candidate).
+
+## From Lane 3 run 19 (2026-09-05) — content/en/applets/ecommerce/cp-commerce/push-notification-configuration.md
+
+### Verdict: not an applet — restructured as a feature sub-page of CP Commerce Admin
+
+- **No registry row** under any plausible name (push / notification / firebase / commerce); the only Commerce row is `cp_commerce_admin_console_v1` (CP Commerce Admin, done run 1). Per the run-19 brief the page was **not** forced into the single-applet standard: it is rewritten as a short feature sub-page (front matter `page_type: applet-feature`, `applet_code: cp_commerce_admin_console_v1`, `parent_page:`), same URL, alias `/modules/ecommerce/push-notification-configuration/` added (the page was moved there from `content/en/modules/ecommerce/` in commit 163d8446 without an alias).
+- **The old page was a privacy and secrets problem, live on the public wiki.** It was a build guide for one customer's white-label app (`wavelet-cp-commerce-app-…`, pseudonym `customer-repo-fa3ee2`) and named the customer in the description and body, with its Android package / iOS bundle IDs, Firebase project id and project number, OAuth client id, GCM sender id and app ids (API keys had been redacted earlier in bd1c933a; the identifiers had not). It also pasted a third-party starter template's `google-services.json`. All removed.
+- Rewritten from: backend @353fa9a (`FirebaseAkaunService`, `CmsWebsiteService`, `CmsNotificationService`, `CmsTopicSubscriptionService`, `MemberLabelTopicService`, `CmsTopicUow`, controllers, `NotificationSchedulerProcessor`, `NotificationReadStatusLinkGeneratorProcessor`, `MemberLabelTopicAssignmentProcessor`), admin applet @813f007c8 (website-edit, notification create/edit/scheduled, topic create), base app `wavelet-cp-commerce` @247243251 (push-notification facade/effects, topic-management effects, session bus, auth-resolver, capacitor config, environments). Customer app builds consulted only for `isApp` and the PushNotifications plugin block — cited by pseudonym.
+
+### What the code says (record for the guides)
+
+- Credential = the Firebase **service-account JSON** stored under `bl_cms_website_hdr.property_json.firebase`, per website; 11 keys mandatory, non-null, else `INCORRECT_CONFIGURATION_WEBSITE_CONFIG_FIREBASE`. **No admin screen writes it** — support edits the row. Not a server key, not the platform env credential (`FirebaseAuthService` env vars are a different path).
+- `FirebaseApp` cached per `tenantCode.websiteCode` for the API process lifetime → key rotation needs a restart.
+- FCM topic = `<websiteCode>.<topicGuid>.<topicCode>`; renaming a topic code silently orphans subscribers.
+- Publish → FCM send → `NOTIFICATION_READ_STATUS_LINK_GENERATOR` (one read/unread row per subscriber). `pushToTopic()` swallows FCM exceptions into a 200 body message; the read-status rows are generated regardless.
+- Two "defaults": app subscribes to the Website ext `SYS_AKN_WEB_CP_COMMERCE_DEFAULT_TOPIC_HDR`; the backend member-restore uses `bl_cms_topic_hdr.topic_description = 'DEFAULT'` and throws `NO DEFAULT TOPIC IS DEFINED FOR THIS TENANT…` when none.
+- `RESTRICT_NOTIFICATION_BY_MEMBER` ext is a string 'true'/'false'; the app's anonymous default-topic subscription runs only when it is 'false', a Default Topic is set, and `environment.isApp` is true (false in the base repo, true in every customer build).
+- Scheduler: rows `next_execution_date <= NOW()`, crontab-driven; recurrence (`is_recurring` + `rrule`) exists in the backend but the applet form exposes only a single date-time.
+- Members without a stored device token are skipped by the label-link processor (log line only).
+
+### Method findings (add to METHOD.md)
+
+1. **"Feature page under applets/" is a third page kind.** When a queued page has no registry row but documents a real feature of an ACTIVE applet, restructure it as a sub-page carrying the parent's `applet_code` + `page_type: applet-feature` instead of skipping — the content (credential shape, error strings, subscription gating) is worth keeping and belongs nowhere else. Needs a decision on how the parity check treats it (below).
+2. **Open every screenshot before trusting the page's own captions.** The "database configuration" capture here was a live DB row with a real service-account e-mail, client id, private_key_id and the first line of a private key; the "Firebase console" captures named a different customer than the page did. Neither was obvious from the file names.
+3. **Old build-guide pages carry identifiers, not just keys.** A previous "redact API keys" pass left project numbers, OAuth client ids, bundle IDs and app ids in place. Treat any `project_number`, `client_id`, `GOOGLE_APP_ID`, `mobilesdk_app_id`, Team ID or App Store ID as identifying.
+4. **Backend "success" ≠ delivery for integration calls.** Grep the handler for `catch (Exception e) { return ApiResponse.withoutData(e.getMessage())` patterns — the HTTP status lies and the downstream queue still runs; that is the troubleshooting row to write.
+
+### Screenshots (kept 0 of 5 — loop to quarantine `static/images/push-notifications/`)
+
+- `db-config-in-bl-cms-website-hdr.jpg` — **secret material**: real Firebase service-account `client_email`, `client_id`, `private_key_id`, project id and the beginning of `private_key` for a real customer's project. Quarantine first; Vincent should consider the key compromised (it has been on the public wiki since 2026-02) and have the customer's service-account key rotated.
+- `firebase-config-cloud-messaging.jpg` — a second real customer's Firebase project name, sender id, iOS bundle id, APNs key IDs and Apple Team ID.
+- `project-settings-general-common.jpg` — same customer's project id/number, GCP organisation id and a BigLedger staff e-mail as support contact.
+- `project-settings-general-android.jpg` — package name and Android app id.
+- `project-settings-general-ios.jpg` — bundle id, iOS app id, App Store ID, Team ID.
+- **"Login e-mail only" captures (F-0167):** none — no capture shows a BigLedger login bar; the staff e-mail above is a Firebase support-contact field, not a login.
+- Recapture wanted on a demo Firebase project: Cloud Messaging tab with V1 enabled and an APNs key row (masked); Website edit showing Default Topic + Restrict Notification by Member; Notification create; Scheduled tab.
+
+### Cross-lane link requests
+
+- **ecommerce/cp-commerce-admin-applet.md** (my lane, done run 1) — on next touch: Related documentation line → "Push Notification Configuration — Firebase credential on the Website, subscription settings, publish and scheduler flow"; in the Website "Restrict Notification by Member" row add "also gates the app's anonymous Default Topic subscription"; add a *Default Topic* row (ext `SYS_AKN_WEB_CP_COMMERCE_DEFAULT_TOPIC_HDR`); Notifications section: "Publish Now sends to one topic of one website; FCM errors come back in the response message, not as a failed request"; drop the `DEFAULT_TIMEZONE` → "scheduled notifications" claim unless a reader is found (the scheduler compares `next_execution_date` to DB `NOW()`; I found no timezone read).
+- **membership/membership-admin-applet.md** (lane ?): add `cp-commerce-admin-applet` to `related_applets`; under member labels note that a Topic → Member Label Link auto-subscribes labelled members to a push topic (only members with a stored app device token).
+- **master-data/customer-applet.md** (lane 4): same one-line note under labels.
+- **developer-docs / API reference:** `cms/notifications/publish/backoffice-ep` (header `websiteCode`), `cms/topic-subscriptions/public-ep`, `…/member-device-restore/public-ep`, `…/refresh-device-token/public-ep`, `…/unsubscribe/login-ep`, `cms/notification-schedulers/backoffice-ep`, `cms/user-app-device-hdrs/backoffice-ep` are undocumented; `RESTRICT_NOTIFICATION_BY_MEMBER` is a string ext, not boolean.
+- **planning/lanes/METHOD.md** (coordinator): fold in the four method findings.
+
+### Registry / naming mismatches
+
+- No row for "Push Notification Configuration" under any name — expected; it is a feature of `cp_commerce_admin_console_v1`. Page now carries the parent's code and `page_type: applet-feature`. **The future `tests/applet-registry-parity.sh` must allow `page_type: applet-feature` pages (one code shared by the parent page and its sub-pages) — otherwise it will flag this page and `website-builder/user-manager.md`.**
+- Pseudonyms added to `kb/private/repo-pseudonyms.tsv`: three `wavelet-cp-commerce-app-*` white-label builds and one `blg-sd-*` tracker (`customer-repo-fa3ee2`, `-863427`, `-0dcd22`, `-1322ac`).
+- `content/en/applets/ecommerce/cp-commerce/_index.md` still says "CP Commerce Admin configuration guides" — fine as a section stub; not touched.
+
+### Questions for Vincent
+
+- **Security:** the DB screenshot has exposed a real customer's Firebase service-account identifiers and the head of its private key on the public wiki since February. Rotate that customer's service-account key (Firebase console → Service accounts) and update their website row; quarantine the five images from `static/` and, ideally, purge them from git history / CloudFront.
+- Do you want feature sub-pages under `applets/` (this page, `website-builder/user-manager.md`) as a recognised page kind, or should they be folded into the parent page as H2 sections? I chose the sub-page with `page_type: applet-feature`; say if the parity gate should instead require one page per code.
+- Product questions surfaced by the code (not for the wiki): (a) should CP Commerce Admin get a masked Website field for the Firebase service-account JSON; (b) should `pushToTopic()` fail the request on FCM error and skip the read-status rows; (c) unify the Website Default Topic ext with the backend's `topic_description = 'DEFAULT'` lookup; (d) invalidate the cached `FirebaseApp` when the website row changes.
+- Issue wavelet-cp-commerce#245 carries a PDF "Push Notification Configuration Guide" attachment I did not read (binary attachment); if it is the intended user guide, it should be ingested via the ingest pipeline and the customer identifiers stripped.
+
+### Stopping point
+
+One page this run — most of the time went into establishing that the page was not an applet, tracing the credential path through the backend and the base app, and inspecting five screenshots that turned out to be the run's most important finding. Next in queue: `content/en/applets/ecommerce/seller-admin-applet.md` (check the registry for a Seller Admin row first).
+
+**Addendum (same run):** the standard now defines `page_type: applet | index` (index = hub page, parity-allowlisted). This page uses `page_type: applet-feature` — a third value the enum and the parity allowlist need (a leaf feature page of an ACTIVE applet, sharing the parent's `applet_code`). Coordinator to add it or tell me to use `index`.
