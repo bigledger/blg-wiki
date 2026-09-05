@@ -722,3 +722,10 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0195 (2026-09-05) "Supplier Delivery Order" is not a purchase document: the applet writes the tenant's INTERNAL_OUTBOUND_DELIVERY_ORDER with the supplier as entity (client_doc_type marker only); 0/0; supplier-access scoping is the entity-login link. Are these drop-ship suppliers delivering to the tenant's customers (driver features suggest so) or deliveries TO the tenant? Move the page out of purchase-workflow/? Dead in templates: FINAL/VOID/DISCARD/CLOSE/print/e-mail (commented out), Create screen unreachable, batch print → unregistered endpoint, permission loader no-op. Legacy CORE1 "Supplier - Delivery Order" row (no code) → registry clean-up.
 - [x] F-0196 (2026-09-05) 5.9 MB infographic quarantined.
 
+## From Lane 4 run 24 — Stock Reservation (2026-09-05)
+
+### backend (stock reservation) — availability drift
+- [ ] F-0197 (2026-09-05) (a) Expiry job (EXPIRED_STOCK_RESERVATION_REMOVAL_PROCESSOR, only if scheduled, 10/run) soft-deletes expired headers WITHOUT releasing qty_reserved — expired holds vanish from the listing but keep reducing availability. (b) The bin-pinned path sets RESERVED by direct SQL without the processor, so a later RELEASE subtracts what was never added (negative qty_reserved). (c) TMP-removal job TTL filter inverted. (d) No availability check on plain reservations. Together (a)+(b) drift balance-row availability on any tenant using expiry or bins. Old page's "at midnight status becomes Expired and stock is restored" was fiction. Tickets?
+- [ ] F-0198 (2026-09-05) Every applet setting is dead (208 shared controls render and save; nothing reads any key). Registry doc URL → Confluence. Scheduler applet (schedulerApplet, ACTIVE, no page) is the only place processor-driven jobs can be configured — commission a page? Job Order applet (writer of reservations) has no page and no registry row.
+- [x] F-0199 (2026-09-05) Three screenshots (a username + phone numbers; codes resembling a company abbreviation; infographic) quarantined.
+

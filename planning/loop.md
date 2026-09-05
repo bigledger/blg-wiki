@@ -161,6 +161,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 - **F-0192** shopping cart: back-office edit breaks line-integrity checkout — ticket?
 - **F-0194** stock replenishment: zero-qty PO default, duplicate lines on re-run, dead filters — tickets?
 - **F-0195** Supplier Delivery Order: drop-ship to customers or delivery to tenant? (blocks the guide)
+- **F-0197** stock reservation expiry/bin paths drift availability — tickets? · **F-0198** commission a Scheduler applet page?
 - **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
   Voucher applet?; **F-0042** resolved (three distinct applets; see F-0099).
 
