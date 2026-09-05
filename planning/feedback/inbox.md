@@ -382,3 +382,11 @@ with the analysis, the changes made, and the commit hash.
 ### /applets/ (hub)
 - [x] F-0081 (2026-09-05) Dead link /applets/90-ecomsync-related-applets/ from applets/_index.md and applet-catalog.md — fixed by alias on the index page (lane 2 run 6).
 
+## From Lane 4 run 5 (2026-09-05)
+
+### /applets/inventory-workflow/delivery-installation-applet-V2-applet/
+- [ ] F-0082 (2026-09-05) Second page for registry row delivery-installation-applet (no "V2" code exists); canonical is delivery-installation/delivery-installation-applet.md (lane 3). Merge with alias (recommended); facts for lane 3 in lane-4/findings.md. Same class as F-0050. Vincent to approve.
+
+### /applets/inventory-workflow/driver-delivery-order-applet/ (product)
+- [ ] F-0083 (2026-09-05) Driver Delivery Order: drivers can SAVE-edit FINAL delivery orders (no backend block) — intended? ~50 rendered toggles + the Custom Status screen persist keys nothing reads; two settings menu entries route to 404. The old page's "Add" / "custom status" instructions were invented (removed). Open question in kb/topics: where an internal outbound DO gets its driver.
+
