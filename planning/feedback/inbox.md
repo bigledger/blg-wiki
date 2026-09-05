@@ -523,3 +523,13 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0129 (2026-09-05) Customer e-invoice fields: TIN saved without spaces (2026-09-03); foreign buyer = ID type Passport; missing state breaks address construction → source: content/en/applets/… customer maintenance page → src: gmail:1a0663d23d98e303, gdrive:1cO_Vud6CV9sgJLUY5RFbh4uDmhLT_ZD3tlUD3RnwQZ8
 - [ ] F-0130 (2026-09-05) OCR e-mail intake (SES receiving) deployed ~2026-09-05, no wiki mention; scope unknown (kb/questions/2026-09-05-ocr-email-intake-scope.md). Vincent → source: new page, location TBD → src: gmail:1a069e68f3133a81
 - [ ] F-0131 (2026-09-05) Lateral from the 2026-09-03 technical meeting, verify against repos before writing: draft GRN balance in stock availability; auto currency rate for foreign suppliers on purchase CN; batch number/date fields on PI and GRN; repost on failed status in stock adjustment; sales report load time; entity status filter proposed → source: stock-availability, internal-purchase-credit-note, internal-purchase-invoice, internal-purchase-grn, stock-adjustment, sales-report applet pages → src: gmail:1a0663d23d98e303
+
+## From Lane 4 run 10 (2026-09-05)
+
+### product (consignment GIN/GRN)
+- [ ] F-0132 (2026-09-05) BUG: the shared settings screen's tab-hide map is keyed by the GIN applet's dev-only code, not its registry code, so Payment / Department Hdr / Doc Link / Export tab toggles never render on a live tenant (matches a customer UAT complaint verbatim). Report to the platform team. Consignment GIN posts via the generic PURCHASE handler (Cr Purchase / Dr Creditor) while GRN/Return use the CONSIGNMENT_STOCK/LIABILITY branch — possible backend oversight. VOID refused with GENERIC_DOCUMENT_HAS_TARGET_LINKS once billed.
+- [x] F-0133 (2026-09-05) 5 of 9 consignment-pair screenshots (tester names / possible real branch codes) quarantined.
+
+### registry
+- [ ] F-0134 (2026-09-05) internalconsignmentGRNApplet.documentation_url → Confluence, should be the wiki page. Group Maintenance: no ACTIVE row (only DELETED GroupApplet / newTeamMaintenanceApplet) — the three wiki pages are phantoms (joins F-0079 triage).
+

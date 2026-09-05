@@ -49,5 +49,11 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
    the creditor mapping throws `MISSING_DEFAULT_GL_CODE`. An unresolvable purchase/tax line is
    silently omitted (JournalPostingService ~L236/L271) and FINAL then fails with
    `TOTAL_DEBITS_AND_TOTAL_CREDITS_NOT_BALANCES` — that is the troubleshooting entry to write.
-10. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+10. **Tab-hide sections are keyed by registry code (lane 4, run 10).** `FieldConfigurationComponent.getTabValue()`
+    renders tab-hide toggles only when `sessionStorage.appletCode` (= registry code) matches its map.
+    `applet-scan.sh` ignores that map (reports 0 tab hides where 9 render). Where an applet's
+    `main.ts` dev-only code differs from the registry code (e.g. `internal-consignment-gin-applet`
+    vs `internalConsignmentGINApplet`), the tab toggles never render on a live tenant — document
+    them as "read without control" and file a bug.
+11. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.
