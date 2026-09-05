@@ -1,0 +1,59 @@
+---
+topic: merchant-admin
+aliases: [merchant applet, merchant entity, is_merchant, pgw merchant code, merchant key, merchant contract, rate card, charge rate, merchant monthly report, bl_pgw_merchant_contract_hdr]
+applets: [MerchantAdminApplet, MerchantAccessApplet]
+modules: [core, ecommerce, e-invoice]
+related: [entity-applet, customer-maintenance, supplier, employee-applet, organisation, tax-configuration, cashbook, chart-of-accounts, mypeppol-admin-applet, my-e-invoice-admin-applet, seller-admin, tenant-admin, payment-gateway]
+wiki:
+  - content/en/applets/master-data/merchant-applet.md
+status: growing
+updated: 2026-09-05
+---
+
+# Merchant Admin (merchant view of the entity master)
+
+A merchant is an entity row (`bl_fi_mst_entity_hdr`) with `is_merchant` set plus two payment-gateway credentials (`pgw_merchant_code`, `merchant_key`). Merchant Admin creates that row, attaches the operational pieces (Peppol IDs, logins, return URLs, tax, bank details, addresses, contacts, company links, merchant branches, credit terms/limits, logo) and records merchant contracts with rate cards, payment channels and charge rates that the monthly merchant transaction report prices.
+
+## Facts
+
+- 2026-09-05 — Registry: `MerchantAdminApplet` "Merchant Admin", TNT-USER, ACTIVE, route `applets/wavelet/erp/entity/merchant-applet`, build `akaun-platform/merchant-applet`; `documentation_url` still points at Confluence. Sibling `MerchantAccessApplet` "Merchant Access", TNT-USER, ACTIVE, route `…/merchant-access-applet`, build `akaun-platform/merchant-access-applet`, no description, Confluence documentation_url; **no repo in refs/ or the GitHub org, no wiki page**. Neither applet has `bl_applet_client_side_perm_dfn` rows. [src:akaun_master.bl_applet_hdr] [src:akaun_master.bl_applet_client_side_perm_dfn]
+- 2026-09-05 — Merchant Access is not production-ready: the marketing webinar was recorded but withheld because the applet kept crashing and features were not complete; it nevertheless has an applet-store logo. [src:gh:bigledger/blg-int-marketing#601] [src:gh:bigledger/blg-int-marketing#90]
+- 2026-09-05 — Repo `blg-applet-akaun-platform-merchant-applet` (commit cd6ac3e1, 2026-08-18) bundles its own copy of shared-utilities (`micro-fe/projects/shared-utilities`) — not `refs/blg-shared-utilities`; Angular 14 migration Dec 2025. [src:gh:bigledger/blg-applet-akaun-platform-merchant-applet#1] [src:gh:bigledger/blg-applet-akaun-platform-merchant-applet#2]
+- 2026-09-05 — Settings are **applet-local** Field Settings persisted as `APPLET_SETTINGS` by the bundled session effect. Exactly one key passes the four proofs: `HIDE_E_TYPE` (label HIDE_ENTITY_TYPE) disables + hides the Entity Type multi-select on the **create** form only (`eType: [{value:'', disabled: appletSettings.HIDE_E_TYPE}]`); the edit form ignores it. Eight Lines/Department toggles are unbound copies of a document-applet panel; Default Selection (Settings and Personalization) is dead (`appletContainer` undefined, unbound output). [src:blg-applet-akaun-platform-merchant-applet/.../settings-container/field-configuration/field-configuration.component.html L14] [src:.../merchant-create/merchant-create.component.ts L151] [src:.../default-settings/default-settings.component.ts L30-66]
+- 2026-09-05 — With `HIDE_E_TYPE` on, the create request carries no entity-type flags; `is_merchant` is still set because the request goes through the `merchants` entity-type handler (`EntityController.createSpecificEntity`). [src:blg-akaun-platform-java/akaun-api/.../EntityController.java L237-243]
+- 2026-09-05 — The create form never sends `merchant_code`; the backend generates it from the `MERCHANT_ID` running number + tenant merchant prefix (`getNextRunningNumbers` → `buildEntityCode`). The typed *Merchant ID* is the `ID_INFO` extension, display-only, **not uniqueness-checked**; the unique keys are `merchant_code` (`…MERCHANT_CODE_ALREADY_EXISTS`, compared after upper-casing and stripping spaces) and `merchant_id` (`ENTITY_HDR_OBJECT_MERCHANT_ID_ALREADY_EXISTS`). [src:blg-akaun-platform-java/javasdk/.../EntityDataConsistencyObject.java L91-97, L190-195, L1396-1410]
+- 2026-09-05 — Two save paths on the edit form: the header Save PUTs the whole entity container (Details, Notification Config, staged Return URL / Tax & Billing / Payment Config / Address / Contact / Credit Term / Credit Limit rows — stored as `URL_INFO`, `TAX_INFO`, `PAYMENT_CONFIG`, `CREDIT_TERM`, `CREDIT_LIMIT` extensions, `CONTACT_INFO` lines, `addresses_json`, `einvoice_notification_methods_json`); Peppol Ids, Login, Contract, Company Linking, Merchant Branch and Logo save immediately through their own services. Rows staged for the header Save are lost if the user leaves without pressing it. [src:.../merchant-edit/merchant-edit.component.ts L520-780]
+- 2026-09-05 — **Remove deletes at once, no confirmation dialog** (`onRemove()` → `merchantService.delete`); backend `EntityUow.delete` physically deletes header, extensions, lines and login links, fires `MERCHANT_DELETED` webhook, and does **not** check contracts, payment transactions or documents. Contracts survive with a dangling `merchant_guid` and then show as *TEMPLATE* type. [src:.../merchant-edit.component.ts L833-851] [src:.../merchant-edit.component.html L137] [src:blg-akaun-platform-java/javasdk/.../EntityUow.java L184-191]
+- 2026-09-05 — Login tab **Verify Email** works by calling `tenantUserService.addUser(email, {})`: an `OK_RESPONSE` means the address was just added as a tenant user (side effect); "already exists" → link the confirmed principal; `USER_NOT_FOUND` → **Send Invite** (`create_entity: true`). The check `if (resp.code = 'OK_RESPONSE')` is an assignment, i.e. any success response is treated as OK. No catalogue picker on this Login tab (a customer asked for the one Customer Maintenance has). [src:.../merchant-login/login-create/login-create.component.ts L117-145] [src:gh:customer-repo-a2de10#76]
+- 2026-09-05 — Contract: `bl_pgw_merchant_contract_hdr`; Contract Code computed in the browser as max C-number + 1 (`C00001`…), **no backend uniqueness check on `code`**; `merchant_contract_key` = 10 random alphanumerics, unique (`PgwMerchantContractHdrService.generateMerchantContractKey`); DCO requires merchant guid, company guid (`COMP_GUID_IS_NULL` / `GUID_COMP_DOES_NOT_EXIST`), key, revision, status, dates, subjects. Type is derived: TEMPLATE when `merchant_guid` is null, else PERSONAL. Rate card `bl_pgw_merchant_rate_card` (+`_line` = payment channel), charge rate `bl_pgw_merchant_rate_hdr` (`rate`, `rate_logic`). [src:.../contract-container/contract-create/contract-create.component.ts] [src:.../contract-edit/contract-edit.component.ts L211-218] [src:blg-akaun-platform-java/javasdk/.../PgwMerchantContractHdrDataConsistencyObject.java L37-145]
+- 2026-09-05 — The Merchant Name field on all three contract editors is patched from `resp.data.bl_fi_mst_entity_hdr.name` (a string); run 15's `[object Object]` troubleshooting row was unsupported and was removed in run 16. [src:.../contract-edit/contract-edit.component.ts L151-156] [src:.../merchant-contract/edit-contract/edit-contract-details/edit-contract-details.component.ts L136-140]
+- 2026-09-05 — Report menu reads `bl_pgw_monthly_merchant_txn_summary_report_line`, filled only by the `PGW_MERCHANT_MONTHLY_REPORT_PROCESSOR` job (`months` / `years` properties): groups payment transactions per merchant and channel, copies VAT % from the merchant's tax extension, fills up to four charge names/rates from the merchant's rate headers (`setFixAmountAndPercentage`). The applet has no button to run it; contract status is not read by the job. [src:blg-akaun-platform-java/akaun-api/.../jobProcessor/pgw/PgwMerchantMonthlyReportProcessor.java L248-297]
+- 2026-09-05 — Gateway callbacks verify signatures against `bl_pgw_payment_txn_hdr.merchant_key` copied at transaction creation, so rotating the entity's Merchant Key affects new transactions only. [src:blg-akaun-platform-java/akaun-api/.../pgw/my/IPay88Controller.java L154, L201] [src:.../PgwBackendController.java L500-601]
+- 2026-09-05 — Merchant status ACTIVE / TEMP / INACTIVE is not used as a filter by the `merchants` listing or downstream lookups (they filter on `is_merchant`); blank status is set to ACTIVE server-side. [src:.../EntityDataConsistencyObject.java L1101-1103]
+- 2026-09-05 — Server-side permissions: `TNT_API_ERP_MERCHANT_ENTITY_CREATE/_UPDATE/_DELETE` (EntityController handler map L131-139); contract / rate card / charge-rate writes check tenant owner/admin or the controller permission list with the contract's company as target. [src:blg-akaun-platform-java/akaun-api/.../EntityController.java L131-139] [src:.../PgwMerchantContractHdrController.java]
+- 2026-09-05 — Audit Trail menu = `bl_fi_mst_entity_event` rows this applet posts after each save (`CREATE_MERCHANT`, `EDIT_MERCHANT`, `CREATE_CHARGE_RATE`, `UPDATE_PAYMENT_CHANNELS`…): an action log, not a field diff. [src:.../state-controllers/merchant-controller/effects/merchant.effects.ts L340-379]
+- 2026-09-05 — Marketing: the only walkthrough is YouTube `c-Yc6bo7_Jw`, titled "Tenant-to-Tenant Integration & Data Mapping Management" — no data-mapping feature exists in the applet. [src:gh:bigledger/blg-int-marketing#710]
+
+## How it connects
+
+- **entity-applet / customer-maintenance / supplier / employee-applet** — same `bl_fi_mst_entity_hdr` rows; Entity Type on create sets the sibling flags; credit terms/limits set here appear in Customer Maintenance.
+- **organisation** — companies for the contract's `comp_guid` and Company Linking; branches for Merchant Branch.
+- **tax-configuration** — tax codes per country on Tax & Billing; SST/GST/WHT and MyInvois tax-type codes on the merchant branch control account; the monthly report copies VAT % from the `TAX_INFO` extension.
+- **chart-of-accounts** — GL code + subledger of the merchant branch control account.
+- **cashbook** — settlement methods (financial items of type `STL_MTHD`) read by Payment Config.
+- **mypeppol-admin-applet / my-e-invoice-admin-applet** — Peppol participant IDs (`bl_fi_entity_peppol_id`) and `einvoice_notification_methods_json` written here are read there.
+- **payment-gateway** — `merchant_key` / `pgw_merchant_code` are the credentials the PGW callbacks verify; contracts, rate cards and charge rates price channels for the monthly report.
+- **tenant-admin** — Verify Email adds/looks up tenant users; Send Invite creates them.
+- **seller-admin** — uses the merchant entity as seller identity.
+
+## Open questions
+
+- Where is the Merchant Access source? Registry build `akaun-platform/merchant-access-applet`; not in refs/ nor `gh repo list bigledger`. Exclusion (unstable / not shipped) or a page once found — Vincent's decision.
+- Does any tenant actually run `PGW_MERCHANT_MONTHLY_REPORT_PROCESSOR` on a schedule, or is the Report menu empty everywhere? (Job has no UI trigger.)
+- Is the `MERCHANT_ID` running-number prefix configurable per tenant anywhere in the UI (Organisation? Tenant Admin?) — the create form never shows the generated `merchant_code`.
+
+## Wiki impact
+
+- employee-applet (lane 4, done) — say whether its Login tab has the "select catalogs for applet installation" picker that Customer Maintenance has (customer-repo-a2de10#76 asked for it on Employee, Merchant Access and Merchant Admin).
+- customer-maintenance (lane 4, done) — the Login tab catalogue picker is the reference implementation the other entity views were asked to copy; mention it.
+- entity-applet, supplier-applet-1, employee-applet, organisation-applet, tax-configuration-applet, cashbook-applet, chart-of-account-applet (lane 4) and mypeppol-admin-applet, my-e-invoice-admin-applet, seller-admin-applet, tenant-admin-applet (other lanes) — add `merchant-applet` to `related_applets` (back-links).

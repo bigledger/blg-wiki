@@ -685,3 +685,60 @@ One large document applet this run; the settings surface (212 keys, 8 gears, fou
 ### Stopping point
 
 One large document applet this run; the wrong premise meant every section was rebuilt, and the posting proof needed the link UOW, the converter and the e-Invoice allow-lists read end to end. Next in queue: `internal-purchase-quotation-applet.md`.
+
+## Run 15 — 2026-09-05 — internal-purchase-quotation-applet
+
+(Run 14 was killed by a rate limit before writing anything; this run resumed from the same queue head.)
+
+### Page
+
+- `content/en/applets/purchase-workflow/internal-purchase-quotation-applet.md` rewritten from the applet @1f16762 (shared-utilities submodule pinned @49b834e; gates checked at that commit and at HEAD af523eb — identical set for this code), backend @871dbf5, akaun_master perm-dfn extract, and eight issues. Title corrected to the registry name (trailing "Applet" dropped).
+- The previous page was a NotebookLM-style marketing page (a "Golden Triangle of Procurement", "posting integrity", "financial auditability", "100% audit traceability") with invented settings (`DEFAULT_BRANCH_GUID`, `DEFAULT_LOCATION_GUID`, `DEFAULT_PRINT_FORMAT`, `ALLOW_DOCUMENT_VOID`) and invented header fields (Delivery Instruction / Delivery Date on the header; the header Delivery Details tab is a read-only delivery-job grid). All replaced.
+
+### Direction / posting facts (record for the guides)
+
+- `INTERNAL_PURCHASE_QUOTATION` (`PURQUO`) is **0 / 0**: no stock movement, no journal, no handler in `JournalPostingTypeHandler`, no converter. The type appears in six backend files only. Any guide saying a quotation "posts" or "locks" anything financially is wrong.
+- Lifecycle: CREATE → `TEMP`; SAVE → ACTIVE / DRAFT; FINAL → links re-PUT with `posting_status FINAL`; VOID only from the listing (`/backoffice-ep/void/`), blocked by `GENERIC_DOCUMENT_HAS_TARGET_LINKS` when a PO has knocked the quotation off; DISCARD blocked for FINAL / VOID.
+- **Knock-off is a one-shot, TEMP-only operation** (`GenericDocLinkService.knockOff` throws "Target Gen Doc is not in TEMP status" after the first SAVE or first knock-off). The newer `knock-off-draft` endpoint is not used by this applet.
+
+### Method findings (add to METHOD.md)
+
+1. **Copy-pasted KO components carry the source applet's flow-row, queue and permission checks.** The PQ's KO For tab requests flow rows for target `INTERNAL_PURCHASE_ORDER`, renders only when the PR→PO row is enabled, lists PR→PO queue rows and checks `TNT_API_DOC_INTERNAL_PURCHASE_ORDER_CREATE_TGT_GUID`. The "Before you can use it" prerequisite is therefore a row that names a *different* document. Always read `serverDoc2` in `getKOSettingsInit` and the `line_open_queue_server_doc_type_2` criteria, not the tab label.
+2. **Queue decrement is keyed on the link's target type** (`getExistingOpenQueue` matches `server_doc_type_2 = link.server_doc_type_doc_2_hdr`). A knock-off whose tab lists queue rows for another target type (as here) leaves those rows untouched; only the link sum in `knockOff` prevents double-quoting. State which queue row (if any) is actually reduced.
+3. **Hide-permissions exist**: `HIDE_PRICE` is seeded and checked as "grant to hide". Do not assume every `bl_applet_client_side_perm_dfn` code is a `SHOW_*` re-enable; read the consumer.
+4. **A permission can lock a plain field**: the transaction-date picker is `[disabled]="!SHOW_TRANSACTION_DATE"`. Fields disabled by permission belong in the Fields table's Required/Notes column and in Troubleshooting.
+5. Applets refactored onto `blg-akaun-ng-lib` (intranet #4115) may still carry an old, small settings model (102 keys here). Do not assume the family's 150–260-key model; run the four proofs on the model that is actually there.
+6. The shared-utilities **submodule commit** in the applet repo (`.gitmodules` / `git submodule status`) is the rendered-proof source for that applet's deployed bundle; run `gates.py` against that commit (extract the two files with `git show <sha>:path`) and note whether HEAD differs. Here it did not.
+
+### Screenshots (kept 1 of 7, none moved)
+
+- Excluded from the page (still on disk under `static/images/internal-purchase-quotation-applet/` — not in my folders; loop to quarantine): `listing-and-main-details-view.png` (listing rows whose Branch Code / Supplier columns show a code identical to a customer repo slug and a second real-looking supplier code); `golden-triangle-procurement-lifecycle.png` (**a screenshot of a video-sharing site with a third-party CRM advertisement and the company channel visible — not an applet image at all**); `purpose-and-overview-infographic.png`, `key-features-overview.png` (NotebookLM-branded), `internal-purchase-quotation-applet-overview.png` (generated marketing infographics with claims like "100% Audit Traceability", one with a garbled caption); `workspace-tabs-architecture.png` (generated diagram; says "KO For (Draft Only)" — it is TEMP-only).
+- Kept: `line-items-page-view.png` (staging tenant, generic test items).
+
+### Cross-lane link requests
+
+- **purchase-workflow/internal-purchase-requisition-applet.md** (my lane): add that the PQ's KO For tab depends on the **PR→PO** flow row, that a quotation knock-off does not reduce the requisition's PR→PO open quantity, and that "quotations are not knock-off sources in this applet" (L279) is correct but the reverse direction exists; keep `internal-purchase-quotation-applet` in `related_applets`.
+- **purchase-workflow/internal-purchase-order-applet.md** (my lane): add a Troubleshooting row "cannot VOID the quotation — `GENERIC_DOCUMENT_HAS_TARGET_LINKS`" pointing at the PO link, and state that the PQ sub-tab needs the PQ→PO flow row.
+- **sales-workflow/internal-sales-quotation-applet.md** (other lane): check whether its KO tab is the same copy (queries SO / sales-order rows?), state 0/0, and whether it has the same `HIDE_PRICE` / `SHOW_TRANSACTION_DATE` permissions.
+- **guides/purchasing-guides/standard-procurement-workflow.md**: the guide never names the quotation applet (it only talks about attaching a supplier's PDF quote). Add one step "record the quote as a Purchase Quotation, then knock it off into the PO", and say it posts nothing.
+- **modules-v2/purchasing/related-applets/_index.md**: description "Vendor price requests and bidding proposals" — there is no bidding / comparison feature; say "records a supplier's quote; feeds the Purchase Order".
+- **A Knock Off Configuration page** (none exists): add the PR→PO row as the PQ tab's prerequisite (copy-paste dependency) and the PQ→PO row for the PO's sub-tab.
+- **planning/lanes/METHOD.md** (coordinator): fold in the six method findings above.
+
+### Registry / naming mismatches
+
+- `internal-purchase-quotation-applet` row: name, status and `documentation_url` correct. Page title had a trailing "Applet"; fixed.
+- Permissions: 24 seeded / 24 checked; 2 checked-not-seeded (`SHOW_AMOUNT_MAIN_LISTING`, `SHOW_SST_VAT_GST_AMOUNT`). The 2026-07 seeding sweep (intranet #5412) did not include this applet. Extract in `planning/lanes/lane-3/perm-dfn/internal-purchase-quotation-applet.tsv` (client-side rows only; server-side codes are the four `TNT_API_DOC_INTERNAL_PURCHASE_QUOTATION_*` constants).
+- The applet's 2026-01/02 commits reference a customer-support repo in their branch names; not cited, no pseudonym needed.
+
+### Questions for Vincent
+
+- **KO For tab reads the Purchase Order's flow row, queue and permission** (copy-paste from the PO applet). Should it be changed to PR→PQ (and `TNT_API_DOC_INTERNAL_PURCHASE_QUOTATION_CREATE_TGT_GUID`)? Until then the page documents the PR→PO row as the prerequisite. Bug candidate.
+- Is **one knock-off per quotation** (TEMP-only) acceptable, or should the tab use `knock-off-draft/backoffice-ep` like the newer applets?
+- The `SHOW_TRANSACTION_DATE` lock on the date picker: intended for all tenants? It means every quotation is dated on creation unless the role is granted the code.
+- Seed `SHOW_AMOUNT_MAIN_LISTING` and `SHOW_SST_VAT_GST_AMOUNT`; give the 24 API-only keys a control or drop them from the model; remove `HIDE_LAST_PURCHASE_PRICE`, `HIDE_VALIDITY_DATE`, `DEFAULT_COMPANY` (saved, never read).
+- Quarantine the six excluded images — one is a screenshot of a video site with a third-party advertisement and must not stay on the public site. Re-take the listing on a clean tenant.
+
+### Stopping point
+
+One document applet this run (a small one, but every section had to be rebuilt from scratch because the old page was marketing copy, and the knock-off path needed the backend service read end to end). Next in queue: `internal-purchase-refund-note-applet.md`.
