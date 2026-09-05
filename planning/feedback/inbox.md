@@ -711,3 +711,8 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0192 (2026-09-05) Back-office PUT /internal-shopping-carts does not re-stamp the per-website line_integrity_config HMAC, so a staff price edit breaks the customer's checkout when integrity is on. Convert / Print / Export exist as effects with no bound button; Printables targets the Sales Quotation extension code; DEFAULT_BRANCH/LOCATION saved but never read (master screen displays personal values). FINAL only opens the queue when the company's INTERNAL_SHOPPING_CART → INTERNAL_SALES_ORDER row is enabled (old page's "FINAL generates a Sales Order" was wrong). Tickets?
 - [x] F-0193 (2026-09-05) Three images (two showing real people, one marketing graphic) quarantined.
 
+## From Lane 4 run 23 — Stock Replenishment (2026-09-05)
+
+### product (stock replenishment)
+- [ ] F-0194 (2026-09-05) Dead at processing time: Category filters (cloned, never read), Rules Logic AND/OR, DEFAULT_BRANCH/LOCATION, email_format, Target Scope "Selected companies only" (no company picker → always empty), printable formats, Personal Default Selection (throws). Generation pitfalls: PO fulfillment lines default Quantity To Approve = 0 (zero-quantity PO if unedited); generated PO lines hard-code UOM PCS with no GL/tax; "Block existing open PO" matches supplier+item at any location; re-runs append duplicate lines; a run without a template is never queued. Strategy precedence is by cloning (template → event → run) — editing a template never changes an existing run. Tickets? Registry doc URL → Confluence.
+

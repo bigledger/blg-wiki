@@ -159,6 +159,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 - **F-0186** Seller Admin: register or retire? · **F-0187** Seller Applet live anywhere? (12 dead controls)
 - **F-0189** Stock Conversion: Input adds stock — intended? DEFAULT_BRANCH silent prerequisite.
 - **F-0192** shopping cart: back-office edit breaks line-integrity checkout — ticket?
+- **F-0194** stock replenishment: zero-qty PO default, duplicate lines on re-run, dead filters — tickets?
 - **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
   Voucher applet?; **F-0042** resolved (three distinct applets; see F-0099).
 
