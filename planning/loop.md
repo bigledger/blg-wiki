@@ -32,7 +32,7 @@ Never two kinds in one wake-up. Never more than ~90 minutes of work per wake-up.
 
 ## Priority (top first) — re-derived at every `measure`
 
-1. **Customer-visible defects** in the inbox (broken, wrong, leaked, dead).
+1. **Customer-visible defects** in the inbox (broken, wrong, leaked, dead) — **including F-0075, a PII sweep of all 1,766 images.**
 2. **Quality gate on deploy** (F-0017) — until it exists, every batch risks regressions.
 3. **Setup section content** — the master-data applets are in 100+ tenants each
    (`kb/research/2026-09-05-applet-adoption.md`): Organization, Doc Item, Customer, Chart of
@@ -124,6 +124,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 - **F-0066** confirm the removed Sales Report / Membership Admin content was never a product brief.
 - **F-0068** Bank Reconciliation: bank names in Import Format list keep/genericise; inert toggles document/omit; 90-day look-ahead intended?
 - **F-0072** cash adjustments: no journal and no VOID — intended? · **F-0073** init-true hide switches + unseeded SHOW_* = confidentiality trap — report as defect?
+- **F-0074** confirm deletion of 17 quarantined PII screenshots (or re-capture synthetic). **F-0077** Car Workshop Field Settings stub, always-true template guard, Convert-to-RV on FINAL quotations — intended?
 - **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
   Voucher applet?; **F-0042** merge the Creditor Report page into the combined report page?
 

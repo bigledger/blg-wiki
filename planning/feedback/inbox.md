@@ -356,3 +356,15 @@ with the analysis, the changes made, and the commit hash.
 ### site-wide (product / registry, joins F-0044/F-0062/F-0071)
 - [ ] F-0073 (2026-09-05) Stock Availability + Cashbook: 11 more unseeded SHOW_* codes; 10+ rendered-but-not-consumed settings; the "initialise true, consumers read stored value" pattern means cost/supplier columns are visible until the first Save, then hidden for everyone lacking a (often unseeded) SHOW_* permission — a confidentiality trap. Report as UX defect?
 
+## From Lane 1 run 4 (2026-09-05)
+
+### static/images — PERSONAL DATA (urgent)
+- [x] F-0074 (2026-09-05) 17 screenshots (internal-sales-quotation-applet/edit-form.png, quote-templates.png; all 15 car-workshop-applet/*.png) show real person names, e-mails, phone numbers, tenant-prefixed branch codes. Unreferenced by any page but publicly fetchable. QUARANTINED by the loop: moved to planning/private/quarantined-images/ (gitignored) — the deploy removes them from S3/CloudFront. Vincent: confirm deletion, or re-capture with synthetic data.
+- [ ] F-0075 (2026-09-05) Sweep every file under static/images for personal or customer data (names, e-mails, phones, real company/branch names, IC numbers) — the lanes found PII in 17 of the first ~60 screenshots they inspected. Needs an image-review batch (vision pass); until then, treat every pre-existing screenshot as suspect.
+
+### /applets/master-data/chart-of-account-applet/ + accounting guides
+- [x] F-0076 (2026-09-05) MISSING_DEFAULT_GL_CODE is thrown only for the debtor/creditor entity line (five throw sites); missing SALES/OUTPUT_TAX/INPUT_TAX/COGS/PURCHASE defaults fail on bl_fi_jrnl_line.glcode_guid NOT NULL (liquibase 202104141527) with a bare DB error. CoA page already scoped correctly by lane 4's rework (line 256, table row 406); remaining: the chart-of-accounts-setup guide must stop listing those as MISSING_DEFAULT_GL_CODE messages.
+
+### product / registry (joins F-0044 family)
+- [ ] F-0077 (2026-09-05) carWorkshopApplet: documentation_url → Confluence though the page exists; zero client-side perm defs; route root typo `car-worshop-applet`; Settings → Field Settings is a non-functional stub (146 keys read, nothing can write them). InternalSalesQuotationApplet: 2 perm defs seeded, ~50 checked. blg-shared-utilities template bug: `appletCode==='posGeneral' || 'salesInvoiceApplet'` guard is always true. Quotation Convert sends a FINAL RV header when converting a FINAL quotation — intended?
+
