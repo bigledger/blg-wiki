@@ -71,5 +71,9 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
     shared ag-grid base as a consumption path.
 14. **Purchase GIN is 0/0** (no stock, no journal); the stock-moving purchase-side out document is
     Purchase Return. Any page or guide saying "GIN reduces stock" is wrong.
-15. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+15. **An applet setting can be consumed by the BACKEND** (lane 4, run 13): `STOCK_DURING_OPENING_SHOP`
+    is read from `bl_applet_ext` by `StockTakeSessionHdrService` and throws "Applet Settings Not
+    Found!" if Field Settings were never saved. The "consumed" proof must include a Java-side grep
+    for `getValue_json().containsKey(`.
+16. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.

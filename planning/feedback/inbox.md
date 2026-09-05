@@ -571,3 +571,14 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0145 (2026-09-05) 47 shared toggles never render (code in no tabMappings list); 31 gear keys neither declared nor read (copied from PO); Default Selection branch/location persisted but never applied; personal Default Selection non-functional; Payment tab writes receipt-voucher lines on a purchase document; DELETE has no backend FINAL check; serial validation skips signum-0 lines. INTERNAL_PURCHASE_GIN_DISPLAY_PRICING and SHOW_GENDOC_FINAL_BUTTON checked but not seeded (non-admins see no prices). Tickets?
 - [x] F-0146 (2026-09-05) Four infographics (24 MB, invented features) and four screenshots (names, a phone number) quarantined.
 
+## From Lane 4 run 13 (2026-09-05)
+
+### ADR-0002 triage (stock take)
+- [ ] F-0147 (2026-09-05) introduction-to-stock-take-applet.md is a second page for the same registry row (marketing intro, no unique facts, no inbound links) → delete + alias to stock-take-applet (F-0050 pattern). stockTakehq / st_staff added to the exclusion list.
+
+### /modules-v2/inventory/ + /modules/inventory/ (fact)
+- [ ] F-0148 (2026-09-05) Stock Take moves nothing and posts nothing (no signums, no journal, nothing writes bl_inv_txn_line; action_adjust_* columns unused). Module pages claim variance posting and GL shrinkage entries — wrong. Vincent: correct the module pages, or treat stock-take-to-adjustment as a planned feature?
+
+### product (stock take)
+- [ ] F-0149 (2026-09-05) Saving a session CLOSED without ever saving Field Settings throws "Applet Settings Not Found!" AFTER the status commits; status_variance at close evaluates only the first row; CLOSED and report generation enforced client-side only; the generate endpoint is anonymous; date_start/date_end stamped by the web applet, not the server. Tickets?
+
