@@ -45,7 +45,7 @@ A counting session for one location: devices are attached, records (item, quanti
 
 ## Open questions
 
-- Should `stockTakehq` / `st_staff` be added to `applet-exclusions.tsv` (same `digi/` build family as the excluded `DigistockTake`)?
+- Should `stockTakehq` / `st_staff` be added to `applet-exclusions.tsv` (same a customer build family as the excluded `DigistockTake`)?
 - Is the single-row `status_variance` evaluation intended? It makes the Report listing's Status Variance column unreliable.
 - Should the record DCO require `guid_session_device` (customer-repo-ce5219#184 still open)?
 
