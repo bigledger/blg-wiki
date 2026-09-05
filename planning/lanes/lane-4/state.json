@@ -5,7 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/master-data/pricebook-applet.md",
   "content/en/applets/inventory-workflow/related-applets-stock-balance.md",
   "content/en/applets/master-data/shipping-pricebook-applet.md",
   "content/en/applets/inventory-workflow/stock-balance-applet.md",
@@ -104,7 +103,13 @@
    "page": "content/en/applets/master-data/organisation-applet.md",
    "date": "2026-09-05",
    "run": 17,
-   "note": "Registry Organization_Applet 'Organization ' (trailing space in name; title 'Organization'). Applet-local settings; owner of Knock Off Configuration, company e-Invoice/Peppol/tax/timezone, branch main/delivery location and marketplace. 8 of 12 screenshots dropped (test data with a person's name / brands / possible customer abbreviation) — recapture list in findings run 17."
+   "note": "Registry Organization_Applet 'Organization ' (trailing space in name; title 'Organization'). Applet-local settings; owner of Knock Off Configuration, company e-Invoice/Peppol/tax/timezone, branch main/delivery location and marketplace. 8 of 12 screenshots dropped (test data with a person's name / brands / possible customer abbreviation) \u2014 recapture list in findings run 17."
+  },
+  {
+   "page": "content/en/applets/master-data/pricebook-applet.md",
+   "date": "2026-09-05",
+   "run": 18,
+   "note": "Registry PricebookApplet 'Pricebook' (title changed from 'Pricebook Applet'); alias /applets/pricebook-applet/ kept (= registry documentation_url). Applet-local settings; consumers' PricebookCalculator documented. Sibling AkaunPriceBookApplet 'Akaun Price Book' ACTIVE with only a *-deprecated repo and no page (findings run 18)."
   }
  ],
  "skipped": [
@@ -114,7 +119,7 @@
   },
   {
    "page": "content/en/applets/inventory-workflow/delivery-installation-applet-V2-applet.md",
-   "reason": "Second page for registry row delivery-installation-applet (route applet/wavelet/erp/logistic/delivery-installation-applet); the canonical page delivery-installation/delivery-installation-applet.md is in lane 3's queue. Not rewritten — same situation as F-0050; merge/alias decision for Vincent, facts for lane 3 in findings.md run 5."
+   "reason": "Second page for registry row delivery-installation-applet (route applet/wavelet/erp/logistic/delivery-installation-applet); the canonical page delivery-installation/delivery-installation-applet.md is in lane 3's queue. Not rewritten \u2014 same situation as F-0050; merge/alias decision for Vincent, facts for lane 3 in findings.md run 5."
   },
   {
    "page": "content/en/applets/master-data/group-maintenance-V2-applet.md",
@@ -134,11 +139,11 @@
   },
   {
    "page": "content/en/applets/inventory-workflow/introduction-to-stock-take-applet.md",
-   "reason": "Duplicate second page for registry row StockTakev2 'Stock Take' — merged into inventory-workflow/stock-take-applet.md (run 13). Marketing intro with no facts the canonical page lacks; no inbound links. Not rewritten; recommend delete + alias (Vincent's decision, F-0050 pattern)."
+   "reason": "Duplicate second page for registry row StockTakev2 'Stock Take' \u2014 merged into inventory-workflow/stock-take-applet.md (run 13). Marketing intro with no facts the canonical page lacks; no inbound links. Not rewritten; recommend delete + alias (Vincent's decision, F-0050 pattern)."
   },
   {
    "page": "content/en/applets/inventory-workflow/inv-item-maintenance-applet.md",
-   "reason": "Duplicate second page for registry row InvItemMaintenanceApplet (F-0007) — merged into master-data/inv-item-maintenance-applet.md in run 14 (its screenshots re-used there). Not rewritten; recommend delete + alias /applets/inventory-workflow/inv-item-maintenance-applet/ on the canonical page (Vincent's decision, F-0050 pattern)."
+   "reason": "Duplicate second page for registry row InvItemMaintenanceApplet (F-0007) \u2014 merged into master-data/inv-item-maintenance-applet.md in run 14 (its screenshots re-used there). Not rewritten; recommend delete + alias /applets/inventory-workflow/inv-item-maintenance-applet/ on the canonical page (Vincent's decision, F-0050 pattern)."
   }
  ],
  "updated": "2026-09-05",
