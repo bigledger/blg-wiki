@@ -608,3 +608,9 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0156 (2026-09-05) Applet ships SELF-BILLED bulk action and an E-Invoice tab, but the backend's self-billed pipeline (MyEInvoiceToIRBProcessorService.PURCHASE_DOC_TYPES) does not list this type (applet issue open) — add the type or hide the UI. Dead applet-local Knock Off Settings screen (8 keys saved, never read) in this applet and the PI. 27 checked-not-seeded permission codes (SHOW_GENDOC_SAVE_BUTTON, ALLOW_TO_CREATE_EDIT_ACCOUNT…), 28 seeded-never-checked.
 - [x] F-0157 (2026-09-05) 12 of 20 screenshots (developer/staff names and e-mails, real brand/model names, a marketing infographic) quarantined.
 
+## From Lane 3 run 15 (2026-09-05)
+
+### product (purchase quotation)
+- [ ] F-0158 (2026-09-05) The KO For tab is a copy of the Purchase Order applet's: renders only when the company's PR→PO flow row is enabled, lists PR→PO queue rows, checks the PO create permission — quoting from a requisition needs a row naming a different document, and the knock-off does not reduce the requisition's open quantity. Knock-off is one-shot and TEMP-only. SHOW_TRANSACTION_DATE locks the date picker tenant-wide by default — intended? SHOW_AMOUNT_MAIN_LISTING / SHOW_SST_VAT_GST_AMOUNT checked but unseeded (skipped by the 2026-07 seeding sweep).
+- [x] F-0159 (2026-09-05) Six images quarantined (a video-site screenshot with a third-party ad, four generated infographics, one listing whose code matches a customer repo slug).
+

@@ -145,6 +145,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 - **F-0150** GRN Stock In: intercompany Search creates a non-stock GRN; line GL ignored — intended?
 - **F-0154 SERIOUS** Inventory Item Maintenance: Main-tab Save dead in source — confirm deployed build; **F-0153** delete the inventory-workflow duplicate + alias.
 - **F-0155 ACCOUNTING** GRN Stock In / PI No Stock In accrual never clears by the tax amount — backend fix? · **F-0156** self-billed e-invoice UI without backend support — add type or hide?
+- **F-0158** purchase quotation KO tab copied from PO — fix (PR→PQ row) or document as-is?
 - **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
   Voucher applet?; **F-0042** resolved (three distinct applets; see F-0099).
 
