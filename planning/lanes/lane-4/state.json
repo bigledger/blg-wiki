@@ -5,8 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/inventory-workflow/delivery-installation-applet-V2-applet.md",
-  "content/en/applets/inventory-workflow/driver-delivery-order-applet.md",
   "content/en/applets/master-data/employee-applet.md",
   "content/en/applets/master-data/entity-applet.md",
   "content/en/applets/master-data/forex-applet.md",
@@ -61,12 +59,20 @@
   {
    "page": "content/en/applets/inventory-workflow/consignee-stock-transfer-applet.md",
    "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/driver-delivery-order-applet.md",
+   "date": "2026-09-05"
   }
  ],
  "skipped": [
   {
    "page": "content/en/applets/master-data/customer-applet.md",
    "reason": "Duplicate of master-data/customer-maintenance-applet.md (same registry row customer_applet_v1); awaiting Vincent's merge decision (F-0050). Not rewritten."
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/delivery-installation-applet-V2-applet.md",
+   "reason": "Second page for registry row delivery-installation-applet (route applet/wavelet/erp/logistic/delivery-installation-applet); the canonical page delivery-installation/delivery-installation-applet.md is in lane 3's queue. Not rewritten \u2014 same situation as F-0050; merge/alias decision for Vincent, facts for lane 3 in findings.md run 5."
   }
  ],
  "updated": "2026-09-05",
