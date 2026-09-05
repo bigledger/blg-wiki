@@ -463,3 +463,12 @@ with the analysis, the changes made, and the commit hash.
 ### /modules-v2/claims/ /modules-v2/hr-payroll/ /modules-v2/purchasing/
 - [ ] F-0104 (2026-09-05) These credit Entity Maintenance with employee bank profiles / supplier payment terms that live in Employee Maintenance / Supplier / Customer Maintenance. Module batch.
 
+## From Lane 1 run 7 (2026-09-05) — lane 1 drained after this run
+
+### /applets/sales-workflow/customer-consignment-applet/ (product)
+- [ ] F-0105 (2026-09-05) Settings › Default Selection Default Branch/Location never save (loose controls); SHOW_TRANSACTION_DATE not seeded so the date is read-only for everyone; UI gates on INBOUND/OUTBOUND_STOCK_TRANSFER permissions while the backend enforces CUSTOMER_CONSIGNMENT_IN/OUT. Open cross-company transfer gap (repo issue) — flag in the inventory guide? Tickets?
+- [x] F-0106 (2026-09-05) 7 of 18 screenshots (staff first names as location names; a User Permission screen with names/e-mails/mobile) quarantined.
+
+### accounting/inventory guides (fact)
+- [ ] F-0107 (2026-09-05) Backend stock validation is ON by default (validate_stock_balance .orElse(true)) for every outbound-stock document regardless of applet toggles; error is STOCK_BALANCE_OBJECT_NO_STOCK_AT_LOCATION. Consignment types are NOT exempt from the fiscal lock (plain stock transfers are). Guides must say so (joins F-0057).
+
