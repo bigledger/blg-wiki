@@ -498,3 +498,63 @@ Two large document applets this run (both consignment purchase-side documents wi
 ### Stopping point
 
 One large applet this run — it turned out to be an unfinished template fork with more non-working paths than working ones, and every one needed its own proof. Next in queue: `internal-purchase-gin-applet.md`.
+
+## Run 11 — 2026-09-05 — internal-purchase-gin-applet
+
+### Page
+
+- `content/en/applets/purchase-workflow/internal-purchase-gin-applet.md` rewritten from applet @57f86f1, shared-utilities @af523eb, ts-lib @7d1616a, backend @871dbf5, registry, 22 seeded client-side permission rows and 14 issues. Title set to the registry name "Purchase GIN (Internal)" (was "Purchase GIN (Internal) Applet"); `applet_code: internalPurchaseGINApplet`. The old page was a 2,239-line user-manual-style document (quick starts, use cases, FAQ, best practices, 20 tables) built around one wrong premise; replaced.
+
+### Direction reversal (record for the guides)
+
+- **The Purchase GIN does not move stock and does not post.** `INTERNAL_PURCHASE_GOODS_ISSUED_NOTE` is quantity signum 0 / amount signum 0 (`InternalPurchaseGoodsIssuedNoteDataConsistencyObject`, `ServerDocTypes`); `createInventoryTxnFromGenericDoc` filters to signum ≠ 0, the type is not in `MA_WA_SERVER_DOC_TYPES`, and `getJournalContainer` builds no lines (then throws `NO_JOURNAL_CREATED` if the journal job runs). The old page said "GRN increases stock. GIN reduces stock", "Inventory is reduced", "stock has already left your books"; all four infographics repeated it. The stock-moving purchase-side out document is the Purchase Return (−1/+1); a stock-out sibling type `INTERNAL_PURCHASE_GIN_STOCK_OUT` exists in the backend but has no applet in refs/ and no registry row.
+- **No VOID / DISCARD in this applet.** The old page's status table listed VOID ("Reversed when permitted") and DISCARD; the code has FINAL, SAVE and a non-FINAL DELETE only.
+- **Default Selection defaults are not applied.** `DEFAULT_BRANCH` / `DEFAULT_LOCATION` are saved but never read by the form; the old page told admins to "Test by creating new GIN — defaults should auto-populate". Also invented: Default Currency, Auto-numbering and Default Purchaser as Default Selection fields.
+- **Payment tab is a sales-side component** (writes `INTERNAL_RECEIPT_VOUCHER` settlement lines, `INTERNAL_PAYMENT_VOUCHER` for CASH_BACK) on a 0-signum purchase document — same pattern as the consignment PO (run 9). Documented as no accounting effect.
+
+### Method findings (add to METHOD.md)
+
+- **`isShowColumn(hideKey, showKey)` in the shared `ag-grid-custom` base is another consumption path** the key-name grep misses (listing FINAL button). Grep `isShowColumn(` when computing "consumed".
+- **JS truthiness on the shared screen:** `*ngIf="appletCode==='posGeneral' || 'salesInvoiceApplet'"` is always true, so `ENABLE_EDITING_UNIT_PRICE_STD` renders for every applet. The gate script must treat a bare string literal as true.
+- **Signum-0 documents still enqueue the journal job.** `GenericDocumentPrimaryProcessor` fans out to every subscribed processor (filtered only by the company's `posting_final_json`); for a 0/0 type the journal job fails with `NO_JOURNAL_CREATED` after the document is already FINAL. Worth one troubleshooting row on every 0/0 page (PO, PR, PQ, GRN, GIN, sales GIN, SO, quotation).
+- **Serial-number validation on FINAL is signum-gated** (`validateSerialNumberQty`): existence and count checks skip signum-0 lines unless the caller sends `validate_serial_signum_zero`; none of the wavelet applets seen so far send it. So 0/0 documents accept serials that do not exist in stock. Duplicate-within-document is always checked.
+- **Backend DELETE has no FINAL guard** (`performGenericDocumentDeletion` → `GenericDocumentUow.delete`); every applet's "cannot delete a FINAL document" is client-side only. Check before any page says the backend refuses deletion.
+- **A gear key list is not evidence of a read.** This applet's gears carry 31 keys that are neither in the model nor read (copied from the PO applet: `HIDE_PO_LINE_WITH_GRN_KO_LISTING`, `SHOW_PO_FREE_GIFT_MENU`, …). The "rendered" proof from a gear must still be paired with a consumed proof.
+- Tree-walking gate script used this run is in the session scratchpad (`gates.py`; evaluates `show*Tab`/`hide*Tab` state from `tabMappings`, `appletCode` comparisons and the orientation guard). Recommend adding it to `kb/tools/` as `applet-gates.py`.
+
+### Screenshots
+
+- Excluded (personal names of purchasers / suppliers or a phone number visible): `static/images/internal-purchase-gin-applet/main-listing-view.png`, `create-form-main-details-tab.png`, `create-form-accounts-tab.png`, `Create-Form-Lines-Tab-with-Line-Items.png`. Re-take on a clean tenant with the Supplier Name / Purchaser columns hidden.
+- Dropped (NotebookLM artefacts asserting "immediate inventory reduction", "automated payment processing", approval workflows and ERP/WMS webhooks): `gin-document-lifecycle.png`, `gin-decision-tree.png`, `internal-purchase-gin-applet-overview.png`, `role-based-workflow.png` (5–7 MB each; 24 MB total — delete).
+- Kept: `edit-forms-from-main-listing.png` (obvious test supplier, dummy ID number; listing shows branches only), `edit-line-items.png` (test item names).
+
+### Cross-lane link requests
+
+- **purchase-workflow/internal-purchase-grn-applet.md** and **internal-purchase-grn-stock-in-applet.md** (my lane; GRN done in run 1, Stock In next): both link to the GIN as the stock-reducing counterpart ("GRN increases stock. GIN reduces stock"). Reword: the plain GRN and the GIN are both 0/0; GRN Stock In moves stock; Purchase Return is the stock-out.
+- **sales-workflow/internal-sales-gin-applet.md** (other lane): `INTERNAL_SALES_GOODS_ISSUED_NOTE` is also (0,0) in `ServerDocTypes`; make sure that page does not claim stock movement, and add `internal-purchase-gin-applet` to `related_applets`.
+- **inventory-workflow/internal-consignment-gin-applet.md** (other lane): add `internal-purchase-gin-applet` to `related_applets` with the sentence that the consignment GIN moves stock (in `MA_WA_SERVER_DOC_TYPES`) while the purchase GIN does not.
+- **inventory-workflow/stock-adjustment-applet.md** (other lane): add `internal-purchase-gin-applet` to `related_applets` ("physical removal for goods dispatched on a GIN when no Purchase Return is raised").
+- **sales-workflow/internal-delivery-order-applet.md, internal-sales-order-applet.md, internal-jobsheet-applet.md** (other lane): the GIN's line picker copies their lines and writes `IODO_IPGIN` / `ISO_IPGIN` / `IJS_IPGIN` links; add `internal-purchase-gin-applet` to `related_applets`.
+- **purchase-workflow/internal-purchase-order-applet.md, internal-purchase-requisition-applet.md, internal-purchase-quotation-applet.md, internal-purchase-return-applet.md** (my lane) and **finance/internal-purchase-invoice-applet.md** (lane 2): add `internal-purchase-gin-applet` to `related_applets` (links `IPO_IPGIN`, `IPR_IPGIN`, `IPQO_IPGIN`, `IPRO_IPGIN`, `IPI_IPGIN`). Queue small edits for my lane's pages.
+- **master-data/supplier-applet-1.md, organisation-applet.md, doc-item-maintenance-applet.md, inv-item-maintenance-applet.md** (other lane): add `internal-purchase-gin-applet` to `related_applets`.
+- **A fiscal-year / period-lock page** (wherever it lives): document `LOCK_ALL` / `LOCK_TXN` and the FINAL message "The selected date falls within a locked fiscal period" (intranet #1616) — every generic document except stock transfers raises it.
+- **purchase-workflow/internal-purchase-return-applet.md** (my lane, run 1): intranet #5579 — return postings intermittently write the inventory movement to the branch default store instead of the line's `guid_store`; add a troubleshooting row ("stock did not go into the damaged-goods location"). Same for **sales-workflow/internal-sales-return-applet.md** (other lane).
+- **guides/purchasing-guides/standard-procurement-workflow.md**: if it mentions the GIN, say it is a dispatch record only.
+- **planning/lanes/METHOD.md** (coordinator): fold in the six method findings above.
+
+### Registry / naming mismatches
+
+- `internalPurchaseGINApplet` registry row is complete (name, ACTIVE, documentation_url matches the page). No mismatch.
+- Dev `main.ts` sets `appletCode = 'internal-purchase-gin-applet'`; neither it nor the registry code is in the shared screen's `tabMappings` or per-applet lists, so 47 shared toggles never render on a live tenant (documented as gear-only or "read without control").
+- 22 client-side permission rows seeded; `INTERNAL_PURCHASE_GIN_DISPLAY_PRICING` and `SHOW_GENDOC_FINAL_BUTTON` are checked but not seeded; `SHOW_LAST_PURCHASE_PRICE` is seeded but not checked.
+
+### Questions for Vincent
+
+- **Is 0/0 intended for the Purchase GIN**, with `INTERNAL_PURCHASE_GIN_STOCK_OUT` as the future stock-moving variant (mirroring GRN vs GRN Stock In)? If so, is a "Purchase GIN Stock Out" applet planned — no repo or registry row exists today. The page states the backend fact and points users to Purchase Return / Stock Adjustment.
+- Personal Default Selection is non-functional (unpopulated container, unsubscribed SAVE) and tenant Default Selection's branch/location are never applied — report to product or leave documented?
+- Seed `INTERNAL_PURCHASE_GIN_DISPLAY_PRICING` (today non-admin users see no prices on the Lines tab)?
+- Delete the four infographics (24 MB) and the four excluded screenshots, or re-take the screenshots on a clean tenant?
+
+### Stopping point
+
+One large document applet this run; the settings surface (shared screen + 31 gears + three applet-local screens) and the 0/0 posting proof each needed their own pass. Next in queue: `internal-purchase-grn-stock-in-applet.md` (registry "Purchase GRN Stock In Applet (Internal)", `internalPurchaseGrnStockInApplet` — this one IS in `tabMappings` and in `MA_WA_SERVER_DOC_TYPES`, so expect a real posting block).

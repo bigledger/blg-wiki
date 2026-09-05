@@ -8,7 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/purchase-workflow/internal-purchase-gin-applet.md",
   "content/en/applets/purchase-workflow/internal-purchase-grn-stock-in-applet.md",
   "content/en/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet.md",
   "content/en/applets/purchase-workflow/internal-purchase-quotation-applet.md",
@@ -103,6 +102,11 @@
    "page": "content/en/applets/purchase-workflow/internal-consignor-purchase-billing-applet.md",
    "date": "2026-09-05",
    "note": "run 10; applet @823e05d + backend @871dbf5; own csg_billing tables, no posting; payment tab + post-save line edits non-functional in code"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/internal-purchase-gin-applet.md",
+   "date": "2026-09-05",
+   "note": "run 11; applet @57f86f1 + backend @871dbf5; direction reversal: INTERNAL_PURCHASE_GOODS_ISSUED_NOTE is 0/0 (no stock movement, no journal); no VOID/DISCARD; 63 four-proof settings, gear on 31 screens"
   }
  ],
  "skipped": [
@@ -125,8 +129,8 @@
  ],
  "updated": "2026-09-05",
  "notes": [
-  "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) — INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/…] and [src:gh:bigledger/blg-intranet#n].",
-  "2026-09-05: Vincent asked twice that blg-intranet e-invoice knowledge be used — e-invoice pages moved to the front of the queue."
+  "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) \u2014 INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/\u2026] and [src:gh:bigledger/blg-intranet#n].",
+  "2026-09-05: Vincent asked twice that blg-intranet e-invoice knowledge be used \u2014 e-invoice pages moved to the front of the queue."
  ],
  "rework": []
 }
