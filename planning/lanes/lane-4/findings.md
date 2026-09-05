@@ -497,3 +497,51 @@ Every file under `static/images/internal-consignment-grn-applet/` was opened. Dr
 - Settings classification for the GRN: *shared* screen (with a matching tab-map entry — the first applet in this lane where the map matches the live code), *applet-local* Default Selection that actually saves (unlike GIN / Entity / Forex), *applet-local* Custom Status, *personal* defaults. The scan tool's "67 toggles" misses every tab-hide toggle gated by a `show*Tab` flag; for shared-family applets add the tab map entry's sections by hand (METHOD.md item 7/8 should mention `getTabValue()`).
 - Lateral pass: 12 issues, 12 `lateral` lines in the GRN record; the GIN record was amended in place (same run, not yet committed) with the corrected hash and note.
 - Pace: ~80 minutes for the GRN (large document applet: 80-key model, KO, VOID, custom status, intercompany tab) after ~25 minutes verifying and correcting the GIN. Stopping before internal-goods-dispatch-note-applet rather than starting a third document applet with reduced care.
+
+## Pages completed (run 11)
+
+- content/en/applets/inventory-workflow/internal-goods-delivery-note-applet.md — **new file**, rewritten to the standard under the registry name `InternalGoodsDeliveryNote` "Goods Delivery Note (Internal)". The former content/en/applets/inventory-workflow/internal-goods-dispatch-note-applet.md ("Goods Dispatch Note (Internal) Applet", a generic AI draft with invented vehicle/courier fields and a "Settings" section that does not exist) was **deleted** and its URL kept as `aliases: [/applets/inventory-workflow/internal-goods-dispatch-note-applet/]`. Repo commit 0f242a9 (2026-04-06, Angular 14); blg-shared-utilities af523eb; backend 871dbf5c96. No screenshots exist for this applet (none in static/images either); none were invented.
+
+## Direction / fact reversals found (run 11)
+
+- **The old page described the wrong document and invented its content.** It called the applet a "gate pass" capturing transport provider, vehicle number and driver; none of those fields exist. The real form is a customer delivery note cloned from the Sales Credit Note applet (customer, sales agent, member card, credit terms, lines, Settlement / Contra tabs). The old FAQ said "creating a GDN may reduce inventory depending on configuration" — it never does (quantity signum 0, inventory processor skips every line), and "GDNs are immutable after finalization" — the SAVE button stays enabled after FINAL and the backend delete has no FINAL guard (only the UI hides the button).
+- **"Goods Dispatch Note" is not a misnaming but a second, unregistered artefact.** Backend has both `INTERNAL_GOODS_DISPATCH_NOTE` (`GDSPNT`) and `INTERNAL_GOODS_DELIVERY_NOTE` (`GDLYNT`) with separate DCOs and REST paths, and two near-identical repos exist. Only the Delivery Note has a registry row (its `es_module_url` points at the delivery-note build). The wiki now documents the registered one and states in a callout that the dispatch variant cannot be installed.
+
+## Findings for the product team (run 11)
+
+- **Third applet in this lane with no `getTabValue()` entry** (after consignment GIN): `InternalGoodsDeliveryNote` renders none of the Payment / KO / Delivery Details / Department Hdr / ARAP / Trace / Doc Link / Export tab toggles. Same root cause as run 10 (map keyed by dev-only codes; this applet's dev code `internal-goods-delivery-note-applet` is not in the map either).
+- **Journal-posting job fails on every FINAL Goods Delivery Note.** The `JOURNAL_POSTING_JOB_PROCESSOR` subscriber of the generic-document primary queue has no `serverDocTypes` constraint (akaun_master), so it runs for signum-0 document types and throws `NO_JOURNAL_CREATED` (JournalPostingService L580) because no journal line is built. Presumably the same for Sales Order, Sales Quotation, Jobsheet and Outbound DO. Either constrain the subscriber or short-circuit on all-zero amount signum before `createJournalContainer`.
+- **Member Card is `Validators.required` on the delivery-note Main tab** (main-details.component.ts L58) and CREATE is disabled while the form is invalid — a leftover from the credit-note clone that forces a member card on every delivery. Verify on a tenant; if confirmed, relax the validator.
+- **Default Selection (applet and personal) is dead code** — same pattern as GIN / Entity / Forex: no load subscription, `save` output unhandled, keys read by nothing; changing a value throws on the undefined container.
+- **116 of 138 rendered Application Settings controls are never read by this applet** (only the 22 line-level `HIDE_*` keys, `HIDE_COSTING_DETAILS`, `PRINTABLE`, `SHOW_DOCUMENT_DELETE_BUTTON`). `SHOW_LAST_PURCHASE_PRICE` is seeded as a client-side permission but checked by nothing.
+- Cosmetic clone leftovers: toast "Sales CreditNote created successfully"; Purchase Requisition / Quotation / Order / Invoice No. fields on the line form; Settlement and Contra tabs on a document with no ARAP; print service code `CP_COMMERCE_INTERNAL_SALES_ORDERS_JASPER_PRINT_SERVICE`.
+- The two repos (delivery vs dispatch note) are diverging: the dispatch copy received i18n and SubQueryService removal (2026-07) that the registered delivery-note repo did not.
+- Registry `documentation_url` for `InternalGoodsDeliveryNote` points at Confluence; should become `/applets/inventory-workflow/internal-goods-delivery-note-applet/`.
+
+## Cross-lane link requests (run 11)
+
+- content/en/applets/sales-workflow/internal-sales-order-applet.md, internal-jobsheet-applet.md, internal-outbound-delivery-order-applet.md (lane 1) — add `internal-goods-delivery-note-applet` to `related_applets`; say their open lines are consumed by the Goods Delivery Note's KO For tabs, and that this requires an enabled source → `INTERNAL_GOODS_DELIVERY_NOTE` row in the company Knock Off Configuration. Also worth checking there: the same `NO_JOURNAL_CREATED` job failure on FINAL for these signum-0 types.
+- content/en/applets/sales-workflow/internal-delivery-order-applet.md and internal-sales-gin-stock-out-applet.md (lane 1) — add `internal-goods-delivery-note-applet`; "the delivery note is the customer-facing paper; this document moves the stock".
+- content/en/applets/membership/membership-admin-applet.md (membership lane) — add `internal-goods-delivery-note-applet`; the delivery-note form requires a member card.
+- content/en/guides/sales-guides/standard-sales-workflow.md and partial-delivery-workflow.md (guides owner) — mention the Goods Delivery Note as the customer delivery record that does not move stock and knocks off the order; the guides currently do not cover it (`guides: []` on the page).
+- Within lane 4 (later pages): organisation-applet.md — document Knock Off Configuration rows incl. `INTERNAL_GOODS_DELIVERY_NOTE`; customer-maintenance-applet.md, employee-applet.md, doc-item-maintenance-applet.md, tax-configuration-applet.md, warehouse-management-applet.md — add `internal-goods-delivery-note-applet` to `related_applets` when next touched.
+
+## Registry / naming mismatches (run 11)
+
+- **Renamed page.** `internal-goods-dispatch-note-applet.md` → `internal-goods-delivery-note-applet.md`; title "Goods Dispatch Note (Internal) Applet" → "Goods Delivery Note (Internal)" (registry name). Alias `/applets/inventory-workflow/internal-goods-dispatch-note-applet/` added so the old URL (and wiki issue #70's slug) keeps resolving. Nav label changes accordingly. No other content page linked to the old slug.
+- **No registry row for the Goods Dispatch Note** (`INTERNAL_GOODS_DISPATCH_NOTE`, repo blg-applet-wavelet-internal-goods-dispatch-note-applet, last commit 2026-07-28) — not ACTIVE, not DELETED, simply absent. Per ADR-0002 it gets no page. Decision needed: register it (then it needs its own page) or archive the repo.
+- Wiki issue #69 `[internal-goods-delivery-note-applet] User Guide Documentation` (open) is satisfied by this page; can be closed on deploy.
+
+## Questions for Vincent (run 11)
+
+28. **Goods Dispatch Note** — register it as an applet (it is being maintained) or archive the repo? Until decided the wiki says it cannot be installed.
+29. **Member Card required on the delivery note** — confirm on a tenant; if it really blocks CREATE for non-member customers, file it as a bug rather than documenting it as intended behaviour.
+30. **Journal job failure on signum-0 documents** — should the wiki keep saying "expected, ignore" (as this page does), or is there a job-queue screen where users see these failures and need guidance?
+
+## Notes (run 11)
+
+- Settings classification: *shared* screen (no tab-map entry), *applet-local* Default Selection (dead), *applet-local* Printable Format Settings (works, writes `PRINTABLE`), *personal* Default Selection (dead). The scan's 148 → 138 after removing the ten tab-gated toggles; a depth-aware parse of the shared template (tracking `*ngIf="show…Tab"` element extents and both `formControlName` and `controls['X']` bindings) was needed because the tab-gated sections bind controls differently from the rest — worth folding into `applet-scan.sh`.
+- Consumption check done by grepping every model key across the applet's ts/html (excluding the model file) and by resolving every `<app-…>` / `<blg-…>` selector used in the templates to its component (shared or local) and grepping those for setting keys — none of the shared components used here read settings.
+- Backend proof chain for "no posting" needed four hops: DCO signums → JournalPostingService fallback + line skip + NO_JOURNAL_CREATED → InventoryTransactionLineProcessorService filters → subscriber constraints in akaun_master. Recording it in METHOD.md would save the next lane the hour.
+- Lateral pass: 7 issues, 7 `lateral` lines in the ledger record.
+- Pace: ~95 minutes on one page because the registry/naming question, the two-repo comparison and the posting proof for a signum-0 document all had to be settled from scratch. Stopping here rather than starting internal-inbound-delivery-order-applet with reduced care.

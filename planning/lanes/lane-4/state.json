@@ -5,7 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/inventory-workflow/internal-goods-dispatch-note-applet.md",
   "content/en/applets/inventory-workflow/internal-inbound-delivery-order-applet.md",
   "content/en/applets/inventory-workflow/internal-stock-requisition-applet.md",
   "content/en/applets/inventory-workflow/introduction-to-stock-take-applet.md",
@@ -75,6 +74,11 @@
   {
    "page": "content/en/applets/inventory-workflow/internal-consignment-grn-applet.md",
    "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/internal-goods-delivery-note-applet.md",
+   "date": "2026-09-05",
+   "note": "Renamed from internal-goods-dispatch-note-applet.md (deleted; old URL kept as alias). Registry InternalGoodsDeliveryNote."
   }
  ],
  "skipped": [
