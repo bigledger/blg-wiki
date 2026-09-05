@@ -5,7 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/master-data/forex-applet.md",
   "content/en/applets/master-data/group-maintenance-V2-applet.md",
   "content/en/applets/master-data/group-maintenance-applet.md",
   "content/en/applets/master-data/installation-of-group-maintenance-applet.md",
@@ -68,6 +67,10 @@
   },
   {
    "page": "content/en/applets/master-data/entity-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/master-data/forex-applet.md",
    "date": "2026-09-05"
   }
  ],

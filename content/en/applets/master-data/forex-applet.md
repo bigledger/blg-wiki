@@ -1,6 +1,72 @@
 ---
 title: "Forex Applet"
-description: "Comprehensive foreign exchange and multi-currency management system for exchange rates, currency conversions, and forex gain/loss tracking"
+description: "Reference for the Forex applet, used by finance administrators to define currency pairs (forex data sources) and record dated buy, sell and mid rates that document applets pick up through the Forex Data Source selector."
+applet_code: "forexApplet"
+applet_repo: "blg-applet-wavelet-forex-applet"
+modules: [financial-accounting, purchasing, core]
+related_applets: [organisation-applet, chart-of-account-applet, internal-purchase-order-applet, internal-purchase-invoice-applet, internal-purchase-invoice-no-stock-in-applet, internal-purchase-grn-applet, internal-purchase-grn-stock-in-applet, internal-purchase-credit-note-applet, internal-sales-invoice-applet, internal-receipt-voucher-applet, claim-applet, ledger-and-journal-applet]
+guides: [/guides/accounting-guides/chart-of-accounts-setup/]
+sources:
+  configuration:
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/settings-container/settings-container.component.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/settings-container/field-configuration/field-configuration.component.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/settings-container/release-notes/release-notes.component.html
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/services/finance-service.service.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+    - blg-shared-utilities/utilities/forex-data-source-drop-down/forex-data-source-drop-down.component.ts
+    - blg-shared-utilities/utilities/forex-data-source-drop-down/forex-data-source-drop-down.component.html
+    - blg-shared-utilities/services/forex.service.ts
+    - blg-applet-wavelet-internal-purchase-order-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-applet/src/app/components/purchase-order-container/purchase-order-create/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-sales-invoice-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-invoice-applet/src/app/components/sales-invoice-container/sales-invoice-create/main-details/main-details.component.html
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/platform/dm/bank/ForexDataSourceHdrController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/financialItem/ForexDataSourceHistoryController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/ListingController.java
+  fields:
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-listing/forex-listing.component.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-create/forex-create.component.html
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-create/forex-create-main/forex-create-main.component.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-create/forex-create-main/forex-create-main.component.html
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-view/forex-view.component.html
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-view/forex-view-main/forex-view-main.component.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-view/forex-view-main/forex-view-main.component.html
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-view/forex-view-history/forex-view-history.component.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-view/forex-view-history/forex-view-history.component.html
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-view/forex-view-chart/forex-view-chart.component.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-live/forex-live.component.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-live/forex-live.component.html
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/services/api-service.ts
+    - blg-shared-utilities/utilities/select-multi-currency-drop-down/select-multi-currency-drop-down.component.ts
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/bl_fi_forex_data_source_hdr.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/bl_fi_forex_data_source_history.java
+  lifecycle:
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/state-controllers/forex-controller/store/effects/forex.effects.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/state-controllers/forex-controller/store/actions/forex.actions.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/facades/view-column.facade.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/bank/ForexDataSourceHdrDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/CompanyDataConsistencyObjects/ForexDataSourceHistoryDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/bank/ForexDataSourceHdrUow.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/CompanyUows/ForexDataSourceHistoryUow.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/ddd/DbTableDao.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/bl_fi_generic_doc_hdr.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/bl_aat_claim_document_line.java
+  troubleshooting:
+    - blg-shared-utilities/utilities/forex-data-source-drop-down/forex-data-source-drop-down.component.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-view/forex-view-main/forex-view-main.component.ts
+    - blg-applet-wavelet-forex-applet/micro-fe/projects/wavelet-erp/applets/forex-applet/src/app/components/forex-container/forex-live/forex-live.component.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - gh:bigledger/blg-int-general-task#1198
+    - gh:bigledger/blg-int-general-task#9637
+    - gh:bigledger/blg-int-general-task#9250
+    - gh:bigledger/blg-int-general-task#9556
 tags:
 - forex-management
 - currency-exchange
@@ -10,1082 +76,179 @@ tags:
 weight: 65
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Forex Applet** is a powerful tool designed to streamline foreign exchange and multi-currency management across your entire organization. It moves beyond simple currency conversion by integrating automated exchange rate updates, real-time forex gain/loss calculations, and comprehensive multi-currency reporting capabilities.
+The **Forex Applet** is where a finance administrator defines the currency pairs a tenant trades in and records the exchange rates for them, one dated row at a time. Each pair is a **Forex Data Source** (for example *base MYR → foreign USD*), and each dated row in its **History Data** holds a sell rate, a buy rate and a computed mid rate. Document applets — purchase orders, purchase and sales invoices, GRNs, credit notes, receipt vouchers and claim lines — show a *Forex Data Source* selector when their `SHOW_FOREX_DATA_SOURCE` setting is on; picking a source sets the document currency and copies the **latest** recorded rate into the document's Currency Rate.
 
-### Strategic Overview of the Forex Applet
+The applet stores rates; it does not post anything. Forex gain and loss journals, base-currency "shadow" documents and the non-zero-rate check at FINAL all live in the document applets and the backend, and are only summarised here.
 
-Within the BigLedger ecosystem, maintaining financial consistency requires a centralized approach to currency management. The Forex Applet serves as the definitive single source of truth for exchange rates, ensuring that every financial interaction—from procurement to sales—is grounded in accurate, synchronized data. By centralizing this function, the system prevents the accounting discrepancies that arise when disparate departments utilize conflicting rate sources, thereby safeguarding the integrity of the master ledger.
+A second menu item, **Forex Live**, charts rates from a third-party market feed for reference. It does not write to the tenant.
 
-The applet is architected around two primary functional pillars:
+## Where it fits
 
-* **Forex Live**: A market observation module providing "Reference" data. It allows users to monitor real-time global sentiments without altering internal financial records.
-* **Forex Data Source**: A configuration module for "Transactional" data. Here, users establish the specific currency pairs and rates that are operationalized across business modules.
+| Direction | Applet / data | Why |
+|---|---|---|
+| Upstream | Tenant currency master (`bl_fi_mst_ccy`) | The Currency Base and Currency Foreign drop-downs list the tenant's currencies, ordered by short name. A currency that is not in the master cannot be used in a pair. |
+| Upstream | [Organisation Applet](/applets/master-data/organisation-applet/) | Each company's base currency decides which data sources a document can pick: the selector only lists sources whose Currency Base equals the document's base currency. |
+| Downstream | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Purchase Invoice No Stock In (Internal)](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/), [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/), [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/), [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/) | Purchase-side documents embed the shared Forex Data Source drop-down with `isSales = false`: selecting a source copies the latest **sell rate** into Currency Rate and stores `forex_source_hdr_guid` on the document header. |
+| Downstream | [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) | Sales-side documents embed the same drop-down with `isSales = true`: the latest **buy rate** is copied. |
+| Downstream | [Claim Applet](/applets/claims/claim-applet/) | Foreign-currency claim lines store `forex_source_hdr_guid`; the backend checks that the guid exists (`ClaimDocumentLineDataConsistencyObject` L153–L159). |
+| Downstream | [Ledger And Journal](/applets/finance/ledger-and-journal-applet/), [Chart of Account](/applets/master-data/chart-of-account-applet/) | Gain/loss on settlement is posted by the document applets to the company's `FOREX_GAIN` / `FOREX_LOSS` default GL codes, not by this applet. |
 
-This dual-structure ensures that while the organization remains informed by global market movements, the rates used for actual accounting remain controlled, validated, and auditable.
+## Screens and menus
 
-{{< callout type="info" >}}
-**Core Concept**: The system manages **where** exchange rates come from (Rate Sources), **how** currencies are converted (Conversion Rules), and **when** forex gains/losses are recognized (Revaluation).
-{{< /callout >}}
+The applet has two menu items (`menu-items.ts`):
 
-## Key Features Overview
+| Menu item | Route | What it shows |
+|---|---|---|
+| **Forex Data Source** | `forex` | The listing of currency pairs. Columns: Code, Name, Currency Base, Currency Foreign, Created Date, Created By, Updated Date, Updated By. Keyword search covers code, name, base and foreign currency (minimum three characters); the advanced search adds a Create Date range. Only `ACTIVE` rows are listed, newest update first, 50 per page. |
+| **Forex Live** | `forex-live` | A reference chart pulled from a third-party feed for a chosen base/foreign pair and timeframe (1 week to 5 years). Nothing on this screen is saved. |
 
-### Who Benefits from This Applet?
+From the listing:
 
-**Finance Teams:**
-- Real-time exchange rate management
-- Automated forex gain/loss calculations
-- Simplified multi-currency reconciliation
-- Reduced manual rate entry errors
+- **Create Forex** — a single **Main** tab with Code, Name, Descriptions, Currency Base and Currency Foreign. **RESET** clears the form; **CREATE** is enabled once the four required fields are filled.
+- **View Forex** — opens when you click a row. Three tabs:
+  - **Details** — Code, Name, Descriptions, Currency Base, Currency Foreign plus Created By / Creation Date / Updated By / Updated Date, and a **DELETE** button that needs a second click within three seconds to confirm. There is no Save on this tab: the Name and Descriptions boxes accept typing but nothing persists it (no update action exists in `forex.actions.ts`).
+  - **Chart** — a Date Txn from/to pair (both default to today) and **SEARCH**; plots Sell, Buy and Mid rate from the History Data rows in that range.
+  - **History Data** — the rate rows for this pair: Date, Sell Rate, Buy Rate, Middle Rate, and a delete action per row (with a confirmation dialog). Above the grid: Date Txn (defaults to today), Sell Rate, Buy Rate, a **search** button that fills the two rates from the third-party feed, and an **add** button that saves the row.
 
-**Accountants & Controllers:**
-- Accurate multi-currency transaction recording
-- Automated forex revaluation processes
-- Complete audit trail for exchange rates
-- Streamlined period-end closing
+Settings (gear icon) offers Field Settings, Default Selection, Webhook, the five shared permission screens and Release Notes; Personalisation offers Default Selection and Sidebar. See Configuration for what these do.
 
-**Treasury Staff:**
-- Centralized exchange rate management
-- Multiple rate source integration
-- Currency exposure monitoring
-- Forex risk assessment tools
+## Configuration
 
-**CFOs & Financial Managers:**
-- Better control over currency risk
-- Improved financial reporting accuracy
-- Data-driven currency decisions
-- Consolidated multi-currency insights
+### Before you can use it
 
-### What Problems Does This Solve?
+| Prerequisite | Where | Why it matters |
+|---|---|---|
+| Both currencies of the pair exist in the tenant currency master | Tenant currency list (`bl_fi_mst_ccy`); the drop-down calls the shared `currency` listing ordered by `display_short` | Currency Base and Currency Foreign are pick-lists, not free text. |
+| The company's base currency is set | [Organisation Applet](/applets/master-data/organisation-applet/) — company Details | The document selector filters data sources by `currency_base = <document base currency>` (`forex-data-source-drop-down.component.ts` `getInputModel()`). A source whose base is not the company currency never appears on that company's documents. |
+| `SHOW_FOREX_DATA_SOURCE` switched on in each document applet that should use the rates | That applet's *Settings › Application Settings › Main Details › Doc Settings* (shared screen) | Off by default (`?? false`, `field-configuration.component.ts` L1950). Without it the document shows the plain Currency / Currency Rate pair and never reads this applet. |
+| `FOREX_GAIN` and `FOREX_LOSS` company default GL codes | [Chart of Account](/applets/master-data/chart-of-account-applet/) | Needed by the document applets when a foreign-currency document is settled; not read by this applet. |
+| API permissions | Permission Set / Role screens under this applet's Settings, or Tenant Admin | Creating a pair needs `API_BL_FI_FOREX_DATA_SOURCE_HDR_CREATE`; adding a rate row needs `BL_FI_FOREX_DATA_SOURCE_HISTORY_CREATE`; see *Feature visibility / permissions*. |
 
-**The Manual Forex Management Problem:**
+### Applet settings
 
-Traditional multi-currency management relies on manual rate lookups and spreadsheet tracking. Common issues include:
-- Outdated exchange rates leading to inaccurate valuations
-- Manual data entry errors in currency conversions
-- Inconsistent rate application across departments
-- Time-consuming forex gain/loss calculations
-- Difficulty tracking currency exposure
+Classification (from `app.routing.ts` and `settings-container.component.ts`): the applet ships its **own** settings components — `FieldConfigurationComponent`, `DefaultSettingsComponent` and `PersonalDefaultSettingsComponent` — and does not use the shared blg-shared-utilities Application Settings screen. None of the three is wired to storage.
 
-**The Forex Applet Solution:**
+**No exposed control found (routes and settings components checked at commit aa5850e, 2026-09-02).** The `AppletSettings` interface in `applet-settings.model.ts` declares 50 keys (`INCLUDE_*`, `ENABLE_*`, `DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `PRINTABLE`, custom-status lists) that are copied from a document-applet template; no component in the applet reads any of them, so they are model-only and are not documented here.
 
-- **Automated rate updates** - Connect to live exchange rate feeds for real-time accuracy
-- **Centralized rate management** - Single source of truth for all exchange rates
-- **Automatic conversions** - System calculates conversions using configured rules
-- **Forex gain/loss tracking** - Automated recognition and posting of unrealized/realized gains and losses
-- **Multi-currency reporting** - Analyze financial data in any supported currency
-- **Integration ready** - Seamlessly works with Ledger, Cashbook, and Chart of Accounts applets
+What the visible settings screens actually do, so you can stop looking for a switch that is not there:
 
-## Key Features Overview
+| Screen | Route | Behaviour in code |
+|---|---|---|
+| Field Settings | `settings/field-settings` | Static template: eight `mat-slide-toggle`s (Unit Discount, SST/VAT/GST, WHT, Blanket Order, Segment, G/L Dimension, Profit Center, Project) with no form binding and a SAVE button with no click handler; the component class is empty. |
+| Default Selection | `settings/default-selection` | Default Branch / Default Location drop-downs. The component's `appletContainer` is never assigned (the route binds no input), so changing either drop-down throws in the console and SAVE emits an event nothing subscribes to. Nothing is stored. |
+| Personalisation › Default Selection | `personalization/personal-default-selection` | Same code as above (the container subscription is commented out). Nothing is stored. |
+| Webhook, Sidebar, permission screens | shared components | Standard shared screens; the permission screens are functional but the applet defines no client-side permission codes (below). |
+| Release Notes | `settings/release-notes` | Two entries: 1.00 (2023-08-05) and 1.01 (2024-07-06, "resolved wrong end point call"). |
 
-{{< cards >}}
-  {{< card title="Exchange Rate Management" subtitle="Maintain and update currency exchange rates" link="#exchange-rate-management" >}}
+### Settings in other applets that control this applet's use
 
-  {{< card title="Multi-Currency Transactions" subtitle="Record transactions in any currency" link="#multi-currency-transactions" >}}
+These are the switches that decide whether a document reads the rates recorded here. They live in the **shared** Application Settings screen (`blg-shared-utilities` `FieldConfigurationComponent`, *Main Details › Doc Settings* panel) of each document applet, and are saved into that applet's `APPLET_SETTINGS` extension. Any user who can open that applet's Settings can change them.
 
-  {{< card title="Forex Gain/Loss Calculation" subtitle="Automated unrealized and realized gain/loss" link="#forex-gainloss-tracking" >}}
+| Setting (in the document applet) | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| `SHOW_FOREX_DATA_SOURCE` | Renders the *Forex Data Source* drop-down on the document's Main Details (Purchase Order L532–L542, Sales Invoice L379–L389 of their `main-details.component.html`). The drop-down lists this applet's `ACTIVE` sources with `currency_base` equal to the document's base currency, ordered by code, and on selection sets the document currency to the source's foreign currency and fetches the newest History Data row (`orderBy date_txn desc, limit 1`) — `buy_rate` when `isSales`, `sell_rate` otherwise — into Currency Rate. | Off (`?? false`, L1950) | Off: plain Currency + Currency Rate fields; the rate comes from the Refresh button (third-party live feed) or typing. On: the selector appears; a rate is only filled if the chosen source has at least one History Data row. |
+| `CANNOT_EDIT_CURRENCY_RATE` | Locks the Currency Rate box on the document. | Off (`?? false`, L1951) | With `SHOW_FOREX_DATA_SOURCE` on, this makes the recorded rate the only way to set a rate; a source with no History Data rows then leaves the document at rate 0 (see Troubleshooting). |
+| `HIDE_FOREX_HISTORY` | Rendered only for `salesInvoiceApplet` (L1917–L1920) and persisted, but no component in the Sales Invoice applet reads it. | Unset (`resolve?.HIDE_FOREX_HISTORY`, L1754) | None observed. |
 
-  {{< card title="Currency Conversion" subtitle="Automatic currency conversion with configurable rules" link="#currency-conversion" >}}
+### Document behaviour settings
 
-  {{< card title="Automated Rate Updates" subtitle="Connect to live exchange rate feeds" link="#automated-rate-updates" >}}
+Not applicable — this is a master-data applet. The document-side effects (shadow documents, non-zero rate at FINAL) are described under Lifecycle and effects.
 
-  {{< card title="Multi-Currency Reporting" subtitle="Financial reports in multiple currencies" link="#reporting--analytics" >}}
+### Third-party rate feed
 
-  {{< card title="Revaluation Processing" subtitle="Period-end forex revaluation" link="#configuration--settings" >}}
+The **search** buttons on Create Forex and History Data, the Refresh button on document applets and the whole **Forex Live** screen call an external market-data provider over HTTPS from the browser (`finance-service.service.ts` in this applet; `services/forex.service.ts` in blg-shared-utilities). The API key is compiled into the applet and shared by every tenant; there is no tenant-level setting for the provider, the key or the refresh frequency. History Data takes the provider's *Ask Price* as Sell Rate and *Bid Price* as Buy Rate; Mid Rate is `(sell + buy) / 2` computed client-side.
 
-  {{< card title="Currency Configuration" subtitle="Supported currency setup and management" link="#currency-configuration" >}}
-{{< /cards >}}
+### Feature visibility / permissions
 
-## Key Concepts
+- **Client-side permissions:** `forexApplet` has no rows in `bl_applet_client_side_perm_dfn`, and the applet's code checks no `SHOW_*` / `HIDE_*` codes. The Client-Side Permission screen under Settings is therefore empty; nothing in this applet can be hidden per role.
+- **Backend (API) permissions**, enforced by the controllers:
 
-### Understanding the Forex Framework
+| Action | Endpoint | Permission code checked |
+|---|---|---|
+| List data sources | `POST …/erp/forex-data-source/backoffice-ep` (`ListingController` L718–L727) | `API_BL_FI_FOREX_DATA_SOURCE_HDR_READ` (or `_OWNER` / `_ADMIN`) |
+| Create / delete a data source | `POST` / `DELETE …/forex-data-source-hdr/backoffice-ep` (`ForexDataSourceHdrController` L63, L142) | `API_BL_FI_FOREX_DATA_SOURCE_HDR_CREATE` / `_DELETE` |
+| List rate rows | `POST …/erp/forex-data-source-history/backoffice-ep` (`ListingController` L734–L743) | `BL_FI_FOREX_DATA_SOURCE_HISTORY_READ` (or `_OWNER` / `_ADMIN`) |
+| Add / delete a rate row | `POST` / `DELETE …/erp/fi/forex-data-source-histories/backoffice-ep` (`ForexDataSourceHistoryController` L60, L128) | `BL_FI_FOREX_DATA_SOURCE_HISTORY_CREATE` / `_DELETE` |
 
-Every multi-currency system must address three fundamental aspects. The Forex Applet provides structured handling:
+The data-source header lives in the **platform** permission family (`PlatformPermissions`) while the rate rows live in the **tenant ERP** family (`TntErpPermissionsV2`); a role needs codes from both to maintain a pair end to end. A user with tenant Owner / Admin passes all of them.
 
-| Aspect | Component | Practical Example |
-|--------|-----------|-------------------|
-| **What** currencies are supported? | Currency Configuration | USD, EUR, GBP, MYR, SGD |
-| **How** are rates determined? | Exchange Rate Management | Daily rates from central bank feed |
-| **When** are gains/losses recognized? | Forex Revaluation | Month-end unrealized gain/loss posting |
+## Fields
 
-{{< callout type="tip" >}}
-**Real-World Example**: A Malaysian company (base currency MYR) receives USD 10,000 from a US customer. The system records the transaction at today's rate (1 USD = 4.50 MYR = 45,000 MYR). At month-end, if the rate changes to 1 USD = 4.60 MYR, the system automatically calculates and posts a 1,000 MYR unrealized forex gain.
-{{< /callout >}}
+### Create Forex — Main tab
 
-### The Forex Management Triangle
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Code | Short identifier of the pair, e.g. `MYR-USD`. Shown as the option text in every document drop-down. | Yes (`Validators.required`) | Free text. **No uniqueness check** — neither the backend validator nor the table enforces it (`bl_fi_forex_data_source_hdr` has a plain index on `code`). |
+| Name | Descriptive name. | Yes | Free text. |
+| Descriptions | Longer note. | No | Saved to `description`. Not shown back on View (see Troubleshooting). |
+| Currency Base | The currency you hold — normally the company base currency. | Yes | Pick-list from the tenant currency master. Read-only after create. |
+| Currency Foreign | The currency you are pricing. | Yes | Pick-list from the tenant currency master. Read-only after create. Documents that select this source switch their document currency to this value. |
 
-To effectively manage the system, it is crucial to understand how **Exchange Rates**, **Currency Conversion**, and **Forex Gain/Loss** work together.
+The backend fills `guid`, `status = ACTIVE`, `revision` and the audit columns (`ForexDataSourceHdrDataConsistencyObject.fillMissingDataForCreation` L179–L186); its creation validators check only those system columns, not the business fields.
 
-| Component | Analogy | Definition | Example |
-|-----------|---------|------------|---------|
-| **Exchange Rate** | The "Price" | The current value of one currency relative to another. | **1 USD = 4.50 MYR** |
-| **Currency Conversion** | The "Calculator" | The rule for converting amounts from one currency to another. | **USD 100 × 4.50 = MYR 450** |
-| **Forex Gain/Loss** | The "Difference" | The profit or loss arising from exchange rate changes. | **Rate changed to 4.60: gain of MYR 10** |
+### View Forex — Details tab
 
-**How they link:**
-1. You configure **supported currencies** (e.g., USD, EUR, GBP)
-2. You maintain **exchange rates** for each currency pair (e.g., USD/MYR = 4.50)
-3. When recording **transactions**, the system automatically converts using current rates
-4. At period-end, the system calculates **forex gain/loss** based on rate changes
+Code, Currency Base and Currency Foreign are read-only. Name and Descriptions render as editable inputs but there is no Save/Update control and no update action in the store, so the header is effectively **immutable after create**; to change it, delete and re-create.
 
----
+### View Forex — History Data tab
 
-## Quick Start Guide
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Date Txn | The date the rate applies to. | Yes (form default: today) | Date picker. Rows are listed newest first; documents read the row with the latest `date_txn`, whatever the document date. |
+| Sell Rate | The rate copied into **purchase-side** documents (`isSales = false`). The feed's *Ask Price* when filled by search. | Yes | Number; `type="number"`, no range check. Saved to `sell_rate` (`numeric(70,22)`). |
+| Buy Rate | The rate copied into **sales-side** documents (`isSales = true`). The feed's *Bid Price* when filled by search. | Yes | Number; no range check. Saved to `buy_rate`. |
+| Middle Rate | `(sell + buy) / 2`, computed on add. | — | Not editable. Saved to `mid_rate`. |
+| Search (magnifier) | Fills Sell Rate (Ask) and Buy Rate (Bid) for this pair from the third-party feed. | — | Leaves the row unsaved until you press add. |
+| Add | Saves the row. | — | Disabled while Sell or Buy Rate is empty. The backend only checks that `data_source_hdr_guid` exists (`ForexDataSourceHistoryDataConsistencyObject` L42–L50). Several rows for the same date are allowed. |
 
-Get up and running quickly with these essential workflows.
+The table also has `open`, `high`, `low`, `close` and `period` columns that no screen writes.
 
-### For Finance Teams: Set Up Exchange Rates
+### Forex Live
 
-**Goal:** Configure and maintain exchange rates in 4 simple steps.
+Currency Base, Currency Foreign (both required, from the currency master) and Timeframe (default *1 Month*). SEARCH queries the feed's daily time series for the concatenated pair and charts the closing values for the chosen number of trading days.
 
-1. **Navigate**: Go to **Forex** → **Exchange Rates** from the sidebar
-2. **Select Currency Pair**: Choose base currency (e.g., MYR) and target currency (e.g., USD)
-3. **Enter Rate**: 
-   - Input exchange rate (e.g., 1 USD = 4.50 MYR)
-   - Set effective date (today or future date)
-   - Choose rate type (Buying/Selling/Average)
-4. **Save**: Click **Save** → Rate is now active for all transactions
+## Lifecycle and effects
 
-**What happens next?** All new multi-currency transactions will automatically use this rate. You'll be notified if rates need updating.
+This is master data: there are no DRAFT/FINAL statuses and no journal posting.
 
-**Pro Tip:** Enable "Auto-Update from Feed" to automatically refresh rates daily from your configured rate source.
+- **Statuses.** A data source and a rate row are created as `ACTIVE`; the listings and the document drop-down request `status = ACTIVE` only.
+- **Delete is a soft delete.** DELETE on the Details tab (and the per-row delete on History Data) calls `ForexDataSourceHdrUow.delete` / `ForexDataSourceHistoryUow.delete`, which build a `SqlDeleteObject` with `deletePermanent = false`; the SQL is `UPDATE … SET status='DELETED' WHERE guid IN (…) AND status != 'DELETED'` (`DbTableDao.java` L421). Rows stay in the table.
+- **Deleting a data source does not touch its rate rows.** Only `bl_fi_forex_data_source_hdr` is in the delete list (`ForexDataSourceHdrUow` L72–L74); the history rows remain `ACTIVE` but are unreachable from the UI once the header is gone.
+- **What documents store.** Selecting a source patches the document form's `forexSourceHdrGuid`, saved as `forex_source_hdr_guid` on `bl_fi_generic_doc_hdr`. The `forex_source_history_guid` column exists on header and line but the drop-down never sets it — the document records *which pair*, not *which dated row*; the rate itself is copied into the document's Currency Rate at selection time and is not re-read later. The generic-document validators do not check that `forex_source_hdr_guid` still exists, so deleting a source leaves existing documents untouched. Claim lines are the exception: `ClaimDocumentLineDataConsistencyObject` (L153–L159, L430–L436) rejects a line whose `forex_source_hdr_guid` does not exist.
+- **Backend checks at document FINAL (not in this applet).** When document and base currency differ, `GenericDocumentService.validateForexExchangeRate` (L1702–L1725) rejects a null or zero `base_doc_xrate` with `FOREX_DOC_REQUIRES_NON_ZERO_XRATE` — "Exchange rate is required for a foreign currency document." On FINAL of a forex document the backend creates a base-currency **shadow document** and links it through `base_doc_guid` (L402–L437); a second FINAL on a document that already has a shadow is refused with *"Generic Document has already been convert to shadow"* (L405–L408). Undo-to-DRAFT and VOID now revert the shadow as well.
+- **Audit trail.** `bl_fi_forex_data_source_audit_trial` is written by the tenant *currency* controller when a currency is created or changed, not by this applet.
 
----
+Posting proof block: not applicable — the applet has no server document type, signums, GL precedence or stock processor. Gain/loss journals are described on the document applets' pages and on [Ledger And Journal](/applets/finance/ledger-and-journal-applet/).
 
-### For Accountants: Record Multi-Currency Transactions
+## Related applets
 
-**Goal:** Record a foreign currency transaction in 3 steps.
+- [Organisation Applet](/applets/master-data/organisation-applet/) — sets each company's base currency, which is the filter the document selector applies to your data sources.
+- [Chart of Account](/applets/master-data/chart-of-account-applet/) — holds the `FOREX_GAIN` / `FOREX_LOSS` default GL codes the document applets post to on settlement.
+- [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Purchase Invoice No Stock In (Internal)](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/), [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/), [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/), [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/) — purchase documents that take the **sell rate** from a selected source.
+- [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) — sales-side documents that take the **buy rate**.
+- [Claim Applet](/applets/claims/claim-applet/) — foreign-currency claim lines reference a data source and the backend validates the reference.
+- [Ledger And Journal](/applets/finance/ledger-and-journal-applet/) — where the forex gain/loss journals and the *Missing Journal Forex Gain Loss* check live.
 
-1. **Create Transaction**: 
-   - Navigate to the transaction module (e.g., Sales Invoice, Purchase Invoice)
-   - Select customer/supplier with foreign currency
-2. **Enter Amount in Foreign Currency**:
-   - Input amount in the foreign currency (e.g., USD 1,000)
-   - System automatically converts to base currency using current rate
-   - View both amounts: Foreign (USD 1,000) and Base (MYR 4,500)
-3. **Post Transaction**:
-   - Review the conversion
-   - Click **Post** → Transaction recorded in both currencies
+## Troubleshooting
 
-**Automatic Handling:** The system creates journal entries in base currency while maintaining the original foreign currency reference for reconciliation and reporting.
+| Symptom | Cause | Fix |
+|---|---|---|
+| The document has no *Forex Data Source* drop-down, only Currency and Currency Rate. | `SHOW_FOREX_DATA_SOURCE` is off (default) in that document applet. | Open the document applet's *Settings › Application Settings › Main Details › Doc Settings*, switch on **Show Forex Data Source**, save, reload the document screen. |
+| The drop-down opens but lists nothing, although pairs exist. | The selector lists only `ACTIVE` sources whose Currency Base equals the document's base currency (`getInputModel()` filters `currency_base`). Pairs created with the foreign currency as base, or for another company's currency, are excluded. | Create the pair with Currency Base = the company's base currency (e.g. `MYR` base, `USD` foreign). |
+| Selecting a source changes the currency but leaves Currency Rate at 0; FINAL later fails with `FOREX_DOC_REQUIRES_NON_ZERO_XRATE`. | The source has no History Data rows — `getCurrencyRate()` only patches the rate when at least one row comes back. With `CANNOT_EDIT_CURRENCY_RATE` on there is no manual fallback. | Add a dated row on the pair's History Data tab, then re-select the source (or type the rate if the box is editable). |
+| The rate on the document is not the rate for the document date. | The drop-down always takes the row with the newest `date_txn` (`limit 1`, `order desc`); it does not match the document's transaction date. | Record the rate for the day before creating documents, or overwrite Currency Rate on the document. Back-dated documents need the rate typed in. |
+| Changing the supplier switches the currency but the rate stays 0 until Refresh. | Supplier selection patches the currency through the store, which does not trigger the rate fetch (reported on Purchase Credit Note, fixed there in 2026-09 by auto-fetching on currency change and warning "live vs custom rate"). | Press Refresh, or select the forex source again; upgrade the applet where the fix has shipped. |
+| Re-finalising a forex document after undoing it fails with *"Generic Document has already been convert to shadow"*. | Older backend builds reverted only the original to DRAFT and left the shadow at FINAL, so the original still pointed at a shadow. | Fixed in the backend (undo now reverts the shadow, `GenericDocumentService.updatePostingStatusToNonFinal`). On an old build: void the document and re-create it. |
+| The search button on History Data / Forex Live returns nothing, or the console shows an error from the feed. | The third-party provider is called from the browser with a shared key on a free tier; it rate-limits and returns an *Error Message* / *Note* body instead of data. Forex Live requests the provider's daily **stock** time series with the two currency codes concatenated as the symbol; when the response has no `Time Series (Daily)` block the chart stays empty. | Type the rates manually on History Data. Treat Forex Live as best-effort reference only. |
+| Descriptions is blank on View Forex although it was filled on create. | The view binds `resolve.descriptions` but the column is `description` (`forex-view-main.component.ts` `ngOnInit`). | Cosmetic; the value is stored. Check it in the listing export or the API. |
+| Edits to Name / Descriptions on View Forex disappear. | The Details tab has no Save and the store has no update action. | Delete and re-create the pair. Documents that referenced the old guid keep it. |
+| Two pairs with the same code appear in the document drop-down and cannot be told apart. | No uniqueness check on `code`; the drop-down shows only the code. | Delete the duplicate (soft delete) and keep codes unique by convention, e.g. `<BASE>-<FOREIGN>`. |
+| A pair was deleted but old documents still show a forex source, and a claim line save fails with *forex_source_hdr_guid does not exist*. | Generic documents keep the stored guid with no validation; claim lines are validated (`ClaimDocumentLineDataConsistencyObject`). | Re-create the pair (a new guid) and re-select it on the claim line. |
 
----
+## Related documentation
 
-### For Admins: Initial System Setup
-
-**Goal:** Get the forex system ready for multi-currency operations in 5 steps.
-
-**Step 1: Configure Base Currency** (`Settings > Base Currency`)
-- Set your organization's primary currency (e.g., MYR)
-- This is the currency for all financial reports
-
-**Step 2: Add Supported Currencies** (`Settings > Currency Configuration`)
-- Add all currencies you transact in (USD, EUR, GBP, SGD, etc.)
-- Set currency codes, symbols, and decimal precision
-
-**Step 3: Set Up Exchange Rate Sources** (`Settings > Rate Sources`)
-- Configure automatic rate feeds (e.g., Central Bank API)
-- Or set up manual rate entry workflow
-- Set update frequency (daily, weekly, real-time)
-
-**Step 4: Enter Initial Exchange Rates** (`Forex > Exchange Rates`)
-- Input current rates for all currency pairs
-- Set rate types (buying, selling, average)
-- Verify rates are active
-
-**Step 5: Configure Forex Accounts** (`Settings > Forex Accounts`)
-- Specify GL accounts for realized forex gain/loss
-- Specify GL accounts for unrealized forex gain/loss
-- Set revaluation rules (monthly, quarterly, yearly)
-
-**Step 6: Test**
-- Create a test multi-currency invoice
-- Verify currency conversion is correct
-- Test forex gain/loss calculation
-
-**Ongoing:** Schedule monthly forex revaluation for accurate financial reporting.
-
----
-
-{{< callout type="tip" >}}
-**New to the system?** Start with the basics:
-1. Finance teams should set up initial exchange rates
-2. Accountants should practice recording multi-currency transactions in a test environment
-3. Admins should review **Configuration & Settings** below for detailed setup guides
-{{< /callout >}}
-
----
-
-## Exchange Rate Management
-
-**Maintain accurate and up-to-date exchange rates for all currency pairs.**
-
-### What is Exchange Rate Management?
-
-Exchange Rate Management is the central hub for maintaining all currency exchange rates used throughout the system. Think of it as your organization's "currency price list" that determines how foreign currency amounts are converted to your base currency.
-
-**For Finance Teams:**
-- Maintain daily exchange rates for all active currencies
-- Track historical rate changes for audit purposes
-- Configure different rates for buying, selling, and average
-
-**For Accountants:**
-- Use system-maintained rates for accurate transaction recording
-- Reference historical rates for period-specific transactions
-- Ensure compliance with accounting standards (IFRS, GAAP)
-
-**For Treasury Staff:**
-- Monitor exchange rate trends and volatility
-- Set up alerts for significant rate changes
-- Manage currency risk exposure
-
----
-
-### Market Monitoring and Reference via "Forex Live"
-
-The "Forex Live" menu serves as a non-volatile reference tool, providing a strategic window into real-time market sentiment and historical fluctuations. Because this module is decoupled from the transaction engine, it allows for high-level analysis and trend observation without the risk of affecting live financial documents.
-
-To utilize the Forex Live diagram for market analysis:
-
-1. **Select the Base Currency**: Define the primary currency for comparison (e.g., MYR).
-2. **Select the Target Currency**: Choose the currency to evaluate (e.g., USD or CNY).
-3. **Define Observation Timeframes**: Set the desired period for analysis, such as one week or one month.
-4. **Execute Search**: Click "Search" to generate the rate diagram. Users can hover over specific data points on the diagram to view tooltips revealing the exact rate for any given date.
-
-It is important to note that the Forex Live module is a search-only interface with no "save" functionality. This limitation is a deliberate architectural safeguard, ensuring that external market fluctuations do not accidentally corrupt the organization’s internal master exchange rate settings.
-
----
-
-### Managing Rate Accuracy and Historical Data
-
-The "History Data" tab is the engine of the Forex Applet. This is where the Middle Rate—the primary value pulled by the transaction engine—is managed. Because these rates directly impact the company’s bottom line, the system provides two distinct methodologies for data population:
-
-| Method | Source | Use Case |
-|--------|--------|----------|
-| **Automated Search** | Global Market Data | Rapidly updating standard rates based on current market movements. |
-| **Manual Override** | Banking Partners | Inputting specific rates obtained via negotiated bank contracts or specialized agreements. |
-
-The system operates on the **"Latest Entry Rule"**: the system logic prioritizes the entry with the most recent chronological date in the history list. For example, if a rate is entered today for a date occurring next week, the system will automatically utilize that rate once the specified date is reached.
-
-Furthermore, the Chart functionality within the History tab provides an internal data visualization. Unlike the "Forex Live" chart which shows external market trends, this chart visualizes the movement of the organization's saved history data. By defining a "From" and "To" transaction date range, users can audit how their specific internal exchange rates have evolved over time.
-
----
-
-### How to Manage Exchange Rates
-
-**Manual Rate Entry:**
-1. Go to **Forex** → **Exchange Rates**
-2. Click **"+ Add Rate"**
-3. Select **Currency Pair** (e.g., USD/MYR)
-4. Enter **Rate** (e.g., 4.50)
-5. Set **Effective Date** (when this rate becomes active)
-6. Choose **Rate Type**:
-   - **Buying Rate**: Rate when buying foreign currency
-   - **Selling Rate**: Rate when selling foreign currency
-   - **Average Rate**: Midpoint rate for accounting
-7. Click **Save**
-
-**Automatic Rate Updates:**
-1. Configure **Rate Source** (e.g., Central Bank feed)
-2. Set **Update Schedule** (e.g., daily at 9:00 AM)
-3. Enable **Auto-Update**
-4. System fetches and updates rates automatically
-
-**Rate History:**
-```
-USD/MYR Exchange Rate History
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Date          | Rate   | Type    | Source
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-2024-12-15   | 4.60   | Average | Auto
-2024-12-14   | 4.58   | Average | Auto
-2024-12-13   | 4.55   | Average | Manual
-2024-12-12   | 4.52   | Average | Auto
-```
-
----
-
-### Key Features
-
-**Multiple Rate Types:**
-- Support for buying, selling, and average rates
-- Configure which rate type to use for different transaction types
-- Historical tracking of all rate changes
-
-**Rate Sources:**
-- Manual entry by authorized users
-- Automatic feeds from central banks or financial data providers
-- API integration with currency exchange services
-- Import from CSV/Excel files
-
-**Validation Rules:**
-- Maximum rate variance checks (e.g., alert if rate changes > 5% in one day)
-- Mandatory approval for manual rate overrides
-- Effective date controls prevent backdating beyond allowed period
-
-**Audit Trail:**
-- Complete history of all rate changes
-- User tracking for manual entries
-- Source tracking for automatic updates
-- Timestamp for all rate modifications
-
----
-
-### Common Scenarios
-
-**Scenario 1: Daily Rate Update**
-
-```
-Finance team's morning routine:
-09:00 AM - System auto-fetches rates from central bank
-09:05 AM - Rates updated for USD, EUR, GBP, SGD
-09:10 AM - Email notification sent to finance team
-All day - New transactions use updated rates automatically
-```
-
-**Scenario 2: Historical Rate Lookup**
-
-```
-Accountant needs to verify December invoice:
-Task: Find the rate used on Dec 10, 2024
-Action: 
-  1. Navigate to Exchange Rates
-  2. Filter: Currency = USD, Date = Dec 10, 2024
-  3. Result: 1 USD = 4.55 MYR (Average rate, Auto-updated)
-Use case: Verify invoice conversion was correct
-```
-
-**Scenario 3: Manual Rate Override**
-
-```
-Special situation: Bank offers better rate for large transaction
-Normal rate: 1 USD = 4.50 MYR
-Bank rate: 1 USD = 4.48 MYR (better for buying USD)
-
-Action:
-1. Create new rate entry
-2. Rate Type: "Buying Rate"
-3. Apply to specific transaction only
-4. Document reason: "Large FX transaction with Bank ABC"
-```
-
----
-
-### Summary of Best Practices for FX Governance
-
-To effectively mitigate exchange rate risk, organizations must maintain a consistent cadence for currency updates. Inaccurate or stale data can lead to significant financial exposure.
-
-* **Frequency of Updates**: Perform daily or weekly entries to ensure the "Latest" rate in the history list accurately reflects current conditions.
-* **Data Integrity**: It is recommended to keep all historical data rather than deleting it. Maintaining a deep history allows the internal Chart module to provide a clearer visual trend of rate movements.
-* **Standardization**: Utilize consistent, specific codes (e.g., MYR_CNY) when establishing new pairs to prevent confusion across different organizational applets.
-* **Review Rates Daily**: Even with auto-update, verify rates make sense.
-* **Document Manual Overrides**: Always add notes explaining why rates were manually adjusted.
-
-By following these protocols, the Forex Applet transforms volatile market data into stable, actionable business intelligence, providing the control and transparency required for modern fintech operations.
-
----
-
-## Multi-Currency Transactions
-
-**Record and manage transactions in multiple currencies seamlessly.**
-
-### What are Multi-Currency Transactions?
-
-Multi-currency transactions allow you to record business activities in the actual currency used, while the system automatically handles conversion to your base currency for accounting purposes.
-
-**Common Multi-Currency Transactions:**
-- ✓ Sales invoices to foreign customers
-- ✓ Purchase orders from international suppliers
-- ✓ Foreign currency bank receipts and payments
-- ✓ Multi-currency expense claims
-- ✓ International wire transfers
-- ✓ Foreign currency loan transactions
-
----
-
-### How Multi-Currency Transactions Work
-
-**Transaction Recording Process:**
-
-**Step 1: Initiate Transaction**
-- Create invoice, payment, or journal entry
-- System detects customer/supplier currency setting
-
-**Step 2: Enter Foreign Currency Amount**
-- Input amount in the foreign currency (e.g., USD 1,000)
-- Select or verify exchange rate to use
-- System shows both foreign and base currency amounts
-
-**Step 3: System Conversion**
-```
-Foreign Currency: USD 1,000.00
-Exchange Rate: 1 USD = 4.50 MYR
-Base Currency: MYR 4,500.00
-```
-
-**Step 4: Posting**
-- Transaction posted to general ledger in base currency
-- Foreign currency amount stored for reference and reconciliation
-- Both amounts appear on reports
-
----
-
-### Integration Workflow: Applying Forex Data to Purchase Orders
-
-The ultimate objective of the Forex Applet is the seamless application of rates to live transactions. By locking exchange rates within documents like Purchase Orders (PO), the system enforces corporate financial policy and ensures audit compliance.
-
-To integrate a Forex Data Source into a Purchase Order:
-
-1. **Navigate** to the Main Details section of the Purchase Order.
-2. **Scroll** to the Forex Data Source selection field.
-3. **Select the Pair**: Choose the specific pre-configured data source (e.g., CNY or USD).
-
-Upon selection, the system triggers a **System Lock**. The currency rate is populated automatically based on the latest chronological history entry and becomes **Read-only**. The end-user cannot manually change or overwrite this rate. This field lock ensures that the transaction adheres strictly to the organization's established FX governance, moving the rate from market observation to a fixed, transactional finality.
-
----
-
-### Transaction Examples
-
-**Example 1: Foreign Sales Invoice**
-
-```
-Customer: ABC Inc (USA)
-Invoice Date: Dec 15, 2024
-Currency: USD
-
-Line Items:
-  Product A: USD 500.00
-  Product B: USD 300.00
-  Subtotal:  USD 800.00
-  Tax (6%):  USD  48.00
-  Total:     USD 848.00
-
-Exchange Rate: 1 USD = 4.50 MYR
-
-Accounting Entry:
-  Dr. Accounts Receivable  MYR 3,816.00  (USD 848.00)
-     Cr. Sales Revenue     MYR 3,600.00  (USD 800.00)
-     Cr. Tax Payable       MYR   216.00  (USD  48.00)
-```
-
-**Example 2: Foreign Currency Payment**
-
-```
-Supplier: XYZ GmbH (Germany)
-Payment Date: Dec 20, 2024
-Invoice Amount: EUR 2,000.00
-Rate when invoiced: 1 EUR = 5.00 MYR (Invoice MYR 10,000)
-Rate when paid: 1 EUR = 4.90 MYR (Payment MYR 9,800)
-
-Accounting Entry:
-  Dr. Accounts Payable     MYR 10,000.00  (Original invoice)
-     Cr. Bank Account      MYR  9,800.00  (Actual payment)
-     Cr. Forex Gain        MYR    200.00  (Realized gain)
-```
-
----
-
-### Multi-Currency Reporting
-
-View transaction data in different currencies:
-
-**Base Currency View (MYR):**
-```
-Customer        | Invoice Amt | Paid    | Balance
-────────────────|─────────────|─────────|─────────
-ABC Inc (USA)   | MYR 4,500   | MYR 0   | MYR 4,500
-XYZ GmbH (EUR)  | MYR 10,000  | MYR 10k | MYR 0
-Total           | MYR 14,500  | MYR 10k | MYR 4,500
-```
-
-**Foreign Currency View:**
-```
-Customer        | Currency | Invoice | Paid    | Balance
-────────────────|──────────|─────────|─────────|─────────
-ABC Inc (USA)   | USD      | 1,000   | 0       | 1,000
-XYZ GmbH (EUR)  | EUR      | 2,000   | 2,000   | 0
-```
-
----
-
-## Forex Gain/Loss Tracking
-
-**Automatically calculate and record exchange rate gains and losses.**
-
-### What is Forex Gain/Loss?
-
-Forex gain/loss arises when exchange rates change between the date a foreign currency transaction is recorded and when it's settled (realized), or at period-end for outstanding balances (unrealized).
-
-**Types of Forex Gain/Loss:**
-
-| Type | Definition | Recognition | Example |
-|------|------------|-------------|---------|
-| **Realized** | Actual gain/loss when transaction settled | At payment/receipt | Invoice at 4.50, paid at 4.40 = gain of 0.10 per USD |
-| **Unrealized** | Potential gain/loss on unsettled balances | At period-end revaluation | Outstanding USD invoice at month-end revalued at new rate |
-
-{{< callout type="tip" >}}
-**Accounting Standard Compliance**: The Forex Applet follows IFRS and GAAP requirements for forex gain/loss recognition, ensuring your financial statements are compliant.
-{{< /callout >}}
-
----
-
-### How Forex Gain/Loss is Calculated
-
-**Realized Forex Gain/Loss:**
-
-```
-Scenario: Foreign Currency Purchase Invoice
-
-Invoice Date: Nov 15, 2024
-Supplier: UK Company
-Amount: GBP 1,000
-Rate on Nov 15: 1 GBP = 6.00 MYR
-Recorded amount: MYR 6,000
-
-Payment Date: Dec 15, 2024
-Rate on Dec 15: 1 GBP = 5.80 MYR
-Payment amount: MYR 5,800
-
-Realized Forex Gain: MYR 6,000 - MYR 5,800 = MYR 200 GAIN
-
-Accounting Entry (at payment):
-  Dr. Accounts Payable     MYR 6,000
-     Cr. Bank Account      MYR 5,800
-     Cr. Forex Gain        MYR   200
-```
-
-**Unrealized Forex Gain/Loss:**
-
-```
-Scenario: Outstanding Foreign Currency Receivable
-
-Invoice Date: Dec 5, 2024
-Customer: Singapore Company
-Amount: SGD 10,000
-Rate on Dec 5: 1 SGD = 3.40 MYR
-Recorded amount: MYR 34,000
-
-Month-End: Dec 31, 2024
-Still unpaid
-Rate on Dec 31: 1 SGD = 3.50 MYR
-Current value: MYR 35,000
-
-Unrealized Forex Gain: MYR 35,000 - MYR 34,000 = MYR 1,000 GAIN
-
-Accounting Entry (at month-end):
-  Dr. Accounts Receivable      MYR 1,000
-     Cr. Unrealized Forex Gain MYR 1,000
-
-(This entry is reversed on Jan 1, 2025)
-```
-
----
-
-### Automatic Forex Gain/Loss Processing
-
-**Realized Gain/Loss (Automatic):**
-- Calculated automatically when payment/receipt is posted
-- System compares original transaction rate vs. settlement rate
-- Posted to configured Realized Forex Gain/Loss account
-
-**Unrealized Gain/Loss (Month-End Process):**
-1. **Run Forex Revaluation** (Settings > Run Month-End Revaluation)
-2. System identifies all unsettled foreign currency balances:
-   - Outstanding receivables (invoices not yet paid)
-   - Outstanding payables (bills not yet paid)
-   - Foreign currency bank accounts
-3. System revalues each item using current period-end rate
-4. Calculates difference from original/last revalued amount
-5. Posts unrealized gain/loss journal entries
-6. Reverses previous period's unrealized entries (if applicable)
-
-**Revaluation Report Preview:**
-```
-Foreign Currency Balances - Dec 31, 2024
-═══════════════════════════════════════════════════════════
-Account          | Fgn Amt   | Orig Rate | New Rate | Gain/Loss
-─────────────────|───────────|───────────|──────────|───────────
-A/R - ABC Inc    | USD 5,000 | 4.50      | 4.60     | +500 MYR
-A/P - XYZ GmbH   | EUR 3,000 | 5.00      | 4.95     | +150 MYR
-Bank USD Account | USD 10,000| 4.50      | 4.60     | +1,000 MYR
-─────────────────|───────────|───────────|──────────|───────────
-Total Unrealized Forex Gain                         | +1,650 MYR
-```
-
----
-
-### Common Scenarios
-
-**Scenario 1: Favorable Exchange Rate Movement**
-
-```
-Month: December 2024
-Outstanding USD Receivables: USD 50,000
-November rate: 1 USD = 4.50 MYR (MYR 225,000)
-December rate: 1 USD = 4.70 MYR (MYR 235,000)
-
-Unrealized Gain: MYR 10,000
-
-Interpretation: If customers paid today, we'd receive MYR 10,000 more than originally recorded.
-```
-
-**Scenario 2: Unfavorable Exchange Rate Movement**
-
-```
-Month: December 2024
-Outstanding EUR Payables: EUR 20,000
-November rate: 1 EUR = 5.00 MYR (MYR 100,000)
-December rate: 1 EUR = 5.20 MYR (MYR 104,000)
-
-Unrealized Loss: MYR 4,000
-
-Interpretation: If we paid suppliers today, we'd pay MYR 4,000 more than originally recorded.
-```
-
----
-
-## Currency Conversion
-
-**Automatic currency conversion with configurable business rules.**
-
-### Currency Conversion Methods
-
-The Forex Applet supports multiple conversion methods:
-
-**1. Spot Rate (Default)**
-- Uses exchange rate effective on transaction date
-- Most common method for day-to-day transactions
-- Automatically applied to invoices, payments, receipts
-
-**2. Average Rate**
-- Uses monthly or yearly average exchange rate
-- Useful for budgeting and forecasting
-- Can be configured for specific transaction types
-
-**3. Fixed Rate**
-- Uses predetermined rate for specific contracts or periods
-- Common for long-term contracts with fixed pricing
-- Manually defined and applied
-
-**4. Custom Rate**
-- Manual override for special circumstances
-- Requires approval and documentation
-- Tracked separately in audit trail
-
----
-
-### Conversion Configuration
-
-**Set Default Conversion Rules:**
-
-Navigate to `Settings > Currency Conversion Rules`
-
-**Configure by Transaction Type:**
-```
-Transaction Type        | Conversion Method | Rate Type
-────────────────────────|───────────────────|───────────
-Sales Invoice           | Spot Rate         | Average
-Purchase Invoice        | Spot Rate         | Average
-Customer Receipt        | Spot Rate         | Buying
-Supplier Payment        | Spot Rate         | Selling
-Journal Entry           | Manual Selection  | Any
-Expense Claim           | Spot Rate         | Average
-```
-
-**Rounding Rules:**
-- Set decimal precision per currency (e.g., 2 decimals for USD, 0 for JPY)
-- Configure rounding method (nearest, up, down)
-- Handle rounding differences in designated variance account
-
----
-
-## Reporting & Analytics
-
-**Comprehensive multi-currency financial reporting and analysis.**
-
-### Available Reports
-
-**1. Exchange Rate Reports**
-- Exchange Rate History
-- Rate Variance Analysis
-- Rate Source Performance
-- Rate Update Audit Trail
-
-**2. Forex Gain/Loss Reports**
-- Realized Forex Gain/Loss Summary
-- Unrealized Forex Gain/Loss by Currency
-- Forex Gain/Loss Trend Analysis
-- Month-End Revaluation Report
-
-**3. Multi-Currency Transaction Reports**
-- Transactions by Currency
-- Foreign Currency Aging (Receivables/Payables)
-- Currency Exposure Report
-- Multi-Currency Trial Balance
-
-**4. Currency Performance Analytics**
-- Currency Movement Dashboard
-- Forex Risk Exposure Summary
-- Currency Profitability Analysis
-- Cross-Currency Comparison
-
----
-
-### Multi-Currency Financial Statements
-
-**Balance Sheet (Multi-Currency View):**
-```
-                       | MYR        | USD      | EUR      | GBP
-───────────────────────|────────────|──────────|──────────|──────────
-ASSETS
-Cash & Bank            | 100,000    | 10,000   | 5,000    | 2,000
-Accounts Receivable    | 450,000    | 50,000   | 20,000   | 15,000
-───────────────────────|────────────|──────────|──────────|──────────
-Total Assets           | 550,000    | 60,000   | 25,000   | 17,000
-
-LIABILITIES
-Accounts Payable       | 200,000    | 20,000   | 15,000   | 5,000
-───────────────────────|────────────|──────────|──────────|──────────
-Total Liabilities      | 200,000    | 20,000   | 15,000   | 5,000
-```
-
-**Consolidated View (All in Base Currency MYR):**
-```
-Item                   | MYR Amount | Notes
-───────────────────────|────────────|──────────────────────────
-Cash & Bank            | 100,000    | Base currency
-                       |  45,000    | USD 10,000 @ 4.50
-                       |  25,000    | EUR 5,000 @ 5.00
-                       |  12,000    | GBP 2,000 @ 6.00
-───────────────────────|────────────|──────────────────────────
-Total Cash             | 182,000    |
-```
-
----
-
-## Configuration & Settings
-
-**Complete system configuration for forex management.**
-
-### Base Currency Setup
-
-**Navigate:** `Settings > Organization > Base Currency`
-
-**Configuration:**
-1. Select your organization's primary currency (e.g., MYR)
-2. This currency is used for:
-   - All financial reports
-   - General ledger posting
-   - Consolidated financial statements
-3. **Important:** Base currency cannot be changed once transactions exist
-
----
-
-### Architecting Currency Pairs in "Forex Data Source"
-
-Establishing a "Forex Data Source" is the critical first step in institutionalizing currency rates for use across the enterprise. Structured data entry at this stage ensures that every applet—whether handling procurement or revenue—draws from a standardized set of currency pairs.
-
-**Navigate:** `Settings > Forex > Currency Configuration`
-
-To create a new currency pair, adhere to the following requirements:
-
-1. Click **"+ Add Currency"**
-2. Configure the identifiers:
-   - **Establish Unique Currency Pair Codes**: Every pair must have a distinct identifier (e.g., "MYR_CNY" or "MYR_USD").
-   - **Define the Base Currency**: Explicitly set the starting currency for the exchange (e.g., MYR).
-   - **Adherence to Unique Constraints**: The system prevents the creation of duplicate pairs. If a variation of an existing pair is required for a specific business case, a new unique code must be utilized to maintain data clarity.
-   - **Status**: Active/Inactive
-3. Click **Save**
-
-This module offers significant versatility; once a data source is created, it can be deployed across both "Purchase Site" and "Sales Site" applets. This ensures inter-departmental parity, as a single exchange rate definition governs the entire lifecycle of a transaction.
-
-**Common Currencies:**
-```
-Code | Name                    | Symbol | Decimals
------|-------------------------|--------|----------
-USD  | United States Dollar    | $      | 2
-EUR  | Euro                    | €      | 2
-GBP  | British Pound Sterling  | £      | 2
-SGD  | Singapore Dollar        | S$     | 2
-JPY  | Japanese Yen            | ¥      | 0
-CNY  | Chinese Yuan            | ¥      | 2
-AUD  | Australian Dollar       | A$     | 2
-```
-
----
-
-### Exchange Rate Sources
-
-**Navigate:** `Settings > Forex > Rate Sources`
-
-**Manual Rate Entry:**
-- No configuration needed
-- Users enter rates directly in Exchange Rate Management
-- Suitable for small organizations with few currencies
-
-**Automatic Rate Feeds:**
-
-**Option 1: Central Bank API**
-```
-Source Name: Bank Negara Malaysia
-API Endpoint: https://api.bnm.gov.my/exchange-rates
-Update Frequency: Daily at 11:00 AM
-Currencies: USD, EUR, GBP, SGD, JPY
-Status: Active
-```
-
-**Option 2: Financial Data Provider**
-```
-Source Name: XE Currency Data Feed
-API Endpoint: https://api.xe.com/rates
-Update Frequency: Real-time (every 15 minutes)
-Currencies: All supported
-API Key: ************************
-Status: Active
-```
-
-**Option 3: CSV Import**
-```
-Import Schedule: Daily
-File Location: FTP Server / Shared Drive
-File Format: CSV (Date, Currency, Rate)
-Processed By: Automated Task
-Status: Active
-```
-
----
-
-### Forex Account Setup
-
-**Navigate:** `Settings > Forex > Forex Accounts`
-
-**Required GL Accounts:**
-
-| Account Type | Purpose | Example GL Code |
-|--------------|---------|-----------------|
-| **Realized Forex Gain** | Profitable settled transactions | 7100 - Forex Gain |
-| **Realized Forex Loss** | Loss-making settled transactions | 8100 - Forex Loss |
-| **Unrealized Forex Gain** | Period-end revaluation gains | 7200 - Unrealized Forex Gain |
-| **Unrealized Forex Loss** | Period-end revaluation losses | 8200 - Unrealized Forex Loss |
-| **Forex Rounding** | Small rounding differences | 8300 - Forex Rounding |
-
-{{< callout type="important" >}}
-**Accounting Standards**: Realized forex gains/losses are typically recognized in the income statement immediately. Unrealized gains/losses may be recognized in income or other comprehensive income depending on your accounting framework (IFRS vs. GAAP).
-{{< /callout >}}
-
----
-
-### Revaluation Settings
-
-**Navigate:** `Settings > Forex > Revaluation Settings`
-
-**Configuration Options:**
-
-**1. Revaluation Frequency**
-- Monthly (most common)
-- Quarterly
-- Yearly
-- On-demand only
-
-**2. Revaluation Scope**
-```
-☑ Accounts Receivable (Customer invoices)
-☑ Accounts Payable (Supplier invoices)
-☑ Foreign Currency Bank Accounts
-☐ Foreign Currency Loans
-☐ Foreign Currency Investments
-```
-
-**3. Reversal Method**
-- Automatic reversal on first day of next period (recommended)
-- Manual reversal (for review before posting)
-- No reversal (permanent adjustment)
-
-**4. Approval Workflow**
-- Auto-post (for established processes)
-- Require approval (for first-time or significant amounts)
-- Multi-level approval (for large organizations)
-
----
-
-### Automated Rate Updates
-
-**Navigate:** `Settings > Forex > Automated Updates`
-
-**Schedule Configuration:**
-```
-Update Schedule: Daily
-Update Time: 09:00 AM (Organization timezone)
-Retry on Failure: Yes (3 attempts, 30 min intervals)
-Rate Source: Central Bank API
-Fallback Source: Financial Data Provider
-Email Notifications: Yes
-Recipients: finance@company.com
-```
-
-**Update Rules:**
-```
-☑ Update only if rate change > 0.1%
-☑ Alert if rate change > 5% from previous day
-☑ Require manual approval for alerts
-☐ Update historical rates (not recommended)
-```
-
----
-
-## FAQ
-
-**Frequently asked questions about the Forex Applet.**
-
-### General Questions
-
-**Q: How do I set up exchange rates for the first time?**  
-A: Navigate to **Forex > Exchange Rates**, click **"+ Add Rate"**, select your currency pair (e.g., USD/MYR), enter the exchange rate, set effective date, and save. You can also configure automatic rate feeds in **Settings > Rate Sources** for daily updates.
-
-**Q: Can I use different exchange rates for different transaction types?**  
-A: Yes. Configure rate types (Buying, Selling, Average) in **Exchange Rate Management**, then set which rate type to use for each transaction type in **Settings > Currency Conversion Rules**. For example, use "Buying Rate" for customer receipts and "Selling Rate" for supplier payments.
-
-**Q: What happens if I forget to update exchange rates?**  
-A: The system will use the most recent available rate for the currency pair. You'll receive warnings when rates are outdated (configurable threshold, e.g., 7 days). For compliance, it's recommended to enable automatic rate updates or set up daily rate entry reminders.
-
-**Q: How often should I run forex revaluation?**  
-A: Best practice is monthly revaluation to align with your financial close process. This ensures unrealized forex gains/losses are properly reflected in your financial statements each month. You can also run quarterly or yearly revaluations depending on your reporting requirements.
-
----
-
-### Forex Gain/Loss Questions
-
-**Q: What's the difference between realized and unrealized forex gain/loss?**  
-A: 
-- **Realized**: Actual gain/loss when a transaction is settled. Example: Invoice was MYR 4,500 (at rate 4.50), payment received was MYR 4,600 (at rate 4.60) = MYR 100 realized gain.
-- **Unrealized**: Potential gain/loss on unsettled balances at period-end. Example: Outstanding invoice of USD 1,000 valued at MYR 4,500 (rate 4.50), but period-end rate is 4.60 = MYR 100 unrealized gain. This reverses next period.
-
-**Q: How are forex gains and losses calculated?**  
-A: 
-1. **Realized**: (Settlement Rate - Original Rate) × Foreign Currency Amount
-2. **Unrealized**: (Period-End Rate - Original/Last Revalued Rate) × Outstanding Foreign Currency Balance
-
-The system automatically calculates both types and posts to the configured GL accounts.
-
-**Q: Where do forex gains and losses appear in financial reports?**  
-A: Realized forex gains/losses appear in the **Profit & Loss Statement** under "Other Income" or "Other Expenses". Unrealized forex gains/losses may appear in P&L or **Other Comprehensive Income** depending on your accounting framework (IFRS vs. GAAP) and can be configured in Settings.
-
-**Q: Can I manually adjust forex gain/loss entries?**  
-A: Automatic forex calculations should not be manually adjusted as this breaks the audit trail. If you believe a calculation is incorrect, verify the exchange rates used. If you need to make corrections, use a manual journal entry with proper documentation and approval, posting to a separate "Forex Adjustment" account.
-
----
-
-### Multi-Currency Transaction Questions
-
-**Q: How do I record a transaction in a foreign currency?**  
-A: When creating an invoice, payment, or journal entry, select the customer/supplier with foreign currency setting, enter the amount in their currency (e.g., USD 1,000), and the system automatically converts to base currency using the current exchange rate. Both amounts are recorded for future reference.
-
-**Q: Can I override the automatic exchange rate for a specific transaction?**  
-A: Yes, you can manually override the rate for a specific transaction. When entering the transaction, click "Edit Rate", input your custom rate, and add a reason (e.g., "Bank-negotiated rate for large transaction"). This requires proper authorization and is tracked in the audit trail.
-
-**Q: What if I need to invoice a customer in multiple currencies?**  
-A: Each invoice must be in a single currency (the customer's default currency or your base currency). For customers who transact in multiple currencies, you can create separate customer records for each currency or change the currency per invoice (if allowed in your configuration).
-
-**Q: How do I handle multi-currency bank reconciliation?**  
-A: The Bank Reconciliation Applet integrates with the Forex Applet. Bank transactions in foreign currencies are automatically converted using the transaction date's exchange rate. The reconciliation shows both foreign and base currency amounts, and any forex differences are posted to the configured variance account.
-
----
-
-### Configuration Questions
-
-**Q: Can I change my base currency after I've started recording transactions?**  
-A: No, the base currency cannot be changed once transactions exist in the system. This is to maintain data integrity and prevent historical transaction corruption. If you absolutely need to change base currency, you must:
-1. Close the current fiscal year
-2. Export all data
-3. Set up a new company with the desired base currency
-4. Import opening balances
-
-**Q: How many currencies can I support?**  
-A: There's no system limit on the number of supported currencies. However, for practical management, most organizations support 5-15 active currencies. You can add currencies as needed and set unused currencies to "Inactive" status.
-
-**Q: Do I need to set up exchange rates for all currency pairs?**  
-A: You only need to maintain rates between your base currency and each foreign currency (e.g., MYR/USD, MYR/EUR). The system can calculate cross-currency rates automatically if needed (e.g., USD/EUR derived from MYR/USD and MYR/EUR rates).
-
-**Q: What happens if the automatic rate feed fails?**  
-A: The system will:
-1. Retry the update (configurable attempts and intervals)
-2. Fall back to the secondary rate source (if configured)
-3. Send email alerts to designated users
-4. Continue using the most recent available rates
-5. Display warnings that rates are outdated
-
-You can always manually update rates in **Exchange Rate Management** as a backup.
-
----
-
-### Best Practices
-
-**Q: What are the best practices for forex management?**  
-A:
-1. **Set up automatic rate updates** to ensure rates are always current
-2. **Run monthly revaluation** to properly reflect unrealized gains/losses
-3. **Review forex reports** regularly to monitor currency exposure
-4. **Document manual overrides** with clear business justifications
-5. **Set up alerts** for significant rate movements (e.g., > 5% change)
-6. **Reconcile foreign currency bank accounts** monthly
-7. **Train staff** on proper multi-currency transaction recording
-8. **Maintain rate history** - never delete old rates
-9. **Test your configuration** before going live with real transactions
-10. **Review GL account mappings** to ensure forex entries post to correct accounts
-
----
-
-## Integration with Other Applets
-
-The Forex Applet seamlessly integrates with other BigLedger applets:
-
-### Chart of Accounts Applet
-- Define GL accounts for forex gains, losses, and rounding
-- Multi-currency account setup and classification
-- Foreign exchange account configuration
-
-### Ledger and Journal Applet
-- Automatic journal entries for forex transactions
-- Forex gain/loss posting to general ledger
-- Multi-currency trial balance support
-
-### Cashbook Applet
-- Foreign currency bank account management
-- Multi-currency receipts and payments
-- Bank reconciliation with forex handling
-
-### Accounts Receivable Applet
-- Multi-currency customer invoicing
-- Foreign currency receipt processing
-- Customer forex exposure reporting
-
-### Accounts Payable Applet
-- Multi-currency supplier invoicing
-- Foreign currency payment processing
-- Supplier forex exposure reporting
-
-### Claim Applet
-- Multi-currency expense claims and reimbursements
-- Travel allowance with forex handling
-- Foreign currency receipt attachments
-
----
-
-## Summary
-
-The Forex Applet is a comprehensive, mission-critical tool for multi-currency management that ensures:
-
-**Accuracy**: Through automatic exchange rate updates, real-time conversion calculations, and systematic forex gain/loss recognition, the applet maintains accurate financial records across all currencies.
-
-**Efficiency**: By integrating with other applets, supporting automatic rate feeds, and automating revaluation processes, the applet significantly reduces manual effort and speeds up period-end closing.
-
-**Compliance**: With complete audit trails, support for IFRS and GAAP standards, proper gain/loss recognition, and comprehensive reporting, the applet helps organizations meet accounting standards and regulatory requirements.
-
-**Insight**: Through multi-currency reporting, currency exposure analysis, forex trend tracking, and gain/loss analytics, the applet transforms raw exchange rate data into actionable business intelligence.
-
-**Risk Management**: The applet's real-time rate monitoring, exposure tracking, variance alerts, and historical analysis capabilities allow organizations to actively manage currency risk.
-
-Whether you're a finance team managing exchange rates, an accountant recording multi-currency transactions, a treasury staff member monitoring currency exposure, or a CFO analyzing forex impact on profitability, the Forex Applet provides the tools and structure needed to manage foreign exchange effectively.
-
-By maintaining accurate exchange rates, automating currency conversions, systematically tracking forex gains and losses, and connecting seamlessly with related applets, this tool forms the backbone of sound multi-currency financial management and informed decision-making.
+- [Chart of Accounts setup guide](/guides/accounting-guides/chart-of-accounts-setup/) — where the Forex Gain / Forex Loss default accounts are assigned.
+- [Financial Accounting module](/modules-v2/financial-accounting/) and [Purchasing module](/modules-v2/purchasing/).
+- [Applets and Workflows catalogue](/applets-workflows/#-forex-applets).
