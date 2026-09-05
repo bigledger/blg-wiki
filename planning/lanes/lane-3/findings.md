@@ -742,3 +742,64 @@ One large document applet this run; the wrong premise meant every section was re
 ### Stopping point
 
 One document applet this run (a small one, but every section had to be rebuilt from scratch because the old page was marketing copy, and the knock-off path needed the backend service read end to end). Next in queue: `internal-purchase-refund-note-applet.md`.
+
+## Run 16 — 2026-09-05 — internal-purchase-refund-note-applet
+
+### Page
+
+- `content/en/applets/purchase-workflow/internal-purchase-refund-note-applet.md` rewritten from the applet @5ba2cb5 (shared-utilities submodule pinned @f1ded04; gates checked there and at HEAD af523eb — identical set for this code), backend @871dbf5, ts-lib, the registry, a zero-row perm-dfn extract and 17 issues. Title set to the registry name "Purchase Refund Note Applet (Internal)" (the registry name carries the word "Applet" for both refund-note applets; the old page said "Purchase Refund Note (Internal) Applet").
+- The old page was a NotebookLM-style marketing page ("Incoming Credit Adjustment", "intercompany reconciliation discipline", audit-and-control bullets) with no settings, no fields and an invented intercompany premise. Replaced.
+
+### Direction / posting facts (record for the guides)
+
+- **The backend flipped this document's signums on 2026-04-23** (`68f9eaa3ad`, one-file commit titled "Error Creating Purchase Report from M2 api", referencing customer-repo-4f0baa#165): `InternalPurchaseRefundNoteDataConsistencyObject` went from amount −1 / quantity 0 to **amount +1 / quantity −1** — the Purchase Return shape. `ServerDocTypes.INTERNAL_PURCHASE_REFUND_NOTE(-1,1)` agrees.
+- **The applet still sends header `amount_signum = -1`** (`hdr.states.ts` L45; `convertToActive$` L367) on CREATE and SAVE. The PUT path (`updateGenericDoc → basicUpdateGenericDoc → fillAndValidateForUpdate → specificValidationForUpdate → checkAmountSignum(+1)`) returns `GENERIC_DOC_INVALID_SIGNUM`; only the TEMP create (`createTempGenericDoc`, no validation) succeeds. **On a backend carrying that commit, no refund note can be created from this applet.** The importer goes through the validated `createGenericDoc` with the same result. Not verified against a live tenant (would need document counts — tenant data); flagged for Vincent.
+- **Line signums are filled per LINE type, not per header** (`GenericDocumentDataConsistencyObject` L802–L808 / L1102–L1107 match `handlers` on the line's `server_doc_type`). This applet writes Revenue-tab lines as `INTERNAL_SALES_INVOICE` (−1 / +1), Expense-tab lines as `INTERNAL_PURCHASE_INVOICE` (+1 / −1), everything else as the refund note (−1 / +1), CASH_BACK settlement lines as `INTERNAL_PAYMENT_VOUCHER`, and CHEQUE settlement lines with **no** type (the applet's −1 survives). `STL_MTHD_SERVER_DOC_TYPE_REPAIR_MAP` repairs only sales return / sales refund note settlement lines to the payment voucher.
+- Net posting (generic PURCHASE handler): Revenue lines **Cr Purchase**, tax **Cr Input Tax**, settlement lines **Cr Cashbook**, entity **Dr Creditor** — a Purchase-Return-like document whose cash leg is credited (a payment out), which is not a supplier refund. Before April the PNS leg was Dr Purchase (invoice-like) and the cash leg Dr Cashbook. Neither version is a coherent "supplier refunds us" document. Stock: Revenue-tab item lines are outbound movements and FINAL validates their stock balance by default.
+- No intercompany pairing for this type; not in `PurchaseReportUow`; present in the e-Invoice discrepancy report and both purchase allow-lists (self-billed type 14).
+
+### Method findings (add to METHOD.md)
+
+1. **Check the DCO's git history, not just its current constants.** A one-file signum flip five months ago is invisible from the constants alone; `git log -p -- <DCO>` shows whether the applet's `AppletConstants` were ever aligned. Here they were not, and the mismatch is a hard failure on CREATE.
+2. **Line signums come from the line's `server_doc_type`, not the header's.** Applets in the receipt-voucher family write lines of other document types (sales invoice / purchase invoice / payment voucher). The posting proof block must list the signum per line kind, and the "amount signum" row of the block is the header check only.
+3. **`createTempGenericDoc` skips validation; the PUT validates.** "Create works" in a test means only that the TEMP row was written; the failure surfaces on the CREATE button's PUT. When documenting a creation failure, name the endpoint that throws.
+4. **A permission ticket can be closed with zero rows seeded** (intranet #4492 closed because `client-side-permission-listing` exists in the routes). Always run the perm-dfn count; do not trust closed BLPR permission tickets.
+5. **`INTERNAL_..._DISPLAY_PRICING` is a show-permission with a hide default**: `hidePriceFlag = !checkPermission(code)` hides the price columns for everyone when the code is not seeded. Check the polarity of every `checkPermission` call, not only the `SHOW_*` re-enables.
+6. `gates.py` marks `HIDE_EXPORT_TAB` "RENDERED?(runtime: showExportTab || appletCode==…)" — the runtime value depends on `tabMappings`; when the registry code is absent from the map treat it as gated out.
+
+### Screenshots (kept 7 of 12, none moved)
+
+- **Excluded from the page (loop to quarantine under `static/images/internal-purchase-refund-note-applet/`)**: `infographics.png` (generated marketing infographic, "Optimizing Intercompany Credits", stakeholder-benefit boxes); `personalization.png` (a staff member's full name and e-mail address in the profile panel); `revenue_tab.png` (browser chrome with the tester's bookmarks bar and profile visible); `select_revenue.png` (item picker whose test item codes carry a developer's first name three times); `settlement.png` (settlement method named after a developer).
+- Kept: `Main_Listing_Main_Tab.png`, `Account_tab.png`, `supplier_selecting.png`, `expenses.png`, `arap.png`, `e-invoice.png`, `Settings.png` — staging tenant, generic test entities (`dfsdf`, `testing17`, "NEW BUNDLE ITEM"), the tenant user's small avatar only. `supplier_selecting.png` lists one test entity with a plain first name as its name; judged generic, flagging for Vincent's call. The Revenue and Settlement tabs are now unillustrated; re-take on a clean tenant.
+
+### Cross-lane link requests
+
+- **sales-workflow/internal-sales-refund-note-applet.md** (other lane): title should be the registry name "Sales Refund Note Applet (Internal)" (page has "Sales Refund Note (Internal) Applet"); add `internal-purchase-refund-note-applet` to `related_applets`; state that its settlement lines are repaired to `INTERNAL_PAYMENT_VOUCHER` by `STL_MTHD_SERVER_DOC_TYPE_REPAIR_MAP` (the purchase twin's are not); check whether its DCO (amount −1 / quantity +1) matches the applet's constants.
+- **finance/internal-payment-voucher-applet.md** (other lane): add `internal-purchase-refund-note-applet` to `related_applets` (CASH_BACK settlement lines are stored as payment-voucher lines; contra partner).
+- **finance/internal-purchase-invoice-applet.md** (lane 2): add `internal-purchase-refund-note-applet` to `related_applets`; note that Expense-tab lines of a refund note are stored as purchase-invoice lines.
+- **purchase-workflow/internal-purchase-return-applet.md** (my lane): add one sentence that the refund note carries the same signums since April 2026 and is not creatable from its applet on current backends; keep the link.
+- **purchase-workflow/internal-purchase-debit-note-applet.md, internal-purchase-credit-note-applet.md** (my lane): add `internal-purchase-refund-note-applet` to `related_applets` (credit note already links in prose).
+- **e-invoice/my-e-invoice-admin-applet.md** (my lane, run 6): add `internal-purchase-refund-note-applet` to `related_applets`; the self-billed table should list type 14 (Self-billed Refund Note) and 12/13 for return-or-debit / credit note.
+- **master-data/cashbook-applet.md, chart-of-account-applet.md, organisation-applet.md, supplier-applet-1.md, tax-configuration-applet.md, doc-item-maintenance-applet.md** (other lane): add `internal-purchase-refund-note-applet` to `related_applets`.
+- **guides/purchasing-guides/**: no guide mentions the refund note; until the signum question is settled, guides should route supplier refunds through Purchase Return (goods) or Purchase Debit Note (money) and not through this applet.
+- **planning/lanes/METHOD.md** (coordinator): fold in the six method findings above.
+- **kb/tools/gates.py** (coordinator): resolve the `RENDERED?(runtime: …)` verdicts against `tabMappings` for the given code.
+
+### Registry / naming mismatches
+
+- `internalPurchaseRefundNoteApplet` row: name "Purchase Refund Note Applet (Internal)", ACTIVE, `documentation_url` correct. Page title corrected to the registry name.
+- **Permissions: 0 seeded / 25 checked** (`SHOW_GENDOC_FINAL/DISCARD/VOID_BUTTON`, `SHOW_DOC_NO_*` ×3, `SHOW_CLIENT_DOC_TYPE`, `SHOW_CLIENT_DOC_1–5`, `SHOW_DESCRIPTION`, `SHOW_ARAP_*` ×5, `SHOW_TRANSACTION_DATE`, `INTERNAL_PURCHASE_REFUND_NOTE_DISPLAY_PRICING`). Extract (header only) in `planning/lanes/lane-3/perm-dfn/internalPurchaseRefundNoteApplet.tsv`. The sales twin has one seeded row.
+- The April 2026 backend commit and the applet's issue #3 reference a customer-support repo; cited by pseudonym `customer-repo-4f0baa` (already in `kb/private/repo-pseudonyms.tsv`).
+
+### Questions for Vincent
+
+- **Is the Purchase Refund Note creatable on production today?** Code says CREATE/SAVE fail with `GENERIC_DOC_INVALID_SIGNUM` since `68f9eaa3ad` (2026-04-23). An aggregate count of `INTERNAL_PURCHASE_REFUND_NOTE` headers created after that date across tenants would confirm; I did not run it (tenant data). If confirmed: align `AppletConstants` and the two header assignments with the DCO, or revert the DCO.
+- **What is the intended accounting shape?** Current DCO = Purchase Return (Cr Purchase, stock out, cash leg credited). A supplier refund would be Dr Cashbook / Cr Creditor with no stock movement. Decide, then add a `STL_MTHD_SERVER_DOC_TYPE_REPAIR_MAP` entry for the purchase refund note (→ receipt voucher) as the sales side has (→ payment voucher).
+- Should the Revenue / Expense tabs (lines stored as sales-invoice and purchase-invoice types) stay on a purchase document, or is this receipt-voucher inheritance to be removed?
+- Seed the 25 client-side codes checked in code — at minimum `INTERNAL_PURCHASE_REFUND_NOTE_DISPLAY_PRICING` (price columns are hidden for everyone) and `SHOW_TRANSACTION_DATE` (date locked for everyone).
+- Rename the listing column "Customer Name" to "Supplier Name"; restore the Line Items menu entry or drop the route; remove the unbound applet-local `field-configuration` component.
+- Quarantine the five excluded images; re-take Revenue and Settlement on a clean tenant.
+
+### Stopping point
+
+One document applet this run; every section was rebuilt and the posting proof needed the DCO history, the per-line fill loops, the update path and the settlement-line repair map read end to end. Next in queue: `internal-purchase-requisition-applet.md`.

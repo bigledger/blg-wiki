@@ -1,0 +1,3 @@
+# Permission definitions for applet internalPurchaseRefundNoteApplet — extracted 2026-09-05 from akaun_master (product registry metadata; no tenant data).
+# Client-side: bl_applet_client_side_perm_dfn joined on bl_applet_hdr.code (applet_guid). Server-side: TntErpPermissions TNT_API_DOC_INTERNAL_PURCHASE_REFUND_NOTE_* and AkaunTenantPermissions API_TNT_INTERNAL_PURCHASE_REFUND_NOTE_IMPORT_FILE_* constants in the Java backend.
+scope	perm_type	perm_code	perm_name	status	targets
