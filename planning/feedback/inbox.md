@@ -689,3 +689,12 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0184 (2026-09-05) No working setting in the applet (Field Settings unbound; Default Selection screens write to a container never loaded). Storefront evaluation diverges from the applet UI in five ways (Single Line rules never evaluated; Valid Date Range always passes; Delivery Region compares state only; Calculation Logic always Sequential Match; Handling Fee / Fuel Surcharge ignore Price Source). Inactive shipping price books still offered at checkout (status is an extension; storefront filters hdr.status). No code-uniqueness check; PRICE_BOOK_CREATED audit never written; shipping_price_book_rule_* backend family has no UI. Vincent: issues against wavelet-cp-commerce? make Status set hdr.status? hide or fix the dead Settings entries?
 - [x] F-0185 (2026-09-05) Five screenshots (tenant code in sidebar, a possible given name, infographic) quarantined.
 
+## From Lane 3 run 20 — Seller (2026-09-05)
+
+### registry (seller admin — ADR-0002)
+- [ ] F-0186 (2026-09-05) seller-admin-applet.md skipped: no registry row under any name; a maintained repo exists (last commit 2026-08-31) but it is not installable from the Applet Store. Register it (then it re-enters the queue) or retire the page and the module links crediting it with "multi-channel inventory sync"? seller_applet documentation_url is empty → set /applets/ecommerce/seller-applet/.
+
+### product (seller applet)
+- [ ] F-0187 (2026-09-05) A dozen controls reach no backend call (seller-order SAVE/FINAL/Delete, PI edit actions, PV Create, product Create, Multi UOM/Image/Attribute writes, stock-balance edit/delete…); only PRINTABLE persists; ~45 keys read with no control. Backend: purchase_amount = quantity bug in TmpSellerOrderLineService; discarded BigDecimal.add in EcomSync seller-stock mode (seller totals stay 0); no scheduler wiring for the seller-order processors; no mkp item-code uniqueness. Is the Seller Applet live for any tenant? If not, exclusion may beat documenting 12 dead buttons.
+- [x] F-0188 (2026-09-05) Seven images (staff e-mails/phone as rows, person/business names as test branches, developers' names, infographics) quarantined.
+
