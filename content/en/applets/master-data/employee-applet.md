@@ -1,6 +1,75 @@
 ---
-title: "Employee Applet"
-description: "Centralized employee master data management with org chart, access control, payroll and claim configuration"
+title: "Employee Maintenance"
+description: "Reference for the Employee Maintenance applet — the employee master (one entity record per employee with login, branch, company, category, payment, tax, spending-limit, report-to and e-Invoice details), plus Employee Categories, Org Charts and CSV File Import."
+applet_code: "employeeApplet"
+applet_repo: "blg-applet-akaun-platform-employee-applet"
+modules: [core, hr-payroll, claims, e-invoice]
+related_applets: [customer-maintenance-applet, supplier-applet-1, merchant-applet, entity-applet, organisation-applet, tax-configuration-applet, claim-applet, claim-cycle-applet, my-e-invoice-portal-applet, mypeppol-admin-applet, tenant-admin-applet]
+guides: []
+sources:
+  configuration:
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/app.routing.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/app.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/models/menu-items.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/settings-container/field-configuration/field-configuration.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-listing/employee-listing.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-listing/employee-listing.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-listing-v2/employee-listing-v2.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-edit.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-edit.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-login/employee-login.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-login/login-create/login-create.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-login/login-create/login-create.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-payment-config/employee-payment-config.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/report-to/report-to.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/report-to/report-to-create/report-to-create.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-create/employee-create-main/employee-create-main.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-create/employee-create-main/employee-create-main.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/resolver/permission.resolver.ts
+    - akaun_master.bl_applet_client_side_perm_dfn (applet employeeApplet — no rows)
+  fields:
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-create/employee-create-main/employee-create-main.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-create/employee-create-main/employee-create-main.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-edit.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/e-invoice-details/e-invoice-details.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-address/address-create/employee-address-create.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-contact/contact-create/employee-contact-create.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-payment-config/payment-config-create/payment-config-create.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-tax/tax-create/employee-tax-create.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-tax/tax-create/employee-tax-create.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-spending-limit/create/create.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/report-to/report-to-create/report-to-create.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/approved-leave/approved-leave-create/approved-leave-create.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/approved-leave/approved-leave.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-login/login-create/login-create.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/chart-container/org-chart-create/org-chart-create.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/chart-container/org-chart-edit/manage-structure/manage-structure-create/manage-structure-create.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/category-container/employee-category-create/employee-cat-create.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/file-import-container/file-import-create/file-import-create.component.html
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/file-import-container/file-import-listing/file-import-listing.component.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/models/employee-constants.ts
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/shared-utilities/models/entity-constant.model.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/entity/EmployeeImportFile/EmployeeImportFileColumnNames.java
+  lifecycle:
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/state-controllers/employee-controller/store/effects/employee.effects.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/entitydataconsistencyobjects/EntityDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/entitydataconsistencyobjects/EntityPaymentMethodDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/entitydataconsistencyobjects/EntitySpendingLimitLineDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/erp/company/link/CompanyEmployeeLinkDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/entity/EmployeeImportFile/EmployeeImportFileHdrService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/entity/EmployeeImportFile/EmployeeImportFileServiceHelper.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/employee/EmployeeImportFileHelperProcessor.java
+  troubleshooting:
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/entitydataconsistencyobjects/EntityDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/entity/EmployeeImportFile/EmployeeImportFileHdrService.java
+    - blg-applet-akaun-platform-employee-applet/micro-fe/projects/akaun-platform/applets/employee-applet/src/app/components/employee-container/employee-edit/employee-login/login-create/login-create.component.ts
+    - gh:bigledger/blg-int-general-task#2275
+    - gh:bigledger/blg-wiki#165
 tags:
 - employee-master
 - hr-management
@@ -12,323 +81,262 @@ aliases:
 - /applets/employee-maintenance-applet/
 ---
 
-{{< callout type="warning" >}}
-**Under Review**: This applet is still under review.
-{{< /callout >}}
+## Overview
 
-## Purpose and Overview
+The Employee Maintenance applet is BigLedger's **employee master**. An employee is an entity record (the same `bl_fi_mst_entity_hdr` table that holds customers, suppliers and merchants) flagged with the `EMPLOYEE` entity type. The record carries who the person is (name, code, identity number, employment status, joined and cessation dates), where they sit (default company, branch, department, division, team, rank), how they log in (the link between the employee and a platform login), how they are paid (bank / payee details), their tax and spending-limit rules, their reporting line, and the identity fields that go on a self-billed e-Invoice.
 
-The **Employee Applet** is the central hub for managing employee master data in the Akaun Platform. It brings together employee profiles, reporting lines, login access, payroll and tax configuration, claims setup, and compliance records in one structured system.
+It is used by HR or admin staff who onboard employees, by IT admins who link employees to logins and install applets for them, by finance who set payment and spending-limit rules, and by whoever maintains employee categories and org charts. It is master data only — claims, payroll runs and approvals live in their own applets, which resolve the employee from this record.
 
 {{< callout type="info" >}}
-**Core Concept**: A single employee record should connect **who** the employee is, **where** they sit in the organization, **what** access they have, and **how** they are paid and reimbursed.
+**One entity, several types.** The *Entity Type* field on the record is multi-select (`CUSTOMER`, `SUPPLIER`, `EMPLOYEE`, `MERCHANT`). The same person can therefore be an employee and a customer; this applet sets `is_employee` and shows the employment fields only while `EMPLOYEE` is among the selected types.
 {{< /callout >}}
 
-### About the Applet
+## Where it fits
 
-**Purpose:** Maintain accurate employee master data and operational settings across HR, finance, and access control workflows.
+| Direction | Applet / document | Why |
+|---|---|---|
+| Upstream | [Organisation](/applets/master-data/organisation-applet/) | Companies and branches for the default company, the Branch Linking and Company Linking tabs, and the org chart's company |
+| Upstream | [Tax Configuration](/applets/master-data/tax-configuration-applet/) | Tax codes (by country) offered on the Tax tab |
+| Upstream | [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) | Logins, catalogs and ranks; the Login tab invites a user into the tenant and links the login to the employee |
+| Sibling | [Customer Maintenance](/applets/master-data/customer-maintenance-applet/), [Supplier](/applets/master-data/supplier-applet-1/), [Merchant](/applets/master-data/merchant-applet/), [Entity](/applets/master-data/entity-applet/) | Same entity table; each applet edits the record through its own type lens |
+| Downstream | [Claim](/applets/claims/claim-applet/), [Claim Cycle](/applets/claims/claim-cycle-applet/) | A claimant is resolved from the login e-mail to an employee record; job title, branch links and org chart drive approver lookup |
+| Downstream | [My E-Invoice Portal](/applets/e-invoice/my-e-invoice-portal-applet/), [MyPeppol Admin](/applets/e-invoice/mypeppol-admin-applet/) | The E-Invoice tab (TIN, ID type and number, SST / tourism-tax numbers, MSIC, address) and the Peppol Config tab supply the party details for self-billed e-Invoices |
+| Downstream | Sales and purchase document applets | Employees appear as salesperson / account-manager pickers; the Account Manager tab links an employee to the customers they manage |
 
-**Target Users:** HR and People Ops, Finance and Payroll, Department Managers, IT and System Admins.
+Modules: Core, HR & Payroll, Claims, E-Invoice.
 
-**Key Features:**
-- Employee profile creation and maintenance
-- Employee category management and labeling
-- Org chart and report-to structure
-- Login access and permission controls
-- Payroll, tax, and payment configuration
-- Claims accounts and entitlements visibility
-- Bulk file import and audit trails
+## Screens and menus
 
-## Key Features Overview
+Left menu (route `applets/wavelet/erp/entity/employee-applet`):
 
-### Who Benefits from This Applet?
+| Menu | What it is for |
+|---|---|
+| **Employee** | Search, create and edit employees |
+| **Employee Category** | Tree of employee categories (code, name, description, parent) — `bl_fi_mst_entity_label_hdr` labels that employees are tagged with on the Category tab |
+| **Org Chart** | Org chart headers (code, name, company, description, status) with a **Structure** tab where you add `DEPARTMENT` and `EMPLOYEE` nodes (hierarchical name, type, parent, rank 0–10, designation, description) |
+| **File Import** | CSV upload of employees; a listing shows file name, size, format, status, process status and the user error message |
 
-**HR and People Ops:**
-- Structured onboarding and profile maintenance
-- Central view of employee contact and address data
-- Quick updates to branches, departments, and roles
+The Employee Category, Org Chart and File Import entries can be hidden tenant-wide (see [Applet settings](#applet-settings)).
 
-**Finance and Payroll:**
-- Consistent payment and tax configuration
-- Spending limits and claim entitlement linkage
-- Clean data for payroll and reimbursement processing
+Gear (Settings) menu: **Application Settings** and **Default Selection** (System Configuration); **Permission Wizard**, **Permission Set**, **User / Team / Role Permission** (server-side permissions); **Triggers** (webhook configuration); **Audit Trail** (entity audit trail) and **Reset Applet State** (developer tools). **Feature Visibility** is the settings landing page. Personalisation offers a per-user **Default Selection**.
 
-**Department Managers:**
-- Clear report-to structure and team visibility
-- Approved leave tracking and updates
-- Accurate org chart alignment
+### Employee listing
 
-**IT and System Admins:**
-- Login and permission control
-- Feature visibility and access management
-- Applet audit trail for compliance
+Columns shown by default: Employee Code, Employee Name, Employee Type (`INDIVIDUAL` / `CORPORATE`), Created By, Modified By, Status. ID Type, ID Number, Gender, Date of Birth, Country, Currency, Description, AR/AP Type, Phone, Email, Nationality, Ethnicity, Language Code, Title, Region Code, Marital Status, Job Title, Job Industry, Job Role, Creation Date and Modified Date exist as hidden columns the user can switch on from the Columns panel. The **+** button opens the create form; clicking a row opens the edit form.
 
-### What Problems Does This Solve?
+### Create form
 
-**The Fragmented Employee Data Problem:**
+A single **Main** tab. The lower half of the form (screenshot) holds the employment fields; the *Branch* picker is mandatory on create.
 
-Traditional employee management is scattered across spreadsheets, email threads, and separate HR or payroll systems. Common issues include:
-- Duplicate or inconsistent employee records
-- Missing reporting lines and unclear approvals
-- Inaccurate payroll and tax configuration
-- Delayed onboarding due to manual setup
-- Lack of audit traceability
+{{< figure src="/images/employee-applet/employee-create-branch.png" alt="Lower half of the Create Employee form showing Title, Marital Status, Job Title, Job Industry, Joined Date, Cessation Date, Employment Status, Branch and Default Rank" caption="Create Employee, lower half of the Main tab: Employment Status and Branch are mandatory." >}}
 
-**The Employee Applet Solution:**
+### Edit form tabs
 
-- **Single source of truth** for employee data
-- **Structured org chart** and report-to relationships
-- **Integrated access setup** for logins and permissions
-- **Payroll-ready configuration** for tax and payment settings
-- **Bulk import tools** for faster onboarding
-- **Audit trail** for compliance and accountability
+In default order: **Main**, **E-Invoice**, **Peppol Config** (Peppol Ids, Notification Config), **Address**, **Contact**, **Remark**, **Category**, **Login**, **Payment Config**, **Tax**, **Org Chart** (read-only view of the org charts, company, designation and rank the employee is placed in), **Branch Linking**, **Company Linking**, **Account Manager** (customers this employee manages), **Spending Limit**, **Report To**, **Approved Leave**, **Engagement Company Access**. Most tabs are a listing on the left and a create/edit panel on the right, each with its own **Add** button; the header **Save** button saves the employee header (Main and E-Invoice tabs) only.
 
-## Key Features Overview
-
-{{< cards >}}
-  {{< card title="Employee Master Data" subtitle="Create, edit, and manage employee profiles" link="#employee-master-data" >}}
-
-  {{< card title="Org Chart & Reporting" subtitle="Define report-to relationships and org structure" link="#org-chart-and-reporting" >}}
-
-  {{< card title="Login & Access" subtitle="Control employee login, permissions, and roles" link="#login-and-access" >}}
-
-  {{< card title="Payroll & Tax" subtitle="Configure payment and tax details" link="#payroll-and-tax-configuration" >}}
-
-  {{< card title="Claims & Entitlements" subtitle="Manage claim accounts, limits, and reports" link="#claims-and-entitlements" >}}
-
-  {{< card title="File Import" subtitle="Bulk upload and update employee records" link="#file-import" >}}
-
-  {{< card title="Audit & Compliance" subtitle="Applet logs and traceability" link="#audit-and-compliance" >}}
-
-  {{< card title="Configuration & Settings" subtitle="Defaults, field settings, and visibility" link="#configuration--settings" >}}
-{{< /cards >}}
-
-{{< figure src="/images/employee-applet/employee-applet-overview.png" alt="overview of key features" caption="Overview of Key Features of Employee Applet" >}}
-
-## Key Concepts
-
-### The Employee Master Structure
-
-| Aspect | Component | Practical Example |
-|--------|-----------|------------------|
-| **Who** is the employee? | Profile and identity | Name, ID, designation |
-| **Where** do they belong? | Branch, department, report-to | KL Branch, Finance, Manager X |
-| **What** access do they need? | Login and permissions | Approver, HR admin, staff |
-| **How** are they paid? | Payment and tax config | Bank details, tax profile |
-| **What** can they claim? | Claims accounts and entitlements | Medical fund, travel limit |
-
-{{< callout type="tip" >}}
-**Real-World Example**: A new finance executive joins the company. HR creates the employee profile, assigns the department and manager, IT sets login permissions, and finance configures tax and payment details. The employee is ready for payroll and claims in one flow.
+{{< callout type="warning" >}}
+**Approved Leave does not save anything.** The tab shows a *Leave Date From / To* form and an **Add** button, but the component's add handler is empty and its save call is commented out; the listing columns are bound to the Report To level-1 name and e-mail fields, not to leave dates (`approved-leave-create.component.ts` L124-147, `approved-leave.component.ts` L76-77). Do not use it to record leave. A Claims tab is likewise present in the template but commented out.
 {{< /callout >}}
 
----
+{{< figure src="/images/employee-applet/employee-report.png" alt="Report To tab with the level 1-3 name, e-mail and employee-code fields" caption="Report To: up to three levels of manager, each chosen from the employee list; e-mail and employee code fill in from the chosen record." >}}
 
-## Quick Start Guide
+{{< figure src="/images/employee-applet/employee-payment.png" alt="Payment Config tab with the create panel open" caption="Payment Config: payee residential status and country are mandatory; bank, SWIFT, account number, holder name, IBN number and account expiry are optional." >}}
 
-{{< figure src="/images/employee-applet/employee-applet-quick-start.png" alt="Quick start for Employee applet" caption="Infographic of quick start on Employee Applet" >}}
+{{< figure src="/images/employee-applet/employee-tax.png" alt="Tax tab with the create panel open" caption="Tax: country, tax type, tax code, rate and tax option are all mandatory." >}}
 
-Get started quickly based on your role.
+{{< figure src="/images/employee-applet/employee-speending.png" alt="Spending Limit tab with the Add Spending Limit panel" caption="Spending Limit: an Enable switch, quantity and amount quotas, rolling duration in days, max quantity per item, company and branch label." >}}
 
-### For HR/Admins: Create a New Employee
+{{< figure src="/images/employee-applet/employee-login-create.png" alt="Login Create panel with the user e-mail or phone field, Verify button, Rank, Status and catalog selection" caption="Login Create: verify the e-mail or phone first; the catalog picker appears only when INSTALL ALL APPLETS ON INVITE is on." >}}
 
-**Goal:** Add a new employee with complete profile details.
+## Configuration
 
-1. **Navigate**: Go to **Employee Listing**
-{{< figure src="/images/employee-applet/employee-listing.png" alt="Employee listing" caption="Image of Employee Listing where user can see all the created employee" >}}
-2. **Create**: Click **+** and fill in basic details
-{{< figure src="/images/employee-applet/employee-create.png" alt="Employee create button" caption="Create button for creating new employee listing." >}}
-3. **Add Contacts**: Update Employee Name, Employee Code, Employee Nickname, status, and other fields
-{{< figure src="/images/employee-applet/employee-add-details.png" alt="add employee details" caption="Add employee fields in the Create Employee section." >}}
-4. **Assign Structure**: Set branch, department, and report-to
-{{< figure src="/images/employee-applet/employee-create-branch.png" alt="set employee branch" caption="Set employee branch in the configuration." >}}
-5. **Save**: Confirm and save the employee record
-{{< figure src="/images/employee-applet/employee-save.png" alt="saved button" caption="Click CREATE to save the employee details." >}}
+### Before you can use it
 
----
+- **Companies and branches** in the [Organisation applet](/applets/master-data/organisation-applet/) — the create form requires a branch; Branch Linking, Company Linking, the spending-limit company and the org chart company all pick from there.
+- **Tax codes** in [Tax Configuration](/applets/master-data/tax-configuration-applet/) if you will use the Tax tab; the tab filters codes by the chosen country.
+- **Logins** — a person must already have accepted an invitation into the tenant (or be verified by e-mail / phone on the Login tab) before a login link can be added; ranks and catalogs come from [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/).
+- **Employee code prefix and running number** — if you leave *Employee Code* blank the backend generates one from the `EMPLOYEE_ID` sequence with the tenant's employee prefix (`EntityDataConsistencyObject` L1378, `buildEntityCode` L1400-1410).
 
-### For Managers: Maintain Reporting Lines and Leave
+### Applet settings
 
-**Goal:** Keep team structure and approved leave accurate.
+Settings live in an **applet-local** Application Settings screen (`settings/field-settings`, `FieldConfigurationComponent` inside this repo — not the shared blg-shared-utilities screen) plus a one-field **Default Selection** screen. Values are stored as the applet's master settings; any user who can open the Settings menu can change them, and a change takes effect for everyone after **Save**. Every toggle is patched straight from the stored value (`resolve?.KEY`, no default) except `INSTALL_ALL_APPLETS_ON_INVITE`, which is patched to `false` when unset — so on a fresh tenant every toggle is off and nothing is hidden.
 
-1. **Open Employee Profile** from the listing
-{{< figure src="/images/employee-applet/employee-view.png" alt="view employee details" caption="Click on the employee listing to view their details." >}}
-2. **Update Report-To** to reflect team changes
-{{< figure src="/images/employee-applet/employee-report.png" alt="Report To tab in the applet" caption="Report To tab in the applet. User can add and edit the details in the tab." >}}
-3. **Review Approved Leave** for visibility
-{{< figure src="/images/employee-applet/employee-leave.png" alt="Report To tab in the applet" caption="To create new Approved Leave listing" >}}
+{{< figure src="/images/employee-applet/employee-app-setting.png" alt="Application Settings screen with its seven collapsed sections" caption="Application Settings: Employee Listing, Main Details Hidden, Login Hidden, Payment Config Hidden, Edit Tabs Hidden, Menu Items Hidden, Report To Hidden." >}}
 
-{{< figure src="/images/employee-applet/employee-create-leave.png" alt="create leave for employee" caption="Set date for approved leave and click button Add to save" >}}
+{{< figure src="/images/employee-applet/employee-hide-unhide.png" alt="Employee Listing section expanded showing the Hide Employee Create Button and column toggles" caption="Employee Listing section: each switch hides one listing column; Currency, Creation Date and Modified Date are on here." >}}
 
-{{< figure src="/images/employee-applet/employee-success.png" alt="Pop out successful" caption="Approved leave saved successfully" >}}
-4. **Check Org Chart** to ensure hierarchy is updated
-{{< figure src="/images/employee-applet/employee-org-chart.png" alt="org-chart" caption="Check organization chart and check the structure" >}}
+**Employee Listing**
 
-{{< figure src="/images/employee-applet/employee-org-chart-struc.png" alt="org-chart-structure" caption="Structure of the organization" >}}
-5. **Save Changes** to update the org chart view
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| Hide Employee Create Button (`HIDE_EMPLOYEE_CREATE_BUTTON`) | The **+** button on the employee listing (both listing implementations) | off | On: nobody can create employees from the UI; File Import still works |
+| Employee Name (`HIDE_EMPLOYEE_NAME`) | Listing column **and** the Employee Name field on the edit Main tab | off | On: column and field hidden |
+| Employee Type (`HIDE_EMPLOYEE_TYPE`) | Listing column and the Employee Type field on the edit Main tab | off | As above |
+| Currency (`HIDE_CURRENCY`) | Listing column and the Currency field on the edit Main tab | off | As above |
+| Status (`HIDE_STATUS`) | Listing column, the Status field on the edit Main tab, and the Status column of the Login tab (same key bound in the Login Hidden section) | off | As above |
+| Creation Date (`HIDE_CREATION_DATE`) | Listing column only | off | The Main-tab *Creation Date* field reads a different key (`HIDE_CREATED_DATE`) that no control sets, so the field stays visible |
+| Modified Date (`HIDE_MODIFIED_DATE`) | Listing column and the Login tab's Modified Date column | off | The Main-tab *Modified Date* field is bound to `HIDE_MODIFIED_BY` instead (see below) |
 
----
+**Main Details Hidden** — one switch per field of the edit form's Main tab, each applying `[hidden]` to that field: Employee Name, Employee Code, Employee Nickname, Status, Entity Type (`HIDE_E_TYPE`), Employee Type, Identity Type, ID Number, Gender, Date of Birth, Country, Currency, Description, Ref 1, Ref 2, AR/AP Type, Phone Number, Email, Nationality, Ethnicity, Language Code, Title, Region Code, Marital Status (`HIDE_MARTIAL_STATUS`), Job Title, Job Industry, Job Role, Joined Date, Cessation Date, Employment Lifecycle Status (`HIDE_EMPLOYEE_STATUS`), Bank Name, Bank Account No., Default Branch (`HIDE_BRANCH_DETAIL`), Default Company (`HIDE_DEFAULT_COMPANY`), Location, Team, Division, Department, Default Rank, Created By, Creation Date, Modified By, Modified Date. Defaults are all off. Three things to know:
 
-### For Finance/Payroll: Configure Payment and Tax
+- Hiding a field on the edit tab does **not** hide it on the **create** form. The create form reads only nine of these keys (`HIDE_BANK_ACCOUNT_NO`, `HIDE_BANK_NAME`, `HIDE_COUNTRY`, `HIDE_DEPARTMENT`, `HIDE_DIVISION`, `HIDE_JOB_ROLE`, `HIDE_LANGUAGE_CODE`, `HIDE_REGION_CODE`, `HIDE_TEAM`) and disables (rather than hides) Entity Type and Identity Type when `HIDE_E_TYPE` / `HIDE_IDENTITY_TYPE` are on.
+- `HIDE_EMPLOYEE_CODE`, `HIDE_EMPLOYEE_NICKNAME`, `HIDE_IDENTITY_TYPE`, `HIDE_ID_NUMBER` and `HIDE_DEFAULT_COMPANY` also **disable** the matching edit-form control, so a hidden value cannot be changed by un-hiding the DOM.
+- The *Modified Date* field on the Main tab is bound to `HIDE_MODIFIED_BY`, so switching *Modified By* on hides both, and the *Creation Date* field cannot be hidden from this screen (key mismatch noted above).
 
-**Goal:** Ensure payroll-ready employee setup.
+**Login Hidden** (`HIDE_USER_EMAIL`, `HIDE_RANK`, `HIDE_STATUS`, `HIDE_MODIFIED_DATE`) hide the corresponding columns of the Login tab's listing; defaults off. The section also holds:
 
-1. **Open Employee Profile**
-2. **Go to Payment Config** and add bank details
-{{< figure src="/images/employee-applet/employee-payment.png" alt="Payment Config tab" caption="Configuration for employee payment details" >}}
-3. **Set Tax Profile** and statutory fields
-{{< figure src="/images/employee-applet/employee-tax.png" alt="Tax tab" caption="Configuration for employee tax details" >}}
-4. **Configure Spending Limits** if required
-{{< figure src="/images/employee-applet/employee-speending.png" alt="Spending limit tab" caption="Configuration for employee spending limit details" >}}
-5. **Review Changes** to confirm payroll fields
-6. **Save** to activate payroll data
-{{< figure src="/images/employee-applet/employee-saved.png" alt="Saved button" caption="Saved all the edited/added details for the employee" >}}
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| INSTALL ALL APPLETS ON INVITE (`INSTALL_ALL_APPLETS_ON_INVITE`) | Whether the Login Create panel shows a mandatory *Select catalogs for the applets installation* picker and sends `catalog_config: [{catalog_guid, install_all_applets: true}]` with the invitation | off (`?? false`) | On: **Send Invite** / **Send Tac** refuse to send until at least one catalog is chosen ("Please select at least one catalog…"), and the invited user gets every applet of the chosen catalogs installed on registration |
 
----
+**Payment Config Hidden** (`HIDE_COUNTRY`, `HIDE_PAYEE_RESIDENT_STATUS`, `HIDE_BANK`, `HIDE_SWIFT_CODE`, `HIDE_BANK_ACC_NO`, `HIDE_BANK_ACC_HOLDER_NAME`, `HIDE_IBN_NO`) hide columns of the Payment Config listing; defaults off. `HIDE_COUNTRY` is the same key as the Main-tab Country switch.
 
-### For IT/Admins: Set Permissions and Visibility
+**Edit Tabs Hidden** — removes whole tabs from the edit form (`getFilteredPanels()`); defaults off:
 
-**Goal:** Control user access and feature availability.
+| Switch | Key | Hides |
+|---|---|---|
+| Account Manager | `HIDE_ACC_MANAGER` | Account Manager tab |
+| Address | `HIDE_ADDRESS` | Address tab |
+| Branch | `HIDE_BRANCH` | Branch Linking tab |
+| Category | `HIDE_CATEGORY` | Category tab **and** the Employee Category left-menu entry |
+| Claims | `HIDE_CLAIMS` | The **Org Chart** left-menu entry (`app.component.ts` L60) — there is no Claims tab to hide; the label is wrong |
+| Company Linking | `HIDE_COMP_LINKING` | Company Linking tab |
+| Contact | `HIDE_CONTACT` | Contact tab |
+| Login | `HIDE_LOGIN` | Login tab |
+| Payment Config | `HIDE_PAY_CONFIG` | Payment Config tab |
+| Remark | `HIDE_REMARK` | Remark tab |
+| Spending Limit | `HIDE_SPEND_LIMIT` | Spending Limit tab |
+| Tax | `HIDE_TAX` | Tax tab |
+| Report To | `REPORT_TO` | Report To tab (note: on = hidden, despite the key name) |
+| Approved Leave | `APPROVED_LEAVE` | Approved Leave tab (on = hidden) |
 
-1. **Go to Settings**
-2. **Configure Permission Sets** for roles and teams
-{{< figure src="/images/employee-applet/employee-set-perm.png" alt="setting permission" caption="Set permission and role for each employee" >}}
-3. **Adjust Feature Visibility** for menus and tabs
-{{< figure src="/images/employee-applet/employee-app-setting.png" alt="Application configuration" caption="Choose either the user want to hide the or show each tab in the applet" >}}
+The Main, E-Invoice, Peppol Config, Org Chart and Engagement Company Access tabs have no switch.
 
-{{< figure src="/images/employee-applet/employee-hide-unhide.png" alt="Application configuration" caption="Disable and enable each tab in the applet" >}}
-4. **Assign User Permissions** to the employee login
-5. **Save** to apply access changes
+**Menu Items Hidden** — File Import (`HIDE_FILE_IMPORT`) removes the File Import menu entry; default off.
 
----
+**Report To Hidden** — `LEVEL_1_NAME`, `LEVEL_1_EMAIL`, `LEVEL_1_EMP_CODE`, `LEVEL_2_*`, `LEVEL_3_*` hide the matching field on the Report To create/edit panel and the matching listing column; defaults off.
 
-## Employee Master Data
+**Default Selection** (`settings/default-selection`)
 
-The employee listing is the main hub for creating and managing employee records. It includes:
-- Profile details, category, and employment type
-- Contact and address management
-- Branch and company assignments
-- Engagement company access and e-invoice details
-- Peppol ID link setup and notification configuration
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| Currency (`DEFAULT_CURRENCY`) | The currency pre-selected on the create form (`employee-create-main.component.ts` L172) | none — the form's Currency field starts blank and is mandatory | Set it to your home currency so every new employee defaults to it |
 
-{{< figure src="/images/employee-applet/employee-listing.png" alt="Employee Listing page showing employee records and filters" caption="Employee Listing: Manage employee master data with search and filters." >}}
+The branch picker on this screen is commented out in the template.
 
-{{< figure src="/images/employee-applet/employee-create.png" alt="Employee Create form with profile details and tabs" caption="Employee Create: Update profile, contact, and employment details in one form." >}}
+**Keys read at runtime without a control on any settings screen**
 
-{{< figure src="/images/employee-applet/employee-edit.png" alt="Employee Edit form with profile details and tabs" caption="Employee Edit: Update profile, contact, and employment details in one form." >}}
+- `HIDE_E_INVOICE_TAB` — hides the E-Invoice tab if present in the stored settings (`employee-edit.component.ts` L112).
+- `EMPLOYEE_CONTAINER_DETAILS_TAB_ORDER` — an ordered list of `{title, content}` that re-orders the edit tabs; saved tabs keep their order, new tabs are appended (`employee-edit.component.ts` L150-166). Nothing in this applet writes it.
 
-### Common Statuses/States
+**Rendered but not consumed**
 
-| Status | Meaning | Typical Use |
-|--------|---------|-------------|
-| **ACTIVE** | Employee is active in the system | Standard employee record |
-| **INACTIVE** | Employee is no longer active | Offboarding or long leave |
-| **DRAFT** | Profile setup not completed | During onboarding |
+- Personalisation › Default Selection shows *Default Branch* and *Default Location* pickers ("This will override Applet Default Settings") and saves them, but no component in this applet reads `DEFAULT_BRANCH` or `DEFAULT_LOCATION`.
+- The settings model also declares the document-applet keys (`HIDE_UNIT_PRICE_*`, custom-status flags, `HIDE_*_TAB`) and `MAX_QTY`; none has a control or a consumer here.
 
-## Employee Categories
+### Document behaviour settings
 
-Use category listing to classify employees for reporting, filtering, and policy control:
-- Create, edit, and assign employee categories
-- Label-based grouping for HR and finance views
-- Treeview selection with localized labels
+Not applicable — this is a master-data applet with no document statuses, posting or printables.
 
-{{< figure src="/images/employee-applet/employee-categories.png" alt="Employee categories view showing reporting structure" caption="Employee categories: Visualize reporting lines and employee categories." >}}
+### Feature visibility / permissions
 
-## Org Chart and Reporting
+{{< figure src="/images/employee-applet/settings.png" alt="Feature Visibility settings page showing the Teams › Manage Team Access panel" caption="Feature Visibility is the shared team-access screen; it does not gate individual buttons in this applet." >}}
 
-Use the org chart tools to define and visualize reporting lines:
-- Report-to setup per employee
-- Org chart listing and hierarchy view
-- Approved leave visibility for manager planning
+- **Client-side permissions:** `bl_applet_client_side_perm_dfn` holds **no rows** for `employeeApplet`, and the applet code checks no `SHOW_*` permission codes. Feature Visibility therefore offers only the shared *Manage Team Access* panel; the `HIDE_*` settings above are the only way to remove controls, and they apply to everyone.
+- **Server-side permissions:** Permission Wizard / Set / User / Team / Role are the shared containers, with the `PermissionResolver` mapping permission targets to Company, Branch, Location, Entity, Applet, Team, Tenant and Hostname lookups.
 
-{{< figure src="/images/employee-applet/employee-org-chart.png" alt="Org chart view showing reporting structure" caption="Org Chart: Visualize reporting lines and team structure." >}}
+## Fields
 
-## Login and Access
+### Create — Main tab
 
-Control login and access rights directly from employee profiles:
-- Create and edit employee login credentials
-{{< figure src="/images/employee-applet/employee-login.png" alt="login tab" caption="Login Tab in the Employe details" >}}
-- Set rank, status, and applet catalog access
-{{< figure src="/images/employee-applet/employee-login-create.png" alt="login tab" caption="Configuration for employee login" >}}
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Employee Name | `name` | Yes | Max 255 |
+| Employee Code | `employee_code` | No | Left blank, the backend assigns prefix + running number; must be unique among non-deleted entities (`…EMPLOYEE_CODE_ALREADY_EXISTS`) |
+| Employee Nickname | `nickname` | No | Max 255 |
+| Status | Entity status | Yes | `ACTIVE`, `TEMP`, `INACTIVE`; defaults to `ACTIVE` |
+| Entity Type | `eType`, multi-select | Yes | `CUSTOMER`, `SUPPLIER`, `EMPLOYEE`, `MERCHANT`; defaults to `EMPLOYEE`. Employment fields appear only while `EMPLOYEE` is selected |
+| Employee Type | `txn_type` | Yes | `INDIVIDUAL` only while `EMPLOYEE` is selected; `CORPORATE` becomes available if you deselect it. Backend rejects anything else (`ENTITY_HDR_OBJECT_TXNTYPE_DOES_NOT_EXISTS`) |
+| Identity Type / ID Number | `id_type`, `id_no` | No | Label changes to *Company Registration Number* for `CORPORATE` |
+| Company Tax Registration ID | `tax_reg_number` | Yes for `CORPORATE` | Shown only for `CORPORATE` |
+| Gender, Date of Birth, Nationality, Ethnicity, Language Code, Title, Region Code, Marital Status, Job Title, Job Industry, Job Role | Personal details | No | Individual only; Marital Status `M` / `S` / `O`; Gender `MALE` / `FEMALE` |
+| Country, Currency | `country_alpha3_code`, `ccy_code` | Currency yes | Currency defaults from `DEFAULT_CURRENCY` |
+| Description, Ref 1, Ref 2 | Free text | No | Max 255 |
+| AR / AP Type | `default_arap_type` | Yes | Defaults to `AP_EMPLOYEE` |
+| Phone Number, Email | Contact | No | Phone is validated by the phone-number component |
+| Joined Date, Cessation Date | Employment dates | No | Employee only |
+| Employment Status | Employment lifecycle | Yes (UI) | `ACTIVE`, `RESIGNED`, `TERMINATED`, `ABSCONDED`, `VOLUNTARY SEPARATION` |
+| Bank Name, Bank Account No | Quick bank details on the header | No | Distinct from the Payment Config tab |
+| Branch | Default branch | Yes | Single-select branch picker; sets the default company from the branch |
+| Team, Department, Division | Free text | No | |
+| Default Rank | Rank label | No | |
 
+### Edit — other tabs
 
-## Payroll and Tax Configuration
+| Tab | Fields (mandatory in bold) | Writes |
+|---|---|---|
+| E-Invoice | Self-billed switch, **Employee's Name**, **ID Type**, **Reg./ID/Passport Number**, **TIN**, **Contact Number**, **Email**, default e-Invoice payment config, tourism-tax and SST numbers, **MSIC / business activity description**, **SIC code**, ATIGA number, FTA information, **Address Name**, **Address Line 1**, lines 2-5, **Country**, **State**, **City**, **Postcode** | Header e-Invoice fields, saved with the Main-tab **Save** |
+| Address | **Address Name**, **Address Type**, **Address Line 1**, lines 2-5, **Country**, **State**, **City**, **Postcode** | Entity address lines |
+| Contact | **Contact Name**, **Contact ID**, **Designation/Position**, office / extension / **mobile** / fax / other numbers, phone, e-mail | Entity contact lines |
+| Category | Pick from the Employee Category tree | `bl_fi_mst_entity_label_link` |
+| Login | **User email or phone number** → Verify / Send Invite / Invitation Accepted / Send Tac / Verify Tac; **Rank** (`OWNER`, `ADMIN`, `MANAGER`, `MEMBER`, `GUEST`, `VISITOR`, `ANNONYMOUS`); **Status** (`ACTIVE` / `INACTIVE`); catalogs (when the invite setting is on) | `bl_fi_mst_entity_login_subject_link` |
+| Payment Config | **Payee Residential Status**, **Country**, Bank, SWIFT code, bank account no., holder name, IBN number, account expiry | `bl_fi_mst_entity_payment_method` |
+| Tax | **Country**, **Tax Type**, **Tax Code**, **Tax Rate (%)**, **Tax Option** | An entity extension row `TAX_DETAILS` (JSON) in `bl_fi_mst_entity_ext` |
+| Branch Linking / Company Linking | Pick branches / companies | `bl_fi_mst_branch_employee_link`, `bl_fi_mst_company_employee_link` |
+| Account Manager | Pick customers (code, name, status) | `bl_fi_mst_entity_account_manager_link` |
+| Spending Limit | Enable, Quantity Quota, Amount Quota, Rolling Duration (days), Max Quantity Per Item, **Company**, Branch Label | `bl_fi_mst_entity_spending_limit_line` |
+| Report To | Level 1-3 Name (pick an employee), Email, Employee Code | `xtn_report_to_01..03_name / _email / _guid / _employee_code` on the employee header, via a header PUT |
+| Engagement Company Access | Pick companies (entity code / name) | Employee-to-engagement-company access links |
+| Peppol Config | Peppol Participant ID links; notification configuration | Entity Peppol ID records |
 
-Payroll readiness requires consistent financial setup:
-- Payment configuration and bank details
-- Tax profile and statutory settings
-- Employee spending limits for controlled reimbursements
+### File Import
 
-## Claims and Entitlements
+The CSV is uploaded on the File Import screen (choose a file, pick the delimiter, **ADD**). Column headers, from `EmployeeImportFileColumnNames`:
 
-The applet ties employee records to claim management:
-- Claims accounts and entitlement linkage
-- Claims report visibility for HR and finance
-- Balance and usage tracking for entitlements
+`EMPLOYEE_CODE, EMPLOYEE_NAME, EMPLOYEE_TYPE, IDENTITY_TYPE, ID_NUMBER, COMP_TAX_REG_NUMBER, DOC_CURRENCY, DESC, PHONE_NUMBER, EMAIL, CATALOG_CODE, RANK, BILLING_NAME, BILLING_EMAIL, BILLING_PHONE, BILLING_ADDRESS_LINE1…5, BILLING_COUNTRY, BILLING_STATE, BILLING_CITY, BILLING_POSTCODE, SHIPPING_NAME, SHIPPING_EMAIL, SHIPPING_PHONE, SHIPPING_ADDRESS_LINE1…5, SHIPPING_COUNTRY, SHIPPING_STATE, SHIPPING_CITY, SHIPPING_POSTCODE`
 
-## File Import
+Only **EMPLOYEE_NAME** and **DOC_CURRENCY** are validated as mandatory (`validateColumns`); the ID-number and identity-type checks are commented out. There is no branch, department, report-to, join-date or status column — those are set in the UI afterwards.
 
-Bulk import simplifies onboarding and mass updates:
-- Upload employee data files
-- Validate and preview before import
-- Reduce manual entry for large teams
-- Use the template file to avoid validation errors
-{{< figure src="/images/employee-applet/employee-file-import.png" alt="File import menu" caption="Allow user to import employee details in CSV file which will saved more time" >}}
+{{< figure src="/images/employee-applet/employee-file-import.png" alt="Employee Import Listing showing uploaded CSV files with status and process status columns" caption="File Import listing: Process Status moves VALIDATING_DATA → DONE or FAILED; the User Error Message column carries the row-level reason." >}}
 
+## Lifecycle and effects
 
-### Sample File Import Template
+This applet writes master data; nothing here posts to the ledger or moves stock.
 
-Use CSV or Excel (XLSX) with headers in the first row. Recommended format:
+- **Entity status** is `ACTIVE`, `TEMP` or `INACTIVE` (`StatusOptions`). There is no `DRAFT`. Employment lifecycle (`ACTIVE` … `VOLUNTARY SEPARATION`) is a separate field and does not change the entity status.
+- **Create / edit** go through `EmployeeService` POST / PUT to the entity API. The backend `EntityDataConsistencyObject` enforces: status not null; `txn_type` is `INDIVIDUAL` or `CORPORATE`; an `employee_code` may only be set when `is_employee` is true (`…EMPLOYEE_CODE_SHOULD_NOT_BE_SET`, L163 / L707); `employee_code` unique among non-deleted entities (`…EMPLOYEE_CODE_ALREADY_EXISTS`, L189 / L733); `employee_id` unique (`ENTITY_HDR_OBJECT_EMPLOYEE_ID_ALREADY_EXISTS`, L106 / L660). A blank `employee_code` on an employee is generated from the `EMPLOYEE_ID` running number plus the tenant's employee prefix (L1378, L1400-1410).
+- **Sub-records** are saved by their own services with their own validators: payment methods (`EntityPaymentMethodDataConsistencyObject` — country code required and must exist, bank header must exist), spending limits (`EntitySpendingLimitLineDataConsistencyObject` — company must exist, status required), company links (`CompanyEmployeeLinkDataConsistencyObject` — one link per company + employee, `…COMPOSITE_CONSTRAINT_COMPANY_GUID_AND_EMPLOYEE_HDR_GUID_ALREADY_EXISTS`). No backend data-consistency object was found for the login-subject link table.
+- **Login invitation** calls the back-office invitation endpoint with `add_user_to_tenant: true`; after the person accepts, **Invitation Accepted** looks up the login principal (`EMAIL_USERNAME` or `MOBILE_USERNAME`) and stores its subject guid on the link.
+- **File Import** is processed by the `EMPLOYEE_IMPORT_FILE_HELPER_PROCESSOR` queue: status `VALIDATING_DATA` → mandatory-column check → for each row, an existing entity is looked up by **employee code** (if given) or, failing that, by ID number, company tax registration number, e-mail, then phone; a match is **updated** (name, type, ID, currency, e-mail, phone, tax number, description, addresses) and `is_employee` is set, otherwise a new entity is created. Any row failure marks the file `FAILED` with the message in *User Error Message*; a clean run ends `DONE`.
+- **Webhooks** (Triggers) fire the entity webhook queue on create / update, including rows created by File Import.
 
-| Column | Required | Example | Notes |
-|--------|----------|---------|-------|
-| **Employee Code** | Yes | EMP001 | Must be unique |
-| **Employee Name** | Yes | Nur Aisyah | Legal name |
-| **Employee Type** | Yes | Merchant | Employee type |
-| **ID Number** | Yes | EMP1234 | Employee identification |
-| **Email** | Yes | nur@example.com | Used for login |
-| **Phone** | No | +60 12-345 6789 | Include country code |
-| **Branch Code** | Yes | KL01 | Must exist in Branch setup |
-| **Department** | No | Finance | Use standard department names |
-| **Report To (Employee ID)** | No | EMP0005 | Manager ID |
-| **Join Date** | No | 2026-01-15 | YYYY-MM-DD |
-| **Status** | No | ACTIVE | ACTIVE/INACTIVE |
+## Related applets
 
----
+- [Customer Maintenance](/applets/master-data/customer-maintenance-applet/) — the same entity table seen through the customer lens; an employee who is also a customer is one record. The Account Manager tab here is the inverse of the customer's account-manager link.
+- [Supplier](/applets/master-data/supplier-applet-1/), [Merchant](/applets/master-data/merchant-applet/), [Entity](/applets/master-data/entity-applet/) — sibling entity applets; the Entity applet edits any type.
+- [Organisation](/applets/master-data/organisation-applet/) — companies and branches for the default branch, linking tabs and org charts.
+- [Tax Configuration](/applets/master-data/tax-configuration-applet/) — tax codes offered on the Tax tab.
+- [Claim](/applets/claims/claim-applet/) and [Claim Cycle](/applets/claims/claim-cycle-applet/) — resolve the claimant from the login e-mail to this record; approvers come from job title, branch links and org chart.
+- [My E-Invoice Portal](/applets/e-invoice/my-e-invoice-portal-applet/) and [MyPeppol Admin](/applets/e-invoice/mypeppol-admin-applet/) — consume the E-Invoice and Peppol Config tabs for self-billed e-Invoices.
+- [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) — the logins, ranks and catalogs that the Login tab links to and installs.
 
-## Configuration & Settings
+## Troubleshooting
 
-Access settings under `Settings` to control behavior across the applet.
+| Symptom | Cause | Fix |
+|---|---|---|
+| Save fails with `…EMPLOYEE_CODE_ALREADY_EXISTS` | Another non-deleted entity already has that employee code (uniqueness is checked across the whole entity table) | Change the code, or leave it blank and let the backend generate one |
+| Save fails with `…EMPLOYEE_CODE_SHOULD_NOT_BE_SET` | An employee code was supplied but `EMPLOYEE` is not among the entity types | Add `EMPLOYEE` to Entity Type or clear the code |
+| Login tab: "User has not accepted invitation link in email" | **Invitation Accepted** was clicked before the invitee registered; the login principal does not exist yet | Wait for the person to accept, then click again; or use **Verify** for an existing user |
+| Login tab: "Please select at least one catalog to install applets…" | `INSTALL_ALL_APPLETS_ON_INVITE` is on and no catalog was chosen | Pick a catalog, or switch the setting off if you do not want automatic installation |
+| Login tab: the e-mail already belongs to a user but Verify says nothing is found | Verification matches the principal type exactly (`EMAIL_USERNAME` vs `MOBILE_USERNAME`); phone numbers must be entered in the stored format | Enter the identifier exactly as registered; the auto-detect improvement was tracked internally (gt#2275) |
+| File Import ends `FAILED` with "EMPLOYEE NAME is Invalid" / "DOC CURRENCY is Invalid" | Mandatory column empty on at least one row | Fill every row's `EMPLOYEE_NAME` and `DOC_CURRENCY` and re-upload |
+| File Import silently updated an existing customer instead of creating an employee | Without an `EMPLOYEE_CODE` the row is matched by ID number, tax number, e-mail or phone against **all** entities, and the match is updated with `is_employee = true` | Supply `EMPLOYEE_CODE` for new staff, or accept that the person is now both customer and employee |
+| Employee Category or Org Chart menu is missing | `HIDE_CATEGORY` or the mislabelled `HIDE_CLAIMS` switch is on in Application Settings › Edit Tabs Hidden | Switch them off and Save |
+| A field hidden on the edit form still shows on the create form | Most Main-Details switches are read by the edit template only | Expected behaviour; see Applet settings |
+| Approved leave entries never appear | The Approved Leave tab has no save path | Record leave in the HR / claims process instead; report the tab to the applet team |
+| Claim applet says it cannot find the user's e-mail in the Employee applet | No employee record carries that e-mail, or the login is not linked | Set the e-mail on the Main tab and add the login on the Login tab |
 
-**Key configuration areas:**
-- **Default Selection**: Branch, department, and common defaults
-- **Field Settings**: Enable or hide fields and tabs
-- **Webhook**: Integrate employee events with external systems
-- **Feature Visibility**: Control access to menus and modules
-- **Permission Wizard and Sets**: Role-based access management
-- **User, Team, and Role Permissions**: Fine-grained control
-- **Personalization**: Default preferences and sidebar layout
-- **Applet Log**: Trace actions for compliance audits
+## Related documentation
 
-{{< figure src="/images/employee-applet/settings.png" alt="Employee Applet settings page with configuration sections" caption="Settings: Configure defaults, field visibility, and permissions." >}}
-
----
-
-## FAQ
-
-**Q: Why can I not see the Create Employee button?**
-A: You may not have the required permission set. Check role or user permissions in Settings.
-
-**Q: How do I bulk upload employees?**
-A: Go to **File Import**, upload the template file, validate, and import.
-
-**Q: How do I change an employee's reporting manager?**
-A: Open the employee profile and update the **Report-To** section.
-
-**Q: Why are payroll or tax fields hidden?**
-A: Field visibility can be controlled in `Settings > Field Settings`.
-
-**Q: How do I link a Peppol ID for e-invoicing?**
-A: Use the **Peppol ID Link** section in the employee profile.
-
-**Q: Why can I not see the Org Chart menu?**
-A: Feature visibility or role permissions may hide it. Check `Settings > Feature Visibility`.
+- [Core module](/modules-v2/core/) · [HR & Payroll module](/modules-v2/hr-payroll/) · [Claims module](/modules-v2/claims/)
+- [Customer Maintenance](/applets/master-data/customer-maintenance-applet/) — the sibling entity applet with the fullest description of the shared entity model
