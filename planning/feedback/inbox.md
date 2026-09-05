@@ -591,3 +591,11 @@ with the analysis, the changes made, and the commit hash.
 ### /applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/ (next, fact)
 - [ ] F-0152 (2026-09-05) Current page describes PI No Stock In as "non-inventory expenses — services, overheads"; wrong premise — it is the invoice leg of the GRN Stock In pair. Lane 3's next rewrite replaces it; guides that repeat the "services/overheads" framing must be corrected.
 
+## From Lane 4 run 14 (2026-09-05)
+
+### ADR-0002 triage (F-0007 resolved)
+- [ ] F-0153 (2026-09-05) inventory-workflow/inv-item-maintenance-applet.md is the duplicate (7 inbound links) — delete + alias to master-data/inv-item-maintenance-applet/ (now canonical under the registry name "Inventory Item Maintenance"). Vincent to approve; joins the F-0050/F-0147 delete-and-alias batch.
+
+### product (inventory item maintenance) — SERIOUS
+- [ ] F-0154 (2026-09-05) The Item Edit Main-tab Save is dead in source at commit 06aebbc: resetForm() declares a hidden required control `currentGlCode` nothing populates and the button is disabled while the form is invalid — GL code, category links, EAN, currency, status and dimensions cannot be saved from the UI since the monorepo split (multi-UOM, images, min/max, company links still save). Stated plainly in Troubleshooting. Vincent: confirm the deployed build matches main. Also: doc-item → inventory-item link is one-shot async (scan-code drift is a recurring incident; data-fix endpoints exist); HIDE_ITEM_CATEGORY never read; four Department Settings toggles unbound; both Default Selection screens dead.
+
