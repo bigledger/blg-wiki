@@ -90,7 +90,6 @@ Traditional delivery operations often run across disconnected spreadsheets, chat
   {{< card title="Delivery Job Line Report" subtitle="Date-based line report generation and PDF output" link="#delivery-job-line-report" >}}
 {{< /cards >}}
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/delivery-installation-overview-infographic.png" alt="Overview infographic of Delivery & Installation Applet V2 from shipment import to trip completion and reporting" caption="Delivery & Installation Applet V2 overview: from shipment import and job orchestration to trip execution and line-level reporting." >}}
 
 ---
 
@@ -249,7 +248,6 @@ Get started quickly with these role-specific workflows.
 
 The **Delivery Job** screen (`Job Shipment Listing`) is the operational control center for high-volume assignment and updates.
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/delivery-job-main-listing.png" alt="Delivery Job listing screen with filters, grid columns, and bulk operation tabs" caption="Delivery Job Workbench listing: centralized view for dispatch filtering and batch execution." >}}
 
 ### Built-in action tabs
 
@@ -261,13 +259,11 @@ The **Delivery Job** screen (`Job Shipment Listing`) is the operational control 
 - **Custom Status**: Apply user-defined custom status with optional datetime
 - **Bulk Date Edit**: Update arrival/departure datetime in batch
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/delivery-job-main-action-tab.png" alt="Delivery Job action area showing tabs such as Add to Trip, Job Status, and Bulk Date Edit" caption="Delivery Job action tabs: run trip assignment, status updates, remarks, custom status, and bulk date edits." >}}
 
 ### Why this matters
 
 This workbench reduces dispatcher effort from job-by-job updates to controlled batch execution, while keeping the process auditable.
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/delivery-job-create-edit-form.png" alt="Delivery Job create or edit form with operational fields and execution details" caption="Delivery Job create/edit form: maintain job-level details, timing, and operational context." >}}
 
 ---
 
@@ -276,10 +272,8 @@ This workbench reduces dispatcher effort from job-by-job updates to controlled b
 
 **Shipment Listing** is where available shipment quantities are turned into executable jobs.
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/shipment-listing-listing.png" alt="Shipment listing grid showing shipment details, balance quantity, and allocate job quantity columns" caption="Shipment Listing: review open shipment lines and prepare allocation before job conversion." >}}
 
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/shipment-listing-create-jobs.png" alt="Create Jobs controls in Shipment Listing with mode, optimization method, and network selection" caption="Shipment-to-Job conversion panel: create jobs in Normal Mode or Path Optimization Mode." >}}
 
 ### Modes supported
 
@@ -302,7 +296,6 @@ You can also use **Import** to load shipment files and track processing through 
 
 **Trip Listing** is the execution hub for route-level operations.
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/trip-listing-execution-view.png" alt="Trip listing screen with printing tools, trip status actions, and trip status date input" caption="Trip Listing execution console: print outputs and update Start, Complete, or Cancel trip status." >}}
 
 ### Available functions
 
@@ -319,7 +312,6 @@ This keeps dispatch and field timelines aligned, even when updates arrive late.
 
 The **Trip Calendar** provides visual planning with monthly/weekly/daily/agenda views.
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/trip-calendar-planning-view.png" alt="Trip Calendar view with scheduled trips and filters for driver, vehicle, and region" caption="Trip Calendar planning view: visualize capacity and scheduling by date, driver, vehicle, and region." >}}
 
 ### Planner capabilities
 
@@ -342,11 +334,8 @@ V2 supports parallel delivery job streams for:
 
 Across these sources, teams can run consistent job statuses (`Ready To Ship`, `Start Job`, `Complete Job`, `Cancel Job`) and handle serialized item workflows through scan/import interfaces.
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/job-sources-so.png" alt="Job Sales Order listing with delivery job actions and status controls" caption="Job Sales Order source: execute SO-based jobs with trip assignment and status updates." >}}
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/job-sources-si.png" alt="Job Sales Invoice listing with delivery job actions and status controls" caption="Job Sales Invoice source: execute SI-based jobs with the same operational controls." >}}
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/job-sources-do.png" alt="Job Delivery Order listing with delivery job actions and status controls" caption="Job Delivery Order source: execute DO-based jobs with aligned dispatch workflow." >}}
 
 ---
 
@@ -355,7 +344,6 @@ Across these sources, teams can run consistent job statuses (`Ready To Ship`, `S
 
 The **Delivery Job Line Report** gives line-level traceability and reporting.
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/delivery-job-line-report.png" alt="Delivery Job Line Report screen with date range filters, printable format selector, and generate button" caption="Delivery Job Line Report: generate item-level PDF output for audits and customer follow-up." >}}
 
 ### Core output fields
 
@@ -377,7 +365,6 @@ The **Delivery Job Line Report** gives line-level traceability and reporting.
 
 Use the Settings area to enforce business rules and keep operations clean.
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/settings-configuration-center.png" alt="Settings center showing application behavior controls, return reasons, printable formats, and defaults" caption="Configuration & Settings center: manage visibility, statuses, defaults, return reasons, and print templates." >}}
 
 ### `Settings > Application Settings`
 

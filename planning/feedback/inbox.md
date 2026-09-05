@@ -418,3 +418,17 @@ with the analysis, the changes made, and the commit hash.
 ### product (budgetary)
 - [ ] F-0091 (2026-09-05) Which page owns profit centres (Budgetary creates them; Organisation v3 has no screen)? Backend-only approval flow (bl_fi_budget_register_approval_*) and reserved_amt — roadmap, dead, or customer-specific? Manual txn lines fail the register-update job; VOID reverses nothing and has no button.
 
+## From Lane 3 run 5 + Lane 4 run 6 (2026-09-05)
+
+### static/images — personal data (delivery-installation V2, employee)
+- [x] F-0092 (2026-09-05) 10 of 13 Delivery Installation V2 screenshots and 14 of 27 Employee screenshots carry staff names / e-mails / phones / a customer reference prefix. Quarantined by the loop; the duplicate V2 page's embeds were removed so nothing references them. Running tally: 60+ images quarantined (kb/tools/quarantine-images.sh per lane). F-0075 sweep still needed for the untouched ~1,600.
+
+### product (delivery installation)
+- [ ] F-0093 (2026-09-05) Backend guard mismatch: "cancelled job cannot be completed" checks `CANCELLED` while cancelJobs writes `Cancelled` — guard holds only for trip-cancelled jobs. Two cancel paths (document- vs shipment-sourced) throw SHIPMENT LINK TABLE NOT FOUND if the wrong listing is used. Dead Default Selection / Field Settings screens. Who seeds the RETURN_REASON bl_applet_config row for new tenants? Registry: one code, two repos (V1 dead); doc URL still Atlassian; name lacks the ampersand the UI shows.
+
+### product (employee maintenance)
+- [ ] F-0094 (2026-09-05) Mis-wired settings: HIDE_CREATION_DATE saved vs HIDE_CREATED_DATE read; Modified Date bound to HIDE_MODIFIED_BY; HIDE_CLAIMS hides the Org Chart menu. Approved Leave tab is dead UI. File Import matches across ALL entity types (ID → tax no → e-mail → phone) and flips the match to is_employee=true — an existing customer can silently become an employee. Intended or defects?
+
+### site-wide (link text)
+- [ ] F-0095 (2026-09-05) Six pages still say "Employee Applet"; the registry name is "Employee Maintenance". Cross-link batch.
+
