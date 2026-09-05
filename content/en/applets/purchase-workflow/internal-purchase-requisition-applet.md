@@ -1,9 +1,118 @@
 ﻿---
-title: "Purchase Requisition (Internal) Applet"
-description: "Create and manage internal purchase requisitions with posting controls, line item tracking, knock-off from Jobsheet, printing, approvals, and line item queue approvals."
+title: "Purchase Requisition (Internal)"
+description: "Reference for the Purchase Requisition (Internal) applet: the internal buy request that precedes a Purchase Order, its screens and menus, every configuration switch that actually works (including the generic-document approval workflow that this applet does wire up), fields, lifecycle (no stock movement, no journal), the Jobsheet knock-off and known failure modes."
+applet_code: "internal_purchase_requisition"
+applet_repo: "blg-applet-wavelet-internal-purchase-requisition-applet"
+modules: [purchasing]
+related_applets:
+  - internal-purchase-order-applet
+  - internal-purchase-quotation-applet
+  - internal-purchase-grn-applet
+  - internal-purchase-invoice-applet
+  - internal-stock-requisition-applet
+  - purchase-report-applet
+  - supplier-applet-1
+  - employee-applet
+  - organisation-applet
+  - doc-item-maintenance-applet
+  - tax-configuration-applet
+  - workflow-design-applet
+guides:
+  - /guides/purchasing-guides/standard-procurement-workflow/
+sources:
+  configuration:
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/app.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/models/constants/applet-constants.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/settings-container/printable-format-settings-container/printable-format-listing/printable-format-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/settings-container/branch-settings/branch/branch.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/settings-container/workflow-settings-container/company-workflow-edit/company-workflow-edit.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/settings-container/approval-setting/approval-setting-create/approval-setting-create.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/settings-container/approval-setting/approval-setting-create/approval-setting-create.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/settings-container/branch-container/branch-view/branch-view.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/settings-container/branch-container/branch-view/branch-designation/branch-designation-create/branch-designation-create.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/settings-container/branch-container/branch-view/branch-designation-employee/branch-designation-employee-create/branch-designation-employee-create.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/settings-container/branch-container/branch-view/branch-employee-link/branch-employee-link-create/branch-employee-link-create.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-listing/purchase-requisition-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-listing/purchase-requisition-listing.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-create/purchase-requisition-create.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-create/import-knock-off/import-knock-off.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-create/import-knock-off/import-knock-off.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-create/import-knock-off/knock-off-jobsheet/knock-off-jobsheet.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-edit/purchase-requisition-edit.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-edit/purchase-requisition-edit.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-edit/generic-doc-approval/submit-approval/submit-approval.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-edit/generic-doc-approval/submit-approval/create-approval/create-approval-main-details/create-approval-main-details.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/line-items-queue-container/line-items-queue-listing/line-items-queue-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/line-items-container/line-items-listing/line-items-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/approval-request/approval-request-listing/approval-request-listing.component.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+    - blg-shared-utilities/modules/session/session-controller/effects/session.effects.ts
+  fields:
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-create/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-create/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-create/account/account-entity-details/account-entity-details.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-create/line-item-add/line-item-add.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-create/line-item-add/item-details/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-create/line-item-add/item-details/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-create/department-hdr/department-hdr.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-create/delivery-details/delivery-details.component.html
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/components/purchase-requisition-container/purchase-requisition-edit/generic-doc-approval/submit-approval/create-approval/create-approval-main-details/create-approval-main-details.component.html
+  lifecycle:
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/state-controllers/purchase-requisition-controller/store/effects/purchase-requisition.effects.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/state-controllers/approval-request-controller/store/effects/approval-request.effects.ts
+    - blg-applet-wavelet-internal-purchase-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-requisition-applet/src/app/state-controllers/line-item-queue-controller/effects/line-item-queue.effects.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalPurhaseRequisitionDataConsistencyObject.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/ServerDocTypes.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/GenericDocServerDocTypeEnum.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/GenericDocumentController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/GenericDocumentLineOpenQueueController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/approval/GenericDocApprovalController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/approval/GenericDocApprovalRequestController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/genericDocument/approval/GenericDocApprovalSubmissionService.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/erp/genericDocument/approval/GenericDocApprovalPrimaryProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/erp/genericDocument/approval/GenericDocApprovalPrimaryProcessorServiceForSubmissionLogic.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/erp/genericDocument/approval/GenericDocApprovalSequenceProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/erp/genericDocument/approval/GenericDocApprovalRequestProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/erp/genericDocument/approval/GenericDocApprovalRequestProcessorService.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/erp/genericDocument/approval/GenericDocApprovalEmailNotificationForPendingApprovalService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/genericDocument/genericDocumentConverter/PurchaseRequisitionToPurchaseOrderConverter.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/genericDocument/GenericDocumentConversionService.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/GenericDocumentConversionProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/GenericDocLineOpenQueueProcessor.java
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-approval/bl_fi_generic_doc_approval_hdr.service.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-approval/bl_fi_generic_doc_approval_request.service.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-document-services/generic-doc-line-open-queue.service.ts
+  troubleshooting:
+    - gh:bigledger/blg-intranet#744
+    - gh:bigledger/blg-intranet#880
+    - gh:bigledger/blg-intranet#1020
+    - gh:bigledger/blg-intranet#1068
+    - gh:bigledger/blg-intranet#1069
+    - gh:bigledger/blg-intranet#1071
+    - gh:bigledger/blg-intranet#1130
+    - gh:bigledger/blg-intranet#1527
+    - gh:bigledger/blg-intranet#2700
+    - gh:bigledger/blg-intranet#3738
+    - gh:bigledger/blg-intranet#3918
+    - gh:bigledger/blg-intranet#4399
+    - gh:bigledger/blg-intranet#4453
+    - gh:bigledger/blg-intranet#4484
+    - gh:bigledger/blg-intranet#5375
+    - gh:bigledger/blg-intranet#5727
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/genericDocument/approval/GenericDocApprovalSubmissionService.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/erp/genericDocument/approval/GenericDocApprovalProcessorSharedPostingStatus.java
 weight: 10
 date: 2026-04-10
-lastmod: 2026-04-20
+lastmod: 2026-09-05
 draft: false
 tags:
 - purchase-workflow
@@ -15,442 +124,255 @@ tags:
 - knock-off
 ---
 
-## Purpose and Overview
+## Overview
 
-A **purchase requisition** is your company's formal way of saying *"we need to buy this."* Before any money is spent or a supplier is contacted, someone fills in a purchase requisition to record exactly what is needed, how much of it, and from where. A manager or approver then reviews and signs off on it. Only after that approval does purchasing move forward — typically by raising a purchase order in the [Purchase Order (Internal) Applet](/applets/purchase-workflow/internal-purchase-order-applet/).
+A **purchase requisition** is your company's formal way of saying *"we need to buy this."* Before a supplier is contacted, a requester records what is needed, how much, for which branch and from which preferred supplier; a manager approves it; purchasing then raises a [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/) from it. Think of it as a pre-approved shopping list: the requisition is the internal request, the purchase order is the commitment to the supplier.
 
-Think of it like a **pre-approved shopping list**: you specify what you need, your manager checks it makes sense and fits the budget, and then it gets handed off to procurement to place the actual order. The purchase requisition is the internal request; the purchase order is the formal commitment sent to the supplier.
+The **Purchase Requisition (Internal)** applet is where requesters create requisitions, approvers act on them (**Approval Request** / **Approval History**), operations review lines across documents (**Line Items**, **Line Items Queue**) and administrators configure fields, approval routing and printing. It is a **record-only** document: server document type `INTERNAL_PURCHASE_REQUISITION` (short code `PURREQ`) carries quantity signum **0** and amount signum **0** — finalising it moves no stock and posts no journal. What FINAL does do is put the requisition's lines in the open queue so a Purchase Order can knock them off.
 
-The **Purchase Requisition (Internal) Applet** is where your team creates, tracks, approves, and manages those requisitions — from the first draft all the way through to approval and any follow-up your company requires.
+Unlike its inventory cousin, the [Stock Requisition](/applets/inventory-workflow/internal-stock-requisition-applet/), this applet **does** wire the generic-document approval workflow end to end: *Approval Settings* and *Branch Designation* are read by the backend when a requisition is submitted, approvers get e-mails and an Approval Request queue, and the final approval sets the requisition to FINAL. The details — and the two things it does not enforce — are in [Lifecycle and effects](#lifecycle-and-effects).
 
-{{< figure src="/images/internal-purchase-requisition-applet/internal-purchase-requisition-infographic-overview.png" alt="Purchase Requisition (Internal) Applet overview: structured internal requests, approvals, line-level views, and handoff to purchasing" caption="Overview of the internal purchase requisition journey—from what you need to buy, through approval, to procurement and follow-up." >}}
+## Where it fits
 
-## Video Overview
+Module: [Purchasing](/modules-v2/purchasing/).
+
+| Direction | Document / applet | Relationship |
+|---|---|---|
+| Upstream | [Jobsheet](/applets/sales-workflow/internal-jobsheet-applet/) | The only source the **KO For** tab offers (the Purchase Order, Purchase GRN and Purchase Quotation sub-tabs exist in code but are commented out). A FINAL jobsheet with open lines is knocked off into a new requisition; it needs the company Knock Off Configuration row *Jobsheet → Purchase Requisition* (`LINE`). |
+| Downstream | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) | The PO applet's **KO For › Purchase Requisition** and **Search Purchase Requisition** pull FINAL requisition lines from the open queue; needs the company row *Purchase Requisition → Purchase Order*. The PO's *Approval Monitor* can make a requisition link mandatory before a PO may be submitted for approval. |
+| Downstream | [Purchase Quotation (Internal)](/applets/purchase-workflow/internal-purchase-quotation-applet/) | Its KO For tab can knock off requisition lines (see that page — it reads the PR → PO flow row). |
+| Downstream (backend only) | Purchase Order | `PurchaseRequisitionToPurchaseOrderConverter` copies a FINAL requisition into a new PO (DRAFT, or FINAL when the company flow config says so). It is reachable through the backend conversion endpoints and the `GENERIC_DOCUMENT_CONVERSION_PROCESSOR` job, not from any button in this applet. |
+| Optional | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) | The GRN's line-level knock-off can target a requisition (open-queue types `INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE → INTERNAL_PURCHASE_REQUISITION`); the PR-side sub-tab for it is commented out. |
+| Reporting | [Purchase Report](/applets/purchase-workflow/purchase-report-applet/) | Requisition documents appear in the purchase-document reports. |
+| Inventory twin | [Stock Requisition (Internal)](/applets/inventory-workflow/internal-stock-requisition-applet/) | Same 0/0 shape for a stock request between locations; its approval screens are not enforced, this applet's are. |
+
+## Screens and menus
 
 {{< youtube acPX2sXOPVo >}}
 
-*This video is a walkthrough of the workflows in the Internal Purchase Requisition Applet.*
+*Walkthrough video of the applet.*
 
----
+| Menu (sidebar) | Route | What it is | Hidden by |
+|---|---|---|---|
+| **Internal Purchase Requisition** | `internal-purchase-requisition` | Listing → create / edit. | — |
+| **Line Items** | `line-items` | One grid of lines from all requisitions (`gen-doc-line/internal-purchase-requisitions` listing). Not the same as the Lines tab inside one document. | `HIDE_LINE_ITEMS_MENU` unless the `SHOW_LINE_ITEMS_MENU` permission is granted |
+| **Line Items Queue** | `line-items-queue` | Open-queue rows of FINAL requisitions waiting for a Purchase Order (`INTERNAL_PURCHASE_REQUISITION → INTERNAL_PURCHASE_ORDER`), with an **APPROVE** button. | `HIDE_LINE_ITEMS_QUEUE_MENU` / `SHOW_LINE_ITEMS_QUEUE_MENU` |
+| **Approval Request** | `approval-request` | The approver's inbox: approval requests addressed to the logged-in employee. Approve / Reject with remarks. | `HIDE_APPROVAL_REQUEST_MENU` / `SHOW_APPROVAL_REQUEST_MENU` |
+| **Approval History** | `approval-history` | Every submission, approval and rejection record. | `HIDE_APPROVAL_HISTORY_MENU` / `SHOW_APPROVAL_HISTORY_MENU` |
+| **Settings** | `settings/…` | Application Settings, Default Selection, Printable Format Settings, Branch Settings, Workflow Settings, Branch Designation, Approval Settings; Webhook, Feature Visibility, Client Side Permission, Role Pricing Scheme Link, Permission Wizard / Set / User / Team / Role Permission, Release Notes, Applet Log. | — |
+| **Personalization** | `personalization/…` | Personal Default Selection, Sidebar. | — |
 
-## Who Uses This Applet?
+The sidebar filter is generic: for every menu the applet computes `HIDE_<STATE>_MENU` (an applet setting) and `SHOW_<STATE>_MENU` (a client-side permission) and hides the item when the setting is on and the permission is absent. Only the two approval `SHOW_…_MENU` codes are seeded in the registry (see [Feature visibility](#feature-visibility--permissions)).
+
+**Listing.** Columns: Doc Short Code, Doc No (Tenant / Company / Branch), Posting Status, Status, Print Status, Branch Code, Currency, Supplier Name, Description, Purchaser, Amount Txn, ARAP columns, Qty Ordered / Received / Outstanding, Amount Ordered / Received / Outstanding, dates, Created / Modified by, Client Doc Type / 1–5, Quotation / Order / Delivery Order / Invoice / Others references, GL Dimension, Segment, Profit Center, Project, Remarks, References, KO Doc From / To. Buttons: **+** (create), **FINAL**, **VOID**, **Print** (single / multiple, using the printable format chosen in the drop-down), and the ag-grid export bar.
+
+{{< figure src="/images/internal-purchase-requisition/For-Requesters-Create-Your-First-Purchase-Requisition.png" alt="Purchase Requisition listing with the create panel open on Main Details" caption="Listing with the create panel: **+** opens Main Details, Account, Lines, then the optional tabs." >}}
+
+**Create screen** — tabs **Main Details**, **Account**, **Line Items**, then **Delivery Details**, **Payment**, **Department Hdr** and **KO For**, each of the last four hidden by its `HIDE_…_TAB` setting. **CREATE** saves a TEMP document and converts it to ACTIVE; **RESET** clears the draft.
 
-**Purchasers, procurement staff, and requesters** create and submit purchase requisitions. They fill in details, add line items, attach supporting documents, and track whether their requests have been approved.
+**Edit screen** — tabs in the order set by *Default Selection → Details Tab Ordering*: Main Details, Account, Lines, Delivery Details, KO For (TEMP documents only), ARAP, Payment, Department Hdr, TraceDocument, Contra, Doc Link, Attachment, Export, Generic Doc Approval. Buttons: **RESET** and **FINAL** (DRAFT documents), **SAVE**, **DISCARD** (ACTIVE + DRAFT). With `VERTICAL_ORIENTATION` (or a personal `DEFAULT_ORIENTATION` of `VERTICAL`) the tabs become expansion panels; the `EXPAND_*` settings choose which panel opens first.
 
-**Approvers and managers** use the Approval Request menu to approve or reject pending requisitions, and Approval History to review past decisions.
+{{< figure src="/images/internal-purchase-requisition/attach-document.png" alt="Edit Purchase Requisition, Attachment tab, with the Add Attachment upload panel" caption="Attachment tab on the edit screen: quotes, photos and supporting files stay with the requisition." >}}
 
-**Controllers and operations staff** use the **Line Items** view to see what items are being requested across the company without opening each requisition individually, and the **Line Items Queue** to approve individual lines in bulk when your company uses that step.
+{{< figure src="/images/internal-purchase-requisition/submit-for-approval.png" alt="Generic Doc Approval tab with the create button, Submit For Approval and Resubmit" caption="Generic Doc Approval tab: **+** creates the approval record (choose submitter and approval setting), **Submit For Approval** sends it into the workflow, **Resubmit** after a rejection." >}}
 
-**Administrators** configure which fields appear, who can do what, how approvals route, and how documents print — all from **Settings**.
+**Approval Request** lists the approval requests addressed to the logged-in employee (`approval-requests/login-entity-primary-ep/{loginSubjectGuid}`) with the document number, company, entity, date, amount, approver, status and remarks. Select a row and click **Approve** or **Reject**; a dialog collects remarks. Opening a row shows Main Details and Lines read-only.
 
----
+{{< figure src="/images/internal-purchase-requisition/apprival-request.png" alt="Approval Request listing with Approve and Reject buttons" caption="Approval Request: the approver's queue. Approve and Reject act on the selected row." >}}
 
-## What Problems Does This Solve?
+**Line Items Queue** shows open-queue rows (Txn Date, Base Qty, Balance Qty, Knock Off Qty, Outlet PO / SO balance, Outlet Balance) and an **APPROVE** button (`gen-doc-line-open-queues/backoffice-ep/batch-approve`). Rows with zero knock-off quantity cannot be selected. See Lifecycle for what the approval does — and does not — change.
 
-Without a structured process, purchase requests often happen over email or through informal conversations. That leads to missing details, no clear audit trail, and no way to see what is still waiting for action.
+{{< figure src="/images/internal-purchase-requisition/settings.png" alt="Applet Settings landing showing System Configuration, Server Side Permissions and Developer Tools groups" caption="Settings: the shared Application Settings screen (here the Advanced Search Filter tab) plus the applet-local screens listed on the left." >}}
 
-This applet brings everything into one place:
+## Configuration
 
-- **One structured form** for the document header (top-level details like date and reference), account information (who is buying and where it gets delivered), supplier, and the list of items being requested
-- **Clear document stages** — draft, final, void, or discard — so everyone knows where a requisition stands at any time
-- **A formal approval path** through **Approval Request** and **Approval History**, instead of sign-off by email
-- **Line-level visibility** through **Line Items** and **Line Items Queue** for operations teams who need to review or approve individual items
-- **Attachments and linked documents** so quotes, photos, or related files stay with the requisition — making it easy to check the full picture later
-- **Knock-off from Jobsheet** so you can pull relevant details from an existing Jobsheet directly into the requisition without retyping
+Source commits: applet `6c281e1` (2026-08-26; shared-utilities submodule `8ae0e9b`, cross-checked against org HEAD `af523eb`), backend `353fa9a` (2026-09-05). Registry code `internal_purchase_requisition`; the applet's own `main.ts` uses `internal-purchase-requisition-applet` in development only, and the shared settings screen maps **both** codes, so every tab toggle below renders on a live tenant.
 
-{{< callout type="info" >}}
-Menus, buttons, and tabs can change depending on the document's status, your company's settings, and your access rights. If something you expect is not showing, ask your administrator before assuming something is broken.
-{{< /callout >}}
+### Before you can use it
 
----
+| Prerequisite | Where | Why |
+|---|---|---|
+| Company, branches, locations | [Organisation](/applets/master-data/organisation-applet/) | Branch and Location are required on Main Details; the branch list is filtered by the user's `TNT_API_DOC_INTERNAL_PURCHASE_REQUISITION_READ_TGT_GUID` targets (tenant admins / owners see all). Delivery branch reads need `TNT_API_DOC_INTERNAL_PURCHASE_REQUISITION_DELIVERY_BRANCH_READ`. |
+| Document numbering | [Organisation](/applets/master-data/organisation-applet/) → running numbers for `INTERNAL_PURCHASE_REQUISITION` | Doc No (Tenant / Company / Branch) are assigned on save. |
+| Suppliers | [Supplier](/applets/master-data/supplier-applet-1/) | The Account tab requires an entity; `ENABLE_SELECT_MODE` + the `ALLOW_TO_CREATE_EDIT_ACCOUNT` permission let users create or edit a supplier from the picker. |
+| Items, UOM, tax codes | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/) | Line prices, UOM ratios, SST / WHT codes. No GL codes are needed — nothing posts. |
+| Knock Off Configuration rows | Organisation → Company → Knock Off Configuration | *Purchase Requisition → Purchase Order* (so FINAL creates open-queue rows the PO can find, and the Line Items Queue has anything to show); *Jobsheet → Purchase Requisition* if you use KO For. Without the first row FINAL still succeeds — the PO simply cannot find the requisition (`GenericDocLineOpenQueueProcessor` reads `bl_fi_comp_gendoc_flow_config`). |
+| Employees with designations | [Employee](/applets/master-data/employee-applet/) + this applet's *Branch Designation* | Approvers are employee entities linked to a branch designation; the submitter is an employee entity. |
+| Approval e-mail templates | Applet template messages `GENERIC_DOC_APPROVAL_PENDING_APPROVAL_NOTIFICATION` and `NO_REPLY_EMAIL_ADDRESS` | Approvers are e-mailed on each pending request; without the template the approval still proceeds and `email_notification_error` records "Cannot get AppletTemplateMessage template_type = …". |
+| Printable format | *Settings → Printable Format Settings* | Print needs at least one format and a default (`PRINTABLE`); approval data is included in the requisition printable since intranet #1130. |
 
-## Before You Start
+### Applet settings
 
-Having the right information ready before you begin will make the process faster and avoid interruptions.
+Settings live in five places; all are tenant-wide except the last:
 
-**For requesters:**
-- The name or description of what you need to buy
-- Quantity and unit of measure (e.g. 10 units, 5 boxes)
-- Estimated price or budget amount (if your company requires it)
-- Preferred supplier name, if known
-- Your department or cost centre code *(your department's internal billing or budget reference — ask your finance team if you are unsure)*
-- Delivery address or branch (if different from your default)
+1. **Shared Application Settings** (`settings/field-settings`, the shared `FieldConfigurationComponent` keyed by the registry code) — the model below.
+2. **Inline gear** — `app-applet-settings-toggle` is embedded on 20 screens (listing, edit header, main details, account, entity details, billing / shipping contact, supplier edit, line items grid, item details, line doc link, department header, payment, payment edit, ARAP, export, doc link, line-items queue). It shows only when the user has switched on *Personalization → Default Selection → Enable Inline Applet Config* (`ENABLE_INLINE_APPLET_CONFIG`, personal). 100 keys are editable there; they are the same tenant-wide values.
+3. **Default Selection** (applet-local) — Default Branch, Default Location (and the branch's company) and **Details Tab Ordering** (`PURCHASE_REQUISITION_DETAILS_TAB_ORDER`, drag-and-drop of the 14 edit tabs).
+4. **Printable Format Settings** — the default printable (`PRINTABLE`).
+5. **Personal Default Selection** — Default Branch, Default Location, Enable Inline Applet Config (overrides the tenant defaults for that user).
 
-**For administrators setting up the applet for the first time:**
-- Which fields should be mandatory on a requisition form
-- Who approves requisitions — one person, or a chain of approvers?
-- Should approvals route by branch, department, or amount?
-- Do you need line-level queue approval (Line Items Queue), or standard document-level approval only?
-- What print format should be used for printed requisitions?
+Anyone with access to the applet's Settings menu can change them; the applet has no separate settings permission. Values are stored on the applet (`bl_applet_ext`, `APPLET_SETTINGS`) and are read by the document screens only after the first **Save** — a fresh tenant sees every tab and column until Application Settings has been saved once.
 
-{{< callout type="tip" >}}
-**Start simple.** If you are configuring the applet for the first time, set up one approval path and one branch first. You can always add complexity later once your team is comfortable with the basics.
-{{< /callout >}}
+Every key in the table passes the four proofs (declared in `applet-settings.model.ts`, rendered on the shared screen and/or a gear, persisted by the shared session service, consumed by a component). Defaults are the shared screen's initial value: unchecked (false) for toggles, empty for selections, unless stated.
 
----
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| `HIDE_DELIVERY_DETAILS_TAB`, `HIDE_MAIN_PAYMENT_TAB`, `HIDE_DEPARTMENT_HDR_TAB`, `HIDE_KO_FOR_TAB` | Optional tabs on the create screen (and the first three on the edit screen). | off | Tab disappears; KO For also disappears from the edit screen because it only shows on TEMP documents. |
+| `HIDE_MAIN_ARAP_TAB`, `HIDE_TRACE_DOCUMENT_TAB`, `HIDE_MAIN_CONTRA_TAB`, `HIDE_DOC_LINK_TAB`, `HIDE_ATTACHMENT_TAB`, `HIDE_EXPORT_TAB`, `HIDE_GENERIC_DOC_APPROVAL_TAB` | Edit-screen tabs. | off | Hidden for everyone except users holding the matching `SHOW_EXPORT_TAB` / `SHOW_GENERIC_DOC_APPROVAL_TAB` permission (both seeded). `HIDE_GENERIC_DOC_APPROVAL_TAB` also hides the **APPROVE** button and the Approval Status column of the Line Items Queue. Added for tenants that do not use approvals (intranet #1527). |
+| `HIDE_GENDOC_FINAL_BUTTON`, `HIDE_GENDOC_VOID_BUTTON`, `HIDE_GENDOC_DISCARD_BUTTON`, `HIDE_GENDOC_SAVE_BUTTON` | FINAL / VOID on the listing and edit header, DISCARD and SAVE on the edit screen. | off | The listing re-enables FINAL / VOID for users with `SHOW_GENDOC_FINAL_BUTTON` / `SHOW_GENDOC_VOID_BUTTON` (checked in code, **not seeded**). Hiding FINAL for requesters is the only way to force the approval route — see Lifecycle. |
+| `HIDE_PRINT_BUTTON`, `HIDE_EXPORT_AS_PDF_BUTTON` | Print on the listing; Export as PDF on the Export tab. | off | Print re-enabled by the seeded `SHOW_PRINT_BUTTON` permission. |
+| `DISABLE_GEN_DOC_LISTING`, `DISABLE_LINE_ITEM_QUEUE_LISTING` | Stop the main listing / Line Items Queue from loading rows until the user searches. | off | Large tenants use this to avoid a full-table load on open. |
+| `HIDE_SERVER_DOC_1/2/3`, `HIDE_CLIENT_DOC_TYPE`, `HIDE_CLIENT_DOC_1…5`, `HIDE_ARAP_PNS/SETTLEMENT/DOC_OPEN/CONTRA/BAL`, `HIDE_DESCRIPTION`, `HIDE_TRANSACTION_DATE`, `HIDE_CREATED_DATE`, `HIDE_UPDATED_DATE` | Listing columns and the corresponding Main Details fields / search filters. | off | Each column has a seeded `SHOW_…` permission that re-enables it per role (`isShowColumn`). |
+| `SHOW_GL_DIMENSION`, `SHOW_SEGMENT`, `SHOW_PROFIT_CENTER`, `SHOW_PROJECT` | Opt-in listing columns for the header dimensions. | off | Column appears when the setting **or** the same-named permission is on. |
+| `HIDE_DIMENSION`, `HIDE_SEGMENT`, `HIDE_PROFIT_CENTER`, `HIDE_PROJECT`, `HIDE_DEPARTMENT` | Dimension fields on the Department Hdr tab and the line Department tab. | off | Field hidden; header values still copy to lines. |
+| `HIDE_UNIT_PRICE_STD_PRICING_SCHEME`, `HIDE_UNIT_PRICE_STD_INCL_TAX`, `HIDE_UNIT_PRICE_STD_EXCL_TAX`, `HIDE_UNIT_PRICE_STD_UOM_INCL_TAX`, `HIDE_UNIT_PRICE_STD_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_NET_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_NET_EXCL_TAX`, `HIDE_UNIT_DISCOUNT`, `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_TXN_UOM_INCL_TAX`, `HIDE_UNIT_PRICE_TXN`, `HIDE_QTY_BASE`, `HIDE_QTY_UOM`, `HIDE_UOM_TO_BASE_RATIO`, `HIDE_AMOUNT_STD_EXCL_TAX`, `HIDE_DISCOUNT_AMOUNT_EXCL_TAX`, `HIDE_AMOUNT_NET_EXCL_TAX`, `HIDE_AMOUNT_TXN`, `HIDE_TAX_CONFIG_SELECTION`, `HIDE_WHT_CONFIG_SELECTION`, `HIDE_LAST_PURCHASE_PRICE`, `HIDE_TOTAL_TXN_AMOUNT`, `HIDE_SST_VAT_GST_AMOUNT` | Individual price, quantity, tax and amount fields on the line form and the line grid. | off | Each has a seeded `SHOW_…` permission (except the two totals) so a purchasing role can see prices while a cashier cannot (intranet #4399, #3918). |
+| `HIDE_COSTING_DETAILS`, `HIDE_PRICING_DETAILS`, `HIDE_ISSUE_LINK`, `HIDE_SERIAL_NUMBER`, `HIDE_BATCH_NUMBER`, `HIDE_BIN_NUMBER` | Sub-tabs of the line form. | off | Costing Details is re-enabled by the seeded `SHOW_COSTING_DETAILS` permission. |
+| `HIDE_TRACKING_ID`, `HIDE_PERMIT_NO`, `HIDE_REMARKS`, `HIDE_CREATED_BY_DETAILS`, `HIDE_LOCATION`, `HIDE_DELIVERY_BRANCH`, `HIDE_DELIVERY_LOCATION`, `HIDE_DELIVERY_DETAILS`, `HIDE_DELIVERY_INSTRUCTION`, `HIDE_DOC_LINK`, `HIDE_DOC_LINK_FROM`, `HIDE_DOC_LINK_TO` | Main Details fields, line delivery fields and doc-link grids. | off | Field or grid hidden. |
+| `HIDE_BILL_TO_TAB`, `HIDE_SHIP_FROM_TAB`, `HIDE_ACCOUNT_BILLING_CONTACT`, `HIDE_ACCOUNT_SHIPPING_CONTACT`, `HIDE_ENTITY_DETAILS_STATUS/IDENTITY_TYPE/CURRENCY/DESCRIPTION/TYPE/ID_NUMBER/EMAIL/PHONE_NUMBER` | Account tab: sub-tabs, contact blocks and entity fields. | off | Hidden. |
+| `HIDE_CURRENCY`, `SHOW_FOREX_DATA_SOURCE`, `CANNOT_EDIT_CURRENCY_RATE` | Currency, forex data-source picker and rate on Main Details. | off | The rate field locks; the forex picker appears. |
+| `ENABLE_SELECT_MODE`, `ENABLE_BRANCH_FILTER` | Supplier picker: allow create / edit from the picker (with `ALLOW_TO_CREATE_EDIT_ACCOUNT`); filter suppliers by the document's branch. | off | — |
+| `DISALLOW_LINE_ITEM_EDIT` | Make saved lines read-only on the edit screen. | off | Overridden per role by the `ALLOW_LINE_ITEM_EDIT` permission (checked, not seeded). |
+| `ENABLE_EDIT_PAYMENT_DATE` | Payment tab: allow the payment date to be edited. | off | — |
+| `DEFAULT_TRANSACTION_DATE` | Default date-range filter of the Line Items menu (`1_day`, `1_week`, …). | empty | — |
+| `SORT_ORDER` | Ascending sort of the line grids. | off | — |
+| `VERTICAL_ORIENTATION` + `EXPAND_MAIN_DETAILS`, `EXPAND_ACCOUNT`, `EXPAND_LINE_ITEMS`, `EXPAND_KO_FOR`, `EXPAND_MAIN_ARAP`, `EXPAND_DELIVERY_DETAILS`, `EXPAND_DEPARTMENT_HDR`, `EXPAND_TRACE_DOCUMENT`, `EXPAND_MAIN_CONTRA`, `EXPAND_DOC_LINK`, `EXPAND_ATTACHMENT`, `EXPAND_EXPORT`, `EXPAND_SETTLEMENT`, `EXPAND_POSTING`, `EXPAND_DELIVERY_TRIPS` | Panel layout instead of tabs; which panel opens first. | off | `EXPAND_SETTLEMENT`, `EXPAND_POSTING`, `EXPAND_DELIVERY_TRIPS` name panels this applet does not have. |
+| `DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `DEFAULT_COMPANY` (Default Selection) | Pre-selected branch / location on a new requisition. | empty | Personal Default Selection overrides them per user. |
+| `PURCHASE_REQUISITION_DETAILS_TAB_ORDER` (Default Selection) | Order of the 14 edit tabs / panels. | code order | New tabs added later are appended. |
+| `PRINTABLE` (Printable Format Settings) | Default printable format for Print. | empty | — |
 
-## Feature Navigation
+**Keys read at runtime without a control of their own** (set only through the JSON or another applet sharing the same settings store): `DEFAULT_POSTING_STATUS` and `DEFAULT_STATUS` (Line Items menu filters), `DISABLE_ITEM_LISTING` (item picker), `HIDE_EMPLOYEE_RANKING` (Branch Designation › Employee Ranking tab), `RELABEL_BRANCH_TO_JOB_GROUP` / `RELABEL_COMPANY_TO_ENTITY` (labels), `SHOW_DOCUMENT_DELETE_BUTTON` (read from `bl_applet_ext`, but the edit template has no delete button — dead), `HIDE_LISTING_BRANCH`, `HIDE_QTY_MAIN_LISTING`, `HIDE_AMOUNT_MAIN_LISTING`, `HIDE_QUOTATION` / `HIDE_ORDER` / `HIDE_DELIVERY_ORDER` / `HIDE_INVOICE` / `HIDE_OTHERS`, `SHOW_REMARKS_MAIN_LISTING`, `SHOW_REFERENCE_MAIN_LISTING` (listing columns; the first three are on the gear only), `HIDE_SETTLEMENT_TAB`, `HIDE_SUPPLIER_CATEGORY_TAB`, `HIDE_SUPPLIER_LOGIN_TAB`, `HIDE_SUPPLIER_PAYMENT_CONFIG_TAB` (gear only; the shared screen gates them to other applet codes), and the menu keys `HIDE_LINE_ITEMS_MENU`, `HIDE_LINE_ITEMS_QUEUE_MENU`, `HIDE_APPROVAL_REQUEST_MENU`, `HIDE_APPROVAL_HISTORY_MENU`.
 
-{{< cards >}}
-	{{< card title="Purchase Requisition" subtitle="List, create, and edit" link="#purchase-requisition" >}}
-	{{< card title="Lines and Knock-Off" subtitle="KO For, Line Items, Line Items Queue" link="#lines-and-knock-off" >}}
-	{{< card title="Approvals" subtitle="Approval Request and Approval History" link="#approvals" >}}
-	{{< card title="Settings" subtitle="Fields, workflow, print, approvals, and access" link="#configuration--settings" >}}
-	{{< card title="Quick Start" subtitle="Step-by-step guides by role" link="#quick-start-guide" >}}
-	{{< card title="Glossary" subtitle="Key terms used in this applet" link="#glossary" >}}
-	{{< card title="FAQ" subtitle="Common questions and answers" link="#faq" >}}
-{{< /cards >}}
+**Declared but never read** (saving them changes nothing): `INCLUDE_*` and `ENABLE_*` for SST / WHT / dimension / profit centre / project / segment, `ENABLE_CUSTOM_STATUS_*` (15 keys), `ENABLE_FILTER_BY_TODAYS_TXN`, `EXPAND_E_INVOICE`, `DEFAULT_TOGGLE_COLUMN`, `ENABLE_EDITING_UNIT_PRICE_STD`.
 
----
+### Document behaviour settings
 
-## Key Concepts
+| Area | Screen | What it does |
+|---|---|---|
+| Approval routing | *Settings → Approval Settings* — Approval Setting Code, Name, Submitter Designation Code, Branch, Server Doc Type (`INTERNAL_PURCHASE_REQUISITION` or `INTERNAL_PURCHASE_ORDER`), Total Required Approval Levels, then per level: Approval Quorum (≥ 1), Approval Logic (`ANY_TO_APPROVE` / `ALL_TO_APPROVE`), Min / Max Approval Amount, Approver Designation. | Stored in `bl_fi_generic_doc_approval_setting`. Chosen by the submitter on the Generic Doc Approval tab. The backend builds the approval sequence from it (levels, quorum); **Approval Logic, Min / Max Amount and Approver Designation are copied to the sequence rows but not evaluated** by the generic-document processors at the read commit — only the quorum count advances a level. |
+| Approvers | *Settings → Branch Designation* → branch → **Submitter Designation** (labelled *Approval Designation* in panel view): Name, Code, Approval Setting, Description (`bl_fi_mst_branch_designation`), then **Approver** tab: employees with an Approval Level (`bl_fi_mst_employee_branch_designation_link`: designation code, approval setting, employee, level). | On submission the backend selects approvers whose link matches the approval setting **and** whose designation code equals the submitter's designation code, one sequence row per approver per level. |
+| Employee Ranking | *Branch Designation* → branch → **Employee Ranking**: employee + Approval Rank 1–10 (`bl_fi_mst_comp_branch_location_entity_link.entity_approval_rank`). Hidden by `HIDE_EMPLOYEE_RANKING`. | Written by this applet; **no backend consumer** (no read outside the data layer). Configuration only. |
+| Workflow status | *Settings → Workflow Settings* → company → attach a workflow process (`bl_fi_comp_workflow_gendoc_process_template_hdr`, server doc type fixed to `INTERNAL_PURCHASE_REQUISITION`). | Main Details then offers **Workflow Status** (the process's statuses, default pre-selected) and **Workflow Resolution**. Stored on the document; the backend FINAL path does not read them — this is a label, not a gate. Processes are designed in the [Workflow Design applet](/applets/master-data/workflow-design-applet/). |
+| Posting | none | Fixed by the backend: 0/0 signums, no journal (see Lifecycle). The only applet-side levers are the FINAL / VOID / DISCARD button toggles. |
+| Printing | *Settings → Printable Format Settings*; per branch under *Branch Settings → Printable Format* | Jasper print service `INTERNAL_PURCHASE_REQUISITION_PRINT_SERVICE`; the listing shows the document's Print Status. |
+| Branch Settings | *Settings → Branch Settings* → branch: Branch Details, Item Category Filter, Pricing Scheme, Printable Format, Default Settlement Method. | Per-branch item filter for the picker, pricing scheme for line prices, default printable and settlement method. |
+| e-Invoice | none | Requisitions are not e-Invoice documents; no submission flags exist. |
 
-### Words we use
+### Settings in other applets that control this applet
 
-| Term | Meaning |
-| --- | --- |
-| Purchase requisition | The internal buy request you raise in this applet. |
-| Requisition | Short form of purchase requisition. |
-| Document | The same record on the list—use this when talking about Final, Void, print, or posting status. |
+| Setting | Where it is set | Effect here |
+|---|---|---|
+| Knock Off Configuration rows PR → PO, Jobsheet → PR, GRN → PR | Organisation → Company → Knock Off Configuration | Whether FINAL creates open-queue rows for the PO / whether the KO For and downstream pickers find anything. |
+| Approval Monitor rule PR → PO ("Is Document Conversion Required") | [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/) → Settings → Approval Monitor | Forces every PO submitted for approval to be linked from a requisition (`GenericDocApprovalConversionMonitorCheckingService`). Set there, felt here as "every PO must start from a PR". |
+| `validate_stock` in the flow config `property_json` | Organisation → Knock Off Configuration (AUTO rows) | Only relevant if the backend conversion PR → PO is used: the converter validates the requisition like a FINAL first. |
+| Applet template messages | Applet Store / tenant admin | Approval e-mails (see prerequisites). |
 
-Knock-off and KO mean the same thing. KO is the short form used on the KO For tab.
+### Feature visibility / permissions
 
-To send a draft for approval, use Submit for approval or Generic Doc Approval on the saved document. Your tenant shows one label or the other. Both start the approval workflow. Approvers work from the Approval Request menu, not from that button.
+Server-side (targeted) permissions checked by the applet: `TNT_API_DOC_INTERNAL_PURCHASE_REQUISITION_READ_TGT_GUID` (branch targets filter the listing and the branch drop-down), `…_CREATE_TGT_GUID` (the **+** button), `…_UPDATE_TGT_GUID` (SAVE), `…_DELIVERY_BRANCH_READ`, plus `TNT_TENANT_ADMIN` / `TNT_TENANT_OWNER` which bypass all three. The backend additionally requires `API_TNT_DM_ERP_GEN_DOC_LINE_OPEN_QUEUE_APPROVE` (or owner / admin) for the Line Items Queue **APPROVE**, and `TNT_DM_ERP_GEN_DOC_APPROVAL_CONVERSION_MONITOR_READ` for the PO-side monitor check.
 
-### How a Requisition Moves Through Your Company
+Client-side permissions (`bl_applet_client_side_perm_dfn`, 50 ACTIVE rows seeded for this applet): `INTERNAL_PURCHASE_REQUISITION_DISPLAY_PRICING` (a **show** permission with a hide default: the price columns of the Lines grid and the Line Items menu are hidden for every role that does not hold it — `hidePriceFlag = !checkPermission(...)`), `ALLOW_TO_CREATE_EDIT_ACCOUNT`, `SHOW_APPROVAL_REQUEST_MENU`, `SHOW_APPROVAL_HISTORY_MENU`, `SHOW_EXPORT_TAB`, `SHOW_GENERIC_DOC_APPROVAL_TAB`, `SHOW_PRINT_BUTTON`, `SHOW_TRANSACTION_DATE` (unlocks the Transaction Date picker — without it the date is fixed at creation), `SHOW_COSTING_DETAILS`, `SHOW_LAST_PURCHASE_PRICE`, `SHOW_DESCRIPTION`, `SHOW_DOC_NO_TENANT/COMPANY/BRANCH`, `SHOW_CLIENT_DOC_TYPE`, `SHOW_CLIENT_DOC_1…5`, `SHOW_ARAP_*` (5), `SHOW_GL_DIMENSION`, `SHOW_SEGMENT`, `SHOW_PROFIT_CENTER`, `SHOW_PROJECT`, `SHOW_TAX_CONFIG_SELECTION`, `SHOW_WHT_CONFIG_SELECTION`, and the 16 price / quantity `SHOW_*` codes. Each `SHOW_*` re-enables what the matching `HIDE_*` setting hides, per role.
 
-A purchase requisition follows a lifecycle from creation to completion. The exact steps depend on your company's settings, but the general flow looks like this:
+Checked in code but **not seeded** (granting them is impossible until they are): `SHOW_GENDOC_FINAL_BUTTON`, `SHOW_GENDOC_VOID_BUTTON`, `SHOW_LINE_ITEMS_MENU`, `SHOW_LINE_ITEMS_QUEUE_MENU`, `SHOW_LISTING_BRANCH`, `SHOW_QTY_MAIN_LISTING`, `SHOW_AMOUNT_MAIN_LISTING`, `SHOW_QUOTATION` / `SHOW_ORDER` / `SHOW_DELIVERY_ORDER` / `SHOW_INVOICE` / `SHOW_OTHERS`, `SHOW_REMARKS_MAIN_LISTING`, `SHOW_REFERENCE_MAIN_LISTING`, `ALLOW_LINE_ITEM_EDIT`, `HIDE_PRICE`. Seeded but never checked by this applet's code: `IPR_HIDE_TRACKING_ID_AND_PERMIT_NO`.
 
-{{< figure src="/images/internal-purchase-requisition/Internal_Purchase_Requisition_Lifecycle.png" alt="Purchase requisition lifecycle: draft, submit for approval, Approval Request, approved or rejected, Final, and handoff to purchase order" caption="Purchase requisition lifecycle—from draft through approval to purchase order. Void or Discard can cancel a document before Final (see Glossary)." >}}
+*Feature Visibility* and the permission screens under Settings are the shared components (webhooks, permission sets, user / team / role permissions, role → pricing-scheme link).
 
-### Status and Posting Status
+## Fields
 
-You will see two status fields on a requisition. They mean different things:
+**Main Details**
 
-| Field | What it tells you | Example values |
-| --- | --- | --- |
-| **Status** | The general working state of the record | Active, Inactive |
-| **Posting Status** | Whether the document is still open for editing or locked | Draft, Final |
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Document Type | `INTERNAL_PURCHASE_REQUISITION` | — | Read-only. |
+| Document No (Tenant / Company / Branch) | Running numbers | — | Assigned on save; read-only. |
+| Client Document type, Client Doc 1–5 No | Free references | No | Read-only after save; hidden by `HIDE_CLIENT_DOC_*`. |
+| Company / Branch / Location | Requesting branch and location | Branch, Location required | Branch list limited to the user's read targets; defaults from Default Selection. |
+| Purchaser | Employee raising the request (`pic_entity_01`) | No | Picker; name is resolved on save. |
+| Transaction Date | Requisition date | Yes (pre-filled) | Picker enabled only with `SHOW_TRANSACTION_DATE`. |
+| Credit Terms, Due Date | Copied to the later PO | No | — |
+| Reference, Remarks, Permit No, Tracking ID | Free text | No | — |
+| Base Currency, Currency, Currency Rate, forex source | Document currency | Currency defaults to the supplier's | Rate locked by `CANNOT_EDIT_CURRENCY_RATE`. |
+| Workflow Status, Workflow Resolution | Status from the company workflow process | No | Only when *Workflow Settings* has a process for the company. |
+| Delivery Branch / Location | Header delivery target, copied to every line on CREATE | No | Hidden by `HIDE_DELIVERY_BRANCH` / `HIDE_DELIVERY_LOCATION`. |
+| Created / Modified by and dates | Audit | — | Read-only; `HIDE_CREATED_BY_DETAILS`. |
 
-Once a requisition reaches Final posting status, you generally cannot edit it. If a correction is needed, your process may require voiding it and raising a new one—check with your administrator first.
+**Account** — Entity Details (Entity Id **required**, Entity Name, Status, Entity Type, Identity Type, ID Number, Currency, Description, Email, Phone Number — all read-only from the supplier), **Bill To** and **Ship To** address and contact blocks.
 
-Depending on your company's configuration, the edit screen may show sections as horizontal tabs or as expandable panels down the page. Both contain the same information.
+**Lines** (Item Details) — Item Code / Name (picker; grouped, serial, batch and bin items open their sub-tab), Quantity Base (**required, ≥ 1**), Quantity by UOM, UOM to Base Ratio, Unit Price STD excl. / incl. tax, by UOM, Unit Discount (by UOM), Unit Price Net, STD Amount, Discount Amount, Amount Net (**required**), SST/GST/VAT code and Tax Amount, WHT code and amount, Unit Price Transaction incl. tax, Txn Amount (**required**), Remarks, Last Purchase Price; reference fields Jobsheet / Purchase Quotation / Purchase GRN / Purchase Order / Purchase Requisition / Supplier Delivery Order No. Sub-tabs: Grouped Item, Serial / Batch / Bin Number, Costing Details, Pricing Details, Issue Link, Delivery Details, Delivery Instructions (stored as a `REQUESTED_DELIVERY_DATE` extension), Department, Doc Link. Prices are `min(0)`; a requisition may carry zero prices.
 
----
+**Delivery Details** — Tracking ID, Shipping Branch, Delivery Type, Shipping Location.
 
-## Quick Start Guide {#quick-start-guide}
+**Department Hdr** — Segment, G/L Dimension, Profit Centre, Project (copied to lines).
 
-### For Requesters: Create Your First Purchase Requisition
+**Payment** — settlement lines (method, amount, date). Present because the form is cloned from the invoice family; a requisition has no ARAP balance, so these lines have no accounting effect.
 
-**Goal:** Save a new purchase requisition ready for approval.
+**Generic Doc Approval › Create Approval** — Select Submitter (employee entity, **required** by the backend), Submitter Designation / Code / Name (filled from the approval setting and employee), Doc No, Doc Type, Amount Txn (from the document), Approval Setting (**required**; only settings whose server doc type is `INTERNAL_PURCHASE_REQUISITION`), Total Required Approval Levels (from the setting).
 
-{{< figure src="/images/internal-purchase-requisition/For-Requesters-Create-Your-First-Purchase-Requisition.png" alt="Purchase requisition create screen with main details, account, and line items areas" caption="Create requisition: use the listing + button, then complete Main Details, Account, and Line Items. Red markers usually mean required fields." >}}
+## Lifecycle and effects
 
-1. Open Internal Purchase Requisition from the left menu.
-2. Click **Create** (the **+** icon, usually at the top left).
-3. On the **Main Details** tab, fill in:
-   - **Transaction Date** — the date you are raising the request
-   - **Reference** or document number (if your company auto-generates this, it may already be filled in)
-   - Any other required header fields shown on your screen, such as company or branch
-4. Open the **Account** tab and complete:
-   - **Entity Details** — the company or branch making the request
-   - **Bill To** — where the invoice should be addressed
-   - **Ship To** — where the goods or services should be delivered
-5. Open the **Line Items** tab. Click **Add** (or the **+** icon within the tab) for each item you need:
-   - Select or type the **Item** name or code
-   - Enter the **Quantity**
-   - Enter the **Unit Price** if required
-   - Add any notes or references for that line
-6. If your company uses them and the tabs are visible, complete **Delivery Details**, **Payment**, or **Department Header**.
-7. If **KO For** appears and you have a Jobsheet to reference, open that tab, find your Jobsheet in the list, and select it — the relevant details will be brought into your requisition automatically.
-8. Click **Create** to save the requisition.
+**Statuses.** `status` TEMP → ACTIVE on CREATE; `posting_status` DRAFT → FINAL (listing or edit-screen FINAL, or the last approval) → VOID (listing, FINAL + ACTIVE rows only). DISCARD (edit screen; ACTIVE + DRAFT only, backend `/{docType}/discard/backoffice-ep/{guid}` refuses FINAL) removes a never-finalised requisition. Only ACTIVE documents can be edited (intranet #3738).
 
-{{< figure src="/images/internal-purchase-requisition/submit-for-approval.png" alt="Submit for approval or generic doc approval area on a purchase requisition" caption="When the draft is complete, use Submit for approval or Generic Doc Approval on the document. Approvers use the Approval Request menu." >}}
+**Posting proof block**
 
-**What happens next?** The requisition stays in draft until your process moves it forward—often Final on the list and/or submit for approval on the document. Follow your internal purchasing process.
+| Item | Value |
+|---|---|
+| Server document type | `INTERNAL_PURCHASE_REQUISITION` (`PURREQ`), handler key `internal-purchase-requisitions` |
+| Amount signum | **0** — `InternalPurhaseRequisitionDataConsistencyObject.correctAmountSignum = ZERO`, checked on create and update (`GENERIC_DOC_INVALID_SIGNUM` otherwise); the applet sends 0 (`AppletConstants.amount_signum = 0`), so create and save agree with the backend. `ServerDocTypes.INTERNAL_PURCHASE_REQUISITION(0,0)`. |
+| Quantity signum | **0** — filled on every line by the DCO; no inventory transaction lines are generated. |
+| Dr / Cr equation | none — no `JournalPostingTypeHandler` entry, no journal on FINAL. |
+| GL precedence | not applicable. |
+| Stock processor | none. Serial numbers on lines are still validated on FINAL when the request asks for signum-zero validation (`purchaseDocTypeSignumZero` list in `GenericDocumentService`). |
+| What FINAL does | Assigns running numbers, locks the document, and — when the company Knock Off Configuration has an enabled PR → PO row — creates `bl_fi_generic_doc_line_open_queue` rows (`GenericDocLineOpenQueueProcessor`) that the Purchase Order applet consumes. `FISCAL_PERIOD_LOCKED` applies. |
+| What VOID reverses | The open-queue rows; nothing else. The backend refuses VOID (`Generic Document cannot be changed to VOID because it has already been linked with the following documents: …`) when an ACTIVE link has this requisition as source — i.e. after a PO has knocked it off. |
 
-{{< callout type="tip" >}}
-**Not ready to submit yet?** Your requisition is saved as a draft as soon as you create it. You can come back at any time to add more details or make changes before it is sent for approval.
-{{< /callout >}}
+**Knock-off.** KO For › Jobsheet lists open-queue rows `INTERNAL_JOBSHEET → INTERNAL_PURCHASE_REQUISITION`, copies the selected lines into the draft and creates `bl_fi_generic_doc_link` rows on CREATE (`createGenDocLink$`, links posted as ACTIVE after the header PUT). Selecting a jobsheet also copies its header details into Main Details (`updateMainOnKOImport`); the delivery branch does not follow the branch (intranet #4453, open). In panel (vertical) view the Jobsheet panel is additionally gated by the company flow config, but the query the applet issues asks for rows whose target is `INTERNAL_SALES_INVOICE` and then filters on source `INTERNAL_JOBSHEET` — a copy-paste error: the panel's visibility follows the *Jobsheet → Sales Invoice* row, not *Jobsheet → Purchase Requisition*.
 
----
+**Approval workflow** (the part that is enforced by the backend):
 
-### For Approvers: Review and Action a Requisition
+1. **Create approval** (Generic Doc Approval tab, **+**, Save) — `POST …/generic-doc/approvals/backoffice-ep` with the document, submitter entity and approval setting. Fails with `GENERIC_DOC_APPROVAL_OBJECT_GENERIC_DOC_HDR_GUID_DOES_NOT_EXIST` / `…_ALREADY_EXISTS` from the approval DCO.
+2. **Submit For Approval** — `PUT …/approvals/processors/submission/backoffice-ep`. `GenericDocApprovalSubmissionService.validateApprovalData` **rejects** the submission (HTTP 400, `ERROR_TO_SHOW_IN_UI`) when: the submitter entity is missing (`SUBMITTER_ENTITY_HDR_GUID_IS_NULL`); the approval setting is missing (`APPROVAL_SETTING_GUID_IS_NULL`); no branch designation with the submitter's designation code exists for that approval setting (*Submitter designation_code is not created in bl_fi_mst_branch_designation*); that designation has no approver links (*There is no approver assigned…*); the approvers cover fewer distinct levels than Total Required Approval Levels (`EmployeeBranchDesignationLink_IS_NOT_FULLY_CONFIGURED`); or the submitter has a resign date in the past (`SUBMITTER_IS_RESIGNED`). On success the header becomes `PENDING_APPROVAL` and an event goes to the `GENERIC_DOC_APPROVAL_PRIMARY_PROCESSOR` queue (`bl_fi_generic_doc_approval_hdr_queue`).
+3. **Primary processor** builds `bl_fi_generic_doc_approval_sequence` rows — one per approver per level up to the required levels, quorum = min(approvers at that level, configured quorum) — writes a SUBMITTED / RESUBMITTED history row, and hands over to the **sequence processor**, which creates `bl_fi_generic_doc_approval_request` rows for the lowest level and e-mails each approver (template `GENERIC_DOC_APPROVAL_PENDING_APPROVAL_NOTIFICATION`; the mail contains a Thymeleaf decision form link, `approval-requests/thymeleaf-forms/{tenant}/{guid}`). Failures are recorded on the header as `approval_processor_posting_status` / `approval_sequence_posting_status` (`PROCESSOR_FAIL_APPROVAL_SETTING_NOT_FOUND`, `PROCESSOR_FAIL_APPROVAL_SEQUENCE_IS_EMPTY`, `FAILED_TO_INSERT_TO_QUEUE`, …) and are visible as columns on the Generic Doc Approval tab.
+4. **Approve / Reject** (Approval Request menu or the e-mail form) — `PUT …/approval-requests/processors/login-entity-primary-ep` with the request guid, the acting login and remarks; queued to the **request processor**. *Approve* marks the same-level sequence rows APPROVED, bumps the quorum count, deletes the acting request and re-runs the sequence processor: when the quorum is met the current level's remaining requests are deleted and the next level's requests are created; when every level is approved and the required level count is reached, the header gets `date_final_approval`, status APPROVED and the remarks are concatenated. *Reject* sets the header REJECTED with `date_rejection` and `rejection_remarks`, deletes the sequence rows and all requests, and e-mails the submitter. **Resubmit** (`…/processors/resubmission/backoffice-ep`) restarts from step 3 — the applet keeps the *Withdraw* button commented out, though the `…/withdrawals/backoffice-ep` endpoint exists.
+5. **Auto-FINAL.** After an approval is recorded the request processor calls `GenericDocumentService.updatePostingStatusWithChecks(posting_status = FINAL)` on the requisition itself — the normal FINAL path, with its validations. At the read commit the condition is `date_final_approval != null || request.approval_status == APPROVED`, and the second operand is always true inside the approve branch, so **the requisition is finalised at the first approval action, not only at the last level**. Later levels still run for the record.
 
-**Goal:** Approve or reject a purchase requisition in the approval queue.
+What the workflow does **not** do: nothing stops a user from clicking **FINAL** on the listing or edit screen without any approval — `GenericDocumentService` never reads the approval tables. Hide the FINAL button from requesters (`HIDE_GENDOC_FINAL_BUTTON`, with `SHOW_GENDOC_FINAL_BUTTON` unseeded nobody can re-enable it) if approval is meant to be mandatory; this is the design in intranet #744.
 
-1. Open Approval Request from the left menu (the approver inbox—not the submit button on the document).
-2. Click on a record to open it. Review the top section (dates, reference number, who raised it, and which branch or department it is for), the line items, the total amounts, and any attachments or remarks the requester added.
-3. When you are ready to decide:
-   - Click **Approve** if the requisition is correct, complete, and within your company's spending guidelines.
-   - Click **Reject** if changes are needed. Add a remark explaining what needs to be corrected — the requester will see this when the document is returned to them.
-4. The record will move out of your queue automatically. Use **Approval History** to confirm your decisions and see a full record of past actions.
+**Line Items Queue › APPROVE** sets `approval_status = APPROVED` on the selected open-queue rows (`batch-approve`, permission `…_LINE_OPEN_QUEUE_APPROVE`). No reader of that flag exists in the backend or in the Purchase Order applet at the read commit — the PO can knock off unapproved rows just the same. It is a marker, not a gate.
 
-{{< callout type="tip" >}}
-**Going on leave?** Ask your administrator to check **Approval Settings** and routing so that your queue is covered by a substitute while you are away. Requisitions left in an unattended queue will not progress.
-{{< /callout >}}
+**PR → PO conversion (backend).** `PurchaseRequisitionToPurchaseOrderConverter` maps a FINAL requisition to a new `INTERNAL_PURCHASE_ORDER` (amount signum 0; DRAFT, or FINAL with running numbers and posting when the flow config's `doc_2_posting_status` says FINAL) and syncs the links. It runs from `POST …/gen-doc/convert-documents/backoffice-ep` (refuses non-FINAL sources — `SOURCE_DOCUMENT_NOT_FINAL` — and already-converted ones — `SOURCE_DOCUMENT_ALREADY_KO`), from `POST …/generic-document-conversion/backoffice-ep/{guid}` (every enabled AUTO / `KO_DOC` flow row of the company), and from the `GENERIC_DOCUMENT_CONVERSION_PROCESSOR` job when a tenant subscribes to it. This applet exposes none of these; the PO applet's KO For is the normal path.
 
----
+## Related applets
 
-### For Operations: Line Views and Printing
+- [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) — the next document; knocks requisition lines off, carries the Approval Monitor rule and its own approval flow.
+- [Purchase Quotation (Internal)](/applets/purchase-workflow/internal-purchase-quotation-applet/) — can be raised from requisition lines before the order.
+- [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) — optional line-level knock-off target for a requisition.
+- [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) — end of the chain; the requisition number is carried on PO and invoice lines as a reference.
+- [Stock Requisition (Internal)](/applets/inventory-workflow/internal-stock-requisition-applet/) — the inventory-side request; same signums, approval screens present but not enforced there.
+- [Purchase Report](/applets/purchase-workflow/purchase-report-applet/) — reporting.
+- [Supplier](/applets/master-data/supplier-applet-1/), [Employee](/applets/master-data/employee-applet/), [Organisation](/applets/master-data/organisation-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/) — master data the form depends on.
+- [Workflow Design](/applets/master-data/workflow-design-applet/) — designs the process whose statuses appear in Workflow Status.
 
-**Goal:** Review items being requested across requisitions, work through a line queue if your company uses one, and print documents when needed.
+## Troubleshooting
 
-1. Open **Line Items** from the left menu to see a single list of all lines from many requisitions. Use the filters and search to narrow by item, date, branch, or other criteria.
-2. If your company uses **Line Items Queue**, open it to see lines waiting for queue-level approval. Tick the line or lines you want, then click **APPROVE**.
-3. To print, open Internal Purchase Requisition, select the document or documents you need, and use Single print or Multiple print when those actions appear.
+| Symptom | Cause | Fix |
+|---|---|---|
+| Submit For Approval returns *Submitter designation code … is yet to be created* | No branch designation with that code exists for the chosen approval setting. | *Branch Designation* → branch → Submitter Designation: create one whose Code equals the setting's Submitter Designation Code and whose Approval Setting is the same setting. |
+| *There is no approver assigned…* or `EmployeeBranchDesignationLink_IS_NOT_FULLY_CONFIGURED` | The designation has no Approver rows, or the approvers' levels cover fewer levels than Total Required Approval Levels. | Add approvers to the designation with levels 1…N. |
+| Submitted, but nobody sees it in Approval Request | The primary / sequence processor failed; check the *Sequence Posting Status* and *Processor Posting Status* columns on the Generic Doc Approval tab (`PROCESSOR_FAIL_APPROVAL_SEQUENCE_IS_EMPTY` = approvers' designation code does not match the submitter's). | Align the designation code on the approver links with the setting's submitter designation code. |
+| Approver was not e-mailed; *Email Notification Error* shows *Cannot get AppletTemplateMessage…* | The tenant has no `GENERIC_DOC_APPROVAL_PENDING_APPROVAL_NOTIFICATION` template. | Create the template message (and `NO_REPLY_EMAIL_ADDRESS`). The request still appears in Approval Request. |
+| Requisition went FINAL after the first of two approvals | Behaviour of the request processor at the read commit (see Lifecycle step 5). | Treat level 1 as the effective gate, or ask for the condition to be fixed. |
+| Requester finalised without approval | FINAL is never blocked by approval status. | Turn on `HIDE_GENDOC_FINAL_BUTTON`; route everyone through Generic Doc Approval. |
+| *Generic Doc Approval* tab errors on tenants that do not use approvals | The tab was added for all tenants (intranet #1527). | Turn on `HIDE_GENERIC_DOC_APPROVAL_TAB`; grant `SHOW_GENERIC_DOC_APPROVAL_TAB` to the roles that need it. |
+| Purchase Order cannot find a FINAL requisition | No enabled Knock Off Configuration row *Purchase Requisition → Purchase Order* when it was finalised, so no open-queue rows were created. | Add the row; re-run the queue repair (`data-fix-missing-queue`) or void and re-finalise. |
+| KO For › Jobsheet is empty | No *Jobsheet → Purchase Requisition* row, or the jobsheet is not FINAL / already fully knocked off. | Add the row; check the jobsheet's open quantities. |
+| Print says success but no PDF, or *No Doc to print* | Print needs a default printable format; a role without `SHOW_PRINT_BUTTON` while `HIDE_PRINT_BUTTON` is on cannot print at all (intranet #2700). | Set the default in Printable Format Settings; grant the permission. |
+| Cannot VOID: *…already been linked with the following documents* | A PO (or quotation) has knocked the requisition off. | Void the downstream document first. |
+| `FISCAL_PERIOD_LOCKED` on FINAL | The transaction date falls in a locked period. | Change the date (needs `SHOW_TRANSACTION_DATE`) or unlock the period. |
+| Prices visible to a role that should not see them | The price `HIDE_*` settings are off, or the role holds the matching `SHOW_*` permission / `INTERNAL_PURCHASE_REQUISITION_DISPLAY_PRICING`. | Turn on the `HIDE_UNIT_PRICE_*` / `HIDE_AMOUNT_*` settings and grant the `SHOW_*` codes only to purchasing (intranet #4399). |
+| Branch Designation screen shows *SERVER_GENERAL_UNKNOWN_ERROR* on the branch list | Backend branch query bug fixed in intranet #1071. | Update the backend. |
+| *Applet not found* after a deployment | Registry / build mismatch fixed in intranet #5727. | Redeploy. |
 
----
+## Related documentation
 
-### For Administrators: First-Time Setup Checklist
-
-Complete these steps in order when setting up the applet for the first time.
-
-- [ ] **Step 1:** Open **Settings → Feature Visibility** and turn on the menus and actions each role needs. Disable anything that is not relevant to your company's purchasing process.
-- [ ] **Step 2:** Open **Settings → Application Settings** and configure which fields are visible and required on the requisition form.
-- [ ] **Step 3:** Set **Default Selection** so the correct company, branch, and location pre-fill for users when they create a new requisition.
-- [ ] **Step 4:** Configure **Branch Designation** *(the setting that links users and approval routing to specific branches)* if different branches have different approval rules or defaults.
-- [ ] **Step 5:** Set up **Printable Format Settings** so printed requisitions match your company's layout.
-- [ ] **Step 6:** Configure **Workflow Settings** and **Approval Settings** — define who approves, in what order, and what conditions (such as document amount or department) determine which approval level applies.
-- [ ] **Step 7:** Set **Permissions** so each role (requester, approver, controller) can only see and do what they should.
-- [ ] **Step 8:** Create a test requisition, submit it, approve it, and confirm the full flow works before going live.
-
-**Estimated time for basic setup:** 1–2 hours.
-
----
-
-## Purchase Requisition {#purchase-requisition}
-
-Open Internal Purchase Requisition from the left menu.
-
-**List view**
-
-You see all requisitions your role can access. From the list you can start a new requisition with Create (+), use Final or Void on a selected document when those actions are available, print with Single print or Multiple print when enabled, and search or filter the grid. Columns typically include document number, company, branch, posting status, status, transaction date, and amounts.
-
-{{< figure src="/images/internal-purchase-requisition/purchase-requisition-list.png" alt="Purchase Requisition listing with Create, search, Final, and Void actions" caption="List view: search and filter requisitions, select rows, then use FINAL, VOID, or print when those actions are available for your role." >}}
-
-**Create screen**
-
-The first save uses a focused set of tabs:
-
-| Tab | Purpose |
-| --- | --- |
-| Main Details | Header—dates, references, company, branch, requester fields |
-| Account | Entity details, bill-to, ship-to |
-| Line Items | Items or services being requested |
-| Delivery Details | Delivery instructions (when enabled) |
-| Payment | Payment terms (when enabled) |
-| Department Header | Department header for cost allocation (when enabled) |
-| KO For | Pull details from a Jobsheet (when enabled) |
-
-Click Create to save the requisition as a draft.
-
-**Edit screen**
-
-After the first save, opening the document again shows extra sections such as Attachments, Doc Link, Trace Document / Posting, and Generic Doc Approval. These do not appear on the initial create screen.
-
-| Section | Purpose |
-| --- | --- |
-| ARAP | Finance account links |
-| Trace Document / Posting | Links to follow-on documents such as purchase orders |
-| Contra | Offset or balance against another document |
-| Doc Link | Related document references |
-| Attachments | Quotes, photos, supporting files |
-| Export | Export to PDF or Excel |
-| Generic Doc Approval | Start or track approval on this document |
-
-{{< figure src="/images/internal-purchase-requisition/attach-document.png" alt="Edit Purchase Requisition Attachment tab with Add Attachment upload panel" caption="After the first save, open Attachment on the edit screen. Use + to add files such as quotes or supporting documents." >}}
-
-Discard may appear on drafts that were never submitted. Unlike Void, it removes the draft without a formal cancellation record.
-
-**Send for approval**
-
-When the draft is complete, use Submit for approval or Generic Doc Approval on the document—your setup shows one label. Both start the approval workflow. Your company may also require Final from the list before approvers see the task. Approvers then work from the Approval Request menu.
-
----
-
-## Lines and Knock-Off {#lines-and-knock-off}
-
-**KO For**
-
-Knock-off pulls data from another document into your requisition so you do not retype it. KO is the short form used on the KO For tab. In this applet, knock-off is from Jobsheet only. Select a Jobsheet on the KO For tab (create screen) or tab when enabled, and matching details fill into the requisition.
-
-{{< callout type="info" >}}
-Purchase orders and quotations are not knock-off sources in this applet. If KO For is missing or empty, ask your administrator which sources are enabled.
-{{< /callout >}}
-
-**Line Items menu**
-
-The Line Items left menu lists lines from many requisitions in one grid. Use filters and search by item, date, or branch. This is not the same as the Line Items tab inside one requisition—that tab is for adding lines on a single document only.
-
-{{< figure src="/images/internal-purchase-requisition/line-items-listing-view.png" alt="Line Items menu listing showing lines from multiple purchase requisitions" caption="Line Items menu: one grid of lines from many requisitions. Use filters and Search to narrow the list." >}}
-
-**Line Items Queue**
-
-When enabled, individual lines wait here for line-level approval before or alongside full document approval. Open **Line Items Queue** from the left menu, tick the line or lines you want, then click **APPROVE**.
-
-{{< figure src="/images/internal-purchase-requisition/line-items-queue-approve.png" alt="Line Items Queue listing with a line selected and the Approve button" caption="Line Items Queue: select one or more lines, then click APPROVE. Review branch, item, and quantity before you approve." >}}
-
-{{< callout type="warning" >}}
-If Line Items Queue or Approve is missing, the feature may be off in Settings or your role may not have access.
-{{< /callout >}}
-
----
-
-## Approvals {#approvals}
-
-Approval Request is the left-menu screen where approvers review pending requisitions. It is not the same as submit for approval on the document—that action is what the requester uses to send a draft into the workflow.
-
-**Approval Request**
-
-Open Approval Request from the left menu. The list shows requisitions assigned to you. Open a record, review lines, amounts, and attachments, then Approve or Reject. Add remarks on reject so the requester knows what to fix. Approved items leave your queue; rejected items return to the requester for correction.
-
-{{< figure src="/images/internal-purchase-requisition/apprival-request.png" alt="Approval Request listing with Approve and Reject actions" caption="Approval Request: pending requisitions assigned to you. Select a row, review the document, then Approve or Reject." >}}
-
-**Approval History**
-
-Open Approval History from the left menu for a record of past decisions—who approved or rejected, when, and any remarks. Use it to trace a decision or confirm a requisition completed the correct steps.
-
----
-
-## Configuration & Settings {#configuration--settings}
-
-Open **Settings** from the left menu. The areas available depend on your company's configuration and your own access level.
-
-{{< figure src="/images/internal-purchase-requisition/settings.png" alt="Applet Settings screen showing System Configuration areas such as Application Settings, Workflow Settings, and Approval Settings" caption="Settings opens Applet Settings. System Configuration covers fields, defaults, print, workflow, and approval routing; other sections cover permissions and release notes." >}}
-
-| Area | What it controls |
-| --- | --- |
-| **Application Settings** | Which fields appear on the form and whether they are required |
-| **Default Selection** | Pre-filled defaults for company, branch, and location |
-| **Printable Format Settings** | How requisitions look when printed |
-| **Workflow Settings** | How the document moves between stages and what features are active |
-| **Approval Settings** | Who approves, in what order, and what conditions trigger each level |
-| **Branch Designation / Branch Settings** | Approval rules and defaults specific to each branch |
-| **Feature Visibility and Integrations** | Which menus and actions are visible to each role; connections to external systems |
-| **Permissions** | What each user, team, or role can see and do |
-| **Release Notes / Change Log** | A record of recent updates and changes made to this applet |
-
----
-
-## Personalization
-
-**Personalization** lets you set your own defaults — for example, so that your branch is pre-selected every time you create a new requisition — without changing the shared settings for everyone else.
-
----
-
-## Related Applets
-
-Purchase requisitions are part of a broader purchasing workflow in BigLedger. Depending on how your company works, a requisition is often the first step before other documents are raised.
-
-| Applet | How it relates |
-| --- | --- |
-| [Purchase Order (Internal) Applet](/applets/purchase-workflow/internal-purchase-order-applet/) | The typical next step after a requisition is approved — a purchase order is raised to formally commit the purchase with the supplier |
-| [Purchase Quotation (Internal) Applet](/applets/purchase-workflow/internal-purchase-quotation-applet/) | Some companies request a quote from suppliers before or alongside raising a requisition |
-| [Purchase GRN (Internal) Applet](/applets/purchase-workflow/internal-purchase-grn-applet/) | Once goods are delivered, a Goods Received Note (GRN) is raised to confirm receipt against the purchase order |
-| [Purchase Invoice (Internal) Applet](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/) | Records the supplier invoice for payment after goods or services are received |
-| [Purchase Report Applet](/applets/purchase-workflow/purchase-report-applet/) | Reporting across the full purchase workflow, including requisitions and orders |
-
-{{< callout type="info" >}}
-Not all of these applets may be visible or enabled for your company. Which applets you can access depends on your role and your company's configuration.
-{{< /callout >}}
-
----
-
-## Glossary {#glossary}
-
-| Term | What it means |
-| --- | --- |
-| **ARAP** | Short for Accounts Receivable / Accounts Payable. Used by finance to link the requisition to the right accounts. Most requesters do not need to use this section. |
-| **Branch** | A location, office, or division in your company. Bill To, Ship To, and many defaults are tied to branch; yours may be pre-filled from your user profile. |
-| **Branch Designation** | Configuration that links users and approval routing to branches (for example, Branch A requests route to the Branch A approver). |
-| **Contra** | Links this document to another to offset or balance an amount (for example, netting against an earlier requisition). |
-| **Cost Centre** | Your department’s budget or billing code for this purchase. Ask finance or your manager if you do not know the code. |
-| **Discard** | Removes a draft that was never properly completed. Unlike **Void**, it does not leave a formal cancellation record on the books. |
-| **Doc Link** | Links this requisition to other BigLedger documents so they stay easy to find together (for example after a purchase order is created from the requisition). |
-| **Draft** | The requisition can still be edited; it is not locked. Approval tasks may not exist until your process moves it forward from Draft. |
-| **Export** | Download the requisition (for example PDF or Excel) for sharing or filing outside the system. |
-| **Final** | Posting status that locks the document so header and lines usually cannot be changed. Often set when your process finalizes the requisition before or with approval. |
-| **Generic Doc Approval** | On a saved document: start or check the approval workflow and see who must act next. |
-| **Jobsheet** | A job or service document (for example maintenance work). In this applet it can be a **knock-off** source into a requisition when enabled. |
-| **Knock-Off (KO)** | Pulls data from another document (such as a Jobsheet) into the requisition so you do not retype lines and details. |
-| **Line Items Queue** | Line-level approval: individual lines wait here until approved, which can be required before or alongside full document approval. |
-| **Posting Status** | **Draft** vs **Final** (and similar): whether the document is still open for editing or locked. |
-| **Status** | The record’s general state (for example Active). Separate from **Posting Status**. |
-| **Trace Document / Posting** | Shows how this requisition connects to follow-on documents (purchase order, invoice, and so on). |
-| **Void** | Formal cancellation with an audit trail in reports. Use for a real requisition you must cancel; not the same as **Discard**. |
-
----
-
-## FAQ {#faq}
-
-**Why can't I see the Create button?**
-Your account may not have permission to create purchase requisitions, or the button may have been hidden for your role by an administrator. Contact your administrator and ask them to check your **Permissions** and **Feature Visibility** settings.
-
-**Why are Final, Void, or Print missing from the list?**
-These actions apply to rows you select on the **Purchase Requisition** list. **Final** and **Void** usually appear when the requisition is still in **Draft** (posting) and your role is allowed to use them. **Print** also needs a **print format** to be set up and enabled for your role. If you expect **Print** on a **Final** document, ask your administrator—visibility can depend on settings.
-
-**Why don't I see the Delivery Details, Payment, Department Header, or KO For tabs?**
-Those tabs are optional and can be hidden by your administrator through **Application Settings** or **Feature Visibility**. If you need one of those tabs and cannot see it, ask your administrator to enable it.
-
-**What is the difference between Void and Discard?**
-Both cancel a requisition, but they work differently. **Void** creates a formal cancellation record that is visible in reports and leaves a clear audit trail — use this for requisitions that were properly created and need to be cancelled. **Discard** is for drafts that were never properly completed and removes the document without leaving a cancellation record. If you are unsure which to use, ask your finance team or administrator before taking action.
-
-**Why can't I Void my requisition (the action is missing or blocked)?**
-Often the requisition was **already converted to a purchase order** or is **linked to downstream documents** your rules will not break. Open **Trace Document / Posting** or **Doc Link** to see related POs. Follow your company process to adjust or cancel the downstream document first, or ask your administrator.
-
-**I saved my requisition—why hasn't it gone to my approver?**
-Create only saves the draft. Your company may still require Final on the list and/or submit for approval (or Generic Doc Approval) on the document before a task appears in the Approval Request menu. Check Generic Doc Approval and posting status on the document.
-
-**My purchase requisition is not showing up in Approval Request — why?**
-Common causes: still in Draft and not submitted for approval; routing sent it to another approver; or line items still waiting in Line Items Queue. Open the document, check Generic Doc Approval, and contact your administrator if needed.
-
-**I submitted a requisition for approval but the approver says they cannot see it. What should I check?**
-Ask your administrator to check the **Approval Settings** and confirm that the routing is pointing to the correct approver. Also confirm the document has left **Draft** status — if it is still Draft, the approval task may not have been created yet. Check **Line Items Queue** if line approval runs before the approver’s queue.
-
-**What do I do if my purchase requisition is rejected?**
-When a requisition is rejected, the approver should have left a remark explaining what needs to change. Open the document, read the rejection reason, make the corrections, and resubmit it for approval. If no reason was given, contact the approver directly to ask what needs to be fixed.
-
-**Can I attach a supplier quote or supporting document to my requisition?**
-Yes — once the requisition is saved, open it for editing and go to the **Attachments** section. From there you can upload files such as quotes, images, or emails. The **Attachments** section only appears in the edit view, not during initial creation.
-
-**How do I find an old purchase requisition?**
-Open Internal Purchase Requisition from the left menu and use search and filters. If a document is missing, it may be outside your access rights—ask your administrator.
-
-**Can I copy a previous purchase requisition instead of starting from scratch?**
-This depends on whether your company's configuration includes a duplicate or copy function. If you do not see that option, raise a new requisition manually. Your administrator can confirm whether copying is supported in your setup.
-
-**Line Items Queue is empty or the menu is missing — why?**
-If the menu is missing, the feature may be disabled in **Settings** or your role may not include access to it. If the menu is visible but the queue is empty, there may simply be no lines waiting at this time, or your current filters may be hiding them. Try clearing your filters or contact your administrator.
-
-**Can I edit a purchase requisition after it has been set to Final?**
-Once a document reaches **Final**, header and line editing are usually locked. You may still add **Attachments** or **reprint** where your product allows. If a correction is needed, your process may require **Void** and a new requisition. Check with your administrator or finance team before voiding, especially if a **purchase order** was already raised from this requisition.
-
-**Where do purchase requisitions go after they are approved?**
-Purchasing usually continues in the **[Purchase Order (Internal) Applet](/applets/purchase-workflow/internal-purchase-order-applet/)** — for example by creating a new PO and **searching by purchase requisition** so **Final** requisitions appear. That step is **not always automatic**; it depends on your workflow and configuration. If nothing happens after approval, confirm your internal SOP and settings with your administrator.
-
-**I'm raising a PO—why doesn't my requisition appear when I search for it?**
-Typical causes: the requisition is not **Final** yet, filters (company, branch, supplier) do not match, or the requisition was **already fully used** on another PO. Open the requisition and check **Trace Document / Posting** and **Doc Link** for existing links.
-
-**The screen shows red fields or I cannot save—what am I missing?**
-Red or highlighted fields are usually **required**. Check every tab (**Main Details**, **Account**, **Line Items**, and optional tabs your company uses) and ensure each line has item, quantity, and any mandatory pricing or dimensions.
-
-**I cannot find “create new supplier” or I picked the wrong supplier on Account.**
-Use the **Select** vs **Create** (or edit) mode on the **Account** tab: in **Select** mode you pick an existing supplier; in **Create** / edit supplier mode your administrator may allow a **+** to add a new supplier. If the toggle is missing, your role may be restricted—ask your administrator.
-
-**My Jobsheet does not appear under KO For—why?**
-The Jobsheet may not be in the right **status**, may be outside your **branch** filter, or **KO For** / document types may be disabled in **Settings**. Confirm with your administrator which sources are enabled for knock-off.
-
-**First approver approved—where did the requisition go?**
-It may be waiting on the **next approver** in the chain. Open **Generic Doc Approval** on the document and use **Approval History** to see who has acted and who is next.
-
-**Print is missing, blank, or looks wrong.**
-Confirm a **print format** exists in **Printable Format Settings**, that **Feature Visibility** allows print for your role, and that you are using **Single print** / **Multiple print** from the list when supported.
-
-**Why does my document number or reference still look “temporary”?**
-Many companies only assign the **official** document number (or fill certain reference fields) when the requisition reaches **Final** or when numbering rules run at that step. If it stays blank unexpectedly, ask your administrator about numbering setup.
-
-**I rejected a requisition by mistake—can I undo it?**
-There is not always an “undo” button. Your administrator or finance team may need to **reverse** the decision or restart approval according to your policy. Do not assume the requester can resubmit without guidance.
-
----
+- [Purchasing module](/modules-v2/purchasing/)
+- [Standard procurement workflow](/guides/purchasing-guides/standard-procurement-workflow/)
+- [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) — approval and Approval Monitor on the order side

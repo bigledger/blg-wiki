@@ -803,3 +803,74 @@ One document applet this run (a small one, but every section had to be rebuilt f
 ### Stopping point
 
 One document applet this run; every section was rebuilt and the posting proof needed the DCO history, the per-line fill loops, the update path and the settlement-line repair map read end to end. Next in queue: `internal-purchase-requisition-applet.md`.
+
+## Run 17 — 2026-09-05 — internal-purchase-requisition-applet
+
+### Page
+
+- `content/en/applets/purchase-workflow/internal-purchase-requisition-applet.md` rewritten from the applet @6c281e1 (2026-08-26; shared-utilities submodule @8ae0e9b, gates cross-checked at org HEAD af523eb), backend @353fa9a (2026-09-05), ts-lib, the registry, a 51-row perm-dfn extract (`planning/lanes/lane-3/perm-dfn/internal_purchase_requisition.tsv`) and 35 issues. Title set to the registry name "Purchase Requisition (Internal)" (old page: "Purchase Requisition (Internal) Applet"); `applet_code: internal_purchase_requisition`.
+- The old page was a NotebookLM-style guide (Quick Start by role, Glossary, FAQ, marketing infographic) with several wrong claims: "Submit for approval … locking the draft", "Discard … no record remains", "approvals route by branch, department, or amount", "Line Items Queue … line-level approval before or alongside document approval". Kept the good prose (the "pre-approved shopping list" framing, Line Items menu vs Lines tab, Approval Request vs the submit button, Void vs Discard) and five screenshots.
+
+### Lane-4 cross-check: approval IS enforced here (answering their run-10 request)
+
+- Unlike the Stock Requisition, this applet **calls the backend approval controller**: Generic Doc Approval tab → `POST generic-doc/approvals/backoffice-ep` (create) → `PUT …/approvals/processors/submission/backoffice-ep` (submit) → `GenericDocApprovalSubmissionService.validateApprovalData` rejects (400 `ERROR_TO_SHOW_IN_UI`) when the submitter entity or approval setting is missing, no branch designation carries the submitter's designation code for that setting, that designation has no approver links, the approvers cover fewer distinct levels than *Total Required Approval Levels*, or the submitter has resigned. Then three queue processors (primary → sequence → request) build sequences, create approver requests, e-mail approvers (template `GENERIC_DOC_APPROVAL_PENDING_APPROVAL_NOTIFICATION`, Thymeleaf decision form link) and advance levels by quorum. **The Approval Settings / Branch Designation screens are the same components lane 4 documented; here they are consumed.**
+- **Approval Logic (ANY/ALL), Min/Max Approval Amount and Approver Designation are copied to the sequence rows but never evaluated** by the generic-document processors (only `approval_quorum` vs `approval_quorum_count` advances a level). *Employee Ranking* (`entity_approval_rank` 1–10) has no backend reader at all.
+- **Auto-FINAL fires at the first approve action**: `GenericDocApprovalRequestProcessor` L200–201 calls `updatePostingStatusWithChecks(FINAL)` when `date_final_approval != null || request.approval_status == APPROVED`; the second operand is always true inside the approve branch. A two-level setting finalises the requisition after level 1. Documented as observed; bug candidate (last touched 2025-11-11, `3b67b07003`).
+- **Plain FINAL is never gated**: `GenericDocumentService` has no reference to the approval tables. Enforcement = hide FINAL (`HIDE_GENDOC_FINAL_BUTTON`; `SHOW_GENDOC_FINAL_BUTTON` is not seeded so nobody can re-enable it) — exactly intranet #744's design.
+- **Line Items Queue › APPROVE** (`gen-doc-line-open-queues/backoffice-ep/batch-approve`) sets `approval_status = APPROVED` on open-queue rows; no reader exists in javasdk/akaun-api outside the data layer, and the PO applet's KO does not filter on it. Marker, not gate.
+
+### Other facts (record for the guides)
+
+- Signums 0/0 in DCO, `ServerDocTypes` and `AppletConstants` — aligned (no refund-note-style mismatch). No journal, no stock; FINAL creates open-queue rows only with the company row PR → PO.
+- KO For offers **Jobsheet only** (PO / GRN / PQ sub-tabs commented out). The panel-view gate dispatches `getKOSettingsInit` with `serverDoc2 = INTERNAL_SALES_INVOICE` and then filters `server_doc_type_1 === INTERNAL_JOBSHEET` — the Jobsheet panel's visibility follows the *Jobsheet → Sales Invoice* row, not *Jobsheet → Purchase Requisition* (copy-paste bug; tab view is unaffected).
+- Backend PR → PO conversion (`PurchaseRequisitionToPurchaseOrderConverter`, `convert-documents` / `generic-document-conversion` endpoints, `GENERIC_DOCUMENT_CONVERSION_PROCESSOR`) exists but nothing in this applet calls it; the PO's KO For is the path.
+- Workflow Settings / Workflow Status are labels (backend never reads `wf_process_status_guid`); intranet #3251 (open) asks for a real Pending → Approve/Cancel process.
+- Settings: 163 model keys, ~130 four-proof (shared screen + 20 gear templates with 100 keys), 29 declared-never-read, ~25 read-without-model. Applet-local `field-configuration` component unrouted and empty. `SHOW_DOCUMENT_DELETE_BUTTON` read but no delete button in the template.
+- Permissions: 50 seeded / ~65 checked. `INTERNAL_PURCHASE_REQUISITION_DISPLAY_PRICING` is hide-by-default (`hidePriceFlag = !checkPermission`). `IPR_HIDE_TRACKING_ID_AND_PERMIT_NO` seeded but never checked. Not seeded although checked: `SHOW_GENDOC_FINAL/VOID_BUTTON`, `SHOW_LINE_ITEMS(_QUEUE)_MENU`, listing-column `SHOW_*`, `ALLOW_LINE_ITEM_EDIT`, `HIDE_PRICE`.
+
+### Method findings (add to METHOD.md)
+
+1. **"Configuration screen ≠ enforcement" needs its converse: trace the submit button.** Same Approval Settings / Branch Designation components are dead in Stock Requisition and live in Purchase Requisition; the difference is one effect (`submitForApprovalInit$` → `bl_fi_generic_doc_approval_hdr.service.submit`). Grep the applet for `approvals/processors/submission` before writing either verdict.
+2. **Read the processor's success condition, not just its name.** The approval request processor's `|| approval_status == APPROVED` short-circuits the level check. A one-line boolean can invert a documented behaviour ("approved after all levels") — quote the condition and its line in the page.
+3. **Settings copied to a row are not settings consumed.** Approval logic / amount bands are persisted twice (setting → sequence) and read zero times; four-proof "consumed" must find an evaluation, not a `set…`.
+4. **Sidebar menus are gated generically** (`HIDE_<STATE>_MENU` / `SHOW_<STATE>_MENU` computed from the route state) — the keys exist for every menu even when no model or control names them; list them as read-without-control.
+5. **Check `getKOSettingsInit` arguments** — three applets so far pass a wrong `serverDoc2`; the KO tab's visibility can depend on an unrelated flow row.
+
+### Screenshots (kept 5 of 10, none moved)
+
+- **Excluded from the page (loop to quarantine)**: `static/images/internal-purchase-requisition/purchase-requisition-list.png` and `line-items-listing-view.png` (real company names as suppliers — several well-known Malaysian brands — and staff first names as purchasers); `line-items-queue-approve.png` (developer first names as item codes / test data); `Internal_Purchase_Requisition_Lifecycle.png` (NotebookLM infographic with wrong claims: submit "locks the draft", discard "no record remains"); `static/images/internal-purchase-requisition-applet/internal-purchase-requisition-infographic-overview.png` (generated marketing infographic).
+- Kept: `For-Requesters-Create-Your-First-Purchase-Requisition.png` (listing shows document numbers only), `attach-document.png`, `submit-for-approval.png`, `apprival-request.png` (empty queue), `settings.png` — staging/TESTING tenant, tenant user's small avatar only. Recapture wanted on a GadgetSphere-seeded tenant: listing, Line Items, Line Items Queue, Approval Settings create, Branch Designation › Approver, Approval Request with a pending row.
+
+### Cross-lane link requests
+
+- **inventory-workflow/internal-stock-requisition-applet.md** (lane 4): add `internal-purchase-requisition-applet` to `related_applets`; one sentence "the Purchase Requisition applet wires the same screens to the backend — see that page for what an enforced flow looks like".
+- **purchase-workflow/internal-purchase-order-applet.md** (my lane, run 1): on next touch, replace "FINAL itself is not blocked by approval status in the applet code" with the backend proof (no read of approval tables in `GenericDocumentService`) and add the auto-FINAL-at-first-approval behaviour (same request processor serves PO approvals); note that Approval Logic / amount bands are not evaluated.
+- **sales-workflow/internal-jobsheet-applet.md** (other lane): add `internal-purchase-requisition-applet` to `related_applets`; a FINAL jobsheet with open lines can be knocked off into a requisition (needs the *Jobsheet → Purchase Requisition* `LINE` row); delivery branch is not carried (intranet #4453).
+- **master-data/employee-applet.md** (lane 4): approvers for the generic-document approval are employee entities linked per branch designation (`bl_fi_mst_employee_branch_designation_link`); the submitter must be an employee entity without a past `resign_date` (`SUBMITTER_IS_RESIGNED`). Add `internal-purchase-requisition-applet` and `internal-purchase-order-applet` to `related_applets`.
+- **master-data/organisation-applet.md** (lane 4): Knock Off Configuration rows PR → PO, Jobsheet → PR, GRN → PR; AUTO/`KO_DOC` rows feed the backend PR → PO converter.
+- **master-data/workflow-design-applet.md** (lane 4): note that document applets' *Workflow Settings* attach a process per company and that the status is a label, not a gate, for generic documents (intranet #3251 open).
+- **master-data/supplier-applet-1.md, doc-item-maintenance-applet.md, tax-configuration-applet.md** (lane 4): add `internal-purchase-requisition-applet` to `related_applets` when touched.
+- **finance/internal-purchase-invoice-applet.md** (lane 2): add `internal-purchase-requisition-applet` to `related_applets` (it already links here).
+- **guides/purchasing-guides/standard-procurement-workflow/**: the requisition step should say approval is optional unless FINAL is hidden from requesters, and that the first approval finalises the requisition on current backends.
+- **API reference (developer-docs lane)**: `generic-doc/approvals/**` (create / submit / resubmit / withdraw / conversion-checking), `approval-requests/processors/login-entity-primary-ep`, `approval-requests/thymeleaf-forms/{tenant}/{guid}`, `gen-doc-line-open-queues/backoffice-ep/batch-approve`, `gen-doc/convert-documents/backoffice-ep`, `gen-doc/generic-document-conversion/backoffice-ep/{guid}` are undocumented.
+- **planning/lanes/METHOD.md** (coordinator): fold in the five method findings above; update §lane-4 note 32 with "enforced in PR, not in Stock Requisition".
+
+### Registry / naming mismatches
+
+- `internal_purchase_requisition` row ACTIVE, `documentation_url` correct; page title corrected to the registry name.
+- Applet repo's last commit message names a customer-support repo — cited as `customer-repo-5cf49c` (already in `kb/private/repo-pseudonyms.tsv`).
+- Perm-dfn: 50 ACTIVE + 1 DELETED (`IPR_DISPLAY_TRACKING_ID_AND_PERMIT_NO`).
+
+### Questions for Vincent
+
+- **Is finalising the requisition at the first approve action intended?** (`GenericDocApprovalRequestProcessor` L200–201.) If not, the condition should be `date_final_approval != null` only. Same processor serves Purchase Orders.
+- Should the backend gate plain FINAL on an existing approval setting for the document type (so that hiding the button is not the only enforcement)?
+- Approval Logic (ANY/ALL) and Min/Max Approval Amount are shown in the UI but never evaluated — remove from the screen, or implement?
+- Line Items Queue APPROVE writes a flag nobody reads — should the PO's KO respect it, or should the menu go?
+- Fix the `getKOSettingsInit(serverDoc2 = INTERNAL_SALES_INVOICE)` copy-paste in the KO For panel gate.
+- Seed `SHOW_GENDOC_FINAL_BUTTON` / `SHOW_GENDOC_VOID_BUTTON` (or accept that hiding FINAL is global), and the listing-column `SHOW_*` codes; drop `IPR_HIDE_TRACKING_ID_AND_PERMIT_NO` (unchecked) or wire it.
+- Quarantine the five excluded images; recapture list above.
+
+### Stopping point
+
+One large document applet this run — the approval subsystem (submission service, three processors, e-mail service, conversion monitor, converter) had to be read end to end to answer lane 4's question correctly. Next in queue: `content/en/applets/ecommerce/pdg-applet.md`.

@@ -8,7 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/purchase-workflow/internal-purchase-requisition-applet.md",
   "content/en/applets/ecommerce/pdg-applet.md",
   "content/en/applets/ecommerce/cp-commerce/push-notification-configuration.md",
   "content/en/applets/ecommerce/seller-admin-applet.md",
@@ -123,6 +122,11 @@
    "page": "content/en/applets/purchase-workflow/internal-purchase-refund-note-applet.md",
    "date": "2026-09-05",
    "note": "run 16; applet @5ba2cb5 (shared-utilities @f1ded04) + backend @871dbf5; DCO flipped 2026-04-23 to qty -1 / amount +1 (Purchase-Return shape) while the applet still sends header amount -1 -> CREATE/SAVE fail GENERIC_DOC_INVALID_SIGNUM; line signums filled per line type (Revenue=sales-invoice, Expense=purchase-invoice); 45 four-proof keys of 107, no gear; 0 seeded client-side perms; FINAL/VOID/DISCARD listing-only; 7 of 12 images kept"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/internal-purchase-requisition-applet.md",
+   "date": "2026-09-05",
+   "note": "run 17; applet @6c281e1 (shared-utilities @8ae0e9b) + backend @353fa9a; 0/0 aligned with DCO; generic-doc approval enforced on submission by backend (designation/approver/level checks) and auto-FINALs at first approve action; plain FINAL not gated; Line Items Queue APPROVE flag unread; KO For Jobsheet only (panel gate queries Jobsheet->Sales Invoice row); 50 seeded perms; 5 of 10 images excluded"
   }
  ],
  "skipped": [
