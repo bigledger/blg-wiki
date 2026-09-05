@@ -8,8 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/ecommerce/seller-admin-applet.md",
-  "content/en/applets/ecommerce/seller-applet.md",
   "content/en/applets/ecommerce/shopping-cart-applet.md",
   "content/en/applets/purchase-workflow/supplier-delivery-order-applet.md",
   "content/en/applets/external-tenant-admin/tenant-admin-applet.md",
@@ -135,6 +133,11 @@
    "page": "content/en/applets/ecommerce/cp-commerce/push-notification-configuration.md",
    "date": "2026-09-05",
    "note": "run 19; NOT an applet (no registry row) - restructured as feature sub-page of cp_commerce_admin_console_v1 (page_type: applet-feature); backend @353fa9a + admin applet @813f007c8 + base app wavelet-cp-commerce @247243251; credential = service-account JSON in bl_cms_website_hdr.property_json.firebase (11 keys, INCORRECT_CONFIGURATION_WEBSITE_CONFIG_FIREBASE), no admin screen; FCM topic websiteCode.topicGuid.topicCode; two 'default topic' notions; isApp gate; FirebaseApp cached per tenant.website; old page named a customer + leaked identifiers, 0 of 5 images kept (DB capture shows a real service-account e-mail and private-key head - rotate key)"
+  },
+  {
+   "page": "content/en/applets/ecommerce/seller-applet.md",
+   "date": "2026-09-05",
+   "note": "run 20; applet @6988e15 (shared-utilities @a8c38a2) + backend @20fbeede40; registry seller_applet maps to this repo; seller order = mkp-table record (signums 1/1 validation constants, no journal/stock/queue, statuses never written); 1 four-proof key (PRINTABLE), Field Settings + Default Selection dead; 0 seeded perms; seller-order SAVE/FINAL/Delete, PI edit FINAL/SAVE/DISCARD, PV create non-functional in code; 5 of 9 images kept"
   }
  ],
  "skipped": [
@@ -153,6 +156,10 @@
   {
    "page": "content/en/applets/ecommerce/installation-of-pricebook-applet.md",
    "reason": "ADR-0002 (run 7): not an applet - a 13-line Applet Store install how-to for the Pricebook applet (registry PricebookApplet, page content/en/applets/master-data/pricebook-applet.md, another lane); loop to fold into that page or a generic 'install an applet' guide with an alias"
+  },
+  {
+   "page": "content/en/applets/ecommerce/seller-admin-applet.md",
+   "reason": "ADR-0002 (run 20): no registry row under any name or status (only seller_applet exists, and its routerLink/bundle point at blg-applet-wavelet-seller-applet, not the seller-admin repo); repo blg-applet-wavelet-seller-admin-applet exists (last commit 2026-08-31) but is not installable from the registry - Vincent to decide whether to register it or retire the page; 2 of its 9 images show developer names as test data (quarantine)"
   }
  ],
  "updated": "2026-09-05",
