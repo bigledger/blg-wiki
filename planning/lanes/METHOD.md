@@ -89,5 +89,9 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
 20. **Check for auto-created GL codes before writing any missing-GL claim** (lane 4, run 16): NSTI
     auto-creates its "Non-Stock and Trade-In" GL code, company link and subledger. Grep the backend
     for `createDefaultGLCode`-style helpers per doc type.
-21. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+21. **Master data evaluated elsewhere: prove "consumed" in the consumer engine** (lane 4, run 18).
+    Pricebook rules are evaluated by the client-side `PricebookCalculator` in blg-shared-utilities
+    (POS/SI/SO/SQ) and a separate server engine (OCR points) — and they disagree. Grep the consumer,
+    not the applet, and document the divergence.
+22. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.

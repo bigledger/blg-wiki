@@ -646,3 +646,10 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0170 (2026-09-05) KO For panel gate queries the Jobsheet→Sales Invoice flow row instead of Jobsheet→Purchase Requisition (copy-paste; same class as F-0158). Line Items Queue APPROVE writes a flag nothing reads.
 - [x] F-0171 (2026-09-05) Five images (real company names, staff first names, developer names as item codes, two infographics) quarantined.
 
+## From Lane 4 run 18 — Pricebook (2026-09-05)
+
+### product (pricebook) — evaluation divergence
+- [ ] F-0172 (2026-09-05) Client-side PricebookCalculator (blg-shared-utilities; POS/SI/SO/SQ) ignores Multi Line rules, OR logic, Calculation Logic, relative date ranges and five header rule types (Company, Member Label, OCR Company, Currency, Settlement Method); three line rule types never match; treatment FORMULA is evaluated with JavaScript eval on the client. The server engine (OCR points only) behaves differently. An Inactive price book keeps applying while it is a document applet's Default Pricebook (Status is an extension no consumer reads). Two editors for the same price set with different rule menus. Vincent: bugs against blg-shared-utilities, or intended?
+- [ ] F-0173 (2026-09-05) AkaunPriceBookApplet "Akaun Price Book" — ACTIVE (2025-11) with its own build, no page, only a deprecated one-commit repo in refs/. Document or clean the registry row?
+- [ ] F-0174 (2026-09-05) Pricebook user guide requested (blg-wiki #128 / F-0032) — write after the applet pass, from kb/topics/pricebook-applet.md. No product screenshots exist; recapture list from a GadgetSphere-seeded tenant in lane-4 findings.
+
