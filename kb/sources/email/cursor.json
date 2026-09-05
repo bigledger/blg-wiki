@@ -1,1 +1,1 @@
-{"source":"email","cursor":null,"updated":null}
+{"source":"email","cursor":{"vincent@aimatrix.com":{"query":"newer_than:30d einvoice","newest_date_header":"2026-09-04T18:46:16+08:00","newest_internalDate":null,"note":"33 messages / 8 threads ledgered 2026-09-05 from kb/private/gmail-einvoice-threads-2026-09-05.txt; internalDate not present in the export, Date header used. Two meeting-notes messages are truncated in the export."}},"updated":"2026-09-05"}

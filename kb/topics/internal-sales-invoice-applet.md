@@ -38,7 +38,11 @@ The document that bills a customer and moves stock out. FINAL posts stock (−1 
 - 2026-09-05 — KO For tabs: Sales Order, Delivery Order, Jobsheet, Sales Quotation, Stock Transfer, Sales Invoice. [src:…/search-documents/search-documents.component.html]
 - 2026-09-05 — Real fixes seen in the commit log (anonymised): batch Issue/Expiry wrongly required; "not enough stock" message now names the item code; zero-price warning; swap-serial grid resync; edit-mode qty falling to 1 for basic-quantity items; contra date; blacklist warning; stock validation alert at FINAL. [src:git-log:blg-applet-wavelet-internal-sales-invoice-applet]
 
+- 2026-08-26 — Planned: the e-invoice Submission Type field gets an SVDP value; such documents are sent as payload version 1.3 through a dedicated pool and require FINAL status. Not shipped as of the note. [src:gdrive:1Ug3wpz2O8VmguwCf6jW9OEX8SMrBHOHAVJ_h0v-xsyA]
+- 2026-08-04 — Discussed, not decided: block finalisation of documents of RM 10,000 and above when buyer details are missing. [src:gdrive:1NaxUJFipY9bbuKPcPIiU59rIQ9MUFG6OJ70w4HUhlo0]
+
 ## How it connects
+- **e-invoice-consolidation** — Submission Type is the routing hook (batch / individual / single-general, SVDP planned).
 
 - **internal-sales-order-applet** — the most common KO source; `SalesOrderToSalesInvoiceConverterMapping` in the backend.
 - **internal-sales-return-applet** — `docTypeConnectorMap` lists INTERNAL_SALES_INVOICE and INTERNAL_SALES_CASHBILL as the previous documents of a Sales Return.

@@ -28,7 +28,10 @@ Brings goods back into stock and reverses the sale. Amount signum −1, quantity
 - 2026-09-05 — Client-side perm `SHOW_EDIT_SETTLEMENT_FINAL` ("To Edit payment after doc is finalize") pairs with setting `ENABLE_EDIT_SETTLEMENT_FINAL`. [src:akaun_master.bl_applet_client_side_perm_dfn]
 - 2026-09-05 — Commit-log fixes (anonymised): zero amounts from Search By Invoice; edit line resetting manual price; customer name missing in listing; skip e-invoice; e-invoice void message; swap serial for lines; inverse currency rate field; listing restore after save/final; bill-to/ship-to edits persisted. [src:git-log] [src:gh:…#10, #16]
 
+- 2026-09-03 — Advice given in the weekly technical meeting to submit consolidated sales returns in certain cases (the sentence is truncated in the export; see kb/questions/2026-09-05-consolidated-sales-returns.md). [src:gmail:1a0663d23d98e303]
+
 ## How it connects
+- **e-invoice-consolidation** — returns can be consolidated like receipts; when that is preferred over an individual refund note is the open question.
 
 - **internal-sales-invoice-applet / pos-general-applet** — sources; return reverses their journal with SALES_RETURN.
 - **internal-sales-credit-note-applet** — non-stock alternative.

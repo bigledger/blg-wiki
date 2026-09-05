@@ -30,7 +30,10 @@ The goods-received record. Amount and quantity signum are both 0, so FINAL write
 - 2026-09-05 — Main Details: `ENABLE_DUPLICATE_REFERENCE_CHECK` warns "Duplicate Reference/Quotation/Order/Delivery Order/Invoice/Others Number PURGRN …"; `DISALLOW_DUPLICATE_INVOICE` makes the external-invoice duplicate a validator error; external reference fields stay editable after FINAL (2026); a `last_no` custom field is pre-filled with the previous GRN number. [src:…/internal-purchase-grn-create/main-details/main-details.component.ts] [src:…/internal-purchase-grn-edit/internal-purchase-grn-edit.component.ts]
 - 2026-09-05 — Issues (anonymised): stock not reflected after PI/GRN — documents pointed at a deactivated location, fixed by requeueing the current-stock-balance refresh (gh:bigledger/blg-int-general-task#9080, #9023); PO KO line ordering (#8749); print pop-up moved to effect (#3872, #3714); listing hard-coded ACTIVE → DEFAULT_STATUS; hide-toggle fixes (gh:bigledger/blg-applet-wavelet-internal-purchase-grn-applet#15, #17); DO No not editable (#9798, open); "GRN must check PO has DO link" (#9569, open, customer-specific, not standard); duplicate-serial-across-items configuration (customer support repo, 2026); HIDE_CLONE_BUTTON / SHOW_CLONE_BUTTON added 2026.
 
+- 2026-09-03 — Batch number and batch date fields were added to several applets including purchase invoice and GRN (weekly technical meeting). [src:gmail:1a0663d23d98e303]
+
 ## How it connects
+- **stock-availability** — draft GRN balance is now shown there (same meeting).
 
 - **internal-purchase-invoice-applet** — the invoice is the posting document; PI page (lane 2) already states "the standard GRN does not move stock" — consistent.
 - **internal-purchase-grn-stock-in-applet** — the stock-moving alternative (+1 / −1, posts *not invoiced* accruals); pairs with PI No Stock In (0 / −1). Next in this lane's queue.

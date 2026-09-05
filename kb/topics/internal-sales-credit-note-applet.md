@@ -28,7 +28,10 @@ Reduces a customer's receivable after invoicing. Amount signum −1, quantity si
 - 2026-09-05 — Intercompany mapping SALES_CREDIT_NOTE → PURCHASE_CREDIT_NOTE. [src:javasdk/…/IntercompanyProcessingService.java#L102]
 - 2026-09-05 — Commit-log fixes (anonymised): contra date reset after save; Total Contra now read from header; line-edit form empty (rounding race); PDF date offset (noon UTC); clone button + setting + permission; sales-agent autofill on entity select; duplicate reference check config; CC field in email; full multi-language i18n. [src:git-log:blg-applet-wavelet-internal-sales-credit-note-applet]
 
+- 2026-08-04 — For tenants synced from the legacy platform, a voided source credit memo is negated by a generated document with negative values linked through remarks, not deleted (reverse-document processor). [src:gdrive:1NaxUJFipY9bbuKPcPIiU59rIQ9MUFG6OJ70w4HUhlo0]
+
 ## How it connects
+- **emp-etl-sync** — the reverse-document processor is part of the sync, not of the credit note applet.
 
 - **internal-sales-invoice-applet** — the corrected document; Contra offsets against its open balance.
 - **internal-sales-return-applet** — the stock-moving alternative; uses SALES_RETURN GL.

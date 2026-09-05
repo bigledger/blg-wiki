@@ -1,1 +1,1 @@
-{"source":"gdrive","cursor":null,"updated":null}
+{"source":"gdrive","cursor":{"query":"fullText contains 'E-Invoice' (consolidation / automation project notes), corpora=allDrives, subject vincent@aimatrix.com","newest_modifiedTime":"2026-09-01","note":"6 docs ledgered 2026-09-05 from kb/private/gdrive/einvoice-consolidation-notes-2026-09-05.txt; the export truncates each Gemini 'Full notes' section — a re-export with the full text would supersede by hash. Customer-specific e-invoice proposals/BRDs seen in the listing were not exported this pass."},"updated":"2026-09-05"}

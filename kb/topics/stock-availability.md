@@ -32,7 +32,10 @@ Read-only enquiry over the stock ledger: balance, open-document adjustments, ava
 - 2026-09-05 (run 4) — Permissions: 49 ACTIVE seeded (one DELETED typo row SHOW_AVG_COSTSHOW_UOM); checked in code but not seeded: SHOW_STOCK_CARD_PLANNING_MENU, SHOW_AUDIT_TRAIL_MENU, SHOW_LISTING_COMPANY_AVG_COST, SHOW_UOM, SHOW_STOCK_BALANCE, SHOW_ADJ_QTY, SHOW_AVAILABLE_QTY, SHOW_REPORT_INVENTORY_VALUE; seeded but checked nowhere: SHOW_DOC_POPUP_COST_AMOUNT, SHOW_DOC_POPUP_GP. Backend read perms requested by the applet: API_TNT_DM_ERP_INV_STOCK_AVAILABILITY_READ, _AVG_COST_READ, _SALES_REPORT_READ, API_TNT_DM_ERP_STOCK_AGING_REPORT_READ, API_TNT_DM_ERP_STOCK_REPORT_READ, API_TNT_DM_ERP_INV_BATCH_READ, TNT_API_BIN_READ. [src:.../app.component.ts] [src:akaun_master.bl_applet_client_side_perm_dfn (applet_guid join, 2026-09-05)]
 - 2026-09-05 (run 4) — Default Selection (tenant): DEFAULT_BRANCH, DEFAULT_LOCATION, DEFAULT_TOGGLE_COLUMN (read by details listing), SIDE_BAR_ORDER drag-and-drop with RESET; new menu items are merged into a saved order. Backend default signum pairs when the caller passes none/incomplete: (INTERNAL_SALES_ORDER→INTERNAL_SALES_INVOICE, −1), (INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE→INTERNAL_PURCHASE_INVOICE, +1) (StockAvailabilityService L29-43). Issue #3333: entity column added to the SO tab. [src:.../settings-container/default-settings/default-settings.component.ts] [src:blg-akaun-platform-java/javasdk/.../stock/StockAvailabilityService.java] [src:gh:bigledger/blg-int-general-task#3333]
 
+- 2026-09-03 — Draft GRN balances are now visible in the stock availability report (weekly technical meeting). [src:gmail:1a0663d23d98e303]
+
 ## How it connects
+- **internal-purchase-grn-applet** — draft GRNs now surface as pending stock in availability.
 
 - **stock-balance** — qty_ledger comes from the current stock balance tables (bl_inv_current_location_stock_balance / company).
 - **stock-reservation** — reserved/locked/packed on Stock Card & Planning.

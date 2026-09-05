@@ -30,7 +30,10 @@ The type-agnostic view of `bl_fi_mst_entity_hdr`: one record with `is_customer` 
 - 2026-09-05 — Listing: Entity Name, Entity Ext Type (flags joined), Entity Type, Currency (from CURRENCY ext), Status, Creation Date, Modified Date; search keyword → name + customer/supplier/employee/merchant codes; filters txn_type, status, updated_date range (SubQuery removed 2026-08, gt#6638/#9406/#9403). [src:.../entity-listing/entity-listing.component.ts] [src:.../models/advanced-search-models/entity.model.ts] [src:.../models/entity.mappers.ts]
 - 2026-09-05 — Screenshots: 11 of 12 files under static/images/entity-applet/ carry personal data (real staff names / e-mails / a real customer-name fragment) or are an AI infographic; only employee-category-listing.png is used. [src:static/images/entity-applet/]
 
+- 2026-09-03 — Proposal (not yet built) to add an entity status filter to the entity listing so inactive customers can be managed. [src:gmail:1a0663d23d98e303]
+
 ## How it connects
+- **customer-maintenance** — TIN space-stripping on save shipped 2026-09-03; the status filter proposal would apply to the shared listing.
 
 - **customer-maintenance / supplier-maintenance / employee-applet / merchant** — same rows; this applet can set any flag combination, the siblings own the type-specific tabs and the working category / login / credit features.
 - **entity-categories** — the four label trees maintained here are what the sibling applets' Category tabs pick from; label codes share one tenant-wide namespace with item categories.

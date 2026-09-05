@@ -28,7 +28,10 @@ The purchase-side credit note. In BigLedger's engine it has amount signum −1 �
 - 2026-09-05 — Issues: listing search lost line-item columns after sub-query migration, fixed with EXISTS sub-query (gh:bigledger/blg-int-general-task#9519); auto-fetch rate on supplier selection + live/custom forex toast + SAVE blocked at rate 0 (#9637); tab ordering added (#8590); FINAL check-before-SAVE + auto pop-up printable (#8957); Skip E-Invoice switch (#7269); Lines total shown negative (#3891); export named like a sales invoice (#232); file import + CCY rate column (#231); wrong-CSV-column check (gh:bigledger/blg-akaun-platform-java#1560); AMOUNT_TAX_GST and e-Invoice tax-exemption upload columns (#130, #1409).
 - 2026-09-05 — Live-data hint (anonymised): a support ticket shows a FINAL Purchase Credit Note with `arap_bal` −0.35, i.e. on the payable side, expected to appear in the Payment Voucher contra picker. [src:gh:bigledger/blg-int-general-task#9630]
 
+- 2026-09-03 — The currency rate is now set automatically for foreign-currency suppliers on purchase credit notes (weekly technical meeting). [src:gmail:1a0663d23d98e303]
+
 ## How it connects
+- **forex-applet** — the auto-filled rate comes from the forex rate tables; which row wins is the forex applet's rule.
 
 - **internal-purchase-debit-note-applet** — opposite sign (+1). Together they are the two purchase adjustment notes; the wiki pages now say opposite things about AP direction, consistent with the code.
 - **internal-purchase-invoice-applet** — same posting side; the PCN is a top-up to an invoice, linked via Doc Link.

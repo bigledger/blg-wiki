@@ -26,7 +26,10 @@ Sixteen read-only ag-grid reports over FINAL sales / return / trade-in documents
 - 2026-09-05 — Two routes without menu entries: `general-purchase-sales-inventory`, `member-reward-redemption` [src:…/app.routing.ts] [src:…/models/menu-items.ts]
 - 2026-09-05 — The previous wiki page described "calculation sets", a "My Sales" menu, favourites and BI integration that do not exist in the code; replaced [src:content/en/applets/sales-workflow/sales-report-applet.md@HEAD]
 
+- 2026-09-03 — Sales report query optimised: initial load down from about 5 minutes to under 10 seconds (weekly technical meeting). [src:gmail:1a0663d23d98e303]
+
 ## How it connects
+- **e-invoice-consolidation** — monthly tallying of BigLedger sales vs LHDN totals starts from this report.
 
 - **pos-general-applet / internal-sales-invoice-applet / internal-sales-return-applet** — the FINAL documents reported; returns reduce sales through amount signum.
 - **internal-receipt-voucher-applet / internal-payment-voucher-applet** — the collection reports read STL lines of receipt and payment vouchers.

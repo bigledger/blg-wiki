@@ -36,7 +36,7 @@ Quality over count. Realistic pace is 4–6 large document applets or 6–10 sma
 ## Hard rules
 - Edit only files under the folders listed in your state.json, plus your lane's files under planning/lanes/lane-{N}/, your ledger shard, and kb/topics/. Nothing else.
 - Never run `git commit`, `git push`, `git add`, or `hugo` (other lanes are running; the loop builds and ships).
-- No customer, tenant, or person names anywhere you write. No marketing claims. No invented roadmap features. Never describe the product as blockchain.
+- No customer, tenant, or person names anywhere you write — **including inside repository slugs in citations**: customer-specific repos (`blg-sd-<customer>`, `BigLedger-Support/<customer>-…`) must be cited by pseudonym `customer-repo-<6 hex of sha1(slug)>` (see kb/private/repo-pseudonyms.tsv; add new ones there). Org-wide repos (blg-akaun-platform-java, blg-applet-wavelet-*, blg-intranet) are fine to name. No marketing claims. No invented roadmap features. Never describe the product as blockchain.
 - Hextra components only; no inline-styled HTML.
 
 ## Final report (your last message)

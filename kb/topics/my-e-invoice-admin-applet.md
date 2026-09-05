@@ -35,7 +35,15 @@ The back-office console for the LHDN MyInvois pipeline: posting queue, batch / i
 - 2026-09-05 — Known platform gaps (open): ghost documents dropped at the entry gate with no record (#5618); RM10k+ docs parked silently in the individual pool (#5623); queue rows stuck >24h undetected, retry ceiling >5 marks PROCESSED (#5626); unnormalised buyer NRIC causes CF324 (#5567); no duplicate guard on batch-pool push (closed #5427, fixed 2026-08-20). [src:gh:bigledger/blg-intranet#5618] [src:gh:bigledger/blg-intranet#5623] [src:gh:bigledger/blg-intranet#5626] [src:gh:bigledger/blg-intranet#5567] [src:gh:bigledger/blg-intranet#5427]
 - 2026-09-05 — Bulk TIN Validation = CSV upload (`upload-csv/backoffice-ep`) into `bl_fi_my_einvoice_tin_update_request_hdr`/queue; queue rows write `einvoice_tax_id_no` onto the entity and are deleted. [src:javasdk/.../MyEInvoiceTinUpdateRequestHdrService.java L55–L101] [src:javasdk/.../MyEInvoiceTinUpdateRequestQueueService.java L60–L114]
 
+- 2026-09-03 — Submission History export: E_INVOICE_STATUS is the status at submission time (Submitted); use Internal Submission → To IRB E-Invoice → Export for the live LHDN status and to filter Invalid for resubmission. [src:gmail:1a066c168bdcd3cb]
+- 2026-08-27/09-04 — E-Invoice Number and client_doc_1 blank on exports: running-number sync timing gap (fixed in the processing service 2026-09-03) and a processor database-connection timeout; patched by support. [src:gmail:1a066c168bdcd3cb] [src:gmail:1a0663d23d98e303] [src:gmail:1a06ba1478ffadde]
+- 2026-08-11 — Individual-pool failure e-mail to run daily; reconciliation-error dashboard (filters: invoice date, Invalid code) planned; per-branch consolidation monitoring screen with manual trigger planned 2026-08-04. [src:gdrive:1cO_Vud6CV9sgJLUY5RFbh4uDmhLT_ZD3tlUD3RnwQZ8] [src:gdrive:1NaxUJFipY9bbuKPcPIiU59rIQ9MUFG6OJ70w4HUhlo0]
+- 2026-08-26 — Automated consolidated-submission processor live for a first group of companies; Consolidated Submission → Submit becomes the manual fallback. SVDP pool (Submission Type flag, version 1.3) designed, not shipped. [src:gdrive:1Ug3wpz2O8VmguwCf6jW9OEX8SMrBHOHAVJ_h0v-xsyA]
+- 2026-09-02 — Throughput observed at a large tenant: ~100 e-invoices per 2 hours; speed-up enhancement pending review. [src:gmail:1a05ff766425665d] [src:gmail:1a0609d7143fa9b7]
+
 ## How it connects
+- **e-invoice-consolidation** — automation timeline and month-end operating pattern.
+- **e-invoice-submission-errors** — which export to read, blank columns, stuck IN_QUEUE, throughput.
 
 - **e-invoice** — this applet is the operator's view of the pipeline the topic describes; all routing facts live here.
 - **my-e-invoice-portal-applet** — portal requests land in the pools / Portal Request; rejection requests raised by buyers appear in Cancellation → Rejection Requests.

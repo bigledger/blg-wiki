@@ -3,7 +3,7 @@ topic: e-invoice
 aliases: []
 applets: ["my-einvoice-admin", "my-einvoice-portal", "my-peppol-admin"]
 modules: []
-related: ["sales-invoice", "sales-return", "consolidated-e-invoice", "tax-codes", "my-e-invoice-admin-applet", "my-e-invoice-portal-applet", "mypeppol-admin-applet", "organisation-applet", "customer-applet"]
+related: ["sales-invoice", "sales-return", "e-invoice-consolidation", "e-invoice-submission-errors", "emp-etl-sync", "e-invoice-ocr-intake", "tax-codes", "my-e-invoice-admin-applet", "my-e-invoice-portal-applet", "mypeppol-admin-applet", "organisation-applet", "customer-applet"]
 wiki:
   - content/en/guides/einvoice-guides/
   - content/en/applets/e-invoice/
@@ -57,17 +57,42 @@ _Extracted, not copied. Tenant-specific tables (consolidation schedule per tenan
 - 2026-09-05 — Monthly ops checklist (1st–7th): settle previous month's unprocessed batch pool → confirm with client → push failed/invalid (<10k, sales types) to batch pool → consolidate (by doc per type, or by branch after setting buyer_tin to general public) → submit consolidated queues (cron or manual) → soft-delete the old IN_QUEUE to-IRB rows to avoid double submission → tally BLG vs e-invoice totals. [src:README.md "SQL-based documentation", "Tallying E-Invoice"]
 - 2026-09-05 — Peppol runs beside LHDN: waiting queue gated on mandatory fields + participant IDs, not on LHDN Valid. [src:akaun-api/.../jobProcessor/peppol/PeppolPostingQueueToWaitingQueueProcessor.java L123–L146]
 
+### From project notes (Drive) and customer/support e-mail, 2026-08-04 → 2026-09-04 (ingest 2026-09-05)
+
+_Anonymised. Operational detail is in `e-invoice-consolidation`, `e-invoice-submission-errors`, `emp-etl-sync`; only the facts that change how the product is described are repeated here._
+
+- 2026-08-04 — Design direction: e-invoice becomes self-service with minimal user intervention; processor configuration moves from database edits into Organization Applet settings, including a per-company e-invoice enable/disable switch. [src:gdrive:1NaxUJFipY9bbuKPcPIiU59rIQ9MUFG6OJ70w4HUhlo0]
+- 2026-08-04 — Skip logic can exclude a customer or a single document from e-invoicing; documents of RM 10,000 and above without buyer details remain the main manual burden (blocking at entry was discussed, not decided). [src:gdrive:1NaxUJFipY9bbuKPcPIiU59rIQ9MUFG6OJ70w4HUhlo0]
+- 2026-08-11 — A consolidated e-invoice cannot contain foreign buyers; a foreign recipient is keyed with ID type Passport and submitted individually. Government-entity buyers pending LHDN guidance review. [src:gdrive:1cO_Vud6CV9sgJLUY5RFbh4uDmhLT_ZD3tlUD3RnwQZ8]
+- 2026-08-11 — The individual-pool failure e-mail is to be sent daily (not only at cycle end); an admin dashboard of reconciliation errors filtered by invoice date and Invalid code is planned. [src:gdrive:1cO_Vud6CV9sgJLUY5RFbh4uDmhLT_ZD3tlUD3RnwQZ8]
+- 2026-08-26 — Automated consolidated-submission processor went live for a first group of companies for the August cycle after the duplicate-push, timezone and missing-server-doc fixes; pilot widened 2026-09-01, aim is all tenants automated from September 2026. [src:gdrive:1Ug3wpz2O8VmguwCf6jW9OEX8SMrBHOHAVJ_h0v-xsyA] [src:gdrive:1hMhWYLFK2em4cqdU-P4oNt-jTpklJBEGdtO6V02YlG4]
+- 2026-08-26 — SVDP (Special Voluntary Disclosure Programme) documents will be flagged through the existing Submission Type field, sent as payload version 1.3 through a dedicated pool (single-general model), FINAL status required, auto-submitted when complete. Not yet shipped. [src:gdrive:1Ug3wpz2O8VmguwCf6jW9OEX8SMrBHOHAVJ_h0v-xsyA]
+- 2026-08-26 — Maximum lengths for amount and number fields are validated in the Java/TypeScript SDK layers rather than by changing database columns. [src:gdrive:1Ug3wpz2O8VmguwCf6jW9OEX8SMrBHOHAVJ_h0v-xsyA]
+- 2026-09-03 — Submission History export shows the status at the time of submission; the live LHDN status is on the To IRB E-Invoice export. E-Invoice Number (and client_doc_1) blank on exports was a running-number sync timing gap, now fixed in the processing service; one recurrence traced to a processor database-connection timeout. [src:gmail:1a066c168bdcd3cb] [src:gmail:1a0663d23d98e303] [src:gmail:1a06ba1478ffadde]
+- 2026-09-02 — Observed submission throughput at one large tenant: ~100 e-invoices per 2 hours; a speed-up enhancement was pending review. [src:gmail:1a05ff766425665d] [src:gmail:1a0609d7143fa9b7]
+- 2026-09-03 — Resubmitting an Invalid e-invoice with a corrected TIN keeps the original document date (month-end) — the customer relies on this to stay inside the LHDN month. [src:gmail:1a066f3fb420ca81]
+- 2026-09-03 — TIN values are saved without spaces in customer maintenance. [src:gmail:1a0663d23d98e303]
+- 2026-09-04 — An OCR e-mail-intake channel (SES receiving) was scheduled for production deployment; scope unknown. [src:gmail:1a069e68f3133a81]
+- 2025-03 (doc modified 2025-04-30) — Positioning: BigLedger e-invoice is offered either as the standalone ERP + e-invoice, or as middleware API for third-party ERPs; LHDN's schema has 55 data fields (37 mandatory, 18 optional). [src:gdrive:15mavZbELP3vYuQbSfc75t46qFFrzIvS2AmO-ctTcyC8]
+
 ## How it connects
 
 - **sales-invoice** — the e-invoice tab, `einvoice_submission_type` and `skip_einvoice` are set here; nothing is submitted from the document applet.
 - **sales-return** — returns/credit/debit/refund notes carry `original_einvoice_lhdn_document_guid`; the buyer info now loads from the admin applet's records (commit 20843ee6e0).
-- **consolidated-e-invoice** — batch pool → by-document or by-branch consolidation → consolidated submission queue; buyer General Public; timezone fix 2026-08-20.
+- **e-invoice-consolidation** — batch pool → by-document or by-branch consolidation → consolidated submission queue; buyer General Public; timezone fix 2026-08-20; now processor-driven per company (Aug–Sep 2026 rollout), foreign buyers excluded, SVDP pool planned.
+- **e-invoice-submission-errors** — what customers actually hit at month-end: wrong export for status, blank number columns, IN_QUEUE rows, throughput.
+- **emp-etl-sync** — tenants fed from the legacy platform fail on sync before LHDN; classification codes are mapped at the source.
+- **e-invoice-ocr-intake** — e-mail-in OCR channel being deployed; probably feeds purchase documents into matching.
+- **organisation-applet** — per-company e-invoice on/off switch and processor schedule are moving into its settings.
+- **customer-applet** — ID type Passport for foreign buyers; TIN saved without spaces; TIN correction is the month-end chore.
 - **tax-codes** — line taxable-type codes `01`/`06` are defaulted from the tax amount when blank; tax exemption fields capped at 300 chars (commit 9a9ab000a1).
 
 ## Open questions
 
 - Which of these commits changed user-visible behaviour vs internal plumbing? (read the diffs)
+- See kb/questions/2026-09-05-einvoice-month-end-report-pack.md, -svdp-submission-type.md, -consolidation-foreign-and-government-buyers.md, -consolidated-sales-returns.md, -ocr-email-intake-scope.md, -emp-etl-sync-on-wiki.md.
 
 ## Wiki impact
 
 - Review the pages under `wiki:` against the facts once the diffs are read.
+- See kb/research/2026-09-05-einvoice-ingest-wiki-impact.md (13 candidates, F-0119…F-0131).

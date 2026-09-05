@@ -29,7 +29,11 @@ The commercial definition of every item BigLedger can put on a document line —
 - 2026-09-05 — "Optional Serial No" checkbox semantics: enabling it means a serial number is NOT required. [src:gh:bigledger/blg-int-general-task#4332]
 - 2026-09-05 — Company Linking overrides Branch Linking: an item linked to a company is visible at all of that company's branches regardless of branch links. [src:existing wiki page, consistent with basic-item-company / basic-item-branch components]
 
+- 2026-08-26 — When a document synced from the legacy platform references an item BigLedger lacks, the item is re-synced on the spot (decision) rather than replaced with a dummy item code. [src:gdrive:1Ug3wpz2O8VmguwCf6jW9OEX8SMrBHOHAVJ_h0v-xsyA]
+- 2026-09-03 — ~400,000 duplicate item rows on one tenant were cleaned up; attributed to the sync method. [src:gmail:1a0663d23d98e303]
+
 ## How it connects
+- **emp-etl-sync** — item completeness gates document posting and therefore e-invoicing for synced tenants.
 
 - **inv-item-maintenance** — stock-tracked doc items point at an inventory item; category groups are shared between both applets; FiItemService updates inv_item status asynchronously on doc-item update.
 - **tax-configuration** — Tax tab and Entity Pricing select tax codes defined there.

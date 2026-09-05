@@ -18,6 +18,7 @@ check "no leaked AI tool-call transcripts"       -E '<function_calls>|<invoke na
 check "product is not described as blockchain"  -iE 'blockchain|区块链|بلوك تشين' content hugo.yaml layouts --include='*.md' --include='*.yaml' --include='*.html'
 malay_hits=$(grep -rlwiE 'bisa|fitur|bisnis|inventaris|mengelola|pengiriman|melacak|kantor|uang|unduh|silakan|karena|pengaturan' content/ms --include='*.md' 2>/dev/null | grep -vxF -f <(allow malay) | head -20)
 if [ -n "$malay_hits" ]; then say "FAIL: Malay pages contain Indonesian-only words (not in allowlist)"; say "$malay_hits" | sed 's/^/  /'; fail=1; else say "ok:   Malay pages contain no Indonesian-only words (allowlisted: $(allow malay | wc -l))"; fi
+check "no customer-specific repo slugs in content"  -E 'blg-sd-[a-z0-9-]+|BigLedger-Support/' content kb/topics kb/research --include='*.md'
 check "no mojibake (UTF-8 read as cp1252)"      -E 'â€|Ã©|Ã¢' content --include='*.md'
 
 # every markdown page has a title in front matter

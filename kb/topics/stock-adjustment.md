@@ -25,7 +25,10 @@ Adjust-in / adjust-out documents that correct location stock balances and post a
 - 2026-09-05 — Statuses seen in GenericDocumentService: FINAL and DISCARDED (posting_status / status); fiscal lock LOCK_TXN/LOCK_ALL applies. VOID not found in that service for generic docs this pass. [src:.../GenericDocumentService.java L705, L741, L1681-1689]
 - 2026-09-05 — Issues: user cannot FINAL after choosing GL code (gt#9495, 2026-08); request to disable Serial Number Adjustment tab for non-admins (gt#8734); item code missing from line selection (gt#6940); serial change not reflected in stock movement report (gt#9265); costing investigation for INTERNAL_STOCK_ADJUSTMENT (gt#5598). [src:gh:bigledger/blg-int-general-task#9495] [src:gh:bigledger/blg-int-general-task#8734] [src:gh:bigledger/blg-int-general-task#6940] [src:gh:bigledger/blg-int-general-task#9265] [src:gh:bigledger/blg-int-general-task#5598]
 
+- 2026-09-03 — Repost logic added to the adjustment applet: when a status update fails, journal posting can be re-triggered (weekly technical meeting); a 'current adjustment being processed' status error was also fixed. [src:gmail:1a0663d23d98e303]
+
 ## How it connects
+- **ledger-and-journal-applet** — the repost path re-creates the journal for an adjustment whose first posting failed.
 
 - **gl-posting** — the only inventory document whose journal side can be chosen per line (glCode field); default STOCK_ADJUSTMENT.
 - **moving-average-cost** — Reset MA family rewrites cost_ma_price; Base On decides the unit price used on the journal.

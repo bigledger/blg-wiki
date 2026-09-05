@@ -29,7 +29,13 @@ The customer record every sales, POS, receivables and e-Invoice document reads: 
 - 2026-09-05 — Customer statuses: ACTIVE, INACTIVE, TEMP. Settlement types for Payment Config: BANK_TRANSFER, CASH, CHEQUE, CREDIT_CARD, E_WALLET, FPX_EMANDATE, PAYMENT_GATEWAY, MEMBERSHIP_POINT_CURRENCY, OPEN_CREDIT, OTHERS, VOUCHER. [src:.../models/customer-constants.ts]
 - 2026-09-05 — Issue: "Manage Customer" tab on Credit Term edit requested (gt#2006, closed 2026-08) but not present in the customer-applet repo's credit-term-edit component as of 2026-09-05. [src:gh:bigledger/blg-int-general-task#2006]
 
+- 2026-09-03 — TIN values are stripped of spaces when the customer is saved; the previous rich-text editor was replaced by an internal WYSIWYG editor. [src:gmail:1a0663d23d98e303]
+- 2026-08-11 — A foreign buyer must be keyed with ID type Passport so the document can be submitted as an individual e-invoice; foreign buyers cannot go into a consolidated e-invoice. [src:gdrive:1cO_Vud6CV9sgJLUY5RFbh4uDmhLT_ZD3tlUD3RnwQZ8]
+- 2026-09-03 — Customers with no state configured break the legacy-platform sync and e-invoice address construction. [src:gmail:1a0663d23d98e303]
+
 ## How it connects
+- **e-invoice-submission-errors** — wrong or space-padded TINs are the bulk of Invalid results at month-end; corrections are made here and resubmitted.
+- **e-invoice-consolidation** — ID type Passport is the switch that keeps a foreign buyer out of consolidation.
 
 - **credit-limit** — the limit and term are stored here; WHERE a sale is blocked when the limit is exceeded was not found in javasdk domain code for sales documents (only in file-import helpers). Needs the sales-document lane to confirm.
 - **e-invoice** — the customer E-Invoice tab is the buyer block (TIN, ID, SST, address, contact, skipEInvoice).
