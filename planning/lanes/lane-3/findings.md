@@ -622,3 +622,66 @@ One large document applet this run; the settings surface (shared screen + 31 gea
 ### Stopping point
 
 One large document applet this run; the settings surface (212 keys, 8 gears, four applet-local screens) and the +1/−1 posting chain with its GL-precedence exception each needed a full pass. Next in queue: `internal-purchase-invoice-no-stock-in-applet.md` (the invoice leg of this pair — its current page has the wrong premise, see cross-lane requests).
+
+## Run 13 — 2026-09-05 — internal-purchase-invoice-no-stock-in-applet
+
+### Page
+
+- `content/en/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet.md` rewritten from applet @77722d9, shared-utilities @af523eb, ts-lib @7d1616a, backend @871dbf5, the registry, 66 seeded client-side permission rows and the issue set (applet #18; intranet #3940, #3939, #4339, #3329, #4338, #1616, #5071, #4803, #4717, #3324, #934, #3714). Title set to the registry name "Purchase Invoice No Stock In (Internal)" (was "… Applet"); `applet_code: internalPurchaseInvoiceNoStockInApplet`. The old page was a user-manual-style document whose central premise — an invoice for "services, overheads and intangible purchases" — is wrong; it also invented a settings list, a "Personalization" section, a knock-off-settings description and an e-Invoice submission workflow that the backend does not support for this type. Replaced.
+
+### Direction / posting facts (record for the guides)
+
+- **This is the invoice leg of the GRN Stock In pair, not a services invoice**: `INTERNAL_PURCHASE_INVOICE_NO_STOCK_IN` (`PURINVNSI`) is quantity 0 / amount −1. FINAL posts Dr `PURCHASE` (line GL honoured) / Dr `INPUT_TAX` / Cr `CREDITOR` (or `CREDITOR_NON_TRADE` from the supplier's AR/AP type) and — only when the invoice has an active knock-off link as target — Dr `CREDITOR_NOT_INVOICED` / Cr `INVENTORY_NOT_INVOICED`. No inventory transaction, no MA cost change.
+- **The accrual leg keys on any link, not on a GRN Stock In link**: `GenericDocumentLinkUow.getGenDoc1Guids` filters on `status <> 'DELETED'` only, so a PI No Stock In knocked off from a Purchase Order alone also moves the accrual accounts with nothing to clear.
+- **The pair never clears exactly when tax is captured**: the reversal leg uses `totalAmount` summed after the tax lines (net + tax) while the GRN Stock In accrued `INVENTORY_NOT_INVOICED` for the net only. Tax on both documents → `INPUT_TAX` debited twice; tax on one → accrual residual equal to the tax. Guides must say "capture tax on one document of the pair and reconcile the residual" until the backend changes.
+- **Self-billed e-Invoice is not supported for this type**: the applet has a SELF-BILLED bulk action and an E-Invoice tab (Submission / Progress / Notification / Cancellation / Matched History), and the backend `doc-self-billed/backoffice-ep` accepts the document, but `MyEInvoiceToIRBProcessorService.PURCHASE_DOC_TYPES` and `getDocumentTypeCodes` do not list `INTERNAL_PURCHASE_INVOICE_NO_STOCK_IN` (applet #18 open since 2026-06). Guides must route self-billed invoices through the ordinary Purchase Invoice.
+- **The auto-created invoice carries KO links** (`GenericDocumentConverter` L47–90 writes one `KO` link per line), so the accrual leg fires for converter-created documents; posting status follows `doc_2_posting_status` (default FINAL — an auto-FINAL invoice with no review step unless the row says DRAFT).
+- **No FINAL → DRAFT** in this applet (the seeded `HIDE_DRAFT_BUTTON` permission is dead); listing FINAL has no `amount_net > 0` guard (unlike the GRN Stock In).
+
+### Method findings (add to METHOD.md)
+
+- **The accessor regex for the "consumed" proof misses destructured reads.** Main Details reads `b.DEFAULT_LOCATION` inside a `combineLatest` tuple; `EDIT_CONTRA_TXN_DATE`, `HIDE_CLONE_BUTTON`, `HIDE_PRINT_BUTTON`, `HIDE_MULTI_DISCOUNT`, `HIDE_RELATED_DOCUMENTS`, `HIDE_DELIVERY_TRIPS` and the personalization keys were all "rendered-never-read" by the regex and consumed by a plain key grep. Always run a second pass: plain grep of every "never read" key across `src/app` minus `models/` and the settings screens, excluding gear-list lines.
+- **`getGenDoc1Guids`-style link checks are source-agnostic.** When a journal leg is conditioned on "has a link", check the UOW's WHERE clause before writing "when linked to a GRN Stock In" — here it is any target link.
+- **e-Invoice support is a backend allow-list, not an applet feature.** An applet can ship a full E-Invoice tab and bulk action while the type is absent from `MyEInvoiceToIRBProcessorService.PURCHASE_DOC_TYPES` / `getDocumentTypeCodes`. Check those lists for every document page that shows e-Invoice UI (sales-side list at L44–52 of the same file).
+- **Knock Off Settings screens in document applets are decoys.** This applet (like the PI) has a `knock-off-settings` route with eight `KNOCK_OFF_BY/FOR_*` toggles that are persisted and never read; the KO tabs read `bl_fi_comp_gendoc_flow_config`. Document them as "saved and ignored" and point at the company Knock Off Configuration.
+- **`DATE_TXN_LOGIC` is a Default Selection key that changes backend behaviour**: sent as `posting_status.date_txn_logic`, it overwrites `date_txn` at FINAL before the fiscal-period check. Worth a row on every document page whose Default Selection has it.
+- **Listing/permission asymmetries between sibling applets are real**: here `SHOW_GENDOC_FINAL/VOID/DISCARD_BUTTON` are seeded (they were not for the GRN Stock In) but `SHOW_GENDOC_SAVE_BUTTON` and `ALLOW_TO_CREATE_EDIT_ACCOUNT` are not. Never copy the permission section from a sibling.
+
+### Screenshots with personal data (kept 8 of 20, none moved)
+
+- **Excluded from the page (loop to quarantine / delete under `static/images/Purchase-Invoice-No-Stock In-applet/`)**: `Purchase-Invoice-No-Stock In-applet-overview-infographic.png` (NotebookLM-style marketing infographic, "streamlining business workflows", "phantom stock"); `edit-account-tab.png`, `edit-line-item-doc-link.png`, `line-items-listing.png` (supplier name containing a developer's first name); `create-account-select-supplier.png` (supplier grid with a developer's e-mail, an external company e-mail, two real-looking company names and a TIN column); `edit-line-items.png`, `edit-delivery-details.png`, `line-items-search-filter.png` (real printer-consumable brand and model names as items); `create-contra-tab.png` (contra picker listing several real supplier / brand names, one matching a customer repo slug); `file-import-listing.png`, `file-import-checking.png` (import file names that look like a customer name; a branch code that looks like a real company); `file-import-details.png` (a staff member's e-mail as Created By).
+- Kept: `invoice-listing.png`, `listing-search-filter.png`, `listing-search-filter-extended.png`, `create-main-details.png`, `create-search-document.png`, `create-line-items-select-item.png`, `edit-main-details.png`, `edit-e-invoice-tab.png` — staging tenant "TESTING", generic test companies / branch codes, the tenant user's small avatar only. The Lines tab and Account tab are now unillustrated; re-take on a clean tenant.
+- `listing-search-filter.png` and `create-main-details.png` show test company / branch codes that could be abbreviations of real names; judged generic, flagging for Vincent's call.
+
+### Cross-lane link requests
+
+- **purchase-workflow/internal-purchase-grn-stock-in-applet.md** (my lane, run 12): add the tax-residual sentence to the "Tax codes" prerequisite and a Troubleshooting row "Creditor Not Invoiced / Inventory Not Invoiced never net to zero"; note that the auto-created PI No Stock In defaults to FINAL. Topic file already extended.
+- **finance/internal-purchase-invoice-applet.md** (lane 2): state that it is the purchase invoice type the self-billed e-Invoice pipeline recognises and that PI No Stock In is not; keep `internal-purchase-invoice-no-stock-in-applet` in `related_applets`.
+- **finance/internal-payment-voucher-applet.md** (other lane): add `internal-purchase-invoice-no-stock-in-applet` to `related_applets` (settles its creditor balance; `INTERNAL_PAYMENT_VOUCHER` handler).
+- **purchase-workflow/internal-purchase-return-applet.md, internal-purchase-credit-note-applet.md, internal-purchase-debit-note-applet.md** (my lane): add `internal-purchase-invoice-no-stock-in-applet` to `related_applets`; the return page should say its `RETURN` link blocks VOID of the source PI No Stock In.
+- **purchase-workflow/internal-purchase-order-applet.md, internal-purchase-requisition-applet.md, supplier-delivery-order-applet.md** (my lane): add `internal-purchase-invoice-no-stock-in-applet` to `related_applets`; PO page: note that a PO-only knock-off into a PI No Stock In fires the accrual-reversal leg.
+- **e-invoice/my-e-invoice-admin-applet.md** (my lane, run 6): add a line that `INTERNAL_PURCHASE_INVOICE_NO_STOCK_IN` is not in the purchase document-type allow-list (self-billed) and link here.
+- **master-data/chart-of-account-applet.md, organisation-applet.md** (other lane): the company default GL codes `PURCHASE`, `CREDITOR` / `CREDITOR_NON_TRADE`, `INPUT_TAX`, `CREDITOR_NOT_INVOICED`, `INVENTORY_NOT_INVOICED` are required by this document type; add to `related_applets`.
+- **guides/purchasing-guides/standard-procurement-workflow.md, direct-grn-workflow.md**: present the two receiving pairs; say tax is captured on one document of the pair and the accrual residual is reconciled; say self-billed e-Invoices go through the ordinary Purchase Invoice.
+- **A Knock Off Configuration page** (none exists): the `INTERNAL_PURCHASE_GRN_STOCK_IN → INTERNAL_PURCHASE_INVOICE_NO_STOCK_IN` row and its `doc_2_posting_status` decide auto-creation and its status; `LINE` rows gate every KO tab in this applet.
+- **planning/lanes/METHOD.md** (coordinator): fold in the six method findings above.
+- **kb/tools** (coordinator): add a plain-grep second pass to the four-proof script for "never read" keys.
+
+### Registry / naming mismatches
+
+- `internalPurchaseInvoiceNoStockInApplet` row: name, status and `documentation_url` all correct. Old page title had a trailing "Applet"; fixed.
+- Permissions: 66 seeded / 38 checked; 28 seeded-never-checked; 27 checked-not-seeded (list on the page). Extract in `planning/lanes/lane-3/perm-dfn/internalPurchaseInvoiceNoStockInApplet.tsv` (server rows: the five `TNT_API_DOC_INTERNAL_PURCHASE_INVOICE_NO_STOCK_IN_*` codes).
+- The applet's latest merge commit references a customer-support repo in its branch name; not cited, no pseudonym needed.
+
+### Questions for Vincent
+
+- **Accrual-reversal leg amount**: should it be the net (matching the GRN Stock In's `INVENTORY_NOT_INVOICED` debit) rather than net + tax? As coded, the pair never clears when tax is captured. This is a backend bug candidate.
+- **Accrual-reversal trigger**: should it require a link whose source is `INTERNAL_PURCHASE_GRN_STOCK_IN`? Today any target link (e.g. PO-only) fires it.
+- **Self-billed e-Invoice for this type** (applet #18): add the type to the pipeline, or hide the SELF-BILLED button and E-Invoice tab in this applet until then?
+- Should the dead Knock Off Settings screen (route present, menu commented, keys never read) be removed from this applet and the PI?
+- Seed `SHOW_GENDOC_SAVE_BUTTON`, `ALLOW_TO_CREATE_EDIT_ACCOUNT`, `ALLOW_LINE_ITEM_EDIT` and the listing `SHOW_*` codes for this applet; retire the 28 seeded-never-checked codes.
+- Quarantine the 12 excluded screenshots and re-take the Lines / Account / Line Items screens on a clean tenant.
+
+### Stopping point
+
+One large document applet this run; the wrong premise meant every section was rebuilt, and the posting proof needed the link UOW, the converter and the e-Invoice allow-lists read end to end. Next in queue: `internal-purchase-quotation-applet.md`.
