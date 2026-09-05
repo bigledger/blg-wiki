@@ -716,3 +716,9 @@ with the analysis, the changes made, and the commit hash.
 ### product (stock replenishment)
 - [ ] F-0194 (2026-09-05) Dead at processing time: Category filters (cloned, never read), Rules Logic AND/OR, DEFAULT_BRANCH/LOCATION, email_format, Target Scope "Selected companies only" (no company picker → always empty), printable formats, Personal Default Selection (throws). Generation pitfalls: PO fulfillment lines default Quantity To Approve = 0 (zero-quantity PO if unedited); generated PO lines hard-code UOM PCS with no GL/tax; "Block existing open PO" matches supplier+item at any location; re-runs append duplicate lines; a run without a template is never queued. Strategy precedence is by cloning (template → event → run) — editing a template never changes an existing run. Tickets? Registry doc URL → Confluence.
 
+## From Lane 3 run 23 — Supplier Delivery Order (2026-09-05)
+
+### product intent (needs Vincent, blocks a user guide)
+- [ ] F-0195 (2026-09-05) "Supplier Delivery Order" is not a purchase document: the applet writes the tenant's INTERNAL_OUTBOUND_DELIVERY_ORDER with the supplier as entity (client_doc_type marker only); 0/0; supplier-access scoping is the entity-login link. Are these drop-ship suppliers delivering to the tenant's customers (driver features suggest so) or deliveries TO the tenant? Move the page out of purchase-workflow/? Dead in templates: FINAL/VOID/DISCARD/CLOSE/print/e-mail (commented out), Create screen unreachable, batch print → unregistered endpoint, permission loader no-op. Legacy CORE1 "Supplier - Delivery Order" row (no code) → registry clean-up.
+- [x] F-0196 (2026-09-05) 5.9 MB infographic quarantined.
+
