@@ -8,7 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/purchase-workflow/supplier-delivery-order-applet.md",
   "content/en/applets/external-tenant-admin/tenant-admin-applet.md",
   "content/en/applets/ecommerce/website-builder/user-manager.md",
   "content/en/applets/purchase-workflow/blanket-purchase-order-applet-supplier-access-applet.md",
@@ -142,6 +141,11 @@
    "page": "content/en/applets/ecommerce/shopping-cart-applet.md",
    "date": "2026-09-05",
    "note": "run 22; applet @5627dab (shared-utilities pinned @f90a5c7, also @a8c38a2; ts-lib @7d1616a9e) + backend @1ff620ef0e; INTERNAL_SHOPPING_CART 0/0 (no journal: no JournalPostingTypeHandler entry -> NO_JOURNAL_CREATED; no stock); backoffice gen-doc endpoint, not the ecom one-cart-per-entity one; FINAL -> open queue via company KO row -> Sales Order v2 Search/KO Shopping Cart; 28 four-proof keys, DEFAULT_BRANCH/LOCATION saved-not-consumed, EXPAND_PAYMENTS read-without-control; Convert/Print/Export dead in template; Printables target Sales Quotation ext code; 21 seeded perms (20 consumed); line-integrity HMAC not re-stamped on backoffice PUT; 4 of 7 images kept"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/supplier-delivery-order-applet.md",
+   "date": "2026-09-05",
+   "note": "run 23; applet @b55dd81 (shared-utilities pinned @e2f57c4, also @a8c38a2; ts-lib @7d1616a9e) + backend @1ff620ef0e; document is INTERNAL_OUTBOUND_DELIVERY_ORDER (OBDODR) with client_doc_type SUPPLIER_DELIVERY_ORDER - SUPPLIER_DELIVERY_ORDER has no core2 backend type; 0/0, no journal/stock; all screens scoped to the login's supplier entity links; + creates TEMP and opens Edit; FINAL/VOID/DISCARD/CLOSE/print/email dead in templates, batch print hits unregistered endpoint; 41 four-proof shared keys + defaults, 15 read-without-effect; 0 seeded client perms and loader never dispatches; old PO->SDO->GRN story removed; 1 of 2 images kept"
   }
  ],
  "skipped": [

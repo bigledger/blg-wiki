@@ -1115,3 +1115,59 @@ Registry `InternalShoppingCart` / "Shopping Cart (Internal)"; `documentation_url
 ### Stopping point
 
 One page this run (the two-endpoint resolution, the pinned-submodule gates pass and the line-integrity trace took the budget). Next in queue: `content/en/applets/purchase-workflow/supplier-delivery-order-applet.md`, then `external-tenant-admin/tenant-admin-applet.md`.
+
+## Run 23 — 2026-09-05 — `content/en/applets/purchase-workflow/supplier-delivery-order-applet.md`
+
+Registry `supplierDeliveryOrderApplet` / "Supplier Delivery Order Applet" (TNT-USER, ACTIVE, 2024-09-11, no documentation_url; a legacy CORE1 row "Supplier - Delivery Order" with no code also exists — not this applet). Repo `blg-applet-wavelet-supplier-delivery-order-applet` @b55dd81 (micro-fe; project `wavelet-erp/applets/supplier-delivery-order-applet`; shared-utilities submodule pinned @e2f57c4 — gates.py run at that commit and at HEAD a8c38a2, identical for all 57 keys the applet reads). Backend @1ff620ef0e, ts-lib @7d1616a9e. Title unchanged (already the registry name).
+
+### What the code says (vs. the old page)
+
+- **It is not a purchase document.** The old page put the "SDO" between Purchase Order and GRN with a PO → SDO → GRN → Purchase Invoice flow. The code writes the tenant's **internal outbound delivery order** (`INTERNAL_OUTBOUND_DELIVERY_ORDER`, OBDODR) with the supplier as `doc_entity_hdr_guid`, through `gen-doc/internal-outbound-delivery-orders`. `SUPPLIER_DELIVERY_ORDER` exists only in the core1 legacy code; the ts-lib `SupplierDeliveryOrderService` (`supplier-delivery-orders`) has no backend handler. `createTemp` overwrites the header type; PUTs are validated by `checkServerDocType`. `client_doc_type = SUPPLIER_DELIVERY_ORDER` is the only marker. Direction: 0/0 — no journal (`NO_JOURNAL_CREATED` path), no stock; `do_qty` in stock availability and open sales credit.
+- **Everything is scoped to the login's supplier links.** Listing, Select Supplier and Driver Listing each resolve `entity_login_subject_link` rows for the current subject, keep `is_supplier` entities and filter by them; no links → empty screens regardless of permission. This is the supplier-access family's mechanism (relevant to the five supplier-access pages next in my queue).
+- **`+` opens Edit, not Create.** The listing calls `createTemp` and navigates to view-column index 2; the standalone Create screen (index 1, "Main Details + Account only") described by the old page and questioned in wiki #151 is unreachable. Old page's "add lines on edit, not create" workaround is therefore moot.
+- **No FINAL / VOID / DISCARD / CLOSE / print / e-mail.** Buttons commented out of the edit template; listing has no action buttons (status-bar component is a "custom-footer works!" stub) although the handlers exist; batch print targets the unregistered `supplier-delivery-orders` endpoint; send-email effect commented out. The old page said FINAL/VOID "may exist in your tenant's workflow" — they do not, anywhere in this applet.
+- **Mixed line `server_doc_type`.** Item lines are stamped `INTERNAL_OUTBOUND_DELIVERY_ORDER`, the generated group-discount and rounding lines `SUPPLIER_DELIVERY_ORDER`; the backend keeps non-null line values (DCO L719-720). Bug: reports/queues that filter lines by type miss those two lines.
+- **Settings.** 41 four-proof keys on the shared screen (2 listing, 6 header, 1 lines footer, 10 tab hides, 21 line-field hides, item-name limit pair, draft-lock serial check) + master DEFAULT_COMPANY/BRANCH/LOCATION + personal defaults. 15 read-without-effect keys, including the four `HIDE_GENDOC_*_BUTTON`/`HIDE_CLOSE_BUTTON` (methods only referenced by commented buttons), `ENABLE_SERIAL_NUMBER_VALIDATION_FINAL` (not rendered for this code, FINAL unreachable), four `HIDE_*_TAB` (unreachable Create screen, no `tabMappings` entry), `PRINTABLE`, `DEFAULT_CUST_TYPE/COUNTRY/CURRENCY`, all Custom Status keys (hdr reducer writes `custom_status: null`). Printables and e-mail templates are stored under the Internal DO applet's extension code / txn_type.
+- **Permissions.** Server-side `…INTERNAL_OUTBOUND_DELIVERY_ORDER_{CREATE,READ,UPDATE,DELETE}_TGT_GUID`; `SHOW_GENDOC_FINAL/DISCARD/VOID_BUTTON` checked, 0 seeded (`planning/lanes/lane-3/perm-dfn/supplierDeliveryOrderApplet.tsv` is empty), and `app.component.ts` L98 never dispatches the loaded list (`map(permissions => {…})` with braces and no return) — a bug shared with other applets copied from the same template; worth a grep across refs/.
+- **Driver Listing** creates the `entity_login_subject_link` + `entity_driver_link` pair; Main Details' Delivery Driver picker writes `delivery_driver_guid`. This closes the open question in `kb/topics/driver-delivery-order-applet.md` ("where does a DO get its driver?") for supplier-created DOs.
+- **KO tabs** — "KO For Sales Order" (company flow SO → DO, LINE) is real; "KO For Sales Invoice" is a copy of the Internal DO applet's tab (doc1 = INTERNAL_SALES_INVOICE, doc2 = INTERNAL_OUTBOUND_DELIVERY_ORDER) gated by any DO LINE row — documented as unsupported.
+- **Issues.** Applet #1 Angular 14 migration; general tasks #6585/#9006/#8847 sub-query removal; wiki #151 tracker closed "Documentation pending" with the reviewer's questions (create-screen title, "Customer" wording, business flow, statuses) — all answered by the code facts above and folded into Troubleshooting.
+
+### Screenshots
+
+- Kept `static/images/supplier-delivery-order-applet/main-listing-page.png` — staging tenant "TESTING", empty listing + Edit column, no personal data beyond the generic avatar thumbnail; it usefully shows OBDODR and the direct-to-Edit flow.
+- Dropped the reference to `supplier-delivery-order-applet-overview-infographic.png` (5.9 MB NotebookLM marketing graphic: "End-to-End Document Lifecycle", "Webhooks and email templates for status-change notifications", procurement bridge imagery — contradicted by the code). Quarantine (now unreferenced).
+- Recapture wanted: Edit screen with a supplier selected and one line; Line Item Create showing the KO For Sales Order tab; Driver Login Create; Application Settings › Line Items section.
+
+### Method findings
+
+- **A supplier-access applet's real gate is the entity-login link, not the permission target.** Check `entityLoginSubjectLinkService` usage in the listing/search effect first; document "empty listing" as the symptom of a missing link (extends METHOD §25 from enquiry applets to supplier-access applets).
+- **Check that the applet's doc-type constant exists in the backend handler map** (`GenericDocumentTypeHandler.handlers`) and in ts-lib's endpoint before believing the applet's name. Here the applet's constant, service name and printable code all disagree; only the endpoint used for CRUD is truth (extends METHOD §12/§26).
+- **Client-side permission loading can be a no-op.** Grep `clientSidePermissionsSuccess` in `app.component.ts`: a brace-bodied arrow without `return`/`dispatch` means `SHOW_*` codes never reach the store even when seeded.
+- **"Rendered" needs reachability.** A control on a screen no route or button reaches (the standalone Create component here) does not count; check `onNextAndReset(index, n)` targets before crediting a template.
+
+### Cross-lane link requests
+
+- **sales-workflow/internal-outbound-delivery-order-applet.md** (lane 1): add `supplier-delivery-order-applet` to `related_applets`; note that rows with `client_doc_type = SUPPLIER_DELIVERY_ORDER` created by supplier logins share its listing, that FINAL/VOID/print/e-mail for those rows happen there, and that its printable-format extension code and `…_EMAIL_TEMPLATE` txn_type are shared with this applet.
+- **inventory-workflow/driver-delivery-order-applet.md** (lane 4) and `kb/topics/driver-delivery-order-applet.md`: the open question "where does a DO get its driver" is answered for supplier DOs — Driver Listing here creates the login + driver link; the Delivery Driver picker on this applet's Main Details writes `delivery_driver_guid`. Add to the topic's facts.
+- **master-data/supplier-applet-1.md** (lane 4): add `supplier-delivery-order-applet`; one line under the Login tab: the supplier ↔ login link is the prerequisite for every supplier-access applet (SDO, PO/GRN/Invoice/CN/Return Supplier Access).
+- **master-data/organisation-applet.md** (lane 4): under Knock Off Configuration list `INTERNAL_SALES_ORDER → INTERNAL_OUTBOUND_DELIVERY_ORDER` (shows the KO tab here) and `INTERNAL_OUTBOUND_DELIVERY_ORDER → INTERNAL_SALES_INVOICE`.
+- **sales-workflow/internal-sales-order-applet.md, internal-sales-invoice-applet.md** (lane 1): add `supplier-delivery-order-applet` to `related_applets` (KO source / KO consumer).
+- **master-data/doc-item-maintenance-applet.md** (lane 4): add this applet (`txn_class = PNS` item search).
+- **modules-v2 / purchase-workflow index** (other lane / loop): the "procurement flow" tables that place a Supplier Delivery Order between PO and GRN must go; no module page links this applet today.
+- **planning/lanes/METHOD.md** (coordinator): fold in the four method findings above.
+
+### Registry / naming mismatches
+
+- None for this page. Note the legacy CORE1 row "Supplier - Delivery Order" (no code) — a candidate for the loop's registry clean-up list, not a wiki page.
+
+### Questions for Vincent
+
+- What is the product intent: suppliers recording their own outbound deliveries to the tenant's customers (drop-ship, which the driver features suggest) or deliveries *to* the tenant? The page now states only what the code does; a user guide needs the intent.
+- Should this page move to `sales-workflow/` or `inventory-workflow/` (it is an outbound DO, not a purchase document)? I left it in place (lane folder) and set `modules: [purchase-workflow, inventory-workflow]`.
+- Three applet bugs to file: (1) batch print → unregistered `supplier-delivery-orders` endpoint; (2) discount/rounding lines stamped `SUPPLIER_DELIVERY_ORDER`; (3) `app.component.ts` never dispatches client-side permissions. Also: restore FINAL/DISCARD/VOID buttons or delete the handlers and the Printables / Email Template menus?
+- Quarantine the NotebookLM infographic; recapture list above.
+
+### Stopping point
+
+One page this run (document-identity resolution across applet constants, ts-lib and backend handler map, the pinned-submodule gates pass, and the scoping trace took the budget). Next in queue: `content/en/applets/external-tenant-admin/tenant-admin-applet.md`, then `ecommerce/website-builder/user-manager.md`, then the five purchase supplier-access pages (reuse the login-link scoping finding).
