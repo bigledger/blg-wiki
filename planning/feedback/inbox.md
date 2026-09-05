@@ -472,3 +472,14 @@ with the analysis, the changes made, and the commit hash.
 ### accounting/inventory guides (fact)
 - [ ] F-0107 (2026-09-05) Backend stock validation is ON by default (validate_stock_balance .orElse(true)) for every outbound-stock document regardless of applet toggles; error is STOCK_BALANCE_OBJECT_NO_STOCK_AT_LOCATION. Consignment types are NOT exempt from the fiscal lock (plain stock transfers are). Guides must say so (joins F-0057).
 
+## From Lane 3 run 6 — e-invoice (2026-09-05)
+
+### /guides/einvoice-guides/ + /modules-v2/e-invoice/ (facts from code + blg-intranet)
+- [ ] F-0108 (2026-09-05) Guides and the old pages say the Peppol Waiting Queue waits for LHDN "Valid" — it does not: it is gated on the mandatory-field check plus company/entity participant IDs. Also: documents finalised BEFORE company einvoice_status=ENABLED are dropped silently (no queue row, no error); RM 10,000 inclusive hard-coded threshold forces the individual pool for Sales Invoice and Cash Bill only; 72-hour cancellation window from validation_datetime; CANCEL_FOR_EDIT_AND_RESUBMIT is the only logic that works for consolidated e-invoices and exists only in the admin applet. Guide correction unit (high priority — 70 tenants). Vincent: is Peppol-before-LHDN intended?
+
+### static/images/my-e-invoice-admin-applet/lhdn-core-workflow.png
+- [ ] F-0109 (2026-09-05) Internal LHDN core-workflow diagram (processor/table names, no PII, no credentials) copied from blg-intranet and embedded on the admin page. Vincent: may an internal engineering diagram stay on the public wiki? (Loop kept it pending your answer.)
+
+### registry (e-invoice)
+- [ ] F-0110 (2026-09-05) myEInvoicePortalApplet has no documentation_url; peppolApAdminApplet's points at a page that does not exist; 0 client-side permission rows for all four e-invoice codes; website-builder/user-permission-manager.md has no registry row (duplicate of ecommerce/website-builder/user-manager.md — merge). The forex setting einvoice_forex_gendoc_posting_logic has no UI — how to present it?
+
