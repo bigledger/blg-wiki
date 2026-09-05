@@ -155,6 +155,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 - **F-0172** pricebook client/server evaluation divergence + eval() — bugs? · **F-0173** Akaun Price Book row: document or clean?
 - **F-0175** PDG applet: customer-specific (exclude) or keep? · **F-0176** PDG async create hides failures — tickets?
 - **F-0179** SUPPLIER_RTV quantity +1 intended? · **F-0180** queue Stock Level Monitoring (ACTIVE, no page)?
+- **F-0184** shipping pricebook: storefront divergences + inactive books still offered — issues?
 - **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
   Voucher applet?; **F-0042** resolved (three distinct applets; see F-0099).
 

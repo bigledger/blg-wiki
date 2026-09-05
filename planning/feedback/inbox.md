@@ -683,3 +683,9 @@ with the analysis, the changes made, and the commit hash.
 ### product (push notifications)
 - [ ] F-0183 (2026-09-05) No admin screen writes the Firebase credential (support edits the DB row); FirebaseApp cached per tenant+website for the API lifetime (rotation needs restart); pushToTopic() swallows FCM errors into a 200; two different "default topic" notions (app: Website Default Topic; backend member-restore: the topic described literally "DEFAULT"). Tickets? wavelet-cp-commerce#245 has an unread "Push Notification Configuration Guide" PDF — ingest with identifiers stripped?
 
+## From Lane 4 run 20 — Shipping Pricebook (2026-09-05)
+
+### product (shipping pricebook / storefront)
+- [ ] F-0184 (2026-09-05) No working setting in the applet (Field Settings unbound; Default Selection screens write to a container never loaded). Storefront evaluation diverges from the applet UI in five ways (Single Line rules never evaluated; Valid Date Range always passes; Delivery Region compares state only; Calculation Logic always Sequential Match; Handling Fee / Fuel Surcharge ignore Price Source). Inactive shipping price books still offered at checkout (status is an extension; storefront filters hdr.status). No code-uniqueness check; PRICE_BOOK_CREATED audit never written; shipping_price_book_rule_* backend family has no UI. Vincent: issues against wavelet-cp-commerce? make Status set hdr.status? hide or fix the dead Settings entries?
+- [x] F-0185 (2026-09-05) Five screenshots (tenant code in sidebar, a possible given name, infographic) quarantined.
+
