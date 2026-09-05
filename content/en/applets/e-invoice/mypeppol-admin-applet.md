@@ -1,6 +1,49 @@
 ---
 title: "My Peppol Admin Applet"
-description: "Manage Peppol network documents - send invoices to suppliers, receive from customers, and track e-invoice submissions"
+description: "Tenant-side console for Peppol document exchange: the posting and waiting queues that turn finalised sales documents into Peppol invoices, the outgoing submission queue and history, documents received from the access point, Peppol ID registration and printable formats."
+applet_code: "myPeppolAdminApplet"
+applet_repo: "blg-applet-wavelet-my-peppol-admin-applet"
+modules: [e-invoice]
+related_applets: [my-e-invoice-admin-applet, organisation-applet, customer-applet, supplier-applet-1, internal-sales-invoice-applet, pos-general-applet]
+guides:
+  - /guides/einvoice-guides/peppol-configuration/
+sources:
+  screens:
+    - blg-applet-wavelet-my-peppol-admin-applet/micro-fe/projects/wavelet-erp/applets/my-peppol-admin-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-my-peppol-admin-applet/micro-fe/projects/wavelet-erp/applets/my-peppol-admin-applet/src/app/models/menu-items.ts
+  configuration:
+    - blg-applet-wavelet-my-peppol-admin-applet/micro-fe/projects/wavelet-erp/applets/my-peppol-admin-applet/src/app/components/settings-container/settings-container.component.html
+    - blg-applet-wavelet-my-peppol-admin-applet/micro-fe/projects/wavelet-erp/applets/my-peppol-admin-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - blg-applet-wavelet-my-peppol-admin-applet/micro-fe/projects/wavelet-erp/applets/my-peppol-admin-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-my-peppol-admin-applet/micro-fe/projects/wavelet-erp/applets/my-peppol-admin-applet/src/app/components/settings-container/to-peppol-printable-format-settings-container/printable-format-listing/printable-format-listing.component.ts
+    - blg-applet-wavelet-my-peppol-admin-applet/micro-fe/projects/wavelet-erp/applets/my-peppol-admin-applet/src/app/components/settings-container/from-peppol-printable-format-settings-container/printable-format-listing/printable-format-listing.component.ts
+    - blg-applet-wavelet-my-peppol-admin-applet/micro-fe/projects/wavelet-erp/applets/my-peppol-admin-applet/src/app/components/internal-submission/internal-submission-to-peppol-ap-container/internal-submission-to-peppol-ap-edit/internal-submission-to-peppol-ap-account-export/internal-submission-to-peppol-ap-account-export.component.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/peppol/GenericDocumentPeppolPostingQueueProcessor.java
+  fields:
+    - blg-applet-wavelet-my-peppol-admin-applet/micro-fe/projects/wavelet-erp/applets/my-peppol-admin-applet/src/app/components/peppol-config/peppol-id-registration/peppol-id-registration-create/peppol-id-registration-details/peppol-id-registration-details.component.html
+    - blg-applet-wavelet-my-peppol-admin-applet/micro-fe/projects/wavelet-erp/applets/my-peppol-admin-applet/src/app/components/settings-container/to-peppol-printable-format-settings-container/add-printable-format/add-printable-format.component.html
+  lifecycle:
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/peppol/GenericDocumentPeppolPostingQueueProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/peppol/PeppolPostingQueueToWaitingQueueProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/peppol/EinvoiceWaitingQueueToXapDocProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/peppol/EinvoiceWaitingQueueToXapDocProcessorService.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/peppol/EinvoiceWaitingQueuePeppolDataSenderProcessor.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/erp/peppol/MyPplToXapDocUow.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/peppol/sender/PeppolSenderCommonService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/peppol/PplApParticipantRegistrationService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/peppol/SMP/PeppolParticipantSmpService.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/peppol/MyPplEInvoiceWaitingQueueController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/peppol/PeppolToXapSubmissionQueueController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/peppol/MyPplToXapDocController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/peppol/PplApParticipantRegistrationController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/peppol/PplParticipantSmpLookupController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/eInvoice/shared/MyEInvoiceToIRBProcessorService.java
+  troubleshooting:
+    - gh:bigledger/blg-intranet#5672
+    - gh:bigledger/blg-intranet#5007
+    - gh:bigledger/blg-intranet#1373
+    - gh:bigledger/blg-intranet#4255
+    - gh:bigledger/blg-wiki#9
 tags:
 - peppol
 - e-invoice
@@ -10,351 +53,141 @@ tags:
 weight: 175
 ---
 
-## Purpose and Overview
+## Overview
 
-The My Peppol Admin Applet is your customer-facing interface for managing every document sent and received through the Peppol network. Every customer has their own My Peppol Admin Applet. It bridges LHDN e-invoice submission (handled in My E-Invoice Admin Applet) with actual Peppol network distribution, and provides full lifecycle tracking from the moment a document enters the system to its final delivery or receipt.
+The My Peppol Admin Applet is a tenant's own view of Peppol document exchange. Where the [My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) submits documents to LHDN, this applet turns the same finalised sales (and self-billed purchase) documents into Peppol invoices and hands them to BigLedger's access point, and shows what the access point has received for your Peppol IDs. Finance staff open it to watch the two queues, resubmit failed transmissions, register the company's Peppol participant IDs and choose the printable formats used when a sent or received Peppol document is exported. It creates no accounting entries.
 
 {{< callout type="info" >}}
-**Integration Point**: This applet works in tandem with the My E-Invoice Admin Applet. LHDN submission happens there; Peppol distribution and tracking happens here.
+The Peppol pipeline runs *beside* the LHDN pipeline, not after it. A document enters the Peppol posting queue at FINAL when the company has Peppol enabled, and moves to the Waiting Queue as soon as it passes the e-invoice mandatory-field check and both parties have a Peppol participant ID. It does not wait for LHDN to return *Valid*.
 {{< /callout >}}
 
-### Who Benefits from This Applet?
-
-**Accounts Payable:**
-- Send purchase invoices and debit notes to suppliers via Peppol
-- Monitor outgoing document delivery status
-- Trigger manual processing for urgent documents
-- Handle transmission errors in the outgoing queue
-
-**Accounts Receivable:**
-- Receive sales invoices from customers via Peppol
-- Monitor all incoming documents from the Peppol network
-- Process received e-invoices into the accounting system
-
-**Finance Teams:**
-- Oversee the full Peppol document flow end-to-end
-- Manage company Peppol ID registrations
-- Review monthly queue and history reports
-- Configure printable formats for sent and received documents
+## Where it fits
 
-### What Problems Does This Solve?
+| Upstream | This applet | Downstream |
+|---|---|---|
+| Sales documents finalised in [Sales Invoice](/applets/sales-workflow/internal-sales-invoice-applet/), [POS](/applets/sales-workflow/pos-general-applet/) and the other sales / self-billed purchase applets, for a company with `peppol_status = ENABLED` | Posting Queue → Waiting Queue → Internal Submission (to-XAP documents, submission queue, history) | BigLedger's Peppol access point → the buyer's access point |
+| Company Peppol participant IDs registered through **Peppol Config** ([Organisation Applet](/applets/master-data/organisation-applet/) holds the same records); customer / supplier Peppol IDs in the [Customer](/applets/master-data/customer-applet/) and [Supplier](/applets/master-data/supplier-applet-1/) applets | Read when a document is routed and when the receiver is resolved | — |
+| Documents received by the access point for your Peppol IDs | External Reception → Docs Queue / Docs History / From Peppol AP | Purchase-side processing |
+| [My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) | The e-invoice mandatory-field check is reused unchanged when deciding whether a document may enter the Waiting Queue | — |
 
-**The Manual Peppol Management Problem:**
-Prior to a centralized admin applet, exchanging e-invoices via Peppol involved:
-- Disconnected workflows between LHDN submission and Peppol distribution
-- Blind spots when an e-invoice got stuck or failed transmission
-- Messy, unorganized receiving workflows for inbound documents from customers
-- Complex document tracking across disparate platforms
+## Screens and menus
 
-**The My Peppol Admin Solution:**
-- **Centralized queues** - Instantly see what is pending, what succeeded, and what failed.
-- **End-to-end tracing** - Track documents using the same Process ID from LHDN through to Peppol delivery.
-- **Automated workflows** - Background cron jobs handle document processing 24/7.
-- **Full Audit Trail** - Complete history of all sent and received Peppol documents for verification.
-
-## Key Features Overview
-
-{{< cards >}}
-  {{< card title="Posting Queue" subtitle="Pre-submission staging area for outgoing documents" link="#1-posting-queue" >}}
-
-  {{< card title="Waiting Queue" subtitle="Documents pending Peppol processing after LHDN validation" link="#2-waiting-queue" >}}
+| Menu | Sub-menu | Route | What it lists | Actions |
+|---|---|---|---|---|
+| Posting Queue | — | `posting-queue` | `bl_fi_generic_doc_peppol_posting_queue` — finalised documents waiting to be checked; tabs Document Details, Account (Entity Details, Bill To, Ship To), Lines | Submit (process selected now), Export, Withdraw |
+| Waiting Queue | — | `waiting-queue` | `bl_ppl_einvoice_waiting_queue` — documents that passed the check and have a sender and receiver Peppol ID | Process (build and send now), Export, Withdraw |
+| Internal Submission | To Peppol AP | `internal-submission-to-peppol-ap` | `bl_ppl_to_xap_doc_hdr` — every Peppol document built from your documents, with sender ID, receiver ID, org ID, buyer; tabs Details, Lines, Export | Export as PDF (with a *To Peppol* printable format) |
+| | Queue | `to-peppol-submission-queue` | Submission queue rows with their `submission_status` (`SUBMITTED`, `AS4_ERROR_MESSAGE_RECEIVED`, `TRANSPORT_ERROR`, …) | Submit (resend one), Delete |
+| | History | `to-peppol-submission-history` | Successfully transmitted documents | — |
+| External Reception | Docs Queue | `external-reception-queue` | Received documents not yet processed | — |
+| | Docs History | `external-reception-history` | Received documents processed | — |
+| | From Peppol AP | `external-reception-from-peppol-ap` | Everything the access point delivered for your IDs (process ID, buyer, supplier, amounts); tabs Details, Lines, Export | Export as PDF (with a *From Peppol* printable format) |
+| Peppol Config | Registration | `peppol-config-peppol-id-registration` | Participant registrations sent to the Malaysian SMP through BigLedger's access-point tenant | Create, Edit, upload KYC |
+| | Registered Companies | `peppol-config-peppol-registered-companies` | The same registrations viewed per company | — |
+| Monthly Report | Queue, History | `queue-report`, `history-report` | Per-company period summaries | Generate Report |
+| Settings | Field Settings · Default Selection · To Peppol AP Printable Format Settings · From Peppol AP Printable Format Settings · Webhook · Feature Visibility · Permission Wizard / Set / User / Team / Role | `settings/…` | See Configuration | — |
+| Personalization | Default Selection · Sidebar | `personalization/…` | Per-user defaults | — |
 
-  {{< card title="Internal Submission" subtitle="Track all documents you're sending out via Peppol" link="#3-internal-submission-sending-documents" >}}
+The **Peppol Testbed** route (`peppol-testbed-receiving-test-history`) exists in the routing table but its menu entries are commented out at commit `55cc1a3`; it is reachable only by URL.
 
-  {{< card title="External Reception" subtitle="Monitor all documents you're receiving via Peppol" link="#4-external-reception-receiving-documents" >}}
+{{< figure src="/images/my-peppol-admin-applet/posting-queue.png" alt="Posting Queue listing with Submit, Export and Withdraw buttons and document rows" caption="Posting Queue — finalised documents waiting for the Peppol check." >}}
 
-  {{< card title="Monthly Reports" subtitle="Queue and history reports for auditing and reconciliation" link="#5-monthly-reports" >}}
+{{< figure src="/images/my-peppol-admin-applet/view-posting-queue-account.png" alt="View Posting Queue panel on the Account tab showing entity ID, name, TIN, entity type, identity type, ID number, SST number, e-mail and contact number" caption="Posting Queue → Account — the buyer identity that the mandatory-field check will test." >}}
 
-  {{< card title="Peppol Config" subtitle="Manage company Peppol ID registrations" link="#6-peppol-config" >}}
+{{< figure src="/images/my-peppol-admin-applet/waiting-queue.png" alt="Waiting Queue listing with Process, Export and Withdraw buttons" caption="Waiting Queue — documents ready to be built into Peppol invoices and sent." >}}
 
-  {{< card title="Peppol Testbed" subtitle="Test Peppol document receiving in a sandbox environment" link="#8-peppol-testbed" >}}
-{{< /cards >}}
+{{< figure src="/images/my-peppol-admin-applet/internal-submission-to-peppol-ap.png" alt="Internal Submission To Peppol listing with Doc Type, Doc No, Sender ID, Receiver ID, Org ID, Buyer Name and Buyer ID columns" caption="Internal Submission → To Peppol AP — one row per Peppol document built, with the sender and receiver participant IDs." >}}
 
-<br/>
+{{< figure src="/images/my-peppol-admin-applet/internal-submission-queue.png" alt="Internal Submission Queue listing showing rows with AS4_ERROR_MESSAGE and TRANSPORT_ERROR submission statuses and a Submit button" caption="Internal Submission → Queue — transmission outcomes; failed rows can be resent one at a time." >}}
 
-![My Peppol Admin Applet Overview](/images/my-peppol-admin-applet/my-peppol-admin-applet-overview-infographic.png)
+{{< figure src="/images/my-peppol-admin-applet/internal-submission-to-peppol-ap-export.png" alt="Internal Submission To Peppol Edit panel on the Export tab with a Printable Format dropdown and an EXPORT AS PDF button" caption="To Peppol AP → Export — the dropdown is pre-selected with the default *To Peppol* printable format." >}}
 
-<br/>
+{{< figure src="/images/my-peppol-admin-applet/external-reception-from-peppol-ap.png" alt="External Reception From Peppol listing with Doc Type, Process ID, Buyer Name, Buyer ID, Buyer Tax ID and Supplier Name columns" caption="External Reception → From Peppol AP — documents delivered by the access point for your Peppol IDs." >}}
 
-## Quick Start Guide
+{{< figure src="/images/my-peppol-admin-applet/peppol-id-registration.png" alt="Peppol ID Registration listing with Company Code, Company Name, Company Reg. No., Registration Date and Registration Status columns" caption="Peppol Config → Registration." >}}
 
-Get up and running quickly with these essential workflows.
+## Configuration
 
-### For Finance/Admins: Initial Setup
-**Goal:** Configure your company to send and receive Peppol documents.
-1. **Register Peppol ID**: Go to **Peppol Config > Peppol ID Registration**. Enter your company details and register your official ID (e.g., `0195:XXXXXXXXX` for Malaysia).
-2. **Review Print Formats**: Under **Settings**, set up your "To Peppol Printable Format" and "From Peppol Printable Format".
-3. **Sandbox Testing**: Use the **Peppol Testbed** to simulate receiving a document before going fully live.
+### Before you can use it
 
-### For Accounts Payable: Fixing Outgoing Errors
-**Goal:** Track and resubmit a failed outgoing document.
-1. **Check the Queue**: Go to **Internal Submission > Queue**. Look for documents with an error in the **Status** column (e.g. `AS4_ERROR`, `TRANSPORT_ERROR`).
-2. **Identify Issue**: Review the **Status** column to identify the type of transmission or validation error.
-3. **Resubmit**: Select the document checkbox and click **Submit**. (Note: Only one document can be resubmitted at a time).
-4. **Verify Delivery**: Check the **To Peppol AP** or **History** tab a few minutes later to confirm success.
+| Prerequisite | Where | Why |
+|---|---|---|
+| Company Peppol status **ENABLED** (`bl_fi_mst_comp.peppol_status`) | [Organisation Applet](/applets/master-data/organisation-applet/) → company → Peppol Config | The trigger processor creates a Peppol posting-queue row only when `posting_status = FINAL`, the company's `peppol_status` is `ENABLED` and the document type is e-invoiceable (`GenericDocumentPeppolPostingQueueProcessor.processEvent`). |
+| Company Peppol participant ID (`peppol_participant_id`, e.g. `0230:…`) | Peppol Config → Registration in this applet, or Organisation Applet → Peppol Config | Required for the document to leave the Posting Queue (`checkPostingQueueValidity`). |
+| Customer / supplier Peppol participant ID, with one marked default (`bl_fi_entity_peppol_id.is_default`) | [Customer](/applets/master-data/customer-applet/) / [Supplier](/applets/master-data/supplier-applet-1/) applets → Peppol Config tab | The receiver ID is looked up from the document's entity (`MyPplToXapDocUow.getPeppolReceiverIdForSubmission`); without it the document fails with *Missing Peppol Sender or Receiver ID*. |
+| Everything the LHDN mandatory-field check needs (TIN, ID type/value, address with line 1 / city / state, phone 8–20 characters, MSIC, classification codes) | Organisation / Customer / Supplier / item masters — see the [admin applet page](/applets/e-invoice/my-e-invoice-admin-applet/#configuration) | The Waiting Queue decision reuses `MyEInvoiceToIRBProcessorService.initDecision`; a document that would land in an e-invoice pool also stays in the Peppol Posting Queue. |
+| Job processors enabled for the tenant | BigLedger support | `GENERIC_DOCUMENT_PEPPOL_POSTING_QUEUE_PROCESSOR` (trigger), `PEPPOL_POSTING_QUEUE_TO_WAITING_QUEUE`, `EINVOICE_WAITING_QUEUE_TO_XAP_DOC_PROCESSOR`, `EINVOICE_WAITING_QUEUE_PEPPOL_DATA_SENDER_PROCESSOR`, the submission-queue and inbox processors. |
+| Printable formats for exports | Settings → To / From Peppol AP Printable Format Settings | See below. |
 
-### For Accounts Receivable: Processing Received Invoices
-**Goal:** Retrieve a customer invoice sent directly to your Peppol ID.
-1. **Check Incoming List**: Go to **External Reception > From Peppol AP**.
-2. **Review Details**: Click the newest document to verify the Supplier ID, Tax ID, and transaction amounts.
-3. **Move to ERP**: Process the validated document into your core accounting flow (handled automatically in most downstream configurations).
-4. **Verify History**: The document moves to the **History** tab once successfully processed.
+### Applet settings
 
----
+The applet-local **Field Settings** screen renders eight toggles (Unit Discount, SST/VAT/GST, WHT, Blanket Order, Segment, G/L Dimension, Profit Center, Project) with no form control — no exposed control found (routes and settings components checked at commit `55cc1a3`). **Default Selection** is routed directly with no binding for its `appletSettings$` input or `save` output, so its SAVE emits to nothing.
 
-## How It Works: Document Flow
+Two keys are consumed:
 
-**Outgoing Documents (Sending to Suppliers/Customers):**
-```
-Document Created in ERP
-    ↓
-Posting Queue (pre-submission staging)
-    ↓
-LHDN Submission (My E-Invoice Admin)
-    ↓
-Waiting Queue (ready for Peppol dispatch)
-    ↓
-Automatic or Manual Processing
-    ↓
-Internal Submission → To Peppol AP (sent)
-    ↓
-Internal Submission → Queue (errors) or History (success)
-```
+| Setting | Where it is set | What it controls | Default | Effect when changed |
+|---|---|---|---|---|
+| `TO_PRINTABLE` | Settings → To Peppol AP Printable Format Settings → select a format as default (`selectDefaultPrintableFormatInit`) | Pre-selects the Printable Format dropdown on **To Peppol AP → Export** and on the received-document export (`…-account-export.component.ts`, `printableFormat.setValue(settings?.TO_PRINTABLE)`) | none — the dropdown starts empty | Exports default to the chosen format; any format can still be picked per export. |
+| `FROM_PRINTABLE` | Settings → From Peppol AP Printable Format Settings → select as default | Marks the default row in the *From Peppol* format listing | none | Note that the received-document export screen reads `TO_PRINTABLE`, not `FROM_PRINTABLE`, at commit `55cc1a3`. |
 
-**Incoming Documents (Receiving from Suppliers/Customers):**
-```
-Supplier/Customer sends via Peppol
-    ↓
-External Reception → From Peppol AP (received)
-    ↓
-External Reception → Queue (errors) or History (success)
-```
+Printable formats themselves are `bl_prt_printable_format_hdr` records with a **Format Code**, **Format Name** and an uploaded template file (`printableFormatService.getFile`).
 
----
+### Document behaviour settings
 
-## 1. Posting Queue
+Not applicable — the applet has no documents of its own; behaviour is fixed in the backend processors described under Lifecycle.
 
-The Posting Queue is the **pre-submission staging area** for outgoing documents before they are submitted to LHDN.
+### Feature visibility / permissions
 
-{{< figure src="/images/my-peppol-admin-applet/posting-queue.png" alt="Posting Queue showing list of documents with Submit, Export, and Withdraw buttons" caption="Posting Queue: Pre-submission staging area where outgoing documents await LHDN processing." >}}
+No client-side permission definitions are seeded for `myPeppolAdminApplet` (0 rows in `bl_applet_client_side_perm_dfn` on 2026-09-05) and the applet reads no `HIDE_*` / `SHOW_*` keys. Server-side the Peppol controllers (`…/peppol/waiting-queues`, `to-xap-docs`, `to-xap-submission-queues`, `from-peppol-doc-hdr-queues`, `comp-peppol-ids`, `participant-registrations`) are guarded by their own permission constants; assign them through Settings → Permission Set / Role Permission.
 
-### Columns Displayed
+## Fields
 
-| Column | Description |
-|--------|-------------|
-| **Doc Version** | e-Invoice schema version (e.g. `1.1.1`) |
-| **Doc No.** | Internal document reference number |
-| **Doc Short Code** | Mapped short code for the document type |
-| **Company** | Company code associated with the document |
-| **Entity Name** | Trading partner name |
-| **Original Ref. No** | Original e-invoice reference number |
-| **Document Date** | Transaction date (YYYY-MM-DD) |
-| **Amount** | Transaction amount |
-| **Status** | Current processing status — `UNPROCESSED` or processed |
+**Peppol Config → Registration (Create)**
 
-### Actions
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Company | The company being registered | Yes | One registration per company and scheme. |
+| Company Name, Company Reg. No. | As they will appear in the SMP | Yes | |
+| Special Identifier, Business Identifier | The Peppol scheme (e.g. `0230` for Malaysian TIN-based IDs) and the identifier value | Yes | Together they form the participant ID `scheme:identifier`. |
+| Type | Registration type | Yes | |
+| Name, Email, Phone Number, Websites, Geographical Information, Additional Information | Contact and directory details published with the participant | Name, Email | |
+| Additional Identifier Code / Value | Extra identifiers (e.g. BRN) | No | Add / Remove Additional Identifier. |
+| KYC document | PDF proving the company's identity | For approval | Uploaded to BigLedger and signed into the SMP (`uploadKycFileToBlgAndSmp`); the automated MDEC KYC flow is being introduced by the Malaysian SMP. |
 
-- **Select & Process**: Select rows with `UNPROCESSED` status (checkbox enabled) and click **Submit** to push them forward in the workflow.
-- **View Details**: Click any row to open the document detail panel.
+Business Card, Contact, Company and Website sub-lists have Add / Remove buttons on the same form.
 
-{{< figure src="/images/my-peppol-admin-applet/view-posting-queue-details.png" alt="View Posting Queue detail panel showing specific document details like Version, Type, No, Company, and Currency" caption="View Posting Queue: Click any row to inspect the full Document Details, Account, and Lines before submitting." >}}
+## Lifecycle and effects
 
-{{< figure src="/images/my-peppol-admin-applet/view-posting-queue-account.png" alt="View Posting Queue showing the Account tab with Entity Details like TIN, Identity Type, and Contact Number" caption="Account Details: Verify trading partner information such as the Tax Identification Number (TIN) before proceeding." >}}
-
-{{< figure src="/images/my-peppol-admin-applet/view-posting-queue-lines.png" alt="View Posting Queue showing the Lines tab with Item Code, Item Name, Tariff Code, and Quantities" caption="Line Items: Inspect individual items, amounts, and tax configurations attached to the document." >}}
-
-{{< callout type="tip" >}}
-**Tip**: Checkboxes only appear on rows with `UNPROCESSED` status. Already-processed documents are view-only.
-{{< /callout >}}
-
----
-
-## 2. Waiting Queue
-
-The Waiting Queue holds documents that have been successfully validated by LHDN and are now queued for Peppol network distribution.
-
-{{< figure src="/images/my-peppol-admin-applet/waiting-queue.png" alt="Waiting Queue showing list of documents with Process, Export, and Withdraw buttons" caption="Waiting Queue: Documents that have passed LHDN validation gather here before being dispatched to the Peppol network." >}}
-
-### How Documents Enter the Waiting Queue
-
-1. Invoice submitted to LHDN via My E-Invoice Admin Applet
-2. LHDN validates the document → status becomes `"Submitted"`
-3. Document is automatically moved to the Waiting Queue with status `UNPROCESSED`
-
-### Processing Methods
-
-**Automatic Processing:**
-- Scheduled cron jobs process documents at set intervals
-- No manual intervention required
-- Typical processing time: minutes
-
-**Manual Processing:**
-- Select rows with `UNPROCESSED` status
-- Click the **Process** button to dispatch immediately
-- Useful for urgent documents that cannot wait for the next cron cycle
-
-{{< callout type="tip" >}}
-**Normal Operation**: The Waiting Queue should clear quickly. Documents lingering here may indicate processing delays or Peppol configuration issues.
-{{< /callout >}}
-
----
-
-## 3. Internal Submission (Sending Documents)
-
-Track all documents your company is sending to trading partners via the Peppol network.
-
-### 3a. To Peppol AP
-
-The primary log of all outgoing documents successfully dispatched to the Peppol Access Point.
-
-{{< figure src="/images/my-peppol-admin-applet/internal-submission-to-peppol-ap.png" alt="Internal Submission To Peppol AP listing showing all outgoing Peppol documents with Sender and Receiver IDs" caption="To Peppol AP: Track all documents dispatched by your company to the Peppol edge node, verifying Sender and Receiver routing rules." >}}
-
-{{< figure src="/images/my-peppol-admin-applet/internal-submission-to-peppol-ap-details.png" alt="Internal Submission To Peppol Edit detail view showing Document No, Document Type, Currency, Issue Date, Amounts, Process ID, and Buyer's Info" caption="To Peppol AP Details: View individual document specifics, tax totals, and importantly, the Process ID to trace the exact transaction." >}}
-
-{{< figure src="/images/my-peppol-admin-applet/internal-submission-to-peppol-ap-export.png" alt="Internal Submission To Peppol Edit panel showing the Export tab with Printable Format dropdown and EXPORT AS PDF button" caption="Export Sent Documents: Select a custom 'To Peppol' printable format and export the document as a PDF." >}}
-
-**Key Information Tracked:**
-- Document identifiers (Type, No., Original Ref.)
-- Peppol routing numbers (Sender ID, Receiver ID, Org ID)
-- Trading partner details (Name, ID, Tax ID for both Buyer and Supplier)
-- Transaction values (Amounts, Dates, e-Invoice Version `1.1.1` and Code)
-
-### 3b. Queue (Error Handling — Outgoing)
-
-Documents that fail transmission or validation during outgoing Peppol processing appear here.
-
-{{< figure src="/images/my-peppol-admin-applet/internal-submission-queue.png" alt="Internal Submission Queue listing showing documents with transmission errors like AS4_ERROR and TRANSPORT_ERROR" caption="Internal Submission Queue: Monitor and resubmit documents that failed to reach the Peppol network due to routing or validation errors." >}}
-
-**Actions Available:**
-- **Submit**: Resubmit a selected stuck document. Only one document can be submitted at a time.
-- **View Details**: Can refer to `Status` column to check the error of stuck document.
-
-{{< figure src="/images/my-peppol-admin-applet/internal-submission-queue-details.png" alt="Internal Submission Queue Edit view showing document details with Delete and Submit action buttons" caption="Queue Action Panel: Review details for a stuck document and click Submit to manually retry transmission." >}}
-
-**Temporary Workaround (if resubmission fails):**
-1. Note the error type and document number
-2. Contact technical support
-3. Provide the document GUID and document number
-4. Backend team resolves and resubmits
-
-### 3c. History (Successfully Sent)
-
-Complete archive of all outgoing documents that were successfully transmitted via Peppol. Use this to confirm delivery and audit your Peppol transmission volume.
-
-{{< figure src="/images/my-peppol-admin-applet/internal-submission-history.png" alt="Internal Submission History listing showing successfully transmitted documents with Sent Dates and Amounts" caption="Internal Submission History: The permanent ledger of all successful outgoing Peppol transmissions." >}}
-
----
-
-## 4. External Reception (Receiving Documents)
-
-Monitor and manage all documents sent to your company by suppliers or customers via the Peppol network.
-
-### 4a. From Peppol AP
-
-Lists all incoming documents received on your company's Peppol ID.
-
-{{< figure src="/images/my-peppol-admin-applet/external-reception-from-peppol-ap.png" alt="External Reception From Peppol AP listing showing incoming invoices with Process IDs and Buyer details" caption="From Peppol AP: Central hub for monitoring all inbound documents sent from your trading partners directly to your Peppol ID." >}}
-
-**Key Information Tracked:**
-- **Process ID**: The unique Peppol process identifier
-- Originator references and Document types
-- Counterparty details to ensure the invoice is legitimate
-- Amounts and line items for processing
-
-{{< figure src="/images/my-peppol-admin-applet/external-reception-from-peppol-ap-details.png" alt="External Reception From Peppol Edit detail view showing Document No, Document Type, Amounts, and Buyer's Info" caption="From Peppol AP Details: Inspect the precise header information sent by the supplier, including all calculated tax totals." >}}
-
-{{< figure src="/images/my-peppol-admin-applet/external-reception-from-peppol-ap-export.png" alt="External Reception From Peppol Edit panel showing the Export tab with Printable Format dropdown and EXPORT AS PDF button" caption="Export Received Documents: Use custom printable formats to export incoming Peppol documents as PDFs for your records." >}}
-
-### 4b. Queue (Error Handling — Incoming)
-
-Documents that fail processing upon receipt appear here. Common issues include format validation failures, missing mandatory fields, or Peppol ID mismatches. Requires backend intervention for resolution.
-
-### 4c. History (Successfully Received)
-
-Archive of all incoming documents that were successfully processed into your ERP.
-
-{{< callout type="warning" >}}
-**Known Issue**: A mapping issue may occasionly prevent the History list from displaying received documents correctly. This is a known issue being tracked for resolution.
-{{< /callout >}}
-
----
-
-## 5. Monthly Reports
-
-The Monthly Reports section provides summary views for auditing document flow over a date range.
-
-### Queue Report
-Displays a per-company summary of documents that passed through the queue, logging Start/End dates, and user modification history.
-
-### History Report
-Displays a per-company summary of successfully processed documents over a reporting period.
-
-{{< callout type="info" >}}
-**Note**: The Queue Report and History Report currently display sample data. Live API integration is actively being developed.
-{{< /callout >}}
-
----
-
-## 6. Peppol Config
-
-Administrative control for managing your company's Peppol network registrations.
-
-### Peppol ID Registration
-Register and manage your company's Peppol IDs. Supports Create, Edit, and View details indicating your registration status.
-
-{{< figure src="/images/my-peppol-admin-applet/peppol-id-registration.png" alt="Peppol ID Registration listing and Create panel showing Special Identifier, Business Identifier, and Company Info mapping" caption="Peppol ID Registration: Officially register your business entity onto the Peppol network by providing your authorized identification codes." >}}
-
-### Registered Companies
-View and manage all companies under your profile that are registered on the Peppol network. Settings automatically sync with the **Organisation Applet**.
-
-{{< figure src="/images/my-peppol-admin-applet/peppol-registered-companies.png" alt="Registered Companies listing showing active entities on the Peppol network" caption="Registered Companies: Validate your internal organizational units that are active and ready to transact on Peppol." >}}
-
----
-
-## 7. Settings
-
-Configure applet-level behaviour and document formatting:
-- **Default Settings & Field Configuration**: Customize selections and visible columns.
-- **Printable Format Settings**: Add and Edit formats for `To Peppol` and `From Peppol` communications.
-- **Webhook**: Set up endpoints for real-time Peppol transaction alerts.
-- **Permissions Framework**: Role-based access control governed by User, Team, and Role permission sets.
-
----
-
-## 8. Peppol Testbed
-
-A secure sandbox where you can simulate receiving documents. Use the **Receiving Test History** to validate connectivity and parsing logic before turning your official Peppol ID live.
-
----
-
-## 9. Integration Points
-
-### With My E-Invoice Admin Applet
-Documents flow from LHDN submission (My E-Invoice Admin) into the Waiting Queue (My Peppol Admin) automatically once validated. The same **Process ID** is used across both systems for end-to-end traceability.
-
-### With Peppol AP Admin Applet
-- **Peppol AP Admin** is the internal staff tool for managing all tenants' Peppol routing.
-- **My Peppol Admin** is the customer-facing view — each customer has their own instance showing only their documents.
-
----
-
-## 10. Frequently Asked Questions
-
-**Q: What is the difference between the Posting Queue and the Waiting Queue?**
-A: Important distinction: The Posting Queue is the pre-LHDN staging area. The Waiting Queue holds documents *after* LHDN validates them, ready for Peppol dispatch. Both must clear for a document to successfully reach the recipient.
-
-**Q: Can I manually resubmit a failed document?**
-A: Yes. Go to **Internal Submission > Queue**, select the document checkbox, and click **Submit**. Note: The system restricts resubmission to one document at a time.
-
-**Q: How do I know if an outbound invoice was properly delivered?**
-A: Check **Internal Submission > To Peppol AP**. Once it clears processing, it will permanently appear in your **Internal Submission > History**.
-
-**Q: Why don’t my Queue Reports show current data?**
-A: The Monthly Reports functionality (Queue and History Reports) is currently undergoing an API upgrade and may display sample sandbox data. Rely on the direct Queue or History lists under Internal/External sections for live data.
-
-**Q: Do I need to set up my Peppol ID here AND in the Organisation Applet?**
-A: No. Peppol Config settings are synchronized globally. Changes made here will reflect in the Organisation Applet automatically.
-
-{{< callout type="info" >}}
-**Need Help?** Contact your system administrator or support team for assistance with advanced Peppol configuration or transmission issues.
-{{< /callout >}}
+1. **At FINAL** — `GENERIC_DOCUMENT_PEPPOL_POSTING_QUEUE_PROCESSOR` writes a `bl_fi_generic_doc_peppol_posting_queue` row (`process_status = UNPROCESSED`) when the company's `peppol_status` is `ENABLED`, the document type is one of the e-invoice sales types (or a self-billed purchase type) and `skip_einvoice` is false (`checkDocTypeValidity`). Nothing is written otherwise.
+2. **Posting Queue → Waiting Queue** — `PeppolPostingQueueToWaitingQueueProcessor` (also **Submit** on the Posting Queue, `postMultipleToProcess`) runs the e-invoice construction and mandatory-field check on each UNPROCESSED row and creates a `bl_ppl_einvoice_waiting_queue` row only when the check passes **and** both `bl_fi_mst_comp.peppol_participant_id` and the entity's `peppol_participant_id` are non-blank (`checkPostingQueueValidity`). The posting-queue row is set to `PROCESSED` either way; a document that fails stays visible in the Posting Queue as processed without a waiting-queue row. **Withdraw** removes the row from the queue.
+3. **Waiting Queue → To Peppol AP** — `EINVOICE_WAITING_QUEUE_TO_XAP_DOC_PROCESSOR` (also **Process**, `processNow` → `POST …/peppol/waiting-queues/process/execute/backoffice-ep`) builds the `bl_ppl_to_xap_doc_hdr` / lines from the document, company and entity, resolves the receiver from the entity's default Peppol ID, and validates the Standard Business Document (`createAndValidateSBDHDocuments`). A document with no sender or receiver ID is stamped `validation_error = "Missing Peppol Sender or Receiver ID"` and stops; a document that passes is stamped `[THIS_DOCUMENTS_IS_VALID]` and queued for sending.
+4. **Sending** — `EINVOICE_WAITING_QUEUE_PEPPOL_DATA_SENDER_PROCESSOR` sends valid documents through the access point (`PeppolSenderCommonService`), deletes the waiting-queue row and sets `submission_status = SUBMITTED` on success; AS4 and transport failures are recorded on the submission-queue row (`AS4_ERROR_MESSAGE_RECEIVED`, `TRANSPORT_ERROR`) and can be resent from **Internal Submission → Queue → Submit** (`submitQueue`, one row at a time) or deleted. Successful transmissions appear in **History**.
+5. **Receiving** — the access point delivers documents addressed to your participant IDs into the inbox queue; `FromPeppolDocHdrQueueProcessor` moves them from Docs Queue to Docs History and **From Peppol AP** lists the delivered headers with their process IDs.
+6. **Registration** — Peppol Config → Registration creates a `bl_ppl_ap_participant_registration_hdr` in BigLedger's access-point tenant through the cross-tenant endpoints (`…/participant-registrations/{crossTenantCode}/cross-tenant-login-ep`), calls the Malaysian SMP to create the participant (`PeppolParticipantSmpService.createParticipant`) and uploads the KYC PDF; the registration's `posting_status` follows the standard column values (`DRAFT`, `FINAL`, `VOID`, `FAILED`, …) and a company-receiver mapping is inserted on success (`insertIntoCompRcvrMapping`). Existing participants can be looked up in the SMP by ID or by search word (`PplParticipantSmpLookupController`).
+
+This applet writes the Peppol queue and document tables and the registration records only; it never changes the source document or posts journals.
+
+## Related applets
+
+- [My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) — same source documents, same mandatory-field check, separate pipeline to LHDN.
+- [Organisation Applet](/applets/master-data/organisation-applet/) — company `peppol_status`, participant IDs and the Peppol Config tab that mirrors Registration here.
+- [Customer Applet](/applets/master-data/customer-applet/), [Supplier Applet](/applets/master-data/supplier-applet-1/) — the counterparty's Peppol participant IDs (one must be default).
+- [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [POS General](/applets/sales-workflow/pos-general-applet/) — where the documents originate.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| Document is `PROCESSED` in the Posting Queue but never reaches the Waiting Queue | It failed the e-invoice mandatory-field check, or the company or the customer has no Peppol participant ID. | Complete the same fields the LHDN pipeline needs (the document will also be sitting in an e-invoice pool with the reason), add the participant IDs, then Submit the row again. |
+| To Peppol AP row with validation error *Missing Peppol Sender or Receiver ID* | The entity has Peppol IDs but none is marked default, or the company ID is blank. | Mark one customer Peppol ID as default; check the company's participant ID; Process again from the Waiting Queue. |
+| Queue row `AS4_ERROR_MESSAGE_RECEIVED` | The receiving access point rejected the AS4 message (typically the receiver is not registered for the document type, or the SBDH failed their validation). | Confirm the receiver's participant ID and capabilities with an SMP lookup, correct the customer's Peppol ID, resend. |
+| Queue row `TRANSPORT_ERROR` | Network or access-point outage during sending. | Resend from Internal Submission → Queue; if it recurs, contact support. |
+| Documents sit in the Waiting Queue and `validation_error` on the to-XAP header stays empty | The waiting-queue processors are not running for the tenant. | Press Process to run them once; ask support to check the job-processor configuration. |
+| SMP lookups or registrations fail after a Peppol infrastructure change | The Malaysian SMP migrated to the new OpenPeppol SML / T-SML domains in 2026; access-point providers had to switch lookup domains. | Handled on the access-point side by BigLedger; retry after the migration window. |
+| Peppol Config "Create" does nothing or the listing does not refresh after creating a subsidiary's registration | Known front-end defect in the Customer applet's Peppol Config tab (tracked internally). | Refresh the listing; use this applet's Registration screen. |
+| Monthly Report screens are empty | The Queue and History reports are driven by **Generate Report** for a period; they show nothing until generated. | Generate the report for the period. |
+
+## Related documentation
+
+- [PEPPOL Configuration Guide](/guides/einvoice-guides/peppol-configuration/)
+- [E-Invoice module](/modules-v2/e-invoice/)

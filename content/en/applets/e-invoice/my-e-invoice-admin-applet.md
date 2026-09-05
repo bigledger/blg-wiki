@@ -1,6 +1,75 @@
 ---
 title: "My E-Invoice Admin Applet"
-description: "Comprehensive e-invoice lifecycle management for LHDN submission, validation, rejection handling, and cancellation compliance in Malaysia"
+description: "Back-office control panel for Malaysian LHDN MyInvois e-invoicing: the posting queue, the three holding pools, submission and validation queues, consolidation, cancellation requests, incoming e-invoices, reconciliation and the monthly discrepancy report."
+applet_code: "myIEnvoiceAdminApplet"
+applet_repo: "blg-applet-wavelet-my-invoice-admin-applet"
+modules: [e-invoice]
+related_applets: [my-e-invoice-portal-applet, mypeppol-admin-applet, organisation-applet, customer-applet, supplier-applet-1, internal-sales-invoice-applet, internal-sales-credit-note-applet, internal-sales-debit-note-applet, internal-sales-refund-note-applet, internal-sales-return-applet, pos-general-applet, internal-purchase-invoice-applet, doc-item-maintenance-applet, tax-configuration-applet]
+guides:
+  - /guides/einvoice-guides/einvoice-pools-and-routing/
+  - /guides/einvoice-guides/einvoice-validation/
+  - /guides/einvoice-guides/myinvois-setup/
+sources:
+  screens:
+    - blg-applet-wavelet-my-invoice-admin-applet/micro-fe/projects/wavelet-erp/applets/my-invoice-admin-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-my-invoice-admin-applet/micro-fe/projects/wavelet-erp/applets/my-invoice-admin-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-my-invoice-admin-applet/micro-fe/projects/wavelet-erp/applets/my-invoice-admin-applet/src/app/components/Tools/file-import-container/file-import-create/file-import-create.component.html
+  configuration:
+    - blg-applet-wavelet-my-invoice-admin-applet/micro-fe/projects/wavelet-erp/applets/my-invoice-admin-applet/src/app/components/settings-container/field-configuration/field-configuration.component.ts
+    - blg-applet-wavelet-my-invoice-admin-applet/micro-fe/projects/wavelet-erp/applets/my-invoice-admin-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - blg-applet-wavelet-my-invoice-admin-applet/micro-fe/projects/wavelet-erp/applets/my-invoice-admin-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-my-invoice-admin-applet/micro-fe/projects/wavelet-erp/applets/my-invoice-admin-applet/src/app/components/settings-container/settings-container.component.html
+    - blg-applet-wavelet-my-invoice-admin-applet/micro-fe/projects/wavelet-erp/applets/my-invoice-admin-applet/src/app/app.component.ts
+    - blg-applet-wavelet-my-invoice-admin-applet/micro-fe/projects/wavelet-erp/applets/my-invoice-admin-applet/src/app/components/internal-submission/internal-submission-to-irb-container/internal-submission-to-irb-edit/internal-submission-to-irb-edit.component.ts
+    - blg-applet-wavelet-my-invoice-admin-applet/micro-fe/projects/wavelet-erp/applets/my-invoice-admin-applet/src/app/components/monthly-reports/discrepancies-report-container/discrepancies-report-view/discrepancy-report-details/generic-doc-listing/generic-doc-listing.component.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/eInvoice/lhdn/MyEInvoiceLHDNIntegrationHelperService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/eInvoice/shared/MyEInvoicePostingQueueProcessingService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/eInvoice/shared/MyEInvoiceToIRBMappingService.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dto/erp/eInvoice/EInvoiceIssuerType.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dto/erp/eInvoice/EInvoiceForexGendocPostingLogic.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/EInvoicePermissions.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/eInvoice/CompEInvoiceIntermediarySystemController.java
+    - blg-intranet/content/1100-malaysia-einvoice/README.md
+  fields:
+    - blg-applet-wavelet-my-invoice-admin-applet/micro-fe/projects/wavelet-erp/applets/my-invoice-admin-applet/src/app/models/einvoice_constants.ts
+    - blg-applet-wavelet-my-invoice-admin-applet/micro-fe/projects/wavelet-erp/applets/my-invoice-admin-applet/src/app/models/constant/batch-pool.ts
+  lifecycle:
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/eInvoice/GenericDocumentEInvoicePostingQueueProcessor.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/eInvoice/shared/MyEInvoiceSharedService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/eInvoice/shared/MyEInvoiceToIRBProcessorService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/eInvoice/MyEinvoiceBatchPoolDocService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/eInvoice/pools/MyEInvoicePoolConversionService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/eInvoice/toIrbReSubmission/MyEInvoiceToIrbResubmissionService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/eInvoice/MyEInvoiceGenDocToIrbCancellationQueueService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/eInvoice/MyEinvoiceRequestRejectionService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/eInvoice/MyEInvoiceTinUpdateRequestHdrService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/eInvoice/MyEInvoiceTinUpdateRequestQueueService.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dto/erp/eInvoice/EInvoiceConstants.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/model/erp/eInvoice/lhdn/MyEInvoiceLHDNDocumentStatus.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/model/erp/eInvoice/MyEInvoiceCancellationProcessingLogic.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/eInvoice/MyEInvoiceToIrbController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/eInvoice/MyEInvoiceBatchPoolDocController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/eInvoice/pools/MyEInvoiceIndividualPoolDocController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/eInvoice/pools/MyEInvoiceSingleGeneralPoolDocController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/eInvoice/MyEInvoiceDirectCancellationController.java
+    - blg-intranet/content/1100-malaysia-einvoice/README.md
+    - blg-intranet/content/1100-malaysia-einvoice/images/lhdn-core-workflow.png
+    - blg-intranet/content/1100-malaysia-einvoice/images/E-inv 10K Simulation - Scenarios.csv
+  troubleshooting:
+    - blg-intranet/content/1100-malaysia-einvoice/README.md
+    - gh:bigledger/blg-intranet#5427
+    - gh:bigledger/blg-intranet#5415
+    - gh:bigledger/blg-intranet#5567
+    - gh:bigledger/blg-intranet#5618
+    - gh:bigledger/blg-intranet#5623
+    - gh:bigledger/blg-intranet#5626
+    - gh:bigledger/blg-intranet#5663
+    - gh:bigledger/blg-intranet#1925
+    - gh:bigledger/blg-intranet#1778
+    - gh:bigledger/blg-intranet#2070
+    - gh:bigledger/blg-applet-wavelet-my-invoice-admin-applet#36
+    - gh:bigledger/blg-applet-wavelet-my-invoice-admin-applet#37
+    - gh:bigledger/blg-applet-wavelet-my-invoice-admin-applet#67
 tags:
 - e-invoice
 - lhdn
@@ -15,849 +84,306 @@ aliases:
 - /applets/e-invoice/einvoice-generation-applet/
 ---
 
-## Purpose and Overview
+## Overview
 
-The **My E-Invoice Admin Applet** is the central hub for managing your company's e-invoice compliance with LHDN (Lembaga Hasil Dalam Negeri) under Malaysia's MyInvois mandate. It handles the complete lifecycle of every e-invoice — from staging documents in the Posting Queue and submitting them in bulk via Batch Pool, through to rejection resolution, cancellation management, and monthly compliance reporting.
+The My E-Invoice Admin Applet is the back-office console for Malaysia's LHDN MyInvois e-invoicing. Sales and purchase documents are created and finalised in their own applets; the moment one is set to FINAL, a trigger processor routes it into the e-invoice pipeline, and this applet is where you watch that pipeline, fix what stalls, consolidate what should be consolidated, cancel what LHDN has validated in error, and reconcile incoming e-invoices from your suppliers. It is opened by the accounts team and by whoever owns month-end e-invoice compliance. Nothing here creates an accounting document or posts a journal.
 
 {{< callout type="info" >}}
-**Core Concept**: Every document you submit goes through LHDN's MyInvois portal for validation. This applet is your control panel for that entire process — queuing, submitting, monitoring, resolving errors, and archiving results.
+An e-invoice is never submitted from the document applet. Finalising a sales invoice, cash bill, credit note, debit note, refund note or sales return (or a self-billed purchase document) only *queues* it. Everything after that point happens in this applet and in the background job processors described under [Lifecycle and effects](#lifecycle-and-effects).
 {{< /callout >}}
 
-### Who Benefits from This Applet?
+## Where it fits
+
+| Upstream | This applet | Downstream |
+|---|---|---|
+| Sales documents finalised in [Sales Invoice](/applets/sales-workflow/internal-sales-invoice-applet/), [POS](/applets/sales-workflow/pos-general-applet/), [Sales Credit Note](/applets/sales-workflow/internal-sales-credit-note-applet/), [Sales Debit Note](/applets/sales-workflow/internal-sales-debit-note-applet/), [Sales Refund Note](/applets/sales-workflow/internal-sales-refund-note-applet/), [Sales Return](/applets/sales-workflow/internal-sales-return-applet/) | Posting queue → pools → to-IRB submission → LHDN validation → e-mail of the validated PDF | LHDN MyInvois (validated e-invoice, LHDN document UUID, QR link) |
+| Self-billed purchase documents (Purchase Invoice with `EINVOICE_SELF_BILLED = TRUE`, purchase credit/debit/refund note, purchase return) — see [Purchase Invoice](/applets/finance/internal-purchase-invoice-applet/) | Same pipeline, with the company as buyer and the supplier as issuer | LHDN MyInvois |
+| Company e-invoice identity and settings in the [Organisation Applet](/applets/master-data/organisation-applet/) | Read on every submission (TIN, BRN, SST, MSIC, address, phone, issuer type, forex logic) | — |
+| Customer and supplier e-invoice details in the [Customer](/applets/master-data/customer-applet/) and [Supplier](/applets/master-data/supplier-applet-1/) applets | Read when the to-IRB header is built; corrected in place from the pools | — |
+| Supplier e-invoices received from LHDN (External Reception) | Reconciliation (Purchase) matches them against your purchase documents | Purchase applets |
+| Validated e-invoices | — | [My Peppol Admin Applet](/applets/e-invoice/mypeppol-admin-applet/) picks them up in its Waiting Queue for Peppol delivery; [My E-Invoice Portal Applet](/applets/e-invoice/my-e-invoice-portal-applet/) lets a buyer request or reject them |
+
+## Screens and menus
 
-**Accounts Payable Teams:**
-- Queue purchase invoices, credit notes, and debit notes for LHDN submission
-- Track validation status of every outgoing document
-- Resolve rejection errors without leaving the system
-- Maintain a complete submission audit trail
+The left menu, in the order the applet renders it (`models/menu-items.ts`). The default landing screen is **Posting Queue**.
 
-**Accounts Receivable Teams:**
-- Submit sales invoices to LHDN for compliance
-- Monitor validation outcomes in real time
-- Handle cancellation requests for validated invoices
-- Ensure all issued invoices meet LHDN requirements
+| Menu | Sub-menu | Route | What it lists | Actions on the screen |
+|---|---|---|---|---|
+| Master List | — | `master-list` | Every e-invoice record across all sections; tabs **Document** and **Document Details/Lines** | Search, Export |
+| Posting Queue | — | `posting-queue` | Documents waiting for the to-IRB processor (`bl_fi_generic_doc_einvoice_posting_queue`) with queue status, validation message and process status | Submit (process the selected rows now) |
+| Batch Pool | — | `batch-pool` | Documents held for consolidated submission | Process, Consolidate, Consolidate By Branch, Move to Individual, Move to Single General; per row: Skip E-Invoice, Submit as Individual, Submit as Single General, Save and Resubmit |
+| Individual Pool | — | `individual-pool` | Documents that must go out as individual e-invoices but fail the mandatory-field check | Move To Batch Pool, Move to Single General; per row: Save and Resubmit, Skip E-Invoice, Get TIN / Verify TIN |
+| Single General Pool | — | `single-general-pool` | Documents whose submission type is `SINGLE-GENERAL` and that fail the mandatory-field check | Save and Resubmit, move to Individual / Batch, Skip E-Invoice |
+| Internal Submission | To IRB E-Invoice | `internal-submission-to-irb` | Every to-IRB header (`bl_fi_my_einvoice_to_irb_hdr`); tabs **Listing** and **Export** | Save and Resubmit, Resubmit as New E-invoice, Request for Rejection, Printable (LHDN Format), Refresh |
+| | Individual Submission | `internal-submission-to-irb-queue` | The individual submission queue (`…_gen_doc_to_irb_submission_queue`) | Submit |
+| | Consolidated Submission | `consolidated-submission-queue` | Consolidated payloads waiting to be sent | Submit |
+| | Validation Queue | `internal-submission-to-irb-validation-queue` | Submissions LHDN has accepted but not yet validated | Submit (bulk, added 2026-07) |
+| | Portal Request | `portal-request-hdr` | Requests raised through the customer portal | — |
+| | Submission History | `internal-submission-to-irb-history` | Archive of every submission; tabs **Listing** and **Export** | Export |
+| | Email Dashboard | `email-dashboard-queue` | Tabs **Email Printable Queue** and **Email Printable Queue History** — the e-mails of validated PDFs to buyers, with retry count and error | — |
+| External Reception | Queue | `external-reception-queue` | Incoming e-invoices fetched from LHDN awaiting processing | Export |
+| | From IRB E-Invoice | `external-reception-from-irb` | Incoming e-invoices already processed | Export |
+| Reconciliation (Purchase) | PD Matching Q. · Inc. E-Invoice Match Q. · Matched History · Inc. Unmtch. E-Inv. Hist. · Unmatched PD Hist. | `puchase-doc-matching-queue` … | Your purchase documents vs supplier e-invoices received from LHDN | Auto Match, Export, Push to Unmatched History |
+| Reconciliation (Sales) | SD Matching Q. · Inc. Ecom Matcd. Q. · Matched History · Inc. Ecom Unmatcd. Hist. · SD Unmatcd. Hist. | `sales-doc-matching-queue` … | Your sales documents vs e-invoices received from e-commerce platforms | Auto Match, Export, Push to Unmatched History |
+| Cancellation | Rejection Requests | `rejection-request` | Internal cancellation requests with requestor / processing / approval status | Process Request; per row: Update |
+| | Cancellation Queue | `rejection-request-queue` | Approved requests queued for the LHDN cancellation call, with request error | Process |
+| Monthly Report | Discrepancies Report | `discrepancies-report` | Per-company, per-period comparison of finalised documents against e-invoice records | Create, view details |
+| | History | `history-report` | Past reports | — |
+| Tools | Bulk Tin Validation | `bulk-tin-validation` | CSV uploads of TIN corrections (`bl_fi_my_einvoice_tin_update_request_hdr`) | Upload File, Submit |
+| Settings | Field Settings · Default Selection · Webhook · Feature Visibility · Permission Wizard · Permission Set · User Permission · Role Permission | `settings/...` | See [Configuration](#configuration) | — |
+| Personalization | Default Selection · Sidebar | `personalization/...` | Per-user defaults | — |
 
-**Finance & Compliance Officers:**
-- Oversee company-wide e-invoice compliance
-- Run monthly discrepancy reports for audits
-- Ensure submission deadlines are met
-- Manage bulk submissions efficiently via Batch Pool
+{{< figure src="/images/my-e-invoice-admin-applet/master-list.png" alt="Master List with Document and Document Details/Lines tabs and the full left menu" caption="Master List — the left menu shows every section of the applet." >}}
 
-**System Administrators:**
-- Configure submission settings and company details
-- Manage LHDN API credentials and connectivity
-- Monitor system health and batch processing queues
-- Set up document type mappings and validation rules
+{{< figure src="/images/my-e-invoice-admin-applet/batch-pool-validation-error.png" alt="Batch Pool with a purchase invoice selected and the Validation Error panel listing the supplier fields that are missing" caption="Batch Pool — a document held because the supplier's TIN, ID type, ID value, contact number and address are missing. Fix them on the Account tab and use Save and Resubmit." >}}
 
-### What Problems Does This Solve?
+{{< figure src="/images/my-e-invoice-admin-applet/internal-submission-to-irb-e-invoice.png" alt="Internal Submission To IRB listing with e-invoice number, dates, document numbers, branch, company and e-invoice status columns" caption="Internal Submission → To IRB E-Invoice — one row per to-IRB header, with the LHDN document status (Invalid, IN_QUEUE, Valid…)." >}}
 
-**The Manual E-Invoice Compliance Problem:**
+{{< figure src="/images/my-e-invoice-admin-applet/internal-submission-consolidated.png" alt="Consolidated Submission Queue listing showing consolidated payloads with buyer General Public and a Submit button" caption="Internal Submission → Consolidated Submission — consolidated payloads (buyer = General Public) waiting for the LHDN call." >}}
 
-Without a dedicated tool, managing LHDN e-invoice compliance is fragmented and error-prone:
-- Logging into MyInvois portal separately for every submission
-- No visibility into submission status without manual checking
-- Difficult to track which documents have been validated or rejected
-- Rejection errors require manual identification and resubmission
-- No centralised audit trail for compliance reporting
+{{< figure src="/images/my-e-invoice-admin-applet/internal-submission-validation-queue.png" alt="Validation Queue listing, empty, with a Submit button" caption="Internal Submission → Validation Queue — normally empty; rows here have been accepted by LHDN but not yet validated." >}}
 
-**The My E-Invoice Admin Applet Solution:**
+{{< figure src="/images/my-e-invoice-admin-applet/internal-submission-history.png" alt="Internal Submission History listing with Listing and Export tabs" caption="Internal Submission → Submission History." >}}
 
-- **Posting Queue** — Stage and review documents before sending them to LHDN
-- **Batch processing** — Submit hundreds of documents at once via Batch Pool
-- **Inline error resolution** — View and fix rejection errors directly from the interface
-- **Cancellation management** — Submit and track cancellation requests from a single screen
-- **Complete audit trail** — Full history of every submission for compliance reporting
-- **Monthly reports** — Discrepancy reports to reconcile your records against LHDN
+{{< figure src="/images/my-e-invoice-admin-applet/internal-submission-portal-request.png" alt="Portal Request Hdr listing with document numbers, amount, user request status and status columns" caption="Internal Submission → Portal Request — requests raised by buyers through the customer portal." >}}
 
-## Key Features Overview
+{{< figure src="/images/my-e-invoice-admin-applet/cancellation-rejection-requests.png" alt="Rejection Requests listing with System Requestor Status, System Processing Status, System Approval Status and Request Submission Date columns" caption="Cancellation → Rejection Requests — a request sits at REQUESTED / IN-PROGRESS until someone approves it and chooses a processing logic." >}}
 
-{{< cards >}}
-  {{< card title="Master List" subtitle="Complete view of all e-invoice documents across all statuses" link="#1-master-list" >}}
+{{< figure src="/images/my-e-invoice-admin-applet/cancellation-queue-details.png" alt="Cancellation Queue detail panel showing Request Submission Status SUBMISSION_FAILED, Processing Logic VOID_ORIGINAL_DOC and Request Error Passed 72 hours from validation date time" caption="Cancellation → Cancellation Queue — the Request Error field carries the backend reason, here the 72-hour rule." >}}
 
-  {{< card title="Posting Queue" subtitle="Stage and review documents before submitting to LHDN" link="#2-posting-queue" >}}
+{{< figure src="/images/my-e-invoice-admin-applet/reconciliation-purchase-matching.png" alt="Purchase Doc Matching Queue with Auto Match, Export and Push to Unmatched History buttons" caption="Reconciliation (Purchase) → PD Matching Q." >}}
 
-  {{< card title="Batch Pool" subtitle="Manage bulk submissions and resolve rejection errors inline" link="#3-batch-pool" >}}
+## Configuration
 
-  {{< card title="Internal Submission" subtitle="Track all outgoing LHDN submissions and their outcomes" link="#5-internal-submission" >}}
+### Before you can use it
 
-  {{< card title="Cancellation" subtitle="Submit and track LHDN cancellation requests" link="#7-cancellation" >}}
+Almost everything that decides whether a document reaches LHDN is configured *outside* this applet.
 
-  {{< card title="Monthly Report" subtitle="Discrepancy reports for monthly compliance reconciliation" link="#8-monthly-report" >}}
-{{< /cards >}}
+| Prerequisite | Where | Why it matters |
+|---|---|---|
+| Company e-invoice status **ENABLED** | [Organisation Applet](/applets/master-data/organisation-applet/) → company → E-Invoice tab (`bl_fi_mst_comp.einvoice_status`) | The entry-gate processor drops any finalised document whose company is not ENABLED — silently, with no queue row and no error (`GenericDocumentEInvoicePostingQueueProcessor.processEvent`, the `"ENABLED".equals(...)` conjunct). Enable e-invoice *before* finalising documents. |
+| Company identity: TIN, ID type and value, registration number, SST number, MSIC code, business-activity description, address (line 1, city, state), phone (8–20 characters), e-mail | Organisation Applet → company | These become the supplier fields of every sales e-invoice (or the buyer fields of a self-billed purchase e-invoice) and are all on the header mandatory list; MSIC defaults to `00000` and business activity to `NOT APPLICABLE` when blank. |
+| BigLedger registered as your **intermediary** on the MyInvois portal, then the intermediary token configured for the company | MyInvois portal (you); `POST …/configure-intermediary/backoffice-ep` (BigLedger support) — creates `bl_fi_mst_comp_einvoice_intermediary_system` rows for SANDBOX and PRODUCTION | With issuer type `INTERMEDIARY` (the default) every LHDN call uses a token generated on behalf of your TIN; the `E_INVOICE_INTERMEDIARY_ACCESS_TOKEN_PROCESSOR` cron regenerates it every ~20 minutes and keeps three tokens per company and environment. If the intermediary authorisation lapses at LHDN the submissions fail with `Access Token not available` until it is re-done. |
+| Company e-invoice settings JSON (`bl_fi_mst_comp.einvoice_settings_json`) | Organisation Applet → company → E-Invoice tab; some keys are maintained by BigLedger support | See the table below. |
+| Job processors enabled for the tenant | BigLedger support (`bl_sch_crontab_hdr`, `bl_applet_trigger_config_hdr`) | Eight cron processors and three trigger processors run the pipeline (listed under Lifecycle). A tenant with a missing processor sees documents stop at the corresponding queue. |
+| Customer / supplier e-invoice fields: TIN, ID type (`NRIC`, `BRN`, `PASSPORT`, `ARMY`), ID value, address with `default_einvoice_address`, phone, e-mail | [Customer](/applets/master-data/customer-applet/) / [Supplier](/applets/master-data/supplier-applet-1/) applets | Missing or malformed values are the single largest cause of documents landing in a pool. The address used is the first with `default_einvoice_address = true`, in the order shipping → billing → main. |
+| Item classification codes, e-invoice UOM, tax type codes | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/) | Line defaults are applied when blank (classification `022 Others`, UOM `H87 piece`, tax type `06` when tax is zero, `01` when tax is non-zero) — but wrong non-blank values are sent as-is. |
+| Per-document `einvoice_submission_type` (`INDIVIDUAL`, `CONSOLIDATED`, `SINGLE-GENERAL` or blank) and `skip_einvoice` | Set on the document in the sales / purchase / POS applet (or inherited from the entity / branch defaults) | Decides which pool the document falls into; a skipped document never enters the pipeline. |
 
-{{< figure src="/images/my-e-invoice-admin-applet/my-e-invoice-admin-applet-overview-infographic.png" alt="My E-Invoice Admin Applet Overview Infographic" caption="My E-Invoice Admin Applet Overview: Streamlining LHDN compliance from submission to reconciliation." >}}
+**Company e-invoice settings JSON** (`EInvoiceCompanySetting`, read by the backend on every submission):
 
-## Key Concepts
+| Key | Values | Default when absent | Effect |
+|---|---|---|---|
+| `einvoice_issuer_type` | `INTERMEDIARY`, `ERP` | `INTERMEDIARY` | `INTERMEDIARY` uses the per-company token generated on behalf of your TIN; `ERP` uses BigLedger's own credentials from the master configuration (`MyEInvoiceLHDNIntegrationHelperService.getIntermediaryTokenAndEnv`). |
+| `einvoice_forex_gendoc_posting_logic` | `POST_FOREX_DOC`, `POST_LOCAL_CCY_DOC` | `POST_FOREX_DOC` | For a foreign-currency sale BigLedger keeps two generic documents (base MYR and forex child). `POST_FOREX_DOC` submits the forex child (amounts in the foreign currency); `POST_LOCAL_CCY_DOC` submits the MYR document (`MyEInvoicePostingQueueProcessingService.retrieveForexDocIfExists`). A UI control for this choice is tracked as an open issue; today it is set by support. |
+| `einvoice_running_no_config` | pattern with `{generic_doc_hdr_server_doc_1}`, `{generic_doc_hdr_server_doc_2}`, `{generic_doc_hdr_server_doc_3}`, `{doc_reference}`, `{client_doc_1}`…`{client_doc_5}` | empty | Appended to the sequential e-invoice running number, truncated to 50 characters (`MyEInvoiceToIRBMappingService`, running-number construction). |
+| `einvoice_line_item_desc_config` | pattern with `{item_code}`, `{item_name}`, `{item_remarks}` joined by `;` | `item_code;item_name;item_remarks` | Builds the line description sent to LHDN, truncated to 300 characters, URLs and special characters stripped. |
 
-### Understanding the E-Invoice Flow
+### Applet settings
 
-Every e-invoice submission moves through a defined lifecycle. Understanding this flow helps you act at the right stage:
+Settings live in an **applet-local** `FieldConfigurationComponent` (`settings/field-settings`), not the shared one from blg-shared-utilities. The form patches from the session's master settings and saves through `SessionActions.saveMasterSettingsInit`, so every key below is tenant-wide and can be changed by anyone who can open Settings (no role check in the component). Every control starts as `null`; the consumers treat `null` as `false`, so the effective default of every toggle is **off**.
 
-| Stage | Where | What Happens |
-|-------|-------|-------------|
-| **Document Created** | Sales / Purchase Applet | Invoice, credit note, or debit note is generated |
-| **Staged** | Posting Queue | Document queued and reviewed before submission |
-| **Submitted to LHDN** | Batch Pool / Individual Pool | Document sent to MyInvois portal via API |
-| **Validated** | LHDN MyInvois | LHDN checks the document against compliance rules |
-| **Submitted (Accepted)** | Internal Submission → History | Document is LHDN-compliant and legally valid |
-| **Rejected** | Batch Pool | Document failed validation — must be corrected |
-| **Cancelled** | Cancellation | Validated document voided upon LHDN approval |
+| Setting | Panel | What it controls | Default | Effect when changed |
+|---|---|---|---|---|
+| `HIDE_INDIVIDUAL_POOL_MENU` | Side Menu Settings | Removes **Individual Pool** from the left menu (`app.component.ts`, menu filter) | off | The route still exists; only the menu entry disappears. |
+| `HIDE_SINGLE_GENERAL_POOL_MENU` | Side Menu Settings | Removes **Single General Pool** from the menu | off | As above. |
+| `HIDE_EXTERNAL_RECEPTION_MENU` | Side Menu Settings | Removes the whole **External Reception** group | off | As above. |
+| `HIDE_PORTAL_REQUEST_HDR_MENU` | Side Menu Settings | Removes **Internal Submission → Portal Request** | off | As above. |
+| `SHOW_RESUBMIT_AS_NEW_E_INVOICE_BUTTON` | Internal Submission → To IRB E-Invoice | Shows the **Resubmit as New E-invoice** button on the To IRB edit screen | off | Without it, an Invalid consolidated or single-general e-invoice can only be fixed with Save and Resubmit. |
+| `HIDE_SAVE_AND_RESUBMIT_BUTTON` | Internal Submission → To IRB E-Invoice | Hides **Save and Resubmit** on the To IRB edit screen | off | Use when corrections should be made in the pools only. |
+| `SHOW_CUSTOM_PRINTABLE_BUTTON` | Internal Submission → To IRB E-Invoice | Shows the **Printable** (custom format) button | off | — |
+| `SHOW_PRINTABLE_PREVIEW` | Internal Submission → To IRB E-Invoice | Shows **Printable-Preview** | off | — |
+| `SHOW_PRINTABLE_LHDN_PREVIEW` | Internal Submission → To IRB E-Invoice | Shows **Printable (LHDN)-Preview** | off | — |
+| `HIDE_LHDN_FORMAT_PRINTABLE_BUTTON` | Internal Submission → To IRB E-Invoice | Hides **Printable (LHDN Format)** | off | — |
 
-{{< callout type="tip" >}}
-**Real-World Example**: Your AP team issues a purchase invoice. It enters the **Posting Queue** for review, gets submitted via **Batch Pool**, LHDN validates it, and the result appears in **Internal Submission → Submission History**. If rejected, it returns to Batch Pool for correction and resubmission.
-{{< /callout >}}
+Rendered and saved but **not consumed** anywhere in the applet at commit `d7841e7`: `HIDE_SUBMISSION_STATUS` (Master List Settings panel). Switching it has no effect.
 
-### Document Statuses Explained
+Unbound toggles on the same screen (Unit Discount, SST/VAT/GST, WHT, Blanket Order, Segment, G/L Dimension, Profit Center, Project) have no form control and are never saved — they are template leftovers from the document-applet settings screen.
 
-| Status | Meaning | Action Required |
-|--------|---------|-----------------|
-| **Pending** | Submitted, awaiting LHDN response | Wait — processing in progress |
-| **Submitted** | Validated and accepted by LHDN | None — document is compliant |
-| **Rejected** | Failed LHDN validation | Review error, correct, and resubmit |
-| **Cancelled** | LHDN-approved cancellation | Document is void — reissue if needed |
-| **Error** | Submission failed before reaching LHDN | Check system connectivity and retry |
+Keys **read without a control** in this applet — they come from the shared Default Selection / personal settings and only affect the Discrepancies Report's generic-document listing (`generic-doc-listing.component.ts`): `DEFAULT_TRANSACTION_DATE` (`1_week` or `1_day` pre-filters the date range), `FUZZY_SEARCH_COLUMNS`, `SORT_ORDER` (defaults to `updated_date`).
 
-### What LHDN Validates
+**Default Selection** (`settings/default-selection`) renders Default Branch and Default Location, but the component is routed directly with no parent binding for its `appletSettings$` input or `save` output, so its SAVE button emits to nothing at commit `d7841e7`. Treat it as not functional.
 
-LHDN checks every document against MyInvois compliance rules before issuing a result:
+**Webhook**, **Feature Visibility** and the four permission listings are the shared blg-shared-utilities screens.
 
-| Validation Check | What It Looks For |
-|-----------------|-------------------|
-| **Mandatory fields** | TIN, BRN, address, document date must all be present |
-| **TIN accuracy** | Must match exactly with LHDN's registered records |
-| **Tax codes** | Correct SST classification per line item |
-| **Amount calculations** | Tax totals must match sum of line items |
-| **Document format** | Must conform to the MyInvois schema |
-| **Duplicate check** | Document not previously submitted and accepted |
+### Document behaviour settings
 
----
+Not applicable — this applet has no document status flow or posting of its own. The behaviour of the pipeline is fixed in the backend and driven by the company settings above and by the per-document `einvoice_submission_type` and `skip_einvoice` flags set in the originating applets.
 
-## Quick Start Guide
+### Feature visibility / permissions
 
-Get up and running quickly with these essential workflows.
+No client-side permission definitions are seeded for `myIEnvoiceAdminApplet` in `bl_applet_client_side_perm_dfn` (0 rows on 2026-09-05), and the applet checks none. On load the app asks for `API_TNT_DM_ERP_STATEMENT_OF_ACCOUNT_READ`, `TNT_TENANT_ADMIN` and `TNT_TENANT_OWNER` for the permission wizard. Server-side, every endpoint the screens call is guarded by the constants in `EInvoicePermissions.java` (families such as `API_TNT_DM_ERP_COMP_INTERMEDIARY_SYSTEM_*`, `API_TNT_DM_EINVOICE_EMAIL_PRINTABLE_QUEUE_*`, `API_TNT_DM_ERP_FROM_IRB_DOCUMENT_QUEUE_*`, `API_TNT_DM_ERP_EINVOICE_PURCHASE_DOC_UNMATCHED_HISTORY_*`); assign them through Settings → Permission Set / Role Permission.
 
-### For Finance Teams: Submit Your First E-Invoice
+## Fields
 
-**Goal:** Get a document from staging to LHDN-validated in 5 steps.
+This applet edits e-invoice records, not accounting documents. The tables below cover the three forms a user actually types into.
 
-1. **Open**: Go to **My E-Invoice Admin Applet** from the launchpad
-2. **Check Queue**: Click [**Posting Queue**](#2-posting-queue) in the left sidebar — find your document
-3. **Submit**: Select the document and click **Submit** — it moves to [Batch Pool](#3-batch-pool) for processing
-4. **Monitor**: Click [**Batch Pool**](#3-batch-pool) — the status column updates from **Pending** to **Submitted** or **Rejected**
-5. **Confirm**: Click [**Internal Submission → Submission History**](#submission-history) — a **Submitted** status confirms LHDN acceptance
+**To IRB E-Invoice / pool edit — Account tab (buyer for sales, supplier for purchase)**
 
-{{< figure src="/images/my-e-invoice-admin-applet/posting-queue-submit.png" alt="Posting Queue listing with a document selected and the Submit button highlighted" caption="Posting Queue: Select documents and click Submit to send them to LHDN for validation." >}}
+| Field | Meaning | Required for submission | Notes / validation |
+|---|---|---|---|
+| Name | Buyer or supplier name as sent to LHDN | Yes | Special characters have caused LHDN rejections; sanitisation is tracked in the applet repo (#36). |
+| ID Type | `NRIC`, `BRN`, `PASSPORT`, `ARMY` (`IDTypeOptions`) | Yes | Foreign individuals must be `PASSPORT`, not `NRIC` (LHDN CF324). |
+| ID No | The identifier matching the ID type | Yes | NRIC must be 12 digits without hyphens; a BRN in the NRIC field is rejected. |
+| Tax ID (TIN) | LHDN TIN | Yes | `Get TIN` / `Verify TIN` call the LHDN TIN search; the general TINs are `EI00000000010` (local buyer / general public — only valid with a real NRIC on an individual e-invoice), `EI00000000020` (foreign buyer), `EI00000000030` (foreign supplier), `EI00000000040` (government). |
+| Sales Service Tax ID | SST number | No | Sent as `NA` when blank. |
+| Email, Contact No | Buyer/supplier contact | Contact no: yes | Phone is accepted only when 8–20 characters (`isPhoneNoValid`). |
+| Address line 1, City, State (+ lines 2–3, postcode, country) | E-invoice address | Line 1, city, state: yes | State is matched to the LHDN state code by exact, cleaned, contains and alias matching; when nothing matches the state code is left empty and must be keyed by hand. Code `17 (Not Applicable)` is no longer accepted by LHDN. |
 
-**What happens next?** Validated documents are available for Peppol distribution via My Peppol Admin Applet.
+**Rejection Request (Cancellation → Rejection Requests → row → Update)**
 
-**Pro Tip:** Verify TIN and BRN are correct before submitting — these are the most common cause of immediate rejection.
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Reason | Free text sent to LHDN as the cancellation reason | Yes | — |
+| System Approval Status | `APPROVED`, `REJECTED`, `ON-HOLD` | Yes, to proceed | Only `APPROVED` requests are picked up. |
+| Processing Logic | `REGEN_NEW_EINVOICE`, `VOID_ORIGINAL_DOC`, `CANCEL_EINVOICE` (stored as `CANCEL_FOR_EDIT_AND_RESUBMIT`), `NEW_REVERSAL_DOC` | Yes, to proceed | What happens to the source document after LHDN cancels — see Lifecycle. |
+| System Processing Status | `IN-PROGRESS`, `COMPLETED` | — | Set by the system; mark `COMPLETED` by hand only after a manual cancellation. |
 
----
+**Bulk TIN Validation (Tools → Bulk Tin Validation → Create)**
 
-### For Finance Teams: Resolve a Rejected Invoice
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Delimiter | CSV delimiter (comma or pipe) | Yes | Default is the second option in the list; a template CSV can be downloaded from the screen. |
+| File | One `.csv` file | Yes | Each row is queued (`bl_fi_my_einvoice_tin_update_request_queue`); on approval the queue row writes `einvoice_tax_id_no` onto the entity and is deleted (`MyEInvoiceTinUpdateRequestQueueService.updateEntityAndDeleteFromQueue`). |
 
-**Goal:** Fix a rejected document and resubmit to LHDN.
+## Lifecycle and effects
 
-1. **Open Batch Pool**: Click [**Batch Pool**](#3-batch-pool) in the left sidebar
-2. **Find Rejected**: Look for documents with **Rejected** status
-3. **Read Error**: Click the document — read the LHDN error code and error description carefully
-4. **Correct**: Fix the flagged field directly in the Batch Pool interface, or return to the originating Sales/Purchase applet for larger corrections
-5. **Resubmit**: Click **Resubmit** — monitor for the updated LHDN response
+{{< figure src="/images/my-e-invoice-admin-applet/lhdn-core-workflow.png" alt="Core e-invoice workflow diagram: a FINAL generic document enters the posting queue, is routed to the to-IRB tables or to the batch, individual or single-general pool by submission type, amount and mandatory-field checks, then flows through the submission, validation and e-mail queues" caption="Core e-invoice workflow for LHDN submission — the processors and tables behind the screens of this applet." >}}
 
-{{< figure src="/images/my-e-invoice-admin-applet/batch-pool-validation-error.png" alt="Batch Pool with a document selected showing the Validation Error panel listing missing fields such as Supplier TIN, Supplier ID type, and Supplier address" caption="Batch Pool — Validation Error: Click a document to view detailed error messages. Fix the flagged fields before resubmitting." >}}
+### 1. Entry gate (trigger processor, at FINAL)
 
-{{< callout type="warning" >}}
-**Important**: Do not resubmit without correcting the flagged field. An unchanged rejected document will receive the same rejection from LHDN.
-{{< /callout >}}
+`GENERIC_DOCUMENT_E_INVOICE_POSTING_QUEUE_PROCESSOR` fires when a generic document's `posting_status` becomes `FINAL`. It proceeds only if **all** of these hold (`GenericDocumentEInvoicePostingQueueProcessor.processEvent`): the company's `einvoice_status` is `ENABLED`; the document type is an e-invoice type — sales types `INTERNAL_SALES_INVOICE`, `INTERNAL_SALES_CASHBILL`, `INTERNAL_SALES_CREDIT_NOTE`, `INTERNAL_SALES_DEBIT_NOTE`, `INTERNAL_SALES_REFUND_NOTE`, `INTERNAL_SALES_RETURN`, or a purchase type with `einvoice_self_billed = TRUE` (`MyEInvoiceSharedService.checkDocTypeValidity`); `skip_einvoice` is false; and no ACTIVE posting-queue row already exists for the same `server_doc_1` + document type (`isDuplicateDoc`). If any check fails the event is consumed and nothing is written — no queue row, no pool row, no error (the "ghost document" failure in Troubleshooting).
 
-**Scenario — Wrong TIN:**
-```
-Document submitted → LHDN returns: "Error: Invalid TIN format"
-Action: Open document in Batch Pool → correct TIN field → Resubmit
-Result: LHDN accepts document → Status: Submitted
-```
+Routing by `einvoice_submission_type`:
 
-**Scenario — Mismatched Tax Total:**
-```
-Document submitted → LHDN returns: "Error: Tax amount does not match line totals"
-Action: Return to Sales Applet → correct line item tax → resubmit via Posting Queue
-Result: LHDN accepts document → Status: Submitted
-```
+| Submission type | Document type | `amount_txn` | Goes to |
+|---|---|---|---|
+| `CONSOLIDATED` | Sales Invoice or Cash Bill (`ENFORCE_INDIVIDUAL_DOCS`) | ≥ RM 10,000 | **Individual Pool**, reason "Amount transaction is greater or equal to RM10000" |
+| `CONSOLIDATED` | any other, or < RM 10,000 | — | **Batch Pool** |
+| `INDIVIDUAL`, `SINGLE-GENERAL` or blank | any | — | **Posting Queue** (`bl_fi_generic_doc_einvoice_posting_queue`, `queue_status = QUEUED`) |
 
----
+The RM 10,000 threshold is hard-coded (`BigDecimal.valueOf(10000)`, inclusive) and the enforced types are only Sales Invoice and Cash Bill (`EInvoiceConstants.ENFORCE_INDIVIDUAL_DOCS`).
 
-### For Finance Teams: Run a Bulk Batch Submission
+For foreign-currency documents the source used from here on is the forex child or the base MYR document according to `einvoice_forex_gendoc_posting_logic` (see Configuration).
 
-**Goal:** Submit multiple documents at once using Batch Pool.
+### 2. Posting queue → to-IRB or a pool (cron `E_INVOICE_GENERIC_DOCUMENT_TO_IRB_PROCESSOR`)
 
-1. **Go to Posting Queue**: Click [**Posting Queue**](#2-posting-queue) in the sidebar
-2. **Select Documents**: Tick all documents ready for submission
-3. **Submit Batch**: Click **Submit** — all selected documents are sent to LHDN together
-4. **Open Batch Pool**: Click [**Batch Pool**](#3-batch-pool) to see per-document results
-5. **Resolve Errors**: For any **Rejected** documents, correct and resubmit within [Batch Pool](#3-batch-pool)
+The processor builds the to-IRB header and lines from the document, the company and the entity (`MyEInvoiceToIRBProcessorService.initDecision`). The buyer of a sales document is taken, in priority, from `einvoice_buyer_entity_hdr_json`, then `einvoice_entity_hdr_json`, then the entity record (`handleSalesDoc`); the supplier of a self-billed purchase document likewise from `einvoice_supplier_entity_hdr_json`, `einvoice_entity_hdr_json`, then the entity record. When `amount_txn ≥ 10,000`, the ID type is `BRN` and the TIN is blank, the processor searches LHDN for the TIN and writes it back to the entity, the document JSON and the header (`performTinCheckingFromDoc`).
 
-**Pro Tip:** Group submissions by document type (all sales invoices together, then credit notes) for easier error tracking.
+It then runs the **mandatory-field check** (`getHdrDecision`, `getLineDecision`):
 
----
+- Header: supplier and buyer name, TIN, ID type, ID value; supplier MSIC code and business-activity description; both address JSONs with line 1, city and state; both contact numbers 8–20 characters; e-invoice version, type and code; e-invoice datetime; document currency; sub-total, total excluding and including tax.
+- Every line: classification, item name, unit price, taxable-type code, tax amount.
 
-### For Compliance Officers: Cancel a Validated Invoice
+Outcome:
 
-**Goal:** Submit a cancellation request to LHDN for a document already validated.
+| Check passed? | `einvoice_submission_type` | Result |
+|---|---|---|
+| Yes | any | To-IRB header + lines created (`submission_status = NOT_SUBMITTED`), individual submission queue row created |
+| No | `INDIVIDUAL` | Individual Pool |
+| No | `SINGLE-GENERAL` | Single General Pool (Individual Pool when `amount_txn ≥ 10,000`) |
+| No | blank | Batch Pool (< RM 10,000) or Individual Pool (≥ RM 10,000) |
 
-**Step 1: Check Eligibility**
-- Confirm the document is within LHDN's cancellation window
-- Prepare the reason for cancellation
+These are the 23 scenarios of the internal routing simulation; the guide [E-Invoice Pools & Submission Routing](/guides/einvoice-guides/einvoice-pools-and-routing/) walks through them.
 
-**Step 2: Submit Cancellation** (left sidebar → [**Cancellation**](#7-cancellation))
-- Locate the validated invoice in the list
-- Click **Request Cancellation**
-- Enter the cancellation reason (required by LHDN)
-- Submit the request
+### 3. Pools — what the buttons do
 
-**Step 3: Monitor Status**
-- **Approved** → Document status changes to **Cancelled** — reissue a corrected invoice if the transaction is still valid
-- **Rejected by LHDN** → Review the rejection reason and consult the latest LHDN MyInvois guidelines
+| Action | Backend | Effect |
+|---|---|---|
+| Save and Resubmit (any pool) | `POST …/batch-pool-doc-hdrs/save-and-resubmit`, `…/individual-pool-doc-hdrs/save-and-resubmit`, `…/single-general-pool-doc-hdrs/save-and-resubmit` | Writes your corrections to the entity / document JSON, re-runs the mandatory check and, if it passes, creates the to-IRB header and the individual submission queue row. On the Batch Pool the row is marked `PROCESSED` with `queue_status = SUCCESS` or `FAILED` and the reason in **Validation Error** (`MyEinvoiceBatchPoolDocService.processDecision`). |
+| Process (Batch Pool) | `POST …/process-batch-pools` | Same check for the selected rows, without edits. |
+| Consolidate / Consolidate By Branch (Batch Pool) | `POST …/consolidate-batch-pools`, `…/consolidate-batch-pool-by-branch`, `GET …/run-consolidate-by-branch` | Groups the selected UNPROCESSED rows into consolidated to-IRB headers (one per company and document type, or per branch, consecutive document range and general TIN) and queues them in the consolidated submission queue; rows become `PROCESSED / SUCCESS` and a `batch_pool_to_irb_link` is written per document. Buyer = General Public `EI00000000010`, classification `004`, billing frequency `Monthly`. By-branch consolidation is capped at 200 lines per e-invoice. |
+| Move to Individual / Single General / Batch Pool | `POST …/move-to-individual-pool`, `…/move-to-single-general-pool`, `…/move-to-batch-pool`, `…/move-single-general-to-*` | Re-homes the row. **Backend rejection:** moving a Sales Invoice or Cash Bill of `amount_txn ≥ 10,000` from the Individual Pool to the Batch Pool throws `Cannot move transaction with amount more than or equal to 10000.` (`MyEInvoicePoolConversionService.checkIfPoolConversionAllowed`). |
+| Submit as Individual / Submit as Single General (Batch Pool) | `…/move-to-individual-pool-and-submit`, `…/move-to-single-general-pool-and-submit` | Move and immediately attempt submission. |
+| Skip E-Invoice | `DELETE …/skip-e-invoice/backoffice-ep/{guid}`, `POST …/bulk-skip-einvoice` | Deletes the pool row and sets `skip_einvoice = true` on the generic document (`MyEinvoiceBatchPoolDocService.skipEInvoice`), which also removes it from the monthly tally. |
 
----
+Documents left `UNPROCESSED` in the Batch Pool are consolidated automatically by `E_INVOICE_BATCH_PROCESSING_CYCLE_RUN_PROCESSOR` for the current month (advisory lock, 6-hour expiry). Documents in the Individual or Single General pool **stay there until someone acts** — there is no ageing alert (open issue).
 
-{{< callout type="tip" >}}
-**New to the system?** Start here:
-1. Finance teams — open **Posting Queue** and submit a single document first before attempting bulk batches
-2. Once comfortable, use **Batch Pool** for high-volume submissions
-3. Compliance officers — read the **Cancellation** section and verify LHDN policy before submitting any cancellation requests
-{{< /callout >}}
+### 4. Submission, validation and e-mail (cron)
 
----
+| Processor | Table it drains | Effect |
+|---|---|---|
+| `E_INVOICE_TO_IRB_SUBMISSION_PROCESSOR` | individual submission queue | Sends the payload to LHDN; on success creates a submission-history row, deletes the queue row, clears the pool row and updates the to-IRB header; on failure the header stays `IN_QUEUE` with the error on the queue row. The `dateTimeIssued` sent to LHDN is always *now*, not `date_txn` (LHDN rejects back-dated issue times). Up to 50 iterations per run. |
+| `CONSOLIDATED_E_INVOICE_PROCESSOR` | consolidated submission queue | Sends consolidated payloads created since the first day of the month. Manual alternative: **Consolidated Submission → Submit** (`…/consolidated-submission-queues/submit-to-lhdn`; support also has `/backdated` and `/no-date-checks` variants). |
+| `E_INVOICE_TO_IRB_VALIDATION_STATUS_UPDATE_PROCESSOR` | validation queue | Polls LHDN and writes `einvoice_document_status` = `Submitted`, `Valid`, `Invalid` or `Cancelled` (`MyEInvoiceLHDNDocumentStatus`) plus the LHDN document UUID and `validation_datetime`. |
+| `E_INVOICE_EMAIL_PRINTABLE_QUEUE_PROCESSOR` | e-mail printable queue | E-mails the validated PDF to the buyer (up to 10 per run, 5 retries, 15-minute advisory lock). Shown in **Email Dashboard**. |
+| `E_INVOICE_INDIVIDUAL_POOL_FAILURE_TRANSACTIONS_EMAIL_NOTIFICATION_PROCESSOR` | individual pool | E-mails a CSV of failed individual-pool transactions per company to the configured addresses. |
+| `E_INVOICE_INTERMEDIARY_ACCESS_TOKEN_PROCESSOR` | company intermediary records | Regenerates the on-behalf-of token every ~20 minutes; without it every other processor fails. |
 
-## 1. Master List
+Status vocabulary on the to-IRB header: `NOT_SUBMITTED` → `IN_QUEUE` (queued or failed pre-LHDN) → `Submitted` (accepted by LHDN, awaiting validation) → `Valid` or `Invalid` → `Cancelled`; consolidated headers start at `IN_CONSOLIDATED_QUEUE`.
 
-{{< figure src="/images/my-e-invoice-admin-applet/master-list.png" alt="My E-Invoice Admin Applet Master List showing all submitted documents with tabs for Document and Document Details/Lines, columns for Section, Doc Short Code, Submission Type, Amount, and Status" caption="Master List: A consolidated view of all e-invoice documents across every status — search, filter, and export from here." >}}
+### 5. Fixing an Invalid e-invoice from To IRB E-Invoice
 
-The Master List is the complete view of all e-invoice documents in the system, regardless of status. Use it to search for any specific document, check its current state, or export records for reporting.
+| Button | Backend | Rule |
+|---|---|---|
+| Save and Resubmit | `POST …/e-invoice/to-irbs/save-and-resubmit` → `MyEInvoiceToIrbResubmissionService.fixFromToIRB` | **Backend rejection:** throws `E-Invoice #… is already validated with 'Valid' status. Please cancel it first before creating a new invoice.` when the header is `Valid`, and `… is already submitted and pending LHDN validation. Please wait for the validation response.` when it is `Submitted`. Otherwise copies the corrections back to the generic document and re-queues. |
+| Resubmit as New E-invoice | `POST …/to-irbs/resubmit-as-new-einvoice` → `resubmitAsNewEInvoice` | Throws `Document already exists with 'Valid' einvoice status …` for a Valid header and `Document already exists in the pool.` when the source is still sitting in a pool. For a `CONSOLIDATED` header it builds a new consolidated payload; for `SINGLE-GENERAL` it resubmits as a consolidated e-invoice containing only that document; for `INDIVIDUAL` it creates a fresh to-IRB header. |
+| Request for Rejection | `POST …/e-invoice/request-rejections` | Creates a Rejection Request (`system_requestor_status = REQUESTED`, `system_processing_status = IN-PROGRESS`). Enabled only for `Valid` headers. |
 
-### Tabs
+### 6. Cancellation (Rejection Requests → Cancellation Queue)
 
-| Tab | What It Shows |
-|-----|--------------|
-| **Document** | Header-level view — one row per document |
-| **Document Details/Lines** | Line-item view — individual line entries per document |
+The workflow is fully manual — no cron advances it:
 
-### What You Can Do
+1. **Create** the request (from To IRB E-Invoice, or a buyer creates it in the Portal applet).
+2. **Approve**: open the request, set System Approval Status = `APPROVED` and choose a Processing Logic. Approving with `VOID_ORIGINAL_DOC` or `REGEN_NEW_EINVOICE` stamps `blg_cancellation_datetime` on the to-IRB header; un-approving clears it (`MyEinvoiceRequestRejectionService.updateBlgRejectionRequestApprovalDatetime`).
+3. **Process Request**: builds a Cancellation Queue row and calls LHDN synchronously (`POST …/request-rejections/submit-to-lhdn`). Only requests with `system_processing_status = IN-PROGRESS`, `system_approval_status = APPROVED` and a non-null processing logic are picked up.
 
-- **Search** — Find documents by document number, company, buyer, or supplier
-- **Export** — Download the filtered list for external reporting
-- **Filter** — Narrow by status, submission type, date range, or company
-- **View Details** — Click any row to see the full document and LHDN submission outcome
+Before the LHDN call the backend validates the header (`MyEInvoiceGenDocToIrbCancellationQueueService.isCancellationRequestValid`): `einvoice_document_status` must be `Valid` ("Not Validated" otherwise), `lhdn_document_guid` must exist ("e-invoice is not generated yet"), and fewer than 72 hours must have passed since `validation_datetime` ("Passed 72 hours from validation date time"). The clock runs from the header's `validation_datetime`, not from what the user sees on the LHDN portal.
 
-{{< callout type="tip" >}}
-**Best use of Master List**: Start here when you receive a query about a specific invoice — search by document number to instantly see its LHDN submission status, Process ID, and any rejection history.
-{{< /callout >}}
+| Processing logic | After LHDN cancels | Works for a consolidated e-invoice? |
+|---|---|---|
+| `VOID_ORIGINAL_DOC` | First dry-checks that the source generic document can be converted to VOID; after a successful cancel it voids the document (`updatePostingStatusToVoid`) | No — the request has no `generic_doc_hdr_guid`, so it fails with `Can not void the generic document` before LHDN is called |
+| `REGEN_NEW_EINVOICE` | Cancels, then regenerates a new e-invoice from the same document | No — same reason |
+| `NEW_REVERSAL_DOC` | Creates a reversal generic document and e-invoices it | Not applicable |
+| `CANCEL_FOR_EDIT_AND_RESUBMIT` (shown as `CANCEL_EINVOICE`) | Cancels at LHDN only (`onlyCancel = true`); you fix and resubmit yourself | **Yes** — the only correct choice for consolidated e-invoices |
 
----
+Every outcome sends an e-mail notification (`CANCELLATION_SUCCESS`, `CANCELLATION_FAILED`, `CANCELLATION_REQUEST_NOT_ELIGIBLE`, `VOID_ORIGINAL_DOC_FAILED`, …). Past 72 hours there is no cancellation: the remedy is a credit note e-invoice referencing the LHDN UUID of the wrong e-invoice, with accountant sign-off. Support also has a direct path without the approval workflow (`POST …/to-irbs/bulk-cancellation`, hard-coded reason "Duplicated EInvoice."; and `…/direct-cancellation/*`), and LHDN still applies the 72-hour rule to those.
 
-## 2. Posting Queue
+### 7. Incoming e-invoices and reconciliation
 
-{{< figure src="/images/my-e-invoice-admin-applet/posting-queue.png" alt="Posting Queue listing page showing documents staged for LHDN submission with columns for Doc No, Company, Entity Name, Original amount, Document amount, Submission status, Queue status, and Validation status" caption="Posting Queue: Documents staged and ready for LHDN submission — review before sending." >}}
+`E_INVOICE_PURCHASE_DOC_MATCHING_QUEUE_PROCESSOR` (trigger, at FINAL) queues every non-self-billed purchase document whose supplier has a TIN into the PD Matching Queue; `E_INVOICE_SALES_DOC_MATCHING_QUEUE_PROCESSOR` queues sales documents finalised with `skip_einvoice = true` into the SD Matching Queue. External Reception pulls the supplier e-invoices LHDN holds for your TIN; **Auto Match** pairs them, and unmatched items move to the two history lists. Nothing here changes the purchase or sales document.
 
-The Posting Queue holds documents that have been generated in Sales or Purchase applets and are ready to be submitted to LHDN. Think of it as a staging area — documents sit here until you review and submit them.
+### 8. What this applet writes
 
-### How Documents Enter the Queue
+`bl_fi_my_einvoice_to_irb_hdr` / `_line`, the three pool tables, the submission / consolidated / validation / cancellation / e-mail queues, `bl_fi_my_einvoice_batch_pool_to_irb_link`, `bl_fi_my_einvoice_request_rejection_internal_doc_hdr`, TIN update requests; on the source document only `skip_einvoice`, the e-invoice reference columns (`einvoice_to_irb_hdr_guid`, `einvoice_number`, `einvoice_document_status`) and — through `VOID_ORIGINAL_DOC` — `posting_status = VOID`. It never posts to the general ledger.
 
-Documents appear in the Posting Queue automatically when:
-- A sales invoice is approved in the Sales Applet
-- A purchase invoice is confirmed in the Purchase Applet
-- A credit note or debit note is finalised
+## Related applets
 
-### Action Buttons
+- [My E-Invoice Portal Applet](/applets/e-invoice/my-e-invoice-portal-applet/) — the buyer-facing side: a customer searches for their receipt, requests an individual e-invoice (which lands in Portal Request here) or raises a rejection request that appears in Cancellation → Rejection Requests.
+- [My Peppol Admin Applet](/applets/e-invoice/mypeppol-admin-applet/) — takes e-invoices that LHDN has validated into its Waiting Queue for Peppol delivery.
+- [Organisation Applet](/applets/master-data/organisation-applet/) — company e-invoice status, TIN/BRN/SST/MSIC, address and the e-invoice settings JSON.
+- [Customer Applet](/applets/master-data/customer-applet/), [Supplier Applet](/applets/master-data/supplier-applet-1/) — the buyer/supplier fields that decide whether a document passes the mandatory check.
+- [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [POS General](/applets/sales-workflow/pos-general-applet/), [Sales Credit Note](/applets/sales-workflow/internal-sales-credit-note-applet/), [Sales Debit Note](/applets/sales-workflow/internal-sales-debit-note-applet/), [Sales Refund Note](/applets/sales-workflow/internal-sales-refund-note-applet/), [Sales Return](/applets/sales-workflow/internal-sales-return-applet/) — where the submission type, skip flag and e-invoice tab live; credit/debit/refund notes and returns carry the original e-invoice reference.
+- [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) — self-billed purchase e-invoices enter the same pipeline when `EINVOICE_SELF_BILLED` is TRUE.
+- [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/) — item classification codes and tax types on the lines.
 
-| Button | What It Does |
-|--------|-------------|
-| **Submit** | Sends selected documents to LHDN for validation via Batch Pool |
-| **Process** | Triggers processing of selected documents through the submission pipeline |
-| **Consolidate** | Groups multiple related documents into a single consolidated submission |
-| **Export** | Downloads the listed documents as a file for offline review or reporting |
-| **Withdraw** | Removes selected documents from the queue back to Draft status without submitting |
+## Troubleshooting
 
-### Submitting from the Queue
+| Symptom | Cause | Fix |
+|---|---|---|
+| A finalised document is in no pool, no queue, and never reached LHDN ("ghost" document) | The entry gate found the company not ENABLED at the time of finalisation, the document type not e-invoiceable, `skip_einvoice` set, or an ACTIVE posting-queue row with the same document number; it then dropped the event silently. | Ask support to push the document with `POST …/generic-doc-posting-queues/push-gendoc-to-posting-queues`. Enable e-invoice on the company before finalising. Standing detection is an open backend issue. |
+| Sales Invoice or Cash Bill of RM 10,000 or more sits in the Individual Pool for weeks | Documents at or above the threshold are diverted there and wait for buyer details; there is no ageing alert. Moving them back to the Batch Pool is refused (`Cannot move transaction with amount more than or equal to 10000.`). | Complete TIN, ID type/value, address and phone on the Account tab, then Save and Resubmit. Review the Individual Pool weekly. |
+| Batch Pool row shows `PROCESSED / FAILED` with "Supplier TIN is missing", "Buyer address is missing", "contact no is missing" | Save and Resubmit was run before the master data was complete; the mandatory check failed again. | Fix the fields listed in **Validation Error**, then Save and Resubmit. A `FAILED` row is no longer `UNPROCESSED` and will *not* be swept into the monthly consolidation — decide whether to move it to a pool or skip it. |
+| LHDN status `Invalid`, error `CF324` (identification number is not a valid NRIC) | Foreign customer keyed as `NRIC` instead of `PASSPORT`; NRIC stored with hyphens; a BRN in the NRIC field. | Correct ID type / value on the customer and on the Account tab, Save and Resubmit. |
+| `Invalid`, error `CF358` (invalid buyer TIN) or "Only General TIN (010) …" (ERR245) | General Public TIN `EI00000000010` used on an individual e-invoice with an ID type other than `NRIC`, or with an invalid NRIC; or a real TIN combined with classification `004` (reserved for consolidated). | Supply the buyer's real TIN, or use `EI00000000010` only with a valid NRIC; change line classification away from `004`; Save and Resubmit. Alternatively move the document to the Batch Pool for consolidation (only below RM 10,000). |
+| `Invalid`, error `DC511` "Foreign target currency should always be MYR" | Foreign-currency document whose `base_doc_ccy` is not `MYR`. | Set the document's base currency to MYR and resubmit. Check `einvoice_forex_gendoc_posting_logic` if the wrong document (forex vs local) is being submitted. |
+| Credit / debit / refund note or sales return `Invalid` with `DR303` / `DR308` ("status of referenced document", "buyer … not the same as referenced document") | The note references the LHDN UUID of an *earlier, Invalid* submission of the original invoice, or a buyer that differs from the original. | Point `original_einvoice_lhdn_document_guid` at the currently Valid invoice (or clear the reference if no valid original exists) and Save and Resubmit. |
+| Save and Resubmit refused: "already validated with 'Valid' status" / "already submitted and pending LHDN validation" | Backend guard on the To IRB header status. | A Valid e-invoice must be cancelled first (within 72 hours) or corrected with a credit note; a Submitted one must wait for the validation processor. |
+| Rejection Request looks stuck at `REQUESTED / IN-PROGRESS` | Nothing advances a request automatically; it has no approval status or processing logic yet. | Open the request, set Approval Status = `APPROVED`, pick a processing logic, then **Process Request**. |
+| Cancellation Queue → Request Error "Can not void the generic document" | `VOID_ORIGINAL_DOC` (or `REGEN_NEW_EINVOICE`) chosen for a consolidated e-invoice, which has no source document to void. | Use `CANCEL_EINVOICE` (`CANCEL_FOR_EDIT_AND_RESUBMIT`) for consolidated e-invoices, then re-push the remaining documents to the Batch Pool and consolidate them explicitly. |
+| Request Error "Passed 72 hours from validation date time" | LHDN allows supplier cancellation only within 72 hours of validation; the backend applies the same check from `validation_datetime`. | Issue a credit note e-invoice referencing the wrong e-invoice's LHDN UUID (buyer General Public for a consolidated one). |
+| The same sale appears in two Valid e-invoices (individual + consolidated, or two consolidated) | "Push to batch pool" was run twice, or the document was submitted individually while a copy still sat UNPROCESSED in the Batch Pool; neither path de-duplicates by document (fixed in the backend on 2026-08-20 for new pushes). | Within 72 hours: cancel the e-invoice containing the duplicate and re-consolidate the rest; after that, credit note. Always check the Batch Pool count before consolidating and never repeat a push on a timeout. |
+| Consolidate By Branch swept in the first days of the next month | Timezone handling in the by-branch endpoint (fixed 2026-08-20). | Run consolidation after the month has closed in Malaysian time; if it happened, support reverts the pool rows and deletes the created headers and queue rows. |
+| Every submission fails with "Access Token not available" or an authentication error | The intermediary token processor is not running, or the intermediary authorisation for your TIN expired or was removed on the MyInvois portal. | Check the processor with support; re-authorise BigLedger as intermediary on MyInvois and re-run `configure-intermediary`. |
+| Rows stay `IN_QUEUE` in Individual Submission for more than a day | The submission processor is not running, or the row exceeded 5 retries and was marked `PROCESSED` without an alert. | Select the rows and press **Submit**; if it recurs, ask support to check `E_INVOICE_TO_IRB_SUBMISSION_PROCESSOR` and the queue row's error. |
+| State code empty on the address / `CV317` on a consolidated submission | State text could not be matched to an LHDN state (exact, cleaned, contains and alias matching all failed), or the legacy code `17` was sent. | Key the state in the LHDN spelling (e.g. `Wilayah Persekutuan Kuala Lumpur`, `Pulau Pinang`); code 17 is no longer accepted. |
+| Consolidation fails for a document | `server_doc_1` (by document) or `server_doc_3` (by branch) is blank on the batch-pool row. | Support back-fills the column from the generic document before re-running. |
+| Validated PDF e-mail not received | Row still `IN_QUEUE` in Email Dashboard, or an error code on the row; recipient e-mail blank on the buyer. | Fix the buyer's e-mail, use **Resend email with PDF** on the To IRB header, or wait for the next processor run (5 retries). |
+| Monthly totals in BigLedger do not tally with LHDN | Documents stuck in a pool, `PROCESSED / FAILED` batch-pool rows, voided documents without `skip_einvoice`, ghost documents, or duplicates. | Run the Discrepancies Report for the month and clear the Unmatched lists; the internal tallying checks follow the same order. |
 
-1. Review the documents listed
-2. Verify document amounts and entity details look correct
-3. Select one or multiple documents
-4. Click **Submit** — selected documents are sent to LHDN via Batch Pool
+## Related documentation
 
-### Column Guide
-
-| Column | What It Shows |
-|--------|--------------|
-| **Doc No** | Internal document number |
-| **Company** | The company entity submitting the document |
-| **Entity Name** | Buyer or supplier name |
-| **Original Amount** | Document amount before tax |
-| **Document Amount** | Total including tax |
-| **Submission Status** | Current LHDN submission state |
-| **Queue Status** | Position in the submission queue |
-| **Validation Status** | LHDN validation outcome |
-
-{{< callout type="warning" >}}
-**Before submitting**: Verify the entity name and amounts are correct. Errors caught here are cheaper to fix than after LHDN rejection.
-{{< /callout >}}
-
----
-
-## 3. Batch Pool
-
-{{< figure src="/images/my-e-invoice-admin-applet/batch-pool.png" alt="Batch Pool listing page showing bulk submission batches with per-document validation status, LHDN error codes, and inline resubmission options" caption="Batch Pool: Manage bulk submissions and resolve per-document LHDN rejection errors inline." >}}
-
-The Batch Pool handles documents submitted in bulk. After you submit from the Posting Queue, documents appear here with their per-document LHDN validation results. Rejected documents stay in Batch Pool for inline correction and resubmission.
-
-### How Batch Pool Works
-
-```
-Submit from Posting Queue
-    ↓
-Documents enter Batch Pool
-    ↓
-LHDN validates each document
-    ↓
-Submitted ✓  →  Moves to Submission History
-Rejected  ✗  →  Stays in Batch Pool for correction
-```
-
-### Resolving Rejected Documents
-
-**Step 1: Identify the error**
-- Click the rejected document
-- Read the LHDN **error code** and **error description**
-- Identify which specific field failed validation
-
-**Step 2: Correct inline**
-- Edit the invalid field directly within Batch Pool (for minor field corrections)
-- For larger structural errors, return to the originating Sales/Purchase applet
-
-**Step 3: Resubmit**
-- Click **Resubmit** on the corrected document
-- Monitor for the updated LHDN response
-
-{{< callout type="tip" >}}
-**Most common rejection causes**: Invalid TIN format, missing BRN, incorrect tax code classification, or line total mismatches. Check these four fields first before looking elsewhere.
-{{< /callout >}}
-
-### Batch Pool Best Practices
-
-✓ **Check Posting Queue before submitting** — catch obvious errors before LHDN sees them
-✓ **Resolve errors the same day** — unresolved rejections delay compliance reporting
-✓ **Note the error code** — each LHDN error code maps to a specific field and fix
-✓ **Submit off-peak when possible** — faster LHDN response times outside business hours
-
-❌ **Common mistakes:**
-- Resubmitting without changing the rejected field — same error will return
-- Ignoring the error code and guessing what to fix
-- Leaving rejected documents unresolved past month-end
-
----
-
-## 4. Individual Pool & Single General Pool
-
-{{< figure src="/images/my-e-invoice-admin-applet/individual-pool.png" alt="Individual Pool listing page showing individually submitted e-invoices with document details, LHDN validation status and Process ID" caption="Individual Pool: Track documents submitted individually rather than as part of a batch." >}}
-
-{{< figure src="/images/my-e-invoice-admin-applet/single-general-pool.png" alt="Single General Pool listing showing consolidated single submissions with document reference, amount, status and tracking details" caption="Single General Pool: Manage single general submissions and track their LHDN validation outcomes." >}}
-
-### Individual Pool
-
-The Individual Pool tracks documents that were submitted one at a time rather than as part of a batch. Use this when:
-- A single document needs urgent submission outside the batch cycle
-- You need immediate per-document LHDN feedback without waiting for a batch to complete
-
-### Single General Pool
-
-The Single General Pool handles single-document submissions of a general (non-batch) type. Documents here follow the same validation process as Batch Pool but are tracked separately for reporting and audit purposes.
-
----
-
-## 5. Internal Submission
-
-The Internal Submission section provides a full breakdown of all outgoing LHDN submissions, organised into sub-menus by submission type and status. Use these views to track the exact state of every document you have ever sent to LHDN.
-
-### To IRB E-Invoice
-
-{{< figure src="/images/my-e-invoice-admin-applet/internal-submission-to-irb-e-invoice.png" alt="To IRB E-Invoice listing showing documents sent to LHDN IRB portal with tracking number, submission date, document type and current status" caption="To IRB E-Invoice: All outgoing e-invoice submissions sent directly to LHDN's IRB portal." >}}
-
-Shows all documents submitted to LHDN's IRB (Inland Revenue Board) e-invoice portal. This is the primary outgoing submission view for tax invoice compliance.
-
-**To IRB Listing vs To IRB Export:**
-
-| View | Purpose |
-|------|---------|
-| **To IRB Listing** | Interactive on-screen view of all outgoing IRB submissions — search, filter, click into individual documents for details |
-| **To IRB Export** | Download/export the same submission data as a file (CSV/Excel) for offline reporting, auditing, or sharing with external stakeholders |
-
-**Use this to:**
-- Confirm a document was transmitted to LHDN
-- Retrieve the IRB tracking reference number
-- Check submission date and time
-
----
-
-### Individual Submission
-
-{{< figure src="/images/my-e-invoice-admin-applet/internal-submission-individual.png" alt="Individual Submission listing showing documents submitted one at a time with LHDN response status and submission timestamp" caption="Individual Submission: Track e-invoices submitted individually outside of a batch cycle." >}}
-
-Lists all documents submitted individually (not as part of a batch). Useful when urgent documents were submitted one at a time and need separate tracking.
-
----
-
-### Consolidated Submission
-
-{{< figure src="/images/my-e-invoice-admin-applet/internal-submission-consolidated.png" alt="Consolidated Submission listing showing grouped document submissions with batch reference number, total count, submission date and LHDN validation status" caption="Consolidated Submission: Track grouped batch submissions and their overall LHDN validation results." >}}
-
-Lists all batch (consolidated) submissions, showing the batch reference, total document count, and overall outcome. Drill into a batch to see the per-document result.
-
-**Scenario — Monthly batch review:**
-```
-End of month: You submitted 150 invoices in 3 batches
-Open Consolidated Submission → see all 3 batches listed
-Batch 1: 50 docs → 50 Submitted ✓
-Batch 2: 50 docs → 48 Submitted, 2 Rejected ✗
-Batch 3: 50 docs → 50 Submitted ✓
-Action: Go to Batch Pool → fix and resubmit the 2 rejected documents
-```
-
----
-
-### Validation Queue
-
-{{< figure src="/images/my-e-invoice-admin-applet/internal-submission-validation-queue.png" alt="Validation Queue listing showing documents currently awaiting LHDN validation response with queue position and submission timestamp" caption="Validation Queue: Documents actively awaiting a validation response from LHDN's MyInvois portal." >}}
-
-Shows documents that have been sent to LHDN and are awaiting a validation response. Under normal conditions this list should be short — documents pass through quickly.
-
-{{< callout type="warning" >}}
-**If documents stay in Validation Queue for more than 30 minutes**: Check LHDN API connectivity in Settings. An API outage can stall all pending validations.
-{{< /callout >}}
-
----
-
-### Portal Request
-
-{{< figure src="/images/my-e-invoice-admin-applet/internal-submission-portal-request.png" alt="Portal Request listing showing requests made to the LHDN MyInvois portal with request type, reference number, request date and current status" caption="Portal Request: Track all requests made to the LHDN MyInvois portal including submission, cancellation, and query requests." >}}
-
-Tracks every request made to the LHDN MyInvois portal — not just document submissions, but also cancellation requests and any query submissions. Use this as the raw portal-level log.
-
----
-
-### Submission History
-
-{{< figure src="/images/my-e-invoice-admin-applet/internal-submission-history.png" alt="Submission History listing showing complete archive of all LHDN submissions with Process ID, document number, submission date, status, amount and party details" caption="Submission History: Full compliance archive — every LHDN submission with its final outcome, Process ID, and document details." >}}
-
-The Submission History is the authoritative archive of every document ever submitted to LHDN through this applet. Every row includes the final outcome, Process ID, and timestamps.
-
-**What History Tracks:**
-
-| Field | Details |
-|-------|---------|
-| **Document Number** | Internal reference number |
-| **Document Type** | Invoice, credit note, debit note |
-| **Submission Date** | When submitted to LHDN |
-| **Status** | Submitted, Rejected, or Cancelled |
-| **Process ID** | LHDN-assigned unique identifier |
-| **Party Details** | Buyer or supplier information |
-| **Amount** | Document total before and after tax |
-
-**Using History for Compliance Audits:**
-1. Filter by current month
-2. Confirm all issued documents show **Submitted** status
-3. Identify any remaining **Rejected** documents and resolve them
-4. Export the filtered list for your compliance records
-
----
-
-### Email Dashboard
-
-{{< figure src="/images/my-e-invoice-admin-applet/internal-submission-email-dashboard.png" alt="Email Dashboard listing showing automated email notifications sent for e-invoice submission events with recipient address, email subject, event trigger and delivery status" caption="Email Dashboard: Audit log of all automated email notifications sent for submission events." >}}
-
-The Email Dashboard shows every automated email notification sent by the system in response to submission events — validations, rejections, cancellations. Use this to:
-- Confirm a rejection notification was delivered to the finance team
-- Check if a submission confirmation was sent to the right recipient
-- Troubleshoot cases where a team member claims they didn't receive an alert
-
----
-
-## 6. External Reception & Reconciliation
-
-The sidebar includes **External Reception** and **Reconciliation** sections that handle incoming e-invoices from suppliers and reconciliation of your internal records against LHDN's data.
-
-### External Reception
-
-External Reception manages all e-invoices received from the Peppol/LHDN network — these are documents sent to your company by your suppliers or trading partners.
-
-{{< figure src="/images/my-e-invoice-admin-applet/external-reception-queue.png" alt="External Submission Queue Listing showing incoming documents with Buyer Name, Buyer Tax ID, Supplier Name, Supplier Tax ID, Receiver ID, and Receiver Name columns" caption="External Reception — Queue: All incoming e-invoices from suppliers awaiting processing, with buyer and supplier details for verification." >}}
-
-| Sub-menu | Purpose | When to Use |
-|----------|---------|-------------|
-| **Queue** | Incoming e-invoices from LHDN awaiting processing into your system | Check daily for new incoming documents that need to be processed |
-| **From IRB E-Invoice** | E-invoices received from the LHDN IRB portal — the complete list of all received documents | Review received e-invoices, verify supplier details and amounts before processing |
-
-**Workflow:**
-1. Supplier sends e-invoice via Peppol/LHDN → document arrives in **Queue**
-2. System processes the document → moves to **From IRB E-Invoice** upon successful processing
-3. If processing fails → document stays in **Queue** with an error status for resolution
-
-### Reconciliation (Purchase)
-
-Purchase Reconciliation matches your internal purchase documents against incoming e-invoices from suppliers to ensure both sides agree on amounts and details.
-
-{{< figure src="/images/my-e-invoice-admin-applet/reconciliation-purchase-matching.png" alt="Purchase Doc Matching Queue listing showing documents with Doc Version, Doc No, Doc Short Code, Company, Entity Name, Document Date, Amount, and Status columns, with Auto Match, Export, and Push to Unmatched History action buttons" caption="Purchase Reconciliation — PD Matching Queue: Match purchase documents against incoming supplier e-invoices. Use Auto Match for automatic pairing, or Push to Unmatched History for manual review." >}}
-
-| Sub-menu | Purpose | When to Use |
-|----------|---------|-------------|
-| **PD Matching Q.** | Purchase documents awaiting matching against incoming e-invoices | Review documents waiting to be matched — system auto-matches where possible |
-| **Inc. E-Invoice Match Q.** | Incoming e-invoices queued for matching against your purchase documents | Check for supplier e-invoices that need to be matched to your internal records |
-| **Matched History** | Archive of successfully matched purchase document pairs | Audit and verify that matched pairs have correct amounts |
-| **Inc. Unmtch. E-Inv. Hist.** | Incoming e-invoices that could not be automatically matched | Investigate — may indicate missing purchase orders or supplier discrepancies |
-| **Unmatched PD Hist.** | Purchase documents that could not be matched to any incoming e-invoice | Follow up — the supplier may not have submitted their e-invoice yet |
-
-### Reconciliation (Sales)
-
-Sales Reconciliation matches your internal sales documents against incoming e-commerce platform e-invoices to detect discrepancies.
-
-{{< figure src="/images/my-e-invoice-admin-applet/reconciliation-sales-matching.png" alt="Sales Doc Matching Queue listing showing documents with Doc Version, Doc No, Doc Short Code, Company, Entity Name, Document Date, Amount, and Status columns, with Auto Match, Export, and Push to Unmatched History action buttons" caption="Sales Reconciliation — SD Matching Queue: Match sales documents against incoming e-commerce e-invoices. Same workflow as Purchase Reconciliation." >}}
-
-| Sub-menu | Purpose | When to Use |
-|----------|---------|-------------|
-| **SD Matching Q.** | Sales documents awaiting matching | Review sales documents waiting for matching against e-commerce records |
-| **Inc. Ecom Matcd. Q.** | Incoming e-commerce e-invoices queued for matching | Check e-commerce platform invoices pending matching to your sales records |
-| **Matched History** | Archive of successfully matched sales document pairs | Month-end reconciliation — verify all sales are properly matched |
-| **Inc. Ecom Unmatcd. Hist.** | Unmatched incoming e-commerce e-invoices | Investigate — may indicate missing sales records or platform sync issues |
-| **SD Unmatcd. Hist.** | Unmatched sales documents | Follow up — the e-commerce platform may not have sent the corresponding e-invoice |
-
-{{< callout type="tip" >}}
-**Month-End Reconciliation Tip**: Start with the **Unmatched** queues — these highlight gaps between your records and what LHDN/Peppol has received. Resolve unmatched items before running the Monthly Report for a clean compliance close.
-{{< /callout >}}
-
----
-
-## 7. Cancellation
-
-The Cancellation section has two sub-menus: **Rejection Requests** and **Cancellation Queue**.
-
-{{< figure src="/images/my-e-invoice-admin-applet/cancellation.png" alt="Cancellation listing page showing rejection requests submitted to LHDN with document reference, cancellation reason, request date and LHDN approval status" caption="Cancellation → Rejection Requests: Submit and track LHDN cancellation requests for validated e-invoices." >}}
-
-{{< figure src="/images/my-e-invoice-admin-applet/cancellation-rejection-requests.png" alt="Rejection Requests listing showing documents with System Requestor Status, System Processing Status, System Approval Status, and Request Submission Date columns" caption="Rejection Requests: Track cancellation request statuses — from REQUESTED through IN-PROGRESS to COMPLETED/APPROVED." >}}
-
-{{< figure src="/images/my-e-invoice-admin-applet/cancellation-queue-details.png" alt="Cancellation Queue with detail panel showing Server Doc Type, Currency, Amount, Transaction Date, Request Submission Status, Processing Logic, Cancellation Request Date, and Request Error fields" caption="Cancellation Queue Details: View cancellation details including submission status, processing logic, and any request errors (e.g. 'Passed 72 hours from validation date time')." >}}
-
-| Sub-menu | Purpose |
-|----------|---------|
-| **Rejection Requests** | List of cancellation requests submitted to LHDN and their approval status |
-| **Cancellation Queue** | Documents staged and queued pending cancellation submission to LHDN |
-
-Manage cancellation requests for e-invoices that have already been validated by LHDN. A cancellation voids the document — it is no longer a valid tax document once LHDN approves the request.
-
-### When to Cancel
-
-| Scenario | Action |
-|----------|--------|
-| Invoice issued to wrong party | Cancel and reissue to correct party |
-| Incorrect amount or tax amount | Cancel and reissue with correct figures |
-| Duplicate submission accepted by LHDN | Cancel the duplicate |
-| Transaction voided or reversed | Cancel the associated e-invoice |
-
-### LHDN Cancellation Policy
-
-{{< callout type="warning" >}}
-**Important**: LHDN imposes a cancellation time window. Requests submitted outside this window will be rejected. Always verify eligibility before initiating. Refer to the latest LHDN MyInvois guidelines for the current cancellation period.
-{{< /callout >}}
-
-### Cancellation Process
-
-**Step 1: Locate the document**
-- Go to **Cancellation** in the left sidebar
-- Find the validated invoice by document number or date
-
-**Step 2: Submit the request**
-1. Click the document
-2. Click **Request Cancellation**
-3. Enter the cancellation reason (required by LHDN)
-4. Confirm and submit
-
-**Step 3: Monitor the outcome**
-
-| Outcome | Status Update | Next Step |
-|---------|-------------|-----------|
-| **Approved by LHDN** | Document → Cancelled | Reissue a corrected invoice if transaction is still valid |
-| **Rejected by LHDN** | Cancellation denied | Review reason — check if outside cancellation window |
-
-**Scenario — Invoice sent to wrong customer:**
-```
-Submitted invoice INV-2024-099 to Customer A ✗
-Correct recipient: Customer B
-Steps:
-1. Go to Cancellation → find INV-2024-099
-2. Request Cancellation → reason: "Incorrect buyer entity"
-3. LHDN approves → INV-2024-099 status: Cancelled
-4. Create new invoice INV-2024-100 for Customer B
-5. Submit INV-2024-100 via Posting Queue → LHDN validates ✓
-```
-
-### After Cancellation
-
-Once cancelled:
-- The document is no longer a valid tax document
-- It remains in Submission History for audit purposes — it is not deleted
-- A new invoice must be created, submitted, and validated before issuing to the customer
-
----
-
-## 8. Monthly Report
-
-The Monthly Report section has two sub-menus: **Discrepancies Report** and **History**.
-
-{{< figure src="/images/my-e-invoice-admin-applet/monthly-report.png" alt="Monthly Report showing a Discrepancies Report with period selector, submission totals, and a breakdown of submitted vs discrepant documents by type" caption="Monthly Report → Discrepancies Report: Reconcile your submission records against LHDN data for the selected period." >}}
-
-| Sub-menu | Purpose |
-|----------|---------|
-| **Discrepancies Report** | Compares your records against LHDN's to identify gaps or mismatches |
-| **History** | Archive of past monthly reports for audit and comparison |
-
-### Discrepancies Report
-
-Use this report at month-end to confirm that every document you issued has a corresponding validated record in LHDN:
-
-1. Select the reporting **period** (month and year)
-2. Run the report
-3. Review the output:
-   - Documents in your system but not in LHDN → submission may have failed
-   - Documents in LHDN but not in your system → investigate unexpected submissions
-4. Resolve any discrepancies before closing the month
-
-**Monthly Compliance Checklist:**
-```
-1. Run Discrepancies Report for the month
-2. All issued documents = Submitted in LHDN ✓
-3. Zero unresolved Rejected documents ✓
-4. No unexpected documents in LHDN records ✓
-5. Export report and file for compliance records ✓
-```
-
----
-
-## 9. Tools
-
-### Bulk TIN Validation
-
-The **Tools → Bulk TIN Validation** feature allows you to validate Taxpayer Identification Numbers (TINs) in bulk before submitting documents to LHDN. This is useful for catching invalid TINs early — before they cause rejections in Batch Pool.
-
-**When to use:**
-- Before a large batch submission — validate all buyer/supplier TINs upfront
-- When onboarding new customers or suppliers — verify their TINs are LHDN-registered
-- After receiving a batch of rejections due to TIN errors — identify which entities have invalid TINs
-
-**How it works:**
-1. Go to **Tools → Bulk TIN Validation**
-2. Upload a file containing the TINs to validate
-3. The system checks each TIN against LHDN's registered records
-4. Review the results — valid TINs are confirmed, invalid ones are flagged
-5. Correct flagged TINs in the originating records before submitting documents
-
-{{< callout type="tip" >}}
-**Run Bulk TIN Validation before every large batch submission.** TIN errors are the most common cause of rejection and are entirely preventable with an upfront check.
-{{< /callout >}}
-
----
-
-## 10. Configuration & Settings
-
-### Company & LHDN Setup
-
-Before submitting any documents, confirm these are configured correctly by your system administrator:
-
-**LHDN API Credentials:**
-- MyInvois client ID and client secret
-- Required for all API submissions to LHDN
-
-**Company Information:**
-- Taxpayer Identification Number (TIN) — must exactly match LHDN records
-- Business Registration Number (BRN)
-- SST Registration Number (if applicable)
-- Company address as registered with LHDN
-
-**Document Type Mappings:**
-- Maps internal document types to LHDN document type codes
-- Examples: Sales Invoice → INV, Credit Note → CN, Debit Note → DN
-
-### Submission Settings
-
-| Setting | Purpose | Recommended |
-|---------|---------|-------------|
-| **Auto-Submit** | Automatically submit on document approval | Configure based on team workflow |
-| **Batch Size** | Max documents per batch | 50–100 per batch |
-| **Retry on Error** | Auto-retry on API timeout | Enable |
-| **Rejection Notification** | Email alert on LHDN rejection | Enable for finance team |
-
-### Connectivity Check
-
-Always verify your LHDN API connection before running bulk submissions:
-
-1. Go to **Settings → LHDN Connectivity**
-2. Click **Test Connection**
-3. Confirm status: **Connected**
-4. If failed: check API credentials, then check network access
-
-{{< callout type="warning" >}}
-**Before any bulk submission**: Run a connectivity check first. Submitting during an API outage produces **Error** status documents that require manual retry — they do not auto-recover.
-{{< /callout >}}
-
----
-
-## 11. Integration Points
-
-### With My Peppol Admin Applet
-
-Validated e-invoices automatically become eligible for Peppol network distribution:
-
-```
-My E-Invoice Admin → LHDN validates → Status: Submitted
-    ↓
-My Peppol Admin → Waiting Queue → Peppol distribution to trading partner
-```
-
-The same **Process ID** is shared across both applets, enabling end-to-end tracking from LHDN submission through to Peppol delivery.
-
-### With Sales & Purchase Applets
-
-Documents originating in Sales or Purchase applets flow into this applet automatically:
-
-- The original document number is retained for cross-reference
-- Submission status reflects back on the originating document
-- No manual data transfer — the integration handles it end to end
-
-### With Organisation Applet
-
-Company details (TIN, BRN, address) configured in the Organisation Applet are used in every e-invoice submission:
-
-- Keep Organisation Applet details in sync with LHDN's registered records
-- Any mismatch between Organisation Applet data and LHDN records causes rejections
-
----
-
-## 12. Common Issues
-
-**Document rejected immediately after submission?**
-- Open Batch Pool → read the exact LHDN error code and description
-- Most common: invalid TIN format, missing BRN, wrong tax code, line total mismatch
-- Fix the specific field flagged — not a general edit — and resubmit
-
-**Submission stuck in Validation Queue beyond 30 minutes?**
-- Go to Settings → LHDN Connectivity → Test Connection
-- If disconnected: check API credentials and network access
-- If connected: LHDN may be experiencing high load — wait and monitor
-- If stuck beyond 2 hours: contact support with the Process ID
-
-**Cannot find a document in Submission History?**
-- Widen the date range filter — default may be set to today only
-- Search by Process ID if you have it
-- If the document never appears: check Posting Queue — it may not have been submitted
-
-**Cancellation request rejected by LHDN?**
-- Most likely cause: outside the cancellation window
-- Check LHDN MyInvois guidelines for current cancellation eligibility period
-- If within the window: review the rejection reason code provided by LHDN
-
-**Monthly Report shows discrepancies?**
-- Check Batch Pool for unresolved rejected documents in that period
-- Verify no submissions failed at the Error status (before reaching LHDN)
-- Re-submit any missing documents and re-run the report
-
-**Email notifications not being received?**
-- Check Email Dashboard — confirm the notification was actually sent
-- If sent but not received: check spam folders and email server allowlists
-- If not sent: verify notification settings in Settings → Email Configuration
-
----
-
-## 13. Quick Reference
-
-### Menu Structure
-
-| Menu Item | Sub-menu | Purpose |
-|-----------|----------|---------|
-| **Master List** | — | All documents across all statuses |
-| **Posting Queue** | — | Stage and review documents before submission |
-| **Batch Pool** | — | Bulk submission and inline rejection resolution |
-| **Individual Pool** | — | Individually submitted documents |
-| **Single General Pool** | — | Single general-type submissions |
-| **Internal Submission** | To IRB E-Invoice | Outgoing submissions to LHDN IRB portal |
-| | Individual Submission | Documents submitted individually |
-| | Consolidated Submission | Batch submission records |
-| | Validation Queue | Documents awaiting LHDN validation response |
-| | Portal Request | All portal-level request logs |
-| | Submission History | Full compliance archive |
-| | Email Dashboard | Notification audit log |
-| **External Reception** | Queue | Incoming e-invoices awaiting processing |
-| | From IRB E-Invoice | E-invoices received from LHDN IRB |
-| **Reconciliation (Purchase)** | PD Matching Q. | Purchase docs awaiting matching |
-| | Inc. E-Invoice Match Q. | Incoming e-invoices for matching |
-| | Matched History | Successfully matched purchase pairs |
-| | Inc. Unmtch. E-Inv. Hist. | Unmatched incoming e-invoices |
-| | Unmatched PD Hist. | Unmatched purchase documents |
-| **Reconciliation (Sales)** | SD Matching Q. | Sales docs awaiting matching |
-| | Inc. Ecom Matcd. Q. | Incoming e-commerce invoices for matching |
-| | Matched History | Successfully matched sales pairs |
-| | Inc. Ecom Unmatcd. Hist. | Unmatched e-commerce invoices |
-| | SD Unmatcd. Hist. | Unmatched sales documents |
-| **Cancellation** | Rejection Requests | Cancellation requests submitted to LHDN |
-| | Cancellation Queue | Documents staged for cancellation |
-| **Monthly Report** | Discrepancies Report | Records vs LHDN discrepancy report |
-| | History | Past monthly report archive |
-| **Tools** | Bulk TIN Validation | Validate TINs in bulk before submission |
-
-### Critical Terms
-
-**Process ID** — Unique identifier assigned by LHDN per submission. Used to track a document across My E-Invoice Admin, My Peppol Admin, and LHDN's own MyInvois portal.
-
-**TIN** — Taxpayer Identification Number. Mandatory on every submission. Must match LHDN's registered records exactly — even a formatting difference causes rejection.
-
-**Submitted** — LHDN has validated and accepted the document. It is a legally recognised e-invoice.
-
-**Rejected** — LHDN validation failed. Must be corrected and resubmitted before it has any legal standing.
-
-**Cancellation Window** — The period within which LHDN allows a validated invoice to be cancelled. Requests outside this window are automatically rejected by LHDN.
-
-### When to Contact Support
-
-- Documents stuck in Validation Queue beyond 2 hours with API showing Connected
-- Batch Pool rejection errors with blank or unreadable error descriptions
-- Cancellation denied with no clear reason code
-- Process ID mismatch between My E-Invoice Admin and My Peppol Admin records
-- LHDN API credentials need rotation or replacement
-
----
-
-## FAQ
-
-**Q: What is the difference between Batch Pool, Individual Pool, and Single General Pool?**
-A: They track documents submitted via different methods. **Batch Pool** is for bulk submissions (multiple documents at once from Posting Queue). **Individual Pool** is for documents submitted one at a time urgently outside a batch cycle. **Single General Pool** tracks single-document general submissions that are not part of a named batch.
-
-**Q: A document shows Submitted in Batch Pool but I can't find it in Submission History — where is it?**
-A: Submission History has a date filter that defaults to a recent range. Widen the date range or search by Process ID. If it still doesn't appear, the document may still be transitioning — wait a few minutes and refresh.
-
-**Q: Can I submit an invoice to LHDN directly without going through the Posting Queue?**
-A: Posting Queue is the standard staging step, but Individual Pool and Single General Pool support direct individual submissions. Contact your system administrator if you need to bypass the batch cycle for an urgent document.
-
-**Q: My document was rejected for "Invalid TIN" but the TIN looks correct — why?**
-A: LHDN validates TIN against their own database. Common causes of mismatch: extra spaces in the TIN field, incorrect format (prefix/suffix), or the TIN belongs to a different entity. Check the exact format registered in the Organisation Applet against LHDN's records.
-
-**Q: What happens to a rejected document — does the customer receive it?**
-A: No. A rejected document has no legal standing and should not be issued to the customer. Correct it, resubmit, and wait for a **Submitted** status before treating it as a valid tax document.
-
-**Q: Can I cancel an invoice after I have already sent it to the customer?**
-A: Yes, but the cancellation must go through LHDN and be approved. Once LHDN approves, notify your customer separately that the document is void and issue a corrected replacement invoice.
-
-**Q: How do I know if a cancelled document is still visible for audits?**
-A: Cancelled documents remain permanently in Submission History with **Cancelled** status. They are never deleted — this is intentional for audit trail purposes.
-
-**Q: The Email Dashboard shows a rejection notification was sent, but my colleague says they didn't receive it — what do I do?**
-A: First confirm the recipient email address in the Email Dashboard is correct. If correct, ask the recipient to check spam/junk folders. If still missing, check whether your email server has allowlisted the sending domain. Update notification settings in Settings → Email Configuration if the address is wrong.
-
-{{< callout type="info" >}}
-**Need Help?** Contact your system administrator for LHDN API and connectivity issues. For document-specific queries, provide the **Process ID** and document number to support for the fastest resolution.
-{{< /callout >}}
+- [E-Invoice Pools & Submission Routing](/guides/einvoice-guides/einvoice-pools-and-routing/) — the 23 routing scenarios and what to do in each pool
+- [E-Invoice Validation Rules & Troubleshooting](/guides/einvoice-guides/einvoice-validation/) — mandatory fields, general TINs, currency and reference errors
+- [MyInvois Setup Guide](/guides/einvoice-guides/myinvois-setup/) — company registration, intermediary authorisation and first submission
+- [E-Invoice module](/modules-v2/e-invoice/) — module overview and related applets

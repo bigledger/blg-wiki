@@ -222,3 +222,69 @@ The applet's real issue history lives in a customer-project repo whose slug cont
 - Default Selection / Personalization › Default Selection are dead at 9966d77 — keep them on the page as "not functional", or ask product to remove the menu items?
 - Who seeds `bl_applet_config` `RETURN_REASON` for a new tenant? The Return Reasons screen cannot create it, so a fresh tenant cannot add return reasons until it exists.
 - Avatar photo in the two kept screenshots (see above) — acceptable, or should the loop crop/replace them?
+
+## Run 6 (2026-09-05) — E-invoice pages (admin, portal, Peppol) from the internal e-invoice README + backend + issues
+
+Read in full before writing: `refs/blg-intranet/content/1100-malaysia-einvoice/README.md` (2,679 lines), all 10 images, the 10K-simulation scenarios CSV, the LHDN core-workflow diagram; 300 blg-intranet issues matching e-invoice/peppol (titles) plus 27 bodies; the applet repo's 40 issues; backend `MyEInvoice*` controllers/services @871dbf5c96. Facts extracted, no passages copied; no tenant, PIC or credential from the README appears anywhere in the wiki (the README's per-tenant consolidation schedule and PIC names were deliberately ignored).
+
+### Pages
+
+- `content/en/applets/e-invoice/my-e-invoice-admin-applet.md` — rewritten to standard. 10 consumed applet-local settings + 1 rendered-not-consumed (`HIDE_SUBMISSION_STATUS`) + 3 read-without-control; Default Selection dead (unbound); 0 client-side permission rows. Lifecycle rebuilt from the entry-gate processor, the mandatory-field check, the pool services, the resubmission guards and the cancellation service. 17 troubleshooting rows.
+- `content/en/applets/e-invoice/my-e-invoice-portal-applet.md` — rewritten; **title set to the registry name "MY E-Invoice Portal Applet"** (capital MY). No consumed settings at all. Key correction: the portal does not submit to LHDN; it updates the customer's entity and calls `request-queues/process-request/login-entity-ep`; the "auto-switch Regenerate vs Credit Note" story in the old page is really "the logic dropdown collapses to NEW_REVERSAL_DOC after 72 h".
+- `content/en/applets/e-invoice/mypeppol-admin-applet.md` — rewritten. **Direction reversal:** the old page (and the Peppol guide) say documents enter the Waiting Queue *after LHDN validates*. The code gates the Waiting Queue on the e-invoice mandatory-field check + company/entity `peppol_participant_id` only (`PeppolPostingQueueToWaitingQueueProcessor.checkPostingQueueValidity` L123–L146); no Peppol processor reads `einvoice_document_status`. Also: Monthly Reports are not "sample data" (no mock found; `rowData = []` until Generate Report); the Testbed menu is commented out.
+
+### Skipped
+
+- `content/en/applets/e-invoice/website-builder/user-permission-manager.md` — no registry row under any plausible name ("User Permission Manager", "Website Builder"); it is a CP Commerce website-builder screen, and an identical page exists at `content/en/applets/ecommerce/website-builder/user-manager.md` (also in my queue). Recorded as a registry mismatch; the loop should merge the two and move the survivor out of `applets/e-invoice/`.
+
+### Method findings (add to METHOD.md)
+
+- **Internal runbooks are the best troubleshooting source.** The README's error catalogue (CF324/CF358 buyer NRIC shapes, DC511 base currency, DR303/DR308 stale original reference, CV317 state code 17, duplicate-submission patterns, 72-hour rule from `validation_datetime`) gave more real failure modes than 300 issue titles. Read the runbook first, then use issues only to confirm and date.
+- **Effects can be copy-pasted skeletons.** The Peppol applet's NgRx effects inject the real services under variable names from other applets (`couponLineService`, `batchPoolEventService`, `ticketScannedService`). Trace by the injected *type*, not the variable name.
+- **Two applets can ship the same constant with different contents.** `PROCESSING_LOGIC` has four entries in the admin applet (with `CANCEL_FOR_EDIT_AND_RESUBMIT` labelled `CANCEL_EINVOICE`) and three in the portal applet. Grep the constant in every repo that renders the dropdown before saying an option "is missing".
+- **Registry names are case-significant for the title rule.** `myEInvoicePortalApplet` is "MY E-Invoice Portal Applet"; the page had "My E-invoice Portal Applet".
+
+### Screenshots with personal data (listed, not referenced)
+
+Opened all 22 admin, 5 portal and 17 Peppol images plus the 10 intranet images. Offenders (exact paths, one per line):
+
+- static/images/my-e-invoice-admin-applet/posting-queue-submit.png — buyer name that reads as a real individual/business in the Entity column; avatar photo.
+- static/images/my-e-invoice-admin-applet/posting-queue.png — a staff first name in the Entity column.
+- static/images/my-e-invoice-admin-applet/batch-pool.png — two full personal names in Sales Entity Name.
+- static/images/my-e-invoice-admin-applet/individual-pool.png — a staff member's full name as Entity Name.
+- static/images/my-e-invoice-admin-applet/single-general-pool.png — several staff first names / full names as Entity Name.
+- static/images/my-e-invoice-admin-applet/external-reception-queue.png — staff full names as buyer names, with TINs.
+- static/images/my-e-invoice-admin-applet/internal-submission-email-dashboard.png — a staff e-mail address (Receiver Email) and a real customer company name in the Title column.
+- static/images/my-e-invoice-admin-applet/monthly-report.png — a staff member's full name in Created By / Updated By.
+- static/images/my-e-invoice-admin-applet/my-e-invoice-admin-applet-overview-infographic.png — AI marketing artefact, no data; now unreferenced.
+- static/images/my-e-invoice-portal-applet/my-e-invoice-portal-applet-overview-infographic.png — AI artefact; now unreferenced.
+- static/images/my-peppol-admin-applet/my-peppol-admin-applet-overview-infographic.png — AI artefact with garbled text; now unreferenced.
+
+Intranet images NOT copied (contain real data): `wrong-general-tin-usage.png` (tenant code, company names, document numbers), `original-einvoice-error.jpg` (supplier name, TIN, buyer name and e-mail), `postman-environment-variables.jpg` (client id/secret), `postman-login-intermediary-system.jpg` (TIN, bearer token), `get-doc-details.jpg` (real issuer/receiver names and TINs). Copied (clean): `lhdn-core-workflow.png` → `static/images/my-e-invoice-admin-applet/lhdn-core-workflow.png` (processor/table names only). `einvoice-entity-json-priority-chart.jpg`, `forex-error.jpg`, `einvoice-date-and-time-documentation.jpg` are clean but reproduced as text instead.
+
+Kept and referenced (clean; several show the logged-in user's small avatar photo top-right, as flagged in run 5): admin — master-list, batch-pool-validation-error, internal-submission-to-irb-e-invoice, internal-submission-consolidated, internal-submission-validation-queue, internal-submission-history, internal-submission-portal-request, cancellation-rejection-requests, cancellation-queue-details, reconciliation-purchase-matching; portal — all four screen captures; Peppol — posting-queue, view-posting-queue-account, waiting-queue, internal-submission-to-peppol-ap, internal-submission-queue, internal-submission-to-peppol-ap-export, external-reception-from-peppol-ap, peppol-id-registration. Unreferenced but clean: admin cancellation.png, internal-submission-individual.png, reconciliation-sales-matching.png; Peppol view-posting-queue-details/lines, internal-submission-to-peppol-ap-details, internal-submission-queue-details, internal-submission-history, external-reception-from-peppol-ap-details/export, peppol-registered-companies.
+
+### Cross-lane link requests
+
+- **master-data/organisation-applet.md** (other lane): document the company E-Invoice tab as the owner of `einvoice_status` (ENABLED gate — documents finalised before enabling are dropped silently), TIN/BRN/SST/MSIC/business activity/address/phone, and the `einvoice_settings_json` keys `einvoice_issuer_type`, `einvoice_forex_gendoc_posting_logic`, `einvoice_running_no_config`, `einvoice_line_item_desc_config`; and the Peppol Config tab as owner of `peppol_status` and `peppol_participant_id`. Add `my-e-invoice-admin-applet`, `mypeppol-admin-applet` to `related_applets`.
+- **master-data/customer-applet.md**, **master-data/supplier-applet-1.md**: add the three e-invoice applets to `related_applets`; state that ID type must be PASSPORT for foreigners, NRIC 12 digits without hyphens, `default_einvoice_address` chosen shipping → billing → main, phone 8–20 chars, and that one Peppol ID must be marked default (it is the Peppol receiver).
+- **sales-workflow/internal-sales-invoice-applet.md**, **pos-general-applet.md**, **internal-sales-credit-note/debit-note/refund-note/return**: add `my-e-invoice-admin-applet` to `related_applets`; say finalising only *queues* the document (trigger processor), that `einvoice_submission_type` / `skip_einvoice` decide the pool, that RM 10,000+ SINV/SCSH are forced individual, and that notes/returns must reference the currently Valid original.
+- **finance/internal-purchase-invoice-applet.md** (lane 2?): self-billed purchase invoices (`EINVOICE_SELF_BILLED = TRUE`) enter the same pipeline with the supplier as issuer; link to the admin applet.
+- **guides/einvoice-guides/peppol-configuration.md** and **modules-v2/e-invoice/** pages: remove "after LHDN validates" for the Peppol Waiting Queue (see direction reversal above).
+- **guides/einvoice-guides/einvoice-pools-and-routing.md**, **einvoice-validation.md**: spot-check against the routing table and mandatory list on the admin page (RM 10k rule applies to SINV/SCSH only; CANCEL_EINVOICE label).
+- **applets/e-invoice/my-einvoice-for-customer-and-supplier-applet.md** (skipped, run 5): when the loop merges it into the portal page, add `aliases: [/applets/e-invoice/my-einvoice-for-customer-and-supplier-applet/]` to the portal page.
+- **ecommerce/website-builder/user-manager.md** (my lane, later): merge with `e-invoice/website-builder/user-permission-manager.md`; both lack a registry row.
+
+### Registry / naming mismatches
+
+- `myIEnvoiceAdminApplet` (sic — "IEnvoice") `documentation_url` points at `/applets/e-invoice/einvoice-generation-applet/`, which is only an alias of the current page; `myEInvoicePortalApplet` has no `documentation_url`; `peppolApAdminApplet`'s `documentation_url` points at `/applets/peppolap-admin-applet/`, which does not exist in the wiki (no page for the AP operator tool — probably correct, it is BigLedger-internal, but the URL should be blanked).
+- "User Permission Manager" / "User Manager" (website builder) — no registry row; not applets.
+- 0 client-side permission definitions for all four e-invoice codes.
+
+### Questions for Vincent
+
+- Is it intended that the Peppol Waiting Queue does **not** wait for LHDN `Valid`? The old page, the Peppol guide and the modules-v2 text all say it does; the code does not. If the behaviour is a bug, the page should say "currently" rather than presenting it as design.
+- `HIDE_SUBMISSION_STATUS` is rendered and saved but read nowhere; `DEFAULT_SELECTION` screens in all three e-invoice applets are dead (unbound). Report to product, or leave documented as "not functional"?
+- The forex choice `POST_FOREX_DOC` / `POST_LOCAL_CCY_DOC` has no UI (intranet #5803 open). The admin page says "set by support" — acceptable until the Organisation applet exposes it?
+- May the copied `lhdn-core-workflow.png` (processor/table names only, from the internal README) stay on the public wiki? It is the single most useful picture on the page.
+- The portal applet's Processing Logic dropdown still lacks `CANCEL_FOR_EDIT_AND_RESUBMIT` (intranet #5427 closed the backend half). Raise a front-end issue on the portal repo?

@@ -8,10 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/e-invoice/my-e-invoice-admin-applet.md",
-  "content/en/applets/e-invoice/my-e-invoice-portal-applet.md",
-  "content/en/applets/e-invoice/mypeppol-admin-applet.md",
-  "content/en/applets/e-invoice/website-builder/user-permission-manager.md",
   "content/en/applets/delivery-installation/delivery-installation-driver-applet.md",
   "content/en/applets/ecommerce/ecommerce-catalog-applet.md",
   "content/en/applets/ecommerce/installation-of-pricebook-applet.md",
@@ -78,12 +74,31 @@
    "page": "content/en/applets/delivery-installation/delivery-installation-applet.md",
    "date": "2026-09-05",
    "note": "run 5; rewritten from the V2 repo project delivery-installation-applet-V2"
+  },
+  {
+   "page": "content/en/applets/e-invoice/my-e-invoice-admin-applet.md",
+   "date": "2026-09-05",
+   "note": "run 6; e-invoice README + backend + issues"
+  },
+  {
+   "page": "content/en/applets/e-invoice/my-e-invoice-portal-applet.md",
+   "date": "2026-09-05",
+   "note": "run 6; e-invoice README + backend + issues"
+  },
+  {
+   "page": "content/en/applets/e-invoice/mypeppol-admin-applet.md",
+   "date": "2026-09-05",
+   "note": "run 6; backend processors + issues"
   }
  ],
  "skipped": [
   {
    "page": "content/en/applets/e-invoice/my-einvoice-for-customer-and-supplier-applet.md",
    "reason": "ADR-0002: renamed applet; page to be merged into my-e-invoice-portal-applet by the loop, not enhanced"
+  },
+  {
+   "page": "content/en/applets/e-invoice/website-builder/user-permission-manager.md",
+   "reason": "ADR-0002: no registry row under any plausible name (website-builder feature of CP Commerce, not an applet); duplicate of ecommerce/website-builder/user-manager.md - loop to merge/relocate"
   }
  ],
  "updated": "2026-09-05",
