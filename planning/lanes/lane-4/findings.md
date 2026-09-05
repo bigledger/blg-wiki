@@ -1239,3 +1239,79 @@ Read but not written up (registry `stockReplenishmentApplet` "Stock Replenishmen
 - Backend: 43 repo issues, most July–August 2026 (fulfillment strategies #5–#19, PO fulfillment processor #16, internal stock transfer processor #20, MAX surplus redistribution processor #21, e-mail service #22/#39–#41, rules & negation #29/#36, recurring events #45, inter-company transfer #10/#31/#33/#34 and Organisation intercompany setting #30, supplier priority from Doc Item entity pricing #47, run save error #37). Backend file list is in the run-22 tool output (grep `replenish` under akaun-api / javasdk / client-sdk) — start from the processors and `StockBalanceHelper.generateCurrentLocationStockBalanceContainerFromCustomDto` (min/max seeding, run 19 topic).
 - Screenshots: two AI infographics only (`Stock Replenishment-applet/…-overview-infographic.png`, `stock-replenishment/quick-start-guide.png`) — both to drop; no product captures exist.
 - Estimate: a full run (large document-family applet with four sub-entities and ~10 processors).
+
+## Pages completed (run 23, Stock Replenishment)
+
+- `content/en/applets/inventory-workflow/stock-replenishment-applet.md` — rewritten to the standard. Registry `stockReplenishmentApplet` "Stock Replenishment Applet" (TNT-ADMIN, ACTIVE, 2023-05-08; `documentation_url` = a Confluence page, so no alias). Title unchanged; `page_type: applet`; `applet_code`, `applet_repo`, `modules: [inventory, purchasing]`, `related_applets` (10), `guides: []`, per-section `sources:` (screens, configuration, fields, lifecycle, troubleshooting + 9 issue ids); `weight` 170 and tags kept; no BOM. Old marketing body (personas, quick start, scenarios, FAQ, invented "Field Settings controls column visibility") replaced by Overview · Where it fits · Screens and menus · Configuration (prerequisites; applet-local settings table; Field Settings stub; printable / e-mail template; read-without-control keys; the Fulfillment Strategy control by control with defaults and backend consumption; filter logic; settings elsewhere; permissions) · Fields (template, event, run, Min/Max grid, Order Fulfillments grid) · Lifecycle and effects (queueing → run processor → fulfillment processor → document service; posting proof block) · Related applets · Troubleshooting (20 rows) · Related documentation. Sources: applet 7169e01 (2026-09-02), backend 1ff620ef0e (2026-09-05), ts-lib 7d1616a9e, Organisation v3 54c1086, blg-shared-utilities (select-email-template, recurrence-editor). Topic `kb/topics/stock-replenishment.md` created (slug already referenced by the stock-transfer, internal-purchase-order and stock-balance topics); `kb/topics/stock-balance.md` given a `stock-replenishment` edge.
+
+## Registry / naming mismatches (run 23)
+
+- None. Note only: the registry `documentation_url` for `stockReplenishmentApplet` is `https://bigledger.atlassian.net/wiki/spaces/AKAUN/pages/3422748931/...` (Confluence), not the wiki page — Vincent may want the registry row updated to `/applets/inventory-workflow/stock-replenishment-applet/` (applet-audit "broken documentation_url" class).
+
+## Direction / fact reversals found (run 23, Stock Replenishment)
+
+- Old page: "Field Settings — control field visibility and behaviour across the applet grids, choose which columns (like `ma_cost`) are visible". Actual: an unbound stub (eight toggles, SAVE without a handler); nothing is saved or read.
+- Old page: "Default Branch / Default Location pre-select the branch and location for new templates and runs". Actual: saved to `APPLET_SETTINGS` but no create/view component reads either key (plain-grep second pass).
+- Old page: "Personal Default Selection overrides the company-wide defaults". Actual: the component's `appletSettings$` input is never bound by the shared personalization container, so selecting a branch throws (`this.appletContainer` undefined) and nothing is saved.
+- Old page: "Templates define categories … the system pulls all matching items into the run". Actual: Category filter rows are cloned template → event but the run processor never reads them; only Items and Locations define the item × location grid.
+- Old page: "Order Qty tab — system-calculated order suggestions based on demand and balance"; FAQ: "qty_available inherently considers open POs … reduces its suggested order quantity". Actual: reorder qty = `max(0, level − qty_ledger)` where level is the location min (or max under the MAX strategy); open PO, in-transit, reserved and sales-order-open quantities are snapshotted onto the line (`loc_qty_stock_balance_adjusted`) but do not change the reorder quantity.
+- Old page: "Compare current vs previous run data to spot demand trends". Actual: `prev_run_guid` is set for event-created runs and shown read-only; the processor does not compare runs.
+- Old page: "Generate POs — the system clusters them by supplier". Actual: merged per **branch and supplier** (`mergeGenDocContainersWithSameSupplier`); and PO lines start with Quantity To Approve = 0, so an unedited line yields a zero-quantity PO line.
+- Old page: "Export — download the run data to Excel". Actual: EXPORT AS PDF has an empty handler; CSV / DOCX / ZIP are disabled.
+- Old page: "Events are just for automation; they don't block manual runs" — true, but incomplete: a run created **without** a template is never queued; it needs the run's own Items / Locations tabs filled and Auto-Fill All.
+- Stock Transfer page (run 4) said "Replenishment runs generate outbound transfers" — now true (issue #20, July 2026); previously only PO generation existed.
+
+## Findings for the product team (run 23, Stock Replenishment)
+
+- **`Target Scope = Selected companies only` cannot be used**: the strategy form renders no company picker (the backend supports `…_fulfillment_strategy_company` rows), so the allowed set is always empty and every inter-company line is left "No suitable inter-company source location found".
+- **Category filters are dead** at processing time (cloned, never used); **Rules Logic AND/OR** is stored and cloned but has no effect (code comment acknowledges it).
+- **`DEFAULT_BRANCH` / `DEFAULT_LOCATION`** are saved but never read; **`email_format`** is saved (default `SUMMARY_PER_RUN`) with no control and no backend reader.
+- **Personal Default Selection throws** on first selection (unbound input) — same copy-paste family as Stock Conversion / Shipping Pricebook.
+- **Re-running a run appends** a full new set of order-quantity and fulfillment lines (no delete of the previous set); duplicates accumulate after every Auto-Fill / GENERATE ORDER FULFILMENTS.
+- **PO fulfillment lines start with `qty_to_approve = 0`** (transfer lines get the computed quantity); GENERATE PO on an unedited line creates a zero-quantity PO line.
+- **Generated PO lines hard-code UOM `PCS`**, `uom_to_base_ratio 1`, no tax code, no GL code, no discount; the price is the entity-pricing purchase price or 0.
+- **Open-PO block is supplier + item only** (any location, any quantity, DRAFT / FINAL / EDITED) — one open PO at one branch blocks replenishment of the same item at every other branch.
+- **Silent stops**: empty effective location / item sets, or a template without location / item filters, end the processor with a log line and no toast; the Order Fulfillments tab just stays empty.
+- **Tab-order default list** (nine entries) predates the Fulfillment Strategy and Min/Max Qty/Loc tabs — they always sort last until Default Selection is re-saved.
+- **Printable formats** are uploaded and starred but nothing renders them (Export as PDF handler empty).
+- **Event-driven runs** auto-create POs and internal transfers with exceptions swallowed (no notification when creation itself throws before the notification code — e.g. `SUPPLIER_GUID_IS_NULL`).
+- **Manual run needs only `_RUN_READ`**; all three generate buttons share one V2 permission `…_ORDER_FULFILLMENT_LINE_GENERATE_PO`.
+- **Recurring events** materialise at most 100 occurrences of an infinite rule, each with its own copy of filters and strategy — editing "All events" rewrites them all.
+
+## Cross-lane link requests (run 23, Stock Replenishment)
+
+- `content/en/applets/purchase-workflow/internal-purchase-order-applet.md` (lane 2): already lists `stock-replenishment` in `related_applets`; in **PO Replenishment** add one sentence that min/max-driven PO generation lives in the [Stock Replenishment](/applets/inventory-workflow/stock-replenishment-applet/) applet (the PO applet's own Replenishment menus are the older screen family), and in Lifecycle note that replenishment-generated POs arrive with UOM `PCS`, no GL / tax code, unit price from Entity Pricing, and DRAFT or FINAL per the run's *Document Status*.
+- `content/en/applets/inventory-workflow/stock-transfer-applet.md` (lane 4, own, next touch): keep the upstream row; add that replenishment transfers are created with posting status DRAFT or **FINAL** (stock moves at creation) and that inter-company lines carry `intercompany_settings_json` so AUTO mode creates the inbound leg in the counterpart company.
+- `content/en/applets/master-data/doc-item-maintenance-applet.md` (lane 4, own): Entity Pricing tab — name **Supplier Priority** (`supplier_priority`, added for replenishment, issue #47), Purchase Qty Min / Max Order and Lead Time (days) and say Stock Replenishment consumes them; `related_applets` += `stock-replenishment-applet`.
+- `content/en/applets/master-data/inv-item-maintenance-applet.md` (lane 4, own): per-location min / max — add that the Stock Replenishment run's Min/Max Qty/Loc tab edits the same balance row (`update-min-max-qty` endpoint); `related_applets` += `stock-replenishment-applet`.
+- `content/en/applets/master-data/organisation-applet.md` (lane 4, own): Branch → Intercompany Configuration — add the 12th pairing *Internal Outbound Stock Transfer to Internal Inbound Stock Transfer* and the relabelled *Transfer Counterpart Entity / Branch* picker (Organisation v3 54c1086, issue #30); `related_applets` += `stock-replenishment-applet`.
+- `content/en/applets/master-data/supplier-applet-1.md` (lane 4, own, in queue): note that replenishment drops pricing links whose entity is inactive or not of type supplier; `related_applets` += `stock-replenishment-applet`.
+- `content/en/applets/master-data/chart-of-account-applet.md` (lane 4, reworked): one line that inter-company stock transfers from replenishment are blocked until the inter-company GL mapping resolves for both companies; `related_applets` += `stock-replenishment-applet`.
+- `content/en/applets/inventory-workflow/related-applets-stock-balance.md` (lane 4, own): the Stock Replenishment row (L84) — say the run reads `qty_min_level` / `qty_max_level` / `qty_ledger` / `qty_purchase_order_open` from the location row and `qty_reserved` / `qty_sales_order_open` from the company row, and that the Min/Max tab writes the location row.
+- `content/en/applets/inventory-workflow/stock-balance-applet.md`, `stock-availability-applet.md` (lane 4, own): `related_applets` += `stock-replenishment-applet` (back-link only).
+- `content/en/modules-v2/inventory/` and `content/en/modules-v2/purchasing/` (module owners): link this page as the min/max → PO / transfer generator.
+
+## Screenshots (run 23, Stock Replenishment)
+
+Kept: none — no product capture exists.
+
+Dropped from the page (references removed):
+- `static/images/Stock Replenishment-applet/Stock Replenishment-overview-infographic.png` — AI marketing infographic (same decision as Pricebook / Stock Balance / Stock Conversion); file to quarantine.
+- `/images/stock-replenishment/quick-start-guide.png` — referenced but the file does not exist in `static/` (broken image on the live page).
+
+Recapture wanted from a GadgetSphere-seeded tenant: the run listing; the run view on Fulfillment Strategy (PO type, showing Document Status and Block existing open PO); the Min/Max Qty/Loc grid with three accessory items at `GS-KV-01`; the Order Fulfillments grid with one PENDING, one BLOCKED (open PO) and one GENERATED line; the event Details tab with Recurring ticked; Settings → Email Template create with the placeholder chips.
+
+## Questions for Vincent (run 23)
+
+1. Registry `documentation_url` for `stockReplenishmentApplet` points at Confluence — update it to the wiki page, or leave and add no alias (current choice)?
+2. File issues for (a) the missing company picker behind *Target Scope = Selected companies only*, (b) Category filters and AND/OR logic having no effect, (c) PO lines generated at quantity 0 unless edited, (d) re-runs appending duplicate lines — or leave as documentation?
+3. `kb/topics/stock-replenishment.md` uses the slug three neighbouring topics already reference rather than the page slug `stock-replenishment-applet` — keep, or rename and fix the three edges?
+
+## Notes (run 23)
+
+- Pace: ~95 minutes for one page — four sub-entities (template / event / run / strategy), two queue processors, a 1,200-line document service, 43 issues. As estimated in the run-22 handover, a full run.
+- Method (METHOD.md candidate, extends §12 and §21): **for a "generator" applet, the configuration section is the strategy record, not the applet settings** — classify every control by *which level's row it writes* and *which level's row the processor reads* (here: cloned template → event → run at creation; processors read the run row only). Grep the clone service and the processor's strategy lookup before writing any precedence sentence.
+- Method: **a filter tab is not consumed until the processor reads it** — Category filters here pass every UI proof (rendered, saved, cloned) and still do nothing; grep the processor for each filter table before claiming an effect.
+- Method: when a generated document's quantity comes from an editable grid column, state its initial value (0 here) — "generate" on unedited rows is the failure mode.
+- `gates.py` / `applet-scan.sh` not applicable (no shared settings screen). Plain-grep second pass done for every key in `applet-settings.model.ts`, every `formControlName` in the strategy template, `email_format`, `PRINTABLE`, `selectPersonalSettings`, `print`, `category`/`Category` (processor), `delete` (processor), `prev_run`.
+- Live DB read: `bl_applet_client_side_perm_dfn` for `stockReplenishmentApplet` — 0 rows (no tenant data copied).

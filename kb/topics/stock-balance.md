@@ -3,7 +3,7 @@ topic: stock-balance
 aliases: [current stock balance, qty_ledger, stock ledger, bl_inv_txn_line, bl_inv_current_location_stock_balance, bl_inv_current_company_stock_balance, quantity signum, stock-moving documents, historical stock balance]
 applets: [erp_stock_balance_applet]
 modules: [inventory, purchasing, pos, manufacturing, ecommerce]
-related: [stock-availability, stock-report, stock-take, stock-adjustment, stock-conversion-applet, stock-transfer, stock-requisition, consignee-stock-transfer, customer-consignment, non-stock-and-trade-in, internal-purchase-grn-stock-in-applet, internal-purchase-invoice-no-stock-in-applet, moving-average-cost, fifo-costing, serial-number-tracking, gl-posting]
+related: [stock-availability, stock-report, stock-take, stock-adjustment, stock-conversion-applet, stock-transfer, stock-requisition, consignee-stock-transfer, customer-consignment, non-stock-and-trade-in, internal-purchase-grn-stock-in-applet, internal-purchase-invoice-no-stock-in-applet, moving-average-cost, fifo-costing, serial-number-tracking, gl-posting, stock-replenishment]
 wiki:
   - content/en/applets/inventory-workflow/related-applets-stock-balance.md
   - content/en/applets/inventory-workflow/stock-balance-applet.md
