@@ -432,3 +432,12 @@ with the analysis, the changes made, and the commit hash.
 ### site-wide (link text)
 - [ ] F-0095 (2026-09-05) Six pages still say "Employee Applet"; the registry name is "Employee Maintenance". Cross-link batch.
 
+## From Lane 1 run 6 (2026-09-05)
+
+### static/images/commission-scheme-applet — personal data
+- [x] F-0096 (2026-09-05) All 14 UI captures show staff first names as scheme codes, a staff e-mail, a real company name. Quarantined by the loop.
+
+### product (commission scheme / custom processor)
+- [ ] F-0097 (2026-09-05) Commission Scheme backend gaps: SALES_GROUP rule and RELATIVE date ranges unimplemented (always false); MEMBER_LABEL ignores picked labels; Sales Contract doc-type checkbox never evaluated; no scheme-code uniqueness check. Settings skeleton (Default Branch/Location saved but unread; Field Settings SAVE unwired; personal Default Selection loader commented out) — same template as Car Workshop. Custom Processor: DRAFT filter can never fire; Price Tag Sync NFC URL hard-coded to a real company's website; documentation_url empty. mlm-admin-applet is ACTIVE with no wiki page. Product tickets?
+- [ ] F-0098 (2026-09-05) Should Custom Processor move to applets/integrations/ (it is a hand-off queue to external integrations)? Folder decision for Vincent.
+
