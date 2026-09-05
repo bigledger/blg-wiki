@@ -1,6 +1,61 @@
 ---
 title: "Claim Cycle Applet"
-description: "Batch processing, auditing, and payment generation workflows for Finance teams handling employee claims"
+description: "Finance-side processing of approved employee claims: monthly claim cycles, finance review and on-hold, audit sampling, and the Bank, PV Details, Cross-Billing and Pivot reports that drive payment."
+applet_code: "ClaimCycleApplet"
+applet_repo: "blg-applet-wavelet-claim-cycle-applet"
+modules: [claims, hr-payroll, financial-accounting]
+related_applets: [claim-applet, employee-applet, organisation-applet, internal-payment-voucher-applet, cashbook-applet]
+guides: []
+sources:
+  configuration:
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/components/settings-container/application-settings/application-settings.component.html
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/components/settings-container/application-settings/application-settings.component.ts
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.html
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/components/settings-container/reviewer-setting-container/reviewer-setting-create/reviewer-setting-create.component.html
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/components/claim-cycle-container/claim-cycle-listing/claim-cycle-listing.component.ts
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/components/claim-cycle-container/claim-cycle-edit/claim-cycle-edit.component.ts
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/cycle/review/bl_aat_claim_cycle_review_setting.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/cycle/bl_aat_claim_cycle_cutoff_date.java
+  fields:
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/components/claim-cycle-container/claim-cycle-create/claim-cycle-create.component.html
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/components/claim-cycle-container/claim-cycle-edit/claim-cycle-edit.component.html
+    - blg-applet-wavelet-claim-cycle-applet/micro-fe/projects/wavelet-erp/applets/claim-cycle-applet/src/app/components/claim-cycle-container/claim-cycle-edit/samples-tab/samples-create/samples-create.component.html
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/cycle/bl_aat_claim_cycle_hdr.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/cycle/bl_aat_claim_cycle_checking_sample_hdr.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/cycle/bl_aat_claim_cycle_checking_sample_link.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/cycle/report/bl_aat_claim_cycle_bank_report_line.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/cycle/report/bl_aat_claim_cycle_pv_details_report_line.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/cycle/report/bl_aat_claim_cycle_cross_billing_report_line.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/cycle/report/bl_aat_claim_cycle_pivot_report_line.java
+  lifecycle:
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/cycle/CycleProcessStatus.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/cycle/DateSetupLogic.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/cycle/report/XtnSyncingStatus.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/auditAssuranceTax/claim/cycle/ClaimCycleHdrService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/auditAssuranceTax/claim/cycle/ClaimCycleHdrCLOSEDCycleHelper.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/auditAssuranceTax/claim/cycle/ClaimCycleCutoffDateProcessorService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/erp/auditAssuranceTax/claim/cycle/ClaimCycleHdrDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/auditAssuranceTax/claim/document/ClaimDocumentLineClaimCycleLogicService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/auditAssuranceTax/claim/cycle/report/ClaimCycleBankReportLineService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/auditAssuranceTax/claim/cycle/report/ClaimCyclePVDetailsReportLineCustomIntegrationService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/auditAssuranceTax/claim/cycle/sample/GenerateClaimSamplesService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/auditAssuranceTax/claim/cycle/review/ClaimEmailNotificationForReviewProcessorService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/erp/auditAssuranceTax/claim/cycle/report/ClaimCycleBankReportLineUow.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/aat/claim/ClaimCycleCutoffDateProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/aat/claim/ClaimCycleProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/auditAssuranceTax/claim/cycle/ClaimCycleHdrController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/auditAssuranceTax/claim/ClaimDocumentLineController.java
+  troubleshooting:
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/auditAssuranceTax/claim/cycle/ClaimCycleHdrService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/auditAssuranceTax/claim/document/ClaimDocumentLineClaimCycleLogicService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/auditAssuranceTax/claim/cycle/report/ClaimCycleBankReportLineService.java
+    - gh:bigledger/blg-applet-wavelet-claim-cycle-applet#1
+    - gh:bigledger/blg-wiki#45
 tags:
 - claim-management
 - approval-workflow
@@ -10,204 +65,168 @@ tags:
 weight: 160
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Claim Cycle Applet** is an advanced batch-processing engine designed specifically for **Finance Teams, Payroll Officers, and Auditors**. While the standard *Claim Applet* handles individual employees submitting their RM 50 taxi receipts, the *Claim Cycle Applet* is where Finance bundles 500 of those approved receipts together, audits them for fraud, and generates the final bank payment file.
+The Claim Cycle Applet is the finance side of employee claims. Once supervisors have approved a claim line in the [Claim Applet](/applets/claims/claim-applet/), the line waits in status `PENDING_DOC_REVIEW` until a **claim cycle** — one company, one month — collects it. In the cycle, finance reviewers accept lines level by level or put them on hold, auditors draw samples and record check results, and the applet produces the reports payment is made from: the Bank Report (one payment per employee, with bank code and account number), the PV Details Report (per claim line with GL code and tax), the Cross-Billing Report (claims charged to another company or branch), the Pivot Report and the Professional Subscription Report. Closing the cycle moves whatever is still unreviewed into next month's cycle.
 
-{{< callout type="info" >}}
-**Core Concept: What is a Claim Cycle?**
-A Claim Cycle is a "processing batch." Instead of paying employees one-by-one every day, an organization groups all claims from a specific period (e.g., "November 2024 Payroll") into a single Cycle. This Cycle moves through processing, auditing, and payment as one combined entity.
-{{< /callout >}}
+Cycles are normally created by a scheduled job from the company's *Claim Cut-Off Logic* (configured in the Claim Applet); the *Create* button exists for manual cycles and can be hidden. The applet posts no journal and creates no payment voucher: the Bank Report and the salary-payment CSV are the hand-off to the bank portal, payroll or the [Payment Voucher](/applets/finance/internal-payment-voucher-applet/), and an external integration can poll closed cycles (`xtn_syncing_status`).
 
-### Claim Applet vs Claim Cycle Applet
+## Where it fits
 
-| Feature | Claim Applet | Claim Cycle Applet |
-|---------|--------------|-------------------|
-| **Primary Users** | All Employees, Direct Managers | Finance Teams, Auditors |
-| **Action** | Submit 1 claim → Manager Approves | Pull 500 approved claims → Finance Audits |
-| **Output** | Individual "Approved" status | Bank Files, PVs, Cross-Billing Reports |
-| **Granularity** | Single receipt | Monthly Batch |
+| Direction | Applet / data | Why it matters |
+|---|---|---|
+| Upstream | [Claim Applet](/applets/claims/claim-applet/) | Supplies the lines (`bl_aat_claim_document_line` with `claim_status = PENDING_DOC_REVIEW`), the *Claim Cut-Off Logic* that creates cycles, and the claim items' *Payment Processing Option* (`FINANCE_PAYMENT` lines come here; `SALARY_PAYMENT` lines are approved for payroll). |
+| Upstream | [Employee Applet](/applets/master-data/employee-applet/) | Reviewers are employees; the Bank Report reads each employee's bank code and account number from `bl_fi_mst_entity_payment_method`. |
+| Upstream | [Organisation Applet](/applets/master-data/organisation-applet/) | One cycle per company; company holidays shape the cut-off dates; fiscal year / period rows are created on demand for the cycle month. |
+| Downstream | Bank portal / payroll | Bank Report lines (`bl_aat_claim_cycle_bank_report_line`) and the salary-payment CSV export. |
+| Downstream | [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/), [Cashbook Applet](/applets/master-data/cashbook-applet/) | The PV Details Report is the working paper for the manual payment voucher; `bl_aat_claim_cycle_payment_line` carries a `payment_voucher_hdr_guid` for the link, but nothing in the claim domain creates the voucher. |
+| Downstream | External ETL | `PUT …/custom-integration/update-xtn-syncing-status/etl-ep` lets an integration mark a closed cycle `SYNCING` / `FINISHED_SYNC` / `FAILED_SYNC` after reading its PV details. |
 
-{{< figure src="/images/claim-cycle-applet/claim-cycle-process.jpg" alt="Mastering the Claim Cycle: From Batch to Bank - showing triage, duplicate detection, risk-based sampling, and one-click reporting" caption="Mastering the Claim Cycle: From Batch to Bank. A visual overview of the workflow moving from the Checking Reports triage, Automated Duplicate Detection, Risk-Based Sampling, down to One-Click Bank & GL Reporting." >}}
+Module: [Claims Management](/modules-v2/claims/).
 
----
+## Screens and menus
 
-## The "Golden Triangle" of Claim Cycles
+Route root: `applet/tnt/wavelet/erp/aat-claim-cycle`.
 
-To master this applet, understand how these three objects interact:
+| Menu item | Route | What it shows |
+|---|---|---|
+| Claim Cycle | `claim-cycles-listing` | `OPEN` cycles. *Create* opens the manual-cycle form; grid / list toggle. |
+| Pivot Report | `pivot-report` | Pivot lines across cycles (company, branch, employee, claim item, amount). |
+| Pv Details Report | `pv-details-report` | PV detail lines across cycles (multi-company history report). |
+| Sampling Analysis Report | `sampling-analysis-report` | Sampling results across cycles with search criteria and summary tiles. |
+| Payroll Payment Report | `payroll-payment-report` | `SALARY_PAYMENT` lines to hand to payroll. |
+| Claim Cycle History | `claim-cycles-history-listing` | `CLOSED` cycles, read-only, with the same tabs. |
 
-1. **The Cycle**: The "Bucket." It defines the time period (e.g., Nov 1 - Nov 30) and the cut-off dates.
-2. **The Claim Lines**: The "Items in the Bucket." These are the individual employee claims that got pulled into this cycle.
-3. **The Reports**: The "Output." The data generated from the bucket so the company can actually pay the staff (Bank Files, Payment Vouchers).
+**Cycle edit** (`claim-cycle-edit`) tabs: *Main Details* · *Claim Lines* (every line in the cycle, duplicate-receipt view, approval and reviewer history, receipt images) · *Checking Reports* with sub-tabs *Inbox*, *Approved*, *On Hold* (the reviewer's work queue; *Approve* and *On Hold* buttons, single or mass) · *Payroll Payment* (hidden by a personal setting) · *Sampling* (*Create a sample*, sample listings, link view) · *Sampling Analysis Report* · *Bank Report* · *PV Details Report* · *Cross-Billing Report* · *Pivot Report* · *Prof Subscription Report*. Bank and PV Details tabs have a *Reviewed By Level* filter.
 
----
+**Settings → System Configuration**: Application Settings (`application-settings`), Reviewer Setting (`reviewer-setting`, per company). Also routed: `default-selection`, `field-settings` (the *shared* `FieldConfigurationComponent`, not in the menu), Webhook, Feature Visibility, Permission Wizard / Set / User / Team / Role, Applet Log.
 
-## Role-Based Quick Start Guides
+**Personalization**: Default Selection (`personal-default-selection`), Sidebar.
 
-### For Finance Managers: Run the Monthly Claim Batch
-Your goal is to collect all approved claims for the month and generate a bank payment file.
+No screenshots are embedded: every capture under `static/images/claim-cycle-applet/` shows a real tenant's cycle listing in the side panel.
 
-**Step 1: Create the "Bucket" (The Cycle)**
-1. Go to **Claim Cycles** from the sidebar.
-2. Click **"+"** to create a new cycle.
-3. Name it (e.g., *Nov 2024 Employee Claims*).
-4. Set the **Finance Cut-off Date** (If set to Nov 25th, only claims approved by managers before this date will be pulled in).
-5. Click **Create**.
+## Configuration
 
-**Step 2: Collect the Claims**
-1. Once created, the system systematically pulls all eligible, manager-approved claims into this cycle. 
-2. Go to the **Claim Lines** tab to verify the total amount (e.g., 420 claims totaling RM 45,000).
+### Before you can use it
 
-**Step 3: Finance Verification**
-1. Go to the **Checking Reports** tab.
-2. Open the **Inbox**. Here you'll see every claim. 
-3. Review the receipts and amounts.
-4. Click **Approved** for clean claims. Click **On Hold** if a receipt looks suspicious (this stops it from being paid).
+| Prerequisite | Where | Why |
+|---|---|---|
+| A *Claim Cut-Off Logic* row for each company | Claim Applet → *Settings → Claim Cut-Off Logic* | `ClaimCycleCutoffDateProcessor` creates the month's cycle from it (`getOrCreateClaimCycleHdrUsingCycleCutoffDate`); with no row, nothing arrives unless you create cycles by hand and lines are still only swept in by the processor. |
+| At least one reviewer per company, and exactly one level flagged *Is Final Approval Level* | *Settings → Reviewer Setting* | Accept / On Hold throws `User is yet to be configured to review claim lines under company: …`; closing throws `You are not a finance reviewer in Reviewer Setting` or `You are not final review level in Reviewer Setting`. |
+| Employees have a payment method with bank and account number | [Employee Applet](/applets/master-data/employee-applet/) | The Bank Report SQL joins `bl_fi_mst_entity_payment_method` on the employee; lines without it have no bank code / account number. |
+| Claim items carry the expense GL code | Claim Applet → *Settings → Claim Items* | PV Details and Cross-Billing report `gl_code` / `gl_name` from the line. |
+| Company holiday events (optional) | Calendar events of the company | Working-day arithmetic for approval and extension cut-offs. |
 
-**Step 4: Pay the Employees**
-1. Go to the **Bank Report** tab.
-2. Click **Generate**.
-3. Download the payment file and upload it to your corporate banking portal.
-4. Go to the **PV Details Report** to generate the data needed for your accounting system.
+### Applet settings
 
----
+Settings live in three places. The `settings/field-settings` route points at the **shared** `FieldConfigurationComponent`, but the menu does not link it and the applet reads none of the document-template keys in `applet-settings.model.ts` (`HIDE_UNIT_PRICE_*`, custom statuses, `ENABLE_SST`, …) — they are model-only.
 
-### For Auditors: Perform a Fraud Check (Sampling)
-Your goal is to ensure employees aren't submitting fake receipts or inflating costs.
+1. **Application Settings** (`settings/application-settings`, applet-local `ApplicationSettingsComponent`, saved tenant-wide via `saveMasterSettingsInit`; anyone with the Settings menu can change them):
 
-**Step 1: Create an Audit Sample**
-1. Open up a pending Claim Cycle.
-2. Go to the **Sampling** tab.
-3. Click **Create Sample**.
-4. Define your rule: *"Give me a random 10% of all claims"* OR *"Give me 100% of all claims over RM 1,000."*
+| Setting | What it controls | Default (UI patch) | Effect when changed |
+|---|---|---|---|
+| `HIDE_TOGGLE_BUTTON` | Hides the grid / list toggle on the Claim Cycle listing. | unset (off) | Listing stays in the default view. |
+| `HIDE_CLAIM_CYCLE_CREATION_BUTTON` | Hides the *Create* button on the Claim Cycle listing. | unset (off) | Cycles come only from the cut-off processor; no manual cycles. |
+| `RELABEL_COMPANY_TO_ENTITY` | Replaces *Company* with *Entity* in 26 listing / report components. | unset (off) | Cosmetic. |
+| `RELABEL_BRANCH_TO_JOB_GROUP` | Replaces *Branch* with *Job Group* in 27 components. | unset (off) | Cosmetic. |
 
-**Step 2: Deep Dive Verification**
-1. The system generates a focused list of claims based on your rule.
-2. Click into each sampled claim.
-3. Verify the receipt image against the claimed amount.
-4. Check for duplicate receipt uploads across different dates.
+Rendered and persisted but **not read** anywhere in this applet or `blg-shared-utilities`: `ENABLE_AUDIT_TRAIL` (the *Applet Log* screen works regardless).
 
-**Step 3: The Audit Report**
-1. Once finished, go to the **Sampling Analysis Report** tab.
-2. Export the findings. This proves to external auditors that you have internal controls enforcing expense policies.
+2. **Default Selection** (`settings/default-selection`, master): `DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `DEFAULT_COMPANY`. Read only as the pre-selected company on the cycle create form; the route is not in the menu.
 
----
+3. **Personalization → Default Selection** (per user, `savePersonalSettingsInit`):
 
-## Deep-Dive: The Cycle Details
+| Setting | What it controls | Default | Read by |
+|---|---|---|---|
+| `DEFAULT_PAYMENT_PROCESSING_OPTION` | Multi-select of `FINANCE_PAYMENT` / `SALARY_PAYMENT`; filters every listing and report in the applet to lines with those options. | `[]` — treated as `["FINANCE_PAYMENT"]` when empty or unset (`claim-cycle-listing.component.ts` L119–L125, `inbox-listing.component.ts` L217–L224) | 27 components (listings, inbox / approved / on-hold, all report tabs, history) |
+| `HIDE_PAYMENT_SALARY_TAB` | Hides the *Payroll Payment* tab on cycle edit and history view. | unset (off) | `claim-cycle-edit.component.ts` L124–L128 |
+| `DEFAULT_BRANCH` / `DEFAULT_LOCATION` / `DEFAULT_COMPANY` | Personal overrides of the master defaults. | null | cycle create |
 
-When you open a Claim Cycle, you manage the batch through a series of specialized tabs.
+Because `DEFAULT_PAYMENT_PROCESSING_OPTION` is **personal**, two finance users can see different totals for the same cycle.
 
-### 1. Main Details Tab
-This defines the rules of the batch.
+**Reviewer Setting** (`bl_aat_claim_cycle_review_setting`, one row per employee per company): Employee Name, Email, Approval Level, *Is Final Approval Level*. Rules enforced by `ClaimDocumentLineClaimCycleLogicService`: a reviewer can act only on lines whose `latest_reviewed_level` is below their level; a line becomes `APPROVED` when the highest configured level accepts it; only a final-level reviewer can close the cycle.
 
-{{< figure src="/images/claim-cycle-applet/main-details-tab.png" alt="Main Details tab showing cycle configuration, dates, and status." caption="Main Details: Define the strict cut-off dates for when claims can enter this batch." >}}
+### Document behaviour settings
 
-| Field | Purpose |
-|-------|---------|
-| **Status** | *Draft* (Setting up) → *Open* (Collecting) → *In Review* (Finance auditing) → *Closed* (Paid). |
-| **Supervisor Approval Dates** | The specific window when managers must approve claims for them to make it into this pay cycle. |
-| **Finance Cut-off Date** | The absolute deadline. Anything approved after this date rolls over to next month's cycle. |
+The cycle has no status-flow, posting or printable toggles. Its dates are set by the company's *Claim Cut-Off Logic* (`DateSetupLogic`: `LAST_DAY_OF_THE_MONTH`, `SPECIFIC_DAY_OF_THE_MONTH`, `HOW_MANY_DAYS_BEFORE_FINANCE_CUTOFF_DATE`, `HOW_MANY_DAYS_AFTER_FINANCE_CUTOFF_DATE`) when the processor creates it, and can be edited on *Main Details* afterwards. `auto_add_approved_claim_to_cycle` on the cut-off row switches between immediate ingestion at final approval and the periodic sweep (no UI control for it — see the Claim Applet page).
 
-### 2. Checking Reports Tab (The Finance Inbox)
-This is where Finance staff spend 90% of their time. It acts as an email inbox for processing claims.
+### Feature visibility / permissions
 
-{{< figure src="/images/claim-cycle-applet/checking-reports-tab.png" alt="Checking Reports tab with Inbox, Approved, and On Hold queues for claim review." caption="Checking Reports: Triage claims moving from Inbox to Approved or On-Hold." >}}
+- `bl_applet_client_side_perm_dfn` holds **0** definitions for `ClaimCycleApplet`; the client-side permission route is commented out; the code reads no `SHOW_*` codes.
+- All screens use `…/backoffice-ep` endpoints (`ClaimCycleHdrController`, `ClaimCycleCheckingSampleHdrController`, `ClaimCycleCheckingSampleLinkController`, `ClaimCyclePaymentLineController`, review and report controllers). Access is by API permission sets through the shared Permission Wizard; who may *act* on a line is decided by *Reviewer Setting*, not by permissions.
 
-- **Inbox Queue:** Claims that have been approved by the employee's direct manager, but haven't been verified by Finance yet.
-- **Approved Queue:** Claims Finance has verified are legitimate and compliant with company policy.
-- **On Hold Queue:** Claims with issues. 
-  - *Example:* An employee claimed RM 200 for a hotel, but attached a restaurant receipt instead. Finance puts this "On Hold." It will not be generated in the Bank Report until the employee fixes it.
+## Fields
 
-### 3. Claim Lines Tab
-A raw data view of every single line item inside the cycle.
+### Cycle — create
 
-{{< figure src="/images/claim-cycle-applet/claim-lines-tab.png" alt="Claim Lines tab showing employee claims with amounts and status indicators." caption="Claim Lines: See a high-level summary of total amounts, or drill down into individual receipts." >}}
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Company | `comp_guid` | yes | One cycle per company per month (`cycle_month`, `cycle_year`). |
+| Code, Name | `code`, `name` | yes | Processor-created cycles are named from the cut-off row. |
+| Opening Date, Closing Date | `start_date`, `end_date` | yes | The claim period. |
+| Planned Crediting Date, Actual Crediting Date | `planned_credit_date`, `actual_credit_date` | no | Used as `credit_date` on Bank Report lines. |
+| Cycle Opening Balance, Grand Total | display | auto | `total_amount` is recomputed from the lines on close. |
 
-- **Duplicate Detection System:** The system automatically flags potential duplicates (e.g., if two employees claim the same Grab receipt, or one employee submits the same toll receipt twice). These show up warned in this listing.
+### Cycle — Main Details (edit)
 
-### 4. Sampling Tab
-The dedicated audit environment.
+Adds: Status (`process_status` `OPEN` / `CLOSED`), Supervisor Approval Start / End Date (`approval_cutoff_start_date` / `_end_date` — lines whose final approval falls after the end date wait for the next cycle), Finance Cut-off Date (`finance_review_start_date`), Extension End Date (`extension_cutoff_end_date`), audit fields. Backend-only: `finance_review_end_date`, `fiscal_year` / `fiscal_period` (created if missing), report totals (`bank_report_total_amount`, `cross_billing_report_total_amount`, `pv_details_report_total_amount`, `pivot_report_total_amount`), `total_claim_document_line_on_loading`, `xtn_payment_voucher_reference_no`, `xtn_syncing_status`.
 
-{{< figure src="/images/claim-cycle-applet/sampling-tab.png" alt="Sampling tab for creating audit samples and linking claim lines." caption="Sampling: Generate risk-based audit pools to verify high-value claims." >}}
+### Sample — create (Sampling tab)
 
----
+| Field | Meaning | Notes |
+|---|---|---|
+| Name | `bl_aat_claim_cycle_checking_sample_hdr.name` | |
+| Source | this cycle's lines, or `PREVIOUS_SAMPLES` (pick a previous sample header) | `prev_sample_hdr_guid` |
+| Exclude Previous Samples | `exclude_previous_samples` | Skip lines already sampled. |
+| Size | `sample_size` | `0` selects all matching lines. |
+| Type | `RANDOM_EMPLOYEES` (with *Number of Employees*) or `AMOUNT_RANGE` (with *Min / Max Amount*) | `GenerateClaimSamplesService` L138. |
+| Claim Type, Claim Status, Claim Categories, Claim Items, Finance Checking Date From / To, Flagged Claims Only | filters (`claim_types`, `claim_statuses`, `claim_item_categories`, `claim_item_guids`, `finance_checking_date_*`, `is_flag`) | Flags come from the Claim Applet's risk-score job. |
 
-## Report Generation
+Each sampled line is a `bl_aat_claim_cycle_checking_sample_link` with `sampling_level`, `check_results` (`PASS` / `FAIL`), remarks and checker; accepting or holding a sampled line also updates the link (`checkSampleLinkFinanceAccept`, `checkSampleLinkPutOnHold`).
 
-Once Finance has moved all valid claims to the "Approved" queue and placed problematic ones "On Hold," it's time to generate the outputs.
+## Lifecycle and effects
 
-### Bank Report
-**What it is:** A formatted file containing employee bank account numbers and their total approved payout.
-**Why you need it:** Instead of manually typing 500 bank transfers, you upload this single file to your corporate bank (e.g., Maybank2e, CIMB BizChannel) for mass payout.
+**Cycle statuses** (`CycleProcessStatus`): `OPEN` → `CLOSED`. There is no draft or in-review status on the header; "in review" is a property of the lines.
 
-### PV (Payment Voucher) Details Report
-**What it is:** The accounting breakdown of the cycle.
-**Why you need it:** Your accountants need to know which General Ledger (GL) codes to charge. This report summarizes the cycle by GL Code (e.g., *RM 5,000 to Travel Expense GL, RM 2,000 to Medical GL*).
+**Creation**: `ClaimCycleCutoffDateProcessor` (queue event, scheduled per tenant) reads every cut-off row, computes the finance cut-off, finance last-review, approval cut-off and extension dates in company time zone skipping company holiday events, creates missing fiscal year / period rows, and creates the month's cycle with `process_status = OPEN` if none exists (`ClaimCycleCutoffDateProcessorService` L47–L98, L234–L275). It also installs the daily approval-reminder crontab. Manual creation posts the same header.
 
-### Cross-Billing Report
-**What it is:** An inter-company billing breakdown.
-**Why you need it:** If your organization has multiple legal entities (Company A and Company B). If an employee from Company A buys a server for Company B, they claim it under Company A. This report automatically calculates how much Company B owes Company A to balance the books.
+**Lines entering the cycle**: `ClaimCycleProcessor` selects the company's `PENDING_DOC_REVIEW` lines with no cycle whose `date_final_approval` ≤ `approval_cutoff_end_date` and no withdrawal date, and stamps `claim_cycle_guid` and `date_added_to_claim_cycle` (L82–L114). With `auto_add_approved_claim_to_cycle` on, the Claim Applet's approval processor attaches the line to the current `OPEN` cycle immediately instead. A line moved from an earlier cycle keeps `previous_claim_cycle_guid`.
 
----
+**Finance review** (`ClaimDocumentLineClaimCycleLogicService.financeAcceptClaimDocLines`): the reviewer's setting for the line's company is loaded; lines already reviewed by someone else fail with `Claim Document Line is reviewed by another reviewer …`; acceptance sets `finance_checking_status = REVIEWED`, `latest_reviewed_level`, reviewer name and a `bl_aat_claim_cycle_review_history` row; when the reviewer's level equals the highest configured level the line becomes `claim_status = APPROVED` with `final_approval_ready_to_pay`. A reviewer whose level is not above the line's `latest_reviewed_level` gets an `ERROR_TO_SHOW_IN_UI` rejection (L117). **On Hold** (`putOnHoldClaimDocLines`): same level rule; sets `claim_status = ON_HOLD`, `is_on_hold`, `date_on_hold`, remarks, history and an audit-trail row (`ON_HOLD_CLAIM_LINE` / `MASS_ON_HOLD_CLAIM_LINE`); the daily review-notification job (`0 1 * * *` UTC, i.e. 9 am Malaysia) e-mails the claimant using template `CLAIM_REVIEW_NOTIFICATION`. The claimant resubmits from the Claim Applet (`RESUBMITTED`), which returns the line to the Inbox. Every line change recomputes the claim header status.
 
-## Applet Configuration (For Admins)
+**Reports**: each *Generate* runs a UOW query over the cycle's lines and stores the result: Bank Report aggregates approved `FINANCE_PAYMENT` lines per employee, joins bank code / name / account number from the employee's payment method (`ClaimCycleBankReportLineUow` L54–L142), throws `There is no claim data.` when empty and writes `bank_report_total_amount` on the header; PV Details writes one row per line with company, branch, claim item, `gl_code`, tax and amount (`bl_aat_claim_cycle_pv_details_report_line`); Cross-Billing lists lines whose billing branch differs (`bl_aat_claim_cycle_cross_billing_report_line`); Pivot and Professional Subscription similarly. *Reviewed By Level* filters Bank and PV reports to lines reviewed at that level (`getBankReportWithLatestReviewLevel`). The salary-payment CSV is `GET …/cycle-reports/salary-payment/export/csv/backoffice-ep` on the claim-line controller.
 
-To tailor the Claim Cycle Applet for your company, navigate to **Settings** in the sidebar.
+**Close** (`ClaimCycleHdrController.update` → `ClaimCycleHdrService.updateAndCloseClaimCycle` when the saved status is `CLOSED`): the caller must hold a final-level *Reviewer Setting* for the company (two `ERROR_TO_SHOW_IN_UI` throws at L43 and L58); the DCO sets `xtn_syncing_status = READY_TO_SYNC`, `date_txn` and recomputes `total_amount` (`ClaimCycleHdrDataConsistencyObject` L296–L300); then `ClaimCycleHdrCLOSEDCycleHelper` gets or creates next month's cycle and moves every `PENDING_DOC_REVIEW` line of the company that is not `final_approval_ready_to_pay` into it, recording `previous_claim_cycle_guid`. The UI asks for confirmation (`Are you sure you want to Update/Close the claim cycle?`); a tenant-specific variant instead demands a payment-voucher reference number (`xtn_payment_voucher_reference_no`) and the controller rejects the close without it for that tenant only (`ClaimCycleHdrController` L104–L110). A closed cycle appears under *Claim Cycle History*; there is no reopen action in the UI.
 
-### Application Settings
-Control the global behavior of the processing engine.
-- **`hideSalaryPaymentTab`**: Turn this on if you pay claims via direct bank transfer. Turn it off if you integrate claims directly into their monthly salary slip.
-- **Auto-close Settings**: Set rules to automatically change cycle status to "Closed" once the Bank Report is generated, preventing accidental double-payments.
+**Posting proof block**: not a generic financial document — no `*DataConsistencyObject` signums, no `JournalPostingTypeHandler` entry, no stock processor, no VOID. Nothing in the claim domain writes a payment voucher or journal (checked at commit `871dbf5c96`); `bl_aat_claim_cycle_payment_line.payment_voucher_hdr_guid` is a link column populated only if an integration or manual process sets it.
 
-### Feature Visibility
-Control which tabs your staff can see to prevent unauthorized actions.
-- Hide the **Sampling Tab** from junior Finance staff, keeping it visible only to internal auditors.
-- Hide the **PV Details Report** from HR staff who only need to track the Bank Report.
+## Related applets
 
-### Permission Mapping
-Enforce strict segregation of duties (SoD).
-- **Setup:** User A (Finance Clerk) can only move claims from Inbox → Approved.
-- **Setup:** User B (Finance Manager) is the only one who can click "Generate Bank Report."
+- [Claim Applet](/applets/claims/claim-applet/) — the source of every line, and home of the Cut-Off Logic that creates cycles.
+- [Employee Applet](/applets/master-data/employee-applet/) — reviewers, and the bank details the Bank Report needs.
+- [Organisation Applet](/applets/master-data/organisation-applet/) — one cycle per company; holidays and fiscal periods.
+- [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) — where the payment is actually recorded, from the PV Details Report.
+- [Cashbook Applet](/applets/master-data/cashbook-applet/) — the bank the reimbursement leaves from.
 
----
+## Troubleshooting
 
-## Common Real-World Scenarios
+| Symptom (message shown in the UI) | Cause | Fix |
+|---|---|---|
+| `User is yet to be configured to review claim lines under company: …` on Approve / On Hold | No *Reviewer Setting* row for you in that company. | *Settings → Reviewer Setting* → company → add reviewer with a level. |
+| `You are not a finance reviewer in Reviewer Setting` / `You are not final review level … not allowed to close claim cycle` on Save with status `CLOSED` | Closing needs a final-level reviewer. | Tick *Is Final Approval Level* on the right reviewer. |
+| `Claim Document Line is reviewed by another reviewer. Kindly refresh your browser …` | Two reviewers acted on the same line. | Refresh; the line is already handled. |
+| Approve does nothing for some lines, error names an approval level | Your level is not above the line's `latest_reviewed_level`. | A higher-level reviewer must act. |
+| `There is no claim data.` on Bank Report | No `APPROVED` lines match the payment-processing filter and review level. | Check `DEFAULT_PAYMENT_PROCESSING_OPTION` in your personal settings and the *Reviewed By Level* filter. |
+| Bank Report line has empty bank code / account number | Employee has no payment method with bank details. | Employee Applet → payment method. |
+| Cycle totals differ between two users | `DEFAULT_PAYMENT_PROCESSING_OPTION` is personal. | Align personal settings. |
+| Approved lines never appear in the Inbox | No cut-off row for the company (no cycle), or `date_final_approval` after the approval cut-off end date, or the line is `SALARY_PAYMENT` (goes to Payroll Payment instead). | Create the cut-off row; wait for the next cycle; check the item's payment option. |
+| *Create* button missing on the cycle listing | `HIDE_CLAIM_CYCLE_CREATION_BUTTON`. | Application Settings. |
+| *Payroll Payment* tab missing | `HIDE_PAYMENT_SALARY_TAB` in your personal Default Selection. | Personalization. |
+| *Enable Audit Trail* has no effect | Key saved but never read. | Use *Settings → Applet Log*. |
+| Closed cycle stays `READY_TO_SYNC` | No external integration has called the ETL endpoint. | Expected unless an integration is configured. |
 
-### Scenario 1: The "Missed Deadline" Employee
-**The Situation:** It's November 26th. The Finance Cut-off date was November 25th. An employee calls complaining their RM 800 travel claim wasn't paid.
-**The Workflow:**
-1. Finance opens the *Nov 2024 Cycle*.
-2. Because the manager approved the claim on Nov 26th, the algorithm correctly excluded it from the November batch.
-3. Finance creates the *Dec 2024 Cycle*.
-4. The system automatically sweeps up the "missed" November claim and places it in the December cycle Inbox. The employee will be paid in the next physical payment run.
+## Related documentation
 
-### Scenario 2: The Cross-Billing Expense
-**The Situation:** You run a Group with 3 subsidiaries. A developer under *Subsidiary A* buys a software license for *Subsidiary C*.
-**The Workflow:**
-1. Developer submits the claim to their manager in Company A. Manager approves.
-2. Finance in Company A runs the Monthly cycle.
-3. Finance generates the **Cross-Billing Report**.
-4. The report explicitly shows an accounts receivable entry: *Subsidiary C owes Subsidiary A RM 500 for Software Licenses*. Finance uses this to generate an inter-company invoice.
-
-### Scenario 3: Investigating High-Risk Departments
-**The Situation:** Management suspects the Sales team is inflating entertainment claims.
-**The Workflow:**
-1. Auditor opens the latest Claim Cycle.
-2. Goes to the **Sampling** tab.
-3. Creates a specific rule: *"Pull 100% of claims from Department = Sales where Amount > RM 200"*.
-4. Auditor reviews all 45 receipts generated by the rule, finds 3 receipts that are non-compliant, puts them "On Hold", and generates the **Sampling Analysis Report** for the Sales Director.
-
----
-
-## FAQs
-
-**Q: If I put a claim "On Hold", is it deleted?**
-A: No. It remains in the system. It simply won't be included in the Bank Report for that specific payout. Once the issue is resolved, it can be moved to Approved.
-
-**Q: What is the difference between Rejecting a claim in the standard Claim Applet, and putting it On Hold in the Claim Cycle?**
-A: 
-- **Employee's Manager Rejects (Claim Applet):** The claim is dead. The employee must fix and resubmit a brand new claim from scratch.
-- **Finance puts On Hold (Claim Cycle):** The claim is valid, but Finance needs a clarification (like a clearer picture of the receipt). The employee provides the picture, and Finance pushes it through without forcing the employee to restart the entire manager-approval process.
-
-**Q: Can a single claim belong to two different cycles?**
-A: Absolutely not. The architecture uses a strict locking mechanism. Once a claim is pulled into a Cycle, it is permanently locked to that cycle to prevent double-payment fraud.
+- [Claims Management module](/modules-v2/claims/)
+- [Claim Applet](/applets/claims/claim-applet/)
+- [Financial Accounting module](/modules-v2/financial-accounting/)

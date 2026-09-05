@@ -7,8 +7,6 @@
   "claims"
  ],
  "queue": [
-  "content/en/applets/claims/claim-applet.md",
-  "content/en/applets/claims/claim-cycle-applet.md",
   "content/en/applets/membership/commission-scheme-applet.md",
   "content/en/applets/sales-workflow/commission-scheme-applet.md",
   "content/en/applets/sales-workflow/custom-processor-applet.md",
@@ -80,6 +78,14 @@
   },
   {
    "page": "content/en/applets/sales-workflow/car-workshop-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/claims/claim-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/claims/claim-cycle-applet.md",
    "date": "2026-09-05"
   }
  ],
