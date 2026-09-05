@@ -136,6 +136,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 - **F-0108** Peppol queue does not wait for LHDN Valid — intended? · **F-0109** may the internal LHDN workflow diagram stay public?
 - **F-0113 SECURITY** market-data API key compiled into the forex front end — report to platform team. · **F-0111/F-0114** report/forex applet defects — tickets?
 - **F-0116** web driver applet broken as shipped — is Android the real client? · **F-0118** delete ecommerce-catalog + installation-of-pricebook placeholders?
+- **F-0135** consignment return quantity signum 0 — intended? sales-side RV lines on purchase docs — defect? seed consignment perm defs?
 - **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
   Voucher applet?; **F-0042** resolved (three distinct applets; see F-0099).
 

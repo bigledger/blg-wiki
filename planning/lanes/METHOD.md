@@ -55,5 +55,11 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
     `main.ts` dev-only code differs from the registry code (e.g. `internal-consignment-gin-applet`
     vs `internalConsignmentGINApplet`), the tab toggles never render on a live tenant — document
     them as "read without control" and file a bug.
-11. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+11. **Whether FINAL creates open-queue rows is a COMPANY setting** (lane 3, run 9): `GenericDocLineOpenQueueProcessor`
+    reads `bl_fi_comp_gendoc_flow_config` (Organisation → Company → Knock Off Configuration). Without an
+    enabled source→target row the downstream document cannot find the order; `posting_ko` records it;
+    the watchdog / `data-fix-missing-queue` repair it. Lead every "downstream can't find my document"
+    troubleshooting row with this. Also: a tree-walking enclosing-`*ngIf` check beats the
+    nearest-`*ngIf` heuristic for the "rendered" proof.
+12. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.

@@ -533,3 +533,12 @@ with the analysis, the changes made, and the commit hash.
 ### registry
 - [ ] F-0134 (2026-09-05) internalconsignmentGRNApplet.documentation_url → Confluence, should be the wiki page. Group Maintenance: no ACTIVE row (only DELETED GroupApplet / newTeamMaintenanceApplet) — the three wiki pages are phantoms (joins F-0079 triage).
 
+## From Lane 3 run 9 (2026-09-05)
+
+### product (consignment PO / return)
+- [ ] F-0135 (2026-09-05) Consignment Return: DCO forces quantity signum 0 (applet constant says −1, overwritten) — no stock movement; old page, infographic and guide say the opposite. Intended (movement only via GIN) or defect? Consignment PO Payment/Contra tabs and Return Settlement tab write sales-side INTERNAL_RECEIPT_VOUCHER lines on purchase documents — defect or "do not use"? Return's Search tab searches purchase invoices, not Consignment GRN lines. 0 client-side perm defs for either applet (~50 codes checked; ordinary buyers cannot see line prices). Both documentation_url empty.
+- [x] F-0136 (2026-09-05) Unreferenced images (invented-feature infographics; screenshots with personal/real-looking names) quarantined.
+
+### /guides/purchasing-guides/consignment-purchasing/ + /applets/master-data/organisation-applet/
+- [ ] F-0137 (2026-09-05) Knock Off Configuration (company gendoc flow config) ownership: it decides whether FINAL opens the queue for EVERY document type; Organisation page should own it (answers F-0080's "who owns the flow-config UI"). Consignment guide must be corrected on return stock behaviour.
+
