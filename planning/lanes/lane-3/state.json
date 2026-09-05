@@ -8,9 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/delivery-installation/delivery-installation-driver-applet.md",
-  "content/en/applets/ecommerce/ecommerce-catalog-applet.md",
-  "content/en/applets/ecommerce/installation-of-pricebook-applet.md",
   "content/en/applets/purchase-workflow/internal-consignment-purchase-order-applet.md",
   "content/en/applets/purchase-workflow/internal-consignment-return-applet.md",
   "content/en/applets/purchase-workflow/internal-consignor-purchase-billing-applet.md",
@@ -89,6 +86,11 @@
    "page": "content/en/applets/e-invoice/mypeppol-admin-applet.md",
    "date": "2026-09-05",
    "note": "run 6; backend processors + issues"
+  },
+  {
+   "page": "content/en/applets/delivery-installation/delivery-installation-driver-applet.md",
+   "date": "2026-09-05",
+   "note": "run 7; driver applet source + login-driver-ep backend + deployed bundle check"
   }
  ],
  "skipped": [
@@ -99,12 +101,20 @@
   {
    "page": "content/en/applets/e-invoice/website-builder/user-permission-manager.md",
    "reason": "ADR-0002: no registry row under any plausible name (website-builder feature of CP Commerce, not an applet); duplicate of ecommerce/website-builder/user-manager.md - loop to merge/relocate"
+  },
+  {
+   "page": "content/en/applets/ecommerce/ecommerce-catalog-applet.md",
+   "reason": "ADR-0002 (run 7): no ACTIVE registry row under any plausible name (E-Commerce Catalog / catalogue / marketplace); TODO placeholder page; the online catalog is a per-website feature of CP Commerce Admin (cp_commerce_admin_console_v1, page done in run 1) - loop to merge/redirect into ecommerce/cp-commerce-admin-applet.md with an alias"
+  },
+  {
+   "page": "content/en/applets/ecommerce/installation-of-pricebook-applet.md",
+   "reason": "ADR-0002 (run 7): not an applet - a 13-line Applet Store install how-to for the Pricebook applet (registry PricebookApplet, page content/en/applets/master-data/pricebook-applet.md, another lane); loop to fold into that page or a generic 'install an applet' guide with an alias"
   }
  ],
  "updated": "2026-09-05",
  "notes": [
-  "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) \u2014 INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/\u2026] and [src:gh:bigledger/blg-intranet#n].",
-  "2026-09-05: Vincent asked twice that blg-intranet e-invoice knowledge be used \u2014 e-invoice pages moved to the front of the queue."
+  "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) — INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/…] and [src:gh:bigledger/blg-intranet#n].",
+  "2026-09-05: Vincent asked twice that blg-intranet e-invoice knowledge be used — e-invoice pages moved to the front of the queue."
  ],
  "rework": []
 }

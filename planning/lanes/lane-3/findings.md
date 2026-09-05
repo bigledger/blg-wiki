@@ -288,3 +288,51 @@ Kept and referenced (clean; several show the logged-in user's small avatar photo
 - The forex choice `POST_FOREX_DOC` / `POST_LOCAL_CCY_DOC` has no UI (intranet #5803 open). The admin page says "set by support" — acceptable until the Organisation applet exposes it?
 - May the copied `lhdn-core-workflow.png` (processor/table names only, from the internal README) stay on the public wiki? It is the single most useful picture on the page.
 - The portal applet's Processing Logic dropdown still lacks `CANCEL_FOR_EDIT_AND_RESUBMIT` (intranet #5427 closed the backend half). Raise a front-end issue on the portal repo?
+
+## Run 7 (2026-09-05) — Delivery And Installation Driver
+
+### Pages
+
+- `content/en/applets/delivery-installation/delivery-installation-driver-applet.md` — rewritten from `blg-applet-wavelet-delivery-installation-driver-applet` @be97a51, the `login-driver-ep` endpoints in `blg-akaun-platform-java` @871dbf5, the four `LoginDriver*` services in blg-akaun-ts-lib, and the deployed prod bundle (fetched from the registry's `es_module_url`). Title set to the registry name "Delivery And Installation Driver". Only two GitHub issues exist on the repo (deployment cleanup, Angular 14 migration) plus wiki#55; troubleshooting is code-derived.
+
+### Removed inventions (old page and infographic)
+
+The previous page (and the infographic added under wiki#55 / PR #315) described: *Start Trip* by the driver; *Arrived* / *Installing* statuses; a *Returned* status with a mandatory return reason; *Custom Status* milestones for installers; GPS-stamped signatures; Google Maps **and Waze** integration; a *Default Vehicle* personalisation; manual *Trip Status Date* for offline back-dating; automatic Sales Order → Sales Invoice conversion on e-signature. None of these exists in the driver applet source or bundle. What exists: one Trip Calendar, job cards, Start Job / Confirm Delivery / Cancel Job, stop reordering, and a proof-of-delivery form (name, IC, signature, photos, qty delivered + failure reason per line, remarks, cash amount). The address is a plain `maps.google.com/?q=` link. Timestamps are server time at the tap.
+
+### Method findings (add to METHOD.md)
+
+- **Fetch the deployed bundle from the registry's `es_module_url` and diff behaviour claims against it** before reporting a source-level defect. Both defects below are in the bundle, so they are production facts, not stale-branch artefacts. (Cost: one `curl`, ~9 MB.)
+- **Driver/customer-facing "login-*-ep" endpoints gate on identity SQL, not on permission sets.** Do not write "assign the `API_TNT_DM_DEL_*` permission" for such applets; write which table link makes the login recognised (`bl_del_driver_hdr.login_subject_guid` + `bl_del_trip_driver_link` here).
+- **A companion native app may be the real client.** The Kotlin driver app implements the same flow against the same endpoints; when a web applet looks broken, check whether the mobile build is what customers use before escalating.
+
+### Screenshots with personal data (not referenced)
+
+static/images/delivery-installation-driver-applet/trip-calendar-day.png
+static/images/delivery-installation-driver-applet/trip-calendar-agenda.png
+
+(Both show the left menu with a real tenant code as the tenant entry. Month and week views are clean and are referenced. The infographic `static/images/delivery-installation-driver-applet/delivery-installation-driver-applet-overview-infographic.png` has no personal data but asserts the invented features above; left unreferenced.)
+
+### Cross-lane link requests
+
+- **inventory-workflow/driver-delivery-order-applet.md** (lane 4): keep `delivery-installation-driver-applet` in `related_applets`; add one sentence that the two driver applets share no data (trip/job model vs `delivery_driver_guid` on the DO) and that proof of delivery exists only in the Delivery And Installation Driver applet.
+- **sales-workflow/internal-sales-order-applet.md, internal-sales-invoice-applet.md, internal-delivery-order-applet.md** (lane 1): the `delivery_status` roll-up (PARTIALLY/FULLY DELIVERED) is also triggered by the *driver's* Complete Job, and the driver's Cancel Job restores `bl_fi_pick_pack_queue.qty_balance` — add `delivery-installation-driver-applet` to `related_applets` alongside `delivery-installation-applet`.
+- **modules-v2/inventory** (owner lane): the delivery section should name both delivery applets and say that drivers work in the driver applet or the Android driver app.
+- **guides**: no guide covers the driver workflow; if one is commissioned it must be written from the current page, not from the old prose.
+
+### Registry / naming mismatches
+
+- `Delivery_Installation_Driver_Applet` `documentation_url` = the Atlassian "Delivery Installation Applet" page (shared with `delivery-installation-applet`); should be `https://wiki.bigledger.com/applets/delivery-installation/delivery-installation-driver-applet/`.
+- The applet's in-app name is "Delivery & Installation Driver Applet" (`app.component.ts`), the registry name is "Delivery And Installation Driver", the old wiki title was "Delivery Installation Driver Applet". Page now uses the registry name; consider an alias-free rename only (URL unchanged).
+- 0 client-side permission definitions; the applet's own client-side permission loading is commented out.
+
+### Questions for Vincent
+
+- **Is the web driver applet functional in production?** At be97a51 and in the deployed bundle, the Trip Calendar effect (`app.effects.ts` L52–L88) dereferences `bl_del_trip_hdr` on the paged response envelope, so the calendar can never list trips and shows the *Failed to retrive trips* toast; the only navigation into trips and jobs is via calendar events. The June 2026 screenshots show *No events to display*. Either (a) customers use the Android app (`akn-kotlin-mobile-delivery-driver`, merged from a customer project repo in June 2026) and the wiki should say so, or (b) this is a live defect to raise on the applet repo. The page currently states the fact and says "report to product".
+- **Hard-coded applet guid for return reasons** (`shared-components.effects.ts` L243 = `a7c0cb60-…`, not in `bl_applet_hdr`): raise an issue on the driver repo? The Delivery Installation applet uses the session applet guid. Until fixed, drivers have no Failure Reason dropdown unless a tenant row carries the old guid.
+- Should the Android driver app get its own wiki page (it is not in the applet registry, so ADR-0002 says no page) or a section on this page? I added one paragraph and no link.
+- The old infographic is now unreferenced; delete it, or regenerate one from the rewritten page?
+
+### Skipped (run 7, ADR-0002)
+
+- `content/en/applets/ecommerce/ecommerce-catalog-applet.md` — TODO placeholder ("E-Commerce Catalog Applet"); no registry row under catalog / catalogue / marketplace / commerce other than `cp_commerce_admin_console_v1` (CP Commerce Admin, TNT-ADMIN, page rewritten in run 1). The product catalog is a per-website tab of CP Commerce Admin, not an applet. Recommendation: delete the page and add `/applets/ecommerce/ecommerce-catalog-applet/` to `aliases:` of `ecommerce/cp-commerce-admin-applet.md`; its dead links (`/applets/inv-item-maintenance-applet/`, `/applets/tax-configuration-applet/`, `/applets/organization-applet/`) go with it.
+- `content/en/applets/ecommerce/installation-of-pricebook-applet.md` — 13 lines of "go to the Applet Store, search, click install"; not an applet. The Pricebook applet (`PricebookApplet`, registry `documentation_url` → `/applets/pricebook-applet/`) is documented at `content/en/applets/master-data/pricebook-applet.md` (another lane). Recommendation: fold the install steps into a single generic "Install an applet from the Applet Store" section (they are identical for every applet), alias the old URL, and fix the registry `documentation_url` to `/applets/master-data/pricebook-applet/` (registry mismatch for lane 4 / the applet-audit skill).
