@@ -5,7 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/inventory-workflow/introduction-to-stock-take-applet.md",
   "content/en/applets/inventory-workflow/inv-item-maintenance-applet.md",
   "content/en/applets/master-data/inv-item-maintenance-applet.md",
   "content/en/applets/master-data/merchant-applet.md",
@@ -18,7 +17,6 @@
   "content/en/applets/inventory-workflow/stock-conversion-applet.md",
   "content/en/applets/inventory-workflow/stock-replenishment-applet.md",
   "content/en/applets/inventory-workflow/stock-reservation-applet.md",
-  "content/en/applets/inventory-workflow/stock-take-applet.md",
   "content/en/applets/master-data/supplier-applet-1.md",
   "content/en/applets/master-data/tax-configuration-applet.md",
   "content/en/applets/inventory-workflow/warehouse-management-applet.md",
@@ -82,6 +80,12 @@
    "page": "content/en/applets/inventory-workflow/internal-stock-requisition-applet.md",
    "date": "2026-09-05",
    "run": 12
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/stock-take-applet.md",
+   "date": "2026-09-05",
+   "run": 13,
+   "note": "Registry StockTakev2 'Stock Take' (title changed from 'Stock Take Applet'). Two ACTIVE 'Stock Take' rows: DigistockTake is customer-specific (applet-exclusions.tsv); StockTakev2's es_module_url is this repo's build. Stock Take HQ / Stock Take Staff (stockTakehq, st_staff) point at the same customer build family and have no page."
   }
  ],
  "skipped": [
@@ -108,6 +112,10 @@
   {
    "page": "content/en/applets/inventory-workflow/internal-inbound-delivery-order-applet.md",
    "reason": "No ACTIVE registry row for an Inbound Delivery Order (Internal) under any name (live bl_applet_hdr checked 2026-09-05: nothing matching 'inbound'; the three '... - Delivery Order' rows are customer-specific placeholder entries, not this repo). Backend type INTERNAL_INBOUND_DELIVERY_ORDER and repo blg-applet-wavelet-internal-inbound-delivery-order-applet exist. Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 12."
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/introduction-to-stock-take-applet.md",
+   "reason": "Duplicate second page for registry row StockTakev2 'Stock Take' — merged into inventory-workflow/stock-take-applet.md (run 13). Marketing intro with no facts the canonical page lacks; no inbound links. Not rewritten; recommend delete + alias (Vincent's decision, F-0050 pattern)."
   }
  ],
  "updated": "2026-09-05",
