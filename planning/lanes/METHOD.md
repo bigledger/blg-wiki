@@ -61,5 +61,9 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
     the watchdog / `data-fix-missing-queue` repair it. Lead every "downstream can't find my document"
     troubleshooting row with this. Also: a tree-walking enclosing-`*ngIf` check beats the
     nearest-`*ngIf` heuristic for the "rendered" proof.
-12. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+12. **Not every applet is a generic document** (lane 3, run 10). Check the ts-lib `endpoint_path`
+    and the backend container first: Consignor Purchase Billing writes its own `bl_fi_csg_billing_*`
+    tables — no DCO signums, no journal, no queue. And trace the object actually handed to
+    `service.post/put`, not the reducer — two "features" there were dead in the request assembly.
+13. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.

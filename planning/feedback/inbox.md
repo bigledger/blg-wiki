@@ -548,3 +548,9 @@ with the analysis, the changes made, and the commit hash.
 - [x] F-0138 (2026-09-05) internal-goods-dispatch-note-applet.md renamed to internal-goods-delivery-note-applet.md under the registry name "Goods Delivery Note (Internal)" with an alias for the old URL (resolves the phantom entry + wiki issue #69). "Goods Dispatch Note" is a real, separate, UNREGISTERED document type (INTERNAL_GOODS_DISPATCH_NOTE, own repo, commits in 2026-07) — Vincent: register or archive that repo?
 - [ ] F-0139 (2026-09-05) The Goods Delivery Note form inherits Member Card + Sales Agent as REQUIRED (clone of Sales Credit Note) and disables CREATE while invalid — a plain delivery to a non-member customer may be blocked. Confirm on a tenant; bug? Also: the akaun_master journal-posting subscriber has no serverDocTypes constraint, so the journal job runs and fails with NO_JOURNAL_CREATED for every FINAL signum-0 document (Sales Order, Quotation, Jobsheet, Outbound DO too) — keep documenting "expected, ignore", or point users at a job-queue screen? Ten tab-hide toggles never render (registry code absent from getTabValue(), third applet in this lane — joins F-0132).
 
+## From Lane 3 run 10 (2026-09-05)
+
+### product (consignor purchase billing)
+- [ ] F-0140 (2026-09-05) Two shipped features do not work: Payment tab guard compares to the header object (NaN) so every ADD fails "Payment Exceeds Outstanding" (and payment lines are never sent); SAVE on the edit screen resends lines as loaded (draft assignment commented out) so line edits are lost. Quantity To Bill is typed (UI parseInt formula) — the backend /item/calc endpoint is never called. Consignor optional but a billing without one breaks the listing. Vincent: fix or hide the Payment tab ("settle via PI + PV")? persist line edits? which formula?
+- [x] F-0141 (2026-09-05) Two listing screenshots with a real customer's legal name quarantined.
+
