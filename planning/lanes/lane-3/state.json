@@ -8,7 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/purchase-workflow/internal-purchase-grn-stock-in-applet.md",
   "content/en/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet.md",
   "content/en/applets/purchase-workflow/internal-purchase-quotation-applet.md",
   "content/en/applets/purchase-workflow/internal-purchase-refund-note-applet.md",
@@ -107,6 +106,11 @@
    "page": "content/en/applets/purchase-workflow/internal-purchase-gin-applet.md",
    "date": "2026-09-05",
    "note": "run 11; applet @57f86f1 + backend @871dbf5; direction reversal: INTERNAL_PURCHASE_GOODS_ISSUED_NOTE is 0/0 (no stock movement, no journal); no VOID/DISCARD; 63 four-proof settings, gear on 31 screens"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/internal-purchase-grn-stock-in-applet.md",
+   "date": "2026-09-05",
+   "note": "run 12; applet @45f0bbd + backend @871dbf5; +1/-1 stock-in: Dr INVENTORY_NOT_INVOICED + INPUT_TAX / Cr CREDITOR_NOT_INVOICED, line GL skipped, MA cost updated; 125 four-proof keys; intercompany tab creates a plain GRN"
   }
  ],
  "skipped": [

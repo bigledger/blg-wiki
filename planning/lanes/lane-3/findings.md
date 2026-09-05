@@ -558,3 +558,67 @@ One large applet this run — it turned out to be an unfinished template fork wi
 ### Stopping point
 
 One large document applet this run; the settings surface (shared screen + 31 gears + three applet-local screens) and the 0/0 posting proof each needed their own pass. Next in queue: `internal-purchase-grn-stock-in-applet.md` (registry "Purchase GRN Stock In Applet (Internal)", `internalPurchaseGrnStockInApplet` — this one IS in `tabMappings` and in `MA_WA_SERVER_DOC_TYPES`, so expect a real posting block).
+
+## Run 12 — 2026-09-05 — internal-purchase-grn-stock-in-applet
+
+### Page
+
+- `content/en/applets/purchase-workflow/internal-purchase-grn-stock-in-applet.md` rewritten from applet @45f0bbd, shared-utilities @af523eb, ts-lib @7d1616a, backend @871dbf5, the registry, 51 seeded client-side permission rows and 28 issues. Title set to the registry name "Purchase GRN Stock In Applet (Internal)" (was "Purchase GRN Stock In (Internal) Applet"); `applet_code: internalPurchaseGrnStockInApplet`. The old page was a user-manual-style document (quick starts, worked example with an invented supplier name, FAQ, "Personalization" claims) with a correct core premise (this document does move stock) but no posting proof, no GL prerequisites and a settings table of five invented rows; replaced.
+
+### Direction / posting facts (record for the guides)
+
+- **This is the stock-moving receipt**: `INTERNAL_PURCHASE_GRN_STOCK_IN` is quantity +1 / amount −1; FINAL posts Dr `INVENTORY_NOT_INVOICED` (+ Dr `INPUT_TAX`) / Cr `CREDITOR_NOT_INVOICED`, creates `bl_inv_txn_line` rows and updates the company MA cost (`MA_WA_SERVER_DOC_TYPES`). The plain GRN and the GIN are 0/0. The old FAQ's "GIN typically reduces or reallocates stock" was dropped per METHOD §14.
+- **Line-level GL codes are ignored for this document type** (`isConsignmentStockIn` in `JournalPostingService.getJournalContainer` covers `INTERNAL_PURCHASE_GRN_STOCK_IN` as well as the consignment types): precedence is header GL → item-company link (`INVENTORY_NOT_INVOICED` txn code) → company default. METHOD §9's "line → header → item → company" does not hold here.
+- **The creditor line ignores the supplier's AR/AP type** for this document (`resolveArap(..., isSkip=true)` returns `CREDITOR_NOT_INVOICED`); the PI No Stock In later moves it to the trade creditor, but only when it carries a link to a GRN Stock In.
+- **Inventory location precedence** (`InventoryTransactionLineFactory` L49–52): line `delivery_location_guid` → line `guid_store` → header `guid_store` → branch default location. This is the mechanism behind intranet #3856 ("lines of the same document posted to different locations").
+- **The intercompany "Search" tab creates the wrong document type**: `IntercompanyController` hard-codes `INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE`, so a GRN created from a sales invoice here lands in the plain GRN applet and moves no stock.
+- **VOID does reverse everything** (negated inventory lines with `txn_code = VOID`, reverse journal, open-queue rows DELETED, serials unlocked) but is refused with `GENERIC_DOCUMENT_HAS_TARGET_LINKS` once a PI No Stock In has knocked the GRN off; the same guard applies to the FINAL → DRAFT action (`SHOW_DRAFT_BUTTON`).
+
+### Method findings (add to METHOD.md)
+
+- **§9 has an exception.** Purchase-side GL precedence skips the line GL for `INTERNAL_PURCHASE_GRN_STOCK_IN`, `INTERNAL_PURCHASE_CONSIGNMENT_GRN` and `INTERNAL_PURCHASE_CONSIGNMENT_RETURN` (`isConsignmentStockIn`). Check that flag before writing the precedence line on any purchase page.
+- **Applet-local `SHOW_*`-named settings are opt-in, not hide keys.** This applet's `isShowColumn()` treats a setting whose name contains `SHOW` as "render only if the setting *or* the permission is true" (`SHOW_DRAFT_BUTTON`, `SHOW_GL_DIMENSION`, …). A gear that lists them as ordinary toggles is misleading; document them as opt-in.
+- **`HIDE_EXTERNAL_* → HIDE_*` fallback** (`showExternalDocField`, `bareFallback` map) is a consumption path the key-name grep half-misses: the bare keys (`HIDE_QUOTATION` …) count as consumed even though only the `HIDE_EXTERNAL_*` names appear in the template.
+- **`SHOW_DOCUMENT_DELETE_BUTTON` is read from the applet record's `APPLET_SETTINGS` extension** (`appletService.getByGuid(appletGuid)`), not from the master settings store — a third settings source beside master / personal. Pair with METHOD §15 (`PRICEBOOK_POINTS_AUTO_APPLY` read by `GenericDocumentService.getBooleanAppletSetting` for every generic document).
+- **Shared screen typo**: `MAKE_ATTACHMENT_TAB_COMPULSORY` renders for `appletCode === 'internalPurchaseGRNStcokInApplet'` (sic), so the control never shows for the real code; the edit-form gear carries the key instead. Treat "gated by a misspelt applet code" as a `RENDERED?` case gates.py cannot see — it only evaluates the equality, it cannot know the string is a typo. Worth a warning in gates.py when a compared literal is not in the registry.
+- **Listing FINAL needs `amount_net > 0`** (`disableFinalButton`), while the edit-form FINAL allows zero-amount documents — a documented asymmetry to check on every generic-document page.
+
+### Screenshots with personal data
+
+- Excluded: `static/images/internal-purchase-grn-stock-in-applet/path-a.png` — the Select Item grid shows a test item code containing a developer's first name and several real product / brand names; re-take with the item list filtered. Excluded as a NotebookLM infographic with marketing claims ("single source of truth", "three-way match", "financial safeguards"): `static/images/internal-purchase-grn-stock-in-applet/internal-purchase-grn-stock-in.png` (1.5 MB) — delete.
+- Kept: `path-b.png` (listing with `PURGRNSI` test numbers and the KO For tab; staging tenant "TESTING"), `line-item-workspace-purgrn-stock-in.png` (test supplier "tesing", test bundle item). Both show only the tenant user's small avatar in the top bar, as in the screenshots kept in earlier runs.
+
+### Cross-lane link requests
+
+- **purchase-workflow/internal-purchase-grn-applet.md** (my lane, run 1): reword the GIN sentence per METHOD §14 and add the line "the intercompany SI → GRN endpoint creates this (0/0) type even when called from the GRN Stock In applet". Queue a small edit.
+- **purchase-workflow/internal-purchase-invoice-no-stock-in-applet.md** (my lane, next): the page today says "non-inventory expenses — services, overheads" — wrong premise; it is the invoice leg of the GRN Stock In pair. Its journal is Dr `CREDITOR_NOT_INVOICED` / Cr `INVENTORY_NOT_INVOICED` (only with GRN Stock In links) plus the trade creditor.
+- **finance/internal-purchase-invoice-applet.md** (lane 2): add a troubleshooting row for intranet #3940 (stock counted twice when a Purchase Invoice is raised for goods already received on a GRN Stock In) and a row for #5389 (migration duplicates → `SERIAL_NUMBER_ALREADY_EXISTS_FOR_COMPANY`). Add `internal-purchase-grn-stock-in-applet` to `related_applets` if missing.
+- **inventory-workflow/stock-availability-applet.md** (other lane): document the `HIDE_GRN_STOCK_IN_DRAFT_BALANCE` option and that `po_qty` counts PO → GRN / PI / GRN Stock In queue rows; add `internal-purchase-grn-stock-in-applet` to `related_applets`.
+- **inventory-workflow/stock-balance-applet.md** and **stock-adjustment-applet.md** (other lane): state the costing spec from intranet #5260 (only PI, purchase return, GRN Stock In, GIN stock-out, consignment, trade-in and Reset MA change the MA cost) and the zero-amount-inbound symptom (#5348); add `internal-purchase-grn-stock-in-applet` to `related_applets`.
+- **purchase-workflow/internal-purchase-order-applet.md, internal-purchase-requisition-applet.md** (my lane): add `internal-purchase-grn-stock-in-applet` to `related_applets`; note the KO row `INTERNAL_PURCHASE_ORDER → INTERNAL_PURCHASE_GRN_STOCK_IN`.
+- **purchase-workflow/internal-purchase-return-applet.md** (my lane): add the inventory-location precedence sentence (also explains intranet #5579 from run 11).
+- **master-data/chart-of-account-applet.md, organisation-applet.md** (other lane): the company default GL codes `INVENTORY_NOT_INVOICED` and `CREDITOR_NOT_INVOICED` are required by this document type; add `internal-purchase-grn-stock-in-applet` to `related_applets`. A dedicated "default GL code mapping" page would be the right home — none found.
+- **modules-v2/purchasing/_index.md** (line 44): "Goods Received Note … Stock Increased … Goods Received Not Invoiced" describes the GRN *Stock In*; say so, or the plain-GRN reader is misled (F-0038 covers the guides).
+- **guides/purchasing-guides/standard-procurement-workflow.md, direct-grn-workflow.md**: state that a company chooses one receiving pair (GRN + Purchase Invoice, or GRN Stock In + PI No Stock In) and configures Knock Off Configuration for it; mixing pairs double-counts stock (#3940).
+- **A Knock Off Configuration page** (none exists; `bl_fi_comp_gendoc_flow_config`): this applet needs PO → GRN Stock In and GRN Stock In → PI No Stock In rows, `LINE` flow rows gate the line-editor KO sub-tabs, and `doc_2_posting_status` decides the auto-created invoice's status.
+- **planning/lanes/METHOD.md** (coordinator): fold in the six method findings above; amend §9.
+- **kb/tools/gates.py** (coordinator): warn when an `appletCode === '…'` literal is not a registry code (would have caught `Stcok`).
+
+### Registry / naming mismatches
+
+- `internalPurchaseGrnStockInApplet` row: name and status fine, but `documentation_url` = `https://wiki.bigledger.com/applets/internal-purchase-grn-supplier-access-applet/` (wrong applet, and a path without the `purchase-workflow/` segment). Should be `https://wiki.bigledger.com/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/`.
+- The shared field-configuration screen spells the code `internalPurchaseGRNStcokInApplet` in one gate (attachment-compulsory toggle).
+- Permissions: 51 seeded / 48 checked; not seeded but checked: `SHOW_GENDOC_FINAL/VOID/DISCARD_BUTTON`, `SHOW_LISTING_BRANCH`, `SHOW_QTY_MAIN_LISTING`, `SHOW_QUOTATION/ORDER/DELIVERY_ORDER/INVOICE/OTHERS`, `SHOW_GL_DIMENSION/SEGMENT/PROFIT_CENTER/PROJECT`; seeded but never checked: `SHOW_FINAL_BUTTON`, `SHOW_DISABLE_EDITING_AMOUNT_TXN_SETTING`, `IPGRN_HIDE_TRACKING_ID_AND_PERMIT_NO`. Extract in `planning/lanes/lane-3/perm-dfn/internalPurchaseGrnStockInApplet.tsv`.
+- Two new customer-repo pseudonyms added to `kb/private/repo-pseudonyms.tsv` (`customer-repo-628f52`, `customer-repo-26f25a`) for the repos referenced in the applet's recent commit messages.
+
+### Questions for Vincent
+
+- **Should the intercompany Search tab in this applet create a GRN Stock In?** Today the backend hard-codes the plain GRN type, so intercompany receipts through this applet never move stock. Either add a stock-in variant of the endpoint or hide the tab here (the page tells users to use PO knock-off instead).
+- **Fix the registry `documentation_url`** for `internalPurchaseGrnStockInApplet` (points at the supplier-access page).
+- **Seed the missing `SHOW_GENDOC_*` permission codes** for this applet (the `HIDE_GENDOC_*` hides cannot be reopened per role until then) — same question as for the GIN and GRN.
+- **Line GL codes are silently ignored** for GRN Stock In journals (`isConsignmentStockIn`). Intended? If yes, the Lines tab should not offer a GL code field for this applet (`HIDE_LINE_ITEMS_GL_CODE` exists but is off by default).
+- Delete the infographic and re-take `path-a.png` on a clean tenant.
+
+### Stopping point
+
+One large document applet this run; the settings surface (212 keys, 8 gears, four applet-local screens) and the +1/−1 posting chain with its GL-precedence exception each needed a full pass. Next in queue: `internal-purchase-invoice-no-stock-in-applet.md` (the invoice leg of this pair — its current page has the wrong premise, see cross-lane requests).
