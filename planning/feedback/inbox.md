@@ -441,3 +441,14 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0097 (2026-09-05) Commission Scheme backend gaps: SALES_GROUP rule and RELATIVE date ranges unimplemented (always false); MEMBER_LABEL ignores picked labels; Sales Contract doc-type checkbox never evaluated; no scheme-code uniqueness check. Settings skeleton (Default Branch/Location saved but unread; Field Settings SAVE unwired; personal Default Selection loader commented out) — same template as Car Workshop. Custom Processor: DRAFT filter can never fire; Price Tag Sync NFC URL hard-coded to a real company's website; documentation_url empty. mlm-admin-applet is ACTIVE with no wiki page. Product tickets?
 - [ ] F-0098 (2026-09-05) Should Custom Processor move to applets/integrations/ (it is a hand-off queue to external integrations)? Folder decision for Vincent.
 
+## From Lane 2 run 8 (2026-09-05)
+
+### registry (resolves F-0042)
+- [x] F-0099 (2026-09-05) F-0042 resolved wiki-side: creditor_report_applet, debtor_report_applet and debtor-and-creditor-report are three distinct ACTIVE applets with three live repos — no merge. Only the registry row is wrong: creditor_report_applet.documentation_url must point at /applets/finance/creditor-report-applet/ (DB change, Vincent).
+
+### static/images/creditor-report-applet — personal data
+- [x] F-0100 (2026-09-05) All five screenshots show real company/brand or person names; quarantined. Page is image-less until re-captured on a synthetic tenant.
+
+### product (creditor report)
+- [ ] F-0101 (2026-09-05) Contra tab writes arap-contra pairs with NO server-side over-contra check (client ADD guard only) — product issue? Aging Period Settings silently overwrites AGING_PERIOD_TYPE; DAY with no DAY period yields no bucket columns; Personalization → Default Selection screen dead; Statement of Account / Historical Creditor served by DEBTOR_* permissions (AP-only roles get 403).
+
