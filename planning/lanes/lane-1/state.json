@@ -7,7 +7,6 @@
   "claims"
  ],
  "queue": [
-  "content/en/applets/sales-workflow/customer-consignment-applet.md",
   "content/en/applets/sales-workflow/daily-cashier-report-applet.md",
   "content/en/applets/sales-workflow/external-sales-invoice-applet.md",
   "content/en/applets/sales-workflow/internal-consignment-billing-applet.md",
@@ -92,6 +91,10 @@
   },
   {
    "page": "content/en/applets/sales-workflow/custom-processor-applet.md",
+   "date": "2026-09-05"
+  },
+  {
+   "page": "content/en/applets/sales-workflow/customer-consignment-applet.md",
    "date": "2026-09-05"
   }
  ],

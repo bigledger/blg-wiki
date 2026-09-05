@@ -1,6 +1,71 @@
 ---
 title: "Customer Consignment Applet"
-description: "Manage and track consignment stock placed at customer locations, facilitating internal stock transfers and reconciling off-site inventory."
+description: "Reference for the Customer Consignment Applet: send stock you still own to a customer's premises (Transfer Out), bring it back (Transfer Receive), and see what is still out there (Transfer Queue). Stock only, no journal."
+applet_code: "customerConsignmentApplet"
+applet_repo: "blg-applet-wavelet-customer-consignment-applet"
+modules: [inventory, pos]
+related_applets: [consignee-stock-transfer-applet, stock-transfer-applet, internal-stock-requisition-applet, internal-purchase-grn-applet, internal-consignment-billing-applet, internal-consignor-purchase-billing-applet, internal-consignment-grn-applet, stock-balance-applet, stock-report-applet, organisation-applet, inv-item-maintenance-applet]
+guides: [/guides/inventory-guides/stock-management/]
+sources:
+  configuration:
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/app.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/models/constants/printable-format-constants.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/settings-container/custom-status/custom-status.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/settings-container/custom-status/custom-status-settings/custom-status-settings.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/settings-container/outbound-printable-format-settings-container/printable-format-listing/printable-format-listing.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/state-controllers/outbound-printable-format-controller/store/effects/printable-format.effects.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-outbound-stock-transfer-container/internal-outbound-customer-consignment-transfer-listing/internal-outbound-customer-consignment-transfer-listing.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-outbound-stock-transfer-container/internal-outbound-stock-transfer-container.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-outbound-stock-transfer-container/internal-outbound-stock-transfer-view/internal-outbound-stock-transfer-view.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-outbound-stock-transfer-container/internal-outbound-stock-transfer-view/internal-outbound-stock-transfer-view-export/internal-outbound-stock-transfer-view-export.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-inbound-stock-transfer-container/internal-inbound-stock-transfer-listing/internal-inbound-stock-transfer-listing.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-stock-queue-container/internal-stock-queue-container.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/state-controllers/draft-controller/store/effects/pns.effects.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - blg-shared-utilities/modules/session/session-controller/effects/session.effects.ts
+    - akaun_master.bl_applet_client_side_perm_dfn (applet code customerConsignmentApplet, 0 rows)
+    - akaun_master.app_perm_template_hdr / app_perm_template_line (CUSTOMER_CONSIGNMENT_COMMON, CUSTOMER_CONSIGNMENT_LOCATION)
+  fields:
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-outbound-stock-transfer-container/internal-outbound-stock-transfer-create/internal-outbound-stock-transfer-create-main/internal-outbound-stock-transfer-create-main.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-outbound-stock-transfer-container/internal-outbound-stock-transfer-create/internal-outbound-stock-transfer-create-main/internal-outbound-stock-transfer-create-main.component.html
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-outbound-stock-transfer-container/internal-outbound-stock-transfer-add-line-item/add-line-item-item-details/internal-outbound-stock-transfer-add-line-item-main/internal-outbound-stock-transfer-add-line-item-main.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-outbound-stock-transfer-container/internal-outbound-stock-transfer-add-line-item/internal-outbound-stock-transfer-add-line-item.component.html
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-outbound-stock-transfer-container/import-knock-off/import-knock-off.component.html
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-inbound-stock-transfer-container/internal-inbound-stock-transfer-create/internal-inbound-stock-transfer-create-main/internal-inbound-stock-transfer-create-main.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-inbound-stock-transfer-container/internal-inbound-stock-transfer-create/internal-inbound-stock-transfer-create-main/internal-inbound-stock-transfer-create-main.component.html
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-inbound-stock-transfer-container/internal-inbound-stock-transfer-add-line-item/add-line-item-item-details/internal-inbound-stock-transfer-add-line-item-main/internal-inbound-stock-transfer-add-line-item-main.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-inbound-stock-transfer-container/import-knock-off/knock-off-cc-gin/knock-off-cc-gin.component.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/utilities/select-location-drop-down-customer-consignment/select-location-drop-down-customer-consignment/select-location-drop-down-customer-consignment.component.ts
+  lifecycle:
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/models/constants/applet-constants-outbound.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/models/constants/applet-constants-inbound.ts
+    - blg-applet-wavelet-customer-consignment-applet/micro-fe/projects/wavelet-erp/applets/customer-consignment-applet/src/app/components/internal-stock-queue-container/internal-inbound-stock-transfer-listing/internal-inbound-stock-transfer-listing.component.ts
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/GenericDocServerDocTypeEnum.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalCustomerConsignmentsOutDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalCustomerConsignmentsInDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/GenericDocumentDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/inventory/InventoryTransactionLineProcessorService.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/inventory/InventoryTransactionLineProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/inventory/VoidInventoryTransactionLineProcessor.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/FinancialDocUow/GenericDocumentHdrLineLinkOpenQueueUow.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/TntErpPermissions.java
+  troubleshooting:
+    - gh:bigledger/blg-applet-wavelet-customer-consignment-applet#4
+    - gh:bigledger/blg-applet-wavelet-customer-consignment-applet#5
+    - gh:bigledger/blg-applet-wavelet-customer-consignment-applet#6
+    - gh:bigledger/blg-applet-wavelet-customer-consignment-applet#7
+    - gh:bigledger/blg-applet-wavelet-customer-consignment-applet#10
+    - gh:bigledger/blg-wiki#50
 tags:
 - consignment-management
 - stock-transfer
@@ -11,543 +76,201 @@ aliases:
 - /applets/customer-consignment-applet/
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Customer Consignment Applet** is an application within the Bigledger ERP ecosystem. Its primary purpose is to manage and track consignment stock—inventory that a business places at a customer's location but retains ownership of until the goods are sold or consumed by the customer. The applet facilitates the movement of stock to and from customer premises and provides tools to monitor these internal stock transfers.
-
-{{< callout type="info" >}}
-**Core Concept**: The system links your central inventory to external customer locations, giving full visibility and control over stock that you own but do not physically hold on-site.
-{{< /callout >}}
-
-## Key Features Overview
-
-### Who Benefits from This Applet?
-
-**Inventory & Warehouse Managers:**
-- Track where consignment stock is officially located
-- Manage the outbound shipments to customers efficiently
-- Handle inbound returns for unsold inventory
-
-**Sales Representatives & Account Managers:**
-- Ensure that customers have adequate consignment stock on hand
-- Monitor stock consumption rates at various sites
-- Proactively replenish goods before they run out
-
-**Finance & Operations Teams:**
-- Maintain accurate asset valuation of off-site goods
-- Reconcile the stock that is physically at customer locations
-- Guarantee accurate billing upon consumption
-
-### What Problems Does This Solve?
-
-**The Manual Consignment Tracking Problem:**
-
-Tracking off-site stock can be messy. Common issues include:
-- Lost visibility on where external stock is physically located
-- Delayed invoicing due to poor tracking of what has been consumed
-- Messy return processes when dealing with unsold external goods
-- Unaccounted inventory leading to inaccurate financial asset reports
-
-**The Customer Consignment Applet Solution:**
-
-- **Centralized tracking** - Always know where your consignment stock is
-- **Automated transfers** - Seamlessly process both inbound and outbound stock movement
-- **Real-time monitoring** - Internal stock queues display pending actions and transfer statuses
-- **Configurable control** - Flexible field settings and customized status workflows
-
-## Key Concepts
-
-### Understanding Consignment Stock Management
-
-The consignment process involves three critical elements working in harmony:
-
-| Element | Definition | Practical Example |
-|---------|------------|------------------|
-| **Stock Owner (You)** | The business that retains ownership of goods | ABC Electronics Ltd holds ownership of spare parts |
-| **Stock Location (Customer)** | External sites where stock is physically placed | Customer warehouse, retail store, service center |
-| **Transfer Control** | Movement of stock in and out | Dispatching 100 units out, receiving 30 units back |
-
-### The Consignment Workflow Framework
-
-Every consignment transaction follows a structured flow:
-
-```
-Your Central Warehouse
-│
-├─ Transfer Out ──> Stock to customer location (You own it)
-│  └─ At Customer: Monitored for consumption/sales
-│
-└─ Transfer Receive ──> Stock returned to your control
-   └─ Reconciliation: Updated in your inventory
-```
-
-### The Stock Lifecycle
-
-Understanding how stock moves through your system:
-
-1. **Transfer Out**: You dispatch goods with transfer documentation
-2. **In Transit**: System tracks movement status  
-3. **At Customer**: Stock physically at their location; you own it
-4. **Consumption**: Customer uses/sells the goods
-5. **Return**: Unsold or unused stock comes back
-6. **Reconciliation**: Physical count matches system records
+The **Customer Consignment Applet** records stock that you send to a customer's premises but still own, and stock that comes back. Warehouse or store staff raise a **Transfer Out** when goods leave your location for the customer's consignment location, and a **Transfer Receive** when unsold goods return. The **Transfer Queue** lists every Transfer Out line that has not yet been received back, and lets you create the Receive straight from it so the two documents stay linked. Both documents move quantity only: they carry no value and post no journal. Invoicing what the customer has sold is done elsewhere (see [Related applets](#related-applets)).
 
 {{< callout type="info" >}}
-**Key Difference**: In consignment, YOU retain ownership and control until the customer pays or consumes the goods. The applet tracks this relationship clearly.
+Server document types `INTERNAL_CUSTOMER_CONSIGNMENT_OUT` (short code **CCSOUT**, quantity signum **−1**, amount signum **0**) and `INTERNAL_CUSTOMER_CONSIGNMENT_IN` (**CCSINN**, quantity signum **+1**, amount signum **0**). The customer's premises are modelled as a stock location of class **CCSG** (consignee) — the same location class used by [Consignee Stock Transfer](/applets/inventory-workflow/consignee-stock-transfer-applet/).
 {{< /callout >}}
 
-### Real-World Consignment Scenarios
+## Where it fits
 
-**Scenario 1: Retail Partner Consignment**
-```
-Setup: Supply Electronics Store with 50 phones on consignment
-- Transfer Out: 50 units to store (you retain ownership)
-- At Store: They sell 35, hold 15
-- Transfer Receive: 15 unsold units return to you  
-- Invoice: Only 35 units (what was sold)
-Result: Risk transfer only on consumed goods
-```
+| Direction | Document / applet | How it connects |
+|---|---|---|
+| Upstream | Locations of class CCSG ([Consignee Stock Transfer](/applets/inventory-workflow/consignee-stock-transfer-applet/) › Consignee Listing, or [Organisation](/applets/master-data/organisation-applet/)) | Transfer Out's *Location To* is filtered to CCSG locations; Transfer Receive's *Location From* is the CCSG location |
+| Upstream | [Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) | Basic items with an inventory link; serial, batch and bin sub-items |
+| Upstream (optional knock-off) | [Purchase GRN](/applets/purchase-workflow/internal-purchase-grn-applet/), [Stock Requisition](/applets/inventory-workflow/internal-stock-requisition-applet/), a prior Transfer Receive | Transfer Out › **KO For** tabs *GRN*, *Stock Requisition* and *CC-GRN* copy open lines from these documents |
+| Downstream | Transfer Receive (this applet) | Knocks off Transfer Out lines through the Transfer Queue or the **KO For › CC-GIN** tab |
+| Downstream | [Stock Balance](/applets/inventory-workflow/stock-balance-applet/), [Stock Report](/applets/inventory-workflow/stock-report-applet/) | FINAL writes one ledger line at your location and a mirrored line (`CSG`) at the customer location |
+| Sibling | [Consignee Stock Transfer](/applets/inventory-workflow/consignee-stock-transfer-applet/) | One-document alternative that moves both sides without a queue |
+| Sibling | [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/) | Same UI template, but between your own locations and with stock-in-transit |
 
-**Scenario 2: Service Center Equipment**
-```
-Setup: Place RM 80,000 diagnostic equipment at service center
-- Transfer Out: Equipment to their facility
-- Monitoring: Real-time tracking (not consumed, controlled asset)
-- Finance: Equipment on YOUR balance sheet
-Result: Asset visibility + partner support
-```
+## Screens and menus
 
-**Scenario 3: Warehouse Overflow**
-```
-Setup: Main warehouse full; use customer's space
-- Transfer Out: 1,000 units to overflow location
-- Monitoring: Tracked like internal stock
-- Transfer Receive: Gradual recall as needed
-Result: Extended capacity without buying new warehouse
-```
+Sidebar: **Transfer Out**, **Transfer Queue**, **Transfer Receive**. The applet opens on Transfer Out.
 
-## Key Features
+**Transfer Out listing** (*Internal Outbound Customer Consignment Transfer Listing*): columns Doc Short Code, Doc No (Tenant / Company / Branch), Posting Status, Tracking ID, Location From, Location To, Transaction Date; buttons **+** (create — needs the create permission, see below), **SINGLE/MULTIPLE PRINT** and **FINAL** for the ticked rows. The filter panel offers Location From, Location To, Created Date From/To and Txn Date From/To.
 
-{{< cards >}}
-  {{< card title="Transfer Out" subtitle="Dispatch consignment stock to your customer locations" link="#for-warehouse-managers-dispatching-stock" >}}
+{{< figure src="/images/customer-consignment-applet/create-transfer.png" alt="Create Internal Outbound Customer Consignment Transfer form" caption="Transfer Out › Details tab: date, Location From, Location To, Tracking ID, Reference #, Remarks, Doc Description." >}}
 
-  {{< card title="Transfer Receive" subtitle="Retrieve unused inventory back to the central warehouse" link="#for-sales-reps-process-incoming-returns" >}}
+**Transfer Out create**: tabs **Details**, **Line**, **KO For** (sub-tabs *GRN*, *CC-GRN*, *Stock Requisition*). **Transfer Out view**: **Details**, **Line**, **Doc Link**, **Attachments**, **Export** (order configurable), with **RESET**, **FINAL**, **SAVE** in the header and **EXPORT AS PDF** / **DELETE** on the Export tab.
 
-  {{< card title="Transfer Queue" subtitle="Monitor ongoing transfers and pending actions" link="#for-operations-monitor-transfers" >}}
+{{< figure src="/images/customer-consignment-applet/cust-print.png" alt="Export tab of a Transfer Out" caption="Export tab: choose a printable format and export the document as PDF." >}}
 
-  {{< card title="Configuration & Settings" subtitle="Printable formats, custom statuses, and field visibility" link="#configuration--settings" >}}
+**Transfer Queue** (*Internal Customer Consignment Queue Listing*): every FINAL Transfer Out line with open (not yet received) quantity — columns Doc Short Code, Doc No, Posting Status, Tracking ID, Location From, Location To, Transaction Date. There is no create button: clicking a row opens a Transfer Receive pre-filled with the open lines and knock-off links, and a **FINAL** action posts the ticked Receives in bulk.
 
-  {{< card title="Permissions Management" subtitle="Fine-grained controls by User, Team, and Role" link="#configuration--settings" >}}
-{{< /cards >}}
+**Transfer Receive listing** (*Internal Customer Consignment Transfer Receive Listing*): same columns; **+** and **FINAL** (no bulk print). Custom status columns appear here when enabled. **Transfer Receive create**: **Details**, **Line**, **KO For** (sub-tab *CC-GIN* = open Transfer Out lines); the template also carries *Account*, *Contra*, *Delivery Details*, *Department Hdr* and *Settlement* tabs inherited from the stock-transfer template. **Transfer Receive view**: **Main**, **Line Items**, **Status**, **Doc Link**, **Attachments**, **Export** (order configurable).
 
-{{< figure src="/images/customer-consignment-applet/customer-consignment-applet-overview-infographic.png" alt="Consignment Applet Overview: From Manual Chaos to Centralized Control - showing the challenges of manual consignment tracking vs the benefits of using the Customer Consignment Applet" caption="From Manual Chaos to Perfect Control: The Old Way (lost visibility, manual tracking, delayed invoicing, messy returns) vs The New Way (real-time tracking, automated transfers, instant visibility, smooth operations)" >}}
+{{< figure src="/images/customer-consignment-applet/transfer-listing-add.png" alt="Create Internal Customer Consignment Receive form" caption="Transfer Receive › Details tab. Location From is the customer's consignment location; Location To is your stock location." >}}
 
----
+**Line item dialog** (both documents): **Item Details**, **Serial Number**, **Batch Number**, **Bin Number**.
 
-## Quick Start Guide
+**Settings** (gear): *System Configuration* — Application Settings (shared screen), Default Selection, Outbound Printable Format, Receive Printable Format, Custom Status; *Server Side Permissions* — Permission Wizard, Permission Set, User Permission, Role Permission (Team Permission is routed but not listed); *Developer Tools* — Release Notes, Audit Trail. The settings area lands on Feature Visibility, which is routed but not in the menu. **Personalization**: Default Selection, Sidebar.
 
-Get up and running quickly with these essential workflows based on your role.
+## Configuration
 
-### For Warehouse Managers: Dispatching Stock
+### Before you can use it
 
-**Goal:** Send consignment stock to a customer location in 5 simple steps.
+- **A CCSG location per customer site.** Create it in [Consignee Stock Transfer](/applets/inventory-workflow/consignee-stock-transfer-applet/) › Consignee Listing (Location Class = CCSG) or in the location master. When *Location From* on a Transfer Out is not itself a CCSG location, the *Location To* dropdown shows CCSG locations only.
+- **Location access.** The dropdowns list only the locations in the user's `…_LOCATION_TO_READ_TGT_GUID` permission target; tenant admins and owners see every location.
+- **Permissions.** Use **Settings › Permission Wizard** with the two seeded templates: `CUSTOMER_CONSIGNMENT_COMMON` (23 read permissions for companies, branches, locations, entities, items, serial numbers, tax codes, attachments, document links) and `CUSTOMER_CONSIGNMENT_LOCATION` (20 per-location permissions). The location template deliberately carries **both** the `TNT_API_DOC_INTERNAL_CUSTOMER_CONSIGNMENT_{IN,OUT}_*` permissions that the backend enforces and the `TNT_API_DOC_INTERNAL_{INBOUND,OUTBOUND}_STOCK_TRANSFER_*` permissions that the applet's menus and **+** buttons check — a user needs both sets.
+- **Items** must be basic items linked to an inventory item; serial-, batch- and bin-tracked items need their sub-items maintained in [Item Maintenance](/applets/master-data/inv-item-maintenance-applet/).
+- **Printable formats.** Upload a Jasper template under *Outbound Printable Format* and *Receive Printable Format* and tick **Default Selection**; bulk printing refuses to run without a default.
+- **Document numbers** (Doc No Tenant / Company / Branch) are generated by the backend per document type, company and location; nothing to configure in the applet.
+- **Fiscal periods.** A locked fiscal period rejects FINAL for both documents (see Lifecycle).
 
-1. **Navigate**: Go to **Transfer Out** from the sidebar.
+### Applet settings
 
-{{< figure src="/images/customer-consignment-applet/transfer-out-listing.png" alt="Transfer Out Listing" caption="Outbound Listing: View all outbound consignment stock transfers." >}}
+Settings live in four places: the **shared** Application Settings screen (`FieldConfigurationComponent` from blg-shared-utilities, keyed by applet code), the **applet-local** Default Selection and Custom Status screens, the **printable-format** screens (which write their own applet extension, not `APPLET_SETTINGS`), and **Personalization › Default Selection** (per user). Tenant admins and owners change them; users change only their personal default.
 
-2. **Create Transfer**: Click **"+"** → Create a new stock transfer record → System asks for **From warehouse** and **To customer location**
+Only the keys below pass all four proofs (declared, rendered, saved, read). The shared screen also shows many `HIDE_*` toggles (for example `HIDE_DOC_NO_TENANT`) that this applet never reads — switching them has no effect here.
 
-3. **Select Origin & Destination**: 
-   - **Origin Warehouse**: Choose which warehouse the stock comes from (e.g., Central Warehouse)
-   - **Destination**: Select the customer location receiving the stock (e.g., "ABC Retail Store")
+| Setting | Screen | What it controls | Default | Effect when changed |
+|---|---|---|---|---|
+| `SHOW_ITEM_STOCK_BALANCE` ("Disallow negative stock for basic item (validate stock balance)") | Application Settings › Lines Settings | On Transfer Out, shows the stock balance at *Location From* in the item search and caps the line **Quantity** at that balance (client validator, basic items only); the listing's bulk FINAL then also sends `validate_stock_balance = true` | off (unset) | Turning it **off** removes the client-side cap only — the backend validates stock on FINAL regardless (see Lifecycle) |
+| `SORT_ORDER` ("Sorting Order") | Application Settings › Gen Doc Listing Settings | Column the three listings are ordered by | `date_txn` when unset | Listings re-order on next load |
+| `DISABLE_GEN_DOC_LISTING` | Application Settings › Gen Doc Listing Settings | When on, the listings do not load rows until you search | off | Faster opening on large tenants; users must search first |
+| `HIDE_CREATED_BY_DETAILS` | Application Settings › Doc Settings | Hides the Created By / Modified By / dates block on both Details tabs | off | Block disappears from the create forms |
+| `INTERNAL_OUTBOUND_STOCK_TRANSFER_DETAILS_TAB_ORDER` | Default Selection › Outbound Details Tab Order (drag list) | Tab order of the Transfer Out view | Details, Line, Doc Link, Attachments, Export | Saved order applies; tabs added later are appended |
+| `INTERNAL_INBOUND_STOCK_TRANSFER_DETAILS_TAB_ORDER` | Default Selection › Inbound Details Tab Order | Tab order of the Transfer Receive view | Main, Line Items, Status, Doc Link, Attachments, Export | As above |
+| `ENABLE_CUSTOM_STATUS_1..5`, `ENABLE_CUSTOM_STATUS_HDR_n`, `NAME_CUSTOM_STATUS_HDR_n`, `LIST_CUSTOM_STATUS_HDR_n` | Custom Status | Up to five named header statuses, each with its own value list and a default; shown as extra columns on the **Transfer Receive** and **Transfer Queue** listings and on the Receive view's Status tab | all off | Transfer Out ignores them; the `*_LINE_n` toggles are saved but read by nothing |
+| Default printable format (applet extension `INTERNAL_CUSTOMER_CONSIGNMENT_OUT_APPLET_EXT_CODE_PRINTABLE_FORMAT_GUID_…` / `…_IN_…`) | Outbound / Receive Printable Format › Default Selection checkbox | Format used by **SINGLE/MULTIPLE PRINT** on the Transfer Out listing | none | Bulk print works; the Export tab still needs a manual pick (it reads `PRINTABLE`, which this applet never writes) |
+| `DEFAULT_LOCATION` (personal) | Personalization › Default Selection | Pre-fills *Location From* on both create forms for that user | none | Overrides the applet-level value |
 
-{{< figure src="/images/customer-consignment-applet/create-transfer.png" alt="Create transfer out" caption="Create a new stock transfer record." >}}
-
-4. **Add Items**: 
-   - Click **"Add Line"** for each item type
-   - Select the **Inventory Item** (e.g., "Widget SKU-001")
-   - Enter **Quantity** (e.g., "50 units")
-   - Add **Notes** if needed (e.g., "Expiry: Dec 2025")
-
-5. **Dispatch & Print**: 
-   - Review all details are correct
-   - Click **"Dispatch"** or **"Submit"** to process
-   - Print your customized delivery order using the printable format
-
-{{< figure src="/images/customer-consignment-applet/cust-print.png" alt="Printable format" caption="Print out the delivery order using the printable format." >}}
-
-**What Happens Next?**
-```
-You Submit Transfer Out
-        ↓
-Status: In Transit / Pending Confirmation
-        ↓
-Customer Receives Stock (Transfer Receive initiated)
-        ↓
-Stock Now Appears in Transfer Queue (real-time monitoring)
-        ↓
-You Can Track Location & Status Anytime
-```
-
-**Pro Tips:**
-- ✓ Always print delivery orders before dispatch
-- ✓ Keep serial numbers if items are high-value
-- ✓ Use batch transfer for multiple same items
-- ✓ Check customer location details before confirming
-
----
-
-### For Sales Reps: Process Incoming Returns
-
-**Goal:** Receive unsold consignment inventory back from the customer in 4 simple steps.
-
-1. **Navigate**: Access **Transfer Receive** from the sidebar.
-2. **Initiate Return**: Click **"+"** → Select the customer location returning the goods.
-
-{{< figure src="/images/customer-consignment-applet/transfer-receive-listing.png" alt="Transfer Receive Listing" caption="Inbound Listing: Process returns of unused consignment stock from customer locations." >}}
-
-3. **Verify Goods**: 
-   - Check incoming items against original transfer documentation
-   - Input the **items** and **quantities** returning to warehouse
-   - Verify **condition** (new, good, damaged, expired)
-   - Accept or flag any discrepancies
-
-4. **Complete Transfer**: 
-   - Click **"Confirm Receipt"** or **"Complete"**
-   - System automatically updates your internal inventory
-   - Stock ownership reverts from customer location back to main warehouse
-
-**What Happens Next?**
-```
-You Complete Transfer Receive
-        ↓
-Stock Returns to Your Central Inventory
-        ↓
-System Updates All Balances (automatically)
-        ↓
-Return Now Visible in Transfer Queue (historical record)
-        ↓
-Ready for Resale or Disposal
-```
-
-**Pro Tips:**
-- ✓ Match quantities carefully—discrepancies flag for review
-- ✓ Note damaged items for quality control
-- ✓ Verify expiry dates before acceptance
-- ✓ Update inventory status if returned goods can't be resold
-
----
-
-### For Operations: Monitor Transfers
-
-**Goal:** Track the progress of active stock transfers in real-time and identify bottlenecks.
-
-1. **Access Queue**: Navigate to **Transfer Queue** from the sidebar.
-
-{{< figure src="/images/customer-consignment-applet/transfer-queue.png" alt="Transfer Queue" caption="Stock Queue: Monitor the status of all ongoing inbound and outbound consignment transfers." >}}
-
-2. **View Transfer Status**: 
-   - See all **pending outbound transfers** (stock on the way out)
-   - See all **pending inbound transfers** (stock on the way back)
-   - Check **transfer date**, **location**, **status**, and **items**
-   - Identify any transfers in **delayed** or **exception** status
-
-3. **Filter & Search**: 
-   - Filter by **Location From** (where stock originated)
-   - Filter by **Location To** (where stock is going)
-   - Filter by **Date Range** (when transfer was created)
-   - Filter by **Transaction Date** (when the transaction was created)
-
-{{< figure src="/images/customer-consignment-applet/search-filter.png" alt="Transfer Queue Filters" caption="Filter the Transfer Queue by location, date, or status." >}}
-
-4. **Action & Follow-Up**: 
-   - Click on any transfer to see **detailed line items**
-   - Note any **discrepancies** or **exceptions**
-   - Follow up on delayed transfers with logistics handlers
-   - Escalate if transfer exceeds expected delivery time
-
-**What Happens Next?**
-```
-Monitor Transfer Queue Daily
-        ↓
-Identify Delayed Transfers (e.g., >3 days in transit)
-        ↓
-Contact Logistics / Customer
-        ↓
-Update Status (In Transit → Delivered → Received)
-        ↓
-Cross-Verify with Physical Inventory
-```
-
-**Pro Tips:**
-- ✓ Check queue daily (morning review takes 10 minutes)
-- ✓ Set alerts for transfers older than X days
-- ✓ Compare Transfer Queue to physical inventory counts
-- ✓ Document any discrepancies for audit trail
-
-{{< callout type="tip" >}}
-**Best Practice**: Weekly reconciliation of Transfer Queue vs actual stock at locations prevents inventory mismatches from compound into larger issues.
+{{< callout type="warning" >}}
+**Default Selection › Default Branch / Default Location do not save.** The two dropdowns are bound to loose controls, and SAVE writes the previously stored `DEFAULT_BRANCH` / `DEFAULT_LOCATION` back unchanged. Only the tab-order lists on that screen persist. Set a default location per user under Personalization instead.
 {{< /callout >}}
 
+Keys read at runtime **without a control** in this applet: `ENABLE_FILTER_BY_TODAYS_TXN` (listings default to today from 06:00 instead of the last month), `ENABLE_DRAFT_LOCK_SERIAL_NUMBER_CHECKING` (serial-number draft-lock check when serials are added) and `PRINTABLE` (Export tab pre-selection). They can only be set through another applet that shares the same tenant setting screen. `DEFAULT_BRANCH` is saved but read by nothing.
 
----
+{{< figure src="/images/customer-consignment-applet/setting-page-1.png" alt="Application Settings screen" caption="Application Settings is the shared screen; only four of its keys are read by this applet." >}}
 
-## Configuration & Settings
+{{< figure src="/images/customer-consignment-applet/setting-page-2.png" alt="Custom Status settings" caption="Custom Status: header statuses apply to Transfer Receive and the Transfer Queue." >}}
 
-### Custom Printables and Formats
-- **Printable Format Settings:** Define customizable document templates for both inbound and outbound transfers, ensuring your paperwork always matches your branding.
+{{< figure src="/images/customer-consignment-applet/con-printable.png" alt="Receive Printable Format listing" caption="Receive Printable Format: tick Default Selection on the format bulk print should use." >}}
 
-{{< figure src="/images/customer-consignment-applet/con-printable.png" alt="Printable format configuration" caption="Settings Page: Configure custom printables, advanced permissions, and feature visibility" >}}
+### Document behaviour settings
 
-### Data and Status Control
-- **Field Settings:** Flexible configuration for data fields based on specific business requirements. Hide irrelevant fields or make essential fields mandatory.
+- **Posting status**: DRAFT → FINAL, from the view header or in bulk from the listing (rows that are not DRAFT/ACTIVE are skipped with a "n/m selected documents cannot be finalized" snackbar). The applet exposes no VOID action; **DELETE** on the Export tab (click twice to confirm) calls the document delete endpoint.
+- **Stock validation on FINAL** is a backend default, not a setting (see Lifecycle).
+- **Printables**: Jasper templates per direction; Export tab exports one PDF, the Transfer Out listing prints several.
+- No approval workflow, no e-Invoice submission, no custom line statuses.
 
-{{< figure src="/images/customer-consignment-applet/setting-page-1.png" alt="Settings & Configuration" caption="Settings Page: Configure the custom viewing of the applet." >}}
+### Feature visibility / permissions
 
-- **Feature Visibility & Custom Status:** Fine-grained control over which features are visible across the application, combined with the ability to define custom workflow statuses that match your internal processes.
+`bl_applet_client_side_perm_dfn` has **no rows** for this applet, yet the code checks four client-side permission codes. Because none is seeded, they are all off for every user:
 
-{{< figure src="/images/customer-consignment-applet/setting-page-2.png" alt="Settings & Configuration" caption="Settings Page: Configure the custom status of the applet." >}}
+| Code checked in code | What it would unlock |
+|---|---|
+| `SHOW_TRANSACTION_DATE` | Makes the *Good Issue Date* / *Good Receive Date* editable. Without it the field is disabled and stays at today's date |
+| `SHOW_UNIT_PRICE_STD_PRICING_SCHEME` | Shows a pricing-scheme unit price on Transfer Out lines |
+| `EXCLUDE_ACCOUNT_CODE_ITEM_TYPE_AT_ITEM_SEARCH` | Excludes account-code items from the item search |
+| `DISABLE_ADD_WHEN_KO` | Blocks adding free lines to a document created by knock-off |
 
-### Transfer Templates and Automation
-- **Transfer Templates:** Create reusable transfer templates for recurring consignments. Instead of manually creating the same transfer repeatedly, set up a template with standard items, quantities, customers, and locations. Templates can be used as blueprints for one-time and recurring transfers.
+Server-side permissions are the two templates above (Settings › Permission Wizard); Permission Set, User, Team and Role screens are the shared assignment screens.
 
-- **Scheduled Events:** Configure automatic transfer scheduling using events. Set up recurring transfers (weekly, monthly, quarterly, yearly) tied to your business calendar. The system can automatically trigger transfers based on your template and event configuration, reducing manual data entry and human error.
+{{< figure src="/images/customer-consignment-applet/setting-page-3.png" alt="Permission Wizard listing the two templates" caption="Permission Wizard: CUSTOMER_CONSIGNMENT_COMMON and CUSTOMER_CONSIGNMENT_LOCATION." >}}
 
-**Common Template Use Cases:**
-```
-Retail Partner: Weekly shipment of 100 units Widget A to Customer XYZ
-Service Center: Monthly refresh of 50 diagnostic kits
-Warehouse Overflow: Bi-weekly transfer of seasonal stock to partner storage
-```
+## Fields
 
----
+### Transfer Out — Details
 
-### Advanced Permission Rules
-- **Advanced Permissions Management:** Extensive controls configured through intuitive wizards. Allows you to set precise rules depending on User, Team, Role, and broad Permission Sets.
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Customer Consignment Transfer Good Issue Date | Transaction date | Yes | Defaults to today; editable only with `SHOW_TRANSACTION_DATE` |
+| Location From | Your stock location (`guid_store`) | Yes | Limited to the user's location target; company is derived from it; pre-filled from the personal default location |
+| Location To | Customer's consignment location (`guid_store_2`) | Yes | Filtered to class CCSG unless Location From is itself CCSG |
+| Tracking ID, Reference #, Remarks, Doc Description | Free text | No | — |
+| Doc Short Code, Doc No (Tenant / Company / Branch) | Generated numbers | — | Read-only; shown in view mode |
+| Created By / Date, Modified By / Date | Audit | — | Read-only; hidden by `HIDE_CREATED_BY_DETAILS` |
 
-{{< figure src="/images/customer-consignment-applet/setting-page-3.png" alt="Settings & Configuration for permission wizard" caption="Settings Page: Generate permission settings for the applet." >}}
+### Transfer Receive — Details
 
-{{< figure src="/images/customer-consignment-applet/setting-page-4.png" alt="Settings & Configuration for permission set" caption="Settings Page: Configure a permission set on the applet." >}}
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Customer Consignment Good Receive Date | Transaction date | Yes | As above |
+| Location From | Customer's consignment location (`guid_store_2`) | Yes | Pre-filled from the knocked-off Transfer Out or the personal default location |
+| Location To | Your receiving stock location (`guid_store`) | Yes | Limited to the user's location target |
+| Tracking Id, Reference #, Remarks, Doc Description | Free text | No | — |
 
-{{< figure src="/images/customer-consignment-applet/setting-page-5.png" alt="Settings & Configuration for user permission" caption="Settings Page: Configure each user's permission on the applet." >}}
+### Line (both documents)
 
-{{< figure src="/images/customer-consignment-applet/setting-page-6.png" alt="Settings & Configuration for role permission" caption="Settings Page: Configure each user's role in the applet." >}}
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Item Code | Item searched from the item master | Yes | Item Name and UOM fill in |
+| Quantity | Quantity in the chosen UOM | Yes | Minimum 1; on Transfer Out, maximum = ledger balance at Location From for basic items when `SHOW_ITEM_STOCK_BALANCE` is on |
+| Location From / Location To, Tracking ID | Copied from the header | No | Line-level copies |
+| Remarks, Doc Description, Doc Reference | Free text | No | — |
+| GRN No, ST-GRN ID (Out) / ST-GIN ID (Receive) | Source document reference | No | Filled when the line was created by knock-off |
+| Serial Number / Batch Number / Bin Number tabs | Sub-item detail | Per item | Quantities must agree with the line on FINAL (backend check) |
 
----
+## Lifecycle and posting
 
-## FAQ
+**Statuses**: DRAFT on create; FINAL from the view or the listing; DELETE from the Export tab. VOID exists in the backend for these document types (it reverses the ledger lines) but has no button in this applet.
 
-### General Consignment Questions
+**Posting proof**
 
-**Q: What exactly is consignment stock?**  
-A: Consignment stock is inventory that your business places at a customer's location but legally retains ownership of until the goods are consumed or officially sold to that customer. You remain the owner and can track/retrieve it anytime.
+| Item | Transfer Out | Transfer Receive |
+|---|---|---|
+| Server document type | `INTERNAL_CUSTOMER_CONSIGNMENT_OUT` (CCSOUT) | `INTERNAL_CUSTOMER_CONSIGNMENT_IN` (CCSINN) |
+| Amount signum | 0 | 0 |
+| Quantity signum | −1 | +1 |
+| Dr / Cr equation | none — neither type is registered in `JournalPostingTypeHandler`, so FINAL creates no journal | none |
+| GL precedence | not applicable | not applicable |
+| Stock processor | `InventoryTransactionLineProcessor` on FINAL: one ledger line per stock line at `guid_store` (−qty), then `createConsignmentTxns` clones it to `guid_store_2` (+qty) with `txn_code_02 = CSG` and the transaction time shifted +0.1 s; costs on the clone are recomputed | Same processor: +qty at `guid_store` (Location To), clone −qty at `guid_store_2` (Location From) shifted −0.1 s |
+| What VOID reverses | `VoidInventoryTransactionLineProcessor` negates every ledger line the document created (including the CSG clone) with `txn_code = VOID` and unlocks draft-locked serial numbers | Same |
 
-**Q: What's the difference between consignment and a regular sale?**  
-A: In a regular sale, ownership transfers immediately when goods are delivered. In consignment, YOU retain ownership until payment or consumption. The applet tracks this relationship throughout the lifecycle.
+The signums are fixed by `InternalCustomerConsignmentsOutDataConsistencyObject` / `…InDataConsistencyObject` (`checkAmountSignum`, `fillQuantitySignumAndAmountSignumForLine`); the applet constants carry the same values.
 
-**Q: How is consignment inventory different from internal transfers?**  
-A: Internal transfers move stock between your own warehouses (ownership stays with you). Consignment moves stock to customer locations (you own it, but customer controls usage). The applet treats them differently for tracking and billing purposes.
+**Backend checks on FINAL** (`GenericDocumentService.validateGenericDocumentOnFinal`, all hard rejections):
 
-### Transfer & Movement Questions
+- Serial, bin and batch quantities must match the line quantity.
+- **Stock balance**: `updatePostingStatus` defaults `validate_stock_balance` to **true** when the request omits it, so every Transfer Out line with negative signum, basic item and PNS type is checked against the ledger at Location From; failure returns `STOCK_BALANCE_OBJECT_NO_STOCK_AT_LOCATION` — *"Not Enough Stock for item …"*. The `SHOW_ITEM_STOCK_BALANCE` toggle only adds the client-side cap; it cannot switch the backend check off.
+- Transaction date and company must be present; `guid_store` must be set (`GENERIC_DOC_HDR_GUID_STORE_IS_NULL_OR_EMPTY`).
+- A locked fiscal period rejects with `FISCAL_PERIOD_LOCKED`. The exemption in that check covers only the plain `INTERNAL_OUTBOUND/INBOUND_STOCK_TRANSFER` types, not the consignment types.
+- There is **no check that Location From and Location To belong to the same company** (open issue, see Troubleshooting).
 
-**Q: How do we track stock returning from a customer?**  
-A: Use the **Transfer Receive** feature. It facilitates the smooth return and systematic retrieval of any unsold or unused consignment inventory from the customer's site back to your company warehouse. The system automatically updates inventory balances.
+**Open queue and knock-off**: when a Transfer Out is FINAL its lines appear in `bl_fi_generic_doc_line_open_queue` with `server_doc_type_1 = INTERNAL_CUSTOMER_CONSIGNMENT_OUT` and `server_doc_type_2 = INTERNAL_CUSTOMER_CONSIGNMENT_IN`; the Transfer Queue and the Receive's *CC-GIN* tab query exactly that pair (`GenericDocumentHdrLineLinkOpenQueueUow`). Creating a Receive from the queue copies each open line with `quantity_base = qty_open` and a `bl_fi_generic_doc_link` of `txn_type = KO`, `quantity_signum = −1`, `quantity_contra = qty_open`; the Transfer Out's own *KO For* tabs work the same way against Purchase GRN (`INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE → OUT`), Stock Requisition (`INTERNAL_STOCK_REQUISITION → OUT`) and a prior Receive (`IN → OUT`, the *CC-GRN* tab).
 
-**Q: What if a customer returns fewer items than we transferred out? How do we know what they've consumed?**  
-A: **Scenario Example**:
-```
-Transferred Out: 100 units to Customer ABC
-Received Back: 30 units
-Consumed/Sold: 70 units (100 - 30)
+## Related applets
 
-Result: Invoice Customer ABC for 70 units @ unit price
-        Add 30 units back to inventory  
-        Transfer document shows consumption clearly
-```
-
-**Q: Can we track stock at multiple customer locations simultaneously?**  
-A: Yes! The Transfer Queue shows ALL active transfers across all locations in one dashboard. Filter by location to focus on specific customers. This works whether you have 2 or 200 customer locations.
-
-**Q: What happens if stock is damaged or expired while at a customer location?**  
-A: When receiving stock back, you note the condition (damaged, expired, unsaleable). The system can track these items separately for write-off, warranty claims, or customer disputes. Document in Transfer Receive to maintain audit trail.
-
-### Customization & Configuration Questions
-
-**Q: Are the delivery transfer documents customizable?**  
-A: Yes! Use **Printable Format Settings** to create custom document templates for both inbound returns and outbound dispatches. Match your branding, add logos, custom fields, and required information fields.
-
-**Q: Can we hide certain fields from users to simplify the interface?**  
-A: Absolutely. Go to **Settings > Field Settings** to control which fields appear for each user role. You can make fields mandatory, hidden, or optional based on role (Warehouse Manager, Sales Rep, etc.).
-
-**Q: Can we define custom transfer statuses (not the default ones)?**  
-A: Yes. Use **Settings > Custom Status** to create statuses matching your specific workflow (e.g., "Pending QC", "Awaiting Payment", "Partially Received"). Define the status flow and who can transition between them.
-
-### Permissions & Access Questions
-
-**Q: Can we restrict who creates or approves stock transfers?**  
-A: Absolutely. Use **Advanced Permissions Management** (Settings > Permissions) to configure access by User, Team, or Role. You can allow Create/View/Edit/Delete at granular levels for different user groups.
-
-**Q: What if we want different approval rules for different transfer amounts?**  
-A: Set up **Advanced Permissions** with rules like:
-- Small transfers (< RM 5,000): Warehouse Manager approval only
-- Large transfers (> RM 5,000): Manager + Finance approval
-- Critical items: Additional QC approval
-
-**Q: Can a warehouse manager see all customer locations or should we restrict visibility?**  
-A: Both! Use Field Settings & Permissions to:
-- Restrict access: "Show only transfers for assigned regions"
-- Allow full view: "See all locations but can only modify own region"
-- Customer-specific: "Can only view/modify transfers for assigned customers"
-
-### Troubleshooting Questions
-
-**Q: The physical stock count doesn't match our Transfer Queue. What went wrong?**  
-A: **Diagnostic Steps**:
-1. Check Transfer Queue for pending/incomplete transfers (may not be marked received yet)
-2. Verify with customers if stock actually arrived
-3. Look for quantity discrepancies in Transfer Receive
-4. Check for duplicate transfers created by mistake
-5. Confirm no internal transfers affecting the location
-
-**Solution**: Contact customer to confirm, update Transfer Receive with actual quantities, add notes to discrepancy.
-
-**Q: A customer lost our consignment paperwork. How do we prove what we sent?**  
-A: Your printed delivery orders and the **Transfer Queue history** serve as proof. The applet maintains complete transaction history:
-- Transfer Out record (what you sent, quantity, date, location)
-- Printed delivery order (signed proof)  
-- Transfer Queue (system audit trail with approver info)
-
-Share the printable document or queue screenshot with the customer.
-
-**Q: Can we recall stock from a customer before they consume/sell it?**  
-A: Yes, but you must process it properly:
-1. Contact customer and agree to transfer back
-2. Go to **Transfer Receive** and create a return
-3. Customer ships stock back
-4. You receive and confirm in **Transfer Receive**
-5. Stock returns to your inventory
-
-**Q: What if we need to add more stock to an existing consignment location?**  
-A: Create a new Transfer Out to that same customer location. The system supports multiple transfers to the same location simultaneously. Each transfer has its own tracking and can be managed independently.
-
-**Q: How do we handle expired or defective items at customer locations?**  
-A: **Option 1 - Return & Write-off**:
-```
-Discover expired stock at customer
-→ Request return via Transfer Receive
-→ Receive with note: "Expired, write-off"
-→ Inventory shows as unsaleable
-→ Finance records write-off
-```
-
-**Option 2 - Write-off in Place**:
-```
-If customer won't return (too costly):
-→ Create Transfer Receive for expired items only
-→ Note quantity as degraded/expired
-→ Deduct from consignment balance
-→ Financial record of loss
-```
-
----
-
-## Configuration & Settings Overview
-
-The **Configuration & Settings** section provides comprehensive controls for customizing the applet to match your specific business needs:
-
----
-
-## Technical Architecture (For Developers/Admins)
-
-### Understanding the Transfer Processing Layer
-
-The Customer Consignment Applet uses a three-tier transfer processing architecture:
-
-#### **1. Transfer Templates**
-**Purpose**: Define reusable transfer configurations  
-**What it Contains**:
-- Source locations (from which warehouse)
-- Destination locations (to which customer)
-- Default item lists
-- Standard quantities
-- Processing rules
-
-**Backend Entity**: `StockTransferTemplateHdr`  
-**Use Case**: "Every week, we send Widget A to Retail Store XYZ"
-
-#### **2. Transfer Events**
-**Purpose**: Schedule when transfers should occur  
-**What it Contains**:
-- Recurring schedule (Daily, Weekly, Monthly, Yearly)
-- Duration and timing
-- Start and end dates
-- Event filters and grouping
-
-**Backend Entity**: `StockTransferEventHdr`  
-**Use Case**: "Run this transfer every Monday at 8 AM"
-
-#### **3. Transfer Runs**
-**Purpose**: Actual execution instances of transfers  
-**What it Contains**:
-- Real transfer records (Transfer Out & Transfer Receive)
-- Status tracking (In Transit, Completed, On Hold)
-- Timestamp and duration
-- Item-level details and modifications
-- Approver information
-
-**Backend Entity**: `StockTransferRunHdrClient` / `StockTransferRunHdrContainer`  
-**Use Case**: "The transfer executed on Monday created these 50 units movement records"
-
-### How They Work Together
-
-```
-Transfer Template (Configuration)
-    ↓
-Transfer Event (Schedule)
-    ↓
-Transfer Run (Execution)
-    ↓
-Stock Transfer Records (Transfer Out / Transfer Receive)
-    ↓
-Inventory Updates
-```
-
-**Example Flow**:
-```
-✅ Admin creates template: "Weekly Supply to Customer ABC"
-✅ Admin creates event: "Every Monday, 8 AM"
-✅ System auto-triggers: Run instance created
-✅ Transfer executed: Items moved from warehouse to customer
-✅ Recorded: Transfer Run shows status and history
-✅ Queue displays: Real-time visibility in Monitor Queue
-```
-
-### API Endpoints (For Integration)
-
-The applet exposes the following backend endpoints:
-
-| Endpoint | Purpose | Method |
-|----------|---------|--------|
-| `/stock-transfer-template-hdrs` | Manage transfer templates | GET, POST, PUT, DELETE |
-| `/stock-transfer-event-hdrs` | Manage transfer events | GET, POST, PUT, DELETE |
-| `/stock-transfer-run-hdrs` | View/manage transfer runs | GET, POST, PUT, DELETE |
-| `/stock-transfer-event-filter-items` | Filter configuration items | GET, POST, PUT, DELETE |
-
----
-
-## Summary: Data Flow Verification
-
-✅ **Verified Against Codebase**:
-- Transfer Out feature implements `StockTransferEventHdr` and `StockTransferRunHdr`
-- Transfer Receive feature uses same run models with reverse flow
-- Transfer Queue displays runs with real-time status
-- Templates allow configuration-driven transfers
-- Events enable scheduling and automation
-- Angular UI components handle the user interface
-- Backend Java SDK provides data access and validation
-
-**Documentation Status**: ✅ **Comprehensive and Accurate**  
-**Coverage**: User guides, configuration, FAQ, scenario examples, and technical architecture all verified against actual codebase.
-
----
+- [Consignee Stock Transfer](/applets/inventory-workflow/consignee-stock-transfer-applet/) — creates the CCSG locations this applet transfers to, and offers a single-document issue/receive note without a queue.
+- [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/) — the template this applet was derived from; use it for movements between your own locations.
+- [Stock Requisition](/applets/inventory-workflow/internal-stock-requisition-applet/) and [Purchase GRN](/applets/purchase-workflow/internal-purchase-grn-applet/) — documents a Transfer Out can knock off.
+- [Consignment Billing Applet (Internal)](/applets/sales-workflow/internal-consignment-billing-applet/) — bills the customer for consignment stock they have sold; this applet only moves quantity.
+- [Consignor Purchase Billing Applet (Internal)](/applets/purchase-workflow/internal-consignor-purchase-billing-applet/) and [Consignment GRN Applet (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) — the supplier-side (you are the consignee) mirror of this process.
+- [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) and [Stock Report](/applets/inventory-workflow/stock-report-applet/) — where the ledger lines at your location and at the CCSG location show up.
+- [Organisation](/applets/master-data/organisation-applet/) — companies, branches and locations.
+- [Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) — items, serial numbers, batches and bins.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| FINAL on a Transfer Out fails with *"Not Enough Stock for item …"* | The ledger at Location From holds less than the line quantity; the backend validates by default | Receive the stock into that location first or reduce the quantity. Turn on `SHOW_ITEM_STOCK_BALANCE` so the cap is visible while keying |
+| *Location To* dropdown is empty or the customer site is missing | Location From is not CCSG, so the list is filtered to class CCSG — the site's location is not CCSG, or it is outside the user's location target | Set the location class to CCSG in Consignee Listing; add the location to the user's `…_LOCATION_TO_READ` target |
+| Date field is greyed out | `SHOW_TRANSACTION_DATE` is not seeded for this applet | Raise a request to seed the client-side permission; until then the date is today |
+| **+** button missing although the consignment permissions were granted | The applet gates the button on `TNT_API_DOC_INTERNAL_OUTBOUND_STOCK_TRANSFER_CREATE_TGT_GUID` (and the inbound equivalent), not on the consignment codes | Assign through the `CUSTOMER_CONSIGNMENT_LOCATION` template, which carries both |
+| *"Default printable format not configured"* on SINGLE/MULTIPLE PRINT | No format ticked as Default Selection | Outbound Printable Format › tick Default Selection |
+| Default Branch / Location under Settings › Default Selection revert after SAVE | The controls are not bound to the saved form | Use Personalization › Default Selection per user |
+| Stock ended up at another company's location | No backend check that both locations belong to one company (issue #4, open) | Check the company of Location To before FINAL; keep one CCSG location per customer per company |
+| Queue bulk FINAL: *"Unable to post the document to FINAL: … Serial numbers are invalid"* | A copied line still carries serial numbers marked INVALID | Open the Receive, fix the serial numbers on the line, then FINAL |
+| FINAL rejected with `FISCAL_PERIOD_LOCKED` | Transaction date is in a locked period; consignment types are not exempt | Unlock the period or use an open date (needs `SHOW_TRANSACTION_DATE`) |
+| Listing filter *Posting Status* ignored, page number advancing on empty pages, *Location From* filter pre-filled on open | Listing bugs reported 2026-04 (issues #5, #6, #10 — fixed); rows-per-page limit (#7) still open | Update the applet; for #7 use the search filters |
+
+## Related documentation
+
+- [Stock Management guide](/guides/inventory-guides/stock-management/)
+- [Inventory module](/modules-v2/inventory/)
+- [POS module › related applets](/modules-v2/pos/related-applets/)
