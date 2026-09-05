@@ -16,7 +16,7 @@ Purchasing operates between your operational procurement requirements and your c
 |-------------------|------------------|-----------------------------|
 | **Procurement Engine** | P2P Contract & Sourcing Engine | Central management of vendor pricebooks, purchase requisitions, approval matrices, and order commitments. |
 | **Warehouse Receiving** | [Goods Received Note GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/) | Physical goods receipt, quality inspection, and automated inventory stock-in. |
-| **Accounts Payable (AP)** | [Purchase Invoice Applet](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/) | Supplier billing verification, 3-way invoice matching (PO vs GRN vs Invoice), and GL liability posting. |
+| **Accounts Payable (AP)** | [Purchase Invoice Applet](/applets/finance/internal-purchase-invoice-applet/) | Supplier billing verification, 3-way invoice matching (PO vs GRN vs Invoice), and GL liability posting. |
 | **Vendor Management** | Supplier Maintenance Applet (Core) | Central master records for vendor profiles, payment terms, currency settings, and credit ratings. |
 
 ---
@@ -28,7 +28,7 @@ Purchasing operates between your operational procurement requirements and your c
 | **Department Manager** | Submit internal purchase requisitions for goods or services within operational budgets | [Purchase Requisition Applet](/applets/purchase-workflow/internal-purchase-requisition-applet/) |
 | **Procurement Officer** | Negotiate vendor pricing, issue binding purchase orders, manage supplier contracts | [Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet/) |
 | **Warehouse Receiver** | Inspect incoming supplier shipments, count physical stock, issue Goods Received Notes (GRN) | [Goods Received Note GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/) |
-| **Accounts Payable Clerk** | Verify vendor invoices against POs and GRNs (3-Way Matching), approve supplier payments | [Purchase Invoice Applet](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/) |
+| **Accounts Payable Clerk** | Verify vendor invoices against POs and GRNs (3-Way Matching), approve supplier payments | [Purchase Invoice Applet](/applets/finance/internal-purchase-invoice-applet/) |
 | **Finance Controller** | Review supplier credit balances, monitor departmental budget compliance, approve disbursements | [Purchase Report Applet](/applets/purchase-workflow/purchase-report-applet/) |
 
 ---

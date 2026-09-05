@@ -18,7 +18,8 @@ for d in st['done']:
     t='kb/topics/'+os.path.basename(p)[:-3]+'.md'
     print(t) if os.path.exists(t) else None")
 paths+=("${TOPICS[@]}")
-mapfile -t FILES < <(git status --porcelain -- "${paths[@]}" | awk '{print $2}' | sort -u)
+# topic notes are shared knowledge: include every changed/new topic (lanes name them freely)
+mapfile -t FILES < <(git status --porcelain -- "${paths[@]}" kb/topics | awk '{print $2}' | sort -u)
 [ ${#FILES[@]} -eq 0 ] && { echo "lane $N: nothing to merge"; exit 0; }
 echo "lane $N: ${#FILES[@]} files"; printf '  %s\n' "${FILES[@]}"
 

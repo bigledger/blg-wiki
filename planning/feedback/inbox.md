@@ -232,8 +232,9 @@ with the analysis, the changes made, and the commit hash.
       → note: WAITING ON VINCENT to confirm before lane 3 and the guide are corrected (loop.md).
 
 ### /modules-v2/purchasing/
-- [ ] F-0039 (2026-09-05) Module index links "Purchase Invoice Applet" (lines 19, 31) to the No-Stock-In variant page instead of /applets/finance/internal-purchase-invoice-applet/.
+- [x] F-0039 (2026-09-05) Module index links "Purchase Invoice Applet" (lines 19, 31) to the No-Stock-In variant page instead of /applets/finance/internal-purchase-invoice-applet/.
       → source: content/en/modules-v2/purchasing/_index.md
+      → fixed 2026-09-05 (loop unit 5): both cards now link /applets/finance/internal-purchase-invoice-applet/
 
 ### site-wide (applets)
 - [ ] F-0040 (2026-09-05) Tax Configuration is documented twice with the same title: applets/finance/tax-config-applet.md and applets/master-data/tax-configuration-applet.md. One must become canonical (alias the other). Decision for Vincent.
