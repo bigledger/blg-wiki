@@ -874,3 +874,60 @@ One document applet this run; every section was rebuilt and the posting proof ne
 ### Stopping point
 
 One large document applet this run — the approval subsystem (submission service, three processors, e-mail service, conversion monitor, converter) had to be read end to end to answer lane 4's question correctly. Next in queue: `content/en/applets/ecommerce/pdg-applet.md`.
+
+## From Lane 3 run 18 (2026-09-05) — content/en/applets/ecommerce/pdg-applet.md
+
+### What the code says (applet @e37bca3, shared-utilities @a8c38a2, backend @353fa9a)
+
+- **Not a document.** No `*DataConsistencyObject` signums, no `JournalPostingTypeHandler`, no stock processor, no open queue. PDG/OPDG live in `bl_inv_pdg_*`, `bl_inv_opdg_*`, `bl_opdg_element_by_brand`. The DCOs validate FKs, subject GUIDs and non-empty status only.
+- **Create/update is asynchronous.** `pdg-unique-combination` POST/PUT saves the header `PROCESSING` and enqueues `PdgCreationAndUpdateProcessor` (queue `PDG_CREATE_AND_UPDATE_PROCESSOR`): filter links → category combinations (`SELECT DISTINCT` over items joined to labels — only pairs carried by ≥1 ACTIVE item) → location combinations (distinct size/type of ACTIVE locations matching both filters; **throws "…pair doesn't exist" when none**) → guide elements (+ OPDG elements for existing OPDGs) → `ACTIVE`; any failure → **`DELETED`**, which the listing (statuses `ACTIVE,PROCESSING`) hides. Same pattern for OPDG (`OpdgCreationProcessor`); OPDG elements are copied **without quantities**.
+- **Settings.** Application Settings = shared `FieldConfigurationComponent`, no `appletCode` gate → the whole generic catalogue renders. Four-proof for this applet: `HIDE_OPDG_NAME`, `HIDE_OPDG_CODE` (Misc › "PDG Fields", default false; clear the required validator on Opdg Add, hide the field on the PDG-side Edit Opdg details) and `SORT_ORDER`. `ENABLE_FILTER_BY_TODAYS_TXN` read without control. The applet-local field-configuration component is unrouted and unbound; Personalization › Default Selection is a stub. Default Selection saves DEFAULT_BRANCH/LOCATION/COMPANY nothing reads.
+- **Permissions.** 0 seeded client-side perm definitions. `app.component.ts` loads only `TNT_API_DOC_PDG_READ_LOCATION_TGT_GUID` (+ TENANT_ADMIN/OWNER). The location target list filters the OPDG outlet listing and the Opdg Add drop-down client-side; **an empty list disables the filter (all outlets visible)**.
+- **Delete PDG is a permanent row delete** (`SqlDeleteObject(..., deletePermanent=true)`); `bl_inv_pdg_guide_element` and `bl_inv_opdg_element` cascade, `bl_inv_opdg_hdr.pdg_hdr_guid` does not → a PDG with OPDG headers cannot be deleted (DB FK error → generic toast).
+- **Effective/End date** are stored/searchable only — no backend reader. **Brand corner rules are client-side and inconsistent:** the PDG › Outlet Guide chart requires brand total == OPDG qty at Save; the OPDG-menu chart requires brand total <= OPDG qty and 0 <= OPDG qty <= PDG qty. `brand_corner_boolean` is varchar 'Y'/'N'.
+- **Opdg Add writes to `bl_inv_mst_location`** (`outlet_size_guid`/`outlet_type_guid`) when the outlet has none; when different it confirms and sets the outlet's existing OPDG headers/elements `INACTIVE` via PUTs.
+- Excel import: fixed cell positions (B2/B3 name/code, B6/B7 dates `dd-MMM-yyyy`, B15/C15 category groups, E14 size, E15 type, rows ≥16); one workbook = one PDG for one size–type pair.
+- Backend has `bl_inv_auto_rep_event_*` / `bl_inv_auto_rep_run_*` tables referencing OPDG headers and outlet filters — undocumented, no applet in the wiki.
+
+### Method findings (add to METHOD.md)
+
+1. **Template-clone applets: route first, then grep.** 90% of this repo's components (sales invoice tabs, ARAP, deposits, pick-pack, contra) are unrouted leftovers that still read settings and call `checkPermission`. Only settings reads reachable from `app.routing.ts` count as "consumed"; otherwise the four-proof count is inflated by dead code.
+2. **Asynchronous masters have a hidden failure state.** When a create returns 200 but the header goes `PROCESSING → DELETED` in a queue job, the listing's status filter hides the failure. Document the job's throw message and the listing filter together.
+3. **Check `deletePermanent` and the FK cascade map** for every non-document delete: a hard delete + a non-cascading FK is a "cannot delete" troubleshooting row that no code comment mentions.
+4. **A renamed repo breaks slug-based lookup** (`gh repo view` on the old slug still resolves — use it). The registry code, the old slug and the new customer-named slug all differ here.
+
+### Screenshots (kept 7 of 33, none moved)
+
+- **Kept:** `applet-settings-outlet-type.png` (TESTING tenant, generic types), `category-group-mapping.png` (TESTING, EMP_CATEGORY_xx), `pdg-edit-quantity.png`, `opdg-set-outlet-empty.png`, `opdg-pdg-chart.png` (low resolution — recapture wanted), `file-import-listing.png`, `pdg-upload-template.png` (synthetic workbook).
+- **Excluded — loop to quarantine (all under `static/screenshots/pdg-applet/`):** `infographics.png` and `pdg-influence-image.png` (generated infographics; the second has wrong claims — "deposit queue", "finance team"); `location-listing.png`, `location-edit.png`, `doc-item-maintenance-items.png`, `file-import-errors.png`, `catalogue-install-applet.png` (real tenant/company/location/product names); `opdg-set-outlet-filled.png`, `opdg-chart.png` (real mall name; the first also a person's full name); `pdg-listing-create.png`, `pdg-edit-details.png`, `pdg-edit-guide.png`, `opdg-report-listing.png`, `opdg-add.png`, `opdg-confirmation.png`, `opdg-outlet-listing.png`, `opdg-pdg-listing.png`, `pdg-listing-matching.png` (a developer's first name as test data; several also test locations named after other customers); `opdg-by-brands.png`, `item-edit-category.png` (real brand/product names); `doc-item-maintenance-category-groups.png`, `applet-details-installed-users.png`, `applet-settings-role-permission.png`, `catalogue-add-user.png` (staff e-mail addresses, a real distributor name as a role); `applet-settings-outlet-size.png` (mislabeled — shows the Outlet *Type* list of what looks like the production tenant).
+- **"Login e-mail only" captures (F-0167):** none — every kept or excluded PDG-applet capture shows an avatar only in the top bar.
+- Recapture wanted on a GadgetSphere-seeded tenant: PDG listing, Edit PDG › Details and Guide, Opdg Outlet Listing, Set OPDG Elements › OPDG Chart, Opdg By Brands, OPDG Report, File Import › Checking › Error.
+
+### Cross-lane link requests
+
+- **master-data/organisation-applet.md** (lane 4): add `pdg-applet` to `related_applets`; under Outlet Type / Outlet Size say that a location needs **both** to appear in any PDG / OPDG Report, and that the PDG applet's *Opdg Add* can write them onto a location (and inactivate that location's OPDGs when it changes them).
+- **master-data/doc-item-maintenance-applet.md** (lane 4): add `pdg-applet`; under Settings › Item Category note that the Category Group 1…10 mapping is what the PDG *Category Group Filter* offers, and that labels double as the brand master for OPDG brand rows (`bl_opdg_element_by_brand.label_hdr_guid`).
+- **ecommerce/cp-commerce-admin-applet.md** (my lane, done run 1): on next touch, drop PDG from the "Catalogue" row / related list or reword — PDG is in-store display planning, not storefront catalogue data.
+- **inventory-workflow/stock-replenishment-applet.md** (lane 4): the backend's `bl_inv_auto_rep_event_*` / `_run_*` tables reference OPDG headers and outlet-type/size filters; if that page covers auto-replenishment, link here.
+- **API reference (developer-docs lane):** `inv/pdg-unique-combination/backoffice-ep` (POST/PUT, `get-unique-category-group`, `get-target-category-values`), `inv/pdg-hdrs`, `inv/pdg-guide-elements`, `inv/opdg-hdrs`, `inv/opdg-elements` (+ `/opdg-report`), `inv/opdg-element-by-brand-hdrs` (+ `/opdgElement/{guid}` delete), `inv/outlet-types`, `inv/outlet-sizes`, `inv/pdg-element/import-file-hdrs` are undocumented; `brand_corner_boolean` is a string.
+- **planning/lanes/METHOD.md** (coordinator): fold in the four method findings above.
+
+### Registry / naming mismatches
+
+- `pdgApplet` / "Pdg Applet" ACTIVE, `documentation_url` empty — loop to set it to `/applets/ecommerce/pdg-applet/`. Page title set to the registry name.
+- The applet repo was renamed from the org-style `blg-applet-wavelet-pdg-applet` (still resolvable) to a **customer-named slug**; cited as `customer-repo-de2e40`. The README-only tracker repo is `customer-repo-7b4a2c`. Both added to `kb/private/repo-pseudonyms.tsv`.
+- The existing page named the real customer in its first paragraph and used the customer's outlet-type scheme; removed.
+- `kb/topics/pdg-applet.md` created. The page sits under `content/en/applets/ecommerce/` but the applet is inventory planning (`modules: [inventory]`); no move (out of scope).
+
+### Questions for Vincent
+
+- **Should `pdgApplet` be on the exclusion list?** It is single-customer by construction (customer-named repo, customer's outlet-type scheme, 31 support issues in a customer tracker). The registry row is ACTIVE and not excluded, so it was enhanced with the customer name stripped — say if it should be pulled instead.
+- Should the backend enforce (a) Effective/End dates, (b) 0 ≤ OPDG qty ≤ PDG qty, (c) brand total = OPDG qty? All are client-side today and the two chart components disagree (== vs ≤).
+- Should an empty `TNT_API_DOC_PDG_READ_LOCATION_TGT_GUID` target list mean "no outlets" instead of "all outlets"?
+- PDG create with filters that match no location returns 200 and then silently deletes the header — should the create endpoint validate the location match synchronously?
+- Delete PDG is a hard delete blocked by the OPDG-header FK — intended, or should it be a status change?
+- Quarantine the 26 excluded images; recapture list above.
+
+### Stopping point
+
+One applet this run — the template-clone repo (hundreds of unrouted components) had to be separated from the seven routed screens, and the asynchronous create path, the hard delete and 33 screenshots each needed verification. Next in queue: `content/en/applets/ecommerce/cp-commerce/push-notification-configuration.md` — verify against the registry first (likely a CP Commerce feature, not an applet; ADR-0002 skip candidate).

@@ -8,7 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/ecommerce/pdg-applet.md",
   "content/en/applets/ecommerce/cp-commerce/push-notification-configuration.md",
   "content/en/applets/ecommerce/seller-admin-applet.md",
   "content/en/applets/ecommerce/seller-applet.md",
@@ -127,6 +126,11 @@
    "page": "content/en/applets/purchase-workflow/internal-purchase-requisition-applet.md",
    "date": "2026-09-05",
    "note": "run 17; applet @6c281e1 (shared-utilities @8ae0e9b) + backend @353fa9a; 0/0 aligned with DCO; generic-doc approval enforced on submission by backend (designation/approver/level checks) and auto-FINALs at first approve action; plain FINAL not gated; Line Items Queue APPROVE flag unread; KO For Jobsheet only (panel gate queries Jobsheet->Sales Invoice row); 50 seeded perms; 5 of 10 images excluded"
+  },
+  {
+   "page": "content/en/applets/ecommerce/pdg-applet.md",
+   "date": "2026-09-05",
+   "note": "run 18; applet @e37bca3 (customer-named repo, pseudonym customer-repo-de2e40; shared-utilities @a8c38a2) + backend @353fa9a; master-data/planning applet, no signums/journal/stock; async PDG/OPDG create (PROCESSING->ACTIVE, failure->DELETED hidden by listing); 3 four-proof keys, 0 seeded perms, single location-target permission (empty list = all outlets); hard delete blocked by opdg_hdr FK; 7 of 33 images kept; customer name removed from page"
   }
  ],
  "skipped": [
@@ -149,8 +153,8 @@
  ],
  "updated": "2026-09-05",
  "notes": [
-  "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) — INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/…] and [src:gh:bigledger/blg-intranet#n].",
-  "2026-09-05: Vincent asked twice that blg-intranet e-invoice knowledge be used — e-invoice pages moved to the front of the queue."
+  "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) \u2014 INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/\u2026] and [src:gh:bigledger/blg-intranet#n].",
+  "2026-09-05: Vincent asked twice that blg-intranet e-invoice knowledge be used \u2014 e-invoice pages moved to the front of the queue."
  ],
  "rework": []
 }
