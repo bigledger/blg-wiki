@@ -116,3 +116,57 @@ Still saying the old thing (outside my lane): `content/en/modules-v2/purchasing/
 - The old page invented a document-detail dialog (Details / Account / Line Items / Settlement / Doc Link tabs) and header-level columns (Supplier Code, Currency, Status); the applet's grid is line-level with GRN No / PO No columns and has no dialog. `static/images/purchase-report-applet/purchase-document-details.png` and `purchase-report-infographic.jpg` are now unreferenced.
 - Only FINAL purchase invoices, no-stock-in invoices and purchase returns feed the report; POs and GRNs never appear — the old page's "Document Type filter switches between PO, GRN and invoice" was wrong.
 - This applet ships its own field-configuration component (tabs By Document / By Item Code / Item Category Group); `kb/tools/applet-scan.sh`'s shared-screen intersection (11 keys) is therefore misleading for report applets — read the applet's own settings component instead.
+
+## Run 4 (2026-09-05) — Purchase Debit Note (Internal) rework
+
+Fixed exactly what the codex review found, re-derived Configuration and Lifecycle under the updated standard:
+
+- **Settings over-declaration** — four-proof audit (declared / rendered for this applet code / saved / read). 95 keys documented; 6 runtime-only keys in their own list; 11 keys read but with no control anywhere; ~35 model-only keys (custom status, `ENABLE_`/`INCLUDE_` dimensions, SST/WHT, five `EXPAND_*`, three `HIDE_*_TAB`…) removed and listed as "declared but never read". Method note for METHOD.md: components consume keys through string lists (`hide: 'KEY'`, `expandSetting: 'KEY'`), so `grep appletSettings.KEY` under-counts; and the shared template's `appletCode==='x' || 'y'` gates are always-true JavaScript, so those sections render for every applet.
+- **GL precedence** corrected to line GL → header GL → item-company link → company default (`JournalPostingService.java` L139–L190); the silent-omit path (L236, L271) and the resulting `TOTAL_DEBITS_AND_TOTAL_CREDITS_NOT_BALANCES` / `NO_JOURNAL_CREATED` throws (L574–L582) are now documented and in Troubleshooting.
+- **Posting proof block** added in the standard's fixed form (DCO L15–L17; JPS L123–L131, L257–L263, L322–L353; JPTH L53–L60; inventory skip L39–L40; VOID L662–L710 + reverse journal in `JournalPostingJobProcessorService` L92–L108).
+- Other review items: `aliases: []` added (the page never had any); description names the operator; Default Selection table has Default / Effect, "who" as one sentence above; server-permission targets now cited from the extract (`planning/lanes/lane-3/perm-dfn/…tsv`: Company, Branch, Location, Entity); Workflow Design suggestion removed ("No exposed control found … commit f3a1875"); historical-aging processor cited; Sales Agent label warning added (writes `default_sales_entity_hdr_guid`, never read back by this applet).
+- **New correction not in the review:** the run-1 page said a FINAL debit note with outgoing links "is not convertible to VOID". `checkIsGenDocConvertibletoVoid` is used only by the e-Invoice cancellation queue; the listing VOID does not check links. Corrected.
+- **Sibling fix in my lane:** `internal-purchase-credit-note-applet.md` lines 196 and 360 had the same inverted precedence; corrected to line → header → item-company → company default.
+
+### Cross-lane link requests
+
+- **finance/internal-purchase-invoice-applet.md** (lane 2): its posting table says "Line GL code → item's `PURCHASE` link → company default" — the header GL code step is missing between line and item (`JournalPostingService.java` L151–L165, `container.getBl_fi_generic_doc_hdr().getGuid_glcode()` is tried before the item-company link).
+- **master-data/chart-of-account-applet.md**: no change — it already describes the silent-omit + balance-check path correctly.
+- Guides that say "missing default GL → posts without a journal" (if any remain under guides/purchasing-guides) should say: the line is dropped and FINAL fails the journal balance check.
+
+### Questions for Vincent
+
+- Unchanged from run 1: is the SDN (+1, AR up) → PDN (+1, AP down) intercompany pairing intended? The page states the code as-is.
+- The five `SHOW_GENDOC_*` / `SHOW_CLONE_BUTTON` / `SHOW_FILE_IMPORT_MENU` permissions are still checked in code but unseeded for this applet (F-0044 pattern) — product-side seeding decision.
+
+## Run 4 (2026-09-05) — Blanket Purchase Order Applet
+
+Rewritten from user-guide prose to the reference standard. Registry `blanketPurchaseOrderApplet`, name "Blanket Purchase Order Applet" (title keeps the word Applet because the registry name does — unlike the other purchase documents; flagged below).
+
+### Method finding — the inline gear is a second settings rendering path (add to METHOD.md)
+
+The shared `app-applet-settings-toggle` component (`blg-shared-utilities/modules/settings/applet-settings-toggle/`, blg-intranet#5374/#5383 "inline gear config") is embedded in many screens of the newer applet builds (15 screens in Blanket PO, 23 in Purchase Debit Note), each with an explicit `appletSettingsKeys` list. Keys in those lists are **rendered** even when the shared Application Settings screen has no control for them — for Blanket PO the shared screen has *no* section gated for its code, so 13 `HIDE_*` keys are gear-only. The gear is opt-in via `ENABLE_INLINE_APPLET_CONFIG` (first, ungated toggle on the shared screen, or personal Default Selection); Owners/Admins save to master or personal, others personal only; a personal `false` deletes the key. The four-proof "rendered" check must therefore union: shared screen (gated) + applet-local settings components + gear `appletSettingsKeys`. Consequence for run 1–3 pages: any "read but no control" list may be wrong wherever the applet embeds the gear — I corrected the PDN page this run (11 keys moved to "gear-only").
+
+### Removed inventions (old page)
+
+- "Maximum Amount" spend cap and per-line "Maximum Quantity" — no such field anywhere (grep 0 hits); the only limit is the line quantity consumed through the open queue.
+- Settlement tab and Department Hdr on the create screen — both commented out in the template; the Batch No Booking page is registered but unreachable.
+- "Release management / spend monitoring in real time / audit trail" feature list, persona quick-starts, Pro Tips, and the AI infographic (`static/images/blanket-purchase-order-applet/blanket-purchase-order-overview.png`, now unreferenced — the loop may delete it). Kept: the four real screenshots and the PO knock-off click path (accurate).
+
+### Cross-lane link requests
+
+- **purchase-workflow/internal-purchase-order-applet.md** (my lane, done in run 1): add `blanket-purchase-order-applet` to `related_applets` and state that the *KO For → Blanket Purchase Order* tab is shown only when the company gendoc flow config pair `INTERNAL_BLANKET_PURCHASE_ORDER → INTERNAL_PURCHASE_ORDER` (`flow_type = LINE`) is enabled (`line-item-create.component.ts` L120–L131) — I will fold this in when the PO page next gets touched; noting it here so the loop can gate it.
+- **purchase-workflow/blanket-purchase-order-applet-supplier-access-applet.md** (my lane, later in queue): link back.
+- **master-data/organisation-applet.md** (other lane): if it is the home of the company gendoc flow configuration, add a sentence that the BPO → PO, GRN → PI etc. pairs are set there; add `blanket-purchase-order-applet` to `related_applets`.
+- **master-data/supplier-applet-1.md**, **master-data/doc-item-maintenance-applet.md**, **master-data/pricebook-applet.md**, **master-data/tax-configuration-applet.md**: add `blanket-purchase-order-applet`.
+- **modules-v2/purchasing/related-applets/_index.md**, **guides/roles/procurement-manager.md**: check they do not promise spend caps / maximum amounts for blanket POs.
+
+### Registry / naming mismatches
+
+- `blanketPurchaseOrderApplet` name is "Blanket Purchase Order Applet" (with suffix) while its siblings dropped it; `blanketPurchaseOrderAppletSupplierAccess` has no `documentation_url`. Product-side tidy-up, not a page problem.
+- `BLANKET_PURCHASE_ORDER_DISPLAY_PRICING` is seeded as a client-side permission but never checked in code; `HIDE_PRICE` is.
+
+### Questions for Vincent
+
+- Should the validity window (`VALIDITY_DATE_END`) block knock-off from an expired agreement? Nothing enforces it today; the page says so.
+- Which applet page owns the company gendoc flow configuration UI? Three of my pages (GRN, PO, BPO) now depend on it and link only to a table name.

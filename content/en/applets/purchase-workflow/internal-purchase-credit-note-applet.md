@@ -193,7 +193,7 @@ After **SUBMIT**, the import listing shows File Name, File Size, Format, Status,
 | Company, branch, location | [Organisation](/applets/master-data/organisation-applet/) | Three required header fields; the branch's `MAIN_LOCATION` fills the default location. |
 | Supplier entity | [Supplier](/applets/master-data/supplier-applet-1/) | Account tab; the entity's AR/AP object type selects `CREDITOR` or `CREDITOR_NON_TRADE`. Selecting a supplier copies its currency to the header and (since mid-2026) fetches the rate. |
 | Company default GL codes | [Chart of Account](/applets/master-data/chart-of-account-applet/) → company GL-code links | `CREDITOR` / `CREDITOR_NON_TRADE` mandatory; `PURCHASE` for lines without their own GL code; `INPUT_TAX` for tax lines. Missing creditor mapping → `MISSING_DEFAULT_GL_CODE`. |
-| Items with a purchase GL code | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Line GL code: header GL code → item-company `PURCHASE` link → company default. |
+| Items with a purchase GL code | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Line GL code → header GL code → item-company `PURCHASE` link → company default `PURCHASE` (`JournalPostingService.java` L139–L190). |
 | Tax codes | [Tax Configuration](/applets/master-data/tax-configuration-applet/) | GST/SST and WHT on lines. |
 | Cashbook / settlement methods | [Cashbook](/applets/master-data/cashbook-applet/) | Only for Payment-tab settlements; a settlement item without a cashbook GL fails FINAL with `MISSING_CASHBOOK` / `MISSING_GL_CODE`. |
 | Fiscal period open | [General Ledger](/applets/finance/general-ledger-applet/) | FINAL refused in a `LOCK_ALL` / `LOCK_TXN` period. |
@@ -357,7 +357,7 @@ Journal per line (amount signum **−1**, `PURCHASE` handler):
 
 | Account | Dr | Cr | Source of GL code |
 |---|---|---|---|
-| Purchase / expense (`PURCHASE`) | Line net amount | | Header GL code → item-company `PURCHASE` link → company default `PURCHASE`. |
+| Purchase / expense (`PURCHASE`) | Line net amount | | Line GL code → header GL code → item-company `PURCHASE` link → company default `PURCHASE`. |
 | Input tax (`INPUT_TAX`) | Line tax amount | | Company default `INPUT_TAX`. |
 | Creditor (`CREDITOR` or `CREDITOR_NON_TRADE`) | | Net of all lines | Company default for the supplier's AR/AP type — mandatory. |
 | Settlement method (cashbook GL) | Payment amount | | Cashbook of the settlement item (Payment tab only). |
