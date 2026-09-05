@@ -629,3 +629,13 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0163 (2026-09-05) On 2026-04-23 a one-file backend commit flipped InternalPurchaseRefundNoteDataConsistencyObject to amount +1 / quantity −1 (the Purchase Return shape); the applet constants still send amount −1 / quantity 0. The TEMP→ACTIVE PUT validates the header signum, so CREATE/SAVE should fail with GENERIC_DOC_INVALID_SIGNUM on any backend carrying that commit (TEMP create skips validation, so a smoke test looks fine). Vincent: confirm on production (an aggregate count of headers created after 2026-04-23 would show it); fix = align the applet constants with the DCO or revert the DCO. Also decide the intended accounting shape (Purchase-Return-like vs supplier refund Dr Cashbook / Cr Creditor). 25 client-side codes checked, none seeded (DISPLAY_PRICING hides prices for every role; SHOW_TRANSACTION_DATE locks the date picker).
 - [x] F-0164 (2026-09-05) Five images (infographic, staff name/e-mail, bookmarks bar, developer test data) quarantined.
 
+## From Lane 4 run 17 — Organization (2026-09-05)
+
+### resolves earlier questions
+- [x] F-0165 (2026-09-05) F-0080/F-0137 answered: Knock Off Configuration (company gendoc flow config) is owned by the Organization page now; all "Organisation" cross-link requests from lanes 1–4 satisfied there (53 related_applets). Default GL codes are NOT set in Organization — they stay in Chart of Account › Companies › Default GL Codes.
+
+### product (organization)
+- [ ] F-0166 (2026-09-05) TimeZoneHandler L28 has an inverted isBlank() guard so the branch timezone is never used (company default_timezone always wins) — backend bug? einvoice_settings_json keys issuer_type / forex_gendoc_posting_logic / running_no_config / line_item_desc_config have no UI ("set via API or support"). Branch tax_applicable and the PICK_PACK_QUEUE extension have no reader; member_point_award_doc_in / posting_final_json have no UI. Knock Off Configuration UI writes KO/LINE only; the CP "Copy From" tab is commented out; source=target and GRN-family conflicts are client-side only. Registry name has a trailing space.
+- [ ] F-0167 (2026-09-05) Screenshot policy: every Organization capture (incl. the 4 kept) shows the staff login e-mail in the top bar; earlier runs tolerated this. Vincent: acceptable, or recapture everything with a synthetic login? (Applies across all lanes.)
+- [x] F-0168 (2026-09-05) Eight Organization screenshots (a first name, brands as test data, a possible customer abbreviation, infographic) quarantined.
+
