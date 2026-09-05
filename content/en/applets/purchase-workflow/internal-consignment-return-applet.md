@@ -1,6 +1,82 @@
 ---
-title: "Consignment Return (Internal) Applet"
-description: "Comprehensive consignment return management system for processing supplier consignment returns, inventory adjustments, settlements, and financial reconciliation."
+title: "Consignment Return Applet (Internal)"
+description: "Reference for the Consignment Return (Internal) applet: the document that sends consigned goods back to the consignor and reverses the consignment liability, its screens, every configuration switch that actually works, fields, the posting it makes (and the stock movement it does not make), and known failure modes."
+applet_code: "internalConsignmentReturnApplet"
+applet_repo: "blg-applet-wavelet-internal-consignment-return-applet"
+modules: [purchasing, inventory, financial-accounting]
+related_applets:
+  - internal-consignment-grn-applet
+  - internal-consignment-gin-applet
+  - internal-consignment-purchase-order-applet
+  - internal-consignor-purchase-billing-applet
+  - internal-consignment-billing-applet
+  - internal-purchase-return-applet
+  - internal-purchase-invoice-applet
+  - internal-purchase-grn-applet
+  - internal-purchase-order-applet
+  - internal-purchase-requisition-applet
+  - supplier-delivery-order-applet
+  - internal-payment-voucher-applet
+  - supplier-applet-1
+  - organisation-applet
+  - chart-of-account-applet
+  - doc-item-maintenance-applet
+  - tax-configuration-applet
+guides:
+  - /guides/purchasing-guides/consignment-purchasing/
+sources:
+  screens:
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-listing/consignment-return-listing.component.html
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-create/consignment-return-create.component.html
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-edit/consignment-return-edit.component.html
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-create/import-knock-off/import-knock-off.component.html
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-create/search-invoices/search-invoices.component.html
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/line-items-container/line-items-listing/line-items-listing.component.ts
+  configuration:
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/models/constants/applet-constants.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-listing/consignment-return-listing.component.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-edit/consignment-return-edit.component.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-create/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/line-items-container/line-items-listing/line-items-listing.component.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - blg-shared-utilities/utilities/client-side-permission-checker.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/TntErpPermissions.java
+    - akaun_master.bl_applet_client_side_perm_dfn (applet code internalConsignmentReturnApplet, 0 rows on 2026-09-05)
+  fields:
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-create/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-create/account/account-entity-details/account-entity-details.component.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-create/consignment-return-create.component.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-create/settlement/add-settlement/add-settlement.component.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-create/search-invoices/search-by-invoice/invoice-line-listing/invoice-line-listing.component.ts
+  lifecycle:
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalPurchaseConsignmentReturnDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/GenericDocumentDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/stock/StockBalanceHelper.java
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-edit/consignment-return-edit.component.ts
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-listing/consignment-return-listing.component.ts
+  troubleshooting:
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - blg-applet-wavelet-internal-consignment-return-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-return-applet/src/app/components/consignment-return-container/consignment-return-create/search-invoices/search-by-invoice/invoice-line-listing/invoice-line-listing.component.ts
+    - gh:bigledger/blg-intranet#1616
+    - gh:bigledger/blg-intranet#3508
+    - gh:bigledger/blg-intranet#4101
+    - gh:bigledger/blg-intranet#4787
+    - gh:bigledger/blg-intranet#5053
+    - gh:bigledger/blg-applet-wavelet-internal-consignment-return-applet#2
+    - gh:bigledger/blg-wiki#67
 tags:
 - consignment-management
 - supplier-returns
@@ -10,444 +86,259 @@ tags:
 - settlement
 weight: 65
 date: 2026-04-27
+lastmod: 2026-09-05
 draft: false
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Internal Consignment Return Applet** is a specialized tool designed to manage the end-to-end process of returning consignment goods to suppliers. It handles the complete lifecycle from initiating a return — either manually or by referencing an existing Purchase GRN or Purchase Order — through to final financial settlement and inventory reconciliation.
+The **Consignment Return Applet (Internal)** records consigned goods going back to the consignor and reverses the value that the [Consignment GRN](/applets/inventory-workflow/internal-consignment-grn-applet/) put on the books. Warehouse or procurement staff create it — by hand, by pulling lines from a purchase invoice on the **Search** tab, or by knocking off a purchase document on **KO For** — and finance closes its balance by **contra** against the consignor's documents or by a **settlement**.
 
-{{< callout type="info" >}}
-**Core Concept**: A Consignment Return is not simply "sending goods back." It is a **financial and inventory transaction** that must update stock levels, supplier accounts receivable/payable (ARAP), and be fully traceable back to the originating consignment document.
-{{< /callout >}}
+Its engine document type is `INTERNAL_PURCHASE_CONSIGNMENT_RETURN` with amount signum **+1** and quantity signum **0**. FINAL posts **Dr Consignment Liability / Cr Consignment Stock** (the mirror of the GRN's entry) and leaves an ARAP balance on the consignor; it does **not** move stock. The backend overwrites the applet's own quantity signum (the applet constant says −1) with 0 on every line, and the type is not in the moving-average cost list, so warehouse quantities and MA cost are untouched by a consignment return.
 
----
+The window title is *Internal Consignment Return Applet*; the listing is *Internal Consignment Return Listing*; the document short code is `CSGRTN`.
 
-## Key Features Overview
+## Where it fits
 
-### Who Benefits from This Applet?
+| Position | Document / applet | Why |
+|---|---|---|
+| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/), [Financial Accounting](/modules-v2/financial-accounting/) | Posts a journal and an ARAP balance; lives in the consignment purchase family. |
+| Upstream (value) | [Consignment GRN Applet (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) | The GRN books consigned stock (Dr Consignment Stock / Cr Consignment Liability); the return reverses it. There is no KO tab for the Consignment GRN — the link is by value, and by contra on the Contra tab. |
+| Upstream (lines) | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) | The **Search** tab (*Search By Invoice / By Supplier / By Serial Number*) lists purchase-invoice lines and creates document links `INTERNAL_PURCHASE_INVOICE` → `INTERNAL_PURCHASE_CONSIGNMENT_RETURN`. |
+| Upstream (knock-off) | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/), [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase Requisition (Internal)](/applets/purchase-workflow/internal-purchase-requisition-applet/), [Supplier Delivery Order](/applets/purchase-workflow/supplier-delivery-order-applet/) | The five **KO For** sub-tabs. They are the ordinary purchase documents — the applet is a fork of the [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) applet with a different document type. |
+| Downstream | [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/), contra | The return's positive ARAP balance is closed by contra (Contra tab) or by a settlement line. |
+| Sibling | [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) | Same screens; the ordinary return moves stock out (quantity signum −1) and posts to Creditor / Purchase Return. |
+| Not linked | [Consignment Purchase Order](/applets/purchase-workflow/internal-consignment-purchase-order-applet/), [Consignment GIN](/applets/inventory-workflow/internal-consignment-gin-applet/) | No other applet in the repository set knocks off or searches `INTERNAL_PURCHASE_CONSIGNMENT_RETURN`. |
 
-**Procurement & Warehouse Teams:**
-- Accurately record consignment goods being returned to suppliers
-- Link returns directly to originating Purchase GRNs or Purchase Orders using Knock-Off (KO) functionality
-- Maintain correct stock levels through automated inventory adjustments on finalization
+## Screens and menus
 
-**Finance Teams:**
-- Manage ARAP (Accounts Receivable / Accounts Payable) entries for consignment returns
-- Process settlements via multiple payment methods (cash, bank transfer, cheque, credit card, e-wallet, etc.)
-- Full contra support to offset returns against outstanding documents
+| Menu | Route | What it is |
+|---|---|---|
+| **Consignment Return** | `consignment-return` | Listing (left) with create / edit pane (right). |
+| **Line Items** | `line-items` | Cross-document line grid. Requires the server-side READ permission; prices hidden without `INTERNAL_PURCHASE_CONSIGNMENT_RETURN_DISPLAY_PRICING`. |
+| **Settings** | `settings/…` | Application Settings, Default Selection, Printable Format Settings, Webhook, Feature Visibility, Permission Wizard / Set / User / Team / Role Permission, Client Side Permission, Role Pricing Scheme Link. |
+| **Personalization** | `personalization/personal-default-selection` | Per-user default branch and location. |
 
-**Management:**
-- Complete audit trail linking every return to its source document
-- Document tracing (Trace Document tab) to follow the full transaction chain
-- Exportable records for reporting and compliance
+No `HIDE_…_MENU` settings, no File Import, no Email Template and no Workflow Settings exist in this applet (`menu-items.ts`, `app.routing.ts` at 16378cc).
 
-### What Problems Does This Solve?
+### Listing
 
-**The Manual Consignment Return Problem:**
-- **Missing Credits**: Finance is not notified of returns, so supplier balances are not adjusted
-- **Inventory "Ghost" Stock**: Goods leave the warehouse but remain on record
-- **Untracked Settlements**: No systematic way to confirm whether a return was refunded or offset
+Toolbar: **FINAL** (hidden by `HIDE_FINAL_BUTTON` unless the user holds `SHOW_FINAL_BUTTON`) and **VOID** (hidden by `HIDE_GENDOC_VOID_BUTTON`). There is no PRINT, DISCARD or SEND EMAIL button on the listing. Bulk FINAL and VOID act on the ticked rows. Columns include Doc Short Code, Doc No (Tenant / Company / Branch), Posting Status and Branch; the default date window is the last month, or today only when `ENABLE_FILTER_BY_TODAYS_TXN` is stored.
 
-**The Applet Solution:**
-- **Unified Finalization**: One **FINAL** action updates stock, GL postings, and supplier ARAP simultaneously
-- **Document Linkage**: KO For Purchase GRN and KO For Purchase Order prevent over-returning and ensure every return is traceable
-- **Flexible Settlement**: Supports cash refunds, contra offsets, and multiple payment modes
+### Create screen
 
-{{< figure src="/images/internal-consignment-return-applet/infograhic.png" alt="Consignment Returns: From Manual Chaos to Unified Control - comparing manual return challenges with the unified applet solution" caption="Consignment Returns: From Manual Chaos to Unified Control — Inventory ghost stock, missing credits, and untracked settlements solved by unified finalization, document linkage via KO, and flexible settlement options." >}}
+Buttons **RESET** and **CREATE** (`disableCreate()`: Main Details valid, supplier valid, at least one line). Tabs: **Search** (Search By Invoice / By Supplier / By Serial Number — purchase-invoice lines), **Main Details**, **Account** (Entity Details / Bill To / Ship To), **Lines**, **Delivery Details**, **Settlement**, **KO For**, **Department Hdr**, **Contra**.
 
----
+{{< figure src="/images/internal-consignment-return-applet/lines.png" alt="Lines tab showing one item with Item Code, Item Name, UOM and a Delivery toggle, and Total Txn Amount and Total SST/VAT/GST Amount at the top right" caption="Lines tab. Each row is an item being returned; the totals become the ARAP balance on FINAL." >}}
 
-## Key Concepts
+{{< figure src="/images/internal-consignment-return-applet/delivery_details.png" alt="Delivery Details tab with Tracking ID, Delivery Type, Delivery Branch and Delivery Location, each with an Apply to Lines button" caption="Delivery Details: header values are pushed to the ticked lines with Apply to Lines." >}}
 
-### Understanding the Consignment Return Framework
+{{< figure src="/images/internal-consignment-return-applet/settlements.png" alt="Settlement tab showing Total Settlement, Doc Open Amount and Doc ARAP Balance with Date, Amount, Details and Remarks columns" caption="Settlement tab. The Doc Open Amount is the return's value the consignor still owes back." >}}
 
-| Aspect | Component | Practical Example |
-|--------|-----------|-------------------|
-| **What** is being returned? | Line Items (Products) | Electronic components, inventory goods |
-| **To whom** is it returned? | Supplier (Entity / Purchaser) | Vendor Company ABC |
-| **Against which document?** | Source Document (GRN / PO) | Purchase GRN #GRN-2025-001 |
-| **How is it settled?** | Settlement / Contra | Bank transfer, contra against invoice |
+{{< figure src="/images/internal-consignment-return-applet/department.png" alt="Department Hdr tab with Segment, G/L Dimension, Profit Centre and Project drop-downs" caption="Department Hdr: header-level accounting dimensions copied to journal lines that have none of their own." >}}
 
-{{< callout type="tip" >}}
-**Real-World Example**: Your warehouse received 100 units of a product under a consignment arrangement. 20 units are defective. You raise an Internal Consignment Return referencing the original GRN, return the 20 units, and settle the credit via bank transfer from the supplier.
-{{< /callout >}}
+### Edit screen
 
-### Document Lifecycle
+Header buttons: **RESET**, **FINAL** (always rendered; the backend refuses an already-FINAL document with *Generic Document has already been posted to FINAL*), **SAVE** (`disableSave()` mirrors `disableCreate()`; also needs the server-side UPDATE permission or tenant admin / owner). The VOID button on the edit pane is commented out — VOID is a listing action. A red **DELETE** button (draft only) appears when `SHOW_DOCUMENT_DELETE_BUTTON` is stored in the applet settings.
 
-A Consignment Return document moves through these stages:
+Tabs in fixed order (this applet has no Details Tab Ordering): **Main Details**, **Account**, **Lines**, **ARAP**, **Delivery Details**, **Settlement**, **Department Hdr**, **Trace Document** (Journal Txn / Cashbook Txn / Points Txn / Tax Txn / Inv Txn), **Contra**, **Doc Link** (Copy From / Copy To), **Export**, **Attachments**.
 
-```
-Create (Draft)
-    │
-    ▼
-Add Line Items (from Search, KO For GRN, or KO For PO)
-    │
-    ▼
-Add Account / Delivery / Settlement / Department Info
-    │
-    ▼
-FINAL  ──→  Stock adjusted + ARAP posted + Document locked
-    │
-    ▼
-(Optional) Contra / Doc Link / Attachments / Export
-```
+{{< figure src="/images/internal-consignment-return-applet/arap_tab.png" alt="ARAP tab showing Product & Services, Settlement, Doc Open Amount, Contra and Outstanding" caption="ARAP tab: Product & Services is the posted value; Outstanding is what contra or settlement still has to close." >}}
 
-**Key States:**
+{{< figure src="/images/internal-consignment-return-applet/trace_document_tab.png" alt="Trace Document tab with Journal Txn sub-tab showing GL Code, Entity, Description, Debit and Credit columns" caption="Trace Document — Journal Txn: the two-sided entry appears here after FINAL; an empty grid on a FINAL document means the posting failed (see Troubleshooting)." >}}
 
-| State | Description |
-|-------|-------------|
-| **Draft** | Document is created and editable. Stock and financial postings are not yet made. |
-| **Final** | Document is confirmed. Inventory is adjusted and ARAP entries are posted. |
-| **Deleted** | Draft documents can be deleted before finalization. |
+{{< figure src="/images/internal-consignment-return-applet/contra_tab_listing.png" alt="Contra tab showing Total Contra, Doc Open Amount and Doc ARAP Balance with an empty list" caption="Contra tab: offset the return against the consignor's other documents." >}}
 
----
+{{< figure src="/images/internal-consignment-return-applet/contra.png" alt="Select Document to Contra With popup listing consignment GRN and purchase invoice documents with Doc Short, Doc No, Branch, Server Doc Type and Status" caption="Contra picker: the consignor's open documents — in this capture a Consignment GRN and purchase invoices." >}}
 
-## Quick Start Guide
+{{< figure src="/images/internal-consignment-return-applet/doc_link_copy_from.png" alt="Doc Link tab, Copy From sub-tab" caption="Doc Link — Copy From lists the purchase invoice or knocked-off document the lines came from." >}}
 
-### Creating a Consignment Return
+{{< figure src="/images/internal-consignment-return-applet/export.png" alt="Export tab with Printable Format drop-down and EXPORT AS PDF button" caption="Export tab: the only print path in this applet." >}}
 
-**Goal:** Create and finalize a consignment return in 6 steps.
+{{< figure src="/images/internal-consignment-return-applet/attachments.png" alt="Attachments tab with File Name, Uploaded Date, Uploaded By and Actions columns" caption="Attachments: supporting files on the document." >}}
 
-1. **Navigate**: Go to **Consignment Return** from the sidebar
-2. **Create**: Click the **Add (+)** button → The Create Consignment Return form opens
-3. **Search Source Document** *(optional)*: Use the **Search** tab to find and copy from an existing consignment document
-4. **Fill Main Details**:
-   - Select **Company**, **Branch**, **Location**
-   - Select the **Purchaser** (supplier)
-   - Set the **Transaction Date**, **Currency**, and **Reference** number
-5. **Add Line Items**: Switch to the **Lines** tab → Click **Add** → Choose items via:
-   - **Search Item**: Search by product code or name
-   - **KO For Purchase GRN**: Pull items from a specific Goods Received Note
-   - **KO For Purchase Order**: Pull items from a specific Purchase Order
-6. **Finalize**: Click **FINAL** → The system posts stock adjustments and ARAP entries
+## Configuration
 
-{{< callout type="warning" >}}
-Once a document is set to **FINAL**, it cannot be edited. Ensure all line items, quantities, and account details are correct before finalizing.
-{{< /callout >}}
+### Before you can use it
 
-{{< figure src="/images/internal-consignment-return-applet/Main_details.png" alt="Internal Consignment Return Listing showing document list with split-panel edit form" caption="Internal Consignment Return Listing: Select a document from the list to open the edit form in the side panel. The FINAL button in the toolbar allows bulk finalization of selected draft documents." >}}
+| Prerequisite | Where | Why |
+|---|---|---|
+| Company default GL codes `CONSIGNMENT_LIABILITY`, `CONSIGNMENT_STOCK`, `INPUT_TAX` (and `PURCHASE_DISCOUNT` if discounts are used) | [Chart of Account](/applets/finance/chart-of-account-applet/) → company default GL mapping | The `PURCHASE_CONSIGNMENT` journal handler maps entity → `CONSIGNMENT_LIABILITY`, return lines → `CONSIGNMENT_STOCK`, tax → `INPUT_TAX`. The entity mapping throws `MISSING_DEFAULT_GL_CODE: CONSIGNMENT_LIABILITY` when absent; an unmapped line is silently omitted and FINAL then fails on the unbalanced journal. |
+| Company, branch, location | [Organisation](/applets/master-data/organisation-applet/) | Branch, location and purchaser are required header controls. |
+| Supplier (consignor) entities | [Supplier](/applets/master-data/supplier-applet-1/) | Account tab; the AR/AP type is ignored for consignment (the handler always uses `CONSIGNMENT_LIABILITY`). |
+| Items | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | Lines. Item-company GL links and line GL codes are **not** consulted for consignment types. |
+| Tax codes | [Tax Configuration](/applets/master-data/tax-configuration-applet/) | Line tax / WHT selectors. |
+| Printable format | This applet → *Printable Format Settings* | Export tab. |
+| Permissions | *Permission Wizard / Set* | `TNT_API_DOC_INTERNAL_PURCHASE_CONSIGNMENT_RETURN_{CREATE,UPDATE,READ,DELETE}_TGT_GUID`. |
 
-### Editing a Consignment Return (Draft)
+### Applet settings
 
-1. From the listing, click on a **Draft** document to open it
-2. Make necessary changes across any tab
-3. Click **SAVE** to preserve changes
-4. Click **FINAL** when the document is ready to post
+Where settings live (`app.routing.ts` at 16378cc): *Application Settings* loads the **shared** `FieldConfigurationComponent` from blg-shared-utilities; the applet-local `field-configuration` component in `settings-container/` is not routed. *Default Selection* and *Personalization → Default Selection* are applet-local. No per-screen gear, no branch settings.
 
----
+Anyone with the applet's *Settings* menu can change them. Every toggle defaults to **off** (nothing stored until the first Save; no per-applet pre-selection on the shared screen for this code).
 
-## The Create Form: Tab-by-Tab Guide
+**Settings → Default Selection**: `DEFAULT_BRANCH`, `DEFAULT_LOCATION` (derives `DEFAULT_COMPANY`) — pre-selected on a new return; a personal default overrides. Nothing else (no validity days, no tab ordering, no pricing scheme).
 
-When creating or editing a Consignment Return, the form is organized into the following tabs:
+**Personalization → Default Selection**: `DEFAULT_BRANCH`, `DEFAULT_LOCATION` per user.
 
-### Search Tab *(Create mode only)*
+**Settings → Application Settings** (shared screen). Keys rendered there **and** read by this applet (45):
 
-Use this tab to search for an existing consignment document and copy its details into the new return. This is the fastest way to create a return that references a prior transaction.
+| Group | Keys | What they control |
+|---|---|---|
+| Listing | `DISABLE_GEN_DOC_LISTING`, `SORT_ORDER`, `HIDE_DESCRIPTION`, `HIDE_FINAL_BUTTON`, `HIDE_GENDOC_VOID_BUTTON` | Listing load and sort; the FINAL button (re-shown per user by `SHOW_FINAL_BUTTON`); the VOID button. Note this applet reads `HIDE_FINAL_BUTTON`, not `HIDE_GENDOC_FINAL_BUTTON`. |
+| Header | `HIDE_SERVER_DOC_1..3`, `HIDE_CLIENT_DOC_TYPE`, `HIDE_CLIENT_DOC_1..5`, `HIDE_LOCATION`, `HIDE_DELIVERY_BRANCH`, `HIDE_DELIVERY_LOCATION` | Main Details visibility (`HIDE_LOCATION` hides a required control — keep a default location). |
+| Lines | `HIDE_UNIT_PRICE_STD_PRICING_SCHEME`, `HIDE_UNIT_PRICE_STD_INCL_TAX`, `HIDE_UNIT_PRICE_STD_EXCL_TAX`, `HIDE_UNIT_PRICE_STD_UOM_INCL_TAX`, `HIDE_UNIT_PRICE_STD_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_NET_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_NET_EXCL_TAX`, `HIDE_UNIT_PRICE_TXN`, `HIDE_UNIT_PRICE_TXN_UOM_INCL_TAX`, `HIDE_UNIT_DISCOUNT`, `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX`, `HIDE_QTY_BASE`, `HIDE_QTY_UOM`, `HIDE_UOM_TO_BASE_RATIO`, `HIDE_AMOUNT_STD_EXCL_TAX`, `HIDE_DISCOUNT_AMOUNT_EXCL_TAX`, `HIDE_AMOUNT_NET_EXCL_TAX`, `HIDE_AMOUNT_TXN`, `HIDE_TAX_CONFIG_SELECTION`, `HIDE_WHT_CONFIG_SELECTION`, `HIDE_COSTING_DETAILS` | Line form fields and grid columns. |
+| ARAP | `HIDE_ARAP_PNS`, `HIDE_ARAP_SETTLEMENT`, `HIDE_ARAP_DOC_OPEN`, `HIDE_ARAP_CONTRA`, `HIDE_ARAP_BAL` | ARAP tab rows and listing columns. |
 
-### Main Details Tab
+`PRINTABLE` (default printable format) is written by *Printable Format Settings → set as default* and read by the Export tab.
 
-Captures the core header information for the return document.
+Rendered on the shared screen but **read nowhere** in this applet: `HIDE_TRACKING_ID`, `HIDE_PERMIT_NO`, `HIDE_LAST_PURCHASE_PRICE`. The `VERTICAL_ORIENTATION` / `EXPAND_*`, `HIDE_GENDOC_FINAL_BUTTON`, `HIDE_GENDOC_DISCARD_BUTTON`, `ENABLE_AUTO_POPUP` and `REQUIRE_VALIDITY_DATE` toggles shown on the shared screen are not in this applet's model and have no effect here; the shared screen's tab-hide section does not render at all for `internalConsignmentReturnApplet` (not in its `getTabValue()` map), and `DISABLE_LINE_ITEM_QUEUE_LISTING` — declared in the model — has a control only for the requisition applet and is read nowhere here.
 
-| Field | Description |
-|-------|-------------|
-| **Doc Short Code** | System-generated document type code (read-only) |
-| **Doc No (Tenant)** | Tenant-level document number (auto-generated, read-only) |
-| **Doc No (Company)** | Company-level document number (auto-generated, read-only) |
-| **Doc No (Branch)** | Branch-level document number (auto-generated, read-only) |
-| **Company** | The company processing the return |
-| **Branch** | Branch handling the transaction |
-| **Location** | Warehouse or storage location |
-| **Purchaser** | The supplier to whom goods are returned |
-| **Transaction Date** | Date of the return |
-| **Credit Terms** | Applicable credit terms |
-| **Reference** | External reference number (e.g., supplier return authorization) |
-| **Remarks** | Free-text notes |
-| **Permit No** | Regulatory permit number if applicable |
-| **Currency** | Transaction currency |
-| **Tracking ID** | Logistics tracking identifier |
-| **Delivery Branch / Location** | Branch and location for delivery of the return |
+Read at runtime **without a control**: `ENABLE_FILTER_BY_TODAYS_TXN` (listing window = today).
 
-### Account Tab
+Declared in `applet-settings.model.ts` only — no control, not read: `INCLUDE_*` / `ENABLE_*` for SST, WHT, Segment, Dimension, Profit Center, Project; `ENABLE_CUSTOM_STATUS_*` (15 keys).
 
-Manages the supplier and billing/shipping entity information.
+### Document behaviour settings
 
-- **Entity Selection**: Select the supplier entity linked to the return
-- **Billing Info**: Billing contact name, email, phone
-- **Billing Address**: Full billing address (address lines, city, state, postcode, country)
-- **Shipping Info**: Shipping contact name, email, phone
-- **Shipping Address**: Full shipping/delivery address
+| Behaviour | Where it is set | Notes |
+|---|---|---|
+| Journal accounts | Company default GL codes `CONSIGNMENT_LIABILITY`, `CONSIGNMENT_STOCK`, `INPUT_TAX`, `PURCHASE_DISCOUNT`. | Fixed by the `PURCHASE_CONSIGNMENT` handler; line GL codes and item-company links are bypassed for consignment types (`JournalPostingService` L139). |
+| Stock | — | Not configurable: quantity signum is forced to 0 by the DCO; no stock or MA effect. |
+| Printables | *Printable Format Settings*, `PRINTABLE`. | Export tab → *EXPORT AS PDF*. |
+| Backdating | — | No `PO_ALLOW_BACKDATE_TRANSACTION` check in this applet; the transaction date is free, subject to the fiscal-period lock. |
+| Serial validation | — | The applet does not send `validate_serial_signum_zero`; serial / batch quantity checks are skipped for this signum-0 type. |
+| Webhooks | *Settings → Webhook*. | Shared component. |
+| Approval, workflow, e-mail, file import, e-Invoice | — | No exposed control found (routes and menu items checked at 16378cc); the type is not an e-Invoice document. |
 
-{{< figure src="/images/internal-consignment-return-applet/account.png" alt="Account tab showing Entity Details sub-tab with Entity Id, Entity Name, Status, Entity Type, Identity Type, and Currency fields" caption="Account Tab — Entity Details: Select the supplier entity. The Bill To and Ship To sub-tabs capture the corresponding billing and shipping addresses." >}}
+### Settings in other applets that control this applet
 
-### Lines Tab
+| Setting | Where it is set | Effect here |
+|---|---|---|
+| Company default GL mapping for `CONSIGNMENT_LIABILITY` | [Chart of Account](/applets/finance/chart-of-account-applet/) | FINAL throws `MISSING_DEFAULT_GL_CODE: CONSIGNMENT_LIABILITY` when missing. |
+| Company default GL mapping for `CONSIGNMENT_STOCK`, `INPUT_TAX` | [Chart of Account](/applets/finance/chart-of-account-applet/) | Missing → the line is omitted and FINAL fails with `TOTAL_DEBITS_AND_TOTAL_CREDITS_NOT_BALANCES`. |
+| Fiscal period lock (`LOCK_ALL` / `LOCK_TXN`) | [Organisation](/applets/master-data/organisation-applet/) | FINAL rejected with *The selected date falls within a locked fiscal period*. |
+| Forex rate for the document currency | [Forex](/applets/master-data/forex-applet/) | Non-zero rate required on FINAL (`FOREX_DOC_REQUIRES_NON_ZERO_XRATE`). |
 
-Manages the individual products being returned.
+### Feature visibility / permissions
 
-| Field | Description |
-|-------|-------------|
-| **Item Code** | Product or inventory item code |
-| **Description** | Item description |
-| **Quantity** | Number of units being returned (note: quantity signum is negative for returns) |
-| **UOM** | Unit of measure |
-| **Unit Price** | Price per unit |
-| **Discount** | Applicable discount |
-| **Tax (SST/WHT)** | Tax configuration if enabled |
-| **Amount** | Total line amount |
+Server-side (`TntErpPermissions`): `TNT_API_DOC_INTERNAL_PURCHASE_CONSIGNMENT_RETURN_CREATE_TGT_GUID`, `…_UPDATE_TGT_GUID`, `…_READ_TGT_GUID`, `…_DELETE_TGT_GUID`. SAVE on the edit pane needs UPDATE or `TNT_TENANT_ADMIN` / `TNT_TENANT_OWNER`; Line Items needs READ.
 
-**Adding Line Items:**
-
-{{< cards >}}
-  {{< card title="Search Item" subtitle="Search by product code or name and add directly" >}}
-  {{< card title="KO For Purchase GRN" subtitle="Link to items from an existing Goods Received Note" >}}
-  {{< card title="KO For Purchase Order" subtitle="Link to items from an existing Purchase Order" >}}
-{{< /cards >}}
-
-{{< callout type="tip" >}}
-Using **KO For Purchase GRN** or **KO For Purchase Order** is recommended. It creates a document link for traceability and prevents returning more than what was originally received.
-{{< /callout >}}
-
-{{< figure src="/images/internal-consignment-return-applet/lines.png" alt="Lines tab showing item CSG-001 with Item Code, Item Name, UOM and Delivery columns, with Total Txn Amount displayed" caption="Lines Tab: Each line represents a product being returned. The Total Txn Amount and Total SST/VAT/GST Amount are summarized at the top right." >}}
-
-### Delivery Details Tab
-
-Records delivery-related information for the physical movement of returned goods, including delivery schedules and logistics notes.
-
-{{< figure src="/images/internal-consignment-return-applet/delivery_details.png" alt="Delivery Details tab showing Tracking ID, Delivery Branch, Delivery Type, Delivery Location fields with Apply to Lines buttons and item CSG-001 listed" caption="Delivery Details Tab: Set Tracking ID, Delivery Branch, Delivery Type, and Delivery Location. Use Apply to Lines to apply changes to all line items at once." >}}
-
-### Settlement Tab
-
-Records how the return is being financially settled with the supplier.
-
-| Settlement Type | Description |
-|-----------------|-------------|
-| **Bank Transfer** | Supplier refunds via direct bank transfer |
-| **Cash** | Cash refund from supplier |
-| **Cheque** | Cheque payment from supplier |
-| **Credit Card** | Credit card refund |
-| **e-Wallet** | Electronic wallet refund |
-| **FPX e-Mandate** | Online banking via FPX |
-| **Payment Gateway** | Online payment gateway refund |
-| **Open Credit** | Applied as open credit on the supplier account |
-| **Others** | Any other settlement type |
-
-{{< figure src="/images/internal-consignment-return-applet/settlements.png" alt="Settlement tab showing Total Settlement, Doc Open Amount, and Doc ARAP Balance summary with Date, Amount, Details and Remarks columns" caption="Settlement Tab: Displays the Total Settlement applied, Doc Open Amount, and remaining Doc ARAP Balance. Click the + button to add a new settlement entry." >}}
-
-### KO For Tab *(Create mode only)*
-
-Use the **KO For** tab to import knock-off line items from source documents. This links the return to specific originating documents and ensures financial accuracy.
-
-### Department Hdr Tab
-
-Captures cost centre and department allocation for the return document header.
-
-| Field | Description |
-|-------|-------------|
-| **Segment** | Business segment |
-| **Dimension** | Accounting dimension |
-| **Profit Center** | Profit centre allocation |
-| **Project** | Project code if applicable |
-
-{{< figure src="/images/internal-consignment-return-applet/department.png" alt="Department Hdr tab showing Segment, G/L Dimension, Profit Centre, and Project dropdown fields" caption="Department Hdr Tab: Assign the consignment return to a Segment, G/L Dimension, Profit Centre, and Project for cost allocation and reporting." >}}
-
-### ARAP Tab *(Edit mode only)*
-
-Displays the Accounts Receivable / Accounts Payable entries generated when the document is finalized. This is a read-only view of the financial impact.
-
-{{< figure src="/images/internal-consignment-return-applet/arap_tab.png" alt="ARAP tab showing Product and Services amount, Settlement, Doc Open Amount, Contra, and Outstanding balance fields" caption="ARAP Tab: A read-only summary of the financial posting — Products & Services value, Settlement applied, Contra offset, and the remaining Outstanding balance." >}}
-
-### Trace Document Tab *(Edit mode only)*
-
-Provides a complete audit trail of all documents linked to this consignment return — from the original Purchase Order through the GRN to this return document.
-
-{{< figure src="/images/internal-consignment-return-applet/trace_document_tab.png" alt="Trace Document tab showing Journal Txn sub-tab with GL Code, Entity, Description, Debit and Credit columns and Total Debit/Credit summary" caption="Trace Document Tab — Journal Txn: View all general ledger journal entries generated by this document. Sub-tabs include Cashbook Txn, Points Txn, Tax Txn, and Inv Txn for a complete audit trail." >}}
-
-### Contra Tab *(Edit mode only)*
-
-Allows the return amount to be offset against outstanding supplier invoices or credit notes instead of receiving a cash refund.
-
-{{< figure src="/images/internal-consignment-return-applet/contra_tab_listing.png" alt="Contra tab showing Total Contra, Doc Open Amount and Doc ARAP Balance with an empty document list" caption="Contra Tab: Shows Total Contra applied, Doc Open Amount, and Doc ARAP Balance. Click + to select a document to offset against." >}}
-
-{{< figure src="/images/internal-consignment-return-applet/contra.png" alt="Select Document to Contra With popup showing CSGGRIN and PURINV documents with Doc Short, Doc No, Branch, Server Doc Type and Status columns" caption="Contra Document Selection: Search and select from available supplier documents (Consignment GRN, Purchase Invoice, etc.) to apply as a contra offset against the return amount." >}}
-
-### Doc Link Tab *(Edit mode only)*
-
-Links this consignment return to other related documents in the system for cross-referencing.
-
-{{< figure src="/images/internal-consignment-return-applet/doc_link_copy_from.png" alt="Doc Link tab - Copy From sub-tab showing source documents with Doc Short, Doc No, Branch, Server Doc Type, Status and Date columns" caption="Doc Link Tab — Copy From: Shows source documents this return was copied from (e.g., originating Purchase GRN or Purchase Order)." >}}
-
-{{< figure src="/images/internal-consignment-return-applet/doc_link_copy_to.png" alt="Doc Link tab - Copy To sub-tab showing downstream documents created from this return" caption="Doc Link Tab — Copy To: Shows documents subsequently created from this return (e.g., downstream settlement or payment documents)." >}}
-
-### Export Tab *(Edit mode only)*
-
-Exports the consignment return document in configurable formats for record-keeping, sending to suppliers, or integration with external systems.
-
-{{< figure src="/images/internal-consignment-return-applet/export.png" alt="Export tab showing Printable Format dropdown and Export as PDF button" caption="Export Tab: Select a Printable Format template and click Export as PDF to generate a formatted document for supplier correspondence or internal record-keeping." >}}
-
-### Attachments Tab *(Edit mode only)*
-
-Upload and manage supporting documents such as:
-- Supplier return authorization letters
-- Delivery order copies
-- Photos of defective goods
-- Inspection reports
-
-{{< figure src="/images/internal-consignment-return-applet/attachments.png" alt="Attachments tab showing File Name, bl_fi_generic_doc_attachme, Uploaded Date, Uploaded By and Actions columns with an add button" caption="Attachments Tab: Click the + button to upload supporting files. Uploaded documents are listed with their file name, upload date, and the user who uploaded them." >}}
-
----
-
-## Line Items Management
-
-### The Line Items View
-
-The **Line Items** section (accessible from the sidebar) provides a dedicated view of all line items across consignment return documents. This is useful for searching and reviewing specific product returns independent of their parent documents.
-
-### Editing a Line Item
-
-1. From the **Lines** tab (within a document), click on a line item to edit
-2. Modify quantity, price, discount, UOM, or tax configuration
-3. Save changes
-
----
-
-## Settings and Configuration
-
-### Application Settings
-
-Administrators can configure the applet behavior via `Settings > Application Settings`:
-
-| Setting | Description |
-|---------|-------------|
-| **Default Branch** | Pre-selected branch for new documents |
-| **Default Location** | Pre-selected warehouse location |
-| **Default Company** | Pre-selected company |
-| **Enable SST** | Enable Sales & Service Tax on line items |
-| **Enable WHT** | Enable Withholding Tax on line items |
-| **Enable Dimension** | Show/hide dimension field |
-| **Enable Profit Center** | Show/hide profit center field |
-| **Enable Project** | Show/hide project field |
-| **Enable Segment** | Show/hide segment field |
-| **Hide Unit Price Fields** | Control visibility of specific pricing columns |
-| **Hide Costing Details** | Hide costing information from line items |
-| **Disable GRN Listing** | Disable the GRN document listing view |
-
-### Default Selection
-
-Pre-configure default values for new documents to reduce data entry:
-
-- Default Branch
-- Default Location
-- Default Company
-- Default Purchaser
-
-### Printable Format Settings
-
-Configure the layout and content of printed/PDF documents generated from this applet. Multiple printable format templates can be configured to suit different supplier or internal requirements.
-
-### Personalization: Default Selection
-
-Each user can configure their own default selections (branch, location, company) independently of the system-wide defaults via `Personalization > Default Selection`.
-
----
-
-## Permissions
-
-The applet enforces role-based access control:
-
-| Permission | Description |
-|------------|-------------|
-| **Create** | Ability to create new consignment return documents |
-| **Read** | Ability to view the listing and document details |
-| **Update** | Ability to edit draft documents and save changes |
-| **Delete** | Ability to delete draft documents |
-| **Final** | Ability to finalize documents (posts to stock and ARAP) |
-
-{{< callout type="warning" >}}
-Only users with the **Final** permission can post a consignment return. Finalization is irreversible — ensure the document is accurate before proceeding.
-{{< /callout >}}
-
----
-
-## Common Workflows
-
-### Return Against a GRN (Knock-Off)
-
-**Scenario**: You received 50 units on GRN-2025-001 and need to return 10 defective units.
-
-1. Create a new Consignment Return
-2. Fill in **Main Details** (company, branch, supplier, date)
-3. Go to **Lines** tab → Click **Add**
-4. Select the **KO For Purchase GRN** tab
-5. Search for `GRN-2025-001`
-6. Select the 10 units to return
-7. Return to the document → Add **Settlement** (e.g., credit to open balance)
-8. Click **FINAL**
-
-**Result**: 10 units are deducted from inventory, ARAP is updated, and the document is linked to GRN-2025-001 for full traceability.
-
----
-
-### Contra Settlement Against Outstanding Invoice
-
-**Scenario**: Instead of a cash refund, you want to offset the return value against an outstanding supplier invoice.
-
-1. Finalize the consignment return document
-2. Go to the **Contra** tab
-3. Search for the outstanding supplier invoice
-4. Apply the return amount as a contra offset
-5. Save the contra entry
-
----
-
-### Bulk Finalization from Listing
-
-You can finalize multiple draft documents directly from the listing without opening each one:
-
-1. Go to the **Consignment Return** listing
-2. Select the draft documents using the checkboxes
-3. Click the **FINAL** button in the listing toolbar
-4. Confirm the action
-
----
-
-## Frequently Asked Questions
-
-**Q: Can I edit a finalized consignment return?**
-
-A: No. Once a document is finalized, it is locked and cannot be edited. If corrections are needed, you must raise a new document or use contra/settlement adjustments.
-
----
-
-**Q: What is the difference between "KO For Purchase GRN" and "Search Item"?**
-
-A: **Search Item** lets you add any inventory item freely without linking to a source document. **KO For Purchase GRN** pulls items specifically from a Goods Received Note, creating a document link for traceability and preventing over-returning.
-
----
-
-**Q: What happens to stock when I finalize a consignment return?**
-
-A: The system automatically deducts the returned quantity from the selected warehouse location. The quantity signum for consignment returns is negative, so stock is reduced upon finalization.
-
----
-
-**Q: How do I track which invoices a consignment return has been applied against?**
-
-A: Use the **Contra** tab on the finalized document to view all contra entries, or use the **Trace Document** tab to see the complete document chain.
-
----
-
-**Q: Can I attach documents to a consignment return?**
-
-A: Yes. Use the **Attachments** tab (available in edit mode) to upload supporting documents such as return authorizations, inspection reports, or supplier correspondence.
-
----
-
-**Q: What settlement methods are supported?**
-
-A: The applet supports Bank Transfer, Cash, Cheque, Credit Card, e-Wallet, FPX e-Mandate, Payment Gateway, Membership Point Currency, Open Credit, and Others.
-
----
-
-**Q: Can multiple users work on the same document?**
-
-A: Draft documents can be accessed by users with the appropriate permissions. However, simultaneous editing is not supported. The last saved version will be retained.
+Client-side: the registry has **no** `bl_applet_client_side_perm_dfn` rows for `internalConsignmentReturnApplet` (checked 2026-09-05). Codes the code checks, none grantable until seeded:
+
+| Group | Codes (checked in code, not seeded) |
+|---|---|
+| Buttons | `SHOW_FINAL_BUTTON` (re-shows a hidden listing FINAL) |
+| Header | `SHOW_DOC_NO_TENANT`, `SHOW_DOC_NO_COMPANY`, `SHOW_DOC_NO_BRANCH`, `SHOW_CLIENT_DOC_TYPE`, `SHOW_CLIENT_DOC_1..5`, `SHOW_TRANSACTION_DATE`, `SHOW_DESCRIPTION` |
+| Lines and pricing | `PURCHASE_CONSIGNMENT_RETURN_DISPLAY_PRICING` (create / edit Lines grid) and `INTERNAL_PURCHASE_CONSIGNMENT_RETURN_DISPLAY_PRICING` (Line Items menu) — two different codes for the same purpose; `SHOW_UNIT_PRICE_*` (nine), `SHOW_UNIT_DISCOUNT`, `SHOW_UNIT_DISCOUNT_UOM_EXCL_TAX`, `SHOW_QTY_BASE`, `SHOW_QTY_UOM`, `SHOW_UOM_TO_BASE_RATIO`, `SHOW_AMOUNT_STD_EXCL_TAX`, `SHOW_DISCOUNT_AMOUNT_EXCL_TAX`, `SHOW_AMOUNT_NET_EXCL_TAX`, `SHOW_AMOUNT_TXN`, `SHOW_TAX_CONFIG_SELECTION`, `SHOW_WHT_CONFIG_SELECTION`, `SHOW_COSTING_DETAILS` |
+| ARAP | `SHOW_ARAP_PNS`, `SHOW_ARAP_SETTLEMENT`, `SHOW_ARAP_DOC_OPEN`, `SHOW_ARAP_CONTRA`, `SHOW_ARAP_BAL` |
+
+Price columns are hidden for every user who is not tenant OWNER or ADMIN and lacks the display-pricing code (`ClientSidePermissionChecker.checkPermission`).
+
+## Fields
+
+### Main Details
+
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Branch, Location | Returning branch and location. | Yes (`Validators.required`) | Pre-filled from Default Selection / personal defaults. |
+| Purchaser | Employee responsible. | Yes (`Validators.required`) | Unlike the consignment PO, this one is enforced. |
+| Company | Owning company. | System | Derived from the branch. |
+| Doc Short Code, Doc No (Tenant / Company / Branch) | `CSGRTN` and running numbers. | System | Assigned on FINAL. |
+| Client Document type, Client Doc 1–5 No | Consignor references. | No | `HIDE_CLIENT_DOC_*`. |
+| Transaction Date | Return date. | Yes | Must fall in an unlocked fiscal period to FINAL. |
+| Delivery Branch, Delivery Location | Where the goods leave from. | No | `HIDE_DELIVERY_BRANCH`, `HIDE_DELIVERY_LOCATION`. |
+| Currency, Currency Rate | Document currency. | Rate non-zero when currencies differ | |
+| Reference, Remarks, Description | Free text. | No | |
+
+### Account
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Entity Id (supplier) | The consignor. | Yes (`Validators.required`) | Picker with inline create / edit (name, type, currency, ARAP type required there). |
+| Entity Name, Status, Entity Type, Identity Type, ID Number, Currency, Email, Description, Phone Number | Read-only echo of the supplier. | — | |
+| Bill To, Ship To | Address sub-tabs. | No | |
+
+### Lines
+
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Item | From *Search Item*, the Search tab or KO For. | Yes | CREATE / SAVE need at least one line. |
+| Quantity, UOM, ratio | Returned quantity. | No validator | Recorded on the line; **not** posted to stock (quantity signum 0). |
+| Unit prices, discounts, amounts, tax, WHT | Value of the return. | No | The amounts drive the journal and ARAP. |
+| Serial Number, Batch, Bin | Stock references. | No | On the Search tab, a serialised invoice line needs the serial numbers to return (*Please Select Serial Number*) and a quantity (*Please Enter Return Qty*). |
+| Delivery toggle / details | Per-line delivery. | No | |
+| Segment, G/L Dimension, Profit Centre, Project | Dimensions. | No | Header dimensions fill lines that have none. |
+
+### Settlement, Contra, Department Hdr
+
+| Tab | Fields | Notes |
+|---|---|---|
+| Settlement | Settlement Method, Date, Amount, Details, Remarks; totals Total Settlement, Doc Open Amount, Doc ARAP Balance. | Settlement lines are typed `INTERNAL_RECEIPT_VOUCHER` for every method except `CASH_BACK` (`INTERNAL_PAYMENT_VOUCHER`) — the sales-side typing inherited from the template; the ARAP balance still closes. |
+| Contra | Documents of the consignor to offset against. | Open documents with a balance; the capture above shows a Consignment GRN and purchase invoices. |
+| Department Hdr | Segment, G/L Dimension, Profit Centre, Project. | |
+
+## Lifecycle and posting
+
+| Status | Meaning | Allowed next |
+|---|---|---|
+| **DRAFT** | Editable. | FINAL (listing or edit), DELETE (edit, when enabled) |
+| **FINAL** | Posted: journal written, ARAP balance open. | VOID (listing) |
+| **VOID** | Reversed. | none |
+
+There is no DISCARD in this applet.
+
+**On FINAL** the backend (`GenericDocumentService.updatePostingStatus` → `validateGenericDocumentOnFinal`) checks the forex rate, bin quantities and the fiscal-period lock (serial / batch checks are skipped because the applet does not send `validate_serial_signum_zero`; the stock-balance check does not apply to signum-0 lines), saves, assigns running numbers, creates a base-currency shadow for a foreign-currency return, and queues the primary processor, which writes the journal and the ARAP record.
+
+**Posting proof** (backend at 871dbf5): server document type `INTERNAL_PURCHASE_CONSIGNMENT_RETURN` · amount signum **+1** · quantity signum **0** (`InternalPurchaseConsignmentReturnDataConsistencyObject` L16–17; `fillQuantitySignumAndAmountSignumForLine` overwrites whatever the applet sent) · journal handler: no entry of its own — `JournalPostingService` L65–74 maps `INTERNAL_PURCHASE_CONSIGNMENT_GRN` and `…_RETURN` to the `PURCHASE_CONSIGNMENT` handler (`JournalPostingTypeHandler` L95–103) and marks the document `isConsignmentStockIn` · Dr/Cr per line:
+
+| Account | Dr | Cr | Source of GL code |
+|---|---|---|---|
+| Consignment Liability (`CONSIGNMENT_LIABILITY`, used in place of Creditor — `resolveArap` returns it for consignment types) | Net of all lines | | Company default — mandatory, throws `MISSING_DEFAULT_GL_CODE`. |
+| Consignment Stock (`CONSIGNMENT_STOCK`, via `PNS_RETURN`) | | Line amount | Company default only — line GL codes and item-company links are skipped when `isConsignmentStockIn`. |
+| Input Tax (`INPUT_TAX`) | | Tax amount | Company default. |
+| Purchase Discount (`PURCHASE_DISCOUNT`) | Discount | | Company default. |
+
+· GL precedence: **company default only** for consignment types (the usual line → header → item-company → company chain is bypassed) · stock processor: none — quantity signum 0 and the type is not in `StockBalanceHelper.MA_WA_SERVER_DOC_TYPES` · what VOID reverses: the journal and the ARAP balance; nothing in stock.
+
+| Ledger | Effect of FINAL |
+|---|---|
+| General Ledger | Dr Consignment Liability / Cr Consignment Stock (+ tax, discount) |
+| Supplier account (ARAP) | Positive balance = value the consignor owes back; closed by contra or settlement |
+| Stock | none |
+| Open queue | none (no downstream document knocks a consignment return off) |
+
+## Related applets
+
+- [Consignment GRN Applet (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) — the document whose value this one reverses; contra target.
+- [Consignment GIN Applet (Internal)](/applets/inventory-workflow/internal-consignment-gin-applet/) — consumption of consigned stock (the stock-moving counterpart, quantity signum −1).
+- [Consignment Purchase Order Applet (Internal)](/applets/purchase-workflow/internal-consignment-purchase-order-applet/) — start of the consignment flow.
+- [Consignor Purchase Billing Applet (Internal)](/applets/purchase-workflow/internal-consignor-purchase-billing-applet/), [Consignment Billing Applet (Internal)](/applets/inventory-workflow/internal-consignment-billing-applet/) — settlement with the consignor.
+- [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) — the ordinary return this applet is forked from; it does move stock.
+- [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/), [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/), [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase Requisition (Internal)](/applets/purchase-workflow/internal-purchase-requisition-applet/), [Supplier Delivery Order](/applets/purchase-workflow/supplier-delivery-order-applet/) — Search and KO For sources.
+- [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) — settlement of the balance.
+- [Chart of Account](/applets/finance/chart-of-account-applet/), [Supplier](/applets/master-data/supplier-applet-1/), [Organisation](/applets/master-data/organisation-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/) — master data.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| FINAL fails with `MISSING_DEFAULT_GL_CODE: CONSIGNMENT_LIABILITY` | The company has no default GL code for `CONSIGNMENT_LIABILITY`. Line GL codes and the supplier's AR/AP type cannot substitute for consignment types. | Map it in Chart of Account → company default GL codes. |
+| FINAL fails with `TOTAL_DEBITS_AND_TOTAL_CREDITS_NOT_BALANCES` | `CONSIGNMENT_STOCK` (or `INPUT_TAX`) has no company default; the line is dropped from the journal silently. | Map the missing default and FINAL again. |
+| Stock did not decrease after the return | Expected: quantity signum is 0 for this type; the return is a value document only. | Record the physical movement with a Consignment GIN / stock adjustment according to your process. |
+| Trace Document → Journal Txn is empty on a FINAL document | The posting failed after the status change (see the two rows above) or the processor has not run yet. | Check the default GL mapping; wait for the queue; re-FINAL is refused (*Generic Document has already been posted to FINAL*). |
+| FINAL rejected with *The selected date falls within a locked fiscal period* | Transaction date in a `LOCK_ALL` / `LOCK_TXN` period. | Change the date or reopen the period (message reworded under intranet #1616). |
+| FINAL rejected with `FOREX_DOC_REQUIRES_NON_ZERO_XRATE` | Foreign-currency return with no rate. | Enter the rate or maintain it in Forex. |
+| *Please Select Serial Number* / *Please Enter Return Qty* on the Search tab | A serialised purchase-invoice line was ticked without choosing serial numbers or a quantity. | Choose the serial numbers; the quantity follows. |
+| Buyers see no prices on Lines | Not OWNER / ADMIN and no `PURCHASE_CONSIGNMENT_RETURN_DISPLAY_PRICING` (unseeded; the Line Items menu checks a different code, `INTERNAL_PURCHASE_CONSIGNMENT_RETURN_DISPLAY_PRICING`). | Use an admin-rank user or have both codes seeded and granted. |
+| FINAL button missing on the listing | `HIDE_FINAL_BUTTON` on and no `SHOW_FINAL_BUTTON` (unseeded). | Turn the setting off. |
+| VOID button missing | `HIDE_GENDOC_VOID_BUTTON` on, or the row is not FINAL. | Turn the setting off. |
+| Cannot find the Consignment GRN on KO For | KO For offers only the ordinary purchase documents (GRN, invoice, order, requisition, supplier DO). | Enter the lines directly or via the Search tab, then offset the GRN on the Contra tab. |
+| Settlement line typed as a receipt voucher on a purchase document | Inherited sales-side typing in `add-settlement`. | Cosmetic for the ARAP balance; report if it disturbs cashbook reports. |
+| Screen throws *ExpressionChangedAfterItHasBeenChecked* on open | Fixed in the 2026 refactor (intranet #3508, #4101). | Update the applet. |
+| Mobile layout unusable / labels not translated | Responsive UI (#4787) and translations (#5053) are open work items. | Use a desktop browser. |
+
+## Related documentation
+
+- [Purchasing module](/modules-v2/purchasing/) and [Inventory module](/modules-v2/inventory/)
+- [Consignment purchasing guide](/guides/purchasing-guides/consignment-purchasing/)
+- Sibling reference: [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/)

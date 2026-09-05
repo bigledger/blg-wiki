@@ -336,3 +336,109 @@ static/images/delivery-installation-driver-applet/trip-calendar-agenda.png
 
 - `content/en/applets/ecommerce/ecommerce-catalog-applet.md` — TODO placeholder ("E-Commerce Catalog Applet"); no registry row under catalog / catalogue / marketplace / commerce other than `cp_commerce_admin_console_v1` (CP Commerce Admin, TNT-ADMIN, page rewritten in run 1). The product catalog is a per-website tab of CP Commerce Admin, not an applet. Recommendation: delete the page and add `/applets/ecommerce/ecommerce-catalog-applet/` to `aliases:` of `ecommerce/cp-commerce-admin-applet.md`; its dead links (`/applets/inv-item-maintenance-applet/`, `/applets/tax-configuration-applet/`, `/applets/organization-applet/`) go with it.
 - `content/en/applets/ecommerce/installation-of-pricebook-applet.md` — 13 lines of "go to the Applet Store, search, click install"; not an applet. The Pricebook applet (`PricebookApplet`, registry `documentation_url` → `/applets/pricebook-applet/`) is documented at `content/en/applets/master-data/pricebook-applet.md` (another lane). Recommendation: fold the install steps into a single generic "Install an applet from the Applet Store" section (they are identical for every applet), alias the old URL, and fix the registry `documentation_url` to `/applets/master-data/pricebook-applet/` (registry mismatch for lane 4 / the applet-audit skill).
+
+## Run 9 (2026-09-05) — Consignment Purchase Order (Internal)
+
+Run 8 was killed by a rate limit before writing anything; run 9 resumed from the queue head.
+
+### Pages
+
+- `content/en/applets/purchase-workflow/internal-consignment-purchase-order-applet.md` — rewritten to standard from `blg-applet-wavelet-internal-consignment-purchase-order-applet` @1447f23 and the backend @871dbf5c96. Title set to the registry name "Consignment Purchase Order Applet (Internal)". The old page was a 700-line user-guide-voice document (quick start, FAQ, glossary, role table) with several inventions; it is replaced, keeping five clean screenshots.
+
+### Corrections to the old page (record for the guides)
+
+- **FINAL is not listing-only.** The old page said "FINAL is on the listing, not on the edit pane header". The edit template has FINAL (and DISCARD) with `showFinal()`; only VOID is listing-only (the edit VOID button is commented out).
+- **There is no "Blanket Consignment Purchase Order" document type.** The KO For sub-tab carries that label but searches `INTERNAL_BLANKET_PURCHASE_ORDER`.
+- **No Planned Notification Schedule (PNS), no ownership tracking, no "pay-as-you-use billing" in this applet** — the infographic and the old Delivery Details text asserted them. `PNS` in the code is the line `txn_type`, not a schedule.
+- **The Payment tab is a sales-side component**: every settlement method except `CASH_BACK` writes an `INTERNAL_RECEIPT_VOUCHER` settlement line on this purchase document; with amount signum 0 the totals stay 0.00. The page now tells readers to settle in Consignor Purchase Billing.
+- **Whether FINAL creates open-queue rows is a company setting, not an applet setting**: `GenericDocLineOpenQueueProcessor` reads `bl_fi_comp_gendoc_flow_config` (Organisation → Company → Knock Off Configuration, intranet #4638). The old page and the sibling PO page both describe FINAL as unconditionally "opening its lines in the open queue".
+
+### Method findings (add to METHOD.md)
+
+- **Read `app.routing.ts` before trusting a `settings-container` listing.** This applet ships an applet-local `field-configuration` component (one bound toggle, eight unbound sliders) that is *not routed*; the `field-settings` route loads the shared `FieldConfigurationComponent`. `applet-scan.sh` happened to be right because it only reads the shared screen, but a grep of the local component would have produced a one-setting Configuration section.
+- **Open-queue creation on FINAL is gated per company by `bl_fi_comp_gendoc_flow_config` (`config_type = KO`, `server_doc_type_1` = the finalised type, `is_enabled`).** This applies to every document type. `posting_ko` on `bl_fi_generic_doc_hdr` records whether the processor ran; `KnockOffWatchdogService` re-queues FINAL rows with `posting_ko IS NULL`; `POST …/line-open-queues/data-fix-missing-queue` is the manual repair. Every "downstream cannot find my document" troubleshooting row should start here.
+- **With zero seeded client-side permission rows, `ClientSidePermissionChecker.checkPermission` still passes for tenant OWNER/ADMIN rank** — so a price-gating code like `PURCHASE_ORDER_DISPLAY_PRICING` hides prices for ordinary users and shows them for admins, which looks like a role bug to the customer. Worth a sentence on every page whose applet has 0 seeded rows.
+- **Default Selection pickers can be rendered without a form control** (`DEFAULT_PRICING_SCHEME` here): the `[(pricingScheme)]="form.controls['…']"` binding resolves to `undefined`, nothing is saved. Check the FormGroup, not just the template.
+
+### Screenshots with personal data (not referenced)
+
+- static/images/internal-consignment-purchase-order-applet/line-items-tab.png — item codes / names in the Search Item panel contain two staff first names.
+- static/images/internal-consignment-purchase-order-applet/trace-document-tab.png — no personal data, but it shows four pages of SST *output* tax transactions on a signum-0 purchase document (test tenant data that cannot come from this order); misleading, so unreferenced. A real brand name appears as a test item.
+- static/images/internal-consignment-purchase-order-applet/internal-consignment-purchase-order-applet-overview-infographic.png — AI marketing artefact asserting PNS, ownership tracking, KO reconciliation and pay-as-you-use billing; none exists in the applet. Unreferenced.
+
+Kept and referenced (clean; tenant shown is a generic staging code; avatar top-right as flagged in earlier runs): main-details.png, account-tab.png, KO-tab.png, payment-tab.png, delivery-details-tab.png.
+
+### Cross-lane link requests
+
+- **master-data/organisation-applet.md** (other lane): document Company → *Knock Off Configuration* (`bl_fi_comp_gendoc_flow_config`: source type, target type, `is_enabled`, `config_mode`) as the owner of every knock-off pair; say that without an enabled row FINAL creates no open-queue rows for that source type. Add `internal-consignment-purchase-order-applet` to `related_applets`. Mention intranet #4638 (duplicate source/target rows are not yet blocked).
+- **inventory-workflow/internal-consignment-grn-applet.md** (other lane): `related_applets` already lists this page; add that its KO tab queries `line_open_queue_server_doc_type_1 = INTERNAL_PURCHASE_CONSIGNMENT_ORDER` / `_2 = INTERNAL_PURCHASE_CONSIGNMENT_GRN` and copies `qty_open`; note the flow-config prerequisite; add the MA-costing fix (intranet #4693: consignment GRN amounts now feed the costing recalculation).
+- **purchase-workflow/internal-purchase-order-applet.md** (my lane, done in run 1): its Lifecycle says FINAL "opens its lines in the open-queue" unconditionally — should say "when the company's Knock Off Configuration has an enabled row for `INTERNAL_PURCHASE_ORDER`". Queue a small fix in a later run.
+- **inventory-workflow/consignee-stock-transfer-applet.md, internal-consignment-gin-applet.md, purchase-workflow/internal-consignment-return-applet.md, internal-consignor-purchase-billing-applet.md, inventory-workflow/internal-consignment-billing-applet.md**: add `internal-consignment-purchase-order-applet` to `related_applets` (this page links to all of them).
+- **guides/purchasing-guides/consignment-purchasing.md**: check for "FINAL from the listing", "blanket consignment PO" and PNS wording; the guide should say the consignment PO posts nothing and that the GRN is where stock and liability appear.
+- **modules-v2/purchasing/use-cases/_index.md**: links here; no change needed unless it repeats the PNS/billing claims.
+
+### Registry / naming mismatches
+
+- `internalConsignmentPurchaseOrderApplet` has an empty `documentation_url`; should be `https://wiki.bigledger.com/applets/purchase-workflow/internal-consignment-purchase-order-applet/`.
+- 0 client-side permission definitions for the applet code, while the code checks ~50 codes (list on the page).
+- Registry names for the family differ in word order from the wiki titles of the neighbouring pages (e.g. wiki "Internal Consignor Purchase Billing Applet" vs registry "Consignor Purchase Billing Applet (Internal)"; wiki "Consignment Return (Internal) Applet" vs registry "Consignment Return Applet (Internal)") — those are next in my queue and will be renamed when processed.
+
+### Questions for Vincent
+
+- The applet's Payment / Contra tabs write sales-side receipt-voucher lines on a signum-0 purchase document. Raise as a defect on the applet repo, or leave documented as "do not use"?
+- `DEFAULT_PRICING_SCHEME` on Default Selection is a dead picker (no form control) and the applet-local field-configuration component is unrouted dead code — report to product?
+- Should the wiki recommend seeding the client-side permission definitions for this applet (at minimum `PURCHASE_ORDER_DISPLAY_PRICING`, `PO_ALLOW_BACKDATE_TRANSACTION`, `SHOW_GENDOC_*_BUTTON`)? Today ordinary buyers cannot see line prices.
+- Two of the three unreferenced images (infographic, trace-document) could be deleted; keep for the loop to decide.
+
+## Run 9, second page (2026-09-05) — Consignment Return (Internal)
+
+### Pages
+
+- `content/en/applets/purchase-workflow/internal-consignment-return-applet.md` — rewritten to standard from `blg-applet-wavelet-internal-consignment-return-applet` @16378cc and the backend @871dbf5c96. Title set to the registry name "Consignment Return Applet (Internal)" (was "Consignment Return (Internal) Applet"). Eleven clean screenshots kept.
+- `content/en/applets/purchase-workflow/internal-consignment-purchase-order-applet.md` — corrected after METHOD.md item 10 landed mid-run: the tab-hide keys, `ENABLE_MULTIPLE_KO` and `ENABLE_SERIAL_NUMBER_VALIDATION_FINAL` are now listed as "read without control" (the shared screen renders those sections only for codes in `getTabValue()`'s map and, for some blocks, only for `internalPurchaseOrderApplet`). Ledger hash refreshed.
+
+### Direction reversal (record for the guides)
+
+- **A consignment return does not move stock.** `InternalPurchaseConsignmentReturnDataConsistencyObject` sets quantity signum **0** and amount signum +1, and `fillQuantitySignumAndAmountSignumForLine` overwrites the applet's own −1 on every line. The type is also absent from `StockBalanceHelper.MA_WA_SERVER_DOC_TYPES`. The old page ("automated inventory adjustments on finalization"), its infographic ("a single action updates stock levels, GL postings and supplier ARAP") and the consignment guide say the opposite.
+- The journal is **Dr Consignment Liability / Cr Consignment Stock** through the `PURCHASE_CONSIGNMENT` handler; line GL codes, item-company GL links and the supplier's AR/AP type are all bypassed for consignment types (`isConsignmentStockIn`). The old page's "Creditor" wording is wrong for this type.
+- The **Search** tab pulls **purchase-invoice** lines and **KO For** offers the five ordinary purchase documents; the Consignment GRN is reachable only via the Contra tab. The old page said "referencing an existing Purchase GRN or Purchase Order" — technically true, but it hid that the consignment GRN is not a source.
+
+### Method findings (add to METHOD.md)
+
+- **The applet's `applet-constants.ts` signums are not evidence.** The consignment return ships `quantity_signum = -1`; the backend DCO forces 0 and overwrites it. Always take the signum from the DCO (METHOD item 3) — this is the first case found where the two disagree.
+- **`getTabValue()` gating (METHOD item 10) also hides the KO For / multiple-KO toggles and some `appletCode === 'internalPurchaseOrderApplet'`-only blocks.** For any applet code absent from `tabMappings`, every `HIDE_*_TAB` key the applet reads is "read without control". I have added a tree-walking gate script (scratchpad `gates.txt` approach: parse the shared HTML with a tag stack and print the enclosing `*ngIf` chain per `formControlName`) — it should replace the nearest-`*ngIf` heuristic in `applet-scan.sh`.
+- **Consignment journal handler is shared by GRN and return**: `PURCHASE_CONSIGNMENT` (`CONSIGNMENT_LIABILITY`, `CONSIGNMENT_STOCK`, `INPUT_TAX`, `PURCHASE_DISCOUNT`), company defaults only. Any consignment page's "Before you can use it" must list those four default GL codes; `MISSING_DEFAULT_GL_CODE: CONSIGNMENT_LIABILITY` is the failure to write.
+- **One applet, two display-pricing permission codes** (`PURCHASE_CONSIGNMENT_RETURN_DISPLAY_PRICING` vs `INTERNAL_PURCHASE_CONSIGNMENT_RETURN_DISPLAY_PRICING`): grep every `checkPermission(` call, not just the first.
+
+### Screenshots with personal data (not referenced)
+
+- static/images/internal-consignment-return-applet/Main_details.png — listing rows show two branch names, one of which reads as a real retail outlet name and location.
+- static/images/internal-consignment-return-applet/account.png — supplier Entity Name is a personal first name with an ID-card-style number.
+- static/images/internal-consignment-return-applet/infograhic.png (sic) — AI artefact asserting stock updates and cash refunds on FINAL; contradicts the backend; unreferenced.
+
+Kept and referenced (clean; test branch names only): lines, delivery_details, settlements, department, arap_tab, trace_document_tab, contra_tab_listing, contra, doc_link_copy_from, export, attachments. Unreferenced but clean: doc_link_copy_to.
+
+### Cross-lane link requests
+
+- **inventory-workflow/internal-consignment-grn-applet.md** and **internal-consignment-gin-applet.md** (other lane): state that GRN and GIN are the stock-moving / MA-feeding consignment documents and that the return (quantity signum 0) and order (0/0) are not; add `internal-consignment-return-applet` to both `related_applets` (GRN already has it; GIN links to it in prose).
+- **finance/chart-of-account-applet.md** (other lane): add `CONSIGNMENT_LIABILITY` and `CONSIGNMENT_STOCK` to the list of company default GL codes, with the note that consignment documents ignore line GL codes.
+- **purchase-workflow/internal-purchase-return-applet.md** (my lane, done in run 1): add `internal-consignment-return-applet` to `related_applets` as the non-stock consignment counterpart — queue a small edit.
+- **finance/internal-purchase-invoice-applet.md** (lane 2): the consignment return's Search tab links purchase-invoice lines as `INTERNAL_PURCHASE_INVOICE` → `INTERNAL_PURCHASE_CONSIGNMENT_RETURN`; add to `related_applets`.
+- **guides/purchasing-guides/consignment-purchasing.md**: remove any "return reduces stock" wording; say returns reverse the consignment liability and that the physical movement is a GIN / adjustment.
+- **planning/lanes/METHOD.md** (coordinator): fold in the four method findings above; consider adding the enclosing-`*ngIf` gate script to `kb/tools/`.
+
+### Registry / naming mismatches
+
+- `internalConsignmentReturnApplet` has an empty `documentation_url`; should be `https://wiki.bigledger.com/applets/purchase-workflow/internal-consignment-return-applet/`.
+- `main.ts` sets the dev applet code `internalConsignmentReturn` (registry: `internalConsignmentReturnApplet`); neither is in the shared screen's `tabMappings`, so the mismatch has no additional effect here, but it is the same pattern lane 4 found for the GIN.
+- 0 client-side permission definitions; two different display-pricing codes checked.
+
+### Questions for Vincent
+
+- **Is quantity signum 0 intended for the consignment return?** The applet author assumed −1 (constant in the applet), the old wiki and the guide assume stock moves, the backend says 0. If 0 is intended, the GIN is the only way to record consigned stock leaving; if −1 is intended, this is a backend defect worth raising. The page states the backend fact.
+- Should the Search tab search Consignment GRN lines rather than purchase-invoice lines? As shipped, a consignment return can only be built from purchase invoices or entered by hand.
+- Same recurring items as the PO page: seed the display-pricing / `SHOW_FINAL_BUTTON` client-side permissions; delete or keep the unreferenced infographic and the two excluded screenshots.
+
+### Stopping point
+
+Two large document applets this run (both consignment purchase-side documents with backend surprises). Next in queue: `internal-consignor-purchase-billing-applet.md`. Registry title for it is "Consignor Purchase Billing Applet (Internal)".
