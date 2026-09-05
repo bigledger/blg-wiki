@@ -623,3 +623,9 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0161 (2026-09-05) NSTI: manual "Add Transaction" lines never move the balance; CSV import fills a staging table only (issues open); units are created only by NSTI_TXN_LINE_PROCESSOR from FINAL docs when the tenant's job-template links subscribe the two processors. Merchant Admin: physical delete without confirmation/dependency checks; non-unique Merchant ID; browser-computed contract code; Verify Email creates tenant users as a side effect. Confirm deployed build; tickets?
 - [x] F-0162 (2026-09-05) Five NSTI screenshots (staff names, a brand as test data) quarantined.
 
+## From Lane 3 run 16 (2026-09-05)
+
+### backend/applet MISMATCH — purchase refund note likely un-creatable (verified by the loop in source)
+- [ ] F-0163 (2026-09-05) On 2026-04-23 a one-file backend commit flipped InternalPurchaseRefundNoteDataConsistencyObject to amount +1 / quantity −1 (the Purchase Return shape); the applet constants still send amount −1 / quantity 0. The TEMP→ACTIVE PUT validates the header signum, so CREATE/SAVE should fail with GENERIC_DOC_INVALID_SIGNUM on any backend carrying that commit (TEMP create skips validation, so a smoke test looks fine). Vincent: confirm on production (an aggregate count of headers created after 2026-04-23 would show it); fix = align the applet constants with the DCO or revert the DCO. Also decide the intended accounting shape (Purchase-Return-like vs supplier refund Dr Cashbook / Cr Creditor). 25 client-side codes checked, none seeded (DISPLAY_PRICING hides prices for every role; SHOW_TRANSACTION_DATE locks the date picker).
+- [x] F-0164 (2026-09-05) Five images (infographic, staff name/e-mail, bookmarks bar, developer test data) quarantined.
+
