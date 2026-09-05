@@ -849,3 +849,65 @@ Seven images exist in `static/images/non-stock-and-trade-in-applet/`. Kept two: 
 - Lifecycle: METHOD.md §12 check settled it (ts-lib `endpoint_path = non-stock-trade-in/...`, own tables, own DCOs, no signum) — but this applet has a *document-driven* lifecycle behind it (two queue processors keyed on `txn_type = NSTI` + serial numbers), so "master data: writes / reads" needed a fourth block: "how documents create and move units". Same shape may apply to Fixed Asset Register.
 - New METHOD.md candidates: (a) **queue subscription is tenant configuration** — when a processor is a `TenantQueue.EventHandler` fed by `getSubscriberJobProcessors`, say so in "Before you can use it" and lead the "FINAL left no trace" troubleshooting row with it (this is §11's cousin for non-knock-off processors); (b) **auto-created GL codes** exist (`createDefaultGLCode` for NSTI) — check before writing any "missing default GL → error" claim.
 - Pace: ~80 minutes for the NSTI applet (a 600-line header service, two processors, a factory, an import path and 26 issues). Stopping after this page; next in queue is master-data/organisation-applet.md (large; several cross-lane requests already queued against it in earlier runs).
+
+## Pages (run 17, Organization)
+
+- content/en/applets/master-data/organisation-applet.md — rewritten to the standard from `blg-applet-core-akaun-platform-akaun-organisation-applet-v3` (commit 54c1086, 2026-08-18) and backend 871dbf5c96. Title changed from "Organisation Applet" to the registry name **Organization** (`bl_applet_hdr.name` is literally `"Organization "` with a trailing space — trimmed on the page). `applet_code: Organization_Applet`. Kept the four clean screenshots and the existing tab tables; dropped the marketing infographic, the FAQ and the "Golden Chain" quick-start prose. `related_applets` now carries every cross-lane request found in lanes 1–4 findings (53 slugs) except `budgetary-applet` (see questions).
+
+## Registry / naming mismatches (run 17)
+
+- `Organization_Applet` name has a trailing space in `bl_applet_hdr.name` ("Organization "). Page title uses "Organization". `documentation_url` points at `/applets/organization-applet/`, which is kept as an alias of the page. The DELETED row `Organization Applet` (TNT-USER, CORE1) is the pre-v3 applet; the older repo `blg-applet-core-akaun-platform-akaun-organisation-applet` (last commit 2025-11-18) builds the same `akaun-organisation-applet-elements.js` name as v3 — the v3 repo is the newer one and was used.
+- `ecomSyncOrganisationApplet` "Ecom Sync Organisation" (ROOT-USER, ACTIVE) is unrelated to this page (lane 2 already reported no repo for it).
+
+## Direction / fact reversals found (run 17, Organization)
+
+- Old page: "Default Selection — Default Branch / Default Location preselect a branch and location in the applet." Nothing in the applet reads `DEFAULT_BRANCH` / `DEFAULT_LOCATION`; only `ORGANISATION_DETAILS_TAB_ORDER` from that screen is consumed (Company Edit tab order). Personalization Default Branch / Location are dead (`appletContainer` never initialised). Corrected.
+- Old page: "Pick Pack — affects whether those internal transaction flows enforce a delivery quantity balance rule before the document can be completed." The three checkboxes are written to branch extension `PICK_PACK_QUEUE`; no reader exists in the backend or in the sales order / sales invoice / outbound DO applets. Now stated as "stored; no reader found".
+- Old page: "The applet prevents conflicting active KO rules … Conflicting rules are blocked to prevent duplicate knock-offs" — the GRN-family conflict is a client-side toast only; the backend blocks exact duplicates and cyclic AUTO chains, and does not block source = target. Corrected with the DCO citation.
+- Old page: "E-Invoice tab is only visible when e-invoice is enabled in the current deployment." It is hidden only by the `HIDE_E_INVOICE_TAB` key in `APPLET_SETTINGS` (no toggle exists). Corrected.
+- Old page listed a customer-specific Marketplace Type value verbatim (lane 2 request) — replaced by "plus one customer-specific value".
+- Old page's Location Class explanation ("consignment-specific document types … Customer/Supplier Consignment In/Out") described document types that are not keyed off the class; the backend only stores/filters `location_class` (`BASIC` / `CCSG`). Corrected.
+
+## Findings for the product team (run 17, Organization)
+
+- `TimeZoneHandler.getTimeZone()` L28 reads `if (branchGuid.isBlank())` before the branch-timezone lookup — inverted: the branch `default_timezone` is never used by the report row generators (and `getByGuid("")` is attempted when there is no branch). Company timezone → tenant `DEFAULT_TIMEZONE` → `Asia/Kuala_Lumpur` is the effective chain.
+- `HIDE_SIC_CODE_AND_BUSINESS_ACTIVITY_DESCRIPTION` is rendered and saved but read by nothing; `HIDE_E_INVOICE_TAB` is read but has no toggle. `DEFAULT_COMPANY` is patched onto a form that has no such control (never saved).
+- Personalization › Default Selection: Default Branch / Location throw on change (`this.appletContainer` undefined); the Personalization "Field Settings" menu entry and the Settings "Audit Trail" entry (`./applet-log`) have no route → 404.
+- Location Edit offers a third Location Class option labelled `TESTTTT` with value `CCSG` (`location-edit.component.html` L176).
+- Branch `tax_applicable` and the Pick Pack `PICK_PACK_QUEUE` extension have no consumer anywhere in refs/ or the backend.
+- `member_point_award_doc_in` / `member_point_in_doc_status` and `posting_final_json` have no UI in this applet nor in the membership admin repo — API/support only.
+- Company delete is a soft delete with no reference check (`CompanyUow.delete`); the Company Edit delete button is commented out, branch/location delete buttons are live.
+- `checkTabValidity()` in Company Edit is dead code; the "Invalid tab(s)" banner can never show.
+- Knock Off Configuration: `config_mode` and `property_json.doc_2_posting_status` have no control; the Copy From (`CP`) tab is commented out although its code and actions still exist.
+
+## Cross-lane link requests (run 17, Organization)
+
+Back-links: please add `organisation-applet` to `related_applets` of every page listed in this page's `related_applets` that does not already carry it (lane 1: sales-workflow, membership, claims; lane 2: finance, e-invoice, integrations; lane 3: purchase-workflow, ecommerce, delivery-installation). Specific content requests:
+- content/en/applets/master-data/chart-of-account-applet.md (lane 4, done page — on next touch): add a sentence that the company Knock Off Configuration lives on the Organization page; cite `CompanyGlcodeLinkController` (`company-glcode-links`) as the Default GL Codes endpoint.
+- content/en/applets/finance/bank-reconciliation-applet.md, content/en/applets/finance/financial-report-applet.md (lane 2): the timezone the windows use is the **company** `default_timezone` (branch value is not consulted by `TimeZoneHandler` — inverted guard); fallback `Asia/Kuala_Lumpur`.
+- content/en/applets/e-invoice/my-e-invoice-admin-applet.md, my-e-invoice-portal-applet.md (lane 2/3): the company on/off switch is **E-Invoice Status** on Company › E-Invoice (default `DISABLED` at creation); documents finalised before enabling are never queued (`GenericDocEInvoicePostingQueueService` L95-98, #5618); `einvoice_forex_gendoc_posting_logic` has no UI (#5803 open) and defaults to `POST_FOREX_DOC`; branch and entity **Skip E-Invoice** are OR-ed with the document flag at FINAL (`isSkipEInvoice` L3239-3244).
+- content/en/applets/sales-workflow/pos-general-applet.md (lane 1): the cash-bill check reads `bl_fi_mst_branch.location_guid` (the Main Location field), not the `MAIN_LOCATION` extension; branches with only the extension fail until Main Location is saved (#3380/#3381).
+- content/en/applets/sales-workflow/internal-sales-return-applet.md, purchase-workflow/internal-purchase-return-applet.md (lanes 1/3): #5579 (open) — return stock intermittently posted to the branch default store instead of the line location.
+- content/en/applets/purchase-workflow/blanket-purchase-order-applet.md, internal-consignment-purchase-order-applet.md, internal-purchase-grn-applet.md, internal-purchase-order-applet.md (lane 3): may now link "downstream cannot find the document" to `/applets/master-data/organisation-applet/#knock-off-configuration-company--knock-off-config--knock-off`.
+- content/en/applets/membership/membership-admin-applet.md, commission-scheme-applet.md (lane 1): state that `member_point_award_doc_in` / `member_point_in_doc_status` have no screen (Organization page says so).
+- content/en/applets/integrations/90-ecomsync-related-applets.md (lane 2): the branch Marketplace › Stock Configuration columns are now listed on the Organization page; #4080 / #4081 open.
+- content/en/guides/purchasing-guides/consignment-purchasing/, procurement guides (F-0080 / F-0137): point at Company › Knock Off Config on the Organization page.
+- content/en/guides/einvoice-guides/myinvois-setup.md (F-0124): the per-company switch already exists (E-Invoice Status); the "processor schedule" part is not in this applet.
+
+## Screenshots with personal data (run 17, Organization)
+
+Twelve files exist under `static/images/organisation-applet/`. Kept four: `edit-company.png`, `edit-branch.png`, `notification-template.png`, `field-settings.png` (staging tenant, generic test names). Dropped from the page (files left on disk, to be quarantined): `company-listing.png`, `create-company.png`, `branch-listing.png`, `create-branch.png`, `location-listing.png`, `create-location.png` (listing rows include a person's first name as a company name, a real telco / social-media brand as test data, and a ceramics-business name that may be a real customer), `edit-location.png` (a four-letter company abbreviation that may identify a real customer), and the marketing infographic `organisation-applet-infographic.jpg`. Note for Vincent: every capture shows the staff login e-mail in the top bar — earlier runs kept such captures; confirm that is acceptable or all four kept ones need recapture too. Recapture wanted from a GadgetSphere-seeded tenant: Company / Branch / Location listings, Create Company, Create Branch (with the default-location radio), Create Location (Location Class), Location Edit, Company › Knock Off Config grid + add dialog, Company › E-Invoice tab, Company › Peppol Config, Branch › Marketplace › Stock Configuration, Branch › Pick Pack, Settings › Default Selection (tab ordering).
+
+## Questions for Vincent (run 17, Organization)
+
+1. `budgetary-applet` was **not** added to `related_applets` (lane 2's conditional request): the v3 applet has no profit-centre screen (F-0091). Confirm that profit centres stay on the Budgetary page.
+2. Four `einvoice_settings_json` keys (`einvoice_issuer_type`, `einvoice_forex_gendoc_posting_logic`, `einvoice_running_no_config`, `einvoice_line_item_desc_config`) are read by the backend and have no control anywhere. The page says "set through the API or by support". Is that the intended wording until #5803 ships?
+3. `TimeZoneHandler` L28 inverted guard — file as a backend bug?
+4. Registry name "Organization " (trailing space): fix the row, or keep trimming on the page?
+5. Screenshot header e-mail (see above).
+
+## Notes (run 17, Organization)
+
+- Pace: ~95 minutes for the Organization applet (690-file monorepo applet; four parallel read-only census agents for company tabs, branch/location/notification screens, backend rules and issues; settings four-proof done by hand). Stopping after this page; next in queue is master-data/pricebook-applet.md.
+- Method: for monorepo applets (`micro-fe/projects/<family>/applets/<name>/src/app`) `kb/tools/applet-scan.sh` does not resolve paths and `gates.py` is irrelevant when `settings/field-settings` routes to an applet-local component — say so in `sources`/notes instead of reporting "0 toggles".
+- Backend-consumed branch flag proof pattern reused from METHOD §15: `isSkipEInvoice` reads branch `skip_einvoice` (Java), while `tax_applicable` and `PICK_PACK_QUEUE` have no Java or applet reader — bounded `git grep` per applet repo (tracked files only) is the fast way to check across refs/ (a plain recursive grep over refs/ times out).

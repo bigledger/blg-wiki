@@ -5,7 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/master-data/organisation-applet.md",
   "content/en/applets/master-data/pricebook-applet.md",
   "content/en/applets/inventory-workflow/related-applets-stock-balance.md",
   "content/en/applets/master-data/shipping-pricebook-applet.md",
@@ -100,6 +99,12 @@
    "date": "2026-09-05",
    "run": 16,
    "note": "Registry nonStockAndTradeInApplet 'Non Stock and Trade In Applet' (title unchanged). Five of seven screenshots dropped (staff first names / a brand as test data); recapture list in findings run 16."
+  },
+  {
+   "page": "content/en/applets/master-data/organisation-applet.md",
+   "date": "2026-09-05",
+   "run": 17,
+   "note": "Registry Organization_Applet 'Organization ' (trailing space in name; title 'Organization'). Applet-local settings; owner of Knock Off Configuration, company e-Invoice/Peppol/tax/timezone, branch main/delivery location and marketplace. 8 of 12 screenshots dropped (test data with a person's name / brands / possible customer abbreviation) — recapture list in findings run 17."
   }
  ],
  "skipped": [
