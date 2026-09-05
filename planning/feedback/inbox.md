@@ -554,3 +554,11 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0140 (2026-09-05) Two shipped features do not work: Payment tab guard compares to the header object (NaN) so every ADD fails "Payment Exceeds Outstanding" (and payment lines are never sent); SAVE on the edit screen resends lines as loaded (draft assignment commented out) so line edits are lost. Quantity To Bill is typed (UI parseInt formula) — the backend /item/calc endpoint is never called. Consignor optional but a billing without one breaks the listing. Vincent: fix or hide the Payment tab ("settle via PI + PV")? persist line edits? which formula?
 - [x] F-0141 (2026-09-05) Two listing screenshots with a real customer's legal name quarantined.
 
+## From Lane 4 run 12 (2026-09-05)
+
+### registry (unregistered but maintained applets — joins F-0138)
+- [ ] F-0142 (2026-09-05) Inbound Delivery Order (Internal): backend type INTERNAL_INBOUND_DELIVERY_ORDER and a maintained repo exist, but no registry row — page skipped (ADR-0002). Register or archive? Meanwhile hide the page or add a callout. Three CORE1 "Buyer/Supplier/Transporter – Delivery Order" placeholder rows added to the exclusion list (customer-specific).
+
+### product (stock requisition)
+- [ ] F-0143 (2026-09-05) Approval Settings / Branch Designation tables are written but NOT enforced by create/FINAL or the backend generic-document path (approval service reachable only via a controller the applet never calls) — page says "configured but not enforced", citing the open customer request. CREATE ST bypasses the Knock Off Configuration (calls knockOff directly). 14 keys the applet reads have no control for its code on the shared screen (HIDE_FILE_IMPORT_MENU etc.). No screenshots exist for this applet — capture set needed.
+
