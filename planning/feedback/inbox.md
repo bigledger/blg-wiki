@@ -599,3 +599,12 @@ with the analysis, the changes made, and the commit hash.
 ### product (inventory item maintenance) — SERIOUS
 - [ ] F-0154 (2026-09-05) The Item Edit Main-tab Save is dead in source at commit 06aebbc: resetForm() declares a hidden required control `currentGlCode` nothing populates and the button is disabled while the form is invalid — GL code, category links, EAN, currency, status and dimensions cannot be saved from the UI since the monorepo split (multi-UOM, images, min/max, company links still save). Stated plainly in Troubleshooting. Vincent: confirm the deployed build matches main. Also: doc-item → inventory-item link is one-shot async (scan-code drift is a recurring incident; data-fix endpoints exist); HIDE_ITEM_CATEGORY never read; four Department Settings toggles unbound; both Default Selection screens dead.
 
+## From Lane 3 run 13 (2026-09-05)
+
+### backend (GRN Stock In / PI No Stock In pair) — possible accounting bug
+- [ ] F-0155 (2026-09-05) The accrual reversal on PI No Stock In uses totalAmount summed AFTER tax lines (net + tax) while GRN Stock In accrued INVENTORY_NOT_INVOICED for net only; Input Tax is debited on both documents. A residual equal to the tax stays on the accrual accounts every time. Also the reversal fires on ANY active knock-off link (status-only filter), not just GRN Stock In sources. Vincent: backend fix (net, not net+tax; restrict trigger)? Until then guides must say "tax on one document of the pair; reconcile the residual".
+
+### product (PI no stock in)
+- [ ] F-0156 (2026-09-05) Applet ships SELF-BILLED bulk action and an E-Invoice tab, but the backend's self-billed pipeline (MyEInvoiceToIRBProcessorService.PURCHASE_DOC_TYPES) does not list this type (applet issue open) — add the type or hide the UI. Dead applet-local Knock Off Settings screen (8 keys saved, never read) in this applet and the PI. 27 checked-not-seeded permission codes (SHOW_GENDOC_SAVE_BUTTON, ALLOW_TO_CREATE_EDIT_ACCOUNT…), 28 seeded-never-checked.
+- [x] F-0157 (2026-09-05) 12 of 20 screenshots (developer/staff names and e-mails, real brand/model names, a marketing infographic) quarantined.
+

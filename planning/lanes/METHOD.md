@@ -83,5 +83,8 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
     `guid_store` → header `guid_store` → branch default (`InventoryTransactionLineFactory`).
 18. **`SHOW_*`-named applet settings are opt-in** (`isShowColumn` shows only if setting OR permission is
     true) — do not list them as hide toggles.
-19. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+19. **Four-proof accessor regex misses destructured reads** (`b.DEFAULT_LOCATION`, lane 3 run 13) — always do a
+    plain-grep second pass for each key name. Applet-local "Knock Off Settings" screens are decoys:
+    KO tabs read the company flow config (§11), not those keys.
+20. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.
