@@ -639,3 +639,10 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0167 (2026-09-05) Screenshot policy: every Organization capture (incl. the 4 kept) shows the staff login e-mail in the top bar; earlier runs tolerated this. Vincent: acceptable, or recapture everything with a synthetic login? (Applies across all lanes.)
 - [x] F-0168 (2026-09-05) Eight Organization screenshots (a first name, brands as test data, a possible customer abbreviation, infographic) quarantined.
 
+## From Lane 3 run 17 (2026-09-05)
+
+### backend (approvals) — affects Purchase Requisition AND Purchase Order
+- [ ] F-0169 (2026-09-05) Auto-FINAL fires on the FIRST approve action, not the last level (GenericDocApprovalRequestProcessor L200–201: date_final_approval != null || approval_status == APPROVED). Plain FINAL from the listing is never gated on approval (only HIDE_GENDOC_FINAL_BUTTON, whose SHOW_ override is unseeded). Approval Logic (ANY/ALL) and Min/Max Amount are stored but never evaluated; Employee Ranking has no reader. Vincent: intended? Should the backend gate FINAL when an approval setting exists? Answers lane 4's F-0143 for the Stock Requisition too (there: NOT enforced; here: enforced via approvals/processors/submission).
+- [ ] F-0170 (2026-09-05) KO For panel gate queries the Jobsheet→Sales Invoice flow row instead of Jobsheet→Purchase Requisition (copy-paste; same class as F-0158). Line Items Queue APPROVE writes a flag nothing reads.
+- [x] F-0171 (2026-09-05) Five images (real company names, staff first names, developer names as item codes, two infographics) quarantined.
+

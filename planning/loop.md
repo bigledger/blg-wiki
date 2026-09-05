@@ -149,6 +149,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 - **F-0160** Merchant Access: stub to exclude, or where is its source? · **F-0161** NSTI import/manual lines inert; Merchant Admin delete/ID/verify-email risks — tickets?
 - **F-0163 LIKELY LIVE BUG** Purchase Refund Note: backend signums flipped 2026-04-23, applet not updated → creation should fail. Confirm and fix.
 - **F-0167 POLICY** staff login e-mail visible in the top bar of most kept screenshots — acceptable, or recapture all? · **F-0166** Organization backend oddities — tickets?
+- **F-0169 APPROVALS** auto-FINAL on the first approval; FINAL never gated — intended? (PR and PO)
 - **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
   Voucher applet?; **F-0042** resolved (three distinct applets; see F-0099).
 
