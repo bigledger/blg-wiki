@@ -86,5 +86,8 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
 19. **Four-proof accessor regex misses destructured reads** (`b.DEFAULT_LOCATION`, lane 3 run 13) — always do a
     plain-grep second pass for each key name. Applet-local "Knock Off Settings" screens are decoys:
     KO tabs read the company flow config (§11), not those keys.
-20. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+20. **Check for auto-created GL codes before writing any missing-GL claim** (lane 4, run 16): NSTI
+    auto-creates its "Non-Stock and Trade-In" GL code, company link and subledger. Grep the backend
+    for `createDefaultGLCode`-style helpers per doc type.
+21. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.

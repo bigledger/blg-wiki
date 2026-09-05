@@ -614,3 +614,12 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0158 (2026-09-05) The KO For tab is a copy of the Purchase Order applet's: renders only when the company's PR→PO flow row is enabled, lists PR→PO queue rows, checks the PO create permission — quoting from a requisition needs a row naming a different document, and the knock-off does not reduce the requisition's open quantity. Knock-off is one-shot and TEMP-only. SHOW_TRANSACTION_DATE locks the date picker tenant-wide by default — intended? SHOW_AMOUNT_MAIN_LISTING / SHOW_SST_VAT_GST_AMOUNT checked but unseeded (skipped by the 2026-07 seeding sweep).
 - [x] F-0159 (2026-09-05) Six images quarantined (a video-site screenshot with a third-party ad, four generated infographics, one listing whose code matches a customer repo slug).
 
+## From Lane 4 run 16 (2026-09-05)
+
+### registry (merchant)
+- [ ] F-0160 (2026-09-05) MerchantAccessApplet "Merchant Access" — ACTIVE with its own build, no repo in refs/ or the org, no page; marketing withheld a webinar because it kept crashing. Exclude as a stub or locate its source? MerchantAdminApplet and nonStockAndTradeInApplet documentation_url → Confluence.
+
+### product (NSTI / merchant admin)
+- [ ] F-0161 (2026-09-05) NSTI: manual "Add Transaction" lines never move the balance; CSV import fills a staging table only (issues open); units are created only by NSTI_TXN_LINE_PROCESSOR from FINAL docs when the tenant's job-template links subscribe the two processors. Merchant Admin: physical delete without confirmation/dependency checks; non-unique Merchant ID; browser-computed contract code; Verify Email creates tenant users as a side effect. Confirm deployed build; tickets?
+- [x] F-0162 (2026-09-05) Five NSTI screenshots (staff names, a brand as test data) quarantined.
+
