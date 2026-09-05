@@ -5,8 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/inventory-workflow/inv-item-maintenance-applet.md",
-  "content/en/applets/master-data/inv-item-maintenance-applet.md",
   "content/en/applets/master-data/merchant-applet.md",
   "content/en/applets/inventory-workflow/non-stock-and-trade-in-applet.md",
   "content/en/applets/master-data/organisation-applet.md",
@@ -86,6 +84,12 @@
    "date": "2026-09-05",
    "run": 13,
    "note": "Registry StockTakev2 'Stock Take' (title changed from 'Stock Take Applet'). Two ACTIVE 'Stock Take' rows: DigistockTake is customer-specific (applet-exclusions.tsv); StockTakev2's es_module_url is this repo's build. Stock Take HQ / Stock Take Staff (stockTakehq, st_staff) point at the same customer build family and have no page."
+  },
+  {
+   "page": "content/en/applets/master-data/inv-item-maintenance-applet.md",
+   "date": "2026-09-05",
+   "run": 14,
+   "note": "Registry InvItemMaintenanceApplet 'Inventory Item Maintenance' (title changed from 'Inventory Item Maintenance Applet'). Canonical page for the applet; the inventory-workflow copy is skipped (F-0007)."
   }
  ],
  "skipped": [
@@ -116,6 +120,10 @@
   {
    "page": "content/en/applets/inventory-workflow/introduction-to-stock-take-applet.md",
    "reason": "Duplicate second page for registry row StockTakev2 'Stock Take' — merged into inventory-workflow/stock-take-applet.md (run 13). Marketing intro with no facts the canonical page lacks; no inbound links. Not rewritten; recommend delete + alias (Vincent's decision, F-0050 pattern)."
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/inv-item-maintenance-applet.md",
+   "reason": "Duplicate second page for registry row InvItemMaintenanceApplet (F-0007) — merged into master-data/inv-item-maintenance-applet.md in run 14 (its screenshots re-used there). Not rewritten; recommend delete + alias /applets/inventory-workflow/inv-item-maintenance-applet/ on the canonical page (Vincent's decision, F-0050 pattern)."
   }
  ],
  "updated": "2026-09-05",

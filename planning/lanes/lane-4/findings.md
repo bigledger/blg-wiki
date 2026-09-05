@@ -657,3 +657,70 @@ Eighteen images were referenced by the old page (all exist in `static/images/sto
 - The digi-prefixed backend controller and the applet's `Core2Config.DIGI_PREFIX` URL are an org-repo artefact (the report generator lives under a customer-named package but serves the org applet); cited by file path only, no customer name in the page body.
 - Lateral pass: 34 issues read, 33 `lateral` lines in the applied record (customer repo cited as `customer-repo-ce5219`, already in kb/private/repo-pseudonyms.tsv); one skipped record for the intro page.
 - Pace: ~100 minutes for one applet (registry disambiguation across four rows, a monorepo-split repo, a 700-line SQL report service, 18 screenshots to triage, 30+ issues). Stopping here; next is inventory-workflow/inv-item-maintenance-applet.md — note it is queued twice (inventory-workflow and master-data copies), which needs the same one-page resolution before either is rewritten.
+
+# Run 14 (2026-09-05)
+
+## Pages
+
+- content/en/applets/master-data/inv-item-maintenance-applet.md — rewritten to the standard under the registry name **Inventory Item Maintenance** (`InvItemMaintenanceApplet`, TNT-USER; title changed from "Inventory Item Maintenance Applet"). Repo `blg-applet-wavelet-inv-item-maintenance-applet` (monorepo split: `micro-fe/projects/wavelet-erp/applets/inv-item-maintenance-applet`; commit 06aebbc, 2026-08-04); blg-shared-utilities af523eb; blg-akaun-ng-lib 2307797; blg-akaun-ts-lib 7d1616a9e; backend 871dbf5c96. The old master-data page was almost entirely invented (FIFO/LIFO/Average cost method per item, ABC analysis, safety stock, "up to 1,000,000 products", "50 custom fields", "20 images per product", cross-docking, PLM/EDI integrations) — none of it exists in the applet; all dropped. The YouTube intro is kept.
+- content/en/applets/inventory-workflow/inv-item-maintenance-applet.md — **skipped (merged, F-0007)**. Second page for the same registry row. Its 13 screenshots were the only asset worth keeping — 10 re-used on the canonical page (see "Screenshots"). Its own facts were partly right (255-char limit, upper-casing on create, mandatory fields, tabs) and partly wrong (see "Direction / fact reversals"). File untouched; recommend delete + alias (question 39).
+
+## Registry / naming mismatches (run 14)
+
+- The registry `documentation_url` is `https://wiki.bigledger.com/applets/inv-item-maintenance-applet/`, which is the canonical page's alias — correct, no change needed. The applet's own `app.component.ts` still calls itself "Inv Item Maintenance Applet" in the header bar (the screenshots show that name); the registry name is "Inventory Item Maintenance". No second ACTIVE row.
+
+## Direction / fact reversals found (run 14)
+
+- **The Item Edit Main-tab Save is permanently disabled.** `resetForm()` declares `currentGlCode` with `Validators.required`; nothing ever patches it; the Save button is `[disabled]="!form.valid"`. Everything that saves through that button (category links, GL code, abbreviation, EAN, currency, status, dimensions) cannot be saved from the UI at commit 06aebbc. The old inventory-workflow page's "Item Details: Access and update granular information" is therefore only true for the tabs with their own save paths (Multi UOM, Manage Image, Location min/max, Company). Verified from source only — see question 40.
+- **"Case Sensitivity: Item Code and Item Name are automatically converted to UPPERCASE upon saving"** — true on Create; on Edit only the CSS upper-cases the display, the save stores the typed name.
+- **"Available Pricing Fields: List Price, Wholesale Price, Discounted Price, Price Brackets"** (old inventory-workflow page) — these belong to the doc item; the inventory record has no price fields. The `ItemCode` class carrying them in `inv-item-options.ts` is dead legacy.
+- **"Trace Serial No … Check Current Status: Is it in stock? Sold? Under repair?"** — the trace shows movements (document, location, quantity × signum); there is no status column.
+- **"Stock Aging … Filter by Location, Category, or Date Range"** — the filter is *Date As* (a single balance date), locations, item type/status, *Calculate Base On* and ten category levels. The **Aging** column is the item header's `plm_display_text` (a product-aging-cycle text set by the item file import), not a computed age; the age is expressed by the per-month Qty/Amount column groups built from FIFO layers.
+- **"Multi-UOM: the system handles the conversion automatically"** — the applet stores UOM lines with a ratio and an EAN; conversion happens in the document applets, not here.
+- **"Bulk deletion is restricted … deactivate items individually"** — there is no delete or deactivate action in the UI at all; the backend DELETE endpoint (physical delete, permission `TNT_API_INVENTORY_ITEM_DELETE`) has no transaction check.
+- **Status is two fields.** Header `status` (ACTIVE/INACTIVE/DELETED, synced from the doc item by `FiItemToInventoryItemUpdateService`) vs the Main-tab *Status* drop-down, which writes the `ITEM_STATUS` extension (ACTIVE/INACTIVE/OBSOLETE). The old pages conflated them.
+
+## Findings for the product team (run 14)
+
+- **Item Edit Save dead** (`item-edit.component.ts` L144: `currentGlCode` required, never populated; `item-edit.component.html` L8). Present since the monorepo split (c3ccf6e, 2025-11-02). Drop the validator or patch the control.
+- **`HIDE_ITEM_CATEGORY`** is rendered and persisted but never read (the Item Category tab has no `*ngIf`).
+- **Department Settings** panel: four unbound toggles (Segment, G/L Dimension, Profit Center, Project) — not saved.
+- **Default Selection** (Settings and Personalization) is dead: `appletContainer` never assigned, `appletSettings$` input never bound; a change throws; `DEFAULT_BRANCH` / `DEFAULT_LOCATION` are read by nothing. Same family as GIN / Entity / Forex / Goods Delivery Note / Stock Take.
+- **`models/applet-settings.model.ts`** is a document-applet copy; none of its keys is used by this applet.
+- **Settings menu** lists *Attribute* / *Attribute Set* with no route.
+- **EAN Code cannot be cleared** from the Main tab (`scan_code` written only when non-empty).
+- **Company tab** column "Stock Bal Qty" is bound to `bl_fi_mst_comp.name`.
+- **No transaction guard on delete** server-side (`InventoryItemController.deleteInventoryItemByGuid`); the UI guard is commented out.
+- **Scan-code drift** between doc item and inventory item is a recurring customer incident (customer-repo-ce5219#512/#513/#515/#174); auto-creation copies `scan_code` once and nothing keeps them aligned. Consider syncing on doc-item update (as status already is) rather than a data-fix.
+- **Trace Serial No** keyword search is case-sensitive `LIKE`; serials with whitespace are unreachable (gh:bigledger/blg-intranet#4324).
+- Min-Max menu entry has no `HIDE_*` toggle unlike the other five.
+
+## Cross-lane link requests (run 14)
+
+- content/en/applets/inventory-workflow/stock-take-applet.md (lane 4, done) — add: scan lookups resolve the inventory record's `scan_code` and the multi-UOM line EANs; "EAN not found while the full code works" = inventory/doc-item scan-code divergence; link the data-fix endpoint (`…/inv-items/data-fix/scan-code-mismatch/query` and `/align/backoffice-ep`). Change its `/applets/inv-item-maintenance-applet/` link to the canonical `/applets/master-data/inv-item-maintenance-applet/`.
+- content/en/applets/master-data/doc-item-maintenance-applet.md (lane 4, done) — state that the inventory twin is created **asynchronously** by `FinancialToInventoryItemAutoCreationProcessor` (queue), copies code/name/descr/uom/type/sub-type/currency/scan code/dimensions once, and that afterwards only **status** is pushed across; add the scan-code data-fix note.
+- content/en/applets/inventory-workflow/stock-balance-applet.md, stock-availability-applet.md (lane 4, done / reworked) — say Min Qty / Max Qty are maintained on the inventory item's Location tab or by the Min-Max Quantity Import, and that a daily "Min/Max Qty Stock Balance Alert" e-mail can be scheduled from this applet's Settings › Email Notification.
+- content/en/applets/inventory-workflow/warehouse-management-applet.md, content/en/applets/master-data/organisation-applet.md (lane 4, queued) — add `inv-item-maintenance-applet` to `related_applets` when rewritten.
+- content/en/applets/manufacturing/process-maintenance-applet.md (manufacturing lane) — add `inv-item-maintenance-applet` to `related_applets`; the inventory item's Process Template tab lists `bl_mrp_process_template_bom` rows and offers a *Replace* (swap item) action.
+- content/en/applets/sales-workflow/{internal-sales-invoice,internal-sales-order,internal-sales-credit-note,internal-sales-quotation,internal-sales-return}-applet.md, content/en/applets/membership/commission-scheme-applet.md, content/en/applets/inventory-workflow/internal-stock-requisition-applet.md — they link `/applets/inventory-workflow/inv-item-maintenance-applet/`; if the duplicate is deleted (question 39) either add that URL as an alias on the canonical page or repoint the seven links to `/applets/master-data/inv-item-maintenance-applet/`.
+- Data Fix applet page (utilities owner) — document the scan-code mismatch query/align feature (delivered for customer-repo-ce5219#513).
+- content/en/modules-v2/inventory/*, modules/inventory*/_index.md (modules owner) — remove any "ABC analysis / safety stock / per-item cost method" claims inherited from the old inv-item page.
+- API reference (developer-docs lane) — `PUT …/current-location-stock-balance/update-min-max-qty/backoffice-ep`, `POST …/erp/trace-serial-number/backoffice-ep`, `POST core2/tnt/dm/erp/reports/stock/stock-aging-report`, and the two `…/inv-items/data-fix/scan-code-mismatch/*` routes are undocumented.
+
+## Screenshots (run 14)
+
+Thirteen images exist in `static/images/inv-item-maintenance-applet/`. Kept ten staging-tenant captures (tenant shown as "STAGING_TENANT", test item codes, the logged-in user's avatar photo top-right — same caveat as run 13): `item-listing.png`, `item-create.png`, `item-edit.png`, `category-groups-listing.png`, `category-groups-create.png`, `categories-create.png`, `trace-serial-no.png`, `import-file.png`, `stock-aging-report.png`, `settings-page.png`. Dropped three: `categories-listing.png` (a real electronics brand appears as a category name), and the two marketing infographics `inv-item-maintenance-applet-overview-infographic.png` / `quick-start-guide-infographic.png` (not screenshots; "From Inventory Chaos to Precision Control" voice). Files left on disk. Missing captures that would help: Item Edit › Location tab with editable Min/Max, Multi Uom create, the Field Settings screen itself (the old `settings-page.png` shows the Teams landing panel, not Field Settings), Email Notification create.
+
+## Questions for Vincent (run 14)
+
+39. **Delete `inventory-workflow/inv-item-maintenance-applet.md`** and add `/applets/inventory-workflow/inv-item-maintenance-applet/` to the canonical page's `aliases`? Seven pages link to that URL today (list above). Recommended; same pattern as F-0050.
+40. **Item Edit Save is dead in source** (unpopulated required `currentGlCode`). Should the page say so as plainly as it now does (Troubleshooting row 1), or is the deployed build known to differ from `main`? If a fix ships, the row and the Fields note must be removed.
+41. **Screenshots** — keep the ten staging captures (avatar photo, "STAGING_TENANT") or recapture from a GadgetSphere-seeded tenant?
+42. The two `SHOW_SN_*` client-side permissions are the only registry permissions for this applet; the `HIDE_*` toggles have no `SHOW_*` counterparts. Fine as documented, or should the applet audit flag applets whose hide toggles cannot be reopened per role?
+
+## Notes (run 14)
+
+- Settings classification: *applet-local* Field Settings (13 working keys + 1 dead + 4 unbound), persisted by the shared session effect; the shared `FieldConfigurationComponent` is not routed, so `gates.py` does not apply — ran it only to confirm the applet code has no `tabMappings` entry. Worth a METHOD.md line: for master-data applets with a local settings component, the "rendered" proof is the local HTML plus `app.component.ts` (menu filter) and the edit template's `*ngIf`s; the model file can be a document-applet copy and must not be trusted for the key list.
+- Master-data lifecycle written as "what it writes / what it only reads" with the DCO throws; no signum, no journal, no queue (METHOD.md item 12 check: ts-lib `endpoint_path` = `erp/inv/inv-items`, own container, own DCO).
+- Issue mining: the applet repo has one issue; the real failure modes came from blg-intranet (14 issues) and the customer repo (7 issues, cited as customer-repo-ce5219). 27 issues read, 27 `lateral` lines.
+- Pace: ~95 minutes for one large master-data applet (9 edit tabs, 4 extra menus, 3 imports/reports, 2 pages to reconcile). Stopping here; next is master-data/merchant-applet.md.
