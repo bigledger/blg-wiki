@@ -139,7 +139,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 - **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
   Voucher applet?; **F-0042** resolved (three distinct applets; see F-0099).
 
-- **Authenticate Gmail and Google Drive**: run `/mcp` in this session and select "claude.ai Gmail" and "claude.ai Google Drive". Until then email/Drive ingestion falls back to the service-account scripts in `vince-pa` (see `kb/sources/email/ACCESS.md`).
+- **Email/Drive access WORKS** via the service-account delegation (verified 2026-09-05, `kb/sources/email/ACCESS.md`, `kb/sources/gdrive/ACCESS.md`) for vincent@aimatrix.com. **Still needed from Vincent:** add `gmail.readonly` to the bigledger.com service account's domain-wide delegation so support@bigledger.com and colleagues' mailboxes can be read (currently `unauthorized_client`).
 
 - ADR-0002: is `accounts-receivable-applet` real (wiki issue #20) or was the issue mistaken?
 - ADR-0001: per-section v1-vs-v2 winners (comparison table to be produced by a `decide` unit).

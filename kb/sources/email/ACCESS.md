@@ -1,20 +1,31 @@
-# Email — how to access (pointers only; no credentials in this repo)
+# Email — how to access (VERIFIED 2026-09-05; pointers only, no credentials in this repo)
 
-Two working paths, both belonging to Vincent's tooling — read their docs before use:
+**Working path: service account + domain-wide delegation, read-only, run as vincent.**
+```
+PY=/home/vincent/projects/sysadmin/google-admin/.venv/bin/python
+sudo -u vincent $PY - <<'PYEOF'
+from google.oauth2 import service_account
+from googleapiclient.discovery import build
+SA={"aimatrix.com":"/home/vincent/projects/sysadmin/google-admin/aimatrix-com-7dc264d3d5ec.json",
+    "bigledger.com":"/home/vincent/projects/sysadmin/google-admin/blg-amx-admin-ba3b0c3a3cd1.json"}
+mailbox="vincent@aimatrix.com"
+c=service_account.Credentials.from_service_account_file(SA[mailbox.split('@')[1]],
+    scopes=["https://www.googleapis.com/auth/gmail.readonly"]).with_subject(mailbox)
+g=build("gmail","v1",credentials=c,cache_discovery=False)
+# list: g.users().messages().list(userId="me", q="newer_than:7d einvoice", maxResults=50)
+# read: g.users().messages().get(userId="me", id=<id>, format="full")  — bodies → kb/private/ only
+PYEOF
+```
+- **vincent@aimatrix.com: verified OK** (2026-09-05: ~201 e-invoice messages in 7 days — project meeting notes, customer threads, GitHub notifications).
+- **@bigledger.com mailboxes (e.g. support@): FAIL `unauthorized_client`** — the bigledger.com service
+  account is not delegated for `gmail.readonly`. Fix is in the Google Admin console (Security → API
+  controls → Domain-wide delegation) for client `blg-amx-admin`, per
+  `/home/robot/repos/blg-robot-support/sop/decisions/2026-06-28-email-access.md`. Waiting on Vincent.
+- Reference implementation with governance (scoped queries, audit log, cite-don't-quote):
+  `/home/robot/repos/blg-robot-support/scripts/data/gmail-search.py`. Follow its rules: one mailbox per
+  query, scoped by customer/topic, headers first, bodies only when needed, never paste bodies anywhere.
+- Fallback: the claude.ai Gmail connector once Vincent authenticates it with `/mcp`.
 
-1. **`gws` CLI** (Google Workspace CLI), run as vincent with the file keyring:
-   `sudo -u vincent env GOOGLE_WORKSPACE_CLI_KEYRING_BACKEND=file gws gmail users messages list --params '{"userId":"me","q":"…","maxResults":500}'`
-   Playbook: `/home/vincent/projects/my-google/docs/gmail.md` (strip the "Using keyring backend" line before JSON-parsing; paginate on `nextPageToken`).
-2. **Service account + domain-wide delegation** (any @bigledger.com / @aimatrix.com mailbox):
-   `/home/vincent/projects/vince-pa/scripts/gmail.py` (interpreter: the google-admin venv). Accounts: `vince-pa/accounts/<account>/config.yaml`; keys under `vince-pa/secrets/google/` — never copy them.
-   A long-running watcher exists at `vince-pa/apps/mail-worker` (historyId deltas) — the model for this source's cursor.
-
-Ledger id: `mail:<Message-ID header>`; `thread` field = Gmail threadId. Cursor per mailbox/label = `{historyId | last internalDate}`.
-Raw bodies → `kb/private/` only. Facts extracted into topics must be anonymised (no customer or person names).
-
-**Known limitation (2026-09-05):** `gws` fails with `spawnSync … EACCES` when run through `sudo -u vincent`
-from this account (the ELF is executable; the failure is the sudo/AppArmor context). Use the
-service-account path (`vince-pa/scripts/gmail.py` / `sysadmin/google-admin/test_drive.py` with the
-google-admin venv) from this account, or run `gws` in Vincent's own session.
-
-**claude.ai connector (preferred once authenticated, 2026-09-05):** the session has the "claude.ai Gmail" / "claude.ai Google Drive" MCP connectors installed. Vincent authenticates them with `/mcp`; then their tools (search, read, list) become available directly — no sudo, no keyring. Use them first; the scripts above are the fallback.
+Ledger id: `mail:<Message-ID header>` (fall back to `gmail:<id>`); `thread` = threadId. Cursor per
+mailbox+query = last `internalDate`. Raw bodies → `kb/private/` only. Facts extracted into topics are
+anonymised (no customer or person names).

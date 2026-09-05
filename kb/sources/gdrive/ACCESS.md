@@ -1,16 +1,18 @@
-# Google Drive — how to access (pointers only)
+# Google Drive — how to access (VERIFIED 2026-09-05; pointers only)
 
-`gws` CLI as vincent (file keyring). Playbook: `/home/vincent/projects/my-google/docs/drive.md`;
-the 83 shared drives are listed in `/home/vincent/projects/my-google/reference/shared-drives.md`.
-Shared drives need `corpora=drive`, `driveId`, `supportsAllDrives`, `includeItemsFromAllDrives`.
-Docs/Sheets: export to text (`files export`) before hashing. Service-account path (delegation) also
-works via the google-admin venv — see `/home/vincent/projects/sysadmin/google-admin/test_drive.py`.
+**Working path: same service account + delegation as email, scope `drive.readonly`, subject
+`vincent@aimatrix.com`** — 84 shared drives visible. Use `corpora="allDrives"`,
+`includeItemsFromAllDrives=True`, `supportsAllDrives=True`. Docs/Sheets: `files().export_media(
+fileId, mimeType="text/plain" | "text/csv")` before hashing. Reference implementation:
+`/home/robot/repos/blg-robot-support/scripts/data/gdrive-find.py` (and `gsheet.py`).
 
-Ledger id: `gdrive:<fileId>`; cursor per drive = last `modifiedTime`. Exports → `kb/private/`.
+The robot keeps a **curated Drive catalog** (`blg-robot-support/knowledge/drive-index/catalog.jsonl`,
+13 entries: roster/spec/ucc/access) keyed by file id — reuse the idea: `kb/sources/gdrive/catalog.jsonl`
+records only files judged relevant to the wiki, with `relevance` + `last_verified`, so we grep instead
+of re-scanning Drive.
 
-**Known limitation (2026-09-05):** `gws` fails with `spawnSync … EACCES` when run through `sudo -u vincent`
-from this account (the ELF is executable; the failure is the sudo/AppArmor context). Use the
-service-account path (`vince-pa/scripts/gmail.py` / `sysadmin/google-admin/test_drive.py` with the
-google-admin venv) from this account, or run `gws` in Vincent's own session.
+Observed 2026-09-05 (names only): weekly "Auto E-Invoice Consolidation" project notes (Aug–Sep 2026),
+an e-invoice automation doc, e-invoice proposals/BRDs for named customers (customer-specific → facts
+only, never names). Fallback: the claude.ai Drive connector once authenticated with `/mcp`.
 
-**claude.ai connector (preferred once authenticated, 2026-09-05):** the session has the "claude.ai Gmail" / "claude.ai Google Drive" MCP connectors installed. Vincent authenticates them with `/mcp`; then their tools (search, read, list) become available directly — no sudo, no keyring. Use them first; the scripts above are the fallback.
+Ledger id: `gdrive:<fileId>`; cursor per query = last `modifiedTime`. Exports → `kb/private/` only.
