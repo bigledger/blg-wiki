@@ -653,3 +653,12 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0173 (2026-09-05) AkaunPriceBookApplet "Akaun Price Book" — ACTIVE (2025-11) with its own build, no page, only a deprecated one-commit repo in refs/. Document or clean the registry row?
 - [ ] F-0174 (2026-09-05) Pricebook user guide requested (blg-wiki #128 / F-0032) — write after the applet pass, from kb/topics/pricebook-applet.md. No product screenshots exist; recapture list from a GadgetSphere-seeded tenant in lane-4 findings.
 
+## From Lane 3 run 18 — PDG (2026-09-05)
+
+### registry / policy
+- [ ] F-0175 (2026-09-05) pdgApplet (inventory planning; repo renamed to a customer slug, old page named the customer in paragraph one — removed) is ACTIVE and not excluded, so it was documented generically. Vincent: customer-specific → exclusion list, or keep the page? documentation_url is empty → set /applets/ecommerce/pdg-applet/ (page sits under ecommerce/ though it is inventory planning).
+
+### product (PDG)
+- [ ] F-0176 (2026-09-05) PDG create is async: 200 + PROCESSING, then a job generates combinations; if no location matches, the job throws and sets the header DELETED, which the listing silently hides. OPDG copies created without quantities. Empty location target list = every outlet visible. Delete PDG is a hard delete FK-blocked once an OPDG exists. Effective/End dates and brand-corner rules are client-side only. Tickets?
+- [x] F-0177 (2026-09-05) 26 of 33 screenshots (real tenant/company/mall/distributor names, staff e-mails, developer name, brands, infographics) quarantined.
+
