@@ -8,11 +8,6 @@
   "human-resources"
  ],
  "queue": [
-  "content/en/applets/integrations/90-ecomsync-related-applets.md",
-  "content/en/applets/finance/accounts-receivable-applet.md",
-  "content/en/applets/human-resources/admin-time-attendance-applet.md",
-  "content/en/applets/crm/ai-customer-analytics-applet.md",
-  "content/en/applets/finance/budget-applet.md",
   "content/en/applets/finance/budgetary-applet.md",
   "content/en/applets/finance/creditor-report-applet.md",
   "content/en/applets/finance/debtor-and-creditor-report-applet.md",
@@ -68,6 +63,11 @@
    "page": "content/en/applets/finance/internal-purchase-invoice-applet.md",
    "date": "2026-09-05",
    "note": "rework (codex review) applied in run 5"
+  },
+  {
+   "page": "content/en/applets/integrations/90-ecomsync-related-applets.md",
+   "date": "2026-09-05",
+   "note": "no single registry row; restructured as an index page linking the real EcomSync applet pages (run 6)"
   }
  ],
  "skipped": [
@@ -75,6 +75,26 @@
    "page": "content/en/applets/finance/tax-config-applet.md",
    "date": "2026-09-05",
    "why": "F-0040: duplicate of master-data/tax-configuration-applet.md (same title; registry code taxConfiguration, documentation_url /applets/tax-config-applet/ is an alias on the finance page). Merge/canonical decision pending with Vincent; not enhanced."
+  },
+  {
+   "page": "content/en/applets/finance/accounts-receivable-applet.md",
+   "date": "2026-09-05",
+   "why": "No ACTIVE registry row under any receivable/debtor/AR name (only Debtor Report Applet, Debtor and Creditor Report, Creditor Report Applet \u2014 all separate queue pages). Page is a 53-line TODO placeholder. Not enhanced (ADR-0002)."
+  },
+  {
+   "page": "content/en/applets/human-resources/admin-time-attendance-applet.md",
+   "date": "2026-09-05",
+   "why": "No ACTIVE registry row under any attendance/time/HR/roster name (HR rows are Employee Maintenance only). Page is a 165-line work-in-progress stub. Not enhanced (ADR-0002)."
+  },
+  {
+   "page": "content/en/applets/crm/ai-customer-analytics-applet.md",
+   "date": "2026-09-05",
+   "why": "No ACTIVE registry row under any analytics/insight/AI/customer name. Page is a 53-line TODO placeholder. Not enhanced (ADR-0002)."
+  },
+  {
+   "page": "content/en/applets/finance/budget-applet.md",
+   "date": "2026-09-05",
+   "why": "No registry row for 'Budget Applet'; the registry row is budgetaryApplet 'Budgetary Applet' whose documentation_url is /applets/finance/budgetary-applet/ (a 10-line placeholder still in the queue). The 1,495-line budget-applet.md is the raw material for that page \u2014 merge/alias decision for Vincent (question 13)."
   }
  ],
  "updated": "2026-09-05",

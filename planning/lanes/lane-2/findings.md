@@ -139,3 +139,63 @@ Drag-and-drop custom report builder; custom formulas / styling; Cash Flow Statem
 - Method: `EXPAND_*` keys are consumed through `panel.expandSetting` indirection (`this.appletSettings[panel.expandSetting]`), so a plain grep for the key name in `.ts` finds nothing — grep for `expandSetting` too. Other document applets built from the same edit-component pattern will show the same false negative.
 - Method: settings defaults for the shared screen are per-applet (`shouldHideSetting()` list of 21 applet codes) — for the applets in that list a fresh tenant's first Save hides most line-item price/discount/tax columns. Worth a one-line warning on every page in the family.
 - Pace: the rework took the full run (~90 min). Next: `content/en/applets/integrations/90-ecomsync-related-applets.md`.
+
+## Run 6 (2026-09-05) — EcomSync Related Applets (restructured as an index page)
+
+### What changed on `content/en/applets/integrations/90-ecomsync-related-applets.md`
+
+- The page was an 11-line stub of Confluence how-to titles with no links. It has **no single registry row**: it describes a capability that spans Organisation (marketplace branch), Doc Item Maintenance (listings, Ecomsync Management, Scheduler) and Sales Order (Internal) (orders, dashboards, bulk status update), plus the backend job set. Per the run-6 instruction it was **restructured as an index page**, not forced into the single-applet standard: Overview · Where it fits (7 applets, all linked) · Marketplaces supported (per-marketplace matrix of which processors exist) · Setup order (the stub's eleven how-tos as 14 numbered steps, each pointing at the owning applet and the backend columns it writes) · Background jobs (every processor class in `jobProcessor/custom/ecomSync`, `jobProcessor/ecomsync`, `controller/tenant/custom/ecomSync`) · Troubleshooting (code-grounded: the two bulk-update toasts, "Please select the branch", TEMP orders, TikTok/Shopify not schedulable from the UI) · Related documentation.
+- Front matter: no `applet_code` / `applet_repo` (none exists); `modules`, `related_applets`, `guides` and a per-section `sources:` map added (keys `where-it-fits`, `data-model`, `background-jobs`, `troubleshooting` — not the standard's `configuration/fields/lifecycle` keys, because the page has no such sections). **Alias `/applets/90-ecomsync-related-applets/` added** — `content/en/applets/_index.md:115` and `applet-catalog.md:344` (and the zh copies) link that URL, which did not resolve because the page lives under `integrations/` and had no alias.
+- Deep anchors were deliberately not used (the stale `public/` build carries no heading ids to verify against); links go to page tops with the tab/screen named in text.
+
+### Registry / naming mismatches (run 6)
+
+- `ecomSyncApplet` "Ecom Sync" (TNT-APPLET, ACTIVE, 2021-12-06) and `ecomSyncOrganisationApplet` "Ecom Sync Organisation" (ROOT-USER, ACTIVE, 2025-09-26): **neither code appears in any cloned repo** (bounded grep over refs/ *.ts/*.json/*.java/*.html excluding node_modules/dist/target — zero hits). The org repo `wavelet-Ecomsync` exists on GitHub but has no commits; the only other marketplace repo is customer-named (excluded). Not documented as applet pages; the index page says "no separate EcomSync user interface exists in the current source code".
+- `shopee_sales_order_applet` is ACTIVE under the **name "Tiktok Sales Order Applet"** (code says Shopee, name and `app.component.ts` say Tiktok; the repo counts 657 "SHOPEE" strings vs 2 "Tiktok"). Repo `blg-applet-wavelet-shopee-sales-order-applet` is a trimmed Sales Order (Internal) build split from the monorepo on 2025-11-01. No wiki page; not in the exclusion list. Mentioned on the index page without a link.
+- The page keeps its non-registry title "EcomSync Related Applets" (index page). The audit's "no registry match" entry for it is expected and should be treated as an index, not a phantom — please allowlist it in the parity check.
+
+### Cross-lane link requests (run 6)
+
+- **modules-v2/ecommerce/related-applets (Lane owning `modules-v2/`)**: add a card or bullet for `/applets/integrations/90-ecomsync-related-applets/` (marketplace synchronisation index); its Doc Item / Pricebook / Sales Order bullets do not mention the marketplace angle.
+- **organisation-applet (Lane owning `master-data/`)**: add `90-ecomsync-related-applets` (and `internal-sales-order-applet`, `stock-availability-applet`) to `related_applets`; the Marketplace → Stock Configuration row could name the columns it writes (`mode_config`, `sales_order_config`, `buffer_config`, `qty_buffer`, `percentage`, `stock_mode`, `override_item_stock_config` on `bl_fi_mst_ecomsync_branch`). The page's Marketplace Type list names a customer-specific option verbatim — consider generalising it.
+- **doc-item-maintenance-applet (Lane owning `master-data/`)**: add `90-ecomsync-related-applets` to `related_applets`; the Scheduler section says "e.g." — the screen offers exactly the twelve Lazada/Shopee codes listed on the index page (`scheduler-create.component.ts`), and the Ecomsync Management gear item could say what it does (four branch-scoped pulls: Lazada category tree / brands, Shopee category tree / logistics).
+- **internal-sales-order-applet (Lane owning `sales-workflow/`)**: add `90-ecomsync-related-applets` to `related_applets`; the Bulk Update listing (route from `internal-sales-order-pages.service.ts`, view column 21) and its three modes are not on the page yet — the "Update marketplace order status" step lives there.
+- **stock-availability-applet (Lane owning `inventory-workflow/`)**: add `90-ecomsync-related-applets`; the `mkp_seller_*` quantities and `StockAvailabilityProcessor` are the marketplace side of that applet.
+- **Own lane, next pass**: `internal-receipt-voucher-applet.md` — one line that the Shopee payout, TikTok settlement and Lazada receipt processors create receipt vouchers on the marketplace branch, plus the index page in Related applets.
+
+### Undocumented applets encountered (run 6)
+
+- `shopee_sales_order_applet` "Tiktok Sales Order Applet" — ACTIVE, has a repo, no page (see above). If it is a generic product (not customer-specific), it belongs in `sales-workflow/` (another lane) as a short page pointing at Sales Order (Internal).
+
+### Questions for Vincent (run 6)
+
+10. **"Ecom Sync" / "Ecom Sync Organisation" registry rows.** Both are ACTIVE with no code in any cloned repo and an empty `wavelet-Ecomsync` repo. Are they live products with a UI hosted elsewhere (then Lane 2 needs the repo), or leftovers to mark DELETED / add to the exclusion list? The index page currently states that no separate EcomSync UI exists in the source code.
+11. **"Tiktok Sales Order Applet"** (`shopee_sales_order_applet`): generic product or customer-specific? Decides whether it gets a page and which lane.
+12. **Index pages vs the applet standard.** This page is the first index/hub page in an applets folder. Should the parity check allowlist a `page_type: index` front-matter key (not added — not in the standard), or should hub pages move out of `content/en/applets/`?
+
+### Notes (run 6)
+
+- Method: for a "related applets" hub, the useful code evidence is the backend **table columns** (`client-sdk/.../dal/table/financial/bl_fi_mst_ecomsync_*.java`) and the **processor class list** — they give a complete, invention-free map of what each applet writes and what runs unattended, without needing a settings component.
+- Method: `find refs -iname "*ecom*"` misses the marketplace code — it lives under the *owning* applets' repos and the backend's `domain/tenant/{lazada,shopee,tiktok,shopify,magento,selluseller}` packages. Grep the backend first when a registry row has no obvious repo.
+- The built `public/` directory is stale relative to the rewritten applet pages (no heading ids, older content) — do not use it to verify anchors; verify link *targets* only.
+- Pace: the hub took roughly one focused hour (survey of 3 applet repos + backend). content-lint passes. **Next: `content/en/applets/finance/accounts-receivable-applet.md`** — note it is on the audit's "no registry match" list; resolve the registry row first (likely a debtor/AR report or the Ledger side) before enhancing.
+
+### Registry / naming mismatches (run 6, queue triage)
+
+Resolved the registry rows for the next pages in the queue before starting them; four have no row and were marked **skipped** in state.json (not enhanced, per ADR-0002):
+
+- `finance/accounts-receivable-applet.md` "Accounts Receivable Applet" — no row under receivable / debtor / AR; the AR-side applets in the registry are `debtor_report_applet`, `debtor-and-creditor-report-applet` and `creditor_report_applet`, each with its own queue page. 53-line TODO placeholder. Inbound links from `modules/financial-accounting/_index.md`, `modules-v2/financial-accounting/_index.md`, `user-guide/industry-solutions/professional-services.md` will need re-pointing if the page is removed.
+- `human-resources/admin-time-attendance-applet.md` "Admin Time & Attendance Applet" — no row under attendance / time / roster / HR (the only HR row is `employeeApplet` "Employee Maintenance"). 165-line work-in-progress stub. Inbound links from five `modules-v2/hr-payroll/*` pages.
+- `crm/ai-customer-analytics-applet.md` "AI Customer Analytics Applet" — no row under analytics / insight / AI / customer. 53-line TODO placeholder. Inbound link from `modules-v2/crm-digital/reports/_index.md`.
+- `finance/budget-applet.md` "Budget Applet" (1,495 lines) vs `finance/budgetary-applet.md` "Budgetary Applet" (10-line placeholder): the registry row is `budgetaryApplet` "Budgetary Applet" (TNT-ADMIN, ACTIVE) and its `documentation_url` is `/applets/finance/budgetary-applet/`. Skipped `budget-applet.md`; `budgetary-applet.md` stays at the head of the queue and should absorb the Budget page's content under the registry name with `/applets/finance/budget-applet/` as an alias — pending question 13.
+
+### Questions for Vincent (run 6, continued)
+
+13. **Budget vs Budgetary.** May Lane 2 rewrite `budgetary-applet.md` under the registry name "Budgetary Applet", fold in whatever of `budget-applet.md` survives the code check, add the alias, and delete `budget-applet.md`? (Deletion is outside the "edit only" rule, so it needs your go-ahead; otherwise the phantom stays and the modules pages keep linking it.)
+14. **Three placeholder pages with no registry row** (Accounts Receivable, Admin Time & Attendance, AI Customer Analytics): delete, or keep as stubs? None has code to derive from; the modules-v2 pages that link them describe features that do not exist as applets.
+
+### Notes (run 6, continued)
+
+- Triage first, then write: resolving the registry row for the *next five* queue pages took five minutes and removed four dead pages from the queue. Worth doing at the start of every run.
+- **Next: `content/en/applets/finance/budgetary-applet.md`** (registry `budgetaryApplet`), using `budget-applet.md` only as a list of claims to verify against the repo — expect one full run.
+- Repo for the next page: `refs/blg-applet-wavelet-budgetary-applet` (confirmed present 2026-09-05).
