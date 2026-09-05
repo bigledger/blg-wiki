@@ -1171,3 +1171,50 @@ Registry `supplierDeliveryOrderApplet` / "Supplier Delivery Order Applet" (TNT-U
 ### Stopping point
 
 One page this run (document-identity resolution across applet constants, ts-lib and backend handler map, the pinned-submodule gates pass, and the scoping trace took the budget). Next in queue: `content/en/applets/external-tenant-admin/tenant-admin-applet.md`, then `ecommerce/website-builder/user-manager.md`, then the five purchase supplier-access pages (reuse the login-link scoping finding).
+
+## Run 24 (2026-09-05) — content/en/applets/external-tenant-admin/tenant-admin-applet.md
+
+Applet `TenantAdminApplet` (registry name "Tenant Admin Applet", ACTIVE). Repo `blg-applet-core-akaun-platform-tenant-admin-applet` @a5973ab (split monorepo: applet under `micro-fe/projects/akaun-platform/applets/tenant-admin-applet/`, own `projects/shared-utilities`); ts-lib @7d1616a9e; backend @1ff620ef0e. Not a generic document: no DCO, no journal, no stock, no queue. `applet-scan.sh` / `gates.py` not applicable (applet-local field-configuration, no blg-shared-utilities gear) — plain-grep four-proof pass done by hand.
+
+### What the code says
+- 12 four-proof keys: 11 `HIDE_*_MENU` + `SHOW_SYNC_BUTTON`. Menu hides are **absolute** — `updateMenuItem(state, HIDE_X)` with no `SHOW_X` pairing, and 0 rows in `bl_applet_client_side_perm_dfn` (read-only query 2026-09-05; no tenant data copied). Nothing in this applet is gated per role.
+- Settings › Default Selection is dead (routed component with unbound `@Input`, `appletContainer` undefined → selecting a branch throws; SAVE emits to nobody). Personalization defaults saved-not-consumed. `HIDE_EMPLOYEE_CODE` read-without-control in the Employee Link grid. Five settings-shell links 404 (Outlet Type/Size, Release Notes, Developer Tools › Audit Trail, Personalization › Field Settings).
+- Data Sync menu: both buttons are stubs (intranet #528 asked for the menu; no endpoint wired).
+- Applets menu is read-only (all create/update/delete effects commented out); the Subscription › Hostname grid loader is commented out.
+- **Authorisation is by rank, not permission, for the applet's own endpoints** (`hasOwnerAdminRankPermissionInTenant` on the master-DB tenant link; platform sysadmin also passes on install/uninstall/admin link). **Role assignment and root `iam/roles` CRUD check tenant-DB permissions** (`TNT_TENANT_OWNER/ADMIN` or `TNT_LOG_TEAM_ROLE_ASSIGNMENT_*`/`TNT_API_TEAM_ROLE_ASSIGNMENT_CREATE`, `TNT_LOG_ROLE_*`/`TNT_API_ROLE_*`) → a rank-only admin gets 403 (intranet #1927). Permission Wizard checks a third thing: rank on the applet's `bl_applet_login_subject_link`.
+- Permission-set targets: only comp/branch/location. Role › Applet › Permission Sets tab = template × target checkboxes → `app-permission-sets/modify/tenant-admin-ep` → `checkedAndCreatePermSet` (create set if missing, reconcile assignee target links). Client-side tab → `custom-modify/tenant-admin-ep` (delete unticked / create ticked).
+- Role File Import: CSV `ROLE_NAME, ROLE_CODE`; blank → "Role Code/Name is Invalid"; existing code → update.
+- Audit Trail reads `bl_applet_audit_trail`, which is written only by documents, applet install/uninstall and PDG — the old page's "logs bl_aas_subject_to_role_link" claim was invented and is removed.
+- **Backend bug still at HEAD 1ff620ef0e**: `PermissionMigrationUow.getAllUserPermissionAsDTO` trailing `OR (… TNT_TENANT_ADMIN/OWNER)` is outside the `status != 'DELETED'` guard → soft-deleted admin grant on a role resurrects as "all branches" (gt#9759). Documented in Lifecycle + Troubleshooting.
+
+### Page changes
+- Old page: marketing voice, inline-styled `<div>` grid with four YouTube iframes (Hextra violation), invented audit claim, FAQ "Inheritance" (no role inheritance exists in code) — all removed. Rewritten to the standard order; 10 of 26 images kept.
+- YouTube videos dropped with the div grid (ids 6xhVCsFaGzA, U6LgVWlGJy4, pjhUMxrShpo, 5dERgcGhaI8) — Vincent to decide whether to re-embed with `{{< youtube >}}`.
+
+### Screenshot quarantine (static/images/tenant-admin-applet/ — outside my folders, not deleted)
+- `tenant-role-perm.png`: role codes containing personal names and a customer name — removed from the page; delete from static/.
+- `tenant-audit-trail-2.png`: a real e-mail address and a person's name in *Action By* — never used now; delete.
+- `tenant-permission-set.png`: permission-set codes with developer names — delete.
+- `applet-configuration.png`: customer-identifying applet names — removed from the page; delete.
+- `tenant-admin-applet-overview-infographic.png`, `tenant-admin-overview-infographic.png` (1.8 MB): AI infographics, no screen — dropped from the page.
+- Every screenshot carries a small avatar photo of a real person in the header; low-risk but note it.
+
+### Cross-lane link requests (run 24)
+- content/en/applets/integrations/developer-sysadmin-applet.md (integrations lane) — add `tenant-admin-applet` to `related_applets`; say that a platform system administrator passes the `tenant-admin-ep` checks (`isPlatformSystemAdminUser`) for install/uninstall/admin-link, and add the "Failed to obtain JDBC Connection (08001) on multiple-install = tenant DB unreachable" row (gt#8976).
+- content/en/applets/master-data/employee-applet.md and merchant-applet.md (lane 4) — add `tenant-admin-applet` to `related_applets` (back-links for the lane-4 requests I applied here).
+- content/en/applets/master-data/organisation-applet.md (lane 4) — add `tenant-admin-applet`; one sentence that companies/branches/locations are the permission-set target tables.
+- content/en/user-guide/administration/team.md (guides owner) — state that assigning a user to a role needs a tenant-DB permission (`TNT_TENANT_ADMIN/OWNER` or `TNT_LOG_TEAM_ROLE_ASSIGNMENT_*`), not just the ADMIN rank; link the applet page's Troubleshooting.
+- content/en/applets/purchase-workflow/internal-purchase-return-applet.md (own lane, next touch) — add troubleshooting row "role scoped to one branch sees all branches" (gt#9759).
+- Every document-applet page that says "ask your tenant admin to attach the `SHOW_*` permission to your role" (all lanes) — the Tenant Admin Applet cannot create `bl_applet_client_side_perm_dfn` rows (Applets menu is read-only); unseeded codes must be seeded by the platform team (F-0044). Wording should be "ask BigLedger to seed the code, then your tenant admin attaches it".
+
+### Registry / naming mismatches (run 24)
+- None. Title already equals the registry name; alias kept.
+
+### Questions for Vincent
+1. Data Sync (stub buttons) and Settings › Default Selection (dead): document as-is (done) or file product bugs to remove/finish them?
+2. The `OR`-precedence bug in `PermissionMigrationUow.getAllUserPermissionAsDTO` is a live security defect (a role can silently regain tenant-admin scope). Should the wiki carry it in Troubleshooting (done) and should it be escalated as a product issue with a fix PR?
+3. Should rank-ADMIN tenant admins automatically receive `TNT_TENANT_ADMIN` in the tenant DB (so role assignment stops returning 403)? Today the two authorisation models are inconsistent.
+4. Four screenshots in static/images/tenant-admin-applet/ contain real names / an e-mail (list above) — delete them?
+5. Re-embed the four YouTube walkthroughs with the Hextra `{{< youtube >}}` shortcode? They were dropped with the inline-styled grid.
+
+One page this run (26-image review, the rank-vs-permission authorisation trace across five controllers, and the permission-inquiry SQL took the budget). Next in queue: `content/en/applets/ecommerce/website-builder/user-manager.md`, then the five purchase supplier-access pages.
