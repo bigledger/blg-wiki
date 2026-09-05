@@ -498,3 +498,12 @@ with the analysis, the changes made, and the commit hash.
 ### standard
 - [ ] F-0115 (2026-09-05) Master-data applets controlled by settings that live in OTHER applets (forex: SHOW_FOREX_DATA_SOURCE, CANNOT_EDIT_CURRENCY_RATE) — add a "Settings in other applets that control this applet" slot to §4 of the standard.
 
+## From Lane 3 run 7 (2026-09-05)
+
+### product (delivery installation driver)
+- [ ] F-0116 (2026-09-05) The web driver applet cannot list trips as shipped: app.effects.ts L52–88 dereferences bl_del_trip_hdr on the paged envelope and throws ("Failed to retrive trips") — same in the deployed bundle. Failure Reason list queries bl_applet_config with a hard-coded applet guid not in bl_applet_hdr. An Android driver app (akn-kotlin-mobile-delivery-driver) implements the same flow. Vincent: is the web applet used in production or is Android the real client? Should the Android app get a wiki presence (no registry row)?
+- [x] F-0117 (2026-09-05) Two calendar screenshots showing a real tenant code quarantined.
+
+### ADR-0002 triage (ecommerce)
+- [ ] F-0118 (2026-09-05) ecommerce-catalog-applet.md (TODO placeholder; the catalog is a CP Commerce Admin tab) → delete + alias to cp-commerce-admin-applet; installation-of-pricebook-applet.md (an Applet Store install how-to) → fold into a generic "install an applet" section + alias. PricebookApplet documentation_url points at /applets/pricebook-applet/ but the page is under master-data/ (alias exists?).
+
