@@ -368,3 +368,17 @@ with the analysis, the changes made, and the commit hash.
 ### product / registry (joins F-0044 family)
 - [ ] F-0077 (2026-09-05) carWorkshopApplet: documentation_url → Confluence though the page exists; zero client-side perm defs; route root typo `car-worshop-applet`; Settings → Field Settings is a non-functional stub (146 keys read, nothing can write them). InternalSalesQuotationApplet: 2 perm defs seeded, ~50 checked. blg-shared-utilities template bug: `appletCode==='posGeneral' || 'salesInvoiceApplet'` guard is always true. Quotation Convert sends a FINAL RV header when converting a FINAL quotation — intended?
 
+## From Lane 3 run 4 + Lane 2 run 6 (2026-09-05)
+
+### site-wide (applets — method)
+- [ ] F-0078 (2026-09-05) Inline gear toggles are a second rendering path; run 1–3 pages' "read but no control" lists may be wrong where a gear is embedded. Re-audit when each lane next touches those pages (METHOD §8).
+
+### site-wide (registry / phantoms — ADR-0002 batch)
+- [ ] F-0079 (2026-09-05) Lane 2 triage: accounts-receivable-applet, admin-time-attendance-applet, ai-customer-analytics-applet are TODO placeholders with no ACTIVE row (delete?); budget-applet.md (1,495 lines) has no row — the row is budgetaryApplet whose doc URL points at the 10-line budgetary-applet.md → rewrite budgetary under the registry name, alias /applets/finance/budget-applet/, delete budget-applet.md (Vincent to approve). ecomSyncApplet / ecomSyncOrganisationApplet are ACTIVE with no code in any cloned repo — live elsewhere or leftovers? "Tiktok Sales Order Applet" (shopee_sales_order_applet) — generic product or customer-specific? Hub/index pages (90-ecomsync-related-applets) need a `page_type: index` allowlist in the parity check.
+
+### /applets/purchase-workflow/blanket-purchase-order-applet/ + procurement guides
+- [ ] F-0080 (2026-09-05) Nothing enforces a blanket order's validity window on knock-off; draw-down is entirely the company gendoc flow configuration (bl_fi_comp_gendoc_flow_config, INTERNAL_BLANKET_PURCHASE_ORDER → INTERNAL_PURCHASE_ORDER, flow_type LINE). Which applet page owns the flow-configuration UI? (GRN/PO/BPO pages can only cite the table.) Procurement-manager guide's spend-cap claims need correcting.
+
+### /applets/ (hub)
+- [x] F-0081 (2026-09-05) Dead link /applets/90-ecomsync-related-applets/ from applets/_index.md and applet-catalog.md — fixed by alias on the index page (lane 2 run 6).
+

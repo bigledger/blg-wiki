@@ -125,6 +125,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 - **F-0068** Bank Reconciliation: bank names in Import Format list keep/genericise; inert toggles document/omit; 90-day look-ahead intended?
 - **F-0072** cash adjustments: no journal and no VOID — intended? · **F-0073** init-true hide switches + unseeded SHOW_* = confidentiality trap — report as defect?
 - **F-0074** confirm deletion of 17 quarantined PII screenshots (or re-capture synthetic). **F-0077** Car Workshop Field Settings stub, always-true template guard, Convert-to-RV on FINAL quotations — intended?
+- **F-0079** phantom/duplicate triage: delete 3 placeholder pages? budget→budgetary merge? Ecom Sync rows live or leftovers? Tiktok Sales Order generic? · **F-0080** blanket-order validity not enforced — intended? who owns the flow-config UI page?
 - **F-0040** which Tax Configuration page is canonical; **F-0041** document the Reimbursement Payment
   Voucher applet?; **F-0042** merge the Creditor Report page into the combined report page?
 

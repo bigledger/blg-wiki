@@ -39,5 +39,15 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
    Default Selection (e.g. `PRINTABLE`). Also: the shared screen's `shouldHideSetting()` pre-selects
    per-applet hidden defaults, but the document form reads stored values — a fresh tenant sees
    everything until the first Save of Application Settings persists them. Document that failure mode.
-8. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+8. **The inline gear is a second settings-rendering path (lane 3, run 4).** `app-applet-settings-toggle`
+   from blg-shared-utilities is embedded per screen with explicit `appletSettingsKeys` (BPO: 15
+   screens; PDN: 23). Keys there are *rendered* even when the shared Application Settings screen
+   has no control for that applet code. The "rendered" proof = shared screen ∪ applet-local
+   screens ∪ every gear key list. Earlier "read but no control" lists are suspect wherever a gear
+   is embedded — check before trusting them.
+9. **Purchase-side GL resolution** is line → header → item-company link → company default; only
+   the creditor mapping throws `MISSING_DEFAULT_GL_CODE`. An unresolvable purchase/tax line is
+   silently omitted (JournalPostingService ~L236/L271) and FINAL then fails with
+   `TOTAL_DEBITS_AND_TOTAL_CREDITS_NOT_BALANCES` — that is the troubleshooting entry to write.
+10. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.
