@@ -82,7 +82,6 @@ This is the step that answers the PDPA question, so it gets the most detail.
 
 Click **Select permission** to add a permission, and use the same tab afterwards to edit or remove it.
 
-{{< figure src="/images/tenant-admin-applet/tenant-role-perm.png" alt="Role permission mapping screen showing permission sets assigned to a role" caption="Roles hold permission sets. Give the role to the team, and every member inherits it." >}}
 
 Here are the permissions that govern customer and membership personal data. The plain-English description is what matters; the code is what you will see in the picker.
 
