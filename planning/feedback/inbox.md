@@ -404,3 +404,17 @@ with the analysis, the changes made, and the commit hash.
 ### product (claims)
 - [ ] F-0087 (2026-09-05) Claims module is visibly built for one customer (tenant-code branches in UI and controller; a hard-coded job-title auto-approval) yet is a generic ACTIVE applet. Documented generically. Vincent: confirm policy; product ticket to turn the branches into settings? Also: ENABLE_AUDIT_TRAIL is a no-op; auto_add_approved_claim_to_cycle has no UI control; personal settings DEFAULT_PAYMENT_PROCESSING_OPTION / HIDE_PAYMENT_SALARY_TAB make two users see different cycle totals.
 
+## From Lane 2 run 7 (2026-09-05)
+
+### /modules/budgetary/ + /modules-v2/financial-accounting/ + /user-guide/industry-solutions/professional-services/
+- [ ] F-0088 (2026-09-05) Every "blocks overspend" / budget-check claim is false: no validator anywhere; registers can go negative; purchase orders never move a register (only the two invoice types). Correct in the module batch. Also Budget Report binds "Initial" and "Latest" to the same column (product bug).
+
+### /applets/finance/vote-book-applet/
+- [ ] F-0089 (2026-09-05) No registry row for any "vote" applet — the Vote Book the module pages describe is the Budgetary applet's votebook. Delete/redirect to budgetary-applet (Vincent, joins F-0079).
+
+### static/images (budgetary) — personal data
+- [x] F-0090 (2026-09-05) budgetary-module-04/06/11.png and figure-1-1.png show staff e-mails / first names; quarantined by the loop. budgetary-module-01.png is referenced by the old budget-applet page but does not exist.
+
+### product (budgetary)
+- [ ] F-0091 (2026-09-05) Which page owns profit centres (Budgetary creates them; Organisation v3 has no screen)? Backend-only approval flow (bl_fi_budget_register_approval_*) and reserved_amt — roadmap, dead, or customer-specific? Manual txn lines fail the register-update job; VOID reverses nothing and has no button.
+
