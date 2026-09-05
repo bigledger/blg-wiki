@@ -5,8 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/inventory-workflow/internal-inbound-delivery-order-applet.md",
-  "content/en/applets/inventory-workflow/internal-stock-requisition-applet.md",
   "content/en/applets/inventory-workflow/introduction-to-stock-take-applet.md",
   "content/en/applets/inventory-workflow/inv-item-maintenance-applet.md",
   "content/en/applets/master-data/inv-item-maintenance-applet.md",
@@ -79,6 +77,11 @@
    "page": "content/en/applets/inventory-workflow/internal-goods-delivery-note-applet.md",
    "date": "2026-09-05",
    "note": "Renamed from internal-goods-dispatch-note-applet.md (deleted; old URL kept as alias). Registry InternalGoodsDeliveryNote."
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/internal-stock-requisition-applet.md",
+   "date": "2026-09-05",
+   "run": 12
   }
  ],
  "skipped": [
@@ -88,7 +91,7 @@
   },
   {
    "page": "content/en/applets/inventory-workflow/delivery-installation-applet-V2-applet.md",
-   "reason": "Second page for registry row delivery-installation-applet (route applet/wavelet/erp/logistic/delivery-installation-applet); the canonical page delivery-installation/delivery-installation-applet.md is in lane 3's queue. Not rewritten \u2014 same situation as F-0050; merge/alias decision for Vincent, facts for lane 3 in findings.md run 5."
+   "reason": "Second page for registry row delivery-installation-applet (route applet/wavelet/erp/logistic/delivery-installation-applet); the canonical page delivery-installation/delivery-installation-applet.md is in lane 3's queue. Not rewritten — same situation as F-0050; merge/alias decision for Vincent, facts for lane 3 in findings.md run 5."
   },
   {
    "page": "content/en/applets/master-data/group-maintenance-V2-applet.md",
@@ -101,6 +104,10 @@
   {
    "page": "content/en/applets/master-data/installation-of-group-maintenance-applet.md",
    "reason": "No ACTIVE registry row for Group Maintenance under any name (registry-applets-2026-09-05.tsv: only GroupApplet 'Groups' ROOT-USER DELETED and newTeamMaintenanceApplet 'Team Maintenance' DELETED). Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 9."
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/internal-inbound-delivery-order-applet.md",
+   "reason": "No ACTIVE registry row for an Inbound Delivery Order (Internal) under any name (live bl_applet_hdr checked 2026-09-05: nothing matching 'inbound'; the three '... - Delivery Order' rows are customer-specific placeholder entries, not this repo). Backend type INTERNAL_INBOUND_DELIVERY_ORDER and repo blg-applet-wavelet-internal-inbound-delivery-order-applet exist. Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 12."
   }
  ],
  "updated": "2026-09-05",

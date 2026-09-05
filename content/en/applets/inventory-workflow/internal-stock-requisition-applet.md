@@ -1,271 +1,346 @@
 ---
-title: "Stock Requisition (Internal) Applet"
-description: "Create and manage internal outbound stock requisitions between locations, including line item tracking, knock-off (KO) import from Purchase GRN, attachments, printing, and stock transfer creation."
-weight: 10
+title: "Stock Requisition Applet(Internal)"
+description: "Reference for the Stock Requisition (Internal) applet — the Requisition Out document a branch raises to ask for stock from another location: screens, every configurable setting, fields, what FINAL does and does not do, how CREATE ST hands the request to the Stock Transfer applet, and the errors you will meet."
+applet_code: "internalStockRequisitionApplet"
+applet_repo: "blg-applet-wavelet-internal-stock-requisition-applet"
+modules: [inventory]
+related_applets: [stock-transfer-applet, internal-purchase-grn-applet, organisation-applet, warehouse-management-applet, inv-item-maintenance-applet, doc-item-maintenance-applet, employee-applet, stock-balance-applet, stock-availability-applet]
+guides: []
+sources:
+  configuration:
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/app.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/models/spreadsheet-view-settings.model.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/models/constants/applet-constants-outbound.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/custom-field-screens.config.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.html
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/settings-container/printable-format-settings-container/printable-format-listing/printable-format-listing.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/settings-container/approval-setting/approval-setting-create/approval-setting-create.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/settings-container/approval-setting/approval-setting-create/approval-setting-create.component.html
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/settings-container/approval-setting/approval-setting-listing/approval-setting-listing.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/settings-container/branch-container/branch-view/branch-designation/branch-designation-create/branch-designation-create.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/settings-container/branch-container/branch-view/branch-designation/branch-designation-create/branch-designation-create.component.html
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/settings-container/branch-container/branch-view/branch-designation-employee/branch-designation-employee-create/branch-designation-employee-create.component.html
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/settings-container/branch-container/branch-view/branch-employee-link/branch-employee-link-create/branch-employee-link-create.component.html
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/settings-container/spreadsheet-view-settings/spreadsheet-view-settings.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/settings-container/spreadsheet-view-settings/spreadsheet-view-settings.component.html
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-container.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-listing/internal-outbound-stock-requisition-listing.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-listing/internal-outbound-stock-requisition-listing.component.html
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-view/internal-outbound-stock-requisition-view.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-view/internal-outbound-stock-requisition-view.component.html
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-create/internal-outbound-stock-requisition-create.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-create/internal-outbound-stock-requisition-create-line-items-inline-v2/internal-outbound-stock-requisition-create-line-items-inline-v2.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-create-line-item/line-search-item/line-search-item.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/file-import-container/file-import-create/file-import-create.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/TntErpPermissions.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/TntErpPermissionsV2.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/ListingController.java
+    - akaun_master.bl_applet_hdr (code internalStockRequisitionApplet, read 2026-09-05)
+    - akaun_master.bl_applet_client_side_perm_dfn (applet internalStockRequisitionApplet, 24 rows on 2026-09-05)
+  fields:
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-create/internal-outbound-stock-requisition-create.component.html
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-create/internal-outbound-stock-requisition-create-main/internal-outbound-stock-requisition-create-main.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-create/internal-outbound-stock-requisition-create-main/internal-outbound-stock-requisition-create-main.component.html
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-add-line-item/add-line-item-item-details/internal-outbound-stock-requisition-add-line-item-main/internal-outbound-stock-requisition-add-line-item-main.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-add-line-item/add-line-item-item-details/internal-outbound-stock-requisition-add-line-item-main/internal-outbound-stock-requisition-add-line-item-main.component.html
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/import-knock-off/import-knock-off.component.html
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/import-knock-off/knock-off-grn/knock-off-grn.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/line-items-container/line-items-listing/line-items-listing.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/custom-field-screens.config.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/finance/internalStockRequisitionFileImport/InternalStockRequisitionImportFileColumnNames.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/finance/internalStockRequisitionFileImport/InternalStockRequisitionImportFileHdrService.java
+  lifecycle:
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-listing/internal-outbound-stock-requisition-listing.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-view/internal-outbound-stock-requisition-view.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/state-controllers/internal-outbound-stock-requisition-controller/store/effects/internal-outbound-stock-requisition.effects.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/services/api-service.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalStockRequisitionDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/GenericDocumentDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/ServerDocShortCodes.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocLinkService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/inventory/InventoryTransactionLineProcessorService.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/GenericDocumentController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/GenericDocLineOpenQueueProcessor.java
+  troubleshooting:
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-listing/internal-outbound-stock-requisition-listing.component.ts
+    - blg-applet-wavelet-internal-stock-requisition-applet/micro-fe/projects/wavelet-erp/applets/internal-stock-requisition-applet/src/app/components/internal-outbound-stock-requisition-container/internal-outbound-stock-requisition-create/internal-outbound-stock-requisition-create-main/internal-outbound-stock-requisition-create-main.component.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/GenericDocumentController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocLinkService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/finance/internalStockRequisitionFileImport/InternalStockRequisitionImportFileHdrService.java
+    - gh:bigledger/blg-akaun-platform-java#1153
+    - gh:bigledger/blg-int-general-task#9561
+    - gh:bigledger/blg-intranet#3738
+    - gh:bigledger/blg-wiki#112
 tags:
   - inventory-workflow
   - stock-requisition
   - internal-stock-transfer
   - outbound-requisition
   - file-import
+weight: 10
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Stock Requisition (Internal) Applet** supports internal stock movements by letting teams create an **Internal Outbound Stock Requisition** (often shown as **Requisition Out**) from one location to another.
+The Stock Requisition (Internal) applet records a branch's request for stock from another location: which items, how many, from which location (sending) to which location (receiving). The document it creates is the **Requisition Out** (server document type `INTERNAL_STOCK_REQUISITION`, short code `STKREQ`). It is a **non-posting** document: FINAL neither moves stock nor writes to the general ledger, because both signums are fixed at 0 in the backend (see [Lifecycle and effects](#lifecycle-and-effects)). The stock actually moves when a Transfer Out is raised against the requisition in the [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/) applet — either by that applet's *Search Document › Stock Requisition* tab or by the **CREATE ST** button here.
 
-It is designed to:
+The applet also carries a per-line **Line Items** listing, a CSV **File Import**, and a set of settings screens (Branch Designation, Approval Settings, Custom Field Placement, Spreadsheet View) that were added for a position-based approval workflow. As of the source read for this page, the approval screens store their configuration but the requisition itself does not go through an approval step — see [Configuration](#configuration).
 
-- Capture the intent to move stock (**what** items, **how many**, **from** which location, **to** which location)
-- Track line-level progress (ordered / received / outstanding)
-- Convert approved requisitions into an operational **Stock Transfer** (via **CREATE ST**)
+## Where it fits
 
-{{< callout type="info" >}}
-**Core Concept**: A requisition is a controlled request/record of an outbound internal movement. You typically draft it, finalize it for approval/control, then create a stock transfer from it.
-{{< /callout >}}
+| Direction | Document / applet | How it connects |
+|---|---|---|
+| Upstream (optional knock-off) | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) | The create screen's **KO For › Purchase GRN** tab lists GRN lines that still have an open quantity toward `INTERNAL_STOCK_REQUISITION` and copies them into the requisition. |
+| Downstream | [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/) — Transfer Out | A Transfer Out fulfils the requisition: either the Stock Transfer applet knocks the requisition off from its own *Search Document* tab, or **CREATE ST** here creates a new Transfer Out pre-filled from the requisition. The transfer is what moves the stock. |
+| Master data | [Warehouse Management](/applets/inventory-workflow/warehouse-management-applet/) (locations), [Organisation](/applets/master-data/organisation-applet/) (company, branch, Knock Off Configuration), [Inventory Item Maintenance](/applets/inventory-workflow/inv-item-maintenance-applet/) / [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) (items), [Employee](/applets/master-data/employee-applet/) (Branch Designation employees) | Sending / receiving locations, the company whose Knock Off Configuration decides whether FINAL leaves open-queue rows, the items on the lines, and the employees named in approval designations. |
+| Reports | [Stock Balance](/applets/inventory-workflow/stock-balance-applet/), [Stock Availability](/applets/inventory-workflow/stock-availability-applet/) | A requisition changes neither report; only the transfer does. The item picker can show the current balance per location while you add lines (`SHOW_ITEM_STOCK_BALANCE`). |
 
----
+Module: [Inventory](/modules-v2/inventory/).
 
-## Key Features Overview
+## Screens and menus
 
-### Who Benefits from This Applet?
+**Left menu**
 
-**Warehouse / Storekeepers**
+- **Requisition Out** — the document listing. Columns (each hideable, see [Configuration](#configuration)): document numbers (tenant / company / branch), branch, transaction date, client document type and references, posting status, quantity ordered / received / outstanding, knock-off document from / to, remarks, reference, created date. Buttons: **+** (create), **FINAL**, **DISCARD**, **VOID**, **DRAFT**, **CREATE ST**, **PRINT**, plus a column toggle and Advanced Search. FINAL acts on every selected row that is not FINAL; DISCARD on selected DRAFT rows; VOID, DRAFT and CREATE ST on selected rows that are FINAL and ACTIVE; PRINT on the selection using the default printable format.
+- **Line Items** — a cross-document listing of requisition lines: SQ#, transaction date, item code, item name, location from, location to, qty ordered, qty received, qty outstanding, creation / updated date. Rows open a line editor with Item Details, Costing Details (hideable), Pricing Details, Issue Link and the Serial / Batch / Bin tab that matches the item's sub-type.
+- **File Import** — CSV upload of requisitions (see [Fields › File Import](#file-import)) and a listing of import jobs with their process status and error message.
 
-- Create requisitions for inter-location stock movement
-- Add and adjust requested quantities by item
-- Print requisitions for picking/dispatch
+The left-menu entries **Line Items** and **File Import** are removed when the settings `HIDE_LINE_ITEMS_MENU` / `HIDE_FILE_IMPORT_MENU` are on, unless the user holds the matching `SHOW_LINE_ITEMS_MENU` / `SHOW_FILE_IMPORT_MENU` client-side permission.
 
-**Inventory Controllers**
+**Create screen** — pressing **+** first creates a TEMP document on the server (so a document GUID exists before you type anything), then opens the form. Tabs: **Details**, **Line**, **KO For** (only *Purchase GRN*; an *ST-GRN* tab exists in the code but is commented out). With `VERTICAL_ORIENTATION` on, the same three sections render as expansion panels instead of tabs; the personal setting *Tab Orientation* then chooses which of the two layouts the current user sees.
 
-- Monitor outstanding quantities by requisition and by line item
-- Identify bottlenecks (unfulfilled requests, partial receive)
-- Use KO (knock-off) to link and reconcile against upstream documents
+**View / edit screen** — buttons **RESET**, **FINAL**, **DRAFT**, **VOID**, **SAVE**, **CREATE ST**, **DISCARD**, and a **DELETE** button when `SHOW_DOCUMENT_DELETE_BUTTON` is on. Sections: **Details**, **Line** (with sub-tabs *Standard View* and *Spreadsheet View* depending on the Spreadsheet View configuration), **Doc Link**, **Attachment**, **Export**. The order of the sections is what an administrator dragged into place under *Settings › Default Selection*; Doc Link, Attachment and Export can be hidden individually.
 
-**Branch Operations / Managers**
+**Adding a line** — the item picker (*Search Item*) lists items with or without their stock balance; the line form then shows Item Details, Delivery Instruction, Department, Costing Details, Pricing Details, Issue Link and, by item sub-type, Serial Number / Batch Number / Bin Number.
 
-- Ensure transfers are finalized before processing
-- Maintain traceability with reference numbers, tracking IDs, and attachments
+**Settings menu** (System Configuration): Application Settings, Default Selection, Printable Format Settings, Branch Designation, Approval Settings, Custom Resource Bundle Configuration, Custom Field Placement, Spreadsheet View configuration. The routes additionally expose Webhook, Feature Visibility, Client-Side Permission, Permission Wizard, Permission Set, User / Team / Role Permission, Release Notes and Applet Log screens.
 
-### What Problems Does This Solve?
+**Personalization menu**: Default Selection (Default Branch, Default Location, Tab Orientation), Sidebar.
 
-Without a requisition workflow, internal stock movement is often tracked via spreadsheets or informal messaging, causing:
+No screenshots are available for this applet yet (the previous page had none either).
 
-- Missing audit trail for “who requested what”
-- Difficulty tracking partial fulfillment
-- Inconsistent documentation across locations
+## Configuration
 
-This applet provides a structured flow with clear **posting status** (Draft/Final/Void), searchable listings, and line item reporting.
+### Before you can use it
 
----
+- **Locations** — at least two active stock locations, linked to branches, in [Warehouse Management](/applets/inventory-workflow/warehouse-management-applet/). The sending and receiving drop-downs list the locations of the selected branch; without a branch selection they list every location.
+- **Location permission targets** — the create button needs `TNT_API_DOC_INTERNAL_STOCK_REQUISITION_CREATE_TGT_GUID` (or tenant admin / owner). The *Location (Sending)* list is filtered to the locations targeted by the user's `TNT_API_DOC_INTERNAL_STOCK_REQUISITION_READ_TGT_GUID`, the *Location (Receiving)* list to the targets of `TNT_API_DOC_INTERNAL_STOCK_REQUISITION_LOCATION_TO_READ_TGT_GUID`; tenant admins and owners see all locations. Assign these with the Permission Wizard under this applet's Settings.
+- **Items** — the items you will request, in [Inventory Item Maintenance](/applets/inventory-workflow/inv-item-maintenance-applet/). Serial-, batch- and bin-tracked items add the corresponding tab on the line, but the backend does not check serial / batch quantities on a requisition (signum 0 — see Lifecycle).
+- **Knock Off Configuration** (company level, [Organisation](/applets/master-data/organisation-applet/) › Company) — two rows matter here: *Purchase GRN → Stock Requisition* if you want the **KO For › Purchase GRN** tab to list anything, and *Stock Requisition → Outbound Stock Transfer* if you want the Stock Transfer applet's *Search Document › Stock Requisition* tab to find FINAL requisitions. **CREATE ST** does not need the second row (it copies lines directly), but the transfer queue is only maintained when the row exists.
+- **Document numbering** — a running number for `INTERNAL_STOCK_REQUISITION` on the company, otherwise the tenant / company / branch document numbers stay empty after FINAL.
+- **A printable format** uploaded under *Settings › Printable Format Settings* and marked as default, otherwise **PRINT** has nothing to render.
+- No GL codes, tax codes or cashbooks are involved: the document never posts.
 
-## Feature Navigation
+### Applet settings
 
-The main left menu entries in the applet are:
+Settings live in four places. **Application Settings** is the shared `FieldConfigurationComponent` from blg-shared-utilities, keyed by the registry code `internalStockRequisitionApplet` (54 controls for this code, plus the toggles for the Doc Link, Attachment and Export tabs, which the shared screen renders because its tab map lists exactly those three for this code). **Default Selection**, **Printable Format Settings**, **Branch Designation**, **Approval Settings** and **Spreadsheet View configuration** are applet-local screens. **Custom Resource Bundle Configuration** and **Custom Field Placement** are shared screens fed by this applet's label list and screen registry. **Personalization › Default Selection** is per user. Anyone who can open the applet's Settings menu can change tenant-wide settings; personal settings affect only the user who saves them.
 
-{{< cards >}}
-{{< card title="Requisition Out" subtitle="Create, finalize, void, print, and create Stock Transfer (ST)" link="#requisition-out-internal-outbound-stock-requisition" >}}
-{{< card title="Line Items" subtitle="Line-level listing for analysis (qty ordered/received/outstanding)" link="#line-items" >}}
-{{< card title="File Import" subtitle="Bulk import interface and processing status" link="#file-import" >}}
-{{< card title="Settings" subtitle="Default selection, field settings, printable formats" link="#settings" >}}
-{{< /cards >}}
+Every key below is declared in the applet's settings model, rendered by a control, persisted by the settings save, and read by component code. Defaults are the control's initial value (all toggles start off; a fresh tenant sees everything until Application Settings is saved once).
 
----
+**Listing and buttons**
 
-## Key Concepts
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| `DISABLE_GEN_DOC_LISTING` | Stops the listing from loading documents automatically when it opens. | off | On: the grid stays empty until the user runs a search. |
+| `HIDE_GENDOC_FINAL_BUTTON`, `HIDE_GENDOC_DISCARD_BUTTON`, `HIDE_GENDOC_VOID_BUTTON` | The FINAL / DISCARD / VOID buttons on the listing and on the view screen. | off | Hidden buttons come back for users holding `SHOW_GENDOC_FINAL_BUTTON` / `SHOW_GENDOC_DISCARD_BUTTON` / `SHOW_GENDOC_VOID_BUTTON` — codes the applet checks but that are not seeded in the permission registry for this applet. |
+| `HIDE_GENDOC_SAVE_BUTTON` | The SAVE button on the view screen. | off | On: a DRAFT can be edited but not saved from the view screen. |
+| `HIDE_CREATE_STOCK_TRANSFER_BUTTON` | The CREATE ST button on the listing and on the view screen. | off | Hidden button comes back for users with `SHOW_CREATE_STOCK_TRANSFER_BUTTON` (seeded). |
+| `SHOW_DRAFT_BUTTON` | The DRAFT button (FINAL → DRAFT) on the listing and the view screen. | off | Off: nobody can revert a FINAL requisition from the UI. No permission override — the view screen reads a `SHOW_DRAFT_BUTTON` permission but the button is also gated on the setting. |
+| `DEFAULT_TRANSACTION_DATE` | The default transaction-date range the listing and Line Items queries apply (`1_day`, `1_week`, `1_month`). | empty (no date filter) | Sets the from-date of the initial query to today minus the chosen range. |
+| `HIDE_KO_DOC_FROM`, `HIDE_KO_DOC_TO` | The *KO Doc From* / *KO Doc To* listing columns. | off | Per-user override via `SHOW_KO_DOC_FROM` / `SHOW_KO_DOC_TO` (not seeded). |
+| `VERTICAL_ORIENTATION` | Enables the expansion-panel layout of the create / view screens and the personal *Tab Orientation* switch. | off | On: users with personal *Tab Orientation* = VERTICAL get panels; others keep tabs. |
 
-### 1. Locations: Sending vs Receiving
+**Document header (Details)**
 
-Every requisition is defined by two required locations:
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| `HIDE_MAIN_DETAILS_DOC_NO_TENANT`, `…_COMPANY`, `…_BRANCH` | The three document-number fields at the top of Details. | off | Hidden fields are still populated on FINAL; they are only not shown. |
+| `HIDE_STOCK_REQUISITION_GOOD_ISSUE_DATE` | The *Stock Requisition Good Issue Date* field. | off | The field is hidden but its required validator is not removed; the value is pre-filled from the document's transaction date, so a create still works unless that value is empty. |
+| `SHOW_DRIVER_CODE` | Adds a *Driver Code* field to Details. | off | Stored on the header. |
+| `SHOW_REMARKS` | Adds a *Remarks* field to Details. | off | Stored on the header; also printed on the default requisition printable. |
+| `HIDE_TRACKING_ID` | The *Tracking ID* field on Details. | off | Hidden; the value is copied to a Transfer Out created by CREATE ST when present. |
+| `HIDE_REFERENCE_NO` | The *Reference #* field on Details. | off | Hidden. |
+| `HIDE_DOC_DESCRIPTION_DETAILS` | The *Doc Description* field on Details. | off | Hidden. |
 
-| Field                    | Meaning                         |
-| ------------------------ | ------------------------------- |
-| **Location (Sending)**   | Where stock will be issued from |
-| **Location (Receiving)** | Where stock is requested to     |
+**Lines**
 
-Access to available locations may be constrained by tenant permission targets (for example, some users may only be allowed to create/see documents for specific locations).
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| `SHOW_ITEM_STOCK_BALANCE` | Switches the item picker and the inline line grid to the stock-balance search endpoint, which shows the balance per location next to each item. | off | Display only. The shared settings screen labels this control *DISALLOW NEGATIVE STOCK FOR BASIC ITEM (VALIDATE STOCK BALANCE)*; in this applet it performs no validation, and the backend ignores stock balance for a signum-0 document anyway. |
+| `SHOW_LINE_ITEM_BRANCH_COLUMNS` | Adds branch columns to the line grids. | off | Display only. |
+| `HIDE_TRACKING_ID_GEN_DOC` | The *Tracking ID* field on the line form. | off | Hidden. |
+| `HIDE_DOC_REFERENCE`, `HIDE_DOC_DESCRIPTION` | The *Doc Reference* / *Doc Description* fields on the line form. | off | Hidden. |
+| `HIDE_ITEM_DETAILS_REMARKS` | The *Remarks* field on the line form and the remarks column in the line grid. | off | Hidden. |
+| `HIDE_LINE_ITEM_LISTING_TRACKING_ID`, `HIDE_LINE_ITEM_LISTING_UOM` | The tracking-id / UOM columns in the create screen's line grid and the item picker. | off | Hidden. |
+| `HIDE_COSTING_DETAILS` | The *Costing Details* tab of the line editor under Line Items. | off | Comes back for users with `SHOW_COSTING_DETAILS` (seeded). |
+| `HIDE_UNIT_PRICE_STD_PRICING_SCHEME`, `HIDE_UNIT_PRICE_STD_INCL_TAX`, `HIDE_UNIT_PRICE_STD_EXCL_TAX`, `HIDE_UNIT_PRICE_STD_UOM_INCL_TAX`, `HIDE_UNIT_PRICE_STD_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_NET_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_NET_EXCL_TAX`, `HIDE_UNIT_DISCOUNT`, `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_TXN_UOM_INCL_TAX`, `HIDE_UNIT_PRICE_TXN`, `HIDE_QTY_BASE`, `HIDE_QTY_UOM`, `HIDE_UOM_TO_BASE_RATIO`, `HIDE_AMOUNT_STD_EXCL_TAX`, `HIDE_DISCOUNT_AMOUNT_EXCL_TAX`, `HIDE_AMOUNT_NET_EXCL_TAX`, `HIDE_AMOUNT_TXN`, `HIDE_TAX_CONFIG_SELECTION`, `HIDE_WHT_CONFIG_SELECTION` | Individual price, quantity, discount, amount and tax fields on the *Pricing Details* tab of the line editor. | off | Each has a seeded `SHOW_*` client-side permission that re-enables the field per user. Pricing is informational on a requisition — no amount is posted. |
 
-### 2. Posting Status (Draft / Final / Void)
+**Miscellaneous**
 
-The listing and view screens use posting status as a control mechanism:
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| `HIDE_DOC_LINK_FROM`, `HIDE_DOC_LINK_TO` | The two halves of the *Doc Link* tab on the view screen. | off | Hidden. |
+| `PRINTABLE` | The printable format used by PRINT and Export. | none | Set by marking a format as default under *Printable Format Settings*; not on the Application Settings screen. |
 
-| Status    | Typical meaning                                |
-| --------- | ---------------------------------------------- |
-| **DRAFT** | Editable working state                         |
-| **FINAL** | Confirmed state used for downstream processing |
-| **VOID**  | Cancelled / invalidated document               |
+**Default Selection** (applet-local) saves `DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `DEFAULT_COMPANY`, `DEFAULT_LANGUAGE_CODE` and the drag-ordered list `OUTBOUND_STOCK_REQUISITION_DETAILS_TAB_ORDER`. Only the tab order and the language are consumed: the view screen sorts its sections by the saved order, and the language code selects the resource bundle. `DEFAULT_BRANCH` / `DEFAULT_LOCATION` are persisted but no create or line component reads them — the Details form always starts with empty locations.
 
-{{< callout type="warning" >}}
-Most action buttons (for example **FINAL**, **VOID**, **DISCARD**, **DRAFT**) appear or are enabled based on status and tenant settings.
+**Personalization › Default Selection** saves the same branch / location keys per user (also unread by the form) and `DEFAULT_ORIENTATION` (*Tab Orientation*), which the create and view screens honour when `VERTICAL_ORIENTATION` is on.
 
-**Reverting FINAL to DRAFT**: If the applet setting `SHOW_DRAFT_BUTTON` is enabled, users can revert a **FINAL** document back to **DRAFT** (provided its status is **ACTIVE**). However, this action will fail if downstream documents (such as a Stock Transfer) have already been created/linked from the requisition.
-{{< /callout >}}
+**Spreadsheet View configuration** stores, per line tab, a *Line View Mode* (`standard_only`, `spreadsheet_only`, `both_tabs`; default `standard_only`) and, per column, label, visible, editable and order. The inline line grid on the create and view screens builds its columns from this configuration.
 
-### 3. Line-level fulfillment
+**Custom Field Placement** registers two screens for custom fields (`bl_tnt_custom_field_definition` / `bl_tnt_custom_field_placement`): *Internal Stock Requisition › Details* (12 slots after Doc Short Code, the three document numbers, Good Issue Date, Location (Sending), Driver Code, Tracking ID, Location (Receiving), Remarks, Reference #, Doc Description) and *Line Details* (12 slots after GRN No., ST-GRN ID, Location From / To, Item Code, Tracking ID, Item Name, Quantity, UOM, Doc Reference, Doc Description, Remarks).
 
-The applet provides a dedicated **Line Items** view with operational quantities:
+**Custom Resource Bundle Configuration** relabels the applet's texts (menu names, *Location From* / *Location To*, *Stock Requisition Good Issue Date*, *Created By*, *Created Date*, button captions such as FINAL).
 
-- **Qty Ordered**
-- **Qty Received**
-- **Qty Outstanding**
+**Keys read at runtime without a declaration in the applet's settings model** — set on the shared Application Settings screen, saved with it and read by the listing or the shell:
 
-This is useful for exception handling (partial fulfillment, delayed transfers).
+- Listing columns, each paired with a `SHOW_*` permission: `HIDE_SERVER_DOC_1` / `_2` / `_3` (document numbers), `HIDE_TRANSACTION_DATE`, `HIDE_CLIENT_DOC_TYPE`, `HIDE_CLIENT_DOC_1` … `_5`, `HIDE_ARAP_PNS`, `HIDE_ARAP_SETTLEMENT`, `HIDE_ARAP_DOC_OPEN`, `HIDE_ARAP_CONTRA`, `HIDE_ARAP_BAL`, `SHOW_GL_DIMENSION`, `SHOW_SEGMENT`, `SHOW_PROFIT_CENTER`, `SHOW_PROJECT`. The ARAP and dimension columns are always empty on a requisition.
+- `DEFAULT_STATUS` — which document statuses the listing loads (`ALL` or on = every status; otherwise the named status; unset = ACTIVE only).
+- `HIDE_LINE_ITEMS_MENU` — removes the *Line Items* left-menu entry.
+- `SHOW_DOCUMENT_DELETE_BUTTON` — shows DELETE on the view screen.
+- `HIDE_DOC_LINK_TAB`, `HIDE_ATTACHMENT_TAB`, `HIDE_EXPORT_TAB` and `EXPAND_DOC_LINK`, `EXPAND_ATTACHMENT`, `EXPAND_EXPORT` — hide or pre-expand those view sections.
 
-### 4. Knock-Off (KO) for Purchase GRN
+**Read by the applet but with no control on any settings screen for this applet code** (they can only be set by editing the applet's `APPLET_SETTINGS` extension directly): `HIDE_FILE_IMPORT_MENU`, `HIDE_LISTING_BRANCH`, `HIDE_QTY_MAIN_LISTING`, `HIDE_AMOUNT_MAIN_LISTING`, `HIDE_QUOTATION`, `HIDE_ORDER`, `HIDE_DELIVERY_ORDER`, `HIDE_INVOICE`, `HIDE_OTHERS`, `SHOW_DESCRIPTION`, `SHOW_REMARKS_MAIN_LISTING`, `SHOW_REFERENCE_MAIN_LISTING`, `ENABLE_FILTER_BY_TODAYS_TXN` (restricts the listing to today's documents), `RELABEL_BRANCH_TO_JOB_GROUP` (Branch Designation screen labels).
 
-During creation, there is a **KO For** tab that supports importing/knocking-off against **Purchase GRN** (Goods Received Note) queues. This helps link requisitions to upstream documents for reconciliation and traceability.
+Declared in the model but neither rendered nor read (not documented as settings): the `INCLUDE_*` / `ENABLE_*` dimension, project, segment, SST and WHT flags, the custom-status flags, `HIDE_PERMIT_NO`, `HIDE_LAST_PURCHASE_PRICE`, `DISABLE_LINE_ITEM_QUEUE_LISTING`, `HIDE_GENDOC_DRAFT_BUTTON`, `DEFAULT_TOGGLE_COLUMN`.
 
----
+### Document behaviour settings
 
-## Quick Start Guide
+- **Status flow** — DRAFT → FINAL → VOID, with FINAL → DRAFT when `SHOW_DRAFT_BUTTON` is on and DISCARD for drafts. There is no `FINAL_STATUS_GUID` or custom-status hook in this applet.
+- **Posting** — not configurable; the document never posts (see Lifecycle).
+- **Printables** — one default format (`PRINTABLE`) chosen under Printable Format Settings; the same format serves PRINT on the listing and Export on the view screen.
+- **Approval** — *Approval Settings* creates rows in `bl_fi_generic_doc_approval_setting` (code, name, submitter designation code, branch and company, server document type fixed to `INTERNAL_STOCK_REQUISITION`, total required approval levels, and per level a quorum, a logic — `ANY_TO_APPROVE` or `ALL_TO_APPROVE` — and an approver designation). *Branch Designation* creates approval designations per branch (`bl_fi_mst_branch_designation`, each bound to one approval setting) and assigns employees to a designation with an approval level, and links employees to the branch with an approval rank. **Nothing in this applet's create, FINAL or listing code, and nothing in the backend's generic-document FINAL path, reads these rows**: the backend's approval submission service is reachable only through its own approval controller, which this applet does not call. Treat the two screens as configuration for a workflow that is not yet wired to the requisition.
+- **e-Invoice** — not applicable.
 
-### For Warehouse Users: Create a Requisition Out
+### Settings in other applets that control this applet
 
-**Goal:** Create an internal outbound stock requisition from one location to another.
+| Setting | Where it is set | Effect here |
+|---|---|---|
+| Knock Off Configuration rows *Purchase GRN → Stock Requisition* and *Stock Requisition → Outbound Stock Transfer* | [Organisation](/applets/master-data/organisation-applet/) › Company | Whether FINAL of a GRN leaves open-queue rows for the KO For tab here, and whether FINAL of a requisition leaves open-queue rows for the Stock Transfer applet's *Search Document › Stock Requisition* tab. |
+| `SHOW_STOCK_REQUISITION_LOCATION_FROM_AND_TO`, `HIDE_STOCK_REQUISITION_SUPPLIER`, `HIDE_STOCK_REQUISITION_BRANCH`, `HIDE_STOCK_REQUISITION_LOCATION` | [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/) › Application Settings | Columns of the Stock Requisition knock-off grid in the Stock Transfer applet. |
+| Fiscal period lock (`LOCK_TXN` / `LOCK_ALL`) | Financial period settings of the company | FINAL of a requisition dated inside a locked period is rejected (`FISCAL_PERIOD_LOCKED`); unlike stock transfers, requisitions are not exempt. |
+| Running number for `INTERNAL_STOCK_REQUISITION` | Company document numbering | Populates the three document-number fields on FINAL. |
 
-1. Open **Requisition Out**.
-2. Click **Create** ("+").
-3. In **Details**:
-   - Select **Location (Sending)**.
-   - Select **Location (Receiving)**.
-   - (Optional) Fill **Driver Code**, **Tracking ID**, **Reference #**, **Doc Description**, **Remarks** (visibility may depend on settings).
-4. In **Line**:
-   - Add items and quantities.
-   - Use the quick search and line selection to review line details.
-5. (Optional) In **KO For**:
-   - Open **Purchase GRN** and select items/documents to import/knock-off.
-6. Click **CREATE**.
+### Feature visibility / permissions
 
-### Finalize and Print
+Backend (targeted, assigned through the Permission Wizard; targets are locations): `TNT_API_DOC_INTERNAL_STOCK_REQUISITION_CREATE_TGT_GUID`, `…_READ_TGT_GUID`, `…_UPDATE_TGT_GUID`, `…_DELETE_TGT_GUID`, and `TNT_API_DOC_INTERNAL_STOCK_REQUISITION_LOCATION_TO_READ_TGT_GUID` for the receiving-location list. File Import listings additionally require `API_TNT_DM_ERP_INTERNAL_STOCK_REQUISITION_HDR_OWNER` / `_ADMIN` / `_READ`. The **+** button appears only with the create permission (or tenant admin / owner); FINAL, DRAFT and VOID go through the update permission on the backend.
 
-**Goal:** Finalize a draft requisition, then print for operations.
+Client-side permissions seeded for this applet (24 rows): `SHOW_CREATE_STOCK_TRANSFER_BUTTON`, `SHOW_TRANSACTION_DATE` (makes the Good Issue Date editable — without it the date picker is disabled for everyone), `SHOW_COSTING_DETAILS`, `HIDE_PRICE`, and the per-field `SHOW_*` counterparts of the pricing toggles listed above (`SHOW_UNIT_PRICE_STD_PRICING_SCHEME`, `SHOW_UNIT_PRICE_STD_INCL_TAX`, `SHOW_UNIT_PRICE_STD_EXCL_TAX`, `SHOW_UNIT_PRICE_STD_UOM_INCL_TAX`, `SHOW_UNIT_PRICE_STD_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_NET_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_NET_EXCL_TAX`, `SHOW_UNIT_DISCOUNT`, `SHOW_UNIT_DISCOUNT_UOM_EXCL_TAX`, `SHOW_UNIT_PRICE_TXN_UOM_INCL_TAX`, `SHOW_UNIT_PRICE_TXN`, `SHOW_QTY_BASE`, `SHOW_QTY_UOM`, `SHOW_UOM_TO_BASE_RATIO`, `SHOW_AMOUNT_STD_EXCL_TAX`, `SHOW_DISCOUNT_AMOUNT_EXCL_TAX`, `SHOW_AMOUNT_NET_EXCL_TAX`, `SHOW_AMOUNT_TXN`, `SHOW_TAX_CONFIG_SELECTION`, `SHOW_WHT_CONFIG_SELECTION`).
 
-1. Return to **Internal Outbound Requisition Listing**.
-2. Select one or more requisitions.
-3. Click **FINAL** to confirm.
-4. Click **PRINT** to generate/print output for dispatch.
+Checked in code but **not seeded** in the registry for this applet (assigning them is not possible from the Client-Side Permission screen until they are): `SHOW_GENDOC_FINAL_BUTTON`, `SHOW_GENDOC_DISCARD_BUTTON`, `SHOW_GENDOC_VOID_BUTTON`, `SHOW_DRAFT_BUTTON`, `SHOW_LINE_ITEMS_MENU`, `SHOW_FILE_IMPORT_MENU`, `SHOW_KO_DOC_FROM`, `SHOW_KO_DOC_TO`, and the `SHOW_*` partners of the listing-column keys (`SHOW_DOC_NO_TENANT`, `SHOW_TRANSACTION_DATE` is the one exception that is seeded, `SHOW_CLIENT_DOC_TYPE`, `SHOW_ARAP_*`, `SHOW_QTY_MAIN_LISTING`, …).
 
-### Create Stock Transfer (ST)
+## Fields
 
-If enabled for your tenant and the document status allows it, you can select requisitions and click **CREATE ST** to generate a Stock Transfer downstream document.
+### Details
 
-When you click **CREATE ST**:
-1. A new temporary (draft) **Stock Transfer (Internal)** document is created in the database.
-2. A knock-off link is established connecting the source Stock Requisition to the target Stock Transfer.
-3. The details of the requisition (such as sending/receiving locations, line items, and quantities) are copied into the new draft Stock Transfer.
-4. The draft Stock Transfer will then become available in the **Stock Transfer (Internal) Applet** for users to view, edit, or finalize.
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| Doc Short Code | Server-side short code (`STKREQ`). | — | View only. |
+| Doc No (Tenant) / (Company) / (Branch) | Running numbers assigned on FINAL. | — | Read-only; each hideable. |
+| Stock Requisition Good Issue Date | The document's transaction date (`date_txn`). | Yes | Pre-filled from the TEMP document; the picker is enabled only with `SHOW_TRANSACTION_DATE`. Hideable, but the validator stays. |
+| Location (Sending) | The location that will issue the stock (`guid_store`). | Yes | Drop-down filtered by the user's READ targets; disabled once the document is FINAL. |
+| Location (Receiving) | The location that requested the stock (`guid_store_2`). | Yes | Drop-down filtered by the LOCATION_TO READ targets; disabled once FINAL. |
+| Driver Code | Free text. | No | Only with `SHOW_DRIVER_CODE`. |
+| Tracking ID | Free text (`tracking_id`). | No | Hidden by `HIDE_TRACKING_ID`; copied to a Transfer Out created by CREATE ST. |
+| Remarks | Free text (`doc_remarks`). | No | Only with `SHOW_REMARKS`. |
+| Reference # | Free text (`doc_reference`). | No | Hidden by `HIDE_REFERENCE_NO`; copied by CREATE ST. |
+| Doc Description | Free text. | No | Hidden by `HIDE_DOC_DESCRIPTION_DETAILS`. |
+| Created By / Created Date / Modified By / Modified Date | Audit fields. | — | Read-only; labels relabelable. |
 
-{{< callout type="tip" >}}
-- If **CREATE ST** is disabled, it is commonly because the selected documents are not finalized, have already been knocked off/linked to a Stock Transfer, or the tenant permissions/settings disable the action.
-- Once a requisition is linked to a Stock Transfer, it cannot be reverted to **DRAFT** status unless the link is removed.
-{{< /callout >}}
+### Line (item form)
 
----
+| Field | Meaning | Required | Notes / validation |
+|---|---|---|---|
+| GRN No. / ST-GRN ID | The source document when the line was taken from KO For. | — | Read-only. |
+| Location From / Location To | The line's locations, defaulted from the header. | — | Read-only on the form. |
+| Item Code | The requested item. | Yes | Chosen from the item picker; `Validators.required`. |
+| Item Name | From the item. | — | Read-only. |
+| Quantity | Quantity requested in base UOM. | Yes | `Validators.required`, minimum 1. When taken from KO For, defaults to the GRN line's open quantity. |
+| UOM | Unit of measure. | — | From the item. |
+| Tracking ID | Line tracking id. | No | Hidden by `HIDE_TRACKING_ID_GEN_DOC`. |
+| Doc Reference / Doc Description / Remarks | Free text. | No | Hidden by `HIDE_DOC_REFERENCE` / `HIDE_DOC_DESCRIPTION` / `HIDE_ITEM_DETAILS_REMARKS`. |
+| Serial Number / Batch Number / Bin Number tabs | Per item sub-type. Batch needs batch no., issue and expiry date; bin needs bin code, container qty and measure. | — | Validated in the browser only; the backend skips serial / batch quantity checks for signum-0 lines. |
 
-## Requisition Out (Internal Outbound Stock Requisition)
+### KO For › Purchase GRN
 
-This workspace is the main operational area of the applet.
+Lists GRN documents that have open-queue rows with source type `INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE` and target type `INTERNAL_STOCK_REQUISITION`; search by keyword, document number, reference, branch and date range. Selecting lines copies them with quantity = open quantity and creates DRAFT-status links back to the GRN lines.
 
-### Listing
+### File Import
 
-From **Internal Outbound Requisition Listing**, common actions include:
+CSV only (`accept=".csv"`), with a delimiter selector. The *File Type* drop-down offers a single value whose label reads *Stock Adjustment* — a leftover; the file is processed as stock requisitions. Column headers, in any order: `LOCATION_CODE_FROM`, `LOCATION_CODE_TO`, `HDR_REFERENCE_NO`, `TXN_DATE`, `ITEM_CODE`, `QTY`, `HDR_REMARKS`, `HDR_DESCRIPTION`, `ITEM_NAME`, `ITEM_REF_NO`, `ITEM_REMARKS`, `ITEM_DESCRIPTION`, `UOM`, `POSTING_STATUS`. Rows are grouped into documents with `server_doc_type = INTERNAL_STOCK_REQUISITION`, `doc_source_type = INTERNAL` and posting status from the file (default `DRAFT`). The job records `Wrong Columns: …`, `Mandatory Columns Missing: …` or `Empty CSV File` in the import's error message.
 
-- **Create** ("+") — start a new requisition
-- **FINAL** — finalize selected draft documents
-- **DISCARD** — discard selected draft documents
-- **VOID** — void selected finalized documents
-- **DRAFT** — return selected documents to draft (only when enabled)
-- **CREATE ST** — create stock transfer from selected requisitions (when enabled)
-- **PRINT** — print selected documents
+## Lifecycle and effects
 
-### Create / View screen layout
+**Statuses** — **+** creates a TEMP document (`createTemp`), which becomes DRAFT / ACTIVE on the first save (`PUT`). **FINAL** sends the container with `posting_status: FINAL` (bulk from the listing, single from the view). **VOID** (FINAL and ACTIVE only), **DRAFT** (FINAL → DRAFT, `PUT …/internal-stock-requisition/draft/backoffice-ep/{guid}`) and **DISCARD** (DRAFT and ACTIVE only) are the other transitions. Locations are locked once FINAL.
 
-Create and view screens support two layouts depending on tenant settings:
+**Posting proof** (backend commit 871dbf5c96):
 
-- **Tabbed layout** (horizontal tabs)
-- **Panel layout** (vertical expansion panels)
+| | |
+|---|---|
+| Server document type | `INTERNAL_STOCK_REQUISITION`, short code `STKREQ` (`ServerDocShortCodes` L40) |
+| Amount signum | **0** — `InternalStockRequisitionDataConsistencyObject` L16; the header is rejected with `GENERIC_DOC_INVALID_SIGNUM` if it carries any other value (`GenericDocumentDataConsistencyObject.checkAmountSignum` L1207). |
+| Quantity signum | **0** — DCO L17; `fillQuantitySignumAndAmountSignumForLine` (L1215) overwrites every line's signums on create and update, so the `quantity_signum = -1` constant in the applet's `AppletConstants` never reaches the database. |
+| Dr / Cr equation | None. There is no `INTERNAL_STOCK_REQUISITION` entry in `JournalPostingTypeHandler`; the name-based fallback finds no handler, signum-0 lines are skipped (`JournalPostingService` L96) and the empty journal throws `NO_JOURNAL_CREATED` (L580). The journal subscriber of the generic-document primary queue is not constrained by document type, so a failed journal job is logged for every FINAL requisition — expected, harmless. |
+| GL precedence | Not applicable. |
+| Stock processor | `InventoryTransactionLineProcessorService` creates inventory lines only for quantity signum ≠ 0 (L40, L75) — **no stock movement**. |
+| Open queue | `GenericDocLineOpenQueueProcessor` creates `bl_fi_generic_doc_line_open_queue` rows on FINAL only for the target types enabled in the company's `bl_fi_comp_gendoc_flow_config` (Knock Off Configuration). |
+| What VOID reverses | Nothing was posted; VOID sets the posting status and releases open-queue rows. |
 
-In **Create**, the main sections are:
+**FINAL validation that applies** (`GenericDocumentService.validateGenericDocumentOnFinal`): `FISCAL_PERIOD_LOCKED` when the date falls in a `LOCK_ALL` / `LOCK_TXN` period (L1681-1695 — only the two stock-transfer types are exempt); a second FINAL is refused with 403 *Generic Document has already been posted to FINAL*; serial, batch and stock-balance checks skip signum-0 lines unless the caller sends the signum-zero validation flags, which this applet does not.
 
-- **Details** — locations and document header fields
-- **Line** — line item entry and review
+**FINAL → DRAFT and VOID** — `GenericDocumentController.checkcanChangePostingStatusToNonFinal` (L2916) requires the document to be FINAL and throws `GENERIC_DOCUMENT_HAS_TARGET_LINKS` (*"… has already been linked with the following documents: OBDSTF-…"*) when any ACTIVE link has this requisition as its source — i.e. after a Transfer Out was created from it (CREATE ST or the Stock Transfer applet's knock-off). Remove or void the transfer first.
 
-In **View**, additional sections are commonly available:
+**CREATE ST** (listing: selected FINAL + ACTIVE rows; view screen: the open document, no status check) — the applet creates a TEMP `INTERNAL_OUTBOUND_STOCK_TRANSFER` document and calls the backend knock-off with `targetQuantitySignum: -1`. `GenericDocLinkService.knockOff` requires the target to be TEMP (*Target Gen Doc is not in TEMP status*), copies every ACTIVE requisition line less the quantity already linked (*The quantity to be knocked off exceeds the generic doc line quantity* otherwise), creates one link per line (`quantity_signum -1`, `quantity_contra` = line quantity), copies the header's sending / receiving locations in the same order (the swap applies only to inbound transfers), tracking id, reference and external references, updates the requisition's open-queue rows if the Knock Off Configuration created any, and skips the same-entity-and-branch check for this target type. The result is a new, unfinalised Transfer Out in the [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/) applet; stock moves when that transfer is finalised there. The success toast is *Stock Transfer Succesfuly Created*.
 
-- **Doc Link** — document link visibility
-- **Attachment** — attachment management
-- **Export** — export-related tools (when enabled)
+## Related applets
 
----
+- [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/) — the document that fulfils the requisition and moves the stock; its Transfer Out knocks the requisition off (or is created from it by CREATE ST).
+- [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) — the only document the requisition can knock off (KO For › Purchase GRN).
+- [Organisation](/applets/master-data/organisation-applet/) — company Knock Off Configuration, branches, document numbering.
+- [Warehouse Management](/applets/inventory-workflow/warehouse-management-applet/) — the sending and receiving locations.
+- [Inventory Item Maintenance](/applets/inventory-workflow/inv-item-maintenance-applet/) and [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — the items requested.
+- [Employee](/applets/master-data/employee-applet/) — employees assigned to approval designations under Branch Designation.
+- [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) and [Stock Availability](/applets/inventory-workflow/stock-availability-applet/) — where to check what the sending location actually holds; the requisition itself changes neither.
 
-## Line Items
+## Troubleshooting
 
-Use **Line Items** when you need a line-level operational view across documents.
+| Symptom | Cause | Fix |
+|---|---|---|
+| The Stock Transfer applet's *Search Document › Stock Requisition* tab shows nothing although the requisition is FINAL | FINAL creates open-queue rows only for target types enabled in the company's Knock Off Configuration; the *Stock Requisition → Outbound Stock Transfer* row is missing or disabled. | Enable the row in Organisation › Company › Knock Off Configuration, then re-run the queue repair for existing documents (the watchdog / `data-fix-missing-queue` job), or use CREATE ST, which copies lines directly. |
+| **KO For › Purchase GRN** lists no documents | Same mechanism on the GRN side: no *Purchase GRN → Stock Requisition* row, or the GRN lines have no open quantity left, or the search branch filter excludes them. | Enable the row; clear the branch filter; check the GRN's open quantity in the Purchase GRN applet. |
+| Toast *Link Error: Target Gen Doc is not in TEMP status* or *Creation Error: Failed to create temp document* on CREATE ST | The user lacks the create / update permission for `INTERNAL_OUTBOUND_STOCK_TRANSFER`, or the TEMP transfer was already touched. | Grant the Stock Transfer create permission target for the sending location; retry. |
+| Toast *The quantity to be knocked off exceeds the generic doc line quantity* on CREATE ST | Every line of the requisition has already been linked to a transfer for its full quantity (CREATE ST pressed twice, or the Stock Transfer applet already knocked it off). | Open the existing transfer via the requisition's Doc Link tab instead of creating another. |
+| DRAFT or VOID fails with *GENERIC_DOCUMENT_HAS_TARGET_LINKS … OBDSTF-nnnn* | An ACTIVE link points from the requisition to a Transfer Out. | Void or discard the transfer first; then revert. |
+| DRAFT button not visible | `SHOW_DRAFT_BUTTON` is off (default); the button has no permission override. | Turn the setting on under Application Settings › Gen Doc Listing Settings. |
+| FINAL rejected with *The selected date falls within a locked fiscal period* | `FISCAL_PERIOD_LOCKED`: the Good Issue Date is in a `LOCK_TXN` / `LOCK_ALL` period; requisitions are not exempt (stock transfers are). | Change the date (needs `SHOW_TRANSACTION_DATE`) or reopen the period. |
+| Good Issue Date cannot be changed | The picker is enabled only for users holding the seeded `SHOW_TRANSACTION_DATE` client-side permission. | Assign the permission to the role; the field then accepts a date. |
+| CREATE button stays disabled with no visible error | A required Details field is empty — most often the Good Issue Date hidden by `HIDE_STOCK_REQUISITION_GOOD_ISSUE_DATE` while the TEMP document carried no date, or a location the user is not targeted for. | Unhide the field, or grant the location targets. |
+| Location (Sending) / (Receiving) drop-down is empty | The user's `TNT_API_DOC_INTERNAL_STOCK_REQUISITION_READ_TGT_GUID` / `…_LOCATION_TO_READ_TGT_GUID` targets contain no location, or the selected branch has no linked locations. | Add the locations as targets in the Permission Wizard; link locations to the branch in Warehouse Management. |
+| A journal-posting job fails with `NO_JOURNAL_CREATED` after every FINAL | Expected for a signum-0 document: no journal handler exists and the journal subscriber is not filtered by document type. | Ignore; nothing is missing from the ledger. |
+| Approval Settings and Branch Designation are configured but FINAL never waits for approval | The approval tables are written by these screens but not read by the requisition's create / FINAL path or by the backend's generic-document FINAL validation. | Nothing to configure; a position-based approval workflow for this document is tracked as open work in the applet's issue tracker. |
+| File import job ends with *Mandatory Columns Missing* / *Wrong Columns* / *Empty CSV File* | Header names do not match the fourteen expected column names, or the file has no data rows. | Use the exact uppercase column names listed under Fields › File Import; save as CSV with the delimiter chosen on the upload screen. |
+| Application Settings shows tab toggles only for Doc Link, Attachment and Export | The shared settings screen keys its tab-hide sections by applet code and lists only those three for `internalStockRequisitionApplet`. | Nothing to configure; the Details, Line and KO For sections cannot be hidden. |
+| Hidden pricing fields reappear for one user | That user holds the matching seeded `SHOW_*` client-side permission, which overrides the tenant-wide `HIDE_*`. | Remove the permission from the user's role, or accept the override. |
+| Remarks are cut off on the printed requisition | The printable format's remarks field is too small for long text. | Edit the uploaded printable template's remarks field width / wrap under Printable Format Settings. |
+| The listing shows extra buttons (CREATE ST, PRINT, RESET) that the site does not use | Nothing hides PRINT or RESET; CREATE ST hides with `HIDE_CREATE_STOCK_TRANSFER_BUTTON`. | Hide CREATE ST via the setting; PRINT and RESET have no setting (a request to remove them is open with the product team). |
 
-Typical use cases:
+## Related documentation
 
-- Find items with high **Qty Outstanding**
-- Filter by transaction date and locations
-- Export grids for analysis (Ag-Grid export features may be available depending on tenant configuration)
-
----
-
-## File Import
-
-Use **File Import** to manage bulk import jobs.
-
-The listing includes operational fields such as:
-
-- **File Name / Size**
-- **Format**
-- **Status / Process Status**
-- **Error Message**
-- **Created / Updated Date**
-
-This is typically used for high-volume initialization or corrections where manual entry is not practical.
-
----
-
-## Settings
-
-The applet exposes standard configuration areas (availability depends on tenant policy):
-
-| Area                             | What it controls                                               |
-| -------------------------------- | -------------------------------------------------------------- |
-| **Application Settings**         | Field configuration / field visibility rules                   |
-| **Default Selection**            | Default company/branch/location selections                     |
-| **Printable Format Settings**    | Printing layout selection and configuration                    |
-| **Webhook / Feature Visibility** | System integration and feature toggles                         |
-| **Permissions**                  | Permission wizard, permission sets, user/team/role permissions |
-| **Release Notes / Applet Log**   | Change history and operational logs                            |
-
----
-
-## Personalization
-
-Personalization allows user-level preferences (for example **Personal Default Selection**) so different users can work faster without changing tenant-wide defaults.
-
----
-
-## FAQ
-
-**Q: Why can’t I see or select certain locations?**  
-A: Location lists can be restricted by permission targets. Tenant Admin/Owner users may have broader access compared to standard users.
-
-**Q: What’s the recommended workflow: Draft or Final?**  
-A: Use **DRAFT** while preparing and checking items. Use **FINAL** when the requisition is confirmed and ready for downstream processing (printing and stock transfer creation).
-
-**Q: Under what conditions can a FINAL requisition be changed back to DRAFT?**  
-A: A **FINAL** requisition can be returned to **DRAFT** status (by selecting the document and clicking the **DRAFT** button) only if:
-1. The **Show Draft Button** setting (`SHOW_DRAFT_BUTTON`) is enabled in the Applet Settings.
-2. The document is **ACTIVE** (not voided or discarded).
-3. The document does **not** have downstream target links (e.g., no Stock Transfer has been created/linked from it yet).
-
-**Q: When the "CREATE ST" action is triggered, what happens in the Stock Transfer applet?**  
-A: Triggering **CREATE ST** automatically generates a temporary (draft) **Stock Transfer** document in the **Stock Transfer (Internal) Applet**. This new document is linked (knocked-off) from the source Stock Requisition, inheriting its sending/receiving locations, line items, and quantities. Warehouse and operations personnel can then locate, review, edit, or finalize this draft within the Stock Transfer applet.
-
-**Q: Why is the “KO For” tab only showing Purchase GRN?**  
-A: In the current applet implementation, the KO import tab is configured for **Purchase GRN**.
-
-**Q: Why are some tabs or buttons missing?**  
-A: Many screens and actions are controlled by tenant settings (hide/show flags) and by permissions. For example, document actions can be hidden via settings, and some detail fields (Tracking ID, Doc Description, Reference #) can be hidden per tenant policy.
+- [Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/) — the fulfilment document.
+- [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) — the upstream knock-off source.
+- [Organisation](/applets/master-data/organisation-applet/) — Knock Off Configuration.
+- [Inventory module](/modules-v2/inventory/).
