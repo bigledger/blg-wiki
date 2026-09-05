@@ -75,11 +75,6 @@
  "updated": "2026-09-05",
  "rework": [
   {
-   "page": "content/en/applets/master-data/chart-of-account-applet.md",
-   "why": "codex review: default-GL behaviour was inverted (hot-fixed the two claims); COA_DEFAULT_GL_CODE is a textarea with no consumer \u2014 say so; stock-value toggles gate Fiscal Year tabs, not reports; Set of Books + company default-GL screens missing from Fields",
-   "review": "planning/reviews/2026-09-05-gpt-5.6-sol-lane-run-1-review.md"
-  },
-  {
    "page": "content/en/applets/master-data/cashbook-applet.md",
    "why": "codex review: fix minor \u2014 complete fields, remove unsupported semantics",
    "review": "planning/reviews/2026-09-05-gpt-5.6-sol-lane-run-1-review.md"
@@ -88,6 +83,13 @@
    "page": "content/en/applets/inventory-workflow/stock-availability-applet.md",
    "why": "codex review: hide-switch defaults wrong (several initialise true / null\u2192true); incomplete menu/settings inventory",
    "review": "planning/reviews/2026-09-05-gpt-5.6-sol-lane-run-1-review.md"
+  }
+ ],
+ "reworked": [
+  {
+   "page": "content/en/applets/master-data/chart-of-account-applet.md",
+   "date": "2026-09-05",
+   "run": 3
   }
  ]
 }
