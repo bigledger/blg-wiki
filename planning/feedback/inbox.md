@@ -483,3 +483,18 @@ with the analysis, the changes made, and the commit hash.
 ### registry (e-invoice)
 - [ ] F-0110 (2026-09-05) myEInvoicePortalApplet has no documentation_url; peppolApAdminApplet's points at a page that does not exist; 0 client-side permission rows for all four e-invoice codes; website-builder/user-permission-manager.md has no registry row (duplicate of ecommerce/website-builder/user-manager.md — merge). The forex setting einvoice_forex_gendoc_posting_logic has no UI — how to present it?
 
+## From Lane 2 run 9 (drained after) + Lane 4 run 8 (2026-09-05)
+
+### product (report applets)
+- [ ] F-0111 (2026-09-05) Debtor and Creditor Report applet: Field Settings placeholder, Default Selection never persists, contra endpoint declared but never called, creditor rows open nothing; creditor listings scoped by DEBTOR_* permission targets (AP-only roles get an empty dropdown); Historical/AR Transaction/Collection need permissions the start-up inquiries never request. Debtor Report: DEFAULT_ORIENTATION unused; Aging Report lacks AR_EMPLOYEE type. Product issues?
+- [x] F-0112 (2026-09-05) 8 report screenshots (real names) quarantined.
+
+### SECURITY (forex)
+- [ ] F-0113 (2026-09-05) A third-party market-data API key is compiled into the front end (forex applet and blg-shared-utilities) and called from the browser on a shared free tier. Not in the wiki. Report to the platform team — Vincent.
+
+### product / registry (forex)
+- [ ] F-0114 (2026-09-05) forexApplet.documentation_url points at a catalogue anchor (/applets-workflows/#-forex-applets) — registry fix. Dead local settings screens (same pattern as Entity Maintenance). "Newest history row wins" rate semantics with no date matching; soft delete leaves dangling forex_source_history_guid on generic docs — document only, or change request?
+
+### standard
+- [ ] F-0115 (2026-09-05) Master-data applets controlled by settings that live in OTHER applets (forex: SHOW_FOREX_DATA_SOURCE, CANNOT_EDIT_CURRENCY_RATE) — add a "Settings in other applets that control this applet" slot to §4 of the standard.
+

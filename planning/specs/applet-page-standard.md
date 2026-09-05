@@ -51,6 +51,9 @@ aliases: [<keep existing>]
      them (add a column only when authority varies by row).
    - **Document behaviour settings** (document applets only) — status flow options, posting
      behaviour, printables, workflow/approval toggles, e-Invoice submission flags.
+   - **Settings in other applets that control this applet** (master-data and utility applets: e.g. the
+     Forex drop-down is governed by `SHOW_FOREX_DATA_SOURCE` and `CANNOT_EDIT_CURRENCY_RATE` set in the
+     document applets) — a short table: setting · where it is set · effect here.
    - **Feature visibility / permissions** — what the applet's permission definitions actually gate
      (`bl_applet_client_side_perm_dfn` names, or the repo's permission constants).
 5. **Fields** — the create/edit form fields: *Field · Meaning · Required · Notes/validation*.
