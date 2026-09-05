@@ -100,5 +100,11 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
     on the balance tables are dead (only `qty_ledger`, `qty_reserved`, `qty_min/max_level`, cost live).
 23. **Hub/index pages** (no registry row): build from the DCO signum sweep, the processors' queue codes,
     and a bounded `git grep` per applet repo for the read endpoints; gates.py / applet-scan.sh do not apply.
-24. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+24. **Non-generic stock documents** (Stock Conversion, lane 4 run 22): direction proof = applet constants ×
+    factory copy × `StockBalanceHelper.calculateResultBalance`, not a DCO signum. Diff `Validators.required`
+    against the rendered template before writing "Before you can use it" (a commented-out control can keep
+    a required validator → silent hard prerequisite, e.g. DEFAULT_BRANCH).
+25. **Enquiry-applet permissions** hinge on the target-filter branch (companies derived from requested
+    locations, intersected), not `hasPermission()` — explains "empty grid vs not authorised".
+26. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.

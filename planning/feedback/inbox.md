@@ -698,3 +698,10 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0187 (2026-09-05) A dozen controls reach no backend call (seller-order SAVE/FINAL/Delete, PI edit actions, PV Create, product Create, Multi UOM/Image/Attribute writes, stock-balance edit/delete…); only PRINTABLE persists; ~45 keys read with no control. Backend: purchase_amount = quantity bug in TmpSellerOrderLineService; discarded BigDecimal.add in EcomSync seller-stock mode (seller totals stay 0); no scheduler wiring for the seller-order processors; no mkp item-code uniqueness. Is the Seller Applet live for any tenant? If not, exclusion may beat documenting 12 dead buttons.
 - [x] F-0188 (2026-09-05) Seven images (staff e-mails/phone as rows, person/business names as test branches, developers' names, infographics) quarantined.
 
+## From Lane 4 run 22 — Stock Balance + Stock Conversion (2026-09-05)
+
+### product (stock conversion)
+- [ ] F-0189 (2026-09-05) Direction is the reverse of the old page: Input lines ADD stock, Output lines REMOVE it (stored +/− quantity_base, signum 1). Intended, or should the constants flip so Input = consumed? DEFAULT_BRANCH is a silent hard prerequisite (branch drop-down commented out but Validators.required kept → SAVE never enabled without an applet-level Default Branch). VOID endpoint un-permissioned; FINAL gated by _READ only; dead Field Settings / personal defaults.
+- [ ] F-0190 (2026-09-05) Stock Balance: DropDownController location lookup has its permission check commented out; unreachable scaffolding in the applet. Registry: stockReplenishmentApplet documentation_url → Confluence (repoint before its page lands); blg-applet-wavelet-internal-kitting-applet exists with no ACTIVE row and no page.
+- [x] F-0191 (2026-09-05) Three Stock Conversion images (a first name in listing rows, infographic) quarantined.
+
