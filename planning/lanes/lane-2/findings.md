@@ -260,3 +260,79 @@ Recommendation: delete `-04`, `-06`, `-11` and `figure-1-1` from `static/` (none
 - Method: for register/ledger-style applets with no journal, the "posting proof block" still works — fill amount signum from the txn-line mapper, the Dr/Cr and GL rows with "none", and put the register-update arithmetic in its own row. The processor's `txn_type` switch (`OPENING` / `VIREMENT|ADJUSTMENT|TRANSFER` / else) is the whole lifecycle.
 - Method: the `AG_GRID` report column list is the fastest way to see what a report actually reads (`report-listing.component.ts` — both "Initial" and "Latest" bound to `latest_allocated_amt` was found this way).
 - Pace: one large master-data + document applet in roughly 80 minutes including the backend job chain and twelve screenshots. **Next: `content/en/applets/finance/creditor-report-applet.md`** (registry `creditor_report_applet`); it and the two debtor reports are read-only report applets and should go faster — check whether they share one repo before starting.
+
+## Run 8 — 2026-09-05 — `finance/creditor-report-applet.md` (registry `creditor_report_applet` "Creditor Report Applet")
+
+Rewritten to the standard from `blg-applet-wavelet-creditor-report-applet-V2` (main `8992c124`, 2026-08-24), backend `871dbf5c96`, shared-utilities `af523eb`. content-lint passes. Existing intro prose and the YouTube walkthrough kept; the Glossary, FAQ, "Who benefits", "What problems" and role quick-starts were dropped (user-guide voice, no code basis) — the accurate parts were folded into Screens, Fields and Troubleshooting.
+
+### F-0042 resolution (registry doc URL vs separate page)
+
+The three report applets are **three distinct products**, each with its own ACTIVE registry row and its own repo, not aliases of one another:
+
+| Registry code | Name | Repo (live) | Menu |
+|---|---|---|---|
+| `creditor_report_applet` | Creditor Report Applet | `blg-applet-wavelet-creditor-report-applet-V2` (76 commits, last 2026-08-24) | 8 AP reports |
+| `debtor_report_applet` | Debtor Report Applet | `blg-applet-wavelet-debtor-report-applet-V2` (157 commits, last 2026-09-02) | 7 AR reports incl. Collection Invoice with Aging |
+| `debtor-and-creditor-report-applet` | Debtor and Creditor Report | `blg-applet-wavelet-debtor-and-creditor-report-applet` (25 commits, last 2026-08-26) | 15 reports (both sides, incl. Historical for each) |
+
+So neither page should be marked skipped/merged; each is documented once under its registry name. What is wrong is only the **registry row**: `creditor_report_applet.documentation_url` = `https://wiki.bigledger.com/applets/debtor-and-creditor-report-applet/` should be `https://wiki.bigledger.com/applets/finance/creditor-report-applet/` (the page's alias `/applets/creditor-report-applet/` also resolves). That is a DB change in akaun_master — Vincent's decision (question 19 below).
+
+Note also: the un-suffixed repos `blg-applet-wavelet-creditor-report-applet` and `blg-applet-wavelet-debtor-report-applet` are the frozen 2025-11-02 monorepo splits (2–3 commits, `appletCode` still `internalPackingOrderApplet` in `environment.ts`). Always use the `-V2` repos; the combined applet has no V2.
+
+### Screenshots with personal data (`static/images/creditor-report-applet/`)
+
+Opened all six images. The five real screenshots all show identifiable names in the grid and are **not referenced** by the new page:
+
+static/images/creditor-report-applet/aging-report.png
+static/images/creditor-report-applet/outstanding-document-report.png
+static/images/creditor-report-applet/statement-of-account.png
+static/images/creditor-report-applet/historical-transaction-aging.png
+static/images/creditor-report-applet/purchase-invoice-with-settlement-details.png
+
+- `aging-report.png` — a Company column value is a real retail customer's company name (also on the exclusion list).
+- `outstanding-document-report.png` — Entity Name column shows two real company/brand names; Company column shows a customer's abbreviation.
+- `statement-of-account.png` — Entity Name column shows a person's name.
+- `historical-transaction-aging.png` — branch, company and entity names are staff first names ("… Branch Test", "… Company Test", "… Customer", "… SUPPLIER") plus a real company code.
+- `purchase-invoice-with-settlement-details.png` — Entity Name column shows two staff first names.
+
+`creditor-report-applet-overview.png` (5.4 MB, NotebookLM infographic) has no data but is marketing copy ("Replaces manual spreadsheets…", "Enhanced data integrity"); not embedded — the page has no images now. Recommendation: retake the five screens on the staging tenant with synthetic suppliers (GadgetSphere-style codes) and delete the infographic; outside my edit scope.
+
+### Inversions / false claims found in the old page (carry to the debtor pages, which share the text)
+
+1. **"Printable formats affect how PDF exports look when you click PRINT or Export to PDF from any report"** (debtor page, and implied on the creditor page) — false. The applet's Printable Format Settings only accept `STATEMENT_OF_ACCOUNT_TRANSACTION` / `STATEMENT_OF_ACCOUNT_AGING` templates and only drive the two SOA tabs' *Export to PDF* / *Preview*. The document **PRINT** button uses the document type's own templates; grid exports use AG Grid.
+2. **"Aging Period Settings — e.g. 30/60/90/120+ days, or month-based ranges"** — half true: DAY periods are ranges; MONTH periods are just a number of months. And ticking a period **overwrites `AGING_PERIOD_TYPE`** (shared listing L360–L365), which the old page never says.
+3. **"Personal Default Selection overrides the applet-wide defaults for that user"** — false in this applet: the screen never loads or saves (`personal-default-settings.component.ts`: subscription commented out, SAVE emits to nobody).
+4. **"Aging Period Type: Month (default)"** — the control is empty by default; month behaviour is the fallback of `settings?.AGING_PERIOD_TYPE === 'DAY'`. Same outcome, different mechanism — the DAY type without a DAY period gives **no bucket columns**, which the old page could not explain.
+5. The old page called the applet read-only ("Drill-down capability" etc.) and never mentioned **Contra** — the applet creates `bl_fi_generic_doc_arap_contra` rows from the Contra tab, with no server-side over-contra check (`GenericDocumentArapContraDco` validates nulls/existence only).
+6. **Statement of Account listing and Historical Creditor Report are served by *debtor*-named backend permissions** (`API_TNT_DM_ERP_ENTITY_AR_AP_REPORT_DEBTOR_OUTSTANDING_ENTITY_READ`, `API_TNT_DM_ERP_ENTITY_AR_AP_HISTORICAL_DEBTOR_READ`). An AP-only role built from `CREDITOR_*` permissions gets 403 on those two menus. The applet's start-up permission inquiry asks for the first but not the second.
+7. The combined-applet page states "does **not** expose an As of Date filter" and "no separate Debtor/Creditor aging menus" — the current combined repo has 15 menu items including Debtor/Creditor Historical Transaction Aging Analysis (As Of Date) and separate aging reports. That page needs a full rewrite from its repo (next in queue).
+
+### Cross-lane link requests
+
+- **internal-payment-voucher-applet (own lane, done in run 1)** — add one sentence that contras can also be created from the Creditor Report Applet (Contra tab of View Outstanding Document → `gen-doc/arap-contras/multi/backoffice-ep`) and that those contras change the balances the PV settlement picker shows. Next pass of my lane.
+- **internal-purchase-invoice-no-stock-in-applet, internal-purchase-grn-stock-in-applet, internal-purchase-debit-note-applet, internal-purchase-credit-note-applet, internal-purchase-return-applet (lane owning `purchase-workflow/`)** — add `creditor-report-applet` to `related_applets` where missing (debit/credit note, return and purchase-report already have it); state that only FINAL documents appear in the creditor reports and that a GRN stock-in converted to a purchase invoice shows twice unless `INTERNAL_PURCHASE_GRN_STOCK_IN` is excluded in the Creditor Report's Field Settings.
+- **entity-applet (lane owning `master-data/`)** — add `creditor-report-applet` / `debtor-report-applet` to `related_applets`; the AR/AP type (`default_arap_type` on the entity and on `bl_fi_mst_comp_branch_location_entity_link`) decides whether an entity appears in the creditor (`AP_*`) or debtor (`AR_*`) reports — worth one sentence on the entity page.
+- **financial-report-applet (own lane, done run 1)** — already links both report pages; add the reconciliation note (document balances vs GL) when next touched.
+- **debtor-report-applet (own lane, next)** — fix its link `/applets/creditor-report-applet/` → `/applets/finance/creditor-report-applet/`; apply corrections 1–4 above.
+
+### Undocumented / registry notes
+
+- The `historical-ageing` snapshot (`bl_fi_generic_doc_historical_ageing`, `GenericDocumentHistoricalAgeingController` + `…QueueController`) has no wiki page; both historical reports in the three report applets depend on it. Candidate for a short backend-concept page or a section in Developer SysAdmin (job queue).
+- Client-side permission definitions: **0 rows** for all three report applets (`bl_applet_client_side_perm_dfn`, 2026-09-05) — consistent with F-0044.
+
+### Questions for Vincent (run 8)
+
+19. **F-0042 — fix the registry row, not the wiki.** May the `documentation_url` of `creditor_report_applet` in akaun_master be changed to `https://wiki.bigledger.com/applets/finance/creditor-report-applet/`? The wiki side is done; both pages stay.
+20. **Screenshots.** All five creditor screenshots show real company/person names and were dropped. Should Lane 2 (a) leave the page image-less, (b) request retakes from the staging tenant with synthetic suppliers, or (c) crop/blur the existing ones? The same problem will recur on the debtor pages (same tenant, same test data).
+21. **Contra from a report applet.** The Creditor Report Applet writes contras with no server-side check against the open balance (client guard only). Document as-is (done) or flag as a product issue to the backend team?
+
+### Notes (run 8)
+
+- Method: for report applets, "four proofs" reduce to: form controls in the applet-local field-configuration template (rendered), `saveMasterSettingsInit` (persisted), and a grep for `settings?.KEY` / `resolve?.KEY` across listings (consumed). `applet-settings.model.ts` is copy-pasted from the document applets and lists ~35 keys that nothing here renders — trust the template, not the model.
+- Method: the report's real behaviour is in the backend **Uow where-clauses** (`EntityReportUow`, `EntityOutstandingDocumentUow`, `EntityStatementOfAccountUowHelper`, `TransactionHistoryReportUow`): FINAL-only, `NOT IN (:exclude_server_doc_types)`, `arap_types` via entity or company link, forex division by `base_doc_xrate`, historical = snapshot table with `date_txn < month end + 1`. Grep `posting_status` and `exclude_server_doc_types` in the Uow before writing any "what it reads" sentence. Avoid `grep -r` over the whole `javasdk` tree — it times out; target the `dal/uow/...` directory.
+- Method: the `blg-akaun-ts-lib` endpoints are only visible in the frozen V1 repo's `node_modules/blg-akaun-ts-lib/fesm2015/*.js` (the V2 repos have no node_modules) — useful for `EntityReportService` (`entity-reports/entity|aging/backoffice-ep`).
+- Pace: one 8-report applet with a write path took the full run (~90 min) including six screenshots and backend Uows. **Next: `content/en/applets/finance/debtor-and-creditor-report-applet.md`** (registry `debtor-and-creditor-report-applet`, repo `blg-applet-wavelet-debtor-and-creditor-report-applet`, 15 menu items; its field-configuration component uses a different form style — grep `form.addControl`/`FormGroup({` rather than `FormControl(`). Then `debtor-report-applet.md` (V2 repo; Field Settings has 10 keys). Both share ~80 % of the creditor structure, so expect both in one run. Open the debtor screenshots (`static/images/debtor-report-applet/`, 8 files) before keeping any — same test tenant.
+
+### Registry / naming mismatches (run 8, queue triage)
+
+- `finance/vote-book-applet.md` — marked **skipped** in state.json per the run-8 instruction (F-0089: no registry row; the concept is the Budgetary Applet's votebook). Inbound links from `modules-v2/financial-accounting/_index.md` and `user-guide/industry-solutions/professional-services.md` should be re-pointed to `/applets/finance/budgetary-applet/` when F-0079 is decided.

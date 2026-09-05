@@ -8,7 +8,6 @@
   "human-resources"
  ],
  "queue": [
-  "content/en/applets/finance/creditor-report-applet.md",
   "content/en/applets/finance/debtor-and-creditor-report-applet.md",
   "content/en/applets/finance/debtor-report-applet.md",
   "content/en/applets/finance/deposit-applet.md",
@@ -32,7 +31,6 @@
   "content/en/applets/crm/team-maintenance-applet.md",
   "content/en/applets/finance/txn-recon-applet.md",
   "content/en/applets/crm/unified-contact-center-ucc-applet.md",
-  "content/en/applets/finance/vote-book-applet.md",
   "content/en/applets/integrations/vstecs-ms-esd-order-applet.md",
   "content/en/applets/rma/warranty-admin-applet.md",
   "content/en/applets/integrations/webhook-applet.md"
@@ -71,7 +69,12 @@
   {
    "page": "content/en/applets/finance/budgetary-applet.md",
    "date": "2026-09-05",
-   "note": "rewritten under registry name Budgetary Applet (run 7); budget-applet.md untouched, alias not added — awaits F-0079"
+   "note": "rewritten under registry name Budgetary Applet (run 7); budget-applet.md untouched, alias not added \u2014 awaits F-0079"
+  },
+  {
+   "page": "content/en/applets/finance/creditor-report-applet.md",
+   "date": "2026-09-05",
+   "note": "rewritten under registry name from creditor-report-applet-V2 repo (run 8); registry documentation_url still points at the combined page (F-0042)"
   }
  ],
  "skipped": [
@@ -83,7 +86,7 @@
   {
    "page": "content/en/applets/finance/accounts-receivable-applet.md",
    "date": "2026-09-05",
-   "why": "No ACTIVE registry row under any receivable/debtor/AR name (only Debtor Report Applet, Debtor and Creditor Report, Creditor Report Applet — all separate queue pages). Page is a 53-line TODO placeholder. Not enhanced (ADR-0002)."
+   "why": "No ACTIVE registry row under any receivable/debtor/AR name (only Debtor Report Applet, Debtor and Creditor Report, Creditor Report Applet \u2014 all separate queue pages). Page is a 53-line TODO placeholder. Not enhanced (ADR-0002)."
   },
   {
    "page": "content/en/applets/human-resources/admin-time-attendance-applet.md",
@@ -98,7 +101,12 @@
   {
    "page": "content/en/applets/finance/budget-applet.md",
    "date": "2026-09-05",
-   "why": "No registry row for 'Budget Applet'; the registry row is budgetaryApplet 'Budgetary Applet' whose documentation_url is /applets/finance/budgetary-applet/ (a 10-line placeholder still in the queue). The 1,495-line budget-applet.md is the raw material for that page — merge/alias decision for Vincent (question 13)."
+   "why": "No registry row for 'Budget Applet'; the registry row is budgetaryApplet 'Budgetary Applet' whose documentation_url is /applets/finance/budgetary-applet/ (a 10-line placeholder still in the queue). The 1,495-line budget-applet.md is the raw material for that page \u2014 merge/alias decision for Vincent (question 13)."
+  },
+  {
+   "page": "content/en/applets/finance/vote-book-applet.md",
+   "date": "2026-09-05",
+   "why": "F-0089: no registry row contains 'vote'; the Vote Book described by the module pages is the Budgetary Applet's votebook (registry budgetaryApplet, page finance/budgetary-applet.md). Not enhanced (ADR-0002); delete/redirect decision joins F-0079."
   }
  ],
  "updated": "2026-09-05",
