@@ -57,17 +57,32 @@ the question "what does this change for the neighbour?" gets answered in the not
 
 ## Convergence test (measured at `measure` wake-ups)
 
-| Metric | Now (2026-09-05) | Converged when |
-|---|---|---|
-| Open inbox items not waiting on Vincent | 22 → 19 (unit 2) | 0 |
-| ACTIVE general-purpose applets without a page | ~40 | 0 |
-| Applet pages with `applet_code:` matching the registry | 29 / 165 (unit 4) | all |
-| Guides meeting the CLAUDE.md voice checklist (codex-judged) | 4 / 47 | all |
-| lychee errors (offline) | 383 | 0 new; baseline retired by F-0013 |
-| Pages with WIP banners | 54 | 0 |
-| Pages without `description:` | 57 | 0 |
-| Sources with a live cursor | 5 / 6 (unit 7: +gdrive, +email, +blg-intranet content; jira pending) | all, each < 7 days behind |
-| Deploy gated by tests | **yes** (unit 1) | yes |
+| Metric | 2026-09-05 | **2026-09-07** | Converged when |
+|---|---|---|---|
+| lychee errors (offline) | 383 | **172** | 0 new; baseline retired by F-0013 |
+| Lint checks enforcing a class of error | 8 | **19** | every class we have found |
+| Pages with a `sources:` map (en) | ~0 | **122 / 620** | every page a reader acts on |
+| Applet pages with `applet_code:` | 29 / 165 | **116 / 185** | all |
+| Live pages with a WIP-style banner | 54 | **18** | 0 |
+| Live pages without `description:` | 57 | **55** | 0 |
+| Unpublished pending rewrite (en) | 0 | **55** | 0 — each returns rewritten or archived |
+| Unpublished pending retranslation (zh/ms/ar) | 0 | **57** | 0 |
+| Screenshots quarantined for PII or staleness | 0 | **428** | n/a — recapture backlog |
+| Worklog entries (what came down, and why) | 0 | **27** | n/a |
+| Open questions for Vincent | — | **50** | 0 |
+| Product findings ready to file | — | **83** | 0 filed as issues |
+| ACTIVE general-purpose applets without a page | ~40 | ~40 | 0 |
+| Deploy gated by tests | **yes** | **yes** | yes |
+
+**What the numbers say.** Broken links more than halved and the lint suite more than doubled — those
+are the durable wins, because a lint stops a class of error returning. The `sources:` count is the
+honest measure of progress: **122 of 620 pages have been verified against source**, and every audit
+so far says the unverified remainder is 55–70% invented. The two "unpublished pending" rows are the
+cost of that honesty and should be read as debt, not achievement: 112 pages across four languages
+are off the site until someone rewrites or retranslates them.
+
+**The bottleneck is no longer finding problems.** It is the 50 open questions and 83 product
+findings — work that cannot proceed without Vincent or without an engineer.
 
 When every row is converged, the loop drops to **maintenance cadence**: one `ingest` per source
 per day, `measure` weekly, batches as the inbox fills. It never ends; it slows down.
