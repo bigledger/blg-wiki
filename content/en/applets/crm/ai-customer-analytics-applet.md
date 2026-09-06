@@ -1,4 +1,5 @@
 ---
+translationKey: ai-customer-analytics-applet
 title: "AI Customer Analytics Applet"
 description: "Predictive customer analytics and insights for BigLedger Digital CRM operations"
 tags:

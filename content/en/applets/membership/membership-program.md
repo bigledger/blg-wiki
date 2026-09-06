@@ -1,4 +1,5 @@
 ﻿---
+translationKey: membership-program
 bookHidden: true
 title: "Membership Program"
 description: "Comprehensive membership program management with points system and member benefits"

@@ -1,4 +1,5 @@
 ---
+translationKey: ecommerce-catalog-applet
 title: "E-Commerce Catalog Applet"
 description: "Online product catalog management for BigLedger e-commerce operations"
 tags:

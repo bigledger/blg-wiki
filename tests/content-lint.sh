@@ -51,6 +51,31 @@ if [ -n "$badauth" ]; then say "FAIL: invented auth header or API-key format in 
 #    in the repo is exposed whether Hugo builds the page or not.
 check "no signed JWT in content" -rEo 'eyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{20,}' content --include='*.md'
 # ------------------------------------------------------------------------------------------------
+# --- translated twins of unpublished English pages (2026-09-06 translation-orphan sweep) --------
+# Class of error: an English page is unpublished under ADR-0008 and its zh/ms/ar translation stays
+# live because it sits at a DIFFERENT path, so a same-path twin check never sees it.
+# content/zh/applets/webhook-applet.md kept publishing retries, OAuth, request signing, "200+ event
+# types" and 99.9% delivery for hours after content/en/applets/integrations/webhook-applet.md went
+# to draft, because the English lives under applets/integrations/ and the Chinese under applets/.
+# Rule: a published translated page must not share a basename with English pages that are ALL draft.
+# A basename that also matches at least one published English page is fine - e.g. zh/modules/inventory.md
+# pairs with the live content/en/modules/inventory.md even though developers/api-reference/inventory.md
+# is draft. _index.md is skipped: the basename carries no identity.
+en_all=$(find content/en -name '*.md' ! -name '_index.md' | sed 's|.*/||' | sort -u)
+en_live=$(find content/en -name '*.md' ! -name '_index.md' -print0 | xargs -0 -r grep -L '^draft: true' -- | sed 's|.*/||' | sort -u)
+en_draft_only=$(comm -23 <(printf '%s\n' "$en_all") <(printf '%s\n' "$en_live"))
+twins=""
+if [ -n "$en_draft_only" ]; then
+  while IFS= read -r f; do
+    [ -z "$f" ] && continue
+    grep -q '^draft: true' "$f" && continue
+    b=${f##*/}
+    printf '%s\n' "$en_draft_only" | grep -qxF "$b" && twins="$twins$f"$'\n'
+  done < <(find content/zh content/ms content/ar -name '*.md' ! -name '_index.md' 2>/dev/null | sort)
+fi
+twins=$(printf '%s' "$twins" | grep -v '^$' | head -20)
+if [ -n "$twins" ]; then say "FAIL: published translation of an English page that is unpublished (draft: true) - unpublish the twin too, or repair the pairing"; say "$twins" | sed 's/^/  /'; fail=1; else say "ok:   no published translation of an unpublished English page"; fi
+# ------------------------------------------------------------------------------------------------
 check "no blockchain-era vocabulary"              -iE 'smart contract|wallet api|crypto wallet' content --include='*.md'
 check "no mojibake (UTF-8 read as cp1252)"      -E 'â€|Ã©|Ã¢' content --include='*.md'
 

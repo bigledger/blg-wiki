@@ -1,4 +1,5 @@
 ---
+translationKey: ecommerce-catalog-applet
 title: "电子商务目录小程序"
 description: "BigLedger电子商务运营的在线产品目录管理"
 tags:

@@ -1,4 +1,5 @@
 ---
+translationKey: introduction-to-stock-take-applet
 title: "盘点小程序介绍"
 description: "具有移动友好界面和实时跟踪功能的综合库存管理指南"
 weight: 135

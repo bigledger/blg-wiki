@@ -1,4 +1,5 @@
 ---
+translationKey: group-maintenance-applet
 title: "Group Maintenance Applet"
 description: "Add users to groups and assign platform-level permissions for group-based access control"
 weight: 135

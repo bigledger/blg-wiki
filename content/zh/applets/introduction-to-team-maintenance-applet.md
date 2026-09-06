@@ -1,4 +1,5 @@
 ---
+translationKey: introduction-to-team-maintenance-applet
 title: "团队维护小程序介绍"
 description: "团队管理功能概述，包括用户管理和团队权限"
 weight: 125

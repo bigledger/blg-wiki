@@ -1,4 +1,5 @@
 ---
+translationKey: membership-program
 title: "会员计划"
 description: "具有积分系统和会员福利的综合会员计划管理"
 weight: 75

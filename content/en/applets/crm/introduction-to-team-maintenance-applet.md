@@ -1,4 +1,5 @@
 ---
+translationKey: introduction-to-team-maintenance-applet
 title: "Introduction to Team Maintenance Applet"
 description: "Overview of team management features including user administration and team permissions"
 weight: 125

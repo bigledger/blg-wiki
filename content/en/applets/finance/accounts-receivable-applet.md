@@ -1,4 +1,5 @@
 ---
+translationKey: accounts-receivable-applet
 title: "Accounts Receivable Applet"
 description: "Customer billing, collections, and receivables management for BigLedger"
 tags:

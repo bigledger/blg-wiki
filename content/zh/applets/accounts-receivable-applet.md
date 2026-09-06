@@ -1,4 +1,5 @@
 ---
+translationKey: accounts-receivable-applet
 title: "应收账款小程序"
 description: "BigLedger的客户账单、催收和应收账款管理"
 tags:

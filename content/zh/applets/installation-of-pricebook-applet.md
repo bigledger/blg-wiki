@@ -1,4 +1,5 @@
 ---
+translationKey: installation-of-pricebook-applet
 title: "价格表小程序安装指南"
 description: "从小程序商店安装价格表小程序的分步指南"
 weight: 110

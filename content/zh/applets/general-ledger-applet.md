@@ -1,4 +1,5 @@
 ---
+translationKey: general-ledger-applet
 title: "总账小程序"
 description: "BigLedger财务运营的核心会计和交易处理引擎"
 tags:

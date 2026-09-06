@@ -1,4 +1,5 @@
 ---
+translationKey: installation-of-pricebook-applet
 title: "Installation of Pricebook Applet"
 description: "Step-by-step guide for installing the Pricebook Applet from the Applet Store"
 weight: 110

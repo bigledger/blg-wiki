@@ -1,4 +1,5 @@
 ---
+translationKey: installation-of-team-maintenance-applet
 title: "Installation of Team Maintenance Applet"
 description: "Step-by-step installation instructions for the Team Maintenance Applet"
 weight: 120

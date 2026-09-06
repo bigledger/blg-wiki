@@ -1,4 +1,5 @@
 ---
+translationKey: ai-customer-analytics-applet
 title: "AI 客户分析小程序"
 description: "用于 BigLedger 数字 CRM 操作的预测性客户分析和见解"
 tags:

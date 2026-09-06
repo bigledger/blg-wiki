@@ -1,4 +1,5 @@
 ---
+translationKey: general-ledger-applet
 title: "General Ledger Applet"
 description: "Core accounting and transaction processing engine for BigLedger financial operations"
 tags:

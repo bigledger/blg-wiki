@@ -1,4 +1,5 @@
 ---
+translationKey: installation-of-group-maintenance-applet
 title: "群组维护小程序安装指南"
 description: "从小程序商店安装群组维护小程序的完整安装指南"
 weight: 115

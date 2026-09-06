@@ -1,4 +1,5 @@
 ---
+translationKey: installation-of-group-maintenance-applet
 title: "Installation of Group Maintenance Applet"
 description: "Complete installation guide for the Group Maintenance Applet from the Applet Store"
 weight: 115

@@ -1,4 +1,5 @@
 ﻿---
+translationKey: internal-delivery-order-applet
 title: "Delivery Order (Internal) Applet"
 description: "Manage and track delivery orders with customer details, vehicle information, and transport company data"
 weight: 40

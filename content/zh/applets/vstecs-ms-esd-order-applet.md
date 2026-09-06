@@ -1,4 +1,5 @@
 ---
+translationKey: vstecs-ms-esd-order-applet
 title: "VSTECS MS ESD 订单小程序"
 description: "Microsoft ESD 订单管理，具有价格检查和订单处理的 API 集成"
 weight: 180

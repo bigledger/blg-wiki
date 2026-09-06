@@ -1,4 +1,5 @@
 ---
+translationKey: membership-points-currency
 title: "会员积分货币配置"
 description: "为会员计划设置和管理忠诚度积分货币"
 weight: 160

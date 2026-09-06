@@ -1,4 +1,5 @@
 ---
+translationKey: installation-of-team-maintenance-applet
 title: "团队维护小程序安装指南"
 description: "团队维护小程序的分步安装说明"
 weight: 120

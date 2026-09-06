@@ -1,4 +1,5 @@
 ---
+translationKey: introduction-to-stock-take-applet
 title: "Introduction to Stock Take Applet"
 description: "Comprehensive guide to inventory management with mobile-friendly interface and real-time tracking"
 weight: 135

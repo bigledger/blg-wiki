@@ -1,4 +1,5 @@
 ---
+translationKey: internal-delivery-order-applet
 title: "内部配送订单小程序"
 description: "管理和跟踪配送订单，包含客户详细信息、车辆信息和运输公司数据"
 weight: 80

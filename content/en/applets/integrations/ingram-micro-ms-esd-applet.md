@@ -1,4 +1,5 @@
 ---
+translationKey: ingram-micro-ms-esd-applet
 title: "Ingram Micro MS ESD Applet"
 description: "Microsoft ESD integration with Ingram Micro for electronic software distribution"
 weight: 105

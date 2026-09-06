@@ -1,4 +1,5 @@
 ---
+translationKey: vstecs-ms-esd-order-applet
 title: "VSTECS MS ESD Order Applet"
 description: "Microsoft ESD order management with API integration for price checking and order processing"
 weight: 180
