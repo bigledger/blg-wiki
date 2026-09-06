@@ -1,23 +1,16 @@
 ---
 bookCollapseSection: true
-description: Complete API reference for BigLedger services.
+description: "The BigLedger API reference now lives under Developers."
 tags:
-- user-guide
+- developers
 title: API Reference
 weight: 30
 ---
 
+The API reference has moved. Everything is now under **[Developers → API Reference](/developers/api-reference/)**.
 
-Complete API reference for BigLedger services.
-
-## Available APIs
-
-### Core APIs
-- **Transaction API** - Create, query, and manage transactions
-- **Account API** - Account management and authentication
-- **Wallet API** - Wallet operations and balance queries
-
-### Advanced APIs
-- **Smart Contract API** - Deploy and interact with smart contracts
-- **Analytics API** - Access transaction analytics and reports
-- **Webhook API** - Configure and manage webhooks
+{{< cards >}}
+  {{< card link="/developers/api-reference/" title="API Reference" subtitle="Endpoints, request and response shapes, and error codes" >}}
+  {{< card link="/developers/authentication/" title="Authentication" subtitle="How to authenticate a request against the BigLedger API" >}}
+  {{< card link="/developers/" title="Developers" subtitle="SDKs, applet development, webhooks and the platform library" >}}
+{{< /cards >}}

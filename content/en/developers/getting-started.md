@@ -908,11 +908,9 @@ Now that you've made your first API calls, explore these topics:
 
 {{< card link="/developers/webhooks/" title="Webhooks" icon="bell"  subtitle="Real-time event notifications" >}}
 
-{{< card link="./examples" title="Code Examples" icon="code"  subtitle="Production-ready integration patterns" >}}
 
 {{< card link="/developers/sdks/" title="SDKs" icon="cube"  subtitle="Official libraries for popular languages" >}}
 
-{{< card link="./migration" title="Migration Guides" icon="arrow-right"  subtitle="Migrate from other accounting platforms" >}}
 {{< /cards >}}
 
 ## API Base URLs & Environments

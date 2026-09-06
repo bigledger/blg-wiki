@@ -1246,9 +1246,9 @@ After completing these tutorials, you're ready to:
 
 ## Additional Resources
 
-- **[API Reference](./api-reference/)**: Complete endpoint documentation
-- **[SDK Documentation](./sdks/)**: Language-specific guides
-- **[Webhook Reference](./webhooks/)**: Real-time integration patterns
+- **[API Reference](/developers/api-reference/)**: Complete endpoint documentation
+- **[SDK Documentation](/developers/sdks/)**: Language-specific guides
+- **[Webhook Reference](/developers/webhooks/)**: Real-time integration patterns
 - **[Code Examples Repository](https://github.com/bigledger/api-examples)**: Complete example projects
 - **[Community Forum](https://community.bigledger.com)**: Ask questions and share solutions
 

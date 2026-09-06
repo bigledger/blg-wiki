@@ -216,7 +216,7 @@ Run the class. If it prints:
 Document type: PURCHASE_ORDER
 ```
 
-then your credentials work, the libraries resolved, and BigLedger platform classes are compiling and running inside your own application. You are ready to start [building your application](../building-your-application/).
+then your credentials work, the libraries resolved, and BigLedger platform classes are compiling and running inside your own application. You are ready to start [building your application](/developers/platform-library/building-your-application/).
 
 ## Common problems
 
@@ -229,6 +229,6 @@ then your credentials work, the libraries resolved, and BigLedger platform class
 
 ## Related documentation
 
-- [Building Your Application](../building-your-application/) — add your own endpoints and services
-- [Versioning & Upgrades](../versioning-and-upgrades/) — how to move to a newer release
-- [Troubleshooting](../troubleshooting/) — errors and current limitations
+- [Building Your Application](/developers/platform-library/building-your-application/) — add your own endpoints and services
+- [Versioning & Upgrades](/developers/platform-library/versioning-and-upgrades/) — how to move to a newer release
+- [Troubleshooting](/developers/platform-library/troubleshooting/) — errors and current limitations

@@ -177,7 +177,7 @@ Start the application and call one of your own endpoints together with a standar
 
 ## Related documentation
 
-- [Getting Started](../getting-started/) — access and dependencies
-- [Versioning & Upgrades](../versioning-and-upgrades/) — moving to a newer release
+- [Getting Started](/developers/getting-started/) — access and dependencies
+- [Versioning & Upgrades](/developers/platform-library/versioning-and-upgrades/) — moving to a newer release
 - [API Reference](/developers/api-reference/) — the endpoints your application inherits
 - [Authentication](/developers/authentication/) — how requests are authenticated

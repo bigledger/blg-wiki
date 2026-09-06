@@ -52,24 +52,24 @@ Select the path that best matches your development goals and requirements:
 
 ### Get Started Quickly
 {{< cards >}}
-{{< card link="/developers/./getting-started/" title="Quick Start Guide" icon="play" subtitle="From API key to first integration in under 5 minutes" >}}
+{{< card link="/developers/getting-started/" title="Quick Start Guide" icon="play" subtitle="From API key to first integration in under 5 minutes" >}}
 
-{{< card link="/developers/./authentication/" title="Authentication" icon="key" subtitle="OAuth 2.0, API keys, and security best practices" >}}
+{{< card link="/developers/authentication/" title="Authentication" icon="key" subtitle="OAuth 2.0, API keys, and security best practices" >}}
 
-{{< card link="/developers/./sdks/" title="SDKs & Libraries" icon="code" subtitle="Official SDKs for JavaScript, Python, PHP, Java, .NET, Go" >}}
+{{< card link="/developers/sdks/" title="SDKs & Libraries" icon="code" subtitle="Official SDKs for JavaScript, Python, PHP, Java, .NET, Go" >}}
 
-{{< card link="/developers/./tutorials/" title="Integration Tutorials" icon="academic-cap" subtitle="Step-by-step guides for common integration scenarios" >}}
+{{< card link="/developers/tutorials/" title="Integration Tutorials" icon="academic-cap" subtitle="Step-by-step guides for common integration scenarios" >}}
 {{< /cards >}}
 
 ### Core APIs for Integration
 {{< cards >}}
-{{< card link="/developers/./api-reference/sales/" title="Sales & CRM APIs" icon="user-group" subtitle="Customer management, sales orders, quotes, and CRM operations" >}}
+{{< card link="/developers/api-reference/sales/" title="Sales & CRM APIs" icon="user-group" subtitle="Customer management, sales orders, quotes, and CRM operations" >}}
 
-{{< card link="/developers/./api-reference/accounting/" title="Accounting APIs" icon="chart-bar" subtitle="Complete accounting operations and financial data sync" >}}
+{{< card link="/developers/api-reference/accounting/" title="Accounting APIs" icon="chart-bar" subtitle="Complete accounting operations and financial data sync" >}}
 
-{{< card link="/developers/./api-reference/einvoice/" title="E-Invoice APIs" icon="document-text" subtitle="PEPPOL and MyInvois compliance automation" >}}
+{{< card link="/developers/api-reference/einvoice/" title="E-Invoice APIs" icon="document-text" subtitle="PEPPOL and MyInvois compliance automation" >}}
 
-{{< card link="/developers/./api-reference/integrations/" title="Integration APIs" icon="link" subtitle="Third-party connectors and data synchronization" >}}
+{{< card link="/developers/api-reference/integrations/" title="Integration APIs" icon="link" subtitle="Third-party connectors and data synchronization" >}}
 {{< /cards >}}
 
 ---
@@ -86,13 +86,10 @@ Select the path that best matches your development goals and requirements:
 
 ### Development Resources
 {{< cards >}}
-{{< card link="/developers/./applet-development/" title="Applet Development Guide" icon="cube" subtitle="Complete guide to building custom Angular applets" >}}
+{{< card link="/developers/applet-development/" title="Applet Development Guide" icon="cube" subtitle="Complete guide to building custom Angular applets" >}}
 
-{{< card link="./applet-sdk" title="Applet SDK" icon="cube" subtitle="Framework and components for rapid applet development" >}}
 
-{{< card link="./applet-examples" title="Example Applets" icon="document-duplicate" subtitle="Source code and patterns for common applet types" >}}
 
-{{< card link="./applet-deployment" title="Deployment Guide" icon="cloud-upload" subtitle="Package, test, and deploy your custom applets" >}}
 {{< /cards >}}
 
 ---
@@ -109,13 +106,10 @@ Select the path that best matches your development goals and requirements:
 
 ### Architecture Documentation
 {{< cards >}}
-{{< card link="/developers/./architecture/overview/" title="System Architecture" icon="office-building" subtitle="Complete overview of BigLedger's architecture" >}}
+{{< card link="/developers/architecture/overview/" title="System Architecture" icon="office-building" subtitle="Complete overview of BigLedger's architecture" >}}
 
-{{< card link="./architecture/data-models" title="Data Models" icon="table" subtitle="Entity relationships and database schema" >}}
 
-{{< card link="./architecture/security" title="Security Framework" icon="shield-check" subtitle="Enterprise security and compliance architecture" >}}
 
-{{< card link="./architecture/scalability" title="Scalability Patterns" icon="trending-up" subtitle="Design patterns for enterprise-scale deployments" >}}
 {{< /cards >}}
 
 ---
@@ -132,13 +126,12 @@ Select the path that best matches your development goals and requirements:
 
 ### Automation Tools
 {{< cards >}}
-{{< card link="/developers/./webhooks/" title="Webhooks" icon="bell" subtitle="Real-time event notifications and workflow triggers" >}}
+{{< card link="/developers/webhooks/" title="Webhooks" icon="bell" subtitle="Real-time event notifications and workflow triggers" >}}
 
-{{< card link="/developers/./api-reference/batch/" title="Batch Operations" icon="archive" subtitle="High-volume data processing and bulk operations" >}}
+{{< card link="/developers/api-reference/batch/" title="Batch Operations" icon="archive" subtitle="High-volume data processing and bulk operations" >}}
 
-{{< card link="/developers/./automation-workflows/" title="Workflow Automation" icon="cog" subtitle="Design and implement automated business processes" >}}
+{{< card link="/developers/automation-workflows/" title="Workflow Automation" icon="cog" subtitle="Design and implement automated business processes" >}}
 
-{{< card link="./scheduling" title="Scheduled Tasks" icon="clock" subtitle="Automated reporting and maintenance operations" >}}
 {{< /cards >}}
 
 ---
@@ -155,13 +148,13 @@ Select the path that best matches your development goals and requirements:
 
 ### API Reference
 {{< cards >}}
-{{< card link="/developers/./api-reference/accounting/" title="Accounting APIs" icon="chart-bar" subtitle="Complete accounting operations and financial reporting" >}}
+{{< card link="/developers/api-reference/accounting/" title="Accounting APIs" icon="chart-bar" subtitle="Complete accounting operations and financial reporting" >}}
 
-{{< card link="/developers/./api-reference/inventory/" title="Inventory APIs" icon="cube" subtitle="Stock management, transfers, and real-time tracking" >}}
+{{< card link="/developers/api-reference/inventory/" title="Inventory APIs" icon="cube" subtitle="Stock management, transfers, and real-time tracking" >}}
 
-{{< card link="/developers/./api-reference/sales/" title="Sales & CRM APIs" icon="user-group" subtitle="Customer management and sales operations" >}}
+{{< card link="/developers/api-reference/sales/" title="Sales & CRM APIs" icon="user-group" subtitle="Customer management and sales operations" >}}
 
-{{< card link="/developers/./api-reference/reports/" title="Reporting APIs" icon="chart-bar" subtitle="Generate reports, analytics, and business intelligence" >}}
+{{< card link="/developers/api-reference/reports/" title="Reporting APIs" icon="chart-bar" subtitle="Generate reports, analytics, and business intelligence" >}}
 {{< /cards >}}
 
 ---
@@ -178,13 +171,9 @@ Select the path that best matches your development goals and requirements:
 
 ### Platform Resources
 {{< cards >}}
-{{< card link="./platform-extensions" title="Platform Extensions" icon="server" subtitle="Extend core BigLedger functionality" >}}
+{{< card link="/developers/platform-library/" title="Platform Library" icon="server" subtitle="Extend the platform by depending on the published BigLedger Java library" >}}
 
-{{< card link="./multi-tenant" title="Multi-Tenant Architecture" icon="office-building" subtitle="Design multi-company and enterprise solutions" >}}
-
-{{< card link="./infrastructure" title="Infrastructure APIs" icon="server" subtitle="Deployment, monitoring, and infrastructure management" >}}
-
-{{< card link="./enterprise-auth" title="Enterprise Authentication" icon="key" subtitle="SSO, LDAP, and enterprise identity integration" >}}
+{{< card link="/developers/architecture/overview/" title="System Architecture" icon="office-building" subtitle="How the platform is put together" >}}
 {{< /cards >}}
 
 ---
@@ -214,17 +203,17 @@ Use our SDKs, APIs, and development tools to create your solution.
 Essential resources used across all developer categories:
 
 {{< cards >}}
-{{< card link="/developers/./getting-started/" title="Getting Started" icon="play" subtitle="Universal quick start guide for all BigLedger APIs" >}}
+{{< card link="/developers/getting-started/" title="Getting Started" icon="play" subtitle="Universal quick start guide for all BigLedger APIs" >}}
 
-{{< card link="/developers/./authentication/" title="Authentication" icon="key" subtitle="OAuth 2.0, API keys, and security best practices" >}}
+{{< card link="/developers/authentication/" title="Authentication" icon="key" subtitle="OAuth 2.0, API keys, and security best practices" >}}
 
-{{< card link="/developers/./api-reference/" title="API Reference" icon="book-open" subtitle="Complete REST API documentation with examples" >}}
+{{< card link="/developers/api-reference/" title="API Reference" icon="book-open" subtitle="Complete REST API documentation with examples" >}}
 
-{{< card link="/developers/./sdks/" title="SDKs & Libraries" icon="code" subtitle="Official SDKs for JavaScript, Python, PHP, Java, .NET, Go" >}}
+{{< card link="/developers/sdks/" title="SDKs & Libraries" icon="code" subtitle="Official SDKs for JavaScript, Python, PHP, Java, .NET, Go" >}}
 
-{{< card link="/developers/./webhooks/" title="Webhooks" icon="bell" subtitle="Real-time event notifications and automation triggers" >}}
+{{< card link="/developers/webhooks/" title="Webhooks" icon="bell" subtitle="Real-time event notifications and automation triggers" >}}
 
-{{< card link="/developers/./tutorials/" title="Tutorials & Guides" icon="academic-cap" subtitle="Step-by-step tutorials for common scenarios" >}}
+{{< card link="/developers/tutorials/" title="Tutorials & Guides" icon="academic-cap" subtitle="Step-by-step tutorials for common scenarios" >}}
 {{< /cards >}}
 
 ## What Makes BigLedger Developer-Friendly

@@ -245,12 +245,8 @@ Secure tenant isolation with efficient resource sharing:
 ### Technical Documentation
 - [API Reference](/developers/api-reference/) - Complete API documentation and examples
 - [Developer Guides](/developers/) - Implementation guides and best practices
-- [Integration Guides](/developers/integrations/) - Third-party integration documentation
-
-### Operational Documentation
-- [Deployment Guides](/guides/deployment/) - Platform deployment and configuration
-- [Monitoring Setup](/guides/monitoring/) - Observability and alerting configuration
-- [Security Guidelines](/guides/security/) - Security implementation and best practices
+- [Integration APIs](/developers/api-reference/integrations/) - Third-party integration documentation
+- [Platform Library](/developers/platform-library/) - Extending the platform in Java
 
 ## Support & Community
 

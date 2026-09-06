@@ -11,38 +11,38 @@ Unified Contact Center (UCC) APIs allow seamless integration of omnichannel mess
 
 ## Available Sections
 
-- **[Action Controller](action-controller/)**
-- **[Agent Controller](agent-controller/)**
-- **[Agent Virtual Contact Squad Contact Controller](agentvirtualcontactsquadcontactcontroller/)**
-- **[Agent Virtual Contact Squad Qr Controller](agentvirtualcontactsquadqrcontroller/)**
-- **[Ai Ledger Authentication Controller](ailedgerauthenticationcontroller/)**
-- **[Channel Controller](channelcontroller/)**
-- **[Comment Resource](commentresource/)**
-- **[Context Msg Link Resource Controller](contextmsglinkresourcecontroller/)**
-- **[Conversation Controller](conversationcontroller/)**
-- **[Conversation Event Controller](conversationeventcontroller/)**
-- **[Conversation Event Resource Controller](conversationeventresourcecontroller/)**
-- **[Conversation Resource Controller](conversationresourcecontroller/)**
-- **[Conversation State Resource Controller](conversationstateresourcecontroller/)**
-- **[Conversation Tag Resource Controller](conversationtagresourcecontroller/)**
-- **[Email Resource Controller](emailresourcecontroller/)**
-- **[Email Thread Event Resource Controller](emailthreadeventresourcecontroller/)**
-- **[Email Thread Resource Controller](emailthreadresourcecontroller/)**
-- **[Endpoint Bot Link Resource Controller](endpointbotlinkresourcecontroller/)**
-- **[Endpoint Hdr Controller](endpointhdrcontroller/)**
-- **[Endpoint Predefined Message Link Resource](endpointpredefinedmessagelinkresource/)**
-- **[Endpoint Resource](endpointresource/)**
-- **[Lazada Message Controller](lazadamessagecontroller/)**
-- **[Login Subject Link Controller](loginsubjectlinkcontroller/)**
-- **[Message Endpoint Link Resource Controller](messageendpointlinkresourcecontroller/)**
-- **[Message Resource Controller](messageresourcecontroller/)**
-- **[Post Line Resource Controller](postlineresourcecontroller/)**
-- **[Post Resource Controller](postresourcecontroller/)**
-- **[Predefined Message Line Resource Controller](predefinedmessagelineresourcecontroller/)**
-- **[Predefined Message Placeholder Resource Controller](predefinedmessageplaceholderresourcecontroller/)**
-- **[Predefined Message Resource Controller](predefinedmessageresourcecontroller/)**
-- **[Preferred Agent Assignment Controller](preferredagentassignmentcontroller/)**
-- **[Project Drive Controller](projectdrivecontroller/)**
-- **[Reaction By User Resource Controller](reactionbyuserresourcecontroller/)**
-- **[Telegram Message Controller](telegrammessagecontroller/)**
-- **[Whatsapp Business Controller](whatsappbusinesscontroller/)**
+- **[Action Controller](/developers/api-reference/ucc/action-controller/)**
+- **[Agent Controller](/developers/api-reference/ucc/agent-controller/)**
+- **[Agent Virtual Contact Squad Contact Controller](/developers/api-reference/ucc/agentvirtualcontactsquadcontactcontroller/)**
+- **[Agent Virtual Contact Squad Qr Controller](/developers/api-reference/ucc/agentvirtualcontactsquadqrcontroller/)**
+- **[Ai Ledger Authentication Controller](/developers/api-reference/ucc/ailedgerauthenticationcontroller/)**
+- **[Channel Controller](/developers/api-reference/ucc/channelcontroller/)**
+- **[Comment Resource](/developers/api-reference/ucc/commentresource/)**
+- **[Context Msg Link Resource Controller](/developers/api-reference/ucc/contextmsglinkresourcecontroller/)**
+- **[Conversation Controller](/developers/api-reference/ucc/conversationcontroller/)**
+- **[Conversation Event Controller](/developers/api-reference/ucc/conversationeventcontroller/)**
+- **[Conversation Event Resource Controller](/developers/api-reference/ucc/conversationeventresourcecontroller/)**
+- **[Conversation Resource Controller](/developers/api-reference/ucc/conversationresourcecontroller/)**
+- **[Conversation State Resource Controller](/developers/api-reference/ucc/conversationstateresourcecontroller/)**
+- **[Conversation Tag Resource Controller](/developers/api-reference/ucc/conversationtagresourcecontroller/)**
+- **[Email Resource Controller](/developers/api-reference/ucc/emailresourcecontroller/)**
+- **[Email Thread Event Resource Controller](/developers/api-reference/ucc/emailthreadeventresourcecontroller/)**
+- **[Email Thread Resource Controller](/developers/api-reference/ucc/emailthreadresourcecontroller/)**
+- **[Endpoint Bot Link Resource Controller](/developers/api-reference/ucc/endpointbotlinkresourcecontroller/)**
+- **[Endpoint Hdr Controller](/developers/api-reference/ucc/endpointhdrcontroller/)**
+- **[Endpoint Predefined Message Link Resource](/developers/api-reference/ucc/endpointpredefinedmessagelinkresource/)**
+- **[Endpoint Resource](/developers/api-reference/ucc/endpointresource/)**
+- **[Lazada Message Controller](/developers/api-reference/ucc/lazadamessagecontroller/)**
+- **[Login Subject Link Controller](/developers/api-reference/ucc/loginsubjectlinkcontroller/)**
+- **[Message Endpoint Link Resource Controller](/developers/api-reference/ucc/messageendpointlinkresourcecontroller/)**
+- **[Message Resource Controller](/developers/api-reference/ucc/messageresourcecontroller/)**
+- **[Post Line Resource Controller](/developers/api-reference/ucc/postlineresourcecontroller/)**
+- **[Post Resource Controller](/developers/api-reference/ucc/postresourcecontroller/)**
+- **[Predefined Message Line Resource Controller](/developers/api-reference/ucc/predefinedmessagelineresourcecontroller/)**
+- **[Predefined Message Placeholder Resource Controller](/developers/api-reference/ucc/predefinedmessageplaceholderresourcecontroller/)**
+- **[Predefined Message Resource Controller](/developers/api-reference/ucc/predefinedmessageresourcecontroller/)**
+- **[Preferred Agent Assignment Controller](/developers/api-reference/ucc/preferredagentassignmentcontroller/)**
+- **[Project Drive Controller](/developers/api-reference/ucc/projectdrivecontroller/)**
+- **[Reaction By User Resource Controller](/developers/api-reference/ucc/reactionbyuserresourcecontroller/)**
+- **[Telegram Message Controller](/developers/api-reference/ucc/telegrammessagecontroller/)**
+- **[Whatsapp Business Controller](/developers/api-reference/ucc/whatsappbusinesscontroller/)**

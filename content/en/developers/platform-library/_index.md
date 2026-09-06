@@ -21,10 +21,10 @@ The BigLedger platform is published as a set of versioned Java libraries. Your a
 ## What you get
 
 {{< cards >}}
-  {{< card link="/developers/platform-library/./getting-started/" title="Getting Started" icon="download" subtitle="Get access, add the dependency, and run your first build" >}}
-  {{< card link="/developers/platform-library/./building-your-application/" title="Building Your Application" icon="code" subtitle="Add endpoints and services, and boot the platform" >}}
-  {{< card link="/developers/platform-library/./versioning-and-upgrades/" title="Versioning & Upgrades" icon="refresh" subtitle="How releases are numbered and how to move between them" >}}
-  {{< card link="/developers/platform-library/./troubleshooting/" title="Troubleshooting" icon="support" subtitle="Common errors and current limitations" >}}
+  {{< card link="/developers/platform-library/getting-started/" title="Getting Started" icon="download" subtitle="Get access, add the dependency, and run your first build" >}}
+  {{< card link="/developers/platform-library/building-your-application/" title="Building Your Application" icon="code" subtitle="Add endpoints and services, and boot the platform" >}}
+  {{< card link="/developers/platform-library/versioning-and-upgrades/" title="Versioning & Upgrades" icon="refresh" subtitle="How releases are numbered and how to move between them" >}}
+  {{< card link="/developers/platform-library/troubleshooting/" title="Troubleshooting" icon="support" subtitle="Common errors and current limitations" >}}
 {{< /cards >}}
 
 ## The libraries
@@ -53,7 +53,7 @@ Because BigLedger arrives as a compiled dependency rather than a branch of sourc
 - **Composition of existing BigLedger services** — call the same services the standard endpoints call, and wrap them in logic of your own
 
 {{< callout type="warning" >}}
-**Changing the behaviour of existing BigLedger endpoints is not supported in the current release.** Published extension points for altering built-in behaviour are on the roadmap. If your requirement depends on this, talk to your BigLedger contact before designing around it — see [Building Your Application](building-your-application/#changing-existing-behaviour).
+**Changing the behaviour of existing BigLedger endpoints is not supported in the current release.** Published extension points for altering built-in behaviour are on the roadmap. If your requirement depends on this, talk to your BigLedger contact before designing around it — see [Building Your Application](/developers/platform-library/building-your-application/#changing-existing-behaviour).
 {{< /callout >}}
 
 ## Requirements
@@ -68,7 +68,7 @@ Because BigLedger arrives as a compiled dependency rather than a branch of sourc
 
 ## Related documentation
 
-- [Getting Started](getting-started/) — access and first build
+- [Getting Started](/developers/platform-library/getting-started/) — access and first build
 - [Developer Platform](/developers/) — the wider developer documentation
 - [API Reference](/developers/api-reference/) — the REST API served by the platform
 - [Authentication](/developers/authentication/) — how BigLedger authenticates API requests

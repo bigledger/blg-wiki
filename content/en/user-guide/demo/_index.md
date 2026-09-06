@@ -3,6 +3,18 @@ title: "Interactive Demo Platform"
 description: "Experience BigLedger's capabilities through hands-on guided workflows tailored to your industry"
 weight: 70
 bookCollapseSection: false
+aliases:
+  - /user-guide/demo/education/
+  - /user-guide/demo/education/accounts-payable/
+  - /user-guide/demo/education/accounts-receivable/
+  - /user-guide/demo/education/asset-management/
+  - /user-guide/demo/education/budget-management/
+  - /user-guide/demo/education/cash-management/
+  - /user-guide/demo/education/financial-reporting/
+  - /user-guide/demo/education/general-ledger/
+  - /user-guide/demo/education/journal-module/
+  - /user-guide/demo/education/tax-management/
+  - /user-guide/demo/education/user-access-control/
 ---
 
 Welcome to BigLedger's Interactive Demo Platform! This hands-on learning environment lets you explore our Business Operating System through real-world scenarios tailored to your industry.
@@ -67,7 +79,6 @@ Select your industry below to access tailored demo scenarios and workflows desig
   {{< card link="/user-guide/demo/retail/" title="📱 Consumer Electronics Retail" subtitle="Serial number tracking, warranty management, service centers, bundle pricing" >}}
   {{< card link="/user-guide/demo/distributors/" title="🚚 Distributors & Wholesalers" subtitle="B2B order management, multi-tier pricing, credit limits, logistics optimization" >}}
   {{< card link="/user-guide/demo/apparel/" title="👗 Apparel & Fashion Retail" subtitle="Size/color matrix, seasonal planning, trend analytics, visual merchandising" >}}
-  {{< card link="/user-guide/demo/education/" title="🎓 Universities & Education" subtitle="Student fee management, department procurement, grant tracking, campus operations" >}}
 {{< /cards >}}
 
 ### Industry-Specific Benefits Summary
@@ -272,7 +283,6 @@ Each industry demo includes:
 - 📱 [Consumer Electronics Demo](/user-guide/demo/retail/) - Electronics retail workflows
 - 🚚 [Distributors Demo](/user-guide/demo/distributors/) - B2B wholesale operations
 - 👗 [Apparel Retail Demo](/user-guide/demo/apparel/) - Fashion retail workflows
-- 🎓 [University Demo](/user-guide/demo/education/) - Higher education management
 - 🏭 [Manufacturing Demo](/user-guide/demo/manufacturing/) - Production workflows
 - 💼 [Professional Services Demo](/user-guide/demo/services/) - Service business processes
 - 🍽️ [Food & Beverage Demo](/user-guide/demo/food-beverage/) - Restaurant operations

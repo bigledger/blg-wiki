@@ -454,7 +454,6 @@ $accounts = $client->accounts->list();
 
 Once authenticated, explore our API endpoints:
 
-- [Getting Started Guide](./getting-started) - Make your first API call
-- [API Reference](./api-reference) - Complete endpoint documentation
-- [SDKs](./sdks) - Official libraries for popular languages
-- [Code Examples](./examples) - Production-ready integration patterns
+- [Getting Started Guide](/developers/getting-started/) - Make your first API call
+- [API Reference](/developers/api-reference/) - Complete endpoint documentation
+- [SDKs](/developers/sdks/) - Official libraries for popular languages

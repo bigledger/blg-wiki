@@ -67,7 +67,6 @@ bookCollapseSection: false
   {{< card link="/zh/user-guide/demo/retail/" title="📱 消费电子零售" subtitle="序列号管理、保修服务、售后中心、套装定价优化" >}}
   {{< card link="/zh/user-guide/demo/distributors/" title="🚚 分销商与批发商" subtitle="B2B订单管理、多层定价、信用额度、物流优化" >}}
   {{< card link="/zh/user-guide/demo/apparel/" title="👗 服装时尚零售" subtitle="尺码颜色矩阵、季节规划、趋势分析、视觉商品陈列" >}}
-  {{< card link="/zh/user-guide/demo/education/" title="🎓 高等院校教育" subtitle="学生费用管理、部门采购、资助跟踪、校园运营" >}}
 {{< /cards >}}
 
 ### 行业专属商业价值汇总
@@ -272,7 +271,6 @@ bookCollapseSection: false
 - 📱 [消费电子零售演示](/zh/user-guide/demo/retail/) - 电子产品零售业务流程
 - 🚚 [分销商演示](/zh/user-guide/demo/distributors/) - B2B批发分销业务运营
 - 👗 [服装零售演示](/zh/user-guide/demo/apparel/) - 时尚服装零售业务流程
-- 🎓 [高等院校演示](/zh/user-guide/demo/education/) - 高等教育机构管理
 - 🏭 [制造业演示](/zh/user-guide/demo/manufacturing/) - 生产制造业务流程
 - 💼 [专业服务演示](/zh/user-guide/demo/services/) - 服务行业业务流程
 - 🍽️ [餐饮食品演示](/zh/user-guide/demo/food-beverage/) - 餐厅连锁运营管理

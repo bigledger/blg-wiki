@@ -59,41 +59,34 @@ X-Company-Id: your-company-id
 ### Accounting APIs
 Complete accounting operations including chart of accounts, journal entries, and financial reporting.
 
-- **[Accounts API](./accounting#accounts)** - Manage chart of accounts
-- **[Journal Entries API](./accounting#journals)** - Create and manage journal entries  
-- **[Financial Reports API](./accounting#reports)** - Generate balance sheets, P&L, trial balance
+- **[Accounts API](/developers/api-reference/accounting/#accounts)** - Manage chart of accounts
+- **[Journal Entries API](/developers/api-reference/accounting/#journals)** - Create and manage journal entries  
+- **[Financial Reports API](/developers/api-reference/accounting/#reports)** - Generate balance sheets, P&L, trial balance
 
 ### E-Invoice APIs
 PEPPOL and MyInvois compliance with automated validation and submission.
 
-- **[E-Invoice Creation API](./einvoice#create)** - Create compliant e-invoices
-- **[Validation API](./einvoice#validate)** - Validate invoice data before submission
-- **[Submission API](./einvoice#submit)** - Submit to government portals
-- **[Status Tracking API](./einvoice#status)** - Track submission status
-- **[Cancellation & Rejection API](./einvoice-api-reference/)** - Direct cancellation and rejection request workflows (Malaysia MyInvois)
+- **[E-Invoice Creation API](/developers/api-reference/einvoice/#create)** - Create compliant e-invoices
+- **[Validation API](/developers/api-reference/einvoice/#validate)** - Validate invoice data before submission
+- **[Submission API](/developers/api-reference/einvoice/#submit)** - Submit to government portals
+- **[Status Tracking API](/developers/api-reference/einvoice/#status)** - Track submission status
+- **[Cancellation & Rejection API](/developers/api-reference/einvoice-api-reference/)** - Direct cancellation and rejection request workflows (Malaysia MyInvois)
 
 ### Inventory APIs
 Complete inventory management including stock levels, transfers, and adjustments.
 
-- **[Items API](./inventory#items)** - Manage inventory items
-- **[Stock Levels API](./inventory#stock)** - Real-time stock tracking
-- **[Transfers API](./inventory#transfers)** - Stock transfers between locations
-- **[Adjustments API](./inventory#adjustments)** - Stock adjustments and corrections
+- **[Items API](/developers/api-reference/inventory/#items)** - Manage inventory items
+- **[Stock Levels API](/developers/api-reference/inventory/#stock)** - Real-time stock tracking
+- **[Transfers API](/developers/api-reference/inventory/#transfers)** - Stock transfers between locations
+- **[Adjustments API](/developers/api-reference/inventory/#adjustments)** - Stock adjustments and corrections
 
 ### Sales & CRM APIs
 Customer management, sales orders, quotes, and invoicing.
 
-- **[Customers API](./sales#customers)** - Customer management
-- **[Sales Orders API](./sales#orders)** - Create and manage sales orders
-- **[Quotes API](./sales#quotes)** - Generate sales quotes
-- **[Invoices API](./sales#invoices)** - Invoice creation and management
-
-### POS APIs
-Point-of-sale operations, session management, and retail transactions.
-
-- **[Transactions API](./pos#transactions)** - Process POS transactions
-- **[Sessions API](./pos#sessions)** - Manage POS sessions
-- **[Reports API](./pos#reports)** - Daily sales reports
+- **[Customers API](/developers/api-reference/sales/#customers)** - Customer management
+- **[Sales Orders API](/developers/api-reference/sales/#orders)** - Create and manage sales orders
+- **[Quotes API](/developers/api-reference/sales/#quotes)** - Generate sales quotes
+- **[Invoices API](/developers/api-reference/sales/#invoices)** - Invoice creation and management
 
 ## API Design Patterns
 
@@ -452,26 +445,25 @@ Download our OpenAPI (Swagger) specification:
 ## API Modules
 
 {{< cards >}}
-{{< card link="/developers/api-reference/../authentication/" title="Authentication" icon="key" subtitle="OAuth 2.0 flows, API key management, and security best practices." >}}
-{{< card link="/developers/api-reference/./accounting/" title="Accounting APIs" icon="chart-bar" subtitle="Chart of accounts, journal entries, and financial reporting endpoints." >}}
-{{< card link="/developers/api-reference/./einvoice/" title="E-Invoice APIs" icon="document-text" subtitle="PEPPOL and MyInvois compliance with automated validation." >}}
-{{< card link="/developers/api-reference/./inventory/" title="Inventory APIs" icon="cube" subtitle="Stock management, transfers, adjustments, and real-time tracking." >}}
+{{< card link="/developers/authentication/" title="Authentication" icon="key" subtitle="OAuth 2.0 flows, API key management, and security best practices." >}}
+{{< card link="/developers/api-reference/accounting/" title="Accounting APIs" icon="chart-bar" subtitle="Chart of accounts, journal entries, and financial reporting endpoints." >}}
+{{< card link="/developers/api-reference/einvoice/" title="E-Invoice APIs" icon="document-text" subtitle="PEPPOL and MyInvois compliance with automated validation." >}}
+{{< card link="/developers/api-reference/inventory/" title="Inventory APIs" icon="cube" subtitle="Stock management, transfers, adjustments, and real-time tracking." >}}
 
-{{< card link="/developers/api-reference/./sales/" title="Sales & CRM APIs" icon="user-group" subtitle="Customers, sales orders, quotes, invoices, and CRM operations." >}}
+{{< card link="/developers/api-reference/sales/" title="Sales & CRM APIs" icon="user-group" subtitle="Customers, sales orders, quotes, invoices, and CRM operations." >}}
 
-{{< card link="/developers/api-reference/./purchasing/" title="Purchasing APIs" icon="shopping-bag" subtitle="Purchase orders, suppliers, bills, and procurement workflows." >}}
+{{< card link="/developers/api-reference/purchasing/" title="Purchasing APIs" icon="shopping-bag" subtitle="Purchase orders, suppliers, bills, and procurement workflows." >}}
 
-{{< card link="./pos" title="POS APIs" icon="shopping-cart" subtitle="Point-of-sale transactions, sessions, and retail operations." >}}
 
-{{< card link="/developers/api-reference/./reports/" title="Reporting APIs" icon="chart-pie" subtitle="Financial reports, analytics, and business intelligence data." >}}
+{{< card link="/developers/api-reference/reports/" title="Reporting APIs" icon="chart-pie" subtitle="Financial reports, analytics, and business intelligence data." >}}
 
-{{< card link="/developers/api-reference/../webhooks/" title="Webhooks API" icon="bell" subtitle="Real-time event notifications and webhook management." >}}
+{{< card link="/developers/webhooks/" title="Webhooks API" icon="bell" subtitle="Real-time event notifications and webhook management." >}}
 
-{{< card link="/developers/api-reference/./batch/" title="Batch Operations" icon="archive" subtitle="Bulk operations for high-volume data processing." >}}
+{{< card link="/developers/api-reference/batch/" title="Batch Operations" icon="archive" subtitle="Bulk operations for high-volume data processing." >}}
 
-{{< card link="/developers/api-reference/./integrations/" title="Integration APIs" icon="link" subtitle="Third-party integrations and data synchronization." >}}
+{{< card link="/developers/api-reference/integrations/" title="Integration APIs" icon="link" subtitle="Third-party integrations and data synchronization." >}}
 
-{{< card link="/developers/api-reference/./errors/" title="Error Handling" icon="warning" subtitle="Comprehensive error codes and troubleshooting guide." >}}
+{{< card link="/developers/api-reference/errors/" title="Error Handling" icon="warning" subtitle="Comprehensive error codes and troubleshooting guide." >}}
 {{< /cards >}}
 
 ## Quick Reference

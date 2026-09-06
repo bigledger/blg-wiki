@@ -1,24 +1,16 @@
 ---
 bookCollapseSection: true
-description: Technical documentation for developers integrating with BigLedger.
+description: "Developer documentation now lives under Developers."
 tags:
-- user-guide
+- developers
 title: Developer Documentation
 weight: 20
 ---
 
+Developer documentation has moved. Everything is now under **[Developers](/developers/)**.
 
-Technical documentation for developers integrating with BigLedger.
-
-## Overview
-
-This section provides comprehensive technical documentation for developers building on the BigLedger platform.
-
-## Topics
-
-- SDK Installation
-- API Integration
-- Smart Contract Development
-- Security Considerations
-- Best Practices
-- Code Examples
+{{< cards >}}
+  {{< card link="/developers/getting-started/" title="Getting Started" subtitle="Your first call against the BigLedger API" >}}
+  {{< card link="/developers/applet-development/" title="Applet Development" subtitle="Building an applet on the platform" >}}
+  {{< card link="/developers/platform-library/" title="Platform Library" subtitle="The shared library applets are built on" >}}
+{{< /cards >}}

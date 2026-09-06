@@ -1,28 +1,15 @@
 ---
 bookCollapseSection: true
-description: Step-by-step tutorials for common BigLedger use cases.
+description: "Step-by-step guides for common BigLedger tasks."
 tags:
 - user-guide
 title: Tutorials
 weight: 40
 ---
 
+Walkthroughs live in two places, depending on who you are.
 
-Step-by-step tutorials for common BigLedger use cases.
-
-## Available Tutorials
-
-### Beginner
-- Getting Started with BigLedger
-- Your First Transaction
-- Setting Up Your Wallet
-
-### Intermediate
-- Building a Simple DApp
-- Integrating with External Services
-- Advanced Transaction Patterns
-
-### Advanced
-- Smart Contract Development
-- Performance Optimization
-- Security Best Practices
+{{< cards >}}
+  {{< card link="/guides/" title="Guides" subtitle="Task-by-task walkthroughs for the people who run the business — accounting, e-invoice, sales, inventory" >}}
+  {{< card link="/developers/tutorials/" title="Developer Tutorials" subtitle="Working against the API and building applets" >}}
+{{< /cards >}}

@@ -67,7 +67,6 @@ Pilih industri anda di bawah untuk mengakses senario demo yang disesuaikan dan a
   {{< card link="/ms/user-guide/demo/retail/" title="📱 Runcit Elektronik Pengguna" subtitle="Penjejakan nombor siri, pengurusan waranti, pusat servis, harga berpaket" >}}
   {{< card link="/ms/user-guide/demo/distributors/" title="🚚 Pengedar & Pemborong" subtitle="Pengurusan pesanan B2B, harga berbilang peringkat, had kredit, pengoptimuman logistik" >}}
   {{< card link="/ms/user-guide/demo/apparel/" title="👗 Runcit Pakaian & Fesyen" subtitle="Matriks saiz/warna, perancangan bermusim, analitik trend, visual merchandising" >}}
-  {{< card link="/ms/user-guide/demo/education/" title="🎓 Universiti & Pendidikan" subtitle="Pengurusan yuran pelajar, procurement jabatan, penjejakan geran, operasi kampus" >}}
 {{< /cards >}}
 
 ### Ringkasan Faedah Khusus Industri
@@ -272,7 +271,6 @@ Setiap demo industri merangkumi:
 - 📱 [Demo Elektronik Pengguna](/ms/user-guide/demo/retail/) - Aliran kerja runcit elektronik
 - 🚚 [Demo Pengedar](/ms/user-guide/demo/distributors/) - Operasi borong B2B
 - 👗 [Demo Runcit Pakaian](/ms/user-guide/demo/apparel/) - Aliran kerja runcit fesyen
-- 🎓 [Demo Universiti](/ms/user-guide/demo/education/) - Pengurusan pendidikan tinggi
 - 🏭 [Demo Pembuatan](/ms/user-guide/demo/manufacturing/) - Aliran kerja pengeluaran
 - 💼 [Demo Perkhidmatan Profesional](/ms/user-guide/demo/services/) - Proses perniagaan perkhidmatan
 - 🍽️ [Demo Makanan & Minuman](/ms/user-guide/demo/food-beverage/) - Operasi restoran

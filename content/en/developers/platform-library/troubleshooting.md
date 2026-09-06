@@ -61,7 +61,7 @@ Prefer aligning with the version the platform brings. Forcing a different versio
 
 ### The application fails to start with an ambiguous mapping error
 
-Two controllers are mapped to the same path and HTTP method — almost always one of yours colliding with a BigLedger route. Move your endpoint into your reserved namespace, for example `/core2/tnt/x-yourcompany/...`. See [URL naming](../building-your-application/#url-naming-use-your-own-namespace).
+Two controllers are mapped to the same path and HTTP method — almost always one of yours colliding with a BigLedger route. Move your endpoint into your reserved namespace, for example `/core2/tnt/x-yourcompany/...`. See [URL naming](/developers/platform-library/building-your-application/#url-naming-use-your-own-namespace).
 
 ### The application fails to start with a database error
 
@@ -92,7 +92,7 @@ This is a known gap and is being addressed. If your application needs either cap
 
 ### No extension points for existing behaviour
 
-You can add endpoints, services and data. You cannot change how existing BigLedger endpoints and services behave — there are no published hooks, filters or replaceable strategies in this release. See [Changing existing behaviour](../building-your-application/#changing-existing-behaviour) for the supported alternatives.
+You can add endpoints, services and data. You cannot change how existing BigLedger endpoints and services behave — there are no published hooks, filters or replaceable strategies in this release. See [Changing existing behaviour](/developers/platform-library/building-your-application/#changing-existing-behaviour) for the supported alternatives.
 
 ### Do not modify platform behaviour by other means
 
@@ -112,6 +112,6 @@ Please do not include tokens, passwords, database credentials or real customer d
 
 ## Related documentation
 
-- [Getting Started](../getting-started/) — access and dependencies
-- [Building Your Application](../building-your-application/) — endpoints, services and data
-- [Versioning & Upgrades](../versioning-and-upgrades/) — moving between releases
+- [Getting Started](/developers/getting-started/) — access and dependencies
+- [Building Your Application](/developers/platform-library/building-your-application/) — endpoints, services and data
+- [Versioning & Upgrades](/developers/platform-library/versioning-and-upgrades/) — moving between releases

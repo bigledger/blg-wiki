@@ -83,6 +83,6 @@ The larger the gap between your version and the current one, the more expensive 
 
 ## Related documentation
 
-- [Getting Started](../getting-started/) — access and dependencies
-- [Building Your Application](../building-your-application/) — what you build on top
-- [Troubleshooting](../troubleshooting/) — errors and current limitations
+- [Getting Started](/developers/getting-started/) — access and dependencies
+- [Building Your Application](/developers/platform-library/building-your-application/) — what you build on top
+- [Troubleshooting](/developers/platform-library/troubleshooting/) — errors and current limitations
