@@ -1,5 +1,5 @@
 ---
-status: accepted
+status: accepted; §1 rollout HELD pending revisit (see Outcome)
 date: 2026-09-06
 decided_by: Vincent (2026-09-06, in session)
 supersedes: none
@@ -117,3 +117,31 @@ Rules:
   slightly different explanations of the same three concepts within a single day's writing.
 - **Hand-written troubleshooting only** — does not scale, cannot be keyed to strings we do
   not know we throw, and goes stale silently when a message changes in the backend.
+
+## Outcome of the pilot (added 2026-09-06)
+
+The ADR set its own test: *"both are cheaper once concepts exist"*. The e-invoice pilot shipped
+(`ae64ec9b`) and the follow-up procedure — the incoming-supplier-e-invoice guide (`805e3708`) —
+was written deliberately to measure it. **The test came back no.**
+
+- The pilot self-check (`../reviews/2026-09-06-concepts-pilot-selfcheck.md`) found the gains were
+  de-duplication the layer prompted rather than delivered.
+- The follow-up unit reported: *"they made no measurable difference, and one of the three cost me
+  words."* `validation-and-clearance` saved about four lines; `consolidated-e-invoice` was never
+  relevant; **`pools-and-queues` was a net cost** — it was linked only to be contradicted, because
+  its definition of a queue ("complete and on its way; you only have to wait") does not hold for
+  the Purchase Doc Matching Queue, which never moves.
+- What actually made the procedure cheap to write was the `kb/topics/` note, source triangulation,
+  and **the applet reference page's verified screen inventory**. The reusable substrate is the
+  reference page, not the concept page — the opposite of what §1 predicts.
+
+**The structural reason, which matters more than the measurement:** a concept page generalises
+from the guides that exist when it is written. `pools-and-queues` generalised correctly from five
+outbound guides; the sixth had to fight it. Every module that later grows a guide its concepts did
+not anticipate will hit this.
+
+**Consequently:** §1 is not rolled out to a second module. The three e-invoice concept pages stay —
+they are sound and a cold reader benefits — but the layer is not the thing that closes the gap to
+AWS. Open for Vincent: should concept pages be written **after** a module's procedures are
+complete, rather than before? That ordering would have avoided the `pools-and-queues` failure
+entirely. §2 (the error index) is untouched by this and remains accepted.
