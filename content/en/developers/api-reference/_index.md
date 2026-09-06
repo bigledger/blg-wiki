@@ -25,7 +25,7 @@ The last segment is the **access endpoint**, and it decides who may call it — 
 {{< cards >}}
   {{< card link="/developers/api-reference/einvoice-api-reference/" title="E-Invoice API" subtitle="Submission, cancellation and rejection, document query and notifications — checked against the backend" >}}
   {{< card link="/developers/api-reference/ucc/" title="Unified Contact Center API" subtitle="Agents, conversations, channels and messaging" >}}
-  {{< card link="/developers/platform-library/" title="Platform Library" subtitle="The shared library BigLedger applets are built on" >}}
+  {{< card link="/developers/platform-library/" title="Platform Library" subtitle="Building a backend application on the published BigLedger Java libraries" >}}
 {{< /cards >}}
 
 ## Being rewritten

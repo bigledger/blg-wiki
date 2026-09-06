@@ -15,7 +15,7 @@ weight: 65
 The BigLedger platform is published as a set of versioned Java libraries. Your application declares them as dependencies, gains every BigLedger capability, and adds your own logic beside it — without holding a copy of BigLedger source code.
 
 {{< callout type="info" >}}
-**This is not the REST API.** If you want to integrate an existing system with BigLedger over HTTP, use the [API Reference](/developers/api-reference/) or an [SDK](/developers/sdks/) instead. The platform library is for teams building a backend application that runs *as* a BigLedger deployment with extra behaviour of their own.
+**This is not the REST API.** If you want to integrate an existing system with BigLedger over HTTP, use the [API Reference](/developers/api-reference/) instead. The platform library is for teams building a backend application that runs *as* a BigLedger deployment with extra behaviour of their own.
 {{< /callout >}}
 
 ## What you get
@@ -71,4 +71,4 @@ Because BigLedger arrives as a compiled dependency rather than a branch of sourc
 - [Getting Started](/developers/platform-library/getting-started/) — access and first build
 - [Developer Platform](/developers/) — the wider developer documentation
 - [API Reference](/developers/api-reference/) — the REST API served by the platform
-- [Authentication](/developers/authentication/) — how BigLedger authenticates API requests
+- [Applet Development](/developers/applets/) — building a screen that runs inside the BigLedger shell

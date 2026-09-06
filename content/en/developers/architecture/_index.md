@@ -2,6 +2,7 @@
 title: "Architecture Documentation"
 description: "Comprehensive system architecture and technical design documentation for BigLedger platform"
 weight: 70
+draft: true  # unpublished 2026-09-06: fabricated stack (Node/Express/Redis/Elasticsearch/Kubernetes/GraphQL — the backend is Java/Spring Boot + JDBI/PostgreSQL) and unverified SOC 2 / ISO 27001 / GDPR claims (F-0294)
 ---
 
 # BigLedger Architecture Documentation

@@ -112,6 +112,6 @@ Please do not include tokens, passwords, database credentials or real customer d
 
 ## Related documentation
 
-- [Getting Started](/developers/getting-started/) — access and dependencies
+- [Getting Started](/developers/platform-library/getting-started/) — access and dependencies
 - [Building Your Application](/developers/platform-library/building-your-application/) — endpoints, services and data
 - [Versioning & Upgrades](/developers/platform-library/versioning-and-upgrades/) — moving between releases
