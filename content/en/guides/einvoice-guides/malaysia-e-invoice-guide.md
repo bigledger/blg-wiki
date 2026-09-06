@@ -1,68 +1,93 @@
 ---
-title: "Comprehensive Guide to E-Invoicing in Malaysia"
-description: "A detailed guide to understanding and implementing e-invoicing in Malaysia, including timelines, requirements, and best practices."
+title: "What Malaysia Requires: E-Invoicing Explained"
+description: "The background to Malaysian e-invoicing — the phased rollout by turnover, what LHDN puts on an e-invoice, how validation and the 72-hour window work, and where BigLedger fits"
+tags:
+- user-guide
+- e-invoice
+- compliance
 weight: 1
 ---
 
-## Introduction to E-Invoicing in Malaysia
+Before you configure anything, it helps to know what LHDN is actually asking for and why. This page is the background: who has to comply and from when, what an e-invoice contains, what happens after you send one, and which parts of it BigLedger does for you. Ten minutes, and no screens to open.
 
-E-invoicing in Malaysia is a digital transformation initiative led by the Inland Revenue Board of Malaysia (LHDN) to modernize tax administration and improve business efficiency. <mcreference link="https://jomeinvoice.my/malaysia-e-invoicing-guide/" index="5">5</mcreference> It involves the creation, validation, and transmission of invoices in a structured digital format, replacing traditional paper-based or PDF invoices. <mcreference link="https://jomeinvoice.my/malaysia-e-invoicing-guide/" index="5">5</mcreference> This move is designed to enhance transparency, reduce manual errors, and streamline tax reporting for businesses of all sizes. <mcreference link="https://jomeinvoice.my/malaysia-e-invoicing-guide/" index="5">5</mcreference>
+## What e-invoicing is
 
-## Phased Implementation Timeline
+Malaysian e-invoicing is an Inland Revenue Board (LHDN) programme that replaces the paper or PDF invoice as the *tax record* with a structured digital document, submitted to LHDN and validated by them before it counts. Your customer may still receive a PDF that looks much as it always did — but the version LHDN holds is the one that matters, and it only exists once LHDN has validated it.
 
-The implementation of e-invoicing is being rolled out in phases based on a company's annual turnover. This allows businesses to adapt to the new system gradually.
+Three consequences follow, and they shape everything else in these guides:
 
-| Phase | Implementation Date | Annual Turnover Threshold |
+- **An invoice is not finished when you print it.** It is finished when LHDN says Valid.
+- **The data has to be right before it is sent**, because the correction path after validation is narrow and time-limited.
+- **Someone has to check, every month, that everything got there** — which is why [the month-end cycle](/guides/einvoice-guides/einvoice-month-end/) exists.
+
+## Who has to comply, and from when
+
+The rollout is phased by annual turnover, so businesses came into scope in waves:
+
+| Phase | In force from | Annual turnover |
 |---|---|---|
-| 1 | August 1, 2024 | > RM100 million |
-| 2 | January 1, 2025 | RM25 million to RM100 million |
-| 3 | July 1, 2025 | RM5 million to RM25 million |
-| 4 | January 1, 2026 | RM1 million to RM5 million |
-| 5 | July 1, 2026 | Up to RM1 million |
+| 1 | 1 August 2024 | Above RM 100 million |
+| 2 | 1 January 2025 | RM 25 million to RM 100 million |
+| 3 | 1 July 2025 | RM 5 million to RM 25 million |
+| 4 | 1 January 2026 | RM 1 million to RM 5 million |
+| 5 | 1 July 2026 | Up to RM 1 million |
 
-<mcreference link="https://www.cleartax.com/my/en/e-invoicing-malaysia" index="1">1</mcreference> <mcreference link="https://www.pagero.com/compliance/regulatory-updates/malaysia" index="2">2</mcreference> <mcreference link="https://www.bdo.my/en-gb/insights/featured-insights/guide-to-e-invoicing-in-malaysia" index="4">4</mcreference> <mcreference link="https://jomeinvoice.my/malaysia-e-invoicing-guide/" index="5">5</mcreference>
+{{< callout type="info" >}}
+Phase dates and thresholds are set by LHDN and have been adjusted more than once during the rollout. Confirm your own date against LHDN's current e-Invoice guideline on the Inland Revenue Board website before you plan around it.
+{{< /callout >}}
 
-## Key Requirements for E-Invoicing
+## What goes on an e-invoice
 
-To comply with Malaysia's e-invoicing regulations, businesses must adhere to the following requirements:
+LHDN's schema defines **55 data fields**, of which **37 are mandatory** and 18 optional. In practice they group into five blocks:
 
-*   **Data Fields:** Each e-invoice must contain 55 mandatory data fields, including details about the seller and buyer, item descriptions, quantities, prices, taxes, and payment information. <mcreference link="https://www.cleartax.com/my/en/e-invoicing-malaysia" index="1">1</mcreference>
-*   **Format:** E-invoices must be in the specified UBL 2.1 format (XML or JSON). <mcreference link="https://www.cleartax.com/my/en/e-invoicing-malaysia" index="1">1</mcreference> <mcreference link="https://www.pagero.com/compliance/regulatory-updates/malaysia" index="2">2</mcreference>
-*   **Digital Signature:** All e-invoices must be digitally signed using a certificate issued by the IRBM. <mcreference link="https://www.cleartax.com/my/en/e-invoicing-malaysia" index="1">1</mcreference>
-*   **Transmission:** E-invoices can be submitted to the LHDN for validation through two primary models: the MyInvois Portal or via API integration. <mcreference link="https://www.cleartax.com/my/en/e-invoicing-malaysia" index="1">1</mcreference> <mcreference link="https://www.bdo.my/en-gb/insights/featured-insights/guide-to-e-invoicing-in-malaysia" index="4">4</mcreference>
+- **Who is selling** — your company's name, tax number, registration number, industry classification, address and contact number. BigLedger takes these from your company record, so one bad field here fails every document at once.
+- **Who is buying** — name, tax number, identity document type and value, address and contact number. This block causes most rejections; see [Validation Rules & Troubleshooting](/guides/einvoice-guides/einvoice-validation/).
+- **The document** — type, version, issue date and time, currency.
+- **The lines** — item classification code, description, quantity, unit of measure, unit price, tax type and tax amount.
+- **The money** — subtotal, total excluding tax, total including tax, and any discounts or charges.
 
-## E-Invoicing Models
+Four document types cover almost everything you will send: the invoice, the credit note, the debit note and the refund note. A **self-billed** e-invoice reverses the roles — you issue it as the buyer, typically when your supplier cannot.
 
-Businesses can choose the e-invoicing model that best suits their operational needs and transaction volume.
+## How a document gets to LHDN
 
-### MyInvois Portal
+There are two routes, and which one you are on changes what you have to do:
 
-The MyInvois Portal is a web-based platform provided by the LHDN that allows businesses to manually create and submit e-invoices. <mcreference link="https://www.bdo.my/en-gb/insights/featured-insights/guide-to-e-invoicing-in-malaysia" index="4">4</mcreference> This model is ideal for small and medium-sized enterprises (SMEs) with lower transaction volumes. <mcreference link="https://www.bdo.my/en-gb/insights/featured-insights/guide-to-e-invoicing-in-malaysia" index="4">4</mcreference>
+**The MyInvois portal.** You type each invoice into LHDN's own web portal. Workable at low volume; unworkable for a retailer ringing up thousands of receipts a month. Note that an invoice created this way exists at LHDN but not in BigLedger, so it will not appear in any BigLedger report.
 
-### API Integration
+**API integration — what BigLedger does.** Your documents are submitted straight from BigLedger. You authorise BigLedger as your **e-invoice intermediary** on the MyInvois portal once, and from then on BigLedger submits on your behalf.
 
-For larger businesses with high transaction volumes, direct API integration with the LHDN's MyInvois system is the recommended approach. <mcreference link="https://www.bdo.my/en-gb/insights/featured-insights/guide-to-e-invoicing-in-malaysia" index="4">4</mcreference> This allows for the automated submission and processing of e-invoices directly from a company's existing ERP or accounting system. <mcreference link="https://www.bdo.my/en-gb/insights/featured-insights/guide-to-e-invoicing-in-malaysia" index="4">4</mcreference>
+{{< callout type="tip" >}}
+**You do not obtain, upload or manage a signing certificate.** E-invoices are digitally signed, but in the intermediary model that is handled for you — there is no certificate screen in BigLedger, and any instruction to upload one is out of date.
+{{< /callout >}}
 
-## The E-Invoicing Process
+## What happens after you submit
 
-The e-invoicing process involves several key steps, from invoice creation to validation and sharing.
+1. **Submission.** BigLedger sends the e-invoice to LHDN. Your document status becomes *Submitted*.
+2. **Validation.** LHDN checks it and returns *Valid* or *Invalid*, along with a unique identifier for the validated document.
+3. **Sharing.** The validated e-invoice — with its QR code — is what you give the buyer. BigLedger can e-mail it automatically.
+4. **The 72-hour window.** From validation, the supplier has 72 hours to cancel the e-invoice, and the buyer has 72 hours to reject it. After that neither is possible, and the only correction is a credit note. See [Cancelling and Correcting a Validated E-Invoice](/guides/einvoice-guides/einvoice-cancel-and-correct/).
 
-1.  **Issuance:** The supplier creates an e-invoice in the required format and submits it to the LHDN via the MyInvois Portal or API. <mcreference link="https://www.cleartax.com/my/en/e-invoicing-malaysia" index="1">1</mcreference>
-2.  **Validation:** The LHDN validates the e-invoice in real-time. Upon successful validation, a Unique Identification Number (UIN) is assigned to the invoice. <mcreference link="https://www.cleartax.com/my/en/e-invoicing-malaysia" index="1">1</mcreference>
-3.  **Notification:** Both the supplier and the buyer are notified of the validated e-invoice. <mcreference link="https://www.cleartax.com/my/en/e-invoicing-malaysia" index="1">1</mcreference>
-4.  **Sharing:** The supplier shares the validated e-invoice with the buyer, which includes a QR code for verification. <mcreference link="https://www.cleartax.com/my/en/e-invoicing-malaysia" index="1">1</mcreference>
-5.  **Rejection or Cancellation:** The buyer has 72 hours to request a rejection of the e-invoice if there are any discrepancies. The supplier can also cancel the e-invoice within this timeframe. <mcreference link="https://www.cleartax.com/my/en/e-invoicing-malaysia" index="1">1</mcreference>
+{{< callout type="warning" >}}
+72 hours is the **cancellation and rejection** window. It is not a submission deadline — there is no rule saying an invoice must reach LHDN within 72 hours of being raised.
+{{< /callout >}}
 
-## Benefits of E-Invoicing
+## Consolidated e-invoices, and why retailers care
 
-Adopting e-invoicing offers numerous benefits for businesses, including:
+You do not issue an individual e-invoice for every walk-in sale. Receipts where the buyer did not give their details are reported together in a **consolidated e-invoice**, with the buyer recorded as General Public, and it must reach LHDN **by the 7th of the following month**.
 
-*   **Improved Efficiency:** Automating the invoicing process reduces manual data entry and processing time. <mcreference link="https://www.bdo.my/en-gb/insights/featured-insights/guide-to-e-invoicing-in-malaysia" index="4">4</mcreference>
-*   **Cost Savings:** E-invoicing eliminates the costs associated with paper, printing, and postage.
-*   **Enhanced Accuracy:** Structured data formats and automated validation minimize the risk of errors. <mcreference link="https://www.bdo.my/en-gb/insights/featured-insights/guide-to-e-invoicing-in-malaysia" index="4">4</mcreference>
-*   **Faster Payments:** Streamlined processes can lead to quicker invoice approval and payment cycles.
-*   **Improved Compliance:** Real-time validation and reporting help ensure compliance with tax regulations. <mcreference link="https://www.bdo.my/en-gb/insights/featured-insights/guide-to-e-invoicing-in-malaysia" index="4">4</mcreference>
+A 22-branch electronics retailer like GadgetSphere Sdn Bhd therefore reports roughly 38,000 counter receipts a month through a handful of consolidated e-invoices, and the couple of hundred larger sales individually.
 
-## Conclusion
+The one hard line: a sale of **RM 10,000 or more cannot be consolidated**. It needs an individual e-invoice with the buyer's real identity — which in practice means asking for it at the counter, because chasing it a week later rarely works. [Pools & Submission Routing](/guides/einvoice-guides/einvoice-pools-and-routing/) explains how BigLedger sorts the two apart automatically.
 
-The transition to e-invoicing is a significant step forward for businesses in Malaysia. By understanding the requirements, timelines, and available models, companies can ensure a smooth transition and leverage the benefits of a fully digital invoicing ecosystem.
+## Where to go next
+
+{{< cards >}}
+  {{< card link="/guides/einvoice-guides/myinvois-setup/" title="MyInvois Setup" subtitle="Get your company and master data ready before your first document" >}}
+  {{< card link="/guides/einvoice-guides/einvoice-pools-and-routing/" title="Pools & Submission Routing" subtitle="Individual vs consolidated, and the RM 10,000 rule" >}}
+  {{< card link="/guides/einvoice-guides/einvoice-month-end/" title="The Month-End Cycle" subtitle="The routine that keeps you compliant every month" >}}
+  {{< card link="/guides/einvoice-guides/einvoice-validation/" title="Validation Rules & Troubleshooting" subtitle="Why LHDN rejects a document, and how to fix it" >}}
+{{< /cards >}}
+
+{{< callout type="info" >}}
+LHDN's own e-Invoice guideline and its software development kit documentation, published on the Inland Revenue Board website, are the authority on everything on this page. Where this wiki and LHDN disagree, LHDN is right — tell us and we will correct it.
+{{< /callout >}}

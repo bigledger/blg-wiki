@@ -60,7 +60,7 @@ Select your role to access guides tailored to your responsibilities:
   {{< card link="/guides/sales-guides/" title="💼 Sales Workflows" subtitle="7 guides — Standard, Credit, Cash, Instalment, Partial Delivery, Installation, Returns" >}}
   {{< card link="/guides/purchasing-guides/" title="🛒 Purchasing Workflows" subtitle="5 guides — Standard, Direct GRN, Direct Invoice, Invoice-First, Consignment" >}}
   {{< card link="/guides/accounting-guides/" title="📊 Accounting" subtitle="4 guides — Chart of Accounts, Journal Entries, Financial Reporting, Bank Reconciliation" >}}
-  {{< card link="/guides/einvoice-guides/" title="📄 E-Invoice & PEPPOL" subtitle="4 guides — MyInvois Setup, PEPPOL Config, Validation Rules, Malaysia Compliance" >}}
+  {{< card link="/guides/einvoice-guides/" title="📄 E-Invoice & PEPPOL" subtitle="7 guides — setup, pools and routing, validation, the month-end cycle, cancelling an e-invoice, PEPPOL" >}}
   {{< card link="/guides/inventory-guides/" title="📦 Inventory Management" subtitle="Stock management & transfer procedures" >}}
 {{< /cards >}}
 
@@ -85,7 +85,7 @@ Follow these structured sequences to master each area. Each path links to existi
 | 2 | [Journal Entries](/guides/accounting-guides/journal-entries/) | Record financial transactions |
 | 3 | [Bank Reconciliation](/guides/accounting-guides/bank-reconciliation-guide/) | Match bank statements to records |
 | 4 | [Financial Reporting](/guides/accounting-guides/financial-reporting/) | Generate standard financial statements |
-| 5 | [Financial Reporting Excellence](/guides/advanced/financial-reporting/) | Advanced analytics & custom reports |
+| 5 | [Financial Reporting Excellence](/guides/advanced/financial-reporting-excellence/) | Advanced analytics & custom reports |
 | 6 | [Compliance & Audit](/guides/advanced/compliance-audit/) | Regulatory compliance & audit prep |
 
 ### 💼 Sales Path
@@ -127,7 +127,7 @@ Follow these structured sequences to master each area. Each path links to existi
 
 ### Order-to-Cash
 
-1. [Customer Setup](/applets/customer-maintenance-applet/) →
+1. [Customer Setup](/applets/master-data/customer-maintenance-applet/) →
 2. [Sales Order](/guides/sales-guides/standard-sales-workflow/) →
 3. [Invoice Generation](/guides/accounting-guides/journal-entries/) →
 4. [Payment Collection](/guides/accounting-guides/bank-reconciliation-guide/) →
@@ -135,7 +135,7 @@ Follow these structured sequences to master each area. Each path links to existi
 
 ### Procure-to-Pay
 
-1. [Vendor Setup](/applets/supplier-maintenance-applet/) →
+1. [Vendor Setup](/applets/master-data/supplier-applet-1/) →
 2. [Purchase Order](/guides/purchasing-guides/standard-procurement-workflow/) →
 3. [Goods Receipt](/guides/purchasing-guides/direct-grn-workflow/) →
 4. [Invoice Matching](/guides/purchasing-guides/invoice-first-workflow/) →
@@ -146,7 +146,7 @@ Follow these structured sequences to master each area. Each path links to existi
 1. [Journal Entry](/guides/accounting-guides/journal-entries/) →
 2. [Bank Reconciliation](/guides/accounting-guides/bank-reconciliation-guide/) →
 3. [Financial Statements](/guides/accounting-guides/financial-reporting/) →
-4. [Advanced Reporting](/guides/advanced/financial-reporting/)
+4. [Advanced Reporting](/guides/advanced/financial-reporting-excellence/)
 
 ---
 
