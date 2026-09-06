@@ -5,7 +5,7 @@ applet_code: "posGeneral"
 applet_repo: "blg-applet-wavelet-pos-general-applet"
 modules: [pos, inventory, financial-accounting, membership, e-invoice]
 related_applets: [daily-cashier-report-applet, internal-sales-refund-note-applet, sales-commission-applet, internal-sales-return-applet, internal-sales-invoice-applet, non-stock-and-trade-in-applet, membership-admin-applet, membership-points-currency, voucher-management-applet, customer-applet, inv-item-maintenance-applet, doc-item-maintenance-applet, pricebook-applet, cashbook-applet, chart-of-account-applet, tax-configuration-applet, organisation-applet, stock-balance-applet, my-e-invoice-portal-applet, bank-reconciliation-applet, sales-report-applet, internal-receipt-voucher-applet]
-guides: [/user-guide/daily-tasks-v2/]
+guides: [/user-guide/daily-tasks/]
 sources:
   - blg-applet-wavelet-pos-general-applet/micro-fe/projects/wavelet-erp/applets/pos-general-applet/src/app/app.routing.ts
   - blg-applet-wavelet-pos-general-applet/micro-fe/projects/wavelet-erp/applets/pos-general-applet/src/app/app.component.ts
@@ -456,5 +456,5 @@ The app also reads `POS_SHOW_Z_REPORT`, `POS_SHOW_CASHIER_COLECTION_REPORT`, `EX
 ## Related documentation
 
 - [Sales & POS module](/modules-v2/pos/) and its [configuration page](/modules-v2/pos/configuration/)
-- [Daily tasks video library](/user-guide/daily-tasks-v2/) — cash bill creation, discounts, settlement and reports
+- [Daily tasks video library](/user-guide/daily-tasks/) — cash bill creation, discounts, settlement and reports
 - [Sales Workflow applets](/applets/sales-workflow/)

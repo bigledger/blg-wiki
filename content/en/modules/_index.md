@@ -317,8 +317,6 @@ Modules are designed to work seamlessly together:
 
 ### Implementation Guides
 - [Getting Started Guide](/user-guide/introduction/)
-- [Implementation Best Practices](/guides/advanced/integration-best-practices/)
-- [Role-Based Training](/guides/roles/)
 
 {{< callout type="tip" >}}
 **Remember**: Modules are business-focused groupings. The same applet can serve multiple modules. Always refer to the applet documentation in `/applets/` for detailed configuration and features.

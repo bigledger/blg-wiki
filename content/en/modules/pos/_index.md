@@ -4,7 +4,6 @@ description: "Complete retail store operations with offline/online sync capabili
 weight: 20
 ---
 
-
 The Point of Sales (POS) Module provides comprehensive retail store operations capabilities, enabling seamless cashier operations, multi-outlet management, and robust offline/online synchronization.
 
 ## Overview
@@ -289,7 +288,6 @@ Designed for:
 - [Troubleshooting Procedures](/guides/) - *TODO: Create procedures*
 
 ### Integration Guides
-- [POS-Inventory Integration](/guides/advanced/integration-best-practices/)
 - [Multi-Store Setup](/guides/) - *TODO: Create guide*
 - [Offline Operations Guide](/guides/) - *TODO: Create guide*
 

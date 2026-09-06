@@ -96,4 +96,4 @@ Traditional ERP systems force businesses into rigid, one-size-fits-all software 
 
 Our team works directly with Malaysian enterprises to configure custom applet stacks and workflow rules. 
 
-📖 Explore our **[Best Practices Guide →](/user-guide/best-practices/)** or learn more about **[Platform Architecture →](/user-guide/getting-started-v2/)**.
+📖 Explore our **[Best Practices Guide →](/user-guide/best-practices/)** or learn more about **[Platform Architecture →](/user-guide/getting-started/)**.

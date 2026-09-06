@@ -2,6 +2,7 @@
 title: "Compliance & Audit Requirements"
 description: "Regulatory compliance, audit trails, and control frameworks"
 weight: 40
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 

@@ -49,14 +49,6 @@ toc: false
 
 <div class="hx:w-full">
 {{< cards cols="4" >}}
-  {{< card link="/guides/roles/finance-manager/" title="Finance manager" icon="chart-bar" >}}
-  {{< card link="/guides/roles/cashier/" title="Cashier" icon="cash" >}}
-  {{< card link="/guides/roles/warehouse-manager/" title="Warehouse manager" icon="cube" >}}
-  {{< card link="/guides/roles/procurement-manager/" title="Procurement manager" icon="truck" >}}
-  {{< card link="/guides/roles/branch-manager/" title="Branch manager" icon="office-building" >}}
-  {{< card link="/guides/roles/ecommerce-specialist/" title="E-commerce specialist" icon="globe" >}}
-  {{< card link="/guides/roles/merchandising-manager/" title="Merchandising manager" icon="tag" >}}
-  {{< card link="/guides/roles/internal-audit/" title="Internal auditor" icon="search" >}}
 {{< /cards >}}
 </div>
 

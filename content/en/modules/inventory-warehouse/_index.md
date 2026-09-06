@@ -314,8 +314,6 @@ Inbound Receipt → Cross-Dock Assignment → Staging → Outbound Loading → D
 - [Cross-Docking Operations](/user-guide/daily-tasks/cross-docking/)
 
 ### Advanced Topics
-- [Warehouse Automation Integration](/guides/advanced/automation-integration/)
-- [Performance Optimization](/guides/advanced/warehouse-optimization/)
 - [API Integration](/developers/api-reference/warehouse/)
 
 ## Next Steps

@@ -2,6 +2,7 @@
 title: "Internal Auditor Guide"
 description: "Audit procedures and compliance guide for internal auditors"
 weight: 50
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 # Internal Auditor - BigLedger System Evaluation Questions

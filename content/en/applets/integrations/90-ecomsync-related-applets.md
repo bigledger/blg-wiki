@@ -147,6 +147,5 @@ Only the Lazada and Shopee jobs can be created from the Doc Item *Scheduler* scr
 
 - Legacy EcomSync module pages (imported from the original product wiki; screen names may be older): [Introduction to EcomSync](/modules/ecommerce/introduction-to-ecomsync/), [Ecomsync Features](/modules/ecommerce/ecomsync-features/), [EcomSync Applet](/modules/ecommerce/ecomsync-applet/)
 - [E-Commerce module](/modules-v2/ecommerce/) and its [related applets](/modules-v2/ecommerce/related-applets/)
-- [E-Commerce Specialist role guide](/guides/roles/ecommerce-specialist/)
 - [Order listing](/business-operations/order-listing/) and [Item maintenance](/user-guide/basic-operations/item-maintenance/) user guides
 - Applet reference pages: [Organisation Applet](/applets/master-data/organisation-applet/) · [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) · [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/) · [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) · [Stock Availability Applet](/applets/inventory-workflow/stock-availability-applet/) · [Pricebook Applet](/applets/master-data/pricebook-applet/) · [CP Commerce Admin Applet](/applets/ecommerce/cp-commerce-admin-applet/)

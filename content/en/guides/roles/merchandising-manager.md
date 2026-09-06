@@ -2,6 +2,7 @@
 title: "Merchandising Manager Guide"
 description: "Product management and merchandising strategies guide"
 weight: 60
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 # Strategic Merchandising and Product Planning Excellence

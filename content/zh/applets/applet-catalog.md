@@ -371,7 +371,6 @@ CP-Commerce模块包含所有13个核心模块应用程序（如上所列）。
 
 ### 集成文档
 - [API参考](/zh/developers/api-reference/)
-- [系统集成最佳实践](/zh/guides/advanced/integration-best-practices/)
 
 ### 支持资源
 - [应用程序目录](/zh/applets/applet-directory/)

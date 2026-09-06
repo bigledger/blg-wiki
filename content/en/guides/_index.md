@@ -37,18 +37,8 @@ Complete these steps to go from first login to your first transaction:
 
 Select your role to access guides tailored to your responsibilities:
 
-{{< cards >}}
-  {{< card link="/guides/roles/finance-manager/" title="💰 Finance Manager" subtitle="Financial control, reporting & compliance" >}}
-  {{< card link="/guides/roles/procurement-manager/" title="🛒 Procurement Manager" subtitle="Purchasing & supply chain management" >}}
-  {{< card link="/guides/roles/warehouse-manager/" title="📦 Warehouse Manager" subtitle="Inventory, stock & logistics operations" >}}
-  {{< card link="/guides/roles/branch-manager/" title="🏢 Branch Manager" subtitle="Multi-location operations & oversight" >}}
-  {{< card link="/guides/roles/cashier/" title="💵 Cashier" subtitle="POS operations & daily cash management" >}}
-  {{< card link="/guides/roles/ecommerce-specialist/" title="🌐 E-Commerce Specialist" subtitle="Online sales & marketplace management" >}}
-  {{< card link="/guides/roles/merchandising-manager/" title="🏷️ Merchandising Manager" subtitle="Product management & pricing strategies" >}}
-  {{< card link="/guides/roles/internal-audit/" title="🔍 Internal Auditor" subtitle="Audit procedures & compliance checking" >}}
-{{< /cards >}}
 
-[📋 View all role-based guides →](/guides/roles/)
+📋 View all role-based guides →
 
 ---
 
@@ -67,10 +57,6 @@ Select your role to access guides tailored to your responsibilities:
 
 ### Specialized Guides
 
-{{< cards >}}
-  {{< card link="/guides/roles/" title="👤 Role-Based Guides" subtitle="8 guides tailored to specific job functions" >}}
-  {{< card link="/guides/advanced/" title="🔬 Advanced Guides" subtitle="7 deep-dive guides for ERP specialists and power users" >}}
-{{< /cards >}}
 
 ---
 
@@ -86,8 +72,8 @@ Follow these structured sequences to master each area. Each path links to existi
 | 2 | [Journal Entries](/guides/accounting-guides/journal-entries/) | Record financial transactions |
 | 3 | [Bank Reconciliation](/guides/accounting-guides/bank-reconciliation-guide/) | Match bank statements to records |
 | 4 | [Financial Reporting](/guides/accounting-guides/financial-reporting/) | Generate standard financial statements |
-| 5 | [Financial Reporting Excellence](/guides/advanced/financial-reporting-excellence/) | Advanced analytics & custom reports |
-| 6 | [Compliance & Audit](/guides/advanced/compliance-audit/) | Regulatory compliance & audit prep |
+| 5 | Financial Reporting Excellence | Advanced analytics & custom reports |
+| 6 | Compliance & Audit | Regulatory compliance & audit prep |
 
 ### 💼 Sales Path
 
@@ -119,8 +105,8 @@ Follow these structured sequences to master each area. Each path links to existi
 | 2 | [Administration](/user-guide/administration/) | Company, users & permissions setup |
 | 3 | [E-Invoice Setup](/guides/einvoice-guides/myinvois-setup/) | MyInvois & PEPPOL configuration |
 | 4 | [E-Invoice Validation](/guides/einvoice-guides/einvoice-validation/) | Compliance validation rules |
-| 5 | [Integration Best Practices](/guides/advanced/integration-best-practices/) | API & system connectivity |
-| 6 | [Performance Optimization](/guides/advanced/performance-optimization/) | System tuning & efficiency |
+| 5 | Integration Best Practices | API & system connectivity |
+| 6 | Performance Optimization | System tuning & efficiency |
 
 ---
 
@@ -147,7 +133,6 @@ Follow these structured sequences to master each area. Each path links to existi
 1. [Journal Entry](/guides/accounting-guides/journal-entries/) →
 2. [Bank Reconciliation](/guides/accounting-guides/bank-reconciliation-guide/) →
 3. [Financial Statements](/guides/accounting-guides/financial-reporting/) →
-4. [Advanced Reporting](/guides/advanced/financial-reporting-excellence/)
 
 ---
 

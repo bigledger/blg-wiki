@@ -32,11 +32,6 @@ weight: 10
 
 通过我们全面的演示环境亲身体验 BigLedger。
 
-{{< cards >}}
-{{< card link="/zh/user-guide/demo/" title="交互式演示平台" subtitle="针对您的行业量身定制的实践指导工作流程" >}}
-{{< card link="/zh/user-guide/demo/getting-started-demo/" title="演示快速入门" subtitle="15分钟导向让您快速上手" >}}
-{{< card link="/zh/user-guide/demo/common-workflows/" title="常见工作流程" subtitle="所有行业的必要业务流程" >}}
-{{< /cards >}}
 
 **演示功能**：实时环境、行业场景、分步指南、示例数据
 

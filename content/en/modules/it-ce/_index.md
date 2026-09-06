@@ -311,7 +311,6 @@ Digital Assets → Management System → Distribution → Usage Tracking
 
 ### Setup and Configuration
 - [IT & CE Module Implementation Guide](/guides/) - *TODO: Create implementation guide*
-- [System Integration Best Practices](/guides/advanced/integration-best-practices/)
 - [Security Configuration Guide](/guides/) - *TODO: Create security guide*
 
 ### User Guides
@@ -322,7 +321,6 @@ Digital Assets → Management System → Distribution → Usage Tracking
 ### Advanced Topics
 - [Automation Workflow Design](/guides/) - *TODO: Create workflow guide*
 - [Customer Experience Optimization](/guides/) - *TODO: Create CX guide*
-- [Performance Monitoring and Tuning](/guides/advanced/performance-optimization/)
 
 ## Next Steps
 

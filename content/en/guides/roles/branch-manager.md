@@ -2,6 +2,7 @@
 title: "Branch Manager Guide"
 description: "Complete guide for branch managers using BigLedger ERP"
 weight: 10
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 # Branch Manager Operations and Performance Guide

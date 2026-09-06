@@ -3,6 +3,7 @@ title: "Professional Services Demo"
 description: "Complete demo workflows for consulting, IT services, agencies, and professional service businesses"
 weight: 30
 bookCollapseSection: false
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 Transform your professional services business with BigLedger's comprehensive project-based workflow system. This demo showcases real-world scenarios for consulting firms, IT service providers, marketing agencies, and other professional service organizations.

@@ -547,7 +547,6 @@ Alami bagaimana BigLedger mengubah pembuatan keputusan eksekutif melalui busines
 {{< hextra/hero-button text="Jadualkan Demo CEO" link="mailto:sales@bigledger.com?subject=CEO Executive Demo Request" >}}
 
 ### Tindakan Pantas Strategik
-1. **[Mulakan Demo Eksekutif](/ms/user-guide/demo/role-based/ceo-executive/#senario-1-pusat-komando-eksekutif-masa-nyata)** - Mulakan dengan gambaran pusat komando
 2. **[Kira ROI Strategik](#analisis-roi-strategik-untuk-ceo)** - Anggarkan penciptaan nilai strategik
 3. **[Hubungi Penasihat Strategik](mailto:sales@bigledger.com)** - Bincangkan transformasi strategik
 

@@ -63,11 +63,6 @@ bookCollapseSection: false
 
 **全新发布：全面的行业专属业务旅程，包含详细工作流程、关键痛点分析、预期ROI和成功指标：**
 
-{{< cards >}}
-  {{< card link="/zh/user-guide/demo/retail/" title="📱 消费电子零售" subtitle="序列号管理、保修服务、售后中心、套装定价优化" >}}
-  {{< card link="/zh/user-guide/demo/distributors/" title="🚚 分销商与批发商" subtitle="B2B订单管理、多层定价、信用额度、物流优化" >}}
-  {{< card link="/zh/user-guide/demo/apparel/" title="👗 服装时尚零售" subtitle="尺码颜色矩阵、季节规划、趋势分析、视觉商品陈列" >}}
-{{< /cards >}}
 
 ### 行业专属商业价值汇总
 
@@ -111,11 +106,6 @@ bookCollapseSection: false
 
 ### 其他行业演示方案
 
-{{< cards >}}
-  {{< card link="/zh/user-guide/demo/manufacturing/" title="🏭 制造生产" subtitle="生产计划管理、BOM清单、质量控制" >}}
-  {{< card link="/zh/user-guide/demo/services/" title="💼 专业服务" subtitle="项目管理、工时跟踪、服务计费" >}}
-  {{< card link="/zh/user-guide/demo/food-beverage/" title="🍽️ 餐饮食品" subtitle="餐厅运营、连锁管理、配方成本核算" >}}
-{{< /cards >}}
 
 ---
 
@@ -123,9 +113,6 @@ bookCollapseSection: false
 
 专为关键决策制定者设计的战略演示，聚焦业务成果和投资回报率：
 
-{{< cards >}}
-  {{< card link="/zh/user-guide/demo/role-based/" title="🎯 高管决策层演示旅程" subtitle="财务总监、运营总监、CEO高管 - 战略聚焦" >}}
-{{< /cards >}}
 
 ---
 
@@ -133,10 +120,6 @@ bookCollapseSection: false
 
 掌握适用于所有行业的核心业务流程：
 
-{{< cards >}}
-  {{< card link="/zh/user-guide/demo/common-workflows/" title="核心财务业务流程" subtitle="会计核算、银行对账、财务报表" >}}
-  {{< card link="/zh/user-guide/demo/getting-started-demo/" title="系统入门指导" subtitle="首次使用、界面导航、基础配置" >}}
-{{< /cards >}}
 
 ---
 
@@ -265,15 +248,6 @@ bookCollapseSection: false
 {{< hextra/hero-button text="启动演示环境" link="https://demo-v1.bigledger.com" >}}
 
 ### 快速导航链接
-
-- 🎯 [系统入门指导](/zh/user-guide/demo/getting-started-demo/) - 新用户方向指引
-- 💰 [通用财务工作流程](/zh/user-guide/demo/common-workflows/) - 核心会计业务流程
-- 📱 [消费电子零售演示](/zh/user-guide/demo/retail/) - 电子产品零售业务流程
-- 🚚 [分销商演示](/zh/user-guide/demo/distributors/) - B2B批发分销业务运营
-- 👗 [服装零售演示](/zh/user-guide/demo/apparel/) - 时尚服装零售业务流程
-- 🏭 [制造业演示](/zh/user-guide/demo/manufacturing/) - 生产制造业务流程
-- 💼 [专业服务演示](/zh/user-guide/demo/services/) - 服务行业业务流程
-- 🍽️ [餐饮食品演示](/zh/user-guide/demo/food-beverage/) - 餐厅连锁运营管理
 
 ---
 

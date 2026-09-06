@@ -2,6 +2,7 @@
 title: "Advanced Guides"
 description: "In-depth technical guides for ERP specialists and power users"
 weight: 50
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 # Advanced BigLedger Guides

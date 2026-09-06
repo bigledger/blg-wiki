@@ -278,7 +278,6 @@ Unified Customer Intelligence Platform
 ### Setup and Configuration
 - [Digital CRM Implementation Guide](/guides/) - *TODO: Create implementation guide*
 - [AI Configuration Manual](/guides/) - *TODO: Create AI setup guide*
-- [Integration Setup Guide](/guides/advanced/integration-best-practices/)
 
 ### User Guides
 - [Sales Pipeline Management Guide](/guides/) - *TODO: Create pipeline guide*

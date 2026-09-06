@@ -511,7 +511,6 @@ weight: 10
 {{< hextra/hero-button text="预约高管演示" link="mailto:sales@bigledger.com?subject=Finance Manager Demo Request" >}}
 
 ### 快速行动
-1. **[立即开始演示](/zh/user-guide/demo/role-based/finance-manager/#场景1实时财务管理仪表板)** - 从实时仪表板开始
 2. **[计算您的ROI](#财务团队roi计算器)** - 估算您组织的节约
 3. **[联系财务专家](mailto:sales@bigledger.com)** - 讨论具体需求
 

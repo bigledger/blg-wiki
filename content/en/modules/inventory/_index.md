@@ -296,9 +296,7 @@ Count Schedule → Count Execution → Variance Analysis → Adjustments → Rec
 - [Inventory Reporting](/user-guide/reports-analytics/inventory-reports/)
 
 ### Advanced Topics
-- [Inventory Optimization](/guides/advanced/inventory-optimization/)
 - [API Integration](/developers/integration/)
-- [Custom Valuation Methods](/guides/advanced/custom-valuation/)
 
 ## Next Steps
 

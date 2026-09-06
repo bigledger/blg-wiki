@@ -336,7 +336,6 @@ Client Engagement → Project Planning → Resource Allocation → Service Deliv
 ### Advanced Topics
 - [Service Delivery Optimization](/guides/) - *TODO: Create optimization guide*
 - [Client Relationship Management](/guides/) - *TODO: Create client management guide*
-- [Performance Analytics and Reporting](/guides/advanced/performance-optimization/)
 
 ## Next Steps
 

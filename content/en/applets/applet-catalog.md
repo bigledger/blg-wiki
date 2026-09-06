@@ -235,7 +235,6 @@ All 13 Core Module applets (listed above) are included in CP-Commerce Module.
 24. **Collection Management Applet** - Debt collection processes
 25. **Financial Analytics Applet** - Advanced financial analysis
 
-
 ---
 
 ## Digital CRM Module Applets (3 Applets)
@@ -417,7 +416,6 @@ Add analytics, automation, and optimization applets:
 ### Integration Documentation
 - [API Reference](/developers/api-reference/)
 - [Webhook Integration](/applets/webhook-applet/)
-- [System Integration Best Practices](/guides/advanced/integration-best-practices/)
 
 ### Support Resources
 - [Applet Directory](/applets/applet-directory/)

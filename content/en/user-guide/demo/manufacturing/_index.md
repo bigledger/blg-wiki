@@ -3,6 +3,7 @@ title: "Manufacturing Industry Demo"
 description: "Comprehensive manufacturing workflows including BOM management, production planning, quality control, and cost analysis"
 weight: 20
 bookCollapseSection: false
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 Experience BigLedger's manufacturing capabilities through realistic production scenarios. This demo covers the complete manufacturing lifecycle from BOM setup to finished goods delivery.

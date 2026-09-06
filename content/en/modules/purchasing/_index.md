@@ -345,8 +345,6 @@ Supplier ID → Qualification → Evaluation → Approval → Setup → Performa
 - [Procurement Reporting](/user-guide/reports-analytics/procurement-reports/)
 
 ### Advanced Topics
-- [Strategic Sourcing Implementation](/guides/advanced/strategic-sourcing/)
-- [Procurement Analytics Setup](/guides/advanced/procurement-analytics/)
 - [API Integration](/developers/integration/)
 
 ## Next Steps

@@ -3,6 +3,7 @@ title: "Distributors B2B Demo"
 description: "Complete wholesale and distribution workflows: multi-tier pricing, B2B order management, credit limits, logistics optimization, vendor management"
 weight: 15
 bookCollapseSection: false
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 Master BigLedger's comprehensive distribution management capabilities through realistic B2B scenarios that address the complex challenges of wholesale operations. This demo covers multi-tier pricing, credit management, logistics optimization, and advanced vendor relationships.

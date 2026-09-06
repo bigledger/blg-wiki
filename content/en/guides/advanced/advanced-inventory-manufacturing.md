@@ -2,6 +2,7 @@
 title: "Advanced Inventory & Manufacturing"
 description: "Complex inventory management and manufacturing processes"
 weight: 20
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 

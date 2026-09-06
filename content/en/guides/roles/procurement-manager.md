@@ -2,6 +2,7 @@
 title: "Procurement Manager Guide"
 description: "Purchasing and vendor management guide for procurement managers"
 weight: 70
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 # Procurement Manager Questions for BigLedger Documentation

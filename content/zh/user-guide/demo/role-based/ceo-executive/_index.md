@@ -547,7 +547,6 @@ weight: 30
 {{< hextra/hero-button text="预约CEO演示" link="mailto:sales@bigledger.com?subject=CEO Executive Demo Request" >}}
 
 ### 战略快速行动
-1. **[开始高管演示](/zh/user-guide/demo/role-based/ceo-executive/#场景1实时高管指挥中心)** - 从指挥中心概览开始
 2. **[计算战略ROI](#ceo战略roi分析)** - 估算战略价值创造
 3. **[联系战略顾问](mailto:sales@bigledger.com)** - 讨论战略转型
 

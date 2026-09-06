@@ -3,6 +3,7 @@ title: "Common Business Workflows"
 description: "Essential step-by-step business workflows that apply to all industries using BigLedger"
 weight: 10
 bookCollapseSection: false
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 This guide provides detailed, step-by-step workflows for the most common business processes in BigLedger. These workflows are industry-agnostic and apply to businesses of all sizes and types.

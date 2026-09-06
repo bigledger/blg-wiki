@@ -2,6 +2,7 @@
 title: "Accounting Workflows Deep Dive"
 description: "Advanced accounting processes, automation, and best practices in BigLedger"
 weight: 10
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 

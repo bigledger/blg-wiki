@@ -2,6 +2,7 @@
 title: "CEO & Executive Demo Journey"
 description: "Strategic business intelligence demonstration: executive dashboards, KPIs, growth analytics, profitability analysis, and strategic decision support"
 weight: 30
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 Experience how BigLedger transforms executive decision-making through comprehensive business intelligence, real-time strategic insights, and predictive analytics. This demo focuses on the strategic visibility and control CEOs need to drive growth.

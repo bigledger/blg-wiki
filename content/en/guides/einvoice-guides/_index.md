@@ -135,5 +135,4 @@ Three places tell you where you stand, and they do not say the same thing:
 - **[My PEPPOL Admin Applet](/applets/e-invoice/mypeppol-admin-applet/)** — PEPPOL queues and configuration
 - **[Sales Invoice Applet](/applets/sales-workflow/internal-sales-invoice-applet/)** — where a sales e-invoice starts
 - **[Purchase Invoice Applet](/applets/finance/internal-purchase-invoice-applet/)** — the purchase side of the same pipeline
-- **[Compliance & Audit Guide](/guides/advanced/compliance-audit/)** — regulatory compliance overview
 - **[E-Invoice & PEPPOL module](/modules-v2/e-invoice/)** — the architecture view: who does what, which applets are involved, and the go-live checklist

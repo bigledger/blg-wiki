@@ -511,7 +511,6 @@ Alami bagaimana BigLedger mengubah pengurusan kewangan melalui automasi, keterli
 {{< hextra/hero-button text="Jadualkan Demo Eksekutif" link="mailto:sales@bigledger.com?subject=Finance Manager Demo Request" >}}
 
 ### Tindakan Pantas
-1. **[Mula Demo Sekarang](/ms/user-guide/demo/role-based/finance-manager/#senario-1-dashboard-kewangan-masa-nyata)** - Mulakan dengan dashboard masa nyata
 2. **[Kira ROI Anda](#kalkulator-roi-untuk-pasukan-kewangan)** - Anggarkan penjimatan untuk organisasi anda
 3. **[Hubungi Pakar Kewangan](mailto:sales@bigledger.com)** - Bincangkan keperluan khusus
 

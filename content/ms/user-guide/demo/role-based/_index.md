@@ -23,11 +23,6 @@ Alami nilai strategik BigLedger melalui perjalanan demo yang berfokuskan eksekut
 
 Pilih peranan anda di bawah untuk mengakses senario demo yang disesuaikan dengan fokus pada objektif khusus, titik kesakitan, dan metrik kejayaan anda:
 
-{{< cards >}}
-  {{< card link="/ms/user-guide/demo/role-based/finance-manager/" title="💰 Pengurus Kewangan" subtitle="Pelaporan kewangan, pengurusan aliran tunai, pematuhan, jejak audit, konsolidasi berbilang syarikat" >}}
-  {{< card link="/ms/user-guide/demo/role-based/operations-manager/" title="⚙️ Pengurus Operasi" subtitle="Pengoptimuman proses, pengurusan inventori, rantaian bekalan, metrik prestasi, peruntukan sumber" >}}
-  {{< card link="/ms/user-guide/demo/role-based/ceo-executive/" title="📊 CEO & Eksekutif" subtitle="Dashboard strategik, KPI, business intelligence, analitik pertumbuhan, analisis keuntungan" >}}
-{{< /cards >}}
 
 ---
 
@@ -171,10 +166,6 @@ Dengan melengkapkan perjalanan demo berdasarkan peranan anda, anda akan memahami
 {{< hextra/hero-button text="Akses Persekitaran Demo" link="https://demo-v1.bigledger.com" >}}
 
 ### Pautan Akses Pantas
-
-- 💰 [Perjalanan Pengurus Kewangan](/ms/user-guide/demo/role-based/finance-manager/) - Fokus pengurusan kewangan dan pematuhan
-- ⚙️ [Perjalanan Pengurus Operasi](/ms/user-guide/demo/role-based/operations-manager/) - Fokus pengoptimuman proses dan kecekapan
-- 📊 [Perjalanan CEO/Eksekutif](/ms/user-guide/demo/role-based/ceo-executive/) - Fokus dashboard strategik dan analitik
 
 ---
 

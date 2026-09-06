@@ -63,11 +63,6 @@ Pilih industri anda di bawah untuk mengakses senario demo yang disesuaikan dan a
 
 **BAHARU: Perjalanan komprehensif khusus industri dengan aliran kerja terperinci, titik kesakitan utama, ROI dijangka, dan metrik kejayaan:**
 
-{{< cards >}}
-  {{< card link="/ms/user-guide/demo/retail/" title="📱 Runcit Elektronik Pengguna" subtitle="Penjejakan nombor siri, pengurusan waranti, pusat servis, harga berpaket" >}}
-  {{< card link="/ms/user-guide/demo/distributors/" title="🚚 Pengedar & Pemborong" subtitle="Pengurusan pesanan B2B, harga berbilang peringkat, had kredit, pengoptimuman logistik" >}}
-  {{< card link="/ms/user-guide/demo/apparel/" title="👗 Runcit Pakaian & Fesyen" subtitle="Matriks saiz/warna, perancangan bermusim, analitik trend, visual merchandising" >}}
-{{< /cards >}}
 
 ### Ringkasan Faedah Khusus Industri
 
@@ -111,11 +106,6 @@ Pilih industri anda di bawah untuk mengakses senario demo yang disesuaikan dan a
 
 ### Demo Industri Tambahan
 
-{{< cards >}}
-  {{< card link="/ms/user-guide/demo/manufacturing/" title="🏭 Pembuatan" subtitle="Perancangan pengeluaran, pengurusan BOM, kawalan kualiti" >}}
-  {{< card link="/ms/user-guide/demo/services/" title="💼 Perkhidmatan Profesional" subtitle="Pengurusan projek, penjejakan masa, bil perkhidmatan" >}}
-  {{< card link="/ms/user-guide/demo/food-beverage/" title="🍽️ Makanan & Minuman" subtitle="Operasi restoran, pengurusan berbilang outlet, kos resipi" >}}
-{{< /cards >}}
 
 ---
 
@@ -123,9 +113,6 @@ Pilih industri anda di bawah untuk mengakses senario demo yang disesuaikan dan a
 
 Demonstrasi strategik yang direka untuk pembuat keputusan utama dengan fokus pada hasil perniagaan dan ROI:
 
-{{< cards >}}
-  {{< card link="/ms/user-guide/demo/role-based/" title="🎯 Perjalanan Demo Eksekutif" subtitle="Pengurus kewangan, pengurus operasi, CEO - fokus strategik" >}}
-{{< /cards >}}
 
 ---
 
@@ -133,10 +120,6 @@ Demonstrasi strategik yang direka untuk pembuat keputusan utama dengan fokus pad
 
 Kuasai proses perniagaan penting yang berlaku di semua industri:
 
-{{< cards >}}
-  {{< card link="/ms/user-guide/demo/common-workflows/" title="Proses Kewangan Teras" subtitle="Perakaunan, penyesuaian, pelaporan kewangan" >}}
-  {{< card link="/ms/user-guide/demo/getting-started-demo/" title="Panduan Permulaan" subtitle="Langkah pertama, navigasi, persediaan asas" >}}
-{{< /cards >}}
 
 ---
 
@@ -265,15 +248,6 @@ Setiap demo industri merangkumi:
 {{< hextra/hero-button text="Lancarkan Persekitaran Demo" link="https://demo-v1.bigledger.com" >}}
 
 ### Pautan Pantas
-
-- 🎯 [Panduan Permulaan](/ms/user-guide/demo/getting-started-demo/) - Mulakan di sini untuk orientasi
-- 💰 [Aliran Kerja Kewangan Biasa](/ms/user-guide/demo/common-workflows/) - Proses perakaunan penting
-- 📱 [Demo Elektronik Pengguna](/ms/user-guide/demo/retail/) - Aliran kerja runcit elektronik
-- 🚚 [Demo Pengedar](/ms/user-guide/demo/distributors/) - Operasi borong B2B
-- 👗 [Demo Runcit Pakaian](/ms/user-guide/demo/apparel/) - Aliran kerja runcit fesyen
-- 🏭 [Demo Pembuatan](/ms/user-guide/demo/manufacturing/) - Aliran kerja pengeluaran
-- 💼 [Demo Perkhidmatan Profesional](/ms/user-guide/demo/services/) - Proses perniagaan perkhidmatan
-- 🍽️ [Demo Makanan & Minuman](/ms/user-guide/demo/food-beverage/) - Operasi restoran
 
 ---
 

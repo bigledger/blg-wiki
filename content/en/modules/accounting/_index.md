@@ -671,7 +671,6 @@ Payment Voucher - Will be uploaded to Payment Voucher (Internal) Applet
 *   Delete empty columns and rows
 *   Then the file is ready for upload, you can download it as CSV and upload to Relevant Applets
 
-
 ## Integration Architecture
 
 ### Transaction Flow
@@ -734,9 +733,6 @@ Financial Reports & Analytics
 - [Multi-Entity Accounting Setup](/guides/) - *TODO: Create multi-entity guide*
 
 ### Advanced Topics
-- [Complex Transaction Processing](/guides/advanced/) - *TODO: Create advanced guide*
-- [Performance Optimization](/guides/advanced/performance-optimization/)
-- [Compliance and Audit](/guides/advanced/compliance-audit/)
 
 ### Training Materials
 - [Accounting Module User Training](/guides/) - *TODO: Create user training materials*

@@ -539,7 +539,6 @@ Alami bagaimana BigLedger mengubah pengurusan operasi melalui automasi pintar, k
 {{< hextra/hero-button text="Jadualkan Demo Operasi" link="mailto:sales@bigledger.com?subject=Operations Manager Demo Request" >}}
 
 ### Tindakan Pantas
-1. **[Mula Demo Sekarang](/ms/user-guide/demo/role-based/operations-manager/#senario-1-aliran-kerja-procurement-automatik)** - Mulakan dengan automasi procurement
 2. **[Kira ROI Anda](#kalkulator-roi-untuk-pasukan-operasi)** - Anggarkan penjimatan operasi
 3. **[Hubungi Pakar Operasi](mailto:sales@bigledger.com)** - Bincangkan cabaran operasi khusus
 

@@ -3,6 +3,7 @@ title: "Food & Beverage Industry Demo"
 description: "Complete restaurant operations demo - table management, kitchen workflows, recipe costing, and multi-outlet management"
 weight: 40
 bookCollapseSection: false
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 Experience BigLedger's comprehensive Food & Beverage management capabilities through real restaurant scenarios. This demo covers everything from table reservations to kitchen operations, recipe costing, and multi-outlet management.

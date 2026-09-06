@@ -2,6 +2,7 @@
 title: "Finance Manager Guide"
 description: "Financial management and reporting guide for finance managers"
 weight: 40
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 # Finance Manager/Accountant Questions for BigLedger

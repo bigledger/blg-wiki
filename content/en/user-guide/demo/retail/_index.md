@@ -3,6 +3,7 @@ title: "Consumer Electronics Retail Demo"
 description: "Complete consumer electronics retail workflows: multi-channel operations, serial number tracking, warranty management, service centers, bundle promotions"
 weight: 10
 bookCollapseSection: false
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 Experience BigLedger's specialized consumer electronics retail capabilities through realistic scenarios that address the unique challenges of electronics retailers. This comprehensive demo covers serial number tracking, warranty management, service center operations, and complex pricing strategies.

@@ -16,7 +16,7 @@ related_applets:
   - financial-report-applet
   - ledger-and-journal-applet
 guides:
-  - /user-guide/reports-analytics-v2/
+  - /user-guide/reports-analytics/
 sources:
   screens:
     - blg-applet-wavelet-debtor-and-creditor-report-applet/micro-fe/projects/wavelet-erp/applets/debtor-and-creditor-report-applet/src/app/app.routing.ts
@@ -269,6 +269,6 @@ There is **no ARAP Type filter** on any listing; the side is fixed by the menu i
 
 ## Related documentation
 
-- [Reports & Analytics](/user-guide/reports-analytics-v2/) — where this applet sits among the finance reports.
+- [Reports & Analytics](/user-guide/reports-analytics/) — where this applet sits among the finance reports.
 - [Financial Accounting module](/modules-v2/financial-accounting/), [Digital CRM module](/modules-v2/crm-digital/) and [Purchasing module](/modules-v2/purchasing/).
 - [Debtor Report Applet](/applets/finance/debtor-report-applet/) and [Creditor Report Applet](/applets/finance/creditor-report-applet/) — the single-sided reference pages.

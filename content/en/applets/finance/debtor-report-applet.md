@@ -19,7 +19,7 @@ related_applets:
   - sales-report-applet
   - commission-scheme-applet
 guides:
-  - /user-guide/reports-analytics-v2/
+  - /user-guide/reports-analytics/
 sources:
   screens:
     - blg-applet-wavelet-debtor-report-applet-V2/micro-fe/projects/wavelet-erp/applets/debtor-report-applet-V2/src/app/app.routing.ts
@@ -326,6 +326,6 @@ The Aging Report sends `arap_types = AR_TRADE, AR_OTHER, AR_MERCHANT` (no `AR_EM
 
 ## Related documentation
 
-- [Reports & Analytics](/user-guide/reports-analytics-v2/) — where this applet sits among the finance reports.
+- [Reports & Analytics](/user-guide/reports-analytics/) — where this applet sits among the finance reports.
 - [Financial Accounting module](/modules-v2/financial-accounting/) and [Digital CRM module](/modules-v2/crm-digital/).
 - [Creditor Report Applet](/applets/finance/creditor-report-applet/) and [Debtor and Creditor Report](/applets/finance/debtor-and-creditor-report-applet/) — the sibling reference pages.

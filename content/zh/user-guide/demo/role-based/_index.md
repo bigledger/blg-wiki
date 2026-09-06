@@ -23,11 +23,6 @@ bookCollapseSection: false
 
 在下方选择您的管理职能，访问针对您特定目标、业务痛点和成功指标量身定制的演示场景：
 
-{{< cards >}}
-  {{< card link="/zh/user-guide/demo/role-based/finance-manager/" title="💰 财务总监" subtitle="财务报告、现金流管理、合规监管、审计追踪、多公司财务合并" >}}
-  {{< card link="/zh/user-guide/demo/role-based/operations-manager/" title="⚙️ 运营总监" subtitle="流程优化、库存管理、供应链、绩效指标、资源配置优化" >}}
-  {{< card link="/zh/user-guide/demo/role-based/ceo-executive/" title="📊 CEO与高级管理层" subtitle="战略仪表板、KPI监控、商业智能、增长分析、盈利能力分析" >}}
-{{< /cards >}}
 
 ---
 
@@ -171,10 +166,6 @@ bookCollapseSection: false
 {{< hextra/hero-button text="访问演示环境" link="https://demo-v1.bigledger.com" >}}
 
 ### 快速访问链接
-
-- 💰 [财务总监演示旅程](/zh/user-guide/demo/role-based/finance-manager/) - 财务管理与合规监管聚焦
-- ⚙️ [运营总监演示旅程](/zh/user-guide/demo/role-based/operations-manager/) - 流程优化与效率提升聚焦
-- 📊 [CEO/高管演示旅程](/zh/user-guide/demo/role-based/ceo-executive/) - 战略仪表板与商业分析聚焦
 
 ---
 

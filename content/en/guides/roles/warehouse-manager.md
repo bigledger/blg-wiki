@@ -2,6 +2,7 @@
 title: "Warehouse Manager Guide"
 description: "Inventory and warehouse operations guide for warehouse managers"
 weight: 80
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 # Warehouse Manager - BigLedger Inventory Management Questions

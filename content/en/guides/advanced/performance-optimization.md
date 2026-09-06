@@ -2,6 +2,7 @@
 title: "Performance Optimization"
 description: "System performance tuning, optimization strategies, and best practices"
 weight: 70
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 

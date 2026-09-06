@@ -2,6 +2,7 @@
 title: "E-Commerce Specialist Guide"
 description: "Online sales and marketplace management guide"
 weight: 30
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 # E-commerce Specialist - Questions and Scenarios

@@ -3,6 +3,7 @@ title: "Apparel & Fashion Retail Demo"
 description: "Complete fashion retail workflows: size/color matrix management, seasonal planning, trend analytics, consignment, visual merchandising, returns processing"
 weight: 12
 bookCollapseSection: false
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 Master BigLedger's specialized apparel and fashion retail capabilities through realistic scenarios that address the unique challenges of fashion retailers. This comprehensive demo covers size/color matrix management, seasonal inventory planning, trend analytics, and complex fashion-specific business processes.

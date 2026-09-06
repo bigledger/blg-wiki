@@ -539,7 +539,6 @@ weight: 20
 {{< hextra/hero-button text="预约运营演示" link="mailto:sales@bigledger.com?subject=Operations Manager Demo Request" >}}
 
 ### 快速行动
-1. **[立即开始演示](/zh/user-guide/demo/role-based/operations-manager/#场景1自动化采购工作流程)** - 从采购自动化开始
 2. **[计算您的ROI](#运营团队roi计算器)** - 估算运营节约
 3. **[联系运营专家](mailto:sales@bigledger.com)** - 讨论具体运营挑战
 

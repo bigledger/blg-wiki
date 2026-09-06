@@ -13,8 +13,6 @@ Welcome to BigLedger's comprehensive Business Operations Guide. This documentati
 
 ## How to Use This Guide
 
-
-
 This guide is organized into logical sections that build upon each other. We recommend following this progression:
 
 1. **[Getting Started](/user-guide/getting-started/)** - Essential first steps and platform orientation
@@ -36,11 +34,6 @@ This guide is organized into logical sections that build upon each other. We rec
 
 Experience BigLedger hands-on with our comprehensive demo environment.
 
-{{< cards >}}
-{{< card link="/user-guide/demo/" title="Interactive Demo Platform" subtitle="Hands-on guided workflows tailored to your industry" >}}
-{{< card link="/user-guide/demo/getting-started-demo/" title="Demo Quick Start" subtitle="15-minute orientation to get you started" >}}
-{{< card link="/user-guide/demo/common-workflows/" title="Common Workflows" subtitle="Essential business processes for all industries" >}}
-{{< /cards >}}
 
 **Demo Features**: Live environment, industry scenarios, step-by-step guides, sample data
 

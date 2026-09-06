@@ -2,6 +2,7 @@
 title: "Cashier Guide"
 description: "Point of sale and cash management guide for cashiers"
 weight: 20
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 # BigLedger POS System - Cashier Questions & Scenarios

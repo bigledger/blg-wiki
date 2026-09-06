@@ -15,6 +15,7 @@ aliases:
   - /user-guide/demo/education/journal-module/
   - /user-guide/demo/education/tax-management/
   - /user-guide/demo/education/user-access-control/
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 Welcome to BigLedger's Interactive Demo Platform! This hands-on learning environment lets you explore our Business Operating System through real-world scenarios tailored to your industry.

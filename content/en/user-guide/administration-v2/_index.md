@@ -2,6 +2,7 @@
 title: "Administration"
 description: "Step-by-step video guides for tenant catalog setup, role hierarchies, user permissions, and system access controls in BigLedger."
 weight: 50
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 <style>

@@ -2,6 +2,7 @@
 title: "Operations Manager Demo Journey"
 description: "Comprehensive operations management demonstration: process optimization, inventory management, supply chain, performance metrics, resource allocation"
 weight: 20
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 Experience how BigLedger transforms operations management through intelligent automation, real-time visibility, and data-driven optimization. This demo addresses the critical operational challenges that drive efficiency and growth.

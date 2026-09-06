@@ -27,9 +27,6 @@ Sama ada anda pengguna baru atau berpengalaman, panduan kami menyediakan langkah
 
 Alami kuasa BigLedger melalui persekitaran demo langsung dengan senario industri yang disesuaikan:
 
-{{< cards >}}
-  {{< card link="/ms/user-guide/demo/" title="🎯 Platform Demo" subtitle="Pengalaman langsung dengan aliran kerja terarah dan akaun demo" >}}
-{{< /cards >}}
 
 ## 🏢 Penyelesaian Mengikut Peranan
 
@@ -146,7 +143,6 @@ BigLedger menyediakan penyelesaian khusus untuk pelbagai sektor industri di Mala
 Bersedia untuk mengubah operasi perniagaan anda? Mulakan dengan platform demo kami atau hubungi pasukan jualan untuk demonstrasi yang disesuaikan.
 
 {{< cards >}}
-  {{< card link="/ms/user-guide/demo/" title="🎬 Mulakan Demo" subtitle="Jelajahi BigLedger dengan senario perniagaan sebenar" >}}
   {{< card link="mailto:sales@bigledger.com" title="📞 Hubungi Jualan" subtitle="Dapatkan demonstrasi peribadi dan sebut harga" >}}
   {{< card link="https://www.bigledger.com" title="🌐 Laman Web Utama" subtitle="Ketahui lebih lanjut tentang penyelesaian kami" >}}
 {{< /cards >}}

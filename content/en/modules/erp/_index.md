@@ -357,9 +357,6 @@ Customer → Procurement → Manufacturing → POS → Management Analytics
 - [Change Management Framework](/guides/) - *TODO: Create change management guide*
 
 ### Advanced Configuration
-- [Multi-Entity Setup Guide](/guides/advanced/) - *TODO: Create multi-entity guide*
-- [Integration Best Practices](/guides/advanced/integration-best-practices/)
-- [Performance Tuning Guide](/guides/advanced/performance-optimization/)
 
 ### Training Materials
 - [Executive Overview Training](/guides/) - *TODO: Create executive training*

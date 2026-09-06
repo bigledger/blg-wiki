@@ -2,6 +2,7 @@
 title: "Getting Started with BigLedger"
 description: "Step-by-step video guides to get up and running with BigLedger quickly."
 weight: 10
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 <style>

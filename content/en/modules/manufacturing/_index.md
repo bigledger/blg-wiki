@@ -337,8 +337,6 @@ Setup        Data Collection      Root Cause        Process Update    Compliance
 - [Quality Control Procedures](/user-guide/daily-tasks/quality-control/)
 
 ### Advanced Topics
-- [Lean Manufacturing Implementation](/guides/advanced/lean-manufacturing/)
-- [Integration with Automation Systems](/guides/advanced/automation-integration/)
 - [API Integration](/developers/api-reference/manufacturing/)
 
 ## Next Steps

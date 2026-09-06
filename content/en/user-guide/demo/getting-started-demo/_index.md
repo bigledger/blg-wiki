@@ -2,6 +2,7 @@
 title: "Getting Started with Demo"
 description: "Your first steps with BigLedger's demo environment - orientation, navigation, and basic setup"
 weight: 10
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 Welcome to your BigLedger demo journey! This guide will help you get comfortable with the platform before exploring industry-specific workflows.

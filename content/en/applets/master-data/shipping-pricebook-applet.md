@@ -305,4 +305,3 @@ Three independent blocks, each enabled by its checkbox: **Standard Shipping Fee*
 - [CP Commerce Admin](/applets/ecommerce/cp-commerce-admin-applet/) — website *Shipping Fee Options*, default shipping price book, shipping-fee item and shipping providers.
 - [Pricebook](/applets/master-data/pricebook-applet/) — discounts, sales prices and membership points with the same rule engine design.
 - [E-Commerce module](/modules-v2/ecommerce/) and [Core module](/modules-v2/core/).
-- [E-commerce specialist role guide](/guides/roles/ecommerce-specialist/).

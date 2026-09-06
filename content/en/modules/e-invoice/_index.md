@@ -4,7 +4,6 @@ description: "Complete electronic invoicing solution with MyInvois and PEPPOL co
 weight: 35
 ---
 
-
 The E-Invoice Module provides comprehensive electronic invoicing capabilities with full compliance for MyInvois (Malaysia) and PEPPOL (international) standards. This module enables businesses to meet statutory e-invoicing requirements while streamlining their invoicing processes.
 
 ## Overview
@@ -300,7 +299,6 @@ Ideal for companies with:
 - [Tax Authority Requirements](/guides/) - *TODO: Create requirements guide*
 
 ### Integration Guides
-- [ERP System Integration](/guides/advanced/integration-best-practices/)
 - [Third-Party Connector Setup](/guides/) - *TODO: Create connector guide*
 - [API Integration Manual](/developers/api-reference/einvoice-api-reference/)
 

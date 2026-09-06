@@ -98,5 +98,3 @@ Generate and analyze your financial statements.
 - **[Ledger and Journal Applet](/applets/finance/ledger-and-journal-applet/)** — Journal entry applet reference
 - **[Bank Reconciliation Applet](/applets/finance/bank-reconciliation-applet/)** — Bank recon applet reference
 - **[Financial Report Applet](/applets/finance/financial-report-applet/)** — Reporting applet reference
-- **[Advanced Financial Reporting](/guides/advanced/financial-reporting-excellence/)** — Power-user analytics and custom reports
-- **[Compliance & Audit](/guides/advanced/compliance-audit/)** — Regulatory compliance and audit preparation

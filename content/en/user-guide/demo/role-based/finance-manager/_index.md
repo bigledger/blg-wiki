@@ -2,6 +2,7 @@
 title: "Finance Manager Demo Journey"
 description: "Comprehensive financial management demonstration: reporting, cash flow, compliance, audit trails, and multi-company consolidation"
 weight: 10
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 Experience how BigLedger transforms financial management through automation, real-time visibility, and comprehensive compliance capabilities. This demo addresses the critical challenges Finance Managers face daily.

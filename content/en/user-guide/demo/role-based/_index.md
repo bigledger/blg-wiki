@@ -3,6 +3,7 @@ title: "Role-Based Demo Journeys"
 description: "Executive-focused demonstrations tailored to Finance Managers, Operations Managers, and CEOs showing strategic value and ROI"
 weight: 15
 bookCollapseSection: false
+draft: true  # unpublished 2026-09-06 (Vincent): see planning/reviews/ guides audit — substantially invented, or unreachable from navigation
 ---
 
 Experience BigLedger's strategic value through executive-focused demo journeys designed for key decision makers. Each journey demonstrates specific business outcomes, ROI metrics, and integration capabilities relevant to your role.
