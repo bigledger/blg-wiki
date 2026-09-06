@@ -177,7 +177,7 @@ PTS CCY（积分货币）模块允许您为会员和忠诚度计划创建和管�
 
 ## 相关文档
 
-- [会员管理控制台](/zh/applets/membership-admin-console-applet/)
+- [会员管理控制台](/applets/membership/membership-admin-applet/)
 - [会员计划设置](/zh/applets/membership-program/)
 - [会员等级配置](/zh/user-guide/member-class/)
 - [积分兑换规则](/zh/guides/)

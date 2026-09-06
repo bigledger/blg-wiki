@@ -188,13 +188,13 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 
 ### 核心模块小程序
 - **[文档项目维护小程序](/zh/applets/master-data/doc-item-maintenance-applet/)** - 服务和非库存项目
-- **[供应商维护小程序](/zh/applets/supplier-maintenance-applet/)** - 供应商产品关系
+- **[供应商维护小程序](/applets/master-data/supplier-applet-1/)** - 供应商产品关系
 - **[税务配置小程序](/applets/tax-configuration-applet/)** - 产品税务设置
 
 ### 库存管理小程序
 - **[库存余额小程序](/applets/stock-balance-applet/)** - 实时库存水平
 - **[库存盘点小程序](/applets/stock-take-applet/)** - 实物库存盘点
-- **[内部库存调整小程序](/zh/applets/internal-stock-adjustment-applet/)** - 库存调整
+- **[内部库存调整小程序](/applets/inventory-workflow/stock-adjustment-applet/)** - 库存调整
 
 ### 定价和销售小程序
 - **[价目表小程序](/applets/pricebook-applet/)** - 高级定价管理

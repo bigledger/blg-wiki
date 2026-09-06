@@ -186,7 +186,7 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 ## 相关应用程序
 
 ### 核心模块应用程序
-- **[供应商维护应用程序](/zh/applets/supplier-maintenance-applet/)** - 供应商主数据
+- **[供应商维护应用程序](/applets/master-data/supplier-applet-1/)** - 供应商主数据
 - **[员工维护应用程序](/applets/employee-maintenance-applet/)** - 销售团队分配
 - **[税务配置应用程序](/applets/tax-configuration-applet/)** - 客户税务设置
 

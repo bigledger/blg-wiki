@@ -62,7 +62,7 @@ This comprehensive catalog lists all applets available in the BigLedger ecosyste
 - Customer segmentation and classification
 - Multi-address and multi-contact support
 
-### 7. [Supplier Maintenance Applet](/applets/supplier-maintenance-applet/)
+### 7. [Supplier Maintenance Applet](/applets/master-data/supplier-applet-1/)
 **Vendor and supplier master data management**
 - Comprehensive supplier profiles
 - Procurement terms and payment conditions
@@ -315,7 +315,7 @@ All 13 Core Module applets (listed above) are included in CP-Commerce Module.
 ### Inventory and Warehouse Management
 - **[Stock Balance Applet](/applets/stock-balance-applet/)** - Real-time inventory levels and tracking
 - **[Stock Take Applet](/applets/stock-take-applet/)** - Physical inventory counting and reconciliation
-- **[Stock Adjustment (Internal) Applet](/applets/internal-stock-adjustment-applet/)** - Inventory adjustments and corrections
+- **[Stock Adjustment (Internal) Applet](/applets/inventory-workflow/stock-adjustment-applet/)** - Inventory adjustments and corrections
 - **[Delivery Order (Internal) Applet](/applets/internal-delivery-order-applet/)** - Internal transfers and deliveries
 - **[Consignment GIN (Internal) Applet](/applets/internal-consignment-gin-applet/)** - Consignment Goods Issue Notes and line item tracking for sales
 
@@ -327,12 +327,11 @@ All 13 Core Module applets (listed above) are included in CP-Commerce Module.
 - **[Pricebook Applet](/applets/pricebook-applet/)** - Advanced pricing management and strategies
 
 ### Process and Quality Management
-- **[Process Monitoring Applet](/applets/process-monitoring-applet/)** - Business process tracking and analysis
 - **[Production Planning & Monitoring Applet](/applets/production-planning-and-monitoring-applet/)** - Manufacturing planning and job order management
 - **[Manufacturing Operation Applet](/applets/manufacturing-operation-applet/)** - Shop floor execution and production tracking
 
 ### Membership and Loyalty Programs
-- **[Membership Admin Console Applet](/applets/membership-admin-console-applet/)** - Customer loyalty program management
+- **[Membership Admin Console Applet](/applets/membership/membership-admin-applet/)** - Customer loyalty program management
 - **[Membership Points Currency](/applets/membership-points-currency/)** - Points-based reward system
 - **[Membership Program](/applets/membership-program/)** - Membership program configuration
 

@@ -62,7 +62,7 @@ weight: 2
 - 客户细分和分类
 - 多地址和多联系人支持
 
-### 7. [供应商维护应用程序](/zh/applets/supplier-maintenance-applet/)
+### 7. [供应商维护应用程序](/applets/master-data/supplier-applet-1/)
 **供应商和采购商主数据管理**
 - 完整的供应商档案
 - 采购条件和付款条件
@@ -274,7 +274,7 @@ CP-Commerce模块包含所有13个核心模块应用程序（如上所列）。
 ### 库存和仓库管理
 - **[库存余额应用程序](/applets/stock-balance-applet/)** - 实时库存水平和跟踪
 - **[盘点应用程序](/applets/stock-take-applet/)** - 实物库存盘点和对账
-- **[内部库存调整应用程序](/zh/applets/internal-stock-adjustment-applet/)** - 库存调整和更正
+- **[内部库存调整应用程序](/applets/inventory-workflow/stock-adjustment-applet/)** - 库存调整和更正
 - **[内部发货单应用程序](/zh/applets/internal-delivery-order-applet/)** - 内部转移和发货
 
 ### 团队和组织管理
@@ -285,15 +285,14 @@ CP-Commerce模块包含所有13个核心模块应用程序（如上所列）。
 - **[价格手册应用程序](/applets/pricebook-applet/)** - 高级定价管理和策略
 
 ### 流程和质量管理
-- **[流程监控应用程序](/zh/applets/process-monitoring-applet/)** - 业务流程跟踪和分析
 
 ### 会员和忠诚度计划
-- **[会员管理控制台应用程序](/zh/applets/membership-admin-console-applet/)** - 客户忠诚度计划管理
+- **[会员管理控制台应用程序](/applets/membership/membership-admin-applet/)** - 客户忠诚度计划管理
 - **[会员积分货币](/zh/applets/membership-points-currency/)** - 基于积分的奖励系统
 - **[会员计划](/zh/applets/membership-program/)** - 会员计划配置
 
 ### 沟通和客户服务
-- **[统一联络中心(UCC)应用程序](/zh/applets/unified-contact-center-ucc-applet/)** - 综合客户服务平台
+- **[统一联络中心(UCC)应用程序](/applets/crm/unified-contact-center-ucc-applet/)** - 综合客户服务平台
 
 ### 电子商务集成
 - **[EcomSync相关应用程序](/applets/90-ecomsync-related-applets/)** - 电子商务同步工具

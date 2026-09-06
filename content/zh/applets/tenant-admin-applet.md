@@ -199,7 +199,6 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 - **[T2T管理应用程序](/applets/t2t-admin-applet/)** - 租户到租户管理
 
 ### 集成应用程序
-- **[流程监控应用程序](/zh/applets/process-monitoring-applet/)** - 系统流程监控
 
 ## 设置指南
 

@@ -546,7 +546,7 @@ Status: Fully settled
 
 ## 相关 Applet
 
-- **[供应商维护 Applet](/applets/supplier-maintenance-applet/)**：管理付款凭证使用的供应商主数据。
+- **[供应商维护 Applet](/applets/master-data/supplier-applet-1/)**：管理付款凭证使用的供应商主数据。
 - **[Chart of Account Applet](/applets/chart-of-account-applet/)**：定义费用与过账使用的 GL 科目。
 - **[General Ledger Applet](/applets/general-ledger-applet/)**：查看付款凭证最终的总账过账记录。
 - **[Cashbook Applet](/applets/cashbook-applet/)**：核对付款凭证关联的现金与银行流水。

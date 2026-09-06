@@ -186,7 +186,7 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 
 ### 主数据应用程序
 - **[客户维护应用程序](/applets/customer-maintenance-applet/)** - 客户科目
-- **[供应商维护应用程序](/zh/applets/supplier-maintenance-applet/)** - 供应商科目
+- **[供应商维护应用程序](/applets/master-data/supplier-applet-1/)** - 供应商科目
 
 ## 设置指南
 

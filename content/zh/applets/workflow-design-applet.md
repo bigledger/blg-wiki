@@ -191,7 +191,6 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 - **[租户管理员小程序](/applets/tenant-admin-applet/)** - 用户权限
 
 ### 流程管理小程序
-- **[过程监控小程序](/zh/applets/process-monitoring-applet/)** - 流程性能监控
 - **[文档管理小程序](/zh/applets/document-management-applet/)** - 文档工作流集成
 - **[通知小程序](/zh/applets/notification-applet/)** - 高级通知管理
 

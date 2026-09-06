@@ -193,7 +193,6 @@ The Webhook Applet is a critical Core Module integration component that enables 
 ### Core Module Applets
 - **[Workflow Design Applet](/applets/master-data/workflow-design-applet/)** - Workflow-triggered webhooks
 - **[Tenant Admin Applet](/applets/tenant-admin-applet/)** - Security and access management
-- **[Process Monitoring Applet](/applets/process-monitoring-applet/)** - Integration monitoring
 
 ### Integration Applets
 - **[API Management Applet](/applets/api-management-applet/)** - API endpoint management

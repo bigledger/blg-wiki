@@ -9,7 +9,6 @@ tags:
 - automation
 ---
 
-
 BigLedger's modular architecture is built on applets - reusable components that provide specific business functionality. Each applet can be used by multiple modules, ensuring consistency across your entire system.
 
 ## Understanding Applets
@@ -78,7 +77,7 @@ Foundation applets required by all other modules:
 - **[Chart of Accounts Applet](/applets/chart-of-account-applet/)** - Financial account structure
 - **[Organization Applet](/applets/organization-applet/)** - Company and organizational structure
 - **[Customer Maintenance Applet](/applets/customer-maintenance-applet/)** - Customer master data
-- **[Supplier Maintenance Applet](/applets/supplier-maintenance-applet/)** - Vendor master data
+- **[Supplier Maintenance Applet](/applets/master-data/supplier-applet-1/)** - Vendor master data
 - **[Employee Maintenance Applet](/applets/employee-maintenance-applet/)** - Employee records
 - **[Tax Configuration Applet](/applets/tax-configuration-applet/)** - Tax setup and compliance
 - **[Tax Config Applet](/applets/tax-config-applet/)** - Advanced tax configuration
@@ -95,14 +94,13 @@ Foundation applets required by all other modules:
 #### Inventory & Operations
 - **[Stock Take Applet](/applets/stock-take-applet/)** - Digital inventory counting and management
 - **[Stock Balance Applet](/applets/stock-balance-applet/)** - Real-time inventory tracking
-- **[Stock Adjustment (Internal) Applet](/applets/internal-stock-adjustment-applet/)** - Inventory corrections
+- **[Stock Adjustment (Internal) Applet](/applets/inventory-workflow/stock-adjustment-applet/)** - Inventory corrections
 - **[Production Planning & Monitoring Applet](/applets/production-planning-and-monitoring-applet/)** - Manufacturing planning and job order management
 - **[Manufacturing Operation Applet](/applets/manufacturing-operation-applet/)** - Shop floor execution and production tracking
-- **[Process Monitoring Applet](/applets/process-monitoring-applet/)** - Business process tracking
 
 #### Customer Engagement
 - **[Team Maintenance Applet](/applets/team-maintenance-applet/)** - Team structure and management
-- **[Membership Admin Console Applet](/applets/membership-admin-console-applet/)** - Customer loyalty programs
+- **[Membership Admin Console Applet](/applets/membership/membership-admin-applet/)** - Customer loyalty programs
 - **[Unified Contact Center Applet](/applets/unified-contact-center-ucc-applet/)** - Customer service platform
 
 #### E-Invoice Compliance

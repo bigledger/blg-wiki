@@ -546,7 +546,7 @@ Konfigurasikan applet di bawah **Settings**:
 
 ## Applet Berkaitan
 
-- **[Supplier Maintenance Applet](/applets/supplier-maintenance-applet/)**: Urus data induk supplier yang digunakan dalam baucar pembayaran.
+- **[Supplier Maintenance Applet](/applets/master-data/supplier-applet-1/)**: Urus data induk supplier yang digunakan dalam baucar pembayaran.
 - **[Chart of Account Applet](/applets/chart-of-account-applet/)**: Tentukan akaun GL yang digunakan untuk perbelanjaan dan posting.
 - **[General Ledger Applet](/applets/general-ledger-applet/)**: Semak posting jurnal akhir daripada baucar pembayaran.
 - **[Cashbook Applet](/applets/cashbook-applet/)**: Sahkan pergerakan tunai dan bank yang berkaitan dengan baucar pembayaran.
