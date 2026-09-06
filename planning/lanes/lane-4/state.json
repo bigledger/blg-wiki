@@ -10,12 +10,6 @@
     "human-resources"
   ],
   "queue": [
-    "content/en/applets/finance/fixed-asset-applet.md",
-    "content/en/applets/finance/general-ledger-applet.md",
-    "content/en/applets/integrations/ingram-micro-ms-esd-applet.md",
-    "content/en/applets/crm/installation-of-team-maintenance-applet.md",
-    "content/en/applets/rma/internal-rma-applet.md",
-    "content/en/applets/crm/introduction-to-team-maintenance-applet.md",
     "content/en/applets/finance/investment-applet.md",
     "content/en/applets/finance/investment-guide.md",
     "content/en/applets/finance/mm-deposit-applet.md",
@@ -23,10 +17,8 @@
     "content/en/applets/finance/sst-applet.md",
     "content/en/applets/finance/statement-of-account-applet.md",
     "content/en/applets/integrations/t2t-admin-applet.md",
-    "content/en/applets/crm/team-maintenance-applet.md",
     "content/en/applets/finance/txn-recon-applet.md",
     "content/en/applets/crm/unified-contact-center-ucc-applet.md",
-    "content/en/applets/integrations/vstecs-ms-esd-order-applet.md",
     "content/en/applets/rma/warranty-admin-applet.md",
     "content/en/applets/integrations/webhook-applet.md"
   ],
@@ -208,6 +200,18 @@
       "date": "2026-09-06",
       "run": 30,
       "note": "Registry eventManagementApplet 'Event Management Applet' (title changed from 'Events Management Applet'; documentation_url = Confluence; no alias added - all 10 inbound links already use /applets/crm/events-management-applet/). Full rewrite of a 205-line marketing page. Applet-LOCAL FieldConfigurationComponent, real: 9 keys declared+rendered+persisted, 7 consumed (ENABLE_AUDIT_TRAIL dead; HIDE_DEFAULT_SELECT_CALENDAR only hides its own drop-down). Key finding: the Expenses tab and the Event Expense Report are reads against the AAT claim report endpoints gated by TNT_AAT_CLAIM_REPORT_*, not the TNT_API_CMS_CALENDAR_* family - an expense reaches an event only through bl_aat_claim_document_line.calendar_event_hdr_guid, and the applet never writes a claim. The event notification queue table has no job processor, so events send nothing. 1 of 1 image dropped (AI infographic); no product screenshots exist. Topic kb/topics/event-management.md (new)."
+    },
+    {
+      "page": "content/en/applets/finance/fixed-asset-applet.md",
+      "date": "2026-09-06",
+      "run": 31,
+      "note": "Registry FixedAssetRegisterApplet 'Fixed Asset' (title changed from 'Fixed Asset Applet'; documentation_url = Confluence, no alias needed - all 6 inbound links already use /applets/finance/fixed-asset-applet/). Full rewrite of a 591-line guide-voice page into a 599-line reference. Applet-LOCAL settings and AppletSettingsModule IS imported, but Field Settings is the unbound 8-toggle stub; Default Selection is real and only ASSET_REGISTER_DETAILS_TAB_ORDER is consumed (DEFAULT_BRANCH/DEFAULT_LOCATION/DEFAULT_COMPANY saved, never read); everything else in applet-settings.model.ts is model-only. Headline findings: the depreciation processor drops both journal lines because it filters on fi_depr_subledger_guid / fi_acc_depr_subledger_guid, which nothing in the applet or backend ever sets - the journal is created empty and no validator objects; the run's asset selection ignores the run header's company and branch and keeps BaseQueryCriteria's default limit of 100; the stop condition is accumulated <= residual so with residual 0 the asset is flagged DEPRECIATED on the first run and later lines plus journals are permanently deleted; ACTUAL_DAY averaging implements only STRAIGHT_LINE; depr_rate is a bare monthly multiplier; the purchase-invoice conversion endpoint is an AnonymousTenantEndpoint; a negative Adjustment posts a line with an unassigned GL code; Description has no input on either form; Permission Wizard / Release Notes / Applet Log render in the settings menu with no route while feature-visibility / webhook / team-permission-listing have routes and no link. 6 of 16 images dropped - quarantine list in findings run 31. Topic kb/topics/fixed-asset-register.md (new)."
+    },
+    {
+      "page": "content/en/applets/rma/internal-rma-applet.md",
+      "date": "2026-09-06",
+      "run": 31,
+      "note": "Registry InternalRmaApplet 'Rma Applet (Internal)' (title changed from 'RMA (Internal) Applet'; the registry documentation_url already points at this page, no alias needed). Full rewrite of a 289-line guide-voice page into a 455-line reference. Applet-LOCAL settings and the counter-example to the unbound 8-toggle stub: 82 keys declared, all 82 rendered, all 82 persisted in one saveMasterSettingsInit, 68 consumed; dead are HIDE_CUSTRMA_DOC_NO, HIDE_SUPRTV_DOC_NO, HIDE_WORKFLOW_STATUS, HIDE_WORKFLOW_RESOLUTION and ITEM_CATEGORY_GROUP_1..10. Key findings: three unrelated record types behind one applet (bl_svc_issue_hdr service note; INTERNAL_SALES_RMA 0/0 - no stock, no journal, so a Customer RMA neither restocks nor credits; INTERNAL_SUPPLIER_RTV +1/+1); RMA Requests is a FOURTH approval engine (SVCApprovalStatus on bl_svc_issue_request_hdr, no settings screen, approving enqueues SVC_ISSUE_REQUEST_HDR_PROCESSOR which casts the request row into bl_svc_issue_hdr, guarded only by svc_issue_hdr_guid IS NULL) and a login-entity-ep lets a customer or supplier raise its own request; this applet is the sole consumer of the Workflow Design engine, with three independent process settings and a per-company binding; return reasons, request actions and the RMA Report are gated by TNT_API_DM_SVC_ISSUE_HDR_* rather than their own families; HIDE_BRANCH/HIDE_LOCATION remove controls that keep Validators.required. Every entry the shared settings shell renders here does have a route - the first applet in this lane where that is true. 16 of 22 images dropped (staff names, e-mails and phone numbers in grids; a person's photo, name and e-mail on Personalization; an AI infographic inventing a 6-step lifecycle) - quarantine list in findings run 31. Topic kb/topics/rma-and-service-notes.md (new)."
     }
   ],
   "skipped": [
@@ -246,6 +250,30 @@
     {
       "page": "content/en/applets/finance/e-mandate-applet.md",
       "reason": "No registry row for an E-Mandate applet under any name. registry-applets-2026-09-05.tsv and the live bl_applet_hdr (236 rows, checked 2026-09-06) contain nothing matching 'mandate', 'e-mandate', 'ddebit', 'direct debit' or 'fpx' in code, name or property_json, and no 'Collection' applet either. The repo blg-applet-core-akaun-platform-e-mandate-applet exists (last commit 2026-08-12) with a working 'eMandate' route and three menus, so the applet is built but has never been registered. Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 30."
+    },
+    {
+      "page": "content/en/applets/finance/general-ledger-applet.md",
+      "reason": "No ACTIVE registry row for a General Ledger applet under any name. registry-applets-2026-09-05.tsv and the live bl_applet_hdr (checked 2026-09-06) contain nothing matching 'general' or 'gl' in code or name except posGeneral 'POS General'; the only ledger row is LedgerAndJournal 'Ledger And Journal', which is already covered by content/en/applets/finance/ledger-and-journal-applet.md (rewritten by another lane). This page is a TODO placeholder describing that same applet. Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 31. It has ~19 inbound links (two URL shapes: /applets/general-ledger-applet/ and /applets/finance/general-ledger-applet/), so it cannot simply be deleted - merge into ledger-and-journal-applet.md plus both aliases is Vincent's decision (F-0050 pattern); plan in findings run 31."
+    },
+    {
+      "page": "content/en/applets/integrations/ingram-micro-ms-esd-applet.md",
+      "reason": "Customer-specific applet family \u2014 excluded from scope. All five registry rows (IMMsEsdOrderApplet_ALLIT / _machines / _PCImage / _senheng / _TM) are listed in planning/private/applet-exclusions.tsv as customer-specific; four of the five names carry a customer's name. The page is a 9-line front-matter-only stub with no body and names a real distributor brand in its title. Not rewritten; recommend delete (one inbound link, content/en/applets/applet-catalog.md L347, plus its zh twin L302). Recorded in findings.md run 31."
+    },
+    {
+      "page": "content/en/applets/integrations/vstecs-ms-esd-order-applet.md",
+      "reason": "Customer-specific applet \u2014 excluded from scope. Registry rows MsEsdOrderApplet 'VSTECS ESD ORDER' (ETL-CLIENT) and MsEsdOrderApplet_ALL_IT are both listed in planning/private/applet-exclusions.tsv as customer-specific, and both names carry a distributor's name. The page is 19 lines of unedited implementation notes. Not rewritten; recommend delete + drop the alias /applets/vstecs-ms-esd-order-applet/ (one inbound link, content/en/applets/applet-catalog.md L348, plus its zh twin L303). Recorded in findings.md run 31."
+    },
+    {
+      "page": "content/en/applets/crm/installation-of-team-maintenance-applet.md",
+      "reason": "No ACTIVE registry row for Team Maintenance under any name. registry-applets-2026-09-05.tsv and the live bl_applet_hdr (checked 2026-09-06) hold exactly one match on code or name or property_json: newTeamMaintenanceApplet 'Team Maintenance', TNT-APPLET, DELETED, no documentation_url. Two repos exist and the V2 one is actively maintained (blg-applet-akaun-platform-team-maintenance-V2-applet, HEAD 2026-08-21, route applet/tnt/wavelet/erp/finance/team-maintenance-applet), so the applet is built but its registry row is deleted - same shape as the Group Maintenance skips (run 9) and E-Mandate (run 30). Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 31."
+    },
+    {
+      "page": "content/en/applets/crm/introduction-to-team-maintenance-applet.md",
+      "reason": "No ACTIVE registry row for Team Maintenance under any name. registry-applets-2026-09-05.tsv and the live bl_applet_hdr (checked 2026-09-06) hold exactly one match on code or name or property_json: newTeamMaintenanceApplet 'Team Maintenance', TNT-APPLET, DELETED, no documentation_url. Two repos exist and the V2 one is actively maintained (blg-applet-akaun-platform-team-maintenance-V2-applet, HEAD 2026-08-21, route applet/tnt/wavelet/erp/finance/team-maintenance-applet), so the applet is built but its registry row is deleted - same shape as the Group Maintenance skips (run 9) and E-Mandate (run 30). Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 31."
+    },
+    {
+      "page": "content/en/applets/crm/team-maintenance-applet.md",
+      "reason": "No ACTIVE registry row for Team Maintenance under any name. registry-applets-2026-09-05.tsv and the live bl_applet_hdr (checked 2026-09-06) hold exactly one match on code or name or property_json: newTeamMaintenanceApplet 'Team Maintenance', TNT-APPLET, DELETED, no documentation_url. Two repos exist and the V2 one is actively maintained (blg-applet-akaun-platform-team-maintenance-V2-applet, HEAD 2026-08-21, route applet/tnt/wavelet/erp/finance/team-maintenance-applet), so the applet is built but its registry row is deleted - same shape as the Group Maintenance skips (run 9) and E-Mandate (run 30). Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 31."
     }
   ],
   "updated": "2026-09-06",

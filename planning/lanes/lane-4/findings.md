@@ -2683,3 +2683,635 @@ Expense Report with the statistics panel.
 - METHOD candidate §40: **`ENABLE_AUDIT_TRAIL` is a recurring dead key.** Engagement and Events both
   render and persist it and neither reads it, and in both applets the `settings/applet-log` route it
   presumably belongs to is ungated and unlinked. Expect it in the rest of this family.
+
+---
+
+# Run 31 — 2026-09-06 — Fixed Asset (adopted page 6)
+
+## Page completed
+
+- `content/en/applets/finance/fixed-asset-applet.md` — registry `FixedAssetRegisterApplet` "Fixed
+  Asset" (TNT-USER, ACTIVE). Title changed from "Fixed Asset Applet" to the registry name.
+  `documentation_url` is Confluence, so no alias was added; all six inbound links in `content/en/`
+  already use `/applets/finance/fixed-asset-applet/`. Full rewrite: 591 lines of guide-voice
+  marketing ("Who Benefits from This Applet?", "What Problems Does This Solve?", a Quick Start, an
+  FAQ, invented settings screens) → 599 lines of reference derived from the applet at `6b8abe0d`,
+  blg-shared-utilities at the pinned `04bb553` and at HEAD `a8c38a2`, blg-akaun-ts-lib at
+  `7d1616a9e`, and the Java backend at `1ff620ef0e`.
+
+## Configuration classification (METHOD §1, §29, §32)
+
+**Applet-local, and genuinely wired — but only half of it works.** `app.routing.ts` imports the
+applet's own `FieldConfigurationComponent` and `DefaultSettingsComponent` from
+`components/settings-container/`, not the shared one, and — unlike the Deposit applet in run 30 —
+`AppletSettingsModule` **is** in `AppModule.imports`, and there is no `hideSettings`. So the screens
+render. `.gitmodules` does point at blg-shared-utilities (pinned `04bb5539`), which is why METHOD
+§29 applies: the submodule is present and the applet still defines its own settings screens.
+
+| Screen | Verdict |
+|---|---|
+| Settings → Field Settings | The unbound eight-toggle stub. Empty component class (no form, no store, no save handler); eight `mat-slide-toggle` elements with no `formControlName` and no `[(ngModel)]`; SAVE with no `(click)`. Same artefact as Tax Configuration, Merchant Admin, Shipping Pricebook, Supplier. Its eight labels (Unit Discount, SST/VAT/GST, WHT, Blanket Order, Segment, G/L Dimension, Profit Center, Project) correspond to nothing in the fixed-asset form — it is a copy-paste from a document applet. |
+| Settings → Default Selection | Real. Dispatches `saveMasterSettingsInit` with `DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `DEFAULT_COMPANY` (no control; patched when a branch is picked) and `ASSET_REGISTER_DETAILS_TAB_ORDER`. |
+| Personalization → Default Selection | Broken. `appletContainer` is never assigned (the subscription that would assign it is commented out), so both value-change handlers dereference `undefined`; SAVE emits `undefined`. |
+| Personalization → Field Settings | The menu entry points at `field-settings`, which is not a child of the `personalization` route. Lands on the applet's 404. |
+| Settings → Feature Visibility | Shared-utilities stub; SAVE has no `(click)`. Not in any menu, but it is the default redirect for `settings`, so it is the first thing you see. |
+
+Four-proof result: `ASSET_REGISTER_DETAILS_TAB_ORDER` is the only key that is declared + rendered +
+persisted + **consumed** (`edit-asset-register.component.ts` L94-97 orders the six tabs from it).
+`DEFAULT_BRANCH` / `DEFAULT_LOCATION` / `DEFAULT_COMPANY` are declared, rendered (the first two),
+persisted, and read by nothing — a plain grep of the whole `src/` tree finds no reader outside the
+settings screens themselves. Everything else in `models/applet-settings.model.ts` (six `INCLUDE_*`,
+eight `ENABLE_*`, `PRINTABLE`, and fifty `*_CUSTOM_STATUS_*` keys) is **model-only**: zero hits
+anywhere else in the repo. No inline `app-applet-settings-toggle` gear anywhere (METHOD §8 checked,
+zero hits).
+
+## The finding that matters most
+
+**The monthly depreciation run creates a journal with no lines.**
+
+`FixedAssetDepreciationProcessor.createJournal` builds a debit line (GL `fi_depr_glcode_guid`) and a
+credit line (GL `fi_acc_depr_glcode_guid`) and then adds each one to the journal only through
+
+```java
+Optional.ofNullable(line.getSub_ledger_guid()).ifPresent(p -> lines.add(line));
+```
+
+where the subledger comes from `bl_fi_fixed_asset_register_hdr.fi_depr_subledger_guid` and
+`.fi_acc_depr_subledger_guid`. A grep of the entire Java tree for those two columns finds them
+**read** (the processor, `FixedAssetDepreciationRunLineService`), **filtered** (two UoW query
+builders), and **FK-checked** (the category-depreciation-config DCO) — and set nowhere. The applet
+does not send them either: the Configuration tab writes only the two GL codes, onto both the config
+row and the header (`edit-asset-register.component.ts` L262-263, L272-273). The only subledger the
+applet or backend ever populates on an asset is `sub_ledger_guid` — the *asset* GL's subledger — and
+only on the purchase-invoice conversion path.
+
+Both lines are therefore dropped and the header is created with `amt_debit = 0`, `amt_credit = 0`
+and zero lines. `JournalDataConsistencyObject` has no "at least one line" check and no
+debit = credit check, so it is accepted silently and `posting_status` is set to `POSTED`.
+
+The contrast is what makes it a bug rather than a design: the Transactions tab and the Other Journal
+tab both send lines with a **null** `sub_ledger_guid`, and `JournalService.createJournal` (L47-70)
+resolves the subledger from the line's GL code and company, creating one if none exists. The
+depreciation path filters the lines out before that code can ever run.
+
+Second-order effect where the columns *are* populated (by direct API call): `createJournal` groups
+the final lines by `sub_ledger_guid` and sums debits and credits into the first line it saw, keeping
+that line's GL code. Point both depreciation GL codes at the same subledger and you get one line
+carrying both amounts on the expense GL code.
+
+## Other verified facts worth keeping
+
+- **The run ignores its own company and branch, and stops at 100 assets.**
+  `FixedAssetDepreciationRunLineService.createDepreciationLine` sets only `schedule_date_month` and
+  `schedule_date_year` on `FixedAssetRegisterQueryCriteria`; `guid_company`, `guid_branch` and
+  `guid_location` stay null, and the SQL treats null as "no filter". It also never touches
+  `criteria.setLimit`, so `BaseQueryCriteria`'s default of **100** applies, with `ORDER BY hdr.guid`.
+  A run picks up at most 100 assets across every company in the tenant, ordered by random UUID, and
+  stamps the run header's company and branch onto each journal.
+- **The stop condition reads backwards.** `if (newAccDepreciation.compareTo(residual_value) <= 0)`
+  → depreciate. With the usual residual value of 0 any positive amount makes it false on the first
+  run, and the `else` branch sets the asset to `DEPRECIATED` and calls `deletePermanent` on every
+  run line for that asset dated on or after the month, plus `JournalService.deletePermanentJournal`
+  on their journals.
+- **Re-running a month is destructive by design.** Before rebuilding, `createDepreciationLine`
+  permanently deletes the run's existing lines and their journals.
+- **`ACTUAL_DAY` averaging only implements straight line.**
+  `calculateMonthlyDepreciationAveragingActualDays` has a single `if ("STRAIGHT_LINE".equals(...))`
+  branch and returns `BigDecimal.ZERO` for both declining-balance methods.
+- **`depr_rate` is a bare monthly multiplier.** `bookValue.multiply(depr_rate)` (doubled for
+  DOUBLE_DECLINING_BALANCE) — no ÷12, no ÷100 — against a field labelled "Depreciation Rate (%)".
+  Straight line divides by `useful_life × 12`, so useful life is in years.
+- **Eligibility is a three-way inner join.** asset header × `bl_fi_fixed_asset_register_depreciation_config`
+  × `bl_fi_fixed_asset_depreciation_schedule` for that exact month/year. The report SQL
+  (`FixedAssetRegisterUow.getReport`) inner-joins the same two tables. An asset without both is
+  invisible to the run *and* to the report — and schedule rows are added one month at a time from a
+  month picker, with no bulk-generate action anywhere.
+- **The purchase-invoice conversion endpoint is anonymous.**
+  `GET fa/fixed-asset-registers/purchase/{genericDocGuid}` is an `EndpointMethod.AnonymousTenantEndpoint`
+  with no permission check; the `genDocContainer.map(...)` result is discarded and it returns `OK`
+  regardless. It converts lines where `item_txn_type = FIXED_ASSET_REGISTER` **and**
+  `server_doc_type = INTERNAL_PURCHASE_INVOICE` into DRAFT assets, one per line (not per unit), with
+  `purchase_price = amount_txn ÷ quantity_base`, and stamps `posting_fixed_asset = POSTED` on the
+  document as the re-entry guard.
+- **Auto-created GL code (METHOD §20).** That conversion creates a GL code named "Fixed Asset
+  Register" plus the company `FIXED_ASSET_REGISTER` link and the subledger when the link is missing,
+  rather than throwing `MISSING_DEFAULT_GL_CODE`.
+- **The automatic path is opt-in per tenant.** `FixedAssetRegisterItemTypeJobProcessor`
+  (`FIXED_ASSET_REGISTER_ITEM_TYPE`, `ObjType.SECONDARY`) only fires where
+  `bl_applet_trigger_template_processor_link` in the master DB makes it a subscriber of the
+  generic-document publisher AND the tenant holds an enabled `bl_applet_trigger_config` row
+  (`JobProcessorService.getLinkedTriggerTmplAndSubscriberJobProcessor`). Its private
+  `createFixedAssetHdr` method is dead code — nothing calls it.
+- **Asset transactions are browser-assembled journals.** Acquisition / Adjustment / Disposal /
+  Asset Held for Sale build `bl_fi_jrnl_line` objects client-side, sum them, and refuse to send when
+  debits ≠ credits with a toast ("Journal Transaction is not balanced"). That is a client confirm,
+  not a backend rejection.
+- **Negative Adjustment posts an undefined GL code.** `let debit, credit, glcodeDebit, glcodeCredit,
+  glcode;` — `glcode` is never assigned, and the `debit < 0` branch does `glcodeCredit = glcode`.
+  The line goes out with no GL code and the journal validator rejects it.
+- **Disposal ignores accumulated depreciation.** It debits the asset GL at the acquisition amount
+  and credits the disposal price, then a gain/loss line. There is no accumulated-depreciation
+  reversal anywhere in the transaction code.
+- **Create-form placeholders exist because the backend rejects nulls.**
+  `FixedAssetRegisterHdrDataConsistencyObject` throws on null purchase date, purchase price,
+  depreciation method, depreciation start, averaging method, rate and useful life, so
+  `create-asset.component.ts` sends `purchase_date = new Date()`, `purchase_price = 0`,
+  `depr_method = "DRAFT"`, `depr_ave_method = "DRAFT"`, `depr_rate = 0`, `useful_life = 0`.
+  `"DRAFT"` matches no branch in the processor.
+- **Asset Code is `Math.random().toString(36)`**, upper-cased — not a document-numbering series —
+  and the duplicate check runs in the browser against the currently loaded listing page only.
+- **Description has no input control** on either the create or the edit form: an empty
+  `<div formControlName="descr">` and nothing else. The value is still copied into the request.
+- **GL Code is required on edit but not on create**, though both label the drop-down `GL Code*`.
+- **Promotion to REGISTERED is a client-side gate**: Save is enabled for `DRAFT` when Details is
+  valid, and for `REGISTERED` only when Details is valid AND the depreciation config is valid AND at
+  least one Transactions row exists. Save then fires two independent, unsequenced HTTP calls (header
+  PUT, config POST or PUT) with no error handling.
+- **CSV import**: 15 columns, none of them depreciation. Employees are matched by entity **name**,
+  GL codes by `gl_code_1`, and the ledger by literal `code = 'PRIMARY'` — every other path in the
+  codebase looks the ledger up by `obj_type = 'PRM'`. It creates a subledger for the resolved GL
+  code when none exists. Imported assets have no config and no schedule, so they never appear in a
+  run or in the report.
+- **Permissions** are entirely server-side: `FixedAssetPermissions` (`API_TNT_DM_FA_CATEGORY_*`,
+  `_CONFIG_*`, `_HEADER_*`, `_SCHEDULE_*`, `_ATTACHMENT_*`, `_CATEGORY_DEPRECIATION_CONFIG_*`) plus
+  `AkaunTenantPermissionsV2` (`API_TNT_DM_FA_REGISTER_*`, `_DEPRECIATION_RUN_HDR_*`,
+  `_DEPRECIATION_RUN_LINE_*`) and `TntErpPermissions.API_TNT_DM_ERP_FIXED_ASSET_IMPORT_FILE_HDR_READ`.
+  No `SHOW_*`/`HIDE_*` constants and no client-side rows. The **RUN** button needs
+  `API_TNT_DM_FA_DEPRECIATION_RUN_LINE_CREATE`, not `UPDATE` — an easy misconfiguration.
+- **The settings menu is partly unroutable.** The shared shell at the pinned `04bb553` renders
+  Permission Wizard, Release Notes and Applet Log; this applet routes none of them, so all three hit
+  the applet's `404`. Conversely `feature-visibility`, `webhook` and `team-permission-listing` are
+  routed with no menu link. At shared-utilities HEAD (`a8c38a2`) Applet Log is dropped as well.
+- **The RUN button is three clicks deep and not where you would look**: Depreciation Run → open a
+  run → Lines tab → `+` → the Registered Assets listing. There is no RUN on the run header.
+
+## Defects found (worth a bug report independent of the docs)
+
+1. Depreciation journals are always empty — nothing writes `fi_depr_subledger_guid` /
+   `fi_acc_depr_subledger_guid` and the processor filters on them. **Highest severity on this page.**
+2. `createDepreciationLine` leaks across companies and caps at 100 assets.
+3. The stop condition `accumulated <= residual` inverts the intended "stop at residual value" rule
+   and destroys later schedule lines and their journals as a side effect.
+4. `ACTUAL_DAY` averaging silently returns zero for both declining-balance methods.
+5. `depr_rate` applied as a bare monthly multiplier against a field labelled "(%)".
+6. `fa/fixed-asset-registers/purchase/{guid}` is an unauthenticated write endpoint.
+7. Negative Adjustment sends a journal line with an unassigned GL code variable.
+8. Disposal does not reverse accumulated depreciation.
+9. `<div formControlName="descr">` — a `formControlName` on an element with no value accessor;
+   Description is unfillable on both forms and this is a probable console error.
+10. Personalization → Default Selection throws on first interaction (`appletContainer` never
+    assigned) and saves nothing; Personalization → Field Settings 404s.
+11. Field Settings and Feature Visibility both render a SAVE button with no handler.
+12. The CSV import resolves the ledger by `code = 'PRIMARY'` while everything else uses
+    `obj_type = 'PRM'`.
+13. Asset Code auto-generation is `Math.random()` with a browser-local uniqueness check.
+14. Edit Save fires two unsequenced writes; a failed config write leaves the header updated.
+
+## Screenshots
+
+Sixteen files exist under `static/images/fixed-asset-applet/`. Every one was opened and looked at.
+
+**Kept (10)** — staging/testing tenants, synthetic data, empty grids or generic forms:
+`asset_register_create.png`, `asset_register_edit.png`, `asset_category_listing.png`,
+`depreciation_run_listing.png`, `file_import_screen.png`, `reports_screen.png`, `transactions-tab.png`,
+`depreciation-tab-schedule.png`, `attachment-tab.png`, `other-journal-tab.png`.
+
+**Dropped from the page (references removed; files to quarantine, 6):**
+
+- `depreciation-tab-configuration.png` — a listing row reads `FAHAD ASSEST` / `FAHAD ASSEST`, a
+  developer's first name (the same first name appears in the internal task tracker), alongside
+  "Amz Company" and "B Company". A real person's name in a grid.
+- `related-doc-tab.png` — ten rows of `INTERNAL_SALES_INVOICE` / `INTERNAL_RECEIPT_VOUCHER` against
+  a company named **JP ZenCare**, with real document numbers and 2026 dates, and a pager reading
+  "page 1 of 854". A real customer/company name across a grid of real document rows.
+- `asset_register_listing.png` — the Location column shows `L-IDA-CONSIGNMENT GRACE`, which reads as
+  a person's name; also duplicated exactly by `side_menu.png`.
+- `side_menu.png` — byte-for-byte the same screen as `asset_register_listing.png`, same problem, and
+  redundant: the sidebar is visible in every kept capture.
+- `settings_page.png` — **not** a privacy drop. It shows a settings menu with four groups (Client
+  Side Permissions → Applet Access / Role Pricing Scheme Linking, Integration → Triggers, Developer
+  Tools → Reset Applet State) that are commented out in `blg-shared-utilities` at the commit this
+  applet pins, so the image documents a menu that no longer renders. The old page's entire
+  "Configuration & Settings" section was written from this stale image. Dropped as factually wrong.
+- `fixed-asset-applet-overview-infographic.png` — AI marketing infographic (same decision as
+  Pricebook / Stock Balance / Stock Conversion / Stock Replenishment / Supplier / Tax Configuration
+  / Warehouse Management / Workflow Design / Events).
+
+**Note for Vincent, carried over from run 17:** every full-window capture in this folder shows a
+personal profile photograph of a real person in the top-right avatar. Earlier runs kept captures
+carrying a staff login e-mail in the same bar, so I have kept these on the same precedent — but if
+the avatar counts, all ten kept images need recapture too.
+
+**Recapture wanted** from a GadgetSphere-seeded tenant: Asset Register listing, Edit Asset →
+Depreciation → Configuration (with the method drop-down open), Edit Asset → Related Doc, Settings
+(current menu, showing which entries 404), Depreciation Run → Lines → Registered Assets (the screen
+the RUN button actually lives on).
+
+## Cross-lane link requests (from this page)
+
+1. `content/en/applets/finance/ledger-and-journal-applet.md` (already lists `fixed-asset-applet` in
+   `related_applets`) — **correction needed**. Its upstream table says "FINAL on these documents
+   creates an `AUTO` journal here" and includes Fixed Asset. There is no FINAL on a fixed asset. Only
+   the depreciation processor writes `auto_flag = AUTO` (txn_type `DEPRECIATION`, descr
+   "AUTO CREATED FROM FIXED ASSET DEPRECIATION PROCESSOR", back-referenced by
+   `bl_fi_jrnl_hdr.far_hdr_guid` and `far_depr_run_line_guid`); acquisition, adjustment, disposal and
+   other-journal entries are ordinary browser-posted journals with no `auto_flag`, txn_types
+   `ACQUISITION` / `ADJUSTMENT` / `DISPOSAL` / `ASSET_HELD_FOR_SALE` / `TXN`.
+2. `content/en/applets/finance/internal-purchase-invoice-applet.md` — add `fixed-asset-applet` to
+   `related_applets` and a sentence: a line whose item has `item_txn_type = FIXED_ASSET_REGISTER`
+   can create a DRAFT fixed-asset record on the document's `posting_fixed_asset` cycle, one asset per
+   line at the unit price, but only where the tenant has enabled the `FIXED_ASSET_REGISTER_ITEM_TYPE`
+   applet trigger.
+3. `content/en/applets/master-data/inv-item-maintenance-applet.md` — add `fixed-asset-applet` to
+   `related_applets`: `property_json.type` and `property_json.category_guid` on the item seed the
+   converted asset's type and category, and the category is only applied if the GUID resolves.
+4. `content/en/applets/master-data/chart-of-account-applet.md` — add `fixed-asset-applet` to
+   `related_applets`. Also relevant to that page: the fixed-asset purchase conversion auto-creates a
+   GL code named "Fixed Asset Register" plus the company `FIXED_ASSET_REGISTER` link when missing,
+   which belongs in whatever list that page keeps of auto-created GL codes.
+5. `content/en/applets/master-data/organisation-applet.md` — add `fixed-asset-applet` to
+   `related_applets` (company `FIXED_ASSET_REGISTER` default GL link).
+6. `content/en/applets/master-data/employee-applet.md` — add `fixed-asset-applet` to
+   `related_applets` (person-in-charge; CSV import matches by name).
+7. `content/en/applets/finance/financial-report-applet.md` — add `fixed-asset-applet` to
+   `related_applets`.
+8. `content/en/modules-v2/financial-accounting/_index.md` L340 — "confirm depreciation journals are
+   posted before closing the period" is good advice; the page should say what to do when they are
+   not, and the title on L176 should read "Fixed Asset", not "Fixed Asset Applet".
+
+## Notes for the loop
+
+- `kb/topics/fixed-asset-register.md` created (new slug; nothing referenced it before).
+- METHOD candidate §41: **check that the settings *menu* and the settings *routes* agree.** The
+  shared `app-settings` shell renders its own fixed groups (Server Side Permissions, Developer
+  Tools) on top of whatever `settingItems` the applet passes, and those links are hard-coded — an
+  applet that does not declare `permission-wizard-listing`, `release-notes` or `applet-log` still
+  shows the links, and they 404. The inverse also happens (`feature-visibility` is the default
+  redirect for `settings` and appears in no menu). Diff the shell's hard-coded `routerLink` list
+  against the applet's `app.routing.ts` children before writing any settings section — and read the
+  shell at the applet's **pinned** submodule commit, because the list is edited by commenting blocks
+  in and out (METHOD §26).
+- METHOD candidate §42: **a screenshot can be a stale-fact source, not just a privacy risk.** The
+  old page's whole configuration section was transcribed from a settings screenshot whose menu had
+  since been commented out upstream. When a page's prose matches an image and nothing else, treat
+  the image as the citation and go verify it in code — and drop the image if it no longer matches.
+- METHOD candidate §43: **a journal-writing processor can filter its own lines away.** Before
+  writing "this creates a journal Dr X / Cr Y", check the guard on `lines.add(...)`. Here it is
+  `Optional.ofNullable(line.getSub_ledger_guid()).ifPresent(...)` over two columns that no code
+  path sets. The generic `JournalService.createJournal` resolves or creates a subledger from the GL
+  code, so any *other* caller with a null subledger works fine — which is exactly why the bug is
+  invisible from the other tabs of the same applet.
+- METHOD candidate §44: **check `criteria.setLimit` on every batch/job selection.**
+  `BaseQueryCriteria` defaults `limit = 100`. A backend loop that builds its criteria by hand and
+  never overrides it silently processes at most 100 rows. Also check which filter columns it sets:
+  leaving `guid_company` null means "all companies", not "the company on the header".
+- `tests/content-lint.sh` passes.
+
+## Page 2 — `finance/general-ledger-applet.md`: SKIPPED (registry / naming mismatch)
+
+There is **no ACTIVE registry row for a General Ledger applet under any name.**
+`planning/private/registry-applets-2026-09-05.tsv` and the live `bl_applet_hdr` (checked 2026-09-06)
+return exactly two rows for `code ILIKE '%general%' OR name ILIKE '%general%' OR code ILIKE '%ledger%'
+OR name ILIKE '%ledger%' OR code ILIKE '%gl%'`:
+
+- `LedgerAndJournal` — "Ledger And Journal", TNT-USER, ACTIVE — already documented at
+  `content/en/applets/finance/ledger-and-journal-applet.md`.
+- `posGeneral` — "POS General", TNT-USER, ACTIVE — a different applet entirely.
+
+The existing page is a placeholder: 60 lines, three `TODO:` headings, a "Documentation Status:
+requires comprehensive documentation" callout, and a feature list ("Automated recurring entries",
+"Budget vs. actual reporting", "Financial statement generation") that describes Ledger And Journal,
+Budgetary and Financial Report between them. Per ADR-0002 / standard rule 1 it was not rewritten.
+
+**Why this one needs Vincent rather than a quiet delete.** Unlike the earlier skips, this page is
+heavily linked — 19 references across `content/en/`, in **two URL shapes**:
+
+- `/applets/general-ledger-applet/` (5): `modules/financial-accounting/_index.md` L58,
+  `modules/erp/_index.md` L28, `modules/accounting/_index.md` L33, `applets/_index.md` L90,
+  `applets/applet-catalog.md` L194.
+- `/applets/finance/general-ledger-applet/` (14): `user-guide/reports-analytics-v2/_index.md` L166;
+  `modules-v2/financial-accounting/_index.md` L243, L244, L288, L337, L368, L503, L517;
+  `guides/accounting-guides/financial-reporting.md` L171; `guides/accounting-guides/_index.md` L97;
+  `applets/finance/deposit-applet.md` L14, L105, L557, L591; and `general-ledger-applet` appears in
+  the `related_applets` list of `applets/master-data/cashbook-applet.md`.
+
+Neither URL is claimed as an alias by any other page, so a merge is clean:
+
+1. Add `aliases: [/applets/general-ledger-applet/, /applets/finance/general-ledger-applet/]` to
+   `content/en/applets/finance/ledger-and-journal-applet.md` **in the same commit** that deletes
+   `general-ledger-applet.md` — Hugo fails the build if the alias is declared while the page still
+   exists.
+2. Nothing in the placeholder needs carrying across: everything it claims is either already on the
+   Ledger And Journal page or belongs to Budgetary / Financial Report.
+3. Optionally repoint the 19 links and the `related_applets` entry to
+   `/applets/finance/ledger-and-journal-applet/` so the aliases become belt-and-braces rather than
+   load-bearing. Most of those files are outside this lane's folders.
+
+Recorded as the same F-0050 pattern as `customer-applet.md`, `mm-deposit-applet.md` and the two
+Stock Take / Inventory Item duplicates: the facts are settled, the IA decision is Vincent's.
+
+## Pages 3 and 4 — the two MS ESD pages: SKIPPED (customer-specific, excluded from scope)
+
+`content/en/applets/integrations/ingram-micro-ms-esd-applet.md` and
+`content/en/applets/integrations/vstecs-ms-esd-order-applet.md` both document applet families that
+`planning/private/applet-exclusions.tsv` marks **customer-specific**:
+
+- `IMMsEsdOrderApplet_ALLIT`, `_machines`, `_PCImage`, `_senheng`, `_TM` — five ACTIVE TNT-USER rows,
+  all excluded. Four of the five registry names embed a customer's trading name.
+- `MsEsdOrderApplet` (ETL-CLIENT) and `MsEsdOrderApplet_ALL_IT` — both ACTIVE, both excluded, both
+  names embed a distributor's trading name.
+
+There is no generic, non-customer applet behind either page. Neither has a repo in
+`/home/marketing/repos/refs/` other than two customer-named lambda repos, which are out of scope and
+must not be cited even by pseudonym for a public page.
+
+Both pages are also thin: the Ingram one is **front matter only** — nine lines, no body at all — and
+the VSTECS one is nineteen lines of unedited implementation notes ("Attached User guide for MS ESD
+Order and Work Breakdown for implementation", "**Note" with an unclosed bold marker). Neither is
+salvageable, and per the standard's exclusion rule neither should exist.
+
+**Recommendation (Vincent's call): delete both.** Both page titles name a real distributor brand,
+which is a privacy problem on a public site independent of the exclusion rule. Inbound links to
+clean up:
+
+- `content/en/applets/applet-catalog.md` L347 (`/applets/ingram-micro-ms-esd-applet/`) and L348
+  (`/applets/vstecs-ms-esd-order-applet/`).
+- The Chinese twins at `content/zh/applets/applet-catalog.md` L302 and L303 — these must be edited
+  in the same commit or the catalog keeps two dead links (CLAUDE.md's translation-parity rule).
+- `vstecs-ms-esd-order-applet.md` carries `aliases: [/applets/vstecs-ms-esd-order-applet/]`, which is
+  also its registry `documentation_url`. Deleting the page frees the alias; nothing else claims it.
+  The registry row's `documentation_url` would then point at a 404, so the product-side link needs
+  clearing too (an `applet-audit` follow-up).
+
+## Pages 5, 6 and 7 — the three Team Maintenance pages: SKIPPED (registry / naming mismatch)
+
+`crm/installation-of-team-maintenance-applet.md`, `crm/introduction-to-team-maintenance-applet.md`
+and `crm/team-maintenance-applet.md` all describe the same applet, and it has **no ACTIVE registry
+row**. Checked three ways against the live `bl_applet_hdr` on 2026-09-06 — `code ILIKE '%team%'`,
+`name ILIKE '%team%'`, and `property_json::text ILIKE '%team-maintenance%'` — every query returns a
+single row:
+
+```
+newTeamMaintenanceApplet | Team Maintenance | TNT-APPLET | DELETED | (no documentation_url)
+```
+
+The applet is nevertheless **built and actively maintained**. Two repos exist:
+`blg-applet-akaun-platform-team-maintenance-applet` (HEAD 2025-11-18, "Initial split from monorepo")
+and `blg-applet-akaun-platform-team-maintenance-V2-applet` (HEAD 2026-08-21, a merged PR against an
+internal task issue), whose `mainPath` is
+`applet/tnt/wavelet/erp/finance/team-maintenance-applet`. So this is the third instance of the same
+shape in this lane: **a maintained applet with a deleted or absent registry row** — after Group
+Maintenance (run 9) and E-Mandate (run 30). Worth Vincent's attention as a pattern rather than three
+separate curiosities: either the registry is stale or these applets are being shipped outside it.
+
+The three pages are stubs and would not be worth keeping even if the row existed:
+
+- `team-maintenance-applet.md` — 9 lines: front matter and a body consisting of the single
+  character `1`.
+- `installation-of-team-maintenance-applet.md` — front matter plus five lines of generic Applet
+  Store install steps that apply to every applet and belong in a platform page, not an applet page.
+- `introduction-to-team-maintenance-applet.md` — front matter plus three lines: "Team Maintenance
+  applet is to manage the users and permissions of the team. There is only one module in the Applet
+  which is 'Team'."
+
+Note that "team permissions" as a *concept* is alive and platform-wide — the shared settings shell
+renders a Team Permission entry and every applet routes `team-permission-listing` — so deleting these
+pages does not leave a hole in the docs; the permission surface belongs on the applet pages that
+route it.
+
+**Recommendation (Vincent's call): delete all three,** or keep one placeholder if the registry row is
+going to be restored. Inbound links to repoint or drop, all to `/applets/team-maintenance-applet/`
+(none of the three pages declares that alias, so every one of these links is already dead):
+
+- `content/en/modules/hr-payroll/_index.md` L59, `content/en/modules/digital-crm/_index.md` L68,
+  `content/en/modules/erp/_index.md` L217, `content/en/applets/applet-catalog.md` L324,
+  `content/en/applets/_index.md` L104.
+- Chinese twins: `content/zh/applets/applet-catalog.md` L281, `content/zh/applets/_index.md` L53.
+
+**Separately worth recording:** all five links above are broken *today*, because no page claims
+`/applets/team-maintenance-applet/`. The same is true of `/applets/general-ledger-applet/` (page 2
+above). A repo-wide sweep for `/applets/<slug>/` links whose slug is not claimed by any page's path
+or `aliases:` would probably find more; `scripts/check-links.sh` may already do this and not be run
+often enough.
+
+## Page 8 — `rma/internal-rma-applet.md`
+
+Registry `InternalRmaApplet` "Rma Applet (Internal)" (TNT-USER, ACTIVE). Title changed from
+"RMA (Internal) Applet" to the registry name. The registry `documentation_url` already points at
+`/applets/rma/internal-rma-applet/`, so no alias was needed. Full rewrite: 289 lines of guide-voice
+marketing (a "Who Benefits" section, an invented six-step lifecycle taken from an AI infographic, a
+Quick Start, an FAQ that asserts bulk actions, partial receipts and automatic credit notes that do
+not exist) → 455 lines of reference derived from the applet at `bb89fce`, blg-shared-utilities at
+the pinned `04bb553`, blg-akaun-ts-lib at `7d1616a9e` and the Java backend at `1ff620ef0e`. The UTF-8
+BOM on the file was preserved.
+
+### The finding that matters most: three record types, one applet
+
+The old page treated "RMA" as one lifecycle. It is three unrelated things:
+
+| Record | Storage | Signums | Effect |
+|---|---|---|---|
+| Service Note | `bl_svc_issue_hdr`, endpoints under `core2/tnt/dm/svc/` | n/a — not a generic document | No posting, no stock. Its state is its position in up to three workflow processes |
+| Customer RMA | generic document `INTERNAL_SALES_RMA` | amount **0**, quantity **0** | **Moves no stock and posts no journal.** It is one of five signum-zero sales types `GenericDocumentService` lists alongside Quotation, Sales Order, Outbound DO and Jobsheet |
+| Supplier RTV | generic document `INTERNAL_SUPPLIER_RTV` | amount **+1**, quantity **+1** | Moves stock and posts through the standard path |
+| RMA Request | `bl_svc_issue_request_hdr` | n/a | An approval inbox that produces a service note |
+
+So every claim of the form "approving the RMA restocks the item" or "the RMA generates a credit note"
+is wrong. The old page's FAQ made both. Corrected on the page and flagged in the topic note.
+
+### The second finding: a fourth approval engine
+
+`bl_svc_issue_request_hdr.approval_status` is an `SVCApprovalStatus` enum with exactly
+`PENDING_APPROVAL`, `APPROVED`, `REJECTED`. It is **not** the optional document approval on
+`bl_fi_generic_doc_approval_*` (the sweep recorded in `kb/topics/document-approval.md`), **not** the
+Workflow Design engine, and **not** `bl_fi_budget_register_approval_*`. There is no Approval Settings
+screen for it anywhere and nothing configures who may approve beyond
+`TNT_API_DM_SVC_ISSUE_REQUEST_HDR_UPDATE`.
+
+Approving enqueues `SVC_ISSUE_REQUEST_HDR_PROCESSOR` — `getDescription()` is literally "Move Approved
+row to svc issue hdr" — which runs
+
+```sql
+SELECT * FROM bl_svc_issue_request_hdr
+WHERE guid = :guid AND svc_issue_hdr_guid IS NULL AND approval_status = 'APPROVED'
+```
+
+maps the row straight onto a `bl_svc_issue_hdr` object by column-name overlap, creates the service
+note, and writes the new GUID back onto the request. `svc_issue_hdr_guid IS NULL` is the entire
+idempotency guard. The UI disables the drop-down once the value is APPROVED or REJECTED; the backend
+endpoint does not, and accepts any enum value.
+
+There is also a `login-entity-ep` create path guarded by `UserPermissionService.isUserLoginEntity`
+rather than a permission, so a logged-in customer or supplier entity can raise its own request. That
+is the real "customer portal" the old page speculated about — worth saying plainly rather than
+hedging with "if integrated with a customer portal".
+
+**Running count of approval mechanisms in the product: four.** Generic-document approval (optional,
+three doc types have settings), Workflow Design (inert except here), budget register (unaudited),
+and this one.
+
+### Configuration classification (METHOD §1, §29)
+
+**Applet-local, and the counter-example to the eight-toggle stub.** `app.routing.ts` imports the
+applet's own `FieldConfigurationComponent`, `DefaultSettingsComponent` and four further settings
+screens; `AppletSettingsModule` is in `AppModule.imports`; the shared-utilities submodule is present
+(pinned `04bb5539`) but is used only for the permission, layout, session and audit-trail modules.
+
+Four-proof result on **Application Settings** (the `field-settings` route, labelled "Application
+Settings" in the menu): **82 keys declared** in the form group (72 named plus ten
+`ITEM_CATEGORY_GROUP_n` added in a loop), **all 82 rendered** — mostly `[formControl]="form.controls['KEY']"`
+rather than `formControlName`, so a naive `formControlName="KEY"` regex finds only 47 and is wrong —
+**all 82 persisted** by one `saveMasterSettingsInit` of `this.form.value`, **68 consumed** elsewhere
+in the applet.
+
+The dead fourteen: `HIDE_CUSTRMA_DOC_NO`, `HIDE_SUPRTV_DOC_NO`, `HIDE_WORKFLOW_STATUS`,
+`HIDE_WORKFLOW_RESOLUTION`, and `ITEM_CATEGORY_GROUP_1`…`_10`. A Java-side grep confirms none of
+them is read by the backend either (METHOD §15); the `ITEM_CATEGORY_GROUP_*` symbols that do exist in
+the Java tree are CSV column names in the financial-item import and unrelated.
+
+Two model keys are not on this screen: `SERVICE_NOTE_DETAILS_TAB_ORDER` (owned by Default Selection)
+and `salesManLabels`, which is model-only.
+
+Also notable: `SHOW_CUSTOMER_WORKFLOW_STATUS` and `SHOW_SUPPLIER_WORKFLOW_STATUS` are **opt-in**
+(METHOD §18) — they are not hide toggles — and because `HIDE_WORKFLOW_STATUS` is dead, the internal
+workflow status has no working hide key at all.
+
+### The Workflow Design connection
+
+This applet is the **only consumer of the Workflow Design engine in the product**, which closes the
+loop on run 29's finding that the engine is inert except for "the service-issue (RMA) processor".
+Concretely:
+
+- Three applet settings each select a workflow process: `WORKFLOW_PROCESS_GUID` (internal),
+  `CUSTOMER_WORKFLOW_PROCESS_GUID`, `SUPPLIER_WORKFLOW_PROCESS_GUID`, rendered by three dedicated
+  drop-down components.
+- Settings → Workflow Settings writes `bl_fi_comp_workflow_gendoc_process_template_hdr` rows —
+  company (required), process (required), this applet's GUID, a description, and `server_doc_type`
+  hard-coded to `INTERNAL_SALES_RMA` from `AppletConstants.docType`.
+- A service note therefore carries three independent status fields, and run 29's transition → role →
+  user inner join is why a user with no Role row sees an empty drop-down. That is now the first
+  troubleshooting row on this page.
+
+### Other verified facts
+
+- **Cross-family permission gates (METHOD §39).** Return reasons (`svc/return-reasons`), request
+  actions (`svc/request-actions`) and the RMA Report (`svc/rma-reports`) are all gated for **read**
+  by `TNT_API_DM_SVC_ISSUE_HDR_ADMIN/OWNER/READ`, not by their own
+  `TNT_API_DM_SVC_RETURN_REASON_*` / `_REQUEST_ACTION_*` families, which cover only create, update
+  and delete. A user granted the reason family and not the issue-header family can create codes and
+  cannot list them.
+- **The RUN-style trap in reverse:** the Approve action needs
+  `TNT_API_DM_SVC_ISSUE_REQUEST_HDR_UPDATE`, which is what you would expect — but the *report* does
+  not need any report permission at all.
+- **Required-vs-hidden (METHOD §37).** Only Branch, Location and Status carry
+  `Validators.required` on the service note, plus Assignee and Reporter when `ENABLE_PIC_SELECTION`
+  is on. `HIDE_BRANCH` and `HIDE_LOCATION` remove the controls without removing the validators →
+  SAVE silently disabled. Documented as a troubleshooting row.
+- **Two different "status" concepts.** `bl_svc_issue_hdr.status` is `ACTIVE`/`INACTIVE`. A separate
+  nine-value progress list (Ready to send out from Branch … close) is hard-coded in
+  `models/constants/sales-invoice-details.constants.ts` and is **not** configurable — the old page
+  implied it was.
+- **Tab ordering is defensive.** `SERVICE_NOTE_DETAILS_TAB_ORDER` sorts the seven panels by the saved
+  order and appends any panel missing from the saved list, so a tab added in a later release still
+  appears — the same merge logic Fixed Asset uses.
+- **Every shell settings entry has a route here.** Unlike Fixed Asset (run 31, page 1), this applet
+  declares `permission-wizard-listing`, `release-notes` and `applet-log`, so nothing in the settings
+  menu 404s. Two routes have no menu link (`webhook`, `feature-visibility`) and
+  `client-side-permission-listing` is the default redirect for `settings`.
+- **Personalization is broken the same way as Fixed Asset's** — `appletContainer` never assigned,
+  change handlers dereference `undefined`, SAVE emits nothing. Here the menu's Field Settings entry
+  is commented out, so at least it does not 404.
+- **The Supplier RTV Line screen is headed "Customer RMA Line Items Listing"** — the supplier
+  component re-uses the customer component's title.
+- **A parallel `internal-rma-applet (obsolete)` project directory** sits beside the real one in the
+  repo, with its own `app.routing.ts`. Anyone grepping this repo for routes will find two.
+
+### Defects found
+
+1. `HIDE_CUSTRMA_DOC_NO`, `HIDE_SUPRTV_DOC_NO`, `HIDE_WORKFLOW_STATUS`, `HIDE_WORKFLOW_RESOLUTION`
+   are rendered, saved and read by nothing.
+2. Ten `ITEM_CATEGORY_GROUP_n` multi-select controls persist and are never read.
+3. `HIDE_BRANCH` / `HIDE_LOCATION` disable SAVE by hiding required controls.
+4. The approve/reject one-way rule is client-side only; the endpoint accepts any enum value.
+5. Personalization → Default Selection throws on first interaction and saves nothing.
+6. Supplier RTV Line renders the Customer RMA heading.
+7. The obsolete duplicate project directory should be deleted from the repo.
+8. `HIDE_WORKFLOW_STATUS` being dead means the internal workflow status cannot be hidden even though
+   a control exists to do it.
+
+### Screenshots
+
+Twenty-two files under `static/images/internal-rma-applet/`. Every one was opened and looked at.
+
+**Kept (6)** — all settings screens plus the report, no personal data:
+`settings-overview.png`, `settings-application-settings.png`, `settings-default-selection.png`,
+`settings-return-reasons.png`, `settings-request-action.png`, `rma-report.png`.
+
+**Dropped from the page (references removed; files to quarantine, 16):**
+
+- Eleven listing / create / view captures whose grids carry **real staff full names, work e-mail
+  addresses at the company domain, and Malaysian mobile numbers**, plus company names that read as
+  real customers: `service-note-listing.png`, `service-note-create.png`, `service-note-view.png`,
+  `customer-rma-listing.png`, `customer-rma-create.png`, `customer-rma-view.png`,
+  `customer-rma-line-listing.png`, `supplier-rtv-listing.png`, `supplier-rtv-create.png`,
+  `supplier-rtv-line-listing.png`, `rma-requests-listing.png`. The RMA Requests one is the worst:
+  a customer's first name, a full mobile number, and a real marketplace brand as an e-mail domain.
+- `settings-workflow.png` — process rows named after two individuals.
+- `settings-printable-format.png` — format codes carrying a developer's name and three strings that
+  read as customer abbreviations or brands.
+- `personalization.png` and `personalization-default-selection.png` — a **photograph of a real
+  person, their full name and their work e-mail address**, large and central.
+- `rma-overview-infographic.png` — an AI marketing infographic (NotebookLM watermark) inventing a
+  "6-Step RMA Lifecycle" (Request Created → Pending Approval → Approved → Item Received → Inspected →
+  Resolved) that exists nowhere in the code. It was the source of the old page's "Key Concepts →
+  RMA Lifecycle" section.
+
+**This settles the avatar question raised in runs 17 and 31/page 1.** In this folder the logged-in
+staff member's face, name and e-mail are not just a 30-pixel avatar — they are the subject of two
+full screens. Whatever Vincent decides about small avatars, these two had to go.
+
+**Recapture wanted** from a GadgetSphere-seeded tenant: Service Note listing, Create Service Note
+(Main Details with the three workflow status fields visible), Service Note edit showing the seven
+tabs, Customer RMA and Supplier RTV listings and Lines tabs, RMA Requests with a PENDING_APPROVAL
+row and the rejection modal, Settings → Workflow Settings, Settings → Printable Format Settings.
+
+### Cross-lane link requests (from this page)
+
+1. `content/en/applets/master-data/workflow-design-applet.md` (lane 4, run 29 — this lane, but the
+   page is already done, so recording rather than editing) — should name Internal RMA as the
+   engine's **only** consumer, and describe the three-process pattern
+   (`WORKFLOW_PROCESS_GUID` / `CUSTOMER_…` / `SUPPLIER_…`) and the per-company
+   `bl_fi_comp_workflow_gendoc_process_template_hdr` binding written from RMA's Workflow Settings
+   with `server_doc_type = INTERNAL_SALES_RMA`. Add `internal-rma-applet` to its `related_applets`.
+2. `content/en/applets/sales-workflow/internal-sales-invoice-applet.md` — add `internal-rma-applet`
+   to `related_applets`.
+3. `content/en/applets/master-data/customer-maintenance-applet.md` and
+   `content/en/applets/master-data/supplier-applet-1.md` — add `internal-rma-applet`, and note that
+   an entity with a login can raise its own RMA request through `svc/issue-request-hdrs/login-entity-ep`.
+4. `content/en/applets/rma/warranty-admin-applet.md` (still in this lane's queue) — the service note
+   carries purchase date, warranty expiry and extended expiry; cross-link both ways.
+5. **Any page listing which documents move stock** must include `INTERNAL_SUPPLIER_RTV` (+1/+1) and
+   exclude `INTERNAL_SALES_RMA` (0/0). `content/en/applets/inventory-workflow/related-applets-stock-balance.md`
+   (this lane, run 19) built its list from the DCO signum sweep, so it should already be right —
+   worth a spot check.
+6. `kb/topics/document-approval.md` — should gain a line naming `SVCApprovalStatus` on
+   `bl_svc_issue_request_hdr` as a fourth, separate engine, alongside the existing note that
+   `bl_fi_budget_register_approval_*` is a third.
+
+### Notes for the loop
+
+- `kb/topics/rma-and-service-notes.md` created (new slug).
+- METHOD candidate §45: **the "rendered" proof must accept `[formControl]="form.controls['KEY']"`,
+  not just `formControlName="KEY"`.** On this applet the naive regex reports 47 of 82 rendered; the
+  truth is 82 of 82. Search for the bare key name in the template and then confirm the binding form,
+  rather than pattern-matching one binding syntax.
+- METHOD candidate §46: **count the approval engines before writing an approval sentence.** There are
+  now four unrelated ones — generic-document approval, Workflow Design, budget register, and
+  `SVCApprovalStatus` on `bl_svc_issue_request_hdr`. They share no tables, no enum and no settings
+  surface. Identify which one a screen uses from the table it writes, not from the word "approval".
+- METHOD candidate §47: **a `login-entity-ep` sibling is a real feature, not a variant endpoint.**
+  Where a controller offers `backoffice-ep` / `etl-ep` / `login-entity-ep`, the last one is the
+  customer- or supplier-facing path and usually checks `isUserLoginEntity` instead of a permission.
+  It is what makes "can the customer do this themselves?" answerable, and pages keep hedging about
+  it (run 30 found the same shape on Engagement's `/etl-ep`).
+- `tests/content-lint.sh` passes.
