@@ -95,7 +95,6 @@ This comprehensive troubleshooting guide addresses the most common BigLedger iss
 - **Technical Details**: Connection pool exhausted or database maintenance
 - **Immediate Solution**:
   1. Wait 2-3 minutes and retry
-  2. Check system status at status.bigledger.com
   3. Contact support if issue persists >5 minutes
 - **Prevention**: Monitor database health and connection pool usage
 
@@ -366,7 +365,6 @@ Recommended Browser Settings:
 
 ### Support Channels
 - **📧 Email Support**: vincent@bigledger.com for technical issues
-- **💬 Quick Chat**: Telegram @leehongfay for immediate questions
 - **📞 Phone Support**: Available during business hours
 - **🌐 Support Portal**: Online ticket system and knowledge base
 

@@ -336,7 +336,6 @@ Advanced AI capabilities through AIMatrix partnership:
 ### Getting Started
 - [Implementation Guide](/user-guide/implementation) - Step-by-step deployment guide
 - [Applet Store Overview](/applets/applet-store) - Browse available applets
-- [Quick Start Tutorial](/tutorials/quick-start) - Get running in 30 minutes
 
 ### Core Modules
 - [Financial Accounting](/modules/financial-accounting) - Complete accounting solution
@@ -345,7 +344,6 @@ Advanced AI capabilities through AIMatrix partnership:
 
 ### Advanced Topics
 - [API Documentation](/developers/api-reference) - Integration guide
-- [Custom Applet Development](/developers/applet-sdk) - Build your own
 - [AI & Automation](/ai-intelligence) - Leverage AI capabilities
 
 ## ❓ Frequently Asked Questions
@@ -391,7 +389,4 @@ You can either request it (we release updates monthly), build a custom applet, o
 ## 🤝 Need Help?
 
 - **Sales Consultation**: [sales@bigledger.com](mailto:sales@bigledger.com) - Get a demo
-- **Support Portal**: [support.bigledger.com](https://support.bigledger.com) - 24/7 help
 - **Training Academy**: [academy.bigledger.com](https://academy.bigledger.com) - Free courses
-- **Community Forum**: [forum.bigledger.com](https://forum.bigledger.com) - User community
-- **Telegram Support**: @leehongfay - Quick questions

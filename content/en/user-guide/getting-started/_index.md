@@ -96,7 +96,6 @@ Once you complete the Getting Started section:
 
 - **📧 Email Support**: sales@bigledger.com for general questions
 - **💬 Technical Support**: vincent@bigledger.com for technical assistance
-- **📱 Quick Chat**: Telegram @leehongfay for immediate help
 - **🌐 Website**: [www.bigledger.com](https://www.bigledger.com) for resources
 
 {{< callout type="info" >}}

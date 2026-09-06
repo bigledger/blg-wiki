@@ -88,7 +88,6 @@ BigLedger新手？按照这个路径获得最快的入门体验：
 
 - **📧 邮箱支持**: sales@bigledger.com 用于一般问题
 - **💬 技术支持**: vincent@bigledger.com 用于技术协助
-- **📱 快速聊天**: Telegram @leehongfay 获得即时帮助
 - **🌐 官网**: [www.bigledger.com](https://www.bigledger.com) 获取资源
 
 {{< callout type="info" >}}

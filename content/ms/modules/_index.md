@@ -61,4 +61,3 @@ Memerlukan bantuan untuk memilih modul yang sesuai untuk perniagaan anda? Pasuka
 - 📧 [Hubungi Jualan](mailto:sales@bigledger.com)
 - 📚 [Dokumentasi Modul](/modules/)
 - 🎥 [Tutorial Video](/tutorials/)
-- 💬 [Forum Komuniti](https://forum.bigledger.com)

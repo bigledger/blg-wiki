@@ -299,7 +299,6 @@ Fill out our demo request form:
 - 24/7 Help Desk: support@bigledger.com
 - Phone: +60 3-xxxx xxxx
 - Live Chat: Available on platform
-- Community Forum: forum.bigledger.com
 
 **Response Times:**
 - Critical: 1 hour

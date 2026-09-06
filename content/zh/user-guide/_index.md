@@ -32,7 +32,6 @@ weight: 10
 
 通过我们全面的演示环境亲身体验 BigLedger。
 
-
 **演示功能**：实时环境、行业场景、分步指南、示例数据
 
 ---
@@ -210,7 +209,6 @@ weight: 10
 ### 支持渠道
 - **📧 常规支持**：sales@bigledger.com 用于咨询和销售问题
 - **💬 技术支持**：vincent@bigledger.com 用于技术援助
-- **📱 快速聊天**：Telegram @leehongfay 用于即时问题
 - **🌐 网站**：[www.bigledger.com](https://www.bigledger.com) 获取最新更新
 
 ### 学习资源
@@ -227,4 +225,3 @@ weight: 10
 面向技术用户和系统集成商：
 - **[开发者文档](/developers/)** - API、SDK 和集成指南
 - **[API 参考](/developers/api-reference/)** - 全面的技术文档
-- **[自定义开发](/developers/applet-sdk/)** - 构建自定义小程序和扩展

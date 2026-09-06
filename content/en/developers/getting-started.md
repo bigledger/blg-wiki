@@ -9,7 +9,6 @@ weight: 5
 draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
-
 This comprehensive guide will walk you through everything you need to know to get started with BigLedger APIs, from authentication to creating your first business transactions.
 
 {{< callout type="info" >}}
@@ -909,7 +908,6 @@ Now that you've made your first API calls, explore these topics:
 
 {{< card link="/developers/webhooks/" title="Webhooks" icon="bell"  subtitle="Real-time event notifications" >}}
 
-
 {{< card link="/developers/sdks/" title="SDKs" icon="cube"  subtitle="Official libraries for popular languages" >}}
 
 {{< /cards >}}
@@ -1009,7 +1007,5 @@ Need help? We're here to assist:
 
 - **Documentation**: [developers.bigledger.com](https://developers.bigledger.com)
 - **Email Support**: [developers@bigledger.com](mailto:developers@bigledger.com)
-- **Community Forum**: [community.bigledger.com](https://community.bigledger.com)
-- **Status Page**: [status.bigledger.com](https://status.bigledger.com)
 - **Developer Console**: [developers.bigledger.com/console](https://developers.bigledger.com/console)
 - **GitHub Issues**: [github.com/bigledger/api-issues](https://github.com/bigledger/api-issues)

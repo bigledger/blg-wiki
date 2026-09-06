@@ -285,6 +285,5 @@ Modul POS secara automatik segerak dengan Perakaunan Kewangan:
 ## Sokongan & Sumber
 
 - 📖 [Tutorial Video](/tutorials/pos/)
-- 💬 [Forum Komuniti](https://forum.bigledger.com/pos)
 - 📧 [Sokongan E-mel](mailto:pos-support@bigledger.com)
 - 📞 Sokongan 24/7: +60-3-POS-HELP

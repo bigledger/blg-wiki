@@ -300,5 +300,4 @@ BigLedger 实施真正的复式记账，每笔交易至少影响两个账户：
 - 📚 [会计最佳实践指南](/docs/best-practices/accounting/)
 - 🎥 [视频教程](/tutorials/financial-accounting/)
 - 📊 [报表模板库](/templates/financial/)
-- 🤝 [社区论坛](https://forum.bigledger.com/finance)
 - 📧 [专家支持](mailto:finance@bigledger.com)

@@ -62,7 +62,6 @@ Welcome to BigLedger's Interactive Demo Platform! This hands-on learning environ
   **Need Help?**
   - 💬 Live Chat: Available during demo
   - 📧 Email: demo@bigledger.com
-  - 📱 Telegram: @leehongfay
   {{< /tab >}}
 {{< /tabs >}}
 

@@ -348,5 +348,4 @@ BigLedger 库存管理模块提供对整个供应链的全面控制，从采购�
 - 📚 [库存最佳实践](/docs/best-practices/inventory/)
 - 🎥 [培训视频](/tutorials/inventory/)
 - 📊 [报表模板](/templates/inventory/)
-- 💬 [社区论坛](https://forum.bigledger.com/inventory)
 - 📧 [支持](mailto:inventory-support@bigledger.com)

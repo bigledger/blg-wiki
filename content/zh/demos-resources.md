@@ -298,7 +298,6 @@ BigLedger数据枢纽和模块化ERP系统的全面介绍。
 - 24/7帮助台：support@bigledger.com
 - 电话：+60 3-xxxx xxxx
 - 在线聊天：平台上可用
-- 社区论坛：forum.bigledger.com
 
 **响应时间：**
 - 关键：1小时

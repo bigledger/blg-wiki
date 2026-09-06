@@ -1455,16 +1455,11 @@ For regulatory compliance features including public sector support, see the **[B
 - **[Financial Accounting Module](/modules/financial-accounting/)** - Integration with general ledger and financial reporting
 
 ### Guides
-- **[Budget Planning Guide](/guides/budgetary/planning/)** - Best practices for annual budget planning
-- **[Budget Reporting Guide](/guides/budgetary/reporting/)** - How to interpret and use budget reports effectively
-- **[Year-End Budget Process](/guides/budgetary/year-end/)** - Procedures for fiscal year closeout and rollover
 
 ### Resources
-- **[Budget Template Library](/resources/budgetary/templates/)** - Downloadable Excel templates for budget planning and import
 - **[Video Tutorials](/tutorials/budgetary/)** - Step-by-step video demonstrations of key workflows
 
 ### Support
-- **[Community Forum](https://forum.bigledger.com/budgetary)** - Connect with other budget managers, share tips, ask questions
 - **[Expert Support](mailto:budgetary@bigledger.com)** - Direct support from BigLedger budget specialists
 
 ## Summary

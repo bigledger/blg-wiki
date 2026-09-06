@@ -318,6 +318,5 @@ POS 模块自动与财务会计同步：
 ## 支持资源
 
 - 📖 [视频教程](/tutorials/pos/)
-- 💬 [社区论坛](https://forum.bigledger.com/pos)
 - 📧 [邮件支持](mailto:pos-support@bigledger.com)
 - 📞 24/7 支持：+86-400-POS-HELP

@@ -593,5 +593,4 @@ bookCollapseSection: false
 
 - **📚 最佳实践库**：[详细最佳实践文档](https://wiki.bigledger.com/best-practices/)
 - **🎥 成功案例**：[客户案例研究和视频](https://bigledger.com/case-studies/)
-- **👥 用户社区**：[与其他成功用户联系](https://forum.bigledger.com/)
 - **🎓 高级培训**：[BigLedger学院课程](https://academy.bigledger.com/)

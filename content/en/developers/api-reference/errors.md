@@ -8,7 +8,6 @@ weight: 90
 draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
-
 Comprehensive guide to BigLedger API error codes, troubleshooting steps, and best practices for robust error handling in your integrations.
 
 ## Error Response Format
@@ -894,8 +893,6 @@ Include the following information:
 
 **Support Channels**:
 - Email: [developers@bigledger.com](mailto:developers@bigledger.com)
-- Developer Forum: [community.bigledger.com](https://community.bigledger.com)
-- Status Page: [status.bigledger.com](https://status.bigledger.com)
 
 ### 3. Report Bugs
 For potential bugs in the API:

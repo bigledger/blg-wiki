@@ -230,5 +230,4 @@ BigLedger CRM 模块为管理客户关系、销售管道和营销活动提供全
 - 📚 [CRM 最佳实践指南](/docs/best-practices/crm/)
 - 🎥 [视频教程](/tutorials/crm/)
 - 📊 [报表模板](/templates/crm/)
-- 💬 [社区论坛](https://forum.bigledger.com/crm)
 - 📧 [支持](mailto:crm-support@bigledger.com)

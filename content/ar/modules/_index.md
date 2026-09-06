@@ -62,4 +62,3 @@ graph TB
 - 📧 [الاتصال بالمبيعات](mailto:sales@bigledger.com)
 - 📚 [وثائق الوحدات](/modules/)
 - 🎥 [دروس الفيديو](/tutorials/)
-- 💬 [منتدى المجتمع](https://forum.bigledger.com)

@@ -34,7 +34,6 @@ This guide is organized into logical sections that build upon each other. We rec
 
 Experience BigLedger hands-on with our comprehensive demo environment.
 
-
 **Demo Features**: Live environment, industry scenarios, step-by-step guides, sample data
 
 ---
@@ -212,7 +211,6 @@ Optimize your inventory levels and streamline supply chain operations:
 ### Support Channels
 - **📧 General Support**: sales@bigledger.com for inquiries and sales questions
 - **💬 Technical Support**: vincent@bigledger.com for technical assistance
-- **📱 Quick Chat**: Telegram @leehongfay for immediate questions
 - **🌐 Website**: [www.bigledger.com](https://www.bigledger.com) for latest updates
 
 ### Learning Resources
@@ -229,4 +227,3 @@ Optimize your inventory levels and streamline supply chain operations:
 For technical users and system integrators:
 - **[Developer Documentation](/developers/)** - APIs, SDKs, and integration guides
 - **[API Reference](/developers/api-reference/)** - Comprehensive technical documentation
-- **[Custom Development](/developers/applet-sdk/)** - Build custom applets and extensions

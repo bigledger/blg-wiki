@@ -75,4 +75,3 @@ graph TB
 - 📧 [联系销售](mailto:sales@bigledger.com)
 - 📚 [模块文档](/modules/)
 - 🎥 [视频教程](/tutorials/)
-- 💬 [社区论坛](https://forum.bigledger.com)

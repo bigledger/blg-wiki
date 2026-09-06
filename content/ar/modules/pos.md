@@ -221,6 +221,5 @@ weight: 20
 ## موارد الدعم
 
 - 📖 [دروس الفيديو التعليمية](/tutorials/pos/)
-- 💬 [منتدى المجتمع](https://forum.bigledger.com/pos)
 - 📧 [دعم البريد الإلكتروني](mailto:pos-support@bigledger.com)
 - 📞 الدعم على مدار الساعة: +1-800-POS-HELP

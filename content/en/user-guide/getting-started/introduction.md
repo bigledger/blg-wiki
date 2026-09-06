@@ -7,7 +7,6 @@ title: Introduction
 weight: 10
 ---
 
-
 Welcome to BigLedger, your comprehensive gateway to streamlined business operations and valuable insights. BigLedger centralizes your data to provide real-time insights and streamlined management across all aspects of your business.
 
 ## Getting Started Resources
@@ -47,7 +46,6 @@ Our support team is ready to assist you with any questions or guidance you need.
 
 ### Contact Information
 - **📧 Email**: vincent@bigledger.com / sales@bigledger.com
-- **💬 Telegram**: @leehongfay
 - **🌐 Website**: [www.bigledger.com](https://www.bigledger.com)
 
 ### Additional Support Resources

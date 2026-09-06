@@ -232,5 +232,4 @@ Modul Perakaunan Kewangan bersepadu dengan lancar dengan semua modul BigLedger l
 - 📚 [Panduan Amalan Terbaik Perakaunan](/docs/best-practices/accounting/)
 - 🎥 [Tutorial Video](/tutorials/financial-accounting/)
 - 📊 [Perpustakaan Templat Laporan](/templates/financial/)
-- 🤝 [Forum Komuniti](https://forum.bigledger.com/finance)
 - 📧 [Sokongan Pakar](mailto:finance@bigledger.com)

@@ -441,7 +441,6 @@ Now you're ready to explore:
   - Email: demo@bigledger.com
   - Sales: sales@bigledger.com
   - Chat: Available in-app
-  - Telegram: @leehongfay
   {{< /tab >}}
 
   {{< tab >}}

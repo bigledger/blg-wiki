@@ -1,58 +1,41 @@
 ---
 title: Support & Troubleshooting
-description: Get help with BigLedger ERP - FAQs, troubleshooting guides, and support resources
+description: How to get help with BigLedger — FAQs, and who to contact
 weight: 90
 bookCollapseSection: false
 ---
 
+Find answers to common questions here, and know where to go when the documentation does not cover
+your problem.
 
-Welcome to the BigLedger support center. Find answers to common questions, troubleshooting guides, and resources to help you get the most out of BigLedger ERP.
-
-## Quick Links
+## Start here
 
 {{< cards >}}
   {{< card link="/support/faqs/" title="Frequently Asked Questions" subtitle="Common questions and answers about BigLedger" >}}
-  {{< card link="/support/troubleshooting/" title="Troubleshooting Guides" subtitle="Step-by-step solutions to common issues" >}}
-  {{< card link="/support/contact/" title="Contact Support" subtitle="Get help from our support team" >}}
+  {{< card link="/support/beginner-guide/" title="Beginner's Guide" subtitle="If you are new to BigLedger and not sure where to begin" >}}
+  {{< card link="/user-guide/" title="User Guide" subtitle="Task-by-task documentation for the people who run the business" >}}
 {{< /cards >}}
 
-## Support Resources
+## Troubleshooting
 
-### Documentation
-- [User Guide](/user-guide/) - Comprehensive user documentation
-- [API Reference](/developers/api-reference/) - Developer documentation
-- [Video Tutorials](/demos-resources/) - Visual learning resources
+Troubleshooting lives with the thing that breaks, not in a separate section. Each applet reference
+page carries a **Troubleshooting** section naming the errors that applet actually produces and what
+to do about them — start from the applet you were using when the problem appeared.
 
-### Community
-- [Knowledge Base](https://support.bigledger.com) - Searchable support articles
-- [Community Forum](https://community.bigledger.com) - Connect with other users
-- [Training Resources](/partners/training/) - Certification and training programs
+{{< cards >}}
+  {{< card link="/applets/" title="Applets" subtitle="Every applet's reference page, each with its own troubleshooting section" >}}
+  {{< card link="/guides/einvoice-guides/einvoice-validation/" title="E-Invoice: rejections and how to fix them" subtitle="The most common source of support tickets, with the real LHDN error messages" >}}
+{{< /cards >}}
 
-### Direct Support
+## Getting help from a person
 
-**Support Hours**: Monday - Friday, 9:00 AM - 6:00 PM (MYT)
+**Support e-mail**: support@bigledger.com
 
-**Contact Methods**:
-- **Support Email**: support@bigledger.com
-- **Sales Email**: sales@bigledger.com
-- **Telegram**: @leehongfay
-- **Live Chat**: Available on [bigledger.com](https://bigledger.com)
+Your BigLedger contact — the person or partner who onboarded your company — is the fastest route
+for anything specific to your tenant: permissions, e-invoice authorisation, applet registration, or
+data questions. They can see your configuration; the documentation cannot.
 
-### Support Tiers
-
-| Tier | Response Time | Channels | Coverage |
-|------|--------------|----------|----------|
-| **Basic** | 24-48 hours | Email | Business hours |
-| **Professional** | 4-8 hours | Email, Phone | Extended hours |
-| **Enterprise** | 1-2 hours | All channels + dedicated manager | 24/7 |
-
-## System Status
-
-Check current system status and planned maintenance at [status.bigledger.com](https://status.bigledger.com)
-
-## Training & Certification
-
-Enhance your BigLedger expertise:
-- [Online Training Courses](/partners/training/)
-- [Certification Programs](/partners/certification/)
-- [Webinars & Workshops](/demos-resources/webinars/)
+{{< callout type="info" >}}
+**Response times and support hours depend on your contract**, not on this page. Check your
+agreement, or ask your BigLedger contact.
+{{< /callout >}}

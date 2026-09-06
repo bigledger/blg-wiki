@@ -214,7 +214,6 @@ Yes, we support data migration from:
 Can't find what you're looking for? 
 
 {{< cards >}}
-  {{< card link="/support/contact/" title="Contact Support" subtitle="Get personalized help from our team" >}}
-  {{< card link="https://support.bigledger.com" title="Knowledge Base" subtitle="Search our comprehensive help articles" >}}
+  {{< card link="mailto:support@bigledger.com" title="Contact Support" subtitle="Get personalized help from our team" >}}
   {{< card link="/user-guide/" title="User Guide" subtitle="Detailed documentation and tutorials" >}}
 {{< /cards >}}

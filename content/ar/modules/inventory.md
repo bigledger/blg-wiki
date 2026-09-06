@@ -309,5 +309,4 @@ weight: 40
 - 📚 [أفضل ممارسات المخزون](/docs/best-practices/inventory/)
 - 🎥 [فيديوهات التدريب](/tutorials/inventory/)
 - 📊 [قوالب التقارير](/templates/inventory/)
-- 💬 [منتدى المجتمع](https://forum.bigledger.com/inventory)
 - 📧 [الدعم](mailto:inventory-support@bigledger.com)

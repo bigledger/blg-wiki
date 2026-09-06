@@ -360,5 +360,4 @@ Persediaan Gudang:
 - 📚 [Amalan Terbaik Inventori](/docs/best-practices/inventory/)
 - 🎥 [Video Latihan](/tutorials/inventory/)
 - 📊 [Templat Laporan](/templates/inventory/)
-- 💬 [Forum Komuniti](https://forum.bigledger.com/inventory)
 - 📧 [Sokongan](mailto:inventory-support@bigledger.com)

@@ -241,5 +241,4 @@ Cipta papan pemuka yang dipersonalisasi dengan:
 - 📚 [Panduan Amalan Terbaik CRM](/docs/best-practices/crm/)
 - 🎥 [Tutorial Video](/tutorials/crm/)
 - 📊 [Templat Laporan](/templates/crm/)
-- 💬 [Forum Komuniti](https://forum.bigledger.com/crm)
 - 📧 [Sokongan](mailto:crm-support@bigledger.com)

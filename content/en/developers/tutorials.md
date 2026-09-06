@@ -1251,6 +1251,5 @@ After completing these tutorials, you're ready to:
 - **[SDK Documentation](/developers/sdks/)**: Language-specific guides
 - **[Webhook Reference](/developers/webhooks/)**: Real-time integration patterns
 - **[Code Examples Repository](https://github.com/bigledger/api-examples)**: Complete example projects
-- **[Community Forum](https://community.bigledger.com)**: Ask questions and share solutions
 
 Happy coding! 🚀

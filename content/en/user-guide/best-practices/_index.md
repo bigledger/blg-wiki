@@ -593,5 +593,4 @@ Continue your BigLedger journey:
 
 - **📚 Best Practice Library**: [Detailed best practice documents](https://wiki.bigledger.com/best-practices/)
 - **🎥 Success Stories**: [Customer case studies and videos](https://bigledger.com/case-studies/)
-- **👥 User Community**: [Connect with other successful users](https://forum.bigledger.com/)
 - **🎓 Advanced Training**: [BigLedger Academy courses](https://academy.bigledger.com/)

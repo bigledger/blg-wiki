@@ -24,6 +24,11 @@ legacy=$(grep -rlE '/api/v1/|\bcore1\b' content --include='*.md' 2>/dev/null | w
   grep -q '^draft: true' "$f" || echo "$f"; done | head -20)
 if [ -n "$legacy" ]; then say "FAIL: legacy core1 / /api/v1 surface in published pages"; say "$legacy" | sed 's/^/  /'; fail=1; else say "ok:   no legacy core1 surface in published pages"; fi
 
+# hostnames that do not resolve, and personal contact handles published as support channels
+nx=$(grep -rlE '(support|community|status|forum)\.bigledger\.com|@leehongfay' content --include='*.md' 2>/dev/null | while read -r f; do
+  grep -q '^draft: true' "$f" || echo "$f"; done | head -20)
+if [ -n "$nx" ]; then say "FAIL: published page cites a host that does-not-resolve, or a personal handle as support"; say "$nx" | sed 's/^/  /'; fail=1; else say "ok:   no dead support hosts or personal handles in published pages"; fi
+
 check "no named prospect or customer organisations"  -E 'Universiti Teknologi|\bUTM\b|Inter-PTJ' content --include='*.md'
 
 # --- fabricated REST API surfaces (2026-09-06 sweep) -------------------------------------------

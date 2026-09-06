@@ -223,5 +223,4 @@ weight: 30
 - 📚 [دليل أفضل ممارسات إدارة علاقات العملاء](/docs/best-practices/crm/)
 - 🎥 [دروس الفيديو التعليمية](/tutorials/crm/)
 - 📊 [قوالب التقارير](/templates/crm/)
-- 💬 [منتدى المجتمع](https://forum.bigledger.com/crm)
 - 📧 [الدعم](mailto:crm-support@bigledger.com)

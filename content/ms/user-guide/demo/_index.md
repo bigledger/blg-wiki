@@ -49,7 +49,6 @@ Selamat datang ke Platform Demo Interaktif BigLedger! Persekitaran pembelajaran 
   **Perlukan Bantuan?**
   - 💬 Chat Langsung: Tersedia semasa demo
   - 📧 E-mel: demo@bigledger.com
-  - 📱 Telegram: @leehongfay
   {{< /tab >}}
 {{< /tabs >}}
 
@@ -62,7 +61,6 @@ Pilih industri anda di bawah untuk mengakses senario demo yang disesuaikan dan a
 ### 🏆 Demo Industri Unggulan
 
 **BAHARU: Perjalanan komprehensif khusus industri dengan aliran kerja terperinci, titik kesakitan utama, ROI dijangka, dan metrik kejayaan:**
-
 
 ### Ringkasan Faedah Khusus Industri
 
@@ -106,20 +104,17 @@ Pilih industri anda di bawah untuk mengakses senario demo yang disesuaikan dan a
 
 ### Demo Industri Tambahan
 
-
 ---
 
 ## 🎯 Demo Eksekutif Berdasarkan Peranan
 
 Demonstrasi strategik yang direka untuk pembuat keputusan utama dengan fokus pada hasil perniagaan dan ROI:
 
-
 ---
 
 ## 📚 Aliran Kerja Perniagaan Biasa
 
 Kuasai proses perniagaan penting yang berlaku di semua industri:
-
 
 ---
 

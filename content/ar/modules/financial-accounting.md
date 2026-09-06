@@ -196,5 +196,4 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 - 📚 [دليل أفضل ممارسات المحاسبة](/docs/best-practices/accounting/)
 - 🎥 [دروس الفيديو التعليمية](/tutorials/financial-accounting/)
 - 📊 [مكتبة قوالب التقارير](/templates/financial/)
-- 💬 [منتدى المجتمع](https://forum.bigledger.com/finance)
 - 📧 [الدعم المتخصص](mailto:finance@bigledger.com)
