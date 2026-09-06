@@ -86,6 +86,75 @@ whose `einvoice_status` is `ENABLED`, queues `E_INVOICE_DISCREPANCIES_REPORT_PRO
 queues `DISCREPANCY_REPORT_EMAIL_NOTIFICATION_PROCESSOR` to send it. So the monthly reconciliation can be
 delivered by e-mail without anyone opening the applet. [src:git:blg-akaun-platform-java@1ff620ef0e]
 
+### Incoming supplier e-invoices and document matching (source-verified 2026-09-06)
+
+_Verified against `blg-akaun-platform-java@1ff620ef0e`, `blg-applet-wavelet-my-invoice-admin-applet@d7841e7`,
+`blg-applet-wavelet-my-einvoice-for-customer-and-supplier-applet@6517a6b`, the internal e-invoice README,
+and a read-only sweep of 89 of 93 active production tenants. Aggregate counts only; no tenant is
+identifiable._
+
+**Three unconnected inbound pipelines exist, and the LHDN one is write-only.**
+
+- 2026-09-06 — `MyEInvoiceLHDNIntegrationService.getRecentDocuments` calls MyInvois' recent-documents API
+  with `direction=Received` **hard-coded** — it can only fetch documents where the tenant is the buyer.
+  Driven by the scheduled `E_INVOICE_FROM_IRB_RUN_PROCESSOR` and by a manual
+  `…/from-irb-document-queues/backoffice-ep/fetch-now`. Results land in
+  `bl_fi_my_einvoice_from_irb_document_cache` (dedupe on submissionUid + uuid) and
+  `…_document_queue`. [src:git:blg-akaun-platform-java@1ff620ef0e]
+- 2026-09-06 — **Nothing reads that queue.** No processor promotes a received document into
+  `bl_fi_my_einvoice_from_irb_hdr/line`; those are CRUD-API-only. The only producer-shaped class,
+  `MyEInvoiceFromRBProcessorService.pullFromLHDN`, fabricates a dummy container from a random customer
+  and has zero callers. [src:git:blg-akaun-platform-java@1ff620ef0e]
+- 2026-09-06 — Field bug on the live inbound path: `dateTimeReceived` is written into
+  `date_time_issued`, overwriting the issue date; `date_time_received` is never populated.
+  [src:git:blg-akaun-platform-java@1ff620ef0e]
+
+**The matcher that does run is fed from PEPPOL and e-mail OCR, never from LHDN.**
+
+- 2026-09-06 — `INCOMING_EINVOICE_MATCHING_QUEUE_PROCESSOR` pairs `bl_fi_incoming_einvoice_matching_queue`
+  against `bl_fi_einvoice_purchase_doc_matching_queue` on a **four-field exact equality** lookup —
+  `supplier_id_no`, `reference_no`, `amount_txn`, `date_txn`. No tolerance, no fuzzy, no partial. On a hit
+  it writes `bl_fi_incoming_einvoice_matched_history` and **hard-deletes both queue rows**, so a matched
+  row disappears rather than changing status. [src:git:blg-akaun-platform-java@1ff620ef0e]
+- 2026-09-06 — Its incoming side has exactly two producers: PEPPOL (`match_source = PEPPOL`) and the
+  e-mail OCR intake (`match_source = EMAIL`). The LHDN-specific trio `bl_fi_incoming_einvoice_lhdn_*` has
+  CRUD controllers and validators but **no producer, no processor, and no `JobProcessorClassName`
+  registration**. [src:git:blg-akaun-platform-java@1ff620ef0e]
+- 2026-09-06 — There is **no auto-match for e-invoices** in the sense of `autoMatch` code: that identifier
+  exists in this repo only in bank reconciliation. The applet's **Auto Match** button simply runs the
+  matching processor on demand (`…/incoming-einvoice-matching-queues/process/execute/backoffice-ep`); a
+  manual pair is made from the PD Matching Queue's **Match Incoming Doc** tab
+  (`…/manual-matching/backoffice-ep?incoming_matching_queue_guid=…&purchase_doc_matching_queue_guid=…`).
+  [src:git:blg-applet-wavelet-my-invoice-admin-applet@d7841e7]
+- 2026-09-06 — Matching **never touches the purchase document**: no posting, no status change, no tax, no
+  journal, no write to `bl_fi_generic_doc_hdr`. It is fully reversible — *Matched History* has
+  **Pushback to Queues**, and each Unmatched History screen has **Pushback to … Queue**.
+  [src:git:blg-akaun-platform-java@1ff620ef0e] [src:git:blg-applet-wavelet-my-invoice-admin-applet@d7841e7]
+
+**Production: nothing has ever matched.**
+
+- 2026-09-06 — `bl_fi_my_einvoice_from_irb_hdr` = **0 rows on all 89 reachable tenants**; the staging cache
+  and queue hold 41 rows on exactly one tenant. `bl_fi_incoming_einvoice_matched_history` = **0 rows
+  everywhere**, as are every `*_unmatched_history`, the `*_lhdn_*` trio, the `*_ecom_*` trio,
+  `bl_fi_einvoice_purchase_doc_hdr` and `bl_b2b_process_tracking_einvoice_hdr`.
+- 2026-09-06 — Meanwhile `bl_fi_einvoice_purchase_doc_matching_queue` holds **35,704** rows across 33
+  tenants and `bl_fi_einvoice_sales_doc_matching_queue` **626,732** across 34, **all** `PENDING` /
+  `UNPROCESSED`, accruing since 2024-08-17 and 2024-09-25 respectively. Since a match deletes both rows,
+  these are the never-matched remainder.
+- 2026-09-06 — Only one tenant has any incoming feed at all: 7 PEPPOL documents and 316 e-mail-OCR
+  documents. The four-field exact rule is the likeliest reason nothing has paired — a purchase document
+  keyed from a supplier's paperwork rarely carries the supplier's reference number verbatim.
+
+**Buyer-side rejection does not exist in BigLedger.**
+
+- 2026-09-06 — The only LHDN document-state call in the backend hard-codes `status = "cancelled"` (the
+  supplier-side cancellation). The literal `"Rejected"` never appears in an LHDN context and
+  `rejectDocument` as an outbound action does not exist. No External Reception or matching screen carries
+  a reject button. A buyer wanting to reject a supplier's e-invoice must do it on the MyInvois portal or
+  the supplier's own buyer portal, and BigLedger never learns of it — the mirror of the already-known
+  seller-side blind spot. [src:git:blg-akaun-platform-java@1ff620ef0e]
+  [src:git:blg-applet-wavelet-my-einvoice-for-customer-and-supplier-applet@6517a6b]
+
 ## How it connects
 
 - **e-invoice-consolidation** — the tally is run inside the 1st–7th window and drives what gets pushed into the last consolidation.
@@ -99,6 +168,7 @@ delivered by e-mail without anyone opening the applet. [src:git:blg-akaun-platfo
 
 - Which two reports make up the month-end pack that support sends after validation, and can a customer produce them unaided? → kb/questions/2026-09-05-einvoice-month-end-report-pack.md
 - Is the Discrepancies Report enough for a customer to run their own tally, or does the wiki have to describe a manual method?
+- Is the LHDN from-IRB consumer planned, abandoned or forgotten, and is the four-field exact match rule intended to stay? → kb/questions/2026-09-06-einvoice-lhdn-inbound-never-consumed.md
 
 ## Wiki impact
 

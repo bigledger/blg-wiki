@@ -58,7 +58,13 @@ Once you are set up, e-invoicing sits inside your normal sales and purchasing wo
 2. Finalise them. **BigLedger does not submit at the moment you press Save** — a finalised document is queued, and a background processor sends it. Everything after Save happens in the background, which is why an e-invoice is not at LHDN the second you look for it.
 3. Check the status of yesterday's documents on *Internal Submission → To IRB E-Invoice*.
 4. Fix anything marked Invalid and resubmit.
-5. Match incoming supplier e-invoices against your purchase documents.
+That is the whole daily loop, and it is entirely about the documents **you** issue.
+
+**The purchase side is not a daily task, and it is not automatic.** Checking that your purchases have a validated supplier e-invoice behind them is a monthly job with a large manual component: BigLedger can pair the supplier documents that reach it over PEPPOL or through the OCR e-mail intake, but a supplier e-invoice filed with LHDN and sent to you as an ordinary PDF never reaches BigLedger at all.
+
+{{< cards >}}
+  {{< card link="/guides/einvoice-guides/einvoice-incoming-supplier/" title="Incoming Supplier E-Invoices" subtitle="Where incoming documents arrive, how matching against your purchase documents works, and the manual check for the majority it cannot see" >}}
+{{< /cards >}}
 
 ## Every week
 
