@@ -35,7 +35,16 @@ The Stock Adjustment (Internal) applet is where you correct what the system thin
 
 It is used by warehouse supervisors and stock controllers for quantity corrections, and by finance for the **Reset Moving Average (MA)** tools that correct an item's unit cost. It comes after a stock take or an investigation in [Stock Availability](/applets/inventory-workflow/stock-availability-applet/), and before the corrected balance shows in [Stock Balance](/applets/inventory-workflow/stock-balance-applet/) and the financial reports.
 
-{{< figure src="/images/stock-adjustment-applet/stock-adjustment-overview-infographic.png" alt="Mastering Inventory: The Streamlined Stock Adjustment Workflow - showing adjustment lifecycle, specialized correction tools including bulk file import, serial & batch precision, and moving average reset" caption="The stock adjustment workflow: identify the discrepancy, raise the document, finalise; with bulk import, serial / batch precision and moving-average reset." >}}
+```mermaid
+flowchart LR
+  D["Discrepancy found<br/>stock take, damage, theft, migration"] --> C["Create the document<br/>one line per item,<br/>Adjust-In or Adjust-Out"]
+  C --> S["SAVE<br/>status DRAFT — nothing has moved"]
+  S --> F["FINAL"]
+  F --> B["Stock balance updated<br/>at that location"]
+  F --> J["Journal posted to the company's<br/>STOCK_ADJUSTMENT / COGS default GL codes,<br/>or the GL code on the line"]
+```
+
+There is **no approval step**. A line is either Adjust-In or Adjust-Out — there is no third "correction" type — and FINAL posts immediately. The only separation of duties available is the pair of settings `HIDE_GENDOC_SAVE_BUTTON` and `HIDE_GENDOC_FINAL_BUTTON`, which let one group draft and another group post.
 
 ## Where it fits
 

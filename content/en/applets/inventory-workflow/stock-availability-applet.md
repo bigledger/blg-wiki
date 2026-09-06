@@ -62,14 +62,29 @@ The Stock Availability applet is the read-only window onto inventory: what you p
 
 Sales staff open it before promising stock, warehouse staff to find where an item sits, purchasing to see what is on order, and finance for the cost columns (which can be hidden from everyone else by setting and re-opened per user by permission).
 
-{{< figure src="/images/stock-availability-applet/stock-availability-infographic.jpg" alt="Mastering Real-Time Inventory: The Stock Availability Applet - showing the Master Formula (A = P - R), Strategic Visibility, End-to-End Audit Trails, and a Role-Specific Quick Reference Guide" caption="Stock Availability at a glance: physical balance, document adjustments, bin-level precision, aging and role-specific visibility." >}}
-
 ### How availability is calculated
+
+Available Qty is not "physical stock minus reservations". It is the physical balance plus a **signed** adjustment for open documents, and the adjustment can be positive:
+
+```mermaid
+flowchart LR
+  SB["Stock Balance<br/>ledger quantity at this company and location,<br/>from finalised stock documents"]
+  SO["Sales orders not yet invoiced<br/>signum -1"]
+  GRN["Goods received notes not yet invoiced<br/>signum +1"]
+  ADJ["Adj Qty<br/>signed sum of the open-document pairs"]
+  AV["Available Qty<br/>Stock Balance + Adj Qty"]
+  SO --> ADJ
+  GRN --> ADJ
+  SB --> AV
+  ADJ --> AV
+```
+
+Those two pairs are the backend's default when a screen sends no list of its own (`StockAvailabilityService.getCorrectServerDocTypeSignumDto`): `INTERNAL_SALES_ORDER` against `INTERNAL_SALES_INVOICE` at −1, and `INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE` against `INTERNAL_PURCHASE_INVOICE` at +1. The Details screens send longer lists that add delivery orders, quotations and the draft sections.
 
 | Column | Meaning |
 |---|---|
 | **Stock Balance** (physical) | The ledger quantity at that company / location, from finalised stock documents |
-| **Adj Qty** | The signed sum of quantities on *open* documents that affect the item. Each screen sends the backend a list of document-type pairs with a sign: the default pairs are sales order → sales invoice (−1) and goods received note → purchase invoice (+1); the Details screens add delivery orders, quotations and the draft sections |
+| **Adj Qty** | The signed sum above. It is negative when open sales orders outweigh uninvoiced receipts, positive when they do not |
 | **Available Qty** | `Stock Balance + Adj Qty` — what a new order can still take |
 | **Min / Max level** | The item's minimum and maximum stock levels for the location, returned by the backend and shown as columns when the Optional filter includes `SHOW_MIN_QTY` / `SHOW_MAX_QTY` |
 

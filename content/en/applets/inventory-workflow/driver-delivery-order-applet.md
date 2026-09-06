@@ -80,8 +80,6 @@ The Driver Delivery Order applet is a driver's window onto the delivery orders a
 
 It does not create delivery orders, does not finalise, void or discard them, and does not post anything. The documents come from the [Delivery Order (Internal)](/applets/sales-workflow/internal-delivery-order-applet/) applet (or from the sales documents converted into delivery orders there); this applet only edits three header fields on them. It is used by drivers and, for oversight, by the dispatcher who assigns the driver.
 
-{{< figure src="/images/driver-delivery-applet/driver-delivery-order-overview-infographic.png" alt="Streamlined Deliveries: Your Guide to the Driver Delivery Order Applet - comparing complex ERP challenges with the focused applet solution" caption="The driver sees one listing — the delivery orders assigned to them — instead of the full sales screens." >}}
-
 {{< figure src="/images/driver-delivery-applet/driver-delivery-overview.png" alt="Driver Delivery Order Applet Dashboard Overview" caption="The Driver Delivery Order listing." >}}
 
 ## Where it fits

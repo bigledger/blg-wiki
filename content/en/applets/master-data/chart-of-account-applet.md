@@ -70,7 +70,20 @@ It is opened by the finance administrator during implementation and by the accou
 **Core concept.** Every transaction ends in a GL Code; every GL Code belongs to a GL Category; every GL Category belongs to a GL Section. Companies, ledgers and fiscal years decide *where* and *when* that posting is allowed.
 {{< /callout >}}
 
-{{< figure src="/images/chart-of-account-applet/chart-of-account-applet-overview-infographic.png" alt="Chart of Account Applet Overview Infographic" caption="How the applet turns account lists into a structured, lockable hierarchy." >}}
+```mermaid
+flowchart TD
+  COA["Chart of Account"] --> SEC["GL Section<br/>Assets, Liabilities, Equity, Revenue, Expenses"]
+  SEC --> CAT["GL Category<br/>Current Assets, Fixed Assets, Trade Debtors, ..."]
+  CAT --> CODE["GL Code<br/>the account a transaction posts to"]
+  CO["Company<br/>assigned a chart in Organisation"] --> COA
+  CO --> LED["Ledger<br/>PRIMARY / SECONDARY / CONSOLIDATED"]
+  CO --> FY["Fiscal Year"]
+  CO --> DEF["Default GL Codes<br/>which account each document type posts to"]
+  DEF --> CODE
+  LED --> SUB["Sub-ledger<br/>created when a default GL code is saved;<br/>journals and opening balances land here"]
+  FY --> PER["Fiscal Period<br/>OPEN / LOCK_GL / LOCK_TXN / LOCK_ALL"]
+  SOB["Set of Books<br/>what financial reports run against"] --> LED
+```
 
 ## Where it fits
 

@@ -78,8 +78,6 @@ Sistem ERP tradisional selalunya terlalu sukar untuk anggota di lapangan. Isu la
   {{< card title="Pengurusan Kebenaran (Permission Management)" subtitle="Kelolaan spesifik untuk penetapan batasan dokumen fail tugasan." link="#configuration--settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/driver-delivery-applet/driver-delivery-order-overview-infographic.png" alt="Streamlined Deliveries: Your Guide to the Driver Delivery Order Applet - comparing complex ERP challenges with the focused applet solution" caption="Selaraskan Aliran Kerja Penghantaran Anda: Cara Lama (skrin kompleks, kemas kini tertangguh, salah faham komunikasi) vs Cara Baru (mesra mudah alih, penyegerakan masa nyata, penjejakan pantas)." >}}
-
 {{< figure src="/images/driver-delivery-applet/driver-delivery-overview.png" alt="Driver Delivery Order Applet Dashboard Overview" caption="Gambaran Keseluruhan Applet: Paparan komprehensif bagi papan pemuka Driver Delivery Order." >}}
 
 ---

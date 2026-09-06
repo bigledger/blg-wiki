@@ -78,8 +78,6 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
   {{< card title="权限管理 (Permission Management)" subtitle="精细的角色和文件限制" link="#configuration--settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/driver-delivery-applet/driver-delivery-order-overview-infographic.png" alt="Streamlined Deliveries: Your Guide to the Driver Delivery Order Applet - comparing complex ERP challenges with the focused applet solution" caption="简化您的送货工作流程：旧方法（复杂的屏幕、延迟的更新、沟通不畅）与新方法（移动端友好、实时同步、轻松跟踪）。" >}}
-
 {{< figure src="/images/driver-delivery-applet/driver-delivery-overview.png" alt="Driver Delivery Order Applet Dashboard Overview" caption="Applet 概览：Driver Delivery Order 主仪表板的综合视图。" >}}
 
 ---

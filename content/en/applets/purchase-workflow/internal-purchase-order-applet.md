@@ -68,7 +68,22 @@ The **Purchase Order (Internal)** applet records your company's commitment to bu
 
 Its engine document type is `INTERNAL_PURCHASE_ORDER` with amount signum **0** and quantity signum **0**: a purchase order posts **nothing** to the General Ledger or to stock. FINAL locks it and opens its lines in the open-queue so downstream documents can knock them off; **CLOSE** empties that queue.
 
-{{< figure src="/images/internal-purchase-order-applet/internal-purchase-order-overview-infographic.png" alt="Purchase Order (Internal) Applet overview — procurement flow from request through approval" caption="Where the purchase order sits between requisition, approval, receipt and invoice." >}}
+```mermaid
+flowchart TD
+  PR["Purchase Requisition"] --> PO
+  PQ["Purchase Quotation"] --> PO
+  BPO["Blanket Purchase Order"] --> PO
+  REP["Replenishment run"] --> PO
+  CSV["CSV import"] --> PO
+  PO["Purchase Order — draft"]
+  PO -. "only where approval rules exist" .-> AP["Submit, then Approve or Reject<br/>routed by branch designation and approval rank"]
+  AP --> FIN
+  PO --> FIN["FINAL<br/>locks the document and opens its lines in the queue.<br/>Posts nothing to the ledger and nothing to stock."]
+  FIN --> GRN["Purchase GRN / GRN Stock In<br/>receives the goods"]
+  FIN --> PI["Purchase Invoice<br/>posts payables and the ledger"]
+  FIN --> DN["Purchase Debit / Credit Note"]
+  FIN --> CL["CLOSE<br/>sets every line's open quantity to 0<br/>and deletes the queue rows"]
+```
 
 {{< youtube MpzkihO4NYQ >}}
 
