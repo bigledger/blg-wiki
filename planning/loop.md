@@ -111,6 +111,8 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 
 ## Waiting on Vincent
 
+- **F-0217 SECURITY (urgent):** two images in the blg-intranet repo (`content/1100-malaysia-einvoice/images/postman-*.jpg`, added 2026-05-12) show **live LHDN credentials in readable text** — client id, client secret, full bearer tokens — plus a real customer TIN. Rotate the secrets and replace the images. (Private repo, so employee-visible rather than public — unlike F-0181, which was public.)
+
 - **F-0213 ACCESS CONTROL** supplier CSV import creates POs in the buyer's tenant without the entity-link check — bug or intended?
 - **F-0210** approve the tax-page merge (the product's Documentation button currently opens the un-derived page) · **F-0211** VAT-SALES unusable on sales documents — one-string fix
 - **F-0207** entity merge rewrites every entity column with no unmerge — guard rail or documented warning?
