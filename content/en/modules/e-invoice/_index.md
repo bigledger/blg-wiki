@@ -216,7 +216,7 @@ Ideal for companies with:
 ## Security and Data Protection
 
 ### Data Security
-- **End-to-end encryption** for all transmissions
+- **Encrypted in transit** — traffic runs over TLS, and Peppol documents are exchanged over AS4
 - **Secure key management** for digital signatures
 - **Access control** with role-based permissions
 - **Data backup** and disaster recovery

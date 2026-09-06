@@ -1,10 +1,10 @@
 ---
 title: "Purchasing Module"
-description: "Procurement-to-Pay (P2P) engine managing supplier sourcing, purchase orders, 3-way matching, and inventory stock-ins."
+description: "Procurement-to-Pay (P2P) engine managing supplier sourcing, purchase orders, goods receipt, supplier billing and inventory stock-ins."
 weight: 25
 ---
 
-The **Purchasing Module** is BigLedger's Procurement-to-Pay (P2P) engine. It manages supplier relationships, internal departmental requisitions, formal commercial purchase orders, goods receiving, 3-way invoice matching, and Accounts Payable ledger postings.
+The **Purchasing Module** is BigLedger's Procurement-to-Pay (P2P) engine. It manages supplier relationships, internal departmental requisitions, formal commercial purchase orders, goods receiving, supplier billing, and Accounts Payable ledger postings.
 
 ## Architecture & Data Flow
 
@@ -14,7 +14,7 @@ Purchasing operates between your operational procurement requirements and your c
 |-------------------|------------------|-----------------------------|
 | **Procurement Engine** | P2P Contract & Sourcing Engine | Central management of vendor pricebooks, purchase requisitions, optional approval levels, and order commitments. |
 | **Warehouse Receiving** | [Goods Received Note GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/) | Physical goods receipt, quality inspection, and automated inventory stock-in. |
-| **Accounts Payable (AP)** | [Purchase Invoice Applet](/applets/finance/internal-purchase-invoice-applet/) | Supplier billing verification, 3-way invoice matching (PO vs GRN vs Invoice), and GL liability posting. |
+| **Accounts Payable (AP)** | [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/) | Supplier billing: knock off a finalised PO or GRN, check the copied lines against the supplier's bill, and post the creditor, purchase and input-tax journal. |
 | **Vendor Management** | Supplier Maintenance Applet (Core) | Central master records for vendor profiles, payment terms, currency settings, and credit ratings. |
 
 ---
@@ -26,7 +26,7 @@ Purchasing operates between your operational procurement requirements and your c
 | **Department Manager** | Submit internal purchase requisitions for goods or services within operational budgets | [Purchase Requisition Applet](/applets/purchase-workflow/internal-purchase-requisition-applet/) |
 | **Procurement Officer** | Negotiate vendor pricing, issue binding purchase orders, manage supplier contracts | [Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet/) |
 | **Warehouse Receiver** | Inspect incoming supplier shipments, count physical stock, issue Goods Received Notes (GRN) | [Goods Received Note GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/) |
-| **Accounts Payable Clerk** | Verify vendor invoices against POs and GRNs (3-Way Matching), approve supplier payments | [Purchase Invoice Applet](/applets/finance/internal-purchase-invoice-applet/) |
+| **Accounts Payable Clerk** | Knock finalised POs and GRNs into supplier invoices and check the copied lines by eye, then settle | [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/) |
 | **Finance Controller** | Review supplier credit balances, monitor departmental budget compliance, approve disbursements | [Purchase Report Applet](/applets/purchase-workflow/purchase-report-applet/) |
 
 ---
@@ -75,7 +75,7 @@ Confusing procurement document types creates inventory discrepancies and unautho
 - [ ] Tax codes for supplier invoices (Input SST/VAT/GST) mapped to GL accounts
 - [ ] *(Optional)* Purchase Requisition approval levels and approvers established — approvals are off until you configure them
 - [ ] Warehouse receiving locations and inspection workflows configured
-- [ ] Accounts Payable 3-way matching tolerance thresholds defined
+- [ ] Decided which document moves stock — the standard GRN/Invoice pair, or the Stock In / No Stock In pair
 - [ ] Finance team aligned on Goods Received Not Invoiced (GRNI) month-end accruals
 
 ---
@@ -84,7 +84,7 @@ Confusing procurement document types creates inventory discrepancies and unautho
 
 Follow the documentation in this sequence to master the Purchasing Module:
 
-1. **[Core Concepts](core-concepts/)** *(Next Step)* — Understand the P2P document lifecycle, 3-way matching mechanics, and GRNI accounting.
+1. **[Core Concepts](core-concepts/)** *(Next Step)* — Understand the P2P document lifecycle, knock-off, and which document actually moves the stock.
 2. **[Configuration](configuration/)** — Step-by-step setup guides for vendor pricebooks, approval hierarchies, and receiving rules.
 3. **[Use Cases](use-cases/)**
 4. **[Reports 3. **[Use Cases](use-cases/)** Analytics](reports/)** — Scenario guide for choosing the best procurement and vendor reports. — Real-world reference architectures for raw material procurement, trading stock reordering, and consignment purchases.
@@ -95,5 +95,5 @@ Follow the documentation in this sequence to master the Purchasing Module:
 
 {{< callout type="info" >}}
 **Ready to explore procurement architecture?**  
-Proceed to **[Core Concepts →](core-concepts/)** to understand 3-way invoice matching and procurement lifecycles.
+Proceed to **[Core Concepts →](core-concepts/)** to understand knock-off and procurement lifecycles.
 {{< /callout >}}

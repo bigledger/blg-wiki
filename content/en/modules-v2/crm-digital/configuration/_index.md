@@ -9,8 +9,6 @@ Configuring the Digital CRM Module follows a strict 5-phase dependency chain. Cu
 
 ## Implementation Pipeline & Workflow
 
-![5-Phase Digital CRM Implementation Pipeline](/images/crm-digital/crm_configuration_workflow.png)
-
 ---
 
 ## Phase 1: Master Foundations
@@ -43,7 +41,7 @@ Configuring the Digital CRM Module follows a strict 5-phase dependency chain. Cu
 | Setup Task | Required Applet |
 |------------|-----------------|
 | Broadcast Campaign & Drip Sequences | [Engagement Applet](/applets/crm/engagement-applet/) |
-| Event Registration Pages & Ticketing | [Events Management Applet](/applets/crm/events-management-applet/) |
+| Event Calendars, Events & Participants | [Event Management Applet](/applets/crm/events-management-applet/) |
 
 ---
 
@@ -64,4 +62,4 @@ Before going live, complete these mandatory verification tests:
 
 - [ ] **Omnichannel Message Test:** Send a test WhatsApp or Live Chat message and verify real-time ticket creation in [Unified Contact Center UCC Applet](/applets/crm/unified-contact-center-ucc-applet/).
 - [ ] **Campaign Broadcast Test:** Send a test engagement email/SMS and verify open/click tracking logs.
-- [ ] **Event QR Check-In Test:** Generate a test event ticket QR code and verify successful check-in scanning.
+- [ ] **Event Calendar Test:** Create a test calendar, add an event to it, and confirm the members you assigned can see it.

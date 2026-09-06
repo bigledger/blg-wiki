@@ -71,7 +71,7 @@ The Inventory Module delivers:
 ### Inventory Analytics
 
 {{< cards >}}
-  {{< card link="/applets/pricebook-applet/" title="Pricebook Applet" subtitle="Product pricing and cost management" >}}
+  {{< card link="/applets/master-data/pricebook-applet/" title="Pricebook Applet" subtitle="Product pricing and cost management" >}}
 {{< /cards >}}
 
 ## Shared Core Dependencies

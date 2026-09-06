@@ -1,5 +1,11 @@
 # Files temporarily exempt from a content lint. Format: <lint-key><TAB><path>. Remove lines as batches fix them.
-# lint keys: malay (F-0001..F-0003), title (F-0036)
+# lint keys: malay (F-0001..F-0003), title (F-0036), certification (2026-09-06 sweep)
+#
+# certification: exempts a page from the certification / SLA / cryptography checks. Use it ONLY
+# when the claim on that page has been CONFIRMED, and record the evidence on the line's comment:
+# who issued the certificate, its number, and when it expires - or, for an SLA, the contract
+# clause that commits to it. Q-0006 (planning/questions/INDEX.md) asks Vincent whether BigLedger
+# holds SOC 2 / ISO 27001 / GDPR anything; until it is answered this key should stay empty.
 title	content/zh/applets/einvoice-generation-applet.md
 title	content/en/developers/api-reference/ucc/TelegramMessageController.md
 title	content/en/developers/api-reference/ucc/PredefinedMessageLineResourceController.md

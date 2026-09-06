@@ -602,12 +602,12 @@ Security Layers:
 5. IP Restrictions - Geographic access control
 ```
 
-**Compliance Features**
-- **GDPR Compliance** - Data privacy and protection
-- **SOX Compliance** - Financial reporting controls
-- **Industry Standards** - Sector-specific requirements
-- **Data Retention** - Automated archiving and deletion
-- **Right to be Forgotten** - Customer data deletion
+**Retention**
+- **Data Retention** - Archiving and deletion policies you configure
+
+For a Malaysian business the privacy regime is the Personal Data Protection Act 2010 (PDPA). These
+controls help you meet your own obligations under it; they are not a certification BigLedger
+holds.
 
 ## Troubleshooting and Performance Optimization
 

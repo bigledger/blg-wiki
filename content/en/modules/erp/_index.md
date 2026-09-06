@@ -304,7 +304,6 @@ Customer → Procurement → Manufacturing → POS → Management Analytics
 ## Performance and Scalability
 
 ### Enterprise-Grade Performance
-- **High availability** with 99.9% uptime
 - **Horizontal scaling** for growing user bases
 - **Load balancing** for peak performance
 - **Disaster recovery** with automated failover
@@ -323,10 +322,7 @@ Customer → Procurement → Manufacturing → POS → Management Analytics
 - **Data encryption** at rest and in transit
 - **Security monitoring** with threat detection
 
-### Regulatory Compliance
-- **SOX compliance** with automated controls
-- **GDPR/CCPA** data privacy protection
-- **Industry standards** (ISO 27001, PCI DSS)
+### Audit Evidence
 - **Audit trails** with complete transaction history
 
 ## Training and Support

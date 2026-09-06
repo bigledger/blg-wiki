@@ -266,7 +266,6 @@ weight: 10
 **A:** Technology concerns are completely valid. Here's how BigLedger addresses them:
 
 **Reliability Measures**:
-- **99.9% uptime**: System available 24/7/365
 - **Multiple data centers**: If one goes down, others take over
 - **Automatic backups**: Your data is backed up multiple times daily
 - **Redundancy**: Multiple copies of everything

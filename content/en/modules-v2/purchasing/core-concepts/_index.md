@@ -1,6 +1,6 @@
 ---
 title: "Core Concepts"
-description: "Fundamental architectural concepts of BigLedger's Purchasing Module — P2P document lifecycles, 3-way matching, and GRNI accruals."
+description: "Fundamental architectural concepts of BigLedger's Purchasing Module — P2P document lifecycles, knock-off, and which document moves the stock."
 weight: 20
 bookCollapseSection: false
 ---
@@ -21,39 +21,54 @@ Procurement transactions follow a structured 5-step lifecycle. Each step represe
 
 ---
 
-## 3-Way Invoice Matching Mechanics
+## Knock-off — how a PO, a GRN and an invoice are tied together
 
-To prevent unauthorized payments and billing errors, BigLedger enforces **3-Way Invoice Matching** before an Accounts Payable invoice can be approved for payment disbursement:
+BigLedger has **no three-way matching engine**. There is no tolerance setting, no variance check and
+nothing that blocks a supplier invoice because its price or quantity differs from the purchase order.
+What it has instead is **knock-off**: when you create a Purchase Invoice you open its *KO For* tab,
+pick a finalised Purchase Order or Purchase GRN, and BigLedger copies that document's supplier, lines
+and prices into your invoice. Only finalised source documents that are not already fully knocked off
+appear in the list.
 
+```mermaid
+flowchart LR
+  PO["Purchase Order<br/>(Internal)"] -->|knock-off| PI["Purchase Invoice<br/>(Internal)"]
+  GRN["Purchase GRN<br/>(Internal)"] -->|knock-off| PI
+  PI -->|FINAL| GL["Creditor + purchase<br/>+ input tax journal"]
+  PI -->|FINAL| STK["Stock in"]
 ```
-          ┌─────────────────────────────────────────────────────────┐
-          │                  Purchase Order (PO)                    │
-          │             (Approved Quantities & Prices)              │
-          └────────────────────────────┬────────────────────────────┘
-                                       │
-                ┌──────────────────────┴──────────────────────┐
-                ▼                                             ▼
-┌───────────────────────────────┐             ┌───────────────────────────────┐
-│     Goods Received Note (GRN) │             │       Supplier Invoice        │
-│    (Physical Stock Received)  │<───────────>│    (Vendor Billing Demand)    │
-└───────────────────────────────┘  3-Way Match└───────────────────────────────┘
-```
 
-1. **PO vs. GRN:** Verifies that the warehouse physically received the exact quantities ordered.
-2. **PO vs. Invoice:** Verifies that the supplier billed the exact unit prices agreed upon in the purchase order.
-3. **GRN vs. Invoice:** Verifies that the invoice only bills for items actually delivered to the warehouse.
+Matching, in other words, is something **you** do by eye when you compare the copied lines against the
+paper the supplier sent. If the supplier billed a different price, you change the line and the invoice
+finalises anyway. Controls over that live in permissions — who may edit a price, who may finalise — not
+in a matching rule.
+
+> **The Knock Off Settings screen is inert.** The Purchase Invoice applet has a *settings/knock-off-settings*
+> route with switches named `KNOCK_OFF_BY_PURCHASE_GRN`, `KNOCK_OFF_BY_PURCHASE_ORDER` and similar. Its
+> menu entry is commented out and nothing outside that screen reads the values. The *KO For* tab offers
+> Purchase GRN and Purchase Order whatever they are set to.
 
 ---
 
-## Understanding GRNI (Goods Received Not Invoiced)
+## Which document moves the stock
 
-When goods arrive at the warehouse, inventory balance increases immediately via the **Goods Received Note (GRN)**. However, the supplier's formal invoice may not arrive until weeks later. 
+This is the part most new users get backwards, and it decides what your balance sheet shows between
+receipt and billing.
 
-To maintain accurate financial statements, BigLedger uses a clearing account called **Goods Received Not Invoiced (GRNI)**:
-- **Upon GRN Execution:** Debit Inventory Asset, Credit GRNI Liability Clearing Account.
-- **Upon Invoice Receipt:** Debit GRNI Liability Clearing Account, Credit Accounts Payable.
+In the **standard** flow the **invoice** moves the stock, not the receipt. Purchase GRN (Internal)
+records that goods arrived, but its quantity signum is `0` — it books nothing into inventory. Purchase
+Invoice (Internal) has quantity signum `+1`: finalising it books the quantities in and updates the
+item's last purchase cost. So between delivery and billing, the goods are physically in your warehouse
+and absent from your stock ledger.
 
-This ensures your balance sheet reflects inventory asset value immediately upon physical receipt without waiting for vendor invoices.
+If you need stock booked at receipt and billed later, use the **alternative pair** instead: Purchase GRN
+Stock In (Internal) to receive, and Purchase Invoice No Stock In (Internal) to bill. Choose one pair per
+flow and stay with it — mixing them double-counts.
+
+| You want stock to move at… | Receive with | Bill with |
+|---|---|---|
+| Invoice (standard) | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) |
+| Receipt | [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/) | [Purchase Invoice No Stock In (Internal)](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/) |
 
 ---
 

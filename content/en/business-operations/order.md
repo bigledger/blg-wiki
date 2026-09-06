@@ -323,18 +323,13 @@ BigLedger's Order Management System (OMS) provides end-to-end visibility and con
 ## Compliance & Security
 
 ### Data Protection
-- PCI DSS compliance for payment data
-- GDPR compliance for customer data
-- SSL encryption for data transmission
+- TLS encryption for data in transit
 - Role-based access control
 - Audit trail for all changes
 
-### Regional Compliance
-- Malaysian e-commerce regulations
-- GST/SST tax compliance
-- SIRIM certification for certain products
-- Halal certification tracking
-- MDEC MSC status compliance
+### Malaysian Requirements
+- SST tax codes and returns
+- LHDN e-Invoice (MyInvois) submission
 
 ## Best Practices
 

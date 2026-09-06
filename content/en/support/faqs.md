@@ -84,13 +84,16 @@ BigLedger supports various industries including:
 - Professional Services
 - Healthcare
 
-### Is BigLedger compliant with Malaysian regulations?
+### Does BigLedger support Malaysian tax and e-invoicing requirements?
 
-Yes, BigLedger is fully compliant with:
-- GST/SST requirements
-- LHDN MyInvois e-invoicing
-- MDEC PEPPOL standards
-- Malaysian accounting standards
+Yes:
+- SST (and the earlier GST) tax codes, tax handling and returns
+- LHDN MyInvois e-invoice submission
+- Peppol — BigLedger operates as an accredited Peppol Access Point on the Malaysian network
+- Charts of accounts and financial statements in the shapes Malaysian accountants expect
+
+Supporting a requirement is not the same as certifying you against it. Your own filings remain
+your responsibility.
 
 ### What are the system requirements?
 
@@ -102,12 +105,14 @@ BigLedger is cloud-based and requires:
 
 ### How secure is my data?
 
-BigLedger implements enterprise-grade security:
-- 256-bit SSL encryption
-- Daily automated backups
-- ISO 27001 compliant data centers
-- Role-based access control
-- Two-factor authentication available
+BigLedger is a cloud service with:
+- TLS encryption on all traffic between your browser and the platform
+- Role-based access control, down to applet and document level
+- Two-factor authentication
+
+We do not publish a security certification here. If you need an ISO 27001 or SOC 2 statement, a
+completed vendor security questionnaire, or a data-processing agreement under Malaysia's Personal
+Data Protection Act 2010 (PDPA), ask your BigLedger contact.
 
 ### Can I integrate BigLedger with other systems?
 

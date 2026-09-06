@@ -1,6 +1,6 @@
 ---
 title: "Best Practices"
-description: "Operational recommendations for cashier drawer controls, credit limit management, and revenue reconciliation."
+description: "Operational recommendations for cashier drawer controls, customer credit, and revenue reconciliation."
 weight: 60
 bookCollapseSection: false
 ---
@@ -12,7 +12,7 @@ Follow these operational best practices to maintain inventory accuracy, prevent 
 - **Blind End-of-Day Counts:** Implement blind cash counting for Z-reports in the [Daily Cashier Report Applet](/applets/sales-workflow/daily-cashier-report-applet/) where cashiers enter actual drawer counts without seeing expected system totals first.
 
 ## 2. Commercial Credit Control
-- **Strict Credit Limit Enforcement:** Configure hard blocks on Sales Order creation whenever a customer's total outstanding invoices exceed approved credit limits or payment terms.
+- **Watch customer credit yourself:** BigLedger shows a customer's credit availability on the Sales Order screen, but it is a read-only figure — there is no hard block that stops an order when the limit is exceeded. Control this with who is permitted to finalise a credit sale, and review the Debtor Report on a schedule.
 - **Control discount authority with permissions:** quotations have no approval workflow, so keep large-discount authority to the roles that should have it rather than expecting the system to route a quotation for sign-off.
 
 ## 3. Inventory Reconciliation

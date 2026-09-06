@@ -26,7 +26,7 @@ The Financial Accounting Module provides comprehensive, standards-compliant acco
 - **[SST Applet](/applets/sst-applet/)** - Malaysian SST reporting
 - **[Cashbook Applet](/applets/cashbook-applet/)** - Cash management
 - **[Organization Applet](/applets/organization-applet/)** - Multi-entity
-- **[Customer Maintenance](/applets/customer-maintenance-applet/)** - AR master data
+- **[Customer Maintenance](/applets/master-data/customer-maintenance-applet/)** - AR master data
 - **[Supplier Maintenance](/applets/supplier-maintenance-applet/)** - AP master data
 
 ### Optional Enhancement Applets
@@ -486,7 +486,6 @@ Easy migration from popular accounting systems:
    - Encryption at rest and in transit
    - Regular backups
    - Disaster recovery plan
-   - GDPR/CCPA compliance
 
 ## Troubleshooting
 
@@ -500,7 +499,7 @@ Easy migration from popular accounting systems:
 | Performance issues | Large data volume | Implement archiving, optimize queries |
 | Tax calculation errors | Outdated tax tables | Update tax configuration, verify rates |
 
-## Regulatory Compliance
+## Accounting Standards
 
 ### Supported Standards
 - **US GAAP**: Generally Accepted Accounting Principles
@@ -508,13 +507,6 @@ Easy migration from popular accounting systems:
 - **UK GAAP**: UK accounting standards
 - **IND AS**: Indian Accounting Standards
 - **PRC GAAP**: Chinese accounting standards
-
-### Compliance Features
-- **SOX Compliance**: Sarbanes-Oxley controls
-- **GDPR**: Data privacy compliance
-- **PCI DSS**: Payment card security
-- **HIPAA**: Healthcare data protection
-- **ISO 27001**: Information security
 
 ## Support & Resources
 

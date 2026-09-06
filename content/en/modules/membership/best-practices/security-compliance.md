@@ -314,23 +314,26 @@ Offline Mode:
 
 **Data at Rest**
 
+Use this as the checklist to work through with your platform and integration partners when you
+design the programme. It describes the controls a membership programme needs — it is not a
+warranty BigLedger gives on your behalf, and it is not a certification.
+
 ```yaml
 Database Encryption:
-  - Full database encryption (AES-256)
+  - Encryption at rest enabled
   - Encrypted backups
-  - Key rotation: Quarterly
+  - Documented key rotation schedule
   - Key management: HSM or cloud KMS
 
-Field-Level Encryption (Sensitive Fields):
-  - Phone numbers: Encrypted
-  - Email addresses: Encrypted
-  - Addresses: Encrypted
-  - Dates of birth: Encrypted
-  - Payment information: Encrypted (PCI-DSS)
+Sensitive Fields to Protect:
+  - Phone numbers
+  - Email addresses
+  - Addresses
+  - Dates of birth
+  - Payment card data: do not store it - hold a token from your acquirer instead
 
 Encryption Keys:
   - Separate encryption keys per environment
-  - Keys stored in hardware security module
   - Access to keys strictly controlled
   - Key rotation without downtime
 ```
@@ -444,6 +447,10 @@ Log Protection:
 ## Compliance Framework
 
 ### Regulatory Compliance
+
+These obligations fall on **you** as the operator of the membership programme. BigLedger gives you
+controls to help you meet them; it does not certify you against any of them, and it holds no
+certification of its own that transfers to you.
 
 **Personal Data Protection Act (PDPA) - Malaysia**
 

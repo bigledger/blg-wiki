@@ -21,7 +21,7 @@ The E-Commerce Module flexibly supports diverse digital sales models across cons
 **Business Scenario:** A wholesale distributor provides corporate clients with a password-protected ordering portal featuring customized contract pricing, credit term validation, and bulk order upload.
 
 - **Primary Applets:** [CP-Commerce Admin Applet](/applets/ecommerce/cp-commerce-admin-applet/), [Sales Order Applet](/applets/sales-workflow/internal-sales-order-applet/), [Customer Maintenance Applet](/applets/master-data/customer-maintenance-applet/)
-- **Operational Flow:** Corporate buyer logs in → system displays client-specific pricebook → buyer submits bulk order against approved credit limit → Sales Order routed for fulfillment.
+- **Operational Flow:** Corporate buyer logs in → system displays client-specific pricebook → buyer submits a bulk order, with the account's credit availability shown for the seller to check → Sales Order routed for fulfillment.
 
 ---
 

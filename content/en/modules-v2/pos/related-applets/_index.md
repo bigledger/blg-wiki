@@ -23,6 +23,6 @@ The Sales & POS Module integrates seamlessly with core and supporting applets ac
 
 ## Ecosystem Master Data Dependencies
 
-- **[Customer Maintenance Applet](/applets/customer-maintenance-applet/)**: Customer master accounts, shipping addresses, and credit terms.
-- **[Doc Item Maintenance Applet](/applets/doc-item-maintenance-applet/)**: Item master data, SKUs, and unit of measure definitions.
-- **[Pricebook Applet](/applets/pricebook-applet/)**: Customer tier pricing and promotional discount matrices.
+- **[Customer Maintenance Applet](/applets/master-data/customer-maintenance-applet/)**: Customer master accounts, shipping addresses, and credit terms.
+- **[Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/)**: Item master data, SKUs, and unit of measure definitions.
+- **[Pricebook Applet](/applets/master-data/pricebook-applet/)**: Customer tier pricing and promotional discount matrices.

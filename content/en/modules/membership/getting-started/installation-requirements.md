@@ -129,7 +129,7 @@ Each membership is linked to a customer record. Clean, well-structured customer 
 - Customer data quality directly impacts member experience
 - Ensure adequate fields for member communications (email, mobile)
 
-**Reference:** [Customer Maintenance Applet Documentation](/applets/customer-maintenance-applet/)
+**Reference:** [Customer Maintenance Applet Documentation](/applets/master-data/customer-maintenance-applet/)
 
 ### 3. Doc Item Maintenance Applet
 
@@ -181,7 +181,7 @@ Memberships are represented as FI-ITEM (Financial Item) products. Proper item ma
 - Upgrade/downgrade products
 - Redeemable reward items
 
-**Reference:** [Doc Item Maintenance Applet Documentation](/applets/doc-item-maintenance-applet/)
+**Reference:** [Doc Item Maintenance Applet Documentation](/applets/master-data/doc-item-maintenance-applet/)
 
 ### 4. Pricebook Applet
 
@@ -230,7 +230,7 @@ Pricebook enables tier-based benefits—Gold members get better pricing than Bro
 - VIP member pricing (e.g., 25% discount)
 - Member-exclusive product pricing
 
-**Reference:** [Pricebook Applet Documentation](/applets/pricebook-applet/)
+**Reference:** [Pricebook Applet Documentation](/applets/master-data/pricebook-applet/)
 
 ### 5. Tax Configuration Applet
 
@@ -403,7 +403,7 @@ Reporting:
 ✓ Program performance metrics
 ```
 
-**Reference:** [Membership Admin Console Documentation](/applets/membership-admin-console-applet/)
+**Reference:** [Membership Admin Console Documentation](/applets/membership/membership-admin-applet/)
 
 ## Optional Integration Modules
 

@@ -4,19 +4,17 @@ description: "Unified customer relationship management engine managing omnichann
 weight: 46
 ---
 
-The **Digital CRM Module** is BigLedger's customer engagement and omnichannel communication engine. It unifies multi-channel customer interactions across WhatsApp, email, social messaging, live chat, and telephony via the Unified Contact Center (UCC), automating marketing drip campaigns, event management, and AI-driven customer sentiment analytics.
+The **Digital CRM Module** is BigLedger's customer engagement and omnichannel communication engine. It unifies multi-channel customer interactions across WhatsApp, email, social messaging, live chat, and telephony via the Unified Contact Center (UCC), automating marketing drip campaigns, event calendars, and customer analytics.
 
 ## Architecture & Data Flow
 
 Digital CRM operates on top of core customer master data. It captures every customer touchpoint across sales, support tickets, webstore visits, and event registrations, feeding behavioral insights into AI analytics to trigger automated engagement workflows.
 
-![ERP Digital CRM Architecture](/images/crm-digital/crm_architecture.png)
-
 | Architecture Layer | System Component | Primary Role in CRM Operations |
 |-------------------|------------------|--------------------------------|
 | **Omnichannel Contact Center** | [Unified Contact Center UCC Applet](/applets/crm/unified-contact-center-ucc-applet/) | Unified inbox for WhatsApp, Live Chat, Email, and VoIP support ticket management. |
 | **Marketing & Engagement** | [Engagement Applet](/applets/crm/engagement-applet/) | Automated customer journeys, broadcast messaging campaigns, and lead nurturing sequences. |
-| **Event Management** | [Events Management Applet](/applets/crm/events-management-applet/) | Workshop and webinar registrations, ticketing, attendance QR scanning, and feedback loops. |
+| **Event Management** | [Event Management Applet](/applets/crm/events-management-applet/) | Calendars, the events on them, and the members and participants linked to each. Costs reach an event through staff claim lines, which the Event Expense Report reads. |
 | **AI Customer Intelligence** | [AI Customer Analytics Applet](/applets/crm/ai-customer-analytics-applet/) | Predictive churn modeling, customer sentiment analysis, and RFM segmentation. |
 
 ---
@@ -40,7 +38,7 @@ Confusing customer engagement channels leads to message spamming and fragmented 
 |-------------|--------------------------|-----------------------|-----------------------|
 | **Unified Inbox (UCC)** | Real-time 1-on-1 customer support across WhatsApp, Live Chat & Email | Chatbot auto-responders & canned replies | Customer Master Profile & Sales Order history |
 | **Drip Engagement** | Automated behavioral marketing sequences based on customer actions | Triggered drip emails and SMS broadcasts | E-Commerce checkout & Membership tier upgrades |
-| **Events Ticketing** | Managing physical or virtual event registrations and ticket validation | Automated QR ticket issuing and reminder SMS | Membership points earning on attendance |
+| **Event Calendars** | Keeping a shared calendar of events and who is on each one | Event and participant records, linked to entities and employees | Staff claim lines tagged to an event, read back by the Event Expense Report |
 | **AI Sentiment Analytics** | Analyzing customer feedback and conversation sentiment | Machine learning churn prediction & scoring | Sales retention alerts & support escalation |
 
 ---
@@ -51,7 +49,7 @@ Confusing customer engagement channels leads to message spamming and fragmented 
 |--------|-----------------------------|
 | [Unified Contact Center UCC Applet](/applets/crm/unified-contact-center-ucc-applet/) | Omnichannel contact center hub — WhatsApp, Live Chat, Email ticketing, and agent collision control |
 | [Engagement Applet](/applets/crm/engagement-applet/) | Automated customer journey builder, broadcast messaging campaigns, and lead scoring |
-| [Events Management Applet](/applets/crm/events-management-applet/) | Event landing page builder, ticketing, QR check-in scanning, and post-event surveys |
+| [Event Management Applet](/applets/crm/events-management-applet/) | Calendars, events, participants and entity links, plus a claim-based Event Expense Report |
 | [AI Customer Analytics Applet](/applets/crm/ai-customer-analytics-applet/) | Predictive AI analytics, sentiment scoring, RFM segmentation, and customer lifetime value (CLV) models |
 
 ---
@@ -73,7 +71,7 @@ Confusing customer engagement channels leads to message spamming and fragmented 
 - [ ] WhatsApp Business API, Email SMTP gateways, and Live Chat widgets connected in UCC
 - [ ] Support ticket routing rules and agent assignment queues configured
 - [ ] Customer engagement broadcast templates approved by compliance
-- [ ] Event registration landing pages and QR check-in hardware verified
+- [ ] Event calendars created and the members who may see them assigned
 - [ ] AI sentiment analysis models trained on historical customer conversation logs
 
 ---

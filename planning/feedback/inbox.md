@@ -1832,3 +1832,182 @@ same pass under ADR-0008; the rest are open.*
         carry obviously-fake names (`John Cena`, `testaddd`, `customersupplier`) and are safe.
       → note: the top-bar avatar photograph appears in every one of them; that is Q-0100, not a
         per-image decision.
+
+### compliance and certification claims — swept 2026-09-06 (27 files, en/zh/ms/ar)
+*Corrected in place under ADR-0008 by the compliance-claim correction unit. Full per-claim table
+and evidence: `planning/drafts/2026-09-06-compliance-claim-sweep.md`. Nothing unpublished.*
+
+- [x] F-0462 (2026-09-06) **Pages claimed BigLedger holds certifications nobody has evidenced.**
+      SOC 2 Type II, ISO 27001, ISO 9001, ISO 20000, PCI DSS, HIPAA, SOX, GDPR, CCPA, eIDAS and
+      E-SIGN appeared as feature bullets on 20 English pages and 7 translated ones — the same class
+      that got `developers/architecture/` unpublished and that Q-0006 still asks about.
+      Worst instances: `business-operations/dashboard.md:196` "SOC 2 Type II certified
+      infrastructure"; `support/beginner-guide/technical-concerns.md:64-68` a four-line
+      "Compliance and Certifications" list (ISO 27001 / SOC 2 / GDPR / PDPA); `e-invoice-peppol.md:324-331`
+      "ISO 27001 Certified · LHDN Approved Solution · PDPA Compliant"; and the Chinese UCC applet
+      FAQ `zh/applets/unified-contact-center-ucc-applet.md:621` "银行级加密，ISO 27001认证，GDPR合规"
+      whose English twin says none of it.
+      → done: every certification bullet removed. Where a reader was asking the question directly
+        (`faqs.md`, `platform-overview.md`, `technical-concerns.md`) the answer was rewritten to say
+        we publish no certification and to ask their BigLedger contact — better than a silent gap.
+      → questions: Q-0006 (re-scoped with the measured blast radius), Q-0136 (LHDN "Approved
+        Solution"; may we name the host provider), P-0121 (closed out)
+
+- [x] F-0463 (2026-09-06) **"99.9% uptime SLA" and "99.99% uptime SLA" published on six pages.**
+      `e-invoice-peppol.md:116` + its Chinese twin, `business-operations/dashboard.md:189`,
+      `modules/erp/_index.md:307`, `user-guide/getting-started/platform-overview.md:67,276`,
+      `support/beginner-guide/technical-concerns.md:539-545` ("Maximum downtime: Less than 9 hours
+      per year", "Actual uptime: Typically exceeds 99.95%"),
+      `support/beginner-guide/getting-started.md:269`, `membership/core-concepts/membership-tiers.md:501`.
+      An SLA is a contractual commitment and nobody could point at where we make it.
+      → done: all removed. `technical-concerns.md` now says plainly that we do not publish an uptime
+        SLA on the wiki and that an availability guarantee is a commercial term.
+      → question: Q-0136(c). Same family as Q-0072 (the zh home page's "99.9% uptime SLA guarantee")
+
+- [x] F-0464 (2026-09-06) **"Bank-level encryption (AES-256)" and "256-bit SSL encryption" are
+      wrong, not just unevidenced.** `akaun.com` negotiates TLS 1.3 with `TLS_AES_128_GCM_SHA256`
+      (`openssl s_client`, 2026-09-06) — AES-**128**. Published at
+      `user-guide/getting-started/platform-overview.md:369`, `support/faqs.md:106`,
+      `support/beginner-guide/technical-concerns.md:34`,
+      `user-guide/basic-operations/document-item-maintenance.md:283` ("AES-256 encryption for all
+      document storage and transmission"), `business-operations/dashboard.md:192` and
+      `order.md:328`, `modules/e-invoice/_index.md:219`, plus the membership best-practices pages
+      (×2 dirs) presenting "Full database encryption (AES-256)" and HSM key storage as fact.
+      → done: replaced with what is measurable — "encrypted with TLS", and for Peppol "exchanged
+        over AS4" (`kb/topics/e-invoice-peppol.md:49`). The membership blocks were reframed as a
+        checklist of what to require of a platform, not a description of what ours does.
+
+- [x] F-0465 (2026-09-06) **GDPR was invoked where PDPA is the real obligation.** Eleven pages
+      framed European law as the governing regime for a Malaysian customer — including
+      `modules/digital-crm/_index.md:250` "Right to be Forgotten: GDPR compliance",
+      `user-guide/reports-analytics/_index.md:606`, `modules/sales-crm/_index.md:287`,
+      `modules/crm.md:85` "Compliance: GDPR, CAN-SPAM support" (and its zh/ms/ar twins).
+      → done: GDPR removed or scoped ("If You Also Serve EU Customers"), and the Malaysian regime
+        named as the Personal Data Protection Act 2010. The membership pages' PDPA sections were
+        kept and retitled so the duty visibly sits on the reader ("Your PDPA Obligations"), not on
+        BigLedger — we describe what the product does, we do not assert PDPA compliance either.
+
+- [x] F-0466 (2026-09-06) **Unevidenced Malaysian designations and a customer count.**
+      `e-invoice-peppol.md:328` "LHDN Approved Solution" and `:172` "100% LHDN compliance";
+      `business-operations/order.md:335-337` "SIRIM certification for certain products", "Halal
+      certification tracking", "MDEC MSC status compliance";
+      `user-guide/getting-started/platform-overview.md:26` "Over 5,000 Malaysian SMEs trust
+      BigLedger" (`app_tenant_hdr` holds 83 active tenants — same family as Q-0072).
+      → done: all removed. The one accreditation that IS evidenced — BigLedger operating as a
+        Peppol Access Point, filing OpenPeppol TSR/EUSR as a service provider
+        (`kb/topics/mypeppol-admin-applet.md:28`, `kb/topics/e-invoice-peppol.md:49`) — was kept and
+        rewritten into a sourced paragraph on both the English and Chinese pages.
+      → question: Q-0136(a)
+
+- [x] F-0467 (2026-09-06) **Lint added so this class cannot recur.** `tests/content-lint.sh` gains
+      three checks — certification-claim shape, uptime SLA, cryptography claims — each skipping
+      `draft: true` pages and honouring a new `certification` key in `tests/lint-allowlist.tsv`.
+      The key is empty by design and the allowlist header says it stays empty until Q-0006 is
+      answered; a confirmed certification is added there with issuer, certificate number and expiry.
+      Regression-tested against a probe page carrying all ten removed shapes in English and Chinese.
+
+## From the modules/ + modules-v2/ duplication audit (2026-09-06)
+
+Full report: `planning/reviews/2026-09-06-modules-duplication-audit.md`. Items marked **[fixed]** were
+corrected in this pass; the rest are recorded, not touched.
+
+- [x] F-0462 (2026-09-06) **[fixed] Event Management credited with four features it does not have.**
+      `modules-v2/crm-digital/` said the applet is an "Event landing page builder, ticketing, QR
+      check-in scanning, and post-event surveys" across `_index.md` (L19, L43, L54, L76),
+      `configuration/_index.md` (L46, L67), `reports/_index.md` (L19) and `related-applets/_index.md`
+      (L14). The sourced applet page `applets/crm/events-management-applet.md`
+      (`applet_code: eventManagementApplet`) says it is calendars, events, participants, entity links
+      and a claim-based Event Expense Report — "master data plus links: no journal, no posting status,
+      no stock" — and the words *ticket*, *QR*, *landing* and *survey* appear nowhere in it. Rewritten
+      to match. Also corrected the name: the registry says **Event** Management Applet, not *Events*.
+- [x] F-0463 (2026-09-06) **[fixed] Two deposit applets and an investment applet invented from one
+      registry row.** `modules-v2/financial-accounting/_index.md` L169–171 listed Investment Applet,
+      MM Deposit Applet and Deposit Applet as three things, with "market value and gain/loss tracking"
+      and "security deposits, utilities … reclaim tracking". There is one row — `depositApplet |
+      Deposit Applet | ACTIVE` — one repo, and three menus, none of which mention any of that
+      (lane-4 run 30). Collapsed to one row; L252/253 and L344 repointed.
+- [x] F-0464 (2026-09-06) **[fixed] Links to an already-archived applet page.** Two references to
+      `/applets/finance/revenue-management-applet/` in `modules-v2/financial-accounting/_index.md`
+      (L177, L333) — that page was archived to `planning/archive/2026-09-06-utm-tender-pages/`, so
+      both 404'd. Removed.
+- [x] F-0465 (2026-09-06) **[fixed] The whole three-way-matching doctrine in `modules-v2/purchasing/`.**
+      Seven pages asserted "BigLedger enforces 3-Way Invoice Matching before an AP invoice can be
+      approved", with an ASCII "3-Way Match" diagram, a "tolerance thresholds" checklist item and a
+      test that "price/quantity variances block unauthorized posting". No such engine exists: the
+      sourced `applets/finance/internal-purchase-invoice-applet.md` shows the mechanism is **knock-off**
+      (the *KO For* tab copies a finalised PO or GRN into the invoice), the `settings/knock-off-settings`
+      switches "are read by nothing", and the FINAL validation list contains no variance check.
+      Replaced with a sourced knock-off section and a mermaid fence.
+- [x] F-0466 (2026-09-06) **[fixed] The GRNI section was backwards.** Same page claimed "inventory
+      balance increases immediately via the Goods Received Note" and "Upon GRN Execution: Debit
+      Inventory Asset". In the standard pair the **invoice** moves the stock — Purchase GRN (Internal)
+      has quantity signum 0. Replaced with a "which document moves the stock" section naming both
+      pairs (GRN + Invoice, or GRN Stock In + Invoice No Stock In).
+- [x] F-0467 (2026-09-06) **[fixed] Credit-limit hard block.** `modules-v2/pos/best-practices/_index.md:15`
+      instructed readers to "Configure hard blocks on Sales Order creation whenever a customer's total
+      outstanding invoices exceed approved credit limits". `EntityCreditAvailabilityService` is a
+      read-only query for display. Fixed there and in `pos/configuration` (L55, L60), `pos/_index.md`
+      (L54, L88) and `ecommerce/use-cases` (L24).
+- [x] F-0468 (2026-09-06) **[fixed] Five generated infographics survived the 128-image quarantine**, all
+      in `modules-v2/`: `crm_architecture.png`, `crm_lifecycle.png`, `crm_configuration_workflow.png`,
+      `hr_lifecycle.png`, `hr_configuration_workflow.png`. Raster diagrams against F-0381, **and they
+      carry the fabricated claims in the pixels** — "Event Ticketing", "Ticketing, Workshop Pages &
+      Attendance QR Check-in", "Predictive Churn Scoring", "Biometric terminal & mobile GPS attendance
+      collection". `hr_lifecycle.png` also has overlapping text ("hours &Approved"). All five
+      references removed; **the files are still in `static/images/` and need deleting by someone with
+      that authority.**
+- [x] F-0469 (2026-09-06) **[fixed] Broken applet links missing their category folder**, repaired in
+      both trees in pairs so the 21 byte-identical membership pages stay identical:
+      `/applets/doc-item-maintenance-applet`, `/applets/pricebook-applet`,
+      `/applets/customer-maintenance-applet` → `/applets/master-data/…`;
+      `/applets/membership-admin-console-applet` → `/applets/membership/membership-admin-applet`.
+      `modules-v2/` broken links went **11 → 0**.
+- [x] F-0470 (2026-09-06) **[fixed] Hextra violation**: `<div style="margin-bottom: 2rem;">` wrapping
+      the callout in `modules-v2/_index.md`. Removed.
+- [ ] F-0471 (2026-09-06) **`modules/` has 206 broken internal links across 133 distinct targets** —
+      and this is *not* a link-repair job. 89 of the targets are `/applets/…`; 16 are moved pages, but
+      **73 point at applets that exist nowhere on the site and have no row in `bl_applet_hdr`**.
+      `erp/_index.md` alone carries 41 of them, `accounting/_index.md` 23. The remaining 48 are dead
+      `/guides/` and `/user-guide/` targets — `hr-payroll/_index.md` loses its entire nine-link
+      "Related Documentation" block. Blocked on Q-0038: repairing links into fabricated applets is not
+      a repair.
+- [ ] F-0472 (2026-09-06) **The `organisation-applet` copy-paste bug — ~35 links that resolve to the
+      wrong page.** In `modules/accounting/_index.md:333–342` (8), `erp/_index.md:201–214` (10),
+      `it-ce/:101–104`, `service-industry/:113–116`, `digital-crm/:65–67` and `drop-shipping/:53–56`,
+      the labels *Customer Maintenance*, *Supplier Maintenance*, *Employee Maintenance*, *Chart of
+      Accounts*, *Tax Configuration*, *Cashbook* and *Tenant Admin* **all link to
+      `/applets/organization-applet/`**. Because that alias resolves, no link checker catches it;
+      roughly three quarters of the 35 land somewhere other than what their label promises. Someone
+      bulk-pasted one working URL under every dependency name, in six files.
+- [ ] F-0473 (2026-09-06) **Four URL collisions inside `modules/`.** `financial-accounting.md` and
+      `financial-accounting/_index.md` both render to `/modules/financial-accounting/`; same for
+      `inventory`, `pos` and `manufacturing`. Both members of each pair carry the same title and the
+      same weight, so one of each is silently unreachable and nobody can say which.
+- [ ] F-0474 (2026-09-06) **Three module pages are applet manuals, in flat violation of the CLAUDE.md
+      module/applet rule.** (a) `modules/budgetary.md` — 1,052 lines, **1.0 MB**, 154 table rows, 35
+      embedded screenshots, **zero internal links**, duplicating the sourced
+      `applets/finance/budgetary-applet.md`. (b) `modules/cp-commerce/_index.md` — 843 lines of which
+      775 (92%) are a widget-by-widget reference for widgets 1–28, duplicating the audited widget
+      catalogue in `applets/ecommerce/cp-commerce-admin-applet.md`; **the two catalogues disagree** —
+      only ~7 of 28 map cleanly and ~19 appear in no sourced catalogue. Its own heading at L15 reads
+      "Who Uses This **Applet**", and L34–43 is a raw `<div style=…>` YouTube embed. (c)
+      `modules/journal.md` — 7 field tables (L235, 273, 283, 305, 336, 420, 600), over the 3-table
+      self-check limit.
+- [ ] F-0475 (2026-09-06) **Established facts still contradicted in `modules/`** (left alone pending
+      Q-0038): three-way matching at `procurement.md:38,46`, `purchasing/_index.md:35,108`,
+      `financial-accounting.md:146`, `financial-accounting/_index.md:41,42,151`,
+      `accounting/_index.md:96`; credit limits as a control at `accounting/_index.md:80–89` and
+      `financial-accounting.md:125,170`; approvals asserted on document types that have none at
+      `hr-payroll/_index.md:134,142–145,185,212,262`, `hr.md:101`, `procurement.md:17,49,69`,
+      `service-industry/:42,225,341`, `budgetary.md:844`, and `journal.md:257` (which contradicts its
+      own correct statement at L577–581); Workflow Design described as an active engine at
+      `erp/_index.md:97–104` and `it-ce/:72–82`; PGRN listed as a budget-utilising document at
+      `budgetary.md:858` when the registered GRN applets are inert.
+- [ ] F-0476 (2026-09-06) **`modules-v2/` still lists eleven applets with no registry row**, left in
+      place because lane 2 has already asked whether the *applet pages* themselves should go (its items
+      14 and 17) and removing the module links first would orphan them. In descending reference count:
+      **AI Customer Analytics Applet** (8 refs, 6 `crm-digital/` pages), **Admin Time Attendance
+      Applet** (8 refs — and it is the *only* core applet the entire HR module lists), **General Ledger
+      Applet** (7), **Seller Admin Applet** (6), **Vote Book Applet** (3), **Transaction Reconciliation
+      Applet** (2), **Accounts Receivable Applet** (1), plus E-Mandate and Group Maintenance (ADR-0007,
+      still `proposed`). When those pages are decided, these links go in the same commit.

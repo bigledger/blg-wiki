@@ -237,9 +237,11 @@ Unified Customer Intelligence Platform
 ## Security and Privacy
 
 ### Data Protection
-- **GDPR Compliance**: Complete data privacy and protection compliance
-- **CCPA Compliance**: California Consumer Privacy Act adherence
-- **Data Encryption**: End-to-end encryption for customer data
+
+**A note on privacy law**: for a Malaysian business the governing regime is the Personal Data
+Protection Act 2010 (PDPA), not GDPR. The features below help you meet your own obligations under
+it — they are not a statement that BigLedger holds a privacy or security certification.
+
 - **Access Controls**: Role-based permissions and data access controls
 - **Audit Trails**: Complete tracking of data access and modifications
 
@@ -247,7 +249,6 @@ Unified Customer Intelligence Platform
 - **Consent Tracking**: Record and manage customer communication preferences
 - **Opt-out Management**: Automated handling of unsubscribe requests
 - **Data Retention**: Automated data retention policy enforcement
-- **Right to be Forgotten**: GDPR compliance for data deletion requests
 - **Privacy Dashboards**: Customer self-service privacy management
 
 ## Training and Adoption

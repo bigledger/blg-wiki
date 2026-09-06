@@ -721,8 +721,6 @@ Financial Reports & Analytics
 ### Compliance Support
 - Multi-standard accounting compliance (GAAP, IFRS, etc.)
 - Regulatory reporting capabilities
-- SOX compliance features
-- Industry-specific compliance support
 - Real-time monitoring and alerting
 
 ## Related Documentation

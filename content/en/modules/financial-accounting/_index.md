@@ -63,7 +63,7 @@ The Financial Accounting Module delivers:
 ### Customer & Vendor Management
 
 {{< cards >}}
-  {{< card link="/applets/customer-maintenance-applet/" title="Customer Maintenance Applet" subtitle="Complete customer master data management and credit control" >}}
+  {{< card link="/applets/master-data/customer-maintenance-applet/" title="Customer Maintenance Applet" subtitle="Complete customer master data management and credit control" >}}
   {{< card link="/applets/supplier-maintenance-applet/" title="Supplier Maintenance Applet" subtitle="Vendor master data and purchase management" >}}
 {{< /cards >}}
 
@@ -84,7 +84,7 @@ This module leverages essential Core Module applets:
 - **[Tenant Admin Applet](/applets/tenant-admin-applet/)** - System configuration and user management
 
 ### Document Management
-- **[Doc Item Maintenance Applet](/applets/doc-item-maintenance-applet/)** - Service items and non-inventory billing items
+- **[Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/)** - Service items and non-inventory billing items
 
 ## Implementation Approach
 

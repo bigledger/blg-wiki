@@ -630,7 +630,7 @@ The Journal Module integrates with applets that provide master data and transact
 
 **[Organisation Applet](/applets/organization-applet/)** - Company structures, branches, cost centers, segments
 
-**[Customer Maintenance Applet](/applets/customer-maintenance-applet/)** - Customer master data for sub-ledger tracking
+**[Customer Maintenance Applet](/applets/master-data/customer-maintenance-applet/)** - Customer master data for sub-ledger tracking
 
 **[Supplier Maintenance Applet](/applets/supplier-maintenance-applet/)** - Supplier master data for sub-ledger tracking
 

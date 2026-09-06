@@ -66,5 +66,5 @@ Before going live, complete these mandatory verification tests:
 
 - [ ] **Requisition Test:** Raise an internal requisition and take it to FINAL. If you configured Phase 3, also submit it for approval and confirm the level 1 approver receives the e-mail.
 - [ ] **PO & GRN Test:** Generate a Purchase Order, convert to Goods Received Note (GRN), and verify physical stock increases.
-- [ ] **3-Way Match Test:** Verify a supplier invoice against PO and GRN, ensuring price/quantity variances block unauthorized posting.
+- [ ] **Knock-off Test:** Finalise a Purchase Order, knock it into a Purchase Invoice from the *KO For* tab, and confirm the supplier, lines and prices copy across. BigLedger will not stop you changing a price — the check is yours to make.
 - [ ] **GL Reconciliation:** Verify GRNI accrual accounts debit and credit accurately upon GRN and Invoice finalization.

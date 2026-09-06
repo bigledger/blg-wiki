@@ -82,7 +82,7 @@ The BigLedger CRM module provides a comprehensive solution for managing customer
 - **Personalization**: Dynamic content
 - **Segmentation**: Target specific audiences
 - **Analytics**: Open rates, clicks, conversions
-- **Compliance**: GDPR, CAN-SPAM support
+- **Consent tracking**: record what each contact opted in to, and when
 
 ### 🎯 Customer Service
 

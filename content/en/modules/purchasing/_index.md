@@ -62,7 +62,7 @@ The Purchasing Module delivers:
 
 {{< cards >}}
   {{< card link="/applets/inv-item-maintenance-applet/" title="Inventory Item Maintenance Applet" subtitle="Purchase item specifications and supplier catalogs" >}}
-  {{< card link="/applets/pricebook-applet/" title="Pricebook Applet" subtitle="Supplier pricing and contract price management" >}}
+  {{< card link="/applets/master-data/pricebook-applet/" title="Pricebook Applet" subtitle="Supplier pricing and contract price management" >}}
 {{< /cards >}}
 
 ## Shared Core Dependencies

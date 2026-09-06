@@ -263,24 +263,20 @@ approval of a document.
 - Geographic location tracking for security purposes
 - Failed access attempt logging for security monitoring
 
-#### Regulatory Compliance Features
+#### Regulatory and Tax Requirements
 
-**Industry-Specific Compliance**:
-- **Financial Services**: Compliance with banking and financial regulations
-- **Healthcare**: HIPAA and medical record compliance requirements
-- **Manufacturing**: ISO standards and quality management compliance
-- **Government Contracting**: Federal and state regulatory compliance requirements
+- **Tax documentation**: GST/SST and international tax documentation requirements
+- **Local regulations**: Country and region-specific retention and numbering rules you configure
 
-**International Compliance**:
-- **GDPR Compliance**: European data protection and privacy requirements
-- **SOX Compliance**: Sarbanes-Oxley financial reporting requirements
-- **Local Regulations**: Country and region-specific compliance requirements
-- **Tax Compliance**: GST/SST and international tax documentation requirements
+For a Malaysian business the privacy regime is the Personal Data Protection Act 2010 (PDPA), not
+GDPR. BigLedger does not hold — and this page does not claim — HIPAA, SOX, GDPR or ISO
+certification. What the document workflow gives you is the audit trail and retention control you
+need to answer to your own regulator.
 
 ### Data Security and Protection
 
 **Advanced Security Features**:
-- **Encryption**: AES-256 encryption for all document storage and transmission
+- **Encryption in transit**: documents move between your browser and BigLedger over TLS
 - **Access Control**: Role-based access with granular permissions
 - **Digital Signatures**: Cryptographic signatures for document authentication
 - **Backup and Recovery**: Automated backup with point-in-time recovery capabilities
@@ -289,7 +285,6 @@ approval of a document.
 - **Data Anonymization**: Personal data protection for sensitive documents
 - **Retention Policies**: Automated document retention and deletion policies
 - **Consent Management**: Customer consent tracking for data usage
-- **Right to Deletion**: Compliance with data deletion requirements
 
 ---
 
@@ -304,12 +299,6 @@ approval of a document.
 - **Advanced Electronic Signatures**: Certificate-based signatures with identity verification
 - **Qualified Electronic Signatures**: Highest level of legal compliance and security
 - **Biometric Signatures**: Advanced signature capture with biometric validation
-
-**Legal Compliance**:
-- **eIDAS Compliance**: European electronic signature regulations
-- **E-SIGN Act Compliance**: United States electronic signature legislation
-- **Local Regulations**: Country-specific electronic signature requirements
-- **Industry Standards**: Sector-specific signature requirements and validation
 
 #### Signature Workflow Integration
 

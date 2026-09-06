@@ -23,7 +23,7 @@ lastUpdated: 2024-08-18
 BigLedger revolutionizes enterprise management by providing a Business Operating System (BOS) that functions like Android for your business operations. Instead of forcing you into rigid structures like traditional ERPs, BigLedger offers a flexible, applet-based architecture that adapts to your unique business needs.
 
 {{< callout type="info" >}}
-**🇲🇾 Malaysian Context**: BigLedger is specifically designed for Malaysian businesses, with built-in compliance for SST, e-Invoice (MyInvois), PEPPOL, and LHDN requirements. Over 5,000 Malaysian SMEs trust BigLedger for their operations.
+**🇲🇾 Malaysian Context**: BigLedger is specifically designed for Malaysian businesses, with built-in compliance for SST, e-Invoice (MyInvois), PEPPOL, and LHDN requirements.
 {{< /callout >}}
 
 ## 👥 Target Audience
@@ -64,7 +64,7 @@ Unlike traditional monolithic ERPs that force you into rigid structures, BigLedg
 Think of BigLedger as the operating system for your business:
 - **Core OS**: Manages data, security, and infrastructure like Windows manages your computer
 - **Unified Data Hub**: All business data in one place, accessible by all applets
-- **Enterprise Performance**: Handles millions of transactions with 99.9% uptime
+- **Enterprise Performance**: Handles high transaction volumes across multiple companies and branches
 - **Compliance Framework**: Built-in Malaysian regulatory compliance
 
 #### 📱 Applet Architecture
@@ -273,7 +273,6 @@ Advanced AI capabilities through AIMatrix partnership:
 #### Private Cloud
 - **Dedicated Resources**: Your own servers
 - **Enhanced Security**: Isolated environment
-- **Custom SLAs**: Guaranteed performance
 - **Pricing**: From RM2,999/month
 - **Best for**: Enterprises, banks, government
 
@@ -366,7 +365,9 @@ Yes, BigLedger supports unlimited companies, branches, and currencies in a singl
 <details>
 <summary>Is my data secure in the cloud?</summary>
 
-BigLedger uses bank-level encryption (AES-256), ISO 27001 certified data centers, and complies with PDPA. Your data is backed up hourly with 99.9% uptime SLA.
+BigLedger is a cloud service. Traffic between your browser and the platform is encrypted with TLS, and access is controlled by role-based permissions down to applet and document level.
+
+We do not publish a security certification on this wiki. If you need a formal statement — an ISO 27001 or SOC 2 attestation, a completed vendor security questionnaire, or a data-processing agreement under Malaysia's Personal Data Protection Act 2010 (PDPA) — ask your BigLedger contact, who can tell you what exists today.
 </details>
 
 <details>

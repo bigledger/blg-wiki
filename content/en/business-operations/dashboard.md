@@ -186,11 +186,8 @@ The BigLedger Dashboard transforms raw business data into actionable intelligenc
 - Data refresh latency: < 100ms for real-time metrics
 - Concurrent users supported: 10,000+
 - Historical data retention: 7 years
-- Uptime SLA: 99.99%
 
 ### Security Features
-- End-to-end encryption for sensitive data
+- TLS encryption in transit
 - Role-based access control (RBAC)
 - Audit trail for all dashboard modifications
-- GDPR and data privacy compliance
-- SOC 2 Type II certified infrastructure

@@ -30,11 +30,9 @@ weight: 60
 - **Geographic distribution**: Copies stored in different cities/countries
 - **Version history**: Can restore data from any point in time
 
-**Advanced Encryption**:
-- **Bank-level encryption**: Same security as online banking
-- **Encrypted transmission**: Data protected while traveling to/from servers
-- **Encrypted storage**: Data scrambled even if someone accessed servers
-- **Key management**: Only authorized people can decrypt your data
+**Encryption**:
+- **Encrypted connection**: your browser talks to BigLedger over TLS — the same protocol your bank's website uses, so nobody on the café wifi can read what you send
+- **Access control**: only the people you authorise can open your data, and every login is recorded
 
 **Compare to Typical Office Setup**:
 
@@ -61,11 +59,13 @@ weight: 60
 - **Local system**: May corrupt or delete files
 - **BigLedger**: Your data unaffected, access from clean computer
 
-**Compliance and Certifications**:
-- **ISO 27001**: International security standard certification
-- **SOC 2**: Audited security controls
-- **GDPR compliant**: European privacy law compliance
-- **PDPA compliant**: Malaysian personal data protection
+**What we can and cannot tell you about certification**:
+
+BigLedger does not publish a security certification on this wiki. If your auditor, your insurer or
+your head office asks for an ISO 27001 or SOC 2 statement, a completed vendor security
+questionnaire, or a data-processing agreement under Malaysia's Personal Data Protection Act 2010
+(PDPA), ask your BigLedger contact — they can tell you what exists today. Please do not cite this
+page as evidence of a certification.
 
 **Your Control Over Data Security**:
 - **Strong passwords**: Choose secure, unique passwords
@@ -188,7 +188,7 @@ weight: 60
 **Security Considerations**:
 - **Read-only access**: Integration cannot move or spend money
 - **Bank authorization**: You control what BigLedger can access
-- **Secure protocols**: All connections use bank-grade encryption
+- **Secure protocols**: connections to bank portals and file services are encrypted in transit
 - **Audit trail**: Complete record of all data access
 
 **Benefits of Bank Integration**:
@@ -531,21 +531,13 @@ weight: 60
 
 **Q: How reliable is BigLedger's uptime?**
 
-**A:** BigLedger maintains enterprise-level reliability standards that exceed what most small businesses could achieve with their own systems:
+**A:** BigLedger runs on managed cloud infrastructure with redundancy and continuous monitoring — more than most small businesses can run themselves on an office server.
 
-**Uptime Statistics and Guarantees**:
+**Maintenance**:
+- **Planned maintenance**: scheduled during off-peak hours
+- **Advance notice**: you are told before any planned downtime
 
-**Service Level Agreement (SLA)**:
-- **99.9% uptime guarantee**: System available 99.9% of the time
-- **Maximum downtime**: Less than 9 hours per year total
-- **Planned maintenance**: Scheduled during off-peak hours
-- **Advance notice**: Notification of any planned downtime
-
-**Real Performance History**:
-- **Actual uptime**: Typically exceeds 99.95%
-- **Unplanned outages**: Rare and usually under 30 minutes
-- **Average response time**: Sub-second response for most operations
-- **Performance monitoring**: Continuous monitoring of system performance
+**We do not publish an uptime SLA on this wiki.** An availability guarantee is a contractual term, not a documentation fact. If you need one — for a tender, or because you have made your own service commitments to customers — ask your BigLedger contact what your plan includes.
 
 **Infrastructure Reliability**:
 

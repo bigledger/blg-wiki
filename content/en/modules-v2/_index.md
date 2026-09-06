@@ -5,11 +5,9 @@ weight: 999
 bookHidden: true
 ---
 
-<div style="margin-bottom: 2rem;">
 {{< callout type="warning" >}}
 **Work in Progress** — This section is currently being updated to standardize module layouts, roles, and workflows. We will be updating this content from time to time.
 {{< /callout >}}
-</div>
 
 ## BigLedger Module Documentation
 

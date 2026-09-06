@@ -233,7 +233,7 @@ Setup        Data Collection      Root Cause        Process Update    Compliance
 ## Compliance & Standards
 
 ### Manufacturing Standards
-- **ISO 9001** - Quality management systems
+- **Quality management** - inspection plans, non-conformance records and corrective actions you can show an auditor
 - **ISO 14001** - Environmental management systems
 - **OHSAS 18001** - Occupational health and safety
 - **AS9100** - Aerospace quality management

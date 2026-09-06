@@ -21,7 +21,7 @@ The Sales & POS Module flexibly supports diverse commercial business models. Bel
 **Business Scenario:** A corporate distributor sells industrial equipment to wholesale clients on Net 30 payment terms, requiring formal quotes, hard stock reservations, and dispatch tracking.
 
 - **Primary Applets:** [Sales Quotation](/applets/sales-workflow/internal-sales-quotation-applet/), [Sales Order](/applets/sales-workflow/internal-sales-order-applet/), [Sales Invoice](/applets/sales-workflow/internal-sales-invoice-applet/)
-- **Operational Flow:** Sales representative creates Quotation → client approves → converted to Sales Order with hard inventory reservation → warehouse dispatches Goods Issuance Note → AR clerk issues Sales Invoice for Net 30 billing.
+- **Operational Flow:** Sales representative creates Quotation → client accepts → converted to Sales Order with stock reservation → AR clerk issues Sales Invoice for Net 30 billing. Note that the Sales Invoice is the document that moves the stock — the Sales GIN applet is registered but inert (quantity signum 0), so a GIN records the despatch without touching the stock ledger.
 
 ---
 

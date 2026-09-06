@@ -47,9 +47,9 @@ Member classes provide the foundation for tiered programs with:
 The Membership Module integrates with several key applets:
 
 - **[Membership Program Applet](/applets/membership-program/)**: Central configuration for program rules
-- **[Membership Admin Console](/applets/membership-admin-console-applet/)**: Operational management interface
+- **[Membership Admin Console](/applets/membership/membership-admin-applet/)**: Operational management interface
 - **[Membership Points Currency](/applets/membership-points-currency/)**: Points currency configuration
-- **[Doc Item Maintenance](/applets/doc-item-maintenance-applet/)**: Member-specific pricing through FI-ITEM
+- **[Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/)**: Member-specific pricing through FI-ITEM
 - **Pricebook Applet**: Tier-based product pricing
 - **Voucher Maintenance**: Reward voucher creation and redemption
 

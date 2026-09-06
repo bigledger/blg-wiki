@@ -15,7 +15,7 @@ The Membership Module in BigLedger works seamlessly with multiple applets across
 These applets provide the foundation for membership program management and operations.
 
 {{< cards >}}
-  {{< card link="/applets/membership-admin-console-applet" title="Membership Admin Console Applet" subtitle="Central administration console for managing membership programs, points currencies, tier configurations, and member administration" >}}
+  {{< card link="/applets/membership/membership-admin-applet" title="Membership Admin Console Applet" subtitle="Central administration console for managing membership programs, points currencies, tier configurations, and member administration" >}}
   {{< card link="/applets/membership-program" title="Membership Program Applet" subtitle="Core program setup and configuration for loyalty programs, defining program rules, earning mechanisms, and member benefits" >}}
   {{< card link="/applets/membership-points-currency" title="Membership Points Currency Applet" subtitle="Configure and manage points currencies, earning rates, redemption rules, and currency expiry policies" >}}
 {{< /cards >}}
@@ -58,7 +58,7 @@ These applets provide the foundation for membership program management and opera
 Customer information is the foundation of any membership program. These applets handle customer data and profile management.
 
 {{< cards >}}
-  {{< card link="/applets/customer-maintenance-applet" title="Customer Maintenance Applet" subtitle="Comprehensive customer master data management, storing customer profiles, contact information, and preferences integrated with membership accounts" >}}
+  {{< card link="/applets/master-data/customer-maintenance-applet" title="Customer Maintenance Applet" subtitle="Comprehensive customer master data management, storing customer profiles, contact information, and preferences integrated with membership accounts" >}}
 {{< /cards >}}
 
 ### Customer-Membership Integration
@@ -91,8 +91,8 @@ The **Customer Maintenance Applet** provides the customer data foundation that m
 Effective membership programs often include tier-specific pricing, member discounts, and exclusive product access.
 
 {{< cards >}}
-  {{< card link="/applets/doc-item-maintenance-applet" title="Doc Item Maintenance Applet" subtitle="Product master data management for maintaining items, SKUs, categories, and attributes used in membership reward catalogs" >}}
-  {{< card link="/applets/pricebook-applet" title="Pricebook Applet" subtitle="Configure tier-specific pricing, member discounts, and promotional pricing that integrates with membership tier status" >}}
+  {{< card link="/applets/master-data/doc-item-maintenance-applet" title="Doc Item Maintenance Applet" subtitle="Product master data management for maintaining items, SKUs, categories, and attributes used in membership reward catalogs" >}}
+  {{< card link="/applets/master-data/pricebook-applet" title="Pricebook Applet" subtitle="Configure tier-specific pricing, member discounts, and promotional pricing that integrates with membership tier status" >}}
 {{< /cards >}}
 
 ### Product Integration for Membership
@@ -381,10 +381,10 @@ Membership functionality spans multiple BigLedger modules:
 
 For detailed configuration and usage of each applet, refer to the individual applet documentation:
 
-- [Membership Admin Console User Guide](/applets/membership-admin-console-applet)
-- [Customer Maintenance Configuration](/applets/customer-maintenance-applet)
+- [Membership Admin Console User Guide](/applets/membership/membership-admin-applet)
+- [Customer Maintenance Configuration](/applets/master-data/customer-maintenance-applet)
 - [POS Terminal Setup Guide](/applets/pos-terminal-applet)
-- [Pricebook Configuration](/applets/pricebook-applet)
+- [Pricebook Configuration](/applets/master-data/pricebook-applet)
 - [CP-Commerce Module Overview](/modules/cp-commerce)
 
 For implementation guidance and best practices, see:

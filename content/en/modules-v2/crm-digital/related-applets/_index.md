@@ -11,7 +11,7 @@ The Digital CRM Module integrates seamlessly with core and supporting applets ac
 {{< cards >}}
   {{< card link="/applets/crm/unified-contact-center-ucc-applet" title="Unified Contact Center UCC Applet" subtitle="Omnichannel contact center hub — WhatsApp, Live Chat, Email ticketing, and agent collision control" >}}
   {{< card link="/applets/crm/engagement-applet" title="Engagement Applet" subtitle="Automated customer journey builder, broadcast messaging campaigns, and lead scoring" >}}
-  {{< card link="/applets/crm/events-management-applet" title="Events Management Applet" subtitle="Event landing page builder, ticketing, QR check-in scanning, and post-event surveys" >}}
+  {{< card link="/applets/crm/events-management-applet" title="Event Management Applet" subtitle="Calendars, events, participants and entity links, plus a claim-based Event Expense Report" >}}
   {{< card link="/applets/crm/ai-customer-analytics-applet" title="AI Customer Analytics Applet" subtitle="Predictive AI analytics, sentiment scoring, RFM segmentation, and customer lifetime value models" >}}
 {{< /cards >}}
 

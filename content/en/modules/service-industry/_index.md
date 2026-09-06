@@ -282,19 +282,11 @@ Client Engagement → Project Planning → Resource Allocation → Service Deliv
 - **Win Rate**: Proposal success and conversion rates
 - **Gross Margin**: Service delivery profitability
 
-## Compliance and Quality Management
-
-### Service Quality Standards
-- **ISO 9001**: Quality management system compliance
-- **ISO 20000**: IT service management standards
-- **ITIL**: IT Infrastructure Library best practices
-- **PMI Standards**: Project Management Institute guidelines
-- **Industry-Specific**: Regulatory compliance (SOX, HIPAA, etc.)
+## Quality Management
 
 ### Documentation and Audit
 - **Service documentation** standards and templates
 - **Audit trail** maintenance for all client interactions
-- **Compliance reporting** and certification management
 - **Quality assurance** processes and procedures
 - **Client confidentiality** and data protection
 

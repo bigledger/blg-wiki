@@ -11,8 +11,6 @@ Understanding core HR concepts is essential before establishing salary schemes o
 
 Monthly payroll computation follows a structured 5-step processing pipeline:
 
-![Monthly Payroll Processing Lifecycle Pipeline](/images/hr-payroll/hr_lifecycle.png)
-
 | Step | Milestone | Business Purpose | Applet Used |
 |------|-----------|------------------|-------------|
 | **1** | **Clock-In Log** | Biometric terminal and mobile GPS attendance data collection | [Admin Time Attendance Applet](/applets/human-resources/admin-time-attendance-applet/) |

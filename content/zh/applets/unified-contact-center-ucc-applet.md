@@ -210,7 +210,7 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 - **选择加入管理**：订阅偏好
 - **交付报告**：阅读回执和分析
 - **失败消息处理**：自动重试逻辑
-- **法规合规**：PDPA、GDPR合规工具
+- **同意与退订**：记录订阅偏好，支持马来西亚个人资料保护法令（PDPA）下的同意管理
 
 ### 5. ⏰ 任务队列模块 - 智能工作分配
 
@@ -618,7 +618,7 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 答：因计划而异。企业计划有无限制消息。
 
 **问：平台有多安全？**
-答：银行级加密，ISO 27001认证，GDPR合规。
+答：浏览器与平台之间的流量使用 TLS 加密，并以角色权限控制访问。本维基不发布任何安全认证；如需 ISO 27001 或 SOC 2 证明文件、供应商安全问卷或 PDPA 数据处理协议，请联系您的 BigLedger 对接人。
 
 **问：我可以导出对话数据吗？**
 答：可以，支持多种格式包括CSV、PDF和通过API。

@@ -350,13 +350,6 @@ BigLedger's Sales Dashboard transforms raw transaction data into actionable sale
   - Audit trails
   - IP restrictions
 
-### Compliance Features
-- **Regulatory Compliance**
-  - GDPR compliance
-  - PCI DSS for payment data
-  - Malaysian PDPA
-  - Industry standards
-
 ## Performance Optimization
 
 ### Speed & Efficiency

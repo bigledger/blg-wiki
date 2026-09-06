@@ -91,7 +91,6 @@ MyInvois is Malaysia's national e-invoicing initiative, mandating electronic inv
 - Credit note processing
 
 **Archive & Retrieval**
-- 7-year retention compliance
 - Advanced search capabilities
 - Audit trail maintenance
 - Document versioning
@@ -113,7 +112,6 @@ MyInvois is Malaysia's national e-invoicing initiative, mandating electronic inv
 **Performance**
 - Process 10,000+ invoices per hour
 - Sub-second validation
-- 99.9% uptime SLA
 - Real-time status updates
 
 ## Integration with BigLedger Modules
@@ -169,7 +167,6 @@ MyInvois is Malaysia's national e-invoicing initiative, mandating electronic inv
 - Streamlined dispute resolution
 
 **Compliance Assurance**
-- 100% LHDN compliance
 - Automatic updates for regulation changes
 - Complete audit trail
 - Proactive error prevention
@@ -249,7 +246,6 @@ MyInvois is Malaysia's national e-invoicing initiative, mandating electronic inv
 **Solution**: Real-time invoice generation and submission
 **Results**:
 - 50,000 daily invoices processed
-- 99.99% submission success rate
 - Seamless customer experience
 
 ## Pricing Models
@@ -272,7 +268,6 @@ MyInvois is Malaysia's national e-invoicing initiative, mandating electronic inv
 - Full integration suite
 - Dedicated support
 - Custom development
-- SLA guarantee
 
 ### Pay-Per-Use
 - No monthly commitment
@@ -321,13 +316,16 @@ Ready to transform your invoicing process? Our team is here to help:
 
 [Request Demo](/e-invoice-peppol/) | [Contact Sales](mailto:einvoice@bigledger.com) | [Download Guide](/e-invoice-peppol/)
 
-## Compliance & Certifications
+## Accreditation
 
-- MDEC PEPPOL Accreditation
-- ISO 27001 Certified
-- LHDN Approved Solution
-- PDPA Compliant
-- SST/GST Ready
+BigLedger operates as an accredited Peppol Access Point on the Malaysian Peppol network, and files
+the monthly Transaction Statistics Report (TSR) and End User Statistics Report (EUSR) to OpenPeppol
+as a service provider. Your Peppol ID is registered through the Malaysian SMP, where MDEC verifies
+the participant name and registration number before it is published to the Peppol Directory.
+
+BigLedger's SST and MyInvois support is documented in the e-invoice guides. No information-security
+certification is claimed on this page — if a tender or an auditor asks for one, ask your BigLedger
+contact rather than citing the wiki.
 
 ---
 

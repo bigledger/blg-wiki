@@ -1224,7 +1224,7 @@ You've successfully implemented your first complete membership program!
 ### Documentation
 
 - [Membership Module Overview](/modules/membership/) - Complete feature reference
-- [Membership Admin Console](/applets/membership-admin-console-applet/) - Daily operations
+- [Membership Admin Console](/applets/membership/membership-admin-applet/) - Daily operations
 - [Points Currency Configuration](/applets/membership-points-currency/) - Currency management
 - [Membership Program Applet](/applets/membership-program/) - Program configuration
 

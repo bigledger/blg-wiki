@@ -80,7 +80,7 @@ Modul CRM BigLedger menyediakan penyelesaian komprehensif untuk mengurus hubunga
 - **Personalisasi**: Kandungan dinamik
 - **Segmentasi**: Sasarkan penonton khusus
 - **Analitik**: Kadar buka, klik, penukaran
-- **Pematuhan**: Sokongan GDPR, CAN-SPAM
+- **Rekod persetujuan**: rekod apa yang dipersetujui setiap kenalan, dan bila
 
 ### 🎯 Perkhidmatan Pelanggan
 

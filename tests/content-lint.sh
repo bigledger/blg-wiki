@@ -76,6 +76,47 @@ fi
 twins=$(printf '%s' "$twins" | grep -v '^$' | head -20)
 if [ -n "$twins" ]; then say "FAIL: published translation of an English page that is unpublished (draft: true) - unpublish the twin too, or repair the pairing"; say "$twins" | sed 's/^/  /'; fail=1; else say "ok:   no published translation of an unpublished English page"; fi
 # ------------------------------------------------------------------------------------------------
+# --- unverified certification / compliance claims (2026-09-06 compliance-claim sweep) -----------
+# Class of error: a page that claims BigLedger HOLDS a certification, or commits to a service
+# level, that nobody has evidenced. developers/architecture/ published SOC 2 Type II + ISO 27001 +
+# GDPR compliance and was unpublished under ADR-0008; Q-0006 asks Vincent whether any of the three
+# is real and is still open. Twenty-one more published pages carried the same class and were
+# corrected in place on 2026-09-06 (planning/drafts/2026-09-06-compliance-claim-sweep.md).
+# Until Q-0006 is answered, the rule is: name one of these schemes only in order to say we do not
+# claim it, or to describe an obligation that falls on the READER (their PDPA duties, their PCI
+# scope). PDPA itself is NOT in the scheme list - it is the Malaysian regime our customers ask
+# about and pages legitimately explain what it asks of them.
+#
+# Exception mechanism: if a certification is later CONFIRMED, add the page to
+# tests/lint-allowlist.tsv under the key `certification`, and put the evidence in a comment there -
+# who issued it, the certificate number, and when it expires. The exemption is file-level on
+# purpose: it makes the next author justify the whole page rather than one line.
+schemes='ISO ?(27001|9001|20000|22301)|SOC ?[123]( ?Type ?I+)?|PCI[ -]?DSS|\bHIPAA\b|\bSOX\b|Sarbanes-Oxley|\bGDPR\b|\bCCPA\b|\beIDAS\b|\bE-SIGN Act|FedRAMP|CSA STAR'
+# Two assertive shapes, not the bare name. A page may name a scheme to explain the READER's duty
+# ("under PDPA and GDPR, businesses must prove consent") or to record a SUPPLIER's certificate
+# ("- ISO 9001:2015" inside a sample supplier record) - neither is a claim about BigLedger.
+#   (a) a bullet whose BOLDED label is the scheme:  - **SOC 2 Type II** ...   - **GDPR Compliance**: ...
+#   (b) a heading naming the scheme, or the scheme sitting next to certified/compliant/认证/合规
+claim="^[[:space:]]*[-*+][[:space:]]*\*\*($schemes)|^#+[[:space:]].*($schemes)|($schemes)[- ]?(certified|certification|compliant|compliance|conformant|accredited|认证|合规)"
+# a line that DENIES or correctly scopes the claim is allowed through - this is how the corrected
+# pages read today ("BigLedger does not hold ...", "only if you serve EU customers").
+denial='does not (hold|publish|claim)|do not (hold|publish|claim|cite)|not a certification|no .{0,40}certification|ask your BigLedger contact|if you also serve|only if you serve|not GDPR|不发布|不声明|不要引用|请联系您的'
+certs=$(grep -rniE "$claim" content --include='*.md' 2>/dev/null | grep -viE "$denial" | cut -d: -f1 | sort -u \
+        | published | grep -vxF -f <(allow certification) | head -20)
+if [ -n "$certs" ]; then say "FAIL: unverified certification / compliance claim in published pages (Q-0006 is still open; see ADR-0008)"; say "$certs" | sed 's/^/  /'; fail=1; else say "ok:   no unverified certification claims in published pages (allowlisted: $(allow certification | wc -l))"; fi
+
+# an uptime or availability SLA is a contractual commitment, not a documentation fact. Nobody has
+# pointed at where BigLedger commits to one (Q-0072 asks the same about the zh home page).
+sla=$(grep -rniE '[0-9]{2}\.[0-9]+ ?% ?(uptime|availability|正常运行)|uptime (sla|guarantee)|sla guarantee|正常运行时间SLA' content --include='*.md' 2>/dev/null \
+      | grep -viE "$denial" | cut -d: -f1 | sort -u | published | grep -vxF -f <(allow certification) | head -20)
+if [ -n "$sla" ]; then say "FAIL: uptime / availability SLA claim in published pages - an SLA is a contractual term, point at where we commit to it or remove it"; say "$sla" | sed 's/^/  /'; fail=1; else say "ok:   no uptime SLA claims in published pages"; fi
+
+# specific cryptography claims must be verifiable in source or infrastructure config. akaun.com
+# negotiates TLS 1.3 with TLS_AES_128_GCM_SHA256 (openssl s_client, 2026-09-06), so "bank-level
+# encryption (AES-256)" and "256-bit SSL" were both simply wrong. "encrypted with TLS" is fine.
+crypto=$(grep -rlniE 'AES-?256|256-bit (SSL|TLS|encryption)|bank-level encryption|bank-grade encryption|military-grade|end-to-end encryption' content --include='*.md' 2>/dev/null | published | grep -vxF -f <(allow certification) | head -20)
+if [ -n "$crypto" ]; then say "FAIL: unverifiable cryptography claim in published pages (AES-256 / 256-bit SSL / bank-level / end-to-end encryption)"; say "$crypto" | sed 's/^/  /'; fail=1; else say "ok:   no unverifiable cryptography claims in published pages"; fi
+# ------------------------------------------------------------------------------------------------
 check "no blockchain-era vocabulary"              -iE 'smart contract|wallet api|crypto wallet' content --include='*.md'
 check "no mojibake (UTF-8 read as cp1252)"      -E 'â€|Ã©|Ã¢' content --include='*.md'
 

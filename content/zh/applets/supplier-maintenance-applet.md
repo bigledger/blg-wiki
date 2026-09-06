@@ -567,7 +567,7 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 - 所有变更的完整审计跟踪
 - 法规合规报告
 - 数据保留策略执行
-- 隐私法规合规（GDPR、CCPA）
+- 供应商资料的存取权限与保留规则
 
 ### 风险管理
 

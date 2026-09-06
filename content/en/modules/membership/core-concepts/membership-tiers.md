@@ -498,7 +498,6 @@ Labels enable sophisticated campaign targeting beyond tier structure:
 - Unlimited storage
 - Dedicated account manager + phone support
 - All features + custom integrations
-- SLA guarantees
 - On-site training available
 
 **Why This Works**:

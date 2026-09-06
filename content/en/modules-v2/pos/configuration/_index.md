@@ -52,12 +52,12 @@ Configuring the Sales & POS Module follows a strict 5-phase dependency chain. Ma
 
 ## Phase 4: Commercial Sales Workflow Rules
 
-**What you are doing:** Defining quotation templates, customer credit limits, and invoicing controls. Sales documents have no approval engine — discount and credit authority is controlled by permissions and credit limits.
+**What you are doing:** Defining quotation templates, customer credit terms, and invoicing controls. Sales documents have no approval engine, and the credit limit is displayed rather than enforced — discount and credit authority is controlled by permissions.
 
 | Setup Task | Required Applet |
 |------------|-----------------|
 | Quotation Templates | [Sales Quotation Applet](/applets/sales-workflow/internal-sales-quotation-applet/) |
-| Order Credit Limit Enforcement | [Sales Order Applet](/applets/sales-workflow/internal-sales-order-applet/) |
+| Customer credit terms and credit availability display | [Sales Order Applet](/applets/sales-workflow/internal-sales-order-applet/) |
 | Tax Invoice & AR Rules | [Sales Invoice Applet](/applets/sales-workflow/internal-sales-invoice-applet/) |
 
 ---

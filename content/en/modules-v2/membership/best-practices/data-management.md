@@ -389,9 +389,11 @@ POS Data Corrections:
 
 ## Privacy and Compliance
 
-### PDPA Compliance (Malaysia)
+### Your PDPA Obligations (Malaysia)
 
-Personal Data Protection Act compliance is mandatory for Malaysian businesses.
+The Personal Data Protection Act 2010 applies to you as the business collecting member data. What
+follows is what the Act asks of you and how to configure the programme to meet it — not a claim
+that BigLedger is certified against it.
 
 **Consent Management**
 ```yaml
@@ -476,9 +478,10 @@ Legal Hold:
   - Release after hold lifted
 ```
 
-### GDPR Compliance (For EU Operations)
+### If You Also Serve EU Customers: GDPR
 
-If serving EU customers, comply with stricter GDPR requirements.
+Most Malaysian membership programmes never touch this. If yours enrols EU residents, the General
+Data Protection Regulation applies on top of PDPA and is stricter in several places.
 
 **Key GDPR Differences from PDPA**
 ```yaml

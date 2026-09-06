@@ -51,7 +51,7 @@ Confusing commercial document types creates balance sheet and stock control erro
 | [POS General Applet](/applets/sales-workflow/pos-general-applet/) | Retail checkout interface — fast item scanning, cashier settlement, member points integration |
 | [Daily Cashier Report Applet](/applets/sales-workflow/daily-cashier-report-applet/) | Cashier shift balancing, cash drawer auditing, payment breakdown, and end-of-day Z-reports |
 | [Sales Quotation Applet](/applets/sales-workflow/internal-sales-quotation-applet/) | Formal B2B price proposals, discount approvals, and validity tracking |
-| [Sales Order Applet](/applets/sales-workflow/internal-sales-order-applet/) | Confirmed commercial orders, inventory reservation, credit limit checks, and fulfillment tracking |
+| [Sales Order Applet](/applets/sales-workflow/internal-sales-order-applet/) | Confirmed commercial orders, inventory reservation, credit availability display, and fulfillment tracking |
 | [Sales Invoice Applet](/applets/sales-workflow/internal-sales-invoice-applet/) | Final commercial billing, tax invoice generation, payment terms enforcement, and AR posting |
 | [Sales Return Applet](/applets/sales-workflow/internal-sales-return-applet/) | Processing returned merchandise, stock inspection, and credit note authorization |
 | [Customer Consignment Applet](/applets/sales-workflow/customer-consignment-applet/) | Managing consignment inventory located at customer sites, tracking consumption and billing |
@@ -85,7 +85,7 @@ Confusing commercial document types creates balance sheet and stock control erro
 
 Follow the documentation in this sequence to master the Sales & POS Module:
 
-1. **[Core Concepts](core-concepts/)** *(Next Step)* — Understand sales document hierarchies, stock reservation mechanics, and credit limit controls.
+1. **[Core Concepts](core-concepts/)** *(Next Step)* — Understand sales document hierarchies, stock reservation mechanics, and how customer credit is shown.
 2. **[Configuration](configuration/)** — Step-by-step setup guides for POS terminals, commercial pricing rules, and sales workflows.
 3. **[Use Cases](use-cases/)**
 4. **[Reports 3. **[Use Cases](use-cases/)** Analytics](reports/)** — Scenario guide for choosing the best sales and cashier reports. — Real-world business scenarios for retail chains, B2B wholesale, and consignment sales.

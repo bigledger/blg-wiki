@@ -229,13 +229,6 @@ Digital Assets → Management System → Distribution → Usage Tracking
 - **Backup and recovery** procedures
 - **Security monitoring** and alerting
 
-### Compliance Support
-- **GDPR compliance** for customer data protection
-- **SOC 2 Type II** controls for service organizations
-- **ISO 27001** information security standards
-- **ITIL compliance** for IT service management
-- **Industry-specific** compliance requirements
-
 ## Performance and Monitoring
 
 ### Performance Metrics

@@ -36,7 +36,7 @@ The FI-ITEM (Financial Item) pricing method allows you to define member-specific
 
 **Configuration via Doc Item Maintenance Applet**:
 
-The [Doc Item Maintenance Applet](/applets/doc-item-maintenance-applet/) is where you configure member-specific pricing:
+The [Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/) is where you configure member-specific pricing:
 
 1. Select a product (Doc Item)
 2. Define pricing rules for specific members or member classes
@@ -157,7 +157,7 @@ Regular Public Sale (Sept 1+):
 ### Integration Details
 
 **Applet Integration**:
-- **[Doc Item Maintenance Applet](/applets/doc-item-maintenance-applet/)**: Configure FI-ITEM pricing rules
+- **[Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/)**: Configure FI-ITEM pricing rules
 - **Sales Module**: Automatic price lookup at transaction time
 - **POS Module**: Real-time member price display
 - **E-Commerce Module**: Member pricing shown after login
@@ -556,7 +556,7 @@ Cooking Class with Chef:
 
 **Applet Integration**:
 - **Voucher Maintenance Applet**: Create and configure voucher types
-- **[Membership Admin Console](/applets/membership-admin-console-applet/)**: Issue vouchers, view voucher history
+- **[Membership Admin Console](/applets/membership/membership-admin-applet/)**: Issue vouchers, view voucher history
 - **Sales Module**: Validate and apply vouchers at checkout
 - **E-Commerce Module**: Online voucher redemption and application
 
@@ -717,7 +717,7 @@ BigLedger's three redemption mechanisms provide comprehensive flexibility for lo
 
 **Pricing Scheme / FI-ITEM**:
 - Granular, item-level member pricing
-- Configured via [Doc Item Maintenance Applet](/applets/doc-item-maintenance-applet/)
+- Configured via [Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/)
 - Best for selective discounts and margin protection
 
 **Pricebook**:

@@ -46,7 +46,7 @@ These applets provide the primary functional components for managing membership 
 Customer information is the foundation of any membership program. Every member record links back to a customer profile in Core.
 
 {{< cards >}}
-  {{< card link="/applets/customer-maintenance-applet" title="Customer Maintenance Applet" subtitle="Comprehensive customer master data management, storing customer profiles, contact information, and preferences integrated with membership accounts" >}}
+  {{< card link="/applets/master-data/customer-maintenance-applet" title="Customer Maintenance Applet" subtitle="Comprehensive customer master data management, storing customer profiles, contact information, and preferences integrated with membership accounts" >}}
 {{< /cards >}}
 
 ### Customer-Membership Integration
@@ -61,8 +61,8 @@ The **Customer Maintenance Applet** provides the master customer record:
 Membership programs interact with product catalogs and tier-specific pricing structures.
 
 {{< cards >}}
-  {{< card link="/applets/doc-item-maintenance-applet" title="Doc Item Maintenance Applet" subtitle="Product master data management for maintaining items, SKUs, categories, and service items" >}}
-  {{< card link="/applets/pricebook-applet" title="Pricebook Applet" subtitle="Configure tier-specific pricing and member discounts linked directly to member class status" >}}
+  {{< card link="/applets/master-data/doc-item-maintenance-applet" title="Doc Item Maintenance Applet" subtitle="Product master data management for maintaining items, SKUs, categories, and service items" >}}
+  {{< card link="/applets/master-data/pricebook-applet" title="Pricebook Applet" subtitle="Configure tier-specific pricing and member discounts linked directly to member class status" >}}
 {{< /cards >}}
 
 ### Pricing & Product Integration

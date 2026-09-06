@@ -12,7 +12,7 @@ The Purchasing Module integrates seamlessly with core and supporting applets acr
   {{< card link="/applets/purchase-workflow/internal-purchase-requisition-applet" title="Purchase Requisition Applet" subtitle="Internal departmental buying requests, budget checks, and pre-order approval workflows" >}}
   {{< card link="/applets/purchase-workflow/internal-purchase-order-applet" title="Purchase Order Applet" subtitle="Vendor contracting, item price enforcement, delivery scheduling, and formal PO generation" >}}
   {{< card link="/applets/purchase-workflow/internal-purchase-grn-applet" title="Goods Received Note GRN Applet" subtitle="Physical warehouse stock receiving, batch/serial assignment, inspection logs, and stock-in posting" >}}
-  {{< card link="/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet" title="Purchase Invoice Applet" subtitle="Supplier billing verification, 3-way invoice matching (PO vs GRN vs Invoice), and Accounts Payable posting" >}}
+  {{< card link="/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet" title="Purchase Invoice No Stock In Applet" subtitle="Supplier billing that books no stock — pairs with Purchase GRN Stock In when stock moves at receipt" >}}
 {{< /cards >}}
 
 ## Commercial & Consignment Applets
@@ -25,5 +25,5 @@ The Purchasing Module integrates seamlessly with core and supporting applets acr
 ## Ecosystem Master Data Dependencies
 
 - **Supplier Maintenance Applet (Core)**: Supplier master accounts, payment terms, and currency settings.
-- **[Doc Item Maintenance Applet](/applets/doc-item-maintenance-applet/)**: Item master data, SKUs, and purchasing unit of measure conversions.
-- **[Pricebook Applet](/applets/pricebook-applet/)**: Vendor pricebooks and contracted discount matrices.
+- **[Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/)**: Item master data, SKUs, and purchasing unit of measure conversions.
+- **[Pricebook Applet](/applets/master-data/pricebook-applet/)**: Vendor pricebooks and contracted discount matrices.

@@ -11,8 +11,6 @@ Understanding core CRM concepts is essential before configuring messaging gatewa
 
 Customer support tickets and automated marketing journeys follow a unified 5-step lifecycle pipeline:
 
-![Digital CRM Omnichannel Lifecycle Pipeline](/images/crm-digital/crm_lifecycle.png)
-
 | Step | Milestone | Business Purpose | Applet Used |
 |------|-----------|------------------|-------------|
 | **1** | **Inquiry Capture** | Multi-channel message received via WhatsApp, Live Chat, or Email | [Unified Contact Center UCC Applet](/applets/crm/unified-contact-center-ucc-applet/) |

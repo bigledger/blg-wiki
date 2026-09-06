@@ -159,22 +159,14 @@ The Ledger & Journal Applet is the accountant's workbench. Use it for accruals, 
 
 > 💡 **Period control lives here.** Only users with the *Period Management* permission can open or close a month. Closing a period locks it — no backdating, no edits, and no deletions. Reopening is logged in the audit trail.
 
-#### Assets & Treasury — Long-term holdings and investments
+#### Assets & Treasury — Long-term holdings
 
 Use these applets for assets that sit on the Balance Sheet over multiple periods, not day-to-day expenses.
 
 | Applet | When to Use | What It Manages |
 |--------|-------------|------------------|
 | [Fixed Asset Applet](/applets/finance/fixed-asset-applet/) | When equipment, vehicles, or property is purchased | Depreciation schedules, disposals, and net book value |
-| [Investment Applet](/applets/finance/investment-applet/) | When the company holds equity or fund investments | Investment cost, market value, and gain/loss tracking |
-| [MM Deposit Applet](/applets/finance/mm-deposit-applet/) | When funds are placed in money market or fixed deposits | Maturity dates, interest accruals, and rollover management |
-| [Deposit Applet](/applets/finance/deposit-applet/) | For other deposit instruments (security deposits, utilities) | Deposit balance and reclaim tracking |
-
-#### Specialty
-
-| Applet | When to Use |
-|--------|-------------|
-| [Revenue Management Applet](/applets/finance/revenue-management-applet/) | When revenue must be deferred and recognized over time (e.g., subscriptions, advance payments). Prevents premature recognition of income. |
+| [Deposit Applet](/applets/finance/deposit-applet/) | When funds are placed on a money-market or fixed deposit | Deposit requisitions, the deposit register, maturity dates and rollover |
 
 ### Layer 3 — Verification & Matching
 
@@ -249,8 +241,7 @@ Reports turn posted data into decisions. They fall into five categories — each
 |--------|----------------|------------------|-----------|--------------------|
 | **Budget vs. Actual** | [Budget Applet](/applets/finance/budget-applet/) | Budget Controller, Dept Heads | Monthly | Identify overspend, reforecast |
 | **Vote Book Balance** | [Vote Book Applet](/applets/finance/vote-book-applet/) | Budget Controller | Real-time | Confirm budget available before approving spend |
-| **Investment Holdings** | [Investment Applet](/applets/finance/investment-applet/) | Treasurer, CFO | Monthly | Treasury position |
-| **MM Deposit Schedule** | [MM Deposit Applet](/applets/finance/mm-deposit-applet/) | Treasurer | Monthly | Maturity planning, liquidity |
+| **Deposit Register** | [Deposit Applet](/applets/finance/deposit-applet/) | Treasurer | Monthly | Maturity planning, liquidity |
 
 ### 7.6 Cost of Goods Sold (COGS) — Where to Find It
 
@@ -299,7 +290,7 @@ The COGS amount uses the **Moving Average (MA) unit cost** of the item at the mo
 | **Accounts Receivable Clerk** | Customer receipts, statements, collections |
 | **General Accountant** | Manual journals, GL inquiry, tax filing, fixed assets |
 | **Budget Controller** | Budget setup, commitment monitoring, treasury |
-| **Finance Manager / Controller** | Approvals, cross-module review, financial reports |
+| **Finance Manager / Controller** | Final review before posting, cross-module checks, financial reports |
 | **Auditor (Read-Only)** | Drill-down on GL, reports, and reconciliations |
 
 ---
@@ -330,20 +321,19 @@ The COGS amount uses the **Moving Average (MA) unit cost** of the item at the mo
 
 **Monthly (Period Close):**
 3. Review depreciation runs in [Fixed Asset Applet](/applets/finance/fixed-asset-applet/) — confirm depreciation journals are posted before closing the period.
-4. Check deferred revenue recognition schedules in [Revenue Management Applet](/applets/finance/revenue-management-applet/) — release the correct portion to earned revenue.
-5. Run the SST reconciliation in [SST Applet](/applets/finance/sst-applet/) — confirm output tax matches the Sales module and input tax matches Purchasing.
+4. Run the SST reconciliation in [SST Applet](/applets/finance/sst-applet/) — confirm output tax matches the Sales module and input tax matches Purchasing.
 
 **Bi-Monthly (SST Filing):**
-6. Generate the SST-02 return in [SST Applet](/applets/finance/sst-applet/) and submit to RMCD before the due date.
+5. Generate the SST-02 return in [SST Applet](/applets/finance/sst-applet/) and submit to RMCD before the due date.
 
 ### Journey: Budget Controller (Continuous)
 
 1. At the start of the financial year, define budgets per department, project, or cost centre in [Budget Applet](/applets/finance/budget-applet/). Break annual budgets into monthly targets for meaningful variance tracking.
 2. Before approving any significant spend commitment (purchase orders, service contracts), check available budget in [Vote Book Applet](/applets/finance/vote-book-applet/). The Vote Book shows: budget allocated, committed, spent, and remaining — in real time.
 3. When the Vote Book shows a budget line nearing its limit, escalate to the Finance Manager for a budget revision or reforecast before commitments exceed the envelope.
-4. Manage treasury placements — track maturity dates and interest in [MM Deposit Applet](/applets/finance/mm-deposit-applet/) and [Investment Applet](/applets/finance/investment-applet/) to optimize cash yield without compromising liquidity.
+4. Manage treasury placements — track maturity dates and interest in the [Deposit Applet](/applets/finance/deposit-applet/) to optimise cash yield without compromising liquidity.
 
-### Journey: Finance Manager / Controller (Daily approvals + monthly close)
+### Journey: Finance Manager / Controller (Daily review + monthly close)
 
 **Daily:**
 1. Review the day's draft PVs and RVs. Check each payment against its supporting Purchase Invoice — finalise only when the amounts match and the Cashbook selection is correct.

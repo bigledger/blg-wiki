@@ -381,8 +381,8 @@ Enable seamless checkout experience:
 
 - [Membership Points Currency](/applets/membership-points-currency/) - Currency configuration
 - [Membership Program Applet](/applets/membership-program/) - Program setup
-- [Membership Admin Console](/applets/membership-admin-console-applet/) - Administration
-- [Customer Maintenance](/applets/customer-maintenance-applet/) - Member management
+- [Membership Admin Console](/applets/membership/membership-admin-applet/) - Administration
+- [Customer Maintenance](/applets/master-data/customer-maintenance-applet/) - Member management
 
 ### Support
 

@@ -9,8 +9,6 @@ Configuring the HR & Payroll Module follows a strict 5-phase dependency chain. E
 
 ## Implementation Pipeline & Workflow
 
-![5-Phase HR & Payroll Setup Pipeline](/images/hr-payroll/hr_configuration_workflow.png)
-
 ---
 
 ## Phase 1: Master Foundations

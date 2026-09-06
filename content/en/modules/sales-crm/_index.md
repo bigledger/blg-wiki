@@ -55,14 +55,14 @@ The Sales & CRM Module delivers:
 ### Customer Foundation
 
 {{< cards >}}
-  {{< card link="/applets/customer-maintenance-applet/" title="Customer Maintenance Applet" subtitle="Comprehensive customer master data and relationship management" >}}
+  {{< card link="/applets/master-data/customer-maintenance-applet/" title="Customer Maintenance Applet" subtitle="Comprehensive customer master data and relationship management" >}}
   {{< card link="/applets/unified-contact-center-ucc-applet/" title="Unified Contact Center (UCC) Applet" subtitle="Multi-channel customer communication and support management" >}}
 {{< /cards >}}
 
 ### Sales Management
 
 {{< cards >}}
-  {{< card link="/applets/pricebook-applet/" title="Pricebook Applet" subtitle="Sales pricing, discounts, and promotion management" >}}
+  {{< card link="/applets/master-data/pricebook-applet/" title="Pricebook Applet" subtitle="Sales pricing, discounts, and promotion management" >}}
 {{< /cards >}}
 
 ### Analytics & Intelligence
@@ -284,7 +284,11 @@ Channel    Priority        Escalation  Solution      Testing     Survey
 ## Compliance & Security
 
 ### Data Protection
-- **GDPR Compliance** - European data protection regulation compliance
+
+**A note on privacy law**: for a Malaysian business the governing regime is the Personal Data
+Protection Act 2010 (PDPA), not GDPR. The features below help you meet your own obligations under
+it — they are not a statement that BigLedger holds a privacy or security certification.
+
 - **Data Privacy** - Customer data privacy and consent management
 - **Data Security** - Encryption and secure data handling
 - **Access Control** - Role-based data access and permissions
