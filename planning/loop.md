@@ -111,6 +111,7 @@ commit that lane's pages, ship, then re-launch the lane from its `state.json` (p
 
 ## Waiting on Vincent
 
+- **F-0207** entity merge rewrites every entity column with no unmerge — guard rail or documented warning?
 - **F-0204** Website Builder "Remove Access" does not revoke access (wrong table) — ticket?
 - **F-0200 SECURITY (authorisation):** soft-deleted tenant-admin grants still resolve true (unparenthesised OR in PermissionMigrationUow) — escalate.
 - **F-0181 SECURITY (urgent):** a customer's Firebase service-account key head was public via the wiki CDN from 2026-02-16 until today — rotate the key; decide on git-history purge; check CDN logs.

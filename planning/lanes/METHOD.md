@@ -109,5 +109,13 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
 26. **The shared-utilities submodule is pinned per applet** (lane 3, run 22): run gates.py at the applet's
     pinned commit AND at HEAD; note which rows differ. One document type can have three backends
     (back-office gen-doc, login-entity/ecom endpoint, storefront conversion) — check all paths.
-27. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+27. **Some applet repos VENDOR a private copy of shared-utilities** (Supplier, Merchant Admin — no
+    `.gitmodules`, no link to refs/blg-shared-utilities), so gates.py cannot be run at all: neither
+    "pinned" nor "HEAD" applies. Check for `.gitmodules` first; otherwise build the rendered proof from
+    the applet's own field-configuration template ∪ its inline-gear key lists. (It also means
+    shared-utilities fixes never reach these applets.)
+28. **Enumerate every component dispatching `saveMasterSettingsInit`** — a second settings screen can
+    own keys the main screen has never heard of (Supplier: Default Selection writes ALLOWED_AR_AP_TYPES
+    and SUPPLIER_DETAILS_TAB_ORDER; two more keys are reachable only through the inline gear).
+29. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.

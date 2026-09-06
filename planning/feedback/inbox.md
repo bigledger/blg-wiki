@@ -269,7 +269,8 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0050 (2026-09-05) Second page for the same registry row as customer-maintenance-applet (customer_applet_v1); it invents a "front desk / back office" split that does not exist. Merge into customer-maintenance and alias. Decision for Vincent (recommended: merge).
 
 ### /applets/master-data/customer-maintenance-applet/ (+ sales pages)
-- [ ] F-0051 (2026-09-05) The claim that a credit limit "hard-stops a sale" is not supported by javasdk domain code. Removed from the rewritten page pending an answer — kb/questions/2026-09-05-credit-limit-enforcement.md. Decision/answer needed from Vincent or backend lead.
+- [x] F-0051 (2026-09-05) The claim that a credit limit "hard-stops a sale" is not supported by javasdk domain code. Removed from the rewritten page pending an answer — kb/questions/2026-09-05-credit-limit-enforcement.md. Decision/answer needed from Vincent or backend lead.
+      → ANSWERED 2026-09-06 (lane 4 run 26): supplier side has no enforcement; customer side blocks via a nightly is_customer job + four sales doc types, not a live check at save. See kb/questions/2026-09-05-credit-limit-enforcement.md.
 
 ### site-wide (applets — UI defects found by lanes, for the product team, not the wiki)
 - [ ] F-0052 (2026-09-05) Three settings screens are unbound (Doc Item Department Settings; Chart of Account and Stock Adjustment Field Settings); the customer create form binds phone `[required]="NOT_MANDATORY_PHONE_NO"` (inverted vs the edit form). Pass on as product bugs; the wiki documents current behaviour.
@@ -746,4 +747,18 @@ with the analysis, the changes made, and the commit hash.
 
 ### /applets/ecommerce/cp-commerce-admin-applet/
 - [ ] F-0205 (2026-09-06) Its Webstore dashboard section claims 10 tiles and "role-based access control"; there are 13 tiles, 11 checkboxes, and no role is involved. Cross-link batch.
+
+## From Lane 4 run 26 — Supplier (2026-09-06)
+
+### /applets/master-data/customer-maintenance-applet/ + sales guides (fact, follows F-0051)
+- [ ] F-0206 (2026-09-06) Credit limit: describe the real mechanism — a nightly `is_customer` job plus four sales document types — and stop implying a real-time hard stop at save. Supplier credit terms/limits are read by nothing at posting time (no due-date derivation, no limit check); say so on the supplier page's neighbours too.
+
+### product (supplier) — entity merge is irreversible and unbounded
+- [ ] F-0207 (2026-09-06) The entity merge GUID swap rewrites EVERY entity-referencing column in the tenant database — posted documents, journal rows, balance tables — with no posting-state filter, no fiscal-period-lock check, no type check (a customer can be merged into a supplier), no lock during the run and NO UNMERGE; the history table records only a row count. Vincent: product guard rail, or an explicit irreversible-operation warning in the guides? Also: supplier export writes 11 columns while import accepts 41, so a re-imported export silently blanks e-Invoice, SST, tourism-tax, MSIC and category data — fix the export or warn? Backend one-liner: duplicate supplier code returns "…should not be set" (wrong message template; merchant/employee siblings are correct). Credit limit is integer-only on the supplier side but 2 dp on the customer side — drift? Invitation links never expire; Peppol routing is non-deterministic when two IDs are flagged default.
+
+### registry
+- [ ] F-0208 (2026-09-06) supplier-applet has no documentation_url; zero client-side permissions seeded although the code checks ten SHOW_* codes; HIDE_AUDIT_LOG_MENU has no SHOW_* pair so it hides the menu for everyone (F-0044 family). ACTIVE rows with no page: APAutomationSupplierAccess, rma_supplier.
+
+### cross-lane correction for lane 3
+- [ ] F-0209 (2026-09-06) Lane 3's claimed `default_einvoice_address` precedence "shipping → billing → main" does NOT exist on the supplier side (the flag is set explicitly from the custom address type). Re-check the claim on the customer page before it is repeated.
 
