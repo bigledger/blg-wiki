@@ -90,8 +90,6 @@ weight: 186
   {{< card title="Delivery Job Line Report" subtitle="按日期生成行级报表并导出 PDF" link="#delivery-job-line-report" >}}
 {{< /cards >}}
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/delivery-installation-overview-infographic.png" alt="Delivery & Installation Applet V2 总览信息图，展示从 Shipment 导入到 Trip 完结与报表输出的流程" caption="Delivery & Installation Applet V2 总览：从 Shipment 导入与作业编排，到 Trip 执行与行级报表输出。" >}}
-
 ---
 
 ## 核心概念
@@ -277,7 +275,6 @@ flowchart TD
 **Shipment Listing** 用于把可执行的 Shipment 数量转换为 Jobs。
 
 {{< figure src="/images/delivery-installation-applet-V2-applet/shipment-listing-listing.png" alt="Shipment 列表网格，展示出货信息、余额数量与作业分配数量字段" caption="Shipment 列表：在转换前查看待处理 Shipment 行并完成分配。" >}}
-
 
 {{< figure src="/images/delivery-installation-applet-V2-applet/shipment-listing-create-jobs.png" alt="Shipment 列表中的 Create Jobs 控制区，包含模式、优化方法与网络选择" caption="Shipment 转 Job 操作区：支持 Normal Mode 与 Path Optimization Mode 创建作业。" >}}
 

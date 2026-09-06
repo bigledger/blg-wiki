@@ -91,8 +91,6 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
   {{< card title="高级搜索与筛选 (Advanced Search & Filtering)" subtitle="按计算集 (Calculation Set)、类型等进行筛选，实现精准分析" link="#advanced-search--filtering" >}}
 {{< /cards >}}
 
-{{< figure src="/images/sales-report-applet/sales-report-overview-infographic.png" alt="Infographic showing before and after view of manual sales reporting versus using the Sales Report Applet, and the user roles who benefit" caption="从手工电子表格到清晰的洞察：使用之前（延迟、容易出错的报告）对比使用之后（自动化计算、集中化记录、高级分析），以及谁能从 Sales Report Applet 中受益。" >}}
-
 ## 核心概念
 
 ### 理解销售报告框架

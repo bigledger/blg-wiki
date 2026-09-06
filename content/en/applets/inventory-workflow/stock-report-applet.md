@@ -33,8 +33,6 @@ The Stock Report applet is the read-only reporting front end for inventory. It r
 
 Warehouse managers open it to trace movements and count discrepancies; finance opens it for closing-stock values and gross profit; purchasing for sales-versus-purchase and last-purchase-price checks. Every report shares the same layout — an **Advanced Search** panel, a column toggle, an interactive grid with grouping and totals, and Excel / PDF export from the status bar.
 
-{{< figure src="/images/stock-report-applet/stock-report-applet-overview-infographic.png" alt="Stock Report applet overview" caption="One applet, thirteen reports over the same stock ledger." >}}
-
 ## Where it fits
 
 | Direction | Applet / document | Why |

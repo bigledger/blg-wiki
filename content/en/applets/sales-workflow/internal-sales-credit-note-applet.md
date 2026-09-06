@@ -45,8 +45,6 @@ The **Sales Credit Note (Internal)** applet reduces what a customer owes after a
 Server document type `INTERNAL_SALES_CREDIT_NOTE`. Amount signum **−1**, quantity signum **0** — the backend forces every line's quantity signum to zero, which is why a credit note can carry any item type without an inventory transaction.
 {{< /callout >}}
 
-{{< figure src="/images/internal-sales-credit-note-applet/sales-credit-note-overview-infographic.png" alt="Sales Credit Note Applet Overview Infographic" caption="At a glance: what the credit note corrects and who uses it." >}}
-
 ## Where it fits
 
 | Direction | Document / applet | How it connects |

@@ -10,8 +10,6 @@ The **Claims Management Module** is BigLedger's employee expense reimbursement a
 
 Claims Management operates between employee expense submissions and company financial ledgers. When an employee submits a business receipt, the system validates entitlement limits, routes the request through manager sign-offs, and posts approved expense reimbursements directly to Financial Accounting.
 
-![Employee Claims & Expense Management ERP Architecture](/images/claims/claims_architecture.png)
-
 | Architecture Layer | System Component | Primary Role in Claims Operations |
 |-------------------|------------------|-----------------------------------|
 | **Claims Engine** | [Claim Applet](/applets/claims/claim-applet/) | Central management of expense categories, employee entitlement limits, and receipt submissions. |

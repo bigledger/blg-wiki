@@ -94,8 +94,6 @@ When outbound delivery is handled across disconnected tools, teams face:
   {{< card title="Branch-Level Controls" subtitle="Branch-specific defaults, pricing, settlement, and filters" link="#branch-level-controls" >}}
 {{< /cards >}}
 
-{{< figure src="/images/internal-outbound-delivery-order-applet/internal-outbound-delivery-order-applet-overview-infographic.png" alt="Overview infographic of Internal Outbound Delivery Order Applet from document preparation to queue execution and settings governance" caption="Internal Outbound Delivery Order Applet overview: from delivery order preparation and source document KO to pick-pack execution, intercompany tracking, and governed output settings." >}}
-
 ## Key Concepts
 
 ### Main Navigation Map

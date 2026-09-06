@@ -61,8 +61,6 @@ The **POS General** applet is the retail checkout counter. A cashier opens it on
 Server document type `INTERNAL_SALES_CASHBILL`. Amount signum **+1**, quantity signum **−1** — a cash bill is a sales invoice that is settled on the spot: it posts revenue and stock-out like an invoice, and its settlement lines post straight to the cashbook.
 {{< /callout >}}
 
-{{< figure src="/images/pos-general-applet/pos-overview-infographic.png" alt="From scattered counters to centralised control with the POS General applet" caption="Counters, cashiers and payment methods feed one cash bill document that posts to stock, ledger and cashbook." >}}
-
 ## Video tutorial
 
 {{< youtube Gf6gXUfHebE >}}

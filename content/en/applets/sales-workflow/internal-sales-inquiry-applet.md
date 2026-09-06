@@ -110,8 +110,6 @@ Without a dedicated inquiry record, early-stage sales work often lives in spread
 
 ---
 
-{{< figure src="/images/internal-sales-inquiry-applet/internal-sales-inquiry-overview-infographic.png" alt="Internal Sales Inquiry Applet Overview - showing inquiry process from customer input through line items to final conversion" caption="From scattered notes to structured inquiries: centralized customer and line-item tracking with flexible sourcing, posting controls, and controlled conversion." >}}
-
 ---
 
 ## Key Features Overview

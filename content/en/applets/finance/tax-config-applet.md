@@ -71,8 +71,6 @@ Without a centralized tax configuration tool, organizations face:
   {{< card title="Lifecycle Management" subtitle="Manage Active/Inactive status to retire codes without data loss" link="#lifecycle-management" >}}
 {{< /cards >}}
 
-{{< figure src="/images/tax-config-applet/tax-config-overview-infographic.png" alt="Tax Configuration Applet Overview Infographic" caption="At a Glance: The Challenges, Solutions, Supported Tax Types, and System-Wide Integration of the Tax Configuration Applet." >}}
-
 ## Key Concepts
 
 ### Understanding Tax Types

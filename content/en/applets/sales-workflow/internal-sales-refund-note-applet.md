@@ -22,8 +22,6 @@ Rather than processing uncontrolled cash pay-outs or unverified ledger deduction
 **Core Concept**: A Sales Refund Note is the financial counterpart to a Sales Return. While a *Sales Return* handles the physical receiving and inventory reversal of returned goods, the *Sales Refund Note* manages the financial reversal of cash, credit card settlements, customer store credit, and Accounts Receivable (AR).
 {{< /callout >}}
 
-![BigLedger Sales Refund Note Applet Operational Overview](/images/internal-sales-refund-note-applet/refund-note-overview-infographic.png)
-
 ---
 
 ### Who Benefits from This Applet?
@@ -78,8 +76,6 @@ Rather than processing uncontrolled cash pay-outs or unverified ledger deduction
 ### The Amount Balancing Rule (PNS vs. STL)
 
 To protect your organization against revenue leakage, the Sales Refund Note Applet enforces a strict mathematical balancing rule before any document can be posted (`FINAL`).
-
-![Sales Refund Note PNS vs STL Balancing Engine](/images/internal-sales-refund-note-applet/pns-stl-balancing-infographic.png)
 
 1. **PNS (Product / Non-Stock Lines):** The total monetary value of items or service fees added to the **Lines** tab (e.g., Laptop RM 2,000 + Warranty Fee RM 100 = **RM 2,100**).
 2. **STL (Settlement / Payments):** The total monetary value returned to the customer via the **Payment** tab (outgoing cash/bank transfer) or pushed to their account ledger via the **ARAP** tab (store credit).

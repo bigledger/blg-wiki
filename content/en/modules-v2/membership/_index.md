@@ -10,8 +10,6 @@ The **Membership Module** enables businesses to identify customers, reward repea
 
 Membership sits between your customer master data in Core and your transaction channels (POS, Sales Workflow, E-Commerce). It does not create physical stock or post directly to GL by itself — it attaches a reward layer on top of your existing business processes.
 
-![ERP Membership & Loyalty Architecture](/images/membership/membership_architecture.png)
-
 | Architecture Layer | System Component | Primary Role in Loyalty Operations |
 |-------------------|------------------|------------------------------------|
 | **Core Master Data** | Customer & Pricebooks | Customer master profiles, shipping addresses, and member tier pricebooks. |

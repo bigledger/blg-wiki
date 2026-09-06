@@ -65,8 +65,6 @@ The **Purchase Return (Internal)** applet records goods going back to a supplier
 
 Engine document type `INTERNAL_PURCHASE_RETURN`, amount signum **+1**, quantity signum **−1**. It is the stock-moving counterpart of the [Purchase Debit Note (Internal)](/applets/purchase-workflow/internal-purchase-debit-note-applet/), which has the same amount sign but never touches stock.
 
-{{< figure src="/images/internal-purchase-return-applet/internal-purchase-return-overview-infographic.png" alt="Purchase Return (Internal) overview infographic" caption="Overview: start from a document search or manual entry, FINAL to post stock and payables, then close the balance with contra or settlement." >}}
-
 ## Where it fits
 
 | Position | Document / applet | Why |

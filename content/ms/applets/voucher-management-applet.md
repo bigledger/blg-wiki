@@ -24,8 +24,6 @@ Aplet ini merapatkan jurang kritikal antara kempen pemasaran dan tempat jualan (
 - **Tiket (Pas):** Baucar khusus yang digunakan untuk kemasukan fizikal atau maya (cth., kod QR yang diimbas di pintu masuk acara).
 {{< /callout >}}
 
-{{< figure src="/images/voucher-management-applet/voucher-mastery-guide.png" alt="Menguasai Aplet Kupon: Jenis, Manfaat, dan Penyelesaian" caption="Panduan Komprehensif: Terokai model baucar yang berbeza dan penyelesaian perniagaan teras yang disediakan oleh aplet." >}}
-
 ---
 
 ## Konfigurasi Strategik: Membina Logik Baucar Anda
@@ -96,8 +94,6 @@ Bukan semua promosi dicipta sama. Aplet ini menyediakan tiga **Jenis Baucar** ya
 
   {{< card title="Tetapan Sistem" subtitle="Suis ciri admin dan webhook" link="#konfigurasi--tetapan" >}}
 {{< /cards >}}
-
-{{< figure src="/images/voucher-management-applet/voucher-management-infographic.jpg" alt="Aplet Pengurusan Kupon - menghentikan manipulasi dan kebocoran dana dari diskaun bebas dan tamat tempoh" caption="Dari Kebocoran Margin ke Promosi Sempurna: Berhentikan gaya renyah mengawal aliran baucar, automasikan ROI Jualan Pasukan Pemasaran syarikat hari ini!" >}}
 
 ---
 

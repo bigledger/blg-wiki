@@ -67,8 +67,6 @@ main > br { display: none !important; }
 
 ## 🔄 Order-to-Fulfillment Workflow
 
-![Wholesale Distribution Order-to-Fulfillment Flow](/images/user-guide/industry-solutions/wholesale-fulfillment-flow.png)
-
 ### Key Wholesale Benefits:
 - **Automated Credit Guard:** Prevents shipping goods to customers who have breached their credit terms or have 90+ day overdue invoices.
 - **Batch & Serial Traceability:** Track lot numbers and expiry dates for FMCG, pharmaceuticals, or industrial components.

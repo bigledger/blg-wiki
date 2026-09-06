@@ -9,8 +9,6 @@ Configuring the E-Commerce Module follows a strict 5-phase dependency chain. Pro
 
 ## Configuration Dependency Chain
 
-![5-Phase ERP E-Commerce Setup Pipeline](/images/ecommerce/ecommerce_configuration_workflow.png)
-
 > [!WARNING]
 > Product SKUs and inventory warehouses must exist in Core and Inventory **before** publishing digital webstore catalogs or connecting payment gateways. Always complete setup phases in order.
 

@@ -11,8 +11,6 @@ Understanding core manufacturing concepts is essential before building Bills of 
 
 Manufacturing execution follows a structured 5-step lifecycle. Each step represents a physical shop floor milestone and financial ledger re-allocation.
 
-![Manufacturing Production Order Lifecycle](/images/manufacturing/manufacturing_lifecycle.png)
-
 | Step | Milestone | Business Purpose | Applet Used |
 |------|-----------|------------------|-------------|
 | **1** | **BOM & Process Design** | Defining multi-level raw material recipes, work center operations, and machine cycle times | [Process Maintenance Applet](/applets/manufacturing/process-maintenance-applet/) |

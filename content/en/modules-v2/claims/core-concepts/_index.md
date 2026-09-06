@@ -11,8 +11,6 @@ Understanding core claims concepts is essential before establishing expense poli
 
 Expense reimbursements follow a structured 5-step lifecycle. Each step represents a policy verification milestone and financial authorization.
 
-![Employee Claim Processing Lifecycle](/images/claims/claims_lifecycle.png)
-
 | Step | Milestone | Business Purpose | Applet Used |
 |------|-----------|------------------|-------------|
 | **1** | **Expense Incurred** | Employee incurs out-of-pocket business expense and scans paper receipt | [Claim Applet](/applets/claims/claim-applet/) |

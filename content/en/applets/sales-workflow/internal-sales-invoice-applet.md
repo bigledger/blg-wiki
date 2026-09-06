@@ -91,8 +91,6 @@ The **Sales Invoice (Internal)** applet creates the document that bills a custom
 Server document type `INTERNAL_SALES_INVOICE`. Amount signum **+1**, quantity signum **−1** (every line takes stock *out*). If you bill without moving stock, use [Sales Invoice (No Stock Out)](/applets/sales-workflow/internal-sales-invoice-no-stock-out-applet/) instead.
 {{< /callout >}}
 
-{{< figure src="/images/internal-sales-invoice-applet/infographic.png" alt="Process Flow Infographic" caption="Sales invoice lifecycle at a glance." >}}
-
 ## Where it fits
 
 | Direction | Document / applet | How it connects |

@@ -35,8 +35,6 @@ The pages below are the module's architecture reference: who does what, which ap
 
 E-Invoice operates directly on top of commercial sales billing and accounts payable. When a Sales Invoice or Credit Note is generated, BigLedger transforms commercial billing into validated JSON/XML payloads, signs them digitally, and submits them to tax authorities for instant clearance before customer delivery.
 
-![ERP E-Invoice & PEPPOL Integration Architecture](/images/e-invoice/einvoice_architecture.png)
-
 | Architecture Layer | System Component | Primary Role in Compliance Operations |
 |-------------------|------------------|---------------------------------------|
 | **Submission Engine** | [MY E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/) | Posting queue, the three holding pools, monthly consolidation, cancellation requests and the monthly reconciliation report. |

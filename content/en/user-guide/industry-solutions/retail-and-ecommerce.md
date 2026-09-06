@@ -67,8 +67,6 @@ main > br { display: none !important; }
 
 ## 🔄 Omnichannel Customer & Inventory Flow
 
-![Omnichannel Retail & Marketplace Hub Flow](/images/user-guide/industry-solutions/omnichannel-retail-flow.png)
-
 ### Core Retail Capabilities:
 - **Single Source of Truth for Stock:** Avoid manual stock adjustments between physical stores and warehouse shelves.
 - **Unified Customer Profile:** Customer purchase history is linked across all retail counters and e-commerce transactions.

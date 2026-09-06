@@ -10,8 +10,6 @@ The **Purchasing Module** is BigLedger's Procurement-to-Pay (P2P) engine. It man
 
 Purchasing operates between your operational procurement requirements and your core vendor financial ledgers. It ensures that every stock-in or service purchase is authorized, priced accurately, and matched before payment disbursement.
 
-![Procurement-to-Pay ERP Purchasing Architecture](/images/purchasing/purchasing_architecture.png)
-
 | Architecture Layer | System Component | Primary Role in Procurement |
 |-------------------|------------------|-----------------------------|
 | **Procurement Engine** | P2P Contract & Sourcing Engine | Central management of vendor pricebooks, purchase requisitions, optional approval levels, and order commitments. |

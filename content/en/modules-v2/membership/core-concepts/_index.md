@@ -11,8 +11,6 @@ Understanding these concepts is essential before configuring your loyalty progra
 
 BigLedger separates loyalty into three distinct layers. Each layer has its own rules:
 
-![Three-Layer ERP Membership Architecture](/images/membership/membership_core_concepts_architecture.png)
-
 | Layer | What it represents | Where it lives |
 |-------|--------------------|----------------|
 | **Customer** | The business relationship — contact info, transaction history | Core Module |

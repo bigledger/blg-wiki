@@ -67,8 +67,6 @@ main > br { display: none !important; }
 
 ## 🔄 Production & Work-in-Progress (WIP) Flow
 
-![Manufacturing Production & Work-in-Progress (WIP) Flow](/images/user-guide/industry-solutions/manufacturing-wip-flow.png)
-
 ### Key Manufacturing Capabilities:
 1. **Multi-Level Bill of Materials (BOM):** Define exact sub-assemblies, raw materials, and packaging components required for finished products.
 2. **Work-in-Progress (WIP) Tracking:** Track inventory values as raw materials move onto the factory shop floor and undergo transformation before final finished goods receipt.

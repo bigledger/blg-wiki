@@ -17,8 +17,6 @@ BigLedger is organized into functional **modules** — each module is a business
 
 ### Module–Applet Architecture
 
-![BigLedger Module-Applet Architecture](/images/user-guide/modules/module-applet-architecture.png)
-
 ---
 
 ## All Modules

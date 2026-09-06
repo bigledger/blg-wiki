@@ -22,8 +22,6 @@ Rather than relying on offline spreadsheets, manual data entry, or unverified ca
 **Core Architectural Principle**: The applet strictly separates **Calculation (Reports)** from **Disbursement (Payouts)**. A *Commission Report* computes performance earnings based on closed sales invoices, but no money moves until a *Payout Processing* document (Internal Payment Voucher) is approved and posted to the financial ledger.
 {{< /callout >}}
 
-![BigLedger Sales Commission Applet Operational Overview](/images/sales-commission-applet/sales-commission-overview-infographic.png)
-
 ---
 
 ### Who Benefits from This Applet?
@@ -73,8 +71,6 @@ Rather than relying on offline spreadsheets, manual data entry, or unverified ca
 ### The 3-Phase Commission Lifecycle
 
 To ensure complete operational compliance and financial control, commission processing follows a structured three-phase lifecycle:
-
-![Sales Commission 3-Phase Operational Lifecycle](/images/sales-commission-applet/commission-lifecycle-infographic.png)
 
 1. **Phase 1: Cycle Definition (Sales Commission Cycle):** Finance or Payroll administrators create a formal period bucket (e.g., *October 2024 Sales Cycle*). Defining start and end cut-off dates binds the financial window.
 2. **Phase 2: Report Generation (Sales Commission Report):** The system executes background rules against closed sales invoices within the active cycle. It computes exact salesperson yields, allows line-by-line item verification, and routes the report for managerial approval.

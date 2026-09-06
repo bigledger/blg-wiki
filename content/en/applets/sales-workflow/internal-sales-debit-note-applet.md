@@ -42,8 +42,6 @@ The **Sales Debit Note (Internal)** applet raises an additional charge against a
 Server document type `INTERNAL_SALES_DEBIT_NOTE`. Amount signum **+1**, quantity signum **0** — it posts like an invoice but never moves stock.
 {{< /callout >}}
 
-{{< figure src="/images/internal-sales-debit-note-applet/internalSalesDebitNoteInfographic.png" alt="Sales Debit Note (Internal) workflow infographic" caption="Post-billing charges and intercompany adjustments on one document." >}}
-
 ## Where it fits
 
 | Direction | Document / applet | How it connects |

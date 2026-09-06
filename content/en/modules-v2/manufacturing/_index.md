@@ -10,8 +10,6 @@ The **Manufacturing Module** is BigLedger's shop floor execution and cost absorp
 
 Manufacturing bridges operational production schedules with financial cost accounting. Raw materials issued to production exit inventory asset ledgers and enter Work-in-Progress (WIP). Upon production order completion, direct labor and machine overhead absorb into final finished goods asset valuations.
 
-![ERP Manufacturing & Production Architecture](/images/manufacturing/manufacturing_architecture.png)
-
 | Architecture Layer | System Component | Primary Role in Production Operations |
 |-------------------|------------------|---------------------------------------|
 | **Execution Engine** | [Production Planning and Monitoring Applet](/applets/manufacturing/production-planning-and-monitoring-applet/) | Central production scheduling, master work order release, and batch tracking. |

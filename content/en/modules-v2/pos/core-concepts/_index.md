@@ -11,8 +11,6 @@ Understanding core sales concepts is essential before configuring pricing or run
 
 Commercial sales transactions follow a structured 5-step lifecycle. Each step represents a distinct legal, inventory, and financial milestone.
 
-![Commercial Sales Document Lifecycle](/images/pos/sales_pos_lifecycle.png)
-
 | Step | Document | Business Purpose | Inventory Impact | Accounting Impact |
 |------|----------|------------------|------------------|-------------------|
 | **1** | **Sales Quotation** | Non-binding price proposal sent to potential buyer | None | None |

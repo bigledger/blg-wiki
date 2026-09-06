@@ -11,8 +11,6 @@ Understanding core inventory concepts is essential before configuring warehouse 
 
 Inventory operations follow a structured 5-step movement lifecycle. Each step represents a physical movement or stock balance modification.
 
-![Stock Movement Lifecycle](/images/inventory/inventory_lifecycle.png)
-
 | Step | Movement Stage | Business Purpose | Applet Used |
 |------|----------------|------------------|-------------|
 | **1** | **Stock Inbound** | Receiving supplier goods via GRN or production assembly stock-in | [Goods Received Note GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/) |

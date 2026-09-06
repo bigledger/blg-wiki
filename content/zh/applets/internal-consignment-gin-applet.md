@@ -73,8 +73,6 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
   {{< card title="设置与配置" subtitle="配置字段可见性、默认选择和可打印格式" link="#configuration--settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/internal-consignment-gin-applet/internal-consignment-gin-overview-infographic.png" alt="内部寄售 GIN 小程序概述：人工寄售跟踪的挑战与小程序的解决方案，以及谁将受益" caption="从人工跟踪到数字化管控：挑战（记录丢失、对账困难、缺乏可见性、电子表格错误）vs 解决方案（数字化文档、集中列表、行项目可见性、审计合规）。受益者：销售代表、销售经理、仓库与库存、财务与运营。" >}}
-
 ## 核心概念
 
 ### 理解寄售 GIN

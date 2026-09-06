@@ -66,13 +66,9 @@ Finance has **no master data of its own**. Every transaction relies on master re
 
 This is the most commonly misunderstood relationship in BigLedger:
 
-![How a Cashbook becomes a GL Bank Account](/images/user-guide/financial-accounting/cashbook-gl-mapping.png)
-
 > ⚠️ **Common pitfall:** A new bank account requires **two** setup steps in Core: (1) create the GL account in Chart of Accounts, then (2) create the Cashbook and link it to that GL account. Skipping step 2 means transactions cannot be paid through that bank, even though the GL account exists.
 
 ### How a Tax Code becomes a GL Tax Account
-
-![How a Tax Code becomes a GL Tax Account](/images/user-guide/financial-accounting/taxcode-gl-mapping.png)
 
 When a Sales Invoice with `SST-OUT` is finalized, the tax portion automatically credits `2210 SST Output Payable` — without anyone keying it in.
 
@@ -81,8 +77,6 @@ When a Sales Invoice with `SST-OUT` is finalized, the tax portion automatically 
 ## 4. Anatomy of a Transaction
 
 Every finance transaction is a story made of six pieces. Knowing them helps you debug any posting issue.
-
-![Anatomy of an Accounting Transaction](/images/user-guide/financial-accounting/anatomy-of-transaction.png)
 
 > 💡 **How to read this:** All six pieces (top row) feed into a single GL posting (middle). That posting then surfaces in every downstream report and reconciliation (bottom row). If any input is wrong or missing, the downstream outputs are wrong — this is your debugging map.
 
@@ -112,8 +106,6 @@ That entry then flows into the **P&L** (via 5310), the **Balance Sheet** (via 10
 ## 5. Applet Dependency Map
 
 Finance applets stack into four layers, plus a cross-cutting compliance layer. Data flows downward — from configuration to transactions to verification to reporting.
-
-![Financial Accounting Module Applet Dependency Map](/images/user-guide/financial-accounting/applet-dependency-map.png)
 
 ---
 
@@ -431,8 +423,6 @@ Periods (months) are opened and closed via the [Ledger & Journal Applet](/applet
 ### Correcting a Posted Entry
 
 Posted entries cannot be edited or deleted (audit trail rule). The correct procedure:
-
-![Correcting a Posted Entry Procedure](/images/user-guide/financial-accounting/correcting-posted-entry.png)
 
 This preserves the audit trail while still arriving at the right balance.
 

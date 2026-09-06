@@ -11,8 +11,6 @@ Understanding core e-commerce concepts is essential before launching online stor
 
 Digital commerce transactions follow a structured 5-step lifecycle. Each step represents an automated transition across customer-facing portals and backend ERP ledgers.
 
-![E-Commerce Online Order Lifecycle](/images/ecommerce/ecommerce_lifecycle.png)
-
 | Step | Milestone | Business Purpose | Applet Used |
 |------|-----------|------------------|-------------|
 | **1** | **Web Checkout** | Online buyer selects products, inputs shipping address, and pays via gateway | [Shopping Cart Applet](/applets/ecommerce/shopping-cart-applet/) |

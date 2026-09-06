@@ -67,8 +67,6 @@ main > br { display: none !important; }
 
 ## 🔄 Project Budget Control & Billing Flow
 
-![Professional Services Project & Budget Control Flow](/images/user-guide/industry-solutions/services-project-flow.png)
-
 ### Key Services Capabilities:
 1. **Vote Book Commitment Guard:** Pre-commit budgets before purchase orders or subcontractor contracts are approved. Automatically blocks spend once project budget limits are reached.
 2. **Milestone Progress Invoicing:** Issue customer progress bills tied to verified project deliverables or completion percentages.

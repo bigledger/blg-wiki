@@ -52,8 +52,6 @@ main > br { display: none !important; }
   <p class="ind-hero-desc">Discover how BigLedger's modular Applet architecture powers customized operations for over 5,000 businesses across retail, F&B, automotive, distribution, manufacturing, and services.</p>
 </div>
 
-![Proven Industry Impact & Business Value Metrics](/images/user-guide/industry-solutions/industry-impact-metrics.png)
-
 ## Select Your Industry Vertical
 
 Explore pre-configured workflows, interactive infographics, required applet bundles, and role-based operational guides tailored to your market sector:

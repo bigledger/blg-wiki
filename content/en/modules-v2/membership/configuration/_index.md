@@ -9,8 +9,6 @@ This section walks through the configuration of the Membership Module in the cor
 
 ## Configuration Dependency Chain
 
-![5-Phase ERP Membership Setup Workflow](/images/membership/membership_configuration_workflow.png)
-
 > [!WARNING]
 > Member Classes must exist **before** you create member records. Points Currencies must exist **before** you set conversion rates. Always follow the phase order.
 

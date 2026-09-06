@@ -91,8 +91,6 @@ Pelaporan jualan tradisional sering bergantung kepada hamparan elektronik (sprea
   {{< card title="Carian & Penapisan Lanjutan (Advanced Search & Filtering)" subtitle="Tapis mengikut calculation set, jenis, dan pelbagai lagi untuk analisis tepat" link="#advanced-search--filtering" >}}
 {{< /cards >}}
 
-{{< figure src="/images/sales-report-applet/sales-report-overview-infographic.png" alt="Infographic showing before and after view of manual sales reporting versus using the Sales Report Applet, and the user roles who benefit" caption="Dari Hamparan Elektronik Manual kepada Wawasan Jelas: Sebelum (lewat, laporan terdedah kepada ralat) vs Selepas (pengiraan automatik, rekod terpusat, analisis lanjutan) dan siapa yang mendapat manfaat daripada Sales Report Applet." >}}
-
 ## Konsep Utama
 
 ### Memahami Rangka Kerja Laporan Jualan

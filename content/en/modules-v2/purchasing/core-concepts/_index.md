@@ -11,8 +11,6 @@ Understanding core procurement concepts is essential before configuring vendor p
 
 Procurement transactions follow a structured 5-step lifecycle. Each step represents a distinct legal commitment, inventory movement, and financial milestone.
 
-![Procurement-to-Pay Document Lifecycle](/images/purchasing/purchasing_lifecycle.png)
-
 | Step | Document | Business Purpose | Inventory Impact | Accounting Impact |
 |------|----------|------------------|------------------|-------------------|
 | **1** | **Purchase Requisition** | Internal department request asking procurement to buy goods | None | None |

@@ -70,8 +70,6 @@ Drafting invoices often involves manual spreadsheets, leading to:
 
 ## Key Features Overview
 
-{{< figure src="/images/internal-sales-proforma-invoice-applet/old-way-vs-new-way-infographic.png" alt="From Manual Sheets to Digital Proformas: The Old Way (spreadsheets, missing leads, tax errors) vs The New Way (centralized, automated, project-linked)." caption="Efficiency Gains: Transitioning from fragmented manual drafting to a structured, integrated digital proforma system." >}}
-
 {{< cards >}}
 {{< card title="Document Listing" subtitle="Unified view of all Internal Job Sheets" link="#document-listing" >}}
 
@@ -84,8 +82,6 @@ Drafting invoices often involves manual spreadsheets, leading to:
 {{< card title="Tax & Compliance" subtitle="Configurable SST, WHT, and multi-currency support" link="#configuration--settings" >}}
 
 {{< /cards >}}
-
-{{< figure src="/images/internal-sales-proforma-invoice-applet/internal-sales-proforma-invoice-applet-overview-infographic.png" alt="Sales Proforma Invoice (Internal) Applet: The Old Way vs The New Way" caption="Sales Proforma Invoice (Internal) Applet Overview: Visualizing the journey from manual, fragmented processes to a centralized, digital billing solution." >}}
 
 ## Key Concepts
 
@@ -141,8 +137,6 @@ Internal Job Sheet (Header)
 ## Quick Start Guide
 
 Get up and running quickly with these essential workflows.
-
-{{< figure src="/images/internal-sales-proforma-invoice-applet/quick-start-guide-infographic.png" alt="Effortless Proforma Management: A Quick Guide for Every Role - showing workflows for Sales Agents and Managers" caption="Streamlined Billing: A visual guide for Sales Agents (Creation) and Managers (Review & Finalization)." >}}
 
 ### For Sales Agents: Create Your First Proforma
 

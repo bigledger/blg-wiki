@@ -75,8 +75,6 @@ Without a centralized maintenance system, businesses face:
 {{< card title="Configuration" subtitle="Tailor the applet to your business needs" link="#configuration--settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/inv-item-maintenance-applet/inv-item-maintenance-applet-overview-infographic.png" alt="From Inventory Chaos to Precision Control: Your Guide to Inv Item Maintenance - comparing the challenges of manual tracking with the unified applet solution" caption="From Inventory Chaos to Precision Control: The Old Way (data inconsistency, untraceable units, dead stock) vs The New Way (standardized registry, granular categorization, automated aging analysis)." >}}
-
 ---
 
 ## Key Concepts
@@ -172,8 +170,6 @@ graph TD
 ## Quick Start Guide
 
 Get up and running quickly with these essential workflows.
-
-{{< figure src="/images/inv-item-maintenance-applet/quick-start-guide-infographic.png" alt="Inventory Maintenance Quick Guide" caption="Inventory Control at a Glance: Visual workflows for Data Entry, Inventory Managers, and System Admins." >}}
 
 ### For Data Entry: Create Your First Item
 

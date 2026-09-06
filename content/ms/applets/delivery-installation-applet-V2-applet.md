@@ -90,8 +90,6 @@ Operasi penghantaran tradisional selalunya berjalan merentas spreadsheet, chat, 
   {{< card title="Delivery Job Line Report" subtitle="Penjanaan laporan berasaskan tarikh dan output PDF" link="#delivery-job-line-report" >}}
 {{< /cards >}}
 
-{{< figure src="/images/delivery-installation-applet-V2-applet/delivery-installation-overview-infographic.png" alt="Infografik gambaran keseluruhan Delivery & Installation Applet V2 daripada import shipment hingga penyempurnaan trip dan pelaporan" caption="Gambaran keseluruhan Delivery & Installation Applet V2: daripada import shipment dan orkestrasi job hingga pelaksanaan trip serta pelaporan peringkat baris." >}}
-
 ---
 
 ## Konsep Utama
@@ -277,7 +275,6 @@ Workbench ini mengurangkan usaha dispatcher daripada kemas kini satu-per-satu ke
 **Shipment Listing** ialah tempat kuantiti shipment tersedia ditukar kepada job yang boleh dilaksanakan.
 
 {{< figure src="/images/delivery-installation-applet-V2-applet/shipment-listing-listing.png" alt="Grid Shipment Listing yang memaparkan butiran shipment, balance quantity, dan allocate job quantity" caption="Shipment Listing: semak baris shipment terbuka dan sediakan peruntukan sebelum penukaran job." >}}
-
 
 {{< figure src="/images/delivery-installation-applet-V2-applet/shipment-listing-create-jobs.png" alt="Kawalan Create Jobs dalam Shipment Listing dengan pilihan mode, optimization method, dan network" caption="Panel penukaran Shipment-ke-Job: cipta job dalam Normal Mode atau Path Optimization Mode." >}}
 

@@ -9,8 +9,6 @@ Configuring the Claims Management Module follows a strict 5-phase dependency cha
 
 ## Configuration Dependency Chain
 
-![5-Phase ERP Claims Setup Pipeline](/images/claims/claims_configuration_workflow.png)
-
 > [!WARNING]
 > Employee profiles and job grades must exist in Core / HR **before** setting up claim entitlement caps or approval hierarchies. Always complete setup phases in order.
 

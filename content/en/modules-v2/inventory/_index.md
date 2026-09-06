@@ -10,8 +10,6 @@ The **Inventory Module** is BigLedger's centralized stock control engine. It tra
 
 Inventory acts as the physical fulfillment nexus between supply chain procurement and commercial sales. Every stock receipt (GRN) or stock-out (Sales Dispatch / POS Sale) updates inventory balances and posts financial asset valuations in real-time.
 
-![ERP Inventory Control Architecture](/images/inventory/inventory_architecture.png)
-
 | Architecture Layer | System Component | Primary Role in Inventory Operations |
 |-------------------|------------------|--------------------------------------|
 | **Inventory Engine** | Stock Balance & Valuation Engine | Central tracking of warehouse stock balances, batch/serial allocations, and perpetual cost valuation. |

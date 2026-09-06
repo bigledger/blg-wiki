@@ -11,8 +11,6 @@ The step-by-step version of everything below, written for the person doing it, i
 
 ## Configuration Dependency Chain
 
-![5-Phase ERP E-Invoice Setup Pipeline](/images/e-invoice/einvoice_configuration_workflow.png)
-
 > [!WARNING]
 > E-invoicing must be switched **on** for a company before any of its documents are finalised. A document finalised while the company is not enabled is dropped silently — no queue row, no pool row, no error. Always complete the setup phases in order.
 

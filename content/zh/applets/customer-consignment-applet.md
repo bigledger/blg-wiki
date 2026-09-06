@@ -139,8 +139,6 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
   {{< card title="权限管理" subtitle="按用户、团队和角色的细粒度控制" link="#configuration--settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/customer-consignment-applet/customer-consignment-applet-overview-infographic.png" alt="寄售应用概览：从手动混乱到集中控制 - 展示手动寄售追踪的挑战与使用客户寄售应用的优势对比" caption="从手动混乱到完美控制：旧方式（缺乏可见性、手动追踪、发票延迟、退货混乱）vs 新方式（实时追踪、自动转移、即时可见性、顺畅运营）" >}}
-
 ---
 
 ## 快速入门指南

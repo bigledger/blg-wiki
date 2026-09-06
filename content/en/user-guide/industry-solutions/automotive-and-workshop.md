@@ -56,8 +56,6 @@ main > br { display: none !important; }
 
 ## 🔄 End-to-End Workshop Workflow
 
-![Automotive Workshop Service & Operations Flow](/images/user-guide/industry-solutions/workshop-service-flow.png)
-
 ### Step-by-Step Operational Breakdown:
 1. **Vehicle Reception & Inspection:** Service advisor logs vehicle check-in using chassis/plate number. Performs digital walkaround inspection noting scratch points or existing defects.
 2. **Quotation & Approval:** Service advisor generates job estimation including recommended spare parts and labor charges. Quotation is sent directly to the customer, who confirms by reply.

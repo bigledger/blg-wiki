@@ -9,8 +9,6 @@ Configuring the Inventory Module follows a strict 5-phase dependency chain. Mast
 
 ## Configuration Dependency Chain
 
-![5-Phase ERP Inventory Setup Pipeline](/images/inventory/inventory_configuration_workflow.png)
-
 > [!WARNING]
 > Item SKUs and units of measure (UOM) must exist in Core **before** establishing warehouse bin locations or uploading opening balances. Always complete setup phases in order.
 

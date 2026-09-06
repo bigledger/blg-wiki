@@ -57,8 +57,6 @@ Without a central record, outbound shipments are tracked in spreadsheets or emai
   {{< card title="Sidebar Modules" subtitle="Manual Packing, Operator Queue, Coil, and more" link="#understanding-your-sidebar-modules" >}}
 {{< /cards >}}
 
-{{< figure src="/images/internal-packing-order-applet/internal-packing-order-overview-infographic.png" alt="Internal Packing Order Applet Overview — from order creation to dispatch" caption="Internal Packing Order at a glance: create orders, add lines manually or via knock-off, review totals, print, and finalise for dispatch." >}}
-
 ---
 
 ## Key Concepts

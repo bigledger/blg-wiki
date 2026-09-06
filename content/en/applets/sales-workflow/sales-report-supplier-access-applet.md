@@ -75,8 +75,6 @@ Traditionally, suppliers rely on delayed, manual reports sent via email or sprea
 {{< card title="Permission Access" subtitle="Fine-grained user and team controls" link="#permissions--access" >}}
 {{< /cards >}}
 
-{{< figure src="/images/sales-report-supplier-access-applet/sales-report-supplier-access-overview-infographic.png" alt="From Data Darkness to Sales Clarity: Your Guide to Supplier Access - comparing manual reporting with real-time digital access" caption="From Data Darkness to Sales Clarity: The Old Way (delayed reports, manual effort, guess-work) vs The New Way (direct access, real-time trends, data-driven decisions)." >}}
-
 ## Key Concepts
 
 ### Data Visibility Hierarchy
@@ -138,8 +136,6 @@ To effectively use the system, it is crucial to understand how **Supplier Entiti
 ## Quick Start Guide
 
 Get your team up and running quickly with these essential workflows.
-
-{{< figure src="/images/sales-report-supplier-access-applet/quick-start-guide-infographic.png" alt="Supplier Sales Mastery: A Quick Guide for Every Role - showing workflows for Suppliers, Sales Managers, and Admins" caption="Supplier Sales Mastery: A visual at-a-glance guide for Suppliers (Analyze Sales), Sales Managers (Monitor Engagement), and Admins (System Configuration)." >}}
 
 ### For Suppliers: Analyzing Your Sales Performance
 

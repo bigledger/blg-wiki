@@ -66,8 +66,6 @@ Ensure the following requirements are met before using the applet:
   {{< card title="Settings & Permissions" subtitle="Customize fields and control user access" link="#configuration--settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/e-mandate-applet/e-mandate-overview-infographic.png" alt="From Paper Mandates to Instant Digital Collections: Your Guide to the E-Mandate Applet" caption="E-Mandate Overview: Comparing the manual process with the digital efficiency of the E-Mandate Applet." >}}
-
 ---
 
 ## Quick Start

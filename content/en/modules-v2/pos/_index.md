@@ -10,8 +10,6 @@ The **Sales & POS Module** is BigLedger's centralized revenue engine. It connect
 
 Whether a commercial deal is negotiated via sales quotation or an item is scanned at a retail checkout counter, the Sales & POS module processes pricing, allocates stock, and posts revenue centrally.
 
-![Unified ERP Sales & POS Architecture](/images/pos/sales_pos_architecture.png)
-
 | Architecture Layer | System Component | Primary Role in Sales Operations |
 |-------------------|------------------|----------------------------------|
 | **Sales & POS Engine** | Document Processing & Pricing Engine | Central calculation of customer pricebooks, tax, discounts, and real-time inventory allocation. |

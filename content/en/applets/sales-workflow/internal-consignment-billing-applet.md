@@ -92,10 +92,7 @@ Managing stock held by third parties or internal branches through consignment in
 
 ---
 
-{{< figure src="/images/internal-consignment-billing-applet-applet/internal-consignment-billing-applet-overview-infographic.png" alt="Consignment Billing Overview: Closing the Consignment-to-Cash Gap - comparing manual reconciliation with the automated billing solution" caption="Consignment Billing Overview: The Old Way (scattered records, manual reconciliation, pricing errors) vs The New Way (direct GIN mapping, consumption-based billing, real-time financial sync)." >}}
-
 ## Key Features
-
 
 {{< cards >}}
   {{< card title="Billing Conversion" subtitle="Directly convert consignment issues into final sales invoices" link="#consignment-billing" >}}

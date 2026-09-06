@@ -93,8 +93,6 @@ The document carries amounts only; quantity signum is 0, so stock never moves. I
 | **Settings** | `settings/…` | Application Settings, Default Selection, Printable Format Settings, Branch Settings, Webhook, Feature Visibility, Client Side Permission, Role Pricing Scheme Link, Permission Wizard / Permission Set / User / Team / Role Permission, Release Notes, Applet Log. |
 | **Personalization** | `personalization/personal-default-selection` | Per-user Default Selection. |
 
-{{< figure src="/images/internal-purchase-credit-note-applet/internal-purchase-credit-note-applet-overview-infographic.png" alt="Overview of the Purchase Credit Note (Internal) Applet: documents, line items, and import" caption="Documents, the Line Items workspace and File Import in one applet." >}}
-
 ### Listing
 
 {{< figure src="/images/internal-purchase-credit-note-applet/1.png" alt="Purchase Credit Note (Internal) listing with search and Create control" caption="Listing: search, filter, open a row, or start a new document." >}}

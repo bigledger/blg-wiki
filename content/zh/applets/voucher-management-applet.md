@@ -24,8 +24,6 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 - **门票 (凭证):** 用于物理或虚拟进入的专用优惠券（例如，在活动门前扫描的二维码）。
 {{< /callout >}}
 
-{{< figure src="/images/voucher-management-applet/voucher-mastery-guide.png" alt="精通优惠券小程序：类型、益处与解决方案" caption="综合指南：探索小程序提供的不同优惠券模式和核心业务解决方案。" >}}
-
 ---
 
 ## 战略配置：构建您的优惠券逻辑
@@ -96,8 +94,6 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 
   {{< card title="系统设置" subtitle="管理员功能开关和 Webhooks" link="#配置与设置" >}}
 {{< /cards >}}
-
-{{< figure src="/images/voucher-management-applet/voucher-management-infographic.jpg" alt="掌握您的促销：优惠券管理小程序" caption="从利润流失到完美的促销：停止手动管理折扣，开始自动化您的营销 ROI。" >}}
 
 ---
 

@@ -82,8 +82,6 @@ Traditional production setups rely on fragmented spreadsheets, scattered operati
   {{< card title="Machine Specifications" subtitle="Attach PDFs, images, and documentation to Process Templates" link="#machine-specifications" >}}
 {{< /cards >}}
 
-{{< figure src="/images/process-maintenance-applet/process-maintenance-applet-overview-infographic.png" alt="Process Maintenance Applet Overview Infographic showing The Challenge, The Solution, and Who Benefits" caption="Process Maintenance Applet Overview: Transitioning from scattered paperwork and disconnected inventory to centralized digital templates, accurate bills of materials, and automated routing." >}}
-
 ## Key Concepts
 
 ### Manufacturing Hierarchy Structure

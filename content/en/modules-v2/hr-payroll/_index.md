@@ -10,8 +10,6 @@ The **HR & Payroll Module** is BigLedger's workforce management and payroll comp
 
 HR & Payroll operates as the central workforce administration hub. Attendance logs and employee claims feed directly into monthly payroll computations, which calculate net salaries, compute government statutory liabilities, and generate General Ledger expense entries automatically.
 
-![ERP HR & Payroll Management Architecture](/images/hr-payroll/hr_architecture.png)
-
 | Architecture Layer | System Component | Primary Role in HR Operations |
 |-------------------|------------------|-------------------------------|
 | **HR & Time Engine** | [Admin Time Attendance Applet](/applets/human-resources/admin-time-attendance-applet/) | Central management of employee master data, biometric clock-in logs, and shift schedules. |

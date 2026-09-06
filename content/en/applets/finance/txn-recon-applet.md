@@ -110,8 +110,6 @@ Mismatches are often forgotten if they aren't tracked. By categorizing mismatche
   {{< card title="Company Scoping" subtitle="Manage recons by specific business unit and branch" link="#company" >}}
 {{< /cards >}}
 
-{{< figure src="/images/txn-recon-applet/transaction-reconciliation-applet-overview-infographic.png" alt="Transaction Reconciliation Applet Overview: Problems, Solution, and Benefits" caption="Transaction Reconciliation Overview: Moving from high-volume manual matching and revenue leaks (The Problems) to intelligent auto-matching and real-time dispute reporting (The Solution) for Accountants, Auditors, and Finance Directors (Who Benefits)." >}}
-
 ## Key Concepts
 
 ### Reconciliation Workflow
@@ -468,7 +466,6 @@ Creates a new company profile. The create form has two tabs.
 {{< figure src="/images/txn-recon-applet/txn-recon-company-address-tab.png" alt="Company Address Tab - optional contact and location metadata" caption="Location Metadata: Capturing the physical address and contact details for the legal entity." >}}
 
 All address fields are optional.
-
 
 ---
 

@@ -69,8 +69,6 @@ Standard invoicing assumes a physical product is being sold. Applying it to serv
 
 ---
 
-{{< figure src="/images/internal-sales-invoice-no-stock-out-applet/internal-sales-invoice-no-stock-out-applet-overview-infographic.png" alt="Sales Invoice No Stock-Out Overview: From Ghost Stock to Financial Precision - comparing manual inventory friction with the digital solution" caption="Sales Invoice No Stock-Out Overview: The Old Way (accidental stock deductions, warehouse confusion, valuation errors) vs The New Way (inventory-neutral posting, service-first invoicing, intercompany bridge)." >}}
-
 ## Standard Invoice vs No Stock-Out Invoice
 
 A standard sales invoice and a no stock-out invoice are functionally identical on the financial side — both post to Accounts Receivable, the General Ledger, and the tax module exactly the same way. The single, deliberate difference is what happens to inventory. A standard invoice automatically generates a Goods Issue Note, deducts stock from the issuing location, and notifies the warehouse via a picking list. A no stock-out invoice does none of those things — the warehouse is never involved and stock levels do not change. So the choice between the two is straightforward: if the line being billed represents a physical item leaving your warehouse, use the standard sales invoice. If it represents a service, a fee, or an intercompany charge where no physical goods move, use this applet.

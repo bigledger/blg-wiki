@@ -180,8 +180,6 @@ The **Field Settings** screen can hide `DISCOUNT` or `REWARDS` from the create f
   {{< card title="System Settings" subtitle="Control defaults, field toggles, and permissions" link="#configuration--settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/voucher-management-applet/voucher-management-infographic.jpg" alt="Master Your Promotions: The Voucher Management Applet - contrasting manual revenue leakage against automated rule enforcement and recurring loyalty" caption="From Leaky Margins to Controlled Promotions: centralize voucher setup, ticket handling, scan monitoring, and recurring campaigns in one applet." >}}
-
 ---
 
 ## Key concepts and system integrations
@@ -283,7 +281,6 @@ Because vouchers represent financial value, their sale, redemption, and expirati
 ---
 
 ## Quick start guide
-
 
 ### For Marketing: Create a Promo Code Campaign (Discount Type)
 

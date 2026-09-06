@@ -37,8 +37,6 @@ The **Core Module** is the foundation of the entire BigLedger ecosystem. It cont
 
 Core's applets stack into four layers. Each layer depends on the one above it — configure top-down during implementation.
 
-![Core Module Applet Dependency Map](/images/core/applet-dependency-map.png)
-
 Data flows downward — every layer below depends on what is configured above.
 
 ---

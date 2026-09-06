@@ -87,8 +87,6 @@ Traditional shop floors rely on paper travelers, manual stopwatches, and memory 
   {{< card title="Status Management" subtitle="Complete process lifecycle control from Claim to Final" link="#process-status-lifecycle" >}}
 {{< /cards >}}
 
-{{< figure src="/images/manufacturing-operation-applet/manufacturing-operation-applet-overview-infographic.png" alt="Manufacturing Operations Applet Overview: Challenges, Solutions, and Benefits" caption="Manufacturing Operations Applet: Solving manual execution challenges with digital traceability, live time tracking, and gated approvals for Operators and Supervisors." >}}
-
 ## Key Concepts
 
 | Concept | What It Means | Example |

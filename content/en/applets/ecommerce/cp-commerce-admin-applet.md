@@ -54,8 +54,6 @@ The **CP Commerce Admin** applet is the tenant-side console behind every Custome
 
 It is a configuration applet, not a document applet: nothing here posts to stock or the General Ledger. The orders that customers place arrive as sales documents through the [Shopping Cart](/applets/ecommerce/shopping-cart-applet/) and the portal's checkout, and the products they see come from the item master and the pricing scheme or price book you assign to the website.
 
-{{< figure src="/images/cp-commerce/cp-commerce-overview-infographic.jpg" alt="CP Commerce Admin Applet Overview" caption="The admin console configures the Website Builder and the external Customer Portal front end." >}}
-
 ## Where it fits
 
 | Position | Applet / system | Why |

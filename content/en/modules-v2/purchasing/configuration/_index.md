@@ -9,8 +9,6 @@ Configuring the Purchasing Module follows a strict 5-phase dependency chain. Sup
 
 ## Configuration Dependency Chain
 
-![5-Phase ERP Purchasing Setup Pipeline](/images/purchasing/purchasing_configuration_workflow.png)
-
 > [!WARNING]
 > Supplier profiles and item master records must exist in Core **before** creating vendor pricebooks or generating purchase requisitions. Always complete setup phases in order.
 

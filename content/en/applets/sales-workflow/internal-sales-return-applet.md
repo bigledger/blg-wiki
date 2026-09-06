@@ -46,8 +46,6 @@ The **Sales Return (Internal)** applet records goods a customer brings back afte
 Server document type `INTERNAL_SALES_RETURN`. Amount signum **−1**, quantity signum **+1** (stock *in*). The backend names it as the return document for both `INTERNAL_SALES_INVOICE` and `INTERNAL_SALES_CASHBILL`.
 {{< /callout >}}
 
-{{< figure src="/images/internal-sales-return-applet/internal-sales-return-overview-infographic.png" alt="Sales Return (Internal) overview infographic" caption="One return document shared by sales, warehouse and finance." >}}
-
 {{< figure src="/images/internal-sales-return-applet/the-return-journey.png" alt="The return journey from invoice to settlement" caption="The return journey." >}}
 
 ## Where it fits

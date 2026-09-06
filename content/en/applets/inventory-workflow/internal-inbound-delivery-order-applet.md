@@ -79,8 +79,6 @@ Traditional internal stock transfers often suffer from a lack of visibility and 
   {{< card title="Mobile-Ready Scanning" subtitle="Support for warehouse barcode scanners" link="#scanning-serial-numbers" >}}
 {{< /cards >}}
 
-{{< figure src="/images/internal-inbound-delivery-order-applet/internal-inbound-delivery-order-overview-infographic.png" alt="From Logistics Chaos to Streamlined Receiving: Your Guide to the Internal Inbound DO Applet" caption="Internal Inbound DO Overview: Comparing traditional manual receiving (errors, lost tracking) with the digital solution (real-time validation, serial tracking, automated reconciliation)." >}}
-
 ## Key Concepts
 
 {{< figure src="/images/internal-inbound-delivery-order-applet/main_listing.png" alt="Internal Inbound DO Listing" caption="Internal Inbound DO Listing: View and filter all incoming delivery orders from a centralized dashboard." >}}

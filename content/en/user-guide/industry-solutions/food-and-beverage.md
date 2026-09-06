@@ -67,8 +67,6 @@ main > br { display: none !important; }
 
 ## 🔄 End-to-End F&B Supply Chain & POS Flow
 
-![F&B Multi-Outlet Supply Chain & POS Sync Flow](/images/user-guide/industry-solutions/fb-supply-chain-flow.png)
-
 ### Key Workflow Highlights:
 1. **Central Kitchen Bulk Purchasing:** Raw meats, produce, and seasonings are purchased centrally to leverage volume discounts.
 2. **Standardized Recipe Costing (BOM):** Each dish or beverage is tied to a precise Bill of Materials. When a customer orders a dish at an outlet POS, the exact weights of ingredients are automatically deducted from stock.

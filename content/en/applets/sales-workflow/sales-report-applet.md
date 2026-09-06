@@ -35,8 +35,6 @@ weight: 120
 
 The **Sales Report** applet is a set of read-only grid reports over finalised sales documents — cash bills, sales invoices, sales returns, trade-ins and (for the collection reports) receipt and payment vouchers. Sales managers use it to see sales, cost, gross profit and delta margins by item, document, salesman, hour, day / week / month, branch or customer category; finance uses the collection, credit-card receipt and cashflow views to tie sales to money received. Every report has the same shape: an advanced search on top, an ag-grid listing with totals, and export from the grid's status bar. Which reports, which cost columns and which cost basis a user sees is decided by applet settings paired with client-side permissions.
 
-{{< figure src="/images/sales-report-applet/sales-report-overview-infographic.png" alt="Before and after view of manual sales reporting versus the Sales Report applet" caption="From manual spreadsheets to grid reports over the same FINAL documents finance posts." >}}
-
 ## Where it fits
 
 | Direction | Document / applet | How it connects |

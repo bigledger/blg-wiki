@@ -76,8 +76,6 @@ Traditional production planning relies on disconnected spreadsheets, manual orde
   {{< card title="Status Monitoring" subtitle="Gain real-time production visibility by Job or Sales Order" link="#3-monitoring-production" >}}
 {{< /cards >}}
 
-{{< figure src="/images/production-planning-and-monitoring-applet/production-planning-and-monitoring-applet-overview-infographic.png" alt="Production Planning Overview: From manual chaos to automated structure" caption="The Production Planning Applet transforms disconnected manual spreadsheets into a centralized, auto-generated digital workflow, benefiting Planners, Sales Coordinators, and Factory Supervisors." >}}
-
 ## Key Concepts
 
 | Concept                | What It Means                           | Example                                             |

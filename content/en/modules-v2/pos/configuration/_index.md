@@ -9,8 +9,6 @@ Configuring the Sales & POS Module follows a strict 5-phase dependency chain. Ma
 
 ## Configuration Dependency Chain
 
-![5-Phase ERP Sales & POS Setup Workflow](/images/pos/sales_pos_configuration_workflow.png)
-
 > [!WARNING]
 > Customer master profiles and inventory items must exist in Core **before** creating pricebooks or opening POS cashier registers. Always complete setup phases in order.
 

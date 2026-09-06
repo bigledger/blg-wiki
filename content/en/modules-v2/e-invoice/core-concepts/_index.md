@@ -11,8 +11,6 @@ This is the architecture layer: how commercial billing data is validated by tax 
 
 Tax compliance submission follows a structured 5-step lifecycle. Each step represents an automated cryptographic transformation and validation milestone.
 
-![E-Invoice Validation & Clearance Lifecycle](/images/e-invoice/einvoice_lifecycle.png)
-
 | Step | Milestone | Business Purpose | Applet Used |
 |------|-----------|------------------|-------------|
 | **1** | **Commercial Invoice Generation** | Sales order billing or POS checkout creates commercial invoice in ERP | [Sales Invoice Applet](/applets/sales-workflow/internal-sales-invoice-applet/) |

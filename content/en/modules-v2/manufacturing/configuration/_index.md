@@ -9,8 +9,6 @@ Configuring the Manufacturing Module follows a strict 5-phase dependency chain. 
 
 ## Configuration Dependency Chain
 
-![5-Phase ERP Manufacturing Setup Pipeline](/images/manufacturing/manufacturing_configuration_workflow.png)
-
 > [!WARNING]
 > Raw material component SKUs and work center routings must exist in Core and Manufacturing **before** creating Bills of Materials (BOM) or releasing work orders. Always complete setup phases in order.
 

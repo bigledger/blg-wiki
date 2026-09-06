@@ -50,8 +50,6 @@ The **Customer Applet** is used by Sales, Credit Control, and Operations teams t
 - ✓ **Bulk Operations** — Import 5,000 customers from a CSV in minutes, not weeks.
 - ✓ **Entity Deduplication** — Find and merge duplicate customer records, automatically transferring all transaction history to the surviving master record.
 
-{{< figure src="/images/customer-applet/customer-overview-infographic.png" alt="Master Your Customer Lifecycle: The Unified Credit & Management Guide - showing data silos elimination, entity merging, bulk operations, automated credit boundaries, and strategic conglomerate tracking" caption="Master Your Customer Lifecycle: From scattered data silos to a unified platform with centralized customer database, automated credit management, and strategic conglomerate tracking." >}}
-
 ---
 
 ## The Five Pillars of Customer Management

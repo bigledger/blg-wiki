@@ -78,8 +78,6 @@ Mengurus stok konsainan tanpa sistem khusus membawa kepada:
 {{< card title="Settings & Configuration" subtitle="Konfigurasi keterlihatan medan, pilihan lalai dan format boleh cetak" link="#configuration--settings" >}}
 {{< /cards >}}
 
-{{< figure src="/images/internal-consignment-gin-applet/internal-consignment-gin-overview-infographic.png" alt="Gambaran Keseluruhan Internal Consignment GIN Applet: Cabaran penjejakan konsainan manual vs penyelesaian applet, dan siapa yang mendapat manfaat" caption="Daripada Penjejakan Manual ke Kawalan Digital: Cabaran (rekod hilang, kesukaran penyesuaian, tiada keterlihatan, ralat hamparan) vs Penyelesaian (dokumentasi digital, senarai berpusat, keterlihatan baris-item, pematuhan audit). Siapa yang Mendapat Manfaat: Wakil Jualan, Pengurus Jualan, Gudang & Inventori, Kewangan & Operasi." >}}
-
 ## Konsep Utama
 
 ### Memahami Consignment GIN

@@ -42,8 +42,6 @@ The Stock Transfer applet moves stock between two locations of the same company 
 
 Warehouse and branch staff use it for branch-to-warehouse and branch-to-branch movements; supervisors use the **Queue** and **Details** listings to see what has been sent but not yet received. Stock transfers move quantity only — they carry no value and post nothing to the General Ledger.
 
-{{< figure src="/images/stock-transfer/stock-transfer-overview.jpg" alt="Stock Transfer applet overview" caption="Outbound at the sending location, queue in between, inbound at the receiving location." >}}
-
 ## Where it fits
 
 | Direction | Applet / document | Why |

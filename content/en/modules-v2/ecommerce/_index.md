@@ -10,8 +10,6 @@ The **E-Commerce Module** is BigLedger's omnichannel digital commerce engine. It
 
 E-Commerce connects digital buyer touchpoints directly into core ERP fulfillment pipelines. When an online customer places an order, payment gateways authorize funds while BigLedger allocates stock and schedules packing fulfillment automatically.
 
-![Omnichannel E-Commerce & ERP Integration Architecture](/images/ecommerce/ecommerce_architecture.png)
-
 | Architecture Layer | System Component | Primary Role in E-Commerce Operations |
 |-------------------|------------------|---------------------------------------|
 | **E-Commerce Engine** | [CP-Commerce Admin Applet](/applets/ecommerce/cp-commerce-admin-applet/) | Central management of digital product catalogs, webstore pricing rules, and online buyer accounts. |
