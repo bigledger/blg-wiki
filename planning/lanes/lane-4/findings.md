@@ -2048,3 +2048,638 @@ now established, so the next run does not have to re-litigate it:
   in its worked example (CLAUDE.md forbids naming real banks) and is written in guide voice with a
   "Work in Progress" callout, TL;DR heading and emoji; `mm-deposit-applet.md` contains mojibake
   (`requestâ†'approval`, `â€'`) that the lint's allowlist is currently letting through.
+
+# Run 30 — 2026-09-06 — Deposit Applet (adopted page 1)
+
+## Page completed
+
+- `content/en/applets/finance/deposit-applet.md` — registry `depositApplet` "Deposit Applet"
+  (TNT-USER, ACTIVE). Title unchanged. Full rewrite: 438 lines of guide-voice marketing (TL;DR
+  heading, emoji, "Work in Progress" callout, an analogy section, three real Malaysian bank names,
+  a "Who Benefits" section, a Quick Start and an FAQ) → 592 lines of reference derived from the
+  applet at `442b3ae`, blg-shared-utilities at the pinned `f1ded04`, and the Java backend at
+  `1ff620e`.
+
+## The IA question (carried over from run 29) — NOT resolved, by design
+
+Run 29 established one registry row, two pages. Per the run-30 instruction I wrote
+`finance/deposit-applet.md` as the single canonical reference for all three menus and **did not
+touch** `finance/mm-deposit-applet.md`. What the merge would involve, precisely:
+
+- **The alias.** `mm-deposit-applet.md` front matter carries `aliases: [/applets/mm-deposit-applet/]`,
+  which is exactly the registry `documentation_url`. That alias must move to `deposit-applet.md` in
+  the *same* commit that deletes `mm-deposit-applet.md` — Hugo fails a build with the same alias
+  declared on two pages, so it cannot be pre-added.
+- **Inbound links to repoint** (5): `content/en/modules/accounting/_index.md` L162,
+  `content/en/modules-v2/financial-accounting/_index.md` L178, L261, L352, and
+  `content/en/applets/finance/investment-applet.md` L420. None is in this lane's folders.
+- **What `mm-deposit-applet.md` has that the canonical page now covers**: the three menus, the
+  fixed/floating exclusivity, the invitee constraints, the formatting rules, the SAVE/FINAL parity,
+  the category screen. All re-derived from source and, where the old page was wrong, corrected.
+- **What `mm-deposit-applet.md` has that the canonical page deliberately does not carry**: a
+  "Files of Interest" list of repo paths in the body (the standard puts those in `sources:`), a
+  "Data Models (conceptual)" column dump, a "Demo Script", and a "Customer Management
+  (Select / Create / Edit)" section. That last one is *real* but mis-framed: those screens are the
+  entity picker behind **Edit Invitee → Entity Name**, not a customer-maintenance feature of the
+  deposit applet. If the pages are merged, that content should not survive as its own H3.
+- **Its 17 screenshots** live under `static/screenshots/deposit-applet/` (a different tree from the
+  13 under `static/images/deposit-applet/`). They were not audited this run because the page was not
+  touched. `invite-email.png` and `quotation-form.png` are the only two the canonical page has no
+  equivalent for and are worth auditing before deletion.
+- **Its mojibake** (`requestâ†'approval`, `â€'`, `”¦`, `”™`) is still there; `tests/content-lint.sh`
+  passes because the check looks for a narrower byte pattern. Either the merge removes the file or
+  the lint's mojibake rule needs widening — worth a separate item.
+
+**Recommendation unchanged from run 29:** keep `finance/deposit-applet.md`, move the
+`/applets/mm-deposit-applet/` alias onto it, delete `mm-deposit-applet.md`, repoint the five inbound
+links. Vincent's call (F-0050 pattern). `mm-deposit-applet.md` stays in the queue and is skipped when
+reached, for the same reason.
+
+## What the code actually says (the corrections that matter)
+
+1. **The applet posts no journal, and has no server document type.** `bl_fi_deposit_requisition_hdr`
+   and `bl_fi_deposit_register_hdr` have no `ServerDocTypes` entry, no
+   `FinancialDocDataConsistencyObject`, and `JournalPostingService` contains no reference to either.
+   The old page's "Posts GL journal entries automatically when a deposit is finalised — no manual
+   journaling" is wrong, as is "These transactions are the actual journal entries posted to the GL".
+   What FINAL actually writes is `bl_fi_deposit_register_txn_line` rows — an interest schedule in the
+   applet's own table (`DepositRegisterTxnLineService.createAutomaticTransactions`).
+2. **The Payment/Receipt tab links documents; it never creates them.** The picker is hard-coded to
+   `INTERNAL_RECEIPT_VOUCHER, INTERNAL_PAYMENT_VOUCHER` and writes
+   `bl_fi_deposit_register_hdr_gendoc_link`, which carries no amount. The ledger effect of a
+   placement is entirely the payment voucher out and the receipt voucher back.
+3. **There is no settings UI at all** — three independent proofs (METHOD §29 applied):
+   (a) `app.component.ts` sets `readonly hideSettings = true`, and in shared-utilities
+   `sidebar.component.html` L98/L108 that flag gates *both* the settings gear and the Personalization
+   link; (b) `app.routing.ts` declares no `settings` route (it imports the shared permission and
+   personalization containers and routes none of them); (c) `components/settings-container/` exists
+   with Field Configuration, Default Settings, Email Template and Printable Format screens declared
+   in `AppletSettingsModule` — and **`AppletSettingsModule` is imported by no module**, `app.module.ts`
+   included. So the old page's "Configuration & Settings: Default Selection / Application Settings
+   (Field Configuration) / Email Template / Printable Format Settings" section described four screens
+   that cannot be reached. Open requests `gh:.../deposit-applet#8` and `#9` ask for the gear to be
+   added. gates.py does not apply: the `.gitmodules` entry exists but the shared settings screen is
+   not routed.
+4. **Three `APPLET_SETTINGS` keys are still read at runtime with no control anywhere**: `SORT_ORDER`
+   (consumed — sets the listings' `orderBy`), `DISABLE_GEN_DOC_LISTING` (consumed — skips the initial
+   requisition search) and `ENABLE_FILTER_BY_TODAYS_TXN` (computes a `dateRange` that is *never read*
+   — no observable effect). Every other `appletSettings.*` reference in the repo (the `HIDE_*` line
+   and delivery keys, `HIDE_JOB_*`, `DISALLOW_SELL_BELOW_MIN_PRICE`, `ENABLE_MULTIPLE_KO`, …) sits in
+   fork components no route or view-column stack reaches.
+5. **Rollover: manual only, and always principal + interest.**
+   `transactions-listing.component.ts canClickManualRollover` requires FINAL **and** Rollover options
+   = `Manual Rollover` **and** Auto Rollover Logic = `YES` **and** not already `ROLLED_OVER`. Choosing
+   `Automatic Rollover` gives no rollover at all. `DepositRegisterHdrService.createRollover`
+   unconditionally sets the child's principal to the parent's `amount_upon_maturity` —
+   `rollover_options` plays no part in the amount — so the old page's "Principal only" vs
+   "Principal + Interest" choice does not exist. The child's term is
+   `Duration.between(start,end).toDays()` (exclusive), one day shorter than the inclusive
+   `end − start + 1` the form shows.
+6. **`DepositRolloverProcessor` is not a rollover job.** Queue code `DEPOSIT_ROLLOVER_PROCESSOR`,
+   registered in `JobProcessorClassName`, but its own `getDescription()` reads "Create Monthly Opening
+   and Closing Rows in bl_fi_deposit_register_txn_line" and it writes one `MONTH_CLOSING` + one
+   `MONTH_OPENING` line per run **without setting `hdr_guid`** — orphan rows belonging to no register,
+   carrying tenant-wide monthly totals. No scheduled job rolls a deposit over.
+7. **The invitee quotation form is an anonymous public endpoint.**
+   `DepositReqHdrEntityLinkThymeleafFormController` has no permission check, and
+   `DepositRequisitionHdrEntityLinkController` declares `GET /public-ep/{hdrGuid}` and
+   `PUT /public-ep` as `AnonymousTenantEndpoint`. The link GUID is the only credential: no token, no
+   expiry, no login. The "Submission Deadline" the e-mail prints is always `ZonedDateTime.now()
+   .plusDays(7)`, computed at send time, neither stored nor enforced. Both old pages call this a
+   "secure, expiring link" — that is wrong and it is a security-relevant wrongness.
+8. **The invitation e-mail is hard-coded Java.** `DepositRequisitionEmailService.buildEmailTemplate`
+   builds the HTML in a `StringBuilder`; the subject is
+   `"Money Market Deposit Placement Invitation - <name>"`; the contact line is the requisition
+   creator's `app_login_subject.main_email`. There is no configurable template — and the Email
+   Template screen in the repo is part of the dead `AppletSettingsModule` (see 3).
+9. **Select Requisition does not link, and drops the Interest Rate.** The picker filters on
+   `status = ACTIVE` only (so a DRAFT requisition can be selected — the old page said "all FINAL
+   requisitions"). The register's `deposit_requisition_hdr_guid` is initialised `null` in the draft
+   state and is written by nothing on this path, so a saved register does not point back at its
+   requisition. The `patchValue` list copies 17 fields but **omits `interestRate`**, Currency, Deposit
+   Category and Financial Institution — for a FIXED requisition the register's required Interest Rate
+   comes across blank.
+10. **DELETE is dead on both document screens.** The requisition's `deleteButtonCondition()` returns
+    `this.showDeleteButton`, a field initialised `false` and never assigned; its `onDelete()` would
+    dispatch the fork's `SalesInvoiceActions.deleteSalesInvoiceInit`, whose effect calls the sales
+    invoice service. The register's `deleteCondition()` returns `null` on its first line (the real
+    body is unreachable) and `onDelete()` returns immediately. Only MM Deposit Category has a working
+    delete (`canDelete` when `status === 'ACTIVE'`; it does *not* check posting status, so a FINAL
+    category can be deleted).
+11. **Permission granularity on the register side is wrong.** In `DepositRegisterHdrController`, only
+    `temp/backoffice-ep` and `create-rollover` ask for `TNT_API_DEPOSIT_CREATE`; the ordinary
+    **create, update and delete** endpoints all ask for `TNT_API_DEPOSIT_READ`. Same in the
+    transaction-line, attachment, gen-doc-link and category controllers.
+    `TNT_API_DEPOSIT_UPDATE` and `TNT_API_DEPOSIT_DELETE` are defined in `AkaunTenantPermissions` and
+    used by no deposit controller. The requisition side is correctly granular
+    (`API_TNT_DEPOSIT_REQUISITION_HDR_*`).
+12. **The backend validates nothing about the business.** Both DCOs check only guid, category FK,
+    created/updated subject GUIDs, created/updated dates, status and revision. No amount, date, rate,
+    company or GL-code validation; **no FK check at all on the register's `gl_code_guid` or
+    `company_guid`**. Every rule the forms appear to enforce is an Angular validator.
+13. **Only the requisition has a document number.**
+    `DepositRequisitionHdrDataConsistencyObject.fillMissingDataForCreation` runs
+    `RunningNumberGeneratorUtil("server_doc_no","DEPOSIT_REQUISITION_NO", …)`. The register's
+    equivalent sets only guid, dates, status and revision, so `server_doc_no` stays null — consistent
+    with the register listing having no Doc No. column, and with the `// new doc no to be generated
+    later` comment in `createRollover` never being honoured.
+14. **`+` creates a server row before you type** on all three listings (`createTemp` →
+    `status = TEMP` → straight to the Edit screen). The fork's separate Create screen is registered in
+    the view-column stack, is navigated to by nothing, and has its Main Details tab commented out.
+    `TempDeposit*Processor` ("Delete Temp rows after certain time", configurable `noOfHours`) sweeps
+    abandoned rows. Same stub-accumulation shape recorded for Supplier in run 26.
+15. **Interest maths is server-side and simple daily accrual**:
+    `principal × rate × days ÷ (100 × 365)`, HALF_UP to 2dp, via
+    `POST .../deposit-register-hdrs/deposit-calculations/backoffice-ep`. `ONCE` = one interest line at
+    maturity; `MULTI` = one per generated payout date, periods measured exclusively with `+1` on the
+    last. `FLOATING` uses `interest_rate_effective` (= reference value + delta), `FIXED` uses
+    `interest_rate`. Interest Convert to Principal = `YES` adds a `COMPOUND` line per period and makes
+    the maturity line `principal + interest − inflation`; `NO` makes it `principal − inflation`.
+
+## Configuration classification (METHOD §29)
+
+`.gitmodules` pins `blg-shared-utilities` at `f1ded0401b9b206694055f919420fc02497f573a` (submodule not
+checked out in refs; read with `git show <sha>:<path>` from the refs clone, which was left on `main`).
+`app.routing.ts` imports `SidebarComponent`, `FourOhFourComponent`,
+`ClientSidePermissionSetContainerComponent`, `PermissionWizardContainerComponent` and
+`RolePricingSchemeLinkContainerComponent` from shared-utilities but **routes only** the three deposit
+containers and the 404. So the classification is neither *shared* nor *applet-local*: it is
+**no settings screen**, and `kb/tools/gates.py` has nothing to score. `bl_applet_client_side_perm_dfn`
+joined to `bl_applet_hdr` on `code='depositApplet'`: **0 rows**.
+
+## Defects found (worth a bug report independent of the docs)
+
+- **F-lane4-30-a** `DepositRolloverProcessor` writes `MONTH_CLOSING` / `MONTH_OPENING` lines with no
+  `hdr_guid`, so they belong to no deposit and appear on no Transactions tab. Its name and queue code
+  also promise something it does not do.
+- **F-lane4-30-b** Register create / update / delete are gated by `TNT_API_DEPOSIT_READ` (see 11).
+- **F-lane4-30-c** `DepositRequisitionHdrController.createTempBackofficeEp` checks
+  `TntErpPermissionsV2.API_TNT_BUDGET_VOTEBOOK_CREATE` — a copy-paste from the vote-book controller.
+- **F-lane4-30-d** `app.component.ts` calls
+  `getRefreshToken([{ appletCode: sessionStorage.getItem('depositApplet') }])` — it reads the *value*
+  of a session key literally named `depositApplet` instead of passing the applet code (every other
+  applet reads `sessionStorage.getItem('appletCode')`), so `appletCode` goes up as `null`.
+- **F-lane4-30-e** DELETE is unreachable on both the requisition and the register (see 10).
+- **F-lane4-30-f** Select Requisition does not copy `interestRate` and never sets
+  `deposit_requisition_hdr_guid` (see 9).
+- **F-lane4-30-g** `ENABLE_FILTER_BY_TODAYS_TXN` is read in two components; the `dateRange` it
+  computes is assigned and never used.
+- **F-lane4-30-h** Register Rollover options list is `['Manual Rollover',' Automatic Rollover']` —
+  the second value has a leading space, so any equality comparison against `'Automatic Rollover'`
+  fails. (Nothing compares it today, which is itself the bug: `Automatic Rollover` does nothing.)
+- **F-lane4-30-i** `bl_fi_deposit_register_hdr.interest_earned` is a form field on the register that
+  nothing maintains — linking a receipt voucher does not update it.
+- **F-lane4-30-j** `createAutomaticTransactions` does not check whether a schedule already exists, so
+  a repeated `≠FINAL → FINAL` update through the API appends a second set of lines.
+- **F-lane4-30-k** `models/constants/applet-constants.ts` still declares
+  `docType = "INTERNAL_SALES_INVOICE"`, `amount_signum = -1`, `quantity_signum = 1`, and
+  `printable-format-constants.ts` still points at the sales-invoice printable param code. Dead, but it
+  is what a future reader will find first.
+- **F-lane4-30-l** The Agreement tab is fully implemented (`agreement/` components, `AddAgreementComponent`
+  in the view-column stack at index 6) but its `<mat-tab>` is commented out, so nothing can reach it.
+
+## Screenshots with personal data
+
+Nine of the thirteen images under `static/images/deposit-applet/` are dropped; the page no longer
+references them.
+
+- `deposit-requisition-listing.png` — grid rows carry a developer's full name repeatedly in Deposit
+  Name / Deposit Code, and one Company cell holds a real consumer-electronics brand.
+- `deposit-register-actions.png` — the same listing behind the Select Requisition panel; same name,
+  same brand.
+- `deposit-register-listing.png` — Deposit Name and Company columns carry two developers' given names.
+- `deposit-requisition-invitee-tab.png` — invitee rows carry a developer's full name; the Created by /
+  Modified by fields carry a second person's full name.
+- `deposit-register-details-1.png` — Company shows a developer's given name; it is also stale (the
+  Interest Rate Reference Type shows `KLIBOR`, a value no longer in `INTEREST_RATE_REF_TYPE_LIST`).
+- `deposit-register-details-2.png` — Created by / Modified by carry a developer's full name.
+- `deposit-category-listing.png` — listing rows and the edit panel both carry a developer's full name.
+- `deposit-overview-infographic.png`, `deposit-lifecycle-infographic.png` — AI marketing infographics;
+  same decision as Pricebook / Stock Balance / Stock Conversion / Stock Replenishment / Supplier /
+  Tax Configuration / Warehouse Management / Workflow Design.
+
+Kept (clean — empty forms and empty grids, no names, no amounts):
+`deposit-requisition-details-tab.png`, `deposit-register-transactions-tab.png`,
+`deposit-register-payment-tab.png`, `deposit-register-attachment-tab.png`.
+
+Recapture list (clean demo tenant, no real names, no brands): MM Deposit Requisition listing;
+Edit Requisition → Details filled in, FIXED; the same form switched to FLOATING showing the four
+reference fields; Invitee tab with two or three invitee rows; Edit Invitee showing the three editable
+controls against the read-only terms; MM Deposit Register listing; Edit Register → Details with
+Rollover options visible; Transactions tab after FINAL showing PLACEMENT / INTEREST / MATURITY /
+SUMMARY lines; the Manual Rollover button in its enabled state; Rollover tab showing a two-deposit
+chain; MM Deposit Category listing and edit.
+
+## Cross-lane link requests (from this page)
+
+- **`content/en/modules-v2/financial-accounting/_index.md`** (coordinator / whoever owns modules-v2):
+  L178–179 list "MM Deposit Applet — money market" and "Deposit Applet — for other deposit instruments
+  (security deposits, utilities) … deposit balance and reclaim tracking" as **two different applets**.
+  There is one registry row and one repo with three menus; nothing about security deposits, utility
+  deposits or reclaim tracking exists anywhere in the code. Collapse to one row pointing at
+  `/applets/finance/deposit-applet/`. L261 and L352 also point at `mm-deposit-applet`.
+- **`content/en/modules/accounting/_index.md`** L162 — same, links to `/applets/mm-deposit-applet/`.
+- **`content/en/applets/finance/internal-payment-voucher-applet.md`** and
+  **`content/en/applets/finance/internal-receipt-voucher-applet.md`** (this lane's `finance` folder,
+  not yet in the queue): add `deposit-applet` to `related_applets` and one sentence — these two are
+  the *only* documents the deposit register's Payment/Receipt tab will link, and they are where the
+  journal for a placement actually comes from.
+- **`content/en/applets/finance/investment-applet.md`** (in this lane's queue): it already links to
+  both deposit pages (L419–420); when it is rewritten, drop the `mm-deposit-applet` link and keep one.
+- **`content/en/applets/inventory-workflow/related-applets-stock-balance.md`** (this lane, done run
+  19): L160 lists Deposit among applets that "read the item balance on their line screens". The
+  deposit applet's item and line-item screens are fork residue that no route or view-column stack
+  reaches — remove Deposit from that row on the next pass over the page.
+- **`content/en/applets/master-data/workflow-design-applet.md`** (this lane, done run 29): the deposit
+  register header carries `process_hdr_guid` / `process_status_guid` columns (copied on rollover) but
+  no screen in the applet sets them, and its "Approval Workflow" field is free text. Worth one line if
+  that page ever enumerates which documents attach a workflow process.
+
+## Notes for the loop
+
+- `kb/topics/deposit-management.md` created (new slug; nothing referenced it before).
+- METHOD candidate §31: **a `hideSettings` input on `<app-layout>` removes the whole settings and
+  personalization surface.** Before classifying an applet's settings, grep the applet's
+  `app.component.ts` for `hideSettings` — if it is `true`, no gear renders for anyone regardless of
+  what `app.routing.ts` or `AppletSettingsModule` contain, and gates.py has nothing to score. This is
+  a third outcome alongside METHOD §1's "shared / applet-local / none".
+- METHOD candidate §32: **a declared NgModule that nothing imports is dead UI.** Deposit's
+  `AppletSettingsModule` declares four settings screens and is imported by no module. Before
+  documenting any settings screen found by folder name, check that its module is actually in some
+  `imports:` array — folder existence is not the "rendered" proof.
+- METHOD candidate §33: **a processor's name can lie; read `getDescription()` and the body.**
+  `DepositRolloverProcessor` rolls nothing over.
+- `tests/content-lint.sh` passes.
+
+## Page 2 — `integrations/developer-sysadmin-applet.md`
+
+- Registry `developer-sysadmin-applet` "Developer SysAdmin Applet" (ROOT-ADMIN, ACTIVE,
+  `documentation_url` = a Confluence page, so no alias was added). **Title changed** from
+  "Developer & Sysadmin Applet" to the registry name. Repo
+  `blg-applet-core-akaun-platform-developer-sysadmin-applet` at `c7f2b59`. Full rewrite of a
+  167-line invented page: cards linking to anchors that did not exist, a "Who Benefits" section, a
+  Quick Start for registering a vendor and mapping a category, a "Configuration & Settings" list of
+  four things that do not exist (Module Templates, Vendor Whitelisting, Store Taxonomy,
+  Personalization by "Applet Version"), and an FAQ answering that deactivating an applet "globally
+  suspends its availability in the Applet Store" and that developer-to-vendor mapping is "flexible".
+  → 345 lines of reference.
+
+### The finding that matters most
+
+**Most of this applet is unfinished UI with hard-coded sample rows.** Verified component by
+component (a grid is "real" only if it injects a service or uses a server-side datasource):
+
+| Screen | State |
+| --- | --- |
+| Applet listing / create / edit Details | real (`AppletService`, server-side grid) |
+| Vendor listing / create / edit Details, Developer, Applets | real (`VendorService`) |
+| Modules listing / create / edit + Applets tab | real (`module-applet-hdrs`, `module-applet-links`) |
+| Edit Applet → Languages, Images, Module, Catalog, Installations | real |
+| **Categories menu (listing, edit, its Applets and Images tabs)** | **placeholder** |
+| **Developer menu (listing, edit, its Applets and Vendor tabs)** | **placeholder**, and no create screen exists |
+| **Edit Applet → Category, Pricing, Developer, Reviews, Permission Template, Client-Side Permission, Events** | **placeholder** |
+| **Vendor → Events; Vendor → Developer → Add** | **placeholder** (`onAdd()` has an empty body) |
+| Edit Applet → Review, Retire Applet | commented out: "Hidden until … flow is ready" |
+
+`CategoryEditComponent.onSave()` is the sharpest case: it calls `onReturn()` and then raises the
+toast **"Category updated successfully"**. No service is injected and no HTTP call is made. A user
+gets a success message for a save that never happened.
+
+**This explains a pattern three earlier runs found independently.** Runs 28 (Warehouse Management),
+29 (Workflow Design) and 30 (Deposit) each recorded "no rows in `bl_applet_client_side_perm_dfn`".
+The Client-Side Permission tab in this applet — the only screen in the product that looks like it
+seeds them — is a mock with one hard-coded row and no service. There is no working UI anywhere that
+creates client-side permission definitions. Every "checked in code; not seeded in the registry"
+sentence in this wiki (F-0044) traces back here.
+
+### Other verified facts
+
+- **Applet Code is immutable after create.** The create effect sets `bl_applet_hdr.code`; the update
+  effect sends name, vendor, store, type, status, description, documentation URL and `property_json`
+  and omits `code`. The template renders a second, read-only copy of the field in edit mode.
+- **The update path is a read-modify-write with no revision check**: `getByGuidAsSysadmin` → overwrite
+  fields from the form → PUT the whole container. Two sessions editing the same applet overwrite each
+  other silently.
+- **An unauthorised read returns a stripped container, not an error.**
+  `AppletController.replaceAppletWithoutPermission` hands back only the applet GUID and icon file
+  GUID when `hasPermission` is false, so a permission problem presents as an empty applet.
+- **Permission model**: create/update/delete/read each accept any of `MST_APPLET_OWNER`,
+  `MST_APPLET_ADMIN`, the matching `MST_API_APPLET_*` code, a platform system OWNER/ADMIN rank, or
+  `isUserPlatformAdmin`. Update scopes to `PermissionTarget("bl_applet_hdr", <guid>)`. Vendors use
+  the parallel `MST_VENDOR_*` codes.
+- **`applet_type` domain** as the form offers it: ROOT-ADMIN, ROOT-USER, TNT-ADMIN, TNT-APPLET,
+  TNT-USER, CLI-CLIENT, ETL-CLIENT, WEB-CLIENT, PROGRAM-CLIENT, SDK-CLIENT. Status is ACTIVE /
+  INACTIVE only; there is no delete or retire action in the UI at all
+  (`MST_API_APPLET_DELETE` exists and is API-only).
+- **`property_json.applet_mf_html_tag`** is built as `<{customElTag}XXXXXXXX></{customElTag}XXXXXXXX>`
+  — a literal placeholder matching the `sessionStorage.getItem('randomNumber')` suffix each applet's
+  own `app.module.ts` uses in `customElements.define`.
+
+### Configuration classification (METHOD §27, §29)
+
+No `.gitmodules`; the repo **vendors** `micro-fe/projects/shared-utilities`, so gates.py cannot run
+and shared-utilities fixes never reach it. `app.routing.ts` routes the applet's **local**
+`FieldConfigurationComponent` and `DefaultSettingsComponent`, both of which are the familiar dead
+stubs (eight unbound toggles with a handler-less SAVE; branch/location writes into an
+`appletContainer` that is never assigned, with an `@Output() save` the container does not bind).
+The vendored `WebhookComponent` behind Settings → Integration → **Triggers** is a design mock —
+ten literal "Sample Event #n" values, three sample detail rows, and an `ngOnInit` copy-pasted from
+Default Selection. `settings/feature-visibility` and `settings/team-permission-listing` are routed
+with no menu entry, and `settings` with no child redirects to feature-visibility.
+**No `APPLET_SETTINGS` key is read anywhere in the applet.** `bl_applet_client_side_perm_dfn`: 0 rows.
+
+### Defects found
+
+- **F-lane4-30-m** `CategoryEditComponent.onSave()` toasts success and persists nothing.
+- **F-lane4-30-n** Category and Developer listings, and seven Edit Applet tabs, ship hard-coded
+  sample rows to production. Several of those rows contain a developer's real name and work e-mail
+  address in the source (not reproduced here).
+- **F-lane4-30-o** `VendorDeveloperAddComponent.onAdd()` and `disableAdd()` have empty bodies over an
+  empty grid.
+- **F-lane4-30-p** `models/permission-constants.ts` hard-codes a `TENANT_CODE` enum value naming an
+  individual — should be removed or made configurable.
+- **F-lane4-30-q** "Search Filer" (for "Search Filter") on both the Category and Module create forms.
+- **F-lane4-30-r** The applet still uses the `-old` shared listing components
+  (`app-pagination-old`, `app-advanced-search-old`, `app-grid-toggle-old`, `app-column-toggle-old`)
+  that the rest of the estate has moved off; the closed Angular-14 migration issue (#1) did not
+  cover them, and the vendored shared-utilities copy is why the newer ones never arrived.
+
+### Screenshots
+
+None exist — `static/images/` has no `developer-sysadmin*` directory and the old page referenced no
+images (its own callout said screenshots would "be added soon"). Recapture list (platform demo
+environment, no real names or e-mail addresses): Applet listing; Create Applet Details; Edit Applet
+tab strip; Edit Applet → Module; Edit Applet → Catalog; Edit Applet → Installations; Vendor listing;
+Edit Vendor tab strip; Modules listing; Edit Module → Applets; the Settings menu showing the three
+groups.
+
+### Cross-lane link requests (from this page)
+
+- **`content/en/applets/finance/budgetary-applet.md`** (this lane's `finance` folder, not yet in the
+  queue): it states three times that job-processor subscriptions are configured in the Developer
+  SysAdmin Applet, including a Configuration row citing "applet trigger templates and tenant trigger
+  configuration". **No job-processor, trigger-template or subscription screen exists in this applet**
+  — its five menus are Applet, Vendor, Categories, Modules, Developer, and the only trigger-shaped
+  screen is the sample-data Triggers stub. That claim needs re-sourcing before the page is trusted;
+  the likely home is `PlatformSysAdmin` "Platform SysAdmin"
+  (`blg-applet-core-akaun-platform-sysadmin-applet`), which has not been read.
+- **`content/en/applets/external-tenant-admin/tenant-admin-applet.md`** (lane 3, done): it says this
+  applet "creates the tenant, its first OWNER, the applet store and the applet registry". Only the
+  last is true here — there is no tenant-creation screen, and the applet's `TenantService` merely
+  reads `sessionStorage.tenantCode`. Soften to "registers the applet (`bl_applet_hdr`) that the
+  Catalogue and Applets menus read".
+- **Every applet page that says a `SHOW_*` client-side permission is "checked in code but not seeded
+  in the registry"** (F-0044): the reason is now known and citable — there is no working screen that
+  seeds `bl_applet_client_side_perm_dfn`. Worth one shared sentence rather than repeating the
+  observation per page.
+- **`content/en/applets/applet-store.md`** / **`applet-catalog.md`** / **`applet-directory.md`**: add
+  `developer-sysadmin-applet` to `related_applets`; the store record they describe is written here,
+  but store **pricing** and **categories** are not maintainable from this applet today.
+
+### Notes for the loop
+
+- `kb/topics/applet-registry.md` created (new slug).
+- METHOD candidate §35: **a finished-looking grid is not a working grid.** Before documenting a
+  listing or a tab, check that the component injects a service or binds a server-side datasource; a
+  `rowData = [ { … } ]` literal with plausible sample values is the tell. This applet ships seven such
+  tabs and two whole menus. The same test found the Deposit applet's dead settings folder.
+- METHOD candidate §36: **when several applets report the same absence, look for the missing console.**
+  Three runs recorded "no client-side permission rows" before this run found that the screen which
+  would create them is a mock.
+
+## Page 3 — `finance/e-mandate-applet.md`: SKIPPED (registry / naming mismatch)
+
+**There is no registry row for an E-Mandate applet.** Checked both sources on 2026-09-06:
+
+- `planning/private/registry-applets-2026-09-05.tsv` — no row whose code or name contains
+  `mandate`, `e-mandate`, `ddebit`, `direct debit` or `fpx`.
+- Live `bl_applet_hdr` in `akaun_master` (236 rows, the same count as the TSV) — same query over
+  `code`, `name` **and** `property_json::text`: nothing. Also no row containing `collect`, so the
+  "Collection Applet" the page names downstream does not exist either.
+
+The applet itself is real and recent: `blg-applet-core-akaun-platform-e-mandate-applet`, last commit
+`3bf0ec0` (2026-08-12), `micro-fe/projects/akaun-platform/applets/e-mandate-applet`. Its
+`app.routing.ts` sets `mainPath = 'eMandate'` and its `app.component.ts` sets
+`appletName = 'E-Mandate Applet'`. Three menus — **E-Mandate Create**, **E-Mandate Update**,
+**E-Mandate Terminate** — plus the standard settings and personalization sub-trees. The only
+domain-specific backend call in the applet is `PgwFpxFormService` from `blg-akaun-ts-lib`, used by
+the company effects; nothing in `blg-akaun-platform-java/akaun-api` matches `PgwFpxForm` or
+`pgw_fpx`, so the FPX form service is served from somewhere outside that repository.
+
+So: **built, not registered**. Per ADR-0002 and standard rule 1 the page was not rewritten. The
+existing 197-line page describes required permissions ("Mandate Creator", "Mandate Admin"), field
+settings and a downstream Collection Applet — none of which was verified, and the registry says the
+applet cannot be installed by any tenant today.
+
+**For Vincent / the coordinator:** this is a different case from the F-0050 duplicates. The question
+is not which of two pages wins, it is whether an unregistered applet should have a published page at
+all. Options: (a) register `eMandate` in `bl_applet_hdr` and then document it; (b) keep the page and
+mark it clearly as not yet available; (c) unpublish it until the registry row exists. Recommend (a)
+or (c). The same question will recur — worth an ADR rather than a per-page decision.
+
+## Page 4 — `crm/engagement-applet.md`
+
+- Registry `engagementApplet` "Engagement Applet" (TNT-ADMIN, ACTIVE, no `documentation_url`). Title
+  unchanged. Repo `blg-applet-wavelet-engagement-applet` at `a6c58d6`. Full rewrite of a 279-line
+  marketing page (Who Benefits, "The Manual Spreadsheet Risk", Quick Start, an FAQ) into a 329-line
+  reference.
+
+### The useful contrast: a working applet-local field configuration
+
+This is the first applet in the lane whose **local** `FieldConfigurationComponent` is real. The
+submodule is present, `app.routing.ts` routes the local screen (METHOD §29), and unlike the unbound
+eight-toggle stub found in Tax Configuration, Merchant Admin, Shipping Pricebook, Supplier and
+Deposit, this one has 21 reactive `FormControl`s, patches them from
+`SessionSelectors.selectMasterSettings` on load, and saves through
+`SessionActions.saveMasterSettingsInit`. Declared + rendered + persisted for all 21; **consumed for
+19**. Use it as the counter-example when explaining why the others are stubs — the stub is a copied
+placeholder, not a platform limitation.
+
+Two dead keys: `HIDE_MANAGING_PARTNER` (in `applet-settings.model.ts` only, gates nothing) and
+`ENABLE_AUDIT_TRAIL` (nowhere else in the applet at all, not even in the model — and the
+`settings/applet-log` route it presumably belongs to is not gated on it and has no menu entry).
+
+### The finding that changes how the applet is described
+
+**Engagement Code and Engagement Name are `readonly` in the template, carry `Validators.required`,
+and nothing in the applet writes them.** The composing helper `updateName` (joining
+*customer – code – company – branch* with " - ") is defined and **every call site is commented out**.
+Selecting a customer sets only `customer_entity_hdr_guid` and the entity record. The backend's
+`fillMissingDataForCreation` sets guid, dates, status, revision and the created/updated-by names —
+not code, not name, not `running_no`.
+
+So an engagement cannot be created end-to-end in the UI: **+** POSTs an empty header (created
+`ACTIVE`, no TEMP, no sweeper), and SAVE is then permanently disabled because code and name can never
+be filled. The route that works is `EngagementHdrController`'s `/etl-ep` create/update/delete/read,
+gated by the **same** `TNT_AAT_ENGAGEMENT_HDR_*` permissions as the back-office endpoints. The
+quarantined screenshots confirm it: live rows carry codes and names in exactly the shape `updateName`
+produces, so the data was loaded, not typed.
+
+### Other verified facts
+
+- **The DCO validates far more on update than on create.** Create: guid, approval-setting FK if set,
+  code not already taken, dates, subject GUIDs, status, revision. Update adds `comp_guid`,
+  `branch_guid`, `customer_entity_hdr_guid` and `billing_entity_hdr_guid` FK checks, `running_no` not
+  blank, `code` not blank **and** unique, `engagement_status` not blank. A row imported with stale
+  GUIDs passes creation and fails on the first edit — that is the troubleshooting row to keep.
+- `fillMissingDataForUpdate` auto-assigns `running_no` from `app_sequence_counter` (module name
+  `ENGAGEMENT_NO`, keyed by tenant code) and refreshes the denormalised `created_by_name` /
+  `updated_by_name` from `app_login_subject` on every update.
+- **The Main form has no `category` control**, yet the draft-mirroring code assigns
+  `engagement_category = form.category`, which is always `undefined`. That is why the listing's
+  Engagement Category column is empty on every row in the (quarantined) captures.
+- **Status is a free-text input** — the fixed-list `mat-select` is commented out — and the backend
+  only checks it is not blank.
+- **Hiding a required field does not relax its validator.** `HIDE_CUSTOMER_NAME`,
+  `HIDE_ENGAGEMENT_CODE`, `HIDE_ENGAGEMENT_NAME` and `HIDE_JOB_GROUP` remove the control while
+  `Validators.required` stays, so SAVE greys out with no visible cause. This is a general shape worth
+  checking on every applet with `HIDE_*` settings over required fields.
+- Commented out of the template: the **Employees** tab (the perpetual-tracking counterpart of Fiscal
+  Year End — so a perpetual engagement has no staffing tab at all), **Memorandum of Fees**,
+  **Claims**, **Issue Link**, and the **DELETE** button. Deletion is API-only.
+- The settings menu offers only Application Settings and Engagement Category. Default Selection is
+  commented out of `settingItems`; `personalizationItems` is an empty array, so the whole
+  personalization sub-tree is routed with no way in; `settings/applet-log` (audit trail listing +
+  viewer) is routed with no menu entry.
+- Engagement roles: Engagement Manager, Engagement Director, Engagement Partner, Managing Partner,
+  EQCR, Key Audit Partner — each with a Non-Applicable tick stored in the header's
+  `non_applicable_setting_json`. A fiscal-year-end record has its own role block and its own employee
+  list carrying an **Approval Level** per employee.
+
+### Screenshots — all five dropped
+
+Every product capture under `static/images/engagement-applet/` shows a live tenant's **real client
+company names** in the Engagement Code, Engagement Name and Entity Name columns — a dozen or more
+identifiable Malaysian companies across the four screens, plus the tenant user's photograph in the
+avatar. These are exactly the "real names / a database row" case the citation rule forbids.
+
+- `engagement-listing.png`, `edit-engagement-main.png`, `fiscal-year-end-tab.png`, `gen-doc-tab.png`
+  — real client names throughout.
+- `create-engagement-form.png` — unreferenced by the old page; not audited, quarantine with the rest.
+- `engagement-applet-overview.png` — AI marketing infographic; same decision as the other nine.
+
+The page now publishes no images and says so in a callout. Recapture list (demo tenant, synthetic
+client names): Engagement Listing; Edit Engagement → Main with the roles block; the same with FYE
+Type = Yearly showing the Fiscal Year End tab; a fiscal-year-end record with its employee list;
+Gen Doc tab with a linked document; Settings → Application Settings, both tabs; Settings →
+Engagement Category listing and edit.
+
+### Cross-lane link requests (from this page)
+
+- **`content/en/applets/master-data/employee-applet.md`** (this lane, done): add one line that
+  engagement **Approval Level** is set per engagement year on the fiscal-year-end employee link, not
+  on the employee record, and add `engagement-applet` to `related_applets`.
+- **`content/en/applets/master-data/customer-maintenance-applet.md`** and
+  **`.../entity-applet.md`** (this lane, done): add `engagement-applet` to `related_applets` — the
+  engagement is FK-checked against `bl_fi_mst_entity_hdr` for both the customer and the billing
+  entity on every update.
+- **Anything documenting the AAT claims flow** (`bl_aat_claim_*`, Memorandum of Fees): do not route
+  the reader through the Engagement applet. Those tabs are commented out; the claims module is real
+  but its entry point is elsewhere.
+
+### Notes for the loop
+
+- `kb/topics/engagement.md` created (new slug).
+- METHOD candidate §37: **a `HIDE_*` setting over a `Validators.required` control disables SAVE with
+  no visible cause.** Removing the control from the template does not remove the validator. Check
+  every documented `HIDE_*` against the required list and say so where they overlap.
+- METHOD candidate §38: **when a required field is `readonly` and no writer exists, look for the ETL
+  endpoint.** Engagement Code and Name have no writer in the UI; `/etl-ep` create/update/delete sit
+  beside `/backoffice-ep` on the same controller with the same permissions. That is how the data
+  actually arrives, and the page has to say so or the reader will conclude the applet is broken.
+
+## Page 5 — `crm/events-management-applet.md`
+
+- Registry `eventManagementApplet` "Event Management Applet" (TNT-USER, ACTIVE,
+  `documentation_url` = Confluence). **Title changed** from "Events Management Applet" to the registry
+  name; the file name and URL are unchanged, and all ten inbound links already use
+  `/applets/crm/events-management-applet/`, so **no alias was added**. Repo
+  `blg-applet-wavelet-events-management-applet` at `ccbfcbb`. Full rewrite of a 205-line marketing
+  page ("The Golden Triangle of Event Management", role-based quick starts) into 297 lines.
+
+### The finding that matters most
+
+**The Expenses tab and the Event Expense Report are reads against the claims module, not an expense
+store of their own.** Both call
+`POST .../erp/audit-assurance-tax/claim/reports/event-expenses-reports/...` — a multi-event variant
+and `single-event/{calendar_event_hdr_guid}`, each with a `/statistics` sibling — and
+`ClaimReportController` gates them on `TNT_AAT_CLAIM_REPORT_OWNER` / `_ADMIN` / `_CREATE`. The
+`TNT_API_CMS_CALENDAR_*` family that covers everything else in the applet does **not** open them, and
+the read sits behind a `_CREATE` code because the endpoints are POSTs. A cost reaches an event
+because `bl_aat_claim_document_line.calendar_event_hdr_guid` FKs to `bl_cms_calendar_event_hdr`;
+nothing in this applet tags a claim line.
+
+The old page's "Every invoice, receipt, and claim is tied directly to the Event Record" is therefore
+half true and misleadingly framed — there are no invoices or receipts here, only claim lines, and
+they are tagged elsewhere.
+
+### Other verified facts
+
+- **Nothing notifies anyone.** `bl_cms_calendar_event_notification_queue` has a table, a DCO
+  (`CmsCalendarEventLinkQueueDataConsistencyObject`) and a controller, and **no job processor under
+  `akaun-api/.../jobProcessor/` reads it**. Creating or changing an event sends no e-mail, SMS or
+  webhook. Same shape as the Workflow Design finding in run 29.
+- Applet-local `FieldConfigurationComponent`, routed in preference to the shared screen although the
+  submodule is present (METHOD §29). Nine keys declared + rendered + persisted, **seven consumed**.
+  Dead: `ENABLE_AUDIT_TRAIL` (read nowhere; `settings/applet-log` is not gated on it — the second
+  applet in a row with exactly this dead key, after Engagement) and `HIDE_DEFAULT_SELECT_CALENDAR`
+  (hides only its own drop-down on the settings screen; `selectedCalendar` keeps being applied).
+- `HIDE_CALENDAR_LISTING_MENU` is enforced by `app.component.ts` filtering the item out of
+  `menuItems`; the route still resolves if typed. A menu hide, not an access control.
+- The **Agenda** tab is an attachment list over `bl_cms_event_attachment` (File Name, Size, Uploaded
+  Date, Uploaded By) — not a structured agenda.
+- Event Type is a two-value `PRIVATE` / `PUBLIC` list that gates nothing found; there is no
+  per-calendar privacy model behind it, which contradicts the old page's "Granular Privacy — Calendar
+  level permissions ensure only the Marketing team sees the Marketing calendar". Calendar membership
+  (`bl_cms_calendar_member_hdr`) exists, but the settings entry that manages it is called
+  *Events Calendar Permission* while being a membership list.
+- Only Event Name, Company (`maxLength 255`) and Start Date carry validators. No cross-field date
+  check on either side, so End Date can precede Start Date.
+- Routed with no menu entry: `settings/webhook`, `settings/feature-visibility`,
+  `settings/applet-log` (audit trail listing + viewer) and the permission wizard / set / user / team /
+  role listings. `settings` with no child redirects to `feature-visibility`.
+- **Repo trap:** the repository carries two scaffold projects — `akaun-platform/testApplet` and
+  `akaun-platform/example-applet`, both routed at `applets/akaun/dev/example-applet` — alongside the
+  real `wavelet-erp/applets/events-management-applet`. A naive `find -name app.routing.ts` hits the
+  scaffolds first. Worth remembering for the rest of the queue.
+
+### Screenshots
+
+Only one image existed, `events-management-infographic.jpg`, an AI marketing infographic — dropped,
+same decision as the other ten this lane has removed. **No product screenshots exist for this
+applet.** Recapture list: Event Calender (month view with a few events); Event Listing; Event Edit →
+Details; Event Edit → Company Linking; Event Edit → Events Participant; Event Edit → Expenses with
+rows; Calendar Listing; Calendar Edit → Members; Settings → Field Settings, all three tabs; Event
+Expense Report with the statistics panel.
+
+### Cross-lane link requests (from this page)
+
+- **`content/en/modules-v2/crm-digital/_index.md`** (L19, L30, L54),
+  **`.../crm-digital/configuration/_index.md`** (L46),
+  **`.../crm-digital/related-applets/_index.md`** (L14) and
+  **`.../crm-digital/reports/_index.md`** (L19): all describe this applet as an *"event landing page
+  builder, ticketing, QR check-in scanning, post-event surveys, registration pages"* with an
+  *"Event Attendance & Conversion Summary"* report giving *"total registrations, ticket sales
+  revenue, QR check-in count, no-show rate %"*. **None of that exists.** The applet has four screens —
+  a calendar view, an event listing, a calendar listing and a claim-based expense report — and no
+  public page, no ticket, no QR code, no survey and no attendance report. Six lines across four pages
+  need correcting; not in this lane's folders.
+- **`content/en/applets/ecommerce/cp-commerce-admin-applet.md`** L815 promises *"a dedicated events
+  workflow with expenses, guest management, and advanced scheduling"* here. Expenses is a read-only
+  claim report, guest management is a participant list of name and e-mail, and scheduling is a
+  calendar view. Soften. (`events-management-applet` is already in its `related_applets`; the reverse
+  link has now been added from this side.)
+- **Whichever page documents the AAT claims applet**: it should own the explanation of
+  `bl_aat_claim_document_line.calendar_event_hdr_guid` — both the Events and the Engagement applet
+  read the claim reports without writing claims.
+
+### Notes for the loop
+
+- `kb/topics/event-management.md` created (new slug).
+- METHOD candidate §39: **a report screen inside applet A can be gated by applet B's permissions.**
+  The Events applet's two expense screens need `TNT_AAT_CLAIM_REPORT_*`, not the calendar family, so
+  a user with full rights over events sees nothing. Check the permission constant on every report
+  endpoint an applet calls, not just its own CRUD controllers.
+- METHOD candidate §40: **`ENABLE_AUDIT_TRAIL` is a recurring dead key.** Engagement and Events both
+  render and persist it and neither reads it, and in both applets the `settings/applet-log` route it
+  presumably belongs to is ungated and unlinked. Expect it in the rest of this family.

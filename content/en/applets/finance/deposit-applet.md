@@ -1,438 +1,592 @@
 ---
 title: "Deposit Applet"
-description: "Integrated lifecycle management for Money Market (MM) deposit requisitions, registers, and strategic investment workflows"
+description: "Reference for the money market deposit applet: requisition, register and category menus, the fields on each form, what FINAL creates, and how rollover works"
+applet_code: "depositApplet"
+page_type: applet
+applet_repo: "blg-applet-wavelet-deposit-applet"
+modules: [financial-accounting]
+related_applets:
+  - chart-of-account-applet
+  - organisation-applet
+  - customer-maintenance-applet
+  - forex-applet
+  - cashbook-applet
+  - general-ledger-applet
+  - investment-applet
+  - txn-recon-applet
+  - internal-payment-voucher-applet
+  - internal-receipt-voucher-applet
+guides: []
+sources:
+  screens_and_menus:
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/services/sales-invoice-pages.service.ts
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/services/line-items-pages.service.ts
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/services/pick-pack-queue-pages.service.ts
+  configuration:
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/app.component.ts
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/app.module.ts
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/components/settings-container/applet-settings.module.ts
+    - blg-shared-utilities/modules/layout/sidebar/sidebar.component.html
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/components/sales-invoice-container/sales-invoice-container.component.ts
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/components/sales-invoice-container/sales-invoice-listing/sales-invoice-listing.component.ts
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/components/line-items-container/deposit-register-listing/deposit-register-listing.component.ts
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/components/pick-pack-queue-container/deposit-category-listing/deposit-category-listing.component.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/DepositRegisterHdrController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/DepositRequisitionHdrController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/AkaunTenantPermissions.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/TntErpPermissionsV2.java
+  fields:
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/components/sales-invoice-container/sales-invoice-create/main-details/main-details.component.ts
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/components/sales-invoice-container/sales-invoice-create/main-details/main-details.component.html
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/components/sales-invoice-container/sales-invoice-edit/edit-invitee/edit invitee details/edit-invitee-details.component.html
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/components/line-items-container/edit-deposit-register/edit-deposit-register-main-details/main-details.component.ts
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/components/line-items-container/edit-deposit-register/edit-deposit-register-main-details/main-details.component.html
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/components/pick-pack-queue-container/edit-deposit-category/edit-deposit-category-main-details/main-details.component.ts
+    - blg-shared-utilities/utilities/deposit.constants.ts
+  lifecycle:
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/DepositRegisterHdrService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/DepositRegisterTxnLineService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/DepositRequisitionHdrService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/DepositRequisitionEmailService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/DepositRegisterHdrDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/DepositRequisitionHdrDataConsistencyObject.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/DepositRolloverProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/TempDepositRegisterHdrProcessor.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/DepositReqHdrEntityLinkThymeleafFormController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/DepositRequisitionHdrEntityLinkController.java
+    - blg-akaun-platform-java/akaun-api/src/main/resources/templates/deposit-submission-form.html
+  troubleshooting:
+    - gh:bigledger/blg-applet-wavelet-deposit-applet#8
+    - gh:bigledger/blg-applet-wavelet-deposit-applet#9
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/components/line-items-container/edit-deposit-register/transactions/transactions-listing/transactions-listing.component.ts
+    - blg-applet-wavelet-deposit-applet/micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/components/line-items-container/edit-deposit-register/registration-deposit-requisition-listing/registration-deposit-requisition-listing.component.ts
 tags:
 - treasury-operations
 - deposit-management
 - interest-tracking
-- financial-controls
 - money-market
+- financial-controls
 weight: 210
 ---
 
+## Overview
+
+The Deposit Applet records **money market (MM) deposit placements** — company cash placed with a
+financial institution for a fixed term at an agreed interest rate. It is a treasury *register*, not a
+posting document: it keeps the terms, the invited counterparties and their quotations, a computed
+interest schedule, and links to the cash documents that actually moved the money.
+
+The applet has three menus that map to three tables — a **requisition** (the request for quotes,
+`bl_fi_deposit_requisition_hdr`), a **register** (the live placement,
+`bl_fi_deposit_register_hdr`), and a **category** (a grouping label, `bl_fi_deposit_category`).
+
 {{< callout type="warning" >}}
-**Work in Progress: This documentation is currently pending review**
+**This applet posts no journal.** Neither the requisition nor the register appears in
+`JournalPostingService`, and neither has a `*DataConsistencyObject` quantity or amount signum. The
+rows the Transactions tab shows are `bl_fi_deposit_register_txn_line` records — an interest schedule
+in the applet's own table, not general ledger entries. The ledger effect of a placement comes from
+the [Internal Payment Voucher](/applets/finance/internal-payment-voucher-applet/) that pays the bank
+and the [Internal Receipt Voucher](/applets/finance/internal-receipt-voucher-applet/) that receives
+the money back; those documents are *linked* to the register on the Payment/Receipt tab, never
+created by it. See [Lifecycle and effects](#lifecycle-and-effects).
 {{< /callout >}}
 
-### 🚀 TL;DR: What Is This Applet For?
+## Where it fits
 
-**This applet is for placing your company's spare cash into fixed deposits at a bank — and keeping your accounting system fully in sync with what the bank holds.**
-
-When a company has idle cash sitting in a current account earning nothing, the treasury team places it into a **Money Market (MM) deposit** at a bank to earn interest. The bank manages the actual money. This applet manages everything on your side: the request, the bank's confirmation details, the interest calculations, and the accounting entries — so your system always reflects the true state of your cash.
-
-**The simple flow of how it works — step by step for a new employee:**
-
-**Step 1 — Finance team decides to place cash** ✅ *in this applet*
-> The finance team opens the **MM Deposit Requisition** and fills in how much they want to place, for how long, and what interest rate they expect. Think of it like filling in a form that says "we want to invest RM5 million for 3 months."
-
-**Step 2 — System emails banks to compete for your money** ✅ *in this applet (bank responds via external link)*
-> The finance team adds the banks they want to invite (e.g. Maybank, CIMB, RHB) in the **Invitee tab**. The system emails **each bank individually** with a secure link. Each bank clicks that link, fills in their offered interest rate and terms, and submits. Their response syncs back into the Invitee tab automatically — so you can see all offers side by side without any back-and-forth emails.
-
-**Step 3 — Finance team picks the best offer and transfers the money** ⚠️ *cash transfer is external — done via your banking system or manually*
-> The finance team compares the quotes and picks the best rate. The actual transfer of RM5 million to the bank is done **outside this applet** — through your company's internet banking or bank instruction. The bank then sends a **confirmation letter** with the agreed rate, start date, and maturity date.
-
-**Step 4 — Finance team inputs the bank's confirmation into the system** ✅ *in this applet*
-> The finance team opens the **MM Deposit Register**, creates a new entry, and inputs the details from the bank's confirmation letter. They click **FINAL** — and the system automatically calculates all the interest, creates the accounting journal entries, and starts tracking the deposit.
-
-**Step 5 — At maturity, bank returns the money** ⚠️ *cash receipt is external — bank transfers back to your account*
-> When the deposit matures, the bank transfers the principal + interest back to your company's bank account. This happens outside the applet. The finance team then records the receipt in the **Payment/Receipt tab**, or triggers a **Rollover** to place the money again automatically.
-
-{{< figure src="/images/deposit-applet/deposit-lifecycle-infographic.png" alt="MM Deposit five-step lifecycle - Finance creates Requisition, system emails banks for quotes via the Invitee tab, finance selects the best offer, cash transfer happens externally via internet banking, the bank's confirmation is recorded in the MM Deposit Register, and at maturity the bank returns principal plus interest" caption="MM Deposit Lifecycle: which steps happen inside this applet and which happen externally through your banking system." >}}
-<!-- ```
-[THIS APPLET]  Finance team creates Requisition — defines amount, rate, duration
-                    ↓
-[THIS APPLET]  Invitee tab — system emails banks, banks submit quotes via link
-                    ↓
-[THIS APPLET]  Finance team compares quotes, selects best bank
-                    ↓
-[EXTERNAL: Your company's internet banking]  Actual RM transfer to bank
-                    ↓
-[EXTERNAL: Bank sends you a confirmation letter]  Rate, dates, amount confirmed
-                    ↓
-[THIS APPLET]  Finance team inputs confirmation → MM Deposit Register → FINAL
-                    ↓
-[THIS APPLET]  System auto-calculates interest, posts accounting entries automatically
-                    ↓
-[EXTERNAL: Bank transfers money back to your account at maturity]
-                    ↓
-[THIS APPLET]  Finance team records receipt (Payment/Receipt tab) or triggers Rollover
-                    ↓
-[OTHER APPLETS]  General Ledger + Financial Reports reflect updated cash position
-``` -->
-
-**Related applets involved in this flow:**
-
-| Applet | What it does in plain English |
-| :--- | :--- |
-| **This Applet (Deposit Applet)** | Manages the full deposit lifecycle — request, tracking, interest, rollover |
-| **Internal Payment Voucher Applet** | Records the cash going OUT to the bank when you make the placement. Think of it as the "we paid the bank" receipt inside the system. |
-| **Internal Receipt Voucher Applet** | Records the cash coming BACK from the bank at maturity. The "we received money from the bank" receipt. |
-| **Bank Reconciliation Applet** | A checking tool. It compares what your system says happened against what the bank's actual statement says. If they match, everything is correct. If they don't, something needs to be investigated. Think of it like checking your bank app against your own spending notes. |
-| **Cashbook Applet** | Shows your company's overall bank account balances — including how much is currently locked up in deposits and unavailable for spending. |
-
-| If you want to... | Use this section | Role |
+| Direction | What | Why |
 | :--- | :--- | :--- |
-| **Request a new deposit placement** and invite banks to submit quotes | **MM Deposit Requisition** | The **Request** |
-| **Activate and monitor a live deposit** after a bank is chosen | **MM Deposit Register** | The **Live Asset** |
-| **Organise deposits into groups** for reporting | **MM Deposit Category** | The **Label** |
+| Before | [Organization](/applets/master-data/organisation-applet/) → Company | The Company drop-down lists companies; the GL Code list is filtered by that company's chart of accounts. |
+| Before | [Chart of Account](/applets/master-data/chart-of-account-applet/) | Supplies the GL Code on the requisition and the register, and the optional interest / interest-expense GL codes. |
+| Before | [Customer Maintenance](/applets/master-data/customer-maintenance-applet/) | The invitee's Entity Name on the Edit Invitee screen is picked from the entity list; the applet embeds the customer create/edit screens for this purpose. |
+| Before | [Forex](/applets/master-data/forex-applet/) | Populates the Currency drop-down (MYR is pushed to the top of the list). |
+| Alongside | [Internal Payment Voucher](/applets/finance/internal-payment-voucher-applet/) / [Internal Receipt Voucher](/applets/finance/internal-receipt-voucher-applet/) | The only documents the Payment/Receipt tab will link — the search is hard-coded to `INTERNAL_PAYMENT_VOUCHER, INTERNAL_RECEIPT_VOUCHER`. |
+| After | [General Ledger](/applets/finance/general-ledger-applet/), [Cashbook](/applets/master-data/cashbook-applet/) | Where the cash movement is actually visible; the deposit register itself contributes nothing to either. |
+| Adjacent | [Investment Applet](/applets/finance/investment-applet/) | The other treasury register; deposits are term placements, investments are holdings. |
 
----
+## Screens and menus
 
-## Purpose and Overview
+`app.routing.ts` (`mainPath` = `applet/tnt/wavelet/erp/deposit-requisition-applet`) exposes exactly
+three child routes. The sidebar labels come from `models/menu-items.ts`; the applet title shown in the
+layout header is **Money Market Deposit Applet** (`app.component.ts`, `appletName`).
 
-The **Deposit Applet** centralizes and automates the company's short-term cash placement activities. It streamlines the entire process from raising Money Market (MM) deposit requisitions and comparing counterparty offers to managing live placements in the register and maintaining category metadata. It enforces strict form validation, complex interest rate logic, and permissioned state changes to ensure financial integrity.
+| Menu | Route | Container | Opens on |
+| :--- | :--- | :--- | :--- |
+| MM Deposit Requisition | `deposit-requisition` | `SalesInvoiceContainerComponent` | Deposit Requisition Listing |
+| MM Deposit Register | `deposit-register` | `LineItemsContainerComponent` | Deposit Register Listing |
+| MM Deposit Category | `deposit-category` | `PickPackQueueContainerComponent` | Deposit Category Listing |
 
-**Important distinction**: The bank holds the actual money. This applet holds the mirror image of that money inside your accounting system. When the bank gives you a confirmation letter with the rate, amount, and maturity date — you input those details here. From that point, the system knows exactly how much cash is tied up, where, at what rate, and when it comes back. Your finance team always has an accurate picture of the company's full cash position without calling the bank.
-
-Beyond just recording, the applet actively:
-- **Calculates** interest and maturity amounts automatically — you don't do the math
-- **Posts GL journal entries** automatically when a deposit is finalised — no manual journaling
-- **Manages the competitive process** — emails multiple banks, collects their rate quotes back into the system for comparison
-- **Handles renewal** — automatically rolls over deposits at maturity so cash is never sitting idle
-
-### The "Fixed Deposit at a Bank" Analogy
-
-Think of it exactly like placing a personal fixed deposit — but at a corporate scale with multiple banks competing for your business:
-
-#### 1. MM Deposit Requisition (The Application Form)
-*   **The Analogy**: You walk into a bank and fill in a **Fixed Deposit Application Form**. You write down how much you want to place, for how long, and what interest rate you expect. But instead of going to just one bank, you send this form to **multiple banks** and ask them to compete for your money.
-*   **The Reality**: The Requisition is where you define the terms of the deposit (amount, duration, interest type) and invite counterparties (banks/financial institutions) to submit their quotes via a secure link.
-*   **Accounting Importance**: This creates a formal, auditable record of the investment decision **before** any money moves. It prevents ad-hoc placements made over the phone with no paper trail.
-
-#### 2. MM Deposit Register (The Active Deposit Certificate)
-*   **The Analogy**: Once you pick the best bank offer, they give you a **Fixed Deposit Certificate**. This certificate shows your principal, the interest rate, the maturity date, and every interest payment you receive along the way.
-*   **The Reality**: The Register is the live record of the active deposit. It tracks the principal, calculates interest, generates accounting transactions automatically, and manages the rollover when the deposit matures.
-*   **Accounting Importance**: Every interest earned is automatically posted to the correct GL account. Without this, the finance team would have to manually journal every interest receipt — a major source of errors.
-
-| Feature | **MM Deposit Requisition** | **MM Deposit Register** |
-| :--- | :--- | :--- |
-| **Stage** | Before placement | After placement (live) |
-| **Purpose** | Define terms, collect bank quotes | Track the active deposit |
-| **Analogy** | The Application Form | The FD Certificate |
-| **Key Action** | Invite banks, compare offers | Generate transactions, manage rollover |
+An empty path redirects to `deposit-requisition`; anything else redirects to the applet's 404 screen.
+There is **no settings route** — see [Configuration](#configuration).
 
 {{< callout type="info" >}}
-**Core Concept**: The system manages the transition from a **Requisition** (the request for placement) to the **Register** (the active financial asset), ensuring consistent interest calculation and auditability at every step.
+The container class names (`SalesInvoiceContainerComponent`, `LineItemsContainerComponent`,
+`PickPackQueueContainerComponent`) and many folder names are left over from the Sales Invoice applet
+this repo was forked from. They have no bearing on behaviour; the screens they load are the deposit
+screens listed above.
 {{< /callout >}}
 
----
+### MM Deposit Requisition
 
-## Key Features Overview
+The listing is an ag-grid over `bl_fi_deposit_requisition_hdr` filtered to `status = ACTIVE`, sorted
+by `updated_date DESC`. Columns: Doc No., Deposit Name, Deposit Code, Company, Amount Initial Deposit,
+Amount Upon Maturity, Interest Type, Currency, Interest Rate (%), Interest Rate Effective (%),
+Est. Interest Amount, Est. Start Date, Est. End Date, Posting Status, Status.
 
-### Who Benefits from This Applet?
+Pressing **+** calls the `temp/backoffice-ep` endpoint immediately: a row is created on the server
+with `status = TEMP` **before you type anything**, and the screen jumps straight to *Edit MM Deposit
+Requisition*. The fork's separate "Create" screen (`SalesInvoiceCreateComponent`) is still registered
+in the view-column stack but nothing navigates to it, and its Main Details tab is commented out.
 
-**Treasury Managers:**
-- Efficiently prepare and approve placements
-- Compare fixed vs. floating interest offers from multiple counterparties
-- Manage renewal and rollover strategies with automated assistance
-- Maintain a balanced investment ladder
+The edit screen has two tabs:
 
-**Finance Controllers:**
-- Ensure GL and currency integrity across all transactions
-- Standardize rounding and formatting for financial reports
-- Maintain a complete, immutable audit trail of all modifications
-- Enforce strict SAVE and FINAL governance rules
+- **Details** — the form documented under [Fields](#fields).
+- **Invitee** — hidden while `status = TEMP`; appears after the first SAVE. An ag-grid of
+  `bl_fi_deposit_requisition_hdr_entity_link` rows, with **+** and row-click both opening the same
+  *Edit Invitee* panel.
 
-**Financial Analysts:**
-- Review interest rate effectiveness over time
-- Export consistent, formatted listings for stakeholders
-- Analyze deposit categories to optimize cash placement strategies
-- Monitor transaction histories including inflation and compound adjustments
+{{< figure src="/images/deposit-applet/deposit-requisition-details-tab.png" alt="Edit MM Deposit Requisition, Details tab, showing an empty form with Deposit Name, Deposit Code, Company, GL Code, Currency, amounts, interest fields, dates and Auto Rollover Logic" caption="Edit MM Deposit Requisition — Details. The GL Code drop-down stays empty and shows the hint 'Company must be selected first' until a Company is chosen." >}}
 
-### What Problems Does This Solve?
+Action buttons on the requisition: **FINAL** (rendered only while `posting_status !== 'FINAL'` and
+`status === 'ACTIVE'`), **SAVE**, and a **DELETE** button whose `*ngIf` reads a `showDeleteButton`
+flag that is initialised `false` and never set — so **DELETE never renders** on a requisition.
 
-**The Manual Spreadsheet Risk:**
+### MM Deposit Register
 
-Managing deposits across multiple banks using ad-hoc spreadsheets leads to significant operational risks:
-- Fragmented records of counterparty offers and email-based quotes
-- Manual calculation errors in interest rates and maturity amounts
-- Inconsistent GL mapping leading to month-end reconciliation headaches
-- Lack of visibility into maturity dates, resulting in stagnant cash
-- Difficulties in maintaining a reliable audit trail for compliance
+The listing is an ag-grid over `bl_fi_deposit_register_hdr` sorted by `updated_date DESC`. Columns:
+Deposit Name, Company, Posting Status, Deposit Date, Maturity Date, Principal Amount, Interest Rate
+(%), Interest Rate Effective (%), Interest Earned, Interest Amount, Amount Upon Maturity, Rollover.
+There is no document-number column because the register has no running number (see
+[Lifecycle](#lifecycle-and-effects)).
 
-**The Deposit Applet Solution:**
+**+** creates a TEMP register row on the server the same way the requisition does, then opens *Edit
+MM Deposit Register* with five tabs. The last four are hidden while `status = TEMP`:
 
-- **Centralized Requisition Workflow** - Consolidate all investment requests and invitee quotes in one place
-- **Mutually Exclusive Interest Logic** - Support for both FIXED and FLOATING rates with automated computation
-- **Automated Transaction Generation** - System-generated placements, interest, and inflation entries upon finalization
-- **Strict Data Parity** - Ensures invitee details match requisition constraints, preventing data drift
-- **Strategic Auto-Rollover** - Configurable logic to keep funds invested according to schedule until stopped
+| Tab | What it holds |
+| :--- | :--- |
+| Details | The placement terms — see [Fields](#fields). |
+| Transactions | `bl_fi_deposit_register_txn_line` rows for this deposit. **+** opens an Edit Transaction panel (Transaction Type, Transaction Date, Total Amount, Principal Amount, Interest Amount, GL Code, Description) so a line can be added or corrected by hand. This tab also carries the **Manual Rollover** button. |
+| Payment/Receipt | Links existing Internal Payment Vouchers / Internal Receipt Vouchers to this deposit through `bl_fi_deposit_register_hdr_gendoc_link`. The picker lists documents of those two types only; ticking rows and pressing **Add** creates the links. It does not create a voucher. |
+| Attachment | File uploads against `bl_fi_deposit_register_hdr_attachment` — the bank's confirmation letter, the signed placement agreement. |
+| Rollover | A read-only grid of the deposits in the same rollover chain, with the transaction lines of each. |
 
-{{< figure src="/images/deposit-applet/deposit-overview-infographic.png" alt="Deposit Applet Overview - Challenges (manual spreadsheets, scattered emails, stagnant cash), Solution (automated interest engine, competitive bidding hub, smart auto-rollover), and User Roles (Treasury Managers, Finance Controllers, Financial Analysts)" caption="Deposit Management Hub: Transforming manual treasury risks into a streamlined, automated investment lifecycle with competitive bank quoting and intelligent rollover logic." >}}
+An **Agreement** tab exists in the code but its `<mat-tab>` is commented out.
 
----
+{{< figure src="/images/deposit-applet/deposit-register-transactions-tab.png" alt="Edit MM Deposit Register with the Transactions tab selected and the Edit Transaction panel open, showing Transaction Type, Transaction Date, Total Amount, Principal Amount, Interest Amount, GL Code and Description" caption="Register — Transactions tab and the Edit Transaction panel. Lines are generated by FINAL; this panel lets one be added or corrected by hand." >}}
 
-## Key Concepts
+{{< figure src="/images/deposit-applet/deposit-register-payment-tab.png" alt="Edit MM Deposit Register with the Payment/Receipt tab selected and the Add Payment / Receipt Voucher picker open, listing INTERNAL_RECEIPT_VOUCHER and INTERNAL_PAYMENT_VOUCHER rows with tick boxes" caption="Payment/Receipt — the picker is restricted to Internal Payment Voucher and Internal Receipt Voucher. Ticking rows links them to the deposit; no voucher is created here." >}}
 
-### Understanding Interest Logic
+{{< figure src="/images/deposit-applet/deposit-register-attachment-tab.png" alt="Edit MM Deposit Register with the Attachment tab selected and the Add Attachment drag-and-drop panel open" caption="Attachment — supporting documents for the placement." >}}
 
-The applet supports two distinct interest types, each with its own validation and behavior:
+Action buttons on the register: **FINAL**, **Select Requisition**, **SAVE** (all three hidden once
+`posting_status === 'FINAL'`; **Select Requisition** is also hidden when `status === 'INACTIVE'`).
+The **DELETE** button's `*ngIf` calls `deleteCondition()`, which returns `null` on its first line —
+so **DELETE never renders** on a register either, and `onDelete()` returns before doing anything.
 
-| Interest Type | Behavior | Key Fields |
-|---------------|----------|------------|
-| **Fixed** | You define a static percentage rate that does not change for the life of the deposit. | Interest Rate (%) |
-| **Floating** | The rate moves with a market reference (e.g. KLIBOR) plus a margin you negotiate. | Ref Value + Ref Delta |
+### MM Deposit Category
 
-**Plain English**: Fixed = "the bank pays me 3.5% no matter what." Floating = "the bank pays me KLIBOR + 0.5%, so if KLIBOR goes up, I earn more."
+A single-tab master-data screen over `bl_fi_deposit_category`. The listing shows Category Code,
+Category Name, Posting Status, Created Date, Updated Date, Status. The edit screen has **SAVE**,
+**FINAL** (while `posting_status !== 'FINAL'` and `status === 'ACTIVE'`) and a working **DELETE**
+(two clicks to confirm; rendered whenever `status === 'ACTIVE'`, regardless of posting status).
 
-{{< callout type="tip" >}}
-**Precision Rule**: The system enforces programmatic rounding to two decimals for all interest rates and effective values to prevent floating-point artifacts and ensure audit consistency.
+## Configuration
+
+### Before you can use it
+
+| Prerequisite | Where it is set | Why it matters |
+| :--- | :--- | :--- |
+| At least one company | [Organization](/applets/master-data/organisation-applet/) | Company is a required field on both the requisition and the register, and it is what filters the GL Code list. |
+| A chart of accounts with the placement GL code | [Chart of Account](/applets/master-data/chart-of-account-applet/) | GL Code is required on both forms. The list is loaded with `chart_of_acc_guid = <the selected company's chart>`, capped at 200 rows. |
+| Currencies | [Forex](/applets/master-data/forex-applet/) | Currency is required. The drop-down is the full `bl_fi_mst_ccy` list with MYR sorted first. |
+| A running number for `DEPOSIT_REQUISITION_NO` | Document numbering | The requisition's `server_doc_no` is generated from this code by `RunningNumberGeneratorUtil`. Without it the requisition saves with no document number. The register has no equivalent. |
+| At least one deposit category | MM Deposit Category, in this applet | Deposit Category is `Validators.required` on the register form — the register cannot be saved until one exists. |
+| Entities for the invitees | [Customer Maintenance](/applets/master-data/customer-maintenance-applet/) | Edit Invitee picks Entity Name from the entity listing. |
+| Outbound e-mail | Platform (Amazon SES) | Finalising a requisition sends the invitation e-mails through `AwsSes.sendHtmlEmail`. |
+
+### Applet settings
+
+**This applet has no settings screen.** Three separate proofs:
+
+1. `app.component.ts` sets `readonly hideSettings = true` and passes it to `<app-layout>`. In
+   blg-shared-utilities the sidebar wraps both the settings gear
+   (`*ngIf="(userRank === 'OWNER' || userRank === 'ADMIN') && (!hideSettings)"`) and the
+   Personalization link (`*ngIf="!hideSettings"`) in that flag — so neither renders, for anyone.
+2. `app.routing.ts` declares no `settings` route. It imports the shared permission and personalization
+   containers but never routes them.
+3. A `components/settings-container/` folder exists with a Field Configuration component, a Default
+   Settings component, an Email Template container and a Printable Format container. They are declared
+   in `AppletSettingsModule`, and **`AppletSettingsModule` is imported by nothing** — `app.module.ts`
+   does not list it. The whole folder is unreachable dead code inherited from the fork.
+
+Consequently there is no Application Settings screen, no Default Selection, no printable format
+configuration and no configurable e-mail template in this applet. The invitation e-mail body is built
+in Java (`DepositRequisitionEmailService.buildEmailTemplate`) and is not editable from the product.
+
+{{< callout type="info" >}}
+Two open issues on the applet repository ask for exactly this
+(`gh:bigledger/blg-applet-wavelet-deposit-applet#8` and `#9`, both "Deposit Applet — To add Setting
+and Personalization menu"). Until they are done, the settings gear is absent by design.
 {{< /callout >}}
 
-### The Requisition-to-Register Flow
+### Settings read at runtime without a control
 
-The lifecycle of a deposit moves through clear stages:
+Three `APPLET_SETTINGS` keys are read from the session's master settings by reachable components.
+Because there is no settings screen, the `bl_applet_ext` row that carries them cannot be created from
+inside this applet — it would have to be written through the API. All three default to undefined,
+which the code treats as "off".
 
-```
-MM Deposit Category (grouping label)
-│
-├── MM Deposit Requisition (DRAFT/TEMP)
-│   ├── Define terms: amount, currency, interest type, dates
-│   └── Invite counterparties to submit quotes (Invitee tab)
-│       │
-│       └── Requisition (FINAL) ──→ Lock details, quotes collected
-│           │
-│           └── MM Deposit Register ──→ Select requisition, activate placement
-│               ├── Transactions auto-generated (Placement, Interest, Compound)
-│               ├── Payment/Receipt recorded
-│               └── Maturity → Rollover or Settlement
-```
+| Key | Read by | Effect when true / set |
+| :--- | :--- | :--- |
+| `SORT_ORDER` | All three listings | Replaces `updated_date` as the `orderBy` of the listing search. |
+| `DISABLE_GEN_DOC_LISTING` | `sales-invoice-container.component.ts` | Skips the initial requisition search, so MM Deposit Requisition opens with an empty grid until you search. |
+| `ENABLE_FILTER_BY_TODAYS_TXN` | Requisition container and listing | Computes a `dateRange` of today 06:00 instead of one month back — but `dateRange` is never read anywhere in the applet, so the setting currently has **no observable effect**. |
 
----
+Every other `appletSettings.*` reference in the repository (the `HIDE_*` line-item and delivery keys,
+`DISALLOW_SELL_BELOW_MIN_PRICE`, `ENABLE_MULTIPLE_KO`, the `HIDE_JOB_*` group and the rest) sits in
+fork-inherited components that no route or view-column stack reaches. They are not settings of this
+applet.
 
-## Detailed Menu & Tab Explanation
+### Feature visibility and permissions
 
-The applet has three main sections accessible from the sidebar.
+`bl_applet_client_side_perm_dfn` has **no rows** for applet code `depositApplet` (checked against
+`akaun_master`, 2026-09-06), and the applet contains no `HIDE_*`/`SHOW_*` menu gating. Everything is
+enforced server side.
 
----
+`app.component.ts` asks the permission-inquiry endpoint for
+`TNT_API_DOC_INTERNAL_SALES_INVOICE_READ/CREATE/UPDATE_TGT_GUID`, `TNT_TENANT_ADMIN` and
+`TNT_TENANT_OWNER` — the sales-invoice codes are fork leftovers, and the requisition container uses
+the `..._SALES_INVOICE_READ_TGT_GUID` target to build its branch filter list.
 
-## 1. MM Deposit Requisition
+Server-side gates, by table:
 
-{{< figure src="/images/deposit-applet/deposit-requisition-listing.png" alt="Deposit Requisition Listing - centralized dashboard for managing all investment requests" caption="Requisition Management: Tracking the status of new placement requests and bank bidding cycles." >}}
-
-This is where you **request** a new deposit placement and collect quotes from banks.
-
-**Think of it as**: Sending out a tender to multiple banks — "we have RM5 million to place for 3 months, who gives us the best rate?"
-
-### Requisition — Details Tab
-
-{{< figure src="/images/deposit-applet/deposit-requisition-details-tab.png" alt="Requisition Details Tab - defining principal amount, interest logic, and investment terms" caption="Requisition Configuration: Establishing the core parameters for the deposit placement before bank invitation." >}}
-
-The core form for defining the deposit terms.
-
-| Field | What it is |
-|-------|-----------|
-| **Deposit Name** | A descriptive name for this placement (e.g. "Q2 2026 Short Term Placement") |
-| **Deposit Code** | A short reference code for internal tracking |
-| **Company** | Which company entity is making the placement |
-| **GL Code** | Short for "General Ledger Code." Think of it as a **category label for your accounting book**. Every transaction in a company is filed under a code so the system knows which "bucket" it belongs to (e.g. "Short Term Investments" or "Cash at Bank"). This is auto-filled based on the Company you select. |
-| **Currency** | The currency of the deposit |
-| **Amount Initial Deposit** | How much cash you are placing |
-| **Amount Upon Maturity** | Auto-calculated: what you get back at the end (principal + interest). You don't type this — the system works it out. |
-| **Interest Type** | The category of interest (e.g. Simple, Compound) |
-| **Interest Payout Frequency** | How often interest is paid — monthly, quarterly, or only at the end when the deposit matures |
-| **Interest Calculation** | **FIXED** = the rate stays the same for the whole deposit. **FLOATING** = the rate moves with a market benchmark (like a base rate set by the central bank). |
-| **Interest Rate %** | Your agreed rate (for FIXED only). e.g. 3.75% per year. |
-| **Ref Type / Source / Delta / Value** | For FLOATING rate only — which market benchmark to follow, and by how much to add on top of it. e.g. "KLIBOR + 0.5%" |
-| **Interest Rate Effective %** | The actual final rate after applying the benchmark + delta. Read-only, calculated by the system. |
-| **Interest Convert to Principal** | If YES, the interest you earn gets added back to your deposit amount, so next period you earn interest on a bigger amount. This is called **compounding** — your money grows faster. |
-| **Est Start Date / Est End Date** | The planned start and end of the deposit period |
-| **Term (Days)** | How many days the deposit runs. Auto-calculated from the dates — you don't type this. |
-| **Inflation Rate** | Optional. If you want to track the real value of your return after accounting for rising prices. Most users leave this blank. |
-| **Auto Rollover Logic** | What happens automatically when the deposit matures. See the Rollover section below. |
-
-### Requisition — Invitee Tab
-
-*(Appears after the record is saved, not in TEMP status)*
-
-{{< figure src="/images/deposit-applet/deposit-requisition-invitee-tab.png" alt="Invitee Tab - bank bidding portal for competitive rate submission" caption="Invitee Management: Managing bank invitations and monitoring the automated quote submission process." >}}
-
-*   **What it is**: A list of banks or financial institutions you are inviting to submit their deposit rate quotes.
-*   **The Analogy**: The **Tender Invitation List** — you send each bank a secure link, they log in and submit their offered rate, and it flows back into this tab for comparison.
-*   **Key Actions**:
-    *   **Add Invitee** — Enter the bank's name and email address.
-    *   **Edit Invitee** — Update contact details or review submitted quotes.
-*   **Accounting Importance**: Creates a documented, competitive selection process. If an auditor asks "why did you choose Bank X over Bank Y?", the Invitee tab shows all offers received and the rates submitted.
+| Area | Permission codes |
+| :--- | :--- |
+| Deposit requisition header | `API_TNT_DEPOSIT_REQUISITION_HDR_` `OWNER` / `ADMIN` / `CREATE` / `READ` / `UPDATE` / `DELETE` |
+| Requisition invitee (entity link) | `API_TNT_DEPOSIT_REQUISITION_HDR_ENTITY_LINK_` `OWNER` / `ADMIN` / `CREATE` / `READ` / `UPDATE` / `DELETE` |
+| Requisition invitee attachment | `API_TNT_DEPOSIT_REQUISITION_HDR_ENTITY_ATTACHMENT_` `OWNER` / `ADMIN` / `CREATE` / `READ` / `UPDATE` / `DELETE` |
+| Register header, transaction lines, attachments, gen-doc links, category | `TNT_API_DEPOSIT_` `OWNER` / `ADMIN` / `CREATE` / `READ` |
 
 {{< callout type="warning" >}}
-Once a Requisition is set to **FINAL**, the interest type and core terms are locked. This preserves the integrity of the counterparty agreement.
+The register side is coarser than it looks. In `DepositRegisterHdrController`, only the TEMP-create
+and rollover endpoints ask for `TNT_API_DEPOSIT_CREATE`; the ordinary **create, update and delete**
+endpoints all ask for `TNT_API_DEPOSIT_READ`. `TNT_API_DEPOSIT_UPDATE` and `TNT_API_DEPOSIT_DELETE`
+are defined in `AkaunTenantPermissions` but are not used by any deposit controller. Grant
+`TNT_API_DEPOSIT_READ` only to people who may also change deposits. The same pattern applies to the
+transaction-line, attachment, gen-doc-link and category controllers.
 {{< /callout >}}
 
----
+The `temp/backoffice-ep` endpoint on the requisition controller checks
+`API_TNT_BUDGET_VOTEBOOK_CREATE` rather than a deposit permission — a copy-paste from another
+controller.
 
-## 2. MM Deposit Register
+## Fields
 
-{{< figure src="/images/deposit-applet/deposit-register-listing.png" alt="Deposit Register Listing - monitoring active investments and maturity schedules" caption="Asset Monitoring: A unified view of all live placements currently earning interest at counterparties." >}}
+### Requisition — Details tab
 
-This is where you **activate and monitor** a live deposit after selecting a bank from the requisition quotes.
+Validators are from the reactive form in
+`sales-invoice-create/main-details/main-details.component.ts`; the backend validates none of them
+(see [Lifecycle](#lifecycle-and-effects)). Fields marked *calculated* are `disabled` form controls
+rendered read-only.
 
-**Think of it as**: The actual Fixed Deposit Certificate — the live record of money that is currently placed at a bank, earning interest.
+| Field | Meaning | Required | Notes |
+| :--- | :--- | :--- | :--- |
+| Server Doc No | Running number from `DEPOSIT_REQUISITION_NO` | — | Read-only, assigned on create. |
+| Deposit Name | Free-text label for the placement | Yes | |
+| Deposit Code | Free-text internal reference | Yes | No uniqueness check. |
+| Company | Owning company | Yes | Changing it reloads the GL Code list. |
+| GL Code | Balance-sheet account for the placement | Yes | Disabled until Company is chosen; the hint says so. Loaded 200 at a time from the company's chart of accounts. |
+| Currency | Placement currency | Yes | MYR first, then alphabetical; type-ahead search. |
+| Amount Initial Deposit | Principal | Yes | Formatted to 2 decimals with thousands separators on blur, unformatted on focus. |
+| Amount Upon Maturity | Principal ± interest ± inflation | *calculated* | Returned by the backend `deposit-calculations/backoffice-ep` endpoint, rounded to 2 decimals. |
+| Interest Amount | Total interest over the term | *calculated* | Same endpoint (`totalInterest`). |
+| Interest Type | `ONCE` (interest paid once) or `MULTI` (periodic) | Yes | Choosing `ONCE` forces Interest Payout Frequency to `Full Term`, disables it, and clears Auto Rollover Logic. |
+| Interest Payout Frequency | `Full Term`, `Daily`, `Weekly`, `Monthly`, `Quarterly`, `Semi-Annual`, `Annual` | Yes for `MULTI` | `Full Term` is removed from the list for `MULTI` (reset to `Monthly`); it is the only option for `ONCE`. |
+| Interest Calculation | `FIXED` or `FLOATING` | Yes | Switching to `FLOATING` disables Interest Rate, sets it to 0, and makes the three reference fields required. Switching back to `FIXED` clears the reference value/delta and sets Interest Rate Effective to 0. |
+| Interest Rate (%) | Agreed rate | Yes when `FIXED` | Hidden when `FLOATING`. |
+| Interest Rate Reference Type | `SBR - Singapore Swap Offer Rate`, `BR - Base Rate`, `BLR - Base Lending Rate`, `ELR - Effective Lending Rate` | Yes when `FLOATING` | List is `INTEREST_RATE_REF_TYPE_LIST` in blg-shared-utilities. |
+| Interest Rate Reference Source | Free text | No | |
+| Interest Rate Reference Value (%) | The benchmark rate | Yes when `FLOATING` | |
+| Interest Rate Reference Delta (%) | Spread over the benchmark | Yes when `FLOATING` | |
+| Interest Rate Effective (%) | Reference Value + Delta, rounded to 2 decimals | *calculated* | Shown only when `FLOATING`. |
+| Interest Convert to Principal | `YES` / `NO` | Yes | `YES` compounds interest into the principal at each payout. Reset to `NO` if the previous value is not valid for the chosen Interest Type. |
+| Est Start Date | Planned value date | Yes | |
+| Est End Date | Planned maturity | Yes | |
+| Term (Days) | `end − start + 1` (inclusive) | *calculated* | Recomputed whenever either date changes. |
+| Requisition Status | `ACTIVE` / `INACTIVE` | Yes | Hidden while the row is still `TEMP`. |
+| Inflation Rate | Optional annual rate used to compute an inflation-adjustment line | No | Leave blank unless you want the adjustment. |
+| Auto Rollover Logic | `YES` / `NO` | Yes | Cleared automatically when Interest Type is `ONCE`. |
+| Created by / Created date / Modified by / Modified date | Audit | — | Read-only. |
 
-### Register — Details Tab
+### Requisition — Invitee tab
 
-{{< figure src="/images/deposit-applet/deposit-register-details-1.png" alt="Register Details (Section 1) - finalized placement terms and bank selection" caption="Placement Confirmation (1): Recording the finalized terms from the bank's official deposit certificate." >}}
+One row per invited institution in `bl_fi_deposit_requisition_hdr_entity_link`. The panel repeats the
+requisition's terms so the recipient's quotation can be compared against them, but only three controls
+accept input:
 
-{{< figure src="/images/deposit-applet/deposit-register-details-2.png" alt="Register Details (Section 2) - interest accounting and rollover configuration" caption="Placement Confirmation (2): Configuring accounting mappings and automated renewal strategies for the live asset." >}}
+| Field | Required | Notes |
+| :--- | :--- | :--- |
+| Entity Name | Yes | Opens the entity selector; the create/edit customer screens are embedded so a new entity can be added without leaving the applet. |
+| Email Address | Yes, and must pass `Validators.email` | The address the invitation is sent to. A blank address is skipped silently at send time and logged as "Email address is empty or null". |
+| Winner | No | A Yes/No radio you set after comparing quotes. It is a label — nothing in the applet or the backend reads it. |
 
-Contains all the same core fields as the Requisition (amount, interest, dates) plus additional fields that only apply once the deposit is live:
+Everything else on the panel — amounts, currency, interest type, rates, dates, Term (Days),
+Interest Convert to Principal, Auto Rollover Logic, status, inflation rate — is `readonly` or
+`disabled`, so an invitee row cannot drift from its requisition through this screen.
 
-| Additional Field | What it is |
-|-----------------|-----------|
-| **Financial Institution** | The specific bank where the money is placed (e.g. Maybank, CIMB) |
-| **Deposit Category** | The group/folder this deposit belongs to (from MM Deposit Category). e.g. "Short Term" or "USD Placements" |
-| **Deposit Status** | Current state of the deposit: ACTIVE (running), INACTIVE (ended), etc. |
-| **Interest Amount** | Total interest you will earn over the full deposit period. Auto-calculated. |
-| **Interest Earned** | How much interest has actually been received so far (for deposits that pay out in multiple instalments) |
-| **Rollover Options** | Specific settings for what happens at renewal — appears only when Auto Rollover is set to YES |
-| **GL Code for Interest** | The accounting category where interest income gets filed. Think of it as telling the system "when we earn interest, put it in the 'Interest Income' bucket." |
-| **GL Code for Interest Expense** | The accounting category for any interest costs (rare for deposits, but used in some structures). "When we pay interest costs, put it in the 'Interest Expense' bucket." |
-| **Collaterals** | Any assets pledged as security for this deposit arrangement |
-| **Approval Workflow** | The chain of people who need to approve this deposit before it goes live |
+### Register — Details tab
 
-### Register — Transactions Tab
+| Field | Meaning | Required | Notes |
+| :--- | :--- | :--- | :--- |
+| Deposit Name | Label | Yes | |
+| Financial Institution | Free text — the bank holding the money | No | Plain text field; not a link to an entity record. |
+| Deposit Category | Grouping label | Yes | From MM Deposit Category. |
+| Company | Owning company | Yes | Filters the GL Code list as on the requisition. |
+| Deposit Status | `ACTIVE` / `INACTIVE` | Yes | |
+| GL Code | Balance-sheet account for the placement | Yes | |
+| Principal Amount | The amount placed | Yes | |
+| Amount Upon Maturity | Computed | Yes on the form, *calculated* in practice | Filled from the backend calculation endpoint. |
+| Interest Amount | Total interest over the term | *calculated* | |
+| Interest Earned | Interest received so far | No | Not maintained by the applet — nothing writes it when a receipt is linked. |
+| Interest Type / Payout Frequency / Calculation / rate and reference fields / Interest Convert to Principal | As on the requisition | Same rules | The same `handleInterestTypeChange` / `handleInterestCalculationChange` logic applies. |
+| Est Start Date / Est End Date | Value date and maturity | Yes | |
+| Term (Days) | `end − start + 1` | *calculated* | |
+| Inflation Rate % | Optional | No | |
+| Auto Rollover Logic | `YES` / `NO` | Yes | See the rollover rule in [Lifecycle](#lifecycle-and-effects) — this alone does not roll anything over. |
+| Rollover options | `Manual Rollover` / ` Automatic Rollover` | Yes when Auto Rollover Logic is `YES` | Only `Manual Rollover` does anything. Note the stray leading space in the second option's value. |
+| GL Code for Interest | Account for interest income | No | Stored on the header; no journal uses it. |
+| GL Code for Interest Expense | Account for interest cost | No | Stored on the header; no journal uses it. |
+| Collaterals | Free text | No | |
+| Approval Workflow | Free text | No | A text box, not a link to [Workflow Design](/applets/master-data/workflow-design-applet/) and not an approval engine. |
+| Currency | Placement currency | Yes | |
+| Description / Supervisor Remarks | Free text | No | |
+| Created by / date, Modified by / date | Audit | — | Read-only. |
 
-*(Appears after the record is saved, not in TEMP status)*
+### Register — Transaction line (Edit Transaction panel)
 
-{{< figure src="/images/deposit-applet/deposit-register-transactions-tab.png" alt="Transactions Tab - automated ledger of placement and interest journal entries" caption="Financial Automation: Reviewing the system-generated GL entries for principal and interest postings." >}}
+| Field | Required |
+| :--- | :--- |
+| Transaction Type | Yes |
+| Transaction Date | Yes |
+| Total Amount (RM) | Yes |
+| Principal Amount (RM) | Yes |
+| Interest Amount (RM) | Yes |
+| GL Code | Yes |
+| Description | No |
 
-*   **What it is**: An auto-generated ledger of every financial transaction created by this deposit — the initial placement, each interest payment, and any compound entries.
-*   **The Analogy**: The **transaction history** on your bank statement for this specific FD account.
-*   **Accounting Importance**: These transactions are the actual journal entries posted to the GL. When the register is set to FINAL, the system automatically creates: (1) a Placement transaction (cash out), (2) Interest transactions (income), and (3) Compound transactions if interest converts to principal. Finance does not need to manually journal any of these.
+### Category — Details tab
 
-### Register — Payment/Receipt Tab
+| Field | Required | Notes |
+| :--- | :--- | :--- |
+| Category Name | Yes | |
+| Category Code | No | Despite the listing column, the form has no validator on it. |
+| Status | Yes | `ACTIVE` / `INACTIVE`. |
+| Description | No | |
+| Created by / date, Modified by / date | — | Read-only. |
 
-*(Appears after the record is saved, not in TEMP status)*
+## Lifecycle and effects
 
-{{< figure src="/images/deposit-applet/deposit-register-payment-tab.png" alt="Payment/Receipt Tab - tracking physical cash settlements against the ledger" caption="Settlement Tracking: Verifying the physical movement of funds to and from the bank for each transaction." >}}
+### Posting proof
 
-*   **What it is**: Records of actual cash movements — money paid out to place the deposit, and money received back (principal + interest) at maturity or on interest payment dates.
-*   **The Analogy**: The **bank receipts** — proof that the money actually moved, as opposed to the Transactions tab which shows the accounting entries.
-*   **Accounting Importance**: Reconciles the accounting entries (Transactions tab) against actual bank movements. If the GL shows interest income but no receipt was recorded, there is a reconciliation gap.
+| Aspect | Value |
+| :--- | :--- |
+| Server document type | **None.** `bl_fi_deposit_requisition_hdr` and `bl_fi_deposit_register_hdr` are not generic documents and have no `ServerDocTypes` entry. |
+| Amount signum | Not applicable — no `FinancialDocDataConsistencyObject` exists for either table. |
+| Quantity signum | Not applicable — the applet moves no stock. |
+| Dr/Cr equation | None. `JournalPostingService` contains no reference to either table. |
+| GL precedence | Not applicable. The GL Code fields are stored on the header and copied onto each generated transaction line (`gl_code_guid`, `gl_code_code`); nothing reads them afterwards. |
+| Stock processor | None. |
+| What VOID reverses | There is no VOID. The register cannot be deleted from the UI (the button never renders) and `posting_status` never leaves `FINAL`. |
 
-### Register — Attachment Tab
+The ledger effect of a placement therefore comes entirely from the
+[Internal Payment Voucher](/applets/finance/internal-payment-voucher-applet/) that pays the bank and
+the [Internal Receipt Voucher](/applets/finance/internal-receipt-voucher-applet/) that receives
+principal and interest back. Linking those to
+the register on the Payment/Receipt tab is a cross-reference only — `bl_fi_deposit_register_hdr_gendoc_link`
+carries no amount and drives no posting.
 
-*(Appears after the record is saved, not in TEMP status)*
+### Requisition statuses
 
-{{< figure src="/images/deposit-applet/deposit-register-attachment-tab.png" alt="Attachment Tab - secure storage for bank certificates and confirmation letters" caption="Document Vault: Maintaining the official evidence and signed agreements for treasury audits." >}}
+`TEMP` → `ACTIVE` (first SAVE) → `posting_status = FINAL`.
 
-*   **What it is**: File uploads for supporting documents — the bank's FD confirmation letter, the signed placement agreement, bank statements, etc.
-*   **Accounting Importance**: Supporting documents are required for audit purposes. The FD confirmation letter from the bank is the primary evidence that the placement exists and the terms are as recorded.
+- A **TEMP** row exists on the server from the moment you press **+**. Abandoning the screen leaves it
+  behind; `TempDepositRequisitionHdrProcessor` ("Delete Temp rows after certain time") sweeps them on
+  a schedule with a configurable `noOfHours`.
+- **SAVE** is disabled while the form is invalid or `posting_status === 'FINAL'`.
+- **FINAL** is the same disabled condition plus the update permission, and the button is only rendered
+  while the row is `ACTIVE` and not already `FINAL`.
+- **FINAL sends the invitation e-mails.** `DepositRequisitionHdrService.updateDepositRequisitionHdr`
+  compares the stored `posting_status` with the incoming one and, on the `≠FINAL → FINAL` transition
+  only, calls `DepositRequisitionEmailService.sendEmailsToEntityLinks`. One HTML e-mail per invitee
+  row with a non-blank e-mail, subject *"Money Market Deposit Placement Invitation — &lt;deposit
+  name&gt;"*, containing the deposit terms, the floating-reference block when a reference type is set,
+  a link to the quotation form, and the requisition creator's e-mail address as the contact. The
+  stated submission deadline is always **seven days from the moment the e-mail is built** and is not
+  stored or enforced anywhere.
 
-### Register — Rollover Tab
+### The invitee quotation form
 
-*(Appears after the record is saved, not in TEMP status)*
+The link in the e-mail points at
+`/core2/tnt/dm/erp/fi/deposit/requisition/hdr-entity-links/submission-form/{tenantCode}/{linkGuid}` —
+a Thymeleaf page that reads the invitee row and renders a quotation form. The form loads the row
+through `GET .../hdr-entity-links/public-ep/{guid}` and submits with
+`PUT .../hdr-entity-links/public-ep`. Both are declared `AnonymousTenantEndpoint`: **no login, no
+token, no expiry, no permission check**. Anyone holding the link GUID can read and overwrite that
+invitee row. Treat the link as the credential and send it only to the intended institution.
 
-*   **What it is**: Settings and history for what happens automatically when the deposit matures.
-*   **What is a Rollover?** When your deposit reaches its end date, you have two choices: (1) take the money back, or (2) place it again immediately into a new deposit. Choosing option 2 is called a **rollover** — like renewing a subscription automatically instead of cancelling and re-subscribing manually.
-*   **Why it matters**: If you don't set up a rollover, the money sits in your current account doing nothing between the old deposit ending and the new one starting. Even a few days of idle cash at corporate scale means lost interest income.
-*   **Key Options**:
-    *   **Principal only** — only your original amount (e.g. RM5 million) rolls into the new deposit. The interest earned (e.g. RM15,000) gets paid out to your account separately.
-    *   **Principal + Interest** — the full maturity amount (RM5,015,000) rolls into the new deposit. Next period you earn interest on the bigger amount. This is compounding — your money grows faster over time.
-*   **Accounting Importance**: Prevents **cash drag** — idle cash between maturity and the next placement earns nothing. Auto-rollover ensures continuous investment without manual intervention each time.
+Submitting overwrites the invitee's own copy of the terms (amount, maturity amount, currency, dates,
+interest type, payout frequency, calculation logic, rate, the floating-reference fields, effective
+rate and estimated interest). The requisition header is untouched.
 
-### Register — Action Buttons
+### Register statuses
 
-| Button | When it appears | What it does |
-|--------|----------------|--------------|
-| **Select Requisition** | When not yet FINAL and not INACTIVE | Opens a searchable panel of all FINAL requisitions. Picking one **copies its field values** into this register form — amount, interest rate, calculation logic, GL codes, dates, rollover settings — so you do not need to type them in manually. This is not a knock-off: the requisition is not fulfilled or closed, it is just used as a data source. The requisition stays unchanged; only the register form is pre-filled. Requisitions are created in the **MM Deposit Requisition** section of this same applet (Step 1 of the workflow) before a register entry is opened (Step 2). |
-| **SAVE** | When not yet FINAL | Saves the current state as a draft |
-| **FINAL** | When status is ACTIVE and not yet FINAL | Activates the deposit — auto-generates all Placement, Interest, and Compound transactions |
-| **DELETE** | On draft entries (bottom of page) | Permanently removes the register entry. Requires a second click to confirm. |
+`TEMP` → `ACTIVE` → `posting_status = FINAL`.
 
-{{< figure src="/images/deposit-applet/deposit-register-actions.png" alt="Register Action Buttons - managing the transition from draft to finalized asset" caption="Lifecycle Control: The interface for saving drafts and triggering the final accounting generation." >}}
+- **Select Requisition** copies values from a requisition into the register form. It does **not**
+  create a link: the register's `deposit_requisition_hdr_guid` is initialised to `null` in the draft
+  state and is never set by this path, so a saved register does not point back at the requisition it
+  came from. The requisition is not knocked off, closed or changed.
+  The picker lists requisitions filtered on `status = ACTIVE` only — a requisition that is still
+  `DRAFT` can be selected. What is copied: name, principal, maturity amount, interest type, payout
+  frequency, calculation logic, the four reference fields, effective rate, Interest Convert to
+  Principal, dates, term, inflation rate, Auto Rollover Logic, and — after the company and GL-code
+  lists reload — Company and GL Code. What is **not** copied: **Interest Rate**, Currency, Deposit
+  Category, Financial Institution.
+- **FINAL** (`updateDepositRegisterHdrWithPostingStatusFinal`) does two things on the
+  `≠FINAL → FINAL` transition:
+  1. If `prev_guid` is null and `auto_rollover_logic` is `YES`, it stamps a fresh `group_01_guid` —
+     the identifier that ties a rollover chain together.
+  2. It calls `DepositRegisterTxnLineService.createAutomaticTransactions`, which writes the interest
+     schedule described below.
+- The register has **no running number**. `DepositRegisterHdrDataConsistencyObject.fillMissingDataForCreation`
+  sets only guid, dates, status and revision — `server_doc_no` is left null.
+
+### What FINAL generates on the register
+
+`createAutomaticTransactions` reads the saved header and writes `bl_fi_deposit_register_txn_line`
+rows. The rate used is `interest_rate_effective` when the calculation logic is `FLOATING`, otherwise
+`interest_rate`. Both interest and inflation use simple daily accrual:
+
+```
+amount = principal × rate × days ÷ (100 × 365)     rounded HALF_UP to 2 decimals
+```
+
+| Order | Line | `deposit_register_txn_type_code` | When |
+| :--- | :--- | :--- | :--- |
+| 1 | Deposit Placement (Debit) | `PLACEMENT` | Always, dated the deposit start date |
+| 2 | Interest Earned (Credit) | `INTEREST` | `ONCE`: one line at maturity. `MULTI`: one line per payout date |
+| 3 | Inflation Adjustment (Debit) | `INFLATION` | Only when the computed inflation impact is greater than zero |
+| 4 | Interest Capitalized (Credit) | `COMPOUND` | `MULTI` only, and only when Interest Convert to Principal is `YES` |
+| 5 | Principal Return (Credit) | `MATURITY` | Always, dated the maturity date |
+| 6 | Total Interest Earned, Total Inflation Impact | `SUMMARY` | Always, dated maturity + 1 second |
+
+For `MULTI`, payout dates are generated by stepping the frequency from the start date while the cursor
+is before the end date, then appending the maturity date. Each period is measured exclusively
+(`end − start`), and the final period gets `+1` day so the whole term is counted inclusively once.
+
+The maturity value is `principal + interest − inflation` when Interest Convert to Principal is `YES`,
+and `principal − inflation` when it is `NO` — that is, with `NO` the interest is *not* added to the
+principal return line, because it has already been paid out on the interest lines.
+
+FINAL does not check whether transactions already exist. Re-issuing the same FINAL transition against
+an already-final register through the API would append a second schedule.
+
+### Rollover
+
+There is exactly one rollover path and it is manual. The **Manual Rollover** button on the
+Transactions tab renders and is clickable only when *all* of these hold
+(`transactions-listing.component.ts`, `canClickManualRollover`):
+
+- `posting_status = FINAL`, **and**
+- Rollover options = `Manual Rollover`, **and**
+- Auto Rollover Logic = `YES`, **and**
+- `process_status` is not already `ROLLED_OVER`.
+
+Setting Auto Rollover Logic to `YES` and Rollover options to `Automatic Rollover` therefore gives you
+**no rollover at all** — the button is hidden and nothing runs on a schedule.
 
 {{< callout type="warning" >}}
-Clicking **FINAL** on the Register is the most consequential action in this applet. It triggers automatic GL transaction generation. Ensure all details — especially the GL codes and interest rate — are correct before finalising.
+`DepositRolloverProcessor` is not a rollover job despite its name and its
+`DEPOSIT_ROLLOVER_PROCESSOR` queue code. Its own description reads *"Create Monthly Opening and
+Closing Rows in bl_fi_deposit_register_txn_line"*, and it writes exactly two `MONTH_CLOSING` /
+`MONTH_OPENING` lines per tenant per run without setting `hdr_guid`, so those rows belong to no
+deposit. No scheduled job rolls a deposit over.
 {{< /callout >}}
 
----
+`DepositRegisterHdrService.createRollover` (`POST create-rollover/backoffice-ep/{guid}`) does the
+work:
 
-## 3. MM Deposit Category
+1. Refuses with *"Deposit already Rolled Over"* if the parent's `process_status` is `ROLLED_OVER`,
+   and with *"Deposit not found for GUID"* if the header is missing.
+2. Creates a new register header copying company, category, GL codes, currency, interest terms,
+   rollover settings and `group_01_guid` from the parent, with `prev_guid` pointing at the parent and
+   `prev_server_doc_type` / `prev_server_doc_no` / `prev_deposit_date` / `prev_maturity_date` recording
+   where it came from. `server_doc_no` is set to null, Supervisor Remarks is cleared, and the
+   Description is set to *"Rollover of deposit &lt;name&gt; WITH DEPOSIT START DATE … AND END DATE …"*.
+3. Sets the child's **principal to the parent's Amount Upon Maturity** — always. `rollover_options`
+   is copied but plays no part in the amount, so there is no "principal only" behaviour: a rollover
+   always carries principal plus interest less inflation forward.
+4. Sets the child's start date to the parent's maturity date and its end date to that plus the parent's
+   term, computed here as `Duration.between(start, end).toDays()` — the *exclusive* day count, one day
+   shorter than the inclusive Term (Days) the form shows.
+5. Recomputes the child's maturity amount and estimated interest with `computeDepositSummary`.
+6. Creates the child with `posting_status = FINAL` directly, sets the parent's `next_deposit_hdr_guid`
+   and `process_status = ROLLED_OVER`, and runs `createAutomaticTransactions` for the child.
 
-{{< figure src="/images/deposit-applet/deposit-category-listing.png" alt="Deposit Category Listing - organizing investments by duration or strategy" caption="Metadata Classification: Labeling deposits for strategic reporting and portfolio analysis." >}}
+### What the backend actually validates
 
-*   **What it is**: A simple master data list for grouping and labelling deposits. Each category has a Code, Name, and Description.
-*   **The Analogy**: **Folders** for your deposits. You might have categories like "Short Term (< 3 months)", "Medium Term (3–12 months)", or "USD Placements" — so you can filter and report by group.
-*   **Why it matters**: Without categories, all deposits appear in one undifferentiated list. With categories, treasury managers can quickly see "how much do we have in short-term placements right now?" without manually filtering.
-*   **Action Buttons**: SAVE, FINAL (locks the category), DELETE (with confirmation).
+`DepositRegisterHdrDataConsistencyObject` and `DepositRequisitionHdrDataConsistencyObject` check only
+structural things: the GUID is present and new (or present and existing, on update), the category
+GUID resolves to a `bl_fi_deposit_category` row, `created_by` / `updated_by` subject GUIDs are
+present, the created and updated dates are present, and status and revision are present. **No
+business field is validated server side** — not the amounts, not the dates, not the rate, not the
+company, not the GL code. There is no foreign-key check on `gl_code_guid` or `company_guid` on the
+register. Every rule you see enforced in the register and requisition forms is an Angular validator
+and disappears if the row is written through the API.
 
----
+## Related applets
 
-## Quick Start Guide
+- [Chart of Account](/applets/master-data/chart-of-account-applet/) — supplies GL Code, GL Code for
+  Interest and GL Code for Interest Expense. The list is scoped to the selected company's chart.
+- [Organization](/applets/master-data/organisation-applet/) — the Company drop-down and, through it,
+  the chart of accounts used for the GL Code list.
+- [Customer Maintenance](/applets/master-data/customer-maintenance-applet/) — the entity behind each
+  invitee; this applet embeds its create/edit screens for the Entity Name picker.
+- [Forex](/applets/master-data/forex-applet/) — the Currency drop-down.
+- [General Ledger](/applets/finance/general-ledger-applet/) — where the placement is visible in the
+  accounts, via the payment and receipt vouchers rather than this applet.
+- [Cashbook](/applets/master-data/cashbook-applet/) and
+  [Transaction Reconciliation](/applets/finance/txn-recon-applet/) — the bank side of the same money.
+- [Internal Payment Voucher](/applets/finance/internal-payment-voucher-applet/) and
+  [Internal Receipt Voucher](/applets/finance/internal-receipt-voucher-applet/) — the only documents
+  the Payment/Receipt tab links, and the only ones that post a journal for the placement.
+- [Investment Applet](/applets/finance/investment-applet/) — the adjacent treasury register for
+  holdings rather than term placements.
 
-### For Treasury: Creating a Placement Request
+## Troubleshooting
 
-**Goal:** Set up a new deposit requisition and collect bank offers.
+| Symptom | Cause | Fix |
+| :--- | :--- | :--- |
+| No settings gear and no Personalization link in the sidebar | `hideSettings = true` in `app.component.ts` hides both, and no settings route exists. Tracked as `gh:bigledger/blg-applet-wavelet-deposit-applet#8` / `#9`. | Nothing to change in the tenant — this is the applet's current state. |
+| GL Code drop-down is empty | It is disabled until a Company is chosen; the field's own hint says *"Company must be selected first"*. It then loads at most 200 GL codes from that company's chart of accounts. | Choose the Company first. If the account you want is beyond the first 200 rows of the chart, it will not appear — narrow the chart or raise the issue. |
+| Interest Rate is blank on a register built with **Select Requisition**, and the form will not validate | `interestRate` is missing from the patch list in the register's `depReqForRegistration$` subscription. Every other term is copied; the rate is not. | Re-enter the Interest Rate on the register before saving. Also re-check Currency, Deposit Category and Financial Institution, which are likewise not copied. |
+| A register does not show which requisition it came from | `deposit_requisition_hdr_guid` is never populated by Select Requisition. | Record the requisition's document number in the register's Description or Supervisor Remarks. |
+| Amount Upon Maturity and Interest Amount stay blank | They are filled by the backend `deposit-calculations/backoffice-ep` call, which only runs when principal, interest type, calculation logic and Term (Days) are all set — plus Interest Rate for `FIXED` or Interest Rate Effective for `FLOATING`. If the call fails, the code logs a warning and leaves the fields null. | Fill both dates (Term is derived from them) and the rate. If they are still blank, the calculation call failed — check the browser console. |
+| **Manual Rollover** button is not there | It renders only when posting status is FINAL **and** Rollover options is `Manual Rollover` **and** Auto Rollover Logic is `YES` **and** the deposit is not already `ROLLED_OVER`. | Set Auto Rollover Logic to `YES` and Rollover options to `Manual Rollover` before finalising. `Automatic Rollover` disables the button and starts nothing. |
+| A rollover carried the full maturity amount when only the principal was wanted | `createRollover` always sets the child's principal to the parent's `amount_upon_maturity`; `rollover_options` does not change this. | Create the next register manually with the principal you want, instead of using rollover. |
+| The rolled-over deposit's term is one day shorter than the parent's | The form computes Term (Days) inclusively (`end − start + 1`); `createRollover` computes it exclusively with `Duration.between(...).toDays()`. | Correct the child's Est End Date before it matters, or accept the one-day difference. |
+| No DELETE button on a requisition or a register | Both are dead: the requisition's `showDeleteButton` flag is never set to true, and the register's `deleteCondition()` returns `null` on its first line. Only the category has a working DELETE. | Set the record's status to `INACTIVE` instead. Deletion is possible through the API for someone with the right permission. |
+| Invitees did not receive the invitation | E-mails are sent only on the `≠FINAL → FINAL` transition of the requisition, one per invitee row with a non-blank Email Address. A blank address is skipped and logged. | Check every invitee has an Email Address before pressing FINAL. Re-saving a requisition that is already FINAL sends nothing. |
+| The deadline in the invitation e-mail is wrong | The e-mail always states *now + 7 days*. It is generated at send time, not stored, and nothing enforces it. | State the real deadline in the deposit name or agree it out of band. |
+| An invitee's quotation changed after the deadline | The quotation form and both endpoints behind it are anonymous — no login, no token, no expiry. The link GUID is the only credential. | Do not forward the link. Compare the invitee row's Modified date against when you expected the quote. |
+| MM Deposit Requisition opens with an empty grid | `DISABLE_GEN_DOC_LISTING` is set in the tenant's applet settings, which skips the initial search. | Use the search box, or clear the setting through the API — there is no screen for it in this applet. |
+| Interest lines look a day short or a day long against the bank's advice | Interest is simple daily accrual on a 365-day year (`principal × rate × days ÷ 36500`), the whole term counted inclusively, `MULTI` periods counted exclusively with `+1` on the last. Banks using a different day count will differ. | Correct the affected line on the Transactions tab, or use Inflation Rate / a manual line to record the difference. |
+| Stray `MONTH_CLOSING` / `MONTH_OPENING` rows with no deposit | `DepositRolloverProcessor` writes two such lines per run without a `hdr_guid`. | They do not belong to any register and are invisible on the Transactions tab. Ignore them; they are a known defect. |
 
-1. **Navigate**: Go to **MM Deposit Requisition** and click **"+"**.
-2. **Fill Details Tab**: Enter Deposit Name, Code, Company, Currency, and Amount.
-3. **Configure Interest**:
-   - Select **FIXED** → enter the Interest Rate %.
-   - Select **FLOATING** → enter the Reference Type, Source, and Delta %.
-4. **Set Dates**: Enter Est Start Date and Est End Date. Term (Days) calculates automatically.
-5. **Set Rollover**: Choose Auto Rollover Logic (Principal only or Principal + Interest).
-6. **Save**: Click **SAVE** to create the record.
-7. **Add Invitees**: Go to the **Invitee** tab → click **"+"** → enter each bank's name and email.
-8. **Finalise**: Click **FINAL** to lock the requisition and automatically email all invitees with their secure quote submission link.
+## Related documentation
 
----
-
-### For Finance: Activating a Live Deposit
-
-**Goal:** Convert an approved requisition into a live deposit register entry.
-
-1. **Navigate**: Go to **MM Deposit Register** and click **"+"**.
-2. **Select Requisition**: Click **Select Requisition** and choose the approved requisition.
-3. **Verify Details**: Confirm the Financial Institution, GL Codes, and interest terms are correct.
-4. **Assign Category**: Select the appropriate **Deposit Category**.
-5. **Save**: Click **SAVE** to create the draft register entry.
-6. **Finalise**: Click **FINAL** to activate — the system auto-generates all Placement, Interest, and Compound transactions.
-7. **Monitor**: Use the **Transactions** tab to verify all GL entries were created correctly.
-
----
-
-## Configuration & Settings
-
-### Default Selection
-Set the default Branch and Location pre-filled when creating new records.
-
-### Application Settings (Field Configuration)
-Toggle visibility of optional fields:
-
-| Setting Group | Options |
-|--------------|---------|
-| **Lines Settings** | Unit Discount, SST/VAT/GST, WHT, Blanket Order |
-| **Department Settings** | Segment, G/L Dimension, Profit Centre, Project |
-
-### Email Template
-Configure the email sent to bank invitees when a Requisition is finalised — including the subject line, body text, and the secure quote submission link.
-
-### Printable Format Settings
-Configure the layout and content of printed deposit documents for record-keeping and audit submission.
-
----
-
-## FAQ
-
-**Q: Why is the FINAL button disabled?**
-A: The FINAL button requires the form to be fully valid — all required fields filled and no validation errors. Check that Company, GL Code, Currency, Amount, Interest Rate, and Dates are all complete.
-
-**Q: Can I change a deposit from Fixed to Floating after finalisation?**
-A: No. Once a record reaches FINAL state, the interest type is locked to preserve the audit trail and counterparty agreement terms.
-
-**Q: What transactions does FINAL automatically generate on the Register?**
-A: The system creates: (1) a **Placement** transaction (the cash going out to the bank), (2) **Interest** transactions for each payout period, and (3) **Compound** transactions if "Interest Convert to Principal" is enabled.
-
-**Q: What happens when an invitee receives the invitation email?**
-A: They receive a secure, expiring link that lets them submit their quoted rate directly into the system. Their submission syncs back to the Invitee tab in your Requisition for comparison.
-
-**Q: What is the difference between Transactions and Payment/Receipt tabs?**
-A: **Transactions** are the accounting journal entries (what the GL records). **Payment/Receipt** are the actual cash movements (what the bank processed). Both should match — if they don't, there is a reconciliation issue to investigate.
-
-**Q: What does Auto Rollover do exactly?**
-A: When the deposit matures, instead of the money sitting idle, the system automatically creates a new Register entry. You choose whether to roll over the original principal only, or the full maturity amount (principal + interest earned).
-
-**Q: Can I delete a finalised deposit?**
-A: No. Once FINAL, the record cannot be deleted — only voided or marked inactive. This preserves the audit trail of the investment decision and the GL transactions it generated.
-
----
+- [Financial Accounting module](/modules-v2/financial-accounting/)
+- [Investment Applet](/applets/finance/investment-applet/) — the adjacent treasury register
+- [General Ledger Applet](/applets/finance/general-ledger-applet/) — where the cash movement appears
+- [Chart of Account Applet](/applets/master-data/chart-of-account-applet/) — GL code setup

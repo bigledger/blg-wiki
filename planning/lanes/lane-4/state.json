@@ -10,11 +10,6 @@
     "human-resources"
   ],
   "queue": [
-    "content/en/applets/finance/deposit-applet.md",
-    "content/en/applets/integrations/developer-sysadmin-applet.md",
-    "content/en/applets/finance/e-mandate-applet.md",
-    "content/en/applets/crm/engagement-applet.md",
-    "content/en/applets/crm/events-management-applet.md",
     "content/en/applets/finance/fixed-asset-applet.md",
     "content/en/applets/finance/general-ledger-applet.md",
     "content/en/applets/integrations/ingram-micro-ms-esd-applet.md",
@@ -189,6 +184,30 @@
       "date": "2026-09-06",
       "run": 29,
       "note": "Registry workflow_design_applet 'Workflow Design Applet' (title unchanged; registry documentation_url = this page, no alias needed). Full rewrite of an invented page (webhooks/e-mail/delegation/version-control/conditional routing all fabricated). Shared FieldConfigurationComponent via app.routing.ts (the applet's own local field-configuration is the unbound 8-toggle stub, routed nowhere); no tabMappings entry so 235 controls render at the pinned shared-utilities commit f1ded040 / 237 at HEAD, and only PRINTABLE is consumed. Backend proofs: available-status endpoint inner-joins transition->role->user (no Role row = empty drop-down); generic-doc DCO validates FK existence only, so the status is a label; FINAL_STATUS_GUID is the only gate and it is client-side button visibility. Transition Actions/Action Types/Subscribers are never executed; triggers only by the service-issue (RMA) processor. Distinguished from the separate bl_fi_generic_doc_approval_* engine. 8 of 11 images dropped (person names / a real brand / a possible customer abbreviation / AI infographic) - quarantine list in findings run 29. Topic kb/topics/workflow-design.md (new; the slug three neighbouring topics already reference)."
+    },
+    {
+      "page": "content/en/applets/finance/deposit-applet.md",
+      "date": "2026-09-06",
+      "run": 30,
+      "note": "Registry depositApplet 'Deposit Applet' (title unchanged). Canonical page for the single registry row that covers MM Deposit Requisition / Register / Category. NO alias added: /applets/mm-deposit-applet/ (the registry documentation_url) is still held by finance/mm-deposit-applet.md, which was NOT touched - the merge and the alias move need Vincent's decision (F-0050 pattern); merge plan in findings run 30. Full rewrite of a 438-line guide-voice page. Key corrections: no journal, no server doc type, no signums (the Transactions tab is bl_fi_deposit_register_txn_line, not the GL); no settings UI at all (hideSettings=true hides the gear AND Personalization, no settings route, AppletSettingsModule imported nowhere); rollover is manual-only and always carries principal+interest; the invitee quotation form and its GET/PUT endpoints are AnonymousTenantEndpoint (no token, no expiry); Select Requisition never sets deposit_requisition_hdr_guid and does not copy Interest Rate; register create/update/delete are all gated by TNT_API_DEPOSIT_READ. 9 of 13 images dropped (developer full names, a real brand) - recapture list in findings run 30. Topic kb/topics/deposit-management.md (new)."
+    },
+    {
+      "page": "content/en/applets/integrations/developer-sysadmin-applet.md",
+      "date": "2026-09-06",
+      "run": 30,
+      "note": "Registry developer-sysadmin-applet 'Developer SysAdmin Applet' (title changed from 'Developer & Sysadmin Applet'; registry documentation_url is Confluence, no alias added - the two inbound links from budgetary-applet and tenant-admin-applet already use this URL). Full rewrite of a 167-line invented page. Applet-LOCAL settings (no .gitmodules, vendored shared-utilities, gates.py N/A). Key findings: the Categories and Developer menus and 7 of the 13 Edit Applet tabs are hard-coded placeholder grids; Category Edit SAVE raises 'Category updated successfully' and persists nothing; the Client-Side Permission tab being a mock is the upstream cause of the 'no bl_applet_client_side_perm_dfn rows' finding recorded in runs 28/29/30; Applet Code is immutable after create; the update effect is a read-modify-write with no revision check; an unauthorised read returns a stripped container rather than an error. No product screenshots exist. Topic kb/topics/applet-registry.md (new)."
+    },
+    {
+      "page": "content/en/applets/crm/engagement-applet.md",
+      "date": "2026-09-06",
+      "run": 30,
+      "note": "Registry engagementApplet 'Engagement Applet' (title unchanged; no documentation_url, no alias needed). Full rewrite of a 279-line marketing page. Applet-LOCAL FieldConfigurationComponent that is genuinely REAL (21 keys declared+rendered+persisted, 19 consumed; HIDE_MANAGING_PARTNER model-only and ENABLE_AUDIT_TRAIL entirely dead) - the counter-example to the unbound 8-toggle stub. Key findings: Engagement Code and Name are readonly with no writer in the applet (records are loaded through /etl-ep); + POSTs an empty ACTIVE header with no TEMP sweeper; delete, Employees, Claims, Memorandum of Fees and Issue Link tabs are all commented out; the Main form has no category control so engagement_category is assigned undefined on every change; the DCO validates far more on update than on create. All 5 referenced images dropped (real client company names from a live tenant; one AI infographic) - recapture list in findings run 30. Topic kb/topics/engagement.md (new)."
+    },
+    {
+      "page": "content/en/applets/crm/events-management-applet.md",
+      "date": "2026-09-06",
+      "run": 30,
+      "note": "Registry eventManagementApplet 'Event Management Applet' (title changed from 'Events Management Applet'; documentation_url = Confluence; no alias added - all 10 inbound links already use /applets/crm/events-management-applet/). Full rewrite of a 205-line marketing page. Applet-LOCAL FieldConfigurationComponent, real: 9 keys declared+rendered+persisted, 7 consumed (ENABLE_AUDIT_TRAIL dead; HIDE_DEFAULT_SELECT_CALENDAR only hides its own drop-down). Key finding: the Expenses tab and the Event Expense Report are reads against the AAT claim report endpoints gated by TNT_AAT_CLAIM_REPORT_*, not the TNT_API_CMS_CALENDAR_* family - an expense reaches an event only through bl_aat_claim_document_line.calendar_event_hdr_guid, and the applet never writes a claim. The event notification queue table has no job processor, so events send nothing. 1 of 1 image dropped (AI infographic); no product screenshots exist. Topic kb/topics/event-management.md (new)."
     }
   ],
   "skipped": [
@@ -223,6 +242,10 @@
     {
       "page": "content/en/applets/inventory-workflow/inv-item-maintenance-applet.md",
       "reason": "Duplicate second page for registry row InvItemMaintenanceApplet (F-0007) \u2014 merged into master-data/inv-item-maintenance-applet.md in run 14 (its screenshots re-used there). Not rewritten; recommend delete + alias /applets/inventory-workflow/inv-item-maintenance-applet/ on the canonical page (Vincent's decision, F-0050 pattern)."
+    },
+    {
+      "page": "content/en/applets/finance/e-mandate-applet.md",
+      "reason": "No registry row for an E-Mandate applet under any name. registry-applets-2026-09-05.tsv and the live bl_applet_hdr (236 rows, checked 2026-09-06) contain nothing matching 'mandate', 'e-mandate', 'ddebit', 'direct debit' or 'fpx' in code, name or property_json, and no 'Collection' applet either. The repo blg-applet-core-akaun-platform-e-mandate-applet exists (last commit 2026-08-12) with a working 'eMandate' route and three menus, so the applet is built but has never been registered. Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 30."
     }
   ],
   "updated": "2026-09-06",

@@ -1,205 +1,297 @@
 ---
-title: "Events Management Applet"
-description: "Corporate event planning, calendar management, and expense tracking for organizing company events and activities"
+title: "Event Management Applet"
+description: "Reference for the calendar and event register: calendars and their members, events and participants, entity linking, agenda attachments, and the claim-based expense report"
+applet_code: "eventManagementApplet"
+page_type: applet
+applet_repo: "blg-applet-wavelet-events-management-applet"
+modules: [sales-crm]
+related_applets:
+  - employee-applet
+  - organisation-applet
+  - entity-applet
+  - engagement-applet
+  - cp-commerce-admin-applet
+guides: []
+sources:
+  screens_and_menus:
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/app.component.ts
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/services/event-pages.service.ts
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/services/calendar-pages.service.ts
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/services/calendar-member-pages.service.ts
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/services/event-expenses-report-pages.service.ts
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/components/event-container/event-edit/event-edit.component.html
+  configuration:
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/components/settings-container/field-configuration/field-configuration.component.ts
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/models/applet-settings.model.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/cms/cmsCalendar/CmsCalendarHdrController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/cms/cmsCalendar/CmsCalendarEventController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/auditAssuranceTax/claim/report/ClaimReportController.java
+  fields:
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/components/event-container/event-create/event-create.component.ts
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/components/event-container/event-create/event-create.component.html
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/components/calendar-container/calendar-create/calendar-create.component.ts
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/components/event-container/event-listing/event-listing.component.ts
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/components/calendar-container/calendar-listing/calendar-listing.component.ts
+  lifecycle:
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/cms/cmsCalendar/CmsCalendarEventController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/cms/cmsCalendar/CmsCalendarMemberController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/cms/cmsCalendar/CmsCalendarEventParticipantLinkController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/CmsCalendarDataConsistencyObjects/CmsCalendarEventLinkQueueDataConsistencyObject.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/erp/auditAssuranceTax/claim/bl_aat_claim_document_line.java
+  troubleshooting:
+    - blg-applet-wavelet-events-management-applet/micro-fe/projects/wavelet-erp/applets/events-management-applet/src/app/components/event-container/event-create/event-create.component.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/auditAssuranceTax/claim/report/ClaimReportController.java
+    - gh:bigledger/blg-applet-wavelet-events-management-applet#5
 tags:
 - events-management
 - event-planning
 - corporate-events
 - event-calendar
 - expense-tracking
+weight: 120
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Events Management Applet** is a centralized hub for organizing, scheduling, and financially tracking company activities. Instead of managing the "Company Annual Dinner" in a spreadsheet and tracking the catering costs in a separate finance folder, this applet combines visual scheduling with hard financial expense tracking.
+The Event Management Applet keeps a tenant's calendars and the events on them:
+`bl_cms_calendar_hdr` (a calendar), `bl_cms_calendar_event_hdr` (an event), and the links that put
+members on a calendar, participants on an event, and companies against an event. It shows the same
+data three ways — a month/week calendar view, a flat event listing, and a calendar listing.
+
+Its fourth screen, the **Event Expense Report**, is not an expense store. Costs reach an event
+because a **staff claim line** carries `bl_aat_claim_document_line.calendar_event_hdr_guid`, and the
+report is served by the audit/assurance/tax **claim** report endpoints. The applet reads that data;
+it never writes a claim.
+
+It is master data plus links: no journal, no posting status, no stock.
+
+## Where it fits
+
+| Direction | What | Why |
+| :--- | :--- | :--- |
+| Before | Calendars, created in this applet | An event belongs to a calendar. The applet settings hold the calendar an event defaults to. |
+| Before | [Employee](/applets/master-data/employee-applet/) | The event's PIC (person in charge) and its participants are chosen from the employee listing; calendar members are employees too. |
+| Before | [Organization](/applets/master-data/organisation-applet/) / [Entity](/applets/master-data/entity-applet/) | The event's Company is required, and the *Company Linking* tab attaches further entities to an event. |
+| Alongside | The audit/assurance/tax claims module | An expense appears against an event because a claim line is tagged with the event GUID. Reading the report needs claim-report permission. |
+| Adjacent | [Engagement Applet](/applets/crm/engagement-applet/) | The other applet in the same audit/assurance/tax family; both feed the claims reporting. |
+
+## Screens and menus
+
+Four sidebar entries (`models/menu-items.ts`), all under the applet's main router:
+
+| Menu | Route | What it is |
+| :--- | :--- | :--- |
+| Event Calender | `event-calender` | The scheduler view. Clicking a slot pre-fills the start date of a new event. |
+| Event Listing | `events` | A grid of events: Title, Event Code, Event Type, PIC, Event Venue, Description, Status, Date From, Date To, Updated Date. |
+| Calendar Listing | `calendars` | A grid of calendars: Calendar Name, Description, Time Zone, Creation Date, Modification Date, Status. **Removed from the menu when `HIDE_CALENDAR_LISTING_MENU` is on** — `app.component.ts` filters the item out of `menuItems`. |
+| Event Expense Report | `event-expense-report` | Claim lines tagged to events, across all events: Event Title, Event PIC Name, Employee Name, Claim ID, Claim Item, Claim Status, Claim Amount, with a statistics panel. |
+
+The applet name shown in the layout header is **Events Management**; the registry name is
+**Event Management Applet**.
+
+### Event Edit
+
+| Tab | Shown when | Contents |
+| :--- | :--- | :--- |
+| Details | always | The event record — see [Fields](#fields) — plus the recurring-event controls and a **Delete** button that asks for confirmation ("Delete recurring event") before removing the series. |
+| *Company* Linking *(label follows the relabel setting)* | `HIDE_ENTITY_LINKING_TAB` is off | Companies/entities attached to the event through `bl_cms_calendar_event_company_link`, with add and edit panels. |
+| Agenda | always | File attachments (`bl_cms_event_attachment`): File Name, Size, Uploaded Date, Uploaded By. Despite the tab name it is an attachment list, not a structured agenda. |
+| Events Participant | always | `bl_cms_calendar_event_participant_link` rows: Participant Name, Email. |
+| Expenses | always | The single-event version of the expense report: Event Title, Employee Name, Claim ID, Claim Item, Claim Status, Claim Amount. Read-only. |
+
+### Calendar Edit
+
+Two tabs: **Main** (name, time zone, description) and **Members**
+(`bl_cms_calendar_member_hdr`: Member Name, Email, Status), with an Add Member panel.
+
+### Settings
+
+The settings menu (`settingItems`) lists three entries: **Field Settings**, **Default Selection**
+and **Events Calendar Permission** — the last of which opens the calendar-member listing, so
+"permission" here means *who is a member of which calendar*.
+
+`settings/webhook`, `settings/feature-visibility`, `settings/applet-log` (an audit-trail listing and
+viewer) and the permission wizard, permission-set, user, team and role permission listings are all
+routed with **no menu entry** and can be reached by URL only. The `settings` path with no child
+redirects to `feature-visibility`.
 
 {{< callout type="info" >}}
-**Core Concept: Calendars vs Events**
-Think of a **Calendar** as a folder (e.g., *Marketing Team Events*, *HR Training Sessions*). Think of an **Event** as the actual activity inside that folder (e.g., *Q3 Product Launch*, *New Hire Onboarding*). 
-You must create a Calendar before you can schedule an Event.
+No product screenshots exist for this applet. The only image in the repository was an AI-generated
+marketing infographic and it has been removed.
 {{< /callout >}}
 
-### Who Benefits from This Applet?
+## Configuration
 
-| Role | How they use it |
-|------|-----------------|
-| **Event Coordinators** | Scheduling activities, booking venues, and logging catering/rental expenses. |
-| **Department Managers** | Creating specific "Calendars" for their teams and controlling who can see them. |
-| **Finance Teams** | Pulling unified Expense Reports to see exactly how much a specific event cost the company. |
-| **All Employees** | Viewing the global Event Calendar to see upcoming company-wide activities. |
+### Before you can use it
 
-{{< figure src="/images/events-management-applet/events-management-infographic.jpg" alt="Mastering Event Success: The Corporate Events Management Applet - visualizing the Event Lifecycle (Draft -> Execution -> Analytics) and Core Management Tools" caption="Mastering Event Success: The Corporate Events Management Applet. Navigating the Event Lifecycle from initial draft and RSVPs through to live check-ins and post-event analytics." >}}
+| Prerequisite | Where | Why |
+| :--- | :--- | :--- |
+| At least one calendar | Calendar Listing, in this applet | An event has to sit on a calendar; the settings screen also wants one as the default. |
+| Employees | [Employee](/applets/master-data/employee-applet/) | The PIC, the participants and the calendar members are all employees. |
+| A company | [Organization](/applets/master-data/organisation-applet/) | Company is `Validators.required` on Event Create. |
+| Claim-report permission, for the Expenses screens | The claims side of the audit/assurance/tax module | Both expense reports call `ClaimReportController`, which requires `TNT_AAT_CLAIM_REPORT_OWNER` / `_ADMIN` / `_CREATE`. Calendar permissions do not open them. |
 
----
+### Applet settings
 
-## What Problems Does This Solve?
+Settings live in an **applet-local** `FieldConfigurationComponent`
+(`./components/settings-container/field-configuration/`), routed by `app.routing.ts` in preference to
+the shared screen even though the shared-utilities submodule is present (METHOD §29). It is a working
+screen: nine reactive controls, patched from the session's master settings and saved through
+`SessionActions.saveMasterSettingsInit` into the applet's `APPLET_SETTINGS` row.
 
-**Without Events Management:**
-- Event schedules are lost in email threads or isolated Outlook calendars.
-- Calculating the *true cost* of an event requires digging through months of individual employee claims.
-- Private department events (like a confidential management offsite) are accidentally visible to the whole company.
+It is called **Field Settings** in the menu and has three tabs. Anyone who can open Applet Settings
+can change these, and they apply to the whole tenant.
 
-**With Events Management Applet:**
-- ✓ **Unified Schedule** - Full visual calendar of all activities.
-- ✓ **Dedicated Expense Tracking** - Every invoice, receipt, and claim is tied directly to the "Event Record."
-- ✓ **Granular Privacy** - Calendar-level permissions ensure only the Marketing team sees the Marketing calendar.
+| Setting | Tab | What it controls | Default | Effect when on |
+| :--- | :--- | :--- | :--- | :--- |
+| `HIDE_EVENT_CODE` | Main | The Event Code field on Event Create and Event Edit, and the Event Code column on the listing | unset (off) | The field and the column disappear. |
+| `HIDE_EVENT_TYPE` | Main | The Event Type field on Event Create and Event Edit, and the Event Type column on the listing | unset (off) | Same. New events then carry whatever Event Type was already set. |
+| `RELABEL_COMPANY_TO_ENTITY` | Main | The word used for the company | unset (off) | Reads *Entity* instead of *Company* on Event Create, Event Edit, the event listing, the tab label of *Company Linking*, and both expense reports. Label only — the field still writes the company GUID. |
+| `RELABEL_BRANCH_TO_JOB_GROUP` | Main | The word used for the branch | unset (off) | Reads *Job Group* instead of *Branch* on Event Edit and both expense reports. |
+| `HIDE_ENTITY_LINKING_TAB` | Entity Linking | The *Company Linking* tab on Event Edit | unset (off) | The tab disappears. Existing links are kept, just not visible. |
+| `HIDE_CALENDAR_LISTING_MENU` | Calendar Menu | The **Calendar Listing** sidebar entry | unset (off) | `app.component.ts` filters `calendars` out of `menuItems`. The route still resolves if typed. |
+| `selectedCalendar` | Calendar Menu | The calendar new events default to | unset | Read by Event Create and by the calendar-member screens. The drop-down is loaded from `CmsCalendarHdrService` ordered by `updated_date DESC`. |
 
----
+**Two controls on this screen are not read anywhere:**
 
-## The "Golden Triangle" of Event Management
+- `HIDE_DEFAULT_SELECT_CALENDAR` renders as *Hide Default Select Calendar* and is saved. It hides the
+  Default Select Calendar drop-down **on the settings screen itself**, and nothing else in the applet
+  reads it — turning it on does not stop `selectedCalendar` being applied.
+- `ENABLE_AUDIT_TRAIL` renders as *Enable Audit Trail* and is saved, but the key appears nowhere else
+  in the applet — the `settings/applet-log` route is not gated on it (and has no menu entry either).
 
-To master this applet, understand how these three objects interact:
+### Feature visibility and permissions
 
-1. **The Calendar (The Group)**: A container with privacy settings (e.g., *Executive Offsites*).
-2. **The Event (The Activity)**: The scheduled item with a date, location, and description (e.g., *2024 Strategy Retreat*).
-3. **The Expenses (The Money)**: The actual costs logged against that specific event (e.g., *Hotel Booking: RM 15,000*).
+The applet has no `HIDE_*`/`SHOW_*` client-side permission pairing. Server-side:
 
----
-
-## Role-Based Quick Start Guides
-
-### For Department Managers: Setup a Team Calendar
-Your goal is to create a private calendar for your department to track internal training sessions.
-
-**Step 1: Create the Container**
-1. Go to **Calendar Listing** from the sidebar.
-2. Click **"+"** to create a new calendar.
-3. Name it (e.g., *IT Department Training*).
-4. Pick a color code (e.g., Blue) so these events stand out visually.
-5. Click **Create**.
-
-**Step 2: Restrict Access**
-1. Go to **Settings > Events Calendar Permission**.
-2. Select your new *IT Department Training* calendar.
-3. Assign the "IT Team" group with `Admin` rights.
-4. Leave other departments blank. Now, only IT staff can see or add events to this calendar.
-
-### For Event Coordinators: Plan an Event & Track Costs
-Your goal is to schedule the Annual Dinner and track its budget.
-
-**Step 1: Create the Event**
-1. Go to **Event Listing**.
-2. Click **"+"**.
-3. Fill in the details:
-   - **Event Name**: *Annual Gala Dinner 2024*
-   - **Calendar**: *Company-Wide Events*
-   - **Date/Time**: *Dec 15, 2024 (6:00 PM - 11:00 PM)*
-   - **Status**: *Published*
-4. Click **Create**. The event now appears on the global visual calendar.
-
-**Step 2: Log the Expenses**
-1. Stay on the Event record and switch to the **Event Expenses** tab.
-2. Click **"+"** to add a cost.
-3. Enter the Hotel Ballroom deposit (RM 10,000) and attach the invoice.
-4. Enter the Catering cost (RM 5,000) and attach the receipt.
-5. The system automatically calculates the Total Event Cost (RM 15,000).
-
-### For Finance: Audit Event Spending
-Your goal is to see how much the company spent on Marketing events this quarter.
-
-1. Go to the **Event Expense Report** from the sidebar.
-2. Set the date filter to *This Quarter*.
-3. Filter by the *Marketing Events* calendar.
-4. The system outputs a consolidated list of every expense logged against every marketing event, ready for Excel export and GL reconciliation.
-
----
-
-## Deep-Dive: The UI Workspaces
-
-### 1. The Event Calendar (Visual View)
-This is the default landing page. It provides a visual timeline (Monthly, Weekly, Daily views) of all events across all calendars you have permission to see.
-
-- **Interactive Drag-and-Drop:** Need to postpone an event by a day? Just click and drag the colored block to the next day. The database dates update automatically.
-- **Quick Create:** Click any empty box on the calendar to instantly pop open the "New Event" creation form for that date.
-
-### 2. Event Listing & Edit Tabs
-This is the raw data grid of all events. Double-clicking an event opens its detailed configuration tabs.
-
-| Tab | Purpose |
-|-----|---------|
-| **Main Details** | Core info (Name, Dates, Location, Attached Calendar, Status). |
-| **Event Expenses** | The financial ledger for this specific event. Add line items for vendors, internal costs, and external purchases. |
-| **Audit Trail** | Shows who created the event, who changed the dates, and who added the expenses. |
-
-### 3. Calendar Listing
-This is where administrators manage the "Folders."
-
-- **Color Coding Engine:** Assigning a specific hex color to a Calendar ensures that all events within it share that color on the visual map, allowing executives to quickly differentiate between "Sales Events" (Green) and "HR Events" (Purple).
-
-### 4. Event Expense Report
-A powerful, filterable data grid designed specifically for the Finance department. Instead of opening events one-by-one to see expenses, this report pulls *all* expenses across *all* events into a single pivot-ready view.
-
----
-
-## Applet Configuration
-
-To tailor the Events Management Applet for your company, navigate to **Settings** in the sidebar.
-
-### Dual-Layered Permissions (CRITICAL)
-This applet uses a unique, dual-layered security model.
-
-**Layer 1: Server Side Permissions (The Applet Level)**
-- Found under standard *Settings > Permissions*.
-- **Purpose:** Controls who can open the Applet itself. 
-- *Example:* Giving standard employees `View` access to the applet, while giving HR `Admin` access.
-
-**Layer 2: Events Calendar Permission (The Data Level)**
-- Found under its own specific menu: *Settings > Events Calendar Permission*.
-- **Purpose:** Controls who can see specific *Folders* within the applet.
-- *Example:* Even if the CEO has `Admin` access to the applet (Layer 1), if the HR team restricts the "Confidential Interviews" calendar (Layer 2) exclusively to themselves, the CEO will not see those events on the visual calendar.
+| Area | Permission codes |
+| :--- | :--- |
+| Calendars (`calendar-hdrs`) | `TNT_API_CMS_CALENDAR_` `OWNER` / `ADMIN` / `CREATE` / `UPDATE` / `DELETE` / `READ` |
+| Events (`calendar-events`) | `TNT_API_CMS_CALENDAR_` `OWNER` / `ADMIN` / `DELETE` / `READ` |
+| Calendar members, participant links, post links, event link queues | the same `TNT_API_CMS_CALENDAR_*` family |
+| Both expense reports | `TNT_AAT_CLAIM_REPORT_` `OWNER` / `ADMIN` / `CREATE` |
 
 {{< callout type="warning" >}}
-**Troubleshooting Blank Calendars:** If a user complains they cannot see an event they know exists, 99% of the time it is because they have not been added to the **Events Calendar Permission** for that specific Calendar group.
+The expense screens are gated by **claim** permissions, not calendar permissions. Someone who can
+create, edit and delete events will still get nothing from the Expenses tab or the Event Expense
+Report unless they also hold `TNT_AAT_CLAIM_REPORT_CREATE` (or OWNER/ADMIN). Note that the read is
+gated by a `_CREATE` code — the report endpoints are POSTs.
 {{< /callout >}}
 
-### Field Settings & Default Selection
-- **Field Settings:** Make fields like "Location" mandatory to force staff to properly document where events are taking place.
-- **Default Selection:** If an Event Coordinator strictly works for Marketing, they can set their default Calendar to "Marketing Events." Every time they click "New Event," it automatically pre-selects the correct folder, saving clicks and preventing miscategorization.
+## Fields
 
----
+### Event — Create and Details
 
-## Common Real-World Scenarios
+| Field | Meaning | Required | Notes |
+| :--- | :--- | :--- | :--- |
+| Event Name (`title`) | The event's name | Yes | The listing calls this column *Title*. |
+| PIC | Person in charge | No | Chosen from the employee listing; the name field itself is disabled and filled by the picker. |
+| Company *(label: Entity when relabelled)* | Owning company | Yes | `Validators.required` plus `Validators.maxLength(255)`. |
+| Event Code | Free-text reference | No | Hidden by `HIDE_EVENT_CODE`. |
+| Event Type | `PRIVATE` or `PUBLIC` | No | Hidden by `HIDE_EVENT_TYPE`. A two-value list; there is no per-calendar privacy model behind it. |
+| Event Venue (`location`) | Where it happens | No | |
+| Start Date | When it starts | Yes | Pre-filled when the event is started from a slot in the calendar view. |
+| End Date | When it ends | No | Nothing checks that it is after the start date. |
+| All day | Whether the event spans the day | No | |
+| Status | `ACTIVE` or `INACTIVE` | No | Two-value list. |
+| Description | Free text | No | |
+| Event Color | The colour in the calendar view | No | Defaults to `#b7c08b`. |
+| Recurring | Whether the event repeats | No | Deleting a recurring event asks *"Delete recurring event"* before removing the series. |
 
-### Scenario 1: The Cross-Department Mega Event (Annual Dinner)
-**The Situation:** HR is organizing the 500-person Annual Dinner. Five different committees are handling different expenses (Prizes, Venue, Food, Entertainment).
-**The Workflow:**
-1. HR creates the Event: *Annual Dinner 2024*.
-2. The HR Admin grants the 5 committee heads `Edit` access to the *Company Events* calendar.
-3. Over the next 3 months, the Food Committee logs catering deposits in the **Event Expenses** tab. The Entertainment Committee logs DJ invoices in the same tab.
-4. On the night of the event, the CEO asks, "What's our total bill so far?"
-5. HR simply opens the Event record and looks at the automatically tallied bottom line in the Expenses tab. No hunting for receipts required.
+### Calendar — Create and Main
 
-### Scenario 2: Protecting Confidential Board Meetings
-**The Situation:** The Company Secretary needs to schedule Board of Directors meetings, but the dates and locations must remain strictly hidden from standard employees.
-**The Workflow:**
-1. Secretary goes to **Calendar Listing** and creates `Board of Directors Schedule`.
-2. Secretary goes to **Events Calendar Permission** and assigns ONLY themselves and the CEO to this calendar.
-3. Secretary creates the monthly board meeting events.
-4. **Result:** When standard employees open the Visual Calendar, they see a completely blank schedule for those dates. When the CEO logs in, they see the restricted events highlighted in red.
+| Field | Required | Notes |
+| :--- | :--- | :--- |
+| Calendar Name | Yes | |
+| Time Zone | No | Stored on `bl_cms_calendar_hdr.timezone`. |
+| Description | No | |
 
-### Scenario 3: Investigating Over-Budget Marketing
-**The Situation:** Finance notices the Marketing department is burning cash rapidly through "campaign events."
-**The Workflow:**
-1. Finance opens the **Event Expense Report**.
-2. Filters by Calendar = *Marketing Campaigns*.
-3. Sorts the `Amount` column from highest to lowest.
-4. Identifies that one specific event (*Mall Roadshow - Peninsular*) had RM 20,000 in undocumented "Miscellaneous" expenses.
-5. Finance exports the report to PDF and emails the Marketing Director for an immediate explanation.
+### Calendar members and event participants
 
----
+Calendar members (Settings → Events Calendar Permission, or Calendar Edit → Members) carry Member
+Name, Email and Status. Event participants carry Participant Name and Email. Both are links to
+employees, added through a picker.
 
-## FAQs
+### Event expense report rows
 
-**Q: Can I invite external guests (like clients) to an event through this applet?**
-A: This applet is an internal operational tracking tool, not an email client. It does not send out iCal invites to external email addresses. It is meant for internal business tracking and expense management.
+Read-only, from the claim reports: Event Title, Event PIC Name, Employee Name, Claim ID, Claim Item,
+Claim Status, Claim Amount. The single-event version inside Event Edit drops the Event Title and PIC
+columns.
 
-**Q: An event got cancelled. Do I delete it?**
-A: **Best Practice:** Do not delete it. Open the event and change its **Status** from *Published* to *Cancelled*. This preserves the historical record and any cancellation fee expenses you might have already logged against it.
+## Lifecycle and effects
 
-**Q: Can I set up a recurring event (e.g., Every Monday at 9AM)?**
-A: Currently, events are managed as distinct, individual records to ensure precise expense tracking per occurrence. You will need to clone or create separate records for recurring meetings.
+### Posting proof
 
-**Q: Why don't my newly created events show up on the Visual Calendar?**
-A: Check two things:
-1. Ensure the Event's **Status** is set to *Published* (Draft events are hidden).
-2. Check the filter settings on the left side of the visual calendar view to ensure the checkbox for your specific Calendar group is "ticked" to visible.
+| Aspect | Value |
+| :--- | :--- |
+| Server document type | None. `bl_cms_calendar_hdr` and `bl_cms_calendar_event_hdr` are CMS master data, not generic documents. |
+| Amount signum / quantity signum | Not applicable — no `FinancialDocDataConsistencyObject`. |
+| Dr/Cr equation | None. The applet posts no journal and creates no claim. |
+| GL precedence | Not applicable. |
+| Stock processor | None. |
+| What VOID reverses | There is no VOID and no posting status. Calendars and events carry `status` (`ACTIVE` / `INACTIVE`) only; an event is removed with Delete, which for a recurring event removes the series after a confirmation. |
+
+### What it writes
+
+| Screen | Table |
+| :--- | :--- |
+| Calendar Create / Edit | `bl_cms_calendar_hdr` |
+| Calendar Edit → Members, Settings → Events Calendar Permission | `bl_cms_calendar_member_hdr` |
+| Event Create / Edit | `bl_cms_calendar_event_hdr`, linked to its calendar through `bl_cms_calendar_event_link` |
+| Event Edit → Company Linking | `bl_cms_calendar_event_company_link` |
+| Event Edit → Events Participant | `bl_cms_calendar_event_participant_link` |
+| Event Edit → Agenda | `bl_cms_event_attachment` |
+| Event Edit → Expenses, Event Expense Report | **nothing** — both are reads against the claim report endpoints |
+
+### How an expense reaches an event
+
+`bl_aat_claim_document_line` carries a `calendar_event_hdr_guid` column that FKs to
+`bl_cms_calendar_event_hdr`. A claim line tagged with an event is what makes that cost appear on the
+event. The reports are `POST .../erp/audit-assurance-tax/claim/reports/event-expenses-reports/...`
+(a multi-event variant and a `single-event/{calendar_event_hdr_guid}` variant, each with a
+`/statistics` sibling that feeds the dashboard panel).
+
+Nothing in this applet tags a claim line. The tagging happens on the claim side; this applet only
+reports on it.
+
+### The notification queue
+
+`bl_cms_calendar_event_notification_queue` exists as a table with a validator
+(`CmsCalendarEventLinkQueueDataConsistencyObject`) and a controller
+(`CmsCalendarEventLinkQueueController`). No job processor under `akaun-api/.../jobProcessor/` reads
+it. **Creating or changing an event sends no e-mail, SMS or notification** at the commits read here.
+
+## Related applets
+
+- [Employee](/applets/master-data/employee-applet/) — the PIC, the participants and the calendar
+  members are all employee records.
+- [Organization](/applets/master-data/organisation-applet/) and
+  [Entity](/applets/master-data/entity-applet/) — the required Company on an event, and the entities
+  attached on the Company Linking tab.
+- [Engagement Applet](/applets/crm/engagement-applet/) — the other applet in the audit/assurance/tax
+  family; both surface claim data rather than owning it.
+- [CP Commerce Admin](/applets/ecommerce/cp-commerce-admin-applet/) — its Activities group also covers
+  facilities, activities, calendars and scheduling, for the storefront rather than the back office.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+| :--- | :--- | :--- |
+| The Expenses tab and the Event Expense Report are empty or refuse to load, though events are visible | Both call `ClaimReportController`, gated by `TNT_AAT_CLAIM_REPORT_OWNER` / `_ADMIN` / `_CREATE`. Calendar permissions do not cover them. | Grant the claim-report permission. Note the read is behind a `_CREATE` code because the report endpoints are POSTs. |
+| An event's costs never appear on the Expenses tab | An expense reaches an event only when a claim line is saved with `calendar_event_hdr_guid` set. Nothing in this applet tags a claim. | Tag the claim line with the event on the claims side. |
+| Calendar Listing has disappeared from the sidebar | `HIDE_CALENDAR_LISTING_MENU` is on; `app.component.ts` filters the entry out of `menuItems`. | Turn it off in Field Settings. The `calendars` route still resolves if the URL is typed. |
+| Turning on *Hide Default Select Calendar* does not stop new events defaulting to a calendar | `HIDE_DEFAULT_SELECT_CALENDAR` only hides the drop-down on the settings screen; nothing else reads it, and `selectedCalendar` keeps being applied by Event Create. | Clear `selectedCalendar` instead. |
+| *Enable Audit Trail* does nothing | The key is saved and read by nothing; `settings/applet-log` is not gated on it. | The audit-trail screen is reachable at `settings/applet-log`, which has no menu entry — navigate by URL. |
+| The settings gear opens on Feature Visibility, a screen with no menu entry | `settings` with no child redirects to `feature-visibility`, which is not in `settingItems`. | Pick Field Settings, Default Selection or Events Calendar Permission from the menu. |
+| An event was saved with an End Date before its Start Date | Only Event Name, Company and Start Date carry validators; there is no cross-field date check on either side. | Correct it by hand. |
+| Nobody was notified that an event was created or changed | `bl_cms_calendar_event_notification_queue` has a table, a validator and a controller but no job processor reads it. There is no e-mail, SMS or webhook on an event. | Announce events out of band. |
+| "Events Calendar Permission" does not grant permissions | The settings entry of that name opens the calendar **member** listing — membership of a calendar, not a permission set. | Server-side access is the `TNT_API_CMS_CALENDAR_*` family, granted through the permission screens (routed but unlinked) or the Tenant Admin applet. |
+
+## Related documentation
+
+- [Employee Applet](/applets/master-data/employee-applet/)
+- [Organization Applet](/applets/master-data/organisation-applet/)
+- [Engagement Applet](/applets/crm/engagement-applet/)
