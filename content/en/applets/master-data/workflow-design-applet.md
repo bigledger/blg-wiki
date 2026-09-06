@@ -1,6 +1,86 @@
 ---
 title: "Workflow Design Applet"
-description: "Core process automation engine for designing, implementing, and managing business workflows and approval hierarchies"
+description: "Reference for the Workflow Design applet — the tenant-wide catalogue of workflow processes, statuses, resolutions and transitions that document applets attach to their documents as an approval-style status track."
+applet_code: "workflow_design_applet"
+page_type: applet
+applet_repo: "blg-applet-wavelet-workflow-design-applet"
+modules: [core, financial-accounting, sales-crm, purchasing, inventory]
+related_applets: [organisation-applet, employee-applet, tenant-admin-applet, internal-sales-order-applet, internal-sales-invoice-applet, internal-sales-quotation-applet, internal-sales-credit-note-applet, internal-sales-debit-note-applet, internal-sales-return-applet, internal-purchase-order-applet, internal-purchase-requisition-applet, internal-purchase-return-applet, internal-packing-order-applet, internal-outbound-delivery-order-applet, internal-rma-applet, car-workshop-applet, stock-take-applet]
+guides: []
+sources:
+  configuration:
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/app.module.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/settings-container/settings-container.component.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/settings-container/applet-settings.module.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/settings-container/printable-format-settings-container/printable-format-listing/printable-format-listing.component.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/models/constants/applet-constants.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/state-controllers/printable-format-controller/store/effects/printable-format.effects.ts
+    - blg-shared-utilities/modules/settings/settings.component.html
+    - blg-shared-utilities/modules/settings/settings.module.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+    - blg-shared-utilities/utilities/company-workflow-dropdown/company-workflow-dropdown.component.ts
+    - blg-applet-wavelet-internal-purchase-order-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-applet/src/app/components/settings-container/workflow-settings-container/company-workflow-create/company-workflow-create.component.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/permissions/TntWFPermissions.java
+    - akaun_master.bl_applet_client_side_perm_dfn (applet workflow_design_applet — no rows)
+  fields:
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-create/process-details-create/process-details-create.component.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-create/process-details-create/process-details-create.component.html
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-create/workflow-design-process-create.component.html
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-create/process-status-create/process-status-create.component.html
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-create/process-transition-create/process-transition-create.component.html
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-edit/workflow-design-process-edit-main/design-workflow-process-edit-main.component.html
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-edit/process-edit-status/status-listing/status-listing.component.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-edit/process-edit-status/status-edit/status-edit.component.html
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-status-container/process-status-create/process-status-create.component.html
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-resolution-container/workflow-design-process-resolution-create/workflow-design-resolution-create.component.html
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-edit/workflow-design-process-edit-transition/transition-details-add/transition-details-add.component.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-edit/workflow-design-process-edit-transition/transition-details-edit/transition-details-edit.component.html
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-edit/workflow-design-process-edit-transition/transition-role/add-role/transition-role-add.component.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-edit/workflow-design-process-edit-transition/transition-subscriber/add-subscriber/transition-subscriber-add.component.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-edit/workflow-design-process-edit-transition/transition-triggers/transition-trigger-create/transition-trigger-create.component.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/transition-action-container/transition-action-create/transition-action-create.component.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/transition-action-type-container/transition-action-type-create/transition-action-type-create.component.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/models/constants/options.ts
+    - pcimage/tables/bl_wf/bl_wf_md_process_hdr.sql
+    - pcimage/tables/bl_wf/bl_wf_md_process_status.sql
+    - pcimage/tables/bl_wf/bl_wf_md_process_status_link.sql
+    - pcimage/tables/bl_wf/bl_wf_md_transition.sql
+    - pcimage/tables/bl_wf/bl_wf_md_resolution.sql
+  lifecycle:
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/wf/md/ProcessStatusUow.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/wf/md/ProcessStatusController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/wf/md/ProcessDataConsistencyObjects/ProcessHdrDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/wf/md/ProcessStatusDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/wf/md/ProcessStatusLinkDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/wf/md/TransitionDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/wf/md/ProcessStatusService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/wf/md/TransitionActionService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/wf/md/ProcessTransitionNotificationSubscriberService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/jobProcessor/svc/SvcIssueProcessStatusProcessorHelperMethods.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/jobProcessor/svc/SvcIssueProcessStatusProcessorService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/GenericDocumentHdrDataConsistencyObject.java
+    - blg-shared-utilities/modules/gen-doc-simplified-ui/gen-doc-simplified-ui.component.ts
+    - blg-applet-wavelet-internal-sales-order-applet-v2/micro-fe/projects/wavelet-erp/applets/internal-sales-order-applet-v2/src/app/components/internal-sales-order-container/internal-sales-order-view/internal-sales-order-view.component.ts
+    - pcimage/tables/bl_fi/bl_fi_comp_workflow_gendoc_process_template_hdr.sql
+    - pcimage/tables/bl_fi/bl_fi_generic_doc_hdr.sql
+    - pcimage/tables/bl_wf/bl_wf_md_process_transition_to_transition_trigger.sql
+  troubleshooting:
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/wf/md/ProcessStatusUow.java
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-edit/process-edit-status/status-listing/status-listing.component.ts
+    - blg-applet-wavelet-workflow-design-applet/micro-fe/projects/wavelet-erp/applets/workflow-design-applet/src/app/components/workflow-design-process-container/workflow-design-process-edit/workflow-design-process-edit-transition/transition-triggers/transition-trigger-create/transition-trigger-create.component.ts
+    - blg-shared-utilities/utilities/company-workflow-dropdown/company-workflow-dropdown.component.ts
+    - gh:bigledger/blg-intranet#3251
+    - gh:bigledger/blg-intranet#4404
+    - gh:bigledger/blg-intranet#4420
+    - gh:bigledger/blg-intranet#4421
+    - gh:bigledger/blg-applet-wavelet-workflow-design-applet#5
 tags:
 - workflow-automation
 - business-process
@@ -10,349 +90,280 @@ tags:
 weight: 90
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Workflow Design Applet** is the central engine of organizational efficiency in BigLedger. While all employees interact with the results of these workflows daily (by submitting documents or clicking "Approve"), this specific applet is an **administrative workspace**. It moves beyond simple task tracking by providing a robust framework to digitize manual processes, enforce strict compliance, and automate decision-making across all other applets. From simple expense approvals to complex multi-step procurement cycles, this tool configures the exact structure for auditable business activities.
+Workflow Design is the tenant-wide catalogue of **workflow processes**. A process is a named set of statuses joined by transitions; document applets attach one process per company and then show the document's current status and the statuses the signed-in user is allowed to move it to. The applet itself creates no documents, moves no stock and posts no journal — it only writes the `bl_wf_md_*` master-data tables.
 
-{{< callout type="info" >}}
-**Core Concept**: The system defines a **Process** (What it is), its **Statuses** (Where it is), and the **Transitions** (How it moves) between them, ensuring every action automatically follows your official company policy.
+It is a tenant-administrator screen (`applet_type` TNT-ADMIN in the registry). You open it once when configuring a company's approval track, then rarely again.
+
+{{< callout type="warning" >}}
+**Workflow Design is not the Document Approval engine.** BigLedger has a second, unrelated mechanism — `bl_fi_generic_doc_approval_hdr` / `_setting` / `_sequence` / `_request`, driven by a backend processor with pending-approval and rejection e-mails — configured from the **Approval Settings** screens of [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase Requisition](/applets/purchase-workflow/internal-purchase-requisition-applet/) and Stock Requisition. Workflow Design's processes and that approval engine do not read each other. If you need a multi-approver sequence with notifications, that is the other feature.
 {{< /callout >}}
 
-### Who Benefits from This Applet?
+## Where it fits
 
-**Business Administrators & Process Architects:**
-- Clear, code-free design of complex organizational workflows
-- Centralized version control for all business processes
-- Automated actions triggered by status changes (emails, webhooks)
-- Standardized management of statuses and resolution types
+| Direction | What | Why |
+|---|---|---|
+| Before | [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) | Transitions are gated by **roles** (`app_mst_role`) and by role-to-user assignment (`app_mst_link_subject_to_role`). Both are maintained there. Without them a transition offers nobody anything. |
+| Before | [Organization](/applets/master-data/organisation-applet/) | A process is attached to a **company**, so the companies must exist first. |
+| Here | Workflow Design | Defines processes, the global status catalogue, resolutions, transitions, transition roles, subscribers, actions and cross-process triggers. |
+| After | Document applets' **Settings → Workflow Settings** | Links a process to a company + this applet's document type, writing `bl_fi_comp_workflow_gendoc_process_template_hdr`. Only linked processes appear in the applet's Application Settings. |
+| After | Document applets' **Settings → Application Settings → Workflow** | `WORKFLOW_PROCESS_GUID` picks the process for new documents; `FINAL_STATUS_GUID` picks the status at which the FINAL button becomes available. |
+| At runtime | Any document with `wf_process_hdr_guid` | The status drop-down on the document is filled by the backend's *available process statuses* endpoint, filtered by the signed-in user's roles. |
 
-**Department Managers & Approvers:**
-- Clear visibility into pending approvals and team tasks
-- Standardized rule enforcement holding all team members accountable
-- Automated email/SMS notifications for pending actions
-- Reduced manual followup on request statuses
+Thirty-one organisation applet repositories reference the available-status service, including [Sales Order](/applets/sales-workflow/internal-sales-order-applet/), [Sales Invoice](/applets/sales-workflow/internal-sales-invoice-applet/), [Sales Quotation](/applets/sales-workflow/internal-sales-quotation-applet/), [Sales Credit Note](/applets/sales-workflow/internal-sales-credit-note-applet/), [Sales Debit Note](/applets/sales-workflow/internal-sales-debit-note-applet/), [Sales Return](/applets/sales-workflow/internal-sales-return-applet/), [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase Requisition](/applets/purchase-workflow/internal-purchase-requisition-applet/), [Purchase Return](/applets/purchase-workflow/internal-purchase-return-applet/), [Packing Order](/applets/manufacturing/internal-packing-order-applet/), [Outbound Delivery Order](/applets/sales-workflow/internal-outbound-delivery-order-applet/), [RMA](/applets/rma/internal-rma-applet/), [Car Workshop](/applets/sales-workflow/car-workshop-applet/) and [Stock Take](/applets/inventory-workflow/stock-take-applet/).
 
-**Compliance & Audit Officers:**
-- 100% transparent and immutable audit trail for every business decision
-- Enforced segregation of duties via permission sets
-- Historical record of who, when, and exactly why a step was approved
-- Identification of process bottlenecks through performance analytics
+## Screens and menus
 
-**Employees & Requesters:**
-- Real-time visibility into the exact status of their requests
-- Instant notifications when their requests are approved or rejected
-- Clear understanding of the organizational chain of command
-- Reduced need to manually chase managers for signatures
+The applet mounts at `applets/akaun/workflow-design-applet` and opens on **Process**.
 
-### What Problems Does This Solve?
+| Sidebar item | Route | What it lists |
+|---|---|---|
+| Process | `process` | Every workflow process. Columns: Name, Description, Type, Created By, Date Created, Updated By, Date Updated. Only a **Create** button — no export, no print. |
+| Process Status | `process-status` | The **global** status catalogue (Code, Name, Description). Statuses are not owned by a process; a process borrows them. |
+| Process Resolution | `process-resolution` | The global resolution catalogue (Code, Name, Description). |
+| Action | `transition-action` | `bl_wf_md_action` rows — an action belongs to a process and an action type. |
+| Action Type | `transition-action-type` | `bl_wf_md_action_type` rows — free-text categories for actions. |
 
-**The "Approval Black Hole" Problem:**
+### Process create versus process edit
 
-Traditional manual approvals rely on paper forms and email chains. Common issues include:
-- Requests getting lost in crowded inboxes
-- Documents sitting on a physical desk while someone is on leave
-- Zero visibility for the requester on current status
+**Create Process** has three tabs — Details, Status, Transition — but only *Details* works: the Status and Transition tabs are grids bound to a hard-coded empty array (`[rowData]="[]"`), with no Add control. Statuses and transitions can only be added after the process is saved.
 
-**The Workflow Applet Solution:**
+**Edit Process** has three working tabs:
 
-- **Real-time visibility** - Provides a Real-Time Dashboard for every process, showing exactly who is holding up the flow
-- **Automated routing** - Intelligent notifications ensure the next person in line is immediately alerted
-- **Hard-Coded Compliance** - A document physically cannot move to the next stage until the required digital approval is recorded
-- **Transition Automation** - Use Transition Actions to automatically trigger the next step, like sending an API call or notification
+- **Main** — Name, Description, Type, Starting Status.
+- **Status** — the statuses linked to this process, with Sequence no. The **+** button opens the global Process Status catalogue as a multi-select list; ticking rows and saving creates one `bl_wf_md_process_status_link` per tick.
+- **Transition** — the transitions of this process. Opening one gives five sub-tabs: **Details**, **Transition Triggers**, **Role**, **Subscriber**, **Action**.
 
-## Key Features Overview
+### Settings and personalization
 
-{{< cards >}}
-  {{< card title="Process Designer" subtitle="Define your business lifecycle and rules" link="#process" >}}
+Settings is reached from the sidebar gear. The navigation is drawn by the shared settings shell, so it shows three groups.
 
-  {{< card title="Status Management" subtitle="Create custom lifecycle stages (Draft, Pending, Closed)" link="#process-status" >}}
+{{< figure src="/images/workflow-design-applet/settings-feature-visibility.png" title="Applet Settings" caption="The settings navigation: System Configuration (Application Settings, Default Selection, Printable Format Settings), Server Side Permissions, Developer Tools. The tab strip belongs to the shared Application Settings screen." >}}
 
-  {{< card title="Resolution Types" subtitle="Define outcomes (Approved, Rejected, Cancelled)" link="#process-resolution" >}}
+Personalization offers one screen, **Default Selection** (personal Default Branch / Default Location).
 
-  {{< card title="Transition Actions & Types" subtitle="Define and automate custom events" link="#transition-action" >}}
+## Configuration
 
-  {{< card title="Advanced Permissions" subtitle="Granular role, team, and user access" link="#advanced-permissions" >}}
+### Before you can use it
 
-  {{< card title="Visual Dashboard" subtitle="Track real-time workflow performance" link="#feature-visibility" >}}
+| Prerequisite | Where | Why it matters |
+|---|---|---|
+| Roles, and users assigned to them | [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) | A transition with no **Role** row is invisible to everyone — see [Lifecycle and effects](#lifecycle-and-effects). |
+| At least one company | [Organization](/applets/master-data/organisation-applet/) | The company-to-process link is per company. |
+| Server-side permissions on the workflow endpoints | Settings → Permission Wizard / Permission Set / User Permission / Role Permission | Every screen here is gated by the `TNT_API_DM_WF_MD_*` permission family. |
+| A document applet whose Workflow Settings you can reach | e.g. [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/) | A process that is never linked to a company + applet is inert. |
 
-  {{< card title="Personalization" subtitle="Custom sidebars and default selections" link="#personalization" >}}
-{{< /cards >}}
+### Applet settings
 
-{{< figure src="/images/workflow-design-applet/workflow-design-applet-overview-infographic.png" alt="Workflow Design Applet Overview - Challenges, Solutions, and Roles" caption="Optimizing Workflows: The Old Way (Lost Emails, Manual Approvals) vs The New Way (Automated Routing, Real-time Dashboards)." >}}
+`app.routing.ts` maps `settings/field-settings` to the **shared** `FieldConfigurationComponent` from `blg-shared-utilities`, not to a local one. The applet also declares a local `field-configuration.component` in `AppletSettingsModule`, but it is routed nowhere and its eight slide toggles have no `formControl` binding and no SAVE handler — the same dead stub found in several other master-data applets. Ignore it; it is not what you see in the browser.
 
-## Key Concepts
+Because the shared screen is keyed by `sessionStorage.appletCode` and `workflow_design_applet` has **no entry** in its `tabMappings`, the applet-specific tabs stay hidden while every ungated control still renders. A gate walk of the shared template gives **235 rendered controls** at the commit this applet pins for `blg-shared-utilities` (237 at shared-utilities HEAD), plus 60 more whose gates are only decided at runtime. None of them is read by this applet: the only key it consumes from `APPLET_SETTINGS` is `PRINTABLE`.
 
-### Understanding the Workflow Framework
-
-Every effective workflow system must address fundamental operational aspects. The Workflow Design Applet provides structured handling:
-
-| Aspect | Component | Practical Example |
-|--------|-----------|------------------|
-| **What** is the goal? | Process | "Purchase Order Approval Process" |
-| **Where** is it currently? | Status | "Pending Manager Approval", "Reviewing" |
-| **How** does it move? | Transition | "Manager clicks Approve to send to Finance" |
-| **What** happens next? | Transition Action | "Send an automated email to Finance" |
-
-{{< callout type="tip" >}}
-**Real-World Example**: An employee submits a Purchase Request (WHAT). The system places it in "Pending Manager" status (WHERE). The Manager approves the request (HOW), triggering an automated email to Procurement (WHAT HAPPENS NEXT) and updating the status to "Approved".
+{{< callout type="warning" >}}
+**Application Settings here is a decoy.** The screen shows the full generic-document settings set — line-item columns, tax toggles, e-Invoice fields, even its own *Workflow Selection* panel with `WORKFLOW_PROCESS_GUID` and `FINAL_STATUS_GUID`. Saving them writes an `APPLET_SETTINGS` extension row against this applet, and nothing in Workflow Design ever reads it. Configure documents from the document applet's own settings screen.
 {{< /callout >}}
 
-### Workflow Hierarchy Structure
+The settings that do exist:
 
-Think of the workflow configuration as a structured conceptual flow:
+Only a tenant administrator reaches these screens; both write to the applet's `APPLET_SETTINGS` extension row (Personalization writes the per-user equivalent).
 
-```
-Organization
-│
-├── Process ──→ The Overall Workflow Definition
-│   │
-│   ├── Statuses ──→ The Lifecycle Stages (Draft → Pending → Approved)
-│   │
-│   ├── Transitions ──→ The Rules of Movement (How to get from A to B)
-│   │   │
-│   │   └── Transition Actions ──→ The Automations (Emails, API calls)
-│   │
-│   └── Resolutions ──→ The Final Outcomes (Success, Failure)
-```
+| Setting | Screen | What it controls | Default | Effect when changed |
+|---|---|---|---|---|
+| `PRINTABLE` | Printable Format Settings → *set as default* | The printable format marked default in this applet's printable list. | Unset (no default row) | Changes which row the listing flags as default. The applet has no print button, so nothing else changes. |
+| `DEFAULT_BRANCH` | Settings → Default Selection | Written and read back by this screen only. | Null (empty drop-down) | None elsewhere — no screen in Workflow Design is branch-scoped. |
+| `DEFAULT_LOCATION` | Settings → Default Selection | As above. Auto-filled from the chosen branch's `MAIN_LOCATION` extension. | Null | None elsewhere. |
+| `DEFAULT_COMPANY` | Settings → Default Selection | Not a control; set silently from the chosen branch's company. | Null | None elsewhere. |
 
-**Flow Through the Hierarchy:**
+{{< figure src="/images/workflow-design-applet/settings-default-selection.png" title="Default Selection" caption="Applet Default Settings — Default Branch and Default Location. Both are stored, read back by this screen, and used nowhere else in the applet." >}}
 
-1. **Process**: The overarching business activity
-2. **Statuses**: The distinct stops along the journey
-3. **Transitions**: The authorized paths between statuses
-4. **Transition Actions**: Background events fired during movement
-5. **Resolutions**: The final state of the document
+Personalization → Default Selection renders the same two controls and saves them as personal settings; they are equally unused.
 
-This structure enables:
-- **Precise control** over business logic
-- **Flexible automation** at any stage
-- **Clear accountability** for approvals
-- **Standardized outcomes** across enterprise modules
+**Printable Format Settings** lists and uploads printable formats, but its query is hard-coded to `txn_type = INTERNAL_BLANKET_PURCHASE_ORDER` (a copy-paste constant left in `applet-constants.ts`). It therefore shows blanket-purchase-order printables, and any format added here is tagged as one.
 
-### The "Golden Triangle" of Workflows
+**Two routes exist with no navigation link.** `settings/webhook` and `settings/feature-visibility` are routed, but the shared settings shell has their menu group commented out. `settings` with no child redirects to `feature-visibility`, so that is the screen you land on when you click the gear. The Webhook screen is reachable only by typing the URL.
 
-To effectively build paths in the system, it is crucial to understand how **Statuses**, **Transitions**, and **Resolutions** interact.
+{{< figure src="/images/workflow-design-applet/settings-webhook.png" title="Applet Triggers (webhook)" caption="The shared webhook screen at settings/webhook. It is routed but has no link in the settings navigation." >}}
 
-| Component | Analogy | Definition | Example |
-|-----------|---------|------------|---------|
-| **Status** | The "Room" | A specific stage in the document lifecycle. | **Pending Director Approval** |
-| **Transition** | The "Doorway" | The explicit rule allowing movement from one status to another. | **Approve / Reject** |
-| **Resolution** | The "Destination" | The concluding state of the workflow path. | **Successfully Approved**, **Cancelled** |
+Conversely, the shared shell renders a **Release Notes** link under Developer Tools for which this applet has no route; following it falls through to the 404 page.
 
-**How they link:**
-1. You create **Statuses** (e.g., Draft, Review, Closed).
-2. You define the **Resolutions** (e.g., Approved, Rejected).
-3. You link Statuses using **Transitions** (e.g., To get from "Review" to "Closed", the transition must be executed).
-4. A document can only travel through defined transition paths, ensuring absolute policy adherence.
+### Settings in other applets that control this applet
 
----
+Nothing in another applet changes how Workflow Design behaves. These are the settings that decide where a process you design here is actually *used*:
 
-## Quick Start Guide
+| Setting | Where it is set | Effect |
+|---|---|---|
+| Company ↔ process link | Document applet → Settings → **Workflow Settings** → Company Listing → Create | Writes `bl_fi_comp_workflow_gendoc_process_template_hdr` with `company_guid`, `process_hdr_guid`, `process_hdr_code` (copied from the process name), `server_doc_type` and `applet_guid`. Until this row exists the process is invisible to that applet. |
+| `WORKFLOW_PROCESS_GUID` | Document applet → Settings → Application Settings → *Workflow Selection* | The drop-down lists only company-process links whose `applet_guid` equals the current applet. Choosing one makes new documents start on that process. |
+| `FINAL_STATUS_GUID` | Same panel, appears once a process is chosen | The status at which the document's **FINAL** button is offered. Options come from the process's status links. |
 
-Get up and running quickly with these essential workflows.
+The Workflow Settings screen exists in twenty-four organisation applet repositories, among them Purchase Order, Purchase Requisition, Purchase Return, Consignment Purchase Order, Purchase Order Supplier Access, Packing Order, Outbound Delivery Order, Job Sheet, RMA, Cashflow Projection and the sales quotation / order / invoice / proforma / credit note / debit note / return / refund note family.
 
-### For Employees: Track Your Requests (In Respective Applets)
+### Feature visibility / permissions
 
-**Goal:** Understand where your request is and what happens next.
+**No client-side permission definitions are seeded for this applet.** A query of `bl_applet_client_side_perm_dfn` joined to `bl_applet_hdr` on code `workflow_design_applet` returns no rows, so the Client Side Permission screen has nothing to grant and no `SHOW_*` / `HIDE_*` code applies here.
 
-1. **Submit Request**: Create and submit your document in its respective module (e.g., Leave Request in HR, or Expense Claim in Claims).
-2. **Check Status**: In the document view, look at the **Workflow Status** badge at the top. 
-3. **View History**: Click on the status to see the full audit trail (who approved it, when, and any comments).
-4. **Action Required**: If the status says "Queried" or "Pending Revision", you may need to edit and resubmit your document.
+Access is therefore entirely server-side. Each screen calls endpoints guarded by one of the `TNT_API_DM_WF_MD_*` permission groups, each with OWNER / ADMIN / MEMBER / CREATE / UPDATE / DELETE / READ members:
 
-**What happens next?** The system automatically notifies you via email or in-app notification when a final decision (Approved/Rejected) is reached.
+| Screen | Permission group |
+|---|---|
+| Process listing, create, edit | `TNT_API_DM_WF_MD_PROCESS_*` |
+| Process Status catalogue | `TNT_API_DM_WF_MD_PROCESS_STATUS_*` |
+| Statuses linked to a process | `TNT_API_DM_WF_MD_PROCESS_STATUS_LINK_*` |
+| Transitions | `TNT_API_DM_WF_MD_TRANSITION_*` |
+| Transition → Role | `TNT_API_DM_WF_MD_TRANSITION_ROLE_LINK_*` |
+| Transition → Action | `TNT_API_DM_WF_MD_TRANSITION_ACTION_*` |
+| Action / Action Type | `TNT_API_DM_WF_MD_ACTION_*`, `TNT_API_DM_WF_MD_ACTION_TYPE_*` |
+| Resolutions | `TNT_API_DM_WF_MD_RESOLUTION_*`, `..._RESOLUTION_LINK_*` |
 
-**Pro Tip:** You don't need to open the Workflow applet directly. Your workflow status is deeply integrated into whatever document you are currently viewing.
+The available-status endpoint that documents call at runtime checks `TNT_API_DM_WF_MD_PROCESS_STATUS_READ`. A user without it gets a not-authorised response rather than an empty list.
 
----
+## Fields
 
-### For Managers: Process Team Approvals
+### Process (Details tab)
 
-**Goal:** Review and approve pending tasks efficiently.
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Name | Process name. Also copied into `process_hdr_code` when a company link is created. | Yes (`Validators.required`) | Stored in `bl_wf_md_process_hdr.name`. No uniqueness check anywhere — two processes may share a name. |
+| Description | Free text. | Marked `required` in the template but the control carries **no validator** — the asterisk shows and the form still saves empty. | `bl_wf_md_process_hdr.description`. |
+| Type | SEQUENTIAL, PARALLEL, CYCLIC or CONDITIONAL. | Yes | Stored in `wf_type`. **Label only** — no backend code branches on it. |
+| Starting Status | Edit tab only. The status a new document starts on. | No | Stored in `default_process_status_guid`. Options come from the process's own status links, so it can only be set after statuses are linked. |
 
-1. **Check Pending**: Access your **Pending Approvals** dashboard (usually linked from your home screen or respective module dashboard).
-2. **Review Details**:
-   - Click on the document to open and review details (amounts, attachments, justifications).
-   - Check the workflow history log to see previous comments.
-3. **Decide**:
-   - **Approve**: Document moves to the next status (e.g., to Finance).
-   - **Reject**: Document is stopped. You must provide a rejection reason.
-   - **Query / Revise**: Send back to the requester for clarification without outright rejecting.
+Module, Applet, Company, Branch and Location controls are commented out in both the create and the edit template. The columns exist on `bl_wf_md_process_hdr` but the applet never populates them; company scoping happens in the document applet's Workflow Settings instead.
 
-**Going on Leave?** Go to your personal settings and configure your **Delegation** period so workflows aren't blocked while you are away.
+### Process Status (global catalogue)
 
----
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Code | Short code. | Yes | Written to `bl_wf_md_process_status.code`. This is the value the backend stamps onto a document as `wf_process_status_code`. No uniqueness validator. |
+| Name | Display name. | Yes | Shown in listings. |
+| Description | Free text. | No | |
 
-### For Admins: Design a Basic Approval Flow
+### Status linked to a process (Edit → Status → open a row)
 
-**Goal:** Create a simple 2-step approval process from scratch.
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Code | Read-only. Copied from the catalogue status at link time. | — | |
+| Name | The label shown in the document's status drop-down. | Yes | Copied at link time; editing it here does **not** change the catalogue, and renaming the catalogue status does not change this copy. |
+| Sequence number | Ordering used by the *ordered by sequence* variant of the available-status endpoint. | No | Integer, `min="0"`. Left null when a status is first linked. |
+| Resolution | One of the global resolutions. | No | Stored as `process_resolution_guid` / `process_resolution_code` on the link row. |
+| Description | Free text. | No | |
 
-**Step 1: Define Statuses** (`Workflow > Process Status`)
-1. Click **"+" (Add New)**.
-2. Create standard stops: "Draft" (Initial type), "Pending Manager" (Interim type), and "Approved" (Final type).
-3. Click **"Create"**.
-
-**Step 2: Assign Resolutions** (`Workflow > Process Resolution`)
-1. Click **"+"**.
-2. Create outcome classifications like "Success" or "Failure".
-
-**Step 3: Create the Process** (`Workflow > Process`)
-1. Click **"+"**.
-2. Enter a **Name** (e.g., "Standard PO Approval").
-3. Add the statuses you created to this active process.
-4. Click **"Create"**.
-
-**Step 4: Map Transitions** (`Workflow > Process > Transitions`)
-1. Open your newly created Process.
-2. Define the explicit rules: Set the trigger for moving from "Draft" (Status A) to "Pending Manager" (Status B).
-3. Set the trigger for moving from "Pending Manager" to "Approved".
-
-**Step 5: Add Automations** (`Workflow > Transition Action`)
-1. Navigate to Transition Actions.
-2. Select your Target Process and Target Status (e.g., "Approved").
-3. Add an action type of **"Email Notification"** to alert the original requester that their document was successful.
-
-**Pro Tip:** Test your new workflow using a dummy document in a staging environment before training employees on how to use it!
-
----
-
-{{< callout type="tip" >}}
-**Implementation Strategy**: Map your existing manual process on a physical whiteboard first. Identify your common "resolutions" (Approved/Rejected) and "statuses" (Reviewing/Processing) before touching the digital designer.
-{{< /callout >}}
-
----
-
-## Process Architecture (For Admins)
-
-This section details how to construct robust, enterprise-grade workflows.
-
-### Process
-
-The **Process** screen is your master control room for all business logic.
-
-- **Active Workflows**: List of all operational processes with version control.
-- **Module Linking**: Connecting a workflow to specific applets (e.g., linking the "PO Approval" process to the Purchasing Applet).
-- **Version Control**: Edit workflows without breaking active documents by iterating process versions.
-
-{{< figure src="/images/workflow-design-applet/process-listing.png" title="Process Listing" caption="The master registry of all business workflow processes, showing name, description, and type (Sequential or Conditional)." >}}
-
-{{< figure src="/images/workflow-design-applet/process-edit-form.png" title="Process Create/Edit Form" caption="The process creation panel with Details, Status, and Transition tabs for full workflow configuration." >}}
-
-### Process Status
-
-Statuses are more than just labels; they dictate document security.
-
-- **Initial Status**: The starting point (e.g., "Draft"). Users can typically edit documents freely here.
-- **Interim Status**: The middle stages (e.g., "Pending Finance"). Documents are often locked for editing by the requester during these stages to ensure integrity during review.
-- **Final Status**: The end of the road (e.g., "Closed"). The document is permanently locked as a historical record.
-
-{{< figure src="/images/workflow-design-applet/process-status-listing.png" title="Process Status Listing" caption="Registry of all lifecycle stages, including custom statuses like FINANCE-REVIEW, SUPERVISOR-APPROVAL, and IN PROGRESS." >}}
+A **DELETE** button (two-click confirm) removes the link.
 
 ### Process Resolution
 
-Resolutions define the final outcome of a completed workflow path — the concluding state once a document has reached the end of its lifecycle.
+Code (required), Name (required), Description. Written to `bl_wf_md_resolution`.
 
-- **Success outcomes**: e.g., Approved, Completed, Confirmed
-- **Failure outcomes**: e.g., Rejected, Cancelled, Voided
-- **Pending outcomes**: e.g., On Hold, Deferred
+### Transition (Edit → Transition → +)
 
-{{< figure src="/images/workflow-design-applet/process-resolution-listing.png" title="Process Resolution Listing" caption="The final outcome classifications for terminated workflows, such as Approved, Rejected, Pending, and Refund." >}}
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| From Status | `current_process_status_guid`. | Yes | Options are the process's status links. |
+| To Status | `next_process_status_guid`. | Yes | Choosing the same value as From Status clears the other drop-down (client-side only). |
 
-### Transition Action
+The transition **Name** is generated, not typed: `"<From name> --> <To name>"`.
 
-Transition actions turn static forms into an active, intelligent system. You can define custom **Transition Action Types** to categorize and manage the various automated events your organization uses.
+### Transition sub-tabs
 
-**Available Action Types:**
-1. **Email/SMS Notifications**: Inform users of pending tasks or final decisions.
-2. **In-App Alerts**: Push notifications within the BigLedger interface.
-3. **Database Updates**: Automatically change a record value when a status is reached (e.g., deduct from inventory when "Delivery Approved").
-4. **Webhooks**: Send data to external systems (e.g., trigger a shipment in a third-party logistics platform).
+| Sub-tab | Fields | Written to |
+|---|---|---|
+| Role | Role Code and Role Name, both drop-downs over `app_mst_role`. | `bl_wf_md_transition_role_link.transition_guid`, `role_guid`. Nothing else on the row is populated. |
+| Subscriber | Role Code / Role Name, same drop-downs. | `bl_wf_md_process_transition_notification_subscriber.process_transition_guid`, `role_guid`. `login_subject_guid` is never set from this screen. |
+| Action | Action (drop-down over the process's actions), Description. | `bl_wf_md_transition_action.transition_guid`, `action_guid`, `description`. |
+| Transition Triggers | Trigger type (Transition to Transition / Target Status), Process, then either Transition or Target Status. | `bl_wf_md_process_transition_to_transition_trigger`, with `type` = `TRANSITIONS` or `TARGET_STATUS`. |
 
-{{< figure src="/images/workflow-design-applet/transition-action-listing.png" title="Transition Action Listing" caption="Registry of all configured automation actions linked to specific workflow status transitions." >}}
+### Action and Action Type
 
-{{< figure src="/images/workflow-design-applet/transition-action-type-listing.png" title="Transition Action Type Listing" caption="Defines the underlying logic categories for server-side automations available to all transition actions." >}}
+**Action Type**: Name, Description. **Action**: Name (required), Process (required), Action Type (required), Status ACTIVE/INACTIVE (required), Description.
 
-**Conditional Logic:**
-You can set actions to only fire under specific conditions.
-*Example: Only send an email to the CEO if the Purchase Order value is > RM 50,000.*
+Note that the Action's *Name* is saved to `bl_wf_md_action.namespace` — the table has no name column — while the listing's Name column reads that same field.
 
----
+## Lifecycle and effects
 
-## Configuration & Settings
+Workflow Design is master data. It **writes no `bl_fi_generic_doc_*` row, no `bl_inv_txn_line` and no journal**; it has no server document type, no amount or quantity signum and no posting. `applet-constants.ts` still carries `docType = "INTERNAL_BLANKET_PURCHASE_ORDER"` with both signums 0, left over from the applet this one was forked from; it is used only by the Printable Format Settings query.
 
-Fine-tune your workflow engine with these administrative controls.
+### What it writes
 
-### Advanced Permissions
-**Path:** `Settings > Permission Wizard` / `Role Permission` / `Team Permission`
+| Table | Written by |
+|---|---|
+| `bl_wf_md_process_hdr` | Process create / edit |
+| `bl_wf_md_process_status` | Process Status catalogue |
+| `bl_wf_md_process_status_link` | Edit → Status (one row per ticked catalogue status) |
+| `bl_wf_md_resolution` | Process Resolution |
+| `bl_wf_md_transition` | Edit → Transition |
+| `bl_wf_md_transition_role_link` | Transition → Role |
+| `bl_wf_md_process_transition_notification_subscriber` | Transition → Subscriber |
+| `bl_wf_md_action`, `bl_wf_md_action_type`, `bl_wf_md_transition_action` | Action, Action Type, Transition → Action |
+| `bl_wf_md_process_transition_to_transition_trigger` | Transition → Transition Triggers |
 
-A comprehensive suite to manage exact access rights at every level:
-- **Permission Wizard**: A visual interface to graphically map roles to workflow steps.
-- **Granular Control**: Use specific sub-menus like `User Permission Listing`, `Team Permission Listing`, and `Role Permission Listing` for exact access management.
-- **Client-Side Permissions**: Configure UI-level access controls for specific workflow views.
+Row status is a plain `ACTIVE` / `DELETED` string on every table. Create and update run a data-consistency object that checks GUID presence, foreign-key existence, audit columns, status and revision — nothing more. There is **no uniqueness validator, no "status belongs to this process" validator and no in-use check on delete**: `ProcessStatusService.delete` removes the row without asking whether any process or document references it.
 
-{{< figure src="/images/workflow-design-applet/settings-permission-wizard.png" title="Permission Wizard" caption="The Permission Template Listing screen for setting up granular, role-based access control over workflow operations." >}}
+### How a document consumes a process
 
-### Field Configuration & Printable Formats
-**Path:** `Settings > Field Settings` / `Printable Format Settings`
+1. **Design.** Create the process, link statuses, set the Starting Status, add transitions, and give each transition at least one **Role**.
+2. **Link.** In the document applet: Settings → Workflow Settings → pick a company → pick the process. This writes `bl_fi_comp_workflow_gendoc_process_template_hdr` with that applet's GUID and document type.
+3. **Select.** In the same applet: Settings → Application Settings → Workflow Selection → choose the process (`WORKFLOW_PROCESS_GUID`) and, optionally, the final status (`FINAL_STATUS_GUID`).
+4. **New document.** The shared document form reads `WORKFLOW_PROCESS_GUID`, fetches the process, and stamps `wf_process_hdr_guid` plus `wf_process_status_guid` = the process's `default_process_status_guid` onto the header.
+5. **Editing.** The form calls `GET .../wf/md/process-status/available-process-statuses/backoffice-ep?processHdrGuid=…&currentStatusGuid=…`. The SQL behind it joins transition → next status → **transition role link → role → role-to-user link**, restricted to the signed-in user's subject GUID. The current status is prepended to the result, so the drop-down always offers "stay where you are" plus whatever the user's roles permit.
+6. **Saving.** The chosen status GUID is written to `wf_process_status_guid`, and the backend fills `wf_process_status_code` from the status catalogue.
 
-Control how and what users see.
-- Customize the exact fields available during a workflow process.
-- Design dynamic, automatically generated PDF/Printable formats for approved documents.
+{{< callout type="warning" >}}
+**The status track is enforced in the browser, not by the backend.** `GenericDocumentHdrDataConsistencyObject` validates only that `wf_process_hdr_guid` and `wf_process_status_guid` *exist* (`GENERIC_DOC_HDR_WF_PROCESS_HDR_GUID_GUID_DOES_NOT_EXIST`, `GENERIC_DOC_HDR_WF_PROCESS_STATUS_GUID_DOES_NOT_EXIST`). It does not check that the status belongs to the process, nor that a transition exists from the previous status. An API client may set any existing status on any document.
+{{< /callout >}}
 
-### Feature Visibility
-**Path:** `Settings > Application Settings`
+### The one real gate: FINAL_STATUS_GUID
 
-Control the user interface layout via the **Application Settings** panel tabs.
-- **Sidebar Menu**: Show or hide specific sidebar sections for different user groups
-- **Advanced Search Filter**: Configure filters available on listing pages
-- **Gen Doc Listing / Main Details / File Import**: Toggle UI components per module visibility requirement
+Where a document applet implements it, the FINAL button is hidden until the document's current workflow status equals `FINAL_STATUS_GUID` (the Sales Order V2 view combines it with `HIDE_GENDOC_FINAL_BUTTON`, `SHOW_FINAL_BUTTON`, row status ACTIVE and posting status DRAFT). Leaving `FINAL_STATUS_GUID` unset disables the gate — the button shows at any status.
 
-{{< figure src="/images/workflow-design-applet/settings-feature-visibility.png" title="Application Settings — Feature Visibility" caption="Application Settings with tabs for Sidebar Menu, Advanced Search Filter, Gen Doc Listing, and Main Details control." >}}
+This is **button visibility**, not a backend rejection: a FINAL posted through the API is not checked against the workflow status.
 
-### Webhook & API Connections
-**Path:** `Settings > Application Settings > Webhook`
+### What transition actions, subscribers and triggers actually do
 
-Configure external endpoints for enterprise integrations.
-- Set up URL endpoints that listen for real-time status changes
-- Secure data transmission with API keys and authentication headers
-- Automate cross-platform business processes without manual data entry
+| Object | Executed by |
+|---|---|
+| Transition **Action** / Action Type | Nothing. `ActionService`, `ActionTypeService` and `TransitionActionService` are create/update/delete only; no job processor, notification service or posting path reads these tables. |
+| Transition **Subscriber** | Nothing. `ProcessTransitionNotificationSubscriberService` is CRUD only; there is no workflow notification processor. (`IssueEmailNotificationProcessor` belongs to the `bl_wf_issue` tracker, not to `bl_wf_md_*`.) |
+| Transition **Trigger** | Only Service Note / RMA. `SvcIssueProcessStatusProcessorService` looks up the transition that matches the old→new status change, finds triggers whose `from_process_transition_guid` matches, and updates the service issue's internal / customer / supplier status. For `TRANSITIONS` triggers it first checks that the target's current status equals the target transition's `current_process_status_guid`; for `TARGET_STATUS` it sets the status directly. No equivalent processor exists for generic documents. |
 
-{{< figure src="/images/workflow-design-applet/settings-webhook.png" title="Webhook / Applet Triggers" caption="The Applet Triggers panel for creating new event-based triggers (webhooks) that fire when specific status transitions occur." >}}
+So: e-mails, SMS, webhooks and "database updates on status change" are **not** implemented for `bl_wf_md_*`. Anything a status change should trigger elsewhere has to come from the Document Approval engine or from an [applet trigger](/applets/integrations/webhook-applet/).
 
----
+## Related applets
 
-## Personalization
+- [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) — supplies the roles and the role-to-user assignments that decide who may take a transition.
+- [Organization](/applets/master-data/organisation-applet/) — the companies a process is linked to.
+- [Employee](/applets/master-data/employee-applet/) — designations and staff records behind the people who approve.
+- [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/) and [Purchase Requisition](/applets/purchase-workflow/internal-purchase-requisition-applet/) — carry both a Workflow Settings screen (this applet's processes) and the separate Approval Settings screens of the Document Approval engine.
+- [Sales Order](/applets/sales-workflow/internal-sales-order-applet/), [Sales Invoice](/applets/sales-workflow/internal-sales-invoice-applet/), [Sales Quotation](/applets/sales-workflow/internal-sales-quotation-applet/), [Sales Credit Note](/applets/sales-workflow/internal-sales-credit-note-applet/), [Sales Debit Note](/applets/sales-workflow/internal-sales-debit-note-applet/), [Sales Return](/applets/sales-workflow/internal-sales-return-applet/) — attach a process per company and show the status drop-down.
+- [Packing Order](/applets/manufacturing/internal-packing-order-applet/) and [Outbound Delivery Order](/applets/sales-workflow/internal-outbound-delivery-order-applet/) — warehouse-side consumers.
+- [RMA](/applets/rma/internal-rma-applet/) and [Car Workshop](/applets/sales-workflow/car-workshop-applet/) — service-note documents; the only consumers whose transition **triggers** are executed.
+- [Stock Take](/applets/inventory-workflow/stock-take-applet/) — stamps the process's Starting Status onto a session and offers the same transition list, but enforces nothing.
+- [Webhook Applet](/applets/integrations/webhook-applet/) — applet triggers, the mechanism that actually fires on events.
 
-Tailor the Workflow Applet to match your specific working style.
+## Troubleshooting
 
-**Path:** `Personalization > Sidebar` / `Personal Default Selection`
+| Symptom | Cause | Fix |
+|---|---|---|
+| The status drop-down on a document is empty except the current status. | The available-status query inner-joins transition → role link → role → role-to-user link. A transition with **no Role** row, or a user in none of the linked roles, yields nothing. | Open Edit Process → Transition → the transition → **Role** and add at least one role; check in Tenant Admin that the user is assigned to it. |
+| A process does not appear in a document applet's Workflow Selection drop-down. | The drop-down filters `bl_fi_comp_workflow_gendoc_process_template_hdr` on `applet_guid` = the current applet. No company link, or a link created from a different applet, means no option. | Create the link from **that** applet's Settings → Workflow Settings, not from another one. |
+| New documents have no workflow status at all. | `WORKFLOW_PROCESS_GUID` is unset in the applet's Application Settings, or the process has no **Starting Status** — the form stamps `default_process_status_guid`, which is null until you set it in Edit Process → Main. | Set both. Starting Status can only be chosen after statuses are linked to the process. |
+| The FINAL button never appears. | `FINAL_STATUS_GUID` is set to a status the document has not reached, and the user's roles offer no transition to it. | Either clear `FINAL_STATUS_GUID` or give the approving role a transition into that status. |
+| The FINAL button appears too early. | `FINAL_STATUS_GUID` is unset, so the gate is off. | Set it to the approved status. |
+| A status was renamed in the Process Status catalogue but documents and drop-downs still show the old label. | The status link copies `name`, `code` and `description` at link time; the catalogue and the link then drift. | Edit the label on the link row (Edit Process → Status → open the row), or unlink and relink the status. |
+| Statuses come back in a strange order. | `sequence_no` is not populated when a status is linked; the ordered endpoint sorts on it. | Set Sequence number on each status link. |
+| The same status appears twice in a process. | Nothing prevents linking the same catalogue status twice — no uniqueness validator on `bl_wf_md_process_status_link`. | Delete the duplicate link. |
+| A deleted status leaves documents showing a status that no longer exists. | `ProcessStatusService.delete` performs no in-use check. | Re-create the status, or move the affected documents before deleting. |
+| Transition Actions and Subscribers are configured but no notification is ever sent. | Working as built — nothing executes them (see [Lifecycle and effects](#lifecycle-and-effects)). | Use the Document Approval engine's notifications, or an applet trigger. |
+| A trigger saves with an empty target. | The trigger form's SAVE button is never disabled; the guard only rejects a literal `404` sentinel, and the Transition control stays `required` even in Target Status mode. | Re-open the trigger and confirm the target process and transition/status are set. |
+| Printable Format Settings lists formats that belong to purchase documents. | The listing filter is hard-coded to `txn_type = INTERNAL_BLANKET_PURCHASE_ORDER`. | Known defect; do not manage printables from this applet. |
+| Clicking **Release Notes** in the settings navigation lands on a 404. | The shared settings shell renders the link; this applet has no `release-notes` route. | Known defect. |
+| A saved Application Settings toggle here changes nothing on any document. | Application Settings on this applet renders the shared generic-document set, and Workflow Design consumes only `PRINTABLE`. | Configure documents from the document applet's own Application Settings. |
 
-- **Sidebar Customization**: Rearrange menu items so your most frequently used workflows are at the top.
-- **Personal Defaults**: Set your own default parameters for standard processes, saving time on repetitive data entry.
+Related open work: making a stock-take session expose a single configurable workflow status and freeze the session at certain statuses (intranet #4420, #4421); the purchase-requisition Pending → Approve / Cancel workflow (intranet #3251); the applet's Angular 14 migration (repo issue #5).
 
-{{< figure src="/images/workflow-design-applet/settings-default-selection.png" title="Default Selection" caption="Applet Default Settings for configuring the Default Branch and Default Location pre-selected throughout the workflow module." >}}
+## Related documentation
 
----
-
-## FAQ
-
-**Q: Can a single process have multiple starting points?**
-**A:** No. Every process has exactly one "Initial Status" (usually 'Draft' or 'New') to ensure a highly standardized, predictable entry point for all documents.
-
-**Q: What happens if I delete a status that is currently in use?**
-**A:** The system actively prevents the deletion of any status linked to ongoing document instances. You must first resolve, re-route, or complete those active documents before structural deletion is permitted.
-
-**Q: Can I use conditional logic for approvals (e.g., only route to CEO if amount > RM 50,000)?**
-**A:** Yes. While the fundamental statuses remain simple, the transitions between them can be governed by complex criteria based on document fields (like "Total Amount" or "Department").
-
-**Q: Is there a history of workflow configuration changes?**
-**A:** Yes. BigLedger maintains a comprehensive "Audit Trail" not just for individual documents, but also for administrative modifications to the workflow design itself, ensuring complete compliance with IT governance standards.
-
-**Q: How do we handle an approver who goes on extended sick leave?**
-**A:** Approvers can use the **Delegation** feature to temporarily assign their approval rights to a colleague, or an Administrator can override and re-route the document from the backend if necessary.
-
----
-
-## Summary
-
-The **Workflow Design Applet** is the most powerful "glue" in the BigLedger ecosystem. By creating a standardized, digital framework for business logic, it eliminates guesswork, dramatically speeds up decision-making, and provides the iron-clad accountability required for modern audit and compliance standards.
+- [Core module](/modules-v2/core/) — where this applet sits.
+- [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/) — the reference example of Workflow Settings plus the separate Approval Settings.
+- [Webhook Applet](/applets/integrations/webhook-applet/) — applet triggers, for automation on events.
+- [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) — roles, teams and permission sets.

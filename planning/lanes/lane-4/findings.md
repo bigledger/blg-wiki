@@ -1769,3 +1769,282 @@ Application Settings.
 - Two `Integer` columns (`qty_to_pick`, `qty_picked`) in a system whose quantities are `BigDecimal`
   everywhere else. Worth a bug report independent of the docs.
 - `tests/content-lint.sh` passes.
+
+---
+
+# Run 29 — 2026-09-06 — Workflow Design Applet; lane 2's queue adopted
+
+## Page completed
+
+- `content/en/applets/master-data/workflow-design-applet.md` — registry `workflow_design_applet`
+  "Workflow Design Applet" (TNT-ADMIN, ACTIVE). Title unchanged; the registry `documentation_url`
+  already points at this URL, so no alias was needed. Full rewrite: the previous 358-line page was an
+  invented user guide (webhooks that fire on status change, e-mail/SMS notifications, "database
+  updates", conditional routing by amount, approver delegation, process version control, an audit
+  trail of workflow design changes, and an FAQ claiming the system blocks deletion of an in-use
+  status). **None of that exists.** Replaced with a 369-line reference derived from the applet, the
+  shared utilities, the Java backend and the schema.
+
+## Cross-lane requests satisfied
+
+Every queued "add Workflow Design to `related_applets`" request is now honoured from this side, and
+each named applet is linked in *Where it fits* / *Related applets*:
+
+- lane 1: `internal-sales-order-applet`, `internal-sales-invoice-applet`,
+  `internal-sales-credit-note-applet`, `internal-sales-quotation-applet` (findings lines 19/22/24/109).
+- lane 3: `internal-purchase-order-applet` (findings line 15) and the note at line 851 — *"document
+  applets' Workflow Settings attach a process per company and the status is a label, not a gate, for
+  generic documents (intranet #3251 open)"*. Both are now stated with backend proof (see below).
+- lane 4 run 13: `stock-take-applet` — the page says the stock take stamps the Starting Status and
+  offers the same transition list but enforces nothing, and cites the two open requests.
+
+Also added, from the code rather than a request: `internal-sales-debit-note-applet`,
+`internal-sales-return-applet`, `internal-purchase-requisition-applet`,
+`internal-purchase-return-applet`, `internal-packing-order-applet`,
+`internal-outbound-delivery-order-applet`, `internal-rma-applet`, `car-workshop-applet`,
+`tenant-admin-applet`, `organisation-applet`, `employee-applet`.
+
+## What the code actually says (the corrections that matter)
+
+1. **The status track is a label for generic documents.**
+   `GenericDocumentHdrDataConsistencyObject` (javasdk `.../FinancialDocDataConsistencyObject/`,
+   creation validators ~L215–232 and the matching update block ~L429–446) validates only that
+   `wf_process_hdr_guid` and `wf_process_status_guid` *exist* as rows
+   (`GENERIC_DOC_HDR_WF_PROCESS_HDR_GUID_GUID_DOES_NOT_EXIST`,
+   `GENERIC_DOC_HDR_WF_PROCESS_STATUS_GUID_DOES_NOT_EXIST`). Nothing checks that the status belongs
+   to the process, and nothing checks that a transition exists from the previous status. Confirms
+   lane 3's line 851 with a citation.
+
+2. **The only enforcement is `FINAL_STATUS_GUID`, and it is client-side.**
+   `internal-sales-order-applet-v2/.../internal-sales-order-view.component.ts` L334, L428, L669–675:
+   the FINAL button is rendered only when
+   `(!HIDE_GENDOC_FINAL_BUTTON || SHOW_FINAL_BUTTON) && status==='ACTIVE' && (!postingStatus ||
+   postingStatus==='DRAFT') && (FINAL_STATUS_GUID === CURRENT_STATUS_GUID || FINAL_STATUS_GUID === null)`.
+   Unset = gate off. Per METHOD §5 the page states this is button visibility, not a backend rejection.
+
+3. **The "who can move it" rule is a SQL join, and one missing row silences it.**
+   `ProcessStatusUow.getAvailableStatusesForUserProcessGuid` (javasdk L163) inner-joins
+   `bl_wf_md_transition` → `bl_wf_md_process_status` → `bl_wf_md_transition_role_link` →
+   `app_mst_role` → `app_mst_link_subject_to_role` on the caller's subject GUID. A transition with no
+   Role row returns nothing **for everyone**, so the drop-down shows only the current status (the
+   shared form prepends it). This is the single most useful troubleshooting fact on the page.
+   The ordered variant (L194) sorts on `bl_wf_md_process_status_link.sequence_no`, which the link
+   screen never populates at link time — hence "statuses come back in a strange order".
+
+4. **Transition Actions, Action Types and Notification Subscribers are dead.** `ActionService`,
+   `ActionTypeService`, `TransitionActionService` and `ProcessTransitionNotificationSubscriberService`
+   are create/update/delete only. Nothing in `javasdk/.../domain/jobProcessor/` reads `bl_wf_md_action`,
+   `bl_wf_md_action_type`, `bl_wf_md_transition_action` or
+   `bl_wf_md_process_transition_notification_subscriber`. `jobProcessor/wf/` contains only the
+   `bl_wf_issue` GitHub-sync and issue-e-mail processors, which are a different subsystem.
+   **There is no workflow e-mail, SMS or webhook.**
+
+5. **Transition triggers run for exactly one document family.**
+   `SvcIssueProcessStatusProcessorService` L53–60 →
+   `SvcIssueProcessStatusProcessorHelperMethods.loopThroughTriggersAndUpdateProcessStatusesForSvcIssue`.
+   Only the Service Note / RMA header (`bl_svc_issue_hdr`, with internal / customer / supplier process
+   columns) is cascaded. `type` is `TRANSITIONS` (checks the target's current status matches the target
+   transition's `current_process_status_guid`) or `TARGET_STATUS` (sets it directly) —
+   `ProcessTransitionToTransitionConstants` in client-sdk. No generic-document equivalent exists.
+
+6. **There are two unrelated approval systems and the wiki has been conflating them.**
+   `bl_wf_md_*` (this applet) versus `bl_fi_generic_doc_approval_hdr` / `_setting` / `_sequence` /
+   `_request` / `_history` / `_conversion_monitor` with a real processor and the
+   `GENERIC_DOC_APPROVAL_PENDING_APPROVAL_NOTIFICATION` /
+   `GENERIC_DOC_APPROVAL_REJECT…` e-mail templates
+   (`akaun-api/.../jobProcessor/erp/genericDocument/approval/`). The second one has UI in
+   `blg-applet-wavelet-internal-purchase-order-applet`,
+   `…-internal-purchase-requisition-applet`, `…-internal-stock-requisition-applet` and
+   `blg-applets-wavelet-erp-v3`. The page opens with a warning callout naming both.
+
+7. **Attachment path.** `bl_fi_comp_workflow_gendoc_process_template_hdr` (company + process +
+   `server_doc_type` + `applet_guid`, written by each document applet's Settings → Workflow Settings,
+   24 org applet repos have that screen). The shared `company-workflow-dropdown` filters it on
+   `applet_guid === sessionStorage.appletGuid`, so a link created from a *different* applet never
+   shows up — the second-most-useful troubleshooting row.
+
+8. **The status link copies its labels.** `status-listing.component.ts` onSave copies
+   `name`, `code`, `description` from `bl_wf_md_process_status` onto
+   `bl_wf_md_process_status_link` at link time. Renaming the catalogue status afterwards does not
+   change what documents show. No uniqueness validator, so the same status can be linked twice.
+
+## Configuration classification (METHOD §29, §27)
+
+- `.gitmodules` exists and pins `blg-shared-utilities` at `f1ded0401b9b206694055f919420fc02497f573a`
+  (submodule **not** checked out in refs — read via `git archive <sha>` into the scratchpad, and the
+  refs clone was left on `main`).
+- `app.routing.ts` line 2 imports `FieldConfigurationComponent` from
+  `projects/shared-utilities/...`, so the routed Application Settings screen is the **shared** one.
+  The applet *also* declares `components/settings-container/field-configuration/` in
+  `AppletSettingsModule` — the familiar unbound 8-toggle stub (Lines Settings / Department Settings,
+  no `formControl`, no SAVE handler) — but it is routed nowhere. This is the mirror image of §29:
+  there the submodule existed and the *local* stub was in use; here the stub is dead and the shared
+  screen is live. **Classify by what `app.routing.ts` imports** remains the right rule.
+- `workflow_design_applet` has no `tabMappings` entry, so no tab-hide section renders and every
+  ungated control does. `kb/tools/gates.py workflow_design_applet`: **235 RENDERED + 60
+  RENDERED?(runtime)** at the pinned commit; **237 + 60** at shared-utilities HEAD `a8c38a2`.
+  Diff between pinned and HEAD for this applet: `+ALLOW_DUPLICATE_SERIAL_NUMBER_ACROSS_DIFFERENT_ITEMS`,
+  `+HIDE_BATCH_EXPIRY_DATE`, `+HIDE_BATCH_ISSUE_DATE` (both RENDERED), `+HIDE_OUTSTANDING_AMOUNT`,
+  `+HIDE_REBATE_PRICE_EXCL_TAX`, `+POS_VOUCHER_INVENTORY`, and the approval-menu gates gained a second
+  applet code. None is consumed here.
+- **Consumed keys: one.** `PRINTABLE`, through
+  `printable-format.effects.ts selectDefaultPrintableFormat$ → saveSettings$` (which writes the
+  `APPLET_SETTINGS` `bl_applet_ext` row itself rather than going through the session effect) and read
+  back by `printable-format-listing.component.ts` L90. `DEFAULT_BRANCH` / `DEFAULT_LOCATION` /
+  `DEFAULT_COMPANY` are written by Default Selection (and the personal twin) and read back only by
+  those same screens.
+- `bl_applet_client_side_perm_dfn` joined to `bl_applet_hdr` on `code='workflow_design_applet'`:
+  **no rows**. Server-side only, via `TntWFPermissions.TNT_API_DM_WF_MD_*`.
+
+## Defects found (worth a bug report independent of the docs)
+
+- **F-lane4-29-a** Printable Format Settings in this applet queries
+  `txn_type = INTERNAL_BLANKET_PURCHASE_ORDER` — `applet-constants.ts` still holds the forked
+  Blanket PO doc type (`amount_signum` 0, `quantity_signum` 0). The screen therefore lists and tags
+  blanket-PO printables. The applet has no print button at all.
+- **F-lane4-29-b** The shared settings shell renders a **Release Notes** link (Developer Tools) for
+  which this applet has no `release-notes` route; it falls through to the applet's `**` → 404.
+- **F-lane4-29-c** `settings/webhook` and `settings/feature-visibility` are routed but have no menu
+  link (the Integration group is commented out in the shared shell). `settings` with no child
+  redirects to `feature-visibility`, so the gear lands on an unlinked screen.
+- **F-lane4-29-d** Create Process's **Status** and **Transition** tabs are ag-grids bound to
+  `[rowData]="[]"` with no Add control — permanently empty. Work only happens in Edit.
+- **F-lane4-29-e** Process create: Description is marked `required` in the template but its
+  `UntypedFormControl` has no validator; the asterisk is a lie.
+- **F-lane4-29-f** Transition Trigger create: SAVE is never disabled, `transition` keeps
+  `Validators.required` even in TARGET_STATUS mode, and `isAllDataValid` only rejects a literal
+  `'404'` sentinel — a trigger can be saved with a null target.
+- **F-lane4-29-g** The Action screen saves the typed **Name** into `bl_wf_md_action.namespace`
+  (the table has no name column) and the listing reads it back from there. Harmless but confusing.
+- **F-lane4-29-h** `ProcessStatusService.delete` has no in-use check; a status referenced by live
+  documents and by process links can be deleted.
+- **F-lane4-29-i** The applet still carries the fork's dead code: `models/design-workflow-process.model.ts`
+  and `models/workflow-design-process-status.model.ts` both re-declare `InternalSOMain`;
+  `state-controllers/supplier-controller/`, `models/supplier*.ts`, `models/customer-constants.ts`,
+  `models/advanced-search-models/blanket-purchase-order.model.ts` and
+  `components/settings/settings.component.ts` (an entire `app-settings` component declared in no
+  module, with a fully commented-out template) are all unreferenced. Intranet #4126 tracks the
+  refactor onto `blg-akaun-ng-lib`.
+
+## Screenshots with personal data
+
+Eight of the eleven images under `static/images/workflow-design-applet/` must be quarantined; the
+page no longer references them.
+
+- `process-listing.png` — grid rows carry six staff full names in Created By / Updated By, and a
+  process named after a real Malaysian telco brand.
+- `process-edit-form.png` — same listing behind the Create Process panel, same brand row.
+- `process-status-listing.png` — staff full names in Created By / Updated By.
+- `process-resolution-listing.png` — staff full names.
+- `transition-action-listing.png` — staff full names.
+- `transition-action-type-listing.png` — staff full names.
+- `settings-permission-wizard.png` — permission-template codes that read as a customer/brand
+  abbreviation plus a developer's initials; same call as the Organisation (run 17) and Shipping
+  Pricebook (run 20) drops.
+- `workflow-design-applet-overview-infographic.png` — AI marketing infographic; same decision as
+  Pricebook / Stock Balance / Stock Conversion / Stock Replenishment / Supplier / Tax Configuration /
+  Warehouse Management.
+
+Kept (clean): `settings-feature-visibility.png` (Applet Settings navigation + the shared tab strip),
+`settings-default-selection.png`, `settings-webhook.png`.
+
+Recapture list (clean demo tenant, no real names, no brands): Process listing; Create Process Details
+tab; Edit Process → Main showing Type and Starting Status; Edit Process → Status with sequence numbers
+and resolutions; the Process Status catalogue multi-select used to link statuses; Edit Process →
+Transition; a transition's five sub-tabs (Details / Transition Triggers / Role / Subscriber / Action);
+Process Resolution listing; Action and Action Type listings; a document's workflow status drop-down
+showing the role-filtered next statuses.
+
+## Cross-lane link requests (from this page)
+
+- **`content/en/applets/purchase-workflow/internal-purchase-order-applet.md`** and
+  **`.../internal-purchase-requisition-applet.md`** (lane 3): these two carry *both* mechanisms —
+  Settings → **Workflow Settings** (this applet's processes; label only) and Settings → **Approval
+  Settings** (`bl_fi_generic_doc_approval_*`; the real engine with e-mail). The pages should name
+  which is which; today a reader cannot tell. Add `workflow-design-applet` to `related_applets`.
+- **`content/en/applets/sales-workflow/internal-sales-invoice-applet.md`** (lane 1): its Configuration
+  section lists `FINAL_STATUS_GUID` under "rendered but unread". It *is* read in the Sales Order V2
+  sibling and gates the FINAL button; worth re-checking whether the invoice's own view component
+  reads it before leaving it in the no-op list.
+- **`content/en/applets/inventory-workflow/stock-take-applet.md`** (lane 4, done run 13): add
+  `workflow-design-applet` to `related_applets` if not already there, and state that the transition
+  list it offers is filtered by the user's roles — an empty list means the transition has no Role row,
+  not that the session is locked.
+- **`content/en/applets/rma/internal-rma-applet.md`** and
+  **`content/en/applets/sales-workflow/car-workshop-applet.md`** (lane 2 → now this lane): these are
+  the **only** consumers whose transition triggers execute. Their Lifecycle sections should describe
+  the `SvcIssueProcessStatusProcessor` cascade over the internal / customer / supplier process columns.
+- **`content/en/applets/integrations/webhook-applet.md`** (lane 2 → now this lane): should say that
+  applet triggers are the *only* event mechanism — a workflow transition fires nothing.
+- **`content/en/applets/external-tenant-admin/tenant-admin-applet.md`** (lane 3): roles and
+  role-to-user assignment are the gate on every workflow transition; add `workflow-design-applet`.
+- **`content/en/applets/master-data/organisation-applet.md`** (lane 4, done run 17): add
+  `workflow-design-applet` to `related_applets` — processes are attached per company.
+- Any page or guide claiming a workflow status change sends an e-mail, an SMS or a webhook is wrong
+  and should be corrected on sight.
+
+## Lane 2 queue adopted
+
+Lane 4's own queue is empty. Per the run-29 instruction I have started taking pages from
+`planning/lanes/lane-2/state.json` in order; `folders` in lane 4's state now also lists `finance`,
+`crm`, `integrations`, `rma`, `human-resources`, and `adopted_from` records the handover.
+First adopted page: `content/en/applets/finance/deposit-applet.md`. **The coordinator should move the
+remaining 23 items out of lane 2's queue** so the two lanes cannot collide:
+`integrations/developer-sysadmin-applet`, `finance/e-mandate-applet`, `crm/engagement-applet`,
+`crm/events-management-applet`, `finance/fixed-asset-applet`, `finance/general-ledger-applet`,
+`integrations/ingram-micro-ms-esd-applet`, `crm/installation-of-team-maintenance-applet`,
+`rma/internal-rma-applet`, `crm/introduction-to-team-maintenance-applet`, `finance/investment-applet`,
+`finance/investment-guide`, `finance/mm-deposit-applet`, `finance/revenue-management-applet`,
+`finance/sst-applet`, `finance/statement-of-account-applet`, `integrations/t2t-admin-applet`,
+`crm/team-maintenance-applet`, `finance/txn-recon-applet`, `crm/unified-contact-center-ucc-applet`,
+`integrations/vstecs-ms-esd-order-applet`, `rma/warranty-admin-applet`,
+`integrations/webhook-applet`.
+
+## Notes for the loop
+
+- `kb/topics/workflow-design.md` created. The slug matches what
+  `kb/topics/internal-purchase-requisition-applet.md` and `kb/topics/stock-take.md` already reference;
+  `kb/topics/internal-purchase-order-supplier-access-applet.md` uses `workflow-process` and
+  `kb/topics/internal-purchase-order-applet.md` uses `approval-workflow` for the same thing — both are
+  listed as aliases in the new topic, and those two `related:` lines should be normalised to
+  `workflow-design`.
+- METHOD candidate §33: **when an applet's screens are a role-filtered list, read the SQL, not the
+  component.** The whole behaviour of Workflow Design lives in one `ProcessStatusUow` query; the
+  Angular side just renders whatever comes back. Any applet whose UI "sometimes shows nothing" is a
+  join to go and read.
+- METHOD candidate §34: **check whether a second, newer subsystem does the same job.** Workflow Design
+  and `bl_fi_generic_doc_approval_*` both look like "approvals"; the older one is inert and the newer
+  one is real. Before documenting a feature, grep the schema for a second table family with the same
+  noun.
+- `tests/content-lint.sh` passes.
+
+## Adopted page 1 — `finance/deposit-applet.md`: IA question settled before writing
+
+Reconnaissance only this run; the page stays in the queue and gets its full rewrite next run. What is
+now established, so the next run does not have to re-litigate it:
+
+- **One registry row, two pages.** `depositApplet` / "Deposit Applet" (TNT-USER, ACTIVE,
+  `documentation_url` = `https://wiki.bigledger.com/applets/mm-deposit-applet/`). Both
+  `content/en/applets/finance/deposit-applet.md` (438 lines) and
+  `content/en/applets/finance/mm-deposit-applet.md` describe it; the latter carries the alias
+  `/applets/mm-deposit-applet/` that matches the registry URL. Both sit in lane 2's queue.
+- **There is no second "general deposits" applet.** `blg-applet-wavelet-deposit-applet`
+  (`micro-fe/projects/wavelet-erp/applets/deposit-applet/src/app/app.routing.ts` and
+  `models/menu-items.ts` at commit 442b3ae) exposes exactly three routes —
+  `deposit-requisition`, `deposit-register`, `deposit-category`, labelled **MM Deposit Requisition /
+  MM Deposit Register / MM Deposit Category**. Nothing about security deposits, utility deposits or
+  reclaim tracking exists.
+- **So `content/en/modules-v2/financial-accounting/_index.md` L178–179 is wrong**: it lists
+  "MM Deposit Applet — money market" and "Deposit Applet — for other deposit instruments (security
+  deposits, utilities) … deposit balance and reclaim tracking" as two different applets. That
+  distinction is invented. Lane 3/coordinator: one row, one link.
+- **Recommendation (Vincent's call, F-0050 pattern):** keep `finance/deposit-applet.md` as the
+  canonical page — its slug matches the registry code and name, and the three inbound applet links
+  (`modules-v2/financial-accounting`, `inventory-workflow/related-applets-stock-balance`,
+  `finance/investment-applet`) already point at it — move the `/applets/mm-deposit-applet/` alias onto
+  it, fold in anything accurate from `mm-deposit-applet.md`, and delete that file. Until decided,
+  neither page should be rewritten twice.
+- Two defects visible without opening the code: `deposit-applet.md` names three real Malaysian banks
+  in its worked example (CLAUDE.md forbids naming real banks) and is written in guide voice with a
+  "Work in Progress" callout, TL;DR heading and emoji; `mm-deposit-applet.md` contains mojibake
+  (`requestâ†'approval`, `â€'`) that the lint's allowlist is currently letting through.

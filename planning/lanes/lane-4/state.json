@@ -2,10 +2,15 @@
  "lane": 4,
  "folders": [
   "inventory-workflow",
-  "master-data"
+  "master-data",
+  "finance",
+  "crm",
+  "integrations",
+  "rma",
+  "human-resources"
  ],
  "queue": [
-  "content/en/applets/master-data/workflow-design-applet.md"
+  "content/en/applets/finance/deposit-applet.md"
  ],
  "done": [
   {
@@ -155,6 +160,12 @@
    "date": "2026-09-06",
    "run": 28,
    "note": "Registry warehouse_management_system_applet 'Warehouse Management System Applet' (title changed from 'Warehouse Management Applet'); existing alias /applets/warehouse-management-system-applet/ = registry documentation_url, kept. Full rewrite of a 1663-line invented user guide down to a 530-line reference. Applet-LOCAL FieldConfigurationComponent (18 keys declared+rendered+persisted, 15 consumed; ENABLE_BUNDLE_CONFIG_UPON_FINAL / ENABLE_CAMERA_SCANNER / ENABLE_SCAN_CODE_SEARCH dead, ENABLE_BRANCH_FILTER model-only). Both Default Selection screens unwired; Feature Visibility is a hard-coded stub; no client-side permission rows seeded. No journal and no bl_inv_txn_line anywhere in the WMS - Packing List drafts INTERNAL_OUTBOUND_DELIVERY_ORDER (0/0) or INTERNAL_OUTBOUND_STOCK_TRANSFER (0/-1). Picking Queue fed only by Sales Order V2's 'Send to Warehouse Picking Queue'. 21 of 23 images dropped (person full names, a real insurer name, developer test data, AI infographic) - recapture list in findings run 28. Topic kb/topics/warehouse-management.md (new)."
+  },
+  {
+   "page": "content/en/applets/master-data/workflow-design-applet.md",
+   "date": "2026-09-06",
+   "run": 29,
+   "note": "Registry workflow_design_applet 'Workflow Design Applet' (title unchanged; registry documentation_url = this page, no alias needed). Full rewrite of an invented page (webhooks/e-mail/delegation/version-control/conditional routing all fabricated). Shared FieldConfigurationComponent via app.routing.ts (the applet's own local field-configuration is the unbound 8-toggle stub, routed nowhere); no tabMappings entry so 235 controls render at the pinned shared-utilities commit f1ded040 / 237 at HEAD, and only PRINTABLE is consumed. Backend proofs: available-status endpoint inner-joins transition->role->user (no Role row = empty drop-down); generic-doc DCO validates FK existence only, so the status is a label; FINAL_STATUS_GUID is the only gate and it is client-side button visibility. Transition Actions/Action Types/Subscribers are never executed; triggers only by the service-issue (RMA) processor. Distinguished from the separate bl_fi_generic_doc_approval_* engine. 8 of 11 images dropped (person names / a real brand / a possible customer abbreviation / AI infographic) - quarantine list in findings run 29. Topic kb/topics/workflow-design.md (new; the slug three neighbouring topics already reference)."
   }
  ],
  "skipped": [
@@ -208,6 +219,14 @@
    "page": "content/en/applets/inventory-workflow/stock-availability-applet.md",
    "date": "2026-09-05",
    "run": 4
+  }
+ ],
+ "adopted_from": [
+  {
+   "lane": 2,
+   "date": "2026-09-06",
+   "run": 29,
+   "note": "Lane 2 drained; started taking pages from planning/lanes/lane-2/state.json queue, in order. Folders finance, crm, integrations, rma, human-resources added to this lane's editable folders."
   }
  ]
 }
