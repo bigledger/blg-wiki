@@ -1556,3 +1556,216 @@ Recapture list (clean demo tenant): the Settings → Field Settings and Default 
 - METHOD note for §27's neighbourhood: **a `.gitmodules` entry does not mean the applet uses the shared settings screen.** Tax Configuration has the submodule and still defines its own `FieldConfigurationComponent` under `components/settings-container/`. Classify by what `app.routing.ts` imports, not by the submodule's presence.
 - METHOD note: **an applet-local settings screen can be a non-functional stub.** Check for a form control / model binding and a click handler on SAVE before documenting a single toggle. Three of the last five master-data applets shipped the same unbound 8-toggle "Lines Settings / Department Settings" panel.
 - `tests/content-lint.sh` passes.
+
+---
+
+# Run 28 — Warehouse Management System Applet
+
+**Page:** `content/en/applets/inventory-workflow/warehouse-management-applet.md`
+**Registry:** `warehouse_management_system_applet` · "Warehouse Management System Applet" · TNT-ADMIN · ACTIVE ·
+`documentation_url = https://wiki.bigledger.com/applets/warehouse-management-system-applet/`, which was
+already the page's `aliases` entry — kept, no new alias needed.
+**Repo:** `blg-applet-wavelet-warehouse-management-system-applet` (HEAD `0f0ebb70`).
+**Backend:** `blg-akaun-platform-java` — `…/erp/wms/` in `javasdk/domain`, `client-sdk/dal/table`,
+`akaun-api/controller` and `akaun-api/jobProcessor` (300 `*Wms*` files).
+
+Title changed from "Warehouse Management Applet" to the registry name. The page went from 1663 lines
+of user-guide prose to 530 lines of reference.
+
+## What the old page got wrong
+
+Almost the whole Configuration section was invented. Specifically:
+
+- "Application Settings let administrators define whether specific fields are Required, Optional, or
+  Hidden" with a four-column *Setting Name / Module / Field / Behaviour* table — **no such screen
+  exists.** The real screen is 18 named toggles and drop-downs in two tabs.
+- "Default Selection … Default Warehouse / Default Layout / Default UOM" — the real screen offers
+  Default Branch and Default Location, and it does not work at all.
+- "Feature Visibility … select the role, toggle features On/Off, changes take effect immediately" —
+  the component is a stub with three hard-coded team names and no save handler.
+- Webhook use-case table (Receiving Doc created → ERP, Packing List posted → customer portal, …) —
+  entirely invented; the applet has a `settings/webhook` route and nothing that emits an event.
+- "Audit Trail (`Settings > Applet Log`)" — the link exists in the shared sidebar but this applet has
+  no `applet-log` route, so it lands on 404. Same for Release Notes.
+- Receiving Doc statuses "Draft / Submitted / Posted / Cancelled" — `WmsPostingStatusColumn` has
+  exactly two values, `DRAFT` and `FINAL`.
+- "Picking Queue … all pending order items sorted by Sales Invoice" — the queue is fed only from the
+  Sales Order applet and the listing hard-codes `server_doc_type: "INTERNAL_SALES_ORDER"`. The
+  column is *labelled* "Sales Invoice No" but holds the sales order's `server_doc_1`.
+- WMS Item Maintenance "storage class / handling notes / min-max stacking rules" — `bl_wms_item_hdr`
+  has item code, name, type, UOM, description, stock balance and four dimension columns. Nothing else.
+
+## Facts established (all cited in the page's `sources:` map)
+
+1. **Settings are applet-local.** `app.routing.ts` maps `settings/field-settings` to the repo's own
+   `components/settings-container/field-configuration/FieldConfigurationComponent`. The repo *does*
+   carry the shared-utilities submodule (pinned `cf8379f2`), used only for the settings shell, the
+   permission screens, feature visibility, webhook and the personalization sidebar. This is METHOD §29
+   again — a `.gitmodules` entry proves nothing.
+2. **Four proofs.** 18 keys are declared in the form group, all 18 are rendered (15 slide toggles +
+   3 drop-downs across two `mat-tab`s), all 18 are persisted by one SAVE (`saveMasterSettingsInit` →
+   `bl_applet_ext` `param_code = APPLET_SETTINGS`, `param_type = JSON`; the storage shape is visible
+   in `packed-list-scan-listing.component.ts`, which re-reads the ext row directly). **15 are
+   consumed.** Dead: `ENABLE_BUNDLE_CONFIG_UPON_FINAL`, `ENABLE_CAMERA_SCANNER`,
+   `ENABLE_SCAN_CODE_SEARCH` — no reader in the applet and, per §15, no Java-side reader either
+   (`grep` for all key names across `blg-akaun-platform-java` returns nothing). `ENABLE_BRANCH_FILTER`
+   is in `applet-settings.model.ts` only: not rendered, not saved, not read.
+3. **Two settings-form quirks worth keeping.** (a) The Picking List toggle is *labelled*
+   `ENABLE_CONSOLIDATED_PACKING_LIST_CONVERSION` but bound to `ENABLE_CONSOLIDATED_PACKING_LIST`;
+   the long name is not a key. (b) Three mutually-exclusive pairs are enforced in the settings form
+   only (camera vs scan-code, cart scan by container vs by container+item, packed scan by container
+   vs by container+item) — a value pushed straight into `bl_applet_ext` can set both.
+4. **Both Default Selection screens are unwired.** `DefaultSettingsComponent` and
+   `PersonalDefaultSettingsComponent` declare `appletContainer: AppletContainerModel` and never assign
+   it (the personal one's populating subscription is commented out); their `valueChanges` handlers
+   dereference `this.appletContainer.bl_applet_exts` and throw, and SAVE emits an `@Output` nobody
+   binds because both are routed directly. Consequence: `DEFAULT_LOCATION` is *read* in three places
+   (Receiving Doc create, Space Container Allocation create/edit) and has **no working writer
+   anywhere in the applet**. Same decoy shape already recorded for Shipping Pricebook (run 20),
+   Merchant Admin (run 16) and Supplier (run 26).
+5. **The applet moves no stock and posts no journal.** No `bl_wms_*` table has a
+   `*DataConsistencyObject` under `FinancialDocDataConsistencyObject/`, no `JournalPostingTypeHandler`
+   entry, no `bl_inv_txn_line` write. The outbound flow ends by *drafting* a generic document:
+   `INTERNAL_OUTBOUND_DELIVERY_ORDER` (amount signum 0, quantity signum 0 — moves nothing even at
+   FINAL) or `INTERNAL_OUTBOUND_STOCK_TRANSFER` (amount 0, quantity −1). Both are written with
+   `posting_status = DRAFT` and finalised in their own applets. This is the single most important
+   correction the page makes.
+6. **The Picking Queue has exactly one producer, and it is outside this applet.**
+   `wms-pick-pack-queues/insert-wms-picking-queue/backoffice-ep` is called only from
+   `insertToWarehousePickingQueue` in the ts-lib, and the only non-`node_modules` callers in the org
+   are the Sales Order (Internal) V2 applet and the Shopee Sales Order applet (plus two
+   customer-specific copies, not cited). The endpoint copies `bl_fi_pick_pack_queue` rows into
+   `bl_wms_pick_pack_queue` and **deletes the finance-side rows**.
+7. **`createPickingList` ignores your selection and the queue balance.** It groups the selected WMS
+   queue rows by *source document header*, then iterates every `bl_fi_generic_doc_line` of that
+   document, setting `qty_to_pick = quantity_base.intValue()`. So (a) selecting one line of a sales
+   order produces a picking list covering all its lines, (b) partial shipments are picked at the full
+   ordered quantity, and (c) fractional quantities are truncated because `qty_to_pick` / `qty_picked`
+   are `Integer` columns on `bl_wms_picking_list_line`. All selected queue rows are deleted in the
+   same transaction.
+8. **The Receiving Doc FINAL button has two code paths.** From the *listing*,
+   `ENABLE_AUTO_ITEM_ALLOCATION_TO_CONTAINER` chooses between `auto-allocate-items` and the plain
+   processing-queue insert. From the *editor*, `ReceivingDocActions.updatePostingStatus` always goes
+   through `insertToProcessingQueueByAutoAllocation` — the setting is ignored. Turning the setting off
+   therefore appears not to work depending on which screen the user finalises from.
+9. **Status vocabularies.** Receiving Doc `posting_status`: `DRAFT` → `FINAL`. Putaway
+   `process_status`: `PENDING_ALLOCATION` (no `layout_node_guid` on the container's `property_json`)
+   or `PLANNED_ALLOCATION` → `COMPLETED_ALLOCATION` (slotting creates the node↔container link and
+   deletes the putaway processing-queue row). Picking list `packing_status`: `PENDING_PICKING` →
+   `IN_PACKING_STATION`. Packing list line: `UNPACKED` → `PACKED`. Source generic document header and
+   lines: `IN_PROGRESS` → `COMPLETED` (`PackingStatusEnum`).
+10. **VOID is asymmetric.** `FINANCIAL_PICK_PACK_QUEUE_VOID_PROCESSOR` fires when an
+    `INTERNAL_SALES_ORDER` reaches `VOID`. It deletes the order's `bl_fi_pick_pack_queue` rows and its
+    picking list **only while the picking list is `PENDING_PICKING`**; after `IN_PACKING_STATION` it
+    does nothing. It never touches `bl_wms_pick_pack_queue`, so anything already pulled into the
+    warehouse queue is orphaned by the void.
+11. **Consolidated DO rules.** *Create DO* requires all selected packing lists to share one
+    `doc_entity_hdr_guid` — otherwise `Core2BadRequestException("Customers are not the same for
+    consolidated DO")` — and carries only lines with `packing_status = PACKED`. Only `DRAFT` packing
+    lists are eligible (filtered client-side).
+12. **Permissions.** `bl_applet_client_side_perm_dfn` joined to `bl_applet_hdr` on `applet_guid` has
+    **zero rows** for this applet code (akaun_master, 2026-09-06). No `hasPermission()` call and no
+    `SHOW_*`/`HIDE_*` constant exists in the applet. The one live `HIDE_*` reference
+    (`!appletSettings.HIDE_UNIT_PRICE_STD_PRICING_SCHEME || SHOW_UNIT_PRICE_STD_PRICING_SCHEME`) reads
+    a key in no model and a component property that is never declared, so the guarded control is
+    always shown. The `PermissionResolver` *does* register a **Warehouse** target view, so server-side
+    permissions can be scoped per warehouse — that is the only applet-specific permission surface.
+13. **Dead UI worth naming.** The receiving line's *Bin Number* tab has four `Validators.required`
+    fields and no save handler or dispatch at all. `space-container-allocation-report` has a route and
+    no menu entry (commented out in `menu-items.ts`). The Picking List *Search* and *Packing List*
+    tabs and the Packing List *Export/Print* tab are commented out in the templates.
+14. **Shared-utilities drift (METHOD §26).** At the pinned commit the settings sidebar also renders a
+    *Client Side Permissions* group (Applet Access, Role Pricing Scheme Linking, Teams→404, Roles→404)
+    and an *Integration → Triggers* group; at HEAD both are commented out and *Audit Trail* is gone
+    too. The product screenshot shows neither the client-side nor the integration group but still
+    shows Audit Trail — i.e. the deployed bundle is a third state, between pinned and HEAD. The page
+    describes the sidebar as the screenshot shows it and flags Release Notes / Audit Trail as 404s.
+
+## Registry / naming mismatches
+
+None. Exactly one ACTIVE row matches (`bl_applet_hdr` queried live 2026-09-06 for `%warehouse%` /
+`%wms%`), the `documentation_url` already resolves to this page, and there is no second page for it.
+
+## Cross-lane link requests (7)
+
+- `content/en/applets/master-data/inv-item-maintenance-applet.md` (lane 4, done — **needs correcting**)
+  — three places say Warehouse Management owns "Locations (`bl_inv_mst_location`)" (front-matter
+  Upstream table, the Location tab paragraph, and Related documentation). It does not. Locations are
+  owned by [Organisation](/applets/master-data/organisation-applet/). Warehouse Management owns a
+  *separate* warehouse → layout → node → container hierarchy in `bl_wms_*`. Re-point those three
+  references at Organisation.
+- `content/en/applets/inventory-workflow/stock-reservation-applet.md` (lane 4, done — **needs
+  correcting**) — three places say bin headers/lines that a bin reservation points at are "maintained
+  in Warehouse Management". They are not: the WMS *Bin Number* tab is dead code with no save handler,
+  and the WMS writes none of the `bl_inv_bin_*` tables. Either name the real owner or drop the claim.
+- `content/en/applets/sales-workflow/internal-sales-order-applet.md` (lane 2/3) — add
+  `warehouse-management-applet` to `related_applets`, and document the **Pick Pack Queue → Send to
+  Warehouse Picking Queue** button: it is the only way rows reach the WMS Picking Queue, it deletes the
+  finance-side `bl_fi_pick_pack_queue` rows in the process, and VOIDing the order afterwards will not
+  clean up what has already been pulled across.
+- `content/en/applets/sales-workflow/internal-outbound-delivery-order-applet.md` (lane 2/3) — add
+  `warehouse-management-applet` to `related_applets` and state that a DO can arrive already created in
+  `DRAFT` from a WMS Packing List (consolidated, one customer only, PACKED lines only) or from
+  *Batch Process DO* (one per packing list, priced from `DEFAULT_PRICING_SCHEME`). Also worth stating
+  there that this doc type is 0/0 — it moves no stock.
+- `content/en/applets/inventory-workflow/stock-transfer-applet.md` (lane 4, done) — it already links
+  Warehouse Management with "packing lists reference outbound transfers". Sharpen: the WMS *creates*
+  the `INTERNAL_OUTBOUND_STOCK_TRANSFER` in `DRAFT` from the Packing List's Doc Conversion tab, with
+  company/branch/from-location/to-location/date all required on that form and prefilled from
+  `DEFAULT_COMPANY` / `DEFAULT_BRANCH` in the WMS applet settings. That is the only stock-moving exit
+  from the warehouse flow.
+- `content/en/applets/ecommerce/` — the Shopee Sales Order applet also calls
+  `insertToWarehousePickingQueue`. Whoever owns that page should note it, and note that the WMS
+  Picking Queue listing filters to `INTERNAL_SALES_ORDER`, so Shopee-pushed rows of another doc type
+  would never surface. (Open question in the topic file.)
+- `content/en/modules-v2/inventory/related-applets/_index.md` — its Warehouse Management entry should
+  say the applet drafts documents rather than posting stock, so readers do not look for a journal.
+
+## Screenshots (run 28)
+
+Kept (2 of 23 in `static/images/warehouse-management-applet/`):
+- `application_settings_details_1774408664855.png` — Applet Settings → Application Settings, Inbound
+  Process tab, showing the three Receiving Doc toggles and the collapsed Scan Session / GRN Processing
+  Queue panels. No grid data, no names. Also independently confirms the settings sidebar groups.
+- `applet_settings_listing_1774408553901.png` — the empty *Teams / Manage Team Access* panel you land
+  on when you click Settings, i.e. Feature Visibility. No data.
+
+Dropped (21) — all listing/form captures from a staging tenant whose test data carries a **full
+personal name** repeated across the PIC and Supplier columns, a **real Malaysian insurer's registered
+name** in a Supplier cell, and developer test records built from people's first names
+(`SaadTest`, `ShyamWarehouse`, `Reza Warehouse Inc.`, `E Solutions Warehouse`):
+`warehouse_listing_*`, `warehouse_listing_advanced_search_*`, `create_warehouse_*`,
+`edit_warehouse_details_*`, `edit_warehouse_layout_*`, `edit_warehouse_node_setting_*`,
+`receiving_doc_listing_*` (both), `receiving_doc_creation_*`, `receiving_line_listing_*`,
+`processing_queue_listing_*`, `putaway_list_listing_*`, `putaway_processing_listing_*`,
+`scan_session_listing_*` (which is in fact a capture of the *Receiving Lines* screen, mislabelled),
+`picking_queue_listing_*`, `picking_list_listing_*`, `packing_list_listing_*`,
+`space_container_allocation_listing_*` (both), `warehouse_container_listing_*`,
+`warehouse_container_view_drawer_*`, `warehouse_picker_listing_*`,
+`warehouse_picker_view_drawer_*`. Plus `warehouse-management-overview-infographic.png` — AI marketing
+infographic, same decision as Pricebook / Stock Balance / Stock Conversion / Stock Replenishment /
+Supplier / Tax Configuration. Quarantine.
+
+Recapture list (clean demo tenant, no real names): Warehouse listing + Create Warehouse; the Layout
+and Node Setting tabs with a populated node tree; Receiving Doc listing showing the FINAL button;
+Receiving Doc editor tab strip (Main Details / Account / Lines / Generic Document / External Generic
+Document / Attachments); Processing Queue with the putaway-allocation and bulk-update controls
+enabled; Putaway List showing all three process statuses; Space Container Allocation create with the
+scan fields; Picking Queue with the Location Balance / Company Balance columns; Picking List editor
+tab strip; Packing List Doc Conversion tab; Containers; Pickers; the Outbound Settings tab of
+Application Settings.
+
+## Notes for the loop
+
+- `kb/topics/warehouse-management.md` created (new slug; nothing referenced it before).
+- METHOD candidate §31: **"the queue this applet reads is filled by a different applet."** Before
+  writing a queue-driven applet's Lifecycle, grep the org for the *producer* endpoint
+  (`grep -rl <method> --include=*.ts refs/ | grep -v node_modules`). Here the entire outbound flow is
+  inert until a button in a sales applet is pressed, and no amount of reading the WMS repo would have
+  shown that.
+- METHOD candidate §32: **a conversion applet's posting section is the target document's signums, not
+  its own.** Warehouse Management has no DCO at all; the honest posting proof block is a row of "not
+  applicable" plus a table of what the *drafted* documents will do when someone else finalises them.
+- Two `Integer` columns (`qty_to_pick`, `qty_picked`) in a system whose quantities are `BigDecimal`
+  everywhere else. Worth a bug report independent of the docs.
+- `tests/content-lint.sh` passes.

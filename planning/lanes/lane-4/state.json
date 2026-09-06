@@ -5,7 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/inventory-workflow/warehouse-management-applet.md",
   "content/en/applets/master-data/workflow-design-applet.md"
  ],
  "done": [
@@ -150,6 +149,12 @@
    "date": "2026-09-06",
    "run": 27,
    "note": "Registry taxConfiguration 'Tax Configuration' (title changed from 'Tax Configuration Applet'). Alias /applets/tax-configuration-applet/ added - it was unclaimed and ~10 module/applet pages already link to it. Full rewrite of an invented page. No working applet setting (Field Settings unbound stub; Default Selection unwired, applet and personal). Tax GL mapping is the company OUTPUT_TAX/INPUT_TAX default GL link, not the tax code; half-configured link drops the tax journal line silently. MY-SST applet writes the same bl_fi_cfg_tax_code table with a different tax_country encoding and no rate rounding. F-0040: finance/tax-config-applet.md is the duplicate (holds the registry documentation_url alias) - not edited, merge recommendation in findings run 27. 4 of 6 screenshots kept."
+  },
+  {
+   "page": "content/en/applets/inventory-workflow/warehouse-management-applet.md",
+   "date": "2026-09-06",
+   "run": 28,
+   "note": "Registry warehouse_management_system_applet 'Warehouse Management System Applet' (title changed from 'Warehouse Management Applet'); existing alias /applets/warehouse-management-system-applet/ = registry documentation_url, kept. Full rewrite of a 1663-line invented user guide down to a 530-line reference. Applet-LOCAL FieldConfigurationComponent (18 keys declared+rendered+persisted, 15 consumed; ENABLE_BUNDLE_CONFIG_UPON_FINAL / ENABLE_CAMERA_SCANNER / ENABLE_SCAN_CODE_SEARCH dead, ENABLE_BRANCH_FILTER model-only). Both Default Selection screens unwired; Feature Visibility is a hard-coded stub; no client-side permission rows seeded. No journal and no bl_inv_txn_line anywhere in the WMS - Packing List drafts INTERNAL_OUTBOUND_DELIVERY_ORDER (0/0) or INTERNAL_OUTBOUND_STOCK_TRANSFER (0/-1). Picking Queue fed only by Sales Order V2's 'Send to Warehouse Picking Queue'. 21 of 23 images dropped (person full names, a real insurer name, developer test data, AI infographic) - recapture list in findings run 28. Topic kb/topics/warehouse-management.md (new)."
   }
  ],
  "skipped": [
