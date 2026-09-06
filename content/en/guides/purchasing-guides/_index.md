@@ -19,8 +19,8 @@ New to purchasing in BigLedger? Start with the standard workflow to learn the fu
 {{< /cards >}}
 
 **Before you begin, ensure:**
-- Supplier master data is configured in [Supplier Maintenance](/applets/supplier-maintenance-applet/)
-- Inventory items are set up in [Item Maintenance](/applets/inv-item-maintenance-applet/)
+- Supplier master data is configured in [Supplier Maintenance](/applets/master-data/supplier-applet-1/)
+- Inventory items are set up in [Item Maintenance](/applets/inventory-workflow/inv-item-maintenance-applet/)
 - Chart of accounts includes purchase expense and tax accounts
 - *(Optional)* Purchase order or requisition approvals are configured, if you want them — see [Document Approvals](/guides/document-approvals/)
 
@@ -58,14 +58,14 @@ Watch out for these frequent purchasing issues:
 | Scenario | What Happens | How to Handle |
 |----------|-------------|---------------|
 | **Partial deliveries** | Only some items arrive | Create GRN for received quantity, keep PO open for balance |
-| **Price changed since PO** | Invoice doesn't match PO price | If within tolerance, accept; if significant, get approval first |
+| **Price changed since PO** | The knocked-off invoice shows the ordered price; the supplier's paper shows theirs | Settle it before FINAL — a draft can be discarded, a finalised invoice can only be voided or credited |
 | **Goods damaged in transit** | Stock quality issue | GRN for good items, reject damaged, request credit note from supplier |
 | **Invoice lost or delayed** | Month-end close blocked | Track outstanding GRNs, follow up with supplier, accrue for close |
-| **Urgent after-hours purchase** | No time for standard process | Use Direct GRN workflow, document reason, get retrospective approval |
+| **Urgent after-hours purchase** | No time for the standard process | Use the Direct GRN workflow and write the reason and who agreed it into the remarks — that sentence is the whole audit trail |
 | **Duplicate PO created** | Double-ordering risk | Check existing POs before creating new ones; search by supplier |
 
 {{< callout type="warning" >}}
-**Three-Way Matching**: Always verify PO ↔ GRN ↔ Invoice match before processing payment. Discrepancies in quantity or price should be resolved before approval.
+**Check PO ↔ GRN ↔ Invoice yourself.** The knock-off puts the real quantities and prices on your screen, but nothing compares them to the supplier's paper for you and nothing flags a difference. The check happens before you click FINAL on the invoice, or it does not happen.
 {{< /callout >}}
 
 ---
@@ -74,38 +74,47 @@ Watch out for these frequent purchasing issues:
 
 Track your procurement performance and spending health.
 
-**Key Purchasing Reports:**
-- **PO Status Report** — All POs by status (Draft, Approved, Partial, Complete)
-- **GRN Pending Report** — Outstanding goods not yet received
-- **Invoice Aging Report** — Unpaid supplier invoices by age
-- **Purchase by Supplier** — Spend analysis by supplier
-- **Purchase by Item** — Item-level procurement analysis
-- **Three-Way Matching Report** — Match status across PO, GRN, and Invoice
+**Where the numbers actually live:**
+
+- **[Purchase Report](/applets/purchase-workflow/purchase-report-applet/)** — purchase analysis across purchase orders, GRNs and invoices.
+- **Purchase Order Queue** (inside the Purchase Order applet) — the open-queue rows: lines you have committed to and not yet received or invoiced. This is your outstanding-orders list.
+- **PO Line with GRN KO** and **PO Line with PI KO** (same applet) — your ordered lines set against what has actually been received, and against what has been invoiced.
+- **[Creditor Report](/applets/finance/creditor-report-applet/)** and **[Debtor and Creditor Report](/applets/finance/debtor-and-creditor-report-applet/)** — what you owe suppliers, by age.
+- **[Stock Availability](/applets/inventory-workflow/stock-availability-applet/)** — including *GRN quantity*: goods received and not yet invoiced.
 
 **Reporting tips:**
-- Check GRN Pending weekly to follow up on late deliveries
-- Review Invoice Aging to manage cash flow and payment scheduling
-- Use Supplier Spend analysis quarterly for contract negotiations
-- Monitor three-way matching rate to identify process issues
+- Check the Purchase Order Queue weekly and chase anything overdue.
+- Use *PO Line with GRN KO* to find orders that were partly delivered and forgotten — those are what the CLOSE button on the order is for.
+- Review creditor ageing before each payment run.
 
 ## Core Purchasing Concepts
 
-### Three-Way Matching
+### Matching is a knock-off, not a scoring engine
 
-The standard procurement process uses three-way matching to ensure accuracy:
+The controlled purchase path uses three documents:
 
-1. **Purchase Order (PO)** - What you ordered and the agreed price
-2. **Goods Received Note (GRN)** - What you actually received
-3. **Purchase Invoice** - What the supplier is charging you
+1. **Purchase Order** — what you ordered and the agreed price
+2. **Goods Received Note** — what actually arrived and was counted
+3. **Purchase Invoice** — what the supplier is charging you
 
-The system automatically compares these three documents to identify:
-- Quantity discrepancies (ordered 100, received 95)
-- Price differences (agreed $10, invoiced $12)
-- Missing items or over-deliveries
+They are tied together by **knock-off**: each document pulls the previous one's open lines in from the open queue, so the quantities on the bill are the quantities from the bay, and the quantities from the bay are set against the quantities you ordered.
 
 {{< callout type="warning" >}}
-**Control Point**: Three-way matching prevents unauthorized purchases, duplicate payments, and pricing errors. Enable this for high-value or high-risk purchases.
+**There is no variance engine.** BigLedger has no tolerance bands, no variance report and no automatic flag when a supplier bills a different quantity or price than you ordered. The knock-off brings the real numbers onto your screen; noticing that they differ from the supplier's paper is a person's job, and the moment to do it is before you click FINAL on the invoice.
 {{< /callout >}}
+
+### Which document does what
+
+| Document | Moves stock? | Posts to the ledger? |
+|---|---|---|
+| Purchase Order | No | No |
+| Purchase GRN | **No** | **No** |
+| Purchase GRN Stock In *(alternative path)* | Yes, stock in | Yes |
+| Purchase Invoice | **Yes, stock in** | **Yes** |
+| Purchase Invoice No Stock In *(pairs with GRN Stock In)* | No | Yes |
+| Payment Voucher | No | Yes |
+
+Your company uses **either** GRN → Purchase Invoice **or** GRN Stock In → Purchase Invoice No Stock In. Mixing a document from each pair either counts your stock twice or never counts it, with no warning.
 
 ### Document Flow Overview
 
@@ -185,8 +194,7 @@ Purchasing integrates seamlessly with:
 
 - **[Inventory Module](/modules/inventory/)** - Stock updates and warehouse management
 - **[Financial Accounting Module](/modules/financial-accounting/)** - Purchase accounting and AP
-- **[Fixed Assets Module](/modules/fixed-assets/)** - Capital equipment purchases
-- **[Project Accounting Module](/modules/project-accounting/)** - Project-specific procurement
+- **[Fixed Asset](/applets/finance/fixed-asset-applet/)** - Capital equipment, once purchased
 
 ## Document Management
 
@@ -249,35 +257,13 @@ document to FINAL when it completes, it does not block FINAL. If a threshold mat
 holds the finalise permission as well.
 {{< /callout >}}
 
-## Key Performance Indicators
-
-Track these metrics to optimize purchasing:
-
-### Efficiency Metrics
-- **PO Processing Time** - Time from requisition to PO issuance
-- **Receipt Accuracy** - Percentage of GRNs matching PO
-- **Invoice Matching Rate** - Percentage of clean three-way matches
-- **Approval Cycle Time** - Average time in approval workflow
-
-### Financial Metrics
-- **Cost Savings** - Negotiated savings vs. list price
-- **Payment Terms Compliance** - Early payment discount capture
-- **Invoice Error Rate** - Percentage requiring adjustment
-- **Supplier Performance** - On-time delivery and quality metrics
-
-### Compliance Metrics
-- **PO Coverage** - Percentage of spend with PO
-- **Contract Compliance** - Purchases under contract
-- **Audit Trail Completeness** - Documents attached to transactions
-- **Approval Compliance** - Purchases within approval limits
-
 ## Common Issues and Solutions
 
 ### Issue: Partial Deliveries
 **Solution**: Use the Standard Procurement Workflow. Create GRN for received quantity, keep PO open for balance.
 
 ### Issue: Price Changed Since PO
-**Solution**: If within tolerance, accept invoice. If significant, get approval before processing.
+**Solution**: You will see it when you knock the GRN off onto the invoice — your screen shows the ordered price, the supplier's paper shows theirs. Settle it before you finalise; a draft invoice can be discarded, a finalised one can only be voided or credited.
 
 ### Issue: Goods Damaged in Transit
 **Solution**: Create GRN for good items, reject damaged items, request credit note from supplier.
@@ -300,8 +286,8 @@ Explore the detailed daily task guides:
 ### For Implementation
 Review the module documentation:
 - [Purchasing Module Overview](/modules/purchasing/) - Complete module capabilities
-- [Supplier Maintenance](/applets/supplier-maintenance-applet/) - Supplier master data setup
-- [Inventory Item Maintenance](/applets/inv-item-maintenance-applet/) - Item master for purchasing
+- [Supplier Maintenance](/applets/master-data/supplier-applet-1/) - Supplier master data setup
+- [Inventory Item Maintenance](/applets/inventory-workflow/inv-item-maintenance-applet/) - Item master for purchasing
 
 {{< callout type="success" >}}
 **Getting Started**: New to purchasing in BigLedger? Start with the [Standard Procurement Workflow](/guides/purchasing-guides/standard-procurement-workflow) to learn the complete process, then explore simplified workflows as needed.

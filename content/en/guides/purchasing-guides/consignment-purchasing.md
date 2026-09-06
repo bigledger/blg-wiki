@@ -612,7 +612,7 @@ If terminating due to issues:
 ### Module Documentation
 - [Purchasing Module](/modules/purchasing/) - Complete purchasing features
 - [Inventory Module](/modules/inventory/) - Inventory management
-- [Supplier Maintenance](/applets/supplier-maintenance-applet/) - Supplier setup
+- [Supplier Maintenance](/applets/master-data/supplier-applet-1/) - Supplier setup
 
 {{< callout type="success" >}}
 **Workflow Mastery**: Consignment purchasing provides significant cash flow and risk benefits when implemented with strong usage tracking, regular reconciliation, and clear supplier agreements.

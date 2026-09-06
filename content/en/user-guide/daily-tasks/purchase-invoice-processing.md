@@ -1,837 +1,162 @@
 ---
 title: "Purchase Invoice Processing"
-description: "Complete guide to matching supplier invoices with POs and GRNs, handling variances, and processing payments"
-weight: 13
+description: "Book a supplier's bill against the order and the receipt, check it before you commit, and finalise it — the document that actually posts your stock and your payables."
+tags:
+- user-guide
+- purchasing
+- accounts-payable
+weight: 14
+sources:
+  - /applets/finance/internal-purchase-invoice-applet/
+  - /applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/
+  - /applets/purchase-workflow/internal-purchase-grn-applet/
+  - /applets/purchase-workflow/internal-purchase-order-applet/
+  - /applets/finance/internal-payment-voucher-applet/
+  - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/ServerDocTypes.java
+  - kb/topics/document-approval.md
 ---
 
-Master the critical process of matching supplier invoices to purchase orders and goods receipts, ensuring accurate payments and financial records.
+You are in accounts payable with a supplier's invoice in front of you, and by the end of this page you will have booked it against the order and the receipt, checked it, and finalised it — which is the moment your stock goes up, your input tax is claimable and you owe the supplier money. A clean invoice takes about three minutes. Budget longer for the first one on a new tenant, because that is when missing GL defaults surface.
 
-## What is Invoice Processing?
+Of the four documents in a normal purchase, **this is the one that does the accounting.** The purchase order committed you to nothing; the goods received note counted the boxes and posted nothing. The invoice books the stock in, posts the purchase and the input tax, and creates the creditor balance. Which means a mistake here is a mistake in your accounts, and FINAL cannot be undone.
 
-Purchase invoice processing involves:
-- Receiving supplier invoices
-- Matching invoices to POs and GRNs (three-way matching)
-- Verifying quantities, prices, and calculations
-- Resolving discrepancies
-- Obtaining approvals
-- Posting to accounts payable
-- Scheduling payment
+## Meet GadgetSphere
 
-{{< callout type="info" >}}
-**Why Three-Way Matching?**: Matching PO (what you ordered), GRN (what you received), and Invoice (what you're being charged) prevents overpayment, duplicate payments, and fraud.
-{{< /callout >}}
+GadgetSphere Sdn Bhd processes roughly 2,100 supplier invoices a month from authorised distributors and accessory wholesalers across its 22 branches. Today's invoice is for the earbud delivery at `GS-KV-01`: 200 units at RM 128, RM 25,600 net, RM 1,536 SST at 6%, RM 27,136 total, 30-day terms.
 
-## Before You Start
+## Before you start
 
-### Prerequisites
-- [ ] Supplier invoice received
-- [ ] PO exists (for standard purchases)
-- [ ] GRN completed (for goods purchases)
-- [ ] Supporting documents available
-- [ ] Your user account has invoice processing permission
-
-### What You Need
-- Supplier's invoice (original)
-- PO number (usually on invoice)
-- GRN number (if goods receipt)
-- Calculator for verification
-- Access to previous invoices for comparison
-
-### Estimated Time
-- **Clean match** (invoice matches PO/GRN exactly): 5-10 minutes
-- **With variances** (discrepancies to resolve): 20-60 minutes
-- **Service invoice** (no PO/GRN): 10-15 minutes
-
----
-
-## Invoice Receipt
-
-### Step 1: Receive and Log Invoice
-
-**Invoice arrival channels**:
-
-**Email** (most common):
-- Save PDF to designated folder
-- Forward to AP inbox
-- Note receipt date
-
-**Mail/Post**:
-- Open mail
-- Date stamp invoice
-- Scan immediately
-- Forward physical copy to filing
-
-**Supplier Portal**:
-- Download PDF from portal
-- Save to invoice folder
-- Mark as downloaded
-
-**Hand Delivery**:
-- Get acknowledgment from deliverer
-- Scan or process immediately
-
-**Initial Log**:
-When invoice arrives:
-1. Log in receiving register or system
-2. Note: Date received, supplier, invoice number, amount
-3. Assign to processor
-4. Set due date reminder
-
-### Step 2: Initial Invoice Validation
-
-**Quick checks before processing**:
-
-**Valid Tax Invoice Requirements**:
-- [ ] Supplier name and address
-- [ ] Tax registration number (if VAT/GST invoice)
-- [ ] Unique invoice number
-- [ ] Invoice date
-- [ ] Your company name (not another customer!)
-- [ ] Description of goods/services
-- [ ] Quantity and price
-- [ ] Tax calculation shown separately
-- [ ] Total amount
-- [ ] Payment terms
-- [ ] Supplier bank details (for payment)
-
-**Red Flags**:
-- ❌ Duplicate invoice number (check previous invoices)
-- ❌ Wrong company name (might be for different entity)
-- ❌ Suspiciously low/high amount
-- ❌ Bank account different from usual (fraud risk)
-- ❌ Invoice date in future
-- ❌ Poor quality/unprofessional format
-- ❌ Tax calculations incorrect
+- **The GRN is finalised.** A draft receipt has no open queue and will not appear when you look for it.
+- **The supplier exists** with the right AR/AP type on their profile. That type decides which creditor account this invoice credits — get it wrong and the money lands in the wrong place with no error.
+- **Your company's default GL codes are linked** — `PURCHASE`, `INPUT_TAX`, and the creditor account for the supplier's AR/AP type. This is the number one cause of a first invoice refusing to finalise.
+- **The period you are posting into is open.**
+- **You know which receipt path your company uses.** If your goods came in on a *Purchase GRN Stock In*, you must bill them with a *Purchase Invoice No Stock In*, not this document — see the warning below.
 
 {{< callout type="warning" >}}
-**Fraud Alert**: If bank account suddenly changes on invoice, CALL the supplier (don't email!) using known phone number to verify. Invoice email fraud is common.
+**Two paths, and you must stay in one.**
+
+- **Purchase GRN → Purchase Invoice** (this page). The GRN posts nothing; the invoice books stock and the liability together.
+- **Purchase GRN Stock In → Purchase Invoice No Stock In.** The GRN books the stock on receipt; the invoice books only the money.
+
+A *GRN Stock In* followed by a full *Purchase Invoice* counts the same goods into stock twice. A plain *GRN* followed by a *Purchase Invoice No Stock In* never counts them at all. Neither produces an error. If you are not certain which pair your company uses, ask before you finalise.
 {{< /callout >}}
 
-**If Invoice Fails Validation**:
-1. Hold invoice, don't process
-2. Contact supplier for clarification/correction
-3. Document issue in system
-4. Wait for corrected invoice
+## Step 1: Create the invoice and enter the header
 
----
+*Finance > Purchase Invoice (Internal) > Internal Purchase Invoice > Create*
 
-## Processing Standard Invoice (With PO and GRN)
+Click Create. **Branch and location are the only unconditionally required header fields** — set them to `GS-KV-01` and its location.
 
-### Step 3: Navigate and Start Invoice Entry
+Set the **transaction date** to the date on the supplier's invoice, not today. That date drives the accounting period, the input-tax claim period and the due date. Put the supplier's own invoice number in the reference field so you can find this document from their paperwork and so a duplicate stands out.
 
-**Navigation**: `[Purchasing > Purchase Invoices > New Invoice]`
+Credit terms come across from the supplier and produce the due date. For our 30-day terms on a March invoice, expect an April due date.
 
-**Or**: `[Accounts Payable > Supplier Invoices > New]`
+## Step 2: Choose the supplier
 
-**Select Invoice Type**:
-- **Against PO**: Standard invoice (most common)
-- **Against GRN**: Direct match to goods receipt
-- **Without PO/GRN**: Service invoice (direct entry)
+*Finance > Purchase Invoice (Internal) > (your draft) > Account*
 
-**For Standard Invoice**:
-1. Click **New Invoice** or **New Purchase Invoice**
-2. Select **Against Purchase Order** or **Against GRN**
-3. Continue to next step
+On the **Account** tab, pick the supplier. The sub-tabs cover the entity details, bill-to and ship-to addresses, and the intercompany link if this is a transaction between two companies of your group.
 
-### Step 4: Enter Invoice Header
+The supplier's AR/AP type is what decides the creditor account. If your tenant has more than one creditor account — trade, non-trade, related-party — this is where that distinction is made, silently, by the master data. It is worth a glance when you are booking a supplier for the first time.
 
-**Document Information**:
-- **Invoice Number**: Enter exactly as on supplier invoice
-  - System checks for duplicates
-  - If duplicate warning: Verify not already processed
-- **Invoice Date**: Date on invoice (not received date)
-- **Received Date**: When you received it (auto-fills to today)
-- **Due Date**: Calculated from invoice date + payment terms
-  - Or manual entry if due date stated on invoice
-- **GL Date**: Accounting period to record expense
-  - Usually same as invoice date
-  - Change for period-end adjustments
+## Step 3: Pull in the receipt
 
-**Supplier Information**:
-- **Supplier**: Start typing name, select from dropdown
-  - System auto-fills supplier details
-- **Currency**: Auto-filled from supplier/invoice
-  - Change if invoice in different currency
-- **Exchange Rate**: If foreign currency
-  - System uses current rate
-  - Override if invoice shows specific rate
+*Finance > Purchase Invoice (Internal) > (your draft) > KO For > Purchase GRN*
 
-**Reference Information**:
-- **PO Number**: Select PO this invoice is for
-  - Search by PO number
-  - Or search by supplier and date range
-- **GRN Number**: Select GRN if matching to GRN
-  - May auto-populate from PO
-  - Or select manually
-- **Supplier Reference**: Their reference from invoice
-- **Your Reference**: Internal reference if needed
+**Never key the lines by hand when a GRN exists.** Go to the **KO For** tab, choose *Purchase GRN*, and pick the finalised receipt. Only finalised, not-fully-knocked-off documents appear in the list; a receipt that has already been invoiced has gone.
 
-{{< callout type="tip" >}}
-**Quick Find PO**: If PO number is on invoice (usually is), use PO search. Fastest method to find correct PO.
-{{< /callout >}}
+The lines come across with the received quantities. This is where matching actually happens in BigLedger: it is a knock-off, not a scoring engine. There is no variance report and no tolerance check — the mismatch shows up as a difference between what is on your screen and what is on the supplier's paper, and it is your job to notice.
 
-### Step 5: Match Invoice to PO/GRN (Three-Way Matching)
+If your company's flow is order-to-invoice with no receipt document, choose *Purchase Order* on the same tab instead. If you need to look something up rather than knock it off, the **Search Document** panel on a saved draft searches purchase orders, GRNs and previous purchase invoices.
 
-**System displays**:
-- PO lines (what you ordered)
-- GRN lines (what you received)
-- Invoice entry fields (what you're being charged)
+*Watch out for:* if the receipt is not in the list, check in order — is it finalised, is it for this supplier, and has someone already invoiced it? All three are common and all three look identical from here.
 
-**For each line item**:
+## Step 4: Check the invoice against the paper
 
-#### Review PO and GRN Information
+*Finance > Purchase Invoice (Internal) > (your draft) > Line Items*
+
+This is the step people skip, and it is the only real control on the whole flow. Compare three things:
+
+**Quantity.** The lines came from the receipt, so they show what you actually received. If the supplier has billed 200 and you received 195, your screen says 195 and their paper says 200. Do not adjust the line to match their paper. Query it.
+
+**Price.** The receipt carries the order's price. If the supplier has billed RM 132 against an ordered RM 128, you will see RM 128 on screen and RM 132 on paper. A price increase may well be legitimate — but it should be agreed before it is posted, not after.
+
+**Tax.** Check the tax code on each line and the tax total. A 6% SST line on RM 25,600 is RM 1,536. If the supplier's invoice is not a valid tax invoice, you cannot claim the input tax, and finalising it anyway just moves the problem into your SST return.
+
+For each line you can open **Item Details**, **Pricing Details**, **Costing Details** and **Issue Link** for the detail behind the numbers.
+
+Anything that does not match: stop here. A draft invoice can be edited freely or discarded. A finalised one can only be voided — and voiding is blocked once a purchase return is linked to it, and blocked entirely once your company is live on e-Invoice, at which point your only route is a purchase credit note. Five minutes now against half a day later.
+
+## Step 5: Attach the invoice and finalise
+
+*Finance > Purchase Invoice (Internal) > (your draft) > Attachment, then FINAL*
+
+Attach the supplier's PDF or scan on the **Attachment** tab. Check the image is readable and that every page is there.
+
+There is **no approval step on a purchase invoice.** There is no Submit for Approval button and no approval queue, because BigLedger's approval engine covers only purchase orders, purchase requisitions and stock requisitions. Your control here is who holds the finalise permission. If your policy is that anything with a variance needs a second pair of eyes, build that into who can click FINAL — the system will not route it for you.
+
+Then click **FINAL**.
+
+**What FINAL posts.** For our invoice:
+
 ```
-Purchase Order:
-Item A: 100 units @ $10.00 = $1,000
-
-Goods Receipt:
-Item A: 95 units received (5 short)
-
-Expected Invoice:
-Item A: 95 units @ $10.00 = $950
+Dr  Purchase (or the item's GL code)   RM 25,600
+Dr  Input Tax                          RM  1,536
+    Cr  Creditor — the supplier                RM 27,136
 ```
 
-#### Enter Actual Invoice Information
+and 200 units into stock at `GS-KV-01`, with the serial number records created and the item's last purchase cost updated to RM 128.
 
-**Invoice Line Fields**:
-- **Item**: Auto-filled from PO/GRN
-- **Description**: Auto-filled, verify matches invoice
-- **Quantity**: Enter quantity on invoice
-- **Unit Price**: Enter price on invoice
-- **Amount**: Auto-calculated (Qty × Price)
-- **Tax Code**: Auto-filled, verify correct
-- **Tax Amount**: Enter tax amount from invoice
+Which GL code the purchase line lands in is decided in this order: a GL code on the line, then a GL code on the document header, then the item's own company GL link for purchases, then the company's default `PURCHASE`. Tax lines always use the company default `INPUT_TAX`. Discounts post to the purchase discount account; settlement forex differences post to forex gain or loss.
 
-**System Performs Matching**:
+If your company is live on e-Invoice, a finalised invoice with the self-billed flag is picked up by the My E-Invoice Portal automatically. The **E-Invoice** tab shows its MyInvois processing status and any failures.
 
-**Compares**:
-1. **PO vs Invoice**: Ordered price vs invoiced price
-2. **GRN vs Invoice**: Received quantity vs invoiced quantity
-3. **PO vs GRN**: Ordered vs received (already known)
+**Three errors that stop a FINAL:**
 
-**Matching Scenarios**:
+- **`MISSING_DEFAULT_GL_CODE: <code>`** — the company has no default GL code linked for the code named in the message. Fix the link; the invoice finalises unchanged.
+- **`FISCAL_PERIOD_LOCKED`** — the transaction date falls in a closed month.
+- **"Generic Document has already been posted to FINAL"** — someone beat you to it. Reload the listing.
 
-**Clean Match** ✓:
-```
-PO: 100 @ $10 = $1,000
-GRN: 100 received
-Invoice: 100 @ $10 = $1,000
-Status: Clean match, no variance
-```
+## Step 6: Confirm it posted, then settle it
 
-**Quantity Variance** ⚠:
-```
-PO: 100 @ $10 = $1,000
-GRN: 95 received (5 short)
-Invoice: 100 @ $10 = $1,000
-Issue: Invoice for 100 but only received 95
-```
+*Finance > Purchase Invoice (Internal) > (the invoice) > Posting, TraceDocument*
 
-**Price Variance** ⚠:
-```
-PO: 100 @ $10.00 = $1,000
-GRN: 100 received
-Invoice: 100 @ $11.50 = $1,150
-Issue: Price increased $1.50/unit = $150 total
-```
+The **Posting** tab shows five statuses: Journal, Inventory, Membership Points, Cashbook and Tax. Journal and Inventory both posted means you are done. **TraceDocument** shows the actual journal and inventory rows that were created, which is what you show an auditor.
 
-**Amount Variance** ⚠:
-```
-PO: 100 @ $10 = $1,000
-GRN: 100 received
-Invoice: 95 @ $10 = $950 (correct)
-         + Freight $200 (not on PO)
-         Total: $1,150
-Issue: Additional freight charge
-```
+When you come to pay:
 
-### Step 6: Handle Variances
+- **One invoice** — record the settlement on the invoice's own **Payment** tab. The methods offered are the ones assigned to your branch in Branch Settings. To offset against a supplier deposit or a credit document, use the **Contra** tab instead.
+- **Several invoices in one payment** — use the [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) applet. One payment line per real bank movement, contra-linked to the invoices being settled. Each payment line becomes one cashbook transaction, and those are what you will tick off in bank reconciliation later.
 
-**System flags variances**:
-- Red/yellow highlights
-- Variance report
-- Tolerance check (within acceptable range?)
+## What success looks like
 
-#### Quantity Variance Resolution
+Thirty seconds, four checks:
 
-**Scenario**: Invoice 100 units, GRN shows 95 received
+1. **The Posting tab shows Journal and Inventory posted.**
+2. **Stock Availability for the item at `GS-KV-01`** shows the 200 units on hand, and the *GRN quantity* figure has dropped — the receipt is no longer waiting to be invoiced.
+3. **The GRN's Doc Link tab** shows this invoice. If it does not, you keyed the lines instead of knocking off, and the receipt is still sitting open.
+4. **The supplier's account** shows the RM 27,136 outstanding with the right due date.
 
-**Actions**:
-1. **Verify GRN is correct**: Check physical receipt records
-2. **Check if partial delivery**: Is balance still coming?
-3. **Contact supplier**:
-   - "We received 95, your invoice shows 100"
-   - Request revised invoice for 95, OR
-   - Confirm balance is coming (wait for second GRN)
-4. **Resolution options**:
-   - **Wait**: For revised invoice
-   - **Adjust**: Enter 95 on invoice (with approval)
-   - **Hold**: Until balance delivered and second GRN created
-5. **Document**: Note in invoice remarks why adjusted
+## Common mistakes
 
-#### Price Variance Resolution
+**Keying the lines instead of using KO For.** The invoice looks identical and posts identically — but the GRN stays open forever, the same goods can be invoiced twice, and nothing ties the bill to the receipt. Always come in through KO For or Search Document.
 
-**Scenario**: PO price $10, invoice price $11.50
+**Adjusting the line to match the supplier's paper.** If they billed for more than you received, changing the quantity on the invoice makes the discrepancy disappear from your screen and appear in your stock count six weeks later. Query the invoice instead.
 
-**Actions**:
-1. **Check PO**: Verify PO price is correct
-2. **Check quotation**: What was quoted price?
-3. **Contact purchasing**:
-   - Was price increase authorized?
-   - Did supplier notify of increase?
-   - Is there a contract locking price?
-4. **Contact supplier** if unauthorized increase
-5. **Resolution options**:
-   - **Reject invoice**: Request invoice at PO price
-   - **Accept with approval**: Get manager approval for increase
-   - **Negotiate**: Split the difference
-   - **Return goods**: If significant increase and unacceptable
-6. **Document**: Approval for price variance
+**Finalising with a price you have not agreed.** FINAL posts the ledger and the stock. Voiding is blocked once a purchase return is linked and blocked entirely under e-Invoice; the remaining route is a purchase credit note plus an explanation.
 
-{{< callout type="info" >}}
-**Tolerance Levels**: Many systems have tolerance thresholds:
-- ±2% or RM 50 (whichever lower): the AP clerk finalises
-- ±5% or RM 200: a supervisor should look first
-- >5% or >RM 200: a manager should look first
-BigLedger does not enforce these bands for purchase invoices — check and follow your company's
-tolerance policy, and keep the finalise permission with the right roles.
-{{< /callout >}}
+**Using the wrong invoice document for your receipt path.** *Purchase Invoice* after a *GRN Stock In* double-counts the stock; *Purchase Invoice No Stock In* after a plain *GRN* never counts it. Both are silent.
 
-#### Additional Charges (Freight, Handling, etc.)
+**Dating the invoice today instead of on the supplier's date.** It changes the period, the input-tax claim and the due date, and it makes the supplier's statement impossible to reconcile against yours.
 
-**Scenario**: Invoice includes $200 freight not on PO
+**Expecting a variance report.** There is no three-way matching engine, no tolerance band and no variance flag anywhere in BigLedger. The knock-off brings the received quantities across and that is the whole mechanism. The check is you, reading the screen against the paper.
 
-**Actions**:
-1. **Check delivery terms**:
-   - FOB: Freight should be on invoice
-   - Delivered: Freight should be included in unit price
-2. **Verify charge is legitimate**:
-   - Check delivery documents
-   - Typical for this supplier/route?
-   - Amount reasonable?
-3. **Options**:
-   - **Accept**: If legitimate and reasonable (get approval if needed)
-   - **Query**: If unclear or seems high
-   - **Reject**: If not per agreement
-4. **How to enter**:
-   - Add separate line item for freight
-   - G/L Account: Freight-In or add to purchase cost
-   - Get approval if required
+## Related documentation
 
-### Step 7: Verify Tax Calculation
-
-**Tax Verification Steps**:
-
-**1. Check Tax Rate**:
-```
-Item Category: Standard rated goods
-Expected Tax Rate: 18% (example)
-Invoice Tax Rate: Should be 18%
-```
-
-**2. Verify Tax Calculation**:
-```
-Subtotal: $1,000
-Tax (18%): $180
-Total: $1,180
-
-Manual check: $1,000 × 0.18 = $180 ✓
-```
-
-**3. Check Tax Treatment**:
-- **Standard rated**: Normal VAT/GST rate
-- **Zero-rated**: 0% rate (should show on invoice)
-- **Exempt**: No tax (invoice shouldn't show tax)
-
-**Common Tax Issues**:
-
-**Issue**: Tax amount doesn't match calculation
-**Fix**: Check if rounding, or contact supplier
-
-**Issue**: Wrong tax rate applied
-**Fix**: Contact supplier for corrected invoice
-
-**Issue**: Tax on exempt items
-**Fix**: Query with supplier, should not be taxed
-
-**Issue**: Mixed tax rates on invoice
-**Fix**: Verify each item's tax treatment separately
-
-{{< callout type="warning" >}}
-**Tax Compliance**: Incorrect tax invoices mean you can't claim input tax credit. Ensure invoice meets tax requirements before processing.
-{{< /callout >}}
-
-### Step 8: Attach Supporting Documents
-
-**Navigation**: Click **Attachments** tab
-
-**Required Documents**:
-
-**1. Supplier Invoice** (PDF or scan):
-- Original tax invoice
-- All pages
-- Clear and legible
-
-**2. Purchase Order**:
-- Usually already attached to PO in system
-- If not, attach copy
-
-**3. Goods Received Note**:
-- Usually linked in system
-- If physical process, attach copy
-
-**4. Correspondence** (if applicable):
-- Email approvals for variances
-- Supplier responses to queries
-- Manager approvals for exceptions
-
-**Upload Process**:
-1. Click **Add Document**
-2. Select file (PDF, image, email)
-3. Choose document type: "Supplier Invoice"
-4. Add description: "Tax invoice INV-12345"
-5. Upload
-6. Repeat for additional documents
-
-### Step 9: Review Invoice Totals
-
-**Before submitting, verify**:
-
-**Calculations Check**:
-```
-Line items subtotal: $2,000
-Freight/charges: $200
-Subtotal: $2,200
-Tax (18%): $396
-Invoice Total: $2,596
-```
-
-**Compare to Physical Invoice**:
-- [ ] Subtotal matches
-- [ ] Tax amount matches
-- [ ] Total amount matches exactly
-- [ ] Currency is correct
-- [ ] All line items entered
-
-**If Totals Don't Match**:
-1. Recheck each line item
-2. Verify tax calculation
-3. Check for missing lines
-4. Check for additional charges
-5. Compare to invoice line-by-line
-
----
-
-## Review Before Posting
-
-{{< callout type="warning" >}}
-**Purchase invoices have no approval workflow in BigLedger.** There is no *Submit for Approval*
-button on a purchase invoice, no approver queue, no routing and no Pending Approval status. The
-invoice goes from **Draft** to **Final**, and the person who finalises it is your control point.
-Only purchase requisitions, purchase orders and stock requisitions have a real approval engine, and
-even there it is optional — see [Document Approvals](/guides/document-approvals/).
-{{< /callout >}}
-
-### Step 10: Get the invoice reviewed
-
-**Before you finalise, check**:
-1. All required fields complete
-2. Invoice total entered
-3. Tax calculations correct
-4. Three-way match within tolerance, or the variance explained in Remarks
-5. Supporting documents attached
-
-**Who should look, by situation** — a policy, not a system rule:
-
-| Situation | Who should look | Typical time |
-|-----------|-----------------|--------------|
-| Clean match < RM 5,000 | AP clerk | Same day |
-| Clean match > RM 5,000 | Manager | 1 day |
-| Variance < 5% | Supervisor | 1 day |
-| Variance 5-10% | Manager | 2 days |
-| Variance > 10% | Senior manager | 3-5 days |
-| Price increase | Purchasing manager | 2 days |
-
-Give the finalise permission only to the roles in the middle column and the policy enforces itself.
-
-### Step 11: Track invoice status
-
-**Navigation**: `[Purchasing > Purchase Invoices]`
-
-**Status Meanings**:
-- **Draft**: still editable, not posted
-- **Final**: posted to the ledger and payable
-- **Void**: cancelled
-
-There is no Pending Approval, Query or On Hold status on a purchase invoice. If a reviewer has a
-question, leave the invoice in Draft and record the query in **Remarks**.
-
-**If the reviewer sends it back**:
-
-1. Read their note in Remarks
-2. Take corrective action:
-   - Get more information
-   - Contact the supplier
-   - Correct the data entry error
-3. Tell them it is ready again
-
-**Common reasons an invoice gets sent back**:
-- Price variance not explained
-- Missing supporting documents
-- Duplicate invoice
-- Invoice for the wrong company
-- Service not confirmed as received
-- Budget not available
-
----
-
-## Posting Invoice
-
-### Step 12: Finalise the reviewed invoice
-
-**Once reviewed**:
-
-**Navigation**: Open the reviewed invoice
-
-**Final Review**:
-- [ ] Reviewed by whoever your policy names
-- [ ] Documents attached
-- [ ] Amounts correct
-- [ ] GL date correct for period
-- [ ] Tax treatment correct
-
-**Post Invoice**:
-1. Click **Post Invoice** or **Confirm Invoice**
-2. System processes
-3. Accounting entries created
-4. Payable recorded
-5. Payment scheduled
-
-**Accounting Entries Created**:
-
-**For Inventory Purchase**:
-```
-Debit: Inventory                      $1,000
-Debit: Freight-In                        $200
-Debit: Input Tax                         $216
-Credit: Accounts Payable - Supplier            $1,416
-```
-
-**For Expense Purchase**:
-```
-Debit: Office Supplies Expense        $500
-Debit: Input Tax                        $90
-Credit: Accounts Payable - Supplier            $590
-```
-
-**Invoice Status Updates**:
-- Status: Posted/Confirmed
-- Payable amount: Recorded
-- Due date: Active for payment
-- Supplier account: Balance increased
-
-### Step 13: Schedule Payment
-
-**System automatically**:
-- Adds to payment due list
-- Calculates due date
-- Flags for payment run
-
-**Payment will be processed**:
-- On or before due date
-- As part of payment batch
-- Per payment terms
-
-**Early Payment Discount**:
-If invoice has discount terms (e.g., 2/10 Net 30):
-- System flags for early payment
-- Calculates discount amount
-- Schedules for discount date if possible
-
-{{< callout type="tip" >}}
-**Payment Terms**: "2/10 Net 30" means:
-- 2% discount if paid within 10 days
-- Full amount due in 30 days
-- 2% for 20 days = 36% annual return!
-- Usually worth paying early to capture discount.
-{{< /callout >}}
-
----
-
-## Processing Service Invoices (No PO/GRN)
-
-### For Services, Utilities, Subscriptions
-
-**Navigation**: `[Accounts Payable > Purchase Invoices > New Direct Invoice]`
-
-**Process**:
-
-**1. Enter Invoice Header**:
-- Invoice number, date, due date
-- Supplier
-- Currency
-- Reference
-
-**2. Enter Line Items**:
-- Description: Clear service description
-- Quantity: Usually 1, or hours/days
-- Unit price
-- Tax code
-- **G/L Account**: Expense account (Critical!)
-- **Cost Center**: Department
-- **Project**: If applicable
-
-**3. Service Verification**:
-Before processing:
-- [ ] Service was actually received
-- [ ] Service recipient confirms satisfactory
-- [ ] Amount matches agreement/quotation
-- [ ] No duplicate invoice
-
-**4. Attach Documents**:
-- Supplier invoice
-- Service agreement/contract
-- Service completion certificate (if applicable)
-- Approval email
-
-**5. Get it confirmed**:
-- Ask the person who received the service, and their manager, to confirm
-- Record who confirmed and when in Remarks — there is no approval routing for invoices
-
-**6. Finalise once confirmed**:
-- Creates expense and payable
-- Schedules payment
-
-{{< callout type="info" >}}
-**Service Invoice Key Difference**: No PO or GRN to match against. Rely on service confirmation from recipient. Always get confirmation before paying!
-{{< /callout >}}
-
----
-
-## Special Scenarios
-
-### Credit Notes (Returns/Adjustments)
-
-**When supplier issues credit note**:
-
-**Scenario**: Returned damaged goods, supplier credits you
-
-**Process**:
-1. **Receive credit note** from supplier
-2. **Create credit note** in system:
-   - Navigation: `[Purchasing > Credit Notes > New]`
-   - Type: Purchase credit note
-3. **Link to original invoice** (if crediting specific invoice)
-4. **Enter credit details**:
-   - Items being credited
-   - Quantities
-   - Amounts
-   - Reason
-5. **Attach documents**:
-   - Supplier's credit note
-   - Return authorization
-   - Correspondence
-6. **Have it reviewed** — credit notes have no approval workflow either
-7. **Finalise the credit note**:
-   - Reduces payable
-   - Can offset against future invoices
-   - Or request refund
-
-**Accounting Entry**:
-```
-Debit: Accounts Payable              $200
-Credit: Inventory (or Expense)              $180
-Credit: Input Tax                             $20
-```
-
-### Duplicate Invoice
-
-**Scenario**: Supplier sends same invoice twice
-
-**Prevention**:
-- System checks invoice number for duplicate
-- Warning message if duplicate found
-
-**If Detected**:
-1. **Verify**: Is it truly duplicate?
-   - Same invoice number
-   - Same date
-   - Same amount
-2. **Check**: Was original already paid?
-3. **Action**:
-   - If duplicate: Reject, don't process
-   - If revised: Process as revision, note reference to original
-4. **Inform supplier**: "Invoice already processed, payment scheduled for [date]"
-
-### Consolidated Invoice (Multiple Deliveries)
-
-**Scenario**: One invoice covering multiple GRNs
-
-**Process**:
-1. **Enter invoice** as usual
-2. **Link to multiple GRNs**:
-   - System may allow multiple GRN selection
-   - Or enter lines manually matching each GRN
-3. **Verify totals** match all GRNs combined
-4. **Process normally**
-
-### Partial Invoice Payment
-
-**Scenario**: Dispute on part of invoice, want to pay undisputed portion
-
-**Process**:
-1. **Create partial payment**:
-   - Note disputed amount
-   - Calculate payable portion
-2. **Hold disputed portion**:
-   - Create debit note or adjustment
-3. **Communicate with supplier**:
-   - Explain partial payment
-   - Provide remittance showing breakdown
-4. **Resolve dispute**:
-   - Process balance when resolved
-   - Or issue debit note if not owed
-
----
-
-## Best Practices
-
-### Do's
-- ✅ Process invoices within 1-2 days of receipt
-- ✅ Always verify three-way match
-- ✅ Investigate all variances before approving
-- ✅ Attach all supporting documents
-- ✅ Verify tax calculations
-- ✅ Communicate with suppliers about issues
-- ✅ Document resolutions clearly
-- ✅ File physical invoices systematically
-
-### Don'ts
-- ❌ Process invoices without checking for duplicates
-- ❌ Ignore price variances
-- ❌ Pay before goods/services received
-- ❌ Assume bank account details are correct (verify changes)
-- ❌ Rush through invoice entry
-- ❌ Skip service confirmations
-- ❌ Process invoices with errors
-- ❌ Create invoices for unconfirmed goods
-
-{{< callout type="success" >}}
-**Quality Over Speed**: Taking 10 minutes to process invoice correctly prevents days of work fixing errors and recovering overpayments.
-{{< /callout >}}
-
----
-
-## Tips for Efficiency
-
-### Batch Processing
-- Process all invoices from one supplier together
-- Group similar invoices (all clean matches first)
-- Set aside complex invoices for dedicated time
-- Don't mix invoice processing with other tasks
-
-### Use Technology
-- Scan invoices immediately upon receipt
-- Use OCR for data extraction
-- Work from the phone browser where you need to review on the move
-- Automated matching where available
-- Email-to-system integration
-
-### Maintain Files
-- Organize by supplier or invoice date
-- Separate: To process, Draft, Final, Paid
-- Digital folder structure mirrors physical
-- Regular cleanup of old files
-
-### Communication
-- Establish supplier contacts for invoice queries
-- Template emails for common queries
-- Regular reconciliation meetings with key suppliers
-- Proactive communication on payment status
-
----
-
-## Monthly Tasks
-
-### Month-End Procedures
-
-**Before closing month**:
-- [ ] All invoices received processed
-- [ ] All GRNs have been invoiced or accrued
-- [ ] Reconcile supplier statements
-- [ ] Review aged payables
-- [ ] Process credit notes
-- [ ] Accrue for goods received but not invoiced
-- [ ] Review open POs for commitments
-
-**Accruals for GRBNI** (Goods Received But Not Invoiced):
-```
-For GRNs without invoices at month-end:
-
-Debit: Inventory/Expense         $5,000
-Credit: GRN Accrual                      $5,000
-
-(Reverses next month when invoice received)
-```
-
----
-
-## Troubleshooting
-
-### Error: "Duplicate Invoice Number"
-
-**Cause**: Invoice number already in system
-**Fix**:
-1. Search for existing invoice
-2. Verify if truly duplicate
-3. If duplicate: Reject new invoice
-4. If different: Check if supplier reused number (contact them)
-
-### Error: "Cannot Match to GRN"
-
-**Cause**: GRN not completed or not found
-**Fix**:
-1. Verify GRN exists in system
-2. Check if goods actually received
-3. Contact warehouse to complete GRN
-4. Wait for GRN before processing invoice
-
-### Error: "Tax Calculation Error"
-
-**Cause**: Tax amount doesn't match system calculation
-**Fix**:
-1. Check tax rate is correct
-2. Verify tax treatment (standard, zero, exempt)
-3. Check for rounding differences
-4. Manually override if necessary (with approval)
-
-### Error: "Budget Exceeded"
-
-**Cause**: Invoice exceeds available budget
-**Fix**:
-1. Verify correct budget code
-2. Check budget availability
-3. Request budget increase if legitimate
-4. Get approval to proceed over budget
-
----
-
-## Related Documentation
-
-### Workflows
-- [Standard Procurement Workflow](/guides/purchasing-guides/standard-procurement-workflow) - Complete purchasing process
-- [Direct Invoice Workflow](/guides/purchasing-guides/direct-invoice-workflow) - Service invoices
-- [Purchasing Overview](/user-guide/daily-tasks/purchasing-overview) - Daily tasks guide
-
-### Related Tasks
-- [Creating Purchase Orders](/user-guide/daily-tasks/creating-purchase-order) - PO creation
-- [Goods Received Note Processing](/user-guide/daily-tasks/goods-received-note) - GRN procedures
-
-### Module Documentation
-- [Purchasing Module](/modules/purchasing/) - All purchasing features
-- [Financial Accounting Module](/modules/financial-accounting/) - AP and payments
-- [Supplier Maintenance](/applets/supplier-maintenance-applet/) - Supplier management
-
-{{< callout type="success" >}}
-**Mastery Milestone**: When you can process invoices accurately, quickly identify and resolve variances, and maintain excellent supplier relationships, you've mastered invoice processing!
-{{< /callout >}}
+- [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) — the full applet reference: every tab, setting, GL rule and failure mode
+- [Purchase Invoice No Stock In (Internal)](/applets/purchase-workflow/internal-purchase-invoice-no-stock-in-applet/) — the money-only variant for the GRN Stock In path
+- [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) — the receipt this invoice knocks off
+- [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) — paying several invoices in one go
+- [Standard Procurement Workflow](/guides/purchasing-guides/standard-procurement-workflow/)
+- [Goods Received Note Processing](/user-guide/daily-tasks/goods-received-note/)
+- [Bank Reconciliation Guide](/guides/accounting-guides/bank-reconciliation-guide/)

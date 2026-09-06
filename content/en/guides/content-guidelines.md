@@ -344,7 +344,7 @@ For detailed implementation procedures, see the
 [Purchasing Implementation Guide](/guides/purchasing-guides/).
 
 # In Guides - linking to Applets
-Configure the [Supplier Maintenance Applet](/applets/supplier-maintenance-applet/)
+Configure the [Supplier Maintenance Applet](/applets/master-data/supplier-applet-1/)
 following these steps...
 
 # In User Guide - linking to Guides
@@ -578,7 +578,7 @@ This guide walks you through creating a purchase order from initial
 requisition to vendor transmission. Estimated time: 10 minutes.
 
 ### Prerequisites
-- Supplier configured in [Supplier Maintenance](/applets/supplier-maintenance-applet/)
+- Supplier configured in [Supplier Maintenance](/applets/master-data/supplier-applet-1/)
 - Items set up in [Inventory Items](/applets/inv-item-maintenance-applet/)
 - User role: Purchaser or Administrator
 - Required permission: CREATE_PURCHASE_ORDER
@@ -601,7 +601,7 @@ requisition to vendor transmission. Estimated time: 10 minutes.
 
 ### Troubleshooting
 **Issue**: Supplier not available in dropdown
-**Solution**: Verify supplier is Active in [Supplier Maintenance](/applets/supplier-maintenance-applet/)
+**Solution**: Verify supplier is Active in [Supplier Maintenance](/applets/master-data/supplier-applet-1/)
 
 ### Related Guides
 - [Supplier Setup](/guides/purchasing-guides/supplier-setup/)

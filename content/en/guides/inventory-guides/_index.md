@@ -28,7 +28,7 @@ New to inventory in BigLedger? Start with these foundational steps.
 - Serial number / batch tracking (if applicable)
 
 {{< callout type="tip" >}}
-**First time?** Complete stock management setup before processing any purchase GRN or sales delivery. Items and warehouses must exist before stock movements can be recorded.
+**First time?** Complete stock management setup before processing any purchase or sales document. Items, warehouses and locations must exist before stock movements can be recorded.
 {{< /callout >}}
 
 ---
@@ -42,8 +42,8 @@ Guides for everyday inventory activities your warehouse team performs.
 {{< /cards >}}
 
 **Typical daily workflow:**
-1. Process incoming goods (Purchase GRN updates stock automatically)
-2. Pick and pack items for delivery (Sales DO reduces stock)
+1. Receive incoming goods on a Purchase GRN, and count them honestly. A standard GRN records the receipt; it is the **purchase invoice** that books the stock in. (If your company uses the *GRN Stock In* applet instead, the receipt books the stock and the invoice books only the money — one pair or the other, never a document from each.)
+2. Pick and pack items for delivery. A delivery order records the despatch; it is the **sales invoice** or cash bill that takes the stock out.
 3. Handle stock transfers between locations
 4. Review low-stock alerts and reorder notifications
 5. Process stock adjustments for damaged or expired items
@@ -77,7 +77,7 @@ Monitor your inventory health and movement patterns.
 - **Stock Movement Report** — All stock-in and stock-out transactions for a period
 - **Stock Aging Report** — Identify slow-moving and obsolete stock
 - **Reorder Report** — Items below minimum stock levels
-- **Stock Valuation Report** — Total inventory value by costing method (FIFO, weighted average)
+- **Stock Valuation Report** — Total inventory value by costing method (FIFO, LIFO or moving average)
 
 **Reporting tips:**
 - Check Stock Balance daily for high-turnover items
@@ -90,7 +90,8 @@ Monitor your inventory health and movement patterns.
 ## Related Resources
 
 - **[Inventory Module](/modules/inventory/)** — Module overview and capabilities
-- **[Warehouse Management System Applet](/applets/warehouse-management-system-applet/)** — Advanced WMS operations
-- **[Stock Report Applet](/applets/stock-report-applet/)** — Stock reporting reference
-- **[Stock Adjustment Applet](/applets/stock-adjustment-applet/)** — Adjust stock quantities and values
-- **[Stock Transfer Applet](/applets/stock-transfer-applet/)** — Inter-branch and inter-warehouse transfers
+- **[Warehouse Management](/applets/inventory-workflow/warehouse-management-applet/)** — Advanced WMS operations
+- **[Stock Report](/applets/inventory-workflow/stock-report-applet/)** — Stock reporting reference
+- **[Stock Adjustment](/applets/inventory-workflow/stock-adjustment-applet/)** — Adjust stock quantities and values
+- **[Stock Transfer](/applets/inventory-workflow/stock-transfer-applet/)** — Inter-branch and inter-warehouse transfers
+- **[Stock Availability](/applets/inventory-workflow/stock-availability-applet/)** — What is on hand, reserved, in transit, received but not invoiced

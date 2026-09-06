@@ -141,55 +141,17 @@ Choose the right workflow for your situation:
 
 ---
 
-## Daily Workflow Examples
+## Who does what, in what order
 
-### Morning Routine (Purchasing Admin)
+Purchasing at a multi-branch business splits across three desks. The order matters more than the clock.
 
-**08:00 - 08:30**: Review overnight orders and emails
-- Check for urgent supplier requests
-- Review pending PO approvals
-- Respond to supplier queries
+**The buyer** raises purchase orders — by hand, from a requisition or quotation, from a CSV, or from a replenishment run that reads stock balances rather than memory. They finalise the order (which puts its lines into the open queue), send it, and watch the **Purchase Order Queue** for anything overdue.
 
-**08:30 - 10:00**: Process new purchase requests
-- Review requisitions
-- Create POs for approved requests
-- Submit for approval
-- Send approved POs to suppliers
+**The warehouse** receives against the order. They count first, then record what actually arrived on a Purchase GRN, capture serials and batches, attach the delivery note, and finalise. A short delivery leaves the balance in the queue for a later receipt; nothing needs adjusting.
 
-**10:00 - 12:00**: Follow up on pending deliveries
-- Check expected deliveries
-- Contact suppliers for delayed orders
-- Update delivery schedules
-- Coordinate with warehouse
+**Accounts payable** books the supplier's bill by knocking off the GRN, checks the quantities and the price against the supplier's paper, and finalises. That is the point at which stock goes up, the input tax becomes claimable and the creditor balance appears. Later they settle it, from the invoice's own Payment tab or in a batch through a Payment Voucher.
 
-### Afternoon Routine (Accounts Payable)
-
-**13:00 - 15:00**: Process supplier invoices
-- Enter new invoices received
-- Match to POs and GRNs
-- Resolve variances
-- Pass to whoever finalises invoices
-
-**15:00 - 16:30**: Payment processing
-- Review due invoices
-- Create payment batches
-- Process payments
-- Send remittance advice
-
-**16:30 - 17:00**: End-of-day tasks
-- Review pending approvals
-- Chase delayed approvals
-- Update payment schedules
-- Prepare next day priorities
-
-### Warehouse Staff (Receiving Hours)
-
-**Continuous throughout day**:
-- Receive deliveries as they arrive
-- Create GRNs immediately
-- Scan and allocate stock
-- Handle exceptions
-- Maintain receiving area organization
+The one thing that should not drift between the three desks: **which receipt path your company uses.** GRN → Purchase Invoice, or GRN Stock In → Purchase Invoice No Stock In. Mixing them counts stock twice or not at all, and nothing warns anyone.
 
 ---
 
@@ -219,16 +181,19 @@ Full setup in [Document Approvals](/guides/document-approvals/).
 | **Process Invoice** | Supplier invoice, PO, GRN |
 | **Make Payment** | Approved invoice, bank details |
 
-### Common Navigation Paths
+### Where each task lives
 
-| Task | Navigation Path |
+| Task | Applet and menu |
 |------|----------------|
-| **New PO** | Purchasing > Purchase Orders > New PO |
-| **Approve PO** | The link in the approval e-mail, or Purchase Order Applet > Approval Request |
-| **New GRN** | Purchasing > Goods Receipt > New GRN |
-| **New Invoice** | Purchasing > Purchase Invoices > New Invoice |
-| **Payment Run** | Accounts Payable > Payment Processing |
-| **Supplier Inquiry** | Master Data > Suppliers > [Search] |
+| **New purchase order** | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) > Purchase Order > Create |
+| **Approve a purchase order** | The link in the approval e-mail, or Purchase Order (Internal) > Approval Request |
+| **What is still outstanding** | Purchase Order (Internal) > Purchase Order Queue |
+| **Ordered vs received / ordered vs invoiced** | Purchase Order (Internal) > PO Line with GRN KO / PO Line with PI KO |
+| **New goods receipt** | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) > Internal Purchase GRN > Create |
+| **New supplier invoice** | [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) > Internal Purchase Invoice > Create |
+| **Pay several invoices at once** | [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) > Internal Payment Voucher > Create |
+| **Supplier lookup** | [Supplier](/applets/master-data/supplier-applet-1/) |
+| **Purchase analysis** | [Purchase Report](/applets/purchase-workflow/purchase-report-applet/) |
 
 ---
 
@@ -274,25 +239,6 @@ Full setup in [Document Approvals](/guides/document-approvals/).
 3. Confirm payment run included invoice
 4. If missed: Process urgent payment
 5. Call supplier to explain and confirm payment date
-
----
-
-## Key Performance Targets
-
-Track your efficiency:
-
-| Metric | Target | Your Performance |
-|--------|--------|------------------|
-| **PO Processing Time** | < 4 hours | Track yours |
-| **GRN Completion** | Same day | Track yours |
-| **Invoice Matching** | < 24 hours | Track yours |
-| **Three-Way Match Rate** | > 95% clean | Track yours |
-| **On-Time Payments** | > 98% | Track yours |
-| **Supplier Satisfaction** | No complaints | Track yours |
-
-{{< callout type="info" >}}
-**Performance Tip**: Set personal targets and track your metrics. Continuous improvement in processing time and accuracy makes everyone's job easier.
-{{< /callout >}}
 
 ---
 
@@ -348,16 +294,10 @@ Track your efficiency:
 
 ## Getting Help
 
-### In-System Help
-- **?** icon on every screen
-- Field-level tooltips
-- Process help guides
-- Error message explanations
-
 ### Documentation
 - [Standard Procurement Workflow](/guides/purchasing-guides/standard-procurement-workflow) - Complete process
 - [Module Documentation](/modules/purchasing/) - All features
-- [Supplier Setup](/applets/supplier-maintenance-applet/) - Supplier management
+- [Supplier Setup](/applets/master-data/supplier-applet-1/) - Supplier management
 
 ### Human Support
 - **Supervisor**: Process questions, approvals
@@ -432,4 +372,4 @@ Beyond daily operations:
 ### Related Operations
 - [Inventory Management](/modules/inventory/) - Stock control
 - [Accounts Payable](/modules/financial-accounting/) - Payment processing
-- [Supplier Management](/applets/supplier-maintenance-applet/) - Supplier maintenance
+- [Supplier Management](/applets/master-data/supplier-applet-1/) - Supplier maintenance

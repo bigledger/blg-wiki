@@ -707,7 +707,7 @@ Verify everything matches:
 ### Module Documentation
 - [Purchasing Module](/modules/purchasing/) - Complete purchasing features
 - [Financial Accounting Module](/modules/financial-accounting/) - Prepayment accounting
-- [Supplier Maintenance](/applets/supplier-maintenance-applet/) - Supplier management
+- [Supplier Maintenance](/applets/master-data/supplier-applet-1/) - Supplier management
 
 {{< callout type="success" >}}
 **Workflow Mastery**: Invoice-First workflow enables prepayment scenarios while maintaining proper accounting treatment and delivery tracking. Critical controls protect against prepayment risks.

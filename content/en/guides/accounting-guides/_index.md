@@ -43,7 +43,7 @@ Guides for everyday accounting activities your team performs regularly.
 
 **Typical daily workflow:**
 1. Record journal entries for non-automated transactions
-2. Review and approve pending entries
+2. Review the entries posted since yesterday — there is no approval queue for journals, so the review is yours to run
 3. Reconcile bank transactions against statements
 4. Investigate and resolve discrepancies
 

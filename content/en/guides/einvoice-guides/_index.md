@@ -45,7 +45,7 @@ Then read these three, in this order.
 - Item classification codes, units of measure and tax types on your items
 
 {{< callout type="tip" >}}
-**Do MyInvois first** — it is what Malaysian tax compliance requires. PEPPOL is a separate delivery channel to a trading partner, set up alongside it rather than instead of it; come back to [PEPPOL Configuration](peppol-configuration) once MyInvois is running, and only if a trading partner has asked you for PEPPOL delivery.
+**Do MyInvois first** — it is what Malaysian tax compliance requires. PEPPOL is a separate delivery channel to a trading partner, set up alongside it rather than instead of it; come back to [PEPPOL Configuration](/guides/einvoice-guides/peppol-configuration/) once MyInvois is running, and only if a trading partner has asked you for PEPPOL delivery.
 {{< /callout >}}
 
 ---

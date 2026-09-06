@@ -1,646 +1,150 @@
 ---
-title: "Creating Purchase Orders"
-description: "Step-by-step guide to creating purchase orders - from supplier selection to approval and transmission"
-weight: 11
+title: "Creating a Purchase Order"
+description: "Raise a purchase order in BigLedger — header, supplier, lines, tax and delivery — finalise it, send it, and keep track of what is still outstanding."
+tags:
+- user-guide
+- purchasing
+- purchase-order
+weight: 10
+sources:
+  - /applets/purchase-workflow/internal-purchase-order-applet/
+  - /applets/purchase-workflow/internal-purchase-requisition-applet/
+  - /applets/purchase-workflow/blanket-purchase-order-applet/
+  - /applets/master-data/supplier-applet-1/
+  - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/ServerDocTypes.java
+  - kb/topics/document-approval.md
 ---
 
-Learn how to create accurate, complete purchase orders that ensure smooth procurement and delivery.
-
-## Before You Start
-
-### What You Need
-- [ ] Supplier is set up in system
-- [ ] Items exist in inventory master (or will create as non-stock)
-- [ ] Quotation from supplier
-- [ ] Budget approval (if required)
-- [ ] Delivery address confirmed
-- [ ] Your user account has PO creation permission
-
-### Estimated Time
-- **Simple PO** (1-3 items, known supplier): 5-10 minutes
-- **Complex PO** (multiple items, new supplier): 15-30 minutes
-
-{{< callout type="info" >}}
-**Quick Tip**: Gather all information before starting. Having the quotation, item details, and delivery requirements ready makes PO creation much faster.
-{{< /callout >}}
-
----
-
-## Step-by-Step Instructions
-
-### Step 1: Navigate to PO Creation
-
-**Path**: `[Purchasing > Purchase Orders > New PO]`
-
-**Or**: Use quick create button (+ icon) > "Purchase Order"
-
-### Step 2: Fill PO Header
-
-#### Required Fields
-
-**Supplier Information**:
-- **Supplier**: Start typing supplier name, select from dropdown
-  - If supplier not found: Create supplier first via Master Data > Suppliers
-- **Supplier Contact**: Select contact person (usually auto-filled)
-- **Currency**: Auto-filled from supplier master, change if needed
-
-**Document Information**:
-- **PO Number**: Usually auto-generated (leave blank for auto)
-  - Manual entry: Only if required by your process
-- **PO Date**: Defaults to today (change if backdating authorized)
-- **Required Date**: When you need the goods delivered
-  - Tip: Add buffer for supplier lead time + shipping
-
-**Delivery Details**:
-- **Delivery Address**: Your warehouse/receiving location
-  - Click dropdown to select different location if needed
-- **Delivery Instructions**: Special delivery requirements
-  - Example: "Deliver to Loading Bay 2, after 2 PM"
-
-#### Optional Fields
-
-**Terms and Conditions**:
-- **Payment Terms**: Auto-filled from supplier (e.g., Net 30)
-- **Delivery Terms**: Incoterms (EXW, FOB, CIF, etc.)
-- **Freight Terms**: Who pays shipping
-- **Tax Treatment**: Standard, zero-rated, exempt
-
-**Reference Information**:
-- **Your Reference**: Internal reference (requisition number, project code)
-- **Buyer Name**: Your name (usually auto-filled)
-- **Department**: Your department
-- **Remarks**: Any special notes for supplier
-
-{{< callout type="tip" >}}
-**Delivery Date Tip**: Set required date realistically. Allow time for:
-- Supplier processing: 1-2 days
-- Production/packing: Per item lead time
-- Shipping: Ground 3-7 days, Sea 30-60 days, Air 3-5 days
-- Buffer for delays: Add 10-20%
-{{< /callout >}}
-
-### Step 3: Add Line Items
-
-Click **Add Line Item** or **Add Item** button
-
-#### For Inventory Items (Existing in System)
-
-**Item Selection**:
-1. Click in **Item Code** field
-2. Start typing item code or description
-3. Select from dropdown
-4. Description and details auto-fill
-
-**Quantity and Pricing**:
-- **Quantity**: Enter quantity needed
-- **Unit of Measure**: Auto-filled (EA, PC, KG, etc.)
-  - Change if ordering in different UOM
-- **Unit Price**: Enter price from quotation
-- **Currency**: Inherited from header
-- **Discount %**: If applicable
-- **Tax Code**: Auto-filled based on item and supplier
-  - Change if different treatment for this purchase
-
-**Additional Details**:
-- **Required Date**: Line-specific delivery date (if different from header)
-- **G/L Account**: Expense or inventory account
-  - For inventory items: Usually auto-filled
-  - For expense items: Select appropriate account
-- **Cost Center**: Department or cost center
-- **Project Code**: If purchase for specific project
-- **Line Notes**: Special instructions for this item
-
-#### For Non-Stock Items (Services, One-time Purchases)
-
-**Item Entry**:
-1. Click **Add Non-Stock Item** or toggle item type
-2. **Description**: Enter full description
-   - Example: "Consulting services - system implementation"
-3. **Quantity**: Enter quantity (often 1 for services)
-4. **Unit of Measure**: Select appropriate (EA, HR, DAY, etc.)
-5. **Unit Price**: Enter price
-6. **Tax Code**: Select appropriate tax treatment
-7. **G/L Account**: Select expense account
-   - Professional Fees, Consulting, Repairs, etc.
-8. **Cost Center**: Department
-9. **Project**: If applicable
-
-{{< callout type="warning" >}}
-**Common Mistake**: Forgetting to assign G/L account for non-stock items. This will cause issues later when processing invoices.
-{{< /callout >}}
-
-#### Price Fields: Invoice Price vs. Actual Cost
-
-**Why two price fields?**
-- **Invoice Price**: What appears on supplier's invoice
-- **Actual Cost**: Real cost after rebates and discounts
-
-**When they differ**:
-```
-Example 1: Volume Rebate
-Invoice Price: $100
-Volume Rebate: -$5 (paid quarterly)
-Actual Cost: $95
-
-Example 2: Payment Discount
-Invoice Price: $100
-Early Payment Discount: -$2 (if paid within 10 days)
-Actual Cost: $98 (if taking discount)
-
-Example 3: Year-End Rebate
-Invoice Price: $100
-Year-End Rebate: -$3 (paid annually)
-Actual Cost: $97
-```
-
-**How to enter**:
-1. Always enter **Invoice Price** as supplier's quoted price
-2. Enter **Actual Cost** if you know rebates/discounts apply
-3. If unsure, enter same value for both
-4. Finance team will adjust later based on rebate agreements
-
-### Step 4: Attach Supporting Documents
-
-Click **Attachments** tab or **Add Document** button
-
-#### Required Documents
-
-**Supplier Quotation**:
-- **Type**: Select "Quotation"
-- **File**: Select quotation file (PDF, Excel, image)
-- **Description**: "Supplier quotation ref Q-20240315"
-- This is CRITICAL for audit trail and variance resolution
-
-**Purchase Requisition** (if applicable):
-- Internal request document
-- Approval emails
-- Budget approval
-
-**Specifications** (if applicable):
-- Technical specifications
-- Drawings or designs
-- Quality requirements
-- Test certifications required
-
-#### How to Attach
-
-**Method 1: Drag and Drop**
-1. Open file location on your computer
-2. Drag file to attachment area
-3. Drop file
-4. Add description
-5. Click Upload
-
-**Method 2: Browse and Select**
-1. Click **Add Document** or **Browse**
-2. Navigate to file location
-3. Select file
-4. Click Open
-5. Add description
-6. Click Upload
-
-**Method 3: Scan Directly** (if scanner integrated)
-1. Place document on scanner
-2. Click **Scan Document**
-3. Scanner captures
-4. Add description
-5. Click Upload
-
-{{< callout type="info" >}}
-**File Format Tips**:
-- **PDF**: Best for formal quotations, multi-page documents
-- **Excel**: Good for detailed price lists, BOMs
-- **Images (JPG, PNG)**: Quick snapshots, price tags
-- **Email (.eml)**: Email quotations with attachments
-{{< /callout >}}
-
-### Step 5: Review PO Totals
-
-Before submitting, verify totals:
-
-**Check**:
-- **Subtotal**: Sum of all line items before tax
-- **Discount**: If any discount applied
-- **Tax Amount**: Calculated based on tax codes
-- **Total**: Final amount supplier will invoice
-
-**Verify**:
-- [ ] Subtotal matches your calculation
-- [ ] Tax rate is correct (check quotation)
-- [ ] Total matches supplier's quote
-- [ ] Currency is correct
-
-**If totals don't match**:
-1. Check each line item price
-2. Verify quantities
-3. Check tax codes
-4. Review discount entries
-5. Compare to original quotation
-
-### Step 6: Save Draft (Optional)
-
-If not ready to submit:
-- Click **Save as Draft**
-- PO saved but not submitted for approval
-- Can edit later
-- Status: Draft
-
-**When to use**:
-- Waiting for more information
-- Need to verify details with supplier
-- Gathering approvals offline
-- End of workday, will complete tomorrow
-
-### Step 7: Submit for Approval *(only if your company uses approvals)*
-
-Purchase order approvals are **optional** and off until someone creates an Approval Setting. If your
-tenant has none, there is no **Generic Doc Approval** tab work to do — go straight to FINAL and skip
-to Step 8.
-
-If approvals are switched on:
-1. Open the **Generic Doc Approval** tab, click **Add**, choose the submitter and save
-2. Select the row and click **Submit For Approval**
-3. Fix any error the applet shows — the common ones name a missing designation or a missing approver
-
-**What BigLedger checks at submission**:
-- The submitter's designation exists and has approvers assigned
-- There are at least as many approver levels as the setting requires
-- The submitter has not resigned
-- If the Approval Monitor says so, the PO was converted from an approved purchase requisition
-
-**What happens next**:
-- BigLedger counts the levels whose Min Approval Amount is at or below the PO total, and e-mails
-  every approver at the first of them
-- The approval status becomes `PENDING_APPROVAL`
-
-{{< callout type="tip" >}}
-**Expedite Approval**: for an urgent PO, ring the approver after submitting and quote the PO number.
-BigLedger sends no reminders and has no escalation, so a chase has to be human.
-{{< /callout >}}
-
----
-
-## After Submission
-
-### Track Approval Status
-
-**Navigation**: `[Purchasing > Purchase Orders > My POs]`
-
-**Status meanings**:
-- **Pending Approval**: With approver, awaiting decision
-- **Approved**: Approved, ready to send to supplier
-- **Rejected**: Rejected, see comments for reason
-- **On Hold**: Temporarily held, pending information
-
-### If PO is Rejected
-
-**Actions**:
-1. Open rejected PO
-2. Read approver's comments
-3. Fix issues identified
-4. Make necessary changes
-5. Resubmit for approval
-
-**Common rejection reasons**:
-- Price too high (get better quote)
-- Wrong budget code
-- Missing quotation
-- Supplier not approved
-- Over budget (get budget increase)
-- Insufficient justification
-
-### If PO is Approved
-
-**Next steps**:
-1. Open approved PO
-2. Review final version
-3. Send to supplier (see next section)
-
----
-
-## Sending PO to Supplier
-
-### Electronic Transmission (Recommended)
-
-**Navigation**: Open approved PO > Click **Send to Supplier**
-
-**Process**:
-1. **System generates** PDF of PO
-2. **Email auto-populated** with supplier contact
-3. **Email template** loads with standard message
-4. **Customize message** if needed:
-   ```
-   Dear [Supplier],
-
-   Please find attached our Purchase Order [PO-XXXX] for [items description].
-
-   Required delivery date: [Date]
-   Delivery address: [Address]
-
-   Please confirm receipt and expected delivery date.
-
-   Thank you.
-   ```
-5. **Click Send**
-6. **System records** transmission date and time
-7. **PO status** updates to: Sent to Supplier
-
-### Print and Fax/Mail
-
-**If supplier prefers paper**:
-
-**Print**:
-1. Open approved PO
-2. Click **Print** or **Print Preview**
-3. Review print format
-4. Print on company letterhead (if required)
-5. Sign (if signature required by policy)
-
-**Transmit**:
-- **Fax**: Fax to supplier's fax number
-- **Mail**: Mail to supplier address
-- **Hand Deliver**: Deliver in person if local
-
-**Record Transmission**:
-1. In PO screen, click **Mark as Sent**
-2. Enter send date
-3. Enter send method (Fax/Mail)
-4. Add notes: "Faxed to 555-1234"
-5. Save
-
-### Supplier Portal (If Available)
-
-If supplier has portal access:
-1. PO automatically appears in their portal
-2. They receive notification
-3. They can acknowledge receipt electronically
-4. System updates status automatically
-
----
-
-## Following Up with Supplier
-
-### Get PO Confirmation
-
-**Within 24-48 hours**, expect supplier to:
-- Confirm receipt of PO
-- Accept the order, or
-- Raise questions/issues
-
-**If no response**:
-1. **Day 2**: Send follow-up email
-2. **Day 3**: Call supplier
-3. **Day 4**: Escalate to purchasing manager
-
-### Handle Supplier Response
-
-#### Supplier Accepts PO
-**They confirm**:
-- PO received
-- Order accepted
-- Delivery date confirmed
-
-**Your action**:
-- Update expected delivery date in system (if different)
-- Set reminder to follow up closer to delivery
-- No further action until delivery
-
-#### Supplier Raises Issues
-
-**Common issues**:
-
-**Price Changed**:
-- Supplier: "Price is now $105, not $100"
-- Your action: Verify if authorized, get approval, or negotiate
-
-**Delivery Date Not Possible**:
-- Supplier: "Can deliver March 30, not March 15"
-- Your action: Check if acceptable, update PO, or find alternative
-
-**Item Discontinued**:
-- Supplier: "Item no longer available"
-- Your action: Request alternative, or cancel PO and find new supplier
-
-**Minimum Order Not Met**:
-- Supplier: "Minimum order is 100, you ordered 50"
-- Your action: Increase quantity, or accept higher per-unit price
-
-**Action for Issues**:
-1. Discuss with supplier
-2. Negotiate resolution
-3. If significant change: Get new approval
-4. Update PO if needed
-5. Re-send amended PO to supplier
-
-{{< callout type="warning" >}}
-**Never Assume**: Don't assume supplier accepted PO just because they didn't respond. Always get explicit confirmation, especially for high-value or urgent orders.
-{{< /callout >}}
-
----
-
-## Common Scenarios
-
-### Scenario 1: Regular Office Supplies Order
-
-**Situation**: Monthly restocking from regular supplier
-
-**Details**:
-- Supplier: Office Supply Co. (existing)
-- Items: 10 items, all in system
-- Value: $850
-- Quotation: Email price list
-
-**Steps**:
-1. Create new PO
-2. Select supplier
-3. Add 10 line items quickly (type item codes)
-4. Prices auto-fill from price book
-5. Attach email price list
-6. Finalise (no approval configured for low-value stationery)
-7. Send to supplier
-8. Done in 8 minutes
-
-### Scenario 2: Equipment Purchase (High Value)
-
-**Situation**: New machine for production
-
-**Details**:
-- Supplier: XYZ Machinery Inc.
-- Item: 1 machine (non-stock)
-- Value: $45,000
-- Quotation: Detailed proposal PDF
-
-**Steps**:
-1. Create new PO
-2. Select supplier
-3. Add non-stock item: "CNC Machine Model 2000"
-4. Quantity: 1, Price: $45,000
-5. G/L Account: Fixed Assets - Machinery
-6. Cost Center: Production
-7. Attach quotation (multi-page PDF)
-8. Add notes: "Installation and training included"
-9. Submit for approval
-10. Two levels apply because the total is over the second level's Min Approval Amount
-11. Follow up on approval status in the Generic Doc Approval tab
-12. The last approval sets the PO to FINAL — send it to the supplier
-13. Get delivery schedule confirmation
-
-### Scenario 3: Import Purchase (Foreign Currency)
-
-**Situation**: Raw materials from overseas
-
-**Details**:
-- Supplier: International Materials Co. (Singapore)
-- Items: 3 items
-- Value: SGD 28,000
-- Terms: FOB Singapore, prepayment 50%
-
-**Steps**:
-1. Create new PO
-2. Select supplier
-3. Currency: SGD (auto-filled)
-4. Exchange rate: System uses current rate
-5. Add 3 line items in SGD
-6. Delivery terms: FOB Singapore
-7. Payment terms: 50% advance, 50% on B/L
-8. Attach proforma invoice
-9. Add notes: "Prepayment required, arrange LC"
-10. Submit for approval
-11. Send to supplier when approved
-12. Coordinate with finance for LC arrangement
-
----
-
-## Tips for Efficiency
-
-### Speed Up PO Creation
-
-**Use Templates**:
-- Save frequent orders as templates
-- Modify template instead of starting from scratch
-- Update template periodically
-
-**Favorite Items**:
-- Mark frequently ordered items as favorites
-- Quick access to common items
-- Reduces search time
-
-**Copy Previous PO**:
-- Find similar previous PO
-- Use "Copy PO" function
-- Modify as needed
-- Faster than creating from scratch
-
-**Keyboard Navigation**:
-- Learn tab order of fields
-- Use enter/tab instead of mouse clicks
-- Type-ahead search for suppliers/items
-- Keyboard shortcuts for save, submit
-
-### Maintain Accuracy
-
-**Verification Checklist**:
-- [ ] Supplier name correct
-- [ ] All items correctly described
-- [ ] Quantities match requirement
-- [ ] Prices match quotation
-- [ ] Currency correct
-- [ ] Delivery date realistic
-- [ ] Delivery address correct
-- [ ] G/L accounts correct
-- [ ] Quotation attached
-- [ ] Special instructions noted
-
-**Double-Check Critical Fields**:
-- **Unit price**: Most common error
-- **Quantity**: Second most common
-- **Delivery date**: Often unrealistic
-- **Currency**: Easy to miss
-- **G/L account**: Affects financial reporting
-
----
-
-## Troubleshooting
-
-### Error: "Supplier Not Found"
-
-**Cause**: Supplier not in system
-**Fix**:
-1. Search thoroughly (alternate names)
-2. If truly not in system: Create supplier first
-3. Navigation: Master Data > Suppliers > New Supplier
-4. Return to PO creation after supplier created
-
-### Error: "Item Not Found"
-
-**Cause**: Item code doesn't exist
-**Fix**:
-1. Verify item code with supplier
-2. Search by description
-3. If truly new item: Create item first (if policy) or use non-stock item
-
-### Error: "Budget Exceeded"
-
-**Cause**: PO exceeds available budget
-**Fix**:
-1. Check budget availability report
-2. If budget is available: Check if coded to correct budget line
-3. If truly over budget: Get budget increase approval
-4. Attach budget approval to PO
-
-### Error: "Cannot Submit for Approval"
-
-**Cause**: the approval configuration is incomplete
-**Fix**:
-1. Read the message — it names what is missing
-2. *"Submitter designation_code is not created…"* — create the designation under
-   Settings → Branch → Designation
-3. *"There is no approver assigned…"* — add employees to that designation with an Approval Level
-4. `EmployeeBranchDesignationLink_IS_NOT_FULLY_CONFIGURED` — you need at least one approver per
-   required level
-5. The **Add** button greyed out with *"Purchase Order needs to be converted from Purchase
-   Requisition"* — add the Approval Monitor row for that document pair
-6. See [Document Approvals](/guides/document-approvals/) for the full list
-
----
-
-## Best Practices
-
-### Do's
-- ✅ Always attach supplier quotation
-- ✅ Set realistic delivery dates
-- ✅ Include clear delivery instructions
-- ✅ Use correct G/L accounts
-- ✅ Review totals before submitting
-- ✅ Follow up for supplier confirmation
-- ✅ Update PO if terms change
-
-### Don'ts
-- ❌ Create PO without quotation
-- ❌ Rush through data entry
-- ❌ Assume supplier will deliver by your date without confirmation
-- ❌ Ignore currency differences
-- ❌ Code all purchases to "General Purchases"
-- ❌ Leave delivery address blank
-- ❌ Submit for approval before reviewing
-
-{{< callout type="success" >}}
-**Mastery Milestone**: When you can create accurate POs quickly and suppliers consistently deliver as expected, you've mastered PO creation!
-{{< /callout >}}
-
----
-
-## Related Documentation
-
-### Workflows
-- [Standard Procurement Workflow](/guides/purchasing-guides/standard-procurement-workflow) - Complete purchasing process
-- [Purchasing Overview](/user-guide/daily-tasks/purchasing-overview) - Daily task guide
-
-### Next Steps
-- [Goods Received Note Processing](/user-guide/daily-tasks/goods-received-note) - Receiving deliveries
-- [Purchase Invoice Processing](/user-guide/daily-tasks/purchase-invoice-processing) - Processing supplier invoices
-
-### Module Documentation
-- [Purchasing Module](/modules/purchasing/) - All purchasing features
-- [Supplier Maintenance](/applets/supplier-maintenance-applet/) - Managing suppliers
-- [Inventory Items](/applets/inv-item-maintenance-applet/) - Item master data
+You are the buyer, and you need to commit to a supplier in writing. By the end of this page you will have raised a purchase order, finalised it, sent it, and know where to look to see what is still outstanding on it. Your first one takes about ten minutes; after that, two or three.
+
+A purchase order in BigLedger is a commitment, not a transaction. Finalising it posts **nothing** to your ledger and moves **no stock** — it locks the document and puts its lines into an open queue so the warehouse's goods received note and accounts payable's invoice can pull from them. That queue is the whole point: it is what lets a delivery of 180 against an order of 200 leave 20 still outstanding without anyone doing anything clever.
+
+## Meet GadgetSphere
+
+GadgetSphere Sdn Bhd sells consumer electronics from 22 branches. Buying is centralised in head office, and today's order is a routine replenishment for branch `GS-KV-01`: 200 units of a mid-range wireless earbud at RM 128 from an accessory wholesaler, on 30-day terms, delivered to the branch. RM 25,600 net, RM 1,536 SST at 6%, RM 27,136 gross.
+
+## Before you start
+
+- **The supplier exists** in the [Supplier](/applets/master-data/supplier-applet-1/) applet with credit terms and an AR/AP type set. Some tenants let buyers create suppliers from the picker; many deliberately do not.
+- **The items exist** in Doc Item Maintenance with the unit of measure you buy in.
+- **Your branch and location** are known — `GS-KV-01` here.
+- **A pricing scheme is linked** to your branch or your role if you want prices to fill themselves in. Without one you type every price by hand, which works but invites typos.
+- **A forex rate exists** if you are buying in a currency other than MYR. GadgetSphere buys some stock in USD from regional distributors, and those orders need a rate on the day.
+- **You hold create and finalise permission** on `INTERNAL_PURCHASE_ORDER`.
+
+## Step 1: Open the applet and create the order
+
+*Purchasing > Purchase Order (Internal) > Purchase Order > Create*
+
+The listing opens filtered to a default posting status and date window. If an order you expect is not there, widen the date filter or use **Advanced Search** before concluding it does not exist.
+
+Click Create. The form opens on **Main Details**. Set:
+
+- **Branch and location** — `GS-KV-01`. If your defaults are configured these are already filled; if they are blank, set them, because almost everything downstream keys off the branch.
+- **Transaction date** — normally today.
+- **Reference** — whatever your buyers recognise. A pattern like `PO-2026-03-KV01-014` costs nothing and saves an afternoon later.
+
+## Step 2: Choose the supplier
+
+*Purchasing > Purchase Order (Internal) > (your draft) > Account*
+
+On the **Account** tab, pick the supplier. The credit terms on their profile drive the payment terms on this order.
+
+If your applet has inline supplier creation enabled you can add a new supplier from the picker; if it is switched off — the safer setup, and the one most GadgetSphere branches use — an unknown supplier means a call to whoever owns master data. If your tenant filters the picker by branch, only suppliers linked to `GS-KV-01` appear.
+
+Bill-to and ship-to addresses default from the supplier and from your branch. Change the ship-to if the goods are going somewhere other than the ordering branch — a common case when head office orders for a branch, or when everything routes through the fulfilment centre first.
+
+## Step 3: Add the lines
+
+*Purchasing > Purchase Order (Internal) > (your draft) > Lines*
+
+Add the item, then the quantity: 200. The unit price fills itself from the pricing scheme linked to your branch or your role; override it if the price you negotiated differs. Set the tax code — 6% SST for GadgetSphere — and the line shows RM 25,600 net and RM 1,536 tax.
+
+If your applet shows a stock-balance column, that is the current on-hand figure for the item. Use it. Ordering 200 of something you already have 400 of is the kind of mistake nobody catches until the stock ages.
+
+**Ordering against something you already have?** Use the **KO For** tab instead of typing lines. It has sub-tabs for Blanket Purchase Order, Purchase Quotation and Purchase Requisition — pick the source document and its lines come across with quantities and prices intact, and BigLedger records the link. If your tenant allows multiple knock-off, one order line can draw from several source lines.
+
+**Ordering the same thing for several branches?** The **Multi-PO** menu creates several orders in one pass rather than making you repeat this form.
+
+**Ordering because stock is low?** The **PO Replenishment** menus generate orders from stock balances rather than from your memory. A replenishment run shows, per item, the company and location balances, what is reserved, what is in transit, what is already on open orders, what is in the sales-order queue, and the last 30 days of sales, then proposes a reorder quantity you approve or change. If GadgetSphere's buyers are re-keying the same accessory orders every week, this is the thing to set up.
+
+*Watch out for:* if an item you expect is missing from the picker, it may be a GL-code item type that your applet settings deliberately keep out of purchase lines, or it may not be linked to the company on the header.
+
+## Step 4: Set delivery and payment details
+
+*Purchasing > Purchase Order (Internal) > (your draft) > Delivery Details, Payment*
+
+The **Delivery Details** tab carries the delivery branch, location and the date you need the goods. Fill in the required date honestly — it is what the warehouse plans against and what you will chase the supplier on.
+
+The **Payment** tab carries the payment terms. These default from the supplier's profile; change them here only if this order genuinely differs from your standing arrangement.
+
+If GadgetSphere reports by segment, project or profit centre, the **Department Hdr** tab is where you tag them. These tags do not change the accounting; they change how the numbers slice in reports.
+
+Click **SAVE**. You now have a draft with a document number. Nothing has been committed and you can still change every field.
+
+## Step 5: Approval, if your tenant uses it
+
+*Purchasing > Purchase Order (Internal) > (your draft) > Generic Doc Approval*
+
+**Approvals in BigLedger are off until someone configures them, and they never block anything.** There is no approval check in the document lifecycle: an order saves and finalises identically whether an approval setting exists, does not exist, or exists with a request still pending. It is a sign-off trail you can show an auditor, not a gate that stops a purchase.
+
+If your finance manager has created an Approval Setting for `INTERNAL_PURCHASE_ORDER` under *Settings > Approval Settings*, open the saved order, go to the **Generic Doc Approval** tab and click **Submit For Approval**. BigLedger e-mails each approver a link to a page where they Approve or Reject with remarks. When the last required level approves, the order is set to FINAL for you.
+
+How many levels a document needs depends on **its amount**. Each level carries a minimum approval amount, and the order needs every level whose minimum it exceeds. With levels at RM 0, RM 10,000 and RM 50,000, our RM 25,600 order needs two.
+
+There is no escalation, no reminder e-mail, and no stand-in approver. If your approver is on leave, the order waits until you call them.
+
+Purchase orders, purchase requisitions and stock requisitions are the only document types with an approval engine at all. If you need control over other documents, control it with the finalise permission instead.
+
+## Step 6: Finalise and send
+
+*Purchasing > Purchase Order (Internal) > (your draft) > FINAL, then Export*
+
+Read the lines back once, then click **FINAL**.
+
+The order locks. Its 200 units enter the open queue. Nothing posts to the ledger and nothing moves in stock, which is correct — you have promised to buy, not bought.
+
+Send it from the **Export** tab using whichever printable format your tenant has set up. If you need several orders at once, the listing supports bulk print with a format picker.
+
+*Watch out for:* **CLONE** copies the whole order into a new draft — genuinely useful for repeat orders, and it runs as a background job so the new document may take a few seconds to appear.
+
+## Step 7: Track what is outstanding
+
+Three places tell you what is still open, and they answer different questions:
+
+- **Purchase Order Queue** — the open-queue rows themselves: lines you have committed to and not yet received or invoiced. This is your outstanding-orders list. (It is not an approval queue, despite the name.)
+- **PO Line with GRN KO** — your ordered lines matched against what has actually been received. This is where you see that 180 of the 200 arrived.
+- **PO Line with PI KO** — your ordered lines matched against what has been invoiced.
+
+When a supplier tells you the balance of an order is never coming, use **CLOSE** on the order. It sets every line's open quantity to zero and deletes the queue rows, so the order stops appearing as outstanding. CLOSE is not VOID — VOID cancels the document; CLOSE says "we are done here". Neither can be undone.
+
+## What success looks like
+
+Thirty seconds, three checks:
+
+1. **The order shows as FINAL** in the listing and you cannot edit its lines.
+2. **It appears in Purchase Order Queue** with 200 units outstanding. When the goods arrive, that number will fall on its own.
+3. **Your stock balance has not changed.** If it has, something other than this order did it — a purchase order moves no stock, ever.
+
+## Common mistakes
+
+**Leaving the order in draft and telling the supplier it is placed.** A draft has no open queue. The warehouse's search for it when the goods arrive will find nothing, and the receipt will be typed in by hand with no link back to the order. Always FINAL before you send.
+
+**Typing lines when a requisition or quotation exists.** Use KO For. It carries the link, and the link is what lets anyone later see what was asked for, what was ordered, and what arrived.
+
+**Using VOID when you meant CLOSE.** VOID cancels an order that should never have existed. CLOSE tidies away the tail of an order that was mostly delivered. Voiding a partly received order leaves the receipt hanging.
+
+**Expecting approval to stop anything.** Until an approval setting exists, no document requires anyone's sign-off — and even with one configured a purchase order can still be finalised by hand while a request sits pending. If unauthorised buying is the risk you are managing, take the finalise permission away from the people you do not want finalising.
+
+**Forgetting the forex rate on a foreign-currency order.** A USD order without a rate on the day will not price correctly, and if your tenant locks the rate field you cannot fix it yourself.
+
+## Related documentation
+
+- [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) — the full applet reference: every menu, setting, field, CSV column and failure mode
+- [Purchase Requisition (Internal)](/applets/purchase-workflow/internal-purchase-requisition-applet/) — the document that asks for the purchase before you commit to it
+- [Blanket Purchase Order](/applets/purchase-workflow/blanket-purchase-order-applet/) — the standing agreement you draw orders from
+- [Supplier](/applets/master-data/supplier-applet-1/) — the supplier master this order reads from
+- [Standard Procurement Workflow](/guides/purchasing-guides/standard-procurement-workflow/) — the whole order-to-payment run
+- [Goods Received Note Processing](/user-guide/daily-tasks/goods-received-note/)
+- [Purchase Invoice Processing](/user-guide/daily-tasks/purchase-invoice-processing/)
+- [Document Approvals](/guides/document-approvals/)

@@ -46,10 +46,12 @@ Complete inventory management with BigLedger.
 ## Stock Valuation
 
 ### Methods Available
-- FIFO
-- Weighted Average
-- Standard Cost
-- Specific Identification
+- FIFO (First In, First Out)
+- LIFO (Last In, First Out)
+- Moving Average
+
+BigLedger implements these three. Standard costing and specific identification are not part of the
+costing engine — if you have seen them referred to elsewhere on this site, that was wrong.
 
 ### Periodic Tasks
 - Cycle counting

@@ -1,1105 +1,136 @@
 ---
 title: "Direct Invoice Workflow"
-description: "Process purchases without PO or GRN - ideal for services, utilities, subscriptions, and non-stock expense purchases"
+description: "Book a supplier bill with no purchase order and nothing to receive — rent, utilities, subscriptions, professional fees and other non-stock spend — so it lands in the right expense account and the right SST period."
+tags:
+- user-guide
+- purchasing
+- accounts-payable
 weight: 30
+sources:
+  - /applets/finance/internal-purchase-invoice-applet/
+  - /applets/master-data/doc-item-maintenance-applet/
+  - /applets/finance/internal-payment-voucher-applet/
+  - /applets/master-data/supplier-applet-1/
+  - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/erp/inventory/InventoryTransactionLineProcessorService.java
+  - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/ServerDocTypes.java
 ---
 
-The Direct Invoice Workflow is the simplest purchasing process, going straight from invoice receipt to payment. This workflow is designed for purchases that don't involve physical goods receipt or where creating a PO and GRN would add no value.
+Not everything you buy arrives on a pallet. Rent, electricity, the accountant's fee, the cleaning contract, a software subscription — there is no purchase order, nothing to receive, and no stock to book. By the end of this guide you will have booked one of these bills straight onto a purchase invoice, put the cost in the right expense account, and left the input tax claimable. It takes about three minutes once your expense items exist.
 
-## When to Use Direct Invoice Workflow
+There is one setup decision that makes the difference between this being easy and being a monthly argument with your accountant, and it is covered in Step 1: **what kind of item you use on the line**. Get that right once and every future bill from the same supplier posts itself to the right place.
 
-This workflow is perfect for:
+## Meet GadgetSphere
 
-- **Professional services** (legal, accounting, consulting)
-- **Utilities** (electricity, water, gas, internet)
-- **Subscriptions** (software licenses, cloud services, memberships)
-- **Insurance premiums**
-- **Rent and lease payments**
-- **Marketing services** (advertising, media buys)
-- **Bank charges and fees**
-- **Professional development** (training, conferences)
-- **Outsourced services** (cleaning, security, maintenance contracts)
+GadgetSphere Sdn Bhd pays rent on 22 branch premises, electricity on all of them, and a long tail of professional and subscription spend from head office. Today's bill is the March rent for branch `GS-KV-01`: RM 12,000 plus RM 720 SST at 6%, RM 12,720 total, payable on the 7th.
 
-{{< callout type="info" >}}
-**Key Characteristic**: Use Direct Invoice for purchases where there's nothing physical to receive into inventory, or where the "receipt" is simultaneous with invoice (like utility consumption).
-{{< /callout >}}
+## When to use this workflow
 
-## When NOT to Use This Workflow
+Use it when there is genuinely nothing to receive:
 
-Avoid Direct Invoice for:
+- Rent, utilities, telecommunications, insurance
+- Professional fees — audit, legal, tax agent, consultancy
+- Software subscriptions and hosting
+- Repairs, maintenance and cleaning contracts
+- Freight and courier charges billed separately from the goods
 
-- **Physical goods** requiring inventory tracking
-- **High-value purchases** needing approval trail
-- **Capital equipment** requiring asset tracking
-- **Inventory items** for resale or production
-- **Items with serial numbers** needing warranty tracking
+**Do not** use it for goods that arrived. Even if nobody raised an order, the goods should be recorded on a GRN first so there is a receipt to point at — see [Direct GRN Workflow](/guides/purchasing-guides/direct-grn-workflow/).
 
-For these, use:
-- [Standard Procurement Workflow](/guides/purchasing-guides/standard-procurement-workflow) - For goods with PO
-- [Direct GRN Workflow](/guides/purchasing-guides/direct-grn-workflow) - For goods without PO
+**Do not** use it for stock you did order. Receive against the purchase order and knock the receipt off — see [Standard Procurement Workflow](/guides/purchasing-guides/standard-procurement-workflow/).
 
-## Process Flow
+## Step 1: Set up the expense items once
+
+*Master Data > Doc Item Maintenance*
+
+A purchase invoice line needs an item, even when what you are buying is not a thing. BigLedger's item types cover this: alongside the ordinary stock item there are non-stock types, including **Service** items and **Account Code** items — the latter being an item that simply stands for a General Ledger account.
+
+Why this matters: the stock processor only writes an inventory transaction for a line whose item resolves to an inventory item. A Service or Account Code item does not, so **an invoice made entirely of those lines posts to the ledger and moves no stock at all**, even though the purchase invoice document type is quantity-signum +1. There is no special "expense invoice" document — the item type is what makes the difference.
+
+Set up one item per recurring cost you book: *Branch rental*, *Electricity*, *Audit fee*, *Cloud hosting*. Link each to the GL code it should post to. Do this once, and every future bill posts to the right account with nobody having to remember which one it was.
+
+*Watch out for:* some applets are configured to keep Account Code items out of the item picker on purchase orders. That setting is deliberate and does not affect purchase invoices — but if you cannot find your expense item on a line, that is the first thing to check with whoever owns your applet settings.
+
+## Step 2: Create the invoice
+
+*Finance > Purchase Invoice (Internal) > Internal Purchase Invoice > Create*
+
+Click Create. **Branch and location are the only unconditionally required header fields.** For branch rent, set the branch the cost belongs to — `GS-KV-01` — because that is what makes the per-branch profit and loss report right without any further tagging.
+
+Set the **transaction date** to the date on the supplier's invoice. That date decides the accounting period and the SST period the input tax falls into. Put their invoice number in the reference field.
+
+On the **Account** tab, pick the supplier — the landlord, the utility, the firm. If they are not in the supplier master, add them properly rather than booking to a generic "sundry" account; a year later you will want to know what you paid each landlord.
+
+## Step 3: Enter the lines
+
+*Finance > Purchase Invoice (Internal) > (your draft) > Line Items*
+
+Add the expense item you set up in Step 1 — *Branch rental* — with quantity 1 and amount RM 12,000. Set the tax code; RM 720 at 6% SST.
+
+Where the debit lands is decided in this order: a GL code entered on the line, then a GL code on the document header, then the item's own company GL link, then the company's default `PURCHASE` code. If your items are set up as Step 1 describes, the item's GL link does the work and you never touch the line's GL code. If you are booking a one-off cost with no item of its own, override the GL code on the line instead of inventing a new item.
+
+If you report by segment, project or profit centre, tag them on the **Department Hdr** tab. For GadgetSphere's branch rent, the branch on the header is usually enough.
+
+For a bill covering several things — a utility invoice with electricity, water and a late-payment charge — use one line per cost with its own item and its own tax treatment. Lumping them together makes the ledger tidy today and useless in six months.
+
+## Step 4: Attach it and finalise
+
+*Finance > Purchase Invoice (Internal) > (your draft) > Attachment, then FINAL*
+
+Attach the supplier's PDF. For recurring bills this is the only evidence there will ever be that the amount was what they asked for.
+
+There is **no approval step on a purchase invoice** and no approval queue — BigLedger's approval engine covers only purchase orders, purchase requisitions and stock requisitions. Whoever holds the finalise permission is your control. If your policy is that expenses over a certain amount need a second signature, that policy lives in who can click FINAL, not in the system.
+
+Click **FINAL**. For our rent bill:
 
 ```
-Step 1: Receive Invoice → Step 2: Verify Service/Expense → Step 3: Enter Invoice → Step 4: Review & Finalise → Step 5: Make Payment
-    ↓                          ↓                             ↓                    ↓                        ↓
-Supplier Sends         Staff Confirms               Create in System     Authorised person       Pay Supplier
-Invoice               Service Received             Record Expense       finalises it            Per Terms
+Dr  Rental Expense                     RM 12,000
+Dr  Input Tax                          RM    720
+    Cr  Creditor — the landlord                RM 12,720
 ```
 
-**Key Difference**: No goods receipt process — the invoice goes straight to review and payment. Note that BigLedger has no approval engine for purchase invoices: the sign-off in Step 4 is a company control enforced by who holds the finalise permission, not a queue the system manages.
+No inventory line is written, because no line resolves to an inventory item.
 
----
+Open the **Posting** tab to check: Journal posted, Inventory showing nothing to post. **TraceDocument** shows the journal rows.
 
-## Step 1: Receive Invoice from Supplier
+**The two errors that stop a first expense invoice:**
 
-**Responsible Role**: Administrative Staff / Accounts Payable
+- **`MISSING_DEFAULT_GL_CODE: <code>`** — either the expense item has no GL link and the company has no default `PURCHASE` code, or `INPUT_TAX` is not linked, or the supplier's AR/AP type has no creditor account. The message names which.
+- **`FISCAL_PERIOD_LOCKED`** — the supplier's invoice date falls in a closed month. Do not move the date to make the error go away; that puts the input tax in the wrong SST period. Ask for the period to be reopened, or agree with your accountant where it should sit.
 
-### Invoice Receipt Channels
+## Step 5: Pay it
 
-Invoices arrive through various channels:
+- **One bill** — record the settlement on the invoice's own **Payment** tab. Methods are the ones assigned to your branch in Branch Settings.
+- **A run of bills** — use the [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/) applet: payee, one payment line per real bank movement, contra-linked to the invoices being settled. Each payment line becomes one cashbook transaction, which is what you will match against your bank statement.
 
-#### Email
-- Most common for services and subscriptions
-- PDF attachments
-- Save to designated folder
-- Forward to AP email address
+For the ones that repeat every month at the same amount — rent, subscriptions — **CLONE** the previous invoice rather than retyping it, and change the date, the reference and the amount. It runs as a background job, so give it a few seconds.
 
-#### Mail/Post
-- Traditional invoices
-- Original hard copy
-- Scan immediately upon receipt
-- Date stamp physical copy
+## What success looks like
 
-#### Supplier Portal
-- Download from supplier website
-- Online billing systems
-- Electronic invoicing platforms
-- Save PDF copy
+Thirty seconds, three checks:
 
-#### Hand Delivery
-- Walk-in service providers
-- On-site contractors
-- Physical copy received
-- Get acknowledgment receipt
+1. **The Posting tab shows Journal posted** and no inventory movement.
+2. **Open your trial balance or the expense account** — the RM 12,000 is in Rental Expense, against branch `GS-KV-01`, in March.
+3. **Open the input tax account** — the RM 720 is there and will appear on the SST return for the period the invoice is dated in.
 
-{{< callout type="tip" >}}
-**Email Management**: Set up email rules to automatically route supplier invoices to AP inbox. Use subject line keywords: "Invoice", supplier names, common terms.
-{{< /callout >}}
+## Common mistakes
 
-### Initial Invoice Screening
+**Using a stock item for a service.** The line resolves to an inventory item, an inventory transaction gets written, and you now have phantom stock of something that does not exist. Symptom: a stock report with an item you cannot find in the warehouse. Use Service or Account Code items.
 
-Before processing, verify invoice validity:
+**Booking everything to one generic expense item.** It posts, it balances, and it tells you nothing. One item per recurring cost, linked to its GL code, costs ten minutes once.
 
-#### Valid Tax Invoice Requirements
-- [ ] Supplier name and address
-- [ ] Tax registration number (if applicable)
-- [ ] Unique invoice number
-- [ ] Invoice date
-- [ ] Your company name
-- [ ] Description of service/expense
-- [ ] Amount before tax
-- [ ] Tax amount (if applicable)
-- [ ] Total amount due
-- [ ] Payment terms
-- [ ] Payment details (bank account)
+**Dating the invoice today.** The transaction date drives the accounting period and the SST period. A March bill entered in April, dated April, understates March and overstates April, and puts the input tax claim in the wrong return.
 
-#### Red Flags to Watch For
-- **Duplicate invoice numbers**: Check if already processed
-- **Incorrect company name**: Might be for wrong entity
-- **Missing tax details**: Can't claim input tax
-- **Unusual supplier**: Verify legitimacy
-- **Amount seems high**: Compare to previous invoices
-- **Different bank account**: Fraud risk - verify with supplier
+**Booking to the wrong branch.** Head office pays the bill, so it gets keyed against head office, and 22 branches show no rent. The branch on the header is what the per-branch report reads.
 
-{{< callout type="warning" >}}
-**Fraud Alert**: Email invoice fraud is common. If supplier's bank account suddenly changes, CALL the supplier (don't email) to verify before paying.
-{{< /callout >}}
+**Skipping the attachment on a recurring bill.** These are exactly the invoices nobody remembers and everyone queries. The PDF is thirty seconds now and the whole answer later.
 
----
+**Expecting a routing or approval step.** There is none. If an expense should not be paid without a second look, the second look has to be a person before someone clicks FINAL.
 
-## Step 2: Verify Service or Expense Received
+## Related documentation
 
-**Responsible Role**: Service Recipient / Department Manager
-
-Before processing invoice, confirm the underlying service or expense:
-
-### Service Verification
-
-For professional services:
-
-#### Consulting/Professional Services
-- [ ] Service was actually provided
-- [ ] Service meets agreed scope
-- [ ] Hours/days match agreement
-- [ ] Quality is acceptable
-- [ ] Deliverables received (reports, documents)
-
-**Verification method**:
-- Contact service recipient (the person who engaged service)
-- Review project completion status
-- Check deliverables against contract
-- Confirm satisfaction before approving payment
-
-#### Recurring Services
-- [ ] Service continues to be provided
-- [ ] No quality issues
-- [ ] Contract is still active
-- [ ] Price matches agreement
-
-**Examples**:
-- **Cleaning service**: Site manager confirms service performed
-- **Security service**: HR confirms guards present per schedule
-- **Maintenance contract**: Facility manager confirms uptime
-
-### Expense Verification
-
-For non-service expenses:
-
-#### Utilities
-- [ ] Meter readings reasonable
-- [ ] Usage aligns with operations
-- [ ] No unusual spikes (investigate if yes)
-- [ ] Charges match rate card
-
-**Verification steps**:
-1. Compare to previous months
-2. Check for seasonal variations
-3. Verify meter readings if possible
-4. Investigate anomalies before paying
-
-#### Subscriptions and Licenses
-- [ ] Service is still needed
-- [ ] Users are actively using it
-- [ ] No duplicate subscriptions
-- [ ] Price matches agreement
-
-**Review questions**:
-- Are we still using this software/service?
-- Can we consolidate with another subscription?
-- Is renewal automatic or can we negotiate?
-- Do we need this many licenses?
-
-#### Insurance Premiums
-- [ ] Policy is current and correct
-- [ ] Coverage matches requirements
-- [ ] Premium matches quotation
-- [ ] Policy period is correct
-
-### Contract Reference
-
-If invoice is for contracted services:
-
-1. **Locate contract/agreement**
-2. **Verify invoice terms match**:
-   - Service description
-   - Pricing/rates
-   - Payment terms
-   - Billing frequency
-3. **Check contract value**:
-   - Running total of invoices
-   - Not exceeding contract value
-   - Budget remaining
-
-{{< callout type="info" >}}
-**Contract Management**: Maintain a contract register linking invoices to contracts. This ensures you don't overpay and helps track contract utilization.
-{{< /callout >}}
-
----
-
-## Step 3: Enter Invoice in System
-
-**Responsible Role**: Accounts Payable Clerk
-
-### Navigation
-`[Accounts Payable > Purchase Invoices > New Direct Invoice]`
-
-or
-
-`[Purchasing > Purchase Invoices > New Invoice > Without PO/GRN]`
-
-### Invoice Header
-
-#### Document Information
-- **Invoice Number**: Exactly as on supplier invoice
-- **Invoice Date**: Date on invoice
-- **Received Date**: When you received it
-- **Due Date**: Invoice date + payment terms
-- **GL Date**: Accounting period to record expense
-
-#### Supplier Information
-- **Supplier**: Select from supplier master
-- **Supplier Contact**: If specific contact
-- **Currency**: Base or foreign currency
-- **Exchange Rate**: If foreign currency (auto-filled or manual)
-
-#### Reference Information
-- **Your Reference**: Internal reference (PO number if informal PO, project code, etc.)
-- **Their Reference**: Supplier's reference from invoice
-- **Contract Number**: If under contract
-- **Description**: Brief description of invoice
-
-{{< callout type="tip" >}}
-**Period Control**: Pay attention to GL Date, especially near month-end. Ensure expenses are recorded in the correct accounting period for accurate financial reporting.
-{{< /callout >}}
-
-### Invoice Line Items
-
-For each line on the invoice:
-
-#### Line Item Entry
-- **Description**: Clear description of service/expense
-  - Example: "Legal services - contract review"
-  - Example: "Office cleaning services - March 2024"
-  - Example: "AWS cloud hosting - March 2024"
-
-- **Quantity**: Usually 1 for services, or actual quantity
-  - 1 month of service
-  - 40 hours of consulting
-  - 5 user licenses
-
-- **Unit Price**: Price per unit
-  - Monthly fee
-  - Hourly rate
-  - Per-license cost
-
-- **Amount**: Total line amount (Qty × Price)
-
-- **Tax Code**: VAT/GST treatment
-  - Standard rated (most services)
-  - Zero-rated (exports, some services)
-  - Exempt (financial services, education)
-
-- **Tax Amount**: Calculated or manual entry
-
-#### Account Coding
-
-Critical for proper expense classification:
-
-**G/L Account**: Select appropriate expense account
-- Professional fees
-- Utilities
-- Software subscriptions
-- Insurance
-- Rent
-- Marketing expenses
-- Bank charges
-- Training & development
-
-**Cost Center**: Department or cost center
-- Administration
-- Sales & Marketing
-- IT Department
-- Human Resources
-- Production
-- Research & Development
-
-**Project Code**: If applicable
-- Specific client project
-- Internal initiative
-- Capital project
-
-**Additional Dimensions** (if used):
-- Business unit
-- Location
-- Fund/grant code
-
-{{< callout type="warning" >}}
-**Accounting Accuracy**: Incorrect G/L coding creates incorrect financial statements and management reports. Take time to code correctly - corrections are time-consuming.
-{{< /callout >}}
-
-### Common Invoice Types and Coding
-
-#### Professional Services
-
-**Legal Fees**:
-```
-Description: Legal services - contract drafting
-G/L Account: Professional Fees - Legal
-Cost Center: Administration
-Amount: $2,500
-```
-
-**Accounting Services**:
-```
-Description: Monthly accounting services
-G/L Account: Professional Fees - Accounting
-Cost Center: Finance
-Amount: $3,000
-```
-
-**Consulting**:
-```
-Description: IT consulting - 40 hours
-G/L Account: Consulting Fees
-Cost Center: IT Department
-Project: ERP Implementation
-Amount: $6,000
-```
-
-#### Utilities
-
-**Electricity**:
-```
-Description: Electricity - March 2024
-G/L Account: Utilities - Electricity
-Cost Center: Facilities
-Amount: $1,200
-```
-
-**Internet/Telecom**:
-```
-Description: Internet service - March 2024
-G/L Account: Utilities - Telecommunications
-Cost Center: IT
-Amount: $500
-```
-
-#### Subscriptions
-
-**Software as a Service**:
-```
-Description: Salesforce CRM - 10 users monthly
-G/L Account: Software Subscriptions
-Cost Center: Sales & Marketing
-Amount: $150
-```
-
-**Cloud Hosting**:
-```
-Description: AWS cloud hosting - March
-G/L Account: IT Infrastructure - Cloud
-Cost Center: IT
-Amount: $850
-```
-
-#### Rent and Leases
-
-**Office Rent**:
-```
-Description: Office rent - April 2024
-G/L Account: Rent Expense
-Cost Center: Administration
-Amount: $5,000
-```
-
-**Equipment Lease**:
-```
-Description: Forklift lease - monthly
-G/L Account: Equipment Lease
-Cost Center: Warehouse
-Amount: $800
-```
-
-### Split Invoices
-
-If one invoice covers multiple departments/projects:
-
-**Example**: Electricity bill split by department
-
-```
-Line 1:
-Description: Electricity - Production area (60%)
-G/L Account: Utilities - Electricity
-Cost Center: Production
-Amount: $720
-
-Line 2:
-Description: Electricity - Office area (30%)
-G/L Account: Utilities - Electricity
-Cost Center: Administration
-Amount: $360
-
-Line 3:
-Description: Electricity - Warehouse (10%)
-G/L Account: Utilities - Electricity
-Cost Center: Warehouse
-Amount: $120
-
-Total: $1,200
-```
-
-{{< callout type="info" >}}
-**Allocation Keys**: Set up standard allocation percentages for recurring split invoices (like utilities). This ensures consistent and fair cost distribution.
-{{< /callout >}}
-
-### Tax Handling
-
-#### Standard Rated Services
-Most services subject to VAT/GST:
-- Professional services
-- Most utilities
-- Advertising
-- Software subscriptions
-
-**Entry**:
-```
-Net Amount: $1,000
-Tax (18%): $180
-Total: $1,180
-```
-
-#### Zero-Rated Services
-Tax rate = 0%, but invoice must show this:
-- Exported services
-- International freight
-- Some education services
-
-**Entry**:
-```
-Net Amount: $1,000
-Tax (0%): $0
-Total: $1,000
-```
-
-#### Exempt Services
-No tax charged, invoice may not mention tax:
-- Financial services (some jurisdictions)
-- Insurance (some jurisdictions)
-- Medical services
-
-**Entry**:
-```
-Amount: $1,000
-(No tax line)
-```
-
-#### Withholding Tax
-For some professional services, you may need to withhold tax:
-
-**Example** (10% withholding):
-```
-Invoice Amount: $1,000
-Withholding Tax: -$100
-Net Payment: $900
-```
-
-System entries:
-- Debit: Professional Fees $1,000
-- Credit: Withholding Tax Payable $100
-- Credit: Accounts Payable $900
-
-{{< callout type="warning" >}}
-**Withholding Tax Compliance**: Failing to withhold required tax makes your company liable. Check regulations for which services require withholding.
-{{< /callout >}}
-
-### Document Attachment
-
-Attach supporting documentation:
-
-#### Required Documents
-1. **Supplier Invoice** (PDF or scan)
-   - Must be clear and legible
-   - All pages included
-   - Tax invoice requirements met
-
-2. **Service Confirmation** (if applicable)
-   - Service completion certificate
-   - Deliverables received acknowledgment
-   - Timesheet (for hourly services)
-   - Usage reports (for utilities)
-
-3. **Contract/Agreement** (for first invoice)
-   - Master service agreement
-   - Statement of work
-   - Quotation or proposal
-   - Rate card
-
-4. **Approval Documentation**
-   - Email approval
-   - Approval form
-   - Board resolution (for major expenses)
-
-#### Upload Process
-1. Click **Attachments** tab
-2. For each document:
-   - Add document
-   - Select type
-   - Choose file
-   - Add description
-   - Upload
-3. Verify all critical docs attached
-
----
-
-## Step 4: Review and Finalise the Invoice
-
-**Responsible Role**: whoever your policy says must see the invoice before it is finalised
-
-{{< callout type="warning" >}}
-**BigLedger does not route purchase invoices for approval.** There is no Submit for Approval button
-on a purchase invoice, no approver queue and no notification e-mail. The invoice sits in Draft until
-someone with the finalise permission finalises it. Everything in this section is therefore a
-*policy* you enforce with permissions and with who you tell to look. The only documents with a real
-approval engine are purchase requisitions, purchase orders and stock requisitions — see
-[Document Approvals](/guides/document-approvals/).
-{{< /callout >}}
-
-### A sensible review policy
-
-#### By invoice value
-| Amount | Who should look | Typical time |
-|--------|-----------------|--------------|
-| < RM 500 | Supervisor | Same day |
-| RM 500 - 2,000 | Department manager | 1 day |
-| RM 2,000 - 10,000 | Senior manager | 2 days |
-| RM 10,000 - 50,000 | Finance director | 3 days |
-| > RM 50,000 | Managing director | 5+ days |
-
-#### By expense type
-Some expenses are worth a second reader:
-- **Legal fees**: legal counsel and finance
-- **IT subscriptions**: IT manager and finance
-- **Insurance**: risk owner and finance
-- **Marketing**: marketing lead and finance
-
-#### Budget control
-- **Within budget**: normal review
-- **Over budget**: the budget holder should see it before it is finalised
-- **No budget**: finance decides
-
-Give the finalise permission only to the roles that appear in the right-hand column, and the policy
-holds itself up.
-
-### Approval Process
-
-#### For Approvers
-
-When notification received:
-
-1. **Review invoice details**:
-   - Supplier is legitimate
-   - Service/expense is business-related
-   - Amount is reasonable
-   - Coding is correct
-
-2. **Verify business need**:
-   - Service was authorized
-   - Expense is necessary
-   - Budget is available
-   - Contract terms met (if applicable)
-
-3. **Check supporting documents**:
-   - Invoice is attached
-   - Service confirmation provided
-   - Contract is referenced
-   - All requirements met
-
-4. **Take action**:
-   - **Approve**: If all is correct
-   - **Reject**: If issues found
-   - **Query**: If more information needed
-
-5. **Add approval notes**:
-   - Confirm service received
-   - Note any concerns
-   - Reference authorization source
-
-{{< callout type="tip" >}}
-**Approval Best Practice**: Don't just rubber-stamp. Actually verify service was received and needed. This is your control point to prevent waste and fraud.
-{{< /callout >}}
-
-### Handling Approval Issues
-
-#### Issue: The Reviewer Is Not Available
-**Solutions**:
-- Agree in advance who covers for whom, and give that person the finalise permission
-- There is no delegation feature and no automatic escalation for documents in BigLedger — cover has
-  to be arranged by permission, not by the system
-
-#### Issue: Invoice Lacks Information
-**Action**:
-1. Reject with clear comments
-2. Request missing information
-3. AP follows up with supplier
-4. Resubmit when complete
-
-#### Issue: Service Not Verified
-**Action**:
-1. Query to service recipient
-2. Wait for confirmation
-3. Keep invoice on hold
-4. Follow up if no response
-
-#### Issue: Budget Exceeded
-**Action**:
-1. Check YTD spend vs. budget
-2. If truly over budget:
-   - Seek budget virement (transfer)
-   - Get CFO approval
-   - Document justification
-3. If within budget: Approve normally
-
----
-
-## Step 5: Post Invoice and Schedule Payment
-
-**Responsible Role**: Accounts Payable
-
-### Invoice Posting
-
-Once fully approved:
-
-1. **Final review**:
-   - All approvals received
-   - Documents attached
-   - Coding verified
-   - No outstanding queries
-
-2. **Post invoice**:
-   - Click **Post Invoice**
-   - System creates accounting entries
-   - Invoice becomes payable
-   - Payment scheduled
-
-3. **Accounting entries**:
-```
-Debit: Expense Account (per coding)   $1,000
-Debit: Input Tax (if applicable)         $180
-Credit: Accounts Payable                        $1,180
-```
-
-4. **Invoice status**:
-   - Posted
-   - Awaiting payment
-   - Due date set
-
-### Payment Processing
-
-**Navigation**: `[Accounts Payable > Payment Processing]`
-
-#### Payment Scheduling
-
-**Immediate payment** (urgent):
-- Same-day payment required
-- Special approval obtained
-- Process individually
-
-**Normal payment cycle**:
-- Weekly payment runs
-- Twice-monthly runs
-- Monthly payment (for monthly invoices)
-
-**Scheduled for due date**:
-- System flags on due date
-- Included in payment run
-- Avoids late payment
-
-#### Payment Methods
-
-**Bank Transfer** (most common):
-1. Create payment batch
-2. Generate bank file
-3. Upload to online banking
-4. Authorize payment
-5. Record in system
-
-**Check Payment**:
-1. Generate check
-2. Get signatures
-3. Mail to supplier
-4. Record check number
-
-**Credit Card**:
-1. Pay via company card
-2. Record payment
-3. Reconcile with card statement
-
-**Direct Debit**:
-1. Supplier auto-debits account
-2. Receive notification
-3. Record in system
-4. Reconcile with bank
-
-{{< callout type="info" >}}
-**Payment Timing**: For services already consumed (utilities, past services), pay on or before due date to maintain good supplier relations and credit terms.
-{{< /callout >}}
-
-### Payment Posting
-
-After payment executed:
-
-1. **Record payment**:
-   - Payment date
-   - Payment reference (bank confirmation)
-   - Payment amount
-   - Payment method
-
-2. **System creates entry**:
-```
-Debit: Accounts Payable   $1,180
-Credit: Bank Account              $1,180
-```
-
-3. **Invoice status**: Paid
-
-4. **Supplier account**: Updated
-
-### Remittance Advice
-
-Send payment confirmation to supplier:
-
-**Auto-generation**:
-- System generates remittance
-- Shows: Payment date, amount, invoices paid, reference
-- Email to supplier automatically
-
-**Manual process**:
-- Print remittance advice
-- Mail with check or separately
-- Email PDF to supplier
-
----
-
-## Special Scenarios
-
-### Scenario 1: Monthly Software Subscription
-
-**Supplier**: SaaS Provider
-**Service**: Project management software
-**Billing**: Monthly auto-invoice
-
-**Process**:
-1. **Auto-invoice received** via email on 1st of month
-2. **AP enters invoice**:
-   - Description: "PM Software - March 2024 - 10 users"
-   - Amount: $100/month
-   - G/L: Software Subscriptions
-   - Cost Center: IT
-3. **Flagged for the IT manager** by your own process (BigLedger does not route it)
-4. **IT manager confirms** the subscription is still in use, then finalises
-5. **Posted** to payables
-6. **Paid** via company credit card (auto-payment setup)
-7. **Payment recorded** from card statement
-
-**Timeline**: Received to paid = 2 days
-
-### Scenario 2: Legal Services Invoice
-
-**Supplier**: Law Firm ABC
-**Service**: Contract review and negotiation
-**Billing**: Upon completion
-
-**Process**:
-1. **Invoice received** via email: $5,500 for 22 hours work
-2. **AP enters invoice** with timesheet attachment
-3. **Routed** to Legal Counsel
-4. **Legal reviews**:
-   - Verifies work was done
-   - Checks hours reasonable
-   - Confirms rate matches agreement
-   - Approves
-5. **Routed** to CFO (amount > $5,000)
-6. **CFO approves** (budget available)
-7. **Posted** to payables
-8. **Withholding tax calculated**: 10% = $550
-9. **Payment scheduled**: $4,950 net of withholding
-10. **Paid** via bank transfer on due date
-11. **Withholding remitted** to tax authority
-
-**Timeline**: Received to paid = 30 days (Net 30 terms)
-
-### Scenario 3: Electricity Bill
-
-**Supplier**: Power Company
-**Service**: Electricity consumption
-**Billing**: Monthly based on meter reading
-
-**Process**:
-1. **Invoice received** via email: $3,600
-2. **AP enters invoice**
-3. **Routed** to Facility Manager
-4. **Facility Manager**:
-   - Checks meter reading (actual vs. invoice)
-   - Compares to last month (within expected range)
-   - Verifies rate (no unusual charges)
-   - **Sees spike**: 50% higher than usual
-5. **Investigates spike**:
-   - Checks production schedule (was there overtime?)
-   - Reviews HVAC logs (cooling season started?)
-   - Identifies: New equipment installed (legitimate increase)
-   - Documents reason
-6. **Approves** with notation
-7. **Posted** with split coding:
-   - 70% Production ($2,520)
-   - 30% Administration ($1,080)
-8. **Paid** via bank transfer
-
-**Timeline**: Received to paid = 15 days
-
-### Scenario 4: Annual Insurance Premium
-
-**Supplier**: Insurance Company XYZ
-**Service**: Commercial general liability insurance
-**Billing**: Annual premium
-
-**Process**:
-1. **Renewal invoice received**: $24,000
-2. **AP checks**:
-   - Compares to prior year ($22,000 - increased 9%)
-   - Verifies policy number
-   - Checks coverage period (correct dates)
-3. **Enters invoice** with policy schedule attached
-4. **Routed** to Risk Manager
-5. **Risk Manager verifies**:
-   - Coverage amounts correct
-   - Premium matches quotation
-   - Policy terms acceptable
-   - Approves
-6. **Routed** to CFO (high value)
-7. **CFO approves**
-8. **Posted** but...
-9. **Accounting treatment**: Prepaid expense
-```
-Debit: Prepaid Insurance        $24,000
-Credit: Accounts Payable                 $24,000
-
-(Then monthly amortization:)
-Debit: Insurance Expense         $2,000
-Credit: Prepaid Insurance                 $2,000
-```
-10. **Paid** before policy inception date
-
-**Special note**: Insurance must be paid to keep coverage active, so ensure payment before current policy expires.
-
----
-
-## Controls and Compliance
-
-### Segregation of Duties
-
-Even without PO/GRN, maintain control:
-
-**Different people for**:
-1. **Service recipient**: Confirms service received
-2. **Invoice entry**: AP staff enters invoice
-3. **Approval**: Manager approves expense
-4. **Payment**: Treasury processes payment
-5. **Reconciliation**: Different person reconciles
-
-{{< callout type="warning" >}}
-**Fraud Risk**: Direct invoice process is vulnerable to fraud (fake invoices, personal expenses). Strong approval process and segregation of duties are critical.
-{{< /callout >}}
-
-### Key Controls
-
-#### 1. Supplier Master Verification
-- Only pay to verified suppliers in master file
-- Require new supplier setup process
-- Verify bank account changes before payment
-
-#### 2. Duplicate Check
-- System checks for duplicate invoice numbers
-- Manual review of similar amounts/dates
-- Query if invoice seems duplicate
-
-#### 3. Service Confirmation
-- Require confirmation from service recipient
-- Don't pay for undelivered services
-- Verify quality before payment
-
-#### 4. Budget Control
-- Check budget availability before approval
-- Flag over-budget expenses
-- Require additional approval for overruns
-
-#### 5. Contract Compliance
-- Match invoice to contract terms
-- Verify rates and amounts
-- Track contract cumulative value
-
-#### 6. Tax Compliance
-- Verify valid tax invoice
-- Check tax calculation
-- Apply withholding tax where required
-- Maintain tax documentation
-
-### Monthly Compliance Checklist
-
-- [ ] All invoices have approvals
-- [ ] All invoices have supplier documents attached
-- [ ] Service confirmations documented
-- [ ] Tax invoices valid for input tax claims
-- [ ] Withholding taxes calculated and withheld
-- [ ] No duplicate invoices paid
-- [ ] All expenses properly coded
-- [ ] Accruals made for services received but not invoiced
-
----
-
-## Accruals and Deferrals
-
-### Period-End Accruals
-
-For services received but not yet invoiced:
-
-**Example**: Legal services provided in March, invoice in April
-
-**March accrual entry**:
-```
-Debit: Professional Fees - Legal   $3,000
-Credit: Accrued Expenses                     $3,000
-```
-
-**April (when invoice received)**:
-```
-Debit: Accrued Expenses           $3,000
-Credit: Accounts Payable                    $3,000
-```
-
-{{< callout type="info" >}}
-**Matching Principle**: Accrue expenses in the period services are consumed, not when invoiced. This gives accurate period profitability.
-{{< /callout >}}
-
-### Prepayments
-
-For services paid in advance:
-
-**Example**: Annual insurance paid in January
-
-**January (payment)**:
-```
-Debit: Prepaid Insurance         $12,000
-Credit: Bank                                $12,000
-```
-
-**Each month (amortization)**:
-```
-Debit: Insurance Expense          $1,000
-Credit: Prepaid Insurance                  $1,000
-```
-
-### Tracking Required
-
-**Maintain schedule of**:
-- Recurring monthly invoices expected
-- Services received but not invoiced
-- Prepayments requiring amortization
-- Accruals to reverse next period
-
----
-
-## Best Practices
-
-### For Service Recipients
-
-1. **Engage vendors properly**: Get proper quotes, written agreements
-2. **Confirm service completion**: Before invoice arrives, confirm satisfactory delivery
-3. **Report promptly**: Alert AP when service is complete so invoice is expected
-4. **Review invoices**: When routed for approval, actually review
-5. **Track budgets**: Know your budget status before approving expenses
-
-### For Accounts Payable Staff
-
-1. **Process promptly**: Don't let invoices accumulate
-2. **Verify documents**: Check every invoice meets requirements
-3. **Code carefully**: Accurate coding is critical for reporting
-4. **Follow up**: Chase missing confirmations or approvals
-5. **Communicate**: Keep suppliers informed of payment status
-
-### For Approvers
-
-1. **Actually approve**: Don't auto-approve; review each invoice
-2. **Verify receipt**: Confirm service was actually received
-3. **Check reasonableness**: Is amount reasonable for service?
-4. **Watch for patterns**: Recurring overruns or unusual expenses
-5. **Respond promptly**: Don't delay approvals; suppliers depend on payment
-
-### For Management
-
-1. **Set clear policies**: When to use direct invoice, approval limits, documentation requirements
-2. **Monitor compliance**: Review that policies are followed
-3. **Analyze spend**: Regular review of service spend by category
-4. **Optimize contracts**: Negotiate better terms for recurring services
-5. **Prevent fraud**: Strong controls and regular audits
-
----
-
-## Reporting and Analysis
-
-### Key Reports
-
-#### AP Aging Report
-Shows outstanding invoices by age:
-- Current (not yet due)
-- 1-30 days overdue
-- 31-60 days overdue
-- >60 days overdue
-
-**Use**: Ensure timely payment, maintain supplier relations
-
-#### Expense Analysis Report
-Shows expenses by:
-- G/L account
-- Cost center
-- Supplier
-- Time period
-
-**Use**: Budget variance analysis, cost control
-
-#### Vendor Spend Report
-Total spend by supplier:
-- Year-to-date
-- Comparison to prior year
-- Trend analysis
-
-**Use**: Supplier relationship management, negotiation leverage
-
-#### Invoice Approval Status
-Shows invoices in workflow:
-- Pending approval
-- Approver name
-- Days pending
-- Value
-
-**Use**: Chase delayed approvals, identify bottlenecks
-
-### Key Metrics
-
-| Metric | Target | Purpose |
-|--------|--------|---------|
-| **Invoice Processing Time** | < 2 days | Efficiency measure |
-| **Approval Cycle Time** | < 3 days | Workflow effectiveness |
-| **On-Time Payment Rate** | > 95% | Supplier relations |
-| **Duplicate Payment Rate** | 0% | Control effectiveness |
-| **Invoice Exception Rate** | < 5% | Data quality |
-
----
-
-## Advantages and Limitations
-
-### Advantages of Direct Invoice
-
-**Speed**: Fastest processing, no PO or GRN steps
-**Simplicity**: Least administrative burden
-**Appropriateness**: Matches nature of service purchases
-**Efficiency**: Reduced paperwork and data entry
-
-### Limitations
-
-**Less Control**: No upfront approval of expense
-**Budget Risk**: Expense incurred before approval
-**Fraud Risk**: Easier to submit fake invoices
-**Tracking**: Harder to track commitments
-
-**Mitigation**: Strong approval process, segregation of duties, regular review
-
----
-
-## Related Documentation
-
-### Similar Workflows
-- [Standard Procurement Workflow](/guides/purchasing-guides/standard-procurement-workflow) - Full PO and GRN process
-- [Direct GRN Workflow](/guides/purchasing-guides/direct-grn-workflow) - Skip PO but record goods receipt
-
-### Daily Operations
-- [Purchase Invoice Processing](/user-guide/daily-tasks/purchase-invoice-processing) - Detailed invoice procedures
-
-### Module Documentation
-- [Purchasing Module](/modules/purchasing/) - Complete purchasing capabilities
-- [Financial Accounting Module](/modules/financial-accounting/) - AP and expense management
-- [Supplier Maintenance](/applets/supplier-maintenance-applet/) - Supplier setup
-
-{{< callout type="success" >}}
-**Workflow Mastery**: Direct Invoice workflow provides efficient processing for service purchases while maintaining necessary controls through approval workflows and proper documentation.
-{{< /callout >}}
+- [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) — the full applet reference: every tab, setting, GL rule and failure mode
+- [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — where the Service and Account Code items are set up
+- [Payment Voucher (Internal)](/applets/finance/internal-payment-voucher-applet/)
+- [Supplier](/applets/master-data/supplier-applet-1/)
+- [Direct GRN Workflow](/guides/purchasing-guides/direct-grn-workflow/) — for goods that arrived with no order
+- [Standard Procurement Workflow](/guides/purchasing-guides/standard-procurement-workflow/)
+- [Chart of Accounts Setup](/guides/accounting-guides/chart-of-accounts-setup/) — getting the expense accounts right before you start
