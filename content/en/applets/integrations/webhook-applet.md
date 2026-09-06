@@ -9,6 +9,9 @@ tags:
 - api-integration
 - real-time
 weight: 111
+draft: true
+unpublished: 2026-09-06
+unpublished_reason: "ADR-0008 tier 1 — see planning/worklog/webhook-applet-2026-09-06-unpublish.md"
 ---
 
 ## Purpose and Overview

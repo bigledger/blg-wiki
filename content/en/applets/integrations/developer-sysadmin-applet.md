@@ -8,7 +8,6 @@ modules: []
 related_applets:
   - tenant-admin-applet
   - applet-store
-  - webhook-applet
 guides: []
 sources:
   screens_and_menus:
@@ -88,7 +87,7 @@ identified below — do not plan work around a screen that is listed here as a p
 | Downstream | [Tenant Admin Applet](/applets/external-tenant-admin/tenant-admin-applet/) | A tenant's Catalogue and Applets menus read `bl_applet_hdr`; the applet has to exist here first. |
 | Downstream | every applet page in this wiki | The registry row this applet writes is the source of truth for an applet's `code`, `name`, `applet_type`, `status` and `documentation_url`. |
 | Alongside | Vendor and module records | `bl_applet_hdr.vendor_guid` and the module–applet links decide who owns an applet and which module groups it. |
-| Adjacent | [Webhook Applet](/applets/integrations/webhook-applet/) | Applet triggers are a separate subsystem; the **Triggers** entry in this applet's settings is a placeholder (see Configuration). |
+| Adjacent | Platform webhook subscriptions (`bl_webhook_topic_hdr` / `bl_webhook_subscription_hdr`) | The real event-notification subsystem, configured through the platform API and independent of this applet; the **Triggers** entry in this applet's settings is a placeholder (see Configuration). |
 
 ## Screens and menus
 
@@ -320,8 +319,10 @@ reachable only through the API.
   applet and which tenants subscribe.
 - [Applet Directory](/applets/applet-directory/) — the wiki's own index of applets; its `title` and
   `applet_code` values must match `bl_applet_hdr.name` and `.code` as maintained here.
-- [Webhook Applet](/applets/integrations/webhook-applet/) — the real applet-trigger surface. The
-  **Triggers** entry in this applet's settings is sample data and is not that mechanism.
+- Platform webhook subscriptions — the real event-notification surface: 53 topics seeded from
+  `WebhookTopics`, one subscription row per URL, deliveries logged to `bl_webhook_activity_event`.
+  The **Triggers** entry in this applet's settings is sample data and is not that mechanism. There
+  is no published page for it yet (see `planning/worklog/webhook-applet-2026-09-06-unpublish.md`).
 
 ## Troubleshooting
 
@@ -334,7 +335,7 @@ reachable only through the API.
 | Two people edited the same applet and one set of changes vanished | The update effect re-reads the applet by GUID and overwrites the fields from the form before PUTting the whole container. There is no revision check on this path. | Coordinate edits, or make the change through the API with the current revision. |
 | A read of an applet comes back with only a GUID and an icon and no error | `AppletController.replaceAppletWithoutPermission` strips the container instead of returning *not authorised* when the caller lacks permission. | Check the caller's `MST_APPLET_*` / `MST_API_APPLET_READ` grants rather than looking for a failed request. |
 | The applet loads a blank screen in the shell after registration | Router Link and Applet URL are both required by the form but nothing validates that the URL actually serves the bundle, or that Custom Element Tag matches the tag the bundle defines. | Check `property_json.es_module_url` and `property_json.custom_element` against what the applet's own `app.module.ts` registers with `customElements.define`. |
-| The Triggers screen lists "Sample Event #1…#10" | The vendored `WebhookComponent` is a design mock; its detail grid is three literal sample rows and its `ngOnInit` is copy-pasted from the Default Selection screen. | Applet triggers are configured elsewhere — see [Webhook Applet](/applets/integrations/webhook-applet/). |
+| The Triggers screen lists "Sample Event #1…#10" | The vendored `WebhookComponent` is a design mock; its detail grid is three literal sample rows and its `ngOnInit` is copy-pasted from the Default Selection screen. | Event notifications are configured as webhook subscriptions through the platform API, not here. |
 | Field Settings toggles do not stick | The local Field Configuration component has eight toggles with no form binding and a SAVE button with no handler, and its labels are copied from a document applet. | There is nothing to configure here. |
 | The Settings gear opens on Feature Visibility, a screen with no menu entry | `settings` with no child redirects to `feature-visibility`, which is not in `settingItems`. | Pick an entry from the settings menu; the redirect target is an unlinked stub. |
 

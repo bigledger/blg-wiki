@@ -1,275 +1,283 @@
 ---
-title: "Warranty Admin Applet"
-description: "Centralized system for product registration, warranty certificate management, and customer relationship tracking"
+title: "Warranty Admin"
+description: "Back-office review queue for warranty registrations submitted by members through the storefront: approve one and it becomes a warranty certificate."
+applet_code: "warrantyAdmin"
+page_type: applet
+applet_repo: "blg-applet-wavelet-warranty-admin-applet"
+modules: [membership, ecommerce]
+related_applets: [internal-rma-applet, doc-item-maintenance-applet, customer-maintenance-applet, entity-applet]
+guides: []
+sources:
+  screens_and_menus:
+    - blg-applet-wavelet-warranty-admin-applet/micro-fe/projects/wavelet-erp/applets/warranty-admin-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-warranty-admin-applet/micro-fe/projects/wavelet-erp/applets/warranty-admin-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-warranty-admin-applet/micro-fe/projects/wavelet-erp/applets/warranty-admin-applet/src/app/components/settings-container/settings-container.component.ts
+  configuration:
+    - blg-applet-wavelet-warranty-admin-applet/micro-fe/projects/wavelet-erp/applets/warranty-admin-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-warranty-admin-applet/micro-fe/projects/wavelet-erp/applets/warranty-admin-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-warranty-admin-applet/micro-fe/projects/wavelet-erp/applets/warranty-admin-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-warranty-admin-applet/micro-fe/projects/wavelet-erp/applets/warranty-admin-applet/src/app/components/settings-container/custom-status/custom-status.component.ts
+    - blg-applet-wavelet-warranty-admin-applet/micro-fe/projects/wavelet-erp/applets/warranty-admin-applet/src/app/components/settings-container/custom-status/custom-status.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - blg-shared-utilities/modules/session/session-controller/effects/session.effects.ts
+  fields:
+    - blg-applet-wavelet-warranty-admin-applet/micro-fe/projects/wavelet-erp/applets/warranty-admin-applet/src/app/components/product-registration-container/product-registration-edit/main-details/main-details.component.ts
+    - blg-applet-wavelet-warranty-admin-applet/micro-fe/projects/wavelet-erp/applets/warranty-admin-applet/src/app/components/product-registration-container/product-registration-edit/main-details/main-details.component.html
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/bl_wrty_product_registration_hdr.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/bl_wrty_warranty_certificate_hdr.java
+  lifecycle:
+    - blg-applet-wavelet-warranty-admin-applet/micro-fe/projects/wavelet-erp/applets/warranty-admin-applet/src/app/state-controllers/product-registration-controller/store/effects/product-registration.effects.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/WarrantyProductDataConsistencyObjects/WarrantyProductRegistrationDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/WarrantyProductDataConsistencyObjects/WarrantyCertificateDataConsistencyObject.java
+    - wavelet-cp-commerce/src/app/state-controllers/warranty-store/effects/warranty.effects.ts
+  troubleshooting:
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/warranty/WarrantyProductRegistrationController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/warranty/WarrantyCertificateController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/common/api/constants/errorCodesConstants/WrntyErrorCodesConstants.java
 tags:
   - warranty-management
   - product-registration
   - customer-service
-  - quality-assurance
   - post-sales-support
 weight: 170
 aliases:
 - /applets/warranty-admin-applet/
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Warranty Admin Applet** is a comprehensive solution designed to manage the lifecycle of product warranties. It enables businesses to track product registrations, issue warranty certificates, and manage customer claims efficiently.
+Warranty Admin is the **back-office review queue** for warranty registrations. A member registers a
+product through the storefront — serial number, purchase date, a photo of the receipt — and the
+registration lands here with an approval status of `PENDING`. Someone in support opens it, fills in
+the warranty period and expiry date, checks the attachment, and clicks **APPROVE** or **DECLINE**.
+
+Approving it writes a second record, a **warranty certificate**, which is the durable proof of
+coverage and the thing you print for the customer.
 
 {{< callout type="info" >}}
-**Core Concept**: The system bridges the gap between **product sales** (Serial Numbers), **customers** (Owners), and **protection periods** (Warranty Terms).
+**The applet cannot create a registration.** There is no add button on the Product Registration
+listing and the applet never POSTs a registration — it only PUTs existing ones. Registrations come
+from the storefront's warranty registration form, or from any other client calling the
+`login-entity-ep` endpoint. The applet reviews; it does not enrol.
 {{< /callout >}}
 
-## Key Features Overview
+## Where it fits
 
-### Who Benefits from This Applet?
+| Direction | What | Why |
+|---|---|---|
+| Upstream | The CP Commerce storefront's warranty registration widget | Submits the registration with `approval_status = PENDING`, the member's membership card, entity, serial number, purchase date and the chosen item |
+| Prerequisite | A **membership card** for the customer | `membership_hdr_guid` is validated as non-null *and* looked up in the membership card table on every create and update — a registration cannot exist without one |
+| Prerequisite | A customer/[entity](/applets/master-data/entity-applet/) record | `entity_hdr_guid` must be non-null and must exist; `entity_name` must be non-null |
+| Prerequisite | [Items](/applets/master-data/doc-item-maintenance-applet/) | The storefront picks the product; `fi_item_guid`, `fi_item_code` and `fi_item_name` are copied onto the registration |
+| Downstream | Warranty certificate | Created by the applet the moment a registration is approved |
+| Downstream | Printable formats | The certificate is printed with a printable format chosen in the applet's own Printable Format Settings |
+| Adjacent | [RMA (Internal)](/applets/rma/internal-rma-applet/) | Support staff read warranty cover here by eye when handling a return. There is **no code link**: no RMA or service-note code reads `bl_wrty_warranty_certificate_hdr` |
 
-**Sales & Retail Teams:**
+## Screens and menus
 
-- **Quick Registration**: Link products to customers at the point of sale.
-- **Proof of Purchase**: Instant generation of warranty certificates.
-- **Trade-in Verification**: Confirm warranty status for upgrades or returns.
+The sidebar has exactly two working entries, plus the standard settings and personalization gears.
 
-**Customer Service & Support:**
+| Menu | Route | What it does |
+|---|---|---|
+| **Product Registration** | `product-registration` | The review queue. Listing with advanced search and column toggles; no add button |
+| **Warranty Certificate** | `warranty-certificate` | Listing of issued certificates. Read-only from this applet — the applet never PUTs or DELETEs a certificate |
 
-- **Lookup Efficiency**: Find registration details via Serial Number or IMEI in seconds.
-- **Coverage Validation**: Verify if a repair is covered before initiating service.
-- **Communication Hub**: Centralized data for all warranty-related interactions.
+Opening a registration gives three tabs:
 
-**Quality & Production Teams:**
+| Tab | Contents |
+|---|---|
+| **Main Details** | The eleven fields listed under *Fields*, plus **APPROVE**, **DECLINE** and **SAVE** |
+| **Attachments** | Files the member uploaded (typically a receipt photo); view and add |
+| **Warranty Certificates** | The export/print pane — picks a printable format and renders the certificate |
 
-- **Failure Analysis**: Track defect rates across specific product batches.
-- **Product Improvement**: Identify recurring issues through warranty data.
-- **Traceability**: Full audit trail from manufacturing (SN) to end-user.
+**DECLINE** is a two-click button: the first click changes its label to *CLICK AGAIN TO CONFIRM*.
 
-**Business Owners & Management:**
+Settings (gear) contains five entries and nothing else: Application Settings, Default Selection,
+Printable Format Settings, Email Template, Custom Status. Personalization contains one: Default
+Selection.
 
-- **Liability Insight**: Monitor total warranty obligations and costs.
-- **Customer Loyalty**: Provide premium post-sales support that encourages repeat purchases.
-- **Reliability Data**: Make data-driven decisions on product quality and warranty terms.
-
-### What Problems Does This Solve?
-
-**The Manual Warranty Tracking Problem:**
-Traditional or fragmented systems often lead to operational friction:
-
-- **Lost Paperwork**: Disputes over purchase dates and coverage periods.
-- **Verification Delays**: Slowing down the support process for frustrated customers.
-- **Fraud Risk**: Difficulty identifying counterfeit or parallel-imported goods.
-- **Fragmented Data**: No unified view of product reliability across the organization.
-
-**The Warranty Admin Applet Solution:**
-
-- **Digital Single Source of Truth**: All registrations stored in one searchable database.
-- **Automated Calculations**: Expiry dates are computed instantly based on predefined terms.
-- **Instant Communication**: Automated email delivery of certificates.
-- **Lifecycle Management**: Track a registration from "Draft" to "Expired" with clear statuses.
-- **Integrated Ecosystem**: Seamlessly connects with Sales and CRM modules.
-
-## Key Features Visual Overview
-
-{{< cards >}}
-{{< card title="Product Registration" subtitle="Register new products and link to owners" link="#product-registration" >}}
-
-{{< card title="Warranty Certificates" subtitle="Generate and manage official certificates" link="#warranty-certificates" >}}
-
-{{< card title="Batch Registration" subtitle="Bulk upload for high-volume operations" link="#configuration--settings" >}}
-
-{{< card title="Status Tracking" subtitle="Monitor registration lifecycle" link="#custom-status" >}}
-
-{{< card title="Email Integration" subtitle="Auto-send certificates to customers" link="#email-template" >}}
-
-{{< card title="Field Configuration" subtitle="Customize data points per product type" link="#field-settings" >}}
-{{< /cards >}}
-
-{{< figure src="/images/warranty-admin-applet/warranty-admin-overview-infographic.png" alt="Warranty Admin Applet Overview Infographic" caption="From Manual Chaos to Digital Certainty: A visual guide to how the Warranty Admin Applet solves tracking challenges for all stakeholders." >}}
-
-## Connected Applets & Integration
-
-The Warranty Admin Applet is part of an integrated ecosystem, communicating with several other modules to automate tracking and claims:
-
-- **External Sales Invoice Applet / POS Applet**: 
-  - **Feature**: Automatic creation of registrations.
-  - **Details**: When a serialized product (item with "Serial Number Required" enabled) is sold, these applets capture the serial number and customer details. Once the invoice/sale is completed, a corresponding Product Registration is automatically created in `PENDING` status in the Warranty Admin Applet.
-- **Customer RMA / Internal RMA Applet**:
-  - **Feature**: Active warranty validation.
-  - **Details**: When processing returns or claims, support staff can query the **Warranty Certificate** listing to verify coverage status, expiry date, and original purchase details prior to approving a customer return or supplier return-to-vendor (RTV).
-- **Inventory / Items Master**:
-  - **Feature**: Base warranty configuration.
-  - **Details**: Connects with the items registry to pull standard warranty duration templates (e.g., years, months, days configured on the Item SKU) when calculating warranty expiry dates.
-
-## Key Concepts
-
-### Understanding the Warranty Framework
-
-Every record in the system relies on the "Golden Triangle" of Warranty Administration:
-
-| Pillar       | Component          | Analogy        | Definition                                             |
-| ------------ | ------------------ | -------------- | ------------------------------------------------------ |
-| **Product**  | Serial Number / SN | The "Identity" | The unique hardware identifier of the unit.            |
-| **Owner**    | Customer Profile   | The "Payee"    | The person or entity authorized to claim the warranty. |
-| **Coverage** | Warranty Terms     | The "Contract" | The rules defining what is covered and for how long.   |
-
-{{< callout type="tip" >}}
-**Real-World Scenario**: A luxury watch is sold. The clerk scans the **Serial Number** (Product), links it to **Mr. Smith’s Profile** (Owner), and the system applies the **5-Year Global Warranty** (Coverage).
+{{< callout type="warning" >}}
+The permission listings (Permission Wizard, Permission Set, User / Team / Role Permission,
+Client-Side Permission, Role–Pricing-Scheme Link), Feature Visibility and the Webhook screen all
+have routes in this applet but **no menu entry** — `settingItems` lists only the five System
+Configuration items. They are reachable by URL only.
 {{< /callout >}}
 
-### Registration Lifecycle Statuses
+## Configuration
 
-Understanding the current status of a registration and its generated certificate is critical for operational flow:
+### Before you can use it
 
-#### Product Registration (Approval Status)
+- **Membership.** Every registration must carry a membership card GUID that resolves. Without a
+  membership programme in the tenant, no registration can be created at all, from any client.
+- **A customer entity** for the member, with a name.
+- **Items** for the products being registered.
+- **A printable format** for the certificate — set it as the default in *Settings > Printable
+  Format Settings*, which writes the `PRINTABLE` key.
+- **A client that creates registrations.** The storefront's warranty widget is the shipped one.
 
-| Status | Meaning | Action Required |
-| :--- | :--- | :--- |
-| **PENDING** | Automatically generated from a sale or submitted for review. | Admin must verify the details and purchase proof (invoice attachment) then click **APPROVE** or **DECLINE**. |
-| **APPROVED** | The registration has been verified and confirmed. | No action; this automatically creates an active **Warranty Certificate**. |
-| **DECLINED** | The registration was rejected (e.g. invalid invoice, discrepancy in serial number). | Review the remarks and update/correct details to resubmit if applicable. |
+### Applet settings
 
-#### Warranty Certificate (Status)
+Settings live in two places here, and the split matters:
 
-| Status | Meaning | Action Required |
-| :--- | :--- | :--- |
-| **ACTIVE** | Active warranty coverage. | Valid for processing claims. |
-| **EXPIRED** | The coverage period has ended (current date is past the warranty expiry date). | Offer extended warranty template or charge for repairs/parts. |
+- **Application Settings** routes to the **shared** `FieldConfigurationComponent` from
+  `blg-shared-utilities` (imported in `app.routing.ts` from
+  `projects/shared-utilities/modules/permission/field-configuration/…`).
+- **Default Selection** and **Custom Status** are the applet's own components.
 
----
+The shared screen has **no `tabMappings` entry for `warrantyAdmin`**, so it renders its default set
+— 237 controls at shared-utilities HEAD (`a8c38a2`), for a generic financial document: line-item
+price columns, contra, expenses, e-Invoice and so on. **None of them is read anywhere in this
+applet.** A grep of the applet for every key it declares finds consumers only for the seven listed
+below. Treat Application Settings here as a screen that saves values nothing reads.
 
-## Quick Start Guide
+Only these keys pass all four proofs — declared in `applet-settings.model.ts`, rendered in a real
+control, persisted by `saveMasterSettingsInit`, and read by code:
 
-Get your team up and running with these standard operating procedures.
+| Setting | Where it is set | What it controls | Default | Effect when changed |
+|---|---|---|---|---|
+| `PRINTABLE` | Settings > Printable Format Settings (set as default) | The printable format the certificate export pane pre-selects | none | The export pane on both Product Registration and Warranty Certificate opens on the chosen format |
+| `DEFAULT_COMPANY` | Settings > Default Selection (filled automatically from the branch you pick) | Resolved by the shared session effect into the applet shell's company | none | Changes the company shown in the shell header |
+| `DEFAULT_BRANCH` | Settings > Default Selection | Resolved by the shared session effect into the applet shell's branch | none | Changes the branch shown in the shell header |
 
-### For Sales & Retail Teams: Automatic Warranty Registration
+Saved by a real control but **read by nothing**:
 
-**Goal:** Record a sale and automatically register product warranty coverage in under 2 minutes.
+| Setting | Where it is set | Status |
+|---|---|---|
+| `DEFAULT_LOCATION` | Settings > Default Selection (auto-filled from the branch's `MAIN_LOCATION`) | Written; no reader in the applet |
+| `DEFAULT_SENDER_EMAIL` | Settings > Default Selection | Written; no reader — the applet sends no e-mail (see *Lifecycle*) |
+| `DEFAULT_APPROVED_EMAIL_TEMPLATE` | Settings > Default Selection | Written; no reader |
+| `DEFAULT_DECLINED_EMAIL_TEMPLATE` | Settings > Default Selection | Written; no reader |
+| `ENABLE_CUSTOM_STATUS_1..5`, `ENABLE_CUSTOM_STATUS_HDR_1..5`, `ENABLE_CUSTOM_STATUS_LINE_1..5`, `NAME_CUSTOM_STATUS_HDR/LINE_1..5`, `LIST_CUSTOM_STATUS_HDR/LINE_1..5` | Settings > Custom Status | Written; no reader. The Main Details form has no custom-status control, and neither registration nor certificate has a column for one |
 
-> [!NOTE]
-> There is no manual creation or "+" button in the Warranty Admin Applet. Product registrations are created automatically when a sale is captured in the connected sales systems.
+The remaining keys in `applet-settings.model.ts` — the `INCLUDE_*` / `ENABLE_*` dimension, profit
+centre, project, segment, SST and WHT flags, and the twenty-odd `HIDE_*` price and quantity column
+flags — are **model-only**: declared in the interface, never rendered by a control this applet
+routes to, never read.
 
-1. **Record the Sale**: Open the **POS Applet** or **External Sales Invoice Applet** to create a new sale.
-2. **Scan/Identify Product**: Enter or scan the **Serial No.** of the hardware unit (must be a serialized item).
-3. **Capture Customer Details**: Link the sale to a customer profile, ensuring **Customer Name**, **Customer Email**, and **Mobile No.** are filled in.
-4. **Complete Transaction**: Confirm the transaction/invoice. A new record will automatically appear in the **Warranty Admin Applet** in `PENDING` status.
+Both Default Selection screens (applet and personal) write through the shared
+`saveMasterSettingsInit` effect, which merges into the existing `APPLET_SETTINGS` JSON rather than
+replacing it, so saving one screen does not wipe another's keys.
 
-**Pro Tip:** Always capture a clear photo/scan of the physical invoice/receipt and attach it to the registration record under the **Attachments** tab for audit purposes.
+### Feature visibility / permissions
 
----
+The applet declares no client-side permission codes of its own and its Client-Side Permission
+screen has no menu entry. Access is enforced server-side, by two permission families:
 
-### For Support & Admin Teams: Review, Verify, and Approve
+| Family | Gates |
+|---|---|
+| `API_TNT_DM_ERP_WRTY_PRODUCT_REGISTRATION_*` (`OWNER`, `ADMIN`, `MEMBER`, `CREATE`, `READ`, `UPDATE`, `DELETE`, `SEND_EMAIL`) | Every back-office registration endpoint — **and every attachment endpoint**, which reuses the registration family rather than having one of its own |
+| `API_TNT_DM_ERP_WRTY_WARRANTY_CERTIFICATE_*` (`OWNER`, `ADMIN`, `MEMBER`, `CREATE`, `READ`, `UPDATE`, `DELETE`) | The certificate endpoints |
 
-**Goal:** Confirm registration data, approve the warranty, and issue the certificate.
+`API_TNT_DM_ERP_WRTY_PRODUCT_REGISTRATION_SEND_EMAIL` gates a rejection-e-mail endpoint that the
+applet never calls.
 
-1. **Find Registration**: In the **Warranty Admin Applet**, go to **Product Registration** listing. Look for registrations in `PENDING` status.
-2. **Verify Details**: Click on the record to open the **Product Registration View**.
-   - Review the customer name, email, serial number, and purchase date.
-   - Click the **Attachments** tab to verify the uploaded receipt image.
-3. **Set Warranty Period**: The system automatically calculates the **Warranty Expiry Date** based on the product's basic warranty definitions (configured in Settings). If needed, adjust the **Warranty Period** or **Warranty Expiry Date** field.
-4. **Approve and Activate**:
-   - Click **APPROVE** to confirm. This moves the status to `APPROVED` and generates a **Warranty Certificate** under the **Warranty Certificate** listing in `ACTIVE` status.
-   - Click **DECLINE** (and click again to confirm) if information is incorrect. This moves status to `DECLINED`.
-   - Click **SAVE** to persist draft edits without changing status.
+A read the caller is not entitled to does not fail — the container comes back with `status`
+replaced by `PERMISSION_DENIED` and every other field blank
+(`WarrantyProductRegistrationController.replaceWarrantyProductWithoutPermission`).
 
----
+The `login-entity-ep` variants of the same endpoints are gated differently: they check only
+`UserPermissionService.isUserLoginEntity(caller, entity_hdr_guid)` — "is the caller the customer
+named in this record". See *Troubleshooting*.
 
-### For Admins: System Configuration
+## Fields
 
-**Goal:** Set up rules, templates, and layouts for the business.
+### Product Registration — Main Details
 
-- **Configure Default Periods** (`Settings > Default Selection`):
-  - Set default warranty periods (Years, Months, Days) that automatically apply to product registrations based on item attributes.
-- **Set Form Fields** (`Settings > Application Settings`):
-  - Choose which fields are mandatory, visible, or read-only during registration review.
-- **Design Email Templates** (`Settings > Email Template`):
-  - Customize the subject line, body, and placeholders for the automated email sent to customers when their warranty certificate is generated.
-- **Design PDF Certificates** (`Settings > Printable Format Settings`):
-  - Choose and configure the printable template format layouts for the PDF certificates generated for customers.
+Every control on this form is an unvalidated `UntypedFormControl`; the applet enforces nothing.
+The "Required" column below is the **backend** validator.
 
----
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Created Date | When the registration was created | — | Date picker; maps to `created_date` |
+| Customer Name | The registered owner | Yes (`entity_name`) | Free text |
+| Customer Email | Owner's e-mail | No | Not used to send anything (see *Lifecycle*) |
+| Customer Mobile | Owner's phone | No | |
+| Product Name | The item | No on the form; `fi_item_name` is copied from the storefront's selection | |
+| Serial No. | The unit's serial number(s) | No | Stored as JSON: `{ "serialNumbers": [ … ] }`. The storefront submits exactly one |
+| Purchase Date | Date of purchase | No | |
+| Purchased From | Dealer or channel | No | **Not set by the storefront** — someone in the back office types it |
+| Warranty Period | Coverage duration | No | **Free text.** Nothing parses it and nothing computes anything from it |
+| Warranty Expiry Date | Last day of coverage | No | **A date you type.** No code anywhere derives it from the purchase date, the warranty period or the item |
+| Remarks | Notes | No | |
 
-## Detailed Feature Sections
+Not on the form but on the record: `membership_hdr_guid` (required, must exist),
+`entity_hdr_guid` (required, must exist), `fi_item_guid`, `fi_item_code`, `qty`, `approval_status`,
+`property_json`.
 
-### Product Registration Management
+### Warranty Certificate
 
-The centralized hub for tracking and validating every product registration. The listing view provides powerful filtering capabilities to find registrations by customer details, serial number, product name, or purchase date.
+The certificate has the same columns as the registration, minus `approval_status` and plus
+`prod_registration_guid` (required, must exist). The applet has no edit form for it — the record is
+composed entirely by the approve action.
 
-{{< figure src="/images/warranty-admin-applet/product-registration-listing.png" alt="Product Registration Listing Page" caption="Product Registration Listing: A centralized view of all active, draft, and expired warranties with advanced filtering." >}}
+## Lifecycle and effects
 
-Clicking any row opens the **Product Registration View**, which contains the following details organized into tabs:
+Warranty Admin writes **no journal, no stock movement and no generic document**. It maintains two
+tables, `bl_wrty_product_registration_hdr` and `bl_wrty_warranty_certificate_hdr`, plus
+`bl_wrty_product_registration_attachment`.
 
-#### 1. Main Details Tab
-This tab contains the primary information about the transaction, customer, and warranty period:
+### Approval status
 
-- **Created Date**: Read-only date representing when the registration was generated in the system.
-- **Customer Name**: The name of the registered owner/purchaser.
-- **Customer Email**: The email address of the registered owner (used for automated certificate delivery).
-- **Customer Mobile**: The contact mobile number for the owner.
-- **Product Name**: The name/description of the item purchased.
-- **Serial No.**: The unique serial number(s) scanned for the unit. Multiple serial numbers are displayed as comma-separated values.
-- **Purchase Date**: The transaction date of the purchase.
-- **Purchased From**: The dealer, outlet, or sales channel where the unit was sold.
-- **Warranty Period**: The duration of coverage (calculated automatically from default settings, but adjustable by an administrator).
-- **Warranty Expiry Date**: The final date of coverage, calculated from the purchase date and warranty period.
-- **Remarks**: A text area for additional notes, audit logs, or special instructions.
+`approval_status` is a plain string column on the registration. The values the shipped clients use
+are `PENDING` (set by the storefront on submit), `APPROVED` and `DECLINED` (set by this applet's
+buttons). **No validator constrains it** — the column is only ever used as a query filter, so any
+string a client sends is stored.
 
-#### 2. Attachments Tab
-Allows upload and viewing of documents (such as photos of the physical receipt, invoices, or product images) to serve as verification proof before approving registrations.
+### What SAVE, APPROVE and DECLINE actually do
 
-#### 3. Warranty Certificates Tab
-Displays the generated PDF certificate details and allows administrators to preview or download the certificate using the printable templates.
+| Action | Effect |
+|---|---|
+| **SAVE** | One `PUT` of the registration. Nothing else |
+| **APPROVE** | Sets `approval_status = APPROVED`, `PUT`s the registration, then `POST`s a new warranty certificate built by copying membership, entity, item, quantity, serial numbers, purchase date, purchased-from, warranty period, expiry date, remarks and `property_json` across, setting `prod_registration_guid` to the registration and `status` to `ACTIVE`. Then a success toast |
+| **DECLINE** | Sets `approval_status = DECLINED` and `PUT`s the registration. Nothing else |
 
-### Warranty Certificates & Documentation
+**No e-mail is sent by either action.** Both effects carry the literal comment
+`// TODO: exhaustMap to send email` where the send would go. The backend has a working sender
+(`WarrantyProductEmailService`, exposed at
+`…/product-registration/backoffice-ep/email-notification/reject`), the applet has an Email Template
+screen and three e-mail settings — and no call site. If your process depends on customers receiving
+their certificate automatically, it does not happen; print or export it instead.
 
-Professional certificates are generated as PDFs and can be automatically dispatched via email.
+**Nothing expires a certificate, either.** A certificate's `status` is the platform's standard
+status column, whose values are `ACTIVE`, `INACTIVE`, `DELETED`, `DRAFT`, `PENDING` and so on —
+there is no `EXPIRED` value, and no job compares `warranty_expiry_date` to today. A certificate
+stays `ACTIVE` for ever unless somebody changes it through the API.
 
-{{< figure src="/images/warranty-admin-applet/warranty-certificate-listing.png" alt="Warranty Certificate Listing Page" caption="Certificate History: Track every document issued to customers, including timestamps of when they were sent." >}}
+Approving the same registration twice creates a **second** certificate: nothing checks whether one
+already exists for that `prod_registration_guid`.
 
----
+### Attachments
 
-## Configuration & Settings Deep-Dive
+Attachments are separate rows with their own multipart endpoints. The back office can add and
+replace files; so can the member through `login-ep` and `login-entity-ep`. Deleting an attachment
+is gated by the registration `DELETE` permission.
 
-Admins have granular control over how the system behaves.
+## Related applets
 
-{{< figure src="/images/warranty-admin-applet/settings-page.png" alt="Applet Settings Page" caption="Admin Control Center: Configure the logic, aesthetics, and permissions for the entire applet." >}}
+- [RMA (Internal)](/applets/rma/internal-rma-applet/) — where a warranty claim is actually
+  processed. The link is human, not automated: nothing in RMA reads a warranty certificate.
+- [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — the items being
+  registered, and where serial-number tracking is configured.
+- [Entity](/applets/master-data/entity-applet/) and
+  [Customer Maintenance](/applets/master-data/customer-maintenance-applet/) — the owner record every
+  registration must point at.
 
-### Field Configuration (`Settings > Application Settings`)
+## Troubleshooting
 
-Define which data points are mandatory, visible, or read-only during registration review.
+| Symptom | Cause | Fix |
+|---|---|---|
+| `WRTY_PRODUCT_REGISTRATION_MEMBERSHIP_HDR_GUID_IS_NULL` or `…_DOES_NOT_EXISTS` on save | Every registration must carry a membership card that resolves in the membership card table. The back-office form has no control for it, so a record that arrived without one can never be saved again | Fix the membership link through the API, or resubmit from the storefront while signed in as a member |
+| `WRTY_PRODUCT_REGISTRATION_ENTITY_HDR_GUID_DOES_NOT_EXISTS` | The customer entity was deleted after the registration was submitted | Restore or repoint the entity |
+| Warranty Expiry Date is blank on everything from the storefront | The storefront submits only membership, entity, item, quantity, serial number, purchase date and `PENDING`. Warranty period, expiry date and purchased-from are back-office fields, and nothing calculates them | Type them during review, before approving — the certificate copies whatever is there at that moment |
+| The customer says they never got the certificate e-mail | The applet sends no e-mail on approve or decline (`// TODO` in both effects) | Open the registration's **Warranty Certificates** tab, print or export the PDF, and send it yourself |
+| Two certificates for one registration | Approve was clicked twice; there is no uniqueness check on `prod_registration_guid` | Delete the duplicate through the certificate API — the applet has no delete |
+| An expired warranty still shows as `ACTIVE` | There is no expiry job and no `EXPIRED` status | Compare `warranty_expiry_date` yourself; do not rely on the status column |
+| Application Settings changes have no effect | The shared settings screen renders the generic document set because there is no `tabMappings` entry for `warrantyAdmin`; the applet reads none of those keys | Only Default Selection, Printable Format Settings and Email Template hold keys this applet reads |
+| A settings entry you remember (Permission Wizard, Audit Trail, Release Notes) is missing from the gear | `settingItems` lists only the five System Configuration entries; the permission screens still have routes but no link | Reach them by URL, or use tenant-level permission administration |
+| A record shows `PERMISSION_DENIED` and nothing else | The caller lacks `API_TNT_DM_ERP_WRTY_*` and the controller strips the container instead of failing | Grant the relevant `READ`/`ADMIN`/`OWNER` code |
+| A registration appears already `APPROVED` that nobody approved | `approval_status` is never validated, and the `login-entity-ep` create endpoint checks only that the caller is the customer named in the body. A member's own session can therefore submit a registration in any status — and post a certificate for it | Treat `approval_status` as unverified for records not approved through this applet; reported as a product defect |
 
-| Setting       | Effect                                            | Example          |
-| ------------- | ------------------------------------------------- | ---------------- |
-| **Mandatory** | Prevents saving or approving if the field is empty.| Purchase Date    |
-| **Visible**   | Toggles field display for staff.                  | Purchased From   |
-| **Read-Only** | Prevents staff from changing data after creation. | Serial No.       |
+## Related documentation
 
-### Custom Status Logic (`Settings > Custom Status`)
-
-Tailor the registration lifecycle to your business process (e.g., adding custom statuses to fit operational flows).
-
----
-
-## FAQ & Troubleshooting
-
-**Q: Can a warranty be transferred if the product is sold second-hand?**
-A: **Yes.** An authorized admin can update the customer details on an approved registration. The original **Purchase Date** remains unchangeable to maintain the original warranty period.
-
-**Q: How do I handle a product exchange (DOA)?**
-A: Product replacements (DOA) are processed through the connected RMA or sales systems. When the defective item is returned and a replacement unit is issued with a new Serial No., a new Product Registration is automatically created for the replacement unit.
-
-**Q: We sold 50 units to a corporate client. Do I have to register them manually?**
-A: **No.** You do not need to register them manually. When billing the client, you can use the Excel invoice/line import features in the POS or External Sales Invoice applet to upload all 50 units with their serial numbers. Once the transaction is finalized, all registrations will automatically appear in the Warranty Admin Applet.
-
-**Q: The customer didn't receive their certificate email. What should I do?**
-A: Go to **Warranty Certificates**, find the specific certificate under the **Warranty Certificates** tab in the approved product registration (or in the main Warranty Certificate listing), and print/download the PDF format to dispatch or send to the customer. Ensure you verify the customer's email address in their profile first.
-
-**Q: Can I extend a warranty that is about to expire?**
-A: Yes, you can modify the **Warranty Period** or **Warranty Expiry Date** field in the Product Registration main details view and click **SAVE**.
-
----
-
-## Best Practices for Success
-
-✓ **Verify Serial Numbers**: Always search the Serial No. before approving a pending registration to ensure no duplicate registrations exist for the same unit.  
-✓ **Consistent Naming**: Ensure customers are registered with standardized names (Last Name, First Name) to make searching easier.  
-✓ **Verify Before Approving**: Double-check the uploaded receipt/invoice photo in the Attachments tab against the entered metadata before clicking APPROVE.  
-✓ **Automate Communications**: Use the Email Template feature to ensure every customer gets their certificate immediately—this reduces support calls.  
-✓ **Regular Audits**: Monthly review of PENDING registrations to ensure they are processed promptly so customers receive their certificates.
+- [RMA (Internal) applet](/applets/rma/internal-rma-applet/)
+- [Doc Item Maintenance applet](/applets/master-data/doc-item-maintenance-applet/)

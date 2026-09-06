@@ -326,7 +326,7 @@ This is **button visibility**, not a backend rejection: a FINAL posted through t
 | Transition **Subscriber** | Nothing. `ProcessTransitionNotificationSubscriberService` is CRUD only; there is no workflow notification processor. (`IssueEmailNotificationProcessor` belongs to the `bl_wf_issue` tracker, not to `bl_wf_md_*`.) |
 | Transition **Trigger** | Only Service Note / RMA. `SvcIssueProcessStatusProcessorService` looks up the transition that matches the old→new status change, finds triggers whose `from_process_transition_guid` matches, and updates the service issue's internal / customer / supplier status. For `TRANSITIONS` triggers it first checks that the target's current status equals the target transition's `current_process_status_guid`; for `TARGET_STATUS` it sets the status directly. No equivalent processor exists for generic documents. |
 
-So: e-mails, SMS, webhooks and "database updates on status change" are **not** implemented for `bl_wf_md_*`. Anything a status change should trigger elsewhere has to come from the Document Approval engine or from an [applet trigger](/applets/integrations/webhook-applet/).
+So: e-mails, SMS, webhooks and "database updates on status change" are **not** implemented for `bl_wf_md_*`. Anything a status change should trigger elsewhere has to come from the Document Approval engine, or from the platform's webhook subscriptions (`bl_webhook_topic_hdr` / `bl_webhook_subscription_hdr`) — and those fire on the 53 seeded data events in `WebhookTopics`, none of which is a workflow status change.
 
 ## Related applets
 
@@ -338,7 +338,6 @@ So: e-mails, SMS, webhooks and "database updates on status change" are **not** i
 - [Packing Order](/applets/manufacturing/internal-packing-order-applet/) and [Outbound Delivery Order](/applets/sales-workflow/internal-outbound-delivery-order-applet/) — warehouse-side consumers.
 - [RMA](/applets/rma/internal-rma-applet/) and [Car Workshop](/applets/sales-workflow/car-workshop-applet/) — service-note documents; the only consumers whose transition **triggers** are executed.
 - [Stock Take](/applets/inventory-workflow/stock-take-applet/) — stamps the process's Starting Status onto a session and offers the same transition list, but enforces nothing.
-- [Webhook Applet](/applets/integrations/webhook-applet/) — applet triggers, the mechanism that actually fires on events.
 
 ## Troubleshooting
 
@@ -365,5 +364,4 @@ Related open work: making a stock-take session expose a single configurable work
 
 - [Core module](/modules-v2/core/) — where this applet sits.
 - [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/) — the reference example of Workflow Settings plus the separate Approval Settings.
-- [Webhook Applet](/applets/integrations/webhook-applet/) — applet triggers, for automation on events.
 - [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) — roles, teams and permission sets.

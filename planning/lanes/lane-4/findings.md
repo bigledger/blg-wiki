@@ -3817,3 +3817,414 @@ Printable Format Settings; the Events listing with a recurring event.
   service with `Optional.empty()` is a sweeper.** Check the argument, not the class name — the
   difference between "processes this run" and "processes every run in the tenant" is one token.
 - `tests/content-lint.sh` passes.
+
+---
+
+# Run 33 — 2026-09-06
+
+Pages: `integrations/t2t-admin-applet.md` (rewritten), `rma/warranty-admin-applet.md` (rewritten),
+`integrations/webhook-applet.md` (**unpublished**, ADR-0008 tier 1), `finance/txn-recon-applet.md`
+(skipped, no registry row). `crm/unified-contact-center-ucc-applet.md` left in the queue — see
+"Why UCC was not attempted" below.
+
+## T2T Admin (`t2tAdminApplet`) — rewritten
+
+Registry `t2tAdminApplet` "T2T Admin", ACTIVE, `documentation_url` = `/applets/t2t-admin-applet/`,
+which is the page's existing alias. Title changed from "T2T Admin Applet".
+
+**No front-end repository exists.** `gh repo list bigledger --limit 1000` returns 455 repositories
+and none matches `t2t`; `grep -rl t2tAdminApplet` over `refs/` returns nothing outside the wiki's
+own mirrors. The registry row points at a pre-built bundle
+(`…/akaun-platform/t2t-admin-applet/prod/t2t-admin-applet-elements.js`). The page says so plainly
+and documents the backend API surface instead — the standard's "still enhance from the backend +
+issues + existing page" branch.
+
+The registry row's `description` column is word-for-word the old wiki page's opening paragraph, so
+it is not independent evidence of anything.
+
+### What the old page claimed and what is actually there
+
+| Old claim | Reality |
+|---|---|
+| "SOC 2, ISO 27001 compliance ready" | Unevidenced (same class as Q-0006) |
+| "Up to 1,000 tenants per instance", "100 consolidation hierarchies", "50+ custom fields per tenant" | No such limit exists anywhere in the T2T code |
+| Links to Consolidation, Enterprise Reporting, Compliance Management, Data Synchronization, API Gateway and Security Management applets | Six applets that do not exist |
+| "Multi-entity financial consolidation", "cross-tenant transaction processing", "inter-company billing" | T2T writes link tables only. Outside the `t2t` packages the sole backend consumer of a T2T link is one customer-specific ESD ordering service |
+| "Tenant provisioning, migration, archival, disaster recovery" | Not a T2T concern; the connection is an invitation between two tenants that already exist |
+
+### What T2T actually is
+
+Fifteen controllers under `core2/t2t/dm/`: tenant linking, business mapping (+ read-only company
+and branch pickers into the other tenant), item-to-tenant permission (host and guest), item-to-item
+mapping (guest and host), item labels, external teams (back-office and guest), roles /
+link-team-to-role / link-perm-to-role, and an audit trail. Five tables:
+`bl_t2t_comp_branch_entity_link`, `bl_t2t_item_to_item_link`, `bl_t2t_fi_item_to_tenant_link`,
+`bl_t2t_fi_mst_label_link`, `bl_t2t_audit_trail_event`, plus `app_tenant_hdr` rows with
+`obj_type = 'T2T'`.
+
+The only readable T2T UI is the **T2T Item Mapping** tab in Doc Item Maintenance (three sub-tabs),
+which loads the connected-tenant list before anything else — the cause of
+`gh:bigledger/blg-intranet#1712` "T2T Item Mapping showing blank".
+
+### Defects found (routed to planning/product/)
+
+1. **No cross-database transaction.** Every two-sided write (invite, invitation response, status
+   update, business mapping create/update/delete, item-to-item create/update/delete) writes one
+   database, then the other with a bare DAO call, and undoes the first with a compensating
+   statement if the second does not affect exactly one row
+   (`TenantInvitationService.java:56-63,131-140`). Nothing reconciles a failure of the compensation.
+2. **A connection row can never be removed.** `TenantInvitationController` exposes no `DELETE`
+   (lines 55, 91, 152, 190, 210), and `sendInvitation`'s duplicate check matches on code and
+   `obj_access` only, ignoring status (`TenantInvitationService.java:45-47`) — so a tenant that
+   once rejected you can never be re-invited, only status-updated.
+3. **`checkItemPerm` ignores `status`.** `T2TItemToTenantLinkUow.java:228-245` builds its query with
+   `SqlGenerator.generateQueryStatementWithOneCondition`, which appends only `status != 'DELETED'`
+   (`SqlGenerator.java:137-139`). Setting an item-sharing permission to `INACTIVE` does not revoke it.
+4. **`getTenantPerm` sends a malformed query parameter.**
+   `blg-akaun-ts-lib/.../t2t-services/t2t-tenant.service.ts:53` builds
+   `…&obj_status = CONNECTED` with spaces around the `=`; the parameter name arrives as
+   `obj_status ` and does not bind, so the guest-permission list is unfiltered by status.
+   Its sibling `getConnectedTenants` (line 44) is correct — the two lines are three apart.
+5. Unauthorised reads return the record with `status = PERMISSION_DENIED` and every other field
+   stripped rather than a 403 (`TenantInvitationController.java:46-53`) — the same pattern already
+   recorded for the applet registry and warranty.
+
+### Also noticed
+
+- `T2TAuditTrailService` is imported and never used in the e-Invoice sub-tabs of Sales Return,
+  Purchase Credit Note, Purchase Self-Billed Invoice and Sales Refund Note V2 — copy-paste
+  boilerplate, five files each. Harmless, but it means "someone imports the T2T audit trail" is not
+  evidence that anything reads it.
+- `T2TItemToTenantLinkService` is one of the few backend writes that calls `WebhookService`
+  (`T2T_ITEM_TO_TENANT_LINKING_ADDED` / `_UPDATED`) — and neither code is in the seeded
+  `WebhookTopics` enum, so on a stock tenant the call finds no topic row and sends nothing.
+
+### Screenshots
+
+None exist and none were referenced. **Recapture wanted:** the tenant-linking listing with an
+`INVITED` and a `CONNECTED` row; the business-mapping screen showing self company/branch against
+other company/branch; the item-to-tenant permission listing; the external-team member list; the
+audit trail. All need a two-tenant sandbox, which is why none exists.
+
+## Warranty Admin (`warrantyAdmin`) — rewritten
+
+Registry `warrantyAdmin` "Warranty Admin", ACTIVE, `documentation_url` = `/applets/warranty-admin-applet/`
+= the page's existing alias. Title changed from "Warranty Admin Applet". Repo
+`blg-applet-wavelet-warranty-admin-applet` (HEAD `6f099a1`, 2026-08-30).
+
+### Settings classification
+
+**Shared** `FieldConfigurationComponent` — `app.routing.ts` imports it from
+`projects/shared-utilities/modules/permission/field-configuration/…`, and `.gitmodules` pins
+shared-utilities at `f1ded040` while HEAD is `a8c38a2`. There is **no `tabMappings` entry for
+`warrantyAdmin`**, so `kb/tools/gates.py warrantyAdmin` reports 237 RENDERED controls at HEAD — the
+default generic-document set. A per-key grep of the applet finds a consumer for none of them.
+
+Four proofs pass for exactly three keys: `PRINTABLE`, `DEFAULT_COMPANY`, `DEFAULT_BRANCH` (the last
+two consumed by the shared session effect `getDefaultCompanyAndDefaultBranch$`, not by the applet).
+`DEFAULT_LOCATION`, `DEFAULT_SENDER_EMAIL`, `DEFAULT_APPROVED_EMAIL_TEMPLATE`,
+`DEFAULT_DECLINED_EMAIL_TEMPLATE` and all 30 custom-status keys are saved and never read. Everything
+else in `applet-settings.model.ts` (the `INCLUDE_*`/`ENABLE_*` dimension and tax flags, ~22 `HIDE_*`
+price/quantity flags, `DISABLE_GEN_DOC_LISTING`) is model-only.
+
+`settingItems` lists only five entries; the permission listings, Feature Visibility and the Webhook
+screen have routes and no link.
+
+### Corrections to the old page (all tier 1)
+
+| Old claim | Evidence against |
+|---|---|
+| Registrations are created automatically by POS / External Sales Invoice when a serialised item is sold | Nothing outside the warranty applet and the CP Commerce storefront references `bl_wrty_product_registration_hdr` — checked across the Java backend and every UI repo in `refs/` |
+| "Instant Communication: automated email delivery of certificates"; "Automate Communications … every customer gets their certificate immediately"; an FAQ about a customer not receiving the e-mail | Both the approve and the decline effect carry the literal comment `// TODO: exhaustMap to send email` (`product-registration.effects.ts:57,107`). The backend sender, the `…_SEND_EMAIL` permission and the Email Template screen all exist; the call site does not |
+| "Expiry dates are computed instantly based on predefined terms"; "the system automatically calculates the Warranty Expiry Date" | `warrantyPeriod` and `warrantyExpiryDate` are plain `UntypedFormControl`s (`main-details.component.ts:21-31`); no code derives either |
+| `Settings > Default Selection` sets default warranty periods in years/months/days | Default Selection holds branch, location, company, sender e-mail and two template pickers (`default-settings.component.html`) |
+| `Settings > Application Settings` sets Mandatory / Visible / Read-Only per field | The shared screen has no such control for this applet and the applet reads none of its keys |
+| Certificate status `EXPIRED` | `StatusColumn` has no `EXPIRED` value and no job compares `warranty_expiry_date` to today |
+| "Custom Status … tailor the registration lifecycle" | The 30 keys are persisted and read nowhere; there is no custom-status control on either form |
+| RMA validates active warranty when processing a claim | No RMA or service-note code reads `bl_wrty_warranty_certificate_hdr` |
+
+Kept from the old page: that there is no add button, the approve/decline/save semantics, the tab
+list, and the PENDING → APPROVED/DECLINED shape.
+
+### New facts
+
+- **Membership is a hard prerequisite.** `membership_hdr_guid` is validated non-null *and* looked up
+  in the membership card table on create and update
+  (`WarrantyProductRegistrationDataConsistencyObject.java:40-52`). Warranty registration is a
+  members-only feature, and the back-office form has no control for it.
+- The **CP Commerce storefront** is the only shipped creator
+  (`wavelet-cp-commerce/src/app/state-controllers/warranty-store/effects/warranty.effects.ts:55-90`),
+  submitting membership, entity, name, `qty = 1`, one serial number, purchase date, item and
+  `approval_status = PENDING`. It blocks submission until a membership card GUID resolves.
+- **Approving twice creates two certificates** — nothing checks `prod_registration_guid` for an
+  existing one.
+- **`approval_status` is never validated.** It appears in the codebase only as a query filter
+  (`WarrantyProductRegistrationUow.java:240`).
+- The `login-entity-ep` create endpoints for both registration and certificate check only
+  `isUserLoginEntity(caller, entity_hdr_guid)`
+  (`WarrantyProductRegistrationController.java:99-105`, `WarrantyCertificateController.java:87-105`),
+  so a member's own session can post a registration in any approval status and then post a
+  certificate for it. Delete on `login-entity-ep` is scoped only to ownership
+  (`WarrantyCertificateController.java:205-222`).
+- Attachment endpoints reuse the **registration** permission family; there is no attachment family.
+
+### Screenshots with personal data
+
+All four images referenced by the old page were dropped:
+
+- `warranty-admin-applet/product-registration-listing.png` — ten rows of real first/last names, five
+  distinct e-mail addresses including corporate ones, Malaysian mobile numbers, and a laptop brand
+  as product data.
+- `warranty-admin-applet/warranty-certificate-listing.png` — the same grid, same data.
+- `warranty-admin-applet/settings-page.png` — no personal data, but **stale**: it shows "Server Side
+  Permissions" and "Developer Tools" menu groups (Permission Wizard, Permission Set, User
+  Permission, Role Permission, Release Notes, Audit Trail) that `settingItems` no longer contains.
+- `warranty-admin-applet/warranty-admin-overview-infographic.png` — AI infographic asserting
+  automated e-mail and automatic expiry calculation, both false.
+
+**Recapture wanted** from a GadgetSphere-seeded tenant: the Product Registration listing with
+synthetic members; a PENDING registration open on Main Details with the APPROVE/DECLINE buttons; the
+Attachments tab; the Warranty Certificates export pane with a printable format chosen; Settings >
+Default Selection (all six controls); Settings > Custom Status; the current Settings menu (five
+entries only).
+
+## Webhook applet — unpublished under ADR-0008
+
+`content/en/applets/integrations/webhook-applet.md` set to `draft: true`; worklog entry
+`planning/worklog/webhook-applet-2026-09-06-unpublish.md` carries the evidence, the salvage and the
+rewrite brief. Tier 1 on content grounds alone, and there is no ACTIVE registry row either.
+
+Every quantified claim is contradicted by `WebhookService.java` and `WebhookTopics.java`: one HTTP
+POST per subscription on a fixed 4-thread pool with a 60-second connect timeout and **no retry**;
+authentication is exactly one custom header (`auth_header_name` / `auth_header_value`) — no OAuth,
+JWT or signing; 53 seeded topics, not "200+ event types"; no filtering, routing, transformation or
+batching; the activity table is never purged, so "90 days of history" is wrong in both directions;
+and there is no delivery guarantee at all, the caller never learns the outcome.
+
+Inbound links repaired in the same pass:
+`master-data/workflow-design-applet.md` (three references — one prose sentence rewritten to describe
+webhook subscriptions directly, two "Related" bullets removed) and
+`integrations/developer-sysadmin-applet.md` (four — the `related_applets` entry, the Where-it-fits
+row, the Related-applets bullet and a Troubleshooting fix cell).
+
+**Not repaired, outside lane 4's folders (F-0298):** `content/en/applets/applet-catalog.md` L114 and
+L419 and its zh twin L100/L374 link to `/applets/webhook-applet/`, a URL the page never claimed as an
+alias — those links were already broken before this unpublish.
+
+## Registry / naming mismatches
+
+### `finance/txn-recon-applet.md` — no registry row (skipped)
+
+`registry-applets-2026-09-05.tsv` and the live `bl_applet_hdr` (checked 2026-09-06, including a
+`property_json` search for `txn-recon` and `transaction-recon`) contain no Transaction
+Reconciliation row. The nearest ACTIVE row, `paymentchannelApplet` "Payment Channel", is a different
+applet: `applets/tnt/pgw/payment-channel-applet` / `payment-channel-applet-elements-` versus this
+repo's `applets/wavelet/erp/transaction-recon-applet` / `txn-recon-applet-elements-`
+(`organisation-constants.ts`, `app.module.ts:162`). The repo
+`blg-applet-wavelet-txn-recon-applet` (HEAD `8401b04`, 2026-03-19) has working Company / Payment
+Channel / Settings routes. Not rewritten per ADR-0002 / standard rule 1. The page's content matches
+the repo's menu structure, so it is *not* disproven — it is unreachable, which is ADR-0007's
+question, not ADR-0008's.
+
+### `integrations/webhook-applet.md` — no registry row
+
+Same search; nothing matching `hook` in code, name or `property_json`. Repo
+`blg-applet-wavelet-web-hook-applet` (HEAD `5dcadf1`, 2026-08-30), route
+`applet/tnt/wavelet/erp/web-hook-applet`, one working screen plus the standard settings shell.
+
+**The built-but-unregistered list is now six**: Group Maintenance, E-Mandate, Team Maintenance,
+Investment, Transaction Reconciliation, Webhook. Q-0009 asked about four; re-asked as Q-0022.
+
+### `t2tAdminApplet` — ACTIVE row, no repository
+
+The inverse case, and new: the registry says the applet exists and ships a bundle, and the
+organisation holds no source for it. Raised as Q-0021.
+
+## Why UCC was not attempted
+
+`crm/unified-contact-center-ucc-applet.md` is 873 lines over the largest applet in the lane
+(15 top-level route groups, 20 configuration screens, 60-plus `bl_alg_cc_*` tables, 24 job
+processors) and carries **71 screenshots of a live contact centre**. A sample of two proves the
+risk: `23d97877-…jpeg` is a Contacts listing of ~20 real Malaysian mobile numbers across WhatsApp,
+SMS and Voice. A rushed rewrite would have been worse than none, so the page stays in the queue with
+this run's research recorded below so run 34 starts from it.
+
+### UCC research already done (do not repeat)
+
+- **Two ACTIVE registry rows.** `UnifiedContactCenter` (2021, `applets/tnt/ailedger/ucc`, bundle on
+  a `ucc-applet-custom-element` bucket) and `UnifiedContactCenterJava` (2026-04-02,
+  `applets/tnt/ailedger/uccjava`, bundle under `bigledger/wavelet-erp/unified-contact-center`). The
+  wiki page holds the *first* row's `documentation_url`. `blg-applets-ucc` (HEAD `f32d6b4f7`,
+  2026-09-03) declares `mainRoute = 'applets/tnt/ailedger/uccjava'` — it is the **Java** applet;
+  `alg-applets-ucc` (HEAD `adc3915e1`, 2026-04-01) declares `applets/tnt/ailedger/ucc` and is the
+  older one. Which row the page documents is a decision, not a lookup.
+- **Settings are applet-LOCAL** (`ucc-applet-routing.module.ts` imports
+  `components/settings-container/{application-settings,field-configuration,default-settings}`).
+  - **Application Settings** exposes exactly one real setting:
+    `ISSUE_CATEGORY_CATEGORY_GROUP_SETTINGS_LIST` — eleven slots, each a category-group GUID plus a
+    *Mandatory* flag, sourced from `bl_wf_issue_label_list_hdr` where `namespace = 'WF_CATEGORY'`.
+    It passes all four proofs: consumed by
+    `inbox/customer-details/issue-tracker/issue-edit/issue-edit-category/issue-edit-category.component.ts:98`
+    and its template, which sets `[required]` per slot.
+  - **Field Settings** is the unbound 8-toggle stub again — a 22-line component with no `FormGroup`
+    and no save handler (`field-configuration.component.ts`).
+  - **Default Selection** is inert in the P-0025 shape: `@Input() appletSettings$` / `@Output() save`
+    on a directly-routed component, `appletContainer` declared and never assigned, so the first
+    branch or location change dereferences `undefined`, and SAVE emits into the void
+    (`default-settings.component.ts:29,35,53`; `default-settings.component.html:2`). **Third
+    confirmation** of P-0025, after Fixed Asset and MY-SST.
+  - `ISSUE_CODE_FORMAT` is declared in `applet-settings.model.ts` and rendered nowhere — model-only.
+- **Channels** (`models/channel-constants.ts`): WHATSAPP, TELEGRAM, SMS, FB_MESSENGER, EMAIL, VOICE,
+  LAZADA, WEB, SHOPEE, INSTAGRAM_FEED, INSTAGRAM_CHAT, LINE — twelve, not "WhatsApp, Facebook,
+  Telegram and more".
+- **Task model** (`models/task-constants.ts`): statuses CREATED, TEAM_ASSIGNED, AGENT_ASSIGNED,
+  IN-PROGRESS, COMPLETED, CANCELLED, UNASSIGNED; actions ASSIGN_WORKER, ASSIGN_TO_ME, COMPLETE,
+  CANCEL, UNASSIGN; ten event types; target types CONVERSATION, EMAIL, VOICE.
+- **Menu** (`core/side-menu/content/side-menu-content.component.html`): Task Queue (All/Team/My),
+  Task Queue Outbound (All/Team/My), Inbox (All Tasks / All Conversations / All Active Conversations
+  / My Team Tasks / My Tasks / Active Tasks / My Conversations / My Active / My Team Conversations),
+  Outbound, Quality, Outbound Queue Sales Lead, Social Media, Dashboard, Reports (Task/Agent/
+  Conversation/User), My-Profile, Contacts, Broadcast, Live Dashboard (Online Agent / All Agents /
+  Active Tasks), Task Router (Router Queue / Tasks), Configurations. `models/menu-items.ts` is
+  boilerplate leftovers (Company / Dashboard / "Generic Example") and is **not** the real menu.
+- **Configurations** sub-routes: projects, virtual-contacts, squads, template-messages, qr-codes,
+  agents, teams, outbound-task, automation-rule, rule, skill, action, quality-control.
+- **Backend**: `core2/tnt/dm/alg/cc/…` — 28 controller packages (action, agent, api, channel,
+  contextMsg, conversation, email, endpoint, facebookFeed, link, message, project, qc, qrCode,
+  reports, rule, ruleAction, session, shoppingCart, squad, statistics, task, taskQueue,
+  templateMessage, tenant, virtualContact, voice, voucher) and 24 job processors under
+  `jobProcessor/alg/cc/` including skill-based and team assignment, expired-task sweepers, campaign
+  send, Shopee/Lazada authentication and conversation sync, e-mail send, and QC line generation.
+- **Live data is not all in Postgres**: `models/firestore-models/` holds conversation, message,
+  session, e-mail thread, Facebook post/comment/reaction and voice-call models, and `app.module.ts`
+  initialises `AngularFireModule` / `AngularFireMessagingModule`. There is also an
+  `inbox-socket.service.ts` WebSocket. Any rewrite must say where a conversation actually lives.
+- Related repos: `akn-kotlin-ucc-app` (a Kotlin Multiplatform mobile client, HEAD 2026-09-03),
+  `blg-ucc-lambda-functions` (channel webhooks, HEAD 2025-08-29), and one customer-branded fork —
+  cite that one by pseudonym.
+
+## Cross-lane link requests (from this run)
+
+1. `content/en/applets/master-data/doc-item-maintenance-applet.md` (lane 4, run 1 — done) — the T2T
+   Item Mapping tab is blank when no tenant connection exists (that is the whole of
+   `gh:bigledger/blg-intranet#1712`), and an item can be in only one pair per connection per
+   direction. One callout.
+2. `content/en/applets/rma/internal-rma-applet.md` (lane 4, run 31 — done) — its Where-it-fits row
+   "Warranty and expiry dates on the service note" implies an automated link. Nothing in RMA reads
+   `bl_wrty_warranty_certificate_hdr`; the row should say the check is manual. (F-0301)
+3. `content/en/applets/external-tenant-admin/tenant-admin-applet.md` (lane 3) — add `t2t-admin-applet`
+   to `related_applets`; T2T administers the relationship *between* tenants, this one administers a
+   tenant.
+4. `content/en/applets/master-data/organisation-applet.md` (lane 4, run 17 — done) — add
+   `t2t-admin-applet`: business mapping pairs this applet's companies, branches and entity lines
+   across a tenant connection.
+5. `content/en/applets/master-data/entity-applet.md` (lane 4, run 1 — done) — one line that
+   `login-entity-ep` endpoints across the platform (warranty, RMA requests, e-commerce) are gated
+   only by "is the caller this entity", not by a permission code. It is a recurring shape and no
+   page explains it.
+6. Any page describing CP Commerce — warranty registration through the storefront is **members-only**
+   and silently retries until a membership card GUID resolves.
+
+## Notes for the loop
+
+- Ledger: two records appended to `kb/sources/applet-repos/ledger.lane-4.jsonl`.
+- Topics: `kb/topics/tenant-to-tenant-linking.md` and `kb/topics/warranty-registration.md` (both new).
+- METHOD candidate §54: **an ACTIVE registry row is not proof that source exists.** Before writing a
+  page, check `gh repo list` for the applet slug as well as `refs/`; T2T Admin ships a CDN bundle
+  from no repository in the organisation. When that happens the honest page documents the API and
+  says the screens cannot be documented.
+- METHOD candidate §55: **grep the storefront, not only the applets, for who creates a record.**
+  Warranty registrations are created by `wavelet-cp-commerce`, and the applet that "owns" them can
+  only PUT. A listing with no add button is the tell.
+- METHOD candidate §56: **a `// TODO` in an effect is a documentable fact.** Two literal
+  `// TODO: exhaustMap to send email` comments are the whole reason a shipped Email Template screen,
+  three e-mail settings, a backend sender and a dedicated permission code do nothing.
+- METHOD candidate §57: **check the query string as well as the criteria object.** A single stray
+  space in `…&obj_status = CONNECTED` silently drops a filter that every reader of the code assumes
+  is applied.
+
+### Screenshots with personal data
+
+All 60 come from `content/en/applets/crm/unified-contact-center-ucc-applet.md`, whose references
+were removed in this run and replaced by a withheld-screenshot note. Audited image by image; the
+eleven not listed here (dashboards, empty filter grids, count tiles, an empty broadcast form, the
+channel drop-down, the own-brand social-media page list) were kept.
+
+- `ucc-applet/02f60dce-af0a-4dcc-8df3-51390ace1dcf.jpeg` — WhatsApp inbox: real names and phone numbers
+- `ucc-applet/1011f5ca-9416-4b7e-8d61-d8b5a006df43.jpeg` — task grid: names, phones, e-mail addresses
+- `ucc-applet/1abf02b9-26d0-424b-b0c6-34c5845d956f.jpeg` — task queue: e-mail address and personal names
+- `ucc-applet/1c1f603d-fb78-4cd5-b604-379b7bac70fe.jpeg` — Facebook feed: real post content and page id
+- `ucc-applet/1d12d08d-6b3b-47af-8f09-efce59063c6e.jpeg` — conversation list: names and phone numbers
+- `ucc-applet/206ac5ee-5cca-414f-a2aa-ad2bd9c68fc8.jpeg` — chat transcript with a real contact name
+- `ucc-applet/23d97877-0a52-4990-8b54-90fec9fcb59a.jpeg` — contacts grid: ~20 real Malaysian mobile numbers
+- `ucc-applet/24927c55-9a9c-4557-aaf7-aa9dfd93232b.jpeg` — task grid: personal names and a marketplace brand
+- `ucc-applet/2903b931-dc87-4c2a-aabd-13c13d080ddb.jpeg` — task grid: personal names and a marketplace brand
+- `ucc-applet/2ac8f14f-776f-4f65-b5b7-edb6728fff71.jpeg` — inbox listing: names and phone numbers
+- `ucc-applet/2ce26485-ea11-4e93-9338-a95f2de2f8b2.jpeg` — task queue: personal name, marketplace channel
+- `ucc-applet/2f06004a-ba70-4a1d-bcdd-267e6eb3dfd2.jpeg` — team queue: names, phones, e-mail addresses
+- `ucc-applet/2fa13312-c842-4bb1-b5db-8bd1b020da3d.jpeg` — inbox: phones, e-mail, a customer document
+- `ucc-applet/3316b124-d5ce-423d-a3fe-03867674cccd.jpeg` — broadcast contact picker listing real contacts
+- `ucc-applet/33f85d62-f031-404c-a2ca-8dd03a5e72fd.jpeg` — contacts grid of real phone numbers
+- `ucc-applet/35c3a67e-3a94-41e4-85c7-d886d4487233.jpeg` — task queue: e-mail, names, marketplace
+- `ucc-applet/3f13dd0e-e1f3-46db-b07f-94f62034c8da.jpeg` — filter panel over an inbox showing real names
+- `ucc-applet/4067eff8-5efe-41a6-aeab-d715f4ea70be.jpeg` — task report grid: names and brands
+- `ucc-applet/43d575f8-e9a3-4fea-b14b-9c3a848695ee.jpeg` — outbound queue: real e-mail addresses
+- `ucc-applet/47597bf1-de06-4f40-893f-9713d349a1d3.jpeg` — Facebook feed: real post content
+- `ucc-applet/516cb2fa-9199-4bb6-abf8-f00934b74b87.jpeg` — outbound queue: real e-mail addresses
+- `ucc-applet/5bbcad7b-e35e-41c2-b692-2a4f959da693.jpeg` — inbox listing: names and phone numbers
+- `ucc-applet/5ccca342-bc9b-436f-8fc8-d780df769e88.jpeg` — contacts grid plus an edit-contact phone number
+- `ucc-applet/5e564a41-338c-463b-9bef-9702dcbbddb5.jpeg` — agent picker listing real agent names
+- `ucc-applet/60226237-8106-49e6-9dae-74cf072855db.jpeg` — task queue: e-mail and personal name
+- `ucc-applet/60acc284-be89-4834-89bc-d938beb5e572.jpeg` — Facebook feed: real post content
+- `ucc-applet/650eb7f1-e7a2-4e9a-9ca8-f134e7722c88.jpeg` — agent listing with real first names
+- `ucc-applet/6851f654-4c2d-4485-a4ee-e75c75b37d03.jpeg` — contacts grid of real phone numbers
+- `ucc-applet/696bd24a-cf60-4cf1-b50a-7c90f84c1751.jpeg` — outbound queue: real e-mail addresses
+- `ucc-applet/6c3a7b93-ab25-4ea4-8cbf-3f885e41f9f7.jpeg` — agent picker listing real agent names
+- `ucc-applet/6e25ae4e-34f4-4e7d-9b86-475425ff0d12.jpeg` — chat plus a personal-info panel and username
+- `ucc-applet/794bdad6-3dc5-44ce-a763-075e3426fe44.jpeg` — chat plus a contact name and phone number
+- `ucc-applet/7b30c7b4-38cc-42d9-8a3f-50dd319fe6a6.jpeg` — broadcast form showing a real phone endpoint
+- `ucc-applet/7f76c17d-8358-4f2e-9ea3-913bda26a0d4.jpeg` — endpoint drop-down listing real phone numbers
+- `ucc-applet/85c5123b-d7a3-494f-bc3f-e754f09e85c7.jpeg` — live agent grid: customer names and phones
+- `ucc-applet/8739cf78-a47e-4368-b561-ddd517996343.jpeg` — outbound queue: real e-mail addresses
+- `ucc-applet/87fff6ae-a9c8-452d-9e57-8258c7971571.jpeg` — chat transcript with a real contact name
+- `ucc-applet/8d5ae225-9f6e-4cb1-a5cc-546fc36b417a.jpeg` — message search results: phones, e-mails, message text
+- `ucc-applet/95e6194e-5a5f-4c14-adad-7114f99ca4c0.jpeg` — contacts grid of real phone numbers
+- `ucc-applet/967b836a-6abd-412b-8ff0-538a1394f048.jpeg` — agent report grid with real agent names
+- `ucc-applet/99ed0bcd-4e1e-451d-a297-b5883c2ac5ce.jpeg` — user profile with a real name and e-mail
+- `ucc-applet/9b48ed3e-e61f-4999-9984-cc6f82f4933c.jpeg` — task queue: e-mail and personal names
+- `ucc-applet/a9de6003-56ff-4454-8b1b-1a69a56e98c2.jpeg` — task edit: personal name, marketplace
+- `ucc-applet/ae77ad3e-7657-4d13-adc5-f3ba9802d00d.jpeg` — task queue: e-mail and personal names
+- `ucc-applet/b0c672b0-ffb8-4c5f-b0eb-dfc0450b5f7e.jpeg` — live agent grid: customer names and phones
+- `ucc-applet/c05c001a-dcdb-4fd7-a8d7-8d5d12377fdc.jpeg` — live agent grid: customer names and phones
+- `ucc-applet/d628631d-3c88-40ad-9e16-83d64e62aef2.jpeg` — inbox: names, phones, a customer document
+- `ucc-applet/db51a49e-fed9-40f6-810d-749d888f77b1.jpeg` — task queue: customer and agent names
+- `ucc-applet/dda65f67-d7e4-4a50-b09f-315b5337a70a.jpeg` — task edit: personal name, marketplace
+- `ucc-applet/e1ae74bb-827b-4fb4-b57a-0c4d13b9eaf9.jpeg` — task queue: personal name, marketplace
+- `ucc-applet/e3bb770a-dfdd-4cfb-82de-bad7eb32c6a9.jpeg` — team queue: names, phones, e-mail addresses
+- `ucc-applet/e422c4be-44d5-482f-9604-fb0cabfc8d5e.jpeg` — Facebook feed: real post content
+- `ucc-applet/e586c8cc-5024-4111-8e3a-1ec665ffe4f3.jpeg` — team queue: names, phones, e-mail addresses
+- `ucc-applet/e62a205e-6882-449b-bef1-54e78ea30ff4.jpeg` — broadcast form with a phone number and contact name
+- `ucc-applet/e91298aa-3164-438a-9fcf-c479c35a4ea5.jpeg` — task queue: customer and agent names
+- `ucc-applet/e9fc3ee7-f1ee-4ac7-9c78-51081afacf29.jpeg` — contacts grid plus an edit-contact phone number
+- `ucc-applet/f6d1faec-bd36-4620-84b6-a82bf21cc194.jpeg` — user profile with a real name and e-mail
+- `ucc-applet/f98db44f-b5f3-4e40-8173-9b9922222ada.jpeg` — inbox listing: names and phone numbers
+- `ucc-applet/fc433fe4-3984-4efb-8575-de979c9f87a9.jpeg` — task queue: e-mail, name, marketplace
+- `ucc-applet/fe06ff40-d1fd-4bd3-88e4-5ed5af02c07e.jpeg` — agent status grid showing a real agent name
+
+**Recapture wanted** from a synthetic tenant seeded with GadgetSphere contacts: the Contacts
+listing; the Inbox conversation view on WhatsApp; All / Team / My Task Queue listings and their
+bulk-action menus; the outbound task queue; the task edit screen; the agent and task reports; the
+Live Dashboard agent grids; My Profile with its QR code; the broadcast recipient picker; the
+Facebook feed. That is most of the page, which is why the UCC rewrite needs a screenshot session
+before it can be finished.
+### UCC page — privacy fix applied without a rewrite
+
+`crm/unified-contact-center-ucc-applet.md` was **not** rewritten (see "Why UCC was not attempted"),
+but the 60 unsafe `{{< figure >}}` references above were removed in this run and replaced by
+*"(Screenshot withheld: the original showed live customer data. A replacement from a synthetic
+tenant is on the recapture list.)"*. The 11 safe images stay. Nothing else on the page was touched,
+so the rewrite in run 34 starts from the same prose.
+
+The page stays in the queue. Its files are listed under "Screenshots with personal data" above so
+`kb/tools/quarantine-images.sh 4` moves them; they are now unreferenced, so the tool will not skip
+them.

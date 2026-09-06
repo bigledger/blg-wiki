@@ -153,13 +153,13 @@ All available tasks details including, their details and assignment status. This
 -   **Agent Code**: Shows the specific agent the task is assigned to. This field will be empty if the task is assigned to a team instead.
 -   **Channel**: Indicates the communication channel through which this task originated or should be handled (WhatsApp, Email, SMS, Telegram Messenger, or Voice-Call). This helps agents understand the context and preferred communication method for the task.
 
-{{< figure src="/images/ucc-applet/e91298aa-3164-438a-9fcf-c479c35a4ea5.jpeg" caption="Fig 1: all-task-queue-listing" >}} 
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 #### 2.1.2 All Task Queue -> Listing Bulk Actions
 
 When you select one or more tick boxes in the all task queue listing component, the bulk actions dropdown will become active, allowing you to perform operations on all selected tasks at once.
 
-{{< figure src="/images/ucc-applet/db51a49e-fed9-40f6-810d-749d888f77b1.jpeg" caption="Fig 2: all-task-queue-listing-bulk-actions" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 **ASSIGN_WORKER Details:**
 
@@ -167,23 +167,23 @@ The assignment process is a two-step workflow that first determines the type of 
 
 After selecting the ASSIGN_WORKER option from dropdown, the WORKER_TYPE field will be displayed where you can choose between "AGENT" (assigning to a specific individual) or "TEAM" (assigning to a group where any member can claim the task).
 
-{{< figure src="/images/ucc-applet/24927c55-9a9c-4557-aaf7-aa9dfd93232b.jpeg" caption="Fig 3: all-task-queue-listing-bulk-actions-ASSIGN_WORKER-part-1" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 Once you've selected the worker type, the system will display a list of available agents or teams based on your selection. Choose the appropriate agent or team from this list to complete the assignment. All selected tasks will then be assigned to your chosen worker.
 
-{{< figure src="/images/ucc-applet/5e564a41-338c-463b-9bef-9702dcbbddb5.jpeg" caption="Fig 4: all-task-queue-listing-bulk-actions-ASSIGN_WORKER-part-2" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 #### 2.1.3 All Task Queue -> Edit page
 
 The edit page provides detailed control over individual tasks, allowing supervisors to modify task information and manage both the task's status and assignment. (Access this page by clicking on a specific task from the listing page)
 
-{{< figure src="/images/ucc-applet/dda65f67-d7e4-4a50-b09f-315b5337a70a.jpeg" caption="Fig 5: all-task-queue-edit-part-1" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 **Task Actions:**
 
 This is where you can mark tasks as complete, cancel them, or move them to different agents or teams.
 
-{{< figure src="/images/ucc-applet/a9de6003-56ff-4454-8b1b-1a69a56e98c2.jpeg" caption="Fig 6: all-task-queue-edit-part-2" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 2.2 Team Task Queue
 
@@ -199,19 +199,19 @@ When a task appears in this queue, it means the task is available for any team m
 
 Note that the Agent Code field is not shown in this view because these tasks are assigned to the team as a whole, not to individual agents yet.
 
-{{< figure src="/images/ucc-applet/2f06004a-ba70-4a1d-bcdd-267e6eb3dfd2.jpeg" caption="Fig 7: team-task-queue-listing" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 #### 2.2.2 Team Task Queue -> Listing Bulk Actions
 
 Team members can use bulk actions to efficiently claim multiple tasks at once or release tasks they're unable to complete. When tick boxes are selected in the team task queue listing component, the bulk actions dropdown becomes active.
 
-{{< figure src="/images/ucc-applet/e3bb770a-dfdd-4cfb-82de-bad7eb32c6a9.jpeg" caption="Fig 8: team-task-queue-listing-bulk-actions" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 #### 2.2.3 Team Task Queue -> Edit page
 
 The team task queue edit page provides a simplified interface focused on task assignment actions. Team members can claim tasks for themselves or release tasks back to the team pool, but cannot modify task details like priority or description (those changes are reserved for supervisory roles in the All Task Queue).
 
-{{< figure src="/images/ucc-applet/2ce26485-ea11-4e93-9338-a95f2de2f8b2.jpeg" caption="Fig 9: team-task-queue-edit" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 2.3 My Task Queue
 
@@ -225,19 +225,19 @@ This listing page displays all tasks that are currently assigned directly to you
 -   **Team Code**: Shows which team this task is associated with, even though it's now assigned to you individually. This provides context about the task's origin.
 -   **Channel**: The communication channel (WhatsApp, Email, SMS, Telegram Messenger, or Voice-Call) for the task, indicating how you should interact with the customer or how the task originated.
 
-{{< figure src="/images/ucc-applet/ae77ad3e-7657-4d13-adc5-f3ba9802d00d.jpeg" caption="Fig 10: my-task-queue-listing" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 #### 2.3.2 My Task Queue -> Listing Bulk Actions
 
 From your personal queue, you can efficiently update the status of multiple tasks simultaneously. Selecting tick boxes in the my task queue listing activates the bulk actions functionality.
 
-{{< figure src="/images/ucc-applet/9b48ed3e-e61f-4999-9984-cc6f82f4933c.jpeg" caption="Fig 11: my-task-queue-listing-bulk-actions" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 #### 2.3.3 My Task Queue -> Edit page
 
 The edit page for your personal tasks provides access to update both the task's status (marking it as in-progress, completed, etc.) and its assignment (releasing it back to the team or unassigning it entirely).
 
-{{< figure src="/images/ucc-applet/fc433fe4-3984-4efb-8575-de979c9f87a9.jpeg" caption="Fig 12: my-task-queue-edit-part" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ## 3. Task Queue Outbound
 
@@ -266,13 +266,13 @@ The listing page lets Admins, Owners, and Managers view all available outbound t
 -   **Agent Code**: Shows the specific agent assigned to handle this outbound task.
 -   **Channel**: Specifies the communication channel to be used for the outbound contact (WhatsApp, Email, SMS, Telegram Messenger, or Voice-Call).
 
-{{< figure src="/images/ucc-applet/8739cf78-a47e-4368-b561-ddd517996343.jpeg" caption="Fig 13: all-task-queue-outbound-listing" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 #### 3.1.2 All Task Queue Outbound -> Listing Bulk Actions
 
 Selecting tick boxes in the all task queue outbound listing component activates the bulk actions functionality, allowing you to perform the same operation across multiple outbound tasks at once.
 
-{{< figure src="/images/ucc-applet/516cb2fa-9199-4bb6-abf8-f00934b74b87.jpeg" caption="Fig 14: all-task-queue-listing-bulk-actions" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 **ASSIGN_WORKER Details:**
 
@@ -280,23 +280,23 @@ The assignment workflow for outbound tasks follows a two-step process that first
 
 After selecting the ASSIGN_WORKER option from dropdown, the WORKER_TYPE field will be displayed where "AGENT" or "TEAM" can be selected.
 
-{{< figure src="/images/ucc-applet/2903b931-dc87-4c2a-aabd-13c13d080ddb.jpeg" caption="Fig 15: all-task-queue-listing-bulk-actions-ASSIGN_WORKER-part-1" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 Once you've selected the worker type, a filtered list will appear showing only the available agents or teams based on your selection.
 
-{{< figure src="/images/ucc-applet/6c3a7b93-ab25-4ea4-8cbf-3f885e41f9f7.jpeg" caption="Fig 16: all-task-queue-listing-bulk-actions-ASSIGN_WORKER-part-2" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 #### 3.1.3 All Task Queue Outbound -> Edit page
 
 Allows supervisors to refine task information and manage both the task's status and assignment as circumstances change or new information becomes available. (Access this page by clicking on a specific outbound task from the listing to make adjustments)
 
-{{< figure src="/images/ucc-applet/43d575f8-e9a3-4fea-b14b-9c3a848695ee.jpeg" caption="Fig 17: all-task-queue-outbound-edit-part-1" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 **Task Actions:**
 
 Beyond editing basic details, the Task Actions dropdown provides options to manage the task's lifecycle—marking it complete, canceling it, or reassigning it to different workers.
 
-{{< figure src="/images/ucc-applet/696bd24a-cf60-4cf1-b50a-7c90f84c1751.jpeg" caption="Fig 18: all-task-queue-edit-part-2" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 3.2 Team Task Queue Outbound
 
@@ -314,19 +314,19 @@ This listing page is where members of a team can view all outbound tasks assigne
 > [!NOTE]
 > the Agent Code field is not displayed in this view because these outbound tasks are assigned to the team as a collective, not to specific individuals yet. Once you claim a task, it will move to your personal My Task Queue Outbound.
 
-{{< figure src="/images/ucc-applet/e586c8cc-5024-4111-8e3a-1ec665ffe4f3.jpeg" caption="Fig 19: team-task-queue-listing" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 #### 3.2.2 Team Task Queue Listing Outbound -> Bulk Actions
 
 Team members can use bulk actions to efficiently claim multiple outbound tasks at once or release tasks back to the team pool. Selecting tick boxes activates the bulk actions functionality.
 
-{{< figure src="/images/ucc-applet/1011f5ca-9416-4b7e-8d61-d8b5a006df43.jpeg" caption="Fig 20: team-task-queue-listing-bulk-actions" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 #### 3.2.3 Team Task Queue Outbound -> Edit page
 
 Team members can claim outbound tasks for themselves or release them back to the team, but cannot modify task details like priority or description—those administrative functions are reserved for supervisory roles in the All Task Queue Outbound.
 
-{{< figure src="/images/ucc-applet/e1ae74bb-827b-4fb4-b57a-0c4d13b9eaf9.jpeg" caption="Fig 21: team-task-queue-edit" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 3.3 My Task Queue Outbound
 
@@ -341,19 +341,19 @@ This listing page displays all outbound tasks currently assigned directly to you
 -   **Team Code**: This provides context about the broader campaign or initiative the task belongs previously, to gather more information about the task.
 -   **Channel**: Identifies the communication channel (WhatsApp, Email, SMS, Telegram Messenger, or Voice-Call) you should use for this outbound contact.
 
-{{< figure src="/images/ucc-applet/35c3a67e-3a94-41e4-85c7-d886d4487233.jpeg" caption="Fig 22: my-task-queue-listing" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 #### 3.3.2 My Task Queue Listing Outbound -> Bulk Actions
 
 From your personal outbound queue, you can efficiently update the status of multiple tasks at once. Selecting tick boxes in the my task queue outbound listing activates the bulk actions functionality.
 
-{{< figure src="/images/ucc-applet/1abf02b9-26d0-424b-b0c6-34c5845d956f.jpeg" caption="Fig 23: my-task-queue-listing-bulk-actions" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 #### 3.3.3 My Task Queue Outbound -> Edit page
 
 The edit page for your personal outbound tasks provides access to update both the task's status (tracking your progress through the outbound contact process) and its assignment (releasing it if needed).
 
-{{< figure src="/images/ucc-applet/60226237-8106-49e6-9dae-74cf072855db.jpeg" caption="Fig 24: my-task-queue-edit" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ## 4. Inbox
 
@@ -388,7 +388,7 @@ After the conversation tab is selected, the listing page opens, displaying all a
 
 The listing provides supervisors with a bird's-eye view of all ongoing conversations, making it easy to spot conversations that need attention, have been waiting too long, or require reassignment.
 
-{{< figure src="/images/ucc-applet/5bbcad7b-e35e-41c2-b692-2a4f959da693.jpeg" caption="Fig 27: inbox-all-task-conversation-listing" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ##### 4.1.2.2 Inbox -> All Task -> Conversation -> Listing Filters
 
@@ -402,17 +402,17 @@ Filters allow the user to filter conversations via:
 -   **Date From - Date To**
 -   **Task Status**: Filter by status (Active/Inactive/Assigned/Unassigned)
 
-{{< figure src="/images/ucc-applet/3f13dd0e-e1f3-46db-b07f-94f62034c8da.jpeg" caption="Fig 28: inbox-all-task-conversation-listing-filters" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ##### 4.1.2.3 Inbox -> All Task -> Conversation Listing -> Sort
 
 You can arrange conversations to surface the most urgent, oldest, or newest items first, helping you manage your workload strategically.
 
-{{< figure src="/images/ucc-applet/f98db44f-b5f3-4e40-8173-9b9922222ada.jpeg" caption="Fig 29: inbox-all-task-conversation-listing-sort" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 Users can sort in ASCENDING or DESCENDING order based on various criteria such as date received, customer name, priority level, or last activity timestamp.
 
-{{< figure src="/images/ucc-applet/1d12d08d-6b3b-47af-8f09-efce59063c6e.jpeg" caption="Fig 30: inbox-all-task-conversation-listing-sort-criteria" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ##### 4.1.2.4 Inbox -> All Task -> Conversation -> Filter By Project
 
@@ -420,13 +420,13 @@ Project-based filtering allows you to organize and view conversations according 
 
 Users can filter conversations by selecting a project from the "Projects" tab and applying the filter. This shows only conversations associated with that particular project, track project-specific customer interactions, or ensure proper handling of specialized inquiries.
 
-{{< figure src="/images/ucc-applet/2ac8f14f-776f-4f65-b5b7-edb6728fff71.jpeg" caption="Fig 31: inbox-all-task-conversation-filter-by-project" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ##### 4.1.2.5 Inbox -> All Task -> Conversation -> Messages Listing
 
 When a conversation is selected from the list, the complete message thread appears.
 
-{{< figure src="/images/ucc-applet/02f60dce-af0a-4dcc-8df3-51390ace1dcf.jpeg" caption="Fig 32: inbox-all-task-conversation-messages-listing" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ##### 4.1.2.6 Inbox -> All Task -> Conversation -> Messages Session Close
 
@@ -436,7 +436,7 @@ When a customer messages UCC, even if it is an existing customer, a new session 
 
 Closing a session signals that the particular issue has been resolved, helps keep active conversations focused on current needs, and maintains clean records of which problems have been addressed. Even after a session is closed, the conversation history remains accessible for future reference.
 
-{{< figure src="/images/ucc-applet/2fa13312-c842-4bb1-b5db-8bd1b020da3d.jpeg" caption="Fig 33: inbox-all-task-conversation-messages-end-session" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ##### 4.1.2.7 Inbox -> All Task -> Conversation -> Search By Message Content
 
@@ -447,7 +447,7 @@ This feature is useful for locating specific discussions, such as:
 - referencing previous conversations about products or issues
 - researching how similar questions were handled in the past
 
-{{< figure src="/images/ucc-applet/8d5ae225-9f6e-4cb1-a5cc-546fc36b417a.jpeg" caption="Fig 34: inbox-all-task-conversation-search-by-message-content" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ##### 4.1.2.8 Inbox -> All Task -> Conversation -> Messages Sending Options
 
@@ -457,7 +457,7 @@ The message composition area provides multiple tools for creating effective cust
 2.  **Send Predefined Message**: Access templated responses for common scenarios to save time and ensure consistency.
 3.  **Send My Name Card Template Message**: Share your agent details with the customer in a formatted card.
 
-{{< figure src="/images/ucc-applet/d628631d-3c88-40ad-9e16-83d64e62aef2.jpeg" caption="Fig 35: inbox-all-task-conversation-messages-sending-options" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ##### 4.1.2.9 Inbox -> All Task -> Conversation Messages -> Customer Details
 
@@ -465,19 +465,19 @@ The customer details panel provides a comprehensive view of all available inform
 
 By clicking the arrow on the top right corner of the conversation message area, the customer details page will slide open. This page will provide an all-around view of all customer-related information obtained from other applets and integrated systems.
 
-{{< figure src="/images/ucc-applet/794bdad6-3dc5-44ce-a763-075e3426fe44.jpeg" caption="Fig 36: inbox-all-task-conversation-messages-customer-details" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ###### 4.1.2.9.1 Inbox -> All Task -> Conversation -> Messages -> Customer Details -> Information -> Personal Info
 
 The tab consolidates all identifying and contact information about the customer, which may include email, phone numbers, the channel from which the conversation originated, and other details from past interactions or integrated CRM systems.
 
-{{< figure src="/images/ucc-applet/6e25ae4e-34f4-4e7d-9b86-475425ff0d12.jpeg" caption="Fig 37: inbox-all-task-conversation-messages-customer-details-information-personal-information" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ###### 4.1.2.9.2 Inbox -> All Task -> Conversation -> Messages -> Customer Details -> Information -> Task Assignment
 
 The Task Assignment tab shows any tasks that have been created from the conversation and assigned to an agent. The tab shows which agent or team the task is currently assigned to and allows for on-the-fly changes without leaving the conversation view.
 
-{{< figure src="/images/ucc-applet/206ac5ee-5cca-414f-a2aa-ad2bd9c68fc8.jpeg" caption="Fig 38: inbox-all-task-conversation-messages-customer-details-information-task-assignment" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ###### 4.1.2.9.3 Inbox -> All Task -> Conversation -> Messages -> Customer Details -> Information -> Preferred Agent
 
@@ -489,7 +489,7 @@ The Preferred Agent tab shows the list of agents preferred by the customer. Cust
 
 The Conversation History tab displays all previous conversations from the same user accross all platform. Using the contact merging feature, it identifies and consolidates interactions across different channels into a single chronological view.
 
-{{< figure src="/images/ucc-applet/87fff6ae-a9c8-452d-9e57-8258c7971571.jpeg" caption="Fig 39: inbox-all-task-conversation-messages-customer-details-information-conversation-history" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ###### 4.1.2.9.5 Inbox -> All Task -> Conversation -> Messages -> Customer Details -> Tags
 
@@ -599,24 +599,24 @@ The Facebook integration lets you manage your organization’s Facebook pages wi
 
 You will see a list of pages you have permission to manage. Select a page to open its content.
 
-{{< figure src="/images/ucc-applet/e422c4be-44d5-482f-9604-fb0cabfc8d5e.jpeg" caption="Fig 42: social-media-facebook-page-post-listing" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 **Post Create:**
 
 You can create new posts directly from UCC and publish the post directly to Facebook.
 
-{{< figure src="/images/ucc-applet/60acc284-be89-4834-89bc-d938beb5e572.jpeg" caption="Fig 43: social-media-facebook-page-create-post" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 **Post Edit or Delete:**
 
 You can edit a post to update its text or media. Saving pushes the changes to Facebook.
 If you no longer want the post visible, delete it.
 
-{{< figure src="/images/ucc-applet/47597bf1-de06-4f40-893f-9713d349a1d3.jpeg" caption="Fig 44: social-media-facebook-page-update-delete-post" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 The Save and Discard options give you control over whether your changes go live, allowing you to review edits before committing them.
 
-{{< figure src="/images/ucc-applet/1c1f603d-fb78-4cd5-b604-379b7bac70fe.jpeg" caption="Fig 45: social-media-facebook-page-post-update-discard" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 6.2 YouTube
 
@@ -665,7 +665,7 @@ The task report shows the following information for each task:
 
 This comprehensive information can be exported using the "Export CSV" button.
 
-{{< figure src="/images/ucc-applet/4067eff8-5efe-41a6-aeab-d715f4ea70be.jpeg" caption="Fig 50: report-task-report-listing-2" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 8.2 Agent Report
 
@@ -677,7 +677,7 @@ The Agent report shows a summary of agent activities in UCC, with each agent rep
 
 The report can also be exported as CSV using the "Export CSV" button.
 
-{{< figure src="/images/ucc-applet/967b836a-6abd-412b-8ff0-538a1394f048.jpeg" caption="Fig 52: report-agent-report-listing-2" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ## 9. My Profile
 
@@ -687,7 +687,7 @@ The My Profile section is your personal workspace for managing your agent identi
 
 The About Me page provides some quick view information regarding your agent profile, such as the virtual contacts (phone numbers, messaging accounts, or communication channels) you have access to for communicating with customers.
 
-{{< figure src="/images/ucc-applet/f6d1faec-bd36-4620-84b6-a82bf21cc194.jpeg" caption="Fig 53: profile-about-me" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 9.2 QR Code
 
@@ -696,7 +696,7 @@ The QR Codes tab generates a unique QR code specific to you which you can share 
 > [!NOTE]
 > This personal QR code for designating a preferred agent is distinct from the QR codes generated in the `Configuration` section, which are used on product packaging to initiate new support conversations.
 
-{{< figure src="/images/ucc-applet/99ed0bcd-4e1e-451d-a297-b5883c2ac5ce.jpeg" caption="Fig 54: profile-qr-code-preferred-agent" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ## 10. Contacts
 
@@ -706,13 +706,13 @@ The Contacts section is your centralized customer database within UCC, consolida
 
 The contact listing page is the main view for browsing and searching your customer database. It shows all contacts accumulated by UCC, including those created automatically from new conversations, imported, or manually added by agents.
 
-{{< figure src="/images/ucc-applet/23d97877-0a52-4990-8b54-90fec9fcb59a.jpeg" caption="Fig 55: contact-listing" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 10.2 Contacts -> Listing Export As CSV
 
 The export functionality allows you to generate a CSV file of your contact database for use in external tools, marketing campaigns, or for backup.
 
-{{< figure src="/images/ucc-applet/95e6194e-5a5f-4c14-adad-7114f99ca4c0.jpeg" caption="Fig 56: contact-listing-export-excel-csv" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 10.3 Contacts -> Create (Manual Creation)
 
@@ -726,7 +726,7 @@ You can proactively add customers to the database by creating contacts manually.
 -   **Email**
 -   **Description**
 
-{{< figure src="/images/ucc-applet/33f85d62-f031-404c-a2ca-8dd03a5e72fd.jpeg" caption="Fig 57: contact-create-manual-creation" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 10.4 Contacts -> Create (Import Excel CSV)
 
@@ -734,19 +734,19 @@ Bulk contact import enables you to add large numbers of contacts efficiently fro
 
 On the "Import File" tab, you can upload a CSV file. The system will process each row to create a new contact, and will provide feedback on the import status, flagging any rows with errors.
 
-{{< figure src="/images/ucc-applet/6851f654-4c2d-4485-a4ee-e75c75b37d03.jpeg" caption="Fig 58: contact-create-import-csv" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 10.5 Contacts -> Update
 
 You can update a contact's information to keep the database accurate. Editable fields include the Contact Name, Channel, and Reference. 
 
-{{< figure src="/images/ucc-applet/5ccca342-bc9b-436f-8fc8-d780df769e88.jpeg" caption="Fig 59: contact-update" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 10.6 Contacts -> Delete
 
 The delete function permanently removes a contact record from UCC. 
 
-{{< figure src="/images/ucc-applet/e9fc3ee7-f1ee-4ac7-9c78-51081afacf29.jpeg" caption="Fig 60: contact-delete" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ## 11. Broadcast
 
@@ -764,25 +764,25 @@ This interface is designed for straightforward, one-time message distribution. T
 
 **2. Select an Endpoint**: An endpoint is the specific sending identity (e.g., company phone number) that the broadcast will come from.
 
-{{< figure src="/images/ucc-applet/7f76c17d-8358-4f2e-9ea3-913bda26a0d4.jpeg" caption="Fig 63: broadcast-main-select-endpoint" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 **3. Select Recipients**: You have two options for selecting contacts:
 -   **Manual Selection**: For smaller, targeted broadcasts, select contacts one by one from your UCC contact database.
 -   **Import CSV**: For larger campaigns, import a CSV file of contacts. This is useful when working with segmented lists, such as those exported from the Contacts page.
 
-{{< figure src="/images/ucc-applet/3316b124-d5ce-423d-a3fe-03867674cccd.jpeg" caption="Fig 64: broadcast-main-select-contact-one-by-one" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 **4. Compose and Send**: Select the message type (e.g., plain text, image, document) and compose your content. Clicking "Send Message" initiates the broadcast to all selected recipients.
 
-{{< figure src="/images/ucc-applet/e62a205e-6882-449b-bef1-54e78ea30ff4.jpeg" caption="Fig 65: broadcast-main-import-contact" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
-{{< figure src="/images/ucc-applet/7b30c7b4-38cc-42d9-8a3f-50dd319fe6a6.jpeg" caption="Fig 66: broadcast-main-select-messagetype" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ## 12. Live Dashboard
 
 The Live Dashboard provides real-time visibility into agent activity, enabling supervisors to monitor operations as they happen, identify agents who need support, ensure adequate coverage, and make immediate adjustments to resource allocation. 
 
-{{< figure src="/images/ucc-applet/85c5123b-d7a3-494f-bc3f-e754f09e85c7.jpeg" caption="Fig 67: live-dashboard-base-view" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 12.1 Online Agents
 
@@ -790,11 +790,11 @@ The Online Agents page presents a real-time view of all agents who are currently
 
 The interface includes powerful grouping functionality. By dragging the column headers highlighted in red to the grouping area, users can reorganize the data according to the contents of the dragged column.
 
-{{< figure src="/images/ucc-applet/c05c001a-dcdb-4fd7-a8d7-8d5d12377fdc.jpeg" caption="Fig 68: live-dashboard-online-agents-modified-view-step-one" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 In the screenshot below, the data has been grouped based on agent after the Agent column header was dragged to the grouping box above. This creates an organized view showing each agent and all their current tasks nested beneath them, making it easy to see each agent's current workload at a glance.
 
-{{< figure src="/images/ucc-applet/b0c672b0-ffb8-4c5f-b0eb-dfc0450b5f7e.jpeg" caption="Fig 69: live-dashboard-online-agents-modified-view-step-two" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ### 12.2 All Agents
 
@@ -808,11 +808,11 @@ Grouping
 
 This page also supports grouping. Drag any column header to the grouping bar to reorganize the list—for example, grouping by status to see all available and offline agents together.
 
-{{< figure src="/images/ucc-applet/650eb7f1-e7a2-4e9a-9ca8-f134e7722c88.jpeg" caption="Fig 70: live-dashboard-all-agents-modified-view-step-one" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 The screenshot below shows the result after grouping—agents are organized in a hierarchical view that makes patterns immediately visible.
 
-{{< figure src="/images/ucc-applet/fe06ff40-d1fd-4bd3-88e4-5ed5af02c07e.jpeg" caption="Fig 71: live-dashboard-all-agents-modified-view-step-two" >}}
+*(Screenshot withheld: the original showed live customer data. A replacement from a synthetic tenant is on the recapture list.)*
 
 ## 13. Task Router
 

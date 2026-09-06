@@ -3,7 +3,7 @@
 Ordered by what it costs to leave them open. One line each — the detail is in `open/` where there
 is a file. Answer in any form; I will record it in `answered/` and act.
 
-*Last updated 2026-09-06. Answered questions move to `answered/` and leave this list.*
+*Last updated 2026-09-06 (Q-0014 answered by the data-hub integration unit; see planning/drafts/2026-09-06-datahub-integration-path.md). Answered questions move to `answered/` and leave this list.*
 
 ## High — work is stopped
 
@@ -27,9 +27,14 @@ is a file. Answer in any form; I will record it in `answered/` and act.
 | Q-0011 | Is **four-field exact-equality matching** for incoming e-invoices intended to stay? Nothing has ever matched under it across 89 tenants. | Whether the guide teaches the current rule as permanent (F-0274) |
 | Q-0012 | Should the **RM 10,000 individual-submission rule** also block credit notes, debit notes, refund notes and sales returns? Only sales invoices and cash bills are enforced today. | If yes, documents are already at LHDN in a shape LHDN forbids (F-0264) |
 | Q-0013 | Is **`developers@bigledger.com`** monitored? The new applet pages use it as the hand-off contact throughout. | Every hand-off in the applet path (F-0297) |
-| Q-0014 | What is the **data-hub** called in the product, and is it the same thing as the `etl-ep` surface (952 mappings)? How does an external system authenticate — and is any of it self-service? | The external integration path, the next unit (F-0292) |
 | Q-0015 | **`my-einvoice-for-customer-and-supplier-applet.md`** is substantially invented and walks AP staff to a screen that is empty on every tenant. Rewrite, stub, or unpublish? | (F-0275) |
+| Q-0021 | **Is `https://api-etl.akaun.com` the host external integrators should be told to use?** It exists, resolves, and serves the same `/core2/` surface as `api.akaun.com`; every modern BigLedger ETL agent points at it. The new integration pages say to use it for data traffic and `api.akaun.com` for sign-in and key management. Confirm, or tell me the intended split. | The integration path's worked example, and every curl on it (F-0298) |
+| Q-0022 | **Is "Operational Data Hub" the public name for the `etl-ep` surface?** The marketing site and nine wiki pages use "data hub"; the product, the registry and the API use no such term, and the engineering copy in the platform says *"Operational Datalake"*. The new pages deliberately name it by what it is rather than invent a brand. If there is an intended public name, say it and I will use it everywhere. | Naming consistency between wiki, product and marketing (F-0298) |
+| Q-0023 | **May we publish a worked request body for one business document type?** Reading is fully documented; writing stops at the document schema, because a sales invoice runs through several hundred lines of fill-and-validate and we will not guess it. One verified example — a minimal `INTERNAL_SALES_INVOICE` container that posts cleanly in a known tenant — would close the largest remaining gap in the integration path. Who can produce it? | The write half of the integration path (F-0298) |
+| Q-0024 | **Is there a test tenant we can point external integrators at?** There is no sandbox environment and no self-service sign-up that yields a tenant. The pages currently tell integrators to ask for one. Is that ask answerable, and by whom? | Every external integrator's first step (F-0298) |
 | Q-0016 | Merges awaiting your word: `mm-deposit-applet` → `deposit-applet`; `general-ledger-applet` (19 broken inbound links); the tax-page merge (F-0210); `customer-applet` → `customer-maintenance` (F-0050). | Several pages and their aliases |
+| Q-0025 | **Where does the T2T Admin front end live?** `t2tAdminApplet` is ACTIVE and ships a bundle from the applet CDN, but no repository in the GitHub organisation matches `t2t` (455 enumerated) and nothing in `refs/` builds it. Is the source lost, private, or under a name we would not guess? | The T2T page can document the API but not a single screen or setting (F-0307) |
+| Q-0026 | **The built-but-unregistered list is now six**, not four: Transaction Reconciliation and Webhook join Group Maintenance, E-Mandate, Team Maintenance and Investment. Does that change the ADR-0007 answer in Q-0009 — and does the Webhook page's unpublish under ADR-0008 settle it for that one? | Six applets, nine-plus pages (F-0308) |
 
 ## Low — tidy-up
 

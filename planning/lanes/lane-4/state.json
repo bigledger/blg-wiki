@@ -11,11 +11,7 @@
   ],
   "queue": [
     "content/en/applets/finance/mm-deposit-applet.md",
-    "content/en/applets/integrations/t2t-admin-applet.md",
-    "content/en/applets/finance/txn-recon-applet.md",
-    "content/en/applets/crm/unified-contact-center-ucc-applet.md",
-    "content/en/applets/rma/warranty-admin-applet.md",
-    "content/en/applets/integrations/webhook-applet.md"
+    "content/en/applets/crm/unified-contact-center-ucc-applet.md"
   ],
   "done": [
     {
@@ -104,7 +100,7 @@
       "page": "content/en/applets/master-data/organisation-applet.md",
       "date": "2026-09-05",
       "run": 17,
-      "note": "Registry Organization_Applet 'Organization ' (trailing space in name; title 'Organization'). Applet-local settings; owner of Knock Off Configuration, company e-Invoice/Peppol/tax/timezone, branch main/delivery location and marketplace. 8 of 12 screenshots dropped (test data with a person's name / brands / possible customer abbreviation) \u2014 recapture list in findings run 17."
+      "note": "Registry Organization_Applet 'Organization ' (trailing space in name; title 'Organization'). Applet-local settings; owner of Knock Off Configuration, company e-Invoice/Peppol/tax/timezone, branch main/delivery location and marketplace. 8 of 12 screenshots dropped (test data with a person's name / brands / possible customer abbreviation) — recapture list in findings run 17."
     },
     {
       "page": "content/en/applets/master-data/pricebook-applet.md",
@@ -219,6 +215,18 @@
       "date": "2026-09-06",
       "run": 32,
       "note": "Registry statementOfAccountApplet 'Statement of Account Applet' (title unchanged; documentation_url already points at this page, no alias needed). Restructured a 166-line guide-voice page (Quick Start, FAQ, feature cards) into a ~330-line reference; the existing prose was unusually accurate so much of it survives in reference form. UTF-8 BOM preserved. Rare positive finding: the applet-LOCAL Application Settings screen is genuinely wired (19 HIDE_* keys declared+rendered+persisted in a real FormGroup; the 13 HIDE_HDR_* are consumed as ag-grid hide + suppressColumnsToolPanel, the 6 HIDE_LINE_* are dead) - the counter-example to the unbound 8-toggle stub. PRINTABLE (set from Printable Format Settings) is the only behavioural setting; the five DEFAULT_* keys are model-only and their Default Selection screen is commented out of the menu. Headline defect: the event-to-run conversion writes customer_categories/sales_agents while StatementOfAccountRunLineService.processEvent reads categories/agents, so a SCHEDULED run creates no lines AND records no FAILED status (matching live Critical ticket gh:bigledger/blg-intranet#4254). Other findings: a run can only select customers by customer category or by sales agent (no all-customers path); the candidate query ignores the statement start date; the sales-agent path unions every entity whose default_sales_agent matches regardless of period; /run, /regenerate and both retry endpoints perform NO permission check and /retry-pending-lines has no guid (sweeps the tenant); the PDF generation processor calls processStatementOfAccountRun with an empty guid so it is a tenant-wide sweeper; a template's template_hdr_guid is never read by the server. No images exist for this page and none were referenced. Topic kb/topics/statement-of-account.md (new)."
+    },
+    {
+      "page": "content/en/applets/integrations/t2t-admin-applet.md",
+      "date": "2026-09-06",
+      "run": 33,
+      "note": "Registry t2tAdminApplet 'T2T Admin' (title changed from 'T2T Admin Applet'; registry documentation_url = /applets/t2t-admin-applet/, kept as the existing alias). NO front-end repo exists in the GitHub org (455 repos enumerated) - the registry points at a pre-built CDN bundle, so screens/menus/settings cannot be documented and the page says so. Full rewrite of a fabricated 337-line page (SOC 2 / ISO 27001 'compliance ready', 'up to 1,000 tenants per instance', '50+ custom fields', six links to applets that do not exist: Consolidation / Enterprise Reporting / Compliance Management / Data Synchronization / API Gateway / Security Management). Rebuilt from the backend T2T domain (15 controllers, 8 services, 7 DCOs, 5 tables) + blg-akaun-ts-lib t2t-services. Key findings: no cross-database transaction on any two-sided write (compensating statement only); no delete endpoint for a connection, and the duplicate check ignores status so a REJECTED tenant can never be re-invited; checkItemPerm filters only status != DELETED so an INACTIVE sharing permission still grants item mapping; getTenantPerm sends 'obj_status = CONNECTED' with spaces so the status filter never binds; unauthorised reads return PERMISSION_DENIED rows rather than an error; outside the t2t packages the only backend consumer is one customer-specific ESD ordering service. Topic kb/topics/tenant-to-tenant-linking.md (new)."
+    },
+    {
+      "page": "content/en/applets/rma/warranty-admin-applet.md",
+      "date": "2026-09-06",
+      "run": 33,
+      "note": "Registry warrantyAdmin 'Warranty Admin' (title changed from 'Warranty Admin Applet'; registry documentation_url = /applets/warranty-admin-applet/ = the existing alias, kept). Full rewrite of a 275-line guide-voice page into a ~250-line reference. Settings class: SHARED FieldConfigurationComponent via app.routing.ts, with NO tabMappings entry for warrantyAdmin, so 237 generic-document controls render at shared-utilities HEAD a8c38a2 and the applet reads none of them; only PRINTABLE, DEFAULT_COMPANY and DEFAULT_BRANCH pass four proofs. Corrections to the old page (all tier-1): registrations are NOT created by POS or Sales Invoice (no Java or TS code outside the warranty applet and the CP Commerce storefront touches bl_wrty_product_registration_hdr) - the CP Commerce warranty widget is the only shipped creator; NO e-mail is ever sent (both approve and decline effects carry a literal '// TODO: exhaustMap to send email' although the backend sender, the SEND_EMAIL permission and the Email Template screen all exist); NOTHING calculates the warranty expiry date (free-text period + typed date); there is no EXPIRED certificate status and no expiry job; Default Selection holds branch/location/company/sender-email/2 templates, not warranty periods; the Custom Status screen's 30 keys are saved and never read. New facts: membership_hdr_guid is a hard backend prerequisite (members-only feature); approving twice creates two certificates; approval_status is never validated and the login-entity-ep create endpoints check only isUserLoginEntity, so a member can self-approve and self-certify (P item); attachment endpoints reuse the registration permission family; the permission listings, Feature Visibility and Webhook screens have routes but no menu entry. All 4 images dropped (2 listings with real names/e-mails/phones/a brand, 1 stale settings menu, 1 AI infographic) - recapture list in findings run 33. Topic kb/topics/warranty-registration.md (new)."
     }
   ],
   "skipped": [
@@ -228,7 +236,7 @@
     },
     {
       "page": "content/en/applets/inventory-workflow/delivery-installation-applet-V2-applet.md",
-      "reason": "Second page for registry row delivery-installation-applet (route applet/wavelet/erp/logistic/delivery-installation-applet); the canonical page delivery-installation/delivery-installation-applet.md is in lane 3's queue. Not rewritten \u2014 same situation as F-0050; merge/alias decision for Vincent, facts for lane 3 in findings.md run 5."
+      "reason": "Second page for registry row delivery-installation-applet (route applet/wavelet/erp/logistic/delivery-installation-applet); the canonical page delivery-installation/delivery-installation-applet.md is in lane 3's queue. Not rewritten — same situation as F-0050; merge/alias decision for Vincent, facts for lane 3 in findings.md run 5."
     },
     {
       "page": "content/en/applets/master-data/group-maintenance-V2-applet.md",
@@ -248,11 +256,11 @@
     },
     {
       "page": "content/en/applets/inventory-workflow/introduction-to-stock-take-applet.md",
-      "reason": "Duplicate second page for registry row StockTakev2 'Stock Take' \u2014 merged into inventory-workflow/stock-take-applet.md (run 13). Marketing intro with no facts the canonical page lacks; no inbound links. Not rewritten; recommend delete + alias (Vincent's decision, F-0050 pattern)."
+      "reason": "Duplicate second page for registry row StockTakev2 'Stock Take' — merged into inventory-workflow/stock-take-applet.md (run 13). Marketing intro with no facts the canonical page lacks; no inbound links. Not rewritten; recommend delete + alias (Vincent's decision, F-0050 pattern)."
     },
     {
       "page": "content/en/applets/inventory-workflow/inv-item-maintenance-applet.md",
-      "reason": "Duplicate second page for registry row InvItemMaintenanceApplet (F-0007) \u2014 merged into master-data/inv-item-maintenance-applet.md in run 14 (its screenshots re-used there). Not rewritten; recommend delete + alias /applets/inventory-workflow/inv-item-maintenance-applet/ on the canonical page (Vincent's decision, F-0050 pattern)."
+      "reason": "Duplicate second page for registry row InvItemMaintenanceApplet (F-0007) — merged into master-data/inv-item-maintenance-applet.md in run 14 (its screenshots re-used there). Not rewritten; recommend delete + alias /applets/inventory-workflow/inv-item-maintenance-applet/ on the canonical page (Vincent's decision, F-0050 pattern)."
     },
     {
       "page": "content/en/applets/finance/e-mandate-applet.md",
@@ -264,11 +272,11 @@
     },
     {
       "page": "content/en/applets/integrations/ingram-micro-ms-esd-applet.md",
-      "reason": "Customer-specific applet family \u2014 excluded from scope. All five registry rows (IMMsEsdOrderApplet_ALLIT / _machines / _PCImage / _senheng / _TM) are listed in planning/private/applet-exclusions.tsv as customer-specific; four of the five names carry a customer's name. The page is a 9-line front-matter-only stub with no body and names a real distributor brand in its title. Not rewritten; recommend delete (one inbound link, content/en/applets/applet-catalog.md L347, plus its zh twin L302). Recorded in findings.md run 31."
+      "reason": "Customer-specific applet family — excluded from scope. All five registry rows (IMMsEsdOrderApplet_ALLIT / _machines / _PCImage / _senheng / _TM) are listed in planning/private/applet-exclusions.tsv as customer-specific; four of the five names carry a customer's name. The page is a 9-line front-matter-only stub with no body and names a real distributor brand in its title. Not rewritten; recommend delete (one inbound link, content/en/applets/applet-catalog.md L347, plus its zh twin L302). Recorded in findings.md run 31."
     },
     {
       "page": "content/en/applets/integrations/vstecs-ms-esd-order-applet.md",
-      "reason": "Customer-specific applet \u2014 excluded from scope. Registry rows MsEsdOrderApplet 'VSTECS ESD ORDER' (ETL-CLIENT) and MsEsdOrderApplet_ALL_IT are both listed in planning/private/applet-exclusions.tsv as customer-specific, and both names carry a distributor's name. The page is 19 lines of unedited implementation notes. Not rewritten; recommend delete + drop the alias /applets/vstecs-ms-esd-order-applet/ (one inbound link, content/en/applets/applet-catalog.md L348, plus its zh twin L303). Recorded in findings.md run 31."
+      "reason": "Customer-specific applet — excluded from scope. Registry rows MsEsdOrderApplet 'VSTECS ESD ORDER' (ETL-CLIENT) and MsEsdOrderApplet_ALL_IT are both listed in planning/private/applet-exclusions.tsv as customer-specific, and both names carry a distributor's name. The page is 19 lines of unedited implementation notes. Not rewritten; recommend delete + drop the alias /applets/vstecs-ms-esd-order-applet/ (one inbound link, content/en/applets/applet-catalog.md L348, plus its zh twin L303). Recorded in findings.md run 31."
     },
     {
       "page": "content/en/applets/crm/installation-of-team-maintenance-applet.md",
@@ -293,6 +301,14 @@
     {
       "page": "content/en/applets/finance/revenue-management-applet.md",
       "reason": "No registry row for a Revenue Management applet under any name (live bl_applet_hdr checked 2026-09-06: nothing matching 'revenue', 'claim' beyond claimApplet/ClaimCycleApplet, 'PTJ', 'receivable', 'collection'), and no repo in refs/. The 181-line page describes 'Bill of Claims', 'Inter-PTJ Claims Journal', 'Staff Loan Subsidiary Ledger' - Malaysian public-sector terminology from the UTM evaluation material (content/en/user-guide/demo/education/), not from any BigLedger applet. Per ADR-0002 / standard rule 1 not rewritten; recommend delete plus fixing the three inbound links in modules-v2/financial-accounting/_index.md. Recorded in findings.md run 32."
+    },
+    {
+      "page": "content/en/applets/finance/txn-recon-applet.md",
+      "reason": "No registry row for a Transaction Reconciliation applet under any name. registry-applets-2026-09-05.tsv and the live bl_applet_hdr (checked 2026-09-06, including a property_json search for 'txn-recon' and 'transaction-recon') contain nothing. The nearest ACTIVE row, paymentchannelApplet 'Payment Channel', is a DIFFERENT applet: its routerLink is applets/tnt/pgw/payment-channel-applet and its custom element is payment-channel-applet-elements-, while this repo registers txn-recon-applet-elements- on applets/wavelet/erp/transaction-recon-applet. The repo blg-applet-wavelet-txn-recon-applet exists (HEAD 8401b04, 2026-03-19) with working Company / Payment Channel / Settings routes, so the applet is built but has never been registered - same shape as E-Mandate (run 30), Team Maintenance (run 31), Investment (run 32) and Webhook (run 33). Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 33 and raised as Q-0021."
+    },
+    {
+      "page": "content/en/applets/integrations/webhook-applet.md",
+      "reason": "UNPUBLISHED under ADR-0008 tier 1 (draft: true in place; worklog planning/worklog/webhook-applet-2026-09-06-unpublish.md). Every quantified claim is contradicted by WebhookService.java / WebhookTopics.java: no retries, no OAuth/JWT/signing, no IP whitelisting or rate limiting, no filtering/routing/transformation/batching, 53 seeded topics not '200+', no retention job so no '90 days of history', and no delivery guarantee (fire-and-forget on a 4-thread pool). Independently, there is no registry row for a Webhook applet under any name (live bl_applet_hdr checked 2026-09-06 incl. property_json), although blg-applet-wavelet-web-hook-applet is maintained (HEAD 5dcadf1, 2026-08-30). Inbound links repaired in workflow-design-applet.md (3) and developer-sysadmin-applet.md (4). applet-catalog.md L114/L419 and its zh twin link to /applets/webhook-applet/, which was already broken (the page never held that alias) - outside lane 4's folders, recorded in findings run 33."
     }
   ],
   "updated": "2026-09-06",
