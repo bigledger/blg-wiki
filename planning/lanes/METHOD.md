@@ -144,3 +144,46 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
     with `\xef\xbb\xbf---`, so `awk '/^---$/{n++}'` silently reports "no front matter" and a triage
     sweep under-counts. Strip the BOM first (`sed 's/^\xef\xbb\xbf//'`) or the registry audit will
     invent gaps that are not there.
+35. **`applet-constants.ts` can disagree with the backend — and the backend wins** (sales-workflow
+    sweep pass 3, 2026-09-06). This refines §32, which said the applet constant agreed with the DCO
+    in every case checked. Two counterexamples, in opposite directions:
+    `internalConsignmentBillingApplet` sends `quantity_signum = 1` and the DCO forces **0**
+    (`InternalPurchaseConsignmentInvoiceDataConsistencyObject:16`); `ServerDocTypes.java:82` declares
+    `INTERNAL_SALES_REFUND_NOTE(0,-1)` while its DCO sets quantity **+1**. In both cases the DCO
+    wins, because `fillQuantitySignumAndAmountSignumForLine`
+    (`GenericDocumentDataConsistencyObject:1215-1219`) **overwrites** the line's signums
+    unconditionally on every create and update — it does not fill only when missing. Use the applet
+    constant as a one-line first check, then always confirm against the DCO, and treat
+    `ServerDocTypes` as the least trustworthy of the three (`INTERNAL_PURCHASE_CONSIGNMENT_INVOICE`
+    is missing from it altogether).
+36. **The two settings findings to check on every applet before writing the Configuration section**:
+    (a) is the registry `code` in `FieldConfigurationComponent.getTabValue()`'s `tabMappings`? If
+    not, every tab-hide key the applet reads has no control (extends §10 — now found on
+    `internalConsignmentBillingApplet`, `internalSalesRefundNoteApplet` and
+    `internal_sales_inquiry_applet`); (b) `SELECT count(*) FROM bl_applet_client_side_perm_dfn d JOIN
+    bl_applet_hdr h ON h.guid=d.applet_guid WHERE h.code='<code>'`. Five sales-workflow applets have
+    **zero** rows and one has a single row against 45 checked codes, which turns every `HIDE_*`
+    setting into an all-or-nothing tenant-wide switch with no per-role exception. Both are one query
+    each and both change how the whole Configuration section must be worded.
+37. **Four shapes of shipped-but-dead UI, with tests for each** — hard-coded grid, unbound toggle,
+    routed-but-unlinked screen, declared-but-unrouted component. Written up once in
+    `kb/topics/mock-screens-shipped-in-production.md`; read it before describing any screen. The
+    cheapest of the four tests: diff the `path:` list in `app.routing.ts` against `menuItems` +
+    `settingItems` + `personalizationItems`.
+38. **Build the "consumed" proof from the rendered list, not from a prefix regex.** Grepping
+    `appletSettings\.(HIDE|SHOW|…)[A-Z_]+` misses keys read through indirection
+    (`appletSettings[panel.expandSetting]`), keys whose names start with something else
+    (`VERTICAL_ORIENTATION`), and typo'd accessors (`appletSettinsgMain.HIDE_KO_FOR_TAB` — real, in
+    the refund note and consignment billing repos). Instead: run `gates.py <code>`, take every
+    `RENDERED*` key, and `grep -rqw` each one in the applet. One loop, no false negatives.
+39. **A report applet's real gate is usually a *target* permission, not a yes/no one** (extends §25).
+    Daily Cashier Reports declares `API_TNT_DM_ERP_Z_REPORT_READ` and
+    `API_TNT_DM_ERP_REPORT_CASHIER_COLLECTION_READ` as *branch* read permissions: the screen opens
+    for anyone, and the branch drop-down comes back empty when the role has no branch target. That is
+    the troubleshooting row to write, and it is different from "not authorised".
+40. **Read the i18n bundle for screen and column labels, not the template.** Several sales applets
+    are fully localised (Sales Inquiry and Sales Commission ship en/zh/ms/ar/hi/id), so the templates
+    render `{{ some_key }}` and the real label is in `src/assets/i18n/en.json`. It also catches
+    labels copied from the applet a repo was cloned from — Sales Inquiry's listing calls its first
+    column *Sales Order No*, and Consignment Billing's file import downloads a template named
+    `Sales_Invoice_Master_Data_Template.csv`.

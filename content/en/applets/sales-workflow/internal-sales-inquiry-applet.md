@@ -1,521 +1,372 @@
 ---
 title: "Sales Inquiry (Internal)"
+description: "Reference for the Sales Inquiry (Internal) applet: a pre-sales document with customer, line, collection and contra detail that moves no stock and posts no journal, plus its settings, fields, the Convert action that deletes the inquiry, and the parts of the screen that are mock-ups."
 applet_code: "internal_sales_inquiry_applet"
 applet_repo: "blg-applet-wavelet-internal-sales-inquiry-applet"
-description: "Capture and manage internal sales inquiries with customer and line-item detail, posting controls, export, conversion to receipt voucher, and a dedicated line-items workspace."
+page_type: applet
+modules: [sales-crm]
+related_applets:
+  - internal-sales-quotation-applet
+  - internal-sales-order-applet
+  - internal-sales-invoice-applet
+  - internal-jobsheet-applet
+  - customer-applet
+  - employee-applet
+  - organisation-applet
+  - doc-item-maintenance-applet
+  - tax-configuration-applet
+guides: []
+sources:
+  configuration:
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/components/settings-container/branch-settings/branch/branch.component.html
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+  fields:
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/components/internal-sales-inquiry-container/internal-sales-inquiry-create/internal-sales-inquiry-create-main/internal-sales-inquiry-create-main.component.ts
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/components/internal-sales-inquiry-container/internal-sales-inquiry-create/internal-sales-inquiry-create-main/internal-sales-inquiry-create-main.component.html
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/components/internal-sales-inquiry-container/internal-sales-inquiry-listing/internal-sales-inquiry-listing.component.ts
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/assets/i18n/en.json
+  lifecycle:
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/models/constants/applet-constants.ts
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/components/internal-sales-inquiry-container/internal-sales-inquiry-view/internal-sales-inquiry-view.component.ts
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/state-controllers/internal-sales-inquiry-controller/store/effects/internal-sales-inquiry.effects.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalSalesInquiryDataConsistencyObject.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/ServerDocTypes.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+  troubleshooting:
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/components/internal-sales-inquiry-container/internal-sales-inquiry-add-line-item/add-line-item-issue-link/add-line-item-issue-link.component.ts
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/components/internal-sales-inquiry-container/internal-sales-inquiry-edit-issue/edit-issue-worklog/edit-issue-worklog.component.ts
+    - blg-applet-wavelet-internal-sales-inquiry-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-inquiry-applet/src/app/components/internal-sales-inquiry-container/internal-sales-inquiry-view/internal-sales-inquiry-view-export/internal-sales-inquiry-view-export.component.html
 tags:
 - sales-workflow
 - internal-sales
 - sales-inquiry
 - pre-sales
-- line-items
-- customer-management
 weight: 15
 date: 2026-04-11
-lastmod: 2026-05-05
+lastmod: 2026-09-06
 draft: false
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Internal Sales Inquiry Applet** is where your team records **sales inquiries** before they become firm commitments such as quotations or sales orders. It brings together the customer (or prospect), the sales agent, line-level products or services, delivery and billing context, optional collection and contra lines, and supporting files—so everyone works from one structured document instead of scattered notes or email threads.
+**Sales Inquiry (Internal)** records what a customer has asked about before anything is committed:
+the customer, the sales agent, line items with quantities and prices, delivery detail, optional
+collection and contra lines, and attachments. It sits at the front of the sales chain, before a
+quotation or a sales order.
 
-{{< callout type="info" >}}
-**Core Concept**: The applet links **who** you are talking to (customer, member, CRM contact), **what** they are interested in (line items from search, jobsheet, quotation, or a prior inquiry), and **how** the case should proceed (delivery details, collections, attachments, final posting, export, or conversion).
-{{< /callout >}}
-
-An internal sales inquiry is typically a **draft-friendly** document: you can build it up over time, save changes, and when your process allows, mark selected records as **FINAL** from the listing or from the document screen. Depending on your company’s setup, you can also **export** the document and use **Convert** to create an **Internal Receipt Voucher** (the screen warns that converting cancels the current inquiry—treat this as a deliberate, controlled step).
-
-## Document Status Reference {#document-status-reference}
-
-| Posting Status | Meaning | What you can do |
-|----------------|---------|-----------------|
-| **DRAFT** | Work in progress | **SAVE**, **FINAL**, edit fields, add lines, update account details |
-| **FINAL** | Posted / locked | **VIEW**, **EXPORT**, attempt **CONVERT** (only when enabled), add attachments or related documents (limited edits) |
+Server document type `INTERNAL_SALES_INQUIRY`. The applet is fully localised — English, Chinese,
+Malay, Arabic, Hindi and Indonesian bundles ship with it — and it renders either as a tab strip or
+as a stack of expansion panels, depending on the tenant's orientation settings.
 
 {{< callout type="warning" >}}
-After **FINAL**, the inquiry is locked and cannot be edited in the normal way. In most setups header fields and line items are read-only; minor fields (for example remarks or attachments) may still be editable depending on tenant rules. If a formal amendment is required, the usual options are to **VOID** and recreate the inquiry, or follow your organisation's amendment/adjustment process — contact your administrator for the tenant-specific procedure.
+**A sales inquiry moves no stock and posts no journal.** Its quantity signum and amount signum are
+both **0** (`ServerDocTypes` L47) and the type has no entry in the journal posting handler. Setting
+one to **FINAL** locks the document and nothing else. There is **no VOID** on this document — the
+only ways out of a draft are DELETE (before FINAL) or CONVERT.
 {{< /callout >}}
 
----
+## Where it fits
 
-## Before You Start
+| | Document | What it does |
+|---|---|---|
+| Upstream | — | An inquiry is normally the first document; lines can be seeded from a jobsheet, a quotation or an earlier inquiry |
+| Line sources | [Jobsheet (Internal)](/applets/sales-workflow/internal-jobsheet-applet/), [Sales Quotation (Internal)](/applets/sales-workflow/internal-sales-quotation-applet/), other sales inquiries | The **Select Line Item** panel has a tab for each |
+| This applet | **Sales Inquiry (Internal)** | Records the inquiry. No stock, no journal |
+| Downstream | Internal Receipt Voucher | The **Convert** tab creates one — and deletes the inquiry |
+| Usual next step | [Sales Quotation (Internal)](/applets/sales-workflow/internal-sales-quotation-applet/), [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/) | Raised separately once the customer commits; there is no automated conversion into either |
 
-- You need a **customer** that exists in master data (you will select it on the **Account** tab). If the customer is missing, ask your administrator to add it to master data.
-- Prepare the **line items** you will need—product codes, quantities, or links to jobsheets or prior quotations if your process uses them.
-- Know your **sales agent** and **credit terms** defaults, or have your company's standard policy ready.
-- If your company uses **member cards** or **CRM contacts**, have that information ready.
-- Decide if you will use **delivery details**, **collections**, **contra**, or **department headers**—your administrator can show you which tabs are enabled.
-- Check your **permissions**: can you **create** inquiries, **finalize** them, and **convert** to receipt voucher if needed?
+## Screens and menus
 
-If you are unsure whether search tabs (Jobsheet Item, Quotation Item, Previous Sales Inquiry) apply to your login, ask your **administrator** or **finance team lead**.
+The left menu has two entries:
 
----
+| Menu item | Route | What it shows |
+|---|---|---|
+| **Sales Inquiry** | `internal-sales-inquiry` | The listing, the create panel and the view/edit panel |
+| **Line Items** | `line-items` | A cross-document listing of inquiry lines with its own edit panel |
 
-## Glossary {#glossary}
+### Listing
 
-| Term | Meaning in this guide |
-|------|------------------------|
-| **Inquiry** | A pre-sales document that captures customer interest, line items, and rough pricing before formal orders. |
-| **Posting Status** | The state of the inquiry: **DRAFT** (editable) or **FINAL** (locked for changes). |
-| **Line Items** | The products or services listed on the inquiry with quantities, pricing, and tax. |
-| **Member Card** | A loyalty or membership identifier linked to the customer for rewards or special pricing. |
-| **CRM Contact** | A person or contact linked to the customer account for relationship tracking. |
-| **Collection** | Optional settlement terms or payment arrangement lines attached to the inquiry. |
-| **Contra** | Offset transactions that reduce or balance amounts (used by finance when configured). |
-| **Department Header** | Cost centre, profit centre, project, or segment codes for financial allocation. |
-| **Knock-off (KO)** | Sourcing lines from another document (jobsheet, quotation, or prior inquiry) without manual re-entry. |
-| **UOM** | Unit of measure (for example **EA**, **BOX**, **KG**). |
-| **Convert** | Transform the inquiry into an **Internal Receipt Voucher** (final, controlled step that cancels the inquiry). |
-| **Export** | Save the inquiry as PDF, CSV, DOCX, or ZIP for distribution or record-keeping. |
-| **Internal Receipt Voucher** | The downstream document created when an inquiry is formally converted. |
----
-
-## Key Features Overview
-
-### Who Benefits from This Applet?
-
-**Sales representatives and internal sellers:**
-- Start inquiries quickly with **Create** and a guided tab layout (**Main**, **Account**, **Line Items**, and more)
-- Pull lines from **Search Item**, **Jobsheet Item**, **Quotation Item**, or **Previous Sales Inquiry** so you do not re-key data
-- Attach files, add contra lines, and refine pricing and tax-related fields per line before anything is committed downstream
-
-**Sales managers and team leads:**
-- Review open inquiries from the **Internal Sales Inquiry Listing** with **Posting Status**, amounts, and key dates visible
-- Use **FINAL** on the listing to post multiple selected inquiries in one action (only rows that are not already final are updated)
-- Open the **Line Items** menu for a cross-document line view when you need visibility without opening every header
-
-**Finance and operations staff:**
-- See transaction amounts and posting status alongside branch and customer context
-- Rely on structured **Collection** and **Contra** sections when your process ties inquiries to settlement logic
-- Use **Export** (PDF, CSV, DOCX, or ZIP, depending on configuration) for internal checks or handoff
-
-**Administrators and configuration owners:**
-- Control defaults, field visibility, printable formats, branch behaviour, feature visibility, and permissions from **Settings**
-- Let users override layout with **Personalization** (for example default branch, location, language, tab orientation, and column layout)
-
-### What Problems Does This Solve?
-
-**The informal inquiry problem:**
-
-Without a dedicated inquiry record, early-stage sales work often lives in spreadsheets, chat messages, or ad hoc documents. That makes it hard to know which version is current, who owns the customer context, or what was promised before a quotation or order exists.
-
-**The Internal Sales Inquiry Applet solution:**
-
-- **Single source of truth** for each inquiry, with a full header, account, and line structure shared with other internal sales applets in the platform
-- **Flexible line sourcing** so items can be added from catalog search, jobsheets, quotations, or past inquiries for the same customer
-- **Clear posting state** via **Posting Status** (for example **DRAFT** when empty) and **FINAL** when your process locks the document
-- **Operational depth** where you need it: delivery instructions, department header fields, collections, contra, attachments, related documents, and issue links on lines
-- **Controlled conversion** to **Internal Receipt Voucher** when your business rules call for it, with an explicit on-screen warning about cancelling the inquiry
-
----
-
----
-
-## Key Features Overview
-
-{{< cards >}}
-  {{< card title="Inquiry listing & search" subtitle="Grid, advanced search, multi-select FINAL" link="#inquiry-listing" >}}
-
-  {{< card title="Create & view documents" subtitle="Tabs or expansion panels for all sections" link="#document-structure" >}}
-
-  {{< card title="Line items" subtitle="Add, edit, and source lines from multiple places" link="#line-items" >}}
-
-  {{< card title="Line Items menu" subtitle="Cross-inquiry line listing and edit" link="#line-items-menu" >}}
-
-  {{< card title="Finalize, save, reset" subtitle="Posting status and document actions" link="#finalize-save-reset" >}}
-
-  {{< card title="Export & convert" subtitle="Print/export formats and receipt voucher" link="#export-and-convert" >}}
-
-  {{< card title="Configuration & settings" subtitle="Defaults, fields, formats, permissions" link="#configuration--settings" >}}
-
-  {{< card title="Personalization" subtitle="User defaults and sidebar" link="#personalization" >}}
-
-  {{< card title="Quick Start Guide" subtitle="Steps by role" link="#quick-start-guide" >}}
-
-  {{< card title="FAQ" subtitle="Common questions" link="#faq" >}}
-{{< /cards >}}
-
----
-
-## Key Concepts
-
-### The inquiry framework
-
-| Aspect | What it represents | Typical example |
-|--------|--------------------|-----------------|
-| **Who** | Customer entity, optional member card, CRM contact, sales agent | A corporate account with a named contact |
-| **What** | Line items, quantities, prices, taxes, issue links | Items from search or pulled from an existing quotation |
-| **How** | Delivery details, collections, contra, posting, export, convert | Draft inquiry → finalized record → export for approval → or convert to receipt voucher |
-
-{{< callout type="tip" >}}
-**Practical tip**: Select the **customer** in **Account** before using **Previous Sales Inquiry** as a line source, so the applet can narrow prior inquiries to the right entity.
-{{< /callout >}}
-
-### Listing columns you can expect
-
-The main listing is a data grid with **advanced search**, **column layout toggle**, and **client-side pagination**. Columns are driven by your environment but commonly include:
-
-- Document reference (primary document number column on the screen)
-- **Posting Status** (blank values may display as **DRAFT**)
-- **Branch**, **Customer Name**, **Sales Agent**
-- **Amount Txn**
-- **Updated Date**, **Created Date**, **Transaction Date**
-
-### Tabs versus expansion panels
-
-The create and view screens can show the same information either as **horizontal tabs** or as **stacked expansion panels**. Your administrator controls this behaviour through applet and personalization settings (for example vertical orientation and which panels start expanded). If you cannot find a section, scroll the page or expand collapsed panels.
-
-### Line item detail tabs
-
-When you **add** or **edit** a line, you typically work through **Item Details**, optional **Costing Details** (unless hidden by settings), **Pricing Details**, and **Issue Link**. **Edit Issue**, **Worklog**, and **Log Time** appear in the dedicated **Line Items** menu flow when your process uses those features.
-
----
-
-## Quick Start Guide {#quick-start-guide}
+Columns: **Sales Order No**, Posting Status, Branch, Customer Name, Sales Agent, Amount Txn, Status,
+Updated Date, Created Date, Transaction Date. One button above the grid, **FINAL**, which posts every
+selected row whose posting status is not already `FINAL`; rows already final are skipped silently.
 
 {{< callout type="info" >}}
-**Sales and operations staff:** Follow the [Eight steps to your first inquiry](#eight-steps) and [Detailed walkthrough](#detailed-walkthrough-sales). **Sales managers:** Jump to [Review and finalize inquiries](#review-and-finalize). **Administrators:** See [First-time setup](#first-time-setup).
+The first column is labelled *Sales Order No*, not *Sales Inquiry No* — the label is inherited from
+the Sales Order applet this one was cloned from. It shows the inquiry's own document number.
 {{< /callout >}}
 
-### Eight steps to your first inquiry {#eight-steps}
+{{< figure src="/images/internal-sales-inquiry-applet/sales-line-items-tab.png" alt="Create Internal Sales Inquiry on the Line Items tab, with the Select Line Item panel open showing its four tabs" caption="The Select Line Item panel: Search Item, Jobsheet Item, Quotation Item and Previous Sales Inquiry." >}}
 
-1. Open **Internal Sales Inquiry** from the sidebar.
-2. Click **+** (Create) on the listing. The **Create Internal Sales Inquiry** screen opens.
-3. Click the **Main** tab. Set **Transaction Date**, **Sales Agent**, and **Credit Terms** as your policy requires.
-4. Click the **Account** tab. Open **Entity Details**, click **Select Customer**, and choose the customer.
-5. Click the **Line Items** tab. Click **Add** (or **+** on the line list) to open **Select Line Item**.
-6. Choose a source tab: **Search Item** (manual lookup), **Jobsheet Item**, **Quotation Item**, or **Previous Sales Inquiry**. Select a row and proceed to **Add Line Item**.
-7. On **Item Details**, enter **Quantity Base** (how many units), confirm **UOM** (for example **EA** for each or **BOX** for box), and set **Unit Price**. The system calculates the line total automatically; if discounts apply, set the discount field, and if tax applies, confirm the tax field shows the correct rate. Click **ADD** to save the line. Repeat for more lines.
-8. Click **CREATE** (first save). The inquiry is saved and appears in listing for further edits, attachments, or finalization.
+### Create
 
-### Two common workflows
+Seven tabs: **Main Details**, **Account**, **Line Items**, **Delivery Details**, **Collection**,
+**Department Hdr**, **Contra**. Buttons: RESET and CREATE. CREATE stays disabled while the Main
+Details form is invalid.
 
-**Path 1 — Sales Staff Creating an Inquiry**
+### View / edit
 
-1. Create → fill Main/Account/Lines → **CREATE**
-2. Reopen from listing → add more lines, attachments, related documents → **SAVE**
-3. Pass to manager or finalize when ready → **FINAL** from view screen
+The same seven tabs plus **Attachments**, **Export** and **Convert**. Buttons: RESET, FINAL and SAVE
+(SAVE is hidden by `HIDE_GENDOC_SAVE_BUTTON`), with a DELETE button under the tab strip that appears
+only when the document is not `FINAL` and the user holds the `SHOW_DOCUMENT_DELETE_BUTTON`
+permission. Once posting status is `FINAL` the Main Details form is disabled except for **Remarks**.
 
-**Path 2 — Sales Manager Finalizing Multiple Inquiries**
+**Export** offers four buttons; only **Export as PDF** works. Export as CSV, Export as DOCX and
+Export as ZIP are hard-disabled in the template — they are not configuration-dependent.
 
-1. From listing, select multiple rows (checkboxes)
-2. Click **FINAL**
-3. System posts all selected rows that are not already **FINAL**
+**Convert** shows one button, *CONVERT TO INTERNAL RECEIPT VOUCHER*, under the warning *"This will
+cancel the current sales inquiry"*. The warning is literal:
 
-### Detailed walkthrough (sales) {#detailed-walkthrough-sales}
+1. A new document is built from this inquiry's header, with `server_doc_type` and `client_doc_type`
+   set to `INTERNAL_RECEIPT_VOUCHER`, `amount_signum` −1, all amount fields zeroed, and the document
+   numbers, reference, remarks, member and contact links cleared. Every other header field — including
+   `posting_status` — is copied across as-is.
+2. Its lines are the inquiry's **Collection** (settlement) lines. The **item lines are not carried
+   over**.
+3. The receipt voucher is POSTed. If that succeeds, the inquiry is **DELETEd**.
 
-**Goal:** Create a sales inquiry with full tab-by-tab detail.
+If the POST succeeds and the delete fails you keep both documents; if the POST fails nothing is
+deleted and a failure toast is shown.
 
-Open **Internal Sales Inquiry** → click **+**. The title is **Create Internal Sales Inquiry**.
+### Panels instead of tabs
 
-**Main**
+When the tenant has `VERTICAL_ORIENTATION` on and the user's personal **Default Tab Orientation** is
+not `HORIZONTAL`, every screen renders as a stack of expansion panels instead of a tab strip. Which
+panels start expanded is controlled by the `EXPAND_*` settings below.
 
-- Set **Transaction Date** with the date picker.
-- Select or type **Sales Agent** from the configured list.
-- Choose **Credit Terms** (payment or delivery terms your company uses).
-- Enter **Reference** (internal or customer reference number) if needed.
-- Set optional **Currency** (defaults to company currency).
-- Add **Remarks** for internal notes.
-- Use **Select Member** if the customer has a loyalty membership.
-- Use **Select CRM Contact** if your CRM process requires linking a specific contact.
+### Side panels
 
-{{< figure src="/images/internal-sales-inquiry-applet/sales-main-details-tab.png" alt="Main Tab - showing Transaction Date, Sales Agent, Credit Terms, and other header fields" caption="Main: Set Transaction Date, Sales Agent, Credit Terms, Reference, and optional member or CRM links." >}}
+The applet's panel stack, in the order the pages service declares it: Internal Sales Inquiry
+Listing, View, Create, Select Line Item, Select Shipping Address, Select Customer, Select Billing
+Address, Add Line Item, Add Collection, Edit Line Item, Add Related Documents, Add Contra, Add
+Attachments, Edit Issue, Select Member, Create Customer, Select CRM Contact, Log Time.
 
-**Account**
-
-1. Click the **Account** tab.
-2. Open **Entity Details**.
-3. Click **Select Customer** (or create one if your permissions allow).
-4. Review **Ship To** and **Bill To** address fields. Update if different from the customer's defaults.
-
-{{< figure src="/images/internal-sales-inquiry-applet/sales-account-tab.png" alt="Account Tab - Entity Details showing Customer, Billing, and Shipping information" caption="Account: Select the customer and confirm shipping and billing addresses." >}}
-
-**Line Items**
-
-1. Click the **Line Items** tab.
-2. Click **Add** or the **+** icon on the line toolbar.
-3. The **Select Line Item** dialog opens. Choose a source:
-   - **Search Item** — find items from the catalog manually.
-   - **Jobsheet Item** — pull lines from a linked jobsheet (if enabled).
-   - **Quotation Item** — copy lines from a prior quotation for the same customer (if enabled).
-   - **Previous Sales Inquiry** — reuse lines from an earlier inquiry (if enabled).
-4. Select a row from the chosen source.
-5. The **Add Line Item** editor opens. Work through:
-   - **Item Details**: Confirm **UOM**, **Quantity Base**, and **Quantity by UOM**.
-   - **Costing Details** (if visible): Review or enter cost fields if your role permits.
-   - **Pricing Details**: Set **Unit Price**, discounts, and tax configuration.
-   - **Issue Link** (if enabled): Attach a work issue or ticket for tracking.
-6. Click **ADD** to save the line. Repeat for more lines.
-
-{{< figure src="/images/internal-sales-inquiry-applet/sales-line-items-tab.png" alt="Line Items Tab - showing list of lines with Add control and item details" caption="Lines: Use Add to select items from catalog, jobsheets, or prior documents, then enter quantities and pricing." >}}
-
-**Optional Sections** (if enabled by your administrator):
-
-- **Delivery Details** — shipping instructions, delivery date requests
-- **Collection** — payment settlement terms
-- **Department Hdr** — cost centre, profit centre, project codes for GL allocation
-- **Contra** — offset amounts (used by finance when configured)
-
-**Final Actions**
-
-- Click **CREATE** to save the new inquiry. It enters the system in **DRAFT** status.
-- The saved inquiry appears in the listing and can be reopened to add attachments, link related documents, or update lines.
-- When ready, open the inquiry from the listing and click **FINAL** to post it, or select multiple rows in the listing and click **FINAL** to post several at once.
-
-### Review and finalize inquiries {#review-and-finalize}
-
-**Goal (Sales Manager):** Confirm and finalize open inquiries.
-
-1. From **Internal Sales Inquiry Listing**, use **Advanced Search** if you need to filter by criteria your administrator set up (for example by branch, customer, or date range).
-2. Review the grid: columns show **Posting Status**, **Customer Name**, **Sales Agent**, **Amount**, and key dates.
-3. Click a row to open **View Internal Sales Inquiry**. Review all tabs: **Main**, **Account**, **Line Items**, and any settlement-related sections.
-4. To post a single inquiry, click **FINAL** (if the button is enabled).
-5. To post several inquiries at once:
-   - Select multiple rows in the listing using the row checkboxes.
-   - Click **FINAL**.
-   - The system posts all selected rows that are not already **FINAL**.
-6. For line-level questions without opening every inquiry, open the **Line Items** menu from the sidebar, find the line in the listing, and use **Edit Line Item** to drill in.
+**Add Line Item** has its own tabs: Item Details, Costing Details (when `HIDE_COSTING_DETAILS` is off
+or the `SHOW_COSTING_DETAILS` permission is granted), Pricing Details and Issue Link. The Serial
+Number, Batch Number and Bin Number tabs are commented out of the template.
 
 {{< callout type="warning" >}}
-**Search scope:** If advanced search returns too many matches, the applet may show an error asking you to refine criteria. Narrow your search and run again.
+**Issue Link, Edit Issue and Log Time are mock-ups.** The Issue Link grid pushes one hard-coded row
+on init (`project: 'Dummy Project'`, `issueNumber: 'ABC-123'`, an assignee's initials) and no
+service is injected. Clicking that row opens **Edit Issue**, a nine-screen Jira-style sub-application
+— Main Details, Planning, Attachment, Comment, Subtasks, Linked Issues, Activity, Worklog, Log Time —
+in which no component makes a single HTTP call and the Worklog grid carries a hard-coded row naming a
+developer. Nothing typed there is stored. Recorded as **P-0132**.
 {{< /callout >}}
 
-### First-time setup {#first-time-setup}
-
-**Goal (Administrators):** Configure the applet for your organisation.
-
-Complete these steps when rolling out the applet:
-
-- [ ] **Feature visibility**: **Settings → Feature Visibility** — enable or disable **Line Items**, **Settings**, **Personalization** menus per your rollout plan.
-- [ ] **Default selection**: **Settings → Default Selection** — set default company, branch, location, language, and date format.
-- [ ] **Field settings**: **Settings → Field Settings** — mark fields as mandatory, visible, or hidden to match sales and finance policies.
-- [ ] **Printable formats**: **Settings → Printable Format Settings** — choose PDF layout for exports and prints.
-- [ ] **Branch settings**: **Settings → Branch Settings** — align branch-specific behaviour if your organisation uses multiple branches.
-- [ ] **Permissions**: Under **Settings**, review **Client-side permission listing**, **Permission set**, **User**, **Team**, **Role** — grant **CREATE**, **EDIT**, **FINALIZE**, **CONVERT**, and **SETTINGS** access to the right groups.
-- [ ] **Webhooks** (if used): **Settings → Webhook** — connect external automation (only after staging tests).
-- [ ] **Test pilot**: Create a test inquiry, add lines from each source tab you enabled, save, finalize, and export to confirm the workflow works.
-
----
-
-## Working with the Inquiry Listing {#inquiry-listing}
-
-The **Internal Sales Inquiry Listing** is the home screen for the applet.
-
-- **Create** opens a blank document in **Create Internal Sales Inquiry**.
-- **Advanced Search** runs a configured query; when results are returned as a bounded set of document keys, the grid loads those rows.
-- **FINAL** applies **Posting Status** **FINAL** to every selected row that is not already final.
-- **Column toggle** switches between single- and double-column layouts on wider screens.
-- Row click opens **View Internal Sales Inquiry** for the selected document.
-
----
-
-## Document Structure: Tabs and Panels {#document-structure}
-
-### View screen (existing inquiry)
-
-On **View Internal Sales Inquiry**, the main sections appear as tabs (or panels) including:
-
-| Section | Purpose |
-|---------|---------|
-| **Main** | Header fields, sales agent, credit terms, references, member and CRM contact |
-| **Account** | Customer entity, **Ship To**, **Bill To**, shipping and billing detail |
-| **Line Items** | List of inquiry lines; shortcuts to add or edit lines |
-| **Delivery Details** | Delivery messaging and scheduling-style fields your company enables |
-| **Collection** | Settlement rows tied to the inquiry |
-| **Department Hdr** | Department or analytical header segments |
-| **Contra** | Contra entries when your process uses them |
-| **Attachments** | Files linked to the document |
-| **Export** | Triggers such as **EXPORT AS PDF**, **EXPORT AS CSV**, **EXPORT AS DOCX**, **EXPORT AS ZIP** |
-| **Convert** | **CONVERT TO INTERNAL RECEIPT VOUCHER** with the warning that the action cancels the current inquiry |
-
-The view toolbar also provides **RESET**, **FINAL**, and **SAVE** (unless **SAVE** is hidden by **Hide generic document save button** in settings). Use **Back** to return to the listing.
-
-### Create screen (new inquiry)
-
-**Create Internal Sales Inquiry** exposes **Main**, **Account**, **Line Items**, **Delivery Details**, **Collection**, **Department Hdr**, and **Contra**. Attachments are handled after save flows in your environment; follow on-screen navigation for **Add Attachments** when it appears in the inquiry journey.
-
----
-
-## Line Items {#line-items}
-
-### Select Line Item
-
-**Select Line Item** offers four tabs:
-
-- **Search Item** — find catalog items.
-- **Jobsheet Item** — pull from jobsheet context.
-- **Quotation Item** — pull from quotation lines.
-- **Previous Sales Inquiry** — copy lines from an earlier inquiry for the selected customer.
-
-Choosing a row feeds the **Add Line Item** flow.
-
-### Add Line Item
-
-**Add Line Item** walks through **Item Details**, optional **Costing Details**, **Pricing Details**, and **Issue Link**. Costing can be suppressed by applet settings unless a user is allowed to see it for specific cases.
-
-### Edit Line Item
-
-**Edit Line Item** mirrors the add layout with **SAVE** on the toolbar. Line-level behaviour may respect the inquiry’s posting status (for example stricter edits after finalization—follow your organisation’s rules).
-
-### Related documents and contra from the inquiry flow
-
-Dedicated columns in the page stack include **Add Related Documents** and **Add Contra** when your navigation reaches those steps—use them to link supporting evidence or contra entries without losing the inquiry context.
-
----
-
-## Line Items Menu {#line-items-menu}
-
-The separate **Line Items** route provides:
-
-- **Line Items Listing** — a grid of lines across inquiries.
-- **Edit Line Item** — focused line editing.
-- **Edit Issue**, **Worklog**, and **Log Time** — when issue tracking and time logging are part of your process.
-
-Use this area when operations or support teams need line-centric visibility.
-
----
-
-## Finalize, Save, and Reset {#finalize-save-reset}
-
-- **SAVE** persists header, account, and line changes on the view screen when available.
-- **FINAL** sets posting status to **FINAL** from the view screen or for multi-selected rows on the listing.
-- **RESET** reloads the document state according to your implementation—use it when you need to discard unsaved UI changes and refresh from the server copy.
-- **CREATE** on the create screen saves a new inquiry for the first time.
-
-After **FINAL**, the inquiry is locked: in most setups both header fields and line items cannot be edited. If an amendment is required after finalization, the usual paths are to **VOID** and recreate the inquiry, or follow your company's amendment process — contact your administrator for tenant-specific procedures and who may perform those actions.
-
----
-
-## Export and Convert {#export-and-convert}
-
-### Export
-
-Under **Export**, choose the format your administrator enabled—typically **EXPORT AS PDF**, **EXPORT AS CSV**, **EXPORT AS DOCX**, or **EXPORT AS ZIP**. This is useful for internal approval packs or customer-facing summaries when your policy allows.
-
-### Convert
-
-**Convert** shows a clear warning: converting to an **Internal Receipt Voucher** cancels the current sales inquiry. Use this only when your finance process explicitly requires that path.
-
----
-
-## Configuration & Settings {#configuration--settings}
-
-Settings are organised under **Settings** in the applet sidebar (exact labels may vary slightly by tenant).
-
-| Path | Typical use |
-|------|-------------|
-| **Settings → Default Selection** | Default company, branch, location, language |
-| **Settings → Field Settings** | Visible, required, and ordered fields |
-| **Settings → Printable Format Settings** | Export and print layouts |
-| **Settings → Webhook** | Integrations |
-| **Settings → Feature Visibility** | Which menus and actions appear |
-| **Settings → Branch Settings** | Branch-specific behaviour |
-| **Settings → Client-side permission listing** | Fine-grained client permissions |
-| **Settings → Permission set / User / Team / Role permission listings** | Access control |
-
-Applet-level behaviour also honours master flags such as optional **Dimension**, **Profit Centre**, **Project**, **Segment**, **SST**, and **WHT** segments, custom status slots, pricing column visibility, hiding costing details, hiding the generic document **SAVE** button, vertical versus horizontal orientation, default column layout (**SINGLE** vs **DOUBLE**), and which expansion panels open by default—configured through your platform’s settings model for this applet.
-
----
-
-## Personalization {#personalization}
-
-Under **Personalization**, users with access can adjust:
-
-- **Personal Default Selection** — overrides for branch, location, language, default tab orientation, and default column layout (personal choices override applet defaults where allowed).
-- **Sidebar** — shortcut and navigation preferences.
-
-{{< callout type="info" >}}
-Personal settings apply to the individual user. If something looks different between colleagues, compare personalization choices before raising a support ticket.
-{{< /callout >}}
-
----
-
-## Audit Trail and Compliance {#audit-trail}
-
-Sales inquiries use the platform's generic document model and capture basic audit metadata that you can view as a user:
-
-- **Created By / Created Date**: who created the inquiry and when.
-- **Updated By / Updated Date**: the last user who updated the inquiry and the timestamp.
-- **Posting Status changes**: when the document moved between posting states (for example DRAFT → FINAL) the change is recorded in the document history.
-- **Attachments metadata**: who uploaded a file and when it was attached to the inquiry.
-
-Where these appear depends on your tenant UI configuration — commonly you'll see `Created By` and `Created Date` on the document header, and an activity or history tab showing status transitions. For full, system-level audit logs (for example exportable logs or security audit trails), consult your administrator or compliance team who can extract those from backend tooling or logging services.
-
----
-
-## FAQ {#faq}
-
-**What is the difference between an internal sales inquiry and a quotation or sales order?**
-
-An inquiry is an early-stage, flexible record used to capture interest, rough lines, and context. Quotations and orders (see the [Internal Sales Quotation Applet](/applets/sales-workflow/internal-sales-quotation-applet/) and [Internal Sales Order](/applets/sales-workflow/internal-sales-order-applet/)) are typically the next formal steps when pricing is firm and fulfilment is planned. Your company defines when to move from one to the other.
-
-**Why does Convert warn that it will cancel the inquiry?**
-
-The **Convert** action creates an **Internal Receipt Voucher** and treats the inquiry as completed in that pathway. The warning is intentional so users do not convert by mistake. If you only need a PDF for a customer, use **Export** instead.
-
-**Can I finalize many inquiries at once?**
-
-Yes. In **Internal Sales Inquiry Listing**, select multiple rows using the checkboxes and click **FINAL**. Rows that are already **FINAL** are skipped.
-
-**Why is the Costing Details tab missing on a line?**
-
-Administrators can hide costing through applet settings, or visibility may depend on your role and the item context. If you believe costing should appear, ask your administrator to review **Hide costing details** and related permission settings.
-
-**Can I copy lines from a prior inquiry into a new one?**
-
-Yes. Use the **Previous Sales Inquiry** tab in **Select Line Item** (when adding a line) to pull lines from a previous inquiry for the same customer.
-
-**What should I do if advanced search says the result set is too large?**
-
-Add more filters or narrower criteria until the search returns a smaller set. The guard exists to keep the grid responsive and protect server performance.
-
-**Can I edit an inquiry after it is finalized?**
-
-Limited edits may be permitted depending on your company's configuration. Check with your administrator on the exact rules. In most workflows, finalization locks the document. If a correction is needed, you may need to void and recreate, or follow your company's adjustment process.
-
-**Who can change field labels or mandatory rules?**
-
-Users with access to **Settings** pages (especially **Field Settings** and related permission screens). Standard sales users should route change requests through that team.
-
-**What happens if I delete a line?**
-
-On the view screen, use the **delete** icon on the line (if permitted). The line is removed from the inquiry. If the inquiry is already finalized, deletion may be restricted.
-
-**Can I print an inquiry?**
-
-Yes. Open the inquiry, then scroll to the **Export** section and click **EXPORT AS PDF** (or other format). Your administrator configured the layout template under **Printable Format Settings**.
-
-**How do I know which inquiries are ready for conversion?**
-
-Typically, your sales manager or finance team will indicate when an inquiry should be converted to an **Internal Receipt Voucher**. This step is intentionally controlled (with a warning) to prevent accidental conversions. Only convert when your business process explicitly requires it.
-
-**What is the difference between Search Item and Jobsheet Item as line sources?**
-
-- **Search Item** — Manually finds products from the catalog.
-- **Jobsheet Item** — Pulls pre-configured items from an existing jobsheet, useful if you are quoting services or work tied to a specific project or job.
-
-**Can I add lines after finalizing an inquiry?**
-
-In most workflows, **FINAL** locks the inquiry for major edits. Check with your administrator on whether line additions are permitted after posting. If you need to add items, you may need to create a new inquiry or follow an amendment process.
-
-**Who can finalize inquiries?**
-
-Permission is controlled by your administrator through **Permission** settings. Typically, sales managers, team leads, or delegated staff can finalize, while general sales users only create and edit drafts.
-
-**What if I need to change a customer after saving?**
-
-For new drafts, update the **Account** tab and click **SAVE**. If the inquiry is already finalized, check with your administrator on the amendment or void-and-recreate process.
-
-**How does member card selection work?**
-
-When you select a customer on the **Account** tab, you can optionally link a **Member Card** on the **Main** tab if the customer has an active membership. This may be used for loyalty points, discounts, or reporting. Ask your administrator if member card linking is required for your sales process.
-
----
-
-## Related Applets
-
-- **[Internal Sales Quotation Applet](/applets/sales-workflow/internal-sales-quotation-applet/)** — Upstream: when an inquiry is approved or pricing is firm, create or convert into a formal quotation for customer approval. Use the quotation applet to generate customer-facing proposals and route for approvals if required.
-- **[Internal Sales Order](/applets/sales-workflow/internal-sales-order-applet/)** — Downstream: once pricing and delivery are confirmed (often after a quotation), raise a sales order to start fulfilment and warehouse processes. The sales order drives pick/pack and delivery workflows.
-- **[Internal Sales Invoice (Internal) Applet](/applets/sales-workflow/internal-sales-invoice-applet/)** — Downstream billing: after goods or services are fulfilled, invoices are raised here to post revenue and create accounting entries. The invoice applet is the final financial posting step in the order-to-cash sequence.
-
+## Configuration
+
+### Before you can use it
+
+| What | Where | Why |
+|---|---|---|
+| Branch and location | [Organisation](/applets/master-data/organisation-applet/) | `Validators.required` on Main Details; CREATE stays disabled without them |
+| A sales agent (employee) | [Employee Maintenance](/applets/master-data/employee-applet/) | `Validators.required` on Main Details |
+| A currency | [Organisation](/applets/master-data/organisation-applet/) | `Validators.required` on Main Details |
+| A customer entity | [Customer](/applets/master-data/customer-applet/) | Entity Id is required on the Account tab, and Credit Terms stays disabled until one is chosen |
+| Document numbering for the inquiry | [Organisation](/applets/master-data/organisation-applet/) | Supplies the number shown in the listing |
+| Items | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | What Select Line Item → Search Item returns |
+| Tax codes | [Tax Configuration](/applets/master-data/tax-configuration-applet/) | Line tax; the selector is hidden by `HIDE_TAX_CONFIG_SELECTION` |
+| A default printable format | Settings → Printable Format Settings, or Branch Settings → Printable Format | Export as PDF needs one |
+
+No GL code is needed: this document posts nothing.
+
+### Applet settings
+
+Settings live on the **shared** `FieldConfigurationComponent` from `blg-shared-utilities`, routed as
+`settings/field-settings`. The applet declares a local `field-configuration` component that no route
+points at — dead code.
+
+The settings menu has four entries: **Application Settings** (the shared screen), **Default
+Selection**, **Printable Format Settings** and **Branch Settings**. Personalization has one,
+**Default Selection**.
+
+The applet's settings model declares **86** keys. **31** pass all four proofs — declared, rendered on
+the shared screen for applet code `internal_sales_inquiry_applet`, persisted, and read by this
+applet's code:
+
+| Group | Keys | What they control |
+|---|---|---|
+| Layout | `VERTICAL_ORIENTATION` | Switches every screen from tabs to expansion panels (unless the user's personal orientation is `HORIZONTAL`) |
+| Which panels open | `EXPAND_MAIN_DETAILS`, `EXPAND_ACCOUNT`, `EXPAND_LINE_ITEMS`, `EXPAND_DELIVERY_DETAILS`, `EXPAND_DEPARTMENT_HDR`, `EXPAND_ATTACHMENT`, `EXPAND_EXPORT` | In panel mode, which sections start expanded |
+| Buttons | `HIDE_GENDOC_SAVE_BUTTON`, `SHOW_DOCUMENT_DELETE_BUTTON` | Hide SAVE on the view screen; show the DELETE button (this one is opt-in — the control appears only when the setting or the matching permission is on) |
+| Line grid and item form | `HIDE_QTY_BASE`, `HIDE_QTY_UOM`, `HIDE_UOM_TO_BASE_RATIO`, `HIDE_AMOUNT_TXN`, `HIDE_AMOUNT_NET_EXCL_TAX`, `HIDE_AMOUNT_STD_EXCL_TAX`, `HIDE_DISCOUNT_AMOUNT_EXCL_TAX`, `HIDE_UNIT_DISCOUNT`, `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX`, and the eight `HIDE_UNIT_PRICE_*` keys | Hide individual quantity, price, discount and amount columns and fields |
+| Line extras | `HIDE_COSTING_DETAILS`, `HIDE_TAX_CONFIG_SELECTION`, `HIDE_WHT_CONFIG_SELECTION`, `HIDE_UNIT_PRICE_STD_PRICING_SCHEME` | Hide the Costing Details tab, the tax and withholding-tax selectors and the pricing-scheme picker |
+
+Each `HIDE_*` key above is paired with a `SHOW_*` client-side permission, and for this applet those
+permissions **are** seeded — see below — so a tenant-wide hide can genuinely be reopened per role.
+
+**Read at runtime with no control on the shared screen:**
+
+- `EXPAND_CONTRA` — the Contra panel asks for this key, but the shared screen only offers
+  `EXPAND_MAIN_CONTRA`. The Contra panel can therefore never be made to start expanded.
+- `HIDE_DEPARTMENT_HDR_TAB` — the panel list can hide the Department Hdr section with this key, but
+  its toggle on the shared screen is gated behind `showDepartmentHdrTab`, which is only set for
+  applet codes listed in the screen's `tabMappings`; `internal_sales_inquiry_applet` is not one of
+  them.
+- `PRINTABLE`, `DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `DEFAULT_COMPANY`, `DEFAULT_LANGUAGE_CODE`,
+  `DEFAULT_ORIENTATION`, `DEFAULT_TOGGLE_COLUMN` — set on the other settings screens below.
+
+**Default Selection** (applet-wide) renders two controls, **Default Branch** and **Default
+Location**, and saves `DEFAULT_BRANCH`, `DEFAULT_LOCATION` and `DEFAULT_COMPANY` (the company is
+derived from the branch). The component also builds a `DEFAULT_LANGUAGE_CODE` form group, but no
+control for it exists in the template — the applet-wide default language cannot be set from here.
+
+**Personalization → Default Selection** overrides those for one user and adds three more controls:
+**Default Language** (`DEFAULT_LANGUAGE_CODE`), **Default Toggle Column** (`DEFAULT_TOGGLE_COLUMN`,
+`SINGLE` or `DOUBLE`) and **Default Tab Orientation** (`DEFAULT_ORIENTATION`, `HORIZONTAL` or
+`VERTICAL`).
+
+**Branch Settings** opens a branch listing; picking a branch opens a read-titled *View Branch
+Settings* screen with five tabs — **Branch Details**, **Item Category Filter**, **Pricing Scheme**,
+**Printable Format** and **Default Settlement Method**. The container's own SAVE button is commented
+out; Branch Details, Item Category Filter, Printable Format and Default Settlement Method each carry
+their own SAVE, and Pricing Scheme is a listing with none. A **Menu List** tab exists in the
+template but is commented out.
+
+**Printable Format Settings** manages the formats offered to Export as PDF.
+
+### Document behaviour settings
+
+| Behaviour | Governed by | Effect |
+|---|---|---|
+| SAVE visible on the view screen | `HIDE_GENDOC_SAVE_BUTTON` | Hides SAVE; the button is also disabled while Main Details is invalid |
+| DELETE visible | `SHOW_DOCUMENT_DELETE_BUTTON` setting or permission, and posting status not `FINAL` | Two-click confirm (*CLICK AGAIN TO CONFIRM*) |
+| Fields locked after FINAL | not configurable | The Main Details form is disabled, with Remarks re-enabled |
+| FINAL from the listing | not configurable | Acts on the selection, skipping rows already `FINAL` |
+
+There is **no approval flow, no workflow designer and no VOID** on this document.
+
+### Settings in other applets that control this applet
+
+| Setting | Where it is set | Effect here |
+|---|---|---|
+| Branch pricing scheme, item category filter, default settlement method, default printable format | This applet's own **Branch Settings**, per branch | Override the applet-wide equivalents for documents raised at that branch |
+| Item master flags | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | What Search Item returns |
+| Credit terms on the customer | [Customer](/applets/master-data/customer-applet/) | Populates the Credit Terms list once an entity is selected |
+
+### Feature visibility and permissions
+
+Twenty-three client-side permission codes are seeded for this applet and twenty-three are checked in
+code — they line up almost exactly:
+
+- Twenty-two `SHOW_*` counterparts to the `HIDE_*` line and pricing settings, plus
+  `SHOW_COSTING_DETAILS` and `SHOW_TRANSACTION_DATE` (which unlocks the Transaction Date field —
+  without it the date is fixed).
+- One code is checked but **not** seeded: `EXCLUDE_ACCOUNT_CODE_ITEM_TYPE_AT_ITEM_SEARCH`, which
+  filters account-code item types out of the item search. It cannot be granted.
+- `SHOW_QTY_BASE` is seeded **twice**; the duplicate row is harmless but should be cleaned up.
+
+Server-side, the applet uses the generic-document permissions
+`TNT_API_DOC_INTERNAL_SALES_INQUIRY_CREATE_TGT_GUID`, `…_READ_…`, `…_UPDATE_…` and `…_DELETE_…`.
+
+## Fields
+
+### Main Details
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| **Branch** | The branch the inquiry belongs to | **Yes** | `Validators.required`; drives the location list |
+| **Location** | Stock location | **Yes** | `Validators.required` |
+| **Sales Agent** | The employee who owns the inquiry | **Yes** | `Validators.required` |
+| **Currency** | Document currency | **Yes** | `Validators.required` |
+| Transaction Date | The document date | — | Editable only with the `SHOW_TRANSACTION_DATE` permission |
+| Due Date | Follow-up date | — | |
+| Credit Terms | Payment terms | — | Disabled until an Entity Id is chosen on the Account tab |
+| Reference | Free-text reference | — | |
+| Remarks | Notes | — | The one field that stays editable after FINAL |
+| Permit No | Permit reference | — | |
+| Sales Lead | Corporate or non-corporate | — | |
+| Tracking ID | Tracking reference | — | |
+| MemberCard | Loyalty member linked to the inquiry | — | Opens the **Select Member** panel |
+| CRM Contact | CRM contact linked to the inquiry | — | Opens the **Select CRM Contact** panel |
+
+A **Credit Limit** entry exists in the field list but its template case is commented out, so no
+Credit Limit control renders. Group Discount and Group Discount Amount are likewise commented out.
+
+### Account
+
+Three sub-tabs. **Entity Details** — Entity Id (required), Entity Name, Status, Entity Type,
+Identity Type, ID Number, Currency, GL Code, Description, Email, Phone Number, filled from the
+selected customer. **Bill To** and **Ship To** hold the two addresses, each with its own selection
+panel. A **Create Customer** panel lets you add a customer without leaving the applet.
+
+### Line items
+
+Item Code, Item Name, UOM, UOM-to-base ratio, pricing scheme, the eight unit-price variants,
+Quantity Base, unit and amount discounts, tax and withholding-tax codes and Remarks — each hideable
+by its `HIDE_*` setting and re-showable by the matching permission. Costing Details and Pricing
+Details are separate tabs on the add-line panel.
+
+### Collection and Contra
+
+**Collection** holds settlement lines against the inquiry — and these, not the item lines, are what
+the Convert action copies onto the receipt voucher. **Contra** holds offset lines.
+
+## Lifecycle and posting
+
+| Status (`posting_status`) | Meaning | Allowed next |
+|---|---|---|
+| empty / `DRAFT` | Saved and editable | `FINAL`, DELETE, or CONVERT |
+| `FINAL` | Locked; only Remarks stays editable | CONVERT (which deletes the inquiry) |
+
+Posting proof:
+
+| Item | Value | Source |
+|---|---|---|
+| Server document type | `INTERNAL_SALES_INQUIRY` | `InternalSalesInquiryDataConsistencyObject`; the applet's `applet-constants.ts` |
+| Amount signum | **0** | `ServerDocTypes` L47 `INTERNAL_SALES_INQUIRY(0,0)`; `applet-constants.ts` |
+| Quantity signum | **0** — no stock movement | same |
+| Dr/Cr equation | None. The type has no entry in `JournalPostingTypeHandler`, and the fallback in `JournalPostingService` keys on the name containing `SALES`, so even if the journal processor were run for it every line would be skipped: `JournalPostingService` only builds journal lines where the line's amount signum is non-zero | `JournalPostingTypeHandler`; `JournalPostingService` L95–L96 |
+| GL precedence | Not applicable — no journal |  |
+| Stock processor | None — quantity signum 0 writes no inventory transaction line |  |
+| What VOID reverses | Nothing. There is no VOID button, no void action and no `'VOID'` string in the applet | applet source |
+| Document type registration | `INTERNAL_SALES_INQUIRY` is a registered generic document type with create / read / update / delete target permissions and the REST path segment `internal-sales-inquiries` | `GenericDocumentTypeHandler` L607–L613, L918 |
+
+**FINAL** sends `{ posting_status: 'FINAL' }` from the view screen or from the listing's bulk button.
+It is one-way: nothing in the applet moves a document back to draft.
+
+**CONVERT** is the only other exit, and it removes the inquiry — see
+[View / edit](#view--edit) above.
+
+## Related applets
+
+- [Sales Quotation (Internal)](/applets/sales-workflow/internal-sales-quotation-applet/) — the usual next document; also a line source for Select Line Item.
+- [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/) — where a committed inquiry usually ends up; raised separately.
+- [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/) — the eventual revenue document.
+- [Jobsheet (Internal)](/applets/sales-workflow/internal-jobsheet-applet/) — a line source for Select Line Item.
+- [Customer](/applets/master-data/customer-applet/) — the entity on the Account tab, and the Create Customer panel writes here.
+- [Employee Maintenance](/applets/master-data/employee-applet/) — the required Sales Agent.
+- [Organisation](/applets/master-data/organisation-applet/) — branches, locations, currencies and document numbering.
+- [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — the items in Search Item.
+- [Tax Configuration](/applets/master-data/tax-configuration-applet/) — line tax codes.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| CREATE stays greyed out | Main Details is invalid — Branch, Location, Sales Agent and Currency are all `Validators.required` | Fill all four |
+| Credit Terms is greyed out with *Entity ID must be selected first* | No customer has been chosen on the Account tab | Choose the customer first |
+| Transaction Date cannot be changed | The `SHOW_TRANSACTION_DATE` client-side permission is not granted | Grant it under Settings → Client-Side Permission |
+| Export as CSV / DOCX / ZIP do nothing | Those three buttons are hard-disabled in the template; only PDF is implemented | Use Export as PDF |
+| Export as PDF produces nothing | No default printable format is set for the applet or the branch | Set one under Settings → Printable Format Settings, or Branch Settings → Printable Format |
+| The inquiry disappeared after Convert | Convert POSTs the receipt voucher and then **deletes** the inquiry — that is what the on-screen warning means | Export the PDF first if you need a record |
+| The receipt voucher created by Convert has no item lines | Convert copies the **Collection** (settlement) lines, not the item lines | Add the items to the receipt voucher directly |
+| Both an inquiry and a receipt voucher exist after Convert | The receipt voucher POST succeeded but the inquiry delete failed | Delete the inquiry manually |
+| Everything on a line's Issue Link tab is the same dummy row | The grid is a mock with hard-coded data, and the Edit Issue screens behind it make no HTTP calls | Ignore them. **P-0132** |
+| The Contra panel never starts expanded in panel mode | The panel reads `EXPAND_CONTRA`; the settings screen only offers `EXPAND_MAIN_CONTRA` | No workaround from the UI |
+| No Department Hdr toggle on Application Settings | The tab-hide toggles render only for applet codes in the shared screen's `tabMappings`, and this one is absent | The key keeps whatever value the tenant already holds |
+| An item you expect is missing from Search Item | Item search filtering, possibly `EXCLUDE_ACCOUNT_CODE_ITEM_TYPE_AT_ITEM_SEARCH` — which is checked in code but has no permission definition row, so it can never be turned on | Check the item in Doc Item Maintenance |
+| DELETE is not offered on a draft | `SHOW_DOCUMENT_DELETE_BUTTON` is off and the matching permission is not granted, or the document is already `FINAL` | Switch the setting on; a `FINAL` inquiry cannot be deleted from the applet |
+| The screen is a stack of panels instead of tabs | `VERTICAL_ORIENTATION` is on for the tenant and the user's personal Default Tab Orientation is not `HORIZONTAL` | Set Personalization → Default Selection → Default Tab Orientation to Horizontal |
+
+## Related documentation
+
+- [Sales & CRM module](/modules-v2/crm-digital/)

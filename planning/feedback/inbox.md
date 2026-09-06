@@ -1489,3 +1489,346 @@ same pass under ADR-0008; the rest are open.*
 
 ### images — the quarantine executed (2026-09-06)
 - [x] F-0394 (2026-09-06) **Reversed F-0380 on the evidence.** The mermaid pilot audited five infographics and **five of five carried claims source contradicts** — 21 in total, including `Available = Physical − Reserved` (the backend adds a *signed* adjustment with a `+1` GRN↔PI pair, and "reserved" never enters it), "enforce FIFO" on a read-only applet, an approval workflow with no component or route, and "role-based access" on an applet that registers no permission definitions at all. One carried a **fabricated product identity, "DELIVERYCONNECT APPLET · Empowering Your Logistics"**, with a logo, live on the English, Malay and Chinese pages. Another described **property leasing** — leases, renewals, property managers, tenants submitting requests — for the Tenant Admin Applet, where "tenant" means a customer organisation on the platform. Two published generation artefacts verbatim ("sitting stop purchasing", "Write-one"). Shipped 987cf4c4: **128 images quarantined** (not the ~70 first estimated — 75 matched the generated canvas sizes and a further 53 were the same class in other sizes), **89 reference lines removed from 76 pages**, nothing deleted. **46 of the 128 were already unreferenced and still being served from the CDN.** Diagrams worth keeping return as mermaid or inline SVG per F-0381 — as an audit whose usual answer is "no diagram", never as a faithful redraw: four of the five sampled would have reproduced a false claim in crisper vector.
+
+### /guides/ and /user-guide/ — the 110-page audit (2026-09-06)
+
+- [x] F-0421 (2026-09-06) **The whole purchasing family taught that the goods received note moves
+      stock.** `INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE` is quantity-signum **0** and amount-signum
+      **0** (`ServerDocTypes.java`); the stock and the liability are booked by
+      `INTERNAL_PURCHASE_INVOICE` (+1,−1), or by the separate *GRN Stock In* / *Invoice No Stock In*
+      pair. Six pages said otherwise, in the same words that had already been caught on Sales GRN
+      and Jobsheet: `standard-procurement-workflow.md:548-568` ("System processes: Updates inventory
+      quantities … Creates accounting entries" and "Stock increased … Stock is available for use or
+      sale"); `goods-received-note.md:7, 566-584, 619, 748` (`Debit: Inventory / Debit: Input Tax /
+      Credit: GRN Accrual`); `direct-grn-workflow.md:270, 393-407, 512-515`;
+      `inventory-guides/_index.md:31, 45`; `demo/manufacturing:849-875`; `demo/retail:372-380`;
+      `demo/food-beverage:486-507`. `consignment-purchasing.md:162-176` gets it exactly inverted the
+      other way — it calls the consignment GRN "a memo entry only, no expense recorded" when
+      `INTERNAL_PURCHASE_CONSIGNMENT_GRN` is (+1,−1) and does post.
+      → done: `standard-procurement-workflow.md`, `goods-received-note.md`,
+        `creating-purchase-order.md` and `purchase-invoice-processing.md` rebuilt from source this
+        pass, each with a `sources:` map, the GadgetSphere example and the two receipt-to-bill paths
+        stated as a warning callout. The remaining pages listed above are still live and still wrong.
+
+- [x] F-0422 (2026-09-06) **The sales family attributes stock movement to documents with none, and
+      invents a credit-limit block.** `standard-sales-workflow.md:518-531, 551` says a sales-order
+      status change "Updates available inventory quantities" and tells the reader to "Verify
+      Inventory Deduction"; `INTERNAL_SALES_ORDER` is (0,0). `delivery-order-processing.md:16, 37-46`
+      says the delivery order "triggers invoice finalisation" and that a "Stock Conversion section"
+      on the sales order allocates stock — Stock Conversion is an unrelated inventory applet that
+      converts stock *between items*. `returns-exchanges-workflow.md:327-353` processes a physical
+      goods return as a **credit note**; `INTERNAL_SALES_CREDIT_NOTE` is (0,−1) and moves no stock —
+      the stock-returning document is `INTERNAL_SALES_RETURN` (1,−1), whose applet the page never
+      names. And `credit-sales-workflow.md:228` / `creating-sales-order.md:240` state that "BigLedger's
+      credit-limit check … blocks the order outright": `EntityCreditAvailabilityService` is a
+      read-only query for display, and the only hard block is
+      `GenericDocumentService.disallowBlacklistedCustomer`, which fires solely on a manually-set
+      `BLACKLISTED` status. Exceeding a credit limit blocks nothing.
+      → not yet fixed. These eight sales guides should be rebuilt after `applets/sales-workflow/`
+        is finished, in one pass, from that folder.
+
+- [x] F-0423 (2026-09-06) **The approval remediation of `f25a917f` stopped four folders short.**
+      That commit correctly rewrote about a dozen approval passages to say approvals are optional,
+      cover only PO / PR / SR, and gate nothing. It never reached `guides/roles/` (approval limits,
+      delegation controls, two-signature payments, journal-threshold approvals, credit approval,
+      return approval — `internal-audit.md:47-50, 54, 67, 85, 157, 270`, `finance-manager.md:20, 24,
+      49, 66`, `ecommerce-specialist.md:171`), `user-guide/demo/` (`manufacturing:177` "Click Approve
+      BOM"; `services:218-232, 294, 448-465` timesheet, milestone and expense approval;
+      `operations-manager:32, 92-93, 146, 374, 491` — twelve lines after its own corrected passage),
+      `guides/advanced/` (`industry-specific-workflows.md:982-999, 1387-1391`;
+      `integration-best-practices.md:172, 629, 714`), or `guides/content-guidelines.md:481, 598-599`,
+      whose model guide teaches a purchase order defaulting to "Pending Approval" with "Notification
+      sent to approver". Several pages now carry a correct callout and an incorrect workflow twenty
+      lines apart, which is worse than either alone.
+      → not yet fixed. Worth one sweep across all four folders rather than page by page.
+
+- [x] F-0424 (2026-09-06) **`/applets/supplier-maintenance-applet/` is a broken link in 19 places.**
+      The real page is `/applets/master-data/supplier-applet-1/` and it carries no alias.
+      → done: 11 occurrences repaired in `guides/` and `user-guide/` this pass. Eight remain, all
+        outside this unit's scope: `modules/financial-accounting/_index.md`, `modules/journal.md`,
+        `modules/financial-accounting.md`, `modules/purchasing/_index.md`, `modules/inventory/_index.md`,
+        `modules/manufacturing/_index.md`, `applets/_index.md`, `applets/applet-catalog.md`. Either
+        repair those or add an alias to the supplier page — the alias is probably the better fix
+        given how many module pages reference the old flat path.
+
+- [x] F-0425 (2026-09-06) **Three pricing pages document a three-level model and an applet that do
+      not exist.** The verified `applets/master-data/pricebook-applet.md` documents **two** levels — a
+      Price Book header containing Price Sets — both being menus *inside* the one `PricebookApplet`.
+      There is no Pricing Scheme applet; "Pricing Scheme" is one option of a treatment's Price Source.
+      So `pricing-scheme.md` (376 lines) documents an applet that is not one, and
+      `pricing-scheme.md:51` and `price-set.md:67` send readers to screens that do not exist. Four
+      further contradictions of the same verified page: codes are user-entered, required and unique,
+      not "system generated" (`price-book.md:88-92`, `pricing-scheme.md:85-89`, `price-set.md:88`);
+      **priority is inverted** — the calculator evaluates the *highest* number first, and
+      `price-set.md:93, 448-458` teaches "1 = highest" and builds a whole banding methodology on it;
+      only Active/Inactive statuses exist (`price-book.md:154-155`, `pricing-scheme.md:142` invent
+      Draft and Archived); the Calculation Logic list at `price-book.md:157-163` ("Fixed, Cost-Plus,
+      Market-Based, Competitive, Value-Based") is not the enum. Customers are never assigned to price
+      books — a consuming applet loads exactly one from its own Default Selection — yet
+      `price-book.md:167-221` describes direct, group, geographic and channel assignment with an
+      automatic lookup at sale time. All three pages also close with an unsourced ROI claim
+      (`price-book.md:558`, `pricing-scheme.md:347`, `price-set.md:771`) and `price-set.md:680-722`
+      promises machine learning, IoT, voice-activated pricing and augmented reality.
+      → not yet fixed. One rebuild covering both real levels would replace all three pages.
+
+- [x] F-0426 (2026-09-06) **Every error code on the troubleshooting page is fabricated.**
+      `troubleshooting/_index.md` quotes twelve codes in an `ERR-SYS-####` / `ERR-VAL` / `ERR-TXN` /
+      `ERR-MYS` / `ERR-INT` scheme (L65, 77, 93, 104, 119, 133, 152, 169, 181, 201, 211, plus
+      sub-codes 3002-A…E at L216-220). A grep for those prefixes across
+      `refs/blg-akaun-platform-java` returns **zero hits**; the real scheme is UPPER_SNAKE enum names
+      in `ErrorCodesConstants.java` (5,797 lines), e.g. `ITEM_HDR_OBJECT_CODE_ALREADY_EXIST`. The
+      same page invents a *Finance > Bank Integration* screen at L201-209 with stored bank logins,
+      a Test Connection button and OAuth token refresh; the real Bank Reconciliation applet takes
+      **uploaded statement files** with an import-format picker. It also publishes a named
+      individual's Telegram handle at L369 (see Q-0113) and invents support SLAs at L382-385.
+      → not yet fixed. A troubleshooting page keyed to real error strings would be genuinely
+        valuable — this one is worse than nothing, because a reader searching a real error finds
+        the page and it does not match.
+
+- [x] F-0427 (2026-09-06) **`guides/advanced/performance-optimization.md` tells a SaaS tenant to run
+      destructive DBA statements against a fabricated schema.** 1,487 lines: `ALTER SYSTEM SET
+      autovacuum_*` (L246-248), `DROP TABLE` on partitions (L1217), `COPY … FROM PROGRAM` (L965-967,
+      arbitrary shell execution), `CREATE USER MAPPING … password 'secure_password'` (L1330-1332),
+      `CREATE EXTENSION aws_s3` (L1277). It prescribes **MySQL InnoDB and SQL Server** memory and
+      parallelism settings for a PostgreSQL-only product (L26-67). Every table it names is invented
+      — `sales_transactions`, `customers`, `products`, `general_ledger`, `inventory_movements` —
+      against a real schema of `bl_fi_*` / `bl_inv_*`. Plus invented SLOs (L270-285) and a retention
+      table whose Employment Act figure is wrong (L1103: 12 years; the Act requires 6).
+      No reader has the access to execute any of it, which is the only reason it has not caused harm.
+      → not yet fixed; unpublish candidate, see Q-0111.
+
+- [x] F-0428 (2026-09-06) **`guides/advanced/integration-best-practices.md` asserts bank, payment-gateway
+      and PCI DSS integrations that do not exist.** L44-71 names four real Malaysian banks as
+      integrated APIs ("Maybank2u Business API", "PB Enterprise API", "CIMB Clicks Business", "HLB
+      Connect Enterprise"); L282-330 names seven real payment gateways; L410-467 is a PCI DSS
+      conformance narrative ending "**Implementation in BigLedger:** Tokenization … AES-256 …
+      Hardware security modules"; L917 claims GDPR compliance; L543-801 is a 260-line EDI
+      (X12/EDIFACT/AS2/VAN) implementation guide for a product with no EDI applet; L822-834 asserts
+      OAuth 2.0, JWT and certificate auth for an API whose authentication page was unpublished
+      today. Naming real banks also breaches the CLAUDE.md running-example rule.
+      → not yet fixed; unpublish candidate, see Q-0111. Same certification class as Q-0006.
+
+- [x] F-0429 (2026-09-06) **`getting-started/platform-overview.md` invents the company.** "Over 5,000
+      Malaysian SMEs" (L26) against 83 live tenants; an industry-adoption split (L192) with no source;
+      "500+ Pre-built Applets" (L79) against ~200 ACTIVE registry rows; a named fictional customer
+      presented as a success story with fabricated metrics (L150 "Syarikat Maju Jaya … 75% … 1,000+
+      invoices daily with 99% accuracy"); "99.9% uptime" and "ISO 27001 certified data centers"
+      (L67, L369) — the Q-0006 class; published pricing (L270-286: RM299/mo, RM2,999/mo, one-time
+      licence) and **on-premise / air-gapped / self-hosted deployment** (L280-287), which contradicts
+      the cloud-native positioning in CLAUDE.md; "GPT-4 and Claude" and "voice assistants for
+      hands-free operation" (L249-260); "Shop Floor Control with IoT" and "Predictive Maintenance"
+      (L198-200) — banned invented roadmap features.
+      → not yet fixed. This is the page a new reader lands on, and almost every number on it is made up.
+
+- [x] F-0430 (2026-09-06) **`getting-started/navigation.md` documents the wiki's own menu as the
+      product's.** L186-191 lists "Modules / Applets / E-Invoice / Business Operations / User Guide" —
+      that is wiki.bigledger.com's top nav, not anything inside BigLedger. Everything built on it is
+      therefore fiction: eight keyboard shortcuts (L213-225), drag-and-drop dashboard widgets
+      (L201-205), offline mode / PWA / swipe gestures (L227-233), pin-to-favourites (L237), a support
+      portal and community forum (L247-248). 80 lines, ~90% invented, and it is the page that teaches
+      a new user how to move around the product.
+      → not yet fixed.
+
+- [x] F-0431 (2026-09-06) **`user-guide/reports-analytics/_index.md` describes an analytics product
+      that does not ship.** No dashboard applet, dashboard builder, widget library or report builder
+      appears in the 209-row ACTIVE registry. Invented wholesale: dashboard creation and widgets
+      (L62-121), the Report Builder (L123-284), scheduled distribution and alerting (L329-467), a
+      mobile app (L422-436), an ML/predictive layer (L521-538), BI connectors to Tableau/Power BI/
+      Snowflake/Redshift/BigQuery (L456-460), and GDPR + SOX compliance features including a
+      "Right to be Forgotten" capability (L606-610). Its own sibling
+      `reports-analytics-v2/_index.md` is an honest catalogue of the same territory whose eight rows
+      all map to real report applets — that page is the model, and this one should be replaced by it.
+      → not yet fixed.
+
+- [x] F-0432 (2026-09-06) **`user-guide/basic-operations/` contradicts the verified item applet on
+      five points of fact, and one page invents a document-management product.** Against
+      `applets/master-data/doc-item-maintenance-applet.md`: item code is **not** system-generated in
+      the default create mode (`creating-an-item.md:39`, `item-maintenance.md:51`,
+      `editing-an-item.md:51`); item type is **immutable after save**, not editable
+      (`item-maintenance.md:54`, `editing-an-item.md:54`); Base UOM **is** editable, not locked
+      (`creating-an-item.md:58` and two others); "Stock Balance Tab", "Sales Order Tab", "Stock
+      Allocation Tab", "Create Single Tab" and "Create Group Item Tab" are not tabs
+      (`item-maintenance.md:123, 131, 177, 191`, `editing-an-item.md:118`); version history and
+      rollback do not exist (`item-maintenance.md:148-151`). `document-item-types.md:17` builds a
+      whole page on "five document item types" — the dropdown offers **20**, of which the page
+      documents five, and two of the five (`PACKAGE`, commented out and marked out-dated; `KIT`,
+      absent) cannot be selected at all. And `document-item-maintenance.md` (709 lines) describes an
+      enterprise DMS BigLedger does not have: collaborative rich-text editing, digital signatures
+      with eIDAS / E-SIGN / biometrics, HIPAA / SOX / GDPR modules, AES-256, **IoT sensor integration
+      and voice-to-text** (L619-631) — banned roadmap features — closing with an ROI claim.
+      → not yet fixed. Note all five pages are `bookHidden` and unreachable from navigation, but
+        live, indexed, and the top search result for their titles.
+
+- [x] F-0433 (2026-09-06) **`user-guide/administration/team.md` is written to house standard and is
+      still wrong about the screen.** Voice, GadgetSphere, permission codes and target scoping are all
+      correct — but the Tenant Admin sidebar has **no Team menu** (L47); the real screen is
+      *Settings > Server Side Permissions > Team Permission*, which the verified applet page also
+      omits. Team Email / Team Visibility / Team Joining (L53-55) do not exist and are copied verbatim
+      from the legacy `group-listing.md:57-59`. Team Code is read-only and system-set, not a
+      convention you choose (L52, L59-61). The tabs are Details / Members / Role, not "Edit Members" /
+      "Edit general info" / "Edit Permission" (L67, 75, 81), and a team is granted **roles**, not
+      permissions. There is no Import Users tab (L73) — members are added one at a time by email
+      search. The menu is *Tenant Roles*, not "Roles & Permissions" (L81).
+      → not yet fixed. Small, high-value fix: one pass over the screen against
+        `refs/blg-applet-core-akaun-platform-tenant-admin-applet`.
+
+- [x] F-0434 (2026-09-06) **`user-guide/daily-tasks/_index.md` ships three literal `**TODO:**`
+      markers** (L29, L41, L53) and an invented "Performance Metrics" SLA table (L118-123).
+      `administration/_index.md` ships three more TODO blocks (L105, L138, L153) and its own metric
+      table (L169-175: ">99.5% uptime", ">90% user satisfaction", "0 security incidents/month").
+      `administration/group-listing.md` ships a "Development Timeline" (L119-123) on a live page —
+      and documents a Group Maintenance applet that is not in the ACTIVE registry (see Q-0009).
+      → not yet fixed. The TODO markers are a two-minute fix and should not wait for the rest.
+
+- [x] F-0435 (2026-09-06) **The three `-v2` section indexes violate the Hextra no-inline-HTML rule.**
+      `administration-v2/`, `basic-operations-v2/` and `getting-started-v2/` each carry ~110 lines of
+      inline `<style>`, `<script>` and `<div>` around a YouTube lesson list. They are **not**
+      duplicates of their non-v2 siblings — no prose overlap at all — but the pairing creates a worse
+      structural problem: `user-guide-v2/_index.md` is the live hub and links only to the `-v2`
+      sections, `user-guide/_index.md:10` carries a raw `<script>` JS redirect to it, and the three
+      non-v2 sections are `bookHidden` with a cascade, so **15 non-v2 pages are live and indexed but
+      unreachable from navigation**. Back-links are inconsistent too (`administration-v2` points at
+      `/user-guide-v2/`, the other two at `/user-guide/`, which redirects away).
+      → not yet fixed; this is a structure question, opened as Q-0114.
+
+- [x] F-0436 (2026-09-06) **`user-guide/daily-tasks-v2/_index.md` plays the wrong video for four of
+      its 58 lessons.** `7Ll9JAhhmx4` is used for three different titles (L514, L522, L523) and
+      `BlC3GtLoHzo` for three more (L515, L519, L524). Otherwise the page is sound — it and
+      `reports-analytics-v2/_index.md` are the only two pages in all 110 that make no unverifiable
+      claim.
+      → not yet fixed. Needs someone with the playlist to hand.
+
+- [x] F-0437 (2026-09-06) **Malaysian tax and statutory facts are wrong across `guides/advanced/`.**
+      `accounting-workflows.md:824` posts "GST Input Tax" — GST was abolished in 2018;
+      `:911-917` gives Schedule 3 capital-allowance rates that are all wrong (plant & machinery 14%
+      not 10%; office equipment 10% not 20%; non-industrial buildings get no allowance);
+      `:922-933` books a deferred tax asset where a liability arises. `compliance-audit.md:486-493`
+      invents "Form SST-02A / SST-02B" and calls the return monthly (it is SST-02, bi-monthly);
+      `:501` invents late-filing penalties; `:438` invents an e-Filing turnover threshold (mandatory
+      for all companies since YA2018); `:549-555` gives PCB bands that match no actual schedule;
+      `:560-573` presents withholding-tax rates under a "**Residents**" heading when ss.107A/109/109B
+      apply to non-residents; `:748-749` gets an MFRS 16 annuity wrong by RM 1,182 and capitalises a
+      refundable security deposit into the right-of-use asset. `financial-reporting-excellence.md:44`
+      says private companies must file "30 days after AGM" — private companies need not hold AGMs
+      under the Companies Act 2016. `roles/finance-manager.md:33` invents an "SST-03 form" and calls
+      filing monthly; `:38` cites Forms 24, 44 and 49, abolished in 2017.
+      `roles/merchandising-manager.md:54` refers to "the upcoming GST changes in Malaysia".
+      → not yet fixed. A Malaysian reader will spot these immediately and stop trusting the site.
+
+### /applets/sales-workflow/internal-consignment-billing-applet/
+- [x] F-0447 (2026-09-06) **The page had the document pointing the wrong way round.** It said the
+      applet "converts Goods Issue Notes into final sales invoices", that finalising "moves the asset
+      from Consignment Out to Revenue", and that VOID removes "the AR entry". The applet's document
+      type is `INTERNAL_PURCHASE_CONSIGNMENT_INVOICE` (short code `CSGINV`) — a **purchase** document
+      with amount signum **−1**; its internal route is `internal-purchase-invoice`, its entity picker
+      is titled *Select Supplier*, and its file import posts to the internal **purchase** invoice
+      endpoint. It is the consignor's bill to you, and it posts Dr Purchase / Dr Input Tax, Cr
+      Creditor, plus Dr `CONSIGNMENT_LIABILITY` / Cr `CONSIGNMENT_STOCK`. No debtor, no sales, no
+      output tax. It also **moves no stock**: the backend DCO forces every line's quantity signum to
+      0 (`InternalPurchaseConsignmentInvoiceDataConsistencyObject:16`,
+      `GenericDocumentDataConsistencyObject:1215-1219`) even though the applet sends 1. The page also
+      built a "GIN-to-Invoice Link" feature and three FAQ answers on the **Issue Link** tab, which is
+      a mock grid with one hard-coded row and no service injected.
+      → source: content/en/applets/sales-workflow/internal-consignment-billing-applet.md
+      → done: rebuilt from source (704 → ~300 lines) with a per-section `sources:` map, the standard
+        posting-proof block, the real menu and tab inventory, the 52-of-103 settings intersection and
+        troubleshooting drawn from the actual validators.
+      → product: P-0131, P-0132, P-0133, P-0134
+      → open: the page is filed under `sales-workflow/` but documents a purchase-side document —
+        see Q-0125.
+
+### /applets/sales-workflow/internal-sales-inquiry-applet/
+- [x] F-0448 (2026-09-06) Four wrong claims on an otherwise plausible page. (1) "the usual options
+      are to **VOID** and recreate the inquiry" — there is no VOID on this document; the applet
+      contains no void action and no `'VOID'` string. (2) "**Export** (PDF, CSV, DOCX, or ZIP,
+      depending on configuration)" — only PDF is implemented; the other three buttons are
+      hard-disabled in the template. (3) Convert "treats the inquiry as completed in that pathway" —
+      it POSTs a new `INTERNAL_RECEIPT_VOUCHER` built from the header and the **Collection**
+      (settlement) lines, not the item lines, and then **DELETEs the inquiry**. (4) "an activity or
+      history tab showing status transitions" — there is no such tab. Also documented as a feature:
+      the line-level **Issue Link** tab, which is a mock (see P-0132).
+      → source: content/en/applets/sales-workflow/internal-sales-inquiry-applet.md
+      → done: rebuilt from source (521 → ~290 lines). `INTERNAL_SALES_INQUIRY` is 0/0
+        (`ServerDocTypes.java:47`) with no journal handler; added the 31-of-86 settings intersection,
+        the panel-versus-tab orientation behaviour the old page did not mention, the seeded-permission
+        comparison (23 seeded, 23 checked, one mismatch each way) and the real field list.
+      → product: P-0132, P-0133, P-0134
+
+### /applets/sales-workflow/internal-sales-refund-note-applet/
+- [x] F-0449 (2026-09-06) The page was mostly directionally right — unusually for this folder — but
+      overstated three things and missed two that matter. Overstated: the "**Strict PNS vs. STL
+      Balancing Rule**" is a **client-side** check in `onFinal()` that shows a toast and sends
+      nothing (an API or file-import refund note is not subject to it); "**Over-Refund Prevention**"
+      is the opt-in `WARN_EXCESS_RETURN_QUANTITY` setting on the Search screens, not a built-in
+      safeguard; and "**Native Intercompany Support**" is a two-tab queue listing (UNPROCESSED /
+      PROCESSED), not routing the applet performs. Missed: **when e-Invoice is enabled the VOID
+      button disappears entirely** (`showVoid()` requires `!eInvoiceEnabled`) and cancellation must go
+      through the IRB Cancellation sub-tab; and the applet checks **45** client-side permission codes
+      of which exactly **one** is seeded.
+      → source: content/en/applets/sales-workflow/internal-sales-refund-note-applet.md
+      → done: rebuilt from the **v3** repo (the bundle the registry actually serves) with the
+        posting-proof block, the 101-of-165 settings intersection, the fifteen-tab edit inventory and
+        the four E-Invoice sub-tabs.
+      → product: P-0133, P-0134, P-0135
+
+### /applets/sales-workflow/daily-cashier-report-applet/
+- [x] F-0450 (2026-09-06) Not invented, but written as a user guide rather than a reference card, and
+      **illustrated with four screenshots of a different applet**: all of
+      `/images/pos-general-applet/{cashier collection report, report desaign, Z REPORT, EXPORT TO PDF,
+      PRINT Z REPORT}.png` show the **POS General** left rail, and the POS Z Report has a Device
+      filter and *Show Settlement Methods By User* / *Show Category Details* options that the Daily
+      Cashier Reports Z Report does not have. The page also carried an inline-styled `<div>` YouTube
+      embed, against the Hextra rule in CLAUDE.md, and said nothing about what the Z Report actually
+      counts.
+      → source: content/en/applets/sales-workflow/daily-cashier-report-applet.md
+      → done: rebuilt as a reference page. The Z Report is restricted to `INTERNAL_SALES_CASHBILL`,
+        `INTERNAL_SALES_INVOICE`, `INTERNAL_SALES_RETURN` and `INTERNAL_SALES_REFUND_NOTE`
+        (`GenericDocumentUow.java:2587`); documented the five working settings, the two seeded
+        permissions, the branch **target** filters that explain "empty drop-down vs not authorised",
+        and the third report screen that cannot be reached. Wrong-applet screenshots removed; video
+        kept as a plain link.
+      → product: P-0136, P-0137
+      → note: this applet has no screenshots of its own. Worth capturing two.
+
+### /applets/sales-workflow/sales-commission-applet/
+- [x] F-0451 (2026-09-06) The mechanism was invented around a real feature. The page promised a
+      "**Zero Double-Payout Guarantee**", "**Cycle Period Locking**" ("once a cycle is closed,
+      historical figures are permanently locked"), "converts approved commission reports directly
+      into actionable Internal Payment Vouchers with **1-click**" and calculation "directly from
+      finalized Sales Invoices and official cash receipts". What is actually there: a cycle is only a
+      start date and an end date with a DELETE button — there is no close, no lock; the processor is
+      **three buttons that must be pressed in order** (Txn Lines Commission → Aggregate Commission →
+      Commission Report); the payout is a hand-created Internal Payment Voucher whose *Payout For*
+      tab you attach reports to, not a one-click conversion. The double-payment guard is real but is
+      a queue flag, not a cycle lock: the candidate query takes only `INTERNAL_SALES_ORDER`,
+      `INTERNAL_SALES_INVOICE` and `INTERNAL_SALES_CASHBILL` at `posting_status = 'FINAL'` where
+      `posting_sales_commission_queue <> 'POSTED'` (`GenericDocumentUow.java:2558-2588`), and stamps
+      each processed document POSTED.
+      → source: content/en/applets/sales-workflow/sales-commission-applet.md
+      → done: rebuilt from source and from `CommissionPostingServices`. Documented the exact candidate
+        query, the three stages, the server-side permission gates (there are no client-side ones), the
+        report Line Item tab as the dispute-resolution path, and the fact that only three of the
+        applet's 35 declared settings do anything.
+      → product: P-0134, P-0138, P-0139
+
+### wiki assets — screenshots (continued from F-0409)
+- [ ] F-0452 (2026-09-06) Four more sales-workflow screenshots needing a quarantine decision, found
+      by eye this pass. Not deleted — not this unit's call.
+      • /images/internal-sales-inquiry-applet/sales-main-details-tab.png and
+        /images/internal-sales-inquiry-applet/sales-account-tab.png — the listing behind the panel
+        shows branches `ONE LIVING SS2`, `OneLiving Branch` and `1 UTAMA` (a real Malaysian shopping
+        centre) and customer names including a real person's full name and two given names. Same
+        `ONE LIVING` brand already flagged on the GRN page in F-0409. **Both are now unreferenced** —
+        the rebuilt page uses only `sales-line-items-tab.png`, which is clean.
+      • /images/sales-commission-applet/payout-processing-ui.png — Branch reads `2ND SKIN | 2NDSKIN`
+        (reads as a real customer brand) and **Created By** shows a real person's full name. **Now
+        unreferenced** — the rebuilt page uses the other three commission screenshots.
+      • /images/pos-general-applet/report desaign.png — a settlement grid with sales-agent given
+        names in a `TESTING` tenant. Weak on its own; listed for completeness. Still referenced by
+        the POS General page, which is not this unit's lane.
+      → note: /images/internal-consignment-billing-applet-applet/*.png (14 files) were all checked
+        and are STAGING_TENANT captures with synthetic data; the `Select Supplier` grid on
+        `consignment-billing-account-tab.png` and the KO grid on `consignment-billing-ko-for-tab.png`
+        carry obviously-fake names (`John Cena`, `testaddd`, `customersupplier`) and are safe.
+      → note: the top-bar avatar photograph appears in every one of them; that is Q-0100, not a
+        per-image decision.

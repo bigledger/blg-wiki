@@ -5,7 +5,7 @@ applet_repo: "blg-applet-wavelet-internal-jobsheet-applet"
 description: "Reference for the Job Sheet (Internal) applet: the service record for a job — who, which unit, which technician, which parts and labour — with payment, contra and workflow status. It moves no stock and posts no journal."
 page_type: applet
 modules: [sales-crm, financial-accounting]
-related_applets: [internal-sales-invoice-applet, internal-sales-invoice-no-stock-out-applet, internal-receipt-voucher-applet, car-workshop-applet, workflow-design-applet, customer-applet, employee-applet, inv-item-maintenance-applet, organisation-applet]
+related_applets: [internal-sales-inquiry-applet, internal-sales-invoice-applet, internal-sales-invoice-no-stock-out-applet, internal-receipt-voucher-applet, car-workshop-applet, workflow-design-applet, customer-applet, employee-applet, inv-item-maintenance-applet, organisation-applet]
 guides: []
 sources:
   configuration:

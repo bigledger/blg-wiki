@@ -4,7 +4,7 @@ description: "Reference for the POS General applet: the retail checkout counter 
 applet_code: "posGeneral"
 applet_repo: "blg-applet-wavelet-pos-general-applet"
 modules: [pos, inventory, financial-accounting, membership, e-invoice]
-related_applets: [daily-cashier-report-applet, internal-sales-return-applet, internal-sales-invoice-applet, non-stock-and-trade-in-applet, membership-admin-applet, membership-points-currency, voucher-management-applet, customer-applet, inv-item-maintenance-applet, doc-item-maintenance-applet, pricebook-applet, cashbook-applet, chart-of-account-applet, tax-configuration-applet, organisation-applet, stock-balance-applet, my-e-invoice-portal-applet, bank-reconciliation-applet, sales-report-applet, internal-receipt-voucher-applet]
+related_applets: [daily-cashier-report-applet, internal-sales-refund-note-applet, sales-commission-applet, internal-sales-return-applet, internal-sales-invoice-applet, non-stock-and-trade-in-applet, membership-admin-applet, membership-points-currency, voucher-management-applet, customer-applet, inv-item-maintenance-applet, doc-item-maintenance-applet, pricebook-applet, cashbook-applet, chart-of-account-applet, tax-configuration-applet, organisation-applet, stock-balance-applet, my-e-invoice-portal-applet, bank-reconciliation-applet, sales-report-applet, internal-receipt-voucher-applet]
 guides: [/user-guide/daily-tasks-v2/]
 sources:
   - blg-applet-wavelet-pos-general-applet/micro-fe/projects/wavelet-erp/applets/pos-general-applet/src/app/app.routing.ts

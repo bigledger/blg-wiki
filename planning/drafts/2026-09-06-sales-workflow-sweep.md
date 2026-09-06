@@ -224,3 +224,125 @@ Three things this run would have saved time knowing:
 - **The plain GIN/GRN family is 0/0 on both sides** (extends METHOD §14 and §22 from Purchase GIN to
   Sales GIN, Sales GRN and Purchase GIN alike). The stock-moving variants are separate
   `*_STOCK_IN` / `*_STOCK_OUT` document types.
+
+---
+
+# Pass 3 — five more rebuilds (second unit, 2026-09-06)
+
+Continued from the queue at the end of pass 2, in descending order of reader risk. Five pages
+rebuilt from source; nothing unpublished (well inside the ADR-0008 guard rail).
+
+| page | before | after | what was false |
+|---|---:|---:|---|
+| `internal-consignment-billing-applet` | 704 | 300 | **Direction inverted.** Documented as a sales/AR document; it is a purchase/AP document |
+| `internal-sales-inquiry-applet` | 521 | 290 | VOID that does not exist; four export formats of which three are disabled; Convert described as "completing" a document it deletes; an invented history tab |
+| `internal-sales-refund-note-applet` | 172 | 300 | Three overstated guarantees; missed that e-Invoice removes VOID entirely; read from the wrong repo |
+| `daily-cashier-report-applet` | 85 | 200 | Screenshots of a different applet; user-guide voice on a reference page; nothing about what the Z Report counts |
+| `sales-commission-applet` | 218 | 250 | "Cycle period locking", "1-click conversion" and a "zero double-payout guarantee" that is real but is a queue flag, not a lock |
+
+## The tier-1 finding of this pass
+
+**`internal-consignment-billing-applet` documented the document backwards.** The page said the applet
+"converts Goods Issue Notes into final sales invoices", that finalising "moves the asset from
+Consignment Out to Revenue", and that VOID removes "the AR entry".
+
+The applet's server document type is `INTERNAL_PURCHASE_CONSIGNMENT_INVOICE`, short code `CSGINV`,
+**amount signum −1**. Its internal route is `internal-purchase-invoice`. Its entity picker is
+titled *Select Supplier*. Its file import posts to the internal **purchase** invoice endpoint. Its
+journal is Dr Purchase / Dr Input Tax, Cr Creditor, plus Dr `CONSIGNMENT_LIABILITY` /
+Cr `CONSIGNMENT_STOCK`. There is no debtor line, no sales line and no output tax anywhere in it.
+
+It is the **consignor's bill to you**: stock arrives on a Consignment GRN and is held as consignment
+stock against a consignment liability; when it sells, this document clears that pair and creates a
+real payable. It also moves no stock — the backend forces every line's quantity signum to 0, even
+though the applet sends 1.
+
+Recorded in `kb/topics/consignment-billing-is-a-purchase-document.md`. The page is still filed under
+`sales-workflow/`; moving it is a structural change, so it is Q-0125 rather than a silent move.
+
+## Two method corrections this pass produced
+
+1. **METHOD §32 needs a caveat.** "Every applet restates its own signums and it agreed with the
+   backend in every case checked" now has two counterexamples, in opposite directions — Consignment
+   Billing (applet says qty 1, DCO says 0) and Sales Refund Note (`ServerDocTypes` says qty 0, DCO
+   says +1). The DCO wins both times, because `fillQuantitySignumAndAmountSignumForLine` **overwrites**
+   rather than fills. Recorded as METHOD §35 and, for the refund note, as P-0135.
+2. **The "consumed" proof should be built from the rendered list, not a prefix regex.** Three keys
+   were missed on the first pass of each applet: keys read by indirection
+   (`appletSettings[panel.expandSetting]`), keys not starting with `HIDE_`/`SHOW_`
+   (`VERTICAL_ORIENTATION`), and a typo'd accessor that is real in two repos
+   (`appletSettinsgMain.HIDE_KO_FOR_TAB`). METHOD §38.
+
+## The pattern that repeats across all five
+
+Two settings defects turned up on almost every applet, and both change how the Configuration section
+has to be worded:
+
+- **`tabMappings` gaps.** `internalConsignmentBillingApplet`, `internalSalesRefundNoteApplet` and
+  `internal_sales_inquiry_applet` are all absent from `FieldConfigurationComponent.getTabValue()`'s
+  map, so between them fifteen tab-hide keys and two menu-hide keys are read at runtime with no
+  control anywhere. Same class as P-0105 (Sales GRN). Now P-0133.
+- **Client-side permissions seeded for nobody.** `bl_applet_client_side_perm_dfn` holds **zero** rows
+  for `internalConsignmentBillingApplet` (43 codes checked), `recurringSalesInvoiceApplet`,
+  `salesContractApplet`, `salesCommissionApplet` and `SalesReportSupplierAccess`, and **one** row for
+  `internalSalesRefundNoteApplet` against 45 checked. Consequence, worth stating on every page: a
+  `HIDE_*` setting is absolute — hide FINAL and nobody can post, with no per-role exception. Now
+  P-0134. (`internal_sales_inquiry_applet` and `dailyCashierReports` are the two that are seeded
+  properly, which is what makes the others diagnosable rather than a platform-wide truth.)
+
+And a third, new: **mock screens shipped in production**. Both Sales Inquiry and Consignment Billing
+carry an **Issue Link** tab fed by one hard-coded row, and behind Sales Inquiry's sits a nine-screen
+Jira-style **Edit Issue** sub-application in which no component makes a single HTTP call. Daily
+Cashier Reports has eight unbound toggles on its settings screen and a third report screen that
+cannot be reached from the menu. Written up as a class in
+`kb/topics/mock-screens-shipped-in-production.md` with a test for each of four shapes.
+
+## Settings coverage measured (four proofs, per applet)
+
+| applet | declared | pass all four | notes |
+|---|---:|---:|---|
+| `internalConsignmentBillingApplet` | 103 | 52 | 19 read with no control, of which 8 are tab-hide keys |
+| `internal_sales_inquiry_applet` | 86 | 31 | `EXPAND_CONTRA` is read but the screen only offers `EXPAND_MAIN_CONTRA` |
+| `internalSalesRefundNoteApplet` | 165 | 101 | the richest settings surface in the folder |
+| `dailyCashierReports` | — | 5 | applet-local screen; 8 of its 13 controls are unbound |
+| `salesCommissionApplet` | 35 | **3** | 32 keys appear only in the model file (P-0138) |
+
+## Screenshots checked by eye
+
+Fourteen consignment-billing images, three sales-inquiry, two refund-note, four commission, five
+POS-General (used by the cashier page). Quarantine candidates recorded as **F-0452**; two of the
+three are now unreferenced because the rebuilt pages do not use them.
+
+## Findings routed this pass
+
+| id | register | what |
+|---|---|---|
+| P-0131 | product | Consignment Billing's KO For advanced search filters on the wrong document type — the grid always empties |
+| P-0132 | product | A mock Jira clone ships in production in two applets (Issue Link → Edit Issue) |
+| P-0133 | product | Two more applets missing from the shared settings screen's `tabMappings` |
+| P-0134 | product | Five applets check client-side permissions seeded for none of them |
+| P-0135 | product | `ServerDocTypes` and the DCO disagree on the sales refund note's quantity signum |
+| P-0136 | product | Daily Cashier Reports ships a third report screen that cannot be reached |
+| P-0137 | product | Eight unbound toggles on the Daily Cashier Reports settings screen |
+| P-0138 | product | 32 of Sales Commission's 35 declared settings are model-only |
+| P-0139 | product | Sales Commission tags printable formats with a misspelled, non-existent document type |
+| Q-0125 | questions | Should the consignment-billing page move to `purchase-workflow/`? |
+| Q-0126 | questions | Four applets point `documentation_url` at Confluence, two at nothing |
+| F-0447…F-0451 | feedback | One item per rebuilt page (all done this pass) |
+| F-0452 | feedback | Four more screenshots needing a quarantine decision (open) |
+
+## Not done — the queue for the next unit
+
+1. `internal-sales-proforma-invoice-applet.md` (294 lines) — ACTIVE, unaudited, **0 inbound links**,
+   and the registry serves the **v1** bundle although a v2 repo exists. Lowest reader risk of the
+   remaining unaudited pages, which is why it was skipped in favour of the commission page.
+2. `sales-report-supplier-access-applet.md` (270 lines) — ACTIVE, unaudited, zero seeded client-side
+   permissions (already confirmed for P-0134), 2 inbound links.
+3. `recurring-sales-invoice-applet.md` (129) and `sales-contract-applet.md` (169) — ACTIVE,
+   unaudited, both serve the **v1** bundle, both with zero seeded permissions.
+4. `internal-delivery-order-applet.md` — still a 12-line stub with 8 inbound links, blocked on
+   Q-0094 (customer-namespaced bundle, no repo).
+5. `car-workshop-applet.md`, `custom-processor-applet.md`, `customer-consignment-applet.md` — not
+   examined by either pass.
+6. F-0408 on `internal-sales-invoice-no-stock-out-applet` is still a one-paragraph fix, still held
+   behind Q-0093.

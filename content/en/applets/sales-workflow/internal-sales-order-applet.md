@@ -4,7 +4,7 @@ description: "Reference for the Sales Order (Internal) applet: order entry, appr
 applet_code: "erp_internal_sales_order_applet_v2"
 applet_repo: "blg-applet-wavelet-internal-sales-order-applet-v2"
 modules: [inventory, ecommerce, crm-digital, financial-accounting]
-related_applets: [internal-sales-quotation-applet, internal-sales-invoice-applet, internal-delivery-order-applet, internal-outbound-delivery-order-applet, internal-packing-order-applet, internal-jobsheet-applet, internal-receipt-voucher-applet, internal-purchase-order-applet, stock-availability-applet, stock-reservation-applet, delivery-installation-applet, customer-applet, pricebook-applet, chart-of-account-applet, cashbook-applet, workflow-design-applet]
+related_applets: [internal-sales-quotation-applet, internal-sales-inquiry-applet, internal-sales-invoice-applet, internal-delivery-order-applet, internal-outbound-delivery-order-applet, internal-packing-order-applet, internal-jobsheet-applet, internal-receipt-voucher-applet, internal-purchase-order-applet, stock-availability-applet, stock-reservation-applet, delivery-installation-applet, customer-applet, pricebook-applet, chart-of-account-applet, cashbook-applet, workflow-design-applet]
 guides: [/guides/sales-guides/standard-sales-workflow/, /guides/sales-guides/partial-delivery-workflow/, /guides/sales-guides/installation-scheduling-workflow/]
 sources:
   - blg-applet-wavelet-internal-sales-order-applet-v2/micro-fe/projects/wavelet-erp/applets/internal-sales-order-applet-v2/src/app/app.routing.ts

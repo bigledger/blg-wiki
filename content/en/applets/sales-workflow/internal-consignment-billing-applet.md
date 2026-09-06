@@ -1,704 +1,440 @@
 ---
 title: "Consignment Billing Applet (Internal)"
+description: "Reference for the Consignment Billing Applet (Internal): the purchase invoice you raise to the consignor once consignment stock has been sold — its screens, the settings that actually render, its fields, the journal it posts (and the stock it does not move), and the failure modes that are in the code."
 applet_code: "internalConsignmentBillingApplet"
 applet_repo: "blg-applet-wavelet-internal-consignment-billing-applet"
-description: "Comprehensive financial system for converting consignment stock issues into final sales invoices and financial settlements"
+page_type: applet
+modules: [purchasing, financial-accounting, inventory]
+related_applets:
+  - internal-consignment-grn-applet
+  - internal-consignment-gin-applet
+  - internal-consignment-purchase-order-applet
+  - internal-consignment-return-applet
+  - internal-consignor-purchase-billing-applet
+  - customer-consignment-applet
+  - internal-purchase-invoice-applet
+  - internal-purchase-return-applet
+  - supplier-applet-1
+  - organisation-applet
+  - chart-of-account-applet
+  - tax-configuration-applet
+  - doc-item-maintenance-applet
+guides: [/guides/purchasing-guides/consignment-purchasing/]
+sources:
+  configuration:
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/settings-container/settings-container.component.ts
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/settings-container/applet-settings.module.ts
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+  fields:
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/consignment-billing-container/consignment-billing-create/consignment-billing-create.component.html
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/consignment-billing-container/consignment-billing-create/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/consignment-billing-container/consignment-billing-create/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/consignment-billing-container/consignment-billing-edit/consignment-billing-edit.component.html
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/consignment-billing-container/consignment-billing-listing/consignment-billing-listing.component.ts
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/consignment-billing-container/consignment-billing-edit/line-item-edit/line-item-edit.component.html
+  lifecycle:
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/models/constants/applet-constants.ts
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/consignment-billing-container/consignment-billing-create/line-item-add/line-item-add.component.ts
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/consignment-billing-container/consignment-billing-edit/consignment-billing-edit.component.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalPurchaseConsignmentInvoiceDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/GenericDocumentDataConsistencyObject.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/GenericDocServerDocTypeEnum.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/ServerDocTypes.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+  troubleshooting:
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/consignment-billing-container/consignment-billing-create/import-knock-off/knock-off-grn/knock-off-grn.component.ts
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/consignment-billing-container/consignment-billing-edit/line-item-edit/line-item-edit.component.ts
+    - blg-applet-wavelet-internal-consignment-billing-applet/micro-fe/projects/wavelet-erp/applets/internal-consignment-billing-applet/src/app/components/consignment-billing-container/consignment-billing-create/line-item-add/issue-link/issue-link-listing/issue-link-listing.component.ts
 tags:
-- sales-workflow
+- consignment
 - consignment-billing
-- order-fulfillment
-- finance
-- accounts-receivable
+- purchase-invoice
+- accounts-payable
 weight: 50
+date: 2026-05-28
+lastmod: 2026-09-06
+draft: false
 ---
+
+## Overview
+
+The Consignment Billing Applet (Internal) raises the **purchase invoice you owe the consignor** once
+consignment stock has been sold. Consignment stock arrives on a
+[Consignment GRN](/applets/inventory-workflow/internal-consignment-grn-applet/): it sits in your
+location but the consignor still owns it, recorded as consignment stock against a consignment
+liability. When it sells, ownership passes to you and the consignor bills you. This applet is where
+that bill is entered — it turns the consignment liability into a real amount owed to a supplier and
+turns the consignment stock into a purchase.
+
+Server document type `INTERNAL_PURCHASE_CONSIGNMENT_INVOICE`, short code `CSGINV`. The counterparty
+is a **supplier** (the applet's own entity picker is titled *Select Supplier*), the internal route
+is `internal-purchase-invoice`, and the file-import screen posts to the internal purchase invoice
+import endpoint. It is a purchase-side document in every respect.
 
 {{< callout type="warning" >}}
-**Work in Progress: This documentation is currently pending review**
+**This document moves no stock, and it does not create a sale, revenue or a receivable.** Its
+quantity signum is forced to **0** by the backend and its amount signum is **−1** — the purchase
+direction. The journal it posts debits purchase and input-tax accounts, credits the supplier, and
+then debits Consignment Liability against a credit to Consignment Stock. Nothing is posted to a
+debtor, to sales, or to output tax, and no inventory transaction line is written. See
+[Lifecycle and posting](#lifecycle-and-posting).
 {{< /callout >}}
 
-## Purpose and Overview
+## Where it fits
 
-{{< callout type="tip" >}}
-**TL;DR — Not an accountant? Read this first.**
-
-**What is Consignment?** Think of it like a **vending machine that you own and place at someone else's location**. The machine is stocked with your products. The other party uses whatever they need from it. At the end of the month, you check what was taken and charge them only for that — nothing more. What they didn't take stays in the machine, ready for next month.
-
-That arrangement is called **consignment**. Your stock sits at their location, still owned by you, until they actually take and use it. They don't pay upfront. They don't pay for what they don't use. You only invoice them for what was consumed.
-
-This applet is the tool that generates that end-of-month invoice. It looks at what was physically sent out, matches it against what was consumed, and produces the formal charge. The remaining stock stays on record for the next billing cycle.
-
-Without this applet, that billing step would be manual — spreadsheets, phone calls, and a high chance of billing the wrong quantity or missing a batch entirely.
-{{< /callout >}}
-
-**Where this applet fits in one line per step:**
-
-| Step | Applet | What it does |
-|------|--------|-------------|
-| 1 | Consignment GRN | Supplier delivers — you sign for it and record it coming in |
-| 2 | Consignment GIN | You send the stock out from your warehouse to the consignee |
-| 3 | Customer Consignment | You track what's at the consignee's location, manage returns |
-| 4 | **Consignment Billing** ← this applet | Consignee consumed some stock — you generate the invoice for it like a report |
-
-The **Internal Consignment Billing Applet** is a specialized financial tool designed to manage the process of invoicing goods that have been previously issued on consignment. Once the customer has consumed some of that stock, this is where you record what was used and generate the invoice for it — the billing report for what was taken.
-
-This applet converts Goods Issue Notes (GINs) — the records of stock that was physically sent out — into final sales invoices once the goods are confirmed as used or sold by the consignee. This ensures accurate financial recognition and keeps inventory records in sync with revenue.
-
-{{< callout type="info" >}}
-**Core Concept**: A **Consignment Billing** record is the financial finalization of a previous physical stock movement, moving the asset from "Consignment Out" to "Revenue" within the organization's ERP.
-{{< /callout >}}
-
----
-
-## Key Features Overview
-
-### Who Benefits from This Applet?
-
-**Sales Representatives & Account Managers:**
-- Precise tracking of current consignment sales performance
-- Accurate calculation of commissions and incentives based on finalized billing
-- Visibility into which client-held stock is ready for invoicing
-- Reduced friction in reconciling monthly sales reports from consignees
-
-**Finance & Accounts Receivable Managers:**
-- Automated conversion of physical GIN records into financial invoice documents
-- Reliable aging and AR tracking for long-term consignment partners
-- Improved month-end consolidation of inter-company or external consignment revenue
-- Reduced manual effort through template-based and bulk billing tools
-
-**Stock Controllers & Auditors:**
-- Seamless visibility into the path from stock issue to final sale
-- Complete audit trails of every consignment billing transaction
-- Verification that billed quantities match previously issued consignment notes
-- Prevention of duplicate billing or orphaned consignment stock records
-
-### What Problems Does This Solve?
-
-**The Consignment-to-Cash Gap Problem:**
-
-Managing stock held by third parties or internal branches through consignment involves significant reconciliation challenges:
-- Difficulty in tracking which specific physical issues (GINs) have been finalized as sales
-- Discrepancies between physical consumption reports and final system invoicing
-- Manual errors or delays in applying the correct contract price to consignment sales
-- Lack of centralized visibility into the total outstanding consignment value
-- Complex tax and currency conversion issues at the point of billing
-
-**The Consignment Billing Solution:**
-
-- **Direct GIN Mapping Engine** - Instant conversion of one or multiple consignment issues into a single invoice
-- **Consumption-Based Billing** - Precise control over the volume of consignment stock being billed per cycle
-- **Bulk Import Capabilities** - Efficiently process high-volume consignment cycles using standardized CSV templates
-- **Integrated Audit Logic** - Every invoice is tied back to its original physical movement for complete traceability
-- **Real-Time Financial Sync** - Automatically updates revenue, tax, and AR accounts upon document finalization
-
----
-
-## Key Features
-
-{{< cards >}}
-  {{< card title="Billing Conversion" subtitle="Directly convert consignment issues into final sales invoices" link="#consignment-billing" >}}
-  {{< card title="GIN-to-Invoice Link" subtitle="Maintain complete traceability to original stock movements" link="#issue-link-sub-tab" >}}
-  {{< card title="Bulk File Import" subtitle="Upload large consignment billing cycles via CSV templates" link="#file-import-menu" >}}
-  {{< card title="Financial Rules" subtitle="Automated tax and pricing application per billing cycle" link="#arap-tab" >}}
-  {{< card title="Audit & Reporting" subtitle="Detailed history of consignment finalizations and settlements" link="#tracedocument-tab" >}}
-  {{< card title="Permission Control" subtitle="Role and user-level access management per document action" link="#permission-management" >}}
-{{< /cards >}}
-
----
-
-## Key Concepts
-
-### The Consignment Invoicing Framework
-
-To manage the strategic transition from physical asset to revenue, the applet follows a structured logic:
-
-| Stage | Action | Impact |
-|-------|--------|--------|
-| **Consignment GIN** | Physical stock issued to consignee. | Stock moves to "Transit/Consignment" location. |
-| **Billing Cycle** | Consumption report received from consignee. | **Consignment Billing Applet** used to create invoice. |
-| **Final Invoice** | Transaction finalized. | **Revenue recorded**, AR updated, Stock finalized. |
-
-{{< callout type="tip" >}}
-**Real-World Example**: A distributor issues RM 5,000 worth of parts to a service sub-contractor. Using this applet at the end of the month, they select the original GIN, tick the items the contractor has used, and the system automatically generates an invoice for the specific consumed amount while keeping the remaining stock in the consignment account.
-{{< /callout >}}
-
-### From Stock to Revenue
-
-The system facilitates the financial culmination of an order:
-
-```
-Physical Supply Chain
-│
-├── Inventory Out ──→ Consignment Goods Issue Note (GIN)
-│   │
-│   └── Consignment Billing ──→ Financial Recognition & Invoicing
-│       │
-│       └── Settlement ──→ Payment received from Consignee
-```
-
----
-
-## Accounting Significance & Inter-Applet Flow
-
-Understanding where this applet sits in the broader system is essential before using it.
-
-### Document Chain
-
-```
-Internal Purchase Order Applet (purchase-workflow)
-└── Purchase Order — formal order raised to supplier for consignment stock
-        │
-        ▼
-Consignment GRN Applet (Internal)
-└── Goods Received Note — stock received into your warehouse from supplier
-        │
-        ▼
-Consignment GIN Applet (Internal)
-└── Goods Issue Note (GIN) — stock issued out from your warehouse to consignee
-        │
-        ▼
-Customer Consignment Applet
-└── Transfer Out — stock tracked at the consignee's location
-└── Transfer Receive — unsold stock returned to your warehouse
-        │
-        ▼
-Internal Consignment Billing Applet  ← YOU ARE HERE
-└── Consignment Billing Invoice — financial recognition of consumed stock
-        │
-        ├── AR Applet ──────── open receivable created against the consignee
-        ├── GL / Journal ───── revenue and COGS entries posted
-        ├── Tax Applet ─────── SST/VAT/GST computed and posted
-        └── Cashbook / Payment — settlement recorded when consignee pays
-```
-
-{{< callout type="info" >}}
-**Related Applets:**
-- [Internal Purchase Order Applet](/applets/purchase-workflow/internal-purchase-order-applet) — the furthest upstream step. A Purchase Order is raised to the supplier before any stock arrives. There is no dedicated consignment PO applet — consignment stock procurement goes through the standard purchase order workflow.
-- [Consignment GRN Applet (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet) — records stock being **received into your warehouse** from the supplier against the PO. Without a GRN, there is no stock to issue.
-- [Consignment GIN Applet (Internal)](/applets/inventory-workflow/internal-consignment-gin-applet) — records stock being **issued out from your warehouse** to the consignee. The GIN is the internal record this billing applet links back to when generating invoices.
-- [Customer Consignment Applet](/applets/sales-workflow/customer-consignment-applet) — tracks the stock **at the consignee's location**, manages returns, and monitors what has been consumed vs what remains.
-{{< /callout >}}
-
-### Customer Consignment Applet vs Internal Consignment Billing Applet
-
-These two applets are often confused because they both deal with consignment. The simplest way to think about it:
-
-- **Customer Consignment Applet** — handles the **customer's side**. Tracks the stock that is sitting at their location, manages sending it out and getting it back. It's about knowing what the customer has.
-- **Internal Consignment Billing Applet** — handles the **billing report**. Once the customer has used some of that stock, this applet is where you record what was consumed and generate the invoice for it. It's about charging for what was used.
-
-The key distinction is **stock management vs billing**.
-
-| | Customer Consignment Applet | Internal Consignment Billing Applet |
+| | Document | What it does |
 |---|---|---|
-| **What it does** | Tracks stock at the customer's location | Generates the invoice for what the customer consumed |
-| **Primary user** | Warehouse / logistics team | Finance / accounts receivable team |
-| **Output document** | Transfer Out, Transfer Receive | Sales Invoice |
-| **Financial impact** | None — no charges, no revenue posted | Full financial posting — revenue, AR, tax, COGS |
-| **When to use** | When sending stock out or getting it back | When the customer reports consumption and you need to bill them |
-| **Triggers** | Manual dispatch or scheduled transfer | End of billing cycle, consumption report received |
-| **Links to** | Inventory / GIN records | AR, GL, Tax, Cashbook |
+| Upstream | [Consignment GRN (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) | Brings the consignor's stock into your location (quantity +1) and records Consignment Stock / Consignment Liability. Its open lines are what this applet knocks off. |
+| Upstream (optional, per line) | [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/), [Purchase Requisition](/applets/purchase-workflow/internal-purchase-requisition-applet/), Purchase GRN, [Outbound Delivery Order](/applets/sales-workflow/internal-outbound-delivery-order-applet/) | Line-level knock-off tabs, each shown only when the company has enabled that document flow. |
+| This applet | **Consignment Billing (Internal)** | The consignor's invoice. Converts consignment liability into a payable and consignment stock into a purchase. No stock movement. |
+| Sibling | [Consignor Purchase Billing (Internal)](/applets/purchase-workflow/internal-consignor-purchase-billing-applet/) | The *period* record of what you owe a consignor. It writes its own billing tables and posts no journal at all — a different artefact from this one. |
+| Downstream | [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) | A consignment billing document that has been linked to a purchase return can no longer be voided. |
+| Reverse direction | [Consignment Return (Internal)](/applets/purchase-workflow/internal-consignment-return-applet/) | Sends unsold consignment stock back to the consignor instead of buying it. |
 
-In practice, the workflow always goes in this order:
+{{< callout type="info" >}}
+**This is not the document that bills a customer.** If you place *your* stock at someone else's
+location and want to invoice them for what they consumed, that is the sales side — see
+[Customer Consignment](/applets/sales-workflow/customer-consignment-applet/) and
+[Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/).
+{{< /callout >}}
 
-```
-Customer Consignment Applet          Internal Consignment Billing Applet
-─────────────────────────────        ────────────────────────────────────
-1. Transfer Out                  →   (stock is now at customer's location)
-2. Customer consumes stock       →   3. Consumption report received
-                                     4. Create Consignment Billing
-                                     5. Link GINs via Issue Link
-                                     6. FINAL → invoice posted
-7. Transfer Receive (returns)    ←   (unused stock comes back)
-```
+## Screens and menus
 
-The Customer Consignment Applet answers: *"What stock does the customer have right now?"*
-This applet answers: *"What did they use, and what do they owe us for it?"*
+The left menu has three entries and no others:
 
-### What Happens Financially When a Record is Finalized
+| Menu item | Route | What it shows |
+|---|---|---|
+| **Consignment Billing** | `internal-purchase-invoice` | The listing, plus the create and edit panels |
+| **Line Items** | `line-items` | A cross-document listing of billing lines, with its own edit panel |
+| **File Import** | `file-import` | CSV upload of billing data, and the listing of past import batches |
 
-When a Consignment Billing document is set to **FINAL**, the system triggers all of the following simultaneously:
-
-1. **Revenue is recognized** — the invoice amount is posted to the revenue GL account.
-2. **Inventory is relieved** — the consignment stock quantity is removed from the consignment location and expensed as COGS.
-3. **AR is opened** — an Accounts Receivable entry is created against the consignee entity for the invoice amount.
-4. **Tax is computed and posted** — SST, VAT, or GST is calculated per line item and posted to the tax liability account.
-5. **Cashbook entry is staged** — if a payment is attached, the cashbook is updated accordingly.
-
-### Why the GIN Link Matters
-
-A **GIN (Goods Issue Note)** is an internal warehouse record — purely for your own system — created the moment stock leaves your warehouse. It is not signed by the customer and is not a billing document. It simply tells your inventory system: *"this stock has left our shelves."*
-
-In the vending machine analogy, it is the record of *"we loaded the machine with X items on this date."*
-
-**Before GIN** — your system shows 100 units in stock
-**GIN created** — 40 units issued out → your system now shows 60 units remaining
-
-It serves three purposes:
-1. **Reduces your stock balance** — so your warehouse count stays accurate
-2. **Records who the stock went to** — so you know which consignee holds it
-3. **Becomes the reference for billing** — when this applet creates an invoice, it links back to the GIN to prove the stock was genuinely dispatched
-
-It is not the same as a Delivery Order (which the customer signs) or an invoice (which charges the customer). Think of it as the internal paper trail that sits behind both of those.
-
-```
-GIN            = "we sent it out"        → inventory record (internal)
-Transfer Out   = "customer received it"  → delivery record
-Consignment Billing = "they used it, here's the charge" → billing record
-```
-
-Each line item on a Consignment Billing must be linked back to its originating GIN via the **Issue Link** sub-tab. This linkage:
-- Prevents double-billing the same consignment stock.
-- Maintains a complete audit trail from physical movement to financial invoice.
-- Allows partial billing — only the consumed portion of a GIN is billed; the remainder stays open for future billing cycles.
-- Feeds the **TraceDocument** tab, which shows the full upstream and downstream document chain.
-
----
-
-## Quick Start Guide
-
-### For Sales: Finalizing Your Monthly Billings
-
-**Goal:** Convert a consignee's sales report into a finalized system invoice.
-
-1. **Navigate**: Go to **Consignment Billing** in the sidebar.
-2. **Select Entity**: On the Account tab, choose the Consignee or Branch you are billing.
-3. **Link Issues**: On each line item, open the **Issue Link** sub-tab and select the relevant GINs that match the current consumption report. Update quantity if only a partial billing is required.
-4. **Review & Create**: Verify the total amount and taxes on the Line Items tab, then click **CREATE**. The system generates the invoice linked to those specific GINs.
-
-### For Finance: Bulk Processing via Import
-
-**Goal:** Process a wide range of consignment billings across multiple branches.
-
-1. **Get Template**: Go to **File Import**, download the sample CSV template.
-2. **Populate Details**: Fill in the GIN references, item codes, and billing quantities based on your consolidations.
-3. **Upload & Verify**: Upload the file. The system validates that the GINs exist and are not yet fully billed. Check the **Checking** sub-tab for any row-level errors.
-4. **Finalize All**: Return to the Consignment Billing listing, select the generated drafts, and click **FINAL** to post them all.
-
----
-
-## Navigation Menu
-
-The applet sidebar contains three main sections:
-
-### Consignment Billing
-The primary working area. Lists all consignment billing documents and is the entry point for creating new invoices. This is where the full create/edit lifecycle happens — from draft through to finalization and settlement.
-
-### Line Items
-A cross-document view of all line items across all consignment billing records. Useful for finance teams who need to audit or review individual billed items without opening each document header separately. Also used to identify line items with posting errors or missing Issue Links.
-
-### File Import
-Handles bulk creation of consignment billing records via CSV upload. Used when processing high-volume billing cycles — for example, end-of-month billing across multiple branches or consignees — where creating documents one by one is not practical.
-
----
-
-## Consignment Billing
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-main-details-tab.png" alt="Internal Consignment Billing listing on the left with the Create panel open on the Main Details tab" caption="The listing (left) with the FINAL, DISCARD, VOID and SINGLE/MULTIPLE PRINT buttons above the grid, and the create panel (right) on Main Details. Branch and Location are required and show their validation messages until filled." >}}
 
 ### Listing
 
-The listing shows all consignment billing documents with their statuses. Multi-row selection is supported for bulk operations.
-
-**Bulk action buttons available on the listing:**
-
-| Button | Function | Visibility |
-|--------|----------|-----------|
-| **FINAL** | Finalizes selected draft documents, triggering all financial postings (AR, GL, inventory, tax). | `HIDE_GENDOC_FINAL_BUTTON` |
-| **DISCARD** | Cancels selected draft documents without any financial impact. | `HIDE_GENDOC_DISCARD_BUTTON` |
-| **VOID** | Reverses all financial postings on finalized documents. Used for corrections after finalization. | `HIDE_GENDOC_VOID_BUTTON` |
-| **SINGLE/MULTIPLE PRINT** | Generates printable invoice output for selected records. | Active only if `PRINTABLE` is enabled in Application Settings |
-
----
+One grid with 25 columns: Doc Short Code, Doc No, Doc No (Company), Doc No (Branch), Reference,
+Posting Status, Status, Branch Code, Currency, Supplier Name, Purchaser, Amount Txn, the five ARAP
+columns (PNS, Settlement, Doc Open, Contra, Balance), Created Date, Transaction Date, Client Doc
+Short Code and Client Doc 1–5. Above the grid: **FINAL**, **DISCARD**, **VOID** and
+**SINGLE/MULTIPLE PRINT** — the print button is disabled until a default printable format is set.
+Rows are multi-select; the buttons act on the selection.
 
 ### Create
 
-Creates a new consignment billing document. The form is organized into tabs.
-
-#### Main Details Tab
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-main-details-tab.png" alt="Main Details Tab - capturing primary document header information including branch and location" caption="Main Details Tab: Defining the core operational context and stock source for the consignment billing document." >}}
-
-Captures the document header information that applies to the entire billing document.
-
-| Field | Description | Hidden |
-|-------|-------------|--------|
-| **Branch** | Where this billing document originates — the branch that holds or issued the consignment stock. This is the *stock source*, not necessarily where the goods are being delivered to. Drives which inventory locations are available to select. | Always visible |
-| **Location** | The specific inventory location within the Branch where the consignment stock is held. More granular than Branch — a branch can have multiple locations (e.g., Main Store, Cold Room, Overflow). | `HIDE_LOCATION` |
-| **Delivery Branch** | The branch responsible for physically delivering the billed goods to the consignee. This can be different from the issuing Branch — for example, stock originates from KL Branch but is delivered by Penang Branch. | `HIDE_DELIVERY_BRANCH` |
-| **Delivery Location** | The specific location within the Delivery Branch that handles the outgoing delivery. | `HIDE_DELIVERY_LOCATION` |
-| **Purchaser / Sales Agent** | The internal staff member responsible for this billing. Label configurable via `salesManLabels`. | Always visible |
-| **Transaction Date** | The official date of the billing transaction. This determines which accounting period the financial entries are posted to — important for month-end closing. Editable only if `SHOW_TRANSACTION_DATE` is active. | Always visible |
-| **Credit Terms** | How long the consignee has to pay — e.g., Net 30 means payment is due within 30 days. Populated from the entity's master data after the entity is selected. Can be overridden per document. | Always visible |
-| **Credit Limit** | The maximum outstanding balance allowed for this consignee. Also entity-driven. Used by finance to flag if this billing would push the consignee over their approved credit exposure. | Always visible |
-| **Reference** | A free-text field to cross-reference an external document — typically the consignee's own consumption report number or their internal PO number, so both sides can match records. | Always visible |
-| **Remarks** | Notes visible only internally. Does not appear on the printed invoice sent to the consignee. Use this for internal instructions or context. | Always visible |
-| **External Remarks** | Notes that print on the invoice document sent to the consignee. Use this for delivery instructions, special conditions, or messages intended for the consignee. | Always visible |
-| **Permit No** | A regulatory or customs permit number required for certain controlled goods. Only relevant in industries where goods movement requires a permit (e.g., pharmaceuticals, alcohol, chemicals). | `HIDE_PERMIT_NO` |
-| **Base Currency** | The home currency of your company. Shown for reference when the document currency differs — helps staff see the base equivalent without switching screens. | `HIDE_BASE_CURRENCY` |
-| **Currency / Currency Rate** | Used when billing a consignee in a foreign currency. The rate converts the foreign currency amounts back to your base currency for GL posting. The live rate button fetches the current market exchange rate automatically. | `HIDE_CURRENCY` |
-| **Tracking ID** | A logistics or shipment tracking reference at the document level. Useful when the entire billing relates to a single shipment that can be tracked externally. | `HIDE_TRACKING_ID` |
-
-**Document number fields** (Doc No Tenant / Company / Branch, Client Doc 1–5) are system-generated and read-only. Their individual visibility is configurable via `HIDE_SERVER_DOC_1/2/3` and `HIDE_CLIENT_DOC_1/2/3/4/5` in Application Settings.
-
-**Apply to Lines** — appears in edit mode when Branch or Location is changed at the header level. Propagates the updated branch/location values down to all existing line items in one action, avoiding the need to edit each line individually.
-
----
-
-#### Account Tab
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-account-tab.png" alt="Account Tab - managing consignee entity details and billing relationships" caption="Account Tab: Identifying the primary consignee and establishing the financial link to their master record." >}}
-
-Manages the consignee entity and address information. Contains three sub-tabs.
-
-**Entity Details sub-tab**
-
-Identifies who is being billed. The Entity ID field opens a searchable entity selector. Once an entity is selected, all other fields are auto-populated from the entity master record:
-
-| Field | Description |
-|-------|-------------|
-| **Entity Id** | The consignee you are billing. Selecting this auto-populates all other fields on this tab and drives Credit Terms, Credit Limit, and document currency on the Main Details tab. |
-| **Status** | Whether the entity is currently active. Billing an inactive entity may indicate a data issue worth checking before proceeding. |
-| **Entity Type** | Whether this is an external customer, an internal branch, or an inter-company entity — affects how the financial entries are posted. |
-| **Identity Type / ID Number** | The entity's official registration number (e.g., company registration, IC number). Used for tax and compliance purposes on the invoice. |
-| **Currency** | The entity's default billing currency. This becomes the currency of the entire document — all line item amounts will be in this currency. |
-
-**Bill To sub-tab**
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-bill-to-subtab.png" alt="Bill To Sub-tab - specifying the formal billing address for the invoice" caption="Bill To: Ensuring the financial claim is sent to the correct registered address for tax and compliance." >}}
-
-The billing address for the invoice. Can be selected from the entity's registered addresses or manually overridden. This address appears on the printed invoice.
-
-**Ship To sub-tab**
-
-The delivery/shipping address. Separate from the billing address to support scenarios where goods are delivered to a different location than where the invoice is sent — common in consignment arrangements where the consignee has multiple sites.
-
----
-
-#### Line Items Tab
-
-Lists all items being billed in this document. Two running totals are shown at the top right:
-
-- **Total Txn Amount** — the combined invoice value of all line items in the document currency. This is what the consignee will be charged before any payments or contras are applied.
-- **Total SST/VAT/GST Amount** — the total tax computed across all lines. This is the tax portion that will be posted to the tax authority account on finalization.
-
-**Landed Cost allocation** *(edit mode only)* — sometimes additional costs like freight, insurance, or handling need to be charged on top of the item prices. Enter the total landed cost amount, choose how to spread it across lines — **Quantity** (proportional to units), **Transaction Amount** (proportional to line value), or **Equal** (same amount to every line) — then **ALLOCATE** to preview the distribution and **CONFIRM** to apply it. This increases the billed amount on each line accordingly.
-
-Clicking a line item row opens the **Add/Edit Item** form.
-
----
-
-##### Add / Edit Item Form
-
-When adding or editing a line item, the form has the following sub-tabs:
-
-**Item Details sub-tab**
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-item-details-subtab.png" alt="Item Details Sub-tab - detailed breakdown of quantities, pricing, and discounts per line item" caption="Item Details: The primary interface for recording specific consumed quantities and applying commercial terms." >}}
-
-Contains its own nested sub-tabs:
-
-- **Main Details** — item code, description, quantity, UOM, unit price, discount, tax configuration, and WHT configuration. The visible price fields are individually configurable via Application Settings (`HIDE_UNIT_PRICE_STD_*`, `HIDE_UNIT_PRICE_NET_*`, `HIDE_UNIT_PRICE_TXN_*`, `HIDE_UNIT_DISCOUNT`, `HIDE_QTY_BASE`, `HIDE_QTY_UOM`, etc.).
-- **Department** — cost center / department allocation for this specific line item, used for GL dimension posting at the line level.
-- **Doc Link** *(edit mode only)* — shows documents linked to this specific line item, providing item-level traceability.
-- **Delivery Details** — per-line delivery branch, delivery location, delivery type, and tracking ID. Overrides the header-level delivery settings for this line.
-
-**Serial Number sub-tab** *(only shown if the item is serial-number tracked)*
-
-Manages the specific serial numbers being billed. Validates that the serials were part of the original consignment issue, preventing billing of serials that were never issued to this consignee.
-
-**Batch Number sub-tab** *(only shown if the item is batch-number tracked)*
-
-Manages batch numbers for the billed quantity, maintaining batch-level traceability from issue to invoice.
-
-**Bin Number sub-tab** *(only shown if the item uses bin-level tracking)*
-
-Manages bin location assignments for the billed quantity.
-
-**Costing Details sub-tab** *(hidden if `HIDE_COSTING_DETAILS` is enabled)*
-
-Shows the cost breakdown for the line item — purchase cost, landed cost, and margin. Used for profitability analysis and COGS verification without leaving the billing document.
-
-**Issue Link sub-tab**
-
-This is the most critical sub-tab for consignment billing. It links this line item back to the originating Goods Issue Note (GIN) from the Inventory Applet.
-
-The listing shows all GINs associated with this item for the selected consignee: Project, Issue Number, Issue Summary, Issue Description, Assignee, Created Date, Resolved Date, and Status.
-
-Clicking a GIN row opens the **Edit Issue** form, which allows editing the Project and Issue Number reference and provides further sub-tabs — Details, Planning, Attachment, Comment, Subtasks, Linked Issues, Worklogs, and Activity — giving full traceability into the originating stock movement event.
-
-Without a valid Issue Link, the billing cannot be traced back to a physical stock movement, breaking the audit trail and potentially allowing duplicate billing.
-
----
-
-#### Delivery Details Tab
-
-*(Hidden if `HIDE_DELIVERY_DETAILS_TAB` is enabled)*
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-delivery-details-tab.png" alt="Delivery Details Tab - bulk-apply interface for logistics tracking across line items" caption="Delivery Details Tab: Coordinating physical logistics and tracking references for the billed goods." >}}
-
-Provides a bulk-apply interface for delivery information across all line items. Rather than editing each line individually, you set a value here and apply it to all selected lines at once:
-
-| Field | Description |
-|-------|-------------|
-| **Tracking ID** | Logistics tracking reference applied to selected lines. |
-| **Delivery Branch** | The branch handling delivery for selected lines. |
-| **Delivery Type** | INTERNAL_DELIVERY, EXTERNAL_DELIVERY, or PICKUP — determines how the goods reach the consignee. |
-| **Delivery Location** | The destination location for selected lines. |
-
-The grid below shows the current delivery details per line item and supports inline editing for individual overrides.
-
----
-
-#### Payment Tab
-
-*(Hidden if `HIDE_MAIN_PAYMENT_TAB` is enabled)*
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-payment-tab.png" alt="Payment Tab - recording deposits and partial payments against the billing document" caption="Payment Tab: Capturing financial settlements and deposits received at the point of billing." >}}
-
-Records advance or partial payments against this billing document before or at the time of finalization.
-
-- **Total Payment** — how much cash has already been received against this invoice. If the consignee paid a deposit upfront, it shows here.
-- **Doc Open Amount** — what the consignee still owes in cash after deducting payments. This is the amount finance will chase for collection.
-- **Doc ARAP Balance** — the final net balance after both payments and any contra entries are applied. This is the true outstanding amount on this document.
-
-Each payment entry links to the Cashbook Applet, so the cash receipt is recorded in the bank account at the same time the AR balance is reduced.
-
----
-
-#### KO For Tab
-
-*(Hidden if `HIDE_KO_FOR_TAB` is enabled)*
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-ko-for-tab.png" alt="KO For Tab - linking the billing record to upstream purchase orders or GRNs" caption="Knock-Off (KO) Tab: Establishing the formal relationship between the billing invoice and the documents it fulfills." >}}
-
-**KO** stands for **Knock-Off** — an accounting term for linking a document to another document it is fulfilling or closing off.
-
-Think of it this way: sometimes a Purchase Order or GRN was raised upstream, and this billing invoice is the document that fulfills or settles it. The KO For tab records that relationship — it says *"this invoice is knocking off (closing) that upstream document."* It does not copy or create new documents; it simply draws a line between this billing and the document it is settling against.
-
-The document types available to knock off are controlled by the **Knock-Off Settings** in the Settings menu (Purchase GRN, Purchase Order, Purchase Requisition, Supplier Delivery Order).
-
----
-
-#### Department Hdr Tab
-
-*(Hidden if `HIDE_DEPARTMENT_HDR_TAB` is enabled)*
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-department-tab.png" alt="Department Hdr Tab - allocating billing revenue and costs to internal profit centers" caption="Departmental Classification: Tagging the transaction to specific internal teams for management reporting." >}}
-
-**Department Hdr** (Header) is deeper than Branch or Location. Branch and Location tell you *where* the transaction happened physically. Department tells you *which internal team or cost center owns the cost* of this transaction.
-
-For example, a billing document might be issued from the KL Branch (Branch), from the Main Warehouse (Location), but the cost belongs to the Service Department (Department). This matters for internal management reporting — finance needs to know which department is responsible for the revenue and costs, not just which building it came from.
-
-Setting the department here tags all the financial entries (GL postings) for this entire document to that department, so it shows up correctly in departmental P&L reports.
-
----
+Six tabs, three of them always present:
+
+| Tab | Shown when | Contents |
+|---|---|---|
+| **Main Details** | always | Document numbering, supplier, dates, terms, currency — see [Fields](#fields) |
+| **Account** | always | Entity Details, Bill To and Ship To sub-tabs; the entity picker opens as *Select Supplier* |
+| **Line Items** | always | The item grid and the add-line panel |
+| **Delivery Details** | `HIDE_DELIVERY_DETAILS_TAB` off | Delivery branch, location, permit and tracking references |
+| **Payment** | `HIDE_MAIN_PAYMENT_TAB` off | Settlement lines captured at the point of billing |
+| **KO For** | `HIDE_KO_FOR_TAB` off | A single sub-tab, **Consignment Purchase GRN** |
+| **Department Hdr** | `HIDE_DEPARTMENT_HDR_TAB` off | Dimension, profit centre, project and segment for the header |
+
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-account-tab.png" alt="Account tab with Entity Details, Bill To and Ship To sub-tabs, and the Select Supplier picker open on the right" caption="The Account tab. The picker is titled Select Supplier and lists supplier entities — the counterparty on a consignment billing document is the consignor, not a customer." >}}
+
+**KO For → Consignment Purchase GRN** is the intended way to build the document. The grid lists
+consignment GRN lines still waiting to be billed — read from the line open queue where
+`server_doc_type_1 = INTERNAL_PURCHASE_CONSIGNMENT_GRN` and
+`server_doc_type_2 = INTERNAL_PURCHASE_CONSIGNMENT_INVOICE`. Selecting rows and pressing **KNOCK
+OFF** copies the GRN header onto the draft and creates one billing line per GRN line, each with a
+document link back to the GRN. All rows picked in one document must share the same supplier and the
+same branch.
+
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-ko-for-tab.png" alt="KO For tab showing the Consignment Purchase GRN grid with KNOCK OFF and DELETE buttons" caption="KO For → Consignment Purchase GRN. Short code CSGGRN identifies the source documents; the column is headed Supplier." >}}
 
 ### Edit
 
-The edit form contains all the same tabs as create, plus additional tabs that are only meaningful after a document exists in the system.
-
-**Action buttons on the edit form:**
-
-| Button | Function | Condition |
-|--------|----------|-----------|
-| **SAVE** | Saves changes to a draft document. Disabled if the user lacks update permission. | Always visible |
-| **FINAL** | Finalizes the document, triggering all financial postings simultaneously. Irreversible without a VOID. | Document is in draft |
-| **DISCARD** | Cancels the draft without any financial impact. | Document is in draft |
-| **VOID** | Reverses all financial postings — AR entry removed, GL journal reversed, inventory reinstated to consignment account, tax entry cancelled, and GIN links released for re-billing. | Document is finalized |
-| **RESET** | Reverts unsaved changes back to the last saved state. | Always visible |
-| **DELETE** | Permanently deletes the record. Requires a second click to confirm. | Draft documents only |
-
-#### Additional Edit-Only Tabs
-
-**ARAP Tab** *(hidden if `HIDE_MAIN_ARAP_TAB` is enabled)*
-
-**ARAP** stands for **Accounts Receivable / Accounts Payable** — the accounting term for money that is owed but not yet paid.
-
-In plain terms: once this invoice is finalized, the customer owes you money. That unpaid amount is the "AR" (Accounts Receivable). This tab shows the current state of that debt — how much was invoiced, how much has been paid, and how much is still outstanding. All fields here are read-only and computed automatically by the system.
-
-| Field | Description |
-|-------|-------------|
-| **Products & Services** | The gross invoice amount — the total value of goods billed. |
-| **Settlement** | Total payments received against this invoice so far. |
-| **Doc Open Amount** | The remaining unpaid balance (Products & Services minus Settlement). |
-| **Contra** | Any contra entries applied — e.g., credit notes offset against this invoice. |
-| **Outstanding** | The net amount the consignee still owes after all payments and contras. |
-
-This tab is the primary reference for AR aging and collection follow-up.
-
-#### Posting Tab
-
-*(Hidden if `HIDE_POSTING_TAB` is enabled)*
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-posting-tab.png" alt="Posting Tab - real-time status of financial, inventory, and tax subsystem integration" caption="Posting Status: Monitoring the successful synchronization of the transaction across all financial modules." >}}
-
-Shows the system posting status for each financial subsystem after finalization. All fields are read-only:
-
-| Field | Description |
-|-------|-------------|
-| **Journal Posting Status** | Whether the GL journal entry has been successfully posted. |
-| **Inventory Posting Status** | Whether the inventory movement (consignment stock relief) has been recorded. |
-| **Membership Points Posting Status** | Whether loyalty or membership points have been processed. |
-| **Cashbook Posting Status** | Whether the cashbook entry has been recorded. |
-| **Tax Posting Status** | Whether the tax entry has been filed to the tax module. |
-
-If any status shows an error, it indicates a posting failure — usually due to a missing GL account mapping, a closed accounting period, or a tax configuration issue. The document remains in FINAL status but the affected posting needs to be investigated and re-triggered.
-
-#### TraceDocument Tab
-
-*(Hidden if `HIDE_TRACE_DOCUMENT_TAB` is enabled)*
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-trace-document-tab.png" alt="TraceDocument Tab - full end-to-end visibility of the document chain" caption="Traceability Chain: Providing auditors with a complete view of the transaction from GIN issue to final payment." >}}
-
-Displays the full document chain for this billing record — both upstream (the GINs and stock movements that led to this invoice) and downstream (any credit notes, payments, or other documents generated from it). This is the primary tool for auditors tracing a transaction end-to-end across the system.
-
-#### Contra Tab
-
-*(Hidden if `HIDE_MAIN_CONTRA_TAB` is enabled)*
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-contra-tab.png" alt="Contra Tab - offsetting invoice balances against existing customer credits" caption="Contra Tab: Managing non-cash settlements by applying credit notes or overpayments to the current invoice." >}}
-
-**Contra** is an accounting term for offsetting one document against another to reduce what is owed — without an actual cash payment changing hands.
-
-The most common scenario: the customer has a credit note from a previous return or overpayment. Instead of paying the full invoice amount in cash, you agree to apply that credit note against this invoice. The credit note and the invoice partially cancel each other out. The customer then only pays the difference.
-
-This is different from a regular payment (cash received) — contra is a paper offset between two existing documents.
-
-This tab manages those offsets and shows:
-
-- **Total Contra** — sum of all contra amounts applied to this invoice.
-- **Doc Open Amount** — the invoice balance before contra is applied.
-- **Doc ARAP Balance** — the net balance after contra, which is what the customer actually still owes in cash.
-
-Each contra entry links to the originating credit or debit document in the respective applet, maintaining a two-sided audit trail.
-
-#### Doc Link Tab
-
-*(Hidden if `HIDE_DOC_LINK_TAB` is enabled)*
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-doc-link-tab.png" alt="Doc Link Tab - direct links to source and destination documents" caption="Document Linkage: Navigating between source draft records and final generated financial documents." >}}
-
-Shows the document linkage chain with two sub-tabs:
-
-- **Copy From** — documents that were used as the source when creating this billing (e.g., a GIN or a previous draft that was copied forward).
-- **Copy To** — documents that were created from this billing as a source (e.g., a credit note raised against this invoice).
-
-**Attachment Tab** *(hidden if `HIDE_ATTACHMENT_TAB` is enabled)*
-
-Stores supporting documents for this billing record — consignee consumption reports, signed delivery notes, approval emails, etc. Attachments are stored against the document and accessible to all users with view permission.
-
-**Export Tab** *(hidden if `HIDE_EXPORT_TAB` is enabled)*
-
-Provides data export options for this document — useful for sending billing data to external accounting systems or generating custom reports outside the ERP.
-
----
-
-## Line Items Menu
-
-A standalone listing of all line items across all consignment billing documents. This view is used by finance teams to:
-- Audit billed quantities against original GIN quantities across multiple documents.
-- Filter and review items by product, entity, or date range without navigating into individual billing headers.
-- Identify line items with posting errors or missing Issue Links.
-
----
-
-## File Import Menu
-
-### Listing
-
-Shows all previously submitted import batches with their processing status. Clicking a row opens the import detail view.
-
-### Upload (Create)
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-upload-form.png" alt="File Upload Interface - bulk processing of consignment billing cycles via CSV" caption="File Import: Facilitating high-volume billing through standardized data upload templates." >}}
-
-Used for bulk billing cycles. The upload process:
-
-1. Select the **Delimiter** (comma, semicolon, etc.) that matches your CSV file format.
-2. Upload the CSV file via drag-and-drop or file picker. Only `.csv` files are accepted.
-3. Download the **Sample Format** link to get the correct column structure before preparing your file. The template (`MasterData_Upload_InternalPurchaseInvoice.csv`) defines the required columns — GIN references, item codes, quantities, entity IDs, and billing dates.
-4. Click **SUBMIT** to queue the file for processing.
-
-### Import Detail (Edit)
-
-After submission, clicking an import batch shows:
-
-{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-import-detail-view.png" alt="Import Detail View - validation results and status of bulk upload batches" caption="Import Detail: Reviewing validation row results and correcting errors from bulk processing cycles." >}}
-
-**Details sub-tab** — read-only metadata about the upload:
-
-| Field | Description |
-|-------|-------------|
-| **Process Status** | Whether the batch is still being processed, completed successfully, or failed. Check this first after submitting — if it shows failed, look at the Error Message before re-uploading. |
-| **Error Message** | The specific reason the batch failed — e.g., a GIN reference that doesn't exist in the system, a line that would duplicate an already-billed quantity, or an entity ID that can't be found. Fix the CSV based on this message before re-uploading. |
-| **File Name / File Size** | The uploaded file details for reference. |
-| **Import Format** | The format detected from the uploaded file. |
-| **Created By / Creation Date** | Who submitted the import and when. |
-
-**Checking sub-tab** — a line-by-line validation result showing which rows passed or failed, allowing the user to identify and correct specific data issues before re-uploading.
-
----
-
-## Configuration & Settings
-
-Accessed via the top navigation bar. All settings here are system-wide and affect all users of this applet.
-
-### Default Selection
-
-Sets the system-wide default values pre-populated when creating a new document:
-- **Default Branch** — the branch pre-selected on the Main Details tab for all new documents.
-- **Default Location** — the inventory location pre-selected within that branch.
-
-These defaults reduce data entry time for teams that primarily work from a single branch.
-
-### Application Settings
-
-Field-level visibility and behavior configuration. This is where administrators control which tabs, fields, and buttons are shown or hidden across the entire applet. Key configurable areas:
-
-- Which document number fields are visible (Tenant, Company, Branch, Client Doc 1–5).
-- Which tabs are shown on the create/edit form (Delivery Details, Payment, KO For, Department Hdr, ARAP, Posting, TraceDocument, Contra, Doc Link, Attachment, Export).
-- Which line item price fields are visible (standard, net, UOM, transaction price, discount fields).
-- Whether currency and foreign exchange fields are shown.
-- Whether costing details are shown on line items.
-- Whether the FINAL, DISCARD, and VOID buttons appear on the listing.
-- Whether printing is enabled.
-- Custom status fields — up to 5 header-level and 5 line-level custom statuses for workflow tagging.
-
-### Printable Format Settings
-
-Configures the print template used when generating invoice PDFs. Controls layout, logo, footer text, and which fields appear on the printed document sent to the consignee.
-
-### Knock-Off Settings
-
-Controls which upstream document types can be knocked off by or for this applet:
-
-**Knock Off BY** — document types that this billing can knock off (settle against):
-- Purchase GRN
-- Purchase Order
-- Purchase Requisition
-- Supplier Delivery Order
-
-**Knock Off FOR** — document types that can knock off this billing:
-- Purchase GRN
-- Purchase Order
-- Purchase Requisition
-- Supplier Delivery Order
-
----
-
-## FAQ
-
-**Can I bill a GIN partially across multiple months?**
-Yes. The Issue Link tracks the remaining unbilled balance of every GIN. You can link a GIN and bill only a portion of the quantity; the remainder stays available for future billing cycles.
-
-**What if the pricing has changed since the original consignment was issued?**
-The billing phase allows you to apply current or contract prices independently of the price used on the original stock movement. The GIN link preserves the physical quantity reference while the billing document controls the financial value.
-
-**Can I see which GINs are still outstanding?**
-Yes. The Issue Link sub-tab on each line item shows all GINs for the selected consignee, including their status. Partially billed GINs remain visible and available for selection in future billing cycles.
-
-**What happens if I VOID a finalized document?**
-All financial postings are reversed — the AR entry is removed, the GL journal is reversed, the inventory is reinstated to the consignment account, the tax entry is cancelled, and the GIN links are released, making those quantities available for re-billing.
-
-**Does it support inter-company consignments?**
-Yes. If the consignee is an internal entity in another company within the same system, the applet can generate a corresponding purchase record in the receiving company automatically, creating a matched inter-company transaction pair.
-
-**Why does the Posting tab show an error status?**
-A posting error means the financial entry for that subsystem failed — usually due to a missing GL account mapping, a closed accounting period, or a tax configuration issue. The document remains in FINAL status but the affected posting needs to be investigated and re-triggered before the period can be closed.
+The edit panel adds six tabs to the create set and drops **KO For** (knock-off from that point on is
+per line): **ARAP**, **Posting**, **TraceDocument**, **Contra**, **Doc Link** and **Attachment**.
+Its buttons are RESET, FINAL, DISCARD, VOID and SAVE, each shown according to the document's status
+and the settings in [Document behaviour](#document-behaviour-settings).
+
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-item-details-subtab.png" alt="Line Items tab with a line selected and the Edit Item panel open on Item Details" caption="Editing a line. The Edit Item panel carries Item Details (with Main Details, Department, Doc Link and Delivery Details sub-tabs) and the Issue Link tab." >}}
+
+Line editing has its own tab set: **Item Details**, a sub-item tab (**Serial Number**, **Batch
+Number** or **Bin Number**, depending on the item), **Costing Details** when
+`HIDE_COSTING_DETAILS` is off, **Issue Link**, and a pair of **KO By** / **KO For** tabs for each of
+Purchase GRN, Purchase Order, Purchase Requisition and Supplier Delivery Order — each pair rendered
+only when the company has enabled that document flow into `INTERNAL_PURCHASE_CONSIGNMENT_INVOICE`.
+
+{{< callout type="warning" >}}
+**The Issue Link tab is a mock and shows fixed sample data.** Its grid is fed by a hard-coded
+one-row array (`project: "Test"`, an issue number and an assignee); no service is injected and the
+data-source call is commented out. It renders the same row on every line of every document in every
+tenant. It has nothing to do with Goods Issue Notes — the columns are Project, Issue Number, Issue
+Summary, Issue Description, Assignee, Created Date, Resolved Date and Status. Recorded as **P-0132**.
+{{< /callout >}}
+
+### File Import
+
+Upload a `.csv` with a comma or pipe delimiter and press **SUBMIT**. **Sample Format** downloads a
+template from the backend. The screen is the internal purchase invoice importer — the endpoint is
+`…/erp/internal-purchase-invoice/import-file-hdr/backoffice-ep` and the downloaded template is named
+`Sales_Invoice_Master_Data_Template.csv` regardless of the delimiter chosen.
+
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-upload-form.png" alt="File Import upload screen with the delimiter selector and the drag-and-drop area" caption="File Import. Choose the delimiter first — it decides which sample template you get." >}}
+
+Past batches and their per-row results are on the File Import listing.
+
+{{< figure src="/images/internal-consignment-billing-applet-applet/consignment-billing-import-detail-view.png" alt="File import detail view listing the rows of an uploaded batch" caption="Import detail: the rows of one uploaded batch and their outcome." >}}
+
+## Configuration
+
+### Before you can use it
+
+| What | Where | Why |
+|---|---|---|
+| Branch and location | [Organisation](/applets/master-data/organisation-applet/) | Both are `Validators.required` on the create form; the document cannot be created without them |
+| Document numbering for `CSGINV` | [Organisation](/applets/master-data/organisation-applet/) | Supplies Doc No (Tenant / Company / Branch) |
+| Supplier entity with an AR/AP type | [Supplier](/applets/master-data/supplier-applet-1/) | The journal's entity line is resolved from the entity's AR/AP setting |
+| Default GL codes for `CONSIGNMENT_LIABILITY` and `CONSIGNMENT_STOCK` | [Chart of Accounts](/applets/master-data/chart-of-account-applet/) | Both are looked up as **company default** GL codes and both **throw** `MISSING_DEFAULT_GL_CODE` if absent |
+| Default GL code for the creditor mapping (`CREDITOR`, or whatever the entity's AR/AP type resolves to) | [Chart of Accounts](/applets/master-data/chart-of-account-applet/) | Also throws `MISSING_DEFAULT_GL_CODE` when unmapped |
+| Purchase and input-tax GL codes | [Chart of Accounts](/applets/master-data/chart-of-account-applet/) | Resolvable per line, per header, per item-company link or as a company default; an unresolvable line is dropped and FINAL then fails on an unbalanced journal |
+| Tax codes | [Tax Configuration](/applets/master-data/tax-configuration-applet/) | Line tax; the tax-code selector is hidden by `HIDE_TAX_CONFIG_SELECTION` |
+| Knock-off configuration: `INTERNAL_PURCHASE_CONSIGNMENT_GRN` → `INTERNAL_PURCHASE_CONSIGNMENT_INVOICE`, enabled | [Organisation](/applets/master-data/organisation-applet/) → Company → Knock Off Configuration | Without an **enabled** flow row the GRN's finalised lines never enter the open queue and the KO For grid stays empty |
+| A default printable format | Settings → Printable Format Settings | SINGLE/MULTIPLE PRINT is disabled and the after-FINAL pop-up fails without it |
+
+### Applet settings
+
+Settings live on the **shared** `FieldConfigurationComponent` from `blg-shared-utilities` (imported
+directly in `app.routing.ts` as the `field-settings` route). The applet also *declares* a local
+`FieldConfigurationComponent` in its settings module, but no route points at it — it is dead code.
+Any tenant administrator with access to the applet's Settings menu can change these; there is no
+per-row authority difference.
+
+The settings menu has exactly three entries: **Application Settings** (the shared screen),
+**Default Selection**, and **Printable Format Settings**. A **Knock Off Settings** screen exists as
+a route and a component but its menu entry is commented out, so it is unreachable. The
+**Personalization** menu has one entry, **Default Selection**.
+
+The applet's settings model declares **103** keys. Of those, **52** pass all four proofs — declared,
+rendered on the shared screen for applet code `internalConsignmentBillingApplet`, persisted by the
+settings service, and read by this applet's own code. Grouped by what they do:
+
+| Group | Keys | What they control |
+|---|---|---|
+| Document buttons | `HIDE_GENDOC_FINAL_BUTTON`, `HIDE_GENDOC_VOID_BUTTON`, `HIDE_GENDOC_DISCARD_BUTTON` | Hide FINAL / VOID / DISCARD on both the listing and the edit form |
+| Listing | `DISABLE_GEN_DOC_LISTING`, `SORT_ORDER`, `HIDE_SERVER_DOC_1`, `HIDE_SERVER_DOC_2`, `HIDE_SERVER_DOC_3` | Suppress the listing entirely; the column the grid is ordered by (defaults to `updated_date` when unset); hide the three document-number columns |
+| Header fields | `CANNOT_EDIT_CURRENCY_RATE`, `HIDE_CLIENT_DOC_TYPE`, `HIDE_CLIENT_DOC_1`…`HIDE_CLIENT_DOC_5`, `HIDE_PERMIT_NO`, `HIDE_TRACKING_ID` | Lock the currency rate; hide the client-document reference fields, permit number and tracking id |
+| Tabs | `HIDE_ATTACHMENT_TAB`, `HIDE_EXPORT_TAB`, `HIDE_MAIN_CONTRA_TAB` | Hide those three tabs on the edit form |
+| ARAP columns | `HIDE_ARAP_PNS`, `HIDE_ARAP_SETTLEMENT`, `HIDE_ARAP_DOC_OPEN`, `HIDE_ARAP_CONTRA`, `HIDE_ARAP_BAL` | Hide the five ARAP columns on the listing |
+| Line grid and item form | `HIDE_QTY_BASE`, `HIDE_QTY_UOM`, `HIDE_UOM_TO_BASE_RATIO`, `HIDE_AMOUNT_TXN`, `HIDE_AMOUNT_NET_EXCL_TAX`, `HIDE_AMOUNT_STD_EXCL_TAX`, `HIDE_DISCOUNT_AMOUNT_EXCL_TAX`, `HIDE_UNIT_DISCOUNT`, `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX`, and the eight `HIDE_UNIT_PRICE_*` keys | Hide individual quantity, price, discount and amount columns and fields |
+| Line extras | `HIDE_COSTING_DETAILS`, `HIDE_LAST_PURCHASE_PRICE`, `HIDE_LOCATION`, `HIDE_DELIVERY_BRANCH`, `HIDE_DELIVERY_LOCATION`, `HIDE_TAX_CONFIG_SELECTION`, `HIDE_WHT_CONFIG_SELECTION`, `HIDE_UNIT_PRICE_STD_PRICING_SCHEME` | Hide the Costing Details tab, the last-purchase-price hint, the location and delivery selectors, the tax and withholding-tax selectors and the pricing-scheme picker |
+| Serial numbers | `ENABLE_DRAFT_LOCK_SERIAL_NUMBER_CHECKING` | Checks, while a line is being saved, whether another draft already holds the serial number |
+| After FINAL | `ENABLE_AUTO_POPUP` | Opens the printable PDF automatically after a successful FINAL; without a default printable it shows *No Default Printable Selected* instead |
+
+Each `HIDE_*` key is paired in code with a `SHOW_*` client-side permission — the control is hidden
+only when the setting is on **and** the permission is absent. For this applet that per-role escape
+hatch does not exist: see [Feature visibility and permissions](#feature-visibility-and-permissions).
+
+**Keys read at runtime with no control on the shared screen.** Nineteen keys are read by the applet
+but have nowhere to be set from the Application Settings screen for this applet code:
+
+- Seven **tab-hide** keys — `HIDE_DELIVERY_DETAILS_TAB`, `HIDE_MAIN_PAYMENT_TAB`, `HIDE_MAIN_ARAP_TAB`,
+  `HIDE_POSTING_TAB`, `HIDE_TRACE_DOCUMENT_TAB`, `HIDE_DOC_LINK_TAB`, `HIDE_DEPARTMENT_HDR_TAB` —
+  plus `HIDE_KO_FOR_TAB`. The shared screen renders tab toggles only for applet codes listed in its
+  `tabMappings`, and `internalConsignmentBillingApplet` is not one of them. Recorded as **P-0133**.
+- `HIDE_CURRENCY`, `HIDE_BASE_CURRENCY`, `ENABLE_MULTIPLE_KO`, `DEFAULT_COUNTRY`, `DEFAULT_CUST_TYPE`.
+- `PRINTABLE`, `DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `DEFAULT_COMPANY`, `DEFAULT_CURRENCY` and
+  `DEFAULT_ITEM_SEARCH_ITEM_TYPE`, which are set on the other settings screens below rather than on
+  Application Settings.
+
+They keep whatever value the tenant already holds. On a tenant that has never saved Application
+Settings they are simply absent, so every gated tab renders.
+
+**Default Selection** (applet-wide) has two controls, **Default Branch** and **Default Location**,
+and writes three keys: `DEFAULT_BRANCH`, `DEFAULT_LOCATION` and `DEFAULT_COMPANY` — the company is
+derived from the branch you pick, and picking a branch also pre-fills the location from that
+branch's `MAIN_LOCATION`. The branch list is restricted to the branches your
+`TNT_API_DOC_INTERNAL_PURCHASE_CONSIGNMENT_INVOICE_READ_TGT_GUID` target allows, unless you are a
+tenant admin or owner, in which case it is unrestricted. **RESET** clears all three to null.
+
+**Personalization → Default Selection** overrides the applet-wide values for one user and adds a
+third control, **Default Item Search Item Type** (`DEFAULT_ITEM_SEARCH_ITEM_TYPE`), which filters the
+item search on the add-line panel.
+
+**Printable Format Settings** manages the printable formats offered to SINGLE/MULTIPLE PRINT and to
+the after-FINAL pop-up. Printing runs through the `INTERNAL_PURCHASE_ORDER_PRINT_SERVICE` Jasper
+service, so the format must be one that service can render.
+
+### Document behaviour settings
+
+| Behaviour | Governed by | Effect |
+|---|---|---|
+| FINAL button visible | `HIDE_GENDOC_FINAL_BUTTON` off, document `ACTIVE`, posting status empty or `DRAFT`, and no line failed serial validation | Sends `{ posting_status: 'FINAL' }` |
+| DISCARD button visible | `HIDE_GENDOC_DISCARD_BUTTON` off, document `ACTIVE`, posting status empty or `DRAFT` | Sets the document to `DISCARDED` |
+| VOID button visible | `HIDE_GENDOC_VOID_BUTTON` off and posting status `FINAL` | Sends `{ posting_status: 'VOID' }` |
+| Print after FINAL | `ENABLE_AUTO_POPUP` on and `PRINTABLE` set | Opens the PDF in a new window |
+| Fields locked after FINAL | not configurable | Once posting status is `FINAL`, or status is anything but `ACTIVE`, SAVE and the line editors are disabled |
+
+There is **no approval flow** on this document: the applet has no approval tab, no approval settings
+and no workflow designer, and the shared screen renders no approval controls for this applet code.
+See [document approval](/applets/master-data/organisation-applet/) for what "approval" means
+elsewhere in the product.
+
+### Settings in other applets that control this applet
+
+| Setting | Where it is set | Effect here |
+|---|---|---|
+| Knock Off Configuration rows (`bl_fi_comp_gendoc_flow_config`) | Organisation → Company → Knock Off Configuration | Decides whether the KO For grid finds anything, and which of the four per-line KO By / KO For tab pairs render |
+| Default GL codes per transaction code | Chart of Accounts | Every GL code the journal resolves; two of them throw when missing |
+| Item consignment and item-type flags | [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) | What the add-line item search returns, together with `DEFAULT_ITEM_SEARCH_ITEM_TYPE` |
+| Company posting configuration (`posting_final_json`) | Organisation → Company | Whether the journal processor runs for this document type at all |
+
+### Feature visibility and permissions
+
+The applet checks **43** client-side permission codes — `SHOW_GENDOC_FINAL_BUTTON`,
+`SHOW_GENDOC_VOID_BUTTON`, `SHOW_GENDOC_DISCARD_BUTTON`, `SHOW_DOCUMENT_DELETE_BUTTON`,
+`SHOW_TRANSACTION_DATE`, `SHOW_DOC_NO_TENANT` / `_COMPANY` / `_BRANCH`, `SHOW_INTERCOMPANY_PI_SCREEN`
+and one `SHOW_*` counterpart for each hideable line and ARAP column.
+
+**None of them is seeded.** `bl_applet_client_side_perm_dfn` holds zero rows for
+`internalConsignmentBillingApplet`, so no role, team or user can be granted any of them and every
+`SHOW_*` check evaluates false. In practice that means each `HIDE_*` setting is absolute: switch it
+on and the control is gone for everyone, with no per-role exception. Recorded as **P-0134**.
+
+Server-side permissions are unaffected. The applet requests
+`TNT_API_DOC_INTERNAL_PURCHASE_CONSIGNMENT_INVOICE_READ_TGT_GUID`, `…_CREATE_TGT_GUID`,
+`…_UPDATE_TGT_GUID`, `TNT_TENANT_ADMIN` and `TNT_TENANT_OWNER` at start-up; the create button and
+the SAVE button are disabled without create and update permission respectively, and the branch
+lists on Default Selection and the KO For grid are filtered by the read permission's branch targets.
+A `…_DELETE_TGT_GUID` definition exists on the backend but the applet never asks for it.
+
+## Fields
+
+### Main Details
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Doc Short Code | `CSGINV` | — | Read-only |
+| Doc No (Tenant) / (Company) / (Branch) | The three running numbers | — | Read-only; each hidden by its `HIDE_SERVER_DOC_n` setting and shown per role by `SHOW_DOC_NO_*` — which cannot be granted, see above |
+| Client Doc Short Code, Client Doc 1–5 No | Your own reference codes | — | Hidden by `HIDE_CLIENT_DOC_TYPE` and `HIDE_CLIENT_DOC_1`…`_5` |
+| **Branch** | The branch the document belongs to | **Yes** | `Validators.required`; also drives the location list |
+| **Location** | The stock location | **Yes** | `Validators.required` |
+| Purchaser | The employee raising the bill | Yes (marked `*` in the UI) | |
+| Transaction Date | The document date | — | Defaults to today; editable only with `SHOW_TRANSACTION_DATE` |
+| Credit Terms | Payment terms from the supplier | — | Disabled until an Entity ID is selected |
+| Credit Limit | The supplier's limit | — | Disabled until an Entity ID is selected |
+| Due Date | Derived from the terms | — | |
+| Reference | Free-text reference | — | |
+| Remarks / External Remarks | Internal and printable notes | — | Character counters shown |
+| Permit No | Import/export permit reference | — | Hidden by `HIDE_PERMIT_NO` |
+| Base Currency | The company's currency | — | Read-only |
+| Currency | The document currency | Yes | |
+| Currency Rate | Rate to base currency | — | Locked by `CANNOT_EDIT_CURRENCY_RATE`; SAVE refuses a rate of zero when the document currency differs from base |
+| Tracking ID | Logistics tracking reference | — | Hidden by `HIDE_TRACKING_ID` |
+
+### Account
+
+Three sub-tabs. **Entity Details** shows Entity Id (required), Entity Name, Status, Entity Type,
+Identity Type, ID Number, Currency, Email, Description and Phone Number, all populated from the
+selected supplier. **Bill To** and **Ship To** hold the two addresses.
+
+### Line items
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Item Code / Item Name | The item | Yes | Chosen from the item search |
+| UOM | Unit of measure | Yes | |
+| UOM to base ratio | Conversion factor | — | Hidden by `HIDE_UOM_TO_BASE_RATIO` |
+| Pricing Scheme | Price list to apply | — | Hidden by `HIDE_UNIT_PRICE_STD_PRICING_SCHEME` |
+| Unit Price STD (inclusive of tax) and the other seven unit-price variants | Line pricing | Yes (at least one) | Each hidden by its own `HIDE_UNIT_PRICE_*` key |
+| Quantity Base | Quantity billed | Yes | Hidden by `HIDE_QTY_BASE` |
+| Unit Discount / Discount Amount | Line discounts | — | Hidden by `HIDE_UNIT_DISCOUNT`, `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX`, `HIDE_DISCOUNT_AMOUNT_EXCL_TAX` |
+| Tax code | Line tax | — | Hidden by `HIDE_TAX_CONFIG_SELECTION` |
+| Withholding tax | Line WHT | — | Hidden by `HIDE_WHT_CONFIG_SELECTION` |
+| Location / Delivery Branch / Delivery Location | Line-level overrides | — | Hidden by `HIDE_LOCATION`, `HIDE_DELIVERY_BRANCH`, `HIDE_DELIVERY_LOCATION` |
+| Remarks | Line note | — | |
+
+The line grid totals **Total Txn Amount** and **Total SST/VAT/GST Amount** above it.
+
+## Lifecycle and posting
+
+| Status (`posting_status`) | Meaning | Allowed next |
+|---|---|---|
+| empty / `DRAFT` | Saved and editable | `FINAL`, or `DISCARDED` |
+| `FINAL` | Posted; header and lines locked | `VOID` |
+| `VOID` | Reversed by the void processors | — |
+| `DISCARDED` (document `status`) | Abandoned draft | — |
+
+**FINAL** is sent from the edit form or from the listing's bulk FINAL as a posting-status update
+`{ posting_status: 'FINAL' }`. Pressing FINAL on a document that is already `FINAL` shows *This
+document has been posted*. **VOID** first checks the document's own links: if any `ACTIVE` link
+joins this document to an `INTERNAL_PURCHASE_RETURN`, the applet refuses with *The invoice has
+already been linked with a purchase return*; pressing VOID on a document that is not `FINAL` shows
+*This document has not been finalized yet*. Both are client-side guards.
+
+Posting proof:
+
+| Item | Value | Source |
+|---|---|---|
+| Server document type | `INTERNAL_PURCHASE_CONSIGNMENT_INVOICE`, short code `CSGINV` | `InternalPurchaseConsignmentInvoiceDataConsistencyObject` L15; `GenericDocServerDocTypeEnum` L60 |
+| Amount signum | **−1** (purchase direction) | DCO L17; validated on create and update by `checkAmountSignum` (DCO L20–L33) |
+| Quantity signum | **0** — no stock movement | DCO L16 and L35–L42; `fillQuantitySignumAndAmountSignumForLine` sets the line's quantity signum unconditionally (`GenericDocumentDataConsistencyObject` L1215–L1219). The applet sends `1` from its own `AppletConstants` (`line-item-add.component.ts` L183); the server overwrites it. The document type does not appear in `ServerDocTypes` at all |
+| Dr/Cr equation | Item and tax lines: amount × amount signum (−1) → **debit** `PURCHASE` / `INPUT_TAX` (discounts → `PURCHASE_DISCOUNT`, returns → `PURCHASE_RETURN`). Balancing entity line → **credit** the supplier's resolved AR/AP account (`CREDITOR` by default). Then a second, self-balancing pair: **debit** `CONSIGNMENT_LIABILITY`, **credit** `CONSIGNMENT_STOCK`, both for the document total | `JournalPostingService` L95–L128, L322–L361, L397–L471; `JournalPostingTypeHandler` L53–L63 |
+| Which handler | The type has no entry of its own in `JournalPostingTypeHandler`, so the fallback applies: the name contains `PURCHASE`, so the `PURCHASE` handler is used | `JournalPostingService` L68–L82 |
+| GL precedence | Line GL → header GL → item-company link → company default, for the purchase and tax lines. `CONSIGNMENT_LIABILITY` and `CONSIGNMENT_STOCK` are taken **only** from the company default GL code link and each **throws** `MISSING_DEFAULT_GL_CODE: <code>` when unmapped. The creditor mapping throws the same way | `JournalPostingService` L326–L346, L400–L414, L436–L450 |
+| Stock processor | None. Quantity signum 0 writes no inventory transaction line and changes no balance | `StockBalanceHelper` treats the balance as quantity × quantity signum |
+| What VOID reverses | `updatePostingStatusToNonFinal` queues `BLG_ERP_VOID_GENERIC_DOCUMENT_PRIMARY_PROCESSOR`, which fans out to the subscribed void processors — the journal is reversed, knocked-off GRN lines are reopened, contra is reversed, and the document is removed from the e-invoice queue and from historical aging. There are no stock lines to reverse | `GenericDocumentService` L663–L706 |
+
+Two consequences worth knowing. First, a Consignment GRN posts **credit** `CONSIGNMENT_LIABILITY` /
+**debit** `CONSIGNMENT_STOCK`; this document posts exactly the opposite pair, which is how the
+consignment holding is cleared as stock is bought. If a company is missing either default GL code
+the GRN and the billing document both fail at FINAL with the same message. Second, because the
+document total drives that pair, billing a *part* of a GRN clears only that part of the holding —
+the rest stays as consignment stock against consignment liability until it is billed or returned.
+
+## Related applets
+
+- [Consignment GRN (Internal)](/applets/inventory-workflow/internal-consignment-grn-applet/) — the source of the lines this document bills; its open lines are what the KO For grid reads, and it cannot be voided once billed.
+- [Consignment GIN (Internal)](/applets/inventory-workflow/internal-consignment-gin-applet/) — the outbound half of the consignment stock pair.
+- [Consignment Return (Internal)](/applets/purchase-workflow/internal-consignment-return-applet/) — the alternative to billing: send the stock back instead of buying it.
+- [Consignment Purchase Order](/applets/purchase-workflow/internal-consignment-purchase-order-applet/) — orders consignment stock from the consignor.
+- [Consignor Purchase Billing (Internal)](/applets/purchase-workflow/internal-consignor-purchase-billing-applet/) — the period-level record of what is owed to a consignor; writes its own tables and posts nothing.
+- [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) — the applet this one is cloned from; the file-import endpoint is shared with it.
+- [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) — a link to one of these blocks VOID.
+- [Customer Consignment](/applets/sales-workflow/customer-consignment-applet/) — the sales-side consignment record, for stock you own that sits at someone else's location.
+- [Supplier](/applets/master-data/supplier-applet-1/) — the consignor.
+- [Organisation](/applets/master-data/organisation-applet/) — branches, locations, document numbering, knock-off configuration and the company posting configuration.
+- [Chart of Accounts](/applets/master-data/chart-of-account-applet/) — the `CONSIGNMENT_LIABILITY`, `CONSIGNMENT_STOCK`, `PURCHASE`, `INPUT_TAX` and creditor default GL codes.
+- [Tax Configuration](/applets/master-data/tax-configuration-applet/) — line tax codes.
+- [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/) — the items the add-line search returns.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| KO For → Consignment Purchase GRN grid is empty although finalised consignment GRNs exist | The company has no **enabled** knock-off flow from `INTERNAL_PURCHASE_CONSIGNMENT_GRN` to `INTERNAL_PURCHASE_CONSIGNMENT_INVOICE`, so nothing was written to the line open queue | Enable the flow in Organisation → Company → Knock Off Configuration, then re-finalise or repair the queue |
+| KO For grid goes empty as soon as you use its advanced search | The search sub-query filters on `server_doc_type_1 = 'INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE'` while the grid itself loads `INTERNAL_PURCHASE_CONSIGNMENT_GRN`; the two sets never intersect (`knock-off-grn.component.ts` L555) | Clear the search and filter with the grid's own column filters instead. Recorded as **P-0131** |
+| *The selected document contains a different entity/branch compared to the previous document* | A second KO row was picked whose supplier or branch differs from the first (`knock-off-grn.component.ts` L360–L380) | Raise one billing document per supplier and branch |
+| FINAL fails with `MISSING_DEFAULT_GL_CODE: CONSIGNMENT_LIABILITY` or `: CONSIGNMENT_STOCK` | Neither code falls back to a line or header GL code — both are read only from the company default GL code links, and both throw when absent | Map both in [Chart of Accounts](/applets/master-data/chart-of-account-applet/) |
+| FINAL fails with `MISSING_DEFAULT_GL_CODE` naming a creditor code | The supplier's AR/AP type resolves to a transaction code that has no company default GL code | Map it, or correct the supplier's AR/AP type |
+| FINAL fails with `TOTAL_DEBITS_AND_TOTAL_CREDITS_NOT_BALANCES` | A purchase or tax line could not resolve any GL code (line, header, item-company link and company default all empty) and was silently dropped from the journal | Set the GL code on the line, on the item-company link, or as a company default |
+| *This document has been posted* on pressing FINAL | The document is already `FINAL` | Refresh the listing |
+| *This document has not been finalized yet* on pressing VOID | The posting status is not `FINAL` | Use DISCARD for a draft |
+| *The invoice has already been linked with a purchase return* on pressing VOID | An `ACTIVE` document link joins this document to an `INTERNAL_PURCHASE_RETURN` | Void the purchase return first |
+| *The currency rate cannot be ZERO.* on SAVE | The document currency differs from the base currency and the rate is 0 | Enter a rate, or clear `CANNOT_EDIT_CURRENCY_RATE` if the field is locked |
+| *No Default Printable Selected* after a successful FINAL | `ENABLE_AUTO_POPUP` is on but no `PRINTABLE` default is set | Set one under Settings → Printable Format Settings |
+| SINGLE/MULTIPLE PRINT is greyed out | Same cause — the button is disabled while `PRINTABLE` is unset | As above |
+| The Issue Link tab always shows one row of sample data | The grid is a mock with hard-coded data | Ignore the tab; it does nothing. **P-0132** |
+| A `HIDE_*` setting hides a field for everyone including administrators | The paired `SHOW_*` client-side permission has no definition row for this applet, so it can never be granted | Switch the setting back off; there is no per-role exception. **P-0134** |
+| No tab-hide toggles on Application Settings | The shared screen renders tab toggles only for applet codes in its `tabMappings`, and this one is absent | The keys keep whatever value the tenant already holds; there is no supported way to set them from the UI. **P-0133** |
+| Knock Off Settings cannot be found in the settings menu | Its menu entry is commented out although the route exists | Use Organisation → Company → Knock Off Configuration, which is what the tabs actually read |
+
+## Related documentation
+
+- [Consignment purchasing guide](/guides/purchasing-guides/consignment-purchasing/) — the end-to-end consignment process in user-guide voice.
+- [Purchasing module](/modules-v2/purchasing/) and [Financial Accounting module](/modules-v2/financial-accounting/).
