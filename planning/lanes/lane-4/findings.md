@@ -1489,3 +1489,70 @@ Also unreferenced and unused (left in place, not audited): `menu-category.png`, 
 - `kb/topics/supplier-maintenance.md` created (that slug is already referenced by `customer-maintenance.md`, `entity-applet.md`, `organisation-applet.md` and `stock-replenishment.md`).
 - Three new customer-repo pseudonyms were added to `kb/private/repo-pseudonyms.tsv` (gitignored, verified with `git check-ignore`): the mapping method `sha1(bare-slug)[:6]` was re-verified against three known pairs first. No real slug appears in `content/`, `kb/topics/`, the ledger or this file.
 - `tests/content-lint.sh` passes.
+
+---
+
+# Run 27 — Tax Configuration (master-data)
+
+Page: `content/en/applets/master-data/tax-configuration-applet.md` — registry `taxConfiguration` "Tax Configuration".
+Repo `blg-applet-wavelet-tax-config-applet` (HEAD 52247e1, 2026-03-15). Submodule present (`.gitmodules` → blg-shared-utilities), but gates.py was not needed: this applet does **not** use the shared `FieldConfigurationComponent` — its settings screens are applet-local.
+
+## Registry / naming mismatches (run 27)
+
+- **F-0040 confirmed and sharpened.** `bl_applet_hdr` has exactly **one** tax row: `taxConfiguration` "Tax Configuration", ACTIVE, TNT-USER, created 2021-07-27. Two wiki pages claim it:
+  - `content/en/applets/master-data/tax-configuration-applet.md` — **now the derived reference page** (this run). Slug matches the ~10 inbound links of the form `/applets/tax-configuration-applet/` that were **all broken** (no page held that alias); I added the alias, which fixes them.
+  - `content/en/applets/finance/tax-config-applet.md` — **not edited**. It holds `aliases: [/applets/tax-config-applet/]`, which is the registry's `documentation_url`, so the product links into it today.
+  - **Decision for Vincent:** merge finance → master-data (recommended: the master-data folder is where the other master-data applets live and the registry name is "Tax Configuration"), delete the finance page and move the `/applets/tax-config-applet/` alias onto the master-data page. I did **not** move the alias, because two pages cannot hold it at once and I may not edit outside my lane. Until then the two pages disagree.
+  - The finance page's claims that do **not** survive the code: tax codes mapped to chart of accounts *in this applet*; compound and cascading taxes; effective-dated rate history; multi-jurisdiction beyond the four hard-coded countries; e-filing integration; "audit trail" (the Applet Log screen is an empty placeholder card); "deactivate obsolete tax codes safely" (INACTIVE does not remove a code from document drop-downs).
+- The old master-data page was pure invention (500 tax codes per jurisdiction, <100 ms calculations, 1,000+ concurrent users, tax-authority e-filing, Singapore 8% GST examples). All removed.
+
+## What this applet actually is (run 27)
+
+1. **Master data with no calculation and no mapping.** One row of `bl_fi_cfg_tax_code` per code. There is no GL field on a tax code. The tax journal line's GL code and subledger come from the **company default GL code link** whose `txn_code` matches the document type's `PNS_TAX` handler — `OUTPUT_TAX` on sales-side types, `INPUT_TAX` on purchase-side types (`JournalPostingTypeHandler` L49/L60/L71/L80/L91/L102). Any guide or page saying "map your tax codes to accounts here" is wrong.
+2. **The half-configured-mapping silent failure applies to tax too** (same shape as run 26's creditor finding): `JournalPostingService` L271 appends the tax line only `if` a **subledger** guid resolved. Missing link *or* link with a null subledger ⇒ tax line dropped, no error, FINAL later fails with `TOTAL_DEBITS_AND_TOTAL_CREDITS_NOT_BALANCES`.
+3. **No working applet setting at all.** Field Settings is an unbound 8-toggle stub (identical document-applet residue to Merchant Admin run 16, Shipping Pricebook run 20 and Supplier run 26); Default Selection — both the applet and the personal copy — never receives the applet container it writes into and its `save` output is unbound, and `DEFAULT_BRANCH`/`DEFAULT_LOCATION` are read by nothing. Personalization → Field Settings 404s. The only "configuration" is the tax-code data itself.
+4. **Two applets write the same table, inconsistently.** The MY-SST applet's Tax Code create screen writes `bl_fi_cfg_tax_code` with `tax_country` = **alpha-3 code** ("MYS") and an **unrounded** rate, and puts the tariff code in the `tax_tariff_code` column. Tax Configuration writes the **country name** ("Malaysia"), rounds the rate to two decimals (so fractional percentages collapse to whole percent) and puts the tariff code in `property_json`. Tax Configuration's edit screen dereferences the country lookup without a null check, so a row created in MY-SST cannot be opened in Tax Configuration.
+5. **INACTIVE is not retirement.** The applet's listing filters to ACTIVE by default; every server read behind the document drop-downs filters only `status != 'DELETED'`. And Delete is soft while the `tax_code` unique constraint is not partial — deleting a code permanently consumes the string.
+
+## Bugs and product questions (run 27)
+
+- **`VAT-SALES` can never be selected on a sales document.** `blg-shared-utilities/utilities/sst/sst.component.ts` L60-64 keeps only `SST-SLS-OUTPUT`, `SST-SVC-OUTPUT`, `GST-OUTPUT` when `txnType === 'SALES'`, and otherwise anything containing `INPUT` or `PURCHASE`. `VAT-PURCHASE` slips onto the purchase side only because its name contains "PURCHASE". Singapore / Thailand / Indonesia tenants therefore have no sales VAT code at line level. **Needs a product decision** — the fix is one string in the shared component.
+- **Fractional tax rates are silently rounded to whole percent** in Tax Configuration (`+(rate/100).toFixed(2)` on both create and edit). 8.5% becomes 8% or 9%. MY-SST does not round. Worth aligning.
+- **Edit clears `is_input` for every input code.** `tax-config.mappers.ts formGroupToContainer` writes `}if (` instead of `} else if (`, so an INPUT code falls through into the OUTPUT branch's `else` and both flags end up false. Harmless today only because **nothing reads `is_input`/`is_output`** — no code sets those query criteria anywhere in the backend. Either wire them up or drop the columns.
+- **`GenericDocumentDataConsistencyObject` L1004 NPEs** on `if (Objects.nonNull(currentTaxRate) || currentTaxRate.compareTo(newTaxRate) != 0)` when a line carries a tax code but a null `tax_gst_rate` — reachable from the import and API paths, not from the UI. Should be `Objects.isNull(...) ||`.
+- **`DropDownController.getTaxCodes` (L472) passes `bl_fi_mst_cashbook_hdr.class` as the permission target table** while querying `bl_fi_cfg_tax_code` — a copy/paste that scopes the business-context permission check against the cashbook table.
+- **Delete has no confirmation dialog** and is irreversible in practice (soft delete + non-partial unique constraint on `tax_code`).
+- **Mislabelled validation hint:** the Tax Code field's error hint on the create screen reads *"Please insert tax name"* (visible in the shipped screenshot).
+- **Dead UI:** `settings/webhook` and `settings/feature-visibility` have routes but no menu entry; `settings/applet-log` is a card with the heading "Audit Trail" and nothing else; the shared settings shell's *Permission Wizard* link has no route here and lands on the applet 404; the `TAX_COUNTRY` constant offers 23 countries to the advanced-search filter while only 4 can ever exist; the advanced-search **Tax Type** filter always queries `tax_gst_type`, so the four withholding types it offers can never match.
+
+## Cross-lane link requests (run 27)
+
+- `content/en/applets/finance/sst-applet.md` (lane 2/3 — finance folder) — state that its **Tax Code** screens write the *same* `bl_fi_cfg_tax_code` rows as Tax Configuration, and add the three divergences: `tax_country` alpha-3 vs full name, unrounded vs 2-dp rate, `tax_tariff_code` column vs `property_json`. Add `tax-configuration-applet` to `related_applets`.
+- `content/en/applets/master-data/organisation-applet.md` (lane 4, done) — the company Default GL Code section should name `OUTPUT_TAX` and `INPUT_TAX` explicitly as *the* tax account mapping, and carry the silent half-configured failure (row present, subledger null ⇒ tax line dropped, journal unbalanced, no error).
+- `content/en/applets/master-data/chart-of-account-applet.md` (lane 4, done) — same one-liner from the GL side; add `tax-configuration-applet` to `related_applets` (already present).
+- `content/en/applets/e-invoice/my-e-invoice-admin-applet.md` (lane 3) — the submitted line `tax_type` is the **e-Invoice taxable type code**, not the document line's tax type: `MyEInvoiceToIRBMappingService` L66 sets it from `tax_gst_type` and L86 immediately overwrites it. Only the rate and amount come from Tax Configuration.
+- `content/en/applets/sales-workflow/internal-sales-invoice-applet.md`, `content/en/applets/finance/internal-purchase-invoice-applet.md`, and every other page documenting a taxed line (lanes 2/3) — add `tax-configuration-applet` to `related_applets`, and state the drop-down filter rule (`app-sst` sales list = `SST-SLS-OUTPUT` / `SST-SVC-OUTPUT` / `GST-OUTPUT`; everything else = contains `INPUT` or `PURCHASE`; `app-wht` = any non-empty `tax_wht_type`) plus the "rate is snapshotted on save" rule.
+- `content/en/applets/master-data/doc-item-maintenance-applet.md` and `inv-item-maintenance-applet.md` (lane 4, done) — one line that the item default tax code must exist in Tax Configuration and that an inactive code still pre-fills.
+- **Modules owner** — `content/en/modules/purchasing/_index.md` L79, `content/en/modules/hr-payroll/_index.md` L79, `content/en/modules/core/_index.md` L256-257, `content/en/modules/financial-accounting/_index.md` L73, `content/en/modules/financial-accounting.md` L24-25, `content/en/modules/sales-crm/_index.md` L86, `content/en/modules/inventory/_index.md` L88, `content/en/applets/_index.md` L83-84, `content/en/applets/applet-catalog.md` L79/L86, `content/en/applets/ecommerce/ecommerce-catalog-applet.md` L41, `content/en/applets/finance/general-ledger-applet.md` L48, `content/en/applets/finance/accounts-receivable-applet.md` L42 — these link `/applets/tax-configuration-applet/` (now resolved by the new alias) **and** `/applets/tax-config-applet/` as if they were two different applets ("Standard tax setup" vs "Advanced tax configuration"). There is one applet. After the F-0040 merge, collapse every pair to a single link.
+- **Non-existent pages linked from the old page** (now removed, but they are still linked from elsewhere in the finance folder): `/applets/tax-reporting-applet/`, `/applets/tax-payment-applet/`, `/applets/tax-reconciliation-applet/`, `/applets/sales-tax-applet/`, `/applets/purchase-tax-applet/`, `/applets/ecommerce-tax-applet/`, `/applets/supplier-maintenance-applet/`. None has a registry row. Worth a repo-wide sweep.
+
+## Screenshots (run 27)
+
+Kept (4 of 6 in `static/images/tax-config-applet/`):
+- `tax-config-listing.png` — the listing on a tenant labelled TESTING with the standard Royal Malaysian Customs code set (IMS0, SRG5, TXG0, ZRE…). No personal names, e-mails or hostnames. Also documents two real behaviours: the 50-row page ("1 – 50 of 57") and blank *Tax Type Name* for the `SVC-MY INPUT` / `SVC-MY OUTPUT` rows whose type is outside the applet's 10-entry map.
+- `listing-search-filter.png` — the advanced-search panel (Country, Tax Type, Updated Date range behind a checkbox, Status).
+- `create-tax-type-dropdown.png` — Create with the Tax Type list open; also captures the mislabelled *"Please insert tax name"* hint under Tax Code.
+- `edit-tax-code.png` — Edit with the audit block and the Delete button.
+
+Dropped:
+- `tax-config-overview-infographic.png` — AI marketing infographic (same decision as Pricebook, Stock Balance, Stock Conversion, Stock Replenishment, Supplier). Quarantine.
+- `edit-tax-type-dropdown.png` — redundant with the create-screen drop-down and adds nothing.
+
+Recapture list (clean demo tenant): the Settings → Field Settings and Default Selection screens (to show what the stubs look like), and Personalization.
+
+## Notes for the loop
+
+- `kb/topics/tax-configuration.md` created — that is the slug six existing topics already reference (`merchant-admin`, `customer-maintenance`, `entity-applet`, `doc-item-maintenance`, `non-stock-and-trade-in`, `supplier-maintenance`); `e-invoice.md` uses `tax-codes`, which should be pointed at this file.
+- METHOD note for §27's neighbourhood: **a `.gitmodules` entry does not mean the applet uses the shared settings screen.** Tax Configuration has the submodule and still defines its own `FieldConfigurationComponent` under `components/settings-container/`. Classify by what `app.routing.ts` imports, not by the submodule's presence.
+- METHOD note: **an applet-local settings screen can be a non-functional stub.** Check for a form control / model binding and a click handler on SAVE before documenting a single toggle. Three of the last five master-data applets shipped the same unbound 8-toggle "Lines Settings / Department Settings" panel.
+- `tests/content-lint.sh` passes.

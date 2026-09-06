@@ -5,7 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/master-data/tax-configuration-applet.md",
   "content/en/applets/inventory-workflow/warehouse-management-applet.md",
   "content/en/applets/master-data/workflow-design-applet.md"
  ],
@@ -145,6 +144,12 @@
    "date": "2026-09-06",
    "run": 26,
    "note": "Registry supplier-applet 'Supplier' (title changed from 'Supplier Applet'; registry has no documentation_url, no aliases existed or were needed - all inbound links already use /applets/master-data/supplier-applet-1/). Applet-LOCAL settings + a second Default Selection screen writing the same APPLET_SETTINGS row; gates.py does not apply (the repo vendors its own shared-utilities copy, no submodule). Satisfied 11 queued back-link requests from lanes 2/3/4. Key corrections: create inserts a TEMP entity row before you type (stub accumulation); supplier credit terms and limits are NOT enforced on the purchase side (backend proof); export omits 6 columns the import accepts. 11 of 16 screenshots dropped for privacy - recapture list in findings run 26."
+  },
+  {
+   "page": "content/en/applets/master-data/tax-configuration-applet.md",
+   "date": "2026-09-06",
+   "run": 27,
+   "note": "Registry taxConfiguration 'Tax Configuration' (title changed from 'Tax Configuration Applet'). Alias /applets/tax-configuration-applet/ added - it was unclaimed and ~10 module/applet pages already link to it. Full rewrite of an invented page. No working applet setting (Field Settings unbound stub; Default Selection unwired, applet and personal). Tax GL mapping is the company OUTPUT_TAX/INPUT_TAX default GL link, not the tax code; half-configured link drops the tax journal line silently. MY-SST applet writes the same bl_fi_cfg_tax_code table with a different tax_country encoding and no rate rounding. F-0040: finance/tax-config-applet.md is the duplicate (holds the registry documentation_url alias) - not edited, merge recommendation in findings run 27. 4 of 6 screenshots kept."
   }
  ],
  "skipped": [
