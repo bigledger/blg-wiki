@@ -3,7 +3,7 @@ topic: stock-conversion-applet
 aliases: [stock conversion, kitting, de-kitting, re-packing, bl_inv_stock_conversion_hdr, bl_inv_stock_conversion_line, Stock Conversion Applet doc type]
 applets: [stock_conversion_applet]
 modules: [inventory, manufacturing]
-related: [stock-balance, stock-adjustment, stock-take, stock-availability, stock-report, moving-average-cost, serial-number-tracking, internal-packing-order-applet, inv-item-maintenance, organisation-applet]
+related: [stock-balance, stock-adjustment, stock-take, stock-availability, stock-report, moving-average-cost, serial-number-tracking, internal-packing-order-applet, inv-item-maintenance, organisation-applet, external-generic-documents]
 wiki:
   - content/en/applets/inventory-workflow/stock-conversion-applet.md
 status: growing

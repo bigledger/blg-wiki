@@ -3,7 +3,7 @@ topic: applet-registry
 aliases: [bl_applet_hdr, applet registration, applet store record, vendor registry, module-applet link]
 applets: [developer-sysadmin-applet, PlatformSysAdmin, tenant_admin_applet]
 modules: []
-related: [applet-store, tenant-admin, applet-permissions, applet-settings]
+related: [applet-store, tenant-admin, applet-permissions, applet-settings, external-generic-documents]
 wiki:
   - content/en/applets/integrations/developer-sysadmin-applet.md
   - content/en/applets/applet-store.md

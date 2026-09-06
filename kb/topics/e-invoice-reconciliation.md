@@ -3,7 +3,7 @@ topic: e-invoice-reconciliation
 aliases: [tallying, BLG vs e-invoice, discrepancies report, from_irb, ghost documents, unsubmitted documents, month-end tally, LHDN pull]
 applets: [myIEnvoiceAdminApplet]
 modules: [e-invoice]
-related: [e-invoice, e-invoice-consolidation, e-invoice-submission-errors, e-invoice-self-billed, e-invoice-cancellation-and-credit-notes, emp-etl-sync, sales-report-applet, my-e-invoice-admin-applet]
+related: [e-invoice, e-invoice-consolidation, e-invoice-submission-errors, e-invoice-self-billed, e-invoice-cancellation-and-credit-notes, emp-etl-sync, sales-report-applet, my-e-invoice-admin-applet, external-generic-documents]
 wiki:
   - content/en/applets/e-invoice/my-e-invoice-admin-applet.md
   - content/en/guides/einvoice-guides/einvoice-validation.md

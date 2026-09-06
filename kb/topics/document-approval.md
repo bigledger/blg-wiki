@@ -3,7 +3,7 @@ topic: document-approval
 aliases: [generic-document-approval, generic doc approval, approval settings, approval request, approval sequence, multi-level approval, bl_fi_generic_doc_approval]
 applets: [internal_purchase_order_applet, internal_purchase_requisition_applet, internal_stock_requisition_applet]
 modules: [purchasing, inventory, core]
-related: [workflow-design, internal-purchase-order-applet, internal-purchase-requisition-applet, employee-applet, entity-applet, claim-applet, budgetary-applet, client-side-permissions, applet-settings-storage]
+related: [workflow-design, internal-purchase-order-applet, internal-purchase-requisition-applet, employee-applet, entity-applet, claim-applet, budgetary-applet, client-side-permissions, applet-settings-storage, external-generic-documents]
 wiki:
   - content/en/applets/purchase-workflow/internal-purchase-order-applet.md
   - content/en/applets/purchase-workflow/internal-purchase-requisition-applet.md

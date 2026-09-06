@@ -3,7 +3,7 @@ topic: warehouse-management
 aliases: [WMS, warehouse management system, picking and packing, putaway, space container allocation]
 applets: [warehouse_management_system_applet, erp_internal_sales_order_applet_v2, stockTransferApplet]
 modules: [inventory]
-related: [stock-balance, stock-reservation, stock-replenishment, consignee-stock-transfer, doc-item-maintenance]
+related: [stock-balance, stock-reservation, stock-replenishment, consignee-stock-transfer, doc-item-maintenance, external-generic-documents]
 wiki:
   - content/en/applets/inventory-workflow/warehouse-management-applet.md
 status: growing

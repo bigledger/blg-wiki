@@ -9,7 +9,22 @@ tags:
 - document-workflow
 - inventory-tracking
 weight: 45
+draft: true
+unpublished: 2026-09-06
+unpublished_reason: "ADR-0008 tier 1 + ADR-0002/ADR-0007. No ACTIVE row in bl_applet_hdr under any name, so no tenant can install or open this applet; and the source repo is a half-converted Stock Conversion clone whose create, edit, FINAL and posting effects are all commented out. Evidence and the full text: planning/worklog/2026-09-06-external-sales-invoice-applet.md"
 ---
+
+<!--
+UNPUBLISHED 2026-09-06 under ADR-0008. Do not re-publish this text.
+
+Every actionable claim below was checked against
+blg-applet-wavelet-external-sales-invoice-applet@222d5699 and blg-akaun-platform-java@1ff620ef
+and contradicted. There is no registry row, no line-item tab, no save, no FINAL, no GL posting,
+no serial numbers and no multi-source document linking in this applet. A correct page, if the
+applet is ever registered, has to be written from source from scratch.
+
+See planning/worklog/2026-09-06-external-sales-invoice-applet.md.
+-->
 
 ## Purpose and Overview
 
