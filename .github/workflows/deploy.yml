@@ -39,6 +39,9 @@ jobs:
       - name: Link check (offline, gated on tests/lychee-baseline.txt)
         run: tests/lychee-gate.sh
 
+      - name: Internal links resolved against the built tree
+        run: tests/internal-links.sh
+
       - name: Setup Node
         uses: actions/setup-node@v4
         with:

@@ -25,6 +25,12 @@ run_local() {
   blue '== Tier 1b: content lints =='
   if ! tests/content-lint.sh; then red 'Content lint FAILED'; FAIL=1; else green 'Content lints OK'; fi
 
+  blue '== Tier 2a: internal links resolved against the built tree =='
+  if ! tests/internal-links.sh; then
+    red 'internal links: new broken targets'
+    fail=1
+  fi
+
   blue '== Tier 2: lychee against built site (gated on tests/lychee-baseline.txt) =='
   if ! tests/lychee-gate.sh; then
     red 'lychee: new broken links'
