@@ -492,7 +492,7 @@ The member lookup should complete within 500 milliseconds, points calculation wi
 
 POS terminals implement security measures including encrypted communication using TLS 1.2 or higher, secure credential storage for API keys, cashier authentication for sensitive operations, and audit logging of all membership transactions.
 
-API keys used by POS terminals have restricted permissions limited to member lookup, points operations, and redemption processing. Administrative functions are not accessible from POS terminals.
+A BigLedger access key carries the permissions of the user it was issued for, and nothing narrows it further — there is no per-key scope or endpoint restriction. Restricting what a POS terminal can reach therefore means issuing its key against a dedicated user whose tenant permissions cover member lookup, points operations and redemption processing and nothing else. See [Authentication](/developers/authentication/).
 
 ## Testing and Validation
 

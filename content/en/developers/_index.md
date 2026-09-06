@@ -17,7 +17,7 @@ different toolchains and different starting points. Pick yours.
 
 {{< cards >}}
 {{< card link="/developers/applets/" title="Build an applet" icon="cube" subtitle="A screen that runs inside BigLedger, alongside the built-in ones. Angular, loaded by the shell at runtime." >}}
-{{< card link="#integrate-an-external-system" title="Integrate an external system" icon="link" subtitle="Move data between your own system and BigLedger over HTTP." >}}
+{{< card link="/developers/integration/" title="Integrate an external system" icon="link" subtitle="Move data between your own system and BigLedger over HTTP. Access keys, REST, webhooks." >}}
 {{< /cards >}}
 
 ---
@@ -45,15 +45,22 @@ hand-offs fall and what to ask for.
 
 ## Integrate an external system {#integrate-an-external-system}
 
-{{< callout type="warning" >}}
-**This path is being rewritten.** An audit on 2026-09-06 found that most of the REST reference in
-this section described endpoints that do not exist, and those pages have been unpublished rather
-than left up. What remains below is verified against the platform source. The replacement
-integration guide is in progress; until it lands, treat anything not linked from this page as
-absent rather than as documentation you have not found.
-{{< /callout >}}
+Your own system — a storefront, a warehouse tool, a marketplace connector, a data warehouse —
+exchanging data with BigLedger over HTTPS. One REST API, JSON in and JSON out, a self-service
+credential, and around 950 server-to-server endpoints covering roughly 287 resources.
 
-What is verified and published today:
+{{< cards >}}
+{{< card link="/developers/integration/getting-started/" title="Getting Started" icon="play" subtitle="Sign in, issue an access key, and read and write your first records - end to end." >}}
+{{< card link="/developers/integration/data-api/" title="Data API" icon="server" subtitle="Path grammar, the resources available, paging, envelopes, limits and error codes." >}}
+{{< card link="/developers/authentication/" title="Authentication" icon="key" subtitle="Access keys, tokens, the tenantCode header and every failure code." >}}
+{{< card link="/developers/webhooks/" title="Webhooks" icon="bell" subtitle="The event path out of BigLedger - and the four things it does not do." >}}
+{{< /cards >}}
+
+**What you need from us:** a tenant code, and a user in that tenant with the right permissions.
+The access key itself is one API call you make yourself.
+[Integrate an external system](/developers/integration/) says where each hand-off falls.
+
+### Module references
 
 {{< cards >}}
 {{< card link="/developers/api-reference/einvoice-api-reference/" title="E-Invoice API" icon="document-text" subtitle="Malaysian e-Invoice submission, cancellation, rejection, notifications and document queries. Verified endpoint by endpoint." >}}
@@ -62,22 +69,14 @@ What is verified and published today:
 {{< card link="/developers/platform-library/" title="Platform Library" icon="server" subtitle="A different job again: building a backend application that depends on the BigLedger Java libraries." >}}
 {{< /cards >}}
 
-### What is true about the API, in one paragraph
-
-The API host is `https://api.akaun.com/`. Every endpoint sits under `/core2/`, and paths are
-composed as `core2/{tnt|platform}/{dm|ms}/{module}/{resource}/{access-endpoint}` — for example
-`core2/dm/companies/backoffice-ep`. The final segment selects the category of caller: `backoffice-ep`
-for staff users working in the shell, `login-ep` and `login-entity-ep` for signed-in users and
-external parties acting on their own records, `public-ep` where a resource is deliberately open,
-and `etl-ep` for server-to-server integrations. Requests carry a bearer token in `Authorization`
-and the tenant in a `tenantCode` header. Responses are `{ code, message, data }`, where `code` is a
-platform response code rather than an HTTP status.
-
-### What is not written yet
-
-Integration credentials and how to obtain one; the `etl-ep` surface; webhooks; and a general REST
-reference beyond the two modules above. If you need any of these now, ask rather than guess —
-[developers@bigledger.com](mailto:developers@bigledger.com).
+{{< callout type="warning" >}}
+**Parts of the module-level API reference are still being rewritten.** An audit on 6 September 2026
+found that several pages described endpoints that do not exist, and those pages were unpublished
+rather than left up. Everything linked from this page is verified against the platform source.
+Treat anything not linked from here as absent rather than as documentation you have not found —
+and if you need a route that is not covered,
+[ask](mailto:developers@bigledger.com) rather than guess.
+{{< /callout >}}
 
 ---
 

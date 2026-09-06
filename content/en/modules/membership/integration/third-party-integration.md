@@ -2,6 +2,7 @@
 title: "Third-Party Integration"
 description: "Connect external systems and services to the Membership Module"
 weight: 4
+draft: true  # unpublished 2026-09-06 (ADR-0008, tier 1): the entire REST/webhook API it documents is invented - no /members or /webhooks endpoints, no member.created/points.earned events, no HMAC signature. See planning/worklog/2026-09-06-membership-third-party-integration.md
 ---
 
 The Membership Module provides flexible integration capabilities for connecting with external systems including CRM platforms, marketing automation tools, analytics services, payment processors, and custom applications. These integrations enable comprehensive business ecosystems where membership data flows seamlessly across platforms.
