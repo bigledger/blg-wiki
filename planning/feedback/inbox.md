@@ -762,3 +762,12 @@ with the analysis, the changes made, and the commit hash.
 ### cross-lane correction for lane 3
 - [ ] F-0209 (2026-09-06) Lane 3's claimed `default_einvoice_address` precedence "shipping → billing → main" does NOT exist on the supplier side (the flag is set explicitly from the custom address type). Re-check the claim on the customer page before it is repeated.
 
+## From Lane 4 run 27 — Tax Configuration (2026-09-06)
+
+### F-0040 sharpened — the product's own doc link lands on the wrong page
+- [ ] F-0210 (2026-09-06) One registry row (`taxConfiguration`), two wiki pages. master-data/tax-configuration-applet.md is now the derived reference and holds the new alias /applets/tax-configuration-applet/ (which ~12 module/applet pages were linking to as a 404). finance/tax-config-applet.md holds /applets/tax-config-applet/ — the registry's own documentation_url — and is NOT derived. Two pages cannot hold one alias. **Vincent: approve merging finance → master-data and moving that alias**; until then the in-product Documentation button opens the un-derived page.
+
+### product (tax) — user-visible defects
+- [ ] F-0211 (2026-09-06) `VAT-SALES` can never be selected on a sales document (blg-shared-utilities sst.component.ts keeps only SST-SLS-OUTPUT / SST-SVC-OUTPUT / GST-OUTPUT on the sales side; VAT-PURCHASE only passes because its name contains "PURCHASE") — Singapore/Thailand/Indonesia tenants have no line-level sales VAT code. One-string fix. Fractional rates are silently rounded to whole percent in Tax Configuration but not in MY-SST (8.5% → 8 or 9). Delete is irreversible in practice (soft delete + non-partial unique constraint permanently consumes the code) with no confirmation dialog. MY-SST and Tax Configuration write bl_fi_cfg_tax_code incompatibly (alpha-3 vs full country name; unrounded vs 2 dp), so MY-SST rows cannot be opened in Tax Configuration (null-check missing).
+- [ ] F-0212 (2026-09-06) Tax GL mapping is not in the tax applet: the tax journal line takes GL + subledger from the company default GL link for the doc type's PNS_TAX handler (OUTPUT_TAX / INPUT_TAX). A link with a null subledger drops the tax line silently and FINAL later fails TOTAL_DEBITS_AND_TOTAL_CREDITS_NOT_BALANCES — same silent-failure shape as F-0155. Seven linked applet pages have no registry row and no file (/applets/tax-reporting-applet/, /applets/sales-tax-applet/, …).
+

@@ -117,5 +117,10 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
 28. **Enumerate every component dispatching `saveMasterSettingsInit`** — a second settings screen can
     own keys the main screen has never heard of (Supplier: Default Selection writes ALLOWED_AR_AP_TYPES
     and SUPPLIER_DETAILS_TAB_ORDER; two more keys are reachable only through the inline gear).
-29. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
+29. **A `.gitmodules` entry does NOT mean the shared settings screen is in use** (refines §27): Tax
+    Configuration has the submodule and still defines its own local `FieldConfigurationComponent` —
+    the same unbound 8-toggle stub found in Merchant Admin, Shipping Pricebook and Supplier.
+    Classify by what `app.routing.ts` imports, and require a form binding + SAVE handler before
+    documenting any toggle.
+30. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.
