@@ -49,3 +49,11 @@ urgency: high      # high = work is stopped · medium = work continues degraded 
 **Why it blocks** — what is stopped or wrong until it is answered.
 **Options** — with a recommendation, so the answer can be one word.
 ```
+
+## Allocating ids — read this before adding a row
+
+Two agents added rows to `INDEX.md` concurrently on 2026-09-06 and both took the same id. If you
+are working while another unit might be, **claim your ids from the top of the file, not by reading
+the last row**: take the highest `Q-NNNN` that appears anywhere in the file, add a comfortable gap
+(ten is plenty), and use that block. A duplicate id is worse than a gap — a gap costs nothing, a
+duplicate makes the register untrustworthy the moment someone cites one.
