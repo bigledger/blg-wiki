@@ -56,3 +56,10 @@ is a file. Answer in any form; I will record it in `answered/` and act.
 | Q-0018 | Does the small **top-bar avatar** disqualify a screenshot? 232 images are quarantined; 16 kept images show only that. | The recapture backlog (F-0271) |
 | Q-0019 | What should happen long-term to the **archived UTM material** — rewrite generically for public sector, or leave archived? | (F-0277, now archived) |
 | Q-0020 | Should **`bl_applet_hdr.name` be normalised**? `mySST` is stored upper-case, so "title = registry name exactly" yields a shouting page title. | A wiki exception, or a data fix (F-0281) |
+
+## Added 2026-09-06 (later)
+
+| id | question | blocks |
+|---|---|---|
+| Q-0100 | **Does the top-bar avatar disqualify a screenshot?** My recommendation: **no** — measured, it is roughly 40×40 px in a 1900 px-wide capture; a person is visible but not identifiable, which is a different thing from the cases we did quarantine (full names in grids, WhatsApp transcripts, mobile numbers, a full-size profile photo as the page's subject). **943 screenshots are currently published** and nearly all carry it; treating it as disqualifying would empty the wiki of images. Proposed rule: not disqualifying on its own; if you want it gone it is cheap to batch-blur, because the avatar sits at a fixed position in the app bar. Acting on the recommendation unless you say otherwise. | the recapture backlog, and every future screenshot decision |
+| Q-0101 | **ADR-0007 is still `proposed` and the built-but-unregistered list is now eleven** — and the newest four are the ones that *move stock* (`INTERNAL_SALES_GIN_STOCK_OUT`, `INTERNAL_SALES_GRN_STOCK_IN`, `INTERNAL_SALES_INVOICE_NO_STOCK_OUT`, plus delivery-order processing). A customer installing the registered "Sales GIN (Internal)" expecting a warehouse issue document gets a record-keeping form instead. This is no longer a documentation question. | four pages left live pending your call, and the whole ADR |
