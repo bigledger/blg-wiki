@@ -5,6 +5,7 @@ tags:
 - user-guide
 title: Accounting APIs
 weight: 10
+draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
 Complete accounting operations including chart of accounts, journal entries, and financial reporting. All accounting operations follow double-entry bookkeeping principles.

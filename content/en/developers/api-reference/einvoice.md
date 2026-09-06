@@ -5,6 +5,7 @@ tags:
 - user-guide
 title: E-Invoice APIs
 weight: 20
+draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
 PEPPOL and MyInvois compliance with automated invoice validation, formatting, and submission to government portals. Ensure compliance with Malaysian LHDN requirements and international PEPPOL standards.

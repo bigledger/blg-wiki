@@ -7,6 +7,7 @@ tags:
 - examples
 title: Tutorials & Integration Guides
 weight: 40
+draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
 Comprehensive tutorials and integration guides covering common scenarios, best practices, and real-world implementations with BigLedger APIs.

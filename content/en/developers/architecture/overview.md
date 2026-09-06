@@ -7,6 +7,7 @@ tags:
 - scalability
 title: System Architecture Overview
 weight: 70
+draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
 # BigLedger System Architecture

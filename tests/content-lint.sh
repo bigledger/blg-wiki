@@ -19,6 +19,11 @@ check "product is not described as blockchain"  -iE 'blockchain|区块链|بلو
 malay_hits=$(grep -rlwiE 'bisa|fitur|bisnis|inventaris|mengelola|pengiriman|melacak|kantor|uang|unduh|silakan|karena|pengaturan' content/ms --include='*.md' 2>/dev/null | grep -vxF -f <(allow malay) | head -20)
 if [ -n "$malay_hits" ]; then say "FAIL: Malay pages contain Indonesian-only words (not in allowlist)"; say "$malay_hits" | sed 's/^/  /'; fail=1; else say "ok:   Malay pages contain no Indonesian-only words (allowlisted: $(allow malay | wc -l))"; fi
 check "no customer-specific repo slugs in content"  -E 'blg-sd-[a-z0-9-]+|BigLedger-Support/' content kb/topics kb/research --include='*.md'
+# the legacy core1 API surface must not appear in published pages (drafts are excluded)
+legacy=$(grep -rlE '/api/v1/|\bcore1\b' content --include='*.md' 2>/dev/null | while read -r f; do
+  grep -q '^draft: true' "$f" || echo "$f"; done | head -20)
+if [ -n "$legacy" ]; then say "FAIL: legacy core1 / /api/v1 surface in published pages"; say "$legacy" | sed 's/^/  /'; fail=1; else say "ok:   no legacy core1 surface in published pages"; fi
+
 check "no named prospect or customer organisations"  -E 'Universiti Teknologi|\bUTM\b|Inter-PTJ' content --include='*.md'
 check "no blockchain-era vocabulary"              -iE 'smart contract|wallet api|crypto wallet' content --include='*.md'
 check "no mojibake (UTF-8 read as cp1252)"      -E 'â€|Ã©|Ã¢' content --include='*.md'

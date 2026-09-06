@@ -4,6 +4,7 @@ tags:
 - user-guide
 title: Authentication & Authorization
 weight: 10
+draft: true  # unpublished 2026-09-06: mechanism is real, every documented detail is wrong; rewrite from source (F-0285/F-0286)
 ---
 
 BigLedger APIs use API key authentication with OAuth 2.0 support for secure access to your business data.

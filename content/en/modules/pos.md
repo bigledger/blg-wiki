@@ -421,53 +421,14 @@ Customer data flows seamlessly to CRM:
 
 ## API Reference
 
-### REST API Endpoints
+BigLedger's REST API is served under `/core2/`. POS operations are reached through the same
+generic-document endpoints as the rest of the platform rather than through a POS-specific API
+surface.
 
-```http
-# Create Sale
-POST /api/v1/pos/sales
-Content-Type: application/json
-
-{
-  "store_id": "STORE001",
-  "register_id": "REG001",
-  "items": [
-    {
-      "product_id": "PROD123",
-      "quantity": 2,
-      "price": 29.99
-    }
-  ],
-  "payment": {
-    "method": "card",
-    "amount": 59.98
-  }
-}
-
-# Get Sales Report
-GET /api/v1/pos/reports/sales?date=2024-01-01&store_id=STORE001
-
-# Process Return
-POST /api/v1/pos/returns
-{
-  "original_sale_id": "SALE123",
-  "items": ["ITEM1", "ITEM2"],
-  "reason": "defective"
-}
-```
-
-### Webhooks
-
-Available webhook events:
-
-```javascript
-{
-  "sale.completed": "Triggered when sale is finalized",
-  "return.processed": "Triggered when return is completed",
-  "shift.closed": "Triggered at shift end",
-  "inventory.low": "Triggered when stock below threshold"
-}
-```
+See **[Developers → API Reference](/developers/api-reference/)** for the route shape and the
+verified references. The module-by-module reference is being rewritten from the live route table;
+if you need the current POS routes before that lands, ask your BigLedger contact rather than
+working from a cached copy of an older page.
 
 ## Mobile POS
 

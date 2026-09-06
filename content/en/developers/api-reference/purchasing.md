@@ -7,6 +7,7 @@ tags:
 - suppliers
 title: Purchasing APIs
 weight: 60
+draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
 Complete API reference for BigLedger's purchasing and procurement module. Manage suppliers, purchase orders, bills, and streamline your procurement workflows.

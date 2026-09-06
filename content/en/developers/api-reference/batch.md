@@ -7,6 +7,7 @@ tags:
 - data-import
 title: Batch Operations API
 weight: 90
+draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
 Process large volumes of data efficiently with BigLedger's batch operation APIs. Perfect for data migrations, bulk imports, mass updates, and high-volume integrations.

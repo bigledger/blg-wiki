@@ -5,6 +5,7 @@ tags:
 - user-guide
 title: Sales & CRM APIs
 weight: 30
+draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
 Complete customer relationship management and sales operations including customers, contacts, sales orders, quotes, and invoicing.

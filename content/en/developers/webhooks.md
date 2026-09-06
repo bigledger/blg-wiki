@@ -7,6 +7,7 @@ tags:
 - notifications
 title: Webhooks
 weight: 30
+draft: true  # unpublished 2026-09-06: mechanism is real, every documented detail is wrong; rewrite from source (F-0285/F-0286)
 ---
 
 Comprehensive webhook system for real-time event notifications in BigLedger. Get instant notifications when business events occur, enabling seamless integration and automation.

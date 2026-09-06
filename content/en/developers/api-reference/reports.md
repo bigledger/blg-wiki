@@ -7,6 +7,7 @@ tags:
 - financial-reports
 title: Reporting APIs
 weight: 70
+draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
 Generate financial reports, analytics dashboards, and business intelligence data programmatically. Access the same reporting capabilities available in BigLedger's Angular interface through REST APIs.

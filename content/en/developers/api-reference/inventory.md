@@ -5,6 +5,7 @@ tags:
 - user-guide
 title: Inventory APIs
 weight: 40
+draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
 Complete inventory management including items, stock levels, transfers, adjustments, and real-time tracking across multiple locations.

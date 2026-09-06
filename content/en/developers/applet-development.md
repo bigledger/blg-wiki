@@ -7,6 +7,7 @@ tags:
 - platform-extensions
 title: Applet Development Guide
 weight: 60
+draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
 Build custom Angular applets that integrate seamlessly with the BigLedger platform. This comprehensive guide covers everything from development setup to deployment and distribution.

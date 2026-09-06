@@ -4,6 +4,7 @@ tags:
 - user-guide
 title: SDKs & Libraries
 weight: 35
+draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
 Official SDKs and libraries for popular programming languages. Build integrations faster with type-safe, well-documented libraries that handle authentication, rate limiting, and error handling automatically.

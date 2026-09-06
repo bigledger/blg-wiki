@@ -5,6 +5,7 @@ tags:
 - user-guide
 title: Error Handling
 weight: 90
+draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
 

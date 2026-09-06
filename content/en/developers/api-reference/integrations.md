@@ -7,6 +7,7 @@ tags:
 - connectors
 title: Integration APIs
 weight: 100
+draft: true  # unpublished 2026-09-06: documents endpoints that do not exist; rewrite from the real /core2/ mappings (F-0283)
 ---
 
 Connect BigLedger with external systems, marketplaces, and business applications through our comprehensive integration APIs. Built for seamless data synchronization and workflow automation.
