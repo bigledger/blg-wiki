@@ -1,10 +1,12 @@
 ---
 title: "API Reference"
-description: "Direct reference to the official Developer Claims API documentation."
+description: "Where the REST API for Claims data is documented."
 weight: 50
 bookCollapseSection: false
 ---
 
-For technical API documentation, authentication tokens, request/response schemas, and mobile OCR receipt scanning endpoints, refer to the official Developer API Reference:
+For the REST API — the path grammar, access endpoints, authentication, paging, response
+envelopes and error codes — see the developer integration path. There is one API for the whole
+platform; there is no separate Claims API.
 
-**[Developer Integration & Claims API Reference →](/developers/api-reference/integrations/)**
+**[Integrate an external system →](/developers/integration/)**

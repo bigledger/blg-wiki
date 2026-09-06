@@ -97,7 +97,7 @@ weight: 2
 - 流程自动化和编排
 - 工作流性能监控
 
-### 12. [Webhook应用程序](/zh/applets/webhook-applet/)
+### 12. Webhook应用程序
 **实时事件通知和系统集成**
 - 外部系统集成和通知
 - 事件驱动的工作流自动化
@@ -371,7 +371,6 @@ CP-Commerce模块包含所有13个核心模块应用程序（如上所列）。
 
 ### 集成文档
 - [API参考](/zh/developers/api-reference/)
-- [Webhook集成](/zh/applets/webhook-applet/)
 - [系统集成最佳实践](/zh/guides/advanced/integration-best-practices/)
 
 ### 支持资源

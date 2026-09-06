@@ -268,7 +268,7 @@ Purchase Order → Goods Receipt → Invoice Processing → Payment → Vendor U
 
 ### Advanced Topics
 - [Multi-Entity Accounting](/guides/advanced/multi-entity-accounting/)
-- [API Integration](/developers/api-reference/accounting/)
+- [API Integration](/developers/integration/)
 - [Custom Report Development](/guides/advanced/custom-reporting/)
 
 ## Next Steps

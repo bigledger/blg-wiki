@@ -21,7 +21,7 @@ This endpoint retrieves the current point balance for members based on filtering
 
 ```bash
 postman request 'https://api.akaun.com/core2/tnt/dm/crm/membership-points-txn/current-balance/query?calcTotalRecords=true&membership_hdr_guid=912f340d-159f-4830-b102-4b4452eef834' \
-  --header 'Authorization: eyJhbGciOiJSUzI1NiJ9.eyJzdWJqZWN0R3VpZCI6ImE5ODJlMTQ4LTMwMjYtNDVkYi1iMGU1LTA3NTAwM2Q1ZDNhNCIsImFwcENvZGUiOiIiLCJ0ZW5hbnRDb2RlIjoiIiwic3lzQWRtaW5HdWlkIjoiMWRkNDU1NmMtNDY2NC00MWViLTlmZmItZTM4MWJlNDdlOTc1Iiwic3lzQWRtaW5SYW5rIjoiQURNSU4iLCJhcHBsZXRMb2dpblN1YmplY3RMaW5rR3VpZCI6IiIsImFwcGxldEd1aWQiOiIiLCJ0ZW5hbnRHdWlkIjoiIiwiYXBwbGV0TG9naW5TdWJqZWN0UmFuayI6IiIsInJlZ2lzdHJhdGlvblRva2VuU3RhcnREYXRlVGltZSI6IiIsImV4cCI6MTc2NTcwMTI3NH0.dBH6v8txxDhatE2iNzGFy5v0xs9qwhot0N7BFae2U9SVAZpHSBOwVyHsIH4PhyRUzXpxhFdZomT_jjMGLvsP4EfGHGbPm6kFmxgPwhyIr2M_T9szxjTFC3sALgeoBjp1IK4a3Acj8wGY9OJjJNmmIdAA_4703BXviFR5GbD_cQg' \
+  --header 'Authorization: <JWT Token>' \
   --header 'tenantCode: testing'
 ```
 

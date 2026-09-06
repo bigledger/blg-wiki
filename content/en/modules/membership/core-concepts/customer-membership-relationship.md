@@ -2,6 +2,7 @@
 title: "Customer-Membership Relationship"
 description: "Understanding the one-to-many relationship between customers and memberships"
 weight: 21
+draft: true  # unpublished 2026-09-06 (ADR-0008, tier 1): the "Technical Implementation" section documents a database schema and four REST endpoints that do not exist. See planning/worklog/2026-09-06-fabricated-api-sweep-customer-membership-relationship.md
 ---
 
 The customer-membership relationship is one of the most distinctive and powerful features of BigLedger's Membership Module. Unlike traditional loyalty systems that enforce a one-to-one relationship, BigLedger enables a single customer to hold multiple memberships simultaneously. This architectural design choice unlocks sophisticated loyalty strategies that reflect real-world business complexity.

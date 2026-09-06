@@ -1,10 +1,12 @@
 ---
 title: "API Reference"
-description: "Direct reference to the official Developer E-Commerce API documentation."
+description: "Where the REST API for E-Commerce data is documented."
 weight: 50
 bookCollapseSection: false
 ---
 
-For technical API documentation, authentication tokens, request/response schemas, and webhook specs for online checkout and marketplace synchronization endpoints, refer to the official Developer API Reference:
+For the REST API — the path grammar, access endpoints, authentication, paging, response
+envelopes and error codes — see the developer integration path. There is one API for the whole
+platform; there is no separate E-Commerce API.
 
-**[Developer Integration & E-Commerce API Reference →](/developers/api-reference/integrations/)**
+**[Integrate an external system →](/developers/integration/)**

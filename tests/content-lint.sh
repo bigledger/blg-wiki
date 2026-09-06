@@ -25,6 +25,32 @@ legacy=$(grep -rlE '/api/v1/|\bcore1\b' content --include='*.md' 2>/dev/null | w
 if [ -n "$legacy" ]; then say "FAIL: legacy core1 / /api/v1 surface in published pages"; say "$legacy" | sed 's/^/  /'; fail=1; else say "ok:   no legacy core1 surface in published pages"; fi
 
 check "no named prospect or customer organisations"  -E 'Universiti Teknologi|\bUTM\b|Inter-PTJ' content --include='*.md'
+
+# --- fabricated REST API surfaces (2026-09-06 sweep) -------------------------------------------
+# Class of error: pages that document an API BigLedger does not have. Three mechanical signatures,
+# each checked only in published pages (draft: true is excluded, as for the core1 check above).
+# Ground truth: every one of the backend's ~12,000 unique request mappings is under /core2/
+# (javasdk/.../constants/Core2Config.java:19-90), and the only host that serves it is akaun.com.
+published() { while read -r f; do grep -q '^draft: true' "$f" || echo "$f"; done; }
+
+# 1. an endpoint shape that cannot exist: a verb followed by /api/... or /v<n>/...
+shape=$(grep -rlE '(^|[^A-Za-z`])(GET|POST|PUT|DELETE|PATCH) +/(api|v[0-9])/' content --include='*.md' 2>/dev/null | published | head -20)
+if [ -n "$shape" ]; then say "FAIL: endpoint shape that cannot exist (verb + /api/ or /v<n>/); the API is served under /core2/"; say "$shape" | sed 's/^/  /'; fail=1; else say "ok:   no impossible endpoint shapes in published pages"; fi
+
+# 2. API hostnames under bigledger.com that have never resolved. The API host is api.akaun.com.
+badhost=$(grep -rlE '\b(api|sandbox-api|api-sandbox|auth|developers|app)\.bigledger\.com' content --include='*.md' 2>/dev/null | published | head -20)
+if [ -n "$badhost" ]; then say "FAIL: non-existent API hostname (api/sandbox-api/api-sandbox/auth/developers/app .bigledger.com); the API host is api.akaun.com"; say "$badhost" | sed 's/^/  /'; fail=1; else say "ok:   no non-existent API hostnames in published pages"; fi
+
+# 3. auth headers and key formats the platform has never accepted. Real headers: Authorization,
+#    tenantCode / tenant-code, appId, accessId, accessKey, X-BigLedger-Instance-Code
+#    (akaun-api/.../config/CorsInterceptor.java:40). There is no request signing.
+badauth=$(grep -rlniE 'X-Company-Id|blg_live_sk_|blg_test_sk_|X-BigLedger-Signature' content --include='*.md' 2>/dev/null | published | head -20)
+if [ -n "$badauth" ]; then say "FAIL: invented auth header or API-key format in published pages"; say "$badauth" | sed 's/^/  /'; fail=1; else say "ok:   no invented auth headers in published pages"; fi
+
+# 4. a real signed token pasted into a sample. Checked in every page, drafts included - a credential
+#    in the repo is exposed whether Hugo builds the page or not.
+check "no signed JWT in content" -rEo 'eyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{20,}' content --include='*.md'
+# ------------------------------------------------------------------------------------------------
 check "no blockchain-era vocabulary"              -iE 'smart contract|wallet api|crypto wallet' content --include='*.md'
 check "no mojibake (UTF-8 read as cp1252)"      -E 'â€|Ã©|Ã¢' content --include='*.md'
 

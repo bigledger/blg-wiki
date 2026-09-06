@@ -9,6 +9,9 @@ tags:
 - api-integration
 - real-time
 weight: 11
+draft: true
+unpublished: 2026-09-06
+unpublished_reason: "ADR-0008 tier 1 — the Chinese twin of content/en/applets/integrations/webhook-applet.md, unpublished 2026-09-06 and left live here. Same invented claims: retries, OAuth/JWT, request signing, IP whitelisting, 200+ event types, 99.9% delivery, 90-day retention. See planning/worklog/webhook-applet-2026-09-06-unpublish.md"
 ---
 
 ## 目的和概述

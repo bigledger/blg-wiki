@@ -232,7 +232,6 @@ When architecting a membership program in BigLedger, consider these strategic qu
 
 With these core concepts understood, you can dive deeper into specific aspects of the Membership Module:
 
-- **[Customer-Membership Relationship](customer-membership-relationship/)**: Explore the one-to-many relationship and its use cases
 - **[Points Currencies](points-currencies/)**: Learn about multi-currency systems and conversion mechanics
 - **[Membership Tiers](membership-tiers/)**: Understand tier structures, progression, and segmentation
 - **[Points Expiry](points-expiry/)**: Master expiry configuration and liability management

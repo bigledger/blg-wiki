@@ -48,3 +48,23 @@ inbound_links_not_repaired:
 
 The page text remains at `content/en/applets/integrations/webhook-applet.md` behind `draft: true`,
 per ADR-0008 — the URL is reserved for the rewrite. Nothing was deleted.
+
+---
+
+## Addendum — 2026-09-06, fabricated-API sweep
+
+The Chinese twin was left live when the English page was drafted.
+`content/zh/applets/webhook-applet.md` (334 lines) carries the same invented claims —
+自动重试 (automatic retry, `:37`), 多种认证方法（API 密钥、OAuth、JWT） (`:48`),
+请求签名和验证 (request signing, `:49`), IP 白名单 (`:50`),
+200+ 支持的事件类型 (`:82`), 99.9% 传递保证 (`:90`), 90 天事件历史 (`:92`) — every one of
+which is contradicted by the same `WebhookService.java` / `WebhookTopics.java` evidence above.
+
+It is now `draft: true` with the same reason. Note that it sits at a *different* relative path
+from the English page (`zh/applets/…` vs `en/applets/integrations/…`), so it was already an orphan
+for the language switcher and did not appear in a same-path twin check.
+
+Inbound links repaired in the same commit:
+- `content/zh/applets/tenant-admin-applet.md:198` — link removed
+- `content/zh/applets/applet-catalog.md:100` — heading de-linked
+- `content/zh/applets/applet-catalog.md:374` — link removed

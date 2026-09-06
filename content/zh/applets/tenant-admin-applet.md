@@ -195,7 +195,6 @@ weight: 3
 - **[工作流设计应用程序](/zh/applets/workflow-design-applet/)** - 流程自动化
 
 ### 安全相关应用程序
-- **[Webhook应用程序](/zh/applets/webhook-applet/)** - 外部系统通知
 - **[T2T管理应用程序](/zh/applets/t2t-admin-applet/)** - 租户到租户管理
 
 ### 集成应用程序

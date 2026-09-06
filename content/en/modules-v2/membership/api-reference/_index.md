@@ -1,10 +1,15 @@
 ---
 title: "API Reference"
-description: "Direct reference to official developer integration APIs and webhooks."
+description: "The membership REST endpoints, with worked requests and responses."
 weight: 50
 bookCollapseSection: false
 ---
 
-For technical API documentation, authentication tokens, request/response schemas, and webhook event specifications for membership integrations, refer to the official Developer API Reference:
+These pages cover the membership REST endpoints:
 
-**[Developer Integration & API Reference →](/developers/api-reference/integrations/)**
+1. Creating, updating and reading member records
+2. Creating and reading member point transactions
+3. Reading member point current balances
+
+For authentication, the path grammar, paging and error codes, see
+**[Integrate an external system](/developers/integration/)**.

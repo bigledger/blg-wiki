@@ -1,10 +1,12 @@
 ---
 title: "API Reference"
-description: "Direct reference to the official Developer Sales & POS API documentation."
+description: "Where the REST API for Sales & POS data is documented."
 weight: 50
 bookCollapseSection: false
 ---
 
-For technical API documentation, authentication tokens, request/response schemas, and code examples for commercial sales and checkout endpoints, refer to the official Developer API Reference:
+For the REST API — the path grammar, access endpoints, authentication, paging, response
+envelopes and error codes — see the developer integration path. There is one API for the whole
+platform; there is no separate Sales & POS API.
 
-**[Developer Sales & POS API Reference →](/developers/api-reference/sales/)**
+**[Integrate an external system →](/developers/integration/)**

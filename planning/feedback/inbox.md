@@ -1100,3 +1100,92 @@ Closes Q-0014 and the F-0292 questions. Evidence and citations throughout:
   check.** Its Where-it-fits row reads "Warranty and expiry dates on the service note"; nothing in
   RMA or the service-note backend reads `bl_wrty_warranty_certificate_hdr`. The row should say the
   check is manual. One-line fix, next time that page is opened.
+
+## Site-wide fabricated-API sweep (2026-09-06) — findings and repairs
+
+*Found by the fabricated-API sweep unit, not reported by Vincent. Full audit:
+`planning/reviews/2026-09-06-fabricated-api-sweep.md`. Items marked (done) were acted on in the
+same pass under ADR-0008; the rest are open.*
+
+- [x] F-0321 (2026-09-06) **`/modules/membership/core-concepts/customer-membership-relationship/`
+  and its byte-identical `modules-v2/` twin document a database schema and four REST endpoints that
+  do not exist.** `GET /api/customers/{id}/memberships`, `POST /api/memberships/{id}/earn-points`,
+  `POST /api/memberships/{id}/redeem-points`, `POST /api/transactions` (page L439-446) match none of
+  the backend's 12,050 unique paths; the CUSTOMER / MEMBERSHIP / POINTS_BALANCE schema at L404-437
+  matches neither `bl_crm_membership_hdr` nor `bl_crm_membership_points_current_balance`.
+  → both `draft: true`; worklog
+  `planning/worklog/2026-09-06-fabricated-api-sweep-customer-membership-relationship.md`;
+  the one inbound link in `modules/membership/core-concepts/_index.md:235` removed. (done)
+- [x] F-0322 (2026-09-06) **All ten `modules-v2/*/api-reference/_index.md` stubs pointed at
+  `/developers/api-reference/{sales,inventory,purchasing,integrations,einvoice}/`, every one of
+  which was unpublished on 6 September and now 404s.** Two of them also asserted endpoint families
+  that do not exist anywhere in the backend — "shop floor IoT machine logging endpoints"
+  (manufacturing) and "biometric attendance terminal integration endpoints" (hr-payroll); the route
+  table has zero `iot` and zero `biometric` paths.
+  → all ten repointed at `/developers/integration/` (e-invoice at the verified
+  `/developers/api-reference/einvoice-api-reference/`; membership at its own six verified pages) and
+  the invented endpoint-family phrases removed. (done)
+- [x] F-0323 (2026-09-06) **Eight more inbound links to pages the developers audit unpublished were
+  left pointing at 404s** — `modules/sales-crm/_index.md:357`, `modules/inventory/_index.md:300`,
+  `modules/purchasing/_index.md:350`, `modules/financial-accounting/_index.md:271`,
+  `e-invoice-peppol.md:296`, `modules/e-invoice/_index.md:305`, `tutorials/_index.md:14`,
+  `developer-docs/_index.md:13,14`. Guard rail 3 of ADR-0008 ("inbound links are repaired in the
+  same commit") was not met by that unit. → all repaired. (done)
+- [x] F-0324 (2026-09-06) **An unpublish did not carry to the translation.**
+  `content/zh/applets/webhook-applet.md` (334 lines) stayed live carrying the same invented claims
+  as the English page drafted the same day — 自动重试, OAuth/JWT, 请求签名, IP 白名单,
+  200+ 事件类型, 99.9% 传递保证, 90 天保留. It sits at `zh/applets/` while the English sits at
+  `en/applets/integrations/`, so a same-path twin check misses it. → drafted, three inbound `zh/`
+  links repaired, worklog addendum written. **The general rule is the finding: every unpublish must
+  check `zh/`, `ms/` and `ar/` by basename, not by path.** (done)
+- [ ] F-0325 (2026-09-06) **The six membership API pages published real captured tenant data.**
+  A live RS256-signed platform JWT with `sysAdminRank: ADMIN` was in two of them from 2025-11-26
+  (valid until 2025-12-14, so ~18 days live and signed); **scrubbed now**, but it is still in git
+  history. Also still on the pages: real-looking GUIDs (`subjectGuid`, `sysAdminGuid`,
+  `membership_hdr_guid`, `revision`), `tenantCode: testing`, and four `card_no` values —
+  `930425035604`, `930425035605`, `930425035569`, `8888880100655908` — of which the first three are
+  in Malaysian NRIC format (930425 = 25 Apr 1993; 03 = a birth-state code). Needs a proper
+  anonymisation pass across all twelve files. Raised as **P-0062** and **Q-0037**.
+- [ ] F-0326 (2026-09-06) **The twelve membership API pages have no front matter at all** — no
+  `title`, `description` or `weight`. They are allowlisted out of the title lint
+  (`tests/lint-allowlist.tsv`, twelve of its fifty-six entries) and carry an H1 instead, so Hugo
+  titles them from the filename and orders them arbitrarily. Worth fixing when the anonymisation
+  pass opens them.
+- [ ] F-0327 (2026-09-06) **Six `*.bigledger.com` hostnames on 56 published pages do not resolve** —
+  `forum`, `academy`, `demo-v1`, `support`, `community`, `status`. Checked by public DNS 2026-09-06;
+  all NXDOMAIN. `www.bigledger.com`, `wiki.bigledger.com` and `api.akaun.com` do resolve. Too many
+  pages to lint or fix in this unit; raised as **Q-0039** because the answer decides whether these
+  are links to repair or links to delete.
+- [ ] F-0328 (2026-09-06) **`modules/membership/api-reference/` and
+  `modules-v2/membership/api-reference/` hold six byte-identical files each** (`cmp` clean on all
+  six), differing only in their `_index.md`. Both are built and both are reachable. The wider
+  `modules/` ↔ `modules-v2/` duplication needs a spec; this pair is the concrete, measured case.
+  Raised as **Q-0038**.
+- [x] F-0340 (2026-09-06) **The Unified Contact Center page was a screenshot walkthrough with five
+  claims the source contradicts.** Rewritten to the applet-page standard from
+  `alg-applets-ucc@adc3915e1` and `blg-akaun-platform-java@1ff620ef0e`. Taken down under ADR-0008
+  (tier 1, evidence and verbatim text in `planning/worklog/2026-09-06-lane4-ucc-applet-rewrite.md`):
+  the "WhatsApp Business Set-Up" section, which published a developer's ngrok tunnel URL and a real
+  Meta business/WABA id (already P-0010) instead of the real path, Configurations → Virtual Contacts
+  → Endpoints; a YouTube integration that exists nowhere in the applet; a Task Router description
+  that had Router Queue and Tasks exactly backwards (Router Queue lists `bl_alg_cc_queue_hdr`, the
+  queues themselves; Tasks lists every task at any status); an "automatic contact merging algorithm"
+  that is in fact a four-tab manual link panel; and a "Ready to Transform Your Customer Service?"
+  sales call-to-action. Also corrected: contacts are rows in the shared CRM table
+  `bl_crm_contact_hdr`, not a UCC-private database, and conversations, messages, sessions, e-mails
+  and social posts live in a **per-tenant MongoDB**, not in PostgreSQL — an earlier note in this
+  programme guessed Firestore from a folder name, which is wrong (`AngularFireMessaging` is used for
+  push notifications only). Nine product defects raised: **P-0075**–**P-0082**. One question for
+  Vincent: **Q-0050**. (done)
+- [ ] F-0341 (2026-09-06) **60 of the UCC page's 71 screenshots are gone and most of the applet now
+  has no picture.** Run 33 quarantined them for showing live customer data; the eleven that survive
+  cover only the summary tiles, Social Media, the Dashboard, two reports and Broadcast. A recapture
+  session on a synthetic tenant seeded with GadgetSphere-shaped data is needed for: the Inbox
+  conversation view, the customer panel and its twelve tabs, All/Team/My Task Queue and their bulk
+  actions, the outbound queues, the task edit screen, Contacts, My Profile with its QR code, the
+  Live Dashboard grids and the Task Router screens. Until then the page carries no image for its
+  most-used screens.
+- [ ] F-0342 (2026-09-06) **`content/en/applications/unified-contact-center.md` was not touched and
+  probably repeats the claims just removed from the applet page** (it is outside the applet lane's
+  folders). It should be read against the rewritten reference page — in particular the contact-merging
+  and Task Router descriptions, and any YouTube or roadmap wording.

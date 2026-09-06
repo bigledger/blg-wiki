@@ -302,7 +302,7 @@ Ideal for companies with:
 ### Integration Guides
 - [ERP System Integration](/guides/advanced/integration-best-practices/)
 - [Third-Party Connector Setup](/guides/) - *TODO: Create connector guide*
-- [API Integration Manual](/developers/api-reference/einvoice/)
+- [API Integration Manual](/developers/api-reference/einvoice-api-reference/)
 
 ## Regulatory Updates
 

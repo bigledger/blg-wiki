@@ -354,7 +354,7 @@ Channel    Priority        Escalation  Solution      Testing     Survey
 ### Advanced Topics
 - [Sales Automation Implementation](/guides/advanced/sales-automation/)
 - [Customer Analytics Setup](/guides/advanced/customer-analytics/)
-- [API Integration](/developers/api-reference/sales/)
+- [API Integration](/developers/integration/)
 
 ## Next Steps
 

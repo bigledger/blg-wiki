@@ -293,7 +293,7 @@ MyInvois is Malaysia's national e-invoicing initiative, mandating electronic inv
 ### Resources
 
 **Documentation**
-- [API Documentation](/developers/api-reference/einvoice/)
+- [API Documentation](/developers/api-reference/einvoice-api-reference/)
 - [Integration Guides](/e-invoice-peppol/)
 - [Best Practices](/e-invoice-peppol/)
 - [FAQ](/e-invoice-peppol/)

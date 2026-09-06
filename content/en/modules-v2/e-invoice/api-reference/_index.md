@@ -1,10 +1,14 @@
 ---
 title: "API Reference"
-description: "Direct reference to the official Developer E-Invoice API documentation."
+description: "Where the e-invoice REST API is documented."
 weight: 50
 bookCollapseSection: false
 ---
 
-For technical API documentation, authentication tokens, request/response JSON schemas, and digital signature algorithms for e-invoice validation endpoints, refer to the official Developer API Reference:
+The e-invoice submission, cancellation, rejection and document-query endpoints are documented and
+verified against the backend:
 
-**[Developer E-Invoice & PEPPOL API Reference →](/developers/api-reference/einvoice/)**
+**[E-Invoice API Reference →](/developers/api-reference/einvoice-api-reference/)**
+
+For everything else — authentication, the path grammar, paging and error codes — see
+**[Integrate an external system](/developers/integration/)**.
