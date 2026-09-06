@@ -8,7 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/ecommerce/website-builder/user-manager.md",
   "content/en/applets/purchase-workflow/blanket-purchase-order-applet-supplier-access-applet.md",
   "content/en/applets/purchase-workflow/internal-purchase-credit-note-supplier-access-applet.md",
   "content/en/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet.md",
@@ -150,6 +149,11 @@
    "page": "content/en/applets/external-tenant-admin/tenant-admin-applet.md",
    "date": "2026-09-05",
    "note": "run 24; applet @a5973ab (monorepo micro-fe, applet-local settings, gates.py n/a) + ts-lib @7d1616a9e + backend @1ff620ef0e; admin applet, no DCO/journal/stock; 12 four-proof keys (11 absolute HIDE_*_MENU + SHOW_SYNC_BUTTON), Default Selection dead, Data Sync stubs, 5 settings links 404; 0 seeded client perms; auth = master-DB rank for applet endpoints vs tenant-DB permission for user-to-role/iam/roles (403); ghost TNT_TENANT_ADMIN OR-precedence bug at backend HEAD; audit trail not written by role/permission changes; 10 of 26 images kept, 4 quarantined"
+  },
+  {
+   "page": "content/en/applets/ecommerce/website-builder/user-manager.md",
+   "date": "2026-09-06",
+   "note": "run 26; NOT an applet (no registry row) - feature sub-page of cp_commerce_admin_console_v1 (page_type: applet-feature, parent cp-commerce-admin-applet); code is in the storefront app wavelet-cp-commerce @247243251 (component @79a8864bd), not the admin applet; 5 website_builder_config keys in bl_cms_website_hdr.property_json consumed with no writer anywhere; HIDE_USER_PERMISSION_MANAGER read-without-control (11 of 13 tiles have a checkbox, this and HIDE_HIGHLIGHT_ACTIVITY_MANAGER do not, neither is in the ts-lib enum); route guard degenerates to 'is logged in'; admin mode = applet token from bl_applet_login_subject_link only, so Remove Access (role link only) does not revoke access; Make Admin gives tenant rank GUEST so a new admin cannot promote anyone; no error UI at all (console.error only); 0 of 5 images kept (real e-mails + customer hostname)"
   }
  ],
  "skipped": [
@@ -174,7 +178,7 @@
    "reason": "ADR-0002 (run 20): no registry row under any name or status (only seller_applet exists, and its routerLink/bundle point at blg-applet-wavelet-seller-applet, not the seller-admin repo); repo blg-applet-wavelet-seller-admin-applet exists (last commit 2026-08-31) but is not installable from the registry - Vincent to decide whether to register it or retire the page; 2 of its 9 images show developer names as test data (quarantine)"
   }
  ],
- "updated": "2026-09-05",
+ "updated": "2026-09-06",
  "notes": [
   "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) — INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/…] and [src:gh:bigledger/blg-intranet#n].",
   "2026-09-05: Vincent asked twice that blg-intranet e-invoice knowledge be used — e-invoice pages moved to the front of the queue."

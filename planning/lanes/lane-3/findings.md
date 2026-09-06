@@ -1218,3 +1218,63 @@ Applet `TenantAdminApplet` (registry name "Tenant Admin Applet", ACTIVE). Repo `
 5. Re-embed the four YouTube walkthroughs with the Hextra `{{< youtube >}}` shortcode? They were dropped with the inline-styled grid.
 
 One page this run (26-image review, the rank-vs-permission authorisation trace across five controllers, and the permission-inquiry SQL took the budget). Next in queue: `content/en/applets/ecommerce/website-builder/user-manager.md`, then the five purchase supplier-access pages.
+
+## Run 26 (2026-09-06) — content/en/applets/ecommerce/website-builder/user-manager.md
+
+(Run 25 was killed by a model quota before writing anything; nothing to recover.)
+
+Not an applet: no registry row under `user manager`, `user permission`, `website`, `builder` or `webstore` in the 2026-09-05 export. Restructured as a feature sub-page of `cp_commerce_admin_console_v1` (`page_type: applet-feature`, `parent_page: /applets/ecommerce/cp-commerce-admin-applet/`), the same shape as `ecommerce/cp-commerce/push-notification-configuration.md`. Title changed from "User Manager" to **User Permission Manager** (the UI's own title and the dashboard tile label). Sources: storefront app `wavelet-cp-commerce` @247243251 (component @79a8864bd, 2026-07-21), admin applet `blg-applets-wavelet-cp-commerce` @813f007c8, ts-lib @7d1616a9e, backend @1ff620ef0e. `gates.py` / `applet-scan.sh` do not apply (no blg-shared-utilities settings screen, no gear); plain-grep second pass done for `website_builder_config` and every `hide*` key.
+
+### What the code says (vs. the old page)
+
+- **The feature lives in the storefront app, not in the admin applet.** `wavelet-cp-commerce/src/app/pages/website-builder/webstore/user-permission-manager/`. None of the three per-customer forks of that app contain it, so it ships with every Customer Portal built from the base app.
+- **Five identifiers with no writer.** `bl_cms_website_hdr.property_json.website_builder_config` supplies `applet_hdr_guid`, `applet_catalog_guid`, `applet_catalog_link_guid`, `tenant_guid`, `app_mst_role_guid`. A repo-wide grep across all of `refs/` finds readers only (base app + three forks). Same anti-pattern as the Firebase credential on the push-notification page. Missing `app_mst_role_guid` ⇒ the listing query is never sent (a `console.warn`), so the card shows the empty state however many admins exist.
+- **`HIDE_USER_PERMISSION_MANAGER` is read without a control.** 13 dashboard tiles; 11 `hide*` checkboxes render in the admin's *Website → Details → Hide Website Builder Elements* and are persisted by `website.effects.ts`. This tile and Highlight Manager have none, and neither code is declared in `BLCmsWebSideExtParamCodes` — the storefront reducer compares bare string literals. Hiding removes the tile only; the route still resolves.
+- **The route guard is not a permission check.** `WebsiteBuilderGuard` returns `true` for any URL containing `/page/website-builder/layout-menu` before its admin-mode test runs, and every child route matches. The effective client gate is "is logged in"; all protection is server-side.
+- **Admin mode depends on the applet link, not the role.** `userCanMakeChanges` = non-empty applet token; `get-applet-token/login-ep` resolves purely from `bl_applet_login_subject_link` (status != DELETED) × tenant × applet code. Therefore **Remove Access — which deletes only the role link — does not revoke access.** The old page's "the user can no longer access admin features" was wrong. Only Tenant Admin can uninstall the applet link.
+- **Make Admin does not make a tenant admin.** The `rank: 'ADMIN'` in the payload is the *applet-link* rank. The tenant link is created by `TenantUserService.addUser(..., Optional.of("GUEST"))`, and the endpoints this screen calls require rank ADMIN/OWNER on that tenant link — so a person promoted here cannot promote anyone else.
+- **Two calls, not one transaction.** Install then role link. `CLIENT_LINK_EXISTS` / `CLIENT_ROLE_VALIDATOR_GUID_IS_INVALID` / `LOGIN_SUBJECT_GUID_IS_INVALID` on the role step leave the applet installed. The install step itself is idempotent (existing link updated, higher rank kept).
+- **Permission-masked rows, not hidden rows.** `app_login_principal` and `app_mst_link_subject_to_role` reads return guid + `status = PERMISSION_DENIED` when the caller lacks read. For Verify User this means `totalRecords > 0` with no subject guid → the component throws internally and stops; for the grid it means rows reading `PERMISSION_DENIED` / `N/A`.
+- **No error UI anywhere.** Every catch is `console.error` + state reset — no toast, no inline message. Every server failure looks like "the button did nothing". That single fact is the head of the Troubleshooting section.
+- **Grid corrections.** *User* is always the e-mail local part (`enrichUsersWithDetails` overwrites the account name for every row); *Status* is the role-link status, not the account status; page size is fixed at 10; details are fetched in batches of 20 subject guids.
+- **Invitation.** `postRegistrationRequest.add_user_to_tenant: true` runs `stepAddUserToTenant` only — tenant link at rank GUEST, no applet, no role. Default subject "Invitation to AKAUN", overridable per tenant (`EMAIL_USER_INVITATION`); the link goes through `identity/registration/user_confirmation_redirection`. The old page's "the invitation link expires after a certain period" was not verified in code and has been dropped.
+- **Auditing.** Both role-link writes create `app_user_audit_trail` rows (`LINK_SUBJECT_TO_ROLE` / `LINK_ADDED` | `LINK_DELETED`) in the tenant DB — worth contrasting with run 24's finding that `bl_applet_audit_trail` is *not* written by role changes.
+- Staging environment file points `cpCommerceAdminAppletCode` at `CPCommerceAdminConsole`, which has no registry row (dev and prod use `cp_commerce_admin_console_v1`). Not documented on the page; flagged below.
+
+### Screenshots (kept 0 of 5 — loop to quarantine `static/images/website-builder/user-permission-manager/`, outside my folders, not deleted)
+
+- `listing.png`, `remove-perm.png` — the Admin Users grid with two real personal Gmail addresses and the matching display names. Permission grid with real e-mails: excluded by rule.
+- `make-admin.png`, `send-invitee.png` — same e-mails **plus** the browser address bar showing a live customer hostname.
+- `invitation_email.png` — a photograph of a real person's Gmail inbox (5,364 unread, personal labels, recipient address). Never publishable.
+- Recaptures wanted on a demo website with placeholder addresses.
+
+### Method findings (add to METHOD.md)
+
+- **A "feature" page can have its code in a different repo from its applet.** The parent applet is `cp_commerce_admin_console_v1` (repo `blg-applets-wavelet-cp-commerce`) but the screen is in the storefront app `wavelet-cp-commerce`. Resolve the repo by grepping the route/component name across all of `refs/`, not by assuming the applet's repo.
+- **For storefront features, the four-proof "rendered" and "persisted" proofs live in two different repos**: the storefront renders and consumes, the admin applet is the only thing that persists website ext rows. A key that the storefront reads but the admin has no checkbox for is "read without control" even though both repos are healthy.
+- **Ask what the access token is derived from before writing any "revokes access" sentence.** Here the revoke button touches a table the access decision never reads. Grep the token/authorisation endpoint's SQL, not the button.
+- **Permission masking (`PERMISSION_DENIED` placeholders) is a distinct failure class** from an empty result: it produces "nothing happened" in clients that assume a non-empty page means readable data. Check `replace*WithoutPermission` helpers on every listing endpoint a page documents.
+
+### Cross-lane link requests
+
+- `content/en/applets/ecommerce/cp-commerce-admin-applet.md` (own lane, next touch — recording rather than editing mid-run): the *Webstore Management Dashboard* section says there are ten tiles and that the hide checkboxes enforce "Role-Based Access Control". There are **thirteen** tiles (Banners, Menu Manager, Layout Manager, Image Manager, Product Management, Voucher Management, Event Manager, Notification, Shipping, QR Code Manager, Activity Manager, Highlight Manager, User Permission Manager), **eleven** checkboxes, and no role is involved — the flag is per website, for everyone. Add a User Permission Manager row linking here, and note the two codes with no checkbox.
+- `content/en/applets/external-tenant-admin/tenant-admin-applet.md` (own lane, done run 24): add `user-permission-manager` context — uninstalling the CP Commerce Admin applet link is the only way to revoke Website Builder admin access granted from the storefront, and users created that way sit at tenant rank `GUEST`.
+- `content/en/applets/e-invoice/website-builder/user-permission-manager.md` (skipped, ADR-0002): still a duplicate; the merge target is now titled "User Permission Manager", so the loop can redirect it with an alias without a title clash. I did not add the alias myself — a Hugo alias colliding with the still-present duplicate page would break the build.
+- Any guide that tells a reader to "remove admin access in the Website Builder" (none found today, but the phrasing is likely in onboarding material): it removes a role, not access.
+
+### Registry / naming mismatches
+
+- No registry row for the feature (expected — documented as `applet-feature`).
+- `wavelet-cp-commerce/src/environments/environment.staging.ts` sets `cpCommerceAdminAppletCode: "CPCommerceAdminConsole"`, a code that does not exist in the registry; dev and prod use `cp_commerce_admin_console_v1`. On staging the applet-token call therefore throws `APPLET_NOT_FOUND` and admin mode never turns on. Product bug, not a doc issue.
+
+### Questions for Vincent
+
+1. Should Remove Access also uninstall the applet link? Today the dialog says "This action cannot be undone" while leaving the person's access intact — the worst of both wordings.
+2. `website_builder_config` (five guids) has no screen anywhere. Should CP Commerce Admin get a *Website Builder* tab for it, or should the wiki keep documenting it as an API-only block?
+3. `HIDE_USER_PERMISSION_MANAGER` and `HIDE_HIGHLIGHT_ACTIVITY_MANAGER` have no checkbox — add them to the eleven, or is hiding this tile deliberately not self-service?
+4. The five screenshots in `static/images/website-builder/user-permission-manager/` all contain real personal e-mail addresses (two also a customer hostname, one is a private mailbox) — delete them?
+5. Staging's `CPCommerceAdminConsole` applet code: register it, or fix the environment file?
+
+### Stopping point
+
+One page this run. The next queue item is `content/en/applets/purchase-workflow/blanket-purchase-order-applet-supplier-access-applet.md`, then the four other supplier-access purchase pages and `ecommerce/internal-shopping-cart-customer-access-applet.md`.
