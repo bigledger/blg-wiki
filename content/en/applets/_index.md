@@ -48,13 +48,13 @@ Financial accounting operations — receipt and payment vouchers, purchase invoi
 ### [E-Invoice](/applets/e-invoice/)
 Electronic invoicing administration, monitoring portals, and LHDN compliance.
 
-### [SST](/applets/sst/)
+### [SST](/applets/finance/sst-applet/)
 Sales and Service Tax compliance and administration.
 
 ### [Membership](/applets/membership/)
 Customer loyalty programs, membership administration, commission schemes, and voucher management.
 
-### [Sales Commission](/applets/sales-commission/)
+### [Sales Commission](/applets/sales-workflow/sales-commission-applet/)
 Commission scheme configuration and sales commission tracking.
 
 ### [Human Resources](/applets/human-resources/)

@@ -111,7 +111,6 @@ This comprehensive catalog lists all applets available in the BigLedger ecosyste
 - Process automation and orchestration
 - Workflow performance monitoring
 
-### 12. [Webhook Applet](/applets/integrations/webhook-applet/)
 **Real-time event notifications and system integration**
 - External system integration and notifications
 - Event-driven workflow automation
@@ -317,7 +316,7 @@ All 13 Core Module applets (listed above) are included in CP-Commerce Module.
 - **[Stock Take Applet](/applets/stock-take-applet/)** - Physical inventory counting and reconciliation
 - **[Stock Adjustment (Internal) Applet](/applets/inventory-workflow/stock-adjustment-applet/)** - Inventory adjustments and corrections
 - **[Delivery Order (Internal) Applet](/applets/internal-delivery-order-applet/)** - Internal transfers and deliveries
-- **[Consignment GIN (Internal) Applet](/applets/internal-consignment-gin-applet/)** - Consignment Goods Issue Notes and line item tracking for sales
+- **[Consignment GIN (Internal) Applet](/applets/sales-workflow/internal-sales-gin-applet/)** - Consignment Goods Issue Notes and line item tracking for sales
 
 ### Team and Organization Management
 - **[Team Maintenance Applet](/applets/team-maintenance-applet/)** - Team structure and management
@@ -414,7 +413,6 @@ Add analytics, automation, and optimization applets:
 
 ### Integration Documentation
 - [API Reference](/developers/api-reference/)
-- [Webhook Integration](/applets/integrations/webhook-applet/)
 
 ### Support Resources
 - [Applet Directory](/applets/applet-directory/)
