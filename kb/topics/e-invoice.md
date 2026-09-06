@@ -3,7 +3,7 @@ topic: e-invoice
 aliases: []
 applets: ["my-einvoice-admin", "my-einvoice-portal", "my-peppol-admin"]
 modules: []
-related: ["sales-invoice", "sales-return", "e-invoice-consolidation", "e-invoice-submission-errors", "emp-etl-sync", "e-invoice-ocr-intake", "e-invoice-peppol", "e-invoice-cancellation-and-credit-notes", "e-invoice-self-billed", "e-invoice-tin-and-identity-validation", "e-invoice-address-and-state-codes", "e-invoice-throughput-and-limits", "e-invoice-reconciliation", "tax-codes", "my-e-invoice-admin-applet", "my-e-invoice-portal-applet", "mypeppol-admin-applet", "organisation-applet", "customer-applet"]
+related: ["internal-sales-invoice-applet", "sales-return", "e-invoice-consolidation", "e-invoice-submission-errors", "emp-etl-sync", "e-invoice-ocr-intake", "e-invoice-peppol", "e-invoice-cancellation-and-credit-notes", "e-invoice-self-billed", "e-invoice-tin-and-identity-validation", "e-invoice-address-and-state-codes", "e-invoice-throughput-and-limits", "e-invoice-reconciliation", "tax-configuration", "my-e-invoice-admin-applet", "my-e-invoice-portal-applet", "mypeppol-admin-applet", "organisation-applet", "customer-maintenance"]
 wiki:
   - content/en/guides/einvoice-guides/
   - content/en/applets/e-invoice/
@@ -26,13 +26,13 @@ _Seeded from blg-akaun-platform-java commits, last 90 days (2026-06-07 → 2026-
 - 2026-08-18 — Feat: Added `GET /backoffice-ep/print-jasper-pdf` on `MyEInvoiceToIrbController`, resolving the to-IRB header by `branchCode`+`serverDocType`+`docReference` [src:git:blg-akaun-platform-java@0299a848fd]
 - 2026-08-17 — ref bigledger/[a customer]#505, fix einvoice vs B2B matching processor, service and uow [src:git:blg-akaun-platform-java@477005fd5a]
 - 2026-07-29 — bigledger/blg-intranet/issues/5556 New API to Remove AR/AP Outstanding Amount from ETL E-Invoice Data from EMP [src:git:blg-akaun-platform-java@44ba677ca5]
-- 2026-07-24 — [a customer]/issues/2 #2 Rebecca - Ability to Download Multiple Einvoice PDF Printable in Batch. In a Zip File [src:git:blg-akaun-platform-java@da497c5e22]
+- 2026-07-24 — [a customer]/issues/2 #2 [a customer]: Ability to Download Multiple Einvoice PDF Printable in Batch. In a Zip File [src:git:blg-akaun-platform-java@da497c5e22]
 - 2026-07-22 — Feat: Add IRB submission, submission-received, and issue datetime fields to e-invoice print model and printable templates for compliance and tracking display [src:git:blg-akaun-platform-java@f9a3e84d81]
 - 2026-07-21 — Revert "Add IRB submission, submission-received, and issue datetime fields to e-invoice print model and printable templates for compliance and tracking display. [src:git:blg-akaun-platform-java@f4c1fe07b1]
 - 2026-07-21 — Add IRB submission, submission-received, and issue datetime fields to e-invoice print model and printable templates for compliance and tracking display. [src:git:blg-akaun-platform-java@3d6da8a958]
 - 2026-07-14 — Feat: Added tax_exemption_details/amount as parameters into both JRXML templates and EInvoicePrintModel.java. [src:git:blg-akaun-platform-java@e8717aceff]
 - 2026-07-09 — bigledger/[a customer]/issues/197 #197 Issue 1: Fix Forced Default Mapping for Optional LHDN Prepayment Fields [src:git:blg-akaun-platform-java@0e6b3beae3]
-- 2026-07-09 — bigledger/[a customer]/issues/294 #294 TMT : E-Invoice Applet - Create New Report for Transaction that in queue under SUBMITTED status [src:git:blg-akaun-platform-java@9511ab0817]
+- 2026-07-09 — bigledger/[a customer]/issues/294 #294 [a customer]: E-Invoice Applet - Create New Report for Transaction that in queue under SUBMITTED status [src:git:blg-akaun-platform-java@9511ab0817]
 - 2026-07-07 — ref bigledger/[a customer]#420, update matching logic for B2B vs E-Invoice summary [src:git:blg-akaun-platform-java@518cc0caac]
 - 2026-07-04 — bigledger/blg-akaun-platform-java/issues/2070 #2070 E-Invoice: consolidated submission rejected LHDN CV317 — supplier address wrongly sent state code 17 (LHDNSu [src:git:blg-akaun-platform-java@0aae8e86ca]
 - 2026-07-04 — Revert "bigledger/blg-akaun-platform-java/issues/2070: new lhdn state code ru… " [src:git:blg-akaun-platform-java@e5748c414c]

@@ -3,12 +3,12 @@ topic: e-invoice-submission-errors
 aliases: [submission report error, blank e-invoice number, client_doc_1 empty, IN_QUEUE stuck, failed IRB summary report, e-invoice throughput]
 applets: [myIEnvoiceAdminApplet]
 modules: [e-invoice]
-related: [e-invoice, my-e-invoice-admin-applet, e-invoice-consolidation, customer-maintenance, emp-etl-sync, internal-sales-invoice-applet]
+related: [e-invoice, my-e-invoice-admin-applet, e-invoice-consolidation, e-invoice-reconciliation, e-invoice-tin-and-identity-validation, e-invoice-address-and-state-codes, e-invoice-throughput-and-limits, e-invoice-cancellation-and-credit-notes, customer-maintenance, emp-etl-sync, internal-sales-invoice-applet]
 wiki:
   - content/en/applets/e-invoice/my-e-invoice-admin-applet.md
   - content/en/guides/einvoice-guides/einvoice-validation.md
 status: growing
-updated: 2026-09-05
+updated: 2026-09-06
 ---
 
 # E-invoice submission errors seen in operation
@@ -31,6 +31,42 @@ What actually goes wrong between "document finalised" and "Valid at LHDN", as re
 - 2026-09-03 — **TIN values are stripped of spaces on save** in customer maintenance (prevents a class of Invalid TIN results). [src:gmail:1a0663d23d98e303]
 - 2026-08-04 — Task set: compile the common errors of the previous four months with a technical resolution for each, as input to automation. [src:gdrive:1NaxUJFipY9bbuKPcPIiU59rIQ9MUFG6OJ70w4HUhlo0]
 
+### Queue-level failure modes from the internal knowledge repo (ingest 2026-09-06)
+
+**The queue lies about what it will do next**
+
+- 2026-07-28 — On one large tenant **1,023 documents sat in the in-queue state**, the oldest dated January 2025 — the class had been recurring silently for 19 months. **564 queue rows were in a failed state**, none of which would ever be retried and none of which raised an alert. [src:gh:bigledger/blg-intranet#5567]
+- 2026-07-28 — **116 of those 564 failures carry no diagnostic at all** — no request URL, no request body, no response, no error text. The failure happened before or during request construction and nothing was written down, so the cause cannot be established from the data at all. The ask: any transition into a failed state must persist a reason, even if the HTTP call never happened. [src:gh:bigledger/blg-intranet#5567]
+- 2026-07-28 — **The retry counter is decorative.** All 564 failed rows showed "5 retries remaining"; the counter is never decremented because nothing ever retries them. Operations staff saw retries pending and reasonably waited for something that was never going to happen. [src:gh:bigledger/blg-intranet#5567]
+- 2026-07-28 — **461 headers were in-queue with no submission-queue row at all**, i.e. unreachable by any processor — not failed, not retrying, not terminal. Asked for: a reconciliation job that re-enqueues or flags them, plus alerting on queue depth and queue age. [src:gh:bigledger/blg-intranet#5567]
+- 2026-08-04 — The posting queue has the mirror defect: after more than five attempts a row is marked **processed**, so an abandoned document becomes invisible to every "unprocessed" query. On the submission side the remaining-retries column is initialised and reset but never read, a failed submission moves to a state the main drain never selects, and the recovery processor works **newest-first** with a small limit — so once the failure backlog exceeds that limit the oldest failures starve forever. [src:gh:bigledger/blg-intranet#5626]
+- 2026-08-04 — There is **no age detection anywhere** in the e-invoice domain: no query asks how long anything has been sitting. Requested: detect any queue row older than a configurable threshold (default 24 hours) in a non-terminal state, retry a bounded number of times, then alert. [src:gh:bigledger/blg-intranet#5626]
+
+**Documents that vanish**
+
+- 2026-08-26 — Finalised, eligible documents can end up in no pool, no queue and no e-invoice record, silently — see `e-invoice-reconciliation` for the mechanism. The user-visible symptom is always the same: a customer notices a missing e-invoice weeks later. [src:gh:bigledger/blg-intranet#5618]
+- 2026-06-22 — Infrastructure outages produce the same symptom in bulk: after a server outage, finalised documents did not reach the e-invoice applet at all and had to be pushed by hand. Two LHDN-side service updates produced the same result. [src:gh:bigledger/blg-intranet#1638] [src:gh:bigledger/blg-intranet#1746] [src:gh:bigledger/blg-intranet#645]
+
+**Guards that were missing and have since been added**
+
+- 2026-07-03 — Save-and-Resubmit could be pressed on an e-invoice that was already Valid or already Submitted. A guard was added: re-fetch the record, refuse if the status is Valid ("already Valid at LHDN, cannot resubmit") or Submitted ("LHDN is still processing it, wait for the status"), and allow only when the status is Invalid. [src:gh:bigledger/blg-intranet#5415]
+- 2026-08-20 — No duplicate guard existed on the batch-pool push or in consolidation; both were added after a production double-submission. [src:gh:bigledger/blg-intranet#5427]
+- 2026-04-02 — Two long-standing resubmission defects remain open: "resubmit as new e-invoice" misbehaving, and a single-general-pool Save-and-Resubmit / Save-and-Resubmit-as-new bug. [src:gh:bigledger/blg-intranet#4133] [src:gh:bigledger/blg-intranet#4389]
+- 2026-02-05 — A front-end defect made the individual-pool submit screen loop until the browser stack overflowed; reproducible by cloning a document, finalising it, processing it out of the posting queue and submitting it from Individual Submission. [src:gh:bigledger/blg-intranet#1987]
+
+**Data-shaped failures customers actually report**
+
+- 2026-06-22 — Submission failed because the document had **no line items**. [src:gh:bigledger/blg-intranet#1750]
+- 2026-06-22 — Invalid because the line unit of measure and UOM description were wrong; a data fix followed. [src:gh:bigledger/blg-intranet#2051] [src:gh:bigledger/blg-intranet#1826]
+- 2026-06-22 — Invalid because the **customer name** on the document was wrong and had to be corrected before resubmission. [src:gh:bigledger/blg-intranet#1856]
+- 2026-06-22 — A customer record with incomplete e-invoice data holds every one of that customer's documents in the batch pool, which reads to the customer as "the batch pool is broken". [src:gh:bigledger/blg-intranet#1942]
+- 2026-06-22 — When a document is fixed from the batch pool and submitted individually, the currency has to be carried across from the pool row to the document if it is not already set. [src:gh:bigledger/blg-intranet#1924]
+
+**Failures that are not the platform's**
+
+- 2026-06-22 — Insufficient permissions granted to BigLedger as intermediary on the MyInvois portal, and expired intermediary configurations, together account for a recurring share of "all submissions failing" reports. [src:gh:bigledger/blg-intranet#2048] [src:gh:bigledger/blg-intranet#1778]
+- 2026-08-01 — And one report of "duplicated e-invoices at LHDN" turned out to be two independent document-number sequences colliding — no duplicate existed, and acting on the report would have destroyed valid e-invoices. Always check the document type before cancelling. [src:gh:bigledger/blg-intranet#5588]
+
 ## How it connects
 
 - **my-e-invoice-admin-applet** — the Submission History vs To IRB E-Invoice distinction, the IN_QUEUE row, and the Bulk TIN Validation tool all live on that page; the troubleshooting table needs rows for blank number / blank client_doc_1 / report mismatch.
@@ -48,3 +84,14 @@ What actually goes wrong between "document finalised" and "Valid at LHDN", as re
 
 - `my-e-invoice-admin-applet.md`: Submission History row + troubleshooting rows (blank E-Invoice Number, blank client_doc_1, status mismatch, throughput expectation).
 - A month-end checklist guide would answer most of this thread's questions before they are asked.
+
+## How it connects (added 2026-09-06)
+
+- **e-invoice-reconciliation** — an in-queue row and a ghost document look identical to the customer ("my e-invoice isn't at LHDN") but have different causes and different fixes.
+- **e-invoice-throughput-and-limits** — "still in queue the next morning" after a big month-end is usually rate, not failure.
+- **e-invoice-tin-and-identity-validation** / **e-invoice-address-and-state-codes** — the two master-data classes behind most pool reasons and most Invalid results.
+- **e-invoice-cancellation-and-credit-notes** — the guard that refuses Save-and-Resubmit on a Valid e-invoice is what forces the cancellation route.
+
+## Open questions (added 2026-09-06)
+
+- Are the retry semantics fixed? Until they are, no wiki page should tell a reader "it will retry automatically". → kb/questions/2026-09-06-einvoice-queue-retry-semantics.md

@@ -1,1 +1,22 @@
-{"source":"blg-intranet","cursor":{},"updated":"2026-09-05","note":"content/1100-malaysia-einvoice read by Lane 3 first; issues to be ingested by scope (einvoice, then per module)."}
+{
+  "source": "blg-intranet",
+  "cursor": {
+    "einvoice_issues": {
+      "last_issue": 5803,
+      "newest_updated_at": "2026-09-04T00:00:00Z",
+      "query": "state=all search='einvoice OR e-invoice OR myinvois OR lhdn OR peppol' limit=600",
+      "count": 561,
+      "processed_at": "2026-09-06"
+    },
+    "content": {
+      "path": "content/1100-malaysia-einvoice/",
+      "last_commit": "16d3af2c81cd6d0f3c603088c4a41e776063ab7c",
+      "commit_date": "2026-09-01",
+      "readme_sections": 22,
+      "assets": 12,
+      "processed_at": "2026-09-06"
+    }
+  },
+  "updated": "2026-09-06",
+  "note": "Full deep ingest of the e-invoice corpus: README read section by section, the drawio workflow (2 pages), the 10 images classified for publishability, the scenario CSV, and all 561 e-invoice/MyInvois/LHDN/Peppol issues triaged newest-first. Next passes: (a) non-e-invoice sections of the intranet (0300-technical, 0400-operations, 0900-roadmap), (b) re-run the issue query after 2026-09-04 for new items, (c) the ~440 non-e-invoice issues in this repo."
+}
