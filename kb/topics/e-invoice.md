@@ -3,12 +3,12 @@ topic: e-invoice
 aliases: []
 applets: ["my-einvoice-admin", "my-einvoice-portal", "my-peppol-admin"]
 modules: []
-related: ["sales-invoice", "sales-return", "e-invoice-consolidation", "e-invoice-submission-errors", "emp-etl-sync", "e-invoice-ocr-intake", "tax-codes", "my-e-invoice-admin-applet", "my-e-invoice-portal-applet", "mypeppol-admin-applet", "organisation-applet", "customer-applet"]
+related: ["sales-invoice", "sales-return", "e-invoice-consolidation", "e-invoice-submission-errors", "emp-etl-sync", "e-invoice-ocr-intake", "e-invoice-peppol", "e-invoice-cancellation-and-credit-notes", "e-invoice-self-billed", "e-invoice-tin-and-identity-validation", "e-invoice-address-and-state-codes", "e-invoice-throughput-and-limits", "e-invoice-reconciliation", "tax-codes", "my-e-invoice-admin-applet", "my-e-invoice-portal-applet", "mypeppol-admin-applet", "organisation-applet", "customer-applet"]
 wiki:
   - content/en/guides/einvoice-guides/
   - content/en/applets/e-invoice/
 status: growing
-updated: 2026-09-05
+updated: 2026-09-06
 ---
 
 # E Invoice
@@ -75,6 +75,67 @@ _Anonymised. Operational detail is in `e-invoice-consolidation`, `e-invoice-subm
 - 2026-09-04 — An OCR e-mail-intake channel (SES receiving) was scheduled for production deployment; scope unknown. [src:gmail:1a069e68f3133a81]
 - 2025-03 (doc modified 2025-04-30) — Positioning: BigLedger e-invoice is offered either as the standalone ERP + e-invoice, or as middleware API for third-party ERPs; LHDN's schema has 55 data fields (37 mandatory, 18 optional). [src:gdrive:15mavZbELP3vYuQbSfc75t46qFFrzIvS2AmO-ctTcyC8]
 
+### From the internal e-invoice knowledge repo — full read of the README, the workflow diagram and 561 issues (ingest 2026-09-06)
+
+_Extracted and anonymised. Tenant-specific material (per-tenant consolidation schedules, named staff, real TINs, document numbers and LHDN UUIDs) stays in kb/private. Identity, address, cancellation, self-billed, Peppol, throughput and reconciliation facts now live in their own topic notes; this section keeps what belongs to the pipeline as a whole._
+
+**How a document enters the pipeline**
+
+- 2026-09-01 — The gate is `posting_status = FINAL` **and** the company's e-invoice status is `ENABLED` **and** the document type is e-invoiceable **and** `skip_einvoice` is false **and** no active posting-queue row already exists for the same document number and type. Any one of those failing consumes the event and writes nothing at all — no queue row, no pool row, no error. [src:gh:bigledger/blg-intranet#5618]
+- 2026-09-01 — Three trigger processors fire at FINAL: the posting-queue router, a **sales**-document matching queue (for documents finalised with `skip_einvoice = true`, so they can still be matched against an incoming e-invoice) and a **purchase**-document matching queue (for non-self-billed purchase documents whose supplier has a TIN). [src:refs/blg-intranet/content/1100-malaysia-einvoice/README.md#trigger-processors]
+- 2026-09-01 — Eight cron processors run the rest: intermediary token (every ~20 min), generic-document-to-IRB routing (up to 5,000 iterations per run), batch-processing cycle run (6-hour advisory lock), consolidated submission (50 iterations), to-IRB submission (50), validation-status update (20, configurable), e-mail printable (10 per run, 5 retries, 15-minute lock) and the individual-pool failure e-mail. [src:refs/blg-intranet/content/1100-malaysia-einvoice/README.md#cron-processors]
+- 2026-09-01 — The internal workflow diagram also shows a `ConsolidatedSubmissionQueueReconstructionProcessor` (payload reconstruction) and a **fourth submission-type branch labelled `multibank`**, neither of which appears in the processor tables or in any wiki page. [src:refs/blg-intranet/content/1100-malaysia-einvoice/flow-chart/lhdn-core-workflow.drawio]
+- 2026-08-04 — Enablement is per tenant and hand-configured: the schedule rows are inserted manually, a row whose code is not a recognised processor is **dropped without a log**, the default seed list only runs at tenant creation (so a tenant created before a processor existed never gets it), and there is no completeness check. A tenant's e-invoice processor once stopped submitting for a month before a human noticed. [src:gh:bigledger/blg-intranet#5625]
+- 2026-07-16 — The practical consequence for onboarding: activating a tenant means asking someone to switch on a named list of cron and trigger processors. [src:gh:bigledger/blg-intranet#106]
+- 2026-08-13 — On a new tenant the LHDN reference tables (industry classification, unit of measure and similar) are **not** auto-populated; an endpoint has to be called by hand. [src:gh:bigledger/blg-intranet#5665]
+
+**Who signs the submission**
+
+- 2026-09-01 — `einvoice_issuer_type` decides where the LHDN token comes from: `INTERMEDIARY` (the default, and what most tenants use) mints a per-company token on behalf of the company's TIN; `ERP` uses a shared token from the master configuration. The issuer company is the supplier for sales documents, the buyer for purchase documents, and whichever is populated for consolidated documents. [src:refs/blg-intranet/content/1100-malaysia-einvoice/README.md#einvoice-issuer-type]
+- 2026-09-01 — In the intermediary model the customer must first set BigLedger as their e-invoice intermediary on the MyInvois portal; BigLedger then holds up to three rotating tokens per company per environment, refreshed round-robin every ~20 minutes, and always submits with the newest. [src:refs/blg-intranet/content/1100-malaysia-einvoice/README.md#how-the-intermediary-configuration-is-used]
+- 2026-06-22 — **Setup failure customers actually hit:** when granting BigLedger intermediary rights on the MyInvois portal, only one permission is often ticked. The full permission set is required or every submission fails. [src:gh:bigledger/blg-intranet#2048]
+- 2026-06-22 — The other recurring setup failure is an **expired intermediary configuration** — the authorisation lapses at LHDN and all submissions stop for that company until it is renewed. Seen repeatedly across tenants. [src:gh:bigledger/blg-intranet#1778] [src:gh:bigledger/blg-intranet#1749] [src:gh:bigledger/blg-intranet#1745]
+
+**What gets built and sent**
+
+- 2026-09-01 — Entity resolution priority for the counterparty: the document's e-invoice buyer/supplier entity JSON, then the general e-invoice entity JSON, then the entity record. When a JSON is used its address block is taken verbatim. [src:refs/blg-intranet/content/1100-malaysia-einvoice/README.md#custom-entity-json-priority]
+- 2026-04-02 — Design intent behind that: the e-invoice must be built from the **document snapshot**, not from the live customer master, so editing a customer later cannot change an already-issued document. [src:gh:bigledger/blg-intranet#4361]
+- 2026-09-01 — Header defaults on a new individual e-invoice: submission / document / process status `NOT_SUBMITTED`, posting status `FINAL`, e-invoice version `1.1`, `is_consolidated` false, a QR-code digital signature generated from the header, namespace "AUTO CREATED BY PROCESSOR". [src:refs/blg-intranet/content/1100-malaysia-einvoice/README.md#default-header-values]
+- 2026-09-01 — Only lines whose transaction type is the goods/services line type are sent; totals, tax, discounts and payment amounts map one-to-one from the document. [src:refs/blg-intranet/content/1100-malaysia-einvoice/README.md#line-field-mapping]
+- 2026-09-01 — Line description sent to LHDN is built as `item_code;item_name;item_remarks` unless the company configures a different pattern, then truncated to 300 characters with URLs and special characters stripped. Customers have asked to have the item code removed from it. [src:refs/blg-intranet/content/1100-malaysia-einvoice/README.md#item_desc_no-construction] [src:gh:bigledger/blg-intranet#1910]
+- 2026-09-01 — The e-invoice **running number** is a database sequence optionally suffixed with document-number or client-reference fields from a per-company pattern, truncated to 50 characters. Customers have asked for it to be driven from the document reference instead, and for a **new** running number when a cancelled/invalid/failed e-invoice is resubmitted. [src:refs/blg-intranet/content/1100-malaysia-einvoice/README.md#running-number-construction] [src:gh:bigledger/blg-intranet#4390] [src:gh:bigledger/blg-intranet#4374]
+- 2026-09-01 — Billing frequency defaults to "Not Applicable" and the billing period defaults to the first and last day of the current month in Malaysian time when not supplied. Customers ask about these fields often enough that they generate their own support tickets. [src:refs/blg-intranet/content/1100-malaysia-einvoice/README.md#billing-frequency-default] [src:gh:bigledger/blg-intranet#2037] [src:gh:bigledger/blg-intranet#4688]
+- 2026-06-22 — Customs and international-trade fields are mapped through to the e-invoice: customs form reference numbers 1 and 2, free-trade-agreement information, certified-exporter authorisation number, other-charges description and amount (header) and product tariff code plus country of origin (line). [src:gh:bigledger/blg-intranet#269] [src:gh:bigledger/blg-intranet#270] [src:gh:bigledger/blg-intranet#271]
+
+**Dates**
+
+- 2026-09-01 — The issue date-time sent to LHDN must be the **current** time at submission; the document's own transaction date is preserved separately. A backdated document is still submitted with "now" as its issue time. [src:refs/blg-intranet/content/1100-malaysia-einvoice/README.md#backdated-individual-einvoice]
+- 2026-06-22 — **Future-dated** documents needed their own decision: a company-level setting to either hold them or pass them through, checked in the posting queue before the document is routed to a pool. [src:gh:bigledger/blg-intranet#4376]
+
+**Forex**
+
+- 2026-09-01 — A foreign-currency sale produces two generic documents — the local-currency (MYR) parent and a foreign-currency child pointing at it. The company setting `einvoice_forex_gendoc_posting_logic` decides which one is submitted; the default submits the **foreign-currency child**. [src:refs/blg-intranet/content/1100-malaysia-einvoice/README.md#foreign-currency-forex-document-handling]
+- 2026-09-04 — That setting had no user interface: one customer had **both** the foreign-currency and the local-currency version of the same transaction submitted to LHDN, i.e. a genuine double submission. The fix is a configuration on the Organization Applet's e-invoice tab plus a processor change; past double submissions have to be identified by query and reported to LHDN. [src:gh:bigledger/blg-intranet#5803]
+- 2026-04-02 — Related open question on the same theme: whether the e-invoice details are copied over to the base (company-currency) document at all. [src:gh:bigledger/blg-intranet#4394]
+
+**Skipping e-invoice**
+
+- 2026-06-22 — `skip_einvoice` can be set on the branch, the entity or the individual document, and is resolved at FINAL. It is used deliberately (the counterparty issues the e-invoice) and set by mistake constantly: a large share of support tickets are "remove documents that should have been skipped" and "push documents where skip was set by mistake". A bulk endpoint exists for both directions. [src:gh:bigledger/blg-intranet#2024] [src:gh:bigledger/blg-intranet#1663] [src:gh:bigledger/blg-intranet#2066] [src:gh:bigledger/blg-intranet#1522]
+- 2026-09-01 — A skipped document is excluded from the monthly tally as well as from submission — which is why a **voided document that was not marked skipped** shows up as a tally gap. [src:refs/blg-intranet/content/1100-malaysia-einvoice/README.md#check-5-void-or-draft-documents-not-excluded-from-e-invoice]
+
+**Printing and delivering the validated e-invoice**
+
+- 2026-07-22 — The printable e-invoice carries the IRB submission, submission-received and issue date-times for compliance display. [src:git:blg-akaun-platform-java@f9a3e84d81]
+- 2026-06-22 — Customers report a missing QR code on the printed sales invoice, and ask for a larger description font and for tenant-specific printable formats — printable format is a per-company, sometimes per-document-type, choice. [src:gh:bigledger/blg-intranet#3338] [src:gh:bigledger/blg-intranet#4148] [src:gh:bigledger/blg-intranet#4153]
+- 2026-07-07 — Automatic e-mailing of the validated PDF is configured per company (mail transport settings on the Organization Applet) and set up per tenant on request. [src:gh:bigledger/blg-intranet#3649] [src:gh:bigledger/blg-intranet#633] [src:gh:bigledger/blg-intranet#46]
+- 2026-07-24 — Batch download of e-invoice PDFs as a zip was added for a customer. [src:git:blg-akaun-platform-java@da497c5e22]
+
+**Where the e-invoice touches the document applets**
+
+- 2026-07-07 — The submission history of a document is surfaced on the E-Invoice tab of the sales/purchase invoice, credit note and debit note applets, so a clerk does not have to open the admin applet to see what happened. [src:gh:bigledger/blg-intranet#3706]
+- 2026-04-23 — A batch-pool view with update-and-resubmit was requested inside the document applets' E-Invoice tab and inside POS, so the correction can be made where the sale was made. [src:gh:bigledger/blg-intranet#4392] [src:gh:bigledger/blg-intranet#243]
+- 2026-01-28 — E-invoice item classification code, tax type and UOM were added to the line grids of both the admin applet and the sales invoice applet, so the values that decide acceptance are visible while keying. [src:gh:bigledger/blg-intranet#1956] [src:gh:bigledger/blg-intranet#1955]
+
 ## How it connects
 
 - **sales-invoice** — the e-invoice tab, `einvoice_submission_type` and `skip_einvoice` are set here; nothing is submitted from the document applet.
@@ -96,3 +157,20 @@ _Anonymised. Operational detail is in `e-invoice-consolidation`, `e-invoice-subm
 
 - Review the pages under `wiki:` against the facts once the diffs are read.
 - See kb/research/2026-09-05-einvoice-ingest-wiki-impact.md (13 candidates, F-0119…F-0131).
+
+## How it connects (added 2026-09-06)
+
+- **e-invoice-tin-and-identity-validation** — the buyer/supplier TIN + ID type + ID value group; the largest single cause of Invalid results.
+- **e-invoice-address-and-state-codes** — the other half of the same master record; state-code resolution and `default_einvoice_address`.
+- **e-invoice-cancellation-and-credit-notes** — what happens after LHDN says Valid and you were wrong.
+- **e-invoice-self-billed** — the purchase side of the same pipeline, with the roles swapped.
+- **e-invoice-peppol** — the parallel delivery network sharing the same source document and the same mandatory-field check.
+- **e-invoice-throughput-and-limits** — why a month-end batch takes hours and why an invoice above ~200 lines has to be split.
+- **e-invoice-reconciliation** — how you prove everything arrived once, and the three blind spots in that proof.
+- **organisation-applet** — company e-invoice status, issuer type, forex posting logic, running-number and line-description patterns, e-mail transport, and (planned) the forex submission choice and the per-company processor schedule.
+- **pos-general-applet** — counter sales are the bulk of consolidated volume; the e-invoice address and the cancel-cash-sale path both live there.
+
+## Open questions (added 2026-09-06)
+
+- What is the `multibank` submission-type branch in the internal workflow diagram? It is in no processor table and no wiki page. → kb/questions/2026-09-06-einvoice-multibank-submission-type.md
+- Should the wiki describe the intermediary permission set a customer must grant on the MyInvois portal? It is the commonest hard setup failure and is entirely in the customer's control. → kb/questions/2026-09-06-myinvois-intermediary-permission-set.md

@@ -1,6 +1,40 @@
 ---
-title: "Purchase Return Supplier Access (Internal) Applet"
-description: "A dedicated collaboration portal for suppliers to monitor, verify, and resolve purchase returns initiated by the client."
+title: "Purchase Return Supplier Access (Internal)"
+description: "Reference for the supplier-facing copy of the Purchase Return applet: a login linked to a supplier entity reads the purchase returns the buyer has raised against it — header, lines, payments, contra and attachments — read-only, at any posting status."
+applet_code: "internal-purchase-return-supplier-access-applet"
+page_type: applet
+applet_repo: "blg-applet-wavelet-internal-purchase-return-supplier-access-applet"
+modules: [purchasing, inventory]
+related_applets:
+  - internal-purchase-return-applet
+  - internal-purchase-credit-note-supplier-access-applet
+  - internal-purchase-invoice-supplier-access-applet
+  - internal-purchase-grn-supplier-access-applet
+  - supplier-applet-1
+guides: []
+sources:
+  configuration:
+    - blg-applet-wavelet-internal-purchase-return-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-return-supplier-access-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-purchase-return-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-return-supplier-access-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-internal-purchase-return-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-return-supplier-access-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-internal-purchase-return-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-return-supplier-access-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-internal-purchase-return-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-return-supplier-access-applet/src/app/components/line-items-container/line-item-view/line-item-view.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - planning/lanes/lane-3/perm-dfn (akaun_master.bl_applet_client_side_perm_dfn, 20 ACTIVE codes)
+  fields:
+    - blg-applet-wavelet-internal-purchase-return-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-return-supplier-access-applet/src/app/components/purchase-return-container/purchase-return-listing/purchase-return-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-return-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-return-supplier-access-applet/src/app/components/purchase-return-container/purchase-return-view/purchase-return-view.component.html
+    - blg-applet-wavelet-internal-purchase-return-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-return-supplier-access-applet/src/app/components/purchase-return-container/purchase-return-view/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-purchase-return-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-return-supplier-access-applet/src/app/components/line-items-container/line-items-listing/line-items-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-return-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-return-supplier-access-applet/src/app/models/listing-search-criteria.util.ts
+  lifecycle:
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-document-services/internal-purchase-return-supplier-access.service.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/GenericDocumentController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/FinancialDocUow/GenericDocumentUow.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalPurchaseReturnDataConsistencyObject.java
+  troubleshooting:
+    - blg-applet-wavelet-internal-purchase-return-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-return-supplier-access-applet/src/app/state-controllers/purchase-return-controller/store/effects/purchase-return.effects.ts
 tags:
   - supplier-collaboration
   - purchase-returns
@@ -8,252 +42,148 @@ tags:
   - transparency
   - financial-reconciliation
 weight: 70
+lastmod: 2026-09-06
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Purchase Return Supplier Access (Internal) Applet** is a specialized communication and tracking portal designed for your organization's suppliers. Instead of relying on fragmented emails and phone calls, this applet provides suppliers with a "single source of truth" regarding goods being sent back to them.
+**Purchase Return Supplier Access (Internal)** is the supplier-facing copy of the [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) applet. A login linked to a supplier entity opens it inside the buyer's tenant and reads the returns the buyer has raised against that supplier: header, lines and quantities, refunds recorded, contra records and attachments.
 
-{{< callout type="info" >}}
-**Core Concept**: This applet bridges the gap between a client's warehouse and a supplier's warehouse. It allows suppliers to see **exactly** what is being returned, **why** it is being returned, and **how** it affects their financial standing.
-{{< /callout >}}
+It is read-only — no create screen, no save, no delete, no status action. Unlike the credit-note, GRN and invoice portals, its listing does **not** pin `posting_statuses = FINAL`: it filters on `status = ACTIVE` only, so a supplier also sees the buyer's DRAFT and DISCARDED returns.
 
-{{< callout type="warning" >}}
-**Disambiguation**: This applet is distinct from the [Purchase Return (Internal) Applet].
+## Where it fits
 
-- The standard **Purchase Return (Internal) Applet** is used internally by the client's own warehouse and finance teams to initiate and manage returns to all suppliers.
-- The **Purchase Return Supplier Access (Internal) Applet** is designed specifically for external suppliers to view their own purchase returns.
-- In accordance with business ethics and data privacy, one supplier must not have access to another supplier's data. Therefore, this applet runs on completely separate login endpoints (`login-ep`) to ensure that a logged-in supplier can only view and interact with return documents specifically linked to their own account.
-  {{< /callout >}}
+| Position | Document / applet | Why |
+|---|---|---|
+| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/) | Goods going back to the supplier. |
+| The document | [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) | Same rows; creation, FINAL and VOID happen there. |
+| Upstream (access) | [Supplier](/applets/master-data/supplier-applet-1/) | The login must be linked to the supplier entity (`bl_fi_mst_entity_login_subject_link`, `ACTIVE`). |
+| Upstream (document) | [Purchase Invoice Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet/), [Purchase GRN Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet/) | The invoice or receipt the return is raised against. |
+| Downstream | [Purchase Credit Note Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-supplier-access-applet/) | The credit the buyer usually raises after the return. |
 
-## Key Features Overview
+## Screens and menus
 
-### Who Benefits from This Applet?
+| Menu | Route | What it is |
+|---|---|---|
+| **Internal Purchase Return Supplier Access** | `internal-purchase-return-supplier-access` | The listing and the document view behind it. |
+| **Line Items** | `line-items` | A flat listing of return lines across the supplier's returns. |
+| **Settings** | `settings/…` | Field Settings, Default Selection, Printable Format Settings (menu), plus Webhook, Feature Visibility, Client Side Permission and the permission listings (routes). |
+| **Personalization** | `personalization/…` | Personal Default Selection and sidebar order. |
 
-**Suppliers (Vendors):**
+### Listing
 
-- **Real-Time Visibility**: Instantly see new purchase returns as soon as they are finalized by the client.
-- **Verification**: Access damaged product photos and serial numbers to verify claims before issuing credits.
-- **Direct Communication**: Use integrated commenting to clarify return reasons or request more information.
+Columns: **Purchase Return No, Branch, Purchaser Name, Created Date, Transaction Date, Created by**. Sorted by `updated_date` descending. The criteria are `server_doc_type = INTERNAL_PURCHASE_RETURN` and `status = ACTIVE` — there is no posting-status filter, so DRAFT, FINAL, VOID and DISCARDED returns all appear; read the posting status in the document view.
 
-**Supplier Logistics & Warehouse Teams:**
+Advanced search accepts a document number (`server_doc_1`), a free-text keyword (supplier name, branch name or creator all map to `search_word`), a created-date range and a transaction-date range.
 
-- **Inbound Planning**: Know exactly what stock is arriving back at the warehouse and from which client branch.
-- **Dispute Resolution**: Use the "Issue Link" feature to track the progress of Return Merchandise Authorizations (RMAs).
+### Document view
 
-**Supplier Accounts Receivable (AR):**
+Eight read-only tabs: **Main Details** (Branch, Location, Transaction Date, Credit Terms, Due Date, Reference, Remarks, Permit No, Currency, Tracking ID), **Account** (supplier entity, billing and shipping address), **Lines**, **Payment** (refunds recorded against the return), **Department Hdr** (Segment, Dimension, Profit Center, Project), **Contra** (ARAP contra records), **Attachments**, and **Export**.
 
-- **Accurate Reconciliation**: View contra-offsets and settlements to understand exactly why a client's payment doesn't match the original invoice.
-- **Reduced Admin Work**: Download return reports directly instead of waiting for the client to send Debit Notes.
+There is no Doc Link tab here — to see which invoice or receipt the return came from, open the linked document in its own portal.
 
-### What Problems Does This Solve?
+On **Export**, only **EXPORT AS PDF** is enabled; CSV, DOCX and ZIP are disabled. See *Troubleshooting* — the request is built against an endpoint that does not exist.
 
-**The "Black Box" Return Problem:**
-Suppliers often receive physical goods back without clear documentation, leading to:
+### Line Items
 
-- **Lost Revenue**: Uncertainty about which invoice a return belongs to.
-- **Delayed Credits**: Disputes over damage or quantity that take weeks to resolve via email.
-- **Inventory Mismatch**: Suppliers cannot accurately update their own stock without precise return data.
+A flat grid of return lines (`line_txn_type = PNS`) with the item, quantities and amounts; its advanced search adds item code, item name and a transaction-amount range. Opening a line shows **Item Details**, **Serial Number**, **Costing Details** (hidden by `HIDE_COSTING_DETAILS` unless the role holds `SHOW_COSTING_DETAILS`), **Pricing Details** and **Issue Link**.
 
-**The Supplier Access Solution:**
+## Configuration
 
-- **Centralized RMA Hub**: Every return item can be linked to a collaborative "Issue" for tracking.
-- **Evidence-Based Returns**: High-resolution attachments and serial numbers provide undeniable proof of condition.
-- **Financial Transparency**: Suppliers can see how the client is applying the return (e.g., offsetting an unpaid invoice vs. requesting a refund).
+### Before you can use it
 
----
+| Prerequisite | Where it is set | Why it matters |
+|---|---|---|
+| The supplier's login is linked to the supplier entity | [Supplier](/applets/master-data/supplier-applet-1/) → Login (`bl_fi_mst_entity_login_subject_link`, `ACTIVE`) | Every query is filtered by that link. |
+| The applet is installed for that login | [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) | Applet token at start-up. |
+| The return is `ACTIVE` | [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) | Deleted returns are excluded; every posting status is shown. |
 
-## Key Features Overview
+### Applet settings
 
-{{< cards >}}
-{{< card title="Return Tracking" subtitle="Monitor all client-initiated returns in real-time" link="#for-supplier-warehouse-track-inbound-returns" >}}
+Settings live on the **shared** `FieldConfigurationComponent` from `blg-shared-utilities` (route `settings/field-settings`), gated by `sessionStorage.appletCode`. No inline gear; the applet's own `field-configuration` folder is not routed.
 
-{{< card title="Issue & RMA Link" subtitle="Collaborate on specific return problems via tickets" link="#issue-link--rma-integration" >}}
+**19 keys pass all four proofs** at the shared-utilities commit this applet pins (`cf8379f`), re-checked at HEAD with no additions: the same eighteen line-field hides as the rest of the family plus `HIDE_COSTING_DETAILS`. Each is written `!appletSettings.HIDE_X || SHOW_X`, so a role holding the matching `SHOW_*` client-side permission sees the field even when the tenant-wide setting hides it.
 
-{{< card title="Evidence Management" subtitle="Access damage photos and serial numbers" link="#evidence--traceability" >}}
+| Setting | What it hides on the line detail | Default | Re-opened per role by |
+|---|---|---|---|
+| `HIDE_QTY_BASE` | Base quantity | Off | `SHOW_QTY_BASE` |
+| `HIDE_QTY_UOM` | Quantity in the line UOM | Off | `SHOW_QTY_UOM` |
+| `HIDE_UOM_TO_BASE_RATIO` | UOM-to-base ratio | Off | `SHOW_UOM_TO_BASE_RATIO` |
+| `HIDE_UNIT_PRICE_STD_EXCL_TAX` | Standard unit price, excluding tax | Off | `SHOW_UNIT_PRICE_STD_EXCL_TAX` |
+| `HIDE_UNIT_PRICE_STD_INCL_TAX` | Standard unit price, including tax | Off | `SHOW_UNIT_PRICE_STD_INCL_TAX` |
+| `HIDE_UNIT_PRICE_STD_UOM_EXCL_TAX` | Standard unit price per UOM, excluding tax | Off | `SHOW_UNIT_PRICE_STD_UOM_EXCL_TAX` |
+| `HIDE_UNIT_PRICE_STD_UOM_INCL_TAX` | Standard unit price per UOM, including tax | Off | `SHOW_UNIT_PRICE_STD_UOM_INCL_TAX` |
+| `HIDE_UNIT_PRICE_NET_EXCL_TAX` | Net unit price, excluding tax | Off | `SHOW_UNIT_PRICE_NET_EXCL_TAX` |
+| `HIDE_UNIT_PRICE_NET_UOM_EXCL_TAX` | Net unit price per UOM, excluding tax | Off | `SHOW_UNIT_PRICE_NET_UOM_EXCL_TAX` |
+| `HIDE_UNIT_PRICE_TXN_UOM_INCL_TAX` | Transaction unit price per UOM, including tax | Off | `SHOW_UNIT_PRICE_TXN_UOM_INCL_TAX` |
+| `HIDE_UNIT_DISCOUNT` | Unit discount | Off | `SHOW_UNIT_DISCOUNT` |
+| `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX` | Unit discount per UOM, excluding tax | Off | `SHOW_UNIT_DISCOUNT_UOM_EXCL_TAX` |
+| `HIDE_DISCOUNT_AMOUNT_EXCL_TAX` | Discount amount, excluding tax | Off | `SHOW_DISCOUNT_AMOUNT_EXCL_TAX` |
+| `HIDE_AMOUNT_STD_EXCL_TAX` | Standard amount, excluding tax | Off | `SHOW_AMOUNT_STD_EXCL_TAX` |
+| `HIDE_AMOUNT_NET_EXCL_TAX` | Net amount, excluding tax | Off | `SHOW_AMOUNT_NET_EXCL_TAX` |
+| `HIDE_AMOUNT_TXN` | Transaction amount | Off | `SHOW_AMOUNT_TXN` |
+| `HIDE_TAX_CONFIG_SELECTION` | The three tax-configuration fields | Off | `SHOW_TAX_CONFIG_SELECTION` |
+| `HIDE_WHT_CONFIG_SELECTION` | The three withholding-tax fields | Off | `SHOW_WHT_CONFIG_SELECTION` |
+| `HIDE_COSTING_DETAILS` | The **Costing Details** tab on a line | Off | `SHOW_COSTING_DETAILS` |
 
-{{< card title="Communication Hub" subtitle="Directly comment on return items" link="#communication--collaboration" >}}
+**Read outside the shared screen:** `DEFAULT_BRANCH` and `DEFAULT_LOCATION` are rendered and saved by the applet-local **Default Selection** screen but read by nothing here; `PRINTABLE` is written and read only by Printable Format Settings and does not reach the export.
 
-{{< card title="Financial Transparency" subtitle="View contra-offsets and payment status" link="#financial-impact--reconciliation" >}}
+### Document behaviour settings
 
-{{< card title="Granular Reports" subtitle="Analyze return history at the item level" link="#line-item-analysis" >}}
-{{< /cards >}}
+Not applicable — FINAL, VOID and refund handling are buyer-side.
 
-{{< figure src="/images/internal-purchase-return-supplier-access-applet/internal-purchase-return-supplier-access-overview-infographic.png" alt="Bridging the Gap: The Supplier Access Portal - showing the flow from Client Return to Supplier Credit" caption="Collaboration Portal: A visual overview of how the Client initiates a return, the Supplier verifies it via the portal, and both parties sync on the financial settlement." >}}
+### Feature visibility and permissions
 
----
+The registry seeds **20 client-side permission codes** for this applet, all `ACTIVE` as of 2026-09-06: the eighteen field pairs above plus `SHOW_COSTING_DETAILS` and `SHOW_UNIT_PRICE_TXN`. Grant them per role in **Settings → Role Permission Listing**.
 
-## Key Concepts
+Server-side, the read path (`…/gen-doc/internal-purchase-returns/login-entity-ep[/query]`) is filtered by the supplier link and skips permission checks; the branch, supplier and purchaser lookups used to fill the grid are ordinary permission-checked endpoints.
 
-### Understanding the Return Framework
+## Fields
 
-Every return transaction involves three critical dimensions. The Supplier Access applet ensures you have visibility into all three:
+Every field is read-only; the tab list above describes them. There is no create or edit form.
 
-| Aspect                 | Component                 | Practical Example                       |
-| ---------------------- | ------------------------- | --------------------------------------- |
-| **Who** is returning?  | Client Branch/Purchaser   | HQ Warehouse, Branch Manager            |
-| **What** is returned?  | Item, Batch, & Serial No. | Laptop (SN: 12345), Defective Batch #99 |
-| **How** is it settled? | Contra or Cash Refund     | Offsetting SI-1001 vs. Bank Transfer    |
+## Lifecycle and effects
 
-{{< callout type="tip" >}}
-**Real-World Example**: A client returns 5 damaged units. You (the supplier) receive an alert, check the **Attachments** for damage photos, verify the **Serial Numbers**, and then see the client apply a **Contra** against an outstanding invoice.
-{{< /callout >}}
+This applet writes nothing. The buyer-side document behaves as follows.
 
-### Return Hierarchy Structure
-
-Think of the return flow from the supplier's vantage point:
-
-```
-Supplier Relationship
-│
-├── Client Branches ──→ WHO is sending goods back?
-│   │
-│   └── Purchase Returns ──→ WHAT specific goods?
-│       │
-│       └── Issue Links (RMA) ──→ STATUS of the dispute
-│           │
-│           └── Comments/Worklogs ──→ COLLABORATION history
-│
-└── Settlement History ──→ HOW the money is handled
-    │
-    └── Contra vs Refund ──→ FINANCIAL reconciliation
-```
-
-### The "Golden Trio" of Supplier Visibility
-
-To effectively manage returns, you must track these three pillars:
-
-| Component         | Analogy           | Supplier Role                                     |
-| ----------------- | ----------------- | ------------------------------------------------- |
-| **Document Link** | The "Paper Trail" | Verify return against the original Invoice/GRN.   |
-| **Evidence**      | The "Proof"       | Review damage photos and serial numbers.          |
-| **Settlement**    | The "Balance"     | Reconcile the credit note against your AR ledger. |
-
----
-
-## Quick Start Guide
-
-### For Supplier Warehouse: Track Inbound Returns
-
-**Goal:** Identify what is being returned and prepare for inbound receipt.
-
-1.  **Navigate**: Go to **Internal Purchase Return Supplier Access** main listing.
-2.  **Filter**: Use the search bar to find returns from a specific **Branch** or **Date Range**.
-3.  **Check Details**: Open a document and go to the **Lines** tab to see the items and quantities.
-4.  **Verify SN**: Go to **View Item > Serial Number** to know which specific units to expect.
-5.  **Plan**: Inform your warehouse team of the incoming shipment based on the document's **Transaction Date**.
-
-{{< figure src="/images/internal-purchase-return-supplier-access-applet/purchase-return-listing.png" alt="Supplier Access Main Listing" caption="Main Listing: View all purchase returns initiated by the client and their current status." >}}
-
----
-
-### For Supplier Support: Resolve an RMA
-
-**Goal:** Collaborate with the client to resolve a dispute or damage claim.
-
-1.  **Locate Issue**: Inside a Return document, go to **Lines > View Item > Issue Link**.
-2.  **Review Evidence**: Open the **Attachments** tab to see photos provided by the client's warehouse.
-3.  **Communicate**: Use the **Comment** tab to ask for more info (e.g., "Please provide a photo of the outer packaging").
-4.  **Log Progress**: Use the **Worklog** or **Activity** tabs to keep track of your internal investigation.
-5.  **Finalize**: Once verified, the client will move the return to the financial settlement stage.
-
-{{< figure src="/images/internal-purchase-return-supplier-access-applet/purchase-return-edit.png" alt="Purchase Return View Mode" caption="View Mode: Examine return details, damage evidence, and linked issues." >}}
-
----
-
-### For Supplier Accounts: Reconcile Credits
-
-**Goal:** Understand how the return affects your Accounts Receivable (AR).
-
-1.  **Open Settled Return**: Find a document with "Settled" or "Contra" status.
-2.  **View Contra**: Go to the **Contra** tab to see which of your invoices the client has offset.
-3.  **Check Refunds**: Go to the **Payment** tab to see details of any cash refunds transferred back to the client.
-4.  **Export Data**: Use the **Export** tab to download the data for import into your own ERP system.
-
-{{< figure src="/images/internal-purchase-return-supplier-access-applet/purchase-return-line-item-listing.png" alt="Line Item Listing" caption="Line Items: Detailed breakdown of all items within a return document." >}}
-
----
-
-## Feature Deep Dive
-
-### Issue Link & RMA Integration
-
-This is the core collaborative feature of the applet. Every return item can be treated as a "ticket":
-
-- **Subtasks**: Break a complex return into "Testing", "Repair", and "Shipping" phases.
-- **Planning**: Set deadlines for when the credit note will be issued.
-- **Linked Issues**: Connect multiple returns to a single manufacturing defect report.
-
-### Financial Impact & Reconciliation
-
-Stop the guesswork in your AR department:
-
-- **Contra (Offset)**: See exactly which invoice balance was reduced.
-- **Settlement (Cash)**: View the client's bank reference for any refunds paid.
-- **Department/Account Tracking**: See which client department initiated the return for better account management.
-
-### Evidence & Traceability
-
-- **Attachment Gallery**: No more lost emails; all photos are stored directly on the return record.
-- **Serial Number Verification**: Prevents "return fraud" by ensuring only original units are credited.
-- **Document Tracing**: Links every return back to the original client purchase document.
-
----
-
-## Configuration & Settings
-
-### System Configuration
-
-Administrators can fine-tune what suppliers see to protect internal data:
-
-- **Field Settings**: Toggle visibility of fields like "Permit No", "Reason Code", or "External Remarks".
-- **Default Selection**: Set default branches or locations to simplify the supplier's view.
-- **Printable Format Settings**: Customize the Debit Note layout that suppliers can download as their official credit reference.
-
-{{< figure src="/images/internal-purchase-return-supplier-access-applet/purchase-return-settings.png" alt="Applet Settings Dashboard" caption="Settings: Configure defaults, field visibility, and supplier view rules." >}}
-
----
-
-## Related Documentation
-
-- [Purchase Return (Internal) Applet](file:///e:/repo/blg-wiki/content/en/applets/purchase-workflow/internal-purchase-return-applet.md) — Alternative internal applet; used by the client's internal team to manage and record returns across all suppliers.
-- [Purchase Order Supplier Access (Internal) Applet](file:///e:/repo/blg-wiki/content/en/applets/purchase-workflow/internal-purchase-order-supplier-access-applet.md) — Upstream supplier applet; used by suppliers to manage the incoming Purchase Orders that might later require returns.
-
----
-
-## Frequently Asked Questions (FAQ)
-
-**Q: How does this applet differ from the standard Purchase Return (Internal) Applet?**  
-**A:** The standard **Purchase Return (Internal) Applet** is used by the client's internal team to manage and record returns across all suppliers. This **Purchase Return Supplier Access (Internal) Applet** is an external portal designed specifically for suppliers to view their own purchase returns. For security and business ethics, it uses separate login endpoints (`login-ep`) to isolate supplier data, ensuring that you can only view return documents linked to your user account and cannot access another supplier's data.
-
-**Q: Why can't I edit the quantity of a return?**
-**A:** As a supplier, you have "Read & Collaborate" access. Only the client can modify the document quantities. If you disagree with a quantity, use the **Comment** tab in the **Issue Link** to request an adjustment.
-
-**Q: What is the difference between "Final" and "Settled" status?**
-**A:**
-
-- **Final**: The goods have been officially returned by the client, and the credit is now available.
-- **Settled**: The credit has been applied (via Contra or Cash Refund) and the transaction is closed.
-
-**Q: Can I see returns from multiple client branches in one view?**
-**A:** Yes. The main listing shows returns from all branches you have permission to access. Use the **Branch** filter to narrow down your view.
-
-{{< figure src="/images/internal-purchase-return-supplier-access-applet/purchase-return-filter.png" alt="Advanced Filtering Options" caption="Advanced Filtering: Quickly find returns by branch, date range, or status." >}}
-
-**Q: How do I get a copy of the Debit Note for my records?**
-**A:** Most organizations configure the system to generate a PDF. You can usually find a **Print** or **Download** option within the finalized return document.
-
-{{< figure src="/images/internal-purchase-return-supplier-access-applet/purchase-return-file-export.png" alt="File Export Options" caption="File Export: Export return data to CSV or Excel for your internal reconciliation." >}}
-
-**Q: What if the 'Issue Link' tab is empty?**
-**A:** This means the client has not linked this return item to a specific RMA ticket. You can still see the return details in the **Lines** tab.
-
----
-
-## Summary
-
-The **Purchase Return Supplier Access (Internal) Applet** transforms a traditionally manual and error-prone process into a transparent, digital partnership. By providing suppliers with direct access to evidence and financial impacts, organizations can:
-
-1. **Accelerate Credit Issuance**: No more waiting for "proof of return."
-2. **Reduce Disputes**: Clear communication via integrated RMA tracking.
-3. **Automate Reconciliation**: Direct visibility into contra-offsets and cash settlements.
+| Property | Value |
+|---|---|
+| Server document type | `INTERNAL_PURCHASE_RETURN` |
+| Amount signum | +1 (`InternalPurchaseReturnDataConsistencyObject`) |
+| Quantity signum | −1 — stock out; the purchase-side document that actually reduces inventory |
+| Dr/Cr equation | Dr Creditor (net of all lines) · Cr Purchase return (line net) · Cr Input tax (line tax); refunds post to the cashbook GL of the settlement method. |
+| GL precedence | Header GL → item-company `PURCHASE_RETURN` link → company default `PURCHASE_RETURN`; the creditor mapping is mandatory and throws `MISSING_DEFAULT_GL_CODE`. |
+| Stock processor | `INVENTORY_TRANSACTION_LINE_PROCESSOR`, quantity × −1 at the return location. FINAL fails if there is not enough stock there. |
+| What VOID reverses | Reverse journal and stock movement, removal from the e-Invoice queue and from aging; a return with contra or settlement links cannot be voided until those are removed. |
+
+| Action in this applet | Call | Result |
+|---|---|---|
+| List / search / open | `GET …/gen-doc/internal-purchase-returns/login-entity-ep[/query]`, `…/login-entity-ep/{guid}` | Works with only the supplier link; every posting status is visible. |
+| Export PDF | `GET …/internal-purchase-returns/login-entity-ep/print-jasper-pdf/{guid}` | No such endpoint — see *Troubleshooting*. |
+| Create / save / delete | not wired | No control exists. |
+
+## Related applets
+
+- [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/) — the buyer-side applet.
+- [Purchase Credit Note Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-supplier-access-applet/) — the credit that usually follows the return.
+- [Purchase Invoice Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet/) — the invoice the return adjusts.
+- [Purchase GRN Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet/) — the receipt the goods came in on.
+- [Supplier](/applets/master-data/supplier-applet-1/) — where the login link is created.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| The listing is empty | The login has no `ACTIVE` supplier link, or the returns were raised on a different supplier entity record | Check the link in the [Supplier](/applets/master-data/supplier-applet-1/) applet. |
+| A return the buyer has not finalised is visible | Intentional here: this listing has no posting-status filter (only `status = ACTIVE`) | Read the posting status on the document before acting on it — a DRAFT return can still change. |
+| **EXPORT AS PDF** shows a failure toast and no file | The service builds `…/internal-purchase-returns/login-entity-ep/print-jasper-pdf/{guid}`, which matches no mapping in the generic-document controller; the effect also passes a hard-coded printable-format GUID and the CP Commerce sales-order print service class | Ask the buyer to send the PDF from the [buyer-side applet](/applets/purchase-workflow/internal-purchase-return-applet/). No configuration makes this work. |
+| The **Branch**, **Purchaser Name** or **Created by** cell shows a code | Those come from separate lookups; a failure is caught and the error code printed | Grant the login read access to that master data, or hide the column. |
+| There is no Doc Link tab | This applet does not include one | Open the linked invoice or receipt in its own supplier portal. |
+| A line field is missing for one role and present for another | A tenant-wide `HIDE_*` is on and only some roles hold the matching `SHOW_*` permission | Adjust in **Settings → Field Settings** or **Settings → Role Permission Listing**. |
+| Changing Default Selection has no effect | No create form exists; the two keys are saved but never read | Expected. |
+
+## Related documentation
+
+- [Purchase Return (Internal) applet](/applets/purchase-workflow/internal-purchase-return-applet/)
+- [Purchasing module](/modules-v2/purchasing/)
+- [Supplier applet](/applets/master-data/supplier-applet-1/)

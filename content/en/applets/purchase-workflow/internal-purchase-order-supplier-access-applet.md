@@ -1,6 +1,55 @@
 ---
-title: "Purchase Order Supplier Access (Internal) Applet"
-description: "A centralized portal for suppliers to view, acknowledge, and track Purchase Orders issued by the client."
+title: "Purchase Order Supplier Access (Internal)"
+description: "Reference for the supplier-facing copy of the Purchase Order applet: a login linked to a supplier entity reads the FINAL purchase orders raised on it, advances the order's workflow status, exports a PDF, imports orders from a CSV file, and runs a PO-versus-GRN report."
+applet_code: "internal-purchase-order-supplier-access-applet"
+page_type: applet
+applet_repo: "blg-applet-wavelet-internal-purchase-order-supplier-access-applet"
+modules: [purchasing]
+related_applets:
+  - internal-purchase-order-applet
+  - internal-purchase-grn-supplier-access-applet
+  - internal-purchase-invoice-supplier-access-applet
+  - blanket-purchase-order-applet-supplier-access-applet
+  - supplier-applet-1
+  - organisation-applet
+guides: []
+sources:
+  configuration:
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/components/settings-container/workflow-settings-container/workflow-settings-container.component.ts
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/components/line-items-container/line-item-view/line-item-view.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - planning/lanes/lane-3/perm-dfn (akaun_master.bl_applet_client_side_perm_dfn, 19 ACTIVE codes)
+  fields:
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/components/purchase-order-container/purchase-order-listing/purchase-order-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/components/purchase-order-container/purchase-order-view/purchase-order-view.component.html
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/components/purchase-order-container/purchase-order-view/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/components/purchase-order-container/purchase-order-detailed-report/purchase-order-detailed-report.component.ts
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/components/file-import-container/file-import-listing/file-import-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/components/file-import-container/file-import-create/file-import-create.component.html
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/components/line-items-container/line-items-listing/line-items-listing.component.ts
+  lifecycle:
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-document-services/internal-purchase-order-supplier-access.service.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-document-services/internal-purchase-order-supplier-access-printable.service.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-document-services/gen-doc-xtn-process.service.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-document-services/purchase-order-supplier-access-dashboard-by-login.service.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/GenericDocumentController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/InternalPurchaseOrderImportFileController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/BlanketPurchaseOrderReportController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/jobProcessor/InternalPurchaseOrder/InternalPurchaseOrderImportFileHelperProcessor.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/GenericDocXtnProcessDCO.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalPurchaseOrderDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/BlanketPurchaseOrderReportUow.java
+  troubleshooting:
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/state-controllers/purchase-order-controller/store/effects/purchase-order.effects.ts
+    - blg-applet-wavelet-internal-purchase-order-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-order-supplier-access-applet/src/app/components/purchase-order-container/purchase-order-view/main-details/main-details.component.ts
 tags:
   - supplier-portal
   - purchase-orders
@@ -8,235 +57,165 @@ tags:
   - order-acknowledgement
   - vendor-management
 weight: 270
+lastmod: 2026-09-06
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Purchase Order Supplier Access (Internal) Applet** serves as a digital bridge between your organization and your suppliers. It provides vendors with a dedicated workspace to manage the full lifecycle of incoming Purchase Orders (POs), ensuring that both parties are synchronized on pricing, quantities, and delivery schedules.
+**Purchase Order Supplier Access (Internal)** is the supplier-facing copy of the [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) applet. A login linked to a supplier entity opens it inside the buyer's tenant to read the purchase orders raised on that supplier, and — uniquely in the supplier-access family — to **change the order's workflow status** (the acknowledgement step), export a PDF, and upload a CSV file that creates purchase orders.
 
-{{< callout type="info" >}}
-**Core Concept**: This portal replaces manual order handling with a structured, digital workflow. It allows suppliers to see **what** has been ordered, **acknowledge** receipt, and **access** all necessary documentation (specs, terms, attachments) in one place.
-{{< /callout >}}
+It cannot edit the order itself: there is no create form for the document, no save on the header or lines, and no delete. The listing defaults to `posting_statuses = FINAL`, but unlike the other supplier-access applets that default is replaced when the advanced search sets the same criterion.
 
-{{< callout type="warning" >}}
-**Disambiguation**: This applet is distinct from the [Purchase Order (Internal) Applet].
+## Where it fits
 
-- The standard **Purchase Order (Internal) Applet** is used internally by your organization's procurement and purchasing staff to manage all purchase orders across all vendors.
-- The **Purchase Order Supplier Access (Internal) Applet** is designed exclusively for suppliers/vendors to view and upload their own POs.
-- In accordance with business ethics and data privacy, one supplier must not have access to another supplier's data. Therefore, this applet runs on completely separate login endpoints (`login-ep`) to ensure that a logged-in supplier can only view and interact with information linked to their specific user profile.
-  {{< /callout >}}
+| Position | Document / applet | Why |
+|---|---|---|
+| Module | [Purchasing](/modules-v2/purchasing/) | The order itself. |
+| The document | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) | Same rows; the buyer creates and finalises there. |
+| Upstream (access) | [Supplier](/applets/master-data/supplier-applet-1/) | The login must be linked to the supplier entity (`bl_fi_mst_entity_login_subject_link`, `ACTIVE`). |
+| Upstream (agreement) | [Blanket Purchase Order Supplier Access](/applets/purchase-workflow/blanket-purchase-order-applet-supplier-access-applet/) | Where the order was drawn down from an agreement, if one exists. |
+| Downstream | [Purchase GRN Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet/), [Purchase Invoice Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet/) | Receipt and invoice; the PO Detailed Report shows received-versus-ordered quantities. |
 
-## Who Benefits from This Applet?
+## Screens and menus
 
-### Supplier Sales & Order Desk
+| Menu | Route | What it is |
+|---|---|---|
+| **Purchase Order** | `internal-purchase-order-supplier-access` | The listing and the document view behind it. |
+| **Line Items** | `line-items` | A flat listing of order lines across the supplier's orders. |
+| **PO Detailed Report** | `purchase-order-detailed-report` | Ordered versus received, by date range. |
+| **File Import** | `file-import` | Upload a CSV that creates purchase orders, and review what each row did. |
+| **Settings** | `settings/…` | Field Settings, Default Selection, Printable Format Settings, Workflow Settings (menu), plus Webhook, Feature Visibility, Client Side Permission and the permission listings (routes). |
+| **Personalization** | `personalization/…` | Personal Default Selection (including column toggle and orientation) and sidebar order. |
 
-- **Instant Notification**: View new orders as soon as they are approved by the client's procurement team.
-- **Formal Acknowledgment**: Digital "Update Status" allows for immediate confirmation of order acceptance.
-- **Accuracy**: Avoid pricing or quantity discrepancies by viewing the exact source data.
+### Listing
 
-### Supplier Production & Warehouse
+Columns: **Purchase Order No, Branch Code, Branch Name, Description, Purchaser Name, Created Date, Created by**. Sorted by `updated_date` descending. The default criteria include `posting_statuses = FINAL`; a criterion set in the advanced search **replaces** the default carrying the same name, so a supplier can search for DRAFT orders here — unlike the credit-note, GRN and invoice portals, where the FINAL filter is unconditional.
 
-- **Clear Specifications**: Access technical drawings, design files, or specific terms via the **Attachments** tab.
-- **Inventory Planning**: Use the **Lines** tab to see exactly which items, batches, or quantities are required.
+### Document view
 
-### Supplier Accounts Receivable (AR)
+Nine read-only tabs — **Main Details**, **Account**, **Lines**, **Payment**, **Department Hdr**, **Contra**, **Doc Link**, **Attachments**, **Export** — plus one action button in the header, **Update Status**.
 
-- **Payment Clarity**: View the client's payment terms and linked contra-documents for easier reconciliation.
-- **Audit Ready**: Download and print the official PO as a PDF for internal record-keeping.
+**Main Details** shows *Workflow Status*, *Workflow Resolution*, Branch, Location, Transaction Date, Credit Terms, Due Date, Reference, Remarks, Permit No, Currency and Tracking ID. The Workflow Status drop-down is filled from the workflow process configured for the applet (`WORKFLOW_PROCESS_GUID`, or the process already stamped on the document) and offers only the statuses reachable from the document's current status. Choosing one resolves the matching resolution and stages the change; **Update Status** sends it.
 
----
+**Export** offers a printable-format picker (loaded through the applet-login endpoint) and **EXPORT AS PDF**. This is the one export in the supplier-access family that calls the login-entity print endpoint with the document's own print service, so it works with the supplier link alone.
 
-## What Problems Does This Solve?
+### Line Items
 
-**The "Lost Order" Problem:**
-POs sent via email often get buried or flagged as spam, leading to missed deadlines.
+Columns: **Purchase Order No, Branch, Supplier Name, Project, Shipping Address, Item Code, Item Name, Ordered Qty, Open Qty, Amount TXN, Creation Date, Requested Delivery Date, Delivery Status, Remarks**. Opening a line shows **Item Details**, **Serial Number**, **Costing Details**, **Pricing Details** and **Issue Link**.
 
-- **Solution**: A centralized listing ensures no order is ever missed or overlooked.
+### PO Detailed Report
 
-**The "He-Said-She-Said" Pricing Dispute:**
-Verbal or handwritten changes lead to friction during invoicing.
+Set **Start Date** and **End Date** and press **Generate Report**. The rows are grouped by PO Number, Item, Date and Qty, with **Unit Price, Total Amount, GRN Qty, GRN Amount, Outstanding Qty, Outstanding Amount** as values: GRN Qty is the quantity already received against the line (`bl_fi_generic_doc_link.quantity_contra`) and Outstanding is ordered minus received. The range defaults to the start of the month two months back through today; the backend caps the result at 500 orders per run and applies the same supplier-link filter as everything else.
 
-- **Solution**: The portal provides the definitive version of the order, linked directly to the client's procurement system.
+### File Import
 
-**The Communication Gap:**
-Suppliers often don't know if a PO has been updated or if the client has received their confirmation.
+The **File Import** listing shows **File Name, File Size, Format, Status, Process Status, Error Message, Created Date**. The create screen takes a **Delimiter**, an optional supplier, and one uploaded file, then **SUBMIT**. Opening an imported file shows three helper grids — every row, the rows that failed, and a resubmit view — so a supplier can see exactly which CSV line was rejected.
 
-- **Solution**: Real-time status updates and document tracing provide 100% transparency.
+A second tab, **API Upload**, appears only when the `SHOW_API_UPLOAD` setting is on.
 
----
+What happens after SUBMIT (`InternalPurchaseOrderImportFileHelperProcessor`):
 
-## Key Features Overview
+1. Process status **VALIDATING_DATA**; the file's rows are parsed and their GUIDs resolved.
+2. Columns are validated. Any row error ⇒ process status **FAILED** and nothing is created.
+3. No errors ⇒ purchase orders are created from the rows; if some rows remain unprocessed the file ends **FAILED**, otherwise it goes **PARTIALLY_DONE**, the created document GUIDs are written back to the helper rows, totals are calculated, and the file ends **DONE**.
 
-{{< cards >}}
-{{< card title="Order Monitoring" subtitle="View all incoming POs in real-time" link="#for-supplier-order-desk-monitoring--acknowledging" >}}
+## Configuration
 
-{{< card title="Digital Acknowledgment" subtitle="Update status to confirm order acceptance" link="#order-acknowledgement" >}}
+### Before you can use it
 
-{{< card title="Document Access" subtitle="View specs, drawings, and terms" link="#attachment--spec-access" >}}
+| Prerequisite | Where it is set | Why it matters |
+|---|---|---|
+| The supplier's login is linked to the supplier entity | [Supplier](/applets/master-data/supplier-applet-1/) → Login (`bl_fi_mst_entity_login_subject_link`, `ACTIVE`) | Every read is filtered by that link, and **Update Status** is authorised by it. |
+| The applet is installed for that login | [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) | Applet token, plus the `appletGuid` used by the printable-format picker. |
+| A workflow process for the company | **Settings → Workflow Settings** (Company Workflow listing / create / edit) and `WORKFLOW_PROCESS_GUID` in Field Settings | Without a process the Workflow Status drop-down is empty and **Update Status** has nothing to send. |
+| A printable format for `INTERNAL_PURCHASE_ORDER` | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) → Printable Format Settings, or this applet's own | The Export tab lists formats for this document type. |
 
-{{< card title="Line Item Analysis" subtitle="Granular view of quantities and pricing" link="#line-item-visibility" >}}
+### Applet settings
 
-{{< card title="Financial Sync" subtitle="View payment terms and linked accounts" link="#financial-sync--reconciliation" >}}
+Settings live on the **shared** `FieldConfigurationComponent` from `blg-shared-utilities` (route `settings/field-settings`), gated by `sessionStorage.appletCode`. The applet also contains its own `field-configuration` component carrying a Workflow drop-down, but no route points at it — it is dead code; the shared screen is where `WORKFLOW_PROCESS_GUID` is set.
 
-{{< card title="Export & Print" subtitle="Download official PO PDFs for your records" link="#export--reporting" >}}
-{{< /cards >}}
+**22 keys pass all four proofs** at the shared-utilities commit this applet pins (`f9e5782`); re-checking at HEAD adds nothing. Nineteen of them are the line-field hides shared with the rest of the family; three are specific to this applet.
 
-{{< figure src="/images/internal-purchase-order-supplier-access-applet/internal-purchase-order-supplier-access-applet.png" alt="Purchase Order Flow: From Client Creation to Supplier Fulfillment" caption="Collaborative Procurement: A visual overview of how the Client's PO flows into the Supplier Access portal for acknowledgement and fulfillment." >}}
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| `WORKFLOW_PROCESS_GUID` | The workflow process whose statuses appear in the Main Details drop-down | Unset | The document's own `xtn_process_hdr_guid` wins when the buyer already stamped one; otherwise this value seeds the drop-down. Unset ⇒ no statuses to choose. |
+| `SHOW_API_UPLOAD` | The **API Upload** tab on the File Import listing | Off (`?? false`) | Shows the second import grid. |
+| `VERTICAL_ORIENTATION` | Whether the File Import screens honour the personal orientation setting | Off | With it on, `DEFAULT_ORIENTATION` / `DEFAULT_TOGGLE_COLUMN` decide single- or double-column layout on the import screens. |
+| `HIDE_QTY_BASE`, `HIDE_QTY_UOM`, `HIDE_UOM_TO_BASE_RATIO`, `HIDE_UNIT_PRICE_STD_EXCL_TAX`, `HIDE_UNIT_PRICE_STD_INCL_TAX`, `HIDE_UNIT_PRICE_STD_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_STD_UOM_INCL_TAX`, `HIDE_UNIT_PRICE_NET_EXCL_TAX`, `HIDE_UNIT_PRICE_NET_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_TXN_UOM_INCL_TAX`, `HIDE_UNIT_DISCOUNT`, `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX`, `HIDE_DISCOUNT_AMOUNT_EXCL_TAX`, `HIDE_AMOUNT_STD_EXCL_TAX`, `HIDE_AMOUNT_NET_EXCL_TAX`, `HIDE_AMOUNT_TXN`, `HIDE_TAX_CONFIG_SELECTION`, `HIDE_WHT_CONFIG_SELECTION` | One line field each on the line detail | Off | Hidden unless the role holds the matching `SHOW_*` client-side permission. |
+| `HIDE_COSTING_DETAILS` | The **Costing Details** tab on a line | Off | Hides the tab. The code also accepts `SHOW_COSTING_DETAILS` as an override, but that permission is **not seeded for this applet** (see below), so in practice this setting is all-or-nothing. |
 
----
+**Read outside the shared screen:** `DEFAULT_BRANCH` and `DEFAULT_LOCATION` (applet-local Default Selection screen — saved, but nothing here reads them, since the applet has no document create form); `PRINTABLE` (Printable Format Settings, and it pre-selects the format on the Export tab); `DEFAULT_ORIENTATION` and `DEFAULT_TOGGLE_COLUMN` (Personalization → Default Selection, consumed by the File Import screens).
 
-## Key Concepts
+### Document behaviour settings
 
-### Understanding the PO Framework
+The only document behaviour this applet controls is the workflow status, and it is configured in two places: **Settings → Workflow Settings**, which maintains the company's workflow processes, and `WORKFLOW_PROCESS_GUID` on the shared Field Settings screen, which says which process this applet offers. Posting, FINAL, VOID and knock-off remain buyer-side.
 
-Every purchase order involves three critical dimensions. The Supplier Access applet ensures you have visibility into all three:
+### Feature visibility and permissions
 
-| Aspect                   | Component               | Practical Example                    |
-| ------------------------ | ----------------------- | ------------------------------------ |
-| **From Whom**?           | Client Branch/Purchaser | HQ Procurement, Regional Warehouse   |
-| **What** is ordered?     | Line Items & Specs      | Raw Materials, Specialized Equipment |
-| **How** is it processed? | Status & Acknowledgment | Acknowledged, Shipped, or Fulfilled  |
+The registry seeds **19 client-side permission codes** for this applet, all `ACTIVE` as of 2026-09-06 — the `SHOW_*` half of the line-field pairs above. `SHOW_COSTING_DETAILS` is checked in this applet's code but has no definition row for this applet code, so it cannot be granted from **Role Permission Listing**.
 
-{{< callout type="tip" >}}
-**Real-World Example**: Your client (FROM WHOM) issues a PO for 500 units of a component. You receive an alert, check the **Lines** for technical specs (WHAT), and click **Update Status** to notify the client you have started production (HOW).
-{{< /callout >}}
+Server-side:
 
-### PO Hierarchy Structure
-
-Think of the PO flow from the supplier's vantage point:
-
-```
-Supplier Portal
-│
-├── Client Branches ──→ WHO is the buyer?
-│   │
-│   └── Purchase Orders ──→ WHAT are they buying?
-│       │
-│       ├── Line Items ──→ GRANULAR details (Qty/Price)
-│       │
-│       └── Attachments ──→ SUPPORTING docs (Specs/Drawings)
-│
-└── Fulfillment Status ──→ WHERE is the order now?
-    │
-    └── Acknowledged/Shipped ──→ PROGRESS tracking
-```
-
-### The "Golden Trio" of Order Management
-
-To effectively fulfill orders, you must track these three pillars:
-
-| Component           | Analogy           | Supplier Role                                       |
-| ------------------- | ----------------- | --------------------------------------------------- |
-| **Document Link**   | The "Legal Proof" | Verify the PO against original quotes or contracts. |
-| **Acknowledgment**  | The "Handshake"   | Confirm you have received and accepted the order.   |
-| **Settlement Info** | The "Payment"     | Reconcile the order against your AR aging.          |
-
----
-
-## Quick Start Guide
-
-### For Supplier Order Desk: Monitoring & Acknowledging
-
-**Goal:** Review a new PO and confirm acceptance to the client.
-
-1.  **Access**: Open the **Purchase Order Supplier Access** applet.
-2.  **Locate Order**: Find new POs in the main listing (usually with an "Approved" or "Open" status).
-3.  **Review Header**: Check the **Main Details** for the correct branch, date, and terms.
-4.  **Acknowledge**: Click the **Update Status** button in the top right.
-5.  **Confirm**: Select "Acknowledged" (or your organization's equivalent status) to notify the client.
-
-{{< figure src="/images/internal-purchase-order-supplier-access-applet/po-listing-populated.png" alt="Supplier Access Main Listing" caption="Main Listing: View all incoming Purchase Orders and their current fulfillment status." >}}
-
----
-
-### For Supplier Warehouse: Viewing Specs & Lines
-
-**Goal:** Extract technical details for picking or production.
-
-1.  **Open Lines**: Inside the PO document, navigate to the **Lines** tab.
-2.  **View Items**: Review item codes, descriptions, and exact quantities.
-3.  **Access Specs**: Go to the **Attachments** tab to download any technical drawings or manuals linked by the client.
-4.  **Check SN (if applicable)**: Review the **Serial Number** requirements if the client has specific tracking needs.
-
-{{< figure src="/images/internal-purchase-order-supplier-access-applet/ipo-edit-form.png" alt="PO Line Item Listing" caption="Line Items: Detailed breakdown of the products, quantities, and pricing requested by the client." >}}
-
----
-
-### For Supplier Accounts: Reconciling
-
-**Goal:** Prepare for invoicing and track payment expectations.
-
-1.  **View Account**: Open the **Account** or **Payment** tabs to see the client's financial coding and terms.
-2.  **Check Contra**: If the client is offsetting this PO against other documents, check the **Contra** tab.
-3.  **Export PDF**: Use the **Export** tab to download the official PO PDF for your financial records.
-
----
-
-## Feature Deep Dive
-
-### Order Acknowledgement
-
-This digital "handshake" is crucial for procurement performance. By clicking **Update Status**, the supplier provides the client with real-time feedback, reducing the need for manual follow-up emails.
-
-### Line Item Visibility
-
-The **Lines** tab provides more than just a list of products; it includes:
-
-- **Unit Pricing**: Locked-in price at the time of order.
-- **VAT/Tax Details**: Clear breakdown of tax obligations.
-- **Deliverables**: Links to specific client requirements or quality standards.
-
-### Attachment & Spec Access
-
-No more lost email attachments. All necessary documentation is stored directly on the PO record:
-
-- **Formats**: Support for PDF, PNG, JPG, and CSV files.
-- **Traceability**: See when attachments were added and by whom.
-
----
-
-## Configuration & Settings
-
-### System Configuration
-
-Administrators can control what vendors see to ensure data governance:
-
-- **Field Settings**: Toggle visibility of internal client fields (e.g., hide "Profit Center" while showing "Reason Code").
-- **Default Selection**: Set default views so suppliers see the most relevant orders first.
-- **Printable Format Settings**: Customize the layout of the PO PDF that the supplier downloads.
-
----
-
-## Related Documentation
-
-- [Purchase Order (Internal) Applet](file:///e:/repo/blg-wiki/content/en/applets/purchase-workflow/internal-purchase-order-applet.md) — Alternative internal applet; used by the client's internal procurement staff to manage POs across all vendors.
-- [Internal Purchase GRN Supplier Access Applet](file:///e:/repo/blg-wiki/content/en/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet.md) — Downstream supplier applet; used by suppliers to view Goods Received Notes linked to their user account.
-
----
-
-## Frequently Asked Questions (FAQ)
-
-**Q: How does this applet differ from the standard Purchase Order (Internal) Applet?**  
-**A:** The standard **Purchase Order (Internal) Applet** is an internal tool for your client's procurement team to manage all purchase orders across all vendors. This **Purchase Order Supplier Access (Internal) Applet** is designed specifically for suppliers/vendors to view and upload their own POs. To comply with business ethics and data privacy, it uses separate login endpoints (`login-ep`) to only show supplier info linked to your user account, preventing any supplier from accessing another supplier's data.
-
-**Q: Can I change the price or quantity of a PO?**
-**A:** No. As a supplier, you have "View & Acknowledge" access. If you need to negotiate a change, use the **Comments** or **Issue Link** (if enabled) to notify the client's procurement officer.
-
-**Q: Where can I find the client's shipping instructions?**
-**A:** These are usually located in the **Main Details** tab under "Shipping Address" or within the **Attachments** tab if a separate instruction document was uploaded.
-
-**Q: How do I know if a PO has been cancelled?**
-**A:** The status in the main listing will update to "Cancelled" or "Voided." You can also filter your list by status to see only active orders.
-
-{{< figure src="/images/internal-purchase-order-supplier-access-applet/po-listing.png" alt="Advanced Filtering Options" caption="Advanced Filtering: Quickly find orders by branch, supplier, or current status." >}}
-
-**Q: Can I export multiple POs at once?**
-**A:** Yes. Use the **File Export** feature to download a batch of orders in CSV or Excel format for your own internal processing.
-
-{{< figure src="/images/internal-purchase-order-supplier-access-applet/ipo-edit-form.png" alt="File Export Options" caption="File Export: Batch export PO data for internal reconciliation or ERP import." >}}
-
----
-
-## Summary
-
-The **Purchase Order Supplier Access (Internal) Applet** transforms the traditionally messy "order-to-fulfillment" cycle into a streamlined, transparent digital process. By giving suppliers direct access to the source of truth, organizations can virtually eliminate ordering errors, accelerate fulfillment times, and build stronger, data-driven vendor relationships.
+| Path | Endpoint | Check |
+|---|---|---|
+| Listing, Line Items, open a document | `…/gen-doc/internal-purchase-orders/login-entity-ep[/query]` | Entity-filtered by the supplier link; no permission check. |
+| **Update Status** | `POST …/gen-doc/login-entity-ep/xtn-process` | `UserPermissionService.isUserLoginEntity(login, entity_hdr_guid)` — the login must be linked to the entity on the document, otherwise `CLIENT_AUTH_USER_NOT_AUTHORIZED`. |
+| Export PDF | `GET …/internal-purchase-orders/print-jasper-pdf/login-entity-ep/{guid}` | Entity-filtered; no permission needed. |
+| PO Detailed Report | `POST …/gen-doc/blanket-purchase-report/po/login-entity-ep` | Entity-filtered in the report SQL; capped at 500 rows. |
+| File Import listing / open | `…/internal-purchase-order/import-file-hdr/login-entity-ep[/query]` | Filtered to files created by this login. |
+| File Import submit | `POST …/internal-purchase-order/import-file-hdr/login-entity-ep` (multipart) | Any authenticated login with the applet; the import is attributed to that login. |
+
+## Fields
+
+The document tabs are read-only apart from the workflow drop-down; the tables above list what each shows. The File Import create form has three inputs — Delimiter, an optional supplier, and the file itself — and **SUBMIT** stays disabled until a file is attached.
+
+## Lifecycle and effects
+
+The document's own posting behaviour belongs to the buyer-side applet:
+
+| Property | Value |
+|---|---|
+| Server document type | `INTERNAL_PURCHASE_ORDER` |
+| Amount signum | 0 (`InternalPurchaseOrderDataConsistencyObject`) |
+| Quantity signum | 0 — an order moves no stock and posts no journal |
+| Dr/Cr equation | None. |
+| GL precedence | Not applicable. |
+| Stock processor | None; the order only creates open-queue rows that the GRN and invoice knock off. |
+| What VOID reverses | The buyer-side void processor releases the knock-off queue. |
+
+What this applet writes:
+
+| Write | Table / column | Notes |
+|---|---|---|
+| **Update Status** | `bl_fi_generic_doc_hdr.xtn_process_hdr_guid`, `xtn_process_status_guid`, `xtn_process_status_code`, `xtn_process_resolution_guid`, `xtn_process_resolution_code`, and the same columns on any lines sent with the request | `GenericDocumentService.updateXtnProcess` validates through `GenericDocXtnProcessDCO` and updates in one transaction; the payload is merged onto the existing row, so no other field changes. The DCO rejects a null or unknown header GUID, entity GUID, process GUID, status GUID or resolution GUID with `GENERIC_DOC_HDR_OBJECT_GUID_…`, `GENERIC_DOC_HDR_DOC_ENTITY_HDR_…`, `GENERIC_DOC_HDR_XTN_PROCESS_STATUS_GUID_…`, `GENERIC_DOC_HDR_XTN_PROCESS_RESOLUTION_GUID_…` and `WF_PROCESS_HDR_OBJECT_GUID_…` errors. A line GUID that does not exist fails with `LINE_GUID_DOES_NOT_EXIST`. |
+| **File Import** | `bl_fi_internal_purchase_order_import_file_hdr` / `…_helper`, then new purchase orders | See *File Import* above for the status sequence. |
+
+## Related applets
+
+- [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) — the buyer-side applet.
+- [Purchase GRN Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet/) — the receipt against this order.
+- [Purchase Invoice Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet/) — the invoice that follows.
+- [Blanket Purchase Order Supplier Access](/applets/purchase-workflow/blanket-purchase-order-applet-supplier-access-applet/) — the agreement the order may draw down.
+- [Supplier](/applets/master-data/supplier-applet-1/) — where the login link is created.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| The listing is empty | No `ACTIVE` supplier link for the login, or the buyer's orders are still DRAFT (the default criterion is `posting_statuses = FINAL`) | Check the link in the [Supplier](/applets/master-data/supplier-applet-1/) applet; to see drafts, set Posting Status in the advanced search — here the search replaces the default. |
+| The **Workflow Status** drop-down is empty | No workflow process is configured (`WORKFLOW_PROCESS_GUID` unset and none stamped on the document), or the current status has no onward transitions | Configure the process in **Settings → Workflow Settings** and select it in **Settings → Field Settings**. |
+| **Update Status** returns *not authorised* | The backend checks that the login is linked to the entity on the document; a link that exists for a different entity is not enough | Link the login to the exact supplier entity named on the order. |
+| **Update Status** fails with a `…_GUID_IS_NULL_OR_EMPTY` error | The status was selected but its resolution had not been resolved yet — the resolution is fetched asynchronously after the drop-down changes | Wait a moment after choosing the status, then press Update Status; re-select the status if it happens again. |
+| The status list takes several seconds to appear | The screen deliberately waits three seconds before patching the current status into the control | Expected. |
+| **EXPORT AS PDF** fails | The chosen printable format does not exist for `INTERNAL_PURCHASE_ORDER`, or none was selected | Pick a format in the Export tab, or set a default in Printable Format Settings. |
+| A CSV import ends **FAILED** with nothing created | One or more rows failed column validation; the processor creates nothing unless every row passes | Open the file and read the *error* helper grid, fix those rows and resubmit. |
+| A CSV import ends **FAILED** after some orders were created | Rows remained unprocessed after creation | Check the helper grids for the rows without a document number, and import them again. |
+| The **API Upload** tab is missing | `SHOW_API_UPLOAD` is off | Turn it on in **Settings → Field Settings**. |
+| **Costing Details** is missing for everyone | `HIDE_COSTING_DETAILS` is on and `SHOW_COSTING_DETAILS` is not seeded for this applet, so no role can re-open it | Turn the setting off, or ask for the permission definition to be registered. |
+| Changing Default Selection has no effect | The applet has no document create form; `DEFAULT_BRANCH` and `DEFAULT_LOCATION` are saved but never read | Expected. |
+
+## Related documentation
+
+- [Purchase Order (Internal) applet](/applets/purchase-workflow/internal-purchase-order-applet/)
+- [Purchasing module](/modules-v2/purchasing/)
+- [Supplier applet](/applets/master-data/supplier-applet-1/)

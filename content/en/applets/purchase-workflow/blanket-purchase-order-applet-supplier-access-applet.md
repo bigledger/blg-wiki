@@ -1,6 +1,59 @@
 ---
-title: "Blanket Purchase Order Applet (Supplier Access)"
-description: "Supplier-side blanket purchase agreements: list and open BPOs, create or review lines, export PDFs, and run report listings with date filters."
+title: "Blanket Purchase Order Supplier Access"
+description: "Reference for the supplier-facing copy of the Blanket Purchase Order applet: a login linked to a supplier entity lists the blanket agreements raised on that supplier, opens them read-only, exports a PDF and runs two supplier-scoped reports."
+applet_code: "blanketPurchaseOrderAppletSupplierAccess"
+page_type: applet
+applet_repo: "blg-applet-wavelet-blanket-purchase-order-applet-supplier-access"
+modules: [purchasing]
+related_applets:
+  - blanket-purchase-order-applet
+  - internal-purchase-order-supplier-access-applet
+  - internal-purchase-order-applet
+  - supplier-delivery-order-applet
+  - supplier-applet-1
+  - organisation-applet
+guides: []
+sources:
+  configuration:
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/app.routing.ts
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/models/menu-items.ts
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/models/constants/applet-constants.ts
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/settings-container/application-settings/application-settings.component.ts
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/settings-container/application-settings/application-settings.component.html
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/settings-container/field-configuration/field-configuration.component.html
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/personalization-container/personal-default-settings/personal-default-settings.component.ts
+    - blg-shared-utilities/modules/session/session-controller/effects/session.effects.ts
+    - blg-shared-utilities/modules/session/session-controller/reducers/session.reducers.ts
+  fields:
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/blanket-purchase-order-container/blanket-purchase-order-listing/blanket-purchase-order-listing.component.ts
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/blanket-purchase-order-container/blanket-purchase-order-listing/blanket-purchase-order-listing.component.html
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/blanket-purchase-order-container/blanket-purchase-order-view/blanket-purchase-order-view.component.html
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/blanket-purchase-order-container/blanket-purchase-order-view/blanket-purchase-order-view.component.ts
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/blanket-purchase-order-container/blanket-purchase-order-view/export/export.component.html
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/blanket-purchase-order-container/blanket-purchase-order-create/blanket-purchase-order-create-main/blanket-purchase-order-create-main.component.ts
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/blanket-purchase-order-container/blanket-purchase-order-create/blanket-purchase-order-create-main/blanket-purchase-order-create-main.component.html
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/blanket-purchase-order-container/blanket-purchase-order-create/blanket-purchase-order-create-account/account-entity-details/account-entity-details.component.ts
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/blanket-purchase-order-container/blanket-purchase-order-create/blanket-purchase-order-create-line-items/blanket-purchase-order-create-line-items.component.ts
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/blanket-purchase-order-container/blanket-purchase-order-report/blanket-purchase-order-report.component.ts
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/components/blanket-purchase-order-container/blanket-purchase-order-detailed-report/blanket-purchase-order-detailed-report.component.ts
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/services/blanket-purchase-order-pages.service.ts
+  lifecycle:
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/blanket-supplier-access-services/blanket-purchase-order.service.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-document-services/blanket-purchase-order-supplier-access-dashboard-by-login.service.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/GenericDocumentController.java
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/BlanketPurchaseOrderReportController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/FinancialDocUow/GenericDocumentUow.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/BlanketPurchaseOrderReportUow.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/user/UserPermissionService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalCustomInternalBlanketPurchaseOrderDataConsistencyObject.java
+  troubleshooting:
+    - blg-applet-wavelet-blanket-purchase-order-applet-supplier-access/micro-fe/projects/wavelet-erp/applets/blanket-purchase-order-applet-supplier-access/src/app/state-controllers/blanket-purchase-order-controller/store/effects/blanket-purchase-order.effects.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/user/UserPermissionService.java
+    - gh:bigledger/blg-applet-wavelet-blanket-purchase-order-applet-supplier-access#1
+    - gh:bigledger/blg-applet-wavelet-blanket-purchase-order-applet-supplier-access#2
 tags:
   - purchase-workflow
   - blanket-purchase-order
@@ -10,325 +63,225 @@ tags:
   - reporting
 weight: 205
 date: 2026-04-08
-lastmod: 2026-04-21
+lastmod: 2026-09-06
 draft: false
 ---
 
-## Purpose and Overview {#purpose-and-overview}
+## Overview
 
-A blanket purchase order (BPO) is a long-term agreement with a buyer: you agree scope (items, prices, limits) and validity up front, then the buyer can create releases or related orders against that agreement over time without negotiating every single order from scratch.
+**Blanket Purchase Order Supplier Access** is the supplier-facing copy of the [Blanket Purchase Order](/applets/purchase-workflow/blanket-purchase-order-applet/) applet. It is installed in the buying organisation's tenant and opened by a login that has been linked to a supplier entity; that login sees only the blanket agreements raised on *its own* entity, opens them read-only, exports a PDF, and runs two supplier-scoped reports that show how much of each agreement has already been drawn down by purchase orders.
 
-The **Blanket Purchase Order (Supplier Access)** applet is the supplier-facing workspace in BigLedger for those agreements. You use it to see blanket POs shared with your organisation, work on header and line details where your process allows, export a PDF copy, and open report screens for operational review. Your buyer may use the separate [Blanket Purchase Order](/applets/purchase-workflow/blanket-purchase-order-applet/) applet on their side; both sides use the same type of document, with permissions and visibility controlled by each company.
+The applet reads the same document as the buyer-side applet — server document type `INTERNAL_BLANKET_PURCHASE_ORDER` — through the *login-entity* endpoints, which filter rows by the entity behind the login instead of by tenant permissions. Nothing in this applet writes: the create screen has no reachable entry point, the Save buttons on the view and line-item screens are commented out of the templates, and DELETE is permanently disabled.
 
-{{< callout type="info" >}}
-**In plain English:** Releases and follow-on purchase orders are usually created in the buyer’s BigLedger company. This applet is for the blanket agreement (header, supplier account, lines) and supplier-side reports. If you need a new release, the buyer’s procurement team normally handles that in their apps—not here.
+{{< callout type="warning" >}}
+This applet does not create, edit, acknowledge or delete blanket agreements. Earlier versions of this page described a create flow and editable lines; neither exists in the shipped code (`blanket-purchase-order-listing.component.html` L10–L14, `blanket-purchase-order-view.component.html` L13–L17 and L47).
 {{< /callout >}}
 
-### Who Benefits from This Applet?
+## Where it fits
 
-**Supplier sales and account teams:**
+| Position | Document / applet | Why |
+|---|---|---|
+| Module | [Purchasing](/modules-v2/purchasing/) | Supplier-facing end of the blanket-agreement chain. |
+| The document | [Blanket Purchase Order](/applets/purchase-workflow/blanket-purchase-order-applet/) | Same `bl_fi_generic_doc_hdr` rows, same document type. Buyers create and finalise there. |
+| Upstream (access) | [Supplier](/applets/master-data/supplier-applet-1/) | The supplier's login must be linked to the supplier entity (`bl_fi_mst_entity_login_subject_link`) before anything appears here. |
+| Drawn down by | [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) | The reports join each agreement line to the PO lines that knocked it off, and show PO quantity, balance quantity and PO amount. |
+| Sibling supplier applets | [Purchase Order Supplier Access](/applets/purchase-workflow/internal-purchase-order-supplier-access-applet/), [Purchase GRN Supplier Access](/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet/), [Supplier Delivery Order](/applets/purchase-workflow/supplier-delivery-order-applet/) | The same login-link filter, applied to the other purchase-side documents. |
 
-- Open agreements, confirm lines and commercial details, and export PDFs
-- One place to open the latest blanket agreement instead of hunting through email
+## Screens and menus
 
-**Supplier operations:**
+The sidebar has three working menus plus **Settings** and **Personalization** (`menu-items.ts`):
 
-- Review validity and line scope before fulfilling releases the buyer sends separately
-- Use the Line Items tab to see what is covered under the agreement (subject to what the buyer posted and your edit rights)
-
-**Supplier administrators:**
-
-- Configure application settings, field settings, default selection, and printable format behaviour so the applet matches company policy
-- Control who can create, edit, export, or run reports
-
----
-
-### What Problems Does This Solve? {#what-problems-does-this-solve}
-
-**Before this applet**, blanket agreement data often lived in email, spreadsheets, or disconnected files, so version control and auditability suffered.
-
-**With this applet**, you get:
-
-- A single listing (Blanket Purchase Order Supplier Access Listing) with search and column layout options
-- Structured documents with clear areas for main details, supplier account information, and lines
-- PDF export from the view workflow so you can file or share the layout your company configured
-- Report and BPO Detailed Report list views, with the detailed report supporting date range filters
-- Settings and permissions your admin can tune so each role sees only what they should
-
-{{< callout type="info" >}}
-**Can’t see a menu, tab, or button?** Your administrator controls feature visibility, field settings, and permissions. Supplier-access applets are often restricted on purpose—ask your admin if something you expect is missing.
-{{< /callout >}}
-
-Depending on configuration, you may also step through supporting screens (for example supplier selection, shipping or billing address, add or edit line item, batch selection) in the same way as other BigLedger document applets.
-
----
-
-## Key Features Overview {#key-features-overview}
-
-{{< cards >}}
-{{< card title="Quick Start" subtitle="Find agreements, create when allowed, run reports" link="#quick-start-guide" >}}
-{{< card title="Blanket PO listing & document" subtitle="Listing, view, create, lines, export" link="#blanket-purchase-order-listing-and-document" >}}
-{{< card title="Reports in Detail" subtitle="Report and BPO Detailed Report" link="#reports-in-detail" >}}
-{{< card title="Configuration & Settings" subtitle="For administrators" link="#configuration--settings" >}}
-{{< card title="Glossary" subtitle="BPO, releases, listing names" link="#glossary" >}}
-{{< card title="FAQ" subtitle="Common questions and fixes" link="#frequently-asked-questions" >}}
-{{< /cards >}}
-
-{{< figure src="/images/blanket-purchase-order-applet-supplier-access-applet/blanket-purchase-order-applet-supplier-access-applet-overview-infographic.png" alt="Overview of Blanket Purchase Order Supplier Access: listing, document tabs, reports, and settings" caption="Overview of supplier-side blanket purchase order listing, document work areas, reports, and configuration." >}}
-
----
-
-## Quick Start Guide {#quick-start-guide}
-
-### For supplier users: find and open an agreement
-
-**Goal:** Locate a blanket PO and open it for review or export.
-
-1. Click **Blanket Purchase Order** in the sidebar (opens **Blanket Purchase Order Supplier Access Listing**).
-2. Use the advanced search control and column toggle to find the document (visible columns depend on settings).
-3. Click a row in the grid to open **View Blanket Purchase Order**.
-4. Review the **Main**, **Supplier Info**, and **Line Items** tabs.
-5. Open the **Export** tab and click **EXPORT AS PDF** (other export formats may appear but are typically disabled).
-
-*Full detail:* [Blanket purchase order listing and document](#blanket-purchase-order-listing-and-document)
-
----
-
-### For supplier users: create a new blanket PO (when allowed)
-
-{{< callout type="info" >}}
-If **Create** is not visible, your role may be view-only or feature visibility may hide creation. Ask your BigLedger administrator if you need to start agreements from the portal.
-{{< /callout >}}
-
-**Goal:** Start a new agreement record and save it.
-
-1. From **Blanket Purchase Order Supplier Access Listing**, open **Create Blanket Purchase Order** using the create (+) control on the toolbar when your build shows it (tooltip **Create**), or the entry point your administrator configured. If no create control appears, you may be view-only—ask your admin.
-2. Complete **Main** (transaction date, validity, references, limits—fields follow field settings).
-3. Open **Supplier Info** and select the correct supplier or account when prompted (pickers may be labelled **Select Customer** or similar—choose the entity your company uses for the buyer–supplier link).
-4. Add lines on **Line Items** (item, quantities, amounts as shown).
-5. Click **CREATE** (use **RESET** only if you intend to clear the draft).
-
-*Full detail:* [Create flow](#create-blanket-purchase-order)
-
----
-
-### For analysts: run the detailed report by date
-
-**Goal:** Review BPO activity for a period.
-
-1. Click **BPO Detailed Report** in the sidebar.
-2. On **Blanket Purchase Order Supplier Access Detailed Report Listing**, set **Start Date** and **End Date** using the date pickers.
-3. Click **Generate Report** and read the grid results.
-
-*Full detail:* [Reports in Detail](#reports-in-detail)
-
----
-
-## Blanket purchase order listing and document {#blanket-purchase-order-listing-and-document}
+| Menu | Route | What it is |
+|---|---|---|
+| **Blanket Purchase Order** | `blanket-purchase-order` | The listing, and the read-only document view behind it. |
+| **Report** | `blanket-purchase-order-report` | A second grid over the same listing query, with a fixed seven-column layout. |
+| **BPO Detailed Report** | `blanket-purchase-order-detailed-report` | Date-ranged agreement-versus-PO report (see below). |
+| **Settings** | `settings/…` | Application Settings, Field Settings, Default Selection, Printable Format Settings, plus Webhook, Feature Visibility and the permission listings. |
+| **Personalization** | `personalization/personal-default-selection`, `…/sidebar` | Per-user Default Selection and sidebar order. |
 
 ### Listing
 
-- Screen title: **Blanket Purchase Order Supplier Access Listing**.
-- Use advanced search, pagination, column toggle, and grid options as in other BigLedger listings.
-- Selecting a row opens the next column: typically **View Blanket Purchase Order** for existing data.
+Columns, in order: **BPO No, Company, Branch Code, Supplier Name, Amount, Updated Date, Created Date, Transaction Date, Purchaser, Created By, Status**. The grid is server-side, sorted by `updated_date` descending, and each of the eleven columns can be hidden by an Application Setting (see *Configuration*).
 
-### View Blanket Purchase Order
+Only two things happen on this screen: **Advanced Search** (BPO No, Company, Supplier Name, Amount, Created Date from/to, Transaction Date from/to) and clicking a row, which opens the document view. The create (`+`) button that other document applets carry is commented out of the template.
 
-- Use the back arrow at the top (tooltip **Back**) to return to the listing when it is enabled.
-- Tabs:
-  - **Main** — header fields.
-  - **Supplier Info** — entity and account details.
-  - **Line Items** — grid of lines; actions may open view, add, or edit line sub-screens.
-  - **Export** — click **EXPORT AS PDF** to download a PDF for the current document (success and error messages appear on screen).
-- A **DELETE** button may appear at the bottom; whether it is active depends on permissions and business rules—do not assume you can delete posted agreements.
+Each row is enriched with five extra calls — company, branch, location, the creator's profile name, and the entity named in the `PURCHASE AGENT` extension row. Each call is individually caught: when one fails, the cell shows the returned error code instead of the value, which is why a supplier login that lacks company or branch read rights sees error codes in the **Company**, **Branch Code** or **Purchaser** columns while the rest of the row is correct.
 
-### Typical document states (supplier view)
+{{< figure src="/images/blanket-purchase-order-supplier-access-applet/report-tab-search-by-filter.png" alt="Blanket Purchase Order Supplier Access Report Listing with the advanced search panel open" caption="The Report screen with its advanced search panel. The sidebar shows the applet's three menus." >}}
 
-| What you might see | What it usually means for you |
-|--------------------|-------------------------------|
-| Draft / editable | Header and lines can often be changed until your process or the buyer locks the record. |
-| Posted / confirmed | Many fields become read-only; you may still export a PDF. |
-| Closed / expired | Often view and report only; editing may be blocked by business rules. |
+### Document view
 
-Exact status labels and rules depend on your tenant configuration.
+Opening a row shows **View Blanket Purchase Order** with four tabs:
 
-### Create Blanket Purchase Order {#create-blanket-purchase-order}
-
-- **RESET** clears the draft form.
-- **CREATE** submits the new document (you should see a success confirmation when the save completes).
-- Tabs: **Main**, **Supplier Info**, **Line Items** (same ideas as view; **Settlement** or **Department** header tabs may be hidden in your build).
-
-### Line item and picker flows {#line-item-and-picker-flows}
-
-When you add or edit lines, the applet may open auxiliary columns titled for example **Select Shipping Address**, **Select Billing Address**, **Select Customer**, **Add Supplier**, **Select Batch No**, **Batch No Booking**, **Select Settlement**, or **Select Contact Person**, or **Add Line Item** / **Edit Line Item**. Use the back arrow (tooltip **Back**) to return to the previous step. Exact availability depends on feature visibility and field settings.
-
----
-
-## Reports in Detail {#reports-in-detail}
-
-### Report
-
-This is the standard list report your company configured.
-
-{{< figure src="/images/blanket-purchase-order-supplier-access-applet/report-tab-search-by-filter.png" alt="Blanket Purchase Order Supplier Access Report Listing with advanced search and filters" caption="On Report, use the advanced search area to build criteria, then run the search to filter the grid. Column toggle and pagination match other BigLedger listings." >}}
-
-| What you can do | How |
+| Tab | Contents |
 |---|---|
-| Open the report | Click **Report** in the sidebar |
-| Filter and scan results | Use search and column tools on **Blanket Purchase Order Supplier Access Report Listing** |
-| Match layout to policy | Column visibility follows feature visibility and field settings |
+| **Main** | Branch, Company and Location drop-downs, Start Date (read-only), Status, Reference No., Validity, Purchase Agent, Remarks. |
+| **Supplier Info** | Entity Id, Entity Name, Email, Phone Number, Supplier Type — all read-only except Entity Id, which has no save path. |
+| **Line Items** | Item Code, Item Name, Valid Date, UOM, Unit Price, Qty, Txn Amount. Clicking a line opens a detail pane. |
+| **Export** | **EXPORT AS PDF** works; **EXPORT AS CSV**, **EXPORT AS DOCX** and **EXPORT AS ZIP** are disabled in the template. |
 
----
+The **DELETE** button under the tabs carries `disabled="true"` and can never be pressed. The **RESET**, **Print** and **Save** buttons that the buyer-side applet shows in the same header are commented out here, so edits made in the Main tab or through *Add Line Item* live in the browser only and are lost when you leave the screen.
 
-### BPO Detailed Report
+### Reports
 
-Use this when you need a time-bounded extract instead of scrolling only the main listing.
+**Report** re-runs the listing query and shows a fixed seven columns: BPO No, Company, Supplier Name, Amount, Created Date, Created By, Status. It has no date filter of its own; use its advanced search.
 
-{{< figure src="/images/blanket-purchase-order-supplier-access-applet/BPO detailed report tab.png" alt="BPO Detailed Report screen with Start Date, End Date, and Generate Report" caption="On BPO Detailed Report, set Start Date and End Date, then click Generate Report to refresh the detailed listing." >}}
+**BPO Detailed Report** posts a start and end date to a dedicated backend report and groups the result by BPO Number, Date, Item and Qty. Its columns are **BPO Number, Date, Item, Qty, Category, Purchaser, Unit Price, Total Amount, PO Qty, Balance Qty, PO Amount**, where PO Qty is the quantity already knocked off by purchase orders (`bl_fi_generic_doc_link.quantity_contra`), Balance Qty is agreement quantity minus that, and Category is the label linked to the supplier login. The date range defaults to the start of the month two months ago through today, and the report is run once when the screen opens.
 
-| What you can do | How |
+{{< figure src="/images/blanket-purchase-order-supplier-access-applet/BPO detailed report tab.png" alt="BPO Detailed Report with Start Date, End Date and Generate Report" caption="BPO Detailed Report: set Start Date and End Date, then Generate Report. The grid is capped at 500 agreements per run." >}}
+
+## Configuration
+
+### Before you can use it
+
+| Prerequisite | Where it is set | Why it matters |
+|---|---|---|
+| The supplier's login is linked to the supplier entity | [Supplier](/applets/master-data/supplier-applet-1/) → Login (`bl_fi_mst_entity_login_subject_link`, status `ACTIVE`) | Every query in this applet filters `hdr.doc_entity_hdr_guid` by the entities linked to the logged-in subject. No `ACTIVE` link, no rows — whatever permissions the login holds. |
+| The applet is installed for that login | [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) | The applet exchanges its refresh token for an applet token at start-up; without an applet link the screens never load. |
+| Blanket agreements exist and are not `TEMP`/`DELETED` | [Blanket Purchase Order](/applets/purchase-workflow/blanket-purchase-order-applet/) | The supplier sees agreements at any other status, including DRAFT. |
+| A printable format for the export | [Blanket Purchase Order](/applets/purchase-workflow/blanket-purchase-order-applet/) → Printable Format Settings | See the warning under *Printable Format Settings* — the export ignores this applet's own printable-format list. |
+
+### Applet settings
+
+Settings for this applet are **applet-local**: `app.routing.ts` binds `field-settings` to a `FieldConfigurationComponent` inside the applet itself, not to the shared `FieldConfigurationComponent` in `blg-shared-utilities`. The shared Application Settings screen and its `HIDE_*` catalogue therefore do not apply here, and neither does the inline settings gear used by the larger document applets.
+
+**Application Settings** (`settings/application-settings`) is the only screen that changes behaviour. It holds eleven toggles, one per listing column; each is declared in `AppletSettings`, rendered with a `[formControl]`, saved into the applet's `APPLET_SETTINGS` extension row (`bl_applet_ext`, merged with whatever is already stored) and read by the listing. They are tenant-wide for the applet install, so a tenant administrator sets them once for every supplier login. The toggles carry the raw identifier as their label in the UI.
+
+| Setting | What it controls | Default | Effect when changed |
+|---|---|---|---|
+| `HIDE_BPO_NO` | The **BPO No** column | Off (undefined ⇒ column shown) | Hides the agreement number from the listing grid. |
+| `HIDE_COMPANY` | The **Company** column | Off | Hides the buying company code. |
+| `HIDE_BRANCH_CODE` | The **Branch Code** column | Off | Hides the buying branch code. |
+| `HIDE_SUPPLIER_NAME` | The **Supplier Name** column | Off | Hides the supplier entity name. |
+| `HIDE_AMOUNT` | The **Amount** column | Off | Hides the transaction amount. |
+| `HIDE_UPDATED_DATE` | The **Updated Date** column | Off | Hides the last-updated date. |
+| `HIDE_CREATED_DATE` | The **Created Date** column | Off | Hides the creation date. |
+| `HIDE_TRANSACTION_DATE` | The **Transaction Date** column | Off | Hides the document date. |
+| `HIDE_PURCHASER` | The **Purchaser** column | Off | Hides the purchase-agent entity name. |
+| `HIDE_CREATED_BY` | The **Created By** column | Off | Hides the buyer-side user who created the agreement. |
+| `HIDE_STATUS` | The **Status** column | Off | Hides the document status. |
+
+The column layout is applied once, in the listing's `ngOnInit`. A change made in Application Settings therefore shows up the next time the listing screen is opened, not while it is on screen.
+
+{{< callout type="warning" >}}
+**Field Settings does nothing.** The applet-local *Field Settings* screen renders eight slide toggles (Unit Discount, SST/VAT/GST, WHT, Blanket Order, Segment, G/L Dimension, Profit Center, Project) and a **SAVE** button. None of the toggles is bound to a form control and the button has no click handler — the screen is a mock-up that neither loads nor stores anything.
+{{< /callout >}}
+
+**Read at runtime with no control anywhere:** `salesManLabels` (passed to the Purchase Agent picker on the Main tab) and the `DEFAULT_BRANCH` / `DEFAULT_LOCATION` / `PRINTABLE` / `ENABLE_*` / custom-status keys declared in `AppletSettings`. They are part of the shared document-applet model that this applet was forked from; no screen in this applet renders or writes them.
+
+**Default Selection** and **Personalization → Default Selection** exist as routes and screens, but only the create flow consumes their values, and the create flow is unreachable — see *Screens and menus*.
+
+### Document behaviour settings
+
+Not applicable. No status flow, posting, workflow or e-Invoice option is exposed by this applet: it has no Workflow Settings route (unlike its buyer-side counterpart), and no screen sends a status change.
+
+### Printable Format Settings
+
+{{< callout type="warning" >}}
+The **EXPORT AS PDF** button does not use the printable format list on this screen. The print effect passes a hard-coded printable-format GUID and the print service class `BLANKET_PURCHASE_ORDER_JASPER_PRINT_SERVICE`, with a `TODO: Remove hardcoded value after UAT` note beside it (`blanket-purchase-order.effects.ts`, `printJasperPdf$`). On a tenant where that GUID does not exist the export fails with a toast and no PDF; adding or editing formats in this applet's Printable Format Settings has no effect on the output.
+{{< /callout >}}
+
+### Feature visibility and permissions
+
+The registry holds **no client-side permission definitions** for `blanketPurchaseOrderAppletSupplierAccess` (`bl_applet_client_side_perm_dfn`, queried 2026-09-06), so the Client Side Permission and Feature Visibility screens have nothing to grant. The `SHOW_*` line-column permissions that the other supplier-access applets carry do not exist for this one.
+
+What actually gates data is the backend:
+
+| Path used by | Endpoint | Check |
+|---|---|---|
+| Listing, Report | `GET …/internal-custom-internal-blanket-purchase-orders/login-entity-ep/query` | Rows are filtered to entities linked to the login (`ACTIVE` link). No permission check runs — the row filter replaces it. |
+| BPO Detailed Report | `POST …/gen-doc/blanket-purchase-report/bpo/login-entity-ep` | Same entity filter, applied in the report SQL. Capped at 500 rows. |
+| EXPORT AS PDF | `GET …/print-jasper-pdf/login-entity-ep/{guid}` | Same family of endpoints. |
+
+Two server-side permissions still matter indirectly: the listing's per-row enrichment calls the Company, Branch, Location and Entity read endpoints, which *are* permission-checked, and the applet-token exchange requires the applet to be installed for the login.
+
+## Fields
+
+The document view reuses the create screens in read-only mode; the tables below are the controls that render.
+
+### Main tab
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Branch | Buying branch | Yes (validator) | Drop-down; the value comes from the stored document. |
+| Company | Buying company | Yes (validator) | Drop-down. |
+| Location | Stock location on the agreement | Yes (validator) | Drop-down, filtered by the selected branch. |
+| Start Date | Agreement start | No | Rendered read-only; defaults to today in an unsaved form. |
+| Status | Document status | Yes (validator) | Status widget. Editable in the form but nothing saves it. |
+| Reference No. | Buyer's reference | No | Free text. |
+| Validity | Validity of the agreement | Yes (validator) | Free text. |
+| Purchase Agent | Buyer's purchasing agent | Yes (validator) | Entity picker; labels come from `salesManLabels`. |
+| Remarks | Free-text note | No | Text area. |
+
+### Supplier Info tab
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Entity Id | Supplier entity code | No | The only control not marked read-only, with no save path. |
+| Entity Name | Supplier name | No | Read-only. |
+| Email | Supplier e-mail | No | Read-only. |
+| Phone Number | Supplier phone | No | Read-only. |
+| Supplier Type | Supplier classification | No | Read-only. |
+
+### Line Items grid
+
+| Column | Source | Notes |
+|---|---|---|
+| Item Code / Item Name | `item_code`, `item_name` | |
+| Valid Date | `category` | The column header and the underlying field disagree; the grid shows the line's category value. |
+| UOM | `item_property_json.uom` | |
+| Unit Price | computed | Displays `(amount_net + amount_discount) / quantity_base`; the column is bound to `quantity_base`, so a line with zero quantity renders `Infinity` or `NaN`. |
+| Qty | `quantity_base` | |
+| Txn Amount | `amount_txn` | |
+
+## Lifecycle and effects
+
+A Blanket Purchase Order carries no money and no stock, and this applet writes nothing at all. The posting proof block below is the buyer-side document's, repeated here because the supplier sees the same rows.
+
+| Property | Value |
 |---|---|
-| Open the detailed report | Click **BPO Detailed Report** in the sidebar |
-| Limit by period | On **Blanket Purchase Order Supplier Access Detailed Report Listing**, set **Start Date** and **End Date**, then click **Generate Report** |
-| Read results | Use the grid like other BigLedger report listings |
+| Server document type | `INTERNAL_BLANKET_PURCHASE_ORDER` (client document type identical) |
+| Amount signum | 0 (`InternalCustomInternalBlanketPurchaseOrderDataConsistencyObject`) |
+| Quantity signum | 0 |
+| Dr/Cr equation | None. FINAL posts no journal. |
+| GL precedence | Not applicable — no journal line is produced. |
+| Stock processor | None. No inventory transaction line is written. |
+| What VOID reverses | Nothing to reverse; VOID only releases the knock-off queue rows on the buyer side. |
 
----
+What the supplier login can and cannot reach:
 
-## Configuration & Settings {#configuration--settings}
+| Action | Endpoint the applet calls | Result |
+|---|---|---|
+| List / search / report | `login-entity-ep/query` | Works. Filtered to the login's entities; documents at status `TEMP` or `DELETED` are excluded unless a status is named in the search criteria. |
+| Open a document | none — the view is rendered from the row already in the grid | Works without any read permission. |
+| Export PDF | `print-jasper-pdf/login-entity-ep/{guid}` | Works when the hard-coded printable format exists. |
+| Create, Save, Delete | `POST`/`PUT`/`DELETE` on the plain back-office path | Unreachable in the UI. The effects exist and would call the permission-checked back-office endpoints, not the login-entity ones, so even a re-enabled button would need full tenant document permissions. |
 
-Open **Settings** from the sidebar (in the stock layout this link is shown for owner or admin roles). The settings area opens on **Feature Visibility** by default. Prefer your application owner or security administrator to change permissions and feature visibility so day-to-day supplier users cannot widen their own access by mistake.
+The backend does offer a supplier-side write path for generic documents — `PUT …/{docType}/login-entity-ep`, which authorises by checking that the login is linked to the document's entity (`UserPermissionService.isUserLoginEntity`) — but this applet never calls it.
 
-| Area | What it is for |
-|------|----------------|
-| **Application Settings** | Applet-specific toggles (for example whether to hide BPO number on certain screens—label may read **HIDE BPO NO**). |
-| **Field Settings** | Required or hidden fields on forms. |
-| **Default Selection** | Company, branch, and location defaults for new documents. |
-| **Printable Format Settings** | Layout used for printed or PDF output. |
-| **Webhook** | Integrations that fire when data changes—for example notifying an external ERP when a BPO is saved. |
-| **Feature Visibility** | Which menus and features users see. |
-| **Permission set / User / Team / Role permission listing** | Who can list, create, edit, export, or report. |
+## Related applets
 
-**Personalization** (separate menu) may include **Default Selection** (personal) and **Sidebar** order.
+- [Blanket Purchase Order](/applets/purchase-workflow/blanket-purchase-order-applet/) — where the agreement is created, finalised and voided.
+- [Purchase Order (Internal)](/applets/purchase-workflow/internal-purchase-order-applet/) — draws down the agreement; its knock-off quantities are what the detailed report's PO Qty and Balance Qty columns show.
+- [Purchase Order Supplier Access](/applets/purchase-workflow/internal-purchase-order-supplier-access-applet/) — the same supplier login, for the orders raised against the agreement.
+- [Supplier](/applets/master-data/supplier-applet-1/) — where the supplier entity and its login link are maintained.
+- [Supplier Delivery Order](/applets/purchase-workflow/supplier-delivery-order-applet/) — the write-capable supplier applet, for comparison.
 
----
+## Troubleshooting
 
-## Related purchase documents {#related-purchase-documents}
+| Symptom | Cause | Fix |
+|---|---|---|
+| The listing is empty although the buyer says agreements exist | The login has no `ACTIVE` row in `bl_fi_mst_entity_login_subject_link` for the supplier entity, or the agreements were raised on a different entity record for the same supplier | Link the login to the supplier in the [Supplier](/applets/master-data/supplier-applet-1/) applet; confirm the agreements' supplier is that same entity. |
+| **Company**, **Branch Code**, **Purchaser** or **Created By** show a code such as `CLIENT_AUTH_USER_NOT_AUTHORIZED` | Those cells come from separate Company / Branch / Location / Entity / profile calls, which *are* permission-checked; each failure is caught and the error code is printed in the cell | Grant the supplier login read access to those master-data endpoints, or hide the columns with `HIDE_COMPANY` / `HIDE_BRANCH_CODE` / `HIDE_PURCHASER` / `HIDE_CREATED_BY`. |
+| **EXPORT AS PDF** shows a failure toast and downloads nothing | The export sends a hard-coded printable-format GUID, not the format configured for the tenant | Report it; there is no supported workaround from the applet. Add the printable format the code expects, or export from the buyer side. |
+| Hiding a column in Application Settings changes nothing | The column layout is applied once in the listing's `ngOnInit` | Leave the listing and come back, or reload the applet. |
+| An edit in the Main tab or an added line disappears | No Save path exists — the header Save button and the line-item SAVE button are commented out, so changes stay in the browser store | Ask the buyer to make the change in the [Blanket Purchase Order](/applets/purchase-workflow/blanket-purchase-order-applet/) applet. |
+| The **DELETE** button never responds | It is hard-disabled in the template | Expected. Deletion is a buyer-side action. |
+| BPO Detailed Report is empty for a period you know has activity | The date range filters `date_txn`, not the created date, and the result is capped at 500 agreements | Narrow the range, and check the transaction dates on the agreements rather than when they were entered. |
+| A line shows `Infinity` or `NaN` under **Unit Price** | The Unit Price column divides by `quantity_base`; a zero-quantity line divides by zero | Ask the buyer to correct the line quantity. |
 
-Blanket POs on the supplier side are the counterpart to agreements your customer maintains in the [Blanket Purchase Order](/applets/purchase-workflow/blanket-purchase-order-applet/) applet. Releases or knock-off purchase orders are usually created on the buyer’s tenant; your portal focuses on the agreement record and the lines your organisation is responsible for.
+## Related documentation
 
-**Related guides:**
-
-- [Blanket Purchase Order Applet](/applets/purchase-workflow/blanket-purchase-order-applet/) — buyer-side agreement and release context.
-- [Internal Purchase Order Supplier Access Applet](/applets/purchase-workflow/internal-purchase-order-supplier-access-applet/) — similar supplier-portal pattern for standard POs.
-
----
-
-## Glossary {#glossary}
-
-| Term | What it means |
-|---|---|
-| **Blanket purchase order (BPO)** | A long-term purchase agreement covering items, prices, and limits over a validity period; the buyer creates releases or orders against it over time. |
-| **Release** | A follow-on order or draw against a blanket agreement, usually created on the buyer’s side—not the main focus of this supplier applet. |
-| **Blanket Purchase Order Supplier Access Listing** | The main grid where you search and open supplier-side blanket POs. |
-| **Supplier access** | Portal access where your organisation works on documents the buyer shares, with permissions controlled by each tenant. |
-| **Feature visibility** | Admin-controlled switches that show or hide menus and features. |
-| **Field settings** | Admin-controlled rules for which fields are required, optional, or hidden on forms. |
-
----
-
-## FAQ {#frequently-asked-questions}
-
-### 1. How is this different from the internal Blanket Purchase Order applet?
-
-The internal applet is for the buying organisation to author agreements and manage releases. This supplier access applet is for your organisation when you log in with supplier-portal access to the same document type.
-
----
-
-### 2. Why does my screen say “Select Customer” when I am a supplier?
-
-Some shared components reuse customer wording. On a purchase blanket PO you are usually picking the buyer’s entity or the supplier master link your implementation uses—follow your training or ask your admin.
-
----
-
-### 3. Can I change prices after the buyer posted the agreement?
-
-Often no, or only in draft states; policy depends on your trading relationship and system permissions. When in doubt, contact the buyer’s procurement team.
-
----
-
-### 4. Where did the Create button go?
-
-Feature visibility or permissions may hide creation. Your listing may be read-only by design.
-
----
-
-### 5. Export failed—what should I check?
-
-On **View Blanket Purchase Order**, open the **Export** tab and use **EXPORT AS PDF**. Confirm printable format is set up, you have network access to the print service, and you still have permission to export. Retry after speaking with your admin if the error persists.
-
----
-
-### 6. What is the difference between Report and BPO Detailed Report?
-
-**Report** is the general listing report. **BPO Detailed Report** adds **Start Date** and **End Date** filters for a narrower period.
-
----
-
-### 7. The buyer says they updated the agreement—why don’t I see it?
-
-Refresh the listing or close and reopen the document. Timing can depend on how your buyer publishes changes, which company you logged into, and permissions. If the version still looks wrong, contact the buyer’s procurement team and your admin with the document reference.
-
----
-
-### 8. Currency, branch, or company looks wrong on a new document
-
-**Default Selection** (company-wide) and **Personalization** (your own defaults) fill many header values. Ask your admin to correct organisation defaults or your personal defaults. Some fields lock after save or post.
-
----
-
-### 9. Saving a line opens shipping, batch, or other screens I don’t need
-
-Those steps follow shared BigLedger document patterns. Use the back arrow (tooltip **Back**) to return to the line or grid when the UI allows. Your admin can often hide optional fields or steps through field settings and feature visibility—see [Line item and picker flows](#line-item-and-picker-flows).
-
----
-
-### 10. Should I use DELETE at the bottom of the screen?
-
-Only when company policy and your permissions clearly allow it. Posted or buyer-controlled agreements are often not deletable from the portal. If you are unsure, do not delete—ask the buyer or your admin first.
-
----
-
-### 11. I cannot see Blanket Purchase Order or the reports in the sidebar
-
-Ask your admin to check feature visibility and your role permissions.
-
----
-
-### 12. CREATE or line Save is disabled
-
-Complete required fields per field settings, and confirm you are not in a read-only view.
-
----
-
-### 13. Wrong supplier or address on the document
-
-Re-open **Supplier Info** and use the correct picker; some fields may lock after posting.
-
----
-
-### 14. The detailed report returns no rows
-
-Widen **Start Date** and **End Date**, and confirm you are on the correct branch or company default.
-
----
-
-### 15. I am still stuck after trying the steps above
-
-Capture the document reference (if any), screen name, and time, then contact your BigLedger administrator or internal help desk.
-
----
-
-## Related Documentation Links
-
-- [Blanket Purchase Order Applet](/applets/purchase-workflow/blanket-purchase-order-applet/)
-- [Internal Purchase Order Supplier Access Applet](/applets/purchase-workflow/internal-purchase-order-supplier-access-applet/)
+- [Blanket Purchase Order applet](/applets/purchase-workflow/blanket-purchase-order-applet/) — the buyer-side reference for the same document.
+- [Purchasing module](/modules-v2/purchasing/)
+- [Supplier applet](/applets/master-data/supplier-applet-1/) — the login link that switches this applet on.

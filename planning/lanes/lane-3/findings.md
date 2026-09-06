@@ -1278,3 +1278,116 @@ Not an applet: no registry row under `user manager`, `user permission`, `website
 ### Stopping point
 
 One page this run. The next queue item is `content/en/applets/purchase-workflow/blanket-purchase-order-applet-supplier-access-applet.md`, then the four other supplier-access purchase pages and `ecommerce/internal-shopping-cart-customer-access-applet.md`.
+
+## Run 27 (2026-09-06) — the supplier-access purchase family (6 pages)
+
+Pages rewritten, in queue order:
+
+1. `content/en/applets/purchase-workflow/blanket-purchase-order-applet-supplier-access-applet.md`
+2. `content/en/applets/purchase-workflow/internal-purchase-credit-note-supplier-access-applet.md`
+3. `content/en/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet.md`
+4. `content/en/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet.md`
+5. `content/en/applets/purchase-workflow/internal-purchase-order-supplier-access-applet.md`
+6. `content/en/applets/purchase-workflow/internal-purchase-return-supplier-access-applet.md`
+
+All six have ACTIVE registry rows and titles now equal the registry `name`. `gates.py` was run at each applet's **pinned** shared-utilities commit and at HEAD (rows differed only in how many keys the shared screen renders — never in what these applets consume); a plain-grep second pass was done for every settings key; every button was traced binding → method → subscribed effect → endpoint.
+
+### The family mechanism (the single most useful thing learned)
+
+`GenericDocumentUow.generateSqlForUserEntity` appends
+`WHERE hdr.doc_entity_hdr_guid IN (SELECT entity_hdr_guid FROM bl_fi_mst_entity_login_subject_link WHERE status='ACTIVE' AND subject_guid = <login>)`
+and maps rows with `rowMapper_withoutPermChecking`. The controller comment says it outright: *"no permission checking is required because only those rows belonging to the user are returned."* Every `login-entity-ep` read in the family works this way; the *only* write path the backend offers a supplier is `PUT /{docType}/login-entity-ep` (authorised by `UserPermissionService.isUserLoginEntity`, which — unlike the read SQL — does **not** require the link to be `ACTIVE`) and `POST /gen-doc/login-entity-ep/xtn-process`.
+
+Anything a supplier-access applet calls on a **back-office** path is permission-checked as usual, and that is where these applets break.
+
+### Four different posting-status policies in one family
+
+| Applet | Listing filter |
+|---|---|
+| Purchase Credit Note SA | `posting_statuses = FINAL`, unconditional (also on Line Items) |
+| Purchase GRN SA | `posting_statuses = FINAL`, unconditional; the advanced search still offers DRAFT/VOID/DISCARDED, which then return nothing |
+| Purchase Invoice SA | `posting_statuses = FINAL`, unconditional |
+| Purchase Order SA | `posting_statuses = FINAL` as a **default that the advanced search replaces** |
+| Purchase Return SA | **no** posting-status filter at all — DRAFT, FINAL, VOID and DISCARDED are all visible |
+| Blanket PO SA | no filter (`TEMP`/`DELETED` excluded by the generic criteria) |
+
+### Three of four PDF exports cannot work
+
+| Applet | What the export does | Verdict |
+|---|---|---|
+| Purchase Order SA | `GET …/internal-purchase-orders/print-jasper-pdf/login-entity-ep/{guid}` + `INTERNAL_PURCHASE_ORDER_PRINT_SERVICE`, format from the picker | **Correct** — the only one |
+| Purchase GRN SA | back-office `…/print-jasper-pdf/{guid}` (needs the targeted `…GOODS_RECEIVED_NOTE_READ_TGT_GUID`) + `CP_COMMERCE_INTERNAL_SALES_ORDERS_JASPER_PRINT_SERVICE`; ts-lib comment says "Replace this … once api endpoint is enhanced" | 403 for a plain supplier login; wrong print service |
+| Purchase Invoice SA / Purchase Return SA | `endpoint_path` already ends in `/login-entity-ep`, so the inherited `printJasperPdf` builds `…/login-entity-ep/print-jasper-pdf/{guid}` — **no controller mapping matches** (the real ones are `/{docType}/print-jasper-pdf/{guid}` and `/{docType}/print-jasper-pdf/login-entity-ep/{guid}`); both also hard-code a printable-format GUID and the CP Commerce sales-order print service | 404 every time |
+| Blanket PO SA | login-entity print endpoint, but a **hard-coded** printable-format GUID with a `TODO: Remove hardcoded value after UAT` | works only where that GUID exists; the applet's own Printable Format Settings is inert |
+| Purchase Credit Note SA | all four export buttons `disabled` in the template | nothing to fix on the page; the effect behind them is dead |
+
+GRN SA's attachment download has the same shape: it uses the back-office `…/file/{extGuid}` although `…/file/login-entity-ep/{extGuid}` exists. PCN SA and PI SA list attachment metadata with an **empty** row-click handler — the old pages' "download attachments" claim was wrong.
+
+### What each applet actually lets a supplier do
+
+- **Blanket PO SA** — list, view, export. The create screen exists but both entry points (listing and detailed report) are commented out; header Save/Reset/Print commented out; DELETE `disabled="true"`; Add Line Item writes to the browser-side view cache only. Its *Field Settings* screen is a **mock**: eight slide toggles with no `formControlName` and a SAVE button with no `(click)`. The working screen is an applet-local **Application Settings** with 11 `HIDE_*` listing-column toggles (four proofs each), applied once in `ngOnInit`.
+- **Purchase Credit Note / GRN / Invoice / Return SA** — read-only. No create directory at all in PCN, PI and PR.
+- **Purchase Order SA** — the only writer: a **Workflow Status** drop-down plus an **Update Status** button that POSTs `…/gen-doc/login-entity-ep/xtn-process` (five `xtn_process_*` columns merged onto the header and any lines sent, validated by `GenericDocXtnProcessDCO`), and a **File Import** that uploads a CSV which creates purchase orders in the buyer's tenant.
+
+### Settings: the same 18–19 keys, everywhere
+
+Except the Blanket PO applet (applet-local settings, gates.py not applicable), every applet in the family uses the shared `FieldConfigurationComponent` and consumes only line-field hides:
+
+| Applet | Model keys | Rendered (pinned) | Four-proof | Seeded `SHOW_*` |
+|---|---|---|---|---|
+| Purchase Credit Note SA | 251 | 193 | 18 | 22 |
+| Purchase GRN SA | 251 | 208 | 19 | 21 (1 DELETED) |
+| Purchase Invoice SA | 50 | 295 | 19 | 20 |
+| Purchase Order SA | 55 | 295 | 22 (+ `WORKFLOW_PROCESS_GUID`, `SHOW_API_UPLOAD`, `VERTICAL_ORIENTATION`) | 19 |
+| Purchase Return SA | 50 | 210 | 19 | 20 |
+
+This is the **one family where the `HIDE_*`/`SHOW_*` pair from METHOD §2 is actually seeded** — the client-side permission definitions exist, so a role really can re-open a field a tenant-wide hide has closed. Two exceptions: `SHOW_COSTING_DETAILS` is checked in the Purchase Order SA code but has no definition row for that applet code (all-or-nothing there), and Blanket PO SA / Shopping Cart Customer Access have **zero** client-side permission rows.
+
+In every one of the five, `DEFAULT_BRANCH` and `DEFAULT_LOCATION` are rendered and persisted by the applet-local Default Selection screen and read by **nothing** — there is no create form to default.
+
+### Registry / naming mismatches
+
+- `internalPurchaseGrnStockInApplet`'s registry `documentation_url` points at `https://wiki.bigledger.com/applets/internal-purchase-grn-supplier-access-applet/` — the wrong page. It should point at `/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/`.
+- `internal-purchase-invoice-supplier-access-applet` and `internal-purchase-order-supplier-access-applet` still have Confluence `documentation_url`s.
+- `GenericDocumentTypeHandler` registers the Blanket Purchase Order handler as `(create, UPDATE, READ, delete)` while the constructor signature is `(create, read, update, delete)` — **the two are swapped for that doc type only**, so back-office BPO reads are gated by the UPDATE permission and updates by the READ permission. Not visible from the supplier applets (they use login-entity endpoints) but it belongs on the buyer-side BPO page.
+- Route bases name environments in two applets: `applets/akaun/staging/blanket-purchase-order-supplier-access-applet` and `applets/akaun/dev/internal-purchase-return-supplier-access-applet`. Both have production publish scripts, so this is cosmetic unless the shell composes URLs from it.
+
+### Screenshots
+
+- Kept: Blanket PO SA 2 of 3 (report + detailed report, TESTING tenant, empty grids); Purchase Credit Note SA 4 of 5; Purchase Invoice SA 2 of 3.
+- Dropped: every `*-overview-infographic.png` (NotebookLM marketing graphics with a visible watermark, 0.8–6.4 MB each, asserting behaviour that is not in the code).
+- **Quarantine wanted** (outside my folders, not deleted):
+  - `static/images/internal-purchase-return-supplier-access-applet/` — all 9 are buyer-side Purchase Return screenshots and the grids show real staff names (six different people) and a real brand as test data.
+  - `static/images/internal-purchase-order-supplier-access-applet/` — all 12 are buyer-side Internal Purchase Order screenshots (Multi-PO / Intercompany / PO Replenishment menus this applet does not have). No personal names, so they could be **re-used on the buyer-side PO page** instead of quarantined.
+  - `static/images/internal-purchase-grn-supplier-access-applet/` — only a 6.4 MB infographic; no real screenshots exist for that applet.
+
+### Cross-lane link requests
+
+- `content/en/applets/purchase-workflow/blanket-purchase-order-applet.md` (own lane, done run 8): add the swapped read/update permission slots in `GenericDocumentTypeHandler` (a user with only READ cannot open a BPO but can update one) and note that the supplier copy is read-only.
+- `content/en/applets/purchase-workflow/internal-purchase-grn-stock-in-applet.md` (own lane, done run 12): its registry `documentation_url` points at the GRN Supplier Access page — product-side fix.
+- `content/en/applets/master-data/supplier-applet-1.md` (lane 4): the Supplier → Login section should say that one `bl_fi_mst_entity_login_subject_link` row switches on **six** applets (PO, GRN, PI, PCN, PR, Blanket PO supplier access) plus Supplier Delivery Order, and that removing the link empties all of them at once.
+- `content/en/applets/finance/internal-purchase-invoice-applet.md` (lane 2): mention the supplier portal — read-only, FINAL only, and its PDF export does not work, so suppliers will ask the buyer for copies.
+- `content/en/applets/purchase-workflow/internal-purchase-order-applet.md` (own lane, done run 1): the supplier portal can change the order's **workflow status** and can create purchase orders by CSV import; both are invisible from the buyer applet except as an updated `xtn_process_status_code`.
+- e-Invoice pages (own lane, done run 6): the buyer-side Purchase Return listing has a **SELF-BILLED** action; check that self-billed purchase returns are described.
+- `content/en/applets/purchase-workflow/internal-purchase-credit-note-applet.md` and `internal-purchase-return-applet.md` (own lane, done): add a "what the supplier sees" line each — PCN FINAL-only, PR every status including DRAFT.
+
+### Method findings (candidates for METHOD.md)
+
+- **28. `endpoint_path` that already contains an `-ep` segment poisons every inherited method.** `BaseApiTemplateService.getByCriteria/getByGuid/put/post/printJasperPdf` all append to `endpoint_path`. When a service sets `endpoint_path` to `…/{docType}/login-entity-ep`, `getByGuid` and `put` land on real endpoints by luck, and `printJasperPdf` lands on nothing. Always expand the URL each button really builds before writing "exports a PDF".
+- **29. For portal applets, ask which endpoint family each button uses.** In one applet the listing can be entity-scoped (no permission needed) while the export and the attachment download are back-office (targeted permission needed). "The supplier can see it but cannot print it" is the normal state, not a misconfiguration.
+- **30. A per-row enrichment `catchError` that writes `err.error.code` into the cell** is the family's standard failure mode: the grid renders `CLIENT_AUTH_USER_NOT_AUTHORIZED` as if it were a branch name. Worth a troubleshooting row on every page whose listing enriches rows.
+- **31. Commented-out buttons are the shipped behaviour.** Six of the applets ship create/save/delete effects with no reachable trigger. Trace `(click)` → method → dispatch → effect for every action before describing it; an existing NgRx effect proves nothing.
+
+### Questions for Vincent
+
+1. Three of the four supplier PDF exports cannot work (two 404, one 403). File product bugs, or document them as known limitations only?
+2. Should the five portals agree on which posting statuses a supplier may see? Purchase Return currently exposes the buyer's DRAFT returns.
+3. `SHOW_COSTING_DETAILS` is checked by the Purchase Order SA code but not seeded for that applet code — register it, or is hiding costing from suppliers meant to be absolute?
+4. The supplier-side CSV import (`POST …/internal-purchase-order/import-file-hdr/login-entity-ep`) creates purchase orders in the buyer's tenant; the read endpoints in that controller filter by the login's supplier links but the create endpoint does not check the link itself. Intended? (I documented the behaviour, not the gap, on the page.)
+5. The Blanket PO SA export's hard-coded printable-format GUID (`TODO: Remove hardcoded value after UAT`, in the repo since the split) — is there a tenant where it resolves?
+6. `internalPurchaseGrnStockInApplet`'s `documentation_url` points at the GRN **Supplier Access** page. Fix in the registry?
+7. Delete or recapture the image folders listed above? The Purchase Return folder shows real staff names.
+
+### Stopping point
+
+Six pages this run. The remaining queue item is `content/en/applets/ecommerce/internal-shopping-cart-customer-access-applet.md` — a different family (customer-facing, writes carts through `PUT …/internal-shopping-carts/login-entity-ep` with the cart-line integrity hash the run-20 CP Commerce work described), and it has both a DELETED and an ACTIVE registry row under the same code `InternalShoppingCartCustomerAccess`. It deserves a fresh run rather than the tail of this one.

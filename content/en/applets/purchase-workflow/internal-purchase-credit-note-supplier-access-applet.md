@@ -1,360 +1,228 @@
 ---
-title: "Purchase Credit Note Supplier Access (Internal) Applet"
-description: "Supplier portal for viewing Purchase Credit Notes issued by the buying organisation—check credit adjustments, line items, and linked documents in read-only mode"
+title: "Purchase Credit Note Supplier Access (Internal)"
+description: "Reference for the supplier-facing copy of the Purchase Credit Note applet: a login linked to a supplier entity reads the FINAL credit notes the buyer has raised against it — header, lines, payments, contra, linked documents and attachment list — with no create, edit or export."
+applet_code: "internal-purchase-credit-note-supplier-access-applet"
+page_type: applet
+applet_repo: "blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet"
+modules: [purchasing, financial-accounting]
+related_applets:
+  - internal-purchase-credit-note-applet
+  - internal-purchase-invoice-supplier-access-applet
+  - internal-purchase-return-supplier-access-applet
+  - internal-purchase-grn-supplier-access-applet
+  - supplier-applet-1
+  - organisation-applet
+guides: []
+sources:
+  configuration:
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/components/line-items-container/line-item-view/item-details/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/components/line-items-container/line-item-view/line-item-view.component.ts
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - planning/lanes/lane-3/perm-dfn (akaun_master.bl_applet_client_side_perm_dfn, 22 ACTIVE codes)
+  fields:
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/components/purchase-credit-note-container/purchase-credit-note-listing/purchase-credit-note-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/components/purchase-credit-note-container/purchase-credit-note-view/purchase-credit-note-view.component.html
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/components/purchase-credit-note-container/purchase-credit-note-view/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/components/purchase-credit-note-container/purchase-credit-note-view/payment/payment-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/components/purchase-credit-note-container/purchase-credit-note-view/contra/contra-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/components/purchase-credit-note-container/purchase-credit-note-view/attachment/attachment-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/components/purchase-credit-note-container/purchase-credit-note-view/doc-link/copy-from/copy-from.component.ts
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/components/line-items-container/line-items-listing/line-items-listing.component.ts
+  lifecycle:
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-document-services/internal-purchase-credit-note-supplier-access.service.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/GenericDocumentController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/FinancialDocUow/GenericDocumentUow.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/user/UserPermissionService.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalPurchaseCreditNoteDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+  troubleshooting:
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/state-controllers/purchase-credit-note-controller/store/effects/purchase-credit-note.effects.ts
+    - blg-applet-wavelet-internal-purchase-credit-note-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-credit-note-supplier-access-applet/src/app/components/purchase-credit-note-container/purchase-credit-note-view/export/export.component.html
 tags:
-- purchase-credit-note
-- supplier-access
-- accounts-payable
-- credit-adjustment
-- supplier-portal
-- purchase-workflow
+  - purchase-credit-note
+  - supplier-access
+  - accounts-payable
+  - credit-adjustment
+  - supplier-portal
+  - purchase-workflow
 weight: 55
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Purchase Credit Note Supplier Access Applet** gives your suppliers a dedicated, read-only portal to view **Purchase Credit Notes** issued by your organisation. When your buying team reduces an amount owed to a supplier—due to a return, overcharge, rebate, or agreement—the supplier can log in and immediately see the credit note details, line items, and supporting attachments, eliminating the need for back-and-forth email communication.
+**Purchase Credit Note Supplier Access (Internal)** is the supplier-facing copy of the [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/) applet. It is installed in the buying organisation's tenant; a login that has been linked to a supplier entity opens it to read the credit notes the buyer has posted against that supplier — header, lines, settlements, contra records, linked documents and the list of attachments.
 
-{{< callout type="info" >}}
-**Core Concept**: This applet links **who** (Supplier) to **what** (Credit Note documents and adjustments) and **how** they access it (listing, document view, line items, and settings)—all in a secure, read-only supplier portal.
-{{< /callout >}}
+The applet is read-only by construction. It has no create screen, no save or delete control anywhere, and all four Export buttons are disabled in the template. Its listing also pins `posting_statuses = FINAL`, so a supplier sees a credit note only after the buyer has finalised it — drafts and discarded notes never appear.
 
-## Applet Value & Benefits
+## Where it fits
 
-### Who Benefits from This Applet?
+| Position | Document / applet | Why |
+|---|---|---|
+| Module | [Purchasing](/modules-v2/purchasing/), [Financial Accounting](/modules-v2/financial-accounting/) | Reduces what the buyer owes the supplier. |
+| The document | [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/) | Same rows. Creation, FINAL, VOID and contra all happen there. |
+| Upstream (access) | [Supplier](/applets/master-data/supplier-applet-1/) | The supplier's login must be linked to the supplier entity (`bl_fi_mst_entity_login_subject_link`, status `ACTIVE`). |
+| Usually raised from | [Purchase Return (Internal)](/applets/purchase-workflow/internal-purchase-return-applet/), [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) | The Doc Link tab shows the documents the credit note was copied from and to. |
+| Sibling supplier applets | [Purchase Invoice Supplier Access](/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet/), [Purchase Return Supplier Access](/applets/purchase-workflow/internal-purchase-return-supplier-access-applet/), [Purchase GRN Supplier Access](/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet/) | Same shape, same login-link filter, other documents. |
 
-**Suppliers & Vendor Users:**
-- View all credit notes your buying organisation has issued against you
-- Verify credit note amounts, line details, and reasons without calling or emailing
-- Download attachments and export credit note documents for your own records
-- Reconcile your accounts receivable against the buyer's credit adjustments
+## Screens and menus
 
-**Procurement & Buyer Teams:**
-- Eliminate "can you send me the credit note again?" requests from suppliers
-- Provide a self-service portal so suppliers can access their own data 24/7
-- Reduce disputes by giving suppliers full transparency into credit adjustments
-- Maintain a clear audit trail of what each supplier can see
+Two menus, plus Settings and Personalization (`menu-items.ts`):
 
-**Finance & Accounts Payable:**
-- Suppliers can verify credit note amounts before applying them to outstanding invoices
-- Fewer reconciliation disputes due to mismatched amounts or missing documents
-- Aligned document visibility speeds up supplier statement reconciliation
-- Reduce manual effort in responding to supplier payment queries
+| Menu | Route | What it is |
+|---|---|---|
+| **Internal Purchase Credit Note** | `internal-purchase-credit-note` | The listing and the document view behind it. |
+| **Line Items** | `line-items` | A flat listing of credit-note *lines* across all the supplier's credit notes. |
+| **Settings** | `settings/…` | Field Settings, Default Selection, Printable Format Settings (menu), plus Webhook, Feature Visibility, Client Side Permission and the permission listings (routes). |
+| **Personalization** | `personalization/…` | Personal Default Selection and sidebar order. |
 
-**IT & System Admins:**
-- Centralised supplier access control via permission sets
-- Configurable default branch/location and field visibility
-- Webhook integration for connecting to supplier ERP systems
+### Listing
 
-### What Problems Does This Solve?
+{{< figure src="/images/Purchase-Credit-Note-Supplier-Access-applet/credit-note-listing.png" alt="Internal Purchase Credit Note Listing with columns for credit note number, branch, purchase agent, supplier and dates" caption="The listing. Only FINAL credit notes for the supplier behind the login are returned." >}}
 
-**The Supplier Credit Note Visibility Problem:**
+Columns: **Purchase Credit Note No, Branch, Purchase Agent, Supplier ID, Supplier Name, Creation Date, Transaction Date, Status**. Sorted by `updated_date` descending, page size from the pagination control, and the criteria always include `posting_statuses = FINAL`.
 
-Without a dedicated portal, suppliers frequently face these challenges:
-- Credit notes are emailed manually and often lost or misfiled
-- Suppliers cannot verify which credit notes have been issued without calling AP
-- Disputes arise from mismatched amounts between buyer and supplier records
-- Finance teams spend significant time answering supplier queries about credit adjustments
-- No single source of truth—suppliers rely on PDFs that may become out of date
+Each row is completed with three extra calls: the branch through the applet-login endpoint (`branches/basic-info/applet-login-ep/{appletGuid}/{guid}`), the supplier through the ordinary supplier endpoint, and the purchase agent through the entity applet-login endpoint. The branch and supplier calls write their error **code** into the cell when they fail, so a login without supplier read rights sees an error code under **Supplier Name** and **Supplier ID**; the purchase agent falls back to an empty cell.
 
-**The Purchase Credit Note Supplier Access Solution:**
+{{< figure src="/images/Purchase-Credit-Note-Supplier-Access-applet/credit-note-search-filter.png" alt="Search and filter panel with credit note number, branch name, supplier name, date ranges and status" caption="Advanced search: credit note number, branch name, supplier name, created-date range, transaction-date range and status." >}}
 
-- **Credit note listing** — Filter by date, branch, status, and amount to find relevant credit notes fast
-- **Full document view** — Header details, account info, line items, payment, department, contra, doc links, and attachments—all in one place
-- **Line items view** — Flat list of all credit note lines across documents for easy reconciliation
-- **Issue links** — Drill into linked issues or tasks for full context on why a credit was raised
-- **Settings & personalisation** — Configure default branch, field visibility, and print formats for a tailored supplier experience
+### Document view
 
-## Key Features Overview
+Clicking a row opens the credit note with nine tabs, all read-only:
 
-{{< cards >}}
-  {{< card title="Credit Note Listing" subtitle="Search and filter all credit notes with advanced criteria" link="#credit-note-listing" >}}
+| Tab | Contents |
+|---|---|
+| **Main Details** | Branch, Location, Purchaser, Transaction Date, Credit Terms, Due Date, Reference, Remarks, Permit No, Currency, Tracking Id — every control marked read-only. Branch and Location are resolved through the applet-login endpoints. |
+| **Account** | Supplier entity details, billing address, shipping address. |
+| **Line Items** | The credit note's lines; clicking one opens the line detail (see *Line Items* below). |
+| **Payment** | Settlements against the note: Payment Method, Date, Paid Amount, Remarks. |
+| **Department Hdr** | Segment, Dimension, Profit Center, Project on the header. |
+| **Contra** | ARAP contra records: Server Doc Type, Status, Date, Amount Contra. |
+| **Doc Link** | **Copy From** and **Copy To** grids — the documents linked to this credit note (Doc No, Branch, Server Doc Type, Status, Date). |
+| **Attachment** | File Name, Doc Type, Size, Status, Date. Metadata only — the row-click handler is empty, so there is no download. |
+| **Export** | All four buttons (PDF, CSV, DOCX, ZIP) are disabled in the template. |
 
-  {{< card title="Document View" subtitle="Full credit note details across multiple tabs" link="#for-suppliers-view-your-credit-notes" >}}
+### Line Items
 
-  {{< card title="Line Items" subtitle="Flat list of credit lines across all documents" link="#line-items---supplier-view" >}}
+{{< figure src="/images/Purchase-Credit-Note-Supplier-Access-applet/line-items-listing.png" alt="Line Items Listing across credit notes" caption="The Line Items menu: one row per credit-note line across all the supplier's FINAL credit notes." >}}
 
-  {{< card title="Issue Links" subtitle="View linked tasks and issues per line item" link="#line-item-view-and-issue-links" >}}
+Columns: **Purchase Credit Note No, Branch, Supplier Name, Project, Shipping Address, Item Code, Item Name, Ordered Qty, Open Qty, Amount TXN, Creation Date, Requested Delivery Date, Delivery Status, Remarks**. The query filters `line_txn_type = PNS` and, again, `posting_statuses = FINAL`.
 
-  {{< card title="Attachments & Export" subtitle="Download supporting documents and export credit notes" link="#document-view-tabs" >}}
+Opening a line shows **Item Details** (with Main Details, Delivery Instruction, Department, Doc Link and Delivery Details), **Serial Number**, **Costing Details**, **Pricing Details** and **Issue Link** tabs.
 
-  {{< card title="Configuration & Settings" subtitle="Defaults, field settings, permissions, and webhooks" link="#configuration--settings" >}}
-{{< /cards >}}
+{{< figure src="/images/Purchase-Credit-Note-Supplier-Access-applet/line-items-search-filter.png" alt="Line Items search and filter panel" caption="Line Items advanced search: credit note number, item code, item name and transaction-amount range." >}}
 
-![Purchase Credit Note Supplier Access Overview](/images/Purchase-Credit-Note-Supplier-Access-applet/Purchase-Credit-Note-Supplier-Access-applet-overview-infographic.png)
+## Configuration
 
-## Key Concepts
+### Before you can use it
 
-### Understanding Credit Notes and Supplier Access
+| Prerequisite | Where it is set | Why it matters |
+|---|---|---|
+| The supplier's login is linked to the supplier entity | [Supplier](/applets/master-data/supplier-applet-1/) → Login (`bl_fi_mst_entity_login_subject_link`, status `ACTIVE`) | Every query is filtered by `hdr.doc_entity_hdr_guid IN (entities linked to this login)`. No link, no rows. |
+| The applet is installed for that login | [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) | Supplies the applet token and the `appletGuid` used by the branch and entity applet-login lookups. |
+| The credit note is FINAL | [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/) | The listing hard-codes `posting_statuses = FINAL`. |
 
-| Aspect | Component | Practical Example |
-|--------|-----------|-------------------|
-| **Who** is viewing? | Supplier / vendor user | Supplier XYZ logs in and sees only credit notes where they are the supplier |
-| **What** is being viewed? | Purchase Credit Note & line items | Credit note adjusting an overcharge on Invoice #INV-2026-1045 |
-| **How** is it accessed? | Listing → Document View → Line Items → Issue Links | Search → open credit note → open line → view linked issue |
+### Applet settings
 
-{{< callout type="tip" >}}
-**Real-World Example**: Supplier XYZ (WHO) delivered 100 units but was paid for 110 (overcharge). Your AP team raises a Purchase Credit Note for 10 units. Supplier XYZ logs into this applet (HOW) and immediately sees the credit note, the adjusted line items, and the reason in the linked issue—no phone call needed (WHAT).
-{{< /callout >}}
+Settings live on the **shared** `FieldConfigurationComponent` from `blg-shared-utilities` (route `settings/field-settings`), gated by `sessionStorage.appletCode`. There is no inline settings gear in this applet, and no applet-local field-configuration screen.
 
-### Document Type & Posting Status
+Of the 251 keys the applet declares, **18 pass all four proofs** — declared in `AppletSettings`, rendered on the shared screen for this applet code, persisted by the shared settings service into `bl_applet_ext.APPLET_SETTINGS`, and consumed by this applet's line-detail template. All 18 hide one line field, and each is paired with a `SHOW_*` client-side permission that can re-open it for a role (`*ngIf="!appletSettings.HIDE_X || SHOW_X"`).
 
-This applet works with documents of type **Internal Purchase Credit Note**. The listing shows only credit notes with a posting status of **FINAL** (completed/approved documents). Draft, void, or discarded credit notes are not visible in the supplier portal.
+The list was produced with `kb/tools/gates.py` against the shared-utilities commit this applet pins (`e2f57c4`, the code that is actually built into the deployed bundle) and re-checked against shared-utilities HEAD; HEAD renders many more keys, but none of them is consumed here.
 
-### Main Navigation
+| Setting | What it controls (line detail → Main Details) | Default | Effect when changed |
+|---|---|---|---|
+| `HIDE_QTY_BASE` | Base quantity | Off | Hides the field unless the role holds `SHOW_QTY_BASE`. |
+| `HIDE_QTY_UOM` | Quantity in the line's UOM | Off | As above with `SHOW_QTY_UOM`. |
+| `HIDE_UOM_TO_BASE_RATIO` | UOM-to-base ratio | Off | As above. |
+| `HIDE_UNIT_PRICE_STD_UOM_EXCL_TAX` | Standard unit price per UOM, excluding tax | Off | As above. |
+| `HIDE_UNIT_PRICE_STD_UOM_INCL_TAX` | Standard unit price per UOM, including tax | Off | As above. |
+| `HIDE_UNIT_PRICE_NET_UOM_EXCL_TAX` | Net unit price per UOM, excluding tax | Off | As above. |
+| `HIDE_UNIT_PRICE_NET_EXCL_TAX` | Net unit price, excluding tax | Off | As above. |
+| `HIDE_UNIT_PRICE_TXN` | Transaction unit price | Off | As above. |
+| `HIDE_UNIT_PRICE_TXN_UOM_INCL_TAX` | Transaction unit price per UOM, including tax | Off | As above. |
+| `HIDE_UNIT_DISCOUNT` | Unit discount | Off | As above. |
+| `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX` | Unit discount per UOM, excluding tax | Off | As above. |
+| `HIDE_DISCOUNT_AMOUNT_EXCL_TAX` | Discount amount, excluding tax | Off | As above. |
+| `HIDE_AMOUNT_STD_EXCL_TAX` | Standard amount, excluding tax | Off | As above. |
+| `HIDE_AMOUNT_NET_EXCL_TAX` | Net amount, excluding tax | Off | As above. |
+| `HIDE_AMOUNT_TXN` | Transaction amount | Off | As above. |
+| `HIDE_TAX_CONFIG_SELECTION` | The three tax-configuration fields | Off | Hides all three together. |
+| `HIDE_WHT_CONFIG_SELECTION` | The three withholding-tax fields | Off | Hides all three together. |
+| `HIDE_COSTING_DETAILS` | The **Costing Details** tab on a line | Off | Hides the tab unless the role holds `SHOW_COSTING_DETAILS`. |
 
-```
-Sidebar
-├── Purchase Credit Note  → Credit note listing (default landing)
-├── Line Items            → Flat list of all credit note lines
-├── Settings              → Default selection, field settings, printable format,
-│                           webhook, feature visibility, permissions
-└── Personalisation       → Default selection, sidebar
-```
+Everything else the shared screen shows for this applet code is stored but never read by this applet — including every `HIDE_*_BUTTON`, status-flow and posting key, because the applet has no buttons and no write path.
 
----
+**Read outside the shared screen:**
 
-## Quick Start Guide
+- `DEFAULT_BRANCH` and `DEFAULT_LOCATION` — rendered and saved by the applet-local **Default Selection** screen, but no screen in this applet reads them back (there is no create form to default).
+- `PRINTABLE` — written by Printable Format Settings when you mark a format as default, and read back by that same listing to show the tick. It does not reach the export, which is disabled.
 
-Get up and running quickly with these essential workflows.
+### Document behaviour settings
 
-### For Suppliers: View Your Credit Notes
+Not applicable. This applet exposes no status, posting, workflow or e-Invoice control; FINAL, VOID and contra all happen in the buyer-side applet.
 
-**Goal:** Find and open a credit note issued to you in a few steps.
+### Feature visibility and permissions
 
-1. **Navigate**: Go to **Purchase Credit Note** from the sidebar (default landing)
-2. **Search (optional)**:
-   - Click the **search / filter** icon above the grid to open **Advanced Search**
-   - Filter by: Branch, Purchaser, Posting Status, Transaction Date, Created Date, Updated Date, Amount range, GL Dimensions, Profit Centre, or Project
-   - Or use the grid's **floating column filters** directly (e.g., Credit Note No, Supplier, Branch)
-3. **Open a Credit Note**: Click any **row** in the grid to open **View Purchase Credit Note**
-4. **Explore tabs**: Navigate through **Main Details**, **Account**, **Lines**, **Payment**, **Department Hdr**, **Contra**, **Doc Link**, **Attachments**, and **Export**
-5. **Drill to a line**: In the **Lines** tab, click a line row to open **View Line Item**; from there, open **View Issue** for any linked tasks or issues
-6. **Export PDF**: Click the **Export** tab to download a printable PDF copy for your own accounting records.
-7. **Return**: Use the **Back** button (top left of the view) to return to the listing
+The registry seeds **22 client-side permission codes** for this applet (`bl_applet_client_side_perm_dfn`, all `ACTIVE` as of 2026-09-06): `SHOW_COSTING_DETAILS`, `SHOW_DISABLE_EDITING_AMOUNT_TXN_SETTING`, and 20 `SHOW_*` codes matching the line fields above (including `SHOW_UNIT_PRICE_STD_EXCL_TAX`, `SHOW_UNIT_PRICE_STD_INCL_TAX` and `SHOW_UNIT_PRICE_STD_PRICING_SCHEME`, whose matching `HIDE_*` keys this applet's templates do not use). Grant them per role in **Settings → Role Permission Listing** to re-open a field the tenant-wide `HIDE_*` setting has closed.
 
-**What you see in the listing:** Credit Note No, Supplier Name, Branch, Transaction Date, Total Amount, Posting Status, Created By, Updated Date.
+Server-side, the read path is not permission-checked at all: the login-entity endpoints filter rows by the supplier link and map them with the "without permission checking" row mapper. What *is* permission-checked is the supplier lookup used to fill the Supplier Name and Supplier ID columns.
 
-**Pro Tip:** Use the **Transaction Date** or **Created Date** filter to focus on a specific month or period—ideal for month-end reconciliation with your own accounts receivable records.
+## Fields
 
----
+Every field on every tab is read-only; the tables under *Screens and menus* list them. There is no create or edit form in this applet, so there are no validators to document.
 
-### For Suppliers: Work with Line Items
+## Lifecycle and effects
 
-**Goal:** See all credit note lines in a flat list, or drill into a specific line.
+This applet writes nothing to the document. The posting behaviour below belongs to the buyer-side document and is repeated here because it explains what the supplier is looking at.
 
-**Option A – From a Credit Note document:**
-1. Open a credit note from **Purchase Credit Note** (click a row)
-2. Go to the **Lines** tab
-3. View each line: Item/Description, UOM, Quantity, Unit Price, Tax, Transaction Amount
-4. Click a **line row** to open **View Line Item**
-5. From the line view, open **View Issue** for linked issues/tasks (if any)
-6. Use **Back** to return to the credit note or the listing
+| Property | Value |
+|---|---|
+| Server document type | `INTERNAL_PURCHASE_CREDIT_NOTE` |
+| Amount signum | −1 (`InternalPurchaseCreditNoteDataConsistencyObject`) |
+| Quantity signum | 0 — no stock movement |
+| Dr/Cr equation | Dr Purchase/expense (line net) · Dr Input tax · Cr Creditor (net of all lines); settlements post to the cashbook GL of the settlement method. |
+| GL precedence | Line GL → header GL → item-company `PURCHASE` link → company default `PURCHASE`; the creditor mapping is mandatory and throws `MISSING_DEFAULT_GL_CODE` when absent. |
+| Stock processor | None. |
+| What VOID reverses | The buyer-side void processor posts the reverse journal, removes the note from the e-Invoice queue and from aging. A voided note disappears from this listing only if its posting status stops being FINAL. |
 
-**Option B – From the Line Items page (flat list across all credit notes):**
-1. Go to **Line Items** from the sidebar
-2. You see **Supplier Purchase Credit Note Line Items Listing** — all lines across all credit notes you can access
-3. Filter by: Credit Note No., Item Code, Item Name, or Transaction Amount range
-4. Click a **row** to open **View Line Items** (line detail view)
-5. From the line view, open **Line Item View Issue** to see linked issues (details, comments, worklog, subtasks)
-6. Use **Back** to navigate back to the line items list
+Endpoints this applet uses, all under `…/gen-doc/internal-purchase-credit-notes/login-entity-ep`:
 
----
+| Action | Call | Result |
+|---|---|---|
+| Listing, Line Items | `GET …/login-entity-ep/query` | Entity-filtered, no permission check. |
+| Open a document | `GET …/login-entity-ep/{guid}` | Entity-filtered. |
+| Export | not called | The buttons are disabled; the effect behind them still names a sales-order print service and a hard-coded printable-format GUID, with a `Replace with printable once mockup received` comment. |
 
-### For Admins: Initial Setup
+The backend does expose a supplier write path for generic documents (`PUT …/{docType}/login-entity-ep`, authorised by `UserPermissionService.isUserLoginEntity`), and this applet's service would reach it, but no screen dispatches it.
 
-**Goal:** Make the applet ready for supplier users.
+## Related applets
 
-**Step 1: Default Selection** (`Settings > Default Selection`)
-- Set the default **Branch** and **Location** pre-filled when the applet loads
-- Useful when most supplier users deal with a single branch
+- [Purchase Credit Note (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-applet/) — the buyer-side applet that creates, finalises, voids and contras these notes.
+- [Purchase Invoice Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet/) — the invoice this credit note usually adjusts, in the same portal.
+- [Purchase Return Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-return-supplier-access-applet/) — the return that usually triggers the credit note.
+- [Supplier](/applets/master-data/supplier-applet-1/) — where the login link is created.
 
-**Step 2: Field Settings** (`Settings > Field Settings`)
-- Configure which fields are visible in the listing and document views
-- Hide fields that are irrelevant to your supplier users
+## Troubleshooting
 
-**Step 3: Printable Format Settings** (`Settings > Printable Format Settings`)
-- Define the layout for printed or exported credit note documents (headers, footers, fields)
-- Create a clean, branded document suitable for suppliers
+| Symptom | Cause | Fix |
+|---|---|---|
+| The listing is empty | Either the login has no `ACTIVE` supplier link, or the buyer's credit notes are still DRAFT — the listing pins `posting_statuses = FINAL` | Check the link in the [Supplier](/applets/master-data/supplier-applet-1/) applet; ask the buyer to finalise the note. |
+| A credit note the buyer says exists is missing, and others show | It is DRAFT, DISCARDED, or was raised on a different supplier entity record | Confirm the status and the entity on the buyer side. |
+| **Supplier Name** / **Supplier ID** show an error code | Those cells come from the ordinary supplier endpoint, which is permission-checked; the failure code is printed into the cell | Grant the login read access to supplier master data, or hide the columns from the grid's column tool panel. |
+| **Purchase Agent** is blank | The purchase-agent entity lookup failed, or the header carries no `pic_entity_01` / purchaser reference | Expected when the buyer left the purchase agent empty. |
+| Export buttons do nothing | All four are `disabled` in the template | Ask the buyer to send the PDF from the [buyer-side applet](/applets/purchase-workflow/internal-purchase-credit-note-applet/). |
+| An attachment cannot be opened | The Attachment tab lists file metadata only; its row-click handler is empty | Ask the buyer for the file. |
+| A line field is missing for one role and present for another | The tenant-wide `HIDE_*` setting is on and only some roles hold the matching `SHOW_*` client-side permission | Adjust either in **Settings → Field Settings** (tenant-wide) or **Settings → Role Permission Listing** (per role). |
+| Changing Default Selection has no effect | This applet has no create form; `DEFAULT_BRANCH` and `DEFAULT_LOCATION` are saved but never read | Expected. |
 
-**Step 4: Feature Visibility** (`Settings > Feature Visibility`)
-- Control which sidebar items and features are accessible to supplier users
-- For example, hide admin-only features from the supplier-facing view
+## Related documentation
 
-**Step 5: Permissions** (`Settings > Permissions`)
-- **Client-side Permission Listing** — Client-side permission sets
-- **Permission Wizard Listing** — Fast role permission assignments
-- **Permission Set Listing** — Define and manage role-based permission sets
-- **User / Team / Role Permission Listing** — Assign permissions by user, team, or role to ensure suppliers only see their own data
-
-**Step 6: Webhook** (`Settings > Webhook`) *(if applicable)*
-- Configure outbound webhooks to notify supplier systems when a new credit note is finalised
-
-**Step 7: Test**
-- Log in as a supplier test user and confirm they can only see credit notes where they are the supplier
-- Verify tabs, drill-downs, attachments, and export all work as expected
-
-**Ongoing:** Review **Feature Visibility** and **Permissions** whenever you onboard a new supplier to the portal.
-
----
-
-{{< callout type="tip" >}}
-**New to the applet?**
-1. **Suppliers** — Start with **Purchase Credit Note** to see your credit adjustments, then open one and explore **Lines** and **Attachments** to understand the full document
-2. Use **Line Items** when you need to reconcile a specific item or amount across multiple credit notes
-3. **Admins** — Review **Configuration & Settings** below before inviting supplier users to the portal
-{{< /callout >}}
-
----
-
-## Credit Note Listing
-
-The main landing view shows all **finalised** Purchase Credit Notes your supplier account is linked to, with server-side pagination and optional advanced search.
-
-**Typical columns:**
-- Credit Note No
-- Supplier Name
-- Branch
-- Purchaser Name
-- Transaction Date
-- Total Amount
-- Currency
-- Posting Status
-- Created By
-- Updated Date
-
-**Advanced search criteria (examples):** Supplier, Branch, Purchaser, Posting Status (DRAFT / FINAL / VOID / DISCARDED), Transaction Date, Created Date, Updated Date, Amount range, GL Dimensions, Segments, Profit Centres, Projects.
-
-{{< callout type="info" >}}
-Only credit notes with posting status **FINAL** appear in the listing. Draft, void, or discarded credit notes are not shown to supplier users.
-{{< /callout >}}
-
-{{< figure src="/images/Purchase-Credit-Note-Supplier-Access-applet/credit-note-listing.png" alt="Purchase Credit Note Listing Screen" caption="The Internal Purchase Credit Note Listing screen showing all credit notes with columns for Credit Note No, Branch, Purchase Agent, Supplier ID, Supplier Name, Creation Date, Transaction Date, and Status." >}}
-
-{{< figure src="/images/Purchase-Credit-Note-Supplier-Access-applet/credit-note-search-filter.png" alt="Credit Note Listing Search and Filter Panel" caption="The search and filter panel with options to filter by Purchase Credit Note No, Branch Name, Supplier Name, date ranges, and Status." >}}
-
----
-
-## View Purchase Credit Note Details
-
-After opening a credit note from the listing, you see **View Purchase Credit Note** with a **Back** button and multiple tabs. All data is **read-only**—suppliers cannot edit, void, or delete any document.
-
-### Document View Tabs
-
-| Tab | Purpose |
-|-----|---------|
-| **Main Details** | Supplier, Branch, Location, Purchaser, Transaction Date, Credit Terms, Reference No, Currency, Tracking ID (read-only) |
-| **Account** | Account-level information and AP account details linked to the credit note |
-| **Lines** | Individual credit line items: Description, UOM, Qty, Unit Price, Tax Code, Tax Amount, Total Amount. Click a line to open **View Line Item** |
-| **Payment** | Payment references or settlement details linked to this credit note |
-| **Department Hdr** | Department, Segment, Dimension, Profit Centre, and Project at header level |
-| **Contra** | Contra documents or offset entries linked to this credit note |
-| **Doc Link** | Linked document references (e.g., original invoice, return note) |
-| **Attachments** | Files attached to the credit note; click to open **View Attachment** |
-| **Export** | Export options to generate a PDF or download the credit note in the configured format |
-
-**Navigation:** The **Back** button returns you to the listing. From the **Lines** tab, you can drill into **View Line Item** and then to **View Issue** for linked issues/tasks.
-
----
-
-## Line Items — Supplier View
-
-The **Line Items** sidebar route shows **Supplier Purchase Credit Note Line Items Listing**—a flat grid of all credit note lines the logged-in supplier can access, across all credit note documents.
-
-**Use it to:**
-- See every credit line across multiple credit notes in one view
-- Search by Credit Note No., Item Code, Item Name, or Transaction Amount (range)
-- Open **View Line Items** for a selected line, then **Line Item View Issue** for linked issues (details, comments, worklog, subtasks)
-
-All lines are filtered to document type **Internal Purchase Credit Note** with **ACTIVE** status.
-
-{{< figure src="/images/Purchase-Credit-Note-Supplier-Access-applet/line-items-listing.png" alt="Line Items Listing Screen" caption="The Line Items Listing screen showing all credit note line items with columns for Purchase Credit Note No, Branch, Supplier Name, Project, Shipping Address, Item Code, Item Name, and Ordered Qty." >}}
-
-{{< figure src="/images/Purchase-Credit-Note-Supplier-Access-applet/line-items-search-filter.png" alt="Line Items Search and Filter Panel" caption="The Line Items search and filter panel with options to filter by Purchase Credit Note No, Item Code, Item Name, and Transaction Amount range." >}}
-
----
-
-## Line Item View and Issue Links
-
-**View Line Item** shows a single credit note line in full detail. From here you can open **View Issue** (or **Line Item View Issue** from the Line Items page) to review:
-
-- Issue type, number, summary, and description
-- Comments and activity log
-- Worklog entries
-- Subtasks and linked issues
-- Attachments and planning data (if configured)
-
-This creates a direct link between a credit adjustment and the underlying reason—whether it's a purchase return, a quality dispute, or a pricing correction—providing full traceability from financial document to operational task.
-
----
-
-## Configuration & Settings
-
-Access **Settings** from the sidebar to configure applet behaviour and access controls.
-
-#### Default Selection (`Settings > Default Selection`)
-- **Branch**: Pre-fill the default branch when the applet loads for all users
-- **Location**: Pre-fill the default location
-
-These values are stored in applet extension parameters (e.g., `DEFAULT_BRANCH`, `DEFAULT_LOCATION`) and scope the listing to the most relevant data for your supplier users automatically.
-
-#### Field Settings (`Settings > Field Settings`)
-Control which fields are visible in the listing and document views. Use this to simplify the interface for supplier users by hiding internal fields irrelevant to vendors (e.g., internal GL dimensions they don't need to see).
-
-#### Printable Format Settings (`Settings > Printable Format Settings`)
-Define one or more print/export layouts for credit note documents—including header, footer, company logo, and which fields to display. Use for generating clean, supplier-friendly PDF credit notes from the **Export** tab.
-
-#### Webhook (`Settings > Webhook`)
-Configure outbound webhooks so external systems (e.g., supplier ERP, procurement platforms) are automatically notified when a new credit note is finalised in your system.
-
-#### Feature Visibility (`Settings > Feature Visibility`)
-Control which sidebar items and features are visible to which user roles. For example, limit supplier users to **Purchase Credit Note** and **Line Items** only, hiding internal admin options entirely.
-
-#### Permissions
-
-| Setting | Purpose |
-|---------|---------|
-| **Client-side Permission Listing** | Client-side permission sets for UI-level control |
-| **Permission Wizard Listing** | Fast role permission assignments |
-| **Permission Set Listing** | Define and manage named permission sets |
-| **User / Team / Role Permission Listing** | Assign permissions to individual users, teams, or roles |
-
-Proper permission setup ensures each supplier user can **only** see credit notes where they are the named supplier — preventing cross-supplier data exposure.
-
----
-
-## Personalisation
-
-#### Default Selection (`Personalisation > Default Selection`)
-Individual supplier users can set their own default Branch and Location so they don't need to re-select filters on every visit. Particularly useful for suppliers who work across multiple branches.
-
-#### Sidebar (`Personalisation > Sidebar`)
-Each user can customise which sidebar items are displayed and in what order, creating a navigation experience tailored to their most-used features.
-
----
-
-## FAQ
-
-**Q: Why can't I see any credit notes in the listing?**
-A: There are two common reasons: (1) No finalised credit notes have been issued with your supplier account linked, or (2) your user account does not have the required permissions for this applet. Only credit notes with posting status **FINAL** are shown. Contact the buyer's AP team or system admin to verify your supplier link and access rights.
-
-**Q: How do I find a specific credit note by date or amount?**
-A: Click the **search / filter** icon above the listing to open **Advanced Search**. Filter by **Transaction Date** (From / To) and/or **Amount** range. You can also type directly into the floating column filters (e.g., Credit Note No or Supplier Name) without opening the full search panel.
-
-**Q: What is the difference between Purchase Credit Note and Line Items in the sidebar?**
-A: **Purchase Credit Note** is document-centric — you see one full credit note at a time, with all its header information and tabs. **Line Items** is line-centric — you see a flat grid of every individual credit line across all your credit notes, making it easier to reconcile by product/item or verify a specific adjustment amount without opening each credit note individually.
-
-**Q: Can I edit or dispute a credit note through this portal?**
-A: No. This applet is **read-only** for suppliers. You cannot edit, void, or reject a credit note through this portal. If you believe a credit note is incorrect, contact the buyer's Procurement or AP team directly and provide the credit note number. All edits and adjustments are handled internally by the buyer's team.
-
-**Q: How do I download a copy of a credit note for my records?**
-A: Open the credit note from the listing, then go to the **Export** tab to generate and download the credit note in the configured print format (typically PDF). You can also use the **Attachments** tab to access any supporting documents the buyer has attached.
-
-**Q: Can I see the original invoice that the credit note is linked to?**
-A: Yes. Open the credit note and go to the **Doc Link** tab. This shows all linked document references, including the original purchase invoice that the credit note was raised against. Note that you may not have direct access to view the linked invoice depending on your permissions.
-
-**Q: What does it mean when a credit note is not showing in my listing?**
-A: If a credit note was issued to you but doesn't appear, it may be: (a) still in Draft or review (not yet FINAL), (b) voided or discarded after issuance, or (c) linked to a different supplier account in the system. Check with the buyer's AP team and provide the credit note number for investigation.
-
-**Q: Can I receive automated notifications when a new credit note is issued?**
-A: Automated notifications depend on your buyer's configuration. If the buyer has set up webhooks for this applet, their system can push notifications to your email or ERP system automatically. Ask the buyer's IT or AP team whether this integration is available for your account.
+- [Purchase Credit Note (Internal) applet](/applets/purchase-workflow/internal-purchase-credit-note-applet/)
+- [Purchasing module](/modules-v2/purchasing/)
+- [Supplier applet](/applets/master-data/supplier-applet-1/)

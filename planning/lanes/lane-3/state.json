@@ -8,12 +8,6 @@
   "external-tenant-admin"
  ],
  "queue": [
-  "content/en/applets/purchase-workflow/blanket-purchase-order-applet-supplier-access-applet.md",
-  "content/en/applets/purchase-workflow/internal-purchase-credit-note-supplier-access-applet.md",
-  "content/en/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet.md",
-  "content/en/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet.md",
-  "content/en/applets/purchase-workflow/internal-purchase-order-supplier-access-applet.md",
-  "content/en/applets/purchase-workflow/internal-purchase-return-supplier-access-applet.md",
   "content/en/applets/ecommerce/internal-shopping-cart-customer-access-applet.md"
  ],
  "done": [
@@ -154,6 +148,36 @@
    "page": "content/en/applets/ecommerce/website-builder/user-manager.md",
    "date": "2026-09-06",
    "note": "run 26; NOT an applet (no registry row) - feature sub-page of cp_commerce_admin_console_v1 (page_type: applet-feature, parent cp-commerce-admin-applet); code is in the storefront app wavelet-cp-commerce @247243251 (component @79a8864bd), not the admin applet; 5 website_builder_config keys in bl_cms_website_hdr.property_json consumed with no writer anywhere; HIDE_USER_PERMISSION_MANAGER read-without-control (11 of 13 tiles have a checkbox, this and HIDE_HIGHLIGHT_ACTIVITY_MANAGER do not, neither is in the ts-lib enum); route guard degenerates to 'is logged in'; admin mode = applet token from bl_applet_login_subject_link only, so Remove Access (role link only) does not revoke access; Make Admin gives tenant rank GUEST so a new admin cannot promote anyone; no error UI at all (console.error only); 0 of 5 images kept (real e-mails + customer hostname)"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/blanket-purchase-order-applet-supplier-access-applet.md",
+   "date": "2026-09-06",
+   "note": "run 27; applet @d47eca4 + backend @1ff620ef0e; read-only supplier copy (create/save/delete unreachable); applet-local settings, Field Settings screen unbound mock; 11 HIDE_* listing toggles four-proof; PDF export uses hard-coded printable-format GUID; 0 client-side perm rows; 2 of 3 images kept"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/internal-purchase-credit-note-supplier-access-applet.md",
+   "date": "2026-09-06",
+   "note": "run 27; applet @bf0b95a, shared-utilities pinned @e2f57c4 (gates.py at pinned + HEAD); read-only, FINAL-only listing; 18 four-proof line-field hides paired with 22 seeded SHOW_* perms; export buttons disabled; 4 of 5 images kept"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/internal-purchase-grn-supplier-access-applet.md",
+   "date": "2026-09-06",
+   "note": "run 27; applet @084005d, shared-utilities pinned @637553b (gates.py pinned + HEAD); read-only, FINAL-only; 19 four-proof line hides with 21 seeded SHOW_* perms; export/attachment use back-office endpoints needing the targeted READ permission; infographic dropped"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet.md",
+   "date": "2026-09-06",
+   "note": "run 27; applet @0588cbb, shared-utilities pinned @5f74f2d (gates.py pinned + HEAD); read-only, FINAL-only; 19 four-proof line hides with 20 seeded SHOW_* perms; EXPORT AS PDF builds a URL no controller mapping matches; infographic dropped, 2 screenshots kept"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/internal-purchase-order-supplier-access-applet.md",
+   "date": "2026-09-06",
+   "note": "run 27; applet @df256b6, shared-utilities pinned @f9e5782 (gates.py pinned + HEAD); writes: workflow status via POST gen-doc/login-entity-ep/xtn-process and a CSV import that creates POs; 22 four-proof settings; SHOW_COSTING_DETAILS checked in code but not seeded; all 12 images are buyer-side PO applet screenshots - dropped"
+  },
+  {
+   "page": "content/en/applets/purchase-workflow/internal-purchase-return-supplier-access-applet.md",
+   "date": "2026-09-06",
+   "note": "run 27; applet @129d9da, shared-utilities pinned @cf8379f (gates.py pinned + HEAD); read-only; listing shows every posting status (no FINAL filter); 19 four-proof line hides with 20 seeded SHOW_* perms; export URL matches no backend mapping; all 9 images dropped (buyer-side screenshots with real staff names)"
   }
  ],
  "skipped": [
@@ -180,8 +204,8 @@
  ],
  "updated": "2026-09-06",
  "notes": [
-  "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) — INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/…] and [src:gh:bigledger/blg-intranet#n].",
-  "2026-09-05: Vincent asked twice that blg-intranet e-invoice knowledge be used — e-invoice pages moved to the front of the queue."
+  "2026-09-05 coordinator: before touching any page under content/en/applets/e-invoice/, read /home/marketing/repos/refs/blg-intranet/content/1100-malaysia-einvoice/ (README.md, LHDN core-workflow diagram, error screenshots, 10K-simulation scenarios CSV, General-TIN misuse diagram) \u2014 INTERNAL: extract facts only, never copy passages/names/credentials; check every image for customer data before copying to static/. Also mine `gh issue list -R bigledger/blg-intranet --state all --limit 300 --search \"einvoice OR e-invoice OR myinvois OR lhdn OR peppol\"` (~560 issues) for Troubleshooting, anonymised. Cite as [src:refs/blg-intranet/\u2026] and [src:gh:bigledger/blg-intranet#n].",
+  "2026-09-05: Vincent asked twice that blg-intranet e-invoice knowledge be used \u2014 e-invoice pages moved to the front of the queue."
  ],
  "rework": []
 }

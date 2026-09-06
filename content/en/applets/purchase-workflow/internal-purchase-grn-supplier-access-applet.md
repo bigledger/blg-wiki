@@ -1,330 +1,231 @@
 ---
-title: "Purchase GRN Supplier Access (Internal) Applet"
-description: "Supplier portal for viewing Internal Purchase Goods Received Notes (GRNs), line items, and related documents"
+title: "Purchase GRN Supplier Access (Internal)"
+description: "Reference for the supplier-facing copy of the Purchase GRN applet: a login linked to a supplier entity reads the FINAL goods received notes the buyer has posted against it — header, lines, payments, contra, linked documents and attachments — and exports a PDF."
+applet_code: "internal-purchase-grn-supplier-access-applet"
+page_type: applet
+applet_repo: "blg-applet-wavelet-internal-purchase-grn-supplier-access-applet"
+modules: [purchasing, inventory]
+related_applets:
+  - internal-purchase-grn-applet
+  - internal-purchase-order-supplier-access-applet
+  - internal-purchase-invoice-supplier-access-applet
+  - internal-purchase-return-supplier-access-applet
+  - supplier-applet-1
+  - organisation-applet
+guides: []
+sources:
+  configuration:
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/components/settings-container/default-settings/default-settings.component.ts
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/components/line-items-container/line-item-view/line-item-view.component.html
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/components/line-items-container/line-item-view/item-details/main-details/main-details.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts
+    - planning/lanes/lane-3/perm-dfn (akaun_master.bl_applet_client_side_perm_dfn, 20 ACTIVE + 1 DELETED code)
+  fields:
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/components/purchase-grn-container/purchase-grn-listing/purchase-grn-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/components/purchase-grn-container/purchase-grn-view/purchase-grn-view.component.html
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/components/purchase-grn-container/purchase-grn-view/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/components/purchase-grn-container/purchase-grn-view/line-item/line-item-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/components/purchase-grn-container/purchase-grn-view/payment/payment-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/components/purchase-grn-container/purchase-grn-view/attachments/attachments-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/components/line-items-container/line-items-listing/line-items-listing.component.ts
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/models/advanced-search-models/internal-purchase-grn.model.ts
+  lifecycle:
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-document-services/internal-purchase-goods-received-notes-supplier-access.service.ts
+    - blg-akaun-ts-lib/projects/blg-akaun-ts-lib/src/lib/services/com-akaun-api/core2/api-services/erp/generic-document-services/internal-purchase-goods-received-notes.service.ts
+    - blg-akaun-platform-java/akaun-api/src/main/java/app/api/core2/controller/tenant/dm/erp/genericDocument/GenericDocumentController.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/dal/uow/FinancialDocUow/GenericDocumentUow.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalPurchaseGoodReceivedNoteDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+  troubleshooting:
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/state-controllers/purchase-grn-controller/store/effects/purchase-grn.effects.ts
+    - blg-applet-wavelet-internal-purchase-grn-supplier-access-applet/micro-fe/projects/wavelet-erp/applets/internal-purchase-grn-supplier-access-applet/src/app/state-controllers/draft-controller/store/effects/attachment.effects.ts
+    - gh:bigledger/blg-applet-wavelet-internal-purchase-grn-supplier-access-applet#1
 tags:
-- internal-purchase
-- grn
-- supplier-access
-- goods-received-note
-- purchase-order
+  - internal-purchase
+  - grn
+  - supplier-access
+  - goods-received-note
+  - purchase-order
 weight: 161
 aliases:
-- /applets/internal-purchase-grn-supplier-access-applet/
+  - /applets/internal-purchase-grn-supplier-access-applet/
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Purchase GRN Supplier Access (Internal) Applet** gives suppliers a dedicated portal to view and access **Internal Purchase Goods Received Notes (GRNs)** issued by the buying organization. Suppliers can see which GRNs reference them, inspect line-level details, view attachments and payments, and drill into linked issues—all in read-only mode tailored for vendor users.
+**Purchase GRN Supplier Access (Internal)** is the supplier-facing copy of the [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) applet. A login linked to a supplier entity opens it inside the buyer's tenant to confirm what the buyer says it received: the goods received notes raised against that supplier, their lines and quantities, any settlements and contra records, the documents they link to, and the attached files.
 
-![Empowering Suppliers: The Purchase GRN (Internal) Portal](/images/internal-purchase-grn-supplier-access-applet/internal-purchase-grn-supplier-access-applet-overview.png)
+The applet is read-only — there is no create screen and no save or delete control anywhere — and its listing pins `posting_statuses = FINAL`, so a GRN appears only once the buyer has finalised it. A PDF export exists but calls the buyer-side print endpoint (see *Troubleshooting*).
+
+## Where it fits
+
+| Position | Document / applet | Why |
+|---|---|---|
+| Module | [Purchasing](/modules-v2/purchasing/), [Inventory](/modules-v2/inventory/) | Confirms receipt of goods against a purchase order. |
+| The document | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) | Same rows; the buyer creates and finalises there. |
+| Upstream (access) | [Supplier](/applets/master-data/supplier-applet-1/) | The login must be linked to the supplier entity (`bl_fi_mst_entity_login_subject_link`, status `ACTIVE`). |
+| Upstream (document) | [Purchase Order Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-order-supplier-access-applet/) | The order the GRN receives against; the Doc Link tab shows the pair. |
+| Downstream | [Purchase Invoice Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet/) | The invoice raised against the receipt. |
+| Sibling | [Purchase Return Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-return-supplier-access-applet/), [Purchase Credit Note Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-credit-note-supplier-access-applet/) | Same portal, the documents that follow a rejected receipt. |
 
 {{< callout type="info" >}}
-**Core Concept**: The applet links **who** (Supplier) to **what** (GRN documents and line items) and **how** they access it (listing, view, line items, settings, and personalization).
+A plain GRN **does not move stock**: the backend document type `INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE` carries quantity signum 0 and amount signum 0. Stock arrives through the separate GRN Stock In document. Anything that says a GRN increases inventory is describing [Purchase GRN Stock In](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/), not this document.
 {{< /callout >}}
 
-## Key Features Overview
+## Screens and menus
 
-### Who Benefits from This Applet?
+| Menu | Route | What it is |
+|---|---|---|
+| **Purchase GRN** | `internal-purchase-grn-supplier-access` | The listing and the document view behind it. |
+| **Line Items** | `line-items` | A flat listing of GRN lines across the supplier's GRNs. |
+| **Settings** | `settings/…` | Field Settings, Default Selection, Printable Format Settings (menu), plus Webhook, Feature Visibility, Client Side Permission and the permission listings (routes). |
+| **Personalization** | `personalization/…` | Personal Default Selection and sidebar order. |
 
-**Suppliers & Vendor Users:**
-- View all GRNs where they are the supplier
-- See line items, quantities, prices, and totals
-- Access attachments and payment information
-- Track linked issues (e.g. tasks or tickets) per line
+### Listing
 
-**Procurement & Buyer Teams:**
-- Reduce "where is my GRN?" queries from suppliers
-- Single place for suppliers to self-serve GRN visibility
-- Clear audit trail of what the supplier can see
+Columns: **Purchase GRN No, Branch, Purchaser Name, Updated Date, Created Date, Transaction Date, Created by**. Sorted by `updated_date` descending; the criteria always include `posting_statuses = FINAL`.
 
-**Finance & Accounts Payable:**
-- Suppliers can verify GRN details before invoicing
-- Fewer disputes from mismatched quantities or amounts
-- Aligned document visibility for reconciliation
+Advanced search offers Supplier, Branch, Purchaser, Posting Status, Status, Transaction Date, Created Date, Updated Date, Doc Reference Date, Order By, GL Dimension, Segment, Profit Center and Project. Date ranges default to the last month. A search is executed in two steps: the criteria are first resolved to a list of document GUIDs through the shared sub-query endpoint, and the grid then pages over that list; the `posting_statuses = FINAL` criterion is still applied on top, so choosing DRAFT, VOID or DISCARDED under **Posting Status** returns nothing.
 
-**IT & System Admins:**
-- Centralized supplier access control via permissions
-- Configurable default selections and printable formats
-- Feature visibility and webhook integration
+Rows are completed with a branch lookup through the applet-login endpoint (`branches/basic-info/applet-login-ep/{appletGuid}/{guid}`), a purchaser lookup through the entity applet-login endpoint and the creator's profile name.
 
-### What Problems Does This Solve?
+### Document view
 
-**The Supplier Visibility Problem:**
+Nine read-only tabs:
 
-Without a dedicated portal, suppliers often:
-- Request GRN copies via email or phone
-- Lack a single place to see all GRNs issued to them
-- Cannot easily check line-level details or attachments
-- Struggle to reconcile their records with buyer records
+| Tab | Contents |
+|---|---|
+| **Main Details** | Branch, Location, Transaction Date, Credit Terms, Due Date, Reference, Remarks, Permit No, Currency, Tracking ID. |
+| **Account** | Supplier entity details, billing and shipping address. |
+| **Lines** | Item Code, Item Name, UOM, Qty, Unit Price, SST/VAT/GST, Txn Amount. |
+| **Payment** | Date, Amount, Details, Remarks. |
+| **Department Hdr** | Segment, Dimension, Profit Center, Project. |
+| **Contra** | ARAP contra records against the GRN. |
+| **Doc Link** | Copy From / Copy To — the order the GRN came from and the invoice raised on it. |
+| **Attachments** | File Name, Size, Uploaded Date, Uploaded By. Clicking a row opens the attachment viewer and can download the file — but through the buyer-side file endpoint (see *Troubleshooting*). |
+| **Export** | A printable-format picker (loaded through the applet-login endpoint) and **EXPORT AS PDF**. The CSV, DOCX and ZIP buttons are commented out of the template. |
 
-**The Purchase GRN Supplier Access (Internal) Solution:**
+### Line Items
 
-- **GRN listing** — Filter by supplier, branch, purchaser, dates, and posting status
-- **Document view** — Main details, account, lines, payment, department, contra, doc link, attachments, and export
-- **Line items view** — Flat list of all GRN line items with search and drill-down
-- **Issue links** — View linked issues/tasks per line item (details, comments, worklog, subtasks, etc.)
-- **Settings & personalization** — Default branch/location, field settings, printable formats, permissions
+Columns: **Purchase GRN No, Item Code, Item Name, Qty, Unit Price, SST/VAT/GST, Txn Amount**. Opening a line shows **Item Details**, **Serial Number**, **Costing Details** (hidden by `HIDE_COSTING_DETAILS` unless the role holds `SHOW_COSTING_DETAILS`), **Pricing Details** and **Issue Link**.
 
-## Key Features Overview
+## Configuration
 
-{{< cards >}}
-  {{< card title="Purchase GRN Listing" subtitle="Search and open GRNs with advanced filters" link="#for-suppliers-view-your-grns" >}}
+### Before you can use it
 
-  {{< card title="GRN View (Main, Lines, Payment, Attachments)" subtitle="Full document view with tabs" link="#view-purchase-grn-details" >}}
+| Prerequisite | Where it is set | Why it matters |
+|---|---|---|
+| The supplier's login is linked to the supplier entity | [Supplier](/applets/master-data/supplier-applet-1/) → Login (`bl_fi_mst_entity_login_subject_link`, `ACTIVE`) | Every query is filtered by that link; without it the screens are empty. |
+| The applet is installed for that login | [Tenant Admin](/applets/external-tenant-admin/tenant-admin-applet/) | Supplies the applet token and the `appletGuid` the branch, entity and printable-format applet-login lookups need. |
+| The GRN is FINAL | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) | The listing pins `posting_statuses = FINAL`. |
+| A printable format for this document type | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) → Printable Format Settings, or this applet's own | The Export tab lists formats for `INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE`. |
 
-  {{< card title="Line Items" subtitle="Flat list of GRN line items with search" link="#line-items---supplier-view" >}}
+### Applet settings
 
-  {{< card title="Line Item & Issue Link View" subtitle="Drill to line details and linked issues" link="#line-item-view-and-issue-links" >}}
+Settings live on the **shared** `FieldConfigurationComponent` from `blg-shared-utilities` (route `settings/field-settings`), gated by `sessionStorage.appletCode`. There is no inline settings gear and no applet-local field-configuration screen.
 
-  {{< card title="Configuration & Settings" subtitle="Defaults, fields, printable format, permissions" link="#configuration--settings" >}}
+**19 keys pass all four proofs** — declared in `AppletSettings`, rendered on the shared screen for this applet code, persisted into `bl_applet_ext.APPLET_SETTINGS`, and consumed by this applet's line-detail template. Each hides one line field and each is paired with a `SHOW_*` client-side permission (`*ngIf="!appletSettings.HIDE_X || SHOW_X"`). The set was computed with `kb/tools/gates.py` at the shared-utilities commit this applet pins (`637553b`) and re-checked at HEAD; HEAD renders 297 keys instead of 208, but adds nothing this applet consumes.
 
-  {{< card title="Personalization" subtitle="Default selection and sidebar" link="#personalization" >}}
-{{< /cards >}}
+| Setting | What it hides on the line detail | Default | Re-opened per role by |
+|---|---|---|---|
+| `HIDE_QTY_BASE` | Base quantity | Off | `SHOW_QTY_BASE` |
+| `HIDE_QTY_UOM` | Quantity in the line UOM | Off | `SHOW_QTY_UOM` |
+| `HIDE_UOM_TO_BASE_RATIO` | UOM-to-base ratio | Off | `SHOW_UOM_TO_BASE_RATIO` |
+| `HIDE_UNIT_PRICE_STD_EXCL_TAX` | Standard unit price, excluding tax | Off | `SHOW_UNIT_PRICE_STD_EXCL_TAX` |
+| `HIDE_UNIT_PRICE_STD_INCL_TAX` | Standard unit price, including tax | Off | `SHOW_UNIT_PRICE_STD_INCL_TAX` |
+| `HIDE_UNIT_PRICE_STD_UOM_EXCL_TAX` | Standard unit price per UOM, excluding tax | Off | `SHOW_UNIT_PRICE_STD_UOM_EXCL_TAX` |
+| `HIDE_UNIT_PRICE_STD_UOM_INCL_TAX` | Standard unit price per UOM, including tax | Off | `SHOW_UNIT_PRICE_STD_UOM_INCL_TAX` |
+| `HIDE_UNIT_PRICE_NET_EXCL_TAX` | Net unit price, excluding tax | Off | `SHOW_UNIT_PRICE_NET_EXCL_TAX` |
+| `HIDE_UNIT_PRICE_NET_UOM_EXCL_TAX` | Net unit price per UOM, excluding tax | Off | `SHOW_UNIT_PRICE_NET_UOM_EXCL_TAX` |
+| `HIDE_UNIT_PRICE_TXN_UOM_INCL_TAX` | Transaction unit price per UOM, including tax | Off | `SHOW_UNIT_PRICE_TXN_UOM_INCL_TAX` |
+| `HIDE_UNIT_DISCOUNT` | Unit discount | Off | `SHOW_UNIT_DISCOUNT` |
+| `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX` | Unit discount per UOM, excluding tax | Off | `SHOW_UNIT_DISCOUNT_UOM_EXCL_TAX` |
+| `HIDE_DISCOUNT_AMOUNT_EXCL_TAX` | Discount amount, excluding tax | Off | `SHOW_DISCOUNT_AMOUNT_EXCL_TAX` |
+| `HIDE_AMOUNT_STD_EXCL_TAX` | Standard amount, excluding tax | Off | `SHOW_AMOUNT_STD_EXCL_TAX` |
+| `HIDE_AMOUNT_NET_EXCL_TAX` | Net amount, excluding tax | Off | `SHOW_AMOUNT_NET_EXCL_TAX` |
+| `HIDE_AMOUNT_TXN` | Transaction amount | Off | `SHOW_AMOUNT_TXN` |
+| `HIDE_TAX_CONFIG_SELECTION` | The three tax-configuration fields | Off | `SHOW_TAX_CONFIG_SELECTION` |
+| `HIDE_WHT_CONFIG_SELECTION` | The three withholding-tax fields | Off | `SHOW_WHT_CONFIG_SELECTION` |
+| `HIDE_COSTING_DETAILS` | The **Costing Details** tab on a line | Off | `SHOW_COSTING_DETAILS` |
 
-## Key Concepts
+Everything else the shared screen offers for this applet code is saved but never read here — the applet has no buttons, no status flow and no write path for those keys to affect.
 
-### Understanding GRN and Supplier Access
+**Read outside the shared screen:**
 
-| Aspect | Component | Practical Example |
-|--------|-----------|-------------------|
-| **Who** is viewing? | Supplier / vendor user | Supplier ABC logs in and sees only GRNs where they are the supplier |
-| **What** is being viewed? | Purchase GRN (Internal) & line items | GRN document with header (branch, purchaser, dates) and lines (item, qty, price, tax, amount) |
-| **How** is it accessed? | Listing, view, line items, issue links | Search → open GRN → open line → open issue link |
+- `DEFAULT_BRANCH`, `DEFAULT_LOCATION` — rendered and saved by the applet-local **Default Selection** screen; nothing in this applet reads them back (there is no create form).
+- `PRINTABLE` — written by Printable Format Settings when a format is marked default, and read by the Export tab as the pre-selected format. This is the one setting that changes what the export produces.
 
-{{< callout type="tip" >}}
-**Real-World Example**: Supplier ABC (WHO) logs in and sees only GRNs where they are the supplier. They open a GRN (WHAT), check the **Lines** tab to verify quantities and amounts, then use **Attachments** to download the signed copy and **Export** for their records (HOW).
-{{< /callout >}}
+### Document behaviour settings
 
-### Document Type
+Not applicable — no status, posting, workflow or e-Invoice control is exposed. FINAL and VOID happen in the buyer-side applet.
 
-The applet works with documents of type **Internal Purchase Goods Received Note** (`INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE`). The main **Purchase GRN** listing shows only GRNs with posting status **FINAL** (i.e. completed/finalized documents). Draft, void, or discarded GRNs are not shown in the listing.
+### Feature visibility and permissions
 
-### Main Navigation
+The registry seeds **21 client-side permission codes** for this applet (20 `ACTIVE`, `SHOW_UNIT_PRICE_STD_PRICING_SCHEME` `DELETED`, as of 2026-09-06) — the `SHOW_*` half of the pairs in the table above plus `SHOW_COSTING_DETAILS`. Grant them per role in **Settings → Role Permission Listing**.
 
-```
-Sidebar
-├── Purchase GRN        → GRN listing (default)
-├── Line Items          → Flat line items listing
-├── Settings            → Default selection, field settings, printable format, webhook, feature visibility, permissions
-└── Personalization     → Default selection, sidebar
-```
+Server-side:
 
----
+| Path | Endpoint | Check |
+|---|---|---|
+| Listing, Line Items, open a document | `…/internal-purchase-goods-received-notes/login-entity-ep[/query]` | Entity-filtered by the supplier link; no permission check. |
+| Printable-format list | `…/printable-formats/applet-login-ep` | Any login with the applet installed. |
+| **Export as PDF** | `…/internal-purchase-goods-received-notes/print-jasper-pdf/{guid}` | **Back-office** endpoint: requires the targeted permission `TNT_API_DOC_INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE_READ_TGT_GUID` on that document. |
+| **Attachment download** | `…/internal-purchase-goods-received-notes/file/{extGuid}` | **Back-office** endpoint: same targeted read permission. |
 
-## Quick Start Guide
-
-Get up and running quickly with these essential workflows.
-
-### For Suppliers: View Your GRNs
-
-**Goal:** Find and open a GRN in a few steps.
-
-1. **Navigate**: Go to **Purchase GRN** from the sidebar (default landing).
-2. **Search (optional)**:
-   - Click the **search** or **filter** icon above the grid to open **Advanced Search**.
-   - Filter by Supplier, Branch, Purchaser, Posting Status, Transaction Date, Created Date, Updated Date, or other criteria (GL dimensions, segments, profit centers, projects).
-   - Alternatively, use the grid’s **floating filters** directly on column headers (e.g. Purchase GRN No, Branch, Purchaser Name, Created by).
-3. **Open a GRN**: Click a **row** in the grid to open **View Purchase GRN**.
-4. **Explore tabs**: Use **Main Details**, **Account**, **Lines**, **Payment**, **Department Hdr**, **Contra**, **Doc Link**, **Attachments**, and **Export** as needed.
-5. **Drill to a line**: In the **Lines** tab, click a line row to open **View Line Item**; from there open **View Issue** for any linked issues/tasks.
-6. **Return**: Use the **Back** button (top left of the view) to return to the listing.
-
-**What you see in the listing:** Purchase GRN No, Branch, Purchaser Name, Updated Date, Created Date, Transaction Date, Created by.
-
-**What happens next?** Once a GRN is open, you can verify quantities and amounts, open attachments, export for your records, or drill into line-level issue links. Use **Back** to return to the list and open another GRN.
-
-**Pro Tip:** Use Advanced Search with a **Transaction Date** or **Created Date** range to focus on recent GRNs (e.g. last month).
-
----
-
-### For Suppliers: Work with Line Items
-
-**Goal:** See all GRN line items in one list or from a specific GRN.
-
-**Option A – From a GRN:**
-1. Open a GRN from **Purchase GRN** (click a row in the listing).
-2. Go to the **Lines** tab.
-3. View each line: Item Code, Item Name, UOM, Qty, Unit Price, SST/VAT/GST, Txn Amount.
-4. Click a **line row** to open **View Line Item**; from there, open **View Issue** for linked issues if available.
-5. Use **Back** to return to the GRN view or the listing.
-
-**Option B – Line Items page (flat list across all GRNs):**
-1. Go to **Line Items** from the sidebar.
-2. You see **Supplier Purchase GRN Line Items Listing** — all line items you can access, across all GRNs.
-3. Use the search/filter area to filter by **Purchase GRN No.**, **Item Code**, **Item Name**, or **Txn Amt** (range).
-4. Click a **row** to open **View Line Items** (line detail).
-5. From the line view, open **Line Item View Issue** to see linked issues (details, comments, worklog, subtasks).
-6. Use **Back** to return to the line items list or the previous view.
-
----
-
-### For Admins: Initial Setup
-
-**Goal:** Make the applet ready for supplier users.
-
-**Step 1: Default Selection** (`Settings > Default Selection`)
-- Set default **Branch** and **Location** used when opening the applet.
-
-**Step 2: Field Settings** (`Settings > Field Settings`)
-- Configure which fields are visible/editable (as applicable) for the applet.
-
-**Step 3: Printable Format Settings** (`Settings > Printable Format Settings`)
-- Define print/export layouts for GRN documents (e.g. headers, footers, fields to include).
-
-**Step 4: Feature Visibility & Permissions**
-- **Feature Visibility** (`Settings > Feature Visibility`): Control which features are visible to which users.
-- **Permissions** (`Settings > Client-side Permission Listing`, Permission Set, User/Team/Role Permission Listing): Restrict access by role or user so only intended supplier users see the applet and data.
-
-**Step 5: Webhook** (`Settings > Webhook`) (if used)
-- Configure outbound webhooks for events (e.g. GRN finalized) for integration with supplier systems.
-
-**Step 6: Test**
-- Log in as a supplier user and confirm they only see their GRNs and line items, and that tabs and drill-downs work as expected.
-
-**Ongoing:** Review **Feature Visibility** and **Permissions** when onboarding new supplier users or when changing which GRNs a supplier can see.
-
----
-
-{{< callout type="tip" >}}
-**New to the applet?**
-1. Suppliers should start with **Purchase GRN** to see their GRNs, then open one and explore **Lines** and **Attachments**.
-2. Use **Line Items** when you need a flat list across GRNs (e.g. by item code or amount).
-3. Admins should review **Configuration & Settings** below for detailed setup.
-{{< /callout >}}
-
----
-
-## Purchase GRN Listing
-
-The main landing view shows GRNs the logged-in supplier is allowed to see (typically those where they are the supplier), with server-side pagination and optional advanced search.
-
-**Columns (typical):**
-- Purchase GRN No  
-- Branch  
-- Purchaser Name  
-- Updated Date  
-- Created Date  
-- Transaction Date  
-- Created by  
-
-**Advanced search criteria (examples):** Supplier, Branch, Purchaser, Posting Status (e.g. DRAFT, FINAL, VOID, DISCARDED), Status (ACTIVE, DELETED), Transaction Date, Created Date, Updated Date, Doc Reference Date, Order By, GL Dimensions, Segments, Profit Centers, Projects.
-
-The listing shows only GRNs with posting status **FINAL**. Draft, void, or discarded documents do not appear.
-
----
-
-## View Purchase GRN Details
-
-After opening a GRN from the listing, you see **View Purchase GRN** with a **Back** button (top left) and these tabs. All details are **read-only**; suppliers cannot edit the document.
-
-| Tab | Purpose |
-|-----|---------|
-| **Main Details** | Branch, Location, Purchaser, Transaction Date, Credit Terms, Reference, Remarks, Permit No, Currency, Tracking ID (read-only). |
-| **Account** | Account-level information linked to the GRN. |
-| **Lines** | Line items: Item Code, Item Name, UOM, Qty, Unit Price, SST/VAT/GST, Txn Amount. Click a line to open View Line Item. |
-| **Payment** | Payment-related lines or references. |
-| **Department Hdr** | Department/segment/dimension/profit center/project at header level. |
-| **Contra** | Contra listing (e.g. offset or linked documents). |
-| **Doc Link** | Linked document references. |
-| **Attachments** | Attached files; open **View Attachment** for full view. |
-| **Export** | Export options for the GRN. |
-
-Navigation: **Back** returns to the listing. From **Lines**, you can go to **View Line Item** and then to **View Issue** for linked issues.
-
----
-
-## Line Items — Supplier View
-
-The **Line Items** route shows **Supplier Purchase GRN Line Items Listing**: a flat list of all GRN line items the supplier can access.
-
-**Use it to:**
-- See every line across multiple GRNs in one grid.
-- Search by Purchase GRN No., Item Code, Item Name, or Txn Amount (range).
-- Open **View Line Items** for a selected line, then **Line Item View Issue** for linked issues (details, comments, worklog, subtasks, etc.).
-
-Line items are filtered to document type **Internal Purchase Goods Received Note** and **ACTIVE** status. Within a GRN’s **Lines** tab, only active purchase lines (transaction type PNS) are shown.
-
----
-
-## Line Item View and Issue Links
-
-**View Line Item** shows a single GRN line in detail. From here you can open **View Issue** (or **Line Item View Issue** from the Line Items page) to see:
-
-- Issue details (e.g. issue type, number, summary, description)
-- Comments and activity
-- Worklog
-- Subtasks and linked issues
-- Attachments and planning data (if configured)
-
-This ties GRN lines to external issue/task tracking (e.g. project or support tickets) for traceability.
-
----
-
-## Configuration & Settings
-
-Access **Settings** from the sidebar to configure behavior and access.
-
-#### Default Selection (`Settings > Default Selection`)
-
-- **Branch**: Default branch when the applet loads.
-- **Location**: Default location.
-
-These values are stored in applet extension parameters (e.g. `APPLET_SETTINGS` with `DEFAULT_BRANCH`, `DEFAULT_LOCATION`) and are used to pre-fill or scope the views for all users of the applet. Useful when most supplier users work with a single branch or location.
-
-#### Field Settings (`Settings > Field Settings`)
-
-Control which fields are shown or editable in the applet (field-level configuration).
-
-#### Printable Format Settings (`Settings > Printable Format Settings`)
-
-Define one or more formats for printing/exporting GRN documents (layout, header/footer, fields). Use for supplier-facing or internal PDF/print output.
-
-#### Webhook (`Settings > Webhook`)
-
-Configure outbound webhooks so external systems (e.g. supplier portals) can be notified on applet events.
-
-#### Feature Visibility (`Settings > Feature Visibility`)
-
-Control which features or menu items are visible to which users or roles, so you can limit supplier users to GRN and Line Items only.
-
-#### Permissions
-
-- **Client-side Permission Listing** — Client-side permission sets.
-- **Permission Set Listing** — Define and manage permission sets.
-- **User / Team / Role Permission Listing** — Assign permissions by user, team, or role.
-
-Use these to ensure only authorized supplier (and internal) users can access the applet and see the correct GRNs and line items.
-
----
-
-## Personalization
-
-#### Default Selection (`Personalization > Default Selection`)
-
-Users can set their own default Branch and Location for this applet to speed up use.
-
-#### Sidebar (`Personalization > Sidebar`)
-
-Customize which items appear in the sidebar and their order for a personalized navigation.
-
----
-
-## FAQ
-
-**Q: Why don’t I see any GRNs in the listing?**  
-A: You may not have any GRNs where your user is linked as the supplier, or your access may be restricted by permissions. Only documents with posting status **FINAL** are shown. Confirm with the buyer or admin that your supplier account and permissions are set up for this applet.
-
-**Q: How do I filter GRNs by date range?**  
-A: Click the search/filter icon above the grid to open **Advanced Search**. Use **Transaction Date**, **Created Date**, or **Updated Date** and set a **From** and **To** date. Apply the search to refresh the listing. This is useful to focus on last month’s GRNs or a specific delivery period.
-
-**Q: What is the difference between Purchase GRN and Line Items?**  
-A: **Purchase GRN** is document-centric: you see one GRN at a time with its header and lines. **Line Items** is line-centric: you see a flat list of all GRN lines you can access across all GRNs, with search by Purchase GRN No., Item Code, Item Name, or Txn Amount—handy when you need to find a specific item or total by product.
-
-**Q: Can I edit or delete a GRN or line in this applet?**  
-A: No. This applet is **read-only** for suppliers. Creating, editing, or voiding GRNs is done in the buyer’s internal purchase or GRN applets. Use this applet only to view and export information.
-
-**Q: How do I see attachments or export a GRN?**  
-A: Open the GRN from **Purchase GRN**, then use the **Attachments** tab to list and open attachments (click to open **View Attachment**). Use the **Export** tab to generate or download an export (e.g. PDF) according to the configured printable format.
-
-**Q: Why can I see some GRNs but not others?**  
-A: Visibility is controlled by (1) **supplier link** — you only see GRNs where your supplier account is the one on the document; (2) **posting status** — only **FINAL** GRNs appear in the listing; and (3) **permissions** — your user or role must have access to this applet and the relevant data. If a GRN you expect is missing, check with the buyer that it is finalized and that your account is set as the supplier.
+## Fields
+
+Every field is read-only; the tables under *Screens and menus* list them per tab. There is no create or edit form, so no validators apply.
+
+## Lifecycle and effects
+
+This applet writes nothing. The behaviour below is the buyer-side document's.
+
+| Property | Value |
+|---|---|
+| Server document type | `INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE` |
+| Amount signum | 0 (`InternalPurchaseGoodReceivedNoteDataConsistencyObject`) |
+| Quantity signum | 0 — no inventory transaction line |
+| Dr/Cr equation | None; FINAL posts no journal for a plain GRN. The GR/IR (Goods Received / Invoice Received) accrual belongs to GRN Stock In. |
+| GL precedence | Not applicable — no journal line. |
+| Stock processor | None. |
+| What VOID reverses | Nothing to reverse; the GRN's role is to satisfy the purchase order's open queue so the invoice can be raised. |
+
+| Action in this applet | Call | Result |
+|---|---|---|
+| List / search / open | `GET …/login-entity-ep[/query]` | Works with only the supplier link. |
+| Export PDF | `GET …/print-jasper-pdf/{guid}` (back-office) | 403 unless the login also holds the document read permission. |
+| Download an attachment | `GET …/file/{extGuid}` (back-office) | Same. |
+| Create / save / delete | not wired | No control exists. |
+
+The backend has login-entity variants of both the print and the file endpoints (`…/print-jasper-pdf/login-entity-ep/{guid}`, `…/file/login-entity-ep/{extGuid}`); the applet's service carries a comment saying to switch to them "once api endpoint is enhanced" and still calls the back-office pair.
+
+## Related applets
+
+- [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) — the buyer-side applet.
+- [Purchase GRN Stock In (Internal)](/applets/purchase-workflow/internal-purchase-grn-stock-in-applet/) — the document that actually moves the stock.
+- [Purchase Order Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-order-supplier-access-applet/) — the order behind the receipt, in the same portal.
+- [Purchase Invoice Supplier Access (Internal)](/applets/purchase-workflow/internal-purchase-invoice-supplier-access-applet/) — the invoice that follows.
+- [Supplier](/applets/master-data/supplier-applet-1/) — where the login link is created.
+
+## Troubleshooting
+
+| Symptom | Cause | Fix |
+|---|---|---|
+| The listing is empty | No `ACTIVE` supplier link for the login, or every GRN is still DRAFT (the listing pins `posting_statuses = FINAL`) | Check the link in the [Supplier](/applets/master-data/supplier-applet-1/) applet; ask the buyer to finalise. |
+| Searching for **Posting Status** DRAFT / VOID / DISCARDED returns nothing | The search is intersected with the hard-coded `posting_statuses = FINAL` criterion | Expected; only FINAL GRNs are visible in this applet. |
+| **EXPORT AS PDF** returns *not authorised* | The export calls the buyer-side print endpoint, which requires the targeted GRN read permission — the supplier link alone is not enough | Grant the login `TNT_API_DOC_INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE_READ_TGT_GUID` for the relevant companies/branches, or ask the buyer to send the PDF. |
+| The exported PDF looks wrong or fails to render | The print effect names the CP Commerce sales-order print service class for a purchase GRN; only a printable format built for that service will render | Report it; choose a format that renders, or export from the buyer-side applet. |
+| An attachment will not download | Same cause as the export — the file call goes to the buyer-side endpoint | Grant the same read permission, or ask the buyer for the file. |
+| **Branch** or **Purchaser Name** is blank or shows a code | Those cells come from separate applet-login lookups; a failure is caught and its code printed | Confirm the applet is installed for the login (the lookups need the `appletGuid`). |
+| A line field is missing for one role and present for another | A tenant-wide `HIDE_*` setting is on and only some roles hold the matching `SHOW_*` permission | Adjust in **Settings → Field Settings** or **Settings → Role Permission Listing**. |
+| Changing Default Selection has no effect | No create form exists; `DEFAULT_BRANCH` and `DEFAULT_LOCATION` are saved but never read | Expected. |
+
+## Related documentation
+
+- [Purchase GRN (Internal) applet](/applets/purchase-workflow/internal-purchase-grn-applet/)
+- [Purchasing module](/modules-v2/purchasing/)
+- [Supplier applet](/applets/master-data/supplier-applet-1/)
