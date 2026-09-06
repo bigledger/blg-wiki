@@ -41,7 +41,7 @@ Businesses often ask how standard member loyalty differs from **Multi-Level Mark
 
 - **Single-Tier Loyalty:** A member earns points or tier status based solely on their own personal purchases.
 - **Multi-Level Referral (MLM):** Members build hierarchical downline teams (Genealogy Trees). When a downline member makes a purchase, the system calculates multi-tier override points or cash commissions up the sponsor chain.
-- **How BigLedger Handles MLM:** Member referral links and sponsor hierarchies are managed in the [Membership Admin Applet](/applets/membership/membership-admin-applet/), while multi-level override calculations and financial commission payouts integrate directly with the [Commission Scheme Applet](/applets/sales-workflow/commission-scheme-applet/) and [Sales Commission Applet](/applets/sales-workflow/sales-commission-applet/).
+- **How BigLedger Handles MLM:** Member referral links and sponsor hierarchies are managed in the [Membership Admin Applet](/applets/membership/membership-admin-applet/), while multi-level override calculations and financial commission payouts integrate directly with the [Commission Scheme Applet](/applets/membership/commission-scheme-applet/) and [Sales Commission Applet](/applets/sales-workflow/sales-commission-applet/).
 
 ---
 

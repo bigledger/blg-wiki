@@ -1,5 +1,7 @@
 ---
 title: "Recurring Sales Invoice Applet"
+applet_code: "recurringSalesInvoiceApplet"
+applet_repo: "blg-applet-wavelet-recurring-sales-invoice-applet"
 description: "Automated subscription billing and repeating invoice management"
 tags:
 - recurring-invoices

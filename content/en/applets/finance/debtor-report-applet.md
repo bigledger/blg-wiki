@@ -112,7 +112,7 @@ In the product the applet is titled **Debtor Report** and its route root is `app
 | Upstream (settlement) | [Receipt Voucher (Internal)](/applets/finance/internal-receipt-voucher-applet/) | Receipts and their settlement lines feed the Settlement tab, the *AR Transaction Report* and *Collection Invoice with Aging*. |
 | Upstream (master data) | [Entity](/applets/master-data/entity-applet/), [Organisation](/applets/master-data/organisation-applet/) | Customers are entities whose AR/AP type is `AR_TRADE`, `AR_OTHER`, `AR_MERCHANT` or `AR_EMPLOYEE` (on the entity or on its company link); companies and branches are the filters and permission targets. Credit term and credit limit shown on the listings come from the entity. |
 | Sibling reports | [Creditor Report Applet](/applets/finance/creditor-report-applet/), [Debtor and Creditor Report](/applets/finance/debtor-and-creditor-report-applet/), [Sales Report](/applets/sales-workflow/sales-report-applet/) | Same report engine on the payable side; sales analysis by document, item and salesman. |
-| Downstream (reconciliation, commission) | [Financial Report](/applets/finance/financial-report-applet/), [Ledger And Journal](/applets/finance/ledger-and-journal-applet/), [Commission Scheme](/applets/sales-workflow/commission-scheme-applet/) | The customer balances here are the sub-ledger behind the trade-debtor lines of the Balance Sheet; collection-based commission schemes read the same settlements. |
+| Downstream (reconciliation, commission) | [Financial Report](/applets/finance/financial-report-applet/), [Ledger And Journal](/applets/finance/ledger-and-journal-applet/), [Commission Scheme](/applets/membership/commission-scheme-applet/) | The customer balances here are the sub-ledger behind the trade-debtor lines of the Balance Sheet; collection-based commission schemes read the same settlements. |
 
 ## Screens and menus
 
@@ -299,7 +299,7 @@ The Aging Report sends `arap_types = AR_TRADE, AR_OTHER, AR_MERCHANT` (no `AR_EM
 - [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [Sales Credit Note](/applets/sales-workflow/internal-sales-credit-note-applet/), [Sales Debit Note](/applets/sales-workflow/internal-sales-debit-note-applet/), [Sales Return](/applets/sales-workflow/internal-sales-return-applet/) — the documents that carry customer balances.
 - [Entity Applet](/applets/master-data/entity-applet/) — customer master, AR/AP type, credit term and credit limit; [Organisation Applet](/applets/master-data/organisation-applet/) — companies and branches.
 - [Financial Report](/applets/finance/financial-report-applet/), [Ledger And Journal](/applets/finance/ledger-and-journal-applet/) — the GL side to reconcile against.
-- [Sales Report](/applets/sales-workflow/sales-report-applet/) — sales analysis by document, item and salesman; [Commission Scheme](/applets/sales-workflow/commission-scheme-applet/) — collection-based commission reads the same settlements.
+- [Sales Report](/applets/sales-workflow/sales-report-applet/) — sales analysis by document, item and salesman; [Commission Scheme](/applets/membership/commission-scheme-applet/) — collection-based commission reads the same settlements.
 
 ## Troubleshooting
 

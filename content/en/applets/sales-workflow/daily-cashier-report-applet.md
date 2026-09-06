@@ -1,5 +1,7 @@
 ---
-title: "Daily Cashier Report Applet"
+title: "Daily Cashier Reports"
+applet_code: "dailyCashierReports"
+applet_repo: "blg-applet-wavelet-daily-cashier-reports-applet"
 description: "A simple tool to track your daily collections and end-of-day sales summaries"
 weight: 60
 tags:
@@ -80,4 +82,4 @@ The **Z-Report** is your final end-of-day summary. It shows your total sales, an
 
 ## Related Guides
 - **[POS General Applet](/applets/sales-workflow/pos-general-applet/)** - The main tool for making sales
-- **[Accounting Vaults](/applets/cashbook-applet/)** - Where your sales data is automatically recorded
+- **[Accounting Vaults](/applets/master-data/cashbook-applet/)** - Where your sales data is automatically recorded

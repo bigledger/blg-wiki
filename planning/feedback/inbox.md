@@ -1313,3 +1313,176 @@ same pass under ADR-0008; the rest are open.*
   2. **Inline SVG in a Hugo shortcode** for the few that need real art direction — we already ship `layouts/shortcodes/platform-map.html` and `einvoice-flow.html` this way, using `currentColor` so they work in both light and dark themes.
   **Not** raster for diagrams, and **not** canvas/WebGL 3D: it does not print, is not indexed by search or by AI crawlers (which the GEO work in ADR-0005 cares about), is not accessible, and cannot be reviewed in a diff.
   **The distinction that matters:** *diagrams* become vector; *screenshots* stay raster, because a screen capture cannot be vectorised. Screenshots get the other discipline instead — the privacy rules, and the staleness rule from F-0271 (a screenshot of a removed menu is a factual error).
+
+### images — mermaid conversion pilot (2026-09-06)
+- [ ] F-0391 (2026-09-06) **Five generated infographics converted; all five asserted something source
+  contradicts.** Pilot for F-0380 / F-0381 — full claim-verification tables, per-diagram, in
+  `planning/drafts/2026-09-06-mermaid-conversion-pilot.md`. Converted to mermaid fences (native
+  Hextra render, no library, diff-reviewable, theme-safe):
+  `/applets/inventory-workflow/stock-availability-applet/` (how Available Qty is really computed),
+  `/applets/inventory-workflow/stock-adjustment-applet/` (DRAFT → FINAL lifecycle),
+  `/applets/master-data/chart-of-account-applet/` (chart / company / ledger / fiscal-year structure),
+  `/applets/purchase-workflow/internal-purchase-order-applet/` (the procurement chain, and that a PO
+  posts nothing). The fifth, `/applets/inventory-workflow/driver-delivery-order-applet/`, was replaced
+  with **nothing** — it was a "chaos vs solution" marketing split and the page already carries a real
+  screenshot of the listing on the next line. The false claims that did **not** survive into the
+  replacements: "Available = Physical − Reserved" (it is Stock Balance + a *signed* Adj Qty whose
+  backend default includes a **+1** goods-received-note term, `StockAvailabilityService.java:29-42`);
+  a stock-adjustment "Review & Approval Workflow" (there is no approval anything in that applet — the
+  only match on the word is a copy-pasted spec importing a component that does not exist); three
+  adjustment types (there are two, Adjust-In / Adjust-Out); "dead stock 90+ days" (buckets are
+  0-30/31-60/61-120/rest or months 1-6/rest); "enforce FIFO" (FIFO is a *cost column*, the applet is
+  read-only and creates nothing); Chart of Account "role-based access" (the applet registers **no**
+  permission definitions at all); driver "custom delivery statuses" and "real-time syncing" (Custom
+  Status is saved and read by nothing; there is no app). Page edits done; the six image files are
+  listed for quarantine but **not deleted** — that is F-0393.
+      → note: `tests/content-lint.sh` passes; all four fences validated with `mermaid.parse()` and
+        rendered at `theme: default` and `theme: dark` — no truncation, legible in both.
+      → note: `content/en/applets/inventory-workflow/inv-item-maintenance-applet.md:157-158` hard-codes
+        `fill:#f9f` / `fill:#bbf` in an existing mermaid block, which is unreadable in dark mode. Not
+        touched in this pass; worth a one-line fix when someone is next in that file.
+- [ ] F-0392 (2026-09-06) **A generated infographic invented a product and published its logo.**
+  `static/images/driver-delivery-applet/driver-delivery-order-overview-infographic.png` carries a
+  designed brand lockup at the bottom centre reading **"DELIVERYCONNECT APPLET — Empowering Your
+  Logistics"**. There is no such product, applet, module or brand in BigLedger; the applet is
+  `driverDeliveryOrderApplet`, "Driver Delivery Order". It was live on the English, **Malay and
+  Chinese** pages (all three references now removed). This is a class F-0353 did not anticipate: the
+  generator did not only overstate features, it minted a product identity and drew a logo for it.
+  **The other ~70 generated images have not been checked for invented brand marks, product names or
+  logos** — that check is cheap (look at the bottom strip of each canvas) and should happen before
+  any of them are redrawn.
+- [ ] F-0393 (2026-09-06) **Six retired infographics are still on the CDN.** Removing a `figure`
+  reference does not unpublish the file. Awaiting quarantine (listed, deliberately not deleted, per
+  F-0380): `stock-availability-applet/stock-availability-infographic.jpg`,
+  `stock-availability-applet/stock-availability-overview-infographic.png`,
+  `stock-adjustment-applet/stock-adjustment-overview-infographic.png`,
+  `chart-of-account-applet/chart-of-account-applet-overview-infographic.png`,
+  `internal-purchase-order-applet/internal-purchase-order-overview-infographic.png`,
+  `driver-delivery-applet/driver-delivery-order-overview-infographic.png` (all under `static/images/`).
+      → note: `stock-availability-overview-infographic.png` — the one F-0380 quotes — was **already
+        referenced by no page** and has been reachable by URL anyway. A sweep for the other orphaned
+        generated images is worth doing at the same time: 75 exist, 58 were referenced.
+
+### /applets/sales-workflow/internal-sales-grn-applet/
+- [x] F-0403 (2026-09-06) Found by the sales-workflow lane sweep, not reported by Vincent: the page's
+      whole premise was wrong. It promised "inventory precision", "real-time stock movements as goods
+      are returned to warehouse locations", costing reconciliation "using MAUC, FIFO, or manual cost
+      methods", and finance teams "reconciling returns against posted invoices with precision".
+      `INTERNAL_SALES_GOODS_RECEIVED_NOTE` has quantity signum 0 and amount signum 0
+      (`InternalSalesGoodsReceivedNoteDataConsistencyObject.java:17-18`, `ServerDocTypes.java:30`,
+      and the applet's own `applet-constants.ts`) and has no entry in `JournalPostingTypeHandler`.
+      It moves no stock and posts no journal. The page also claimed screens the applet does not have
+      ("Return Tracking") and a VOID that does not exist anywhere in the repo.
+      → source: content/en/applets/sales-workflow/internal-sales-grn-applet.md
+      → done: rebuilt from source this pass (1,090 → 286 lines), with a per-section `sources:` map,
+        the fixed posting-proof block, the 21 seeded client-side permissions, and the real DRAFT→FINAL
+        lifecycle. Product defects split out as P-0105, P-0106, P-0107.
+
+### /applets/sales-workflow/internal-sales-gin-applet/
+- [x] F-0404 (2026-09-06) Same class as F-0403. The page said a GIN "confirms stock is leaving",
+      "records goods leaving for the sale", and that Branch and Location "control where stock issues
+      from"; its FAQ hedged with "exact stock ledger timing is defined by your ERP configuration".
+      `INTERNAL_SALES_GOODS_ISSUED_NOTE` is 0/0 (`InternalSalesGoodIssuedNoteDataConsistencyObject.java:16-17`
+      and the applet's `applet-constants.ts`) with no journal posting handler. Nothing happens on FINAL
+      beyond the status change.
+      → source: content/en/applets/sales-workflow/internal-sales-gin-applet.md
+      → done: eleven statements corrected this pass, a posting-proof callout added naming
+        `INTERNAL_SALES_GIN_STOCK_OUT` as the type that does move stock, and a `sources: lifecycle:`
+        map added. The rest of the page (screens, fields, procedures) is still unaudited.
+
+### /applets/sales-workflow/commission-scheme-applet/
+- [x] F-0405 (2026-09-06) Duplicate page. `Commission_Scheme` already has a fully sourced page at
+      /applets/membership/commission-scheme-applet/, which is also the registry's own
+      `documentation_url` target. This 598-line copy had no `applet_code`, no `sources:` map and a
+      title that was not the registry name.
+      → done: archived to planning/archive/2026-09-06-sales-workflow/, worklog entry
+        planning/worklog/2026-09-06-sales-workflow-commission-scheme-duplicate.md, alias added to the
+        membership page, four inbound links repointed.
+
+### /applets/sales-workflow/ (folder-wide)
+- [x] F-0406 (2026-09-06) Registry triage of all 30 pages: 20 carried no `applet_code`, so none had
+      ever been checked against `bl_applet_hdr`. Nine titles were not the registry name — "Daily
+      Cashier Report Applet" (registry: Daily Cashier Reports), "Consignment Billing (Internal)
+      Applet" (Consignment Billing Applet (Internal)), "Jobsheet (Internal) Applet" (Job Sheet
+      (Internal)), "Sales Inquiry (Internal) Applet", "Sales Proforma Invoice (Internal) Applet",
+      "Sales Refund Note (Internal) Applet" (Sales Refund Note Applet (Internal)), "Sales GRN
+      (Internal) Applet", "Sales Commission (Internal) Applet" (Sales Commission Applet), "Sales
+      Report Supplier Access Applet" (Sales Report Supplier Access), "Delivery Order (Internal)
+      Applet" (Delivery Order Applet (Internal)).
+      → done: `applet_code`, `applet_repo` and the registry title set on twelve pages this pass
+        (ADR-0002 §2/§3). Note for future units: three applets ship a **later** bundle than the base
+        repo name suggests — `internalSalesRefundNoteApplet` serves
+        `internal-sales-refund-note-applet-**v3**`, while `internalSalesProformaInvoiceApplet` and
+        `recurringSalesInvoiceApplet` serve the **v1** bundles even though v2 repos exist. Read
+        `property_json->>'es_module_url'` before choosing a repo to document from.
+
+- [ ] F-0407 (2026-09-06) Four pages document applets with **no `bl_applet_hdr` row at all**:
+      internal-sales-gin-stock-out-applet, internal-sales-invoice-no-stock-out-applet,
+      internal-delivery-order-processing-applet, internal-outbound-delivery-order-applet (22 inbound
+      links). All four repos are maintained. **Deliberately left live** pending Q-0093 — ADR-0007 is
+      still `proposed`, and taking four more pages down under a proposed ADR (on top of the
+      commission-scheme archive) reaches the ADR-0008 five-page guard rail. Spot-checking found their
+      *content* is broadly right — the gin-stock-out page correctly says FINAL reduces stock, which
+      matches `InternalSalesGinStockOutDataConsistencyObject` (qty −1) — which is itself evidence
+      that this is a registration gap rather than invented documentation.
+      → source: content/en/applets/sales-workflow/{internal-sales-gin-stock-out,internal-sales-invoice-no-stock-out,internal-delivery-order-processing,internal-outbound-delivery-order}-applet.md
+
+### /applets/sales-workflow/internal-sales-invoice-no-stock-out-applet/
+- [ ] F-0408 (2026-09-06) "A standard invoice automatically generates a Goods Issue Note, deducts
+      stock from the issuing location, and notifies the warehouse via a picking list." The first two
+      clauses are wrong in the same direction as F-0403/F-0404: `INTERNAL_SALES_INVOICE` carries
+      quantity signum −1 itself (`InternalSalesInvoiceDataConsistencyObject.java:17`), so the invoice
+      deducts stock directly; and Sales GIN is 0/0, so a GIN could not deduct anything even if one
+      were generated. The contrast the paragraph is drawing is real (`…NoStockOut` is amt +1 / qty 0);
+      only the mechanism is invented.
+      → source: content/en/applets/sales-workflow/internal-sales-invoice-no-stock-out-applet.md:76
+      → note: hold until Q-0093 settles whether this page stays at all.
+
+### wiki assets — screenshots
+- [ ] F-0409 (2026-09-06) Screenshots on sales-workflow pages that need a quarantine decision.
+      Checked by eye this pass; not deleted (that is not this unit's call):
+      • /images/internal-sales-grn-applet/main-details.png — Branch reads `05SS | ONE LIVING SS2`,
+        which looks like a real customer's branch, not test data.
+      • /images/internal-sales-grn-applet/tab-lines.png — item grid shows `Digi External Item`
+        (a real customer brand that also has its own applets in the registry) and several
+        `kawsar Test …` items carrying a developer's given name.
+      • Pattern, not specific to this folder: every akaun screenshot in the applet pages carries a
+        real person's **profile photograph** in the top-right avatar. It is small but it is a
+        photograph of an identifiable person on a public site. Worth one decision for the whole wiki
+        rather than page by page.
+      → note: all three are STAGING_TENANT captures, so the risk is names and brands rather than
+        customer transaction data.
+
+### /applets/sales-workflow/internal-jobsheet-applet/
+- [x] F-0410 (2026-09-06) Third page in this folder built on the same invented premise. It said the
+      Lines tab "deducts stock from inventory if physical parts are used", that FINAL means "any
+      stock-tracked line items are deducted from inventory at this point", and that the Delivery
+      Details tab ensures "inventory deductions are traceable". `INTERNAL_JOBSHEET` is
+      `(0,0)` — `ServerDocTypes.java:66`, `InternalJobsheetDataConsistencyObject.java:16-17`, and the
+      applet's own `applet-constants.ts` — with no `JournalPostingTypeHandler` entry. No stock, no
+      journal. It also said "the Finance team converts the Jobsheet into a Sales Invoice. The line
+      items, account details, and pricing flow directly from the Jobsheet into the Invoice" — the
+      Convert tab's one button is labelled *CONVERT TO INTERNAL RECEIPT VOUCHER* and does neither
+      (P-0108). And it framed FINAL as "approve the jobsheet for processing by the finance
+      department"; per `kb/topics/document-approval.md` there is no approval engine for this document,
+      and the applet's own `APPROVAL_CODE` settings are **card authorisation codes** on the Payment
+      tab, not document approvals.
+      → source: content/en/applets/sales-workflow/internal-jobsheet-applet.md
+      → done: rebuilt from source this pass (719 → 290 lines) with a per-section `sources:` map, the
+        real twelve-tab inventory, the 72-of-127 settings intersection, the seeded-vs-checked
+        permission diff, and the posting-proof block. Product defects split out as P-0108, P-0109,
+        P-0110.
+      → note: the rebuild references one screenshot
+        (`/images/internal-jobsheet-applet/internal-jobsheet-main-details-tab.png`, verified clean).
+        The other twelve images in that folder — including two NotebookLM-watermarked infographics —
+        are now unreferenced. Not deleted; they illustrate behaviour the page no longer claims, so
+        they should not simply be re-linked.
+
+### /applets/sales-workflow/ (link repairs)
+- [x] F-0411 (2026-09-06) Eight broken internal links found while sweeping the folder, all
+      pre-existing: seven used a `/en/…` prefix (Hugo serves English at the root, so `/en/applets/…`
+      404s) on internal-sales-gin-stock-out-applet and internal-sales-inquiry-applet, and one pointed
+      at `/applets/cashbook-applet/` instead of `/applets/master-data/cashbook-applet/` on
+      daily-cashier-report-applet. Only two files in all of `content/en` carried the `/en/` bug and
+      both were in this folder.
+      → done: all eight repaired this pass. The folder now has zero broken internal links.

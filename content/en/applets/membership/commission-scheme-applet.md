@@ -96,6 +96,8 @@ tags:
 - sales-group
 - mlm
 weight: 20
+aliases:
+  - /applets/sales-workflow/commission-scheme-applet/
 ---
 
 ## Overview

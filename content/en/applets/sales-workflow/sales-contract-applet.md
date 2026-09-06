@@ -1,5 +1,7 @@
 ---
 title: "Sales Contract Applet"
+applet_code: "salesContractApplet"
+applet_repo: "blg-applet-wavelet-sales-contract-applet"
 description: "Comprehensive management system for formal sales agreements, contract templates, and legalized customer commitment tracking"
 tags:
 - sales-workflow

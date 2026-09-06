@@ -124,3 +124,23 @@ Three lanes independently converged on the same facts on 2026-09-05. Use them; d
     documenting any toggle.
 30. Budget: ~4–5 large document applets per run is the realistic pace with this depth. Small
    master-data or report applets go faster. Stop cleanly; never rush the Configuration section.
+31. **Check `property_json->>'es_module_url'` before choosing a repo to read** (sales-workflow sweep,
+    2026-09-06). Repo name ≠ shipped bundle. `internalSalesRefundNoteApplet` serves
+    `internal-sales-refund-note-applet-**v3**` while `refs/` holds v1, v2 and v3;
+    `internalSalesProformaInvoiceApplet` and `recurringSalesInvoiceApplet` each serve the **v1**
+    bundle although a v2 repo exists. A bundle served from a **customer-namespaced** prefix
+    (not `bigledger/wavelet-erp/…`) is an exclusion-list candidate, not a documentation gap.
+32. **Every applet restates its own signums** in `src/app/models/constants/applet-constants.ts`
+    (`docType`, `amount_signum`, `quantity_signum`). One line, and it agreed with the backend DCO in
+    every case checked. Use it as the first check, then confirm against the DCO and `ServerDocTypes`.
+33. **The plain GIN/GRN family is 0/0 on both sides** — extends §14 and §22. `INTERNAL_SALES_GOODS_ISSUED_NOTE`,
+    `INTERNAL_SALES_GOODS_RECEIVED_NOTE` and `INTERNAL_PURCHASE_GOODS_ISSUED_NOTE` all carry quantity
+    signum 0, amount signum 0, and none appears in `JournalPostingTypeHandler`. The stock-moving
+    variants are separate document types (`INTERNAL_SALES_GIN_STOCK_OUT` qty −1,
+    `INTERNAL_SALES_GRN_STOCK_IN` qty +1) whose applets are **not in the registry** (Q-0093).
+    Any page saying "GIN reduces stock" or "GRN restocks the item" is wrong for the registered applet.
+    See `kb/topics/sales-gin-grn-no-ledger-effect.md`.
+34. **Front-matter extraction breaks on the UTF-8 BOM.** Many pages under `content/en/applets/` begin
+    with `\xef\xbb\xbf---`, so `awk '/^---$/{n++}'` silently reports "no front matter" and a triage
+    sweep under-counts. Strip the BOM first (`sed 's/^\xef\xbb\xbf//'`) or the registry audit will
+    invent gaps that are not there.

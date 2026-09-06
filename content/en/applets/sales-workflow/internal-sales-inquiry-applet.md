@@ -1,5 +1,7 @@
 ---
-title: "Sales Inquiry (Internal) Applet"
+title: "Sales Inquiry (Internal)"
+applet_code: "internal_sales_inquiry_applet"
+applet_repo: "blg-applet-wavelet-internal-sales-inquiry-applet"
 description: "Capture and manage internal sales inquiries with customer and line-item detail, posting controls, export, conversion to receipt voucher, and a dedicated line-items workspace."
 tags:
 - sales-workflow
@@ -515,7 +517,7 @@ When you select a customer on the **Account** tab, you can optionally link a **M
 
 ## Related Applets
 
-- **[Internal Sales Quotation Applet](/en/applets/sales-workflow/internal-sales-quotation-applet/)** — Upstream: when an inquiry is approved or pricing is firm, create or convert into a formal quotation for customer approval. Use the quotation applet to generate customer-facing proposals and route for approvals if required.
-- **[Internal Sales Order](/en/applets/sales-workflow/internal-sales-order-applet/)** — Downstream: once pricing and delivery are confirmed (often after a quotation), raise a sales order to start fulfilment and warehouse processes. The sales order drives pick/pack and delivery workflows.
-- **[Internal Sales Invoice (Internal) Applet](/en/applets/sales-workflow/internal-sales-invoice-applet/)** — Downstream billing: after goods or services are fulfilled, invoices are raised here to post revenue and create accounting entries. The invoice applet is the final financial posting step in the order-to-cash sequence.
+- **[Internal Sales Quotation Applet](/applets/sales-workflow/internal-sales-quotation-applet/)** — Upstream: when an inquiry is approved or pricing is firm, create or convert into a formal quotation for customer approval. Use the quotation applet to generate customer-facing proposals and route for approvals if required.
+- **[Internal Sales Order](/applets/sales-workflow/internal-sales-order-applet/)** — Downstream: once pricing and delivery are confirmed (often after a quotation), raise a sales order to start fulfilment and warehouse processes. The sales order drives pick/pack and delivery workflows.
+- **[Internal Sales Invoice (Internal) Applet](/applets/sales-workflow/internal-sales-invoice-applet/)** — Downstream billing: after goods or services are fulfilled, invoices are raised here to post revenue and create accounting entries. The invoice applet is the final financial posting step in the order-to-cash sequence.
 

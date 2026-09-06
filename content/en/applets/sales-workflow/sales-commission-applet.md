@@ -1,5 +1,7 @@
 ---
-title: "Sales Commission (Internal) Applet"
+title: "Sales Commission Applet"
+applet_code: "salesCommissionApplet"
+applet_repo: "blg-applet-wavelet-internal-sales-commission-applet"
 description: "Comprehensive reporting and payout processing engine for calculating, analyzing, and disbursing sales performance commissions."
 weight: 160
 tags:

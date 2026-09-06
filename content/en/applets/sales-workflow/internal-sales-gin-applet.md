@@ -1,6 +1,14 @@
 ---
 title: "Sales GIN (Internal)"
-description: "User guide for the Internal Sales GIN applet: record stock leaving for internal sales, create and edit goods issue notes, settlement, and posting with SAVE and FINAL."
+applet_code: "internalSalesGINApplet"
+applet_repo: "blg-applet-wavelet-internal-sales-gin-applet"
+sources:
+  lifecycle:
+    - blg-applet-wavelet-internal-sales-gin-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-gin-applet/src/app/models/constants/applet-constants.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalSalesGoodIssuedNoteDataConsistencyObject.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalSalesGinStockOutDataConsistencyObject.java
+description: "Reference for the Sales GIN (Internal) applet: record a goods issue note against an internal sale, with lines, settlement and contra. The document carries no stock movement and no journal."
 tags:
 - internal-sales-gin
 - gin
@@ -15,7 +23,17 @@ draft: false
 
 ## Purpose and overview {#purpose-and-overview}
 
-**Sales GIN (Internal)** is where you record a **Goods Issue Note (GIN)**—the document that confirms **stock is leaving** a branch or location for an internal sales fulfilment flow.
+**Sales GIN (Internal)** is where you record a **Goods Issue Note (GIN)** against an internal sale: which customer, which items, from which branch and location.
+
+{{< callout type="warning" >}}
+**This document does not move stock and does not post a journal.** Its server document type is
+`INTERNAL_SALES_GOODS_ISSUED_NOTE`, whose quantity signum and amount signum are both **0**
+(`InternalSalesGoodIssuedNoteDataConsistencyObject.java:16-17`, and the applet's own
+`applet-constants.ts`), and the type has no entry in `JournalPostingTypeHandler`. **FINAL** sets the
+posting status and changes nothing in the stock ledger or the general ledger. The sales-side
+document type that does move stock out is `INTERNAL_SALES_GIN_STOCK_OUT` (quantity signum −1),
+which is a different document handled by a different applet.
+{{< /callout >}}
 
 The window title is **Internal Sales GIN Applet**. The listing screen is **Internal Sales GIN Listing**.
 
@@ -30,11 +48,11 @@ The window title is **Internal Sales GIN Applet**. The listing screen is **Inter
 | Pre-sales / quote | [Sales Inquiry (Internal)](/applets/sales-workflow/internal-sales-inquiry-applet/) | Optional upstream context |
 | Customer order | [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/) | Optional **KO …** source for lines on **Select Item** |
 | Delivery / fulfilment | Delivery order documents in your setup | Optional **KO by/for Delivery Order Item** on **Select Item** |
-| **Stock issue** | **Sales GIN (this applet)** | **Records goods leaving** for the sale |
+| **Issue record** | **Sales GIN (this applet)** | Records the issue as a document. Moves no stock, posts no journal. |
 | Billing | [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/) | Receivables and tax presentation—separate from GIN |
 | Returns | [Sales Return (Internal)](/applets/sales-workflow/internal-sales-return-applet/) | When goods come back after a sale |
 
-**GIN vs invoice:** This applet is about **operational stock issue**. A sales invoice is about **billing**. Your organisation may use GIN before invoice, after invoice, or only one of them—follow your internal procedure.
+**GIN vs invoice:** This applet records the operational fact of an issue. A sales invoice is about **billing** — and, unlike the GIN, a sales invoice does move stock (quantity signum −1) and does post a journal. Your organisation may use GIN before invoice, after invoice, or only one of them; follow your internal procedure.
 
 ### Where to work in the menu
 
@@ -48,7 +66,7 @@ The window title is **Internal Sales GIN Applet**. The listing screen is **Inter
 
 ## Before you begin {#before-you-begin}
 
-- You need **customers**, **items**, **branches**, and **locations** in master data; **Branch** and **Location** on **Main Details** control where stock issues from.
+- You need **customers**, **items**, **branches**, and **locations** in master data; **Branch** and **Location** on **Main Details** record where the issue is booked.
 - **Credit Terms** and **Due Date** on **Main Details** depend on the customer: select **Entity ID** on **Account** → **Entity Details** first.
 - **Member Card** links the document to a membership record—click the field to open member selection. See **[Membership Admin Applet](/applets/membership/membership-admin-applet/)** for card setup. The applet may require this field before **CREATE** / **SAVE**—ask your **administrator** if your shop should treat it as optional.
 - **Who may create or post** is controlled by **permissions** and company policy.
@@ -57,7 +75,7 @@ The window title is **Internal Sales GIN Applet**. The listing screen is **Inter
 {{< callout type="warning" >}}
 **Before you post**
 
-- **FINAL** (on the edit screen or listing) **posts** the GIN—warehouse and finance should agree the issue is correct first.
+- **FINAL** (on the edit screen or listing) locks the GIN by setting its posting status. It writes no stock and no journal — see the callout above.
 - **Multi-select FINAL** on the listing posts **every selected draft** in one action; there is no undo on that screen.
 - **CREATE** / **SAVE** need valid **Main Details**, **Account** (entity), and **at least one line** on **Lines**.
 - If **Settlement**, **Department Hdr**, price columns, or tabs are missing, your administrator may have hidden them—do not assume you are on the wrong screen.
@@ -202,7 +220,7 @@ On **Create Internal Sales GIN**, open **Main Details** first.
 
 **Fields to complete:**
 
-- **Branch** and **Location** — Where stock issues from (**warehouse:** verify before **FINAL**).
+- **Branch** and **Location** — Where the issue is booked (**warehouse:** verify before **FINAL**; note that no stock ledger entry follows).
 - **Sales Agent**
 - **Member Card** — Click to open member selection; see [Membership Admin Applet](/applets/membership/membership-admin-applet/).
 - **Transaction Date**, **Credit Terms**, **Due Date**, **Reference**, **Remarks**, **Currency**, document numbers when shown.
@@ -347,7 +365,7 @@ If **Settlement** or **Department Hdr** is missing, ask your administrator to re
 
 ### What is the difference between a GIN and a sales invoice? {#faq-gin-vs-invoice}
 
-A **GIN** records **stock leaving** for fulfilment. A **sales invoice** records **billing**. See [Where GIN fits in the sales workflow](#purpose-and-overview).
+A **GIN** records the issue as a document but moves no stock. A **sales invoice** records **billing** and does move stock out. See [Where GIN fits in the sales workflow](#purpose-and-overview).
 
 ### Do I need a sales order before I can create a GIN? {#faq-sales-order}
 
@@ -371,7 +389,7 @@ Your administrator may have hidden them (**HIDE_SETTLEMENT_TAB** / **HIDE_DEPART
 
 ### What happens to stock when I click FINAL? {#faq-stock}
 
-**FINAL** sends posting to the server. Exact stock ledger timing is defined by your ERP configuration—treat **FINAL** as the business post point and confirm with warehouse or finance.
+**Nothing.** `INTERNAL_SALES_GOODS_ISSUED_NOTE` has quantity signum 0, so no `bl_inv_txn_line` is written, and the type has no journal posting handler, so no journal is produced. FINAL only changes `posting_status` from DRAFT to FINAL.
 
 ### Does listing FINAL replace edit FINAL? {#faq-listing-vs-edit-final}
 
@@ -391,9 +409,9 @@ Use **[My E-Invoice Admin Applet](/applets/e-invoice/my-e-invoice-admin-applet/)
 
 | Term | Meaning in this guide |
 |------|------------------------|
-| **GIN** | **Goods issue note** for internal sales: stock leaving toward fulfilment. |
+| **GIN** | **Goods issue note** for internal sales: a record of an issue. Carries no stock or ledger effect. |
 | **KO (knock-off)** | On **Select Item**, **KO by …** / **KO for …** pulls lines from an existing document automatically. |
-| **Posting status** | **DRAFT** (in progress) versus **FINAL** (posted). |
+| **Posting status** | **DRAFT** (in progress) versus **FINAL** (locked). "Posted" here means the status changed, not that anything reached a ledger. |
 | **Settlement** | Payment or allocation lines on the GIN when your organisation uses that tab. |
 | **Doc Link** | **Copied From** / **Copied To** trace of linked documents—usually auto-created from KO lines. |
 | **UOM** | Unit of measure on a line. |

@@ -1,5 +1,7 @@
 ---
-title: "Consignment Billing (Internal) Applet"
+title: "Consignment Billing Applet (Internal)"
+applet_code: "internalConsignmentBillingApplet"
+applet_repo: "blg-applet-wavelet-internal-consignment-billing-applet"
 description: "Comprehensive financial system for converting consignment stock issues into final sales invoices and financial settlements"
 tags:
 - sales-workflow

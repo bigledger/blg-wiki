@@ -1,5 +1,7 @@
 ---
-title: "Sales Report Supplier Access Applet"
+title: "Sales Report Supplier Access"
+applet_code: "SalesReportSupplierAccess"
+applet_repo: "blg-applet-wavelet-sales-report-supplier-access-applet"
 description: "Empower suppliers with real-time visibility into sales performance, inventory turnover, and branch-specific insights."
 tags:
   - sales-reporting

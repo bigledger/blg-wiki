@@ -1,5 +1,7 @@
 ---
-title: "Sales Refund Note (Internal) Applet"
+title: "Sales Refund Note Applet (Internal)"
+applet_code: "internalSalesRefundNoteApplet"
+applet_repo: "blg-applet-wavelet-internal-sales-refund-note-applet-v3"
 description: "Comprehensive workflow for managing customer refunds, returns, LHDN E-Invoice credit notes, PNS vs STL amount balancing, and payment adjustments."
 weight: 120
 tags:

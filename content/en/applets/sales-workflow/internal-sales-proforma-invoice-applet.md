@@ -1,5 +1,7 @@
 ---
-title: "Sales Proforma Invoice (Internal) Applet"
+title: "Sales Proforma Invoice (Internal)"
+applet_code: "internalSalesProformaInvoiceApplet"
+applet_repo: "blg-applet-wavelet-internal-sales-proforma-invoice-applet"
 description: "Comprehensive internal billing management system for creating, editing, and tracking sales proforma invoices and line items"
 tags:
   - proforma-invoice

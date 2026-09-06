@@ -20,7 +20,7 @@ The Membership Module flexibly supports diverse loyalty and member referral mode
 
 **Business Scenario:** A direct-selling network marketing company organizes members into sponsor downline genealogies, awarding referral bonus points and multi-tier cash override commissions.
 
-- **Primary Applets:** [Membership Admin Applet](/applets/membership/membership-admin-applet/), [Commission Scheme Applet](/applets/sales-workflow/commission-scheme-applet/), [Sales Commission Applet](/applets/sales-workflow/sales-commission-applet/)
+- **Primary Applets:** [Membership Admin Applet](/applets/membership/membership-admin-applet/), [Commission Scheme Applet](/applets/membership/commission-scheme-applet/), [Sales Commission Applet](/applets/sales-workflow/sales-commission-applet/)
 - **Operational Flow:** Member registers new downline members using unique referral IDs → downline purchase executed → Membership Admin tracks referral genealogy → Commission Scheme engine calculates multi-tier override payouts.
 
 ---

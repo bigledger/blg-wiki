@@ -1,1090 +1,286 @@
 ---
-title: "Sales GRN (Internal) Applet"
-description: "Comprehensive goods return management system for recording customer returns, managing settlements, and reconciling inventory against internal sales transactions"
+title: "Sales GRN (Internal)"
+description: "Reference for the Sales GRN (Internal) applet: record a goods return note against an internal sale, with line-item, settlement and contra detail. The document carries no stock movement and no journal — the stock-moving counterpart is a separate document type."
+applet_code: "internalSalesGRNApplet"
+applet_repo: "blg-applet-wavelet-internal-sales-grn-applet"
+page_type: applet
+modules: [inventory, financial-accounting, sales-crm]
+related_applets: [internal-sales-gin-applet, internal-sales-return-applet, internal-sales-invoice-applet, internal-sales-order-applet, internal-jobsheet-applet, internal-sales-credit-note-applet, customer-applet, inv-item-maintenance-applet, chart-of-account-applet, organisation-applet]
+guides: []
+sources:
+  configuration:
+    - blg-applet-wavelet-internal-sales-grn-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-grn-applet/src/app/app.routing.ts
+    - blg-applet-wavelet-internal-sales-grn-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-grn-applet/src/app/models/menu-items.ts
+    - blg-applet-wavelet-internal-sales-grn-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-grn-applet/src/app/models/applet-settings.model.ts
+    - blg-applet-wavelet-internal-sales-grn-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-grn-applet/src/app/components/settings-container/default-settings/default-settings.component.html
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.ts (tabMappings, getTabValue)
+    - blg-shared-utilities/modules/permission/field-configuration/field-configuration/field-configuration.component.html
+  fields:
+    - blg-applet-wavelet-internal-sales-grn-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-grn-applet/src/app/components/internal-sales-grn-container/internal-sales-grn-create/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-sales-grn-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-grn-applet/src/app/components/internal-sales-grn-container/internal-sales-grn-create/main-details/main-details.component.html
+    - blg-applet-wavelet-internal-sales-grn-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-grn-applet/src/app/components/internal-sales-grn-container/internal-sales-grn-create/internal-sales-grn-create.component.ts
+    - blg-applet-wavelet-internal-sales-grn-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-grn-applet/src/app/components/internal-sales-grn-container/internal-sales-grn-create/add-line-item/add-line-item.component.ts
+  lifecycle:
+    - blg-applet-wavelet-internal-sales-grn-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-grn-applet/src/app/models/constants/applet-constants.ts
+    - blg-applet-wavelet-internal-sales-grn-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-grn-applet/src/app/components/internal-sales-grn-container/internal-sales-grn-listing/internal-sales-grn-listing.component.ts
+    - blg-applet-wavelet-internal-sales-grn-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-grn-applet/src/app/components/internal-sales-grn-container/internal-sales-grn-edit/internal-sales-grn-edit.component.ts
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/validator/FinancialDocDataConsistencyObject/InternalSalesGoodsReceivedNoteDataConsistencyObject.java
+    - blg-akaun-platform-java/client-sdk/src/main/java/com/bigledger/core2/dal/table/ServerDocTypes.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/JournalPostingTypeHandler.java
+    - blg-akaun-platform-java/javasdk/src/main/java/com/bigledger/core2/domain/tenant/GenericDocumentTypeHandler.java
+  troubleshooting:
+    - blg-applet-wavelet-internal-sales-grn-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-grn-applet/src/app/components/internal-sales-grn-container/internal-sales-grn-create/main-details/main-details.component.ts
+    - blg-applet-wavelet-internal-sales-grn-applet/micro-fe/projects/wavelet-erp/applets/internal-sales-grn-applet/src/app/components/internal-sales-grn-container/internal-sales-grn-edit/internal-sales-grn-edit.component.ts
 tags:
 - grn
 - goods-return-note
 - sales-returns
-- inventory-management
-- settlement
-- contra
 - customer-returns
-- warehouse-operations
 weight: 125
 date: 2026-04-06
-lastmod: 2026-06-24
+lastmod: 2026-09-06
 draft: false
 ---
 
-## Purpose and Overview
+## Overview
 
-The **Sales GRN (Internal) Applet** is a powerful tool designed to streamline the entire goods return process. It moves beyond simple stock reinstatement by integrating settlement management, contra document linking, and serial/batch/bin-level inventory tracking.
+**Sales GRN (Internal)** records a goods return note raised against an internal sale: which customer
+is returning, which items and quantities, and — where your process uses them — a settlement line and
+a contra link to the original document. It is the sales-side mirror of Purchase GRN.
+
+{{< callout type="warning" >}}
+**This document does not move stock and does not post a journal.** Its server document type is
+`INTERNAL_SALES_GOODS_RECEIVED_NOTE`, whose quantity signum and amount signum are both **0**, and the
+type has no entry in the journal posting handler. Setting a GRN to **FINAL** changes its posting
+status and nothing else in the ledgers. If you need returned goods to come back into stock and the
+receivable to be reduced, that happens on a different document — see
+[What FINAL actually does](#lifecycle-and-effects).
+{{< /callout >}}
+
+## Where it fits
+
+| | Document | What it does |
+|---|---|---|
+| Upstream | [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/), [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/), [Jobsheet (Internal)](/applets/sales-workflow/internal-jobsheet-applet/) | The sale the return is raised against. Lines can be pulled from these on the **Select Item** panel. |
+| This applet | **Sales GRN (Internal)** | Records the return. No stock movement, no journal. |
+| Counterpart | [Sales GIN (Internal)](/applets/sales-workflow/internal-sales-gin-applet/) | The outbound twin, also 0/0. |
+| Where stock and money actually move | [Sales Return (Internal)](/applets/sales-workflow/internal-sales-return-applet/), [Sales Credit Note (Internal)](/applets/sales-workflow/internal-sales-credit-note-applet/) | Sales Return brings goods back into stock and reverses the sale; the credit note reduces the receivable. |
+
+## Screens and menus
+
+The applet's left menu has three entries — there are no others:
+
+| Menu item | Route | What it shows |
+|---|---|---|
+| **Internal Sales GRN** | `internal-sales-grn` | The listing, and the create/edit panel |
+| **Line Items** | `line-items` | A cross-document listing of GRN lines, with its own edit panel |
+| **Audit Trail** | `audit-trail` | The shared audit-trail viewer |
+
+{{< figure src="/images/internal-sales-grn-applet/grn-listing.png" alt="Internal Sales GRN listing with the create panel open on the Main Details tab" caption="The listing (left) with FINAL above the grid, and the create panel (right) showing the Main Details, Account, Lines, Settlement and Department Hdr tabs." >}}
+
+**Listing columns:** Sales GRN No, Branch, Posting Status (empty renders as `DRAFT`), Customer Name,
+Sales Agent, Transaction Date, Created By, Created Date, Updated Date.
+
+**Create panel tabs:** Main Details · Account · Lines · Settlement · Department.
+
+**Edit panel tabs:** Main Details · Account · Lines · Settlement · Department Hdr · Contra · Doc Link ·
+Attachments · Export.
+
+**Edit panel buttons:** RESET, SAVE, FINAL, and — only when enabled, see below — DELETE. DELETE is a
+two-click action: the first click relabels the button `CLICK AGAIN TO CONFIRM`.
+
+### Adding a line
+
+The **Lines** tab opens a **Select Item** panel whose tabs let you search the item master or pull
+lines from an existing Sales Order, Jobsheet or Delivery Order. Each line then has its own sub-tabs:
+
+Item Details · Serial Number · Batch Number · Bin Number · Costing Details · Pricing Details · Issue Link.
+
+{{< figure src="/images/internal-sales-grn-applet/tab-settlement.png" alt="The Settlement tab of a GRN, showing an empty settlement grid and the Add Settlement panel with a Settlement Method drop-down" caption="Settlement records how the return was squared with the customer. Total and Outstanding are shown above the grid." >}}
+
+## Configuration
+
+### Before you can use it
+
+| Prerequisite | Where it is set | Why |
+|---|---|---|
+| At least one branch and one location | [Organisation](/applets/master-data/organisation-applet/) | **Branch** and **Location** are both required on Main Details. |
+| Customer entities | [Customer Maintenance](/applets/master-data/customer-applet/) | **Customer** is required, and **Credit Terms** stays disabled until an entity is chosen. |
+| A sales agent | [Employee Maintenance](/applets/master-data/employee-applet/) | **Sales Agent** is required on Main Details. |
+| Items | [Inventory Item Maintenance](/applets/master-data/inv-item-maintenance-applet/) | The Select Item panel searches the item master. |
+
+No default GL code, cashbook or settlement-method mapping is needed to save or finalise a GRN,
+because the document posts nothing.
+
+### Applet settings
+
+Settings live in the **shared** `FieldConfigurationComponent` from `blg-shared-utilities` — the
+applet routes `settings/field-settings` straight to it. The applet also contains a *local*
+`settings-container/field-configuration` component, but nothing imports or routes to it; it is dead
+code and its toggles never appear.
+
+The shared screen renders per applet code. Intersecting the applet's own `AppletSettings` model with
+the controls the shared template actually renders for `internalSalesGRNApplet` gives this set:
+
+| Setting | What it controls | Where it renders |
+|---|---|---|
+| `VERTICAL_ORIENTATION` | Lays the settings screen out vertically instead of horizontally | Top of the screen |
+| `DISABLE_GEN_DOC_LISTING` | Suppresses the generic-document listing behaviour | Gen Doc Listing section |
+| `ENABLE_BRANCH_FILTER` | Filters the entity picker by the selected branch | Account section |
+| `ENABLE_ITEM_NAME_MAX_LIMIT` / `ITEM_NAME_MAX_LIMIT` | Caps the length of an edited line item name | Line Items section |
+| `HIDE_QTY_BASE`, `HIDE_QTY_UOM`, `HIDE_UOM_TO_BASE_RATIO` | Hide quantity columns on the line | Line Items section |
+| `HIDE_UNIT_PRICE_STD_PRICING_SCHEME`, `HIDE_UNIT_PRICE_STD_INCL_TAX`, `HIDE_UNIT_PRICE_STD_EXCL_TAX`, `HIDE_UNIT_PRICE_STD_UOM_INCL_TAX`, `HIDE_UNIT_PRICE_STD_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_NET_EXCL_TAX`, `HIDE_UNIT_PRICE_NET_UOM_EXCL_TAX`, `HIDE_UNIT_PRICE_TXN`, `HIDE_UNIT_PRICE_TXN_UOM_INCL_TAX` | Hide the corresponding unit-price columns | Line Items section |
+| `HIDE_UNIT_DISCOUNT`, `HIDE_UNIT_DISCOUNT_UOM_EXCL_TAX`, `HIDE_DISCOUNT_AMOUNT_EXCL_TAX` | Hide discount columns | Line Items section |
+| `HIDE_AMOUNT_STD_EXCL_TAX`, `HIDE_AMOUNT_NET_EXCL_TAX`, `HIDE_AMOUNT_TXN` | Hide amount columns | Line Items section |
+| `HIDE_TAX_CONFIG_SELECTION`, `HIDE_WHT_CONFIG_SELECTION` | Hide the tax and withholding-tax pickers on a line | Line Items section |
+| `HIDE_COSTING_DETAILS`, `HIDE_PRICING_DETAILS`, `HIDE_SERIAL_NUMBER`, `HIDE_BATCH_NUMBER`, `HIDE_BIN_NUMBER` | Hide those line sub-panels | Line Items section |
+| `HIDE_DOC_LINK`, `HIDE_ISSUE_LINK`, `HIDE_ATTACHMENT` | Hide those tabs / panels | Miscellaneous section |
+
+Every one of these is a hide toggle whose default is unset (the control starts unchecked), so a
+tenant that has never saved Application Settings sees everything.
 
 {{< callout type="info" >}}
-**Core Concept**: The system links **who** is returning goods (Customer) to **what** is being returned (Line Items with serial/batch/bin tracking) and **how** it is resolved financially (Settlements and Contra entries).
+**Declared but never rendered for this applet.** The model also declares `HIDE_ACCOUNT`,
+`HIDE_LINES`, `HIDE_SETTLEMENT`, `HIDE_CONTRA`, `HIDE_EXPORT`, `HIDE_DEPARTMENT_HDR`, the
+`HIDE_*_TAB` / `EXPAND_*` pairs, `PRINTABLE`, `DEFAULT_BRANCH`, `DEFAULT_LOCATION`,
+`DEFAULT_COMPANY`, `DEFAULT_ORIENTATION`, `DEFAULT_TOGGLE_COLUMN`, the `ENABLE_CUSTOM_STATUS_*`
+family, and the `INCLUDE_*` / `ENABLE_*` dimension-and-tax family. Those controls sit behind
+`getTabValue()`'s `tabMappings`, and `internalSalesGRNApplet` is **not** a key in that map, so none
+of them render on a live tenant. Do not plan around them.
 {{< /callout >}}
 
-{{< figure src="/images/internal-sales-grn-applet/internal-sales-grn-the-old-way-vs-new-way.png" alt="From Return Chaos to Digital Precision: The Old Way (Manual Returns Chaos) vs The New Way (Digital GRN Precision) - showing how the Sales GRN (Internal) Applet solves lost paperwork, inventory mismatches, unreconciled credits, broken audit trails, and disorganized warehouse storage" caption="From Return Chaos to Digital Precision: The Old Way relies on manual paperwork, causing lost authorizations, inventory mismatches, and broken audit trails — The New Way uses structured digital GRNs with serial/batch/bin tracking, automated settlements, and complete end-to-end traceability." >}}
-
-## Key Features Overview
-
-### Who Benefits from This Applet?
-
-**Warehouse Staff:**
-- Record returned goods with full item-level detail
-- Track serial numbers, batch numbers, and bin locations on returned units
-- Generate printable GRN documents for receiving operations
-- Verify item condition during the return process
-
-**Sales Operations:**
-- Process customer return requests with traceability back to originating sales orders
-- Link every return to the original delivery order or invoice
-- Monitor return status across the entire returns lifecycle
-- Manage member card returns for loyalty program customers
-
-**Finance Teams:**
-- Process financial settlements for returned goods (cash back, vouchers, cards, cheques)
-- Link GRNs to original sales documents via contra entries for accurate books
-- Maintain a complete audit trail for every return transaction
-- Reconcile returns against posted invoices with precision
-
-**Inventory Managers:**
-- Monitor real-time stock movements as goods are returned to warehouse locations
-- Reconcile costing details using MAUC, FIFO, or manual cost methods
-- View a cross-transaction line items listing to spot return trends
-- Identify high-return items and investigate quality or process issues
-
-### What Problems Does This Solve?
-
-**The Manual Returns Process Problem:**
-
-Traditional goods return management relies on ad hoc paperwork and fragmented communication between warehouse, sales, and finance. Common issues include:
-
-- Lost return paperwork and missing return authorizations
-- Inventory counts that never match because returned stock is not formally recorded
-- Finance teams unable to reconcile credits issued against actual returned goods
-- No traceability from a returned unit back to the original sale
-- Warehouse staff unsure where to put returned goods without bin-level guidance
-
-**The Sales GRN (Internal) Solution:**
-
-- **Structured return capture** — Every return gets a formal document with header, line items, and status
-- **Inventory precision** — Serial, batch, and bin tracking ensure returned stock is recorded exactly where it physically goes
-- **Financial resolution** — Settlement and contra tools handle the money side automatically rather than manually
-- **Complete traceability** — Every GRN links back to its source document, creating an unbroken chain from original sale to return
-- **Multi-location support** — Returns can be directed to the correct branch and warehouse location
-- **Printable formats** — Professional GRN documents for warehouse receiving and customer acknowledgement
-
-{{< cards >}}
-  {{< card title="Field reference" subtitle="Header, customer, and line fields explained" link="#field-reference" >}}
-  {{< card title="Create & edit tabs" subtitle="Each tab and when to use it" link="#create-and-edit-tabs" >}}
-  {{< card title="GRN Listing" subtitle="View and manage all Goods Return Notes in one place" link="#internal-sales-grn-listing---your-returns-dashboard" >}}
-  {{< card title="Line Items" subtitle="Cross-transaction view of every returned item" link="#line-items---cross-transaction-view" >}}
-  {{< card title="Settlement" subtitle="Process refunds, vouchers, and credits for returns" link="#settlement---your-financial-resolution-tool" >}}
-  {{< card title="Contra" subtitle="Link returns to original sales documents" link="#contra-linking---your-reconciliation-tool" >}}
-  {{< card title="Return Tracking" subtitle="Monitor returns from receipt to resolution" link="#return-tracking" >}}
-  {{< card title="Personalization" subtitle="Your own defaults and layout" link="#personalization" >}}
-  {{< card title="Settings" subtitle="Configure defaults, print formats, and permissions" link="#configuration--settings" >}}
-{{< /cards >}}
-
-## Key Concepts
-
-### Understanding the GRN Framework
-
-Every goods return process must address three fundamental aspects. The Sales GRN (Internal) Applet provides structured handling for all three:
-
-| Aspect | Component | Practical Example |
-|--------|-----------|------------------|
-| **Who** is returning? | Customer / Entity | Retailer ABC Sdn Bhd, Member Card holder |
-| **What** is being returned? | Line Items with tracking | 2× Laptop, Serial SN-001, Bin B-02 |
-| **How** is it resolved? | Settlement + Contra | Cash refund RM 2,400, linked to Invoice INV-0550 |
-
-{{< callout type="tip" >}}
-**Real-World Example**: A retailer (WHO) returns 5 defective units of Product X (WHAT). The system records the serial numbers, restocks the correct bin, issues a voucher settlement, and contra-links to the original invoice (HOW) — all in one GRN document.
-{{< /callout >}}
-
-### GRN Lifecycle
-
-Think of the return process as a structured flow:
-
-```
-Customer Requests Return
-│
-├── GRN Created ──→ WHO is returning and WHEN?
-│   │
-│   └── Main Details (Branch, Location, Date, Reference)
-│       │
-│       └── Account (Customer entity, Billing + Shipping address)
-│
-├── Line Items ──→ WHAT is being returned?
-│   ├── Item Details (code, qty, price)
-│   ├── Serial / Batch / Bin Numbers
-│   └── Costing + Pricing Details
-│
-└── Resolution ──→ HOW is it settled?
-    ├── Settlement (Cash, Voucher, Card, Cheque, Points)
-    ├── Contra (link to original invoice/delivery order)
-    └── Attachments (inspection photos, authorization docs)
-```
-
-**Flow Through the Lifecycle:**
-
-1. **Return Request**: Customer contacts sales team to initiate return
-2. **GRN Header**: Branch, location, date, and customer captured
-3. **Line Items**: Every returned product recorded with quantity and tracking info
-4. **Settlement**: Financial resolution method agreed and recorded
-5. **Contra**: GRN linked to the originating sales document
-6. **Finalize**: GRN locked; stock reinstated and financials posted
-
-This structure enables:
-- **Precise inventory control** — goods go back to exactly the right location
-- **Complete financial reconciliation** — every return ties to a source document
-- **Clear accountability** — each return action is timestamped and attributed
-- **Audit-ready records** — full document trail for finance and compliance teams
-
-### The "Return Triangle"
-
-To effectively manage returns in the system, it is crucial to understand how **Line Items**, **Settlements**, and **Contra Entries** work together.
-
-| Component | Analogy | Definition | Example |
-|-----------|---------|------------|---------|
-| **Line Item** | The "What" | The actual returned product, quantity, and tracking details | 2× Laptop, SN-001, SN-002 |
-| **Settlement** | The "Refund" | The method and amount used to compensate the customer | Cash back RM 2,400 |
-| **Contra Entry** | The "Link" | The connection back to the original financial document being reversed | Invoice INV-2024-0550 |
-
-**How they link:**
-1. You create a **GRN Header** (Branch, Customer, Date).
-2. You add **Line Items** (what was physically returned).
-3. You add a **Settlement** entry (how the customer is compensated).
-4. You add a **Contra** link (which original document this return offsets).
-5. When finalized, the system updates stock and posts the financial entries.
-
-For field-by-field meanings and each screen tab, see [Field reference](#field-reference) and [Create and edit tabs](#create-and-edit-tabs) below.
-
----
-
-## Field reference {#field-reference}
-
-This section explains what each part of the form is for. **Which fields are required** depends on your administrator’s **Application Settings**—the table describes what each field is for, not whether your organization marks it as mandatory.
-
-### Main Details (document header)
-
-| Field | What it is for |
-|-------|----------------|
-| **Document Type / Doc No (Tenant, Company, Branch)** | System document identity (shown on saved documents; read-only). |
-| **Branch** | Branch receiving the returned goods. |
-| **Location** | Warehouse or store location where stock will be reinstated. |
-| **Sales Agent** | Sales representative for this customer account. |
-| **Member Card** | Loyalty member linked to the return (opens **Select Member** when used). |
-| **Transaction Date** | Date of the return for posting and reporting. |
-| **Credit Terms** | Payment terms (often requires **Entity ID** on Account first). |
-| **Due Date** | Due date derived from credit terms when applicable. |
-| **Reference** | Original invoice, RMA, or sales order reference for traceability. |
-| **Remarks** | Free-text notes (condition, reason, internal case ID). |
-| **Permit No** | Import or permit reference when your process requires it. |
-| **Currency** | Document currency for line amounts. |
-| **Customer** | Customer name (populated from Account). |
-| **Tracking ID** | Logistics or return tracking reference. |
-
-{{< figure src="/images/internal-sales-grn-applet/main-details.png" alt="Main Details tab on Create Internal Sales GRN showing branch, location, sales agent, dates, and reference fields" caption="Main Details: set branch, location, sales agent, transaction date, and reference before you add the customer and lines." >}}
-
-### Account (customer)
-
-Subtabs: **Entity Details**, **Bill To**, **Ship To**.
-
-| Field / area | What it is for |
-|--------------|----------------|
-| **Entity ID** | Returning customer—open **Select Customer Listing** to pick the account. |
-| **Entity Name, Type, Status, ID Number, Identity Type** | Customer master data for identification. |
-| **GL Code, Currency, Email, Phone Number, Description** | Account context for finance and contact. |
-| **Bill To** | Billing name, phone, email, and billing address lines. |
-| **Ship To** | Recipient name, phone, email, and shipping address lines. |
-
-{{< figure src="/images/internal-sales-grn-applet/tab-account.png" alt="Account tab on Create Internal Sales GRN showing Entity Details with a customer selected" caption="Account: select the returning customer on Entity Details and confirm Bill To and Ship To when your process requires them." >}}
-
-### Lines (returned items)
-
-| Field / column | What it is for |
-|----------------|----------------|
-| **Item Code / Item Name / UOM** | What product is being returned. |
-| **Qty** | Quantity physically received back. |
-| **Unit Price (Inclusive of Tax)** | Return value per unit (hidden if pricing display is off for your role). |
-| **SST / VAT / GST, Txn Amount** | Tax and line total when pricing columns are visible. |
-
-**Add Line Item** sub-tabs (when item setup requires them):
-
-| Sub-tab | What it is for |
-|---------|----------------|
-| **Item Details** | Core line fields, quantity, pricing, tax, remarks. |
-| **Serial Number** | Track individual serialized units. |
-| **Batch Number** | Lot, issue date, expiry for batch-controlled items. |
-| **Bin Number** | Warehouse bin where goods are placed. |
-| **Costing Details** | MAUC, FIFO, manual cost (finance review). |
-| **Pricing Details** | Pricing schema, discounts, tax breakdown. |
-| **Issue Link** | Link to quality or after-sales issue records. |
-
-{{< figure src="/images/internal-sales-grn-applet/tab-lines.png" alt="Lines tab on Create Internal Sales GRN with Select Item panel open to add returned products" caption="Lines: use Add (+) to open Select Item, pick each returned product, then complete quantity and tracking on the line." >}}
-
-### Department Hdr (header GL allocation)
-
-| Field | What it is for |
-|-------|----------------|
-| **Segment** | Business segment for GL reporting. |
-| **G/L Dimension** | GL dimension code. |
-| **Profit Centre** | Profit centre allocation. |
-| **Project** | Project code when returns must be charged to a project. |
-
----
-
-## Create and edit tabs {#create-and-edit-tabs}
-
-Screens may show **tabs across the top** or **expansion panels** (same data)—use **CHANGE VIEW** on the screen or ask your admin about the default layout under [Configuration & Settings](#configuration--settings).
-
-**Create Internal Sales GRN** header buttons: **RESET**, **CREATE** (requires valid Main Details, Account, and at least one line).
-
-**Edit Internal Sales GRN** header buttons: **RESET**, **FINAL**, **SAVE**, and **DELETE** when your administrator enables it and the document is not yet finalized.
-
-### Main Details
-
-**When to use:** Always—the document header.
-
-**What you do here:** Branch, location, sales agent, member card, dates, reference, currency, and remarks. On edit, confirm **Posting Status** before assuming stock or finance is complete.
-
-**Typical scenario:** Warehouse records the return date and RMA reference the day goods arrive.
-
-{{< figure src="/images/internal-sales-grn-applet/main-details.png" alt="Main Details tab on Create Internal Sales GRN showing header fields for branch, location, and dates" caption="Main Details on create: complete branch, location, dates, and reference before Account and Lines." >}}
-
-### Account
-
-**When to use:** Always—who is returning goods.
-
-**What you do here:** Select **Entity ID**, verify **Bill To** and **Ship To**. Credit terms on Main Details often depend on the customer selected here.
-
-**Typical scenario:** Retailer return—confirm ship-to is the supplier’s return warehouse address.
-
-{{< figure src="/images/internal-sales-grn-applet/tab-account.png" alt="Account tab Entity Details with customer entity ID, name, and contact fields populated" caption="Account on create: pick Entity ID and verify customer details before adding lines." >}}
-
-### Lines
-
-**When to use:** Always—what is being returned.
-
-**What you do here:** Add or edit returned items, quantities, pricing, and serial/batch/bin detail. See also [For Warehouse Staff (Recording Returned Goods)](#for-warehouse-staff-recording-returned-goods) for step-by-step receiving.
-
-**Typical scenario:** Partial return—only the three mismatched units from a ten-unit order.
-
-{{< figure src="/images/internal-sales-grn-applet/tab-lines.png" alt="Lines tab with empty grid and Select Item panel for choosing returned items" caption="Lines on create: add each returned item from Select Item, then enter quantity and serial, batch, or bin detail when required." >}}
-
-### Settlement
-
-**When to use:** On create (and on edit when visible)—how the customer is compensated.
-
-**What you do here:** Add settlement lines: cash back, voucher, card, cheque, bank transfer, membership points, etc. Review **Total** vs **Outstanding** on the tab.
-
-**Typical scenario:** Cash refund matching the returned line total. See [Settlement — Your Financial Resolution Tool](#settlement---your-financial-resolution-tool) for method details.
-
-{{< figure src="/images/internal-sales-grn-applet/tab-settlement.png" alt="Settlement tab showing Total and Outstanding amounts with Add Settlement panel for settlement method" caption="Settlement: review Total and Outstanding, then Add (+) to choose a settlement method and amount." >}}
-
-### Department Hdr
-
-**When to use:** When your company allocates return costs by segment, dimension, profit centre, or project.
-
-**What you do here:** Set header-level GL codes before finalize. See [Scenario 4: B2B Return with GL Dimension Allocation](#scenario-4-b2b-return-with-gl-dimension-allocation).
-
-### Contra (edit only)
-
-**When to use:** After the document exists—link the return to the original sales document.
-
-**What you do here:** **Contra Select Document** → pick invoice, delivery order, or other source → enter **Contra Amount**. Multiple contra rows are allowed.
-
-**Typical scenario:** Offset Invoice INV-2024-0550 by the return value. See [Contra Linking — Your Reconciliation Tool](#contra-linking---your-reconciliation-tool).
-
-### Doc Link (edit only)
-
-**When to use:** When you need explicit copy/link traceability between documents.
-
-**What you do here:** Review **Copied From** and **Copied To** subtabs for document relationships.
-
-### Attachments (edit only)
-
-**When to use:** When you need evidence on file.
-
-**What you do here:** Upload photos, supplier or customer authorizations, or inspection reports.
-
-### Export (edit only)
-
-**When to use:** When you need a printable PDF or export for the customer or audit.
-
-**What you do here:** Choose a **Printable Format** configured under Settings and export. See [Printable Format Settings](#printable-format-settings).
-
----
-
-## Quick Start Guide
-
-Get up and running quickly with these role-specific workflows.
-
-### For Warehouse Staff: Record Your First Return
-
-**Goal:** Create a GRN when goods are physically received back at the warehouse.
-
-1. **Navigate**: Go to **Sales GRN (Internal)** from the sidebar
-2. **Create New**: Click **"+"** → A blank GRN form opens
-3. **Fill Header**:
-   - Select **Branch** and **Location** (where goods are being received)
-   - Select **Sales Agent** responsible for this customer's account
-   - Set **Transaction Date** to today
-   - Add **Reference** (e.g., original invoice number or RMA code)
-4. **Select Customer**: Go to **Account** tab → Search and select the returning customer
-5. **Add Returned Items**: Go to **Lines** tab → Click **"Add Line Item"**:
-   - Select item code
-   - Enter quantity returned
-   - Add serial/batch/bin numbers if required
-6. **Attach Evidence**: Go to **Attachments** tab → Upload inspection photos
-7. **Finalize**: Click **FINAL** → Stock is reinstated, document is locked
-
-{{< figure src="/images/internal-sales-grn-applet/grn-listing.png" alt="Sales GRN (Internal) Listing showing GRN summary with Sales GRN No, Posting Status, Customer Name and Transaction Date columns" caption="GRN Listing: View all return records with posting status and customer details at a glance" >}}
-
-**What happens next?** Finance will process the settlement and post the contra entry. Stock is available again at the specified location.
-
-**Pro Tip:** Always add a **Reference** number matching the original invoice or delivery order — it makes the Contra linking step much faster.
-
----
-
-### For Finance Teams: Process Your First Return Settlement
-
-**Goal:** Verify line items and process the financial settlement in 4 steps.
-
-1. **Find the GRN**: Go to **Sales GRN (Internal)** → Use Advanced Search to find the return by Customer or Reference
-2. **Review Line Items**:
-   - Open the GRN → Go to **Lines** tab
-   - Verify quantities match the physical return receipt
-   - Check unit prices tie to the original invoice amount
-3. **Add Settlement**:
-   - Go to **Settlement** tab → Click **"Add Settlement"**
-   - Choose method: Cash Back / Voucher / Card / Cheque / Points
-   - Enter amount and transaction reference
-4. **Link Contra**:
-   - Go to **Contra** tab → Click **"Add Contra"**
-   - Search and select the original invoice or delivery order
-   - Enter the contra amount
-
-**Going on Leave?** Make sure you hand over any open GRNs awaiting settlement to your deputy before you go — unprocessed settlements delay customer refunds.
-
----
-
-### For Admins: Initial System Setup
-
-**Goal:** Get the GRN system ready for your team in 5 steps.
-
-**Step 1: Configure Default Branch and Location** (`Settings > Default Selection`)
-- Set the branch and warehouse location that pre-fill on new GRNs
-- Saves warehouse staff from selecting the same values every time
-
-**Step 2: Set Up Field Configuration** (`Settings > Field Configuration` / Application Settings)
-- Toggle which fields are required vs optional vs hidden
-- Tailor the GRN form to match your returns workflow
-
-**Step 3: Add Printable Formats** (`Settings > Printable Format Settings`)
-- Upload Jasper report templates for GRN documents
-- Warehouse and finance staff can print professional GRN PDFs
-
-**Step 4: Configure Permissions** (`Settings > Permission Set`)
-- Define who can create, edit, finalize, and delete GRNs
-- Assign permissions by user, team, or role
-
-**Step 5: Test End-to-End**
-- Create a test GRN as warehouse staff
-- Process a test settlement as finance
-- Print the GRN and verify the format
-- Confirm stock is updated after finalization
-
-**Ongoing:** Monitor the Line Items listing regularly to spot high-return products early.
-
----
-
-{{< callout type="tip" >}}
-**New to the system?** Start with the basics:
-1. Warehouse staff should create a test GRN with dummy items to practice the form
-2. Finance teams should open an existing GRN and explore the Settlement and Contra tabs
-3. Admins should review **Configuration & Settings** below for detailed setup guidance
-{{< /callout >}}
-
----
-
-## Return Tracking
-
-**Monitor returned goods from receipt to resolution in real-time.**
-
-### What is Return Tracking?
-
-Return Tracking in the GRN Applet gives warehouse staff, sales teams, and finance managers full visibility into where every return stands — from the moment goods arrive back at the warehouse to final settlement and stock reinstatement. Think of it as your "return status dashboard."
-
-**For Warehouse Staff:**
-- See which GRNs are drafts waiting for line items to be completed
-- Confirm which returns have been finalized and stock reinstated
-- Never lose track of a return that arrived but wasn't formally recorded
-
-**For Sales Operations:**
-- Track return status per customer at any time
-- Confirm that a customer's return has been received and acknowledged
-- Use the GRN number as the official reference when communicating with customers
-
-**For Finance/Management:**
-- Real-time visibility into open returns awaiting settlement
-- Identify GRNs that have been finalized but not yet had a settlement processed
-- Generate reports on return volumes by product, customer, or branch
-
----
-
-### How to Track a Return
-
-**From the GRN Listing:**
-1. Go to **Sales GRN (Internal)** from the sidebar
-2. Use **Posting Status** column to filter returns by state
-3. Use **Advanced Search** to find returns by customer name, GRN number, or date range
-
-**Document States:**
-
-```
-Customer Returns Goods → GRN Created → Lines Added → GRN Finalized
-         │                   │              │               │
-         │                   │              │               └── Stock reinstated, financials posted
-         │                   │              └── Warehouse recording complete
-         │                   └── Header created, awaiting line items
-         └── Verbal/written return request received
-```
-
----
-
-### GRN Posting Statuses
-
-| Status | What It Means | What You Should Do |
-|--------|---------------|-------------------|
-| **Draft** | GRN created but not submitted | Complete line items and finalize |
-| **Posted** | Financially posted | Verify settlement has been processed |
-| **Finalized** | Fully locked and processed | No further action needed |
-
----
-
-### Tips for Teams
-
-**Warehouse Staff:**
-✓ **Record Immediately**: Create the GRN the moment goods arrive — don't let returns sit on the floor unrecorded  
-✓ **Photograph Everything**: Use the Attachments tab for photographic evidence of return condition  
-✓ **Check Serial Numbers**: Scan serialized items carefully — the system validates them  
-✓ **Use Reference Field**: Always enter the original invoice or delivery order number
-
-**Finance Teams:**
-✓ **Match Quantities**: Always verify line item quantities against the physical receiving record before settling  
-✓ **Link the Contra**: Every GRN that closes out an invoice must have a contra entry — don't skip this step  
-✓ **Document Settlement Method**: Customer requests cash? Voucher? Record it precisely so there are no disputes  
-✓ **Review Open GRNs Daily**: A quick daily check of unfinalized GRNs prevents accounts from going stale
-
----
-
-## For Warehouse Staff (Recording Returned Goods)
-
-This section is your step-by-step guide to creating and completing a GRN when goods are returned.
-
-### Sales GRN (Internal) Listing — Your Returns Dashboard
-
-**What is the GRN Listing?**
-
-This is your main workspace — where you see every return record, create new GRNs, and track their progress. Think of it as the register for all goods that have come back through your warehouse door.
-
-**What You Can Do:**
-- ✓ Create new return records
-- ✓ Open and edit draft GRNs
-- ✓ Track whether a GRN has been finalized
-- ✓ Search and filter by customer, date, or status
-- ✓ Export records for reporting
-
----
-
-**How to Create a GRN** (The Complete Journey)
-
-**Step 1: Create the GRN Header**
-1. Click **"Sales GRN (Internal)"** from the sidebar
-2. Click **"+" (Add New)**
-3. Fill in:
-   - **Branch**: The branch receiving the returned goods
-   - **Location**: The warehouse location the goods are going to
-   - **Transaction Date**: Today's date (date goods were physically received)
-   - **Reference**: Original invoice or RMA number (critical for linking!)
-   - **Remarks**: Condition of goods, reason for return, any notable damage
-4. Proceed to the Account tab
-
-**Step 2: Select the Customer**
-1. Go to the **Account** tab
-2. Click **Select Customer** to search and pick the returning entity
-3. Verify billing and shipping address details are correct
-4. The system populates Entity ID, Name, and GL Code automatically
-
-**Step 3: Add Your Line Items**
-1. Go to the **Lines** tab
-2. Click **"Add Line Item"** for each product being returned
-3. For each item:
-   - **Item Code / Name**: Select from inventory catalogue
-   - **UOM**: Confirm the unit of measure
-   - **Qty**: Enter the quantity physically received
-   - **Unit Price**: Verify against the original sale price
-
-{{< figure src="/images/internal-sales-grn-applet/add-line-items.png" alt="Add Line Item form showing Item Code, UOM, Quantity, Unit Price and tax fields across Item Details sub-tabs" caption="Add Line Item Form: Enter returned product details — code, quantity, unit price, and any applicable tax" >}}
-
-**Handling Serialized Items:**
-- After saving the line item, open the **Serial Number** sub-tab
-- Scan barcodes with a scanner or manually enter each serial number
-- The system validates it immediately
-
-**Handling Batch Items:**
-- Open the **Batch Number** sub-tab
-- Enter batch/lot number, issue date, and expiry date
-- System warns if expiry date is before issue date
-
-**Handling Bin-Managed Stock:**
-- Open the **Bin Number** sub-tab
-- Enter the bin code where goods are physically being placed
-- System validates the bin code against warehouse configuration
-
-**Step 4: Attach Supporting Evidence**
-1. Go to the **Attachments** tab
-2. Drag and drop photos of the returned goods, or click **Upload File**
-3. Each attachment records filename, size, upload date, and who uploaded it
-
-**Step 5: Finalize**
-1. Click **Final** → GRN is locked
-2. Stock is reinstated at the specified branch and location
-3. Finance is notified to process settlement and contra
-
-**What Happens Next?**
-```
-Warehouse Finalizes GRN → Finance Adds Settlement → Finance Links Contra → GRN Fully Resolved
-              ↓                        ↓                       ↓
-     Stock reinstated         Customer compensated      Books reconciled
-```
-
----
-
-**Line Item Sub-Tabs Reference:**
-
-| Sub-Tab | When to Use | Key Fields |
-|---------|-------------|------------|
-| **Item Details** | Always | Code, Name, UOM, Qty, Unit Price, Tax |
-| **Serial Numbers** | Serialized products | Serial No, validation status |
-| **Batch Numbers** | Batch/lot controlled items | Batch No, Issue Date, Expiry Date, Qty |
-| **Bin Numbers** | Bin-managed warehouses | Bin Code, Container Measure, Container Qty |
-| **Costing Details** | Finance review | MAUC, FIFO, Manual Cost, Last Purchase Cost |
-| **Pricing Details** | Pricing verification | Pricing Schema, Sales Price, Discount, Tax Amount |
-| **Issue Link** | After-sales / quality teams | Issue No, Summary, Assignee, Resolved Date |
-
----
-
-**Common Scenarios:**
-
-**Scenario 1: Single Defective Unit Return**
-```
-Customer: ABC Sdn Bhd
-Returns: 1x Premium Laptop (serialized)
-
-Steps:
-1. Create GRN — Branch: HQ, Location: Main Warehouse
-2. Account tab — Select ABC Sdn Bhd
-3. Lines tab — Add item SKU-L001, Qty: 1
-4. Serial Number sub-tab — Enter SN-LAPTOP-98765
-5. Attachments — Upload photo of cracked screen
-6. Finalize → 1 unit back in stock at Main Warehouse
-```
-
-**Scenario 2: Bulk Batch Return (Near-Expiry)**
-```
-Retailer returns 50 units of Product X, batch B-20240315
-
-Steps:
-1. Create GRN — Reference: "Expiry Return - Retailer ABC"
-2. Account tab — Select Retailer ABC
-3. Lines tab — Add Product X, Qty: 50
-4. Batch Number sub-tab — Batch: B-20240315, Expiry: 2024-06-30
-5. Finalize → 50 units restocked (batch-tracked)
-```
-
-**Scenario 3: Partial Return from Larger Order**
-```
-Customer ordered 10 units, returning 3 as incorrect model
-
-Steps:
-1. Create GRN — Reference: SO-2024-0887
-2. Add 3 Line Items (only the 3 mismatched units)
-3. Scan 3 serial numbers
-4. Finalize → 3 units back in stock; 7 remain with customer
-```
-
----
-
-**Tips for Fast and Accurate GRNs:**
-
-✓ **Reference Always**: Enter the original invoice or SO number — Finance can't link the contra without it  
-✓ **Scan, Don't Type**: Use a barcode scanner for serials — typing errors cause validation failures  
-✓ **Photo the Goods**: Return disputes are resolved much faster with visual evidence  
-✓ **Check Bin Availability**: Confirm the bin can physically accept the returned goods before entering it  
-✓ **Same Day Finalization**: Finalize the GRN the same day goods are received — don't leave it as a draft overnight
-
-❌ **Common Mistakes:**
-- Creating a GRN without a Reference number (Finance cannot link contra)
-- Entering a serial number with a typo (system rejects it and you must re-enter)
-- Forgetting to add batch expiry dates (causes batch tracking gaps)
-- Not attaching photos of damaged goods (leads to disputes with customers)
-- Leaving GRNs in Draft status (stock is not reinstated until Finalized)
-
----
-
-### Line Items — Cross-Transaction View
-
-{{< figure src="/images/internal-sales-grn-applet/line-items-listing.png" alt="Line Items Listing showing individual returned items across all GRN documents" caption="Line Items: View every individual returned product across all GRN records, line by line" >}}
-
-**What is the Line Items Page?**
-
-While the **Sales GRN (Internal)** listing shows complete return documents, the **Line Items** page shows every individual returned product across all GRNs — one row per item line. It's like having a complete itemized return history.
-
-**Why Is This Useful?**
-
-**For Warehouse Teams:**
-- Track return volumes for a specific product ("How many Laptops have we received back this month?")
-- Spot patterns in high-return items that might indicate a quality issue
-- Find a specific serial number across all return records
-
-**For Finance Teams:**
-- Verify all line items are accounted for before processing batch settlements
-- Cross-reference return quantities with settlement amounts
-
-**How to Use It:**
-
-**Find All Returns of a Specific Product:**
-- Go to **Line Items** from the sidebar
-- Filter by: Item Code = `SKU-L001`
-- Date Range: Jan–Mar 2026
-- Result: Every GRN line where that product was returned
-
-**Find a Specific Serial Number:**
-- Filter by: Serial Number = `SN-LAPTOP-98765`
-- Result: Immediately find which GRN received that unit
-
-**Monthly Return Volume Report:**
-- Filter by: Month = February 2026
-- Export to Excel
-- Use for management reporting on return volumes
-
----
-
-## For Finance Teams (Processing Return Settlements)
-
-This section is your guide to managing the financial side of goods returns.
-
-### Settlement — Your Financial Resolution Tool
-
-**What is Settlement?**
-
-Settlement is the financial record of how a customer is compensated for returned goods. Think of it as the "refund receipt" — it records exactly how much was paid back and by what method.
-
-**Why This Matters:**
-
-**For Finance:**
-- Ensures every return has a matching financial transaction in the books
-- Prevents customers from claiming they were never compensated
-- Provides a clear paper trail for auditors
-
-**For Customers:**
-- Fast, transparent resolution of their return
-- Clear record of refund method and amount
-- No ambiguity about when and how they were compensated
-
----
-
-**Settlement Methods Explained:**
-
-| Method | Description | When to Use | Additional Info Required |
-|--------|-------------|-------------|--------------------------|
-| **Cash Back** | Direct cash refund | Customer requests cash | Transaction No, Amount |
-| **Voucher** | Store voucher issued | Customer prefers store credit | Voucher code, Amount |
-| **Card** | Credit back to card | Original payment was by card | Card No, Issuer, Expiry, CVV |
-| **Cheque** | Payment by cheque | Large-value B2B returns | Cheque No, Date |
-| **Rebate Point** | Loyalty points credited | Member card holder | Point CCY, Amount |
-| **Gold / Silver** | Commodity settlement | Specialist trade scenarios | Year, Size, Amount |
-
----
-
-**How to Process a Settlement (Step-by-Step):**
-
-**Step 1: Open the GRN**
-1. Go to **Sales GRN (Internal)** from the sidebar
-2. Search using the GRN number or customer name
-3. Click to open the record
-
-**Step 2: Verify Line Items**
-1. Go to the **Lines** tab
-2. Confirm quantities match the physical receiving report
-3. Check that unit prices tie to the original sale — do not overpay!
-4. Note the total value of returned goods
-
-**Step 3: Add a Settlement**
-1. Go to the **Settlement** tab
-2. Click **"Add Settlement"**
-3. Select the **settlement method** (Cash Back, Voucher, etc.)
-4. Enter:
-   - **Amount**: Total settlement amount
-   - **Transaction No**: Reference number (e.g., voucher code, cheque number)
-   - **Date**: Date of settlement
-   - **Remarks**: Any notes for the record
-5. Save
-
-{{< figure src="/images/internal-sales-grn-applet/add-settlement.png" alt="Add Settlement form showing settlement method selector with Cash Back, Voucher, Card, Cheque and Points options, plus Amount, Transaction No and Date fields" caption="Add Settlement Form: Choose the compensation method and enter the refund amount and reference" >}}
-
-**Step 4: Edit or Remove a Settlement**
-- Click **"Edit Settlement"** on an existing entry if corrections are needed
-- Settlements can only be modified before the GRN is finalized
-
-**What Happens Next?**
-```
-Settlement Saved → GRN Finalized → Financial Posting → Customer Compensated
-      ↓                 ↓                ↓
-  Amount locked     Stock updated    Contra posted
-```
-
----
-
-### Contra Linking — Your Reconciliation Tool
-
-**What is a Contra Entry?**
-
-A Contra entry links the GRN to the original sales document it is offsetting. Without this link, your accounts will show both the original invoice and the return as independent entries — creating a reconciliation nightmare.
-
-**Contra Flow:**
-
-```
-Original Invoice Posted:    +RM 5,000 (revenue)
-GRN Created (return):       −RM 1,200 (partial return)
-Contra Linked:              System offset INV-0550 by RM 1,200
-Net Result:                 RM 3,800 outstanding
-```
-
----
-
-**How to Add a Contra Entry (Step-by-Step):**
-
-**Step 1: Go to the Contra Tab**
-1. Open the relevant GRN
-2. Click the **Contra** tab
-
-**Step 2: Select Source Document**
-1. Click **"Add Contra"** (or **"Contra Select Document"**)
-2. Search by document number or date
-3. Select the original invoice, delivery order, or other source document
-
-**Step 3: Enter Contra Amount**
-1. Enter the **Contra Amount** — this is the portion of the original document being offset
-2. Verify **Doc Date** matches the originating document date
-3. Save
-
-**Step 4: Verify**
-- The Contra tab now shows the linked document
-- Click **"Edit Contra"** if adjustments are needed before finalization
-
----
-
-**Common Settlement & Contra Scenarios:**
-
-**Scenario 1: Full Refund on Faulty Goods**
-```
-GRN: 1× Laptop returned, value RM 2,400
-Settlement: Cash Back RM 2,400 (Txn No: CASH-001)
-Contra: Link to Invoice INV-2024-0550 for RM 2,400
-Result: Invoice fully offset, customer refunded RM 2,400
-```
-
-**Scenario 2: Partial Return — Customer Keeps Rest**
-```
-GRN: 3 of 10 units returned, value RM 720
-Settlement: Voucher RM 720 (Voucher: VCH-0088)
-Contra: Link to SO-2024-0887 for RM 720 (partial offset)
-Result: Invoice reduced by RM 720; customer has a RM 720 voucher
-```
-
-**Scenario 3: B2B Return with Cheque Payment**
-```
-GRN: Retailer returns 50 units, value RM 4,250
-Settlement: Cheque No CHQ-20240315 for RM 4,250
-Contra: Link to Invoice INV-2024-1120 for RM 4,250
-Result: Invoice fully cleared; cheque payment logged
-```
-
----
-
-**Best Practices for Finance Teams:**
-
-✓ **Same-Day Settlement**: Process settlements the same day a GRN is received from warehouse  
-✓ **Always Link Contra**: Never finalize a settlement-carrying GRN without a contra entry  
-✓ **Match Amounts**: Settlement amount + Contra amount should equal the GRN line items total  
-✓ **Record Transaction No**: Always capture the voucher code, cheque number, or card reference  
-✓ **Audit Attachments**: Before settling, check the Attachments tab for inspection evidence
-
-❌ **Common Mistakes:**
-- Processing a settlement without verifying warehouse has actually received the goods (check Finalize status first)
-- Entering the wrong contra amount (creates unreconciled differences)
-- Forgetting to add a contra entry (leaves the original invoice as fully outstanding)
-- Not recording the settlement transaction number (creates untraceable refunds)
-
----
-
-## Configuration & Settings
-
-The Settings page provides access to system-wide configuration for the Sales GRN (Internal) Applet. Navigate via the **Settings** option in the sidebar.
-
-### Application Settings
-
-Open **Settings → Application Settings** to control field visibility, tab visibility, and form layout. Common areas administrators configure:
-
-| Area | What administrators configure |
-|------|------------------------------|
-| **Document tabs** | Show or hide **Settlement**, **Department Hdr**, **Contra**, **Doc Link**, **Attachments**, **Export** |
-| **Tab expand defaults** | Which panels open first in vertical layout (Main Details, Account, Lines, etc.) |
-| **Line item sub-tabs** | Item Details, Serial/Batch/Bin, Costing, Pricing, Issue Link |
-| **Line pricing fields** | Unit price, discount, quantity, tax, transaction amount visibility |
-| **Layout** | Default horizontal tabs vs vertical panels; single vs double column on listings |
-| **Listing** | Branch filter, item name limits, GRN listing display options |
-
-**Feature visibility** (separate **Feature Visibility** screen under Settings) toggles applet menus and features not covered above.
-
-**Field configuration** (within Application Settings): mark header and line fields as required, optional, or hidden so the GRN form matches your returns workflow.
-
-### Change View
-
-On create, edit, and many settings screens, **CHANGE VIEW** (top right) switches between **horizontal tabs** and **vertical expansion panels**. Same fields and data—layout only. Use whichever layout mode your organization sets as the default.
-
----
+**Read at runtime with no model declaration:** `SHOW_DOCUMENT_DELETE_BUTTON`. The edit screen reads it
+from the applet's `APPLET_SETTINGS` extension record and shows the DELETE button only when it is
+true. There is no control for it on the Application Settings screen.
 
 ### Default Selection
 
-Set defaults that will pre-populate when creating new GRN records, reducing repetitive data entry.
+*Settings → System Configuration → Default Selection.* Three controls only:
 
-| Setting | Purpose | Example |
-|---------|---------|---------|
-| **Default Branch** | Pre-fills Branch on new GRNs | Headquarters |
-| **Default Location** | Pre-fills warehouse location | Main Warehouse |
-| **Default Language** | Sets display language | English, Bahasa Malaysia, 中文 |
+| Control | What it sets |
+|---|---|
+| Default Branch | Pre-selects Branch on a new GRN |
+| Default Location | Pre-selects Location; the list is filtered by the chosen branch |
+| Default Language | The resource bundle used for this applet's labels |
 
-{{< callout type="tip" >}}
-**Time-Saving Tip:** If your warehouse staff always work from the same branch and location, setting these defaults means they only need to verify — not re-enter — these fields on every GRN.
+**Personalization → Default Selection** offers the same per-user, plus the shared **Sidebar** editor.
+
+Other settings routes present: Printable Format Settings, Custom Resource Bundle Configuration
+(translation), Webhook, Feature Visibility, and the five permission screens. Webhook and Feature
+Visibility are routed but are not listed in the settings menu.
+
+### Feature visibility / permissions
+
+Twenty-one client-side permission codes are seeded for this applet in
+`bl_applet_client_side_perm_dfn`, and all twenty-one are checked in the applet's code — an unusually
+clean match. They all gate line-item columns and panels:
+
+`SHOW_COSTING_DETAILS` · `SHOW_QTY_BASE` · `SHOW_QTY_UOM` · `SHOW_UOM_TO_BASE_RATIO` ·
+`SHOW_UNIT_PRICE_STD_PRICING_SCHEME` · `SHOW_UNIT_PRICE_STD_INCL_TAX` · `SHOW_UNIT_PRICE_STD_EXCL_TAX` ·
+`SHOW_UNIT_PRICE_STD_UOM_INCL_TAX` · `SHOW_UNIT_PRICE_STD_UOM_EXCL_TAX` · `SHOW_UNIT_PRICE_NET_EXCL_TAX` ·
+`SHOW_UNIT_PRICE_NET_UOM_EXCL_TAX` · `SHOW_UNIT_PRICE_TXN` · `SHOW_UNIT_PRICE_TXN_UOM_INCL_TAX` ·
+`SHOW_UNIT_DISCOUNT` · `SHOW_UNIT_DISCOUNT_UOM_EXCL_TAX` · `SHOW_DISCOUNT_AMOUNT_EXCL_TAX` ·
+`SHOW_AMOUNT_STD_EXCL_TAX` · `SHOW_AMOUNT_NET_EXCL_TAX` · `SHOW_AMOUNT_TXN` ·
+`SHOW_TAX_CONFIG_SELECTION` · `SHOW_WHT_CONFIG_SELECTION`.
+
+Each pairs with the matching `HIDE_*` applet setting: the column shows if the permission grants it,
+even when the tenant-wide hide toggle is on.
+
+Server-side, the document type is governed by four permissions in `TntErpPermissions` —
+`TNT_API_DOC_INTERNAL_SALES_GOODS_RECEIVED_NOTE_CREATE/READ/UPDATE/DELETE_TGT_GUID`.
+
+## Fields
+
+### Main Details
+
+| Field | Meaning | Required | Notes |
+|---|---|---|---|
+| Branch | Branch the return is booked to | Yes | |
+| Location | Location within the branch | Yes | Filtered by branch |
+| Sales Agent | Agent credited with the return | Yes | |
+| Member Card | Loyalty card of the returning customer | Yes | Carries `Validators.required` and is rendered as a click-to-select field |
+| Customer | The returning entity | Yes | |
+| Credit Terms | Terms copied from the entity | Yes | Disabled until an entity is chosen — the screen shows *Entity ID must be selected first* |
+| Transaction Date | Document date | No | Defaults to today |
+| Due Date | Derived due date | No | |
+| Reference | Free-text reference | No | |
+| Remarks | Free-text note | No | |
+| Permit No | Permit reference | No | |
+| Currency | Document currency | No | |
+| Tracking ID | External tracking reference | No | |
+| Doc Type | Document type label | No | |
+| Tenant Doc No / Company Doc No / Branch Doc No | The three numbering levels | No | Assigned by document numbering |
+
+{{< callout type="warning" >}}
+**Member Card is a required control.** It is declared with `Validators.required` in
+`main-details.component.ts` and rendered in the template, so a GRN cannot be created for a customer
+who has no member card unless your tenant populates the field some other way. If this is not what
+your process expects, raise it — it is recorded as a product question.
 {{< /callout >}}
 
-**How to Configure Defaults:**
-1. Go to **Settings** from the sidebar
-2. Click **Default Selection**
-3. Select your **Default Branch** from the dropdown
-4. Select your **Default Location** (auto-filters by selected branch)
-5. Select your **Default Language**
-6. Click **Save**
+### Line sub-tabs
 
-**Personal Override:** Individual users can set their own personal defaults under **Personalization > Personal Default Selection**, which will override the system-wide defaults just for their account.
+Item Details, Serial Number, Batch Number, Bin Number, Costing Details, Pricing Details and Issue
+Link. Costing Details is additionally gated by the `SHOW_COSTING_DETAILS` client-side permission.
 
----
+## Lifecycle and effects
 
-### Printable Format Settings
+### Statuses
 
-Manage GRN print templates used to generate professional PDF documents for warehouse receiving and customer acknowledgement.
+`DRAFT` → `FINAL`. There is no VOID: the string `VOID` does not appear anywhere in the applet, and
+the listing's `onFinal()` simply patches `posting_status: 'FINAL'` on every selected row that is not
+already FINAL. Once a document is FINAL, RESET on the edit screen reports *This document has been
+posted*.
 
-| Field | Description |
-|-------|-------------|
-| **Format Code** | Short identifier for the template (e.g., GRN-STD) |
-| **Format Name** | Descriptive name (e.g., Standard GRN, Customer Copy GRN) |
-| **File Name** | The Jasper report filename on the server |
+DELETE removes a document outright, needs a second confirming click, and only appears when
+`SHOW_DOCUMENT_DELETE_BUTTON` is set on the applet's settings record.
 
-**How to Add a Printable Format:**
-1. Go to **Settings > Printable Format Settings**
-2. Click **"Add Printable Format"**
-3. Enter Format Code, Format Name, and File Name
-4. Save
+### Posting proof
 
-Once configured, warehouse staff can go to a GRN's **Export** tab and select the correct format to generate a PDF.
+| | |
+|---|---|
+| Server document type | `INTERNAL_SALES_GOODS_RECEIVED_NOTE` (short code `SLSGRN`) |
+| Amount signum | **0** |
+| Quantity signum | **0** |
+| Dr/Cr equation | None — the type has no `JournalPostingTypeHandler` entry |
+| GL precedence | Not applicable; no journal is produced |
+| Stock processor | None — quantity signum 0 means no `bl_inv_txn_line` is written |
+| What VOID reverses | Not applicable; the applet has no VOID |
 
----
+Evidence: `InternalSalesGoodsReceivedNoteDataConsistencyObject.java:17–18` sets both
+`correctAmountSignum` and `correctQuantitySignum` to `BigDecimal.ZERO`;
+`ServerDocTypes.java:30` records `INTERNAL_SALES_GOODS_RECEIVED_NOTE(0,0)`; the applet's own
+`applet-constants.ts` declares `amount_signum = 0` and `quantity_signum = 0`; and a search of
+`JournalPostingTypeHandler.java` returns no entry for this document type.
 
-### Webhook
+{{< callout type="info" >}}
+**The stock-moving relative.** The backend also defines `INTERNAL_SALES_GRN_STOCK_IN`
+(`InternalSalesGrnStockInDataConsistencyObject`: quantity signum **+1**, amount signum **−1**) and
+`INTERNAL_SALES_GIN_STOCK_OUT` (quantity **−1**, amount **+1**). Those are the document types that
+actually move stock on the sales side. They are handled by separate applets, which are not currently
+in the applet registry, so they are not documented here.
+{{< /callout >}}
 
-Configure webhook notifications to push GRN lifecycle events (create, update, finalize) to external systems.
+## Related applets
 
-**Common Use Cases:**
-- Trigger a 3PL (third-party logistics) notification when a GRN is finalized
-- Push return data to an ERP or accounting system
-- Send alerts to a Slack or Teams channel when a high-value return is recorded
+- [Sales GIN (Internal)](/applets/sales-workflow/internal-sales-gin-applet/) — the outbound twin, also 0/0.
+- [Sales Return (Internal)](/applets/sales-workflow/internal-sales-return-applet/) — the document that does bring goods back into stock and reverse the sale.
+- [Sales Credit Note (Internal)](/applets/sales-workflow/internal-sales-credit-note-applet/) — reduces what the customer owes after invoicing.
+- [Sales Invoice (Internal)](/applets/sales-workflow/internal-sales-invoice-applet/) and [Sales Order (Internal)](/applets/sales-workflow/internal-sales-order-applet/) — upstream documents whose lines the Select Item panel can pull.
 
----
+## Troubleshooting
 
-### Permissions
+| Symptom | Cause | Fix |
+|---|---|---|
+| CREATE stays greyed out | One of the five required Main Details fields is empty: Branch, Location, Sales Agent, Member Card, Customer — or Credit Terms | Fill all five; Credit Terms unlocks only after the customer is chosen |
+| *Entity ID must be selected first* under Credit Terms | The customer has not been picked yet | Choose the customer on Main Details first |
+| Stock balance did not change after FINAL | Expected — this document type has quantity signum 0 | Use [Sales Return (Internal)](/applets/sales-workflow/internal-sales-return-applet/) if stock must move |
+| No journal appeared after FINAL | Expected — the type is not in the journal posting handler | Raise a credit note if the receivable must be reduced |
+| *This document has been posted* when clicking RESET | Posting status is FINAL | FINAL is one-way in this applet; there is no VOID |
+| No DELETE button on the edit screen | `SHOW_DOCUMENT_DELETE_BUTTON` is not set on the applet settings record | Ask an administrator to set it |
+| The Contra / Settlement / Export hide toggles are missing from Application Settings | `internalSalesGRNApplet` is not in the shared screen's `tabMappings`, so those sections never render | The tabs themselves still work; only their hide toggles are unreachable |
 
-Control who can access and perform actions within the Sales GRN (Internal) Applet. The system supports granular permission management:
+## Related documentation
 
-| Permission Type | Description |
-|----------------|-------------|
-| **Permission Set** | Define named groups of permissions (e.g., "Warehouse Operator", "Finance Manager") |
-| **User Permission** | Assign or restrict access for individual named users |
-| **Client-Side Permission** | Control which UI buttons and fields are visible to each permission level |
-| **Team Permission** | Assign a permission set to an entire team |
-| **Role Permission** | Assign permissions across all users holding a specific role |
-
-**Recommended Permission Levels:**
-
-| Role | Recommended Permissions |
-|------|------------------------|
-| Warehouse Staff | Create GRN, Add Line Items, Add Attachments, View |
-| Finance Officer | Add Settlement, Add Contra, Finalize GRN, View |
-| Sales Manager | View All GRNs, Export, Run Line Items listing |
-| System Admin | Full Access including Settings and Permission Management |
-
----
-
-## Personalization {#personalization}
-
-The Personalization section lets individual users set preferences that override company-wide defaults for their account only.
-
-### Personal Default Selection
-
-Set your personal default **Branch**, **Location**, and **Language**. When you create a new GRN, these values pre-fill instead of the company-wide defaults from **Settings → Default Selection**.
-
-**How to set personal defaults:**
-1. Go to **Personalization** from the sidebar
-2. Click **Default Selection** (or **Personal Default Selection**)
-3. Select your preferred **Branch** and **Location**
-4. Select **Default Language** if shown
-5. Click **Save**
-
-**Who Should Use This?**
-- Warehouse staff who always work from one specific location
-- Finance officers who handle returns for one specific branch
-- Anyone who finds themselves changing the default fields on every GRN
-
----
-
-### Sidebar
-
-Customize your sidebar navigation layout to put your most-used features front and centre.
-
----
-
-## Common Scenarios
-
-### Scenario 1: Customer Returns a Faulty Product
-
-```
-Situation: Customer reports a cracked screen on a premium laptop.
-Action: Warehouse receives unit, Finance processes refund.
-
-1. Create GRN → Branch: HQ, Location: Main Warehouse
-2. Account → Select Customer: ABC Sdn Bhd
-3. Lines → Add Item: SKU-L001 (Laptop), Qty: 1, Unit Price: RM 2,400
-4. Serial Numbers → Enter: SN-LAPTOP-98765
-5. Attachments → Upload: Photo of cracked screen
-6. Finalize → Stock reinstated
-7. Settlement → Cash Back RM 2,400, Txn: CASH-20260302
-8. Contra → Link Invoice INV-2024-0550, Amount RM 2,400
-
-Result: Customer refunded, 1 unit back in stock, invoice fully offset.
-```
-
-### Scenario 2: Batch Return Due to Near-Expiry
-
-```
-Situation: Retailer returns 50 units of Product X, expiry approaching.
-
-1. Create GRN → Reference: "Expiry Return - Retailer ABC"
-2. Account → Select: Retailer ABC Distribution
-3. Lines → Add: Product X, Qty: 50, Batch: B-20240315, Expiry: 2024-06-30
-4. Costing Details → MAUC: RM 8.50/unit
-5. Finalize → 50 units returned to stock (batch-tracked)
-6. Settlement → Voucher RM 425 (50 × RM 8.50), Voucher: VCH-0099
-7. Contra → Link Delivery Order DON-2024-0120, Amount RM 425
-
-Result: 50 units restocked, retailer receives RM 425 voucher.
-```
-
-### Scenario 3: Partial Return — Customer Keeps Remainder
-
-```
-Situation: Customer ordered 10 units, 3 were wrong model.
-
-1. Create GRN → Reference: Original SO-2024-0887
-2. Add 3 Line Items (only the 3 mismatched units)
-3. Scan 3 serial numbers (not the 7 retained units)
-4. Settlement → Voucher RM 900 (3 × RM 300)
-5. Contra → Link Invoice INV-2024-0887 for RM 900 (partial offset)
-6. Finalize → 3 units restocked; 7 remain with customer
-
-Result: Partial return resolved; original invoice reduced by RM 900.
-```
-
-### Scenario 4: B2B Return with GL Dimension Allocation
-
-```
-Situation: Enterprise client returns goods to be charged to specific cost centre.
-
-1. Create GRN → Standard header fields
-2. Lines → Add returned items
-3. Department Hdr tab → Set:
-   - Segment: Retail Division
-   - Profit Centre: PC-KL-001
-   - Project: Q1-Returns-2026
-4. Settlement → Cheque CHQ-20260315 for full value
-5. Contra → Link posted invoice
-6. Finalize → Return costs allocated to the correct GL dimension
-
-Result: Finance can track return costs against the correct profit centre.
-```
-
----
-
-## FAQ
-
-**Q: What is the difference between a Sales GRN and a Sales Return Note (Credit Note)?**
-A: A **Sales GRN (Goods Return Note)** records the physical receipt of returned goods and triggers inventory reinstatement. A **Sales Return / Credit Note** is the financial document that adjusts the customer's account balance. In this applet, the GRN handles both the stock movement (via line items) and the financial resolution (via settlements and contra entries) — making it the single source of truth for the entire return.
-
-**Q: Does finalizing a GRN automatically update stock levels?**
-A: Yes. Once a GRN is finalized, the system automatically restocks the returned quantities at the specified Branch and Location. Draft GRNs do not affect inventory.
-
-**Q: Can I link a GRN to multiple original invoices at once?**
-A: Yes. The **Contra** tab supports multiple contra entries. You can link a single GRN to several source documents by clicking **"Add Contra"** multiple times, once for each originating document.
-
-**Q: What happens if I enter the wrong serial number?**
-A: The system validates serial numbers in real time. An invalid serial number will trigger a "The serial number is invalid" error immediately. Correct the entry before saving the line item.
-
-**Q: Can I create a GRN for a customer without a Member Card?**
-A: **Member Card** is used for loyalty-linked returns. Whether it is optional or required depends on your **Application Settings** and business rules—if the form blocks **CREATE** until a member is selected, pick the member from **Select Member**; otherwise leave it blank when the return is not membership-related.
-
-**Q: How do I print a GRN document to give to the customer as a return acknowledgement?**
-A: Open the GRN, go to the **Export** tab, and select the appropriate **Printable Format**. Click **Export as PDF** to generate the document. Ensure that at least one Printable Format has been configured under Settings first.
-
-**Q: Can I edit a GRN after it has been finalized?**
-A: Finalized GRNs are locked and cannot be directly edited to protect the integrity of posted inventory and financial records. If a correction is needed after finalization, contact your system administrator — a reversal or adjustment entry may be required.
-
-**Q: What does the "Posting Status" mean in the GRN listing?**
-A: Posting Status reflects the financial processing state of the return:
-- **Draft** — Created but not finalized; no stock or financial impact yet
-- **Posted** — Financially processed; stock has been updated and accounts posted
-- **Finalized** — Fully locked; all actions completed
-
-**Q: How do I handle a return where the customer's original currency was USD but we operate in MYR?**
-A: Select the appropriate **Currency** in the GRN header when creating the document. The applet supports multi-currency transactions. Ensure your system's currency settings and exchange rates are configured before processing foreign-currency returns.
-
-**Q: Can I prevent specific users from finalizing GRNs?**
-A: Yes. Use the **Permission** settings under **Configuration & Settings** to assign restrictive permissions to specific users or roles. You can grant Create and Edit access without granting Finalize access, ensuring a second person (e.g., a finance supervisor) must finalize after warehouse staff completes the data entry.
-
-**Q: What's the difference between a GRN and a regular stock adjustment?**
-A: A GRN specifically tracks returns from customers with full traceability back to the original sale, including financial settlement and contra entries. A stock adjustment is a general inventory correction that doesn't link to customer transactions or require financial reconciliation.
-
-**Q: Can I bulk import GRNs from Excel or CSV?**
-A: **No.** This applet does not include a **File Import** menu. GRNs are created individually in **Internal Sales GRN** so receipt, line detail, and evidence can be verified per return.
-
-**Q: How long should we keep GRN records?**
-A: Follow your company's document retention policy, typically 7 years for financial and tax compliance. Finalized GRNs are locked and cannot be deleted, ensuring a complete audit trail.
-
-**Q: What happens if a customer returns goods after the cut-off period?**
-A: The system typically allows GRN creation but may flag it for manager approval if the return date is beyond policy limits. Check your company's returns policy — most allow 30-90 days from original purchase.
-
-**Q: Can I create a GRN for goods that were never sold (e.g., free samples being returned)?**
-A: The system is designed for returns against sales transactions. For sample returns or other non-sales scenarios, consult your finance team about the correct accounting process — this may require a different document type.
+- [Sales Workflow applets](/applets/sales-workflow/)
+- [Inventory module](/modules/inventory/)

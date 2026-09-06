@@ -64,7 +64,7 @@ It is a configuration applet, not a document applet: nothing here posts to stock
 | Front end | Customer Portal web and mobile app (the `wavelet-cp-commerce` cross-platform app); the **Website Builder** dashboard the applet opens | Reads the website's layouts, menus, images, agreements and auth configuration configured here. |
 | Master data | [Organisation](/applets/master-data/organisation-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Pricebook](/applets/master-data/pricebook-applet/), [Shipping Pricebook](/applets/master-data/shipping-pricebook-applet/), [Cashbook](/applets/master-data/cashbook-applet/) | Branch and merchant, items, pricing schemes / price books, shipping price books, settlement methods. |
 | Customers and members | [Customer](/applets/master-data/customer-applet/), [Membership Admin](/applets/membership/membership-admin-applet/) | Post Registration Config creates the customer and/or membership; the Account tab links entities to a gated website; Spending Limit applies per member class. |
-| Promotions | [Voucher Management](/applets/membership/voucher-management-applet/), [Commission Scheme](/applets/sales-workflow/commission-scheme-applet/) | Linked to a website on their own tabs. |
+| Promotions | [Voucher Management](/applets/membership/voucher-management-applet/), [Commission Scheme](/applets/membership/commission-scheme-applet/) | Linked to a website on their own tabs. |
 | Orders | [Shopping Cart](/applets/ecommerce/shopping-cart-applet/), [Shopping Cart Customer Access](/applets/ecommerce/internal-shopping-cart-customer-access-applet/) | Checkout produces the sales order; the website's *Sales Order Printable Format* is used for the customer's order document. |
 | Catalogue | [E-Commerce Catalog](/applets/ecommerce/ecommerce-catalog-applet/), [PDG](/applets/ecommerce/pdg-applet/), [Seller Admin](/applets/ecommerce/seller-admin-applet/) | Product data shown on the storefront. |
 | Events | [Events Management](/applets/crm/events-management-applet/) | Fuller event workflow; this applet's Activities group covers facilities, activities, calendars and scheduling for the portal. |
@@ -697,7 +697,7 @@ Link and manage discount vouchers and promotional coupons that customers can use
 <a id="commission-scheme-tab-deep-dive"></a>
 ##### Commission Scheme Tab
 
-Define how sales commissions are calculated for agents or affiliates linked to this website. For full commission configuration details, see the [Commission Scheme Applet](/applets/sales-workflow/commission-scheme-applet/).
+Define how sales commissions are calculated for agents or affiliates linked to this website. For full commission configuration details, see the [Commission Scheme Applet](/applets/membership/commission-scheme-applet/).
 
 | Field | Purpose | Required |
 |-------|---------|----------|
@@ -1061,7 +1061,7 @@ The create and edit forms are documented tab by tab above under *Screens and men
 - [Shopping Cart](/applets/ecommerce/shopping-cart-applet/) and [Shopping Cart Customer Access](/applets/ecommerce/internal-shopping-cart-customer-access-applet/) — the checkout that the storefront drives.
 - [E-Commerce Catalog](/applets/ecommerce/ecommerce-catalog-applet/), [PDG](/applets/ecommerce/pdg-applet/), [Seller Admin](/applets/ecommerce/seller-admin-applet/) — catalogue and seller data behind the products.
 - [Membership Admin](/applets/membership/membership-admin-applet/) — membership classes, points and member labels used by Post Registration Config, Spending Limit and Topics.
-- [Voucher Management](/applets/membership/voucher-management-applet/), [Commission Scheme](/applets/sales-workflow/commission-scheme-applet/) — linked on their website tabs.
+- [Voucher Management](/applets/membership/voucher-management-applet/), [Commission Scheme](/applets/membership/commission-scheme-applet/) — linked on their website tabs.
 - [Events Management](/applets/crm/events-management-applet/) — the fuller event workflow.
 - [Customer](/applets/master-data/customer-applet/), [Organisation](/applets/master-data/organisation-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Pricebook](/applets/master-data/pricebook-applet/), [Shipping Pricebook](/applets/master-data/shipping-pricebook-applet/), [Cashbook](/applets/master-data/cashbook-applet/) — master data the website references.
 
