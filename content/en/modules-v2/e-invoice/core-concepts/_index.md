@@ -5,7 +5,7 @@ weight: 20
 bookCollapseSection: false
 ---
 
-Understanding core e-invoicing concepts is essential before connecting government tax authority APIs or establishing PEPPOL access points. These concepts explain **how commercial billing data is validated by tax authorities in real-time** and how digital signatures protect compliance integrity.
+This is the architecture layer: how commercial billing data is validated by tax authorities in real time, and how documents are signed and routed. If you are looking for the plain-English meaning of *consolidated e-invoice*, *pool* or *validation*, start at [Concepts](/modules-v2/e-invoice/concepts/) instead — this page assumes them.
 
 ## The E-Invoice Validation & Clearance Lifecycle
 
@@ -33,6 +33,7 @@ While government tax APIs handle local country tax compliance, the **PEPPOL (Pan
 
 ## What to Read Next
 
+- **[Concepts](/modules-v2/e-invoice/concepts/)** — the plain-English layer underneath this one: consolidated e-invoices, pools and queues, validation and clearance.
 - **[Configuration](/modules-v2/e-invoice/configuration/)** — Set up tax registrations, intermediary authorisation and classification codes.
 - **[MyInvois Setup](/guides/einvoice-guides/myinvois-setup/)** — the same ground as a step-by-step guide, if you are the one doing it.
 - **[Use Cases](/modules-v2/e-invoice/use-cases/)** — Review reference architectures for commercial B2B billing, consolidated retail POS, and foreign self-billing.

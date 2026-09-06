@@ -17,11 +17,13 @@ GadgetSphere Sdn Bhd runs 22 consumer-electronics branches across Malaysia, plus
 
 ## What you need to know first
 
-**Consolidated e-invoice.** One e-invoice that reports many small receipts together, with the buyer recorded as "General Public". This is how B2C counter sales are reported. Sales of **RM 10,000 or more cannot go inside one** — they need an individual e-invoice with a real buyer identity.
+Three ideas do all the work in this cycle. If any of them is new to you, read it first — two minutes each, and the rest of this page follows on its own.
 
-**The pools.** Documents that could not be submitted are parked in one of three holding areas — the Batch Pool (waiting for consolidation), the Individual Pool and the Single General Pool. Only the Batch Pool empties itself. See [Pools & Submission Routing](/guides/einvoice-guides/einvoice-pools-and-routing/) for how a document gets to each one.
+- **[Consolidated e-invoices](/modules-v2/e-invoice/concepts/consolidated-e-invoice/)** — how a month of counter receipts is reported in one document, and why a sale of RM 10,000 or more can never be one of them.
+- **[Pools and queues](/modules-v2/e-invoice/concepts/pools-and-queues/)** — which holding areas empty themselves and which wait for you. Steps 1 and 2 below are entirely about the ones that wait.
+- **[Validation and clearance](/modules-v2/e-invoice/concepts/validation-and-clearance/)** — what Submitted, Valid and Invalid actually mean, and why Submission History is not a status screen.
 
-**Two exports, only one of which tells you the truth.** *Internal Submission → To IRB E-Invoice* carries the **live** LHDN status. *Internal Submission → Submission History* is a snapshot taken at the moment of submission — it will keep saying "Submitted" forever, even for documents LHDN later marked Invalid. Work from the first one.
+The one you have to have straight before you start is the last: *Internal Submission → To IRB E-Invoice* carries the **live** LHDN status, and *Internal Submission → Submission History* does not. Work from the first one.
 
 {{< callout type="warning" >}}
 The single most expensive mistake in this whole cycle is filtering your Invalid list out of Submission History. You will get a list that looks fine while real rejections sit unfixed.

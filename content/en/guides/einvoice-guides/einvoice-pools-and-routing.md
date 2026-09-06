@@ -18,6 +18,8 @@ GadgetSphere Sdn Bhd runs 22 consumer-electronics branches. The overwhelming maj
 **Nothing is submitted at the moment you press Save.** Finalising a document puts it in a queue; a background processor picks it up and sends it. Everything on this page happens after you have walked away from the screen.
 {{< /callout >}}
 
+This page assumes two ideas rather than explaining them: what a [consolidated e-invoice](/modules-v2/e-invoice/concepts/consolidated-e-invoice/) is, and how a [pool differs from a queue](/modules-v2/e-invoice/concepts/pools-and-queues/).
+
 ## Submission types
 
 Each document carries an **e-invoice submission type** that drives the routing:
@@ -60,27 +62,21 @@ When a document is finalised, BigLedger checks its submission type, amount, and 
 
 *Example:* GadgetSphere Sdn Bhd's POS cash bills are marked Consolidated — they flow into the Batch Pool and are swept into the monthly consolidated e-invoice. A corporate customer buying RM 18,000 of equipment on the same day is above the threshold, so that invoice must go out individually, with the customer's real TIN.
 
-## The three pools
+## What you can do in each pool
 
-A **pool** is a holding area for documents that could not be submitted yet. Each behaves differently:
+The table above says which pool a document lands in; [Pools and queues](/modules-v2/e-invoice/concepts/pools-and-queues/) says why the three behave differently. What follows is what you can actually do once a document is in one.
 
 ### Batch Pool
 
-- **Who lands here:** Consolidated documents (and unset-type documents with incomplete data) under RM 10,000.
-- **Default outcome:** if you do nothing, the document is included in the next **consolidated e-invoice** run — no action needed for normal B2C sales.
-- **Available actions:** fix buyer data and resubmit as an individual e-invoice; move to the Individual or Single General pool; consolidate on demand (by date range, by branch, or by selected documents); or skip e-invoicing for the document.
+Fix the buyer's data and resubmit the receipt as an individual e-invoice; move it to the Individual or Single General pool; consolidate on demand (by date range, by branch, or by selected documents); or skip e-invoicing for the document. Most rows need none of this — they are waiting for the monthly run and that is correct.
 
 ### Individual Pool
 
-- **Who lands here:** documents meant for individual submission that are missing required information (and any ≥ RM 10,000 document with incomplete data).
-- **Default outcome:** **stays here until fixed** — these documents need your attention.
-- **Available actions:** complete the buyer details and resubmit; or, if you cannot obtain the buyer's details, move the document to the Batch Pool so it is consolidated instead — but do this **before** the scheduled monthly consolidation run.
+Complete the buyer details and resubmit. If you cannot obtain the buyer's details at all, move the document to the Batch Pool so it is consolidated instead — but do this **before** the scheduled monthly consolidation run, or it is stranded in a closed month.
 
 ### Single General Pool
 
-- **Who lands here:** documents marked Single General with incomplete data.
-- **Purpose:** for cases where buyer data is unlikely to be obtainable but you still want one individual submission attempt first.
-- **Available actions:** fix and resubmit as individual; if that submission fails or is invalid, resubmit the document as a **single-document consolidated e-invoice**; or move it to another pool.
+Fix and resubmit as individual; if that submission fails or comes back Invalid, resubmit the document as a **single-document consolidated e-invoice**; or move it to another pool. This pool exists for sales where the buyer's data is unlikely ever to arrive but you still want one individual attempt first.
 
 ### Pool comparison
 

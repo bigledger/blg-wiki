@@ -8,7 +8,15 @@ The **E-Invoice & PEPPOL Module** is BigLedger's tax compliance and global elect
 
 ## Start here
 
-If you are here to *do* something rather than to understand the architecture, go straight to the guide that matches the job:
+**New to e-invoicing?** Start with the three concepts every guide assumes. They answer *what is this and why does it exist* — no screens, no steps, about two minutes each.
+
+{{< cards >}}
+  {{< card link="/modules-v2/e-invoice/concepts/consolidated-e-invoice/" title="Consolidated e-invoices" subtitle="A month of counter receipts in one document, and the RM 10,000 line it cannot cross" >}}
+  {{< card link="/modules-v2/e-invoice/concepts/pools-and-queues/" title="Pools and queues" subtitle="A pool holds what cannot be sent; a queue holds what is on its way" >}}
+  {{< card link="/modules-v2/e-invoice/concepts/validation-and-clearance/" title="Validation and clearance" subtitle="What LHDN decides, what Valid closes off, and where the 72-hour clock starts" >}}
+{{< /cards >}}
+
+**Here to *do* something?** Go straight to the guide that matches the job:
 
 {{< cards >}}
   {{< card link="/guides/einvoice-guides/malaysia-e-invoice-guide/" title="What Malaysia Requires" subtitle="The background — phased rollout, what LHDN puts on an e-invoice, and how validation works" >}}
@@ -107,17 +115,18 @@ Confusing e-invoice submission types leads to tax audit penalties and clearance 
 
 Follow the documentation in this sequence to master the E-Invoice & PEPPOL Module:
 
-1. **[Core Concepts](core-concepts/)** *(Next Step)* — Understand real-time API clearance, QR cryptographic stamps, and PEPPOL network routing.
-2. **[Configuration](configuration/)** — Step-by-step setup for tax registrations, intermediary authorisation and classification mapping.
-3. **[Use Cases](use-cases/)** — Real-world reference architectures for B2B commercial billing, consolidated retail POS, and foreign self-billing.
-4. **[API Reference](api-reference/)** — Direct reference link to official developer e-invoice APIs.
-5. **[Best Practices](best-practices/)** — Operational recommendations for rejection handling, master-data hygiene and monthly reconciliation.
-6. **[Reports & Analytics](reports/)** — Scenario guide for choosing the best tax clearance and audit submission reports.
-7. **[Related Applets](related-applets/)** — Complete guide to native applet dependencies across the BigLedger ecosystem.
+1. **[Concepts](/modules-v2/e-invoice/concepts/)** *(Next Step)* — What a consolidated e-invoice, a pool and an LHDN validation actually are, in plain English.
+2. **[Core Concepts](/modules-v2/e-invoice/core-concepts/)** — The architecture underneath them: real-time API clearance, QR cryptographic stamps, and PEPPOL network routing.
+3. **[Configuration](/modules-v2/e-invoice/configuration/)** — Step-by-step setup for tax registrations, intermediary authorisation and classification mapping.
+4. **[Use Cases](/modules-v2/e-invoice/use-cases/)** — Real-world reference architectures for B2B commercial billing, consolidated retail POS, and foreign self-billing.
+5. **[API Reference](/modules-v2/e-invoice/api-reference/)** — Direct reference link to official developer e-invoice APIs.
+6. **[Best Practices](/modules-v2/e-invoice/best-practices/)** — Operational recommendations for rejection handling, master-data hygiene and monthly reconciliation.
+7. **[Reports & Analytics](/modules-v2/e-invoice/reports/)** — Scenario guide for choosing the best tax clearance and audit submission reports.
+8. **[Related Applets](/modules-v2/e-invoice/related-applets/)** — Complete guide to native applet dependencies across the BigLedger ecosystem.
 
 ---
 
 {{< callout type="info" >}}
-**Ready to explore tax compliance architecture?**  
-Proceed to **[Core Concepts →](core-concepts/)** to understand e-invoice clearance lifecycles and cryptographic validation.
+**Not sure where to begin?**  
+Read **[Concepts →](/modules-v2/e-invoice/concepts/)** first — three short pages that make every guide on this module readable. Then **[Core Concepts →](/modules-v2/e-invoice/core-concepts/)** for the clearance lifecycle and the cryptographic validation behind them.
 {{< /callout >}}

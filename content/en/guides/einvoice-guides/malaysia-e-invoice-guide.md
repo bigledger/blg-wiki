@@ -63,7 +63,7 @@ There are two routes, and which one you are on changes what you have to do:
 ## What happens after you submit
 
 1. **Submission.** BigLedger sends the e-invoice to LHDN. Your document status becomes *Submitted*.
-2. **Validation.** LHDN checks it and returns *Valid* or *Invalid*, along with a unique identifier for the validated document.
+2. **[Validation](/modules-v2/e-invoice/concepts/validation-and-clearance/).** LHDN checks it and returns *Valid* or *Invalid*, along with a unique identifier for the validated document.
 3. **Sharing.** The validated e-invoice — with its QR code — is what you give the buyer. BigLedger can e-mail it automatically.
 4. **The 72-hour window.** From validation, the supplier has 72 hours to cancel the e-invoice, and the buyer has 72 hours to reject it. After that neither is possible, and the only correction is a credit note. See [Cancelling and Correcting a Validated E-Invoice](/guides/einvoice-guides/einvoice-cancel-and-correct/).
 
@@ -73,11 +73,11 @@ There are two routes, and which one you are on changes what you have to do:
 
 ## Consolidated e-invoices, and why retailers care
 
-You do not issue an individual e-invoice for every walk-in sale. Receipts where the buyer did not give their details are reported together in a **consolidated e-invoice**, with the buyer recorded as General Public, and it must reach LHDN **by the 7th of the following month**.
+You do not issue an individual e-invoice for every walk-in sale. Receipts where the buyer did not give their details are reported together in a [consolidated e-invoice](/modules-v2/e-invoice/concepts/consolidated-e-invoice/) — one document, the buyer recorded as General Public, due at LHDN **by the 7th of the following month**.
 
-A 22-branch electronics retailer like GadgetSphere Sdn Bhd therefore reports roughly 38,000 counter receipts a month through a handful of consolidated e-invoices, and the couple of hundred larger sales individually.
+For a 22-branch electronics retailer like GadgetSphere Sdn Bhd that is the difference between a small set of documents somebody can actually check before the 7th and roughly 38,000 that nobody can.
 
-The one hard line: a sale of **RM 10,000 or more cannot be consolidated**. It needs an individual e-invoice with the buyer's real identity — which in practice means asking for it at the counter, because chasing it a week later rarely works. [Pools & Submission Routing](/guides/einvoice-guides/einvoice-pools-and-routing/) explains how BigLedger sorts the two apart automatically.
+The one line to plan around: a sale of **RM 10,000 or more can never be consolidated**. It needs an individual e-invoice with the buyer's real identity — which in practice means asking for it at the counter, because chasing it a week later rarely works. [Pools & Submission Routing](/guides/einvoice-guides/einvoice-pools-and-routing/) explains how BigLedger sorts the two apart automatically.
 
 ## Where to go next
 
