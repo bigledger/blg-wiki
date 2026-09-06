@@ -81,8 +81,6 @@ When requisition, register, and reporting are managed in separate tools, teams f
   {{< card title="Personalization" subtitle="Personal defaults and sidebar preferences" link="#personalization" >}}
 {{< /cards >}}
 
-{{< figure src="/images/investment-applet/investment-applet-overview-infographic.png" alt="Investment Applet overview placeholder showing Deposit Requisition, Deposit Register, Category, and Reports flow" caption="Investment Applet operational flow (placeholder image path ready for design handoff)." >}}
-
 ## Key Concepts
 
 ### Investment Flow Structure

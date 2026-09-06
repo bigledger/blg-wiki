@@ -60,7 +60,6 @@ This applet solves that by providing:
 - **KO-based picking** from upstream sales documents so users do not retype every item.
 - **Audit-ready history** for warehouse, sales, and finance.
 
-
 ---
 
 ## Before You Start
@@ -111,8 +110,6 @@ This applet does not expose a separate VOID or DISCARD action in the current UI.
 ## Key Concepts
 
 ### GIN Stock Out Lifecycle
-
-![GIN lifecycle](/images/internal-sales-gin-stock-out-applet/internal-sales-gin-stock-out-doc-lifecycle.png)
 
 ### Three-Way Traceability
 
@@ -405,7 +402,6 @@ A: Use the GIN as the stock-out reference for sales invoice work, delivery follo
 - **[Sales Invoice Applet](/applets/sales-workflow/internal-sales-invoice-applet/)** - downstream billing document that uses the issued stock record.
 - **[Sales Return Applet](/applets/sales-workflow/internal-sales-return-applet/)** - correction path when issued goods need to come back.
 - **[Purchase-style KO source documents](/applets/purchase-workflow/)** - the same knock-off concept appears in other workflows and can help users understand the pattern.
-
 
 ### Create a GIN
 

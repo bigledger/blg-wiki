@@ -137,8 +137,6 @@ This hierarchical structure enables:
 
 ### 1. Budget Item Management
 
-![Budget Item Listing](/images/budgetary-module/budgetary-module-01.png)
-
 #### Why Budget Items Are Critical
 
 Budget Items form the foundation of your entire budget management system. Without them, you can't consistently track what money is spent on, compare across departments, or generate meaningful reports.
@@ -757,8 +755,6 @@ Status: Active
 {{< /callout >}}
 
 ### 4. Votebook Management
-
-![Votebook Management](/images/budgetary-module/budgetary-module-04.png)
 
 #### What Is a Votebook?
 

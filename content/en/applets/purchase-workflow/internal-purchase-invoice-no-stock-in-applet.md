@@ -138,10 +138,6 @@ Menu items: **Internal Purchase Invoice No Stock In** (listing), **Line Items** 
 
 **Listing.** Columns (each governed by a `HIDE_*` setting with a matching `SHOW_*` permission): Doc Short Code (`PURINVNSI`), E-Invoice Running No. and E-Invoice Date, Doc No (Tenant / Company / Branch), Branch, Transaction Date, Client Doc Type and Client Doc 1–5, the AR/AP amount columns (PNS, Settlement, Doc Open, Contra, Balance), Amount, the five External document numbers with their dates, Description, Document Links, Reference, Posting Status, Status, Currency. Toolbar: **FINAL** (multi-select, every row DRAFT), **DISCARD** (DRAFT rows), **VOID** (FINAL rows), **SINGLE/MULTIPLE PRINT** (needs `PRINTABLE`), and **SELF-BILLED**. `DEFAULT_TRANSACTION_DATE`, `DEFAULT_POSTING_STATUS`, `DEFAULT_STATUS`, `SORT_ORDER` and `FUZZY_SEARCH_COLUMNS` shape the initial query; the filter panel adds Supplier, Company, date ranges (transaction, created, updated, e-Invoice billing period, e-Invoice date, external document dates) and Order By.
 
-{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/invoice-listing.png" alt="Purchase Invoice No Stock In listing with FINAL, DISCARD, VOID, print and SELF-BILLED buttons" caption="Listing, staging tenant with test documents. Every column is a HIDE_* setting paired with a SHOW_* permission." >}}
-
-{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/listing-search-filter-extended.png" alt="Listing filter panel with e-Invoice billing period, e-Invoice date and external document date ranges" caption="Filter panel: e-Invoice and external-document date ranges added in 2026 (intranet #4717)." >}}
-
 **Create form** tabs: Main Details, Account, Line Items, Delivery Details, Payment, KO For, Department Hdr (the last four hide with `HIDE_DELIVERY_DETAILS_TAB`, `HIDE_MAIN_PAYMENT_TAB`, `HIDE_KO_FOR_TAB`, `HIDE_DEPARTMENT_HDR_TAB`). The intercompany *Search* tab is commented out of the template even though `SHOW_INTERCOMPANY_PI_SCREEN` is still read. **CREATE** is enabled when Main Details is valid, a supplier is selected and at least one line exists (`disableCreate()`).
 
 {{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/create-main-details.png" alt="Create form Main Details tab with the branch picker open" caption="Main Details: Branch and Location are required; Delivery Branch / Location default to them." >}}
@@ -150,11 +146,7 @@ Menu items: **Internal Purchase Invoice No Stock In** (listing), **Line Items** 
 
 {{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/create-search-document.png" alt="Search Document tab with the Search Purchase Invoice sub-tab and CLONE button" caption="Search Document: the Search Purchase Invoice sub-tab clones an existing PI No Stock In (optionally with attachments)." >}}
 
-{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/edit-e-invoice-tab.png" alt="E-Invoice tab with Submission Type, Document No, Document Type, E-invoice Number, UUID and billing period fields" caption="E-Invoice tab. The fields render, but the backend submission pipeline does not recognise this document type (see Document behaviour settings)." >}}
-
 **Line editor** (Add / Edit Line Item): Item Details (Main Details, Delivery Instruction, Department, Doc Link, Delivery Details, Multi Discount, Related Documents), Serial Number / Batch Number / Bin Number (by the item's `sub_item_type`), Costing Details, Pricing Details, Issue Link, Group Item. The Lines tab offers Search Item (item types BASIC_ITEM, MADE_TO_ORDER, BUNDLE, NSTI, VOUCHER, ACCOUNT_CODE), a *Landed Cost* amount with **ALLOCATE** / **CONFIRM**, and KO sub-tabs per enabled flow row.
-
-{{< figure src="/images/Purchase-Invoice-No-Stock%20In-applet/create-line-items-select-item.png" alt="Line Items tab with the Select Item dialog and its Item Type filter" caption="Line Items: Search Item with the Item Type filter; Landed Cost allocation controls above the grid." >}}
 
 **Settings** menu (System Configuration): Application Settings, Default Selection, Printable Format Settings, Branch Settings; the routes also expose Knock Off Settings, Webhook, Feature Visibility, Release Notes, Applet Log and the shared permission listings (client-side permission, permission wizard, permission set, user / team / role permission, role pricing scheme link). **Personalization**: Default Selection and Sidebar.
 

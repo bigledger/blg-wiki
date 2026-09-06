@@ -18,6 +18,7 @@ fi
 baseline=$(cat tests/internal-links-baseline.txt 2>/dev/null || echo 999999)
 out=$(python3 - <<'PY'
 import re,os,collections,glob
+from urllib.parse import unquote
 SITE='https://wiki.bigledger.com'
 targets=set()
 for f in glob.glob('public/**/*.html',recursive=True):
@@ -30,7 +31,7 @@ bad=collections.Counter()
 for f in glob.glob('public/**/*.html',recursive=True):
     s=open(f,encoding='utf-8',errors='ignore').read()
     for m in re.findall(r'(?:href|src)=(?:"([^"]+)"|\'([^\']+)\'|([^\s>]+))',s):
-        h=(m[0] or m[1] or m[2]).split('#')[0].split('?')[0]
+        h=unquote((m[0] or m[1] or m[2]).split('#')[0].split('?')[0])
         if h.startswith(SITE): h=h[len(SITE):]
         elif not h.startswith('/'): continue
         if not h: continue
