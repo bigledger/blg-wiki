@@ -205,6 +205,32 @@ planning/
 **Structural changes to `content/en/` (renames, moves, new sections) require an approved
 spec in `planning/specs/` that cites its ADR.** Discuss first, decide, spec, then edit.
 
+## 🗃️ Three streams, not one inbox
+
+A finding is one of three things, and they go to different places. Routing it correctly is what
+makes each stream reviewable.
+
+| It is… | Goes to | Looks like |
+|---|---|---|
+| Something **only Vincent can answer** — a decision, a confirmation, a fact only BigLedger holds | `planning/questions/` | "Is this deliberate or a bug?" · "May we publish X?" · "Do we hold that certification?" |
+| A **defect or enhancement in the product** | `planning/product/` | An authorisation hole, a processor that posts nothing, a screen that cannot work |
+| A **mistake in the wiki** | `planning/feedback/inbox.md` | Wrong menu path, stale screenshot, invented feature on a page |
+
+Source ambiguity an agent could settle by reading more stays in `kb/questions/` — it is not
+Vincent's problem until someone has tried.
+
+**`planning/questions/INDEX.md` is the review surface.** Vincent asks to see the questions from
+time to time and answers in batches; keep it ordered by what it costs to leave each one open, and
+keep each line short enough to answer in a sentence. Answered questions move to
+`questions/answered/` with the answer and the date — the question plus its answer is the record of
+why the wiki says what it says.
+
+**`planning/product/INDEX.md` is written to be filed.** Vincent, 2026-09-06: *"we will then create
+issues for these separately, for the programmers or ai-agents (different ai agent, not you) to work
+on them."* **We do not fix product defects.** We record them issue-shaped — title, severity,
+evidence with file:line, repro, blast radius, suggested fix — and we document what the system
+actually does today, not what it should do. When a fix ships, the page changes with it.
+
 ## 🚫 Verify or unpublish — ADR-0008
 
 Vincent, 2026-09-06: *"some of the information in blg-wiki right now is not correct / inaccurate…
