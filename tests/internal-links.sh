@@ -9,6 +9,12 @@
 set -uo pipefail
 cd "$(dirname "${BASH_SOURCE[0]}")/.."
 [ -d public ] || { echo "internal-links: no public/ — run hugo first"; exit 1; }
+# A public/ left over from `hugo server` is a partial tree and gives a falsely clean result.
+if grep -rqls '/livereload.js' public --include='*.html' 2>/dev/null; then
+  echo "internal-links: public/ is from a 'hugo server' run (livereload.js present)."
+  echo "  Run: hugo --gc --minify --cleanDestinationDir   then re-run this check."
+  exit 1
+fi
 baseline=$(cat tests/internal-links-baseline.txt 2>/dev/null || echo 999999)
 out=$(python3 - <<'PY'
 import re,os,collections,glob

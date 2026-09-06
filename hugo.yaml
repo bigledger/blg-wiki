@@ -145,124 +145,119 @@ menu:
     - identifier: user-guide
       name: User Guide
       weight: 1
-      pageRef: /user-guide-v2
-      
+      url: /user-guide-v2/
     # 2. Modules - Complete list of all modules
     - identifier: modules
       name: Modules
       weight: 2
       hasChildren: true
-      pageRef: /modules
-      
+      url: /modules/
     # Modules Overview
     - identifier: modules-overview
       name: All Modules
       parent: modules
-      pageRef: /modules
+      url: /modules/
       weight: 1
       
     # Core Module
     - identifier: core-module
       name: Core Module
       parent: modules
-      pageRef: /modules/core
+      url: /modules/core/
       weight: 10
       
     # Financial Accounting Module
     - identifier: accounting-module
       name: Financial Accounting Module
       parent: modules
-      pageRef: /modules/financial-accounting
+      url: /modules/financial-accounting/
       weight: 20
       
     # Point of Sales Module
     - identifier: pos-module
       name: Point of Sales Module
       parent: modules
-      pageRef: /modules/pos
+      url: /modules/pos/
       weight: 30
       
     # E-Commerce Module
     - identifier: cp-commerce-module
       name: E-Commerce Module
       parent: modules
-      pageRef: /modules/ecommerce
+      url: /modules/ecommerce/
       weight: 35
       
     # Membership & Loyalty Module
     - identifier: membership-module
       name: Membership & Loyalty Module
       parent: modules
-      pageRef: /modules/membership
+      url: /modules/membership/
       weight: 40
       
     # Purchasing Module
     - identifier: purchasing-module
       name: Purchasing Module
       parent: modules
-      pageRef: /modules/purchasing
+      url: /modules/purchasing/
       weight: 45
       
     # Inventory & Warehouse Module
     - identifier: inventory-module
       name: Inventory & Warehouse Module
       parent: modules
-      pageRef: /modules/inventory
+      url: /modules/inventory/
       weight: 50
       
     # Manufacturing Module
     - identifier: manufacturing-module
       name: Manufacturing Module
       parent: modules
-      pageRef: /modules/manufacturing
+      url: /modules/manufacturing/
       weight: 55
       
     # E-Invoice Module
     - identifier: e-invoice-module
       name: E-Invoice Module
       parent: modules
-      pageRef: /modules/e-invoice
+      url: /modules/e-invoice/
       weight: 60
       
     # Claims Management Module
     - identifier: e-claim-module
       name: Claims Management Module
       parent: modules
-      pageRef: /modules/claims
+      url: /modules/claims/
       weight: 65
       
     # HR & Payroll Module
     - identifier: hr-payroll-module
       name: HR & Payroll Module
       parent: modules
-      pageRef: /modules/hr-payroll
+      url: /modules/hr-payroll/
       weight: 70
       
     # Digital CRM Module
     - identifier: digital-crm-module
       name: Digital CRM Module
       parent: modules
-      pageRef: /modules/crm-digital
+      url: /modules/crm-digital/
       weight: 75
       
     # 3. Applets - Complete list of applets with data sheets
     - identifier: applets
       name: Applets
       weight: 4
-      pageRef: /applets
-      
+      url: /applets/
     # 4. Developers - All developer resources
     - identifier: developers
       name: Developers
       weight: 5
-      pageRef: /developers
-      
+      url: /developers/
     # 5. Search - Keep existing search functionality
     - identifier: search
       name: Search
       weight: 6
-      pageRef: /search
-
+      url: /search/
 outputs:
   home:
     - HTML
