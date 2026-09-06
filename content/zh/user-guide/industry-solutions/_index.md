@@ -7,6 +7,7 @@ tags:
 - industry
 - solutions
 - case-studies
+draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English no longer says; retranslate from the rebuilt English page — see planning/reviews/2026-09-06-translation-orphan-sweep.md
 ---
 
 BigLedger为多个行业的企业提供定制解决方案和专业工作流程。本综合指南展示了行业特定的实施、成功案例和提供可衡量业务成果的验证方法。

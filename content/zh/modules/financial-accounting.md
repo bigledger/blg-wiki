@@ -2,6 +2,7 @@
 title: "财务会计"
 description: "具备多币种、多实体支持的完整财务管理和会计系统"
 weight: 10
+draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English no longer says; retranslate from the rebuilt English page — see planning/reviews/2026-09-06-translation-orphan-sweep.md
 ---
 
 # 财务会计模块

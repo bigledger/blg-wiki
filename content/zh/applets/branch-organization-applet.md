@@ -7,6 +7,7 @@ tags:
 - organization
 - branch-management
 - administration
+draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English no longer says; retranslate from the rebuilt English page — see planning/reviews/2026-09-06-translation-orphan-sweep.md
 ---
 
 本部分涵盖侧边栏中的第二个主要选项卡"分支机构"，用户可以在其中创建和编辑分支机构的详细信息。

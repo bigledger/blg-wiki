@@ -7,6 +7,7 @@ tags:
 - stock-adjustment
 - integration
 - inventory
+draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English no longer says; retranslate from the rebuilt English page — see planning/reviews/2026-09-06-translation-orphan-sweep.md
 ---
 ### 内部库存调整小程序可以从以下小程序导入行项目：
 组织小程序

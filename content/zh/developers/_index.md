@@ -3,6 +3,7 @@ title: "开发者"
 description: "BigLedger开发者资源、API文档和集成指南"
 weight: 10
 bookCollapseSection: true
+draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English no longer says; retranslate from the rebuilt English page — see planning/reviews/2026-09-06-translation-orphan-sweep.md
 ---
 
 欢迎来到BigLedger开发者中心。这里您将找到所有必要的资源来集成、自定义和扩展BigLedger平台，以满足您的特定业务需求。

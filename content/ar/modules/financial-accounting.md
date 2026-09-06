@@ -2,6 +2,7 @@
 title: "المحاسبة المالية"
 description: "نظام إدارة مالية ومحاسبة شامل مع دعم العملات المتعددة والكيانات المتعددة"
 weight: 10
+draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English no longer says; retranslate from the rebuilt English page — see planning/reviews/2026-09-06-translation-orphan-sweep.md
 ---
 
 # وحدة المحاسبة المالية

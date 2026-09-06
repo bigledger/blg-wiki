@@ -1,6 +1,5 @@
 ---
 title: BigLedger ERP - 完整的企业管理平台
-description: 马来西亚领先的云端ERP平台，受到100万用户信赖
 toc: false
 layout: hextra-home
 ---
@@ -14,10 +13,8 @@ layout: hextra-home
 {{< /hextra/hero-headline >}}
 
 {{< hextra/hero-subtitle >}}
-  **受到100万用户信赖** • 100+ 集成模块 • 内置马来西亚合规功能
 {{< /hextra/hero-subtitle >}}
 
-{{< hextra/hero-button text="开始免费试用" link="/zh/user-guide/introduction/" >}}
 {{< hextra/hero-button text="观看演示" link="/zh/demos-resources/" style="secondary" >}}
 
 ---
@@ -57,13 +54,7 @@ BigLedger ERP 在一个强大的平台中统一您的所有业务运营。从会
 - 🛠️ 实施支持与资源
 - 📈 联合营销机会
 
-{{< cards >}}
-  {{< card link="/zh/partners/" title="合作伙伴计划" subtitle="了解合作机会" >}}
-  {{< card link="/zh/partners/training/" title="获取认证" subtitle="技术和销售认证" >}}
-  {{< card link="/zh/partners/resources/" title="合作伙伴资源" subtitle="营销材料和工具" >}}
-{{< /cards >}}
 
-[**申请成为合作伙伴 →**](https://bigledger.com/partners)
 {{< /tab >}}
 
 {{< tab >}}
@@ -145,8 +136,6 @@ BigLedger ERP 在一个强大的平台中统一您的所有业务运营。从会
 
 ## 关键统计数据
 
-- **100万+** 马来西亚和东南亚的活跃用户
-- **99.9%** 正常运行时间 SLA 保证，确保业务运营可靠
 - **100+** 集成业务模块，实现全面管理
 - **24/7** 多语言本地支持
 
@@ -157,5 +146,4 @@ BigLedger ERP 在一个强大的平台中统一您的所有业务运营。从会
 {{< cards >}}
   {{< card link="https://bigledger.com/contact" title="📞 联系销售" subtitle="获取个性化演示和定价" >}}
   {{< card link="/zh/support/" title="💬 获取支持" subtitle="访问文档和帮助" >}}
-  {{< card link="/zh/partners/" title="🤝 与我们合作" subtitle="加入我们不断增长的生态系统" >}}
 {{< /cards >}}

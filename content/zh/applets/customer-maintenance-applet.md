@@ -8,6 +8,7 @@ tags:
 - master-data
 - sales
 weight: 5
+draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English no longer says; retranslate from the rebuilt English page — see planning/reviews/2026-09-06-translation-orphan-sweep.md
 ---
 
 ## 目的和概述

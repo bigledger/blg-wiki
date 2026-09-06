@@ -8,6 +8,7 @@ tags:
 - inventory-management
 - sales-operations
 weight: 85
+draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English no longer says; retranslate from the rebuilt English page — see planning/reviews/2026-09-06-translation-orphan-sweep.md
 ---
 
 ## 用途与概述

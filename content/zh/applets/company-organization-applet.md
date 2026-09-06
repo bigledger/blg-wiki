@@ -7,6 +7,7 @@ tags:
 - organization
 - company-management
 - administration
+draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English no longer says; retranslate from the rebuilt English page — see planning/reviews/2026-09-06-translation-orphan-sweep.md
 ---
 
 登录组织小程序时，用户看到的第一个页面是左侧边栏第一个图标中的公司列表页面。

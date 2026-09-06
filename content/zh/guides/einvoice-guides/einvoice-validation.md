@@ -7,6 +7,7 @@ tags:
 - compliance
 - troubleshooting
 weight: 30
+draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English no longer says; retranslate from the rebuilt English page — see planning/reviews/2026-09-06-translation-orphan-sweep.md
 ---
 
 提交电子发票时，LHDN 的 MyInvois 系统会先校验再受理。如果缺少必填字段，单据不会被提交，而是停放在池中等待补正（见[电子发票池与提交路由](/zh/guides/einvoice-guides/einvoice-pools-and-routing/)）。如果字段齐全但*内容有误*，LHDN 可能先受理提交、随后把单据标记为 **Invalid** —— 你需要修复后重新提交。

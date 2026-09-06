@@ -2,6 +2,7 @@
 title: "Perakaunan Kewangan"
 description: "Sistem pengurusan kewangan dan perakaunan lengkap dengan sokongan multi-mata wang dan multi-entiti"
 weight: 10
+draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English no longer says; retranslate from the rebuilt English page — see planning/reviews/2026-09-06-translation-orphan-sweep.md
 ---
 
 # Modul Perakaunan Kewangan

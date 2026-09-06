@@ -6,6 +6,7 @@ tags:
 - e-invoice
 - compliance
 weight: 25
+draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English no longer says; retranslate from the rebuilt English page — see planning/reviews/2026-09-06-translation-orphan-sweep.md
 ---
 
 每张启用了电子发票的已定案销售单据（发票、现金单、贷记单等）都要经过同一个判断：**是单独提交给 LHDN，还是并入合并电子发票（consolidated e-invoice）？** 如果缺少必要信息，则**先停放在"池"（pool）中**等待补正。本指南解释这套路由逻辑，让你始终清楚单据去了哪里、为什么。

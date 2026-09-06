@@ -1,3 +1,8 @@
+---
+title: "电子发票生成 Applet"
+draft: true  # unpublished 2026-09-06 (Vincent): the English original was retired; page had no front matter at all
+---
+
 # **我的电子发票管理小程序（My E-invoice Admin Applet）**
 
 
