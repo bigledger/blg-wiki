@@ -771,3 +771,17 @@ with the analysis, the changes made, and the commit hash.
 - [ ] F-0211 (2026-09-06) `VAT-SALES` can never be selected on a sales document (blg-shared-utilities sst.component.ts keeps only SST-SLS-OUTPUT / SST-SVC-OUTPUT / GST-OUTPUT on the sales side; VAT-PURCHASE only passes because its name contains "PURCHASE") — Singapore/Thailand/Indonesia tenants have no line-level sales VAT code. One-string fix. Fractional rates are silently rounded to whole percent in Tax Configuration but not in MY-SST (8.5% → 8 or 9). Delete is irreversible in practice (soft delete + non-partial unique constraint permanently consumes the code) with no confirmation dialog. MY-SST and Tax Configuration write bl_fi_cfg_tax_code incompatibly (alpha-3 vs full country name; unrounded vs 2 dp), so MY-SST rows cannot be opened in Tax Configuration (null-check missing).
 - [ ] F-0212 (2026-09-06) Tax GL mapping is not in the tax applet: the tax journal line takes GL + subledger from the company default GL link for the doc type's PNS_TAX handler (OUTPUT_TAX / INPUT_TAX). A link with a null subledger drops the tax line silently and FINAL later fails TOTAL_DEBITS_AND_TOTAL_CREDITS_NOT_BALANCES — same silent-failure shape as F-0155. Seven linked applet pages have no registry row and no file (/applets/tax-reporting-applet/, /applets/sales-tax-applet/, …).
 
+## From Lane 3 run 27 — supplier-access family, 6 pages (2026-09-06)
+
+### ACCESS CONTROL — supplier CSV import bypasses the entity-link check
+- [ ] F-0213 (2026-09-06) Supplier-portal access is enforced by a row, not a permission: every login-entity-ep read appends `hdr.doc_entity_hdr_guid IN (SELECT entity_hdr_guid FROM bl_fi_mst_entity_login_subject_link WHERE status='ACTIVE' AND subject_guid = <login>)` with the "without permission checking" row mapper. But the supplier **CSV import creates purchase orders in the buyer's tenant and its create endpoint does not check the entity link** — documented behaviour, gap deliberately kept off the page. Vincent: intended, or an access-control bug to fix? Also: Purchase Return SA exposes the buyer's DRAFT returns while the other portals do not — should the five portals agree on which posting statuses a supplier sees?
+
+### product (supplier access) — three of four PDF exports cannot work
+- [ ] F-0214 (2026-09-06) GRN SA calls the back-office print endpoint (403 for a plain supplier); PI SA and PR SA build `…/login-entity-ep/print-jasper-pdf/{guid}`, which matches no controller mapping (404); BPO SA passes a hard-coded printable-format GUID. Only PO SA is correct. Same shape for attachments. File as product bugs? Also: `GenericDocumentTypeHandler` registers the Blanket Purchase Order handler with the read and update permission arguments **swapped** (constructor is create/read/update/delete). Register SHOW_COSTING_DETAILS for PO Supplier Access?
+
+### registry
+- [ ] F-0215 (2026-09-06) internalPurchaseGrnStockInApplet.documentation_url points at the GRN *Supplier Access* page; PI and PO supplier access still point at Confluence.
+
+### images
+- [x] F-0216 (2026-09-06) Nine buyer-side screenshots showing six real staff names quarantined (internal-purchase-return-supplier-access-applet). Twelve clean buyer-side screenshots under internal-purchase-order-supplier-access-applet are reusable on the buyer PO page — noted for the cross-link batch.
+
