@@ -1189,3 +1189,121 @@ same pass under ADR-0008; the rest are open.*
   probably repeats the claims just removed from the applet page** (it is outside the applet lane's
   folders). It should be read against the rewritten reference page — in particular the contact-merging
   and Task Router descriptions, and any YouTube or roadmap wording.
+- [x] F-0352 (2026-09-06) **`/applets/sales-workflow/external-sales-invoice-applet/` — 3,555 lines
+  and 302 numbered steps about an applet that does not exist in the registry, describing a feature
+  set the code does not have.** Number one on `planning/audit-backlog.md`. Unpublished under ADR-0008
+  tier 1 (`draft: true` in place; evidence in
+  `planning/worklog/2026-09-06-external-sales-invoice-applet.md`). Two independent grounds. First,
+  ADR-0002/ADR-0007: `bl_applet_hdr` has no row for it under any name, code, guid or bundle URL, so
+  no tenant can install or open it. Second, and worse, the page attributed to it the whole feature
+  set of Sales Invoice (Internal) — multi-source creation from sales orders, quotations, delivery
+  orders and jobsheets; line items, pricing tiers, discounts and rounding; SST/VAT/GST/WHT; serial
+  numbers; a draft-to-final review workflow; GL posting and inventory reduction; a `Settings >
+  Permission Management` and a `Settings > Webhook` menu path. The real applet
+  (`blg-applet-wavelet-external-sales-invoice-applet@222d5699`) is a half-converted Stock Conversion
+  clone whose only live behaviour is a read-only listing over `bl_fi_xtn_generic_doc_hdr`: SAVE,
+  edit and FINAL dispatch actions whose effects are commented out, the Lines tab is commented out,
+  and the create form still asks for "Conversion Code" and "Conversion Name". No inbound links and
+  no zh/ms/ar twins, so nothing needed repointing. Product defects **P-0092**–**P-0095**; question
+  for Vincent **Q-0060**; what the family really is now sits in
+  `kb/topics/external-generic-documents.md`. (done)
+- [ ] F-0353 (2026-09-06) **46 AI-generated infographics carrying a visible third-party "NotebookLM"
+  watermark are published across 32 applet image folders.** Found while checking this page's three
+  images; all 46 share the same two generated canvas sizes (2752×1536 and 1536×2752). Spot-checked
+  and confirmed watermarked: `external-sales-invoice-applet/*` (3),
+  `internal-purchase-order-applet/internal-purchase-order-overview-infographic.png`,
+  `commission-scheme-applet/infograhic.png` (note the typo in that filename too). Two problems, and
+  the second is the serious one: we are publishing another product's brand mark on our
+  documentation, and the pictures assert product behaviour nobody verified — the three on this page
+  illustrated knock-off from sales orders, quotations, delivery orders and jobsheets, a
+  draft-to-final lock, GL posting and serial-number tracking, none of which exist in the applet they
+  illustrate. **A wrong diagram is a wrong fact**, and unlike prose it survives a text rewrite. The
+  46 need a pass: check each against its now-verified page, and decide the watermark question
+  separately. List: `find static/images -name '*.png'` filtered to those two dimensions.
+- [ ] F-0354 (2026-09-06) **"Internal" in an applet name does not mean inter-company, and at least
+  one page said it did.** The External Sales Invoice page's FAQ answered *"What is the difference
+  between External Sales Invoice and Internal Sales Invoice?"* with *"Internal Sales Invoice is for
+  inter-company transactions (billing between branches or subsidiaries within the same corporate
+  group)"*. `salesInvoiceApplet` / "Sales Invoice (Internal)" is the ordinary customer invoice
+  applet; intercompany is a separate queue mechanism that runs on top of it
+  (`IntercompanyProcessingService`, and see the verified
+  `/applets/purchase-workflow/internal-purchase-order-applet/`). That page is now unpublished, so the
+  sentence is off the site — but "internal" prefixes ~40 applet pages and the same misreading may
+  have been written elsewhere. 20+ applet pages mention inter-company; the verified ones use it
+  correctly, the unverified ones have not been checked.
+
+### site-wide (translations)
+- [ ] F-0365 (2026-09-06) **58 of 134 translated pages are publishing content the English no longer
+  says.** The Web Hook Chinese twin was not one page, it was a class: 69 translated pages have no
+  same-path English twin, and drift affects pages that pair perfectly by path as well. Full
+  classification, tiers and evidence in
+  `planning/reviews/2026-09-06-translation-orphan-sweep.md`. **Nothing was unpublished** — 58 is far
+  past the ADR-0008 five-page guard rail, so the call is Vincent's. Breakdown: 24 zh applet pages
+  and 10 ms applet pages whose English was rebuilt from source on 2026-09-05/06; 16 zh pages whose
+  English page was deleted between 2026-02 and 2026-06; 3 pages (zh/ms/ar) carrying the invented
+  approval matrix removed today; 3 zh pages with tier-1 invented claims; 2 zh e-invoice guides.
+      → note: 16 faithful-but-path-orphaned zh pages were repaired in the same pass (translationKey);
+        a lint was added so the webhook case cannot recur. Retranslation path is Q-0071.
+
+### /zh/
+- [ ] F-0366 (2026-09-06) **The Chinese home page is a marketing page, not a documentation hub.**
+  It claims 1,000,000+ users (`content/zh/_index.md:3,17,145`), a **99.9% uptime SLA guarantee**
+  (`:146`), 24/7 multilingual support (`:148`), and offers a "start free trial" button (`:20`) to
+  `/zh/user-guide/introduction/`, which does not exist. Three cards point at `/zh/partners/*`
+  (`:61-63`) — there is no `content/zh/partners`. The English home page was rebuilt 2026-09-05 as a
+  reader-intent hub and makes none of these claims.
+      → source: content/zh/_index.md
+      → note: cannot be `draft: true` — it is the language root and `/zh/` would 404. Recommended
+        action: replace the body with the honest placeholder `content/ms/_index.md` and
+        `content/ar/_index.md` already use. The user and SLA numbers are Q-0072.
+
+### /zh/developers/
+- [ ] F-0367 (2026-09-06) **Promises a developer platform that was unpublished from the English the
+  same day.** GraphQL endpoints (`content/zh/developers/_index.md:12`), JavaScript / Python / PHP
+  SDKs (`:17-20`), sandbox access and test data (`:36-37`). The English `developers/sdks.md`,
+  `getting-started.md`, `tutorials.md`, `applet-development.md` and nine `api-reference/*.md` pages
+  are all `draft: true` since `a59fa3e8`; Q-0024 records there is no sandbox.
+      → source: content/zh/developers/_index.md
+
+### /zh/user-guide/industry-solutions/
+- [ ] F-0368 (2026-09-06) **A fabricated named customer testimonial and ~31 invented outcome
+  statistics.** `content/zh/user-guide/industry-solutions/_index.md:72` — *"BigLedger turned our
+  workshop from chaos to order. We now serve 50% more customers with the same team." — Ahmad, owner*.
+  Plus 40% shorter wait times, 25% higher parts turnover, 60% higher satisfaction (`:66-69`), and
+  the same shape for F&B (`:117-120`) and manufacturing (`:171-173`). The English page was cut from
+  448 to 101 lines and carries no testimonial and no `%` outcome claim.
+      → note: CLAUDE.md forbids named customers; content-lint already checks for named prospects.
+
+### /zh/modules/financial-accounting/ · /ms/… · /ar/…
+- [ ] F-0369 (2026-09-06) **The invented approval matrix removed from the English today is still
+  live in three languages.** `content/zh/modules/financial-accounting.md:274-283`,
+  `content/ms/modules/financial-accounting.md:206-212`,
+  `content/ar/modules/financial-accounting.md:172`. All three teach amount-based routing to
+  different approvers on purchase orders, **journal entries and payments** — journals and payment
+  vouchers have no approval step at all, and where approvals do apply a money figure does not change
+  the approver. Corrected in the English by `f25a917f`.
+
+### /applets/applet-store/
+- [ ] F-0370 (2026-09-06) **33 referenced placeholder images do not exist on disk**, in the English
+  page and faithfully copied into the Chinese one. Both
+  `content/en/applets/applet-store.md` and `content/zh/applets/applet-store.md` reference 42
+  `*_placeholder.svg` paths under `/images/applet-store/`, of which 33 have no file in `static/`.
+      → note: found by an all-languages image-resolution scan; every other `/images/…` path in
+        `zh`, `ms` and `ar` resolves.
+
+### site-wide (translations)
+- [ ] F-0371 (2026-09-06) **16 Chinese pages are translations of English pages that were deleted.**
+  Three are full procedure pages — `content/zh/applets/supplier-maintenance-applet.md` (633 lines),
+  `einvoice-generation-applet.md` (453), `employee-maintenance-applet.md` (324) — for screens whose
+  English documentation was retired between 2026-02-27 and 2026-06-29. Two of them duplicate a
+  Chinese page for the *replacement* applet that also exists, so the Chinese site publishes both the
+  retired and the current page for the same screen. Deletion commits and successors are tabulated in
+  `planning/reviews/2026-09-06-translation-orphan-sweep.md` (section B3).
+- [ ] F-0372 (2026-09-06) Inbox hygiene: F-0001 is still open although
+  `content/ms/applets/customer-consignment-applet.md` was archived to
+  `planning/archive/content-ms-applets-customer-consignment-applet.md` in `d5858dbf`. `content/ms`
+  now has zero blocklist hits and the `malay` allowlist is empty.
+      → note: recorded, not ticked on F-0001's behalf — that is the batch owner's call.
+
+### images — Vincent's decision on the generated infographics (2026-09-06)
+- [ ] F-0380 (2026-09-06) **Decision: keep, redraw later.** 75 AI-generated infographics across 32 applet folders (58 referenced by published pages) carry a visible **NotebookLM watermark** and assert product behaviour nobody verified — e.g. the stock-availability one states "instantly calculates Net Available by subtracting reserved orders from physical stock" and "enforce FIFO". Vincent chose to keep them live and redraw rather than remove. **Two obligations follow.** (1) Redraw them as theme-safe inline SVG in the pattern already used for `layouts/shortcodes/einvoice-flow.html` and `platform-map.html` — `currentColor`, no raster, no third-party mark. (2) **Verify each one's claims against source as it is redrawn**, because a wrong diagram is a wrong fact that survives every text rewrite: the Fixed Asset page had a whole configuration section transcribed from a screenshot whose menu had been removed upstream months earlier. Until redrawn, treat any behaviour stated only in an infographic as unverified. Track progress here; the full list is reproducible with `identify` on the two generated canvas sizes (1024x1024, 1024x571).
