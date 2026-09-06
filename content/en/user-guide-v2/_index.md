@@ -198,9 +198,9 @@ main:has(.bl-hub) > h1 {display:none!important}
   <div class="bl-path">
     <p class="bl-path-role">👨‍💻 Developer · Ongoing</p>
     <ul class="bl-path-steps">
-      <li><a href="/developers/getting-started">Developer quickstart</a></li>
+      <li><a href="/developers/applets/getting-started/">Developer quickstart</a></li>
       <li><a href="/developers/api-reference">API reference</a></li>
-      <li><a href="/developers/applet-development">Applet development</a></li>
+      <li><a href="/developers/applets/applet-development/">Applet development</a></li>
     </ul>
   </div>
 </div>

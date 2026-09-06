@@ -111,10 +111,10 @@ While comprehensive documentation is being developed:
 
 While this page is under development, explore these related topics:
 
-- [Member Label Lists](/user-guide/member-label-list/) - Creating label categories and parent structures
-- [User Management](/user-guide/member-listing/) - Core user account management
-- [Group Listings](/user-guide/group-listing/) - Organizational group structures
-- [Member Classifications](/user-guide/member-class/) - Role-based access control
+- [Member Label Lists](/user-guide/administration/member-label-list/) - Creating label categories and parent structures
+- [User Management](/user-guide/administration/member-listing/) - Core user account management
+- [Group Listings](/user-guide/administration/group-listing/) - Organizational group structures
+- [Member Classifications](/user-guide/administration/member-class/) - Role-based access control
 
 ---
 

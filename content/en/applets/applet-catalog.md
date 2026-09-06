@@ -41,7 +41,7 @@ This comprehensive catalog lists all applets available in the BigLedger ecosyste
 - Organizational hierarchy and reporting structure
 - Multi-location operational support
 
-### 4. [Document Item Maintenance Applet](/applets/doc-item-maintenance-applet/)
+### 4. [Document Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/)
 **Service and non-inventory item management**
 - Professional services and consulting items
 - Digital products and subscriptions
@@ -104,14 +104,14 @@ This comprehensive catalog lists all applets available in the BigLedger ecosyste
 - Cash flow tracking and management
 - Bank reconciliation and integration
 
-### 11. [Workflow Design Applet](/applets/workflow-design-applet/)
+### 11. [Workflow Design Applet](/applets/master-data/workflow-design-applet/)
 **Business process automation and workflow management**
 - Visual workflow designer and configuration
 - Status tracks with role-filtered transitions (not approvals — see [Document Approvals](/guides/document-approvals/))
 - Process automation and orchestration
 - Workflow performance monitoring
 
-### 12. [Webhook Applet](/applets/webhook-applet/)
+### 12. [Webhook Applet](/applets/integrations/webhook-applet/)
 **Real-time event notifications and system integration**
 - External system integration and notifications
 - Event-driven workflow automation
@@ -415,7 +415,7 @@ Add analytics, automation, and optimization applets:
 
 ### Integration Documentation
 - [API Reference](/developers/api-reference/)
-- [Webhook Integration](/applets/webhook-applet/)
+- [Webhook Integration](/applets/integrations/webhook-applet/)
 
 ### Support Resources
 - [Applet Directory](/applets/applet-directory/)

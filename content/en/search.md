@@ -19,7 +19,7 @@ weight: 10
 ## Popular Topics
 
 ### Platform & Operations
-- [Platform Overview](/user-guide/introduction/)
+- [Platform Overview](/user-guide/getting-started/introduction/)
 - [Business Operations Guide](/user-guide/)
 - [Implementation Guide](/user-guide/)
 

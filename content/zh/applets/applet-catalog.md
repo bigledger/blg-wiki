@@ -41,7 +41,7 @@ weight: 2
 - 组织层次结构和报告结构
 - 多地点运营支持
 
-### 4. [文档项目维护应用程序](/zh/applets/doc-item-maintenance-applet/)
+### 4. [文档项目维护应用程序](/zh/applets/master-data/doc-item-maintenance-applet/)
 **服务和非库存项目管理**
 - 专业服务和咨询项目
 - 数字产品和订阅
@@ -90,7 +90,7 @@ weight: 2
 - 现金流跟踪和管理
 - 银行对账和集成
 
-### 11. [工作流设计应用程序](/zh/applets/workflow-design-applet/)
+### 11. [工作流设计应用程序](/zh/applets/master-data/workflow-design-applet/)
 **业务流程自动化和工作流管理**
 - 可视化工作流设计器和配置
 - 多级审批流程

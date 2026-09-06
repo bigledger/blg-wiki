@@ -187,7 +187,7 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 ## 相关小程序
 
 ### 核心模块小程序
-- **[文档项目维护小程序](/zh/applets/doc-item-maintenance-applet/)** - 服务和非库存项目
+- **[文档项目维护小程序](/zh/applets/master-data/doc-item-maintenance-applet/)** - 服务和非库存项目
 - **[供应商维护小程序](/zh/applets/supplier-maintenance-applet/)** - 供应商产品关系
 - **[税务配置小程序](/applets/tax-configuration-applet/)** - 产品税务设置
 

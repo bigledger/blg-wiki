@@ -76,6 +76,6 @@ BigLedger's modern interface is designed for efficiency and ease of use, providi
 
 ## Related Topics
 
-- [User Roles & Permissions](/user-guide/member-listing/)
+- [User Roles & Permissions](/user-guide/administration/member-listing/)
 - [Dashboard Configuration](/business-operations/dashboard/)
-- [Getting Started Guide](/user-guide/introduction/)
+- [Getting Started Guide](/user-guide/getting-started/introduction/)

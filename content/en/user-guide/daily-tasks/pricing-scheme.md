@@ -16,7 +16,7 @@ Master BigLedger's flexible pricing system to create sophisticated pricing strat
 Pricing schemes in BigLedger are powerful templates that define pricing structures for your products and services. These schemes can be applied across multiple business modules including POS, sales orders, quotations, and e-commerce platforms, providing consistent pricing while allowing for customer-specific and scenario-based flexibility.
 
 {{< callout type="info" >}}
-**Key Concept**: Pricing schemes create the framework, while actual item prices are set in the [Item Maintenance](/user-guide/item-maintenance/) module. This separation allows for flexible pricing strategies across different customer segments and sales channels.
+**Key Concept**: Pricing schemes create the framework, while actual item prices are set in the [Item Maintenance](/user-guide/basic-operations/item-maintenance/) module. This separation allows for flexible pricing strategies across different customer segments and sales channels.
 {{< /callout >}}
 
 ---
@@ -338,8 +338,8 @@ Pricing schemes integrate seamlessly with:
 
 After mastering basic pricing schemes, explore:
 
-1. **[Price Book Management](/user-guide/price-book/)** - Detailed price lists and management
-2. **[Item Maintenance](/user-guide/item-maintenance/)** - Apply pricing to specific items
+1. **[Price Book Management](/user-guide/daily-tasks/price-book/)** - Detailed price lists and management
+2. **[Item Maintenance](/user-guide/basic-operations/item-maintenance/)** - Apply pricing to specific items
 3. **[POS Configuration](/modules/pos/)** - Implement pricing in retail operations
 4. **[E-Commerce Integration](/modules/ecommerce/)** - Multi-channel pricing strategies
 

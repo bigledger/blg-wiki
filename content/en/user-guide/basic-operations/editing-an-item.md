@@ -172,7 +172,7 @@ The editing interface provides organized access to all item information through 
 - Update dimensions if packaging changes
 
 ### Price and Cost Changes
-- Coordinate with [Pricing Schemes](/user-guide/pricing-scheme/) updates
+- Coordinate with [Pricing Schemes](/user-guide/daily-tasks/pricing-scheme/) updates
 - Update vendor costs and margin calculations
 - Modify marketplace-specific pricing
 - Review and update tax classifications
@@ -236,8 +236,8 @@ The editing interface provides organized access to all item information through 
 
 After mastering item editing, explore these related capabilities:
 
-1. **[Item Maintenance](/user-guide/item-maintenance/)** - Comprehensive catalog management
-2. **[Pricing Schemes](/user-guide/pricing-scheme/)** - Advanced pricing strategies  
+1. **[Item Maintenance](/user-guide/basic-operations/item-maintenance/)** - Comprehensive catalog management
+2. **[Pricing Schemes](/user-guide/daily-tasks/pricing-scheme/)** - Advanced pricing strategies  
 3. **[Inventory Management](/modules/inventory/)** - Complete stock control and tracking
 4. **[E-Commerce Integration](/modules/ecommerce/)** - Multi-channel sales optimization
 
@@ -249,7 +249,7 @@ After mastering item editing, explore these related capabilities:
 
 ## Related Resources
 
-- [Creating Items](/user-guide/creating-an-item/) - Start with item creation fundamentals
-- [Document Item Types](/user-guide/document-item-types/) - Understanding item classifications
-- [Price Book Management](/user-guide/price-book/) - Pricing integration and management
+- [Creating Items](/user-guide/basic-operations/creating-an-item/) - Start with item creation fundamentals
+- [Document Item Types](/user-guide/basic-operations/document-item-types/) - Understanding item classifications
+- [Price Book Management](/user-guide/daily-tasks/price-book/) - Pricing integration and management
 - [Business Operations](/business-operations/) - Operational workflow integration

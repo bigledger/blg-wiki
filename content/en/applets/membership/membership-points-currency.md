@@ -183,5 +183,5 @@ Redemption: Special rewards catalog
 
 - [Membership Admin Console](/applets/membership-admin-console-applet/)
 - [Membership Program Setup](/applets/membership-program/)
-- [Member Class Configuration](/user-guide/member-class/)
+- [Member Class Configuration](/user-guide/administration/member-class/)
 - [Points Redemption Rules](/guides/)

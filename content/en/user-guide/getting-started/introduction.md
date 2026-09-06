@@ -14,7 +14,7 @@ Welcome to BigLedger, your comprehensive gateway to streamlined business operati
 Explore our comprehensive resources to maximize your BigLedger experience:
 
 {{< cards >}}
-{{< card link="/user-guide/platform-overview" title="Platform Overview" subtitle="First-time and existing users - registration and permissions guide" >}}
+{{< card link="/user-guide/getting-started/platform-overview/" title="Platform Overview" subtitle="First-time and existing users - registration and permissions guide" >}}
 {{< card link="/applets/" title="Applet Directory" subtitle="User guide on BigLedger Applets and automation tools" >}}
 {{< card link="/user-guide/industry-solutions/" title="Industry Solutions" subtitle="Discover solutions tailored for your specific industry" >}}
 {{< card link="/modules/" title="Module Guide" subtitle="Comprehensive guide to BigLedger's business modules" >}}

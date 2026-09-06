@@ -64,7 +64,7 @@ BigLedger ERP 在一个强大的平台中统一您的所有业务运营。从会
 
 {{< cards >}}
   {{< card link="/developers/api-reference/" title="API 文档" subtitle="完整的 REST API 参考" >}}
-  {{< card link="/zh/developers/getting-started/" title="快速入门指南" subtitle="几分钟内启动运行" >}}
+  {{< card link="/zh/developers/applets/getting-started/" title="快速入门指南" subtitle="几分钟内启动运行" >}}
   {{< card link="/zh/developers/sdks/" title="SDK 与库" subtitle="流行语言的客户端库" >}}
 {{< /cards >}}
 

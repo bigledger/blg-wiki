@@ -16,7 +16,7 @@ Master the complete lifecycle of item management in BigLedger, from initial crea
 Item maintenance is crucial for effective business operations. This comprehensive guide covers all aspects of managing your product and service catalog, including detailed configurations, categorization, pricing, and integration with various business modules.
 
 {{< callout type="info" >}}
-**Scope**: This guide covers post-creation item management. If you need to create new items, start with our [Creating Items Guide](/user-guide/creating-an-item/).
+**Scope**: This guide covers post-creation item management. If you need to create new items, start with our [Creating Items Guide](/user-guide/basic-operations/creating-an-item/).
 {{< /callout >}}
 
 ---
@@ -297,7 +297,7 @@ When you select an item for editing, you'll access multiple specialized tabs for
 
 After mastering item maintenance, explore these related areas:
 
-1. **[Pricing Schemes](/user-guide/pricing-scheme/)** - Advanced pricing strategies
+1. **[Pricing Schemes](/user-guide/daily-tasks/pricing-scheme/)** - Advanced pricing strategies
 2. **[Inventory Management](/modules/inventory/)** - Complete stock control
 3. **[E-Commerce Integration](/modules/ecommerce/)** - Multi-channel selling
 4. **[Financial Accounting](/modules/financial-accounting/)** - Cost tracking and reporting
@@ -310,7 +310,7 @@ After mastering item maintenance, explore these related areas:
 
 ## Related Resources
 
-- [Creating Items Guide](/user-guide/creating-an-item/) - Start with item creation
-- [Editing Items Guide](/user-guide/editing-an-item/) - Quick editing procedures
-- [Document Item Types](/user-guide/document-item-types/) - Understanding classifications
-- [Price Book Management](/user-guide/price-book/) - Pricing strategies and implementation
+- [Creating Items Guide](/user-guide/basic-operations/creating-an-item/) - Start with item creation
+- [Editing Items Guide](/user-guide/basic-operations/editing-an-item/) - Quick editing procedures
+- [Document Item Types](/user-guide/basic-operations/document-item-types/) - Understanding classifications
+- [Price Book Management](/user-guide/daily-tasks/price-book/) - Pricing strategies and implementation

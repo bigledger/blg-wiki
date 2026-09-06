@@ -13,7 +13,7 @@ draft: true
 unpublished: 2026-09-06
 unpublished_reason: "ADR-0008 tier 1 — see planning/worklog/webhook-applet-2026-09-06-unpublish.md"
 aliases:
-  - /applets/webhook-applet/
+  - /applets/integrations/webhook-applet/
 ---
 
 ## Purpose and Overview
@@ -191,7 +191,7 @@ The Webhook Applet is a critical Core Module integration component that enables 
 ## Related Applets
 
 ### Core Module Applets
-- **[Workflow Design Applet](/applets/workflow-design-applet/)** - Workflow-triggered webhooks
+- **[Workflow Design Applet](/applets/master-data/workflow-design-applet/)** - Workflow-triggered webhooks
 - **[Tenant Admin Applet](/applets/tenant-admin-applet/)** - Security and access management
 - **[Process Monitoring Applet](/applets/process-monitoring-applet/)** - Integration monitoring
 

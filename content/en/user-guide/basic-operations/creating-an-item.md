@@ -139,9 +139,9 @@ Once your item is created successfully, you can:
 
 After creating your items, continue with:
 
-1. **[Item Management](/user-guide/item-maintenance/)** - Learn comprehensive item maintenance
-2. **[Editing Items](/user-guide/editing-an-item/)** - Modify existing items and specifications
-3. **[Pricing Schemes](/user-guide/pricing-scheme/)** - Set up flexible pricing strategies
+1. **[Item Management](/user-guide/basic-operations/item-maintenance/)** - Learn comprehensive item maintenance
+2. **[Editing Items](/user-guide/basic-operations/editing-an-item/)** - Modify existing items and specifications
+3. **[Pricing Schemes](/user-guide/daily-tasks/pricing-scheme/)** - Set up flexible pricing strategies
 
 {{< callout type="success" >}}
 **Success Indicator**: You'll know your item is properly set up when it appears in your item listings and is available for use in transactions, quotes, and purchase orders.
@@ -151,6 +151,6 @@ After creating your items, continue with:
 
 ## Related Topics
 
-- [Document Item Types](/user-guide/document-item-types/) - Understanding different item classifications
-- [Price Book Management](/user-guide/price-book/) - Setting up pricing
+- [Document Item Types](/user-guide/basic-operations/document-item-types/) - Understanding different item classifications
+- [Price Book Management](/user-guide/daily-tasks/price-book/) - Setting up pricing
 - [Inventory Management](/modules/inventory/) - Stock control and tracking

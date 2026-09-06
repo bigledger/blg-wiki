@@ -109,10 +109,10 @@ While comprehensive documentation is being developed:
 
 While this page is under development, explore these related topics:
 
-- [Member Classifications](/user-guide/member-class/) - User roles and access control
-- [User Management](/user-guide/member-listing/) - Individual user account management  
-- [Team Configuration](/user-guide/team/) - Department and team setup
-- [Label Management](/user-guide/member-label-list/) - Organizational labeling systems
+- [Member Classifications](/user-guide/administration/member-class/) - User roles and access control
+- [User Management](/user-guide/administration/member-listing/) - Individual user account management  
+- [Team Configuration](/user-guide/administration/team/) - Department and team setup
+- [Label Management](/user-guide/administration/member-label-list/) - Organizational labeling systems
 
 ---
 

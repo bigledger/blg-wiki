@@ -189,7 +189,7 @@ Webhook 小程序是一个关键的核心模块集成组件，支持实时事件
 ## 相关小程序
 
 ### 核心模块小程序
-- **[工作流设计小程序](/zh/applets/workflow-design-applet/)** - 工作流触发的 webhooks
+- **[工作流设计小程序](/zh/applets/master-data/workflow-design-applet/)** - 工作流触发的 webhooks
 - **[租户管理员小程序](/applets/tenant-admin-applet/)** - 安全和访问管理
 - **[过程监控小程序](/zh/applets/process-monitoring-applet/)** - 集成监控
 

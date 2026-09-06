@@ -73,10 +73,10 @@ Member classifications in BigLedger provide a structured approach to managing us
 
 While this page is under development, explore these related topics:
 
-- [User Management](/user-guide/member-listing/) - Adding and managing user accounts
-- [Team Configuration](/user-guide/team/) - Organizing departments and teams
-- [Navigation Guide](/user-guide/navigation/) - Interface permissions and access
-- [Platform Overview](/user-guide/platform-overview/) - Security architecture overview
+- [User Management](/user-guide/administration/member-listing/) - Adding and managing user accounts
+- [Team Configuration](/user-guide/administration/team/) - Organizing departments and teams
+- [Navigation Guide](/user-guide/getting-started/navigation/) - Interface permissions and access
+- [Platform Overview](/user-guide/getting-started/platform-overview/) - Security architecture overview
 
 ---
 
