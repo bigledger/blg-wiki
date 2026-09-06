@@ -10,8 +10,7 @@
     "human-resources"
   ],
   "queue": [
-    "content/en/applets/finance/mm-deposit-applet.md",
-    "content/en/applets/crm/unified-contact-center-ucc-applet.md"
+    "content/en/applets/finance/mm-deposit-applet.md"
   ],
   "done": [
     {
@@ -227,6 +226,12 @@
       "date": "2026-09-06",
       "run": 33,
       "note": "Registry warrantyAdmin 'Warranty Admin' (title changed from 'Warranty Admin Applet'; registry documentation_url = /applets/warranty-admin-applet/ = the existing alias, kept). Full rewrite of a 275-line guide-voice page into a ~250-line reference. Settings class: SHARED FieldConfigurationComponent via app.routing.ts, with NO tabMappings entry for warrantyAdmin, so 237 generic-document controls render at shared-utilities HEAD a8c38a2 and the applet reads none of them; only PRINTABLE, DEFAULT_COMPANY and DEFAULT_BRANCH pass four proofs. Corrections to the old page (all tier-1): registrations are NOT created by POS or Sales Invoice (no Java or TS code outside the warranty applet and the CP Commerce storefront touches bl_wrty_product_registration_hdr) - the CP Commerce warranty widget is the only shipped creator; NO e-mail is ever sent (both approve and decline effects carry a literal '// TODO: exhaustMap to send email' although the backend sender, the SEND_EMAIL permission and the Email Template screen all exist); NOTHING calculates the warranty expiry date (free-text period + typed date); there is no EXPIRED certificate status and no expiry job; Default Selection holds branch/location/company/sender-email/2 templates, not warranty periods; the Custom Status screen's 30 keys are saved and never read. New facts: membership_hdr_guid is a hard backend prerequisite (members-only feature); approving twice creates two certificates; approval_status is never validated and the login-entity-ep create endpoints check only isUserLoginEntity, so a member can self-approve and self-certify (P item); attachment endpoints reuse the registration permission family; the permission listings, Feature Visibility and Webhook screens have routes but no menu entry. All 4 images dropped (2 listings with real names/e-mails/phones/a brand, 1 stale settings menu, 1 AI infographic) - recapture list in findings run 33. Topic kb/topics/warranty-registration.md (new)."
+    },
+    {
+      "page": "content/en/applets/crm/unified-contact-center-ucc-applet.md",
+      "date": "2026-09-06",
+      "run": 34,
+      "note": "Registry UnifiedContactCenter (title changed from 'Unified Contact Center (UCC) Applet' to the registry name 'Unified Contact Center'). Repo alg-applets-ucc@adc3915e1 (mainRoute applets/tnt/ailedger/ucc); the newer blg-applets-ucc builds UnifiedContactCenterJava, which is in applet-exclusions.tsv. Full rewrite of an 873-line walkthrough; five tier-1 claims removed under ADR-0008 (worklog 2026-09-06-lane4-ucc-applet-rewrite.md). All 11 surviving screenshots re-checked by eye and used; 60 stay quarantined and recapture is F-0341."
     }
   ],
   "skipped": [

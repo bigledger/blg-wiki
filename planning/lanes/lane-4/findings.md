@@ -4228,3 +4228,172 @@ so the rewrite in run 34 starts from the same prose.
 The page stays in the queue. Its files are listed under "Screenshots with personal data" above so
 `kb/tools/quarantine-images.sh 4` moves them; they are now unreferenced, so the tool will not skip
 them.
+
+---
+
+# Run 34 — `crm/unified-contact-center-ucc-applet.md` (the whole run)
+
+Registry row `UnifiedContactCenter`, repo **`alg-applets-ucc`** at `adc3915e1` (2026-04-01), backend
+`blg-akaun-platform-java` at `1ff620ef0e` (2026-09-05). 873 lines of screenshot walkthrough replaced
+by a reference page built from source. Run 33's research below was used and, in two places,
+corrected.
+
+## Two corrections to run 33's UCC notes
+
+1. **The repo choice is settled, not a decision.** `alg-applets-ucc/…/shared/shared.module.ts:175`
+   declares `mainRoute = 'applets/tnt/ailedger/ucc'` — the row the wiki documents.
+   `blg-applets-ucc/…/shared.module.ts:167` declares `…/uccjava`, whose registry row is
+   `UnifiedContactCenterJava` and is listed in `planning/private/applet-exclusions.tsv` as
+   `internal-tool`. So the page is written from `alg-applets-ucc`, and the newer repo is not named
+   on the page. What *is* a question is that the documented repo has been frozen since 2026-04-01
+   and all work continues in the excluded one — raised as **Q-0050**.
+2. **"Live data is not all in Postgres … Firestore" is wrong.** There is no Firestore. The
+   `models/firestore-models/` folder name is a legacy misnomer; those models are serialised over
+   HTTP to `core2/tnt/dm/alg/cc/`, and the backend stores them in a **per-tenant MongoDB** through
+   `MongoTemplate` (`javasdk/…/alg/cc/cudServices/ConversationResourceService.java:29-60`; 28 Mongo
+   `dal/table` classes). `app.module.ts` initialises `AngularFireModule` **only** for
+   `AngularFireMessagingModule` — browser push, topic code `UCC_MESSAGE_RECEIVED`. Run 33's menu
+   list also included nine commented-out items (All Conversations, All Active Conversations, My
+   Conversations, My Active, My Team Conversations, Squads, configuration Tasks, Action, the whole
+   Outbound Queue section); the real menu is in the page.
+
+## Configuration classification (METHOD §1, §29)
+
+**Applet-local, and only one real setting.** `ucc-applet-routing.module.ts:105-125` routes
+`application-settings`, `field-settings` and `default-selection` to this applet's own
+`components/settings-container/`. Four proofs pass for exactly one key:
+
+- `ISSUE_CATEGORY_CATEGORY_GROUP_SETTINGS_LIST` — declared in `applet-settings.model.ts`, rendered
+  as eleven `Category Group N` selects each with a *Mandatory* checkbox
+  (`application-settings.component.html:16-34`), persisted by `saveMasterSettingsInit`
+  (`application-settings.component.ts:111`), consumed by the Issue Tracker edit-category component.
+  Options come from `bl_wf_issue_label_list_hdr` where `namespace = 'WF_CATEGORY'` (`:70-80`).
+- `ISSUE_CODE_FORMAT` — loaded into `issueCodeFormats` at `:37-39` and rendered nowhere. Model-only.
+- Field Settings — the unbound 8-toggle stub again (22 lines, no `FormGroup`, no save handler; the
+  toggles are Unit Discount / SST-VAT-GST / WHT / Blanket Order / Segment / G-L Dimension / Profit
+  Center / Project, copied from a document applet).
+- Default Selection **and** Personalization → Default Selection — both the P-0025 shape.
+  **Fourth and fifth confirmations**, after Fixed Asset, MY-SST and Warranty. The personalization
+  one even keeps its load-subscribe commented out (`personal-default-settings.component.ts:31-39`).
+
+## The finding that matters most: UCC is the positive case for client-side permissions
+
+67 `CLIENT_SIDE_PERM` rows exist for `UnifiedContactCenter` in `bl_applet_client_side_perm_dfn`
+(read-only query against akaun_master). Every other applet in this programme has found codes checked
+in the client and never seeded (F-0044), which makes the whole mechanism look decorative. It is not:
+the granted list is fetched per subject and applet from that table
+(`client-side-permission.effects.ts:29-38`) and the selector tests membership
+(`client-side-permission.selectors.ts:22-26`). **Where the rows exist, the gates work.**
+
+Which makes the gaps here diagnosable rather than mysterious:
+
+- 4 seeded codes are never checked: `ACTION_VIEW`, `AGENT_DELETE`, `AGENT_UPDATE`,
+  `PREDEFINED_MESSAGE_ENDPOINT_VIEW`.
+- 13 checked codes have no row: `LIVE_DASHBOARD_VIEW`, `SKILL_{VIEW,UPDATE,DELETE}`,
+  `PROJECT_DRIVE_{VIEW,CREATE,DELETE}`, `TASK_ROUTER_VIEW`, `TASK_ROUTER_QUEUE_{UPDATE,DELETE}`,
+  `TASK_ROUTER_QUEUE_{RULE,SKILL}_VIEW`, `TASK_ROUTEER_QUEUE_CREATE` (sic).
+- Five menu items are gated by a permission that does not describe them. Live Dashboard and Task
+  Router → `BROADCAST_MENU_VIEW`; Teams and Quality Control → `SQUAD_VIEW`; Outbound Tasks →
+  `TASK_VIEW` (`side-menu-content.component.ts:111-140`). `LIVE_DASHBOARD_VIEW` is computed and then
+  never used in the template — a copy-paste that leaves a real permission dead.
+- `taskRouterViewPerm$` and `skillViewPerm$` are hard-wired `of(true)` (`:37,:45`).
+
+The method note: **when a permission code fails, check the definition table before the code.** A
+missing row and a wrong gate look identical from the UI, and only one of them is fixable by an
+administrator.
+
+## Other verified facts worth keeping
+
+- **Twelve channels**, not "and more": the applet enum has INSTAGRAM_FEED, the ts-lib copy does not.
+- **Broadcast**: channel list = every configured channel minus VOICE and WEB
+  (`broadcast-create.component.ts:52-59`), but compose panels exist for five
+  (`broadcast-create.component.html:40-54`). Recipients from the contact list or a `.txt`/`.csv`
+  upload; the endpoint drop-down is the virtual contact's endpoints filtered to the chosen channel.
+- **Task Router is misnamed in the old page**: Router Queue lists `bl_alg_cc_queue_hdr` (the
+  queues); Tasks lists `bl_alg_cc_task_hdr` at every status.
+- **Customer panel**: 12 tabs verified from the template, Membership commented out, Media Library
+  and Product hidden on voice. Information has 8 sub-tabs including Campaign History and
+  Conversation Instance History, which the old page never mentioned.
+- **Social Media**: three tabs, two routes, and the Instagram and Twitter tabs point at `../emails`
+  and `../voice`. No YouTube anywhere — the old page's "6.2 YouTube (under development)" was
+  invented.
+- **Contacts** are `bl_crm_contact_hdr` rows; **teams** are `app_mst_grp_hdr` rows. Neither is
+  UCC-private.
+- **Routing**: rules by priority → matched action → automation rule's default rule → assign to any
+  agent with fewest tasks. 13 action types declared, 9 implemented inbound, 1 (ASSIGN_TO_TEAM)
+  outbound.
+- **Expiry**: `ExpiredTaskQueueDeletionProcessor.processEvent` is entirely commented out behind
+  *"Kindly fix this code before redeploying, since this is causing the entire platform to break"*.
+  The scheduler and reader still run, so the chain looks alive.
+- **Endpoint credential matrix** (providers, which need access id / auth token / API key) is in the
+  page; it is the single most useful thing on it for a reader configuring a channel.
+- **WebSocket**: API-Gateway URL with `room=main`, reconnect after 2s, refresh every 8 minutes,
+  24-hour timeout. **Availability toggle** starts at OFFLINE on every load and only sends over the
+  socket — it is not seeded from the server.
+
+## Defects found (routed to planning/product/)
+
+- **P-0075** expiry chain never completes · **P-0076** three action types silently dropped ·
+  **P-0077** the Automation Rule screen cannot create the rule set the processor looks up ·
+  **P-0078** two Social Media tabs point at non-routes · **P-0079** broadcast offers channels with
+  no compose panel · **P-0080** five menu gates do not match their labels, 13 unseeded codes, and a
+  route guard that never denies · **P-0081** two more P-0025 instances plus the Field Settings stub ·
+  **P-0082** a Telegram/Facebook contact cannot be created with its platform id.
+
+## Screenshots
+
+All 60 unsafe images stay quarantined. The 11 survivors were re-checked image by image in this run
+before use — none shows a name, number, address or customer brand; the tenants shown are
+`DEVELOPMENT_TENANT` and `STAGING_TENANT` and the only social page is BigLedger's own. All eleven
+are placed in the rewritten page: summary tiles ×2, Social Media ×2, Dashboard ×3, Reports ×2,
+Broadcast ×2.
+
+**Recapture still wanted** (F-0341), on a synthetic tenant: Inbox conversation view and the customer
+panel's tabs, All/Team/My task queues and their bulk-action menus, the outbound queues, the task
+edit screen, Contacts listing and create, My Profile and its QR code, the Live Dashboard grids, the
+Task Router screens, the Quality screens.
+
+Note for whoever recaptures: the surviving screenshots are from an April 2026 build and already
+differ from the source at HEAD — they show no *Quality* and no *Task Router* menu entry. The page
+describes the menu from source, not from the screenshots.
+
+## Cross-lane link requests (from this page)
+
+1. `content/en/applications/unified-contact-center.md` (not an applet-lane folder) — read it against
+   the rewritten reference page; it probably repeats the automatic-contact-merging and Task Router
+   claims removed here, and possibly the YouTube one. (F-0342)
+2. `content/en/applets/ecommerce/shopping-cart-applet.md` — add `unified-contact-center-ucc-applet`
+   to `related_applets`: an agent creates a cart from inside a conversation, and the in-conversation
+   commerce menus are under triage internally, so the cart page should not present that path as
+   settled.
+3. `content/en/applets/master-data/customer-maintenance-applet.md` — one line that contact-centre
+   contacts are the same `bl_crm_contact_hdr` rows, created with source `AI_LEDGER`, and that
+   merging a conversation to a CRM contact is a manual act by an agent.
+4. `content/en/applets/e-invoice/my-e-invoice-admin-applet.md` — the conversation E-Invoice panel is
+   a second entry point for requesting an e-invoice; it is under internal triage.
+5. `content/en/applets/membership/membership-admin-applet.md` — membership is one of the four link
+   targets of Contact Merging.
+6. Any architecture or developer page that states tenant data is PostgreSQL — contact-centre
+   conversation data is MongoDB, per tenant.
+
+## Notes for the loop
+
+- Ledger: one record appended to `kb/sources/applet-repos/ledger.lane-4.jsonl`
+  (`applet:UnifiedContactCenter`), with six lateral issue notes.
+- Topic: `kb/topics/unified-contact-center.md` (new).
+- Worklog: `planning/worklog/2026-09-06-lane4-ucc-applet-rewrite.md` — ADR-0008 tier 1, five
+  fragments removed verbatim.
+- METHOD candidate §58: **when a client-side permission does nothing, query
+  `bl_applet_client_side_perm_dfn` before reading the component.** A code with no definition row and
+  a gate wired to the wrong code are indistinguishable in the UI. UCC has both, and 67 seeded rows
+  that prove the mechanism works.
+- METHOD candidate §59: **a folder name is not evidence of a datastore.** `models/firestore-models/`
+  in UCC holds plain HTTP DTOs; the store is MongoDB, and the only Firebase module imported is
+  messaging. Trace the service, then the backend `*ResourceService`, before naming a database.
+- METHOD candidate §60: **read the menu template, not the menu model.** `models/menu-items.ts` in
+  UCC is boilerplate (Company / Dashboard / "Generic Example") and the real menu is 500 lines of
+  `side-menu-content.component.html` — with nine commented-out entries that an unwary reader would
+  publish as features.
+- METHOD candidate §61: **`// TODO` applies to Java too.** The pattern found in Angular effects
+  (Warranty) recurs in a job processor: a whole `processEvent` body commented out with a note that
+  it broke the platform, while the scheduler that feeds it still runs.
