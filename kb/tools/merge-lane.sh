@@ -46,4 +46,4 @@ cd "$REPO"; git worktree remove --force "$WT"
 git add -- "${FILES[@]}"
 git commit -q -m "Lane $N: applet pages to the reference standard ($(python3 -c "import json;print(len(json.load(open('$STATE'))['done']))") done so far)
 
-$(printf -- '- %s\n' "${FILES[@]}" | grep '^- content/' )" && echo "committed: $(git log --oneline -1)"
+$(printf -- '- %s\n' "${FILES[@]}" | grep '^- content/' )" && { echo "committed: $(git log --oneline -1)"; echo "committed paths (check nothing unrelated was staged):"; git show --name-status --format= HEAD; }

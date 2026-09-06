@@ -30,4 +30,4 @@ cd "$REPO"; git worktree remove --force "$WT"
 git add -- "${FILES[@]}"
 git commit -q -m "$SUBJ
 
-$(printf -- '- %s\n' "${FILES[@]}")" && echo "committed: $(git log --oneline -1)"
+$(printf -- '- %s\n' "${FILES[@]}")" && { echo "committed: $(git log --oneline -1)"; echo "committed paths (check nothing unrelated was staged):"; git show --name-status --format= HEAD; }
