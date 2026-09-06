@@ -10,12 +10,7 @@
     "human-resources"
   ],
   "queue": [
-    "content/en/applets/finance/investment-applet.md",
-    "content/en/applets/finance/investment-guide.md",
     "content/en/applets/finance/mm-deposit-applet.md",
-    "content/en/applets/finance/revenue-management-applet.md",
-    "content/en/applets/finance/sst-applet.md",
-    "content/en/applets/finance/statement-of-account-applet.md",
     "content/en/applets/integrations/t2t-admin-applet.md",
     "content/en/applets/finance/txn-recon-applet.md",
     "content/en/applets/crm/unified-contact-center-ucc-applet.md",
@@ -212,6 +207,18 @@
       "date": "2026-09-06",
       "run": 31,
       "note": "Registry InternalRmaApplet 'Rma Applet (Internal)' (title changed from 'RMA (Internal) Applet'; the registry documentation_url already points at this page, no alias needed). Full rewrite of a 289-line guide-voice page into a 455-line reference. Applet-LOCAL settings and the counter-example to the unbound 8-toggle stub: 82 keys declared, all 82 rendered, all 82 persisted in one saveMasterSettingsInit, 68 consumed; dead are HIDE_CUSTRMA_DOC_NO, HIDE_SUPRTV_DOC_NO, HIDE_WORKFLOW_STATUS, HIDE_WORKFLOW_RESOLUTION and ITEM_CATEGORY_GROUP_1..10. Key findings: three unrelated record types behind one applet (bl_svc_issue_hdr service note; INTERNAL_SALES_RMA 0/0 - no stock, no journal, so a Customer RMA neither restocks nor credits; INTERNAL_SUPPLIER_RTV +1/+1); RMA Requests is a FOURTH approval engine (SVCApprovalStatus on bl_svc_issue_request_hdr, no settings screen, approving enqueues SVC_ISSUE_REQUEST_HDR_PROCESSOR which casts the request row into bl_svc_issue_hdr, guarded only by svc_issue_hdr_guid IS NULL) and a login-entity-ep lets a customer or supplier raise its own request; this applet is the sole consumer of the Workflow Design engine, with three independent process settings and a per-company binding; return reasons, request actions and the RMA Report are gated by TNT_API_DM_SVC_ISSUE_HDR_* rather than their own families; HIDE_BRANCH/HIDE_LOCATION remove controls that keep Validators.required. Every entry the shared settings shell renders here does have a route - the first applet in this lane where that is true. 16 of 22 images dropped (staff names, e-mails and phone numbers in grids; a person's photo, name and e-mail on Personalization; an AI infographic inventing a 6-step lifecycle) - quarantine list in findings run 31. Topic kb/topics/rma-and-service-notes.md (new)."
+    },
+    {
+      "page": "content/en/applets/finance/sst-applet.md",
+      "date": "2026-09-06",
+      "run": 32,
+      "note": "Registry mySST 'MY-SST APPLET' (title changed from 'MY-SST Applet' to the registry name exactly - the registry row is upper-cased; normalising bl_applet_hdr.name is a Vincent decision, recorded in findings run 32). Alias /applets/sst-applet/ added (unclaimed, ~6 inbound links); existing /applets/sst/mysst/ (= registry documentation_url) kept. Full rewrite of a 731-line guide-voice page into a 430-line reference. No working applet setting at all (Field Settings = the unbound 8-toggle stub and not in the menu; both Default Selection screens dereference an unassigned appletContainer and their save output is unbound because the components are routed directly). 25 model keys, one consumed (DEFAULT_BRANCH - and it is read from the per-user USER_SETTINGS row neither screen writes). Headline findings: every SST-02 box sums HARD-CODED tax-code literals (SRS6/SRS8/SVU-6/IMS6 etc), which explains the recurring cross-customer 'item 10 and 11c not tally' tickets; service tax is selected on a payment basis in SQL (FINAL + non-zero settlement, date filter on the contra date) while sales tax accepts DRAFT; fileTaxTxn keeps only PNS lines; Unfile hard-deletes ONE bl_fi_tax_txn row then marks the doc unfiled (the duplicate-filing mechanism); FILE ALL ignores the already-POSTED guard; Lock checks no permission, does not freeze filing, and blanks its own Part A; delete of a filing cycle needs only READ; SST-02 item 13 is never assigned and item 14 = item 12; the Sales item 12 sums taxable amounts instead of tax; the lock endpoint's carry-forward branch posts a journal with hard-coded RM 1500/1000 (unreachable from the applet). 13 of 18 images dropped (a developer's first name in tax-code and report-search test data, a person's name in a filing row, a possible customer abbreviation in branch codes, an AI infographic) - recapture list in findings run 32. Topic kb/topics/sst-filing.md (new)."
+    },
+    {
+      "page": "content/en/applets/finance/statement-of-account-applet.md",
+      "date": "2026-09-06",
+      "run": 32,
+      "note": "Registry statementOfAccountApplet 'Statement of Account Applet' (title unchanged; documentation_url already points at this page, no alias needed). Restructured a 166-line guide-voice page (Quick Start, FAQ, feature cards) into a ~330-line reference; the existing prose was unusually accurate so much of it survives in reference form. UTF-8 BOM preserved. Rare positive finding: the applet-LOCAL Application Settings screen is genuinely wired (19 HIDE_* keys declared+rendered+persisted in a real FormGroup; the 13 HIDE_HDR_* are consumed as ag-grid hide + suppressColumnsToolPanel, the 6 HIDE_LINE_* are dead) - the counter-example to the unbound 8-toggle stub. PRINTABLE (set from Printable Format Settings) is the only behavioural setting; the five DEFAULT_* keys are model-only and their Default Selection screen is commented out of the menu. Headline defect: the event-to-run conversion writes customer_categories/sales_agents while StatementOfAccountRunLineService.processEvent reads categories/agents, so a SCHEDULED run creates no lines AND records no FAILED status (matching live Critical ticket gh:bigledger/blg-intranet#4254). Other findings: a run can only select customers by customer category or by sales agent (no all-customers path); the candidate query ignores the statement start date; the sales-agent path unions every entity whose default_sales_agent matches regardless of period; /run, /regenerate and both retry endpoints perform NO permission check and /retry-pending-lines has no guid (sweeps the tenant); the PDF generation processor calls processStatementOfAccountRun with an empty guid so it is a tenant-wide sweeper; a template's template_hdr_guid is never read by the server. No images exist for this page and none were referenced. Topic kb/topics/statement-of-account.md (new)."
     }
   ],
   "skipped": [
@@ -274,6 +281,18 @@
     {
       "page": "content/en/applets/crm/team-maintenance-applet.md",
       "reason": "No ACTIVE registry row for Team Maintenance under any name. registry-applets-2026-09-05.tsv and the live bl_applet_hdr (checked 2026-09-06) hold exactly one match on code or name or property_json: newTeamMaintenanceApplet 'Team Maintenance', TNT-APPLET, DELETED, no documentation_url. Two repos exist and the V2 one is actively maintained (blg-applet-akaun-platform-team-maintenance-V2-applet, HEAD 2026-08-21, route applet/tnt/wavelet/erp/finance/team-maintenance-applet), so the applet is built but its registry row is deleted - same shape as the Group Maintenance skips (run 9) and E-Mandate (run 30). Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 31."
+    },
+    {
+      "page": "content/en/applets/finance/investment-applet.md",
+      "reason": "No registry row for an Investment applet under any name. registry-applets-2026-09-05.tsv and the live bl_applet_hdr (236 rows, checked 2026-09-06) contain nothing matching 'invest' in code, name or property_json, and no treasury/portfolio/securities row either. The repo blg-applet-wavelet-investment-applet exists and is maintained (HEAD 2026-08-03), builds investment-applet-elements.js and routes applet/tnt/wavelet/erp/investment-applet, but no registry row points at that build - same shape as E-Mandate (run 30) and Team Maintenance (run 31). Per ADR-0002 / standard rule 1 not rewritten; recorded under Registry / naming mismatches in findings.md run 32. Note the page's own content describes Deposit Requisition / Register / Category, i.e. the Deposit Applet (run 30) - it is effectively a third page for depositApplet."
+    },
+    {
+      "page": "content/en/applets/finance/investment-guide.md",
+      "reason": "Second page for the same unregistered Investment applet, and its content is fabricated: 18 lines describing 'Portfolio Management / Trade Execution / Performance Analysis / Risk Management' inside a 'Unified Financial System (UTMFin Replacement)'. Nothing in the repo or the backend matches. Same origin as finance/revenue-management-applet.md - the UTM public-sector evaluation material under content/en/user-guide/demo/education/. Not rewritten; recommend delete (zero inbound links). Recorded in findings.md run 32."
+    },
+    {
+      "page": "content/en/applets/finance/revenue-management-applet.md",
+      "reason": "No registry row for a Revenue Management applet under any name (live bl_applet_hdr checked 2026-09-06: nothing matching 'revenue', 'claim' beyond claimApplet/ClaimCycleApplet, 'PTJ', 'receivable', 'collection'), and no repo in refs/. The 181-line page describes 'Bill of Claims', 'Inter-PTJ Claims Journal', 'Staff Loan Subsidiary Ledger' - Malaysian public-sector terminology from the UTM evaluation material (content/en/user-guide/demo/education/), not from any BigLedger applet. Per ADR-0002 / standard rule 1 not rewritten; recommend delete plus fixing the three inbound links in modules-v2/financial-accounting/_index.md. Recorded in findings.md run 32."
     }
   ],
   "updated": "2026-09-06",

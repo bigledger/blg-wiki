@@ -3315,3 +3315,505 @@ row and the rejection modal, Settings → Workflow Settings, Settings → Printa
   It is what makes "can the customer do this themselves?" answerable, and pages keep hedging about
   it (run 30 found the same shape on Engagement's `/etl-ep`).
 - `tests/content-lint.sh` passes.
+
+---
+
+# Run 32 — 2026-09-06 — MY-SST (adopted page 9), plus three registry skips
+
+## Page completed
+
+- `content/en/applets/finance/sst-applet.md` — registry `mySST` "MY-SST APPLET" (TNT-USER, ACTIVE).
+  Full rewrite of a 731-line guide-voice page ("Who Benefits from This Applet?", a Quick Start, a
+  20-question FAQ, an "Applet Reference" appendix) into a ~430-line reference derived from the applet
+  at `b9e058e`, blg-shared-utilities at the pinned `7f59480` and HEAD `a8c38a2`, and the Java backend
+  at `1ff620ef0e`.
+
+### Title
+
+The registry `name` is **upper-cased**: `MY-SST APPLET`. Standard rule "title = registry name exactly"
+gives a shouting page title. Applied it anyway (precedent: run 31 used "Rma Applet (Internal)", run 17
+used "Organization"). **Vincent's decision:** normalise `bl_applet_hdr.name` to `MY-SST Applet` in the
+product registry, then the page title follows. Recorded here rather than deviating from the standard.
+
+### Aliases
+
+`documentation_url` is `https://wiki.bigledger.com/applets/sst/mysst/`, already an alias — kept. Added
+`/applets/sst-applet/`, which was **unclaimed** and is used by six inbound links
+(`applets-workflows.md`, `modules/core/_index.md`, `modules/financial-accounting.md`,
+`applets/_index.md` ×2, `applets/applet-catalog.md`). Those links were broken before this run.
+
+## Configuration classification (METHOD §1, §27, §29)
+
+**Applet-local, and nothing in it works.** `.gitmodules` points at blg-shared-utilities (pinned
+`7f59480`), so METHOD §29 applies: the submodule is there and `app.routing.ts` still imports the
+applet's own `FieldConfigurationComponent` and `DefaultSettingsComponent`. `AppletSettingsModule` and
+`AppletPersonalizationModule` are both imported, so the screens render.
+
+| Screen | In the menu? | Verdict |
+|---|---|---|
+| Settings → Default Tax Settings | Yes | Two controls (Default Branch, Default Location). Both value-change handlers dereference `this.appletContainer`, which is never assigned: the component declares `@Input() appletSettings$` / `@Output() save` but is **routed directly**, so neither binding exists. First interaction throws; SAVE emits to nobody. |
+| Settings → Field Settings | No | The unbound eight-toggle stub (Unit Discount, SST/VAT/GST, WHT, Blanket Order, Segment, G/L Dimension, Profit Center, Project). Sixth applet in this lane with the identical artefact. Reachable only by URL. |
+| Settings → Webhook / Client-Side Permission / Permission Set / User / Team / Role | No | Shared-utilities screens, routed but unlinked. `settings` with no child redirects to `client-side-permission-listing`, so that empty grid is the first thing the gear shows. |
+| Personalization → Default Selection | Yes | Same defect, plus the load subscription is commented out. |
+| Personalization → Sidebar | No | Routed, unlinked. |
+
+Four-proof: **no key passes all four through this applet's own screens.** 25 keys declared in
+`applet-settings.model.ts`; one has a reader.
+
+- `DEFAULT_BRANCH` — declared, rendered, **not persisted** (the save path throws), **consumed** by all
+  three Service SST-02 components. The twist: they read it from `SessionSelectors.selectPersonalSettings`,
+  which the shared session effect fills from the per-user `USER_SETTINGS` row on
+  `bl_applet_login_subject_link_ext` — a *different* row from the applet-level `APPLET_SETTINGS` that
+  Default Selection tries to write. So the one consumed key is a personal setting the applet cannot set.
+- `DEFAULT_LOCATION` — declared, rendered, not persisted, no reader.
+- The other 23 (`INCLUDE_*` ×6, `ENABLE_*` ×6, `PRINTABLE`, 15 `ENABLE_CUSTOM_STATUS_*`) — model-only.
+
+No inline `app-applet-settings-toggle` gear anywhere (METHOD §8 checked, zero hits).
+
+## The finding that matters most
+
+**Every box of the SST-02 sums hard-coded tax-code string literals, and that is why customers keep
+reporting that item 10 and item 11c do not tally.**
+
+`SSTController` calls `SSTService.getSST02Report(dto, conn, sstType, taxCodeList)` with the list baked
+into the source:
+
+| Endpoint | Tab label | Service tax codes |
+|---|---|---|
+| `service/sst-02` | SST-02 | `SRS6`, `SVU-6`, `IMS6` |
+| `service/sst-02/v2/backoffice-ep` | SST-02 Version 2 | `SRS8`, `SVU-6`, `IMS6` |
+| `service/sst-02/v3/backoffice-ep` | SST-02 Version 3 | `SRS6`, `SRS8`, `SVU-6`, `IMS6` |
+| `sales/sst-02` | SST-02 (Sales) | `ImmutableList.of()` — no tax-code filter at this level |
+
+The three Service "versions" are the 6% era, the 8% era and a straddling period. That is the real
+reason the tab exists three times, and no page or release note says so.
+
+Inside `getSST02Report` the Sales branch is equally literal: §11a `SRG5/SW-5/SU-5`, §11b
+`SRG10/SW-10/SU-10`, §18a `ZREG0/ZRLG0`, §18b `ESA`/`ESB`/`ESC-A|B|C`, §19-21 `EPC-A|B|C`; Service §18c
+`ESS0`.
+
+Now the tally bug. Both numbers come from `bl_fi_tax_txn` for the same filing cycle, through two
+different filters:
+
+- **Item 10** (`SECTION_B1_TOTAL10`) = `SUM(doc_line_amount_net)` grouped by `tax_tariff_code`, over rows
+  with `tax_tariff_code IS NOT NULL`, INNER JOINed to `bl_fi_mst_label_hdr` in the `TARIFF_CODES` list.
+- **Item 11c** = `SUM(doc_line_amount_net)` over rows with `doc_line_tax_code IN (<the literals>)`.
+
+A filed line with a tariff code but a tax code outside the list lands in 10 and not in 11c. A filed line
+with the right tax code but no tariff code lands in 11c and not in 10. Neither filter is configurable.
+This is reported at `customer-repo-e40ac3#7`, `#16` and `#17` (three tickets, one tenant, over months),
+and the closing comment is always "fixed on our side" — i.e. data was patched, never the query.
+
+## Other verified facts worth keeping
+
+1. **Service tax is payment-basis, sales tax is accrual-basis, and it is SQL, not settings.**
+   `getSSTDocumentsService`: `posting_status = 'FINAL'` AND `(arap_stlm_amount + arap_contra) <> 0`, with
+   an INNER JOIN LATERAL onto the AR/AP contra documents and the **date range applied to the contra
+   date**. `getSSTDocumentsSales`: `posting_status <> 'VOID'` only — a **DRAFT** sales invoice is eligible
+   and can be filed.
+2. Line eligibility also differs: service takes `SST-SVC-OUTPUT` with `tax_gst_rate > 0` **or**
+   `tax_gst_code = 'ESS0'`; sales takes `SST-SLS-OUTPUT`/`SST-SLS-INPUT` with `tax_gst_rate > 0` and has
+   no zero-rate escape. The "Taxable Amount" column means `SUM(amount_txn)` (gross) on service and
+   `SUM(amount_tax_gst)` (the tax) on sales. The sales line sub-query omits the `status` filter, so
+   DELETED lines count.
+3. **`fileTaxTxn` keeps only lines whose `txn_type` is `PNS`.** A taxed freight or charge line carried as
+   another line type is taxed on the invoice and absent from the return.
+4. **Unfile deletes one row.** `unfileTaxTxn` does `container.stream().findFirst().get()` over all rows
+   matching company + document and deletes that single row, then the controller nulls `posting_tax_gst`.
+   A multi-line document keeps orphan rows against the old filing while showing as unfiled; re-filing
+   adds a second full set. That is the mechanism behind `customer-repo-bb8ea1#244` and `#327`
+   ("duplicate filing for sales return and credit memo"). `.get()` on an empty result throws.
+5. **`FILE ALL` ignores the already-filed guard.** `file/backoffice-ep` filters
+   `!"POSTED".equals(posting_tax_gst)`; `service|sales/file-all/backoffice-ep` files whatever the
+   eligibility query returns, with no such filter.
+6. **A failed file is invisible.** `taxContainer.getOrElse(ImmutableList.of())` — the controller returns
+   HTTP 200 with an empty list for that document and leaves `posting_tax_gst` unset.
+7. **Lock checks no permission at all.** `FinancialFilingController.lock` fetches with the two-argument
+   `new FinancialFilingUow().getByGuid(guid, dbConn)`; the `requiredPermList` it builds is passed only to
+   `checkPreviousCycleIsLocked`, where it decides a `Permissioned` display flag. Any authenticated tenant
+   user can lock a filing cycle. **Delete needs only `TNT_API_FINANCIAL_FILING_READ`** — there is no
+   delete permission in the family.
+8. **Lock does not freeze the period.** No file, file-all or unfile path reads `locked_status`. What it
+   does enforce is order: any earlier-starting cycle for the same company with `locked_status IS NULL`
+   blocks it (deleted cycles are **not** excluded), answered as HTTP 200 with the body
+   `PREVIOUS FILING CYCLE IS NOT LOCKED`, which the applet's effect does recognise and toast.
+9. **Lock blanks its own Part A.** `generateSqlForPartA` filters `locked_status <> 'LOCKED'`, so after
+   locking, the SST-02 renders with no company name, no SST number and no period dates. There is no
+   unlock action. The old page's FAQ said locking is what you do *after* exporting; it is now the only
+   safe order, and the page says so.
+10. **The lock endpoint's carry-forward branch posts a journal with hard-coded amounts.**
+    `JournalPostingService.getJournalContainerCarryForward` builds `new BigDecimal(1500)` /`1500` /
+    `1000` / `1000` under comments reading `//Get Amount 6b to transfer` and `//Get Amount 5b to
+    transfer`, then creates a POSTED journal *SST-02 Auto Transfer* / *AUTO CREATED DURING LOCKING OF
+    FILING CYCLE*. **The applet never reaches it** — `confirmDialog` dispatches lock with `{}` and
+    `confirmCarryForward()` is commented out with the note "no need carry forward for SST, only GST".
+    Reachable only by direct API call. Also: the lock is saved *before* carry-forward runs, so a
+    carry-forward failure leaves the cycle locked and returns 500.
+11. **SST-02 item 13 is never assigned.** `section13A/13a/13b/13c` default to `BigDecimal.ZERO` in
+    `SST02OutputDto.PartB2` and `getSST02Report` never sets them; item 14 is set equal to item 12. Credit
+    notes and bad debts therefore never reduce the tax payable on the form. The old page's FAQ claimed
+    they appear in "Section 13a (Tax deduction from credit notes)" — false, and now corrected.
+12. **The Sales item 12 sums the wrong column.** Service sets §12 to the §11c **tax**; Sales sets it to
+    §11a **net** + §11b **net** — turnover reported where tax payable belongs.
+13. Item 15's *percentage* is stored and printed but never used in arithmetic; item 16 = item 14 + the
+    typed penalty **amount**.
+14. **Reports read live data, the SST-02 reads a snapshot.** The two Tax Report screens hit
+    `taxable-generic-documents` (live `bl_fi_generic_doc_hdr`); the Tax Code Summary joins live
+    `bl_fi_generic_doc_line` to `bl_fi_tax_txn`; the SST-02 reads only `bl_fi_tax_txn`. They diverge
+    permanently once a filed document is edited. That is the standing "SST report and SST-02 not tally"
+    complaint at `customer-repo-d4fc8d#37` and `customer-repo-c0c34b#715` — two unrelated tenants, a year
+    apart. The Tax Code Summary also has no `t.status` filter, so a VOID-reversal row double-counts.
+15. **`VOID_TAX_PROCESSOR` is a subscriber, not a trigger.** Nothing in the Java tree enqueues it; it runs
+    where a tenant's job template subscribes it to the generic-document queue. Where it is not
+    subscribed, voiding a filed document leaves its tax transaction in the return. When it does run it
+    writes a negated row with `filing_status = VOID` (keeping the original) and throws
+    *No tax transaction found for this generic document!* on a document that was never filed.
+16. **The `TARIFF_CODES` label list is seeded, not created.** Liquibase `V20221019` inserts it as a
+    SYSTEM_DEFAULT with the fixed GUID `…-002`; `label.effects.ts` only looks it up by code. Older or
+    hand-provisioned tenants without that row save every tariff code with a null `label_list_guid`, and
+    Part B1 comes back empty.
+17. Filing-cycle validation is FK-existence only — **no date-order check and no overlap check**. Two
+    cycles covering the same month are accepted, and the same document can be filed into both.
+18. Five unrelated permission families across one applet, and the one that gates filing is the
+    generic-document family (METHOD lesson: check which family actually gates a screen):
+    File/File All/Unfile → `API_TNT_DM_ERP_GEN_DOC_*` (+ `API_TNT_DM_ERP_FI_TAX_TXN_*` for unfile);
+    reports and SST-02 → `API_TNT_DM_ERP_SST02_*`; Tax Code Summary → `API_TNT_DM_ERP_TAX_CODE_SUMMARY_*`;
+    tax years → `API_TNT_DM_ERP_FI_FILING_YEAR_*`; filing cycles → `TNT_API_FINANCIAL_FILING_*` /
+    `TNT_LOG_FINANCIAL_FILING_*`.
+19. The v1 Service SST-02's document query carries `app_perm_dfn.perm_code IN ('')`, so its
+    `has_permission` column is always FALSE — but `SSTController.replaceWithoutPermission` returns the
+    value unchanged, so nothing is masked. Dead permission plumbing.
+20. Form defects that reach the data: Tax Year's **Approval No** is never sent (`onAdd` reads
+    `form.value.approval`, the control is `approval_no`); a filing cycle's `fiscal_year_guid` is always
+    null (assigned from a `fiscal` control that does not exist on that form); changing a cycle's Start
+    Date always recomputes End Date as start **+ 3 months** (`onDateChange` hard-codes it) regardless of
+    Monthly / Quarterly / Custom; the Tariff Code create and edit panels are both headed "Tax Code".
+21. `bl_fi_cfg_tax_code` divergence from run 27 re-verified from this side: MY-SST writes `tax_country`
+    = `MYS`, the rate unrounded as `rate/100`, and the tariff code into the `tax_tariff_code` column.
+22. There are **no** `sales/sst-02/v2` or `/v3` endpoints on the server. The applet's `api-service.ts`
+    builds those URLs, but no component calls them with `sstType = "SALES"` — the Sales tab has only the
+    v1 SST-02 component. Dead client code, not a live 404.
+
+## Defects found (worth a bug report independent of the docs)
+
+1. Carry-forward journal posts hard-coded RM 1,500 / RM 1,500 / RM 1,000 / RM 1,000 (unreachable from
+   the applet, live on the endpoint).
+2. `unfileTaxTxn` deletes only the first matching row → duplicate filings.
+3. `FILE ALL` has no already-POSTED guard → duplicate filings.
+4. Lock endpoint performs no permission check.
+5. Delete of a filing cycle is gated by a READ permission.
+6. Locking a cycle blanks its own SST-02 Part A.
+7. SST-02 item 13 is never populated; item 14 does not subtract it.
+8. Sales SST-02 item 12 sums taxable amounts instead of tax amounts.
+9. Sales eligibility accepts DRAFT documents.
+10. Sales line sub-query omits the `status <> 'DELETED'` filter.
+11. Tax Code Summary omits the `bl_fi_tax_txn.status` filter → VOID reversals double-count.
+12. Both Default Selection screens throw on first interaction and save nothing.
+13. Tax Year `approval_no` is never persisted.
+14. Filing cycle `fiscal_year_guid` is never persisted.
+15. Filing-cycle End Date recalculation hard-codes three months.
+16. `checkPreviousCycleIsLocked` does not exclude deleted cycles.
+17. Tariff Code screens are headed "Tax Code".
+18. Filing failures return HTTP 200 with an empty body and no user-visible error.
+
+## Screenshots
+
+Eighteen references over `static/images/sst-applet/` (the directory also holds eleven stray
+`shipping-pricebook-applet-*` files that belong to another applet). Every referenced image was opened.
+
+**Kept (5)** — all from a clean `TESTING`/synthetic tenant or showing only test tariff data:
+`tax-filing-listing.png`, `tax-filing-cycle-details.png`, `tax-filing-sst02-tab.png`,
+`tariff-code-listing.png`, `tariff-code-create.png`. The two tariff ones are worth keeping precisely
+because they show the mislabelled "Create/Edit Tax Code" heading on the Tariff Code screen.
+
+**Dropped from the page (references removed; files to quarantine, 13):**
+
+- `tax-code-listing.png`, `tax-code-create.png`, `tax-code-edit.png` — a grid row reading
+  **"Martin Test Output 6"** (a developer's first name).
+- `sst-service-tax-report-search.png`, `sst-sales-tax-report-search.png`,
+  `sst-tax-code-summary-search.png` — company `11111 | yasir_test` and branch `1234 | YASIRBRANCH`
+  (a developer's first name, twice per image).
+- `tax-filing-view.png` — a filing cycle named **"TEST TALHA"** (a person's name) plus a company row
+  reading as a real technology company.
+- `main-listing-page.png`, `search-filter.png`, `tax-year-create.png`, `tax-year-edit.png` — the same
+  Tax Year listing behind all four, carrying a company row that reads as a real customer name.
+- `tax-filing-unfiled-transactions.png`, `tax-filing-filed-transactions.png` — the Branches drop-down
+  lists five branch codes sharing a four-letter prefix that reads as a customer abbreviation, plus a
+  named `SDN BHD`.
+- `tax-filing-create.png` — the Company drop-down lists a name that reads as a real brand among
+  otherwise synthetic entries.
+- `sst-applet-overview-infographic.png` — an AI marketing infographic ("50% Less Time on Filing",
+  "Intelligent Code Matching", "Real-time Data Sync"). None of those claims is supported by the code.
+
+**Recapture wanted** from a GadgetSphere-seeded tenant: Tax Year listing and create; Tax Code listing,
+create and edit; the Tax Filing → Service tab showing **all five** sub-tabs (Filed, Unfiled, SST-02,
+SST-02 Version 2, SST-02 Version 3) side by side, which is the single most useful missing image; the
+Unfiled Transactions grid with the Branches filter open; a populated SST-02 result grid; and the three
+report search dialogs.
+
+## Registry / naming mismatches
+
+### `finance/investment-applet.md` and `finance/investment-guide.md` — SKIPPED
+
+No registry row for an Investment applet under any name. `registry-applets-2026-09-05.tsv` and the live
+`bl_applet_hdr` (236 rows, 2026-09-06) contain **nothing** matching `invest` in `code`, `name` or
+`property_json`, and no treasury / portfolio / securities / fund row either (`%fund%` matches only
+"Refund").
+
+The repo **does** exist and is maintained: `blg-applet-wavelet-investment-applet`, HEAD `a4eb938`
+(2026-08-03), 21 commits, angular project `investment-applet`, route
+`applet/tnt/wavelet/erp/investment-applet`, build output `investment-applet-elements.js`. No registry
+row's `es_module_url` points at that build. Same shape as E-Mandate (run 30) and Team Maintenance
+(run 31): built, deployed nowhere.
+
+**What the applet actually is** — worth recording, because two pages currently describe it wrongly.
+Its four menus are **Deposit Requisition, Deposit Register, Deposit Category, Reports**: the first
+three are the Deposit Applet's screens (run 30) in properly-named folders, and Reports is a
+Depreciation Schedule over `FixedAssetReportInputDto` — i.e. the Fixed Asset applet's report (run 31).
+It is a merge of the two, not a securities register.
+
+**Both pages currently claim otherwise.** `finance/deposit-applet.md` (written in run 30, this lane)
+says "the adjacent treasury register; deposits are term placements, **investments are holdings**" in
+three places, and `modules-v2/financial-accounting/_index.md` L177 promises "Investment cost, market
+value, and gain/loss tracking". Nothing of the kind exists in the repo or the backend. See cross-lane
+requests below.
+
+`investment-guide.md` is a separate matter: 18 lines describing "Portfolio Management / Trade
+Execution / Performance Analysis / Risk Management" inside a "Unified Financial System (**UTMFin
+Replacement**)". That is not BigLedger vocabulary at all.
+
+### `finance/revenue-management-applet.md` — SKIPPED
+
+No registry row (nothing matching `revenue`, `PTJ`, `receivable`, `collection`; `claim` matches only
+`claimApplet` and `ClaimCycleApplet`, which are different applets with their own pages), and no repo.
+The 181-line page describes "Bill of Claims", "**Inter-PTJ Claims Journal**", "Multiple Letter
+Generation", "Debtors Subsidiary Ledger", "Staff Loan Subsidiary Ledger" — *PTJ* is *Pusat
+Tanggungjawab*, Malaysian public-sector accounting vocabulary.
+
+### The common origin, and a thing Vincent should see
+
+`revenue-management-applet.md` and `investment-guide.md` are the same material as
+`content/en/user-guide/demo/education/`, whose `_index.md` is titled **"UTM Integrated Financial System
+Evaluation Guide"** and opens *"Thank you for taking the time to evaluate the BigLedger Integrated
+Financial System for Universiti Teknologi Malaysia (UTM)"*. Eleven published pages addressed by name to
+one named prospect's evaluation panel, live on the public wiki, plus two applet pages carrying that
+tender's module names as if they were shipping applets.
+
+**This needs Vincent's decision** and is outside this lane's folders, so nothing was touched:
+(a) should a named-prospect evaluation guide be published on the public documentation site at all;
+(b) the two applet-tree pages that leaked out of it should be deleted, with the three inbound links in
+`modules-v2/financial-accounting/_index.md` repointed.
+
+## Cross-lane link requests (from this page)
+
+1. `content/en/applets/finance/deposit-applet.md` (lane 4, run 30 — done, so recording not editing) —
+   remove the three "Investment Applet … investments are holdings" claims and the
+   `investment-applet` entry in `related_applets`. The Investment applet is unregistered and is a fork
+   of the Deposit + Fixed Asset screens, not a holdings register.
+2. `content/en/modules-v2/financial-accounting/_index.md` — three problems: L177 / L260 / L352 describe
+   the Investment Applet as tracking "investment cost, market value, and gain/loss" (invented, and the
+   applet is unregistered); L212 / L251 / L342 / L370 / L509 describe the SST applet as aggregating
+   "output and input tax from all posted transactions across the period", which is wrong for service tax
+   (payment basis) and silent about the hard-coded tax-code lists; the L509 FAQ about SST not tallying
+   should name the live-vs-snapshot split.
+3. `content/en/applets/master-data/tax-configuration-applet.md` — should state that the tax **code
+   string** is compliance-critical, because the SST-02 sums the literals `SRS6`, `SRS8`, `SVU-6`, `IMS6`,
+   `SRG5`, `SRG10`, `SW-5`, `SW-10`, `SU-5`, `SU-10`, `ESS0`, `ESA`, `ESB`, `ESC-A|B|C`, `EPC-A|B|C`,
+   `ZREG0`, `ZRLG0`. Add `sst-applet` to its `related_applets` if not already there (it is).
+4. `content/en/applets/sales-workflow/internal-sales-credit-note-applet.md` and the sales-return page —
+   a credit note whose lines are zero-rated or non-`PNS` is invisible to SST filing; and unfiling is not
+   a clean reversal (one row per call).
+5. `content/en/applets/finance/internal-purchase-invoice-applet.md` and
+   `content/en/applets/sales-workflow/internal-sales-invoice-applet.md` — add `sst-applet` to
+   `related_applets`, and note that for **service** tax the settlement date, not the document date,
+   decides the SST period.
+6. `content/en/applets/e-invoice/my-e-invoice-admin-applet.md` — worth one sentence that e-Invoice and
+   SST filing share no tables and use different tax classifications (`einvoice_taxable_type_code` vs
+   `tax_gst_type`), so a validated e-Invoice says nothing about the SST-02.
+7. `content/en/applets/finance/tax-config-applet.md` — the duplicate identified as F-0040 in run 27 also
+   links to SST; whatever merge Vincent chooses should keep `/applets/sst-applet/` pointing here.
+8. `content/en/applets/applet-catalog.md` L93 and `content/en/applets/_index.md` — the two
+   `/applets/sst-applet/` links now resolve (alias added this run); no edit needed, recording so the
+   parity check does not flag it as an accidental alias.
+
+## Notes for the loop
+
+- `kb/topics/sst-filing.md` created (new slug). `kb/topics/tax-configuration.md` gained an
+  `sst-filing` edge in its `related:` list.
+- Two pseudonyms added to `kb/private/repo-pseudonyms.tsv`.
+- METHOD candidate §48: **a "version 2 / version 3" tab is usually a regulatory-change fork, not a
+  redesign.** The three SST-02 tabs differ only in a hard-coded tax-code list matching the 6% → 8%
+  service-tax change. Where a screen offers numbered versions of the same report, diff the arguments the
+  controller passes, not the components.
+- METHOD candidate §49: **a report that "does not tally" with another report is usually live-data vs
+  snapshot.** Before writing any reconciliation advice, establish for each number whether it reads the
+  live document tables or a frozen copy written at some earlier action. Three unrelated tenants have
+  filed the same ticket against this applet.
+- METHOD candidate §50: **`@Input()` / `@Output()` on a component that `app.routing.ts` routes directly
+  are dead.** Angular binds them only when the component is embedded in a template. Two of this lane's
+  applets (Fixed Asset run 31, MY-SST here) have settings screens that are broken for exactly this
+  reason, and the symptom is identical: `appletContainer` undefined, SAVE emits into the void. Check the
+  routing table before believing a settings screen saves anything.
+- METHOD candidate §51: **check the tenant provisioning seed before calling a lookup a prerequisite.**
+  MY-SST looks up the `TARIFF_CODES` label list and never creates it, which reads like a bug until you
+  find the Liquibase changelog that seeds it with a fixed GUID. Grep `javasdk/src/main/resources/liquibase/`
+  for the code before writing "you must create X first".
+- `tests/content-lint.sh` passes.
+
+## Page 2 — `finance/statement-of-account-applet.md`
+
+Registry `statementOfAccountApplet` "Statement of Account Applet" (TNT-USER, ACTIVE). Title unchanged;
+`documentation_url` already points at this page, so no alias was needed. The existing 166-line page was
+guide-voice (Quick Start, feature cards, FAQ) but — unusually for this lane — **written by someone who
+had actually used the applet**: the "at least one of Sales Agent or Customer Category", the Month From
+gating on `TRANSACTION_HISTORY`, and the printable-format txn type `STATEMENT_OF_ACCOUNT` all check out
+against the code. Most of it survives, restructured. UTF-8 BOM preserved. Derived from the applet at
+`4e98c83` and the Java backend at `1ff620ef0e`.
+
+### Configuration classification — the positive counter-example
+
+**Applet-local, and the main settings screen genuinely works.** Six applets in this lane have shipped
+the unbound eight-toggle stub. This one has a real screen: `FieldConfigurationComponent` builds a
+19-control `FormGroup`, patches it from `SessionSelectors.selectMasterSettings`, binds every control
+with `[formControl]`, and SAVE dispatches `saveMasterSettingsInit`. `AppletSettingsModule` is imported.
+
+Four-proof: 19 declared, 19 rendered, 19 persisted, **13 consumed**.
+
+- The 13 `HIDE_HDR_*` keys each set both `hide` **and** `suppressColumnsToolPanel` on their ag-grid
+  column in the Runs listing — so a hidden column cannot be brought back from the grid's own tool
+  panel either. Worth documenting as a behaviour, not just a toggle.
+- The six `HIDE_LINE_*` keys save and are read by nothing; the Lines grid builds its columns without
+  them.
+- `PRINTABLE` is owned by a *second* screen (Settings → Printable Format Settings, via
+  `printable-format.effects.ts`) and consumed as the default printable format on the run, event **and**
+  template forms — METHOD §28 again: enumerate every component dispatching `saveMasterSettingsInit`.
+- `DEFAULT_BRANCH`, `DEFAULT_LOCATION`, `DEFAULT_COMPANY`, `DEFAULT_VALIDITY_DAYS`,
+  `DEFAULT_PRICING_SCHEME` are model-only; their Default Selection screen is routed but commented out
+  of the settings menu.
+
+Also commented out of both routing and menu: Workflow Settings and Email Template. Eight further
+settings routes have no menu entry, including `client-side-permission-listing`, which is the default
+redirect for `settings` — and no `bl_applet_client_side_perm_dfn` rows are seeded, so it opens empty.
+
+### The finding that matters most
+
+**A scheduled statement run produces no lines, and records no failure.**
+
+`StatementOfAccountEventHdrService.createRunHdrFromEventHdr` builds the run header from the event and
+writes:
+
+```java
+customerCategoriesJson.put("customer_categories", customerCategoriesArray);   // L193
+salesAgentsJson.put("sales_agents", salesAgentsArray);                       // L215
+```
+
+`StatementOfAccountRunLineService.processEvent` reads:
+
+```java
+eventProperties.getCustomer_categories().get("categories")   // L250
+eventProperties.getSales_agents().get("agents")              // L257
+```
+
+— the key names the **manual** create form writes. Both lists come back null, so neither of the two
+branches at L272 and L280 fires. Because `updateHdrFailed` is called only *inside* those branches, the
+run is left with no lines **and** no `FAILED` status. Only the `companies` key matches between the two
+paths, which is why the company set looks fine and the customer set is empty.
+
+The Runs listing already handles both key shapes defensively
+(`params.value?.categories_name?.join(', ') || params.value?.customer_categories_name?.join(', ')` and
+`salesAgents?.agents?.length > 0 || salesAgents?.sales_agents?.length > 0`), so the divergence is known
+on the UI side and unhandled on the processing side.
+
+Matching live ticket: `gh:bigledger/blg-intranet#4254`, priority **Critical**, "[…] Statement of Account
+Applet - Lines not showing", body "Lines are not showing up after creation is a data issue?". It is not
+a data issue.
+
+### Other verified facts worth keeping
+
+1. **There is no "all customers" option.** `processEvent` has exactly two selectors — customer category,
+   or sales agent — and the create form enforces it with a form-level `atLeastOneCheckedValidator`. A
+   customer with no category and no `default_sales_agent` can never receive a statement.
+2. The candidate-customer query per company is
+   `posting_status ILIKE 'FINAL' AND date_txn < :stmtEndDate` — the **statement start date is bound as a
+   parameter but never referenced in the SQL**, so an old FINAL document keeps a customer eligible.
+3. The sales-agent path unions two sets: customers on FINAL documents in the period whose
+   `sales_entity_hdr_guid` matches, **and every non-deleted entity whose `default_sales_agent` matches**,
+   with no period or company filter on the second. The per-company intersection is what saves it.
+4. **`/run/{guid}`, `/regenerate/{guid}`, `/{guid}/retry-pending-lines` and `/retry-pending-lines`
+   perform no permission check** — plain `AuthenticatedTenantEndpoint` handlers with no
+   `doesUserHaveAnyPermission`. The last has no GUID and sweeps every incomplete run in the tenant.
+   CRUD is properly gated by `API_TNT_DM_ERP_STATEMENT_OF_ACCOUNT_*`.
+5. `STATEMENT_OF_ACCOUNT_RUN_PDF_GENERATION_PROCESSOR` calls
+   `processStatementOfAccountRun(Optional.empty(), conn, true)` — an **empty** GUID. It processes every
+   run header in the tenant at `run_count_completed = false` and status `CREATED`, not the one its event
+   named. A sweeper wearing a per-run processor's clothes.
+6. `run` acts only on `CREATED`, `regenerate` only on `COMPLETED`/`FAILED`. **Nothing recovers a run
+   stuck at `IN_PROGRESS`** except the retry endpoints, which only re-process lines still at `CREATED`.
+   Open applet issue #1 asks for a button that does exactly what `/retry-pending-lines` already does —
+   the capability exists on the server and is not surfaced.
+7. **A template is never read by the server.** `template_hdr_guid` is written onto the event header, and
+   `createRunHdrFromEventHdr` copies exclusively from the event header and the event's own three filter
+   tables. Templates only pre-fill the event form.
+8. The recurring processor takes `ACTIVE` events with `run_status = PENDING` whose `date_end` fell in the
+   previous 24 hours, converts each once, and stamps `run_status = 'CREATED'`. Recurrence comes from
+   `StatementOfAccountEventHdrRecurringService` expanding an RRULE into one event row per occurrence at
+   save time — and applet issue #3 reports that expansion produces the wrong cycle dates.
+9. Both statement dates are snapped to `startOf('month')` / `endOf('month').endOf('day')` on every value
+   change, so a run always covers whole months. Every field is disabled after CREATE — a run is
+   immutable.
+10. E-mail recipients are the union of typed addresses plus five independently-toggled sources (entity
+    main e-mail, primary address contacts, secondary address contacts, staff/family, login subjects),
+    all defaulting to on; invalid addresses are dropped silently.
+11. No journal, no signum, no stock, no queue beyond its own two processors. A statement reports a
+    receivable position; it does not create one.
+
+### Defects found
+
+1. Event-to-run JSON key mismatch → scheduled runs produce nothing, silently.
+2. `updateHdrFailed` is unreachable when both selectors are empty, so the run has no terminal state.
+3. Four action endpoints with no permission check, one of them tenant-wide.
+4. The PDF generation processor ignores the GUID it was given.
+5. Six `HIDE_LINE_*` settings persist and are read by nothing.
+6. The statement start date is not applied to the candidate-customer query.
+7. No recovery path for a run stuck at `IN_PROGRESS`.
+8. RRULE expansion produces wrong cycle dates (applet issue #3).
+
+### Screenshots
+
+None. `static/images/` has no `statement-of-account*` directory and the page referenced no images.
+**Recapture wanted** from a GadgetSphere-seeded tenant: the Runs listing showing all 13 configurable
+columns; Create Statement with Run Type = Email and the five recipient check boxes visible; the Lines
+tab of a completed run; Settings → Application Settings with both accordion groups open; Settings →
+Printable Format Settings; the Events listing with a recurring event.
+
+### Cross-lane link requests (from this page)
+
+1. `content/en/applets/master-data/customer-maintenance-applet.md` (lane 4, run 1 — done) — should say
+   that a customer with **no customer category and no default sales agent** can never be included in a
+   statement run, and add `statement-of-account-applet` to `related_applets`.
+2. `content/en/applets/finance/debtor-report-applet.md` — cross-link, and avoid implying the statement
+   and the debtor report agree line for line; a customer has reported a mismatch
+   (`customer-repo-f18431#948`) and a separate aging defect on the report side
+   (`customer-repo-67287b#196`).
+3. `content/en/applets/master-data/entity-applet.md` — the entity's address contacts and login subjects
+   are statement recipients; worth one line.
+4. `content/en/applets/sales-workflow/internal-sales-invoice-applet.md` — only `FINAL` documents make a
+   customer eligible for a statement; add `statement-of-account-applet` to `related_applets`.
+5. Any page describing a shared-utilities ag-grid listing — `gh:bigledger/blg-intranet#4966` reports the
+   grid resetting to the first page after SAVE. That is shared behaviour, not applet-specific, and no
+   lane page mentions it.
+6. `gh:bigledger/blg-wiki#141` is an open request for a **user guide** for this applet. The reference
+   page is now the prerequisite; the guide must lead with the category-or-sales-agent constraint,
+   because that is the single thing that makes a run come back empty.
+
+### Notes for the loop
+
+- `kb/topics/statement-of-account.md` created (new slug).
+- METHOD candidate §52: **when two code paths build the same JSON column, diff their key names.** The
+  manual form and the scheduled converter both populate `customer_categories` / `sales_agents` on the
+  same table with different inner keys, and only the reader of one of them exists. A grid rendering
+  `a || b` for the same concept is the tell that this has happened.
+- METHOD candidate §53: **a processor that takes a GUID in its event properties and then calls its
+  service with `Optional.empty()` is a sweeper.** Check the argument, not the class name — the
+  difference between "processes this run" and "processes every run in the tenant" is one token.
+- `tests/content-lint.sh` passes.

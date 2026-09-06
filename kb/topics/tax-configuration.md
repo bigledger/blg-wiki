@@ -3,7 +3,7 @@ topic: tax-configuration
 aliases: [tax codes, tax code configuration, GST codes, SST codes, withholding tax codes, bl_fi_cfg_tax_code, tax rate]
 applets: [taxConfiguration]
 modules: [core, financial-accounting, sales-crm, purchasing, e-commerce, pos, e-invoice]
-related: [chart-of-accounts, organisation, doc-item-maintenance, inv-item-maintenance, customer-maintenance, supplier-maintenance, entity-applet, merchant-admin, e-invoice, internal-sales-invoice-applet, internal-purchase-invoice-applet, financial-report-applet, non-stock-and-trade-in]
+related: [sst-filing, chart-of-accounts, organisation, doc-item-maintenance, inv-item-maintenance, customer-maintenance, supplier-maintenance, entity-applet, merchant-admin, e-invoice, internal-sales-invoice-applet, internal-purchase-invoice-applet, financial-report-applet, non-stock-and-trade-in]
 wiki:
   - content/en/applets/master-data/tax-configuration-applet.md
   - content/en/applets/finance/tax-config-applet.md
