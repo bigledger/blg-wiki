@@ -38,10 +38,10 @@ POS终端小程序是BigLedger销售点模块的核心组件，为零售运营�
 ## 集成点
 
 ### 核心模块依赖项
-- **[库存项目维护小程序](/zh/applets/inv-item-maintenance-applet/)** - 产品信息
-- **[客户维护小程序](/zh/applets/customer-maintenance-applet/)** - 客户数据
-- **[现金簿小程序](/zh/applets/cashbook-applet/)** - 支付处理
-- **[税务配置小程序](/zh/applets/tax-configuration-applet/)** - 销售税计算
+- **[库存项目维护小程序](/applets/inv-item-maintenance-applet/)** - 产品信息
+- **[客户维护小程序](/applets/customer-maintenance-applet/)** - 客户数据
+- **[现金簿小程序](/applets/cashbook-applet/)** - 支付处理
+- **[税务配置小程序](/applets/tax-configuration-applet/)** - 销售税计算
 
 ## 相关小程序
 

@@ -11,6 +11,8 @@ tags:
 - operator
 - supervisor
 weight: 175
+aliases:
+  - /applets/manufacturing-operation-applet/
 ---
 
 ## About the Applet

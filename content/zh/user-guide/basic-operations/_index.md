@@ -13,9 +13,9 @@ bookCollapseSection: false
 学习管理驱动业务的基本数据：
 
 {{< cards >}}
-{{< card link="/zh/user-guide/basic-operations/creating-an-item" title="创建项目" subtitle="向产品目录添加产品和服务的分步指南" >}}
-{{< card link="/zh/user-guide/basic-operations/item-maintenance" title="项目管理" subtitle="维护产品目录的综合指南" >}}
-{{< card link="/zh/user-guide/basic-operations/editing-an-item" title="编辑项目" subtitle="修改现有产品、定价和规格" >}}
+{{< card link="/user-guide/basic-operations/creating-an-item" title="创建项目" subtitle="向产品目录添加产品和服务的分步指南" >}}
+{{< card link="/user-guide/basic-operations/item-maintenance" title="项目管理" subtitle="维护产品目录的综合指南" >}}
+{{< card link="/user-guide/basic-operations/editing-an-item" title="编辑项目" subtitle="修改现有产品、定价和规格" >}}
 {{< /cards >}}
 
 ## 文档管理
@@ -23,8 +23,8 @@ bookCollapseSection: false
 高效处理业务文档：
 
 {{< cards >}}
-{{< card link="/zh/user-guide/basic-operations/document-item-types" title="文档类型" subtitle="了解不同文档类型及其用法" >}}
-{{< card link="/zh/user-guide/basic-operations/document-item-maintenance" title="文档管理" subtitle="创建、编辑和管理业务文档" >}}
+{{< card link="/user-guide/basic-operations/document-item-types" title="文档类型" subtitle="了解不同文档类型及其用法" >}}
+{{< card link="/user-guide/basic-operations/document-item-maintenance" title="文档管理" subtitle="创建、编辑和管理业务文档" >}}
 {{< /cards >}}
 
 ## 关键学习目标
@@ -95,9 +95,9 @@ bookCollapseSection: false
 
 - **[日常任务](/zh/user-guide/daily-tasks/)** - 在定价和交易中使用项目
 - **[模块](/zh/modules/)** - 项目流经所有业务模块
-- **[电子商务](/zh/modules/ecommerce/)** - 项目同步到在线商店
+- **[电子商务](/modules/ecommerce/)** - 项目同步到在线商店
 - **[库存](/modules/inventory/)** - 跟踪库存水平和变动
-- **[会计](/zh/modules/financial-accounting/)** - 项目出现在财务交易中
+- **[会计](/modules/financial-accounting/)** - 项目出现在财务交易中
 
 ## 故障排除快速参考
 

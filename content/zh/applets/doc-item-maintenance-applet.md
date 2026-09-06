@@ -182,9 +182,9 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 ## 相关小程序
 
 ### 核心模块小程序
-- **[库存项目维护小程序](/zh/applets/inv-item-maintenance-applet/)** - 物理库存项目
-- **[税务配置小程序](/zh/applets/tax-configuration-applet/)** - 服务税务设置
-- **[客户维护小程序](/zh/applets/customer-maintenance-applet/)** - 服务客户
+- **[库存项目维护小程序](/applets/inv-item-maintenance-applet/)** - 物理库存项目
+- **[税务配置小程序](/applets/tax-configuration-applet/)** - 服务税务设置
+- **[客户维护小程序](/applets/customer-maintenance-applet/)** - 服务客户
 
 ### 服务相关小程序
 - **[时间跟踪小程序](/zh/applets/time-tracking-applet/)** - 服务时间记录

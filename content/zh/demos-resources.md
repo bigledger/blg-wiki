@@ -191,14 +191,14 @@ BigLedger数据枢纽和模块化ERP系统的全面介绍。
 **入门指南**
 - [平台设置指南](/zh/user-guide/)
 - [模块配置](/zh/modules/)
-- [集成手册](/zh/developers/)
+- [集成手册](/developers/)
 - [最佳实践](/zh/guides/)
 
 **技术文档**
-- [API参考](/zh/developers/api-reference/)
-- [数据字典](/zh/developers/)
-- [安全指南](/zh/developers/)
-- [性能调优](/zh/developers/)
+- [API参考](/developers/api-reference/)
+- [数据字典](/developers/)
+- [安全指南](/developers/)
+- [性能调优](/developers/)
 
 ### 🎓 培训材料
 

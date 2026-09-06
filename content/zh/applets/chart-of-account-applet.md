@@ -175,9 +175,9 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 ## 相关应用程序
 
 ### 核心模块应用程序
-- **[税务配置应用程序](/zh/applets/tax-configuration-applet/)** - 税务科目映射
-- **[现金簿应用程序](/zh/applets/cashbook-applet/)** - 现金和银行科目
-- **[组织应用程序](/zh/applets/organization-applet/)** - 公司结构
+- **[税务配置应用程序](/applets/tax-configuration-applet/)** - 税务科目映射
+- **[现金簿应用程序](/applets/cashbook-applet/)** - 现金和银行科目
+- **[组织应用程序](/applets/organization-applet/)** - 公司结构
 
 ### 财务应用程序
 - **[总账应用程序](/zh/applets/general-ledger-applet/)** - 交易过账
@@ -185,7 +185,7 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 - **[预算管理应用程序](/zh/applets/budget-management-applet/)** - 预算分配
 
 ### 主数据应用程序
-- **[客户维护应用程序](/zh/applets/customer-maintenance-applet/)** - 客户科目
+- **[客户维护应用程序](/applets/customer-maintenance-applet/)** - 客户科目
 - **[供应商维护应用程序](/zh/applets/supplier-maintenance-applet/)** - 供应商科目
 
 ## 设置指南

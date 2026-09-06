@@ -45,9 +45,9 @@ weight: 175
 ## 集成点
 
 ### 核心模块依赖
-- **[会计科目表小程序](/zh/applets/chart-of-account-applet/)** - 账户结构基础
-- **[税务配置小程序](/zh/applets/tax-configuration-applet/)** - 税务计算
-- **[组织小程序](/zh/applets/organization-applet/)** - 多实体支持
+- **[会计科目表小程序](/applets/chart-of-account-applet/)** - 账户结构基础
+- **[税务配置小程序](/applets/tax-configuration-applet/)** - 税务计算
+- **[组织小程序](/applets/organization-applet/)** - 多实体支持
 
 ## 相关小程序
 

@@ -668,7 +668,7 @@ AI驱动的洞察：
 
 1. **[最佳实践](/zh/user-guide/best-practices/)** - 实施数据驱动决策
 2. **[故障排除](/zh/user-guide/troubleshooting/)** - 解决报告问题
-3. **[开发者资源](/zh/developers/)** - 高级自定义和API集成
+3. **[开发者资源](/developers/)** - 高级自定义和API集成
 
 {{< callout type="success" >}}
 **分析掌握**：当您能够快速创建推动业务决策和改进计划的有意义报告时，您就掌握了报表和分析。

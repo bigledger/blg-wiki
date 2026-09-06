@@ -186,9 +186,9 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 ## 相关小程序
 
 ### 核心模块小程序
-- **[会计科目表小程序](/zh/applets/chart-of-account-applet/)** - 账户结构集成
-- **[税务配置小程序](/zh/applets/tax-configuration-applet/)** - 付款税务处理
-- **[组织小程序](/zh/applets/organization-applet/)** - 多地点现金管理
+- **[会计科目表小程序](/applets/chart-of-account-applet/)** - 账户结构集成
+- **[税务配置小程序](/applets/tax-configuration-applet/)** - 付款税务处理
+- **[组织小程序](/applets/organization-applet/)** - 多地点现金管理
 
 ### 财务小程序
 - **[应收账款小程序](/zh/applets/accounts-receivable-applet/)** - 客户付款处理

@@ -8,5 +8,7 @@ tags:
 - group-management
 - user-administration
 - permissions
+aliases:
+  - /applets/group-maintenance-applet/
 ---
 Group Maintenance applet is to add users into a Group, and assign permission to the user in Platform level. There is only one module in the Group Maintenance Applet which is Group Listing.

@@ -13,9 +13,9 @@ bookCollapseSection: false
 管理您的定价策略和财务流程：
 
 {{< cards >}}
-{{< card link="/zh/user-guide/daily-tasks/pricing-scheme" title="定价策略" subtitle="为不同客户群体创建和管理灵活的定价方案" >}}
-{{< card link="/zh/user-guide/daily-tasks/price-book" title="价格手册管理" subtitle="维护综合价格清单和管理定价更新" >}}
-{{< card link="/zh/user-guide/daily-tasks/price-set" title="价格集配置" subtitle="高级定价配置和批量价格管理" >}}
+{{< card link="/user-guide/daily-tasks/pricing-scheme" title="定价策略" subtitle="为不同客户群体创建和管理灵活的定价方案" >}}
+{{< card link="/user-guide/daily-tasks/price-book" title="价格手册管理" subtitle="维护综合价格清单和管理定价更新" >}}
+{{< card link="/user-guide/daily-tasks/price-set" title="价格集配置" subtitle="高级定价配置和批量价格管理" >}}
 {{< /cards >}}
 
 ## 交易处理

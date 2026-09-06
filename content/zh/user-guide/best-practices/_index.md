@@ -580,8 +580,8 @@ bookCollapseSection: false
 
 继续您的BigLedger之旅：
 
-1. **[开发者资源](/zh/developers/)** - 通过自定义开发扩展BigLedger
-2. **[行业解决方案](/zh/user-guide/industry-solutions/)** - 行业特定优化
+1. **[开发者资源](/developers/)** - 通过自定义开发扩展BigLedger
+2. **[行业解决方案](/user-guide/industry-solutions/)** - 行业特定优化
 3. **[AI智能](/zh/ai-intelligence/)** - 利用AI驱动功能
 4. **[高级培训](https://academy.bigledger.com)** - 专业培训计划
 

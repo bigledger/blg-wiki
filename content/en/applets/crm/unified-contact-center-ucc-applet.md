@@ -89,6 +89,8 @@ tags:
 - communication
 - crm
 weight: 105
+aliases:
+  - /applets/unified-contact-center-ucc-applet/
 ---
 
 ## Overview

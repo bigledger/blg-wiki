@@ -34,18 +34,18 @@ BigLedger 的模块化架构建立在小程序之上 - 可重复使用的组件�
 
 #### 核心模块（13个基本小程序）
 所有其他模块所需的基础小程序：
-- **[租户管理小程序](/zh/applets/tenant-admin-applet/)** - 系统管理和配置
-- **[会计科目表小程序](/zh/applets/chart-of-account-applet/)** - 财务账户结构
-- **[组织小程序](/zh/applets/organization-applet/)** - 公司和组织结构
-- **[客户维护小程序](/zh/applets/customer-maintenance-applet/)** - 客户主数据
+- **[租户管理小程序](/applets/tenant-admin-applet/)** - 系统管理和配置
+- **[会计科目表小程序](/applets/chart-of-account-applet/)** - 财务账户结构
+- **[组织小程序](/applets/organization-applet/)** - 公司和组织结构
+- **[客户维护小程序](/applets/customer-maintenance-applet/)** - 客户主数据
 - **[供应商维护小程序](/zh/applets/supplier-maintenance-applet/)** - 供应商主数据
-- **[员工维护小程序](/zh/applets/employee-maintenance-applet/)** - 员工记录
-- **[税务配置小程序](/zh/applets/tax-configuration-applet/)** - 税务设置和合规
+- **[员工维护小程序](/applets/employee-maintenance-applet/)** - 员工记录
+- **[税务配置小程序](/applets/tax-configuration-applet/)** - 税务设置和合规
 - **[查看所有核心小程序 →](/zh/applets/applet-catalog/#core-module-applets-13-applets)**
 
 #### 库存与运营
-- **[库存盘点小程序](/zh/applets/stock-take-applet/)** - 数字库存计数和管理
-- **[库存余额小程序](/zh/applets/stock-balance-applet/)** - 实时库存跟踪
+- **[库存盘点小程序](/applets/stock-take-applet/)** - 数字库存计数和管理
+- **[库存余额小程序](/applets/stock-balance-applet/)** - 实时库存跟踪
 - **[内部库存调整小程序](/zh/applets/internal-stock-adjustment-applet/)** - 库存修正
 - **[流程监控小程序](/zh/applets/process-monitoring-applet/)** - 业务流程跟踪
 
@@ -55,8 +55,8 @@ BigLedger 的模块化架构建立在小程序之上 - 可重复使用的组件�
 - **[统一联络中心小程序](/zh/applets/unified-contact-center-ucc-applet/)** - 客户服务平台
 
 #### 定价与商务
-- **[价格表小程序](/zh/applets/pricebook-applet/)** - 高级定价管理
-- **[EcomSync 相关小程序](/zh/applets/90-ecomsync-related-applets/)** - 电子商务同步
+- **[价格表小程序](/applets/pricebook-applet/)** - 高级定价管理
+- **[EcomSync 相关小程序](/applets/90-ecomsync-related-applets/)** - 电子商务同步
 
 ## 模块集成
 

@@ -13,9 +13,9 @@ bookCollapseSection: false
 BigLedger新手？按照这个路径获得最快的入门体验：
 
 {{< cards >}}
-{{< card link="/zh/user-guide/getting-started/introduction" title="BigLedger介绍" subtitle="平台概述、核心概念和系统导向" >}}
-{{< card link="/zh/user-guide/getting-started/platform-overview" title="平台架构" subtitle="了解BigLedger基于applet的商业操作系统" >}}
-{{< card link="/zh/user-guide/getting-started/navigation" title="导航指南" subtitle="掌握界面、快捷键和高效导航模式" >}}
+{{< card link="/user-guide/getting-started/introduction" title="BigLedger介绍" subtitle="平台概述、核心概念和系统导向" >}}
+{{< card link="/user-guide/getting-started/platform-overview" title="平台架构" subtitle="了解BigLedger基于applet的商业操作系统" >}}
+{{< card link="/user-guide/getting-started/navigation" title="导航指南" subtitle="掌握界面、快捷键和高效导航模式" >}}
 {{< /cards >}}
 
 ## 首次设置清单
@@ -32,20 +32,20 @@ BigLedger新手？按照这个路径获得最快的入门体验：
 ## 学习路径建议
 
 ### 面向企业主和高管
-1. 从[BigLedger介绍](/zh/user-guide/getting-started/introduction)开始
-2. 查看[平台架构](/zh/user-guide/getting-started/platform-overview)
+1. 从[BigLedger介绍](/user-guide/getting-started/introduction)开始
+2. 查看[平台架构](/user-guide/getting-started/platform-overview)
 3. 探索[核心业务模块](/zh/modules/)
 4. 规划您的实施策略
 
 ### 面向系统管理员
-1. 完成[平台概述](/zh/user-guide/getting-started/platform-overview)
-2. 掌握[导航指南](/zh/user-guide/getting-started/navigation)
+1. 完成[平台概述](/user-guide/getting-started/platform-overview)
+2. 掌握[导航指南](/user-guide/getting-started/navigation)
 3. 设置[用户管理](/zh/user-guide/administration/)
 4. 配置[系统设置](/zh/user-guide/administration/)
 
 ### 面向最终用户
-1. 从[介绍](/zh/user-guide/getting-started/introduction)开始
-2. 学习[导航基础](/zh/user-guide/getting-started/navigation)
+1. 从[介绍](/user-guide/getting-started/introduction)开始
+2. 学习[导航基础](/user-guide/getting-started/navigation)
 3. 练习[基本操作](/zh/user-guide/basic-operations/)
 4. 探索相关的[日常任务](/zh/user-guide/daily-tasks/)
 

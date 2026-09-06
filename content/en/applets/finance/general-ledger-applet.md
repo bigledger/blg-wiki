@@ -9,6 +9,8 @@ tags:
 - transaction-processing
 - financial-reporting
 weight: 175
+aliases:
+  - /applets/general-ledger-applet/
 ---
 
 ## Purpose and Overview

@@ -4,6 +4,8 @@ bookHidden: true
 title: "Membership Points Currency Configuration"
 description: "Set up and manage loyalty points currency for membership programs"
 weight: 160
+aliases:
+  - /applets/membership-points-currency/
 ---
 bookHidden: true
 

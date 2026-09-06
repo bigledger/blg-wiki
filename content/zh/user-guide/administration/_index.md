@@ -13,9 +13,9 @@ BigLedger管理员的综合系统管理和配置工具。本节涵盖用户管�
 管理您组织的用户和团队结构：
 
 {{< cards >}}
-{{< card link="/zh/user-guide/administration/member-listing" title="用户管理" subtitle="添加、编辑和管理用户账户和权限" >}}
-{{< card link="/zh/user-guide/administration/team" title="团队配置" subtitle="设置部门、角色和组织结构" >}}
-{{< card link="/zh/user-guide/administration/member-class" title="成员分类" subtitle="用户角色、权限和访问控制系统" >}}
+{{< card link="/user-guide/administration/member-listing" title="用户管理" subtitle="添加、编辑和管理用户账户和权限" >}}
+{{< card link="/user-guide/administration/team" title="团队配置" subtitle="设置部门、角色和组织结构" >}}
+{{< card link="/user-guide/administration/member-class" title="成员分类" subtitle="用户角色、权限和访问控制系统" >}}
 {{< /cards >}}
 
 ## 组织和结构
@@ -23,9 +23,9 @@ BigLedger管理员的综合系统管理和配置工具。本节涵盖用户管�
 配置您的业务组织和数据结构：
 
 {{< cards >}}
-{{< card link="/zh/user-guide/administration/group-listing" title="组管理" subtitle="管理组、类别和组织结构" >}}
-{{< card link="/zh/user-guide/administration/member-label" title="标签配置" subtitle="用于更好组织的高级标签和标记系统" >}}
-{{< card link="/zh/user-guide/administration/member-label-list" title="标签管理" subtitle="创建和管理用于分类和报告的标签" >}}
+{{< card link="/user-guide/administration/group-listing" title="组管理" subtitle="管理组、类别和组织结构" >}}
+{{< card link="/user-guide/administration/member-label" title="标签配置" subtitle="用于更好组织的高级标签和标记系统" >}}
+{{< card link="/user-guide/administration/member-label-list" title="标签管理" subtitle="创建和管理用于分类和报告的标签" >}}
 {{< /cards >}}
 
 ## 关键管理职责
@@ -175,7 +175,7 @@ BigLedger管理员的综合系统管理和配置工具。本节涵盖用户管�
 1. **[报表和分析](/zh/user-guide/reports-analytics/)** - 学习创建管理报告
 2. **[故障排除](/zh/user-guide/troubleshooting/)** - 掌握问题解决技术
 3. **[最佳实践](/zh/user-guide/best-practices/)** - 实施优化策略
-4. **[开发者资源](/zh/developers/)** - 高级自定义选项
+4. **[开发者资源](/developers/)** - 高级自定义选项
 
 {{< callout type="success" >}}
 **管理卓越**：成功的管理员在安全性、可用性和业务需求之间保持平衡，同时确保系统可靠性和合规性。

@@ -18,7 +18,7 @@ weight: 10
 3. **[日常任务](/zh/user-guide/daily-tasks/)** - 常见的业务操作和例行工作流程
 4. **[管理](/zh/user-guide/administration/)** - 系统管理和高级配置
 5. **[报表与分析](/zh/user-guide/reports-analytics/)** - 商业智能和数据分析
-6. **[行业解决方案](/zh/user-guide/industry-solutions/)** - 特定行业的实施和最佳实践
+6. **[行业解决方案](/user-guide/industry-solutions/)** - 特定行业的实施和最佳实践
 7. **[故障排除](/zh/user-guide/troubleshooting/)** - 问题解决和支持
 8. **[最佳实践](/zh/user-guide/best-practices/)** - 专家提示和优化策略
 
@@ -43,8 +43,8 @@ weight: 10
 
 {{< cards >}}
 {{< card link="/zh/user-guide/getting-started/" title="入门指南" subtitle="BigLedger 新用户的完整导向和设置" >}}
-{{< card link="/zh/user-guide/getting-started/introduction" title="BigLedger 简介" subtitle="平台概述、关键概念和入门导向" >}}
-{{< card link="/zh/user-guide/getting-started/platform-overview" title="平台架构" subtitle="了解 BigLedger 基于小程序的业务操作系统" >}}
+{{< card link="/user-guide/getting-started/introduction" title="BigLedger 简介" subtitle="平台概述、关键概念和入门导向" >}}
+{{< card link="/user-guide/getting-started/platform-overview" title="平台架构" subtitle="了解 BigLedger 基于小程序的业务操作系统" >}}
 {{< /cards >}}
 
 **关键主题**：账户设置、平台概念、导航基础、首次配置
@@ -57,8 +57,8 @@ weight: 10
 
 {{< cards >}}
 {{< card link="/zh/user-guide/basic-operations/" title="基本操作指南" subtitle="核心数据管理和基本业务任务" >}}
-{{< card link="/zh/user-guide/basic-operations/creating-an-item" title="创建项目" subtitle="添加产品和服务的分步指南" >}}
-{{< card link="/zh/user-guide/basic-operations/item-maintenance" title="项目管理" subtitle="全面的产品目录维护" >}}
+{{< card link="/user-guide/basic-operations/creating-an-item" title="创建项目" subtitle="添加产品和服务的分步指南" >}}
+{{< card link="/user-guide/basic-operations/item-maintenance" title="项目管理" subtitle="全面的产品目录维护" >}}
 {{< /cards >}}
 
 **关键主题**：项目创建和编辑、文档类型、数据管理基础
@@ -71,8 +71,8 @@ weight: 10
 
 {{< cards >}}
 {{< card link="/zh/user-guide/daily-tasks/" title="日常任务指南" subtitle="例行业务操作和常见工作流程" >}}
-{{< card link="/zh/user-guide/daily-tasks/pricing-scheme" title="定价策略" subtitle="客户细分的灵活定价方案" >}}
-{{< card link="/zh/user-guide/daily-tasks/price-book" title="价格表管理" subtitle="全面的价格清单维护" >}}
+{{< card link="/user-guide/daily-tasks/pricing-scheme" title="定价策略" subtitle="客户细分的灵活定价方案" >}}
+{{< card link="/user-guide/daily-tasks/price-book" title="价格表管理" subtitle="全面的价格清单维护" >}}
 {{< /cards >}}
 
 **关键主题**：定价管理、交易处理、库存操作、客户管理
@@ -85,8 +85,8 @@ weight: 10
 
 {{< cards >}}
 {{< card link="/zh/user-guide/administration/" title="管理指南" subtitle="BigLedger 管理员的系统管理" >}}
-{{< card link="/zh/user-guide/administration/member-listing" title="用户管理" subtitle="管理用户账户和权限" >}}
-{{< card link="/zh/user-guide/administration/team" title="团队配置" subtitle="组织结构和角色管理" >}}
+{{< card link="/user-guide/administration/member-listing" title="用户管理" subtitle="管理用户账户和权限" >}}
+{{< card link="/user-guide/administration/team" title="团队配置" subtitle="组织结构和角色管理" >}}
 {{< /cards >}}
 
 **关键主题**：用户和团队管理、系统配置、安全设置、组织结构
@@ -134,9 +134,9 @@ weight: 10
 为您的业务部门量身定制的特定行业实施、最佳实践和成功案例。
 
 {{< cards >}}
-{{< card link="/zh/user-guide/industry-solutions/" title="行业解决方案概览" subtitle="发现为您特定行业量身定制的解决方案" >}}
-{{< card link="/zh/user-guide/industry-solutions/automotive-and-workshop-industry" title="汽车与车间" subtitle="车辆服务管理和零件库存" >}}
-{{< card link="/zh/user-guide/industry-solutions/food-and-beverage-fb-industry" title="餐饮业" subtitle="餐厅运营和多分店管理" >}}
+{{< card link="/user-guide/industry-solutions/" title="行业解决方案概览" subtitle="发现为您特定行业量身定制的解决方案" >}}
+{{< card link="/user-guide/industry-solutions/automotive-and-workshop-industry" title="汽车与车间" subtitle="车辆服务管理和零件库存" >}}
+{{< card link="/user-guide/industry-solutions/food-and-beverage-fb-industry" title="餐饮业" subtitle="餐厅运营和多分店管理" >}}
 {{< /cards >}}
 
 **关键主题**：特定行业工作流程、成功案例、专业功能、实施案例研究
@@ -150,30 +150,30 @@ weight: 10
 ### 财务管理
 通过集成的会计和合规功能掌握您的财务运营：
 
-- **[财务会计](/zh/modules/financial-accounting/)** - 完整的复式记账系统
-- **[应收账款](/zh/business-operations/account-receivable/)** - 客户开票和付款跟踪
-- **[会计操作](/zh/business-operations/accounting/)** - 日常簿记和财务任务
+- **[财务会计](/modules/financial-accounting/)** - 完整的复式记账系统
+- **[应收账款](/business-operations/account-receivable/)** - 客户开票和付款跟踪
+- **[会计操作](/business-operations/accounting/)** - 日常簿记和财务任务
 
 ### 销售与客户运营
 建立强大的客户关系并优化您的销售流程：
 
 - **[数字 CRM 模块](/modules/crm-digital/)** - 360度客户关系管理
-- **[销售仪表板](/zh/business-operations/sales-dashboard/)** - 实时销售分析和洞察
-- **[订单管理](/zh/business-operations/order/)** - 端到端订单处理和履行
+- **[销售仪表板](/business-operations/sales-dashboard/)** - 实时销售分析和洞察
+- **[订单管理](/business-operations/order/)** - 端到端订单处理和履行
 
 ### 库存与供应链
 优化您的库存水平并简化供应链运营：
 
 - **[库存管理](/modules/inventory/)** - 多地点库存控制和跟踪
-- **[采购](/zh/modules/procurement/)** - 采购订单和供应商关系管理
-- **[制造](/zh/modules/manufacturing/)** - 生产计划和制造控制
+- **[采购](/modules/procurement/)** - 采购订单和供应商关系管理
+- **[制造](/modules/manufacturing/)** - 生产计划和制造控制
 
 ### 高级功能与集成
 
 #### 电子商务与多渠道
-- **[电子商务概览](/zh/modules/ecommerce/)** - 多渠道销售和在线商店管理
-- **[EcomSync 平台](/zh/modules/ecommerce/introduction-to-ecomsync/)** - 集中式销售渠道同步
-- **[Shopify 集成](/zh/modules/ecommerce/integration-with-shopify/)** - 无缝在线商店管理
+- **[电子商务概览](/modules/ecommerce/)** - 多渠道销售和在线商店管理
+- **[EcomSync 平台](/modules/ecommerce/introduction-to-ecomsync/)** - 集中式销售渠道同步
+- **[Shopify 集成](/modules/ecommerce/integration-with-shopify/)** - 无缝在线商店管理
 
 #### AI 与自动化
 - **[AI 智能](/zh/ai-intelligence/)** - AI 驱动的洞察和自动化
@@ -225,6 +225,6 @@ weight: 10
 
 ### 开发者资源
 面向技术用户和系统集成商：
-- **[开发者文档](/zh/developers/)** - API、SDK 和集成指南
-- **[API 参考](/zh/developers/api-reference/)** - 全面的技术文档
-- **[自定义开发](/zh/developers/applet-sdk/)** - 构建自定义小程序和扩展
+- **[开发者文档](/developers/)** - API、SDK 和集成指南
+- **[API 参考](/developers/api-reference/)** - 全面的技术文档
+- **[自定义开发](/developers/applet-sdk/)** - 构建自定义小程序和扩展

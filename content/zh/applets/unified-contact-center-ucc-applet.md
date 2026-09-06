@@ -647,7 +647,7 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 UCC小程序不仅仅是一个消息平台 - 它是一个完整的客户互动解决方案，将革命化您与客户的互动方式。
 
 {{< cards >}}
-  {{< card link="/zh/applications/unified-contact-center" title="了解更多" subtitle="探索UCC功能" >}}
+  {{< card link="/applications/unified-contact-center" title="了解更多" subtitle="探索UCC功能" >}}
   {{< card link="/zh/demos-resources" title="观看演示" subtitle="查看UCC实际操作" >}}
   {{< card link="mailto:sales@bigledger.com" title="联系销售" subtitle="获取个性化定价" >}}
 {{< /cards >}}

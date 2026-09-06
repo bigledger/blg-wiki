@@ -20,21 +20,21 @@ weight: 2
 
 **所有其他模块都需要的基础应用程序**
 
-### 1. [租户管理应用程序](/zh/applets/tenant-admin-applet/)
+### 1. [租户管理应用程序](/applets/tenant-admin-applet/)
 **系统级管理和配置**
 - 用户管理和安全配置
 - 审计设置和合规管理
 - 多租户环境设置
 - 系统监控和健康检查
 
-### 2. [科目表应用程序](/zh/applets/chart-of-account-applet/)
+### 2. [科目表应用程序](/applets/chart-of-account-applet/)
 **完整的科目表结构管理**
 - 科目层次结构和财务报表映射
 - 多币种支持和汇率
 - 科目分类和控制
 - 所有财务操作的集成基础
 
-### 3. [组织应用程序](/zh/applets/organization-applet/)
+### 3. [组织应用程序](/applets/organization-applet/)
 **组织结构和公司管理**
 - 公司、分支机构和地点设置
 - 部门和成本中心管理
@@ -48,14 +48,14 @@ weight: 2
 - 服务定价和计费配置
 - 文档模板和标准化
 
-### 5. [库存项目维护应用程序](/zh/applets/inv-item-maintenance-applet/)
+### 5. [库存项目维护应用程序](/applets/inv-item-maintenance-applet/)
 **产品和库存主数据**
 - 完整的产品信息管理
 - 多地点库存控制
 - 定价和成本核算方法
 - 产品类别和分类
 
-### 6. [客户维护应用程序](/zh/applets/customer-maintenance-applet/)
+### 6. [客户维护应用程序](/applets/customer-maintenance-applet/)
 **客户主数据和关系管理**
 - 完整的客户档案和联系人管理
 - 信用限额和付款条件
@@ -69,21 +69,21 @@ weight: 2
 - 供应商绩效跟踪
 - 供应商分类和关系管理
 
-### 8. [员工维护应用程序](/zh/applets/employee-maintenance-applet/)
+### 8. [员工维护应用程序](/applets/employee-maintenance-applet/)
 **员工主记录和人力资源基础**
 - 完整的员工档案和信息
 - 组织结构和报告关系
 - 系统访问和角色管理
 - 人力资源集成和薪资基础
 
-### 9. [税务配置应用程序](/zh/applets/tax-configuration-applet/)
+### 9. [税务配置应用程序](/applets/tax-configuration-applet/)
 **完整的税务设置和合规管理**
 - 税务代码、税率和法规合规
 - 多管辖区税务支持（GST、SST、VAT）
 - 自动税务计算
 - 税务报告和电子申报集成
 
-### 10. [现金簿应用程序](/zh/applets/cashbook-applet/)
+### 10. [现金簿应用程序](/applets/cashbook-applet/)
 **现金和银行账户管理**
 - 多个现金和银行账户设置
 - 付款方式配置
@@ -104,7 +104,7 @@ weight: 2
 - API集成和数据同步
 - 实时业务事件广播
 
-### 13. [T2T管理应用程序](/zh/applets/t2t-admin-applet/)
+### 13. [T2T管理应用程序](/applets/t2t-admin-applet/)
 **企业运营的租户到租户管理**
 - 多租户企业管理
 - 跨租户数据共享和关系
@@ -272,8 +272,8 @@ CP-Commerce模块包含所有13个核心模块应用程序（如上所列）。
 ## 现有专业应用程序
 
 ### 库存和仓库管理
-- **[库存余额应用程序](/zh/applets/stock-balance-applet/)** - 实时库存水平和跟踪
-- **[盘点应用程序](/zh/applets/stock-take-applet/)** - 实物库存盘点和对账
+- **[库存余额应用程序](/applets/stock-balance-applet/)** - 实时库存水平和跟踪
+- **[盘点应用程序](/applets/stock-take-applet/)** - 实物库存盘点和对账
 - **[内部库存调整应用程序](/zh/applets/internal-stock-adjustment-applet/)** - 库存调整和更正
 - **[内部发货单应用程序](/zh/applets/internal-delivery-order-applet/)** - 内部转移和发货
 
@@ -282,7 +282,7 @@ CP-Commerce模块包含所有13个核心模块应用程序（如上所列）。
 - **[组维护应用程序](/zh/applets/group-maintenance-applet/)** - 组配置和管理
 
 ### 定价和销售管理
-- **[价格手册应用程序](/zh/applets/pricebook-applet/)** - 高级定价管理和策略
+- **[价格手册应用程序](/applets/pricebook-applet/)** - 高级定价管理和策略
 
 ### 流程和质量管理
 - **[流程监控应用程序](/zh/applets/process-monitoring-applet/)** - 业务流程跟踪和分析
@@ -296,7 +296,7 @@ CP-Commerce模块包含所有13个核心模块应用程序（如上所列）。
 - **[统一联络中心(UCC)应用程序](/zh/applets/unified-contact-center-ucc-applet/)** - 综合客户服务平台
 
 ### 电子商务集成
-- **[EcomSync相关应用程序](/zh/applets/90-ecomsync-related-applets/)** - 电子商务同步工具
+- **[EcomSync相关应用程序](/applets/90-ecomsync-related-applets/)** - 电子商务同步工具
 
 ### 分销和供应商管理
 - **[Ingram Micro MS ESD应用程序](/zh/applets/ingram-micro-ms-esd-applet/)** - Microsoft许可证分销
@@ -366,11 +366,11 @@ CP-Commerce模块包含所有13个核心模块应用程序（如上所列）。
 
 ### 实施指南
 - [模块实施指南](/zh/modules/)
-- [核心模块入门](/zh/modules/core/)
+- [核心模块入门](/modules/core/)
 - [应用程序安装指南](/zh/applets/applet-store/)
 
 ### 集成文档
-- [API参考](/zh/developers/api-reference/)
+- [API参考](/developers/api-reference/)
 
 ### 支持资源
 - [应用程序目录](/zh/applets/applet-directory/)

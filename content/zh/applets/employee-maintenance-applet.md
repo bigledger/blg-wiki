@@ -186,9 +186,9 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 ## 相关应用程序
 
 ### 核心模块应用程序
-- **[组织应用程序](/zh/applets/organization-applet/)** - 公司和部门结构
-- **[租户管理应用程序](/zh/applets/tenant-admin-applet/)** - 用户访问管理
-- **[客户维护应用程序](/zh/applets/customer-maintenance-applet/)** - 销售代表分配
+- **[组织应用程序](/applets/organization-applet/)** - 公司和部门结构
+- **[租户管理应用程序](/applets/tenant-admin-applet/)** - 用户访问管理
+- **[客户维护应用程序](/applets/customer-maintenance-applet/)** - 销售代表分配
 
 ### 人力资源和薪资应用程序
 - **[薪资处理应用程序](/zh/applets/payroll-processing-applet/)** - 员工薪酬

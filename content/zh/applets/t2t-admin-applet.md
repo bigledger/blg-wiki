@@ -185,9 +185,9 @@ T2T（租户到租户）管理小程序是 BigLedger 中为企业级多租户管
 ## 相关小程序
 
 ### 核心模块小程序
-- **[租户管理员小程序](/zh/applets/tenant-admin-applet/)** - 基本租户管理
-- **[组织小程序](/zh/applets/organization-applet/)** - 组织结构
-- **[员工维护小程序](/zh/applets/employee-maintenance-applet/)** - 跨租户用户
+- **[租户管理员小程序](/applets/tenant-admin-applet/)** - 基本租户管理
+- **[组织小程序](/applets/organization-applet/)** - 组织结构
+- **[员工维护小程序](/applets/employee-maintenance-applet/)** - 跨租户用户
 
 ### 企业管理小程序
 - **[整合小程序](/zh/applets/consolidation-applet/)** - 财务整合

@@ -38,9 +38,9 @@ weight: 300
 ## 集成点
 
 ### 核心模块依赖项
-- **[库存项目维护小程序](/zh/applets/inv-item-maintenance-applet/)** - 产品主数据
-- **[税务配置小程序](/zh/applets/tax-configuration-applet/)** - 产品税务设置
-- **[组织小程序](/zh/applets/organization-applet/)** - 多店支持
+- **[库存项目维护小程序](/applets/inv-item-maintenance-applet/)** - 产品主数据
+- **[税务配置小程序](/applets/tax-configuration-applet/)** - 产品税务设置
+- **[组织小程序](/applets/organization-applet/)** - 多店支持
 
 ## 相关小程序
 

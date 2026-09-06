@@ -38,9 +38,9 @@ weight: 101
 ## 集成点
 
 ### 核心模块依赖
-- **[客户维护小程序](/zh/applets/customer-maintenance-applet/)** - 客户主数据
-- **[会计科目表小程序](/zh/applets/chart-of-account-applet/)** - 账户映射
-- **[税务配置小程序](/zh/applets/tax-configuration-applet/)** - 发票税务计算
+- **[客户维护小程序](/applets/customer-maintenance-applet/)** - 客户主数据
+- **[会计科目表小程序](/applets/chart-of-account-applet/)** - 账户映射
+- **[税务配置小程序](/applets/tax-configuration-applet/)** - 发票税务计算
 
 ## 相关小程序
 

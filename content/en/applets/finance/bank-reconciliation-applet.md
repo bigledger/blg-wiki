@@ -105,6 +105,8 @@ tags:
 - reporting
 - finance-controls
 weight: 80
+aliases:
+  - /applets/bank-reconciliation-applet/
 ---
 
 ## Overview

@@ -191,12 +191,12 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 ## 相关应用程序
 
 ### 核心模块应用程序
-- **[组织应用程序](/zh/applets/organization-applet/)** - 组织结构管理
-- **[员工维护应用程序](/zh/applets/employee-maintenance-applet/)** - 用户-员工关系
+- **[组织应用程序](/applets/organization-applet/)** - 组织结构管理
+- **[员工维护应用程序](/applets/employee-maintenance-applet/)** - 用户-员工关系
 - **[工作流设计应用程序](/zh/applets/workflow-design-applet/)** - 流程自动化
 
 ### 安全相关应用程序
-- **[T2T管理应用程序](/zh/applets/t2t-admin-applet/)** - 租户到租户管理
+- **[T2T管理应用程序](/applets/t2t-admin-applet/)** - 租户到租户管理
 
 ### 集成应用程序
 - **[流程监控应用程序](/zh/applets/process-monitoring-applet/)** - 系统流程监控

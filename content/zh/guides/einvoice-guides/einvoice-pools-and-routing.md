@@ -35,7 +35,7 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 
 ## 单据定案后去了哪里？
 
-单据定案时，系统检查其提交类型、金额，以及[必填字段](/zh/guides/einvoice-guides/einvoice-validation/#必填字段)是否齐全：
+单据定案时，系统检查其提交类型、金额，以及[必填字段](/guides/einvoice-guides/einvoice-validation/#必填字段)是否齐全：
 
 | 提交类型 | 金额 | 必填字段齐全？ | 结果 |
 |---|---|---|---|
@@ -106,7 +106,7 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 在 Batch Pool 中找到该单据，补全客户的 TIN/ID 和地址，执行 *Save and Resubmit*。单据会离开批次并单独提交。只要在该小票被合并之前操作都有效。
 
 **完全拿不到买方 TIN 怎么办？**
-本地买方仍可用 General Public TIN 加有效 NRIC 开具单独电子发票（见 [General TIN 说明](/zh/guides/einvoice-guides/einvoice-validation/#general-tin没有买方-tin-时怎么办)）。否则，把单据移入 Batch Pool 走合并提交。
+本地买方仍可用 General Public TIN 加有效 NRIC 开具单独电子发票（见 [General TIN 说明](/guides/einvoice-guides/einvoice-validation/#general-tin没有买方-tin-时怎么办)）。否则，把单据移入 Batch Pool 走合并提交。
 
 **单据显示"已跳过（skipped）"，有问题吗？**
 跳过是针对不应开电子发票的单据的主动操作（例如由交易对方开票的情况）。被跳过的销售单据仍会被记录，用于与供应商传来的电子发票进行匹配。

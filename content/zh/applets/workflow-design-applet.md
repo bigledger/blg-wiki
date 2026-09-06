@@ -186,9 +186,9 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 ## 相关小程序
 
 ### 核心模块小程序
-- **[员工维护小程序](/zh/applets/employee-maintenance-applet/)** - 工作流参与者设置
-- **[组织小程序](/zh/applets/organization-applet/)** - 组织结构
-- **[租户管理员小程序](/zh/applets/tenant-admin-applet/)** - 用户权限
+- **[员工维护小程序](/applets/employee-maintenance-applet/)** - 工作流参与者设置
+- **[组织小程序](/applets/organization-applet/)** - 组织结构
+- **[租户管理员小程序](/applets/tenant-admin-applet/)** - 用户权限
 
 ### 流程管理小程序
 - **[过程监控小程序](/zh/applets/process-monitoring-applet/)** - 流程性能监控

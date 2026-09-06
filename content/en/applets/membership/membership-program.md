@@ -9,6 +9,8 @@ tags:
 - membership
 - loyalty-program
 - points-system
+aliases:
+  - /applets/membership-program/
 ---
 bookHidden: true
 To use the membership Program

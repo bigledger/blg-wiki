@@ -35,7 +35,7 @@ BigLedger ERP 在一个强大的平台中统一您的所有业务运营。从会
 ### **运营企业所需的一切**
 
 {{< cards >}}
-  {{< card link="/zh/modules/financial-accounting" title="财务管理" subtitle="完整会计、GST/SST、财务报表" >}}
+  {{< card link="/modules/financial-accounting" title="财务管理" subtitle="完整会计、GST/SST、财务报表" >}}
   {{< card link="/modules/inventory/" title="库存与仓储" subtitle="多地点、条码、序列号/批次追踪" >}}
   {{< card link="/modules/crm-digital/" title="销售与CRM" subtitle="客户、报价、订单、开票" >}}
 {{< /cards >}}
@@ -63,12 +63,12 @@ BigLedger ERP 在一个强大的平台中统一您的所有业务运营。从会
 为开发者提供现代 REST API 和全面文档。
 
 {{< cards >}}
-  {{< card link="/zh/developers/api-reference/" title="API 文档" subtitle="完整的 REST API 参考" >}}
+  {{< card link="/developers/api-reference/" title="API 文档" subtitle="完整的 REST API 参考" >}}
   {{< card link="/zh/developers/getting-started/" title="快速入门指南" subtitle="几分钟内启动运行" >}}
   {{< card link="/zh/developers/sdks/" title="SDK 与库" subtitle="流行语言的客户端库" >}}
 {{< /cards >}}
 
-**开发者资源：** [Postman 集合](/zh/developers/postman/) • [Webhooks](/zh/developers/webhooks/) • [示例代码](https://github.com/bigledger)
+**开发者资源：** [Postman 集合](/zh/developers/postman/) • [Webhooks](/developers/webhooks/) • [示例代码](https://github.com/bigledger)
 {{< /tab >}}
 
 {{< /tabs >}}
@@ -80,10 +80,10 @@ BigLedger ERP 在一个强大的平台中统一您的所有业务运营。从会
 ### **核心业务应用**
 
 {{< cards >}}
-  {{< card link="/zh/modules/procurement" title="采购" subtitle="采购单、供应商管理、审批" >}}
-  {{< card link="/zh/modules/manufacturing" title="制造" subtitle="BOM、生产、质量控制" >}}
+  {{< card link="/modules/procurement" title="采购" subtitle="采购单、供应商管理、审批" >}}
+  {{< card link="/modules/manufacturing" title="制造" subtitle="BOM、生产、质量控制" >}}
   {{< card link="/modules/pos/" title="销售点" subtitle="零售、餐厅、多网点" >}}
-  {{< card link="/zh/modules/hr" title="人力资源" subtitle="薪资、休假、报销、考勤" >}}
+  {{< card link="/modules/hr" title="人力资源" subtitle="薪资、休假、报销、考勤" >}}
   {{< card link="/zh/modules/projects" title="项目管理" subtitle="任务、里程碑、时间追踪" >}}
   {{< card link="/zh/ecommerce/" title="电子商务" subtitle="Shopify、Lazada、Shopee 同步" >}}
 {{< /cards >}}
@@ -108,12 +108,12 @@ BigLedger ERP 在一个强大的平台中统一您的所有业务运营。从会
 {{< /callout >}}
 
 {{< cards >}}
-  {{< card link="/zh/user-guide/industry-solutions/" title="零售与餐饮" subtitle="多店铺、忠诚度、厨房显示" >}}
-  {{< card link="/zh/user-guide/industry-solutions/" title="批发与分销" subtitle="B2B 门户、路线销售、货车销售" >}}
-  {{< card link="/zh/user-guide/industry-solutions/" title="制造业" subtitle="离散、流程、作业车间" >}}
-  {{< card link="/zh/user-guide/industry-solutions/automotive-and-workshop-industry" title="汽车业" subtitle="经销商、车间、备件" >}}
-  {{< card link="/zh/user-guide/industry-solutions/" title="专业服务" subtitle="时间计费、项目追踪" >}}
-  {{< card link="/zh/user-guide/industry-solutions/" title="医疗保健" subtitle="诊所、药房、医疗用品" >}}
+  {{< card link="/user-guide/industry-solutions/" title="零售与餐饮" subtitle="多店铺、忠诚度、厨房显示" >}}
+  {{< card link="/user-guide/industry-solutions/" title="批发与分销" subtitle="B2B 门户、路线销售、货车销售" >}}
+  {{< card link="/user-guide/industry-solutions/" title="制造业" subtitle="离散、流程、作业车间" >}}
+  {{< card link="/user-guide/industry-solutions/automotive-and-workshop-industry" title="汽车业" subtitle="经销商、车间、备件" >}}
+  {{< card link="/user-guide/industry-solutions/" title="专业服务" subtitle="时间计费、项目追踪" >}}
+  {{< card link="/user-guide/industry-solutions/" title="医疗保健" subtitle="诊所、药房、医疗用品" >}}
 {{< /cards >}}
 
 ---

@@ -103,7 +103,7 @@ main:has(.bl-hub) > h1 {display:none!important}
 
 <div class="bl-grid" id="blCards">
 
-  <a class="bl-card" data-cat="start" href="/user-guide/getting-started-v2">
+  <a class="bl-card" data-cat="start" href="/user-guide/getting-started/">
     <div class="bl-icon" style="background:#E6F1FB">
       <svg viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2S7 5.5 7 11.5L12 17l5-5.5C17 5.5 12 2 12 2z"/><circle cx="12" cy="10" r="1.5" fill="#185FA5" stroke="none"/><path d="M9.5 21c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5"/></svg>
     </div>
@@ -111,7 +111,7 @@ main:has(.bl-hub) > h1 {display:none!important}
     <p class="bl-card-count">5 guides</p>
   </a>
 
-  <a class="bl-card" data-cat="ops" href="/user-guide/basic-operations-v2">
+  <a class="bl-card" data-cat="ops" href="/user-guide/basic-operations/">
     <div class="bl-icon" style="background:#EAF3DE">
       <svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
     </div>
@@ -119,7 +119,7 @@ main:has(.bl-hub) > h1 {display:none!important}
     <p class="bl-card-count">10 guides</p>
   </a>
 
-  <a class="bl-card" data-cat="ops" href="/user-guide/daily-tasks-v2">
+  <a class="bl-card" data-cat="ops" href="/user-guide/daily-tasks/">
     <div class="bl-icon" style="background:#EAF3DE">
       <svg viewBox="0 0 24 24" fill="none" stroke="#3B6D11" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><path d="M8 13h8M8 17h5"/></svg>
     </div>
@@ -127,7 +127,7 @@ main:has(.bl-hub) > h1 {display:none!important}
     <p class="bl-card-count">12 guides</p>
   </a>
 
-  <a class="bl-card" data-cat="admin" href="/user-guide/administration-v2">
+  <a class="bl-card" data-cat="admin" href="/user-guide/administration/">
     <div class="bl-icon" style="background:#EEEDFE">
       <svg viewBox="0 0 24 24" fill="none" stroke="#534AB7" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
     </div>
@@ -135,7 +135,7 @@ main:has(.bl-hub) > h1 {display:none!important}
     <p class="bl-card-count">8 guides</p>
   </a>
 
-  <a class="bl-card" data-cat="reports" href="/user-guide/reports-analytics-v2">
+  <a class="bl-card" data-cat="reports" href="/user-guide/reports-analytics/">
     <div class="bl-icon" style="background:#EBF3FE">
       <svg viewBox="0 0 24 24" fill="none" stroke="#1A5CBF" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
     </div>
@@ -174,9 +174,9 @@ main:has(.bl-hub) > h1 {display:none!important}
   <div class="bl-path">
     <p class="bl-path-role">🚀 New user · Week 1–2</p>
     <ul class="bl-path-steps">
-      <li><a href="/user-guide/getting-started-v2">Getting started guide</a></li>
-      <li><a href="/user-guide/basic-operations-v2">Basic operations</a></li>
-      <li><a href="/user-guide/daily-tasks-v2">Daily operations</a></li>
+      <li><a href="/user-guide/getting-started/">Getting started guide</a></li>
+      <li><a href="/user-guide/basic-operations/">Basic operations</a></li>
+      <li><a href="/user-guide/daily-tasks/">Daily operations</a></li>
     </ul>
   </div>
   <div class="bl-path">
@@ -184,15 +184,15 @@ main:has(.bl-hub) > h1 {display:none!important}
     <ul class="bl-path-steps">
       <li><a href="/modules/financial-accounting/">Financial Accounting module</a></li>
       <li><a href="/modules/e-invoice">E-Invoice module</a></li>
-      <li><a href="/user-guide/reports-analytics-v2">Financial reports</a></li>
+      <li><a href="/user-guide/reports-analytics/">Financial reports</a></li>
     </ul>
   </div>
   <div class="bl-path">
     <p class="bl-path-role">⚙️ System admin · Week 2–4</p>
     <ul class="bl-path-steps">
-      <li><a href="/user-guide/administration-v2">Administration guide</a></li>
-      <li><a href="/user-guide/administration-v2">Access control</a></li>
-      <li><a href="/user-guide/administration-v2">Group management</a></li>
+      <li><a href="/user-guide/administration/">Administration guide</a></li>
+      <li><a href="/user-guide/administration/">Access control</a></li>
+      <li><a href="/user-guide/administration/">Group management</a></li>
     </ul>
   </div>
   <div class="bl-path">

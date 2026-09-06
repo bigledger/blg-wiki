@@ -188,8 +188,8 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 ## 相关应用程序
 
 ### 核心模块应用程序
-- **[科目表应用程序](/zh/applets/chart-of-account-applet/)** - 税务科目映射
-- **[客户维护应用程序](/zh/applets/customer-maintenance-applet/)** - 客户税务设置
+- **[科目表应用程序](/applets/chart-of-account-applet/)** - 税务科目映射
+- **[客户维护应用程序](/applets/customer-maintenance-applet/)** - 客户税务设置
 - **[供应商维护应用程序](/zh/applets/supplier-maintenance-applet/)** - 供应商税务配置
 
 ### 财务应用程序

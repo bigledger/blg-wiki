@@ -10,7 +10,7 @@ weight: 30
 draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English no longer says; retranslate from the rebuilt English page — see planning/reviews/2026-09-06-translation-orphan-sweep.md
 ---
 
-提交电子发票时，LHDN 的 MyInvois 系统会先校验再受理。如果缺少必填字段，单据不会被提交，而是停放在池中等待补正（见[电子发票池与提交路由](/zh/guides/einvoice-guides/einvoice-pools-and-routing/)）。如果字段齐全但*内容有误*，LHDN 可能先受理提交、随后把单据标记为 **Invalid** —— 你需要修复后重新提交。
+提交电子发票时，LHDN 的 MyInvois 系统会先校验再受理。如果缺少必填字段，单据不会被提交，而是停放在池中等待补正（见[电子发票池与提交路由](/guides/einvoice-guides/einvoice-pools-and-routing/)）。如果字段齐全但*内容有误*，LHDN 可能先受理提交、随后把单据标记为 **Invalid** —— 你需要修复后重新提交。
 
 本指南两者都涵盖：哪些字段必须有，以及最常见错误怎么修。
 
@@ -152,7 +152,7 @@ LHDN 公布了四个 **General TIN**，用于无法取得真实 TIN 的场景：
 
 **原因：** LHDN 要求电子发票的**签发日期时间为实际提交时间**，而不是原交易日期。交易日期在单据上另行保留。
 
-**修复：** 无需手工处理 —— 系统自动以提交时刻为准。若外部集成的单据出现此错误，请确认集成没有用历史交易日期覆盖签发时间。往月 B2C 单据的合并见[池与提交路由](/zh/guides/einvoice-guides/einvoice-pools-and-routing/#倒填日期backdated单据)。
+**修复：** 无需手工处理 —— 系统自动以提交时刻为准。若外部集成的单据出现此错误，请确认集成没有用历史交易日期覆盖签发时间。往月 B2C 单据的合并见[池与提交路由](/guides/einvoice-guides/einvoice-pools-and-routing/#倒填日期backdated单据)。
 
 ## 修复流程
 

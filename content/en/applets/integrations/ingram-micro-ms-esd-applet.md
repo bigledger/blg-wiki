@@ -8,4 +8,6 @@ tags:
 - microsoft
 - ingram-micro
 - esd
+aliases:
+  - /applets/ingram-micro-ms-esd-applet/
 ---

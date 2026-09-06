@@ -38,9 +38,9 @@ AI 客户分析小程序是 BigLedger 数字 CRM 模块的高级组件，提供 
 ## 集成点
 
 ### 核心模块依赖项
-- **[客户维护小程序](/zh/applets/customer-maintenance-applet/)** - 客户主数据
-- **[库存项目维护小程序](/zh/applets/inv-item-maintenance-applet/)** - 产品信息
-- **[组织小程序](/zh/applets/organization-applet/)** - 多地点分析
+- **[客户维护小程序](/applets/customer-maintenance-applet/)** - 客户主数据
+- **[库存项目维护小程序](/applets/inv-item-maintenance-applet/)** - 产品信息
+- **[组织小程序](/applets/organization-applet/)** - 多地点分析
 
 ## 相关小程序
 

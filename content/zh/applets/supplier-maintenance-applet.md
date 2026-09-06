@@ -200,9 +200,9 @@ draft: true  # unpublished 2026-09-06 (Vincent): publishes content the English n
 ## 相关应用程序
 
 ### 核心模块应用程序
-- **[客户维护应用程序](/zh/applets/customer-maintenance-applet/)** - 客户主数据
-- **[库存项目维护应用程序](/zh/applets/inv-item-maintenance-applet/)** - 供应商产品关系
-- **[税务配置应用程序](/zh/applets/tax-configuration-applet/)** - 供应商税务设置
+- **[客户维护应用程序](/applets/customer-maintenance-applet/)** - 客户主数据
+- **[库存项目维护应用程序](/applets/inv-item-maintenance-applet/)** - 供应商产品关系
+- **[税务配置应用程序](/applets/tax-configuration-applet/)** - 供应商税务设置
 
 ### 采购应用程序
 - **[采购订单应用程序](/zh/applets/purchase-order-applet/)** - 供应商订单处理

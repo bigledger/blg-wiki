@@ -7,5 +7,7 @@ tags:
 - applets
 - team-management
 - user-administration
+aliases:
+  - /applets/team-maintenance-applet/
 ---
 1
