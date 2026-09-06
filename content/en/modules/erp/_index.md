@@ -97,7 +97,7 @@ This ERP Module includes every applet from the POS Module:
 ### 33. Workflow Management Applet
 **Purpose**: Enterprise-wide workflow automation and orchestration
 - Business process automation
-- Approval workflow design
+- Document status tracks with role-filtered transitions
 - Task management
 - SLA monitoring
 - Process optimization

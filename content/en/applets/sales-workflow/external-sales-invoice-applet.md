@@ -2662,7 +2662,7 @@ Customize navigation menu:
 **Sarah's Custom Sidebar:**
 ```
 - External Sales Invoice (most used - moved to top)
-- My Pending Approvals (added shortcut)
+- My Recent Invoices (added shortcut)
 - Branch Report (custom link)
 - Settings (less used - moved down)
 ```

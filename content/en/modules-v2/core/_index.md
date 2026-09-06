@@ -14,7 +14,7 @@ The **Core Module** is the foundation of the entire BigLedger ecosystem. It cont
 - Single source of truth for all master data across the organization
 - Centralized configuration eliminates duplication and inconsistency
 - Role-based access via Tenant Admin enforces security from day one
-- Visual workflow design enables custom approval chains for any business process
+- Visual workflow design gives every document type its own status track, with role-filtered transitions
 
 ---
 
@@ -29,7 +29,7 @@ The **Core Module** is the foundation of the entire BigLedger ecosystem. It cont
 | **Pricebook** | A curated price list assigned to specific customer groups, tiers, or channels. |
 | **Inventory Item** | A product or service record in the item master (SKU, pricing, tax, stock settings). |
 | **Doc Item** | Document-level item configuration controlling how items behave on transactional documents. |
-| **Workflow Design** | A visual rule builder defining multi-step approval or automation chains. |
+| **Workflow Design** | A catalogue of statuses and transitions that documents can carry, filtered by role. It is a status track, not an approval engine — approvals are configured per applet, see [Document Approvals](/guides/document-approvals/). |
 
 ---
 
@@ -113,7 +113,7 @@ Six roles use the Core Module — each owns a specific layer of master data.
 1. Open [Tenant Admin Applet](/applets/external-tenant-admin/tenant-admin-applet/) and create the System Administrator account.
 2. Move to [Organisation Applet](/applets/master-data/organisation-applet/) — create the company entity, branches, and locations.
 3. Use [Group Maintenance Applet](/applets/master-data/group-maintenance-V2-applet/) to define role groups (Finance, Sales, Procurement, etc.).
-4. Configure approval chains in [Workflow Design Applet](/applets/master-data/workflow-design-applet/).
+4. Optionally configure document status tracks in [Workflow Design Applet](/applets/master-data/workflow-design-applet/). If you want purchase requisitions or purchase orders signed off, that is a separate, optional setup — see [Document Approvals](/guides/document-approvals/).
 
 ### Journey: Finance Controller (Financial Skeleton)
 
@@ -210,7 +210,7 @@ Core has **no external prerequisites** — it is module #1 in every BigLedger im
 ### Data Integrity
 
 - Enable Audit Trails in Tenant Admin from day one
-- Set up approval workflows for critical master changes (credit limits, new suppliers)
+- Control who may change critical master data (credit limits, new suppliers) through roles and permissions — BigLedger has no approval workflow for master data changes
 - Plan naming schemes *before* configuring — retroactive renames are painful
 
 ---

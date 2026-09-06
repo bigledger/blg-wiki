@@ -146,7 +146,7 @@ Before paying a supplier, the system checks:
    | Due Date | When payment is due |
    | Items | Pre-filled from PO, verify against invoice |
 
-5. **Submit for approval**
+5. **Finalise the invoice** once you are satisfied with the match
 
 ### What to Notice
 
@@ -158,7 +158,7 @@ Before paying a supplier, the system checks:
 | No PO exists | Can flag for review |
 
 {{< callout type="warning" >}}
-**Demo Note:** The system may require approval for invoices that don't perfectly match the PO/GRN.
+**Demo Note:** a mismatch against the PO or GRN raises a warning, not a block. Purchase invoices have no approval workflow — whoever holds the finalise permission is the control point.
 {{< /callout >}}
 
 ---
@@ -200,7 +200,7 @@ During invoice processing, look for the **budget panel** that shows:
 
 1. **Navigate to:** Finance → Accounts Payable → Payment Processing
 
-2. **View** the list of approved invoices due for payment
+2. **View** the list of finalised invoices due for payment
 
 3. **Select** invoices to pay (checkboxes)
 

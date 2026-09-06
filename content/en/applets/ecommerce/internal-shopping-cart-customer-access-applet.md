@@ -12,7 +12,7 @@ date: 2026-05-16
 
 ## Purpose and Overview
 
-The **Internal Shopping Cart (Customer Access) Applet** provides a simple, self-service interface for customers or internal users to browse catalog items, add them to a cart, and submit requests for approval and fulfillment.
+The **Internal Shopping Cart (Customer Access) Applet** provides a simple, self-service interface for customers or internal users to browse catalog items, add them to a cart, and submit the cart as a sales order request for fulfilment.
 
 {{< callout type="info" >}}
 **Core concept**: Users build a cart, select billing and shipping details, optionally set payment/settlement info, attach supporting documents, then submit the cart for processing.
@@ -195,7 +195,7 @@ Q: Can I submit a partial quantity for an item? — A: Yes; enter the actual qua
 
 Q: Can I cancel a submitted cart? — A: Cancellation depends on tenant rules. Draft carts can be discarded; submitted/final carts follow your organisation's cancellation or amendment process.
 
-Q: Where do submitted carts go? — A: After you click **FINAL** the cart is posted and converted into a sales order request on the server. The UI shows a confirmation and returns you to the listing. Downstream processing (approvals, email notifications, or fulfillment) depends on your tenant's configuration — contact your administrator for details about who receives notifications.
+Q: Where do submitted carts go? — A: After you click **FINAL** the cart is posted and converted into a sales order request on the server. The UI shows a confirmation and returns you to the listing. Downstream processing (review, e-mail notifications, or fulfilment) depends on your tenant's configuration — contact your administrator for details about who receives notifications. Note that sales orders have no approval workflow in BigLedger.
 
 ## Document Status Reference
 
@@ -206,7 +206,7 @@ Q: Where do submitted carts go? — A: After you click **FINAL** the cart is pos
 
 ## What happens after FINAL
 
-When you click **FINAL** the app posts the cart and converts it to a sales-order request on the server. On success you'll see a confirmation toast message ("Posting Successfully") and the UI returns to the listing where the cart shows as posted. If the posting fails you will receive an error notification. Additional downstream actions (approvals, emails, fulfillment) are determined by tenant configuration.
+When you click **FINAL** the app posts the cart and converts it to a sales-order request on the server. On success you'll see a confirmation toast message ("Posting Successfully") and the UI returns to the listing where the cart shows as posted. If the posting fails you will receive an error notification. Additional downstream actions (review, e-mails, fulfilment) are determined by tenant configuration.
 
 ## Role guidance: Customer vs Internal user
 

@@ -3,7 +3,7 @@ topic: workflow-design
 aliases: [workflow process, process status, approval workflow, workflow-process, bl_wf_md]
 applets: [workflow_design_applet]
 modules: [core, financial-accounting, sales-crm, purchasing, inventory]
-related: [generic-document-approval, internal-purchase-order-applet, internal-purchase-requisition-applet, internal-sales-invoice-applet, internal-purchase-order-supplier-access-applet, stock-take, car-workshop-applet, client-side-permissions, printable-format, applet-settings-storage]
+related: [document-approval, internal-purchase-order-applet, internal-purchase-requisition-applet, internal-sales-invoice-applet, internal-purchase-order-supplier-access-applet, stock-take, car-workshop-applet, client-side-permissions, printable-format, applet-settings-storage]
 wiki:
   - content/en/applets/master-data/workflow-design-applet.md
 status: growing
@@ -34,7 +34,7 @@ The tenant-wide catalogue of workflow *processes*: a process is a set of statuse
 
 ## How it connects
 
-- **generic-document-approval** — the *other* approval mechanism (`bl_fi_generic_doc_approval_hdr/_setting/_sequence/_request`, `GenericDocApprovalProcessor`, `GENERIC_DOC_APPROVAL_PENDING_APPROVAL_NOTIFICATION` e-mail). Configured from Purchase Order / Purchase Requisition / Stock Requisition Approval Settings. The two systems never read each other; readers confuse them constantly.
+- **document-approval** — the *real* approval engine (`bl_fi_generic_doc_approval_hdr/_setting/_sequence/_request`, `GenericDocApprovalPrimaryProcessor`, `GENERIC_DOC_APPROVAL_PENDING_APPROVAL_NOTIFICATION` e-mail). Configured from Purchase Order / Purchase Requisition / Stock Requisition **Approval Settings**, never from here. Verified 2026-09-06 that the two never read each other: `grep -in "workflow|wf_process|bl_wf"` over the four generic-document approval packages returns nothing, and `grep -in approval` over `domain/wf/` and the `wf` controllers returns nothing. Readers confuse them constantly. It is also **optional** — the generic-document lifecycle contains no approval check, so a document finalises with or without one.
 - **internal-purchase-order-applet, internal-purchase-requisition-applet** — carry both Workflow Settings (this topic) and Approval Settings (the other).
 - **stock-take** — stamps the process's Starting Status onto a session and offers the transition list, enforcing nothing (open: gh:bigledger/blg-intranet#4420, #4421 want a single configurable status and a freeze).
 - **car-workshop-applet / RMA** — the only consumers whose transition *triggers* execute, through the service-issue processor.

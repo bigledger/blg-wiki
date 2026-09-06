@@ -546,7 +546,7 @@ Because production tasks affect inventory immediately upon execution, controllin
 - **User/Team Permission:** Grant granular exceptions to specific individuals or squads.
 
 ### 4. Workflow & Reasons
-- **Workflow Settings**: Configure approval workflows or state transitions for packing orders.
+- **Workflow Settings**: Attach a workflow process so packing orders carry a status. This is a status track with role-filtered transitions — it is not an approval workflow and packing orders have no approval engine.
 - **Return Reasons Settings**: Define standard scrap and return reasons (e.g., "Machine Jam", "Material Defect"). Having clean categories helps with yield reporting later.
 
 ### 5. Print Templates & Communication

@@ -290,10 +290,11 @@ Issue: Additional freight charge
 
 {{< callout type="info" >}}
 **Tolerance Levels**: Many systems have tolerance thresholds:
-- ±2% or $50 (whichever lower): May auto-approve
-- ±5% or $200: Requires supervisor approval
-- >5% or >$200: Requires manager approval
-Check your company's tolerance policy.
+- ±2% or RM 50 (whichever lower): the AP clerk finalises
+- ±5% or RM 200: a supervisor should look first
+- >5% or >RM 200: a manager should look first
+BigLedger does not enforce these bands for purchase invoices — check and follow your company's
+tolerance policy, and keep the finalise permission with the right roles.
 {{< /callout >}}
 
 #### Additional Charges (Freight, Handling, etc.)
@@ -421,91 +422,79 @@ Invoice Total: $2,596
 
 ---
 
-## Approval Workflow
+## Review Before Posting
 
-### Step 10: Submit for Approval
+{{< callout type="warning" >}}
+**Purchase invoices have no approval workflow in BigLedger.** There is no *Submit for Approval*
+button on a purchase invoice, no approver queue, no routing and no Pending Approval status. The
+invoice goes from **Draft** to **Final**, and the person who finalises it is your control point.
+Only purchase requisitions, purchase orders and stock requisitions have a real approval engine, and
+even there it is optional — see [Document Approvals](/guides/document-approvals/).
+{{< /callout >}}
 
-**When ready**:
-1. Click **Submit for Approval**
-2. System validates:
-   - All required fields complete
-   - Invoice total entered
-   - Tax calculations reasonable
-   - Matching status (within tolerance or approved)
-   - Documents attached
-3. Fix any validation errors
-4. Confirm submission
+### Step 10: Get the invoice reviewed
 
-**System Routes Invoice**:
+**Before you finalise, check**:
+1. All required fields complete
+2. Invoice total entered
+3. Tax calculations correct
+4. Three-way match within tolerance, or the variance explained in Remarks
+5. Supporting documents attached
 
-Based on:
-- Invoice amount
-- Variance percentage
-- Matching status
-- Expense type
-- Your approval limits
+**Who should look, by situation** — a policy, not a system rule:
 
-**Approval Hierarchy Example**:
-
-| Situation | Approver | Typical Time |
-|-----------|----------|--------------|
-| Clean match < $5,000 | Auto-approved or Supervisor | Same day |
-| Clean match > $5,000 | Manager | 1 day |
+| Situation | Who should look | Typical time |
+|-----------|-----------------|--------------|
+| Clean match < RM 5,000 | AP clerk | Same day |
+| Clean match > RM 5,000 | Manager | 1 day |
 | Variance < 5% | Supervisor | 1 day |
 | Variance 5-10% | Manager | 2 days |
-| Variance > 10% | Senior Manager | 3-5 days |
-| Price increase | Purchasing Manager | 2 days |
+| Variance > 10% | Senior manager | 3-5 days |
+| Price increase | Purchasing manager | 2 days |
 
-**Notification**:
-- Approver receives email/system notification
-- You receive confirmation of submission
-- Status changes to: Pending Approval
+Give the finalise permission only to the roles in the middle column and the policy enforces itself.
 
-### Step 11: Track Approval Status
+### Step 11: Track invoice status
 
-**Navigation**: `[Purchasing > Purchase Invoices > My Invoices]`
-
-or `[Accounts Payable > Invoice Status]`
+**Navigation**: `[Purchasing > Purchase Invoices]`
 
 **Status Meanings**:
-- **Pending Approval**: With approver, awaiting decision
-- **Approved**: Approved, ready to post
-- **Rejected**: Rejected, see comments
-- **Query**: Approver has questions
-- **On Hold**: Temporarily held
+- **Draft**: still editable, not posted
+- **Final**: posted to the ledger and payable
+- **Void**: cancelled
 
-**If Invoice is Queried or Rejected**:
+There is no Pending Approval, Query or On Hold status on a purchase invoice. If a reviewer has a
+question, leave the invoice in Draft and record the query in **Remarks**.
 
-**Actions**:
-1. Read approver's comments
-2. Understand the issue
-3. Take corrective action:
+**If the reviewer sends it back**:
+
+1. Read their note in Remarks
+2. Take corrective action:
    - Get more information
-   - Contact supplier
-   - Correct data entry error
-   - Get additional approvals
-4. Respond to approver or resubmit
+   - Contact the supplier
+   - Correct the data entry error
+3. Tell them it is ready again
 
-**Common Rejection Reasons**:
+**Common reasons an invoice gets sent back**:
 - Price variance not explained
 - Missing supporting documents
 - Duplicate invoice
-- Invoice for wrong company
-- Service not confirmed received
+- Invoice for the wrong company
+- Service not confirmed as received
 - Budget not available
 
 ---
 
 ## Posting Invoice
 
-### Step 12: Post Approved Invoice
+### Step 12: Finalise the reviewed invoice
 
-**Once approved**:
+**Once reviewed**:
 
-**Navigation**: Open approved invoice
+**Navigation**: Open the reviewed invoice
 
 **Final Review**:
-- [ ] All approvals received
+- [ ] Reviewed by whoever your policy names
 - [ ] Documents attached
 - [ ] Amounts correct
 - [ ] GL date correct for period
@@ -605,12 +594,11 @@ Before processing:
 - Service completion certificate (if applicable)
 - Approval email
 
-**5. Submit for Approval**:
-- Routes to service recipient and manager
-- Approvers verify service received
-- Standard approval workflow
+**5. Get it confirmed**:
+- Ask the person who received the service, and their manager, to confirm
+- Record who confirmed and when in Remarks — there is no approval routing for invoices
 
-**6. Post When Approved**:
+**6. Finalise once confirmed**:
 - Creates expense and payable
 - Schedules payment
 
@@ -643,8 +631,8 @@ Before processing:
    - Supplier's credit note
    - Return authorization
    - Correspondence
-6. **Submit for approval**
-7. **Post credit note**:
+6. **Have it reviewed** — credit notes have no approval workflow either
+7. **Finalise the credit note**:
    - Reduces payable
    - Can offset against future invoices
    - Or request refund
@@ -745,13 +733,13 @@ Credit: Input Tax                             $20
 ### Use Technology
 - Scan invoices immediately upon receipt
 - Use OCR for data extraction
-- Mobile apps for approvals
+- Work from the phone browser where you need to review on the move
 - Automated matching where available
 - Email-to-system integration
 
 ### Maintain Files
 - Organize by supplier or invoice date
-- Separate: Pending, Processing, Approved, Paid
+- Separate: To process, Draft, Final, Paid
 - Digital folder structure mirrors physical
 - Regular cleanup of old files
 

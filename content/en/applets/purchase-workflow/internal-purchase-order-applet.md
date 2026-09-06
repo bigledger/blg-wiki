@@ -161,7 +161,7 @@ The **Intercompany** menu lists queue rows created by branch intercompany rules 
 | Pricing schemes | [Pricebook](/applets/master-data/pricebook-applet/) | `DEFAULT_PRICING_SCHEME` and *Branch Settings → Pricing Scheme* derive unit prices; *Role Pricing Scheme Link* ties schemes to roles. |
 | Tax codes | [Tax Configuration](/applets/master-data/tax-configuration-applet/) | Line tax and WHT. |
 | Employees with designations | [Employee](/applets/master-data/employee-applet/) and *Settings → Branch Designation* | Approval routing uses designation and approval rank per branch. |
-| Approval rules | This applet → *Approval Settings*, *Approval Monitor*, *Workflow Settings* | Only if POs must be approved or must originate from a requisition. |
+| Approval rules | This applet → *Approval Settings*, *Approval Monitor* | Optional. Only if POs must be approved or must originate from a requisition — approvals are off until a setting exists. See [Document Approvals](/guides/document-approvals/). |
 | Forex rates | [Forex](/applets/master-data/forex-applet/) | Foreign-currency POs need a rate; `CANNOT_EDIT_CURRENCY_RATE` locks it unless the user holds `EDIT_CURRENCY_RATE`. |
 | Permissions | *Permission Wizard / Set*, *Client Side Permission* | Server-side create / read / update / delete on `INTERNAL_PURCHASE_ORDER` with targets; client-side switches below. |
 

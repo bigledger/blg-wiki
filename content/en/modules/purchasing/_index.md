@@ -75,7 +75,7 @@ This module leverages essential Core Module applets:
 - **[Employee Maintenance Applet](/applets/employee-maintenance-applet/)** - Requestors and purchasing staff
 
 ### System Configuration
-- **[Tenant Admin Applet](/applets/tenant-admin-applet/)** - System configuration and approval workflows
+- **[Tenant Admin Applet](/applets/external-tenant-admin/tenant-admin-applet/)** - System configuration, users and roles (approvals are configured in each applet's own Settings — see [Document Approvals](/guides/document-approvals/))
 - **[Tax Configuration Applet](/applets/tax-configuration-applet/)** - Purchase tax handling and compliance
 - **[Cashbook Applet](/applets/cashbook-applet/)** - Payment methods and bank accounts
 
@@ -97,7 +97,7 @@ This module leverages essential Core Module applets:
 ### Phase 2: Process Implementation (Weeks 3-4)
 3. **Purchase Requisition Process**
    - Configure requisition templates and workflows
-   - Set up approval routing and escalation
+   - Optionally set up approval levels and approvers (there is no escalation or delegation — see [Document Approvals](/guides/document-approvals/))
    - Implement budget checking and controls
    - Configure automated PO generation
 
@@ -209,7 +209,7 @@ Supplier ID → Qualification → Evaluation → Approval → Setup → Performa
 ## Compliance & Governance
 
 ### Procurement Policies
-- **Delegation of Authority** - Approval limits and authorization matrix
+- **Delegation of Authority** - A company policy your approval levels should mirror; BigLedger has no authorization matrix object
 - **Ethical Sourcing** - Anti-corruption and conflict of interest policies
 - **Diversity Programs** - Minority and women-owned business inclusion
 - **Sustainability Requirements** - Environmental and social standards
@@ -269,7 +269,7 @@ Supplier ID → Qualification → Evaluation → Approval → Setup → Performa
 ### E-Procurement Capabilities
 - **Electronic Catalogs** - Supplier product catalogs and specifications
 - **Punch-Out Integration** - Direct supplier website integration
-- **Mobile Procurement** - Mobile apps for requisitioning and approvals
+- **Mobile Procurement** - Mobile apps for requisitioning; approvers act from a link in their notification e-mail, on any device
 - **Self-Service Portals** - Employee and supplier self-service capabilities
 - **Digital Workflows** - Paperless processes and electronic signatures
 
@@ -302,7 +302,7 @@ Supplier ID → Qualification → Evaluation → Approval → Setup → Performa
 
 **Approval workflow delays**
 - Review approval hierarchies and limits
-- Check user availability and delegation
+- Check the approvers are available — there is no delegation or stand-in approver for these documents
 - Verify notification settings
 - Analyze bottleneck approvers
 
@@ -328,7 +328,7 @@ Supplier ID → Qualification → Evaluation → Approval → Setup → Performa
 
 ### Administrator Training
 - **System Configuration** - Module setup and customization
-- **Workflow Management** - Approval routing and escalation setup
+- **Workflow Management** - Document status tracks, and optional approval levels per applet
 - **Integration Management** - External system connections
 - **Performance Management** - KPI monitoring and optimization
 

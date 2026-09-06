@@ -146,10 +146,10 @@ Request Generation:
   - Seasonal redistributions
   - Clearance movements
 
-Approval Process:
+Sign-off Process (company policy — stock transfers have no approval engine):
   - System validation (availability)
-  - Manager authorization
-  - Cost center approval
+  - Manager authorisation, recorded in Remarks
+  - Cost centre agreement
   - Transfer documentation
   - Shipping arrangements
 

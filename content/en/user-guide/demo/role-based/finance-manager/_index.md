@@ -142,10 +142,10 @@ Experience how BigLedger transforms financial management through automation, rea
    - Run automated bank reconciliation
    - Process currency revaluations (if applicable)
 
-2. **Review and Approve Journal Entries**
+2. **Review Journal Entries Before Finalising**
    - Review system-generated accruals
-   - Approve automated depreciation entries
-   - Handle exceptions (if any) via workflow
+   - Check the automated depreciation entries, then finalise them
+   - Handle exceptions by correcting the draft (journals have no approval workflow)
    - Run trial balance validation
 
 3. **Generate Closing Reports**

@@ -156,7 +156,7 @@ weight: 10
 
 **Prevention (Stops mistakes before they happen)**:
 - **Smart validation**: System warns you about unusual entries
-- **Approval workflows**: Important transactions require approval
+- **Approval workflows** *(optional)*: purchase requisitions, purchase orders and stock requisitions can be made to wait for sign-off — off until you configure it
 - **Duplicate detection**: Prevents entering the same transaction twice
 - **Balance checking**: Ensures accounting equations always balance
 

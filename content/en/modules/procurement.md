@@ -18,7 +18,7 @@ The BigLedger Procurement module streamlines your entire purchase-to-pay process
 - Budget validation
 - Catalog-based ordering
 - Requisition templates
-- Mobile approvals
+- Approvals from a link in the notification e-mail, on any device
 
 ### Purchase Orders
 - Automated PO generation

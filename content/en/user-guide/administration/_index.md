@@ -153,10 +153,8 @@ Configure your business organization and data structure:
 **TODO: Add advanced system configuration guides**
 
 ### Workflow Management
-- **Approval Chains**: Multi-level approval processes
-- **Business Rules**: Automated business logic enforcement
-- **Notifications**: Email and SMS alert configurations
-- **Escalation Procedures**: Handling overdue tasks and exceptions
+- **Workflow Statuses**: statuses and role-filtered transitions per document type, designed in the [Workflow Design Applet](/applets/master-data/workflow-design-applet/). A status is a label — it triggers nothing.
+- **Document Approvals** *(optional, and configured per applet, not here)*: multi-level sign-off on purchase requisitions, purchase orders and stock requisitions — see [Document Approvals](/guides/document-approvals/).
 
 ### Customization Options
 - **Custom Fields**: Adding business-specific data fields

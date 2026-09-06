@@ -130,11 +130,15 @@ Shared services available to all applets:
 - Two-factor authentication (2FA)
 - IP whitelisting and session management
 
-**Workflow Engine**
-- Visual drag-and-drop designer
-- Multi-level approval chains
-- Conditional routing
-- Email/SMS notifications
+**Workflow Statuses**
+- Visual designer for statuses and transitions
+- Role-filtered transitions — who may move a document to which status
+- A label on the document; it sends no notification and blocks no posting
+
+**Document Approvals** *(optional)*
+- Multi-level sign-off on purchase requisitions, purchase orders and stock requisitions
+- E-mail to each approver with a link to approve or reject
+- Off until you configure it — see [Document Approvals](/guides/document-approvals/)
 
 **Document Management**
 - Centralized file storage

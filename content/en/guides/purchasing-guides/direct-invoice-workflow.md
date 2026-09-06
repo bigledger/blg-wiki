@@ -41,13 +41,13 @@ For these, use:
 ## Process Flow
 
 ```
-Step 1: Receive Invoice → Step 2: Verify Service/Expense → Step 3: Enter Invoice → Step 4: Get Approval → Step 5: Make Payment
-    ↓                          ↓                             ↓                    ↓                     ↓
-Supplier Sends         Staff Confirms               Create in System     Manager Approves      Pay Supplier
-Invoice               Service Received             Record Expense       Based on Rules        Per Terms
+Step 1: Receive Invoice → Step 2: Verify Service/Expense → Step 3: Enter Invoice → Step 4: Review & Finalise → Step 5: Make Payment
+    ↓                          ↓                             ↓                    ↓                        ↓
+Supplier Sends         Staff Confirms               Create in System     Authorised person       Pay Supplier
+Invoice               Service Received             Record Expense       finalises it            Per Terms
 ```
 
-**Key Difference**: No goods receipt process, invoice goes directly to approval and payment.
+**Key Difference**: No goods receipt process — the invoice goes straight to review and payment. Note that BigLedger has no approval engine for purchase invoices: the sign-off in Step 4 is a company control enforced by who holds the finalise permission, not a queue the system manages.
 
 ---
 
@@ -522,34 +522,44 @@ Attach supporting documentation:
 
 ---
 
-## Step 4: Invoice Approval Workflow
+## Step 4: Review and Finalise the Invoice
 
-**Responsible Role**: Approving Managers (per approval matrix)
+**Responsible Role**: whoever your policy says must see the invoice before it is finalised
 
-### Approval Routing Rules
+{{< callout type="warning" >}}
+**BigLedger does not route purchase invoices for approval.** There is no Submit for Approval button
+on a purchase invoice, no approver queue and no notification e-mail. The invoice sits in Draft until
+someone with the finalise permission finalises it. Everything in this section is therefore a
+*policy* you enforce with permissions and with who you tell to look. The only documents with a real
+approval engine are purchase requisitions, purchase orders and stock requisitions — see
+[Document Approvals](/guides/document-approvals/).
+{{< /callout >}}
 
-System routes based on:
+### A sensible review policy
 
-#### Invoice Value
-| Amount | Approver | Typical Time |
-|--------|----------|--------------|
-| < $500 | Supervisor | Same day |
-| $500 - $2,000 | Department Manager | 1 day |
-| $2,000 - $10,000 | Senior Manager | 2 days |
-| $10,000 - $50,000 | CFO | 3 days |
-| > $50,000 | CEO/Board | 5+ days |
+#### By invoice value
+| Amount | Who should look | Typical time |
+|--------|-----------------|--------------|
+| < RM 500 | Supervisor | Same day |
+| RM 500 - 2,000 | Department manager | 1 day |
+| RM 2,000 - 10,000 | Senior manager | 2 days |
+| RM 10,000 - 50,000 | Finance director | 3 days |
+| > RM 50,000 | Managing director | 5+ days |
 
-#### Expense Type
-Some expenses require specific approvers:
-- **Legal fees**: Legal counsel + CFO
-- **IT subscriptions**: IT Manager + CFO
-- **Insurance**: Risk Manager + CFO
-- **Marketing**: Marketing Director + CFO
+#### By expense type
+Some expenses are worth a second reader:
+- **Legal fees**: legal counsel and finance
+- **IT subscriptions**: IT manager and finance
+- **Insurance**: risk owner and finance
+- **Marketing**: marketing lead and finance
 
-#### Budget Control
-- **Within budget**: Normal routing
-- **Over budget**: Additional approval from budget holder
-- **No budget**: CFO or CEO approval required
+#### Budget control
+- **Within budget**: normal review
+- **Over budget**: the budget holder should see it before it is finalised
+- **No budget**: finance decides
+
+Give the finalise permission only to the roles that appear in the right-hand column, and the policy
+holds itself up.
 
 ### Approval Process
 
@@ -591,12 +601,11 @@ When notification received:
 
 ### Handling Approval Issues
 
-#### Issue: Approver Not Available
+#### Issue: The Reviewer Is Not Available
 **Solutions**:
-- Use delegation feature (pre-setup)
-- Route to backup approver
-- Escalate to higher authority
-- Request temporary delegation
+- Agree in advance who covers for whom, and give that person the finalise permission
+- There is no delegation feature and no automatic escalation for documents in BigLedger — cover has
+  to be arranged by permission, not by the system
 
 #### Issue: Invoice Lacks Information
 **Action**:
@@ -757,8 +766,8 @@ Send payment confirmation to supplier:
    - Amount: $100/month
    - G/L: Software Subscriptions
    - Cost Center: IT
-3. **Auto-routed** to IT Manager
-4. **IT Manager approves** (confirms still using)
+3. **Flagged for the IT manager** by your own process (BigLedger does not route it)
+4. **IT manager confirms** the subscription is still in use, then finalises
 5. **Posted** to payables
 6. **Paid** via company credit card (auto-payment setup)
 7. **Payment recorded** from card statement

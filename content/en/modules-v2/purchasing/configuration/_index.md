@@ -5,7 +5,7 @@ weight: 30
 bookCollapseSection: false
 ---
 
-Configuring the Purchasing Module follows a strict 5-phase dependency chain. Supplier master records and item purchasing units must be set up before approval workflows or warehouse receiving rules are enabled.
+Configuring the Purchasing Module follows a strict 5-phase dependency chain. Supplier master records and item purchasing units must be set up before the optional approval workflows or the warehouse receiving rules are enabled.
 
 ## Configuration Dependency Chain
 
@@ -40,9 +40,9 @@ Configuring the Purchasing Module follows a strict 5-phase dependency chain. Sup
 
 ---
 
-## Phase 3: Approval Workflows
+## Phase 3: Approval Workflows *(optional)*
 
-**What you are doing:** Defining multi-tier approval rules for departmental requisitions and purchase orders based on monetary thresholds.
+**What you are doing:** Defining approval levels for requisitions and purchase orders. This phase is optional — approvals are off until you create an Approval Setting, and requisitions and orders finalise normally without one. Approvers are the employees you place under Settings → Branch → Designation, each with an Approval Level; a level's **Min Approval Amount** decides how many levels a document must clear, not which person sees it. See [Document Approvals](/guides/document-approvals/).
 
 | Setup Task | Required Applet |
 |------------|-----------------|
@@ -66,7 +66,7 @@ Configuring the Purchasing Module follows a strict 5-phase dependency chain. Sup
 
 Before going live, complete these mandatory verification tests:
 
-- [ ] **Requisition Test:** Submit an internal requisition and verify it routes to the correct department manager for approval.
+- [ ] **Requisition Test:** Raise an internal requisition and take it to FINAL. If you configured Phase 3, also submit it for approval and confirm the level 1 approver receives the e-mail.
 - [ ] **PO & GRN Test:** Generate a Purchase Order, convert to Goods Received Note (GRN), and verify physical stock increases.
 - [ ] **3-Way Match Test:** Verify a supplier invoice against PO and GRN, ensuring price/quantity variances block unauthorized posting.
 - [ ] **GL Reconciliation:** Verify GRNI accrual accounts debit and credit accurately upon GRN and Invoice finalization.

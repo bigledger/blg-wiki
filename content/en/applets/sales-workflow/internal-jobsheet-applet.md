@@ -85,7 +85,7 @@ Before creating your first Jobsheet, confirm the following are in place. Skippin
 ### Configuration to confirm before first use
 - **Default Branch and Location** — set in Personalization so they pre-fill on every new Jobsheet.
 - **Application Settings** — confirm which tabs your workflow uses. Search, Payment, Department Hdr, Contra, Delivery Details, Attachments, Doc Link, Export, and Convert can each be hidden if not needed.
-- **Workflow Settings** — if you use an approval flow, configure the workflow stages first so the Workflow Status field has meaningful values to choose from.
+- **Workflow Settings** — if you want Jobsheets to carry a status of their own, configure the workflow statuses and transitions first so the Workflow Status field has meaningful values to choose from. This is a status track filtered by role, not an approval flow.
 - **Printable Format** — if you plan to use the Export tab to print Jobsheets as PDF, set up at least one Printable Format template.
 
 ---
@@ -237,7 +237,7 @@ Below is the complete functional breakdown of every tab inside the Jobsheet form
 | **CRM Contact** | Links the job to a CRM lead or contact record |
 | **Member Card** | Links to a loyalty or membership program |
 | **Remarks** | Free-text notes about the job |
-| **Workflow Status** | The current stage in your internal approval process |
+| **Workflow Status** | The current stage in your internal process, from the workflow attached in Settings |
 | **Related Service Notes** | Links to any upstream Service Note documents |
 
 *   **Accounting Importance**: The **Branch** and **Date** fields are critical for **Period-End Reporting**. A job dated in the wrong month will appear in the wrong financial period, causing mismatches in monthly revenue and cost reports.
@@ -549,7 +549,7 @@ To tailor the applet to your specific business needs, use the **Settings** secti
 | **Default Selection** | Set the default Branch and Location pre-filled when creating a new Jobsheet |
 | **Printable Format Settings** | Configure the layout and content of printed Jobsheet documents |
 | **Branch Settings** | Define branch-specific rules and behaviors |
-| **Workflow Settings** | Configure the approval workflow stages and status transitions for Jobsheets |
+| **Workflow Settings** | Attach a workflow process so Jobsheets carry a status; defines statuses and role-filtered transitions, not approvals |
 
 ### Personalization
 

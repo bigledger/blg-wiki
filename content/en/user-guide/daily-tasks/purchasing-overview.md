@@ -130,8 +130,8 @@ Choose the right workflow for your situation:
 1. Enter supplier invoice details
 2. Match to PO and GRN
 3. Resolve any variances
-4. Submit for approval
-5. Post when approved
+4. Have it reviewed (purchase invoices have no approval workflow)
+5. Finalise it, which posts it
 
 **Common Mistakes**:
 - ❌ Not checking three-way match
@@ -168,7 +168,7 @@ Choose the right workflow for your situation:
 - Enter new invoices received
 - Match to POs and GRNs
 - Resolve variances
-- Submit for approval
+- Pass to whoever finalises invoices
 
 **15:00 - 16:30**: Payment processing
 - Review due invoices
@@ -195,14 +195,19 @@ Choose the right workflow for your situation:
 
 ## Quick Reference Tables
 
-### Purchase Order Approval Limits
+### Purchase Order Approval Levels *(optional)*
 
-| PO Value | Approver | Typical Time |
-|----------|----------|--------------|
-| < $1,000 | Supervisor | 2 hours |
-| $1,000 - $5,000 | Manager | 1 day |
-| $5,000 - $25,000 | Senior Manager | 2 days |
-| > $25,000 | CFO/CEO | 3-5 days |
+Approvals are off until someone creates an Approval Setting. Each level names an approver
+designation, a quorum and a **Min Approval Amount**; the amount decides how many levels a PO must
+clear, not who sees it.
+
+| Level | Approver designation | Min Approval Amount | Quorum |
+|---|---|---|---|
+| 1 | Branch manager | RM 0 | 1 |
+| 2 | Senior manager | RM 5,000 | 1 |
+| 3 | Finance director | RM 25,000 | 1 |
+
+Full setup in [Document Approvals](/guides/document-approvals/).
 
 ### Document Requirements Checklist
 
@@ -219,7 +224,7 @@ Choose the right workflow for your situation:
 | Task | Navigation Path |
 |------|----------------|
 | **New PO** | Purchasing > Purchase Orders > New PO |
-| **Approve PO** | Purchasing > Approvals > Pending POs |
+| **Approve PO** | The link in the approval e-mail, or Purchase Order Applet > Approval Request |
 | **New GRN** | Purchasing > Goods Receipt > New GRN |
 | **New Invoice** | Purchasing > Purchase Invoices > New Invoice |
 | **Payment Run** | Accounts Payable > Payment Processing |
@@ -233,10 +238,12 @@ Choose the right workflow for your situation:
 
 **Symptoms**: PO submitted several days ago, no approval
 **Quick Fix**:
-1. Check who is the current approver
-2. Send reminder email
-3. If approver on leave, request delegation
-4. Escalate to backup approver if urgent
+1. Open the PO's **Generic Doc Approval** tab and check the Email Notification Status — if it reads
+   `APPROVER_EMAIL_IS_EMPTY` the approver was never told
+2. Check who the current approver is and chase them yourself — BigLedger sends no reminders and has
+   no escalation
+3. There is no delegation or stand-in approver for these documents. If the approver is away, either
+   wait, or add a second person at that level and resubmit
 
 ### Issue: Partial Delivery
 

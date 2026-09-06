@@ -60,7 +60,7 @@ Finance has **no master data of its own**. Every transaction relies on master re
 | **Supplier Records** | [Supplier Maintenance Applet](/applets/master-data/supplier-applet-1/) | PVs, Creditor Report | Who you pay, payment terms, bank details |
 | **Doc Item Mapping** | [Doc Item Maintenance Applet](/applets/master-data/doc-item-maintenance-applet/) | Any document with line items | Default revenue/expense account per item, default tax code |
 | **Organisation Structure** | [Organisation Applet](/applets/master-data/organisation-applet/) | All transactions and reports | Branch / location / department tagging for segmented reporting |
-| **Workflows** | [Workflow Design Applet](/applets/master-data/workflow-design-applet/) | PV approval, RV approval, journal approval | Who approves what, in what order |
+| **Workflows** | [Workflow Design Applet](/applets/master-data/workflow-design-applet/) | Payment Voucher, Receipt Voucher, Journal | An optional status label on the document, filtered by role. It is not an approval engine, and none of these document types has one — see [Document Approvals](/guides/document-approvals/). |
 
 ### How a Cashbook becomes a GL Bank Account
 
@@ -127,7 +127,7 @@ Set up the rules *before* any money moves. Budget envelopes, tax rates, and comm
 |--------|-------------|------------|
 | [Tax Configuration Applet](/applets/finance/tax-config-applet/) | Before the first taxable transaction | Tax rates, SST treatment, and GL account mappings for every tax code |
 | [Budget Applet](/applets/finance/budget-applet/) | At the start of each financial year or project | Department and cost-centre budgets with monthly or annual targets |
-| [Vote Book Applet](/applets/finance/vote-book-applet/) | Continuously during the year | Live budget-vs-committed view; blocks overspend before a PV is approved |
+| [Vote Book Applet](/applets/finance/vote-book-applet/) | Continuously during the year | Live budget-vs-committed view of commitments against budget |
 
 > 💡 **Why Tax Config sits in Foundation:** Tax codes must exist before you can create a single invoice, PV, or RV. If a tax code is missing, the transaction either cannot be saved or posts to a suspense account — both are painful to clean up after the fact.
 
@@ -144,7 +144,7 @@ Use the Payables lane to record what you owe suppliers and to make payments agai
 | [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/) | When a supplier invoice arrives and needs to enter the AP ledger | `Dr Expense/Inventory · Dr SST Input · Cr Accounts Payable` |
 | [Payment Voucher (Internal) Applet](/applets/finance/internal-payment-voucher-applet/) | When you are ready to pay a supplier — references the Purchase Invoice | `Dr Accounts Payable · Cr Bank (via Cashbook)` |
 
-> ⚠️ **Approval discipline:** Payment Vouchers should always route through a workflow. Anyone who can create *and* approve their own PVs is a segregation-of-duties risk. Configure the PV approval chain in [Workflow Design Applet](/applets/master-data/workflow-design-applet/) before go-live.
+> ⚠️ **Segregation of duties:** BigLedger has no approval workflow for Payment Vouchers — a PV goes DRAFT → FINAL with no sign-off step. Anyone who can create *and* finalise their own PVs is a segregation-of-duties risk, so control it with permissions: give the create right and the finalise right to different roles before go-live.
 
 #### Receivables Lane — Money coming into the company
 
@@ -318,7 +318,7 @@ The COGS amount uses the **Moving Average (MA) unit cost** of the item at the mo
 
 1. Open [Purchase Invoice (Internal) Applet](/applets/finance/internal-purchase-invoice-applet/) to log the supplier invoice — enter the supplier, invoice date, line items, and tax code.
 2. Create a Payment Voucher in [Payment Voucher (Internal) Applet](/applets/finance/internal-payment-voucher-applet/) referencing that invoice. **Pick the correct Cashbook** — this determines which bank account is credited in the GL.
-3. Submit the PV for approval via the configured workflow. Do not pay until it is approved.
+3. Have a second person review the PV before it is finalised. There is no approval step in the system for Payment Vouchers, so this is a permissions-and-policy control: whoever holds the finalise right is the reviewer.
 4. Once approved and payment is made, import the bank statement and match the bank movement in [Bank Reconciliation Applet](/applets/finance/bank-reconciliation-applet/).
 5. **Weekly:** review outstanding supplier balances in [Creditor Report Applet](/applets/finance/creditor-report-applet/) — prioritize by due date to avoid late payment penalties.
 
@@ -354,7 +354,7 @@ The COGS amount uses the **Moving Average (MA) unit cost** of the item at the mo
 ### Journey: Finance Manager / Controller (Daily approvals + monthly close)
 
 **Daily:**
-1. Clear pending PV and RV approvals from the workflow queue. Review each payment against its supporting Purchase Invoice — approve only when the amounts match and the Cashbook selection is correct.
+1. Review the day's draft PVs and RVs. Check each payment against its supporting Purchase Invoice — finalise only when the amounts match and the Cashbook selection is correct.
 
 **Monthly Close:**
 2. Confirm all Purchase Invoices and Receipt Vouchers from the period are in `FINAL` status. Chase AP and AR clerks for any stuck drafts.
@@ -461,7 +461,7 @@ Financial Accounting requires the [Core Module](/modules-v2/core/) to be live fi
 - [ ] Every bank account registered as a Cashbook in Core, **linked to a GL account**
 - [ ] Every Tax Code mapped to its GL Output/Input Tax account
 - [ ] Doc Item Maintenance configured with default revenue/expense accounts per item
-- [ ] Approval workflows for Payment Vouchers configured in [Workflow Design Applet](/applets/master-data/workflow-design-applet/)
+- [ ] Create and finalise rights for Payment Vouchers held by different roles (there is no PV approval workflow — see [Document Approvals](/guides/document-approvals/))
 - [ ] Budget structure defined (if using budgetary controls)
 - [ ] Financial report templates configured in [Financial Report Applet](/applets/finance/financial-report-applet/)
 - [ ] SST registration details entered (for Malaysian entities)
@@ -478,7 +478,7 @@ Before go-live, historical balances must be brought forward from the previous sy
 
 ## 13. FAQs & Troubleshooting
 
-**Q: I created a Payment Voucher and approved it, but the bank balance in the Bank Reconciliation Applet hasn't changed. Why?**
+**Q: I created a Payment Voucher and finalised it, but the bank balance in the Bank Reconciliation Applet hasn't changed. Why?**
 A: Two different things. The PV posts the *accounting* entry (debit AP, credit GL Bank). The bank balance shown in [Bank Reconciliation Applet](/applets/finance/bank-reconciliation-applet/) only updates when you import or enter the bank *statement* and match it to the PV. The GL balance updates immediately; the "matched bank balance" updates at reconciliation time.
 
 **Q: Why does my GL Bank account balance not equal my actual bank statement balance?**

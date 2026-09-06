@@ -14,7 +14,7 @@ Purchasing operates between your operational procurement requirements and your c
 
 | Architecture Layer | System Component | Primary Role in Procurement |
 |-------------------|------------------|-----------------------------|
-| **Procurement Engine** | P2P Contract & Sourcing Engine | Central management of vendor pricebooks, purchase requisitions, approval matrices, and order commitments. |
+| **Procurement Engine** | P2P Contract & Sourcing Engine | Central management of vendor pricebooks, purchase requisitions, optional approval levels, and order commitments. |
 | **Warehouse Receiving** | [Goods Received Note GRN Applet](/applets/purchase-workflow/internal-purchase-grn-applet/) | Physical goods receipt, quality inspection, and automated inventory stock-in. |
 | **Accounts Payable (AP)** | [Purchase Invoice Applet](/applets/finance/internal-purchase-invoice-applet/) | Supplier billing verification, 3-way invoice matching (PO vs GRN vs Invoice), and GL liability posting. |
 | **Vendor Management** | Supplier Maintenance Applet (Core) | Central master records for vendor profiles, payment terms, currency settings, and credit ratings. |
@@ -75,7 +75,7 @@ Confusing procurement document types creates inventory discrepancies and unautho
 - [x] Supplier master records and payment terms configured in Core
 - [ ] Item master data and purchasing units of measure (UOM) verified in Inventory
 - [ ] Tax codes for supplier invoices (Input SST/VAT/GST) mapped to GL accounts
-- [ ] Departmental Purchase Requisition approval hierarchies established
+- [ ] *(Optional)* Purchase Requisition approval levels and approvers established — approvals are off until you configure them
 - [ ] Warehouse receiving locations and inspection workflows configured
 - [ ] Accounts Payable 3-way matching tolerance thresholds defined
 - [ ] Finance team aligned on Goods Received Not Invoiced (GRNI) month-end accruals

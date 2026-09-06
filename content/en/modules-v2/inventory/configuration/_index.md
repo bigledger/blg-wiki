@@ -41,12 +41,12 @@ Configuring the Inventory Module follows a strict 5-phase dependency chain. Mast
 
 ## Phase 3: Stock Movement Controls
 
-**What you are doing:** Establishing approval rules for inter-warehouse transfers, stock adjustments, and physical stock takes.
+**What you are doing:** Establishing the rules and reason codes for inter-warehouse transfers, stock adjustments, and physical stock takes. None of these three documents has an approval engine — control them with permissions. Only Stock Requisition can carry approvals, and only optionally ([Document Approvals](/guides/document-approvals/)).
 
 | Setup Task | Required Applet |
 |------------|-----------------|
 | Inter-Warehouse Stock Transfer Rules | [Stock Transfer Applet](/applets/inventory-workflow/stock-transfer-applet/) |
-| Stock Write-Off & Adjustment Approvals | [Stock Adjustment Applet](/applets/inventory-workflow/stock-adjustment-applet/) |
+| Stock Write-Off & Adjustment Reason Codes | [Stock Adjustment Applet](/applets/inventory-workflow/stock-adjustment-applet/) |
 | Physical Cycle Count Audits | [Stock Take Applet](/applets/inventory-workflow/stock-take-applet/) |
 
 ---

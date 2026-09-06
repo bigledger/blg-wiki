@@ -233,17 +233,19 @@ weight: 60
 - **Outstanding invoices**: Who owes you money
 - **Recent transactions**: Latest business activity
 
-**Approval Workflows**:
-- **Purchase approvals**: Approve spending requests on the go
-- **Expense approvals**: Review and approve employee expenses
-- **Invoice approvals**: Approve invoices before sending
-- **Mobile notifications**: Get alerts for pending approvals
+**Approvals from your phone**:
+- **Purchase approvals**: when a purchase requisition or purchase order is submitted for approval,
+  the approver gets an e-mail with a link. That link opens a page that works fine in a phone
+  browser — approve or reject with remarks from anywhere
+- **Expense claims**: handled by the separate Claims module
+- There is no dedicated mobile approval app and no push notification — the e-mail is the
+  notification. Sales invoices have no approval step at all
 
 **Real-World Mobile Usage Scenarios**:
 
 *Scenario 1: Traveling Business Owner*
 - Check cash position before important meeting
-- Approve urgent purchase while on airplane
+- Approve an urgent purchase order from the e-mail link before boarding
 - Photo receipt from business dinner
 - Review sales reports in hotel room
 
@@ -251,11 +253,11 @@ weight: 60
 - Create invoice at customer location
 - Photo of completed work for records
 - Check inventory before promising delivery
-- Approve employee expense claims
+- Review employee expense claims
 
 *Scenario 3: Retail Store Manager*
 - Review yesterday's sales during commute
-- Approve special discount requests
+- Agree a special discount with the sales team (there is no discount approval workflow — the control is who holds the permission)
 - Check low stock alerts before ordering
 - Monitor multiple store performance
 

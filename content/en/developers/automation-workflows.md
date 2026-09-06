@@ -283,13 +283,15 @@ class InvoiceBusinessRules extends RuleEngine {
   }
 
   defineRules() {
-    // Rule: High-value invoice approval
-    this.addRule('high-value-approval', {
+    // Rule: flag a high-value invoice for review in your own system.
+    // Note: BigLedger has no approval engine for purchase invoices, so this
+    // raises an alert in your integration; it does not gate the document.
+    this.addRule('high-value-review', {
       when: (facts) => facts.invoice.total > 50000,
       then: (facts, actions) => {
-        actions.requireApproval({
-          approvers: ['finance_director', 'ceo'],
-          reason: 'High value invoice requires executive approval'
+        actions.notify({
+          recipients: ['finance_director', 'ceo'],
+          reason: 'High value invoice flagged for executive review'
         });
       }
     });
@@ -757,180 +759,33 @@ class IntegrationSyncManager {
 
 ## Approval Workflows
 
-### Multi-Stage Approval Process
+{{< callout type="warning" >}}
+**There is no approval API to build custom chains on.** BigLedger's approval engine is a fixed,
+optional feature of three applets — Purchase Requisition, Purchase Order and Stock Requisition — and
+it is configured through their **Settings → Approval Settings** screens, not through code. It has no
+public rule engine, no SLA or timeout, no escalation, no delegation and no approval portal API. If
+you need approvals on any other document, the control is permissions, not a workflow you can
+register.
+{{< /callout >}}
 
-```javascript
-// workflows/approval-workflow.js
-class ApprovalWorkflow {
-  
-  constructor(workflowContext) {
-    this.context = workflowContext;
-    this.bigledger = workflowContext.bigledger;
-  }
+What the engine does expose over the API is the approval *record* for a document, so an integration
+can read where a purchase order stands and react to it:
 
-  async execute() {
-    const { entityType, entityId, approvalType, requestedBy } = this.context.input;
-    
-    try {
-      // Get approval configuration
-      const approvalConfig = await this.getApprovalConfig(entityType, approvalType);
-      
-      // Create approval request
-      const approvalRequest = await this.createApprovalRequest({
-        entityType,
-        entityId,
-        approvalType,
-        requestedBy,
-        approvers: approvalConfig.approvers,
-        rules: approvalConfig.rules
-      });
+| Purpose | Endpoint |
+|---|---|
+| Read approval headers for a document | `GET /core2/tnt/dm/erp/generic-doc/approvals/backoffice-ep/query?generic_doc_hdr_guids=…` |
+| Read an approver's outstanding requests | `GET /core2/tnt/dm/erp/generic-doc/approvals/approval-requests/login-entity-ep` |
+| Record an approve or reject decision | `PUT /core2/tnt/dm/erp/generic-doc/approvals/approval-requests/processors/login-entity-primary-ep` |
+| Read the approval history | `GET /core2/tnt/dm/erp/generic-doc/approvals/approval-histories/backoffice-ep/query` |
+| Submit or resubmit a document for approval | `POST` / `PUT /core2/tnt/dm/erp/generic-doc/approvals/processors/submission/backoffice-ep` |
+| Withdraw a pending approval | `PUT /core2/tnt/dm/erp/generic-doc/approvals/processors/withdrawals/backoffice-ep` |
 
-      // Start approval process
-      return await this.processApproval(approvalRequest, approvalConfig);
-      
-    } catch (error) {
-      await this.handleApprovalError(error);
-      throw error;
-    }
-  }
+The behaviour behind them — levels, quorum, the Min Approval Amount rule, the two notification
+e-mails, and the automatic move to FINAL on the last approval — is described in
+[Document Approvals](/guides/document-approvals/). Anything beyond that (reminders, escalation,
+routing by supplier or category, a mobile approval app) has to be built in your own system on top
+of the webhooks above.
 
-  async getApprovalConfig(entityType, approvalType) {
-    const configs = {
-      'purchase_order': {
-        'standard': {
-          approvers: [
-            { role: 'department_manager', required: true, order: 1 },
-            { role: 'finance_manager', required: true, order: 2 }
-          ],
-          rules: {
-            maxAmount: 10000,
-            timeoutHours: 48
-          }
-        },
-        'high_value': {
-          approvers: [
-            { role: 'department_manager', required: true, order: 1 },
-            { role: 'finance_manager', required: true, order: 2 },
-            { role: 'cfo', required: true, order: 3 },
-            { role: 'ceo', required: false, order: 4 }
-          ],
-          rules: {
-            minAmount: 10000,
-            timeoutHours: 72
-          }
-        }
-      },
-      'expense_report': {
-        'standard': {
-          approvers: [
-            { role: 'line_manager', required: true, order: 1 }
-          ],
-          rules: {
-            maxAmount: 1000,
-            timeoutHours: 24
-          }
-        },
-        'high_value': {
-          approvers: [
-            { role: 'line_manager', required: true, order: 1 },
-            { role: 'finance_manager', required: true, order: 2 }
-          ],
-          rules: {
-            minAmount: 1000,
-            timeoutHours: 48
-          }
-        }
-      }
-    };
-
-    return configs[entityType]?.[approvalType] || configs[entityType]?.['standard'];
-  }
-
-  async processApproval(approvalRequest, config) {
-    const approvers = config.approvers.sort((a, b) => a.order - b.order);
-    
-    for (const approver of approvers) {
-      if (approver.required) {
-        // Send approval notification
-        await this.sendApprovalNotification(approvalRequest, approver);
-        
-        // Wait for approval with timeout
-        const approval = await this.waitForApproval(
-          approvalRequest.id, 
-          approver.role, 
-          config.rules.timeoutHours
-        );
-
-        if (approval.status === 'approved') {
-          await this.recordApproval(approvalRequest.id, approver.role, approval);
-        } else if (approval.status === 'rejected') {
-          await this.recordRejection(approvalRequest.id, approver.role, approval);
-          return { status: 'rejected', rejectedBy: approver.role, reason: approval.reason };
-        } else {
-          // Timeout occurred
-          return { status: 'timeout', approver: approver.role };
-        }
-      }
-    }
-
-    // All required approvals received
-    await this.finalizeApproval(approvalRequest.id);
-    return { status: 'approved' };
-  }
-
-  async sendApprovalNotification(approvalRequest, approver) {
-    const users = await this.getUsersByRole(approver.role);
-    
-    for (const user of users) {
-      // Send email notification
-      await this.sendEmail({
-        to: user.email,
-        subject: `Approval Required: ${approvalRequest.entityType} ${approvalRequest.entityId}`,
-        template: 'approval-request',
-        data: {
-          approvalRequest,
-          approver: user,
-          approvalLink: `${process.env.APPROVAL_PORTAL_URL}/approve/${approvalRequest.id}`,
-          timeoutHours: approver.timeoutHours
-        }
-      });
-
-      // Send in-app notification
-      await this.bigledger.notifications.create({
-        userId: user.id,
-        type: 'approval_request',
-        title: 'Approval Required',
-        message: `${approvalRequest.entityType} requires your approval`,
-        data: { approvalRequestId: approvalRequest.id }
-      });
-    }
-  }
-
-  async waitForApproval(approvalRequestId, approverRole, timeoutHours) {
-    return new Promise((resolve) => {
-      const timeout = setTimeout(() => {
-        resolve({ status: 'timeout' });
-      }, timeoutHours * 60 * 60 * 1000);
-
-      // Listen for approval webhook
-      this.context.onWebhook(`approval.${approvalRequestId}.${approverRole}`, (event) => {
-        clearTimeout(timeout);
-        resolve(event.data);
-      });
-
-      // Also check periodically in case webhook fails
-      const checkInterval = setInterval(async () => {
-        const approval = await this.checkApprovalStatus(approvalRequestId, approverRole);
-        if (approval) {
-          clearTimeout(timeout);
-          clearInterval(checkInterval);
-          resolve(approval);
-        }
-      }, 5 * 60 * 1000); // Check every 5 minutes
-    });
-  }
-}
-```
 
 ## Monitoring and Analytics
 

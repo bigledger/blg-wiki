@@ -412,7 +412,7 @@ Modern businesses require pricing systems that work seamlessly across multiple d
 **Account-Based Pricing**:
 - **Customer-Specific Catalogs**: Personalized product catalogs with customer-specific pricing
 - **Contract Pricing Integration**: Automatic application of negotiated contract terms
-- **Approval Workflows**: Built-in approval processes for special pricing requests
+- **Permission control**: restrict who may create or amend a price set (there is no pricing approval workflow)
 - **Volume Commitment Tracking**: Monitoring and enforcement of volume commitments
 
 **Self-Service Pricing Tools**:
@@ -640,7 +640,7 @@ Large-scale pricing operations require careful attention to system performance, 
 **Dynamic Quote Generation**:
 - **Real-Time Pricing**: Instant price calculation during quote generation
 - **Customer-Specific Rules**: Automatic application of customer-specific pricing
-- **Approval Workflows**: Built-in approval for non-standard pricing
+- **Permission control**: non-standard pricing is limited by who holds the edit permission, not by an approval workflow
 - **Price Validity**: Time-limited pricing with automatic expiration
 
 **Order Processing Optimization**:

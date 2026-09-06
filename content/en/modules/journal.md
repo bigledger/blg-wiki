@@ -239,7 +239,7 @@ A comprehensive dashboard displaying all journal entries with key information:
 | **Transaction Date** | When the financial event occurred | Period-based filtering and reporting |
 | **Company/Branch** | Entity and location | Multi-company/multi-location filtering |
 | **Document Type/No** | Classification and reference number | Link to supporting documentation |
-| **Status** | Workflow position (Draft, Pending, Approved, Rejected) | Identify transactions needing action |
+| **Status** | Document status (Draft, Final, Void) | Identify transactions needing action |
 | **Posting Status** | Unposted (editable) or Posted (locked) | Determine if transaction affects financials |
 | **Amount** | Total transaction value | Sort by value, identify high-value items |
 | **Created/Updated Date** | Entry and modification timestamps | Track data entry timing and changes |
@@ -574,15 +574,21 @@ Must Equal! ✓
 
 #### Key Segregations
 
-**1. Creation vs. Approval**
-- **Creator** (Bookkeeper): Creates transactions, saves as Draft/Pending Approval
-- **Approver** (Accountant): Reviews and approves transactions created by others
-- **Rule**: Cannot approve own transactions
+> **There is no journal approval workflow in BigLedger.** A journal goes from Draft to Final with
+> no sign-off step and no approval queue. Everything below is a *policy* you enforce by giving the
+> create right and the finalise right to different roles — not something the system routes for you.
+> The only documents that can carry a real approval are purchase requisitions, purchase orders and
+> stock requisitions, and only when you configure it ([Document Approvals](/guides/document-approvals/)).
 
-**2. Approval vs. Posting**
-- **Approver**: Reviews accuracy and approves
-- **Poster** (Controller): Posts approved transactions to ledger (finalizes them)
-- **Rule**: Only post approved transactions
+**1. Creation vs. Review**
+- **Creator** (Bookkeeper): Creates the journal and leaves it in Draft
+- **Reviewer** (Accountant): Checks entries created by others before they are finalised
+- **Rule**: Do not give the same person both the create and the finalise right
+
+**2. Review vs. Posting**
+- **Reviewer**: Checks accuracy
+- **Poster** (Controller): Finalises the journal, which posts it to the ledger
+- **Rule**: Finalise only what has been reviewed
 
 **3. Entry vs. Reconciliation**
 - **Enterer**: Records daily transactions
@@ -593,8 +599,8 @@ Must Equal! ✓
 
 | Role | Permissions | Restrictions |
 |------|-------------|--------------|
-| **Bookkeeper** | Create transactions, View reports, Edit unposted entries | Cannot approve/post/delete |
-| **Accountant** | All Bookkeeper permissions + Approve + Post | Cannot approve own entries |
+| **Bookkeeper** | Create transactions, View reports, Edit unposted entries | Cannot finalise/delete |
+| **Accountant** | All Bookkeeper permissions + Finalise | Should not finalise their own entries |
 | **Controller** | All Accountant permissions + Period closing | Cannot change system settings |
 | **Administrator** | All system settings and user management | Should not process routine transactions |
 
@@ -602,9 +608,9 @@ Must Equal! ✓
 
 *$10,000 Equipment Purchase:*
 
-**Step 1**: Bookkeeper Sarah creates entry → Saves as Pending Approval
-**Step 2**: Accountant Mike reviews → Verifies invoice and accounts → Approves
-**Step 3**: Controller Jane posts → Finalizes in ledger → Affects financial statements
+**Step 1**: The bookkeeper creates the entry and leaves it in Draft
+**Step 2**: The accountant reviews it — verifies the invoice and the accounts
+**Step 3**: The controller finalises it, which posts it to the ledger and affects the financial statements
 
 **Result**: Three independent reviews prevent errors and fraud.
 
@@ -653,7 +659,7 @@ The Journal Module is the foundation of financial transaction management, provid
 
 **Efficiency:** Automated journal generation from operational applets eliminates redundant data entry
 
-**Control:** Workflow approvals and segregation of duties prevent errors and fraud
+**Control:** Segregation of duties through permissions prevents errors and fraud
 
 **Insight:** Multi-dimensional categorization transforms transactions into business intelligence
 

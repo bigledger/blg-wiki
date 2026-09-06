@@ -293,7 +293,7 @@ Channel    Priority        Escalation  Solution      Testing     Survey
 ### Sales Compliance
 - **Regulatory Compliance** - Industry-specific sales regulations
 - **Documentation Management** - Compliance document storage and tracking
-- **Approval Workflows** - Multi-level approval and authorization
+- **Permission-based authorization** - Who may quote, discount, and finalise (sales documents have no approval workflow)
 - **Contract Compliance** - Sales agreement compliance monitoring
 - **Ethics Management** - Sales ethics and conduct monitoring
 

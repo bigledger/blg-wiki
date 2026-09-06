@@ -207,22 +207,28 @@ Before processing credit sales, ensure:
    - Customer relationship notes
    - Previous order history reference
 
-#### Sales Order Approval:
+#### Manager Sign-off (a company policy, not a system step):
 
-8. **Credit Sales May Require Approval**:
-   - Orders above certain value (e.g., $5,000)
+{{< callout type="info" >}}
+Sales orders have **no approval workflow** in BigLedger — there is no Submit for Approval button
+and no approver queue on a sales order. Where your policy needs a manager to agree, do it offline
+and keep the finalise permission with the people who should be deciding. The only documents with a
+real approval engine are purchase requisitions, purchase orders and stock requisitions
+([Document Approvals](/guides/document-approvals/)).
+{{< /callout >}}
+
+8. **Credit Sales Your Policy Should Escalate**:
+   - Orders above a value you set (e.g. RM 5,000)
    - New credit customers (first few orders)
-   - Customers approaching credit limit
+   - Customers approaching their credit limit
    - Special pricing or terms
 
-9. **Submit for Approval** (if required):
-   - Click **Submit for Approval**
-   - System routes to manager
-   - Manager reviews and approves/rejects
-   - Sales admin notified of decision
+9. **Get the manager's agreement** before confirming — a note in **Remarks** recording who agreed
+   and when is what an auditor will look for. BigLedger's own credit-limit check is the automated
+   control here: a customer over their limit is blocked at the sales order.
 
 10. **Confirm Sales Order**:
-    - Once approved, **Confirm** the order
+    - Once agreed, **Confirm** the order
     - System generates **Sales Order Number**
     - Order status: "Confirmed - Credit Terms"
 

@@ -64,7 +64,7 @@ The BigLedger Inventory Management module provides comprehensive control over yo
 #### Inventory Tracking
 - **Transaction History**: Complete audit trail
 - **Stock Movements**: Detailed tracking
-- **Adjustments**: Reason codes, approvals
+- **Adjustments**: Reason codes, permission-controlled finalisation
 - **Stock Takes**: Full and cycle counts
 - **Variance Analysis**: Count vs system
 - **Reconciliation**: Multi-level verification
@@ -239,7 +239,7 @@ Warehouse Setup:
 3. Physical count
 4. Enter results
 5. Variance review
-6. Adjustment approval
+6. Adjustment finalised by a supervisor
 7. Update records
 
 ## Integration

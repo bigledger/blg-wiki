@@ -405,7 +405,7 @@ This guide provides detailed, step-by-step workflows for the most common busines
    - Set **Data Restrictions**:
      - Company/branch access
      - Customer/vendor restrictions
-     - Amount limits for approvals
+     - Document targets the role may act on
 
 4. **Configure Security Settings**
    - Set **Password Requirements**:
@@ -426,71 +426,66 @@ This guide provides detailed, step-by-step workflows for the most common busines
 **Security Best Practices**:
 - Follow principle of least privilege
 - Regularly review and update permissions
-- Implement approval workflows for sensitive operations
+- Split the create and finalise permissions for sensitive documents — for purchase requisitions and purchase orders you can also add an approval level
 - Monitor user activity through audit logs
 
 ---
 
 ### Document Approval Workflows
 
-**Objective**: Implement consistent approval processes for financial documents to ensure proper controls.
+**Objective**: Put an optional sign-off in front of purchase requisitions, purchase orders and stock requisitions.
+
+{{< callout type="warning" >}}
+Approvals are **optional** and cover **only** those three document types. Sales invoices, expense
+reports, journals and budget changes have no approval engine — for those, the control is who holds
+the permission to finalise. The full walkthrough lives in
+[Document Approvals](/guides/document-approvals/); this is the short version.
+{{< /callout >}}
 
 **Prerequisites**:
-- Approval hierarchy defined
-- User permissions configured
-- Document types identified for approval
+- Employees exist in the Employee applet with a job title and an e-mail address
+- Designations created under the applet's Settings → Branch → Designation
+- Employees assigned to those designations with an Approval Level
 
 **Workflow Configuration**:
 
-1. **Set Up Approval Rules**
-   - Navigate to **Administration** → **Workflow Management** → **Approval Rules**
-   - Create rules for each document type:
-     - Purchase Orders
-     - Invoices
-     - Expense Reports
-     - Journal Entries
-     - Budget Modifications
+1. **Create the Approval Setting**
+   - In the Purchase Order applet, go to **Settings → Approval Settings → Add**
+   - Choose the Server Doc Type (`INTERNAL_PURCHASE_ORDER`), the branch and company, the Submitter
+     Designation Code the rule applies to, and how many levels it has
 
-2. **Define Approval Hierarchy**
-   - For each rule, set approval levels:
-     - **Level 1**: Direct supervisor (amounts up to $1,000)
-     - **Level 2**: Department manager (amounts up to $10,000)
-     - **Level 3**: Executive approval (amounts over $10,000)
-   - Configure **Parallel Approval** for documents requiring multiple signatures
+2. **Define the levels**
+   - One row per level: an Approver Designation, an Approval Quorum (how many of that level's
+     approvers must act), and a **Min Approval Amount**
+   - The Min Approval Amount does **not** send the document to a different person — it decides how
+     many levels apply. Levels with a Min Approval Amount at or below the document total are required
+   - Two people at the same level with a quorum of 1 means either can clear it
 
-3. **Configure Notification Settings**
-   - Set up **Email Notifications** for:
-     - Pending approvals
-     - Approval granted/denied
-     - Escalation warnings
-   - Configure **Dashboard Alerts** for approvers
-   - Set **Escalation Rules** for overdue approvals
+3. **Notifications**
+   - There is nothing to configure per approver. BigLedger e-mails each approver at the current level
+     automatically, and e-mails the submitter on rejection
+   - There are no escalation rules, no reminders and no dashboard alerts
 
 **Document Submission Process**:
 
 1. **Submit for Approval**
-   - User creates document (e.g., purchase order)
-   - Clicks **Submit for Approval**
-   - System routes to appropriate approver based on amount and type
-   - Email notification sent to approver
+   - Open the saved purchase order, go to the **Generic Doc Approval** tab, click **Add**, pick the
+     submitter, save, then select the row and click **Submit For Approval**
+   - Every approver at level 1 is e-mailed
 
 2. **Approval Process**
-   - Approver receives notification
-   - Reviews document details and supporting information
-   - Options available:
-     - **Approve**: Document moves to next level or processing
-     - **Reject**: Returns to originator with comments
-     - **Request Changes**: Allows modifications before re-submission
+   - The approver clicks the link in the e-mail and lands on a page showing the document, or works
+     from the **Approval Request** screen in the applet
+   - **Approve** or **Reject**, with remarks (remarks are compulsory)
+   - Rejection ends the cycle; the submitter fixes the document and clicks **Resubmit**
 
 3. **Final Processing**
-   - Once all approvals obtained, document status changes to "Approved"
-   - Automatic processing begins (e.g., PO sent to vendor)
-   - Audit trail maintained for all approval actions
+   - When the last required level approves, BigLedger sets the purchase order to **FINAL**
+   - Every decision is recorded in **Approval History**
 
-**Monitoring and Reporting**:
-- Generate weekly reports on pending approvals
-- Track approval times by department
-- Review rejected documents for process improvements
+**Monitoring**:
+- The applet's **Approval History** screen is the record of who decided what and when
+- There is no approval-turnaround report and no pending-approval dashboard
 
 ---
 

@@ -9,7 +9,7 @@ Follow these operational best practices to maintain purchasing budget controls, 
 
 ## 1. Strict 3-Way Matching Controls
 - **Enforce Mandatory PO Matching:** Never process a supplier invoice in Accounts Payable without linking it to an approved Purchase Order and verified Goods Received Note (GRN).
-- **Establish Variance Tolerance Limits:** Define strict percentage thresholds (e.g., maximum 1% price variance) above which invoice posting requires managerial approval.
+- **Establish Variance Tolerance Limits:** Agree the percentage variance (e.g. maximum 1% on price) your team will accept without escalating. Purchase invoices have no approval engine, so make the escalation a policy and restrict who may finalise an invoice that breaches it.
 
 ## 2. Month-End GRNI Reconciliation
 - **Audit Un-invoiced GRNs Monthly:** Review outstanding Goods Received Not Invoiced (GRNI) records at month-end to identify shipped orders where supplier invoices are delayed.

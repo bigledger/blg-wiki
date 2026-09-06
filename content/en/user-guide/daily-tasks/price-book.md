@@ -198,8 +198,8 @@ Price books can implement different calculation methods:
 - Tax calculations applied according to customer and item configuration
 
 **Override Capabilities**:
-- Management approval for price overrides
-- Special pricing requests and approvals
+- Price-override permission held only by the roles that should have it
+- Special pricing agreed offline and recorded in Remarks (there is no pricing approval workflow)
 - Promotional pricing application
 - Volume discount calculations
 

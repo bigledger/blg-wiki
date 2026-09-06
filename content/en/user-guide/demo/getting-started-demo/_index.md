@@ -250,13 +250,16 @@ Welcome to your BigLedger demo journey! This guide will help you get comfortable
      - Order number generates
      - Status shows "Draft"
 
-  2. Click **Submit for Approval**
-     - Status changes to "Pending"
-     - Notification sent
+  2. Review the draft
+     - Check the customer, items, prices and delivery date
 
-  3. Click **Approve** (as admin)
-     - Status: "Approved"
-     - Ready for fulfillment
+  3. Click **Final**
+     - Status: "Final"
+     - Ready for fulfilment
+
+  *(Sales orders have no approval step — there is nothing to submit or approve. Optional approvals
+  exist only on purchase requisitions, purchase orders and stock requisitions; see
+  [Document Approvals](/guides/document-approvals/).)*
   {{< /tab >}}
 
   {{< tab >}}
@@ -272,7 +275,7 @@ Welcome to your BigLedger demo journey! This guide will help you get comfortable
 
   3. **Check Activity Log**
      - See creation timestamp
-     - Review approval history
+     - Review who edited the order and when
   {{< /tab >}}
 {{< /tabs >}}
 

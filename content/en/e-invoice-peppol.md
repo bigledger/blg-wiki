@@ -85,7 +85,7 @@ MyInvois is Malaysia's national e-invoicing initiative, mandating electronic inv
 - Duplicate detection
 
 **Workflow Management**
-- Approval chains
+- Document status tracks
 - Digital signatures
 - Amendment tracking
 - Credit note processing

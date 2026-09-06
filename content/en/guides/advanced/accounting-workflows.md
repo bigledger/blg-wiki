@@ -604,26 +604,35 @@ Customer Reconciliation     ✓
 
 ### Authorization Matrix Implementation
 
-**BigLedger Approval Workflow Setup**
+**BigLedger Approval Settings — how the real model works**
+
+BigLedger has no "approval matrix" that maps an amount band to a named approver, and no backup or
+secondary approver. What it has is a list of **levels** attached to a document type. Each level
+names an approver designation, a quorum, and a **Min Approval Amount**; the number of levels a
+document must clear is the count of levels whose Min Approval Amount is at or below the document
+total.
+
 ```yaml
-Approval Matrix:
-Purchase Orders:
-  - Amount: 0 - 1,000 MYR
-    Approver: Department Supervisor
-    Backup: Department Manager
-  
-  - Amount: 1,001 - 10,000 MYR
-    Approver: Department Manager
-    Backup: Finance Manager
-  
-  - Amount: 10,001 - 50,000 MYR
-    Approver: Finance Manager
-    Secondary: General Manager
-  
-  - Amount: > 50,000 MYR
-    Approver: General Manager
-    Secondary: Board of Directors
+Approval Setting: PO-DEPT (INTERNAL_PURCHASE_ORDER, submitter designation "Staff")
+Total Required Approval Levels: 3
+Levels:
+  - Approval Level: 1
+    Approver Designation: DEPT-MGR
+    Approval Quorum: 1
+    Min Approval Amount: 0          # every purchase order
+  - Approval Level: 2
+    Approver Designation: FIN-MGR
+    Approval Quorum: 1
+    Min Approval Amount: 10000      # adds a level from MYR 10,000
+  - Approval Level: 3
+    Approver Designation: GM
+    Approval Quorum: 1
+    Min Approval Amount: 50000      # adds a third level from MYR 50,000
 ```
+
+A MYR 800 order clears one level; a MYR 60,000 order clears all three, in order. Put two people at
+level 1 with a quorum of 1 and either can clear it — that is the closest thing to a "backup
+approver" the system offers. Set-up in [Document Approvals](/guides/document-approvals/).
 
 ### Key Performance Indicators for Controls
 

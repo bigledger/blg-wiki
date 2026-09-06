@@ -22,7 +22,7 @@ New to purchasing in BigLedger? Start with the standard workflow to learn the fu
 - Supplier master data is configured in [Supplier Maintenance](/applets/supplier-maintenance-applet/)
 - Inventory items are set up in [Item Maintenance](/applets/inv-item-maintenance-applet/)
 - Chart of accounts includes purchase expense and tax accounts
-- Approval workflows and limits are defined
+- *(Optional)* Purchase order or requisition approvals are configured, if you want them — see [Document Approvals](/guides/document-approvals/)
 
 {{< callout type="tip" >}}
 **First time?** Use the [Standard Procurement Workflow](/guides/purchasing-guides/standard-procurement-workflow) as your default. Only use simplified workflows when there's a clear business reason to skip steps.
@@ -173,7 +173,7 @@ Before processing purchases, ensure these are configured:
 - Prepayment accounts
 
 ### 4. System Configuration
-- Approval workflows and limits
+- *(Optional)* Approval levels and approvers for requisitions and purchase orders
 - Document numbering sequences
 - Default tax codes
 - Tolerance levels for matching
@@ -226,20 +226,27 @@ Every purchasing transaction requires proper documentation:
 **Workflow**: Consignment Purchasing
 **Process**: Receive consignment goods → Use items as needed → Process monthly consumption invoice
 
-## Approval Hierarchies
+## Approval Levels
 
-Configure approval limits based on purchase value and type:
+Purchase approvals are **optional** and switched off until you create an Approval Setting. They
+cover purchase requisitions, purchase orders and stock requisitions only.
 
-| Purchase Value | Approver | Processing Time |
-|----------------|----------|-----------------|
-| < $1,000 | Supervisor | Immediate |
-| $1,000 - $5,000 | Department Manager | 1 business day |
-| $5,000 - $25,000 | Finance Manager | 2 business days |
-| $25,000 - $100,000 | CFO | 3 business days |
-| > $100,000 | CEO/Board | 5 business days |
+Each level names an approver designation, a quorum, and a **Min Approval Amount**. The amount does
+not choose a different approver — it decides how many levels the document must clear:
+
+| Level | Approver designation | Min Approval Amount | Quorum |
+|---|---|---|---|
+| 1 | Department manager | RM 0 | 1 |
+| 2 | Finance director | RM 25,000 | 1 |
+
+An RM 3,000 requisition needs level 1 only; an RM 60,000 requisition needs both. Full setup in
+[Document Approvals](/guides/document-approvals/).
 
 {{< callout type="warning" >}}
-**Compliance Requirement**: All purchases above your defined threshold must go through formal approval. Emergency purchases require retrospective approval and documentation.
+**BigLedger will not enforce your spending policy for you.** Even where approvals are configured, a
+purchase order can still be finalised by hand while an approval is pending — approval sets a
+document to FINAL when it completes, it does not block FINAL. If a threshold matters, control who
+holds the finalise permission as well.
 {{< /callout >}}
 
 ## Key Performance Indicators

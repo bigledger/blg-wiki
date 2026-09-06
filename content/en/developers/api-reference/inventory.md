@@ -501,7 +501,7 @@ POST /api/v1/inventory/adjustments
 
 ## Stock Transfers API
 
-Transfer inventory between locations with full tracking and approval workflows.
+Transfer inventory between locations with full tracking. Stock transfers have no approval workflow — if you need a request signed off first, raise a Stock Requisition instead ([Document Approvals](/guides/document-approvals/)).
 
 ### Stock Transfer Object
 
@@ -545,20 +545,11 @@ Transfer inventory between locations with full tracking and approval workflows.
     "actualDelivery": "2024-01-15T13:45:00Z"
   },
   "totalValue": 925.00,
-  "approvals": [
-    {
-      "step": "warehouse_manager",
-      "approvedBy": "user_789",
-      "approvedAt": "2024-01-15T08:30:00Z",
-      "notes": "Approved for shipment"
-    },
-    {
-      "step": "store_manager",
-      "approvedBy": "user_012",
-      "approvedAt": "2024-01-15T14:00:00Z",
-      "notes": "Received with 2 damaged units"
-    }
-  ],
+  "releasedBy": "user_789",
+  "releasedAt": "2024-01-15T08:30:00Z",
+  "receivedBy": "user_012",
+  "receivedAt": "2024-01-15T14:00:00Z",
+  "receivingNotes": "Received with 2 damaged units",
   "createdBy": "user_456",
   "createdAt": "2024-01-15T08:00:00Z",
   "updatedAt": "2024-01-15T14:00:00Z"
@@ -597,7 +588,7 @@ POST /api/v1/inventory/transfers
       "quantity": 10
     }
   ],
-  "requestApproval": true
+  "remarks": "Replenishment for the weekend promotion"
 }
 ```
 

@@ -362,12 +362,12 @@ This consumer electronics demo simulates "TechZone Electronics," a multi-locatio
    - Suggested order: 100 AirPods Pro (vs normal 25) due to holiday demand
    - Set delivery date: +14 days (Apple lead time)
 
-3. **Multi-Level Approval Process**
-   - Orders >$10,000 require manager approval
-   - Orders >$25,000 require regional manager approval
-   - Click **Submit for Approval**
-   - **Expected Result**: PO routed based on value thresholds
-   - Approval includes budget impact analysis
+3. **Multi-Level Approval Process** *(optional — only if Approval Settings exist)*
+   - Level 1 (branch manager) has Min Approval Amount RM 0, so it applies to every PO
+   - Level 2 (regional manager) has Min Approval Amount RM 25,000, so it applies to this one
+   - Open the **Generic Doc Approval** tab, click **Add**, then **Submit For Approval**
+   - **Expected Result**: both levels apply because of the order total; the level 1 approvers are
+     e-mailed first, and the last approval sets the PO to FINAL
 
 4. **Advanced Goods Receipt**
    - Go to **Purchasing** → **Receive Goods**
@@ -438,9 +438,9 @@ This consumer electronics demo simulates "TechZone Electronics," a multi-locatio
      - "2 shirts damaged and disposed"
      - "2 dresses found in return area, not processed"
 
-4. **Approve Adjustments**
-   - Review all variances
-   - Click **Approve Adjustments**
+4. **Finalise the Adjustments**
+   - Review all variances (stock adjustments have no approval workflow — a supervisor should hold the finalise permission)
+   - Click **Final**
    - **Expected Result**: System updates inventory levels
    - Journal entries created for accounting
 

@@ -126,11 +126,11 @@ tags:
 
 ## Overview
 
-A **purchase requisition** is your company's formal way of saying *"we need to buy this."* Before a supplier is contacted, a requester records what is needed, how much, for which branch and from which preferred supplier; a manager approves it; purchasing then raises a [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/) from it. Think of it as a pre-approved shopping list: the requisition is the internal request, the purchase order is the commitment to the supplier.
+A **purchase requisition** is your company's formal way of saying *"we need to buy this."* Before a supplier is contacted, a requester records what is needed, how much, for which branch and from which preferred supplier; a manager approves it if your company has switched approvals on; purchasing then raises a [Purchase Order](/applets/purchase-workflow/internal-purchase-order-applet/) from it. Think of it as a pre-approved shopping list: the requisition is the internal request, the purchase order is the commitment to the supplier.
 
 The **Purchase Requisition (Internal)** applet is where requesters create requisitions, approvers act on them (**Approval Request** / **Approval History**), operations review lines across documents (**Line Items**, **Line Items Queue**) and administrators configure fields, approval routing and printing. It is a **record-only** document: server document type `INTERNAL_PURCHASE_REQUISITION` (short code `PURREQ`) carries quantity signum **0** and amount signum **0** — finalising it moves no stock and posts no journal. What FINAL does do is put the requisition's lines in the open queue so a Purchase Order can knock them off.
 
-Unlike its inventory cousin, the [Stock Requisition](/applets/inventory-workflow/internal-stock-requisition-applet/), this applet **does** wire the generic-document approval workflow end to end: *Approval Settings* and *Branch Designation* are read by the backend when a requisition is submitted, approvers get e-mails and an Approval Request queue, and the final approval sets the requisition to FINAL. The details — and the two things it does not enforce — are in [Lifecycle and effects](#lifecycle-and-effects).
+Approvals here are **optional and off until you build them** — a tenant with no *Approval Settings* row raises, finalises and converts requisitions with nobody signing anything. Where this applet differs from its inventory cousin, the [Stock Requisition](/applets/inventory-workflow/internal-stock-requisition-applet/), is that it gives you the whole loop from the UI: *Approval Settings* and *Branch Designation* are read by the backend when a requisition is submitted, approvers get e-mails and an Approval Request queue, and the final approval sets the requisition to FINAL. FINAL is never blocked while an approval is pending. The details are in [Lifecycle and effects](#lifecycle-and-effects) and in the [Document Approvals](/guides/document-approvals/) guide.
 
 ## Where it fits
 
@@ -144,7 +144,7 @@ Module: [Purchasing](/modules-v2/purchasing/).
 | Downstream (backend only) | Purchase Order | `PurchaseRequisitionToPurchaseOrderConverter` copies a FINAL requisition into a new PO (DRAFT, or FINAL when the company flow config says so). It is reachable through the backend conversion endpoints and the `GENERIC_DOCUMENT_CONVERSION_PROCESSOR` job, not from any button in this applet. |
 | Optional | [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) | The GRN's line-level knock-off can target a requisition (open-queue types `INTERNAL_PURCHASE_GOODS_RECEIVED_NOTE → INTERNAL_PURCHASE_REQUISITION`); the PR-side sub-tab for it is commented out. |
 | Reporting | [Purchase Report](/applets/purchase-workflow/purchase-report-applet/) | Requisition documents appear in the purchase-document reports. |
-| Inventory twin | [Stock Requisition (Internal)](/applets/inventory-workflow/internal-stock-requisition-applet/) | Same 0/0 shape for a stock request between locations; its approval screens are not enforced, this applet's are. |
+| Inventory twin | [Stock Requisition (Internal)](/applets/inventory-workflow/internal-stock-requisition-applet/) | Same 0/0 shape for a stock request between locations. It has the Approval Settings screen but no way to submit a requisition against it; this applet has the whole loop. |
 
 ## Screens and menus
 
@@ -346,7 +346,7 @@ What the workflow does **not** do: nothing stops a user from clicking **FINAL** 
 - [Purchase Quotation (Internal)](/applets/purchase-workflow/internal-purchase-quotation-applet/) — can be raised from requisition lines before the order.
 - [Purchase GRN (Internal)](/applets/purchase-workflow/internal-purchase-grn-applet/) — optional line-level knock-off target for a requisition.
 - [Purchase Invoice (Internal)](/applets/finance/internal-purchase-invoice-applet/) — end of the chain; the requisition number is carried on PO and invoice lines as a reference.
-- [Stock Requisition (Internal)](/applets/inventory-workflow/internal-stock-requisition-applet/) — the inventory-side request; same signums, approval screens present but not enforced there.
+- [Stock Requisition (Internal)](/applets/inventory-workflow/internal-stock-requisition-applet/) — the inventory-side request; same signums, Approval Settings screen present but no way to submit against it there.
 - [Purchase Report](/applets/purchase-workflow/purchase-report-applet/) — reporting.
 - [Supplier](/applets/master-data/supplier-applet-1/), [Employee](/applets/master-data/employee-applet/), [Organisation](/applets/master-data/organisation-applet/), [Doc Item Maintenance](/applets/master-data/doc-item-maintenance-applet/), [Tax Configuration](/applets/master-data/tax-configuration-applet/) — master data the form depends on.
 - [Workflow Design](/applets/master-data/workflow-design-applet/) — designs the process whose statuses appear in Workflow Status.

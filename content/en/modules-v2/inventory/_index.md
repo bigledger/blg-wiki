@@ -77,7 +77,7 @@ Confusing inventory transaction types leads to stock discrepancies and balance s
 - [ ] Warehouse locations and storage bins defined in Warehouse Management Applet
 - [ ] Perpetual inventory valuation methods (FIFO, Moving Average) established
 - [ ] Initial opening stock balances uploaded and reconciled with GL asset accounts
-- [ ] Inter-branch stock transfer approval workflows configured and tested
+- [ ] Inter-branch stock transfer permissions and locations configured and tested (stock transfers have no approval workflow)
 - [ ] Barcode scanning hardware verified for physical stock takes
 - [ ] Finance team aligned on month-end inventory valuation reconciliation
 

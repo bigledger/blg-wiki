@@ -150,10 +150,10 @@ Ensure you have:
 - Verify correct promotion applied
 - Check terms and conditions met
 
-**Discount Approval**:
-- Large discounts may require manager approval
-- Submit for approval if needed
-- Wait for approval before confirming order
+**Discount Authorisation**:
+- A large discount may need your manager's agreement
+- Sales orders have no approval workflow in BigLedger, so get that agreement offline and note who gave it in **Remarks**
+- Keep discount authority to the right roles with permissions
 
 ### Step 6: Review Order Totals
 
@@ -232,12 +232,12 @@ Choose appropriate option:
    - Due Date calculated (Order Date + Terms)
    - No deposit required (Balance = Grand Total)
 
-3. **Credit Authorization**:
-   - May require manager approval if:
-     - Order value exceeds threshold
-     - Customer approaching credit limit
-     - New credit customer
-   - Submit for approval if needed
+3. **Credit Authorisation**:
+   - Your manager should agree before you confirm if:
+     - The order value exceeds your threshold
+     - The customer is approaching their credit limit
+     - It is a new credit customer
+   - There is no approval step on a sales order — the automated control is BigLedger's credit-limit check, which blocks the order outright. Record the manager's agreement in **Remarks**
 
 #### For Instalment Sales:
 

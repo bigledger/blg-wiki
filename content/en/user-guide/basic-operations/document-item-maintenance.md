@@ -32,7 +32,7 @@ BigLedger's document maintenance system manages documents through distinct lifec
 - **Creation**: Initial document generation from templates or manual creation
 - **Editing**: Modification and refinement during development phase
 - **Review**: Internal review and validation processes
-- **Approval**: Multi-level approval workflows with role-based permissions
+- **Approval**: optional multi-level sign-off, on purchase requisitions, purchase orders and stock requisitions only
 - **Processing**: Active use in business operations and transactions
 - **Archiving**: Long-term storage with compliance and retrieval capabilities
 
@@ -161,45 +161,36 @@ BigLedger's document maintenance system manages documents through distinct lifec
 - Rollback capabilities to previous versions
 - Comparison tools for analyzing changes between versions
 
-**Change Approval Workflow**:
-- **Minor Changes**: Automatic approval for non-material modifications
-- **Major Changes**: Workflow routing for management approval
-- **Critical Changes**: Multi-level approval for significant modifications
-- **Emergency Changes**: Expedited approval process for urgent situations
+**Change Control**:
+- Document item master changes have no approval workflow in BigLedger — nothing routes a change and
+  nothing holds it. Control who may edit the master with permissions, and use the change log above
+  to see what was changed and by whom.
 
 ---
 
 ## Workflow Integration and Business Processes
 
-### Multi-Level Approval Workflows
+### Approvals — what exists, and where
 
-#### Configurable Approval Chains
+{{< callout type="warning" >}}
+BigLedger's approval engine is **optional** and covers **three document types**: purchase
+requisitions, purchase orders and stock requisitions. Nothing else — not document item masters, not
+sales documents, not payments — can be routed for approval. The full behaviour is in
+[Document Approvals](/guides/document-approvals/).
+{{< /callout >}}
 
-**Role-Based Approval**:
-- **Department Level**: Initial approval by immediate supervisors
-- **Management Level**: Mid-level management approval for significant documents
-- **Executive Level**: Senior management approval for strategic documents
-- **External Approval**: Customer or vendor approval for contractual documents
+**Where those three do use it**:
+- Approvers are employees placed under Settings → Branch → Designation, each carrying an Approval
+  Level; a level can have several approvers and a quorum
+- A level's **Min Approval Amount** decides how many levels a document must clear — it does not send
+  a big document to a different person
+- Each approver at the current level gets one e-mail with a link to a page where they approve or
+  reject with remarks; the submitter gets one e-mail if it is rejected
+- Every decision lands in the applet's **Approval History**
 
-**Conditional Routing**:
-- **Value-Based Routing**: Different approval chains based on document value
-- **Risk-Based Routing**: Enhanced approval for high-risk documents
-- **Compliance Routing**: Specialized approval for regulatory documents
-- **Exception Routing**: Alternative workflows for non-standard situations
-
-#### Approval Process Features
-
-**Automated Notifications**:
-- Email notifications to designated approvers
-- Mobile push notifications for urgent approvals
-- Escalation procedures for delayed approvals
-- Reminder systems for pending approval requests
-
-**Approval Tracking**:
-- Real-time status tracking for all approval stages
-- Detailed audit trails of approval decisions
-- Time tracking for approval process efficiency
-- Performance metrics for approval turnaround times
+**What does not exist**: risk-based or compliance-based routing, exception routing, push
+notifications, escalation, reminders, approval-turnaround metrics, and customer or supplier
+approval of a document.
 
 ### Business Process Integration
 
@@ -216,7 +207,7 @@ BigLedger's document maintenance system manages documents through distinct lifec
 
 **Customer Communication**:
 - Automatic customer notifications for document status changes
-- Customer portal access for document review and approval
+- Customer portal access for document review
 - Mobile-friendly document viewing for customer convenience
 - Digital signature integration for contract execution
 
@@ -395,7 +386,7 @@ BigLedger's document maintenance system manages documents through distinct lifec
 **Supplier Payment Management**:
 - **Purchase Order Integration**: Seamless flow from purchase orders to payment
 - **Three-Way Matching**: Automatic matching of purchase orders, receipts, and invoices
-- **Payment Authorization**: Multi-level payment approval workflows
+- **Payment Authorization**: controlled by who holds the permission to finalise a payment voucher (payments have no approval workflow)
 - **Vendor Management**: Supplier performance tracking and evaluation
 
 ### Customer Relationship Management
@@ -435,7 +426,7 @@ BigLedger's document maintenance system manages documents through distinct lifec
 **Stock Movement Documentation**:
 - **Goods Receipt Documentation**: Complete documentation of inventory receipts
 - **Transfer Documentation**: Inter-location transfer documentation and tracking
-- **Adjustment Documentation**: Inventory adjustment documentation and approval
+- **Adjustment Documentation**: Inventory adjustment documentation and reason codes
 - **Cycle Count Documentation**: Regular inventory count documentation and variance analysis
 
 **Quality Management Integration**:
@@ -553,11 +544,10 @@ BigLedger's document maintenance system manages documents through distinct lifec
 **Approval Bottlenecks**:
 - **Issue**: Documents stuck in approval processes causing delays
 - **Solutions**:
-  - Implement escalation procedures for delayed approvals
-  - Provide alternative approval paths for urgent documents
-  - Automate routine approvals where appropriate
-  - Monitor approval metrics and identify bottlenecks
-- **Prevention**: Regular review of approval workflows and optimization
+  - Chase the approver directly — there are no reminders and no escalation
+  - Put a second approver at the same level with a quorum of 1, so either can clear it
+  - Withdraw and resubmit if the named approver is unavailable for a long period
+- **Prevention**: Regular review of who sits at each approval level
 
 **Routing Errors**:
 - **Issue**: Documents routed to incorrect approvers or departments
@@ -654,7 +644,7 @@ BigLedger's document maintenance system manages documents through distinct lifec
 - **Virtual Meetings**: Integration with video conferencing for document collaboration
 - **Real-Time Editing**: Enhanced real-time collaborative editing capabilities
 - **Cloud Integration**: Seamless integration with cloud storage and collaboration platforms
-- **Remote Approval**: Enhanced mobile approval capabilities for remote workers
+- **Remote Approval**: the approval link in the notification e-mail opens in any phone browser
 
 #### User Interface Improvements
 

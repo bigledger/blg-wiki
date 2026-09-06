@@ -146,7 +146,7 @@ When you select an item for editing, you'll access multiple specialized tabs for
 
 **Item Updates**
 - **Version Control**: Track all changes with timestamps and user attribution
-- **Approval Workflows**: Require management approval for critical changes
+- **Permission control**: restrict who may change critical item master fields (item changes have no approval workflow)
 - **Change Notifications**: Alert relevant team members of modifications
 - **Rollback Capability**: Revert to previous versions when needed
 
@@ -210,7 +210,7 @@ When you select an item for editing, you'll access multiple specialized tabs for
 
 **Daily Tasks**
 - Review stock levels and reorder alerts
-- Process any pending item approvals
+- Review recent item master changes in the change log
 - Monitor marketplace synchronization status
 - Address customer inquiries about products
 

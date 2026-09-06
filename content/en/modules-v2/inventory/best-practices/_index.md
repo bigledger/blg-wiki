@@ -12,7 +12,7 @@ Follow these operational best practices to maintain inventory accuracy, prevent 
 - **Blind Count Verification:** Require warehouse counters to input physical unit counts without revealing expected system quantities on audit sheets.
 
 ## 2. Stock Discrepancy Control
-- **Mandatory Adjustment Approvals:** Require managerial sign-off for quantity or cost write-offs in the [Stock Adjustment Applet](/applets/inventory-workflow/stock-adjustment-applet/) exceeding authorized monetary thresholds.
+- **Restrict who can write stock off:** the [Stock Adjustment Applet](/applets/inventory-workflow/stock-adjustment-applet/) has no approval workflow and no monetary threshold rule, so managerial sign-off has to be a policy backed by permissions — give the finalise right to supervisors only.
 - **Enforce Real-Time Barcode Scanning:** Require barcode scanning during stock putaway, transfers, and picking to eliminate manual SKU input errors.
 
 ## 3. Storage Optimization

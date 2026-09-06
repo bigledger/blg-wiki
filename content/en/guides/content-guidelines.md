@@ -487,11 +487,10 @@ Before you start, you'll need:
 ```markdown
 ## Purchase Order Workflow Configuration
 
-Configure PO approval routing using these parameters:
-- Threshold amounts by organizational level
-- Multi-tier approval hierarchy
-- Escalation rules and timeout policies
-- Integration with budget control module
+Configure PO approvals using these parameters:
+- Approval levels, each with an approver designation and a quorum
+- Min Approval Amount per level, which sets how many levels a document must clear
+- The Approval Monitor row for Purchase Requisition to Purchase Order
 
 [Technical configuration details]
 ```
@@ -515,8 +514,8 @@ version: "2.5"
 ---
 
 {{< callout type="info" >}}
-**Updated in Version 2.5**: New approval workflow engine provides
-multi-level routing. See [migration guide](/guides/purchasing-guides/approval-migration/).
+**Updated in Version 2.5**: Approval levels now respect the Min Approval Amount.
+See the [Document Approvals guide](/guides/document-approvals/).
 {{< /callout >}}
 
 {{< callout type="warning" >}}
@@ -606,7 +605,7 @@ requisition to vendor transmission. Estimated time: 10 minutes.
 
 ### Related Guides
 - [Supplier Setup](/guides/purchasing-guides/supplier-setup/)
-- [Approval Workflow](/guides/purchasing-guides/approval-configuration/)
+- [Document Approvals](/guides/document-approvals/)
 ```
 
 ## Module-Specific Guidelines

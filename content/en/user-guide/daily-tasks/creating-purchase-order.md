@@ -251,29 +251,31 @@ If not ready to submit:
 - Gathering approvals offline
 - End of workday, will complete tomorrow
 
-### Step 7: Submit for Approval
+### Step 7: Submit for Approval *(only if your company uses approvals)*
 
-When ready:
-1. Click **Submit for Approval**
-2. System validates required fields
-3. Fix any errors highlighted
-4. Confirm submission
+Purchase order approvals are **optional** and off until someone creates an Approval Setting. If your
+tenant has none, there is no **Generic Doc Approval** tab work to do — go straight to FINAL and skip
+to Step 8.
 
-**System checks**:
-- All required fields completed
-- At least one line item
-- Quotation attached (if required by policy)
-- Budget available (if budget control enabled)
-- Within your authorization limit
+If approvals are switched on:
+1. Open the **Generic Doc Approval** tab, click **Add**, choose the submitter and save
+2. Select the row and click **Submit For Approval**
+3. Fix any error the applet shows — the common ones name a missing designation or a missing approver
 
-**Approval routing**:
-- System routes based on PO value
-- Approver receives notification
-- You receive confirmation of submission
-- Status changes to: Pending Approval
+**What BigLedger checks at submission**:
+- The submitter's designation exists and has approvers assigned
+- There are at least as many approver levels as the setting requires
+- The submitter has not resigned
+- If the Approval Monitor says so, the PO was converted from an approved purchase requisition
+
+**What happens next**:
+- BigLedger counts the levels whose Min Approval Amount is at or below the PO total, and e-mails
+  every approver at the first of them
+- The approval status becomes `PENDING_APPROVAL`
 
 {{< callout type="tip" >}}
-**Expedite Approval**: For urgent POs, notify approver via phone or chat after submitting. Mention PO number and urgency.
+**Expedite Approval**: for an urgent PO, ring the approver after submitting and quote the PO number.
+BigLedger sends no reminders and has no escalation, so a chase has to be human.
 {{< /callout >}}
 
 ---
@@ -454,7 +456,7 @@ If supplier has portal access:
 3. Add 10 line items quickly (type item codes)
 4. Prices auto-fill from price book
 5. Attach email price list
-6. Submit (auto-approved < $1,000)
+6. Finalise (no approval configured for low-value stationery)
 7. Send to supplier
 8. Done in 8 minutes
 
@@ -478,9 +480,9 @@ If supplier has portal access:
 7. Attach quotation (multi-page PDF)
 8. Add notes: "Installation and training included"
 9. Submit for approval
-10. Requires CFO approval (>$25,000)
-11. Follow up on approval status
-12. Once approved, send to supplier
+10. Two levels apply because the total is over the second level's Min Approval Amount
+11. Follow up on approval status in the Generic Doc Approval tab
+12. The last approval sets the PO to FINAL — send it to the supplier
 13. Get delivery schedule confirmation
 
 ### Scenario 3: Import Purchase (Foreign Currency)
@@ -588,14 +590,17 @@ If supplier has portal access:
 
 ### Error: "Cannot Submit for Approval"
 
-**Cause**: Validation failed
+**Cause**: the approval configuration is incomplete
 **Fix**:
-1. Read error message carefully
-2. Check all required fields completed
-3. Ensure at least one line item
-4. Verify quotation attached (if required)
-5. Fix highlighted errors
-6. Try submit again
+1. Read the message — it names what is missing
+2. *"Submitter designation_code is not created…"* — create the designation under
+   Settings → Branch → Designation
+3. *"There is no approver assigned…"* — add employees to that designation with an Approval Level
+4. `EmployeeBranchDesignationLink_IS_NOT_FULLY_CONFIGURED` — you need at least one approver per
+   required level
+5. The **Add** button greyed out with *"Purchase Order needs to be converted from Purchase
+   Requisition"* — add the Approval Monitor row for that document pair
+6. See [Document Approvals](/guides/document-approvals/) for the full list
 
 ---
 

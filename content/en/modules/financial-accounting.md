@@ -148,7 +148,7 @@ The complete purchase-to-pay workflow:
 4. **Invoice Processing**
    - OCR invoice capture
    - Automatic matching
-   - Approval workflow
+   - Review before posting (purchase invoices have no approval workflow)
 
 5. **Payment**
    - Payment scheduling
@@ -285,7 +285,7 @@ Parent Company
 - **Audit Trail**: Complete transaction history
 - **Document Management**: Supporting document storage
 - **User Activity Logs**: Detailed access logs
-- **Approval Workflows**: Multi-level approvals
+- **Approval Workflows**: Optional multi-level approvals on purchase requisitions, purchase orders and stock requisitions
 - **Segregation of Duties**: Role-based permissions
 - **Period Locking**: Prevent unauthorized changes
 
@@ -437,16 +437,23 @@ Easy migration from popular accounting systems:
    - Maker-checker for critical transactions
    - Regular rotation of duties
 
-2. **Approval Matrix**
+2. **Approval levels (purchase documents only)**
 
-| Transaction Type | Amount | Approver |
-|-----------------|--------|----------|
-| Purchase Order | < $1,000 | Supervisor |
-| Purchase Order | < $10,000 | Manager |
-| Purchase Order | > $10,000 | Director |
-| Journal Entry | Any | Controller |
-| Payment | < $5,000 | AP Manager |
-| Payment | > $5,000 | CFO |
+   BigLedger's approval engine covers Purchase Requisitions, Purchase Orders and Stock
+   Requisitions, and only once you configure it. Journals and payment vouchers have no approval
+   step at all — for those, segregation of duties is enforced by giving the create right and the
+   finalise right to different roles.
+
+   Where approvals do apply, a money figure does not send the document to a *different* approver.
+   Each level carries a **Min Approval Amount**, and the number of levels a document must clear is
+   the count of levels whose Min Approval Amount is at or below the document total:
+
+   | Level | Approver designation | Min Approval Amount | Applies to |
+   |---|---|---|---|
+   | 1 | Branch manager | RM 0 | Every purchase order |
+   | 2 | Finance director | RM 10,000 | Orders of RM 10,000 and above |
+
+   See [Document Approvals](/guides/document-approvals/) for the full setup.
 
 3. **Reconciliation Schedule**
    - Daily: Cash reconciliation

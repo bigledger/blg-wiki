@@ -12,7 +12,7 @@ weight: 60
 Complete API reference for BigLedger's purchasing and procurement module. Manage suppliers, purchase orders, bills, and streamline your procurement workflows.
 
 {{< callout type="info" >}}
-**Module Integration**: The Purchasing APIs integrate seamlessly with Inventory, Accounting, and Approval Workflow applets for complete procurement automation.
+**Module Integration**: The Purchasing APIs integrate with Inventory and Accounting. Approvals are an optional feature of the Purchase Requisition and Purchase Order applets, configured in their own Settings — see [Document Approvals](/guides/document-approvals/).
 {{< /callout >}}
 
 ## Base Endpoints
@@ -422,24 +422,32 @@ POST /v1/suppliers/{id}/rate-performance
 
 ## Approvals & Workflows
 
-### Approval Rules
+{{< callout type="warning" >}}
+Approvals are **optional** and apply only to Purchase Requisitions, Purchase Orders and Stock
+Requisitions. There is no approval-rules resource and no per-user approval limit — the rule is an
+*Approval Setting* holding a list of levels, created from the applet's own Settings screen. Read
+[Document Approvals](/guides/document-approvals/) before using these endpoints.
+{{< /callout >}}
+
+### Approval Settings
 
 ```http
-GET /v1/purchasing/approval-rules
-POST /v1/purchasing/approval-rules
-GET /v1/purchasing/approval-rules/{id}
-PUT /v1/purchasing/approval-rules/{id}
+GET    /core2/tnt/dm/erp/generic-doc/approvals/approval-settings/backoffice-ep/query
+POST   /core2/tnt/dm/erp/generic-doc/approvals/approval-settings/backoffice-ep
+PUT    /core2/tnt/dm/erp/generic-doc/approvals/approval-settings/backoffice-ep
+DELETE /core2/tnt/dm/erp/generic-doc/approvals/approval-settings/backoffice-ep/{guid}
 ```
 
-### Pending Approvals
+### Submitting, Withdrawing and Deciding
 
 ```http
-GET /v1/purchasing/pending-approvals
-POST /v1/purchasing/approvals/{id}/approve
-POST /v1/purchasing/approvals/{id}/reject
+POST /core2/tnt/dm/erp/generic-doc/approvals/processors/submission/backoffice-ep
+PUT  /core2/tnt/dm/erp/generic-doc/approvals/processors/submission/backoffice-ep
+PUT  /core2/tnt/dm/erp/generic-doc/approvals/processors/withdrawals/backoffice-ep
+GET  /core2/tnt/dm/erp/generic-doc/approvals/approval-requests/login-entity-ep
+PUT  /core2/tnt/dm/erp/generic-doc/approvals/approval-requests/processors/login-entity-primary-ep
+GET  /core2/tnt/dm/erp/generic-doc/approvals/approval-histories/backoffice-ep/query
 ```
-
-<!-- TODO: Add complete approval workflow API -->
 
 ## Reports & Analytics
 
@@ -524,7 +532,7 @@ await client.bills.schedulePayment(bill.id, {
 |------|-------------|
 | `SUPPLIER_NOT_FOUND` | Supplier ID does not exist |
 | `PO_ALREADY_SENT` | Purchase order has already been sent |
-| `INSUFFICIENT_APPROVAL_LIMIT` | User's approval limit exceeded |
+| `EmployeeBranchDesignationLink_IS_NOT_FULLY_CONFIGURED` | Fewer approver levels are assigned than the approval setting requires |
 | `BILL_ALREADY_PAID` | Bill has already been fully paid |
 | `INVALID_SUPPLIER_INVOICE` | Supplier invoice number already exists |
 | `PO_ITEMS_FULLY_RECEIVED` | All items already received |
@@ -547,7 +555,6 @@ const events = [
   'purchase_order.received',
   'purchase_order.cancelled',
   'bill.created',
-  'bill.approved',
   'bill.paid',
   'supplier.created',
   'supplier.updated',

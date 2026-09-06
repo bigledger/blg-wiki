@@ -107,7 +107,7 @@ This comprehensive catalog lists all applets available in the BigLedger ecosyste
 ### 11. [Workflow Design Applet](/applets/workflow-design-applet/)
 **Business process automation and workflow management**
 - Visual workflow designer and configuration
-- Multi-level approval processes
+- Status tracks with role-filtered transitions (not approvals — see [Document Approvals](/guides/document-approvals/))
 - Process automation and orchestration
 - Workflow performance monitoring
 
@@ -200,7 +200,7 @@ All 13 Core Module applets (listed above) are included in CP-Commerce Module.
 **Internal receipt management and processing**
 - Create and manage internal receipt vouchers
 - Handle payments, contras, and settlement adjustments
-- Built-in approval workflows and file import capabilities
+- File import capabilities
 
 ### 3. [Bank Reconciliation Applet](/applets/bank-reconciliation-applet/)
 **Automated bank statement reconciliation**

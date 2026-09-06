@@ -196,7 +196,7 @@ Pricing schemes integrate seamlessly with:
 - **Customer-Specific Pricing**: Automatic application based on customer classification
 - **Volume Discounting**: Quantity-based pricing calculations
 - **Project Pricing**: Special schemes for large projects or contracts
-- **Approval Workflows**: Management approval for special pricing requests
+- **Permission control**: special pricing is limited by who holds the edit permission (there is no pricing approval workflow)
 
 ---
 

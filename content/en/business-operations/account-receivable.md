@@ -26,7 +26,7 @@ BigLedger's Account Receivable module revolutionizes cash flow management throug
 1. **Application Submission**: Online form with document upload
 2. **Automated Verification**: IC/SSM validation, bank reference checks
 3. **Risk Assessment**: AI scoring with manual override option
-4. **Approval Matrix**: Multi-level approval based on amount
+4. **Sign-off**: whoever your policy names for the credit limit being granted — credit applications have no approval engine in BigLedger, so control this with permissions
 5. **Terms Assignment**: Payment terms, credit limit, security requirements
 
 ### Invoice Management
@@ -104,7 +104,7 @@ BigLedger's Account Receivable module revolutionizes cash flow management throug
 #### Collection Team Tools
 - **Collector Dashboard**: Prioritized action list
 - **Call Scripts**: Dynamic scripts based on customer profile
-- **Payment Negotiation**: Approval workflows for settlements
+- **Payment Negotiation**: Settlement terms agreed offline and recorded on the document
 - **Promise to Pay**: Track and follow up on commitments
 - **Skip Tracing**: Updated contact information sourcing
 
@@ -127,7 +127,7 @@ BigLedger's Account Receivable module revolutionizes cash flow management throug
   - Compound interest calculation
 
 - **Waiver Management**
-  - Approval workflow for charge waivers
+  - Waiver authority limited by permission (there is no charge-waiver approval workflow)
   - Waiver reason tracking
   - Impact analysis on profitability
 
@@ -246,7 +246,7 @@ Leveraging our `bl_fi_mst_entity_hdr` table:
 2. **Credit Policy**: Define credit limits and terms
 3. **Aging Buckets**: Configure aging periods
 4. **Reminder Templates**: Customize communication templates
-5. **Approval Matrix**: Set up approval hierarchies
+5. **Authority**: decide who may grant which credit limits, and give the permissions accordingly
 6. **Integration**: Connect banking and payment gateways
 7. **Training**: Train credit control team
 8. **Go-Live**: Phased rollout by customer segment

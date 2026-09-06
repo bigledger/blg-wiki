@@ -490,16 +490,18 @@ If supplier sends separate formal invoice:
 - Receipt price was estimate only
 {{< /callout >}}
 
-### Invoice Approval
+### Invoice Review
 
-#### Approval Rules for Direct GRN Invoices
+Purchase invoices have no approval engine in BigLedger — nothing routes them and nothing queues
+them. Decide instead who should look at an invoice before it is finalised, and give the finalise
+permission accordingly:
 
-| Situation | Approver | Notes |
-|-----------|----------|-------|
-| Clean match, within policy | Auto-approve or Supervisor | Standard process |
-| No receipt, only invoice | Purchasing Manager | Missing receipt justification |
-| Price variance from receipt | AP Manager | Explanation required |
-| Over policy limit | Finance Manager | Retrospective approval |
+| Situation | Who should look | Notes |
+|-----------|-----------------|-------|
+| Clean match, within policy | AP clerk | Standard process |
+| No receipt, only invoice | Purchasing manager | Missing receipt justification |
+| Price variance from receipt | AP manager | Explanation required |
+| Over policy limit | Finance manager | Retrospective sign-off, recorded in Remarks |
 
 ### Posting Invoice
 

@@ -819,7 +819,7 @@ System automatically notifies:
 1. Verify physical count is correct
 2. Check if over-delivery is legitimate
 3. Get supervisor approval
-4. System may allow with approval override
+4. A supervisor decides whether to accept the over-delivery; the check is a warning, not a block, and there is no approval override
 
 ### Error: "Serial Number Already Exists"
 

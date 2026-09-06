@@ -149,14 +149,13 @@ Asset Management is essential for:
 
 3. **Submit** the transfer
 
-4. **Wait for approval** (if required)
+4. **Finalise it** once the receiving custodian has confirmed
 
 ### What Happens
 
-- Transfer request is routed for approval
-- Both parties are notified
-- Once approved, asset record is updated
+- The asset record is updated with the new custodian and location
 - Complete history is maintained
+- Asset transfers have no approval workflow — agree the move offline and record who agreed in Remarks
 
 {{< callout type="info" >}}
 **UTM Requirement (9.60):** The system must support asset transfer with notifications and workflow.
@@ -261,7 +260,7 @@ Asset Management is essential for:
    | Proceeds | RM 500 (if sold) |
    | Reason | End of useful life |
 
-3. **Submit** for approval
+3. **Submit** the disposal, then finalise it (disposals have no approval workflow — get the sign-off offline)
 
 ### What Happens
 

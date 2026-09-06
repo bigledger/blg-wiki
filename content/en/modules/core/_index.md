@@ -183,7 +183,7 @@ Recommended configuration order:
 
 ### Data Integrity
 - Enable **audit trails** from the start
-- Set up **approval workflows** for master data changes
+- Control master data changes with **roles and permissions** — there is no approval workflow for master data
 - Regular **data validation** checks
 - Implement **change control** procedures
 

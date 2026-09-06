@@ -127,12 +127,12 @@ Experience how BigLedger transforms operations management through intelligent au
    - Navigate to Procurement → Purchase Requisitions
    - Create new requisition with intelligent supplier suggestions
    - Apply automated budget validation
-   - Submit for approval via configured workflow
+   - Submit for approval, if an Approval Setting exists for requisitions
 
-2. **Automated Approval Process**
-   - Review approval workflow routing
-   - Monitor real-time approval status
-   - Handle exception approvals via mobile
+2. **Approval Process** *(optional, purchase documents only)*
+   - Check which levels apply — a level applies when its Min Approval Amount is at or below the document total
+   - Monitor approval status on the document's approval tab
+   - Handle exceptions from the approval link in your e-mail, which opens in any phone browser
    - Generate purchase orders automatically
 
 3. **Supplier Communication & Tracking**

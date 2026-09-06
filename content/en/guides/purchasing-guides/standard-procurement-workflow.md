@@ -37,7 +37,7 @@ Before starting, ensure these are in place:
 ### System Setup
 - [x] Supplier account created and active
 - [x] Items configured in inventory master
-- [x] Purchase approval workflows configured
+- [ ] *(Optional)* Purchase order Approval Settings configured — only if you want POs signed off; see [Document Approvals](/guides/document-approvals/)
 - [x] Chart of accounts for purchases set up
 - [x] Tax codes configured
 - [x] Document numbering sequences active
@@ -203,25 +203,27 @@ The system tracks both for accurate:
 
 ### Approval Routing
 
-After completing the PO:
+Purchase order approvals are **optional**. If nobody has created an Approval Setting for purchase
+orders, there is nothing to submit and the PO simply goes to FINAL — skip to the next section.
 
-1. Click **Submit for Approval**
-2. System routes based on:
-   - Total PO value
-   - Item category
-   - Supplier status
-   - Your approval limits
-3. Approver receives notification
-4. Approver reviews and approves/rejects
-5. You receive approval notification
+If your company has switched approvals on:
+
+1. Open the PO's **Generic Doc Approval** tab, click **Add**, choose the submitter and save.
+2. Select the row and click **Submit For Approval**.
+3. BigLedger works out how many approval levels apply — it counts the levels whose **Min Approval
+   Amount** is at or below the PO total — and e-mails every approver at the first level.
+4. Each approver clicks the link in the e-mail, sees the document, and clicks Approve or Reject with
+   remarks. They can also act from the **Approval Request** screen in the applet.
+5. When the last required level approves, BigLedger sets the PO to FINAL for you.
 
 #### Approval Levels Example
-| PO Value | Approver | Typical Time |
-|----------|----------|--------------|
-| < $1,000 | Supervisor | 2 hours |
-| $1,000 - $5,000 | Manager | 1 day |
-| $5,000 - $25,000 | Finance Manager | 2 days |
-| > $25,000 | CFO | 3-5 days |
+| Level | Approver designation | Min Approval Amount | Quorum |
+|---|---|---|---|
+| 1 | Branch manager | RM 0 | 1 of 2 |
+| 2 | Finance director | RM 10,000 | 1 |
+
+A RM 4,000 order clears level 1 only. A RM 45,000 order needs both levels. The amount never sends a
+document to a *different* person — it only changes how many levels must sign.
 
 {{< callout type="tip" >}}
 **Expedite Approvals**: For urgent purchases, notify approvers via phone or email after submitting. Include the PO number and business justification.
@@ -789,36 +791,35 @@ Ensure invoice qualifies for input tax credit:
 **Tax Audit Trail**: Invalid tax invoices mean you can't claim input tax credit. This increases your cost by the tax amount. Always verify tax invoice validity.
 {{< /callout >}}
 
-### Invoice Approval Routing
+### Invoice Review Before Posting
 
-After entering invoice:
+Purchase invoices have **no approval engine** in BigLedger — there is no Submit for Approval button
+and no queue. The invoice goes from Draft to Final, and whoever holds the finalise permission is
+your control point. Build the review into your policy instead:
 
-1. **System validation**:
+1. **What the system checks for you**:
    - Three-way match status
-   - Variance within tolerance
-   - Tax calculation correct
-   - All required fields completed
+   - Variance against tolerance
+   - Tax calculation
+   - Required fields completed
 
-2. **Approval routing**:
-   - **Clean match**: Auto-approve or supervisor review
-   - **Minor variance**: Manager approval
-   - **Major variance**: Senior manager approval
-   - **Price increase**: Purchasing approval
+2. **What a person should check before finalising**:
+   - The invoice against the PO and GRN
+   - The variance explanation
+   - That the tax invoice is valid for input tax credit
 
-3. **Approver actions**:
-   - Reviews invoice vs PO/GRN
-   - Checks variance explanation
-   - Approves or rejects with reason
-   - Invoice moves to payment queue
+3. **Who should hold the finalise right**, by the size of the discrepancy your policy tolerates
+   (table below).
 
-#### Approval Hierarchy
+| Situation | Who finalises | Typical timeline |
+|-----------|---------------|------------------|
+| Clean three-way match | AP clerk | Same day |
+| Quantity variance < 5% | AP manager | 1 day |
+| Price variance < 10% | Purchasing manager | 2 days |
+| Major discrepancy | Finance manager | 3-5 days |
 
-| Situation | Approver | Timeline |
-|-----------|----------|----------|
-| Clean three-way match | Auto or Supervisor | Immediate |
-| Quantity variance < 5% | AP Manager | 1 day |
-| Price variance < 10% | Purchasing Manager | 2 days |
-| Major discrepancy | Finance Manager | 3-5 days |
+Enforce this by giving the finalise permission only to the roles you want, not by expecting
+BigLedger to route the invoice.
 
 ### Document Attachment
 
@@ -1087,9 +1088,8 @@ System generates remittance advice showing:
 - 9:00 AM: Invoice received via email
 - 9:30 AM: Invoice entered in system
 - 10:00 AM: Three-way matching completed
-- 10:30 AM: Invoice submitted for approval
-- 2:00 PM: Invoice approved
-- 2:15 PM: Invoice posted
+- 10:30 AM: Invoice reviewed against the PO and GRN
+- 2:15 PM: Invoice finalised and posted
 
 **Day 45: Payment** (30 days from invoice date)
 - Morning: Invoice appears in payment due list
@@ -1121,8 +1121,8 @@ Track these to optimize the process:
 **Solutions**:
 - Check approver availability (on leave?)
 - Review approval routing (correct approver?)
-- Escalate to backup approver
-- Use delegation feature for absent approvers
+- Chase the approver directly — there is no escalation, no reminder e-mail and no delegation or stand-in approver for these documents
+- If it is genuinely stuck, withdraw the approval and resubmit once the right person is available
 
 #### Problem: GRN Quantity Mismatch
 **Symptoms**: Can't match invoice because GRN quantity wrong

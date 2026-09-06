@@ -436,7 +436,7 @@ This helps enforce localized operational rules while preserving a shared global 
 | `Settings > Default Selection` | Baseline app behavior per tenant | Standardized defaults across teams |
 | `Settings > Printable Format Settings` | JRXML print templates and default format | Consistent document output for operations and customers |
 | `Settings > Branch Settings` | Branch-level pricing, settlement, category filters, print defaults | Branch-appropriate rules without custom coding |
-| `Settings > Workflow Settings` | Company-to-process mapping for doc flow | Controlled approvals/state handling by process |
+| `Settings > Workflow Settings` | Company-to-process mapping for doc flow | Delivery orders carry a workflow status per process; the status is a label, not an approval |
 | `Settings > Custom Status` | Custom header/line statuses | Better operational visibility beyond system statuses |
 | `Settings > Email Template` | Template text and print linkage | One-click, reusable delivery communication |
 | `Settings > Applet Log` | Audit trail entry point | Better traceability and compliance review |

@@ -153,7 +153,7 @@ System administrators can configure applet parameters by clicking **Settings** a
 | :--- | :--- | :--- |
 | **Branch Defaults** | `Default Selection & Branch` | Pre-selects default operating branches and inventory locations for refund routing. |
 | **Return Reasons** | `Return Reasons Settings` | Configures mandatory dropdown categories for returns (e.g., *Defective Product*, *Service Cancelled*, *Duplicate Charge*). |
-| **Approval Workflows** | `Workflow Settings` | Defines multi-level managerial approval hierarchies required before the **FINAL** button is enabled. |
+| **Workflow Status** | `Workflow Settings` | Attaches a workflow process to the company so refund notes carry a Workflow Status. It is a status label filtered by role — it defines no approval hierarchy and does not gate the **FINAL** button. Refund notes have no approval engine; see [Document Approvals](/guides/document-approvals/). |
 | **Permissions** | `SHOW_GENDOC_FINAL_BUTTON` | Restricts document finalization and GL posting authority strictly to authorized Senior Finance staff. |
 | **Permissions** | `SHOW_EDIT_SETTLEMENT_FINAL` | Highly restricted permission allowing post-finalization settlement edits for auditing corrections. |
 | **Audit Logs** | `Applet Log & Release Notes` | Displays system-level release logs and backend API transaction audit histories. |
@@ -168,7 +168,7 @@ A: This occurs when the **PNS vs. STL Balancing Rule** is violated. Verify that 
 **Q: Why is the FINAL button hidden or disabled?**  
 A: The FINAL button may be restricted due to two reasons:
 1. Your user role lacks the `SHOW_GENDOC_FINAL_BUTTON` permission.
-2. The refund note is pending mandatory approval under configured **Workflow Settings**.
+2. The applet setting `HIDE_GENDOC_FINAL_BUTTON` is switched on, or the document is not in the workflow status named by `FINAL_STATUS_GUID`. Neither of these is an approval — refund notes have no approval workflow.
 
 **Q: How do I check if an E-Invoice Credit Note was approved by LHDN?**  
 A: Open the document in edit mode and select Panel 3 (**E-Invoice**). The panel displays live status badges from IRB Malaysia along with the unique Unique Identifier Number (UUID) and validation timestamp.

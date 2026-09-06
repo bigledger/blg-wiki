@@ -62,6 +62,7 @@ Select your role to access guides tailored to your responsibilities:
   {{< card link="/guides/accounting-guides/" title="📊 Accounting" subtitle="4 guides — Chart of Accounts, Journal Entries, Financial Reporting, Bank Reconciliation" >}}
   {{< card link="/guides/einvoice-guides/" title="📄 E-Invoice & PEPPOL" subtitle="7 guides — setup, pools and routing, validation, the month-end cycle, cancelling an e-invoice, PEPPOL" >}}
   {{< card link="/guides/inventory-guides/" title="📦 Inventory Management" subtitle="Stock management & transfer procedures" >}}
+  {{< card link="/guides/document-approvals/" title="✅ Document Approvals" subtitle="Optional sign-off for purchase requisitions, purchase orders and stock requisitions" >}}
 {{< /cards >}}
 
 ### Specialized Guides

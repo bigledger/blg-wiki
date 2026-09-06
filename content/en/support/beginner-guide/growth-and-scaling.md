@@ -32,7 +32,7 @@ weight: 50
 
 **Control and Security Needs**:
 - Want someone else to handle data entry but not see financial reports
-- Need approval chains for large purchases or expenses
+- Need a supervisor to sign off large purchases
 - Want to separate duties for better internal controls
 - Multiple locations or departments need access
 
@@ -146,7 +146,7 @@ weight: 50
 
 **Q: How do I set up approval workflows?**
 
-**A:** Approval workflows are like having a supervisor review important decisions - BigLedger makes this automated and efficient:
+**A:** An approval workflow is a supervisor reviewing an important decision before it goes ahead. BigLedger can do this for purchase documents — and only for those. Here is what is real:
 
 **Why Approval Workflows Matter**:
 - **Spending control**: Prevent unauthorized large expenses
@@ -154,61 +154,55 @@ weight: 50
 - **Audit trail**: Clear record of who approved what
 - **Team accountability**: Ensure appropriate review of decisions
 
-**Common Workflow Scenarios**:
+**What BigLedger can actually enforce**:
 
-**Purchase Approvals**:
-- Purchases over $500 require supervisor approval
-- Purchases over $2,000 require manager approval
-- Purchases over $10,000 require owner approval
+{{< callout type="warning" >}}
+Approvals in BigLedger are **optional** and cover **three document types only** — purchase
+requisitions, purchase orders and stock requisitions. Expense claims go through the separate Claims
+module. There is no approval workflow for sales orders, sales invoices, discounts, credit limits,
+journals or payments: for those, the control is who you give the permission to.
+{{< /callout >}}
 
-**Expense Approvals**:
-- Employee expense claims require manager review
-- Non-standard expenses require additional approval
-- Recurring expenses can be pre-approved
+**Purchase approvals** *(system-enforced, once you set them up)*:
+- A purchase order can be made to wait for one or more named people before it goes to FINAL
+- The rule is a list of **levels**. Each level names an approver designation, a quorum, and a
+  **Min Approval Amount** — a document must clear every level whose Min Approval Amount is at or
+  below its total
+- So RM 500 / RM 2,000 / RM 10,000 thresholds become three levels with those Min Approval Amounts,
+  not three different approvers picked by band
 
-**Sales Approvals**:
-- Large discounts require sales manager approval
-- Credit terms changes require finance approval
-- New customer credit limits require owner approval
+**Sales and credit decisions** *(policy, backed by permissions)*:
+- Large discounts, credit term changes and new credit limits have no approval workflow
+- Restrict who holds those permissions, and use BigLedger's credit-limit check, which blocks a sales
+  order outright when a customer is over their limit
 
-**Setting Up Basic Approval Workflows**:
+**Setting up purchase approvals**:
 
-**Step 1: Define Approval Rules**
-- Determine what needs approval (amount thresholds, transaction types)
-- Identify who can approve what
-- Set up escalation rules (if approver unavailable)
+**Step 1: Create the designations** — Purchase Order applet → Settings → Branch → Designation. One
+for the people who submit, one per rank of approver.
 
-**Step 2: Configure User Roles**
-- **Requesters**: Can submit for approval
-- **Approvers**: Can approve within their limits
-- **Administrators**: Can modify workflow rules
+**Step 2: Assign the approvers** — Designation Employee, each with an **Approval Level**. Put two
+people at the same level with a quorum of 1 and either can clear it; that is the nearest thing to a
+backup approver. Every approver needs an e-mail address on their employee record.
 
-**Step 3: Set Up Notifications**
-- Email alerts when approval needed
-- Reminders for pending approvals
-- Notifications when requests are approved/rejected
+**Step 3: Create the Approval Setting** — Settings → Approval Settings. Choose the document type,
+the submitter designation, how many levels, and the levels themselves.
 
-**Step 4: Test the Process**
-- Submit test transactions
-- Verify notifications work
-- Ensure approval limits function correctly
+**Step 4: Test it** — raise a small purchase order, submit it, confirm the approver gets the e-mail,
+approve from the link, and check the purchase order moved to FINAL on its own.
 
-**Sample Approval Matrix**:
+**Sample approval setting**:
 
-| Transaction Type | Amount | Approver | Backup Approver |
-|-----------------|--------|----------|-----------------|
-| Office Supplies | Any | Office Manager | Owner |
-| Equipment Purchase | < $1,000 | Department Manager | CFO |
-| Equipment Purchase | < $5,000 | CFO | Owner |
-| Equipment Purchase | > $5,000 | Owner | Board (if applicable) |
-| Customer Credit | < $2,500 | Sales Manager | CFO |
-| Customer Credit | > $2,500 | CFO | Owner |
+| Level | Approver designation | Min Approval Amount | Quorum |
+|---|---|---|---|
+| 1 | Department manager | RM 0 | 1 |
+| 2 | Finance director | RM 5,000 | 1 |
+| 3 | Owner | RM 25,000 | 1 |
 
-**Mobile Approval Features**:
-- **Smartphone notifications**: Approve on the go
-- **Quick approval**: Simple tap to approve/reject
-- **Review details**: Full transaction information available
-- **Offline capability**: Sync when connection restored
+**What is not there**: no escalation when an approval goes stale, no reminder e-mails, no delegation
+or backup approver, no approval matrix object, and no mobile approval app — approvers use the link
+in their e-mail, which opens in any phone browser. Full detail in
+[Document Approvals](/guides/document-approvals/).
 
 **Q: Can I sell online and integrate with BigLedger?**
 

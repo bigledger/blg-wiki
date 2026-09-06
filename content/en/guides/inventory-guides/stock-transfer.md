@@ -23,14 +23,14 @@ Between company branches:
 - Transfer pricing
 - Tax implications
 - Documentation
-- Approval workflow
+- Permission-controlled finalisation
 
 ## Transfer Process
 
 ### Initiation
 1. Create transfer request
 2. Check availability
-3. Get approvals
+3. Get sign-off from whoever your policy names
 4. Generate transfer order
 
 ### Execution
@@ -49,11 +49,20 @@ Between company branches:
 
 ## Controls
 
-### Approval Matrix
-- Request approval
-- Shipping approval
-- Receiving approval
-- Variance approval
+### Sign-off points
+
+Stock transfers have **no approval engine** — BigLedger will not route a transfer to anyone. These
+are the four points where your policy should require a named person, enforced by who holds the
+relevant permission:
+
+- Raising the request
+- Releasing the shipment
+- Receiving the goods
+- Accepting a variance
+
+If you want a system-managed sign-off on a stock request, use a
+[Stock Requisition](/applets/inventory-workflow/internal-stock-requisition-applet/) — it is the one
+inventory document the approval engine covers ([Document Approvals](/guides/document-approvals/)).
 
 ### Documentation
 - Transfer order

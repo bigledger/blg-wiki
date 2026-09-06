@@ -310,7 +310,7 @@ AIMatrix serves as the intelligent orchestration layer that amplifies BigLedger'
 #### Phase 2: Quick Wins (Week 3-4)
 1. **Document Processing**
    - Deploy OCR for invoices and receipts
-   - Configure approval workflows
+   - Decide who reviews an OCR-captured invoice before it is finalised
    - Train users on exception handling
    - Monitor accuracy and performance
 

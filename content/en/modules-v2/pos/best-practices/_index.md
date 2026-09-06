@@ -13,7 +13,7 @@ Follow these operational best practices to maintain inventory accuracy, prevent 
 
 ## 2. Commercial Credit Control
 - **Strict Credit Limit Enforcement:** Configure hard blocks on Sales Order creation whenever a customer's total outstanding invoices exceed approved credit limits or payment terms.
-- **Formal Approval Workflows:** Require managerial sign-off for quotations exceeding standard discount thresholds.
+- **Control discount authority with permissions:** quotations have no approval workflow, so keep large-discount authority to the roles that should have it rather than expecting the system to route a quotation for sign-off.
 
 ## 3. Inventory Reconciliation
 - **Barcode Scanning at Checkout:** Enforce mandatory 2D/barcode scanning at POS registers rather than manual SKU entry to prevent mispicks and stock discrepancies.

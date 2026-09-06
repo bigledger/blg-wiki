@@ -278,28 +278,34 @@ Residual Risk: 6 (Medium)
 ### Control Activities Design
 
 **Preventive Controls**
+
+The matrix below is a *policy* you write, not a BigLedger configuration object. BigLedger enforces
+part of it for you — on purchase requisitions, purchase orders and stock requisitions, through
+optional approval levels ([Document Approvals](/guides/document-approvals/)) — and none of it on any
+other document, where the control is who holds the finalise permission. There is no automatic
+system approval and no notification for anything except the approval e-mails on those three
+document types.
+
 ```yaml
-Authorization Controls:
-Transaction Authorization Matrix:
+Authorization Policy (company policy; partially system-enforced):
 Level 1 (Up to MYR 1,000):
-  - Department Supervisor
-  - Automatic system approval
-  - Exception reporting only
+  - Department Supervisor reviews
+  - No approval level configured; exception reporting only
 
 Level 2 (MYR 1,001 - 10,000):
-  - Department Manager approval
-  - System workflow routing
-  - Email notifications
+  - Department Manager approves
+  - System-enforced on PR / PO / Stock Requisition via approval level 1
+  - Approver receives an e-mail with a link to approve or reject
 
 Level 3 (MYR 10,001 - 50,000):
-  - Finance Manager approval
-  - CFO notification
-  - Documentation requirements
+  - Finance Manager approves
+  - System-enforced as a second approval level (Min Approval Amount 10,000)
+  - CFO notified by the finance team; documentation requirements
 
 Level 4 (Above MYR 50,000):
-  - CFO approval required
-  - CEO notification
-  - Board reporting (quarterly)
+  - CFO approves
+  - System-enforced as a third approval level (Min Approval Amount 50,000)
+  - CEO notified by the finance team; board reporting (quarterly)
 
 Segregation of Duties:
 Purchasing Process:

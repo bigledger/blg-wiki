@@ -124,7 +124,7 @@ Notice:
 
 - System validates that debits equal credits
 - You can add as many lines as needed
-- Approval workflow may be required
+- Have a second person review the entry before it is finalised — journals have no approval workflow
 - Audit trail records who created it and when
 
 {{< callout type="warning" >}}

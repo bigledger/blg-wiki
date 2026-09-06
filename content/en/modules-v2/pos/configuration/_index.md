@@ -5,7 +5,7 @@ weight: 30
 bookCollapseSection: false
 ---
 
-Configuring the Sales & POS Module follows a strict 5-phase dependency chain. Master data and pricing foundations must be set up before terminal operations or commercial approval rules are enabled.
+Configuring the Sales & POS Module follows a strict 5-phase dependency chain. Master data and pricing foundations must be set up before terminal operations or commercial sales rules are enabled.
 
 ## Configuration Dependency Chain
 
@@ -54,11 +54,11 @@ Configuring the Sales & POS Module follows a strict 5-phase dependency chain. Ma
 
 ## Phase 4: Commercial Sales Workflow Rules
 
-**What you are doing:** Defining approval rules for commercial quotations, customer credit limits, and invoicing controls.
+**What you are doing:** Defining quotation templates, customer credit limits, and invoicing controls. Sales documents have no approval engine — discount and credit authority is controlled by permissions and credit limits.
 
 | Setup Task | Required Applet |
 |------------|-----------------|
-| Quotation Templates & Approvals | [Sales Quotation Applet](/applets/sales-workflow/internal-sales-quotation-applet/) |
+| Quotation Templates | [Sales Quotation Applet](/applets/sales-workflow/internal-sales-quotation-applet/) |
 | Order Credit Limit Enforcement | [Sales Order Applet](/applets/sales-workflow/internal-sales-order-applet/) |
 | Tax Invoice & AR Rules | [Sales Invoice Applet](/applets/sales-workflow/internal-sales-invoice-applet/) |
 

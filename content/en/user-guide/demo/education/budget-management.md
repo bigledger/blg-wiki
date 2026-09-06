@@ -184,18 +184,17 @@ Imagine you budgeted RM10,000 for travel but only spent RM3,000. Meanwhile, you 
    | Amount | RM 5,000 |
    | Reason | Training needs exceeded initial estimate |
 
-3. **Submit for approval**
+3. **Submit the virement**
 
-4. **Observe the workflow:**
-   - Request goes to approver
-   - Both budget items are "locked" pending approval
-   - Once approved, balances update automatically
+4. **Observe what happens:**
+   - Both budget balances update
+   - Budget virements have no approval workflow — agree the transfer with the budget holders first and record it in the reason field
 
 ### What to Verify
 
 - The system validates that the source has enough funds
 - Shows impact on both budgets before you confirm
-- Tracks the complete approval history
+- Records who made the virement and when
 
 {{< callout type="info" >}}
 **UTM Requirement (9.29):** The system must support transfer between objects within the same General Object, with appropriate approvals based on amount.

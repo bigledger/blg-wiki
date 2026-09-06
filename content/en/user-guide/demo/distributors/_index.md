@@ -160,7 +160,7 @@ This distribution demo simulates "MegaDistro Solutions," a multi-regional wholes
      - Corner Store (Bronze): $5,000 limit
 
 2. **Configure Credit Hold Rules**
-   - **Soft Hold**: Order requires approval if >80% of credit limit
+   - **Soft Hold**: Warn the sales rep at >80% of credit limit
    - **Hard Hold**: Block orders if >95% of credit limit
    - **Past Due Hold**: Block orders if any invoice >45 days overdue
    - **Payment Hold**: Release orders within 2 hours of payment receipt
@@ -169,16 +169,17 @@ This distribution demo simulates "MegaDistro Solutions," a multi-regional wholes
    - Customer "Regional Electronics" places $85,000 order
    - Current outstanding: $45,000
    - Total exposure would be: $130,000 (exceeds $75,000 limit)
-   - **Expected Result**: Order automatically placed on hold for credit approval
-   - Notification sent to credit manager and sales rep
+   - **Expected Result**: the credit-limit check blocks the order outright
+   - The sales rep tells the credit manager — there is no approval routing on a sales order
 
-4. **Credit Decision Workflow**
-   - Credit manager reviews customer payment history
-   - Options presented:
-     - **Approve**: One-time exception with documentation
-     - **Partial**: Approve $30,000 portion, hold remainder
-     - **Decline**: Request payment to reduce outstanding balance
-   - **Decision**: Partial approval with customer notification
+4. **Credit Decision** *(a human decision, not a system workflow)*
+   - The credit manager reviews the customer's payment history
+   - Options:
+     - **Raise the limit** for a one-off, with the reason recorded on the customer record
+     - **Split the order**: enter a $30,000 order now, the rest after payment
+     - **Decline**: ask for payment to reduce the outstanding balance
+   - Whichever is chosen, the change is made on the customer's credit limit — sales orders have no
+     approval queue
 
 ---
 
@@ -236,7 +237,7 @@ This distribution demo simulates "MegaDistro Solutions," a multi-regional wholes
 2. **Automated Order Processing**
    - EDI transaction received at 9:00 AM
    - 127 line items across 45 different SKUs
-   - Total order value: $47,500 (within auto-approval limits)
+   - Total order value: $47,500 (within the customer's credit limit)
    - **Expected Result**: Order automatically created and acknowledged via EDI 855
 
 3. **Exception Handling**

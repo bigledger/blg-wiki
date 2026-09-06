@@ -60,7 +60,7 @@ main > br { display: none !important; }
 
 ### Step-by-Step Operational Breakdown:
 1. **Vehicle Reception & Inspection:** Service advisor logs vehicle check-in using chassis/plate number. Performs digital walkaround inspection noting scratch points or existing defects.
-2. **Quotation & Approval:** Service advisor generates job estimation including recommended spare parts and labor charges. Quotation is sent directly to customer's smartphone for one-click digital approval.
+2. **Quotation & Approval:** Service advisor generates job estimation including recommended spare parts and labor charges. Quotation is sent directly to the customer, who confirms by reply.
 3. **Work Order & Inventory Deduction:** Once approved, job is converted to an active Work Order assigned to specific technicians. Spare parts are automatically reserved and deducted from workshop stock.
 4. **Final Billing & Customer Delivery:** Technician completes service, supervisor conducts quality check. Customer receives final itemized SST invoice and settles payment via integrated POS or payment gateway.
 

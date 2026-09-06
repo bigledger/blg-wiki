@@ -39,7 +39,7 @@ The Financial Accounting Module delivers:
 ### Accounts Payable
 - **Vendor Management** - Complete supplier master data
 - **Purchase Order Integration** - Three-way matching capabilities
-- **Invoice Processing** - Automated invoice capture and approval workflows
+- **Invoice Processing** - Automated invoice capture, coding and three-way matching
 - **Payment Processing** - Batch payments and electronic funds transfer
 - **Expense Management** - Employee expense tracking and reimbursement
 
@@ -110,7 +110,7 @@ This module leverages essential Core Module applets:
 
 4. **Accounts Payable Implementation**
    - Set up vendor invoice processing
-   - Configure approval workflows
+   - Split the create and finalise permissions between roles
    - Implement payment processing
    - Set up expense management
 
@@ -148,7 +148,7 @@ Customer Order → Invoice Generation → Payment Processing → Cash Applicatio
 ```
 Purchase Order → Goods Receipt → Invoice Processing → Payment → Vendor Updates
       ↓               ↓               ↓               ↓            ↓
-   Authorization  Quality Check   3-Way Matching   Approval   Account Updates
+   Authorization  Quality Check   3-Way Matching   Review     Account Updates
 ```
 
 ## Integration Capabilities
@@ -189,7 +189,7 @@ Purchase Order → Goods Receipt → Invoice Processing → Payment → Vendor U
 
 ### Security & Control
 - **Role-Based Access** - Granular permission controls
-- **Approval Workflows** - Multi-level authorization processes
+- **Approval Workflows** - Optional multi-level sign-off on purchase requisitions, purchase orders and stock requisitions
 - **Data Encryption** - Secure data transmission and storage
 - **Backup & Recovery** - Comprehensive data protection
 

@@ -98,7 +98,7 @@ Security is critical because:
 | **Menu Access** | Which modules the role can see |
 | **Data Access** | Which departments/PTJs visible |
 | **Function Access** | View, Create, Edit, Delete, Approve |
-| **Amount Limits** | Approval thresholds |
+| **Document Targets** | Which branches, locations and document types a role may act on |
 
 ### Example: Finance Officer vs Finance Manager
 

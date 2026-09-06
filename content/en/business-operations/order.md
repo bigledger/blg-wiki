@@ -105,7 +105,7 @@ BigLedger's Order Management System (OMS) provides end-to-end visibility and con
 
 - **Change Control**
   - Cut-off time enforcement
-  - Approval workflows
+  - Permission-controlled amendment (sales orders have no approval workflow)
   - Customer notification
   - Audit trail maintenance
 
@@ -309,7 +309,7 @@ BigLedger's Order Management System (OMS) provides end-to-end visibility and con
 
 ### Order Management App
 - **For Operations Team**
-  - Order approval on-the-go
+  - Order review on-the-go
   - Status updates
   - Exception handling
   - Performance monitoring

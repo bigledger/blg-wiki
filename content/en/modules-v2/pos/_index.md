@@ -78,7 +78,7 @@ Confusing commercial document types creates balance sheet and stock control erro
 - [ ] Tax codes (GST/SST/VAT) configured for commercial invoices and POS receipts
 - [ ] Cashier drawers and terminal hardware mapped in POS General Applet
 - [ ] Payment methods (Cash, Card, E-Wallet) configured and tested
-- [ ] Sales order-to-invoice approval workflow verified
+- [ ] Sales order-to-invoice conversion verified (sales documents have no approval workflow)
 - [ ] Finance team aligned on daily cashier reconciliation procedures
 
 ---

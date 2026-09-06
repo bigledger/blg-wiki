@@ -150,7 +150,7 @@ Sales Order → Stock Reservation → Pick List → Delivery → Stock Update
 ```
 Count Schedule → Count Execution → Variance Analysis → Adjustments → Reconciliation
       ↓               ↓                ↓                 ↓             ↓
-   Item Selection  Physical Count   Exception Report  Approval      Balance Update
+   Item Selection  Physical Count   Exception Report  Review        Balance Update
    Count Sheet     Data Entry       Investigation     Processing    Accounting
 ```
 

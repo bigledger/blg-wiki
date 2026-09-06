@@ -104,7 +104,6 @@ BigLedger webhooks provide real-time notifications for important business events
 | Event | Description | When Triggered |
 |-------|-------------|----------------|
 | `bill.created` | New supplier bill | Bill record created |
-| `bill.approved` | Bill approved for payment | Approval workflow completed |
 | `bill.paid` | Bill payment made | Payment applied to bill |
 | `expense.created` | New expense recorded | Expense entry created |
 | `expense.approved` | Expense approved | Expense approval completed |

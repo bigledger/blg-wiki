@@ -48,7 +48,6 @@ The Accounting Module delivers:
 - Template-based entries
 - Recurring journal entries
 - Batch processing capabilities
-- Approval workflows
 - Reversing entries
 
 **Used by**: Accounting staff and controllers
@@ -96,7 +95,6 @@ The Accounting Module delivers:
 - OCR invoice scanning
 - Three-way matching automation
 - Invoice coding and routing
-- Approval workflow management
 - Dispute resolution tracking
 
 **Used by**: AP teams and procurement staff
@@ -751,7 +749,7 @@ After implementing the Accounting Module:
 
 1. **Complete Core Module setup** as prerequisite
 2. **Configure transaction processing applets** in phases
-3. **Set up approval workflows** for each transaction type
+3. **Decide who may create and who may finalise** each transaction type, and split the permissions accordingly. *(Optional)* configure approvals for purchase requisitions and purchase orders — see [Document Approvals](/guides/document-approvals/).
 4. **Train accounting teams** on new processes
 5. **Establish monitoring and reporting** procedures
 6. **Optimize performance** based on usage patterns
