@@ -5,7 +5,6 @@
   "master-data"
  ],
  "queue": [
-  "content/en/applets/master-data/supplier-applet-1.md",
   "content/en/applets/master-data/tax-configuration-applet.md",
   "content/en/applets/inventory-workflow/warehouse-management-applet.md",
   "content/en/applets/master-data/workflow-design-applet.md"
@@ -140,6 +139,12 @@
    "date": "2026-09-05",
    "run": 24,
    "note": "Registry stock-reservation-applet 'Stock Reservation Applet' (title unchanged; documentation_url = Confluence). Alias /applets/stock-reservation-applet/ added for the legacy modules/inventory card link. Shared Application Settings renders 208 (pinned) / 297 (HEAD) controls, none consumed; Default Selection saved, never read. Own table, no journal; qty_reserved via INVENTORY_STOCK_RESERVATION_PROCESSOR; bin path bypasses it; expiry soft-deletes without release. 3 of 5 screenshots dropped (person username + phone numbers; branch codes resembling a company abbreviation) - recapture list in findings run 24. Topic kb/topics/stock-reservation.md (new)."
+  },
+  {
+   "page": "content/en/applets/master-data/supplier-applet-1.md",
+   "date": "2026-09-06",
+   "run": 26,
+   "note": "Registry supplier-applet 'Supplier' (title changed from 'Supplier Applet'; registry has no documentation_url, no aliases existed or were needed - all inbound links already use /applets/master-data/supplier-applet-1/). Applet-LOCAL settings + a second Default Selection screen writing the same APPLET_SETTINGS row; gates.py does not apply (the repo vendors its own shared-utilities copy, no submodule). Satisfied 11 queued back-link requests from lanes 2/3/4. Key corrections: create inserts a TEMP entity row before you type (stub accumulation); supplier credit terms and limits are NOT enforced on the purchase side (backend proof); export omits 6 columns the import accepts. 11 of 16 screenshots dropped for privacy - recapture list in findings run 26."
   }
  ],
  "skipped": [
@@ -176,7 +181,7 @@
    "reason": "Duplicate second page for registry row InvItemMaintenanceApplet (F-0007) — merged into master-data/inv-item-maintenance-applet.md in run 14 (its screenshots re-used there). Not rewritten; recommend delete + alias /applets/inventory-workflow/inv-item-maintenance-applet/ on the canonical page (Vincent's decision, F-0050 pattern)."
   }
  ],
- "updated": "2026-09-05",
+ "updated": "2026-09-06",
  "rework": [],
  "reworked": [
   {
